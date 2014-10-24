@@ -1,3 +1,5 @@
+* Do not filter out inactive products from stock computation
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 * Always succeed assignation from lost and found on internal shipments

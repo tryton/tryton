@@ -864,13 +864,8 @@ class Move(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Period = pool.get('stock.period')
         Move = pool.get('stock.move')
-        Product = pool.get('product.product')
-        Template = pool.get('product.template')
 
         move = Move.__table__()
-        product = Product.__table__()
-        template = Template.__table__()
-
         today = Date.today()
 
         if not location_ids:
@@ -1013,11 +1008,10 @@ class Move(Workflow, ModelSQL, ModelView):
         else:
             location_query = location_ids[:]
 
-        from_ = move
         if PeriodCache:
             from_period = period_cache
+        where = where_period = Literal(True)
         if grouping_filter and any(grouping_filter):
-            where = where_period = Literal(True)
             for fieldname, grouping_ids in zip(grouping, grouping_filter):
                 if not grouping_ids:
                     continue
@@ -1032,16 +1026,6 @@ class Move(Workflow, ModelSQL, ModelView):
                     where &= column.in_(grouping_ids)
                     if PeriodCache:
                         where_period &= cache_column.in_(grouping_ids)
-        else:
-            where = where_period = template.active == True
-            from_ = from_.join(product, condition=move.product == product.id)
-            from_ = from_.join(template,
-                condition=product.template == template.id)
-            if PeriodCache:
-                from_period = from_period.join(product,
-                    condition=period_cache.product == product.id)
-                from_period = from_period.join(template,
-                    condition=product.template == template.id)
 
         if context.get('stock_destinations'):
             destinations = context['stock_destinations']
@@ -1060,7 +1044,7 @@ class Move(Workflow, ModelSQL, ModelView):
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
         move_keys = [Column(move, key).as_(key) for key in grouping]
-        query = from_.select(move.to_location.as_('location'),
+        query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
             *move_keys,
             where=state_date_clause
@@ -1070,7 +1054,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 else Literal(True))
             & dest_clause_from,
             group_by=[move.to_location] + move_keys)
-        query = Union(query, from_.select(move.from_location.as_('location'),
+        query = Union(query, move.select(move.from_location.as_('location'),
                 (-Sum(move.internal_quantity)).as_('quantity'),
                 *move_keys,
                 where=state_date_clause
