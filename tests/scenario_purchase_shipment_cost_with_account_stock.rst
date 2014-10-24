@@ -2,16 +2,20 @@
 Purchase Shipment Cost with Account Stock Scenario
 ==================================================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
+    ...     create_chart, get_accounts
+    >>> from.trytond.modules.account_invoice.tests.tools import \
+    ...     set_fiscalyear_invoice_sequences
+    >>> from trytond.modules.account_stock_continental.tests.tools import \
+    ...     add_stock_accounts
     >>> today = datetime.date.today()
 
 Create database::
@@ -26,34 +30,14 @@ Install purchase_shipment_cost::
     ...         ('name', 'in', ['purchase_shipment_cost',
     ...                 'account_stock_continental']),
     ...         ])
-    >>> Module.install([x.id for x in modules], config.context)
+    >>> for module in modules:
+    ...     module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point='.', mon_thousands_sep=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find()
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -62,58 +46,24 @@ Reload the context::
 
 Create fiscal year::
 
-    >>> FiscalYear = Model.get('account.fiscalyear')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceStrict = Model.get('ir.sequence.strict')
-    >>> fiscalyear = FiscalYear(name='%s' % today.year)
-    >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
-    >>> fiscalyear.company = company
+    >>> fiscalyear = create_fiscalyear(company)
     >>> fiscalyear.account_stock_method = 'continental'
-    >>> post_move_sequence = Sequence(name='%s' % today.year,
-    ...     code='account.move',
-    ...     company=company)
-    >>> post_move_sequence.save()
-    >>> fiscalyear.post_move_sequence = post_move_sequence
-    >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], config.context)
+    >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
+    >>> _ = create_chart(company)
+    >>> accounts = add_stock_accounts(get_accounts(company), company)
+    >>> receivable = accounts['receivable']
+    >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
+    >>> stock = accounts['stock']
+    >>> stock_customer = accounts['stock_customer']
+    >>> stock_lost_found = accounts['stock_lost_found']
+    >>> stock_production = accounts['stock_production']
+    >>> stock_supplier = accounts['stock_supplier']
+
     >>> AccountJournal = Model.get('account.journal')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> (stock, stock_customer, stock_lost_found, stock_production,
-    ...     stock_supplier) = Account.find([
-    ...         ('kind', '=', 'stock'),
-    ...         ('company', '=', company.id),
-    ...         ('name', 'like', 'Stock%'),
-    ...         ], order=[('name', 'ASC')])
-    >>> create_chart.form.account_receivable = receivable
-    >>> create_chart.form.account_payable = payable
-    >>> create_chart.execute('create_properties')
     >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
 
 Create supplier::
@@ -155,13 +105,12 @@ Create products::
     >>> template.save()
     >>> product.template = template
     >>> product.save()
-    >>> template_average = ProductTemplate(ProductTemplate.copy([template.id],
-    ...         config.context)[0])
+    >>> template_average, = ProductTemplate.duplicate([template])
     >>> template_average.cost_price_method = 'average'
     >>> template_average.save()
-    >>> product_average = Product(Product.copy([product.id], {
+    >>> product_average, = Product.duplicate([product], {
     ...         'template': template_average.id,
-    ...         }, config.context)[0])
+    ...         })
 
     >>> carrier_product = Product()
     >>> carrier_template = ProductTemplate()
@@ -216,11 +165,9 @@ Receive a single product line::
     >>> shipment.carrier = carrier
     >>> shipment.cost
     Decimal('3')
-    >>> shipment.cost_currency == currency
+    >>> shipment.cost_currency == company.currency
     True
-    >>> shipment.save()
-    >>> ShipmentIn.receive([shipment.id], config.context)
-    >>> shipment.reload()
+    >>> shipment.click('receive')
     >>> shipment.state
     u'received'
     >>> move, move_average = shipment.incoming_moves
@@ -255,9 +202,7 @@ Receive many product lines::
     >>> shipment.carrier = carrier
     >>> shipment.cost
     Decimal('3')
-    >>> shipment.save()
-    >>> ShipmentIn.receive([shipment.id], config.context)
-    >>> shipment.reload()
+    >>> shipment.click('receive')
     >>> shipment.state
     u'received'
     >>> [move.unit_price for move in shipment.incoming_moves] == \
