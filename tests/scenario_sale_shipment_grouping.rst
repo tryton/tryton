@@ -9,6 +9,12 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
+    ...     create_chart, get_accounts
+    >>> from.trytond.modules.account_invoice.tests.tools import \
+    ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
 Create database::
@@ -25,29 +31,8 @@ Install sale::
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol=u'$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find([])
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -77,56 +62,16 @@ Create stock user::
 
 Create fiscal year::
 
-    >>> FiscalYear = Model.get('account.fiscalyear')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceStrict = Model.get('ir.sequence.strict')
-    >>> fiscalyear = FiscalYear(name=str(today.year))
-    >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
-    >>> fiscalyear.company = company
-    >>> post_move_seq = Sequence(name=str(today.year), code='account.move',
-    ...     company=company)
-    >>> post_move_seq.save()
-    >>> fiscalyear.post_move_sequence = post_move_seq
-    >>> invoice_seq = SequenceStrict(name=str(today.year),
-    ...     code='account.invoice', company=company)
-    >>> invoice_seq.save()
-    >>> fiscalyear.out_invoice_sequence = invoice_seq
-    >>> fiscalyear.in_invoice_sequence = invoice_seq
-    >>> fiscalyear.out_credit_note_sequence = invoice_seq
-    >>> fiscalyear.in_credit_note_sequence = invoice_seq
-    >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], config.context)
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(
+    ...     create_fiscalyear(company))
+    >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> create_chart.form.account_receivable = receivable
-    >>> create_chart.form.account_payable = payable
-    >>> create_chart.execute('create_properties')
+    >>> _ = create_chart(company)
+    >>> accounts = get_accounts(company)
+    >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
 
 Create parties::
 
@@ -161,11 +106,7 @@ Create product::
 
 Create payment term::
 
-    >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
-    >>> payment_term = PaymentTerm(name='Direct')
-    >>> payment_term_line = PaymentTermLine(type='remainder', days=0)
-    >>> payment_term.lines.append(payment_term_line)
+    >>> payment_term = create_payment_term()
     >>> payment_term.save()
 
 Create an inventory::
@@ -206,7 +147,7 @@ Sell some products::
 
 Make another sale::
 
-    >>> sale = Sale(Sale.copy([sale.id], config.context)[0])
+    >>> sale, = Sale.duplicate([sale])
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -221,7 +162,7 @@ Check the shipments::
     >>> len(shipments)
     2
     >>> for shipment in shipments:
-    ...     _ = ShipmentOut.assign_try([shipment.id], config.context)
+    ...     _ = shipment.click('assign_try')
     ...     shipment.click('pack')
     ...     shipment.click('done')
 
