@@ -2,16 +2,14 @@
 Stock Shipment Out Scenario
 ===========================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
@@ -23,35 +21,14 @@ Create database::
 Install stock Module::
 
     >>> Module = Model.get('ir.module.module')
-    >>> modules = Module.find([('name', '=', 'stock')])
-    >>> Module.install([x.id for x in modules], config.context)
+    >>> module, = Module.find([('name', '=', 'stock')])
+    >>> module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point='.', mon_thousands_sep=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find()
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -118,13 +95,12 @@ Add two shipment lines of same product::
     ...     move.to_location = customer_loc
     ...     move.company = company
     ...     move.unit_price = Decimal('1')
-    ...     move.currency = currency
+    ...     move.currency = company.currency
     >>> shipment_out.save()
 
 Set the shipment state to waiting::
 
-    >>> ShipmentOut.wait([shipment_out.id], config.context)
-    >>> shipment_out.reload()
+    >>> shipment_out.click('wait')
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)
@@ -142,13 +118,12 @@ Make 1 unit of the product available::
     >>> incoming_move.effective_date = today
     >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('1')
-    >>> incoming_move.currency = currency
-    >>> incoming_move.save()
-    >>> StockMove.do([incoming_move.id], config.context)
+    >>> incoming_move.currency = company.currency
+    >>> incoming_move.click('do')
 
 Assign the shipment now::
 
-    >>> ShipmentOut.assign_try([shipment_out.id], config.context)
+    >>> shipment_out.click('assign_try')
     False
     >>> shipment_out.reload()
     >>> len(shipment_out.outgoing_moves)
@@ -174,11 +149,9 @@ Delete the draft move, assign and pack shipment::
     ...     if move.state == 'draft':
     ...         break
     >>> shipment_out.inventory_moves.remove(move)
-    >>> shipment_out.save()
-    >>> ShipmentOut.assign_try([shipment_out.id], config.context)
+    >>> shipment_out.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment_out.id], config.context)
-    >>> shipment_out.reload()
+    >>> shipment_out.click('pack')
     >>> set([m.state for m in shipment_out.outgoing_moves])
     set([u'assigned'])
     >>> len(shipment_out.outgoing_moves)
@@ -193,8 +166,7 @@ Delete the draft move, assign and pack shipment::
 
 Set the state as Done::
 
-    >>> ShipmentOut.done([shipment_out.id], config.context)
-    >>> shipment_out.reload()
+    >>> shipment_out.click('done')
     >>> set([m.state for m in shipment_out.outgoing_moves])
     set([u'done'])
     >>> planned_dates = [m.planned_date for m in
@@ -232,7 +204,7 @@ Create Shipment Out with effective date::
     >>> move.to_location = customer_loc
     >>> move.company = company
     >>> move.unit_price = Decimal('1')
-    >>> move.currency = currency
+    >>> move.currency = company.currency
     >>> shipment_out.click('wait')
 
 Make 1 unit of the product available::
@@ -247,17 +219,15 @@ Make 1 unit of the product available::
     >>> incoming_move.effective_date = yesterday
     >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('1')
-    >>> incoming_move.currency = currency
-    >>> incoming_move.save()
-    >>> StockMove.do([incoming_move.id], config.context)
+    >>> incoming_move.currency = company.currency
+    >>> incoming_move.click('do')
 
 Finish the shipment::
 
-    >>> ShipmentOut.assign_try([shipment_out.id], config.context)
+    >>> shipment_out.click('assign_try')
     True
     >>> shipment_out.click('pack')
     >>> shipment_out.click('done')
-    >>> shipment_out.reload()
     >>> shipment_out.state
     u'done'
     >>> outgoing_move, = shipment_out.outgoing_moves
