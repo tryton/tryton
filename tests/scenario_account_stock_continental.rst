@@ -2,16 +2,20 @@
 Account Stock Continental Scenario
 ==================================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
+    ...     create_chart, get_accounts
+    >>> from.trytond.modules.account_invoice.tests.tools import \
+    ...     set_fiscalyear_invoice_sequences, create_payment_term
+    >>> from trytond.modules.account_stock_continental.tests.tools import \
+    ...     add_stock_accounts
     >>> today = datetime.date.today()
 
 Create database::
@@ -26,34 +30,14 @@ Install account_stock_continental, sale and purchase::
     ...         ('name', 'in', ('account_stock_continental',
     ...             'sale', 'purchase', 'sale_supply_drop_shipment')),
     ...     ])
-    >>> Module.install([x.id for x in modules], config.context)
+    >>> for module in modules:
+    ...     module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point='.', mon_thousands_sep=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find()
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -62,65 +46,24 @@ Reload the context::
 
 Create fiscal year::
 
-    >>> FiscalYear = Model.get('account.fiscalyear')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceStrict = Model.get('ir.sequence.strict')
-    >>> fiscalyear = FiscalYear(name='%s' % today.year)
-    >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
-    >>> fiscalyear.company = company
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(
+    ...     create_fiscalyear(company))
     >>> fiscalyear.account_stock_method = 'continental'
-    >>> post_move_sequence = Sequence(name='%s' % today.year,
-    ...     code='account.move',
-    ...     company=company)
-    >>> post_move_sequence.save()
-    >>> fiscalyear.post_move_sequence = post_move_sequence
-    >>> invoice_sequence = SequenceStrict(name='%s' % today.year,
-    ...     code='account.invoice',
-    ...     company=company)
-    >>> invoice_sequence.save()
-    >>> fiscalyear.out_invoice_sequence = invoice_sequence
-    >>> fiscalyear.in_invoice_sequence = invoice_sequence
-    >>> fiscalyear.out_credit_note_sequence = invoice_sequence
-    >>> fiscalyear.in_credit_note_sequence = invoice_sequence
-    >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], config.context)
+    >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> (stock, stock_customer, stock_lost_found, stock_production,
-    ...     stock_supplier) = Account.find([
-    ...         ('kind', '=', 'stock'),
-    ...         ('company', '=', company.id),
-    ...         ('name', 'like', 'Stock%'),
-    ...         ], order=[('name', 'ASC')])
-    >>> create_chart.form.account_receivable = receivable
-    >>> create_chart.form.account_payable = payable
-    >>> create_chart.execute('create_properties')
+    >>> _ = create_chart(company)
+    >>> accounts = add_stock_accounts(get_accounts(company), company)
+    >>> receivable = accounts['receivable']
+    >>> payable = accounts['payable']
+    >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
+    >>> stock = accounts['stock']
+    >>> stock_customer = accounts['stock_customer']
+    >>> stock_lost_found = accounts['stock_lost_found']
+    >>> stock_production = accounts['stock_production']
+    >>> stock_supplier = accounts['stock_supplier']
 
 Create parties::
 
@@ -164,37 +107,30 @@ Create product::
     >>> template.save()
     >>> product.template = template
     >>> product.save()
-    >>> template_average = ProductTemplate(ProductTemplate.copy([template.id], {
+    >>> template_average, = ProductTemplate.duplicate([template], {
     ...         'cost_price_method': 'average',
-    ...         }, config.context)[0])
-    >>> product_average = Product(Product.copy([product.id], {
+    ...         })
+    >>> product_average, = Product.duplicate([product], {
     ...         'template': template_average.id,
-    ...         }, config.context)[0])
+    ...         })
 
 Create payment term::
 
-    >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
-    >>> payment_term = PaymentTerm(name='Direct')
-    >>> payment_term_line = PaymentTermLine(type='remainder', days=0)
-    >>> payment_term.lines.append(payment_term_line)
+    >>> payment_term = create_payment_term()
     >>> payment_term.save()
 
 Purchase 12 products::
 
     >>> Purchase = Model.get('purchase.purchase')
-    >>> PurchaseLine = Model.get('purchase.line')
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
     >>> purchase.invoice_method = 'shipment'
-    >>> purchase_line = PurchaseLine()
-    >>> purchase.lines.append(purchase_line)
+    >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
     >>> purchase_line.unit_price = Decimal(4)
-    >>> purchase_line = PurchaseLine()
-    >>> purchase.lines.append(purchase_line)
+    >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product_average
     >>> purchase_line.quantity = 7.0
     >>> purchase_line.unit_price = Decimal(6)
@@ -215,9 +151,8 @@ Receive 9 products::
     >>> move = Move(purchase.moves[1].id)
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
-    >>> shipment.save()
-    >>> ShipmentIn.receive([shipment.id], config.context)
-    >>> ShipmentIn.done([shipment.id], config.context)
+    >>> shipment.click('receive')
+    >>> shipment.click('done')
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
@@ -241,8 +176,7 @@ Open supplier invoice::
     >>> invoice_line = invoice.lines[1]
     >>> invoice_line.unit_price = Decimal('4')
     >>> invoice.invoice_date = today
-    >>> invoice.save()
-    >>> Invoice.post([invoice.id], config.context)
+    >>> invoice.click('post')
     >>> invoice.state
     u'posted'
     >>> payable.reload()
@@ -259,40 +193,33 @@ Open supplier invoice::
 Sale 5 products::
 
     >>> Sale = Model.get('sale.sale')
-    >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'shipment'
-    >>> sale_line = SaleLine()
-    >>> sale.lines.append(sale_line)
+    >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
-    >>> sale_line = SaleLine()
-    >>> sale.lines.append(sale_line)
+    >>> sale_line = sale.lines.new()
     >>> sale_line.product = product_average
     >>> sale_line.quantity = 3.0
-    >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
     >>> sale.state
     u'processing'
 
 Send 5 products::
 
-    >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
-    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    >>> shipment.click('assign_try')
     True
     >>> shipment.state
     u'assigned'
-    >>> shipment.reload()
-    >>> ShipmentOut.pack([shipment.id], config.context)
+    >>> shipment.click('pack')
     >>> shipment.state
     u'packed'
-    >>> shipment.reload()
-    >>> ShipmentOut.done([shipment.id], config.context)
+    >>> shipment.click('done')
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
@@ -310,7 +237,7 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> Invoice.post([invoice.id], config.context)
+    >>> invoice.click('post')
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
@@ -333,14 +260,12 @@ Create an Inventory::
     ...         ])
     >>> inventory = Inventory()
     >>> inventory.location = storage
-    >>> inventory.save()
-    >>> Inventory.complete_lines([inventory.id], config.context)
+    >>> inventory.click('complete_lines')
     >>> inventory_line = inventory.lines[0]
     >>> inventory_line.quantity = 1.0
     >>> inventory_line = inventory.lines[1]
     >>> inventory_line.quantity = 1.0
-    >>> inventory.save()
-    >>> Inventory.confirm([inventory.id], config.context)
+    >>> inventory.click('confirm')
     >>> inventory.state
     u'done'
     >>> stock_lost_found.reload()
