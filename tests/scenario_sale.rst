@@ -9,6 +9,12 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
+    ...     create_chart, get_accounts
+    >>> from.trytond.modules.account_invoice.tests.tools import \
+    ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
 Create database::
@@ -20,34 +26,13 @@ Install sale::
 
     >>> Module = Model.get('ir.module.module')
     >>> sale_module, = Module.find([('name', '=', 'sale')])
-    >>> Module.install([sale_module.id], config.context)
+    >>> sale_module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point='.', mon_thousands_sep=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find([])
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -87,62 +72,19 @@ Create account user::
 
 Create fiscal year::
 
-    >>> FiscalYear = Model.get('account.fiscalyear')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceStrict = Model.get('ir.sequence.strict')
-    >>> fiscalyear = FiscalYear(name=str(today.year))
-    >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
-    >>> fiscalyear.company = company
-    >>> post_move_seq = Sequence(name=str(today.year), code='account.move',
-    ...     company=company)
-    >>> post_move_seq.save()
-    >>> fiscalyear.post_move_sequence = post_move_seq
-    >>> invoice_seq = SequenceStrict(name=str(today.year),
-    ...     code='account.invoice', company=company)
-    >>> invoice_seq.save()
-    >>> fiscalyear.out_invoice_sequence = invoice_seq
-    >>> fiscalyear.in_invoice_sequence = invoice_seq
-    >>> fiscalyear.out_credit_note_sequence = invoice_seq
-    >>> fiscalyear.in_credit_note_sequence = invoice_seq
-    >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], config.context)
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(
+    ...     create_fiscalyear(company))
+    >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
+    >>> _ = create_chart(company)
+    >>> accounts = get_accounts(company)
+    >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
+    >>> cash = accounts['cash']
+
     >>> Journal = Model.get('account.journal')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> create_chart.form.account_receivable = receivable
-    >>> create_chart.form.account_payable = payable
-    >>> create_chart.execute('create_properties')
-    >>> cash, = Account.find([
-    ...         ('kind', '=', 'other'),
-    ...         ('name', '=', 'Main Cash'),
-    ...         ('company', '=', company.id),
-    ...         ])
     >>> cash_journal, = Journal.find([('type', '=', 'cash')])
     >>> cash_journal.credit_account = cash
     >>> cash_journal.debit_account = cash
@@ -202,31 +144,23 @@ Create product::
 
 Create payment term::
 
-    >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
-    >>> payment_term = PaymentTerm(name='Direct')
-    >>> payment_term_line = PaymentTermLine(type='remainder', days=0)
-    >>> payment_term.lines.append(payment_term_line)
+    >>> payment_term = create_payment_term()
     >>> payment_term.save()
 
 Create an Inventory::
 
     >>> config.user = stock_user.id
     >>> Inventory = Model.get('stock.inventory')
-    >>> InventoryLine = Model.get('stock.inventory.line')
     >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
     ...         ('code', '=', 'STO'),
     ...         ])
     >>> inventory = Inventory()
     >>> inventory.location = storage
-    >>> inventory.save()
-    >>> inventory_line = InventoryLine(product=product, inventory=inventory)
+    >>> inventory_line = inventory.lines.new(product=product)
     >>> inventory_line.quantity = 100.0
     >>> inventory_line.expected_quantity = 0.0
-    >>> inventory.save()
-    >>> inventory_line.save()
-    >>> Inventory.confirm([inventory.id], config.context)
+    >>> inventory.click('confirm')
     >>> inventory.state
     u'done'
 
@@ -251,13 +185,11 @@ Sale 5 products::
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
-    >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
     >>> sale.state
     u'processing'
-    >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
     >>> invoice, = sale.invoices
@@ -287,7 +219,8 @@ Post invoice and check no new invoices::
 
     >>> config.user = account_user.id
     >>> Invoice = Model.get('account.invoice')
-    >>> Invoice.post([i.id for i in sale.invoices], config.context)
+    >>> for invoice in sale.invoices:
+    ...     invoice.click('post')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -314,10 +247,9 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
-    >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
     >>> sale.state
     u'processing'
     >>> sale.reload()
@@ -337,11 +269,10 @@ Not yet linked to invoice lines::
 
 Validate Shipments::
 
-    >>> ShipmentOut = Model.get('stock.shipment.out')
-    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    >>> shipment.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment.id], config.context)
-    >>> ShipmentOut.done([shipment.id], config.context)
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
 
 Open customer invoice::
 
@@ -358,7 +289,7 @@ Open customer invoice::
     >>> for line in invoice.lines:
     ...     line.quantity = 1
     ...     line.save()
-    >>> Invoice.post([invoice.id], config.context)
+    >>> invoice.click('post')
 
 Invoice lines must be linked to each stock moves::
 
@@ -431,7 +362,7 @@ Stock moves must be linked to invoice line::
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> config.user = stock_user.id
-    >>> shipment = ShipmentOut(shipment.id)
+    >>> shipment.reload()
     >>> stock_move, = shipment.outgoing_moves
     >>> stock_move.quantity
     4.0
@@ -481,10 +412,9 @@ Create a Return::
     >>> return_.lines.append(return_line)
     >>> return_line.type = 'comment'
     >>> return_line.description = 'Comment'
-    >>> return_.save()
-    >>> Sale.quote([return_.id], config.context)
-    >>> Sale.confirm([return_.id], config.context)
-    >>> Sale.process([return_.id], config.context)
+    >>> return_.click('quote')
+    >>> return_.click('confirm')
+    >>> return_.click('process')
     >>> return_.state
     u'processing'
     >>> return_.reload()
@@ -497,8 +427,7 @@ Check Return Shipments::
     >>> config.user = sale_user.id
     >>> ship_return, = return_.shipment_returns
     >>> config.user = stock_user.id
-    >>> ShipmentReturn = Model.get('stock.shipment.out.return')
-    >>> ShipmentReturn.receive([ship_return.id], config.context)
+    >>> ship_return.click('receive')
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
@@ -518,7 +447,7 @@ Open customer credit note::
     1
     >>> sum(l.quantity for l in credit_note.lines)
     4.0
-    >>> Invoice.post([credit_note.id], config.context)
+    >>> credit_note.click('post')
 
 Mixing return and sale::
 
@@ -539,10 +468,9 @@ Mixing return and sale::
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
     >>> mixline2.quantity = -2.
-    >>> mix.save()
-    >>> Sale.quote([mix.id], config.context)
-    >>> Sale.confirm([mix.id], config.context)
-    >>> Sale.process([mix.id], config.context)
+    >>> mix.click('quote')
+    >>> mix.click('confirm')
+    >>> mix.click('process')
     >>> mix.state
     u'processing'
     >>> mix.reload()
@@ -552,20 +480,20 @@ Mixing return and sale::
 Checking Shipments::
 
     >>> config.user = sale_user.id
-    >>> mix_returns, = mix.shipment_returns
-    >>> mix_shipments, = mix.shipments
+    >>> mix_return, = mix.shipment_returns
+    >>> mix_shipment, = mix.shipments
     >>> config.user = stock_user.id
-    >>> ShipmentReturn.receive([mix_returns.id], config.context)
-    >>> move_return, = mix_returns.incoming_moves
+    >>> mix_return.click('receive')
+    >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
     >>> move_return.quantity
     2.0
-    >>> ShipmentOut.assign_try([mix_shipments.id], config.context)
+    >>> mix_shipment.click('assign_try')
     True
-    >>> ShipmentOut.pack([mix_shipments.id], config.context)
-    >>> ShipmentOut.done([mix_shipments.id], config.context)
-    >>> move_shipment, = mix_shipments.outgoing_moves
+    >>> mix_shipment.click('pack')
+    >>> mix_shipment.click('done')
+    >>> move_shipment, = mix_shipment.outgoing_moves
     >>> move_shipment.product.rec_name
     u'product'
     >>> move_shipment.quantity
@@ -588,8 +516,8 @@ Checking the invoice::
     7.0
     >>> sum(l.quantity for l in mix_credit_note.lines)
     2.0
-    >>> Invoice.post([mix_invoice.id], config.context)
-    >>> Invoice.post([mix_credit_note.id], config.context)
+    >>> mix_invoice.click('post')
+    >>> mix_credit_note.click('post')
 
 Mixing stuff with an invoice method 'on shipment'::
 
@@ -610,32 +538,30 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
     >>> mixline2.quantity = -3.
-    >>> mix.save()
-    >>> Sale.quote([mix.id], config.context)
-    >>> Sale.confirm([mix.id], config.context)
-    >>> Sale.process([mix.id], config.context)
+    >>> mix.click('quote')
+    >>> mix.click('confirm')
+    >>> mix.click('process')
     >>> mix.state
     u'processing'
-    >>> mix.reload()
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 0)
 
 Checking Shipments::
 
     >>> config.user = sale_user.id
-    >>> mix_returns, = mix.shipment_returns
-    >>> mix_shipments, = mix.shipments
+    >>> mix_return, = mix.shipment_returns
+    >>> mix_shipment, = mix.shipments
     >>> config.user = stock_user.id
-    >>> ShipmentReturn.receive([mix_returns.id], config.context)
-    >>> move_return, = mix_returns.incoming_moves
+    >>> mix_return.click('receive')
+    >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
     >>> move_return.quantity
     3.0
-    >>> ShipmentOut.assign_try([mix_shipments.id], config.context)
+    >>> mix_shipment.click('assign_try')
     True
-    >>> ShipmentOut.pack([mix_shipments.id], config.context)
-    >>> move_shipment, = mix_shipments.outgoing_moves
+    >>> mix_shipment.click('pack')
+    >>> move_shipment, = mix_shipment.outgoing_moves
     >>> move_shipment.product.rec_name
     u'product'
     >>> move_shipment.quantity
