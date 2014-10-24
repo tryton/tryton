@@ -2,16 +2,18 @@
 Sale Supply Drop Shipment Scenario
 ==================================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
+    >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
+    ...     create_chart, get_accounts
+    >>> from.trytond.modules.account_invoice.tests.tools import \
+    ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
 Create database::
@@ -26,34 +28,14 @@ Install sale_supply, sale, purchase::
     ...         ('name', 'in', ('sale_supply_drop_shipment', 'sale',
     ...             'purchase')),
     ...         ])
-    >>> Module.install([x.id for x in modules], config.context)
+    >>> for module in modules:
+    ...     module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point='.', mon_thousands_sep=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find()
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -100,60 +82,16 @@ Create stock user::
 
 Create fiscal year::
 
-    >>> FiscalYear = Model.get('account.fiscalyear')
-    >>> Sequence = Model.get('ir.sequence')
-    >>> SequenceStrict = Model.get('ir.sequence.strict')
-    >>> fiscalyear = FiscalYear(name='%s' % today.year)
-    >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
-    >>> fiscalyear.company = company
-    >>> post_move_sequence = Sequence(name='%s' % today.year,
-    ...     code='account.move',
-    ...     company=company)
-    >>> post_move_sequence.save()
-    >>> fiscalyear.post_move_sequence = post_move_sequence
-    >>> invoice_sequence = SequenceStrict(name='%s' % today.year,
-    ...     code='account.invoice',
-    ...     company=company)
-    >>> invoice_sequence.save()
-    >>> fiscalyear.out_invoice_sequence = invoice_sequence
-    >>> fiscalyear.in_invoice_sequence = invoice_sequence
-    >>> fiscalyear.out_credit_note_sequence = invoice_sequence
-    >>> fiscalyear.in_credit_note_sequence = invoice_sequence
-    >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], config.context)
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(
+    ...     create_fiscalyear(company))
+    >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
-    >>> AccountJournal = Model.get('account.journal')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
-    ...         ('company', '=', company.id),
-    ...         ])
-    >>> create_chart.form.account_receivable = receivable
-    >>> create_chart.form.account_payable = payable
-    >>> create_chart.execute('create_properties')
-    >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
+    >>> _ = create_chart(company)
+    >>> accounts = get_accounts(company)
+    >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
 
 Create parties::
 
@@ -201,29 +139,22 @@ Create product::
 
 Create payment term::
 
-    >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
-    >>> payment_term = PaymentTerm(name='Direct')
-    >>> payment_term_line = PaymentTermLine(type='remainder', days=0)
-    >>> payment_term.lines.append(payment_term_line)
+    >>> payment_term = create_payment_term()
     >>> payment_term.save()
 
 Sale 250 products::
 
     >>> config.user = sale_user.id
     >>> Sale = Model.get('sale.sale')
-    >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
-    >>> sale_line = SaleLine()
-    >>> sale.lines.append(sale_line)
+    >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 250
-    >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
     >>> sale.state
     u'processing'
     >>> sale.shipments
@@ -261,13 +192,11 @@ Create Purchase from Request::
 Receive 100 products::
 
     >>> config.user = stock_user.id
-    >>> ShipmentDrop = Model.get('stock.shipment.drop')
     >>> move, = shipment.moves
     >>> move.unit_price == move.cost_price
     True
     >>> move.quantity = 100
-    >>> shipment.save()
-    >>> ShipmentDrop.done([shipment.id], config.context)
+    >>> shipment.click('done')
     >>> shipment.state
     u'done'
     >>> config.user = sale_user.id
@@ -370,10 +299,9 @@ If we opt not to cancel the shipment and deliver from stock::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 125
-    >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
     >>> config.user = purchase_user.id
     >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
     >>> create_purchase = Wizard('purchase.request.create_purchase',
