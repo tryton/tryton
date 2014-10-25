@@ -72,16 +72,21 @@ class TrytonServer(object):
 
         for db_name in self.options.database_names:
             init[db_name] = False
-            with Transaction().start(db_name, 0) as transaction:
-                cursor = transaction.cursor
-                if self.options.update:
-                    if not cursor.test():
-                        self.logger.info("init db")
-                        backend.get('Database').init(cursor)
-                        init[db_name] = True
-                    cursor.commit()
-                elif not cursor.test():
-                    raise Exception("'%s' is not a Tryton database!" % db_name)
+            try:
+                with Transaction().start(db_name, 0) as transaction:
+                    cursor = transaction.cursor
+                    if self.options.update:
+                        if not cursor.test():
+                            self.logger.info("init db")
+                            backend.get('Database').init(cursor)
+                            init[db_name] = True
+                        cursor.commit()
+                    elif not cursor.test():
+                        raise Exception("'%s' is not a Tryton database!" %
+                            db_name)
+            except Exception:
+                self.stop(False)
+                raise
 
         for db_name in self.options.database_names:
             if self.options.update:
