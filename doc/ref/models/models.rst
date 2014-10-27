@@ -425,6 +425,15 @@ Class methods:
         No access rights are verified and the records are not validated.
     ..
 
+.. classmethod:: ModelSQL.restore_history_before(ids, datetime)
+
+    Restore the record ids from history before the specified date time.
+    Restoring a record will still generate an entry in the history table.
+
+    .. warning::
+        No access rights are verified and the records are not validated.
+    ..
+
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
     Return a list of records that match the :ref:`domain <topics-domain>` or

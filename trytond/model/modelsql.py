@@ -295,8 +295,7 @@ class ModelSQL(ModelStorage):
                         [[id_, Now(), user] for id_ in sub_ids]))
 
     @classmethod
-    def restore_history(cls, ids, datetime):
-        'Restore record ids from history at the date time'
+    def _restore_history(cls, ids, datetime, _before=False):
         if not cls._history:
             return
         transaction = Transaction()
@@ -324,7 +323,11 @@ class ModelSQL(ModelStorage):
         to_update = []
         for id_ in ids:
             column_datetime = Coalesce(history.write_date, history.create_date)
-            hwhere = (column_datetime <= datetime) & (history.id == id_)
+            if not _before:
+                hwhere = (column_datetime <= datetime)
+            else:
+                hwhere = (column_datetime < datetime)
+            hwhere &= (history.id == id_)
             horder = (column_datetime.desc, Column(history, '__id').desc)
             cursor.execute(*history.select(*hcolumns,
                     where=hwhere, order_by=horder, limit=1))
@@ -351,6 +354,16 @@ class ModelSQL(ModelStorage):
             cls.__insert_history(to_delete, True)
         if to_update:
             cls.__insert_history(to_update)
+
+    @classmethod
+    def restore_history(cls, ids, datetime):
+        'Restore record ids from history at the date time'
+        cls._restore_history(ids, datetime)
+
+    @classmethod
+    def restore_history_before(cls, ids, datetime):
+        'Restore record ids from history before the date time'
+        cls._restore_history(ids, datetime, _before=True)
 
     @classmethod
     def __check_timestamp(cls, ids):
