@@ -3,12 +3,13 @@
 #this repository contains the full copyright notices and license terms.
 
 import unittest
+import doctest
 import datetime
 import sql
 import sql.operators
 
 from trytond.tools import reduce_ids, safe_eval, datetime_strftime, \
-    reduce_domain
+    reduce_domain, decimal_
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -117,4 +118,5 @@ def suite():
     suite = unittest.TestSuite()
     for testcase in (ToolsTestCase,):
         suite.addTests(func(testcase))
+    suite.addTest(doctest.DocTestSuite(decimal_))
     return suite

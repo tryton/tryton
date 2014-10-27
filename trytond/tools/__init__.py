@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from .misc import *
 from .datetime_strftime import *
+from .decimal_ import *
 
 
 class ClassProperty(property):
