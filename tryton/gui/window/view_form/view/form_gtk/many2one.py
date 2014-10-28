@@ -52,7 +52,7 @@ class Many2One(Widget):
             'tryton-find')
         self.wid_text.connect('icon-press', self.sig_edit)
 
-        self.widget.pack_start(self.wid_text, expand=True, fill=True)
+        self.widget.pack_end(self.wid_text, expand=True, fill=True)
         self.widget.set_focus_chain([self.wid_text])
 
         self._readonly = False
