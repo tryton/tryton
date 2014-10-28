@@ -2053,7 +2053,7 @@
             select.empty();
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
-                    'value': e[0],
+                    'value': JSON.stringify(e[0]),
                     'text': e[1]
                 }));
             });
@@ -2077,7 +2077,7 @@
                         .call(this, value);
                     prm.done(function(inactive) {
                         this.select.append(jQuery('<option/>', {
-                            value: inactive[0],
+                            value: JSON.stringify(inactive[0]),
                             text: inactive[1],
                             disabled: true
                         }));
@@ -2086,10 +2086,7 @@
                     prm = jQuery.when();
                 }
                 prm.done(function() {
-                    if (value === null) {
-                        value = '';
-                    }
-                    this.select.val('' + value);
+                    this.select.val(JSON.stringify(value));
                 }.bind(this));
             }.bind(this));
         },
@@ -2098,21 +2095,7 @@
             this.display_update_selection(record, field);
         },
         value_get: function() {
-            var val = this.select.val();
-            // Some selection widgets use integer instead of string
-            var is_integer = (this.selection || []).some(function(e) {
-                return typeof(e[0]) == 'number';
-            });
-            if (('relation' in this.attributes) || is_integer) {
-                if (val === '') {
-                    return null;
-                } else if (val === null) {
-                    // The selected value is disabled
-                    val = this.select.find(':selected').attr('value');
-                }
-                return parseInt(val, 10);
-            }
-            return val;
+            return JSON.parse(this.select.val());
         },
         set_value: function(record, field) {
             var value = this.value_get();

@@ -1232,10 +1232,7 @@
     });
 
     Sao.field.Selection = Sao.class_(Sao.field.Field, {
-        _default: null,
-        get_client: function(record) {
-            return record._values[this.name];
-        }
+        _default: null
     });
 
     Sao.field.DateTime = Sao.class_(Sao.field.Field, {
