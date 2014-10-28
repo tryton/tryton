@@ -401,6 +401,10 @@ class AccountTemplate(ModelSQL, ModelView):
     def default_deferral():
         return True
 
+    @staticmethod
+    def default_party_required():
+        return False
+
     def get_rec_name(self, name):
         if self.code:
             return self.code + ' - ' + self.name
@@ -638,6 +642,10 @@ class Account(ModelSQL, ModelView):
     @staticmethod
     def default_deferral():
         return True
+
+    @staticmethod
+    def default_party_required():
+        return False
 
     @staticmethod
     def default_kind():
