@@ -29,12 +29,10 @@ class Sale:
             cls.lines.depends.append('party')
 
     def on_change_party(self):
-        res = super(Sale, self).on_change_party()
-        res['price_list'] = None
+        super(Sale, self).on_change_party()
+        self.price_list = None
         if self.party and self.party.sale_price_list:
-            res['price_list'] = self.party.sale_price_list.id
-            res['price_list.rec_name'] = self.party.sale_price_list.rec_name
-        return res
+            self.price_list = self.party.sale_price_list
 
 
 class SaleLine:
