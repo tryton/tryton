@@ -122,7 +122,7 @@ class Work:
         Currency = pool.get('currency.currency')
 
         if not self.product:
-            return {}
+            return
 
         context = {}
 
@@ -132,14 +132,12 @@ class Work:
         hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
 
         with Transaction().set_context(context):
-            list_price = Uom.compute_price(self.product.default_uom,
+            self.list_price = Uom.compute_price(self.product.default_uom,
                 self.product.list_price, hour_uom)
 
         if self.company:
             user = User(Transaction().user)
             if user.company != self.company:
                 if user.company.currency != self.company.currency:
-                    list_price = Currency.compute(user.company.currency,
-                        list_price, self.company.currency)
-
-        return {'list_price': list_price}
+                    self.list_price = Currency.compute(user.company.currency,
+                        self.list_price, self.company.currency)
