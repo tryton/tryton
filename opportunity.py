@@ -224,6 +224,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default.setdefault('reference', None)
         default.setdefault('history', None)
+        default.setdefault('sale', None)
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
     def get_currency(self, name):
