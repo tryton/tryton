@@ -162,5 +162,4 @@ class Address(ModelSQL, ModelView):
     def on_change_country(self):
         if (self.subdivision
                 and self.subdivision.country != self.country):
-            return {'subdivision': None}
-        return {}
+            self.subdivision = None

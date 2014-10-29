@@ -136,21 +136,17 @@ class ContactMechanism(ModelSQL, ModelView):
         pass
 
     def _change_value(self, value):
-        return {
-            'value': value,
-            'website': value,
-            'email': value,
-            'skype': value,
-            'sip': value,
-            'other_value': value,
-            'url': self.get_url(value=value)
-            }
+        self.value = value
+        self.website = value
+        self.email = value
+        self.skype = value
+        self.sip = value
+        self.other_value = value
+        self.url = self.get_url(value=value)
 
     @fields.depends('value', 'type')
     def on_change_type(self):
-        return {
-            'url': self.get_url(value=self.value),
-            }
+        self.url = self.get_url(value=self.value)
 
     @fields.depends('value', 'type')
     def on_change_value(self):
