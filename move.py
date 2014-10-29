@@ -388,13 +388,10 @@ class Move(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         Currency = pool.get('currency.currency')
 
-        res = {
-            'unit_price': Decimal('0.0'),
-            }
+        self.unit_price = Decimal('0.0')
         if self.product:
-            res['uom'] = self.product.default_uom.id
-            res['uom.rec_name'] = self.product.default_uom.rec_name
-            res['unit_digits'] = self.product.default_uom.digits
+            self.uom = self.product.default_uom
+            self.unit_digits = self.product.default_uom.digits
             unit_price = None
             if self.from_location and self.from_location.type in ('supplier',
                     'production'):
@@ -408,8 +405,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 if self.currency and self.company:
                     unit_price = Currency.compute(self.company.currency,
                         unit_price, self.currency, round=False)
-                res['unit_price'] = unit_price
-        return res
+                self.unit_price = unit_price
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -423,9 +419,7 @@ class Move(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         Currency = pool.get('currency.currency')
 
-        res = {
-            'unit_price': Decimal('0.0'),
-            }
+        self.unit_price = Decimal('0.0')
         if self.product:
             if self.to_location and self.to_location.type == 'storage':
                 unit_price = self.product.cost_price
@@ -435,8 +429,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 if self.currency and self.company:
                     unit_price = Currency.compute(self.company.currency,
                         unit_price, self.currency, round=False)
-                res['unit_price'] = unit_price
-        return res
+                self.unit_price = unit_price
 
     @fields.depends('from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):

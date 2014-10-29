@@ -266,10 +266,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     @fields.depends('supplier')
     def on_change_supplier(self):
-        address = None
+        self.contact_address = None
         if self.supplier:
-            address = self.supplier.address_get()
-        return {'contact_address': address.id if address else None}
+            self.contact_address = self.supplier.address_get()
 
     @fields.depends('supplier')
     def on_change_with_supplier_location(self, name=None):
@@ -970,10 +969,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     @fields.depends('customer')
     def on_change_customer(self):
-        address = None
+        self.delivery_address = None
         if self.customer:
-            address = self.customer.address_get(type='delivery')
-        return {'delivery_address': address.id if address else None}
+            self.delivery_address = self.customer.address_get(type='delivery')
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
@@ -1486,12 +1484,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     @fields.depends('customer')
     def on_change_customer(self):
-        address = None
+        self.delivery_address = None
         if self.customer:
-            address = self.customer.address_get(type='delivery')
-        return {
-            'delivery_address': address.id if address else None,
-            }
+            self.delivery_address = self.customer.address_get(type='delivery')
 
     @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):

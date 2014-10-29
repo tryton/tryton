@@ -291,13 +291,10 @@ class InventoryLine(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_product(self):
-        change = {}
-        change['unit_digits'] = 2
+        self.unit_digits = 2
         if self.product:
-            change['uom'] = self.product.default_uom.id
-            change['uom.rec_name'] = self.product.default_uom.rec_name
-            change['unit_digits'] = self.product.default_uom.digits
-        return change
+            self.uom = self.product.default_uom
+            self.unit_digits = self.product.default_uom.digits
 
     def get_rec_name(self, name):
         return self.product.rec_name
