@@ -45,42 +45,36 @@ class StatementLine:
     def on_change_payment(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        changes = {}
         if self.payment:
             if not self.party:
-                changes['party'] = self.payment.party.id
-                changes['party.rec_name'] = self.payment.party.rec_name
+                self.party = self.payment.party
             clearing_account = self.payment.journal.clearing_account
             if (not self.account
                     and self.payment.clearing_move
                     and clearing_account):
-                changes['account'] = clearing_account.id
-                changes['account.rec_name'] = clearing_account.rec_name
+                self.account = clearing_account
             if self.statement and self.statement.journal:
                 with Transaction().set_context(date=self.payment.date):
                     amount = Currency.compute(self.payment.currency,
                         self.payment.amount, self.statement.journal.currency)
-                changes['amount'] = amount
+                self.amount = amount
                 if self.payment.kind == 'payable':
-                    changes['amount'] *= -1
-        return changes
+                    self.amount *= -1
 
     @fields.depends('party', 'payment')
     def on_change_party(self):
-        changes = super(StatementLine, self).on_change_party()
+        super(StatementLine, self).on_change_party()
         if self.payment:
             if self.payment.party != self.party:
-                changes['payment'] = None
-        return changes
+                self.payment = None
 
     @fields.depends('account', 'payment')
     def on_change_account(self):
-        changes = super(StatementLine, self).on_change_account()
+        super(StatementLine, self).on_change_account()
         if self.payment:
             clearing_account = self.payment.journal.clearing_account
             if self.account != clearing_account:
-                changes['payment'] = None
-        return changes
+                self.payment = None
 
     @classmethod
     def post_move(cls, lines):
