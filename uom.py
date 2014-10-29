@@ -106,18 +106,16 @@ class Uom(ModelSQL, ModelView):
     @fields.depends('factor')
     def on_change_factor(self):
         if (self.factor or 0.0) == 0.0:
-            return {'rate': 0.0}
-        return {
-            'rate': round(1.0 / self.factor, self.__class__.rate.digits[1]),
-            }
+            self.rate = 0.0
+        else:
+            self.rate = round(1.0 / self.factor, self.__class__.rate.digits[1])
 
     @fields.depends('rate')
     def on_change_rate(self):
         if (self.rate or 0.0) == 0.0:
-            return {'factor': 0.0}
-        return {
-            'factor': round(1.0 / self.rate, self.__class__.factor.digits[1]),
-            }
+            self.factor = 0.0
+        else:
+            self.factor = round(1.0 / self.rate, self.__class__.factor.digits[1])
 
     @classmethod
     def search_rec_name(cls, name, clause):
