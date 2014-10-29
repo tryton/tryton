@@ -145,25 +145,20 @@ class User:
 
     @fields.depends('main_company')
     def on_change_main_company(self):
-        return {
-            'company': self.main_company.id if self.main_company else None,
-            'employee': None,
-            }
+        self.company = self.main_company
+        self.employee = None
 
     @fields.depends('company', 'employees')
     def on_change_company(self):
         Employee = Pool().get('company.employee')
-        result = {
-            'employee': None,
-            }
+        self.employee = None
         if self.company and self.employees:
             employees = Employee.search([
                     ('id', 'in', [e.id for e in self.employees]),
                     ('company', '=', self.company.id),
                     ])
             if employees:
-                result['employee'] = employees[0].id
-        return result
+                self.employee = employees[0]
 
     @classmethod
     def _get_preferences(cls, user, context_only=False):
