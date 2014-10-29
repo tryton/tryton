@@ -225,32 +225,28 @@ class PaymentTermLine(ModelSQL, ModelView):
 
     @fields.depends('type')
     def on_change_type(self):
-        res = {}
         if self.type != 'fixed':
-            res['amount'] = Decimal('0.0')
-            res['currency'] = None
+            self.amount = Decimal('0.0')
+            self.currency = None
         if self.type not in ('percent', 'percent_on_total'):
-            res['percentage'] = Decimal('0.0')
-            res['divisor'] = Decimal('0.0')
-        return res
+            self.percentage = Decimal('0.0')
+            self.divisor = Decimal('0.0')
 
     @fields.depends('percentage')
     def on_change_percentage(self):
         if not self.percentage:
-            return {'divisor': 0.0}
-        return {
-            'divisor': self.round(Decimal('100.0') / self.percentage,
-                self.__class__.divisor.digits[1]),
-            }
+            self.divisor = 0.0
+        else:
+            self.divisor = self.round(Decimal('100.0') / self.percentage,
+                self.__class__.divisor.digits[1])
 
     @fields.depends('divisor')
     def on_change_divisor(self):
         if not self.divisor:
-            return {'percentage': 0.0}
-        return {
-            'percentage': self.round(Decimal('100.0') / self.divisor,
-                self.__class__.percentage.digits[1]),
-            }
+            self.percentage = 0.0
+        else:
+            self.percentage = self.round(Decimal('100.0') / self.divisor,
+                self.__class__.percentage.digits[1])
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):

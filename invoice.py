@@ -333,63 +333,44 @@ class Invoice(Workflow, ModelSQL, ModelView):
         '''
         Return default account and payment term
         '''
-        account = None
-        payment_term = None
-        result = {
-            'account': None,
-            }
+        self.account = None
         if self.party:
             if self.type in ('out_invoice', 'out_credit_note'):
-                account = self.party.account_receivable
+                self.account = self.party.account_receivable
                 if (self.type == 'out_invoice'
                         and self.party.customer_payment_term):
-                    payment_term = self.party.customer_payment_term
+                    self.payment_term = self.party.customer_payment_term
             elif self.type in ('in_invoice', 'in_credit_note'):
-                account = self.party.account_payable
+                self.account = self.party.account_payable
                 if (self.type == 'in_invoice'
                         and self.party.supplier_payment_term):
-                    payment_term = self.party.supplier_payment_term
+                    self.payment_term = self.party.supplier_payment_term
         if self.company and self.type in ('out_credit_note', 'in_credit_note'):
-            if self.type == 'out_credit_note':
-                payment_term = self.company.party.customer_payment_term
-            else:
-                payment_term = self.company.party.supplier_payment_term
-        if account:
-            result['account'] = account.id
-            result['account.rec_name'] = account.rec_name
-        if payment_term:
-            result['payment_term'] = payment_term.id
-            result['payment_term.rec_name'] = payment_term.rec_name
-        return result
+            if (self.type == 'out_credit_note'
+                    and self.company.party.customer_payment_term):
+                self.payment_term = self.company.party.customer_payment_term
+            elif (self.type == 'in_credit_note'
+                    and self.company.party.supplier_payment_term):
+                self.payment_term = self.company.party.supplier_payment_term
 
     @fields.depends('type', 'party', 'company')
     def on_change_type(self):
         Journal = Pool().get('account.journal')
-        res = {}
         journals = Journal.search([
                 ('type', '=', _TYPE2JOURNAL.get(self.type or 'out_invoice',
                         'revenue')),
                 ], limit=1)
         if journals:
-            journal, = journals
-            res['journal'] = journal.id
-            res['journal.rec_name'] = journal.rec_name
-        res.update(self.__get_account_payment_term())
-        return res
+            self.journal, = journals
+        self.__get_account_payment_term()
 
     @fields.depends('party', 'payment_term', 'type', 'company')
     def on_change_party(self):
-        res = {
-            'invoice_address': None,
-            }
-        res.update(self.__get_account_payment_term())
+        self.invoice_address = None
+        self.__get_account_payment_term()
 
         if self.party:
-            invoice_address = self.party.address_get(type='invoice')
-            if invoice_address:
-                res['invoice_address'] = invoice_address.id
-                res['invoice_address.rec_name'] = invoice_address.rec_name
-        return res
+            self.invoice_address = self.party.address_get(type='invoice')
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -435,18 +416,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Tax = pool.get('account.tax')
         InvoiceTax = pool.get('account.invoice.tax')
-        Account = pool.get('account.account')
-        TaxCode = pool.get('account.tax.code')
         Configuration = pool.get('account.configuration')
 
         config = Configuration(1)
 
-        res = {
-            'untaxed_amount': Decimal('0.0'),
-            'tax_amount': Decimal('0.0'),
-            'total_amount': Decimal('0.0'),
-            'taxes': {},
-            }
+        self.untaxed_amount = Decimal('0.0')
+        self.tax_amount = Decimal('0.0')
+        self.total_amount = Decimal('0.0')
         computed_taxes = {}
 
         def round_taxes():
@@ -460,7 +436,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             for line in self.lines:
                 if (line.type or 'line') != 'line':
                     continue
-                res['untaxed_amount'] += getattr(line, 'amount', None) or 0
+                self.untaxed_amount += getattr(line, 'amount', None) or 0
                 with Transaction().set_context(**context):
                     taxes = Tax.compute(
                         Tax.browse(getattr(line, 'taxes', []) or []),
@@ -480,68 +456,46 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if config.tax_rounding == 'document':
             round_taxes()
 
+        def is_zero(amount):
+            if self.currency:
+                return self.currency.is_zero(amount)
+            else:
+                return amount != Decimal('0.0')
+
         tax_keys = []
+        taxes = list(self.taxes or [])
         for tax in (self.taxes or []):
             if tax.manual:
-                res['tax_amount'] += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal('0.0')
                 continue
             key = (tax.base_code.id if tax.base_code else None, tax.base_sign,
                 tax.tax_code.id if tax.tax_code else None, tax.tax_sign,
                 tax.account.id if tax.account else None,
                 tax.tax.id if tax.tax else None)
             if (key not in computed_taxes) or (key in tax_keys):
-                res['taxes'].setdefault('remove', [])
-                res['taxes']['remove'].append(tax.id)
+                taxes.remove(tax)
                 continue
             tax_keys.append(key)
-            if self.currency:
-                if not self.currency.is_zero(
-                        computed_taxes[key]['base']
-                        - (tax.base or Decimal('0.0'))):
-                    res['tax_amount'] += computed_taxes[key]['amount']
-                    res['taxes'].setdefault('update', [])
-                    res['taxes']['update'].append({
-                            'id': tax.id,
-                            'amount': computed_taxes[key]['amount'],
-                            'base': computed_taxes[key]['base'],
-                            })
-                else:
-                    res['tax_amount'] += tax.amount or Decimal('0.0')
+            if not is_zero(computed_taxes[key]['base']
+                    - (tax.base or Decimal('0.0'))):
+                self.tax_amount += computed_taxes[key]['amount']
+                tax.amount = computed_taxes[key]['amount']
+                tax.base = computed_taxes[key]['base']
             else:
-                if (computed_taxes[key]['base'] - (tax.base or Decimal('0.0'))
-                        != Decimal('0.0')):
-                    res['tax_amount'] += computed_taxes[key]['amount']
-                    res['taxes'].setdefault('update', [])
-                    res['taxes']['update'].append({
-                        'id': tax.id,
-                        'amount': computed_taxes[key]['amount'],
-                        'base': computed_taxes[key]['base'],
-                        })
-                else:
-                    res['tax_amount'] += tax.amount or Decimal('0.0')
+                self.tax_amount += tax.amount or Decimal('0.0')
         for key in computed_taxes:
             if key not in tax_keys:
-                res['tax_amount'] += computed_taxes[key]['amount']
-                res['taxes'].setdefault('add', [])
+                self.tax_amount += computed_taxes[key]['amount']
                 value = InvoiceTax.default_get(InvoiceTax._fields.keys())
                 value.update(computed_taxes[key])
-                for field, Target in (
-                        ('account', Account),
-                        ('base_code', TaxCode),
-                        ('tax_code', TaxCode),
-                        ('tax', Tax),
-                        ):
-                    if value.get(field):
-                        value[field + '.rec_name'] = \
-                            Target(value[field]).rec_name
-                res['taxes']['add'].append((-1, value))
+                taxes.append(InvoiceTax(**value))
+        self.taxes = taxes
         if self.currency:
-            res['untaxed_amount'] = self.currency.round(res['untaxed_amount'])
-            res['tax_amount'] = self.currency.round(res['tax_amount'])
-        res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
+            self.untaxed_amount = self.currency.round(self.untaxed_amount)
+            self.tax_amount = self.currency.round(self.tax_amount)
+        self.total_amount = self.untaxed_amount + self.tax_amount
         if self.currency:
-            res['total_amount'] = self.currency.round(res['total_amount'])
-        return res
+            self.total_amount = self.currency.round(self.total_amount)
 
     @classmethod
     def get_amount(cls, invoices, names):
@@ -1781,8 +1735,7 @@ class InvoiceLine(ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         if not self.product:
-            return {}
-        res = {}
+            return
 
         context = {}
         party = None
@@ -1813,72 +1766,67 @@ class InvoiceLine(ModelSQL, ModelView):
         if type_ in ('in_invoice', 'in_credit_note'):
             if company and currency:
                 with Transaction().set_context(date=currency_date):
-                    res['unit_price'] = Currency.compute(
+                    self.unit_price = Currency.compute(
                         company.currency, self.product.cost_price,
                         currency, round=False)
             else:
-                res['unit_price'] = self.product.cost_price
+                self.unit_price = self.product.cost_price
             try:
-                account_expense = self.product.account_expense_used
-                res['account'] = account_expense.id
-                res['account.rec_name'] = account_expense.rec_name
+                self.account = self.product.account_expense_used
             except Exception:
                 pass
-            res['taxes'] = []
+            taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.supplier_taxes_used:
                 if party and party.supplier_tax_rule:
                     tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        res['taxes'].extend(tax_ids)
+                        taxes.extend(tax_ids)
                     continue
-                res['taxes'].append(tax.id)
+                taxes.append(tax)
             if party and party.supplier_tax_rule:
                 tax_ids = party.supplier_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    res['taxes'].extend(tax_ids)
+                    taxes.extend(tax_ids)
+            self.taxes = taxes
         else:
             if company and currency:
                 with Transaction().set_context(date=currency_date):
-                    res['unit_price'] = Currency.compute(
+                    self.unit_price = Currency.compute(
                         company.currency, self.product.list_price,
                         currency, round=False)
             else:
-                res['unit_price'] = self.product.list_price
+                self.unit_price = self.product.list_price
             try:
-                account_revenue = self.product.account_revenue_used
-                res['account'] = account_revenue.id
-                res['account.rec_name'] = account_revenue.rec_name
+                self.account = self.product.account_revenue_used
             except Exception:
                 pass
-            res['taxes'] = []
+            taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.customer_taxes_used:
                 if party and party.customer_tax_rule:
                     tax_ids = party.customer_tax_rule.apply(tax, pattern)
                     if tax_ids:
-                        res['taxes'].extend(tax_ids)
+                        taxes.extend(tax_ids)
                     continue
-                res['taxes'].append(tax.id)
+                taxes.append(tax.id)
             if party and party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(None, pattern)
                 if tax_ids:
-                    res['taxes'].extend(tax_ids)
+                    taxes.extend(tax_ids)
+            self.taxes = taxes
 
         if not self.description:
             with Transaction().set_context(**context):
-                res['description'] = Product(self.product.id).rec_name
+                self.description = Product(self.product.id).rec_name
 
         category = self.product.default_uom.category
         if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.default_uom.id
-            res['unit.rec_name'] = self.product.default_uom.rec_name
-            res['unit_digits'] = self.product.default_uom.digits
+            self.unit = self.product.default_uom.id
+            self.unit_digits = self.product.default_uom.digits
 
-        self.unit_price = res['unit_price']
         self.type = 'line'
-        res['amount'] = self.on_change_with_amount()
-        return res
+        self.amount = self.on_change_with_amount()
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -1891,9 +1839,6 @@ class InvoiceLine(ModelSQL, ModelView):
         if self.product:
             return {}
         taxes = []
-        result = {
-            'taxes': taxes,
-            }
         if (self.invoice and self.invoice.party
                 and self.invoice.type):
             party = self.invoice.party
@@ -1912,8 +1857,8 @@ class InvoiceLine(ModelSQL, ModelView):
                     if tax_ids:
                         taxes.extend(tax_ids)
                     continue
-                taxes.append(tax.id)
-        return result
+                taxes.append(tax)
+        self.taxes = taxes
 
     @classmethod
     def _get_origin(cls):
@@ -2222,36 +2167,31 @@ class InvoiceTax(ModelSQL, ModelView):
     @fields.depends('tax', '_parent_invoice.party', '_parent_invoice.type')
     def on_change_tax(self):
         Tax = Pool().get('account.tax')
-        changes = {}
-        if self.tax:
-            if self.invoice:
-                context = self.invoice.get_tax_context()
-            else:
-                context = {}
-            with Transaction().set_context(**context):
-                tax = Tax(self.tax.id)
-            changes['description'] = tax.description
-            if self.invoice and self.invoice.type:
-                invoice_type = self.invoice.type
-            else:
-                invoice_type = 'out_invoice'
-            if invoice_type in ('out_invoice', 'in_invoice'):
-                changes['base_code'] = (tax.invoice_base_code.id
-                    if tax.invoice_base_code else None)
-                changes['base_sign'] = tax.invoice_base_sign
-                changes['tax_code'] = (tax.invoice_tax_code.id
-                    if tax.invoice_tax_code else None)
-                changes['tax_sign'] = tax.invoice_tax_sign
-                changes['account'] = tax.invoice_account.id
-            else:
-                changes['base_code'] = (tax.credit_note_base_code.id
-                    if tax.credit_note_base_code else None)
-                changes['base_sign'] = tax.credit_note_base_sign
-                changes['tax_code'] = (tax.credit_note_tax_code.id
-                    if tax.credit_note_tax_code else None)
-                changes['tax_sign'] = tax.credit_note_tax_sign
-                changes['account'] = tax.credit_note_account.id
-        return changes
+        if not self.tax:
+            return
+        if self.invoice:
+            context = self.invoice.get_tax_context()
+        else:
+            context = {}
+        with Transaction().set_context(**context):
+            tax = Tax(self.tax.id)
+        self.description = tax.description
+        if self.invoice and self.invoice.type:
+            invoice_type = self.invoice.type
+        else:
+            invoice_type = 'out_invoice'
+        if invoice_type in ('out_invoice', 'in_invoice'):
+            self.base_code = tax.invoice_base_code
+            self.base_sign = tax.invoice_base_sign
+            self.tax_code = tax.invoice_tax_code
+            self.tax_sign = tax.invoice_tax_sign
+            self.account = tax.invoice_account
+        else:
+            self.base_code = tax.credit_note_base_code
+            self.base_sign = tax.credit_note_base_sign
+            self.tax_code = tax.credit_note_tax_code
+            self.tax_sign = tax.credit_note_tax_sign
+            self.account = tax.credit_note_account
 
     @fields.depends('tax', 'base', 'amount', 'manual')
     def on_change_with_amount(self):
@@ -2577,19 +2517,17 @@ class PayInvoiceAsk(ModelView):
     def on_change_lines(self):
         Currency = Pool().get('currency.currency')
 
-        res = {}
         with Transaction().set_context(date=self.invoice.currency_date):
             amount = Currency.compute(self.currency, self.amount,
                 self.currency_writeoff)
 
-        res['amount_writeoff'] = Decimal('0.0')
+        self.amount_writeoff = Decimal('0.0')
         for line in self.lines:
-            res['amount_writeoff'] += line.debit - line.credit
+            self.amount_writeoff += line.debit - line.credit
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
-            res['amount_writeoff'] = - res['amount_writeoff'] - amount
+            self.amount_writeoff = - self.amount_writeoff - amount
         else:
-            res['amount_writeoff'] = res['amount_writeoff'] - amount
-        return res
+            self.amount_writeoff = self.amount_writeoff - amount
 
 
 class PayInvoice(Wizard):
