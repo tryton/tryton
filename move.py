@@ -913,52 +913,40 @@ class Line(ModelSQL, ModelView):
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
         'move')
     def on_change_debit(self):
-        changes = {}
         Journal = Pool().get('account.journal')
         if self.journal or Transaction().context.get('journal'):
             journal = self.journal or Journal(Transaction().context['journal'])
             if journal.type in ('expense', 'revenue'):
-                changes['tax_lines'] = self._compute_tax_lines(journal.type)
-                if not changes['tax_lines']:
-                    del changes['tax_lines']
+                self._compute_tax_lines(journal.type)
         if self.debit:
-            changes['credit'] = Decimal('0.0')
-        return changes
+            self.credit = Decimal('0.0')
 
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
         'move')
     def on_change_credit(self):
-        changes = {}
         Journal = Pool().get('account.journal')
         if self.journal or Transaction().context.get('journal'):
             journal = self.journal or Journal(Transaction().context['journal'])
             if journal.type in ('expense', 'revenue'):
-                changes['tax_lines'] = self._compute_tax_lines(journal.type)
-                if not changes['tax_lines']:
-                    del changes['tax_lines']
+                self._compute_tax_lines(journal.type)
         if self.credit:
-            changes['debit'] = Decimal('0.0')
-        return changes
+            self.debit = Decimal('0.0')
 
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
         'move')
     def on_change_account(self):
         Journal = Pool().get('account.journal')
 
-        changes = {}
         if Transaction().context.get('journal'):
             journal = Journal(Transaction().context['journal'])
             if journal.type in ('expense', 'revenue'):
-                changes['tax_lines'] = self._compute_tax_lines(journal.type)
-                if not changes['tax_lines']:
-                    del changes['tax_lines']
+                self._compute_tax_lines(journal.type)
 
         if self.account:
-            changes['currency_digits'] = self.account.currency_digits
+            self.currency_digits = self.account.currency_digits
             if self.account.second_currency:
-                changes['second_currency_digits'] = \
+                self.second_currency_digits = \
                     self.account.second_currency.digits
-        return changes
 
     @fields.depends('account')
     def on_change_with_party_required(self, name=None):
@@ -967,17 +955,14 @@ class Line(ModelSQL, ModelView):
         return False
 
     def _compute_tax_lines(self, journal_type):
-        res = {}
         pool = Pool()
-        TaxCode = pool.get('account.tax.code')
         Tax = pool.get('account.tax')
         TaxLine = pool.get('account.tax.line')
 
         if self.move:
             #Only for first line
-            return res
-        if self.tax_lines:
-            res['remove'] = [x['id'] for x in self.tax_lines]
+            return
+        tax_lines = []
         if self.account:
             debit = self.debit or Decimal('0.0')
             credit = self.credit or Decimal('0.0')
@@ -1006,29 +991,26 @@ class Line(ModelSQL, ModelView):
                 for code_id, tax_id in base_amounts:
                     if not base_amounts[code_id, tax_id]:
                         continue
-                    value = TaxLine.default_get(TaxLine._fields.keys())
-                    value.update({
-                            'amount': base_amounts[code_id, tax_id],
-                            'currency_digits': self.account.currency_digits,
-                            'code': code_id,
-                            'code.rec_name': TaxCode(code_id).rec_name,
-                            'tax': tax_id,
-                            'tax.rec_name': Tax(tax_id).rec_name,
-                            })
-                    res.setdefault('add', []).append(value)
-        return res
+                    tax_line = TaxLine(**TaxLine.default_get(
+                            TaxLine._fields.keys()))
+
+                    tax_line.amount = base_amounts[code_id, tax_id],
+                    tax_line.currency_digits = self.account.currency_digits
+                    tax_line.code = code_id
+                    tax_line.tax = tax_id
+                    tax_lines.append(tax_line)
+        self.tax_lines = tax_lines
 
     @fields.depends('move', 'party', 'account', 'debit', 'credit', 'journal')
     def on_change_party(self):
         Journal = Pool().get('account.journal')
         cursor = Transaction().cursor
-        res = {}
         if (not self.party) or self.account:
-            return res
+            return
 
         if not self.party.account_receivable \
                 or not self.party.account_payable:
-            return res
+            return
 
         if self.party and (not self.debit) and (not self.credit):
             type_name = self.__class__.debit.sql_type().base
@@ -1046,16 +1028,14 @@ class Line(ModelSQL, ModelView):
                 amount = Decimal(str(amount))
             if not self.party.account_receivable.currency.is_zero(amount):
                 if amount > Decimal('0.0'):
-                    res['credit'] = \
+                    self.credit = \
                         self.party.account_receivable.currency.round(amount)
-                    res['debit'] = Decimal('0.0')
+                    self.debit = Decimal('0.0')
                 else:
-                    res['credit'] = Decimal('0.0')
-                    res['debit'] = \
+                    self.credit = Decimal('0.0')
+                    self.debit = \
                         - self.party.account_receivable.currency.round(amount)
-                res['account'] = self.party.account_receivable.id
-                res['account.rec_name'] = \
-                    self.party.account_receivable.rec_name
+                self.account = self.party.account_receivable
             else:
                 cursor.execute(*table.select(column,
                         where=where
@@ -1063,40 +1043,30 @@ class Line(ModelSQL, ModelView):
                 amount = cursor.fetchone()[0]
                 if not self.party.account_payable.currency.is_zero(amount):
                     if amount > Decimal('0.0'):
-                        res['credit'] = \
+                        self.credit = \
                             self.party.account_payable.currency.round(amount)
-                        res['debit'] = Decimal('0.0')
+                        self.debit = Decimal('0.0')
                     else:
-                        res['credit'] = Decimal('0.0')
-                        res['debit'] = \
+                        self.credit = Decimal('0.0')
+                        self.debit = \
                             - self.party.account_payable.currency.round(amount)
-                    res['account'] = self.party.account_payable.id
-                    res['account.rec_name'] = \
-                        self.party.account_payable.rec_name
+                    self.account = self.party.account_payable
 
         if self.party and self.debit:
             if self.debit > Decimal('0.0'):
-                if 'account' not in res:
-                    res['account'] = self.party.account_receivable.id
-                    res['account.rec_name'] = \
-                        self.party.account_receivable.rec_name
+                if not self.account:
+                    self.account = self.party.account_receivable
             else:
-                if 'account' not in res:
-                    res['account'] = self.party.account_payable.id
-                    res['account.rec_name'] = \
-                        self.party.account_payable.rec_name
+                if not self.account:
+                    self.account = self.party.account_payable
 
         if self.party and self.credit:
             if self.credit > Decimal('0.0'):
-                if 'account' not in res:
-                    res['account'] = self.party.account_payable.id
-                    res['account.rec_name'] = \
-                        self.party.account_payable.rec_name
+                if not self.account:
+                    self.account = self.party.account_payable
             else:
-                if 'account' not in res:
-                    res['account'] = self.party.account_receivable.id
-                    res['account.rec_name'] = \
-                        self.party.account_receivable.rec_name
+                if not self.account:
+                    self.account = self.party.account_receivable
 
         journal = None
         if self.journal:
@@ -1105,16 +1075,11 @@ class Line(ModelSQL, ModelView):
             journal = Journal(Transaction().context.get('journal'))
         if journal and self.party:
             if journal.type == 'revenue':
-                if 'account' not in res:
-                    res['account'] = self.party.account_receivable.id
-                    res['account.rec_name'] = \
-                        self.party.account_receivable.rec_name
+                if not self.account:
+                    self.account = self.party.account_receivable
             elif journal.type == 'expense':
-                if 'account' not in res:
-                    res['account'] = self.party.account_payable.id
-                    res['account.rec_name'] = \
-                        self.party.account_payable.rec_name
-        return res
+                if not self.account:
+                    self.account = self.party.account_payable
 
     def get_move_field(self, name):
         field = getattr(self.__class__, name)

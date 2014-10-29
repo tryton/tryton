@@ -1087,10 +1087,8 @@ class PrintGeneralLedgerStart(ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
-        return {
-            'start_period': None,
-            'end_period': None,
-            }
+        self.start_period = None
+        self.end_period = None
 
 
 class PrintGeneralLedger(Wizard):
@@ -1303,10 +1301,8 @@ class PrintTrialBalanceStart(ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
-        return {
-            'start_period': None,
-            'end_period': None,
-            }
+        self.start_period = None
+        self.end_period = None
 
 
 class PrintTrialBalance(Wizard):
@@ -1541,10 +1537,8 @@ class OpenIncomeStatementStart(ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
-        return {
-            'start_period': None,
-            'end_period': None,
-            }
+        self.start_period = None
+        self.end_period = None
 
 
 class OpenIncomeStatement(Wizard):

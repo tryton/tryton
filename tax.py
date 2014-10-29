@@ -931,9 +931,7 @@ class TaxLine(ModelSQL, ModelView):
 
     @fields.depends('tax')
     def on_change_tax(self):
-        return {
-            'code': None,
-            }
+        self.code = None
 
 
 class TaxRuleTemplate(ModelSQL, ModelView):
