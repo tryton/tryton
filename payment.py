@@ -226,24 +226,17 @@ class Payment(Workflow, ModelSQL, ModelView):
 
     @fields.depends('kind')
     def on_change_kind(self):
-        return {
-            'line': None,
-            }
+        self.line = None
 
     @fields.depends('party')
     def on_change_party(self):
-        return {
-            'line': None,
-            }
+        self.line = None
 
     @fields.depends('line')
     def on_change_line(self):
         if self.line:
-            return {
-                'date': self.line.maturity_date,
-                'amount': self.line.payment_amount,
-                }
-        return {}
+            self.date = self.line.maturity_date
+            self.amount = self.line.payment_amount
 
     @classmethod
     def delete(cls, payments):
