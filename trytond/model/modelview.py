@@ -3,8 +3,9 @@
 from lxml import etree
 from functools import wraps
 import copy
+import collections
 
-from trytond.model import Model
+from trytond.model import Model, fields
 from trytond.tools import safe_eval, ClassProperty
 from trytond.pyson import PYSONEncoder, CONTEXT
 from trytond.transaction import Transaction
@@ -74,6 +75,20 @@ def _inherit_apply(src, inherit):
     return etree.tostring(tree_src, encoding='utf-8')
 
 
+def on_change(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        result = func(self, *args, **kwargs)
+        assert result is None, func
+        return self
+    wrapper.on_change = True
+    return wrapper
+
+
+def on_change_result(record):
+    return record._changed_values
+
+
 class ModelView(Model):
     """
     Define a model with views in Tryton.
@@ -101,7 +116,80 @@ class ModelView(Model):
         super(ModelView, cls).__setup__()
         cls.__rpc__['fields_view_get'] = RPC()
         cls.__rpc__['view_toolbar_get'] = RPC()
+        cls.__rpc__['on_change'] = RPC(instantiate=0)
+        cls.__rpc__['on_change_with'] = RPC(instantiate=0)
         cls._buttons = {}
+
+        if hasattr(cls, '__depend_methods'):
+            cls.__depend_methods = cls.__depend_methods.copy()
+        else:
+            cls.__depend_methods = collections.defaultdict(set)
+
+        for field_name in dir(cls):
+            field = getattr(cls, field_name)
+            if not isinstance(field, fields.Field):
+                continue
+            for attribute in ('on_change', 'on_change_with', 'autocomplete',
+                    'selection_change_with'):
+                if attribute == 'selection_change_with':
+                    if isinstance(
+                            getattr(field, 'selection', None), basestring):
+                        function_name = field.selection
+                    else:
+                        continue
+                else:
+                    function_name = '%s_%s' % (attribute, field_name)
+                if not getattr(cls, function_name, None):
+                    continue
+                # Search depends on all parent class because field has been
+                # copied with the original definition
+                for parent_cls in cls.__mro__:
+                    function = getattr(parent_cls, function_name, None)
+                    if not function:
+                        continue
+                    if getattr(function, 'depends', None):
+                        setattr(field, attribute,
+                            getattr(field, attribute) | function.depends)
+                    if getattr(function, 'depend_methods', None):
+                        cls.__depend_methods[(field_name, attribute)] |= \
+                            function.depend_methods
+                function = getattr(cls, function_name, None)
+                if (attribute == 'on_change'
+                        and not getattr(function, 'on_change', None)):
+                    # Decorate on_change to always return self
+                    setattr(cls, function_name, on_change(function))
+
+    @classmethod
+    def __post_setup__(cls):
+        super(ModelView, cls).__post_setup__()
+
+        # Update __rpc__
+        for field_name, field in cls._fields.iteritems():
+            if isinstance(field, (fields.Selection, fields.Reference)) \
+                    and not isinstance(field.selection, (list, tuple)) \
+                    and field.selection not in cls.__rpc__:
+                instantiate = 0 if field.selection_change_with else None
+                cls.__rpc__.setdefault(field.selection,
+                    RPC(instantiate=instantiate))
+
+            for attribute in ('on_change', 'on_change_with', 'autocomplete'):
+                function_name = '%s_%s' % (attribute, field_name)
+                if getattr(cls, function_name, None):
+                    result = None
+                    if attribute == 'on_change':
+                        result = on_change_result
+                    cls.__rpc__.setdefault(function_name,
+                        RPC(instantiate=0, result=result))
+
+        # Update depend on methods
+        for (field_name, attribute), others in (
+                cls.__depend_methods.iteritems()):
+            field = getattr(cls, field_name)
+            for other in others:
+                other_field = getattr(cls, other)
+                setattr(field, attribute,
+                    getattr(field, attribute)
+                    | getattr(other_field, attribute))
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form'):
@@ -515,3 +603,71 @@ class ModelView(Model):
                 return action_id
             return wrapper
         return decorator
+
+    def on_change(self, fieldnames):
+        for fieldname in sorted(fieldnames):
+            method = getattr(self, 'on_change_%s' % fieldname, None)
+            if method:
+                method()
+        # XXX remove backward compatibility
+        return [self._changed_values]
+
+    def on_change_with(self, fieldnames):
+        changes = {}
+        for fieldname in fieldnames:
+            method_name = 'on_change_with_%s' % fieldname
+            changes[fieldname] = getattr(self, method_name)()
+        return changes
+
+    @property
+    def _changed_values(self):
+        """Return the values changed since the instantiation.
+        By default, the value of a field is its internal representation except:
+            - for Many2One and One2One field: the id.
+            - for Reference field: the string model,id
+            - for Many2Many: the list of ids
+            - for One2Many: a dictionary composed of three keys:
+                - add: a list of tuple, the first element is the index where
+                  the new line is added, the second element is
+                  `_default_values`
+                - update: a list of dictionary of `_changed_values` including
+                  the `id`
+                - remove: a list of ids
+        """
+        from .modelstorage import ModelStorage
+        changed = {}
+        init_values = self._init_values or {}
+        if not self._values:
+            return changed
+        for fname, value in self._values.iteritems():
+            if value == init_values.get(fname):
+                continue
+            field = self._fields[fname]
+            if field._type in ('many2one', 'one2one', 'reference'):
+                if value:
+                    if isinstance(value, ModelStorage):
+                        changed['%s.rec_name' % fname] = value.rec_name
+                    if field._type == 'reference':
+                        value = str(value)
+                    else:
+                        value = value.id
+            elif field._type == 'one2many':
+                targets = value
+                init_targets = list(init_values.get(fname, []))
+                value = collections.defaultdict(list)
+                value['remove'] = [t.id for t in init_targets if t.id]
+                for i, target in enumerate(targets):
+                    if target.id in value['remove']:
+                        value['remove'].remove(target.id)
+                        target_changed = target._changed_values
+                        if target_changed:
+                            target_changed['id'] = target.id
+                            value['update'].append(target_changed)
+                    else:
+                        value['add'].append((i, target._default_values))
+                if not value['remove']:
+                    del value['remove']
+            elif field._type == 'many2many':
+                value = [r.id for r in value]
+            changed[fname] = value
+        return changed

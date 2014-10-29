@@ -15,7 +15,7 @@ class TestWizardStart(ModelSQL, ModelView):
     __name__ = 'test.test_wizard.start'
     name = fields.Char('Test me')
     user = fields.Many2One('res.user', 'User')
-    groups = fields.One2Many('res.group', None, 'Groups')
+    groups = fields.Many2Many('res.group', None, None, 'Groups')
 
     @staticmethod
     def default_user():

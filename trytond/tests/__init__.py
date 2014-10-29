@@ -4,6 +4,7 @@
 from ..pool import Pool
 from .test import *
 from .model import *
+from .modelview import *
 from .mptt import *
 from .import_data import *
 from .export_data import *
@@ -107,6 +108,8 @@ def register():
         Model4UnionTree1,
         Model4UnionTree2,
         UnionTree,
+        ModelViewChangedValues,
+        ModelViewChangedValuesTarget,
         MPTT,
         ImportDataBoolean,
         ImportDataInteger,

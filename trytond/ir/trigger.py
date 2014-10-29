@@ -96,36 +96,24 @@ class Trigger(ModelSQL, ModelView):
     @fields.depends('on_time')
     def on_change_on_time(self):
         if self.on_time:
-            return {
-                    'on_create': False,
-                    'on_write': False,
-                    'on_delete': False,
-                    }
-        return {}
+            self.on_create = False
+            self.on_write = False
+            self.on_delete = False
 
     @fields.depends('on_create')
     def on_change_on_create(self):
         if self.on_create:
-            return {
-                    'on_time': False,
-                    }
-        return {}
+            self.on_time = False
 
     @fields.depends('on_write')
     def on_change_on_write(self):
         if self.on_write:
-            return {
-                    'on_time': False,
-                    }
-        return {}
+            self.on_time = False
 
     @fields.depends('on_delete')
     def on_change_on_delete(self):
         if self.on_delete:
-            return {
-                    'on_time': False,
-                    }
-        return {}
+            self.on_time = False
 
     @classmethod
     def get_triggers(cls, model_name, mode):

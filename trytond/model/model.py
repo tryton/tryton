@@ -32,16 +32,9 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         cls.__rpc__ = {
             'default_get': RPC(),
             'fields_get': RPC(),
-            'on_change': RPC(instantiate=0),
-            'on_change_with': RPC(instantiate=0),
             'pre_validate': RPC(instantiate=0),
             }
         cls._error_messages = {}
-
-        if hasattr(cls, '__depend_methods'):
-            cls.__depend_methods = cls.__depend_methods.copy()
-        else:
-            cls.__depend_methods = collections.defaultdict(set)
 
         # Copy fields and update depends
         for attr in dir(cls):
@@ -59,31 +52,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     field = parent_field
             field = copy.deepcopy(field)
             setattr(cls, field_name, field)
-
-            for attribute in ('on_change', 'on_change_with', 'autocomplete',
-                    'selection_change_with'):
-                if attribute == 'selection_change_with':
-                    if isinstance(
-                            getattr(field, 'selection', None), basestring):
-                        function_name = field.selection
-                    else:
-                        continue
-                else:
-                    function_name = '%s_%s' % (attribute, field_name)
-                if not getattr(cls, function_name, None):
-                    continue
-                # Search depends on all parent class because field has been
-                # copied with the original definition
-                for parent_cls in cls.__mro__:
-                    function = getattr(parent_cls, function_name, None)
-                    if not function:
-                        continue
-                    if getattr(function, 'depends', None):
-                        setattr(field, attribute,
-                            getattr(field, attribute) | function.depends)
-                    if getattr(function, 'depend_methods', None):
-                        cls.__depend_methods[(field_name, attribute)] |= \
-                            function.depend_methods
 
     @classmethod
     def __post_setup__(cls):
@@ -109,30 +77,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
             assert k in cls._fields, \
                 'Default function defined in %s but field %s does not exist!' \
                 % (cls.__name__, k,)
-
-        # Update __rpc__
-        for field_name, field in cls._fields.iteritems():
-            if isinstance(field, (fields.Selection, fields.Reference)) \
-                    and not isinstance(field.selection, (list, tuple)) \
-                    and field.selection not in cls.__rpc__:
-                instantiate = 0 if field.selection_change_with else None
-                cls.__rpc__.setdefault(field.selection,
-                    RPC(instantiate=instantiate))
-
-            for attribute in ('on_change', 'on_change_with', 'autocomplete'):
-                function_name = '%s_%s' % (attribute, field_name)
-                if getattr(cls, function_name, None):
-                    cls.__rpc__.setdefault(function_name, RPC(instantiate=0))
-
-        # Update depend on methods
-        for (field_name, attribute), others in (
-                cls.__depend_methods.iteritems()):
-            field = getattr(cls, field_name)
-            for other in others:
-                other_field = getattr(cls, other)
-                setattr(field, attribute,
-                    getattr(field, attribute)
-                    | getattr(other_field, attribute))
 
         # Set name to fields
         for name, field in cls._fields.iteritems():
@@ -391,21 +335,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 del res[i]
         return res
 
-    def on_change(self, fieldnames):
-        changes = []
-        for fieldname in sorted(fieldnames):
-            method = getattr(self, 'on_change_%s' % fieldname, None)
-            if method:
-                changes.append(method())
-        return changes
-
-    def on_change_with(self, fieldnames):
-        changes = {}
-        for fieldname in fieldnames:
-            method_name = 'on_change_with_%s' % fieldname
-            changes[fieldname] = getattr(self, method_name)()
-        return changes
-
     def pre_validate(self):
         pass
 
@@ -429,6 +358,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 setattr(parent, field, value)
             else:
                 setattr(self, parent_name, {field: value})
+        self._init_values = self._values.copy() if self._values else None
 
     def __getattr__(self, name):
         if name == 'id':
@@ -471,7 +401,9 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
     def __eq__(self, other):
         if not isinstance(other, Model):
             return NotImplemented
-        if self.id is None or other.id is None:
+        if self.id is None and other.id is None:
+            return self._values == other._values
+        elif self.id is None or other.id is None:
             return False
         return (self.__name__, self.id) == (other.__name__, other.id)
 
@@ -481,11 +413,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         return self.id < other.id
 
     def __ne__(self, other):
-        if not isinstance(other, Model):
-            return NotImplemented
-        if self.id is None or other.id is None:
-            return True
-        return (self.__name__, self.id) != (other.__name__, other.id)
+        return not self == other
 
     def __hash__(self):
         return hash((self.__name__, self.id))
@@ -495,18 +423,27 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
 
     @property
     def _default_values(self):
-        if self.id >= 0:
-            return self.id
+        """Return the values not stored.
+        By default, the value of a field is its internal representation except:
+            - for Many2One and One2One field: the id
+            - for Reference field: the string model,id
+            - for Many2Many: the list of ids
+            - for One2Many: the list of `_default_values`
+        """
         values = {}
         if self._values:
             for fname, value in self._values.iteritems():
                 field = self._fields[fname]
-                if isinstance(field, fields.Reference):
-                    if value is not None:
-                        value = str(value)
-                elif isinstance(value, Model):
-                    value = value._default_values
-                elif isinstance(value, list):
-                    value = [r._default_values for r in value]
+                if field._type in ('many2one', 'one2one', 'reference'):
+                    if value:
+                        if field._type == 'reference':
+                            value = str(value)
+                        else:
+                            value = value.id
+                elif field._type in ('one2many', 'many2many'):
+                    if field._type == 'one2many':
+                        value = [r._default_values for r in value]
+                    else:
+                        value = [r.id for r in value]
                 values[fname] = value
         return values

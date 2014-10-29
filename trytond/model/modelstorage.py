@@ -1053,10 +1053,11 @@ class ModelStorage(Model):
                                 value, _ = value.split(',')
                         if not isinstance(field.selection, (tuple, list)):
                             sel_func = getattr(cls, field.selection)
-                            if field.selection_change_with:
-                                test = sel_func(record)
-                            else:
+                            if (not hasattr(sel_func, 'im_self')
+                                    or sel_func.im_self):
                                 test = sel_func()
+                            else:
+                                test = sel_func(record)
                             test = set(dict(test))
                         # None and '' are equivalent
                         if '' in test or None in test:
@@ -1410,6 +1411,7 @@ class ModelStorage(Model):
             except:
                 self._values = values
                 raise
+        self._init_values = None
 
 
 class EvalEnvironment(dict):

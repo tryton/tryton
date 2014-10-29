@@ -1,3 +1,4 @@
+* New API for on_change: instance changes
 * Add restore_history_before on ModelSQL
 * Remove img_{width,height} form attributes
 
