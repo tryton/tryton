@@ -54,18 +54,15 @@ class Template:
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
         try:
-            changes = super(Template, self).on_change_default_uom()
+            super(Template, self).on_change_default_uom()
         except AttributeError:
-            changes = {}
+            pass
         if self.default_uom:
             if self.purchase_uom:
-                if self.default_uom.category == self.purchase_uom.category:
-                    changes['purchase_uom'] = self.purchase_uom.id
-                else:
-                    changes['purchase_uom'] = self.default_uom.id
+                if self.default_uom.category != self.purchase_uom.category:
+                    self.purchase_uom = self.default_uom
             else:
-                changes['purchase_uom'] = self.default_uom.id
-        return changes
+                self.purchase_uom = self.default_uom
 
     @classmethod
     def write(cls, *args):
@@ -231,9 +228,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     @fields.depends('party')
     def on_change_party(self):
         cursor = Transaction().cursor
-        changes = {
-            'currency': self.default_currency(),
-            }
+        self.currency = self.default_currency()
         if self.party:
             table = self.__table__()
             cursor.execute(*table.select(table.currency,
@@ -242,8 +237,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
                     order_by=Count(Literal(1)).desc))
             row = cursor.fetchone()
             if row:
-                changes['currency'], = row
-        return changes
+                self.currency, = row
 
     def get_rec_name(self, name):
         return '%s @ %s' % (self.product.rec_name, self.party.rec_name)

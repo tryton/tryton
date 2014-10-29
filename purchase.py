@@ -355,23 +355,19 @@ class Purchase(Workflow, ModelSQL, ModelView):
     @fields.depends('party', 'payment_term', 'lines')
     def on_change_party(self):
         pool = Pool()
-        PaymentTerm = pool.get('account.invoice.payment_term')
         Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
         table = self.__table__()
-        changes = {
-            'invoice_address': None,
-            'payment_term': None,
-            }
+        self.invoice_address = None
+        self.payment_term = self.default_payment_term()
         if not self.lines:
-            changes['currency'] = self.default_currency()
-            changes['currency_digits'] = self.default_currency_digits()
-        invoice_address = None
-        payment_term = None
+            self.currency = self.default_currency()
+            self.currency_digits = self.default_currency_digits()
+        self.invoice_address = None
         if self.party:
-            invoice_address = self.party.address_get(type='invoice')
+            self.invoice_address = self.party.address_get(type='invoice')
             if self.party.supplier_payment_term:
-                payment_term = self.party.supplier_payment_term
+                self.payment_term = self.party.supplier_payment_term
 
             if not self.lines:
                 subquery = table.select(table.currency,
@@ -384,24 +380,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 row = cursor.fetchone()
                 if row:
                     currency_id, = row
-                    currency = Currency(currency_id)
-                    changes['currency'] = currency.id
-                    changes['currency_digits'] = currency.digits
-
-        if invoice_address:
-            changes['invoice_address'] = invoice_address.id
-            changes['invoice_address.rec_name'] = invoice_address.rec_name
-        else:
-            changes['invoice_address'] = None
-        if payment_term:
-            changes['payment_term'] = payment_term.id
-            changes['payment_term.rec_name'] = payment_term.rec_name
-        else:
-            changes['payment_term'] = self.default_payment_term()
-            if changes['payment_term']:
-                changes['payment_term.rec_name'] = PaymentTerm(
-                    changes['payment_term']).rec_name
-        return changes
+                    self.currency = Currency(currency_id)
+                    self.currency_digits = self.currency.digits
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -432,11 +412,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
         config = Configuration(1)
 
-        changes = {
-            'untaxed_amount': Decimal('0.0'),
-            'tax_amount': Decimal('0.0'),
-            'total_amount': Decimal('0.0'),
-            }
+        self.untaxed_amount = Decimal('0.0')
+        self.tax_amount = Decimal('0.0')
+        self.total_amount = Decimal('0.0')
         if self.lines:
             context = self.get_tax_context()
             taxes = {}
@@ -449,7 +427,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
             for line in self.lines:
                 if getattr(line, 'type', 'line') != 'line':
                     continue
-                changes['untaxed_amount'] += (getattr(line, 'amount', None)
+                self.untaxed_amount += (getattr(line, 'amount', None)
                     or Decimal(0))
 
                 with Transaction().set_context(context):
@@ -466,17 +444,13 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     round_taxes()
             if config.tax_rounding == 'document':
                 round_taxes()
-            changes['tax_amount'] = sum(taxes.itervalues(), Decimal('0.0'))
+            self.tax_amount = sum(taxes.itervalues(), Decimal('0.0'))
         if self.currency:
-            changes['untaxed_amount'] = self.currency.round(
-                changes['untaxed_amount'])
-            changes['tax_amount'] = self.currency.round(changes['tax_amount'])
-        changes['total_amount'] = (changes['untaxed_amount']
-            + changes['tax_amount'])
+            self.untaxed_amount = self.currency.round(self.untaxed_amount)
+            self.tax_amount = self.currency.round(self.tax_amount)
+        self.total_amount = self.untaxed_amount + self.tax_amount
         if self.currency:
-            changes['total_amount'] = self.currency.round(
-                changes['total_amount'])
-        return changes
+            self.total_amount = self.currency.round(self.total_amount)
 
     def get_tax_amount(self):
         pool = Pool()
@@ -1107,8 +1081,7 @@ class PurchaseLine(ModelSQL, ModelView):
         Product = Pool().get('product.product')
 
         if not self.product:
-            return {}
-        res = {}
+            return
 
         context = {}
         party = None
@@ -1119,39 +1092,36 @@ class PurchaseLine(ModelSQL, ModelView):
 
         category = self.product.purchase_uom.category
         if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.purchase_uom.id
             self.unit = self.product.purchase_uom
-            res['unit.rec_name'] = self.product.purchase_uom.rec_name
-            res['unit_digits'] = self.product.purchase_uom.digits
+            self.unit_digits = self.product.purchase_uom.digits
 
         with Transaction().set_context(self._get_context_purchase_price()):
-            res['unit_price'] = Product.get_purchase_price([self.product],
+            self.unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
-            if res['unit_price']:
-                res['unit_price'] = res['unit_price'].quantize(
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-        res['taxes'] = []
+        taxes = []
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.supplier_taxes_used:
             if party and party.supplier_tax_rule:
                 tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    res['taxes'].extend(tax_ids)
+                    taxes.extend(tax_ids)
                 continue
-            res['taxes'].append(tax.id)
+            taxes.append(tax)
         if party and party.supplier_tax_rule:
             tax_ids = party.supplier_tax_rule.apply(None, pattern)
             if tax_ids:
-                res['taxes'].extend(tax_ids)
+                taxes.extend(tax_ids)
+        self.taxes = taxes
 
         if not self.description:
             with Transaction().set_context(context):
-                res['description'] = Product(self.product.id).rec_name
+                self.description = Product(self.product.id).rec_name
 
-        self.unit_price = res['unit_price']
         self.type = 'line'
-        res['amount'] = self.on_change_with_amount()
-        return res
+        self.amount = self.on_change_with_amount()
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -1165,16 +1135,14 @@ class PurchaseLine(ModelSQL, ModelView):
         Product = Pool().get('product.product')
 
         if not self.product:
-            return {}
-        res = {}
+            return
 
         with Transaction().set_context(self._get_context_purchase_price()):
-            res['unit_price'] = Product.get_purchase_price([self.product],
+            self.unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
-            if res['unit_price']:
-                res['unit_price'] = res['unit_price'].quantize(
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-        return res
 
     @fields.depends('product', 'quantity', 'unit',
         '_parent_purchase.currency', '_parent_purchase.party')
