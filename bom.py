@@ -87,18 +87,14 @@ class BOMInput(ModelSQL, ModelView):
 
     @fields.depends('product', 'uom')
     def on_change_product(self):
-        res = {}
         if self.product:
             uoms = self.product.default_uom.category.uoms
             if (not self.uom or self.uom not in uoms):
-                res['uom'] = self.product.default_uom.id
-                res['uom.rec_name'] = self.product.default_uom.rec_name
-                res['unit_digits'] = self.product.default_uom.digits
+                self.uom = self.product.default_uom
+                self.unit_digits = self.product.default_uom.digits
         else:
-            res['uom'] = None
-            res['uom.rec_name'] = ''
-            res['unit_digits'] = 2
-        return res
+            self.uom = None
+            self.unit_digits = 2
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):

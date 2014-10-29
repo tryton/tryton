@@ -232,26 +232,12 @@ class Production(Workflow, ModelSQL, ModelView):
 
     def _explode_move_values(self, from_location, to_location, company,
             bom_io, quantity):
-        pool = Pool()
-        Move = pool.get('stock.move')
-
         move = self._move(from_location, to_location, company,
             bom_io.product, bom_io.uom, quantity)
         move.from_location = from_location.id if from_location else None
         move.to_location = to_location.id if to_location else None
         move.unit_price_required = move.on_change_with_unit_price_required()
-        values = {}
-        for field_name, field in Move._fields.iteritems():
-            try:
-                value = getattr(move, field_name)
-            except AttributeError:
-                continue
-            if value and field._type in ('many2one', 'one2one'):
-                values[field_name] = value.id
-                values[field_name + '.rec_name'] = value.rec_name
-            else:
-                values[field_name] = value
-        return values
+        return move
 
     def explode_bom(self):
         pool = Pool()
@@ -259,20 +245,8 @@ class Production(Workflow, ModelSQL, ModelView):
         Template = pool.get('product.template')
         Product = pool.get('product.product')
         if not (self.bom and self.product and self.uom):
-            return {}
-        inputs = {
-            'remove': [r.id for r in self.inputs or []],
-            'add': [],
-            }
-        outputs = {
-            'remove': [r.id for r in self.outputs or []],
-            'add': [],
-            }
-        changes = {
-            'inputs': inputs,
-            'outputs': outputs,
-            'cost': Decimal(0),
-            }
+            return
+        self.cost = Decimal(0)
 
         if self.warehouse:
             storage_location = self.warehouse.storage_location
@@ -281,64 +255,55 @@ class Production(Workflow, ModelSQL, ModelView):
 
         factor = self.bom.compute_factor(self.product, self.quantity or 0,
             self.uom)
+        inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            values = self._explode_move_values(storage_location, self.location,
+            move = self._explode_move_values(storage_location, self.location,
                 self.company, input_, quantity)
-            if values:
-                inputs['add'].append((-1, values))
+            if move:
+                inputs.append(move)
                 quantity = Uom.compute_qty(input_.uom, quantity,
                     input_.product.default_uom)
-                changes['cost'] += (Decimal(str(quantity)) *
+                self.cost += (Decimal(str(quantity)) *
                     input_.product.cost_price)
+        self.inputs = inputs
 
         if hasattr(Product, 'cost_price'):
             digits = Product.cost_price.digits
         else:
             digits = Template.cost_price.digits
+        outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            values = self._explode_move_values(self.location, storage_location,
+            move = self._explode_move_values(self.location, storage_location,
                 self.company, output, quantity)
-            if values:
-                values['unit_price'] = Decimal(0)
-                if output.product.id == values.get('product') and quantity:
-                    values['unit_price'] = Decimal(
-                        changes['cost'] / Decimal(str(quantity))
+            if move:
+                move.unit_price = Decimal(0)
+                if output.product == move.product and quantity:
+                    move.unit_price = Decimal(
+                        self.cost / Decimal(str(quantity))
                         ).quantize(Decimal(str(10 ** -digits[1])))
-                outputs['add'].append((-1, values))
-        return changes
+                outputs.append(move)
+        self.outputs = outputs
 
     @fields.depends('warehouse')
     def on_change_warehouse(self):
-        changes = {
-            'location': None,
-            }
+        self.location = None
         if self.warehouse:
-            changes['location'] = self.warehouse.production_location.id
-        return changes
+            self.location = self.warehouse.production_location
 
     @fields.depends(*BOM_CHANGES)
     def on_change_product(self):
-        result = {}
         if self.product:
             uoms = self.product.default_uom.category.uoms
             if (not self.uom or self.uom not in uoms):
-                result['uom'] = self.product.default_uom.id
-                result['uom.rec_name'] = self.product.default_uom.rec_name
-                result['unit_digits'] = self.product.default_uom.digits
+                self.uom = self.product.default_uom
+                self.unit_digits = self.product.default_uom.digits
         else:
-            result['bom'] = None
-            result['uom'] = None
-            result['uom.rec_name'] = ''
-            result['unit_digits'] = 2
-
-        if 'uom' in result:
-            self.uom = result['uom']
-        if 'bom' in result:
-            self.bom = result['bom']
-        result.update(self.explode_bom())
-        return result
+            self.bom = None
+            self.uom = None
+            self.unit_digits = 2
+        self.explode_bom()
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
@@ -353,7 +318,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @fields.depends(*BOM_CHANGES)
     def on_change_bom(self):
-        return self.explode_bom()
+        self.explode_bom()
 
     @fields.depends(*BOM_CHANGES)
     def on_change_uom(self):
