@@ -308,13 +308,10 @@ class ForecastLine(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_product(self):
-        res = {}
-        res['unit_digits'] = 2
+        self.unit_digits = 2
         if self.product:
-            res['uom'] = self.product.default_uom.id
-            res['uom.rec_name'] = self.product.default_uom.rec_name
-            res['unit_digits'] = self.product.default_uom.digits
-        return res
+            self.uom = self.product.default_uom
+            self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -323,11 +320,9 @@ class ForecastLine(ModelSQL, ModelView):
 
     @fields.depends('uom')
     def on_change_uom(self):
-        res = {}
-        res['unit_digits'] = 2
+        self.unit_digits = 2
         if self.uom:
-            res['unit_digits'] = self.uom.digits
-        return res
+            self.unit_digits = self.uom.digits
 
     def get_unit_digits(self, name):
         return self.product.default_uom.digits
