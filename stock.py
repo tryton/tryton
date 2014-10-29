@@ -42,28 +42,24 @@ class ShipmentIn:
 
     @fields.depends(methods=['incoming_moves'])
     def on_change_carrier(self):
-        return self.on_change_incoming_moves()
+        self.on_change_incoming_moves()
 
     @fields.depends('carrier', 'incoming_moves')
     def on_change_incoming_moves(self):
-        Currency = Pool().get('currency.currency')
-
         try:
-            result = super(ShipmentIn, self).on_change_incoming_moves()
+            super(ShipmentIn, self).on_change_incoming_moves()
         except AttributeError:
-            result = {}
+            pass
         if not self.carrier:
-            return result
+            return
         with Transaction().set_context(self._get_carrier_context()):
             cost, currency_id = self.carrier.get_purchase_price()
-        result['cost'] = cost
-        result['cost_currency'] = currency_id
-        if currency_id:
-            currency = Currency(currency_id)
-            result['cost_currency_digits'] = currency.digits
+        self.cost = cost
+        self.cost_currency = currency_id
+        if self.cost_currency:
+            self.cost_currency_digits = self.cost_currency.digits
         else:
-            result['cost_currency_digits'] = 2
-        return result
+            self.cost_currency_digits = 2
 
     def allocate_cost_by_value(self):
         pool = Pool()
