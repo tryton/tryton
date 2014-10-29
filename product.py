@@ -54,18 +54,15 @@ class Template:
     @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_default_uom(self):
         try:
-            changes = super(Template, self).on_change_default_uom()
+            super(Template, self).on_change_default_uom()
         except AttributeError:
-            changes = {}
+            pass
         if self.default_uom:
             if self.sale_uom:
-                if self.default_uom.category == self.sale_uom.category:
-                    changes['sale_uom'] = self.sale_uom.id
-                else:
-                    changes['sale_uom'] = self.default_uom.id
+                if self.default_uom.category != self.sale_uom.category:
+                    self.sale_uom = self.default_uom
             else:
-                changes['sale_uom'] = self.default_uom.id
-        return changes
+                self.sale_uom = self.default_uom
 
 
 class Product:

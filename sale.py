@@ -375,32 +375,13 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     @fields.depends('party', 'payment_term')
     def on_change_party(self):
-        invoice_address = None
-        shipment_address = None
-        payment_term = None
+        self.invoice_address = None
+        self.shipment_address = None
+        self.payment_term = self.default_payment_term()
         if self.party:
-            invoice_address = self.party.address_get(type='invoice')
-            shipment_address = self.party.address_get(type='delivery')
-            if self.party.customer_payment_term:
-                payment_term = self.party.customer_payment_term
-
-        changes = {}
-        if invoice_address:
-            changes['invoice_address'] = invoice_address.id
-            changes['invoice_address.rec_name'] = invoice_address.rec_name
-        else:
-            changes['invoice_address'] = None
-        if shipment_address:
-            changes['shipment_address'] = shipment_address.id
-            changes['shipment_address.rec_name'] = shipment_address.rec_name
-        else:
-            changes['shipment_address'] = None
-        if payment_term:
-            changes['payment_term'] = payment_term.id
-            changes['payment_term.rec_name'] = payment_term.rec_name
-        else:
-            changes['payment_term'] = self.default_payment_term()
-        return changes
+            self.invoice_address = self.party.address_get(type='invoice')
+            self.shipment_address = self.party.address_get(type='delivery')
+            self.payment_term = self.party.customer_payment_term
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -430,11 +411,9 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         config = Configuration(1)
 
-        changes = {
-            'untaxed_amount': Decimal('0.0'),
-            'tax_amount': Decimal('0.0'),
-            'total_amount': Decimal('0.0'),
-            }
+        self.untaxed_amount = Decimal('0.0')
+        self.tax_amount = Decimal('0.0')
+        self.total_amount = Decimal('0.0')
 
         if self.lines:
             context = self.get_tax_context()
@@ -448,7 +427,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             for line in self.lines:
                 if getattr(line, 'type', 'line') != 'line':
                     continue
-                changes['untaxed_amount'] += (getattr(line, 'amount', None)
+                self.untaxed_amount += (getattr(line, 'amount', None)
                     or Decimal(0))
 
                 with Transaction().set_context(context):
@@ -465,17 +444,13 @@ class Sale(Workflow, ModelSQL, ModelView):
                     round_taxes()
             if config.tax_rounding == 'document':
                 round_taxes()
-            changes['tax_amount'] = sum(taxes.itervalues(), Decimal('0.0'))
+            self.tax_amount = sum(taxes.itervalues(), Decimal('0.0'))
         if self.currency:
-            changes['untaxed_amount'] = self.currency.round(
-                changes['untaxed_amount'])
-            changes['tax_amount'] = self.currency.round(changes['tax_amount'])
-        changes['total_amount'] = (changes['untaxed_amount']
-            + changes['tax_amount'])
+            self.untaxed_amount = self.currency.round(self.untaxed_amount)
+            self.tax_amount = self.currency.round(self.tax_amount)
+        self.total_amount = self.untaxed_amount + self.tax_amount
         if self.currency:
-            changes['total_amount'] = self.currency.round(
-                changes['total_amount'])
-        return changes
+            self.total_amount = self.currency.round(self.total_amount)
 
     def get_tax_amount(self):
         pool = Pool()
@@ -1185,8 +1160,7 @@ class SaleLine(ModelSQL, ModelView):
         Product = Pool().get('product.product')
 
         if not self.product:
-            return {}
-        res = {}
+            return
 
         party = None
         party_context = {}
@@ -1197,39 +1171,36 @@ class SaleLine(ModelSQL, ModelView):
 
         category = self.product.sale_uom.category
         if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.sale_uom.id
             self.unit = self.product.sale_uom
-            res['unit.rec_name'] = self.product.sale_uom.rec_name
-            res['unit_digits'] = self.product.sale_uom.digits
+            self.unit_digits = self.product.sale_uom.digits
 
         with Transaction().set_context(self._get_context_sale_price()):
-            res['unit_price'] = Product.get_sale_price([self.product],
+            self.unit_price = Product.get_sale_price([self.product],
                     self.quantity or 0)[self.product.id]
-            if res['unit_price']:
-                res['unit_price'] = res['unit_price'].quantize(
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-        res['taxes'] = []
+        taxes = []
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.customer_taxes_used:
             if party and party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
-                    res['taxes'].extend(tax_ids)
+                    taxes.extend(tax_ids)
                 continue
-            res['taxes'].append(tax.id)
+            taxes.append(tax.id)
         if party and party.customer_tax_rule:
             tax_ids = party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
-                res['taxes'].extend(tax_ids)
+                taxes.extend(tax_ids)
+        self.taxes = taxes
 
         if not self.description:
             with Transaction().set_context(party_context):
-                res['description'] = Product(self.product.id).rec_name
+                self.description = Product(self.product.id).rec_name
 
-        self.unit_price = res['unit_price']
         self.type = 'line'
-        res['amount'] = self.on_change_with_amount()
-        return res
+        self.amount = self.on_change_with_amount()
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -1243,17 +1214,15 @@ class SaleLine(ModelSQL, ModelView):
         Product = Pool().get('product.product')
 
         if not self.product:
-            return {}
-        res = {}
+            return
 
         with Transaction().set_context(
                 self._get_context_sale_price()):
-            res['unit_price'] = Product.get_sale_price([self.product],
+            self.unit_price = Product.get_sale_price([self.product],
                 self.quantity or 0)[self.product.id]
-            if res['unit_price']:
-                res['unit_price'] = res['unit_price'].quantize(
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-        return res
 
     @fields.depends('product', 'quantity', 'unit',
         '_parent_sale.currency', '_parent_sale.party',
