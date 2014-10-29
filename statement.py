@@ -202,9 +202,8 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @fields.depends('journal', 'state', 'lines')
     def on_change_journal(self):
-        res = {}
         if not self.journal:
-            return res
+            return
 
         statements = self.search([
                 ('journal', '=', self.journal.id),
@@ -212,11 +211,10 @@ class Statement(Workflow, ModelSQL, ModelView):
                 ('date', 'DESC'),
                 ], limit=1)
         if not statements:
-            return res
+            return
 
         statement, = statements
-        res['start_balance'] = statement.end_balance
-        return res
+        self.start_balance = statement.end_balance
 
     @fields.depends('journal')
     def on_change_with_currency_digits(self, name=None):
@@ -240,9 +238,6 @@ class Statement(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Line = pool.get('account.statement.line')
-        res = {
-            'lines': {},
-            }
         if self.journal and self.lines:
             invoices = set()
             for line in self.lines:
@@ -259,52 +254,36 @@ class Statement(Workflow, ModelSQL, ModelView):
                         Currency.compute(invoice.currency,
                             invoice.amount_to_pay, self.journal.currency))
 
+            lines = list(self.lines)
             line_offset = 0
             for index, line in enumerate(self.lines or []):
                 if getattr(line, 'invoice', None) and line.id:
                     amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
-                    res['lines'].setdefault('update', [])
                     if (not self.journal.currency.is_zero(amount_to_pay)
                             and getattr(line, 'amount', None)
                             and (line.amount >= 0) == (amount_to_pay <= 0)):
-                        res['lines']['update'].append({
-                                'id': line.id,
-                                'amount': (amount_to_pay.copy_sign(line.amount)
-                                    if abs(line.amount) > abs(amount_to_pay)
-                                    else line.amount)
-                                })
                         if abs(line.amount) > abs(amount_to_pay):
-                            res['lines'].setdefault('add', [])
-                            vals = {}
+                            new_line = Line()
                             for field_name, field in Line._fields.iteritems():
-                                try:
-                                    value = getattr(line, field_name)
-                                except AttributeError:
+                                if field_name == 'id':
                                     continue
-                                if (value and field._type in ('many2one',
-                                            'one2one')):
-                                    vals[field_name] = value.id
-                                    if value.id >= 0:
-                                        vals[field_name + '.rec_name'] = \
-                                            value.rec_name
-                                else:
-                                    vals[field_name] = value
-                            del vals['id']
-                            vals['amount'] = line.amount + amount_to_pay
-                            vals['invoice'] = None
-                            del vals['invoice.rec_name']
+                                try:
+                                    setattr(new_line, field_name,
+                                        getattr(line, field_name))
+                                except AttributeError:
+                                    pass
+                            new_line.amount = line.amount + amount_to_pay
+                            new_line.invoice = None
                             line_offset += 1
-                            res['lines']['add'].append((index + line_offset, vals))
+                            lines.insert(index + line_offset, new_line)
                             invoice_id2amount_to_pay[line.invoice.id] = 0
+                            line.amount = amount_to_pay.copy_sign(line.amount)
                         else:
                             invoice_id2amount_to_pay[line.invoice.id] = (
                                 line.amount + amount_to_pay)
                     else:
-                        res['lines']['update'].append({
-                                'id': line.id,
-                                'invoice': None,
-                                })
-        return res
+                        line.invoice = None
+            self.lines = lines
 
     @fields.depends('journal')
     def on_change_with_validation(self, name=None):
@@ -497,31 +476,24 @@ class Line(ModelSQL, ModelView):
 
     @fields.depends('amount', 'party', 'invoice')
     def on_change_party(self):
-        res = {}
-
         if self.party:
             if self.amount:
                 if self.amount > Decimal("0.0"):
-                    account = self.party.account_receivable
+                    self.account = self.party.account_receivable
                 else:
-                    account = self.party.account_payable
-                res['account'] = account.id
-                res['account.rec_name'] = account.rec_name
+                    self.account = self.party.account_payable
 
         if self.invoice:
             if self.party:
                 if self.invoice.party != self.party:
-                    res['invoice'] = None
+                    self.invoice = None
             else:
-                res['invoice'] = None
-        return res
+                self.invoice = None
 
     @fields.depends('amount', 'party', 'account', 'invoice',
         '_parent_statement.journal')
     def on_change_amount(self):
         Currency = Pool().get('currency.currency')
-        res = {}
-
         if self.party:
             if self.account and self.account not in (
                     self.party.account_receivable, self.party.account_payable):
@@ -529,11 +501,9 @@ class Line(ModelSQL, ModelView):
                 pass
             elif self.amount:
                 if self.amount > Decimal("0.0"):
-                    account = self.party.account_receivable
+                    self.account = self.party.account_receivable
                 else:
-                    account = self.party.account_payable
-                res['account'] = account.id
-                res['account.rec_name'] = account.rec_name
+                    self.account = self.party.account_payable
         if self.invoice:
             if self.amount and self.statement and self.statement.journal:
                 invoice = self.invoice
@@ -542,34 +512,26 @@ class Line(ModelSQL, ModelView):
                     amount_to_pay = Currency.compute(invoice.currency,
                         invoice.amount_to_pay, journal.currency)
                 if abs(self.amount) > amount_to_pay:
-                    res['invoice'] = None
+                    self.invoice = None
             else:
-                res['invoice'] = None
-        return res
+                self.invoice = None
 
     @fields.depends('account', 'invoice')
     def on_change_account(self):
-        res = {}
-
         if self.invoice:
             if self.account:
                 if self.invoice.account != self.account:
-                    res['invoice'] = None
+                    self.invoice = None
             else:
-                res['invoice'] = None
-        return res
+                self.invoice = None
 
     @fields.depends('party', 'account', 'invoice')
     def on_change_invoice(self):
-        changes = {}
         if self.invoice:
             if not self.party:
-                changes['party'] = self.invoice.party.id
-                changes['party.rec_name'] = self.invoice.party.rec_name
+                self.party = self.invoice.party
             if not self.account:
-                changes['account'] = self.invoice.account.id
-                changes['account.rec_name'] = self.invoice.account.rec_name
-        return changes
+                self.account = self.invoice.account
 
     def get_rec_name(self, name):
         return self.statement.rec_name
