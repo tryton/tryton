@@ -125,23 +125,17 @@ class Category:
 
     @fields.depends('account_expense')
     def on_change_account_expense(self):
-        supplier_taxes = []
-        result = {
-            'supplier_taxes': supplier_taxes,
-            }
         if self.account_expense:
-            supplier_taxes.extend(tax.id for tax in self.account_expense.taxes)
-        return result
+            self.supplier_taxes = self.account_expense.taxes
+        else:
+            self.supplier_taxes = []
 
     @fields.depends('account_revenue')
     def on_change_account_revenue(self):
-        customer_taxes = []
-        result = {
-            'customer_taxes': customer_taxes,
-            }
         if self.account_revenue:
-            customer_taxes.extend(tax.id for tax in self.account_revenue.taxes)
-        return result
+            self.customer_taxes = self.account_revenue.taxes
+        else:
+            self.customer_taxes = []
 
 
 class CategoryCustomerTax(ModelSQL):
@@ -276,29 +270,19 @@ class Template:
 
     @fields.depends('account_category', 'account_expense')
     def on_change_account_expense(self):
-        result = {}
         if not self.account_category:
-            supplier_taxes = []
-            result = {
-                'supplier_taxes': supplier_taxes,
-            }
             if self.account_expense:
-                supplier_taxes.extend(
-                    tax.id for tax in self.account_expense.taxes)
-        return result
+                self.supplier_taxes = self.account_expense.taxes
+            else:
+                self.supplier_taxes = []
 
     @fields.depends('account_category', 'account_revenue')
     def on_change_account_revenue(self):
-        result = {}
         if not self.account_category:
-            customer_taxes = []
-            result = {
-                'customer_taxes': customer_taxes,
-            }
             if self.account_revenue:
-                customer_taxes.extend(
-                    tax.id for tax in self.account_revenue.taxes)
-        return result
+                self.customer_taxes = self.account_revenue.taxes
+            else:
+                self.customer_taxes = []
 
 
 class TemplateCustomerTax(ModelSQL):
