@@ -100,16 +100,11 @@ class OrderPoint(ModelSQL, ModelView):
 
     @fields.depends('product')
     def on_change_product(self):
-        res = {
-            'unit': None,
-            'unit.rec_name': '',
-            'unit_digits': 2,
-            }
+        self.unit = None
+        self.unit_digits = 2
         if self.product:
-            res['unit'] = self.product.default_uom.id
-            res['unit.rec_name'] = self.product.default_uom.rec_name
-            res['unit_digits'] = self.product.default_uom.digits
-        return res
+            self.unit = self.product.default_uom
+            self.unit_digits = self.product.default_uom.digits
 
     def get_unit(self, name):
         return self.product.default_uom.id
