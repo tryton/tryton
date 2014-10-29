@@ -235,31 +235,16 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
 
     @fields.depends('company')
     def on_change_company(self):
-        res = {}
         if self.company:
-            res['currency'] = self.company.currency.id
-            res['currency.rec_name'] = self.company.currency.rec_name
-            res['currency_digits'] = self.company.currency.digits
-        return res
+            self.currency = self.company.currency
+            self.currency_digits = self.company.currency.digits
 
     @fields.depends('party')
     def on_change_party(self):
-        PaymentTerm = Pool().get('account.invoice.payment_term')
-
-        res = {
-            'payment_term': None,
-            }
-        if self.party:
-            if self.party.customer_payment_term:
-                res['payment_term'] = self.party.customer_payment_term.id
-                res['payment_term.rec_name'] = \
-                    self.party.customer_payment_term.rec_name
-        if not res['payment_term']:
-            res['payment_term'] = self.default_payment_term()
-            if res['payment_term']:
-                res['payment_term.rec_name'] = PaymentTerm(
-                    res['payment_term']).rec_name
-        return res
+        if self.party and self.party.customer_payment_term:
+            self.payment_term = self.party.customer_payment_term
+        else:
+            self.payment_term = self.default_payment_term()
 
     def _get_sale_line_opportunity_line(self, sale):
         '''
@@ -417,16 +402,13 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     @fields.depends('product', 'unit')
     def on_change_product(self):
         if not self.product:
-            return {}
-        res = {}
+            return
 
         category = self.product.sale_uom.category
         if (not self.unit
                 or self.unit not in category.uoms):
-            res['unit'] = self.product.sale_uom.id
-            res['unit.rec_name'] = self.product.sale_uom.rec_name
-            res['unit_digits'] = self.product.sale_uom.digits
-        return res
+            self.unit = self.product.sale_uom
+            self.unit_digits = self.product.sale_uom.digits
 
     def get_sale_line(self, sale):
         '''
