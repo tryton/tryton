@@ -60,21 +60,18 @@ class ShipmentOut:
 
     @fields.depends('carrier', 'customer', 'inventory_moves')
     def on_change_inventory_moves(self):
-        Currency = Pool().get('currency.currency')
-
         try:
-            result = super(ShipmentOut, self).on_change_inventory_moves()
+            super(ShipmentOut, self).on_change_inventory_moves()
         except AttributeError:
-            result = {}
+            pass
         if not self.carrier:
-            return result
+            return
         with Transaction().set_context(self._get_carrier_context()):
             cost, currency_id = self.carrier.get_sale_price()
-        currency = Currency(currency_id)
-        result['cost'] = cost
-        result['cost_currency'] = currency.id
-        result['cost_currency_digits'] = currency.digits if currency else 2
-        return result
+        self.cost = cost
+        self.cost_currency = currency_id
+        self.cost_currency_digits = (self.cost_currency.digits
+            if self.cost_currency else 2)
 
     def _get_cost_tax_rule_pattern(self):
         'Get tax rule pattern for invoice line'

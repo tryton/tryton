@@ -59,7 +59,7 @@ class Sale:
 
     @fields.depends(methods=['lines'])
     def on_change_carrier(self):
-        return self.on_change_lines()
+        self.on_change_lines()
 
     @fields.depends('carrier', 'party', 'currency', 'sale_date',
         'shipment_cost_method', 'lines')
@@ -83,7 +83,7 @@ class Sale:
             if self.party.lang:
                 party_context['language'] = self.party.lang.code
 
-        cost_line = {}
+        cost_line = None
         products = [line.product for line in self.lines or []
                 if getattr(line, 'product', None)]
         stockable = any(product.type in ('goods', 'assets')
@@ -97,20 +97,19 @@ class Sale:
             with Transaction().set_context(party_context):
                 description = Product(product.id).rec_name
             taxes = []
-            cost_line = SaleLine.default_get(SaleLine._fields.keys())
-            cost_line.update({
-                    'type': 'line',
-                    'product': product.id,
-                    'description': description,
-                    'quantity': 1,  # XXX
-                    'unit': product.sale_uom.id,
-                    'unit_price': cost,
-                    'shipment_cost': cost,
-                    'amount': cost,
-                    'taxes': taxes,
-                    'sequence': 9999,  # XXX
-                    })
-            pattern = SaleLine(**cost_line)._get_tax_rule_pattern()
+            cost_line = SaleLine(
+                **SaleLine.default_get(SaleLine._fields.keys()))
+            cost_line.type = 'line'
+            cost_line.product = product
+            cost_line.description = description
+            cost_line.quantity = 1  # XXX
+            cost_line.unit = product.sale_uom
+            cost_line.unit_price = cost
+            cost_line.shipment_cost = cost
+            cost_line.amount = cost
+            cost_line.taxes = taxes
+            cost_line.sequence = 9999  # XXX
+            pattern = cost_line._get_tax_rule_pattern()
             for tax in product.customer_taxes_used:
                 if party and party.customer_tax_rule:
                     tax_ids = party.customer_tax_rule.apply(tax, pattern)
@@ -123,32 +122,22 @@ class Sale:
                 if tax_ids:
                     taxes.extend(tax_ids)
 
-        to_remove = None
-        operator, operand = None, None
-        if not self.lines:
-            self.lines = []
+        lines = list(self.lines or [])
         for line in self.lines:
             if getattr(line, 'shipment_cost', None):
-                if line.shipment_cost != cost_line.get('shipment_cost'):
-                    to_remove = line.id
-                    self.lines.remove(line)
+                if line.shipment_cost != cost:
+                    lines.remove(line)
                     if cost_line:
-                        cost_line['description'] = getattr(line, 'description',
-                            '')
+                        cost_line.description = getattr(
+                            line, 'description', '')
                 else:
-                    cost_line = {}
+                    cost_line = None
                 break
         if cost_line:
-            self.lines.append(SaleLine(**cost_line))
+            lines.append(cost_line)
+        self.lines = lines
 
-        result = super(Sale, self).on_change_lines()
-
-        lines = result.setdefault('lines', {})
-        if to_remove:
-            lines.setdefault('remove', []).append(to_remove)
-        if cost_line:
-            lines.setdefault('add', []).append((-1, cost_line))
-        return result
+        super(Sale, self).on_change_lines()
 
     def create_shipment(self, shipment_type):
         Shipment = Pool().get('stock.shipment.out')
