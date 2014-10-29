@@ -138,18 +138,16 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @fields.depends('supplier')
     def on_change_supplier(self):
         if self.supplier:
-            address = self.supplier.address_get()
-            if address:
-                return {'contact_address': address.id}
-        return {'contact_address': None}
+            self.contact_address = self.supplier.address_get()
+        else:
+            self.contact_address = None
 
     @fields.depends('customer')
     def on_change_customer(self):
         if self.customer:
-            address = self.customer.address_get(type='delivery')
-            if address:
-                return {'delivery_address': address.id}
-        return {'delivery_address': False}
+            self.delivery_address = self.customer.address_get(type='delivery')
+        else:
+            self.delivery_address = None
 
     def _get_move_planned_date(self):
         '''

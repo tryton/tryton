@@ -59,16 +59,9 @@ class Purchase:
 
     @fields.depends('customer', 'delivery_address')
     def on_change_customer(self):
-        result = {
-            'delivery_address': None,
-            }
-        delivery_address = None
+        self.delivery_address = None
         if self.customer:
-            delivery_address = self.customer.address_get(type='delivery')
-        if delivery_address:
-            result['delivery_address'] = delivery_address.id
-            result['delivery_address.rec_name'] = delivery_address.rec_name
-        return result
+            self.delivery_address = self.customer.address_get(type='delivery')
 
     def get_drop_shipments(self, name):
         DropShipment = Pool().get('stock.shipment.drop')
