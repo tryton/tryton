@@ -225,39 +225,35 @@ class Asset(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
         Unit = Pool().get('product.uom')
 
-        new_values = {}
         if not self.supplier_invoice_line:
-            new_values['quantity'] = None
-            new_values['value'] = None
-            new_values['start_date'] = self.default_start_date()
-            return new_values
+            self.quantity = None
+            self.value = None
+            self.start_date = self.default_start_date()
+            return
 
         invoice_line = self.supplier_invoice_line
         invoice = invoice_line.invoice
         if invoice.company.currency != invoice.currency:
             with Transaction().set_context(date=invoice.currency_date):
-                new_values['value'] = Currency.compute(
+                self.value = Currency.compute(
                     invoice.company.currency, invoice_line.amount,
                     invoice.currency)
         else:
-            new_values['value'] = invoice_line.amount
+            self.value = invoice_line.amount
         if invoice.invoice_date:
-            new_values['purchase_date'] = invoice.invoice_date
-            new_values['start_date'] = invoice.invoice_date
+            self.purchase_date = invoice.invoice_date
+            self.start_date = invoice.invoice_date
             if invoice_line.product.depreciation_duration:
                 duration = relativedelta.relativedelta(
                     months=int(invoice_line.product.depreciation_duration),
                     days=-1)
-                new_values['end_date'] = new_values['start_date'] + duration
+                self.end_date = self.start_date + duration
 
         if not self.unit:
-            new_values['quantity'] = invoice_line.quantity
-            return new_values
-
-        new_values['quantity'] = Unit.compute_qty(invoice_line.unit,
-            invoice_line.quantity, self.unit)
-
-        return new_values
+            self.quantity = invoice_line.quantity
+        else:
+            self.quantity = Unit.compute_qty(invoice_line.unit,
+                invoice_line.quantity, self.unit)
 
     @fields.depends('product')
     def on_change_with_unit(self):

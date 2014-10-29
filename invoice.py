@@ -34,7 +34,7 @@ class InvoiceLine:
 
     @fields.depends('product', 'invoice', 'invoice_type')
     def on_change_product(self):
-        new_values = super(InvoiceLine, self).on_change_product()
+        super(InvoiceLine, self).on_change_product()
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         else:
@@ -43,10 +43,7 @@ class InvoiceLine:
         if (self.product and type_ in ('in_invoice', 'in_credit_note')
                 and self.product.type == 'assets'
                 and self.product.depreciable):
-            new_values['account'] = self.product.account_asset_used.id
-            new_values['account.rec_name'] = \
-                self.product.account_asset_used.rec_name
-        return new_values
+            self.account = self.product.account_asset_used
 
     @fields.depends('asset', 'unit')
     def on_change_asset(self):
@@ -57,16 +54,10 @@ class InvoiceLine:
             if self.unit:
                 quantity = Uom.compute_qty(self.asset.unit, quantity,
                     self.unit)
-                return {
-                    'quantity': quantity,
-                    }
+                self.quantity = quantity
             else:
-                return {
-                    'quantity': quantity,
-                    'unit': self.unit.id,
-                    'unit.rec_name': self.unit.rec_name,
-                    }
-        return {}
+                self.quantity = quantity
+                self.unit = self.unit
 
     @fields.depends('product')
     def on_change_with_is_assets_depreciable(self, name=None):
