@@ -1246,7 +1246,7 @@ class Line(ModelSQL, ModelView):
         if not self.account.active:
             self.raise_user_error('move_inactive_account', (
                     self.account.rec_name,))
-        if bool(self.party) != self.account.party_required:
+        if bool(self.party) != bool(self.account.party_required):
             error = 'party_set' if self.party else 'party_required'
             self.raise_user_error(error, self.rec_name)
 
