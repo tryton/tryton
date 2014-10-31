@@ -161,7 +161,7 @@ class Group:
         message = tmpl.generate(group=self,
             datetime=datetime, normalize=unicodedata.normalize,
             ).filter(remove_comment).render()
-        message = Message(message=message, type='in', state='waiting')
+        message = Message(message=message, type='out', state='waiting')
         self.sepa_messages += (message,)
 
     @property
