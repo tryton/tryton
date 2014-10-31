@@ -149,6 +149,8 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                 _, data = process_payment.do_process(None)
             group, = self.payment_group.browse(data['res_id'])
             message, = group.sepa_messages
+            self.assertEqual(message.type, 'out')
+            self.assertEqual(message.state, 'waiting')
             sepa_string = message.message.encode('utf-8')
             sepa_xml = etree.fromstring(sepa_string)
             schema_file = os.path.join(os.path.dirname(__file__),
