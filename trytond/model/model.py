@@ -401,10 +401,8 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
     def __eq__(self, other):
         if not isinstance(other, Model):
             return NotImplemented
-        if self.id is None and other.id is None:
-            return self._values == other._values
         elif self.id is None or other.id is None:
-            return False
+            return id(self) == id(other)
         return (self.__name__, self.id) == (other.__name__, other.id)
 
     def __lt__(self, other):
