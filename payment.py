@@ -46,7 +46,7 @@ class Payment:
             if move:
                 moves.append(move)
         if moves:
-            moves = Move.create([m._save_values for m in moves])
+            Move.save(moves)
             cls.write(*sum((([m.origin], {'clearing_move': m.id})
                         for m in moves), ()))
 
