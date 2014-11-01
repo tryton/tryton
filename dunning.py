@@ -218,7 +218,7 @@ class Dunning(ModelSQL, ModelView):
 
         lines = MoveLine.search(cls._overdue_line_domain(date))
         dunnings = (cls._get_dunning(line, date) for line in lines)
-        cls.create([d._save_values for d in dunnings if d])
+        cls.save([d for d in dunnings if d])
 
     @classmethod
     def _get_dunning(cls, line, date):
