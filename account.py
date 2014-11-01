@@ -164,7 +164,7 @@ class PayLine(Wizard):
         payments = []
         for line in lines:
             payments.append(self.get_payment(line))
-        payments = Payment.create([p._save_values for p in payments])
+        Payment.save(payments)
         return action, {
             'res_id': [p.id for p in payments],
             }
