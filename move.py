@@ -368,26 +368,16 @@ class Move(ModelSQL, ModelView):
 
     def cancel(self):
         'Return a cancel move'
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        TaxLine = pool.get('account.tax.line')
         default = self._cancel_default()
         cancel_move, = self.copy([self], default=default)
-        lines = []
-        tax_lines = []
         for line in cancel_move.lines:
             line.debit *= -1
             line.credit *= -1
-            lines.extend(([line], line._save_values))
-            line._values = None
             for tax_line in line.tax_lines:
                 tax_line.amount *= -1
-                tax_lines.extend(([tax_line], tax_line._save_values))
-                tax_line._values = None
-        if lines:
-            Line.write(*lines)
-        if tax_lines:
-            TaxLine.write(*tax_lines)
+            line.tax_lines = line.tax_lines  # Force tax_lines changing
+        cancel_move.lines = cancel_move.lines  # Force lines changing
+        cancel_move.save()
         return cancel_move
 
     @classmethod
