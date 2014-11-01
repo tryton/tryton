@@ -27,6 +27,7 @@ from trytond.cache import LRUDict, freeze
 from trytond import backend
 from trytond.rpc import RPC
 from .modelview import ModelView
+from .descriptors import dualmethod
 
 __all__ = ['ModelStorage']
 
@@ -1391,27 +1392,48 @@ class ModelStorage(Model):
             values[fname] = value
         return values
 
-    def save(self):
-        save_values = self._save_values
-        values = self._values
-        self._values = None
-        if save_values or self.id < 0:
-            try:
-                with Transaction().set_cursor(self._cursor), \
-                        Transaction().set_user(self._user), \
-                        Transaction().set_context(self._context):
-                    if self.id < 0:
-                        self._ids.remove(self.id)
-                        try:
-                            self.id = self.create([save_values])[0].id
-                        finally:
-                            self._ids.append(self.id)
-                    else:
-                        self.write([self], save_values)
-            except:
-                self._values = values
-                raise
-        self._init_values = None
+    @dualmethod
+    def save(cls, records):
+        if not records:
+            return
+        values = {}
+        save_values = {}
+        to_create = []
+        to_write = []
+        cursor = records[0]._cursor
+        user = records[0]._user
+        context = records[0]._context
+        for record in records:
+            assert cursor == record._cursor
+            assert user == record._user
+            assert context == record._context
+            save_values[record] = record._save_values
+            values[record] = record._values
+            record._values = None
+            if record.id is None or record.id < 0:
+                to_create.append(record)
+            elif save_values[record]:
+                to_write.append(record)
+        transaction = Transaction()
+        try:
+            with transaction.set_cursor(cursor), \
+                    transaction.set_user(user), \
+                    transaction.set_context(context):
+                if to_create:
+                    news = cls.create([save_values[r] for r in to_create])
+                    for record, new in izip(to_create, news):
+                        record._ids.remove(record.id)
+                        record.id = new.id
+                        record._ids.append(record.id)
+                if to_write:
+                    cls.write(*sum(
+                            (([r], save_values[r]) for r in to_write), ()))
+        except:
+            for record in records:
+                record._values = values[record]
+            raise
+        for record in records:
+            record._init_values = None
 
 
 class EvalEnvironment(dict):

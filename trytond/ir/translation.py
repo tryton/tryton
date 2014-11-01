@@ -780,7 +780,7 @@ class Translation(ModelSQL, ModelView):
                     (model_data.db_id, model_data.noupdate)
 
         translations = set()
-        to_create = []
+        to_save = []
         pofile = polib.pofile(po_path)
 
         id2translation = {}
@@ -872,26 +872,15 @@ class Translation(ModelSQL, ModelView):
                     continue
 
                 if not ids:
-                    to_create.append(translation._save_values)
-                else:
-                    to_write = []
+                    to_save.append(translation)
+                elif not noupdate:
                     for translation_id in ids:
                         old_translation = id2translation[translation_id]
-                        if (old_translation.value != translation.value
-                                or old_translation.fuzzy !=
-                                translation.fuzzy):
-                            to_write.append(old_translation)
-                    with Transaction().set_context(module=module):
-                        if to_write and not noupdate:
-                            cls.write(to_write, {
-                                    'value': translation.value,
-                                    'fuzzy': translation.fuzzy,
-                                    })
-                        translations |= set(cls.browse(ids))
+                        old_translation.value = translation.value
+                        old_translation.fuzzy = translation.fuzzy
+                        to_save.append(old_translation)
 
-        if to_create:
-            with Transaction().set_context(module=module):
-                translations |= set(cls.create(to_create))
+        translations |= set(cls.save(to_save))
 
         if translations:
             all_translations = set(cls.search([

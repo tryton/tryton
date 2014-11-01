@@ -9,6 +9,7 @@ from .workflow import Workflow
 from .dictschema import DictSchemaMixin
 from .match import MatchMixin
 from .union import UnionMixin
+from .descriptors import dualmethod
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin']
+    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod']

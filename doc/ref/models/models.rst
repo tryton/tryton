@@ -230,7 +230,7 @@ Static methods:
 
     Return the default value for :attr:`create_date`.
 
-CLass methods:
+Class methods:
 
 .. classmethod:: ModelStorage.create(vlist)
 
@@ -336,16 +336,18 @@ CLass methods:
     method must be overridden to add validation and must raise an exception if
     validation fails.
 
+Dual methods:
+
+.. classmethod:: ModelStorage.save(records)
+
+    Save the modification made on the records.
+
 Instance methods:
 
 .. method:: ModelStorage.get_rec_name(name)
 
     Getter for the :class:`trytond.model.fields.Function` field
     :attr:`rec_name`.
-
-.. method:: ModelStorage.save()
-
-    Save the modification made on the record instance.
 
 ========
 ModelSQL
