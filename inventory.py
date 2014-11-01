@@ -130,7 +130,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 if move:
                     moves.append(move)
         if moves:
-            moves = Move.create([m._save_values for m in moves])
+            Move.save(moves)
             Move.do(moves)
 
     @classmethod

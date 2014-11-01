@@ -1062,7 +1062,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     continue
                 to_create.append(shipment._get_inventory_move(move))
         if to_create:
-            Move.create([m._save_values for m in to_create])
+            Move.save(to_create)
 
     def _get_inventory_move(self, move):
         'Return inventory move for the outgoing move'
@@ -1158,7 +1158,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 to_create[-1].quantity = out_quantity
                 to_create[-1].unit_price = unit_price
             if to_create:
-                Move.create([m._save_values for m in to_create])
+                Move.save(to_create)
 
             #Re-read the shipment and remove exceeding quantities
             for move in shipment.outgoing_moves:
