@@ -164,7 +164,8 @@ class Move:
         super(Move, cls).do(moves)
         account_moves = []
         for move in moves:
-            account_moves.append(move._get_account_stock_move())
-        account_moves = AccountMove.create(
-            [m._save_values for m in account_moves if m])
+            account_move = move._get_account_stock_move()
+            if account_move:
+                account_moves.append(account_move)
+        AccountMove.save(account_moves)
         AccountMove.post(account_moves)
