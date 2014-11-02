@@ -879,8 +879,8 @@ class Translation(ModelSQL, ModelView):
                         old_translation.value = translation.value
                         old_translation.fuzzy = translation.fuzzy
                         to_save.append(old_translation)
-
-        translations |= set(cls.save(to_save))
+        cls.save(to_save)
+        translations |= set(to_save)
 
         if translations:
             all_translations = set(cls.search([
