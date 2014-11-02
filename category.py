@@ -67,7 +67,6 @@ class Category(ModelSQL, ModelView):
             for name in values:
                 domain.append((field, clause[1], name))
                 field = 'parent.' + field
-            categories = cls.search(domain, order=[])
-            return [('id', 'in', [category.id for category in categories])]
+            return domain
         #TODO Handle list
         return [('name',) + tuple(clause[1:])]
