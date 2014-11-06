@@ -608,11 +608,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
         line = MoveLine.__table__()
         invoice = cls.__table__()
         cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
 
         lines = defaultdict(list)
-        for i in range(0, len(invoices), in_max):
-            sub_ids = [i.id for i in invoices[i:i + in_max]]
+        for sub_ids in grouped_slice(invoices):
             red_sql = reduce_ids(invoice.id, sub_ids)
             cursor.execute(*invoice.join(line,
                 condition=((invoice.move == line.move)
