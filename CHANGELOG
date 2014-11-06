@@ -1,3 +1,6 @@
+Version 3.0.8 - 2014-11-06
+* Bug fixes (see mercurial logs for details)
+
 Version 3.0.7 - 2014-09-29
 * Bug fixes (see mercurial logs for details)
 * Use literal_eval instead of safe_eval (CVE-2014-6633)
