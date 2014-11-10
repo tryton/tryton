@@ -84,7 +84,7 @@ class Record(SignalEvent):
                             # Don't compute context for same group
                             or (record.context_get() == record_context)))
 
-                if self.parent:
+                if self.parent and self.parent.model_name == self.model_name:
                     group = sum(self.parent.group.children, [])
                     filter_ = filter_parent_group
                 else:
