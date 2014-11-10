@@ -275,6 +275,7 @@ class Form(SignalEvent, TabContent):
         revision = Revision(revisions, revision).run()
         # Prevent too old revision in form view
         if (self.screen.current_view.view_type == 'form'
+                and revision
                 and revision < revisions[-1][0]):
                 revision = revisions[-1][0]
         if revision != self.screen.context.get('_datetime'):
