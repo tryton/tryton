@@ -109,7 +109,7 @@ this repository contains the full copyright notices and license terms. -->
                     ${PartyIdentification(payment.party)}
                 </Dbtr>
                 <DbtrAcct>
-                    ${Account(payment.sepa_bank_account_number)}
+                    ${Account(payment.sepa_bank_account_number, currency=False)}
                 </DbtrAcct>
                 <!-- UltmtDbtr -->
                 <!-- InstrForCdtrAgt -->

@@ -36,13 +36,13 @@ this repository contains the full copyright notices and license terms. -->
         <Ctry py:if="address.country">${address.country.code}</Ctry>
         <!-- AdrLine -->
     </py:def>
-    <py:def function="Account(account_number)">
+    <py:def function="Account(account_number, currency=True)">
         <Id>
             <!-- EPC only IBAN is allowed -->
             <IBAN>${account_number.compact_iban}</IBAN>
         </Id>
         <!-- Tp -->
-        <Ccy py:if="account_number.account.currency">${account_number.account.currency.code}</Ccy>
+        <Ccy py:if="currency and account_number.account.currency">${account_number.account.currency.code}</Ccy>
         <!-- Nm -->
     </py:def>
     <py:def function="FinancialInstitution(bank, only_bic=False)">
