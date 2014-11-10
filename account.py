@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 
 
 __all__ = ['InvoiceLineStockMove', 'InvoiceLine']
@@ -21,7 +22,11 @@ class InvoiceLineStockMove(ModelSQL):
 class InvoiceLine:
     __name__ = 'account.invoice.line'
     stock_moves = fields.Many2Many('account.invoice.line-stock.move',
-        'invoice_line', 'stock_move', 'Stock Moves')
+        'invoice_line', 'stock_move', 'Stock Moves',
+        states={
+            'invisible': Eval('type') != 'line',
+            },
+        depends=['type'])
 
     @property
     def moved_quantity(self):
