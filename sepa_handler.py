@@ -32,13 +32,14 @@ class CAMT054(SEPAHandler):
             element.clear()
 
     def handle_entry(self, element):
-        payment = self.get_payment(element)
+        payments = self.get_payments(element)
         if self.is_returned(element):
-            self.set_return_information(payment, element)
-            payment.save()
-            self.Payment.fail([payment])
+            for payment in payments:
+                self.set_return_information(payment, element)
+            self.Payment.save(payments)
+            self.Payment.fail(payments)
         else:
-            self.Payment.succeed([payment])
+            self.Payment.succeed(payments)
 
     def get_payment_kind(self, element):
         tag = etree.QName(element)
@@ -49,7 +50,7 @@ class CAMT054(SEPAHandler):
         'DBIT': 'receivable',
         }
 
-    def get_payment(self, element):
+    def get_payments(self, element):
         tag = etree.QName(element)
         details = element.find('./{%s}NtryDtls' % tag.namespace)
         if details is None:
@@ -66,11 +67,11 @@ class CAMT054(SEPAHandler):
             return payment
         end_to_end_id = details.find('.//{%s}EndToEndId' % tag.namespace)
         if end_to_end_id is not None:
-            payment, = self.Payment.search([
+            payments = self.Payment.search([
                     ('sepa_end_to_end_id', '=', end_to_end_id.text),
                     ('kind', '=', self.get_payment_kind(element)),
                     ])
-            return payment
+            return payments
 
     def is_returned(self, element):
         tag = etree.QName(element)
