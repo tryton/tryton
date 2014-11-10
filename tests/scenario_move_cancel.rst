@@ -84,6 +84,8 @@ Create Move to cancel::
 Cancel Move::
 
     >>> cancel_move = Wizard('account.move.cancel', [move])
+    >>> cancel_move.form.description = 'Cancel'
+    >>> cancel_move.execute('cancel')
     >>> cancel_move.state
     'end'
     >>> move.reload()
@@ -94,6 +96,8 @@ Cancel Move::
     ...     if l.move != move]
     >>> cancel_move.origin == move
     True
+    >>> cancel_move.description
+    u'Cancel'
     >>> revenue.reload()
     >>> revenue.credit
     Decimal('0.00')

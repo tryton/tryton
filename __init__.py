@@ -47,6 +47,7 @@ def register():
         OpenJournalAsk,
         ReconcileLinesWriteOff,
         ReconcileShow,
+        CancelMovesDefault,
         FiscalYearLine,
         FiscalYear2,
         PrintGeneralJournalStart,

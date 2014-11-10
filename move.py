@@ -30,7 +30,7 @@ __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'ReconcileLinesWriteOff', 'ReconcileLines',
     'UnreconcileLines',
     'Reconcile', 'ReconcileShow',
-    'CancelMoves',
+    'CancelMoves', 'CancelMovesDefault',
     'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
 __metaclass__ = PoolMeta
@@ -366,9 +366,11 @@ class Move(ModelSQL, ModelView):
                     })
         return default
 
-    def cancel(self):
+    def cancel(self, default=None):
         'Return a cancel move'
-        default = self._cancel_default()
+        if default is None:
+            default = {}
+        default.update(self._cancel_default())
         cancel_move, = self.copy([self], default=default)
         for line in cancel_move.lines:
             line.debit *= -1
@@ -1892,8 +1894,19 @@ class ReconcileShow(ModelView):
 class CancelMoves(Wizard):
     'Cancel Moves'
     __name__ = 'account.move.cancel'
-    start_state = 'cancel'
+    start_state = 'default'
+    default = StateView('account.move.cancel.default',
+        'account.move_cancel_default_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'cancel', 'tryton-ok', default=True),
+            ])
     cancel = StateTransition()
+
+    def default_cancel(self, move):
+        default = {}
+        if self.default.description:
+            default['description'] = self.default.description
+        return default
 
     def transition_cancel(self):
         pool = Pool()
@@ -1902,7 +1915,8 @@ class CancelMoves(Wizard):
 
         moves = Move.browse(Transaction().context['active_ids'])
         for move in moves:
-            cancel_move = move.cancel()
+            default = self.default_cancel(move)
+            cancel_move = move.cancel(default=default)
             to_reconcile = defaultdict(list)
             for line in move.lines + cancel_move.lines:
                 if line.account.reconcile:
@@ -1910,6 +1924,12 @@ class CancelMoves(Wizard):
             for lines in to_reconcile.itervalues():
                 Line.reconcile(lines)
         return 'end'
+
+
+class CancelMovesDefault(ModelView):
+    'Cancel Moves'
+    __name__ = 'account.move.cancel.default'
+    description = fields.Char('Description')
 
 
 class FiscalYearLine(ModelSQL):
