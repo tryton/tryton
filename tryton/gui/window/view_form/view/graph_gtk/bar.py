@@ -3,7 +3,7 @@
 #This code is inspired by the pycha project
 #(http://www.lorenzogil.com/projects/pycha/)
 from graph import Graph
-from tryton.common import float_time_to_text
+from tryton.common import float_time_to_text, highlight_rgb
 import locale
 import math
 import cairo
@@ -37,7 +37,7 @@ class Bar(Graph):
             self.drawRectangle(cr, x, y, w, h)
             r, g, b = self.colorScheme[bar.yname]
             if bar.highlight:
-                r, g, b = self.colorScheme['__highlight']
+                r, g, b = highlight_rgb(r, g, b)
             cr.set_source(self.sourceRectangle(x, y, w, h, r, g, b))
             cr.fill_preserve()
             cr.stroke()

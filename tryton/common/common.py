@@ -11,6 +11,7 @@ import subprocess
 import re
 import logging
 import unicodedata
+import colorsys
 from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
@@ -1177,33 +1178,26 @@ def hex2rgb(hexstring, digits=2):
     return r / top, g / top, b / top
 
 
-def clamp(minValue, maxValue, value):
-    """Make sure value is between minValue and maxValue"""
-    if value < minValue:
-                return minValue
-    if value > maxValue:
-                return maxValue
-    return value
+def highlight_rgb(r, g, b, amount=0.1):
+    h, s, v = colorsys.rgb_to_hsv(r, g, b)
+    return colorsys.hsv_to_rgb(h, s, (v + amount) % 1)
 
 
-def lighten(r, g, b, amount):
-    """Return a lighter version of the color (r, g, b)"""
-    return (clamp(0.0, 1.0, r + amount),
-            clamp(0.0, 1.0, g + amount),
-            clamp(0.0, 1.0, b + amount))
-
-
-def generateColorscheme(masterColor, keys, light=0.06):
+def generateColorscheme(masterColor, keys, light=0.1):
     """
     Generates a dictionary where the keys match the keys argument and
     the values are colors derivated from the masterColor.
-    Each color is a lighter version of masterColor separated by a difference
-    given by the light argument.
+    Each color has a value higher then the previous of `light`.
+    Each color has a hue separated from the previous by the golden angle.
     The masterColor is given in a hex string format.
     """
     r, g, b = hex2rgb(COLOR_SCHEMES.get(masterColor, masterColor))
-    return dict([(key, lighten(r, g, b, light * i))
-        for i, key in enumerate(keys)])
+    h, s, v = colorsys.rgb_to_hsv(r, g, b)
+    if keys:
+        light = min(light, (1. - v) / len(keys))
+    golden_angle = 0.618033988749895
+    return {key: colorsys.hsv_to_rgb((h + golden_angle * i) % 1,
+            s, (v + light * i) % 1) for i, key in enumerate(keys)}
 
 
 class DBProgress(object):

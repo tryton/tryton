@@ -454,7 +454,7 @@ class Graph(gtk.DrawingArea):
         color = self.attrs.get('color', 'blue')
         r, g, b = hex2rgb(COLOR_SCHEMES.get(color, color))
         maxcolor = max(max(r, g), b)
-        self.colorScheme = generateColorscheme(color, keys + ['__highlight'],
+        self.colorScheme = generateColorscheme(color, keys,
                 maxcolor / (len(keys) or 1))
         for yfield in self.yfields:
             if yfield.get('color'):

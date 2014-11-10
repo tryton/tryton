@@ -3,7 +3,7 @@
 #This code is inspired by the pycha project
 #(http://www.lorenzogil.com/projects/pycha/)
 from graph import Graph
-from tryton.common import hex2rgb, float_time_to_text
+from tryton.common import hex2rgb, highlight_rgb, float_time_to_text
 import locale
 import math
 import cairo
@@ -146,7 +146,8 @@ class Line(Graph):
                     point.y * self.area.h + self.area.y,
                     3, 0, 2 * math.pi)
                 cr.stroke()
-                cr.set_source_rgb(*self.colorScheme['__highlight'])
+                cr.set_source_rgb(*highlight_rgb(
+                        *self.colorScheme[point.yname]))
                 cr.arc(point.x * self.area.w + self.area.x,
                     point.y * self.area.h + self.area.y,
                     3, 0, 2 * math.pi)

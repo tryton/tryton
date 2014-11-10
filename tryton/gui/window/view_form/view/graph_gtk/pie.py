@@ -5,7 +5,7 @@
 from graph import Graph, Area
 import math
 import cairo
-from tryton.common import hex2rgb, float_time_to_text
+from tryton.common import hex2rgb, highlight_rgb, float_time_to_text
 import locale
 import tryton.rpc as rpc
 
@@ -94,7 +94,7 @@ class Pie(Graph):
                 if bool(int(self.yfields[0].get('fill', 1))):
                     color = self.colorScheme[slice.xname]
                     if slice.highlight:
-                        color = self.colorScheme['__highlight']
+                        color = highlight_rgb(*color)
                     cr.set_source_rgba(*color)
                     slice.draw(cr, self.centerx, self.centery, self.radius)
                     cr.fill()
