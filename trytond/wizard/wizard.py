@@ -73,8 +73,11 @@ class StateView(State):
         '''
         Model_ = Pool().get(self.model_name)
         ModelData = Pool().get('ir.model.data')
-        module, fs_id = self.view.split('.')
-        view_id = ModelData.get_id(module, fs_id)
+        if self.view:
+            module, fs_id = self.view.split('.')
+            view_id = ModelData.get_id(module, fs_id)
+        else:
+            view_id = None
         return Model_.fields_view_get(view_id=view_id, view_type='form')
 
     def get_defaults(self, wizard, state_name, fields):
