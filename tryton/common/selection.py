@@ -198,6 +198,9 @@ class PopdownMixin(object):
             if value:
                 return False
         entry.set_active(active)
+        if active == -1:
+            # When setting no item GTK doesn't clear the entry
+            entry.child.set_text('')
         return True
 
 
