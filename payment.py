@@ -142,9 +142,8 @@ class Group:
         Payment = pool.get('account.payment')
         Message = pool.get('account.payment.sepa.message')
         if self.kind == 'receivable':
-            payments = [p for p in self.payments if not p.sepa_mandate]
-            mandates = Payment.get_sepa_mandates(payments)
-            for payment, mandate in zip(payments, mandates):
+            mandates = Payment.get_sepa_mandates(self.payments)
+            for payment, mandate in zip(self.payments, mandates):
                 if not mandate:
                     self.raise_user_error('no_mandate', payment.rec_name)
                 # Write one by one becasue mandate.sequence_type must be
@@ -219,14 +218,27 @@ class Payment:
         'get_sepa_instruction_id', searcher='search_sepa_instruction_id')
 
     @classmethod
+    def copy(cls, payments, default=None):
+        if default is None:
+            default = {}
+        default.setdefault('sepa_mandate_sequence_type', None)
+        return super(Payment, cls).copy(payments, default=default)
+
+    @classmethod
     def get_sepa_mandates(cls, payments):
         mandates = []
         for payment in payments:
-            for mandate in payment.party.sepa_mandates:
-                if mandate.is_valid:
-                    break
+            if payment.sepa_mandate:
+                if payment.sepa_mandate.is_valid:
+                    mandate = payment.sepa_mandate
+                else:
+                    mandate = None
             else:
-                mandate = None
+                for mandate in payment.party.sepa_mandates:
+                    if mandate.is_valid:
+                        break
+                else:
+                    mandate = None
             mandates.append(mandate)
         return mandates
 
