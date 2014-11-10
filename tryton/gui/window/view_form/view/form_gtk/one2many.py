@@ -301,7 +301,7 @@ class One2Many(Widget):
 
         # New button must be added to focus chain to allow keyboard only
         # creation when there is no existing record on form view.
-        focus_chain = self.title_box.get_focus_chain()
+        focus_chain = self.title_box.get_focus_chain() or []
         if o2m_size == 0 and self.screen.current_view.view_type == 'form':
             if self.but_new not in focus_chain:
                 focus_chain.append(self.but_new)
