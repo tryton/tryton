@@ -367,9 +367,9 @@ class Get(PYSON):
             assert isinstance(obj, dict), 'obj must be a dict'
         self._obj = obj
         if isinstance(key, PYSON):
-            assert key.types() == set([str]), 'key must be a string'
+            assert key.types() == set([str, unicode]), 'key must be a string'
         else:
-            assert type(key) == str, 'key must be a string'
+            assert type(key) in [str, unicode], 'key must be a string'
         self._key = key
         self._default = default
 
@@ -397,20 +397,20 @@ class In(PYSON):
     def __init__(self, key, obj):
         super(In, self).__init__()
         if isinstance(key, PYSON):
-            assert key.types().issubset(set([str, int, long])), \
+            assert key.types().issubset(set([str, unicode, int, long])), \
                 'key must be a string or an integer or a long'
         else:
-            assert type(key) in [str, int, long], \
+            assert type(key) in [str, unicode, int, long], \
                 'key must be a string or an integer or a long'
         if isinstance(obj, PYSON):
             assert obj.types().issubset(set([dict, list])), \
                 'obj must be a dict or a list'
             if obj.types() == set([dict]):
-                assert type(key) == str, 'key must be a string'
+                assert type(key) in [str, unicode], 'key must be a string'
         else:
             assert type(obj) in [dict, list]
             if type(obj) == dict:
-                assert type(key) == str, 'key must be a string'
+                assert type(key) in [str, unicode], 'key must be a string'
         self._key = key
         self._obj = obj
 
@@ -542,10 +542,10 @@ class Len(PYSON):
     def __init__(self, value):
         super(Len, self).__init__()
         if isinstance(value, PYSON):
-            assert value.types().issubset(set([dict, list, str])), \
+            assert value.types().issubset(set([dict, list, str, unicode])), \
                 'value must be a dict or a list or a string'
         else:
-            assert type(value) in [dict, list, str], \
+            assert type(value) in [dict, list, str, unicode], \
                 'value must be a dict or list or a string'
         self._value = value
 

@@ -14,7 +14,10 @@ class PoolMeta(type):
     def __new__(cls, name, bases, dct):
         new = type.__new__(cls, name, bases, dct)
         if '__name__' in dct:
-            new.__name__ = dct['__name__']
+            try:
+                new.__name__ = dct['__name__']
+            except TypeError:
+                new.__name__ = dct['__name__'].encode('utf-8')
         return new
 
 
