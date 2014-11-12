@@ -354,7 +354,7 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                 is_returned.return_value = True
                 handler = CAMT054(BytesIO(message), Payment)
 
-                payment.save.assert_called_with()
+                Payment.save.assert_called_with([payment])
                 Payment.fail.assert_called_with([payment])
 
     def test_camt054_001_01(self):
