@@ -25,7 +25,7 @@ class One2One(Many2Many):
         '''
         res = super(One2One, self).get(ids, model, name, values=values)
         for i, vals in res.iteritems():
-            res[i] = vals[0] if vals else False
+            res[i] = vals[0] if vals else None
         return res
 
     def set(self, Model, name, ids, value, *args):
