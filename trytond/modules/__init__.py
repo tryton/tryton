@@ -364,9 +364,6 @@ def load_modules(database_name, pool, update=None, lang=None):
         global res
         cursor = Transaction().cursor
         if update:
-            # Migration from 2.2: workflow module removed
-            cursor.execute(*ir_module.delete(
-                    where=(ir_module.name == 'workflow')))
             cursor.execute(*ir_module.select(ir_module.name,
                     where=ir_module.state.in_(('installed', 'to install',
                             'to upgrade', 'to remove'))))
