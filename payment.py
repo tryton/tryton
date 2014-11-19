@@ -12,7 +12,7 @@ from lxml import etree
 from sql import Literal
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields, dualmethod
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids, grouped_slice
@@ -130,6 +130,9 @@ class Group:
         cls._error_messages.update({
                 'no_mandate': 'No valid mandate for payment "%s"',
                 })
+        cls._buttons.update({
+                'generate_message': {},
+                })
 
     def get_sepa_template(self):
         if self.kind == 'payable':
@@ -140,7 +143,6 @@ class Group:
     def process_sepa(self):
         pool = Pool()
         Payment = pool.get('account.payment')
-        Message = pool.get('account.payment.sepa.message')
         if self.kind == 'receivable':
             mandates = Payment.get_sepa_mandates(self.payments)
             for payment, mandate in zip(self.payments, mandates):
@@ -152,16 +154,26 @@ class Group:
                         'sepa_mandate': mandate,
                         'sepa_mandate_sequence_type': mandate.sequence_type,
                         })
-        tmpl = self.get_sepa_template()
-        if not tmpl:
-            raise NotImplementedError
-        if not self.sepa_messages:
-            self.sepa_messages = ()
-        message = tmpl.generate(group=self,
-            datetime=datetime, normalize=unicodedata.normalize,
-            ).filter(remove_comment).render()
-        message = Message(message=message, type='out', state='waiting')
-        self.sepa_messages += (message,)
+        self.generate_message(_save=False)
+
+    @dualmethod
+    @ModelView.button
+    def generate_message(cls, groups, _save=True):
+        pool = Pool()
+        Message = pool.get('account.payment.sepa.message')
+        for group in groups:
+            tmpl = group.get_sepa_template()
+            if not tmpl:
+                raise NotImplementedError
+            if not group.sepa_messages:
+                group.sepa_messages = ()
+            message = tmpl.generate(group=group,
+                datetime=datetime, normalize=unicodedata.normalize,
+                ).filter(remove_comment).render()
+            message = Message(message=message, type='out', state='waiting')
+            group.sepa_messages += (message,)
+        if _save:
+            cls.save(groups)
 
     @property
     def sepa_initiating_party(self):
