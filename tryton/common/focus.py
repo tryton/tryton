@@ -41,6 +41,15 @@ def tab_compare(a, b):
         return (y1 > y2) - (y1 < y2)
 
 
+def get_focus_chain(widget):
+    focus_chain = widget.get_focus_chain()
+    # If the focus_chain is not defined on the widget then we will simply
+    # search into all its children widgets
+    return (focus_chain
+        if focus_chain is not None
+        else sorted(widget.get_children(), key=cmp_to_key(tab_compare)))
+
+
 def find_focusable_child(widget):
     if not widget.get_visible():
         return None
@@ -48,13 +57,7 @@ def find_focusable_child(widget):
         return widget
     if not hasattr(widget, 'get_children'):
         return None
-    focus_chain = widget.get_focus_chain()
-    # If the focus_chain is not defined on the widget then we will simply
-    # search into all its children widgets
-    widgets = (focus_chain
-        if focus_chain is not None
-        else sorted(widget.get_children(), key=cmp_to_key(tab_compare)))
-    for child in widgets:
+    for child in get_focus_chain(widget):
         focusable = find_focusable_child(child)
         if focusable:
             return focusable
@@ -79,3 +82,11 @@ def next_focus_widget(widget):
             return focus_widget
         else:
             return next_focus_widget(widget.parent)
+
+
+def find_first_focus_widget(ancestor, widgets):
+    "Return the widget from widgets which should have first the focus"
+    for child in get_focus_chain(ancestor):
+        common = [w for w in widgets if w.is_ancestor(child)]
+        if common:
+            return find_first_focus_widget(child, common)

@@ -1,14 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import operator
-from functools import cmp_to_key
 import gtk
 import gettext
 from collections import defaultdict
 
 from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
-    next_focus_widget, find_focusable_child, tab_compare)
+    next_focus_widget, find_focusable_child, find_first_focus_widget)
 from tryton.common import Tooltips, node_attributes, ICONFACTORY
 from tryton.common.button import Button
 from tryton.config import CONFIG
@@ -501,9 +500,8 @@ class ViewForm(View):
                     if not field.get_state_attrs(record).get('valid', True):
                         invalid_widgets.append(
                             find_focusable_child(widget.widget))
-            invalid_widgets.sort(key=cmp_to_key(tab_compare))
-            if invalid_widgets:
-                focus_widget = invalid_widgets[0]
+            focus_widget = find_first_focus_widget(
+                self._viewport, invalid_widgets)
         if focus_widget:
             for notebook in self.notebooks:
                 for i in range(notebook.get_n_pages()):
