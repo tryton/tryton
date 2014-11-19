@@ -276,6 +276,12 @@ class Payment:
                     if number.type == 'iban':
                         return number
 
+    @property
+    def rejected(self):
+        return (self.state == 'failed'
+            and self.sepa_return_reason_code
+            and self.sepa_return_reason_information == '/RTYP/RJCT')
+
 
 class Mandate(Workflow, ModelSQL, ModelView):
     'SEPA Mandate'
@@ -459,7 +465,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def sequence_type(self):
         if self.type == 'one-off':
             return 'OOFF'
-        elif not self.payments:
+        elif (not self.payments
+                or all(p.rejected for p in self.payments)):
             return 'FRST'
         # TODO manage FNAL
         else:
