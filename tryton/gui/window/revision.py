@@ -34,12 +34,18 @@ class Revision(object):
         self.entry = DateEntry(format_)
         if revision:
             self.entry.set_text(datetime_strftime(revision, format_))
+            active = -1
+        else:
+            active = 0
         list_store = gtk.ListStore(str, str)
         list_store.append(('', ''))
-        for revision, id_, name in revisions:
-            list_store.append((datetime_strftime(revision, format_), name))
+        for i, (rev, id_, name) in enumerate(revisions, 1):
+            list_store.append((datetime_strftime(rev, format_), name))
+            if rev == revision:
+                active = i
         combobox = gtk.ComboBoxEntry(list_store)
         combobox.add(self.entry)
+        combobox.set_active(active)
         cell = gtk.CellRendererText()
         combobox.pack_start(cell, True)
         combobox.add_attribute(cell, 'text', 1)
