@@ -1210,7 +1210,7 @@
                             setdefault = false;
                         }
                     }
-                    if (setdefault) {
+                    if (setdefault && !pre_validate) {
                         this.set_client(record, value);
                         this.get_state_attrs(record).domain_readonly =
                             domain_readonly;
@@ -1837,7 +1837,9 @@
             }
             for (var i = 0, len = record._values[this.name] || []; i < len; i++) {
                 var record2 = record._values[i];
-                if (jQuery.isEmptyObject(record2._loaded) && (record2.id >= 0)) {
+                if (jQuery.isEmptyObject(record2._loaded) &&
+                        (record2.id >= 0) &&
+                        !pre_validate) {
                     continue;
                 }
                 // XXX manage promises
