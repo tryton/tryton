@@ -113,7 +113,7 @@ class Field(object):
                             constraintfields.add(leaf[0])
                     if localpart != 'id' or recordpart not in constraintfields:
                         setdefault = False
-                if setdefault:
+                if setdefault and not pre_validate:
                     self.set_client(record, value)
                     self.get_state_attrs(record)['domain_readonly'] = (
                         domain_readonly)
@@ -718,7 +718,7 @@ class O2MField(Field):
             else:
                 ldomain = [('id', '=', None)]
         for record2 in record.value.get(self.name, []):
-            if not record2.loaded and record2.id >= 0:
+            if not record2.loaded and record2.id >= 0 and not pre_validate:
                 continue
             test &= record2.validate(softvalidation=softvalidation,
                 pre_validate=ldomain)
