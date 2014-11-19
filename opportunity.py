@@ -211,10 +211,11 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
 
-        sequence = Config(1).sale_opportunity_sequence
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
-            vals['reference'] = Sequence.get_id(sequence.id)
+            if not vals.get('reference'):
+                sequence = Config(1).sale_opportunity_sequence
+                vals['reference'] = Sequence.get_id(sequence.id)
         return super(SaleOpportunity, cls).create(vlist)
 
     @classmethod
