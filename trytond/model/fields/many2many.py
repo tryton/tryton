@@ -235,7 +235,7 @@ class Many2Many(Field):
                 return Target(**data)
             else:
                 return Target(data)
-        value = [instance(x) for x in (value or [])]
+        value = tuple(instance(x) for x in (value or []))
         super(Many2Many, self).__set__(inst, value)
 
     def convert_domain_child(self, domain, tables):
