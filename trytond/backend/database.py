@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.const import MODEL_CACHE_SIZE
+from trytond.config import config
 
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
@@ -117,7 +117,8 @@ class CursorInterface(object):
         context = Transaction().context
         keys = tuple(((key, context[key]) for key in sorted(self.cache_keys)
                 if key in context))
-        return self.cache.setdefault((user, keys), LRUDict(MODEL_CACHE_SIZE))
+        return self.cache.setdefault((user, keys),
+            LRUDict(config.getint('cache', 'model')))
 
     def execute(self, sql, params=None):
         '''

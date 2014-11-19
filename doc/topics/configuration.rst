@@ -135,6 +135,34 @@ table for translations.
 
 Default: `en_US`
 
+cache
+-----
+
+Defines size of various cache.
+
+model
+~~~~~
+
+The number of different model kept in the cache per transaction.
+
+Default: `200`
+
+record
+~~~~~~
+
+The number of record loaded kept in the cache of the list.
+It can be changed locally using the `_record_cache_size` key in
+:attr:`Transaction.context`.
+
+Default: `2000`
+
+field
+~~~~~
+
+The number of field to load with an `eager` :attr:`Field.loading`.
+
+Default: `100`
+
 ssl
 ---
 

@@ -27,7 +27,7 @@ from ..pyson import PYSONEncoder
 from ..transaction import Transaction
 from ..pool import Pool
 from ..cache import Cache
-from ..const import RECORD_CACHE_SIZE
+from ..config import config
 
 __all__ = ['Translation',
     'TranslationSetStart', 'TranslationSetSucceed', 'TranslationSet',
@@ -795,7 +795,7 @@ class Translation(ModelSQL, ModelView):
                 raise ValueError('Unknow translation type: %s' %
                     translation.type)
             key2ids.setdefault(key, []).append(translation.id)
-            if len(module_translations) <= RECORD_CACHE_SIZE:
+            if len(module_translations) <= config.getint('cache', 'record'):
                 id2translation[translation.id] = translation
 
         def override_translation(ressource_id, new_translation):
@@ -829,12 +829,14 @@ class Translation(ModelSQL, ModelView):
         # Make a first loop to retreive translation ids in the right order to
         # get better read locality and a full usage of the cache.
         translation_ids = []
-        if len(module_translations) <= RECORD_CACHE_SIZE:
+        if len(module_translations) <= config.getint('cache', 'record'):
             processes = (True,)
         else:
             processes = (False, True)
         for processing in processes:
-            if processing and len(module_translations) > RECORD_CACHE_SIZE:
+            if (processing
+                    and len(module_translations) > config.getint('cache',
+                        'record')):
                 id2translation = dict((t.id, t)
                     for t in cls.browse(translation_ids))
             for entry in pofile:

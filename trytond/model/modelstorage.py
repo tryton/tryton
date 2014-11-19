@@ -20,7 +20,8 @@ from trytond.model import Model
 from trytond.model import fields
 from trytond.tools import reduce_domain, memoize
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
-from trytond.const import OPERATORS, RECORD_CACHE_SIZE, BROWSE_FIELD_TRESHOLD
+from trytond.const import OPERATORS
+from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict, freeze
@@ -30,6 +31,11 @@ from .modelview import ModelView
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage']
+
+
+def cache_size():
+    return Transaction().context.get('_record_cache_size',
+        config.getint('cache', 'record'))
 
 
 class ModelStorage(Model):
@@ -434,7 +440,7 @@ class ModelStorage(Model):
         Return a list of instance for the ids
         '''
         ids = map(int, ids)
-        local_cache = LRUDict(RECORD_CACHE_SIZE)
+        local_cache = LRUDict(cache_size())
         return [cls(int(x), _ids=ids, _local_cache=local_cache) for x in ids]
 
     @staticmethod
@@ -1151,7 +1157,7 @@ class ModelStorage(Model):
         if _local_cache is not None:
             self._local_cache = _local_cache
         else:
-            self._local_cache = LRUDict(RECORD_CACHE_SIZE)
+            self._local_cache = LRUDict(cache_size())
         self._local_cache.counter = Transaction().counter
 
         super(ModelStorage, self).__init__(id, **kwargs)
@@ -1160,7 +1166,7 @@ class ModelStorage(Model):
     def _cache(self):
         cache = self._cursor_cache
         if self.__name__ not in cache:
-            cache[self.__name__] = LRUDict(RECORD_CACHE_SIZE)
+            cache[self.__name__] = LRUDict(cache_size())
         return cache[self.__name__]
 
     def __getattr__(self, name):
@@ -1203,7 +1209,7 @@ class ModelStorage(Model):
             to_remove = set(x for x, y in fread_accesses.iteritems()
                     if not y and x != name)
 
-            threshold = BROWSE_FIELD_TRESHOLD
+            threshold = config.getint('cache', 'field')
 
             def not_cached(item):
                 fname, field = item
@@ -1284,7 +1290,7 @@ class ModelStorage(Model):
             with Transaction().set_context(**ctx):
                 key = (Model, freeze(ctx))
                 local_cache = model2cache.setdefault(key,
-                    LRUDict(RECORD_CACHE_SIZE))
+                    LRUDict(cache_size()))
                 ids = model2ids.setdefault(key, [])
                 if field._type in ('many2one', 'one2one', 'reference'):
                     ids.append(value)

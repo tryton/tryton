@@ -15,12 +15,15 @@ from trytond.model import ModelStorage, ModelView
 from trytond.model import fields
 from trytond import backend
 from trytond.tools import reduce_ids, grouped_slice
-from trytond.const import OPERATORS, RECORD_CACHE_SIZE
+from trytond.const import OPERATORS
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict
 from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
+
+from .modelstorage import cache_size
+
 _RE_UNIQUE = re.compile('UNIQUE\s*\((.*)\)', re.I)
 _RE_CHECK = re.compile('CHECK\s*\((.*)\)', re.I)
 
@@ -501,7 +504,7 @@ class ModelSQL(ModelStorage):
         cls.__insert_history(new_ids)
 
         records = cls.browse(new_ids)
-        for sub_records in grouped_slice(records, RECORD_CACHE_SIZE):
+        for sub_records in grouped_slice(records, cache_size()):
             cls._validate(sub_records)
 
         field_names = cls._fields.keys()
@@ -836,7 +839,7 @@ class ModelSQL(ModelStorage):
             field.set(cls, fname, *fargs)
 
         cls.__insert_history(all_ids)
-        for sub_records in grouped_slice(all_records, RECORD_CACHE_SIZE):
+        for sub_records in grouped_slice(all_records, cache_size()):
             cls._validate(sub_records, field_names=all_field_names)
         cls.trigger_write(trigger_eligibles)
 
@@ -1053,7 +1056,7 @@ class ModelSQL(ModelStorage):
         rows = cursor.dictfetchmany(cursor.IN_MAX)
         cache = cursor.get_cache()
         if cls.__name__ not in cache:
-            cache[cls.__name__] = LRUDict(RECORD_CACHE_SIZE)
+            cache[cls.__name__] = LRUDict(cache_size())
         delete_records = transaction.delete_records.setdefault(cls.__name__,
             set())
 
