@@ -95,7 +95,7 @@ class ViewGraph(View):
     def get_buttons(self):
         return []
 
-    def save(self, widget, graph):
+    def save(self, widget):
         parent = get_toplevel_window()
         dia = gtk.Dialog(_('Save As'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
@@ -162,7 +162,8 @@ class ViewGraph(View):
                     if not filename.endswith('.png'):
                         filename = filename + '.png'
                     try:
-                        graph.export_png(filename, width, height)
+                        self.widgets['root'].export_png(
+                            filename, width, height)
                         break
                     except MemoryError:
                         message(_('Image size too large!'), dia,
