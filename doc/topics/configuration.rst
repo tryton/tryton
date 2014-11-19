@@ -4,7 +4,7 @@
 Configuration file for Tryton
 =============================
 
-The configuration file control some aspects of the behavior of Tryton.
+The configuration file controls some aspects of the behavior of Tryton.
 The file uses a simple ini-file format. It consists of sections, led by a
 `[section]` header and followed by `name = value` entries:
 
@@ -33,9 +33,10 @@ Defines the behavior of the JSON-RPC_ network interface.
 listen
 ~~~~~~
 
-Defines a comma separated list of couple of host (or IP address) and port numer
-separeted by a colon to listen on.
-The default value is `localhost:8000`.
+Defines a comma separated list of couples of host (or IP address) and port
+number separated by a colon to listen on.
+
+Default `localhost:8000`
 
 hostname
 ~~~~~~~~
@@ -45,7 +46,9 @@ Defines the hostname for this network interface.
 data
 ~~~~
 
-Defines the root path to retrieve data for `GET` request.
+Defines the root path to retrieve data for `GET` requests.
+
+Default: `/var/www/localhost/tryton`
 
 xmlrpc
 ------
@@ -55,7 +58,7 @@ Defines the behavior of the XML-RPC_ network interface.
 listen
 ~~~~~~
 
-Same as for `jsonrpc` except it have no default value.
+Same as for `jsonrpc` except it has no default value.
 
 webdav
 ------
@@ -65,12 +68,12 @@ Define the behavior of the WebDAV_ network interface.
 listen
 ~~~~~~
 
-Same as for `jsonrpc` except it have no default value.
+Same as for `jsonrpc` except it has no default value.
 
 database
 --------
 
-Defines how database is managed.
+Defines how the database is managed.
 
 uri
 ~~~
@@ -80,7 +83,9 @@ The typical form is:
 
     database://username:password@host:port/
 
-The default available databases are:
+Default: `sqlite://`
+
+The available databases are:
 
 PostgreSQL
 **********
@@ -103,30 +108,40 @@ Same as for PostgreSQL.
 path
 ~~~~
 
-The directory where Tryton should store files and so the user running `trytond`
+The directory where Tryton stores files and so the user running `trytond`
 must have write access on this directory.
-The default value is `/var/lib/trytond/`.
+
+Default: `/var/lib/trytond/`
 
 list
 ~~~~
 
-A boolean value (default: `True`) to list available databases.
+A boolean value to list available databases.
+
+Default: `True`
 
 retry
 ~~~~~
 
-The number of retries when a database operation error occurs during a request.
+The number of retries when a database operational error occurs during a request.
+
+Default: `5`
 
 language
 ~~~~~~~~
 
-The main language (default: `en_US`) of the database that will be stored in the
-main table for translatable fields.
+The main language of the database that will be used for storage in the main
+table for translations.
+
+Default: `en_US`
 
 ssl
 ---
 
-Activates the SSL_ on all network protocol.
+Activates SSL_ on all network protocols.
+
+.. note:: SSL_ is activated by defining privatekey.
+        Please refer to SSL-CERT_ on how to use private keys and certficates.
 
 privatekey
 ~~~~~~~~~~
@@ -152,12 +167,12 @@ The available protocols are:
     - `smtp+tls`: SMTP with STARTTLS
     - `smtps`: SMTP with SSL
 
-The default value is: `smtp://localhost:25`
+Default: `smtp://localhost:25`
 
 from
 ~~~~
 
-Defines the default `From` address when Tryton send emails.
+Defines the default `From` address for emails sent by Tryton.
 
 session
 -------
@@ -165,14 +180,16 @@ session
 timeout
 ~~~~~~~
 
-The time in second before a session expires.
+The time in seconds until a session expires.
+
+Default: `600`
 
 super_pwd
 ~~~~~~~~~
 
-Theserver password uses to authenticate database management from the client.
-It is encrypted using using the Unix `crypt(3)` routine.
-Such password can be generated using this command line::
+The server password used to authenticate from the client for database
+management tasks. It is encrypted using using the Unix `crypt(3)` routine.
+A password can be generated using this command line::
 
     python -c 'import getpass,crypt,random,string; print crypt.crypt(getpass.getpass(), "".join(random.sample(string.ascii_letters + string.digits, 8)))'
 
@@ -184,10 +201,14 @@ unoconv
 
 The parameters for `unoconv`.
 
+Default: `pipe,name=trytond;urp;StarOffice.ComponentContext`
+
+
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
 .. _WebDAV: http://en.wikipedia.org/wiki/WebDAV
 .. _RFC-3986: http://tools.ietf.org/html/rfc3986
 .. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
+.. _SSL-CERT: https://docs.python.org/library/ssl.html#ssl.wrap_socket
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
