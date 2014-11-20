@@ -91,11 +91,11 @@ class ShipmentInternal(ModelSQL, ModelView):
                 from_location=from_location,
                 to_location=to_location,
                 planned_date=today,
-                moves=[],
                 )
+            shipment_moves = []
             for move in moves:
                 product, qty = move
-                shipment.moves.append(Move(
+                shipment_moves.append(Move(
                         from_location=from_location,
                         to_location=to_location,
                         product=product,
@@ -103,6 +103,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                         uom=id2product[product].default_uom,
                         company=user_record.company,
                         ))
+            shipment.moves = shipment_moves
             shipment.save()
             shipments.append(shipment)
         cls.wait(shipments)
