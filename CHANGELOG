@@ -1,3 +1,4 @@
+* Merge host and port field in profile editor
 * New color scheme for graph
 * Replace img_{width,height} by width and height attributes
 
