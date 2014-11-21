@@ -567,4 +567,5 @@ CONTEXT = {
     'In': In,
     'Date': Date,
     'DateTime': DateTime,
+    'Id': Id,
 }
