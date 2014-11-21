@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <MsgId>${group.reference[:35]}</MsgId>
             <CreDtTm>${datetime.datetime.now().isoformat()}</CreDtTm>
             <!-- Authstn -->
-            <NbOfTxs>${len(group.payments)}</NbOfTxs>
+            <NbOfTxs>${len(list(group.sepa_payments))}</NbOfTxs>
             <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
             <!-- PmtTpInf -->
             <!-- ReqdColltnDt -->
