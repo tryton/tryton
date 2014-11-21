@@ -640,9 +640,10 @@ class ModelView(Model):
         if not self._values:
             return changed
         for fname, value in self._values.iteritems():
-            if value == init_values.get(fname):
-                continue
             field = self._fields[fname]
+            if (value == init_values.get(fname)
+                    and field._type != 'one2many'):
+                continue
             if field._type in ('many2one', 'one2one', 'reference'):
                 if value:
                     if isinstance(value, ModelStorage):
@@ -667,6 +668,8 @@ class ModelView(Model):
                         value['add'].append((i, target._default_values))
                 if not value['remove']:
                     del value['remove']
+                if not value:
+                    continue
             elif field._type == 'many2many':
                 value = [r.id for r in value]
             changed[fname] = value
