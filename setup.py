@@ -83,12 +83,12 @@ if os.name == 'nt':
             'packages': [
                 'encodings',
                 'gtk',
-                'pytz',
                 'atk',
                 'pango',
                 'pangocairo',
                 'gio',
             ],
+            'excludes': ['Tkconstants', 'Tkinter', 'tcl'],
         }
     }
     args['zipfile'] = 'library.zip'
@@ -205,27 +205,10 @@ if os.name == 'nt':
 
     if 'py2exe' in dist.commands:
         import shutil
-        import pytz
-        import zipfile
 
         gtk_dir = find_gtk_dir()
 
         dist_dir = dist.command_obj['py2exe'].dist_dir
-
-        # pytz installs the zoneinfo directory tree in the same directory
-        # Make sure the layout of pytz hasn't changed
-        assert (pytz.__file__.endswith('__init__.pyc') or
-                pytz.__file__.endswith('__init__.py')), pytz.__file__
-        zoneinfo_dir = os.path.join(os.path.dirname(pytz.__file__), 'zoneinfo')
-        disk_basedir = os.path.dirname(os.path.dirname(pytz.__file__))
-        zipfile_path = os.path.join(dist_dir, 'library.zip')
-        z = zipfile.ZipFile(zipfile_path, 'a')
-        for absdir, directories, filenames in os.walk(zoneinfo_dir):
-            assert absdir.startswith(disk_basedir), (absdir, disk_basedir)
-            zip_dir = absdir[len(disk_basedir):]
-            for f in filenames:
-                z.write(os.path.join(absdir, f), os.path.join(zip_dir, f))
-        z.close()
 
         if os.path.isdir(os.path.join(dist_dir, 'plugins')):
             shutil.rmtree(os.path.join(dist_dir, 'plugins'))
