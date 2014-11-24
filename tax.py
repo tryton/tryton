@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
+
+from sql import Null
 from sql.aggregate import Sum
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
@@ -419,7 +421,7 @@ class TaxTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_type():
@@ -698,7 +700,7 @@ class Tax(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_active():
@@ -1140,7 +1142,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     def _get_tax_rule_line_value(self, rule_line=None):
         '''
@@ -1254,7 +1256,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     def match(self, pattern):
         if 'group' in pattern and not self.group:

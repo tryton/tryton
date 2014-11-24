@@ -4,7 +4,8 @@ from decimal import Decimal
 import datetime
 import operator
 from itertools import izip, groupby
-from sql import Column, Literal
+
+from sql import Column, Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -70,7 +71,7 @@ class TypeTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -213,7 +214,7 @@ class Type(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -1973,12 +1974,12 @@ class ThirdPartyBalance(Report):
         cursor.execute(*line.join(move, condition=line.move == move.id
                 ).join(account, condition=line.account == account.id
                 ).select(line.party, Sum(line.debit), Sum(line.credit),
-                where=(line.party != None)
+                where=(line.party != Null)
                 & account.active
                 & account.kind.in_(('payable', 'receivable'))
                 & (account.company == data['company'])
                 & ((line.maturity_date <= Date.today())
-                    | (line.maturity_date == None))
+                    | (line.maturity_date == Null))
                 & line_query & posted_clause,
                 group_by=line.party,
                 having=(Sum(line.debit) != 0) | (Sum(line.credit) != 0)))
@@ -2128,10 +2129,10 @@ class AgedBalance(Report):
             cursor.execute(*line.join(move, condition=line.move == move.id
                     ).join(account, condition=line.account == account.id
                     ).select(line.party, Sum(line.debit) - Sum(line.credit),
-                    where=(line.party != None)
+                    where=(line.party != Null)
                     & account.active
                     & account.kind.in_(kind)
-                    & (line.reconciliation == None)
+                    & (line.reconciliation == Null)
                     & (account.company == data['company'])
                     & term_query & line_query,
                     group_by=line.party,

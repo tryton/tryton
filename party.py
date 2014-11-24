@@ -1,7 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from sql import Literal
+
+from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -99,7 +100,7 @@ class Party:
             if name in ('receivable_today', 'payable_today'):
                 code = name[:-6]
                 today_query = ((line.maturity_date <= Date.today())
-                    | (line.maturity_date == None))
+                    | (line.maturity_date == Null))
 
             cursor.execute(*line.join(account,
                     condition=account.id == line.account
@@ -108,7 +109,7 @@ class Party:
                     where=account.active
                     & (account.kind == code)
                     & line.party.in_([p.id for p in parties])
-                    & (line.reconciliation == None)
+                    & (line.reconciliation == Null)
                     & (account.company == company_id)
                     & line_query & today_query,
                     group_by=line.party))
@@ -161,7 +162,7 @@ class Party:
         if name in ('receivable_today', 'payable_today'):
             code = name[:-6]
             today_query = ((line.maturity_date <= Date.today())
-                | (line.maturity_date == None))
+                | (line.maturity_date == Null))
 
         line_query, _ = MoveLine.query_get(line)
         Operator = fields.SQL_OPERATORS[clause[1]]
@@ -170,8 +171,8 @@ class Party:
                 ).select(line.party,
                     where=account.active
                     & (account.kind == code)
-                    & (line.party != None)
-                    & (line.reconciliation == None)
+                    & (line.party != Null)
+                    & (line.reconciliation == Null)
                     & (account.company == company_id)
                     & today_query,
                     group_by=line.party,

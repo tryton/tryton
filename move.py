@@ -6,10 +6,7 @@ from itertools import groupby, combinations
 from operator import itemgetter
 from collections import defaultdict
 
-try:
-    from sql import Null
-except ImportError:
-    Null = None
+from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
 
@@ -1009,7 +1006,7 @@ class Line(ModelSQL, ModelView):
             table = self.__table__()
             column = Coalesce(Sum(Coalesce(table.debit, 0)
                     - Coalesce(table.credit, 0)), 0).cast(type_name)
-            where = ((table.reconciliation == None)
+            where = ((table.reconciliation == Null)
                 & (table.party == self.party.id))
             cursor.execute(*table.select(column,
                     where=where
