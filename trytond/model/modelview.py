@@ -358,7 +358,8 @@ class ModelView(Model):
             fields_def.setdefault(field_children, {'name': field_children})
             if field_children in cls._fields:
                 field = cls._fields[field_children]
-                fields_def.setdefault(field.field, {'name': field.field})
+                if hasattr(field, 'field'):
+                    fields_def.setdefault(field.field, {'name': field.field})
 
         for field_name in fields_def.keys():
             if field_name in cls._fields:
