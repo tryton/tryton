@@ -4,6 +4,7 @@ from decimal import Decimal
 from collections import namedtuple
 from itertools import groupby
 
+from sql import Null
 from sql.aggregate import Sum
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
@@ -177,7 +178,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         # Migration from 3.2: add required name
         cursor.execute(*sql_table.update([sql_table.name],
                 [sql_table.id.cast(cls.name.sql_type().base)],
-                where=sql_table.name == None))
+                where=sql_table.name == Null))
 
     @staticmethod
     def default_company():
@@ -468,7 +469,7 @@ class Line(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_amount():
