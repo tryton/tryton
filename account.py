@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Abs
@@ -82,7 +83,7 @@ class MoveLine:
         payment_amount = Sum(Coalesce(payment.amount, 0))
         main_amount = Abs(table.credit - table.debit) - payment_amount
         second_amount = Abs(table.amount_second_currency) - payment_amount
-        amount = Case((table.second_currency == None, main_amount),
+        amount = Case((table.second_currency == Null, main_amount),
             else_=second_amount)
         value = cls.payment_amount.sql_format(value)
 
