@@ -1,7 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from itertools import chain
-from sql import Cast, Literal
+
+from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
 
 from .field import Field, size_validate
@@ -281,7 +282,7 @@ class Many2Many(Field):
                 if Target != Model:
                     query = Target.search([(domain[3], 'child_of', value)],
                         order=[], query=True)
-                    where = (target.in_(query) & (origin != None))
+                    where = (target.in_(query) & (origin != Null))
                     if origin_where:
                         where &= origin_where
                     query = relation.select(origin, where=where)

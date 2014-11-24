@@ -5,7 +5,7 @@ import datetime
 from functools import reduce
 from itertools import islice, izip, chain, ifilter
 
-from sql import Table, Column, Literal, Desc, Asc, Expression, Flavor
+from sql import Table, Column, Literal, Desc, Asc, Expression, Flavor, Null
 from sql.functions import Now, Extract
 from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator
@@ -1081,8 +1081,8 @@ class ModelSQL(ModelStorage):
                 where = reduce_ids(history.id, sub_ids)
                 cursor.execute(*history.select(history.id, history.write_date,
                         where=where
-                        & (history.write_date != None)
-                        & (history.create_date == None)
+                        & (history.write_date != Null)
+                        & (history.create_date == Null)
                         & (history.write_date
                             <= transaction.context['_datetime'])))
                 for deleted_id, delete_date in cursor.fetchall():
@@ -1245,7 +1245,7 @@ class ModelSQL(ModelStorage):
         old_left, old_right, parent_id = fetchone
         if old_left == old_right == 0:
             cursor.execute(*table.select(Max(right),
-                    where=field == None))
+                    where=field == Null))
             old_left, = cursor.fetchone()
             old_left += 1
             old_right = old_left + 1
@@ -1260,7 +1260,7 @@ class ModelSQL(ModelStorage):
             cursor.execute(*table.select(right, where=table.id == parent_id))
             parent_right = cursor.fetchone()[0]
         else:
-            cursor.execute(*table.select(Max(right), where=field == None))
+            cursor.execute(*table.select(Max(right), where=field == Null))
             fetchone = cursor.fetchone()
             if fetchone:
                 parent_right = fetchone[0] + 1

@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from itertools import groupby
 
+from sql import Null
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -294,7 +296,7 @@ class UIMenuFavorite(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_user():
