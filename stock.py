@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Null
 from sql.operators import Concat
 
 from trytond.model import Workflow, ModelView, fields
@@ -140,7 +141,7 @@ class Move:
             cursor.execute(*sql_table.update(
                     columns=[sql_table.origin],
                     values=[Concat('sale.line,', sql_table.sale_line)],
-                    where=sql_table.sale_line != None))
+                    where=sql_table.sale_line != Null))
             table.drop_column('sale_line')
 
     @classmethod

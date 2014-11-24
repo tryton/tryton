@@ -3,7 +3,8 @@
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
-from sql import Table
+
+from sql import Table, Null
 from sql.functions import Overlay, Position
 from sql.operators import Concat
 
@@ -305,8 +306,8 @@ class Sale(Workflow, ModelSQL, ModelView):
                                 sale_line.id))
                         ).select(sql_table.id,
                             where=(sql_table.state == 'confirmed')
-                            & ((sale_line_invoice_line.id != None)
-                                | (move.id != None)))
+                            & ((sale_line_invoice_line.id != Null)
+                                | (move.id != Null)))
             cursor.execute(*sql_table.update(
                     columns=[sql_table.state],
                     values=['processing'],
@@ -1086,7 +1087,7 @@ class SaleLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_type():
