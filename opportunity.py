@@ -3,7 +3,8 @@
 "Sales extension for managing leads and opportunities"
 import datetime
 import time
-from sql import Column, Literal
+
+from sql import Column, Literal, Null
 from sql.aggregate import Min, Max, Count, Sum
 from sql.conditionals import Coalesce, Case
 from sql.functions import Extract
@@ -122,7 +123,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             cursor.execute(*sql_table.update(
                     columns=[sql_table.reference],
                     values=[sql_table.id],
-                    where=sql_table.reference == None))
+                    where=sql_table.reference == Null))
             table.not_null_action('reference', action='add')
 
     @classmethod
@@ -392,7 +393,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
