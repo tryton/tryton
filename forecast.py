@@ -3,6 +3,8 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
+
+from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -368,7 +370,7 @@ class ForecastLine(ModelSQL, ModelView):
                             >= forecast.from_date)
                         & (Coalesce(move.effective_date, move.planned_date)
                             <= forecast.to_date)
-                        & (line_move.id == None),
+                        & (line_move.id == Null),
                         group_by=move.product))
                 for product_id, quantity in cursor.fetchall():
                     line = product2line[product_id]
