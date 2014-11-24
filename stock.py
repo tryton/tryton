@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
+from sql import Null
+
 from trytond.model import fields
 from trytond.pyson import Not, Eval, Bool
 from trytond.transaction import Transaction
@@ -38,4 +40,4 @@ class Location:
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
