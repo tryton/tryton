@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql import Null
+
 from trytond.model import Model, ModelView, ModelSQL, fields
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
@@ -38,7 +40,7 @@ class Level(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
