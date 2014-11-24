@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
+from sql import Null
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond import backend
@@ -273,7 +275,7 @@ class InventoryLine(ModelSQL, ModelView):
         # Migration from 3.0: use Move origin
         if table.column_exist('move'):
             cursor.execute(*sql_table.select(sql_table.id, sql_table.move,
-                    where=sql_table.move != None))
+                    where=sql_table.move != Null))
             for line_id, move_id in cursor.fetchall():
                 cursor.execute(*move_table.update(
                         columns=[move_table.origin],

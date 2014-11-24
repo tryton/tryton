@@ -2,7 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
-from sql import Literal
+
+from sql import Literal, Null
 from sql.aggregate import Max
 from sql.functions import Now
 from sql.conditionals import Coalesce
@@ -261,7 +262,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             where=(move.product == product_id)
             & (move.from_location.in_(warehouse_query)
                 | move.to_location.in_(warehouse_query))
-            & (Coalesce(move.effective_date, move.planned_date) != None),
+            & (Coalesce(move.effective_date, move.planned_date) != Null),
             group_by=(date_column, move.product))
 
     @classmethod

@@ -4,7 +4,8 @@ import datetime
 import operator
 from decimal import Decimal
 from functools import partial
-from sql import Literal, Union, Column
+
+from sql import Literal, Union, Column, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.operators import Concat
@@ -345,7 +346,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         columns=[sql_table.shipment],
                         values=[Concat(model + ',',
                                 Column(sql_table, column))],
-                        where=Column(sql_table, column) != None))
+                        where=Column(sql_table, column) != Null))
                 table.drop_column(column)
 
         # Add index on create_date
@@ -889,7 +890,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         context.get('stock_assign') and 'assigned' or 'done'])
                 & (
                     (
-                        (move.effective_date == None)
+                        (move.effective_date == Null)
                         & (move.planned_date <= context['stock_date_end'])
                         )
                     | (move.effective_date <= context['stock_date_end'])
@@ -905,7 +906,7 @@ class Move(Workflow, ModelSQL, ModelView):
                             or 'done'])
                     & (
                         (
-                            (move.effective_date == None)
+                            (move.effective_date == Null)
                             & (move.planned_date <= today)
                             )
                         | (move.effective_date <= today)
@@ -914,7 +915,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 | (move.state.in_(['done', 'assigned', 'draft'])
                     & (
                         (
-                            (move.effective_date == None)
+                            (move.effective_date == Null)
                             & (Coalesce(move.planned_date, datetime.date.max)
                                 <= context['stock_date_end'])
                             & (Coalesce(move.planned_date, datetime.date.max)
@@ -934,11 +935,11 @@ class Move(Workflow, ModelSQL, ModelView):
                     move.state.in_(['done', 'assigned', 'draft'])
                     & (
                         (
-                            (move.effective_date == None)
+                            (move.effective_date == Null)
                             & (
                                 (move.planned_date >=
                                     context['stock_date_start'])
-                                | (move.planned_date == None)
+                                | (move.planned_date == Null)
                                 )
                             )
                         | (move.effective_date >= context['stock_date_start'])
@@ -950,10 +951,10 @@ class Move(Workflow, ModelSQL, ModelView):
                         move.state.in_(['done', 'assigned', 'draft'])
                         & (
                             (
-                                (move.effective_date == None)
+                                (move.effective_date == Null)
                                 & (
                                     (move.planned_date >= today)
-                                    | (move.planned_date == None)
+                                    | (move.planned_date == Null)
                                     )
                                 )
                             | (move.effective_date >= today)
@@ -965,14 +966,14 @@ class Move(Workflow, ModelSQL, ModelView):
                                 or 'done'])
                         & (
                             (
-                                (move.effective_date == None)
+                                (move.effective_date == Null)
                                 & (
                                     (
                                         (move.planned_date >=
                                             context['stock_date_start'])
                                         & (move.planned_date < today)
                                         )
-                                    | (move.planned_date == None)
+                                    | (move.planned_date == Null)
                                     )
                                 )
                             | (
