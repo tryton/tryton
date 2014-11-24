@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from sql import Null
 from simpleeval import simple_eval
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
@@ -99,7 +100,7 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_formula():
