@@ -1,6 +1,6 @@
 #This file is part of Tryton. The COPYRIGHT file at the top level of this
 #repository contains the full copyright notices and license terms.
-from sql import Union, As, Column
+from sql import Union, As, Column, Null
 
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
@@ -50,7 +50,7 @@ class PartyRelationAll(PartyRelation, ModelView):
             None: (relation, None),
             'type': {
                 None: (type, (relation.type == type.id) &
-                    (type.reverse != None)),
+                    (type.reverse != Null)),
                 },
             }
 
