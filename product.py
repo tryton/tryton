@@ -1,7 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
-from sql import Literal
+
+from sql import Literal, Null
 from sql.aggregate import Count
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
@@ -212,7 +213,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_company():
@@ -316,7 +317,7 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_quantity():
