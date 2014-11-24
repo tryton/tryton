@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Null
+
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
@@ -57,7 +59,7 @@ class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_method():

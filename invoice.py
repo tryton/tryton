@@ -4,7 +4,8 @@ from decimal import Decimal
 from collections import defaultdict
 import base64
 import itertools
-from sql import Literal
+
+from sql import Literal, Null
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
 from sql.functions import Abs, Sign
@@ -616,7 +617,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 condition=((invoice.move == line.move)
                     & (invoice.account == line.account))).select(
                         invoice.id, line.id,
-                        where=(line.maturity_date != None) & red_sql,
+                        where=(line.maturity_date != Null) & red_sql,
                         order_by=(invoice.id, line.maturity_date)))
             for invoice_id, line_id in cursor.fetchall():
                 lines[invoice_id].append(line_id)
@@ -1602,7 +1603,7 @@ class InvoiceLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_currency():
@@ -2140,7 +2141,7 @@ class InvoiceTax(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_base():

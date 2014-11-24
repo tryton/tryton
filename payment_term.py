@@ -2,6 +2,9 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
+
+from sql import Null
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond import backend
 from trytond.pyson import Eval
@@ -201,7 +204,7 @@ class PaymentTermLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_currency_digits():
