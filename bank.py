@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from stdnum import iban
-from sql import operators, Literal
+from sql import operators, Literal, Null
 
 from trytond.model import ModelView, ModelSQL, fields
 
@@ -65,7 +65,7 @@ class BankAccountNumber(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @classmethod
     def domain_number(cls, domain, tables):
