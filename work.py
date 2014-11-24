@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from itertools import groupby
 from decimal import Decimal
+
+from sql import Null
 from sql.aggregate import Sum
 
 from trytond.model import ModelView, fields
@@ -190,9 +192,9 @@ class Work:
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(line.work, sub_ids)
             if invoiced:
-                where = line.invoice_line != None
+                where = line.invoice_line != Null
             else:
-                where = line.invoice_line == None
+                where = line.invoice_line == Null
             cursor.execute(*line.select(line.work, Sum(line.hours),
                     where=red_sql & where,
                     group_by=line.work))
