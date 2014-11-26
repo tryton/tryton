@@ -59,6 +59,19 @@ class ModelView(unittest.TestCase):
                     'm2m_targets': [9, 10],
                     })
 
+            # change only one2many record
+            record = Model(targets=[{'id': 1, 'name': 'foo'}])
+            self.assertEqual(record._changed_values, {})
+
+            target, = record.targets
+            target.name = 'bar'
+            record.targets = record.targets
+            self.assertEqual(record._changed_values, {
+                    'targets': {
+                        'update': [{'id': 1, 'name': 'bar'}],
+                        },
+                    })
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

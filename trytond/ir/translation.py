@@ -12,7 +12,8 @@ import os
 from hashlib import md5
 from lxml import etree
 from itertools import izip
-from sql import Column
+
+from sql import Column, Null
 from sql.functions import Substring, Position
 from sql.conditionals import Case
 from sql.operators import Or, And
@@ -126,7 +127,7 @@ class Translation(ModelSQL, ModelView):
 
         # Migration from 2.2 and 2.8
         cursor.execute(*ir_translation.update([ir_translation.res_id],
-                [-1], where=(ir_translation.res_id == None)
+                [-1], where=(ir_translation.res_id == Null)
                 | (ir_translation.res_id == 0)))
 
         table = TableHandler(Transaction().cursor, cls, module_name)
@@ -148,7 +149,7 @@ class Translation(ModelSQL, ModelView):
                 & (ir_translation.name == name)
                 # Keep searching on all values for migration
                 & ((ir_translation.res_id == -1)
-                    | (ir_translation.res_id == None)
+                    | (ir_translation.res_id == Null)
                     | (ir_translation.res_id == 0))))
         trans_id = None
         if cursor.rowcount == -1 or cursor.rowcount is None:
@@ -436,7 +437,7 @@ class Translation(ModelSQL, ModelView):
                         (table.type == ttype),
                         (table.name == name),
                         (table.value != ''),
-                        (table.value != None),
+                        (table.value != Null),
                         red_sql,
                         ))
                 if fuzzy_sql:
@@ -611,7 +612,7 @@ class Translation(ModelSQL, ModelView):
             & (table.type == ttype)
             & (table.name == name)
             & (table.value != '')
-            & (table.value != None)
+            & (table.value != Null)
             & (table.fuzzy == False)
             & (table.res_id == -1))
         if source is not None:
@@ -656,7 +657,7 @@ class Translation(ModelSQL, ModelView):
                         (table.type == ttype),
                         (table.name == name),
                         (table.value != ''),
-                        (table.value != None),
+                        (table.value != Null),
                         (table.fuzzy == False),
                         (table.res_id == -1),
                         ))
@@ -1521,10 +1522,10 @@ class TranslationUpdate(Wizard):
                 & translation.src.in_(
                     translation.select(translation.src,
                         where=((translation.value == '')
-                            | (translation.value == None))
+                            | (translation.value == Null))
                         & (translation.lang == lang)))
                 & (translation.value != '')
-                & (translation.value != None),
+                & (translation.value != Null),
                 group_by=translation.src))
 
         for row in cursor.dictfetchall():
@@ -1532,13 +1533,13 @@ class TranslationUpdate(Wizard):
                     [translation.fuzzy, translation.value],
                     [True, row['value']],
                     where=(translation.src == row['src'])
-                    & ((translation.value == '') | (translation.value == None))
+                    & ((translation.value == '') | (translation.value == Null))
                     & (translation.lang == lang)))
 
         cursor.execute(*translation.update(
                 [translation.fuzzy],
                 [False],
-                where=((translation.value == '') | (translation.value == None))
+                where=((translation.value == '') | (translation.value == Null))
                 & (translation.lang == lang)))
 
         action['pyson_domain'] = PYSONEncoder().encode([

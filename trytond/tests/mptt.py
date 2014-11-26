@@ -1,6 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Test for Tree"
+from sql import Null
+
 from trytond.model import ModelView, ModelSQL, fields
 
 __all__ = [
@@ -27,7 +29,7 @@ class MPTT(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == None, table.sequence]
+        return [table.sequence == Null, table.sequence]
 
     @staticmethod
     def default_active():

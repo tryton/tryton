@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
 import copy
-from sql import Cast, Literal
+
+from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
 from sql.conditionals import Case
 
@@ -124,7 +124,7 @@ class Property(Function):
                 Cast(Substring(property_.res,
                         Position(',', property_.res) + Literal(1)),
                     Model.id.sql_type().base),
-                where=property_cond & (property_.res != None)))
+                where=property_cond & (property_.res != Null)))
 
         fetchall = cursor.fetchall()
         if not fetchall:
@@ -165,7 +165,7 @@ class Property(Function):
             return column.in_(value)
         elif ((value is False or value is None)
                 and operator in ('=', '!=')):
-            return (column == None) == value
+            return (column == Null) == value
         elif operator == 'not like':
             return column.like(value)
         elif operator == 'not ilike':
