@@ -419,6 +419,7 @@ class One2Many(Widget):
             views_preload=self.attrs.get('views', {}),
             new=self.but_new.get_property('sensitive'))
         win.screen.search_filter(text)
+        win.show()
 
     def _sig_label(self, screen, signal_data):
         self._position = signal_data[0]

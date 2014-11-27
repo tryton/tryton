@@ -390,6 +390,7 @@ class DictWidget(Widget):
         win = WinSearch(self.schema_model, callback, sel_multi=True,
             context=context, domain=domain, new=False)
         win.screen.search_filter(value)
+        win.show()
 
     def _sig_remove(self, button, key, modified=True):
         del self.fields[key]

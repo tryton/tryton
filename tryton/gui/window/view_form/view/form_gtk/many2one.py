@@ -147,6 +147,10 @@ class Many2One(Widget):
                     views_preload=self.attrs.get('views', {}),
                     new=self.create_access)
                 win.screen.search_filter(text)
+                if len(win.screen.group) == 1:
+                    win.response(None, gtk.RESPONSE_OK)
+                else:
+                    win.show()
                 return
         self.focus_out = True
         self.changed = True
@@ -217,6 +221,7 @@ class Many2One(Widget):
                 views_preload=self.attrs.get('views', {}),
                 new=self.create_access)
             win.screen.search_filter(text)
+            win.show()
             return
         self.focus_out = True
         self.changed = True

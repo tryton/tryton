@@ -2,12 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 from tryton.common import TRYTON_ICON, COLOR_SCHEMES
 import tryton.common as common
-from tryton.config import CONFIG
 import gtk
 import pango
 import gettext
 from tryton.gui.window.nomodal import NoModal
-from tryton.common import RPCExecute, RPCException
 
 _ = gettext.gettext
 
@@ -332,17 +330,7 @@ class WinForm(NoModal):
         from tryton.gui.window.win_search import WinSearch
         domain = self.domain[:]
         model_name = self.screen.model_name
-
-        try:
-            if self.wid_text.get_text():
-                dom = [('rec_name', 'ilike',
-                        '%' + self.wid_text.get_text() + '%'), domain]
-            else:
-                dom = domain
-            ids = RPCExecute('model', model_name, 'search', dom,
-                    0, CONFIG['client.limit'], None, context=self.context)
-        except RPCException:
-            return False
+        value = self.wid_text.get_text().decode('utf-8')
 
         def callback(result):
             if result:
@@ -351,11 +339,11 @@ class WinForm(NoModal):
                 self.screen.display(res_id=ids[0])
             self.screen.set_cursor()
             self.wid_text.set_text('')
-        if len(ids) != 1:
-            WinSearch(model_name, callback, sel_multi=True,
-                ids=ids, context=self.context, domain=domain)
-        else:
-            callback([(i, None) for i in ids])
+
+        win = WinSearch(model_name, callback, sel_multi=True,
+            context=self.context, domain=domain)
+        win.screen.search_filter(value)
+        win.show()
 
     def _sig_label(self, screen, signal_data):
         name = '_'

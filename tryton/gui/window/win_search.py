@@ -13,7 +13,7 @@ _ = gettext.gettext
 
 class WinSearch(NoModal):
 
-    def __init__(self, model, callback, sel_multi=True, ids=None, context=None,
+    def __init__(self, model, callback, sel_multi=True, context=None,
             domain=None, view_ids=None, views_preload=None, new=True):
         NoModal.__init__(self)
         if views_preload is None:
@@ -76,17 +76,12 @@ class WinSearch(NoModal):
 
         self.model_name = model
 
-        if ids:
-            self.screen.load(ids)
-
         self.win.set_size_request(700, 500)
 
         self.register()
         sensible_allocation = self.sensible_widget.get_allocation()
         self.win.set_default_size(int(sensible_allocation.width * 0.9),
             int(sensible_allocation.height * 0.9))
-        self.win.show()
-        common.center_window(self.win, self.parent, self.sensible_widget)
 
     def sig_activate(self, *args):
         self.view.treeview.emit_stop_by_name('row_activated')
@@ -100,6 +95,7 @@ class WinSearch(NoModal):
 
     def show(self):
         self.win.show()
+        common.center_window(self.win, self.parent, self.sensible_widget)
 
     def hide(self):
         self.win.hide()

@@ -554,8 +554,12 @@ class M2O(Char):
         relation = record[self.attrs['name']].attrs['relation']
         domain = record[self.attrs['name']].domain_get(record)
         context = record[self.attrs['name']].context_get(record)
-        self.search_remote(record, relation, text, domain=domain,
+        win = self.search_remote(record, relation, text, domain=domain,
             context=context, callback=callback)
+        if len(win.screen.group) == 1:
+            win.response(None, gtk.RESPONSE_OK)
+        else:
+            win.show()
 
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
@@ -576,7 +580,7 @@ class M2O(Char):
             obj_id = field.get(record)
         else:
             self.search_remote(record, relation, text, domain=domain,
-                context=context, callback=callback)
+                context=context, callback=callback).show()
             return
         screen = Screen(relation, domain=domain, context=context,
             mode=['form'])
@@ -608,6 +612,7 @@ class M2O(Char):
         win = WinSearch(relation, search_callback, sel_multi=False,
             context=context, domain=domain)
         win.screen.search_filter(text.decode('utf-8'))
+        return win
 
     def set_completion(self, entry, path):
         if entry.get_completion():

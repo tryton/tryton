@@ -162,6 +162,7 @@ class Many2Many(Widget):
             views_preload=self.attrs.get('views', {}),
             new=self.attrs.get('create', True))
         win.screen.search_filter(value)
+        win.show()
 
     def _sig_remove(self, *args):
         self.screen.remove(remove=True)
