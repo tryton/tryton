@@ -499,8 +499,9 @@ class ViewForm(View):
                     if not field:
                         continue
                     if not field.get_state_attrs(record).get('valid', True):
-                        invalid_widgets.append(
-                            find_focusable_child(widget.widget))
+                        invalid_widget = find_focusable_child(widget.widget)
+                        if invalid_widget:
+                            invalid_widgets.append(invalid_widget)
             invalid_widgets.sort(key=cmp_to_key(tab_compare))
             if invalid_widgets:
                 focus_widget = invalid_widgets[0]
