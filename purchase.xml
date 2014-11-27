@@ -149,6 +149,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('state', '=', 'processing')]</field>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_purchase_form_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
