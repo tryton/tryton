@@ -60,11 +60,11 @@ class CAMT054(SEPAHandler):
             return
         instr_id = details.find('.//{%s}InstrId' % tag.namespace)
         if instr_id is not None:
-            payment, = self.Payment.search([
+            payments = self.Payment.search([
                     ('sepa_instuction_id', '=', instr_id.text),
                     ('kind', '=', self.get_payment_kind(element)),
                     ])
-            return payment
+            return payments
         end_to_end_id = details.find('.//{%s}EndToEndId' % tag.namespace)
         if end_to_end_id is not None:
             payments = self.Payment.search([
