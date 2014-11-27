@@ -96,7 +96,7 @@ class SaleLine:
                 line = self.__class__(self.id)
                 if (line.purchase_request and line.purchase_request.customer
                         and self.purchase_request_state != 'cancel'):
-                    return {}
+                    return
         return result
 
     def get_purchase_request(self):
