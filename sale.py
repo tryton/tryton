@@ -91,7 +91,7 @@ class SaleLine:
                 and self.supply_on_sale):
             if (self.purchase_request and self.purchase_request.customer
                     and self.purchase_request_state != 'cancel'):
-                return {}
+                return
         return result
 
     def get_purchase_request(self):
