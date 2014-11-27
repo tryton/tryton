@@ -89,6 +89,7 @@ def register():
         Property,
         Selection,
         SelectionRequired,
+        DictSchema,
         Dict,
         DictDefault,
         DictRequired,

@@ -3,7 +3,7 @@
 
 import datetime
 from decimal import Decimal
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, DictSchemaMixin, fields
 from trytond.pyson import Eval
 
 __all__ = [
@@ -32,7 +32,7 @@ __all__ = [
     'Reference', 'ReferenceTarget', 'ReferenceRequired',
     'Property',
     'Selection', 'SelectionRequired',
-    'Dict', 'DictDefault', 'DictRequired',
+    'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
     'Binary', 'BinaryDefault', 'BinaryRequired',
     'Many2OneDomainValidation', 'Many2OneTarget',
     ]
@@ -629,10 +629,17 @@ class SelectionRequired(ModelSQL):
         'Selection', required=True)
 
 
+class DictSchema(DictSchemaMixin, ModelSQL):
+    'Dict Schema'
+    __name__ = 'test.dict.schema'
+
+
 class Dict(ModelSQL):
     'Dict'
     __name__ = 'test.dict'
-    dico = fields.Dict(None, 'Test Dict')
+    dico = fields.Dict('test.dict.schema', 'Test Dict')
+    dico_string = dico.translated('dico')
+    dico_string_keys = dico.translated('dico', 'keys')
 
 
 class DictDefault(ModelSQL):

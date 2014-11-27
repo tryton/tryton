@@ -1,3 +1,4 @@
+* Add translated descriptor for Dict field
 * Clean private context keyword in RPC
 * Add cache section in configuration
 * Use dualmethod on ModelStorage.save
