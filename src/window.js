@@ -380,9 +380,6 @@
                 view_ids: kwargs.view_ids,
                 views_preload: views_preload
             });
-            if (!jQuery.isEmptyObject(kwargs.ids)) {
-                this.screen.new_group(kwargs.ids);
-            }
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
                     this.el.append(this.screen.screen_container.el);
