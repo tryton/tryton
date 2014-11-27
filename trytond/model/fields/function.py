@@ -57,6 +57,10 @@ class Function(Field):
                 return
         setattr(self._field, name, value)
 
+    @property
+    def sql_type(self):
+        raise AttributeError
+
     def convert_domain(self, domain, tables, Model):
         name, operator, value = domain[:3]
         if not self.searcher:
