@@ -42,7 +42,7 @@ _NUMBER_STATES.update({
 _NUMBER_DEPENDS = _DEPENDS + ['validation']
 
 
-class Null(object):
+class Unequal(object):
     "Always different"
 
     def __eq__(self, other):
@@ -293,7 +293,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     def _group_key(self, line):
         key = (
-            ('number', line.number or Null()),
+            ('number', line.number or Unequal()),
             ('date', line.date),
             ('party', line.party),
             )
