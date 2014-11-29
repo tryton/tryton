@@ -1192,7 +1192,7 @@ class PurchaseLine(ModelSQL, ModelView):
                 quantity -= Uom.compute_qty(old_invoice_line.unit,
                         old_invoice_line.quantity, self.unit)
 
-        rounding = self.unit.rounding if self.unit else 0
+        rounding = self.unit.rounding if self.unit else 0.01
         invoice_line.quantity = Uom.round(quantity, rounding)
         if invoice_line.quantity <= 0:
             return []
