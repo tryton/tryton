@@ -85,10 +85,9 @@ class ModelSQL(ModelStorage):
             if field_name == 'id':
                 continue
             default_fun = None
-            try:
-                sql_type = field.sql_type()
-            except NotImplementedError:
+            if hasattr(field, 'set'):
                 continue
+            sql_type = field.sql_type()
             if field_name in cls._defaults:
                 default_fun = cls._defaults[field_name]
 
