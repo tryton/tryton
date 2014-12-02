@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from sql import Literal
 from sql.aggregate import Max, Sum
 from sql.conditionals import Coalesce
@@ -7,7 +7,7 @@ from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import Eval, PYSONEncoder, Date, Get
+from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
