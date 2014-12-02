@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
@@ -92,8 +92,8 @@ class Sale(Workflow, ModelSQL, ModelView):
         depends=['state'])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': (Eval('state') != 'draft') |
-                (Eval('lines', [0]) & Eval('currency', 0)),
+            'readonly': ((Eval('state') != 'draft')
+                | (Eval('lines', [0]) & Eval('currency', 0))),
             },
         depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -1592,7 +1592,7 @@ class HandleInvoiceExceptionAsk(ModelView):
         domain=[('id', 'in', Eval('domain_invoices'))],
         depends=['domain_invoices'],
         help='The selected invoices will be recreated. '
-            'The other ones will be ignored.')
+        'The other ones will be ignored.')
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
