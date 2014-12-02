@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
 
@@ -407,7 +407,7 @@ class TaxTemplate(ModelSQL, ModelView):
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
 
-        #Migration from 2.4: drop required on sequence
+        # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
         # Migration from 2.8: rename percentage into rate

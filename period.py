@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval
@@ -295,10 +295,10 @@ class Period(ModelSQL, ModelView):
             unposted_move, = unposted_moves
             cls.raise_user_error('close_period_non_posted_move', {
                     'period': unposted_move.period.rec_name,
-                    'move':  unposted_move.rec_name,
+                    'move': unposted_move.rec_name,
                     })
-        #First close the period to be sure
-        #it will not have new journal.period created between.
+        # First close the period to be sure
+        # it will not have new journal.period created between.
         cls.write(periods, {
                 'state': 'close',
                 })

@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
 from itertools import groupby, combinations
@@ -570,8 +570,8 @@ class Line(ModelSQL, ModelView):
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
     amount_second_currency = fields.Numeric('Amount Second Currency',
-            digits=(16, Eval('second_currency_digits', 2)),
-            help='The amount expressed in a second currency',
+        digits=(16, Eval('second_currency_digits', 2)),
+        help='The amount expressed in a second currency',
         states={
             'required': Bool(Eval('second_currency')),
             },
@@ -588,7 +588,7 @@ class Line(ModelSQL, ModelView):
             'invisible': ~Eval('party_required', False),
             },
         depends=['party_required'])
-    party_required= fields.Function(fields.Boolean('Party Required'),
+    party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
         help='This field is used for payable and receivable lines. \n'
@@ -720,7 +720,7 @@ class Line(ModelSQL, ModelView):
                 with_rec_name=with_rec_name)
 
         if 'move' not in fields:
-            #Not manual entry
+            # Not manual entry
             if 'date' in values:
                 values = values.copy()
                 del values['date']
@@ -949,7 +949,7 @@ class Line(ModelSQL, ModelView):
         TaxLine = pool.get('account.tax.line')
 
         if self.move:
-            #Only for first line
+            # Only for first line
             return
         tax_lines = []
         if self.account:
