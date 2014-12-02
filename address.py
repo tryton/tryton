@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 'Address'
 from sql import Null
 
@@ -157,7 +157,8 @@ class Address(ModelSQL, ModelView):
             if 'party' in values:
                 for address in addresses:
                     if address.party.id != values['party']:
-                        cls.raise_user_error('write_party', (address.rec_name,))
+                        cls.raise_user_error(
+                            'write_party', (address.rec_name,))
         super(Address, cls).write(*args)
 
     @fields.depends('subdivision', 'country')

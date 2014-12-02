@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import logging
 
 from sql.functions import CharLength
@@ -224,7 +224,7 @@ class Party(ModelSQL, ModelView):
         if not getattr(vatnumber, 'check_vat_' +
                 self.vat_country.lower())(vat_number):
 
-            #Check if user doesn't have put country code in number
+            # Check if user doesn't have put country code in number
             if vat_number.startswith(self.vat_country):
                 vat_number = vat_number[len(self.vat_country):]
                 Party.write([self], {

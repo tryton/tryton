@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from sql import Null
 
 from trytond.model import ModelView, ModelSQL, fields
@@ -181,5 +181,6 @@ class ContactMechanism(ModelSQL, ModelView):
             if 'party' in values:
                 for mechanism in mechanisms:
                     if mechanism.party.id != values['party']:
-                        cls.raise_user_error('write_party', (mechanism.rec_name,))
+                        cls.raise_user_error(
+                            'write_party', (mechanism.rec_name,))
         super(ContactMechanism, cls).write(*args)
