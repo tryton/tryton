@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateAction
@@ -26,7 +26,7 @@ class Line(ModelSQL, ModelView):
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company')
     account = fields.Many2One('analytic_account.account', 'Account',
-            required=True, select=True, domain=[
+        required=True, select=True, domain=[
             ('type', '!=', 'view'),
             ['OR',
                 ('company', '=', None),

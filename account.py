@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import copy
 from sql import Column
@@ -399,7 +399,7 @@ class AccountSelection(ModelSQL, ModelView):
             if Transaction().user:  # Root can by pass
                 for account in root_accounts:
                     if account.mandatory:
-                        if not account.id in roots:
+                        if account.id not in roots:
                             cls.raise_user_error('root_account',
                                 (account.rec_name,))
 
