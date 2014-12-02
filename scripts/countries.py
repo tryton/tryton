@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 import sys
 import pycountry
@@ -27,7 +27,7 @@ while len(existing_parents) != len(pycountry.subdivisions):
                     existing_parents)):
             continue
         new_parents.add(subdivision.code.lower())
-        #XXX fix for second level of regional divisions
+        # XXX fix for second level of regional divisions
         subdivision.country_code = subdivision.country_code.split(' ', 1)[0]
         record = u'''
         <record model="country.subdivision" id="%s">
