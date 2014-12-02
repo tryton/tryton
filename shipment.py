@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import operator
 import itertools
 import datetime
@@ -12,7 +12,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond import backend
-from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get, Id
+from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -1033,6 +1033,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def get_origins(self, name):
         return ', '.join(set(itertools.ifilter(None,
                     (m.origin_name for m in self.moves))))
+
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
@@ -1160,7 +1161,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             if to_create:
                 Move.save(to_create)
 
-            #Re-read the shipment and remove exceeding quantities
+            # Re-read the shipment and remove exceeding quantities
             for move in shipment.outgoing_moves:
                 if move.state == 'cancel':
                     continue

@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 import operator
 from decimal import Decimal
@@ -224,7 +224,8 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Not(Equal(Eval('state'), 'draft')),
             },
         depends=['unit_price_required', 'state'])
-    unit_price_required = fields.Function(fields.Boolean('Unit Price Required'),
+    unit_price_required = fields.Function(
+        fields.Boolean('Unit Price Required'),
         'on_change_with_unit_price_required')
 
     @classmethod
