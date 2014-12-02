@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 from collections import deque, defaultdict
 from heapq import heappop, heappush
@@ -310,7 +310,7 @@ class Work:
 
                 # if no sibling continue to walk up the tree
                 if not work2children.get(work.parent):
-                    if not work.parent in values:
+                    if work.parent not in values:
                         values[work.parent] = {}
                     parent = work.parent
 
@@ -328,7 +328,7 @@ class Work:
                 early_start = None
 
             # update values
-            if not work in values:
+            if work not in values:
                 values[work] = {}
             values[work]['early_start_time'] = early_start
 
@@ -390,7 +390,7 @@ class Work:
 
                 # if no sibling continue to walk up the tree
                 if not work2children.get(work.parent):
-                    if not work.parent in values:
+                    if work.parent not in values:
                         values[work.parent] = {}
                     parent = work.parent
 
@@ -408,7 +408,7 @@ class Work:
                 late_finish = None
 
             # update values
-            if not work in values:
+            if work not in values:
                 values[work] = {}
             values[work]['late_finish_time'] = late_finish
 
@@ -499,7 +499,7 @@ class Work:
                     elif item[1] >= delay + sibling.duration:
                         overloaded.append(item)
                     else:
-                        #Succes!
+                        # Succes!
                         break
 
                 heappush(timeline,
