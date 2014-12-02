@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
@@ -58,7 +58,7 @@ class PaymentTerm(ModelSQL, ModelView):
         If specified, date will be used as the start date, otherwise current
         date will be used.
         """
-        #TODO implement business_days
+        # TODO implement business_days
         # http://pypi.python.org/pypi/BusinessHours/
         Date = Pool().get('ir.date')
 

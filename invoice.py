@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from collections import defaultdict
 import base64
@@ -833,7 +833,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     key = (base_code_id, tax.base_sign,
                         tax_code_id, tax.tax_sign,
                         tax.account.id, tax_id)
-                    if (not key in computed_taxes) or (key in tax_keys):
+                    if (key not in computed_taxes) or (key in tax_keys):
                         if exception:
                             cls.raise_user_error('missing_tax_line',
                                 (invoice.rec_name,))
@@ -847,7 +847,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                                 (invoice.rec_name,))
                         to_write.extend(([tax], computed_taxes[key]))
                 for key in computed_taxes:
-                    if not key in tax_keys:
+                    if key not in tax_keys:
                         if exception:
                             cls.raise_user_error('missing_tax_line2',
                                 (invoice.rec_name,))
@@ -1752,7 +1752,7 @@ class InvoiceLine(ModelSQL, ModelView):
         currency_date = Date.today()
         if self.invoice and self.invoice.currency_date:
             currency_date = self.invoice.currency_date
-        #TODO check if today date is correct
+        # TODO check if today date is correct
         if self.invoice and self.invoice.currency:
             currency = self.invoice.currency
         elif self.currency:
@@ -1931,8 +1931,8 @@ class InvoiceLine(ModelSQL, ModelView):
                     self.raise_user_error('account_different_company', {
                             'line': self.rec_name,
                             'invoice': self.invoice.rec_name,
-                            'invoice_line_company':
-                                self.invoice.company.rec_name,
+                            'invoice_line_company': (
+                                self.invoice.company.rec_name),
                             'account': self.account.rec_name,
                             'account_company': self.account.company.rec_name,
                             })

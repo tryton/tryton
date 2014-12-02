@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from sql import Null
 
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
@@ -127,11 +127,11 @@ class FiscalYear:
     def __setup__(cls):
         super(FiscalYear, cls).__setup__()
         cls._error_messages.update({
-                'change_invoice_sequence': 'You can not change '
+                'change_invoice_sequence': ('You can not change '
                     'invoice sequence in fiscal year "%s" because there are '
-                    'already posted invoices in this fiscal year.',
-                'different_invoice_sequence': 'Fiscal year "%(first)s" and '
-                    '"%(second)s" have the same invoice sequence.',
+                    'already posted invoices in this fiscal year.'),
+                'different_invoice_sequence': ('Fiscal year "%(first)s" and '
+                    '"%(second)s" have the same invoice sequence.'),
                 })
 
     @classmethod
@@ -219,14 +219,14 @@ class Period:
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls._error_messages.update({
-                'change_invoice_sequence': 'You can not change the invoice '
+                'change_invoice_sequence': ('You can not change the invoice '
                     'sequence in period "%s" because there is already an '
-                    'invoice posted in this period',
-                'different_invoice_sequence': 'Period "%(first)s" and '
-                    '"%(second)s" have the same invoice sequence.',
-                'different_period_fiscalyear_company': 'Period "%(period)s" '
+                    'invoice posted in this period'),
+                'different_invoice_sequence': ('Period "%(first)s" and '
+                    '"%(second)s" have the same invoice sequence.'),
+                'different_period_fiscalyear_company': ('Period "%(period)s" '
                     'must have the same company as its fiscal year '
-                    '(%(fiscalyear)s).'
+                    '(%(fiscalyear)s).'),
                 })
 
     @classmethod
