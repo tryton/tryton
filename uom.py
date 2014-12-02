@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from sql import Table
 
@@ -115,7 +115,8 @@ class Uom(ModelSQL, ModelView):
         if (self.rate or 0.0) == 0.0:
             self.factor = 0.0
         else:
-            self.factor = round(1.0 / self.rate, self.__class__.factor.digits[1])
+            self.factor = round(
+                1.0 / self.rate, self.__class__.factor.digits[1])
 
     @classmethod
     def search_rec_name(cls, name, clause):
