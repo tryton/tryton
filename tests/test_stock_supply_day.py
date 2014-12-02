@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import unittest
 import doctest
 import datetime
@@ -50,10 +50,10 @@ class StockSupplyDayTestCase(unittest.TestCase):
             (datetime.date(2011, 11, 21), 10, None,
                 datetime.date(2011, 12, 1)),
             ]
-            # Purchase date is Monday, 2011-11-21, the regular days to deliver
-            # is 10 days, which would be Wednesday 2011-12-01. But with the
-            # supplier weekday 0 (Monday) the forecast supply date is next
-            # Monday, the 2011-12-05.
+        # Purchase date is Monday, 2011-11-21, the regular days to deliver is
+        # 10 days, which would be Wednesday 2011-12-01. But with the supplier
+        # weekday 0 (Monday) the forecast supply date is next Monday, the
+        # 2011-12-05.
         for purchase_date, delivery_time, weekday, supply_date in dates:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier_day(
@@ -74,9 +74,9 @@ class StockSupplyDayTestCase(unittest.TestCase):
             (datetime.date(2011, 11, 30), 4, 6, datetime.date(2011, 12, 6)),
             (datetime.date(2011, 12, 27), 6, 0, datetime.date(2012, 1, 3)),
             ]
-            # Supply date max is Tuesday, 2012-01-03, the supplier weekday 0
-            # which would be Monday 2012-01-02. But with the 6 days of delivery
-            # the forecast purchase date is the 2011-12-27.
+        # Supply date max is Tuesday, 2012-01-03, the supplier weekday 0 which
+        # would be Monday 2012-01-02. But with the 6 days of delivery the
+        # forecast purchase date is the 2011-12-27.
         for purchase_date, delivery_time, weekday, supply_date in dates:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier_day(
