@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateTransition
@@ -273,7 +273,7 @@ class Property:
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False,
             query=False):
-        if Transaction().user == 0 and not 'user' in Transaction().context:
+        if Transaction().user == 0 and 'user' not in Transaction().context:
             domain = ['AND', domain[:], ('company', '=', None)]
         return super(Property, cls).search(domain, offset=offset, limit=limit,
             order=order, count=count, query=query)
