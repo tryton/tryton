@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import logging
 import time
 import sys
@@ -98,7 +98,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
         database = Database(database_name).connect()
         database_list = Pool.database_list()
         pool = Pool(database_name)
-        if not database_name in database_list:
+        if database_name not in database_list:
             pool.init()
         if method == 'listMethods':
             res = []
@@ -132,7 +132,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
 
     database_list = Pool.database_list()
     pool = Pool(database_name)
-    if not database_name in database_list:
+    if database_name not in database_list:
         with Transaction().start(database_name, user,
                 readonly=True) as transaction:
             pool.init()
@@ -212,7 +212,7 @@ def create(database_name, password, lang, admin_password):
 
     try:
         with Transaction().start(None, 0, close=True, autocommit=True) \
-            as transaction:
+                as transaction:
             transaction.database.create(transaction.cursor, database_name)
             transaction.cursor.commit()
 
@@ -260,7 +260,7 @@ def drop(database_name, password):
     time.sleep(1)
 
     with Transaction().start(None, 0, close=True, autocommit=True) \
-        as transaction:
+            as transaction:
         cursor = transaction.cursor
         try:
             Database.drop(cursor, database_name)

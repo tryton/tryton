@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 from trytond.backend.table import TableHandlerInterface
 import logging
@@ -44,7 +44,7 @@ class TableHandler(TableHandlerInterface):
 
         # Migration from 1.6 add autoincrement
 
-        if not 'AUTOINCREMENT' in sql.upper():
+        if 'AUTOINCREMENT' not in sql.upper():
             temp_sql = sql.replace(table_name, '_temp_%s' % table_name)
             cursor.execute(temp_sql)
             cursor.execute('PRAGMA table_info("' + table_name + '")')
@@ -71,7 +71,7 @@ class TableHandler(TableHandlerInterface):
                 and not TableHandler.table_exist(cursor, new_name)):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_name, new_name))
-        #Rename history table
+        # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
         if (TableHandler.table_exist(cursor, old_history)

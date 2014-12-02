@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import sys
 try:
     import cdecimal
@@ -2649,7 +2649,7 @@ class FieldsTestCase(unittest.TestCase):
                         }])
             self.assert_(origin3_id)
 
-            size_targets = self.many2many_size_target.create([{
+            self.many2many_size_target.create([{
                         'name': str(i),
                         } for i in range(6)])
 

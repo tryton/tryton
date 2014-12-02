@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import time
 from xml import sax
 import logging
@@ -325,7 +325,7 @@ class Fs2bdAccessor:
         Whe call the prefetch function here to. Like that whe are sure
         not to erase data when get is called.
         """
-        if not module in self.fetched_modules:
+        if module not in self.fetched_modules:
             self.fetch_new_module(module)
         if fs_id not in self.fs2db[module]:
             self.fs2db[module][fs_id] = {}
@@ -613,7 +613,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     % (fs_id, module))
 
             record = self.fs2db.get_browserecord(module, Model.__name__, db_id)
-            #Re-create record if it was deleted
+            # Re-create record if it was deleted
             if not record:
                 with Transaction().set_context(
                         module=module, language='en_US'):
@@ -814,12 +814,12 @@ def post_import(pool, module, to_delete):
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
             logging.getLogger("convert").error(
                 'Could not delete id: %d of model %s\n'
-                    'There should be some relation '
-                    'that points to this resource\n'
-                    'You should manually fix this '
-                    'and restart --update=module\n'
-                    'Exception: %s' %
-                    (db_id, model, tb_s))
+                'There should be some relation '
+                'that points to this resource\n'
+                'You should manually fix this '
+                'and restart --update=module\n'
+                'Exception: %s' %
+                (db_id, model, tb_s))
             if 'active' in Model._fields:
                 Model.write([Model(db_id)], {
                         'active': False,

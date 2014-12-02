@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import copy
 
 from sql import Cast, Literal, Null
@@ -82,7 +82,7 @@ class Property(Function):
         model_field = Field.__table__()
         model = IrModel.__table__()
 
-        #Fetch res ids that comply with the domain
+        # Fetch res ids that comply with the domain
         join = property_.join(model_field,
             condition=model_field.id == property_.field)
         join = join.join(model,
@@ -119,7 +119,7 @@ class Property(Function):
                 dom_operator = 'not in'
             return [('id', dom_operator, [x[0] for x in props])]
 
-        #Fetch the res ids that doesn't use the default value
+        # Fetch the res ids that doesn't use the default value
         cursor.execute(*property_.select(
                 Cast(Substring(property_.res,
                         Position(',', property_.res) + Literal(1)),

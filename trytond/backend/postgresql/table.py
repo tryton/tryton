@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 from trytond.backend.table import TableHandlerInterface
 import logging
@@ -43,7 +43,7 @@ class TableHandler(TableHandlerInterface):
                 self.cursor.execute('ALTER TABLE "%s" '
                     'ADD COLUMN id INTEGER' % self.table_name)
             self._update_definitions()
-        if self.history and not '__id' in self._columns:
+        if self.history and '__id' not in self._columns:
             self.cursor.execute('ALTER TABLE "%s" '
                 'ADD COLUMN __id INTEGER '
                 'DEFAULT nextval(\'"%s"\') NOT NULL' %
@@ -69,7 +69,7 @@ class TableHandler(TableHandlerInterface):
 
     @staticmethod
     def table_rename(cursor, old_name, new_name):
-        #Rename table
+        # Rename table
         if (TableHandler.table_exist(cursor, old_name)
                 and not TableHandler.table_exist(cursor, new_name)):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
@@ -78,7 +78,7 @@ class TableHandler(TableHandlerInterface):
         old_sequence = old_name + '_id_seq'
         new_sequence = new_name + '_id_seq'
         TableHandler.sequence_rename(cursor, old_sequence, new_sequence)
-        #Rename history table
+        # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
         if (TableHandler.table_exist(cursor, old_history)
@@ -209,7 +209,7 @@ class TableHandler(TableHandlerInterface):
         if self.column_exist(column_name):
             if (column_name in ('create_date', 'write_date')
                     and column_type[1].lower() != 'timestamp(6)'):
-                #Migrate dates from timestamp(0) to timestamp
+                # Migrate dates from timestamp(0) to timestamp
                 self.cursor.execute('ALTER TABLE "' + self.table_name + '" '
                     'ALTER COLUMN "' + column_name + '" TYPE timestamp')
             comment()

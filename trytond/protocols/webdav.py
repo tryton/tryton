@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import SocketServer
 import socket
 import BaseHTTPServer
@@ -573,7 +573,7 @@ class WebDAVAuthRequestHandler(WebDAVServer.DAVRequestHandler):
                 with Transaction().start(dbname, 0) as transaction:
                     database_list = Pool.database_list()
                     pool = Pool(dbname)
-                    if not dbname in database_list:
+                    if dbname not in database_list:
                         pool.init()
                     Share = pool.get('webdav.share')
                     user = Share.get_login(key, command, path)

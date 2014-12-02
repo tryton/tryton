@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 import warnings
 from ast import literal_eval
@@ -36,10 +36,10 @@ class Lang(ModelSQL, ModelView):
             ('rtl', 'Right-to-left'),
             ], 'Direction', required=True)
 
-    #date
+    # date
     date = fields.Char('Date', required=True)
 
-    #number
+    # number
     grouping = fields.Char('Grouping', required=True)
     decimal_point = fields.Char('Decimal Separator', required=True)
     thousands_sep = fields.Char('Thousands Separator')

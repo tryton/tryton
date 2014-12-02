@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from trytond.backend.database import DatabaseInterface, CursorInterface
 from trytond.config import config
 import os
@@ -15,7 +15,7 @@ try:
     from pysqlite2 import dbapi2 as sqlite
     from pysqlite2.dbapi2 import IntegrityError as DatabaseIntegrityError
     from pysqlite2.dbapi2 import OperationalError as DatabaseOperationalError
-    #pysqlite2 < 2.5 doesn't return correct rowcount
+    # pysqlite2 < 2.5 doesn't return correct rowcount
     _FIX_ROWCOUNT = sqlite.version_info < (2, 5, 0)
 except ImportError:
     import sqlite3 as sqlite

@@ -1,6 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
-import os
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 try:
     import crypt
 except ImportError:
@@ -15,7 +14,7 @@ from trytond.exceptions import NotLogged
 def _get_pool(dbname):
     database_list = Pool.database_list()
     pool = Pool(dbname)
-    if not dbname in database_list:
+    if dbname not in database_list:
         pool.init()
     return pool
 

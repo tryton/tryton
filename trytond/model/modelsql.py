@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import re
 import datetime
 from functools import reduce
@@ -1035,12 +1035,12 @@ class ModelSQL(ModelStorage):
                     main_table.create_date).as_('_datetime'))
             columns.append(Column(main_table, '__id'))
         if not query:
-            columns += [Column(main_table, name).as_(name)
-                for name, field in cls._fields.iteritems()
-                if not hasattr(field, 'get')
-                and name != 'id'
-                and not getattr(field, 'translate', False)
-                and field.loading == 'eager']
+            columns += [Column(main_table, n).as_(n)
+                for n, f in cls._fields.iteritems()
+                if not hasattr(f, 'get')
+                and n != 'id'
+                and not getattr(f, 'translate', False)
+                and f.loading == 'eager']
             if not cls.table_query():
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns += [Extract('EPOCH',

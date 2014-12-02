@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.protocols.dispatcher import dispatch
 from trytond.config import config
@@ -145,7 +145,7 @@ class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
         response = {'id': req_id}
 
         try:
-            #generate response
+            # generate response
             if dispatch_method is not None:
                 response['result'] = dispatch_method(method, params)
             else:

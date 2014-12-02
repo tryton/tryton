@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import time
 import locale
 import os
@@ -183,8 +183,8 @@ if __name__ == '__main__':
     with open(os.path.join(os.path.dirname(__file__), 'time_locale.py'),
             'w') as fp:
         fp.write('''# -*- coding: utf-8 -*-
-#This file is part of Tryton.  The COPYRIGHT file at the top level of')
-#this repository contains the full copyright notices and license terms.')
+# This file is part of Tryton.  The COPYRIGHT file at the top level of')
+# this repository contains the full copyright notices and license terms.')
 ''')
         time_locale = {}
         fp.write('TIME_LOCALE = \\\n')
@@ -201,9 +201,8 @@ if __name__ == '__main__':
                 'fr_FR',
                 'nl_NL',
                 'ru_RU',
+                'sl_SI',
                 ]:
             time_locale[lang] = locale_strftime(lang)
-            #fp.write('"' + lang + '": ' + repr(time_locale) + ',\n')
-        #fp.write('}\n')
         pp = pprint.PrettyPrinter(stream=fp)
         pp.pprint(time_locale)

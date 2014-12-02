@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 try:
     import cStringIO as StringIO
 except ImportError:
@@ -281,10 +281,10 @@ class Report(URLMixin, PoolBase):
         rel_report = relatorio.reporting.Report(path, mimetype,
                 ReportFactory(), relatorio.reporting.MIMETemplateLoader())
         rel_report.filters.insert(0, translator)
-        #convert unicode key into str
+        # convert unicode key into str
         localcontext = dict(map(lambda x: (str(x[0]), x[1]),
             localcontext.iteritems()))
-        #Test compatibility with old relatorio version <= 0.3.0
+        # Test compatibility with old relatorio version <= 0.3.0
         if len(inspect.getargspec(rel_report.__call__)[0]) == 2:
             data = rel_report(records, **localcontext).render().getvalue()
         else:

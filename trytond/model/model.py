@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 import copy
 import collections
@@ -132,7 +132,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 value[field_name] = cls._defaults[field_name]()
             field = cls._fields[field_name]
             if (field._type == 'boolean'
-                    and not field_name in value):
+                    and field_name not in value):
                 value[field_name] = False
             if isinstance(field, fields.Property):
                 value[field_name] = Property.get(field_name, cls.__name__)
@@ -161,7 +161,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         FieldAccess = pool.get('ir.model.field.access')
         ModelAccess = pool.get('ir.model.access')
 
-        #Add translation to cache
+        # Add translation to cache
         language = Transaction().language
         trans_args = []
         for field in (x for x in cls._fields.keys()

@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 from trytond.backend.table import TableHandlerInterface
 import logging
@@ -41,7 +41,7 @@ class TableHandler(TableHandlerInterface):
                 self.cursor.execute('ALTER TABLE `%s` '
                     'ADD COLUMN id BIGINT' % self.table_name)
             self._update_definitions()
-        if self.history and not '__id' in self._columns:
+        if self.history and '__id' not in self._columns:
             self.cursor.execute('ALTER TABLE `%s` '
                 'ADD COLUMN __id BIGINT AUTO_INCREMENT '
                 'NOT NULL PRIMARY KEY' % self.table_name)
@@ -56,12 +56,12 @@ class TableHandler(TableHandlerInterface):
 
     @staticmethod
     def table_rename(cursor, old_name, new_name):
-        #Rename table
+        # Rename table
         if (TableHandler.table_exist(cursor, old_name)
                 and not TableHandler.table_exist(cursor, new_name)):
             cursor.execute('ALTER TABLE `%s` RENAME TO `%s`'
                 % (old_name, new_name))
-        #Rename history table
+        # Rename history table
         old_history = old_name + '__history'
         new_history = new_name + '__history'
         if (TableHandler.table_exist(cursor, old_history)

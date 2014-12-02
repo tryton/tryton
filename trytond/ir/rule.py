@@ -1,6 +1,6 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
-from ..model import ModelView, ModelSQL, fields, dualmethod
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+from ..model import ModelView, ModelSQL, fields
 from ..tools import safe_eval
 from ..transaction import Transaction
 from ..cache import Cache

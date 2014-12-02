@@ -1,9 +1,9 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 # Code come from python-Levenshtein
 
-from Levenshtein import *
+from Levenshtein import opcodes, editops, matching_blocks, ratio, distance
 from warnings import warn
 
 

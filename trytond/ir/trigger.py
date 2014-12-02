@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 import time
 from sql import Literal
@@ -29,7 +29,7 @@ class Trigger(ModelSQL, ModelView):
             'invisible': (Eval('on_create', False)
                 | Eval('on_write', False)
                 | Eval('on_delete', False)),
-        }, depends=['on_create', 'on_write', 'on_delete'])
+            }, depends=['on_create', 'on_write', 'on_delete'])
     on_create = fields.Boolean('On Create', select=True, states={
         'invisible': Eval('on_time', False),
         }, depends=['on_time'])

@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 import datetime
 import time
@@ -383,7 +383,7 @@ class ModelStorage(Model):
             active_found = False
             while i < len(domain):
                 arg = domain[i]
-                #add test for xmlrpc that doesn't handle tuple
+                # add test for xmlrpc that doesn't handle tuple
                 if (isinstance(arg, tuple)
                         or (isinstance(arg, list)
                             and len(arg) > 2
@@ -866,7 +866,7 @@ class ModelStorage(Model):
             if not call(field[0]):
                 cls.raise_user_error(field[1])
 
-        if not 'res.user' in pool.object_name_list() \
+        if 'res.user' not in pool.object_name_list() \
                 or Transaction().user == 0:
             ctx_pref = {
             }

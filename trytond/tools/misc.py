@@ -1,6 +1,6 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
 # -*- coding: utf-8 -*-
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 """
 Miscelleanous tools used by tryton
 """
@@ -402,10 +402,10 @@ def reduce_domain(domain):
                 (isinstance(arg, list) and
                     len(arg) > 2 and
                     arg[1] in OPERATORS)):
-            #clause
+            # clause
             result.append(arg)
         elif isinstance(arg, list) and arg:
-            #sub-domain
+            # sub-domain
             sub_domain = reduce_domain(arg)
             sub_operator = sub_domain[0]
             if sub_operator == operator:

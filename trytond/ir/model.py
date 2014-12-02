@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import re
 import heapq
 
@@ -311,7 +311,7 @@ class ModelField(ModelSQL, ModelView):
         for field_name in model_fields:
             if model_fields[field_name]['module'] == module_name \
                     and field_name not in model._fields:
-                #XXX This delete field even when it is defined later
+                # XXX This delete field even when it is defined later
                 # in the module
                 cursor.execute(*ir_model_field.delete(
                         where=ir_model_field.id ==

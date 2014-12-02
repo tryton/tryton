@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from threading import RLock
 import logging
 from trytond.modules import load_modules, register_classes
@@ -147,7 +147,7 @@ class Pool(object):
                 return
             logger.info('init pool for "%s"' % self.database_name)
             self._pool.setdefault(self.database_name, {})
-            #Clean the _pool before loading modules
+            # Clean the _pool before loading modules
             for type in self.classes.keys():
                 self._pool[self.database_name][type] = {}
             restart = not load_modules(self.database_name, self, update=update,
