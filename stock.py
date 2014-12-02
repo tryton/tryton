@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -16,7 +16,7 @@ class ShipmentOut:
             },
         depends=['state'])
     cost_currency = fields.Many2One('currency.currency',
-            'Cost Currency', states={
+        'Cost Currency', states={
             'invisible': ~Eval('carrier'),
             'required': Bool(Eval('carrier')),
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
@@ -26,7 +26,7 @@ class ShipmentOut:
         'Cost Currency Digits'),
         'on_change_with_cost_currency_digits')
     cost = fields.Numeric('Cost',
-            digits=(16, Eval('cost_currency_digits', 2)), states={
+        digits=(16, Eval('cost_currency_digits', 2)), states={
             'invisible': ~Eval('carrier'),
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
                     'packed']),
