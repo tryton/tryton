@@ -1,11 +1,11 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from functools import partial
 
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import Eval, Get
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
@@ -236,8 +236,8 @@ class UpdateCostPrice(Wizard):
     def __setup__(cls):
         super(UpdateCostPrice, cls).__setup__()
         cls._error_messages.update({
-                'same_account': 'The stock account and the counterpart can '
-                    'not be the same account',
+                'same_account': ('The stock account and the counterpart can '
+                    'not be the same account'),
                 })
 
     def default_ask_price(self, fields):
