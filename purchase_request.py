@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import datetime
 import operator
 from itertools import groupby
@@ -8,7 +8,7 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
-from trytond.pyson import If, In, Eval, Get
+from trytond.pyson import If, In, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
@@ -193,7 +193,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                     ('purchasable', '=', True),
                     ], order=[('id', 'ASC')])
         product_ids = [p.id for p in products]
-        #aggregate product by minimum supply date
+        # aggregate product by minimum supply date
         date2products = {}
         for product in products:
             min_date, max_date = cls.get_supply_dates(product)
