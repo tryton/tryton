@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 from .widget import Widget, TranslateMixin
 from tryton.config import CONFIG
@@ -25,7 +25,7 @@ class TextBox(Widget, TranslateMixin):
 
         self.textview = gtk.TextView()
         self.textview.set_wrap_mode(gtk.WRAP_WORD)
-        #TODO better tab solution
+        # TODO better tab solution
         self.textview.set_accepts_tab(False)
         self.textview.connect('focus-out-event',
             lambda x, y: self._focus_out())

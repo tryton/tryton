@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 import operator
 import types
@@ -295,7 +295,7 @@ class Or(And):
                 field = self.base(field)
                 if (field in context
                         and (eval_leaf(part, context, operator.or_)
-                                or constrained_leaf(part, operator.or_))):
+                            or constrained_leaf(part, operator.or_))):
                     return True
                 elif (field in context
                         and not eval_leaf(part, context, operator.or_)):

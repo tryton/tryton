@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
 import os
@@ -18,8 +18,7 @@ class Tips(object):
 
 
 '''),
-            _(
-u'''<b>Do you know Triton, one of the namesakes for our project?</b>
+            _(u'''<b>Do you know Triton, one of the namesakes for our project?</b>
 
 Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the
 largest moon of the planet Neptune, discovered on October 10, 1846

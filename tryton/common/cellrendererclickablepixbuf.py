@@ -1,14 +1,13 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 import gobject
 
 
 class CellRendererClickablePixbuf(gtk.CellRendererPixbuf):
     __gsignals__ = {
-            'clicked': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
-                (gobject.TYPE_STRING, )),
-
+        'clicked': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+            (gobject.TYPE_STRING, )),
         }
 
     def __init__(self):

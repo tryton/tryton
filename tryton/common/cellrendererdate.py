@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 import gobject
 import pango
@@ -9,23 +9,23 @@ from date_widget import DateEntry
 
 class CellRendererDate(gtk.GenericCellRenderer):
     __gproperties__ = {
-            'text': (gobject.TYPE_STRING, None, 'Text',
-                'Text', gobject.PARAM_READWRITE),
-            'foreground': (gobject.TYPE_STRING, None, 'Foreground',
-                'Foreground', gobject.PARAM_WRITABLE),
-            'foreground-set': (gobject.TYPE_INT, 'Foreground Set',
-                'Foreground Set', 0, 10, 0, gobject.PARAM_READWRITE),
-            'background': (gobject.TYPE_STRING, None, 'Background',
-                'Background', gobject.PARAM_WRITABLE),
-            'background-set': (gobject.TYPE_INT, 'Background Set',
-                'Background Set', 0, 10, 0, gobject.PARAM_READWRITE),
-            'editable': (gobject.TYPE_INT, 'Editable',
-                'Editable', 0, 10, 0, gobject.PARAM_READWRITE),
-            'visible': (gobject.TYPE_INT, 'Visible',
-                'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
-            'strikethrough': (gobject.TYPE_BOOLEAN, 'Strikethrough',
-                'Strikethrough', False, gobject.PARAM_WRITABLE),
-    }
+        'text': (gobject.TYPE_STRING, None, 'Text',
+            'Text', gobject.PARAM_READWRITE),
+        'foreground': (gobject.TYPE_STRING, None, 'Foreground',
+            'Foreground', gobject.PARAM_WRITABLE),
+        'foreground-set': (gobject.TYPE_INT, 'Foreground Set',
+            'Foreground Set', 0, 10, 0, gobject.PARAM_READWRITE),
+        'background': (gobject.TYPE_STRING, None, 'Background',
+            'Background', gobject.PARAM_WRITABLE),
+        'background-set': (gobject.TYPE_INT, 'Background Set',
+            'Background Set', 0, 10, 0, gobject.PARAM_READWRITE),
+        'editable': (gobject.TYPE_INT, 'Editable',
+            'Editable', 0, 10, 0, gobject.PARAM_READWRITE),
+        'visible': (gobject.TYPE_INT, 'Visible',
+            'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
+        'strikethrough': (gobject.TYPE_BOOLEAN, 'Strikethrough',
+            'Strikethrough', False, gobject.PARAM_WRITABLE),
+        }
 
     def __init__(self, format):
         self.__gobject_init__()

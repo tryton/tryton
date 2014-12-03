@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gobject
 import gtk
 import sys
@@ -966,8 +966,8 @@ class ViewTree(View):
             if (col.get_width() != col.width and col.get_visible()
                     and not col.get_expand()):
                 fields[col.name] = col.get_width()
-        #Don't set width for last visible columns
-        #as it depends of the screen size
+        # Don't set width for last visible columns
+        # as it depends of the screen size
         if last_col and last_col.name in fields:
             del fields[last_col.name]
 

@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 import gtk
 import gobject
@@ -274,8 +274,8 @@ def request_server(server_widget):
         title=_('Tryton Connection'),
         parent=parent,
         flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
-            gtk.WIN_POS_CENTER_ON_PARENT |
-            gtk.gdk.WINDOW_TYPE_HINT_DIALOG,)
+        gtk.WIN_POS_CENTER_ON_PARENT |
+        gtk.gdk.WINDOW_TYPE_HINT_DIALOG,)
     dialog.set_has_separator(True)
     vbox = gtk.VBox()
     table = gtk.Table(2, 2, False)
@@ -571,7 +571,7 @@ def mailto(to=None, cc=None, subject=None, body=None, attachment=None):
             return
         except OSError:
             pass
-    #http://www.faqs.org/rfcs/rfc2368.html
+    # http://www.faqs.org/rfcs/rfc2368.html
     url = "mailto:"
     if to:
         if isinstance(to, unicode):

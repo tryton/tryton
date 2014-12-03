@@ -1,5 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 from .widget import Widget
 import locale
@@ -12,7 +12,7 @@ class ProgressBar(Widget):
         'right_to_left': gtk.PROGRESS_RIGHT_TO_LEFT,
         'bottom_to_top': gtk.PROGRESS_BOTTOM_TO_TOP,
         'top_to_bottom': gtk.PROGRESS_TOP_TO_BOTTOM,
-    }
+        }
 
     def __init__(self, view, attrs):
         super(ProgressBar, self).__init__(view, attrs)

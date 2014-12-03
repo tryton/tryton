@@ -1,12 +1,12 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 import gobject
 import pango
 
 
 class CellRendererButton(gtk.GenericCellRenderer):
-    #TODO Add keyboard editing
+    # TODO Add keyboard editing
     __gproperties__ = {
             "text": (gobject.TYPE_STRING, None, "Text",
                 "Displayed text", gobject.PARAM_READWRITE),

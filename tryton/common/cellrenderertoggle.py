@@ -1,21 +1,21 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import gtk
 import gobject
 
 
 class CellRendererToggle(gtk.GenericCellRenderer):
     __gproperties__ = {
-            'activatable': (gobject.TYPE_INT, 'Activatable',
-                'Activatable', 0, 10, 0, gobject.PARAM_READWRITE),
-            'visible': (gobject.TYPE_INT, 'Visible',
-                'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
-    }
+        'activatable': (gobject.TYPE_INT, 'Activatable',
+            'Activatable', 0, 10, 0, gobject.PARAM_READWRITE),
+        'visible': (gobject.TYPE_INT, 'Visible',
+            'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
+        }
 
     __gsignals__ = {
-            'toggled': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
-                (gobject.TYPE_STRING, )),
-    }
+        'toggled': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+            (gobject.TYPE_STRING, )),
+        }
 
     def __init__(self):
         self.__gobject_init__()

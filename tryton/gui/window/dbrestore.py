@@ -181,7 +181,7 @@ class DBRestore(object):
             passwd = False
             url = False
             update = False
-            #TODO: This needs to be unified with the other widgets
+            # TODO: This needs to be unified with the other widgets
             self.button_server_change.connect_after('clicked',
                 lambda a, b: common.request_server(b),
                 self.entry_server_url)

@@ -1,6 +1,6 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
-#Copyright (c) 2002-2007 John D. Hunter; All Rights Reserved
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+# Copyright (c) 2002-2007 John D. Hunter; All Rights Reserved
 import time
 
 

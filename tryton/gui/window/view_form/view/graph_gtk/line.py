@@ -1,7 +1,7 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
-#This code is inspired by the pycha project
-#(http://www.lorenzogil.com/projects/pycha/)
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+# This code is inspired by the pycha project
+# (http://www.lorenzogil.com/projects/pycha/)
 from graph import Graph
 from tryton.common import hex2rgb, highlight_rgb, float_time_to_text
 import locale
