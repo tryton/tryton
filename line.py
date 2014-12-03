@@ -10,6 +10,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond import backend
 
 __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
     'HoursEmployee',
@@ -20,14 +21,17 @@ __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
 class Line(ModelSQL, ModelView):
     'Timesheet Line'
     __name__ = 'timesheet.line'
+    company = fields.Many2One('company.company', 'Company', required=True)
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         select=True, domain=[
-            ('company', '=', Eval('context', {}).get('company', -1)),
-            ])
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     date = fields.Date('Date', required=True, select=True)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
         required=True, select=True, domain=[
+            ('company', '=', Eval('company', -1)),
             ('timesheet_available', '=', True),
             ['OR',
                 ('timesheet_start_date', '=', None),
@@ -38,7 +42,7 @@ class Line(ModelSQL, ModelView):
                 ('timesheet_end_date', '>=', Eval('date')),
                 ],
             ],
-        depends=['date'])
+        depends=['date', 'company'])
     description = fields.Char('Description')
 
     @classmethod
@@ -49,6 +53,31 @@ class Line(ModelSQL, ModelView):
             ('check_move_hours_pos',
              'CHECK(hours >= 0.0)', 'Hours field must be positive'),
             ]
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
+        pool = Pool()
+        Work = pool.get('timesheet.work')
+        work = Work.__table__()
+
+        created_company = not table.column_exist('company')
+
+        super(Line, cls).__register__(module_name)
+
+        # Migration from 3.4: new company field
+        if created_company:
+            # Don't use FROM because SQLite nor MySQL support it.
+            cursor.execute(*sql_table.update(
+                    [sql_table.company], [work.select(work.company,
+                            where=work.id == sql_table.work)]))
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
 
     @staticmethod
     def default_employee():

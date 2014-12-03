@@ -19,10 +19,18 @@ class Work(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', left="left",
-            right="right", select=True, ondelete="RESTRICT")
+            right="right", select=True, ondelete="RESTRICT",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
-    children = fields.One2Many('timesheet.work', 'parent', 'Children')
+    children = fields.One2Many('timesheet.work', 'parent', 'Children',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
             help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
@@ -51,9 +59,6 @@ class Work(ModelSQL, ModelView):
     def __setup__(cls):
         super(Work, cls).__setup__()
         cls._error_messages.update({
-                'invalid_parent_company': ('Every work must be in the same '
-                    'company as it\'s parent work but "%(child)s" and '
-                    '"%(parent)s" are in different companies.'),
                 'change_timesheet_available': ('You can not unset "Available '
                     'on timesheets" for work "%s" because it already has  '
                     'timesheets.'),
@@ -83,17 +88,6 @@ class Work(ModelSQL, ModelView):
     def validate(cls, works):
         super(Work, cls).validate(works)
         cls.check_recursion(works, rec_name='name')
-        for work in works:
-            work.check_parent_company()
-
-    def check_parent_company(self):
-        if not self.parent:
-            return
-        if self.parent.company != self.company:
-            self.raise_user_error('invalid_parent_company', {
-                    'child': self.rec_name,
-                    'parent': self.parent.rec_name,
-                    })
 
     @classmethod
     def get_hours(cls, works, name):

@@ -3,7 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <form string="Timesheet Line">
     <label name="employee"/>
-    <field name="employee" colspan="3"/>
+    <field name="employee"/>
+    <label name="company"/>
+    <field name="company"/>
     <label name="date"/>
     <field name="date"/>
     <label name="hours"/>
