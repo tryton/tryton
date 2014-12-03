@@ -118,6 +118,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         depends=_DEPENDS + ['currency_digits'])
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
         domain=[
+            ('move.company', '=', Eval('company', -1)),
             If(Eval('kind') == 'receivable',
                 ['OR', ('debit', '>', 0), ('credit', '<', 0)],
                 ['OR', ('credit', '>', 0), ('debit', '<', 0)],
@@ -138,7 +139,8 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ],
             ('move_state', '=', 'posted'),
             ],
-        states=_STATES, depends=_DEPENDS + ['party', 'currency', 'kind'])
+        states=_STATES, depends=_DEPENDS + ['party', 'currency', 'kind',
+            'company'])
     description = fields.Char('Description', states=_STATES, depends=_DEPENDS)
     group = fields.Many2One('account.payment.group', 'Group', readonly=True,
         ondelete='RESTRICT',

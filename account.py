@@ -148,6 +148,7 @@ class PayLine(Wizard):
             kind = 'payable'
 
         return Payment(
+            company=line.move.company,
             journal=self.start.journal,
             party=line.party,
             kind=kind,
