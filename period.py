@@ -34,7 +34,14 @@ class Period(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-        domain=[('code', '=', 'account.move')],
+        domain=[
+            ('code', '=', 'account.move'),
+            ['OR',
+                ('company', '=', None),
+                ('company', '=', Eval('company', -1)),
+                ],
+            ],
+        depends=['company'],
         context={'code': 'account.move'})
     type = fields.Selection([
             ('standard', 'Standard'),
@@ -42,7 +49,7 @@ class Period(ModelSQL, ModelView):
             ], 'Type', required=True,
         states=_STATES, depends=_DEPENDS, select=True)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
-        'get_company', searcher='search_company')
+        'on_change_with_company', searcher='search_company')
 
     @classmethod
     def __register__(cls, module_name):
@@ -78,9 +85,6 @@ class Period(ModelSQL, ModelView):
                     'overlap.'),
                 'check_move_sequence': ('Period "%(first)s" and "%(second)s" '
                     'have the same sequence.'),
-                'check_move_sequence_company': ('Company of sequence '
-                    '"%(sequence)s" does not match the company of period '
-                    '"%(period)s" to which it is assigned to.'),
                 'fiscalyear_dates': ('Dates of period "%s" are outside '
                     'are outside it\'s fiscal year dates.'),
                 })
@@ -93,8 +97,10 @@ class Period(ModelSQL, ModelView):
     def default_type():
         return 'standard'
 
-    def get_company(self, name):
-        return self.fiscalyear.company.id
+    @fields.depends('fiscalyear')
+    def on_change_with_company(self, name=None):
+        if self.fiscalyear:
+            return self.fiscalyear.company.id
 
     @classmethod
     def search_company(cls, name, clause):
@@ -147,12 +153,6 @@ class Period(ModelSQL, ModelView):
             self.raise_user_error('check_move_sequence', {
                     'first': self.rec_name,
                     'second': periods[0].rec_name,
-                    })
-        if (self.post_move_sequence.company and
-                self.post_move_sequence.company != self.fiscalyear.company):
-            self.raise_user_error('check_move_sequence_company', {
-                    'sequence': self.post_move_sequence.rec_name,
-                    'period': self.rec_name,
                     })
 
     @classmethod

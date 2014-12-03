@@ -326,6 +326,8 @@ class BalanceNonDeferralStart(ModelView):
     __name__ = 'account.fiscalyear.balance_non_deferral.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True, domain=[('state', '=', 'open')])
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'on_change_with_company')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         domain=[
             ('type', '=', 'situation'),
@@ -340,16 +342,23 @@ class BalanceNonDeferralStart(ModelView):
         required=True,
         domain=[
             ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
-            ])
+            ],
+        depends=['company'])
     debit_account = fields.Many2One('account.account', 'Debit Account',
         required=True,
         domain=[
             ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
-            ])
+            ],
+        depends=['company'])
+
+    @fields.depends('fiscalyear')
+    def on_change_with_company(self, name=None):
+        if self.fiscalyear:
+            return self.fiscalyear.company.id
 
 
 class BalanceNonDeferral(Wizard):

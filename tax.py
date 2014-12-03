@@ -627,9 +627,13 @@ class Tax(ModelSQL, ModelView):
         depends=['company', 'type'])
     invoice_base_code = fields.Many2One('account.tax.code',
         'Invoice Base Code',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'readonly': Eval('type') == 'none',
-            }, depends=['type'])
+            },
+        depends=['type', 'company'])
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
@@ -638,9 +642,13 @@ class Tax(ModelSQL, ModelView):
             }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
         'Invoice Tax Code',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'readonly': Eval('type') == 'none',
-            }, depends=['type'])
+            },
+        depends=['type', 'company'])
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
@@ -654,15 +662,23 @@ class Tax(ModelSQL, ModelView):
             }, depends=['type'])
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
         digits=(2, 0), help='Usualy 1 or -1',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
-            }, depends=['type'])
+            },
+        depends=['type', 'company'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
         'Credit Note Tax Code',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'readonly': Eval('type') == 'none',
-            }, depends=['type'])
+            },
+        depends=['type', 'company'])
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
         digits=(2, 0), help='Usualy 1 or -1',
         states={
@@ -919,11 +935,21 @@ class TaxLine(ModelSQL, ModelView):
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=True,
-        required=True)
+        required=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     tax = fields.Many2One('account.tax', 'Tax', select=True,
-        ondelete='RESTRICT')
+        ondelete='RESTRICT',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=True, ondelete='CASCADE')
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'on_change_with_company')
 
     @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
@@ -934,6 +960,11 @@ class TaxLine(ModelSQL, ModelView):
     @fields.depends('tax')
     def on_change_tax(self):
         self.code = None
+
+    @fields.depends('_parent_move_line.account')
+    def on_change_with_company(self, name=None):
+        if self.move_line:
+            return self.move_line.account.company.id
 
 
 class TaxRuleTemplate(ModelSQL, ModelView):
