@@ -115,15 +115,23 @@ class Invoice(Workflow, ModelSQL, ModelView):
         'on_change_with_currency_date')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, depends=_DEPENDS)
-    move = fields.Many2One('account.move', 'Move', readonly=True)
+    move = fields.Many2One('account.move', 'Move', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     cancel_move = fields.Many2One('account.move', 'Cancel Move', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'invisible': Eval('type').in_(['out_invoice', 'out_credit_note']),
-            })
+            },
+        depends=['company'])
     account = fields.Many2One('account.account', 'Account', required=True,
-        states=_STATES, depends=_DEPENDS + ['type'],
+        states=_STATES, depends=_DEPENDS + ['type', 'company'],
         domain=[
-            ('company', '=', Eval('context', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             If(Eval('type').in_(['out_invoice', 'out_credit_note']),
                 ('kind', '=', 'receivable'),
                 ('kind', '=', 'payable')),
@@ -131,7 +139,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
-        states=_STATES, depends=['state', 'currency_date'])
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        states=_STATES, depends=['state', 'currency_date', 'company'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES, depends=_DEPENDS)
     comment = fields.Text('Comment', states=_STATES, depends=_DEPENDS)
@@ -152,10 +163,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
         'Lines to Pay'), 'get_lines_to_pay')
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
         'invoice', 'line', readonly=True, string='Payment Lines',
+        domain=[
+            ('move.company', '=', Eval('company', -1)),
+            ],
         states={
             'invisible': (Eval('state') == 'paid') | ~Eval('payment_lines'),
             },
-        depends=['state'])
+        depends=['state', 'company'])
     amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
@@ -195,10 +209,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'account.'),
                 'missing_credit_account': ('The credit account on journal %s" '
                     'is missing.'),
-                'account_different_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s" because '
-                    'account "%(account)s" has a different company '
-                    '(%(account_company)s).'),
                 'same_account_on_line': ('Invoice "%(invoice)s" uses the same '
                     'account "%(account)s" for the invoice and in line '
                     '"%(line)s".'),
@@ -954,6 +964,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'period': period_id,
                     'date': accounting_date,
                     'origin': str(self),
+                    'company': self.company.id,
                     'lines': [('create', move_lines)],
                     }])
         self.write([self], {
@@ -1070,18 +1081,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def validate(cls, invoices):
         super(Invoice, cls).validate(invoices)
         for invoice in invoices:
-            invoice.check_account()
             invoice.check_same_account()
             invoice.check_cancel_move()
-
-    def check_account(self):
-        if self.account.company != self.company:
-            self.raise_user_error('check_account', {
-                    'invoice': self.rec_name,
-                    'invoice_company': self.company.rec_name,
-                    'account': self.account.rec_name,
-                    'account_company': self.account.company.rec_name,
-                    })
 
     def check_same_account(self):
         for line in self.lines:
@@ -1232,6 +1233,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'journal': journal.id,
                     'period': period_id,
                     'date': date,
+                    'company': self.company.id,
                     'lines': [('create', lines)],
                     }])
         Move.post([move])
@@ -1446,16 +1448,11 @@ class InvoiceLine(ModelSQL, ModelView):
         depends=['invoice'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
-    company = fields.Many2One('company.company', 'Company',
-        states={
-            'required': ~Eval('invoice'),
-            },
+    company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
-            ],
-        depends=['invoice'], select=True)
-
+            ], select=True)
     sequence = fields.Integer('Sequence',
         states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
@@ -1498,8 +1495,7 @@ class InvoiceLine(ModelSQL, ModelView):
         'on_change_with_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
         domain=[
-            ('company', '=', Eval('_parent_invoice', {}).get('company',
-                    Eval('context', {}).get('company', -1))),
+            ('company', '=', Eval('company', -1)),
             If(Bool(Eval('_parent_invoice')),
                 If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
                     'out_credit_note']),
@@ -1514,7 +1510,7 @@ class InvoiceLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             },
-        depends=['type', 'invoice_type'])
+        depends=['type', 'invoice_type', 'company'])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
             'invisible': Eval('type') != 'line',
@@ -1545,11 +1541,12 @@ class InvoiceLine(ModelSQL, ModelView):
                             ['sale', 'both'],
                             ['purchase', 'both']))
                     )],
+            ('company', '=', Eval('company', -1)),
             ],
         states={
             'invisible': Eval('type') != 'line',
             },
-        depends=['type', 'invoice_type'])
+        depends=['type', 'invoice_type', 'company'])
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
@@ -1577,11 +1574,6 @@ class InvoiceLine(ModelSQL, ModelView):
                     '"%(invoice)s" that is posted or paid.'),
                 'create': ('You can not add a line to invoice "%(invoice)s" '
                     'that is posted, paid or cancelled.'),
-                'account_different_company': (
-                    'You can not create invoice line '
-                    '"%(line)s" on invoice "%(invoice)s" of company '
-                    '"%(invoice_line_company)s" because account "%(account)s" '
-                    'has company "%(account_company)s".'),
                 'same_account_on_invoice': ('You can not create invoice line '
                     '"%(line)s" on invoice "%(invoice)s" because the invoice '
                     'uses the same account (%(account)s).'),
@@ -1589,7 +1581,11 @@ class InvoiceLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        invoice = Invoice.__table__()
         TableHandler = backend.get('TableHandler')
+        sql_table = cls.__table__()
         super(InvoiceLine, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -1599,6 +1595,15 @@ class InvoiceLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+        # Migration from 3.4: company is required
+        cursor.execute(*sql_table.join(invoice,
+                condition=sql_table.invoice == invoice.id
+                ).select(sql_table.id, invoice.company,
+                where=sql_table.company == None))
+        for line_id, company_id in cursor.fetchall():
+            cursor.execute(*sql_table.update([sql_table.company], [company_id],
+                    where=sql_table.id == line_id))
 
     @staticmethod
     def order_sequence(tables):
@@ -1921,30 +1926,7 @@ class InvoiceLine(ModelSQL, ModelView):
     def validate(cls, lines):
         super(InvoiceLine, cls).validate(lines)
         for line in lines:
-            line.check_account_company()
             line.check_same_account()
-
-    def check_account_company(self):
-        if self.type == 'line':
-            if self.invoice:
-                if self.account.company != self.invoice.company:
-                    self.raise_user_error('account_different_company', {
-                            'line': self.rec_name,
-                            'invoice': self.invoice.rec_name,
-                            'invoice_line_company': (
-                                self.invoice.company.rec_name),
-                            'account': self.account.rec_name,
-                            'account_company': self.account.company.rec_name,
-                            })
-            elif self.company:
-                if self.account.company != self.company:
-                    self.raise_user_error('account_different_company', {
-                            'line': self.rec_name,
-                            'invoice': '/',
-                            'invoice_line_company': self.company.rec_name,
-                            'account': self.account.rec_name,
-                            'account_company': self.account.company.rec_name,
-                            })
 
     def check_same_account(self):
         if self.type == 'line':
@@ -2099,6 +2081,9 @@ class InvoiceTax(ModelSQL, ModelView):
             ])
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True)
     tax = fields.Many2One('account.tax', 'Tax',
+        domain=[
+            ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
+            ],
         states={
             'readonly': ~Eval('manual', False),
             },
@@ -2113,10 +2098,6 @@ class InvoiceTax(ModelSQL, ModelView):
                     '"%(invoice)s" because it is posted or paid.'),
                 'create': ('You can not add line "%(line)s" to invoice '
                     '"%(invoice)s" because it is posted, paid or canceled.'),
-                'invalid_account_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s" using '
-                    'account "%(account)s" from company '
-                    '"%(account_company)s".'),
                 'invalid_base_code_company': ('You can not create invoice '
                     '"%(invoice)s" on company "%(invoice_company)s" '
                     'using base tax code "%(base_code)s" from company '
@@ -2243,38 +2224,6 @@ class InvoiceTax(ModelSQL, ModelView):
             if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create')
         return super(InvoiceTax, cls).create(vlist)
-
-    @classmethod
-    def validate(cls, taxes):
-        super(InvoiceTax, cls).validate(taxes)
-        for tax in taxes:
-            tax.check_company()
-
-    def check_company(self):
-        company = self.invoice.company
-        if self.account.company != company:
-            self.raise_user_error('invalid_account_company', {
-                    'invoice': self.invoice.rec_name,
-                    'invoice_company': self.invoice.company.rec_name,
-                    'account': self.account.rec_name,
-                    'account_company': self.account.company.rec_name,
-                    })
-        if self.base_code:
-            if self.base_code.company != company:
-                self.raise_user_error('invalid_base_code_company', {
-                        'invoice': self.invoice.rec_name,
-                        'invoice_company': self.invoice.company.rec_name,
-                        'base_code': self.base_code.rec_name,
-                        'base_code_company': self.base_code.company.rec_name,
-                        })
-        if self.tax_code:
-            if self.tax_code.company != company:
-                self.raise_user_error('invalid_tax_code_company', {
-                        'invoice': self.invoice.rec_name,
-                        'invoice_company': self.invoice.company.rec_name,
-                        'tax_code': self.tax_code.rec_name,
-                        'tax_code_company': self.tax_code.company.rec_name,
-                        })
 
     def get_move_line(self):
         '''
