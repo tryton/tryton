@@ -170,7 +170,8 @@ class Group:
             message = tmpl.generate(group=group,
                 datetime=datetime, normalize=unicodedata.normalize,
                 ).filter(remove_comment).render()
-            message = Message(message=message, type='out', state='waiting')
+            message = Message(message=message, type='out', state='waiting',
+                company=group.company)
             group.sepa_messages += (message,)
         if _save:
             cls.save(groups)
@@ -207,8 +208,9 @@ class Payment:
         ondelete='RESTRICT',
         domain=[
             ('party', '=', Eval('party', -1)),
+            ('company', '=', Eval('company', -1)),
             ],
-        depends=['party'])
+        depends=['party', 'company'])
     sepa_mandate_sequence_type = fields.Char('Mandate Sequence Type',
         readonly=True)
     sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
