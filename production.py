@@ -104,22 +104,24 @@ class Production(Workflow, ModelSQL, ModelView):
         domain=[
             ('from_location', 'child_of', [Eval('warehouse')], 'parent'),
             ('to_location', '=', Eval('location')),
+            ('company', '=', Eval('company', -1)),
             ],
         states={
             'readonly': (~Eval('state').in_(['request', 'draft', 'waiting'])
                 | ~Eval('warehouse') | ~Eval('location')),
             },
-        depends=['warehouse', 'location'])
+        depends=['warehouse', 'location', 'company'])
     outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
         domain=[
             ('from_location', '=', Eval('location')),
             ('to_location', 'child_of', [Eval('warehouse')], 'parent'),
+            ('company', '=', Eval('company', -1)),
             ],
         states={
             'readonly': (Eval('state').in_(['done', 'cancel'])
                 | ~Eval('warehouse') | ~Eval('location')),
             },
-        depends=['warehouse', 'location'])
+        depends=['warehouse', 'location', 'company'])
     state = fields.Selection([
             ('request', 'Request'),
             ('draft', 'Draft'),
