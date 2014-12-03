@@ -176,6 +176,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         # fetch order points
         order_points = OrderPoint.search([
             ('type', '=', 'purchase'),
+            ('company', '=', company.id if company else None),
             ])
         # index them by product
         product2ops = {}
