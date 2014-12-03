@@ -236,8 +236,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         if invoice.company.currency != invoice.currency:
             with Transaction().set_context(date=invoice.currency_date):
                 self.value = Currency.compute(
-                    invoice.company.currency, invoice_line.amount,
-                    invoice.currency)
+                    invoice.currency, invoice_line.amount,
+                    invoice.company.currency)
         else:
             self.value = invoice_line.amount
         if invoice.invoice_date:
