@@ -65,7 +65,7 @@ class User:
         except Exception:
             pass
         if find:
-            cls.raise_user_error('set_passwd_ldap_user', (login.rec_name,))
+            cls.raise_user_error('set_passwd_ldap_user', (login,))
 
     @classmethod
     def create(cls, vlist):
