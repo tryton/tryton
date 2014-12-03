@@ -44,11 +44,15 @@ class Asset(Workflow, ModelSQL, ModelView):
                 ('product', '=', Eval('product', -1)),
                 ),
             ('invoice.type', '=', 'in_invoice'),
+            ['OR',
+                ('company', '=', Eval('company', -1)),
+                ('invoice.company', '=', Eval('company', -1)),
+                ],
             ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['product', 'state'])
+        depends=['product', 'state', 'company'])
     customer_invoice_line = fields.Function(fields.Many2One(
             'account.invoice.line', 'Customer Invoice Line'),
         'get_customer_invoice_line')
@@ -141,12 +145,20 @@ class Asset(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True)
     lines = fields.One2Many('account.asset.line', 'asset', 'Lines',
         readonly=True)
-    move = fields.Many2One('account.move', 'Account Move', readonly=True)
+    move = fields.Many2One('account.move', 'Account Move', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     update_moves = fields.Many2Many('account.asset-update-account.move',
         'asset', 'move', 'Update Moves', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'invisible': ~Eval('update_moves'),
-            })
+            },
+        depends=['company'])
     comment = fields.Text('Comment')
 
     @classmethod
@@ -437,6 +449,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             )
 
         return Move(
+            company=self.company,
             origin=line,
             period=period_id,
             journal=self.account_journal,
@@ -509,6 +522,7 @@ class Asset(Workflow, ModelSQL, ModelView):
                 )
             lines.append(counter_part_line)
         return Move(
+            company=self.company,
             origin=self,
             period=period_id,
             journal=self.account_journal,
@@ -746,6 +760,7 @@ class UpdateAsset(Wizard):
         Move = pool.get('account.move')
         period_id = Period.find(asset.company.id, self.show_move.date)
         return Move(
+            company=asset.company,
             origin=asset,
             journal=asset.account_journal.id,
             period=period_id,
