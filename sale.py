@@ -1023,6 +1023,8 @@ class SaleLine(ModelSQL, ModelView):
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['sale', 'both'])],
+                ('company', '=',
+                    Eval('_parent_sale', {}).get('company', -1)),
             ],
         states={
             'invisible': Eval('type') != 'line',
