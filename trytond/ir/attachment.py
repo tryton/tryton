@@ -3,6 +3,7 @@
 import os
 import hashlib
 from sql.operators import Concat
+from sql.conditionals import Coalesce
 
 from ..model import ModelView, ModelSQL, fields
 from ..config import config
@@ -54,6 +55,7 @@ class Attachment(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Attachment, cls).__setup__()
+        cls._order.insert(0, ('last_modification', 'DESC'))
         cls._sql_constraints += [
             ('resource_name', 'UNIQUE(resource, name)',
                 'The  names of attachments must be unique by resource!'),
@@ -190,6 +192,11 @@ class Attachment(ModelSQL, ModelView):
     def get_last_modification(self, name):
         return (self.write_date if self.write_date else self.create_date
             ).replace(microsecond=0)
+
+    @staticmethod
+    def order_last_modification(tables):
+        table, _ = tables[None]
+        return [Coalesce(table.write_date, table.create_date)]
 
     def get_last_user(self, name):
         return (self.write_uid.rec_name if self.write_uid
