@@ -17,6 +17,7 @@ from tryton.common import RPCExecute, RPCException, timezoned_date, \
 from tryton.common.date_widget import DateEntry
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.selection import selection_shortcuts
+from tryton.common.completion import get_completion, update_completion
 from tryton.translate import date_format
 
 _ = gettext.gettext
@@ -335,6 +336,16 @@ class DictWidget(Widget):
         self.wid_text.props.width_chars = 13
         self.wid_text.connect('activate', self._sig_activate)
         hbox.pack_start(self.wid_text, expand=True, fill=True)
+
+        if int(self.attrs.get('completion', 1)):
+            self.wid_completion = get_completion()
+            self.wid_completion.connect('match-selected',
+                self._completion_match_selected)
+            self.wid_text.set_completion(self.wid_completion)
+            self.wid_text.connect('changed', self._update_completion)
+        else:
+            self.wid_completion = None
+
         self.but_add = gtk.Button()
         self.but_add.connect('clicked', self._sig_add)
         img_add = gtk.Image()
@@ -374,23 +385,33 @@ class DictWidget(Widget):
 
         def callback(result):
             if result:
-                self.send_modified()
-                try:
-                    new_fields = RPCExecute('model', self.schema_model,
-                        'get_keys', [r[0] for r in result],
-                        context=context)
-                except RPCException:
-                    new_fields = []
-                for new_field in new_fields:
-                    if new_field['name'] not in self.fields:
-                        self.keys[new_field['name']] = new_field
-                        self.add_line(new_field['name'])
+                self.add_new_keys([r[0] for r in result])
             self.wid_text.set_text('')
 
         win = WinSearch(self.schema_model, callback, sel_multi=True,
             context=context, domain=domain, new=False)
         win.screen.search_filter(value)
         win.show()
+
+    def add_new_keys(self, ids):
+        context = self.field.context_get(self.record)
+        self.send_modified()
+        try:
+            new_fields = RPCExecute('model', self.schema_model,
+                'get_keys', ids, context=context)
+        except RPCException:
+            new_fields = []
+        focus = False
+        for new_field in new_fields:
+            if new_field['name'] not in self.fields:
+                self.keys[new_field['name']] = new_field
+                self.add_line(new_field['name'])
+                if not focus:
+                    # Use idle add because it can be called from the callback
+                    # of WinSearch while the popup is still there
+                    gobject.idle_add(
+                        self.fields[new_field['name']].widget.grab_focus)
+                    focus = True
 
     def _sig_remove(self, button, key, modified=True):
         del self.fields[key]
@@ -517,3 +538,21 @@ class DictWidget(Widget):
             self._sig_remove(None, key, modified=False)
 
         self._set_button_sensitive()
+
+    def _completion_match_selected(self, completion, model, iter_):
+        record_id, = model.get(iter_, 1)
+        self.add_new_keys([record_id])
+        self.wid_text.set_text('')
+
+        completion_model = self.wid_completion.get_model()
+        completion_model.clear()
+        completion_model.search_text = self.wid_text.get_text()
+        return True
+
+    def _update_completion(self, widget):
+        if not self.wid_text.get_editable():
+            return
+        if not self.record:
+            return
+        update_completion(self.wid_text, self.record, self.field,
+            self.schema_model)
