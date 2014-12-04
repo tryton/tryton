@@ -80,7 +80,7 @@ method signature is::
 
     on_change_<field name>()
 
-This method must return a dictionary with the values of fields to be updated.
+This method must change the value of the fields to be updated.
 
 .. note::
 
