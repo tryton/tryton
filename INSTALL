@@ -8,6 +8,7 @@ Prerequisites
  * trytond (http://www.tryton.org/)
  * trytond_analytic_account (http://www.tryton.org/)
  * trytond_analytic_invoice (http://www.tryton.org/)
+ * trytond_purchase (http://www.tryton.org/)
 
 Installation
 ------------
