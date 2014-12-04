@@ -88,6 +88,7 @@ if os.name == 'nt':
                 'pangocairo',
                 'gio',
             ],
+            'dll_excludes': ['dnsapi.dll', 'usp10.dll', 'iphlpapi.dll'],
             'excludes': ['Tkconstants', 'Tkinter', 'tcl'],
         }
     }
