@@ -49,8 +49,8 @@ class TrytonServer(object):
         self.webdavd = []
         self.options = options
 
-        if time.tzname != ('UTC', 'UTC'):
-            self.logger.error('timezeone is not set to UTC')
+        if time.tzname[0] != 'UTC':
+            self.logger.error('timezone is not set to UTC')
 
     def run(self):
         "Run the server and never return"
