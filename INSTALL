@@ -6,9 +6,9 @@ Prerequisites
 
  * Python 2.7 or later (http://www.python.org/)
  * simpleeval (https://github.com/danthedeckie/simpleeval)
+ * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
  * trytond (http://www.tryton.org/)
  * trytond_product (http://www.tryton.org/)
- * trytond_party (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
 
 Installation
