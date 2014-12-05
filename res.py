@@ -44,9 +44,9 @@ def ldap_connection():
     if 'tls' in uri.scheme:
         conn.start_tls_s()
 
-    bindname = extensions.get('bindname')
+    bindname, = extensions.get('bindname', [None])
     if not bindname:
-        bindname = extensions.get('!bindname')
+        bindname, = extensions.get('!bindname', [None])
     if bindname:
         # XXX find better way to get the password
         conn.simple_bind_s(bindname, config.get(section, 'bind_pass'))
