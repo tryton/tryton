@@ -43,7 +43,6 @@ class One2One(Many2Many):
                     ])
             to_delete.extend(relations)
             if value:
-                to_create = []
                 for record_id in ids:
                     to_create.append({
                             self.origin: record_id,
