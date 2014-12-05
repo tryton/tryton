@@ -5,7 +5,7 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond import backend
-from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
+from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
@@ -44,7 +44,11 @@ class Location(ModelSQL, ModelView):
         ('view', 'View'),
         ], 'Location type', states=STATES, depends=DEPENDS)
     parent = fields.Many2One("stock.location", "Parent", select=True,
-            left="left", right="right")
+        left="left", right="right",
+        states={
+            'invisible': Eval('type') == 'warehouse',
+            },
+        depends=['type'])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many("stock.location", "parent", "Children")
@@ -103,6 +107,41 @@ class Location(ModelSQL, ModelView):
                 'child_of_warehouse': ('Location "%(location)s" must be a '
                     'child of warehouse "%(warehouse)s".'),
                 })
+
+        parent_domain = []
+        childs_domain = []
+        childs_mapping = cls._childs_domain()
+        for type_, allowed_parents in cls._parent_domain().iteritems():
+            parent_domain.append(If(Eval('type') == type_,
+                    ('type', 'in', allowed_parents), ()))
+            childs_domain.append(If(Eval('type') == type_,
+                    ('type', 'in', childs_mapping[type_]), ()))
+        cls.parent.domain = parent_domain
+        cls.childs.domain = childs_domain
+        cls.childs.depends.append('type')
+
+    @classmethod
+    def _parent_domain(cls):
+        '''Returns a dict with location types as keys and a list of allowed
+        parent location types as values'''
+        return {
+            'customer': ['customer'],
+            'supplier': ['supplier'],
+            'production': ['production'],
+            'lost_found': ['lost_found'],
+            'view': ['warehouse', 'view', 'storage'],
+            'storage': ['warehouse', 'view', 'storage'],
+            'warehouse': [''],
+            }
+
+    @classmethod
+    def _childs_domain(cls):
+        childs_domain = {}
+        for type_, allowed_parents in cls._parent_domain().iteritems():
+            for parent in allowed_parents:
+                childs_domain.setdefault(parent, [])
+                childs_domain[parent].append(type_)
+        return childs_domain
 
     @classmethod
     def __register__(cls, module_name):
