@@ -2270,6 +2270,21 @@ class FieldsTestCase(unittest.TestCase):
                         'name': 'one2one5',
                         'one2one': target5.id,
                         }])
+            targets = self.one2one_target.create([{
+                        'name': 'multiple1',
+                        }, {
+                        'name': 'multiple2',
+                        }])
+            one2ones = self.one2one.create([{
+                        'name': 'origin6',
+                        'one2one': targets[0].id,
+                        }, {
+                        'name': 'origin7',
+                        'one2one': targets[1].id,
+                        }])
+            for one2one, target in zip(one2ones, targets):
+                self.assert_(one2one)
+                self.assertEqual(one2one.one2one, target)
 
             transaction.cursor.rollback()
 
