@@ -814,6 +814,7 @@ class ProgressBar(object):
 
     def __init__(self, view, attrs):
         super(ProgressBar, self).__init__()
+        self.view = view
         self.attrs = attrs
         self.renderer = gtk.CellRendererProgress()
         orientation = self.orientations.get(self.attrs.get('orientation',
