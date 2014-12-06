@@ -12,7 +12,7 @@ from mock import Mock, patch
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 from trytond.modules.account_payment_sepa.payment import CAMT054
@@ -199,11 +199,13 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
 
     def test_sepa_mandate_sequence(self):
         'Test SEPA mandate sequence'
-        Configuration = POOL.get('account.configuration')
-        Sequence = POOL.get('ir.sequence')
-        Party = POOL.get('party.party')
-        Mandate = POOL.get('account.payment.sepa.mandate')
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Configuration = pool.get('account.configuration')
+            Sequence = pool.get('ir.sequence')
+            Party = pool.get('party.party')
+            Mandate = pool.get('account.payment.sepa.mandate')
+
             party = Party(name='Test')
             party.save()
             mandate = Mandate(party=party)
@@ -223,10 +225,13 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
 
     def test_identification_unique(self):
         'Test unique identification constraint'
-        Party = POOL.get('party.party')
-        Mandate = POOL.get('account.payment.sepa.mandate')
-        same_id = '1'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Party = pool.get('party.party')
+            Mandate = pool.get('account.payment.sepa.mandate')
+
+            same_id = '1'
+
             party = Party(name='Test')
             party.save()
             mandate = Mandate(party=party, identification=same_id)
@@ -253,11 +258,12 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
     def test_payment_sepa_bank_account_number(self):
         'Test Payment.sepa_bank_account_number'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            Payment = POOL.get('account.payment')
-            Mandate = POOL.get('account.payment.sepa.mandate')
-            AccountNumber = POOL.get('bank.account.number')
-            Party = POOL.get('party.party')
-            BankAccount = POOL.get('bank.account')
+            pool = Pool()
+            Payment = pool.get('account.payment')
+            Mandate = pool.get('account.payment.sepa.mandate')
+            AccountNumber = pool.get('bank.account.number')
+            Party = pool.get('party.party')
+            BankAccount = pool.get('bank.account')
 
             account_number = AccountNumber()
             mandate = Mandate(account_number=account_number)
@@ -283,6 +289,7 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
             pool = Pool()
             Date = pool.get('ir.date')
             Payment = pool.get('account.payment')
+            ProcessPayment = pool.get('account.payment.process', type='wizard')
 
             environment = setup_environment()
             company = environment['company']
@@ -305,8 +312,8 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                         'date': Date.today(),
                         }])
 
-            session_id, _, _ = self.process_payment.create()
-            process_payment = self.process_payment(session_id)
+            session_id, _, _ = ProcessPayment.create()
+            process_payment = ProcessPayment(session_id)
             with Transaction().set_context(active_ids=[payment.id]):
                 _, data = process_payment.do_process(None)
 
@@ -333,8 +340,8 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                         },
                     ])
 
-            session_id, _, _ = self.process_payment.create()
-            process_payment = self.process_payment(session_id)
+            session_id, _, _ = ProcessPayment.create()
+            process_payment = ProcessPayment(session_id)
             payment_ids = [p.id for p in payments]
             with Transaction().set_context(active_ids=payment_ids):
                 _, data = process_payment.do_process(None)
@@ -345,7 +352,8 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
     def handle_camt054(self, flavor):
         'Handle camt.054'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            Message = POOL.get('account.payment.sepa.message')
+            pool = Pool()
+            Message = pool.get('account.payment.sepa.message')
 
             message_file = os.path.join(os.path.dirname(__file__),
                 '%s.xml' % flavor)
