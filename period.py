@@ -41,8 +41,7 @@ class Period(ModelSQL, ModelView):
                 ('company', '=', Eval('company', -1)),
                 ],
             ],
-        depends=['company'],
-        context={'code': 'account.move'})
+        depends=['company'])
     type = fields.Selection([
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
