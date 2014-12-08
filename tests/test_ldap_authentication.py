@@ -42,25 +42,32 @@ class LDAPAuthenticationTestCase(unittest.TestCase):
                 con = initialize.return_value
                 con.simple_bind_s.return_value = True
                 if find:
-                    ldap_search_user.return_value = [('dn', {})]
+                    ldap_search_user.return_value = [('dn', {'uid': [find]})]
                 else:
                     ldap_search_user.return_value = None
                 return User.get_login(login, password)
 
             # Test existing user
-            self.assertEqual(get_login('admin', 'admin', False), USER)
-            self.assertEqual(get_login('admin', 'admin', True), USER)
+            self.assertEqual(get_login('admin', 'admin', None), USER)
+            self.assertEqual(get_login('admin', 'admin', 'admin'), USER)
+            self.assertEqual(get_login('AdMiN', 'admin', 'admin'), USER)
 
             # Test new user
-            self.assertFalse(get_login('foo', 'bar', False))
-            self.assertFalse(get_login('foo', 'bar', True))
+            self.assertFalse(get_login('foo', 'bar', None))
+            self.assertFalse(get_login('foo', 'bar', 'foo'))
 
             # Test create new user
             config.set(section, 'create_user', 'True')
-            user_id = get_login('foo', 'bar', True)
+            user_id = get_login('foo', 'bar', 'foo')
             foo, = User.search([('login', '=', 'foo')])
             self.assertEqual(user_id, foo.id)
             self.assertEqual(foo.name, 'foo')
+
+            # Test create new user with different case
+            user_id = get_login('BaR', 'foo', 'bar')
+            bar, = User.search([('login', '=', 'bar')])
+            self.assertEqual(user_id, bar.id)
+            self.assertEqual(bar.name, 'bar')
 
     def test_parse_ldap_url(self):
         'Test parse_ldap_url'

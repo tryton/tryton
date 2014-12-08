@@ -160,13 +160,15 @@ class User:
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
                     if password and con.simple_bind_s(dn, password):
+                        # Use ldap uid so we always get the right case
+                        login = attrs.get(uid, [login])[0]
                         user_id, _ = cls._get_login(login)
                         if user_id:
                             LoginAttempt.remove(login)
                             return user_id
                         elif config.getboolean(section, 'create_user'):
                             user, = cls.create([{
-                                        'name': attrs.get(uid, [login])[0],
+                                        'name': login,
                                         'login': login,
                                         }])
                             return user.id
