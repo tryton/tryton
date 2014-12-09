@@ -117,7 +117,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def confirm(self, inventories):
+    def confirm(cls, inventories):
         Move = Pool().get('stock.move')
         moves = []
         for inventory in inventories:
@@ -125,7 +125,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             for line in inventory.lines:
                 key = line.unique_key
                 if key in keys:
-                    self.raise_user_error('unique_line',
+                    cls.raise_user_error('unique_line',
                         (line.rec_name, inventory.rec_name))
                 keys.add(key)
                 move = line.get_move()
@@ -138,7 +138,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, inventories):
+    def cancel(cls, inventories):
         Line = Pool().get("stock.inventory.line")
         Line.cancel_move([l for i in inventories for l in i.lines])
 
