@@ -1627,6 +1627,10 @@
             return result;
         },
         set_client: function(record, value, force_change) {
+            // domain inversion try to set None as value
+            if (value === null) {
+                value = [];
+            }
             // domain inversion could try to set id as value
             if (typeof value == 'number') {
                 value = [value];
