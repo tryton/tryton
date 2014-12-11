@@ -2315,6 +2315,7 @@
                                 value, true);
                     }
                 };
+                var parser = new Sao.common.DomainParser();
                 win = new Sao.Window.Search(model,
                         callback.bind(this), {
                             sel_multi: false,
@@ -2324,7 +2325,7 @@
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
                             new_: this.create_access(),
-                            search_filter: text
+                            search_filter: parser.quote(text)
                         });
             }
         },
@@ -2408,6 +2409,7 @@
                             this.entry.val('');
                         }
                     };
+                    var parser = new Sao.common.DomainParser();
                     var win = new Sao.Window.Search(model,
                             callback.bind(this), {
                                 sel_multi: false,
@@ -2418,7 +2420,7 @@
                                 views_preload: (this.attributes.views ||
                                     {}),
                                 new_: this.create_access(),
-                                search_filter: text
+                                search_filter: parser.quote(text)
                             });
                 }
             }
@@ -3011,6 +3013,7 @@
                 }
                 this.entry.val('');
             }.bind(this);
+            var parser = new Sao.common.DomainParser();
             var win = new Sao.Window.Search(this.attributes.relation,
                     callback, {
                         sel_multi: true,
@@ -3020,7 +3023,7 @@
                             '').split(','),
                         views_preload: this.attributes.views || {},
                         new_: this.attributes.create,
-                        search_filter: text
+                        search_filter: parser.quote(text)
                     });
         },
         remove: function() {
