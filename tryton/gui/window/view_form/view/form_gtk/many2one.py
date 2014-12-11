@@ -12,6 +12,7 @@ from tryton.gui.window.win_form import WinForm
 from tryton.common.popup_menu import populate
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.entry_position import manage_entry_position
+from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
 
@@ -146,7 +147,7 @@ class Many2One(Widget):
                     view_ids=self.attrs.get('view_ids', '').split(','),
                     views_preload=self.attrs.get('views', {}),
                     new=self.create_access)
-                win.screen.search_filter(text)
+                win.screen.search_filter(quote(text))
                 if len(win.screen.group) == 1:
                     win.response(None, gtk.RESPONSE_OK)
                 else:
@@ -220,7 +221,7 @@ class Many2One(Widget):
                 view_ids=self.attrs.get('view_ids', '').split(','),
                 views_preload=self.attrs.get('views', {}),
                 new=self.create_access)
-            win.screen.search_filter(text)
+            win.screen.search_filter(quote(text))
             win.show()
             return
         self.focus_out = True

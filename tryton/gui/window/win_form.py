@@ -6,6 +6,7 @@ import gtk
 import pango
 import gettext
 from tryton.gui.window.nomodal import NoModal
+from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
 
@@ -342,7 +343,7 @@ class WinForm(NoModal):
 
         win = WinSearch(model_name, callback, sel_multi=True,
             context=self.context, domain=domain)
-        win.screen.search_filter(value)
+        win.screen.search_filter(quote(value))
         win.show()
 
     def _sig_label(self, screen, signal_data):

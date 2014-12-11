@@ -10,6 +10,7 @@ import tryton.common as common
 import gettext
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
+from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
 
@@ -161,7 +162,7 @@ class Many2Many(Widget):
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.attrs.get('create', True))
-        win.screen.search_filter(value)
+        win.screen.search_filter(quote(value))
         win.show()
 
     def _sig_remove(self, *args):

@@ -19,6 +19,7 @@ from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.translate import date_format
+from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
 
@@ -390,7 +391,7 @@ class DictWidget(Widget):
 
         win = WinSearch(self.schema_model, callback, sel_multi=True,
             context=context, domain=domain, new=False)
-        win.screen.search_filter(value)
+        win.screen.search_filter(quote(value))
         win.show()
 
     def add_new_keys(self, ids):
