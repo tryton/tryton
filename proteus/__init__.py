@@ -226,6 +226,12 @@ class TimeDescriptor(FieldDescriptor):
 
 
 class DictDescriptor(FieldDescriptor):
+    def __get__(self, instance, owner):
+        value = super(DictDescriptor, self).__get__(instance, owner)
+        if value:
+            value = value.copy()
+        return value
+
     def __set__(self, instance, value):
         assert isinstance(value, dict) or value is None
         super(DictDescriptor, self).__set__(instance, value)
