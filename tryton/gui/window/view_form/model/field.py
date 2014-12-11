@@ -626,6 +626,9 @@ class O2MField(Field):
         self._connect_value(group)
 
     def set_client(self, record, value, force_change=False):
+        # domain inversion could try to set None as value
+        if value is None:
+            value = []
         # domain inversion could try to set id as value
         if isinstance(value, (int, long)):
             value = [value]
