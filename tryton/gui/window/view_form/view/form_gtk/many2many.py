@@ -190,6 +190,8 @@ class Many2Many(Widget):
                 screen.current_record.save()
                 # Force a reload on next display
                 self.screen.current_record.cancel()
+                # Force a display to clear the CellCache
+                self.screen.display()
         WinForm(screen, callback)
 
     def _readonly_set(self, value):
