@@ -834,7 +834,8 @@ class Move(Workflow, ModelSQL, ModelView):
             stock_date_end: if set the date of the stock computation.
             stock_date_start: if set return the delta of the stock between the
                 two dates, (ignored if stock_date_end is missing).
-            stock_assign: if set compute also the assigned moves as done.
+            stock_assign: if set compute also the assigned outgoing moves as
+                done.
             forecast: if set compute the forecast quantity.
             stock_destinations: A list of location ids. If set, restrict the
                 computation to moves from and to those locations.
@@ -886,9 +887,9 @@ class Move(Workflow, ModelSQL, ModelView):
         if (context['stock_date_end'] < today
                 or (context['stock_date_end'] == today
                     and not context.get('forecast'))):
-            state_date_clause = (
+            state_date_clause = lambda stock_assign: (
                 move.state.in_(['done',
-                        context.get('stock_assign') and 'assigned' or 'done'])
+                        'assigned' if stock_assign else 'done'])
                 & (
                     (
                         (move.effective_date == Null)
@@ -897,14 +898,16 @@ class Move(Workflow, ModelSQL, ModelView):
                     | (move.effective_date <= context['stock_date_end'])
                     )
                 )
+            state_date_clause_in = state_date_clause(False)
+            state_date_clause_out = state_date_clause(
+                context.get('stock_assign'))
         # future date end: filter move on state done and date
         # before today, or on all state and date between today and
         # date_end.
         else:
-            state_date_clause = (
+            state_date_clause = lambda stock_assign: (
                 (move.state.in_(['done',
-                            context.get('stock_assign') and 'assigned'
-                            or 'done'])
+                            'assigned' if stock_assign else 'done'])
                     & (
                         (
                             (move.effective_date == Null)
@@ -929,10 +932,13 @@ class Move(Workflow, ModelSQL, ModelView):
                         )
                     )
                 )
+            state_date_clause_in = state_date_clause(False)
+            state_date_clause_out = state_date_clause(
+                context.get('stock_assign'))
 
         if context.get('stock_date_start'):
             if context['stock_date_start'] > today:
-                state_date_clause &= (
+                state_date_clause = lambda: (
                     move.state.in_(['done', 'assigned', 'draft'])
                     & (
                         (
@@ -946,8 +952,10 @@ class Move(Workflow, ModelSQL, ModelView):
                         | (move.effective_date >= context['stock_date_start'])
                         )
                     )
+                state_date_clause_in &= state_date_clause()
+                state_date_clause_out &= state_date_clause()
             else:
-                state_date_clause &= (
+                state_date_clause = lambda stock_assign: (
                     (
                         move.state.in_(['done', 'assigned', 'draft'])
                         & (
@@ -963,8 +971,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         )
                     | (
                         move.state.in_(['done',
-                                context.get('stock_assign') and 'assigned'
-                                or 'done'])
+                                'assigned' if stock_assign else 'done'])
                         & (
                             (
                                 (move.effective_date == Null)
@@ -985,6 +992,9 @@ class Move(Workflow, ModelSQL, ModelView):
                             )
                         )
                     )
+                state_date_clause_in &= state_date_clause(False)
+                state_date_clause_out &= state_date_clause(
+                    context.get('stock_assign'))
         elif PeriodCache:
             periods = Period.search([
                     ('date', '<', context['stock_date_end']),
@@ -992,9 +1002,11 @@ class Move(Workflow, ModelSQL, ModelView):
                     ], order=[('date', 'DESC')], limit=1)
             if periods:
                 period, = periods
-                state_date_clause &= (
+                state_date_clause = lambda: (
                     Coalesce(move.effective_date, move.planned_date,
                         datetime.date.max) > period.date)
+                state_date_clause_in &= state_date_clause()
+                state_date_clause_out &= state_date_clause()
 
         if with_childs:
             location_query = Location.search([
@@ -1042,7 +1054,7 @@ class Move(Workflow, ModelSQL, ModelView):
         query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
             *move_keys,
-            where=state_date_clause
+            where=state_date_clause_in
             & where
             & move.to_location.in_(location_query)
             & (move.id.in_(move_rule_query) if move_rule_query
@@ -1052,7 +1064,7 @@ class Move(Workflow, ModelSQL, ModelView):
         query = Union(query, move.select(move.from_location.as_('location'),
                 (-Sum(move.internal_quantity)).as_('quantity'),
                 *move_keys,
-                where=state_date_clause
+                where=state_date_clause_out
                 & where
                 & move.from_location.in_(location_query)
                 & (move.id.in_(move_rule_query) if move_rule_query
