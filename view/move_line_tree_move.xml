@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <tree string="Account Move Lines" editable="top">
     <field name="move"/>
     <field name="description"/>
-    <field name="party"/>
     <field name="account"/>
+    <field name="party"/>
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
     <field name="tax_lines"/>

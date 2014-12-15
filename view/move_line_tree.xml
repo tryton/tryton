@@ -9,8 +9,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description"/>
     <field name="move_description"/>
     <field name="date"/>
-    <field name="party"/>
     <field name="account"/>
+    <field name="party"/>
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
     <field name="tax_lines"/>
