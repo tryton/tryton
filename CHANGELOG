@@ -1,3 +1,4 @@
+* Allow custom StateView without Model
 * Remove Pool.object_name_list
 * Add translated descriptor for Dict field
 * Clean private context keyword in RPC

@@ -116,10 +116,13 @@ Instance attributes are:
 
 Instance methods are:
 
-.. method:: StateView.get_view()
+.. method:: StateView.get_view(wizard, state_name)
 
     Returns the view definition like
     :meth:`~trytond.model.ModelView.fields_view_get`.
+
+    * wizard is a :class:`Wizard` instance
+    * state_name is the name of the :class:`StateView` instance
 
 .. method:: StateView.get_defaults(wizard, state_name, fields)
 

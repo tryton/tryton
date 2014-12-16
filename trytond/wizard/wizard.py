@@ -67,7 +67,7 @@ class StateView(State):
         assert len(self.buttons) == len(set(b.state for b in self.buttons))
         assert len([b for b in self.buttons if b.default]) <= 1
 
-    def get_view(self):
+    def get_view(self, wizard, state_name):
         '''
         Returns the view definition
         '''
@@ -259,7 +259,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         result = {}
 
         if isinstance(state, StateView):
-            view = state.get_view()
+            view = state.get_view(self, state_name)
             defaults = state.get_defaults(self, state_name,
                 view['fields'].keys())
             buttons = state.get_buttons(self, state_name)
