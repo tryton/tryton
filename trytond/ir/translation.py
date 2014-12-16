@@ -1231,9 +1231,10 @@ class TranslationClean(Wizard):
             model_name, field_name = translation.name.split(',', 1)
         except ValueError:
             return True
-        if model_name not in pool.object_name_list():
+        try:
+            Model = pool.get(model_name)
+        except KeyError:
             return True
-        Model = pool.get(model_name)
         if field_name not in Model._fields:
             return True
 
@@ -1244,10 +1245,11 @@ class TranslationClean(Wizard):
             model_name, field_name = translation.name.split(',', 1)
         except ValueError:
             return True
-        if model_name not in pool.object_name_list():
+        try:
+            Model = pool.get(model_name)
+        except KeyError:
             return True
         if translation.res_id >= 0:
-            Model = pool.get(model_name)
             if field_name not in Model._fields:
                 return True
             field = Model._fields[field_name]
@@ -1274,9 +1276,10 @@ class TranslationClean(Wizard):
             model_name, field_name = translation.name.split(',', 1)
         except ValueError:
             return True
-        if model_name not in pool.object_name_list():
+        try:
+            Model = pool.get(model_name)
+        except KeyError:
             return True
-        Model = pool.get(model_name)
         if field_name not in Model._fields:
             return True
         field = Model._fields[field_name]
@@ -1292,7 +1295,9 @@ class TranslationClean(Wizard):
     def _clean_view(translation):
         pool = Pool()
         model_name = translation.name
-        if model_name not in pool.object_name_list():
+        try:
+            pool.get(model_name)
+        except KeyError:
             return True
 
     @staticmethod
@@ -1303,10 +1308,10 @@ class TranslationClean(Wizard):
                 translation.name.split(',', 2)
         except ValueError:
             return True
-        if (wizard_name not in
-                pool.object_name_list(type='wizard')):
+        try:
+            Wizard = pool.get(wizard_name, type='wizard')
+        except KeyError:
             return True
-        Wizard = pool.get(wizard_name, type='wizard')
         if not Wizard:
             return True
         state = Wizard.states.get(state_name)
@@ -1323,9 +1328,10 @@ class TranslationClean(Wizard):
             model_name, field_name = translation.name.split(',', 1)
         except ValueError:
             return True
-        if model_name not in pool.object_name_list():
+        try:
+            Model = pool.get(model_name)
+        except KeyError:
             return True
-        Model = pool.get(model_name)
         if field_name not in Model._fields:
             return True
         field = Model._fields[field_name]
@@ -1360,8 +1366,15 @@ class TranslationClean(Wizard):
                 'recursion_error',
                 ):
             return False
-        if model_name in pool.object_name_list():
+        Model, Wizard = None, None
+        try:
             Model = pool.get(model_name)
+        except KeyError:
+            try:
+                Wizard = pool.get(model_name, type='wizard')
+            except KeyError:
+                pass
+        if Model:
             errors = Model._error_messages.values()
             if issubclass(Model, ModelSQL):
                 errors += Model._sql_error_messages.values()
@@ -1369,8 +1382,7 @@ class TranslationClean(Wizard):
                     errors.append(error)
             if translation.src not in errors:
                 return True
-        elif model_name in pool.object_name_list(type='wizard'):
-            Wizard = pool.get(model_name, type='wizard')
+        elif Wizard:
             errors = Wizard._error_messages.values()
             if translation.src not in errors:
                 return True

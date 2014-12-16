@@ -154,9 +154,10 @@ class TrytonServer(object):
                     if not pool.lock.acquire(0):
                         continue
                     try:
-                        if 'ir.cron' not in pool.object_name_list():
+                        try:
+                            Cron = pool.get('ir.cron')
+                        except KeyError:
                             continue
-                        Cron = pool.get('ir.cron')
                     finally:
                         pool.lock.release()
                     thread = threading.Thread(

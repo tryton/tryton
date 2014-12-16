@@ -35,10 +35,6 @@ Instance methods:
 
     Return the named instance of type from the pool.
 
-.. method:: Pool.object_name_list([type])
-
-    Return the list of instances names.
-
 .. method:: Pool.iterobject([type])
 
     Return an interator over instances names.

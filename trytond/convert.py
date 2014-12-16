@@ -366,13 +366,12 @@ class Fs2bdAccessor:
             record_ids.setdefault(rec.model, [])
             record_ids[rec.model].append(rec.db_id)
 
-        object_name_list = set(self.pool.object_name_list())
-
         self.browserecord[module] = {}
         for model_name in record_ids.keys():
-            if model_name not in object_name_list:
+            try:
+                Model = self.pool.get(model_name)
+            except KeyError:
                 continue
-            Model = self.pool.get(model_name)
             self.browserecord[module][model_name] = {}
             for sub_record_ids in grouped_slice(record_ids[model_name]):
                 with Transaction().set_context(active_test=False):
@@ -792,7 +791,6 @@ def post_import(pool, module, to_delete):
             ('module', '=', module),
             ], order=[('id', 'DESC')])
 
-    object_name_list = set(pool.object_name_list())
     for mrec in mdata:
         model, db_id = mrec.model, mrec.db_id
 
@@ -800,8 +798,11 @@ def post_import(pool, module, to_delete):
                 'Deleting %s@%s' % (db_id, model))
         try:
             # Deletion of the record
-            if model in object_name_list:
+            try:
                 Model = pool.get(model)
+            except KeyError:
+                Model = None
+            if Model:
                 Model.delete([Model(db_id)])
                 mdata_delete.append(mrec)
             else:

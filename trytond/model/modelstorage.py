@@ -866,13 +866,14 @@ class ModelStorage(Model):
             if not call(field[0]):
                 cls.raise_user_error(field[1])
 
-        if 'res.user' not in pool.object_name_list() \
-                or Transaction().user == 0:
-            ctx_pref = {
-            }
-        else:
-            User = pool.get('res.user')
-            ctx_pref = User.get_preferences(context_only=True)
+        ctx_pref = {}
+        if Transaction().user:
+            try:
+                User = pool.get('res.user')
+            except KeyError:
+                pass
+            else:
+                ctx_pref = User.get_preferences(context_only=True)
 
         def is_pyson(test):
             if isinstance(test, PYSON):
