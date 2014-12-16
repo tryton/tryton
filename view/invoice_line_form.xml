@@ -4,19 +4,19 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Invoice Line" cursor="product">
     <label name="invoice"/>
     <field name="invoice" colspan="3"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
     <notebook colspan="4">
         <page string="General" id="general">
-            <label name="type"/>
-            <field name="type"/>
-            <label name="sequence"/>
-            <field name="sequence"/>
             <label name="product"/>
             <field name="product"/>
             <label name="account"/>
             <field name="account"/>
             <newline/>
             <label name="description"/>
-            <field name="description" colspan="3"
+            <field name="description" colspan="3" yexpand="0"
                 spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
             <label name="quantity"/>
             <field name="quantity"/>
