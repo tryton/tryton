@@ -137,23 +137,15 @@ Class methods:
 
         {
             'model': model name,
+            'type': view type,
+            'view_id': view id,
             'arch': XML description,
             'fields': {
                 field name: {
                     ...
                 },
             },
-            'toolbar': {
-                'print': [
-                    ...
-                ],
-                'action': [
-                    ...
-                ],
-                'relate': [
-                    ...
-                ],
-            },
+            'field_childs': field for tree,
         }
 
 .. classmethod:: ModelView.view_toolbar_get()

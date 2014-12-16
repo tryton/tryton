@@ -198,8 +198,11 @@ class ModelView(Model):
         If view_id is None the first one will be used of view_type.
         The definition is a dictionary with keys:
            - model: the model name
+           - type: the type of the view
+           - view_id: the id of the view
            - arch: the xml description of the view
            - fields: a dictionary with the definition of each field in the view
+           - field_childs: the name of the childs field for tree
         '''
         key = (cls.__name__, view_id, view_type)
         result = cls._fields_view_get_cache.get(key)
