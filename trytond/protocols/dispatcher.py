@@ -81,7 +81,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
             except Exception:
                 return False
         elif method == 'list':
-            if not config.get('database', 'list'):
+            if not config.getboolean('database', 'list'):
                 raise Exception('AccessDenied')
             with Transaction().start(None, 0, close=True) as transaction:
                 return transaction.database.list(transaction.cursor)
