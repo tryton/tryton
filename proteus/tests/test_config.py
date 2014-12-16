@@ -24,3 +24,9 @@ class TestConfig(ProteusTestCase):
         self.assertEqual(config1, config2)
 
         self.assertRaises(NotImplementedError, config1.__eq__, None)
+
+    def test_repr(self):
+        config = proteus.config.TrytondConfig()
+        self.assertEqual(repr(config),
+            "proteus.config.TrytondConfig("
+            "'sqlite://', 'admin', config_file=None)")
