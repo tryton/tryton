@@ -15,6 +15,7 @@ import StringIO
 import hashlib
 import base64
 import threading
+import errno
 from functools import partial
 from contextlib import contextmanager
 
@@ -263,8 +264,8 @@ class ServerProxy(xmlrpclib.ServerProxy):
                 verbose=self.__verbose
                 )
         except (socket.error, httplib.HTTPException), v:
-            # trap  'Broken pipe'
-            if isinstance(v, socket.error) and v.args[0] != 32:
+            if (isinstance(v, socket.error)
+                    and v.args[0] == errno.EPIPE):
                 raise
             # try one more time
             self.__transport.close()
