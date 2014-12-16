@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="currency"/>
             <field name="lines" colspan="4"
                 view_ids="sale.sale_line_view_tree_sequence"/>
-            <group col="2" colspan="2" id="states">
+            <group col="2" colspan="2" id="states" yalign="1" yfill="1">
                 <label name="invoice_state"/>
                 <field name="invoice_state"/>
                 <label name="shipment_state"/>
@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="state"/>
                 <field name="state"/>
             </group>
-            <group col="2" colspan="2" id="amount_buttons">
+            <group col="2" colspan="2" id="amount_buttons" yalign="1" yfill="1">
                 <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
                 <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
                 <label name="tax_amount" xalign="1.0" xexpand="1"/>

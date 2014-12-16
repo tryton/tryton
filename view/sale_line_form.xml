@@ -4,18 +4,18 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Sale Line" cursor="product">
     <label name="sale"/>
     <field name="sale" colspan="3"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
     <notebook colspan="4">
         <page string="General" id="general">
-            <label name="type"/>
-            <field name="type"/>
-            <label name="sequence"/>
-            <field name="sequence"/>
             <label name="product"/>
             <field name="product"
                 view_ids="sale.product_view_list_sale_line"/>
             <newline/>
             <label name="description"/>
-            <field name="description" colspan="3"
+            <field name="description" colspan="3" yexpand="0"
                 spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
             <label name="quantity"/>
             <field name="quantity"/>
@@ -27,6 +27,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount"/>
             <label name="delivery_date"/>
             <field name="delivery_date"/>
+        </page>
+        <page string="Taxes" id="taxes">
             <field name="taxes" colspan="4"/>
         </page>
         <page string="Notes" id="notes">
@@ -35,5 +37,4 @@ this repository contains the full copyright notices and license terms. -->
                 spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
         </page>
     </notebook>
-    <field name="unit_digits" invisible="1" colspan="4"/>
 </form>
