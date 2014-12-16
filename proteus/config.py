@@ -231,9 +231,9 @@ class TrytondConfig(Config):
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
-        return "proteus.config.TrytondConfig"\
-            "('%s', '%s', '%s', config_file=%s)"\
-            % (self.database, self._user, self.config_file)
+        return ("proteus.config.TrytondConfig"
+            "(%s, %s, config_file=%s)"
+            % (repr(self.database), repr(self._user), repr(self.config_file)))
     __repr__.__doc__ = object.__repr__.__doc__
 
     def __eq__(self, other):
@@ -295,7 +295,7 @@ class XmlrpcConfig(Config):
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
-        return "proteus.config.XmlrpcConfig('%s')" % self.url
+        return "proteus.config.XmlrpcConfig(%s)" % repr(self.url)
     __repr__.__doc__ = object.__repr__.__doc__
 
     def __eq__(self, other):
