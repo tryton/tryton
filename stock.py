@@ -12,7 +12,8 @@ __metaclass__ = PoolMeta
 class ShipmentOut:
     __name__ = 'stock.shipment.out'
     carrier = fields.Many2One('carrier', 'Carrier', states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
+                    'packed']),
             },
         depends=['state'])
     cost_currency = fields.Many2One('currency.currency',
