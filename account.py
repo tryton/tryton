@@ -1151,6 +1151,8 @@ class GeneralLedger(Report):
                     ('end_date', '<=', start_period.start_date),
                     ])
             start_period_ids = [p.id for p in start_periods]
+        else:
+            start_period = None
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
@@ -1174,6 +1176,7 @@ class GeneralLedger(Report):
             end_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ])
+            end_period = None
         end_period_ids = [p.id for p in end_periods]
 
         with Transaction().set_context(
@@ -1184,12 +1187,6 @@ class GeneralLedger(Report):
         id2end_account = {}
         for account in end_accounts:
             id2end_account[account.id] = account
-
-        periods = end_periods
-        periods.sort(lambda x, y: cmp(x.start_date, y.start_date))
-        localcontext['start_period'] = periods[0]
-        periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
-        localcontext['end_period'] = periods[-1]
 
         if not data['empty_account']:
             account2lines = dict(cls.get_lines(accounts,
@@ -1207,6 +1204,8 @@ class GeneralLedger(Report):
         localcontext['digits'] = company.currency.digits
         localcontext['lines'] = lambda account_id: account_id2lines[account_id]
         localcontext['company'] = company
+        localcontext['start_period'] = start_period
+        localcontext['end_period'] = end_period
 
         return super(GeneralLedger, cls).parse(report, objects, data,
             localcontext)
