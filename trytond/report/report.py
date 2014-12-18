@@ -130,13 +130,18 @@ class Report(URLMixin, PoolBase):
         '''
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
-        action_reports = ActionReport.search([
-                ('report_name', '=', cls.__name__)
-                ])
-        if not action_reports:
-            raise Exception('Error', 'Report (%s) not find!' % cls.__name__)
         cls.check_access()
-        action_report = action_reports[0]
+
+        action_id = data.get('action_id')
+        if action_id is None:
+            action_reports = ActionReport.search([
+                    ('report_name', '=', cls.__name__)
+                    ])
+            assert action_reports, '%s not found' % cls
+            action_report = action_reports[0]
+        else:
+            action_report = ActionReport(action_id)
+
         records = None
         model = action_report.model or data.get('model')
         if model:

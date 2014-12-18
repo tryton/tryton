@@ -477,10 +477,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ActionReport, cls).__setup__()
-        cls._sql_constraints += [
-            ('report_name_module_uniq', 'UNIQUE(report_name, module)',
-                'The internal name must be unique by module!'),
-        ]
         cls._error_messages.update({
                 'invalid_email': 'Invalid email definition on report "%s".',
                 })
@@ -543,6 +539,9 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                                 [report],
                                 where=action_report.id == report_id))
             table.drop_column('report_content_data')
+
+        # Migration from 3.4 remove report_name_module_uniq constraint
+        table.drop_constraint('report_name_module_uniq')
 
     @staticmethod
     def default_type():
