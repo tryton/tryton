@@ -17,6 +17,8 @@ from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
+from trytond.modules.account.tax import TaxableMixin
+
 __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
     'SaleLineRecreatedMove', 'SaleReport', 'OpenCustomer',
@@ -28,7 +30,7 @@ __metaclass__ = PoolMeta
 _ZERO = Decimal(0)
 
 
-class Sale(Workflow, ModelSQL, ModelView):
+class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Sale'
     __name__ = 'sale.sale'
     _rec_name = 'reference'
@@ -390,7 +392,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             return self.currency.digits
         return 2
 
-    def get_tax_context(self):
+    def _get_tax_context(self):
         res = {}
         if self.party and self.party.lang:
             res['language'] = self.party.lang.code
@@ -407,45 +409,17 @@ class Sale(Workflow, ModelSQL, ModelView):
     def on_change_lines(self):
         pool = Pool()
         Tax = pool.get('account.tax')
-        Invoice = pool.get('account.invoice')
-        Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
 
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
         self.total_amount = Decimal('0.0')
 
+        taxes = {}
         if self.lines:
-            context = self.get_tax_context()
-            taxes = {}
-
-            def round_taxes():
-                if self.currency:
-                    for key, value in taxes.iteritems():
-                        taxes[key] = self.currency.round(value)
-
             for line in self.lines:
-                if getattr(line, 'type', 'line') != 'line':
-                    continue
-                self.untaxed_amount += (getattr(line, 'amount', None)
-                    or Decimal(0))
-
-                with Transaction().set_context(context):
-                    tax_list = Tax.compute(getattr(line, 'taxes', []),
-                        getattr(line, 'unit_price', None) or Decimal('0.0'),
-                        getattr(line, 'quantity', None) or 0.0)
-                for tax in tax_list:
-                    key, val = Invoice._compute_tax(tax, 'out_invoice')
-                    if key not in taxes:
-                        taxes[key] = val['amount']
-                    else:
-                        taxes[key] += val['amount']
-                if config.tax_rounding == 'line':
-                    round_taxes()
-            if config.tax_rounding == 'document':
-                round_taxes()
-            self.tax_amount = sum(taxes.itervalues(), Decimal('0.0'))
+                self.untaxed_amount += getattr(line, 'amount', None) or 0
+            taxes = self._get_taxes()
+            self.tax_amount = sum(v['amount'] for v in taxes.itervalues())
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
             self.tax_amount = self.currency.round(self.tax_amount)
@@ -453,38 +427,30 @@ class Sale(Workflow, ModelSQL, ModelView):
         if self.currency:
             self.total_amount = self.currency.round(self.total_amount)
 
-    def get_tax_amount(self):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-        Invoice = pool.get('account.invoice')
-        Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
-
-        context = self.get_tax_context()
-        taxes = {}
-
-        def round_taxes():
-            for key, value in taxes.iteritems():
-                taxes[key] = self.currency.round(value)
-
+    @property
+    def taxable_lines(self):
+        taxable_lines = []
+        # In case we're called from an on_change we have to use some sensible
+        # defaults
         for line in self.lines:
-            if line.type != 'line':
+            if getattr(self, 'type', None) != 'line':
                 continue
-            with Transaction().set_context(context):
-                tax_list = Tax.compute(line.taxes, line.unit_price,
-                    line.quantity)
-            for tax in tax_list:
-                key, val = Invoice._compute_tax(tax, 'out_invoice')
-                if key not in taxes:
-                    taxes[key] = val['amount']
-                else:
-                    taxes[key] += val['amount']
-            if config.tax_rounding == 'line':
-                round_taxes()
-        if config.tax_rounding == 'document':
-            round_taxes()
-        return sum(taxes.itervalues(), _ZERO)
+            taxable_lines.append(tuple())
+            for attribute, default_value in (
+                    ('taxes', []),
+                    ('unit_price', Decimal(0)),
+                    ('quantity', 0.0)):
+                value = getattr(line, attribute, None)
+                taxable_lines[-1] += (value
+                    if value is not None else default_value,)
+        return taxable_lines
+
+    @property
+    def tax_type(self):
+        return 'invoice'
+
+    def get_tax_amount(self):
+        return sum(v['amount'] for v in self._get_taxes().itervalues())
 
     @classmethod
     def get_amount(cls, sales, names):
