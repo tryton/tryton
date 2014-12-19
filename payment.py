@@ -90,7 +90,8 @@ class Payment:
         line.amount_second_currency = (-self.line.amount_second_currency
             if self.line.amount_second_currency else None)
         line.second_currency = self.line.second_currency
-        line.party = self.line.party
+        line.party = (self.line.party
+            if self.line.account.party_required else None)
         counterpart = Line()
         counterpart.debit = self.amount if self.line.debit else Decimal(0)
         counterpart.credit = self.amount if self.line.credit else Decimal(0)
