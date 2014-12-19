@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from collections import namedtuple
 from decimal import Decimal
 
 from sql import Null
@@ -924,6 +925,113 @@ class Tax(ModelSQL, ModelView):
         for child in self.childs:
             child.update_tax(template2tax_code, template2account,
                 template2tax=template2tax)
+
+
+class _TaxKey(dict):
+
+    def __init__(self, **kwargs):
+        self.update(kwargs)
+
+    def _key(self):
+        return (self['base_code'], self['base_sign'],
+            self['tax_code'], self['tax_sign'],
+            self['account'], self['tax'])
+
+    def __eq__(self, other):
+        if isinstance(other, _TaxKey):
+            return self._key() == other._key()
+        return self._key() == other
+
+    def __hash__(self):
+        return hash(self._key())
+
+_TaxableLine = namedtuple('_TaxableLine', ('taxes', 'unit_price', 'quantity'))
+
+
+class TaxableMixin(object):
+
+    @property
+    def taxable_lines(self):
+        """A list of tuples where
+            - the first element is the taxes applicable
+            - the second element is the line unit price
+            - the third element is the line quantity
+        """
+        return []
+
+    @property
+    def tax_type(self):
+        "The taxation type it can be 'invoice' or 'credit_note'"
+        return None
+
+    @property
+    def currency(self):
+        "The currency used by the taxable object"
+        return None
+
+    @property
+    def tax_date(self):
+        "Date to use when computing the tax"
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+    def _get_tax_context(self):
+        return {}
+
+    @staticmethod
+    def _compute_tax_line(type_, amount, base, tax):
+        assert type_ in ('invoice', 'credit_note')
+
+        line = {}
+        line['manual'] = False
+        line['description'] = tax.description
+        line['base'] = base
+        line['amount'] = amount
+        line['tax'] = tax.id if tax else None
+
+        for attribute in ['base_code', 'tax_code', 'account']:
+            value = getattr(tax, '%s_%s' % (type_, attribute), None)
+            line[attribute] = value.id if value else None
+
+        for attribute in ['base_sign', 'tax_sign']:
+            value = getattr(tax, '%s_%s' % (type_, attribute), None)
+            line[attribute] = value
+
+        return _TaxKey(**line)
+
+    def _round_taxes(self, taxes):
+        if not self.currency:
+            return
+        for taxline in taxes.itervalues():
+            for attribute in ('base', 'amount'):
+                taxline[attribute] = self.currency.round(taxline[attribute])
+
+    def _get_taxes(self):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
+        taxes = {}
+        with Transaction().set_context(self._get_tax_context()):
+            taxable_lines = [_TaxableLine(*params)
+                for params in self.taxable_lines]
+            for line in taxable_lines:
+                l_taxes = Tax.compute(line.taxes, line.unit_price,
+                    line.quantity, self.tax_date)
+                for tax in l_taxes:
+                    taxline = self._compute_tax_line(self.tax_type, **tax)
+                    if taxline not in taxes:
+                        taxes[taxline] = taxline
+                    else:
+                        taxes[taxline]['base'] += taxline['base']
+                        taxes[taxline]['amount'] += taxline['amount']
+                if config.tax_rounding == 'line':
+                    self._round_taxes(taxes)
+        if config.tax_rounding == 'document':
+            self._round_taxes(taxes)
+        return taxes
 
 
 class TaxLine(ModelSQL, ModelView):
