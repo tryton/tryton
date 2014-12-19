@@ -14,6 +14,7 @@ __metaclass__ = PoolMeta
 class Journal:
     __name__ = 'account.payment.journal'
     clearing_account = fields.Many2One('account.account', 'Clearing Account',
+        domain=[('party_required', '=', False)],
         states={
             'required': Bool(Eval('clearing_journal')),
             },
