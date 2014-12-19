@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.journal.type" id="journal_type_commission">
+            <field name="name">Commission</field>
+            <field name="code">commission</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="account.journal" id="journal_commission">
+            <field name="name">Commission</field>
+            <field name="code">COM</field>
+            <field name="type">commission</field>
+            <field name="sequence" ref="account.sequence_account_journal"/>
+        </record>
+    </data>
+</tryton>
