@@ -21,6 +21,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
 
+from trytond.modules.account.tax import TaxableMixin
+
 __all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
     'InvoiceLineTax', 'InvoiceTax',
     'PrintInvoiceWarning', 'PrintInvoice', 'InvoiceReport',
@@ -57,7 +59,7 @@ _CREDIT_TYPE = {
     }
 
 
-class Invoice(Workflow, ModelSQL, ModelView):
+class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Invoice'
     __name__ = 'account.invoice'
     _order_name = 'number'
@@ -436,36 +438,17 @@ class Invoice(Workflow, ModelSQL, ModelView):
         self.total_amount = Decimal('0.0')
         computed_taxes = {}
 
-        def round_taxes():
-            if self.currency:
-                for value in computed_taxes.itervalues():
-                    for field in ('base', 'amount'):
-                        value[field] = self.currency.round(value[field])
-
         if self.lines:
-            context = self.get_tax_context()
             for line in self.lines:
-                if (line.type or 'line') != 'line':
-                    continue
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
-                with Transaction().set_context(**context):
-                    taxes = Tax.compute(
-                        Tax.browse(getattr(line, 'taxes', []) or []),
-                        getattr(line, 'unit_price', None) or Decimal('0.0'),
-                        getattr(line, 'quantity', None) or 0.0,
-                        date=self.accounting_date or self.invoice_date)
-                for tax in taxes:
-                    key, val = self._compute_tax(tax,
-                        self.type or 'out_invoice')
-                    if key not in computed_taxes:
-                        computed_taxes[key] = val
-                    else:
-                        computed_taxes[key]['base'] += val['base']
-                        computed_taxes[key]['amount'] += val['amount']
-                if config.tax_rounding == 'line':
-                    round_taxes()
-        if config.tax_rounding == 'document':
-            round_taxes()
+                for attribute, default_value in (
+                        ('taxes', []),
+                        ('unit_price', Decimal(0)),
+                        ('quantity', 0.),
+                        ):
+                    if not getattr(line, attribute, None):
+                        setattr(line, attribute, default_value)
+            computed_taxes = self._get_taxes()
 
         def is_zero(amount):
             if self.currency:
@@ -744,80 +727,29 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 clause[2]))
         return [('id', 'in', query)]
 
-    def get_tax_context(self):
+    @property
+    def taxable_lines(self):
+        return [(l.taxes, l.unit_price, l.quantity) for l in self.lines
+            if l.type == 'line']
+
+    @property
+    def tax_type(self):
+        return self.type.split('_', 1)[1]
+
+    @property
+    def tax_date(self):
+        return self.accounting_date or self.invoice_date
+
+    def _get_tax_context(self):
         context = {}
         if self.party and self.party.lang:
             context['language'] = self.party.lang.code
         return context
 
-    @staticmethod
-    def _compute_tax(invoice_tax, invoice_type):
-        val = {}
-        tax = invoice_tax['tax']
-        val['manual'] = False
-        val['description'] = tax.description
-        val['base'] = invoice_tax['base']
-        val['amount'] = invoice_tax['amount']
-        val['tax'] = tax.id if tax else None
-
-        if invoice_type in ('out_invoice', 'in_invoice'):
-            val['base_code'] = (tax.invoice_base_code.id
-                if tax.invoice_base_code else None)
-            val['base_sign'] = tax.invoice_base_sign
-            val['tax_code'] = (tax.invoice_tax_code.id
-                if tax.invoice_tax_code else None)
-            val['tax_sign'] = tax.invoice_tax_sign
-            val['account'] = (tax.invoice_account.id
-                if tax.invoice_account else None)
-        else:
-            val['base_code'] = (tax.credit_note_base_code.id
-                if tax.credit_note_base_code else None)
-            val['base_sign'] = tax.credit_note_base_sign
-            val['tax_code'] = (tax.credit_note_tax_code.id
-                if tax.credit_note_tax_code else None)
-            val['tax_sign'] = tax.credit_note_tax_sign
-            val['account'] = (tax.credit_note_account.id
-                if tax.credit_note_account else None)
-        key = (val['base_code'], val['base_sign'],
-            val['tax_code'], val['tax_sign'],
-            val['account'], val['tax'])
-        return key, val
-
     def _compute_taxes(self):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-        Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
-
-        context = self.get_tax_context()
-
-        taxes = {}
-
-        def round_taxes():
-            for value in taxes.itervalues():
-                for field in ('base', 'amount'):
-                    value[field] = self.currency.round(value[field])
-
-        for line in self.lines:
-            if line.type != 'line':
-                continue
-            with Transaction().set_context(**context):
-                tax_list = Tax.compute(Tax.browse(line.taxes),
-                    line.unit_price, line.quantity,
-                    date=self.accounting_date or self.invoice_date)
-            for tax in tax_list:
-                key, val = self._compute_tax(tax, self.type)
-                val['invoice'] = self.id
-                if key not in taxes:
-                    taxes[key] = val
-                else:
-                    taxes[key]['base'] += val['base']
-                    taxes[key]['amount'] += val['amount']
-            if config.tax_rounding == 'line':
-                round_taxes()
-        if config.tax_rounding == 'document':
-            round_taxes()
+        taxes = self._get_taxes()
+        for tax in taxes.itervalues():
+            tax['invoice'] = self.id
         return taxes
 
     @classmethod
@@ -1416,7 +1348,7 @@ class InvoicePaymentLine(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
 
 
-class InvoiceLine(ModelSQL, ModelView):
+class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     'Invoice Line'
     __name__ = 'account.invoice.line'
     _rec_name = 'description'
@@ -1692,6 +1624,24 @@ class InvoiceLine(ModelSQL, ModelView):
             return self.origin.invoice.rec_name
         return self.origin.rec_name if self.origin else None
 
+    @property
+    def taxable_lines(self):
+        return [(self.taxes, self.unit_price, self.quantity)]
+
+    @property
+    def tax_type(self):
+        return self.invoice.tax_type
+
+    @property
+    def tax_date(self):
+        return self.invoice.tax_date
+
+    def _get_tax_context(self):
+        if self.invoice:
+            return self.invoice._get_tax_context()
+        else:
+            return {}
+
     def get_invoice_taxes(self, name):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -1699,14 +1649,7 @@ class InvoiceLine(ModelSQL, ModelView):
 
         if not self.invoice:
             return
-        context = self.invoice.get_tax_context()
-        taxes_keys = []
-        with Transaction().set_context(**context):
-            taxes = Tax.compute(Tax.browse(self.taxes),
-                self.unit_price, self.quantity)
-        for tax in taxes:
-            key, _ = Invoice._compute_tax(tax, self.invoice.type)
-            taxes_keys.append(key)
+        taxes_keys = self._get_taxes().keys()
         taxes = []
         for tax in self.invoice.taxes:
             if tax.manual:
@@ -1940,34 +1883,28 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def _compute_taxes(self):
         pool = Pool()
-        Tax = pool.get('account.tax')
         Currency = pool.get('currency.currency')
 
-        context = self.invoice.get_tax_context()
         res = []
         if self.type != 'line':
             return res
-        with Transaction().set_context(**context):
-            taxes = Tax.compute(Tax.browse(self.taxes),
-                self.unit_price, self.quantity)
+        taxes = self._get_taxes().values()
         for tax in taxes:
             if self.invoice.type in ('out_invoice', 'in_invoice'):
-                base_code_id = (tax['tax'].invoice_base_code.id
-                    if tax['tax'].invoice_base_code else None)
-                amount = tax['base'] * tax['tax'].invoice_base_sign
+                base_code = tax['base_code']
+                amount = tax['base'] * tax['base_sign']
             else:
-                base_code_id = (tax['tax'].credit_note_base_code.id
-                    if tax['tax'].credit_note_base_code else None)
-                amount = tax['base'] * tax['tax'].credit_note_base_sign
-            if base_code_id:
+                base_code = tax['base_code']
+                amount = tax['base'] * tax['base_sign']
+            if base_code:
                 with Transaction().set_context(
                         date=self.invoice.currency_date):
                     amount = Currency.compute(self.invoice.currency,
                         amount, self.invoice.company.currency)
                 res.append({
-                        'code': base_code_id,
+                        'code': base_code,
                         'amount': amount,
-                        'tax': tax['tax'].id if tax['tax'] else None,
+                        'tax': tax['tax'],
                         })
         return res
 
