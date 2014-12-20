@@ -84,10 +84,7 @@ class Party:
                 raise Exception('Bad argument')
             res[name] = dict((p.id, Decimal('0.0')) for p in parties)
 
-        user_id = Transaction().user
-        if user_id == 0 and 'user' in Transaction().context:
-            user_id = Transaction().context['user']
-        user = User(user_id)
+        user = User(Transaction().user)
         if not user.company:
             return res
         company_id = user.company.id
@@ -125,7 +122,6 @@ class Party:
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
-        Company = pool.get('company.company')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
 
@@ -136,26 +132,10 @@ class Party:
                 'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
 
-        company_id = None
-        user_id = Transaction().user
-        if user_id == 0 and 'user' in Transaction().context:
-            user_id = Transaction().context['user']
-        user = User(user_id)
-        if Transaction().context.get('company'):
-            child_companies = Company.search([
-                    ('parent', 'child_of', [user.main_company.id]),
-                    ])
-            if Transaction().context['company'] in child_companies:
-                company_id = Transaction().context['company']
-
-        if not company_id:
-            if user.company:
-                company_id = user.company.id
-            elif user.main_company:
-                company_id = user.main_company.id
-
-        if not company_id:
+        user = User(Transaction().user)
+        if not user.company:
             return []
+        company_id = user.company.id
 
         code = name
         today_query = Literal(True)
