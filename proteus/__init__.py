@@ -1078,6 +1078,9 @@ class Wizard(object):
 
         if self.state == self.end_state:
             self._proxy.delete(self.session_id, self._config.context)
+            if self.models:
+                for record in self.models:
+                    record.reload()
 
 
 class Report(object):
