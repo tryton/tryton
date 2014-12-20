@@ -179,7 +179,8 @@ class Database(DatabaseInterface):
                 raise IOError('Database "%s" doesn\'t exist!' % db_filename)
         if self._conn is not None:
             return self
-        self._conn = sqlite.connect(path, detect_types=sqlite.PARSE_DECLTYPES)
+        self._conn = sqlite.connect(path,
+            detect_types=sqlite.PARSE_DECLTYPES | sqlite.PARSE_COLNAMES)
         self._conn.create_function('extract', 2, SQLiteExtract.extract)
         self._conn.create_function('date_trunc', 2, date_trunc)
         self._conn.create_function('split_part', 3, split_part)

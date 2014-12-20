@@ -567,8 +567,9 @@ class ModelSQL(ModelStorage):
 
         columns = []
         for f in fields_names + fields_related.keys() + datetime_fields:
-            if (f in cls._fields and not hasattr(cls._fields[f], 'set')):
-                columns.append(Column(table, f).as_(f))
+            field = cls._fields.get(f)
+            if field and not hasattr(field, 'set'):
+                columns.append(field.sql_column(table).as_(f))
             elif f == '_timestamp' and not table_query:
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns.append(Extract('EPOCH',
@@ -609,7 +610,8 @@ class ModelSQL(ModelStorage):
             result = [{'id': x} for x in ids]
 
         for column in columns:
-            field = column.output_name
+            # Split the output name to remove SQLite type detection
+            field = column.output_name.split()[0]
             if field == '_timestamp':
                 continue
             if (getattr(cls._fields[field], 'translate', False)
@@ -873,7 +875,7 @@ class ModelSQL(ModelStorage):
                     and field.left and field.right):
                 tree_ids[fname] = []
                 for sub_ids in grouped_slice(ids):
-                    where = reduce_ids(Column(table, fname), sub_ids)
+                    where = reduce_ids(field.sql_column(table), sub_ids)
                     cursor.execute(*table.select(table.id, where=where))
                     tree_ids[fname] += [x[0] for x in cursor.fetchall()]
 
@@ -1035,7 +1037,7 @@ class ModelSQL(ModelStorage):
                     main_table.create_date).as_('_datetime'))
             columns.append(Column(main_table, '__id'))
         if not query:
-            columns += [Column(main_table, n).as_(n)
+            columns += [f.sql_column(main_table).as_(n)
                 for n, f in cls._fields.iteritems()
                 if not hasattr(f, 'get')
                 and n != 'id'
