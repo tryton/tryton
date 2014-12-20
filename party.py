@@ -173,7 +173,7 @@ class Party:
                     & (line.party != None)
                     & (line.reconciliation == None)
                     & (account.company == company_id)
-                    & today_query,
+                    & line_query & today_query,
                     group_by=line.party,
                     having=Operator(Sum(Coalesce(line.debit, 0)
                             - Coalesce(line.credit, 0)),
