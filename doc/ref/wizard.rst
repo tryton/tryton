@@ -99,6 +99,8 @@ StateView
     A :class:`StateView` is a state that will display a form in the client.
     The form is defined by the :class:`~trytond.model.ModelView` with the name
     `model_name`, the `XML` id in `view` and the `buttons`.
+    The default value of the view can be set with a method on wizard having the
+    same name as the state but starting with `default_`.
 
 Instance attributes are:
 
