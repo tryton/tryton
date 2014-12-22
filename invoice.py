@@ -1532,7 +1532,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         cursor.execute(*sql_table.join(invoice,
                 condition=sql_table.invoice == invoice.id
                 ).select(sql_table.id, invoice.company,
-                where=sql_table.company == None))
+                where=sql_table.company == Null))
         for line_id, company_id in cursor.fetchall():
             cursor.execute(*sql_table.update([sql_table.company], [company_id],
                     where=sql_table.id == line_id))
