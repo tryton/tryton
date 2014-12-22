@@ -427,11 +427,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def _on_change_lines_taxes(self):
         pool = Pool()
-        Tax = pool.get('account.tax')
         InvoiceTax = pool.get('account.invoice.tax')
-        Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
 
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
@@ -1643,10 +1639,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             return {}
 
     def get_invoice_taxes(self, name):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-        Invoice = pool.get('account.invoice')
-
         if not self.invoice:
             return
         taxes_keys = self._get_taxes().keys()
