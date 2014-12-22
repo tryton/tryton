@@ -407,9 +407,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('lines', 'currency', 'party')
     def on_change_lines(self):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
         self.total_amount = Decimal('0.0')
