@@ -408,12 +408,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('lines', 'currency', 'party')
     def on_change_lines(self):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-        Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
-
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
         self.total_amount = Decimal('0.0')
@@ -453,8 +447,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return 'invoice'
 
     def get_tax_amount(self):
-        pool = Pool()
-        Tax = pool.get('account.tax')
         taxes = self._get_taxes().itervalues()
         return sum(tax['amount'] for tax in taxes)
 
