@@ -115,7 +115,7 @@ class Work:
             return company.currency.digits
         return 2
 
-    @fields.depends('product', 'party', 'hours', 'company')
+    @fields.depends('product', 'party', 'company')
     def on_change_product(self):
         pool = Pool()
         User = pool.get('res.user')
