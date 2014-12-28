@@ -85,6 +85,8 @@ class Work:
                         costs[work_id] += (
                             Decimal(str(timesheet_work.hours)) * cost)
                 to_date = from_date - datetime.timedelta(1)
+        for work in works:
+            costs[work.id] = work.company.currency.round(costs[work.id])
         return costs
 
     @classmethod
