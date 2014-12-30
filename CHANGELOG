@@ -1,3 +1,4 @@
+* Allow to display only the balance in the General Ledger
 * Add TaxableMixin
 * Allow to set a description to cancel move
 

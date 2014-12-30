@@ -378,6 +378,12 @@ class AccountTemplate(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             },
         depends=['kind'])
+    general_ledger_balance = fields.Boolean('General Ledger Balance',
+        states={
+            'invisible': Eval('kind') == 'view',
+            },
+        depends=['kind'],
+        help="Display only the balance in the general ledger report")
 
     @classmethod
     def __setup__(cls):
@@ -404,6 +410,10 @@ class AccountTemplate(ModelSQL, ModelView):
 
     @staticmethod
     def default_party_required():
+        return False
+
+    @staticmethod
+    def default_general_ledger_balance():
         return False
 
     def get_rec_name(self, name):
@@ -436,6 +446,10 @@ class AccountTemplate(ModelSQL, ModelView):
             res['deferral'] = self.deferral
         if not account or account.party_required != self.party_required:
             res['party_required'] = self.party_required
+        if (not account
+                or account.general_ledger_balance !=
+                self.general_ledger_balance):
+            res['general_ledger_balance'] = self.general_ledger_balance
         if not account or account.template != self:
             res['template'] = self.id
         return res
@@ -599,6 +613,12 @@ class Account(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             },
         depends=['kind'])
+    general_ledger_balance = fields.Boolean('General Ledger Balance',
+        states={
+            'invisible': Eval('kind') == 'view',
+            },
+        depends=['kind'],
+        help="Display only the balance in the general ledger report")
     template = fields.Many2One('account.account.template', 'Template')
 
     @classmethod
@@ -646,6 +666,10 @@ class Account(ModelSQL, ModelView):
 
     @staticmethod
     def default_party_required():
+        return False
+
+    @staticmethod
+    def default_general_ledger_balance():
         return False
 
     @staticmethod
@@ -1194,7 +1218,8 @@ class GeneralLedger(Report):
             accounts = Account.browse([a.id for a in accounts
                     if a in account2lines])
 
-        account_id2lines = cls.lines(accounts,
+        account_id2lines = cls.lines(
+            [a for a in accounts if not a.general_ledger_balance],
             list(set(end_periods).difference(set(start_periods))),
             data['posted'])
 
