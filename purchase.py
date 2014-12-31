@@ -915,8 +915,8 @@ class PurchaseLine(ModelSQL, ModelView):
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['purchase', 'both'])],
-                ('commpany', '=',
-                    Eval('_parent_purchase', {}).get('commpany', -1)),
+                ('company', '=',
+                    Eval('_parent_purchase', {}).get('company', -1)),
             ],
         states={
             'invisible': Eval('type') != 'line',
