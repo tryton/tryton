@@ -161,7 +161,9 @@ class Product:
         context = {}
         trans_context = Transaction().context
         if trans_context.get('stock_date_end'):
-            context['_datetime'] = trans_context['stock_date_end']
+            # Use the last cost_price of the day
+            context['_datetime'] = datetime.datetime.combine(
+                trans_context['stock_date_end'], datetime.time.max)
         with Transaction().set_context(context):
             for product in products:
                 # The date could be before the product creation
