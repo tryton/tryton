@@ -205,7 +205,9 @@ class Location(ModelSQL, ModelView):
             return dict((l.id, None) for l in locations)
         cost_values, context = {}, {}
         if 'stock_date_end' in trans_context:
-            context['_datetime'] = trans_context['stock_date_end']
+            # Use the last cost_price of the day
+            context['_datetime'] = datetime.datetime.combine(
+                trans_context['stock_date_end'], datetime.time.max)
         with Transaction().set_context(context):
             product = Product(product_id)
             for location in locations:
