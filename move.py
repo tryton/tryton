@@ -597,7 +597,7 @@ class Line(ModelSQL, ModelView):
             'required': Eval('party_required', False),
             'invisible': ~Eval('party_required', False),
             },
-        depends=['party_required'])
+        depends=['party_required'], ondelete='RESTRICT')
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
