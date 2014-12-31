@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
+from trytond import backend
 
 __all__ = ['Country', 'Subdivision', 'Zip']
 
@@ -20,13 +22,19 @@ class Country(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Country, cls).__setup__()
-        cls._sql_constraints += [
-            ('name_uniq', 'UNIQUE(name)',
-                'The name of the country must be unique.'),
-            ('code_uniq', 'UNIQUE(code)',
-                'The code of the country must be unique.'),
-            ]
         cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+
+        super(Country, cls).__register__(module_name)
+
+        # Migration from 3.4: drop unique constraints from name and code
+        table.drop_constraint('name_uniq')
+        table.drop_constraint('code_uniq')
 
     @classmethod
     def search_rec_name(cls, name, clause):

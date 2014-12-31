@@ -1,3 +1,5 @@
+* Remove unique constraints from country name and code
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 * Add zip
