@@ -367,6 +367,10 @@ Class attributes are:
     second is the sort ordering as `ASC` for ascending or `DESC` for
     descending.
 
+    In case the field used for the first element is a :class:`fields.Many2One`,
+    it is also possible to use the dotted notation to sort on a specific field
+    from the target record.
+
 .. attribute:: ModelSQL._order_name
 
     The name of the field (or an SQL statement) on which the records must be

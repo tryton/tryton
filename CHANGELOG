@@ -1,3 +1,4 @@
+* Allow to use the dotted notation for order parameters
 * Use action_id to find report to use
 * Allow custom StateView without Model
 * Remove Pool.object_name_list

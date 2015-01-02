@@ -997,10 +997,11 @@ class ModelSQL(ModelStorage):
             }
         if order is None or order is False:
             order = cls._order
-        for fname, otype in order:
+        for oexpr, otype in order:
+            fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]
             Order = order_types[otype.upper()]
-            forder = field.convert_order(fname, tables, cls)
+            forder = field.convert_order(oexpr, tables, cls)
             order_by.extend((Order(o) for o in forder))
 
         main_table, _ = tables[None]

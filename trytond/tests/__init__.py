@@ -154,6 +154,7 @@ def register():
         CopyMany2ManyReferenceRelation,
         Many2OneTarget,
         Many2OneDomainValidation,
+        Many2OneOrderBy,
         TestHistory,
         TestHistoryLine,
         FieldContextChild,

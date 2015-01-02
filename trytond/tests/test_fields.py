@@ -111,6 +111,7 @@ class FieldsTestCase(unittest.TestCase):
         self.binary_required = POOL.get('test.binary_required')
 
         self.m2o_domain_validation = POOL.get('test.many2one_domainvalidation')
+        self.m2o_orderby = POOL.get('test.many2one_orderby')
         self.m2o_target = POOL.get('test.many2one_target')
 
     def test0010boolean(self):
@@ -3235,6 +3236,25 @@ class FieldsTestCase(unittest.TestCase):
             m2o_6.save()
             domain.dummy = 'Dummy'
             domain.save()
+
+            # Testing order_by
+            for value in (5, 3, 2):
+                m2o, = self.m2o_target.create([{'value': value}])
+                self.m2o_orderby.create([{'many2one': m2o}])
+
+            search = self.m2o_orderby.search([], order=[('many2one', 'ASC')])
+            self.assertTrue(all(x.many2one.value <= y.many2one.value
+                    for x, y in zip(search, search[1:])))
+
+            search = self.m2o_orderby.search([],
+                order=[('many2one.id', 'ASC')])
+            self.assertTrue(all(x.many2one.id <= y.many2one.id
+                    for x, y in zip(search, search[1:])))
+
+            search = self.m2o_orderby.search([],
+                order=[('many2one.value', 'ASC')])
+            self.assertTrue(all(x.many2one.value <= y.many2one.value
+                    for x, y in zip(search, search[1:])))
 
             transaction.cursor.rollback()
 
