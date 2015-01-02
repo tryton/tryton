@@ -6,7 +6,7 @@ from decimal import Decimal
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends
+    test_depends, test_menu_action
 from trytond.transaction import Transaction
 
 
@@ -29,6 +29,10 @@ class TimesheetCostTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('timesheet_cost')
 
     def test0010compute_cost_price(self):
         'Test compute_cost_price'
