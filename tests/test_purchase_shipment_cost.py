@@ -4,7 +4,7 @@
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
 
@@ -21,6 +21,10 @@ class PurchaseShipmentCostTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('purchase_shipment_cost')
 
 
 def suite():
