@@ -155,8 +155,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Purchase, cls).__setup__()
-        cls._order.insert(0, ('purchase_date', 'DESC'))
-        cls._order.insert(1, ('id', 'DESC'))
+        cls._order = [
+            ('purchase_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._error_messages.update({
                 'warehouse_required': ('A warehouse must be defined for '
                     'quotation of purchase "%s".'),
