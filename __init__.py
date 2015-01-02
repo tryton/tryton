@@ -10,8 +10,7 @@ def register():
     Pool.register(
         Account,
         OpenChartAccountStart,
-        AccountSelection,
-        AccountAccountSelection,
+        AnalyticAccountEntry,
         Line,
         MoveLine,
         module='analytic_account', type_='model')

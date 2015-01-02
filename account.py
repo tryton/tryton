@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-import copy
 from sql import Column
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder
@@ -13,7 +13,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 __all__ = ['Account', 'OpenChartAccountStart', 'OpenChartAccount',
-    'AccountSelection', 'AccountAccountSelection']
+    'AnalyticAccountEntry', 'AnalyticMixin']
 
 
 class Account(ModelSQL, ModelView):
@@ -274,63 +274,6 @@ class Account(ModelSQL, ModelView):
         else:
             return [(cls._rec_name,) + tuple(clause[1:])]
 
-    @classmethod
-    def convert_view(cls, tree):
-        res = tree.xpath('//field[@name=\'analytic_accounts\']')
-        if not res:
-            return
-        element_accounts = res[0]
-
-        root_accounts = cls.search([
-                ('parent', '=', None),
-                ])
-        if not root_accounts:
-            element_accounts.getparent().getparent().remove(
-                    element_accounts.getparent())
-            return
-        for account in root_accounts:
-            newelement = copy.copy(element_accounts)
-            newelement.tag = 'label'
-            newelement.set('name', 'analytic_account_' + str(account.id))
-            element_accounts.addprevious(newelement)
-            newelement = copy.copy(element_accounts)
-            newelement.set('name', 'analytic_account_' + str(account.id))
-            element_accounts.addprevious(newelement)
-        parent = element_accounts.getparent()
-        parent.remove(element_accounts)
-
-    @classmethod
-    def analytic_accounts_fields_get(cls, field, fields_names=None,
-            states=None, required_states=None):
-        res = {}
-        if fields_names is None:
-            fields_names = []
-        if states is None:
-            states = {}
-
-        encoder = PYSONEncoder()
-
-        root_accounts = cls.search([
-                ('parent', '=', None),
-                ])
-        for account in root_accounts:
-            name = 'analytic_account_' + str(account.id)
-            if name in fields_names or not fields_names:
-                res[name] = field.copy()
-                field_states = states.copy()
-                if account.mandatory:
-                    if required_states:
-                        field_states['required'] = required_states
-                    else:
-                        field_states['required'] = True
-                res[name]['states'] = encoder.encode(field_states)
-                res[name]['string'] = account.name
-                res[name]['relation'] = cls.__name__
-                res[name]['domain'] = PYSONEncoder().encode([
-                    ('root', '=', account.id),
-                    ('type', '=', 'normal')])
-        return res
-
 
 class OpenChartAccountStart(ModelView):
     'Open Chart of Accounts'
@@ -360,55 +303,166 @@ class OpenChartAccount(Wizard):
         return 'end'
 
 
-class AccountSelection(ModelSQL, ModelView):
-    'Analytic Account Selection'
-    __name__ = 'analytic_account.account.selection'
+class AnalyticAccountEntry(ModelView, ModelSQL):
+    'Analytic Account Entry'
+    __name__ = 'analytic.account.entry'
+    origin = fields.Reference('Origin', selection='get_origin', select=True)
+    root = fields.Many2One('analytic_account.account', 'Root Analytic',
+        domain=[('type', '=', 'root')])
+    account = fields.Many2One('analytic_account.account', 'Account',
+        ondelete='RESTRICT', required=True,
+        states={
+            'required': Eval('required', False),
+            },
+        domain=[
+            ('root', '=', Eval('root')),
+            ('type', '=', 'normal'),
+            ],
+        depends=['root', 'required'])
+    required = fields.Function(fields.Boolean('Required'),
+        'on_change_with_required')
 
-    accounts = fields.Many2Many(
-            'analytic_account.account-analytic_account.account.selection',
-            'selection', 'account', 'Accounts')
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Account = pool.get('analytic_account.account')
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+
+        # Migration from 3.4: use origin as the key for One2Many
+        migration_3_4 = False
+        old_table = 'analytic_account_account_selection_rel'
+        if TableHandler.table_exist(cursor, old_table):
+            TableHandler.table_rename(cursor, old_table, cls._table)
+            migration_3_4 = True
+
+        super(AnalyticAccountEntry, cls).__register__(module_name)
+
+        # Migration from 3.4: set root value
+        if migration_3_4:
+            account = Account.__table__()
+            cursor.execute(*account.select(account.id, account.root,
+                    where=account.type != 'root'))
+            entry = cls.__table__()
+            for account_id, root_id in cursor.fetchall():
+                cursor.execute(*entry.update(
+                        columns=[entry.root],
+                        values=[root_id],
+                        where=entry.account == account_id))
 
     @classmethod
     def __setup__(cls):
-        super(AccountSelection, cls).__setup__()
+        super(AnalyticAccountEntry, cls).__setup__()
+        cls._sql_constraints += [
+            ('root_origin_uniq', 'UNIQUE(origin, root)',
+                'Only one account is allowed per analytic root and origin.'),
+            ]
+
+    @classmethod
+    def _get_origin(cls):
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
+
+    @fields.depends('root')
+    def on_change_with_required(self, name=None):
+        if self.root:
+            return self.root.mandatory
+        return False
+
+
+class AnalyticMixin(ModelSQL):
+
+    analytic_accounts = fields.One2Many('analytic.account.entry', 'origin',
+        'Analytic Accounts',
+        size=Eval('analytic_accounts_size', 0),
+        depends=['analytic_accounts_size'])
+    analytic_accounts_size = fields.Function(fields.Integer(
+            'Analytic Accounts Size'), 'get_analytic_accounts_size')
+
+    @classmethod
+    def __setup__(cls):
+        super(AnalyticMixin, cls).__setup__()
         cls._error_messages.update({
-                'root_account': ('Can not have many accounts with the same '
-                    'root or a missing mandatory root account on "%s".'),
+                'root_account': ('Some mandatory root account are missing '
+                    'on "%(name)s"'),
                 })
 
     @classmethod
-    def validate(cls, selections):
-        super(AccountSelection, cls).validate(selections)
-        cls.check_root(selections)
+    def __register__(cls, module_name):
+        pool = Pool()
+        AccountEntry = pool.get('analytic.account.entry')
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+
+        super(AnalyticMixin, cls).__register__(module_name)
+
+        handler = TableHandler(cursor, cls, module_name)
+        # Migration from 3.4: analytic accounting changed to reference field
+        if handler.column_exist('analytic_accounts'):
+            entry = AccountEntry.__table__()
+            table = cls.__table__()
+            cursor.execute(*table.select(table.id, table.analytic_accounts,
+                    where=table.analytic_accounts != None))
+            for line_id, selection_id in cursor.fetchall():
+                cursor.execute(*entry.update(
+                        columns=[entry.origin],
+                        values=['%s,%s' % (cls.__name__, line_id)],
+                        where=entry.selection == selection_id))
+            handler.drop_column('analytic_accounts')
+
+    @staticmethod
+    def default_analytic_accounts():
+        pool = Pool()
+        AnalyticAccount = pool.get('analytic_account.account')
+
+        accounts = []
+        root_accounts = AnalyticAccount.search([
+                ('parent', '=', None),
+                ])
+        for account in root_accounts:
+            accounts.append({
+                    'required': account.mandatory,
+                    'root_name': account.name,
+                    'root': account.id,
+                    })
+        return accounts
+
+    @staticmethod
+    def default_analytic_accounts_size():
+        pool = Pool()
+        AnalyticAccount = pool.get('analytic_account.account')
+        return len(AnalyticAccount.search([('type', '=', 'root')]))
 
     @classmethod
-    def check_root(cls, selections):
-        "Check Root"
-        Account = Pool().get('analytic_account.account')
+    def get_analytic_accounts_size(cls, records, name):
+        roots = cls.default_analytic_accounts_size()
+        return {r.id: roots for r in records}
 
-        root_accounts = Account.search([
-            ('parent', '=', None),
-            ])
+    @classmethod
+    def validate(cls, analytics):
+        super(AnalyticMixin, cls).validate(analytics)
+        cls.check_roots(analytics)
 
-        for selection in selections:
-            roots = []
-            for account in selection.accounts:
-                if account.root.id in roots:
-                    cls.raise_user_error('root_account', (account.rec_name,))
-                roots.append(account.root.id)
-            if Transaction().user:  # Root can by pass
-                for account in root_accounts:
-                    if account.mandatory:
-                        if account.id not in roots:
-                            cls.raise_user_error('root_account',
-                                (account.rec_name,))
-
-
-class AccountAccountSelection(ModelSQL):
-    'Analytic Account - Analytic Account Selection'
-    __name__ = 'analytic_account.account-analytic_account.account.selection'
-    _table = 'analytic_account_account_selection_rel'
-    selection = fields.Many2One('analytic_account.account.selection',
-            'Selection', ondelete='CASCADE', required=True, select=True)
-    account = fields.Many2One('analytic_account.account', 'Account',
-            ondelete='RESTRICT', required=True, select=True)
+    @classmethod
+    def check_roots(cls, analytics):
+        "Check that all mandatory root entries are defined in entries"
+        pool = Pool()
+        Account = pool.get('analytic_account.account')
+        mandatory_roots = {a for a in Account.search([
+                ('type', '=', 'root'),
+                ('mandatory', '=', True),
+                ])}
+        for analytic in analytics:
+            analytic_roots = {e.root for e in analytic.analytic_accounts}
+            if not mandatory_roots <= analytic_roots:
+                cls.raise_user_error('root_account', {
+                        'name': analytic.rec_name,
+                        })

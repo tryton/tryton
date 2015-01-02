@@ -109,5 +109,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">open_chart_start_form</field>
         </record>
+
+        <record model="ir.ui.view" id="analytic_account_entry_view_form">
+            <field name="model">analytic.account.entry</field>
+            <field name="type">form</field>
+            <field name="name">analytic_account_entry_form</field>
+        </record>
+        <record model="ir.ui.view" id="analytic_account_entry_view_list">
+            <field name="model">analytic.account.entry</field>
+            <field name="type">tree</field>
+            <field name="name">analytic_account_entry_tree</field>
+        </record>
     </data>
 </tryton>
