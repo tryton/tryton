@@ -432,7 +432,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         # In case we're called from an on_change we have to use some sensible
         # defaults
         for line in self.lines:
-            if getattr(self, 'type', None) != 'line':
+            if getattr(line, 'type', None) != 'line':
                 continue
             taxable_lines.append(tuple())
             for attribute, default_value in (
