@@ -11,7 +11,7 @@ from io import BytesIO
 from mock import Mock, patch
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
@@ -166,6 +166,10 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('account_payment_sepa')
 
     def test_pain001_001_03(self):
         'Test pain001.001.03 xsd validation'
