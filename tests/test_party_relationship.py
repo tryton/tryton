@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, install_module, suite as tryton_suite
+    test_depends, test_menu_action, install_module, suite as tryton_suite
 from trytond.transaction import Transaction
 
 
@@ -23,6 +23,10 @@ class TestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('party_relationship')
 
     def test0010reverse_relationship(self):
         'Test reverse relationship'
