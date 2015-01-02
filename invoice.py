@@ -186,8 +186,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
                 'invoice_report_cache', 'invoice_report_format']
-        cls._order.insert(0, ('number', 'DESC'))
-        cls._order.insert(1, ('id', 'DESC'))
+        cls._order = [
+            ('number', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._error_messages.update({
                 'missing_tax_line': ('Invoice "%s" has taxes defined but not '
                     'on invoice lines.\nRe-compute the invoice.'),
