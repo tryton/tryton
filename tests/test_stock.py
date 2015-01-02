@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 from functools import partial
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends
+    test_depends, test_menu_action
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 from trytond.exceptions import UserWarning
@@ -37,6 +37,10 @@ class StockTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('stock')
 
     def test0010move_internal_quantity(self):
         'Test Move.internal_quantity'
