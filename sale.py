@@ -174,8 +174,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Sale, cls).__setup__()
-        cls._order.insert(0, ('sale_date', 'DESC'))
-        cls._order.insert(1, ('id', 'DESC'))
+        cls._order = [
+            ('sale_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._error_messages.update({
                 'invalid_method': ('Invalid combination of shipment and '
                     'invoicing methods on sale "%s".'),
