@@ -3,7 +3,8 @@
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import install_module, test_depends
+from trytond.tests.test_tryton import (install_module, test_depends,
+    test_menu_action)
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserWarning
@@ -29,6 +30,10 @@ class SaleCreditLimitTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('sale_credit_limit')
 
     def test0010check_credit_limit(self):
         'Test check_credit_limit'
