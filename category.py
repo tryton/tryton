@@ -35,7 +35,7 @@ class Category(ModelSQL, ModelView):
                 'wrong_name': ('Invalid category name "%%s": You can not use '
                     '"%s" in name field.' % SEPARATOR),
                 })
-        cls._order.insert(1, ('name', 'ASC'))
+        cls._order.insert(0, ('name', 'ASC'))
 
     @staticmethod
     def default_active():
