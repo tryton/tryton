@@ -6,7 +6,7 @@ import datetime
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
@@ -43,6 +43,10 @@ class AccountTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('account')
 
     def test0010account_chart(self):
         'Test creation of minimal chart of accounts'
