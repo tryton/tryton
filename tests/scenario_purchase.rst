@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts
+    ...     create_chart, get_accounts, create_tax
     >>> from.trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
@@ -90,6 +90,11 @@ Create chart of accounts::
     >>> cash_journal.debit_account = cash
     >>> cash_journal.save()
 
+Create tax::
+
+    >>> tax = create_tax(Decimal('.10'))
+    >>> tax.save()
+
 Create parties::
 
     >>> Party = Model.get('party.party')
@@ -116,6 +121,7 @@ Create product::
     >>> template.cost_price_method = 'fixed'
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
+    >>> template.supplier_taxes.append(tax)
     >>> template.save()
     >>> product.template = template
     >>> product.save()
@@ -179,8 +185,14 @@ Purchase 5 products::
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3.0
     >>> purchase.click('quote')
+    >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
+    (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.click('confirm')
+    >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
+    (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.click('process')
+    >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
+    (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.state
     u'processing'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
