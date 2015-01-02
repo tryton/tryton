@@ -5,7 +5,7 @@ import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-    test_view, test_depends, doctest_setup, doctest_teardown
+    test_view, test_depends, test_menu_action, doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 
@@ -29,6 +29,10 @@ class CarrierWeightTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('carrier_percentage')
 
     def test0010compute_percentage(self):
         'Test compute_percentage'
