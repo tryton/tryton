@@ -147,8 +147,13 @@ Sale 250 products::
     >>> sale.click('process')
     >>> sale.state
     u'processing'
-    >>> sale.shipments
-    []
+    >>> shipment, = sale.shipments
+    >>> move, = shipment.outgoing_moves
+    >>> move.state
+    u'staging'
+    >>> move, = shipment.inventory_moves
+    >>> move.state
+    u'staging'
 
 Delete Purchase Request::
 
@@ -183,6 +188,12 @@ Create Purchase from Request::
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> shipment, = sale.shipments
+    >>> move, = shipment.outgoing_moves
+    >>> move.state
+    u'draft'
+    >>> move, = shipment.inventory_moves
+    >>> move.state
+    u'draft'
 
 Receive 100 products::
 

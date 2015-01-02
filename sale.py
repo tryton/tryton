@@ -20,9 +20,13 @@ class Sale:
         return done
 
     def create_shipment(self, shipment_type):
-        shipments = super(Sale, self).create_shipment(shipment_type)
         if shipment_type == 'out':
+            # purchase requests must be created before shipments to get
+            # information about requests during the shipments creation
+            # like the supplier
             self.create_purchase_requests()
+            self.create_move_from_purchase_requests()
+        shipments = super(Sale, self).create_shipment(shipment_type)
         return shipments
 
     def create_purchase_requests(self):
@@ -35,6 +39,24 @@ class Sale:
             assert not line.purchase_request
             line.purchase_request = request
             line.save()
+
+    def create_move_from_purchase_requests(self):
+        'Set to draft move linked to purchase requests'
+        pool = Pool()
+        Move = pool.get('stock.move')
+        ShipmentOut = pool.get('stock.shipment.out')
+
+        moves = []
+        for line in self.lines:
+            if line.purchase_request_state in ['purchased', 'cancel']:
+                for move in line.moves:
+                    if move.state == 'staging':
+                        move.state = 'draft'
+                        moves.append(move)
+        Move.save(moves)
+        shipments = {m.shipment for m in moves
+            if isinstance(m.shipment, ShipmentOut)}
+        ShipmentOut.wait(shipments)
 
 
 class SaleLine:
@@ -79,17 +101,18 @@ class SaleLine:
                 or not self.product
                 or self.quantity <= 0
                 or not self.product.purchasable
-                or any(m.state != 'cancel' for m in self.moves)):
+                or any(m.state not in ['staging', 'cancel'] for m in self.moves)):
             return False
         return self.product.supply_on_sale
 
     def get_move(self, shipment_type):
         move = super(SaleLine, self).get_move(shipment_type)
-        if (shipment_type == 'out'
+        if (move
+                and shipment_type == 'out'
                 and (self.supply_on_sale
                     or self.purchase_request)):
             if self.purchase_request_state in ('', 'requested'):
-                return
+                move.state = 'staging'
         return move
 
     def get_purchase_request(self):
