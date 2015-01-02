@@ -6,7 +6,7 @@ import doctest
 from mock import Mock, patch
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.pool import Pool
@@ -26,6 +26,10 @@ class AccountStockAngloSaxonTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test0007menu_actions(self):
+        'Test menu actions'
+        test_menu_action('account_sock_anglo_saxon')
 
     def test_get_anglo_saxon_move(self):
         'Test _get_anglo_saxon_move'
