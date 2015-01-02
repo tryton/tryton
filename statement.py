@@ -119,6 +119,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'deletion.'),
                 'paid_invoice_draft_statement': ('There are paid invoices on '
                     'draft statements.'),
+                'debit_credit_account_statement_journal': ('Please provide '
+                    'debit and credit account on statement journal "%s".'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -383,8 +385,9 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         for statement in statements:
             getattr(statement, 'validate_%s' % statement.validation)()
-            for line in statement.lines:
-                line.create_move()
+
+        cls.create_move(statements)
+
         cls.write(statements, {
                 'state': 'validated',
                 })
@@ -398,6 +401,99 @@ class Statement(Workflow, ModelSQL, ModelView):
             Line.write(common_lines, {
                     'invoice': None,
                     })
+
+    @classmethod
+    def create_move(cls, statements):
+        'Create move for the statements and try to reconcile the lines'
+        pool = Pool()
+        Line = pool.get('account.statement.line')
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
+
+        moves = []
+        for statement in statements:
+            for key, lines in groupby(
+                    statement.lines, key=statement._group_key):
+                lines = list(lines)
+                key = dict(key)
+                move = statement._get_move(key)
+                moves.append((move, statement, lines))
+
+        Move.save([m for m, _, _ in moves])
+
+        to_write = []
+        for move, _, lines in moves:
+            to_write.append(lines)
+            to_write.append({
+                    'move': move.id,
+                    })
+        Line.write(*to_write)
+
+        move_lines = []
+        for move, statement, lines in moves:
+            amount = 0
+            amount_second_currency = 0
+            for line in lines:
+                move_line = line.get_move_line()
+                move_line.move = move
+                amount += move_line.debit - move_line.credit
+                if move_line.amount_second_currency:
+                    amount_second_currency += move_line.amount_second_currency
+                move_lines.append((move_line, line))
+
+            move_line = statement._get_move_line(
+                amount, amount_second_currency)
+            move_line.move = move
+            move_lines.append((move_line, None))
+
+        MoveLine.save([l for l, _ in move_lines])
+
+        for move_line, line in move_lines:
+            if line:
+                line.reconcile(move_line)
+
+    def _get_move(self, key):
+        'Return Move for the grouping key'
+        pool = Pool()
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        period_id = Period.find(self.company.id, date=key['date'])
+        return Move(
+            period=period_id,
+            journal=self.journal.journal,
+            date=key['date'],
+            origin=self,
+            company=self.company,
+            )
+
+    def _get_move_line(self, amount, amount_second_currency):
+        'Return counterpart Move Line for the amount'
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+
+        if amount < 0:
+            account = self.journal.journal.debit_account
+        else:
+            account = self.journal.journal.credit_account
+
+        if not account:
+            self.raise_user_error('debit_credit_account_statement_journal',
+                (self.journal.rec_name,))
+
+        if self.journal.currency != self.company.currency:
+            second_currency = self.journal.currency
+        else:
+            second_currency = None
+            amount_second_currency = None
+
+        return MoveLine(
+            debit=abs(amount) if amount < 0 else 0,
+            credit=abs(amount) if amount > 0 else 0,
+            account=account,
+            second_currency=second_currency,
+            amount_second_currency=amount_second_currency,
+            )
 
     @classmethod
     @ModelView.button
@@ -454,11 +550,6 @@ class Line(ModelSQL, ModelView):
         super(Line, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'debit_credit_account_statement_journal': ('Please provide '
-                    'debit and credit account on statement journal "%s".'),
-                'same_debit_credit_account': ('Account "%(account)s" in '
-                    'statement line "%(line)s" is the same as the one '
-                    'configured as credit or debit on journal "%(journal)s".'),
                 'amount_greater_invoice_amount_to_pay': ('Amount "%s" is '
                     'greater than the amount to pay of invoice.'),
                 })
@@ -551,37 +642,12 @@ class Line(ModelSQL, ModelView):
         default.setdefault('invoice', None)
         return super(Line, cls).copy(lines, default=default)
 
-    def create_move(self):
-        '''
-        Create move for the statement line and return move if created.
-        '''
+    def reconcile(self, move_line):
         pool = Pool()
-        Move = pool.get('account.move')
-        Period = pool.get('account.period')
-        Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
-        MoveLine = pool.get('account.move.line')
         Lang = pool.get('ir.lang')
-
-        if self.move:
-            return
-
-        period_id = Period.find(self.statement.company.id, date=self.date)
-
-        move_lines = self._get_move_lines()
-        move = Move(
-            period=period_id,
-            journal=self.statement.journal.journal,
-            date=self.date,
-            origin=self,
-            company=self.statement.company,
-            lines=move_lines,
-            )
-        move.save()
-
-        self.write([self], {
-                'move': move.id,
-                })
+        Invoice = pool.get('account.invoice')
+        MoveLine = pool.get('account.move.line')
 
         if self.invoice:
             with Transaction().set_context(date=self.invoice.currency_date):
@@ -606,30 +672,28 @@ class Line(ModelSQL, ModelView):
             reconcile_lines = self.invoice.get_reconcile_lines_for_amount(
                 amount)
 
-            for move_line in move.lines:
-                if move_line.account == self.invoice.account:
-                    Invoice.write([self.invoice], {
-                            'payment_lines': [('add', [move_line.id])],
-                            })
-                    break
+            assert move_line.account == self.invoice.account
+
+            Invoice.write([self.invoice], {
+                    'payment_lines': [('add', [move_line.id])],
+                    })
             if reconcile_lines[1] == Decimal('0.0'):
                 lines = reconcile_lines[0] + [move_line]
                 MoveLine.reconcile(lines)
-        return move
 
     @classmethod
     def post_move(cls, lines):
         Move = Pool().get('account.move')
-        Move.post([l.move for l in lines if l.move])
+        Move.post(list({l.move for l in lines if l.move}))
 
     @classmethod
     def delete_move(cls, lines):
         Move = Pool().get('account.move')
-        Move.delete([l.move for l in lines if l.move])
+        Move.delete(list({l.move for l in lines if l.move}))
 
-    def _get_move_lines(self):
+    def get_move_line(self):
         '''
-        Return the move lines for the statement line
+        Return the move line for the statement line
         '''
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -645,41 +709,15 @@ class Line(ModelSQL, ModelView):
             amount_second_currency = None
             second_currency = None
 
-        move_lines = []
-        move_lines.append(MoveLine(
-                description=self.description,
-                debit=amount < zero and -amount or zero,
-                credit=amount >= zero and amount or zero,
-                account=self.account,
-                party=self.party if self.account.party_required else None,
-                second_currency=second_currency,
-                amount_second_currency=amount_second_currency,
-                ))
-
-        journal = self.statement.journal.journal
-        if self.amount >= zero:
-            account = journal.debit_account
-        else:
-            account = journal.credit_account
-        if not account:
-            self.raise_user_error('debit_credit_account_statement_journal',
-                (journal.rec_name,))
-        if self.account == account:
-            self.raise_user_error('same_debit_credit_account', {
-                    'account': self.account.rec_name,
-                    'line': self.rec_name,
-                    'journal': journal,
-                    })
-        move_lines.append(MoveLine(
-                description=self.description,
-                debit=amount >= zero and amount or zero,
-                credit=amount < zero and -amount or zero,
-                account=account,
-                party=self.party if account.party_required else None,
-                second_currency=second_currency,
-                amount_second_currency=amount_second_currency,
-                ))
-        return move_lines
+        return MoveLine(
+            description=self.description,
+            debit=amount < zero and -amount or zero,
+            credit=amount >= zero and amount or zero,
+            account=self.account,
+            party=self.party if self.account.party_required else None,
+            second_currency=second_currency,
+            amount_second_currency=amount_second_currency,
+            )
 
 
 class StatementReport(CompanyReport):

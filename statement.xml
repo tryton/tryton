@@ -116,6 +116,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">statement_line_tree_editable</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_statement_line_move">
+            <field name="name">Statement Lines</field>
+            <field name="res_model">account.statement.line</field>
+            <field name="domain">[('move', 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_statement_line_move_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="act_statement_line_move"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_statement_line_move_line">
+            <field name="name">Statement Lines</field>
+            <field name="res_model">account.statement.line</field>
+            <field name="domain">[('move.lines', 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_statement_line_move_line_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_statement_line_move_line"/>
+        </record>
+
         <record model="ir.model.access" id="access_statement_account_admin">
             <field name="model" search="[('model', '=', 'account.statement')]"/>
             <field name="group" ref="account.group_account_admin"/>
@@ -218,7 +240,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_lines_form">
             <field name="name">Move Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('origin.statement.id', 'in', Eval('active_ids'), 'account.statement.line')]</field>
+            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'account.statement')]</field>
         </record>
         <record model="ir.action.keyword" id="act_move_lines_form_keyword1">
             <field name="keyword">form_relate</field>
