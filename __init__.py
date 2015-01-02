@@ -9,5 +9,5 @@ def register():
     Pool.register(
         Purchase,
         PurchaseLine,
-        Account,
+        AnalyticAccountEntry,
         module='analytic_purchase', type_='model')
