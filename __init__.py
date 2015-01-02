@@ -8,5 +8,5 @@ from .sale import *
 def register():
     Pool.register(
         SaleLine,
-        Account,
+        AnalyticAccountEntry,
         module='analytic_sale', type_='model')
