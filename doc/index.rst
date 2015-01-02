@@ -82,6 +82,11 @@ A move can be in one of this states:
   Assigned move can be cancelled. To revert a move in state Done, an
   opposite move must be created.
 
+* Staging
+
+  A phantom state used to create in advance move that should not be taken for
+  stock computation.
+
 
 Product Quantities
 ++++++++++++++++++

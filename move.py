@@ -195,6 +195,7 @@ class Move(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     state = fields.Selection([
+        ('staging', 'Staging'),
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),
         ('done', 'Done'),
@@ -266,6 +267,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'no_origin': 'The stock move "%s" has no origin.',
             })
         cls._transitions |= set((
+                ('staging', 'draft'),
                 ('draft', 'assigned'),
                 ('draft', 'done'),
                 ('draft', 'cancel'),
@@ -640,7 +642,8 @@ class Move(Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
-            assert vals.get('state', 'draft') == 'draft'
+            assert vals.get('state', cls.default_state()
+                ) in ['draft', 'staging']
 
             product = Product(vals['product'])
             uom = Uom(vals['uom'])

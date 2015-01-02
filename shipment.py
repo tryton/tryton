@@ -1080,6 +1080,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             company=move.company,
             currency=move.currency,
             unit_price=move.unit_price,
+            state='staging' if move.state == 'staging' else 'draft',
             )
 
     @classmethod
