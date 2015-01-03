@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from collections import defaultdict
 
 from trytond.pool import PoolMeta, Pool
+from trytond.model import ModelView, Workflow
 
 
 __all__ = ['Invoice', 'InvoiceLine']
@@ -14,6 +15,13 @@ class Invoice:
     __name__ = 'account.invoice'
 
     @classmethod
+    @ModelView.button
+    @Workflow.transition('posted')
+    def post(cls, invoices):
+        super(Invoice, cls).post(invoices)
+        cls.post_commission_waiting_moves(invoices)
+
+    @classmethod
     def create_commissions(cls, invoices):
         pool = Pool()
         Commission = pool.get('commission')
@@ -22,6 +30,21 @@ class Invoice:
 
         Commission.create_waiting_move(commissions)
         return commissions
+
+    @classmethod
+    def post_commission_waiting_moves(cls, invoices):
+        pool = Pool()
+        Move = pool.get('account.move')
+
+        moves = []
+        for invoice in invoices:
+            for line in invoice.lines:
+                for commission in line.from_commissions:
+                    if (commission.waiting_move
+                            and commission.waiting_move.state != 'posted'):
+                        moves.append(commission.waiting_move)
+        if moves:
+            Move.post(moves)
 
 
 class InvoiceLine:
