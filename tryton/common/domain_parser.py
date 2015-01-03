@@ -12,7 +12,7 @@ import io
 from collections import OrderedDict
 
 from tryton.translate import date_format
-from tryton.common import untimezoned_date, datetime_strftime
+from tryton.common import untimezoned_date, timezoned_date, datetime_strftime
 from tryton.pyson import PYSONDecoder
 
 __all__ = ['DomainParser']
@@ -462,7 +462,10 @@ def format_value(field, value, target=None):
         if (not isinstance(value, datetime.datetime)
                 or value.time() == datetime.time.min):
             format_ = date_format()
-        return datetime_strftime(value, format_)
+            time = value
+        else:
+            time = timezoned_date(value)
+        return datetime_strftime(time, format_)
 
     def format_date():
         if not value:
@@ -588,7 +591,8 @@ def test_format_datetime():
     for value, result in (
             (datetime.date(2002, 12, 4), '12/04/2002'),
             (datetime.datetime(2002, 12, 4), '12/04/2002'),
-            (datetime.datetime(2002, 12, 4, 12, 30), '"12/04/2002 12:30:00"'),
+            (untimezoned_date(datetime.datetime(2002, 12, 4, 12, 30)),
+                '"12/04/2002 12:30:00"'),
             (False, ''),
             (None, ''),
             ):
@@ -655,7 +659,7 @@ def complete_value(field, value):
 
     def complete_datetime():
         yield datetime.date.today()
-        yield datetime.datetime.now()
+        yield datetime.datetime.utcnow()
 
     def complete_date():
         yield datetime.date.today()
