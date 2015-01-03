@@ -394,7 +394,7 @@ class Cursor(CursorInterface):
         return self.cursor.fetchone()[0]
 
     def lock(self, table):
-        self.cursor.execute('LOCK "%s"' % table)
+        self.cursor.execute('LOCK "%s" NOWAIT' % table)
 
     def has_constraint(self):
         return True
