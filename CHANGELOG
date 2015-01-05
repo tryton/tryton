@@ -1,3 +1,4 @@
+* Add test for access rights of menu and actions
 * Allow to use the dotted notation for order parameters
 * Use action_id to find report to use
 * Allow custom StateView without Model

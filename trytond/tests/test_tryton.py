@@ -5,6 +5,7 @@ import os
 import sys
 import unittest
 import doctest
+import operator
 from lxml import etree
 
 from trytond.pool import Pool
@@ -171,6 +172,36 @@ def test_depends():
                 assert depends <= set(model._fields), (
                     'Unknown depends %s in "%s"."%s"' % (
                         list(depends - set(model._fields)), mname, fname))
+
+
+def test_menu_action(module_name):
+    "Test that menu actions are accessible to menu's group"
+    with Transaction().start(DB_NAME, USER, context=CONTEXT):
+        pool = Pool()
+        Menu = pool.get('ir.ui.menu')
+        ModelData = pool.get('ir.model.data')
+
+        module_menus = ModelData.search([
+                ('model', '=', 'ir.ui.menu'),
+                ('module', '=', module_name),
+                ])
+        menus = Menu.browse([mm.db_id for mm in module_menus])
+        for menu, module_menu in zip(menus, module_menus):
+            if not menu.action_keywords:
+                continue
+            menu_groups = set(menu.groups)
+            actions_groups = reduce(operator.or_,
+                (set(k.action.groups) for k in menu.action_keywords
+                    if k.keyword == 'tree_open'))
+            if not actions_groups:
+                continue
+            assert menu_groups <= actions_groups, (
+                'Menu "%(menu_xml_id)s" actions are not accessible to '
+                '%(groups)s' % {
+                    'menu_xml_id': module_menu.fs_id,
+                    'groups': ','.join(g.name
+                        for g in menu_groups - actions_groups),
+                    })
 
 
 def db_exist():
