@@ -10,6 +10,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_product import MissingFunction
+from trytond.modules.product import price_digits
 
 __all__ = ['Category', 'Template', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
@@ -190,14 +191,15 @@ class UpdateCostPriceAsk(ModelView):
         states={
             'invisible': ~Eval('product'),
             })
-    cost_price = fields.Numeric('Cost Price', required=True, digits=(16, 4))
+    cost_price = fields.Numeric('Cost Price', required=True,
+        digits=price_digits)
 
 
 class UpdateCostPriceShowMove(ModelView):
     'Update Cost Price Show Move'
     __name__ = 'product.update_cost_price.show_move'
     price_difference = fields.Numeric('Price Difference', readonly=True,
-        digits=(16, 4))
+        digits=price_digits)
     amount = fields.Numeric('Amount', readonly=True,
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     currency_digits = fields.Integer('Currency Digits', readonly=True)
