@@ -61,3 +61,15 @@ The Product Template model contains the following fields:
 
 The Product model extend the Product Template with two fields: Code
 and Description.
+
+Configuration
+*************
+
+The product module uses the section `product` to retrieve some parameters:
+
+- `price_decimal`: defines the number of decimal with which the unit prices are
+  stored. The default value is `4`.
+
+.. warning::
+    It can not be lowered once a database is created.
+..

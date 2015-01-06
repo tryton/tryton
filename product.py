@@ -6,8 +6,9 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 from trytond.const import OPERATORS
+from trytond.config import config
 
-__all__ = ['Template', 'Product']
+__all__ = ['Template', 'Product', 'price_digits']
 
 STATES = {
     'readonly': ~Eval('active', True),
@@ -18,6 +19,8 @@ TYPES = [
     ('assets', 'Assets'),
     ('service', 'Service'),
     ]
+
+price_digits = (16, config.getint('product', 'price_decimal', 4))
 
 
 class Template(ModelSQL, ModelView):
@@ -36,9 +39,9 @@ class Template(ModelSQL, ModelView):
     category = fields.Many2One('product.category', 'Category',
         states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
-            digits=(16, 4), depends=DEPENDS, required=True))
-    cost_price = fields.Property(fields.Numeric('Cost Price',
-            states=STATES, digits=(16, 4), depends=DEPENDS, required=True))
+            digits=price_digits, depends=DEPENDS, required=True))
+    cost_price = fields.Property(fields.Numeric('Cost Price', states=STATES,
+            digits=price_digits, depends=DEPENDS, required=True))
     cost_price_method = fields.Property(fields.Selection([
                 ("fixed", "Fixed"),
                 ("average", "Average")
@@ -143,9 +146,9 @@ class Product(ModelSQL, ModelView):
     type = fields.Function(fields.Selection(TYPES, 'Type'),
         'on_change_with_type', searcher='search_type')
     list_price_uom = fields.Function(fields.Numeric('List Price',
-        digits=(16, 4)), 'get_price_uom')
+        digits=price_digits), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
-        digits=(16, 4)), 'get_price_uom')
+        digits=price_digits), 'get_price_uom')
 
     @classmethod
     def order_rec_name(cls, tables):
