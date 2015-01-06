@@ -17,6 +17,8 @@ from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.modules.product import price_digits
+
 __all__ = ['StockMixin', 'Move']
 
 STATES = {
@@ -210,14 +212,15 @@ class Move(Workflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
-    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
+    unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
             'invisible': Not(Bool(Eval('unit_price_required'))),
             'required': Bool(Eval('unit_price_required')),
             'readonly': Not(Equal(Eval('state'), 'draft')),
             },
         depends=['unit_price_required', 'state'])
-    cost_price = fields.Numeric('Cost Price', digits=(16, 4), readonly=True)
+    cost_price = fields.Numeric('Cost Price', digits=price_digits,
+        readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Not(Bool(Eval('unit_price_required'))),
