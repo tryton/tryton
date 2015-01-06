@@ -22,6 +22,7 @@ from trytond.pool import Pool
 from trytond.rpc import RPC
 
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.product import price_digits
 
 __all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
     'InvoiceLineTax', 'InvoiceTax',
@@ -1441,7 +1442,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             'required': Eval('type') == 'line',
             },
         depends=['type', 'invoice_type', 'company'])
-    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
+    unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
