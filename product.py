@@ -11,6 +11,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond import backend
 
+from trytond.modules.product import price_digits
+
 __all__ = ['Template', 'Product', 'ProductSupplier', 'ProductSupplierPrice']
 __metaclass__ = PoolMeta
 
@@ -290,7 +292,8 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
     quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
-    unit_price = fields.Numeric('Unit Price', required=True, digits=(16, 4))
+    unit_price = fields.Numeric('Unit Price', required=True,
+        digits=price_digits)
     sequence = fields.Integer('Sequence')
 
     @classmethod

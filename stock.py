@@ -13,6 +13,8 @@ from trytond.transaction import Transaction
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond import backend
 
+from trytond.modules.product import price_digits
+
 __all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move',
     'OpenProductQuantitiesByWarehouse']
 __metaclass__ = PoolMeta
@@ -160,7 +162,7 @@ class Move:
     purchase_unit_digits = fields.Function(fields.Integer(
         'Purchase Unit Digits'), 'get_purchase_fields')
     purchase_unit_price = fields.Function(fields.Numeric('Purchase Unit Price',
-            digits=(16, 4), states={
+            digits=price_digits, states={
                 'invisible': ~Eval('purchase_visible', False),
                 }, depends=['purchase_visible']), 'get_purchase_fields')
     purchase_currency = fields.Function(fields.Many2One('currency.currency',
