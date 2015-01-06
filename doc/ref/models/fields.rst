@@ -336,6 +336,9 @@ DateTime
 .. class:: DateTime(string[, format, \**options])
 
 A date and time, represented in Python by a ``datetime.datetime`` instance.
+It is stored in `UTC`_ while displayed in the user timezone.
+
+.. _`UTC`: https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
 .. attribute:: DateTime.format
 
