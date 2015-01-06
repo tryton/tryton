@@ -18,6 +18,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.product import price_digits
 
 __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
@@ -970,7 +971,7 @@ class SaleLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
+    unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
