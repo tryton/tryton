@@ -8,6 +8,8 @@ from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
+from trytond.modules.product import price_digits
+
 __all__ = ['Production', 'AssignFailed', 'Assign']
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
@@ -98,7 +100,7 @@ class Production(Workflow, ModelSQL, ModelView):
             'invisible': ~Eval('product'),
             },
         depends=['unit_digits'])
-    cost = fields.Function(fields.Numeric('Cost', digits=(16, 4),
+    cost = fields.Function(fields.Numeric('Cost', digits=price_digits,
             readonly=True), 'get_cost')
     inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
         domain=[
