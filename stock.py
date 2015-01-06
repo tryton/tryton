@@ -8,6 +8,8 @@ from trytond.pyson import Eval, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+from trytond.modules.product import price_digits
+
 __all__ = ['ShipmentIn', 'Move']
 __metaclass__ = PoolMeta
 
@@ -137,8 +139,8 @@ class ShipmentIn:
 
 class Move:
     __name__ = 'stock.move'
-    unit_shipment_cost = fields.Numeric('Unit Shipment Cost', digits=(16, 4),
-        readonly=True)
+    unit_shipment_cost = fields.Numeric('Unit Shipment Cost',
+        digits=price_digits, readonly=True)
 
     # Split the shipment cost if account_stock_continental is installed
     def _get_account_stock_move_lines(self, type_):
