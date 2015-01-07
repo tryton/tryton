@@ -404,7 +404,9 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def create_move(cls, statements):
-        'Create move for the statements and try to reconcile the lines'
+        '''Create move for the statements and try to reconcile the lines.
+        Returns the list of move, statement and lines
+        '''
         pool = Pool()
         Line = pool.get('account.statement.line')
         Move = pool.get('account.move')
@@ -451,6 +453,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         for move_line, line in move_lines:
             if line:
                 line.reconcile(move_line)
+        return moves
 
     def _get_move(self, key):
         'Return Move for the grouping key'
