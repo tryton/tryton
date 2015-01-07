@@ -11,5 +11,6 @@ def register():
         Journal,
         Payment,
         Move,
+        Statement,
         StatementLine,
         module='account_payment_clearing', type_='model')

@@ -5,8 +5,38 @@ from trytond.model import fields
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 
-__all__ = ['StatementLine']
+__all__ = ['Statement', 'StatementLine']
 __metaclass__ = PoolMeta
+
+
+class Statement:
+    __name__ = 'account.statement'
+
+    @classmethod
+    def create_move(cls, statements):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+
+        moves = super(Statement, cls).create_move(statements)
+
+        for move, statement, lines in moves:
+            assert len({l.payment for l in lines}) == 1
+            line = lines[0]
+            if line.payment and line.payment.clearing_move:
+                clearing_account = line.payment.journal.clearing_account
+                if clearing_account.reconcile:
+                    to_reconcile = []
+                    for line in move.lines + line.payment.clearing_move.lines:
+                        if (line.account == clearing_account
+                                and not line.reconciliation):
+                            to_reconcile.append(line)
+                    if not sum((l.debit - l.credit) for l in to_reconcile):
+                        MoveLine.reconcile(to_reconcile)
+        return moves
+
+    def _group_key(self, line):
+        key = super(Statement, self)._group_key(line)
+        return key + (('payment', line.payment),)
 
 
 class StatementLine:
@@ -24,22 +54,6 @@ class StatementLine:
             default = {}
         default.setdefault('payment', None)
         return super(StatementLine, cls).copy(lines, default=default)
-
-    def create_move(self):
-        pool = Pool()
-        MoveLine = pool.get('account.move.line')
-        move = super(StatementLine, self).create_move()
-        if self.payment and self.payment.clearing_move:
-            clearing_account = self.payment.journal.clearing_account
-            if clearing_account.reconcile:
-                to_reconcile = []
-                for line in move.lines + self.payment.clearing_move.lines:
-                    if (line.account == clearing_account
-                            and not line.reconciliation):
-                        to_reconcile.append(line)
-                if not sum((l.debit - l.credit) for l in to_reconcile):
-                    MoveLine.reconcile(to_reconcile)
-        return move
 
     @fields.depends('payment', 'party', 'account', '_parent_statement.journal')
     def on_change_payment(self):
