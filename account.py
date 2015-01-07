@@ -32,7 +32,10 @@ class Account(ModelSQL, ModelView):
         ('normal', 'Normal'),
         ], 'Type', required=True)
     root = fields.Many2One('analytic_account.account', 'Root', select=True,
-        domain=[('parent', '=', None)],
+        domain=[
+            ('parent', '=', None),
+            ('type', '=', 'root'),
+            ],
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
