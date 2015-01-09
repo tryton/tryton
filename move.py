@@ -322,7 +322,7 @@ class Move(ModelSQL, ModelView):
                 'FROM "' + MoveLine._table + '" '
                 'WHERE ' + red_sql + ' AND state = %s '
                 'ORDER BY move', red_ids + ['draft'])
-            move2draft_lines.update(dict((k, (j[1] for j in g))
+            move2draft_lines.update(dict((k, [j[1] for j in g])
                     for k, g in groupby(cursor.fetchall(), itemgetter(0))))
 
         valid_moves = []
@@ -334,8 +334,7 @@ class Move(ModelSQL, ModelView):
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
                 amount = Decimal(amount)
-            draft_lines = MoveLine.browse(
-                list(move2draft_lines.get(move.id, [])))
+            draft_lines = MoveLine.browse(move2draft_lines.get(move.id, []))
             if not company.currency.is_zero(amount):
                 if not move.journal.centralised:
                     draft_moves.append(move.id)
