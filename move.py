@@ -779,6 +779,8 @@ class Move(Workflow, ModelSQL, ModelView):
         success = True
         for move in moves:
             if move.state != 'draft':
+                if move.state == 'staging':
+                    success = False
                 continue
             to_location = move.to_location
             location_qties = {}
