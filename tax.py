@@ -658,19 +658,19 @@ class Tax(ModelSQL, ModelView):
             }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
         'Credit Note Base Code',
-        states={
-            'readonly': Eval('type') == 'none',
-            }, depends=['type'])
-    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
-        digits=(2, 0), help='Usualy 1 or -1',
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             },
         depends=['type', 'company'])
+    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
+        digits=(2, 0), help='Usualy 1 or -1',
+        states={
+            'required': Eval('type') != 'none',
+            'readonly': Eval('type') == 'none',
+            }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
         'Credit Note Tax Code',
         domain=[
