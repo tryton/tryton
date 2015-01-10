@@ -7968,7 +7968,9 @@
         <record model="account.account.template" id="6354">
             <field name="name">Droits d'enregistrement et de timbre</field>
             <field name="code">6354</field>
-            <field name="kind">view</field>
+            <field name="type" ref="impots_taxes"/>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
             <field name="parent" ref="635"/>
         </record>
         <record model="account.account.template" id="63541">
