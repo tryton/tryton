@@ -92,7 +92,7 @@ setup(name=name,
     license='GPL-3',
     install_requires=requires,
     extras_require={
-        'VAT': ['vatnumber'],
+        'VAT': ['vatnumber', 'python-stdnum'],
         },
     zip_safe=False,
     entry_points="""
