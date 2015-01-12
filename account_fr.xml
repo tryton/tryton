@@ -8136,9 +8136,7 @@
         <record model="account.account.template" id="646">
             <field name="name">Cotisations sociales personnelles de l'exploitant</field>
             <field name="code">646</field>
-            <field name="type" ref="charges_sociales"/>
-            <field name="deferral" eval="False"/>
-            <field name="kind">expense</field>
+            <field name="kind">view</field>
             <field name="parent" ref="64"/>
         </record>
         <record model="account.account.template" id="6461">
