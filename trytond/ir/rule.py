@@ -150,7 +150,8 @@ class Rule(ModelSQL, ModelView):
 
     @staticmethod
     def _get_cache_key():
-        return (Transaction().user,)
+        # _datetime value will be added to the domain
+        return (Transaction().user, Transaction().context.get('_datetime'))
 
     @classmethod
     def domain_get(cls, model_name, mode='read'):
