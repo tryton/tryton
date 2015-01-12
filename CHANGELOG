@@ -1,3 +1,4 @@
+* Allow to put many times the same field on tree view
 * Add search completion on dictionary widget
 * Merge host and port field in profile editor
 * New color scheme for graph

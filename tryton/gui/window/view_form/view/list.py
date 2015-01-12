@@ -10,6 +10,7 @@ except ImportError:
 import locale
 import gettext
 from functools import wraps
+from collections import defaultdict
 
 from tryton.config import CONFIG
 from tryton.common.cellrendererbutton import CellRendererButton
@@ -264,7 +265,7 @@ class ViewTree(View):
     def __init__(self, screen, xml, children_field):
         super(ViewTree, self).__init__(screen, xml)
         self.view_type = 'tree'
-        self.widgets = {}
+        self.widgets = defaultdict(list)
         self.state_widgets = []
         self.children_field = children_field
         self.sum_widgets = []
@@ -344,8 +345,7 @@ class ViewTree(View):
 
         Widget = self.get_widget(node_attrs['widget'])
         widget = Widget(self, node_attrs)
-        assert name not in self.widgets
-        self.widgets[name] = widget
+        self.widgets[name].append(widget)
 
         column = gtk.TreeViewColumn(field.attrs['string'])
         column._type = 'field'
@@ -503,6 +503,12 @@ class ViewTree(View):
         column.set_expand(expand)
         column.set_resizable(True)
         column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+
+    def get_column_widget(self, column):
+        'Return the widget of the column'
+        idx = [c for c in self.treeview.get_columns()
+            if c.name == column.name].index(column)
+        return self.widgets[column.name][idx]
 
     def add_sum(self, attributes):
         if 'sum' not in attributes:
@@ -707,7 +713,7 @@ class ViewTree(View):
         for col in self.treeview.get_columns():
             if not col.get_visible() or not col.name:
                 continue
-            widget = self.widgets[col.name]
+            widget = self.get_column_widget(col)
             values.append('"'
                 + str(widget.get_textual_value(record)).replace('"', '""')
                 + '"')
@@ -766,7 +772,7 @@ class ViewTree(View):
                 group.add(record)
             record = group[idx]
             for col, value in zip(columns, line):
-                widget = self.widgets[col.name]
+                widget = self.get_column_widget(col)
                 if widget.get_textual_value(record) != value:
                     widget.value_from_text(record, value)
                     if value and not widget.get_textual_value(record):
