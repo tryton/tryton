@@ -945,6 +945,8 @@ class Line(ModelSQL, ModelView):
             if self.account.second_currency:
                 self.second_currency_digits = \
                     self.account.second_currency.digits
+            if not self.account.party_required:
+                self.party = None
 
     @fields.depends('account')
     def on_change_with_party_required(self, name=None):
