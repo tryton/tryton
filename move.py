@@ -957,6 +957,8 @@ class Line(ModelSQL, ModelView):
             if self.account.second_currency:
                 changes['second_currency_digits'] = \
                     self.account.second_currency.digits
+            if not self.account.party_required:
+                changes['party'] = None
         return changes
 
     @fields.depends('account')
