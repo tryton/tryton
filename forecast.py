@@ -58,6 +58,8 @@ class Forecast(Workflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ('cancel', 'Cancel'),
         ], 'State', readonly=True, select=True)
+    active = fields.Function(fields.Boolean('Active'),
+        'get_active', searcher='search_active')
 
     @classmethod
     def __setup__(cls):
@@ -156,6 +158,33 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    def get_active(self, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return self.to_date >= Date.today()
+
+    @classmethod
+    def search_active(cls, name, clause):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        operators = {
+            '=': '>=',
+            '!=': '<',
+            }
+        reverse = {
+            '=': '!=',
+            '!=': '=',
+            }
+        if clause[1] in operators:
+            if clause[2]:
+                return [('to_date', operators[clause[1]], today)]
+            else:
+                return [('to_date', operators[reverse[clause[1]]], today)]
+        else:
+            return []
 
     @classmethod
     def validate(cls, forecasts):

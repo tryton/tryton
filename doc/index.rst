@@ -25,6 +25,8 @@ The forecast form contains:
 The "Complete Forecast" button allow to auto-complete forecast lines
 based on previous stock output for dates in the past.
 
+The forecasts are deactivated automatically when their period has passed.
+
 
 Forecast States
 ^^^^^^^^^^^^^^^

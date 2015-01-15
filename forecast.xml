@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_forecast_form">
             <field name="name">Forecasts</field>
             <field name="res_model">stock.forecast</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-2))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_forecast_form_view1">
@@ -50,16 +50,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="forecast_view_form"/>
             <field name="act_window" ref="act_forecast_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_forecast_form_domain_all">
-            <field name="name">All</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain"></field>
-            <field name="act_window" ref="act_forecast_form"/>
-        </record>
         <record model="ir.action.act_window.domain" id="act_forecast_form_domain_draft">
             <field name="name">Draft</field>
-            <field name="sequence" eval="20"/>
+            <field name="sequence" eval="10"/>
             <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_forecast_form_domain_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_forecast_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
             <field name="act_window" ref="act_forecast_form"/>
         </record>
         <menuitem parent="stock.menu_stock" sequence="50"
