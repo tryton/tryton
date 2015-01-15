@@ -416,6 +416,63 @@ class HistoryTestCase(unittest.TestCase):
             self.assertEqual(history.value, 2)
             self.assertEqual([l.name for l in history.lines], ['c'])
 
+    def test0080_search_cursor_max(self):
+        'Test search with number of history entries at cursor.IN_MAX'
+        History = POOL.get('test.history')
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            cursor = transaction.cursor
+
+            history = History(value=-1)
+            history.save()
+
+            for history.value in range(cursor.IN_MAX + 1):
+                history.save()
+
+            with transaction.set_context(_datetime=datetime.datetime.max):
+                record, = History.search([])
+
+                self.assertEqual(record.value, cursor.IN_MAX)
+
+    def test0090_search_cursor_max_entries(self):
+        'Test search for skipping first history entries at cursor.IN_MAX'
+        History = POOL.get('test.history')
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            cursor = transaction.cursor
+
+            for i in xrange(0, 2):
+                history = History(value=-1)
+                history.save()
+
+                for history.value in range(cursor.IN_MAX + 1):
+                    history.save()
+
+            with transaction.set_context(_datetime=datetime.datetime.max):
+                records = History.search([])
+
+                self.assertEqual({r.value for r in records}, {cursor.IN_MAX})
+                self.assertEqual(len(records), 2)
+
+    def test0100_search_cursor_max_histories(self):
+        'Test search with number of histories at cursor.IN_MAX'
+        History = POOL.get('test.history')
+
+        with Transaction().start(DB_NAME, USER,
+                                 context=CONTEXT) as transaction:
+            cursor = transaction.cursor
+
+            n = cursor.IN_MAX + 1
+            History.create([{'value': 1}] * n)
+
+            with transaction.set_context(_datetime=datetime.datetime.max):
+                records = History.search([])
+
+                self.assertEqual({r.value for r in records}, {1})
+                self.assertEqual(len(records), n)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(HistoryTestCase)
