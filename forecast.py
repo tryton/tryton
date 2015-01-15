@@ -529,7 +529,7 @@ class ForecastComplete(Wizard):
 
         res = {}
         for field in ("to_date", "from_date"):
-            res[field] = forecast[field] - relativedelta(years=1)
+            res[field] = getattr(forecast, field) - relativedelta(years=1)
         return res
 
     def _get_product_quantity(self):
