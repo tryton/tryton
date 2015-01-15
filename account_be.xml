@@ -1591,7 +1591,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="100">
             <field name="name">Capital souscrit ou capital personnel</field>
             <field name="code">100</field>
-            <field name="deferral" eval="False"/>
+            <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="passif_I_A"/>
             <field name="parent" ref="10"/>
@@ -2173,7 +2173,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="220">
             <field name="name">Terrains</field>
             <field name="code">220</field>
-            <field name="deferral" eval="False"/>
+            <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="actif_III_A"/>
             <field name="parent" ref="22"/>
@@ -2182,7 +2182,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="221">
             <field name="name">Constructions</field>
             <field name="code">221</field>
-            <field name="deferral" eval="False"/>
+            <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="actif_III_A"/>
             <field name="parent" ref="22"/>
