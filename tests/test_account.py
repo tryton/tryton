@@ -329,7 +329,7 @@ class AccountTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0040tax_compute(self):
-        'Test tax compute'
+        'Test tax compute/reverse_compute'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             today = datetime.date.today()
 
@@ -372,6 +372,10 @@ class AccountTestCase(unittest.TestCase):
                         'tax': child2,
                         }])
 
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('130'), [tax]),
+                Decimal('100'))
+
             child1.end_date = today + relativedelta(days=5)
             child1.save()
             self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
@@ -385,6 +389,10 @@ class AccountTestCase(unittest.TestCase):
                         'tax': child2,
                         }])
 
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('130'), [tax], today),
+                Decimal('100'))
+
             child1.start_date = today + relativedelta(days=1)
             child1.save()
             self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
@@ -393,6 +401,9 @@ class AccountTestCase(unittest.TestCase):
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('110'), [tax], today),
+                Decimal('100'))
             self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=1)), [{
                         'base': Decimal('200'),
@@ -403,6 +414,10 @@ class AccountTestCase(unittest.TestCase):
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
+            self.assertEqual(
+                self.tax.reverse_compute(
+                    Decimal('130'), [tax], today + relativedelta(days=1)),
+                Decimal('100'))
             self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=5)), [{
                         'base': Decimal('200'),
@@ -413,12 +428,20 @@ class AccountTestCase(unittest.TestCase):
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('130'), [tax],
+                    today + relativedelta(days=5)),
+                Decimal('100'))
             self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=6)), [{
                         'base': Decimal('200'),
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('110'), [tax],
+                    today + relativedelta(days=6)),
+                Decimal('100'))
 
             child1.end_date = None
             child1.save()
@@ -432,6 +455,10 @@ class AccountTestCase(unittest.TestCase):
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal('130'), [tax],
+                    today + relativedelta(days=6)),
+                Decimal('100'))
 
 
 def suite():

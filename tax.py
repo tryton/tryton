@@ -788,11 +788,47 @@ class Tax(ModelSQL, ModelView):
         return res
 
     @classmethod
-    def sort_taxes(cls, taxes):
+    def _reverse_rate_amount(cls, taxes, date):
+        rate = None
+        amount = 0
+        for tax in taxes:
+            start_date = tax.start_date or datetime.date.min
+            end_date = tax.end_date or datetime.date.max
+            if not (start_date <= date <= end_date):
+                continue
+
+            if tax.type == 'percentage':
+                if rate is None:
+                    rate = tax.rate
+                else:
+                    rate *= tax.rate
+            elif tax.type == 'fixed':
+                amount += tax.amount
+
+            if tax.childs:
+                child_rate, child_amount = cls._reverse_rate_amount(
+                    tax.childs, date)
+                if rate is None:
+                    rate = child_rate
+                else:
+                    rate *= child_rate
+                amount += child_amount
+        return rate, amount
+
+    @classmethod
+    def _reverse_unit_compute(cls, price_unit, taxes, date):
+        rate, amount = cls._reverse_rate_amount(taxes, date)
+        price_unit -= amount
+        if rate is not None:
+            price_unit = price_unit / (1 + rate)
+        return price_unit
+
+    @classmethod
+    def sort_taxes(cls, taxes, reverse=False):
         '''
         Return a list of taxes sorted
         '''
-        return sorted(taxes, key=lambda t: (t.sequence, t.id))
+        return sorted(taxes, key=lambda t: (t.sequence, t.id), reverse=reverse)
 
     @classmethod
     def compute(cls, taxes, price_unit, quantity, date=None):
@@ -814,6 +850,18 @@ class Tax(ModelSQL, ModelView):
             row['base'] *= quantity
             row['amount'] *= quantity
         return res
+
+    @classmethod
+    def reverse_compute(cls, price_unit, taxes, date=None):
+        '''
+        Reverse compute the price_unit for taxes at the date.
+        '''
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
+        taxes = cls.sort_taxes(taxes, reverse=True)
+        return cls._reverse_unit_compute(price_unit, taxes, date)
 
     def update_tax(self, template2tax_code, template2account,
             template2tax=None):
