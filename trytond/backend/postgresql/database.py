@@ -192,7 +192,7 @@ class Database(DatabaseInterface):
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
         uri = parse_uri(config.get('database', 'uri'))
-        db_user = uri.username
+        db_user = uri.username or os.environment.get('PGUSER')
         if not db_user and os.name == 'posix':
             db_user = pwd.getpwuid(os.getuid())[0]
         if db_user:
