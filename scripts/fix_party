@@ -1,0 +1,109 @@
+#!/usr/bin/env python
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+import sys
+from argparse import ArgumentParser
+
+from proteus import Model, config
+
+from trytond.pool import Pool
+from trytond.transaction import Transaction
+
+
+def allow_modify_party(database):
+    with Transaction().start(database, 'admin'):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        Line._check_modify_exclude.add('party')
+        try:
+            Line._reconciliation_modify_disallow.remove('party')
+        except KeyError:
+            pass
+
+
+def get_modules():
+    Module = Model.get('ir.module.module')
+    modules = Module.find([
+            ('state', '=', 'installed'),
+            ])
+    return [m.name for m in modules]
+
+
+def get_empty_party():
+    Line = Model.get('account.move.line')
+    return Line.find([
+            ('party', '=', None),
+            ('account.party_required', '=', True),
+            ])
+
+
+def get_party(line, modules):
+    for module, getter in MODULES_PARTY.items():
+        if module not in modules:
+            continue
+        party = getter(line)
+        if party:
+            return party
+
+
+def get_party_account_invoice(line):
+    Invoice = Model.get('account.invoice')
+
+    if isinstance(line.origin, Invoice):
+        return line.origin.party
+
+
+def get_party_account_statement(line):
+    Statement = Model.get('account.statement')
+
+    if isinstance(line.origin, Statement):
+        for statement_line in line.origin.lines:
+            if statement_line.move == line.move:
+                return statement_line.party
+
+MODULES_PARTY = {
+    'account_invoice': get_party_account_invoice,
+    'account_statement': get_party_account_statement,
+    }
+
+
+def get_set_party():
+    Line = Model.get('account.move.line')
+    return Line.find([
+            ('party', '!=', None),
+            ('account.party_required', '=', False),
+            ])
+
+
+def main(database, config_file=None):
+    config.set_trytond(database, config_file=config_file)
+
+    allow_modify_party(database)
+
+    modules = get_modules()
+
+    Line = Model.get('account.move.line')
+
+    lines = get_empty_party()
+    for line in lines:
+        line.party = get_party(line, modules)
+        if not line.party:
+            print >> sys.stderr, 'Can not fix line: %s' % line.rec_name
+    Line.save(lines)
+
+    lines = get_set_party()
+    for line in lines:
+        line.party = None
+    Line.save(lines)
+
+
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('-d', '--database', dest='database')
+    parser.add_argument('-c', '--config', dest='config_file',
+        help='the trytond config file')
+
+    args = parser.parse_args()
+    if not args.database:
+        parser.error('Missing database')
+    main(args.database, args.config_file)
