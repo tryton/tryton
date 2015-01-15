@@ -172,7 +172,7 @@ class Database(DatabaseInterface):
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
-        db_user = CONFIG['db_user']
+        db_user = CONFIG['db_user'] or os.environ.get('PGUSER')
         if not db_user and os.name == 'posix':
             db_user = pwd.getpwuid(os.getuid())[0]
         if not db_user:
