@@ -53,6 +53,10 @@ class Period(Workflow, ModelSQL, ModelView):
                 })
 
     @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
+    @staticmethod
     def default_state():
         return 'draft'
 
