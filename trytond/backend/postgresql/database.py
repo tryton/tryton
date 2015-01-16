@@ -117,7 +117,7 @@ class Database(DatabaseInterface):
         if uri.hostname:
             cmd.append('--host=' + uri.hostname)
         if uri.port:
-            cmd.append('--port=' + uri.port)
+            cmd.append('--port=' + str(uri.port))
         if uri.password:
             # if db_password is set in configuration we should pass
             # an environment variable PGPASSWORD to our subprocess
@@ -151,7 +151,7 @@ class Database(DatabaseInterface):
         if uri.hostname:
             cmd.append('--host=' + uri.hostname)
         if uri.port:
-            cmd.append('--port=' + uri.port)
+            cmd.append('--port=' + str(uri.port))
         if uri.password:
             env['PGPASSWORD'] = uri.password
         cmd.append('--dbname=' + database_name)

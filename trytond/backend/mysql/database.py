@@ -131,7 +131,7 @@ class Database(DatabaseInterface):
         if uri.hostname:
             cmd.append('--host=' + uri.hostname)
         if uri.port:
-            cmd.append('--port=' + uri.port)
+            cmd.append('--port=' + str(uri.port))
         if uri.password:
             cmd.append('--password=' + uri.password)
         cmd.append(database_name)
@@ -161,7 +161,7 @@ class Database(DatabaseInterface):
         if uri.hostname:
             cmd.append('--host=' + uri.hostname)
         if uri.port:
-            cmd.append('--port=' + uri.port)
+            cmd.append('--port=' + str(uri.port))
         if uri.password:
             cmd.append('--password=' + uri.password)
         cmd.append(database_name)
