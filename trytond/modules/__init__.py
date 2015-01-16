@@ -222,7 +222,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
             if package_state not in ('to install', 'to upgrade'):
                 if package_state == 'installed':
                     package_state = 'to upgrade'
-                else:
+                elif package_state != 'to remove':
                     package_state = 'to install'
             for child in package.childs:
                 module2state[child.name] = package_state
@@ -258,6 +258,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 Translation = pool.get('ir.translation')
                 Translation.translation_import(lang2, module, filename)
 
+            if package_state == 'to remove':
+                continue
             cursor.execute(*ir_module.select(ir_module.id,
                     where=(ir_module.name == package.name)))
             try:
