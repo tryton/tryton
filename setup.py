@@ -32,6 +32,10 @@ if minor_version % 2:
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
         name, name, version)
 
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with trytond
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -66,6 +70,7 @@ setup(name=name,
         'simplejson': ['simplejson'],
         'cdecimal': ['cdecimal'],
         },
+    dependency_links=dependency_links,
     zip_safe=True,
     test_suite='proteus.tests',
     tests_require=[get_require_version('trytond')],
