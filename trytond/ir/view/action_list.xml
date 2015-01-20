@@ -4,4 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree string="Action">
     <field name="name"/>
     <field name="type"/>
+    <field name="active" tree_invisible="1"/>
 </tree>

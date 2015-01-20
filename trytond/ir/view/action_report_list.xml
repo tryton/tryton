@@ -6,5 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <field name="model"/>
     <field name="report_name"/>
+    <field name="active" tree_invisible="1"/>
 </tree>
 

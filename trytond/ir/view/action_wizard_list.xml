@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <field name="type"/>
     <field name="wiz_name"/>
+    <field name="active" tree_invisible="1"/>
 </tree>
