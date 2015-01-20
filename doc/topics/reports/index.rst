@@ -221,8 +221,9 @@ Passing custom data to a report
 
 TODO: Examples of overriding Report.execute.
 
-In this example `Report.parse` is overridden and an employee object is set into
-context.  Now the invoice report will be able to access the employee object.
+In this example `Report.get_context` is overridden and an employee
+object is set into context.  Now the invoice report will be able to access the
+employee object.
 
 .. highlight:: python
 
@@ -234,14 +235,18 @@ context.  Now the invoice report will be able to access the employee object.
     class InvoiceReport(Report):
         __name__ = 'account.invoice'
 
-        def parse(self, report, objects, datas, localcontext):
-            employee_obj = Pool().get('company.employee')
-            employee = False
-            if Transaction().context.get('employee'):
-                employee = employee_obj.browse(Transaction().context['employee'])
-            localcontext['employee'] = employee
-            return super(InvoiceReport, self).parse(report, objects, datas,
-                     localcontext)
+        @classmethod
+        def get_context(cls, records, data):
+            pool = Pool()
+            Employee = pool.get('company.employee')
+
+            context = super(InvoiceReport, cls).get_context(records, data)
+            employee_id = Transaction().context.get('employee')
+            employee = Employee(employee_id) if employee_id else None
+            context['employee'] = employee
+
+            return context
+
     Pool.register(InvoiceReport, type_='report')
 
 
