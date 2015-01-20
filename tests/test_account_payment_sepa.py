@@ -404,6 +404,24 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         'Test camt.054.001.04 handling'
         self.handle_camt054('camt.054.001.04')
 
+    def test_sepa_mandate_report(self):
+        'Test sepa mandate report'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Report = pool.get('account.payment.sepa.mandate', type='report')
+
+            environment = setup_environment()
+            company = environment['company']
+            bank = environment['bank']
+            customer = environment['customer']
+            company_account, customer_account = setup_accounts(
+                bank, company, customer)
+            mandate = setup_mandate(company, customer, customer_account)
+
+            oext, content, _, _ = Report.execute([mandate.id], {})
+            self.assertEqual(oext, 'odt')
+            self.assertTrue(content)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
