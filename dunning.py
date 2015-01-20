@@ -45,7 +45,9 @@ class Letter(CompanyReport):
     __name__ = 'account.dunning.letter'
 
     @classmethod
-    def parse(cls, report, records, data, localcontext):
+    def get_context(cls, records, data):
+        report_context = super(Letter, cls).get_context(records, data)
+
         pool = Pool()
         Date = pool.get('ir.date')
 
@@ -72,11 +74,11 @@ class Letter(CompanyReport):
                 continue
             letters[party] = PartyLetter(dunnings=current_dunnings,
                 payments=current_payments)
-        localcontext['letters'] = letters
-        localcontext['today'] = Date.today()
-        localcontext['get_payment_amount'] = cls.get_payment_amount
-        localcontext['get_payment_currency'] = cls.get_payment_currency
-        return super(Letter, cls).parse(report, records, data, localcontext)
+        report_context['letters'] = letters
+        report_context['today'] = Date.today()
+        report_context['get_payment_amount'] = cls.get_payment_amount
+        report_context['get_payment_currency'] = cls.get_payment_currency
+        return report_context
 
     @staticmethod
     def get_party_letter():
