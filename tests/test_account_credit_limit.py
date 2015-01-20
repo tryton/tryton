@@ -1,6 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import unittest
+import doctest
+
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import install_module, test_view, test_depends
@@ -84,7 +86,7 @@ def suite():
     suite = trytond.tests.test_tryton.suite()
     from trytond.modules.account.tests import test_account
     for test in test_account.suite():
-        if test not in suite:
+        if test not in suite and not isinstance(test, doctest.DocTestCase):
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountCreditLimitTestCase))
