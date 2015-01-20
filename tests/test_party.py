@@ -94,6 +94,15 @@ class PartyTestCase(unittest.TestCase):
                         }])
             self.assert_(address.id)
 
+    def test0060party_label_report(self):
+        'Test party label report'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            party1, = self.party.search([], limit=1)
+            report = POOL.get('party.label', type='report')
+            oext, content, _, _ = report.execute([party1.id], {})
+            self.assertEqual(oext, 'odt')
+            self.assertTrue(content)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
