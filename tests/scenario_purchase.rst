@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from operator import attrgetter
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import config, Model, Wizard, Report
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -312,6 +312,15 @@ Check second invoices::
     2
     >>> sum(l.quantity for i in purchase.invoices for l in i.lines)
     5.0
+
+Create the report::
+
+    >>> purchase_report = Report('purchase.purchase')
+    >>> ext, _, _, name = purchase_report.execute([purchase], {})
+    >>> ext
+    u'odt'
+    >>> name
+    u'Purchase'
 
 Create a Return::
 
