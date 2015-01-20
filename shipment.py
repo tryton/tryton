@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import operator
 import itertools
+import functools
 import datetime
 from sql import Table
 from sql.functions import Overlay, Position
@@ -2106,11 +2107,11 @@ class DeliveryNote(CompanyReport):
     __name__ = 'stock.shipment.out.delivery_note'
 
     @classmethod
-    def parse(cls, report, objects, data, localcontext):
-        localcontext['product_name'] = lambda product_id, language: \
+    def get_context(cls, records, data):
+        report_context = super(DeliveryNote, cls).get_context(records, data)
+        report_context['product_name'] = lambda product_id, language: \
             cls.product_name(product_id, language)
-        return super(DeliveryNote, cls).parse(report, objects, data,
-                localcontext)
+        return report_context
 
     @classmethod
     def product_name(cls, product_id, language):
@@ -2119,189 +2120,61 @@ class DeliveryNote(CompanyReport):
             return Product(product_id).rec_name
 
 
-class PickingList(CompanyReport):
+class ShipmentReport(CompanyReport):
+    move_attribute = 'inventory_moves'
+
+    @classmethod
+    def get_context(cls, records, data):
+        report_context = super(ShipmentReport, cls).get_context(records, data)
+
+        compare_context = cls.get_compare_context(records, data)
+        sorted_moves = {}
+        for shipment in records:
+            sorted_moves[shipment.id] = sorted(
+                getattr(shipment, cls.move_attribute),
+                key=functools.partial(cls.get_compare_key, compare_context))
+        report_context['moves'] = sorted_moves
+
+        return report_context
+
+    @classmethod
+    def get_compare_context(cls, objects, data):
+        from_location_ids = set()
+        to_location_ids = set()
+        for obj in objects:
+            for move in getattr(obj, cls.move_attribute):
+                from_location_ids.add(move.from_location.id)
+                to_location_ids.add(move.to_location.id)
+
+        return {
+            'from_location_ids': list(from_location_ids),
+            'to_location_ids': list(to_location_ids),
+            }
+
+    @staticmethod
+    def get_compare_key(compare_context, move):
+        from_location_ids = compare_context['from_location_ids']
+        to_location_ids = compare_context['to_location_ids']
+        return [from_location_ids.index(move.from_location.id),
+                to_location_ids.index(move.to_location.id)]
+
+
+class PickingList(ShipmentReport):
     'Picking List'
     __name__ = 'stock.shipment.out.picking_list'
 
-    @classmethod
-    def parse(cls, report, objects, data, localcontext):
-        compare_context = cls.get_compare_context(report, objects, data)
 
-        sorted_moves = {}
-        for shipment in objects:
-            sorted_moves[shipment.id] = sorted(
-                shipment.inventory_moves,
-                lambda x, y: cmp(cls.get_compare_key(x, compare_context),
-                    cls.get_compare_key(y, compare_context))
-                )
-
-        localcontext['moves'] = sorted_moves
-
-        return super(PickingList, cls).parse(report, objects, data,
-            localcontext)
-
-    @staticmethod
-    def get_compare_context(report, objects, data):
-        Location = Pool().get('stock.location')
-        from_location_ids = set()
-        to_location_ids = set()
-        for obj in objects:
-            for move in obj.inventory_moves:
-                from_location_ids.add(move.from_location.id)
-                to_location_ids.add(move.to_location.id)
-
-        from_locations = Location.browse(list(from_location_ids))
-        to_locations = Location.browse(list(to_location_ids))
-
-        return {
-            'from_location_ids': [l.id for l in from_locations],
-            'to_location_ids': [l.id for l in to_locations],
-            }
-
-    @staticmethod
-    def get_compare_key(move, compare_context):
-        from_location_ids = compare_context['from_location_ids']
-        to_location_ids = compare_context['to_location_ids']
-        return [from_location_ids.index(move.from_location.id),
-                to_location_ids.index(move.to_location.id)]
-
-
-class SupplierRestockingList(CompanyReport):
+class SupplierRestockingList(ShipmentReport):
     'Supplier Restocking List'
     __name__ = 'stock.shipment.in.restocking_list'
 
-    @classmethod
-    def parse(cls, report, objects, data, localcontext):
-        compare_context = cls.get_compare_context(report, objects, data)
 
-        sorted_moves = {}
-        for shipment in objects:
-            sorted_moves[shipment.id] = sorted(
-                shipment.inventory_moves,
-                lambda x, y: cmp(cls.get_compare_key(x, compare_context),
-                    cls.get_compare_key(y, compare_context))
-                )
-
-        localcontext['moves'] = sorted_moves
-
-        return super(SupplierRestockingList, cls).parse(report, objects,
-                data, localcontext)
-
-    @staticmethod
-    def get_compare_context(report, objects, data):
-        Location = Pool().get('stock.location')
-        from_location_ids = set()
-        to_location_ids = set()
-        for obj in objects:
-            for move in obj.inventory_moves:
-                from_location_ids.add(move.from_location.id)
-                to_location_ids.add(move.to_location.id)
-
-        from_locations = Location.browse(list(from_location_ids))
-        to_locations = Location.browse(list(to_location_ids))
-
-        return {
-            'from_location_ids': [l.id for l in from_locations],
-            'to_location_ids': [l.id for l in to_locations],
-            }
-
-    @staticmethod
-    def get_compare_key(move, compare_context):
-        from_location_ids = compare_context['from_location_ids']
-        to_location_ids = compare_context['to_location_ids']
-        return [from_location_ids.index(move.from_location.id),
-                to_location_ids.index(move.to_location.id)]
-
-
-class CustomerReturnRestockingList(CompanyReport):
+class CustomerReturnRestockingList(ShipmentReport):
     'Customer Return Restocking List'
     __name__ = 'stock.shipment.out.return.restocking_list'
 
-    @classmethod
-    def parse(cls, report, objects, data, localcontext):
-        compare_context = cls.get_compare_context(report, objects, data)
 
-        sorted_moves = {}
-        for shipment in objects:
-            sorted_moves[shipment.id] = sorted(
-                shipment.inventory_moves,
-                lambda x, y: cmp(cls.get_compare_key(x, compare_context),
-                    cls.get_compare_key(y, compare_context))
-                )
-
-        localcontext['moves'] = sorted_moves
-
-        return super(CustomerReturnRestockingList, cls).parse(report,
-                objects, data, localcontext)
-
-    @staticmethod
-    def get_compare_context(report, objects, data):
-        Location = Pool().get('stock.location')
-        from_location_ids = set()
-        to_location_ids = set()
-        for obj in objects:
-            for move in obj.inventory_moves:
-                from_location_ids.add(move.from_location.id)
-                to_location_ids.add(move.to_location.id)
-
-        from_locations = Location.browse(list(from_location_ids))
-        to_locations = Location.browse(list(to_location_ids))
-
-        return {
-            'from_location_ids': [l.id for l in from_locations],
-            'to_location_ids': [l.id for l in to_locations],
-            }
-
-    @staticmethod
-    def get_compare_key(move, compare_context):
-        from_location_ids = compare_context['from_location_ids']
-        to_location_ids = compare_context['to_location_ids']
-        return [from_location_ids.index(move.from_location.id),
-                to_location_ids.index(move.to_location.id)]
-
-
-class InteralShipmentReport(CompanyReport):
+class InteralShipmentReport(ShipmentReport):
     'Interal Shipment Report'
     __name__ = 'stock.shipment.internal.report'
-
-    @classmethod
-    def parse(cls, report, objects, data, localcontext=None):
-        compare_context = cls.get_compare_context(report, objects, data)
-
-        sorted_moves = {}
-        for shipment in objects:
-            sorted_moves[shipment.id] = sorted(
-                shipment.moves,
-                lambda x, y: cmp(cls.get_compare_key(x, compare_context),
-                    cls.get_compare_key(y, compare_context))
-                )
-
-        localcontext['moves'] = sorted_moves
-
-        return super(InteralShipmentReport, cls).parse(report, objects,
-            data, localcontext)
-
-    @staticmethod
-    def get_compare_context(report, objects, data):
-        Location = Pool().get('stock.location')
-        from_location_ids = set()
-        to_location_ids = set()
-        for obj in objects:
-            for move in obj.moves:
-                from_location_ids.add(move.from_location.id)
-                to_location_ids.add(move.to_location.id)
-
-        from_locations = Location.browse(list(from_location_ids))
-        to_locations = Location.browse(list(to_location_ids))
-
-        return {
-            'from_location_ids': [l.id for l in from_locations],
-            'to_location_ids': [l.id for l in to_locations],
-            }
-
-    @staticmethod
-    def get_compare_key(move, compare_context):
-        from_location_ids = compare_context['from_location_ids']
-        to_location_ids = compare_context['to_location_ids']
-        return [from_location_ids.index(move.from_location.id),
-                to_location_ids.index(move.to_location.id)]
+    move_attribute = 'moves'
