@@ -353,11 +353,10 @@ class CompanyConfig(Wizard):
 class CompanyReport(Report):
 
     @classmethod
-    def parse(cls, report, records, data, localcontext):
-        user = Pool().get('res.user')(Transaction().user)
-        localcontext['company'] = user.company
-        return super(CompanyReport, cls).parse(report, records, data,
-            localcontext)
+    def get_context(cls, records, data):
+        report_context = super(CompanyReport, cls).get_context(records, data)
+        report_context['company'] = report_context['user'].company
+        return report_context
 
 
 class LetterReport(CompanyReport):

@@ -40,6 +40,7 @@ class CompanyTestCase(unittest.TestCase):
 
             party1, = self.party.create([{
                         'name': 'Dunder Mifflin',
+                        'addresses': [('create', [{}])],
                         }])
             company1, = self.company.create([{
                         'party': party1.id,
