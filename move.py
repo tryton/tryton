@@ -2023,15 +2023,16 @@ class GeneralJournal(Report):
                 order=[('date', 'ASC'), ('id', 'ASC')])
 
     @classmethod
-    def parse(cls, report, moves, data, localcontext):
+    def get_context(cls, records, data):
+        report_context = super(GeneralJournal, cls).get_context(records, data)
+
         Company = Pool().get('company.company')
 
         company = Company(data['company'])
 
-        localcontext['company'] = company
-        localcontext['digits'] = company.currency.digits
-        localcontext['from_date'] = data['from_date']
-        localcontext['to_date'] = data['to_date']
+        report_context['company'] = company
+        report_context['digits'] = company.currency.digits
+        report_context['from_date'] = data['from_date']
+        report_context['to_date'] = data['to_date']
 
-        return super(GeneralJournal, cls).parse(report, moves, data,
-            localcontext)
+        return report_context
