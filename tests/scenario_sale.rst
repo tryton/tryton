@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from operator import attrgetter
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import config, Model, Wizard, Report
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -237,6 +237,15 @@ Post invoice and check no new invoices::
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
+
+Testing the report::
+
+    >>> sale_report = Report('sale.sale')
+    >>> ext, _, _, name = sale_report.execute([sale], {})
+    >>> ext
+    u'odt'
+    >>> name
+    u'Sale'
 
 Sale 5 products with an invoice method 'on shipment'::
 
