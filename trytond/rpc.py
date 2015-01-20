@@ -35,8 +35,8 @@ class RPC(object):
         for key in context.keys():
             if key == '_timestamp':
                 timestamp = context[key]
-            # Remove all private keyword
-            if key.startswith('_'):
+            # Remove all private keyword but _datetime for history
+            if key.startswith('_') and key != '_datetime':
                 del context[key]
         if self.check_access:
             context['_check_access'] = True
