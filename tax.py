@@ -801,7 +801,7 @@ class Tax(ModelSQL, ModelView):
                 if rate is None:
                     rate = tax.rate
                 else:
-                    rate *= tax.rate
+                    rate += tax.rate
             elif tax.type == 'fixed':
                 amount += tax.amount
 
@@ -811,7 +811,7 @@ class Tax(ModelSQL, ModelView):
                 if rate is None:
                     rate = child_rate
                 else:
-                    rate *= child_rate
+                    rate += child_rate
                 amount += child_amount
         return rate, amount
 

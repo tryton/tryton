@@ -460,6 +460,53 @@ class AccountTestCase(unittest.TestCase):
                     today + relativedelta(days=6)),
                 Decimal('100'))
 
+            ecotax1 = self.tax()
+            ecotax1.name = ecotax1.description = 'EcoTax 1'
+            ecotax1.type = 'fixed'
+            ecotax1.amount = Decimal(5)
+            ecotax1.invoice_account = tax_account
+            ecotax1.credit_note_account = tax_account
+            ecotax1.update_unit_price = True
+            ecotax1.sequence = 10
+            ecotax1.save()
+
+            vat0 = self.tax()
+            vat0.name = vat0.description = 'VAT0'
+            vat0.type = 'percentage'
+            vat0.rate = Decimal('0.1')
+            vat0.invoice_account = tax_account
+            vat0.credit_note_account = tax_account
+            vat0.sequence = 5
+            vat0.save()
+
+            vat1 = self.tax()
+            vat1.name = vat1.description = 'VAT1'
+            vat1.type = 'percentage'
+            vat1.rate = Decimal('0.2')
+            vat1.invoice_account = tax_account
+            vat1.credit_note_account = tax_account
+            vat1.sequence = 20
+            vat1.save()
+
+            self.assertEqual(
+                self.tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
+                [{
+                        'base': Decimal(100),
+                        'amount': Decimal(10),
+                        'tax': vat0,
+                        }, {
+                        'base': Decimal(100),
+                        'amount': Decimal(5),
+                        'tax': ecotax1,
+                        }, {
+                        'base': Decimal(100),
+                        'amount': Decimal(20),
+                        'tax': vat1,
+                        }])
+            self.assertEqual(
+                self.tax.reverse_compute(Decimal(135), [vat0, ecotax1, vat1]),
+                Decimal(100))
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
