@@ -2282,31 +2282,35 @@ class InvoiceReport(Report):
             return super(InvoiceReport, cls)._get_records(ids[:1], model, data)
 
     @classmethod
-    def parse(cls, report, records, data, localcontext):
-        pool = Pool()
-        User = pool.get('res.user')
-        Invoice = pool.get('account.invoice')
+    def get_context(cls, records, data):
+        report_context = super(InvoiceReport, cls).get_context(records, data)
 
         invoice = records[0]
-
         if invoice.invoice_report_cache:
             return (invoice.invoice_report_format,
                 invoice.invoice_report_cache)
 
-        user = User(Transaction().user)
-        localcontext['company'] = user.company
-        res = super(InvoiceReport, cls).parse(report, records, data,
-                localcontext)
+        report_context['company'] = report_context['user'].company
+        return report_context
+
+    @classmethod
+    def generate(cls, report, report_context):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+
+        oext, data = super(InvoiceReport, cls).generate(report, report_context)
+
+        invoice = report_context['records'][0]
         # If the invoice is posted or paid and the report not saved in
         # invoice_report_cache there was an error somewhere. So we save it now
         # in invoice_report_cache
         if (invoice.state in ('posted', 'paid')
                 and invoice.type in ('out_invoice', 'out_credit_note')):
             Invoice.write([Invoice(invoice.id)], {
-                'invoice_report_format': res[0],
-                'invoice_report_cache': buffer(res[1]),
+                'invoice_report_format': oext,
+                'invoice_report_cache': buffer(data),
                 })
-        return res
+        return oext, data
 
 
 class PayInvoiceStart(ModelView):
