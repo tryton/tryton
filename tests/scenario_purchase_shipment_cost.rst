@@ -138,3 +138,28 @@ Receive many product lines::
     >>> [move.unit_price for move in shipment.incoming_moves] == \
     ...     [Decimal('8.3333'), Decimal('8.3333'), Decimal('8.3334')]
     True
+
+Receive a two lines with no cost::
+
+    >>> shipment = ShipmentIn()
+    >>> shipment.supplier = supplier
+    >>> move = shipment.incoming_moves.new()
+    >>> move.from_location = supplier_location
+    >>> move.to_location = shipment.warehouse.input_location
+    >>> move.product = product
+    >>> move.quantity = 75
+    >>> move.unit_price = Decimal('0.0')
+    >>> move = shipment.incoming_moves.new()
+    >>> move.from_location = supplier_location
+    >>> move.to_location = shipment.warehouse.input_location
+    >>> move.product = product
+    >>> move.quantity = 25
+    >>> move.unit_price = Decimal('0.0')
+    >>> shipment.carrier = carrier
+    >>> shipment.cost
+    Decimal('3')
+    >>> shipment.click('receive')
+    >>> shipment.state
+    u'received'
+    >>> tuple(m.unit_price for m in shipment.incoming_moves)
+    (Decimal('0.0600'), Decimal('0.0200'))
