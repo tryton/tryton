@@ -398,15 +398,16 @@ class ModelView(Model):
 
         # Remove field without read access
         for field in fields_to_remove:
-            for element in tree.xpath(
-                    '//field[@name="%s"] | //label[@name="%s"]'
-                    % (field, field)):
-                if type == 'form':
-                    element.tag = 'label'
-                    element.attrib.clear()
-                elif type == 'tree':
+            xpath = ('//field[@name="%(field)s"] | //label[@name="%(field)s"]'
+                ' | //page[@name="%(field)s"] | //group[@name="%(field)s"]'
+                ' | //separator[@name="%(field)s"]') % {'field': field}
+            for element in tree.xpath(xpath):
+                if type == 'tree' or element.tag == 'page':
                     parent = element.getparent()
                     parent.remove(element)
+                elif type == 'form':
+                    element.tag = 'label'
+                    element.attrib.clear()
 
         if type == 'tree':
             ViewTreeWidth = pool.get('ir.ui.view_tree_width')
