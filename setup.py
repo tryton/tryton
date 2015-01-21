@@ -31,6 +31,12 @@ requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
 tests_require = ['proteus >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_sale_supply_drop_shipment >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_sale >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_purchase >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1)]
 
 setup(name='trytond_account_stock_anglo_saxon',
