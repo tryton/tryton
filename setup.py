@@ -51,6 +51,10 @@ tests_require = [get_require_version('proteus')]
 for dep in ['sale', 'purchase', 'account_invoice',
         'sale_supply_drop_shipment']:
     tests_require.append(get_require_version('trytond_%s' % dep))
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -95,6 +99,7 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
