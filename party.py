@@ -10,6 +10,7 @@ from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Party']
 __metaclass__ = PoolMeta
@@ -67,7 +68,7 @@ class Party:
         '''
         Function to compute receivable, payable (today or not) for party ids.
         '''
-        res = {}
+        result = {}
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
@@ -82,40 +83,44 @@ class Party:
             if name not in ('receivable', 'payable',
                     'receivable_today', 'payable_today'):
                 raise Exception('Bad argument')
-            res[name] = dict((p.id, Decimal('0.0')) for p in parties)
+            result[name] = dict((p.id, Decimal('0.0')) for p in parties)
 
         user = User(Transaction().user)
         if not user.company:
-            return res
+            return result
         company_id = user.company.id
 
         line_query, _ = MoveLine.query_get(line)
 
+        amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
         for name in names:
             code = name
-            today_query = Literal(True)
+            today_where = Literal(True)
             if name in ('receivable_today', 'payable_today'):
                 code = name[:-6]
-                today_query = ((line.maturity_date <= Date.today())
+                today_where = ((line.maturity_date <= Date.today())
                     | (line.maturity_date == Null))
-
-            cursor.execute(*line.join(account,
-                    condition=account.id == line.account
-                    ).select(line.party,
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                    where=account.active
-                    & (account.kind == code)
-                    & line.party.in_([p.id for p in parties])
-                    & (line.reconciliation == Null)
-                    & (account.company == company_id)
-                    & line_query & today_query,
-                    group_by=line.party))
-            for party_id, sum in cursor.fetchall():
-                # SQLite uses float for SUM
-                if not isinstance(sum, Decimal):
-                    sum = Decimal(str(sum))
-                res[name][party_id] = sum
-        return res
+            for sub_parties in grouped_slice(parties):
+                sub_ids = [p.id for p in sub_parties]
+                party_where = reduce_ids(line.party, sub_ids)
+                cursor.execute(*line.join(account,
+                        condition=account.id == line.account
+                        ).select(line.party, amount,
+                        where=(account.active
+                            & (account.kind == code)
+                            & (line.reconciliation == Null)
+                            & (account.company == company_id)
+                            & line_query
+                            & party_where
+                            & today_where
+                            & (account.kind == code)),
+                        group_by=line.party))
+                for party, value in cursor.fetchall():
+                    # SQLite uses float for SUM
+                    if not isinstance(value, Decimal):
+                        value = Decimal(str(value))
+                    result[name][party] = value
+        return result
 
     @classmethod
     def search_receivable_payable(cls, name, clause):

@@ -5,6 +5,7 @@ import doctest
 import datetime
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
+from trytond.pool import Pool
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
@@ -506,6 +507,73 @@ class AccountTestCase(unittest.TestCase):
             self.assertEqual(
                 self.tax.reverse_compute(Decimal(135), [vat0, ecotax1, vat1]),
                 Decimal(100))
+
+    def test0050_receivable_payable(self):
+        'Test party receivable payable'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Party = pool.get('party.party')
+            fiscalyear, = self.fiscalyear.search([])
+            period = fiscalyear.periods[0]
+            journal_revenue, = self.journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            journal_expense, = self.journal.search([
+                    ('code', '=', 'EXP'),
+                    ])
+            revenue, = self.account.search([
+                    ('kind', '=', 'revenue'),
+                    ])
+            receivable, = self.account.search([
+                    ('kind', '=', 'receivable'),
+                    ])
+            expense, = self.account.search([
+                    ('kind', '=', 'expense'),
+                    ])
+            payable, = self.account.search([
+                    ('kind', '=', 'payable'),
+                    ])
+            party, = Party.create([{
+                        'name': 'Receivable/Payable party',
+                        }])
+            tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
+            def get_move(journal, amount, credit_account, debit_account, party,
+                    maturity_date=None):
+                return {
+                    'period': period.id,
+                    'journal': journal.id,
+                    'date': period.start_date,
+                    'lines': [
+                        ('create', [{
+                                    'account': credit_account.id,
+                                    'credit': amount,
+                                    }, {
+                                    'account': debit_account.id,
+                                    'debit': amount,
+                                    'party': party.id,
+                                    'maturity_date': maturity_date,
+                                    }]),
+                        ],
+                    }
+            vlist = [
+                get_move(journal_revenue, Decimal(100), revenue, receivable,
+                    party),
+                get_move(journal_expense, Decimal(30), expense, payable,
+                    party),
+                get_move(journal_revenue, Decimal(200), revenue, receivable,
+                    party, tomorrow),
+                get_move(journal_revenue, Decimal(60), expense, payable,
+                    party, tomorrow),
+                ]
+            moves = self.move.create(vlist)
+            self.move.post(moves)
+
+            party = Party(party.id)
+            self.assertEqual(party.receivable, Decimal('300'))
+            self.assertEqual(party.receivable_today, Decimal('100'))
+            self.assertEqual(party.payable, Decimal('90'))
+            self.assertEqual(party.payable_today, Decimal('30'))
 
 
 def suite():
