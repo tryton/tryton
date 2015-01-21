@@ -30,7 +30,47 @@
   <define name="attlist.field" combine="interleave">
     <attribute name="name"/>
   </define>
+  <define name="data">
+    <element name="data">
+      <ref name="attlist.data"/>
+      <zeroOrMore>
+        <ref name="xpath"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <empty/>
+  </define>
+  <define name="xpath">
+    <element name="xpath">
+      <ref name="attlist.xpath"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="field"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <attribute name="expr"/>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <optional>
+      <attribute name="position" a:defaultValue="inside">
+        <choice>
+          <value>inside</value>
+          <value>replace</value>
+          <value>replace_attributes</value>
+          <value>after</value>
+          <value>before</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <start>
-    <ref name="calendar"/>
+    <choice>
+      <ref name="data"/>
+      <ref name="calendar"/>
+    </choice>
   </start>
 </grammar>
