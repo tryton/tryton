@@ -231,12 +231,11 @@ class FiscalYear(ModelSQL, ModelView):
                 return None
         return fiscalyears[0].id
 
-    def _process_account(self, account):
-        '''
-        Process account for a fiscal year closed
-        '''
-        Currency = Pool().get('currency.currency')
-        Deferral = Pool().get('account.account.deferral')
+    def get_deferral(self, account):
+        'Computes deferrals for accounts'
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Deferral = pool.get('account.account.deferral')
 
         if account.kind == 'view':
             return
@@ -245,12 +244,12 @@ class FiscalYear(ModelSQL, ModelView):
                 self.raise_user_error('account_balance_not_zero',
                         error_args=(account.rec_name,))
         else:
-            Deferral.create([{
-                        'account': account.id,
-                        'fiscalyear': self.id,
-                        'debit': account.debit,
-                        'credit': account.credit,
-                        }])
+            deferral = Deferral()
+            deferral.account = account
+            deferral.fiscalyear = self
+            deferral.debit = account.debit
+            deferral.credit = account.credit
+            return deferral
 
     @classmethod
     @ModelView.button
@@ -261,7 +260,9 @@ class FiscalYear(ModelSQL, ModelView):
         pool = Pool()
         Period = pool.get('account.period')
         Account = pool.get('account.account')
+        Deferral = pool.get('account.account.deferral')
 
+        deferrals = []
         for fiscalyear in fiscalyears:
             if cls.search([
                         ('end_date', '<=', fiscalyear.start_date),
@@ -285,8 +286,9 @@ class FiscalYear(ModelSQL, ModelView):
                 accounts = Account.search([
                         ('company', '=', fiscalyear.company.id),
                         ])
-            for account in accounts:
-                fiscalyear._process_account(account)
+                deferrals += filter(None, (fiscalyear.get_deferral(a)
+                        for a in accounts))
+        Deferral.save(deferrals)
 
     @classmethod
     @ModelView.button
