@@ -101,7 +101,10 @@ class ShipmentIn:
         difference = cost
         for move in moves:
             quantity = Decimal(str(move.quantity))
-            move_cost = cost * quantity * unit_prices[move.id] / sum_value
+            if not sum_value:
+                move_cost = cost / Decimal(len(moves))
+            else:
+                move_cost = cost * quantity * unit_prices[move.id] / sum_value
             unit_shipment_cost = (move_cost / quantity).quantize(exp,
                 rounding=ROUND_DOWN)
             costs.append({
