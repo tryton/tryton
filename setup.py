@@ -30,11 +30,11 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1))
 
-tests_require = ['proteus >= %s.%s, < %s.%' %
+tests_require = ['proteus >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1),
-    'trytond_purchase_shipment_cost >= %s.%s, < %s.%' %
+    'trytond_purchase_shipment_cost >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1),
-    'trytond_sale_shipment_cost >= %s.%s, < %s.%' %
+    'trytond_sale_shipment_cost >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1)]
 dependency_links = []
 if minor_version % 2:
