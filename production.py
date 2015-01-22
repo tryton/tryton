@@ -212,13 +212,33 @@ class CreateProductionRequest(Wizard):
             ])
     create_ = StateAction('stock_supply_production.act_production_request')
 
+    @classmethod
+    def __setup__(cls):
+        super(CreateProductionRequest, cls).__setup__()
+        cls._error_messages.update({
+                'late_productions': 'There are some late productions.',
+                })
+
     @property
     def _requests_parameters(self):
         return {}
 
     def do_create_(self, action):
         pool = Pool()
+        Date = pool.get('ir.date')
+        Move = pool.get('stock.move')
         Production = pool.get('production')
+
+        today = Date.today()
+        if Move.search([
+                    ('from_location.type', '=', 'production'),
+                    ('to_location.type', '=', 'storage'),
+                    ('state', '=', 'draft'),
+                    ('planned_date', '<', today),
+                    ], order=[]):
+            self.raise_user_warning('%s@%s' % (self.__name__, today),
+                'late_productions')
+
         Production.generate_requests(**self._requests_parameters)
         return action, {}
 
