@@ -30,6 +30,17 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1))
 
+tests_require = ['proteus >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_purchase_shipment_cost >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_sale_shipment_cost >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1)]
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
+
 setup(name='trytond_carrier_weight',
     version=info.get('version', '0.0.1'),
     description='Tryton module to add cost method "on weight" on carrier',
@@ -70,6 +81,7 @@ setup(name='trytond_carrier_weight',
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
@@ -77,4 +89,5 @@ setup(name='trytond_carrier_weight',
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )
