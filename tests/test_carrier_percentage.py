@@ -106,11 +106,11 @@ def suite():
     suite = trytond.tests.test_tryton.suite()
     from trytond.modules.product.tests import test_product
     for test in test_product.suite():
-        if test not in suite:
+        if test not in suite and not isinstance(test, doctest.DocTestCase):
             suite.addTest(test)
     from trytond.modules.currency.tests import test_currency
     for test in test_currency.suite():
-        if test not in suite:
+        if test not in suite and not isinstance(test, doctest.DocTestCase):
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             CarrierWeightTestCase))
