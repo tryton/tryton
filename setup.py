@@ -47,6 +47,14 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [get_require_version('proteus'),
+    get_require_version('trytond_purchase_shipment_cost'),
+    get_require_version('trytond_sale_shipment_cost')]
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
+
 setup(name=name,
     version=version,
     description='Tryton module to add cost method "on percentage" on carrier',
@@ -89,6 +97,7 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
@@ -96,4 +105,5 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )
