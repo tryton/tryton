@@ -6,6 +6,7 @@ from decimal import Decimal
 
 from sql import Null
 from sql.aggregate import Sum
+from itertools import groupby
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -369,6 +370,11 @@ class TaxTemplate(ModelSQL, ModelView):
         ('fixed', 'Fixed'),
         ('none', 'None'),
         ], 'Type', required=True)
+    update_unit_price = fields.Boolean('Update Unit Price',
+        states={
+            'invisible': Bool(Eval('parent')),
+            },
+        depends=['parent'])
     parent = fields.Many2One('account.tax.template', 'Parent')
     childs = fields.One2Many('account.tax.template', 'parent', 'Children')
     invoice_account = fields.Many2One('account.account.template',
@@ -397,6 +403,10 @@ class TaxTemplate(ModelSQL, ModelView):
         super(TaxTemplate, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
+        cls._error_messages.update({
+                'update_unit_price_with_parent': ('"Update Unit Price" can '
+                    'not be set on tax "%(template)s" which has a parent.'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -418,6 +428,18 @@ class TaxTemplate(ModelSQL, ModelView):
                     columns=[sql_table.rate],
                     values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
+
+    @classmethod
+    def validate(cls, tax_templates):
+        super(TaxTemplate, cls).validate(tax_templates)
+        for tax_template in tax_templates:
+            tax_template.check_update_unit_price()
+
+    def check_update_unit_price(self):
+        if self.update_unit_price and self.parent:
+            self.raise_user_error('update_unit_price_with_parent', {
+                    'template': self.rec_name,
+                    })
 
     @staticmethod
     def order_sequence(tables):
@@ -448,6 +470,10 @@ class TaxTemplate(ModelSQL, ModelView):
     def default_credit_note_tax_sign():
         return Decimal('1')
 
+    @staticmethod
+    def default_update_unit_price():
+        return False
+
     def _get_tax_value(self, tax=None):
         '''
         Set values for tax creation.
@@ -456,7 +482,7 @@ class TaxTemplate(ModelSQL, ModelView):
         for field in ('name', 'description', 'sequence', 'amount',
                 'rate', 'type', 'invoice_base_sign', 'invoice_tax_sign',
                 'credit_note_base_sign', 'credit_note_tax_sign',
-                'start_date', 'end_date'):
+                'start_date', 'end_date', 'update_unit_price'):
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
@@ -598,6 +624,13 @@ class Tax(ModelSQL, ModelView):
         ('fixed', 'Fixed'),
         ('none', 'None'),
         ], 'Type', required=True)
+    update_unit_price = fields.Boolean('Update Unit Price',
+        states={
+            'invisible': Bool(Eval('parent')),
+            },
+        depends=['parent'],
+        help=('If checked then the unit price for further tax computation will'
+            'be modified by this tax'))
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -692,6 +725,10 @@ class Tax(ModelSQL, ModelView):
     def __setup__(cls):
         super(Tax, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
+        cls._error_messages.update({
+                'update_unit_price_with_parent': ('"Update Unit Price" can '
+                    'not be set on tax "%(template)s" which has a parent.'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -713,6 +750,18 @@ class Tax(ModelSQL, ModelView):
                     columns=[sql_table.rate],
                     values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
+
+    @classmethod
+    def validate(cls, taxes):
+        super(Tax, cls).validate(taxes)
+        for tax in taxes:
+            tax.check_update_unit_price()
+
+    def check_update_unit_price(self):
+        if self.parent and self.update_unit_price:
+            self.raise_user_error('update_unit_price_with_parent', {
+                    'tax': self.rec_name,
+                    })
 
     @staticmethod
     def order_sequence(tables):
@@ -748,6 +797,10 @@ class Tax(ModelSQL, ModelView):
         return Decimal('1')
 
     @staticmethod
+    def default_update_unit_price():
+        return False
+
+    @staticmethod
     def default_company():
         return Transaction().context.get('company')
 
@@ -773,24 +826,33 @@ class Tax(ModelSQL, ModelView):
                 'tax': self,
                 }
 
+    def _group_taxes(self):
+        'Key method used to group taxes'
+        return (self.sequence,)
+
     @classmethod
     def _unit_compute(cls, taxes, price_unit, date):
         res = []
-        for tax in taxes:
-            start_date = tax.start_date or datetime.date.min
-            end_date = tax.end_date or datetime.date.max
-            if not (start_date <= date <= end_date):
-                continue
-            if tax.type != 'none':
-                res.append(tax._process_tax(price_unit))
-            if len(tax.childs):
-                res.extend(cls._unit_compute(tax.childs, price_unit, date))
+        for _, group_taxes in groupby(taxes, key=cls._group_taxes):
+            unit_price_variation = 0
+            for tax in group_taxes:
+                start_date = tax.start_date or datetime.date.min
+                end_date = tax.end_date or datetime.date.max
+                if not (start_date <= date <= end_date):
+                    continue
+                if tax.type != 'none':
+                    value = tax._process_tax(price_unit)
+                    res.append(value)
+                    if tax.update_unit_price:
+                        unit_price_variation += value['amount']
+                if len(tax.childs):
+                    res.extend(cls._unit_compute(tax.childs, price_unit, date))
+            price_unit += unit_price_variation
         return res
 
     @classmethod
     def _reverse_rate_amount(cls, taxes, date):
-        rate = None
-        amount = 0
+        rate, amount = 0, 0
         for tax in taxes:
             start_date = tax.start_date or datetime.date.min
             end_date = tax.end_date or datetime.date.max
@@ -798,30 +860,40 @@ class Tax(ModelSQL, ModelView):
                 continue
 
             if tax.type == 'percentage':
-                if rate is None:
-                    rate = tax.rate
-                else:
-                    rate += tax.rate
+                rate += tax.rate
             elif tax.type == 'fixed':
                 amount += tax.amount
 
             if tax.childs:
                 child_rate, child_amount = cls._reverse_rate_amount(
                     tax.childs, date)
-                if rate is None:
-                    rate = child_rate
-                else:
-                    rate += child_rate
+                rate += child_rate
                 amount += child_amount
         return rate, amount
 
     @classmethod
     def _reverse_unit_compute(cls, price_unit, taxes, date):
-        rate, amount = cls._reverse_rate_amount(taxes, date)
-        price_unit -= amount
-        if rate is not None:
-            price_unit = price_unit / (1 + rate)
-        return price_unit
+        rate, amount = 0, 0
+        update_unit_price = False
+        unit_price_variation_amount = 0
+        unit_price_variation_rate = 0
+        for _, group_taxes in groupby(taxes, key=cls._group_taxes):
+            group_taxes = list(group_taxes)
+            g_rate, g_amount = cls._reverse_rate_amount(group_taxes, date)
+            if update_unit_price:
+                g_amount += unit_price_variation_amount * g_rate
+                g_rate += unit_price_variation_rate * g_rate
+
+            g_update_unit_price = any(t.update_unit_price for t in group_taxes)
+            update_unit_price |= g_update_unit_price
+            if g_update_unit_price:
+                unit_price_variation_amount += g_amount
+                unit_price_variation_rate += g_rate
+
+            rate += g_rate
+            amount += g_amount
+
+        return (price_unit - amount) / (1 + rate)
 
     @classmethod
     def sort_taxes(cls, taxes, reverse=False):
@@ -860,7 +932,7 @@ class Tax(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         if date is None:
             date = Date.today()
-        taxes = cls.sort_taxes(taxes, reverse=True)
+        taxes = cls.sort_taxes(taxes)
         return cls._reverse_unit_compute(price_unit, taxes, date)
 
     def update_tax(self, template2tax_code, template2account,

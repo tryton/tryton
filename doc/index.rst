@@ -205,6 +205,8 @@ the following fields:
 - Amount: If Type is *Fixed*, defines a fix amount for the tax.
 - Percentage: If Type is *Percentage*, defines the percentage of the
   tax.
+- Update Unit Price: If checked then the unit price for further tax calculation
+  will be increased by the amount of this tax.
 - Parent, Children: Parent and children taxes
 - Company: The company for which the tax is defined.
 - Invoice Account: The account to use when creating move lines for

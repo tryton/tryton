@@ -32,6 +32,9 @@ this repository contains the full copyright notices and license terms. -->
                 </group>
             </group>
             <newline/>
+            <label name="update_unit_price"/>
+            <field name="update_unit_price"/>
+            <newline/>
             <label name="invoice_account"/>
             <field name="invoice_account"/>
             <newline/>
