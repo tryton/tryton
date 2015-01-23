@@ -9,6 +9,8 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
+import doctest
+
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
     test_depends
@@ -150,7 +152,7 @@ def suite():
     suite = trytond.tests.test_tryton.suite()
     from trytond.modules.currency.tests import test_currency
     for test in test_currency.suite():
-        if test not in suite:
+        if test not in suite and not isinstance(test, doctest.DocTestCase):
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             CompanyTestCase))
