@@ -14,6 +14,11 @@ __metaclass__ = PoolMeta
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
 
+# Old version of urlparse doesn't parse query for ldap
+# see http://bugs.python.org/issue9374
+if hasattr(urlparse, 'uses_query') and 'ldap' not in urlparse.uses_query:
+    urlparse.uses_query.append('ldap')
+
 
 def parse_ldap_url(uri):
     unquote = urlparse.unquote
