@@ -1,0 +1,11 @@
+image: python2.7
+env:
+  - PGHOST=127.0.0.1
+  - PGPORT=5432
+  - PGUSER=postgres
+script:
+  - sudo apt-get install python-dev libldap2-dev libsasl2-dev libssl-dev
+  - pip install tox
+  - tox
+services:
+  - postgres
