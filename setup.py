@@ -52,7 +52,9 @@ for dep in info.get('extras_depend', []):
     if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         extras_require[dep] = get_require_version('trytond_%s' % dep)
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'),
+    get_require_version('trytond_account_stock_continental'),
+    get_require_version('trytond_account_stock_anglo_saxon')]
 
 setup(name=name,
     version=version,
