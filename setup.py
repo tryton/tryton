@@ -38,6 +38,10 @@ for dep in info.get('extras_depend', []):
                 minor_version + 1))
 
 tests_require = ['proteus >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_account_stock_continental >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_account_stock_anglo_saxon >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1)]
 
 setup(name='trytond_purchase_shipment_cost',
