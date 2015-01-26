@@ -1303,8 +1303,15 @@ class SaleLine(ModelSQL, ModelView):
             if old_invoice_line.type != 'line':
                 continue
             if old_invoice_line.id not in skip_ids:
+                if old_invoice_line.invoice:
+                    old_invoice_type = old_invoice_line.invoice.type
+                else:
+                    old_invoice_type = old_invoice_line.invoice_type
+
+                sign = 1 if old_invoice_type == invoice_type else -1
+
                 quantity -= Uom.compute_qty(old_invoice_line.unit,
-                    old_invoice_line.quantity, self.unit)
+                    sign * old_invoice_line.quantity, self.unit)
 
         rounding = self.unit.rounding if self.unit else 0.01
         invoice_line.quantity = Uom.round(quantity, rounding)

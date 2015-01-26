@@ -1,5 +1,7 @@
 * Use TaxableMixin
 
+* Support mixed invoice type by line in invoiced quantity calculation
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 
