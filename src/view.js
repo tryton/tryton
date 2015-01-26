@@ -55,8 +55,6 @@
                 return Sao.View.Tree.Many2OneColumn;
             case 'date':
                 return Sao.View.Tree.DateColumn;
-            case 'datetime':
-                return Sao.View.Tree.DateTimeColumn;
             case 'time':
                 return Sao.View.Tree.TimeColumn;
             case 'one2many':
@@ -1040,15 +1038,20 @@
     });
 
     Sao.View.Tree.DateColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        class_: 'column-date'
-    });
-
-    Sao.View.Tree.DateTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        class_: 'column-datetime'
+        class_: 'column-date',
+        update_text: function(cell, record) {
+            var value = this.field.get_client(record);
+            var date_format = this.field.date_format(record);
+            cell.text(Sao.common.format_date(date_format, value));
+        }
     });
 
     Sao.View.Tree.TimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        class_: 'column-time'
+        class_: 'column-time',
+        update_text: function(cell, record) {
+            var value = this.field.get_client(record);
+            cell.text(Soa.common.format_time(field.time_format(record), value));
+        }
     });
 
     Sao.View.Tree.One2ManyColumn = Sao.class_(Sao.View.Tree.CharColumn, {
@@ -1743,6 +1746,8 @@
                 return Sao.View.Form.Date;
             case 'datetime':
                 return Sao.View.Form.DateTime;
+            case 'time':
+                return Sao.View.Form.Time;
             case 'integer':
             case 'biginteger':
                 return Sao.View.Form.Integer;
@@ -1936,7 +1941,12 @@
             }.bind(this));
         },
         get_format: function(record, field) {
-            return Sao.common.date_format();
+            return field.date_format(record);
+        },
+        format: function(record, field) {
+            var value = field.get_client(record);
+            var date_format = field.date_format(record);
+            return Sao.common.format_date(date_format, value);
         },
         display: function(record, field) {
             if (record && field) {
@@ -1945,11 +1955,14 @@
             }
             Sao.View.Form.Date._super.display.call(this, record, field);
             if (record) {
-                this.date.val(record.field_get_client(this.field_name));
+                this.date.val(this.format(record, field));
+            } else {
+                this.date.val('');
             }
         },
         set_value: function(record, field) {
-            field.set_client(record, this.date.val());
+            var value = Sao.common.parse_date(this.date.val());
+            field.set_client(record, value);
         }
     });
 
@@ -1963,7 +1976,7 @@
                     this.field().time_format(this.record()),
                     this._get_time());
                 this.date.datepicker('option', 'dateFormat',
-                    Sao.common.date_format() + time);
+                    this.field().date_format(this.record()) + time);
                 this.date.prop('disabled', true);
             }.bind(this));
             this.date.datepicker('option', 'onClose', function() {
@@ -1971,7 +1984,8 @@
             }.bind(this));
         },
         _get_time: function() {
-            return Sao.common.parse_datetime(Sao.common.date_format(),
+            return Sao.common.parse_datetime(
+                this.field().date_format(this.record()),
                 this.field().time_format(this.record()), this.date.val());
         },
         get_format: function(record, field) {
@@ -1981,12 +1995,44 @@
                 time = ' ' + Sao.common.format_time(field.time_format(record),
                     value);
             }
-            return Sao.common.date_format() + time;
+            return field.date_format(record) + time;
+        },
+        format: function(record, field) {
+            var value = field.get_client(record);
+            return Sao.common.format_datetime(
+                    field.date_format(record), field.time_format(record),
+                    value);
+        },
+        set_value: function(record, field) {
+            var value = Sao.common.parse_datetime(
+                    field.date_format(record),
+                    field.time_format(record),
+                    this.date.val());
+            field.set_client(record, value);
         }
     });
 
     Sao.View.Form.Time = Sao.class_(Sao.View.Form.Char, {
-        class_: 'form-time'
+        class_: 'form-time',
+        format: function(record, field) {
+            var value = field.get_client(record);
+            return Sao.common.format_time(field.time_format(record), value);
+        },
+        display: function(record, field) {
+            // Skip Char
+            Sao.View.Form.Widget.display.call(this, record, field);
+            if (record) {
+                this.el.val(this.format(record, field));
+            } else {
+                this.el.val('');
+            }
+        },
+        set_value: function(record, field) {
+            var value = Sao.common.parse_time(
+                    field.time_format(record),
+                    this.date.val());
+            field.set_client(record, value);
+        }
     });
 
     Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
@@ -3318,8 +3364,6 @@
                 return Sao.View.EditableTree.Char;
             case 'date':
                 return Sao.View.EditableTree.Date;
-            case 'datetime':
-                return Sao.View.EditableTree.DateTime;
             case 'integer':
             case 'biginteger':
                 return Sao.View.EditableTree.Integer;
@@ -3371,10 +3415,10 @@
         }
     });
 
-    Sao.View.EditableTree.DateTime = Sao.class_(Sao.View.Form.DateTime, {
-        class_: 'editabletree-datetime',
+    Sao.View.EditableTree.Time = Sao.class_(Sao.View.Form.Time, {
+        class_: 'editabletree-time',
         init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.DateTime._super.init.call(this, field_name,
+            Sao.View.EditableTree.Time._super.init.call(this, field_name,
                 model, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }

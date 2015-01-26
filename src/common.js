@@ -78,21 +78,24 @@
         return prm.fail();
     };
 
-    Sao.common.date_format = function() {
-        if (Sao.Session.current_session) {
+    Sao.common.date_format = function(format) {
+        if (jQuery.isEmptyObject(format) && Sao.Session.current_session) {
             var context = Sao.Session.current_session.context;
             if (context.locale && context.locale.date) {
-                return context.locale.date
-                    .replace('%d', 'dd')
-                    .replace('%j', 'oo')
-                    .replace('%a', 'D')
-                    .replace('%A', 'DD')
-                    .replace('%m', 'mm')
-                    .replace('%b', 'M')
-                    .replace('%B', 'MM')
-                    .replace('%y', 'y')
-                    .replace('%Y', 'yy');
+                format = context.locale.date;
             }
+        }
+        if (format) {
+            return format
+                .replace('%d', 'dd')
+                .replace('%j', 'oo')
+                .replace('%a', 'D')
+                .replace('%A', 'DD')
+                .replace('%m', 'mm')
+                .replace('%b', 'M')
+                .replace('%B', 'MM')
+                .replace('%y', 'y')
+                .replace('%Y', 'yy');
         }
         return jQuery.datepicker.W3C;
     };
@@ -123,7 +126,30 @@
                 getNumber('%f'));
     };
 
+    Sao.common.format_date = function(date_format, date) {
+        if (!date) {
+            return '';
+        }
+        return jQuery.datepicker.formatDate(date_format, date);
+    };
+
+    Sao.common.parse_date = function(value) {
+        try {
+            value = jQuery.datepicker.parseDate(
+                    Sao.common.date_format(), value);
+            if (value) {
+                value = Sao.Date(value);
+            }
+        } catch (e) {
+            value = null;
+        }
+        return value;
+    };
+
     Sao.common.format_datetime = function(date_format, time_format, date) {
+        if (!date) {
+            return '';
+        }
         return (jQuery.datepicker.formatDate(date_format, date) + ' ' +
                 Sao.common.format_time(time_format, date));
     };
@@ -1220,7 +1246,7 @@
                             !(value.getHours() ||
                              value.getMinutes() ||
                              value.getSeconds())) {
-                        return jQuery.datepicker.formatDate(
+                        return Sao.common.format_date(
                                 Sao.common.date_format(),
                                 value);
                     }
@@ -1230,10 +1256,7 @@
                             value);
                 }.bind(this),
                 'date': function() {
-                    if (!value) {
-                        return '';
-                    }
-                    return jQuery.datepicker.formatDate(
+                    return Sao.common.format_date(
                             Sao.common.date_format(),
                             value);
                 },

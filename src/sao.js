@@ -118,6 +118,12 @@ var Sao = {};
         return datetime;
     };
 
+    Sao.DateTime.combine = function(date, time) {
+        return new Sao.DateTime(date.year, date.month, date.day,
+                time.getHours(), time.getMinutes,
+                time.getSeconds(), time.getMilliseconds());
+    };
+
     Sao.Time = Sao.class_(Object, {
         init: function(hour, minute, second, millisecond) {
             this.date = new Date(0, 0, 0, hour, minute, second,

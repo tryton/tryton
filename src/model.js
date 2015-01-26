@@ -1241,53 +1241,42 @@
             return record.expr_eval(this.description.format);
         },
         set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                try {
-                    value = Sao.common.parse_datetime(
-                        Sao.common.date_format(),
-                        this.time_format(record),
-                        value);
-                } catch (e) {
-                    value = this._default;
+            var current_value;
+            if (value instanceof Sao.Time) {
+                current_value = this.get(record);
+                if (current_value) {
+                    value = Sao.DateTime.combine(current_value, value);
+                } else {
+                    value = null;
+                }
+            } else if ((value instanceof Date) && value.isDate) {
+                current_value = this.get(record);
+                if (current_value) {
+                    value = Sao.DateTime.combine(value, current_value);
                 }
             }
             Sao.field.DateTime._super.set_client.call(this, record, value,
                 force_change);
         },
-        get_client: function(record) {
-            var value = Sao.field.Date._super.get_client.call(this, record);
-            if (value) {
-                return Sao.common.format_datetime(Sao.common.date_format(),
-                        this.time_format(record), value);
-            }
-            return '';
+        date_format: function(record) {
+            var context = this.get_context(record);
+            return Sao.common.date_format(context.date_format);
         }
     });
 
     Sao.field.Date = Sao.class_(Sao.field.Field, {
         _default: null,
         set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                try {
-                    value = jQuery.datepicker.parseDate(
-                        Sao.common.date_format(), value);
-                    if (value) {
-                        value = Sao.Date(value);
-                    }
-                } catch (e) {
-                    value = this._default;
-                }
+            if (value && !value.isDate) {
+                value.isDate = true;
+                value.isDateTime = false;
             }
             Sao.field.Date._super.set_client.call(this, record, value,
                 force_change);
         },
-        get_client: function(record) {
-            var value = Sao.field.Date._super.get_client.call(this, record);
-            if (value) {
-                return jQuery.datepicker.formatDate(Sao.common.date_format(),
-                    value);
-            }
-            return '';
+        date_format: function(record) {
+            var context = this.get_context(record);
+            return Sao.common.date_format(context.date_format);
         }
     });
 
@@ -1297,19 +1286,12 @@
             return record.expr_eval(this.description.format);
         },
         set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                value = Sao.common.parse_time(this.time_format(record), value);
+            if (value && value instanceof Date) {
+                value = new Sao.Time(value.getHours(), value.getMinutes(),
+                    value.getSeconds(), value.getMilliseconds());
             }
             Sao.field.Time._super.set_client.call(this, record, value,
                 force_change);
-        },
-        get_client: function(record) {
-            var value = Sao.field.Time._super.get_client.call(this, record);
-            if (value) {
-                return Sao.common.format_time(this.time_format(record),
-                    value);
-            }
-            return '';
         }
     });
 
