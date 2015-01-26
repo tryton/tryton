@@ -50,6 +50,10 @@ requires.append(get_require_version('trytond'))
 tests_require = [get_require_version('proteus')]
 for dep in ['account', 'party', 'stock']:
     tests_require.append(get_require_version('trytond_%s' % dep))
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -96,6 +100,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
     },
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
