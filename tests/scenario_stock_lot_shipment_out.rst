@@ -165,5 +165,5 @@ Pack the shipment::
     >>> for move in shipment_out.outgoing_moves:
     ...     quantity = lot_quantities.setdefault(move.lot.number, 0)
     ...     lot_quantities[move.lot.number] += move.quantity
-    >>> lot_quantities
-    {u'00001': 7.0, u'00002': 7.0}
+    >>> sorted(lot_quantities.items())
+    [(u'00001', 7.0), (u'00002', 7.0)]
