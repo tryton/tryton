@@ -1501,7 +1501,7 @@ def timezoned_date(date, reverse=False):
     szone = dateutil.tz.tzutc()
     if reverse:
         lzone, szone = szone, lzone
-    return date.replace(tzinfo=szone).astimezone(lzone)
+    return date.replace(tzinfo=szone).astimezone(lzone).replace(tzinfo=None)
 
 
 def untimezoned_date(date):

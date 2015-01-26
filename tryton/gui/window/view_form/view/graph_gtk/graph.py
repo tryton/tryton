@@ -15,7 +15,6 @@ import tryton.rpc as rpc
 import cairo
 from tryton.action import Action
 from tryton.gui.window import Window
-from tryton.translate import date_format
 
 
 class Popup(object):
@@ -378,10 +377,12 @@ class Graph(gtk.DrawingArea):
                 else:
                     self.datas[x][key] += \
                         float(model[yfield['name']].get(model) or 0)
+        date_format = self.view.screen.context.get('date_format', '%x')
+        datetime_format = date_format + ' %X'
         if isinstance(minx, datetime.datetime):
             date = minx
             while date <= maxx:
-                self.labels[date] = datetime_strftime(date, date_format())
+                self.labels[date] = datetime_strftime(date, datetime_format)
                 self.datas.setdefault(date, {})
                 for yfield in self.yfields:
                     self.datas[date].setdefault(
@@ -390,7 +391,7 @@ class Graph(gtk.DrawingArea):
         elif isinstance(minx, datetime.date):
             date = minx
             while date <= maxx:
-                self.labels[date] = datetime_strftime(date, date_format())
+                self.labels[date] = datetime_strftime(date, date_format)
                 self.datas.setdefault(date, {})
                 for yfield in self.yfields:
                     self.datas[date].setdefault(

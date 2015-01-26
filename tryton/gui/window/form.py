@@ -15,7 +15,6 @@ from tryton.gui.window.revision import Revision
 from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, COLOR_SCHEMES, timezoned_date
 import tryton.common as common
-from tryton.translate import date_format
 from tryton.common import RPCExecute, RPCException
 from tryton.common.datetime_strftime import datetime_strftime
 from tryton import plugins
@@ -253,9 +252,8 @@ class Form(SignalEvent, TabContent):
                 value = str(line.get(key, False) or '/')
                 if line.get(key, False) \
                         and key in ('create_date', 'write_date'):
-                    display_format = date_format() + ' %H:%M:%S'
                     date = timezoned_date(line[key])
-                    value = common.datetime_strftime(date, display_format)
+                    value = common.datetime_strftime(date, '%X')
                 message_str += val + ' ' + value + '\n'
         message_str += _('Model:') + ' ' + self.model
         message(message_str)
@@ -272,7 +270,9 @@ class Form(SignalEvent, TabContent):
         except RPCException:
             return
         revision = self.screen.context.get('_datetime')
-        revision = Revision(revisions, revision).run()
+        format_ = self.screen.context.get('date_format', '%x')
+        format_ += ' %X.%f'
+        revision = Revision(revisions, revision, format_).run()
         # Prevent too old revision in form view
         if (self.screen.current_view.view_type == 'form'
                 and revision
@@ -294,7 +294,8 @@ class Form(SignalEvent, TabContent):
     def update_revision(self):
         revision = self.screen.context.get('_datetime')
         if revision:
-            format_ = date_format() + ' %H:%M:%S.%f'
+            format_ = self.screen.context.get('date_format', '%x')
+            format_ += ' %X.%f'
             revision = datetime_strftime(revision, format_)
             self.title.set_label('%s @ %s' % (self.name, revision))
         else:

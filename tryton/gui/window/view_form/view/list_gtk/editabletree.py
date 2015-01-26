@@ -6,7 +6,7 @@ import gobject
 from itertools import islice, cycle
 
 from tryton.common import MODELACCESS
-from tryton.common.date_widget import DateEntry
+from tryton.common.datetime_ import Date, Time
 
 _ = gettext.gettext
 
@@ -110,6 +110,8 @@ class EditableTreeView(TreeView):
         field = record[column.name]
         if hasattr(field, 'editabletree_entry'):
             entry = field.editabletree_entry
+            if isinstance(entry, (Date, Time)):
+                txt = entry.props.value
             if isinstance(entry, gtk.Entry):
                 txt = entry.get_text()
             else:
@@ -141,9 +143,9 @@ class EditableTreeView(TreeView):
                 leaving = True
 
         if event.keyval in self.leaving_events or leaving:
-            if isinstance(entry, gtk.Entry):
-                if isinstance(entry, DateEntry):
-                    entry.date_get()
+            if isinstance(entry, (Date, Time)):
+                txt = entry.props.value
+            elif isinstance(entry, gtk.Entry):
                 txt = entry.get_text()
             else:
                 txt = entry.get_active_text()
@@ -260,9 +262,9 @@ class EditableTreeView(TreeView):
             return True
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
-        if isinstance(entry, gtk.Entry):
-            if isinstance(entry, DateEntry):
-                entry.date_get()
+        if isinstance(entry, (Date, Time)):
+            self.on_quit_cell(record, column, entry.props.value)
+        elif isinstance(entry, gtk.Entry):
             self.on_quit_cell(record, column, entry.get_text())
         elif isinstance(entry, (gtk.ComboBoxEntry, gtk.ComboBox)):
             self.on_quit_cell(record, column, entry.get_active_text())

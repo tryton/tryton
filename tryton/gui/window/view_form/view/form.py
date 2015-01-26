@@ -11,7 +11,7 @@ from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
 from tryton.common import Tooltips, node_attributes, ICONFACTORY
 from tryton.common.button import Button
 from tryton.config import CONFIG
-from .form_gtk.calendar import Calendar, DateTime, Time
+from .form_gtk.calendar import Date, Time, DateTime
 from .form_gtk.float import Float
 from .form_gtk.integer import Integer
 from .form_gtk.selection import Selection
@@ -364,7 +364,7 @@ class ViewForm(View):
         pack(container.table, resize=True, shrink=True)
 
     WIDGETS = {
-        'date': Calendar,
+        'date': Date,
         'datetime': DateTime,
         'time': Time,
         'float': Float,

@@ -4,32 +4,39 @@ import gtk
 import gettext
 
 from .widget import Widget
-from tryton.common.date_widget import DateEntry
-from tryton.translate import date_format
+from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
+    DateTime as DateTimeEntry, add_operators)
 
 _ = gettext.gettext
 
 
-class Calendar(Widget):
-    "Calendar"
+class Date(Widget):
 
-    def __init__(self, view, attrs):
-        super(Calendar, self).__init__(view, attrs)
+    def __init__(self, view, attrs, _entry=DateEntry):
+        super(Date, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
-        self.entry = DateEntry('')
-        self.entry.set_property('activates_default', True)
-        self.entry.connect('key_press_event', self.sig_key_press)
-        self.entry.connect('activate', self.sig_activate)
-        self.entry.connect('changed', lambda _: self.send_modified())
-        self.entry.connect('focus-out-event', lambda x, y: self._focus_out())
+        self.entry = add_operators(_entry())
+        self.real_entry.set_property('activates_default', True)
+        self.real_entry.connect('key_press_event', self.sig_key_press)
+        self.real_entry.connect('activate', self.sig_activate)
+        self.real_entry.connect('changed', lambda _: self.send_modified())
+        self.real_entry.connect('focus-out-event',
+            lambda x, y: self._focus_out())
         self.widget.pack_start(self.entry, expand=False, fill=False)
+
+    @property
+    def real_entry(self):
+        return self.entry
 
     def _color_widget(self):
         return self.entry
 
+    def _set_editable(self, value):
+        self.real_entry.set_editable(value)
+
     def _readonly_set(self, value):
-        self.entry.set_editable(not value)
+        self._set_editable(not value)
         if value:
             self.widget.set_focus_chain([])
         else:
@@ -38,8 +45,7 @@ class Calendar(Widget):
     @property
     def modified(self):
         if self.record and self.field:
-            value = self.entry.compute_date(self.entry.get_text())
-            return self.field.get_client(self.record) != value
+            return self.field.get_client(self.record) != self.entry.props.value
         return False
 
     def sig_key_press(self, widget, event):
@@ -49,41 +55,78 @@ class Calendar(Widget):
         field.set_client(record, self.get_value())
 
     def get_value(self):
-        return self.entry.date_get(set_text=False)
+        return self.entry.props.value
 
-    def get_format(self, record, field):
-        return date_format()
+    def set_format(self, record, field):
+        if field and record:
+            format_ = field.date_format(record)
+        else:
+            format_ = '%x'
+        self.entry.props.format = format_
 
     def display(self, record, field):
-        if not field:
-            self.entry.set_format('')
-            self.entry.clear()
-            return False
-        self.entry.set_format(self.get_format(record, field))
-        super(Calendar, self).display(record, field)
-        value = field.get_client(record)
-        if not value:
-            self.entry.clear()
+        super(Date, self).display(record, field)
+        if field and record:
+            value = field.get_client(record)
         else:
-            if len(value) > self.entry.get_width_chars():
-                self.entry.set_width_chars(len(value))
-            self.entry.set_text(value)
-        return True
+            value = ''
+        self.entry.props.value = value
+        self.set_format(record, field)
 
 
-class DateTime(Calendar):
-    "DateTime"
-
-    def get_format(self, record, field):
-        return date_format() + ' ' + field.time_format(record)
-
-
-class Time(Calendar):
-    "Time"
-
+class Time(Date):
     def __init__(self, view, attrs):
-        super(Time, self).__init__(view, attrs)
-        self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, None)
+        super(Time, self).__init__(view, attrs, _entry=TimeEntry)
+        self.entry.set_focus_chain([self.entry.get_child()])
 
-    def get_format(self, record, field):
-        return field.time_format(record)
+    @property
+    def real_entry(self):
+        return self.entry.get_child()
+
+    def display(self, record, field):
+        super(Time, self).display(record, field)
+
+    def set_format(self, record, field):
+        if field and record:
+            format_ = field.time_format(record)
+        else:
+            format_ = '%X'
+        self.entry.props.format = format_
+
+
+class DateTime(Date):
+    def __init__(self, view, attrs):
+        Widget.__init__(self, view, attrs)
+
+        self.widget = gtk.HBox()
+        self.entry = DateTimeEntry()
+        for child in self.entry.get_children():
+            add_operators(child)
+            if isinstance(child, gtk.ComboBoxEntry):
+                child.set_focus_chain([child.get_child()])
+                child = child.get_child()
+            child.set_property('activates_default', True)
+            child.connect('key_press_event', self.sig_key_press)
+            child.connect('activate', self.sig_activate)
+            child.connect('changed', lambda _: self.send_modified())
+            child.connect('focus-out-event', lambda x, y: self._focus_out())
+        self.widget.pack_start(self.entry, expand=False, fill=False)
+
+    def _color_widget(self):
+        return self.entry.get_children()[0]  # XXX not always sure to have Date
+
+    def _set_editable(self, value):
+        for child in self.entry.get_children():
+            if not hasattr(child, 'set_editable'):
+                child = child.child
+            child.set_editable(value)
+
+    def set_format(self, record, field):
+        if field and record:
+            date_format = field.date_format(record)
+            time_format = field.time_format(record)
+        else:
+            date_format = '%x'
+            time_format = '%X'
+        self.entry.props.date_format = date_format
+        self.entry.props.time_format = time_format

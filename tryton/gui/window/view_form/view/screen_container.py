@@ -8,7 +8,7 @@ import tryton.common as common
 from tryton.common.domain_parser import quote
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.treeviewcontrol import TreeViewControl
-from tryton.translate import date_format
+from tryton.common.datetime_ import Date, Time, DateTime, add_operators
 from tryton.config import TRYTON_ICON
 from tryton.pyson import PYSONDecoder
 
@@ -17,17 +17,20 @@ _ = gettext.gettext
 
 class Dates(gtk.HBox):
 
-    def __init__(self, format_):
+    def __init__(self, format_=None, _entry=Date):
         super(Dates, self).__init__()
-        self.from_ = common.date_widget.DateEntry(format_)
+        self.from_ = add_operators(_entry())
         self.pack_start(self.from_, expand=True, fill=True)
         self.pack_start(gtk.Label(_('..')), expand=False, fill=False)
-        self.to = common.date_widget.DateEntry(format_)
+        self.to = add_operators(_entry())
         self.pack_start(self.to, expand=True, fill=True)
+        if format_:
+            self.from_.props.format = format_
+            self.to.props.format = format_
 
     def get_value(self):
-        from_ = self.from_.get_text()
-        to = self.to.get_text()
+        from_ = self.from_.props.value
+        to = self.to.props.value
         if from_ and to:
             if from_ != to:
                 return '%s..%s' % (quote(from_), quote(to))
@@ -37,6 +40,30 @@ class Dates(gtk.HBox):
             return '>=%s' % quote(from_)
         elif to:
             return '<=%s' % quote(to)
+
+    def connect_activate(self, callback):
+        self.from_.connect('activate', callback)
+        self.to.connect('activate', callback)
+
+
+class Times(Dates):
+
+    def __init__(self, format_, _entry=Time):
+        super(Times, self).__init__(_entry=_entry)
+
+
+class DateTimes(Dates):
+
+    def __init__(self, date_format, time_format, _entry=DateTime):
+        super(DateTimes, self).__init__(_entry=_entry)
+        self.from_.props.date_format = date_format
+        self.to.props.date_format = date_format
+        self.from_.props.time_format = time_format
+        self.to.props.time_format = time_format
+
+    def connect_activate(self, callback):
+        for widget in self.from_.get_children() + self.to.get_children():
+            widget.connect('activate', callback)
 
 
 class Selection(gtk.ScrolledWindow):
@@ -423,10 +450,6 @@ class ScreenContainer(object):
             self.last_search_text = self.get_text()
             self.do_search()
 
-        def date_activate(entry):
-            entry._focus_out(entry, None)
-            search()
-
         if not self.search_window:
             self.search_window = gtk.Window()
             self.search_window.set_transient_for(button.get_toplevel())
@@ -469,15 +492,16 @@ class ScreenContainer(object):
                     entry = Selection(selections)
                     yoptions = gtk.FILL | gtk.EXPAND
                 elif field['type'] in ('date', 'datetime', 'time'):
+                    date_format = self.screen.context.get('date_format', '%x')
                     if field['type'] == 'date':
-                        format_ = date_format()
+                        entry = Dates(date_format)
                     elif field['type'] in ('datetime', 'time'):
-                        format_ = PYSONDecoder({}).decode(field['format'])
-                        if field['type'] == 'datetime':
-                            format_ = date_format() + ' ' + format_
-                    entry = Dates(format_)
-                    entry.from_.connect('activate', date_activate)
-                    entry.to.connect('activate', date_activate)
+                        time_format = PYSONDecoder({}).decode(field['format'])
+                        if field['type'] == 'time':
+                            entry = Times(time_format)
+                        elif field['type'] == 'datetime':
+                            entry = DateTimes(date_format, time_format)
+                    entry.connect_activate(lambda *a: search())
                 else:
                     entry = gtk.Entry()
                     entry.connect('activate', lambda *a: search())

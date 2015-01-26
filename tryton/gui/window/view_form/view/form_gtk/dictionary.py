@@ -12,13 +12,12 @@ from decimal import Decimal
 from .widget import Widget
 from tryton.config import CONFIG
 from tryton.gui.window.win_search import WinSearch
-from tryton.common import RPCExecute, RPCException, timezoned_date, \
-    datetime_strftime, Tooltips
-from tryton.common.date_widget import DateEntry
+from tryton.common import RPCExecute, RPCException, Tooltips, \
+    timezoned_date, untimezoned_date
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
-from tryton.translate import date_format
+from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
@@ -250,50 +249,45 @@ class DictDateTimeEntry(DictEntry):
     fill = False
 
     def create_widget(self):
-        widget = DateEntry('')
-        widget.set_format(self.get_format())
+        widget = DateTime()
+        record = self.parent_widget.record
+        field = self.parent_widget.field
+        if record and field:
+            format_ = field.time_format(record)
+            widget.props.format = format_
         widget.connect('key_press_event', self.parent_widget.send_modified)
         widget.connect('focus-out-event', lambda w, e:
             self.parent_widget._focus_out())
         return widget
 
-    def modified(self, value):
-        if value.get(self.name):
-            text = datetime_strftime(timezoned_date(value[self.name]),
-                self.get_format())
-        else:
-            text = ''
-        return self.widget.compute_date(self.widget.get_text()) != text
-
-    def get_format(self):
-        return date_format() + ' %H:%M:%S'  # got to find a way
-
     def get_value(self):
-        return self.widget.date_get()
+        return untimezoned_date(self.widget.props.value)
 
     def set_value(self, value):
-        self.widget.date_set(value)
-        txt = self.widget.get_text()
-        if txt:
-            if len(txt) > self.widget.get_width_chars():
-                self.widget.set_width_chars(len(txt))
+        self.widget.props.value = timezoned_date(value)
 
 
-class DictDateEntry(DictDateTimeEntry):
+class DictDateEntry(DictEntry):
+    expand = False
+    fill = False
 
-    def modified(self, value):
-        if value.get(self.name):
-            text = datetime_strftime(value[self.name], self.get_format())
-        else:
-            text = ''
-        return self.widget.compute_date(self.widget.get_text()) != text
-
-    def get_format(self):
-        return date_format()
+    def create_widget(self):
+        widget = Date()
+        record = self.parent_widget.record
+        field = self.parent_widget.field
+        if record and field:
+            format_ = field.date_format(record)
+            widget.props.format = format_
+        widget.connect('key_press_event', self.parent_widget.send_modified)
+        widget.connect('focus-out-event', lambda w, e:
+            self.parent_widget._focus_out())
+        return widget
 
     def get_value(self):
-        dt = super(DictDateEntry, self).get_value()
-        return dt.date() if dt else None
+        return self.widget.props.value
+
+    def set_value(self, value):
+        self.widget.props.value = value
 
 
 DICT_ENTRIES = {

@@ -17,7 +17,6 @@ import tryton.rpc as rpc
 from tryton.common import COLORS, file_selection, file_open, slugify
 import tryton.common as common
 from tryton.common.cellrendererbutton import CellRendererButton
-from tryton.common.cellrendererdate import CellRendererDate
 from tryton.common.cellrenderertext import CellRendererText, \
     CellRendererTextCompletion
 from tryton.common.cellrenderertoggle import CellRendererToggle
@@ -27,10 +26,11 @@ from tryton.common.cellrendererfloat import CellRendererFloat
 from tryton.common.cellrendererbinary import CellRendererBinary
 from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
-from tryton.translate import date_format
 from tryton.common import data2pixbuf
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.selection import SelectionMixin, PopdownMixin
+from tryton.common.datetime_ import CellRendererDate, CellRendererTime
+from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.domain_parser import quote
 
 _ = gettext.gettext
@@ -343,31 +343,53 @@ class Date(Char):
 
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
-            renderer = partial(CellRendererDate, date_format())
+            renderer = CellRendererDate
         super(Date, self).__init__(view, attrs, renderer=renderer)
-        self.renderer.connect('editing-started', self.editing_started)
-
-
-class Datetime(Date):
 
     @realized
     def setter(self, column, cell, store, iter):
-        super(Datetime, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
         field = record[self.attrs['name']]
-        time_format = field.time_format(record)
-        self.renderer.format = date_format() + ' ' + time_format
+        self.renderer.props.format = self.get_format(record, field)
+        super(Date, self).setter(column, cell, store, iter)
+
+    def get_format(self, record, field):
+        if field and record:
+            return field.date_format(record)
+        else:
+            return '%x'
+
+    def get_textual_value(self, record):
+        if not record:
+            return ''
+        value = record[self.attrs['name']].get_client(record)
+        if value:
+            return datetime_strftime(value, self.renderer.props.format)
+        else:
+            return ''
 
 
 class Time(Date):
 
-    @realized
-    def setter(self, column, cell, store, iter):
-        super(Time, self).setter(column, cell, store, iter)
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
-        time_format = field.time_format(record)
-        self.renderer.format = time_format
+    def __init__(self, view, attrs, renderer=None):
+        if renderer is None:
+            renderer = CellRendererTime
+        super(Time, self).__init__(view, attrs, renderer=renderer)
+
+    def get_format(self, record, field):
+        if field and record:
+            return field.time_format(record)
+        else:
+            return '%X'
+
+    def get_textual_value(self, record):
+        if not record:
+            return ''
+        value = record[self.attrs['name']].get_client(record)
+        if value:
+            return value.strftime(self.renderer.props.format)
+        else:
+            return ''
 
 
 class Float(Int):

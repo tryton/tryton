@@ -5,9 +5,8 @@ import gettext
 
 from tryton.config import TRYTON_ICON
 from tryton.common import get_toplevel_window
-from tryton.common.date_widget import DateEntry
 from tryton.common.datetime_strftime import datetime_strftime
-from tryton.translate import date_format
+from tryton.common.datetime_ import date_parse
 
 _ = gettext.gettext
 
@@ -15,7 +14,7 @@ _ = gettext.gettext
 class Revision(object):
     'Ask revision'
 
-    def __init__(self, revisions, revision=None):
+    def __init__(self, revisions, revision=None, format_='%x %X.%f'):
         self.parent = get_toplevel_window()
         self.win = gtk.Dialog(_('Revision'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
@@ -30,45 +29,74 @@ class Revision(object):
         self.win.vbox.pack_start(gtk.HSeparator())
         hbox = gtk.HBox(spacing=3)
         hbox.pack_start(gtk.Label(_('Revision:')), expand=True, fill=True)
-        format_ = date_format() + ' %H:%M:%S.%f'
-        self.entry = DateEntry(format_)
+        list_store = gtk.ListStore(str, str)
+        combobox = gtk.ComboBoxEntry(list_store)
+        self.entry = combobox.child
+        self.entry.connect('focus-out-event', self.focus_out)
+        self.entry.connect('activate', self.activate)
+        combobox.connect('changed', self.changed)
+        self.entry.set_property('activates_default', True)
+        self._format = format_
         if revision:
-            self.entry.set_text(datetime_strftime(revision, format_))
+            self.entry.set_text(datetime_strftime(revision, self._format))
+            self._value = revision
             active = -1
         else:
+            self._value = None
             active = 0
-        list_store = gtk.ListStore(str, str)
         list_store.append(('', ''))
         for i, (rev, id_, name) in enumerate(revisions, 1):
-            list_store.append((datetime_strftime(rev, format_), name))
+            list_store.append((datetime_strftime(rev, self._format), name))
             if rev == revision:
                 active = i
-        combobox = gtk.ComboBoxEntry(list_store)
-        combobox.add(self.entry)
         combobox.set_active(active)
         cell = gtk.CellRendererText()
         combobox.pack_start(cell, True)
         combobox.add_attribute(cell, 'text', 1)
         hbox.pack_start(combobox, expand=True, fill=True)
         combobox.set_entry_text_column(0)
-        combobox.connect('changed', self.changed)
-        self.entry.set_property('activates_default', True)
         self.win.vbox.pack_start(hbox, expand=True, fill=True)
         self.win.show_all()
 
+    def focus_out(self, entry, event):
+        self.parse()
+        self.update()
+        return False
+
+    def activate(self, entry):
+        self.parse()
+        self.update()
+        return False
+
     def changed(self, combobox):
-        # set_text must be called because DateEntry doesn't work correctly with
-        # the default insert/delete text behavior of combobox
-        model = combobox.get_model()
-        idx = combobox.get_active()
-        if idx >= 0:
-            self.entry.set_text(model[idx][0])
+        # "changed" signal is also triggered by text editing
+        # so only parse when a row is active
+        if combobox.get_active_iter():
+            self.parse()
+            self.update()
+        return False
+
+    def parse(self):
+        text = self.entry.get_text()
+        value = None
+        if text:
+            try:
+                value = date_parse(text, self._format)
+            except ValueError:
+                pass
+        self._value = value
+
+    def update(self):
+        if not self._value:
+            self.entry.set_text('')
+        else:
+            self.entry.set_text(datetime_strftime(self._value, self._format))
 
     def run(self):
         response = self.win.run()
         revision = None
         if response == gtk.RESPONSE_OK:
-            revision = self.entry.date_get()
+            revision = self._value
         self.parent.present()
         self.win.destroy()
         return revision

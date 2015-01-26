@@ -20,7 +20,7 @@ from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
 from . import View
 from .list_gtk.editabletree import EditableTreeView, TreeView
-from .list_gtk.widget import (Affix, Char, Int, Boolean, URL, Date, Datetime,
+from .list_gtk.widget import (Affix, Char, Int, Boolean, URL, Date,
     Time, Float, FloatTime, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
     ProgressBar, Button, Image)
 
@@ -426,7 +426,6 @@ class ViewTree(View):
         'float_time': FloatTime,
         'integer': Int,
         'biginteger': Int,
-        'datetime': Datetime,
         'time': Time,
         'boolean': Boolean,
         'text': Char,

@@ -114,6 +114,9 @@ class Action(object):
             ctx.update(action_ctx)
             ctx.update(context)
             action_ctx.update(context)
+            if 'date_format' not in action_ctx:
+                action_ctx['date_format'] = rpc.CONTEXT.get(
+                    'locale', {}).get('date', '%x')
 
             ctx['context'] = ctx
             decoder = PYSONDecoder(ctx)
