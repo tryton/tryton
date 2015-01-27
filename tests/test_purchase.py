@@ -5,29 +5,15 @@ import doctest
 from decimal import Decimal
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 
-class PurchaseTestCase(unittest.TestCase):
+class PurchaseTestCase(ModuleTestCase):
     'Test Purchase module'
-
-    def setUp(self):
-        trytond.tests.test_tryton.install_module('purchase')
-
-    def test0005views(self):
-        'Test views'
-        test_view('purchase')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('purchase')
+    module = 'purchase'
 
     def test_purchase_price(self):
         'Test purchase price'
