@@ -6,16 +6,17 @@ from decimal import Decimal
 import datetime
 from dateutil.relativedelta import relativedelta
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class StockForecastTestCase(unittest.TestCase):
+class StockForecastTestCase(ModuleTestCase):
     'Test StockForecast module'
+    module = 'stock_forecast'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('stock_forecast')
+        super(StockForecastTestCase, self).setUp()
         self.category = POOL.get('product.category')
         self.uom = POOL.get('product.uom')
         self.template = POOL.get('product.template')
@@ -28,18 +29,6 @@ class StockForecastTestCase(unittest.TestCase):
         self.move = POOL.get('stock.move')
         self.forecast_complete = POOL.get('stock.forecast.complete',
             type='wizard')
-
-    def test0005views(self):
-        'Test views'
-        test_view('stock_forecast')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('stock_forecast')
 
     def test0020distribute(self):
         'Test distribute'
