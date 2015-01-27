@@ -3,33 +3,22 @@
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class ProductTestCase(unittest.TestCase):
+class ProductTestCase(ModuleTestCase):
     'Test Product module'
+    module = 'product'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('product')
+        super(ProductTestCase, self).setUp()
         self.uom = POOL.get('product.uom')
         self.uom_category = POOL.get('product.uom.category')
         self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.category = POOL.get('product.category')
-
-    def test0005views(self):
-        'Test views'
-        test_view('product')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('product')
 
     def test0010uom_non_zero_rate_factor(self):
         'Test uom non_zero_rate_factor constraint'
