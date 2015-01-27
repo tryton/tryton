@@ -1,32 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action, install_module, suite as tryton_suite
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import suite as tryton_suite
 from trytond.transaction import Transaction
 
 
-class TestCase(unittest.TestCase):
+class TestCase(ModuleTestCase):
     'Test Party relationship module'
+    module = 'party_relationship'
 
     def setUp(self):
-        install_module('party_relationship')
+        super(TestCase, self).setUp()
         self.party = POOL.get('party.party')
         self.relation_type = POOL.get('party.relation.type')
         self.relation = POOL.get('party.relation')
         self.relation_all = POOL.get('party.relation.all')
-
-    def test0005views(self):
-        'Test views'
-        test_view('party_relationship')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('party_relationship')
 
     def test0010reverse_relationship(self):
         'Test reverse relationship'
