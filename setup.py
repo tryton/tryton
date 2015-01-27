@@ -59,6 +59,7 @@ setup(name=name,
     package_dir={'trytond.modules.account_be': '.'},
     packages=[
         'trytond.modules.account_be',
+        'trytond.modules.account_be.tests',
         ],
     package_data={
         'trytond.modules.account_be': (info.get('xml', [])
