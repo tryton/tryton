@@ -2,31 +2,20 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class PartyTestCase(unittest.TestCase):
+class PartyTestCase(ModuleTestCase):
     'Test Party module'
+    module = 'party'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('party')
+        super(PartyTestCase, self).setUp()
         self.category = POOL.get('party.category')
         self.party = POOL.get('party.party')
         self.address = POOL.get('party.address')
-
-    def test0005views(self):
-        'Test views'
-        test_view('party')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('party')
 
     def test0010category(self):
         'Create category'
