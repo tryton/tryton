@@ -85,4 +85,6 @@ setup(name=name,
     [trytond.modules]
     account_fr = trytond.modules.account_fr
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
     )
