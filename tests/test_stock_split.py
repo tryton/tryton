@@ -4,16 +4,17 @@ import unittest
 import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class StockSplitTestCase(unittest.TestCase):
+class StockSplitTestCase(ModuleTestCase):
     'Test Stock Lot module'
+    module = 'stock_split'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('stock_split')
+        super(StockSplitTestCase, self).setUp()
         self.uom = POOL.get('product.uom')
         self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
@@ -21,18 +22,6 @@ class StockSplitTestCase(unittest.TestCase):
         self.company = POOL.get('company.company')
         self.user = POOL.get('res.user')
         self.move = POOL.get('stock.move')
-
-    def test0005views(self):
-        'Test views'
-        test_view('stock_split')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('stock_split')
 
     def test0010split(self):
         'Test split'
