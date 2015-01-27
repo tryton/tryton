@@ -29,8 +29,7 @@ for dep in info.get('depends', []):
                 minor_version + 1))
 requires.append('trytond >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1))
-tests_require = ['proteus >= %s.%s, < %s.%s' %
-    (major_version, minor_version, major_version, minor_version + 1)]
+tests_require = []
 
 setup(name='trytond_stock_split',
     version=info.get('version', '0.0.1'),
