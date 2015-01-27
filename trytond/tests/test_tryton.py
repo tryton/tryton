@@ -13,11 +13,10 @@ from trytond import backend
 from trytond.protocols.dispatcher import create, drop
 from trytond.transaction import Transaction
 from trytond.pyson import PYSONEncoder, Eval
-from trytond.exceptions import UserError
 from trytond import security
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'USER_PASSWORD', 'CONTEXT',
-    'install_module', 'test_view', 'test_depends',
+    'install_module', 'ModuleTestCase',
     'doctest_setup', 'doctest_teardown',
     'suite', 'all_suite', 'modules_suite']
 
@@ -32,45 +31,6 @@ POOL = Pool(DB_NAME)
 security.check_super = lambda *a, **k: True
 
 
-class ModelViewTestCase(unittest.TestCase):
-    'Test ModelView'
-
-    def setUp(self):
-        install_module('ir')
-        install_module('res')
-        install_module('webdav')
-
-    def test0000test(self):
-        'Test test'
-        self.assertRaises(UserError, install_module, 'nosuchmodule')
-        self.assertRaises(UserError, test_view, 'nosuchmodule')
-
-    def test0010ir(self):
-        'Test ir'
-        test_view('ir')
-
-    def test0020res(self):
-        'Test res'
-        test_view('res')
-
-    def test0040webdav(self):
-        'Test webdav'
-        test_view('webdav')
-
-
-class FieldDependsTestCase(unittest.TestCase):
-    'Test Field depends'
-
-    def setUp(self):
-        install_module('ir')
-        install_module('res')
-        install_module('webdav')
-
-    def test0010depends(self):
-        'Test depends'
-        test_depends()
-
-
 def install_module(name):
     '''
     Install module for the tested database
@@ -83,7 +43,7 @@ def install_module(name):
         modules = Module.search([
                 ('name', '=', name),
                 ])
-        assert modules
+        assert modules, "%s not found" % name
 
         modules = Module.search([
                 ('name', '=', name),
@@ -105,103 +65,138 @@ def install_module(name):
         transaction.cursor.commit()
 
 
-def test_view(module_name):
-    '''
-    Test validity of all views of the module
-    '''
-    with Transaction().start(DB_NAME, USER,
-            context=CONTEXT) as transaction:
-        View = POOL.get('ir.ui.view')
-        views = View.search([
-                ('module', '=', module_name),
-                ('model', '!=', ''),
-                ])
-        assert views, "No views for %s" % module_name
-        for view in views:
-            view_id = view.inherit and view.inherit.id or view.id
-            model = view.model
-            Model = POOL.get(model)
-            res = Model.fields_view_get(view_id)
-            assert res['model'] == model
-            tree = etree.fromstring(res['arch'])
-            tree_root = tree.getroottree().getroot()
+class ModuleTestCase(unittest.TestCase):
+    'Trytond Test Case'
+    module = None
 
-            for element in tree_root.iter():
-                if element.tag in ('field', 'label', 'separator', 'group'):
-                    for attr in ('name', 'icon'):
-                        field = element.get(attr)
-                        if field:
-                            assert field in res['fields'], ('Missing field: %s'
-                                % field)
-        transaction.cursor.rollback()
+    def setUp(self):
+        install_module(self.module)
 
+    def test_view(self):
+        'Test validity of all views of the module'
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            View = POOL.get('ir.ui.view')
+            views = View.search([
+                    ('module', '=', self.module),
+                    ('model', '!=', ''),
+                    ])
+            for view in views:
+                view_id = view.inherit and view.inherit.id or view.id
+                model = view.model
+                Model = POOL.get(model)
+                res = Model.fields_view_get(view_id)
+                assert res['model'] == model
+                tree = etree.fromstring(res['arch'])
+                tree_root = tree.getroottree().getroot()
 
-def test_depends():
-    '''
-    Test for missing depends
-    '''
-    class Encoder(PYSONEncoder):
+                for element in tree_root.iter():
+                    if element.tag in ('field', 'label', 'separator', 'group'):
+                        for attr in ('name', 'icon'):
+                            field = element.get(attr)
+                            if field:
+                                assert field in res['fields'], (
+                                    'Missing field: %s' % field)
+            transaction.cursor.rollback()
 
-        def __init__(self, *args, **kwargs):
-            super(Encoder, self).__init__(*args, **kwargs)
-            self.fields = set()
+    def test_depends(self):
+        'Test for missing depends'
+        class Encoder(PYSONEncoder):
 
-        def default(self, obj):
-            if isinstance(obj, Eval):
-                fname = obj._value
-                if not fname.startswith('_parent_'):
-                    self.fields.add(fname)
-            return super(Encoder, self).default(obj)
+            def __init__(self, *args, **kwargs):
+                super(Encoder, self).__init__(*args, **kwargs)
+                self.fields = set()
 
-    with Transaction().start(DB_NAME, USER, context=CONTEXT):
-        for mname, model in Pool().iterobject():
-            for fname, field in model._fields.iteritems():
-                encoder = Encoder()
-                encoder.encode(field.domain)
-                if hasattr(field, 'digits'):
-                    encoder.encode(field.digits)
-                if hasattr(field, 'add_remove'):
-                    encoder.encode(field.add_remove)
-                encoder.fields.discard(fname)
-                encoder.fields.discard('context')
-                encoder.fields.discard('_user')
-                depends = set(field.depends)
-                assert encoder.fields <= depends, (
-                    'Missing depends %s in "%s"."%s"' % (
-                        list(encoder.fields - depends), mname, fname))
-                assert depends <= set(model._fields), (
-                    'Unknown depends %s in "%s"."%s"' % (
-                        list(depends - set(model._fields)), mname, fname))
+            def default(self, obj):
+                if isinstance(obj, Eval):
+                    fname = obj._value
+                    if not fname.startswith('_parent_'):
+                        self.fields.add(fname)
+                return super(Encoder, self).default(obj)
 
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for mname, model in Pool().iterobject():
+                # Don't test model not registered by the module
+                if not any(issubclass(model, cls) for cls in
+                        Pool().classes['model'][self.module]):
+                    continue
+                for fname, field in model._fields.iteritems():
+                    encoder = Encoder()
+                    encoder.encode(field.domain)
+                    if hasattr(field, 'digits'):
+                        encoder.encode(field.digits)
+                    if hasattr(field, 'add_remove'):
+                        encoder.encode(field.add_remove)
+                    encoder.fields.discard(fname)
+                    encoder.fields.discard('context')
+                    encoder.fields.discard('_user')
+                    depends = set(field.depends)
+                    assert encoder.fields <= depends, (
+                        'Missing depends %s in "%s"."%s"' % (
+                            list(encoder.fields - depends), mname, fname))
+                    assert depends <= set(model._fields), (
+                        'Unknown depends %s in "%s"."%s"' % (
+                            list(depends - set(model._fields)), mname, fname))
 
-def test_menu_action(module_name):
-    "Test that menu actions are accessible to menu's group"
-    with Transaction().start(DB_NAME, USER, context=CONTEXT):
-        pool = Pool()
-        Menu = pool.get('ir.ui.menu')
-        ModelData = pool.get('ir.model.data')
+    def test_menu_action(self):
+        'Test that menu actions are accessible to menu\'s group'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Menu = pool.get('ir.ui.menu')
+            ModelData = pool.get('ir.model.data')
 
-        module_menus = ModelData.search([
-                ('model', '=', 'ir.ui.menu'),
-                ('module', '=', module_name),
-                ])
-        menus = Menu.browse([mm.db_id for mm in module_menus])
-        for menu, module_menu in zip(menus, module_menus):
-            if not menu.action_keywords:
-                continue
-            menu_groups = set(menu.groups)
-            actions_groups = reduce(operator.or_,
-                (set(k.action.groups) for k in menu.action_keywords
-                    if k.keyword == 'tree_open'))
-            if not actions_groups:
-                continue
-            assert menu_groups <= actions_groups, (
-                'Menu "%(menu_xml_id)s" actions are not accessible to '
-                '%(groups)s' % {
-                    'menu_xml_id': module_menu.fs_id,
-                    'groups': ','.join(g.name
-                        for g in menu_groups - actions_groups),
+            module_menus = ModelData.search([
+                    ('model', '=', 'ir.ui.menu'),
+                    ('module', '=', self.module),
+                    ])
+            menus = Menu.browse([mm.db_id for mm in module_menus])
+            for menu, module_menu in zip(menus, module_menus):
+                if not menu.action_keywords:
+                    continue
+                menu_groups = set(menu.groups)
+                actions_groups = reduce(operator.or_,
+                    (set(k.action.groups) for k in menu.action_keywords
+                        if k.keyword == 'tree_open'))
+                if not actions_groups:
+                    continue
+                assert menu_groups <= actions_groups, (
+                    'Menu "%(menu_xml_id)s" actions are not accessible to '
+                    '%(groups)s' % {
+                        'menu_xml_id': module_menu.fs_id,
+                        'groups': ','.join(g.name
+                            for g in menu_groups - actions_groups),
+                        })
+
+    def test_model_access(self):
+        'Test missing default model access'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            Access = POOL.get('ir.model.access')
+            no_groups = {a.model.name for a in Access.search([
+                        ('group', '=', None),
+                        ])}
+            with_groups = {a.model.name for a in Access.search([
+                        ('group', '!=', None),
+                        ])}
+
+            assert no_groups >= with_groups, (
+                'Model "%(models)s" are missing a default access' % {
+                    'models': list(with_groups - no_groups),
                     })
+
+
+class IrTestCase(ModuleTestCase):
+    'Test ir module'
+    module = 'ir'
+
+
+class ResTestCase(ModuleTestCase):
+    'Test res module'
+    module = 'res'
+
+
+class WebDAVTestCase(ModuleTestCase):
+    'Test webdav module'
+    module = 'webdav'
 
 
 def db_exist():
