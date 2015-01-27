@@ -7,17 +7,18 @@ from dateutil.relativedelta import relativedelta
 from decimal import Decimal
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 
-class StockLotTestCase(unittest.TestCase):
+class StockLotTestCase(ModuleTestCase):
     'Test Stock Lot module'
+    module = 'stock_lot'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('stock_lot')
+        super(StockLotTestCase, self).setUp()
         self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.uom = POOL.get('product.uom')
@@ -28,18 +29,6 @@ class StockLotTestCase(unittest.TestCase):
         self.user = POOL.get('res.user')
         self.period = POOL.get('stock.period')
         self.cache = POOL.get('stock.period.cache')
-
-    def test0005views(self):
-        'Test views'
-        test_view('stock_lot')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('stock_lot')
 
     def test0010products_by_location(self):
         'Test products_by_location'
