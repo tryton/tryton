@@ -10,6 +10,7 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
+import doctest
 from decimal import Decimal
 
 import trytond.tests.test_tryton
