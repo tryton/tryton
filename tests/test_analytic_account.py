@@ -4,34 +4,23 @@ import unittest
 import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class AnalyticAccountTestCase(unittest.TestCase):
+class AnalyticAccountTestCase(ModuleTestCase):
     'Test AnalyticAccount module'
+    module = 'analytic_account'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('analytic_account')
+        super(AnalyticAccountTestCase, self).setUp()
         self.fiscalyear = POOL.get('account.fiscalyear')
         self.journal = POOL.get('account.journal')
         self.move = POOL.get('account.move')
         self.account = POOL.get('account.account')
         self.analytic_account = POOL.get('analytic_account.account')
         self.party = POOL.get('party.party')
-
-    def test0005views(self):
-        'Test views'
-        test_view('analytic_account')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('analytic_account')
 
     def test0010account_debit_credit(self):
         'Test account debit/credit'
