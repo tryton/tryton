@@ -164,6 +164,7 @@ Create some moves::
 
 Create dunnings::
 
+    >>> config.user = dunning_user.id
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + relativedelta(days=5)
