@@ -2,32 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import (test_view, test_depends,
-    test_menu_action, POOL, DB_NAME, USER, CONTEXT)
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class BankTestCase(unittest.TestCase):
+class BankTestCase(ModuleTestCase):
     'Test Bank module'
+    module = 'bank'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('bank')
+        super(BankTestCase, self).setUp()
         self.bank = POOL.get('bank')
         self.party = POOL.get('party.party')
         self.account = POOL.get('bank.account')
         self.number = POOL.get('bank.account.number')
-
-    def test0005views(self):
-        'Test views'
-        test_view('bank')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('bank')
 
     def test0010iban_format(self):
         'Test IBAN format'
