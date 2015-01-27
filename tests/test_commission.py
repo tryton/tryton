@@ -5,23 +5,14 @@ from __future__ import unicode_literals
 import unittest
 import doctest
 
-from trytond.tests.test_tryton import install_module, test_view, test_depends,\
-    suite as test_suite, doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import suite as test_suite
+from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
 
-class CommissionTestCase(unittest.TestCase):
+class CommissionTestCase(ModuleTestCase):
     'Test Commission module'
-
-    def setUp(self):
-        install_module('commission')
-
-    def test0005views(self):
-        'Test views'
-        test_view('commission')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
+    module = 'commission'
 
 
 def suite():
