@@ -118,7 +118,7 @@ class ModuleTestCase(unittest.TestCase):
             for mname, model in Pool().iterobject():
                 # Don't test model not registered by the module
                 if not any(issubclass(model, cls) for cls in
-                        Pool().classes['model'][self.module]):
+                        Pool().classes['model'].get(self.module, [])):
                     continue
                 for fname, field in model._fields.iteritems():
                     encoder = Encoder()
