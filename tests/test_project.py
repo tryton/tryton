@@ -4,31 +4,21 @@ import unittest
 import doctest
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class ProjectTestCase(unittest.TestCase):
+class ProjectTestCase(ModuleTestCase):
     'Test Project module'
+    module = 'project'
 
     def setUp(self):
+        super(ProjectTestCase, self).setUp()
         trytond.tests.test_tryton.install_module('project')
         self.timesheet_work = POOL.get('timesheet.work')
         self.project_work = POOL.get('project.work')
         self.company = POOL.get('company.company')
-
-    def test0005views(self):
-        'Test views'
-        test_view('project')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('project')
 
     def test0010sum_tree(self):
         'Test sum_tree'
