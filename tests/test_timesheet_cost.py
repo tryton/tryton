@@ -6,34 +6,23 @@ import datetime
 from decimal import Decimal
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class TimesheetCostTestCase(unittest.TestCase):
+class TimesheetCostTestCase(ModuleTestCase):
     'Test TimesheetCost module'
+    module = 'timesheet_cost'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('timesheet_cost')
+        super(TimesheetCostTestCase, self).setUp()
         self.party = POOL.get('party.party')
         self.employee = POOL.get('company.employee')
         self.employee_cost_price = POOL.get('company.employee_cost_price')
         self.company = POOL.get('company.company')
         self.work = POOL.get('timesheet.work')
         self.line = POOL.get('timesheet.line')
-
-    def test0005views(self):
-        'Test views'
-        test_view('timesheet_cost')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('timesheet_cost')
 
     def test0010compute_cost_price(self):
         'Test compute_cost_price'
