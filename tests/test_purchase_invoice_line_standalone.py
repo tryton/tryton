@@ -3,28 +3,13 @@
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
 
-class PurchaseInvoiceLineStandaloneTestCase(unittest.TestCase):
+class PurchaseInvoiceLineStandaloneTestCase(ModuleTestCase):
     'Test PurchaseInvoiceLineStandalone module'
-
-    def setUp(self):
-        trytond.tests.test_tryton.install_module(
-                'purchase_invoice_line_standalone')
-
-    def test0005views(self):
-        'Test views'
-        test_view('purchase_invoice_line_standalone')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('purchase_invoice_line_standalone')
+    module = 'purchase_invoice_line_standalone'
 
 
 def suite():
