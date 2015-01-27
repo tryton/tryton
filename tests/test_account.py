@@ -7,17 +7,18 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from trytond.pool import Pool
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class AccountTestCase(unittest.TestCase):
+class AccountTestCase(ModuleTestCase):
     'Test Account module'
+    module = 'account'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('account')
+        super(AccountTestCase, self).setUp()
         self.account_template = POOL.get('account.account.template')
         self.tax_code_template = POOL.get('account.tax.code.template')
         self.tax_template = POOL.get('account.tax.code.template')
@@ -36,18 +37,6 @@ class AccountTestCase(unittest.TestCase):
             'account.fiscalyear.balance_non_deferral', type='wizard')
         self.tax = POOL.get('account.tax')
         self.party = POOL.get('party.party')
-
-    def test0005views(self):
-        'Test views'
-        test_view('account')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('account')
 
     def test0010account_chart(self):
         'Test creation of minimal chart of accounts'
