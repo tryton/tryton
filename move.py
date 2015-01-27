@@ -1058,10 +1058,11 @@ class Move(Workflow, ModelSQL, ModelView):
         # One that sums incoming moves towards locations, one that sums
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
-        move_keys = [Column(move, key).as_(key) for key in grouping]
+        move_keys_alias = [Column(move, key).as_(key) for key in grouping]
+        move_keys = [Column(move, key) for key in grouping]
         query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
-            *move_keys,
+            *move_keys_alias,
             where=state_date_clause_in
             & where
             & move.to_location.in_(location_query)
@@ -1071,7 +1072,7 @@ class Move(Workflow, ModelSQL, ModelView):
             group_by=[move.to_location] + move_keys)
         query = Union(query, move.select(move.from_location.as_('location'),
                 (-Sum(move.internal_quantity)).as_('quantity'),
-                *move_keys,
+                *move_keys_alias,
                 where=state_date_clause_out
                 & where
                 & move.from_location.in_(location_query)
