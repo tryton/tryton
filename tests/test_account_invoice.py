@@ -5,31 +5,20 @@ import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 
-class AccountInvoiceTestCase(unittest.TestCase):
+class AccountInvoiceTestCase(ModuleTestCase):
     'Test AccountInvoice module'
+    module = 'account_invoice'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('account_invoice')
+        super(AccountInvoiceTestCase, self).setUp()
         self.payment_term = POOL.get('account.invoice.payment_term')
         self.currency = POOL.get('currency.currency')
-
-    def test0005views(self):
-        'Test views'
-        test_view('account_invoice')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('account_invoice')
 
     def test0010payment_term(self):
         'Test payment_term'
