@@ -3,7 +3,6 @@
 import unittest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
 
 
 class AnalyticPurchaseTestCase(ModuleTestCase):
