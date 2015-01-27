@@ -6,7 +6,7 @@ from mock import patch
 import ldap
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_depends
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.config import config
@@ -16,20 +16,17 @@ from trytond.modules.ldap_authentication.res import parse_ldap_url
 section = 'ldap_authentication'
 
 
-class LDAPAuthenticationTestCase(unittest.TestCase):
+class LDAPAuthenticationTestCase(ModuleTestCase):
     'Test LDAPAuthentication module'
+    module = 'ldap_authentication'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('ldap_authentication')
+        super(LDAPAuthenticationTestCase, self).setUp()
         config.add_section(section)
         config.set(section, 'uri', 'ldap://localhost/dc=tryton,dc=org')
 
     def tearDown(self):
         config.remove_section(section)
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
 
     def test_user_get_login(self):
         'Test User.get_login'
