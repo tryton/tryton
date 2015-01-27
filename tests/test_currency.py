@@ -3,16 +3,17 @@
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class CurrencyTestCase(unittest.TestCase):
+class CurrencyTestCase(ModuleTestCase):
     'Test Currency module'
+    module = 'currency'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('currency')
+        super(CurrencyTestCase, self).setUp()
         self.rate = POOL.get('currency.currency.rate')
         self.currency = POOL.get('currency.currency')
         self.date = POOL.get('ir.date')
@@ -21,18 +22,6 @@ class CurrencyTestCase(unittest.TestCase):
         return self.currency.search([
             ('code', '=', code),
             ], limit=1)[0]
-
-    def test0005views(self):
-        'Test views'
-        test_view('currency')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('currency')
 
     def test0010currencies(self):
         'Create currencies'
