@@ -2,26 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 
 
-class ProductCostHistoryTestCase(unittest.TestCase):
+class ProductCostHistoryTestCase(ModuleTestCase):
     'Test ProductCostHistory module'
-
-    def setUp(self):
-        trytond.tests.test_tryton.install_module('product_cost_history')
-
-    def test0005views(self):
-        'Test views'
-        test_view('product_cost_history')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('product_cost_history')
+    module = 'product_cost_history'
 
 
 def suite():
