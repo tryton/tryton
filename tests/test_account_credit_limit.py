@@ -5,35 +5,23 @@ import doctest
 
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import (install_module, test_view, test_depends,
-    test_menu_action)
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError, UserWarning
 
 
-class AccountCreditLimitTestCase(unittest.TestCase):
+class AccountCreditLimitTestCase(ModuleTestCase):
     'Test AccountCreditLimit module'
+    module = 'account_credit_limit'
 
     def setUp(self):
-        install_module('account_credit_limit')
+        super(AccountCreditLimitTestCase, self).setUp()
         self.account = POOL.get('account.account')
         self.move = POOL.get('account.move')
         self.period = POOL.get('account.period')
         self.journal = POOL.get('account.journal')
         self.party = POOL.get('party.party')
-
-    def test0005views(self):
-        'Test views'
-        test_view('account_credit_limit')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('account_credit_limit')
 
     def test0010check_credit_limit(self):
         'Test check_credit_limit'
