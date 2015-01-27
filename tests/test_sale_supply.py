@@ -3,27 +3,13 @@
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
 
-class SaleSupplyTestCase(unittest.TestCase):
+class SaleSupplyTestCase(ModuleTestCase):
     'Test SaleSupply module'
-
-    def setUp(self):
-        trytond.tests.test_tryton.install_module('sale_supply')
-
-    def test0005views(self):
-        'Test views'
-        test_view('sale_supply')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('sale_supply')
+    module = 'sale_supply'
 
 
 def suite():
