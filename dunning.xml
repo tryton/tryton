@@ -62,6 +62,14 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_dunning_procedure_form"/>
 
         <record model="ir.model.access"
+            id="access_dunning_procedure">
+            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
             id="access_dunning_procedure_account_admin">
             <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
             <field name="group" ref="account.group_account_admin"/>
@@ -98,6 +106,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">dunning_level_list_sequence</field>
         </record>
 
+        <record model="ir.model.access" id="access_dunning_level">
+            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access"
             id="access_dunning_level_account_admin">
             <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
@@ -203,6 +218,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_dunning"/>
         </record>
 
+        <record model="ir.model.access" id="access_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access"
             id="access_dunning_account_admin">
             <field name="model" search="[('model', '=', 'account.dunning')]"/>
