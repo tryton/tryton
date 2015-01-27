@@ -58,6 +58,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_payment_journal"/>
         </record>
 
+        <record model="ir.model.access" id="access_payment_journal">
+            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access" id="access_payment_journal_account_admin">
             <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
             <field name="group" ref="account.group_account_admin"/>
@@ -113,6 +120,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_payment_group"/>
         </record>
 
+        <record model="ir.model.access" id="access_payment_group">
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access" id="access_payment_group_account_admin">
             <field name="model" search="[('model', '=', 'account.payment.group')]"/>
             <field name="group" ref="account.group_account_admin"/>
@@ -276,6 +290,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_payment_form_group_open"/>
         </record>
 
+        <record model="ir.model.access" id="access_payment">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access" id="access_payment_account_admin">
             <field name="model" search="[('model', '=', 'account.payment')]"/>
             <field name="group" ref="account.group_account_admin"/>
