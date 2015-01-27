@@ -5,16 +5,17 @@ import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends, test_menu_action
+from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 
 
-class StockSupplyDayTestCase(unittest.TestCase):
+class StockSupplyDayTestCase(ModuleTestCase):
     'Test StockSupplyDay module'
+    module = 'stock_supply_day'
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('stock_supply_day')
+        super(StockSupplyDayTestCase, self).setUp()
         self.uom = POOL.get('product.uom')
         self.uom_category = POOL.get('product.uom.category')
         self.category = POOL.get('product.category')
@@ -26,18 +27,6 @@ class StockSupplyDayTestCase(unittest.TestCase):
         self.product_supplier = POOL.get('purchase.product_supplier')
         self.product_supplier_day = POOL.get('purchase.product_supplier.day')
         self.user = POOL.get('res.user')
-
-    def test0005views(self):
-        'Test views'
-        test_view('stock_supply_day')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
-
-    def test0007menu_actions(self):
-        'Test menu actions'
-        test_menu_action('stock_supply_day')
 
     def test0010compute_supply_date(self):
         'Test compute_supply_date'
