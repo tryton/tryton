@@ -250,7 +250,7 @@ def all_suite(modules=None):
     return suite_
 
 
-def modules_suite(modules=None):
+def modules_suite(modules=None, doc=True):
     '''
     Return all tests suite of all modules
     '''
@@ -291,7 +291,8 @@ def modules_suite(modules=None):
     doc_tests = []
     for test in suite_:
         if isinstance(test, doctest.DocTestCase):
-            doc_tests.append(test)
+            if doc:
+                doc_tests.append(test)
         else:
             tests.append(test)
     tests.extend(doc_tests)
