@@ -77,8 +77,8 @@ _fieldnames = ['country', 'postal', 'place', 'name1', 'code1',
     'name2', 'code2', 'name3', 'code3', 'latitude', 'longitude', 'accuracy']
 
 
-def main(database, password, codes, config_file=None):
-    config.set_trytond(database, password=password, config_file=config_file)
+def main(database, codes, config_file=None):
+    config.set_trytond(database, config_file=config_file)
 
     for code in codes:
         print >> sys.stderr, code
@@ -88,8 +88,6 @@ def main(database, password, codes, config_file=None):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('-p', '--password', dest='password', default='admin',
-        help='admin password (default: %(default)s)')
     parser.add_argument('-d', '--database', dest='database')
     parser.add_argument('-c', '--config', dest='config_file',
         help='the trytond config file')
@@ -98,4 +96,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not args.database:
         parser.error('Missing database')
-    main(args.database, args.password, args.codes, args.config_file)
+    main(args.database, args.codes, args.config_file)
