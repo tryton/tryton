@@ -144,6 +144,11 @@ class Move(ModelSQL, ModelView):
     def on_change_with_date(self):
         Line = Pool().get('account.move.line')
         date = self.date
+        if date:
+            if self.period and not (
+                    self.period.start_date <= date <= self.period.end_date):
+                date = self.period.start_date
+            return date
         lines = Line.search([
                 ('journal', '=', self.journal),
                 ('period', '=', self.period),
