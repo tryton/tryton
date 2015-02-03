@@ -499,9 +499,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         for name, field in cls._fields.iteritems():
             if name in ('id', 'opportunity', 'date', 'user'):
                 continue
-            try:
-                field.sql_type()
-            except NotImplementedError:
+            if hasattr(field, 'set'):
                 continue
             column = Column(opportunity_history, name)
             columns.append(column.as_(name))
