@@ -25,6 +25,9 @@ class CellRendererText(gtk.GenericCellRenderer):
             'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
         'strikethrough': (gobject.TYPE_BOOLEAN, 'Strikethrough',
             'Strikethrough', False, gobject.PARAM_WRITABLE),
+        'single-paragraph-mode': (gobject.TYPE_BOOLEAN,
+            'Single Paragraph Mode', 'Single Paragraph Mode', False,
+            gobject.PARAM_WRITABLE),
         }
 
     def __init__(self):

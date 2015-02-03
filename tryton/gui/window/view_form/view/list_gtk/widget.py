@@ -164,10 +164,10 @@ class Affix(object):
             webbrowser.open(value, new=2)
 
 
-class Char(object):
+class GenericText(object):
 
     def __init__(self, view, attrs, renderer=None):
-        super(Char, self).__init__()
+        super(GenericText, self).__init__()
         self.attrs = attrs
         if renderer is None:
             renderer = CellRendererText
@@ -284,7 +284,16 @@ class Char(object):
         return record, field
 
 
-class Int(Char):
+class Char(GenericText):
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_):
+        super(Char, self).setter(column, cell, store, iter_)
+        cell.set_property('single-paragraph-mode', True)
+
+
+class Int(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
@@ -305,7 +314,7 @@ class Int(Char):
             callback()
 
 
-class Boolean(Char):
+class Boolean(GenericText):
 
     def __init__(self, view, attrs=None,
             renderer=None):
@@ -339,7 +348,7 @@ class URL(Char):
         cell.set_property('visible', not readonly)
 
 
-class Date(Char):
+class Date(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
@@ -408,7 +417,7 @@ class Float(Int):
         cell.digits = digits
 
 
-class FloatTime(Char):
+class FloatTime(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
         super(FloatTime, self).__init__(view, attrs, renderer=renderer)
@@ -429,7 +438,7 @@ class FloatTime(Char):
             callback()
 
 
-class Binary(Char):
+class Binary(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
         self.filename = attrs.get('filename')
@@ -532,7 +541,7 @@ class Binary(Char):
         field.set_client(record, False)
 
 
-class Image(Char):
+class Image(GenericText):
 
     def __init__(self, view, attrs=None, renderer=None):
         if renderer is None:
@@ -559,7 +568,7 @@ class Image(Char):
         cell.set_property('pixbuf', pixbuf)
 
 
-class M2O(Char):
+class M2O(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
         if renderer is None and int(attrs.get('completion', 1)):
@@ -693,7 +702,7 @@ class O2O(M2O):
     pass
 
 
-class O2M(Char):
+class O2M(GenericText):
 
     @realized
     def setter(self, column, cell, store, iter):
@@ -751,7 +760,7 @@ class M2M(O2M):
             context=context)
 
 
-class Selection(Char, SelectionMixin, PopdownMixin):
+class Selection(GenericText, SelectionMixin, PopdownMixin):
 
     def __init__(self, *args):
         super(Selection, self).__init__(*args)
@@ -803,7 +812,7 @@ class Selection(Char, SelectionMixin, PopdownMixin):
         return False
 
 
-class Reference(Char, SelectionMixin):
+class Reference(GenericText, SelectionMixin):
 
     def __init__(self, view, attrs, renderer=None):
         super(Reference, self).__init__(view, attrs, renderer=renderer)
