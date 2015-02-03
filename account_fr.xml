@@ -6870,7 +6870,9 @@
         <record model="account.account.template" id="58">
             <field name="name">Virements internes</field>
             <field name="code">58</field>
-            <field name="kind">view</field>
+            <field name="type" ref="disponibilites"/>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
             <field name="parent" ref="5"/>
         </record>
         <record model="account.account.template" id="59">
