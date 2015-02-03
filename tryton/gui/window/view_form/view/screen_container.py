@@ -28,9 +28,14 @@ class Dates(gtk.HBox):
             self.from_.props.format = format_
             self.to.props.format = format_
 
+    def _get_value(self, widget):
+        value = widget.props.value
+        if value:
+            return common.datetime_strftime(value, widget.props.format)
+
     def get_value(self):
-        from_ = self.from_.props.value
-        to = self.to.props.value
+        from_ = self._get_value(self.from_)
+        to = self._get_value(self.to)
         if from_ and to:
             if from_ != to:
                 return '%s..%s' % (quote(from_), quote(to))
@@ -45,11 +50,19 @@ class Dates(gtk.HBox):
         self.from_.connect('activate', callback)
         self.to.connect('activate', callback)
 
+    def set_values(self, from_, to):
+        self.from_.props.value = from_
+        self.to.props.value = to
+
 
 class Times(Dates):
 
     def __init__(self, format_, _entry=Time):
         super(Times, self).__init__(_entry=_entry)
+
+    def connect_activate(self, callback):
+        for widget in self.from_.get_children() + self.to.get_children():
+            widget.child.connect('activate', callback)
 
 
 class DateTimes(Dates):
@@ -61,9 +74,18 @@ class DateTimes(Dates):
         self.from_.props.time_format = time_format
         self.to.props.time_format = time_format
 
+    def _get_value(self, widget):
+        value = widget.props.value
+        if value:
+            return common.datetime_strftime(value,
+                widget.props.date_format + ' ' + widget.props.time_format)
+
     def connect_activate(self, callback):
         for widget in self.from_.get_children() + self.to.get_children():
-            widget.connect('activate', callback)
+            if isinstance(widget, Date):
+                widget.connect('activate', callback)
+            elif isinstance(widget, Time):
+                widget.child.connect('activate', callback)
 
 
 class Selection(gtk.ScrolledWindow):
@@ -447,8 +469,10 @@ class ScreenContainer(object):
                 if value is not None:
                     text += quote(label) + ': ' + value + ' '
             self.set_text(text)
-            self.last_search_text = self.get_text()
             self.do_search()
+            # Store text after doing the search
+            # because domain parser could simplify the text
+            self.last_search_text = self.get_text()
 
         if not self.search_window:
             self.search_window = gtk.Window()
@@ -563,8 +587,7 @@ class ScreenContainer(object):
                     if isinstance(entry, gtk.ComboBox):
                         entry.set_active(-1)
                     elif isinstance(entry, Dates):
-                        entry.from_.set_text('')
-                        entry.to.set_text('')
+                        entry.set_values(None, None)
                     elif isinstance(entry, Selection):
                         entry.treeview.get_selection().unselect_all()
                     else:
