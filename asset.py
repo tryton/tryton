@@ -5,17 +5,23 @@ import calendar
 from decimal import Decimal
 from dateutil import relativedelta
 from dateutil import rrule
+from itertools import groupby
+from cached_property import cached_property
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.wizard import (Wizard, StateView, StateTransition, StateAction,
+    Button)
 from trytond.tools import grouped_slice
+from trytond.modules.company import CompanyReport
 
 __all__ = ['Asset', 'AssetLine', 'AssetUpdateMove',
     'CreateMovesStart', 'CreateMoves',
-    'UpdateAssetStart', 'UpdateAssetShowDepreciation', 'UpdateAsset']
+    'UpdateAssetStart', 'UpdateAssetShowDepreciation', 'UpdateAsset',
+    'AssetDepreciationTable',
+    'PrintDepreciationTableStart', 'PrintDepreciationTable']
 
 
 def date2datetime(date):
@@ -811,3 +817,198 @@ class UpdateAsset(Wizard):
                 })
         Asset.create_lines([asset])
         return 'end'
+
+
+class AssetDepreciationTable(CompanyReport):
+    'Asset Depreciation Table'
+    __name__ = 'account.asset.depreciation_table'
+
+    @classmethod
+    def get_context(cls, records, data):
+        context = super(AssetDepreciationTable, cls).get_context(records, data)
+
+        AssetDepreciation = cls.get_asset_depreciation()
+        AssetDepreciation.start_date = data['start_date']
+        AssetDepreciation.end_date = data['end_date']
+        Grouper = cls.get_grouper()
+        grouped_assets = groupby(sorted(records, key=cls.group_assets),
+            cls.group_assets)
+        context['grouped_depreciations'] = grouped_depreciations = []
+        for g_key, assets in grouped_assets:
+            depreciations = [AssetDepreciation(a) for a in assets]
+            grouped_depreciations.append(Grouper(g_key, depreciations))
+
+        return context
+
+    @staticmethod
+    def group_assets(asset):
+        return asset.product
+
+    @classmethod
+    def get_grouper(cls):
+
+        class Grouper(object):
+            def __init__(self, key, depreciations):
+                self.product = key
+                self.depreciations = depreciations
+                for attr_name in self.grouped_attributes():
+                    setattr(self, attr_name,
+                        cached_property(self.adder(attr_name)))
+
+            def adder(self, attr_name):
+                def _sum(self):
+                    return sum(getattr(d, attr_name)
+                        for d in self.depreciations if getattr(d, attr_name))
+                return _sum
+
+            @staticmethod
+            def grouped_attributes():
+                return {
+                    'start_fixed_value',
+                    'value_increase',
+                    'value_decrease',
+                    'end_fixed_value',
+                    'start_value',
+                    'amortization_increase',
+                    'amortization_decrease',
+                    'end_value',
+                    'actual_value',
+                    'closing_value',
+                    }
+
+        return Grouper
+
+    @classmethod
+    def get_asset_depreciation(cls):
+
+        class AssetDepreciation(object):
+            def __init__(self, asset):
+                self.asset = asset
+
+            @cached_property
+            def asset_lines(self):
+                return filter(
+                    lambda l: self.start_date < l.date <= self.end_date,
+                    self.asset.lines)
+
+            @cached_property
+            def update_lines(self):
+                filter_ = lambda l: (l.account.kind == 'other'
+                    and self.start_date < l.move.date <= self.end_date)
+                return filter(filter_,
+                    (l for m in self.asset.update_moves for l in m.lines))
+
+            @cached_property
+            def start_fixed_value(self):
+                if self.start_date < self.asset.start_date:
+                    return 0
+                value = self.asset_lines[0].acquired_value
+                date = self.asset_lines[0].date
+                for line in self.update_lines:
+                    if line.move.date < date:
+                        value += line.debit - line.credit
+                return value
+
+            @cached_property
+            def value_increase(self):
+                value = sum(l.debit - l.credit for l in self.update_lines
+                    if l.debit > l.credit)
+                if self.start_date < self.asset.start_date:
+                    value += self.asset_lines[0].acquired_value
+                return value
+
+            @cached_property
+            def value_decrease(self):
+                return sum(l.credit - l.debit for l in self.update_lines
+                    if l.credit > l.debit)
+
+            @cached_property
+            def end_fixed_value(self):
+                value = self.asset_lines[-1].acquired_value
+                date = self.asset_lines[-1].date
+                for line in self.update_lines:
+                    if line.move.date > date:
+                        value += line.debit - line.credit
+                return value
+
+            @cached_property
+            def start_value(self):
+                return (self.asset_lines[0].actual_value
+                    + self.asset_lines[0].depreciation)
+
+            @cached_property
+            def amortization_increase(self):
+                return sum(l.depreciation for l in self.asset_lines
+                    if l.depreciation > 0)
+
+            @cached_property
+            def amortization_decrease(self):
+                return sum(l.depreciation for l in self.asset_lines
+                    if l.depreciation < 0)
+
+            @cached_property
+            def end_value(self):
+                return self.asset_lines[-1].actual_value
+
+            @cached_property
+            def actual_value(self):
+                value = self.end_value
+                date = self.asset_lines[-1].date
+                value += sum(l.debit - l.credit for l in self.update_lines
+                    if l.move.date > date)
+                return value
+
+            @cached_property
+            def closing_value(self):
+                if not self.asset.move:
+                    return None
+                revenue_lines = [l for l in self.asset.move.lines
+                    if l.account == self.asset.product.account_revenue_used]
+                return sum(l.debit - l.credit for l in revenue_lines)
+
+        return AssetDepreciation
+
+
+class PrintDepreciationTableStart(ModelView):
+    'Asset Depreciation Table Start'
+    __name__ = 'account.asset.print_depreciation_table.start'
+
+    start_date = fields.Date('Start Date', required=True,
+        domain=[('start_date', '<', Eval('end_date'))],
+        depends=['end_date'])
+    end_date = fields.Date('End Date', required=True,
+        domain=[('end_date', '>', Eval('start_date'))],
+        depends=['start_date'])
+
+    @staticmethod
+    def default_start_date():
+        return datetime.date.today() - relativedelta.relativedelta(years=1)
+
+    @staticmethod
+    def default_end_date():
+        return datetime.date.today()
+
+
+class PrintDepreciationTable(Wizard):
+    'Asset Depreciation Table'
+    __name__ = 'account.asset.print_depreciation_table'
+    start = StateView('account.asset.print_depreciation_table.start',
+        'account_asset.print_depreciation_table_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account_asset.report_depreciation_table')
+
+    def do_print_(self, action):
+        pool = Pool()
+        Asset = pool.get('account.asset')
+        assets = Asset.search([
+                ('start_date', '<', self.start.end_date),
+                ('end_date', '>', self.start.start_date),
+                ('state', '=', 'running'),
+                ])
+        return action, {
+            'ids': [a.id for a in assets],
+            'start_date': self.start.start_date,
+            'end_date': self.start.end_date,
+            }

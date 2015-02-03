@@ -5,6 +5,8 @@ Prerequisites
 -------------
 
  * Python 2.7 or later (http://www.python.org/)
+ * python-dateutil (http://labix.org/python-dateutil)
+ * cached-property (https://github.com/pydanny/cached-property)
  * trytond (http://www.tryton.org/)
  * trytond_account (http://www.tryton.org/)
  * trytond_account_product (http://www.tryton.org/)

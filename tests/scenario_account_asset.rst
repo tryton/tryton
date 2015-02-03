@@ -258,3 +258,9 @@ Sale the asset::
     Decimal('339.28')
     >>> depreciation_account.credit
     Decimal('239.28')
+
+Generate the asset report::
+
+    >>> print_depreciation_table = Wizard(
+    ...     'account.asset.print_depreciation_table')
+    >>> print_depreciation_table.execute('print_')

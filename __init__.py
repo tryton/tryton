@@ -16,6 +16,7 @@ def register():
         CreateMovesStart,
         UpdateAssetStart,
         UpdateAssetShowDepreciation,
+        PrintDepreciationTableStart,
         Category,
         Template,
         InvoiceLine,
@@ -26,4 +27,8 @@ def register():
     Pool.register(
         CreateMoves,
         UpdateAsset,
+        PrintDepreciationTable,
         module='account_asset', type_='wizard')
+    Pool.register(
+        AssetDepreciationTable,
+        module='account_asset', type_='report')

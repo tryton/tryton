@@ -185,6 +185,27 @@
         </record>
         <menuitem name="Create Assets Moves" parent="menu_asset" sequence="10"
             action="wizard_create_moves" id="menu_create_moves"/>
+
+        <record model="ir.action.report" id="report_depreciation_table">
+            <field name="name">Depreciation Table</field>
+            <field name="model">account.asset</field>
+            <field name="report_name">account.asset.depreciation_table</field>
+            <field name="report">account_asset/asset_table.odt</field>
+        </record>
+        <record model="ir.ui.view"
+            id="print_depreciation_table_start_view_form">
+            <field name="model">account.asset.print_depreciation_table.start</field>
+            <field name="type">form</field>
+            <field name="name">print_depreciation_table_start</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_print_depreciation_table">
+            <field name="name">Print Depreciation Table</field>
+            <field name="wiz_name">account.asset.print_depreciation_table</field>
+        </record>
+        <menuitem name="Print Depreciation Table" icon="tryton-print"
+            parent="account.menu_reporting"
+            action="wizard_print_depreciation_table"
+            id="menu_create_depreciation_table"/>
     </data>
     <data noupdate="1">
         <record model="account.journal" id="journal_asset">
