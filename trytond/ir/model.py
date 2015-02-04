@@ -170,7 +170,7 @@ class Model(ModelSQL, ModelView):
     def global_search(cls, text, limit, menu='ir.ui.menu'):
         """
         Search on models for text including menu
-        Returns a list of tuple (ratio, model, model_name, id, rec_name, icon)
+        Returns a list of tuple (ratio, model, model_name, id, name, icon)
         The size of the list is limited to limit
         """
         pool = Pool()
@@ -196,12 +196,12 @@ class Model(ModelSQL, ModelView):
                 Model = pool.get(model.model)
                 if not hasattr(Model, 'search_global'):
                     continue
-                for id_, rec_name, icon in Model.search_global(text):
-                    if isinstance(rec_name, str):
-                        rec_name = rec_name.decode('utf-8')
-                    s.set_seq1(rec_name)
+                for record, name, icon in Model.search_global(text):
+                    if isinstance(name, str):
+                        name = name.decode('utf-8')
+                    s.set_seq1(name)
                     yield (s.ratio(), model.model, model.rec_name,
-                        id_, rec_name, icon)
+                        record.id, name, icon)
         return heapq.nlargest(int(limit), generate())
 
 

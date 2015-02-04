@@ -171,7 +171,7 @@ class UIMenu(ModelSQL, ModelView):
                     ('rec_name', 'ilike', '%%%s%%' % text),
                     ]):
             if record.action:
-                yield record.id, record.rec_name, record.icon
+                yield record, record.rec_name, record.icon
 
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False,

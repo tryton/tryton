@@ -1,3 +1,4 @@
+* search_global yields record instead of id
 * Add ModelTestCase
 * Add test for missing default model access
 * Report API refactorization

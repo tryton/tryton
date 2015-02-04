@@ -289,7 +289,7 @@ Class methods:
 
 .. classmethod:: ModelStorage.search_global(cls, text)
 
-    Yield tuples (id, rec_name, icon) for records matching text.
+    Yield tuples (record, name, icon) for records matching text.
     It is used for the global search.
 
 .. classmethod:: ModelStorage.browse(ids)

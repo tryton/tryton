@@ -426,13 +426,13 @@ class ModelStorage(Model):
     @classmethod
     def search_global(cls, text):
         '''
-        Yield tuples (id, rec_name, icon) for text
+        Yield tuples (record, name, icon) for text
         '''
         # TODO improve search clause
         for record in cls.search([
                     ('rec_name', 'ilike', '%%%s%%' % text),
                     ]):
-            yield record.id, record.rec_name, None
+            yield record, record.rec_name, None
 
     @classmethod
     def browse(cls, ids):
