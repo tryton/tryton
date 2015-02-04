@@ -528,7 +528,8 @@ class WebDAVAuthRequestHandler(WebDAVServer.DAVRequestHandler):
         dbname = Transaction().cursor.database_name
         Transaction().stop()
         if dbname:
-            Cache.resets(dbname)
+            with Transaction().start(dbname, 0):
+                Cache.resets(dbname)
 
     def parse_request(self):
         if not BaseHTTPServer.BaseHTTPRequestHandler.parse_request(self):
@@ -581,7 +582,7 @@ class WebDAVAuthRequestHandler(WebDAVServer.DAVRequestHandler):
             if not user:
                 return None
 
-        Transaction().start(dbname, user, {
+        Transaction().start(dbname, user, context={
                 '_check_access': True,
                 })
         Cache.clean(dbname)
