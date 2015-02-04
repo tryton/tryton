@@ -140,7 +140,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_france_continentale_taux_particulier_base">
+            id="tax_code_imposable_france_continentale_taux_particulier_base">
             <field name="name">Opérations imposables en France continentale à un taux particulier</field>
             <field name="parent" ref="tax_code_0950b"/>
             <field name="account" ref="root"/>
@@ -161,7 +161,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_corse_taux_particulier_base">
+            id="tax_code_imposable_corse_taux_particulier_base">
             <field name="name">Opérations imposables en Corse à un taux particulier</field>
             <field name="parent" ref="tax_code_0950b"/>
             <field name="account" ref="root"/>
@@ -203,7 +203,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_dom_taux_particulier_base">
+            id="tax_code_imposable_dom_taux_particulier_base">
             <field name="name">Opérations imposables dans les DOM à un taux particulier</field>
             <field name="parent" ref="tax_code_0950b"/>
             <field name="account" ref="root"/>
@@ -356,7 +356,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_france_continentale_taux_particulier">
+            id="tax_code_imposable_france_continentale_taux_particulier">
             <field name="name">Opérations imposables en France continentale à un taux particulier</field>
             <field name="parent" ref="tax_code_0950"/>
             <field name="account" ref="root"/>
@@ -377,7 +377,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_corse_taux_particulier">
+            id="tax_code_imposable_corse_taux_particulier">
             <field name="name">Opérations imposables en Corse à un taux particulier</field>
             <field name="parent" ref="tax_code_0950"/>
             <field name="account" ref="root"/>
@@ -419,7 +419,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-	        id="tax_code_imposable_dom_taux_particulier">
+            id="tax_code_imposable_dom_taux_particulier">
             <field name="name">Opérations imposables dans les DOM à un taux particulier</field>
             <field name="parent" ref="tax_code_0950"/>
             <field name="account" ref="root"/>
@@ -1278,8 +1278,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-	<record model="account.tax.template"
-	    id="tva_achat_immobilisations_taux_intermediaire">
+    <record model="account.tax.template"
+        id="tva_achat_immobilisations_taux_intermediaire">
             <field name="name">T.V.A. Achat Immobilisations Taux Intermédiaire</field>
             <field name="description">T.V.A. Taux Intermédiaire</field>
             <field name="group" ref="group_tva_achat"/>
@@ -1299,8 +1299,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.template" id="tva_achat_immobilisations_10">
             <field name="name">T.V.A. Achat 10%</field>
             <field name="description">T.V.A. 10%</field>
-	    <field name="parent"
-	        ref="tva_achat_immobilisations_taux_intermediaire"/>
+        <field name="parent"
+            ref="tva_achat_immobilisations_taux_intermediaire"/>
             <field name="start_date">2014-01-01</field>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
@@ -1315,8 +1315,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.template" id="tva_achat_immobilisations_7">
             <field name="name">T.V.A. Achat Immobilisations 7%</field>
             <field name="description">T.V.A. 7%</field>
-	    <field name="parent"
-	        ref="tva_achat_immobilisations_taux_intermediaire"/>
+        <field name="parent"
+            ref="tva_achat_immobilisations_taux_intermediaire"/>
             <field name="end_date">2013-12-31</field>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
