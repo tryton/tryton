@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Product Cost History">
     <field name="template"/>
-    <field name="date"/>
+    <field name="date" widget="date"/>
+    <field name="date" widget="time" string="Time"/>
     <field name="cost_price"/>
 </tree>
