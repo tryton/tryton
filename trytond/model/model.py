@@ -92,6 +92,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         '''
         Returns the first non-empty line of the model docstring.
         '''
+        assert cls.__doc__, '%s has no docstring' % cls
         lines = cls.__doc__.splitlines()
         for line in lines:
             line = line.strip()
