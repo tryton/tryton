@@ -33,7 +33,8 @@ class Date(Widget):
         return self.entry
 
     def _set_editable(self, value):
-        self.real_entry.set_editable(value)
+        self.entry.set_editable(value)
+        self.entry.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
 
     def _readonly_set(self, value):
         self._set_editable(not value)
@@ -79,6 +80,12 @@ class Time(Date):
         super(Time, self).__init__(view, attrs, _entry=TimeEntry)
         self.entry.set_focus_chain([self.entry.get_child()])
 
+    def _color_widget(self):
+        return self.entry.child
+
+    def _set_editable(self, value):
+        self.entry.set_sensitive(value)
+
     @property
     def real_entry(self):
         return self.entry.get_child()
@@ -112,14 +119,13 @@ class DateTime(Date):
             child.connect('focus-out-event', lambda x, y: self._focus_out())
         self.widget.pack_start(self.entry, expand=False, fill=False)
 
-    def _color_widget(self):
-        return self.entry.get_children()[0]  # XXX not always sure to have Date
-
     def _set_editable(self, value):
         for child in self.entry.get_children():
-            if not hasattr(child, 'set_editable'):
-                child = child.child
-            child.set_editable(value)
+            if isinstance(child, gtk.Entry):
+                child.set_editable(value)
+                child.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
+            elif isinstance(child, gtk.ComboBoxEntry):
+                child.set_sensitive(value)
 
     def set_format(self, record, field):
         if field and record:

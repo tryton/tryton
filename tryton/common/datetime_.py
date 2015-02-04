@@ -435,6 +435,22 @@ class DateTime(gtk.HBox):
         elif prop.name == 'time-format':
             return self.__time.props.format
 
+    def modify_bg(self, state, color):
+        self.__date.modify_bg(state, color)
+        self.__time.child.modify_bg(state, color)
+
+    def modify_base(self, state, color):
+        self.__date.modify_base(state, color)
+        self.__time.child.modify_base(state, color)
+
+    def modify_fg(self, state, color):
+        self.__date.modify_fg(state, color)
+        self.__time.child.modify_fg(state, color)
+
+    def modify_text(self, state, color):
+        self.__date.modify_text(state, color)
+        self.__time.child.modify_text(state, color)
+
 gobject.type_register(DateTime)
 
 
