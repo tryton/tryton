@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="tax_rule_line_template_view_form">
+            <field name="model">account.tax.rule.line.template</field>
+            <field name="inherit"
+                ref="account.tax_rule_line_template_view_form"/>
+            <field name="name">tax_rule_line_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_template_view_tree">
+            <field name="model">account.tax.rule.line.template</field>
+            <field name="inherit"
+                ref="account.tax_rule_line_template_view_tree"/>
+            <field name="name">tax_rule_line_template_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_form">
+            <field name="model">account.tax.rule.line</field>
+            <field name="inherit" ref="account.tax_rule_line_view_form"/>
+            <field name="name">tax_rule_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_tree">
+            <field name="model">account.tax.rule.line</field>
+            <field name="inherit" ref="account.tax_rule_line_view_tree"/>
+            <field name="name">tax_rule_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_tree_sequence">
+            <field name="model">account.tax.rule.line</field>
+            <field name="inherit"
+                ref="account.tax_rule_line_view_tree_sequence"/>
+            <field name="name">tax_rule_line_tree_sequence</field>
+        </record>
+
+    </data>
+</tryton>
