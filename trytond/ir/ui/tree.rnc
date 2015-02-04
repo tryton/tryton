@@ -61,6 +61,7 @@ attlist.field &=
 attlist.field &= attribute float_time { text }?
 attlist.field &= [a:defaultValue = "0"] attribute pre_validate { "0" | "1" }?
 attlist.field &= [a:defaultValue = "1"] attribute completion { "0" | "1" }?
+attlist.field &= attribute string { text }?
 attlist.field &= [a:defaultValue = "1"] attribute factor { text }?
 attlist.field &= attribute filename { text }?
 prefix = element prefix { attlist.affix, empty }
