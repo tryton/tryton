@@ -546,7 +546,7 @@ class ViewTree(View):
                 column.arrow.hide()
         model = self.treeview.get_model()
         unsaved_records = [x for x in model.group if x.id < 0]
-        search_string = self.screen.screen_container.get_text() or None
+        search_string = self.screen.screen_container.get_text() or u''
         if (self.screen.search_count == len(model)
                 or unsaved_records
                 or self.screen.parent):
