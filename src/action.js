@@ -196,7 +196,7 @@
                 'method': 'model.' + type + '.search_read',
                 'params': [[['action', '=', id]], 0, 1, null, null, context]
             }, Sao.Session.current_session).done(function(result) {
-                Sao.Action.exec_action(result[0], data);
+                Sao.Action.exec_action(result[0], data, context);
             });
         }
     };
