@@ -8,7 +8,6 @@ import datetime
 import time
 import sys
 import threading
-import math
 
 _FIX_ROWCOUNT = False
 try:
@@ -140,7 +139,12 @@ class SQLiteCharLength(Function):
 
 
 def sign(value):
-    return math.copysign(1, value)
+    if value > 0:
+        return 1
+    elif value < 0:
+        return -1
+    else:
+        return value
 
 
 MAPPING = {
