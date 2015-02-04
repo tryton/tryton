@@ -181,9 +181,9 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def search_global(cls, text):
-        for id_, rec_name, icon in super(Work, cls).search_global(text):
+        for record, rec_name, icon in super(Work, cls).search_global(text):
             icon = icon or 'tryton-clock'
-            yield id_, rec_name, icon
+            yield record, rec_name, icon
 
 
 class OpenWorkStart(ModelView):
