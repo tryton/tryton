@@ -124,9 +124,9 @@ class Template(ModelSQL, ModelView):
 
     @classmethod
     def search_global(cls, text):
-        for id_, rec_name, icon in super(Template, cls).search_global(text):
+        for record, rec_name, icon in super(Template, cls).search_global(text):
             icon = icon or 'tryton-product'
-            yield id_, rec_name, icon
+            yield record, rec_name, icon
 
 
 class Product(ModelSQL, ModelView):
