@@ -68,7 +68,7 @@ class Action(object):
                     action, = actions()
                 except RPCException:
                     return
-                Action._exec_action(action, data)
+                Action._exec_action(action, data, context=context)
 
             RPCExecute('model', action_type, 'search_read',
                 [('action', '=', act_id)], 0, 1, None, None,
