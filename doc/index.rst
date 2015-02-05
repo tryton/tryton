@@ -78,7 +78,7 @@ An Account is defined by these fields:
   - Other: For other accounts.
 
 - Type: The Account Type of the account.
-- Deferral: A checkbox. If set to true, credits and debits are carried
+- Deferral: A checkbox. If set to true, credit and debit are carried
   over form fiscal year to fiscal year.
 - Second currency: Force all moves for the account to have this
   secondary currency.
