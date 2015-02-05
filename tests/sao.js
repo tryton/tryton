@@ -162,7 +162,7 @@
         }, 'must have at least 2 statements', 'And([])');
         QUnit.throws(function() {
             new Sao.PYSON.And();
-        }, 'must have at least 2 statements', 'And([])');
+        }, 'must have at least 2 statements', 'And()');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.And([true, false]).types(),
                     ['boolean']), 'And([true, false]).types()');
@@ -768,12 +768,12 @@
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20,
-                    0, 0, 0, 0, 0, 0, 0, 200));
+                    0, 0, 0, 0, 0, 0, 0, 2000));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
                 new Date(2010, 0, 12, 10, 30, 20, 2).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.DateTime(2010, 2, 22, 10, 30, 20, 200));
+                new Sao.PYSON.DateTime(2010, 2, 22, 10, 30, 20, 2000));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
                 new Date(2010, 1, 22, 10, 30, 20, 2).valueOf());
     });
@@ -1144,8 +1144,8 @@
             'format': '"%H:%M:%S"'
         };
         [
-        ['12:30:00', new Sao.Time(12, 30, 0)],
-        ['test', new Sao.Time(0, 0, 0)]
+        ['12:30:00', Sao.Time(12, 30, 0)],
+        ['test', Sao.Time(0, 0, 0)]
         ].forEach(test_valueOf_func, field);
         [
         [null, null]
@@ -1324,7 +1324,7 @@
             'format': '"%H:%M:%S"'
         };
         [
-        [new Sao.Time(12, 30, 0), '"12:30:00"'],
+        [Sao.Time(12, 30, 0), '"12:30:00"'],
         [false, ''],
         [null, '']
         ].forEach(test_func, field);

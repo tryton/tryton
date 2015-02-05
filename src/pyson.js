@@ -155,6 +155,9 @@
 
     Sao.PYSON.And = Sao.class_(Sao.PYSON.PYSON, {
         init: function(statements) {
+            if (statements === undefined) {
+                statements = [];
+            }
             Sao.PYSON.And._super.init.call(this);
             for (var i = 0, len = statements.length; i < len; i++) {
                 var statement = statements[i];
@@ -543,23 +546,10 @@
     });
 
     Sao.PYSON.Date.eval_ = function(value, context) {
-        var date = Sao.Date();
-        // Force the day before setting the month to prevent switch to the next
-        // month if the current day doesn't exist in the target month.
-        date.setDate(1);
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        date.setMilliseconds(0);
-        if (value.y) date.setFullYear(value.y);
-        if (value.M) date.setMonth(value.M - 1);
-        if (value.d) date.setDate(value.d);
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        var day = date.getDate();
-        if (value.dy) date.setFullYear(year + value.dy);
-        if (value.dM) date.setMonth(month + value.dM);
-        if (value.dd) date.setDate(day + value.dd);
+        var date = Sao.Date(value.y, value.M && value.M - 1, value.d);
+        if (value.dy) date.add(value.dy, 'y');
+        if (value.dM) date.add(value.dM, 'M');
+        if (value.dd) date.add(value.dd, 'd');
         return date;
     };
 
@@ -612,31 +602,15 @@
     });
 
     Sao.PYSON.DateTime.eval_ = function(value, context) {
-        var date = Sao.DateTime();
-        // Force the day before setting the month to prevent switch to the next
-        // month if the current day doesn't exist in the target month.
-        date.setDate(1);
-        if (value.y) date.setFullYear(value.y);
-        if (value.M) date.setMonth(value.M - 1);
-        if (value.d) date.setDate(value.d);
-        if (value.h !== undefined) date.setHours(value.h);
-        if (value.m !== undefined) date.setMinutes(value.m);
-        if (value.s !== undefined) date.setSeconds(value.s);
-        if (value.ms !== undefined) date.setMilliseconds(value.ms / 100);
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        var day = date.getDate();
-        var hour = date.getHours();
-        var minute = date.getMinutes();
-        var second = date.getSeconds();
-        var millisecond = date.getMilliseconds();
-        if (value.dy) date.setFullYear(year + value.dy);
-        if (value.dM) date.setMonth(month + value.dM);
-        if (value.dd) date.setDate(day + value.dd);
-        if (value.dh) date.setHours(hour + value.dh);
-        if (value.dm) date.setMinutes(minute + value.dm);
-        if (value.ds) date.setSeconds(second + value.ds);
-        if (value.dms) date.setMilliseconds(millisecond + value.dms / 100);
+        var date = Sao.DateTime(value.y, value.M && value.M - 1, value.d,
+                value.h, value.m, value.s, value.ms && value.ms / 1000);
+        if (value.dy) date.add(value.dy, 'y');
+        if (value.dM) date.add(value.dM, 'M');
+        if (value.dd) date.add(value.dd, 'd');
+        if (value.dh) date.add(value.dh, 'h');
+        if (value.dm) date.add(value.dm, 'm');
+        if (value.ds) date.add(value.ds, 's');
+        if (value.dms) date.add(value.dms / 1000, 'ms');
         return date;
     };
 

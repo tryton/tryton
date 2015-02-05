@@ -1,33 +1,17 @@
 <!DOCTYPE html>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<HTML>
-    <HEAD>
-        <TITLE>Sao Test Suite</TITLE>
-        <SCRIPT type="text/javascript" src="../external/jquery.js"></SCRIPT>
-        <SCRIPT type="text/javascript">
-            if (typeof jQuery == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"%3E%3C/SCRIPT%3E'));
-            }
-        </SCRIPT>
-        <SCRIPT type="text/javascript" src="external/jquery-ui.js"></SCRIPT>
-        <SCRIPT type="text/javascript">
-            if (typeof jQuery.ui == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"%3E%3C/SCRIPT%3E'));
-            }
-        </SCRIPT>
-        <SCRIPT type="text/javascript" src="../external/qunit.js"></SCRIPT>
-        <LINK rel="stylesheet" type="text/css" href="../external/qunit.css" media="screen"/>
-        <SCRIPT type="text/javascript">
-            if (typeof QUnit == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.10.0.js"%3E%3C/SCRIPT%3E'));
-                document.write(unescape('%3CLINK rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-1.10.0.css" media="screen"/%3E'));
-            }
-        </SCRIPT>
-        <SCRIPT type="text/javascript" src="../dist/sao.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="./sao.js"></SCRIPT>
-    </HEAD>
-    <BODY>
-        <DIV id="qunit"></DIV>
-    </BODY>
-</HTML>
+<html>
+    <head>
+        <title>Sao Test Suite</title>
+        <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../bower_components/moment/min/moment.min.js"></script>
+        <script type="text/javascript" src="../bower_components/qunit/qunit/qunit.js"></script>
+        <link rel="stylesheet" type="text/css" href="../bower_components/qunit/qunit/qunit.css" media="screen"/>
+        <script type="text/javascript" src="../dist/sao.js"></script>
+        <script type="text/javascript" src="./sao.js"></script>
+    </head>
+    <body>
+        <div id="qunit"></div>
+    </body>
+</html>

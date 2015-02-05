@@ -1242,17 +1242,19 @@
         },
         set_client: function(record, value, force_change) {
             var current_value;
-            if (value instanceof Sao.Time) {
-                current_value = this.get(record);
-                if (current_value) {
-                    value = Sao.DateTime.combine(current_value, value);
-                } else {
-                    value = null;
-                }
-            } else if ((value instanceof Date) && value.isDate) {
-                current_value = this.get(record);
-                if (current_value) {
-                    value = Sao.DateTime.combine(value, current_value);
+            if (value) {
+                if (value.isTime) {
+                    current_value = this.get(record);
+                    if (current_value) {
+                        value = Sao.DateTime.combine(current_value, value);
+                    } else {
+                        value = null;
+                    }
+                } else if (value.isDate) {
+                    current_value = this.get(record);
+                    if (current_value) {
+                        value = Sao.DateTime.combine(value, current_value);
+                    }
                 }
             }
             Sao.field.DateTime._super.set_client.call(this, record, value,
@@ -1286,9 +1288,9 @@
             return record.expr_eval(this.description.format);
         },
         set_client: function(record, value, force_change) {
-            if (value && value instanceof Date) {
-                value = new Sao.Time(value.getHours(), value.getMinutes(),
-                    value.getSeconds(), value.getMilliseconds());
+            if (value && (value.isDate || value.isDateTime)) {
+                value = Sao.Time(value.hour(), value.minute(),
+                    value.second(), value.millisecond());
             }
             Sao.field.Time._super.set_client.call(this, record, value,
                 force_change);

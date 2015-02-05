@@ -35,155 +35,161 @@
             this.save_current = kwargs.save_current;
             this.prev_view = screen.current_view;
             this.callback = callback;
-            this.el = jQuery('<div/>');
+            this.el = jQuery('<div/>', {
+                'class': 'modal fade',
+                role: 'dialog'
+            });
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-lg'
+            }).appendTo(this.el));
+            var header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            })).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            var footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
 
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.get_readonly());
 
-            var buttons = [];
-
             if (view_type == 'form') {
-                buttons.push({
-                    text: (!kwargs.new_ && this.screen.current_record.id < 0 ?
-                           'Delete' : 'Cancel'),
-                        click: function() {
+                footer.append(jQuery('<button/>', {
+                    'class': 'btn btn-link'
+                }).append(!kwargs.new_ && this.screen.current_record.id < 0 ?
+                    'Delete' : 'Cancel')
+                        .click(function() {
                             this.response('RESPONSE_CANCEL');
-                        }.bind(this)
-                });
+                        }.bind(this)));
             }
 
             if (kwargs.new_ && this.many) {
-                buttons.push({
-                    text: 'New',
-                    click: function() {
-                        this.response('RESPONSE_ACCEPT');
-                    }.bind(this)
-                });
+                footer.append(jQuery('<button/>', {
+                    'class': 'btn btn-default'
+                }).append('New').click(function() {
+                    this.response('RESPONSE_ACCEPT');
+                }.bind(this)));
             }
 
             if (this.save_current) {
-                buttons.push({
-                    text: 'Save',
-                    click: function() {
-                        this.response('RESPONSE_OK');
-                    }.bind(this)
-                });
+                footer.append(jQuery('<button/>', {
+                    'class': 'btn btn-primary'
+                }).append('Save').click(function() {
+                    this.response('RESPONSE_OK');
+                }.bind(this)));
             } else {
-                buttons.push({
-                    text: 'OK',
-                    click: function() {
-                        this.response('RESPONSE_OK');
-                    }.bind(this)
-                });
+                footer.append(jQuery('<button/>', {
+                    'class': 'btn btn-primary'
+                }).append('OK').click(function() {
+                    this.response('RESPONSE_OK');
+                }.bind(this)));
             }
 
-            var menu;
             if (view_type == 'tree') {
-                menu = jQuery('<div/>');
+                var menu = jQuery('<div/>').appendTo(body);
+                var group = jQuery('<div/>', {
+                    'class': 'input-group input-group-sm'
+                }).appendTo(menu);
+
+                this.wid_text = jQuery('<input/>', {
+                    type: 'input'
+                }).appendTo(menu);
+                this.wid_text.hide();
+
+                var buttons = jQuery('<div/>', {
+                    'class': 'input-group-btn'
+                }).appendTo(group);
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
                 if (this.domain) {
-                    this.wid_text = jQuery('<input/>', {
-                        type: 'input'
-                    });
-                    menu.append(this.wid_text);
+                    this.wid_text.show();
 
-                    this.but_add = jQuery('<button/>').button({
-                        icons: {
-                            primary: 'ui-icon-plus'
-                        },
-                        label: 'Add'
-                    });
+                    this.but_add = jQuery('<button/>', {
+                        'class': 'btn btn-default btn-sm',
+                        'aria-label': 'Add'
+                    }).append(jQuery('<span/>', {
+                        'class': 'glyphicon glyphicon-plus'
+                    })).appendTo(buttons);
                     this.but_add.click(this.add.bind(this));
-                    menu.append(this.but_add);
                     this.but_add.prop('disabled', !access.read || readonly);
 
-                    this.but_remove = jQuery('<button/>').button({
-                        icons: {
-                            primary: 'ui-icon-minus'
-                        },
-                        label: 'Remove'
-                    });
+                    this.but_remove = jQuery('<button/>', {
+                        'class': 'btn btn-default btn-sm',
+                        'aria-label': 'Remove'
+                    }).append(jQuery('<span/>', {
+                        'class': 'glyphicon glyphicon-minus'
+                    })).appendTo(buttons);
                     this.but_remove.click(this.remove.bind(this));
-                    menu.append(this.but_remove);
                     this.but_remove.prop('disabled', !access.read || readonly);
                 }
 
-                this.but_new = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-document'
-                    },
-                    label: 'New'
-                });
+                this.but_new = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'New'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-edit'
+                })).appendTo(buttons);
                 this.but_new.click(this.new_.bind(this));
-                menu.append(this.but_new);
                 this.but_new.prop('disabled', !access.create || readonly);
 
-                this.but_del = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-trash'
-                    },
-                    label: 'Delete'
-                });
+                this.but_del = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Delete'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-trash'
+                })).appendTo(buttons);
                 this.but_del.click(this.delete_.bind(this));
-                menu.append(this.but_del);
                 this.but_del.prop('disabled', !access['delete'] || readonly);
 
-                this.but_undel = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-arrowreturn-1-s'
-                    },
-                    label: 'Undelete'
-                });
+                this.but_undel = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Undelete'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-repeat'
+                })).appendTo(buttons);
                 this.but_undel.click(this.undelete.bind(this));
-                menu.append(this.but_undel);
                 this.but_undel.prop('disabled', !access['delete'] || readonly);
 
-                this.but_previous = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-arrowthick-1-w'
-                    },
-                    label: 'Previous'
-                });
+                this.but_previous = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Previous'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-arrow-left'
+                })).appendTo(buttons);
                 this.but_previous.click(this.previous.bind(this));
-                menu.append(this.but_previous);
 
-                this.label = jQuery('<span/>');
+                this.label = jQuery('<span/>', {
+                    'class': 'btn'
+                }).appendTo(buttons);
                 this.label.text('(0, 0)');
-                menu.append(this.label);
 
-                this.but_next = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-arrowthick-1-e'
-                    },
-                    label: 'Next'
-                });
+                this.but_next = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Next'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-arrow-right'
+                })).appendTo(buttons);
                 this.but_next.click(this.next.bind(this));
-                menu.append(this.but_next);
 
-                this.but_switch = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-newwin'
-                    },
-                    label: 'Switch'
-                });
+                this.but_switch = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Switch'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-list-alt'
+                })).appendTo(buttons);
                 this.but_switch.click(this.switch_.bind(this));
-                menu.append(this.but_switch);
             }
 
 
             switch_prm.done(function() {
-                this.el.dialog({
-                    modal: true,
-                    autoOpen: false,
-                    buttons: buttons,
-                    title: '' // this.screen.current_view
-                });
-                Sao.common.center_dialog(this.el);
-                if (menu) {
-                    this.el.append(menu);
-                }
-                this.el.append(this.screen.screen_container.alternate_viewport);
-                this.el.dialog('open');
+                // TODO header this.screen.current_view
+                body.append(this.screen.screen_container.alternate_viewport);
+                this.el.modal('show');
                 this.screen.display();
             }.bind(this));
 
@@ -294,7 +300,11 @@
             this.screen.screen_container.alternate_view = false;
             this.screen.screen_container.alternate_viewport.children()
                 .detach();
-            this.el.dialog('destroy');
+            if (this.prev_view) {
+                // Empty when opening from Many2One
+                this.screen.switch_view(this.prev_view.view_type);
+            }
+            this.el.modal('hide').remove();
         }
     });
 
@@ -336,43 +346,50 @@
             this.context = kwargs.context || {};
             this.sel_multi = kwargs.sel_multi;
             this.callback = callback;
-            this.el = jQuery('<div/>');
+            this.el = jQuery('<div/>', {
+                'class': 'modal fade',
+                role: 'dialog'
+            });
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-lg'
+            }).appendTo(this.el));
+            var header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).append('Search')).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            var footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
 
-            var buttons = [];
-            buttons.push({
-                text: 'Cancel',
-                click: function() {
-                    this.response('RESPONSE_CANCEL');
-                }.bind(this)
-            });
-            buttons.push({
-                text: 'Find',
-                click: function() {
-                    this.response('RESPONSE_APPLY');
-                }.bind(this)
-            });
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.response('RESPONSE_CANCEL');
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-default'
+            }).append('Find').click(function() {
+                this.response('RESPONSE_APPLY');
+            }.bind(this)).appendTo(footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
-                buttons.push({
-                    text: 'New',
-                    click: function() {
-                        this.response('RESPONSE_ACCEPT');
-                    }.bind(this)
-                });
+                jQuery('<button/>', {
+                    'class': 'btn btn-default'
+                }).append('New').click(function() {
+                    this.response('RESPONSE_ACCEPT');
+                }.bind(this)).appendTo(footer);
             }
-            buttons.push({
-                text: 'OK',
-                click: function() {
-                    this.response('RESPONSE_OK');
-                }.bind(this)
-            });
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.response('RESPONSE_OK');
+            }.bind(this)).appendTo(footer);
 
-            this.el.dialog({
-                modal: true,
-                title: 'Search',  // TODO translate
-                autoOpen: false,
-                buttons: buttons
-            });
-            Sao.common.center_dialog(this.el);
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
                 context: this.context,
@@ -382,8 +399,8 @@
             });
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
-                    this.el.append(this.screen.screen_container.el);
-                    this.el.dialog('open');
+                    body.append(this.screen.screen_container.el);
+                    this.el.modal('show');
                     this.screen.display();
                     if (kwargs.search_filter !== undefined) {
                         this.screen.search_filter(kwargs.search_filter);
@@ -419,7 +436,7 @@
                         this.callback(null);
                     }
                 };
-                this.el.dialog('destroy');
+                this.el.modal('hide').remove();
                 new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true
                 });
@@ -433,36 +450,44 @@
                 }
             }
             this.callback(value);
-            this.el.dialog('destroy');
+            this.el.modal('hide').remove();
         }
     });
 
     Sao.Window.Preferences = Sao.class_(Object, {
         init: function(callback) {
             this.callback = callback;
-            this.el = jQuery('<div/>');
+            this.el = jQuery('<div/>', {
+                'class': 'modal fade',
+                role: 'dialog'
+            });
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-lg'
+            }).appendTo(this.el));
+            var header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).append('Preferences')).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            var footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
 
-            var buttons = [];
-            buttons.push({
-                text: 'Cancel',  // TODO translate
-                click: function() {
-                    this.response('RESPONSE_CANCEL');
-                }.bind(this)
-            });
-            buttons.push({
-                text: 'Ok',  // TODO translate
-                click: function() {
-                    this.response('RESPONSE_OK');
-                }.bind(this)
-            });
-
-            this.el.dialog({
-                modal: true,
-                title: 'Preferences',  // TODO translate
-                autoOpen: false,
-                buttons: buttons
-            });
-            Sao.common.center_dialog(this.el);
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.response('RESPONSE_CANCEL');
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.response('RESPONSE_OK');
+            }.bind(this)).appendTo(footer);
 
             this.screen = new Sao.Screen('res.user', {
                 mode: []
@@ -486,8 +511,8 @@
                         function() {
                             this.screen.display();
                         }.bind(this));
-                this.el.append(this.screen.screen_container.el);
-                this.el.dialog('open');
+                body.append(this.screen.screen_container.el);
+                this.el.modal('show');
             };
 
             this.screen.model.execute('get_preferences_fields_view', [], {})
@@ -523,41 +548,57 @@
             prm.done(end);
         },
         destroy: function() {
-            this.el.dialog('destroy');
+            this.el.modal('hide').remove();
         }
     });
 
     Sao.Window.Revision = Sao.class_(Object, {
         init: function(revisions, callback) {
             this.callback = callback;
-            this.el = jQuery('<div/>');
-
-            var buttons = [];
-            buttons.push({
-                text: 'Cancel', // TODO translate
-                click: function() {
-                    this.response('RESPONSE_CANCEL');
-                }.bind(this)
+            this.el = jQuery('<div/>', {
+                'class': 'modal fade',
+                role: 'dialog'
             });
-            buttons.push({
-                text: 'Ok', // TODO translate
-                click: function() {
-                    this.response('RESPONSE_OK');
-                }.bind(this)
-            });
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-lg'
+            }).appendTo(this.el));
+            var header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).append('Revision')).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            var footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
 
-            this.el.dialog({
-                model: true,
-                title: 'Revision', // TODO translate
-                autoOpen: false,
-                buttons: buttons
-            });
-            Sao.common.center_dialog(this.el);
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.response('RESPONSE_CANCEL');
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.response('RESPONSE_OK');
+            }.bind(this)).appendTo(footer);
 
-            this.el.append(jQuery('<label/>', {
-                'text': 'Revision:' // TODO translate
-            }));
-            this.select = jQuery('<select/>');
+            var group = jQuery('<div/>', {
+                'class': 'form-group'
+            }).appendTo(body);
+            jQuery('<label/>', {
+                'for': 'revision',
+                'text': 'Revision'
+            }).appendTo(group);
+            this.select = jQuery('<select/>', {
+                'class': 'form-control',
+                id: 'revision',
+                'placeholder': 'Revision'
+            }).appendTo(group);
             var date_format = Sao.common.date_format();
             var time_format = '%H:%M:%S.%f';
             this.select.append(jQuery('<option/>', {
@@ -573,8 +614,7 @@
                         date_format, time_format, revision) + ' ' + name
                 }));
             }.bind(this));
-            this.el.append(this.select);
-            this.el.dialog('open');
+            this.el.modal('show');
         },
         response: function(response_id) {
             var revision = null;
@@ -584,7 +624,7 @@
                     revision = Sao.DateTime(parseInt(revision, 10));
                 }
             }
-            this.el.dialog('destroy');
+            this.el.modal('hide').remove();
             this.callback(revision);
         }
     });

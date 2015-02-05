@@ -1,66 +1,116 @@
 <!DOCTYPE html>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<HTML style="overflow: hidden;">
-    <HEAD>
-        <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <TITLE>Tryton</TITLE>
-        <LINK rel="icon" type="image/png" href="images/tryton-icon.png"/>
-        <SCRIPT type="text/javascript" src="external/jquery.js"></SCRIPT>
-        <SCRIPT type="text/javascript">
-            if (typeof jQuery == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="//code.jquery.com/jquery-2.1.1.js"%3E%3C/SCRIPT%3E'));
-            }
-        </SCRIPT>
-        <SCRIPT type="text/javascript" src="external/jquery-ui.js"></SCRIPT>
-        <LINK rel="stylesheet" type="text/css" href="external/jquery-ui.css"
+<html style="overflow: auto;">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Tryton</title>
+        <link rel="icon" type="image/png" href="images/tryton-icon.png"/>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+        <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="offcanvas.css">
+        <script type="text/javascript" src="dist/sao.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="dist/sao.min.css"
         media="screen"/>
-        <SCRIPT type="text/javascript">
-            if (typeof jQuery.ui == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="//code.jquery.com/ui/1.11.1/jquery-ui.js"%3E%3C/SCRIPT%3E'));
-                document.write(unescape('%3CLINK rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" media="screen"/%3E'));
-            }
-        </SCRIPT>
-        <SCRIPT type="text/javascript" src="dist/sao.min.js"></SCRIPT>
-        <LINK rel="stylesheet" type="text/css" href="dist/sao.min.css"
-        media="screen"/>
-        <SCRIPT type="text/javascript">
+        <script type="text/javascript">
             if (typeof Sao == 'undefined') {
-                document.write(unescape('%3CSCRIPT type="text/javascript" src="dist/sao.js"%3E%3C/SCRIPT%3E'));
-                document.write(unescape('%3CLINK rel="stylesheet" type="text/css" href="dist/sao.css" media="screen"/%3E'));
+                document.write(unescape('%3cscript type="text/javascript" src="dist/sao.js"%3e%3c/script%3e'));
+                document.write(unescape('%3clink rel="stylesheet" type="text/css" href="dist/sao.css" media="screen"/%3e'));
             }
-        </SCRIPT>
-    </HEAD>
-    <BODY>
-        <DIV class="ui-widget-header" style="overflow: auto; height: 1.5em;">
-            <SPAN id="user-preferences" style="float: left;"></SPAN>
-            <SPAN id="user-logout" style="float: right;"></SPAN>
-        </DIV>
-        <DIV id="main" class="ui-widget" style="width: 100%; height: calc(100vh - 1.5em - 1px);">
-            <DIV id="menu" style="display: inline-block; width: 20%; overflow-y: auto; height: 100%;"></DIV>
-            <DIV id="tabs" style="display: inline-block; overflow-y: auto; height: 100%;"></DIV>
-        </DIV>
-        <SCRIPT type="text/javascript">
+        </script>
+        </head>
+        <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#user_menu_collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" data-toggle="offcanvas">Tryton</a>
+                </div>
+                <div class="collapse navbar-collapse" id="user_menu_collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="user-preferences"></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="user-logout"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="main" class="container-fluid">
+            <div class="row row-offcanvas row-offcanvas-left"
+                style="height: calc(100vh - 50px - 1px - 20px);">
+                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="menu" role="navigation"
+                    style="overflow-y: auto; height: 100%;"></div>
+                <div class="col-xs-12 col-md-9" style="overflow-y: auto; height: 100%;">
+                    <div id="tabs" role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                        </ul>
+                        <div class="tab-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
             jQuery(function() {
-                    var resize = function() {
-                        var menu = jQuery(this);
-                        var remaining_space = (menu.parent().width() -
-                            jQuery(this).outerWidth() - 5); // 5px for handler
-                        var tabs = menu.next();
-                        tabs_width = (remaining_space -
-                            (tabs.outerWidth() - tabs.width()));
-                        tabs.width(tabs_width);
-                        }
-                    jQuery('#menu').resizable({
-                        handles: 'e',
-                        resize: resize
-                        });
-                    jQuery(window).resize(function() {
-                        var menu = jQuery('#menu');
-                        resize.call(menu);
+                    jQuery('[data-toggle="offcanvas"]').click(function() {
+                        jQuery('.row-offcanvas').toggleClass('active');
                         });
                     Sao.login();
                     });
-        </SCRIPT>
-    </BODY>
-</HTML>
+        </script>
+        <div class="modal fade" id="login">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="login-database">Database</label>
+                            <select class="form-control" id="login-database"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-login">Login</label>
+                            <input class="form-control" id="login-login" placeholder="Login">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="password">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="password-password">Password</label>
+                            <input type="password" class="form-control" id="password-password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

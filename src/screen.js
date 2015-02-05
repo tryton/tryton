@@ -13,19 +13,16 @@
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
             });
-            this.filter_box = jQuery('<table/>', {
-                'class': 'filter-box'
+            this.filter_box = jQuery('<div/>', {
+                'class': 'row filter-box'
             });
-            var tr = jQuery('<tr/>');
-            this.filter_box.append(tr);
             this.el.append(this.filter_box);
-            this.filter_button = jQuery('<button/>').button({
-                'disabled': true,
-                'label': 'Filters' // TODO translation
-            });
-            tr.append(jQuery('<td/>').append(this.filter_button));
+            this.filter_button = jQuery('<button/>', {
+                type: 'button',
+                'class': 'btn btn-default'
+            }).append('Filters'); // TODO translation
             this.search_entry = jQuery('<input/>', {
-                'class': 'ui-widget ui-widget-content ui-corner-all'
+                'class': 'form-control'
             });
             this.search_entry.keypress(function(e) {
                 if (e.which == 13) {
@@ -33,22 +30,45 @@
                     return false;
                 }
             }.bind(this));
-            tr.append(jQuery('<td/>').append(this.search_entry));
-            this.but_bookmark = jQuery('<button/>').button({
-                'disabled': true,
-                'label': 'Bookmark' // TODO translation
-            });
-            tr.append(jQuery('<td/>').append(this.but_bookmark));
-            this.but_prev = jQuery('<button/>').button({
-                'label': 'Previous'
-            });
+            this.but_bookmark = jQuery('<button/>', {
+                type: 'button',
+                'class': 'btn btn-default'
+            }).append('Bookmark'); // TODO translation
+
+            jQuery('<div/>', {
+                'class': 'input-group'
+            })
+            .append(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).append(this.filter_button))
+            .append(this.search_entry)
+            .append(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).append(this.but_bookmark))
+            .appendTo(jQuery('<div/>', {
+                'class': 'col-md-8'
+            }).appendTo(this.filter_box));
+
+            this.but_prev = jQuery('<button/>', {
+                type: 'button',
+                'class': 'btn btn-default'
+            }).append('Previous');
             this.but_prev.click(this.search_prev.bind(this));
-            tr.append(jQuery('<td/>').append(this.but_prev));
-            this.but_next = jQuery('<button/>').button({
-                'label': 'Next'
-            });
+            this.but_next = jQuery('<button/>', {
+                type: 'button',
+                'class': 'btn btn-default'
+            }).append('Next');
             this.but_next.click(this.search_next.bind(this));
-            tr.append(jQuery('<td/>').append(this.but_next));
+
+            jQuery('<div/>', {
+                'class': 'btn-group',
+                role: 'group',
+            })
+            .append(this.but_prev)
+            .append(this.but_next)
+            .appendTo(jQuery('<div/>', {
+                'class': 'col-md-4'
+            }).appendTo(this.filter_box));
 
             this.content_box = jQuery('<div/>', {
                 'class': 'content-box'
@@ -57,28 +77,37 @@
             if (!jQuery.isEmptyObject(this.tab_domain)) {
                 this.tab = jQuery('<div/>', {
                     'class': 'tab-domain'
-                }).append(jQuery('<ul/>'));
-                this.tab.tabs();
+                }).appendTo(this.el);
+                var nav = jQuery('<ul/>', {
+                    'class': 'nav nav-tabs',
+                    role: 'tablist'
+                }).appendTo(this.tab);
+                var content = jQuery('<div/>', {
+                    'class': 'tab-content'
+                }).appendTo(this.tab);
                 this.tab_domain.forEach(function(tab_domain, i) {
                     var name = tab_domain[0];
-                    jQuery('<li/>').append(jQuery('<a/>', {
-                        href: '#' + i
-                    }).append(name)).appendTo(this.tab.find('> .ui-tabs-nav'));
-                    jQuery('<div/>', {
-                        id: i
-                    }).appendTo(this.tab);
+                    var page = jQuery('<li/>', {
+                        role: 'presentation',
+                        id: 'nav-' + i
+                    }).append(jQuery('<a/>', {
+                        'aria-controls':  i,
+                        role: 'tab',
+                        'data-toggle': 'tab',
+                        'href': '#' + i
+                    }).append(name)).appendTo(nav);
                 }.bind(this));
-                this.tab.find('#0').append(this.content_box);
-                this.tab.tabs('refresh');
-                this.tab.tabs('option', 'active', 0);
-                this.tab.tabs({
-                    'activate': this.switch_page.bind(this)
+                nav.find('a:first').tab('show');
+                var self = this;
+                nav.find('a').click(function(e) {
+                    e.preventDefault();
+                    jQuery(this).tab('show');
+                    self.do_search();
                 });
-                this.el.append(this.tab);
             } else {
                 this.tab = null;
-                this.el.append(this.content_box);
             }
+            this.el.append(this.content_box);
         },
         set_text: function(value) {
             this.search_entry.val(value);
@@ -89,15 +118,12 @@
         search_next: function() {
             this.screen.search_next(this.search_entry.val());
         },
-        switch_page: function(event, ui) {
-            ui.newPanel.append(ui.oldPanel.children().detach());
-            this.do_search();
-        },
         get_tab_domain: function() {
             if (!this.tab) {
                 return [];
             }
-            return this.tab_domain[this.tab.tabs('option', 'active')][1];
+            var i = this.tab.find('li').index(this.tab.find('li.active'));
+            return this.tab_domain[i][1];
         },
         do_search: function() {
             this.screen.search_filter(this.search_entry.val());
@@ -109,17 +135,12 @@
             this.filter_box.show();
             if (this.tab) {
                 this.tab.show();
-                this.content_box.detach();
-                this.tab.find('#' + this.tab.tabs('option', 'active'))
-                    .append(this.content_box);
             }
         },
         hide_filter: function() {
             this.filter_box.hide();
             if (this.tab) {
                 this.tab.hide();
-                this.content_box.detach();
-                this.el.append(this.content_box);
             }
         },
         set: function(widget) {

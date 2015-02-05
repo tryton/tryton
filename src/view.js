@@ -89,7 +89,7 @@
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_SINGLE);
             this.el = jQuery('<div/>', {
-                'class': 'treeview ui-widget'
+                'class': 'treeview'
             });
             this.expanded = {};
             this.children_field = children_field;
@@ -106,19 +106,17 @@
             // Table of records
             this.rows = [];
             this.table = jQuery('<table/>', {
-                'class': 'tree'
+                'class': 'tree table table-hover'
             });
             this.el.append(this.table);
-            var thead = jQuery('<thead/>', {
-                'class': 'ui-widget ui-widget-header'
-            });
+            var thead = jQuery('<thead/>');
             this.table.append(thead);
             var tr = jQuery('<tr/>');
             if (this.selection_mode != Sao.common.SELECTION_NONE) {
                 var th = jQuery('<th/>');
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection ui-widget ui-widget-content'
+                    'class': 'selection'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 th.append(this.selection);
@@ -134,14 +132,12 @@
                 }
                 tr.append(th);
             });
-            this.tbody = jQuery('<tbody/>', {
-                'class': 'ui-widget'
-            });
+            this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
 
             // Footer for more
             var footer = jQuery('<div/>', {
-                'class': 'treefooter ui-widget'
+                'class': 'treefooter'
             });
             this.more = jQuery('<button/>').button({
                 'label': 'More' // TODO translation
@@ -470,7 +466,7 @@
                 this.el.append(td);
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection ui-widget ui-widget-content'
+                    'class': 'selection'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 td.append(this.selection);
@@ -478,9 +474,7 @@
 
             var depth = this.path.split('.').length;
             for (var i = 0; i < this.tree.columns.length; i++) {
-                td = jQuery('<td/>', {
-                    'class': 'ui-widget'
-                });
+                td = jQuery('<td/>');
                 td.one('click', {column: i, td: td},
                         this.select_row.bind(this));
                 var widgets = this.build_widgets();
@@ -488,13 +482,13 @@
                 var row = widgets[1];
                 td.append(table);
                 if ((i === 0) && this.children_field) {
-                    var expanded_icon = 'ui-icon-plus';
+                    var expanded_icon = 'glyphicon-plus';
                     if (this.is_expanded() ||
                             ~expanded.indexOf(this.record.id)) {
-                        expanded_icon = 'ui-icon-minus';
+                        expanded_icon = 'glyphicon-minus';
                     }
                     this.expander = jQuery('<span/>', {
-                        'class': 'ui-icon ' + expanded_icon
+                        'class': 'glyphicon ' + expanded_icon
                     });
                     this.expander.html('&nbsp;');
                     this.expander.css('margin-left', (depth - 1) + 'em');
@@ -543,7 +537,7 @@
                 if (jQuery.isEmptyObject(
                             this.record.field_get(
                                 this.children_field))) {
-                    this.expander.css('background', 'none');
+                    this.expander.css('visibility', 'hidden');
                 }
             };
             var child_offset = 0;
@@ -625,11 +619,11 @@
         },
         update_expander: function(expanded) {
             if (expanded) {
-                this.expander.removeClass('ui-icon-plus');
-                this.expander.addClass('ui-icon-minus');
+                this.expander.removeClass('glyphicon-plus');
+                this.expander.addClass('glyphicon-minus');
             } else {
-                this.expander.removeClass('ui-icon-minus');
-                this.expander.addClass('ui-icon-plus');
+                this.expander.removeClass('glyphicon-minus');
+                this.expander.addClass('glyphicon-plus');
             }
         },
         collapse_children: function() {
@@ -1262,7 +1256,7 @@
                 if (!text) {
                     // TODO RTL and translation
                     text = model.fields[name]
-                        .description.string + ':';
+                        .description.string + ': ';
                 }
                 if (attributes.xalign === undefined) {
                     attributes.xalign = 1.0;
@@ -1656,8 +1650,8 @@
                 'class': 'form-separator'
             });
             if (text) {
-                this.el.append(jQuery('<span/>', {
-                    'text': text
+                this.el.append(jQuery('<label/>', {
+                    text: text
                 }));
             }
             this.el.append(jQuery('<hr/>'));
@@ -1670,7 +1664,7 @@
             Sao.View.Form.Label._super.init.call(this, attributes);
             this.el = jQuery('<label/>', {
                 text: text,
-                'class': this.class_
+                'class': this.class_ + ' form-label'
             });
         },
         set_state: function(record) {
@@ -1693,23 +1687,37 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.el.append(jQuery('<ul/>'));
-            this.el.tabs();
+            this.nav = jQuery('<ul/>', {
+                'class': 'nav nav-tabs',
+                role: 'tablist'
+            }).appendTo(this.el);
+            this.panes = jQuery('<div/>', {
+                'class': 'tab-content'
+            }).appendTo(this.el);
             this.selected = false;
             this.counter = 0;
         },
         add: function(tab, text) {
             var tab_id = 'tab-form-' + this.counter++;
-            var page = jQuery('<li/>').append(
+            var page = jQuery('<li/>', {
+                'role': 'presentation',
+                id: 'nav-' + tab_id
+            }).append(
                 jQuery('<a/>', {
-                    href: '#' + tab_id
-                }).append(text)).appendTo(this.el.find('> .ui-tabs-nav'));
-            jQuery('<div/>', {
+                    'aria-controls': tab_id,
+                    'role': 'tab',
+                    'data-toggle': 'tab',
+                    'href': '#' + tab_id
+                }).append(text)).appendTo(this.nav);
+            var pane = jQuery('<div/>', {
+                role: 'tabpanel',
+                'class': 'tab-pane',
                 id: tab_id
-            }).html(tab).appendTo(this.el);
-            this.el.tabs('refresh');
+            }).html(tab).appendTo(this.panes);
             if (!this.selected) {
-                this.el.tabs('option', 'active', -1);
+                // Can not use .tab('show')
+                page.addClass('active');
+                pane.addClass('active');
                 this.selected = true;
             }
             return page;
@@ -1724,7 +1732,7 @@
     });
 
     Sao.View.Form.Group = Sao.class_(StateWidget, {
-        class_: 'form-group',
+        class_: 'form-group_',
         init: function(attributes) {
             Sao.View.Form.Group._super.init.call(this, attributes);
             this.el = jQuery('<div/>', {
@@ -1865,7 +1873,7 @@
         set_color: function(color) {
             var el = this._get_color_el();
             el.css('background-color', color);
-            el.css('background-image', 'none'); // Remove from ui-widget-content
+            el.css('background-image', 'none');
         },
         set_invisible: function(invisible) {
             this.visible = !invisible;
@@ -1882,24 +1890,30 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Char._super.init.call(this, field_name, model,
                 attributes);
-            this.el = jQuery('<input/>', {
-                'type': 'input',
-                'class': this.class_ +
-                ' ui-widget ui-widget-content ui-corner-all'
+            this.el = jQuery('<div/>', {
+                'class': this.class_
             });
+            this.input = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(this.el);
+            this.input.css('min-width', '8em');
             this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
             if (record) {
                 var value = record.field_get_client(this.field_name);
-                this.el.val(value || '');
+                this.input.val(value || '');
             } else {
-                this.el.val('');
+                this.input.val('');
             }
         },
         set_value: function(record, field) {
-            field.set_client(record, this.el.val());
+            field.set_client(record, this.input.val());
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('disabled', readonly);
         }
     });
 
@@ -1908,7 +1922,7 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Password._super.init.call(this, field_name, model,
                 attributes);
-            this.el.prop('type', 'password');
+            this.input.prop('type', 'password');
         }
     });
 
@@ -1918,120 +1932,77 @@
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_ +
-                ' ui-widget ui-widget-content ui-corner-all'
+                'class': this.class_
             });
-            this.date = jQuery('<input/>', {
-                'type': 'input'
-            });
-            this.el.append(jQuery('<div/>').append(this.date));
-            this.date.datepicker({
-                showOn: 'none'
-            });
-            this.date.change(this.focus_out.bind(this));
-            this.button = jQuery('<button/>').button({
-                'icons': {
-                    'primary': 'ui-icon-calendar'
-                },
-                'text': false
-            });
-            this.el.prepend(this.button);
-            this.button.click(function() {
-                this.date.datepicker('show');
-            }.bind(this));
+            this.date = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(this.el);
+            jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(this.date);
+            jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).append(jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-calendar'
+            }))).appendTo(this.date);
+            this.date.datetimepicker();
+            this.date.on('dp.change', this.focus_out.bind(this));
         },
         get_format: function(record, field) {
             return field.date_format(record);
         },
-        format: function(record, field) {
-            var value = field.get_client(record);
-            var date_format = field.date_format(record);
-            return Sao.common.format_date(date_format, value);
+        get_value: function(record, field) {
+            var value = this.date.data('DateTimePicker').date();
+            value.isDate = true;
+            return value;
         },
         display: function(record, field) {
             if (record && field) {
-                this.date.datepicker('option', 'dateFormat',
-                        this.get_format(record, field));
+                this.date.data('DateTimePicker').format(
+                    Sao.common.moment_format(this.get_format(record, field)));
             }
             Sao.View.Form.Date._super.display.call(this, record, field);
+            var value;
             if (record) {
-                this.date.val(this.format(record, field));
+                value = field.get_client(record);
             } else {
-                this.date.val('');
+                value = null;
             }
+            this.date.data('DateTimePicker').date(value);
         },
         set_value: function(record, field) {
-            var value = Sao.common.parse_date(this.date.val());
-            field.set_client(record, value);
+            field.set_client(record, this.get_value(record, field));
+        },
+        set_readonly: function(readonly) {
+            this.date.find('input, button').prop('disabled', readonly);
         }
     });
 
     Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-datetime',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.DateTime._super.init.call(this, field_name, model,
-                attributes);
-            this.date.datepicker('option', 'beforeShow', function() {
-                var time = ' ' + Sao.common.format_time(
-                    this.field().time_format(this.record()),
-                    this._get_time());
-                this.date.datepicker('option', 'dateFormat',
-                    this.field().date_format(this.record()) + time);
-                this.date.prop('disabled', true);
-            }.bind(this));
-            this.date.datepicker('option', 'onClose', function() {
-                this.date.prop('disabled', false);
-            }.bind(this));
-        },
-        _get_time: function() {
-            return Sao.common.parse_datetime(
-                this.field().date_format(this.record()),
-                this.field().time_format(this.record()), this.date.val());
-        },
         get_format: function(record, field) {
-            var time = '';
-            if (record) {
-                var value = record.field_get(this.field_name);
-                time = ' ' + Sao.common.format_time(field.time_format(record),
-                    value);
-            }
-            return field.date_format(record) + time;
+            return field.date_format(record) + ' ' + field.time_format(record);
         },
-        format: function(record, field) {
-            var value = field.get_client(record);
-            return Sao.common.format_datetime(
-                    field.date_format(record), field.time_format(record),
-                    value);
-        },
-        set_value: function(record, field) {
-            var value = Sao.common.parse_datetime(
-                    field.date_format(record),
-                    field.time_format(record),
-                    this.date.val());
-            field.set_client(record, value);
+        get_value: function(record, field) {
+            var value = this.date.data('DateTimePicker').date();
+            value.isDateTime = true;
+            return value;
         }
     });
 
-    Sao.View.Form.Time = Sao.class_(Sao.View.Form.Char, {
+    Sao.View.Form.Time = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-time',
-        format: function(record, field) {
-            var value = field.get_client(record);
-            return Sao.common.format_time(field.time_format(record), value);
+        get_format: function(record, field) {
+            return field.time_format(record);
         },
-        display: function(record, field) {
-            // Skip Char
-            Sao.View.Form.Widget.display.call(this, record, field);
-            if (record) {
-                this.el.val(this.format(record, field));
-            } else {
-                this.el.val('');
-            }
-        },
-        set_value: function(record, field) {
-            var value = Sao.common.parse_time(
-                    field.time_format(record),
-                    this.date.val());
-            field.set_client(record, value);
+        get_value: function(record, field) {
+            var value = this.date.data('DateTimePicker').date();
+            value.isDateTime = true;
+            return value;
         }
     });
 
@@ -2040,10 +2011,11 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
+            this.input.attr('type', 'text');
             this.factor = Number(attributes.factor || 1);
         },
         set_value: function(record, field) {
-            field.set_client(record, this.el.val(), undefined, this.factor);
+            field.set_client(record, this.input.val(), undefined, this.factor);
         },
         display: function(record, field) {
             // Skip Char call
@@ -2051,9 +2023,9 @@
             if (record) {
                 var value = record.model.fields[this.field_name]
                     .get_client(record, this.factor);
-                this.el.val(value || '');
+                this.input.val(value || '');
             } else {
-                this.el.val('');
+                this.input.val('');
             }
         }
     });
@@ -2068,10 +2040,10 @@
             Sao.View.Form.Selection._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_ + ' ui-widget'
+                'class': this.class_
             });
             this.select = jQuery('<select/>', {
-                'class': 'ui-widget-content ui-corner-all'
+                'class': 'form-control input-sm'
             });
             this.el.append(this.select);
             this.select.change(this.focus_out.bind(this));
@@ -2146,6 +2118,9 @@
         set_value: function(record, field) {
             var value = this.value_get();
             field.set_client(record, value);
+        },
+        set_readonly: function(readonly) {
+            this.select.prop('disabled', readonly);
         }
     });
 
@@ -2160,9 +2135,9 @@
             Sao.View.Form.FloatTime._super.display.call(this, record, field);
             if (record) {
                 var value = record.field_get_client(this.field_name);
-                this.el.val(Sao.common.text_to_float_time(value, this.conv));
+                this.input.val(Sao.common.text_to_float_time(value, this.conv));
             } else {
-                this.el.val('');
+                this.input.val('');
             }
         }
     });
@@ -2172,23 +2147,29 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Boolean._super.init.call(this, field_name, model,
                 attributes);
-            this.el = jQuery('<input/>', {
-                'type': 'checkbox',
-                'class': this.class_ + 'ui-widget ui-widget-content'
+            this.el = jQuery('<div/>', {
+                'class': this.class_
             });
-            this.el.change(this.focus_out.bind(this));
+            this.input = jQuery('<input/>', {
+                'type': 'checkbox',
+                'class': 'form-control input-sm'
+            }).appendTo(this.el);
+            this.input.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Boolean._super.display.call(this, record, field);
             if (record) {
-                this.el.prop('checked', record.field_get(this.field_name));
+                this.input.prop('checked', record.field_get(this.field_name));
             } else {
-                this.el.prop('checked', false);
+                this.input.prop('checked', false);
             }
         },
         set_value: function(record, field) {
-            var value = this.el.prop('checked');
+            var value = this.input.prop('checked');
             field.set_client(record, value);
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('disabled', readonly);
         }
     });
 
@@ -2197,24 +2178,29 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Text._super.init.call(this, field_name, model,
                 attributes);
-            this.el = jQuery('<textarea/>', {
-                'class': this.class_ +
-                'ui-widget ui-widget-content ui-corner-all'
+            this.el = jQuery('<div/>', {
+                'class': this.class_
             });
-            this.el.change(this.focus_out.bind(this));
+            this.input = jQuery('<textarea/>', {
+                'class': 'form-control input-sm'
+            }).appendTo(this.el);
+            this.input.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Text._super.display.call(this, record, field);
             if (record) {
                 var value = record.field_get_client(this.field_name);
-                this.el.val(value);
+                this.input.val(value);
             } else {
-                this.el.val('');
+                this.input.val('');
             }
         },
         set_value: function(record, field) {
-            var value = this.el.val() || '';
+            var value = this.input.val() || '';
             field.set_client(record, value);
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('disabled', readonly);
         }
     });
 
@@ -2224,22 +2210,26 @@
             Sao.View.Form.Many2One._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_ +
-                ' ui-widget ui-widget-content ui-corner-all'
+                'class': this.class_
             });
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(this.el);
             this.entry = jQuery('<input/>', {
-                'type': 'input'
-            });
+                'type': 'input',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
             this.entry.on('keyup', this.key_press.bind(this));
-            this.el.append(jQuery('<div/>').append(this.entry));
-            this.but_open = jQuery('<button/>').button({
-                'icons': {
-                    'primary': 'ui-icon-search'
-                },
-                'text': false
-            });
+            var buttons = jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group);
+            this.but_open = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-search'
+            })).appendTo(buttons);
             this.but_open.click(this.edit.bind(this));
-            this.el.prepend(this.but_open);
             // TODO autocompletion
             this._readonly = false;
         },
@@ -2276,12 +2266,12 @@
             if (this.has_target(value)) {
                 this.but_open.button({
                     'icons': {
-                        'primary': 'ui-icon-folder-open'
+                        'primary': 'glyphicon-folder-open'
                     }});
             } else {
                 this.but_open.button({
                     'icons': {
-                        'primary': 'ui-icon-search'
+                        'primary': 'glyphicon-search'
                     }});
             }
         },
@@ -2291,7 +2281,8 @@
         },
         _set_button_sensitive: function() {
             this.entry.prop('disabled', this._readonly);
-            this.but_open.prop('disabled', !this.read_access());
+            this.but_open.prop('disabled',
+                    this._readonly || !this.read_access());
         },
         get_access: function(type) {
             var model = this.get_model();
@@ -2478,7 +2469,9 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Reference._super.init.call(this, field_name, model,
                 attributes);
-            this.select = jQuery('<select/>');
+            this.select = jQuery('<select/>', {
+                'class': 'form-control input-sm'
+            });
             this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
             this.select.change(this.select_changed.bind(this));
@@ -2597,6 +2590,10 @@
             this.update_selection(record, field, function() {
                 Sao.View.Form.Reference._super.display.call(this, record, field);
             }.bind(this));
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.Reference._super.set_readonly.call(this, readonly);
+            this.select.prop('disabled', readonly);
         }
     });
 
@@ -2609,14 +2606,14 @@
             this._readonly = true;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_ + ' ui-widget'
+                'class': this.class_ + ' panel panel-default'
             });
             this.menu = jQuery('<div/>', {
-                'class': this.class_ + '-menu ui-widget-header'
+                'class': this.class_ + '-menu panel-heading'
             });
             this.el.append(this.menu);
 
-            var label = jQuery('<span/>', {
+            var label = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
@@ -2627,113 +2624,104 @@
             });
             this.menu.append(toolbar);
 
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(toolbar);
+
+            this.wid_text = jQuery('<input/>', {
+                type: 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
+            this.wid_text.hide();
+
+            var buttons = jQuery('<div/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group);
+
             if (attributes.add_remove) {
-                this.wid_text = jQuery('<input/>', {
-                    type: 'input',
-                    'class': 'ui-widget ui-widget-content ui-corner-all'
-                });
+                this.wid_text.show();
                 // TODO add completion
-                toolbar.append(this.wid_text);
-
-                this.but_add = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-plus'
-                    },
-                    label: 'Add',
-                    text: false
-                });
+                //
+                this.but_add = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Add'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-plus'
+                })).appendTo(buttons);
                 this.but_add.click(this.add.bind(this));
-                toolbar.append(this.but_add);
 
-                this.but_remove = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-minus'
-                    },
-                    label: 'Remove',
-                    text: false
-                });
+                this.but_remove = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'aria-label': 'Remove'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-minus'
+                })).appendTo(buttons);
                 this.but_remove.click(this.remove.bind(this));
-                toolbar.append(this.but_remove);
             }
 
-            this.but_new = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-document'
-                },
-                label: 'New',
-                text: false
-            });
+            this.but_new = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'New'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-edit'
+            })).appendTo(buttons);
             this.but_new.click(this.new_.bind(this));
-            toolbar.append(this.but_new);
 
-            this.but_open = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-folder-open'
-                },
-                label: 'Open',
-                text: false
-            });
+            this.but_open = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Open'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-folder-open'
+            })).appendTo(buttons);
             this.but_open.click(this.open.bind(this));
-            toolbar.append(this.but_open);
 
-            this.but_del = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-trash'
-                },
-                label: 'Delete',
-                text: false
-            });
+            this.but_del = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Delete'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-trash'
+            })).appendTo(buttons);
             this.but_del.click(this.delete_.bind(this));
-            toolbar.append(this.but_del);
 
-            this.but_undel = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-arrowreturn-1-s'
-                },
-                label: 'Undelete',
-                text: false
-            });
+            this.but_undel = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Undelete'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-repeat'
+            })).appendTo(buttons);
             this.but_undel.click(this.undelete.bind(this));
-            toolbar.append(this.but_undel);
 
-            this.but_previous = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-arrowthick-1-w'
-                },
-                label: 'Previous',
-                text: false
-            });
+            this.but_previous = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Previous'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-arrow-left'
+            })).appendTo(buttons);
             this.but_previous.click(this.previous.bind(this));
-            toolbar.append(this.but_previous);
 
             this.label = jQuery('<span/>', {
-                'class': this.class_ + '-label'
-            });
+                'class': 'btn'
+            }).appendTo(buttons);
             this.label.text('(0, 0)');
-            toolbar.append(this.label);
 
-            this.but_next = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-arrowthick-1-e'
-                },
-                label: 'Next',
-                text: false
-            });
+            this.but_next = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Next'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-arrow-right'
+            })).appendTo(buttons);
             this.but_next.click(this.next.bind(this));
-            toolbar.append(this.but_next);
 
-            this.but_switch = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-arrow-4-diag'
-                },
-                label: 'Switch',
-                text: false
-            });
+            this.but_switch = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Switch'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-list-alt'
+            })).appendTo(buttons);
             this.but_switch.click(this.switch_.bind(this));
-            toolbar.append(this.but_switch);
 
             this.content = jQuery('<div/>', {
-                'class': this.class_ + '-content ui-widget-content'
+                'class': this.class_ + '-content panel-body'
             });
             this.el.append(this.content);
 
@@ -2932,14 +2920,14 @@
             this._readonly = true;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_ + ' ui-widget'
+                'class': this.class_ + ' panel panel-default'
             });
             this.menu = jQuery('<div/>', {
-                'class': this.class_ + '-menu ui-widget-header'
+                'class': this.class_ + '-menu panel-heading'
             });
             this.el.append(this.menu);
 
-            var label = jQuery('<span/>', {
+            var label = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
@@ -2950,37 +2938,38 @@
             });
             this.menu.append(toolbar);
 
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(toolbar);
             this.entry = jQuery('<input/>', {
-                type: 'input',
-                'class': 'ui-widget ui-widget-content ui-corner-all'
-            });
+                type: 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
             this.entry.on('keyup', this.key_press.bind(this));
-            toolbar.append(this.entry);
 
             // TODO completion
 
-            this.but_add = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-plus'
-                },
-                label: 'Add',
-                text: false
-            });
+            var buttons = jQuery('<div/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group);
+            this.but_add = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Add'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-plus'
+            })).appendTo(buttons);
             this.but_add.click(this.add.bind(this));
-            toolbar.append(this.but_add);
 
-            this.but_remove = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-minus'
-                },
-                label: 'Remove',
-                text: false
-            });
+            this.but_remove = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'aria-label': 'Remove'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-minus'
+            })).appendTo(buttons);
             this.but_remove.click(this.remove.bind(this));
-            toolbar.append(this.but_remove);
 
             this.content = jQuery('<div/>', {
-                'class': this.class_ + '-content ui-widget-content'
+                'class': this.class_ + '-content panel-body'
             });
             this.el.append(this.content);
 
@@ -3133,62 +3122,63 @@
             this.filename = attributes.filename || null;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_ +
-                ' ui-widget ui-widget-content ui-corner-all'
+                'class': this.class_
             });
 
-            var inputs = jQuery('<div/>');
-            this.el.append(inputs);
             if (this.filename && attributes.filename_visible) {
                 this.text = jQuery('<input/>', {
-                    type: 'input'
-                });
+                    type: 'input',
+                    'class': 'form-control input-sm'
+                }).appendTo(this.el);
                 this.text.change(this.focus_out.bind(this));
                 this.text.on('keyup', this.key_press.bind(this));
-                inputs.append(this.text);
             }
-            this.size = jQuery('<input/>', {
-                type: 'input'
-            });
-            inputs.append(this.size);
 
-            this.but_new = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-document'
-                },
-                text: false
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(this.el);
+            this.size = jQuery('<input/>', {
+                type: 'input',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
+
+            buttons = jQuery('<div/>', {
+                'class': 'input-group-btn'
             });
+            this.but_new = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-file'
+            })).appendTo(buttons);
             this.but_new.click(this.new_.bind(this));
             this.el.prepend(this.but_new);
 
             if (this.filename) {
-                this.but_open = jQuery('<button/>').button({
-                    icons: {
-                        primary: 'ui-icon-folder-open'
-                    },
-                    text: false
-                });
+                this.but_open = jQuery('<button/>', {
+                    'class': 'btn btn-default',
+                    'type': 'button'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-folder-open'
+                })).appendTo(buttons);
                 this.but_open.click(this.open.bind(this));
-                this.el.prepend(this.but_open);
             }
 
-            this.but_save_as = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-disk'
-                },
-                text: false
-            });
+            this.but_save_as = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-save'
+            })).appendTo(buttons);
             this.but_save_as.click(this.save_as.bind(this));
-            this.el.prepend(this.but_save_as);
 
-            this.but_remove = jQuery('<button/>').button({
-                icons: {
-                    primary: 'ui-icon-trash'
-                },
-                text: false
-            });
+            this.but_remove = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-trash'
+            })).appendTo(buttons);
             this.but_remove.click(this.remove.bind(this));
-            this.el.prepend(this.but_remove);
         },
         filename_field: function() {
             var record = this.record();

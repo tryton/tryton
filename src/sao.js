@@ -79,84 +79,46 @@ var Sao = {};
     Sao.Decimal = Number;
 
     Sao.Date = function(year, month, day) {
-        var date;
-        if (year === undefined) {
-            date = new Date();
-        } else if (month === undefined) {
-            date = new Date(year);
-        } else {
-            date = new Date(year, month, day);
-        }
+        var date = moment();
+        date.year(year);
+        date.month(month);
+        date.date(day);
+        date.set({hour: 0, minute: 0, second: 0, millisecond: 0});
         date.isDate = true;
-        var previous_day = date.getDate();
-        var previous_hour = date.getHours();
-        date.setHours(0);
-        // Setting hours could change the day due to local timezone
-        if (previous_day != date.getDate()) {
-            date.setDate(previous_day);
-            date.setHours(previous_hour);
-        }
-        date.setMinutes(0);
-        date.setSeconds(0);
-        date.setMilliseconds(0);
         return date;
     };
 
     Sao.DateTime = function(year, month, day, hour, minute, second,
-            millisecond) {
-        var datetime;
-        if (year === undefined) {
-            datetime = new Date();
-            datetime.setMilliseconds(0);
-        } else if (month === undefined) {
-            datetime = new Date(year);
-        } else {
-            datetime = new Date(year, month, day,
-                    hour || 0, minute || 0, second || 0, millisecond || 0);
+            millisecond, utc) {
+        var datetime = moment();
+        if (utc) {
+            datetime.utc();
         }
+        datetime.year(year);
+        datetime.month(month);
+        datetime.date(day);
+        datetime.hour(hour || 0);
+        datetime.minute(minute || 0);
+        datetime.second(second || 0);
+        datetime.milliseconds(millisecond || 0);
         datetime.isDateTime = true;
+        datetime.local();
         return datetime;
     };
 
     Sao.DateTime.combine = function(date, time) {
-        return new Sao.DateTime(date.year, date.month, date.day,
-                time.getHours(), time.getMinutes,
-                time.getSeconds(), time.getMilliseconds());
+        var datetime = date.clone();
+        datetime.set({hour: time.hour(), minute: time.minute(),
+            second: time.second(), millisecond: time.millisecond()});
+        return datetime;
     };
 
-    Sao.Time = Sao.class_(Object, {
-        init: function(hour, minute, second, millisecond) {
-            this.date = new Date(0, 0, 0, hour, minute, second,
-                millisecond || 0);
-        },
-        getHours: function() {
-            return this.date.getHours();
-        },
-        setHours: function(hour) {
-            this.date.setHours(hour);
-        },
-        getMinutes: function() {
-            return this.date.getMinutes();
-        },
-        setMinutes: function(minute) {
-            this.date.setMinutes(minute);
-        },
-        getSeconds: function() {
-            return this.date.getSeconds();
-        },
-        setSeconds: function(second) {
-            this.date.setSeconds(second);
-        },
-        getMilliseconds: function() {
-            return this.date.getMilliseconds();
-        },
-        setMilliseconds: function(millisecond) {
-            this.date.setMilliseconds(millisecond);
-        },
-        valueOf: function() {
-            return this.date.valueOf();
-        }
-    });
+    Sao.Time = function(hour, minute, second, millisecond) {
+        var time = moment({hour: hour, minute: minute, second: second,
+           millisecond: millisecond || 0});
+        time.isTime = true;
+        return time;
+    };
 
     Sao.config = {};
     Sao.config.limit = 1000;
@@ -272,4 +234,28 @@ var Sao = {};
     };
     Sao.main_menu_screen = null;
 
+    // Fix stacked modal
+    jQuery(document)
+        .on('show.bs.modal', '.modal', function(event) {
+            jQuery(this).appendTo(jQuery('body'));
+        })
+    .on('shown.bs.modal', '.modal.in', function(event) {
+        setModalsAndBackdropsOrder();
+    })
+    .on('hidden.bs.modal', '.modal', function(event) {
+        setModalsAndBackdropsOrder();
+    });
+
+    function setModalsAndBackdropsOrder() {
+        var modalZIndex = 1040;
+        jQuery('.modal.in').each(function(index) {
+            var $modal = jQuery(this);
+            modalZIndex++;
+            $modal.css('zIndex', modalZIndex);
+            $modal.next('.modal-backdrop.in').addClass('hidden')
+            .css('zIndex', modalZIndex - 1);
+        });
+        jQuery('.modal.in:visible:last').focus()
+        .next('.modal-backdrop.in').removeClass('hidden');
+    }
 }());

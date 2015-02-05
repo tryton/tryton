@@ -78,6 +78,35 @@
         return prm.fail();
     };
 
+    Sao.common.moment_format = function(format) {
+        return format
+            .replace('%a', 'ddd')
+            .replace('%A', 'dddd')
+            .replace('%w', 'd')
+            .replace('%d', 'DD')
+            .replace('%b', 'MMM')
+            .replace('%B', 'MMMM')
+            .replace('%m', 'MM')
+            .replace('%y', 'YY')
+            .replace('%Y', 'YYYY')
+            .replace('%H', 'HH')
+            .replace('%I', 'hh')
+            .replace('%p', 'A')
+            .replace('%M', 'mm')
+            .replace('%S', 'ss')
+            .replace('%f', 'SSS')
+            .replace('%z', 'ZZ')
+            .replace('%Z', 'zz')
+            .replace('%j', 'DDDD')
+            .replace('%U', 'ww')
+            .replace('%W', 'WW')
+            .replace('%c', 'llll')
+            .replace('%x', 'L')
+            .replace('%X', 'LTS')
+            .replace('%', '%%')
+            ;
+    };
+
     Sao.common.date_format = function(format) {
         if (jQuery.isEmptyObject(format) && Sao.Session.current_session) {
             var context = Sao.Session.current_session.context;
@@ -86,26 +115,13 @@
             }
         }
         if (format) {
-            return format
-                .replace('%d', 'dd')
-                .replace('%j', 'oo')
-                .replace('%a', 'D')
-                .replace('%A', 'DD')
-                .replace('%m', 'mm')
-                .replace('%b', 'M')
-                .replace('%B', 'MM')
-                .replace('%y', 'y')
-                .replace('%Y', 'yy');
+            return Sao.common.moment_format(format);
         }
-        return jQuery.datepicker.W3C;
+        return '%Y-%m-%d';
     };
 
     Sao.common.format_time = function(format, date) {
-        var pad = Sao.common.pad;
-        return format.replace('%H', pad(date.getHours(), 2))
-            .replace('%M', pad(date.getMinutes(), 2))
-            .replace('%S', pad(date.getSeconds(), 2))
-            .replace('%f', pad(date.getMilliseconds(), 3));
+        return date.format(Sao.common.moment_format(format));
     };
 
     Sao.common.parse_time = function(format, value) {
@@ -122,7 +138,7 @@
             }
             return 0;
         };
-        return new Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'),
+        return Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'),
                 getNumber('%f'));
     };
 
@@ -130,51 +146,39 @@
         if (!date) {
             return '';
         }
-        return jQuery.datepicker.formatDate(date_format, date);
+        return date.format(Sao.common.moment_format(date_format));
     };
 
-    Sao.common.parse_date = function(value) {
-        try {
-            value = jQuery.datepicker.parseDate(
-                    Sao.common.date_format(), value);
-            if (value) {
-                value = Sao.Date(value);
-            }
-        } catch (e) {
-            value = null;
+    Sao.common.parse_date = function(date_format, value) {
+        var date = moment(value,
+               Sao.common.moment_format(date_format));
+        if (date.isValid()) {
+            date = Sao.Date(date.year(), date.month(), date.date());
+        } else {
+            date = null;
         }
-        return value;
+        return date;
     };
 
     Sao.common.format_datetime = function(date_format, time_format, date) {
         if (!date) {
             return '';
         }
-        return (jQuery.datepicker.formatDate(date_format, date) + ' ' +
-                Sao.common.format_time(time_format, date));
+        return date.format(
+                Sao.common.moment_format(date_format + ' ' + time_format));
     };
 
     Sao.common.parse_datetime = function(date_format, time_format, value) {
-        var date = jQuery.datepicker.parseDate(date_format, value);
-        if (!date) {
-            return null;
+        var date = moment(value,
+                Sao.common.moment_format(date_format + ' ' + time_format));
+        if (date.isValid()) {
+            date = Sao.DateTime(date.year(), date.month(), date.date(),
+                    date.hour(), date.minute(), date.second(),
+                    date.millisecond());
+        } else {
+            date = null;
         }
-        date = Sao.DateTime(date);
-        var time_value = value.replace(jQuery.datepicker.formatDate(
-                    date_format, date), '').trim();
-        var time = Sao.common.parse_time(time_format, time_value);
-        date.setHours(time.getHours());
-        date.setMinutes(time.getMinutes());
-        date.setSeconds(time.getSeconds());
         return date;
-    };
-
-    Sao.common.pad = function(number, length) {
-        var str = '' + number;
-        while (str.length < length) {
-            str = '0' + str;
-        }
-        return str;
     };
 
     Sao.common.text_to_float_time = function(text, conversion, digit) {
@@ -431,11 +435,13 @@
     Sao.common.Button = Sao.class_(Object, {
         init: function(attributes) {
             this.attributes = attributes;
-            this.el = jQuery('<button/>').button({
-                text: true,
-                label: attributes.string || '',
-                icons: {primary: 'ui-icon-custom', secondary: null}
-            });
+            this.el = jQuery('<button/>', {
+                'class': 'btn btn-default'
+            }).text(attributes.string || '')
+            .append(jQuery('<span/>', {
+                'class': 'glyphicon',
+                'aria-hidden': true
+            }));
             this.set_icon(attributes.icon);
         },
         set_icon: function(icon_name) {
@@ -444,7 +450,7 @@
             }
             var prm = Sao.common.ICONFACTORY.register_icon(icon_name);
             prm.done(function(url) {
-                this.el.children('.ui-button-icon-primary').css(
+                this.el.children('.glyphicon').css(
                     'background-image', 'url("' + url + '")');
             }.bind(this));
         },
@@ -1134,29 +1140,21 @@
                 'selection': convert_selection,
                 'reference': convert_selection,
                 'datetime': function() {
-                    try {
-                        return Sao.common.parse_datetime(
+                    var result = Sao.common.parse_datetime(
+                            Sao.common.date_format(),
+                            this.time_format(field),
+                            value);
+                    if (!result) {
+                        result = Sao.common.parse_date(
                                 Sao.common.date_format(),
-                                this.time_format(field),
                                 value);
-                    } catch (e1) {
-                        try {
-                            return Sao.DateTime(jQuery.datepicker.parseDate(
-                                        Sao.common.date_format(),
-                                        value));
-                        } catch (e2) {
-                            return null;
-                        }
                     }
+                    return result;
                 }.bind(this),
                 'date': function() {
-                    try {
-                        return Sao.Date(jQuery.datepicker.parseDate(
-                                    Sao.common.date_format(),
-                                    value));
-                    } catch (e) {
-                        return null;
-                    }
+                    return Sao.common.parse_date(
+                            Sao.common.date_format(),
+                            value);
                 },
                 'time': function() {
                     try {
@@ -1243,9 +1241,9 @@
                         return '';
                     }
                     if (value.isDate ||
-                            !(value.getHours() ||
-                             value.getMinutes() ||
-                             value.getSeconds())) {
+                            !(value.hour() ||
+                                value.minute() ||
+                                value.second())) {
                         return Sao.common.format_date(
                                 Sao.common.date_format(),
                                 value);
@@ -1876,6 +1874,27 @@
             this.running = false;
         },
         build_dialog: function() {
+            var dialog = jQuery('<div/>', {
+                'class': this.class_ + ' modal fade',
+                role: 'dialog'
+            });
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-sm'
+            }).appendTo(dialog));
+            jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            })).appendTo(content);
+            jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
+            return dialog;
         },
         run: function() {
             if (this.running) {
@@ -1885,17 +1904,12 @@
             var prm = jQuery.Deferred();
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
-            var class_ = dialog.dialog('option', 'dialogClass');
-            dialog.dialog({
-                'dialogClass': class_ + ' unique-dialog'
-            });
             this.running = true;
-            dialog.dialog('open');
-            Sao.common.center_dialog(dialog);
+            dialog.modal('show');
             return prm;
         },
         close: function(dialog) {
-            dialog.dialog('close');
+            dialog.modal('hide').remove();
             this.running = false;
         }
     });
@@ -1903,30 +1917,32 @@
     Sao.common.MessageDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'message-dialog',
         build_dialog: function(message, icon, prm) {
-            var dialog = jQuery('<div/>');
-            dialog.append(jQuery('<p/>')
-                .text(message)
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ' + icon
-                }))));
-            dialog.dialog({
-                dialogClass: this.class_,
-                modal: true,
-                autoOpen: false,
-                buttons: {
-                    'OK': function() {
-                        this.close(dialog);
-                        prm.resolve('ok');
-                    }.bind(this)
-                }
-            });
+            var dialog = Sao.common.MessageDialog._super.build_dialog.call(
+                this);
+            dialog.find('.modal-header').remove();
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'alert alert-info',
+                role: 'alert'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon ' + icon,
+                'aria-hidden': true
+            })).append(jQuery('<span/>', {
+                'class': 'sr-only'
+            }).append('Message: ')
+            ).append(message));
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.close(dialog);
+                prm.resolve('ok');
+            }.bind(this)).appendTo(footer);
             return dialog;
         },
         run: function(message, icon) {
-            Sao.common.MessageDialog._super.run.call(
-                    this, message, icon || 'ui-icon-info');
+            return Sao.common.MessageDialog._super.run.call(
+                    this, message, icon || 'glyphicon-info-sign');
         }
     });
     Sao.common.message = new Sao.common.MessageDialog();
@@ -1934,27 +1950,27 @@
     Sao.common.WarningDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'warning-dialog',
         build_dialog: function(message, title, prm) {
-            var dialog = jQuery('<div/>');
-            dialog.append(jQuery('<p/>')
-                .text(message)
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ui-icon-alert'
-                }))));
-            dialog.dialog({
-                dialogClass: this.class_,
-                modal: true,
-                autoOpen: false,
-                title: title,
-                buttons: {
-                    'Ok': function() {
-                        this.close(dialog);
-                        prm.resolve('ok');
-                    }.bind(this)
-                }
-
-            });
+            var dialog = Sao.common.WarningDialog._super.build_dialog.call(
+                this);
+            dialog.find('.modal-title').append(title);
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'alert alert-warning',
+                role: 'alert'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-alert',
+                'aria-hidden': true
+            })).append(jQuery('<span/>', {
+                'class': 'sr-only'
+            }).append('Warning: ')
+            ).append(message));
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.close(dialog);
+                prm.resolve('ok');
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -1969,28 +1985,31 @@
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
                 this, message, title, prm);
-            dialog.append(jQuery('<div/>')
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>')
                 .append(jQuery('<input/>', {
                     'type': 'checkbox'
                 }).change(this._set_always.bind(this)))
                 .append(jQuery('<span/>').text('Always ignore this warning.'))
                 );
-            dialog.append(jQuery('<p/>').text('Do you want to proceed?'));
-            dialog.dialog({
-                buttons: {
-                    'No': function() {
-                        this.close(dialog);
-                        prm.reject();
-                    }.bind(this),
-                    'Yes': function() {
-                        this.close(dialog);
-                        if (this.always) {
-                            prm.resolve('always');
-                        }
-                        prm.resolve('ok');
-                    }.bind(this)
+            body.append(jQuery('<p/>').text('Do you want to proceed?'));
+            var footer = dialog.find('.modal-footer');
+            footer.children().remove();
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('No').click(function() {
+                this.close(dialog);
+                prm.reject();
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('Yes').click(function() {
+                this.close(dialog);
+                if (this.always) {
+                    prm.resolve('always');
                 }
-            });
+                prm.resolve('ok');
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -1999,20 +2018,20 @@
     Sao.common.ConfirmationDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'confirmation-dialog',
         build_dialog: function(message) {
-            var dialog = jQuery('<div/>');
-            dialog.append(jQuery('<p/>')
-                .text(message)
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ui-icon-info'
-                }))));
-            dialog.dialog({
-                dialogClass: this.class_,
-                model: true,
-                autoOpen: false,
-                title: 'Confirmation'
-            });
+            var dialog = Sao.common.ConfirmationDialog._super.build_dialog.call(
+                this);
+            dialog.find('.modal-header').remove();
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'alert alert-info',
+                role: 'alert'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-info-sign',
+                'aria-hidden': true
+            })).append(jQuery('<span/>', {
+                'class': 'sr-only'
+            }).append('Confirmation: ')
+            ).append(message));
             return dialog;
         }
     });
@@ -2021,18 +2040,19 @@
         build_dialog: function(message, prm) {
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
-            dialog.dialog({
-                buttons: {
-                    'Cancel': function() {
-                        this.close(dialog);
-                        prm.reject();
-                    }.bind(this),
-                    'Ok': function() {
-                        this.close(dialog);
-                        prm.resolve();
-                    }.bind(this)
-                }
-            });
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.close(dialog);
+                prm.reject();
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.close(dialog);
+                prm.resolve();
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -2042,22 +2062,25 @@
         build_dialog: function(message, prm) {
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
-            dialog.dialog({
-                buttons: {
-                    'Cancel': function() {
-                        this.close(dialog);
-                        prm.resolve('cancel');
-                    }.bind(this),
-                    'No': function() {
-                        this.close(dialog);
-                        prm.resolve('ko');
-                    }.bind(this),
-                    'Yes': function() {
-                        this.close(dialog);
-                        prm.resolve('ok');
-                    }.bind(this)
-                }
-            });
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.close(dialog);
+                prm.resolve('cancel');
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-default'
+            }).append('No').click(function() {
+                this.close(dialog);
+                prm.resolve('ko');
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('Yes').click(function() {
+                this.close(dialog);
+                prm.resolve('ok');
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -2073,33 +2096,32 @@
             return Sao.common.AskDialog._super.run.apply(this, args);
         },
         build_dialog: function(question, visibility, prm) {
-            var dialog = jQuery('<div/>');
+            var dialog = Sao.common.AskDialog._super.build_dialog.call(this);
+            dialog.find('.modal-header').remove();
             var entry = jQuery('<input/>', {
-                'type': visibility ? 'input' : 'password'
+                'class': 'form-control',
+                'type': visibility ? 'input' : 'password',
+                'id': 'ask-dialog-entry'
             });
-            dialog.append(jQuery('<p/>')
-                .text(question)
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ui-icon-info'
-                })))
-                .append(entry));
-            dialog.dialog({
-                dialogClass: this.class_,
-                modal: true,
-                autoOpen: false,
-                buttons: {
-                    'Cancel': function() {
-                        this.close(dialog);
-                        prm.reject();
-                    }.bind(this),
-                    'Ok': function() {
-                        this.close(dialog);
-                        prm.resolve(entry.val());
-                    }.bind(this)
-                }
-            });
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'form-group'
+            }).append(jQuery('<label/>', {
+                'for': 'ask-dialog-entry'
+            }).append(question)).append(entry));
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.close(dialog);
+                prm.reject();
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(function() {
+                this.close(dialog);
+                prm.resolve(entry.val());
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -2108,17 +2130,24 @@
     Sao.common.ConcurrencyDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'ask-dialog',
         build_dialog: function(model, record_id, context, prm) {
-            var dialog = jQuery('<div/>');
-            dialog.append(jQuery('<p/>').append(jQuery('<b/>')
-                    .text('Write Concurrency Warning:'))
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ui-icon-info'
-                })))
-                .append(jQuery('<p/>')
-                    .text('This record has been modified ' +
-                        'while you were editing it.'))
+            var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
+                this);
+            dialog.find('.modal-dialog'
+                ).removeClass('modal-sm').addClass('modal-lg');
+            dialog.find('.modal-title').append('Concurrency Exception');
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'alert alert-warning',
+                role: 'alert'
+            }).append(jQuery('<p/>')
+                .append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-info-sign',
+                    'aria-hidden': true
+                })).append(jQuery('<span/>', {
+                    'class': 'sr-only'
+                }).append('Write Concurrency Warning: ')
+                ).append('This record has been modified ' +
+                'while you were editing it.'))
                 .append(jQuery('<p/>').text('Choose:'))
                 .append(jQuery('<ul/>')
                     .append(jQuery('<li/>')
@@ -2128,33 +2157,32 @@
                     .append(jQuery('<li/>')
                         .text('"Write Anyway" to save your current version.')))
                 );
-            dialog.dialog({
-                dialogClass: this.class_,
-                modal: true,
-                autoOpen: false,
-                title: 'Concurrency Exception',
-                buttons: {
-                    'Cancel': function() {
-                        this.close(dialog);
-                        prm.reject();
-                    }.bind(this),
-                    'Compare': function() {
-                        this.close(dialog);
-                        Sao.Tab.create({
-                            'model': model,
-                            'res_id': record_id,
-                            'domain': [['id', '=', record_id]],
-                            'context': context,
-                            'mode': ['form', 'tree']
-                        });
-                        prm.reject();
-                    }.bind(this),
-                    'Write Anyway': function() {
-                        this.close(dialog);
-                        prm.resolve();
-                    }.bind(this)
-                }
-            });
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(function() {
+                this.close(dialog);
+                prm.reject();
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-default'
+            }).append('Compare').click(function() {
+                this.close(dialog);
+                Sao.Tab.create({
+                    'model': model,
+                    'res_id': record_id,
+                    'domain': [['id', '=', record_id]],
+                    'context': context,
+                    'mode': ['form', 'tree']
+                });
+                prm.reject();
+            }.bind(this)).appendTo(footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-default'
+            }).append('Write Anyway').click(function() {
+                this.close(dialog);
+                prm.resolve();
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
@@ -2163,69 +2191,39 @@
     Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'error-dialog',
         build_dialog: function(title, details, prm) {
-            var dialog = jQuery('<div/>');
-            dialog.append(jQuery('<p/>')
-                .text(title)
-                .prepend(jQuery('<span/>', {
-                    'class': 'dialog-icon'
-                }).append(jQuery('<span/>', {
-                    'class': 'ui-icon ui-icon-alert'
-                })))
-                .append(jQuery('<p/>')
-                    .append(jQuery('<textarea/>')
-                        .text(details)
-                        .prop('disabled', true)))
+            var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
+                this);
+            dialog.find('.modal-dialog'
+                ).removeClass('modal-sm').addClass('modal-lg');
+            dialog.find('.modal-title').append('Application Error');
+            var body = dialog.find('.modal-body');
+            body.append(jQuery('<div/>', {
+                'class': 'alert alert-warning',
+                role: 'alert'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-alert',
+                'aria-hidden': true
+            })).append(jQuery('<span/>', {
+                'class': 'sr-only'
+            }).append('Warning: ')
+            ).append(jQuery('<p/>')
+                .append(jQuery('<pre/>')
+                    .text(details)))
                 .append(jQuery('<p/>')
                     .append(jQuery('<a/>', {
+                        'class': 'btn btn-link',
                         href: Sao.config.roundup.url,
                         target: '_blank'
                     }).text('Report Bug'))));
-            dialog.dialog({
-                dialogClass: this.class_,
-                modal: true,
-                autoOpen: false,
-                title: 'Application Error!',
-                buttons: {
-                    'Close': function() {
-                        this.close(dialog);
-                        prm.resolve();
-                    }.bind(this)
-                }
-            });
+            var footer = dialog.find('.modal-footer');
+            jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('Close').click(function() {
+                this.close(dialog);
+                prm.resolve();
+            }.bind(this)).appendTo(footer);
             return dialog;
         }
     });
     Sao.common.error = new Sao.common.ErrorDialog();
-
-    Sao.common.center_dialog = function(element){
-        var search_visible = function(parents){
-            var parent;
-            for (var i=0; i < parents.length; i++){
-                var el = jQuery(parents[i]);
-                if (el != element && el.is(':visible')) {
-                    parent = el;
-                    break;
-                }
-            }
-            return parent;
-        };
-        var parents = jQuery(element).parents().find('.ui-dialog ' +
-            '.screen-container');
-        var parent = search_visible(parents);
-        if (!parent) {
-            parents = jQuery(element).parents().find('.screen-container');
-            parent = search_visible(parents);
-            if (!parent) {
-                parent = window;
-            }
-            parent = jQuery(parent);
-        }
-        jQuery(element).dialog('option', 'width', parent.width() * 0.8);
-        jQuery(element).dialog('option', 'height', parent.height());
-        jQuery(element).dialog('option', 'position',{
-                my: 'center top',
-                at: 'center top',
-                of: parent
-            });
-   };
 }());

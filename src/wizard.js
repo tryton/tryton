@@ -125,6 +125,11 @@
         _get_button: function(definition) {
             var button = new Sao.common.Button(definition);
             this.states[definition.state] = button;
+            if (definition.default) {
+                button.el.addClass('btn-primary');
+            } else if (definition.state == this.end_state) {
+                button.el.addClass('btn-link');
+            }
             return button;
         },
         update: function(view, defaults, buttons) {
@@ -165,43 +170,49 @@
             }
             Sao.Wizard.Dialog._super.init.call(this);
             this.dialog = jQuery('<div/>', {
-                'class': 'wizard-dialog'
+                'class': 'wizard-dialog modal fade',
+                role: 'dialog'
             });
-            this.dialog.dialog({
-                dialogClass: 'no-close',
-                title: name,
-                modal: true,
-                autoOpen: false,
-                closeOnEscape: false,
-                buttons: [{text: 'dummy'}]
-            });
-            Sao.common.center_dialog(this.dialog);
-            this.dialog.append(this.widget);
-            this.buttonset = this.dialog.parent().find('.ui-dialog-buttonset');
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-lg'
+            }).appendTo(this.dialog));
+            var header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).append(name)).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            this.footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
+
+            body.append(this.widget);
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);
-            this.buttonset.children().remove();
+            this.footer.children().remove();
         },
         _get_button: function(definition) {
             var button = Sao.Wizard.Dialog._super._get_button.call(this,
                     definition);
-            this.buttonset.append(button.el);
+            this.footer.append(button.el);
             button.el.click(function() {
                 this.response(definition.state);
             }.bind(this));
-            // TODO default
             return button;
         },
         update: function(view, defaults, buttons) {
             Sao.Wizard.Dialog._super.update.call(this, view, defaults,
                     buttons);
-            // TODO set size
-            this.dialog.dialog('open');
+            this.dialog.modal('show');
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
-            this.dialog.dialog('destroy');
+            this.dialog.modal('hide').remove();
             var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
             var is_menu = false;
             var screen;
@@ -243,10 +254,10 @@
                     this.destroy.bind(this));
         },
         show: function() {
-            this.dialog.dialog('open');
+            this.dialog.modal('show');
         },
         hide: function() {
-            this.dialog.dialog('close');
+            this.dialog.modal('hide');
         },
         state_changed: function() {
             this.process();

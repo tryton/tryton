@@ -1,0 +1,26 @@
+{
+  "name": "sao",
+  "version": "0.0.0",
+  "authors": [
+    "Tryton"
+  ],
+  "description": "Web client for Tryton",
+  "license": "GPL",
+  "homepage": "http://www.tryton.org/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.1",
+    "moment": "~2.9.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0"
+  },
+  "devDependencies": {
+    "qunit": "~1.17.1"
+  }
+}

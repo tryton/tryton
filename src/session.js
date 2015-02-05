@@ -121,23 +121,21 @@
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
         var database_select;
-        var login_div, login_input, password_input;
+        var login_modal;
 
         var ok_func = function() {
-            var login_val = login_input.val();
-            var password_val = password_input.val();
-            var database_val = (database ||
-                    database_select.val());
-            if (!(login_val && password_val)) {
+            var login = jQuery('#login-login').val();
+            var password = jQuery('#login-password').val();
+            var database = database || database_select.val();
+            if (!(login && password)) {
                 return;
             }
-            var session = new Sao.Session(database_val,
-                    login_val);
-            var prm = session.do_login(login_val, password_val);
+            var session = new Sao.Session(database, login);
+            var prm = session.do_login(login, password);
             prm.done(function() {
                 parent_dfd.resolve(session);
             });
-            login_div.dialog('close');
+            login_modal.modal('hide');
         };
 
         var keydown = function(ev) {
@@ -158,108 +156,61 @@
             });
         };
 
-        login_div = jQuery('<div/>', {
-            'class': 'login'
-        });
+        login_modal = jQuery('#login');
+
         if (!database) {
-            database_select = jQuery('<select/>');
-            login_div.append(jQuery('<div/>')
-                    .append(jQuery('<label/>', {
-                        'text': 'Database:' // TODO translation
-                    }))
-                    .append(database_select));
+            database_select = jQuery('#login-database');
             fill_database();
         }
 
-        login_input = jQuery('<input/>', {
-            'type': 'input',
-                    'id': 'login',
-                    'val': login
-        });
-        login_div.append(jQuery('<div/>')
-                .append( jQuery('<label/>', {
-                    'text': 'Login:' // TODO translation
-                }))
-                .append(login_input));
-        login_input.keydown(keydown);
+        jQuery('#login-login').keydown(keydown);
+        jQuery('#login-password').keydown(keydown);
 
-        password_input = jQuery('<input/>', {
-            'type': 'password',
-                       'id': 'password'
+        login_modal.modal({
+            backdrop: false,
+            keyboard: false
         });
-        login_div.append(jQuery('<div/>')
-                .append(jQuery('<label/>', {
-                    'text': 'Password:' // TODO translation
-                }))
-                .append(password_input));
-        password_input.keydown(keydown);
-
-        login_div.dialog({
-            'title': 'Login', // TODO translation
-            'modal': true,
-            'buttons': {
-                'Cancel': function() {
-                    jQuery(this).dialog('close');
-                },
-            'OK': ok_func
-            },
-            'open': function() {
-                if (login) {
-                    password_input.focus();
-                } else {
-                    login_input.focus();
-                }
+        login_modal.modal('show');
+        login_modal.on('show.bs.modal', function() {
+            if (database) {
+                jQuery('#login-login').focus();
+            } else {
+                jQuery('#login-database').focus();
             }
         });
-
+        login_modal.find('button').click(ok_func);
     };
 
     Sao.Session.renew = function(session) {
         var dfd = jQuery.Deferred();
-        var login_div, password_input;
+        var password_modal;
         if (!session.login) {
             return dfd.reject();
         }
 
         var ok_func = function() {
-            var password_val = password_input.val();
-            session.do_login(session.login, password_val).done(function() {
+            var password = jQuery('#password-password').val();
+            session.do_login(session.login, password).done(function() {
                 dfd.resolve();
             });
-            login_div.dialog('close');
+            password_modal.modal('hide');
         };
         var keydown = function(ev) {
             if (ev.which === 13)
                 ok_func();
         };
 
-        login_div = jQuery('<div/>', {
-            'class': 'login'
+        password_modal = jQuery('#password');
+        jQuery('#password-password').keydown(keydown);
+        password_modal.modal({
+            backdrop: false,
+            keyboard: false
         });
-        login_div.append(jQuery('<label/>', {
-            'text': 'Password:'
-        }));
-        password_input = jQuery('<input/>', {
-            'type': 'password',
-                       'id': 'password'
+        password_modal.modal('show');
+        password_modal.on('show.bs.modal', function() {
+            jQuery('#password-password').focus();
         });
-        password_input.keydown(keydown);
-        login_div.append(password_input);
-        login_div.append(jQuery('<br/>'));
-
-        login_div.dialog({
-            'title': 'Login', // TODO translation
-            'modal': true,
-            'buttons': {
-                'Cancel': function() {
-                    jQuery(this).dialog('close');
-                },
-            'OK': ok_func
-            },
-            'open': function() {
-                password_input.focus();
-            }
-        });
+        password_modal.find('#button').click(ok_func);
         return dfd.promise();
     };
 

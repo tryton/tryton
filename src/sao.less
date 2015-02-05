@@ -1,60 +1,11 @@
-@small-padding: .1em;
-@medium-padding: .5em;
-@large-padding: 1em;
-
-@small-font-size: .8em;
-@medium-font-size: 1em;
-@large-font-size: 2em;
-
-@grey: #dddddd;
-@light-grey: #f9f9f9;
-@highlight: #e7e7e7;
-
-body {
-    margin: 0;
-    padding: 0;
-    font-size: @small-font-size;
+.navbar {
+    margin-bottom: 1px;
 }
 
-.login div {
-    display: table-row;
-
-    & label {
-        text-align: right;
-        display: table-cell;
+.tab-form {
+    & .nav > li > a {
+        padding-right: 5px;
     }
-
-    & input {
-        text-align: left;
-        display: table-cell;
-    }
-}
-
-#menu {
-    vertical-align: top;
-    padding-right: @medium-padding;
-    font-size: @medium-font-size;
-    cursor: pointer;
-}
-
-#tabs {
-    height: 100%;
-}
-
-.ui-tabs .ui-tabs-panel {
-    padding: @medium-padding @small-padding;
-}
-
-.tab-title-bar {
-    padding: @medium-padding @medium-padding;
-}
-
-.tab-title .ui-button-text {
-    font-size: @large-font-size;
-}
-
-.tab-status, .tab-info {
-    float: right;
 }
 
 .treeview {
@@ -62,26 +13,11 @@ body {
         width: 100%;
         table-layout: fixed;
 
-        & > thead > tr > th, > tbody > tr > td {
-            padding: @small-padding;
-            line-height: @large-font-size;
-            & td {
-                padding: 0;
-                line-height: normal;
-            }
-        }
         & > tbody > tr > td {
-            border-top: .1em solid @grey;
             cursor: pointer;
             & > * {
                 vertical-align: middle;
             }
-        }
-        & > tbody > tr:nth-child(odd) {
-            background-color: @light-grey;
-        }
-        & > tbody > tr:hover {
-            background-color: @highlight;
         }
         & img.column-affix {
             width: 2em;
@@ -104,14 +40,6 @@ body {
     }
     & .treefooter {
         text-align: center;
-        padding-top: @large-padding;
-    }
-}
-
-.filter-box tr td:nth-child(2) {
-    width: 100%;
-    & input {
-        width: 100%;
     }
 }
 
@@ -121,18 +49,14 @@ body {
         width: 100%;
     }
     & td.form-label {
-        white-space: nowrap;
+        white-space: pre;
     }
     & td.form-one2many, td.form-many2many {
         vertical-align: top;
     }
-    & .form-one2many-menu, .form-one2many-content,
-    .form-many2many-menu, .form-many2many-content {
-        border: 1px solid rgb(170, 170, 170);
-        border-radius: 4px;
-    }
     & .form-one2many-menu, .form-many2many-menu {
         overflow: auto;
+        margin-bottom: 1px;
         & .form-one2many-string, .form-many2many-string {
             float: left;
         }
@@ -144,38 +68,20 @@ body {
             margin: 8px;
         }
     }
-    & .form-multiselection {
-        & .form-multiselection-string {
-            display: block;
+    & .form-separator {
+        & label {
+            margin-top: 10px;
         }
-        & .form-multiselection-select {
-            width: 100%;
-        }
-    }
-}
-.form-date, .form-datetime, .form-many2one, .form-binary, .form-reference,
-.editabletree-date, .editabletree-datetime, .editabletree-many2one,
-.editabletree-binary, .editabletree-reference {
-    & button {
-        height: 1.5em;
-        float: right;
-        border: 0;
-    }
-    & div {
-        overflow: hidden;
-        & input {
-            width: 100%;
-            height: 1.5em;
-            border: 0;
-            padding: 0;
-            background-color: inherit;
+        & hr {
+            margin-top: 0;
+            margin-bottom: 5px;
         }
     }
-    & select, span {
-        float: left;
+    & label {
+        font-weight: normal;
     }
-    & select {
-        max-width: 50%;
+    .panel-heading {
+        padding: 1px 1px;
     }
 }
 
@@ -186,31 +92,7 @@ body {
 .form-integer, .form-float, .form-float-time,
 .column-integer, .column-float, .column-float_time,
 .editabletree-integer, .editabletree-float, .editabletree-float_time {
-    text-align: right;
-}
-
-button {
-    & .ui-icon-custom {
-        background-size: 16px 16px;
+    & input {
+        text-align: right;
     }
-}
-
-.unique-dialog {
-    & .ui-dialog-titlebar-close {
-        display: none;
-    }
-    & .dialog-icon {
-        display: table-cell;
-    }
-    & p {
-        display: table;
-    }
-}
-
-.message-dialog p {
-    white-space: pre;
-}
-
-.error-dialog textarea {
-    white-space: pre;
 }

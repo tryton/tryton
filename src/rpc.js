@@ -72,7 +72,7 @@
                         return;
                     } else {
                         Sao.common.message.run('Concurrency Exception',
-                                'ui-icon-alert').always(dfd.reject);
+                                'glyphicon-alert').always(dfd.reject);
                         return;
                     }
                 } else if (data.error[0] == 'NotLogged') {
@@ -110,17 +110,17 @@
            if (value && value.__class__) {
                switch (value.__class__) {
                    case 'datetime':
-                       value = Sao.DateTime(Date.UTC(value.year,
+                       value = Sao.DateTime(value.year,
                                value.month - 1, value.day, value.hour,
                                value.minute, value.second,
-                               value.microsecond / 1000));
+                               value.microsecond / 1000, true);
                        break;
                    case 'date':
                        value = Sao.Date(value.year,
                            value.month - 1, value.day);
                        break;
                    case 'time':
-                       value = new Sao.Time(value.hour, value.minute,
+                       value = Sao.Time(value.hour, value.minute,
                                value.second, value.microsecond / 1000);
                        break;
                    case 'buffer':
@@ -158,37 +158,42 @@
                 Sao.rpc.prepareObject(value[i], i, value);
             }
         } else if ((typeof(value) != 'string') &&
-                (typeof(value) != 'number') && (value !== null)) {
-            if (value instanceof Date) {
-                if (value.isDate){
-                    value = {
-                        '__class__': 'date',
-                        'year': value.getFullYear(),
-                        'month': value.getMonth() + 1,
-                        'day': value.getDate()
-                    };
-                } else {
-                    value = {
-                        '__class__': 'datetime',
-                        'year': value.getUTCFullYear(),
-                        'month': value.getUTCMonth() + 1,
-                        'day': value.getUTCDate(),
-                        'hour': value.getUTCHours(),
-                        'minute': value.getUTCMinutes(),
-                        'second': value.getUTCSeconds(),
-                        'microsecond': value.getUTCMilliseconds() * 1000
-                    };
-                }
+                (typeof(value) != 'number') &&
+                (value !== null) &&
+                (value !== undefined)) {
+            if (value.isDate){
+                value = {
+                    '__class__': 'date',
+                    'year': value.year(),
+                    'month': value.month() + 1,
+                    'day': value.date()
+                };
+
                 if (parent) {
                     parent[index] = value;
                 }
-            } else if (value instanceof Sao.Time) {
+            } else if (value.isDateTime) {
+                value = value.clone();
+                value = {
+                    '__class__': 'datetime',
+                    'year': value.utc().year(),
+                    'month': value.utc().month() + 1,
+                    'day': value.utc().date(),
+                    'hour': value.utc().hour(),
+                    'minute': value.utc().minute(),
+                    'second': value.utc().second(),
+                    'microsecond': value.utc().millisecond() * 1000
+                };
+                if (parent) {
+                    parent[index] = value;
+                }
+            } else if (value.isTime) {
                 value = {
                     '__class__': 'time',
-                    'hour': value.getHours(),
-                    'minute': value.getMinutes(),
-                    'second': value.getSeconds(),
-                    'microsecond': value.getMilliseconds()
+                    'hour': value.hour(),
+                    'minute': value.minute(),
+                    'second': value.second(),
+                    'microsecond': value.millisecond() * 1000
                 };
             } else if (value instanceof Sao.Decimal) {
                 value = {

@@ -7,60 +7,17 @@
         init: function() {
             Sao.Tab.tabs.push(this);
             this.buttons = {};
+            this.id = 'tab-' + Sao.Tab.counter++;
         },
         create_tabcontent: function() {
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
 
-            this.title = this.make_title_bar();
-            this.el.append(this.title);
-
-            var toolbar = this.create_toolbar();
-            this.el.append(toolbar);
+            this.title = jQuery('<h4/>').appendTo(this.el);
+            this.create_toolbar().appendTo(this.el);
         },
-        make_title_bar: function() {
-            var title = jQuery('<div/>', {
-                'class': 'tab-title-bar ui-widget-header ui-corner-all'
-            });
-
-            var menu = this.set_menu();
-            title.append(menu);
-            title.append(jQuery('<button/>', {
-                'class': 'tab-title'
-            }).button({
-                label: this.name,
-                text: true,
-                icons: {
-                    primary: 'ui-icon-triangle-1-s'
-                }
-            }).click(function() {
-                menu.toggle().position({
-                    my: 'left top',
-                    at: 'left bottom',
-                    of: jQuery(this)
-                });
-                // Bind hide after the processing of the current click
-                window.setTimeout(function() {
-                    jQuery(document).one('click', function() {
-                        menu.hide();
-                    });
-                }, 0);
-            }));
-
-            this.status = jQuery('<span/>', {
-                'class': 'tab-status'
-            });
-            title.append(this.status);
-
-            this.info = jQuery('<span/>', {
-                'class': 'tab-info'
-            });
-            title.append(this.info);
-            return title;
-        },
-        set_menu: function() {
-            var menu = jQuery('<ul/>');
+        set_menu: function(menu) {
             this.menu_def.forEach(function(definition) {
                 var icon = definition[0];
                 var name = definition[1];
@@ -70,58 +27,86 @@
                 }
                 var item = jQuery('<li/>').append(
                     jQuery('<a/>').append(jQuery('<span/>', {
-                        'class': 'ui-icon ' + icon
+                        'class': 'glyphicon ' + icon,
+                        'aria-hidden': 'true'
                     })).append(name));
                 menu.append(item);
                 item.click(function() {
                     this[func]();
                 }.bind(this));
             }.bind(this));
-            menu.menu({}).hide().css({
-                position: 'absolute',
-                'z-index': 100
-            });
-            return menu;
         },
         create_toolbar: function() {
-            var toolbar = jQuery('<div/>', {
-                'class': 'tab-toolbar ui-widget-header ui-corner-all'
-            });
+            var toolbar = jQuery(
+                    '<nav class="navbar navbar-default" role="navigation">' +
+                    '<div class="container-fluid">' +
+                    '<div class="navbar-header">' +
+                    '<button type="button" class="navbar-toggle collapsed" ' +
+                    'data-toggle="collapse" ' + 
+                    'data-target="#navbar-' + this.id + '">' +
+                    '<span class="sr-only">Toggle navigation</span>' +
+                    '<span class="icon-bar"></span>' +
+                    '<span class="icon-bar"></span>' +
+                    '<span class="icon-bar"></span>' +
+                    '</div>' +
+                    '<div class="collapse navbar-collapse" ' +
+                    'id="navbar-' + this.id + '">' +
+                    '<ul class="nav navbar-nav">' +
+                    '<li class="dropdown">' +
+                    '<a href="#" class="dropdown-toggle" ' +
+                    'data-toggle="dropdown" role="button" ' +
+                    'aria-expanded="false">' +
+                    '<span class="glyphicon glyphicon-wrench" ' +
+                    'aria-hidden="true"></span>' +
+                    '<span class="visible-xs">Menu</span>' +
+                    '<span class="caret"></span>' +
+                    '</a>' +
+                    '<ul class="dropdown-menu" role="menu">' +
+                    '</ul>' +
+                    '</li>' +
+                    '</ul>' +
+                    '</div>' +
+                    '</div>' +
+                    '</nav>'
+                    );
+            this.set_menu(toolbar.find('ul[role*="menu"]'));
+
             var add_button = function(tool) {
-                var click_func = function() {
-                    this[tool[4]]();
-                };
-                var button = jQuery('<button/>').button({
-                    id: tool[0],
-                    text: tool[2],
-                    icons: {
-                        primary: tool[1]
-                    },
-                    label: tool[2]
+                this.buttons[tool[0]] = jQuery('<a/>', {
+                    href: '#',
+                    id: tool[0]
                 })
-                .click(click_func.bind(this));
-                toolbar.append(button);
+                .append(jQuery('<span/>', {
+                    'class': 'glyphicon ' + tool[1],
+                    'aria-hidden': 'true'
+                }))
+                .append(jQuery('<span/>', {
+                    'class': 'hidden-sm'
+                }).append(tool[2]))
+                .click(this[tool[4]].bind(this))
+                .appendTo(jQuery('<li/>')
+                        .appendTo(toolbar.find('.navbar-collapse > ul')));
                 // TODO tooltip
-                this.buttons[tool[0]] = button;
             };
             this.toolbar_def.forEach(add_button.bind(this));
             return toolbar;
         },
         close: function() {
-            var tabs = jQuery('#tabs > div');
-            var tab = tabs.find(
-                    '.ui-tabs-nav li[aria-controls="' + this.id + '"]');
-            tabs.tabs('option', 'active',
-                    tabs.find('li').index(jQuery('#nav-' + this.id)));
-            tabs.tabs('refresh');
+            var tabs = jQuery('#tabs');
+            var tab = tabs.find('#nav-' + this.id);
+            var content = tabs.find('#' + this.id);
+            tabs.find('a[href="#' + this.id + '"]').tab('show');
             return this.modified_save().then(function() {
-                tab.remove();
-                jQuery('#' + this.id).remove();
-                tabs.tabs('refresh');
-                if (!tabs.find('> ul').children().length) {
-                    tabs.remove();
+                var next = tab.next();
+                if (!next.length) {
+                    next = tab.prev();
                 }
+                tab.remove();
+                content.remove();
                 Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
+                if (next) {
+                    next.find('a').tab('show');
+                }
             }.bind(this));
         }
     });
@@ -153,8 +138,9 @@
         return jQuery.when();
     };
     Sao.Tab.tabs.get_current = function() {
-        var tabs = jQuery('#tabs > div');
-        return Sao.Tab.tabs[tabs.tabs('option', 'active')];
+        var tabs = jQuery('#tabs > ul');
+        var i = tabs.find('li').index(tabs.find('li.active'));
+        return Sao.Tab.tabs[i];
     };
     Sao.Tab.tabs.close_current = function() {
         var tab = this.get_current();
@@ -171,40 +157,35 @@
         } else {
             tab = new Sao.Tab.Board(attributes);
         }
-        if (!jQuery('#tabs').children().length) {
-            jQuery('#tabs').append(jQuery('<div/>').append(jQuery('<ul/>')));
-        }
-        var tabs = jQuery('#tabs > div');
-        tabs.tabs();
-        tab.id = 'tab-' + Sao.Tab.counter++;
+        var tabs = jQuery('#tabs');
         var tab_link = jQuery('<a/>', {
-            href: '#' + tab.id
-        }).append(tab.name);
-        var close_link = jQuery('<a/>', {
-            href: '#',
-            'class': 'ui-tabs-anchor'
-        }).append(jQuery('<span/>', {
-            'class': 'ui-icon ui-icon-circle-close'
-        })).hover(
-        function() {
-            jQuery(this).css('cursor', 'pointer');
-        },
-        function() {
-            jQuery(this).css('cursor', 'default');
+            'aria-controls': tab.id,
+            'role': 'tab',
+            'data-toggle': 'tab',
+            'href': '#' + tab.id
         })
-        .click(function() {
+        .append(jQuery('<button/>', {
+            'class': 'close'
+        }).append(jQuery('<span/>', {
+            'aria-hidden': true
+        }).append('&times;')).append(jQuery('<span/>', {
+            'class': 'sr-only'
+        }).append('Close')).click(function() {
             tab.close();
-        });
+        }))
+        .append(tab.name);
         jQuery('<li/>', {
+            'role': 'presentation',
             id: 'nav-' + tab.id
-        }).append(tab_link).append(close_link)
-        .appendTo(tabs.find('> .ui-tabs-nav'));
+        }).append(tab_link)
+        .appendTo(tabs.find('> .nav-tabs'));
         jQuery('<div/>', {
+            role: 'tabpanel',
+            'class': 'tab-pane',
             id: tab.id
-        }).html(tab.el).appendTo(tabs);
-        tabs.tabs('refresh');
-        tabs.tabs('option', 'active', -1);
-        jQuery(window).resize();
+        }).html(tab.el)
+        .appendTo(tabs.find('> .tab-content'));
+        tab_link.tab('show');
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {
@@ -254,34 +235,34 @@
         },
         // TODO translate labels
         toolbar_def: [
-            ['new', 'ui-icon-document', 'New', 'Create a new record', 'new_'],
-            ['save', 'ui-icon-disk', 'Save', 'Save this record', 'save'],
-            ['switch', 'ui-icon-arrow-4-diag', 'Switch', 'Switch view',
+            ['new', 'glyphicon-file', 'New', 'Create a new record', 'new_'],
+            ['save', 'glyphicon-save', 'Save', 'Save this record', 'save'],
+            ['switch', 'glyphicon-move', 'Switch', 'Switch view',
             'switch_'],
-            ['reload', 'ui-icon-refresh', 'Reload', 'Reload', 'reload'],
-            ['previous', 'ui-icon-arrowthick-1-w', 'Previous',
+            ['reload', 'glyphicon-refresh', 'Reload', 'Reload', 'reload'],
+            ['previous', 'glyphicon-chevron-left', 'Previous',
             'Previous Record', 'previous'],
-            ['next', 'ui-icon-arrowthick-1-e', 'Next', 'Next Record', 'next'],
-            ['attach', 'ui-icon-pin-w', 'Attachment',
+            ['next', 'glyphicon-chevron-right', 'Next', 'Next Record', 'next'],
+            ['attach', 'glyphicon-paperclip', 'Attachment',
             'Add an attachment to the record', 'attach']
             ],
         menu_def: [
-            ['ui-icon-document', 'New', 'new_'],
-            ['ui-icon-disk', 'Save', 'save'],
-            ['ui-icon-arrow-4-diag', 'Switch', 'switch_'],
-            ['ui-icon-refresh', 'Reload/Undo', 'reload'],
-            ['ui-icon-copy', 'Duplicate', 'copy'],
-            ['ui-icon-trash', 'Delete', 'delete_'],
-            ['ui-icon-arrowthick-1-w', 'Previous', 'previous'],
-            ['ui-icon-arrowthick-1-e', 'Next', 'next'],
-            ['ui-icon-search', 'Search', 'search'],
-            ['ui-icon-clock', 'View Logs...', 'logs'],
-            ['ui-icon-clock', 'Show revisions...', 'revision'],
-            ['ui-icon-circle-close', 'Close Tab', 'close'],
-            ['ui-icon-pin-w', 'Attachment', 'attach'],
-            ['ui-icon-gear', 'Action', 'action'],
-            ['ui-icon-arrowreturn-1-e', 'Relate', 'relate'],
-            ['ui-icon-print', 'Print', 'print']
+            ['glyphicon-file', 'New', 'new_'],
+            ['glyphicon-save', 'Save', 'save'],
+            ['glyphicon-move', 'Switch', 'switch_'],
+            ['glyphicon-refresh', 'Reload/Undo', 'reload'],
+            ['glyphicon-repeat', 'Duplicate', 'copy'],
+            ['glyphicon-trash', 'Delete', 'delete_'],
+            ['glyphicon-chevron-left', 'Previous', 'previous'],
+            ['glyphicon-chevron-right', 'Next', 'next'],
+            ['glyphicon-search', 'Search', 'search'],
+            ['glyphicon-time', 'View Logs...', 'logs'],
+            ['glyphicon-time', 'Show revisions...', 'revision'],
+            ['glyphicon-remove', 'Close Tab', 'close'],
+            ['glyphicon-paperclip', 'Attachment', 'attach'],
+            ['glyphicon-cog', 'Action', 'action'],
+            ['glyphicon-share-alt', 'Relate', 'relate'],
+            ['glyphicon-print', 'Print', 'print']
             ],
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
@@ -292,57 +273,61 @@
             prm.done(function(toolbars) {
                 // TODO translation
                 [
-                ['action', 'ui-icon-gear', 'Action', 'Launch action'],
-                ['relate', 'ui-icon-arrowreturn-1-e', 'Relate',
+                ['action', 'glyphicon-cog', 'Action', 'Launch action'],
+                ['relate', 'glyphicon-share-alt', 'Relate',
                 'Open related records'],
-                ['print', 'ui-icon-print', 'Print', 'Print report']
+                ['print', 'glyphicon-print', 'Print', 'Print report']
                 ].forEach(function(menu_action) {
-                    var button = jQuery('<button/>').button({
+                    var button = jQuery('<li/>', {
+                        'class': 'dropdown'
+                    })
+                    .append(jQuery('<a/>', {
+                        href: '#',
                         id: menu_action[0],
-                        text: true,
-                        icons: {
-                            primary: menu_action[1],
-                            secondary: 'ui-icon-triangle-1-s'
-                        },
-                        label: menu_action[2]
-                    });
+                        'class': 'dropdown-toggle',
+                        'data-toggle': 'dropdown',
+                        role: 'button',
+                        'aria-expanded': 'false'
+                    })
+                        .append(jQuery('<span/>', {
+                            'class': 'glyphicon ' + menu_action[1],
+                            'aria-hidden': 'true'
+                        }))
+                        .append(jQuery('<span/>', {
+                            'class': 'hidden-sm'
+                        }).append(menu_action[2]))
+                        .append(jQuery('<span/>', {
+                            'class': 'caret'
+                        })))
+                    .append(jQuery('<ul/>', {
+                        'class': 'dropdown-menu',
+                        role: 'menu'
+                    }))
+                    .appendTo(toolbar.find('.navbar-collapse > ul'));
                     buttons[menu_action[0]] = button;
-                    toolbar.append(button);
-                    var menu = jQuery('<ul/>');
-                    button.click(function() {
-                        menu.toggle().position({
-                            my: 'left top',
-                            at: 'left bottom',
-                            of: button
-                        });
-                        if (menu_action[0] == 'action') {
+                    var menu = button.find('ul[role*="menu"]');
+                    if (menu_action[0] == 'action') {
+                        button.find('a').click(function() {
                             menu.find('.action_button').remove();
                             var buttons = screen.get_buttons();
                             buttons.forEach(function(button) {
-                                var item = jQuery('<li/>', {
-                                    'class': 'ui-menu-item action_button'
-                                }).append(
+                                var item = jQuery('<li/>')
+                                .append(
                                     jQuery('<a/>').append(
-                                        button.attributes.string || ''));
-                                menu.append(item);
-                                item.click(function() {
+                                        button.attributes.string || ''))
+                                .click(function() {
                                     screen.button(button.attributes);
-                                });
+                                })
+                            .appendTo(menu);
                             });
-                        }
-                        // Bind hide after the processing of the current click
-                        window.setTimeout(function() {
-                            jQuery(document).one('click', function() {
-                                menu.hide();
-                            });
-                        }, 0);
-                    });
+                        });
+                    }
 
                     toolbars[menu_action[0]].forEach(function(action) {
-                        var item = jQuery('<li/>').append(
-                            jQuery('<a/>').append(action.name));
-                        menu.append(item);
-                        item.click(function() {
+                        var item = jQuery('<li/>')
+                        .append(
+                            jQuery('<a/>').append(action.name))
+                        .click(function() {
                             screen.save_current().then(function() {
                                 var exec_action = jQuery.extend({}, action);
                                 var record_id = null;
@@ -363,13 +348,9 @@
                                 Sao.Action.exec_action(exec_action, data,
                                     screen.context);
                             });
-                        });
+                        })
+                        .appendTo(menu);
                     });
-                    menu.menu({}).hide().css({
-                        position: 'absolute',
-                        'z-index': 100
-                    });
-                    toolbar.append(menu);
                 });
             });
             return toolbar;
@@ -578,9 +559,7 @@
             } else {
                 label = this.name;
             }
-            this.title.find('button').button({
-                label: label
-            });
+            this.title.html(label);
             ['new', 'save'].forEach(function(button) {
                 this.buttons[button].prop('disabled', revision);
             }.bind(this));
@@ -605,16 +584,7 @@
         },
         attachment_count: function(count) {
             var label = 'Attachment(' + count + ')';  // TODO translate
-            this.buttons.attach.button('option', 'label', label);
-            if (count) {
-                this.buttons.attach.button('option', 'icons', {
-                    primary: 'ui-icon-pin-s'
-                });
-            } else {
-                this.buttons.attach.button('option', 'icons', {
-                    primary: 'ui-icon-pin-w'
-                });
-            }
+            this.buttons.attach.text(label);
             var record_id = this.screen.get_id();
             this.buttons.attach.prop('disabled',
                 record_id < 0 || record_id === null);
