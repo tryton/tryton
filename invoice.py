@@ -46,6 +46,8 @@ class InvoiceLine(AnalyticMixin):
                 value['analytic_lines'] = []
                 to_create = []
                 for entry in self.analytic_accounts:
+                    if not entry.account:
+                        continue
                     to_create.append(self.get_analytic_entry(entry, value))
                 if to_create:
                     value['analytic_lines'] = [('create', to_create)]
