@@ -313,7 +313,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     root = fields.Many2One('analytic_account.account', 'Root Analytic',
         domain=[('type', '=', 'root')])
     account = fields.Many2One('analytic_account.account', 'Account',
-        ondelete='RESTRICT', required=True,
+        ondelete='RESTRICT',
         states={
             'required': Eval('required', False),
             },
@@ -331,6 +331,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
         Account = pool.get('analytic_account.account')
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 3.4: use origin as the key for One2Many
         migration_3_4 = False
@@ -341,7 +342,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
 
         super(AnalyticAccountEntry, cls).__register__(module_name)
 
-        # Migration from 3.4: set root value
+        # Migration from 3.4: set root value and remove required
         if migration_3_4:
             account = Account.__table__()
             cursor.execute(*account.select(account.id, account.root,
@@ -352,6 +353,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
                         columns=[entry.root],
                         values=[root_id],
                         where=entry.account == account_id))
+        table.not_null_action('account', action='remove')
 
     @classmethod
     def __setup__(cls):
