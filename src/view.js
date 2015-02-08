@@ -1957,7 +1957,9 @@
         },
         get_value: function(record, field) {
             var value = this.date.data('DateTimePicker').date();
-            value.isDate = true;
+            if (value) {
+                value.isDate = true;
+            }
             return value;
         },
         display: function(record, field) {
@@ -1989,7 +1991,9 @@
         },
         get_value: function(record, field) {
             var value = this.date.data('DateTimePicker').date();
-            value.isDateTime = true;
+            if (value) {
+                value.isDateTime = true;
+            }
             return value;
         }
     });
@@ -2001,7 +2005,9 @@
         },
         get_value: function(record, field) {
             var value = this.date.data('DateTimePicker').date();
-            value.isDateTime = true;
+            if (value) {
+                value.isTime = true;
+            }
             return value;
         }
     });
