@@ -3,7 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import time
-from xmlrpclib import MAXINT
+import datetime
 from itertools import combinations
 
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
@@ -124,7 +124,7 @@ class TriggerTestCase(unittest.TestCase):
             # With minimum delay
             self.trigger.write([trigger], {
                     'limit_number': 0,
-                    'minimum_delay': 1,
+                    'minimum_time_delay': datetime.timedelta(hours=1),
                     })
             triggered, = self.triggered.create([{
                         'name': 'Test',
@@ -212,7 +212,7 @@ class TriggerTestCase(unittest.TestCase):
             # With minimum delay
             self.trigger.write([trigger], {
                     'limit_number': 0,
-                    'minimum_delay': MAXINT,
+                    'minimum_time_delay': datetime.timedelta.max,
                     })
             triggered, = self.triggered.create([{
                         'name': 'Foo',
@@ -225,7 +225,7 @@ class TriggerTestCase(unittest.TestCase):
             TRIGGER_LOGS.pop()
 
             self.trigger.write([trigger], {
-                    'minimum_delay': 0.02,
+                    'minimum_time_delay': datetime.timedelta(seconds=1),
                     })
             triggered, = self.triggered.create([{
                         'name': 'Foo',
@@ -325,7 +325,7 @@ class TriggerTestCase(unittest.TestCase):
             # With minimum delay
             self.trigger.write([trigger], {
                     'limit_number': 0,
-                    'minimum_delay': 1,
+                    'minimum_time_delay': datetime.timedelta(hours=1),
                     })
             self.triggered.delete([triggered])
             self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
@@ -401,7 +401,7 @@ class TriggerTestCase(unittest.TestCase):
             # With minimum delay
             self.trigger.write([trigger], {
                     'limit_number': 0,
-                    'minimum_delay': MAXINT,
+                    'minimum_time_delay': datetime.timedelta.max,
                     })
             self.trigger.trigger_time()
             self.trigger.trigger_time()
@@ -415,7 +415,7 @@ class TriggerTestCase(unittest.TestCase):
                         ]))
 
             self.trigger.write([trigger], {
-                    'minimum_delay': 0.02,
+                    'minimum_time_delay': datetime.timedelta(seconds=1),
                     })
             self.trigger.trigger_time()
             time.sleep(1.2)
