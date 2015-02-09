@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Works">
     <field name="name"/>
-    <field name="hours" widget="float_time" float_time="company_work_time"/>
+    <field name="duration"/>
 </tree>

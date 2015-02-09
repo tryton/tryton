@@ -5,5 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="year"/>
     <field name="week"/>
     <field name="employee"/>
-    <field name="hours" widget="float_time" float_time="company_work_time"/>
+    <field name="duration"/>
 </tree>

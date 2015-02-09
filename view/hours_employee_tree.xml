@@ -3,6 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Hours per Employee">
     <field name="employee"/>
-    <field name="hours" widget="float_time" float_time="company_work_time"
-        sum="Hours"/>
+    <field name="duration" sum="Duration"/>
 </tree>

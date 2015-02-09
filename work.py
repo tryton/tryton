@@ -1,5 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+
+import datetime
+
 from sql import Literal
 from sql.aggregate import Sum
 
@@ -31,8 +35,9 @@ class Work(ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
-            help="Total time spent on this work"), 'get_hours')
+    duration = fields.Function(fields.TimeDelta('Timesheet Duration',
+            'company_work_time', help="Total time spent on this work"),
+        'get_duration')
     timesheet_available = fields.Boolean('Available on timesheets',
         help="Allow to fill in timesheets with this work")
     timesheet_start_date = fields.Date('Timesheet Start',
@@ -90,7 +95,7 @@ class Work(ModelSQL, ModelView):
         cls.check_recursion(works, rec_name='name')
 
     @classmethod
-    def get_hours(cls, works, name):
+    def get_duration(cls, works, name):
         pool = Pool()
         Line = pool.get('timesheet.line')
         transaction = Transaction()
@@ -101,7 +106,7 @@ class Work(ModelSQL, ModelView):
         table_c = cls.__table__()
         line = Line.__table__()
         ids = [w.id for w in works]
-        hours = dict.fromkeys(ids, 0)
+        durations = dict.fromkeys(ids, None)
         where = Literal(True)
         if context.get('from_date'):
             where &= line.date >= context['from_date']
@@ -115,11 +120,15 @@ class Work(ModelSQL, ModelView):
                     condition=(table_c.left >= table_w.left)
                     & (table_c.right <= table_w.right)
                     ).join(line, 'LEFT', condition=line.work == table_c.id
-                    ).select(table_w.id, Sum(line.hours),
+                    ).select(table_w.id, Sum(line.duration),
                     where=red_sql & where,
                     group_by=table_w.id))
-            hours.update(dict(cursor.fetchall()))
-        return hours
+            for work_id, duration in cursor.fetchall():
+                # SQLite uses float for SUM
+                if duration and not isinstance(duration, datetime.timedelta):
+                    duration = datetime.timedelta(seconds=duration)
+                durations[work_id] = duration
+        return durations
 
     def get_rec_name(self, name):
         if self.parent:
@@ -184,6 +193,12 @@ class Work(ModelSQL, ModelView):
         for record, rec_name, icon in super(Work, cls).search_global(text):
             icon = icon or 'tryton-clock'
             yield record, rec_name, icon
+
+    @property
+    def hours(self):
+        if not self.duration:
+            return 0
+        return self.duration.total_seconds() / 60 / 60
 
 
 class OpenWorkStart(ModelView):

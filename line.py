@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+import datetime
+
 from sql import Literal
 from sql.aggregate import Max, Sum
-from sql.conditionals import Coalesce
 from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, fields
@@ -28,7 +30,7 @@ class Line(ModelSQL, ModelView):
             ],
         depends=['company'])
     date = fields.Date('Date', required=True, select=True)
-    hours = fields.Float('Hours', digits=(16, 2), required=True)
+    duration = fields.TimeDelta('Duration', 'company_work_time', required=True)
     work = fields.Many2One('timesheet.work', 'Work',
         required=True, select=True, domain=[
             ('company', '=', Eval('company', -1)),
@@ -49,10 +51,10 @@ class Line(ModelSQL, ModelView):
     def __setup__(cls):
         super(Line, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
-        cls._sql_constraints += [
-            ('check_move_hours_pos',
-             'CHECK(hours >= 0.0)', 'Hours field must be positive'),
-            ]
+        cls._error_messages.update({
+                'duration_positive': (
+                    'Duration of line "%(line)s" must be positive.'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -68,12 +70,26 @@ class Line(ModelSQL, ModelView):
 
         super(Line, cls).__register__(module_name)
 
+        table = TableHandler(cursor, cls, module_name)
+
         # Migration from 3.4: new company field
         if created_company:
             # Don't use FROM because SQLite nor MySQL support it.
             cursor.execute(*sql_table.update(
                     [sql_table.company], [work.select(work.company,
                             where=work.id == sql_table.work)]))
+        # Migration from 3.4: change hours into timedelta duration
+        if table.column_exist('hours'):
+            table.drop_constraint('check_move_hours_pos')
+            cursor.execute(*sql_table.select(
+                    sql_table.id, sql_table.hours))
+            for id_, hours in cursor.fetchall():
+                duration = datetime.timedelta(hours=hours)
+                cursor.execute(*sql_table.update(
+                        [sql_table.duration],
+                        [duration],
+                        where=sql_table.id == id_))
+            table.drop_column('hours')
 
     @staticmethod
     def default_company():
@@ -104,6 +120,22 @@ class Line(ModelSQL, ModelView):
         Employee = Pool().get('company.employee')
         employee = Employee(Transaction().context['employee'])
         return value + " (" + employee.rec_name + ")"
+
+    @classmethod
+    def validate(cls, lines):
+        super(Line, cls).validate(lines)
+        for line in lines:
+            line.check_duration()
+
+    def check_duration(self):
+        if self.duration < datetime.timedelta():
+            self.raise_user_error('duration_positive', {
+                    'line': self.rec_name,
+                    })
+
+    @property
+    def hours(self):
+        return self.duration.total_seconds() / 60 / 60
 
 
 class EnterLinesStart(ModelView):
@@ -156,7 +188,7 @@ class HoursEmployee(ModelSQL, ModelView):
     'Hours per Employee'
     __name__ = 'timesheet.hours_employee'
     employee = fields.Many2One('company.employee', 'Employee', select=True)
-    hours = fields.Float('Hours', digits=(16, 2))
+    duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @staticmethod
     def table_query():
@@ -175,7 +207,7 @@ class HoursEmployee(ModelSQL, ModelView):
             Max(line.write_uid).as_('write_uid'),
             Max(line.write_date).as_('write_date'),
             line.employee,
-            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            Sum(line.duration).as_('duration'),
             where=where,
             group_by=line.employee)
 
@@ -214,7 +246,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     year = fields.Char('Year', select=True)
     week = fields.Integer('Week', select=True)
     employee = fields.Many2One('company.employee', 'Employee', select=True)
-    hours = fields.Float('Hours', digits=(16, 2), select=True)
+    duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @classmethod
     def __setup__(cls):
@@ -242,7 +274,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
             year_column,
             week_column,
             line.employee,
-            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            Sum(line.duration).as_('duration'),
             group_by=(year_column, week_column, line.employee))
 
 
@@ -252,7 +284,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     year = fields.Char('Year', select=True)
     month = fields.Integer('Month', select=True)
     employee = fields.Many2One('company.employee', 'Employee', select=True)
-    hours = fields.Float('Hours', digits=(16, 2), select=True)
+    duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @classmethod
     def __setup__(cls):
@@ -280,5 +312,5 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
             year_column,
             month_column,
             line.employee,
-            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            Sum(line.duration).as_('duration'),
             group_by=(year_column, month_column, line.employee))

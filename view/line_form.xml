@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <label name="date"/>
     <field name="date"/>
-    <label name="hours"/>
-    <field name="hours" widget="float_time" float_time="company_work_time"/>
+    <label name="duration"/>
+    <field name="duration"/>
     <label name="work"/>
     <field name="work"/>
     <label name="description"/>

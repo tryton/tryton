@@ -6,7 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <field name="employee"/>
     </x>
     <y>
-        <field name="hours" widget="float_time"
-            float_time="company_work_time"/>
+        <field name="duration" timedelta="company_work_time"/>
     </y>
 </graph>
