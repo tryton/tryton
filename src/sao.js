@@ -120,6 +120,20 @@ var Sao = {};
         return time;
     };
 
+    Sao.TimeDelta = function(days, seconds,
+            milliseconds, minutes, hours, weeks) {
+        var timedelta = moment.duration({
+            days: days,
+            seconds: seconds,
+            milliseconds: milliseconds,
+            minutes: minutes,
+            hours: hours,
+            weeks: weeks
+        });
+        timedelta.isTimeDelta = true;
+        return timedelta;
+    };
+
     Sao.config = {};
     Sao.config.limit = 1000;
     Sao.config.display_size = 20;

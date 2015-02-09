@@ -123,6 +123,9 @@
                        value = Sao.Time(value.hour, value.minute,
                                value.second, value.microsecond / 1000);
                        break;
+                    case 'timedelta':
+                       value = Sao.TimeDelta(null, value.seconds);
+                       break;
                    case 'buffer':
                        // javascript's atob does not understand linefeed
                        // characters
@@ -194,6 +197,11 @@
                     'minute': value.minute(),
                     'second': value.second(),
                     'microsecond': value.millisecond() * 1000
+                };
+            } else if (value.isTimeDelta) {
+                value = {
+                    '__class__': 'timedelta',
+                    'seconds': value.asSeconds()
                 };
             } else if (value instanceof Sao.Decimal) {
                 value = {

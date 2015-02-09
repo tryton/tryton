@@ -181,9 +181,154 @@
         return date;
     };
 
-    Sao.common.text_to_float_time = function(text, conversion, digit) {
-        // TODO
+    Sao.common.timedelta = {};
+    Sao.common.timedelta.DEFAULT_CONVERTER = {
+        's': 1
+    };
+    Sao.common.timedelta.DEFAULT_CONVERTER.m =
+        Sao.common.timedelta.DEFAULT_CONVERTER.s * 60;
+    Sao.common.timedelta.DEFAULT_CONVERTER.h =
+        Sao.common.timedelta.DEFAULT_CONVERTER.m * 60;
+    Sao.common.timedelta.DEFAULT_CONVERTER.d =
+        Sao.common.timedelta.DEFAULT_CONVERTER.h * 24;
+    Sao.common.timedelta.DEFAULT_CONVERTER.w =
+        Sao.common.timedelta.DEFAULT_CONVERTER.d * 7;
+    Sao.common.timedelta.DEFAULT_CONVERTER.M =
+        Sao.common.timedelta.DEFAULT_CONVERTER.w * 4;
+    Sao.common.timedelta.DEFAULT_CONVERTER.Y =
+        Sao.common.timedelta.DEFAULT_CONVERTER.d * 365;
+    Sao.common.timedelta._get_separator = function() {
+        // TODO translate
+        return {
+            Y: 'Y',
+            M: 'M',
+            w: 'w',
+            d: 'd',
+            h: 'h',
+            m: 'm',
+            s: 's'
+        };
+    };
+    Sao.common.timedelta.format = function(value, converter) {
+        if (!value) {
+            return '';
+        }
+        if (!converter) {
+            converter = Sao.common.timedelta.DEFAULT_CONVERTER;
+        }
+        var text = [];
+        value = value.asSeconds();
+        var sign = '';
+        if (value < 0) {
+            sign = '-';
+        }
+        value = Math.abs(value);
+        converter = Object.keys(converter).map(function(key) {
+            return [key, converter[key]];
+        });
+        converter.sort(function(first, second) {
+            return second[1] - first[1];
+        });
+        var values = [];
+        var k, v;
+        for (var i = 0; i < converter.length; i++) {
+            k = converter[i][0];
+            v = converter[i][1];
+            var part = Math.floor(value / v);
+            value -= part * v;
+            values.push(part);
+        }
+        for (i = 0; i < converter.length - 3; i++) {
+            k = converter[i][0];
+            v = values[i];
+            if (v) {
+                text.push(v + Sao.common.timedelta._get_separator()[k]);
+            }
+        }
+        if (jQuery(values.slice(-3)).is(function(i, v) { return v; }) ||
+                jQuery.isEmptyObject(text)) {
+            var time = values.slice(-3, -1);
+            time = ('00' + time[0]).slice(-2) + ':' + ('00' + time[1]).slice(-2);
+            if (values.slice(-1)[0] || value) {
+                time += ':' + ('00' + values.slice(-1)[0]).slice(-2);
+            }
+            text.push(time);
+        }
+        text = sign + text.reduce(function(p, c) {
+            if (p) {
+                return p + ' ' + c;
+            } else {
+                return c;
+            }
+        });
+        if (value) {
+            if (!jQuery(values.slice(-3)).is(function(i, v) { return v; })) {
+                // Add space if no time
+                text += ' ';
+            }
+            text += ('' + value.toFixed(6)).slice(1);
+        }
         return text;
+    };
+    Sao.common.timedelta.parse = function(text, converter) {
+        if (!text) {
+            return null;
+        }
+        if (!converter) {
+            converter = Sao.common.timedelta.DEFAULT_CONVERTER;
+        }
+        var separators = Sao.common.timedelta._get_separator();
+        var separator;
+        for (var k in separators) {
+            separator = separators[k];
+            text = text.replace(separator, separator + ' ');
+        }
+
+        var seconds = 0;
+        var sec;
+        var parts = text.split(' ');
+        for (var i = 0; i < parts.length; i++) {
+            var part = parts[i];
+            if (part.contains(':')) {
+                var subparts = part.split(':');
+                var subconverter = [
+                    converter.h, converter.m, converter.s];
+                for (var j = 0;
+                        j < Math.min(subparts.length, subconverter.length);
+                        j ++) {
+                    var t = subparts[j];
+                    var v = subconverter[j];
+                    sec = Math.abs(Number(t)) * v;
+                    if (!isNaN(sec)) {
+                        seconds += sec;
+                    }
+                }
+            } else {
+                var found = false;
+                for (var key in separators) {
+                    separator =separators[key];
+                    if (part.endsWith(separator)) {
+                        part = part.slice(0, -separator.length);
+                        sec = Math.abs(parseInt(part, 10)) * converter[key];
+                        if (!isNaN(sec)) {
+                            seconds += sec;
+                        }
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    sec = Math.abs(Number(part));
+                    if (!isNaN(sec)) {
+                        seconds += sec;
+                    }
+                }
+            }
+        }
+        if (text.contains('-')) {
+            seconds *= -1;
+        }
+        return Sao.TimeDelta(null, seconds);
     };
 
     Sao.common.ModelAccess = Sao.class_(Object, {

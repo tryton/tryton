@@ -57,6 +57,8 @@
                 return Sao.View.Tree.DateColumn;
             case 'time':
                 return Sao.View.Tree.TimeColumn;
+            case 'timedelta':
+                return Sao.View.Tree.TimeDeltaColumn;
             case 'one2many':
                 return Sao.View.Tree.One2ManyColumn;
             case 'many2many':
@@ -68,8 +70,6 @@
             case 'float':
             case 'numeric':
                 return Sao.View.Tree.FloatColumn;
-            case 'float_time':
-                return Sao.View.Tree.FloatTimeColumn;
             case 'integer':
             case 'biginteger':
                 return Sao.View.Tree.IntegerColumn;
@@ -1048,6 +1048,10 @@
         }
     });
 
+    Sao.View.Tree.TimeDeltaColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-timedelta'
+    });
+
     Sao.View.Tree.One2ManyColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-one2many',
         update_text: function(cell, record) {
@@ -1057,19 +1061,6 @@
 
     Sao.View.Tree.Many2ManyColumn = Sao.class_(Sao.View.Tree.One2ManyColumn, {
         class_: 'column-many2many'
-    });
-
-    Sao.View.Tree.FloatTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        class_: 'column-float_time',
-        init: function(model, attributes) {
-            Sao.View.Tree.FloatTimeColumn._super.init.call(this, model,
-                attributes);
-            this.conv = null; // TODO
-        },
-        update_text: function(cell, record) {
-            cell.text(Sao.common.text_to_float_time(
-                    this.field.get_client(record), this.conv));
-        }
     });
 
     Sao.View.Tree.ImageColumn = Sao.class_(Sao.View.Tree.CharColumn, {
@@ -1756,6 +1747,8 @@
                 return Sao.View.Form.DateTime;
             case 'time':
                 return Sao.View.Form.Time;
+            case 'timedelta':
+                return Sao.View.Form.TimeDelta;
             case 'integer':
             case 'biginteger':
                 return Sao.View.Form.Integer;
@@ -1764,8 +1757,6 @@
                 return Sao.View.Form.Float;
             case 'selection':
                 return Sao.View.Form.Selection;
-            case 'float_time':
-                return Sao.View.Form.FloatTime;
             case 'boolean':
                 return Sao.View.Form.Boolean;
             case 'text':
@@ -2012,6 +2003,37 @@
         }
     });
 
+    Sao.View.Form.TimeDelta = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-timedelta',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.TimeDelta._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<div/>', {
+                'class': this.class_
+            });
+            this.input = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(this.el);
+            this.el.change(this.focus_out.bind(this));
+        },
+        display: function(record, field) {
+            Sao.View.Form.TimeDelta._super.display.call(this, record, field);
+            if (record) {
+                var value = record.field_get_client(this.field_name);
+                this.input.val(value || '');
+            } else {
+                this.input.val('');
+            }
+        },
+        set_value: function(record, field) {
+            field.set_client(record, this.input.val());
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('disabled', readonly);
+        }
+    });
+
     Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-integer',
         init: function(field_name, model, attributes) {
@@ -2127,24 +2149,6 @@
         },
         set_readonly: function(readonly) {
             this.select.prop('disabled', readonly);
-        }
-    });
-
-    Sao.View.Form.FloatTime = Sao.class_(Sao.View.Form.Char, {
-        class_: 'form-float-time',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.FloatTime._super.init.call(this, field_name, model,
-                attributes);
-            this.conv = null; // TODO
-        },
-        display: function(record, field) {
-            Sao.View.Form.FloatTime._super.display.call(this, record, field);
-            if (record) {
-                var value = record.field_get_client(this.field_name);
-                this.input.val(Sao.common.text_to_float_time(value, this.conv));
-            } else {
-                this.input.val('');
-            }
         }
     });
 
@@ -3368,8 +3372,6 @@
                 return Sao.View.EditableTree.Float;
             case 'selection':
                 return Sao.View.EditableTree.Selection;
-            case 'float_time':
-                return Sao.View.EditableTree.FloatTime;
             case 'boolean':
                 return Sao.View.EditableTree.Boolean;
             case 'many2one':
@@ -3420,6 +3422,15 @@
         }
     });
 
+    Sao.View.EditableTree.TimeDelta = Sao.class_(Sao.View.Form.TimeDelta, {
+        class_: 'editabletree-timedelta',
+        init: function(field_name, model, attributes) {
+            Sao.View.EditableTree.TimeDelta._super.init.call(this, field_name,
+                model, attributes);
+            Sao.View.EditableTree.editable_mixin(this);
+        }
+    });
+
     Sao.View.EditableTree.Integer = Sao.class_(Sao.View.Form.Integer, {
         class_: 'editabletree-integer',
         init: function(field_name, model, attributes) {
@@ -3442,15 +3453,6 @@
         class_: 'editabletree-selection',
         init: function(field_name, model, attributes) {
             Sao.View.EditableTree.Selection._super.init.call(this, field_name,
-                model, attributes);
-            Sao.View.EditableTree.editable_mixin(this);
-        }
-    });
-
-    Sao.View.EditableTree.FloatTime = Sao.class_(Sao.View.Form.FloatTime, {
-        class_: 'editabletree-float_time',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.FloatTime._super.init.call(this, field_name,
                 model, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }

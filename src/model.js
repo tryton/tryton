@@ -983,6 +983,8 @@
                 return Sao.field.Date;
             case 'time':
                 return Sao.field.Time;
+            case 'timedelta':
+                return Sao.field.TimeDelta;
             case 'float':
                 return Sao.field.Float;
             case 'numeric':
@@ -1294,6 +1296,26 @@
             }
             Sao.field.Time._super.set_client.call(this, record, value,
                 force_change);
+        }
+    });
+
+    Sao.field.TimeDelta = Sao.class_(Sao.field.Field, {
+        _default: null,
+        converter: function(record) {
+            // TODO allow local context converter
+            return record.model.session.context[this.description.converter];
+        },
+        set_client: function(record, value, force_change) {
+            if (typeof(value) == 'string') {
+                value = Sao.common.timedelta.parse(value, this.converter(record));
+            }
+            Sao.field.TimeDelta._super.set_client.call(
+                this, record, value, force_change);
+        },
+        get_client: function(record) {
+            var value = Sao.field.TimeDelta._super.get_client.call(
+                this, record);
+            return Sao.common.timedelta.format(value, this.converter(record));
         }
     });
 
