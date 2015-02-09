@@ -40,7 +40,9 @@ class Work:
         states={
             'invisible': Eval('type') != 'task',
             }, depends=['type'])
-    duration = fields.Function(fields.Float('Duration'), 'get_function_fields')
+    duration = fields.Function(
+        fields.TimeDelta('Duration', 'company_work_time'),
+        'get_function_fields')
     early_start_time = fields.DateTime("Early Start Time", readonly=True)
     late_start_time = fields.DateTime("Late Start Time", readonly=True)
     early_finish_time = fields.DateTime("Early Finish Time", readonly=True)
@@ -108,12 +110,12 @@ class Work:
                     leafs.add(work.id)
 
                 total_allocation = 0
-                if not work.allocations:
-                    durations[work.id] = (work.effort or 0)
+                if not work.allocations or not work.effort_duration:
+                    durations[work.id] = work.effort_duration
                     continue
                 for allocation in work.allocations:
                     total_allocation += allocation.percentage
-                durations[work.id] = ((work.effort or 0)
+                durations[work.id] = (work.effort_duration
                     / (total_allocation / 100.0))
 
             while leafs:
@@ -167,6 +169,12 @@ class Work:
                             or None),
                         })
                 break
+
+    @property
+    def hours(self):
+        if not self.duration:
+            return 0
+        return self.duration.total_seconds() / 60 / 60
 
     @classmethod
     def add_minutes(cls, company, date, minutes):
@@ -290,7 +298,7 @@ class Work:
                     if values[work]['early_start_time']:
                         early_finish_time = self.add_hours(work.company,
                                 values[work]['early_start_time'],
-                                work.duration)
+                                work.hours)
                 values[work]['early_finish_time'] = early_finish_time
 
                 # Propagate constraint_start on successors
@@ -370,7 +378,7 @@ class Work:
                     if values[work]['late_finish_time']:
                         late_start_time = self.add_hours(work.company,
                                 values[work]['late_finish_time'],
-                                -work.duration)
+                                -work.hours)
                 values[work]['late_start_time'] = late_start_time
 
                 # Propagate constraint_finish on predecessors

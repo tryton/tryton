@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="actual_finish_date"/>
             <field name="actual_finish_date"/>
             <label name="duration"/>
-            <field name="duration" widget="float_time" float_time="company_work_time"/>
+            <field name="duration"/>
             <newline/>
             <field name="predecessors" colspan="2"/>
             <field name="successors" colspan="2"/>
