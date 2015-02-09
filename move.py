@@ -634,6 +634,10 @@ class Line(ModelSQL, ModelView):
             ('credit_debit',
                 'CHECK(credit * debit = 0.0)',
                 'Wrong credit/debit values.'),
+            ('second_currency_sign',
+                'CHECK(COALESCE(amount_second_currency, 0) '
+                '* (debit - credit) >= 0)',
+                'wrong_second_currency_sign'),
             ]
         cls.__rpc__.update({
                 'on_write': RPC(instantiate=0),
@@ -656,6 +660,7 @@ class Line(ModelSQL, ModelView):
                 'already_reconciled': 'Line "%s" (%d) already reconciled.',
                 'party_required': 'Party is required on line "%s"',
                 'party_set': 'Party must not be set on line "%s"',
+                'wrong_second_currency_sign': 'Wrong second currency sign.',
                 })
 
     @classmethod
@@ -914,7 +919,7 @@ class Line(ModelSQL, ModelView):
         return Move.get_origin()
 
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
-        'move')
+        'move', 'amount_second_currency')
     def on_change_debit(self):
         Journal = Pool().get('account.journal')
         if self.journal or Transaction().context.get('journal'):
@@ -923,9 +928,10 @@ class Line(ModelSQL, ModelView):
                 self._compute_tax_lines(journal.type)
         if self.debit:
             self.credit = Decimal('0.0')
+        self._amount_second_currency_sign()
 
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
-        'move')
+        'move', 'amount_second_currency')
     def on_change_credit(self):
         Journal = Pool().get('account.journal')
         if self.journal or Transaction().context.get('journal'):
@@ -934,6 +940,17 @@ class Line(ModelSQL, ModelView):
                 self._compute_tax_lines(journal.type)
         if self.credit:
             self.debit = Decimal('0.0')
+        self._amount_second_currency_sign()
+
+    @fields.depends('amount_second_currency', 'debit', 'credit')
+    def on_change_amount_second_currency(self):
+        self._amount_second_currency_sign()
+
+    def _amount_second_currency_sign(self):
+        'Set correct sign to amount_second_currency'
+        if self.amount_second_currency:
+            self.amount_second_currency = \
+                self.amount_second_currency.copy_sign(self.debit - self.credit)
 
     @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
         'move')
