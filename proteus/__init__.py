@@ -225,6 +225,12 @@ class TimeDescriptor(FieldDescriptor):
         super(TimeDescriptor, self).__set__(instance, value)
 
 
+class TimeDeltaDescriptor(FieldDescriptor):
+    def __set__(self, instance, value):
+        assert isinstance(value, datetime.timedelta) or value is None
+        super(TimeDeltaDescriptor, self).__set__(instance, value)
+
+
 class DictDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         value = super(DictDescriptor, self).__get__(instance, owner)
@@ -404,13 +410,13 @@ class MetaModelFactory(object):
         'integer': IntegerDescriptor,
         'biginteger': IntegerDescriptor,
         'float': FloatDescriptor,
-        'float_time': FloatDescriptor,
         'numeric': NumericDescriptor,
         'reference': ReferenceDescriptor,
         'date': DateDescriptor,
         'datetime': DateTimeDescriptor,
         'timestamp': DateTimeDescriptor,
         'time': TimeDescriptor,
+        'timedelta': TimeDeltaDescriptor,
         'dict': DictDescriptor,
         'many2one': Many2OneDescriptor,
         'one2many': One2ManyDescriptor,
