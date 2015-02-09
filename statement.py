@@ -486,6 +486,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         if self.journal.currency != self.company.currency:
             second_currency = self.journal.currency
+            amount_second_currency *= -1
         else:
             second_currency = None
             amount_second_currency = None
@@ -707,7 +708,7 @@ class Line(ModelSQL, ModelView):
                 self.amount, self.statement.company.currency)
         if self.statement.journal.currency != self.statement.company.currency:
             second_currency = self.statement.journal.currency.id
-            amount_second_currency = abs(self.amount)
+            amount_second_currency = -self.amount
         else:
             amount_second_currency = None
             second_currency = None
