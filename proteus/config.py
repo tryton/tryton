@@ -191,13 +191,14 @@ class TrytondProxy(object):
 class TrytondConfig(Config):
     'Configuration for trytond'
 
-    def __init__(self, database=None, user='admin',
-            config_file=os.environ.get('TRYTOND_CONFIG')):
+    def __init__(self, database=None, user='admin', config_file=None):
         super(TrytondConfig, self).__init__()
         if not database:
             database = os.environ.get('TRYTOND_DATABASE_URI')
         else:
             os.environ['TRYTOND_DATABASE_URI'] = database
+        if not config_file:
+            config_file = os.environ.get('TRYTOND_CONFIG')
         from trytond.config import config
         config.update_etc(config_file)
         from trytond.pool import Pool
