@@ -124,7 +124,7 @@ Create a Project::
     >>> project.party = customer
     >>> project.project_invoice_method = 'effort'
     >>> project.product = product
-    >>> project.effort = 1
+    >>> project.effort_duration = datetime.timedelta(hours=1)
     >>> task = ProjectWork()
     >>> work = TimesheetWork()
     >>> work.name = 'Task 1'
@@ -132,18 +132,18 @@ Create a Project::
     >>> task.work = work
     >>> task.type = 'task'
     >>> task.product = product
-    >>> task.effort = 5
+    >>> task.effort_duration = datetime.timedelta(hours=5)
     >>> project.children.append(task)
     >>> project.save()
     >>> task, = project.children
 
-Check project hours::
+Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_hours
-    0.0
-    >>> project.hours_to_invoice
-    0.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('0')
 
@@ -152,13 +152,13 @@ Do 1 task::
     >>> task.state = 'done'
     >>> task.save()
 
-Check project hours::
+Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_hours
-    0.0
-    >>> project.hours_to_invoice
-    5.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0, 18000)
     >>> project.invoiced_amount
     Decimal('0')
 
@@ -166,10 +166,10 @@ Invoice project::
 
     >>> config.user = project_invoice_user.id
     >>> project.click('invoice')
-    >>> project.invoiced_hours
-    5.0
-    >>> project.hours_to_invoice
-    0.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 18000)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -179,13 +179,13 @@ Do project::
     >>> project.state = 'done'
     >>> project.save()
 
-Check project hours::
+Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_hours
-    5.0
-    >>> project.hours_to_invoice
-    1.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 18000)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0, 3600)
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -193,9 +193,9 @@ Invoice again project::
 
     >>> config.user = project_invoice_user.id
     >>> project.click('invoice')
-    >>> project.invoiced_hours
-    6.0
-    >>> project.hours_to_invoice
-    0.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 21600)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('120.00')

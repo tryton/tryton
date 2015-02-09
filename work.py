@@ -1,7 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+
 from itertools import groupby
 from decimal import Decimal
+import datetime
 
 from sql import Null
 from sql.aggregate import Sum
@@ -30,21 +33,21 @@ class Work:
     project_invoice_method = fields.Selection(INVOICE_METHODS,
         'Invoice Method',
         states={
-            'readonly': Bool(Eval('invoiced_hours')),
+            'readonly': Bool(Eval('invoiced_duration')),
             'required': Eval('type') == 'project',
             'invisible': Eval('type') != 'project',
             },
-        depends=['invoiced_hours', 'type'])
+        depends=['invoiced_duration', 'type'])
     invoice_method = fields.Function(fields.Selection(INVOICE_METHODS,
             'Invoice Method'), 'get_invoice_method')
-    invoiced_hours = fields.Function(fields.Float('Invoiced Hours',
-            digits=(16, 2),
+    invoiced_duration = fields.Function(fields.TimeDelta('Invoiced Duration',
+            'company_work_time',
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
             depends=['invoice_method']), 'get_invoice_values')
-    hours_to_invoice = fields.Function(fields.Float('Hours to Invoice',
-            digits=(16, 2),
+    duration_to_invoice = fields.Function(fields.TimeDelta(
+            'Duration to Invoice', 'company_work_time',
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
@@ -67,7 +70,7 @@ class Work:
                     'invisible': ((Eval('type') != 'project')
                         | (Eval('project_invoice_method', 'manual')
                             == 'manual')),
-                    'readonly': ~Eval('hours_to_invoice'),
+                    'readonly': ~Eval('duration_to_invoice'),
                     },
                 })
         cls._error_messages.update({
@@ -96,39 +99,45 @@ class Work:
         else:
             return 'manual'
 
-    @staticmethod
-    def default_invoiced_hours():
-        return 0.
+    @property
+    def effort_hours(self):
+        if not self.effort_duration:
+            return 0
+        return self.effort_duration.total_seconds() / 60 / 60
 
     @staticmethod
-    def _get_invoiced_hours_manual(works):
+    def default_invoiced_duration():
+        return datetime.timedelta()
+
+    @staticmethod
+    def _get_invoiced_duration_manual(works):
         return {}
 
     @staticmethod
-    def _get_invoiced_hours_effort(works):
-        return dict((w.id, w.effort) for w in works
+    def _get_invoiced_duration_effort(works):
+        return dict((w.id, w.effort_duration) for w in works
             if w.invoice_line)
 
     @classmethod
-    def _get_invoiced_hours_timesheet(cls, works):
-        return cls._get_hours_timesheet(works, True)
+    def _get_invoiced_duration_timesheet(cls, works):
+        return cls._get_duration_timesheet(works, True)
 
     @staticmethod
-    def default_hours_to_invoice():
-        return 0.
+    def default_duration_to_invoice():
+        return datetime.timedelta()
 
     @staticmethod
-    def _get_hours_to_invoice_manual(works):
+    def _get_duration_to_invoice_manual(works):
         return {}
 
     @staticmethod
-    def _get_hours_to_invoice_effort(works):
-        return dict((w.id, w.effort) for w in works
+    def _get_duration_to_invoice_effort(works):
+        return dict((w.id, w.effort_duration) for w in works
             if w.state == 'done' and not w.invoice_line)
 
     @classmethod
-    def _get_hours_to_invoice_timesheet(cls, works):
-        return cls._get_hours_timesheet(works, False)
+    def _get_duration_to_invoice_timesheet(cls, works):
+        return cls._get_duration_timesheet(works, False)
 
     @staticmethod
     def default_invoiced_amount():
@@ -180,13 +189,13 @@ class Work:
         return amounts
 
     @staticmethod
-    def _get_hours_timesheet(works, invoiced):
+    def _get_duration_timesheet(works, invoiced):
         pool = Pool()
         TimesheetLine = pool.get('timesheet.line')
         cursor = Transaction().cursor
         line = TimesheetLine.__table__()
 
-        hours = {}
+        durations = {}
         twork2work = dict((w.work.id, w.id) for w in works)
         ids = twork2work.keys()
         for sub_ids in grouped_slice(ids):
@@ -195,12 +204,15 @@ class Work:
                 where = line.invoice_line != Null
             else:
                 where = line.invoice_line == Null
-            cursor.execute(*line.select(line.work, Sum(line.hours),
+            cursor.execute(*line.select(line.work, Sum(line.duration),
                     where=red_sql & where,
                     group_by=line.work))
-            hours.update(dict((twork2work[w], h)
-                    for w, h in cursor.fetchall()))
-        return hours
+            for twork_id, duration in cursor.fetchall():
+                # SQLite uses float for SUM
+                if not isinstance(duration, datetime.timedelta):
+                    duration = datetime.timedelta(seconds=duration)
+                durations[twork2work[twork_id]] = duration
+        return durations
 
     @classmethod
     def get_invoice_values(cls, works, name):
@@ -328,14 +340,16 @@ class Work:
         return []
 
     def _get_lines_to_invoice_effort(self):
-        if not self.invoice_line and self.effort and self.state == 'done':
+        if (not self.invoice_line
+                and self.effort_hours
+                and self.state == 'done'):
             if not self.product:
                 self.raise_user_error('missing_product', (self.rec_name,))
             elif self.list_price is None:
                 self.raise_user_error('missing_list_price', (self.rec_name,))
             return [{
                     'product': self.product,
-                    'quantity': self.effort,
+                    'quantity': self.effort_hours,
                     'unit_price': self.list_price,
                     'origin': self,
                     'description': self.work.name,

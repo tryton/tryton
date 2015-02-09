@@ -140,22 +140,22 @@ Create timesheets::
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
     >>> line.employee = employee
-    >>> line.hours = 3
+    >>> line.duration = datetime.timedelta(hours=3)
     >>> line.work = task.work
     >>> line.save()
     >>> line = TimesheetLine()
     >>> line.employee = employee
-    >>> line.hours = 2
+    >>> line.duration = datetime.timedelta(hours=2)
     >>> line.work = project.work
     >>> line.save()
 
-Check project hours::
+Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_hours
-    0.0
-    >>> project.hours_to_invoice
-    5.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0, 18000)
     >>> project.invoiced_amount
     Decimal('0')
 
@@ -163,10 +163,10 @@ Invoice project::
 
     >>> config.user = project_invoice_user.id
     >>> project.click('invoice')
-    >>> project.invoiced_hours
-    5.0
-    >>> project.hours_to_invoice
-    0.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 18000)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('100.000000000000')
 
@@ -176,17 +176,17 @@ Create more timesheets::
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
     >>> line.employee = employee
-    >>> line.hours = 4
+    >>> line.duration = datetime.timedelta(hours=4)
     >>> line.work = task.work
     >>> line.save()
 
-Check project hours::
+Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_hours
-    5.0
-    >>> project.hours_to_invoice
-    4.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 18000)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0, 14400)
     >>> project.invoiced_amount
     Decimal('100.000000000000')
 
@@ -194,9 +194,9 @@ Invoice again project::
 
     >>> config.user = project_invoice_user.id
     >>> project.click('invoice')
-    >>> project.invoiced_hours
-    9.0
-    >>> project.hours_to_invoice
-    0.0
+    >>> project.invoiced_duration
+    datetime.timedelta(0, 32400)
+    >>> project.duration_to_invoice
+    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('180.000000000000')
