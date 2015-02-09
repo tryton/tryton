@@ -94,7 +94,7 @@ class Work:
 
         def getter(work):
             if work.list_price:
-                return work.list_price * Decimal(str(work.effort))
+                return work.list_price * Decimal(str(work.effort_hours))
             else:
                 return Decimal(0)
 
