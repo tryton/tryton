@@ -54,11 +54,19 @@ def dump_time(self, value, write):
         }
     self.dump_struct(value, write)
 
+
+def dump_timedelta(self, value, write):
+    value = {'__class__': 'timedelta',
+        'seconds': value.total_seconds(),
+        }
+    self.dump_struct(value, write)
+
 xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: write("<value><nil/></value>")
 xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
+xmlrpclib.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
 xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
 
 
@@ -94,6 +102,8 @@ XMLRPCDecoder.register('date',
 XMLRPCDecoder.register('time',
     lambda dct: datetime.time(dct['hour'], dct['minute'], dct['second'],
         dct['microsecond']))
+XMLRPCDecoder.register('timedelta',
+    lambda dct: datetime.timedelta(seconds=dct['seconds']))
 XMLRPCDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
 
 

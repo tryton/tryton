@@ -9,9 +9,9 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extensions import register_type, register_adapter
 from psycopg2.extensions import UNICODE, AsIs
 try:
-    from psycopg2.extensions import PYDATE, PYDATETIME, PYTIME
+    from psycopg2.extensions import PYDATE, PYDATETIME, PYTIME, PYINTERVAL
 except ImportError:
-    PYDATE, PYDATETIME, PYTIME = None, None, None
+    PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 import time
@@ -379,5 +379,7 @@ if PYDATETIME:
     register_type(PYDATETIME)
 if PYTIME:
     register_type(PYTIME)
+if PYINTERVAL:
+    register_type(PYINTERVAL)
 register_adapter(float, lambda value: AsIs(repr(value)))
 register_adapter(Decimal, lambda value: AsIs(str(value)))

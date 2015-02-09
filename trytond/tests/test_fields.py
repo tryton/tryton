@@ -67,6 +67,10 @@ class FieldsTestCase(unittest.TestCase):
         self.time_required = POOL.get('test.time_required')
         self.time_format = POOL.get('test.time_format')
 
+        self.timedelta = POOL.get('test.timedelta')
+        self.timedelta_default = POOL.get('test.timedelta_default')
+        self.timedelta_required = POOL.get('test.timedelta_required')
+
         self.one2one = POOL.get('test.one2one')
         self.one2one_target = POOL.get('test.one2one.target')
         self.one2one_required = POOL.get('test.one2one_required')
@@ -3255,6 +3259,222 @@ class FieldsTestCase(unittest.TestCase):
                 order=[('many2one.value', 'ASC')])
             self.assertTrue(all(x.many2one.value <= y.many2one.value
                     for x, y in zip(search, search[1:])))
+
+            transaction.cursor.rollback()
+
+    def test0200timedelta(self):
+        'Test timedelta'
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+
+            minute = datetime.timedelta(minutes=1)
+            hour = datetime.timedelta(hours=1)
+            day = datetime.timedelta(days=1)
+            default_timedelta = datetime.timedelta(seconds=3600)
+
+            timedelta1, = self.timedelta.create([{
+                        'timedelta': hour,
+                        }])
+            self.assert_(timedelta1)
+            self.assertEqual(timedelta1.timedelta, hour)
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '=', hour),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '=', day),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '=', None),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '!=', day),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '!=', None),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', [hour]),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', [day]),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', [minute]),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', [None]),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', []),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'not in', [hour]),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'not in', [day]),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'not in', [None]),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'not in', []),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<', day),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<', minute),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<', hour),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<=', hour),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<=', minute),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '<=', day),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>', day),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>', minute),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>', hour),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>=', day),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>=', minute),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '>=', hour),
+                    ])
+            self.assertEqual(timedelta, [timedelta1])
+
+            timedelta2, = self.timedelta.create([{
+                        'timedelta': minute,
+                        }])
+            self.assert_(timedelta2)
+            self.assertEqual(timedelta2.timedelta, minute)
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', '=', minute),
+                    ])
+            self.assertEqual(timedelta, [timedelta2])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'in', [minute, hour]),
+                    ])
+            self.assertEqual(timedelta, [timedelta1, timedelta2])
+
+            timedelta = self.timedelta.search([
+                    ('timedelta', 'not in', [minute, hour]),
+                    ])
+            self.assertEqual(timedelta, [])
+
+            timedelta3, = self.timedelta.create([{}])
+            self.assert_(timedelta3)
+            self.assertEqual(timedelta3.timedelta, None)
+
+            timedelta4, = self.timedelta_default.create([{}])
+            self.assert_(timedelta4)
+            self.assertEqual(timedelta4.timedelta, default_timedelta)
+
+            self.timedelta.write([timedelta1], {
+                    'timedelta': minute,
+                    })
+            self.assertEqual(timedelta1.timedelta, minute)
+
+            self.timedelta.write([timedelta2], {
+                    'timedelta': day,
+                    })
+            self.assertEqual(timedelta2.timedelta, day)
+
+            self.assertRaises(Exception, self.timedelta.create, [{
+                        'timedelta': 'test',
+                        }])
+
+            self.assertRaises(Exception, self.timedelta.write, [timedelta1], {
+                    'timedelta': 'test',
+                    })
+
+            self.assertRaises(Exception, self.timedelta.create, [{
+                        'timedelta': 1,
+                        }])
+
+            self.assertRaises(Exception, self.timedelta.write, [timedelta1], {
+                    'timedelta': 1,
+                    })
+
+            self.assertRaises(UserError, self.timedelta_required.create, [{}])
+            transaction.cursor.rollback()
+
+            timedelta6, = self.timedelta_required.create([{
+                        'timedelta': day,
+                        }])
+            self.assert_(timedelta6)
+
+            timedelta7, = self.timedelta.create([{
+                        'timedelta': None,
+                        }])
+            self.assert_(timedelta7)
 
             transaction.cursor.rollback()
 

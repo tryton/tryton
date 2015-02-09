@@ -55,6 +55,8 @@ JSONDecoder.register('date',
 JSONDecoder.register('time',
     lambda dct: datetime.time(dct['hour'], dct['minute'], dct['second'],
         dct['microsecond']))
+JSONDecoder.register('timedelta',
+    lambda dct: datetime.timedelta(seconds=dct['seconds']))
 JSONDecoder.register('buffer', lambda dct:
     buffer(base64.decodestring(dct['base64'])))
 JSONDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
@@ -104,6 +106,11 @@ JSONEncoder.register(datetime.time,
         'minute': o.minute,
         'second': o.second,
         'microsecond': o.microsecond,
+        })
+JSONEncoder.register(datetime.timedelta,
+    lambda o: {
+        '__class__': 'timedelta',
+        'seconds': o.total_seconds(),
         })
 JSONEncoder.register(buffer,
     lambda o: {

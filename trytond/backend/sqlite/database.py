@@ -419,3 +419,6 @@ sqlite.register_adapter(datetime.datetime, adapt_datetime)
 sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
 sqlite.register_converter('TIME', lambda val: datetime.time(*map(int,
             val.split(':'))))
+sqlite.register_adapter(datetime.timedelta, lambda val: val.total_seconds())
+sqlite.register_converter('INTERVAL', lambda val: datetime.timedelta(
+        seconds=float(val)))

@@ -49,7 +49,7 @@ attlist.field &=
     | "selection"
     | "char"
     | "password"
-    | "float_time"
+    | "timedelta"
     | "boolean"
     | "reference"
     | "binary"
@@ -98,7 +98,6 @@ attlist.field &=
     | "top_to_bottom"
   }?
 attlist.field &= attribute spell { text }?
-attlist.field &= attribute float_time { text }?
 attlist.field &=
   [a:defaultValue = "0"] attribute filename_visible { "0" | "1" }?
 attlist.field &= [a:defaultValue = "0"] attribute pre_validate { "0" | "1" }?

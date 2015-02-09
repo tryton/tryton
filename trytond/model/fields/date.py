@@ -134,3 +134,36 @@ class Time(DateTime):
 
     def sql_type(self):
         return SQLType('TIME', 'TIME')
+
+
+class TimeDelta(Field):
+    '''
+    Define a timedelta field (``timedelta``).
+    '''
+    _type = 'timedelta'
+
+    def __init__(self, string='', converter=None, help='', required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None,
+            context=None, loading='eager'):
+        '''
+        :param converter: The name of the context key containing
+            the time converter.
+        '''
+        super(TimeDelta, self).__init__(string=string, help=help,
+            required=required, readonly=readonly, domain=domain, states=states,
+            select=select, on_change=on_change, on_change_with=on_change_with,
+            depends=depends, context=context, loading=loading)
+        self.converter = converter
+
+    @staticmethod
+    def sql_format(value):
+        if isinstance(value, (Query, Expression)):
+            return value
+        if value is None:
+            return None
+        assert(isinstance(value, datetime.timedelta))
+        return value
+
+    def sql_type(self):
+        return SQLType('INTERVAL', 'INTERVAL')

@@ -97,7 +97,7 @@
           <value>selection</value>
           <value>float</value>
           <value>numeric</value>
-          <value>float_time</value>
+          <value>timedelta</value>
           <value>integer</value>
           <value>datetime</value>
           <value>time</value>
@@ -166,11 +166,6 @@
           <value>top_to_bottom</value>
         </choice>
       </attribute>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
-      <attribute name="float_time"/>
     </optional>
   </define>
   <define name="attlist.field" combine="interleave">

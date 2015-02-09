@@ -212,6 +212,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     'filename',
                     'selection_change_with',
                     'domain',
+                    'converter',
                     ):
                 if getattr(cls._fields[field], arg, None) is not None:
                     value = getattr(cls._fields[field], arg)

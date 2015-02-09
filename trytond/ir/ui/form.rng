@@ -148,7 +148,7 @@
           <value>selection</value>
           <value>char</value>
           <value>password</value>
-          <value>float_time</value>
+          <value>timedelta</value>
           <value>boolean</value>
           <value>reference</value>
           <value>binary</value>
@@ -325,11 +325,6 @@
   <define name="attlist.field" combine="interleave">
     <optional>
       <attribute name="spell"/>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
-      <attribute name="float_time"/>
     </optional>
   </define>
   <define name="attlist.field" combine="interleave">

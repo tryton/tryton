@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import time
-from sql import Literal
+from sql import Literal, Null
 from sql.aggregate import Count, Max
 
 from ..model import ModelView, ModelSQL, fields
@@ -45,9 +45,10 @@ class Trigger(ModelSQL, ModelView):
     limit_number = fields.Integer('Limit Number', required=True,
         help='Limit the number of call to "Action Function" by records.\n'
         '0 for no limit.')
-    minimum_delay = fields.Float('Minimum Delay', help='Set a minimum delay '
-        'in minutes between call to "Action Function" for the same record.\n'
-        '0 for no delay.')
+    minimum_time_delay = fields.TimeDelta('Minimum Delay',
+        help='Set a minimum time delay between call to "Action Function" '
+        'for the same record.\n'
+        'empty for no delay.')
     action_model = fields.Many2One('ir.model', 'Action Model', required=True)
     action_function = fields.Char('Action Function', required=True)
     _get_triggers_cache = Cache('ir_trigger.get_triggers')
@@ -65,6 +66,29 @@ class Trigger(ModelSQL, ModelView):
                     'valid python expression on trigger "%(trigger)s".'),
                 })
         cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
+
+        super(Trigger, cls).__register__(module_name)
+
+        # Migration from 3.4:
+        # change minimum_delay into timedelta minimu_time_delay
+        if table.column_exist('minimum_delay'):
+            cursor.execute(*sql_table.select(
+                    sql_table.id, sql_table.minimum_delay,
+                    where=sql_table.minimum_delay != Null))
+            for id_, delay in cursor.fetchall():
+                delay = datetime.timedelta(hours=delay)
+                cursor.execute(*sql_table.update(
+                        [sql_table.minimu_time_delay],
+                        [delay],
+                        where=sql_table.id == id_))
+            table.drop_column('minimum_delay')
 
     @classmethod
     def validate(cls, triggers):
@@ -182,8 +206,8 @@ class Trigger(ModelSQL, ModelView):
                         new_ids.append(record_id)
             ids = new_ids
 
-        # Filter on minimum_delay
-        if trigger.minimum_delay:
+        # Filter on minimum_time_delay
+        if trigger.minimum_time_delay:
             new_ids = []
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
@@ -211,15 +235,14 @@ class Trigger(ModelSQL, ModelView):
                         delay[record_id] = datetime.datetime(year, month, day,
                                 hours, minutes, seconds, microseconds)
                     if (datetime.datetime.now() - delay[record_id]
-                            >= datetime.timedelta(
-                                minutes=trigger.minimum_delay)):
+                            >= trigger.minimum_time_delay):
                         new_ids.append(record_id)
             ids = new_ids
 
         records = Model.browse(ids)
         if records:
             getattr(ActionModel, trigger.action_function)(records, trigger)
-        if trigger.limit_number or trigger.minimum_delay:
+        if trigger.limit_number or trigger.minimum_time_delay:
             to_create = []
             for record in records:
                 to_create.append({

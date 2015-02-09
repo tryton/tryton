@@ -23,8 +23,7 @@ attlist.field &= attribute domain { text }?
 attlist.field &= attribute fill { "0" | "1" }?
 attlist.field &= attribute empty { "0" | "1" }?
 attlist.field &= attribute color { text }?
-attlist.field &= attribute widget { "float_time" }?
-attlist.field &= attribute float_time { text }?
+attlist.field &= attribute timedelta { text }?
 attlist.field &=
     [ a:defaultValue = "linear" ]
     attribute interpolation { "constant-left" | "constant-right" | "constant-center" | "linear" }?

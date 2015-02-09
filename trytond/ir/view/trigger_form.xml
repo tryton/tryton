@@ -22,8 +22,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="condition" colspan="3"/>
     <label name="limit_number"/>
     <field name="limit_number"/>
-    <label name="minimum_delay"/>
-    <field name="minimum_delay" widget="float_time"/>
+    <label name="minimum_time_delay"/>
+    <field name="minimum_time_delay"/>
     <label name="action_model"/>
     <field name="action_model"/>
     <label name="action_function"/>

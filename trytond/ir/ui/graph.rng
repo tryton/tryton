@@ -115,14 +115,7 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute name="widget">
-        <value>float_time</value>
-      </attribute>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
-      <attribute name="float_time"/>
+      <attribute name="timedelta"/>
     </optional>
   </define>
   <define name="attlist.field" combine="interleave">

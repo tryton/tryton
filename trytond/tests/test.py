@@ -16,6 +16,7 @@ __all__ = [
     'Date', 'DateDefault', 'DateRequired',
     'DateTime', 'DateTimeDefault', 'DateTimeRequired', 'DateTimeFormat',
     'Time', 'TimeDefault', 'TimeRequired', 'TimeFormat',
+    'TimeDelta', 'TimeDeltaDefault', 'TimeDeltaRequired',
     'One2One', 'One2OneTarget', 'One2OneRelation', 'One2OneRequired',
     'One2OneRequiredRelation', 'One2OneDomain', 'One2OneDomainRelation',
     'One2Many', 'One2ManyTarget',
@@ -313,6 +314,31 @@ class TimeFormat(ModelSQL):
     'Time Format'
     __name__ = 'test.time_format'
     time = fields.Time(string='Time', format='%H:%M')
+
+
+class TimeDelta(ModelSQL):
+    'TimeDelta'
+    __name__ = 'test.timedelta'
+    timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
+        required=False)
+
+
+class TimeDeltaDefault(ModelSQL):
+    'TimeDelta Default'
+    __name__ = 'test.timedelta_default'
+    timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
+        required=False)
+
+    @staticmethod
+    def default_timedelta():
+        return datetime.timedelta(seconds=3600)
+
+
+class TimeDeltaRequired(ModelSQL):
+    'TimeDelta Required'
+    __name__ = 'test.timedelta_required'
+    timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
+        required=True)
 
 
 class One2One(ModelSQL):

@@ -27,7 +27,7 @@ attlist.field &=
     | "selection"
     | "float"
     | "numeric"
-    | "float_time"
+    | "timedelta"
     | "integer"
     | "datetime"
     | "time"
@@ -58,7 +58,6 @@ attlist.field &=
     | "bottom_to_top"
     | "top_to_bottom"
   }?
-attlist.field &= attribute float_time { text }?
 attlist.field &= [a:defaultValue = "0"] attribute pre_validate { "0" | "1" }?
 attlist.field &= [a:defaultValue = "1"] attribute completion { "0" | "1" }?
 attlist.field &= attribute string { text }?
