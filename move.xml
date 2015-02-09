@@ -163,6 +163,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_line_tree_move</field>
         </record>
 
+        <record model="ir.ui.view" id="move_line_view_list_payable_receivable">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="30"/>
+            <field name="name">move_line_list_payable_receivable</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_line_form">
             <field name="name">Account Move Lines</field>
             <field name="res_model">account.move.line</field>
@@ -192,7 +199,15 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_move_line_payable_receivable">
             <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable']), ('reconciliation', '=', None)]</field>
+            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable'])]</field>
+            <field name="search_value">[('reconciliation', '=', None)]</field>
+            <field name="order">[('date', 'DESC')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_move_line_payable_receivable_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_list_payable_receivable"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action.act_window.domain"
                 id="act_move_line_payable_receivable_domain_payable">

@@ -622,6 +622,14 @@ class Line(ModelSQL, ModelView):
             'get_currency_digits')
     second_currency_digits = fields.Function(fields.Integer(
         'Second Currency Digits'), 'get_currency_digits')
+    amount = fields.Function(fields.Numeric('Amount',
+            digits=(16, Eval('amount_currency_digits', 2)),
+            depends=['amount_currency_digits']),
+        'get_amount')
+    amount_currency = fields.Function(fields.Many2One('currency.currency',
+            'Amount Currency'), 'get_amount_currency')
+    amount_currency_digits = fields.Function(fields.Integer(
+            'Amount Currency Digits'), 'get_amount_currency')
 
     @classmethod
     def __setup__(cls):
@@ -1151,6 +1159,23 @@ class Line(ModelSQL, ModelView):
     order_date = _order_move_field('date')
     order_origin = _order_move_field('origin')
     order_move_state = _order_move_field('state')
+
+    def get_amount(self, name):
+        sign = 1 if self.account.type.display_balance == 'debit-credit' else -1
+        if self.amount_second_currency is not None:
+            return self.amount_second_currency * sign
+        else:
+            return self.debit - self.credit * sign
+
+    def get_amount_currency(self, name):
+        if self.second_currency:
+            currency = self.second_currency
+        else:
+            currency = self.account.currency
+        if name == 'amount_currency':
+            return currency.id
+        elif name == 'amount_currency_digits':
+            return currency.digits
 
     def get_rec_name(self, name):
         if self.debit > self.credit:
