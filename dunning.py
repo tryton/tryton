@@ -128,14 +128,13 @@ class Letter(CompanyReport):
     @staticmethod
     def get_payment_amount(payment):
         if payment.amount_second_currency:
-            return payment.amount_second_currency.copy_sign(
-                payment.credit - payment.debit)
+            return -payment.amount_second_currency
         else:
             return payment.credit - payment.debit
 
     @staticmethod
     def get_payment_currency(payment):
-        if payment.amount_second_currency:
+        if payment.second_currency:
             return payment.second_currency
         else:
             return payment.account.company.currency
