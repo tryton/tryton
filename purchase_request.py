@@ -31,15 +31,26 @@ class PurchaseRequest(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
         depends=DEPENDS)
     quantity = fields.Float('Quantity', required=True, states=STATES,
-        depends=DEPENDS)
+        digits=(16, Eval('uom_digits', 2)), depends=DEPENDS + ['uom_digits'])
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True,
         states=STATES, depends=DEPENDS)
-    computed_quantity = fields.Float('Computed Quantity', readonly=True)
+    uom_digits = fields.Function(fields.Integer('UOM Digits'),
+        'on_change_with_uom_digits')
+    computed_quantity = fields.Float('Computed Quantity', readonly=True,
+        digits=(16, Eval('computed_uom_digits', 2)),
+        depends=['computed_uom_digits'])
     computed_uom = fields.Many2One('product.uom', 'Computed UOM',
         readonly=True)
+    computed_uom_digits = fields.Function(fields.Integer(
+            'Computed UOM Digits'),
+        'on_change_with_computed_uom_digits')
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
-    stock_level = fields.Float('Stock at Supply Date', readonly=True)
+    default_uom_digits = fields.Function(fields.Integer('Default UOM Digits'),
+        'on_change_with_default_uom_digits')
+    stock_level = fields.Float('Stock at Supply Date', readonly=True,
+        digits=(16, Eval('default_uom_digits', 2)),
+        depends=['default_uom_digits'])
     warehouse = fields.Many2One(
         'stock.location', "Warehouse",
         states={
@@ -133,6 +144,24 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     def get_warehouse_required(self, name):
         return self.product.type in ('goods', 'assets')
+
+    @fields.depends('uom')
+    def on_change_with_uom_digits(self, name=None):
+        if self.uom:
+            return self.uom.digits
+        return 2
+
+    @fields.depends('computed_uom')
+    def on_change_with_computed_uom_digits(self, name=None):
+        if self.computed_uom:
+            return self.computed_uom.digits
+        return 2
+
+    @fields.depends('product')
+    def on_change_with_default_uom_digits(self, name=None):
+        if self.product:
+            return self.product.default_uom.digits
+        return 2
 
     @staticmethod
     def _get_origin():
