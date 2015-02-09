@@ -2,11 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
-from graph import Graph
-from tryton.common import hex2rgb, highlight_rgb, float_time_to_text
 import locale
 import math
+import datetime
+
 import cairo
+
+from graph import Graph
+import tryton.common as common
 import tryton.rpc as rpc
 
 
@@ -139,14 +142,14 @@ class Line(Graph):
         for point in self.points:
             if point.highlight:
                 cr.set_line_width(2)
-                cr.set_source_rgb(*hex2rgb('#000000'))
+                cr.set_source_rgb(*common.hex2rgb('#000000'))
                 cr.move_to(point.x * self.area.w + self.area.x,
                         point.y * self.area.h + self.area.y)
                 cr.arc(point.x * self.area.w + self.area.x,
                     point.y * self.area.h + self.area.y,
                     3, 0, 2 * math.pi)
                 cr.stroke()
-                cr.set_source_rgb(*highlight_rgb(
+                cr.set_source_rgb(*common.highlight_rgb(
                         *self.colorScheme[point.yname]))
                 cr.arc(point.x * self.area.w + self.area.x,
                     point.y * self.area.h + self.area.y,
@@ -176,21 +179,20 @@ class Line(Graph):
 
         highlight = False
         draw_points = []
-        yfields_float_time = dict(
-            (x.get('key', x['name']), x.get('float_time'))
-            for x in self.yfields if x.get('widget'))
+        yfields_timedelta = {x.get('key', x['name']): x.get('timedelta')
+            for x in self.yfields if 'timedelta' in x}
         for point in self.points:
             if point == nearest[0] and nearest[1] < dia / 100:
                 if not point.highlight:
                     point.highlight = True
                     label = keys2txt[point.yname]
                     label += '\n'
-                    if point.yname in yfields_float_time:
-                        conv = None
-                        if yfields_float_time[point.yname]:
-                            conv = rpc.CONTEXT.get(
-                                    yfields_float_time[point.yname])
-                        label += float_time_to_text(point.yval, conv)
+                    if point.yval in yfields_timedelta:
+                        converter = None
+                        if yfields_timedelta[point.yname]:
+                            converter = rpc.CONTEXT.get(
+                                yfields_timedelta[point.yname])
+                        label += common.timedelta.format(point.yval, converter)
                     else:
                         label += locale.format('%.2f', point.yval, True)
                     label += '\n'
@@ -247,15 +249,15 @@ class Line(Graph):
 
     def YLabels(self):
         ylabels = super(Line, self).YLabels()
-        if len([x.get('key', x['name']) for x in self.yfields
-                    if x.get('widget')]) == len(self.yfields):
-            conv = None
-            float_time = reduce(lambda x, y: x == y and x or False,
-                    [x.get('float_time') for x in self.yfields])
-            if float_time:
-                conv = rpc.CONTEXT.get(float_time)
-            return [(x[0], float_time_to_text(locale.atof(x[1]), conv))
-                    for x in ylabels]
+        if all('timedelta' in f for f in self.yfields):
+            converter = {f.get('timedelta') for f in self.yfields}
+            if len(converter) == 1:
+                converter = rpc.CONTEXT.get(converter.pop())
+            return [
+                (x[0], common.timedelta.format(
+                        datetime.timedelta(seconds=locale.atof(x[1])),
+                        converter))
+                for x in ylabels]
         return ylabels
 
 

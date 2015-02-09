@@ -13,6 +13,7 @@ import decimal
 from decimal import Decimal
 import math
 from tryton.common import RPCExecute, RPCException
+import tryton.rpc as rpc
 
 
 class Field(object):
@@ -258,6 +259,25 @@ class TimeField(Field):
 
     def time_format(self, record):
         return record.expr_eval(self.attrs['format'])
+
+
+class TimeDeltaField(Field):
+
+    _default = None
+
+    def converter(self, record):
+        # TODO allow local context converter
+        return rpc.CONTEXT.get(self.attrs.get('converter'))
+
+    def set_client(self, record, value, force_change=False):
+        if isinstance(value, basestring):
+            value = common.timedelta.parse(value, self.converter(record))
+        super(TimeDeltaField, self).set_client(
+            record, value, force_change=force_change)
+
+    def get_client(self, record):
+        value = super(TimeDeltaField, self).get_client(record)
+        return common.timedelta.format(value, self.converter(record))
 
 
 class FloatField(Field):
@@ -896,7 +916,6 @@ class DictField(Field):
 
 TYPES = {
     'char': CharField,
-    'float_time': FloatField,
     'integer': IntegerField,
     'biginteger': IntegerField,
     'float': FloatField,
@@ -910,6 +929,7 @@ TYPES = {
     'datetime': DateTimeField,
     'date': DateField,
     'time': TimeField,
+    'timedelta': TimeDeltaField,
     'one2one': O2OField,
     'binary': BinaryField,
     'dict': DictField,

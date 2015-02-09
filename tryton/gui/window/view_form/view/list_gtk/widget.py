@@ -13,7 +13,6 @@ from functools import wraps, partial
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.gui.window.view_form.screen import Screen
-import tryton.rpc as rpc
 from tryton.common import COLORS, file_selection, file_open, slugify
 import tryton.common as common
 from tryton.common.cellrendererbutton import CellRendererButton
@@ -211,7 +210,7 @@ class GenericText(object):
 
         if self.attrs.get('type', field.attrs.get('type')) in \
                 ('float', 'integer', 'biginteger', 'boolean',
-                'numeric', 'float_time'):
+                'numeric', 'timedelta'):
             align = 1
         else:
             align = 0
@@ -401,6 +400,10 @@ class Time(Date):
             return ''
 
 
+class TimeDelta(GenericText):
+    pass
+
+
 class Float(Int):
 
     def __init__(self, view, attrs, renderer=None):
@@ -415,27 +418,6 @@ class Float(Int):
         field = record[self.attrs['name']]
         digits = field.digits(record, factor=self.factor)
         cell.digits = digits
-
-
-class FloatTime(GenericText):
-
-    def __init__(self, view, attrs, renderer=None):
-        super(FloatTime, self).__init__(view, attrs, renderer=renderer)
-        self.conv = None
-        if attrs and attrs.get('float_time'):
-            self.conv = rpc.CONTEXT.get(attrs['float_time'])
-
-    def get_textual_value(self, record):
-        val = record[self.attrs['name']].get(record)
-        return common.float_time_to_text(val, self.conv)
-
-    def value_from_text(self, record, text, callback=None):
-        field = record[self.attrs['name']]
-        digits = field.digits(record)
-        field.set_client(record,
-            common.text_to_float_time(text, self.conv, digits[1]))
-        if callback:
-            callback()
 
 
 class Binary(GenericText):

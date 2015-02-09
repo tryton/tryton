@@ -1,3 +1,5 @@
+* Remove float_time widget
+* Add TimeDelta field
 * Improve date/time widgets
 * Remove datetime widget on list/tree view
 * Allow to put many times the same field on tree view

@@ -2,11 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
-from graph import Graph, Area
 import math
-import cairo
-from tryton.common import hex2rgb, highlight_rgb, float_time_to_text
 import locale
+import datetime
+
+import cairo
+
+from graph import Graph, Area
+import tryton.common as common
 import tryton.rpc as rpc
 
 
@@ -19,7 +22,7 @@ class Pie(Graph):
         pass
 
     def drawAxis(self, cr, width, height):
-        cr.set_source_rgb(*hex2rgb('#000000'))
+        cr.set_source_rgb(*common.hex2rgb('#000000'))
 
         for slice in self.slices:
             normalisedAngle = slice.normalisedAngle()
@@ -94,11 +97,11 @@ class Pie(Graph):
                 if bool(int(self.yfields[0].get('fill', 1))):
                     color = self.colorScheme[slice.xname]
                     if slice.highlight:
-                        color = highlight_rgb(*color)
+                        color = common.highlight_rgb(*color)
                     cr.set_source_rgba(*color)
                     slice.draw(cr, self.centerx, self.centery, self.radius)
                     cr.fill()
-                cr.set_source_rgb(*hex2rgb(
+                cr.set_source_rgb(*common.hex2rgb(
                         self.attrs.get('background', '#f5f5f5')))
                 slice.draw(cr, self.centerx, self.centery, self.radius)
                 cr.set_line_width(2)
@@ -142,14 +145,16 @@ class Pie(Graph):
             if slice.startAngle <= angle <= slice.endAngle:
                 if not slice.highlight:
                     slice.highlight = True
-                    if self.yfields[0].get('widget') == 'float_time':
-                        conv = None
-                        if self.yfields[0].get('float_time'):
-                            conv = rpc.CONTEXT.get(
-                                self.yfields[0]['float_time'])
-                        value = float_time_to_text(slice.fraction * self.sum,
-                                conv)
-                        sum = float_time_to_text(self.sum, conv)
+                    if 'timedelta' in self.yfields[0]:
+                        converter = self.yfields[0].get('timedelta')
+                        if converter:
+                            converter = rpc.CONTEXT.get(converter)
+                        value = common.timedelta.format(
+                            datetime.timedelta(
+                                seconds=slice.fraction * self.sum),
+                            converter)
+                        sum = common.timedelta.format(
+                            datetime.timedelta(seconds=self.sum), converter)
                     else:
                         value = locale.format('%.2f',
                             slice.fraction * self.sum)

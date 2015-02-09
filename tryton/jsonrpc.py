@@ -56,6 +56,8 @@ def object_hook(dct):
         elif dct['__class__'] == 'time':
             return datetime.time(dct['hour'], dct['minute'], dct['second'],
                 dct['microsecond'])
+        elif dct['__class__'] == 'timedelta':
+            return datetime.timedelta(seconds=dct['seconds'])
         elif dct['__class__'] == 'buffer':
             return buffer(base64.decodestring(dct['base64']))
         elif dct['__class__'] == 'Decimal':
@@ -93,6 +95,10 @@ class JSONEncoder(json.JSONEncoder):
                 'minute': obj.minute,
                 'second': obj.second,
                 'microsecond': obj.microsecond,
+                }
+        elif isinstance(obj, datetime.timedelta):
+            return {'__class__': 'timedelta',
+                'seconds': obj.total_seconds(),
                 }
         elif isinstance(obj, buffer):
             return {'__class__': 'buffer',

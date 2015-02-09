@@ -375,8 +375,10 @@ class Graph(gtk.DrawingArea):
                 if yfield['name'] == '#':
                     self.datas[x][key] += 1
                 else:
-                    self.datas[x][key] += \
-                        float(model[yfield['name']].get(model) or 0)
+                    value = model[yfield['name']].get(model)
+                    if isinstance(value, datetime.timedelta):
+                        value = value.total_seconds()
+                    self.datas[x][key] += value or 0
         date_format = self.view.screen.context.get('date_format', '%x')
         datetime_format = date_format + ' %X'
         if isinstance(minx, datetime.datetime):

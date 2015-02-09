@@ -1,15 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gtk
+
 from .widget import Widget
-import tryton.common as common
-import tryton.rpc as rpc
 
 
-class FloatTime(Widget):
+class TimeDelta(Widget):
 
     def __init__(self, view, attrs):
-        super(FloatTime, self).__init__(view, attrs)
+        super(TimeDelta, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
         self.entry = gtk.Entry()
@@ -21,10 +20,6 @@ class FloatTime(Widget):
         self.entry.connect('key-press-event', self.send_modified)
         self.widget.pack_start(self.entry)
 
-        self.conv = None
-        if attrs and attrs.get('float_time'):
-            self.conv = rpc.CONTEXT.get(attrs['float_time'])
-
     def _color_widget(self):
         return self.entry
 
@@ -32,30 +27,26 @@ class FloatTime(Widget):
     def modified(self):
         if self.record and self.field:
             value = self.entry.get_text()
-            return common.float_time_to_text(self.field.get(self.record),
-                self.conv) != value
+            return self.field.get_client(self.record) != value
         return False
 
     def set_value(self, record, field):
         value = self.entry.get_text()
-        digits = field.digits(record)
-        return field.set_client(record,
-            common.text_to_float_time(value, self.conv, digits[1]))
+        return field.set_client(record, value)
 
     def get_value(self):
         return self.entry.get_text()
 
     def display(self, record, field):
-        super(FloatTime, self).display(record, field)
+        super(TimeDelta, self).display(record, field)
         if not field:
-            self.entry.set_text('')
-            return False
-        val = field.get(record)
-
-        self.entry.set_text(common.float_time_to_text(val, self.conv))
+            value = ''
+        else:
+            value = field.get_client(record)
+        self.entry.set_text(value)
 
     def _readonly_set(self, value):
-        super(FloatTime, self)._readonly_set(value)
+        super(TimeDelta, self)._readonly_set(value)
         self.entry.set_editable(not value)
         if value:
             self.widget.set_focus_chain([])

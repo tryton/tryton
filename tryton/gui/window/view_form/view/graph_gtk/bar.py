@@ -2,11 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
-from graph import Graph
-from tryton.common import float_time_to_text, highlight_rgb
 import locale
 import math
+import datetime
+
 import cairo
+
+from graph import Graph
+import tryton.common as common
 import tryton.rpc as rpc
 
 
@@ -37,7 +40,7 @@ class Bar(Graph):
             self.drawRectangle(cr, x, y, w, h)
             r, g, b = self.colorScheme[bar.yname]
             if bar.highlight:
-                r, g, b = highlight_rgb(r, g, b)
+                r, g, b = common.highlight_rgb(r, g, b)
             cr.set_source(self.sourceRectangle(x, y, w, h, r, g, b))
             cr.fill_preserve()
             cr.stroke()
@@ -80,19 +83,19 @@ class Bar(Graph):
 
         highlight = False
         draw_bars = []
-        yfields_float_time = dict(
-            (x.get('key', x['name']), x.get('float_time'))
-            for x in self.yfields if x.get('widget'))
+        yfields_timedelta = {x.get('key', x['name']): x.get('timedelta')
+            for x in self.yfields if 'timedelta' in x}
         for bar in self.bars:
             if intersect(bar, event):
                 if not bar.highlight:
                     bar.highlight = True
-                    if bar.yname in yfields_float_time:
-                        conv = None
-                        if yfields_float_time[bar.yname]:
-                            conv = rpc.CONTEXT.get(
-                                    yfields_float_time[bar.yname])
-                        label = float_time_to_text(bar.yval, conv)
+                    if bar.yname in yfields_timedelta:
+                        converter = None
+                        if yfields_timedelta[bar.yname]:
+                            converter = rpc.CONTEXT.get(
+                                yfields_timedelta[bar.yname])
+                        label = common.timedelta.format(
+                            datetime.timedelta(seconds=bar.yval), converter)
                     else:
                         label = locale.format('%.2f', bar.yval, True)
                     label += '\n'
@@ -175,17 +178,17 @@ class VerticalBar(Bar):
 
     def YLabels(self):
         ylabels = super(VerticalBar, self).YLabels()
-        if len([x.get('key', x['name']) for x in self.yfields
-                    if x.get('widget')]) == len(self.yfields):
-
-            def format(val):
-                val = locale.atof(val)
-                res = '%02d:%02d' % (math.floor(abs(val)),
-                        round(abs(val) % 1 + 0.01, 2) * 60)
-                if val < 0:
-                    res = '-' + res
-                return res
-            return [(x[0], format(x[1])) for x in ylabels]
+        if all('timedelta' in f for f in self.yfields):
+            converter = {f.get('timedelta') for f in self.yfields}
+            if len(converter) == 1:
+                converter = rpc.CONTEXT.get(converter.pop())
+            else:
+                converter = None
+            return [
+                (x[0], common.timedelta.format(
+                        datetime.timedelta(seconds=locale.atof(x[1])),
+                        converter))
+                for x in ylabels]
         return ylabels
 
     def _getShadowRectangle(self, x, y, w, h):
@@ -234,15 +237,17 @@ class HorizontalBar(Bar):
 
     def XLabels(self):
         ylabels = super(HorizontalBar, self).YLabels()
-        if len([x.get('key', x['name']) for x in self.yfields
-                    if x.get('widget')]) == len(self.yfields):
-            conv = None
-            float_time = reduce(lambda x, y: x == y and x or False,
-                    [x.get('float_time') for x in self.yfields])
-            if float_time:
-                conv = rpc.CONTEXT.get(float_time)
-            return [(x[0], float_time_to_text(locale.atof(x[1]), conv))
-                    for x in ylabels]
+        if all('timedelta' in f for f in self.yfields):
+            converter = {f.get('timedelta') for f in self.yfields}
+            if len(converter) == 1:
+                converter = rpc.CONTEXT.get(converter.pop())
+            else:
+                converter = None
+            return [
+                (x[0], common.timedelta.format(
+                        datetime.timedelta(seconds=locale.atof(x[1])),
+                        converter))
+                for x in ylabels]
         return [(x[0], x[1]) for x in ylabels]
 
     def _getShadowRectangle(self, x, y, w, h):
