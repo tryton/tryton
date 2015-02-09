@@ -23,13 +23,13 @@ this repository contains the full copyright notices and license terms. -->
             <label name="timesheet_available"/>
             <field name="timesheet_available"/>
             <newline/>
-            <label name="effort"/>
-            <field name="effort" widget="float_time" float_time="company_work_time"/>
+            <label name="effort_duration"/>
+            <field name="effort_duration"/>
             <newline/>
-            <label name="hours"/>
-            <field name="hours" widget="float_time" float_time="company_work_time"/>
+            <label name="timesheet_duration"/>
+            <field name="timesheet_duration"/>
             <label name="total_effort"/>
-            <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+            <field name="total_effort"/>
             <newline/>
             <separator name="comment" colspan="6"/>
             <field name="comment" colspan="6"/>

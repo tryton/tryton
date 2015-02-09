@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import doctest
+import datetime
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
@@ -33,7 +34,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1, = self.project_work.create([{
                         'work': t_work_1.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_1, = self.timesheet_work.create([{
@@ -43,7 +44,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1_1, = self.project_work.create([{
                         'work': t_work_1_1.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_2, = self.timesheet_work.create([{
@@ -53,7 +54,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1_2, = self.project_work.create([{
                         'work': t_work_1_2.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_1_1, = self.timesheet_work.create([{
@@ -63,7 +64,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1_1_1, = self.project_work.create([{
                         'work': t_work_1_1_1.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_1_2, = self.timesheet_work.create([{
@@ -73,7 +74,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1_1_2, = self.project_work.create([{
                         'work': t_work_1_1_2.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_1_3, = self.timesheet_work.create([{
@@ -83,7 +84,7 @@ class ProjectTestCase(ModuleTestCase):
                         }])
             p_work_1_1_3, = self.project_work.create([{
                         'work': t_work_1_1_3.id,
-                        'effort': 1,
+                        'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             for work, total_effort in (
@@ -94,7 +95,8 @@ class ProjectTestCase(ModuleTestCase):
                     (p_work_1_1_2, 1),
                     (p_work_1_1_3, 1),
                     ):
-                self.assertEqual(work.total_effort, total_effort)
+                self.assertEqual(work.total_effort,
+                    datetime.timedelta(hours=total_effort))
 
 
 def suite():

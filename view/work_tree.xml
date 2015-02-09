@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Works Efforts">
     <field name="rec_name"/>
-    <field name="hours" widget="float_time" float_time="company_work_time"/>
-    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+    <field name="timesheet_duration"/>
+    <field name="total_effort"/>
     <field name="type"/>
     <field name="state"/>
     <field name="active" tree_invisible="1"/>

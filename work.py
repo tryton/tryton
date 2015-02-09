@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+
 from sql import Null
 
 from trytond.model import ModelView, ModelSQL, fields
@@ -38,14 +40,16 @@ class Work(ModelSQL, ModelView):
     timesheet_available = fields.Function(
         fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
-    hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
-            help="Total time spent on this work"), 'on_change_with_hours')
-    effort = fields.Float("Effort",
+    timesheet_duration = fields.Function(fields.TimeDelta('Duration',
+            'company_work_time', help="Total time spent on this work"),
+        'on_change_with_timesheet_duration')
+    effort_duration = fields.TimeDelta('Effort', 'company_work_time',
         states={
             'invisible': Eval('type') != 'task',
             }, depends=['type'], help="Estimated Effort for this work")
-    total_effort = fields.Function(fields.Float('Total Effort',
-        help="Estimated total effort for this work and the sub-works"),
+    total_effort = fields.Function(fields.TimeDelta('Total Effort',
+            'company_work_time',
+            help="Estimated total effort for this work and the sub-works"),
         'get_total_effort')
     comment = fields.Text('Comment')
     parent = fields.Function(fields.Many2One('project.work', 'Parent'),
@@ -81,6 +85,9 @@ class Work(ModelSQL, ModelView):
         cursor = Transaction().cursor
         table_project_work = TableHandler(cursor, cls, module_name)
         table_timesheet_work = TableHandler(cursor, TimesheetWork, module_name)
+        project = cls.__table__()
+        timesheet = TimesheetWork.__table__()
+
         migrate_sequence = (not table_project_work.column_exist('sequence')
             and table_timesheet_work.column_exist('sequence'))
 
@@ -88,8 +95,6 @@ class Work(ModelSQL, ModelView):
 
         # Migration from 2.0: copy sequence from timesheet to project
         if migrate_sequence:
-            project = cls.__table__()
-            timesheet = TimesheetWork.__table__()
             cursor.execute(*timesheet.join(project,
                     condition=project.work == timesheet.id
                     ).select(timesheet.sequence, timesheet.id))
@@ -101,6 +106,18 @@ class Work(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table_project_work.not_null_action('sequence', action='remove')
+
+        # Migration from 3.4: change effort into timedelta effort_duration
+        if table_project_work.column_exist('effort'):
+            cursor.execute(*project.select(project.id, project.effort,
+                    where=project.effort != Null))
+            for id_, effort in cursor.fetchall():
+                duration = datetime.timedelta(hours=effort)
+                cursor.execute(*project.update(
+                        [project.effort_duration],
+                        [duration],
+                        where=project.id == id_))
+            table_project_work.drop_column('effort')
 
     @classmethod
     def __setup__(cls):
@@ -175,8 +192,8 @@ class Work(ModelSQL, ModelView):
         return self.work.timesheet_available if self.work else None
 
     @fields.depends('work')
-    def on_change_with_hours(self, name=None):
-        return self.work.hours if self.work else None
+    def on_change_with_timesheet_duration(self, name=None):
+        return self.work.duration if self.work else None
 
     @classmethod
     def get_parent(cls, project_works, name):
@@ -306,7 +323,8 @@ class Work(ModelSQL, ModelView):
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True),
                 ]) + works
-        return cls.sum_tree(works, lambda w: w.effort or 0)
+        return cls.sum_tree(works,
+            lambda w: w.effort_duration or datetime.timedelta())
 
     @classmethod
     def copy(cls, project_works, default=None):
