@@ -435,7 +435,6 @@ class AnalyticMixin(ModelSQL):
         for account in root_accounts:
             accounts.append({
                     'required': account.mandatory,
-                    'root_name': account.name,
                     'root': account.id,
                     })
         return accounts
