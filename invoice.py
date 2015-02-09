@@ -8,7 +8,6 @@ import itertools
 from sql import Literal, Null
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
-from sql.functions import Abs, Sign
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.report import Report
@@ -546,8 +545,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     ).select(invoice.id,
                     Coalesce(Sum(
                             Case((line.second_currency == invoice.currency,
-                                    Abs(line.amount_second_currency)
-                                    * Sign(line.debit - line.credit)),
+                                    line.amount_second_currency),
                                 else_=line.debit - line.credit)),
                         0).cast(type_name),
                     where=(invoice.account == line.account) & red_sql,
@@ -636,10 +634,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     continue
                 if (line.second_currency
                         and line.second_currency == invoice.currency):
-                    if line.debit - line.credit > _ZERO:
-                        amount_currency += abs(line.amount_second_currency)
-                    else:
-                        amount_currency -= abs(line.amount_second_currency)
+                    amount_currency += line.amount_second_currency
                 else:
                     amount += line.debit - line.credit
             for line in invoice.payment_lines:
@@ -647,10 +642,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     continue
                 if (line.second_currency
                         and line.second_currency == invoice.currency):
-                    if line.debit - line.credit > _ZERO:
-                        amount_currency += abs(line.amount_second_currency)
-                    else:
-                        amount_currency -= abs(line.amount_second_currency)
+                    amount_currency += line.amount_second_currency
                 else:
                     amount += line.debit - line.credit
             if invoice.type in ('in_invoice', 'out_credit_note'):
@@ -832,7 +824,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             with Transaction().set_context(date=self.currency_date):
                 res['amount_second_currency'] = Currency.compute(
                     self.company.currency, amount, self.currency)
-            res['amount_second_currency'] = abs(res['amount_second_currency'])
+            res['amount_second_currency'] = -res['amount_second_currency']
             res['second_currency'] = self.currency.id
         else:
             res['amount_second_currency'] = None
@@ -870,8 +862,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for line in move_lines:
             total += line['debit'] - line['credit']
             if line['amount_second_currency']:
-                total_currency += line['amount_second_currency'].copy_sign(
-                    line['debit'] - line['credit'])
+                total_currency += line['amount_second_currency']
 
         term_lines = self.payment_term.compute(total, self.company.currency,
             self.invoice_date)
@@ -1114,7 +1105,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         if self.account.party_required else None),
                     'debit': Decimal('0.0'),
                     'credit': amount,
-                    'amount_second_currency': amount_second_currency,
+                    'amount_second_currency': (-amount_second_currency
+                        if amount_second_currency else amount_second_currency),
                     'second_currency': second_currency,
                     })
             lines.append({
@@ -1154,7 +1146,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         if journal.credit_account.party_required else None),
                     'debit': Decimal('0.0'),
                     'credit': amount,
-                    'amount_second_currency': amount_second_currency,
+                    'amount_second_currency': (-amount_second_currency
+                        if amount_second_currency else amount_second_currency),
                     'second_currency': second_currency,
                     })
 
@@ -1929,19 +1922,15 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             else:
                 res['debit'] = Decimal('0.0')
                 res['credit'] = - amount
-                if res['amount_second_currency']:
-                    res['amount_second_currency'] = \
-                        - res['amount_second_currency']
         else:
             if amount >= Decimal('0.0'):
                 res['debit'] = Decimal('0.0')
                 res['credit'] = amount
-                if res['amount_second_currency']:
-                    res['amount_second_currency'] = \
-                        - res['amount_second_currency']
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
+            if res['amount_second_currency']:
+                res['amount_second_currency'] *= -1
         res['account'] = self.account.id
         if self.account.party_required:
             res['party'] = self.invoice.party.id
@@ -2183,19 +2172,15 @@ class InvoiceTax(ModelSQL, ModelView):
             else:
                 res['debit'] = Decimal('0.0')
                 res['credit'] = - amount
-                if res['amount_second_currency']:
-                    res['amount_second_currency'] = \
-                        - res['amount_second_currency']
         else:
             if amount >= Decimal('0.0'):
                 res['debit'] = Decimal('0.0')
                 res['credit'] = amount
-                if res['amount_second_currency']:
-                    res['amount_second_currency'] = \
-                        - res['amount_second_currency']
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
+            if res['amount_second_currency']:
+                res['amount_second_currency'] *= -1
         res['account'] = self.account.id
         if self.account.party_required:
             res['party'] = self.invoice.party.id
