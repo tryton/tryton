@@ -420,5 +420,16 @@ sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
 sqlite.register_converter('TIME', lambda val: datetime.time(*map(int,
             val.split(':'))))
 sqlite.register_adapter(datetime.timedelta, lambda val: val.total_seconds())
-sqlite.register_converter('INTERVAL', lambda val: datetime.timedelta(
-        seconds=float(val)))
+
+
+def convert_interval(value):
+    value = float(value)
+    # It is not allowed to instatiate timedelta with the min/max total seconds
+    if value >= _interval_max:
+        return datetime.timedelta.max
+    elif value <= _interval_min:
+        return datetime.timedelta.min
+    return datetime.timedelta(seconds=value)
+_interval_max = datetime.timedelta.max.total_seconds()
+_interval_min = datetime.timedelta.min.total_seconds()
+sqlite.register_converter('INTERVAL', convert_interval)
