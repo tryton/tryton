@@ -25,10 +25,8 @@ class MenuMany2Many(fields.Many2Many):
                             ('id', 'in', sub_ids),
                             ])))
         menu_ids = set(chain(*test_ids))
-        for ids in res.itervalues():
-            for id_ in ids[:]:
-                if id_ not in menu_ids:
-                    ids.remove(id_)
+        for group_id, ids in res.iteritems():
+            res[group_id] = tuple(id_ for id_ in ids if id_ in menu_ids)
         return res
 
 
