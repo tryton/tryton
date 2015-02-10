@@ -1249,12 +1249,10 @@ class GeneralLedger(Report):
             clause.append(('move.state', '=', 'posted'))
         lines = MoveLine.search(clause,
             order=[
-                ('account', 'ASC'),  # TODO replace by account.id
+                ('account.id', 'ASC'),
                 ('date', 'ASC'),
                 ])
-        key = operator.attrgetter('account')
-        lines.sort(key=key)
-        return groupby(lines, key)
+        return groupby(lines, operator.attrgetter('account'))
 
     @classmethod
     def lines(cls, accounts, periods, posted):
