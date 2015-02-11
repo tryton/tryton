@@ -165,6 +165,7 @@
             this.view_to_load = jQuery.extend([],
                 attributes.mode || ['tree', 'form']);
             this.views = [];
+            this.views_preload = attributes.views_preload || {};
             this.exclude_field = attributes.exclude_field;
             this.context = attributes.context || {};
             this.new_group();
@@ -202,10 +203,18 @@
             return jQuery.when();
         },
         add_view_id: function(view_id, view_type) {
-            // TODO preload
-            var prm = this.model.execute('fields_view_get',
-                    [view_id, view_type], this.context);
-            return prm.pipe(this.add_view.bind(this));
+            var view;
+            if (view_id && this.views_preload[String(view_id)]) {
+                view = this.views_preload[String(view_id)];
+            } else if (!view_id && this.views_preload[view_type]) {
+                view = this.views_preload[view_type];
+            } else {
+                var prm = this.model.execute('fields_view_get',
+                        [view_id, view_type], this.context);
+                return prm.pipe(this.add_view.bind(this));
+            }
+            this.add_view(view);
+            return jQuery.when();
         },
         add_view: function(view) {
             var arch = view.arch;
