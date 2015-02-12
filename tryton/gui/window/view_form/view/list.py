@@ -1130,8 +1130,8 @@ class ViewTree(View):
                     sum_ = common.timedelta.format(sum_, converter)
                 else:
                     selected_sum = locale.format(
-                        '%.*f', (digit, selected_sum), True)
-                    sum_ = locale.format('%.*f', (digit, sum_), True)
+                        '%.*f', (digit, selected_sum or 0), True)
+                    sum_ = locale.format('%.*f', (digit, sum_ or 0), True)
 
                 text = '%s / %s' % (selected_sum, sum_)
             else:
