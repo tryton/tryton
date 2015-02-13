@@ -13,6 +13,7 @@ def register():
         AccountSelection,
         AccountAccountSelection,
         Line,
+        Move,
         MoveLine,
         module='analytic_account', type_='model')
     Pool.register(
