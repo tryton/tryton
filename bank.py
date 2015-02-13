@@ -30,6 +30,11 @@ class BankAccount(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency')
     numbers = fields.One2Many('bank.account.number', 'account', 'Numbers',
         required=True)
+    active = fields.Boolean('Active', select=True)
+
+    @staticmethod
+    def default_active():
+        return True
 
     def get_rec_name(self, name):
         return self.numbers[0].number
