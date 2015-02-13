@@ -6,9 +6,10 @@ from trytond.wizard import Wizard, StateAction
 from trytond import backend
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Line', 'MoveLine', 'OpenAccount']
+__all__ = ['Line', 'Move', 'MoveLine', 'OpenAccount']
+__metaclass__ = PoolMeta
 
 
 class Line(ModelSQL, ModelView):
@@ -129,6 +130,24 @@ class Line(ModelSQL, ModelView):
         if not self.account.active:
             self.raise_user_error('line_on_inactive_account',
                 (self.account.rec_name,))
+
+
+class Move:
+    __name__ = 'account.move'
+
+    def cancel(self, default=None):
+        'Reverse credit/debit of analytic lines'
+        pool = Pool()
+        AnalyticLine = pool.get('analytic_account.line')
+        cancel_move = super(Move, self).cancel(default)
+        analytic_lines = []
+        for line in cancel_move.lines:
+            for analytic_line in line.analytic_lines:
+                analytic_line.debit, analytic_line.credit = (
+                    analytic_line.credit, analytic_line.debit)
+                analytic_lines.append(analytic_line)
+        AnalyticLine.save(analytic_lines)
+        return cancel_move
 
 
 class MoveLine(ModelSQL, ModelView):
