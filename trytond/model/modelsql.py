@@ -4,6 +4,7 @@ import re
 import datetime
 from functools import reduce
 from itertools import islice, izip, chain, ifilter
+from collections import OrderedDict
 
 from sql import Table, Column, Literal, Desc, Asc, Expression, Flavor, Null
 from sql.functions import Now, Extract
@@ -753,7 +754,9 @@ class ModelSQL(ModelStorage):
         Config = pool.get('ir.configuration')
 
         assert not len(args) % 2
-        all_records = sum(((records, values) + args)[0:None:2], [])
+        # Remove possible duplicates from all records
+        all_records = list(OrderedDict.fromkeys(
+                sum(((records, values) + args)[0:None:2], [])))
         all_ids = [r.id for r in all_records]
         all_field_names = set()
 
