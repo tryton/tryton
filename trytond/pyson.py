@@ -6,7 +6,23 @@ except ImportError:
     import json
 import datetime
 from dateutil.relativedelta import relativedelta
-from functools import reduce
+from functools import reduce, wraps
+
+
+def reduced_type(types):
+    types = types.copy()
+    for k, r in [(long, int), (str, basestring), (unicode, basestring)]:
+        if k in types:
+            types.remove(k)
+            types.add(r)
+    return types
+
+
+def reduce_type(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return reduced_type(func(*args, **kwargs))
+    return wrapper
 
 
 class PYSON(object):
@@ -123,6 +139,7 @@ class Eval(PYSON):
             'd': self._default,
             }
 
+    @reduce_type
     def types(self):
         if isinstance(self._default, PYSON):
             return self._default.types()
@@ -225,11 +242,11 @@ class Equal(PYSON):
         if isinstance(statement1, PYSON):
             types1 = statement1.types()
         else:
-            types1 = set([type(statement1)])
+            types1 = reduced_type(set([type(statement1)]))
         if isinstance(statement2, PYSON):
             types2 = statement2.types()
         else:
-            types2 = set([type(statement2)])
+            types2 = reduced_type(set([type(statement2)]))
         assert types1 == types2, 'statements must have the same type'
         self._statement1 = statement1
         self._statement2 = statement2
@@ -324,13 +341,13 @@ class If(PYSON):
         if isinstance(then_statement, PYSON):
             then_types = then_statement.types()
         else:
-            then_types = set([type(then_statement)])
+            then_types = reduced_type(set([type(then_statement)]))
         if isinstance(else_statement, PYSON):
-            assert then_types == else_statement.types(), \
-                'then and else statements must be the same type'
+            else_types = else_statement.types()
         else:
-            assert then_types == set([type(else_statement)]), \
-                'then and else statements must be the same type'
+            else_types = reduced_type(set([type(else_statement)]))
+        assert then_types == else_types, \
+            'then and else statements must be the same type'
         self._condition = condition
         self._then_statement = then_statement
         self._else_statement = else_statement
@@ -343,6 +360,7 @@ class If(PYSON):
             'e': self._else_statement,
             }
 
+    @reduce_type
     def types(self):
         if isinstance(self._then_statement, PYSON):
             return self._then_statement.types()
@@ -367,9 +385,9 @@ class Get(PYSON):
             assert isinstance(obj, dict), 'obj must be a dict'
         self._obj = obj
         if isinstance(key, PYSON):
-            assert key.types() == set([str, unicode]), 'key must be a string'
+            assert key.types() == set([basestring]), 'key must be a string'
         else:
-            assert type(key) in [str, unicode], 'key must be a string'
+            assert isinstance(key, basestring), 'key must be a string'
         self._key = key
         self._default = default
 
@@ -381,6 +399,7 @@ class Get(PYSON):
             'd': self._default,
             }
 
+    @reduce_type
     def types(self):
         if isinstance(self._default, PYSON):
             return self._default.types()
@@ -397,20 +416,20 @@ class In(PYSON):
     def __init__(self, key, obj):
         super(In, self).__init__()
         if isinstance(key, PYSON):
-            assert key.types().issubset(set([str, unicode, int, long])), \
+            assert key.types().issubset(set([basestring, int])), \
                 'key must be a string or an integer or a long'
         else:
-            assert type(key) in [str, unicode, int, long], \
+            assert isinstance(key, (basestring, int, long)), \
                 'key must be a string or an integer or a long'
         if isinstance(obj, PYSON):
             assert obj.types().issubset(set([dict, list])), \
                 'obj must be a dict or a list'
             if obj.types() == set([dict]):
-                assert type(key) in [str, unicode], 'key must be a string'
+                assert isinstance(key, basestring), 'key must be a string'
         else:
-            assert type(obj) in [dict, list]
-            if type(obj) == dict:
-                assert type(key) in [str, unicode], 'key must be a string'
+            assert isinstance(obj, (dict, list))
+            if isinstance(obj, dict):
+                assert isinstance(key, basestring), 'key must be a string'
         self._key = key
         self._obj = obj
 
@@ -487,7 +506,7 @@ class DateTime(Date):
         for i in (hour, minute, second, microsecond,
                 delta_hours, delta_minutes, delta_seconds, delta_microseconds):
             if isinstance(i, PYSON):
-                assert i.types() == set([int, long, type(None)]), \
+                assert i.types() == set([int, type(None)]), \
                     '%s must be an integer or None' % (i,)
             else:
                 assert isinstance(i, (int, long, type(None))), \
@@ -542,10 +561,10 @@ class Len(PYSON):
     def __init__(self, value):
         super(Len, self).__init__()
         if isinstance(value, PYSON):
-            assert value.types().issubset(set([dict, list, str, unicode])), \
+            assert value.types().issubset(set([dict, list, basestring])), \
                 'value must be a dict or a list or a string'
         else:
-            assert type(value) in [dict, list, str, unicode], \
+            assert isinstance(value, (dict, list, basestring)), \
                 'value must be a dict or list or a string'
         self._value = value
 
@@ -556,7 +575,7 @@ class Len(PYSON):
             }
 
     def types(self):
-        return set([int, long])
+        return set([int])
 
     @staticmethod
     def eval(dct, context):
