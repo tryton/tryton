@@ -126,10 +126,10 @@ class FieldDescriptor(object):
         instance._values[self.name] = value
         if previous != getattr(instance, self.name):
             instance._changed.add(self.name)
-            instance._on_change(self.name)
+            instance._on_change([self.name])
             if instance._parent:
                 instance._parent._changed.add(instance._parent_field_name)
-                instance._parent._on_change(instance._parent_field_name)
+                instance._parent._on_change([instance._parent_field_name])
 
 
 class BooleanDescriptor(FieldDescriptor):
@@ -512,7 +512,7 @@ class ModelList(list):
         'Signal change to parent'
         if self.parent:
             self.parent._changed.add(self.parent_field_name)
-            self.parent._on_change(self.parent_field_name)
+            self.parent._on_change([self.parent_field_name])
 
     def _get_context(self):
         from .pyson import PYSONDecoder
@@ -868,8 +868,7 @@ class Model(object):
             else:
                 self._values[field] = value
             fieldnames.append(field)
-        for field in sorted(fieldnames):
-            self._on_change(field)
+        self._on_change(sorted(fieldnames))
 
     def _get_eval(self):
         values = dict((x, getattr(self, '__%s_eval' % x))
@@ -962,20 +961,14 @@ class Model(object):
             self._values[field] = value
         self._changed.add(field)
 
-    def _on_change(self, name):
+    def _on_change(self, names):
         'Call on_change for field'
         # Import locally to not break installation
         from proteus.pyson import PYSONDecoder
-        definition = self._fields[name]
-        if definition.get('on_change'):
-            if isinstance(definition['on_change'], basestring):
-                definition['on_change'] = PYSONDecoder().decode(
-                        definition['on_change'])
-            args = self._on_change_args(definition['on_change'])
-            context = self._config.context
-            res = getattr(self._proxy, 'on_change_%s' % name)(args, context)
+
+        def set_on_change(values):
             later = {}
-            for field, value in res.iteritems():
+            for field, value in values.iteritems():
                 if field not in self._fields:
                     continue
                 if self._fields[field]['type'] in ('one2many', 'many2many'):
@@ -984,6 +977,23 @@ class Model(object):
                 self._on_change_set(field, value)
             for field, value in later.iteritems():
                 self._on_change_set(field, value)
+
+        values = {}
+        for name in names:
+            definition = self._fields[name]
+            on_change = definition.get('on_change')
+            if not on_change:
+                continue
+            if isinstance(on_change, basestring):
+                definition['on_change'] = on_change = PYSONDecoder().decode(
+                    on_change)
+            values.update(self._on_change_args(on_change))
+        if values:
+            context = self._config.context
+            changes = getattr(self._proxy, 'on_change')(values, names, context)
+            for change in changes:
+                set_on_change(change)
+
         values = {}
         to_change = set()
         later = set()
@@ -996,14 +1006,14 @@ class Model(object):
                 continue
             if to_change & set(definition['on_change_with']):
                 later.add(field)
+                continue
             to_change.add(field)
             values.update(self._on_change_args(definition['on_change_with']))
         if to_change:
             context = self._config.context
-            result = getattr(self._proxy, 'on_change_with')(values,
+            changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
-            for field, value in result.items():
-                self._on_change_set(field, value)
+            set_on_change(changes)
         for field in later:
             definition = self._fields[field]
             values = self._on_change_args(definition['on_change_with'])
@@ -1011,9 +1021,10 @@ class Model(object):
             result = getattr(self._proxy, 'on_change_with_%s' % field)(values,
                     context)
             self._on_change_set(field, result)
+
         if self._parent:
             self._parent._changed.add(self._parent_field_name)
-            self._parent._on_change(self._parent_field_name)
+            self._parent._on_change([self._parent_field_name])
 
 
 class Wizard(object):
