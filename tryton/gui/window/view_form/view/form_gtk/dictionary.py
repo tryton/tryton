@@ -333,7 +333,7 @@ class DictWidget(Widget):
         hbox.pack_start(self.wid_text, expand=True, fill=True)
 
         if int(self.attrs.get('completion', 1)):
-            self.wid_completion = get_completion()
+            self.wid_completion = get_completion(search=False, create=False)
             self.wid_completion.connect('match-selected',
                 self._completion_match_selected)
             self.wid_text.set_completion(self.wid_completion)

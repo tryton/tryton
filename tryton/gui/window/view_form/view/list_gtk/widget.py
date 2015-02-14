@@ -581,7 +581,8 @@ class M2O(GenericText):
         relation = field.attrs['relation']
 
         access = common.MODELACCESS[relation]
-        if create and not access['create']:
+        if (create
+                and not (self.attrs.get('create', True) and access['create'])):
             return
         elif not access['read']:
             return
@@ -631,7 +632,10 @@ class M2O(GenericText):
     def set_completion(self, entry, path):
         if entry.get_completion():
             entry.set_completion(None)
-        completion = get_completion()
+        access = common.MODELACCESS[self.attrs['relation']]
+        completion = get_completion(
+            search=access['read'],
+            create=self.attrs.get('create', True) and access['create'])
         completion.connect('match-selected', self._completion_match_selected,
             path)
         completion.connect('action-activated',

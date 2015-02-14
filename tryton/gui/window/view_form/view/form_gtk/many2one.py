@@ -39,7 +39,9 @@ class Many2One(Widget):
         self.focus_out = True
 
         if int(self.attrs.get('completion', 1)):
-            self.wid_completion = get_completion()
+            self.wid_completion = get_completion(
+                search=self.read_access,
+                create=self.create_access)
             self.wid_completion.connect('match-selected',
                 self._completion_match_selected)
             self.wid_completion.connect('action-activated',

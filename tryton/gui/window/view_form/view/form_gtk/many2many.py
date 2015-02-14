@@ -44,7 +44,9 @@ class Many2Many(Widget):
         hbox.pack_start(self.wid_text, expand=True, fill=True)
 
         if int(self.attrs.get('completion', 1)):
-            self.wid_completion = get_completion()
+            self.wid_completion = get_completion(
+                create=self.attrs.get('create', True)
+                and common.MODELACCESS[self.attrs['relation']]['create'])
             self.wid_completion.connect('match-selected',
                 self._completion_match_selected)
             self.wid_completion.connect('action-activated',

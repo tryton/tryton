@@ -49,7 +49,10 @@ class One2Many(Widget):
             hbox.pack_start(self.wid_text, expand=True, fill=True)
 
             if int(self.attrs.get('completion', 1)):
-                self.wid_completion = get_completion()
+                access = common.MODELACCESS[attrs['relation']]
+                self.wid_completion = get_completion(
+                    search=access['read'] and access['write'],
+                    create=attrs.get('create', True) and access['create'])
                 self.wid_completion.connect('match-selected',
                     self._completion_match_selected)
                 self.wid_completion.connect('action-activated',
@@ -288,7 +291,6 @@ class One2Many(Widget):
                 self._position
                 and self._position > 1))
         if self.attrs.get('add_remove'):
-            self.wid_text.set_sensitive(not self._readonly)
             self.but_add.set_sensitive(bool(
                     not self._readonly
                     and not size_limit
@@ -299,6 +301,7 @@ class One2Many(Widget):
                     and self._position
                     and access['write']
                     and access['read']))
+            self.wid_text.set_sensitive(self.but_add.get_sensitive())
 
         # New button must be added to focus chain to allow keyboard only
         # creation when there is no existing record on form view.
