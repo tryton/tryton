@@ -68,6 +68,8 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         self.set_popdown(self.selection, self.entry)
         if not field:
             self.entry.set_active(-1)
+            # When setting no item GTK doesn't clear the entry
+            self.entry.child.set_text('')
             return
         super(Selection, self).display(record, field)
         value = field.get(record)

@@ -129,6 +129,9 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
                 active = i
                 break
         self.widget_combo.set_active(active)
+        if active == -1:
+            # When setting no item GTK doesn't clear the entry
+            self.widget_combo.child.set_text('')
 
     def display(self, record, field):
         self.update_selection(record, field)
