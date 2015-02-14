@@ -12,7 +12,7 @@ import io
 import collections
 
 from tryton.translate import date_format
-from tryton.common import untimezoned_date, datetime_strftime
+from tryton.common import untimezoned_date, timezoned_date, datetime_strftime
 from tryton.pyson import PYSONDecoder
 
 __all__ = ['DomainParser']
@@ -117,10 +117,18 @@ def quote(value):
     "Quote string if needed"
     if not isinstance(value, basestring):
         return value
+    if '"' in value:
+        value = value.replace('"', '\\"')
     for test in (':', ' ', '(', ')') + OPERATORS:
         if test in value:
             return '"%s"' % value
     return value
+
+
+def test_quote():
+    assert quote('test') == 'test'
+    assert quote('foo bar') == '"foo bar"'
+    assert quote('"foo"') == '\\\"foo\\\"'
 
 
 def ending_clause(domain, deep=0):
@@ -409,7 +417,10 @@ def format_value(field, value):
         if (not isinstance(value, datetime.datetime)
                 or value.time() == datetime.time.min):
             format_ = date_format()
-        return datetime_strftime(value, format_)
+            time = value
+        else:
+            time = timezoned_date(value)
+        return datetime_strftime(time, format_)
 
     def format_date():
         if not value:
@@ -530,7 +541,8 @@ def test_format_datetime():
     for value, result in (
             (datetime.date(2002, 12, 4), '12/04/2002'),
             (datetime.datetime(2002, 12, 4), '12/04/2002'),
-            (datetime.datetime(2002, 12, 4, 12, 30), '"12/04/2002 12:30:00"'),
+            (untimezoned_date(datetime.datetime(2002, 12, 4, 12, 30)),
+                '"12/04/2002 12:30:00"'),
             (False, ''),
             (None, ''),
             ):
@@ -584,7 +596,7 @@ def complete_value(field, value):
 
     def complete_datetime():
         yield datetime.date.today()
-        yield datetime.datetime.now()
+        yield datetime.datetime.utcnow()
 
     def complete_date():
         yield datetime.date.today()
@@ -1150,6 +1162,9 @@ def test_group():
     assert rlist(dom.group(udlex(u'Name: = Name: Doe'))) == [
         ('Name', '=', None),
         ('Name', None, 'Doe'),
+        ]
+    assert rlist(dom.group(udlex(u'Name: \\"foo\\"'))) == [
+        ('Name', None, '"foo"'),
         ]
 
 
