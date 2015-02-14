@@ -1087,7 +1087,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @classmethod
     @Workflow.transition('assigned')
     def assign(cls, shipments):
-        pass
+        cls._sync_inventory_to_outgoing(shipments, create=True, write=False)
 
     @classmethod
     @ModelView.button
@@ -1117,7 +1117,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             )
 
     @classmethod
-    def _sync_inventory_to_outgoing(cls, shipments):
+    def _sync_inventory_to_outgoing(cls, shipments, create=True, write=True):
         'Synchronise outgoing moves with inventory moves'
         pool = Pool()
         Move = pool.get('stock.move')
@@ -1160,7 +1160,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 to_create.append(shipment._get_outgoing_move(move))
                 to_create[-1].quantity = out_quantity
                 to_create[-1].unit_price = unit_price
-            if to_create:
+            if create and to_create:
                 Move.save(to_create)
 
             # Re-read the shipment and remove exceeding quantities
@@ -1173,9 +1173,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     removed_qty = Uom.compute_qty(move.uom,
                         min(exc_qty, move.quantity), move.product.default_uom,
                         round=False)
-                    Move.write([move], {
-                            'quantity': max(0.0, move.quantity - exc_qty),
-                            })
+                    if write:
+                        Move.write([move], {
+                                'quantity': max(0.0, move.quantity - exc_qty),
+                                })
                     outgoing_qty[move.product.id] -= removed_qty
 
     @classmethod
