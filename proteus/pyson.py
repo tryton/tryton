@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 __all__ = ['PYSONEncoder', 'PYSONDecoder', 'Eval', 'Not', 'Bool', 'And', 'Or',
-    'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime']
+    'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime', 'Len']
 try:
     import simplejson as json
 except ImportError:
@@ -529,6 +529,32 @@ class DateTime(Date):
             )
 
 
+class Len(PYSON):
+
+    def __init__(self, value):
+        super(Len, self).__init__()
+        if isinstance(value, PYSON):
+            assert value.types().issubset(set([dict, list, str])), \
+                'value must be a dict or a list or a string'
+        else:
+            assert type(value) in [dict, list, str], \
+                'value must be a dict or list or a string'
+        self._value = value
+
+    def pyson(self):
+        return {
+            '__class__': 'Len',
+            'v': self._value,
+            }
+
+    def types(self):
+        return set([int, long])
+
+    @staticmethod
+    def eval(dct, context):
+        return len(dct['v'])
+
+
 CONTEXT = {
     'Eval': Eval,
     'Not': Not,
@@ -543,4 +569,5 @@ CONTEXT = {
     'In': In,
     'Date': Date,
     'DateTime': DateTime,
+    'Len': Len,
 }
