@@ -202,17 +202,18 @@ class User(ModelSQL, ModelView):
         timeout = datetime.timedelta(
             seconds=config.getint('session', 'timeout'))
         result = dict((u.id, 0) for u in users)
-        for sub_ids in grouped_slice(users):
-            sessions = Session.search([
-                    ('create_uid', 'in', sub_ids),
-                    ], order=[('create_uid', 'ASC')])
+        with Transaction().set_user(0):
+            for sub_ids in grouped_slice(users):
+                sessions = Session.search([
+                        ('create_uid', 'in', sub_ids),
+                        ], order=[('create_uid', 'ASC')])
 
-            def filter_(session):
-                timestamp = session.write_date or session.create_date
-                return abs(timestamp - now) < timeout
-            result.update(dict((i, len(list(g)))
-                    for i, g in groupby(ifilter(filter_, sessions),
-                        attrgetter('create_uid.id'))))
+                def filter_(session):
+                    timestamp = session.write_date or session.create_date
+                    return abs(timestamp - now) < timeout
+                result.update(dict((i, len(list(g)))
+                        for i, g in groupby(ifilter(filter_, sessions),
+                            attrgetter('create_uid.id'))))
         return result
 
     @staticmethod
