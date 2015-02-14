@@ -96,11 +96,12 @@ class ShipmentOut:
     __name__ = 'stock.shipment.out'
 
     @classmethod
-    def _sync_inventory_to_outgoing(cls, shipments):
+    def _sync_inventory_to_outgoing(cls, shipments, create=True, write=True):
         pool = Pool()
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
-        super(ShipmentOut, cls)._sync_inventory_to_outgoing(shipments)
+        super(ShipmentOut, cls)._sync_inventory_to_outgoing(
+            shipments, create=create, write=write)
         for shipment in shipments:
             outgoing_by_product = {}
             for move in shipment.outgoing_moves:
