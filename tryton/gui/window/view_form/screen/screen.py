@@ -574,12 +574,13 @@ class Screen(SignalEvent):
 
         if delete:
             for record in records:
-                if record.parent:
-                    record.parent.save(force_reload=False)
                 if record in record.group.record_deleted:
                     record.group.record_deleted.remove(record)
                 if record in record.group.record_removed:
                     record.group.record_removed.remove(record)
+                if record.parent:
+                    # Save parent without deleted children
+                    record.parent.save(force_reload=False)
                 record.destroy()
 
         if idx > 0:
@@ -699,7 +700,9 @@ class Screen(SignalEvent):
         if view.view_type == 'tree' and len(self.group):
             start, end = view.widget_tree.get_visible_range()
             vadjustment = view.widget_tree.get_vadjustment()
-            vadjustment.value = vadjustment.value + vadjustment.page_increment
+            vadjustment.value = min(
+                vadjustment.value + vadjustment.page_increment,
+                vadjustment.get_upper())
             store = view.store
             iter_ = store.get_iter(end)
             self.current_record = store.get_value(iter_, 0)
@@ -743,7 +746,9 @@ class Screen(SignalEvent):
         if view.view_type == 'tree' and len(self.group):
             start, end = view.widget_tree.get_visible_range()
             vadjustment = view.widget_tree.get_vadjustment()
-            vadjustment.value = vadjustment.value - vadjustment.page_increment
+            vadjustment.value = min(
+                vadjustment.value - vadjustment.page_increment,
+                vadjustment.get_lower())
             store = view.store
             iter_ = store.get_iter(start)
             self.current_record = store.get_value(iter_, 0)
