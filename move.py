@@ -49,7 +49,8 @@ class Move(ModelSQL, ModelView):
     number = fields.Char('Number', required=True, readonly=True)
     post_number = fields.Char('Post Number', readonly=True,
         help='Also known as Folio Number')
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
