@@ -544,7 +544,8 @@ class Image(GenericText):
             else:
                 value = field.get_data(record)
         pixbuf = data2pixbuf(value)
-        if self.attrs['width'] != -1 or self.attrs['height'] != -1:
+        if (self.attrs.get('width', -1) != -1 or
+                self.attrs.get('height', -1) != -1):
             pixbuf = common.resize_pixbuf(pixbuf,
                 self.attrs['width'], self.attrs['height'])
         cell.set_property('pixbuf', pixbuf)
