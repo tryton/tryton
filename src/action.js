@@ -37,7 +37,7 @@
                     action.pyson_domain = '[]';
                 }
                 var ctx = {
-                    active_model: data.res_model,
+                    active_model: data.model || null,
                     active_id: data.id || null,
                     active_ids: data.ids
                 };
