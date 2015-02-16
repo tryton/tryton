@@ -1297,7 +1297,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.template" id="tva_achat_immobilisations_10">
-            <field name="name">T.V.A. Achat 10%</field>
+            <field name="name">T.V.A. Achat Immobilisations 10%</field>
             <field name="description">T.V.A. 10%</field>
         <field name="parent"
             ref="tva_achat_immobilisations_taux_intermediaire"/>
