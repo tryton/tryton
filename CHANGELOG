@@ -1,3 +1,6 @@
+Version 3.4.1 - 2015-02-19
+* Bug fixes (see mercurial logs for details)
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 * Always succeed assignation from lost and found on internal shipments
