@@ -480,6 +480,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
         if self.type == 'one-off':
             return 'OOFF'
         elif (not self.payments
+                or all(not p.sepa_mandate_sequence_type for p in self.payments)
                 or all(p.rejected for p in self.payments)):
             return 'FRST'
         # TODO manage FNAL
