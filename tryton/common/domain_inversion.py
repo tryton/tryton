@@ -143,7 +143,7 @@ def localize_domain(domain, field_name=None):
         if isinstance(domain[2], basestring):
             locale_name = 'rec_name'
         return [locale_part(domain[0], field_name, locale_name)] \
-            + list(domain[1:])
+            + list(domain[1:3]) + list(domain[4:])
     else:
         return [localize_domain(part, field_name) for part in domain]
 
@@ -572,6 +572,12 @@ def test_localize():
 
     domain = [['x', 'child_of', [1], 'y']]
     assert localize_domain(domain, 'x') == [['y', 'child_of', [1]]]
+
+    domain = [['x.id', '=', 1, 'y']]
+    assert localize_domain(domain, 'x') == [['id', '=', 1]]
+
+    domain = [['a.b.c', '=', 1, 'y', 'z']]
+    assert localize_domain(domain, 'x') == [['b.c', '=', 1, 'z']]
 
 if __name__ == '__main__':
     test_simple_inversion()
