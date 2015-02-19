@@ -307,6 +307,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     account_number = fields.Many2One('bank.account.number', 'Account Number',
+        ondelete='RESTRICT',
         states={
             'readonly': Eval('state').in_(['validated', 'canceled']),
             'required': Eval('state') == 'validated',
