@@ -1606,7 +1606,7 @@
                     local_name = 'rec_name';
                 }
                 return [this.locale_part(domain[0], field_name, local_name)]
-                    .concat(domain.slice(1));
+                    .concat(domain.slice(1, 3)).concat(domain.slice(4));
             } else {
                 return domain.map(function(e) {
                     return this.localize_domain(e, field_name);
