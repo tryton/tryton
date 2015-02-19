@@ -107,6 +107,12 @@ class Wizard(object):
 
             def execute_actions():
                 for action in result.get('actions', []):
+                    for k, v in [
+                            ('direct_print', self.direct_print),
+                            ('email_print', self.email_print),
+                            ('email', self.email),
+                            ]:
+                        action[0].setdefault(k, v)
                     Action._exec_action(*action, context=self.context.copy())
 
             if self.state == self.end_state:
