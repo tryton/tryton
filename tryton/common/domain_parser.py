@@ -116,6 +116,8 @@ def quote(value):
     "Quote string if needed"
     if not isinstance(value, basestring):
         return value
+    if '\\' in value:
+        value = value.replace('\\', '\\\\')
     if '"' in value:
         value = value.replace('"', '\\"')
     for test in (':', ' ', '(', ')') + OPERATORS:
@@ -128,6 +130,7 @@ def test_quote():
     assert quote('test') == 'test'
     assert quote('foo bar') == '"foo bar"'
     assert quote('"foo"') == '\\\"foo\\\"'
+    assert quote('foo\\bar') == 'foo\\\\bar'
 
 
 def ending_clause(domain, deep=0):
