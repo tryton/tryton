@@ -1014,7 +1014,8 @@
         [
         ['test', 'test'],
         ['foo bar', '"foo bar"'],
-        ['"foo"', '\\\"foo\\\"']
+        ['"foo"', '\\\"foo\\\"'],
+        ['foo\\bar', 'foo\\\\bar']
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];

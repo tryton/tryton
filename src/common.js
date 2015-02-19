@@ -1180,6 +1180,9 @@
             if (typeof value != 'string') {
                 return value;
             }
+            if (value.contains('\\')) {
+                value = value.replace(new RegExp('\\\\', 'g'), '\\\\');
+            }
             if (value.contains('"')) {
                 value = value.replace(new RegExp('"', 'g'), '\\"');
             }
