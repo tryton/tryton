@@ -39,17 +39,8 @@ class Many2One(Widget):
         self.focus_out = True
 
         if int(self.attrs.get('completion', 1)):
-            self.wid_completion = get_completion(
-                search=self.read_access,
-                create=self.create_access)
-            self.wid_completion.connect('match-selected',
-                self._completion_match_selected)
-            self.wid_completion.connect('action-activated',
-                self._completion_action_activated)
-            self.wid_text.set_completion(self.wid_completion)
             self.wid_text.connect('changed', self._update_completion)
-        else:
-            self.wid_completion = None
+        self.wid_completion = None
 
         self.wid_text.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
             'tryton-find')
@@ -293,6 +284,7 @@ class Many2One(Widget):
         super(Many2One, self).display(record, field)
 
         self._set_button_sensitive()
+        self._set_completion()
 
         if not field:
             self.wid_text.set_text('')
@@ -315,6 +307,18 @@ class Many2One(Widget):
             gobject.idle_add(populate, menu, self.get_model(),
                 self.id_from_value(value), '', self.field)
         return True
+
+    def _set_completion(self):
+        if not int(self.attrs.get('completion', 1)):
+            return
+        self.wid_completion = get_completion(
+            search=self.read_access,
+            create=self.create_access)
+        self.wid_completion.connect('match-selected',
+            self._completion_match_selected)
+        self.wid_completion.connect('action-activated',
+            self._completion_action_activated)
+        self.wid_text.set_completion(self.wid_completion)
 
     def _completion_match_selected(self, completion, model, iter_):
         rec_name, record_id = model.get(iter_, 0, 1)
