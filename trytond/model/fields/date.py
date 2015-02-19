@@ -163,7 +163,31 @@ class TimeDelta(Field):
         if value is None:
             return None
         assert(isinstance(value, datetime.timedelta))
+        db_type = backend.name()
+        if db_type == 'mysql':
+            return value.total_seconds()
         return value
 
     def sql_type(self):
+        db_type = backend.name()
+        if db_type == 'mysql':
+            return SQLType('DOUBLE', 'DOUBLE(255, 6)')
         return SQLType('INTERVAL', 'INTERVAL')
+
+    @classmethod
+    def get(cls, ids, model, name, values=None):
+        result = {}
+        for row in values:
+            value = row[name]
+            if (value is not None
+                    and not isinstance(value, datetime.timedelta)):
+                if value >= datetime.timedelta.max.total_seconds():
+                    value = datetime.timedelta.max
+                elif value <= datetime.timedelta.min.total_seconds():
+                    value = datetime.timedelta.min
+                else:
+                    value = datetime.timedelta(seconds=value)
+                result[row['id']] = value
+            else:
+                result[row['id']] = value
+        return result
