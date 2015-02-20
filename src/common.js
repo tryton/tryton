@@ -2405,7 +2405,7 @@
             }
             if (this.queries <= 0) {
                 this.queries = 0;
-                this.hide();
+                this.el.hide();
             }
         }
     });
