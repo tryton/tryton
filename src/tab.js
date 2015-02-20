@@ -38,7 +38,7 @@
         },
         create_toolbar: function() {
             var toolbar = jQuery(
-                    '<nav class="navbar navbar-default" role="navigation">' +
+                    '<nav class="navbar navbar-default toolbar" role="navigation">' +
                     '<div class="container-fluid">' +
                     '<div class="navbar-header">' +
                     '<button type="button" class="navbar-toggle collapsed" ' +
