@@ -138,11 +138,6 @@
             login_modal.modal('hide');
         };
 
-        var keydown = function(ev) {
-            if (ev.which === 13)
-                ok_func();
-        };
-
         var fill_database = function() {
             jQuery.when(Sao.DB.list()).then(function(databases) {
                 databases.forEach(function(database) {
@@ -163,9 +158,6 @@
             fill_database();
         }
 
-        jQuery('#login-login').keydown(keydown);
-        jQuery('#login-password').keydown(keydown);
-
         login_modal.modal({
             backdrop: false,
             keyboard: false
@@ -178,7 +170,7 @@
                 jQuery('#login-database').focus();
             }
         });
-        login_modal.find('button').click(ok_func);
+        login_modal.find('form').submit(ok_func);
     };
 
     Sao.Session.renew = function(session) {
@@ -195,13 +187,8 @@
             });
             password_modal.modal('hide');
         };
-        var keydown = function(ev) {
-            if (ev.which === 13)
-                ok_func();
-        };
 
         password_modal = jQuery('#password');
-        jQuery('#password-password').keydown(keydown);
         password_modal.modal({
             backdrop: false,
             keyboard: false
@@ -210,7 +197,7 @@
         password_modal.on('show.bs.modal', function() {
             jQuery('#password-password').focus();
         });
-        password_modal.find('#button').click(ok_func);
+        password_modal.find('form').submit(ok_func);
         return dfd.promise();
     };
 
