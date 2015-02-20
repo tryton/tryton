@@ -11,6 +11,7 @@
         var params = jQuery.extend([], args.params);
         params.push(jQuery.extend({}, session.context, params.pop()));
 
+        var timeoutID = Sao.common.processing.show();
         var ajax_prm = jQuery.ajax({
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
@@ -19,7 +20,10 @@
             })),
             'dataType': 'json',
             'url': '/' + (session.database || ''),
-            'type': 'post'
+            'type': 'post',
+            'complete': [function() {
+                Sao.common.processing.hide(timeoutID);
+            }]
         });
 
         var ajax_success = function(data) {

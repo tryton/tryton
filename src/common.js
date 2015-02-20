@@ -2374,4 +2374,41 @@
         }
     });
     Sao.common.error = new Sao.common.ErrorDialog();
+
+    Sao.common.Processing = Sao.class_(Object, {
+        queries: 0,
+        timeout: 1000,
+        init: function() {
+            this.el = jQuery('<div/>', {
+                'id': 'processing',
+                'class': 'text-center'
+            });
+            this.el.append(jQuery('<span/>', {
+                'class': 'label label-info',
+                'text': 'Processing…'
+            }));
+            this.el.hide();
+            jQuery(function() {
+                this.el.appendTo('body');
+            }.bind(this));
+        },
+        show: function() {
+            return window.setTimeout(function() {
+                this.queries += 1;
+                this.el.show();
+            }.bind(this), this.timeout);
+        },
+        hide: function(timeoutID) {
+            window.clearTimeout(timeoutID);
+            if (this.queries > 0) {
+                this.queries -= 1;
+            }
+            if (this.queries <= 0) {
+                this.queries = 0;
+                this.hide();
+            }
+        }
+    });
+    Sao.common.processing = new Sao.common.Processing();
+
 }());
