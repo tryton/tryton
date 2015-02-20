@@ -97,6 +97,66 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    table.responsive,
+    table.responsive > thead,
+    table.responsive > thead > tr,
+    table.responsive > thead > tr > th,
+    table.responsive > tbody,
+    table.responsive > tbody > tr,
+    table.responsive > tbody > tr > td {
+        display: block !important;
+    }
+    table.responsive {
+        /* Hide table headers (but not display: none; for accessiblity) */
+        & > thead > tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        & > thead > tr,
+        & > tbody > tr > td {
+            text-align: left !important;
+        }
+        /* Force height to empty content */
+        & td > div:empty {
+            min-height: 20px;
+        }
+    }
+    table.responsive-noheader {
+        & > tbody > tr > td {
+            width: 100% !important;
+        }
+    }
+    table.responsive-header {
+        > tbody > tr {
+            border: 1px solid #ccc;
+        }
+        & > tbody > tr > td {
+            /* Behave like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30%;
+        }
+        & > tbody > tr > td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 30%;
+            padding-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Label */
+            content: attr(data-title);
+        }
+    }
+}
+
 #processing {
     position: fixed;
     top: 0px;

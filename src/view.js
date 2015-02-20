@@ -108,6 +108,12 @@
             this.table = jQuery('<table/>', {
                 'class': 'tree table table-hover'
             });
+            if (this.columns.filter(function(c) {
+                return !c.attributes.tree_invisible;
+            }).length > 1) {
+                this.table.addClass('responsive');
+                this.table.addClass('responsive-header');
+            }
             this.el.append(this.table);
             var thead = jQuery('<thead/>');
             this.table.append(thead);
@@ -474,7 +480,10 @@
 
             var depth = this.path.split('.').length;
             for (var i = 0; i < this.tree.columns.length; i++) {
-                td = jQuery('<td/>');
+                var column = this.tree.columns[i];
+                td = jQuery('<td/>', {
+                    'data-title': column.attributes.string
+                });
                 td.one('click', {column: i, td: td},
                         this.select_row.bind(this));
                 var widgets = this.build_widgets();
@@ -497,7 +506,6 @@
                     row.append(jQuery('<td/>').append(this.expander
                                 ).css('width', 1));
                 }
-                var column = this.tree.columns[i];
                 var j;
                 if (column.prefixes) {
                     for (j = 0; j < column.prefixes.length; j++) {
@@ -1452,7 +1460,7 @@
             if (col === undefined) col = 4;
             this.col = col;
             this.el = jQuery('<table/>', {
-                'class': 'form-container'
+                'class': 'form-container responsive responsive-noheader'
             });
             this.add_row();
         },
