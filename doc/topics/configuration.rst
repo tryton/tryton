@@ -8,6 +8,10 @@ The configuration file control some aspects of the behavior of Tryton.
 The file uses a simple ini-file format. It consists of sections, led by a
 `[section]` header and followed by `name = value` entries:
 
+.. highlight:: ini
+
+::
+
     [database]
     uri = postgresql://user:password@localhost/
     path = /var/lib/trytond
