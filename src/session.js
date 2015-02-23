@@ -170,7 +170,10 @@
                 jQuery('#login-database').focus();
             }
         });
-        login_modal.find('form').submit(ok_func);
+        login_modal.find('form').submit(function(e) {
+            ok_func();
+            e.preventDefault();
+        });
     };
 
     Sao.Session.renew = function(session) {
@@ -197,7 +200,10 @@
         password_modal.on('show.bs.modal', function() {
             jQuery('#password-password').focus();
         });
-        password_modal.find('form').submit(ok_func);
+        password_modal.find('form').submit(function(e) {
+            ok_func();
+            e.preventDefault();
+        });
         return dfd.promise();
     };
 
