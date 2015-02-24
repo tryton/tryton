@@ -4,6 +4,7 @@ from decimal import Decimal
 import datetime
 import operator
 from itertools import izip, groupby
+from functools import wraps
 
 from sql import Column, Literal, Null
 from sql.aggregate import Sum
@@ -29,6 +30,14 @@ __all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
     'CreateChart', 'UpdateChartStart', 'UpdateChartSucceed', 'UpdateChart',
     'OpenThirdPartyBalanceStart', 'OpenThirdPartyBalance', 'ThirdPartyBalance',
     'OpenAgedBalanceStart', 'OpenAgedBalance', 'AgedBalance']
+
+
+def inactive_records(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        with Transaction().set_context(active_test=False):
+            return func(*args, **kwargs)
+    return wrapper
 
 
 class TypeTemplate(ModelSQL, ModelView):
@@ -1814,6 +1823,7 @@ class UpdateChart(Wizard):
             Button('Ok', 'end', 'tryton-ok', default=True),
             ])
 
+    @inactive_records
     def transition_update(self):
         pool = Pool()
         TaxCode = pool.get('account.tax.code')
