@@ -1,3 +1,4 @@
+* Ensure that uom rouding is always greather than zero
 * Add price_digits
 * Add parameter price_decimal
 

@@ -45,7 +45,10 @@ class Uom(ModelSQL, ModelView):
         help=('The coefficient for the formula:\n'
             'coef (base unit) = 1 (this unit)'))
     rounding = fields.Float('Rounding Precision', digits=(12, 12),
-        required=True, states=STATES, depends=DEPENDS)
+        required=True, states=STATES, depends=DEPENDS,
+        domain=[
+            ('rounding', '>', 0),
+            ])
     digits = fields.Integer('Display Digits', required=True)
     active = fields.Boolean('Active')
 
