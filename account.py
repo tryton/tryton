@@ -355,6 +355,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
                         columns=[entry.root],
                         values=[root_id],
                         where=entry.account == account_id))
+            table.not_null_action('selection', action='remove')
         table.not_null_action('account', action='remove')
 
     @classmethod
