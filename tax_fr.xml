@@ -1108,6 +1108,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
+        <record model="account.tax.template" id="tva_vente_hors_communaute">
+            <field name="name">Exonération de TVA sur ventes hors communauté</field>
+            <field name="description">Hors TVA (art. 259 1° du CGI)</field>
+            <field name="group" ref="group_tva_vente"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0032"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" ref="tax_code_0039"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
         <record model="account.tax.template" id="tva_achat_taux_normal">
             <field name="name">T.V.A. Achat Taux Normal</field>
             <field name="description">T.V.A. Taux Normal</field>
@@ -1583,6 +1600,7 @@ this repository contains the full copyright notices and license terms. -->
             id="tax_rule_ventes_hors_communaute_1">
             <field name="rule" ref="tax_rule_ventes_hors_communaute"/>
             <field name="group" ref="group_tva_vente"/>
+            <field name="tax" ref="tva_vente_hors_communaute"/>
         </record>
 
     </data>
