@@ -39,7 +39,7 @@
                 'class': 'modal fade',
                 role: 'dialog'
             });
-            var content = jQuery('<div/>', {
+            var content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-lg'
@@ -61,7 +61,8 @@
 
             if (view_type == 'form') {
                 footer.append(jQuery('<button/>', {
-                    'class': 'btn btn-link'
+                    'class': 'btn btn-link',
+                    'type': 'button'
                 }).append(!kwargs.new_ && this.screen.current_record.id < 0 ?
                     'Delete' : 'Cancel')
                         .click(function() {
@@ -71,7 +72,8 @@
 
             if (kwargs.new_ && this.many) {
                 footer.append(jQuery('<button/>', {
-                    'class': 'btn btn-default'
+                    'class': 'btn btn-default',
+                    'type': 'button'
                 }).append('New').click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)));
@@ -79,17 +81,19 @@
 
             if (this.save_current) {
                 footer.append(jQuery('<button/>', {
-                    'class': 'btn btn-primary'
-                }).append('Save').click(function() {
-                    this.response('RESPONSE_OK');
-                }.bind(this)));
+                    'class': 'btn btn-primary',
+                    'type': 'submit'
+                }).append('Save'));
             } else {
                 footer.append(jQuery('<button/>', {
-                    'class': 'btn btn-primary'
-                }).append('OK').click(function() {
-                    this.response('RESPONSE_OK');
-                }.bind(this)));
+                    'class': 'btn btn-primary',
+                    'type': 'submit'
+                }).append('OK'));
             }
+            content.submit(function(e) {
+                this.response('RESPONSE_OK');
+                e.preventDefault();
+            }.bind(this));
 
             if (view_type == 'tree') {
                 var menu = jQuery('<div/>').appendTo(body);
@@ -461,7 +465,7 @@
                 'class': 'modal fade',
                 role: 'dialog'
             });
-            var content = jQuery('<div/>', {
+            var content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-lg'
@@ -479,15 +483,19 @@
             }).appendTo(content);
 
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
-            }).append('OK').click(function() {
+                'class': 'btn btn-primary',
+                'type': 'submit'
+            }).append('OK').appendTo(footer);
+            content.submit(function(e) {
                 this.response('RESPONSE_OK');
-            }.bind(this)).appendTo(footer);
+                e.preventDefault();
+            }.bind(this));
 
             this.screen = new Sao.Screen('res.user', {
                 mode: []
@@ -559,7 +567,7 @@
                 'class': 'modal fade',
                 role: 'dialog'
             });
-            var content = jQuery('<div/>', {
+            var content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-lg'
@@ -577,15 +585,19 @@
             }).appendTo(content);
 
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
-            }).append('OK').click(function() {
+                'class': 'btn btn-primary',
+                'type': 'submit'
+            }).append('OK').appendTo(footer);
+            content.submit(function(e) {
                 this.response('RESPONSE_OK');
-            }.bind(this)).appendTo(footer);
+                e.preventDefault();
+            }.bind(this));
 
             var group = jQuery('<div/>', {
                 'class': 'form-group'

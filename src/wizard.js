@@ -173,7 +173,7 @@
                 'class': 'wizard-dialog modal fade',
                 role: 'dialog'
             });
-            var content = jQuery('<div/>', {
+            var content = this.content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-lg'
@@ -200,12 +200,22 @@
             var button = Sao.Wizard.Dialog._super._get_button.call(this,
                     definition);
             this.footer.append(button.el);
-            button.el.click(function() {
-                this.response(definition.state);
-            }.bind(this));
+            if (definition['default']) {
+                this.content.unbind('submit');
+                this.content.submit(function(e) {
+                    this.response(definition.state);
+                    e.preventDefault();
+                }.bind(this));
+                button.el.attr('type', 'submit');
+            } else {
+                button.el.click(function() {
+                    this.response(definition.state);
+                }.bind(this));
+            }
             return button;
         },
         update: function(view, defaults, buttons) {
+            this.content.unbind('submit');
             Sao.Wizard.Dialog._super.update.call(this, view, defaults,
                     buttons);
             this.dialog.modal('show');

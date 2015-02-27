@@ -581,7 +581,8 @@
         init: function(attributes) {
             this.attributes = attributes;
             this.el = jQuery('<button/>', {
-                'class': 'btn btn-default'
+                'class': 'btn btn-default',
+                'type': 'button'
             }).text(attributes.string || '')
             .append(jQuery('<span/>', {
                 'class': 'glyphicon',
