@@ -1,3 +1,4 @@
+* Use value date of camt.054 as clearing date
 * Allow to re-generate message of a payment group
 * Use right sequence type in case of previous rejected payments
 * Add pain.001.003.03 and pain.008.003.02 flavors

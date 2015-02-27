@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from lxml import etree
+from dateutil.parser import parse
+
+from trytond.transaction import Transaction
 
 __all__ = ['SEPAHandler', 'CAMT054']
 
@@ -39,7 +42,9 @@ class CAMT054(SEPAHandler):
             self.Payment.save(payments)
             self.Payment.fail(payments)
         else:
-            self.Payment.succeed(payments)
+            date_value = self.date_value(element)
+            with Transaction().set_context(date_value=date_value):
+                self.Payment.succeed(payments)
 
     def get_payment_kind(self, element):
         tag = etree.QName(element)
@@ -72,6 +77,18 @@ class CAMT054(SEPAHandler):
                     ('kind', '=', self.get_payment_kind(element)),
                     ])
             return payments
+
+    def date_value(self, element):
+        tag = etree.QName(element)
+        date = element.find('./{%(ns)s}ValDt/{%(ns)s}Dt'
+            % {'ns': tag.namespace})
+        if date:
+            return parse(date.text)
+        else:
+            datetime = element.find('./{%(ns)s}ValDt/{%(ns)s}DtTm'
+                % {'ns': tag.namespace})
+            if datetime:
+                return parse(datetime.text).date()
 
     def is_returned(self, element):
         tag = etree.QName(element)

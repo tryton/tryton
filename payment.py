@@ -296,6 +296,11 @@ class Payment:
             and self.sepa_return_reason_code
             and self.sepa_return_reason_information == '/RTYP/RJCT')
 
+    def create_clearing_move(self, date=None):
+        if not date:
+            date = Transaction().context.get('date_value')
+        return super(Payment, self).create_clearing_move(date=date)
+
 
 class Mandate(Workflow, ModelSQL, ModelView):
     'SEPA Mandate'

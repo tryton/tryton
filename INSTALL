@@ -6,6 +6,7 @@ Prerequisites
 
  * Python 2.7 or later (http://www.python.org/)
  * Genshi (http://genshi.edgewall.org/)
+ * python-dateutil (https://dateutil.readthedocs.org/)
  * trytond (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
  * trytond_account_payment (http://www.tryton.org/)
