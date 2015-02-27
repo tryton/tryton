@@ -1042,6 +1042,7 @@ class PurchaseLine(ModelSQL, ModelView):
             context['uom'] = self.unit.id
         else:
             self.product.purchase_uom.id
+        context['taxes'] = [t.id for t in self.taxes]
         return context
 
     @fields.depends('product', 'unit', 'quantity', 'description',
@@ -1060,17 +1061,8 @@ class PurchaseLine(ModelSQL, ModelView):
             if party.lang:
                 context['language'] = party.lang.code
 
-        category = self.product.purchase_uom.category
-        if not self.unit or self.unit not in category.uoms:
-            self.unit = self.product.purchase_uom
-            self.unit_digits = self.product.purchase_uom.digits
-
-        with Transaction().set_context(self._get_context_purchase_price()):
-            self.unit_price = Product.get_purchase_price([self.product],
-                abs(self.quantity or 0))[self.product.id]
-            if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+        # Set taxes before unit_price to have taxes in context of purchase
+        # price
         taxes = []
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.supplier_taxes_used:
@@ -1086,6 +1078,18 @@ class PurchaseLine(ModelSQL, ModelView):
                 taxes.extend(tax_ids)
         self.taxes = taxes
 
+        category = self.product.purchase_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            self.unit = self.product.purchase_uom
+            self.unit_digits = self.product.purchase_uom.digits
+
+        with Transaction().set_context(self._get_context_purchase_price()):
+            self.unit_price = Product.get_purchase_price([self.product],
+                abs(self.quantity or 0))[self.product.id]
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+
         if not self.description:
             with Transaction().set_context(context):
                 self.description = Product(self.product.id).rec_name
@@ -1098,7 +1102,7 @@ class PurchaseLine(ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit',
+    @fields.depends('product', 'quantity', 'unit', 'taxes',
         '_parent_purchase.currency', '_parent_purchase.party',
         '_parent_purchase.purchase_date')
     def on_change_quantity(self):
@@ -1114,10 +1118,13 @@ class PurchaseLine(ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-    @fields.depends('product', 'quantity', 'unit',
-        '_parent_purchase.currency', '_parent_purchase.party')
+    @fields.depends(methods=['quantity'])
     def on_change_unit(self):
-        return self.on_change_quantity()
+        self.on_change_quantity()
+
+    @fields.depends(methods=['quantity'])
+    def on_change_taxes(self):
+        self.on_change_quantity()
 
     @fields.depends('type', 'quantity', 'unit_price', 'unit',
         '_parent_purchase.currency')
