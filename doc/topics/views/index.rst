@@ -327,6 +327,7 @@ Display a button.
         * ``previous``: to go to the previous record
         * ``close``: to close the current tab
         * ``switch <view type>``: to switch the view to the defined type
+        * ``reload``: to reload the current tab
         * ``reload context``: to reload user context
         * ``reload menu``: to reload menu
 
