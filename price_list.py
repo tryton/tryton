@@ -25,11 +25,16 @@ class PriceList(ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ])
+    tax_included = fields.Boolean('Tax Included')
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @staticmethod
+    def default_tax_included():
+        return False
 
     def get_context_formula(self, party, product, unit_price, quantity, uom):
         return {

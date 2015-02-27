@@ -3,4 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Price Lists">
     <field name="name"/>
+    <field name="tax_included"/>
 </tree>

@@ -6,6 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="company"/>
     <field name="company"/>
+    <label name="tax_included"/>
+    <field name="tax_included"/>
     <field name="lines" colspan="4"
         view_ids="product_price_list.price_list_line_view_tree_sequence"/>
 </form>
