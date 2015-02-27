@@ -9,6 +9,8 @@
                 'class': 'screen-container'
             });
             this.alternate_view = false;
+            this.search_modal = null;
+            this.search_form = null;
             this.tab_domain = tab_domain || [];
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
@@ -21,6 +23,7 @@
                 type: 'button',
                 'class': 'btn btn-default'
             }).append('Filters'); // TODO translation
+            this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
                 'class': 'form-control'
             });
@@ -126,7 +129,7 @@
             return this.tab_domain[i][1];
         },
         do_search: function() {
-            this.screen.search_filter(this.search_entry.val());
+            return this.screen.search_filter(this.search_entry.val());
         },
         set_screen: function(screen) {
             this.screen = screen;
@@ -152,6 +155,273 @@
                 this.content_box.children().detach();
                 this.content_box.append(widget);
             }
+        },
+        get_text: function() {
+            return this.search_entry.val();
+        },
+        search_box: function() {
+            var search = function() {
+                this.search_modal.modal('hide');
+                var text = '';
+                var quote = this.screen.domain_parser.quote.bind(
+                        this.screen.domain_parser);
+                for (var i = 0; i < this.search_form.fields.length; i++) {
+                    var label = this.search_form.fields[i][0];
+                    var entry = this.search_form.fields[i][1];
+                    var value;
+                    switch(entry.type) {
+                        case 'selection':
+                        case 'date':
+                        case 'datetime':
+                        case 'time':
+                            value = entry.get_value(quote);
+                            break;
+                        default:
+                        value = quote(entry.val());
+                    }
+                    if (value) {
+                        text += quote(label) + ': ' + value + ' ';
+                    }
+                }
+                this.set_text(text);
+                this.do_search().then(function() {
+                    this.last_search_text = this.get_text();
+                }.bind(this));
+            }.bind(this);
+            if (!this.search_modal) {
+                this.search_modal = jQuery('<div/>', {
+                    'class': 'modal fade',
+                    role: 'dialog'
+                });
+                this.search_form = jQuery('<form/>', {
+                    'class': 'modal-content form-horizontal'
+                }).appendTo(jQuery('<div/>', {
+                    'class': 'modal-dialog modal-lg'
+                }).appendTo(this.search_modal));
+                var header = jQuery('<div/>', {
+                    'class': 'modal-header'
+                }).append(jQuery('<h4/>', {
+                    'class': 'modal-title'
+                }).append('Filters')).appendTo(this.search_form);
+                var body = jQuery('<div/>', {
+                    'class': 'modal-body'
+                }).appendTo(this.search_form);
+                var footer = jQuery('<div/>', {
+                    'class': 'modal-footer'
+                }).appendTo(this.search_form);
+
+                this.search_form.submit(search);
+
+                var fields = [];
+                var field;
+                for (var f in this.screen.domain_parser.fields) {
+                    field = this.screen.domain_parser.fields[f];
+                    if (field.searchable || field.searchable === undefined) {
+                        fields.push(field);
+                    }
+                }
+
+                var boolean_option = function(input) {
+                    return function(e) {
+                        jQuery('<option/>', {
+                            value: e,
+                            text: e
+                        }).appendTo(input);
+                    };
+                };
+                var selection_option = function(input) {
+                    return function(s) {
+                        jQuery('<option/>', {
+                            value: s[1],
+                            text: s[1]
+                        }).appendTo(input);
+                    };
+                };
+
+                var prefix = 'filter-' + this.screen.model_name + '-';
+                this.search_form.fields = [];
+                for (var i = 0; i < fields.length; i++) {
+                    field = fields[i];
+                    var form_group = jQuery('<div/>', {
+                        'class': 'form-group form-group-sm'
+                    }).append(jQuery('<label/>', {
+                        'class': 'col-sm-4 control-label',
+                        'for': prefix + field.name,
+                        text: field.string
+                    })).appendTo(body);
+
+                    var input;
+                    var entry;
+                    switch (field.type) {
+                        case 'boolean':
+                            entry = input = jQuery('<select/>', {
+                                'class': 'form-control input-sm',
+                                id: prefix + field.name
+                            });
+                            // TODO translate
+                            ['', 'True', 'False'].forEach(
+                                    boolean_option(input));
+                            break;
+                        case 'selection':
+                            entry = new Sao.ScreenContainer.Selection(
+                                    field.selection, prefix + field.name);
+                            input = entry.el;
+                            break;
+                        case 'date':
+                        case 'datetime':
+                        case 'time':
+                            var format;
+                            var date_format = Sao.common.date_format();
+                            if (field.type == 'date') {
+                                format = date_format;
+                            } else {
+                                var time_format = new Sao.PYSON.Decoder({}).decode(
+                                        field.format);
+                                time_format = Sao.common.moment_format(time_format);
+                                if (field.type == 'time') {
+                                    format = time_format;
+                                } else if (field.type == 'datetime') {
+                                    format = date_format + ' ' + time_format;
+                                }
+                            }
+                            entry = new Sao.ScreenContainer.DateTimes(
+                                    format, prefix + field.name);
+                            input = entry.el;
+                            break;
+                        default:
+                            entry = input = jQuery('<input/>', {
+                                'class': 'form-control input-sm',
+                                type: 'text',
+                                placeholder: field.string,
+                                id: prefix + field.name
+                            });
+                            break;
+                    }
+                    jQuery('<div/>', {
+                        'class': 'col-sm-8'
+                    }).append(input).appendTo(form_group);
+                    this.search_form.fields.push([field.string, entry]);
+                }
+
+                jQuery('<button/>', {
+                    'class': 'btn btn-primary',
+                    type: 'submit'
+                }).append('Find').click(search).appendTo(footer);
+            }
+            this.search_modal.modal('show');
+            if (this.last_search_text.trim() !== this.get_text().trim()) {
+                for (var j = 0; j < this.search_form.fields.length; j++) {
+                    var fentry = this.search_form.fields[j][1];
+                    switch(fentry.type) {
+                        case 'selection':
+                            fentry.set_value([]);
+                            break;
+                        case 'date':
+                        case 'datetime':
+                        case 'time':
+                            fentry.set_value(null, null);
+                            break;
+                        default:
+                            fentry.val('');
+                    }
+                }
+                this.search_form.fields[0][1].focus();
+            }
+        }
+    });
+
+    Sao.ScreenContainer.DateTimes = Sao.class_(Object, {
+        type: 'date',
+        init: function(format, id) {
+            this.el = jQuery('<div/>', {
+                'class': 'row',
+                id: id
+            });
+            var build_entry = function(placeholder) {
+                var entry = jQuery('<div/>', {
+                    'class': 'input-group input-group-sm'
+                });
+                jQuery('<input/>', {
+                    'class': 'form-control input-sm',
+                    type: 'text',
+                    placeholder: placeholder,
+                    id: id + '-from'
+                }).appendTo(entry);
+                jQuery('<span/>', {
+                    'class': 'input-group-btn'
+                }).append(jQuery('<button/>', {
+                    'class': 'btn btn-default',
+                    type: 'button'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-calendar'
+                }))).appendTo(entry);
+                entry.datetimepicker();
+                entry.data('DateTimePicker').format(format);
+                return entry;
+            };
+            this.from = build_entry('From').appendTo(jQuery('<div/>', {
+                'class': 'col-md-5'
+            }).appendTo(this.el));
+            jQuery('<p/>', {
+                'class': 'text-center'
+            }).append('..').appendTo(jQuery('<div/>', {
+                'class': 'col-md-1'
+            }).appendTo(this.el));
+            this.to = build_entry('To').appendTo(jQuery('<div/>', {
+                'class': 'col-md-5'
+            }).appendTo(this.el));
+        },
+        _get_value: function(entry) {
+            return entry.find('input').val();
+        },
+        get_value: function(quote) {
+            var from = this._get_value(this.from);
+            var to = this._get_value(this.to);
+            if (from && to) {
+                if (from !== to) {
+                    return quote(from) + '..' + quote(to);
+                } else {
+                    return quote(from);
+                }
+            } else if (from) {
+                return '>=' + quote(from);
+            } else if (to) {
+                return '<=' + quote(to);
+            }
+        },
+        set_value: function(from, to) {
+            this.from.data('DateTimePicker').date(from);
+            this.to.data('DateTimePicker').date(to);
+        }
+    });
+
+    Sao.ScreenContainer.Selection = Sao.class_(Object, {
+        type: 'selection',
+        init: function(selections, id) {
+            this.el = jQuery('<select/>', {
+                'class': 'form-control input-sm',
+                multiple: true,
+                id: id
+            });
+            selections.forEach(function(s) {
+                jQuery('<option/>', {
+                    value: s[1],
+                    text: s[1]
+                }).appendTo(this.el);
+            }.bind(this));
+        },
+        get_value: function(quote) {
+            var value = this.el.val();
+            if (value) {
+                value = value.reduce(function(a, b) {
+                    if (a) {a += ';';}
+                    return a + quote(b);
+                });
+            }
+            return value;
+        },
+        set_value: function(value) {
+            this.el.val(value);
         }
     });
 
