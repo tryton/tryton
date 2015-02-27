@@ -82,7 +82,7 @@
                 }))
                 .append(jQuery('<span/>', {
                     'class': 'hidden-sm'
-                }).append(tool[2]))
+                }).append(' ' + tool[2]))
                 .click(this[tool[4]].bind(this))
                 .appendTo(jQuery('<li/>')
                         .appendTo(toolbar.find('.navbar-collapse > ul')));
