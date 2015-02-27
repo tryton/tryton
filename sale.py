@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
 from trytond.pyson import Eval, Bool
 from trytond.pool import Pool, PoolMeta
@@ -54,34 +54,27 @@ class Sale:
         config = Config(1)
         return config.sale_shipment_cost_method
 
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('quotation')
+    def quote(cls, sales):
+        super(Sale, cls).quote(sales)
+        for sale in sales:
+            sale.set_shipment_cost()
+        cls.save(sales)
+
     def _get_carrier_context(self):
         return {}
 
-    @fields.depends(methods=['lines'])
-    def on_change_carrier(self):
-        self.on_change_lines()
-
-    @fields.depends('carrier', 'party', 'currency', 'sale_date',
-        'shipment_cost_method', 'lines')
-    def on_change_lines(self):
+    def set_shipment_cost(self):
         pool = Pool()
-        Product = pool.get('product.product')
-        Currency = pool.get('currency.currency')
-        SaleLine = pool.get('sale.line')
         Date = pool.get('ir.date')
-
-        today = Date.today()
+        Currency = pool.get('currency.currency')
 
         cost, currency_id = 0, None
         if self.carrier:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
-
-        party = None
-        party_context = {}
-        if self.party:
-            if self.party.lang:
-                party_context['language'] = self.party.lang.code
 
         cost_line = None
         products = [line.product for line in self.lines or []
@@ -89,55 +82,49 @@ class Sale:
         stockable = any(product.type in ('goods', 'assets')
             for product in products)
         if cost and currency_id and stockable:
+            today = Date.today()
             date = self.sale_date or today
             with Transaction().set_context(date=date):
                 cost = Currency.compute(Currency(currency_id), cost,
                     self.currency)
-            product = self.carrier.carrier_product
-            with Transaction().set_context(party_context):
-                description = Product(product.id).rec_name
-            taxes = []
-            cost_line = SaleLine(
-                **SaleLine.default_get(SaleLine._fields.keys()))
-            cost_line.type = 'line'
-            cost_line.product = product
-            cost_line.description = description
-            cost_line.quantity = 1  # XXX
-            cost_line.unit = product.sale_uom
-            cost_line.unit_price = cost
-            cost_line.shipment_cost = cost
-            cost_line.amount = cost
-            cost_line.taxes = taxes
-            cost_line.sequence = 9999  # XXX
-            pattern = cost_line._get_tax_rule_pattern()
-            for tax in product.customer_taxes_used:
-                if party and party.customer_tax_rule:
-                    tax_ids = party.customer_tax_rule.apply(tax, pattern)
-                    if tax_ids:
-                        taxes.extend(tax_ids)
-                    continue
-                taxes.append(tax.id)
-            if party and party.customer_tax_rule:
-                tax_ids = party.customer_tax_rule.apply(None, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
+            cost_line = self.get_shipment_cost_line(cost)
 
         lines = list(self.lines or [])
         for line in self.lines:
-            if getattr(line, 'shipment_cost', None):
-                if line.shipment_cost != cost:
-                    lines.remove(line)
-                    if cost_line:
-                        cost_line.description = getattr(
-                            line, 'description', '')
-                else:
-                    cost_line = None
-                break
+            if line.type != 'line' or not line.shipment_cost:
+                continue
+            if cost_line and line.shipment_cost == cost:
+                cost_line = None
+            else:
+                lines.remove(line)
         if cost_line:
             lines.append(cost_line)
         self.lines = lines
 
-        super(Sale, self).on_change_lines()
+    def get_shipment_cost_line(self, cost):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+
+        product = self.carrier.carrier_product
+
+        sequence = None
+        if self.lines:
+            last_line = self.lines[-1]
+            if last_line.sequence is not None:
+                sequence = last_line.sequence + 1
+
+        cost_line = SaleLine(
+            sale=self,
+            sequence=sequence,
+            type='line',
+            product=product,
+            quantity=1,  # XXX
+            unit=product.sale_uom,
+            shipment_cost=cost,
+            )
+        cost_line.on_change_product()
+        cost_line.unit_price = cost_line.amount = cost
+        return cost_line
 
     def create_shipment(self, shipment_type):
         Shipment = Pool().get('stock.shipment.out')

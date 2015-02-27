@@ -11,7 +11,8 @@ Two new fields are added to *Sale* and *Sale Configuration*:
     - *On Order*: The cost will be computed once for the sale.
     - *On Shipment*: The cost will be compted for each shipments.
 
-Once a carrier is selected a new line is appended with the shipment cost.
+At the quotation if a carrier is selected a new line is appended with the
+shipment cost but the added line can be modified when going back to draft.
 
 Three new fields are added to *Customer Shipment*:
 
