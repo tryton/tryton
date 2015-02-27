@@ -837,6 +837,11 @@
             } else if (action.startsWith('switch')) {
                 var view_type = action.split(' ')[1];
                 this.switch_view(view_type);
+            } else if (action == 'reload') {
+                if (~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
+                        !this.group.parent) {
+                    this.search_filter();
+                }
             } else if (action == 'reload menu') {
                 Sao.get_preferences().then(function(preferences) {
                     Sao.menu(preferences);
