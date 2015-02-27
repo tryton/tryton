@@ -1120,6 +1120,7 @@ class SaleLine(ModelSQL, ModelView):
             context['uom'] = self.unit.id
         else:
             context['uom'] = self.product.sale_uom.id
+        context['taxes'] = [t.id for t in self.taxes]
         return context
 
     @fields.depends('product', 'unit', 'quantity', 'description',
@@ -1138,17 +1139,7 @@ class SaleLine(ModelSQL, ModelView):
             if party.lang:
                 party_context['language'] = party.lang.code
 
-        category = self.product.sale_uom.category
-        if not self.unit or self.unit not in category.uoms:
-            self.unit = self.product.sale_uom
-            self.unit_digits = self.product.sale_uom.digits
-
-        with Transaction().set_context(self._get_context_sale_price()):
-            self.unit_price = Product.get_sale_price([self.product],
-                    self.quantity or 0)[self.product.id]
-            if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+        # Set taxes before unit_price to have taxes in context of sale price
         taxes = []
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.customer_taxes_used:
@@ -1164,6 +1155,18 @@ class SaleLine(ModelSQL, ModelView):
                 taxes.extend(tax_ids)
         self.taxes = taxes
 
+        category = self.product.sale_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            self.unit = self.product.sale_uom
+            self.unit_digits = self.product.sale_uom.digits
+
+        with Transaction().set_context(self._get_context_sale_price()):
+            self.unit_price = Product.get_sale_price([self.product],
+                    self.quantity or 0)[self.product.id]
+            if self.unit_price:
+                self.unit_price = self.unit_price.quantize(
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+
         if not self.description:
             with Transaction().set_context(party_context):
                 self.description = Product(self.product.id).rec_name
@@ -1176,7 +1179,7 @@ class SaleLine(ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit',
+    @fields.depends('product', 'quantity', 'unit', 'taxes',
         '_parent_sale.currency', '_parent_sale.party',
         '_parent_sale.sale_date')
     def on_change_quantity(self):
@@ -1193,11 +1196,13 @@ class SaleLine(ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-    @fields.depends('product', 'quantity', 'unit',
-        '_parent_sale.currency', '_parent_sale.party',
-        '_parent_sale.sale_date')
+    @fields.depends(methods=['quantity'])
     def on_change_unit(self):
-        return self.on_change_quantity()
+        self.on_change_quantity()
+
+    @fields.depends(methods=['quantity'])
+    def on_change_taxes(self):
+        self.on_change_quantity()
 
     @fields.depends('type', 'quantity', 'unit_price', 'unit',
         '_parent_sale.currency')
