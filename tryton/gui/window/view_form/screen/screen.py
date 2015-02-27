@@ -958,6 +958,10 @@ class Screen(SignalEvent):
         elif action.startswith('switch'):
             _, view_type = action.split(None, 1)
             self.switch_view(view_type=view_type)
+        elif action == 'reload':
+            if (self.current_view.view_type in ['tree', 'graph', 'calendar']
+                    and not self.parent):
+                self.search_filter()
         elif action == 'reload menu':
             from tryton.gui import Main
             RPCContextReload(Main.get_main().sig_win_menu)
