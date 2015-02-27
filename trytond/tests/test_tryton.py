@@ -239,6 +239,8 @@ def all_suite(modules=None):
     Return all tests suite of current module
     '''
     suite_ = suite()
+    for case in [IrTestCase, ResTestCase, WebDAVTestCase]:
+        suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(case))
     for fn in os.listdir(os.path.dirname(__file__)):
         if fn.startswith('test_') and fn.endswith('.py'):
             if modules and fn[:-3] not in modules:
