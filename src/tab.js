@@ -295,7 +295,7 @@
                         }))
                         .append(jQuery('<span/>', {
                             'class': 'hidden-sm'
-                        }).append(menu_action[2]))
+                        }).append(' ' + menu_action[2] + ' '))
                         .append(jQuery('<span/>', {
                             'class': 'caret'
                         })))
