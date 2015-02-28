@@ -88,11 +88,11 @@ class TrytonClient(object):
             signal.signal(signal.SIGQUIT,
                 lambda signum, frame: main.sig_quit())
 
-        def excepthook(exctyp, exception, tb):
+        def excepthook(*args):
             import common
             import traceback
-            tb = '\n'.join(traceback.format_tb(tb))
-            common.process_exception(exception, tb=tb)
+            detail = ''.join(traceback.format_exception(*args))
+            common.error(str(args[1]), detail)
 
         sys.excepthook = excepthook
 

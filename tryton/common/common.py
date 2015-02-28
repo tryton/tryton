@@ -1144,10 +1144,7 @@ def process_exception(exception, *args, **kwargs):
         error_title, error_detail = exception.faultCode, exception.faultString
     else:
         error_title = str(exception)
-        if 'tb' in kwargs:
-            error_detail = kwargs['tb']
-        else:
-            error_detail = traceback.format_exc()
+        error_detail = traceback.format_exc()
     error(error_title, error_detail)
     return False
 
