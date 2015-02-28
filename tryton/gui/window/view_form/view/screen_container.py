@@ -323,10 +323,6 @@ class ScreenContainer(object):
         for r in res:
             model.append([r.strip()])
 
-    def clear(self, widget=None):
-        self.search_entry.set_text('')
-        self.bookmark_match()
-
     def get_text(self):
         return self.search_entry.get_text().decode('utf-8')
 
