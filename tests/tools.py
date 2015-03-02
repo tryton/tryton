@@ -24,5 +24,5 @@ def create_payment_term(config=None):
     PaymentTerm = Model.get('account.invoice.payment_term')
 
     payment_term = PaymentTerm(name='Direct')
-    payment_term.lines.new(type='remainder', days=0)
+    payment_term.lines.new(type='remainder')
     return payment_term

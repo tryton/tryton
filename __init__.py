@@ -12,6 +12,7 @@ def register():
     Pool.register(
         PaymentTerm,
         PaymentTermLine,
+        PaymentTermLineRelativeDelta,
         TestPaymentTermView,
         TestPaymentTermViewResult,
         Invoice,

@@ -87,10 +87,8 @@ Create product::
 Create payment term::
 
     >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
     >>> payment_term = PaymentTerm(name='Term')
-    >>> payment_term_line = PaymentTermLine(type='remainder')
-    >>> payment_term.lines.append(payment_term_line)
+    >>> line = payment_term.lines.new(type='remainder')
     >>> payment_term.save()
 
 Create invoice::

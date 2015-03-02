@@ -1,3 +1,4 @@
+* Allow to define many relativedelta on payment term
 * Add test wizard for payment term
 * Use TaxableMixin
 

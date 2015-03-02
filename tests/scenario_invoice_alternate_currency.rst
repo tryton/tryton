@@ -90,13 +90,11 @@ Create product::
 Create payment term::
 
     >>> PaymentTerm = Model.get('account.invoice.payment_term')
-    >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
     >>> payment_term = PaymentTerm(name='Term')
-    >>> payment_term_line = PaymentTermLine(type='percent', days=20,
-    ...     percentage=Decimal(50))
-    >>> payment_term.lines.append(payment_term_line)
-    >>> payment_term_line = PaymentTermLine(type='remainder', days=40)
-    >>> payment_term.lines.append(payment_term_line)
+    >>> line = payment_term.lines.new(type='percent', percentage=Decimal(50))
+    >>> delta = line.relativedeltas.new(days=20)
+    >>> line = payment_term.lines.new(type='remainder')
+    >>> delta = line.relativedeltas.new(days=40)
     >>> payment_term.save()
 
 Create invoice with alternate currency::

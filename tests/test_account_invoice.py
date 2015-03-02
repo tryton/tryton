@@ -37,26 +37,42 @@ class AccountInvoiceTestCase(ModuleTestCase):
                                         'type': 'percent',
                                         'divisor': 4,
                                         'percentage': 25,
-                                        'days': 30,
+                                        'relativedeltas': [('create', [{
+                                                        'days': 30,
+                                                        },
+                                                    ]),
+                                            ],
                                         }, {
                                         'sequence': 1,
                                         'type': 'percent_on_total',
                                         'divisor': 4,
                                         'percentage': 25,
-                                        'months': 1,
+                                        'relativedeltas': [('create', [{
+                                                        'months': 1,
+                                                        },
+                                                    ]),
+                                            ],
                                         }, {
                                         'sequence': 2,
                                         'type': 'fixed',
-                                        'months': 1,
-                                        'days': 30,
                                         'amount': Decimal('396.84'),
                                         'currency': cu1.id,
+                                        'relativedeltas': [('create', [{
+                                                        'months': 1,
+                                                        'days': 30,
+                                                        },
+                                                    ]),
+                                            ],
                                         }, {
                                         'sequence': 3,
                                         'type': 'remainder',
-                                        'months': 2,
-                                        'days': 30,
-                                        'day': 15,
+                                        'relativedeltas': [('create', [{
+                                                        'months': 2,
+                                                        'days': 30,
+                                                        'day': 15,
+                                                        },
+                                                    ]),
+                                            ],
                                         }])]
                         }])
             terms = term.compute(Decimal('1587.35'), cu1,
