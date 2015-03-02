@@ -106,25 +106,29 @@ class Many2Many(Widget):
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
         activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]
+        remove_keys = [gtk.keysyms.Delete, gtk.keysyms.KP_Delete]
         if not self.wid_completion:
             activate_keys.append(gtk.keysyms.Return)
-        if event.keyval == gtk.keysyms.F3:
-            self._sig_add()
-            return True
-        if event.keyval == gtk.keysyms.F2 \
-                and widget == self.screen.widget:
-            self._sig_edit()
-            return True
-        if event.keyval in (gtk.keysyms.Delete, gtk.keysyms.KP_Delete) \
-                and widget == self.screen.widget:
-            self._sig_remove()
-            return True
-        if (widget == self.wid_text
-                and event.keyval in activate_keys
-                and editable
-                and self.wid_text.get_text()):
-            self._sig_add()
-            self.wid_text.grab_focus()
+        if widget == self.screen.widget:
+            if event.keyval == gtk.keysyms.F3 and editable:
+                self._sig_add()
+                return True
+            elif event.keyval == gtk.keysyms.F2:
+                self._sig_edit()
+                return True
+            elif event.keyval in remove_keys and editable:
+                self._sig_remove()
+                return True
+        elif widget == self.wid_text:
+            if event.keyval == gtk.keysyms.F3:
+                self._sig_new()
+                return True
+            elif event.keyval == gtk.keysyms.F2:
+                self._sig_add()
+                return True
+            elif event.keyval in activate_keys and self.wid_text.get_text():
+                self._sig_add()
+                self.wid_text.grab_focus()
         return False
 
     def destroy(self):
@@ -182,10 +186,13 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
+        context = self.field.context_get(self.record)
+
         screen = Screen(self.attrs['relation'], domain=domain,
             view_ids=self.attrs.get('view_ids', '').split(','),
             mode=['form'], views_preload=self.attrs.get('views', {}),
-            readonly=self.attrs.get('readonly', False))
+            readonly=self.attrs.get('readonly', False),
+            context=context)
         screen.load([self.screen.current_record.id])
 
         def callback(result):
@@ -196,6 +203,29 @@ class Many2Many(Widget):
                 # Force a display to clear the CellCache
                 self.screen.display()
         WinForm(screen, callback)
+
+    def _sig_new(self):
+        domain = self.field.domain_get(self.record)
+        add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
+        if add_remove:
+            domain = [domain, add_remove]
+        context = self.field.context_get(self.record)
+
+        screen = Screen(self.attrs['relation'], domain=domain,
+            view_ids=self.attrs.get('view_ids', '').split(','),
+            mode=['form'], views_preload=self.attrs.get('views', {}),
+            context=context)
+
+        def callback(result):
+            self.focus_out = True
+            if result:
+                record = screen.current_record
+                self.screen.load([record.id], modified=True)
+            self.wid_text.set_text('')
+            self.wid_text.grab_focus()
+
+        self.focus_out = False
+        WinForm(screen, callback, new=True, save_current=True)
 
     def _readonly_set(self, value):
         self._readonly = value
@@ -264,22 +294,4 @@ class Many2Many(Widget):
             self._sig_add()
             self.wid_text.grab_focus()
         elif index == 1:
-            model = self.attrs['relation']
-            domain = self.field.domain_get(self.record)
-            add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
-            if add_remove:
-                domain = [domain, add_remove]
-            context = self.field.context_get(self.record)
-
-            screen = Screen(model, domain, context=context, mode=['form'])
-
-            def callback(result):
-                self.focus_out = True
-                if result:
-                    record = screen.current_record
-                    self.screen.load([record.id], modified=True)
-                self.wid_text.set_text('')
-                self.wid_text.grab_focus()
-
-            self.focus_out = False
-            WinForm(screen, callback, new=True, save_current=True)
+            self._sig_new()
