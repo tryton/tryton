@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
+import itertools
 
 from .widget import Widget
 from tryton.gui.window.view_form.screen import Screen
@@ -326,11 +327,18 @@ class One2Many(Widget):
                 return False
         return True
 
-    def _sig_new(self, widget=None):
+    def _sig_new(self, *args):
         if not common.MODELACCESS[self.screen.model_name]['create']:
             return
         if not self._validate():
             return
+
+        if self.attrs.get('product'):
+            self._new_product()
+        else:
+            self._new_single()
+
+    def _new_single(self):
         ctx = {}
         ctx.update(self.field.context_get(self.record))
         sequence = None
@@ -353,6 +361,56 @@ class One2Many(Widget):
             field_size -= len(self.field.get_eval(self.record)) + 1
             WinForm(self.screen, lambda a: update_sequence(), new=True,
                 many=field_size, context=ctx)
+
+    def _new_product(self):
+        fields = self.attrs['product'].split(',')
+        product = {}
+
+        first = self.screen.new(default=False)
+        default = first.default_get()
+        first.set_default(default)
+
+        def search_set(*args):
+            if not fields:
+                return make_product()
+            field = self.screen.group.fields[fields.pop()]
+            relation = field.attrs.get('relation')
+            if not relation:
+                search_set()
+
+            domain = field.domain_get(first)
+            context = field.context_get(first)
+
+            def callback(result):
+                if result:
+                    product[field.name] = result
+
+            win_search = WinSearch(relation, callback, sel_multi=True,
+                context=context, domain=domain)
+            win_search.win.connect('destroy', search_set)
+            win_search.screen.search_filter()
+            win_search.show()
+
+        def make_product(first=first):
+            if not product:
+                self.screen.group.remove(first, remove=True)
+                return
+
+            fields = product.keys()
+            for values in itertools.product(*product.values()):
+                if first:
+                    record = first
+                    first = None
+                else:
+                    record = self.screen.new(default=False)
+                default_value = default.copy()
+                for field, value in zip(fields, values):
+                    id_, rec_name = value
+                    default_value[field] = id_
+                    default_value[field + '.rec_name'] = rec_name
+                record.set_default(default_value)
+
+        search_set()
 
     def _sig_edit(self, widget=None):
         if not common.MODELACCESS[self.screen.model_name]['read']:

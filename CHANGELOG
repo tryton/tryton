@@ -1,3 +1,4 @@
+* Manage product attribute
 * Remove float_time widget
 * Add TimeDelta field
 * Improve date/time widgets
