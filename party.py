@@ -14,6 +14,8 @@ from trytond.pool import Pool
 __all__ = ['Party', 'PartyCategory', 'CheckVIESNoResult', 'CheckVIESResult',
            'CheckVIES']
 
+logger = logging.getLogger(__name__)
+
 HAS_VATNUMBER = False
 VAT_COUNTRIES = [('', '')]
 try:
@@ -22,8 +24,9 @@ try:
     for country in vatnumber.countries():
         VAT_COUNTRIES.append((country, country))
 except ImportError:
-    logging.getLogger('party').warning(
-            'Unable to import vatnumber. VAT number validation disabled.')
+    logger.warning(
+        'Unable to import vatnumber. VAT number validation disabled.',
+        exc_info=True)
 
 STATES = {
     'readonly': ~Eval('active', True),
