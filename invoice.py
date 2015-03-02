@@ -1418,18 +1418,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            If(Bool(Eval('_parent_invoice')),
-                If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
-                    'out_credit_note']),
-                    ('kind', '=', 'revenue'),
-                    ('kind', '=', 'expense')),
-                If(Eval('invoice_type').in_(['out_invoice',
-                            'out_credit_note']),
-                    ('kind', '=', 'revenue'),
-                    ('kind', '=', 'expense')))
-            ],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1502,6 +1490,38 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                     '"%(line)s" on invoice "%(invoice)s" because the invoice '
                     'uses the same account (%(account)s).'),
                 })
+
+        # Set account domain dynamically for kind
+        cls.account.domain = [
+            ('company', '=', Eval('company', -1)),
+            If(Bool(Eval('_parent_invoice')),
+                If(Eval('_parent_invoice', {}).get('type').in_(
+                        ['out_invoice', 'out_credit_note']),
+                    ('kind', 'in', cls._account_domain('out')),
+                    If(Eval('_parent_invoice', {}).get('type').in_(
+                            ['in_invoice', 'in_credit_note']),
+                        ('kind', 'in', cls._account_domain('in')),
+                        ('kind', 'in',
+                            cls._account_domain('out')
+                            + cls._account_domain('in')))),
+                If(Eval('invoice_type').in_(
+                        ['out_invoice', 'out_credit_note']),
+                    ('kind', 'in', cls._account_domain('out')),
+                    If(Eval('invoice_type').in_(
+                            ['in_invoice', 'in_credit_note']),
+                        ('kind', 'in', cls._account_domain('in')),
+                        ('kind', 'in',
+                            cls._account_domain('out')
+                            + cls._account_domain('in'))))),
+            ]
+        cls.account.depends += ['company', 'invoice_type']
+
+    @staticmethod
+    def _account_domain(type_):
+        if type_ == 'out':
+            return ['revenue']
+        elif type_ == 'in':
+            return ['expense']
 
     @classmethod
     def __register__(cls, module_name):
