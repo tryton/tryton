@@ -1438,7 +1438,7 @@ class Main(object):
         hostname, port = map(urllib.unquote,
             (urlp.netloc.split(':', 1) + [CONFIG.defaults['login.port']])[:2])
         database, path = map(urllib.unquote,
-            (urlp.path[1:].split('/', 1) + [None])[:2])
+            (urlp.path[1:].split('/', 1) + [''])[:2])
         if (not path or
                 hostname != rpc._HOST or
                 int(port) != rpc._PORT or
