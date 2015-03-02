@@ -10,8 +10,10 @@ from trytond import backend
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.wizard import Wizard, StateView, Button
 
-__all__ = ['PaymentTerm', 'PaymentTermLine']
+__all__ = ['PaymentTerm', 'PaymentTermLine',
+    'TestPaymentTerm', 'TestPaymentTermView', 'TestPaymentTermViewResult']
 
 
 class PaymentTerm(ModelSQL, ModelView):
@@ -322,3 +324,70 @@ class PaymentTermLine(ModelSQL, ModelView):
                         'line': line.rec_name,
                         'term': line.payment.rec_name,
                         })
+
+
+class TestPaymentTerm(Wizard):
+    'Test Payment Term'
+    __name__ = 'account.invoice.payment_term.test'
+    start_state = 'test'
+    test = StateView('account.invoice.payment_term.test',
+        'account_invoice.payment_term_test_view_form',
+        [Button('Close', 'end', 'tryton-close', default=True)])
+
+    def default_test(self, fields):
+        context = Transaction().context
+        default = {}
+        if context['active_model'] == 'account.invoice.payment_term':
+            default['payment_term'] = context['active_id']
+        return default
+
+
+class TestPaymentTermView(ModelView):
+    'Test Payment Term'
+    __name__ = 'account.invoice.payment_term.test'
+    payment_term = fields.Many2One('account.invoice.payment_term',
+        'Payment Term', required=True)
+    date = fields.Date('Date')
+    amount = fields.Numeric('Amount', required=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    currency_digits = fields.Integer('Currency Digits')
+    result = fields.One2Many('account.invoice.payment_term.test.result',
+        None, 'Result', readonly=True)
+
+    @staticmethod
+    def default_currency():
+        pool = Pool()
+        Company = pool.get('company.company')
+        company = Transaction().context.get('company')
+        if company:
+            return Company(company).currency.id
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self):
+        if self.currency:
+            return self.currency.digits
+        return 2
+
+    @fields.depends('payment_term', 'date', 'amount', 'currency', 'result')
+    def on_change_with_result(self):
+        pool = Pool()
+        Result = pool.get('account.invoice.payment_term.test.result')
+        result = []
+        if (self.payment_term and self.amount and self.currency):
+            for date, amount in self.payment_term.compute(
+                    self.amount, self.currency, self.date):
+                result.append(Result(
+                        date=date, amount=amount,
+                        currency_digits=self.currency.digits))
+        self.result = result
+        return self._changed_values.get('result', [])
+
+
+class TestPaymentTermViewResult(ModelView):
+    'Test Payment Term'
+    __name__ = 'account.invoice.payment_term.test.result'
+    date = fields.Date('Date', readonly=True)
+    amount = fields.Numeric('Amount', readonly=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    currency_digits = fields.Integer('Currency Digits')

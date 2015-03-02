@@ -85,5 +85,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_payment_term_test">
+            <field name="name">Test Payment Term</field>
+            <field name="wiz_name">account.invoice.payment_term.test</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_payment_term_test_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice.payment_term,-1</field>
+            <field name="action" ref="wizard_payment_term_test"/>
+        </record>
+        <menuitem parent="menu_payment_terms_configuration"
+            action="wizard_payment_term_test" id="menu_payment_term_test"/>
+
+        <record model="ir.ui.view" id="payment_term_test_view_form">
+            <field name="model">account.invoice.payment_term.test</field>
+            <field name="type">form</field>
+            <field name="name">payment_term_test_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_term_test_result_view_list">
+            <field name="model">account.invoice.payment_term.test.result</field>
+            <field name="type">tree</field>
+            <field name="name">payment_term_test_result_list</field>
+        </record>
     </data>
 </tryton>
