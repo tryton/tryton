@@ -107,8 +107,8 @@ class User:
                 if cls.ldap_search_user(login, con, attrs=[]):
                     find = True
                     break
-        except ldap.LDAPError, e:
-            logger.error('LDAPError: %s' % str(e))
+        except ldap.LDAPError:
+            logger.error('LDAPError when checking password', exc_info=True)
         if find:
             cls.raise_user_error('set_passwd_ldap_user', (login,))
 
@@ -149,8 +149,9 @@ class User:
                             del values['password']
                         else:
                             cls.raise_user_error('wrong_password')
-            except ldap.LDAPError, e:
-                logger.error('LDAPError: %s' % str(e))
+            except ldap.LDAPError:
+                logger.error('LDAPError when setting preferences',
+                    exc_info=True)
         super(User, cls).set_preferences(values, old_password=old_password)
 
     @classmethod
@@ -177,6 +178,6 @@ class User:
                                         'login': login,
                                         }])
                             return user.id
-        except ldap.LDAPError, e:
-            logger.error('LDAPError: %s' % str(e))
+        except ldap.LDAPError:
+            logger.error('LDAPError when login', exc_info=True)
         return super(User, cls).get_login(login, password)
