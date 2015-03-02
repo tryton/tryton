@@ -5,6 +5,7 @@ from collections import namedtuple
 from itertools import groupby
 
 from sql import Null
+from sql.aggregate import Max, Sum
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If, Bool
@@ -13,7 +14,7 @@ from trytond import backend
 from trytond.pool import Pool
 from trytond.modules.company import CompanyReport
 
-__all__ = ['Statement', 'Line', 'StatementReport']
+__all__ = ['Statement', 'Line', 'LineGroup', 'StatementReport']
 
 _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
@@ -722,6 +723,79 @@ class Line(ModelSQL, ModelView):
             second_currency=second_currency,
             amount_second_currency=amount_second_currency,
             )
+
+
+class LineGroup(ModelSQL, ModelView):
+    'Account Statement Line Group'
+    __name__ = 'account.statement.line.group'
+    _rec_name = 'number'
+    statement = fields.Many2One('account.statement', 'Statement')
+    journal = fields.Function(fields.Many2One('account.statement.journal',
+            'Journal'), 'get_journal', searcher='search_journal')
+    number = fields.Char('Number')
+    date = fields.Date('Date')
+    amount = fields.Numeric('Amount',
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    currency = fields.Function(fields.Many2One('currency.currency',
+            'Currency'), 'get_currency')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'get_currency_digits')
+    party = fields.Many2One('party.party', 'Party')
+    move = fields.Many2One('account.move', 'Move')
+
+    @classmethod
+    def __setup__(cls):
+        super(LineGroup, cls).__setup__()
+        cls._order.insert(0, ('date', 'DESC'))
+
+    @classmethod
+    def _grouped_columns(cls, line):
+        return [
+            Max(line.statement).as_('statement'),
+            Max(line.number).as_('number'),
+            Max(line.date).as_('date'),
+            Sum(line.amount).as_('amount'),
+            Max(line.party).as_('party'),
+            ]
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.statement.line')
+        move = Move.__table__()
+        line = Line.__table__()
+
+        std_columns = [
+            move.id,
+            move.create_uid,
+            move.create_date,
+            move.write_uid,
+            move.write_date,
+            ]
+
+        columns = (std_columns + [move.id.as_('move')]
+            + cls._grouped_columns(line))
+        return move.join(line,
+            condition=move.id == line.move
+            ).select(*columns,
+                where=move.origin.ilike(Statement.__name__ + ',%'),
+                group_by=std_columns + [move.id]
+                )
+
+    def get_journal(self, name):
+        return self.statement.journal.id
+
+    @classmethod
+    def search_journal(cls, name, clause):
+        return [('statement.journal',) + tuple(clause[1:])]
+
+    def get_currency(self, name):
+        return self.statement.journal.currency.id
+
+    def get_currency_digits(self, name):
+        return self.statement.journal.currency.digits
 
 
 class StatementReport(CompanyReport):

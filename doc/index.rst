@@ -46,6 +46,13 @@ A Statement Line is mainly defined by:
 - Invoice.
 - Description.
 
+Line Group
+**********
+
+The line group represent the group of lines created at the validation of the
+statement.
+By default the lines of a statement are grouped by *Number*, *Date* and *Party*.
+
 Journal
 *******
 

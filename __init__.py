@@ -12,6 +12,7 @@ def register():
         Journal,
         Statement,
         Line,
+        LineGroup,
         Move,
         module='account_statement', type_='model')
     Pool.register(
