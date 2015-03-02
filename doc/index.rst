@@ -22,8 +22,8 @@ The statement can be in one of this states:
 
 * Validated
 
-  The statement is validated and is waiting to be posted. The moves for each
-  line are already created in draft state.
+  The statement is validated and is waiting to be posted. A move for each
+  grouped lines is already created in draft state.
 
 * Posted
 
@@ -39,12 +39,15 @@ Line
 
 A Statement Line is mainly defined by:
 
+- Sequence: Use to order the lines in the statement.
+- Number: The number to identify a transaction.
 - Date.
 - Amount.
 - Party.
 - Account.
 - Invoice.
 - Description.
+- Move: The move created for this line.
 
 Line Group
 **********
