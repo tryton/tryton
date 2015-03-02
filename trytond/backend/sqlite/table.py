@@ -7,6 +7,8 @@ import re
 
 __all__ = ['TableHandler']
 
+logger = logging.getLogger(__name__)
+
 
 class TableHandler(TableHandlerInterface):
     def __init__(self, cursor, model, module_name=None, history=False):
@@ -159,22 +161,22 @@ class TableHandler(TableHandlerInterface):
                 self._field2module[line[0]] = line[1]
 
     def alter_size(self, column_name, column_type):
-        logging.getLogger('init').warning(
+        logger.warning(
             'Unable to alter size of column %s '
-            'of table %s!'
-            % (column_name, self.table_name))
+            'of table %s!',
+            (column_name, self.table_name))
 
     def alter_type(self, column_name, column_type):
-        logging.getLogger('init').warning(
+        logger.warning(
             'Unable to alter type of column %s '
-            'of table %s!'
-            % (column_name, self.table_name))
+            'of table %s!',
+            (column_name, self.table_name))
 
     def db_default(self, column_name, value):
-        logging.getLogger('init').warning(
+        logger.warning(
             'Unable to set default on column %s '
-            'of table %s!'
-            % (column_name, self.table_name))
+            'of table %s!',
+            (column_name, self.table_name))
 
     def add_raw_column(self, column_name, column_type, column_format,
             default_fun=None, field_size=None, migrate=True, string=''):
@@ -191,10 +193,10 @@ class TableHandler(TableHandlerInterface):
                         ]:
                     self.alter_type(column_name, base_type)
                 else:
-                    logging.getLogger('init').warning(
+                    logger.warning(
                         'Unable to migrate column %s on table %s '
-                        'from %s to %s.'
-                        % (column_name, self.table_name,
+                        'from %s to %s.',
+                        (column_name, self.table_name,
                             self._columns[column_name]['typname'], base_type))
 
             if (base_type == 'VARCHAR'
@@ -209,10 +211,10 @@ class TableHandler(TableHandlerInterface):
                         and self._columns[column_name]['size'] < field_size):
                     self.alter_size(column_name, column_type[1])
                 else:
-                    logging.getLogger('init').warning(
+                    logger.warning(
                         'Unable to migrate column %s on table %s '
-                        'from varchar(%s) to varchar(%s).'
-                        % (column_name, self.table_name,
+                        'from varchar(%s) to varchar(%s).',
+                        (column_name, self.table_name,
                             self._columns[column_name]['size'] > 0
                             and self._columns[column_name]['size'] or "",
                             field_size))
@@ -238,14 +240,14 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions()
 
     def add_fk(self, column_name, reference, on_delete=None):
-        logging.getLogger('init').warning(
-            'Unable to add foreign key on table %s!'
-            % (self.table_name,))
+        logger.warning(
+            'Unable to add foreign key on table %s!',
+            (self.table_name,))
 
     def drop_fk(self, column_name, table=None):
-        logging.getLogger('init').warning(
-            'Unable to drop foreign key on table %s!'
-            % (self.table_name,))
+        logger.warning(
+            'Unable to drop foreign key on table %s!',
+            (self.table_name,))
 
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
@@ -277,32 +279,32 @@ class TableHandler(TableHandlerInterface):
             return
 
         if action == 'add':
-            logging.getLogger('init').warning(
+            logger.warning(
                 'Unable to set not null on column %s '
-                'of table %s!'
-                % (column_name, self.table_name))
+                'of table %s!',
+                (column_name, self.table_name))
         elif action == 'remove':
-            logging.getLogger('init').warning(
+            logger.warning(
                 'Unable to remove not null on column %s '
-                'of table %s!'
-                % (column_name, self.table_name))
+                'of table %s!',
+                (column_name, self.table_name))
         else:
             raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint, exception=False):
-        logging.getLogger('init').warning(
-            'Unable to add constraint on table %s!'
-            % (self.table_name,))
+        logger.warning(
+            'Unable to add constraint on table %s!',
+            (self.table_name,))
 
     def drop_constraint(self, ident, exception=False, table=None):
-        logging.getLogger('init').warning(
-            'Unable to drop constraint on table %s!'
-            % (self.table_name,))
+        logger.warning(
+            'Unable to drop constraint on table %s!',
+            (self.table_name,))
 
     def drop_column(self, column_name, exception=False):
-        logging.getLogger('init').warning(
-            'Unable to drop \'%s\' column on table %s!'
-            % (column_name, self.table_name))
+        logger.warning(
+            'Unable to drop \'%s\' column on table %s!',
+            (column_name, self.table_name))
 
     @staticmethod
     def drop_table(cursor, model, table, cascade=False):

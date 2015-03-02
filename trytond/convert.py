@@ -3,8 +3,6 @@
 import time
 from xml import sax
 import logging
-import traceback
-import sys
 import re
 from sql import Table
 from itertools import izip
@@ -13,6 +11,8 @@ from collections import defaultdict
 from .version import VERSION
 from .tools import safe_eval, grouped_slice
 from .transaction import Transaction
+
+logger = logging.getLogger(__name__)
 
 CDATA_START = re.compile('^\s*\<\!\[cdata\[', re.IGNORECASE)
 CDATA_END = re.compile('\]\]\>\s*$', re.IGNORECASE)
@@ -435,8 +435,9 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         try:
             self.sax_parser.parse(source)
         except Exception:
-            logging.getLogger("convert").error(
-                "Error while parsing xml file:\n" + self.current_state())
+            logger.error(
+                "Error while parsing xml file:\n" + self.current_state(),
+                exc_info=True)
             raise
         return self.to_delete
 
@@ -468,8 +469,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 pass
 
             else:
-                logging.getLogger("convert").info("Tag %s not supported" %
-                    name)
+                logger.info("Tag %s not supported", (name,))
                 return
         elif not self.skip_data:
             self.taghandler.startElement(name, attributes)
@@ -667,10 +667,10 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 # if they are not false in a boolean context (ie None,
                 # False, {} or [])
                 if db_field != expected_value and (db_field or expected_value):
-                    logging.getLogger("convert").warning(
+                    logger.warning(
                         "Field %s of %s@%s not updated (id: %s), because "
-                        "it has changed since the last update"
-                        % (key, record.id, model, fs_id))
+                        "it has changed since the last update",
+                        (key, record.id, model, fs_id))
                     continue
 
                 # so, the field in the fs and in the db are different,
@@ -794,8 +794,7 @@ def post_import(pool, module, to_delete):
     for mrec in mdata:
         model, db_id = mrec.model, mrec.db_id
 
-        logging.getLogger("convert").info(
-                'Deleting %s@%s' % (db_id, model))
+        logger.info('Deleting %s@%s', (db_id, model))
         try:
             # Deletion of the record
             try:
@@ -806,21 +805,19 @@ def post_import(pool, module, to_delete):
                 Model.delete([Model(db_id)])
                 mdata_delete.append(mrec)
             else:
-                logging.getLogger("convert").warning(
-                        'Could not delete id %d of model %s because model no '
-                        'longer exists.' % (db_id, model))
+                logger.warning(
+                    'Could not delete id %d of model %s because model no '
+                    'longer exists.', (db_id, model))
             cursor.commit()
         except Exception:
             cursor.rollback()
-            tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-            logging.getLogger("convert").error(
+            logger.error(
                 'Could not delete id: %d of model %s\n'
                 'There should be some relation '
                 'that points to this resource\n'
                 'You should manually fix this '
-                'and restart --update=module\n'
-                'Exception: %s' %
-                (db_id, model, tb_s))
+                'and restart --update=module\n',
+                (db_id, model), exc_info=True)
             if 'active' in Model._fields:
                 Model.write([Model(db_id)], {
                         'active': False,

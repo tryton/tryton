@@ -3,7 +3,6 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import time
-import sys
 import pydoc
 
 from sql import Table
@@ -146,9 +145,11 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
         raise UserError('Calling method %s on %s %s is not allowed!'
             % (method, object_type, object_name))
 
-    exception_message = ('Exception calling %s.%s.%s from %s@%s:%d/%s' %
-        (object_type, object_name, method, user, host, port, database_name))
+    log_message = '%s.%s.%s(*%s, **%s) from %s@%s:%d/%s'
+    log_args = (object_type, object_name, method, args, kwargs,
+        user, host, port, database_name)
 
+    logger.info(log_message, *log_args)
     for count in range(config.getint('database', 'retry'), -1, -1):
         with Transaction().start(database_name, user,
                 readonly=rpc.readonly) as transaction:
@@ -175,11 +176,11 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                     continue
                 raise
             except (NotLogged, ConcurrencyException, UserError, UserWarning):
-                logger.debug(exception_message, exc_info=sys.exc_info())
+                logger.debug(log_message, *log_args, exc_info=True)
                 transaction.cursor.rollback()
                 raise
             except Exception:
-                logger.error(exception_message, exc_info=sys.exc_info())
+                logger.error(log_message, *log_args, exc_info=True)
                 transaction.cursor.rollback()
                 raise
             Cache.resets(database_name)
@@ -189,10 +190,12 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
             try:
                 Session.reset(session)
             except DatabaseOperationalError:
+                logger.debug('Reset session failed', exc_info=True)
                 # Silently fail when reseting session
                 transaction.cursor.rollback()
             else:
                 transaction.cursor.commit()
+        logger.debug('Result: %s', result)
         return result
 
 
@@ -244,8 +247,7 @@ def create(database_name, password, lang, admin_password):
             transaction.cursor.commit()
             res = True
     except Exception:
-        logger.error('CREATE DB: %s failed' % database_name,
-            exc_info=sys.exc_info())
+        logger.error('CREATE DB: %s failed' % database_name, exc_info=True)
         raise
     else:
         logger.info('CREATE DB: %s' % (database_name,))
@@ -266,11 +268,10 @@ def drop(database_name, password):
             Database.drop(cursor, database_name)
             cursor.commit()
         except Exception:
-            logger.error('DROP DB: %s failed' % database_name,
-                exc_info=sys.exc_info())
+            logger.error('DROP DB: %s failed', (database_name,), exc_info=True)
             raise
         else:
-            logger.info('DROP DB: %s' % (database_name))
+            logger.info('DROP DB: %s', (database_name,))
             Pool.stop(database_name)
     return True
 

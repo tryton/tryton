@@ -162,14 +162,14 @@ class GenericXMLRPCRequestHandler:
                 return dispatch(host, port, 'XML-RPC', database_name, user,
                         session, object_type, object_name, method, *params)
             except (NotLogged, ConcurrencyException), exception:
-                logger.debug(exception_message, exc_info=sys.exc_info())
+                logger.debug(exception_message, exc_info=True)
                 raise xmlrpclib.Fault(exception.code, str(exception))
             except (UserError, UserWarning), exception:
-                logger.debug(exception_message, exc_info=sys.exc_info())
+                logger.debug(exception_message, exc_info=True)
                 error, description = exception.args
                 raise xmlrpclib.Fault(exception.code, str(exception))
             except Exception, exception:
-                logger.error(exception_message, exc_info=sys.exc_info())
+                logger.error(exception_message, exc_info=True)
                 raise xmlrpclib.Fault(255, str(exception))
         finally:
             security.logout(database_name, user, session)

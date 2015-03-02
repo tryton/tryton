@@ -6,7 +6,6 @@ import BaseHTTPServer
 import urlparse
 import time
 import urllib
-import sys
 import logging
 from threading import local
 import xml.dom.minidom
@@ -134,9 +133,9 @@ class TrytonDAVInterface(iface.dav_interface):
         if isinstance(exception, (NotLogged, ConcurrencyException, UserError,
                     UserWarning, DAV_Error, DAV_NotFound, DAV_Secret,
                     DAV_Forbidden)):
-            logger.debug('Exception', exc_info=sys.exc_info())
+            logger.debug('Exception %s', (exception,), exc_info=True)
         else:
-            logger.error('Exception', exc_info=sys.exc_info())
+            logger.error('Exception %s', (exception,), exc_info=True)
 
     @staticmethod
     def get_dburi(uri):

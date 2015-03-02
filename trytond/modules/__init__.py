@@ -19,6 +19,8 @@ from trytond.transaction import Transaction
 from trytond.cache import Cache
 import trytond.convert as convert
 
+logger = logging.getLogger(__name__)
+
 ir_module = Table('ir_module_module')
 ir_model_data = Table('ir_model_data')
 
@@ -202,7 +204,6 @@ def load_module_graph(graph, pool, update=None, lang=None):
         update = []
     modules_todo = []
     models_to_update_history = set()
-    logger = logging.getLogger('modules')
     cursor = Transaction().cursor
 
     modules = [x.name for x in graph]
@@ -318,7 +319,6 @@ def register_classes():
     trytond.webdav.register()
     import trytond.tests
     trytond.tests.register()
-    logger = logging.getLogger('modules')
 
     for package in create_graph(get_module_list())[0]:
         module = package.name

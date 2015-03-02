@@ -24,6 +24,8 @@ __all__ = [
     'ViewTreeWidth', 'ViewTreeState', 'ViewSearch',
     ]
 
+logger = logging.getLogger(__name__)
+
 
 class View(ModelSQL, ModelView):
     "View"
@@ -137,7 +139,6 @@ class View(ModelSQL, ModelView):
                 rng_type = view.inherit.type if view.inherit else view.type
                 validator = etree.RelaxNG(etree=cls.get_rng(rng_type))
                 if not validator.validate(tree):
-                    logger = logging.getLogger('ir')
                     error_log = reduce(lambda x, y: str(x) + '\n' + str(y),
                             validator.error_log.filter_from_errors())
                     logger.error('Invalid xml view:\n%s'
@@ -157,7 +158,6 @@ class View(ModelSQL, ModelView):
                             value = safe_eval(element.get(attr), CONTEXT)
                             validates.get(attr, lambda a: True)(value)
                         except Exception, e:
-                            logger = logging.getLogger('ir')
                             logger.error('Invalid pyson view element "%s:%s":'
                                 '\n%s\n%s'
                                 % (element.get('id') or element.get('name'),

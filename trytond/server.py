@@ -31,10 +31,16 @@ class TrytonServer(object):
             logging.getLogger('server').info('using %s as logging '
                 'configuration file', options.logconf)
         else:
-            logformat = '[%(asctime)s] %(levelname)s:%(name)s:%(message)s'
-            datefmt = '%a %b %d %H:%M:%S %Y'
-            logging.basicConfig(level=logging.INFO, format=logformat,
-                datefmt=datefmt)
+            logformat = ('%(process)s %(thread)s [%(asctime)s] '
+                '%(levelname)s %(name)s %(message)s')
+            if options.verbose:
+                if options.dev:
+                    level = logging.DEBUG
+                else:
+                    level = logging.INFO
+            else:
+                level = logging.ERROR
+            logging.basicConfig(level=level, format=logformat)
 
         self.logger = logging.getLogger(__name__)
 

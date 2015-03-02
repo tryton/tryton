@@ -8,6 +8,8 @@ import __builtin__
 
 __all__ = ['Pool', 'PoolMeta', 'PoolBase']
 
+logger = logging.getLogger(__name__)
+
 
 class PoolMeta(type):
 
@@ -137,7 +139,6 @@ class Pool(object):
         Set update to proceed to update
         lang is a list of language code to be updated
         '''
-        logger = logging.getLogger('pool')
         with self._lock:
             if not self._started:
                 self.start()
@@ -145,7 +146,7 @@ class Pool(object):
             # Don't reset pool if already init and not to update
             if not update and self._pool.get(self.database_name):
                 return
-            logger.info('init pool for "%s"' % self.database_name)
+            logger.info('init pool for "%s"', (self.database_name,))
             self._pool.setdefault(self.database_name, {})
             # Clean the _pool before loading modules
             for type in self.classes.keys():

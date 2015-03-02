@@ -6,6 +6,8 @@ import logging
 
 __all__ = ['TableHandler']
 
+logger = logging.getLogger(__name__)
+
 
 class TableHandler(TableHandlerInterface):
 
@@ -225,10 +227,10 @@ class TableHandler(TableHandlerInterface):
                         ]:
                     self.alter_type(column_name, base_type)
                 else:
-                    logging.getLogger('init').warning(
+                    logger.warning(
                         'Unable to migrate column %s on table %s '
-                        'from %s to %s.'
-                        % (column_name, self.table_name,
+                        'from %s to %s.',
+                        (column_name, self.table_name,
                             self._columns[column_name]['typname'], base_type))
 
             if (base_type == 'varchar'
@@ -243,10 +245,10 @@ class TableHandler(TableHandlerInterface):
                         and self._columns[column_name]['size'] < field_size):
                     self.alter_size(column_name, column_type[1])
                 else:
-                    logging.getLogger('init').warning(
+                    logger.warning(
                         'Unable to migrate column %s on table %s '
-                        'from varchar(%s) to varchar(%s).'
-                        % (column_name, self.table_name,
+                        'from varchar(%s) to varchar(%s).',
+                        (column_name, self.table_name,
                             self._columns[column_name]['size'] > 0 and
                             self._columns[column_name]['size'] or "",
                             field_size))
@@ -350,15 +352,15 @@ class TableHandler(TableHandlerInterface):
                     'ALTER COLUMN "' + column_name + '" SET NOT NULL')
                 self._update_definitions()
             else:
-                logging.getLogger('init').warning(
+                logger.warning(
                     'Unable to set column %s '
                     'of table %s not null !\n'
                     'Try to re-run: '
                     'trytond.py --update=module\n'
                     'If it doesn\'t work, update records '
                     'and execute manually:\n'
-                    'ALTER TABLE "%s" ALTER COLUMN "%s" SET NOT NULL'
-                    % (column_name, self.table_name, self.table_name,
+                    'ALTER TABLE "%s" ALTER COLUMN "%s" SET NOT NULL',
+                    (column_name, self.table_name, self.table_name,
                         column_name))
         elif action == 'remove':
             if not self._columns[column_name]['notnull']:
@@ -385,12 +387,12 @@ class TableHandler(TableHandlerInterface):
         except Exception:
             if exception:
                 raise
-            logging.getLogger('init').warning(
+            logger.warning(
                 'unable to add \'%s\' constraint on table %s !\n'
                 'If you want to have it, you should update the records '
                 'and execute manually:\n'
-                'ALTER table "%s" ADD CONSTRAINT "%s" %s'
-                % (constraint, self.table_name, self.table_name, ident,
+                'ALTER table "%s" ADD CONSTRAINT "%s" %s',
+                (constraint, self.table_name, self.table_name, ident,
                     constraint))
         self._update_definitions()
 
@@ -405,9 +407,9 @@ class TableHandler(TableHandlerInterface):
         except Exception:
             if exception:
                 raise
-            logging.getLogger('init').warning(
-                'unable to drop \'%s\' constraint on table %s!'
-                % (ident, self.table_name))
+            logger.warning(
+                'unable to drop \'%s\' constraint on table %s!',
+                (ident, self.table_name))
         self._update_definitions()
 
     def drop_column(self, column_name, exception=False):
@@ -421,9 +423,9 @@ class TableHandler(TableHandlerInterface):
         except Exception:
             if exception:
                 raise
-            logging.getLogger('init').warning(
-                'unable to drop \'%s\' column on table %s!'
-                % (column_name, self.table_name))
+            logger.warning(
+                'unable to drop \'%s\' column on table %s!',
+                (column_name, self.table_name), exc_info=True)
         self._update_definitions()
 
     @staticmethod
