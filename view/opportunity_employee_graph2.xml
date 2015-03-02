@@ -8,5 +8,6 @@ this repository contains the full copyright notices and license terms. -->
     <y>
         <field name="amount"/>
         <field name="converted_amount"/>
+        <field name="won_amount"/>
     </y>
 </graph>

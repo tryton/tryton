@@ -12,6 +12,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity"/>
     <label name="unit"/>
     <field name="unit"/>
-    <label name="sale_line"/>
-    <field name="sale_line"/>
 </form>

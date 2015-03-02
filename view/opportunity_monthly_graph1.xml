@@ -8,6 +8,7 @@ this repository contains the full copyright notices and license terms. -->
     <y>
         <field name="number"/>
         <field name="converted"/>
+        <field name="won"/>
         <field name="lost"/>
     </y>
 </graph>

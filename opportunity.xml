@@ -82,16 +82,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_won">
+            <field name="name">Won</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[("state", "=", "won")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_cancelled">
             <field name="name">Cancelled</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain">[("state", "=", "cancelled")]</field>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_lost">
             <field name="name">Lost</field>
-            <field name="sequence" eval="50"/>
+            <field name="sequence" eval="60"/>
             <field name="domain">[("state", "=", "lost")]</field>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
@@ -186,6 +193,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_group_opportunity1">
             <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_open_sale_form">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'sale.opportunity')]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_sale_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.opportunity,-1</field>
+            <field name="action" ref="act_open_sale_form"/>
         </record>
 
         <record model="ir.ui.view" id="opportunity_line_view_form">

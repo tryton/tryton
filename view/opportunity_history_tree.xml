@@ -9,6 +9,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="end_date"/>
     <field name="description"/>
     <field name="party"/>
+    <field name="amount"/>
+    <field name="currency"/>
     <field name="state"/>
     <field name="probability"/>
 </tree>

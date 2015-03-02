@@ -25,6 +25,7 @@ STATES = [
     ('lead', 'Lead'),
     ('opportunity', 'Opportunity'),
     ('converted', 'Converted'),
+    ('won', 'Won'),
     ('cancelled', 'Cancelled'),
     ('lost', 'Lost'),
 ]
@@ -33,7 +34,7 @@ _STATES_START = {
     }
 _DEPENDS_START = ['state']
 _STATES_STOP = {
-    'readonly': In(Eval('state'), ['converted', 'lost', 'cancelled']),
+    'readonly': In(Eval('state'), ['converted', 'won', 'lost', 'cancelled']),
 }
 _DEPENDS_STOP = ['state']
 
@@ -78,10 +79,11 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=True,
         states=_STATES_START, depends=_DEPENDS_START)
-    end_date = fields.Date('End Date', select=True, readonly=True, states={
-        'invisible': Not(In(Eval('state'),
-            ['converted', 'cancelled', 'lost'])),
-    }, depends=['state'])
+    end_date = fields.Date('End Date', select=True, readonly=True,
+        states={
+            'invisible': ~Eval('state').in_(['won', 'cancelled', 'lost']),
+            },
+        depends=['state'])
     description = fields.Char('Description', required=True,
         states=_STATES_STOP, depends=_DEPENDS_STOP)
     comment = fields.Text('Comment', states=_STATES_STOP,
@@ -91,23 +93,26 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     state = fields.Selection(STATES, 'State', required=True, select=True,
             sort=False, readonly=True)
     probability = fields.Integer('Conversion Probability', required=True,
-            states={
-                'readonly': Not(In(Eval('state'), ['opportunity', 'lead'])),
-            }, depends=['state'], help="Percentage between 0 and 100")
+        states={
+            'readonly': ~Eval('state').in_(
+                ['opportunity', 'lead', 'converted']),
+            },
+        depends=['state'], help="Percentage between 0 and 100")
     history = fields.One2Many('sale.opportunity.history', 'opportunity',
             'History', readonly=True)
     lost_reason = fields.Text('Reason for loss', states={
             'invisible': Eval('state') != 'lost',
             }, depends=['state'])
-    sale = fields.Many2One('sale.sale', 'Sale', readonly=True, states={
-            'invisible': Eval('state') != 'converted',
-            }, depends=['state'])
+    sales = fields.One2Many('sale.sale', 'origin', 'Sales')
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
         cursor = Transaction().cursor
         TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
+        sale = Sale.__table__()
 
         reference_exists = True
         if TableHandler.table_exist(cursor, cls._table):
@@ -125,6 +130,18 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                     values=[sql_table.id],
                     where=sql_table.reference == Null))
             table.not_null_action('reference', action='add')
+
+        # Migration from 3.4: replace sale by origin
+        if table.column_exist('sale'):
+            cursor.execute(*sql_table.select(
+                    sql_table.id, sql_table.sale,
+                    where=sql_table.sale != Null))
+            for id_, sale_id in cursor.fetchall():
+                cursor.execute(*sale.update(
+                        columns=[sale.origin],
+                        values=['%s,%s' % (Sale.__name__, sale_id)],
+                        where=sale.id == sale_id))
+            table.drop_column('sale', exception=True)
 
     @classmethod
     def __setup__(cls):
@@ -147,6 +164,10 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 ('opportunity', 'lead'),
                 ('opportunity', 'lost'),
                 ('opportunity', 'cancelled'),
+                ('converted', 'won'),
+                ('converted', 'lost'),
+                ('won', 'converted'),
+                ('lost', 'converted'),
                 ('lost', 'lead'),
                 ('cancelled', 'lead'),
                 ))
@@ -226,7 +247,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default.setdefault('reference', None)
         default.setdefault('history', None)
-        default.setdefault('sale', None)
+        default.setdefault('sales', None)
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
     def get_currency(self, name):
@@ -248,19 +269,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         else:
             self.payment_term = self.default_payment_term()
 
-    def _get_sale_line_opportunity_line(self, sale):
-        '''
-        Return sale lines for each opportunity line
-        '''
-        res = {}
-        for line in self.lines:
-            if line.sale_line:
-                continue
-            sale_line = line.get_sale_line(sale)
-            if sale_line:
-                res[line.id] = sale_line
-        return res
-
     def _get_sale_opportunity(self):
         '''
         Return sale for an opportunity
@@ -276,31 +284,18 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             currency=self.company.currency,
             comment=self.comment,
             sale_date=None,
+            origin=self,
             )
 
     def create_sale(self):
         '''
         Create a sale for the opportunity and return the sale
         '''
-        Line = Pool().get('sale.opportunity.line')
-
-        if self.sale:
-            return
-
         sale = self._get_sale_opportunity()
-        sale_lines = self._get_sale_line_opportunity_line(sale)
-        sale.save()
-
-        for line_id, sale_line in sale_lines.iteritems():
-            sale_line.sale = sale
-            sale_line.save()
-            Line.write([Line(line_id)], {
-                    'sale_line': sale_line.id,
-                    })
-
-        self.write([self], {
-                'sale': sale.id,
-                })
+        sale_lines = []
+        for line in self.lines:
+            sale_lines.append(line.get_sale_line(sale))
+        sale.lines = sale_lines
         return sale
 
     @classmethod
@@ -328,12 +323,19 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('converted')
     def convert(cls, opportunities):
-        Date = Pool().get('ir.date')
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        sales = [o.create_sale() for o in opportunities if not o.sales]
+        Sale.save(sales)
+
+    @classmethod
+    @Workflow.transition('won')
+    def won(cls, opportunities):
+        pool = Pool()
+        Date = pool.get('ir.date')
         cls.write(opportunities, {
                 'end_date': Date.today(),
                 })
-        for opportunity in opportunities:
-            opportunity.create_sale()
 
     @classmethod
     @ModelView.button
@@ -353,6 +355,65 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 'end_date': Date.today(),
                 })
 
+    @staticmethod
+    def _sale_won_states():
+        return ['confirmed', 'processing', 'done']
+
+    @staticmethod
+    def _sale_lost_states():
+        return ['cancel']
+
+    def is_won(self):
+        sale_won_states = self._sale_won_states()
+        sale_lost_states = self._sale_lost_states()
+        end_states = sale_won_states + sale_lost_states
+        return (self.sales
+            and all(s.state in end_states for s in self.sales)
+            and any(s.state in sale_won_states for s in self.sales))
+
+    def is_lost(self):
+        sale_lost_states = self._sale_lost_states()
+        return (self.sales
+            and all(s.state in sale_lost_states for s in self.sales))
+
+    @property
+    def sale_amount(self):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+
+        if not self.sales:
+            return
+
+        sale_lost_states = self._sale_lost_states()
+        amount = 0
+        for sale in self.sales:
+            if sale.state not in sale_lost_states:
+                amount += Currency.compute(sale.currency, sale.untaxed_amount,
+                    self.currency)
+        return amount
+
+    @classmethod
+    def process(cls, opportunities):
+        won = []
+        lost = []
+        converted = []
+        for opportunity in opportunities:
+            opportunity.amount = opportunity.sale_amount
+            if opportunity.is_won():
+                won.append(opportunity)
+            elif opportunity.is_lost():
+                lost.append(opportunity)
+            elif (opportunity.state in ['won', 'lost']
+                    and opportunity.sales):
+                converted.append(opportunity)
+        cls.save(opportunities)
+        if won:
+            cls.won(won)
+        if lost:
+            cls.lost(lost)
+        if converted:
+            cls.convert(converted)
+
 
 class SaleOpportunityLine(ModelSQL, ModelView):
     'Sale Opportunity Line'
@@ -368,11 +429,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     unit = fields.Many2One('product.uom', 'Unit', required=True)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
-    sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
-        states={
-            'invisible': (Eval('_parent_opportunity', {}).get('state')
-                != 'converted'),
-            })
 
     @classmethod
     def __setup__(cls):
@@ -425,8 +481,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
             sale=sale,
             description=None,
             )
-        for k, v in sale_line.on_change_product().iteritems():
-            setattr(sale_line, k, v)
+        sale_line.on_change_product()
         return sale_line
 
 
@@ -452,6 +507,12 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
     comment = fields.Text('Comment')
     lines = fields.Function(fields.One2Many('sale.opportunity.line', None,
             'Lines', datetime_field='date'), 'get_lines')
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    currency = fields.Function(fields.Many2One('currency.currency',
+            'Currency'), 'get_currency')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'get_currency_digits')
     state = fields.Selection(STATES, 'State')
     probability = fields.Integer('Conversion Probability')
     lost_reason = fields.Text('Reason for loss', states={
@@ -462,6 +523,12 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
     def __setup__(cls):
         super(SaleOpportunityHistory, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
+
+    def get_currency(self, name):
+        return self.company.currency.id
+
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
     @classmethod
     def table_query(cls):
@@ -515,14 +582,14 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         return res
 
 
-class SaleOpportunityEmployee(ModelSQL, ModelView):
-    'Sale Opportunity per Employee'
-    __name__ = 'sale.opportunity_employee'
-    employee = fields.Many2One('company.employee', 'Employee')
+class SaleOpportunityReportMixin:
     number = fields.Integer('Number')
     converted = fields.Integer('Converted')
     conversion_rate = fields.Function(fields.Float('Conversion Rate',
         help='In %'), 'get_conversion_rate')
+    won = fields.Integer('Won')
+    winning_rate = fields.Function(fields.Float('Winning Rate', help='In %'),
+        'get_winning_rate')
     lost = fields.Integer('Lost')
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -536,49 +603,33 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
             depends=['currency_digits'])
     conversion_amount_rate = fields.Function(fields.Float(
         'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
+    won_amount = fields.Numeric('Won Amount',
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    winning_amount_rate = fields.Function(fields.Float(
+            'Winning Amount Rate', help='In %'), 'get_winning_amount_rate')
 
     @staticmethod
     def _converted_state():
-        return ['converted']
+        return ['converted', 'won']
+
+    @staticmethod
+    def _won_state():
+        return ['won']
 
     @staticmethod
     def _lost_state():
         return ['lost']
 
-    @classmethod
-    def table_query(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        opportunity = Opportunity.__table__()
-        where = Literal(True)
-        if Transaction().context.get('start_date'):
-            where &= (opportunity.start_date >=
-                Transaction().context['start_date'])
-        if Transaction().context.get('end_date'):
-            where &= (opportunity.start_date <=
-                Transaction().context['end_date'])
-        return opportunity.select(
-            opportunity.employee.as_('id'),
-            Max(opportunity.create_uid).as_('create_uid'),
-            Max(opportunity.create_date).as_('create_date'),
-            Max(opportunity.write_uid).as_('write_uid'),
-            Max(opportunity.write_date).as_('write_date'),
-            opportunity.employee,
-            opportunity.company,
-            Count(Literal(1)).as_('number'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        Literal(1)), else_=Literal(0))).as_('converted'),
-            Sum(Case((opportunity.state.in_(cls._lost_state()),
-                        Literal(1)), else_=Literal(0))).as_('lost'),
-            Sum(opportunity.amount).as_('amount'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        opportunity.amount),
-                    else_=Literal(0))).as_('converted_amount'),
-            where=where,
-            group_by=(opportunity.employee, opportunity.company))
-
     def get_conversion_rate(self, name):
         if self.number:
             return float(self.converted) / self.number * 100.0
+        else:
+            return 0.0
+
+    def get_winning_rate(self, name):
+        if self.number:
+            return float(self.won) / self.number * 100.0
         else:
             return 0.0
 
@@ -593,6 +644,62 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
             return float(self.converted_amount) / float(self.amount) * 100.0
         else:
             return 0.0
+
+    def get_winning_amount_rate(self, name):
+        if self.amount:
+            return float(self.won_amount) / float(self.amount) * 100.0
+        else:
+            return 0.0
+
+    @classmethod
+    def table_query(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        opportunity = Opportunity.__table__()
+        return opportunity.select(
+            Max(opportunity.create_uid).as_('create_uid'),
+            Max(opportunity.create_date).as_('create_date'),
+            Max(opportunity.write_uid).as_('write_uid'),
+            Max(opportunity.write_date).as_('write_date'),
+            opportunity.company,
+            Count(Literal(1)).as_('number'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        Literal(1)), else_=Literal(0))).as_('converted'),
+            Sum(Case((opportunity.state.in_(cls._won_state()),
+                        Literal(1)), else_=Literal(0))).as_('won'),
+            Sum(Case((opportunity.state.in_(cls._lost_state()),
+                        Literal(1)), else_=Literal(0))).as_('lost'),
+            Sum(opportunity.amount).as_('amount'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        opportunity.amount),
+                    else_=Literal(0))).as_('converted_amount'),
+            Sum(Case((opportunity.state.in_(cls._won_state()),
+                        opportunity.amount),
+                    else_=Literal(0))).as_('won_amount'))
+
+
+class SaleOpportunityEmployee(SaleOpportunityReportMixin, ModelSQL, ModelView):
+    'Sale Opportunity per Employee'
+    __name__ = 'sale.opportunity_employee'
+    employee = fields.Many2One('company.employee', 'Employee')
+
+    @classmethod
+    def table_query(cls):
+        query = super(SaleOpportunityEmployee, cls).table_query()
+        opportunity, = query.from_
+        query.columns += (
+            opportunity.employee.as_('id'),
+            opportunity.employee,
+            )
+        where = Literal(True)
+        if Transaction().context.get('start_date'):
+            where &= (opportunity.start_date >=
+                Transaction().context['start_date'])
+        if Transaction().context.get('end_date'):
+            where &= (opportunity.start_date <=
+                Transaction().context['end_date'])
+        query.where = where
+        query.group_by = (opportunity.employee, opportunity.company)
+        return query
 
 
 class OpenSaleOpportunityEmployeeStart(ModelView):
@@ -620,30 +727,13 @@ class OpenSaleOpportunityEmployee(Wizard):
         return action, {}
 
 
-class SaleOpportunityMonthly(ModelSQL, ModelView):
+class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):
     'Sale Opportunity per Month'
     __name__ = 'sale.opportunity_monthly'
     year = fields.Char('Year')
     month = fields.Integer('Month')
     year_month = fields.Function(fields.Char('Year-Month'),
             'get_year_month')
-    number = fields.Integer('Number')
-    converted = fields.Integer('Converted')
-    conversion_rate = fields.Function(fields.Float('Conversion Rate',
-        help='In %'), 'get_conversion_rate')
-    lost = fields.Integer('Lost')
-    company = fields.Many2One('company.company', 'Company')
-    currency = fields.Function(fields.Many2One('currency.currency',
-        'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    converted_amount = fields.Numeric('Converted Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    conversion_amount_rate = fields.Function(fields.Float(
-        'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
 
     @classmethod
     def __setup__(cls):
@@ -651,90 +741,35 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
         cls._order.insert(0, ('year', 'DESC'))
         cls._order.insert(1, ('month', 'DESC'))
 
-    @staticmethod
-    def _converted_state():
-        return ['converted']
-
-    @staticmethod
-    def _lost_state():
-        return ['lost']
+    def get_year_month(self, name):
+        return '%s-%s' % (self.year, int(self.month))
 
     @classmethod
     def table_query(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        opportunity = Opportunity.__table__()
+        query = super(SaleOpportunityMonthly, cls).table_query()
+        opportunity, = query.from_
         type_id = cls.id.sql_type().base
         type_year = cls.year.sql_type().base
         year_column = Extract('YEAR', opportunity.start_date
             ).cast(type_year).as_('year')
         month_column = Extract('MONTH', opportunity.start_date).as_('month')
-        return opportunity.select(
+        query.columns += (
             Max(Extract('MONTH', opportunity.start_date)
                 + Extract('YEAR', opportunity.start_date) * 100
                 ).cast(type_id).as_('id'),
-            Max(opportunity.create_uid).as_('create_uid'),
-            Max(opportunity.create_date).as_('create_date'),
-            Max(opportunity.write_uid).as_('write_uid'),
-            Max(opportunity.write_date).as_('write_date'),
             year_column,
-            month_column,
-            opportunity.company,
-            Count(Literal(1)).as_('number'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        Literal(1)), else_=Literal(0))).as_('converted'),
-            Sum(Case((opportunity.state.in_(cls._lost_state()),
-                        Literal(1)), else_=Literal(0))).as_('lost'),
-            Sum(opportunity.amount).as_('amount'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        opportunity.amount),
-                    else_=Literal(0))).as_('converted_amount'),
-            group_by=(year_column, month_column, opportunity.company))
-
-    def get_conversion_rate(self, name):
-        if self.number:
-            return float(self.converted) / self.number * 100.0
-        else:
-            return 0.0
-
-    def get_year_month(self, name):
-        return '%s-%s' % (self.year, int(self.month))
-
-    def get_currency(self, name):
-        return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
-    def get_conversion_amount_rate(self, name):
-        if self.amount:
-            return float(self.converted_amount) / float(self.amount) * 100.0
-        else:
-            return 0.0
+            month_column)
+        query.group_by = (year_column, month_column, opportunity.company)
+        return query
 
 
-class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
+class SaleOpportunityEmployeeMonthly(
+        SaleOpportunityReportMixin, ModelSQL, ModelView):
     'Sale Opportunity per Employee per Month'
     __name__ = 'sale.opportunity_employee_monthly'
     year = fields.Char('Year')
     month = fields.Integer('Month')
     employee = fields.Many2One('company.employee', 'Employee')
-    number = fields.Integer('Number')
-    converted = fields.Integer('Converted')
-    conversion_rate = fields.Function(fields.Float('Conversion Rate',
-        help='In %'), 'get_conversion_rate')
-    lost = fields.Integer('Lost')
-    company = fields.Many2One('company.company', 'Company')
-    currency = fields.Function(fields.Many2One('currency.currency',
-        'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    converted_amount = fields.Numeric('Converted Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    conversion_amount_rate = fields.Function(fields.Float(
-        'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
 
     @classmethod
     def __setup__(cls):
@@ -743,62 +778,24 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
         cls._order.insert(1, ('month', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))
 
-    @staticmethod
-    def _converted_state():
-        return ['converted']
-
-    @staticmethod
-    def _lost_state():
-        return ['lost']
-
     @classmethod
     def table_query(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        opportunity = Opportunity.__table__()
+        query = super(SaleOpportunityEmployeeMonthly, cls).table_query()
+        opportunity, = query.from_
         type_id = cls.id.sql_type().base
         type_year = cls.year.sql_type().base
         year_column = Extract('YEAR', opportunity.start_date
             ).cast(type_year).as_('year')
         month_column = Extract('MONTH', opportunity.start_date).as_('month')
-        return opportunity.select(
+        query.columns += (
             Max(Extract('MONTH', opportunity.start_date)
                 + Extract('YEAR', opportunity.start_date) * 100
                 + opportunity.employee * 1000000
                 ).cast(type_id).as_('id'),
-            Max(opportunity.create_uid).as_('create_uid'),
-            Max(opportunity.create_date).as_('create_date'),
-            Max(opportunity.write_uid).as_('write_uid'),
-            Max(opportunity.write_date).as_('write_date'),
             year_column,
             month_column,
             opportunity.employee,
-            opportunity.company,
-            Count(Literal(1)).as_('number'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        Literal(1)), else_=Literal(0))).as_('converted'),
-            Sum(Case((opportunity.state.in_(cls._lost_state()),
-                        Literal(1)), else_=Literal(0))).as_('lost'),
-            Sum(opportunity.amount).as_('amount'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
-                        opportunity.amount),
-                    else_=Literal(0))).as_('converted_amount'),
-            group_by=(year_column, month_column, opportunity.employee,
-                opportunity.company))
-
-    def get_conversion_rate(self, name):
-        if self.number:
-            return float(self.converted) / self.number * 100.0
-        else:
-            return 0.0
-
-    def get_currency(self, name):
-        return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
-    def get_conversion_amount_rate(self, name):
-        if self.amount:
-            return float(self.converted_amount) / float(self.amount) * 100.0
-        else:
-            return 0.0
+            )
+        query.group_by = (year_column, month_column,
+            opportunity.employee, opportunity.company)
+        return query

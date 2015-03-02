@@ -29,8 +29,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="end_date"/>
             <label name="payment_term"/>
             <field name="payment_term"/>
-            <label name="sale"/>
-            <field name="sale"/>
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
             <separator name="lost_reason" colspan="4"/>
@@ -55,6 +53,9 @@ this repository contains the full copyright notices and license terms. -->
         </page>
         <page name="lines">
             <field name="lines"/>
+        </page>
+        <page name="sales">
+            <field name="sales" colspan="4"/>
         </page>
         <page name="history">
             <field name="history"/>
