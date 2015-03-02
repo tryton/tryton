@@ -171,6 +171,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
         'get_moves')
+    origin = fields.Reference('Origin', selection='get_origin', select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
 
     @classmethod
     def __setup__(cls):
@@ -585,6 +590,20 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.write([self], {
                     'shipment_state': state,
                     })
+
+    @classmethod
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def validate(cls, sales):
