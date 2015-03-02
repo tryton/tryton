@@ -725,7 +725,7 @@
                      this.current_view.view_type == 'graph')) {
                 prm = this.switch_view('form');
             }
-            prm.done(function() {
+            return prm.then(function() {
                 var group;
                 if (this.current_record) {
                     group = this.current_record.group;
@@ -737,6 +737,7 @@
                 this.set_current_record(record);
                 this.display();
                 // TODO set_cursor
+                return record;
             }.bind(this));
         },
         new_model_position: function() {

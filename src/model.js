@@ -636,7 +636,10 @@
                     // TODO
                     return values;
                 };
-                prm = prm.pipe(force_parent).done(this.set_default.bind(this));
+                prm = prm.pipe(force_parent).then(function(values) {
+                    this.set_default(values);
+                    return values;
+                }.bind(this));
             } else {
                 prm = jQuery.when();
             }

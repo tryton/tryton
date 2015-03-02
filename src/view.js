@@ -2848,25 +2848,103 @@
                 return;
             }
             this.validate().done(function() {
-                var context = jQuery.extend({},
-                        this.field().get_context(this.record()));
-                // TODO sequence
-                if (this.screen.current_view.type == 'form' ||
-                        this.screen.current_view.editable) {
-                    this.screen.new_();
-                    this.screen.current_view.el.prop('disabled', false);
+                if (this.attributes.product) {
+                    this.new_product();
                 } else {
-                    var record = this.record();
-                    var field_size = record.expr_eval(
-                        this.attributes.size) || -1;
-                    field_size -= this.field().get_eval(record);
-                    var win = new Sao.Window.Form(this.screen, function() {}, {
-                        new_: true,
-                        many: field_size,
-                        context: context
-                    });
+                    this.new_single();
                 }
             }.bind(this));
+        },
+        new_single: function() {
+            var context = jQuery.extend({},
+                    this.field().get_context(this.record()));
+            // TODO sequence
+            if (this.screen.current_view.type == 'form' ||
+                    this.screen.current_view.editable) {
+                this.screen.new_();
+                this.screen.current_view.el.prop('disabled', false);
+            } else {
+                var record = this.record();
+                var field_size = record.expr_eval(
+                    this.attributes.size) || -1;
+                field_size -= this.field().get_eval(record);
+                var win = new Sao.Window.Form(this.screen, function() {}, {
+                    new_: true,
+                    many: field_size,
+                    context: context
+                });
+            }
+        },
+        new_product: function() {
+            var fields = this.attributes.product.split(',');
+            var product = {};
+            var screen = this.screen;
+
+            screen.new_(false).then(function(first) {
+                first.default_get().then(function(default_) {
+                    first.set_default(default_);
+
+                    var search_set = function() {
+                        if (jQuery.isEmptyObject(fields)) {
+                            return make_product();
+                        }
+                        var field = screen.model.fields[fields.pop()];
+                        var relation = field.description.relation;
+                        if (!relation) {
+                            search_set();
+                        }
+
+                        var domain = field.get_domain(first);
+                        var context = field.get_context(first);
+
+                        var callback = function(result) {
+                            if (!jQuery.isEmptyObject(result)) {
+                                product[field.name] = result;
+                            }
+                            search_set();
+                        };
+                        var win_search = new Sao.Window.Search(relation,
+                                callback, {
+                                    sel_multi: true,
+                                    context: context,
+                                    domain: domain,
+                                    search_filter: ''
+                        });
+                    };
+
+                    var make_product = function() {
+                        if (jQuery.isEmptyObject(product)) {
+                            screen.group.remove(first, true);
+                            return;
+                        }
+
+                        var fields = Object.keys(product);
+                        var values = fields.map(function(field) {
+                            return product[field];
+                        });
+                        Sao.common.product(values).forEach(function(values) {
+                            var set_default = function(record) {
+                                var default_value = jQuery.extend({}, default_);
+                                fields.forEach(function(field, i) {
+                                    default_value[field] = values[i][0];
+                                    default_value[field + '.rec_name'] = values[i][1];
+                                });
+                                record.set_default(default_value);
+                            };
+
+                            var record;
+                            if (first) {
+                                set_default(first);
+                                first = null;
+                            } else {
+                                screen.new_(false).then(set_default);
+                            }
+                        });
+                    };
+
+                    search_set();
+                });
+            });
         },
         open: function(event_) {
             this.edit();

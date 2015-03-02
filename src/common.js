@@ -64,6 +64,28 @@
         return result;
     };
 
+    // Cartesian product
+    Sao.common.product = function(array, repeat) {
+        repeat = repeat || 1;
+        var pools = [];
+        var i = 0;
+        while (i < repeat) {
+            pools = pools.concat(array);
+            i++;
+        }
+        var result = [[]];
+        pools.forEach(function(pool) {
+            var tmp = [];
+            result.forEach(function(x) {
+                pool.forEach(function(y) {
+                    tmp.push(x.concat([y]));
+                });
+            });
+            result = tmp;
+        });
+        return result;
+    };
+
     Sao.common.selection = function(title, values, alwaysask) {
         if (alwaysask === undefined) {
             alwaysask = false;
