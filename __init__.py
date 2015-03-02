@@ -8,6 +8,7 @@ from .configuration import *
 from .period import *
 from .journal import *
 from .move import *
+from .move_template import *
 from .tax import *
 from .party import *
 
@@ -44,6 +45,12 @@ def register():
         Move,
         Reconciliation,
         Line,
+        MoveTemplate,
+        MoveTemplateKeyword,
+        MoveLineTemplate,
+        TaxLineTemplate,
+        CreateMoveTemplate,
+        CreateMoveKeywords,
         OpenJournalAsk,
         ReconcileLinesWriteOff,
         ReconcileShow,
@@ -92,6 +99,7 @@ def register():
         Reconcile,
         CancelMoves,
         PrintGeneralJournal,
+        CreateMove,
         OpenChartTaxCode,
         OpenTaxCode,
         module='account', type_='wizard')

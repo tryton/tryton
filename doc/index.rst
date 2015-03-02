@@ -246,3 +246,58 @@ counterparts except that they are not linked to a company. Two wizard
 from Template*) allow to create and update the accounts from the
 account templates (and consequently all other models associated to
 templates).
+
+Move Template
+*************
+
+A move template allows to configure predefined moves. A Move Template is
+defined by the following fields:
+
+- Name
+- Company
+- Keywords: The list of keywords used in the template.
+- Journal
+- Date: The date of the move. It must be leaved empty for today.
+- Description: The description of the move. The keyword values can be
+  substituted using the name surrounded by braces ('{' and '}').
+- Lines: The list of template lines.
+- Active
+
+A wizard to create moved base on templates is available in the *Entries* menu.
+The templates are also available as actions when opening a journal.
+
+Move Template Keywords
+**********************
+
+The keywords define the values asked to user to create the move based on the
+template. The fields are:
+
+- Name
+- String: The label used in the wizard form.
+- Sequence: The sequence used to order the fields in the wizard form.
+- Type:
+
+  - *Char*
+  - *Numeric*
+  - *Date*
+  - *Party*
+
+- Required
+- Digits: Only for numeric keyword.
+
+Move Line Template
+******************
+
+- Operation: *Debit* or *Credit*
+- Amount: An expression that can use any keywords to compute the amount.
+- Account
+- Party: Only for account that requires a party.
+- Description
+- Taxes: The list of template tax lines
+
+Tax Line Template
+*****************
+
+- Amount: An expression that can use any keywords to compute the amount.
+- Code: The tax code to use.
+- Tax

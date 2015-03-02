@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Account Move Template">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <notebook>
+        <page string="Template" id="template">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+            <label name="journal"/>
+            <field name="journal"/>
+            <label name="date"/>
+            <field name="date"/>
+            <label name="description"/>
+            <field name="description" colspan="3"/>
+            <field name="lines" colspan="4"/>
+        </page>
+        <page name="keywords">
+            <field name="keywords" colspan="4"
+                view_ids="account.move_template_keyword_view_list_sequence"/>
+        </page>
+    </notebook>
+</form>

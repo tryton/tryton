@@ -1437,6 +1437,34 @@ class Line(ModelSQL, ModelView):
         return value + ': ' + journal_period.rec_name
 
     @classmethod
+    def view_toolbar_get(cls):
+        pool = Pool()
+        Template = pool.get('account.move.template')
+
+        toolbar = super(Line, cls).view_toolbar_get()
+
+        # Add a wizard entry for each templates
+        context = Transaction().context
+        company = context.get('company')
+        journal = context.get('journal')
+        period = context.get('period')
+        if company and journal and period:
+            templates = Template.search([
+                    ('company', '=', company),
+                    ('journal', '=', journal),
+                    ])
+            for template in templates:
+                action = toolbar['action']
+                # Use template id for action id to auto-select the template
+                action.append({
+                        'name': template.name,
+                        'type': 'ir.action.wizard',
+                        'wiz_name': 'account.move.template.create',
+                        'id': template.id,
+                        })
+        return toolbar
+
+    @classmethod
     def fields_view_get(cls, view_id=None, view_type='form'):
         Journal = Pool().get('account.journal')
         result = super(Line, cls).fields_view_get(view_id=view_id,
