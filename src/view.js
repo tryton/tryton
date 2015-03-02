@@ -3154,27 +3154,26 @@
                             '').split(','),
                         views_preload: this.attributes.views || {},
                         new_: this.attributes.create,
-                        search_filter: parser.quote(text)
+                        search_filter: parser.quote(value)
                     });
         },
         remove: function() {
             this.screen.remove(false, true, false);
         },
         key_press: function(event_) {
-            var editable = true; // TODO compute editable
             var activate_keys = [Sao.common.TAB_KEYCODE];
             if (!this.wid_completion) {
                 activate_keys.push(Sao.common.RETURN_KEYCODE);
             }
 
             if (event_.which == Sao.common.F3_KEYCODE) {
+                this.new_();
+                event_.preventDefault();
+            } else if (event_.which == Sao.common.F2_KEYCODE) {
                 this.add();
                 event_.preventDefault();
-            } else if (~activate_keys.indexOf(event_.which) && editable) {
-                if (this.entry.val()) {
-                    this.add();
-                }
-
+            } else if (~activate_keys.indexOf(event_.which) && this.entry.val()) {
+                this.add();
             }
         },
         edit: function() {
@@ -3189,12 +3188,14 @@
             if (!jQuery.isEmptyObject(add_remove)) {
                 domain = [domain, add_remove];
             }
+            var context = this.field().get_context(this.record());
             var screen = new Sao.Screen(this.attributes.relation, {
                 'domain': domain,
-                //'view_ids': (this.attributes.view_ids || '').split(','),
+                'view_ids': (this.attributes.view_ids || '').split(','),
                 'mode': ['form'],
-                //'views_preload': this.attributes.views
-                readonly: this.attributes.readonly || false
+                'views_preload': this.attributes.views,
+                'readonly': this.attributes.readonly || false,
+                'context': context
             });
             screen.new_group([this.screen.current_record.id]);
             var callback = function(result) {
@@ -3204,8 +3205,40 @@
                         this.screen.current_record.cancel();
                     }.bind(this));
                 }
-            };
-            var win = new Sao.Window.Form(screen, callback.bind(this));
+            }.bind(this);
+            screen.switch_view().done(function() {
+                new Sao.Window.Form(screen, callback);
+            });
+        },
+        new_: function() {
+            var domain = this.field().get_domain(this.record());
+            var add_remove = this.record().expr_eval(
+                    this.attributes.add_remove);
+            if (!jQuery.isEmptyObject(add_remove)) {
+                domain = [domain, add_remove];
+            }
+            var context = this.field().get_context(this.record());
+
+            var screen = new Sao.Screen(this.attributes.relation, {
+                'domain': domain,
+                'view_ids': (this.attributes.view_ids || '').split(','),
+                'mode': ['form'],
+                'views_preload': this.attributes.views,
+                'context': context
+            });
+            var callback = function(result) {
+                if (result) {
+                    var record = screen.current_record;
+                    this.screen.group.load([record.id], true);
+                }
+                this.entry.val('');
+            }.bind(this);
+            screen.switch_view().done(function() {
+                new Sao.Window.Form(screen, callback, {
+                    'new_': true,
+                    'save_current': true
+                });
+            });
         }
     });
 
