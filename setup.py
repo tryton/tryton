@@ -95,6 +95,7 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
