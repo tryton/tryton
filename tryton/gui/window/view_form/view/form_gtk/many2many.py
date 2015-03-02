@@ -230,6 +230,7 @@ class Many2Many(Widget):
     def _readonly_set(self, value):
         self._readonly = value
         self._set_button_sensitive()
+        self.wid_text.set_sensitive(not value)
 
     def _set_button_sensitive(self):
         if self.record and self.field:
@@ -240,7 +241,6 @@ class Many2Many(Widget):
         else:
             size_limit = False
 
-        self.wid_text.set_sensitive(not self._readonly)
         self.but_add.set_sensitive(bool(
                 not self._readonly
                 and not size_limit))
