@@ -224,6 +224,9 @@ Display a field of the object with the value of the current record.
     * ``view_ids``: A comma separated list that specifies the view ids used to
       display the relation.
 
+    * ``product``: Only for One2Many fields, a comma separated list of target
+      field name used to create records from the cartesian product.
+
     * ``completion``: Only for Many2One fields, it is a boolean to set the
       completion of the field.
 

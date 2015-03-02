@@ -1,3 +1,4 @@
+* Add product attribute on form view for One2Many
 * Remove float_time widget
 * Add TimeDelta field
 * search_global yields record instead of id

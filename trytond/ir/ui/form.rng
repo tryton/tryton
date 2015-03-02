@@ -287,6 +287,11 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
+      <attribute name="product"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
       <attribute name="invisible" a:defaultValue="0">
         <choice>
           <value>0</value>
