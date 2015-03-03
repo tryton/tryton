@@ -82,7 +82,7 @@ class CAMT054(SEPAHandler):
         tag = etree.QName(element)
         date = element.find('./{%(ns)s}ValDt/{%(ns)s}Dt'
             % {'ns': tag.namespace})
-        if date:
+        if date is not None:
             return parse(date.text)
         else:
             datetime = element.find('./{%(ns)s}ValDt/{%(ns)s}DtTm'
