@@ -23,6 +23,7 @@ except ImportError:
 from sql import Flavor, Table
 from sql.functions import (Function, Extract, Position, Now, Substring,
     Overlay, CharLength)
+from sql.conditionals import Greatest, Least
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
     'Cursor']
@@ -138,6 +139,16 @@ class SQLiteCharLength(Function):
     _function = 'LENGTH'
 
 
+class SQLiteGreatest(Greatest):
+    __slots__ = ()
+    _function = 'MAX'
+
+
+class SQLiteLeast(Least):
+    __slots__ = ()
+    _function = 'MIN'
+
+
 def sign(value):
     if value > 0:
         return 1
@@ -153,6 +164,8 @@ MAPPING = {
     Substring: SQLiteSubstring,
     Overlay: SQLiteOverlay,
     CharLength: SQLiteCharLength,
+    Greatest: SQLiteGreatest,
+    Least: SQLiteLeast,
     }
 
 
