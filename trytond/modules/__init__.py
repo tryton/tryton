@@ -229,7 +229,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 module2state[child.name] = package_state
             for type in classes.keys():
                 for cls in classes[type]:
-                    logger.info('%s:register %s' % (module, cls.__name__))
+                    logger.info('%s:register %s', module, cls.__name__)
                     cls.__register__(module)
             for model in classes['model']:
                 if hasattr(model, '_history'):
@@ -241,7 +241,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
             for filename in package.info.get('xml', []):
                 filename = filename.replace('/', os.sep)
-                logger.info('%s:loading %s' % (module, filename))
+                logger.info('%s:loading %s', module, filename)
                 # Feed the parser with xml content:
                 with tools.file_open(OPJ(module, filename)) as fp:
                     tryton_parser.parse_xmlstream(fp)
@@ -254,8 +254,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 lang2 = os.path.splitext(os.path.basename(filename))[0]
                 if lang2 not in lang:
                     continue
-                logger.info('%s:loading %s' % (module,
-                        filename[len(package.info['directory']) + 1:]))
+                logger.info('%s:loading %s', module,
+                    filename[len(package.info['directory']) + 1:])
                 Translation = pool.get('ir.translation')
                 Translation.translation_import(lang2, module, filename)
 
@@ -279,7 +279,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
     for model_name in models_to_update_history:
         model = pool.get(model_name)
         if model._history:
-            logger.info('history:update %s' % model.__name__)
+            logger.info('history:update %s', model.__name__)
             model._update_history_table()
 
     # Vacuum :
@@ -322,7 +322,7 @@ def register_classes():
 
     for package in create_graph(get_module_list())[0]:
         module = package.name
-        logger.info('%s:registering classes' % module)
+        logger.info('%s:registering classes', module)
 
         if module in ('ir', 'res', 'webdav', 'tests'):
             MODULES.append(module)

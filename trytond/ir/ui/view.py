@@ -141,8 +141,8 @@ class View(ModelSQL, ModelView):
                 if not validator.validate(tree):
                     error_log = reduce(lambda x, y: str(x) + '\n' + str(y),
                             validator.error_log.filter_from_errors())
-                    logger.error('Invalid xml view:\n%s'
-                        % (str(error_log) + '\n' + xml))
+                    logger.error('Invalid xml view:\n%s',
+                        str(error_log) + '\n' + xml)
                     cls.raise_user_error('invalid_xml', (view.rec_name,))
             root_element = tree.getroottree().getroot()
 
@@ -159,9 +159,9 @@ class View(ModelSQL, ModelView):
                             validates.get(attr, lambda a: True)(value)
                         except Exception, e:
                             logger.error('Invalid pyson view element "%s:%s":'
-                                '\n%s\n%s'
-                                % (element.get('id') or element.get('name'),
-                                    attr, str(e), xml))
+                                '\n%s\n%s',
+                                element.get('id') or element.get('name'), attr,
+                                str(e), xml)
                             return False
                 for child in element:
                     if not encode(child):

@@ -151,7 +151,7 @@ class Cron(ModelSQL, ModelView):
                 server.quit()
             except Exception:
                 logger.error('Unable to deliver email:\n %s',
-                    (msg.as_string(),), exc_info=True)
+                    msg.as_string(), exc_info=True)
 
     @classmethod
     def _callback(cls, cron):
@@ -203,4 +203,4 @@ class Cron(ModelSQL, ModelView):
                     transaction.cursor.commit()
                 except Exception:
                     transaction.cursor.rollback()
-                    logger.error('Running cron %s', (cron.id,), exc_info=True)
+                    logger.error('Running cron %s', cron.id, exc_info=True)

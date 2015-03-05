@@ -133,9 +133,9 @@ class TrytonDAVInterface(iface.dav_interface):
         if isinstance(exception, (NotLogged, ConcurrencyException, UserError,
                     UserWarning, DAV_Error, DAV_NotFound, DAV_Secret,
                     DAV_Forbidden)):
-            logger.debug('Exception %s', (exception,), exc_info=True)
+            logger.debug('Exception %s', exception, exc_info=True)
         else:
-            logger.error('Exception %s', (exception,), exc_info=True)
+            logger.error('Exception %s', exception, exc_info=True)
 
     @staticmethod
     def get_dburi(uri):

@@ -43,14 +43,14 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                 Cache.clean(database_name)
                 Cache.resets(database_name)
             msg = res and 'successful login' or 'bad login or password'
-            logger.info('%s \'%s\' from %s:%d using %s on database \'%s\''
-                % (msg, user, host, port, protocol, database_name))
+            logger.info('%s \'%s\' from %s:%d using %s on database \'%s\'',
+                msg, user, host, port, protocol, database_name)
             return res or False
         elif method == 'logout':
             name = security.logout(database_name, user, session)
-            logger.info(('logout \'%s\' from %s:%d '
-                    'using %s on database \'%s\'')
-                % (name, host, port, protocol, database_name))
+            logger.info('logout \'%s\' from %s:%d '
+                'using %s on database \'%s\'',
+                name, host, port, protocol, database_name)
             return True
         elif method == 'version':
             return VERSION
@@ -247,10 +247,10 @@ def create(database_name, password, lang, admin_password):
             transaction.cursor.commit()
             res = True
     except Exception:
-        logger.error('CREATE DB: %s failed' % database_name, exc_info=True)
+        logger.error('CREATE DB: %s failed', database_name, exc_info=True)
         raise
     else:
-        logger.info('CREATE DB: %s' % (database_name,))
+        logger.info('CREATE DB: %s', database_name)
     return res
 
 
@@ -268,10 +268,10 @@ def drop(database_name, password):
             Database.drop(cursor, database_name)
             cursor.commit()
         except Exception:
-            logger.error('DROP DB: %s failed', (database_name,), exc_info=True)
+            logger.error('DROP DB: %s failed', database_name, exc_info=True)
             raise
         else:
-            logger.info('DROP DB: %s', (database_name,))
+            logger.info('DROP DB: %s', database_name)
             Pool.stop(database_name)
     return True
 
@@ -284,7 +284,7 @@ def dump(database_name, password):
     time.sleep(1)
 
     data = Database.dump(database_name)
-    logger.info('DUMP DB: %s' % (database_name))
+    logger.info('DUMP DB: %s', database_name)
     return buffer(data)
 
 
@@ -299,7 +299,7 @@ def restore(database_name, password, data, update=False):
     except Exception:
         pass
     Database.restore(database_name, data)
-    logger.info('RESTORE DB: %s' % (database_name))
+    logger.info('RESTORE DB: %s', database_name)
     if update:
         with Transaction().start(database_name, 0) as transaction:
             cursor = transaction.cursor

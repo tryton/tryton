@@ -230,8 +230,8 @@ class TableHandler(TableHandlerInterface):
                     logger.warning(
                         'Unable to migrate column %s on table %s '
                         'from %s to %s.',
-                        (column_name, self.table_name,
-                            self._columns[column_name]['typname'], base_type))
+                        column_name, self.table_name,
+                        self._columns[column_name]['typname'], base_type)
 
             if (base_type == 'varchar'
                     and self._columns[column_name]['typname'] == 'varchar'):
@@ -248,10 +248,10 @@ class TableHandler(TableHandlerInterface):
                     logger.warning(
                         'Unable to migrate column %s on table %s '
                         'from varchar(%s) to varchar(%s).',
-                        (column_name, self.table_name,
-                            self._columns[column_name]['size'] > 0 and
-                            self._columns[column_name]['size'] or "",
-                            field_size))
+                        column_name, self.table_name,
+                        self._columns[column_name]['size'] > 0 and
+                        self._columns[column_name]['size'] or "",
+                        field_size)
             return
 
         column_type = column_type[1]
@@ -360,8 +360,7 @@ class TableHandler(TableHandlerInterface):
                     'If it doesn\'t work, update records '
                     'and execute manually:\n'
                     'ALTER TABLE "%s" ALTER COLUMN "%s" SET NOT NULL',
-                    (column_name, self.table_name, self.table_name,
-                        column_name))
+                    column_name, self.table_name, self.table_name, column_name)
         elif action == 'remove':
             if not self._columns[column_name]['notnull']:
                 return
@@ -392,8 +391,8 @@ class TableHandler(TableHandlerInterface):
                 'If you want to have it, you should update the records '
                 'and execute manually:\n'
                 'ALTER table "%s" ADD CONSTRAINT "%s" %s',
-                (constraint, self.table_name, self.table_name, ident,
-                    constraint))
+                constraint, self.table_name, self.table_name, ident,
+                constraint)
         self._update_definitions()
 
     def drop_constraint(self, ident, exception=False, table=None):
@@ -409,7 +408,7 @@ class TableHandler(TableHandlerInterface):
                 raise
             logger.warning(
                 'unable to drop \'%s\' constraint on table %s!',
-                (ident, self.table_name))
+                ident, self.table_name)
         self._update_definitions()
 
     def drop_column(self, column_name, exception=False):
@@ -425,7 +424,7 @@ class TableHandler(TableHandlerInterface):
                 raise
             logger.warning(
                 'unable to drop \'%s\' column on table %s!',
-                (column_name, self.table_name), exc_info=True)
+                column_name, self.table_name, exc_info=True)
         self._update_definitions()
 
     @staticmethod

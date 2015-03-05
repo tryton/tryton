@@ -26,6 +26,8 @@ from sql import Flavor
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
     'Cursor']
 
+logger = logging.getLogger(__name__)
+
 RE_VERSION = re.compile(r'\S+ (\d+)\.(\d+)')
 
 os.environ['PGTZ'] = os.environ.get('TZ', '')
@@ -52,8 +54,7 @@ class Database(DatabaseInterface):
     def connect(self):
         if self._connpool is not None:
             return self
-        logger = logging.getLogger('database')
-        logger.info('connect to "%s"' % self.database_name)
+        logger.info('connect to "%s"', self.database_name)
         uri = parse_uri(config.get('database', 'uri'))
         assert uri.scheme == 'postgresql'
         host = uri.hostname and "host=%s" % uri.hostname or ''

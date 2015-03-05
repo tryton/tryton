@@ -670,7 +670,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     logger.warning(
                         "Field %s of %s@%s not updated (id: %s), because "
                         "it has changed since the last update",
-                        (key, record.id, model, fs_id))
+                        key, record.id, model, fs_id)
                     continue
 
                 # so, the field in the fs and in the db are different,
@@ -794,7 +794,7 @@ def post_import(pool, module, to_delete):
     for mrec in mdata:
         model, db_id = mrec.model, mrec.db_id
 
-        logger.info('Deleting %s@%s', (db_id, model))
+        logger.info('Deleting %s@%s', db_id, model)
         try:
             # Deletion of the record
             try:
@@ -807,7 +807,7 @@ def post_import(pool, module, to_delete):
             else:
                 logger.warning(
                     'Could not delete id %d of model %s because model no '
-                    'longer exists.', (db_id, model))
+                    'longer exists.', db_id, model)
             cursor.commit()
         except Exception:
             cursor.rollback()
@@ -817,7 +817,7 @@ def post_import(pool, module, to_delete):
                 'that points to this resource\n'
                 'You should manually fix this '
                 'and restart --update=module\n',
-                (db_id, model), exc_info=True)
+                db_id, model, exc_info=True)
             if 'active' in Model._fields:
                 Model.write([Model(db_id)], {
                         'active': False,
