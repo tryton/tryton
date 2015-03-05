@@ -1,2 +1,0 @@
-- Change code rules on taxes to use a one2many instead of fixed fields
-- Add a sequence on tax code
