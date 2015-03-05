@@ -78,8 +78,10 @@ The following snippet gives a first idea of what an xml file looks:
           <record model="res.group" id="group_party_admin">
               <field name="name">Party Administration</field>
           </record>
-          <record model="res.user" id="res.user_admin">
-              <field name="groups" eval="[('add', ref('group_party_admin'))]"/>
+          <record model="res.user-res.group"
+              id="user_admin_group_party_admin">
+              <field name="user" ref="res.user_admin"/>
+              <field name="group" ref="group_party_admin"/>
           </record>
 
           <menuitem name="Party Management" sequence="0" id="menu_party"
@@ -88,7 +90,7 @@ The following snippet gives a first idea of what an xml file looks:
           <record model="ir.ui.view" id="party_view_tree">
               <field name="model">party.party</field>
               <field name="type">tree</field>
-              <field name="arch" type="xml">
+              <field name="arch">
                   <![CDATA[
                   <tree string="Parties">
                       <field name="code"/>
@@ -136,8 +138,6 @@ Here is the list of the tags:
           an ending dot, if the record is defined in an other module.
 
         * ``eval``: Python code to evaluate and use result as value.
-
-        * ``type``: If set to xml, it will use the CDATA content as value.
 
         .. note::
             Field content is considered as a string. So for fields that require
