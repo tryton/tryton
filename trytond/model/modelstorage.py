@@ -365,7 +365,10 @@ class ModelStorage(Model):
             fields_names = cls._fields.keys()
         if 'id' not in fields_names:
             fields_names.append('id')
-        return cls.read(map(int, records), fields_names)
+        rows = cls.read(map(int, records), fields_names)
+        index = {r.id: i for i, r in enumerate(records)}
+        rows.sort(key=lambda r: index[r['id']])
+        return rows
 
     @classmethod
     def _search_domain_active(cls, domain, active_test=True):
