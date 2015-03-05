@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
 from decimal import Decimal
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval
 
 __all__ = ['Sale', 'SaleLine',
     'SaleExtra', 'SaleExtraLine']
