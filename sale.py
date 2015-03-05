@@ -392,7 +392,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             self.shipment_address = self.party.address_get(type='delivery')
-            self.payment_term = self.party.customer_payment_term
+            if self.party.customer_payment_term:
+                self.payment_term = self.party.customer_payment_term
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
