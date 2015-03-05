@@ -199,21 +199,6 @@ class ModuleTestCase(unittest.TestCase):
                     })
 
 
-class IrTestCase(ModuleTestCase):
-    'Test ir module'
-    module = 'ir'
-
-
-class ResTestCase(ModuleTestCase):
-    'Test res module'
-    module = 'res'
-
-
-class WebDAVTestCase(ModuleTestCase):
-    'Test webdav module'
-    module = 'webdav'
-
-
 def db_exist():
     Database = backend.get('Database')
     database = Database().connect()
@@ -254,8 +239,6 @@ def all_suite(modules=None):
     Return all tests suite of current module
     '''
     suite_ = suite()
-    for case in [IrTestCase, ResTestCase, WebDAVTestCase]:
-        suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(case))
     for fn in os.listdir(os.path.dirname(__file__)):
         if fn.startswith('test_') and fn.endswith('.py'):
             if modules and fn[:-3] not in modules:
