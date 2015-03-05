@@ -101,6 +101,7 @@ def register():
         BinaryRequired,
         Singleton,
         URLObject,
+        ModelStorage,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
         Model4Union1,

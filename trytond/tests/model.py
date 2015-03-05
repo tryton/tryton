@@ -3,7 +3,9 @@
 from trytond.model import ModelSingleton, ModelSQL, UnionMixin, fields
 
 __all__ = [
-    'Singleton', 'URLObject', 'ModelSQLRequiredField', 'ModelSQLTimestamp',
+    'Singleton', 'URLObject',
+    'ModelStorage',
+    'ModelSQLRequiredField', 'ModelSQLTimestamp',
     'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
     'Union', 'UnionUnion',
     'Model4UnionTree1', 'Model4UnionTree2', 'UnionTree',
@@ -23,6 +25,12 @@ class Singleton(ModelSingleton, ModelSQL):
 class URLObject(ModelSQL):
     'URLObject'
     __name__ = 'test.urlobject'
+    name = fields.Char('Name')
+
+
+class ModelStorage(ModelSQL):
+    'Model stored'
+    __name__ = 'test.modelstorage'
     name = fields.Char('Name')
 
 
