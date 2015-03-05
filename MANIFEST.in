@@ -2,7 +2,6 @@ include LICENSE
 include COPYRIGHT
 include README
 include INSTALL
-include TODO
 include CHANGELOG
 include doc/*
 recursive-include doc *.rst
