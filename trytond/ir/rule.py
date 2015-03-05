@@ -92,7 +92,6 @@ class RuleGroup(ModelSQL, ModelView):
 class Rule(ModelSQL, ModelView):
     "Rule"
     __name__ = 'ir.rule'
-    _rec_name = 'field'
     rule_group = fields.Many2One('ir.rule.group', 'Group', select=True,
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,

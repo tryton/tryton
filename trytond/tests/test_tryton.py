@@ -72,6 +72,21 @@ class ModuleTestCase(unittest.TestCase):
     def setUp(self):
         install_module(self.module)
 
+    def test_rec_name(self):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for mname, model in Pool().iterobject():
+                # Don't test model not registered by the module
+                if not any(issubclass(model, cls) for cls in
+                        Pool().classes['model'].get(self.module, [])):
+                    continue
+                # Skip testing default value even if the field doesn't exist
+                # as there is a fallback to id
+                if model._rec_name == 'name':
+                    continue
+                assert model._rec_name in model._fields, (
+                    'Wrong _rec_name "%s" for %s'
+                    % (model._rec_name, mname))
+
     def test_view(self):
         'Test validity of all views of the module'
         with Transaction().start(DB_NAME, USER,
