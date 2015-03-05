@@ -340,7 +340,9 @@ class Production(Workflow, ModelSQL, ModelView):
             else:
                 cost_price = input_.product.cost_price
             cost += (Decimal(str(input_.internal_quantity)) * cost_price)
-        return cost
+
+        digits = self.__class__.cost.digits
+        return cost.quantize(Decimal(str(10 ** -digits[1])))
 
     @fields.depends('inputs')
     def on_change_with_cost(self):
