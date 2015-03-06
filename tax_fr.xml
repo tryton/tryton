@@ -509,9 +509,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.code.template" id="tax_code_0031">
-            <field name="name">Acquisitions intracommunautaires</field>
-            <field name="code">0031</field>
+        <record model="account.tax.code.template" id="tax_code_0035">
+            <field name="name">TVA sur acquisitions intracommunautaires</field>
+            <field name="code">0035</field>
             <field name="parent" ref="tax_code_imposables"/>
             <field name="account" ref="root"/>
         </record>
@@ -519,7 +519,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="tax_code_0982">
             <field name="name">dont TVA sur immobilisations</field>
             <field name="code">0982</field>
-            <field name="parent" ref="tax_code_0031"/>
+            <field name="parent" ref="tax_code_0035"/>
             <field name="account" ref="root"/>
         </record>
 
@@ -1576,9 +1576,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
+        <!--
+        The logic behind the three sub-taxes for each EU-purchase taxe is
+        the following:
+        - the "(1)" variant registers the VAT which is deductible (like
+          a normal purchase). It's recorded in the account 44566 (TVA déductible
+          sur autres biens et services), and it's recorded in field
+          0702 of the VAT report. The base amount is not recorded anywhere.
+        - the "(2)" variant registers the "collected VAT" that we
+          need to auto-declare to compensate for the deductible VAT.
+          It's recorded in the account 4452 (TVA due intracommunautaire)
+          and in the fields 0207/0206/0151/0150/0201/0100 (depending on the rate)
+          of the VAT report (together with the base amount in the matching "*b" tax
+          codes).
+        - the "(3)" variant is there only to record the base amount in
+          the fields 0031 (Acquisitions intracommunautaires) and the tax
+          amount in 0035. 0035 is actually a subset of amounts recorded
+          in the tax codes used in the "(2)" variant (which are shared
+          with national purchases). A credit note just cancels the
+          registration of the base amount in 0031 but leaves the rest
+          unchanged.
+        - the "(4)" variant is only there to work-around
+          https://bugs.tryton.org/issue4565 and the fact that we have to
+          associate an account to "(3)" which will generate a move that we
+          want to cancel...
+        -->
         <record model="account.tax.template"
-            id="tva_achat_intracommunautaire_taux_normal">
-            <field name="name">T.V.A. Achat Intracommunautaire Taux Normal</field>
+            id="tva_achat_intracommunautaire_biens_taux_normal">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens Taux Normal</field>
             <field name="description">T.V.A. Taux Normal</field>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="rate" eval="None"/>
@@ -1595,37 +1620,66 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.template"
-            id="tva_achat_intracommunautaire_20">
-            <field name="name">T.V.A. Achat Intracommunautaire 20%</field>
+            id="tva_achat_intracommunautaire_biens_20">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 20%</field>
             <field name="description">T.V.A. 20%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_taux_normal"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_normal"/>
             <field name="start_date">2014-01-01</field>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.template"
-            id="tva_achat_intracommunautaire_20_1">
-            <field name="name">T.V.A. Achat Intracommunautaire 20% (1)</field>
+            id="tva_achat_intracommunautaire_biens_20_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 20% (1)</field>
             <field name="description">T.V.A. 20%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_20"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_20"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
-            <field name="invoice_base_code" ref="tax_code_0033"/>
+            <field name="invoice_base_code" eval="None"/>
             <field name="invoice_tax_code" ref="tax_code_0702"/>
-            <field name="credit_note_base_code" ref="tax_code_0033"/>
+            <field name="credit_note_base_code" eval="None"/>
             <field name="credit_note_base_sign" eval="Decimal('-1')"/>
-            <field name="credit_note_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_tax_code" eval="None"/>
             <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.template"
-            id="tva_achat_intracommunautaire_20_2">
-            <field name="name">T.V.A. Achat Intracommunautaire 20% (2)</field>
+            id="tva_achat_intracommunautaire_biens_20_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 20% (2)</field>
             <field name="description">T.V.A. 20%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_20"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_20"/>
+            <field name="rate" eval="-Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0207b"/>
+            <field name="invoice_tax_code" ref="tax_code_0207"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template"
+            id="tva_achat_intracommunautaire_biens_20_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 20% (3)</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_20"/>
+            <field name="rate" eval="Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template"
+            id="tva_achat_intracommunautaire_biens_20_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 20% (4)</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_20"/>
             <field name="rate" eval="-Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
@@ -1633,35 +1687,62 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_19_6">
-            <field name="name">T.V.A. Achat Intracommunautaire 19,6%</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_19_6">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_taux_normal"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_normal"/>
             <field name="end_date">2013-12-31</field>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_19_6_1">
-            <field name="name">T.V.A. Achat Intracommunautaire 19,6% (1)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_19_6_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6% (1)</field>
             <field name="description">T.V.A. 19,6%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_19_6"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_19_6"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
-            <field name="invoice_base_code" ref="tax_code_0033"/>
+            <field name="invoice_base_code" eval="None"/>
             <field name="invoice_tax_code" ref="tax_code_0702"/>
-            <field name="credit_note_base_code" ref="tax_code_0033"/>
+            <field name="credit_note_base_code" eval="None"/>
             <field name="credit_note_base_sign" eval="Decimal('-1')"/>
-            <field name="credit_note_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_tax_code" eval="None"/>
             <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_19_6_2">
-            <field name="name">T.V.A. Achat Intracommunautaire 19,6% (2)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_19_6_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6% (2)</field>
             <field name="description">T.V.A. 19,6%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_19_6"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_19_6"/>
+            <field name="rate" eval="-Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0206b"/>
+            <field name="invoice_tax_code" ref="tax_code_0206"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_19_6_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6% (3)</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_19_6"/>
+            <field name="rate" eval="Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_19_6_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6% (4)</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_19_6"/>
             <field name="rate" eval="-Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
@@ -1669,33 +1750,203 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_5_5">
-            <field name="name">T.V.A. Achat Intracommunautaire 5,5%</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_taux_intermediaire">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens Taux Intermédiaire</field>
+            <field name="description">T.V.A. Taux Intermédiaire</field>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="None"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_10">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 10%</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_intermediaire"/>
+            <field name="start_date">2014-01-01</field>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_10_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 10% (1)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_10"/>
+            <field name="rate" eval="Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_10_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 10% (2)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_10"/>
+            <field name="rate" eval="-Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0151b"/>
+            <field name="invoice_tax_code" ref="tax_code_0151"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_10_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 10% (3)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_10"/>
+            <field name="rate" eval="Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_10_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 10% (4)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_10"/>
+            <field name="rate" eval="-Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_7">
+            <field name="name">T.V.A. Achat intracommunautaire de biens 7%</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_intermediaire"/>
+            <field name="end_date">2013-12-31</field>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_7_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 7% (1)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_7"/>
+            <field name="rate" eval="Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_7_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 7% (2)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_7"/>
+            <field name="rate" eval="-Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0151b"/>
+            <field name="invoice_tax_code" ref="tax_code_0151"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_7_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 7% (3)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_7"/>
+            <field name="rate" eval="Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_7_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 7% (4)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_7"/>
+            <field name="rate" eval="-Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_5_5">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 5,5%</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_5_5_1">
-            <field name="name">T.V.A. Achat Intracommunautaire 5,5% (1)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_5_5_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 5,5% (1)</field>
             <field name="description">T.V.A. 5,5%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_5_5"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_5_5"/>
             <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
-            <field name="invoice_base_code" ref="tax_code_0033"/>
+            <field name="invoice_base_code" eval="None"/>
             <field name="invoice_tax_code" ref="tax_code_0702"/>
-            <field name="credit_note_base_code" ref="tax_code_0033"/>
+            <field name="credit_note_base_code" eval="None"/>
             <field name="credit_note_base_sign" eval="Decimal('-1')"/>
-            <field name="credit_note_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_tax_code" eval="None"/>
             <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_5_5_2">
-            <field name="name">T.V.A. Achat Intracommunautaire 5,5% (2)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_5_5_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 5,5% (2)</field>
             <field name="description">T.V.A. 5,5%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_5_5"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_5_5"/>
+            <field name="rate" eval="-Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0105b"/>
+            <field name="invoice_tax_code" ref="tax_code_0105"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_5_5_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 5,5% (3)</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_5_5"/>
+            <field name="rate" eval="Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_5_5_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 5,5% (4)</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_5_5"/>
             <field name="rate" eval="-Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
@@ -1703,38 +1954,125 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_2_1">
-            <field name="name">T.V.A. Achat Intracommunautaire 2,1%</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_2_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 2,1%</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_2_1_1">
-            <field name="name">T.V.A. Achat Intracommunautaire 2,1% (1)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_2_1_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 2,1% (1)</field>
             <field name="description">T.V.A. 2,1%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_2_1"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_2_1"/>
             <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
-            <field name="invoice_base_code" ref="tax_code_0033"/>
+            <field name="invoice_base_code" eval="None"/>
             <field name="invoice_tax_code" ref="tax_code_0702"/>
-            <field name="credit_note_base_code" ref="tax_code_0033"/>
+            <field name="credit_note_base_code" eval="None"/>
             <field name="credit_note_base_sign" eval="Decimal('-1')"/>
-            <field name="credit_note_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_tax_code" eval="None"/>
             <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
             <field name="account" ref="root"/>
         </record>
-        <record model="account.tax.template" id="tva_achat_intracommunautaire_2_1_2">
-            <field name="name">T.V.A. Achat Intracommunautaire 2,1% (2)</field>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_2_1_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 2,1% (2)</field>
             <field name="description">T.V.A. 2,1%</field>
-            <field name="parent" ref="tva_achat_intracommunautaire_2_1"/>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_2_1"/>
             <field name="rate" eval="-Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0100b"/>
+            <field name="invoice_tax_code" ref="tax_code_0100"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_2_1_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 2,1% (3)</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_2_1"/>
+            <field name="rate" eval="Decimal('.021')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_2_1_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 2,1% (4)</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_2_1"/>
+            <field name="rate" eval="-Decimal('.021')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_8_5">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 8,5%</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_8_5_1">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 8,5% (1)</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_8_5"/>
+            <field name="rate" eval="Decimal('.085')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="invoice_base_code" eval="None"/>
             <field name="invoice_tax_code" ref="tax_code_0702"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_8_5_2">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 8,5% (2)</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_8_5"/>
+            <field name="rate" eval="-Decimal('.085')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0201b"/>
+            <field name="invoice_tax_code" ref="tax_code_0201"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_8_5_3">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 8,5% (3)</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_8_5"/>
+            <field name="rate" eval="Decimal('.085')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="invoice_base_code" ref="tax_code_0031b"/>
+            <field name="invoice_tax_code" ref="tax_code_0035"/>
+            <field name="credit_note_base_code" ref="tax_code_0031b"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_intracommunautaire_biens_8_5_4">
+            <field name="name">T.V.A. Achat Intracommunautaire de biens 8,5% (4)</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="parent" ref="tva_achat_intracommunautaire_biens_8_5"/>
+            <field name="rate" eval="-Decimal('.085')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
             <field name="account" ref="root"/>
         </record>
 
