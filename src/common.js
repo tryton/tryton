@@ -548,7 +548,7 @@
     };
     Sao.common.selection_mixin.update_selection = function(record, field,
             callback) {
-        var _update_selection = function(record, field, callback) {
+        var _update_selection = function() {
             if (!field) {
                 if (callback) {
                     callback(this.selection);
