@@ -517,6 +517,7 @@
         }
         var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
+        var prm;
         var prepare_selection = function(selection) {
             selection = jQuery.extend([], selection);
             if (this.attributes.sort === undefined || this.attributes.sort) {
@@ -529,90 +530,95 @@
         };
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
-            var prm;
             if (this.attributes.selection_change_with) {
                 prm = this.model.execute(selection, [value]);
             } else {
                 prm = this.model.execute(selection, []);
             }
-            prm.pipe(prepare_selection.bind(this));
+            prm = prm.then(prepare_selection.bind(this));
         } else {
             if (key in this._values2selection) {
                 selection = this._values2selection.selection;
             }
             prepare_selection.call(this, selection);
+            prm = jQuery.when();
         }
         this.inactive_selection = [];
+        this._selection_prm = prm;
     };
     Sao.common.selection_mixin.update_selection = function(record, field,
             callback) {
-        if (!field) {
-            if (callback) {
-                callback(this.selection);
-            }
-            return;
-        }
-        var domain = field.get_domain(record);
-        if (field.description.type == 'reference') {
-            // The domain on reference field is not only based on the selection
-            // so the selection can not be filtered.
-            domain = [];
-        }
-        if (!('relation' in this.attributes)) {
-            var change_with = this.attributes.selection_change_with || [];
-            var value = record._get_on_change_args(change_with);
-            delete value.id;
-            Sao.common.selection_mixin.init_selection.call(this, value,
-                    function() {
-                        Sao.common.selection_mixin.filter_selection.call(this,
-                            domain, record, field);
-                        if (callback) {
-                            callback(this.selection);
-                        }
-                    }.bind(this));
-        } else {
-            var context = field.get_context(record);
-            var jdomain = JSON.stringify([domain, context]);
-            if (jdomain in this._domain_cache) {
-                this.selection = this._domain_cache[jdomain];
-                this._last_domain = [domain, context];
-            }
-            if ((this._last_domain !== null) &&
-                    Sao.common.compare(domain, this._last_domain[0]) &&
-                    (JSON.stringify(context) ==
-                     JSON.stringify(this._last_domain[1]))) {
+        var _update_selection = function(record, field, callback) {
+            if (!field) {
                 if (callback) {
                     callback(this.selection);
                 }
                 return;
             }
-            var prm = Sao.rpc({
-                'method': 'model.' + this.attributes.relation + '.search_read',
-                'params': [domain, 0, null, null, ['rec_name'], context]
-            }, record.model.session);
-            prm.done(function(result) {
-                var selection = [];
-                result.forEach(function(x) {
-                    selection.push([x.id, x.rec_name]);
-                });
-                if (this.nullable_widget) {
-                    selection.push([null, '']);
+            var domain = field.get_domain(record);
+            if (field.description.type == 'reference') {
+                // The domain on reference field is not only based on the
+                // selection so the selection can not be filtered.
+                domain = [];
+            }
+            if (!('relation' in this.attributes)) {
+                var change_with = this.attributes.selection_change_with || [];
+                var value = record._get_on_change_args(change_with);
+                delete value.id;
+                Sao.common.selection_mixin.init_selection.call(this, value,
+                        function() {
+                            Sao.common.selection_mixin.filter_selection.call(
+                                    this, domain, record, field);
+                            if (callback) {
+                                callback(this.selection);
+                            }
+                        }.bind(this));
+            } else {
+                var context = field.get_context(record);
+                var jdomain = JSON.stringify([domain, context]);
+                if (jdomain in this._domain_cache) {
+                    this.selection = this._domain_cache[jdomain];
+                    this._last_domain = [domain, context];
                 }
-                this._last_domain = domain;
-                this._domain_cache[jdomain] = selection;
-                this.selection = jQuery.extend([], selection);
-                if (callback) {
-                    callback(this.selection);
+                if ((this._last_domain !== null) &&
+                        Sao.common.compare(domain, this._last_domain[0]) &&
+                        (JSON.stringify(context) ==
+                         JSON.stringify(this._last_domain[1]))) {
+                    if (callback) {
+                        callback(this.selection);
+                    }
+                    return;
                 }
-            }.bind(this));
-            prm.fail(function() {
-                this._last_domain = null;
-                this.selection = [];
-                if (callback) {
-                    callback(this.selection);
-                }
-            }.bind(this));
-        }
+                var prm = Sao.rpc({
+                    'method': 'model.' + this.attributes.relation +
+                        '.search_read',
+                    'params': [domain, 0, null, null, ['rec_name'], context]
+                }, record.model.session);
+                prm.done(function(result) {
+                    var selection = [];
+                    result.forEach(function(x) {
+                        selection.push([x.id, x.rec_name]);
+                    });
+                    if (this.nullable_widget) {
+                        selection.push([null, '']);
+                    }
+                    this._last_domain = domain;
+                    this._domain_cache[jdomain] = selection;
+                    this.selection = jQuery.extend([], selection);
+                    if (callback) {
+                        callback(this.selection);
+                    }
+                }.bind(this));
+                prm.fail(function() {
+                    this._last_domain = null;
+                    this.selection = [];
+                    if (callback) {
+                        callback(this.selection);
+                    }
+                }.bind(this));
+            }
+        };
+        this._selection_prm.done(_update_selection.bind(this));
     };
     Sao.common.selection_mixin.filter_selection = function(
             domain, record, field) {
@@ -2505,5 +2511,4 @@
         }
     });
     Sao.common.processing = new Sao.common.Processing();
-
 }());
