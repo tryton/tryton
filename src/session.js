@@ -3,42 +3,12 @@
 (function() {
     'use strict';
 
-    Sao.parse_cookie = function() {
-        var cookie = {};
-        var parts = document.cookie.split('; ');
-        for (var i = 0, length = parts.length; i < length; i++) {
-            var part = parts[i].split('=');
-            if (part.length != 2) {
-                continue;
-            }
-            cookie[part[0]] = part[1];
-        }
-        return cookie;
-    };
-
-
-    Sao.set_cookie = function(values) {
-        for (var name in values) {
-            if (!values.hasOwnProperty(name)) {
-                continue;
-            }
-            var value = values[name];
-            document.cookie = name + '=' + value;
-        }
-    };
-
     Sao.Session = Sao.class_(Object, {
-       init: function(database, login) {
-           this.user_id = null;
-           this.session = null;
-            if (!database && !login) {
-                var cookie = Sao.parse_cookie();
-                this.database = cookie.database;
-                this.login = cookie.login;
-            } else {
-                this.database = database;
-                this.login = login;
-            }
+        init: function(database, login) {
+            this.user_id = null;
+            this.session = null;
+            this.database = database;
+            this.login = login;
             this.context = {};
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
@@ -73,10 +43,6 @@
                     } else {
                         this.user_id = data.result[0];
                         this.session = data.result[1];
-                        Sao.set_cookie({
-                            'login': this.login,
-                            'database': this.database
-                        });
                     }
                     dfd.resolve();
                 }
@@ -116,16 +82,16 @@
     });
 
     Sao.Session.get_credentials = function(parent_dfd) {
-        var cookie = Sao.parse_cookie();
-        var login = cookie.login;
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
-        var database_select;
-        var login_modal;
+        var database_select = jQuery('#login-database');
+        var login_input = jQuery('#login-login');
+        var password_input = jQuery('#login-password');
+        var login_modal = jQuery('#login');
 
         var ok_func = function() {
-            var login = jQuery('#login-login').val();
-            var password = jQuery('#login-password').val();
+            var login = login_input.val();
+            var password = password_input.val();
             var database = database || database_select.val();
             if (!(login && password)) {
                 return;
@@ -138,41 +104,37 @@
             login_modal.modal('hide');
         };
 
-        var fill_database = function() {
-            jQuery.when(Sao.DB.list()).then(function(databases) {
-                databases.forEach(function(database) {
-                    database_select.append(jQuery('<option/>', {
-                        'value': database,
-                        'text': database
-                    }));
-                });
-            }).then(function() {
-                database_select.val(cookie.database);
+        jQuery.when(Sao.DB.list()).then(function(databases) {
+            databases.forEach(function(database) {
+                database_select.append(jQuery('<option/>', {
+                    'value': database,
+                    'text': database
+                }));
             });
-        };
-
-        login_modal = jQuery('#login');
-
-        if (!database) {
-            database_select = jQuery('#login-database');
-            fill_database();
-        }
-
-        login_modal.modal({
-            backdrop: false,
-            keyboard: false
-        });
-        login_modal.modal('show');
-        login_modal.on('show.bs.modal', function() {
             if (database) {
-                jQuery('#login-login').focus();
-            } else {
-                jQuery('#login-database').focus();
+                database_select.val(database);
             }
-        });
-        login_modal.find('form').submit(function(e) {
-            ok_func();
-            e.preventDefault();
+
+            login_modal.modal({
+                backdrop: false,
+                keyboard: false
+            });
+            login_modal.on('shown.bs.modal', function() {
+                if (database) {
+                    if (!login_input.val()) {
+                        login_input.focus();
+                    } else {
+                        password_input.focus();
+                    }
+                } else {
+                    database_select.focus();
+                }
+            });
+            login_modal.find('form').submit(function(e) {
+                ok_func();
+                e.preventDefault();
+            });
+            login_modal.modal('show');
         });
     };
 
