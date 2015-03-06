@@ -1897,6 +1897,7 @@
                 record._values[this.name][1] >= -1) {
                 return record._values[this.name].join(',');
             }
+            return null;
         },
         set_client: function(record, value, force_change) {
             if (value) {
