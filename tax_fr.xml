@@ -2426,5 +2426,82 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="tva_vente_services_hors_communaute"/>
         </record>
 
+        <record model="account.tax.rule.template"
+            id="tax_rule_achats_intracommunautaires_exonere">
+            <field name="name">Achats intracommunautaires exonérés (en auto-liquidation)</field>
+            <field name="kind">purchase</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_biens_tx_normal">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="origin_tax" ref="tva_achat_biens_taux_normal"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_biens_taux_normal"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_biens_tx_intermediaire">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="origin_tax" ref="tva_achat_biens_taux_intermediaire"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_biens_taux_intermediaire"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_biens_tx_5_5">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="origin_tax" ref="tva_achat_biens_5_5"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_biens_5_5"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_biens_tx_8_5">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="origin_tax" ref="tva_achat_biens_8_5"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_biens_8_5"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_biens_tx_2_1">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+            <field name="origin_tax" ref="tva_achat_biens_2_1"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_biens_2_1"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_services_tx_normal">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_taux_normal"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_services_taux_normal"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_services_tx_intermediaire">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_taux_intermediaire"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_services_taux_intermediaire"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_services_tx_5_5">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_5_5"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_services_5_5"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_services_tx_8_5">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_8_5"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_services_8_5"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_intracommunautaires_exonere_services_tx_2_1">
+            <field name="rule" ref="tax_rule_achats_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_2_1"/>
+            <field name="tax" ref="tva_achat_intracommunautaire_services_2_1"/>
+        </record>
+
     </data>
 </tryton>
