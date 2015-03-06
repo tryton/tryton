@@ -2503,5 +2503,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="tva_achat_intracommunautaire_services_2_1"/>
         </record>
 
+        <record model="account.tax.rule.template"
+            id="tax_rule_achats_hors_communaute">
+            <field name="name">Achats hors communauté</field>
+            <field name="kind">purchase</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_1">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_biens"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_2">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_services"/>
+        </record>
+
     </data>
 </tryton>
