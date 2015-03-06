@@ -1370,6 +1370,23 @@
         ].forEach(test_func, field);
     });
 
+    QUnit.test('DomainParser.stringable', function() {
+        var parser = new Sao.common.DomainParser({
+            'name': {
+                'string': 'Name',
+                'type': 'char',
+                }
+        });
+        var valid = ['name', '=', 'Doe'];
+        var invalid = ['surname', '=', 'John'];
+        QUnit.ok(parser.stringable([valid]));
+        QUnit.ok(!parser.stringable([invalid]));
+        QUnit.ok(parser.stringable(['AND', valid]));
+        QUnit.ok(!parser.stringable(['AND', valid, invalid]));
+        QUnit.ok(parser.stringable([[valid]]));
+        QUnit.ok(!parser.stringable([[valid], [invalid]]));
+    });
+
     QUnit.test('DomainParser.string', function() {
         var parser = new Sao.common.DomainParser({
             'name': {

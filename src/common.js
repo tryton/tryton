@@ -409,6 +409,52 @@
     });
     Sao.common.MODELHISTORY = new Sao.common.ModelHistory();
 
+    Sao.common.ViewSearch = Sao.class_(Object, {
+        load_searches: function() {
+            this.searches = {};
+            return Sao.rpc({
+                'method': 'model.ir.ui.view_search.get_search',
+                'params': [{}]
+            }, Sao.Session.current_session).then(function(searches) {
+                this.searches = searches;
+            }.bind(this));
+        },
+        get: function(model) {
+            return this.searches[model] || [];
+        },
+        add: function(model, name, domain) {
+            return Sao.rpc({
+                'method': 'model.ir.ui.view_search.create',
+                'params': [[{
+                    'model': model,
+                    'name': name,
+                    'domain': new Sao.PYSON.Encoder().encode(domain)
+                }], {}]
+            }, Sao.Session.current_session).then(function(ids) {
+                var id = ids[0];
+                if (this.searches[model] === undefined) {
+                    this.searches[model] = [];
+                }
+                this.searches[model].push([id, name, domain]);
+            }.bind(this));
+        },
+        remove: function(model, id) {
+            return Sao.rpc({
+                'method': 'model.ir.ui.view_search.delete',
+                'params': [[id], {}]
+            }, Sao.Session.current_session).then(function() {
+                for (var i = 0; i < this.searches[model].length; i++) {
+                    var domain = this.searches[model][i];
+                    if (domain[0] === id) {
+                        this.searches[model].splice(i, 1);
+                        break;
+                    }
+                }
+            }.bind(this));
+        }
+    });
+    Sao.common.VIEW_SEARCH = new Sao.common.ViewSearch();
+
     Sao.common.humanize = function(size) {
         var sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
         for (var i =0, len = sizes.length; i < len; i++) {
@@ -843,6 +889,32 @@
                 }
                 throw e;
             }
+        },
+        stringable: function(domain) {
+            var stringable_ = function(clause) {
+                if (!clause) {
+                    return true;
+                }
+                var is_array = function(e) {
+                    return e instanceof Array;
+                };
+                if ((~['AND', 'OR'].indexOf(clause[0]) ||
+                            (is_array(clause[0]))) &&
+                        clause.slice(1).every(is_array)) {
+                    return this.stringable(clause);
+                }
+                if ((clause[0] in this.fields) || clause[0] == 'rec_name') {
+                    return true;
+                }
+                return false;
+            }.bind(this);
+            if (!domain) {
+                return true;
+            }
+            if (~['AND', 'OR'].indexOf(domain[0])) {
+                domain = domain.slice(1);
+            }
+            return domain.every(stringable_);
         },
         string: function(domain) {
 

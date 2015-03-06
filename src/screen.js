@@ -25,18 +25,45 @@
             }).append('Filters'); // TODO translation
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
-                'class': 'form-control'
+                'class': 'form-control',
+                'placeholder': 'Search'
             });
-            this.search_entry.keypress(function(e) {
-                if (e.which == 13) {
-                    this.do_search();
-                    return false;
-                }
-            }.bind(this));
+            this.search_entry.keypress(this.key_press.bind(this));
             this.but_bookmark = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default'
-            }).append('Bookmark'); // TODO translation
+                'class': 'btn btn-default dropdown-toggle',
+                'data-toggle': 'dropdown',
+                'aria-expanded': false,
+                'aria-label': 'Bookmarks'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-bookmark',
+                'aria-hidden': true
+            }));
+            var dropdown_bookmark = jQuery('<ul/>', {
+                'class': 'dropdown-menu',
+                'role': 'menu'
+            });
+            this.but_bookmark.click(function() {
+                dropdown_bookmark.children().remove();
+                var bookmarks = this.bookmarks();
+                for (var i=0; i < bookmarks.length; i++) {
+                    var name = bookmarks[i][1];
+                    var domain = bookmarks[i][2];
+                    jQuery('<li/>')
+                    .append(jQuery('<a/>', {
+                        'href': '#'
+                    }).append(name)
+                        .click(domain, this.bookmark_activate.bind(this)))
+                    .appendTo(dropdown_bookmark);
+                }
+            }.bind(this));
+            this.but_star = jQuery('<button/>', {
+                'class': 'btn btn-default',
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon',
+                'aria-hidden': true
+            })).click(this.star_click.bind(this));
+            this.set_star();
 
             jQuery('<div/>', {
                 'class': 'input-group'
@@ -47,20 +74,30 @@
             .append(this.search_entry)
             .append(jQuery('<span/>', {
                 'class': 'input-group-btn'
-            }).append(this.but_bookmark))
+            }).append(this.but_star)
+                    .append(this.but_bookmark)
+                    .append(dropdown_bookmark))
             .appendTo(jQuery('<div/>', {
                 'class': 'col-md-8'
             }).appendTo(this.filter_box));
 
             this.but_prev = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default'
-            }).append('Previous');
+                'class': 'btn btn-default',
+                'aria-label': 'Previous'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-menu-left',
+                'aria-hidden': true
+            }));
             this.but_prev.click(this.search_prev.bind(this));
             this.but_next = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default'
-            }).append('Next');
+                'class': 'btn btn-default',
+                'aria-label': 'Next'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-menu-right',
+                'aria-hidden': true
+            }));
             this.but_next.click(this.search_next.bind(this));
 
             jQuery('<div/>', {
@@ -114,6 +151,86 @@
         },
         set_text: function(value) {
             this.search_entry.val(value);
+            this.bookmark_match();
+        },
+        set_star: function(star) {
+            var glyphicon = this.but_star.children('span.glyphicon');
+            if (star) {
+                glyphicon.removeClass('glyphicon-star-empty');
+                glyphicon.addClass('glyphicon-star');
+                this.but_star.attr('aria-label', 'Remove this bookmark');
+            } else {
+                glyphicon.removeClass('glyphicon-star');
+                glyphicon.addClass('glyphicon-star-empty');
+                this.but_star.attr('aria-label', 'Bookmark this filter');
+            }
+        },
+        get_star: function() {
+            var glyphicon = this.but_star.children('span.glyphicon');
+            return glyphicon.hasClass('glyphicon-star');
+        },
+        star_click: function() {
+            var star = this.get_star();
+            var model_name = this.screen.model_name;
+            var refresh = function() {
+                this.bookmark_match();
+                this.but_bookmark.prop('disabled',
+                        jQuery.isEmptyObject(this.bookmarks()));
+            }.bind(this);
+            if (!star) {
+                var text = this.get_text();
+                if (!text) {
+                    return;
+                }
+                Sao.common.ask.run('Bookmark Name:')
+                    .then(function(name) {
+                        if (!name) {
+                            return;
+                        }
+                        var domain = this.screen.domain_parser.parse(text);
+                        Sao.common.VIEW_SEARCH.add(model_name, name, domain)
+                        .then(function() {
+                            refresh();
+                        });
+                        this.set_text(
+                            this.screen.domain_parser.string(domain));
+                    }.bind(this));
+            } else {
+                var id = this.bookmark_match();
+                Sao.common.VIEW_SEARCH.remove(model_name, id).then(function() {
+                    refresh();
+                });
+            }
+        },
+        bookmarks: function() {
+            var searches = Sao.common.VIEW_SEARCH.get(this.screen.model_name);
+            return searches.filter(function(search) {
+                return this.screen.domain_parser.stringable(search[2]);
+            }.bind(this));
+        },
+        bookmark_activate: function(e) {
+            var domain = e.data;
+            this.set_text(this.screen.domain_parser.string(domain));
+            this.do_search();
+        },
+        bookmark_match: function() {
+            var current_text = this.get_text();
+            var current_domain = this.screen.domain_parser.parse(current_text);
+            this.but_star.prop('disabled', !current_text);
+            var star = this.get_star();
+            var bookmarks = this.bookmarks();
+            for (var i=0; i < bookmarks.length; i++) {
+                var id = bookmarks[i][0];
+                var name = bookmarks[i][1];
+                var domain = bookmarks[i][2];
+                var text = this.screen.domain_parser.string(domain);
+                if ((text === current_text) ||
+                        (Sao.common.compare(domain, current_domain))) {
+                    this.set_star(true);
+                    return id;
+                }
+            }
+            this.set_star(false);
         },
         search_prev: function() {
             this.screen.search_prev(this.search_entry.val());
@@ -131,8 +248,21 @@
         do_search: function() {
             return this.screen.search_filter(this.search_entry.val());
         },
+        key_press: function(e) {
+            if (e.which == Sao.common.RETURN_KEYCODE) {
+                this.do_search();
+                return false;
+            }
+            // Wait the current event finished
+            window.setTimeout(function() {
+                this.bookmark_match();
+            }.bind(this));
+        },
         set_screen: function(screen) {
             this.screen = screen;
+            this.but_bookmark.prop('disabled',
+                    jQuery.isEmptyObject(this.bookmarks()));
+            this.bookmark_match();
         },
         show_filter: function() {
             this.filter_box.show();

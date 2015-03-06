@@ -151,6 +151,7 @@ var Sao = {};
             deferreds.push(Sao.common.MODELACCESS.load_models());
             deferreds.push(Sao.common.ICONFACTORY.load_icons());
             deferreds.push(Sao.common.MODELHISTORY.load_history());
+            deferreds.push(Sao.common.VIEW_SEARCH.load_searches());
             return jQuery.when.apply(jQuery, deferreds).then(function() {
                 (preferences.actions || []).forEach(function(action_id) {
                     Sao.Action.execute(action_id, {}, null, {});
