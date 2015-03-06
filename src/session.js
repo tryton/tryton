@@ -33,18 +33,18 @@
                     Sao.common.warning.run('', 'Unable to reach the server.');
                     dfd.reject();
                 } else if (data.error) {
-                    console.log('ERROR');
-                    Sao.error(data.error[0], data.error[1]);
+                    Sao.common.error.run(data.error[0], data.error[1]);
                     dfd.reject();
                 } else {
                     if (!data.result) {
                         this.user_id = null;
                         this.session = null;
+                        dfd.reject();
                     } else {
                         this.user_id = data.result[0];
                         this.session = data.result[1];
+                        dfd.resolve();
                     }
-                    dfd.resolve();
                 }
             };
             ajax_prm.success(ajax_success.bind(this));
@@ -53,7 +53,7 @@
         },
         do_logout: function() {
             if (!(this.user_id && this.session)) {
-                return;
+                return jQuery.when();
             }
             var args = {
                 'method': 'common.db.logout',
@@ -81,7 +81,8 @@
         }
     });
 
-    Sao.Session.get_credentials = function(parent_dfd) {
+    Sao.Session.get_credentials = function() {
+        var dfd = jQuery.Deferred();
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
         var database_select = jQuery('#login-database');
@@ -92,17 +93,41 @@
         var ok_func = function() {
             var login = login_input.val();
             var password = password_input.val();
+            // clear the password as the input will stay in the DOM
+            password_input.val('');
             var database = database || database_select.val();
             if (!(login && password)) {
                 return;
             }
             var session = new Sao.Session(database, login);
-            var prm = session.do_login(login, password);
-            prm.done(function() {
-                parent_dfd.resolve(session);
-            });
+            session.do_login(login, password)
+                .then(function() {
+                    dfd.resolve(session);
+                }, function() {
+                    login_modal.modal('show');
+                });
             login_modal.modal('hide');
         };
+
+        login_modal.modal({
+            backdrop: false,
+            keyboard: false
+        });
+        login_modal.on('shown.bs.modal', function() {
+            if (database) {
+                if (!login_input.val()) {
+                    login_input.focus();
+                } else {
+                    password_input.focus();
+                }
+            } else {
+                database_select.focus();
+            }
+        });
+        login_modal.find('form').unbind().submit(function(e) {
+            ok_func();
+            e.preventDefault();
+        });
 
         jQuery.when(Sao.DB.list()).then(function(databases) {
             databases.forEach(function(database) {
@@ -114,58 +139,44 @@
             if (database) {
                 database_select.val(database);
             }
-
-            login_modal.modal({
-                backdrop: false,
-                keyboard: false
-            });
-            login_modal.on('shown.bs.modal', function() {
-                if (database) {
-                    if (!login_input.val()) {
-                        login_input.focus();
-                    } else {
-                        password_input.focus();
-                    }
-                } else {
-                    database_select.focus();
-                }
-            });
-            login_modal.find('form').submit(function(e) {
-                ok_func();
-                e.preventDefault();
-            });
             login_modal.modal('show');
         });
+        return dfd.promise();
     };
 
     Sao.Session.renew = function(session) {
         var dfd = jQuery.Deferred();
-        var password_modal;
+        var password_modal = jQuery('#password');
+        var password_input = jQuery('#password-password');
         if (!session.login) {
             return dfd.reject();
         }
 
         var ok_func = function() {
-            var password = jQuery('#password-password').val();
-            session.do_login(session.login, password).done(function() {
-                dfd.resolve();
-            });
+            var password = password_input.val();
+            // clear the password as the input will stay in the DOM
+            password_input.val('');
+            session.do_login(session.login, password)
+                .then(function() {
+                    dfd.resolve();
+                }, function() {
+                    password_modal.modal('show');
+                });
             password_modal.modal('hide');
         };
 
-        password_modal = jQuery('#password');
         password_modal.modal({
             backdrop: false,
             keyboard: false
         });
-        password_modal.modal('show');
-        password_modal.on('show.bs.modal', function() {
-            jQuery('#password-password').focus();
+        password_modal.on('shown.bs.modal', function() {
+            password_input.focus();
         });
-        password_modal.find('form').submit(function(e) {
+        password_modal.find('form').unbind().submit(function(e) {
             ok_func();
             e.preventDefault();
         });
+        password_modal.modal('show');
         return dfd.promise();
     };
 

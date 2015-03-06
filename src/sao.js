@@ -168,15 +168,14 @@ var Sao = {};
     };
 
     Sao.login = function() {
-        var dfd = jQuery.Deferred();
-        Sao.Session.get_credentials(dfd);
-        dfd.then(function(session) {
-            Sao.Session.current_session = session;
-            session.reload_context();
-        }).then(Sao.get_preferences).then(function(preferences) {
-            Sao.menu(preferences);
-            Sao.user_menu(preferences);
-        });
+        Sao.Session.get_credentials()
+            .then(function(session) {
+                Sao.Session.current_session = session;
+                return session.reload_context();
+            }).then(Sao.get_preferences).then(function(preferences) {
+                Sao.menu(preferences);
+                Sao.user_menu(preferences);
+            });
     };
 
     Sao.logout = function() {
@@ -186,8 +185,7 @@ var Sao = {};
             jQuery('#user-logout').children().remove();
             jQuery('#menu').children().remove();
             document.title = 'Tryton';
-            session.do_logout();
-            Sao.login();
+            session.do_logout().always(Sao.login);
         });
     };
 
