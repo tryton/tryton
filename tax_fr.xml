@@ -786,9 +786,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.group" id="group_tva_vente">
-            <field name="name">T.V.A. Vente</field>
-            <field name="code">T.V.A. Vente</field>
+        <record model="account.tax.group" id="group_tva_vente_biens">
+            <field name="name">T.V.A. Vente de biens</field>
+            <field name="code">T.V.A. Vente de biens</field>
+            <field name="kind">sale</field>
+        </record>
+
+        <record model="account.tax.group" id="group_tva_vente_services">
+            <field name="name">T.V.A. Vente de services</field>
+            <field name="code">T.V.A. Vente de services</field>
             <field name="kind">sale</field>
         </record>
 
@@ -798,10 +804,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">purchase</field>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_taux_normal">
-            <field name="name">T.V.A. Vente Taux Normal</field>
+        <record model="account.tax.template" id="tva_vente_biens_taux_normal">
+            <field name="name">T.V.A. Vente de biens Taux Normal</field>
             <field name="description">T.V.A. Taux Normal</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="None"/>
             <field name="type">none</field>
             <field name="invoice_account" eval="None"/>
@@ -815,10 +821,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_20">
-            <field name="name">T.V.A. Vente 20%</field>
+        <record model="account.tax.template" id="tva_vente_biens_20">
+            <field name="name">T.V.A. Vente de biens 20%</field>
             <field name="description">T.V.A. 20%</field>
-            <field name="parent" ref="tva_vente_taux_normal"/>
+            <field name="parent" ref="tva_vente_biens_taux_normal"/>
             <field name="start_date">2014-01-01</field>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
@@ -833,10 +839,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_19_6">
-            <field name="name">T.V.A. Vente 19,6%</field>
+        <record model="account.tax.template" id="tva_vente_biens_19_6">
+            <field name="name">T.V.A. Vente de biens 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
-            <field name="parent" ref="tva_vente_taux_normal"/>
+            <field name="parent" ref="tva_vente_biens_taux_normal"/>
             <field name="end_date">2013-12-31</field>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
@@ -851,10 +857,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_taux_intermediaire">
-            <field name="name">T.V.A. Vente Taux Intermédiaire</field>
-            <field name="description">T.V.A. Taux Intermédiaire</field>
-            <field name="group" ref="group_tva_vente"/>
+        <record model="account.tax.template" id="tva_vente_services_taux_normal">
+            <field name="name">T.V.A. Vente de services Taux Normal</field>
+            <field name="description">T.V.A. Taux Normal</field>
+            <field name="group" ref="group_tva_vente_services"/>
             <field name="rate" eval="None"/>
             <field name="type">none</field>
             <field name="invoice_account" eval="None"/>
@@ -868,10 +874,63 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_10">
-            <field name="name">T.V.A. Vente 10%</field>
+        <record model="account.tax.template" id="tva_vente_services_20">
+            <field name="name">T.V.A. Vente de services 20%</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_vente_services_taux_normal"/>
+            <field name="start_date">2014-01-01</field>
+            <field name="rate" eval="Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0207b"/>
+            <field name="invoice_tax_code" ref="tax_code_0207"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_services_19_6">
+            <field name="name">T.V.A. Vente de services 19,6%</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_vente_services_taux_normal"/>
+            <field name="end_date">2013-12-31</field>
+            <field name="rate" eval="Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0206b"/>
+            <field name="invoice_tax_code" ref="tax_code_0206"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_biens_taux_intermediaire">
+            <field name="name">T.V.A. Vente de biens Taux Intermédiaire</field>
+            <field name="description">T.V.A. Taux Intermédiaire</field>
+            <field name="group" ref="group_tva_vente_biens"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="None"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_biens_10">
+            <field name="name">T.V.A. Vente de biens 10%</field>
             <field name="description">T.V.A. 10%</field>
-            <field name="parent" ref="tva_vente_taux_intermediaire"/>
+            <field name="parent" ref="tva_vente_biens_taux_intermediaire"/>
             <field name="start_date">2014-01-01</field>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
@@ -886,10 +945,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_7">
-            <field name="name">T.V.A. Vente 7%</field>
+        <record model="account.tax.template" id="tva_vente_biens_7">
+            <field name="name">T.V.A. Vente de biens 7%</field>
             <field name="description">T.V.A. 7%</field>
-            <field name="parent" ref="tva_vente_taux_intermediaire"/>
+            <field name="parent" ref="tva_vente_biens_taux_intermediaire"/>
             <field name="end_date">2013-12-31</field>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
@@ -904,10 +963,63 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_8_5">
-            <field name="name">T.V.A. Vente 8,5%</field>
+        <record model="account.tax.template" id="tva_vente_services_taux_intermediaire">
+            <field name="name">T.V.A. Vente de services Taux Intermédiaire</field>
+            <field name="description">T.V.A. Taux Intermédiaire</field>
+            <field name="group" ref="group_tva_vente_services"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="None"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_services_10">
+            <field name="name">T.V.A. Vente de services 10%</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_vente_services_taux_intermediaire"/>
+            <field name="start_date">2014-01-01</field>
+            <field name="rate" eval="Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0151b"/>
+            <field name="invoice_tax_code" ref="tax_code_0151"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_services_7">
+            <field name="name">T.V.A. Vente de services 7%</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_vente_services_taux_intermediaire"/>
+            <field name="end_date">2013-12-31</field>
+            <field name="rate" eval="Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0150b"/>
+            <field name="invoice_tax_code" ref="tax_code_0150"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_biens_8_5">
+            <field name="name">T.V.A. Vente de biens 8,5%</field>
             <field name="description">T.V.A. 8,5%</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="Decimal('.085')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -921,10 +1033,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_5_5">
-            <field name="name">T.V.A. Vente 5,5%</field>
+        <record model="account.tax.template" id="tva_vente_services_8_5">
+            <field name="name">T.V.A. Vente de services 8,5%</field>
+            <field name="description">T.V.A. 8,5%</field>
+            <field name="group" ref="group_tva_vente_services"/>
+            <field name="rate" eval="Decimal('.085')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0201b"/>
+            <field name="invoice_tax_code" ref="tax_code_0201"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_biens_5_5">
+            <field name="name">T.V.A. Vente de biens 5,5%</field>
             <field name="description">T.V.A. 5,5%</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -938,10 +1067,44 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_2_1">
-            <field name="name">T.V.A. Vente 2,1%</field>
+        <record model="account.tax.template" id="tva_vente_services_5_5">
+            <field name="name">T.V.A. Vente de services 5,5%</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="group" ref="group_tva_vente_services"/>
+            <field name="rate" eval="Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0105b"/>
+            <field name="invoice_tax_code" ref="tax_code_0105"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_biens_2_1">
+            <field name="name">T.V.A. Vente de biens 2,1%</field>
             <field name="description">T.V.A. 2,1%</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
+            <field name="rate" eval="Decimal('.021')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0100b"/>
+            <field name="invoice_tax_code" ref="tax_code_0100"/>
+            <field name="credit_note_base_code" ref="tax_code_0036"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" ref="tax_code_0059"/>
+            <field name="credit_note_tax_sign" eval="Decimal('1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_services_2_1">
+            <field name="name">T.V.A. Vente de services 2,1%</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="group" ref="group_tva_vente_services"/>
             <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -958,7 +1121,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.template" id="tva_vente_intracommunautaire_0">
             <field name="name">T.V.A. Vente Intracommunautaire 0%</field>
             <field name="description">T.V.A. 0%</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
@@ -969,10 +1132,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
-        <record model="account.tax.template" id="tva_vente_hors_communaute">
-            <field name="name">Exonération de TVA sur ventes hors communauté</field>
+        <record model="account.tax.template" id="tva_vente_biens_hors_communaute">
+            <field name="name">Exonération de TVA sur ventes de biens hors communauté</field>
             <field name="description">Hors TVA (art. 259 1° du CGI)</field>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44571"/>
+            <field name="credit_note_account" ref="44571"/>
+            <field name="invoice_base_code" ref="tax_code_0032"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" ref="tax_code_0039"/>
+            <field name="credit_note_base_sign" eval="Decimal('-1')"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_vente_services_hors_communaute">
+            <field name="name">Exonération de TVA sur ventes de services hors communauté</field>
+            <field name="description">Hors TVA (art. 259 1° du CGI)</field>
+            <field name="group" ref="group_tva_vente_services"/>
             <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -1403,9 +1583,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.rule.line.template"
-            id="tax_rule_ventes_intracommunautaires_5">
+            id="tax_rule_ventes_intracommunautaires_exonere_1">
             <field name="rule" ref="tax_rule_ventes_intracommunautaires_exonere"/>
-            <field name="group" ref="group_tva_vente"/>
+            <field name="group" ref="group_tva_vente_biens"/>
+            <field name="tax" ref="tva_vente_intracommunautaire_0"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_ventes_intracommunautaires_exonere_2">
+            <field name="rule" ref="tax_rule_ventes_intracommunautaires_exonere"/>
+            <field name="group" ref="group_tva_vente_services"/>
             <field name="tax" ref="tva_vente_intracommunautaire_0"/>
         </record>
 
@@ -1418,8 +1604,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.rule.line.template"
             id="tax_rule_ventes_hors_communaute_1">
             <field name="rule" ref="tax_rule_ventes_hors_communaute"/>
-            <field name="group" ref="group_tva_vente"/>
-            <field name="tax" ref="tva_vente_hors_communaute"/>
+            <field name="group" ref="group_tva_vente_biens"/>
+            <field name="tax" ref="tva_vente_biens_hors_communaute"/>
+        </record>
+        <record model="account.tax.rule.line.template"
+            id="tax_rule_ventes_hors_communaute_2">
+            <field name="rule" ref="tax_rule_ventes_hors_communaute"/>
+            <field name="group" ref="group_tva_vente_services"/>
+            <field name="tax" ref="tva_vente_services_hors_communaute"/>
         </record>
 
     </data>

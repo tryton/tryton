@@ -1,4 +1,6 @@
 * Drop the tax rule "Ventes intracommunautaires" and associated taxes.
+* Create separate taxes for goods and services. You should review all your
+  products, product categories and custom tax rules to rely on the new taxes.
 
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
