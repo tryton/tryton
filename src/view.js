@@ -2637,7 +2637,7 @@
             });
             this.menu.append(label);
 
-            var toolbar = jQuery('<span/>', {
+            var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
             });
             this.menu.append(toolbar);
@@ -3029,7 +3029,7 @@
             });
             this.menu.append(label);
 
-            var toolbar = jQuery('<span/>', {
+            var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
             });
             this.menu.append(toolbar);

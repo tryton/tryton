@@ -58,18 +58,20 @@
     & td.form-one2many, td.form-many2many {
         vertical-align: top;
     }
+    & .form-one2many-menu::after, .form-many2many-menu::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
     & .form-one2many-menu, .form-many2many-menu {
-        overflow: auto;
-        margin-bottom: 1px;
         & .form-one2many-string, .form-many2many-string {
+            display: inline-table;
             float: left;
+            margin: 5px;
         }
         & .form-one2many-toolbar, .form-many2many-toolbar {
+            display: inline-table;
             float: right;
-        }
-        & .form-one2many-string, .form-one2many-label,
-        .form-many2many-string, .form-many2many-label {
-            margin: 8px;
         }
     }
     & .form-separator {
