@@ -286,10 +286,11 @@ class XmlrpcProxy(object):
 class XmlrpcConfig(Config):
     'Configuration for XML-RPC'
 
-    def __init__(self, url):
+    def __init__(self, url, **kwargs):
         super(XmlrpcConfig, self).__init__()
         self.url = url
-        self.server = xmlrpclib.ServerProxy(url, allow_none=1, use_datetime=1)
+        self.server = xmlrpclib.ServerProxy(
+            url, allow_none=1, use_datetime=1, **kwargs)
         # TODO add user
         self.user = None
         self._context = self.server.model.res.user.get_preferences(True, {})
@@ -320,9 +321,12 @@ class XmlrpcConfig(Config):
                 and '.' not in x[len(object_) + 1:]]
 
 
-def set_xmlrpc(url):
-    'Set XML-RPC as backend'
-    _CONFIG.current = XmlrpcConfig(url)
+def set_xmlrpc(url, **kwargs):
+    '''
+    Set XML-RPC as backend.
+    It pass the keyword arguments received to xmlrpclib.ServerProxy()
+    '''
+    _CONFIG.current = XmlrpcConfig(url, **kwargs)
     return _CONFIG.current
 
 
