@@ -2299,11 +2299,11 @@ class InvoiceReport(Report):
         return report_context
 
     @classmethod
-    def generate(cls, report, report_context):
+    def convert(cls, report, report_context):
         pool = Pool()
         Invoice = pool.get('account.invoice')
 
-        oext, data = super(InvoiceReport, cls).generate(report, report_context)
+        oext, data = super(InvoiceReport, cls).convert(report, report_context)
 
         invoice = report_context['records'][0]
         # If the invoice is posted or paid and the report not saved in
