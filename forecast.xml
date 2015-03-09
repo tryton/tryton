@@ -53,13 +53,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_forecast_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="act_window" ref="act_forecast_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_forecast_form_domain_done">
             <field name="name">Done</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
             <field name="act_window" ref="act_forecast_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_forecast_form_domain_all">
