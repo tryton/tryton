@@ -591,6 +591,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return domain
 
     @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="comment"]', 'spell', Eval('party_lang'))]
+
+    @classmethod
     def copy(cls, purchases, default=None):
         if default is None:
             default = {}
@@ -1270,6 +1274,11 @@ class PurchaseLine(ModelSQL, ModelView):
                 self.raise_user_error('missing_account_expense_property',
                     {'purchase': self.purchase.rec_name})
         return [invoice_line]
+
+    @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="note"]|//field[@name="description"]',
+                'spell', Eval('_parent_purchase', {}).get('party_lang'))]
 
     @classmethod
     def copy(cls, lines, default=None):

@@ -68,6 +68,13 @@ class Template:
                 self.purchase_uom = self.default_uom
 
     @classmethod
+    def view_attributes(cls):
+        return super(Template, cls).view_attributes() + [
+            ('//page[@id="suppliers"]', 'states', {
+                    'invisible': ~Eval('purchasable'),
+                    })]
+
+    @classmethod
     def write(cls, *args):
         actions = iter(args)
         for templates, values in zip(actions, actions):
