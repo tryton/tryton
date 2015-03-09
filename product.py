@@ -109,3 +109,10 @@ class Template:
     @staticmethod
     def default_weight_digits():
         return 2
+
+    @classmethod
+    def view_attributes(cls):
+        return super(Template, cls).view_attributes() + [
+            ('//page[@id="measurements"]', 'states', {
+                    'invisible': Eval('type').in_(NON_MEASURABLE),
+                    })]

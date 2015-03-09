@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
-        <page string="Measurements" col="3" id="measurements"
-            states="{'invisible': Eval('type').in_(['service'])}">
+        <page string="Measurements" col="3" id="measurements">
             <label name="length"/>
             <field name="length"/>
             <field name="length_uom"/>
