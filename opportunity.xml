@@ -64,42 +64,46 @@ this repository contains the full copyright notices and license terms. -->
             id="act_opportunity_form_domain_leads">
             <field name="name">Leads</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[("state", "=", "lead")]</field>
+            <field name="domain" eval="[('state', '=', 'lead')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_opportunities">
             <field name="name">Opportunities</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[("state", "=", "opportunity")]</field>
+            <field name="domain"
+                eval="[('state', '=', 'opportunity')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_converted">
             <field name="name">Converted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[("state", "=", "converted")]</field>
+            <field name="domain"
+                eval="[('state', '=', 'converted')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_won">
             <field name="name">Won</field>
             <field name="sequence" eval="40"/>
-            <field name="domain">[("state", "=", "won")]</field>
+            <field name="domain" eval="[('state', '=', 'won')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_cancelled">
             <field name="name">Cancelled</field>
             <field name="sequence" eval="50"/>
-            <field name="domain">[("state", "=", "cancelled")]</field>
+            <field name="domain"
+                eval="[('state', '=', 'cancelled')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_opportunity_form_domain_lost">
             <field name="name">Lost</field>
             <field name="sequence" eval="60"/>
-            <field name="domain">[("state", "=", "lost")]</field>
+            <field name="domain"
+                eval="[('state', '=', 'lost')]" pyson="1"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -191,14 +195,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_opportunity"/>
         </record>
 
         <record model="ir.action.act_window" id="act_open_sale_form">
             <field name="name">Sales</field>
             <field name="res_model">sale.sale</field>
-            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'sale.opportunity')]</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'sale.opportunity')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_open_sale_keyword1">
             <field name="keyword">form_relate</field>
@@ -281,7 +289,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_history1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_opportunity_history"/>
         </record>
 
@@ -331,7 +341,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_employee1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
@@ -397,7 +409,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_monthly1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_opportunity_monthly"/>
         </record>
 
@@ -427,7 +441,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_employee_monthly1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_opportunity_employee_monthly"/>
         </record>
 
