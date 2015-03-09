@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_location_tree">
             <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_tree_view1">
             <field name="sequence" eval="10"/>
@@ -61,7 +61,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Products</field>
             <field name="res_model">product.product</field>
             <field name="window_name" eval="False"/>
-            <field name="domain">['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]</field>
+            <field name="domain"
+                eval="['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]"
+                pyson="1"/>
             <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view2">

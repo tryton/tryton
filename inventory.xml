@@ -17,7 +17,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_inventory_form">
             <field name="name">Inventories</field>
             <field name="res_model">stock.inventory</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_inventory_form_view1">
@@ -34,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_inventory_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_inventory_form_domain_all">
