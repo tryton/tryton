@@ -1386,7 +1386,7 @@ class Line(ModelSQL, ModelView):
                 cls.raise_user_error('already_reconciled',
                         error_args=(line.move.number, line.id,))
 
-        lines = lines[:]
+        lines = list(lines)
         reconcile_account = None
         amount = Decimal('0.0')
         for line in lines:
