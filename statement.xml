@@ -48,21 +48,21 @@ this repository contains the full copyright notices and license terms. -->
             id="act_statement_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_statement_form_domain_validated">
             <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'validated')]</field>
+            <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_statement_form_domain_posted">
             <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'posted')]</field>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -80,7 +80,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_statement1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_statement"/>
         </record>
 
@@ -119,7 +121,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_statement_line_move">
             <field name="name">Statement Lines</field>
             <field name="res_model">account.statement.line</field>
-            <field name="domain">[('move', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('move', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_statement_line_move_keyword1">
             <field name="keyword">form_relate</field>
@@ -130,7 +133,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_statement_line_move_line">
             <field name="name">Statement Lines</field>
             <field name="res_model">account.statement.line</field>
-            <field name="domain">[('move.lines', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('move.lines', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_statement_line_move_line_keyword1">
             <field name="keyword">form_relate</field>
@@ -143,7 +147,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_statement_line1">
-            <field name="domain">[('statement.company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('statement.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_statement_line"/>
         </record>
 
@@ -293,7 +299,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_line_group1">
-            <field name="domain">[('statement.company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('statement.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_line_group"/>
         </record>
 
@@ -332,7 +340,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_lines_form">
             <field name="name">Move Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'account.statement')]</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_move_lines_form_keyword1">
             <field name="keyword">form_relate</field>
@@ -343,7 +353,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_lines_form2">
             <field name="name">Move Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_move_lines_form2_keyword1">
             <field name="keyword">form_relate</field>
@@ -354,7 +366,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_moves_form">
             <field name="name">Moves</field>
             <field name="res_model">account.move</field>
-            <field name="domain">[('origin.statement.id', 'in', Eval('active_ids'), 'account.statement.line')]</field>
+            <field name="domain"
+                eval="[('origin.statement.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_moves_form_keyword1">
             <field name="keyword">form_relate</field>
@@ -365,7 +379,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_moves_form2">
             <field name="name">Moves</field>
             <field name="res_model">account.move</field>
-            <field name="domain">[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_moves_form2_keyword1">
             <field name="keyword">form_relate</field>
@@ -376,7 +392,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_line_groups_form">
             <field name="name">Line Groups</field>
             <field name="res_model">account.statement.line.group</field>
-            <field name="domain">[('journal', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('journal', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_line_groups_form_keyword1">
             <field name="keyword">form_relate</field>
