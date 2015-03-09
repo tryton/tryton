@@ -6,17 +6,21 @@ import datetime
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from functools import partial
+from collections import defaultdict
+
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 from trytond.exceptions import UserWarning
+from trytond.pool import Pool
 
 
 class StockTestCase(ModuleTestCase):
     'Test Stock module'
     module = 'stock'
+    longMessage = True
 
     def setUp(self):
         super(StockTestCase, self).setUp()
@@ -652,6 +656,86 @@ class StockTestCase(ModuleTestCase):
             self.move.check_origin(moves, {'supplier'})
             self.assertRaises(UserWarning, self.move.check_origin, moves,
                 {'customer'})
+
+    def test_assign_try(self):
+        'Test Move assign_try'
+        for quantity, quantities, success, result in [
+                (10, [2], True, {'assigned': [2]}),
+                (5, [10], False, {'assigned': [5], 'draft': [5]}),
+                (0, [3], False, {'draft': [3]}),
+                (6.8, [2.1, 1.7, 1.2, 1.8], True,
+                    {'assigned': sorted([2.1, 1.7, 1.2, 1.8])}),
+                ]:
+            self._test_assign_try(quantity, quantities, success, result)
+
+    def _test_assign_try(self, quantity, quantities, success, result):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Template = pool.get('product.template')
+            Product = pool.get('product.product')
+            Uom = pool.get('product.uom')
+            Location = pool.get('stock.location')
+            Company = pool.get('company.company')
+            Move = pool.get('stock.move')
+
+            uom, = Uom.search([('name', '=', 'Meter')])
+            template = Template(
+                name='Test Move.assign_try',
+                type='goods',
+                list_price=Decimal(1),
+                cost_price=Decimal(0),
+                cost_price_method='fixed',
+                default_uom=uom,
+                )
+            template.save()
+            product = Product(template=template.id)
+            product.save()
+
+            supplier, = Location.search([('code', '=', 'SUP')])
+            storage, = Location.search([('code', '=', 'STO')])
+            customer, = Location.search([('code', '=', 'CUS')])
+
+            company, = Company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
+
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': quantity,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+            Move.do([move])
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': qty,
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        } for qty in quantities])
+
+            msg = 'quantity: %s, quantities: %s' % (quantity, quantities)
+            self.assertEqual(Move.assign_try(moves), success, msg=msg)
+            moves = Move.search([
+                    ('product', '=', product.id),
+                    ('from_location', '=', storage.id),
+                    ('to_location', '=', customer.id),
+                    ('company', '=', company.id),
+                    ])
+            states = defaultdict(list)
+            for move in moves:
+                states[move.state].append(move.quantity)
+            for state in states:
+                states[state].sort()
+            self.assertEqual(states, result, msg=msg)
 
 
 def suite():
