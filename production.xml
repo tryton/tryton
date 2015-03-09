@@ -92,35 +92,35 @@ this repository contains the full copyright notices and license terms. -->
             id="act_production_list_domain_requests">
             <field name="name">Requests</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'request')]</field>
+            <field name="domain" eval="[('state', '=', 'request')]" pyson="1"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_production_list_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_production_list_domain_waiting">
             <field name="name">Waiting</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_production_list_domain_assigned">
             <field name="name">Assigned</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'assigned')]</field>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_production_list_domain_running">
             <field name="name">Running</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'running')]</field>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -194,7 +194,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_production">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_production"/>
         </record>
 
