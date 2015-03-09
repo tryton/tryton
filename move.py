@@ -588,7 +588,7 @@ class Move(ModelSQL, ModelView):
             for _, qty in to_pick:
                 picked_qties += qty
 
-            if move.quantity - picked_qties > move.uom.rounding:
+            if move.quantity - picked_qties >= move.uom.rounding:
                 success = False
                 first = False
                 cls.write([move], {
