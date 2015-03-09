@@ -35,7 +35,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_line_form_work">
             <field name="name">Timesheet Lines</field>
             <field name="res_model">timesheet.line</field>
-            <field name="domain">[('work', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('work', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_line_form_work_view1">
@@ -61,7 +62,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="default_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_line1">
-            <field name="domain">[('employee', '=', user.employee.id if user.employee else None)]</field>
+            <field name="domain"
+                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_line"/>
         </record>
         <record model="ir.rule.group" id="rule_group_line_admin">
@@ -121,7 +124,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="default_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_hours_employee1">
-            <field name="domain">[('employee', '=', user.employee.id if user.employee else None)]</field>
+            <field name="domain"
+                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_hours_employee"/>
         </record>
         <record model="ir.rule.group" id="rule_group_hours_employee_admin">
