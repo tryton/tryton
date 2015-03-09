@@ -60,7 +60,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_zip_form">
             <field name="name">Zip</field>
             <field name="res_model">country.zip</field>
-            <field name="domain">[('country', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('country', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_zip_form_view1">
             <field name="sequence" eval="10"/>
