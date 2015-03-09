@@ -42,8 +42,7 @@ this repository contains the full copyright notices and license terms. -->
                 </group>
             </group>
         </page>
-        <page string="Children" id="children"
-              states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
+        <page string="Children" id="children">
               <field name="children" colspan="4"/>
         </page>
     </notebook>
