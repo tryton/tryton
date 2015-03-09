@@ -14,8 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="suffix"/>
     <label name="type"/>
     <field name="type"/>
-    <group string="Incremental" id="incremental" colspan="4"
-        states="{'invisible': Not(In(Eval('type'), ['incremental']))}">
+    <group string="Incremental" id="incremental" colspan="4">
         <label name="padding"/>
         <field name="padding" />
         <label name="number_increment"/>
@@ -23,8 +22,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="number_next"/>
         <field name="number_next"/>
     </group>
-    <group string="Timestamp" id="timestamp" colspan="4"
-        states="{'invisible': Not(In(Eval('type'), ['decimal timestamp', 'hexadecimal timestamp']))}">
+    <group string="Timestamp" id="timestamp" colspan="4">
         <label name="timestamp_rounding"/>
         <field name="timestamp_rounding"/>
         <label name="timestamp_offset"/>

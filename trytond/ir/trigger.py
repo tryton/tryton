@@ -5,9 +5,9 @@ import time
 from sql import Literal, Null
 from sql.aggregate import Count, Max
 
-from ..model import ModelView, ModelSQL, fields
-from ..pyson import Eval
-from ..tools import safe_eval, grouped_slice
+from ..model import ModelView, ModelSQL, fields, EvalEnvironment
+from ..pyson import Eval, PYSONDecoder
+from ..tools import grouped_slice
 from .. import backend
 from ..tools import reduce_ids
 from ..transaction import Transaction
@@ -171,8 +171,8 @@ class Trigger(ModelSQL, ModelView):
         env['current_date'] = datetime.datetime.today()
         env['time'] = time
         env['context'] = Transaction().context
-        env['self'] = record
-        return bool(safe_eval(trigger.condition, env))
+        env['self'] = EvalEnvironment(record, record.__class__)
+        return bool(PYSONDecoder(env).decode(trigger.condition))
 
     @classmethod
     def trigger_action(cls, records, trigger):

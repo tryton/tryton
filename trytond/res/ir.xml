@@ -420,11 +420,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_menu1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_menu"/>
         </record>
         <record model="ir.rule" id="rule_menu2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_menu"/>
         </record>
         <record model="ir.rule.group" id="rule_group_action">
@@ -432,11 +434,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action"/>
         </record>
         <record model="ir.rule" id="rule_action2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action"/>
         </record>
         <record model="ir.rule.group" id="rule_group_action_keyword">
@@ -444,11 +448,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action_keyword1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action_keyword"/>
         </record>
         <record model="ir.rule" id="rule_action_keyword2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action_keyword"/>
         </record>
 
@@ -457,11 +463,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action_report1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action_report"/>
         </record>
         <record model="ir.rule" id="rule_action_report2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action_report"/>
         </record>
 
@@ -470,11 +478,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action_act_window1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action_act_window"/>
         </record>
         <record model="ir.rule" id="rule_action_act_window2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action_act_window"/>
         </record>
 
@@ -483,11 +493,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action_wizard1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action_wizard"/>
         </record>
         <record model="ir.rule" id="rule_action_wizard2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action_wizard"/>
         </record>
 
@@ -496,11 +508,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_action_url1">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_action_url"/>
         </record>
         <record model="ir.rule" id="rule_action_url2">
-            <field name="domain">[('groups', '=', None)]</field>
+            <field name="domain" eval="[('groups', '=', None)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_action_url"/>
         </record>
 
@@ -760,7 +774,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="False"/>
         </record>
         <record model="ir.rule" id="rule_sequence">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_sequence"/>
         </record>
 
@@ -770,7 +786,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="False"/>
         </record>
         <record model="ir.rule" id="rule_sequence_strict">
-            <field name="domain">[('groups', 'in', [g.id for g in user.groups])]</field>
+            <field name="domain"
+                eval="[('groups', 'in', Eval('user', {}).get('groups', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
@@ -824,7 +842,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_view_search1">
-            <field name="domain">[('user', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_view_search"/>
         </record>
 
@@ -850,7 +870,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_session1">
-            <field name="domain">[('create_uid', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_session"/>
         </record>
 
@@ -860,7 +882,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_session_wizard1">
-            <field name="domain">[('create_uid', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_session_wizard"/>
         </record>
 
@@ -870,7 +894,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_ui_menu_favorite1">
-            <field name="domain">[('user', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_ui_menu_favorite"/>
         </record>
 

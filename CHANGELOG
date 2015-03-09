@@ -1,3 +1,12 @@
+* Remove safe_eval
+* Add ModelView.view_attributes
+* Add pyson attribute on data field tag
+* Changed into JSON:
+    - record rule domain
+    - trigger condition
+    - 'states', 'domain', 'spell' and 'colors' view attributes
+    - view domain
+    - 'email', 'domain', 'context', 'order' and 'search_value' action fields
 * Add product attribute on form view for One2Many
 * Remove float_time widget
 * Add TimeDelta field

@@ -159,6 +159,12 @@ Class methods:
 
     Returns the window title used by the client for the specific view type.
 
+.. classmethod:: ModelView.view_attributes()
+
+    Returns a list of XPath, attribute and value.
+    Each element from the XPath will get the attribute set with the JSON
+    encoded value.
+
 ============
 ModelStorage
 ============

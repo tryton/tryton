@@ -30,7 +30,7 @@ from trytond.rpc import RPC
 from .modelview import ModelView
 from .descriptors import dualmethod
 
-__all__ = ['ModelStorage']
+__all__ = ['ModelStorage', 'EvalEnvironment']
 
 
 def cache_size():

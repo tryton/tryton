@@ -912,10 +912,9 @@ class ModelData(ModelSQL, ModelView):
             return dict(json.loads(values, object_hook=JSONDecoder()))
         except ValueError:
             # Migration from 3.2
-            from ..tools import safe_eval
             from decimal import Decimal
             import datetime
-            return safe_eval(values, {
+            return eval(values, {
                     'Decimal': Decimal,
                     'datetime': datetime,
                     })

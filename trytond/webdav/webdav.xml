@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Collections</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">webdav.collection</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_collection_tree_view1">
@@ -116,7 +116,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_share">
-            <field name="domain">[('user', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_share"/>
         </record>
 

@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from ..model import ModelView, ModelSQL, fields
-from ..tools import safe_eval
+from ..model import ModelView, ModelSQL, fields, EvalEnvironment
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
 from .. import backend
+from ..pyson import PYSONDecoder
 
 __all__ = [
     'RuleGroup', 'Rule',
@@ -95,7 +95,8 @@ class Rule(ModelSQL, ModelView):
     rule_group = fields.Many2One('ir.rule.group', 'Group', select=True,
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,
-        help='Domain is evaluated with "user" as the current user')
+        help='Domain is evaluated with a PYSON context containing:\n'
+        '- "user" as the current user')
     _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
     @classmethod
@@ -126,7 +127,7 @@ class Rule(ModelSQL, ModelView):
         ctx = cls._get_context()
         for rule in rules:
             try:
-                value = safe_eval(rule.domain, ctx)
+                value = PYSONDecoder(ctx).decode(rule.domain)
             except Exception:
                 cls.raise_user_error('invalid_domain', (rule.rec_name,))
             if not isinstance(value, list):
@@ -142,7 +143,7 @@ class Rule(ModelSQL, ModelView):
         User = Pool().get('res.user')
         user_id = Transaction().user
         with Transaction().set_context(_check_access=False):
-            user = User(user_id)
+            user = EvalEnvironment(User(user_id), User)
         return {
             'user': user,
             }
@@ -218,7 +219,7 @@ class Rule(ModelSQL, ModelView):
             for rule in cls.browse(ids):
                 assert rule.domain, ('Rule domain empty,'
                     'check if migration was done')
-                dom = safe_eval(rule.domain, ctx)
+                dom = PYSONDecoder(ctx).decode(rule.domain)
                 if rule.rule_group.global_p:
                     clause_global.setdefault(rule.rule_group.id, ['OR'])
                     clause_global[rule.rule_group.id].append(dom)

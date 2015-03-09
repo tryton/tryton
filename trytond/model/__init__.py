@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from .model import Model
 from .modelview import ModelView
-from .modelstorage import ModelStorage
+from .modelstorage import ModelStorage, EvalEnvironment
 from .modelsingleton import ModelSingleton
 from .modelsql import ModelSQL
 from .workflow import Workflow
@@ -12,4 +12,5 @@ from .union import UnionMixin
 from .descriptors import dualmethod
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod']
+    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
+    'EvalEnvironment']

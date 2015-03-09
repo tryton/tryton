@@ -126,7 +126,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_lang_form">
             <field name="name">Languages</field>
             <field name="res_model">ir.lang</field>
-            <field name="context">{'active_test': False}</field>
+            <field name="context" eval="{'active_test': False}" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_lang_form_view1">

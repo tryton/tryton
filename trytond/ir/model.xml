@@ -204,7 +204,7 @@ this repository contains the full copyright notices and license terms. -->
             id="act_model_data_form_domain_out_of_sync">
             <field name="name">Out of Sync</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('out_of_sync', '=', True)]</field>
+            <field name="domain" eval="[('out_of_sync', '=', True)]" pyson="1"/>
             <field name="act_window" ref="act_model_data_form"/>
         </record>
         <record model="ir.action.act_window.domain"

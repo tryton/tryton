@@ -8,7 +8,7 @@ import datetime
 import sql
 import sql.operators
 
-from trytond.tools import reduce_ids, safe_eval, datetime_strftime, \
+from trytond.tools import reduce_ids, datetime_strftime, \
     reduce_domain, decimal_
 
 
@@ -58,24 +58,6 @@ class ToolsTestCase(unittest.TestCase):
             (((self.table.id >= 1.0) & (self.table.id <= 12.0))
                 | (self.table.id.in_([15.0, 18.0, 19.0, 21.0]))))
         self.assertRaises(AssertionError, reduce_ids, self.table.id, [1.1])
-
-    def test0060safe_eval_builtin(self):
-        'Attempt to access a unsafe builtin'
-        self.assertRaises(NameError, safe_eval, "open('test.txt', 'w')")
-
-    def test0061safe_eval_getattr(self):
-        'Attempt to get arround direct attr access'
-        self.assertRaises(NameError, safe_eval, "getattr(int, 'real')")
-
-    def test0062safe_eval_func_globals(self):
-        'Attempt to access global enviroment where fun was defined'
-        self.assertRaises(SyntaxError, safe_eval,
-                "def x(): pass; print x.func_globals")
-
-    def test0063safe_eval_lowlevel(self):
-        "Lowlevel tricks to access 'object'"
-        self.assertRaises(ValueError, safe_eval,
-                "().__class__.mro()[1].__subclasses__()")
 
     def test0070datetime_strftime(self):
         'Test datetime_strftime'

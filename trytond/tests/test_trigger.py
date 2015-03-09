@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
+from trytond.pyson import PYSONEncoder, Eval
 
 
 class TriggerTestCase(unittest.TestCase):
@@ -37,7 +38,7 @@ class TriggerTestCase(unittest.TestCase):
                 'name': 'Test',
                 'model': model.id,
                 'on_time': True,
-                'condition': 'True',
+                'condition': 'true',
                 'action_model': action_model.id,
                 'action_function': 'test',
                 }
@@ -80,7 +81,7 @@ class TriggerTestCase(unittest.TestCase):
                         'name': 'Test',
                         'model': model.id,
                         'on_create': True,
-                        'condition': 'True',
+                        'condition': 'true',
                         'action_model': action_model.id,
                         'action_function': 'trigger',
                         }])
@@ -93,8 +94,10 @@ class TriggerTestCase(unittest.TestCase):
             TRIGGER_LOGS.pop()
 
             # Trigger with condition
+            condition = PYSONEncoder().encode(
+                Eval('self', {}).get('name') == 'Bar')
             self.trigger.write([trigger], {
-                    'condition': 'self.name == "Bar"',
+                    'condition': condition,
                     })
 
             # Matching condition
@@ -112,7 +115,7 @@ class TriggerTestCase(unittest.TestCase):
 
             # With limit number
             self.trigger.write([trigger], {
-                    'condition': 'True',
+                    'condition': 'true',
                     'limit_number': 1,
                     })
             triggered, = self.triggered.create([{
@@ -151,7 +154,7 @@ class TriggerTestCase(unittest.TestCase):
                         'name': 'Test',
                         'model': model.id,
                         'on_write': True,
-                        'condition': 'True',
+                        'condition': 'true',
                         'action_model': action_model.id,
                         'action_function': 'trigger',
                         }])
@@ -166,8 +169,10 @@ class TriggerTestCase(unittest.TestCase):
             self.assertEqual(TRIGGER_LOGS, [])
 
             # Trigger with condition
+            condition = PYSONEncoder().encode(
+                Eval('self', {}).get('name') == 'Bar')
             self.trigger.write([trigger], {
-                    'condition': 'self.name == "Bar"',
+                    'condition': condition,
                     })
 
             # Matching condition
@@ -190,8 +195,10 @@ class TriggerTestCase(unittest.TestCase):
             self.assertEqual(TRIGGER_LOGS, [])
 
             # With limit number
+            condition = PYSONEncoder().encode(
+                Eval('self', {}).get('name') == 'Bar')
             self.trigger.write([trigger], {
-                    'condition': 'self.name == "Bar"',
+                    'condition': condition,
                     'limit_number': 1,
                     })
             triggered, = self.triggered.create([{
@@ -266,7 +273,7 @@ class TriggerTestCase(unittest.TestCase):
                         'name': 'Test',
                         'model': model.id,
                         'on_delete': True,
-                        'condition': 'True',
+                        'condition': 'true',
                         'action_model': action_model.id,
                         'action_function': 'trigger',
                         }])
@@ -277,8 +284,10 @@ class TriggerTestCase(unittest.TestCase):
             Transaction().delete = {}
 
             # Trigger with condition
+            condition = PYSONEncoder().encode(
+                Eval('self', {}).get('name') == 'Bar')
             self.trigger.write([trigger], {
-                    'condition': 'self.name == "Bar"',
+                    'condition': condition,
                     })
 
             triggered, = self.triggered.create([{
@@ -306,7 +315,7 @@ class TriggerTestCase(unittest.TestCase):
 
             # With limit number
             self.trigger.write([trigger], {
-                    'condition': 'True',
+                    'condition': 'true',
                     'limit_number': 1,
                     })
             self.triggered.delete([triggered])
@@ -351,7 +360,7 @@ class TriggerTestCase(unittest.TestCase):
                         'name': 'Test',
                         'model': model.id,
                         'on_time': True,
-                        'condition': 'True',
+                        'condition': 'true',
                         'action_model': action_model.id,
                         'action_function': 'trigger',
                         }])
@@ -364,8 +373,10 @@ class TriggerTestCase(unittest.TestCase):
             TRIGGER_LOGS.pop()
 
             # Trigger with condition
+            condition = PYSONEncoder().encode(
+                Eval('self', {}).get('name') == 'Bar')
             self.trigger.write([trigger], {
-                    'condition': 'self.name == "Bar"',
+                    'condition': condition,
                     })
 
             # Matching condition
@@ -385,7 +396,7 @@ class TriggerTestCase(unittest.TestCase):
 
             # With limit number
             self.trigger.write([trigger], {
-                    'condition': 'True',
+                    'condition': 'true',
                     'limit_number': 1,
                     })
             self.trigger.trigger_time()

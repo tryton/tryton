@@ -6,8 +6,8 @@ import copy
 import collections
 
 from trytond.model import Model, fields
-from trytond.tools import safe_eval, ClassProperty
-from trytond.pyson import PYSONEncoder, CONTEXT
+from trytond.tools import ClassProperty
+from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool
@@ -284,8 +284,8 @@ class ModelView(Model):
                     raise_p = True
             for view in views:
                 if view.domain:
-                    if not safe_eval(view.domain,
-                            {'context': Transaction().context}):
+                    if not PYSONDecoder({'context': Transaction().context}
+                            ).decode(view.domain):
                         continue
                 if not view.arch or not view.arch.strip():
                     continue
@@ -372,10 +372,20 @@ class ModelView(Model):
         return value
 
     @classmethod
+    def view_attributes(cls):
+        'Return a list of xpath, attribute name and value'
+        return []
+
+    @classmethod
     def _view_look_dom_arch(cls, tree, type, field_children=None):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         FieldAccess = pool.get('ir.model.field.access')
+
+        encoder = PYSONEncoder()
+        for xpath, attribute, value in cls.view_attributes():
+            for element in tree.xpath(xpath):
+                element.set(attribute, encoder.encode(value))
 
         fields_width = {}
         tree_root = tree.getroottree().getroot()
@@ -516,15 +526,7 @@ class ModelView(Model):
             if element.get('name') in fields_width:
                 element.set('width', str(fields_width[element.get('name')]))
 
-        # convert attributes into pyson
         encoder = PYSONEncoder()
-        for attr in ('states', 'domain', 'spell', 'colors'):
-            if (element.get(attr)
-                    # Avoid double evaluation from inherit with different model
-                    and '__' not in element.get(attr)):
-                element.set(attr, encoder.encode(safe_eval(element.get(attr),
-                    CONTEXT)))
-
         if element.tag == 'button':
             button_name = element.attrib['name']
             if button_name in cls._buttons:

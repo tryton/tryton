@@ -20,6 +20,6 @@ this repository contains the full copyright notices and license terms. -->
         <separator name="src"/>
         <separator name="value"/>
         <field name="src"/>
-        <field name="value" spell="Eval('lang')"/>
+        <field name="value"/>
     </group>
 </form>

@@ -101,7 +101,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_user_warning1">
-            <field name="domain">[('user', '=', user.id)]</field>
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]" pyson="1"/>
             <field name="rule_group" ref="rule_group_user_warning"/>
         </record>
 

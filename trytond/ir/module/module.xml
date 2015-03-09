@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Modules</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.module.module</field>
-            <field name="domain">[('name', '!=', 'tests')]</field>
+            <field name="domain" eval="[('name', '!=', 'tests')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_module_form_view1">

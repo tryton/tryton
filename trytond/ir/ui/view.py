@@ -12,7 +12,7 @@ from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
 from trytond import backend
 from trytond.pyson import CONTEXT, Eval, Bool, PYSONDecoder
-from trytond.tools import safe_eval, file_open
+from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, Button
 from trytond.pool import Pool
@@ -155,7 +155,7 @@ class View(ModelSQL, ModelView):
                 for attr in ('states', 'domain', 'spell', 'colors'):
                     if element.get(attr):
                         try:
-                            value = safe_eval(element.get(attr), CONTEXT)
+                            value = PYSONDecoder().decode(element.get(attr))
                             validates.get(attr, lambda a: True)(value)
                         except Exception, e:
                             logger.error('Invalid pyson view element "%s:%s":'

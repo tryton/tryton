@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sequences</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.sequence</field>
-            <field name="context">{'active_test': False}</field>
+            <field name="context" eval="{'active_test': False}" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_sequence_form_view1">
@@ -51,7 +51,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sequences Strict</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.sequence.strict</field>
-            <field name="context">{'active_test': False}</field>
+            <field name="context" eval="{'active_test': False}" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_sequence_strict_form_view1">

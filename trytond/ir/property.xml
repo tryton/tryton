@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Default Properties</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.property</field>
-            <field name="domain">[('res', '=', None)]</field>
+            <field name="domain" eval="[('res', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_property_form_view1_default">

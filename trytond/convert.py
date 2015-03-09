@@ -7,10 +7,12 @@ import re
 from sql import Table
 from itertools import izip
 from collections import defaultdict
+from decimal import Decimal
 
 from .version import VERSION
-from .tools import safe_eval, grouped_slice
+from .tools import grouped_slice
 from .transaction import Transaction
+from .pyson import PYSONEncoder, CONTEXT
 
 logger = logging.getLogger(__name__)
 
@@ -53,7 +55,7 @@ class MenuitemTagHandler:
                 values[attr] = attributes.get(attr)
 
         if attributes.get('active'):
-            values['active'] = bool(safe_eval(attributes['active']))
+            values['active'] = bool(eval(attributes['active']))
 
         if values.get('parent'):
             values['parent'] = self.mh.get_id(values['parent'])
@@ -208,12 +210,13 @@ class RecordTagHandler:
             search_attr = attributes.get('search', '')
             ref_attr = attributes.get('ref', '')
             eval_attr = attributes.get('eval', '')
+            pyson_attr = bool(int(attributes.get('pyson', '0')))
 
             if search_attr:
                 search_model = self.model._fields[field_name].model_name
                 SearchModel = self.mh.pool.get(search_model)
                 with Transaction().set_context(active_test=False):
-                    found, = SearchModel.search(safe_eval(search_attr))
+                    found, = SearchModel.search(eval(search_attr))
                     self.values[field_name] = found.id
 
             elif ref_attr:
@@ -225,7 +228,13 @@ class RecordTagHandler:
                 context['version'] = VERSION.rsplit('.', 1)[0]
                 context['ref'] = self.mh.get_id
                 context['obj'] = lambda *a: 1
-                self.values[field_name] = safe_eval(eval_attr, context)
+                context['Decimal'] = Decimal
+                if pyson_attr:
+                    context.update(CONTEXT)
+                value = eval(eval_attr, context)
+                if pyson_attr:
+                    value = PYSONEncoder().encode(value)
+                self.values[field_name] = value
 
         else:
             raise Exception("Tags '%s' not supported inside tag record." %
@@ -534,16 +543,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         elif field_type == 'reference':
             if not getattr(record, key):
                 return None
-            elif not isinstance(getattr(record, key), basestring):
-                return str(getattr(record, key))
-            ref_mode, ref_id = getattr(record, key).split(',', 1)
-            try:
-                ref_id = safe_eval(ref_id)
-            except Exception:
-                pass
-            if isinstance(ref_id, (list, tuple)):
-                ref_id = ref_id[0]
-            return ref_mode + ',' + str(ref_id)
+            return str(getattr(record, key))
         elif field_type in ['one2many', 'many2many']:
             raise Unhandled_field("Unhandled field %s" % key)
         else:

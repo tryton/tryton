@@ -24,7 +24,7 @@ from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from ..tools import file_open, reduce_ids, grouped_slice
 from .. import backend
-from ..pyson import PYSONEncoder
+from ..pyson import PYSONEncoder, Eval
 from ..transaction import Transaction
 from ..pool import Pool
 from ..cache import Cache
@@ -371,6 +371,10 @@ class Translation(ModelSQL, ModelView):
     @classmethod
     def get_src_md5(cls, src):
         return md5((src or '').encode('utf-8')).hexdigest()
+
+    @classmethod
+    def view_attributes(cls):
+        return [('/form//field[@name="value"]', 'spell', Eval('lang'))]
 
     @classmethod
     def get_ids(cls, name, ttype, lang, ids):

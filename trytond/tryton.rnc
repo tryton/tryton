@@ -18,6 +18,7 @@ attlist.field &= attribute name { text }
 attlist.field &= attribute search { text }?
 attlist.field &= attribute ref { text }?
 attlist.field &= attribute eval { text }?
+attlist.field &= attribute pyson { "0" | "1" }?
 attlist.field &= attribute type { "xml" }?
 menuitem = element menuitem { attlist.menuitem, empty }
 attlist.menuitem &= attribute id { text }

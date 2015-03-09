@@ -174,6 +174,18 @@ class Sequence(ModelSQL, ModelView):
                 })
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('//group[@id="incremental"]', 'states', {
+                    'invisible': ~Eval('type').in_(['incremental']),
+                    }),
+            ('//group[@id="timestamp"]', 'states', {
+                    'invisible': ~Eval('type').in_(
+                        ['decimal timestamp', 'hexadecimal timestamp']),
+                    }),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         sequences = super(Sequence, cls).create(vlist)
         for sequence, values in izip(sequences, vlist):
