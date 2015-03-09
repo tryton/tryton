@@ -54,7 +54,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_journal1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_payment_journal"/>
         </record>
 
@@ -116,7 +118,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment_group1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_payment_group"/>
         </record>
 
@@ -196,31 +200,31 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_approved">
             <field name="name">Approved</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'approved')]</field>
+            <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_processing">
             <field name="name">Processing</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'processing')]</field>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_suceeded">
             <field name="name">Succeeded</field>
             <field name="sequence" eval="40"/>
-            <field name="domain">[('state', '=', 'succeeded')]</field>
+            <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_failed">
             <field name="name">Failed</field>
             <field name="sequence" eval="50"/>
-            <field name="domain">[('state', '=', 'failed')]</field>
+            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
             <field name="act_window" ref="act_payment_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_all">
@@ -238,14 +242,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_payment1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_payment"/>
         </record>
 
         <record model="ir.action.act_window" id="act_payment_form_line_relate">
             <field name="name">Payments</field>
             <field name="res_model">account.payment</field>
-            <field name="domain">[('line', '=', Eval('active_id'))]</field>
+            <field name="domain"
+                eval="[('line', '=', Eval('active_id'))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_payment_form_line_relate_view1">
@@ -269,7 +276,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_payment_form_group_open">
             <field name="name">Payments</field>
             <field name="res_model">account.payment</field>
-            <field name="domain">[('group', '=', Eval('active_id'))]</field>
+            <field name="domain"
+                eval="[('group', '=', Eval('active_id'))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_payment_form_group_open_view1">
