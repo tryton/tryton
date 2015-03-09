@@ -8,9 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="salable"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']" position="after">
-        <page string="Customers"
-            states="{'invisible': Not(Bool(Eval('salable')))}"
-            id="customers">
+        <page string="Customers" id="customers">
             <label name="salable"/>
             <field name="salable"/>
             <label name="sale_uom"/>

@@ -15,8 +15,7 @@ this repository contains the full copyright notices and license terms. -->
                 view_ids="sale.product_view_list_sale_line"/>
             <newline/>
             <label name="description"/>
-            <field name="description" colspan="3" yexpand="0"
-                spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
+            <field name="description" colspan="3" yexpand="0"/>
             <label name="quantity"/>
             <field name="quantity"/>
             <label name="unit"/>
@@ -33,8 +32,7 @@ this repository contains the full copyright notices and license terms. -->
         </page>
         <page string="Notes" id="notes">
             <separator name="note" colspan="4"/>
-            <field name="note" colspan="4"
-                spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
+            <field name="note" colspan="4"/>
         </page>
     </notebook>
 </form>

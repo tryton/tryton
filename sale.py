@@ -636,6 +636,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return res
 
     @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="comment"]', 'spell', Eval('party_lang'))]
+
+    @classmethod
     def copy(cls, sales, default=None):
         if default is None:
             default = {}
@@ -1365,6 +1369,11 @@ class SaleLine(ModelSQL, ModelView):
                         'sale': self.sale.rec_name,
                         })
         return [invoice_line]
+
+    @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="note"]|//field[@name="description"]',
+                'spell', Eval('_parent_sale', {}).get('party_lang'))]
 
     @classmethod
     def copy(cls, lines, default=None):

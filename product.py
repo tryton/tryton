@@ -64,6 +64,13 @@ class Template:
             else:
                 self.sale_uom = self.default_uom
 
+    @classmethod
+    def view_attributes(cls):
+        return super(Template, cls).view_attributes() + [
+            ('//page[@id="customers"]', 'states', {
+                    'invisible': ~Eval('salable'),
+                    })]
+
 
 class Product:
     __name__ = 'product.product'

@@ -71,7 +71,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_form">
             <field name="name">Shipments</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="domain">[('moves.sale', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('moves.sale', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_shipment_keyword1">
@@ -82,7 +84,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_return_form">
             <field name="name">Returns</field>
             <field name="res_model">stock.shipment.out.return</field>
-            <field name="domain">[('moves.sale', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('moves.sale', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_open_shipment_return_keyword1">
             <field name="keyword">form_relate</field>
@@ -92,7 +96,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain">[('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.line')]</field>
+            <field name="domain"
+                eval="[('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.line')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
@@ -119,25 +125,33 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'draft')]"
+                pyson="1"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_quotation">
             <field name="name">Quotation</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'quotation')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'quotation')]"
+                pyson="1"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_confirmed">
             <field name="name">Confirmed</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'confirmed')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'confirmed')]"
+                pyson="1"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_processing">
             <field name="name">Processing</field>
             <field name="sequence" eval="40"/>
-            <field name="domain">[('state', '=', 'processing')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'processing')]"
+                pyson="1"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_all">
@@ -157,7 +171,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_sale_invoice_relate">
             <field name="name">Sales</field>
             <field name="res_model">sale.sale</field>
-            <field name="domain">[('invoices', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('invoices', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_sale_invoice_relate_view1">
@@ -181,7 +197,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_sale_shipments_relate">
             <field name="name">Sales</field>
             <field name="res_model">sale.sale</field>
-            <field name="domain">[('shipments', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_sale_shipments_relate_view1">
@@ -380,7 +398,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sale1">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_sale"/>
         </record>
 

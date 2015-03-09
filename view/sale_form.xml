@@ -68,7 +68,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="shipment_method"/>
             <field name="shipment_method"/>
             <separator name="comment" colspan="4"/>
-            <field name="comment" colspan="4" spell="Eval('party_lang')"/>
+            <field name="comment" colspan="4"/>
         </page>
         <page string="Invoices" id="invoices">
             <field name="invoices" colspan="4"/>
