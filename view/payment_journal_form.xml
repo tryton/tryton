@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='process_method']" position="after">
-        <separator id="sepa" string="SEPA" colspan="4"
-            states="{'invisible': Eval('process_method') != 'sepa'}"/>
+        <separator name="sepa_bank_account_number" string="SEPA" colspan="4"/>
         <label name="sepa_bank_account_number"/>
         <field name="sepa_bank_account_number"/>
         <newline/>

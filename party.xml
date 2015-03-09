@@ -11,7 +11,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_mandate_form2">
             <field name="name">Mandates</field>
             <field name="res_model">account.payment.sepa.mandate</field>
-            <field name="domain">[("party", "=", Eval('active_id'))]</field>
+            <field name="domain"
+                eval="[('party', '=', Eval('active_id'))]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_mandate_form2_view1">
             <field name="sequence" eval="10"/>
