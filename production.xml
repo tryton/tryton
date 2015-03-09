@@ -26,7 +26,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_production_request">
             <field name="name">Request Productions</field>
             <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'request')]</field>
+            <field name="search_value"
+                eval="[('state', '=', 'request')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_production_request_view1">
