@@ -62,8 +62,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_party_by_category">
             <field name="name">Parties by Category</field>
             <field name="res_model">party.party</field>
-            <field name="context">{'categories': [Eval('active_id')]}</field>
-            <field name="domain">[('categories', 'child_of', [Eval('active_id')], 'parent')]</field>
+            <field name="context"
+                eval="{'categories': [Eval('active_id')]}" pyson="1"/>
+            <field name="domain"
+                eval="[('categories', 'child_of', [Eval('active_id')], 'parent')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_party_by_category_keyword1">
             <field name="keyword">tree_open</field>
