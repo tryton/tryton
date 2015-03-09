@@ -32,14 +32,14 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_order_point_form_domain_purchase">
             <field name="name">Purchase</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('type', '=', 'purchase')]</field>
+            <field name="domain" eval="[('type', '=', 'purchase')]" pyson="1"/>
             <field name="act_window" ref="act_order_point_form"/>
         </record>
         <record model="ir.action.act_window.domain"
                 id="act_order_point_form_domain_internal">
             <field name="name">Internal</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('type', '=', 'internal')]</field>
+            <field name="domain" eval="[('type', '=', 'internal')]" pyson="1"/>
             <field name="act_window" ref="act_order_point_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -72,7 +72,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_order_point">
-            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_order_point"/>
         </record>
     </data>
