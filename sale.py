@@ -55,3 +55,10 @@ class SaleLine:
                     self.principal = self.product.default_principal
             elif self.principal:
                 self.principal = None
+
+    @classmethod
+    def view_attributes(cls):
+        return super(SaleLine, cls).view_attributes() + [
+            ('//page[@id="commissions"]', 'states', {
+                    'invisible': Eval('type') != 'line',
+                    })]

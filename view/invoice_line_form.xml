@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page[@id='general']" position="after">
-        <page string="Commissions" id="commissions"
-            states="{'invisible': Eval('type') != 'line'}">
+        <page string="Commissions" id="commissions">
             <label name="principal"/>
             <field name="principal"/>
             <field name="commissions" colspan="4"/>

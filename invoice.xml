@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
@@ -18,7 +17,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_commission_relate">
             <field name="name">Commissions</field>
             <field name="res_model">commission</field>
-            <field name="domain">[('origin.invoice', 'in', Eval('active_ids'), 'account.invoice.line')]</field>
+            <field name="domain"
+                eval="[('origin.invoice', 'in', Eval('active_ids'), 'account.invoice.line')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_commission_relate_view1">
@@ -41,7 +42,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_commission_from_relate">
             <field name="name">From Commissions</field>
             <field name="res_model">commission</field>
-            <field name="domain">[('invoice_line.invoice', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('invoice_line.invoice', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_commission_from_relate_view1">
