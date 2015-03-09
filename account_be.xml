@@ -1744,24 +1744,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="1"/>
         </record>
 
-        <record model="account.account.template" id="150">
-            <field name="name">Subsides en capital reçus en espèces</field>
-            <field name="code">150</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VI"/>
-            <field name="parent" ref="15"/>
-        </record>
-
-        <record model="account.account.template" id="151">
-            <field name="name">Subsides en capital reçus en nature</field>
-            <field name="code">151</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VI"/>
-            <field name="parent" ref="15"/>
-        </record>
-
         <record model="account.account.template" id="16">
             <field name="name">Provisions pour risques et charges</field>
             <field name="code">16</field>
@@ -1869,15 +1851,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">other</field>
             <field name="type" ref="passif_VII_B"/>
             <field name="parent" ref="168"/>
-        </record>
-
-        <record model="account.account.template" id="169">
-            <field name="name">Provisions pour dons et legs avec droit de reprise</field>
-            <field name="code">169</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VII_B"/>
-            <field name="parent" ref="16"/>
         </record>
 
         <record model="account.account.template" id="17">
@@ -2042,30 +2015,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="passif_VIII_D"/>
             <field name="parent" ref="17"/>
         </record>
-        <record model="account.account.template" id="1790">
-            <field name="name">Productives d'intérêts</field>
-            <field name="code">1790</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VIII_D"/>
-            <field name="parent" ref="179"/>
-        </record>
-        <record model="account.account.template" id="1791">
-            <field name="name">Non-productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
-            <field name="code">1791</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VIII_D"/>
-            <field name="parent" ref="179"/>
-        </record>
-        <record model="account.account.template" id="1792">
-            <field name="name">Cautionnements reçus en numéraire</field>
-            <field name="code">1792</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_VIII_D"/>
-            <field name="parent" ref="179"/>
-        </record>
 
         <record model="account.account.template" id="2">
             <field name="name">Frais d'établissement, actifs immobilisés et créances à plus d'un an</field>
@@ -2103,6 +2052,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="202">
             <field name="name">Autres frais d'établissement</field>
             <field name="code">202</field>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="type" ref="actif_I"/>
+            <field name="parent" ref="20"/>
+        </record>
+
+        <record model="account.account.template" id="203">
+            <field name="name">Intérêts intercalaires</field>
+            <field name="code">203</field>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="actif_I"/>
@@ -2188,6 +2146,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="22"/>
         </record>
 
+        <record model="account.account.template" id="222">
+            <field name="name">Terrains bâtis</field>
+            <field name="code">222</field>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="type" ref="actif_III_A"/>
+            <field name="parent" ref="22"/>
+        </record>
+
+        <record model="account.account.template" id="223">
+            <field name="name">Autres droits réels sur des immeubles</field>
+            <field name="code">223</field>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="type" ref="actif_III_A"/>
+            <field name="parent" ref="22"/>
+        </record>
+
         <record model="account.account.template" id="23">
             <field name="name">Installations, machines et outillage</field>
             <field name="code">23</field>
@@ -2196,48 +2172,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="2"/>
         </record>
 
-        <record model="account.account.template" id="231">
-            <field name="name">Installations, machines et outillage appartenant à l'association en plein propriété</field>
-            <field name="code">231</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_B"/>
-            <field name="parent" ref="23"/>
-        </record>
-
-        <record model="account.account.template" id="232">
-            <field name="name">Autres installation,s, machines et outillage</field>
-            <field name="code">232</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_B"/>
-            <field name="parent" ref="23"/>
-        </record>
-
         <record model="account.account.template" id="24">
             <field name="name">Mobilier et matériel roulant</field>
             <field name="code">24</field>
             <field name="kind">view</field>
             <field name="type" ref="actif_III_C"/>
             <field name="parent" ref="2"/>
-        </record>
-
-        <record model="account.account.template" id="241">
-            <field name="name">Mobilier et matériel roulant appartenant à l'association en pleine propriété</field>
-            <field name="code">241</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_C"/>
-            <field name="parent" ref="24"/>
-        </record>
-
-        <record model="account.account.template" id="242">
-            <field name="name">Autres installations, machines et outillage</field>
-            <field name="code">242</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_C"/>
-            <field name="parent" ref="24"/>
         </record>
 
         <record model="account.account.template" id="25">
@@ -2281,24 +2221,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">view</field>
             <field name="type" ref="actif_III_E"/>
             <field name="parent" ref="2"/>
-        </record>
-
-        <record model="account.account.template" id="261">
-            <field name="name">Autres immobilisations corporelles appartenant à l'association en pleine propriété</field>
-            <field name="code">261</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_E"/>
-            <field name="parent" ref="26"/>
-        </record>
-
-        <record model="account.account.template" id="262">
-            <field name="name">Autres immobilisations corporelles</field>
-            <field name="code">262</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_III_E"/>
-            <field name="parent" ref="26"/>
         </record>
 
         <record model="account.account.template" id="27">
@@ -3148,15 +3070,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="41"/>
         </record>
 
-        <record model="account.account.template" id="415">
-            <field name="name">Créances non productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
-            <field name="code">415</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="actif_VII_B"/>
-            <field name="parent" ref="41"/>
-        </record>
-
         <record model="account.account.template" id="416">
             <field name="name">Créances diverses</field>
             <field name="code">416</field>
@@ -3355,30 +3268,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">view</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="42"/>
-        </record>
-        <record model="account.account.template" id="4290">
-            <field name="name">Productives d'intérêts</field>
-            <field name="code">4290</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_IX_A"/>
-            <field name="parent" ref="429"/>
-        </record>
-        <record model="account.account.template" id="4291">
-            <field name="name">Non-productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
-            <field name="code">4291</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_IX_A"/>
-            <field name="parent" ref="429"/>
-        </record>
-        <record model="account.account.template" id="4292">
-            <field name="name">Cautionnements reçus en numéraire</field>
-            <field name="code">4292</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_IX_A"/>
-            <field name="parent" ref="429"/>
         </record>
 
         <record model="account.account.template" id="43">
@@ -3796,24 +3685,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">view</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="48"/>
-        </record>
-
-        <record model="account.account.template" id="4890">
-            <field name="name">Productives d'intérêts</field>
-            <field name="code">4890</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_IX_F"/>
-            <field name="parent" ref="489"/>
-        </record>
-
-        <record model="account.account.template" id="4891">
-            <field name="name">Non-productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
-            <field name="code">4891</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="passif_IX_F"/>
-            <field name="parent" ref="489"/>
         </record>
 
         <record model="account.account.template" id="49">
@@ -4984,32 +4855,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="637"/>
         </record>
 
-        <record model="account.account.template" id="638">
-            <field name="name">Provisions pour dons et legs avec droit de reprise</field>
-            <field name="code">638</field>
-            <field name="kind">view</field>
-            <field name="type" ref="resultats_II_F"/>
-            <field name="parent" ref="63"/>
-        </record>
-
-        <record model="account.account.template" id="6380">
-            <field name="name">Dotations</field>
-            <field name="code">6380</field>
-            <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
-            <field name="type" ref="resultats_II_F"/>
-            <field name="parent" ref="638"/>
-        </record>
-
-        <record model="account.account.template" id="6381">
-            <field name="name">Utilisations et reprises</field>
-            <field name="code">6381</field>
-            <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
-            <field name="type" ref="resultats_II_F"/>
-            <field name="parent" ref="638"/>
-        </record>
-
         <record model="account.account.template" id="64">
             <field name="name">Autres charges d'exploitation</field>
             <field name="code">64</field>
@@ -5051,24 +4896,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">view</field>
             <field name="type" ref="resultats_II_G"/>
             <field name="parent" ref="64"/>
-        </record>
-
-        <record model="account.account.template" id="6431">
-            <field name="name">Dons avec droit de reprise</field>
-            <field name="code">6431</field>
-            <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
-            <field name="type" ref="resultats_II_G"/>
-            <field name="parent" ref="643"/>
-        </record>
-
-        <record model="account.account.template" id="6432">
-            <field name="name">Dons sans droit de reprise</field>
-            <field name="code">6432</field>
-            <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
-            <field name="type" ref="resultats_II_G"/>
-            <field name="parent" ref="643"/>
         </record>
 
         <record model="account.account.template" id="644">
