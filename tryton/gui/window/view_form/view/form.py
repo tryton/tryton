@@ -483,7 +483,7 @@ class ViewForm(View):
                 for notebook in self.notebooks:
                     notebook.set_current_page(0)
             if self.attributes.get('cursor') in self.widgets:
-                focus_widget = find_focused_child(self.widgets[
+                focus_widget = find_focusable_child(self.widgets[
                         self.attributes['cursor']][0].widget)
             else:
                 child = find_focusable_child(self._viewport)
@@ -501,8 +501,9 @@ class ViewForm(View):
                         invalid_widget = find_focusable_child(widget.widget)
                         if invalid_widget:
                             invalid_widgets.append(invalid_widget)
-            focus_widget = find_first_focus_widget(
-                self._viewport, invalid_widgets)
+            if invalid_widgets:
+                focus_widget = find_first_focus_widget(
+                    self._viewport, invalid_widgets)
         if focus_widget:
             for notebook in self.notebooks:
                 for i in range(notebook.get_n_pages()):

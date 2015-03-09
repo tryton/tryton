@@ -86,6 +86,8 @@ def next_focus_widget(widget):
 
 def find_first_focus_widget(ancestor, widgets):
     "Return the widget from widgets which should have first the focus"
+    if len(widgets) == 1:
+        return widgets[0]
     for child in get_focus_chain(ancestor):
         common = [w for w in widgets if w.is_ancestor(child)]
         if common:
