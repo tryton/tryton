@@ -76,8 +76,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="cancel_move"/>
             <field name="cancel_move"/>
             <separator name="comment" colspan="4"/>
-            <field name="comment" colspan="4"
-                spell="Eval('party_lang')"/>
+            <field name="comment" colspan="4"/>
         </page>
         <page string="Payment" id="payment">
             <label name="amount_to_pay_today"/>

@@ -14,7 +14,7 @@ from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from trytond import backend
-from trytond.pyson import If, Eval, Bool, Id
+from trytond.pyson import If, Eval, Bool, Id, PYSONEncoder
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -958,6 +958,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     (l.origin_name for l in self.lines))))
 
     @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="comment"]', 'spell', Eval('party_lang'))]
+
+    @classmethod
     def delete(cls, invoices):
         cls.check_modify(invoices)
         # Cancel before delete
@@ -1841,6 +1845,13 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                         'line': line.rec_name,
                         'invoice': line.invoice.rec_name
                         })
+
+    @classmethod
+    def view_attributes(cls):
+        return [('//field[@name="note"]|//field[@name="description"]', 'spell',
+                If(Bool(Eval('_parent_invoice')),
+                    Eval('_parent_invoice', {}).get('party_lang'),
+                    Eval('party_lang')))]
 
     @classmethod
     def delete(cls, lines):
