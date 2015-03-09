@@ -1288,7 +1288,7 @@ class Line(ModelSQL, ModelView):
                 cls.raise_user_error('already_reconciled',
                         error_args=(line.move.number, line.id,))
 
-        lines = lines[:]
+        lines = list(lines)
         if journal and account:
             if not date:
                 date = Date.today()
