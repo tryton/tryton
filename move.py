@@ -603,18 +603,19 @@ class Move(Workflow, ModelSQL, ModelView):
             for _, qty in to_pick:
                 picked_qties += qty
 
-            if picked_qties < move.quantity:
+            if move.quantity - picked_qties > move.uom.rounding:
                 success = False
                 first = False
                 cls.write([move], {
-                    'quantity': move.quantity - picked_qties,
+                    'quantity': Uom.round(
+                            move.quantity - picked_qties, move.uom.rounding),
                     })
             else:
                 first = True
             for from_location, qty in to_pick:
                 values = {
                     'from_location': from_location.id,
-                    'quantity': qty,
+                    'quantity': Uom.round(qty, move.uom.rounding),
                     }
                 if first:
                     cls.write([move], values)
