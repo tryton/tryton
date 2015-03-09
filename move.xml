@@ -16,8 +16,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
-            <field name="domain">[('company', '=', Eval('context', {}).get('company', -1))]</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="10"/>
@@ -84,7 +88,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_reconciliation_lines">
             <field name="name">Reconciliation Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('reconciliation', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('reconciliation', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_move_reconciliation_lines_keyword1">
             <field name="keyword">form_relate</field>
@@ -199,9 +205,12 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_move_line_payable_receivable">
             <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable'])]</field>
-            <field name="search_value">[('reconciliation', '=', None)]</field>
-            <field name="order">[('date', 'DESC')]</field>
+            <field name="domain"
+                eval="[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable'])]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('reconciliation', '=', None)]" pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_move_line_payable_receivable_view1">
@@ -213,14 +222,16 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_move_line_payable_receivable_domain_payable">
             <field name="name">Payable</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('account.kind', '=', 'payable')]</field>
+            <field name="domain"
+                eval="[('account.kind', '=', 'payable')]" pyson="1"/>
             <field name="act_window" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action.act_window.domain"
                 id="act_move_line_payable_receivable_domain_receivable">
             <field name="name">Receivable</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('account.kind', '=', 'receivable')]</field>
+            <field name="domain"
+                eval="[('account.kind', '=', 'receivable')]" pyson="1"/>
             <field name="act_window" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action.act_window.domain"

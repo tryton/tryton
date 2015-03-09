@@ -83,7 +83,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_type_template_tree">
             <field name="name">Account Type Templates</field>
             <field name="res_model">account.account.type.template</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_account_type_template_tree_view1">
@@ -226,7 +226,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_type_tree">
             <field name="name">Account Types</field>
             <field name="res_model">account.account.type</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_type_tree_view1">
             <field name="sequence" eval="10"/>
@@ -296,7 +296,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_template_tree">
             <field name="name">Account Templates</field>
             <field name="res_model">account.account.template</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_template_tree_view1">
             <field name="sequence" eval="10"/>
@@ -449,7 +449,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_tree">
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
-            <field name="domain">[('parent', '=', None)]</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree_view1">
             <field name="sequence" eval="10"/>
@@ -519,7 +519,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_tree2">
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
-            <field name="domain">[('parent', '=', None), ('company', '=', Eval('context', {}).get('company', -1))]</field>
+            <field name="domain"
+                eval="[('parent', '=', None), ('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree2_view1">
             <field name="sequence" eval="10"/>
@@ -555,7 +557,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account1">
-            <field name="domain">[('company', 'in', [c.id for c in user.companies])]</field>
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_account"/>
         </record>
 
@@ -620,7 +624,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
-            <field name="domain">[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]</field>
+            <field name="domain"
+                eval="[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
             <field name="sequence" eval="10"/>
@@ -651,7 +657,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_income_statement_tree">
             <field name="name">Income Statement</field>
             <field name="res_model">account.account.type</field>
-            <field name="domain">[('income_statement', '=', True), ['OR', ('parent', '=', None), ('parent.income_statement', '=', False)]]</field>
+            <field name="domain"
+                eval="[('income_statement', '=', True), ['OR', ('parent', '=', None), ('parent.income_statement', '=', False)]]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">
             <field name="sequence" eval="10"/>

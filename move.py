@@ -15,7 +15,7 @@ from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
 from trytond.report import Report
 from trytond import backend
-from trytond.pyson import Eval, Bool, PYSONEncoder
+from trytond.pyson import Eval, Bool, PYSONEncoder, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
@@ -1502,6 +1502,11 @@ class Line(ModelSQL, ModelView):
             result['arch'] = xml
             result['fields'] = cls.fields_get(fields_names=list(fields))
         return result
+
+    @classmethod
+    def view_attributes(cls):
+        return [('/tree[@on_write="on_write"]', 'colors',
+                If(Eval('state') == 'draft', 'red', 'black'))]
 
     @classmethod
     def reconcile(cls, lines, journal=None, date=None, account=None,
