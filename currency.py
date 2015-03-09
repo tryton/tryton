@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import json
+
 from decimal import Decimal, ROUND_HALF_EVEN
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.tools import safe_eval, datetime_strftime
+from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -119,7 +121,7 @@ class Currency(ModelSQL, ModelView):
         Check if mon_grouping is list of numbers
         '''
         try:
-            grouping = safe_eval(self.mon_grouping)
+            grouping = json.loads(self.mon_grouping)
             for i in grouping:
                 if not isinstance(i, int):
                     raise ValueError
