@@ -56,8 +56,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_template_by_category">
             <field name="name">Product by Category</field>
             <field name="res_model">product.template</field>
-            <field name="context">{'categories': [Eval('active_id')]}</field>
-            <field name="domain">[('category','child_of', [Eval('active_id')], 'parent')]</field>
+            <field name="context"
+                eval="{'categories': [Eval('active_id')]}" pyson="1"/>
+            <field name="domain"
+                eval="[('category','child_of', [Eval('active_id')], 'parent')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_template_by_category_view1">
             <field name="sequence" eval="10"/>
