@@ -1717,8 +1717,6 @@
                         'params': [Object.keys(field_names), context]
                     };
                     prm = Sao.rpc(args, record.model.session);
-                } else {
-                    prm.resolve({});
                 }
             }
 
