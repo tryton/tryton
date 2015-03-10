@@ -595,7 +595,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return []
+        return ['sale.sale']
 
     @classmethod
     def get_origin(cls):
@@ -1677,11 +1677,14 @@ class ReturnSale(Wizard):
 
         sales = Sale.browse(Transaction().context['active_ids'])
         return_sales = Sale.copy(sales)
-        for sale in return_sales:
-            for line in sale.lines:
+        for return_sale, sale in zip(return_sales, sales):
+            return_sale.origin = sale
+            for line in return_sale.lines:
                 if line.type == 'line':
                     line.quantity *= -1
-                    line.save()
+            return_sale.lines = return_sale.lines  # Force saving
+        Sale.save(return_sales)
+
         data = {'res_id': [s.id for s in return_sales]}
         if len(return_sales) == 1:
             action['views'].reverse()

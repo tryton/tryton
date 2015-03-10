@@ -649,6 +649,8 @@ Return sales using the wizard::
     >>> returned_sale, = Sale.find([
     ...     ('state', '=', 'draft'),
     ...     ])
+    >>> returned_sale.origin == sale_to_return
+    True
     >>> sorted([x.quantity for x in returned_sale.lines])
     [None, -1.0]
 
