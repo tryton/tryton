@@ -1172,16 +1172,16 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
 msgid "Cancel"

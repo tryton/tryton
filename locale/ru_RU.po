@@ -1177,7 +1177,7 @@ msgid "Cancel"
 msgstr "Отменить"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
@@ -1185,7 +1185,7 @@ msgid "Cancel"
 msgstr "Отменить"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
