@@ -69,7 +69,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         help='Estimated revenue amount')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
-            'required': Eval('state') == 'converted',
             'readonly': In(Eval('state'),
                 ['converted', 'lost', 'cancelled']),
             },
@@ -157,6 +156,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 ('lead', 'opportunity'),
                 ('lead', 'lost'),
                 ('lead', 'cancelled'),
+                ('lead', 'converted'),
                 ('opportunity', 'converted'),
                 ('opportunity', 'lead'),
                 ('opportunity', 'lost'),
@@ -407,7 +407,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 won.append(opportunity)
             elif opportunity.is_lost():
                 lost.append(opportunity)
-            elif (opportunity.state in ['won', 'lost']
+            elif (opportunity.state != 'converted'
                     and opportunity.sales):
                 converted.append(opportunity)
         cls.save(opportunities)
