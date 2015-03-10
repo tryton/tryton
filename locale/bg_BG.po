@@ -596,9 +596,9 @@ msgid "VAT"
 msgstr "ДДС"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Добре"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Добре"

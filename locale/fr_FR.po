@@ -599,9 +599,9 @@ msgid "VAT"
 msgstr "TVA"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"

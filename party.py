@@ -290,11 +290,11 @@ class CheckVIES(Wizard):
     check = StateTransition()
     result = StateView('party.check_vies.result',
         'party.check_vies_result', [
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
     no_result = StateView('party.check_vies.no_result',
         'party.check_vies_no_result', [
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
 
     @classmethod

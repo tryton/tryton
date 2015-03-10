@@ -603,10 +603,10 @@ msgstr "Omzetbelasting"
 
 #, fuzzy
 msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy
 msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"

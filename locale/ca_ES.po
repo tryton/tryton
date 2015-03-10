@@ -598,9 +598,9 @@ msgid "VAT"
 msgstr "CIF/NIF"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"

@@ -600,9 +600,9 @@ msgid "VAT"
 msgstr "RUC"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Aceptar"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Aceptar"
