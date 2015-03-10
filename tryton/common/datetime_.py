@@ -85,7 +85,7 @@ class Date(gtk.Entry):
         if text:
             try:
                 date = date_parse(text, self.__format).date()
-            except ValueError:
+            except (ValueError, OverflowError):
                 pass
 
         self.__date = date
@@ -268,7 +268,7 @@ class Time(gtk.ComboBoxEntry):
         if text:
             try:
                 time = date_parse(text).time()
-            except ValueError:
+            except (ValueError, OverflowError):
                 pass
 
         self.__time = time
