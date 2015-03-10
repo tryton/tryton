@@ -1666,7 +1666,7 @@ class CreateChart(Wizard):
     start = StateView('account.create_chart.start',
         'account.create_chart_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'account', 'tryton-ok', default=True),
+            Button('OK', 'account', 'tryton-ok', default=True),
             ])
     account = StateView('account.create_chart.account',
         'account.create_chart_account_view_form', [
@@ -1820,7 +1820,7 @@ class UpdateChart(Wizard):
     update = StateTransition()
     succeed = StateView('account.update_chart.succeed',
         'account.update_chart_succeed_view_form', [
-            Button('Ok', 'end', 'tryton-ok', default=True),
+            Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
     @inactive_records

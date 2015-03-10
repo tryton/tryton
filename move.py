@@ -1989,7 +1989,7 @@ class CancelMoves(Wizard):
     default = StateView('account.move.cancel.default',
         'account.move_cancel_default_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'cancel', 'tryton-ok', default=True),
+            Button('OK', 'cancel', 'tryton-ok', default=True),
             ])
     cancel = StateTransition()
 

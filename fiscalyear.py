@@ -369,7 +369,7 @@ class BalanceNonDeferral(Wizard):
     start = StateView('account.fiscalyear.balance_non_deferral.start',
         'account.fiscalyear_balance_non_deferral_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'balance', 'tryton-ok', default=True),
+            Button('OK', 'balance', 'tryton-ok', default=True),
             ])
     balance = StateAction('account.act_move_line_form')
 

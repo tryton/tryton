@@ -4288,7 +4288,7 @@ msgid "Cancel"
 msgstr "Отменить"
 
 msgctxt "wizard_button:account.create_chart,start,account:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
@@ -4297,7 +4297,7 @@ msgstr "Отменить"
 
 #, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 #, fuzzy
@@ -4424,5 +4424,5 @@ msgid "Update"
 msgstr "Обновить"
 
 msgctxt "wizard_button:account.update_chart,succeed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
