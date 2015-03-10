@@ -238,12 +238,12 @@ msgid "Cancel"
 msgstr "Annulé"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
