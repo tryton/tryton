@@ -569,6 +569,29 @@ class PYSONTestCase(unittest.TestCase):
         self.assertEqual(repr(expr),
             "If(Not(In('company', Eval('context', {}))), '=', '!=')")
 
+    def test_noeval(self):
+        decoder = pyson.PYSONDecoder(noeval=True)
+        encoder = pyson.PYSONEncoder()
+
+        for instance in [
+                pyson.Eval('test', 0),
+                pyson.Not(True),
+                pyson.Bool('test'),
+                pyson.And(True, False, True),
+                pyson.Or(False, True, True),
+                pyson.Equal('foo', 'bar'),
+                pyson.Greater(1, 0),
+                pyson.Less(0, 1),
+                pyson.If(True, 'foo', 'bar'),
+                pyson.Get({'foo': 'bar'}, 'foo', 'default'),
+                pyson.In('foo', ['foo', 'bar']),
+                pyson.Date(),
+                pyson.DateTime(),
+                pyson.Len([1, 2, 3]),
+                ]:
+            self.assertEqual(decoder.decode(encoder.encode(instance)).pyson(),
+                instance.pyson())
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(PYSONTestCase)

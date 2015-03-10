@@ -50,15 +50,15 @@ Instance method:
     Returns a string representation of a given PYSON statement.
     ``object`` contains a PYSON statement.
 
-.. class:: PYSONDecoder()
+.. class:: PYSONDecoder([context[, noeval]])
 
-Decoder for string into PYSON statement representation.
+Decoder for string into the evaluated or not PYSON statement.
 
 Instance method:
 
     .. method:: PYSONDecoder.decode(object)
 
-    Returns a PYSON statement representation of a given string.
+    Returns a PYSON statement evaluated or not of a given string.
     ``object`` contains a string.
 
 Statements
