@@ -79,11 +79,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=True,
         states=_STATES_START, depends=_DEPENDS_START)
-    end_date = fields.Date('End Date', select=True, readonly=True,
-        states={
-            'invisible': ~Eval('state').in_(['won', 'cancelled', 'lost']),
-            },
-        depends=['state'])
+    end_date = fields.Date('End Date', select=True,
+        states=_STATES_STOP, depends=_DEPENDS_STOP)
     description = fields.Char('Description', required=True,
         states=_STATES_STOP, depends=_DEPENDS_STOP)
     comment = fields.Text('Comment', states=_STATES_STOP,
@@ -328,12 +325,19 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         sales = [o.create_sale() for o in opportunities if not o.sales]
         Sale.save(sales)
 
+    @property
+    def is_forecast(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        return self.end_date or datetime.date.max > today
+
     @classmethod
     @Workflow.transition('won')
     def won(cls, opportunities):
         pool = Pool()
         Date = pool.get('ir.date')
-        cls.write(opportunities, {
+        cls.write(filter(lambda o: o.is_forecast, opportunities), {
                 'end_date': Date.today(),
                 })
 
@@ -342,7 +346,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @Workflow.transition('lost')
     def lost(cls, opportunities):
         Date = Pool().get('ir.date')
-        cls.write(opportunities, {
+        cls.write(filter(lambda o: o.is_forecast, opportunities), {
                 'end_date': Date.today(),
                 })
 
@@ -351,7 +355,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @Workflow.transition('cancelled')
     def cancel(cls, opportunities):
         Date = Pool().get('ir.date')
-        cls.write(opportunities, {
+        cls.write(filter(lambda o: o.is_forecast, opportunities), {
                 'end_date': Date.today(),
                 })
 
