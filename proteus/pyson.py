@@ -97,6 +97,14 @@ class PYSON(object):
     def contains(self, k):
         return In(k, self)
 
+    def __repr__(self):
+        klass = self.__class__.__name__
+        return '%s(%s)' % (klass, ', '.join(map(repr, self.__repr_params__)))
+
+    @property
+    def __repr_params__(self):
+        return NotImplementedError
+
 
 class PYSONEncoder(json.JSONEncoder):
 
@@ -134,6 +142,10 @@ class Eval(PYSON):
         self._value = value
         self._default = default
 
+    @property
+    def __repr_params__(self):
+        return self._value, self._default
+
     def pyson(self):
         return {
             '__class__': 'Eval',
@@ -163,6 +175,10 @@ class Not(PYSON):
             assert isinstance(value, bool), 'value must be boolean'
         self._value = value
 
+    @property
+    def __repr_params__(self):
+        return (self._value,)
+
     def pyson(self):
         return {
             '__class__': 'Not',
@@ -182,6 +198,10 @@ class Bool(PYSON):
     def __init__(self, value):
         super(Bool, self).__init__()
         self._value = value
+
+    @property
+    def __repr_params__(self):
+        return (self._value,)
 
     def pyson(self):
         return {
@@ -210,6 +230,10 @@ class And(PYSON):
                     'statement must be boolean'
         assert len(statements) >= 2, 'must have at least 2 statements'
         self._statements = list(statements)
+
+    @property
+    def __repr_params__(self):
+        return tuple(self._statements)
 
     def pyson(self):
         return {
@@ -253,6 +277,10 @@ class Equal(PYSON):
         self._statement1 = statement1
         self._statement2 = statement2
 
+    @property
+    def __repr_params__(self):
+        return (self._statement1, self._statement2)
+
     def pyson(self):
         return {
             '__class__': 'Equal',
@@ -286,6 +314,10 @@ class Greater(PYSON):
         self._statement1 = statement1
         self._statement2 = statement2
         self._equal = equal
+
+    @property
+    def __repr_params__(self):
+        return (self._statement1, self._statement2, self._equal)
 
     def pyson(self):
         return {
@@ -354,6 +386,10 @@ class If(PYSON):
         self._then_statement = then_statement
         self._else_statement = else_statement
 
+    @property
+    def __repr_params__(self):
+        return (self._condition, self._then_statement, self._else_statement)
+
     def pyson(self):
         return {
             '__class__': 'If',
@@ -392,6 +428,10 @@ class Get(PYSON):
             assert isinstance(key, basestring), 'key must be a string'
         self._key = key
         self._default = default
+
+    @property
+    def __repr_params__(self):
+        return (self._obj, self._key, self._default)
 
     def pyson(self):
         return {
@@ -435,6 +475,10 @@ class In(PYSON):
         self._key = key
         self._obj = obj
 
+    @property
+    def __repr_params__(self):
+        return (self._key, self._obj)
+
     def pyson(self):
         return {
             '__class__': 'In',
@@ -468,6 +512,11 @@ class Date(PYSON):
         self._delta_years = delta_years
         self._delta_months = delta_months
         self._delta_days = delta_days
+
+    @property
+    def __repr_params__(self):
+        return (self._year, self._month, self._day,
+            self._delta_years, self._delta_months, self._delta_days)
 
     def pyson(self):
         return {
@@ -522,6 +571,15 @@ class DateTime(Date):
         self._delta_seconds = delta_seconds
         self._delta_microseconds = delta_microseconds
 
+    @property
+    def __repr_params__(self):
+        date_params = super(DateTime, self).__repr_params__
+        return (date_params[:3]
+            + (self._hour, self._minute, self._second, self._microsecond)
+            + date_params[3:]
+            + (self._delta_hours, self._delta_minutes, self._delta_seconds,
+                self._delta_microseconds))
+
     def pyson(self):
         res = super(DateTime, self).pyson()
         res['__class__'] = 'DateTime'
@@ -570,6 +628,10 @@ class Len(PYSON):
                 'value must be a dict or list or a string'
         self._value = value
 
+    @property
+    def __repr_params__(self):
+        return (self._value,)
+
     def pyson(self):
         return {
             '__class__': 'Len',
@@ -582,7 +644,6 @@ class Len(PYSON):
     @staticmethod
     def eval(dct, context):
         return len(dct['v'])
-
 
 CONTEXT = {
     'Eval': Eval,
@@ -599,4 +660,4 @@ CONTEXT = {
     'Date': Date,
     'DateTime': DateTime,
     'Len': Len,
-}
+    }
