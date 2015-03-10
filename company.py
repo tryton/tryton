@@ -327,7 +327,7 @@ class CompanyConfig(Wizard):
     start = StateView('company.company.config.start',
         'company.company_config_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'company', 'tryton-ok', True),
+            Button('OK', 'company', 'tryton-ok', True),
             ])
     company = StateView('company.company',
         'company.company_view_form', [

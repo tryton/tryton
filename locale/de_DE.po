@@ -315,7 +315,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:company.company.config,start,company:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
