@@ -1690,11 +1690,11 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"

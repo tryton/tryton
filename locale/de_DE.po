@@ -1704,11 +1704,11 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"

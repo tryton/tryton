@@ -1629,11 +1629,11 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"

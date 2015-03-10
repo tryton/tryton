@@ -2425,13 +2425,13 @@ class PayInvoice(Wizard):
     start = StateView('account.invoice.pay.start',
         'account_invoice.pay_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'choice', 'tryton-ok', default=True),
+            Button('OK', 'choice', 'tryton-ok', default=True),
             ])
     choice = StateTransition()
     ask = StateView('account.invoice.pay.ask',
         'account_invoice.pay_ask_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'pay', 'tryton-ok', default=True),
+            Button('OK', 'pay', 'tryton-ok', default=True),
             ])
     pay = StateTransition()
 
