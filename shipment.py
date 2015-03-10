@@ -1718,7 +1718,7 @@ class AssignShipmentOut(Wizard):
                         'group_stock_force_assignment').in_(
                         Eval('context', {}).get('groups', [])),
                     }),
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
     force = StateTransition()
 
@@ -2035,7 +2035,7 @@ class AssignShipmentInternal(Wizard):
                         'group_stock_force_assignment').in_(
                         Eval('context', {}).get('groups', [])),
                     }),
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
     force = StateTransition()
 
@@ -2083,7 +2083,7 @@ class AssignShipmentInReturn(Wizard):
                         'group_stock_force_assignment').in_(
                         Eval('context', {}).get('groups', [])),
                 }),
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
     force = StateTransition()
 

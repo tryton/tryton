@@ -2448,7 +2448,7 @@ msgstr "Open"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
@@ -2457,7 +2457,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
@@ -2466,7 +2466,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"

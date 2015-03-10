@@ -2290,7 +2290,7 @@ msgid "Open"
 msgstr "Öffnen"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
@@ -2298,7 +2298,7 @@ msgid "Force Assign"
 msgstr "Zuweisung erzwingen"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
@@ -2306,7 +2306,7 @@ msgid "Force Assign"
 msgstr "Zuweisung erzwingen"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"

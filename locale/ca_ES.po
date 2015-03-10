@@ -2280,7 +2280,7 @@ msgid "Open"
 msgstr "Obre"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
@@ -2288,7 +2288,7 @@ msgid "Force Assign"
 msgstr "Força reserva"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
@@ -2296,7 +2296,7 @@ msgid "Force Assign"
 msgstr "Força reserva"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Accepta"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
