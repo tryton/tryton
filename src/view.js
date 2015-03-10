@@ -1052,7 +1052,8 @@
         class_: 'column-time',
         update_text: function(cell, record) {
             var value = this.field.get_client(record);
-            cell.text(Soa.common.format_time(field.time_format(record), value));
+            cell.text(Sao.common.format_time(
+                    this.field.time_format(record), value));
         }
     });
 
