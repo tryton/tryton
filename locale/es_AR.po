@@ -1060,7 +1060,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Aceptar"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
@@ -1068,7 +1068,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Aceptar"
 
 msgctxt "wizard_button:sale.return_sale,start,end:"

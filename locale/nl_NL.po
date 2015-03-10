@@ -1098,7 +1098,7 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy
@@ -1108,7 +1108,7 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy

@@ -1065,7 +1065,7 @@ msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Добре"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
@@ -1073,7 +1073,7 @@ msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Добре"
 
 #, fuzzy

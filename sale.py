@@ -1545,7 +1545,7 @@ class HandleShipmentException(Wizard):
     ask = StateView('sale.handle.shipment.exception.ask',
         'sale.handle_shipment_exception_ask_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'handle', 'tryton-ok', default=True),
+            Button('OK', 'handle', 'tryton-ok', default=True),
             ])
     handle = StateTransition()
 
@@ -1613,7 +1613,7 @@ class HandleInvoiceException(Wizard):
     ask = StateView('sale.handle.invoice.exception.ask',
         'sale.handle_invoice_exception_ask_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'handle', 'tryton-ok', default=True),
+            Button('OK', 'handle', 'tryton-ok', default=True),
             ])
     handle = StateTransition()
 
