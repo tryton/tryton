@@ -684,7 +684,7 @@ Export Data...:
     - Clear: Removes all fields from *Fields to export*.
     - Save Export: Saves field mapping to a *Predefined export* with a name.
     - Delete Export: Deletes a selected *Predefined export*.
-    - Ok: Exports the data (action depending on *Options*).
+    - OK: Exports the data (action depending on *Options*).
     - Cancel
 
 .. _Toolbar-Import_Data:
@@ -708,7 +708,7 @@ Import Data...:
     - Remove: Deletes fields from *Fields to Import*.
     - Clear: Removes all fields from *Fields to Import*.
     - Auto-Detect: Tries to auto detect fields in the CSV *File to Import*.
-    - Ok: Proceeds the data import.
+    - OK: Proceeds the data import.
     - Cancel
 
 Widgets
