@@ -1,3 +1,4 @@
+* Add __repr__ to PYSON
 * Remove safe_eval
 * Add ModelView.view_attributes
 * Add pyson attribute on data field tag
