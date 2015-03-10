@@ -685,8 +685,8 @@ msgid "Wait"
 msgstr "Attendre"
 
 msgctxt "wizard_button:production.assign,failed,end:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
@@ -697,8 +697,8 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"

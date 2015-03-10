@@ -729,7 +729,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:production.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 msgctxt "wizard_button:production.assign,failed,force:"
@@ -743,7 +743,7 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy

@@ -683,7 +683,7 @@ msgid "Wait"
 msgstr "Ожидают"
 
 msgctxt "wizard_button:production.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 msgctxt "wizard_button:production.assign,failed,force:"
@@ -695,7 +695,7 @@ msgid "Cancel"
 msgstr "Отменить"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
-msgid "Ok"
+msgid "OK"
 msgstr "Ок"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"

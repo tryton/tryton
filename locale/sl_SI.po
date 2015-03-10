@@ -683,7 +683,7 @@ msgid "Wait"
 msgstr "Čakanje"
 
 msgctxt "wizard_button:production.assign,failed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "V redu"
 
 msgctxt "wizard_button:production.assign,failed,force:"
@@ -695,7 +695,7 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
-msgid "Ok"
+msgid "OK"
 msgstr "V redu"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"

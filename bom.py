@@ -223,7 +223,7 @@ class OpenBOMTree(Wizard):
     start = StateView('production.bom.tree.open.start',
         'production.bom_tree_open_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'tree', 'tryton-ok', True),
+            Button('OK', 'tree', 'tryton-ok', True),
             ])
     tree = StateView('production.bom.tree.open.tree',
         'production.bom_tree_open_tree_view_form', [

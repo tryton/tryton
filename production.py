@@ -581,7 +581,7 @@ class Assign(Wizard):
                         'group_stock_force_assignment').in_(
                         Eval('context', {}).get('groups', [])),
                     }),
-            Button('Ok', 'end', 'tryton-ok', True),
+            Button('OK', 'end', 'tryton-ok', True),
             ])
     force = StateTransition()
 
