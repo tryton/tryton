@@ -115,5 +115,5 @@ msgstr "Отменить"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
-msgid "Ok"
+msgid "OK"
 msgstr "Да"

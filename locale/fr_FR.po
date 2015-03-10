@@ -96,5 +96,5 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr "OK"
