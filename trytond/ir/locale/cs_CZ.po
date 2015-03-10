@@ -3979,11 +3979,11 @@ msgid "Print"
 msgstr ""
 
 msgctxt "wizard_button:ir.module.module.config_wizard,done,end:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:ir.module.module.config_wizard,first,action:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:ir.module.module.config_wizard,first,end:"
@@ -3999,7 +3999,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "wizard_button:ir.module.module.install_upgrade,done,config:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:ir.module.module.install_upgrade,start,end:"
@@ -4019,7 +4019,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:ir.translation.export,result,end:"
@@ -4043,7 +4043,7 @@ msgid "Set"
 msgstr ""
 
 msgctxt "wizard_button:ir.translation.set,succeed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:ir.translation.update,start,end:"

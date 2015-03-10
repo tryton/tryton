@@ -979,7 +979,7 @@ class TranslationSet(Wizard):
     set_ = StateTransition()
     succeed = StateView('ir.translation.set.succeed',
         'ir.translation_set_succeed_view_form', [
-            Button('Ok', 'end', 'tryton-ok', default=True),
+            Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
     def _translate_report(self, node):
@@ -1225,7 +1225,7 @@ class TranslationClean(Wizard):
     clean = StateTransition()
     succeed = StateView('ir.translation.clean.succeed',
         'ir.translation_clean_succeed_view_form', [
-            Button('Ok', 'end', 'tryton-ok', default=True),
+            Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
     @staticmethod

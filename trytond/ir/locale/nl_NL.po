@@ -4100,12 +4100,12 @@ msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.module.config_wizard,done,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.module.config_wizard,first,action:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 msgctxt "wizard_button:ir.module.module.config_wizard,first,end:"
@@ -4123,7 +4123,7 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.module.install_upgrade,done,config:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy
@@ -4146,7 +4146,7 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy
@@ -4175,7 +4175,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:ir.translation.set,succeed,end:"
-msgid "Ok"
+msgid "OK"
 msgstr "Oké"
 
 #, fuzzy

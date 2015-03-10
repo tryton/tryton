@@ -432,7 +432,7 @@ class ModuleConfigWizard(Wizard):
     first = StateView('ir.module.module.config_wizard.first',
         'ir.module_config_wizard_first_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'action', 'tryton-ok', default=True),
+            Button('OK', 'action', 'tryton-ok', default=True),
             ])
     other = StateView('ir.module.module.config_wizard.other',
         'ir.module_config_wizard_other_view_form', [
@@ -442,7 +442,7 @@ class ModuleConfigWizard(Wizard):
     action = ConfigStateAction()
     done = StateView('ir.module.module.config_wizard.done',
         'ir.module_config_wizard_done_view_form', [
-            Button('Ok', 'end', 'tryton-close', default=True),
+            Button('OK', 'end', 'tryton-close', default=True),
             ])
 
     def transition_start(self):
@@ -488,7 +488,7 @@ class ModuleInstallUpgrade(Wizard):
     upgrade = StateTransition()
     done = StateView('ir.module.module.install_upgrade.done',
         'ir.module_install_upgrade_done_view_form', [
-            Button('Ok', 'config', 'tryton-ok', default=True),
+            Button('OK', 'config', 'tryton-ok', default=True),
             ])
     config = StateAction('ir.act_module_config_wizard')
 

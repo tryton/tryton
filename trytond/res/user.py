@@ -666,7 +666,7 @@ class UserConfig(Wizard):
     start = StateView('res.user.config.start',
         'res.user_config_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'user', 'tryton-ok', default=True),
+            Button('OK', 'user', 'tryton-ok', default=True),
             ])
     user = StateView('res.user',
         'res.user_view_form', [
