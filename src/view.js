@@ -3272,7 +3272,7 @@
                 'class': 'form-control input-sm'
             }).appendTo(group);
 
-            buttons = jQuery('<div/>', {
+            var buttons = jQuery('<div/>', {
                 'class': 'input-group-btn'
             });
             this.but_new = jQuery('<button/>', {
