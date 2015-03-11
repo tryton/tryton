@@ -367,7 +367,7 @@ A time, represented in Python by a ``datetime.time`` instance.
 TimeDelta
 ---------
 
-.. class::TimeDelta(string[, converter[, \**options]])
+.. class:: TimeDelta(string[, converter[, \**options]])
 
 An interval, represented in Python by a ``datetime.timedelta`` instance.
 
