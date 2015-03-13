@@ -2249,7 +2249,12 @@
                 'class': 'glyphicon glyphicon-search'
             })).appendTo(buttons);
             this.but_open.click(this.edit.bind(this));
-            // TODO autocompletion
+            if (!attributes.completion || attributes.completion == "1") {
+                Sao.common.get_completion(this.entry,
+                        this._update_completion.bind(this),
+                        this._completion_match_selected.bind(this));
+                this.wid_completion = true;
+            }
             this._readonly = false;
         },
         get_screen: function() {
@@ -2268,16 +2273,77 @@
             if (jQuery.isEmptyObject(value)) {
                 value = '';
             }
-            this.entry.val(value);
+            this.value(value);
+        },
+        // This function is required because once typeahead is activated on an
+        // entry then .val() function should not be used anymore.
+        // In order to keep the same semantics as .val() we use the same
+        // signature
+        value: function(value) {
+            if (this.wid_completion) {
+                if (!arguments.length) {
+                    return this.entry.typeahead('val');
+                } else {
+                    return this.entry.typeahead('val', value);
+                }
+            } else {
+                if (!arguments.length) {
+                    return this.entry.val();
+                } else {
+                    return this.entry.val(value);
+                }
+            }
+
+        },
+        get_text: function() {
+            var record = this.record();
+            if (record) {
+                return record.field_get_client(this.field_name);
+            }
+            return '';
+        },
+        _set_completion: function() {
+            this.entry.data('search', this.read_access());
+            this.entry.data('create', this.create_access());
+        },
+        _update_completion: function(query, process) {
+            var record = this.record();
+            if (!record) {
+                return;
+            }
+            var field = this.field();
+            var value = field.get(record);
+            if (this.has_target(value)) {
+                var id = this.id_from_value(value);
+                if ((id !== undefined) && (id > 0)) {
+                    return;
+                }
+            }
+            var model = this.get_model();
+
+            var prm = Sao.common.update_completion(this.entry, record, field,
+                    model);
+            prm.done(process);
+        },
+        _completion_match_selected: function(event_, selected_item, name) {
+            this.record().field_set_client(this.field_name,
+                    this.value_from_id(selected_item.id,
+                        selected_item.rec_name), true);
         },
         display: function(record, field) {
+            var screen_record = this.record();
+            if ((screen_record && record) && (screen_record.id != record.id)) {
+                return;
+            }
+
             var text_value, value;
             Sao.View.Form.Many2One._super.display.call(this, record, field);
 
             this._set_button_sensitive();
+            this._set_completion();
 
             if (!record) {
-                this.entry.val('');
+                this.value('');
                 return;
             }
             this.set_text(field.get_client(record));
@@ -2362,7 +2428,7 @@
                 var dom;
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
-                var text = this.entry.val();
+                var text = this.value();
                 callback = function(result) {
                     if (!jQuery.isEmptyObject(result)) {
                         var value = this.value_from_id(result[0][0],
@@ -2428,10 +2494,10 @@
                 this.activate();
             } else if (this.has_target(this.record().field_get(
                             this.field_name)) && editable) {
-                var value = this.record().field_get_client(this.field_name);
-                if ((value != this.entry.val()) ||
+                var value = this.get_text();
+                if ((value != this.value()) ||
                         ~delete_keys.indexOf(event_.which)) {
-                    this.entry.val('');
+                    this.value('');
                     this.record().field_set_client(this.field_name,
                         this.value_from_id(null, ''));
                 }
@@ -2447,7 +2513,7 @@
             var sao_model = new Sao.Model(model);
 
             if (model && !this.has_target(value)) {
-                var text = this.entry.val();
+                var text = this.value();
                 if (!this._readonly && (text ||
                             this.field().get_state_attrs(this.record())
                             .required)) {
@@ -2462,7 +2528,7 @@
                             this.record().field_set_client(this.field_name,
                                 value, true);
                         } else {
-                            this.entry.val('');
+                            this.value('');
                         }
                     };
                     var parser = new Sao.common.DomainParser();
@@ -2529,6 +2595,13 @@
             }
             return [this.get_model(), [id, str]];
         },
+        get_text: function() {
+            var record = this.record();
+            if (record) {
+                return record.field_get_client(this.field_name)[1];
+            }
+            return '';
+        },
         get_model: function() {
             return this.select.val();
         },
@@ -2553,7 +2626,7 @@
             this.select.prop('disabled', this.entry.prop('disabled'));
         },
         select_changed: function() {
-            this.entry.val('');
+            this.value('');
             var model = this.get_model();
             var value;
             if (model) {
@@ -2566,11 +2639,11 @@
         set_value: function(record, field) {
             var value;
             if (!this.get_model()) {
-                value = this.entry.val();
+                value = this.value();
                 if (jQuery.isEmptyObject(value)) {
-                    field.set_client(record, this.field_name, null);
+                    field.set_client(record, null);
                 } else {
-                    field.set_client(record, this.field_name, ['', value]);
+                    field.set_client(record, ['', value]);
                 }
             } else {
                 value = field.get_client(record, this.field_name);
@@ -2583,9 +2656,9 @@
                     name = '';
                 }
                 if ((model != this.get_model()) ||
-                        (name != this.entry.val())) {
-                    field.set_client(record, this.field_name, null);
-                    this.entry.val('');
+                        (name != this.value())) {
+                    field.set_client(record, null);
+                    this.value('');
                 }
             }
         },

@@ -2514,4 +2514,49 @@
         }
     });
     Sao.common.processing = new Sao.common.Processing();
+
+    Sao.common.get_completion = function(entry, source, match_selected,
+            search, create) {
+        entry.attr('autocomplete', 'off');
+        entry.typeahead({
+            'minLength': 1,
+            'highlight': true
+        }, {
+            'source': source,
+            'displayKey': 'rec_name'
+        });
+        entry.on('typeahead:selected', match_selected);
+    };
+    Sao.common.update_completion = function(entry, record, field, model,
+            domain) {
+        var prm = jQuery.Deferred();
+        var update = function(search_text, domain) {
+            if (entry.typeahead('val') != search_text) {
+                return prm.reject();
+            }
+            if (!search_text || !model) {
+                return prm.reject();
+            }
+            if (domain === undefined) {
+                domain = field.get_domain(record);
+            }
+            var context = field.get_context(record);
+            domain = [['rec_name', 'ilike', '%' + search_text + '%'], domain];
+
+            var sao_model = new Sao.Model(model);
+            var search_prm = sao_model.execute('search_read', [domain, 0,
+                    Sao.config.limit, null, ['rec_name']], context);
+            search_prm.then(function(results) {
+                if (entry.typeahead('val') != search_text) {
+                    return prm.reject();
+                }
+                // TODO search & create
+                prm.resolve(results);
+            }, prm.reject);
+        };
+
+        var search_text = entry.typeahead('val');
+        window.setTimeout(update, 300, search_text, domain);
+        return prm.promise();
+    };
 }());

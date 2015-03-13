@@ -1975,7 +1975,7 @@
             var store_rec_name = function(rec_name) {
                 record._values[this.name + '.rec_name'] = rec_name;
             }.bind(this);
-            if (ref_model && ref_id >= 0) {
+            if (ref_model && ref_id !== null && ref_id >= 0) {
                 if (!rec_name && ref_id >= 0) {
                     Sao.rpc({
                         'method': 'model.' + ref_model + '.read',

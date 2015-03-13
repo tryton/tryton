@@ -42,7 +42,7 @@
                     '<div class="container-fluid">' +
                     '<div class="navbar-header">' +
                     '<button type="button" class="navbar-toggle collapsed" ' +
-                    'data-toggle="collapse" ' + 
+                    'data-toggle="collapse" ' +
                     'data-target="#navbar-' + this.id + '">' +
                     '<span class="sr-only">Toggle navigation</span>' +
                     '<span class="icon-bar"></span>' +
@@ -401,7 +401,7 @@
                 test_modified = true;
             }
             var reload = function() {
-                this.screen.cancel_current().then(function() {
+                return this.screen.cancel_current().then(function() {
                     this.screen.save_tree_state(false);
                     if (this.screen.current_view.view_type != 'form') {
                         this.screen.search_filter(
