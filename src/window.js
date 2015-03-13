@@ -362,7 +362,7 @@
                 'class': 'modal fade',
                 role: 'dialog'
             });
-            var content = jQuery('<div/>', {
+            var content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-lg'
@@ -403,6 +403,10 @@
                 'class': 'btn btn-primary',
                 'type': 'submit'
             }).append('OK').appendTo(footer);
+            content.submit(function(e) {
+                this.response('RESPONSE_OK');
+                e.preventDefault();
+            }.bind(this));
 
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
