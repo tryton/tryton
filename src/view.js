@@ -3274,7 +3274,7 @@
 
             var buttons = jQuery('<div/>', {
                 'class': 'input-group-btn'
-            });
+            }).appendTo(group);
             this.but_new = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
@@ -3282,7 +3282,6 @@
                 'class': 'glyphicon glyphicon-file'
             })).appendTo(buttons);
             this.but_new.click(this.new_.bind(this));
-            this.el.prepend(this.but_new);
 
             if (this.filename) {
                 this.but_open = jQuery('<button/>', {
@@ -3367,13 +3366,11 @@
         },
         new_: function(evt) {
             var record = this.record();
-            var file_dialog = jQuery('<div/>', {
-                'class': 'file-dialog'
-            });
-            var file_selector = jQuery('<input/>', {
-                type: 'file'
-            });
-            file_dialog.append(file_selector);
+
+            var close = function() {
+                file_dialog.modal('hide').remove();
+            };
+
             var save_file = function() {
                 var reader = new FileReader();
                 reader.onload = function(evt) {
@@ -3381,26 +3378,48 @@
                     this.field().set_client(record, uint_array);
                 }.bind(this);
                 reader.onloadend = function(evt) {
-                    file_dialog.dialog('close');
+                    close();
                 };
                 var file = file_selector[0].files[0];
                 reader.readAsArrayBuffer(file);
                 if (this.filename) {
                     this.filename_field().set_client(record, file.name);
                 }
-            };
-            file_dialog.dialog({
-                modal: true,
-                title: 'Select a file', // TODO translation
-                buttons: {
-                    Cancel: function() {
-                        $(this).dialog('close');
-                    },
-                    OK: save_file.bind(this)
-                }
+            }.bind(this);
+
+            var file_dialog = jQuery('<div/>', {
+                'class': 'file-dialog modal fade',
+                role: 'dialog'
             });
-            Sao.common.center_dialog(file_dialog);
-            file_dialog.dialog('open');
+
+            var content = jQuery('<div/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-sm'
+            }).appendTo(file_dialog));
+            jQuery('<div/>', {
+                'class': 'modal-header'
+            }).append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).append('Select a file')).appendTo(content);
+            var body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).append(jQuery('<button/>', {
+                'class': 'btn btn-link'
+            }).append('Cancel').click(close))
+            .append(jQuery('<button/>', {
+                'class': 'btn btn-primary'
+            }).append('OK').click(save_file))
+            .appendTo(content);
+
+            var file_selector = jQuery('<input/>', {
+                type: 'file'
+            }).appendTo(body);
+
+            file_dialog.modal('show');
         },
         remove: function(evt) {
             this.field().set_client(this.record(), null);
