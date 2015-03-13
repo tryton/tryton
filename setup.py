@@ -111,7 +111,7 @@ elif sys.platform == 'darwin':
                 'gobject, gio, gtk.keysyms'),
             'resources': 'tryton/plugins',
             'frameworks':
-            'librsvg-2.2.dylib, libjpeg.8.dylib, libtiff.3.dylib',
+            'librsvg-2.2.dylib, libjpeg.9.dylib, libtiff.5.dylib',
             'plist': {
                 'CFBundleIdentifier': 'org.tryton',
                 'CFBundleName': 'Tryton',
