@@ -918,9 +918,13 @@ class Screen(SignalEvent):
         if not self.current_record.save(force_reload=False):
             return
         ids = [r.id for r in self.selected_records]
+        context = self.context.copy()
+        context['_timestamp'] = {}
+        for record in self.selected_records:
+            context['_timestamp'].update(record.get_timestamp())
         try:
             action = RPCExecute('model', self.model_name, button['name'],
-                ids, context=self.context)
+                ids, context=context)
         except RPCException:
             action = None
         self.reload(ids, written=True)
