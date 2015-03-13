@@ -391,9 +391,9 @@
                 prm.done(created.bind(this));
             } else {
                 if (!jQuery.isEmptyObject(values)) {
-                    // TODO timestamp
+                    context._timestamp = this.get_timestamp();
                     prm = this.model.execute('write', [[this.id], values],
-                            context);
+                        context);
                 }
             }
             prm.done(function() {
@@ -676,6 +676,18 @@
                     screen.display();
                 });
             }.bind(this));
+        },
+        get_timestamp: function() {
+            var timestamps = {};
+            timestamps[this.model.name + ',' + this.id] = this._timestamp;
+            for (var fname in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(fname)) {
+                    continue;
+                }
+                jQuery.extend(timestamps,
+                    this.model.fields[fname].get_timestamp(this));
+            }
+            return timestamps;
         },
         get_eval: function() {
             var value = {};
@@ -1078,6 +1090,9 @@
             // TODO autocomplete_with
             record.set_field_context();
             return jQuery.when.apply(jQuery, prms);
+        },
+        get_timestamp: function(record) {
+            return {};
         },
         get_context: function(record) {
             var context = jQuery.extend({}, record.get_context());
@@ -1782,6 +1797,20 @@
             group.child_name = this.name;
             record._values[this.name] = group;
             // TODO signal
+        },
+        get_timestamp: function(record) {
+            var group = record._values[this.name];
+            if (group === undefined) {
+                return {};
+            }
+
+            var timestamps = {};
+            var record2;
+            for (var i = 0, len = group.length; i < len; i++) {
+                record2 = group[i];
+                jQuery.extend(timestamps, record2.get_timestamp());
+            }
+            return timestamps;
         },
         get_eval: function(record) {
             var result = [];

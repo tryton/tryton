@@ -69,7 +69,7 @@
                         Sao.common.concurrency.run( model, args.params[1][0],
                                 args.params[-1])
                             .then(function() {
-                                delete args.params[-1]._timestamp;
+                                delete args.params.slice(-1)._timestamp;
                                 Sao.rpc(args, session).then(
                                     dfd.resolve, dfd.reject);
                             }, dfd.reject);
