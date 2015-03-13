@@ -1089,6 +1089,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 else:
                     out_quantity = move.quantity
 
+                if not out_quantity:
+                    continue
                 unit_price = Uom.compute_price(move.product.default_uom,
                         move.product.list_price, move.uom)
                 to_create.append({
