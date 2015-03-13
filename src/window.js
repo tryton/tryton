@@ -115,6 +115,7 @@
 
                     this.but_add = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
+                        'type': 'button',
                         'aria-label': 'Add'
                     }).append(jQuery('<span/>', {
                         'class': 'glyphicon glyphicon-plus'
@@ -124,6 +125,7 @@
 
                     this.but_remove = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
+                        'type': 'button',
                         'aria-label': 'Remove'
                     }).append(jQuery('<span/>', {
                         'class': 'glyphicon glyphicon-minus'
@@ -134,6 +136,7 @@
 
                 this.but_new = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'New'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-edit'
@@ -143,6 +146,7 @@
 
                 this.but_del = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'Delete'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-trash'
@@ -152,6 +156,7 @@
 
                 this.but_undel = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'Undelete'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-repeat'
@@ -161,6 +166,7 @@
 
                 this.but_previous = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'Previous'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-arrow-left'
@@ -174,6 +180,7 @@
 
                 this.but_next = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'Next'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-arrow-right'
@@ -182,6 +189,7 @@
 
                 this.but_switch = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': 'Switch'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-list-alt'
@@ -372,27 +380,29 @@
             }).appendTo(content);
 
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(footer);
             jQuery('<button/>', {
-                'class': 'btn btn-default'
+                'class': 'btn btn-default',
+                'type': 'button'
             }).append('Find').click(function() {
                 this.response('RESPONSE_APPLY');
             }.bind(this)).appendTo(footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 jQuery('<button/>', {
-                    'class': 'btn btn-default'
+                    'class': 'btn btn-default',
+                    'type': 'button'
                 }).append('New').click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)).appendTo(footer);
             }
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
-            }).append('OK').click(function() {
-                this.response('RESPONSE_OK');
-            }.bind(this)).appendTo(footer);
+                'class': 'btn btn-primary',
+                'type': 'submit'
+            }).append('OK').appendTo(footer);
 
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
