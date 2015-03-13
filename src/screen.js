@@ -1203,10 +1203,16 @@
                     return;
                 }
 
+                var context = jQuery.extend(this.context);
+                context._timestamp = {};
+                for (i = 0; i < selected_records.length; i++) {
+                    record = selected_records[i];
+                    jQuery.extend(context, record.get_timestamp());
+                }
                 // TODO confirm
                 this.current_record.save().done(function() {
                     this.current_record.model.execute(attributes.name,
-                        [ids], this.context).then(process_action.bind(this))
+                        [ids], context).then(process_action.bind(this))
                         .then(reload_ids);
                 }.bind(this));
             }.bind(this));
