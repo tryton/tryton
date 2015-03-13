@@ -143,6 +143,9 @@
     };
 
     Sao.common.format_time = function(format, date) {
+        if (!date) {
+            return '';
+        }
         return date.format(Sao.common.moment_format(format));
     };
 
