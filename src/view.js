@@ -3518,6 +3518,8 @@
             case 'one2many':
             case 'many2many':
                 return Sao.View.EditableTree.One2Many;
+            case 'binary':
+                return Sao.View.EditableTree.Binary;
             default:
                 return Sao.View.EditableTree.Char;
         }
@@ -3642,6 +3644,15 @@
             }
         },
         set_value: function(record, field) {
+        }
+    });
+
+    Sao.View.EditableTree.Binary = Sao.class_(Sao.View.Form.Binary, {
+        class_: 'editabletree-binary',
+        init: function(field_name, model, attributes) {
+            Sao.View.EditableTree.Binary._super.init.call(this, field_name,
+                model, attributes);
+            Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
