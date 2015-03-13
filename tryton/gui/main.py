@@ -94,9 +94,9 @@ class Main(object):
         gtk.accel_map_add_entry('<tryton>/File/Quit', gtk.keysyms.Q,
                 gtk.gdk.CONTROL_MASK)
         if sys.platform != 'darwin':
-            gtk.accel_map_add_entry('<tryton>/User/Menu Reload', gtk.keysyms.T,
+            gtk.accel_map_add_entry('<tryton>/User/Reload Menu', gtk.keysyms.T,
                     gtk.gdk.MOD1_MASK)
-        gtk.accel_map_add_entry('<tryton>/User/Menu Toggle', gtk.keysyms.T,
+        gtk.accel_map_add_entry('<tryton>/User/Toggle Menu', gtk.keysyms.T,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/User/Global Search', gtk.keysyms.K,
             gtk.gdk.CONTROL_MASK)
