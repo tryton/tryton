@@ -2001,6 +2001,9 @@
             }
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
+        },
+        validation_domains: function(record, pre_validate) {
+            return this.get_domains(record, pre_validate)[0];
         }
     });
 
