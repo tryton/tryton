@@ -43,26 +43,26 @@ def _inherit_apply(src, inherit):
                         index = parent.index(enext)
                         parent.insert(index, child)
                 else:
-                    parent.extend(element2.getchildren())
+                    parent.extend(list(element2))
                 parent.remove(element)
             elif pos == 'replace_attributes':
-                child = element2.getchildren()[0]
+                child = element2[0]
                 for attr in child.attrib:
                     element.set(attr, child.get(attr))
             elif pos == 'inside':
-                element.extend(element2.getchildren())
+                element.extend(list(element2))
             elif pos == 'after':
                 parent = element.getparent()
                 enext = element.getnext()
                 if enext is not None:
-                    for child in element2:
+                    for child in list(element2):
                         index = parent.index(enext)
                         parent.insert(index, child)
                 else:
-                    parent.extend(element2.getchildren())
+                    parent.extend(list(element2))
             elif pos == 'before':
                 parent = element.getparent()
-                for child in element2:
+                for child in list(element2):
                     index = parent.index(element)
                     parent.insert(index, child)
             else:
