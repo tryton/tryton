@@ -205,13 +205,6 @@ class ViewForm(View):
         attributes.setdefault('colspan', 4)
         notebook = Notebook(attrs=attributes)
         notebook.set_scrollable(True)
-        positions = {
-            'top': gtk.POS_TOP,
-            'left': gtk.POS_LEFT,
-            'right': gtk.POS_RIGHT,
-            'bottom': gtk.POS_BOTTOM,
-            }
-        notebook.set_tab_pos(positions[CONFIG['client.form_tab']])
         notebook.set_border_width(3)
 
         # Force to display the first time it switches on a page
@@ -231,21 +224,7 @@ class ViewForm(View):
         self.parse(node, notebook)
 
     def _parse_page(self, node, notebook, attributes):
-        if CONFIG['client.form_tab'] == 'left':
-            angle = 90
-            tab_box = gtk.VBox(spacing=3)
-            image_pos, image_rotate = ('end',
-                gtk.gdk.PIXBUF_ROTATE_COUNTERCLOCKWISE)
-        elif CONFIG['client.form_tab'] == 'right':
-            angle = -90
-            tab_box = gtk.VBox(spacing=3)
-            image_pos, image_rotate = ('start',
-                gtk.gdk.PIXBUF_ROTATE_CLOCKWISE)
-        else:
-            angle = 0
-            tab_box = gtk.HBox(spacing=3)
-            image_pos, image_rotate = ('start',
-                gtk.gdk.PIXBUF_ROTATE_NONE)
+        tab_box = gtk.HBox(spacing=3)
         if 'name' in attributes:
             field = self.screen.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
@@ -256,7 +235,6 @@ class ViewForm(View):
         if '_' not in attributes['string']:
             attributes['string'] = '_' + attributes['string']
         label = gtk.Label(attributes['string'])
-        label.set_angle(angle)
         label.set_use_underline(True)
         tab_box.pack_start(label)
 
@@ -264,13 +242,9 @@ class ViewForm(View):
             ICONFACTORY.register_icon(attributes['icon'])
             pixbuf = tab_box.render_icon(attributes['icon'],
                 gtk.ICON_SIZE_SMALL_TOOLBAR)
-            pixbuf = pixbuf.rotate_simple(image_rotate)
             icon = gtk.Image()
             icon.set_from_pixbuf(pixbuf)
-            if image_pos == 'end':
-                tab_box.pack_end(icon)
-            else:
-                tab_box.pack_start(icon)
+            tab_box.pack_start(icon)
         tab_box.show_all()
 
         viewport = gtk.Viewport()

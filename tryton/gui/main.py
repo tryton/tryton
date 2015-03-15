@@ -643,52 +643,6 @@ class Main(object):
             if CONFIG['client.spellcheck']:
                 checkmenuitem_spellcheck.set_active(True)
 
-        menuitem_tab = gtk.MenuItem(_('Tabs Position'))
-        menu_form.add(menuitem_tab)
-
-        menu_tab = gtk.Menu()
-        menu_tab.set_accel_group(self.accel_group)
-        menu_tab.set_accel_path('<tryton>/Options/Tabs Position')
-        menuitem_tab.set_submenu(menu_tab)
-
-        radiomenuitem_top = gtk.RadioMenuItem(label=_('Top'))
-        radiomenuitem_top.connect('activate',
-                lambda x: CONFIG.__setitem__('client.form_tab', 'top'))
-        radiomenuitem_top.set_accel_path('<tryton>/Options/Tabs Position/Top')
-        menu_tab.add(radiomenuitem_top)
-        if (CONFIG['client.form_tab'] or 'left') == 'top':
-            radiomenuitem_top.set_active(True)
-
-        radiomenuitem_left = gtk.RadioMenuItem(group=radiomenuitem_top,
-                label=_('Left'))
-        radiomenuitem_left.connect('activate',
-                lambda x: CONFIG.__setitem__('client.form_tab', 'left'))
-        radiomenuitem_left.set_accel_path(
-            '<tryton>/Options/Tabs Position/Left')
-        menu_tab.add(radiomenuitem_left)
-        if (CONFIG['client.form_tab'] or 'left') == 'left':
-            radiomenuitem_left.set_active(True)
-
-        radiomenuitem_right = gtk.RadioMenuItem(group=radiomenuitem_top,
-                label=_('Right'))
-        radiomenuitem_right.connect('activate',
-                lambda x: CONFIG.__setitem__('client.form_tab', 'right'))
-        radiomenuitem_right.set_accel_path(
-            '<tryton>/Options/Tabs Position/Right')
-        menu_tab.add(radiomenuitem_right)
-        if (CONFIG['client.form_tab'] or 'left') == 'right':
-            radiomenuitem_right.set_active(True)
-
-        radiomenuitem_bottom = gtk.RadioMenuItem(group=radiomenuitem_top,
-                label=_('Bottom'))
-        radiomenuitem_bottom.connect('activate',
-                lambda x: CONFIG.__setitem__('client.form_tab', 'bottom'))
-        radiomenuitem_bottom.set_accel_path(
-            '<tryton>/Options/Tabs Position/Bottom')
-        menu_tab.add(radiomenuitem_bottom)
-        if (CONFIG['client.form_tab'] or 'left') == 'bottom':
-            radiomenuitem_bottom.set_active(True)
-
         imagemenuitem_win_prev = gtk.ImageMenuItem(_('_Previous Tab'),
             self.accel_group)
         imagemenuitem_win_prev.connect('activate', self.sig_win_prev)
