@@ -834,6 +834,10 @@ class ReferenceField(Field):
                 skip={record.group.child_name})
         return super(ReferenceField, self).get_on_change_value(record)
 
+    def validation_domains(self, record, pre_validate=None):
+        screen_domain, attr_domain = self.domains_get(record, pre_validate)
+        return screen_domain
+
 
 class BinaryField(Field):
 
