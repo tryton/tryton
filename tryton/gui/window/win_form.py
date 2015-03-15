@@ -71,6 +71,8 @@ class WinForm(NoModal):
             self.but_ok.set_can_default(True)
             self.but_ok.show()
             self.win.add_action_widget(self.but_ok, gtk.RESPONSE_OK)
+            if not new:
+                self.but_ok.props.sensitive = False
         else:
             self.but_ok = self.win.add_button(gtk.STOCK_OK,
                 gtk.RESPONSE_OK)
@@ -377,9 +379,11 @@ class WinForm(NoModal):
 
     def activate_save(self, *args):
         modified = self.screen.modified()
-        self.but_ok.props.sensitive = modified
+        # Keep sensible as change could have been trigger by a Many2One edition
+        sensitive = modified or self.but_ok.props.sensitive
+        self.but_ok.props.sensitive = sensitive
         self.win.set_default_response(
-            gtk.RESPONSE_OK if modified else gtk.RESPONSE_CANCEL)
+            gtk.RESPONSE_OK if sensitive else gtk.RESPONSE_CANCEL)
 
     def close(self, widget):
         widget.emit_stop_by_name('close')
