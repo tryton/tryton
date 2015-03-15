@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Add origin on sale
 * Support mixed invoice type by line in invoiced quantity calculation
 * Use TaxableMixin
