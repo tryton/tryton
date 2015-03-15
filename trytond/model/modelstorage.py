@@ -889,7 +889,7 @@ class ModelStorage(Model):
         def validate_domain(field):
             if not field.domain:
                 return
-            if field._type == 'dict':
+            if field._type in ['dict', 'reference']:
                 return
             if field._type in ('many2one', 'one2many'):
                 Relation = pool.get(field.model_name)
