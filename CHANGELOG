@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Drop the tax rule "Ventes intracommunautaires" and associated taxes.
 * Create separate taxes for goods and services. You should review all your
   products, product categories and custom tax rules to rely on the new taxes.
