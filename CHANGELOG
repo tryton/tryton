@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Add move template
 * Improve payable/receivable lines
 * Enforce same sign between amount_second_currency and debit - credit
