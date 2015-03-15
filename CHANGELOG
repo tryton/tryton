@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Use TimeDelta field
 
 Version 3.4.0 - 2014-10-20
