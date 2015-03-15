@@ -576,13 +576,15 @@ class ModelList(list):
         return res
     pop.__doc__ = list.pop.__doc__
 
-    def remove(self, record):
-        self.record_deleted.add(record)
+    def remove(self, record, _changed=True):
+        if record.id >= 0:
+            self.record_deleted.add(record)
         record._parent = None
         record._parent_field_name = ''
         record._parent_name = ''
         res = super(ModelList, self).remove(record)
-        self._changed()
+        if _changed:
+            self._changed()
         return res
     remove.__doc__ = list.remove.__doc__
 
@@ -931,7 +933,7 @@ class Model(object):
                             to_remove.append(record)
             for record in to_remove:
                 # remove without signal
-                list.remove(getattr(self, field), record)
+                getattr(self, field).remove(record, _changed=False)
             if value and (value.get('add') or value.get('update')):
                 for index, vals in value.get('add', []):
                     relation = Model.get(self._fields[field]['relation'],
