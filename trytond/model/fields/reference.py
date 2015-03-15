@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import contextlib
 from types import NoneType
+import warnings
+
 from sql import Cast, Literal, Column, Query, Expression
 from sql.functions import Substring, Position
 
@@ -32,8 +34,12 @@ class Reference(Field):
             select=select, on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
         self.selection = selection or None
-        self.selection_change_with = selection_change_with
-
+        self.selection_change_with = set()
+        if selection_change_with:
+            warnings.warn('selection_change_with argument is deprecated, '
+                'use the depends decorator',
+                DeprecationWarning, stacklevel=2)
+            self.selection_change_with |= set(selection_change_with)
     __init__.__doc__ += Field.__init__.__doc__
 
     def get(self, ids, model, name, values=None):
