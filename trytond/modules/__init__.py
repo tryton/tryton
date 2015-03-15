@@ -296,6 +296,8 @@ def get_module_list():
         for file in os.listdir(MODULES_PATH):
             if file.startswith('.'):
                 continue
+            if file == '__pycache__':
+                continue
             if os.path.isdir(OPJ(MODULES_PATH, file)):
                 module_list.add(file)
     update_egg_modules()

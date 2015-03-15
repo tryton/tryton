@@ -4,6 +4,7 @@
 
 from setuptools import setup, find_packages
 import os
+import platform
 
 PACKAGE, VERSION, LICENSE, WEBSITE = None, None, None, None
 execfile(os.path.join('trytond', 'version.py'))
@@ -22,6 +23,11 @@ if minor_version % 2:
     VERSION = '%s.%s.dev0' % (major_version, minor_version)
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
         PACKAGE, PACKAGE, VERSION)
+
+if platform.python_implementation() == 'PyPy':
+    pg_require = ['psycopg2cffi >= 2.5']
+else:
+    pg_require = ['psycopg2 >= 2.0']
 
 setup(name=PACKAGE,
     version=VERSION,
@@ -65,6 +71,8 @@ setup(name=PACKAGE,
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         ],
     platforms='any',
@@ -78,7 +86,7 @@ setup(name=PACKAGE,
         'python-sql >= 0.4',
         ],
     extras_require={
-        'PostgreSQL': ['psycopg2 >= 2.0'],
+        'PostgreSQL': pg_require,
         'MySQL': ['MySQL-python'],
         'WebDAV': ['PyWebDAV >= 0.9.8'],
         'unoconv': ['unoconv'],

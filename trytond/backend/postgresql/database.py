@@ -1,7 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.backend.database import DatabaseInterface, CursorInterface
-from trytond.config import config, parse_uri
+import time
+import logging
+import re
+import os
+if os.name == 'posix':
+    import pwd
+from decimal import Decimal
+
+try:
+    from psycopg2cffi import compat
+    compat.register()
+except ImportError:
+    pass
 from psycopg2.pool import ThreadedConnectionPool
 from psycopg2.extensions import cursor as PsycopgCursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
@@ -14,14 +25,11 @@ except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
-import time
-import logging
-import re
-import os
-if os.name == 'posix':
-    import pwd
-from decimal import Decimal
+
 from sql import Flavor
+
+from trytond.backend.database import DatabaseInterface, CursorInterface
+from trytond.config import config, parse_uri
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
     'Cursor']
