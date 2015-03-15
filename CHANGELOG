@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Add 'staging' state to stock move
 * Apply stock_assign of compute_quantity_query only on outgoing moves
 * Add domain on location's parent and childs
