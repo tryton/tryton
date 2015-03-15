@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Set sale shipment cost on sale only at quotation
 * Allow to change the carrier until the shipment is done
 
