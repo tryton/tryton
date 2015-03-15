@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Allow to override the stock moves used to compute the account move
 
 Version 3.4.0 - 2014-10-20
