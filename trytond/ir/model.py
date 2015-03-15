@@ -561,7 +561,13 @@ class ModelAccess(ModelSQL, ModelView):
         elif field._type == 'reference':
             selection = field.selection
             if isinstance(selection, basestring):
-                selection = getattr(Model, field.selection)()
+                sel_func = getattr(Model, field.selection)
+                if (not hasattr(sel_func, 'im_self')
+                        or sel_func.im_self):
+                    selection = sel_func()
+                else:
+                    # XXX Can not check access right on instance method
+                    selection = []
             for model_name, _ in selection:
                 if not cls.check(model_name, mode=mode,
                         raise_exception=False):
