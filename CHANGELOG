@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Allow to set manually end date
 * Update of opportunity amount based on linked sales
 * Add a state 'won'
