@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Use One2Many for analytic accounts
 
 Version 3.4.0 - 2014-10-20
