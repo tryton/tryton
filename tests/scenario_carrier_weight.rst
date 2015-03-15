@@ -175,6 +175,7 @@ Sale products with cost on shipment::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 5.0
+    >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
@@ -182,7 +183,6 @@ Sale products with cost on shipment::
     True
     >>> cost_line.amount
     Decimal('40.00')
-    >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
@@ -236,6 +236,7 @@ Sale products with cost on order::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 3.0
+    >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
@@ -243,7 +244,6 @@ Sale products with cost on order::
     True
     >>> cost_line.amount
     Decimal('25.00')
-    >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
