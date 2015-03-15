@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Add warning for late production when creating production request.
 
 Version 3.4.0 - 2014-10-20
