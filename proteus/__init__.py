@@ -997,28 +997,28 @@ class Model(object):
                 set_on_change(change)
 
         values = {}
+        fieldnames = set(names)
         to_change = set()
         later = set()
         for field, definition in self._fields.iteritems():
-            if not definition.get('on_change_with'):
+            on_change_with = definition.get('on_change_with')
+            if not on_change_with:
                 continue
-            if name not in definition['on_change_with']:
+            if not fieldnames & set(on_change_with):
                 continue
-            if field == name:
-                continue
-            if to_change & set(definition['on_change_with']):
+            if to_change & set(on_change_with):
                 later.add(field)
                 continue
             to_change.add(field)
-            values.update(self._on_change_args(definition['on_change_with']))
+            values.update(self._on_change_args(on_change_with))
         if to_change:
             context = self._config.context
             changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
             set_on_change(changes)
         for field in later:
-            definition = self._fields[field]
-            values = self._on_change_args(definition['on_change_with'])
+            on_change_with = self._fields[field]['on_change_with']
+            values = self._on_change_args(on_change_with)
             context = self._config.context
             result = getattr(self._proxy, 'on_change_with_%s' % field)(values,
                     context)
