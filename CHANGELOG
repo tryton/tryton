@@ -1,3 +1,4 @@
+* Add support for PyPy
 * Add line group model
 * Create Move by grouped lines (number, date, party)
 
