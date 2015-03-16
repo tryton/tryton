@@ -130,7 +130,7 @@
                     case 'timedelta':
                        value = Sao.TimeDelta(null, value.seconds);
                        break;
-                   case 'buffer':
+                   case 'bytes':
                        // javascript's atob does not understand linefeed
                        // characters
                        var byte_string = atob(value.base64.replace(/\s/g, ''));
@@ -217,7 +217,7 @@
                 }
             } else if (value instanceof Uint8Array) {
                 value = {
-                    '__class__': 'buffer',
+                    '__class__': 'bytes',
                     'base64': btoa(String.fromCharCode.apply(null, value))
                 };
                 if (parent) {
