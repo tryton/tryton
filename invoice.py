@@ -14,7 +14,7 @@ from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from trytond import backend
-from trytond.pyson import If, Eval, Bool, Id, PYSONEncoder
+from trytond.pyson import If, Eval, Bool, Id
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -288,7 +288,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         limit=limit, offset=offset))
                 for invoice_id, report in cursor.fetchall():
                     if report:
-                        report = buffer(base64.decodestring(str(report)))
+                        report = fields.Binary.cast(
+                            base64.decodestring(bytes(report)))
                         cursor.execute(*sql_table.update(
                                 columns=[sql_table.invoice_report_cache],
                                 values=[report],
