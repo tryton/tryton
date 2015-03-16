@@ -125,10 +125,12 @@ class ModelView(Model):
         else:
             cls.__depend_methods = collections.defaultdict(set)
 
-        for field_name in dir(cls):
-            field = getattr(cls, field_name)
-            if not isinstance(field, fields.Field):
-                continue
+        if hasattr(cls, '__change_buttons'):
+            cls.__change_buttons = cls.__change_buttons.copy()
+        else:
+            cls.__change_buttons = collections.defaultdict(set)
+
+        def setup_field(field, field_name):
             for attribute in ('on_change', 'on_change_with', 'autocomplete',
                     'selection_change_with'):
                 if attribute == 'selection_change_with':
@@ -159,6 +161,17 @@ class ModelView(Model):
                     # Decorate on_change to always return self
                     setattr(cls, function_name, on_change(function))
 
+        def setup_callable(function, name):
+            if hasattr(function, 'change'):
+                cls.__change_buttons[name] |= function.change
+
+        for name in dir(cls):
+            attr = getattr(cls, name)
+            if isinstance(attr, fields.Field):
+                setup_field(attr, name)
+            elif isinstance(attr, collections.Callable):
+                setup_callable(attr, name)
+
     @classmethod
     def __post_setup__(cls):
         super(ModelView, cls).__post_setup__()
@@ -180,6 +193,15 @@ class ModelView(Model):
                         result = on_change_result
                     cls.__rpc__.setdefault(function_name,
                         RPC(instantiate=0, result=result))
+
+        for button in cls._buttons:
+            method = getattr(cls, button)
+            if not hasattr(method, 'im_self') or method.im_self:
+                cls.__rpc__.setdefault(button,
+                    RPC(readonly=False, instantiate=0))
+            else:
+                cls.__rpc__.setdefault(button,
+                    RPC(instantiate=0, result=on_change_result))
 
         # Update depend on methods
         for (field_name, attribute), others in (
@@ -540,6 +562,15 @@ class ModelView(Model):
                 states['readonly'] = True
             element.set('states', encoder.encode(states))
 
+            change = cls.__change_buttons[button_name]
+            if change:
+                element.set('change', encoder.encode(list(change)))
+            method = getattr(cls, button_name)
+            if not hasattr(method, 'im_self') or method.im_self:
+                element.set('type', 'class')
+            else:
+                element.set('type', 'instance')
+
         # translate view
         if Transaction().language != 'en_US':
             for attr in ('string', 'sum', 'confirm', 'help'):
@@ -609,6 +640,15 @@ class ModelView(Model):
                     ModelData.get_id(module, fs_id))
                 return action_id
             return wrapper
+        return decorator
+
+    @staticmethod
+    def button_change(*fields):
+        def decorator(func):
+            func = ModelView.button(func)
+            func = on_change(func)
+            func.change = set(fields)
+            return func
         return decorator
 
     def on_change(self, fieldnames):

@@ -129,6 +129,15 @@ Static methods:
     Same as :meth:`ModelView.button` but return the action id of the XML `id`
     action.
 
+.. staticmethod:: ModelView.button_change([\*fields])
+
+    Same as :meth:`ModelView.button` but for button that change values of the
+    fields on client side (similar to :ref:`on_change
+    <ref-models-fields-on_change>`).
+
+    .. warning::
+        Only on instance methods.
+
 Class methods:
 
 .. classmethod:: ModelView.fields_view_get([view_id[, view_type[, toolbar]]])

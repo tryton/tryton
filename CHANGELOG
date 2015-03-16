@@ -1,3 +1,4 @@
+* Add button_change
 * Add support for PyPy
 * Add support for psycopg2cffi
 * Add noeval on PYSONDecoder
