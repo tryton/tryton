@@ -51,7 +51,14 @@ class Binary(Field):
             converter = len
             default = 0
         for i in values:
-            res[i['id']] = converter(i[name]) if i[name] else default
+            value = i[name]
+            if value:
+                if isinstance(value, unicode):
+                    value = value.encode('utf-8')
+                value = converter(value)
+            else:
+                value = default
+            res[i['id']] = value
         for i in ids:
             res.setdefault(i, default)
         return res

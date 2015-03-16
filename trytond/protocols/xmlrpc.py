@@ -66,7 +66,8 @@ xmlrpclib.Marshaller.dispatch[type(None)] = \
 xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpclib.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-xmlrpclib.Marshaller.dispatch[bytes] = dump_bytes
+if bytes != str:
+    xmlrpclib.Marshaller.dispatch[bytes] = dump_bytes
 xmlrpclib.Marshaller.dispatch[bytearray] = dump_bytes
 
 
