@@ -96,7 +96,7 @@
             var tab = tabs.find('#nav-' + this.id);
             var content = tabs.find('#' + this.id);
             tabs.find('a[href="#' + this.id + '"]').tab('show');
-            return this.modified_save().then(function() {
+            return this._close_allowed().then(function() {
                 var next = tab.next();
                 if (!next.length) {
                     next = tab.prev();
@@ -108,6 +108,9 @@
                     next.find('a').tab('show');
                 }
             }.bind(this));
+        },
+        _close_allowed: function() {
+            return jQuery.when();
         }
     });
 
@@ -157,6 +160,10 @@
         } else {
             tab = new Sao.Tab.Board(attributes);
         }
+        Sao.Tab.add(tab);
+    };
+
+    Sao.Tab.add = function(tab) {
         var tabs = jQuery('#tabs');
         var tab_link = jQuery('<a/>', {
             'aria-controls': tab.id,
@@ -354,6 +361,9 @@
                 });
             });
             return toolbar;
+        },
+        _close_allowed: function() {
+            return this.modified_save();
         },
         modified_save: function() {
             this.screen.save_tree_state();
@@ -597,6 +607,39 @@
         },
         print: function() {
             this.buttons.print.click();
+        }
+    });
+
+    Sao.Tab.Wizard = Sao.class_(Sao.Tab, {
+        class_: 'tab-wizard',
+        init: function(wizard) {
+            Sao.Tab.Wizard._super.init.call(this);
+            this.wizard = wizard;
+            this.name = wizard.name;
+            wizard.tab = this;
+            this.create_tabcontent();
+            this.title.html(this.name);
+            this.el.append(wizard.form);
+        },
+        create_toolbar: function() {
+            return jQuery('<span/>');
+        },
+        _close_allowed: function() {
+            var wizard = this.wizard;
+            var prm = jQuery.when();
+            if ((wizard.state !== wizard.end_state) &&
+                (wizard.end_state in wizard.states)) {
+                prm = wizard.response(wizard.end_state);
+            }
+            var dfd = jQuery.Deferred();
+            prm.always(function() {
+                if (wizard.state === wizard.end_state) {
+                    dfd.resolve();
+                } else {
+                    dfd.reject();
+                }
+            });
+            return dfd.promise();
         }
     });
 }());

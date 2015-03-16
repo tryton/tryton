@@ -113,7 +113,7 @@
         response: function(state) {
             this.__waiting_response = false;
             this.screen.current_view.set_value();
-            this.screen.current_record.validate().then(function(validate) {
+            return this.screen.current_record.validate().then(function(validate) {
                 if ((!validate) && state != this.end_state) {
                     this.screen.display();
                     return;
@@ -155,13 +155,46 @@
         var win;
         if (attributes.window) {
             win = new Sao.Wizard.Form(attributes.name);
+            var tab = new Sao.Tab.Wizard(win);
+            Sao.Tab.add(tab);
         } else {
             win = new Sao.Wizard.Dialog(attributes.name);
         }
         win.run(attributes);
     };
 
-    // TODO Wizard.Form
+    Sao.Wizard.Form = Sao.class_(Sao.Wizard, {
+        init: function(name) {
+            Sao.Wizard.Form._super.init.call(this);
+            this.tab = null;  // Filled by Sao.Tab.Wizard
+            this.name = name;
+
+            this.form = jQuery('<div/>', {
+                'class': 'wizard-form',
+            }).append(this.widget);
+            this.footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(this.form);
+        },
+        clean: function() {
+            Sao.Wizard.Form._super.clean.call(this);
+            this.footer.children().remove();
+        },
+        _get_button: function(definition) {
+            var button = Sao.Wizard.Form._super._get_button.call(this,
+                definition);
+            this.footer.append(button.el);
+            button.el.click(function() {
+                this.response(definition.state);
+            }.bind(this));
+            return button;
+        },
+        end: function() {
+            return Sao.Wizard.Form._super.end.call(this).always(function() {
+                return this.tab.close();
+            }.bind(this));
+        }
+    });
 
     Sao.Wizard.Dialog = Sao.class_(Sao.Wizard, { // TODO nomodal
         init: function(name) {
