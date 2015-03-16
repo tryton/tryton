@@ -57,7 +57,7 @@ class ShipmentOut:
 
     @fields.depends(methods=['inventory_moves'])
     def on_change_carrier(self):
-        return self.on_change_inventory_moves()
+        self.on_change_inventory_moves()
 
     @fields.depends('carrier', 'customer', 'inventory_moves')
     def on_change_inventory_moves(self):
