@@ -842,13 +842,14 @@ class ReferenceField(Field):
 class BinaryField(Field):
 
     _default = None
+    cast = bytearray if bytes == str else bytes
 
     def get(self, record):
         result = record.value.get(self.name, self._default)
         if isinstance(result, basestring):
             try:
                 with open(result, 'rb') as fp:
-                    result = buffer(fp.read())
+                    result = self.cast(fp.read())
             except IOError:
                 result = self.get_data(record)
         return result
@@ -871,12 +872,13 @@ class BinaryField(Field):
         result = record.value.get(self.name) or 0
         if isinstance(result, basestring):
             result = os.stat(result).st_size
-        elif isinstance(result, buffer):
+        elif isinstance(result, (bytes, bytearray)):
             result = len(result)
         return result
 
     def get_data(self, record):
-        if not isinstance(record.value.get(self.name), (basestring, buffer)):
+        if not isinstance(record.value.get(self.name),
+                (basestring, bytes, bytearray)):
             if record.id < 0:
                 return ''
             context = record.context_get()
