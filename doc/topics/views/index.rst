@@ -153,10 +153,18 @@ Each form view must start with this tag.
     * ``string``: The text that will be used as default title for the tab or
       the window.
 
-    * ``on_write``: The name of a function that will be called when the record
-      is saved.  The function must have this syntax:
+    .. _form-attributes-on_write:
+
+    * ``on_write``: The name of a method on the Model of the view that will be
+      called when a record is saved.  The method must return a list of record
+      ids that the client must reload if they are already loaded.  The function
+      must have this syntax:
 
       ``on_write(self, ids)``
+
+      .. note::
+        The method must be registered in :attr:`trytond.model.Model.__rpc__`.
+      ..
 
     * ``col``: The number of columns for the view.
 
@@ -479,10 +487,7 @@ Each tree view must start with this tag.
     * ``string``: The text that will be used as default title for the tab or
       the window.
 
-    * ``on_write``: The name of a function that will be called when a record is
-      saved.  The function must have this syntax:
-
-      ``on_write(self, ids)``
+    * ``on_write``: see form-attributes-on_write_.
 
     * ``editable``: If it is set to ``top`` or ``bottom``, the list becomes
       editable and the new record will be added on ``top`` or ``bottom`` of the
