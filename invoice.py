@@ -420,12 +420,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
         'accounting_date', 'invoice_date')
     def on_change_lines(self):
-        return self._on_change_lines_taxes()
+        self._on_change_lines_taxes()
 
     @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
         'accounting_date', 'invoice_date')
     def on_change_taxes(self):
-        return self._on_change_lines_taxes()
+        self._on_change_lines_taxes()
 
     def _on_change_lines_taxes(self):
         pool = Pool()
