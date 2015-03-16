@@ -43,9 +43,10 @@ class Button(gtk.Button):
             self.show()
         self.set_sensitive(not states.get('readonly', False))
         self._set_icon(states.get('icon', self.attrs.get('icon')))
-        parent = record.parent if record else None
-        while parent:
-            if parent.modified:
-                self.set_sensitive(False)
-                break
-            parent = parent.parent
+        if self.attrs.get('type', 'class') == 'class':
+            parent = record.parent if record else None
+            while parent:
+                if parent.modified:
+                    self.set_sensitive(False)
+                    break
+                parent = parent.parent
