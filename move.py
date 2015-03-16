@@ -1937,10 +1937,11 @@ class Reconcile(Wizard):
 class ReconcileShow(ModelView):
     'Reconcile'
     __name__ = 'account.reconcile.show'
-    accounts = fields.One2Many('account.account', None, 'Account',
+    accounts = fields.Many2Many('account.account', None, None, 'Account',
         readonly=True)
     account = fields.Many2One('account.account', 'Account', readonly=True)
-    parties = fields.One2Many('party.party', None, 'Parties', readonly=True)
+    parties = fields.Many2Many('party.party', None, None, 'Parties',
+        readonly=True)
     party = fields.Many2One('party.party', 'Party', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
