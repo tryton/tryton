@@ -16,6 +16,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
+from trytond.model import fields
 
 
 class FieldsTestCase(unittest.TestCase):
@@ -3190,32 +3191,34 @@ class FieldsTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             bin1, = self.binary.create([{
-                        'binary': buffer('foo'),
+                        'binary': fields.Binary.cast(b'foo'),
                         }])
-            self.assert_(bin1.binary == buffer('foo'))
+            self.assert_(bin1.binary == fields.Binary.cast(b'foo'))
 
-            self.binary.write([bin1], {'binary': buffer('bar')})
-            self.assert_(bin1.binary == buffer('bar'))
+            self.binary.write([bin1], {'binary': fields.Binary.cast(b'bar')})
+            self.assert_(bin1.binary == fields.Binary.cast(b'bar'))
 
             with transaction.set_context({'test.binary.binary': 'size'}):
                 bin1_size = self.binary(bin1.id)
-                self.assert_(bin1_size.binary == len('bar'))
-                self.assert_(bin1_size.binary != buffer('bar'))
+                self.assert_(bin1_size.binary == len(b'bar'))
+                self.assert_(bin1_size.binary != fields.Binary.cast(b'bar'))
 
             bin2, = self.binary.create([{}])
             self.assert_(bin2.binary is None)
 
             bin3, = self.binary_default.create([{}])
-            self.assert_(bin3.binary == buffer('default'))
+            self.assert_(bin3.binary == fields.Binary.cast(b'default'))
 
             self.assertRaises(UserError, self.binary_required.create, [{}])
             transaction.cursor.rollback()
 
-            bin4, = self.binary_required.create([{'binary': buffer('baz')}])
-            self.assert_(bin4.binary == buffer('baz'))
+            bin4, = self.binary_required.create([{
+                        'binary': fields.Binary.cast(b'baz'),
+                        }])
+            self.assert_(bin4.binary == fields.Binary.cast(b'baz'))
 
             self.assertRaises(UserError, self.binary_required.create,
-                [{'binary': buffer('')}])
+                [{'binary': fields.Binary.cast(b'')}])
 
             transaction.cursor.rollback()
 

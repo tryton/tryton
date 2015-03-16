@@ -9,9 +9,10 @@ from ... import backend
 
 class Binary(Field):
     '''
-    Define a binary field (``str``).
+    Define a binary field (``bytes``).
     '''
     _type = 'binary'
+    cast = bytearray if bytes == str else bytes
 
     def __init__(self, string='', help='', required=False, readonly=False,
             domain=None, states=None, select=False, on_change=None,
@@ -28,10 +29,10 @@ class Binary(Field):
             select=select, on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
 
-    @staticmethod
-    def get(ids, model, name, values=None):
+    @classmethod
+    def get(cls, ids, model, name, values=None):
         '''
-        Convert the binary value into ``str``
+        Convert the binary value into ``bytes``
 
         :param ids: a list of ids
         :param model: a string with the name of the model
@@ -42,7 +43,7 @@ class Binary(Field):
         if values is None:
             values = {}
         res = {}
-        converter = buffer
+        converter = cls.cast
         default = None
         format_ = Transaction().context.pop('%s.%s' % (model.__name__, name),
             '')

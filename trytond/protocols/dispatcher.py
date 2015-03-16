@@ -279,7 +279,10 @@ def dump(database_name, password):
 
     data = Database.dump(database_name)
     logger.info('DUMP DB: %s', database_name)
-    return buffer(data)
+    if bytes == str:
+        return bytearray(data)
+    else:
+        return bytes(data)
 
 
 def restore(database_name, password, data, update=False):

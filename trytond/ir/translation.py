@@ -1616,9 +1616,8 @@ class TranslationExport(Wizard):
     def transition_export(self):
         pool = Pool()
         Translation = pool.get('ir.translation')
-        file_data = Translation.translation_export(
+        self.result.file = Translation.translation_export(
             self.start.language.code, self.start.module.name)
-        self.result.file = buffer(file_data) if file_data else None
         return 'result'
 
     def default_result(self, fields):

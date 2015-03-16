@@ -1009,7 +1009,7 @@ class ModelGraph(Report):
         graph.set('ratio', 'auto')
         cls.fill_graph(models, graph, level=data['level'], filter=filter)
         data = graph.create(prog='dot', format='png')
-        return ('png', buffer(data), False, action_report.name)
+        return ('png', fields.Binary.cast(data), False, action_report.name)
 
     @classmethod
     def fill_graph(cls, models, graph, level=1, filter=None):

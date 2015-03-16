@@ -1,3 +1,4 @@
+* Use bytes and bytearray for Binary
 * Add button_change
 * Add support for PyPy
 * Add support for psycopg2cffi

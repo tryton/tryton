@@ -10,7 +10,6 @@ import SimpleXMLRPCServer
 import SocketServer
 import xmlrpclib
 import socket
-import sys
 import base64
 import datetime
 from types import DictType
@@ -29,7 +28,7 @@ def dump_decimal(self, value, write):
     self.dump_struct(value, write)
 
 
-def dump_buffer(self, value, write):
+def dump_bytes(self, value, write):
     self.write = write
     value = xmlrpclib.Binary(value)
     value.encode(self)
@@ -67,7 +66,8 @@ xmlrpclib.Marshaller.dispatch[type(None)] = \
 xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpclib.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
+xmlrpclib.Marshaller.dispatch[bytes] = dump_bytes
+xmlrpclib.Marshaller.dispatch[bytearray] = dump_bytes
 
 
 def dump_struct(self, value, write, escape=xmlrpclib.escape):
@@ -132,7 +132,8 @@ xmlrpclib.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
 def _end_base64(self, data):
     value = xmlrpclib.Binary()
     value.decode(data)
-    self.append(buffer(value.data))
+    cast = bytearray if bytes == str else bytes
+    self.append(cast(value.data))
     self._value = 0
 xmlrpclib.Unmarshaller.dispatch['base64'] = _end_base64
 

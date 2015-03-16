@@ -147,8 +147,8 @@ class Report(URLMixin, PoolBase):
         report_context = cls.get_context(records, data)
         oext, content = cls.convert(action_report,
             cls.render(action_report, report_context))
-        return (oext, buffer(content), action_report.direct_print,
-            action_report.name)
+        content = bytearray(content) if bytes == str else bytes(content)
+        return (oext, content, action_report.direct_print, action_report.name)
 
     @classmethod
     def _get_records(cls, ids, model, data):
@@ -196,11 +196,11 @@ class Report(URLMixin, PoolBase):
 
     @classmethod
     def _prepare_template_file(cls, report):
-        # Convert to str as buffer from DB is not supported by StringIO
-        report_content = (str(report.report_content) if report.report_content
-            else False)
-        style_content = (str(report.style_content) if report.style_content
-            else False)
+        # Convert to str as value from DB is not supported by StringIO
+        report_content = (bytes(report.report_content) if report.report_content
+            else None)
+        style_content = (bytes(report.style_content) if report.style_content
+            else None)
 
         if not report_content:
             raise Exception('Error', 'Missing report file!')
@@ -269,7 +269,7 @@ class Report(URLMixin, PoolBase):
                 outzip.writestr(file, picture)
 
         if manifest:
-            outzip.writestr(MANIFEST, str(manifest))
+            outzip.writestr(MANIFEST, bytes(manifest))
 
         content_z.close()
         content_io.close()

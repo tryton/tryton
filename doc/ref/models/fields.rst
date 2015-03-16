@@ -383,7 +383,7 @@ Binary
 
 .. class:: Binary(string[, \**options])
 
-A binary field. It will be represented in Python by a ``str`` instance.
+A binary field. It will be represented in Python by a ``bytes`` instance.
 
 :class:`Binary` has one extra optional argument:
 

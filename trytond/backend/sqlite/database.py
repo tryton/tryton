@@ -421,7 +421,7 @@ class Cursor(CursorInterface):
 
 sqlite.register_converter('NUMERIC', lambda val: Decimal(val))
 if sys.version_info[0] == 2:
-    sqlite.register_adapter(Decimal, lambda val: buffer(str(val)))
+    sqlite.register_adapter(Decimal, lambda val: bytearray(str(val)))
 else:
     sqlite.register_adapter(Decimal, lambda val: bytes(str(val)))
 

@@ -697,7 +697,7 @@ class BinaryDefault(ModelSQL):
 
     @staticmethod
     def default_binary():
-        return buffer('default')
+        return b'default'
 
 
 class BinaryRequired(ModelSQL):

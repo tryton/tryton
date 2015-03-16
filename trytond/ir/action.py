@@ -533,7 +533,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                         limit=limit, offset=offset))
                 for report_id, report in cursor.fetchall():
                     if report:
-                        report = buffer(base64.decodestring(str(report)))
+                        report = fields.Binary.cast(
+                            base64.decodestring(bytes(report)))
                         cursor.execute(*action_report.update(
                                 [action_report.report_content_custom],
                                 [report],
@@ -592,7 +593,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def get_report_content(cls, reports, name):
         contents = {}
-        converter = buffer
+        converter = fields.Binary.cast
         default = None
         format_ = Transaction().context.pop('%s.%s'
             % (cls.__name__, name), '')
@@ -624,7 +625,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def get_style_content(cls, reports, name):
         contents = {}
-        converter = buffer
+        converter = fields.Binary.cast
         default = None
         format_ = Transaction().context.pop('%s.%s'
             % (cls.__name__, name), '')
