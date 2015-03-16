@@ -71,6 +71,7 @@ class Category:
         help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
         'category', 'tax', 'Customer Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['sale', 'both'])],
@@ -82,6 +83,7 @@ class Category:
         depends=['taxes_parent'])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
         'category', 'tax', 'Supplier Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['purchase', 'both'])],
@@ -216,6 +218,7 @@ class Template:
             help='Use the taxes defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
         'product', 'tax', 'Customer Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['sale', 'both'])],
@@ -226,6 +229,7 @@ class Template:
             }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
         'product', 'tax', 'Supplier Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['purchase', 'both'])],
