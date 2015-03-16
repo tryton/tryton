@@ -789,15 +789,22 @@ class Model(object):
         return [cls(id) for id in ids]
 
     @dualmethod
-    def click(cls, records, button):
+    def click(cls, records, button, change=None):
         'Click on button'
         if not records:
             return
-        cls.save(records)
-        cls.reload(records)  # Force reload because save doesn't always
+
         proxy = records[0]._proxy
         context = records[0]._config.context
-        return getattr(proxy, button)([r.id for r in records], context)
+        if change is None:
+            cls.save(records)
+            cls.reload(records)  # Force reload because save doesn't always
+            return getattr(proxy, button)([r.id for r in records], context)
+        else:
+            record, = records
+            values = record._on_change_args(change)
+            changes = getattr(proxy, button)(values, context)
+            record._set_on_change(changes)
 
     def _get_values(self, fields=None):
         'Return dictionary values'
@@ -963,22 +970,22 @@ class Model(object):
             self._values[field] = value
         self._changed.add(field)
 
+    def _set_on_change(self, values):
+        later = {}
+        for field, value in values.iteritems():
+            if field not in self._fields:
+                continue
+            if self._fields[field]['type'] in ('one2many', 'many2many'):
+                later[field] = value
+                continue
+            self._on_change_set(field, value)
+        for field, value in later.iteritems():
+            self._on_change_set(field, value)
+
     def _on_change(self, names):
         'Call on_change for field'
         # Import locally to not break installation
         from proteus.pyson import PYSONDecoder
-
-        def set_on_change(values):
-            later = {}
-            for field, value in values.iteritems():
-                if field not in self._fields:
-                    continue
-                if self._fields[field]['type'] in ('one2many', 'many2many'):
-                    later[field] = value
-                    continue
-                self._on_change_set(field, value)
-            for field, value in later.iteritems():
-                self._on_change_set(field, value)
 
         values = {}
         for name in names:
@@ -994,7 +1001,7 @@ class Model(object):
             context = self._config.context
             changes = getattr(self._proxy, 'on_change')(values, names, context)
             for change in changes:
-                set_on_change(change)
+                self._set_on_change(change)
 
         values = {}
         fieldnames = set(names)
@@ -1015,7 +1022,7 @@ class Model(object):
             context = self._config.context
             changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
-            set_on_change(changes)
+            self._set_on_change(changes)
         for field in later:
             on_change_with = self._fields[field]['on_change_with']
             values = self._on_change_args(on_change_with)
