@@ -694,7 +694,8 @@
             }
             this.el.prop('disabled', states.readonly);
             this.set_icon(states.icon || this.attributes.icon);
-            if (record) {
+            if (((this.attributes.type === undefined) ||
+                        (this.attributes.type === 'class')) && (record)) {
                 var parent = record.group.parent;
                 while (parent) {
                     if (parent.has_changed()) {

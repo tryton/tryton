@@ -1142,6 +1142,9 @@
                     if (record.group.get_readonly() || record.readonly) {
                         return false;
                     }
+                    if (button.attributes.type === 'instance') {
+                        return false;
+                    }
                     var states = record.expr_eval(
                         button.attributes.states || {});
                     return !(states.invisible || states.readonly);
@@ -1203,18 +1206,31 @@
                     return;
                 }
 
-                var context = jQuery.extend(this.context);
-                context._timestamp = {};
-                for (i = 0; i < selected_records.length; i++) {
-                    record = selected_records[i];
-                    jQuery.extend(context, record.get_timestamp());
-                }
                 // TODO confirm
-                this.current_record.save().done(function() {
-                    this.current_record.model.execute(attributes.name,
-                        [ids], context).then(process_action.bind(this))
-                        .then(reload_ids);
-                }.bind(this));
+                var record = this.current_record;
+                if (attributes.type === 'instance') {
+                    var args = record.expr_eval(attributes.change || []);
+                    var values = record._get_on_change_args(args);
+                    record.model.execute(attributes.name, [values], this.context)
+                        .then(function(changes) {
+                            record.set_on_change(changes);
+                            record.group.root_group().screens.forEach(function(screen) {
+                                screen.display();
+                            });
+                        });
+                } else {
+                    var context = jQuery.extend(this.context);
+                    context._timestamp = {};
+                    for (i = 0; i < selected_records.length; i++) {
+                        record = selected_records[i];
+                        jQuery.extend(context, record.get_timestamp());
+                    }
+                    record.save().done(function() {
+                        record.model.execute(attributes.name,
+                            [ids], context).then(process_action.bind(this))
+                            .then(reload_ids);
+                    }.bind(this));
+                }
             }.bind(this));
         },
         client_action: function(action) {
