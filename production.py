@@ -172,6 +172,10 @@ class Production(Workflow, ModelSQL, ModelView):
                             'tryton-go-next',
                             'tryton-go-previous')),
                     },
+                'reset_bom': {
+                    'invisible': (~Eval('bom')
+                        | ~Eval('state').in_(['request', 'draft', 'waiting'])),
+                    },
                 'wait': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned',
                             'waiting', 'running']),
@@ -326,11 +330,15 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @fields.depends(*BOM_CHANGES)
     def on_change_uom(self):
-        return self.explode_bom()
+        self.explode_bom()
 
     @fields.depends(*BOM_CHANGES)
     def on_change_quantity(self):
-        return self.explode_bom()
+        self.explode_bom()
+
+    @ModelView.button_change(*BOM_CHANGES)
+    def reset_bom(self):
+        self.explode_bom()
 
     def get_cost(self, name):
         cost = Decimal(0)

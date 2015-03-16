@@ -10,6 +10,7 @@ Imports::
     >>> from proteus import config, Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
+    >>> from trytond.modules.production.production import BOM_CHANGES
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
@@ -142,6 +143,20 @@ Make a production::
     >>> production.click('wait')
     >>> production.state
     u'waiting'
+
+Test reset bom button::
+
+    >>> for input in production.inputs:
+    ...     input.quantity += 1
+    >>> production.click('reset_bom', change=BOM_CHANGES)
+    >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
+    True
+    >>> output, = production.outputs
+    >>> output.quantity == 2
+    True
+
+Do the production::
+
     >>> production.click('assign_try')
     True
     >>> all(i.state == 'assigned' for i in production.inputs)

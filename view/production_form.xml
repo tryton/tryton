@@ -38,10 +38,12 @@ this repository contains the full copyright notices and license terms. -->
     <group col="4" colspan="4" id="state_buttons">
         <label name="state"/>
         <field name="state"/>
-        <group col="6" colspan="2" id="buttons">
+        <group col="7" colspan="2" id="buttons">
             <button name="cancel" string="Cancel"
                 icon="tryton-cancel"/>
             <button name="draft" string="Draft"/>
+            <button name="reset_bom" string="Reset to BOM"
+                icon="tryton-clear"/>
             <button name="wait" string="Wait"/>
             <button name="assign_wizard" string="Assign"
                 icon="tryton-go-next"/>
