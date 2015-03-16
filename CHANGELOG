@@ -1,4 +1,6 @@
+* Add dunning_procedure property on Move Line
 * Add support for PyPy
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 

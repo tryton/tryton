@@ -55,3 +55,8 @@ class MoveLine:
     __name__ = 'account.move.line'
 
     dunnings = fields.One2Many('account.dunning', 'line', 'Dunnings')
+
+    @property
+    def dunning_procedure(self):
+        if self.party:
+            return self.party.dunning_procedure

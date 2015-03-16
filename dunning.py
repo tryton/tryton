@@ -224,7 +224,7 @@ class Dunning(ModelSQL, ModelView):
 
     @classmethod
     def _get_dunning(cls, line, date):
-        procedure = line.party.dunning_procedure
+        procedure = line.dunning_procedure
         if not procedure:
             return
         for level in procedure.levels:
