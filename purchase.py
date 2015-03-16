@@ -919,6 +919,7 @@ class PurchaseLine(ModelSQL, ModelView):
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
         'line', 'tax', 'Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['purchase', 'both'])],
