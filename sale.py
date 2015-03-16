@@ -1010,6 +1010,7 @@ class SaleLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in', ['sale', 'both'])],
