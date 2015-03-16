@@ -1444,6 +1444,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
         'line', 'tax', 'Taxes',
+        order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
         domain=[('parent', '=', None), ['OR',
                 ('group', '=', None),
                 ('group.kind', 'in',
