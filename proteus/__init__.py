@@ -152,7 +152,7 @@ class BinaryDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert isinstance(value, (basestring, buffer)) or value is None
+        assert isinstance(value, (bytes, bytearray)) or value is None
         super(BinaryDescriptor, self).__set__(instance, value)
 
 

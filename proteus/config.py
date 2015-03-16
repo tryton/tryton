@@ -20,7 +20,7 @@ def dump_decimal(self, value, write):
     self.dump_struct(value, write)
 
 
-def dump_buffer(self, value, write):
+def dump_bytes(self, value, write):
     self.write = write
     value = xmlrpclib.Binary(value)
     value.encode(self)
@@ -56,7 +56,8 @@ xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpclib.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
+xmlrpclib.Marshaller.dispatch[bytes] = dump_bytes
+xmlrpclib.Marshaller.dispatch[bytearray] = dump_bytes
 
 
 class XMLRPCDecoder(object):
