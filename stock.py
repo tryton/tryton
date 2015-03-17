@@ -170,6 +170,7 @@ class Move:
 
             cost += move_cost_price * Decimal(str(move_qty))
 
+            move_qty = Uom.compute_qty(product.default_uom, move_qty, move.uom)
             cls.write([move], {
                     as_qty_field: (
                         (getattr(move, as_qty_field) or 0.0) + move_qty),
