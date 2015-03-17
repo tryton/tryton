@@ -221,7 +221,7 @@ class ShowView(Wizard):
         def __init__(self, model_name, buttons):
             StateView.__init__(self, model_name, None, buttons)
 
-        def get_view(self):
+        def get_view(self, wizard, state_name):
             pool = Pool()
             View = pool.get('ir.ui.view')
             view = View(Transaction().context.get('active_id'))
