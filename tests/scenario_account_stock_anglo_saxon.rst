@@ -46,7 +46,7 @@ Reload the context::
     >>> User = Model.get('res.user')
     >>> config._context = User.get_preferences(True, config.context)
 
-Create an accountant user::
+Create the required users::
 
     >>> Group = Model.get('res.group')
     >>> accountant = User()
@@ -56,6 +56,30 @@ Create an accountant user::
     >>> account_group, = Group.find([('name', '=', 'Account')])
     >>> accountant.groups.append(account_group)
     >>> accountant.save()
+
+    >>> product_user = User()
+    >>> product_user.name = 'Product User'
+    >>> product_user.login = 'product_user'
+    >>> product_user.password = 'product_user'
+    >>> product_group, = Group.find([('name', '=', 'Product Administration')])
+    >>> product_user.groups.append(product_group)
+    >>> product_user.save()
+
+    >>> purchase_user = User()
+    >>> purchase_user.name = 'Purchase User'
+    >>> purchase_user.login = 'purchase_user'
+    >>> purchase_user.password = 'purchase_user'
+    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
+    >>> purchase_user.groups.append(purchase_group)
+    >>> purchase_user.save()
+
+    >>> stock_user = User()
+    >>> stock_user.name = 'Sale User'
+    >>> stock_user.login = 'stock_user'
+    >>> stock_user.password = 'stock_user'
+    >>> stock_group, = Group.find([('name', '=', 'Stock')])
+    >>> stock_user.groups.append(stock_group)
+    >>> stock_user.save()
 
 Create fiscal year::
 
@@ -335,3 +359,75 @@ Create customer invoice with negative quantity::
     >>> line_stock, = (l for l in move.lines if l.account == stock_customer)
     >>> line_stock.debit
     Decimal('5.00')
+
+Now we will use a product with different unit of measure::
+
+    >>> config.user = product_user.id
+    >>> UomCategory = Model.get('product.uom.category')
+    >>> unit_category, = UomCategory.find([('name', '=', 'Units')])
+    >>> unit_5 = ProductUom(name='5', symbol='5', category=unit_category,
+    ...    factor=5, digits=0)
+    >>> unit_5.save()
+
+    >>> product_by5 = Product()
+    >>> template_by5 = ProductTemplate()
+    >>> template_by5.name = 'product'
+    >>> template_by5.category = category
+    >>> template_by5.default_uom = unit
+    >>> template_by5.type = 'goods'
+    >>> template_by5.purchasable = True
+    >>> template_by5.purchase_uom = unit_5
+    >>> template_by5.salable = True
+    >>> template_by5.sale_uom = unit_5
+    >>> template_by5.list_price = Decimal('10')
+    >>> template_by5.cost_price = Decimal('5')
+    >>> template_by5.cost_price_method = 'fixed'
+    >>> template_by5.delivery_time = 0
+    >>> template_by5.account_expense = expense
+    >>> template_by5.account_revenue = revenue
+    >>> template_by5.account_stock = stock
+    >>> template_by5.account_cogs = cogs
+    >>> template_by5.account_stock_supplier = stock_supplier
+    >>> template_by5.account_stock_customer = stock_customer
+    >>> template_by5.account_stock_production = stock_production
+    >>> template_by5.account_stock_lost_found = stock_lost_found
+    >>> template_by5.account_journal_stock_supplier = stock_journal
+    >>> template_by5.account_journal_stock_customer = stock_journal
+    >>> template_by5.account_journal_stock_lost_found = stock_journal
+    >>> template_by5.save()
+    >>> product_by5.template = template_by5
+    >>> product_by5.save()
+
+    >>> config.user = purchase_user.id
+    >>> purchase = Purchase()
+    >>> purchase.party = supplier
+    >>> purchase.payment_term = payment_term
+    >>> purchase.invoice_method = 'shipment'
+    >>> purchase_line = purchase.lines.new()
+    >>> purchase_line.product = product_by5
+    >>> purchase_line.quantity = 1.0
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
+
+    >>> config.user = stock_user.id
+    >>> shipment = ShipmentIn(supplier=supplier)
+    >>> move = Move(purchase.moves[0].id)
+    >>> move.in_anglo_saxon_quantity
+    0.0
+    >>> shipment.incoming_moves.append(move)
+    >>> shipment.click('receive')
+    >>> shipment.click('done')
+
+    >>> config.user = accountant.id
+    >>> purchase.reload()
+    >>> invoice, = purchase.invoices
+    >>> invoice.invoice_date = today
+    >>> invoice.click('post')
+    >>> invoice.state
+    u'posted'
+
+    >>> config.user = stock_user.id
+    >>> move = Move(purchase.moves[0].id)
+    >>> move.in_anglo_saxon_quantity
+    1.0
