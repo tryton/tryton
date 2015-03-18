@@ -133,10 +133,8 @@
                 th = jQuery('<th/>', {
                     text: column.attributes.string
                 });
-                if (column.attributes.tree_invisible) {
-                    th.hide();
-                }
                 tr.append(th);
+                column.header = th;
             });
             this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
@@ -262,6 +260,41 @@
             if (this.screen.group.length != this.rows.length) {
                 this.construct(selected, expanded);
             }
+
+            // Set column visibility depending on attributes and domain
+            var domain = [];
+            if (!jQuery.isEmptyObject(this.screen.domain)) {
+                domain.push(this.screen.domain);
+            }
+            var tab_domain = this.screen.screen_container.get_tab_domain();
+            if (!jQuery.isEmptyObject(tab_domain)) {
+                domain.push(tab_domain);
+            }
+            var inversion = new Sao.common.DomainInversion();
+            domain = inversion.simplify(domain);
+            this.columns.forEach(function(column) {
+                var name = column.attributes.name;
+                if (!name) {
+                    return;
+                }
+                if (column.attributes.tree_invisible) {
+                    column.header.hide();
+                } else if (name === this.screen.exclude_field) {
+                    column.header.hide();
+                } else {
+                    var inv_domain = inversion.domain_inversion(domain, name);
+                    if (typeof inv_domain != 'boolean') {
+                        inv_domain = inversion.simplify(inv_domain);
+                    }
+                    var unique = inversion.unique_value(inv_domain)[0];
+                    if (unique) {
+                        column.header.hide();
+                    } else {
+                        column.header.show();
+                    }
+                }
+            }.bind(this));
+
             this.redraw(selected, expanded);
         },
         construct: function(selected, expanded) {
@@ -520,9 +553,7 @@
                         row.append(jQuery('<td/>').css('width', 1));
                     }
                 }
-                if (column.attributes.tree_invisible) {
-                    td.hide();
-                }
+
                 this.el.append(td);
             }
             if (this.parent_) {
@@ -559,8 +590,8 @@
                         update_expander.bind(this));
                 }
                 var column = this.tree.columns[i];
-                var inside_tr = jQuery(this.el.children()[i + child_offset])
-                                .find('tr');
+                var td = jQuery(this.el.children()[i + child_offset]);
+                var inside_tr = td.find('tr');
                 var current_td = jQuery(inside_tr.children()[0]);
                 if (this.children_field) {
                     current_td = current_td.next();
@@ -581,6 +612,12 @@
                         current_td.html(suffix.render(this.record));
                         current_td = current_td.next();
                     }
+                }
+                if (column.attributes.tree_invisible ||
+                        column.header.css('display') == 'none') {
+                    td.hide();
+                } else {
+                    td.show();
                 }
             }
             var row_id_path = this.get_id_path();
@@ -907,6 +944,7 @@
             this.attributes = attributes;
             this.prefixes = [];
             this.suffixes = [];
+            this.header = null;
         },
         get_cell: function() {
             var cell = jQuery('<div/>');

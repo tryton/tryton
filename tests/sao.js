@@ -1852,6 +1852,18 @@
             'compare(' + JSON.stringify([domain1, domain2]) + ', \'OR\')');
     });
 
+    QUnit.test('DomainInversion unique_value', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var unique_value = domain_inversion.unique_value;
+        var compare = Sao.common.compare;
+        var domain = [['a', '=', 1]];
+        QUnit.ok(compare(unique_value(domain), [true, '=', 1]));
+        domain = [['a', '!=', 1]];
+        QUnit.ok(!unique_value(domain)[0]);
+        domain = [['a', '=', 1], ['a', '=', 2]];
+        QUnit.ok(!unique_value(domain)[0]);
+    });
+
     QUnit.test('DomainInversion evaldomain', function() {
         var domain_inversion = new Sao.common.DomainInversion();
         var eval_domain = domain_inversion.eval_domain.bind(domain_inversion);

@@ -1192,16 +1192,16 @@
             } else if (Sao.common.compare(domain, [['id', '=', null]])) {
                 result = false;
             } else {
-                if ((domain instanceof Array) &&
-                        (domain.length == 1) &&
-                        (domain[0][1] == '=')) {
+                var uniques = inversion.unique_value(domain);
+                var unique = uniques[0];
+                var leftpart = uniques[1];
+                var value = uniques[2];
+                if (unique) {
                     // If the inverted domain is so constraint that only one
                     // value is possible we should use it. But we must also pay
                     // attention to the fact that the original domain might be
                     // a 'OR' domain and thus not preventing the modification
                     // of fields.
-                    var leftpart = domain[0][0];
-                    var value = domain[0][2];
                     if (value === false) {
                         // XXX to remove once server domains are fixed
                         value = null;

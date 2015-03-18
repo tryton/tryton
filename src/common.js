@@ -1770,6 +1770,15 @@
             });
             return this.simplify(this.merge(result));
         },
+        unique_value: function(domain) {
+            if ((domain instanceof Array) &&
+                    (domain.length == 1) &&
+                    (domain[0][1] == '=')) {
+                return [true, domain[0][1], domain[0][2]];
+            } else {
+                return [false, null, null];
+            }
+        },
         parse: function(domain) {
             var And = Sao.common.DomainInversion.And;
             var Or = Sao.common.DomainInversion.Or;
