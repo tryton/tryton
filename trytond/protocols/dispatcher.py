@@ -16,6 +16,7 @@ from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.exceptions import UserError, UserWarning, NotLogged, \
     ConcurrencyException
+from trytond.tools import is_instance_method
 
 logger = logging.getLogger(__name__)
 
@@ -152,7 +153,8 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
                     = rpc.convert(obj, *args, **kwargs)
                 meth = getattr(obj, method)
-                if not hasattr(meth, 'im_self') or meth.im_self:
+                if (rpc.instantiate is None
+                        or not is_instance_method(obj, method)):
                     result = rpc.result(meth(*c_args, **c_kwargs))
                 else:
                     assert rpc.instantiate == 0

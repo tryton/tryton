@@ -369,3 +369,10 @@ def grouped_slice(records, count=None):
         count = Transaction().cursor.IN_MAX
     for i in xrange(0, len(records), count):
         yield islice(records, i, i + count)
+
+
+def is_instance_method(cls, method):
+    for klass in cls.__mro__:
+        type_ = klass.__dict__.get(method)
+        if type_ is not None:
+            return isinstance(type_, types.FunctionType)

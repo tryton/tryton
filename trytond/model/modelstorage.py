@@ -18,7 +18,7 @@ from collections import defaultdict
 
 from trytond.model import Model
 from trytond.model import fields
-from trytond.tools import reduce_domain, memoize
+from trytond.tools import reduce_domain, memoize, is_instance_method
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
@@ -858,7 +858,7 @@ class ModelStorage(Model):
 
         def call(name):
             method = getattr(cls, name)
-            if not hasattr(method, 'im_self') or method.im_self:
+            if not is_instance_method(cls, name):
                 return method(records)
             else:
                 return all(method(r) for r in records)
@@ -1064,8 +1064,7 @@ class ModelStorage(Model):
                                 value, _ = value.split(',')
                         if not isinstance(field.selection, (tuple, list)):
                             sel_func = getattr(cls, field.selection)
-                            if (not hasattr(sel_func, 'im_self')
-                                    or sel_func.im_self):
+                            if not is_instance_method(cls, field.selection):
                                 test = sel_func()
                             else:
                                 test = sel_func(record)

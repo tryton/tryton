@@ -4,6 +4,7 @@
 import inspect
 import copy
 from trytond.model.fields.field import Field
+from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 
 
@@ -75,10 +76,11 @@ class Function(Field):
         '''
         with Transaction().set_context(_check_access=False):
             method = getattr(Model, self.getter)
+            instance_method = is_instance_method(Model, self.getter)
 
             def call(name):
                 records = Model.browse(ids)
-                if not hasattr(method, 'im_self') or method.im_self:
+                if not instance_method:
                     return method(records, name)
                 else:
                     return dict((r.id, method(r, name)) for r in records)

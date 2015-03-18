@@ -6,7 +6,7 @@ import copy
 import collections
 
 from trytond.model import Model, fields
-from trytond.tools import ClassProperty
+from trytond.tools import ClassProperty, is_instance_method
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
@@ -195,8 +195,7 @@ class ModelView(Model):
                         RPC(instantiate=0, result=result))
 
         for button in cls._buttons:
-            method = getattr(cls, button)
-            if not hasattr(method, 'im_self') or method.im_self:
+            if not is_instance_method(cls, button):
                 cls.__rpc__.setdefault(button,
                     RPC(readonly=False, instantiate=0))
             else:
@@ -565,8 +564,7 @@ class ModelView(Model):
             change = cls.__change_buttons[button_name]
             if change:
                 element.set('change', encoder.encode(list(change)))
-            method = getattr(cls, button_name)
-            if not hasattr(method, 'im_self') or method.im_self:
+            if not is_instance_method(cls, button_name):
                 element.set('type', 'class')
             else:
                 element.set('type', 'instance')

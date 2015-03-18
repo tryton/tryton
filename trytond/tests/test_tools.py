@@ -9,7 +9,7 @@ import sql
 import sql.operators
 
 from trytond.tools import reduce_ids, datetime_strftime, \
-    reduce_domain, decimal_
+    reduce_domain, decimal_, is_instance_method
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -93,6 +93,26 @@ class ToolsTestCase(unittest.TestCase):
         for i, j in tests:
             self.assertEqual(reduce_domain(i), j,
                     '%s -> %s != %s' % (i, reduce_domain(i), j))
+
+    def test_is_instance_method(self):
+        'Test is_instance_method'
+
+        class Foo(object):
+
+            @staticmethod
+            def static():
+                pass
+
+            @classmethod
+            def klass(cls):
+                pass
+
+            def instance(self):
+                pass
+
+        self.assertFalse(is_instance_method(Foo, 'static'))
+        self.assertFalse(is_instance_method(Foo, 'klass'))
+        self.assertTrue(is_instance_method(Foo, 'instance'))
 
 
 def suite():

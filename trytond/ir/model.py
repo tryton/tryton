@@ -22,6 +22,7 @@ from ..pyson import Bool, Eval
 from ..rpc import RPC
 from .. import backend
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
+from ..tools import is_instance_method
 try:
     from ..tools.StringMatcher import StringMatcher
 except ImportError:
@@ -564,8 +565,7 @@ class ModelAccess(ModelSQL, ModelView):
             selection = field.selection
             if isinstance(selection, basestring):
                 sel_func = getattr(Model, field.selection)
-                if (not hasattr(sel_func, 'im_self')
-                        or sel_func.im_self):
+                if not is_instance_method(Model, field.selection):
                     selection = sel_func()
                 else:
                     # XXX Can not check access right on instance method
