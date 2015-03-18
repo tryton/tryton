@@ -18,6 +18,7 @@ from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.gui.window import Window
 from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
+from tryton.common import domain_inversion, simplify, unique_value
 import tryton.common as common
 from . import View
 from .list_gtk.editabletree import EditableTreeView, TreeView
@@ -389,9 +390,6 @@ class ViewTree(View):
                 and not self.children_field
                 and field.attrs.get('sortable', True)):
             column.connect('clicked', self.sort_model)
-        column.set_visible(not node_attrs.get('tree_invisible', False))
-        if name == self.screen.exclude_field:
-            column.set_visible(False)
 
         self.treeview.append_column(column)
 
@@ -1085,6 +1083,30 @@ class ViewTree(View):
         if self.editable:
             self.set_state()
         self.update_sum()
+
+        # Set column visibility depending on attributes and domain
+        domain = []
+        if self.screen.domain:
+            domain.append(self.screen.domain)
+        tab_domain = self.screen.screen_container.get_tab_domain()
+        if tab_domain:
+            domain.append(tab_domain)
+        domain = simplify(domain)
+        for column in self.treeview.get_columns():
+            name = column.name
+            if not name:
+                continue
+            widget = self.get_column_widget(column)
+            if widget.attrs.get('tree_invisible', False):
+                column.set_visible(False)
+            elif name == self.screen.exclude_field:
+                column.set_visible(False)
+            else:
+                inv_domain = domain_inversion(domain, name)
+                if not isinstance(inv_domain, bool):
+                    inv_domain = simplify(inv_domain)
+                unique, _, _ = unique_value(inv_domain)
+                column.set_visible(not unique)
 
     def set_state(self):
         record = self.screen.current_record

@@ -193,6 +193,16 @@ def concat(*domains, **kwargs):
     return simplify(merge(result))
 
 
+def unique_value(domain):
+    "Return if unique, the field and the value"
+    if (isinstance(domain, list)
+            and len(domain) == 1
+            and domain[0][1] == '='):
+        return True, domain[0][1], domain[0][2]
+    else:
+        return False, None, None
+
+
 def parse(domain):
     if is_leaf(domain):
         return domain
@@ -479,6 +489,15 @@ def test_concat():
     assert concat([], []) == []
     assert concat(domain1, domain2, domoperator='OR') == [
         'OR', [['a', '=', 1]], [['b', '=', 2]]]
+
+
+def test_unique_value():
+    domain = [['a', '=', 1]]
+    assert unique_value(domain) == (True, '=', 1)
+    domain = [['a', '!=', 1]]
+    assert unique_value(domain)[0] == False
+    domain = [['a', '=', 1], ['a', '=', 2]]
+    assert unique_value(domain)[0] == False
 
 
 def test_evaldomain():

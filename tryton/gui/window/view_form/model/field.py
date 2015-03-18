@@ -6,7 +6,7 @@ import tempfile
 import locale
 from tryton.common import \
         domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, concat, simplify, EvalEnvironment
+        merge, inverse_leaf, concat, simplify, unique_value, EvalEnvironment
 import tryton.common as common
 import datetime
 import decimal
@@ -87,14 +87,12 @@ class Field(object):
         elif domain == [('id', '=', None)]:
             res = False
         else:
-            if (isinstance(domain, list)
-                    and len(domain) == 1
-                    and domain[0][1] == '='):
+            unique, leftpart, value = unique_value(domain)
+            if unique:
                 # If the inverted domain is so constraint that only one value
                 # is possible we should use it. But we must also pay attention
                 # to the fact that the original domain might be a 'OR' domain
                 # and thus not preventing the modification of fields.
-                leftpart, _, value = domain[0][:3]
                 if value is False:
                     # XXX to remove once server domains are fixed
                     value = None
