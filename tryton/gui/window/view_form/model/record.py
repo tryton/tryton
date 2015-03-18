@@ -270,6 +270,7 @@ class Record(SignalEvent):
     def cancel(self):
         self._loaded.clear()
         self.modified_fields.clear()
+        self._timestamp = None
 
     def get_timestamp(self):
         result = {self.model_name + ',' + str(self.id): self._timestamp}
@@ -311,8 +312,7 @@ class Record(SignalEvent):
                             [self.id], value, context=context)
                     except RPCException:
                         return False
-            self._loaded.clear()
-            self.modified_fields = {}
+            self.cancel()
             if force_reload:
                 self.reload()
             if self.group:
