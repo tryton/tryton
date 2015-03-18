@@ -397,6 +397,7 @@
                 }
             }
             prm.done(function() {
+                this.cancel();
                 this.reload();
             }.bind(this));
             // TODO group written
@@ -920,6 +921,7 @@
         cancel: function() {
             this._loaded = {};
             this._changed = {};
+            this._timestamp = null;
         },
         get_loaded: function(fields) {
             if (!jQuery.isEmptyObject(fields)) {
