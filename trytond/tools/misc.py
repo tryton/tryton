@@ -11,6 +11,8 @@ from threading import local
 import smtplib
 from array import array
 from itertools import islice
+import types
+
 from sql import Literal
 from sql.operators import Or
 
