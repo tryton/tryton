@@ -15,21 +15,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">extra_list</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_extra_form">
-            <field name="name">Extras</field>
-            <field name="res_model">sale.extra</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_extra_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="extra_view_list"/>
-            <field name="act_window" ref="act_extra_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_extra_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="extra_view_form"/>
-            <field name="act_window" ref="act_extra_form"/>
-        </record>
-
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.extra')]"/>
             <field name="perm_read" eval="True"/>
