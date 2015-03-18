@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">extra_list</field>
         </record>
 
-        <record model="ir.model.access" id="access_sale">
+        <record model="ir.model.access" id="access_extra">
             <field name="model" search="[('model', '=', 'sale.extra')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
