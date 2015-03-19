@@ -55,6 +55,7 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
     __name__ = 'sale.extra'
 
     name = fields.Char('Name', translate=True, required=True)
+    active = fields.Boolean('Active')
     price_list = fields.Many2One('product.price_list', 'Price List',
         required=True, ondelete='CASCADE')
     sale_amount = fields.Numeric('Sale Amount',

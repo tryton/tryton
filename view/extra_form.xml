@@ -4,8 +4,11 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Extra">
     <label name="name"/>
     <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
     <label name="price_list"/>
     <field name="price_list"/>
+    <newline/>
     <label name="sale_amount"/>
     <field name="sale_amount"/>
     <field name="lines" colspan="4"
