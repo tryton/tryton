@@ -1,3 +1,4 @@
+* Add localization infrastructure
 * Add support for PyPy
 * Synchronize chart of account with the official source
 
