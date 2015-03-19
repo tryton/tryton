@@ -837,6 +837,11 @@ class ReferenceField(Field):
         return screen_domain
 
 
+class _FileCache(object):
+    def __init__(self, path):
+        self.path = path
+
+
 class BinaryField(Field):
 
     _default = None
@@ -844,9 +849,9 @@ class BinaryField(Field):
 
     def get(self, record):
         result = record.value.get(self.name, self._default)
-        if isinstance(result, basestring):
+        if isinstance(result, _FileCache):
             try:
-                with open(result, 'rb') as fp:
+                with open(result.path, 'rb') as fp:
                     result = self.cast(fp.read())
             except IOError:
                 result = self.get_data(record)
@@ -859,7 +864,7 @@ class BinaryField(Field):
         _, filename = tempfile.mkstemp(prefix='tryton_')
         with open(filename, 'wb') as fp:
             fp.write(value or '')
-        self.set(record, filename)
+        self.set(record, _FileCache(filename))
         record.modified_fields.setdefault(self.name)
         record.signal('record-modified')
         self.sig_changed(record)
@@ -868,9 +873,9 @@ class BinaryField(Field):
 
     def get_size(self, record):
         result = record.value.get(self.name) or 0
-        if isinstance(result, basestring):
-            result = os.stat(result).st_size
-        elif isinstance(result, (bytes, bytearray)):
+        if isinstance(result, _FileCache):
+            result = os.stat(result.path).st_size
+        elif isinstance(result, (basestring, bytes, bytearray)):
             result = len(result)
         return result
 
@@ -888,7 +893,7 @@ class BinaryField(Field):
             _, filename = tempfile.mkstemp(prefix='tryton_')
             with open(filename, 'wb') as fp:
                 fp.write(values[self.name] or '')
-            self.set(record, filename)
+            self.set(record, _FileCache(filename))
         return self.get(record)
 
 
