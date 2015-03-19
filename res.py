@@ -44,7 +44,7 @@ def ldap_connection():
         scheme, port = 'ldap', 389
     conn = ldap.initialize('%s://%s:%s/' % (
             scheme, uri.hostname, uri.port or port))
-    if config.getboolean(section, 'active_directory', 'False'):
+    if config.getboolean(section, 'active_directory', False):
         conn.set_option(ldap.OPT_REFERRALS, 0)
     if 'tls' in uri.scheme:
         conn.start_tls_s()
