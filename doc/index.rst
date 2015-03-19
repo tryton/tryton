@@ -14,9 +14,8 @@ Sale Extra
 Each matching *Sale Extra* of the *Price List* is evaluated to add an extra
 line. The criteria are the fields:
 
-- *Company*: The company should be the same as the one of the sale.
 - *Sale Amount*: If untaxed sale amount is greater or equal
-  (in the company currency).
+  (in the price list company currency).
 
 Sale Extra Line
 ***************
@@ -26,7 +25,7 @@ is used to setup the extra line.
 The criteria are the fields:
 
 - *Sale Amount*: If the untaxed sale amount is greater or equal
-  (in the company currency).
+  (in the price list company currency).
 
 The sale line is setup using the fields:
 
