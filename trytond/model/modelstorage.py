@@ -18,7 +18,8 @@ from collections import defaultdict
 
 from trytond.model import Model
 from trytond.model import fields
-from trytond.tools import reduce_domain, memoize, is_instance_method
+from trytond.tools import reduce_domain, memoize, is_instance_method, \
+    grouped_slice
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
@@ -928,23 +929,26 @@ class ModelStorage(Model):
 
         def validate_relation_domain(field, records, Relation, domain):
             if field._type in ('many2one', 'one2many', 'many2many', 'one2one'):
-                relations = []
+                relations = set()
                 for record in records:
                     if getattr(record, field.name):
                         if field._type in ('many2one', 'one2one'):
-                            relations.append(getattr(record, field.name))
+                            relations.add(getattr(record, field.name))
                         else:
-                            relations.extend(getattr(record, field.name))
+                            relations.update(getattr(record, field.name))
             else:
-                relations = records
+                # Cache alignment is not a problem
+                relations = set(records)
             if relations:
-                finds = Relation.search(['AND',
-                        [('id', 'in', [r.id for r in relations])],
-                        domain,
-                        ])
-                if set(relations) != set(finds):
-                    cls.raise_user_error('domain_validation_record',
-                        error_args=cls._get_error_args(field.name))
+                for sub_relations in grouped_slice(relations):
+                    sub_relations = set(sub_relations)
+                    finds = Relation.search(['AND',
+                            [('id', 'in', [r.id for r in sub_relations])],
+                            domain,
+                            ])
+                    if sub_relations != set(finds):
+                        cls.raise_user_error('domain_validation_record',
+                            error_args=cls._get_error_args(field.name))
 
         field_names = set(field_names or [])
         function_fields = {name for name, field in cls._fields.iteritems()
