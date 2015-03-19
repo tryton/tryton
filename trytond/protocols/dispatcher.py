@@ -11,7 +11,7 @@ from trytond.pool import Pool
 from trytond import security
 from trytond import backend
 from trytond.config import config
-from trytond.version import VERSION
+from trytond import __version__
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.exceptions import UserError, UserWarning, NotLogged, \
@@ -53,7 +53,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                 name, host, port, protocol, database_name)
             return True
         elif method == 'version':
-            return VERSION
+            return __version__
         elif method == 'list_lang':
             return [
                 ('bg_BG', 'Български'),

@@ -9,7 +9,7 @@ from itertools import izip
 from collections import defaultdict
 from decimal import Decimal
 
-from .version import VERSION
+from . import __version__
 from .tools import grouped_slice
 from .transaction import Transaction
 from .pyson import PYSONEncoder, CONTEXT
@@ -225,7 +225,7 @@ class RecordTagHandler:
             elif eval_attr:
                 context = {}
                 context['time'] = time
-                context['version'] = VERSION.rsplit('.', 1)[0]
+                context['version'] = __version__.rsplit('.', 1)[0]
                 context['ref'] = self.mh.get_id
                 context['obj'] = lambda *a: 1
                 context['Decimal'] = Decimal

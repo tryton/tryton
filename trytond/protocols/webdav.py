@@ -20,7 +20,7 @@ from pywebdav.lib.davcmd import copyone, copytree, moveone, movetree, \
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.protocols.common import daemon
 from trytond.security import login
-from trytond.version import PACKAGE, VERSION, WEBSITE
+from trytond import __version__
 from trytond.tools.misc import LocalDict
 from trytond import backend
 from trytond.pool import Pool
@@ -198,8 +198,7 @@ class TrytonDAVInterface(iface.dav_interface):
             res += '<head>'
             res += ('<meta http-equiv="Content-Type" content="text/html; '
                 'charset=utf-8">')
-            res += ('<title>%s - WebDAV - %s</title>'
-                % (PACKAGE, dbname or 'root'))
+            res += '<title>Tryton - WebDAV - %s</title>' % dbname or 'root'
             res += '</head>'
             res += '<body>'
             res += '<h2>Collection: %s</h2>' % (get_urifilename(uri) or '/')
@@ -219,8 +218,8 @@ class TrytonDAVInterface(iface.dav_interface):
                     % (quote_uri(child), get_urifilename(child)))
             res += '</ul>'
             res += '<hr noshade>'
-            res += ('<em>Powered by <a href="%s">%s</a> version %s</em>'
-                % (quote_uri(WEBSITE), PACKAGE, VERSION))
+            res += ('<em>Powered by <a href="http://www.tryton.org/">'
+                'Tryton</a> version %s</em>' % __version__)
             res += '</body>'
             res += '</html>'
             return res

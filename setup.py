@@ -4,38 +4,43 @@
 
 from setuptools import setup, find_packages
 import os
+import re
 import platform
-
-PACKAGE, VERSION, LICENSE, WEBSITE = None, None, None, None
-execfile(os.path.join('trytond', 'version.py'))
 
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-major_version, minor_version, _ = VERSION.split('.', 2)
+
+def get_version():
+    init = read(os.path.join('trytond', '__init__.py'))
+    return re.search('__version__ = "([0-9.]*)"', init).group(1)
+
+version = get_version()
+major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+name = 'trytond'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
 if minor_version % 2:
-    VERSION = '%s.%s.dev0' % (major_version, minor_version)
+    version = '%s.%s.dev0' % (major_version, minor_version)
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
-        PACKAGE, PACKAGE, VERSION)
+        name, name, version)
 
 if platform.python_implementation() == 'PyPy':
     pg_require = ['psycopg2cffi >= 2.5']
 else:
     pg_require = ['psycopg2 >= 2.0']
 
-setup(name=PACKAGE,
-    version=VERSION,
+setup(name=name,
+    version=version,
     description='Tryton server',
     long_description=read('README'),
     author='Tryton',
     author_email='issue_tracker@tryton.org',
-    url=WEBSITE,
+    url='http://www.tryton.org/',
     download_url=download_url,
     keywords='business application platform ERP',
     packages=find_packages(exclude=['*.modules.*', 'modules.*', 'modules',
@@ -76,7 +81,7 @@ setup(name=PACKAGE,
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         ],
     platforms='any',
-    license=LICENSE,
+    license='GPL-3',
     install_requires=[
         'lxml >= 2.0',
         'relatorio >= 0.2.0',
