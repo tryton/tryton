@@ -4,7 +4,6 @@
 import os
 import locale
 import gettext
-from version import PACKAGE
 from tryton.config import CURRENT_DIR
 import logging
 import gtk
@@ -182,8 +181,8 @@ def setlang(lang=None, locale_dict=None):
                     _('Unable to set locale %s') % lang2 + '.' + encoding)
 
     if os.path.isdir(locale_dir):
-        gettext.bindtextdomain(PACKAGE, locale_dir)
-    gettext.textdomain(PACKAGE)
+        gettext.bindtextdomain('tryton', locale_dir)
+    gettext.textdomain('tryton')
 
     if locale_dict:
         conv = locale.localeconv()

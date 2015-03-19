@@ -121,27 +121,31 @@ elif sys.platform == 'darwin':
         },
     }
 
-PACKAGE, VERSION, LICENSE, WEBSITE = None, None, None, None
-execfile(os.path.join('tryton', 'version.py'))
 
-major_version, minor_version, _ = VERSION.split('.', 2)
+def get_version():
+    init = read(os.path.join('tryton', '__init__.py'))
+    return re.search('__version__ = "([0-9.]*)"', init).group(1)
+
+version = get_version()
+major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+name = 'tryton'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
 if minor_version % 2:
-    VERSION = '%s.%s.dev0' % (major_version, minor_version)
+    version = '%s.%s.dev0' % (major_version, minor_version)
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
-        PACKAGE, PACKAGE, VERSION)
+        name, name, version)
 
-dist = setup(name=PACKAGE,
-    version=VERSION,
+dist = setup(name=name,
+    version=version,
     description='Tryton client',
     long_description=read('README'),
     author='Tryton',
     author_email='issue_tracker@tryton.org',
-    url=WEBSITE,
+    url='http://www.tryton.org/',
     download_url=download_url,
     keywords='business application ERP',
     packages=find_packages(),
@@ -170,7 +174,7 @@ dist = setup(name=PACKAGE,
         'Topic :: Office/Business',
         ],
     platforms='any',
-    license=LICENSE,
+    license='GPL-3',
     install_requires=[
         # "pygtk >= 2.6",
         "python-dateutil",
@@ -264,10 +268,10 @@ if os.name == 'nt':
         makensis = find_makensis()
         if makensis:
             from subprocess import Popen
-            Popen([makensis, "/DVERSION=" + VERSION,
+            Popen([makensis, "/DVERSION=" + version,
                 str(os.path.join(os.path.dirname(__file__),
                     'setup.nsi'))]).wait()
-            Popen([makensis, "/DVERSION=" + VERSION,
+            Popen([makensis, "/DVERSION=" + version,
                 str(os.path.join(os.path.dirname(__file__),
                     'setup-single.nsi'))]).wait()
         else:
@@ -412,9 +416,9 @@ elif sys.platform == 'darwin':
         shutil.copytree(os.path.join(os.path.dirname(__file__), 'doc'),
                 doc_dist_dir)
 
-        dmg_file = os.path.join(os.path.dirname(__file__), 'tryton-' + VERSION
+        dmg_file = os.path.join(os.path.dirname(__file__), 'tryton-' + version
                 + '.dmg')
         if os.path.isfile(dmg_file):
             os.remove(dmg_file)
         Popen(['hdiutil', 'create', dmg_file, '-volname', 'Tryton Client '
-                + VERSION, '-fs', 'HFS+', '-srcfolder', dist_dir]).wait()
+                + version, '-fs', 'HFS+', '-srcfolder', dist_dir]).wait()

@@ -7,7 +7,7 @@ import gobject
 import os
 import gettext
 
-from tryton.version import VERSION
+from tryton import __version__
 import tryton.common as common
 from tryton.config import CONFIG, TRYTON_ICON, PIXMAPS_DIR, get_config_dir
 import tryton.rpc as rpc
@@ -460,7 +460,7 @@ class DBLogin(object):
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
         self.profiles = ConfigParser.SafeConfigParser({'port': '8000'})
         if not os.path.exists(self.profile_cfg):
-            short_version = '.'.join(VERSION.split('.', 2)[:2])
+            short_version = '.'.join(__version__.split('.', 2)[:2])
             name = 'demo%s.tryton.org' % short_version
             self.profiles.add_section(name)
             self.profiles.set(name, 'host', name)

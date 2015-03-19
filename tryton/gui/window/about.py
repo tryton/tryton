@@ -5,8 +5,8 @@ import gtk
 import gettext
 import webbrowser
 from tryton.config import TRYTON_ICON
-from tryton.version import VERSION, WEBSITE
 from tryton.common import get_toplevel_window
+from tryton import __version__
 
 COPYRIGHT = '''\
 Copyright (C) 2010-2011 Nicolas Évrard.
@@ -719,10 +719,10 @@ class About(object):
         self.win = gtk.AboutDialog()
         self.win.set_transient_for(parent)
         self.win.set_name('Tryton')
-        self.win.set_version(VERSION)
+        self.win.set_version(__version__)
         self.win.set_copyright(COPYRIGHT)
         self.win.set_license(LICENSE)
-        self.win.set_website(WEBSITE)
+        self.win.set_website('http://www.tryton.org/')
         self.win.set_authors(AUTHORS)
         self.win.set_logo(TRYTON_ICON)
 

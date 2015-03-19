@@ -28,7 +28,7 @@ import threading
 import tryton.rpc as rpc
 import locale
 import socket
-from tryton.version import VERSION
+from tryton import __version__
 import thread
 import urllib
 from string import Template
@@ -231,7 +231,7 @@ def test_server_version(host, port):
     version = rpc.server_version(host, port)
     if not version:
         return False
-    return version.split('.')[:2] == VERSION.split('.')[:2]
+    return version.split('.')[:2] == __version__.split('.')[:2]
 
 
 def refresh_dblist(host, port):
