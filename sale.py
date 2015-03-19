@@ -69,7 +69,7 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
     def default_active():
         return True
 
-    @fields.depends('company')
+    @fields.depends('price_list')
     def on_change_with_currency_digits(self, name=None):
         if self.price_list.company:
             return self.price_list.company.currency.digits
