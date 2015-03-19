@@ -419,12 +419,12 @@ class Cursor(CursorInterface):
     def has_constraint(self):
         return False
 
-sqlite.register_converter('NUMERIC', lambda val: Decimal(val))
+sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
 if sys.version_info[0] == 2:
     sqlite.register_adapter(Decimal, lambda val: buffer(str(val)))
     sqlite.register_adapter(bytearray, lambda val: buffer(val))
 else:
-    sqlite.register_adapter(Decimal, lambda val: bytes(str(val)))
+    sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))
 
 
 def adapt_datetime(val):
@@ -432,7 +432,7 @@ def adapt_datetime(val):
 sqlite.register_adapter(datetime.datetime, adapt_datetime)
 sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
 sqlite.register_converter('TIME', lambda val: datetime.time(*map(int,
-            val.split(':'))))
+            val.decode('utf-8').split(':'))))
 sqlite.register_adapter(datetime.timedelta, lambda val: val.total_seconds())
 
 
