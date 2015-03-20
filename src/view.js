@@ -119,7 +119,9 @@
             this.table.append(thead);
             var tr = jQuery('<tr/>');
             if (this.selection_mode != Sao.common.SELECTION_NONE) {
-                var th = jQuery('<th/>');
+                var th = jQuery('<th/>', {
+                    'class': 'selection'
+                });
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
                     'class': 'selection'
