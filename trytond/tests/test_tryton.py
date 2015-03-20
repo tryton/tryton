@@ -5,12 +5,15 @@ import os
 import sys
 import unittest
 import doctest
+from itertools import chain
 import operator
 from lxml import etree
 
 from trytond.pool import Pool
 from trytond import backend
+from trytond.model import Workflow
 from trytond.protocols.dispatcher import create, drop
+from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 from trytond.pyson import PYSONEncoder, Eval
 from trytond import security
@@ -197,6 +200,33 @@ class ModuleTestCase(unittest.TestCase):
                 'Model "%(models)s" are missing a default access' % {
                     'models': list(with_groups - no_groups),
                     })
+
+    def test_workflow_transitions(self):
+        'Test all workflow transitions exist'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for mname, model in Pool().iterobject():
+                # Don't test model not registered by the module
+                if not any(issubclass(model, cls) for cls in
+                        Pool().classes['model'].get(self.module, [])):
+                    continue
+                if not issubclass(model, Workflow):
+                    continue
+                field = getattr(model, model._transition_state)
+                if isinstance(field.selection, (tuple, list)):
+                    values = field.selection
+                else:
+                    # instance method may not return all the possible values
+                    if is_instance_method(model, field.selection):
+                        continue
+                    values = getattr(model, field.selection)()
+                states = set(dict(values))
+                transition_states = set(chain(*model._transitions))
+                assert transition_states <= states, (
+                    ('Unknown transition states "%(states)s" '
+                        'in model "%(model)s". ') % {
+                        'states': list(transition_states - states),
+                        'model': model.__name__,
+                        })
 
 
 def db_exist():
