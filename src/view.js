@@ -2528,7 +2528,7 @@
                     this.read_access()) {
                 this.edit();
                 event_.preventDefault();
-            } else if (~activate_keys.indexOf(event_.which)) {
+            } else if (~activate_keys.indexOf(event_.which) && editable) {
                 this.activate();
             } else if (this.has_target(this.record().field_get(
                             this.field_name)) && editable) {
