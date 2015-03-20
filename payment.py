@@ -342,7 +342,6 @@ class ProcessPayment(Wizard):
                 group.save()
                 groups.append(group)
                 return group
-            grouped_payments = list(grouped_payments)
             Payment.process(list(grouped_payments), group)
 
         return action, {
