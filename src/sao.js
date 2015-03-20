@@ -239,7 +239,7 @@ var Sao = {};
         form.view_prm.done(function() {
             Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
-            view.table.find('th').hide();
+            view.table.find('thead').hide();
             jQuery('#menu').children().remove();
             jQuery('#menu').append(
                 form.screen.screen_container.content_box.detach());
