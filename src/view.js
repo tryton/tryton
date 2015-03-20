@@ -2276,7 +2276,8 @@
                 'type': 'input',
                 'class': 'form-control input-sm'
             }).appendTo(group);
-            this.entry.on('keyup', this.key_press.bind(this));
+            // Use keydown to not receive focus-in TAB
+            this.entry.on('keydown', this.key_press.bind(this));
             var buttons = jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).appendTo(group);
@@ -3153,7 +3154,8 @@
                 type: 'text',
                 'class': 'form-control input-sm'
             }).appendTo(group);
-            this.entry.on('keyup', this.key_press.bind(this));
+            // Use keydown to not receive focus-in TAB
+            this.entry.on('keydown', this.key_press.bind(this));
 
             // TODO completion
 
@@ -3372,7 +3374,8 @@
                     'class': 'form-control input-sm'
                 }).appendTo(this.el);
                 this.text.change(this.focus_out.bind(this));
-                this.text.on('keyup', this.key_press.bind(this));
+                // Use keydown to not receive focus-in TAB
+                this.text.on('keydown', this.key_press.bind(this));
             }
 
             var group = jQuery('<div/>', {
