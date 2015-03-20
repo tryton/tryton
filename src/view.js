@@ -1937,7 +1937,6 @@
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
-            this.input.css('min-width', '8em');
             this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
