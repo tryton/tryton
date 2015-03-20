@@ -203,17 +203,17 @@
 
     Sao.Action.evaluate = function(action, atype, record) {
         action = jQuery.extend({}, action);
-        switch (atype) {
-            case 'print':
-            case 'action':
-                // TODO
-                break;
-            case 'relate':
-                // TODO
-                break;
-            default:
-                throw new Error('Action type ' + atype + ' is not supported');
+        var email = {};
+        if ('pyson_email' in action) {
+            email = record.expr_eval(action.pyson_email);
+            if (jQuery.isEmptyObject(email)) {
+                email = {};
+            }
         }
+        if (!('subject' in email)) {
+            email.subject = action.name.replace(/_/g, '');
+        }
+        action.email = email;
         return action;
     };
 }());
