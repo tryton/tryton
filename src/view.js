@@ -2595,6 +2595,7 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Reference._super.init.call(this, field_name, model,
                 attributes);
+            this.el.addClass('form-inline');
             this.select = jQuery('<select/>', {
                 'class': 'form-control input-sm'
             });
