@@ -51,7 +51,10 @@
                 return record.id >= 0;
             });
             var context = {};
-            // TODO timestamp
+            context._timestamp = {};
+            records.forEach(function(record) {
+                jQuery.extend(context._timestamp, record.get_timestamp());
+            });
             var record_ids = records.map(function(record) {
                 return record.id;
             });
