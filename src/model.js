@@ -980,7 +980,10 @@
                     params: [
                     [['resource', '=', this.model.name + ',' + this.id]],
                     this.get_context()]
-                }, this.model.session);
+                }, this.model.session).then(function(count) {
+                    this.attachment_count = count;
+                    return count;
+                }.bind(this));
             } else {
                 prm.resolve(this.attachment_count);
             }
