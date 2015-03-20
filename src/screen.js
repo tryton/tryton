@@ -34,14 +34,16 @@
                 'class': 'btn btn-default dropdown-toggle',
                 'data-toggle': 'dropdown',
                 'aria-expanded': false,
-                'aria-label': 'Bookmarks'
+                'aria-label': 'Bookmarks',
+                'id': 'bookmarks'
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-bookmark',
                 'aria-hidden': true
             }));
             var dropdown_bookmark = jQuery('<ul/>', {
                 'class': 'dropdown-menu',
-                'role': 'menu'
+                'role': 'menu',
+                'aria-labelledby': 'bookmarks'
             });
             this.but_bookmark.click(function() {
                 dropdown_bookmark.children().remove();
@@ -49,9 +51,13 @@
                 for (var i=0; i < bookmarks.length; i++) {
                     var name = bookmarks[i][1];
                     var domain = bookmarks[i][2];
-                    jQuery('<li/>')
+                    jQuery('<li/>', {
+                        'role': 'presentation'
+                    })
                     .append(jQuery('<a/>', {
-                        'href': '#'
+                        'role': 'menuitem',
+                        'href': '#',
+                        'tabindex': -1
                     }).append(name)
                         .click(domain, this.bookmark_activate.bind(this)))
                     .appendTo(dropdown_bookmark);

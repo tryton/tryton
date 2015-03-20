@@ -308,7 +308,8 @@
                         })))
                     .append(jQuery('<ul/>', {
                         'class': 'dropdown-menu',
-                        role: 'menu'
+                        role: 'menu',
+                        'aria-labelledby': menu_action[0]
                     }))
                     .appendTo(toolbar.find('.navbar-collapse > ul'));
                     buttons[menu_action[0]] = button;
@@ -318,9 +319,15 @@
                             menu.find('.action_button').remove();
                             var buttons = screen.get_buttons();
                             buttons.forEach(function(button) {
-                                var item = jQuery('<li/>')
+                                var item = jQuery('<li/>', {
+                                    'role': 'presentation'
+                                })
                                 .append(
-                                    jQuery('<a/>').append(
+                                    jQuery('<a/>', {
+                                        'role': 'menuitem',
+                                        'href': '#',
+                                        'tabindex': -1
+                                    }).append(
                                         button.attributes.string || ''))
                                 .click(function() {
                                     screen.button(button.attributes);
@@ -331,9 +338,14 @@
                     }
 
                     toolbars[menu_action[0]].forEach(function(action) {
-                        var item = jQuery('<li/>')
-                        .append(
-                            jQuery('<a/>').append(action.name))
+                        var item = jQuery('<li/>', {
+                            'role': 'presentation'
+                        })
+                        .append(jQuery('<a/>', {
+                            'role': 'menuitem',
+                            'href': '#',
+                            'tabindex': -1
+                        }).append(action.name))
                         .click(function() {
                             screen.save_current().then(function() {
                                 var exec_action = jQuery.extend({}, action);
