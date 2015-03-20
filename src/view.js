@@ -3620,6 +3620,10 @@
                 return Sao.View.EditableTree.Char;
             case 'date':
                 return Sao.View.EditableTree.Date;
+            case 'time':
+                return Sao.View.EditableTree.Time;
+            case 'timedelta':
+                return Sao.View.EditableTree.TimeDelta;
             case 'integer':
             case 'biginteger':
                 return Sao.View.EditableTree.Integer;
