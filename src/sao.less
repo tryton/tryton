@@ -33,7 +33,7 @@
     }
     & .editabletree-char, .editabletree-date, .editabletree-datetime,
     .editabletree-integer, .editabletree-float, .editabletree-selection,
-    .editabletree-float_time, .editabletree-boolean, .editabletree-many2one,
+    .editabletree-timedelta, .editabletree-boolean, .editabletree-many2one,
     .editabletree-one2many {
         width: 100%;
     }
@@ -99,12 +99,12 @@
 }
 
 .form-integer, .form-float, .form-float-time,
-.editabletree-integer, .editabletree-float, .editabletree-float_time {
+.editabletree-integer, .editabletree-float, .editabletree-timedelta {
     & input {
         text-align: right;
     }
 }
-.column-integer, .column-float, .column-float_time {
+.column-integer, .column-float, .column-timedelta {
     text-align: right;
 }
 
