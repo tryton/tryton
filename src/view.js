@@ -518,7 +518,9 @@
                 var column = this.tree.columns[i];
                 td = jQuery('<td/>', {
                     'data-title': column.attributes.string
-                });
+                }).append(jQuery('<div/>', { // For responsive min-height
+                    'aria-hidden': true
+                }));
                 td.one('click', {column: i, td: td},
                         this.select_row.bind(this));
                 var widgets = this.build_widgets();
