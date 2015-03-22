@@ -20,7 +20,7 @@ TYPES = [
     ('service', 'Service'),
     ]
 
-price_digits = (16, config.getint('product', 'price_decimal', 4))
+price_digits = (16, config.getint('product', 'price_decimal', default=4))
 
 
 class Template(ModelSQL, ModelView):
