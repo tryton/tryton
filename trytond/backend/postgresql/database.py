@@ -70,8 +70,8 @@ class Database(DatabaseInterface):
         name = "dbname=%s" % self.database_name
         user = uri.username and "user=%s" % uri.username or ''
         password = uri.password and "password=%s" % uri.password or ''
-        minconn = config.getint('database', 'minconn', 1)
-        maxconn = config.getint('database', 'maxconn', 64)
+        minconn = config.getint('database', 'minconn', default=1)
+        maxconn = config.getint('database', 'maxconn', default=64)
         dsn = '%s %s %s %s %s' % (host, port, name, user, password)
         self._connpool = ThreadedConnectionPool(minconn, maxconn, dsn)
         return self

@@ -69,30 +69,37 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
             return
         self.read(configfile)
 
-    def get(self, section, option, default=None):
+    def get(self, section, option, *args, **kwargs):
+        default = kwargs.pop('default', None)
         try:
-            return ConfigParser.RawConfigParser.get(self, section, option)
+            return ConfigParser.RawConfigParser.get(self, section, option,
+                *args, **kwargs)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
             return default
 
-    def getint(self, section, option, default=None):
+    def getint(self, section, option, *args, **kwargs):
+        default = kwargs.pop('default', None)
         try:
-            return ConfigParser.RawConfigParser.getint(self, section, option)
+            return ConfigParser.RawConfigParser.getint(self, section, option,
+                *args, **kwargs)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
                 TypeError):
             return default
 
-    def getfloat(self, section, option, default=None):
+    def getfloat(self, section, option, *args, **kwargs):
+        default = kwargs.pop('default', None)
         try:
-            return ConfigParser.RawConfigParser.getfloat(self, section, option)
+            return ConfigParser.RawConfigParser.getfloat(self, section, option,
+                *args, **kwargs)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
                 TypeError):
             return default
 
-    def getboolean(self, section, option, default=None):
+    def getboolean(self, section, option, *args, **kwargs):
+        default = kwargs.pop('default', None)
         try:
             return ConfigParser.RawConfigParser.getboolean(
-                self, section, option)
+                self, section, option, *args, **kwargs)
         except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
                 AttributeError):
             return default

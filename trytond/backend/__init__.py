@@ -9,7 +9,7 @@ __all__ = ['name', 'get']
 
 
 def name():
-    return urlparse.urlparse(config.get('database', 'uri', '')).scheme
+    return urlparse.urlparse(config.get('database', 'uri', default='')).scheme
 
 
 def get(prop):
