@@ -44,7 +44,7 @@ def ldap_connection():
         scheme, port = 'ldap', 389
     conn = ldap.initialize('%s://%s:%s/' % (
             scheme, uri.hostname, uri.port or port))
-    if config.getboolean(section, 'active_directory', False):
+    if config.getboolean(section, 'active_directory', default=False):
         conn.set_option(ldap.OPT_REFERRALS, 0)
     if 'tls' in uri.scheme:
         conn.start_tls_s()
@@ -83,7 +83,7 @@ class User:
             'onelevel': ldap.SCOPE_ONELEVEL,
             'subtree': ldap.SCOPE_SUBTREE,
             }.get(scope)
-        uid = config.get(section, 'uid', 'uid')
+        uid = config.get(section, 'uid', default='uid')
         if filter_:
             filter_ = '(&(%s=%s)%s)' % (uid, login, filter_)
         else:
@@ -139,7 +139,7 @@ class User:
                 con = ldap_connection()
                 if con:
                     user = cls(Transaction().user)
-                    uid = config.get(section, 'uid', 'uid')
+                    uid = config.get(section, 'uid', default='uid')
                     users = cls.ldap_search_user(user.login, con, attrs=[uid])
                     if users and len(users) == 1:
                         [(dn, attrs)] = users
@@ -161,7 +161,7 @@ class User:
         try:
             con = ldap_connection()
             if con:
-                uid = config.get(section, 'uid', 'uid')
+                uid = config.get(section, 'uid', default='uid')
                 users = cls.ldap_search_user(login, con, attrs=[uid])
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
