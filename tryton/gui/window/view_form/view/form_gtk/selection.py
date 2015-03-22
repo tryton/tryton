@@ -79,6 +79,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
 
         self.entry.handler_block_by_func(self.changed)
         if not self.set_popdown_value(self.entry, value):
-            self.get_inactive_selection(value)
+            text = self.get_inactive_selection(value)
+            self.set_popdown(self.selection[:] + [(value, text)], self.entry)
             self.set_popdown_value(self.entry, value)
         self.entry.handler_unblock_by_func(self.changed)
