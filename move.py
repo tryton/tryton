@@ -1904,7 +1904,7 @@ class Reconcile(Wizard):
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
         currency = self.show.account.company.currency
-        chunk = config.getint('account', 'reconciliation_chunk', 10)
+        chunk = config.getint('account', 'reconciliation_chunk', default=10)
         # Combination is exponential so it must be limited to small number
         default = []
         for lines in grouped_slice(self._all_lines(), chunk):
