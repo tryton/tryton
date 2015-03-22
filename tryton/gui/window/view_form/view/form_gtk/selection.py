@@ -79,5 +79,6 @@ class Selection(WidgetInterface, SelectionMixin, PopdownMixin):
             value = value[0]
 
         if not self.set_popdown_value(self.entry, value):
-            self.get_inactive_selection(value)
+            text = self.get_inactive_selection(value)
+            self.set_popdown(self.selection[:] + [(value, text)], self.entry)
             self.set_popdown_value(self.entry, value)
