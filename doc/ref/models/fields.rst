@@ -269,7 +269,7 @@ A single line string field.
     method ``autocomplete_<field name>`` of the model when the user changes one
     of those field value. The method signature is::
 
-        autocomplete_<field name>(values)
+        autocomplete_<field name>()
 
     This method must return a list of string that will populate the
     ComboboxEntry in the client.
