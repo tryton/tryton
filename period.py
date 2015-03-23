@@ -250,9 +250,14 @@ class Period(ModelSQL, ModelView):
         actions = iter(args)
         args = []
         for periods, values in zip(actions, actions):
-            for key in values.keys():
+            for key, value in values.iteritems():
                 if key in ('start_date', 'end_date', 'fiscalyear'):
-                    cls._check(periods)
+                    def modified(period):
+                        if key in ['start_date', 'end_date']:
+                            return getattr(period, key) != value
+                        else:
+                            return period.fiscalyear .id != value
+                    cls._check(filter(modified, periods))
                     break
             if values.get('state') == 'open':
                 for period in periods:
