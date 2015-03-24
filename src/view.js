@@ -3486,7 +3486,10 @@
             var record = this.record();
 
             var close = function() {
-                file_dialog.modal('hide').remove();
+                file_dialog.on('hidden.bs.modal', function(event) {
+                    jQuery(this).remove();
+                });
+                file_dialog.modal('hide');
             };
 
             var save_file = function() {

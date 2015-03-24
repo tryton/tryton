@@ -204,6 +204,9 @@
                 this.el.modal('show');
                 this.screen.display();
             }.bind(this));
+            this.el.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
 
         },
         add: function() {
@@ -316,7 +319,7 @@
                 // Empty when opening from Many2One
                 this.screen.switch_view(this.prev_view.view_type);
             }
-            this.el.modal('hide').remove();
+            this.el.modal('hide');
         }
     });
 
@@ -425,6 +428,9 @@
                     }
                 }.bind(this));
             }.bind(this));
+            this.el.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
         },
         response: function(response_id) {
             var records;
@@ -454,7 +460,7 @@
                         this.callback(null);
                     }
                 };
-                this.el.modal('hide').remove();
+                this.el.modal('hide');
                 new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true
                 });
@@ -468,7 +474,7 @@
                 }
             }
             this.callback(value);
-            this.el.modal('hide').remove();
+            this.el.modal('hide');
         }
     });
 
@@ -536,6 +542,9 @@
                 body.append(this.screen.screen_container.el);
                 this.el.modal('show');
             };
+            this.el.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
 
             this.screen.model.execute('get_preferences_fields_view', [], {})
                 .then(set_view.bind(this), this.destroy);
@@ -570,7 +579,7 @@
             prm.done(end);
         },
         destroy: function() {
-            this.el.modal('hide').remove();
+            this.el.modal('hide');
         }
     });
 
@@ -641,6 +650,9 @@
                 }));
             }.bind(this));
             this.el.modal('show');
+            this.el.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
         },
         response: function(response_id) {
             var revision = null;
@@ -650,7 +662,7 @@
                     revision = Sao.DateTime(parseInt(revision, 10));
                 }
             }
-            this.el.modal('hide').remove();
+            this.el.modal('hide');
             this.callback(revision);
         }
     });

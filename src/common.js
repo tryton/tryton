@@ -2171,7 +2171,10 @@
             return prm;
         },
         close: function(dialog) {
-            dialog.modal('hide').remove();
+            dialog.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
+            dialog.modal('hide');
             this.running = false;
         }
     });

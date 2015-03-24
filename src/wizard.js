@@ -255,7 +255,10 @@
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
-            this.dialog.modal('hide').remove();
+            this.dialog.on('hidden.bsd.modal', function(event) {
+                jQuery(this).remove();
+            });
+            this.dialog.modal('hide');
             var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
             var is_menu = false;
             var screen;
