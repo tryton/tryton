@@ -23,7 +23,6 @@ except ImportError:
 from sql import Flavor, Table
 from sql.functions import (Function, Extract, Position, Now, Substring,
     Overlay, CharLength)
-from sql.conditionals import Greatest, Least
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
     'Cursor']
@@ -139,16 +138,6 @@ class SQLiteCharLength(Function):
     _function = 'LENGTH'
 
 
-class SQLiteGreatest(Greatest):
-    __slots__ = ()
-    _function = 'MAX'
-
-
-class SQLiteLeast(Least):
-    __slots__ = ()
-    _function = 'MIN'
-
-
 def sign(value):
     if value > 0:
         return 1
@@ -164,8 +153,6 @@ MAPPING = {
     Substring: SQLiteSubstring,
     Overlay: SQLiteOverlay,
     CharLength: SQLiteCharLength,
-    Greatest: SQLiteGreatest,
-    Least: SQLiteLeast,
     }
 
 
@@ -208,6 +195,8 @@ class Database(DatabaseInterface):
             self._conn.create_function('replace', 3, replace)
         self._conn.create_function('now', 0, now)
         self._conn.create_function('sign', 1, sign)
+        self._conn.create_function('greatest', -1, max)
+        self._conn.create_function('least', -1, min)
         self._conn.execute('PRAGMA foreign_keys = ON')
         return self
 
