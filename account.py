@@ -50,7 +50,7 @@ class InvoiceLine:
 
     @fields.depends('origin')
     def on_change_product(self):
-        return super(InvoiceLine, self).on_change_product()
+        super(InvoiceLine, self).on_change_product()
 
     @fields.depends('origin')
     def on_change_account(self):

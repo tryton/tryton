@@ -42,4 +42,4 @@ class PurchaseLine:
     @fields.depends('_parent_purchase.warehouse',
         '_parent_purchase.invoice_address')
     def on_change_product(self):
-        return super(PurchaseLine, self).on_change_product()
+        super(PurchaseLine, self).on_change_product()

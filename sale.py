@@ -48,4 +48,4 @@ class SaleLine:
 
     @fields.depends('_parent_sale.warehouse', '_parent_sale.shipment_address')
     def on_change_product(self):
-        return super(SaleLine, self).on_change_product()
+        super(SaleLine, self).on_change_product()
