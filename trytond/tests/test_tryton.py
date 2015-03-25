@@ -249,7 +249,7 @@ def drop_db():
 
 
 def drop_create():
-    if db_exist:
+    if db_exist():
         drop_db()
     create_db()
 
