@@ -785,6 +785,8 @@ def test_operatorize():
     a = ('a', 'a', 'a')
     b = ('b', 'b', 'b')
     c = ('c', 'c', 'c')
+    null_ = ('d', None, 'x')
+    double_null_ = ('e', None, None)
     for value, result in (
             (['a'], ['a']),
             (['a', 'or', 'b'], [['OR', 'a', 'b']]),
@@ -810,6 +812,8 @@ def test_operatorize():
             (['a', iter(['b', 'or', 'c'])], ['a', [['OR', 'b', 'c']]]),
             ([a, iter([b, ('or',), c])], [a, [['OR', b, c]]]),
             (['a', iter(['b', 'or'])], ['a', [['OR', 'b']]]),
+            ([null_], [null_]),
+            ([null_, 'or', double_null_], [['OR', null_, double_null_]]),
             ):
         assert rlist(operatorize(iter(value))) == result
 
