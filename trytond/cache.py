@@ -127,6 +127,11 @@ class Cache(object):
             cursor.commit()
             cursor.close()
 
+    @classmethod
+    def drop(cls, dbname):
+        for inst in cls._cache_instance:
+            inst._cache.pop(dbname, None)
+
 
 class LRUDict(OrderedDict):
     """

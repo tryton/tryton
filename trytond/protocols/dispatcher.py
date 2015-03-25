@@ -277,6 +277,7 @@ def drop(database_name, password):
         else:
             logger.info('DROP DB: %s' % (database_name))
             Pool.stop(database_name)
+            Cache.drop(database_name)
     return True
 
 
