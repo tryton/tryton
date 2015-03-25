@@ -973,8 +973,16 @@
     QUnit.test('DomainParser.operatorize', function() {
         var parser = new Sao.common.DomainParser();
         var a = ['a', 'a', 'a'];
+        a.clause = true;
         var b = ['b', 'b', 'b'];
+        b.clause = true;
         var c = ['c', 'c', 'c'];
+        c.clause = true;
+        var null_ = ['d', null, 'x'];
+        null_.clause = true;
+        var double_null_ = ['e', null, null];
+        double_null_.clause = true;
+
         [
         [['a'], ['a']],
         [['a', 'or', 'b'], [['OR', 'a', 'b']]],
@@ -999,11 +1007,13 @@
         [['or', 'or', 'a', 'or', 'b'], [['OR', 'a', 'b']]],
         [['a', ['b', 'or', 'c']], ['a', [['OR', 'b', 'c']]]],
         [[a, [b, ['or'], c]], [a, [['OR', b, c]]]],
-        [['a', ['b', 'or']], ['a', [['OR', 'b']]]]
+        [['a', ['b', 'or']], ['a', [['OR', 'b']]]],
+        [[null_], [null_]],
+        [[null_, 'or', double_null_], [['OR', null_, double_null_]]]
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.ok(Sao.common.compare(parser.operatorize(value), result),
+            QUnit.deepEqual(parser.operatorize(value), result,
                 'operatorize(' + JSON.stringify(value) + ')');
         });
     });
@@ -1223,38 +1233,44 @@
                 ]
             }
         });
+        var c = function(value) {
+            value.clause = true;
+            return value;
+        };
         [
-        [[['John']], [['rec_name', 'ilike', '%John%']]],
-        [[['Name', null, null]], [['name', 'ilike', '%']]],
-        [[['Name', '=', null]], [['name', '=', null]]],
-        [[['Name', '=', '']], [['name', '=', '']]],
-        [[['Name', null, 'Doe']], [['name', 'ilike', '%Doe%']]],
-        [[['Name', '!', 'Doe']], [['name', 'not ilike', '%Doe%']]],
-        [[['Name', null, ['John', 'Jane']]],
-            [['name', 'in', ['John', 'Jane']]]],
-        [[['Name', '!', ['John', 'Jane']]],
-            [['name', 'not in', ['John', 'Jane']]]],
-        [[['Selection', null, null]], [['selection', '=', null]]],
-        [[['Selection', null, '']], [['selection', '=', '']]],
-        [[['Selection', null, ['Male', 'Female']]],
-            [['selection', 'in', ['male', 'female']]]],
-        [[['Integer', null, null]], [['integer', '=', null]]],
-        [[['Integer', null, '3..5']], [[
-            ['integer', '>=', 3],
-            ['integer', '<=', 5]
+        [[c(['John'])], [['rec_name', 'ilike', '%John%']]],
+        [[c(['Name', null, null])], [['name', 'ilike', '%']]],
+        [[c(['Name', '=', null])], [['name', '=', null]]],
+        [[c(['Name', '=', ''])], [['name', '=', '']]],
+        [[c(['Name', null, 'Doe'])], [['name', 'ilike', '%Doe%']]],
+        [[c(['Name', '!', 'Doe'])], [c(['name', 'not ilike', '%Doe%'])]],
+        [[c(['Name', null, ['John', 'Jane']])],
+            [c(['name', 'in', ['John', 'Jane']])]],
+        [[c(['Name', '!', ['John', 'Jane']])],
+            [c(['name', 'not in', ['John', 'Jane']])]],
+        [[c(['Selection', null, null])], [c(['selection', '=', null])]],
+        [[c(['Selection', null, ''])], [c(['selection', '=', ''])]],
+        [[c(['Selection', null, ['Male', 'Female']])],
+            [c(['selection', 'in', ['male', 'female']])]],
+        [[c(['Integer', null, null])], [c(['integer', '=', null])]],
+        [[c(['Integer', null, '3..5'])], [[
+            c(['integer', '>=', 3]),
+            c(['integer', '<=', 5])
             ]]],
-        [[['Reference', null, 'foo']], [['reference', 'ilike', '%foo%']]],
-        [[['Reference', null, 'Spam']], [['reference', 'ilike', '%spam%']]],
-        [[['Reference', null, 'Spam,bar']], [
-            ['reference.rec_name', 'ilike', '%bar%', 'spam']
+        [[c(['Reference', null, 'foo'])],
+            [c(['reference', 'ilike', '%foo%'])]],
+        [[c(['Reference', null, 'Spam'])],
+            [c(['reference', 'ilike', '%spam%'])]],
+        [[c(['Reference', null, 'Spam,bar'])], [
+            c(['reference.rec_name', 'ilike', '%bar%', 'spam'])
             ]],
-        [[['Reference', null, ['foo', 'bar']]], [
-            ['reference', 'in', ['foo', 'bar']]
+        [[c(['Reference', null, ['foo', 'bar']])], [
+            c(['reference', 'in', ['foo', 'bar']])
             ]]
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.ok(Sao.common.compare(parser.parse_clause(value), result),
+            QUnit.deepEqual(parser.parse_clause(value), result,
                 'parse_clause(' + JSON.stringify(value) + ')');
         });
     });

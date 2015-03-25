@@ -1063,13 +1063,18 @@
                 var sub_group = function(name, lvalue) {
                     return function(part) {
                         if (!jQuery.isEmptyObject(name)) {
+                            var clause;
                             if (!jQuery.isEmptyObject(lvalue)) {
                                 if (part[0] !== null) {
                                     lvalue.push(part[0]);
                                 }
-                                result.push(name.concat([lvalue]));
+                                clause = name.concat([lvalue]);
+                                clause.clause = true;
+                                result.push(clause);
                             } else {
-                                result.push(name.concat(part));
+                                clause = name.concat(part);
+                                clause.clause = true;
+                                result.push(clause);
                             }
                             name.splice(0, name.length);
                         } else {
@@ -1105,10 +1110,15 @@
                         _group(parts.slice(i + 1)).forEach(
                                 sub_group(name, lvalue));
                         if (!jQuery.isEmptyObject(name)) {
+                            var clause;
                             if (!jQuery.isEmptyObject(lvalue)) {
-                                result.push(name.concat([lvalue]));
+                                clause = name.concat([lvalue]);
+                                clause.clause = true;
+                                result.push(clause);
                             } else {
-                                result.push(name.concat([null]));
+                                clause = name.concat([null]);
+                                clause.clause = true;
+                                result.push(clause);
                             }
                         }
                         break;
@@ -1120,7 +1130,7 @@
 
             var parts = [];
             tokens.forEach(function(token) {
-                if (token instanceof Array) {
+                if (this.is_generator(token)) {
                     _group(parts).forEach(function(group) {
                         if (!Sao.common.compare(group, [null])) {
                             result.push(group);
@@ -1138,6 +1148,9 @@
                 }
             });
             return result;
+        },
+        is_generator: function(value) {
+            return (value instanceof Array) && (value.clause === undefined);
         },
         operatorize: function(tokens, operator) {
             var result = [];
@@ -1157,13 +1170,13 @@
             if (cur === undefined) {
                 return result;
             }
-            if (cur instanceof Array) {
+            if (this.is_generator(cur)) {
                 cur = this.operatorize(cur, operator);
             }
             var nex = null;
             while (!jQuery.isEmptyObject(tokens)) {
                 nex = tokens.shift();
-                if ((nex instanceof Array) && !test(nex)) {
+                if ((this.is_generator(nex)) && !test(nex)) {
                     nex = this.operatorize(nex, operator);
                 }
                 if (test(nex)) {
@@ -1171,7 +1184,7 @@
                     while (test(nex)) {
                         nex = tokens.shift();
                     }
-                    if (nex instanceof Array) {
+                    if (this.is_generator(nex)) {
                         nex = this.operatorize(nex, operator);
                     }
                     if (nex !== undefined) {
@@ -1193,7 +1206,7 @@
             if (jQuery.isEmptyObject(tokens)) {
                 if ((nex !== null) && !test(nex)) {
                     result.push(nex);
-                } else if ((cur !== null) && !test(nex)) {
+                } else if ((cur !== null) && !test(cur)) {
                     result.push(cur);
                 }
             }
@@ -1202,7 +1215,9 @@
         parse_clause: function(tokens) {
             var result = [];
             tokens.forEach(function(clause) {
-                if ((clause == 'OR') || (clause == 'AND')) {
+                if (this.is_generator(clause)) {
+                    result.concat(this.parse_clause(clause));
+                } else if ((clause == 'OR') || (clause == 'AND')) {
                     result.push(clause);
                 } else if ((clause.length == 1) &&
                     !(clause[0] instanceof Array)) {
@@ -1264,8 +1279,6 @@
                     } else {
                         result.push([field.name, operator, value]);
                     }
-                } else {
-                    result.push(this.parse_clause(clause));
                 }
             }.bind(this));
             return result;
