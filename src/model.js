@@ -21,6 +21,9 @@
             }
         },
         execute: function(method, params, context) {
+            if (context === undefined) {
+                context = {};
+            }
             var args = {
                 'method': 'model.' + this.name + '.' + method,
                 'params': params.concat(context)
