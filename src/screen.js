@@ -1088,7 +1088,7 @@
         get_selection: function(props) {
             var prm;
             var change_with = props.selection_change_with;
-            if (change_with) {
+            if (!jQuery.isEmptyObject(change_with)) {
                 var values = {};
                 change_with.forEach(function(p) {
                     values[p] = null;

@@ -533,7 +533,7 @@
         };
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
-            if (this.attributes.selection_change_with) {
+            if (!jQuery.isEmptyObject(this.attributes.selection_change_with)) {
                 prm = this.model.execute(selection, [value]);
             } else {
                 prm = this.model.execute(selection, []);
