@@ -181,7 +181,9 @@
                     }
                     var attribute_names = ['relation', 'domain', 'selection',
                         'relation_field', 'string', 'views', 'invisible',
-                        'add_remove', 'sort', 'context', 'filename'];
+                        'add_remove', 'sort', 'context', 'filename',
+                        'autocomplete', 'translate', 'create', 'delete',
+                        'selection_change_with', 'schema_model'];
                     for (i in attribute_names) {
                         var attr = attribute_names[i];
                         if ((attr in model.fields[name].description) &&
@@ -1361,7 +1363,7 @@
             var attribute_names = ['relation', 'domain', 'selection',
                 'relation_field', 'string', 'views', 'add_remove', 'sort',
                 'context', 'size', 'filename', 'autocomplete', 'translate',
-                'create', 'delete'];
+                'create', 'delete', 'selection_change_with', 'schema_model'];
             for (var i in attribute_names) {
                 var attr = attribute_names[i];
                 if ((attr in model.fields[name].description) &&
