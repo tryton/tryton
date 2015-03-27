@@ -1274,6 +1274,8 @@
             }
         },
         save_tree_state: function(store) {
+            var prms = [];
+            var prm;
             store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
@@ -1287,7 +1289,8 @@
                         widgets = view.widgets[wid_key];
                         for (wi = 0, wlen = widgets.length; wi < wlen; wi++) {
                             if (widgets[wi].screen) {
-                                widgets[wi].screen.save_tree_state(store);
+                                prm = widgets[wi].screen.save_tree_state(store);
+                                prms.push(prm);
                             }
                         }
                     }
@@ -1312,15 +1315,17 @@
                     if (store && view.attributes.tree_state) {
                         var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
-                        tree_state_model.execute('set', [
+                        prm = tree_state_model.execute('set', [
                                 this.model_name,
                                 this.get_tree_domain(parent_),
                                 view.children_field,
                                 JSON.stringify(paths),
                                 JSON.stringify(selected_paths)], {});
+                        prms.push(prm);
                     }
                 }
             }
+            return jQuery.when.apply(jQuery, prms);
         },
         get_tree_domain: function(parent_) {
             var domain;

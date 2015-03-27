@@ -135,8 +135,9 @@
             });
         }
         if (Sao.main_menu_screen) {
-            Sao.main_menu_screen.save_tree_state();
-            Sao.main_menu_screen = null;
+            return Sao.main_menu_screen.save_tree_state().then(function() {
+                Sao.main_menu_screen = null;
+            });
         }
         return jQuery.when();
     };
