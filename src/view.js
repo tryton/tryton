@@ -9,6 +9,13 @@
             this.view_type = null;
             this.el = null;
             this.fields = {};
+            var attributes = xml.children()[0].attributes;
+            this.attributes = {};
+            for (var i = 0, len = attributes.length; i < len; i++) {
+                var attribute = attributes[i];
+                this.attributes[attribute.name] = attribute.value;
+            }
+            screen.set_on_write(this.attributes.on_write);
         },
         set_value: function() {
         },
@@ -93,10 +100,7 @@
             });
             this.expanded = {};
             this.children_field = children_field;
-            var top_node = xml.children()[0];
-            this.keyword_open = top_node.getAttribute('keyword_open');
-            this.editable = top_node.getAttribute('editable');
-            this.attributes = top_node.attributes;
+            this.editable = Boolean(this.attributes.editable);
 
             // Columns
             this.columns = [];

@@ -732,6 +732,10 @@
                 jQuery.extend(group.model.fields, this.group.model.fields);
                 this.group.screens.splice(
                         this.group.screens.indexOf(this), 1);
+                jQuery.extend(group.on_write, this.group.on_write);
+                group.on_write = group.on_write.filter(function(e, i, a) {
+                    return i == a.indexOf(e);
+                });
             }
             group.screens.push(this);
             this.tree_states_done = [];
@@ -835,7 +839,7 @@
         },
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&
-                    this.current_view.keyword_open) {
+                    this.current_view.attributes.keyword_open) {
                 Sao.Action.exec_keyword('tree_open', {
                     'model': this.model_name,
                     'id': this.get_id(),
@@ -880,6 +884,13 @@
             var position = -1;
             // TODO editable
             return position;
+        },
+        set_on_write: function(name) {
+            if(name) {
+                if (!~this.group.on_write.indexOf(name)) {
+                    this.group.on_write.push(name);
+                }
+            }
         },
         cancel_current: function() {
             var prms = [];

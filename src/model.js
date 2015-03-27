@@ -61,8 +61,15 @@
             var record_ids = records.map(function(record) {
                 return record.id;
             });
-            // TODO reload ids
-            return this.execute('delete', [record_ids], context);
+            return root_group.on_write_ids(record_ids).then(function(reload_ids) {
+                reload_ids = reload_ids.filter(function(e) {
+                    return !~reload_ids.indexOf(e);
+                });
+                return this.execute('delete', [record_ids], context)
+                .then(function() {
+                    root_group.reload(reload_ids);
+                });
+            }.bind(this));
         },
         copy: function(records, context) {
             if (jQuery.isEmptyObject(records)) {
@@ -79,6 +86,7 @@
         array.prm = jQuery.when();
         array.model = model;
         array._context = context;
+        array.on_write = [];
         array.parent = undefined;
         array.screens = [];
         array.parent_name = '';
@@ -277,7 +285,15 @@
             return jQuery.when.apply(jQuery, deferreds);
         };
         array.written = function(ids) {
-            // TODO
+            if (typeof(ids) == 'number') {
+                ids = [ids];
+            }
+            return this.on_write_ids(ids).then(function(to_reload) {
+                to_reload = to_reload.filter(function(e) {
+                    return !~ids.indexOf(e);
+                });
+                this.root_group().reload(to_reload);
+            }.bind(this));
         };
         array.reload = function(ids) {
             this.children.forEach(function(child) {
@@ -289,6 +305,22 @@
                     record._loaded = {};
                 }
             }.bind(this));
+        };
+        array.on_write_ids = function(ids) {
+            var deferreds = [];
+            var result = [];
+            this.on_write.forEach(function(fnct) {
+                var prm = this.model.execute(fnct, [ids], this._context)
+                .then(function(res) {
+                    jQuery.extend(result, res);
+                });
+                deferreds.push(prm);
+            }.bind(this));
+            return jQuery.when.apply(jQuery, deferreds).then(function() {
+                return result.filter(function(e, i, a) {
+                    return i == a.indexOf(e);
+                });
+            });
         };
         array.set_parent = function(parent) {
             this.parent = parent;
@@ -406,7 +438,9 @@
                 this.cancel();
                 this.reload();
             }.bind(this));
-            // TODO group written
+            if (this.group) {
+                this.group.written(this.id);
+            }
             // TODO parent
             return prm;
         },
