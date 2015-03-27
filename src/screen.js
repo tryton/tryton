@@ -325,27 +325,10 @@
                 }.bind(this));
             }.bind(this);
             if (!this.search_modal) {
-                this.search_modal = jQuery('<div/>', {
-                    'class': 'modal fade',
-                    role: 'dialog'
-                });
-                this.search_form = jQuery('<form/>', {
-                    'class': 'modal-content form-horizontal'
-                }).appendTo(jQuery('<div/>', {
-                    'class': 'modal-dialog modal-lg'
-                }).appendTo(this.search_modal));
-                var header = jQuery('<div/>', {
-                    'class': 'modal-header'
-                }).append(jQuery('<h4/>', {
-                    'class': 'modal-title'
-                }).append('Filters')).appendTo(this.search_form);
-                var body = jQuery('<div/>', {
-                    'class': 'modal-body'
-                }).appendTo(this.search_form);
-                var footer = jQuery('<div/>', {
-                    'class': 'modal-footer'
-                }).appendTo(this.search_form);
-
+                var dialog = new Sao.Dialog('Filters', '', 'lg');
+                this.search_modal = dialog.modal;
+                this.search_form = dialog.content;
+                this.search_form.addClass('form-horizontal');
                 this.search_form.submit(search);
 
                 var fields = [];
@@ -384,7 +367,7 @@
                         'class': 'col-sm-4 control-label',
                         'for': prefix + field.name,
                         text: field.string
-                    })).appendTo(body);
+                    })).appendTo(dialog.body);
 
                     var input;
                     var entry;
@@ -442,7 +425,7 @@
                 jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     type: 'submit'
-                }).append('Find').click(search).appendTo(footer);
+                }).append('Find').click(search).appendTo(dialog.footer);
             }
             this.search_modal.modal('show');
             if (this.last_search_text.trim() !== this.get_text().trim()) {

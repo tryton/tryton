@@ -3492,10 +3492,10 @@
             var record = this.record();
 
             var close = function() {
-                file_dialog.on('hidden.bs.modal', function(event) {
+                file_dialog.modal.on('hidden.bs.modal', function(event) {
                     jQuery(this).remove();
                 });
-                file_dialog.modal('hide');
+                file_dialog.modal.modal('hide');
             };
 
             var save_file = function() {
@@ -3514,39 +3514,25 @@
                 }
             }.bind(this);
 
-            var file_dialog = jQuery('<div/>', {
-                'class': 'file-dialog modal fade',
-                role: 'dialog'
-            });
-
-            var content = jQuery('<div/>', {
-                'class': 'modal-content'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'modal-dialog modal-sm'
-            }).appendTo(file_dialog));
-            jQuery('<div/>', {
-                'class': 'modal-header'
-            }).append(jQuery('<h4/>', {
-                'class': 'modal-title'
-            }).append('Select a file')).appendTo(content);
-            var body = jQuery('<div/>', {
-                'class': 'modal-body'
-            }).appendTo(content);
-            jQuery('<div/>', {
-                'class': 'modal-footer'
-            }).append(jQuery('<button/>', {
-                'class': 'btn btn-link'
+            var file_dialog = new Sao.Dialog('Select a file', 'file-dialog');
+            file_dialog.footer.append(jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(close))
             .append(jQuery('<button/>', {
-                'class': 'btn btn-primary'
-            }).append('OK').click(save_file))
-            .appendTo(content);
+                'class': 'btn btn-primary',
+                'type': 'submit'
+            }).append('OK').click(save_file));
+            file_dialog.content.submit(function(e) {
+                save_file();
+                e.preventDefault();
+            });
 
             var file_selector = jQuery('<input/>', {
                 type: 'file'
-            }).appendTo(body);
+            }).appendTo(file_dialog.body);
 
-            file_dialog.modal('show');
+            file_dialog.modal.modal('show');
         },
         remove: function(evt) {
             this.field().set_client(this.record(), null);

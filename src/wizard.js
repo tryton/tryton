@@ -202,28 +202,10 @@
                 name = 'Wizard'; // TODO translate
             }
             Sao.Wizard.Dialog._super.init.call(this);
-            this.dialog = jQuery('<div/>', {
-                'class': 'wizard-dialog modal fade',
-                role: 'dialog'
-            });
-            var content = this.content = jQuery('<form/>', {
-                'class': 'modal-content'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'modal-dialog modal-lg'
-            }).appendTo(this.dialog));
-            var header = jQuery('<div/>', {
-                'class': 'modal-header'
-            }).append(jQuery('<h4/>', {
-                'class': 'modal-title'
-            }).append(name)).appendTo(content);
-            var body = jQuery('<div/>', {
-                'class': 'modal-body'
-            }).appendTo(content);
-            this.footer = jQuery('<div/>', {
-                'class': 'modal-footer'
-            }).appendTo(content);
-
-            body.append(this.widget);
+            var dialog = new Sao.Dialog(name, 'wizard-dialog', 'lg');
+            this.dialog = dialog.modal;
+            this.footer = dialog.footer;
+            dialog.body.append(this.widget);
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);

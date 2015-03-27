@@ -2149,26 +2149,7 @@
             this.running = false;
         },
         build_dialog: function() {
-            var dialog = jQuery('<div/>', {
-                'class': this.class_ + ' modal fade',
-                role: 'dialog'
-            });
-            var content = jQuery('<div/>', {
-                'class': 'modal-content'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'modal-dialog modal-sm'
-            }).appendTo(dialog));
-            jQuery('<div/>', {
-                'class': 'modal-header'
-            }).append(jQuery('<h4/>', {
-                'class': 'modal-title'
-            })).appendTo(content);
-            jQuery('<div/>', {
-                'class': 'modal-body'
-            }).appendTo(content);
-            jQuery('<div/>', {
-                'class': 'modal-footer'
-            }).appendTo(content);
+            var dialog = new Sao.Dialog('', this.class_);
             return dialog;
         },
         run: function() {
@@ -2180,14 +2161,14 @@
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
             this.running = true;
-            dialog.modal('show');
+            dialog.modal.modal('show');
             return prm;
         },
         close: function(dialog) {
-            dialog.on('hidden.bs.modal', function(event) {
+            dialog.modal.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
-            dialog.modal('hide');
+            dialog.modal.modal('hide');
             this.running = false;
         }
     });
@@ -2197,9 +2178,8 @@
         build_dialog: function(message, icon, prm) {
             var dialog = Sao.common.MessageDialog._super.build_dialog.call(
                 this);
-            dialog.find('.modal-header').remove();
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.header.remove();
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
             }).append(jQuery('<span/>', {
@@ -2209,13 +2189,12 @@
                 'class': 'sr-only'
             }).append('Message: ')
             ).append(message));
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         },
         run: function(message, icon) {
@@ -2230,9 +2209,8 @@
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.WarningDialog._super.build_dialog.call(
                 this);
-            dialog.find('.modal-title').append(title);
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.add_title(title);
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
             }).append(jQuery('<span/>', {
@@ -2242,13 +2220,12 @@
                 'class': 'sr-only'
             }).append('Warning: ')
             ).append(message));
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2263,22 +2240,20 @@
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
                 this, message, title, prm);
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>')
+            dialog.body.append(jQuery('<div/>')
                 .append(jQuery('<input/>', {
                     'type': 'checkbox'
                 }).change(this._set_always.bind(this)))
                 .append(jQuery('<span/>').text('Always ignore this warning.'))
                 );
-            body.append(jQuery('<p/>').text('Do you want to proceed?'));
-            var footer = dialog.find('.modal-footer');
+            dialog.body.append(jQuery('<p/>').text('Do you want to proceed?'));
             footer.children().remove();
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('No').click(function() {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('Yes').click(function() {
@@ -2287,7 +2262,7 @@
                     prm.resolve('always');
                 }
                 prm.resolve('ok');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2298,9 +2273,8 @@
         build_dialog: function(message) {
             var dialog = Sao.common.ConfirmationDialog._super.build_dialog.call(
                 this);
-            dialog.find('.modal-header').remove();
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.header.remove();
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-info',
                 role: 'alert'
             }).append(jQuery('<span/>', {
@@ -2318,19 +2292,18 @@
         build_dialog: function(message, prm) {
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2340,7 +2313,6 @@
         build_dialog: function(message, prm) {
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('Cancel').click(function() {
@@ -2352,13 +2324,13 @@
             }).append('No').click(function() {
                 this.close(dialog);
                 prm.resolve('ko');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('Yes').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2375,7 +2347,7 @@
         },
         build_dialog: function(question, visibility, prm) {
             var dialog = Sao.common.AskDialog._super.build_dialog.call(this);
-            dialog.find('.modal-header').remove();
+            dialog.header.remove();
             var entry = jQuery('<input/>', {
                 'class': 'form-control',
                 'type': visibility ? 'input' : 'password',
@@ -2387,19 +2359,18 @@
             }).append(jQuery('<label/>', {
                 'for': 'ask-dialog-entry'
             }).append(question)).append(entry));
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve(entry.val());
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2412,9 +2383,8 @@
                 this);
             dialog.find('.modal-dialog'
                 ).removeClass('modal-sm').addClass('modal-lg');
-            dialog.find('.modal-title').append('Concurrency Exception');
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.add_title('Concurrency Exception');
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
             }).append(jQuery('<p/>')
@@ -2435,13 +2405,12 @@
                     .append(jQuery('<li/>')
                         .text('"Write Anyway" to save your current version.')))
                 );
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default'
             }).append('Compare').click(function() {
@@ -2454,13 +2423,13 @@
                     'mode': ['form', 'tree']
                 });
                 prm.reject();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default'
             }).append('Write Anyway').click(function() {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });
@@ -2473,9 +2442,8 @@
                 this);
             dialog.find('.modal-dialog'
                 ).removeClass('modal-sm').addClass('modal-lg');
-            dialog.find('.modal-title').append('Application Error');
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.add_title('Application Error');
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
             }).append(jQuery('<span/>', {
@@ -2493,13 +2461,12 @@
                         href: Sao.config.roundup.url,
                         target: '_blank'
                     }).text('Report Bug'))));
-            var footer = dialog.find('.modal-footer');
             jQuery('<button/>', {
                 'class': 'btn btn-primary'
             }).append('Close').click(function() {
                 this.close(dialog);
                 prm.resolve();
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             return dialog;
         }
     });

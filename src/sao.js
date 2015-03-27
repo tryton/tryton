@@ -247,6 +247,38 @@ var Sao = {};
     };
     Sao.main_menu_screen = null;
 
+    Sao.Dialog = Sao.class_(Object, {
+        init: function(title, class_, size) {
+            size = size || 'sm';
+            this.modal = jQuery('<div/>', {
+                'class': class_ + 'modal fade',
+                'role': 'dialog'
+            });
+            this.content = jQuery('<form/>', {
+                'class': 'modal-content'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'modal-dialog modal-' + size
+            }).appendTo(dialog));
+            this.header = jQuery('<div/>', {
+                'class': 'modal-header'
+            }).appendTo(content);
+            if (title) {
+                this.add_title(title);
+            }
+            this.body = jQuery('<div/>', {
+                'class': 'modal-body'
+            }).appendTo(content);
+            this.footer = jQuery('<div/>', {
+                'class': 'modal-footer'
+            }).appendTo(content);
+        },
+        add_title: function(title) {
+            this.header.append(jQuery('<h4/>', {
+                'class': 'modal-title'
+            }).content(title));
+        }
+    });
+
     // Fix stacked modal
     jQuery(document)
         .on('show.bs.modal', '.modal', function(event) {
