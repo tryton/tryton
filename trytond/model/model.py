@@ -237,7 +237,10 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 res[field]['sortable'] = False
             if ((isinstance(cls._fields[field], fields.Function)
                     and not cls._fields[field].searcher)
-                    or cls._fields[field]._type in ('binary', 'sha')):
+                    or (cls._fields[field]._type in ('binary', 'sha'))
+                    or (isinstance(cls._fields[field], fields.Property)
+                        and isinstance(cls._fields[field]._field,
+                            fields.Many2One))):
                 res[field]['searchable'] = False
             else:
                 res[field]['searchable'] = True
