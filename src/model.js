@@ -446,7 +446,12 @@
             if (this.group) {
                 this.group.written(this.id);
             }
-            // TODO parent
+            if (this.group.parent) {
+                delete this.group.parent._changed[this.group.child_name];
+                prm = prm.done(function() {
+                    return this.group.parent.save();
+                }.bind(this));
+            }
             return prm;
         },
         reload: function(fields) {
