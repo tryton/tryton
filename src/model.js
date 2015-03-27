@@ -261,8 +261,9 @@
             // One2Many.changed could return undefined
             if (changed_prm) {
                 changed_prm.then(function() {
-                    // TODO validate parent
-                    this.parent.group.changed().done(prm.resolve);
+                    this.parent.validate(null, true).done(function() {
+                        this.parent.group.changed().done(prm.resolve);
+                    }.bind(this));
                 }.bind(this));
             } else {
                 prm.resolve();
