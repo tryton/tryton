@@ -91,13 +91,49 @@
             alwaysask = false;
         }
         var prm = jQuery.Deferred();
-        if ((Object.keys(values).length == 1) && (!alwaysask)) {
-            var key = Object.keys(values)[0];
+        var keys = Object.keys(values).sort();
+        if ((keys.length == 1) && (!alwaysask)) {
+            var key = keys[0];
             prm.resolve(values[key]);
             return prm;
         }
-        // TODO
-        return prm.fail();
+        var dialog = new Sao.Dialog(
+                title || 'Your selection:', 'selection-dialog');
+
+        keys.forEach(function(k, i) {
+            jQuery('<div/>', {
+                'class': 'checkbox'
+            }).append(jQuery('<label/>')
+                .append(jQuery('<input/>', {
+                    'type': 'radio',
+                    'name': 'selection',
+                    'value': i
+                }))
+                .append(' ' + k))
+            .appendTo(dialog.body);
+        });
+        dialog.body.find('input').first().prop('checked', true);
+
+        jQuery('<button/>', {
+            'class': 'btn btn-link',
+            'type': 'button'
+        }).append('Cancel').click(function() {
+            dialog.modal.modal('hide');
+            prm.fail();
+        }).appendTo(dialog.footer);
+        jQuery('<button/>', {
+            'class': 'btn btn-primary',
+            'type': 'button'
+        }).append('OK').click(function() {
+            var i = dialog.body.find('input:checked').attr('value');
+            dialog.modal.modal('hide');
+            prm.resolve(values[keys[i]]);
+        }).appendTo(dialog.footer);
+        dialog.modal.on('hidden.bs.modal', function(e) {
+            jQuery(this).remove();
+        });
+        dialog.modal.modal('show');
+        return prm;
     };
 
     Sao.common.moment_format = function(format) {
