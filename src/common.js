@@ -1686,11 +1686,19 @@
                 return true;
             }
             var context_field = context[field];
-            if ((context_field instanceof Date) && !context_field) {
-                // TODO set value to min
+            if ((context_field && context_field._isAMomentObject) && !value) {
+                if (context_field.isDateTime) {
+                    value = Sao.DateTime.min;
+                } else {
+                    value = Sao.Date.min;
+                }
             }
-            if ((value instanceof Date) && !context_field) {
-                // TODO set context_field to min
+            if ((value && value._isAMomentObject) && !context_field) {
+                if (value.isDateTime) {
+                    context_field = Sao.DateTime.min;
+                } else {
+                    context_field = Sao.Date.min;
+                }
             }
             if ((typeof context_field == 'string') &&
                     (value instanceof Array) && value.length == 2) {
