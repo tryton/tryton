@@ -339,6 +339,8 @@ class ViewTreeState(ModelSQL, ModelView):
 
     @classmethod
     def set(cls, model, domain, child_name, nodes, selected_nodes):
+        # Normalize the json domain
+        domain = json.dumps(json.loads(domain))
         current_user = Transaction().user
         records = cls.search([
                 ('user', '=', current_user),
