@@ -88,6 +88,13 @@ var Sao = {};
         return date;
     };
 
+    Sao.Date.min = moment(new Date(-100000000 * 86400000));
+    Sao.Date.min.set({hour: 0, minute: 0, second: 0, millisecond: 0});
+    Sao.Date.min.isDate = true;
+    Sao.Date.max = moment(new Date(100000000 * 86400000));
+    Sao.Date.max.set({hour: 0, minute: 0, second: 0, millisecond: 0});
+    Sao.Date.max.isDate = true;
+
     Sao.DateTime = function(year, month, day, hour, minute, second,
             millisecond, utc) {
         var datetime = moment();
@@ -112,6 +119,11 @@ var Sao = {};
             second: time.second(), millisecond: time.millisecond()});
         return datetime;
     };
+
+    Sao.DateTime.min = moment(new Date(-100000000 * 86400000)).local();
+    Sao.DateTime.min.isDateTime = true;
+    Sao.DateTime.max = moment(new Date(100000000 * 86400000)).local();
+    Sao.DateTime.max.isDateTime = true;
 
     Sao.Time = function(hour, minute, second, millisecond) {
         var time = moment({hour: hour, minute: minute, second: second,
