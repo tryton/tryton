@@ -48,8 +48,12 @@
             }
             var record = records[0];
             var root_group = record.group.root_group();
-            // TODO test same model
-            // TODO test same root group
+            console.assert(records.every(function(r) {
+                return r.model.name == record.model.name;
+            }), 'records not from the same model');
+            console.assert(records.every(function(r) {
+                return r.group.root_group() == record.group.root_group();
+            }), 'records not from the same root group');
             records = records.filter(function(record) {
                 return record.id >= 0;
             });
