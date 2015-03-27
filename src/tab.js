@@ -29,7 +29,7 @@
                     jQuery('<a/>').append(jQuery('<span/>', {
                         'class': 'glyphicon ' + icon,
                         'aria-hidden': 'true'
-                    })).append(name));
+                    })).append(' ' + name));
                 menu.append(item);
                 item.click(function() {
                     this[func]();
