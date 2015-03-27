@@ -204,6 +204,7 @@
             Sao.Wizard.Dialog._super.init.call(this);
             var dialog = new Sao.Dialog(name, 'wizard-dialog', 'lg');
             this.dialog = dialog.modal;
+            this.content = dialog.content;
             this.footer = dialog.footer;
             dialog.body.append(this.widget);
         },

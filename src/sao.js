@@ -251,31 +251,31 @@ var Sao = {};
         init: function(title, class_, size) {
             size = size || 'sm';
             this.modal = jQuery('<div/>', {
-                'class': class_ + 'modal fade',
+                'class': class_ + ' modal fade',
                 'role': 'dialog'
             });
             this.content = jQuery('<form/>', {
                 'class': 'modal-content'
             }).appendTo(jQuery('<div/>', {
                 'class': 'modal-dialog modal-' + size
-            }).appendTo(dialog));
+            }).appendTo(this.modal));
             this.header = jQuery('<div/>', {
                 'class': 'modal-header'
-            }).appendTo(content);
+            }).appendTo(this.content);
             if (title) {
                 this.add_title(title);
             }
             this.body = jQuery('<div/>', {
                 'class': 'modal-body'
-            }).appendTo(content);
+            }).appendTo(this.content);
             this.footer = jQuery('<div/>', {
                 'class': 'modal-footer'
-            }).appendTo(content);
+            }).appendTo(this.content);
         },
         add_title: function(title) {
             this.header.append(jQuery('<h4/>', {
                 'class': 'modal-title'
-            }).content(title));
+            }).append(title));
         }
     });
 

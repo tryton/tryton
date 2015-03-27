@@ -2247,7 +2247,7 @@
                 .append(jQuery('<span/>').text('Always ignore this warning.'))
                 );
             dialog.body.append(jQuery('<p/>').text('Do you want to proceed?'));
-            footer.children().remove();
+            dialog.footer.children().remove();
             jQuery('<button/>', {
                 'class': 'btn btn-link'
             }).append('No').click(function() {
@@ -2318,7 +2318,7 @@
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.resolve('cancel');
-            }.bind(this)).appendTo(footer);
+            }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default'
             }).append('No').click(function() {
@@ -2381,7 +2381,7 @@
         build_dialog: function(model, record_id, context, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.find('.modal-dialog'
+            dialog.modal.find('.modal-dialog'
                 ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title('Concurrency Exception');
             dialog.body.append(jQuery('<div/>', {
@@ -2440,7 +2440,7 @@
         build_dialog: function(title, details, prm) {
             var dialog = Sao.common.ConcurrencyDialog._super.build_dialog.call(
                 this);
-            dialog.find('.modal-dialog'
+            dialog.modal.find('.modal-dialog'
                 ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title('Application Error');
             dialog.body.append(jQuery('<div/>', {
