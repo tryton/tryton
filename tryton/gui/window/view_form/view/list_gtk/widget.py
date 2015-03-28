@@ -108,7 +108,13 @@ class CellCache(list):
         return wrapper
 
 
-class Affix(object):
+class Cell(object):
+
+    def get_color(self, record):
+        return record.expr_eval(self.view.attributes.get('colors', '"black"'))
+
+
+class Affix(Cell):
 
     def __init__(self, view, attrs, protocol=None):
         super(Affix, self).__init__()
@@ -148,6 +154,12 @@ class Affix(object):
             if not text:
                 text = field.get_client(record) or ''
             cell.set_property('text', text)
+            fg_color = self.get_color(record)
+            cell.set_property('foreground', fg_color)
+            if fg_color == 'black':
+                cell.set_property('foreground-set', False)
+            else:
+                cell.set_property('foreground-set', True)
 
     def clicked(self, renderer, path):
         store = self.view.treeview.get_model()
@@ -163,7 +175,7 @@ class Affix(object):
             webbrowser.open(value, new=2)
 
 
-class GenericText(object):
+class GenericText(Cell):
 
     def __init__(self, view, attrs, renderer=None):
         super(GenericText, self).__init__()
@@ -254,9 +266,6 @@ class GenericText(object):
                 cell.set_property('editable', not readonly)
 
         cell.set_property('xalign', align)
-
-    def get_color(self, record):
-        return record.expr_eval(self.view.attributes.get('colors', '"black"'))
 
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
