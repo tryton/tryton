@@ -1878,6 +1878,8 @@
         QUnit.ok(!unique_value(domain)[0]);
         domain = [['a', '=', 1], ['a', '=', 2]];
         QUnit.ok(!unique_value(domain)[0]);
+        domain = [['a.b', '=', 1]];
+        QUnit.ok(!unique_value(domain)[0]);
     });
 
     QUnit.test('DomainInversion evaldomain', function() {

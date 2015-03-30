@@ -1846,6 +1846,7 @@
         unique_value: function(domain) {
             if ((domain instanceof Array) &&
                     (domain.length == 1) &&
+                    !domain[0][0].contains('.') &&
                     (domain[0][1] == '=')) {
                 return [true, domain[0][1], domain[0][2]];
             } else {
