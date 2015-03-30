@@ -112,6 +112,18 @@ def inverse_leaf(domain):
         return map(inverse_leaf, domain)
 
 
+def filter_leaf(domain, field, model):
+    if domain in ('AND', 'OR'):
+        return domain
+    elif is_leaf(domain):
+        if domain[0].startswith(field) and len(domain) > 3:
+            if domain[3] != model:
+                return ('id', '=', None)
+        return domain
+    else:
+        return [filter_leaf(d, field, model) for d in domain]
+
+
 def eval_domain(domain, context, boolop=operator.and_):
     "compute domain boolean value according to the context"
     if is_leaf(domain):

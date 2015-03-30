@@ -6,7 +6,8 @@ import tempfile
 import locale
 from tryton.common import \
         domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, concat, simplify, unique_value, EvalEnvironment
+        merge, inverse_leaf, filter_leaf, concat, simplify, unique_value, \
+        EvalEnvironment
 import tryton.common as common
 import datetime
 import decimal
@@ -835,6 +836,15 @@ class ReferenceField(Field):
     def validation_domains(self, record, pre_validate=None):
         screen_domain, attr_domain = self.domains_get(record, pre_validate)
         return screen_domain
+
+    def domain_get(self, record):
+        if record.value.get(self.name):
+            model = record.value[self.name][0]
+        else:
+            model = None
+        screen_domain, attr_domain = self.domains_get(record)
+        return concat(localize_domain(
+                filter_leaf(screen_domain, self.name, model)), attr_domain)
 
 
 class _FileCache(object):
