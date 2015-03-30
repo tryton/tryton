@@ -29,6 +29,7 @@ class StockLotSLEDTestCase(ModuleTestCase):
             Date = pool.get('ir.date')
             Move = pool.get('stock.move')
             Lot = pool.get('stock.lot')
+            Period = pool.get('stock.period')
 
             u, = Uom.search([('name', '=', 'Unit')])
             template = Template(
@@ -76,6 +77,11 @@ class StockLotSLEDTestCase(ModuleTestCase):
                 lot=lot,
                 )
             move.save()
+
+            period = Period(date=today + datetime.timedelta(days=-10),
+                company=company)
+            period.save()
+            Period.close([period])
 
             empty = {}
             computed = {(storage.id, product.id): 5}
