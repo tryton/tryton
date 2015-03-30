@@ -252,8 +252,8 @@ class Move:
                         break
                     found = find_table(table)
                     if found:
-                        join, pos, table = found
-                        setattr(join, pos, join(table))
+                        join_, pos, table = found
+                        setattr(join_, pos, join(table))
                         break
                 else:
                     # Not query on move table
