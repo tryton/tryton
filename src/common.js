@@ -1733,6 +1733,22 @@
                 return domain.map(this.inverse_leaf.bind(this));
             }
         },
+        filter_leaf: function(domain, field, model) {
+            if (~['AND', 'OR'].indexOf(domain)) {
+                return domain;
+            } else if (this.is_leaf(domain)) {
+                if (domain[0].startsWith(field) && (domain.length > 3)) {
+                    if (domain[3] !== model) {
+                        return ['id', '=', null];
+                    }
+                }
+                return domain;
+            } else {
+                return domain.map(function(d) {
+                    return this.filter_leaf(d, field, model);
+                }.bind(this));
+            }
+        },
         eval_domain: function(domain, context, boolop) {
             if (boolop === undefined) {
                 boolop = this.and;

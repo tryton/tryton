@@ -2059,6 +2059,19 @@
         },
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
+        },
+        get_domain: function(record) {
+            var model = null;
+            if (record._values[this.name]) {
+                model = record._values[this.name][0];
+            }
+            var domains = this.get_domains(record);
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            var inversion = new Sao.common.DomainInversion();
+            return inversion.concat([inversion.localize_domain(
+                        inversion.filter_leaf(screen_domain, this.name, model)),
+                    attr_domain]);
         }
     });
 
