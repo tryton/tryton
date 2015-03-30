@@ -209,6 +209,7 @@ def unique_value(domain):
     "Return if unique, the field and the value"
     if (isinstance(domain, list)
             and len(domain) == 1
+            and '.' not in domain[0][0]
             and domain[0][1] == '='):
         return True, domain[0][1], domain[0][2]
     else:
@@ -507,9 +508,11 @@ def test_unique_value():
     domain = [['a', '=', 1]]
     assert unique_value(domain) == (True, '=', 1)
     domain = [['a', '!=', 1]]
-    assert unique_value(domain)[0] == False
+    assert unique_value(domain)[0] is False
     domain = [['a', '=', 1], ['a', '=', 2]]
-    assert unique_value(domain)[0] == False
+    assert unique_value(domain)[0] is False
+    domain = [['a.b', '=', 1]]
+    assert unique_value(domain)[0] is False
 
 
 def test_evaldomain():
