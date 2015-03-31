@@ -29,8 +29,11 @@ class Invoice:
     @ModelView.button
     @Workflow.transition('posted')
     def post(cls, invoices):
+        # Create commission only the first time the invoice is posted
+        to_commission = [i for i in invoices
+            if i.state not in ['posted', 'paid']]
         super(Invoice, cls).post(invoices)
-        cls.create_commissions(invoices)
+        cls.create_commissions(to_commission)
 
     @classmethod
     def create_commissions(cls, invoices):
