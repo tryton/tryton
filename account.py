@@ -1151,7 +1151,7 @@ class GeneralLedger(Report):
                     ('fiscalyear', '=', data['fiscalyear']),
                     ('end_date', '<=', start_period.start_date),
                     ])
-            start_period_ids = [p.id for p in start_periods]
+            start_period_ids += [p.id for p in start_periods]
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
