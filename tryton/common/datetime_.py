@@ -23,11 +23,7 @@ _ = gettext.gettext
 def date_parse(text, format_='%x'):
     dayfirst = datetime.date(1988, 8, 16).strftime(format_).index('16') == 0
     yearfirst = datetime.date(1988, 8, 16).strftime(format_).index('88') <= 2
-    try:
-        return parse(text, dayfirst=dayfirst, yearfirst=yearfirst,
-            ignoretz=True)
-    except ValueError:
-        return None
+    return parse(text, dayfirst=dayfirst, yearfirst=yearfirst, ignoretz=True)
 
 
 class Date(gtk.Entry):
