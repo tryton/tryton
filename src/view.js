@@ -547,21 +547,28 @@
                     this.expander.css('margin-left', (depth - 1) + 'em');
                     this.expander.css('float', 'left');
                     this.expander.click(this.toggle_row.bind(this));
-                    row.append(jQuery('<td/>').append(this.expander
-                                ).css('width', 1));
+                    row.append(jQuery('<td/>', {
+                        'class': 'expander'
+                    }).append(this.expander).css('width', 1));
                 }
                 var j;
                 if (column.prefixes) {
                     for (j = 0; j < column.prefixes.length; j++) {
                         var prefix = column.prefixes[j];
-                        row.append(jQuery('<td/>').css('width', 1));
+                        row.append(jQuery('<td/>', {
+                            'class': 'prefix'
+                        }).css('width', 1));
                     }
                 }
-                row.append(jQuery('<td/>'));
+                row.append(jQuery('<td/>', {
+                    'class': 'widget'
+                }));
                 if (column.suffixes) {
                     for (j = 0; j < column.suffixes.length; j++) {
                         var suffix = column.suffixes[j];
-                        row.append(jQuery('<td/>').css('width', 1));
+                        row.append(jQuery('<td/>', {
+                            'class': 'suffix'
+                        }).css('width', 1));
                     }
                 }
 
@@ -580,6 +587,14 @@
                 this.expand_children(selected, expanded);
             }
         },
+        _get_column_td: function(column_index, row) {
+            row = row || this.el;
+            var child_offset = 0;
+            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
+                child_offset += 1;
+            }
+            return jQuery(row.children()[column_index + child_offset]);
+        },
         redraw: function(selected, expanded) {
             selected = selected || [];
             expanded = expanded || [];
@@ -590,10 +605,6 @@
                     this.expander.css('visibility', 'hidden');
                 }
             };
-            var child_offset = 0;
-            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
-                child_offset += 1;
-            }
 
             for (var i = 0; i < this.tree.columns.length; i++) {
                 if ((i === 0) && this.children_field) {
@@ -601,27 +612,21 @@
                         update_expander.bind(this));
                 }
                 var column = this.tree.columns[i];
-                var td = jQuery(this.el.children()[i + child_offset]);
-                var inside_tr = td.find('tr');
-                var current_td = jQuery(inside_tr.children()[0]);
-                if (this.children_field) {
-                    current_td = current_td.next();
-                }
-                var prefix, suffix;
+                var td = this._get_column_td(i);
+                var tr = td.find('tr');
                 if (column.prefixes) {
                     for (var j = 0; j < column.prefixes.length; j++) {
-                        prefix = column.prefixes[j];
-                        current_td.html(prefix.render(this.record));
-                        current_td = current_td.next();
+                        var prefix = column.prefixes[j];
+                        jQuery(tr.children('.prefix')[j])
+                            .html(prefix.render(this.record));
                     }
                 }
-                jQuery(current_td).html(column.render(this.record));
+                jQuery(tr.children('.widget')).html(column.render(this.record));
                 if (column.suffixes) {
-                    current_td = current_td.next();
                     for (var k = 0; k < column.suffixes.length; k++) {
-                        suffix = column.suffixes[k];
-                        current_td.html(suffix.render(this.record));
-                        current_td = current_td.next();
+                        var suffix = column.suffixes[k];
+                        jQuery(tr.children('.suffix')[k])
+                            .html(suffix.render(this.record));
                     }
                 }
                 if (column.attributes.tree_invisible ||
@@ -770,14 +775,6 @@
                 parent);
             this.edited_column = undefined;
         },
-        build_widgets: function() {
-            var widgets = Sao.View.Tree.RowEditable._super.build_widgets(this);
-            var table = widgets[0];
-            var editable_row = jQuery('<tr/>');
-            editable_row.append(jQuery('<td/>'));
-            table.append(editable_row);
-            return widgets;
-        },
         select_row: function(event_) {
             var previously_selected, previous_td;
             var inner_rows, readonly_row, editable_row, current_td;
@@ -794,7 +791,8 @@
             this.selection_changed();
 
             var save_prm;
-            if (previously_selected && previously_selected != this) {
+            if (previously_selected && previously_selected != this &&
+                    !this.tree.screen.group.parent) {
                 save_prm = previously_selected.record.save();
             } else {
                 save_prm = jQuery.when();
@@ -802,31 +800,31 @@
             save_prm.done(function () {
                 if (previously_selected &&
                     previously_selected.edited_column !== undefined) {
-                    readonly_row = previously_selected.get_readonly_row();
-                    editable_row = previously_selected.get_editable_row();
                     previous_td = previously_selected.get_active_td();
                     previous_td.one('click', {
                         td: previous_td,
                         column: previously_selected.edited_column
                     }, previously_selected.select_row.bind(previously_selected));
-                    readonly_row.show();
-                    editable_row.hide();
+                    var previous_column = this.tree.columns[
+                        previously_selected.edited_column];
+                    previously_selected.get_widget()
+                        .html(previous_column.render(previously_selected.record))
+                        .show();
+                    previously_selected.get_widget_editable().hide();
                     previously_selected.edited_column = undefined;
                 }
                 if (this.is_selected()) {
                     this.edited_column = event_.data.column;
-                    readonly_row = this.get_readonly_row();
-                    editable_row = this.get_editable_row();
                     current_td = this.get_active_td();
                     widget = this.tree.editable_widgets[this.edited_column];
                     widget.view = this.tree;
-                    editable_row.find('td').append(widget.el);
+                    this.get_widget_editable().append(widget.el);
                     // We use keydown to be able to catch TAB events
                     current_td.one('keydown', this.key_press.bind(this));
                     field = this.record.model.fields[widget.field_name];
                     widget.display(this.record, field);
-                    readonly_row.hide();
-                    editable_row.show();
+                    this.get_widget().hide();
+                    this.get_widget_editable().show();
                 } else {
                     this.set_selection(true);
                     this.selection_changed();
@@ -837,23 +835,22 @@
                 }
             }.bind(this));
         },
-        get_readonly_row: function() {
-            return this._get_inner_element(1);
+        get_widget: function() {
+            var td = this.get_active_td();
+            return td.find('.widget');
         },
-        get_editable_row: function() {
-            return this._get_inner_element(2);
+        get_widget_editable: function() {
+            var td = this.get_active_td();
+            var editable = td.find('.widget-editable');
+            if (!editable.length) {
+                editable = jQuery('<td/>', {
+                        'class': 'widget-editable'
+                    }).insertAfter(td.find('.widget'));
+            }
+            return editable;
         },
         get_active_td: function() {
-            return this._get_inner_element();
-        },
-        _get_inner_element: function(child_index) {
-            // We add two because of the selection box at the start and
-            // because nth-child is 1-indexed
-            var selector = 'td:nth-child(' + (this.edited_column + 2) + ')';
-            if (child_index !== undefined) {
-                selector += ' table tr:nth-child(' + child_index + ')';
-            }
-            return this.el.find(selector);
+            return this._get_column_td(this.edited_column);
         },
         key_press: function(event_) {
             var current_td, selector, next_column;
@@ -865,9 +862,8 @@
                 event_.preventDefault();
                 next_column = ((this.edited_column + sign * 1) %
                     this.tree.columns.length);
-                selector = 'td:nth-child(' + (next_column + 2) + ')';
                 window.setTimeout(function() {
-                    this.el.find(selector).trigger('click');
+                    this._get_column_td(next_column).trigger('click');
                 }.bind(this), 0);
             } else if (event_.which == Sao.common.UP_KEYCODE ||
                 event_.which == Sao.common.DOWN_KEYCODE) {
@@ -877,13 +873,12 @@
                 } else {
                     next_row = this.el.next('tr');
                 }
-                selector = 'td:nth-child(' + (this.edited_column + 2) + ')';
                 window.setTimeout(function() {
-                    next_row.find(selector).trigger('click');
-                    next_row.find(selector).trigger('click');
+                    this._get_column_td(this.edited_column, next_row)
+                    .trigger('click').trigger('click');
                 }.bind(this), 0);
             }
-            this.get_active_td(this).one('keydown',
+            this.get_active_td().one('keydown',
                 this.key_press.bind(this));
         }
     });
