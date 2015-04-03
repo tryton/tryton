@@ -266,7 +266,10 @@
             }
             expanded = expanded || [];
 
-            if (this.screen.group.length != this.rows.length) {
+            if ((this.screen.group.length != this.rows.length) ||
+                    !Sao.common.compare(this.screen.group, this.rows.map(function(row) {
+                        return row.record;
+                    }))) {
                 this.construct(selected, expanded);
             }
 
