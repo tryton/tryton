@@ -175,7 +175,7 @@
                         }
                     });
                 if (child.tagName == 'field') {
-                    var name = child.getAttribute('name');
+                    var name = attributes.name;
                     if (!attributes.widget) {
                         attributes.widget = model.fields[name].description.type;
                     }
