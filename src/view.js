@@ -176,10 +176,6 @@
                     });
                 if (child.tagName == 'field') {
                     var name = child.getAttribute('name');
-                    if (name == this.screen.exclude_field) {
-                        // TODO is it really the way to do it
-                        return;
-                    }
                     if (!attributes.widget) {
                         attributes.widget = model.fields[name].description.type;
                     }
