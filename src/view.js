@@ -104,7 +104,6 @@
 
             // Columns
             this.columns = [];
-            this.editable_widgets = [];
             this.create_columns(screen.model, xml);
 
             // Table of records
@@ -195,14 +194,6 @@
                     var ColumnFactory = Sao.View.tree_column_get(
                         attributes.widget);
                     column = new ColumnFactory(model, attributes);
-
-                    if (this.editable) {
-                        var EditableBuilder = Sao.View.editabletree_widget_get(
-                                attributes.widget);
-                        editable_column = new EditableBuilder(name, model,
-                                attributes);
-                        this.editable_widgets.push(editable_column);
-                    }
 
                     var prefixes = [], suffixes = [];
                     // TODO support for url/email/callto/sip
@@ -819,9 +810,14 @@
                 if (this.is_selected()) {
                     this.edited_column = event_.data.column;
                     current_td = this.get_active_td();
-                    widget = this.tree.editable_widgets[this.edited_column];
+                    var attributes = this.tree.columns[this.edited_column]
+                        .attributes;
+                    var EditableBuilder = Sao.View.editabletree_widget_get(
+                        attributes.widget);
+                    widget = new EditableBuilder(attributes.name,
+                            this.tree.screen.model, attributes);
                     widget.view = this.tree;
-                    this.get_widget_editable().append(widget.el);
+                    this.get_widget_editable().empty().append(widget.el);
                     // We use keydown to be able to catch TAB events
                     current_td.one('keydown', this.key_press.bind(this));
                     field = this.record.model.fields[widget.field_name];
