@@ -206,6 +206,11 @@
 
                     var prefixes = [], suffixes = [];
                     // TODO support for url/email/callto/sip
+                    if (~['url', 'email', 'callto', 'sip'
+                            ].indexOf(attributes.widget)) {
+                        column.prefixes.push(new Sao.View.Tree.Affix(
+                                    attributes, attributes.widget));
+                    }
                     if ('icon' in attributes) {
                         column.prefixes.push(new Sao.View.Tree.Affix(
                                     attributes));
@@ -895,8 +900,11 @@
         get_cell: function() {
             var cell;
             if (this.protocol) {
-                cell = jQuery('<a/>');
+                cell = jQuery('<a/>', {
+                    'target': '_new'
+                });
                 cell.append(jQuery('<img/>'));
+                cell.click({'cell': cell}, this.clicked.bind(this));
             } else if (this.icon) {
                 cell = jQuery('<img/>');
             } else {
@@ -910,7 +918,29 @@
             record.load(this.attributes.name).done(function() {
                 var value, icon_prm;
                 var field = record.model.fields[this.attributes.name];
-                //TODO set_state
+                var invisible = field.get_state_attrs(record).invisible;
+                if (invisible) {
+                    cell.hide();
+                } else {
+                    cell.show();
+                }
+                if (this.protocol) {
+                    value = field.get(record);
+                    if (!jQuery.isEmptyObject(value)) {
+                        switch (this.protocol) {
+                            case 'email':
+                                value = 'mailto:' + value;
+                                break;
+                            case 'callto':
+                                value = 'callto:' + value;
+                                break;
+                            case 'sip':
+                                value = 'sip:' + value;
+                                break;
+                        }
+                    }
+                    cell.attr('src', value);
+                }
                 if (this.icon) {
                     if (this.icon in record.model.fields) {
                         var icon_field = record.model.fields[this.icon];
@@ -938,6 +968,10 @@
                 }
             }.bind(this));
             return cell;
+        },
+        clicked: function(event) {
+            event.preventDefault();  // prevent edition
+            window.open(event.data.cell.attr('src'), '_blank');
         }
     });
 
