@@ -143,7 +143,11 @@ class Address(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
             ('zip',) + tuple(clause[1:]),
             ('city',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
