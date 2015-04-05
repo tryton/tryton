@@ -283,7 +283,6 @@ class Main(object):
 
     def set_global_search(self):
         self.global_search_entry = PlaceholderEntry()
-        self.global_search_entry.set_placeholder_text(_('Search'))
         global_search_completion = gtk.EntryCompletion()
         global_search_completion.set_match_func(lambda *a: True)
         global_search_completion.set_model(gtk.ListStore(
@@ -846,6 +845,8 @@ class Main(object):
                     self.set_menubar()
                     self.favorite_unset()
                 CONFIG['client.lang'] = prefs['language']
+            # Set placeholder after language is set to get correct translation
+            self.global_search_entry.set_placeholder_text(_('Search'))
             CONFIG.save()
 
         def _get_preferences():
