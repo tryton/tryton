@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
         <GrpHdr>
             <MsgId>${group.reference[:35]}</MsgId>
             <CreDtTm>${datetime.datetime.now().isoformat()}</CreDtTm>
-            <NbOfTxs>${len(group.payments)}</NbOfTxs>
+            <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
             <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
             <InitgPty>
                 ${PartyIdentification(group.sepa_initiating_party)}
