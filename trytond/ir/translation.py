@@ -337,13 +337,15 @@ class Translation(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         clause = tuple(clause)
-        translations = cls.search(['OR',
-                ('src',) + clause[1:],
-                ('value',) + clause[1:],
-                ])
-        if translations:
-            return [('id', 'in', [t.id for t in translations])]
-        return [(cls._rec_name,) + clause[1:]]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('src',) + clause[1:],
+            ('value',) + clause[1:],
+            (cls._rec_name,) + clause[1:],
+            ]
 
     @classmethod
     def search_model(cls, name, clause):
