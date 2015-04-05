@@ -2,7 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree string="Scheduled Actions">
-    <field name="next_call"/>
+    <field name="next_call" widget="date"/>
+    <field name="next_call" widget="time"/>
     <field name="name"/>
     <field name="user"/>
     <field name="request_user"/>
