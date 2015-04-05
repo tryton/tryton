@@ -15,10 +15,12 @@ class Party:
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        result = super(Party, cls).search_rec_name(name, clause)
-        parties = cls.search([('bank_accounts',) + tuple(clause[1:])],
-            order=[])
-        if parties:
-            parties += cls.search(result, order=[])
-            return [('id', 'in', [p.id for p in parties])]
-        return result
+        domain = super(Party, cls).search_rec_name(name, clause)
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            domain,
+            ('bank_accounts',) + tuple(clause[1:]),
+            ]
