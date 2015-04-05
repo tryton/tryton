@@ -629,8 +629,12 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
         names = clause[2].split(' - ', 1)
-        res = [('reference', clause[1], names[0])]
+        res = [bool_op, ('reference', clause[1], names[0])]
         if len(names) != 1 and names[1]:
             res.append(('party', clause[1], names[1]))
         return res
