@@ -254,7 +254,11 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
             ('product',) + tuple(clause[1:]),
             ('party',) + tuple(clause[1:]),
             ]

@@ -581,13 +581,17 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def search_rec_name(cls, name, clause):
         _, operator, value = clause
+        if operator[1].startswith('!') or operator[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
         names = value.split(' - ', 1)
-        domain = ['OR',
+        domain = [bool_op,
             ('reference', operator, names[0]),
             ('supplier_reference', operator, names[0]),
             ]
         if len(names) != 1 and names[1]:
-            domain = [domain, ('party', operator, names[1])]
+            domain = [bool_op, domain, ('party', operator, names[1])]
         return domain
 
     @classmethod
