@@ -215,7 +215,7 @@ class Move:
         context = Transaction().context
         today = Date.today()
 
-        stock_date_end = context.get('stock_date_end', datetime.date.max)
+        stock_date_end = context.get('stock_date_end') or datetime.date.max
         if query and ((stock_date_end == today and context.get('forecast'))
                 or stock_date_end > today):
             lot = Lot.__table__()
