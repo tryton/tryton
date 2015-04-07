@@ -22,7 +22,7 @@ from tryton.common import domain_inversion, simplify, unique_value
 import tryton.common as common
 from . import View
 from .list_gtk.editabletree import EditableTreeView, TreeView
-from .list_gtk.widget import (Affix, Char, Int, Boolean, URL, Date,
+from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
     Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
     ProgressBar, Button, Image)
 
@@ -427,7 +427,7 @@ class ViewTree(View):
         'biginteger': Int,
         'time': Time,
         'boolean': Boolean,
-        'text': Char,
+        'text': Text,
         'url': URL,
         'email': URL,
         'callto': URL,

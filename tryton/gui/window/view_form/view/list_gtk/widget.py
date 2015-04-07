@@ -301,6 +301,10 @@ class Char(GenericText):
         cell.set_property('single-paragraph-mode', True)
 
 
+class Text(GenericText):
+    pass
+
+
 class Int(GenericText):
 
     def __init__(self, view, attrs, renderer=None):
