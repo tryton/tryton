@@ -43,9 +43,9 @@ from tryton.common.placeholder_entry import PlaceholderEntry
 import pango
 import time
 try:
-    import gtk_osxapplication
+    import gtkosx_application
 except ImportError:
-    gtk_osxapplication = None
+    gtkosx_application = None
 try:
     import gtkspell
 except ImportError:
@@ -84,8 +84,8 @@ class Main(object):
         self.window.add_accel_group(self.accel_group)
 
         self.macapp = None
-        if gtk_osxapplication is not None:
-            self.macapp = gtk_osxapplication.OSXApplication()
+        if gtkosx_application is not None:
+            self.macapp = gtkosx_application.Application()
             self.macapp.connect("NSApplicationBlockTermination",
                 self.sig_close)
 
