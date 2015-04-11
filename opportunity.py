@@ -282,6 +282,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             comment=self.comment,
             sale_date=None,
             origin=self,
+            warehouse=Sale.default_warehouse(),
             )
 
     def create_sale(self):
