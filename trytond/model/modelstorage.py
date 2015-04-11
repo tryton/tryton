@@ -1247,7 +1247,10 @@ class ModelStorage(Model):
         # add depends of field with context
         for field in ffields.values():
             if field.context:
-                for context_field_name in field.depends:
+                eval_fields = fields.get_eval_fields(field.context)
+                for context_field_name in eval_fields:
+                    if context_field_name in field.depends:
+                        continue
                     context_field = self._fields.get(context_field_name)
                     if context_field not in ffields:
                         ffields[context_field_name] = context_field
