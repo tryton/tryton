@@ -316,7 +316,6 @@ class Commission(ModelSQL, ModelView):
                 commissions = [c for c in commissions if not c.invoice_line]
                 key = dict(key)
                 invoice_line = cls._get_invoice_line(key, invoice, commissions)
-                invoice_line.invoice = invoice
                 invoice_line.save()
                 to_write.extend([commissions, {
                             'invoice_line': invoice_line.id,
@@ -374,7 +373,6 @@ class Commission(ModelSQL, ModelView):
     def _get_invoice_line(cls, key, invoice, commissions):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Product = pool.get('product.product')
 
         def sign(commission):
             if invoice.type.startswith(commission.type_):
@@ -389,45 +387,15 @@ class Commission(ModelSQL, ModelView):
         if invoice.type.endswith('credit_note'):
             amount *= -1
 
-        party = invoice.party
-        if invoice.type.startswith('out'):
-            account = product.account_revenue_used
-            taxes_used = product.customer_taxes_used
-            tax_rule = party.customer_tax_rule
-        else:
-            account = product.account_expense_used
-            taxes_used = product.supplier_taxes_used
-            tax_rule = party.supplier_tax_rule
-
-        party_context = {}
-        if invoice.party.lang:
-            party_context['language'] = invoice.party.lang.code
-        with Transaction().set_context(party_context):
-            description = Product(product.id).rec_name
-
         invoice_line = InvoiceLine()
+        invoice_line.invoice = invoice
         invoice_line.type = 'line'
         invoice_line.product = product
-        invoice_line.unit = product.default_uom
         invoice_line.quantity = 1
-        invoice_line.unit_price = amount
-        invoice_line.description = description
-        invoice_line.account = account
 
-        taxes = []
-        pattern = invoice_line._get_tax_rule_pattern()
-        for tax in taxes_used:
-            if tax_rule:
-                tax_ids = tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-                continue
-            taxes.append(tax.id)
-        if tax_rule:
-            tax_ids = tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.extend(tax_ids)
-        invoice_line.taxes = taxes
+        invoice_line.on_change_product()
+
+        invoice_line.unit_price = amount
         return invoice_line
 
 
