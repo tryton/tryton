@@ -115,7 +115,8 @@ class Work:
                     continue
                 for allocation in work.allocations:
                     total_allocation += allocation.percentage
-                durations[work.id] = (work.effort_duration
+                durations[work.id] = datetime.timedelta(
+                    seconds=work.effort_duration.total_seconds()
                     / (total_allocation / 100.0))
 
             while leafs:
