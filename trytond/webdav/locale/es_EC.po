@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:ir.attachment:"
 msgid ""
-"You can not create an attachment named \"%(attachment)s in collection "
+"You can not create an attachment named \"%(attachment)s\" in collection "
 "\"%(collection)s\" because there is already a collection with that name."
 msgstr ""
 "No puede crear un adjunto llamado \"%(attachment)s\" en la colección "
-"\"%(collections)s\" porque ya existe una colección con este nombre."
+"\"%(collection)s\" porque ya existe una colección con ese nombre."
 
 msgctxt "error:webdav.collection:"
 msgid "The collection name must be unique inside a collection!"
