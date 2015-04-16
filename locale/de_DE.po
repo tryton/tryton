@@ -42,7 +42,7 @@ msgstr ""
 
 msgctxt "error:sale.sale:"
 msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr "Fehlendes \"Forderungskonto\" für Partei \"%s\"."
+msgstr "Fehlendes Forderungskonto für Partei \"%s\""
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
@@ -425,6 +425,10 @@ msgstr "Positionen"
 msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Bewegungen"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Herkunft"
 
 msgctxt "field:sale.sale,party:"
 msgid "Party"
@@ -1007,6 +1011,10 @@ msgstr "Verkaufsposition"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Verkaufspositionen"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Steuern"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
