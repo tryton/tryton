@@ -38,6 +38,10 @@ msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Aktiv"
+
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Bank"
@@ -52,7 +56,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Währungen"
+msgstr "Währung"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
