@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:production.create_request:"
+msgid "There are some late productions."
+msgstr "Es gibt einige verspätete Produktionen"
+
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Beschaffungszeitraum"
@@ -29,7 +33,7 @@ msgstr "Produktion"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr "Erstellen von Produktionsanforderungen"
+msgstr "Erstellung von Produktionsanforderungen"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
