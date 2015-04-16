@@ -3,25 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-"Konto \"%(account)s\" v postavki izpiska \"%(line)s\" je enak kontu, ki je "
-"nastavljen v dnevniku \"%(journal)s\" kot kredit ali debet."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr "Znesek \"%s\" je večji od zneska za plačat na računu."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "Znesek mora biti pozitivna ali negativna vrednost."
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr ""
-"Prosimo, da nastavite debetni in kreditni konto v dnevniku izpiskov \"%s\"."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
@@ -30,6 +17,10 @@ msgstr "Končni saldo mora biti \"%s\"."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "Število postavk mora biti \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr "Pri dnevniku izpiskov \"%s\" vnesi debetni in kreditni konto."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -85,7 +76,7 @@ msgstr "Postavke"
 
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Naziv"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
@@ -227,6 +218,66 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Knjižba"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Izpisek"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Izpisek"
@@ -243,9 +294,33 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Postavka izpiska"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Skupina postavk izpiska"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Skupine postavk izpiska"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Skupine postavk"
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Postavke prometa"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Postavke prometa"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Promet"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Promet"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -254,6 +329,14 @@ msgstr "Izpiski"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Dnevniki izpiskov"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Postavke izpiska"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Postavke izpiska"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -277,6 +360,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Odobreno"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Skupine postavk izpiska"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -393,6 +480,14 @@ msgstr "Dnevnik izpiskov"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Dnevniki izpiskov"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Skupina postavk izpiska"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Skupine postavk izpiska"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
