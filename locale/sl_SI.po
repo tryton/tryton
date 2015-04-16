@@ -96,19 +96,19 @@ msgstr "Izravnalna zakasnitev nazaj"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
-msgstr "Omejen konec"
+msgstr "Omejen datum zaključka"
 
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint  Finish Time"
-msgstr "Omejen končni čas"
+msgstr "Omejen čas zaključka"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
-msgstr "Omejen začetek"
+msgstr "Omejen datum začetka"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Omejen začetni čas"
+msgstr "Omejen čas začetka"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
@@ -116,19 +116,19 @@ msgstr "Trajanje"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Zgodnji konec"
+msgstr "Datum predčasnega konca"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Predčasni končni čas"
+msgstr "Čas predčasnega konca"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Predčasni začetek"
+msgstr "Datum predčasnega začetka"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Predčasni začetni čas"
+msgstr "Čas predčasnega začetka"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
