@@ -36,7 +36,7 @@ msgstr "JSON izbor"
 
 msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
-msgstr "Izbor razvrščen"
+msgstr "Razvrščen izbor"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
