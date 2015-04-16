@@ -56,7 +56,7 @@ msgstr "Pošiljka"
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
