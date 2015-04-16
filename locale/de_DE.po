@@ -110,6 +110,10 @@ msgid "Wrong credit/debit values."
 msgstr "Falsche Haben/Soll-Werte."
 
 msgctxt "error:account.move.line:"
+msgid "Wrong second currency sign."
+msgstr "Falsches Vorzeichen für Fremdwährung"
+
+msgctxt "error:account.move.line:"
 msgid "You can not add/modify lines in closed journal period \"%s\"."
 msgstr ""
 "In der geschlossenen Buchungsperiode \"%s\" können keine Zeilen mehr "
@@ -138,6 +142,10 @@ msgstr ""
 "Änderung von Buchungszeilen in Buchungssatz \"%s\" nicht möglich, da dieser "
 "bereits festgeschrieben ist."
 
+msgctxt "error:account.move.line:"
+msgid "wrong_second_currency_sign"
+msgstr ""
+
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not create a reconciliation where debit \"%(debit)s\" and credit "
@@ -155,28 +163,30 @@ msgid ""
 "You can not reconcile line \"%(line)s\" because it's account \"%(account)s\""
 " is configured as not reconcilable."
 msgstr ""
-"Buchungszeile \"%(line)s\" kann nicht abgestimmt werden, weil das verwendete"
-" Konto \"%(account)s\" als nicht abstimmungsfähig konfiguriert ist."
+"Abstimmung von Buchungszeile \"%(line)s\" nicht möglich, weil das verwendete"
+" Konto \"%(account)s\" als nicht abstimmungsfähig konfiguriert ist"
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because it's account "
 "\"%(account1)s\" is different from \"%(account2)s\"."
 msgstr ""
-"Abstimmung von Zeile \"%(line)s\" nicht möglich, weil das verwendete Konto "
-"\"%(account1)s\" unterschiedlich von Konto \"%(account2)s\" ist."
+"Abstimmung von Buchungszeile \"%(line)s\" nicht möglich, weil das verwendete"
+" Konto \"%(account1)s\" unterschiedlich von Konto \"%(account2)s\" ist."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because it's party \"%(party1)s\" is"
-" different from %(party2)s\"."
+" different from \"%(party2)s\"."
 msgstr ""
-"Abstimmung von Zeile \"%(line)s\" nicht möglich, weil die verwendete Partei "
-"\"%(party1)s\" unterschiedlich von Partei \"%(party2)s\" ist."
+"Abstimmung von Buchungszeile \"%(line)s\" nicht möglich, weil die verwendete"
+" Partei \"%(party1)s\" unterschiedlich von Partei \"%(party2)s\" ist"
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr "Abstimmung von Zeile \"%s\" nicht möglich, weil sie nicht gültig ist."
+msgstr ""
+"Abstimmung von Buchungszeile \"%s\" nicht möglich, weil sie in keinem "
+"gültigen Status ist"
 
 msgctxt "error:account.move:"
 msgid ""
@@ -185,12 +195,6 @@ msgid ""
 msgstr ""
 "Der Buchungszeitraum für Buchungssatz \"%s\" ist geschlossen.\n"
 "Soll stattdessen der aktuelle Buchungszeitraum verwendet werden?"
-
-msgctxt "error:account.move:"
-msgid "You can not create lines on accountsof different companies in move \"%s\"."
-msgstr ""
-"Erstellung von Buchungszeilen mit Konten unterschiedlicher Unternehmen in "
-"Buchungssatz \"%s\" nicht möglich."
 
 msgctxt "error:account.move:"
 msgid ""
@@ -243,15 +247,6 @@ msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
 msgstr "Buchungsperioden \"%(first)s\" und \"%(second)s\" überschneiden sich."
 
 msgctxt "error:account.period:"
-msgid ""
-"Company of sequence \"%(sequence)s\" does not match the company of period "
-"\"%(period)s\" to which it is assigned to."
-msgstr ""
-"Das Unternehmen für Nummernkreis \"%(sequence)s\" stimmt nicht überein mit "
-"dem Unternehmen für Buchungsperiode \"%(period)s\", zu dem er zugeordnet "
-"ist."
-
-msgctxt "error:account.period:"
 msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
 msgstr ""
 "Die Datumsangaben für Buchungsperiode \"%s\" liegen außerhalb derer des "
@@ -264,7 +259,7 @@ msgstr "Keine Buchungsperiode eingetragen für \"%s\"."
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
 msgstr ""
-"Für die Buchungsperioden \"%(first)s\" und \"%(second)s\" ist derselbe "
+"Für die Buchungszeiträume \"%(first)s\" und \"%(second)s\" ist derselbe "
 "Nummernkreis eingetragen."
 
 msgctxt "error:account.period:"
@@ -303,6 +298,22 @@ msgid ""
 msgstr ""
 "Periode \"%(period)s\" kann nicht geöffnet werden, weil Geschäftsjahr "
 "\"%(fiscalyear)s\" geschlossen ist."
+
+msgctxt "error:account.tax.template:"
+msgid ""
+"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
+"parent."
+msgstr ""
+"\"Einzelpreis aktualisieren\" kann nicht für Steuer \"%(template)s\" gesetzt"
+" werden, weil sie eine untergeordnete Steuer ist"
+
+msgctxt "error:account.tax:"
+msgid ""
+"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
+"parent."
+msgstr ""
+"\"Einzelpreis aktualisieren\" kann nicht für Steuer \"%(template)s\" gesetzt"
+" werden, weil sie eine untergeordnete Steuer ist"
 
 msgctxt "field:account.account,active:"
 msgid "Active"
@@ -355,6 +366,10 @@ msgstr "Saldenvortrag"
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "Saldenvorträge"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Kontenblattsaldo"
 
 msgctxt "field:account.account,id:"
 msgid "ID"
@@ -519,6 +534,10 @@ msgstr "Erstellt durch"
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "Saldenvortrag"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Kontenblattsaldo"
 
 msgctxt "field:account.account.template,id:"
 msgid "ID"
@@ -872,6 +891,10 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
 msgstr "Habenkonto"
@@ -949,7 +972,7 @@ msgid "Type"
 msgstr "Typ"
 
 msgctxt "field:account.journal,update_posted:"
-msgid "Allow cancelling moves"
+msgid "Allow updating posted moves"
 msgstr "Löschen von Buchungen erlauben"
 
 msgctxt "field:account.journal,view:"
@@ -978,7 +1001,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr "Icon"
+msgstr "Symbol"
 
 msgctxt "field:account.journal.period,id:"
 msgid "ID"
@@ -1124,6 +1147,10 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -1188,9 +1215,29 @@ msgctxt "field:account.move,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.move.cancel.default,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Konto"
+
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr "Währungsbetrag"
+
+msgctxt "field:account.move.line,amount_currency_digits:"
+msgid "Amount Currency Digits"
+msgstr "Währungsbetrag Nachkommastellen"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
@@ -1296,6 +1343,62 @@ msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.move.line.template,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.move.line.template,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.move.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "Buchungssatz"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr "Vorgang"
+
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr "Partei erforderlich"
+
+msgctxt "field:account.move.line.template,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "Steuern"
+
+msgctxt "field:account.move.line.template,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.move.line.template,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:account.move.open_journal.ask,id:"
 msgid "ID"
 msgstr "ID"
@@ -1381,6 +1484,130 @@ msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:account.move.reconciliation,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.move.template,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.move.template,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.move.template,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "Zeitpunkt"
+
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.move.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "Schlüsselwörter"
+
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "Zeilen"
+
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.template,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.template,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.move.template,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.move.template.create.keywords,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.template.create.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "Buchungszeitraum"
+
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "Vorlage"
+
+msgctxt "field:account.move.template.keyword,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.move.template.keyword,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:account.move.template.keyword,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "Buchungssatz"
+
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.template.keyword,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "field:account.move.template.keyword,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr "Zeichenkette"
+
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:account.move.template.keyword,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.move.template.keyword,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -1760,6 +1987,10 @@ msgctxt "field:account.tax,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "Einzelpreis aktualisieren"
+
 msgctxt "field:account.tax,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
@@ -1940,6 +2171,10 @@ msgctxt "field:account.tax.line,code:"
 msgid "Code"
 msgstr "Kennziffer"
 
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
 msgctxt "field:account.tax.line,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -1973,6 +2208,46 @@ msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:account.tax.line,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.tax.line.template,code:"
+msgid "Code"
+msgstr "Kennziffer"
+
+msgctxt "field:account.tax.line.template,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.tax.line.template,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.tax.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "Zeile"
+
+msgctxt "field:account.tax.line.template,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "Steuer"
+
+msgctxt "field:account.tax.line.template,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.tax.line.template,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -2256,6 +2531,10 @@ msgctxt "field:account.tax.template,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "Einzelpreis aktualisieren"
+
 msgctxt "field:account.tax.template,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
@@ -2308,6 +2587,10 @@ msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
 msgstr "Steuerregel als Lieferant"
 
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report"
+msgstr "Nur Salden in Kontenblättern anzeigen"
+
 msgctxt "help:account.account,reconcile:"
 msgid ""
 "Allow move lines of this account \n"
@@ -2327,6 +2610,10 @@ msgid ""
 msgstr ""
 "Standardsteuer für manuell erstellte Buchungszeilen \n"
 "in Journalen vom Typ \"Aufwand\" und \"Ertrag\""
+
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report"
+msgstr "Nur Salden in Kontenblättern anzeigen"
 
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
@@ -2353,9 +2640,25 @@ msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
 msgstr "Die Fremdwährung"
 
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')"
+msgstr ""
+"Schlüsselwortersetzungen werden mit geschweiften Klammern ('{' and '}') "
+"eingegeben"
+
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "Nur festgeschriebene Buchungen anzeigen"
+
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today"
+msgstr "Für das heutige Datum leer lassen"
+
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')"
+msgstr ""
+"Schlüsselwortersetzungen werden mit geschweiften Klammern ('{' and '}') "
+"eingegeben"
 
 msgctxt "help:account.open_aged_balance.start,posted:"
 msgid "Show only posted move"
@@ -2424,6 +2727,14 @@ msgstr "Üblicherweise 1 oder -1"
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
 msgstr "Wird für die Reihenfolge der Steuern verwendet"
+
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation willbe modified "
+"by this tax"
+msgstr ""
+"Bei Aktivierung wird der weiteren Steuerberechnung das Ergebnis dieser "
+"Steuer zugrundegelegt"
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
@@ -2570,7 +2881,7 @@ msgstr "Verbindlichkeiten"
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_liability_current_tax"
 msgid "Tax"
-msgstr "Verbindlichkeiten aus Steuern"
+msgstr "Steuer"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_liability_long_term"
@@ -2630,7 +2941,7 @@ msgstr "Journal"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "Zahlung"
+msgstr "Kasse"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
@@ -2688,9 +2999,17 @@ msgctxt "model:account.move,name:"
 msgid "Account Move"
 msgstr "Buchungssatz"
 
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr "Buchungssätze Annullieren"
+
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "Buchungszeile"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr "Buchungszeilenvorlage"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
@@ -2707,6 +3026,22 @@ msgstr "Abstimmung Buchungszeilen Ausbuchung"
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
 msgstr "Buchungssatz Abstimmung Zeilen"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr "Buchungssatzvorlage"
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr "Buchungssatz von Vorlage erstellen"
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr "Buchungssatz von Vorlage erstellen"
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr "Schlüsselwort Buchungssatzvorlage"
 
 msgctxt "model:account.open_aged_balance.start,name:"
 msgid "Open Aged Balance"
@@ -2767,6 +3102,10 @@ msgstr "Steuer Gruppe"
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
 msgstr "Steuer Zeile"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr "Steuerkontozeilenvorlage"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
@@ -2911,6 +3250,14 @@ msgstr "Verbindlichkeiten/Forderungen"
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
 msgstr "Abstimmungszeilen"
+
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr "Buchungssatz von Vorlage erstellen"
+
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Account Move Template"
+msgstr "Buchungssatzvorlagen"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
@@ -3203,6 +3550,14 @@ msgstr "Journal Ansichten"
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr "Übersicht Buchungssätze"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr "Buchungssatz von Vorlage erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Account Move Template"
+msgstr "Buchungssatzvorlagen"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
@@ -3724,6 +4079,30 @@ msgctxt "selection:account.move.line,state:"
 msgid "Valid"
 msgstr "Gültig"
 
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "Haben"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "Soll"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr "Zeichen"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "Zeitpunkt"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr "Numerisch"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "Partei"
+
 msgctxt "selection:account.open_aged_balance.start,balance_type:"
 msgid "Both"
 msgstr "Beides"
@@ -4004,6 +4383,22 @@ msgctxt "view:account.journal:"
 msgid "Journals"
 msgstr "Journale"
 
+msgctxt "view:account.move.cancel.default:"
+msgid "Cancel Moves"
+msgstr "Buchungssätze Annullieren"
+
+msgctxt "view:account.move.line.template:"
+msgid "Account Move Line Template"
+msgstr "Buchungszeilenvorlage"
+
+msgctxt "view:account.move.line.template:"
+msgid "Account Move Line Templates"
+msgstr "Buchungszeilenvorlagen"
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
 msgctxt "view:account.move.line:"
 msgid "Account Move Line"
 msgstr "Buchungszeile"
@@ -4043,6 +4438,30 @@ msgstr "Abstimmung"
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
 msgstr "Abstimmungen"
+
+msgctxt "view:account.move.template.create.template:"
+msgid "Create Move from Template"
+msgstr "Buchungssatz von Vorlage erstellen"
+
+msgctxt "view:account.move.template.keyword:"
+msgid "Account Move Template Keyword"
+msgstr "Schlüsselwort Buchungssatzvorlage"
+
+msgctxt "view:account.move.template.keyword:"
+msgid "Account Move Template Keywords"
+msgstr "Schlüsselwörter Buchungssatzvorlagen"
+
+msgctxt "view:account.move.template:"
+msgid "Account Move Template"
+msgstr "Buchungssatzvorlage"
+
+msgctxt "view:account.move.template:"
+msgid "Account Move Templates"
+msgstr "Buchungssatzvorlagen"
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr "Vorlage"
 
 msgctxt "view:account.move:"
 msgid "Account Move"
@@ -4151,6 +4570,14 @@ msgstr "Steuergruppe"
 msgctxt "view:account.tax.group:"
 msgid "Tax Groups"
 msgstr "Steuergruppen"
+
+msgctxt "view:account.tax.line.template:"
+msgid "Account Tax Line Template"
+msgstr "Steuerkontozeilenvorlage"
+
+msgctxt "view:account.tax.line.template:"
+msgid "Account Tax Line Templates"
+msgstr "Steuerkontozeilenvorlagen"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
@@ -4308,6 +4735,14 @@ msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -4331,6 +4766,22 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
 msgstr "Abstimmen"
+
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "Erstellen"
+
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "Weiter"
 
 msgctxt "wizard_button:account.open_aged_balance,start,end:"
 msgid "Cancel"
