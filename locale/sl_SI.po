@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "Plačilo \"%s\" preplača postavko \"%s\"."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "Plačilo \"%(payment)s\" je preplačalo postavko \"%(line)s\"."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
