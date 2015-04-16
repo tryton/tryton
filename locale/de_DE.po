@@ -36,6 +36,10 @@ msgstr ""
 "Bedarfsermittlung \"%s\" muss annulliert werden, bevor sie gelöscht werden "
 "kann."
 
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktiv"
+
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Unternehmen"
@@ -211,6 +215,10 @@ msgstr "Nachfrage Bedarfsermittlung durchführen"
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Erledigt"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
