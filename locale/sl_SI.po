@@ -94,9 +94,9 @@ msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
 msgstr "Sklic"
 
-msgctxt "field:sale.opportunity,sale:"
-msgid "Sale"
-msgstr "Prodajni nalog"
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Prodajni nalogi"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
@@ -118,6 +118,10 @@ msgctxt "field:sale.opportunity.history,address:"
 msgid "Address"
 msgstr "Naslov"
 
+msgctxt "field:sale.opportunity.history,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
 msgctxt "field:sale.opportunity.history,comment:"
 msgid "Comment"
 msgstr "Opomba"
@@ -133,6 +137,14 @@ msgstr "Izdelano"
 msgctxt "field:sale.opportunity.history,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
+
+msgctxt "field:sale.opportunity.history,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.opportunity.history,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
@@ -226,10 +238,6 @@ msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-msgctxt "field:sale.opportunity.line,sale_line:"
-msgid "Sale Line"
-msgstr "Prodajna postavka"
-
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
 msgstr "Zap.št."
@@ -309,6 +317,22 @@ msgstr "Številka"
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Delež dobljenega zneska"
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr "Dobljeni delež"
+
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "Dobljeno"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr "Dobljeni znesek"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -394,6 +418,22 @@ msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Delež dobljenega zneska"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "Dobljeni delež"
+
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "Dobljeno"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Dobljeni znesek"
+
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
@@ -466,6 +506,22 @@ msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Delež dobljenega zneska"
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "Dobljeni delež"
+
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "Dobljeno"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Dobljeni znesek"
+
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
@@ -498,11 +554,27 @@ msgctxt "help:sale.opportunity_employee,conversion_rate:"
 msgid "In %"
 msgstr "V %"
 
+msgctxt "help:sale.opportunity_employee,winning_amount_rate:"
+msgid "In %"
+msgstr "V %"
+
+msgctxt "help:sale.opportunity_employee,winning_rate:"
+msgid "In %"
+msgstr "V %"
+
 msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "In %"
 msgstr "V %"
 
 msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "In %"
+msgstr "V %"
+
+msgctxt "help:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "V %"
+
+msgctxt "help:sale.opportunity_employee_monthly,winning_rate:"
 msgid "In %"
 msgstr "V %"
 
@@ -513,6 +585,18 @@ msgstr "V %"
 msgctxt "help:sale.opportunity_monthly,conversion_rate:"
 msgid "In %"
 msgstr "V %"
+
+msgctxt "help:sale.opportunity_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "V %"
+
+msgctxt "help:sale.opportunity_monthly,winning_rate:"
+msgid "In %"
+msgstr "V %"
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Prodajni nalogi"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
@@ -567,6 +651,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
 msgstr "Priložnosti"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Dobljeno"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -648,6 +737,10 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
 msgstr "Priložnost"
 
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Dobljeno"
+
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
 msgstr "Preklicano"
@@ -667,6 +760,14 @@ msgstr "Zapravljeno"
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr "Priložnost"
+
+msgctxt "selection:sale.opportunity.history,state:"
+msgid "Won"
+msgstr "Dobljeno"
+
+msgctxt "view:sale.opportunity.history:"
+msgid "Change Time"
+msgstr "Spremenjeno"
 
 msgctxt "view:sale.opportunity.history:"
 msgid "History"
