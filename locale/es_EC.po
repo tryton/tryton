@@ -8,11 +8,11 @@ msgstr "Hijos"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
@@ -48,15 +48,15 @@ msgstr "Nombre"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr "Zona Horaria"
+msgstr "Zona horaria"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:company.company,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:company.company.config.start,id:"
 msgid "ID"
@@ -68,11 +68,11 @@ msgstr "Empresa"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -88,11 +88,11 @@ msgstr "Nombre"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -104,11 +104,11 @@ msgstr "Empresa"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
@@ -124,11 +124,11 @@ msgstr "Nombre"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.property,company:"
 msgid "Company"
@@ -144,15 +144,15 @@ msgstr "Empresa"
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Empresas Actuales"
+msgstr "Empresas actuales"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Empresa Actual"
+msgstr "Empresa actual"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Empleado Actual"
+msgstr "Empleado actual"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
@@ -160,15 +160,15 @@ msgstr "Empleados"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Empresa Principal"
+msgstr "Empresa principal"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
@@ -188,11 +188,11 @@ msgstr "Usuario"
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
@@ -204,7 +204,7 @@ msgstr "Empresa"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Configuración de Empresa"
+msgstr "Configuración de empresa"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -212,7 +212,7 @@ msgstr "Empleado"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configurar Empresa"
+msgstr "Configurar empresa"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
@@ -252,7 +252,7 @@ msgstr "Usuario - Empleado"
 
 msgctxt "odt:party.letter:"
 msgid "Best Regards,"
-msgstr "Atentamente,"
+msgstr "Saludos cordiales,"
 
 msgctxt "odt:party.letter:"
 msgid "Date:"
@@ -260,7 +260,7 @@ msgstr "Fecha:"
 
 msgctxt "odt:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Estimados Señores y Señoras,"
+msgstr "Estimados señores y señoras,"
 
 msgctxt "odt:party.letter:"
 msgid "E-Mail:"
@@ -280,7 +280,7 @@ msgstr "Número de RUC:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Crear Empresa"
+msgstr "Crear empresa"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
@@ -316,7 +316,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
