@@ -708,7 +708,7 @@ msgstr "Minimale Anzahl"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Rechnungsausgang"
+msgstr "Rechnungseingang"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
@@ -771,6 +771,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "In Ausführung"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
@@ -1104,6 +1109,10 @@ msgstr "Einkaufsposition"
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Einkaufspositionen"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Steuern"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
