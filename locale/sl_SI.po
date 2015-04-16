@@ -3,20 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Sredstvo \"%s\" je možno brisati samo v stanju priprave."
+msgid "Asset \"%s\" must be in draft to be deleted."
+msgstr "Za izbris sredstva \"%s\" mora biti le-to v stanju priprave."
 
 msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset!"
-msgstr "Postavka prejetega računa se na sredstvu lahko uporabi samo enkrat."
+msgid "Supplier Invoice Line can be used only once on asset."
+msgstr "Postavka prejetega računa se lahko na sredstvu uporabi samo enkrat."
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "Sredstvo je lahko samo enkrat na postavki računa."
 
 msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Pri izdelku \"%s\" manjka konto sredstev."
+msgid "It misses an \"Account Asset\" on product \"%s\"."
+msgstr "Pri izdelku \"%s\" manjka konto sredstva. "
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -48,7 +48,7 @@ msgstr "Postavka računa kupca"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Način amortizacije"
+msgstr "Metoda amortizacije"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
@@ -226,6 +226,18 @@ msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
+msgid "End Date"
+msgstr "Končni datum"
+
+msgctxt "field:account.asset.print_depreciation_table.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Znesek"
@@ -358,6 +370,10 @@ msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
 msgstr "Postavka sredstva"
 
+msgctxt "model:account.asset.print_depreciation_table.start,name:"
+msgid "Asset Depreciation Table Start"
+msgstr "Amortizacijska tabela sredstev - Začetek"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Prikaz amortizacije pri popravku sredstev"
@@ -378,9 +394,17 @@ msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
 msgstr "Sredstva"
 
+msgctxt "model:ir.action,name:report_depreciation_table"
+msgid "Depreciation Table"
+msgstr "Amortizacijska tabela"
+
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
 msgstr "Knjiženje sredstev"
+
+msgctxt "model:ir.action,name:wizard_print_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Izpis amortizacijske tabele"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
@@ -418,9 +442,85 @@ msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
 msgstr "Sredstva"
 
+msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Izpis amortizacijske tabele"
+
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Knjiženje sredstev"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "("
+msgstr "("
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid ")"
+msgstr ")"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "+"
+msgstr "+"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "-"
+msgstr "-"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Actual Value"
+msgstr "Dejanska vrednost"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization"
+msgstr "Amortizacija"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization Table"
+msgstr "Amortizacijska tabela"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Assets"
+msgstr "Sredstva"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Closing Value"
+msgstr "Končna vrednost"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Company:"
+msgstr "Družba:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Fixed"
+msgstr "Osnova"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "From:"
+msgstr "Od: "
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Print Date:"
+msgstr "Izpisano:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "To:"
+msgstr "Do:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Total -"
+msgstr "Skupaj -"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "User:"
+msgstr "Izpisal:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "at"
+msgstr "ob"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
@@ -461,6 +561,10 @@ msgstr "Postavka sredstva"
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
 msgstr "Postavke sredstev"
+
+msgctxt "view:account.asset.print_depreciation_table.start:"
+msgid "Choose Dates"
+msgstr "Izberi datume"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
@@ -521,6 +625,14 @@ msgstr "V redu"
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
+msgid "Print"
+msgstr "Natisni"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
