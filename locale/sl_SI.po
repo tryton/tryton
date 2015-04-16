@@ -32,7 +32,7 @@ msgstr "Predloga"
 
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
