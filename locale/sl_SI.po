@@ -32,7 +32,7 @@ msgstr "Do"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
@@ -68,7 +68,7 @@ msgstr "Do"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
