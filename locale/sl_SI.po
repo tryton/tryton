@@ -675,6 +675,10 @@ msgid "Productions"
 msgstr "Proizvodni nalogi"
 
 msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Ponastavi na kosovnico"
+
+msgctxt "view:production:"
 msgid "Run"
 msgstr "Izvajanje"
 
