@@ -46,13 +46,9 @@ msgctxt "field:project.work,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-msgctxt "field:project.work,effort:"
+msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Ocena"
-
-msgctxt "field:project.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Dejanske ure"
+msgstr "Porabljen čas"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -86,13 +82,17 @@ msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Na evidenci"
 
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Ocena skupaj"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
@@ -106,17 +106,17 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-msgctxt "help:project.work,effort:"
+msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "Ocena za to dejavnost"
+msgstr "Ocenjen porabljen čas za ta teden"
 
-msgctxt "help:project.work,hours:"
+msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work"
-msgstr "Skupni porabljen čas na tem dejavnosti"
+msgstr "Skupen porabljen čas na tej nalogi"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Skupna ocena za to dejavnost in njene poddejavnosti"
+msgstr "Skupna ocena porabljenega časa za to dejavnost in njene poddejavnosti"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
