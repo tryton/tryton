@@ -3,25 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-"Konto \"%(account)s\" in Bankauszugszeile \"%(line)s\" ist dasselbe wie das "
-"für Soll oder Haben eingetragene in Journal \"%(journal)s\"."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr "Betrag \"%s\" ist größer als der für die Rechnung zu zahlende Betrag."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "Der Betrag sollte einen positiven oder negativen Wert aufweisen."
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr ""
-"Bitte tragen Sie Soll- und Habenkonto für das Bankauszugsjournal \"%s\" ein."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
@@ -30,6 +17,10 @@ msgstr "Endsaldo muss \"%s\" sein."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "Anzahl der Zeilen muss \"%s\" sein."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr "Bitte tragen Sie Haben- und Sollkonto für Bankauszugsjournal \"%s\" ein."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -227,6 +218,66 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Buchungssatz"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Bankauszug"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Bankauszug"
@@ -243,9 +294,33 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Bankauszugszeile"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Bankauszugszeilengruppe"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Bankauszugszeilengruppen"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Zeilengruppen"
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Buchungszeilen"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Buchungszeilen"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Buchungssätze"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Buchungssätze"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -254,6 +329,14 @@ msgstr "Bankauszüge"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Bankauszugsjournale"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Bankauszugszeilen"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Bankauszugszeilen"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -277,6 +360,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Geprüft"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Bankauszugszeilengruppen"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -394,17 +481,25 @@ msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Bankauszugsjournale"
 
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Bankauszugszeilengruppe"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Bankauszugszeilengruppen"
+
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Betrag"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
-msgstr "Bankauszug Zeile"
+msgstr "Bankauszugszeile"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr "Bankauszug Zeile"
+msgstr "Bankauszugszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
@@ -428,7 +523,7 @@ msgstr "Bankauszug"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Bankauszug Zeilen"
+msgstr "Bankauszugszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
