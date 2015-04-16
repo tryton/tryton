@@ -52,16 +52,6 @@ msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s of "
-"company \"%(invoice_line_company)s because account \"%(account)s has company"
-" \"%(account_company)s\"."
-msgstr ""
-"Pri računu \"%(invoice)s\" družbe \"%(invoice_line_company)s\" ni možno "
-"izdelati postavke \"%(line)s\", ker je konto \"%(account)s\" od družbe "
-"\"%(account_company)s\"."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
 "You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
 "because the invoice uses the same account (%(account)s)."
 msgstr ""
@@ -83,10 +73,6 @@ msgid ""
 msgstr ""
 "Pri računu \"%s\" ni možno izdelati delnega plačila z zneskom, ki je večji "
 "od zneska za plačilo."
-
-msgctxt "error:account.invoice.payment_term.line:"
-msgid "Day of month must be between 1 and 31."
-msgstr "Dan v mesecu je lahko med 1 in 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
@@ -115,15 +101,6 @@ msgid ""
 msgstr ""
 "Postavke \"%(line)s\" pri računu \"%(invoice)s\" ni možno dodati, ker je "
 "bodisi knjižen ali plačan bodisi preklican."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using account \"%(account)s\" from company "
-"\"%(account_company)s\"."
-msgstr ""
-"Računa \"%(invoice)s\" pri družbi \"%(invoice_company)s\" ni možno izdelati "
-"z uporabo konta \"%(account)s\" iz družbe \"%(account_company)s\"."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -227,14 +204,6 @@ msgid ""
 msgstr ""
 "Za račun \"%(invoice)s\" v obdobju/poslovnem letu \"%(period)s\" ne obstaja "
 "štetje računov."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company \"%(invoice_company)s "
-"because account \"%(account)s has a different company (%(account_company)s.)"
-msgstr ""
-"Računa \"%(invoice)s\" v družbi \"%(invoice_company)s ni možno izdelati, ker"
-" je družba (%(account_company)s) na kontu \"%(account)s drugačna. "
 
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
@@ -814,14 +783,6 @@ msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimalke"
 
-msgctxt "field:account.invoice.payment_term.line,day:"
-msgid "Day of Month"
-msgstr "Dan v mesecu"
-
-msgctxt "field:account.invoice.payment_term.line,days:"
-msgid "Number of Days"
-msgstr "Število dni"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Delitelj"
@@ -829,14 +790,6 @@ msgstr "Delitelj"
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:account.invoice.payment_term.line,month:"
-msgid "Month"
-msgstr "mesec"
-
-msgctxt "field:account.invoice.payment_term.line,months:"
-msgid "Number of Months"
-msgstr "Število mesecev"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -850,6 +803,10 @@ msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr "Obroki"
+
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
 msgstr "Zap.št."
@@ -858,14 +815,6 @@ msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
 msgstr "Tip"
 
-msgctxt "field:account.invoice.payment_term.line,weekday:"
-msgid "Day of Week"
-msgstr "Dan v tednu"
-
-msgctxt "field:account.invoice.payment_term.line,weeks:"
-msgid "Number of Weeks"
-msgstr "Število tednov"
-
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
@@ -873,6 +822,106 @@ msgstr "Zapisano"
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgid "Day of Month"
+msgstr "Dan v mesecu"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgid "Number of Days"
+msgstr "Število dni"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+msgid "Payment Term Line"
+msgstr "Postavka plačilnega roka"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+msgid "Month"
+msgstr "mesec"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgid "Number of Months"
+msgstr "Število mesecev"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid "Day of Week"
+msgstr "Dan v tednu"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgid "Number of Weeks"
+msgstr "Število tednov"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.payment_term.test,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.payment_term.test,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "Plačilni rok"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "Rezultat"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.payment_term.test.result,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
@@ -1030,6 +1079,18 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Postavka plačilnega roka"
 
+msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr "Obrok postavke plačilnega roka"
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr "Preizkus plačilnega roka"
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr "Preizkus plačilnega roka"
+
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
 msgstr "Opozorilo pri izpisu računa"
@@ -1081,6 +1142,10 @@ msgstr "Račun"
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Plačilo računa"
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Preizkus plačilnega roka"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
@@ -1189,6 +1254,10 @@ msgstr "Računi"
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
 msgstr "Plačilni roki"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Preizkus plačilnega roka"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
@@ -1418,61 +1487,9 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr "Odpis"
 
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "April"
-msgstr "April"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "August"
-msgstr "Avgust"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "December"
-msgstr "December"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "February"
-msgstr "Februar"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "January"
-msgstr "Januar"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "July"
-msgstr "Julij"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "June"
-msgstr "Junij"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "March"
-msgstr "Marec"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "May"
-msgstr "Maj"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "November"
-msgstr "November"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "October"
-msgstr "Oktober"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "September"
-msgstr "September"
-
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr "Fiksna cena"
+msgstr "Fiksno"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
@@ -1486,35 +1503,87 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Preostanek"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "April"
+msgstr "April"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "August"
+msgstr "Avgust"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "December"
+msgstr "December"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "February"
+msgstr "Februar"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "January"
+msgstr "Januar"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "July"
+msgstr "Julij"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "June"
+msgstr "Junij"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "March"
+msgstr "Marec"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "May"
+msgstr "Maj"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "November"
+msgstr "November"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "October"
+msgstr "Oktober"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "September"
+msgstr "September"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Friday"
 msgstr "Petek"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Monday"
 msgstr "Ponedeljek"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Saturday"
 msgstr "Sobota"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Sunday"
 msgstr "Nedelja"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Thursday"
 msgstr "Četrtek"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Tuesday"
 msgstr "Torek"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Wednesday"
 msgstr "Sreda"
 
@@ -1558,13 +1627,25 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr "Plačilo računa"
 
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Delta"
+msgstr "Obrok postavke plačilnega roka"
+
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Deltas"
+msgstr "Obroki postavk plačilnega roka"
+
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Postavka plačilnega roka"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Lines"
-msgstr "Postavke plačilnih rokov"
+msgctxt "view:account.invoice.payment_term.test.result:"
+msgid "Payment Term Test Results"
+msgstr "Rezultati preizkusa plačilnega roka"
+
+msgctxt "view:account.invoice.payment_term.test:"
+msgid "Payment Term Test"
+msgstr "Preizkus plačilnega roka"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1611,6 +1692,14 @@ msgid "Are you sure to cancel the invoice?"
 msgstr "Ali res želite preklicati račun?"
 
 msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Račun"
 
@@ -1625,6 +1714,10 @@ msgstr "Drugo"
 msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Plačilo"
+
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr "Vknjižba"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"
@@ -1693,6 +1786,10 @@ msgstr "V redu"
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "Zapri"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
