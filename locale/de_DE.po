@@ -2,13 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account.selection:"
-msgid ""
-"Can not have many accounts with the same root or a missing mandatory root "
-"account on \"%s\"."
-msgstr ""
-"Es kann nicht mehrere Konten mit demselben Wurzelkonto geben oder es fehlt "
-"ein erforderliches Wurzelkonto für \"%s\"."
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
+msgstr "Es ist nur ein Konto möglich per Kostenstelle und Ursprung"
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
@@ -114,6 +110,46 @@ msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Zahlung"
 
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Herkunft"
+
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Wurzelkonto Kostenstelle"
+
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -203,77 +239,6 @@ msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,account:"
-msgid "Account"
-msgstr "Konto"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,selection:"
-msgid "Selection"
-msgstr "Auswahl"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:analytic_account.account.selection,accounts:"
-msgid "Accounts"
-msgstr "Konten"
-
-msgctxt "field:analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:analytic_account.account.selection,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -377,18 +342,13 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Bankauszugsposition"
 
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Kostenstelleneintrag"
+
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Kostenstelle"
-
-msgctxt ""
-"model:analytic_account.account-analytic_account.account.selection,name:"
-msgid "Analytic Account - Analytic Account Selection"
-msgstr "Kostenstelle - Kostenstelle Auswahl"
-
-msgctxt "model:analytic_account.account.selection,name:"
-msgid "Analytic Account Selection"
-msgstr "Kostenstelle Auswahl"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
@@ -512,11 +472,11 @@ msgstr "Posten Bankauszüge"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
-msgstr "Zahlungsposten"
+msgstr "Bankauszugszeile"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr "Zahlungsposten"
+msgstr "Bankauszugszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Bank Statement"
@@ -536,7 +496,7 @@ msgstr "Annullieren"
 
 msgctxt "view:account.statement:"
 msgid "Move Lines"
-msgstr "Buchungsposten"
+msgstr "Buchungszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Post"
@@ -552,7 +512,7 @@ msgstr "Zahlung"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Zahlungsposten"
+msgstr "Bankauszugszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
@@ -561,6 +521,10 @@ msgstr "Bankauszüge"
 msgctxt "view:account.statement:"
 msgid "Validate"
 msgstr "Prüfen"
+
+msgctxt "view:analytic.account.entry:"
+msgid "Analytic Entry"
+msgstr "Kostenstelleneintrag"
 
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
@@ -600,4 +564,4 @@ msgstr "Abbrechen"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Offen"
+msgstr "Öffnen"
