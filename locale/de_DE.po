@@ -588,7 +588,7 @@ msgstr "Lagerort"
 
 msgctxt "field:stock.period.cache,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Lagerperiode"
 
 msgctxt "field:stock.period.cache,product:"
 msgid "Product"
@@ -1869,6 +1869,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Entwurf"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "Vorläufig"
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr "Geschlossen"
@@ -2047,11 +2051,11 @@ msgstr "Lagerbewegungen"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
-msgstr "Perioden Cache"
+msgstr "Lagerperiode Cache"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Caches"
-msgstr "Perioden Cache"
+msgstr "Lagerperioden Caches"
 
 msgctxt "view:stock.period:"
 msgid "Close"
@@ -2063,7 +2067,7 @@ msgstr "Entwurf"
 
 msgctxt "view:stock.period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Lagerperiode"
 
 msgctxt "view:stock.period:"
 msgid "Periods"
@@ -2135,7 +2139,7 @@ msgstr "Bestandsänderungen"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
-msgstr "Einlagerung"
+msgstr "Einlagern"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
