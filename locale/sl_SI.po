@@ -2,13 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account.selection:"
-msgid ""
-"Can not have many accounts with the same root or a missing mandatory root "
-"account on \"%s\"."
-msgstr ""
-"Pri \"%s\" ni možno imeti več kontov z istim korenskim kontom ali z "
-"manjkajočim obveznim korenskim kontom."
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
+msgstr "Dovoljen je samo en konto na analitični koren in poreklo."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
@@ -25,6 +21,46 @@ msgstr "Knjiženje postavke ni možno izvesti z vpoglednim kontom \"%s\"."
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Analitične postavke"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Koren"
+
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -118,77 +154,6 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,account:"
-msgid "Account"
-msgstr "Konto"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Ime"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,selection:"
-msgid "Selection"
-msgstr "Izbor"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:analytic_account.account.selection,accounts:"
-msgid "Accounts"
-msgstr "Konti"
-
-msgctxt "field:analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Ime"
-
-msgctxt "field:analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
 msgstr "Konto"
@@ -277,18 +242,13 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Vnos analitičnega konta"
+
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Analitični konto"
-
-msgctxt ""
-"model:analytic_account.account-analytic_account.account.selection,name:"
-msgid "Analytic Account - Analytic Account Selection"
-msgstr "Analitični konto - Izbor analitičnega konta"
-
-msgctxt "model:analytic_account.account.selection,name:"
-msgid "Analytic Account Selection"
-msgstr "Izbor analitičnega konta"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
@@ -377,6 +337,10 @@ msgstr "Vpogled"
 msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analitično"
+
+msgctxt "view:analytic.account.entry:"
+msgid "Analytic Entry"
+msgstr "Vnos analitičnih kontov"
 
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
