@@ -3,15 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr ""
-"Anlage \"%s\" muss in Status 'Entwurf' sein, um gelöscht werden zu können!"
+msgid "Asset \"%s\" must be in draft to be deleted."
+msgstr "Anlage \"%s\"  kann nur in Status 'Entwurf' gelöscht werden"
 
 msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset!"
-msgstr ""
-"Eine Rechnungsposition eines Lieferanten kann nur mit einer Anlage verknüpft"
-" sein!"
+msgid "Supplier Invoice Line can be used only once on asset."
+msgstr "Eine Einkaufsposition kann nur einmal pro Anlage verwendet werden"
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
@@ -19,8 +16,8 @@ msgstr ""
 "Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
 
 msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Fehlendes \"Anlagekonto\" für Artikel \"%s\"."
+msgid "It misses an \"Account Asset\" on product \"%s\"."
+msgstr "Fehlendes Anlagenkonto für Artikel \"%s\""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -230,6 +227,18 @@ msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:account.asset.print_depreciation_table.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Betrag"
@@ -288,11 +297,11 @@ msgstr "Anlagen abschreibbar"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagekonto"
+msgstr "Anlagenkonto"
 
 msgctxt "field:product.category,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Verwendetes Anlagekonto"
+msgstr "Verwendetes Anlagenkonto"
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
@@ -304,11 +313,11 @@ msgstr "Verwendetes Abschreibungskonto"
 
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagekonto"
+msgstr "Anlagenkonto"
 
 msgctxt "field:product.template,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Verwendetes Anlagekonto"
+msgstr "Verwendetes Anlagenkonto"
 
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
@@ -362,6 +371,10 @@ msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
 msgstr "Anlage Zeile"
 
+msgctxt "model:account.asset.print_depreciation_table.start,name:"
+msgid "Asset Depreciation Table Start"
+msgstr "Abschreibungstabelle Beginn"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Aktualisierung Anlage Anzeige Abschreibung"
@@ -382,9 +395,17 @@ msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
 msgstr "Inventar"
 
+msgctxt "model:ir.action,name:report_depreciation_table"
+msgid "Depreciation Table"
+msgstr "Abschreibungstabelle"
+
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
 msgstr "Erstellung Anlagen Buchungssätze"
+
+msgctxt "model:ir.action,name:wizard_print_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Abschreibungstabelle drucken"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
@@ -422,9 +443,85 @@ msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
 msgstr "Anlagen"
 
+msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Abschreibungstabelle drucken"
+
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Buchungssätze für Anlagen erstellen"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "("
+msgstr "("
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid ")"
+msgstr ")"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "+"
+msgstr "+"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "-"
+msgstr "-"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Actual Value"
+msgstr "Aktueller Wert"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization"
+msgstr "Abschreibung"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization Table"
+msgstr "Abschreibungstabelle"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Assets"
+msgstr "Inventar"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Closing Value"
+msgstr "Abschlußwert"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Company:"
+msgstr "Unternehmen:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "From:"
+msgstr "Von:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Print Date:"
+msgstr "Druckdatum:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "To:"
+msgstr "Bis:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Total -"
+msgstr "Gesamt -"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "User:"
+msgstr "Benutzer:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "at"
+msgstr "um"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
@@ -465,6 +562,10 @@ msgstr "Anlage Zeile"
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
 msgstr "Anlage Zeilen"
+
+msgctxt "view:account.asset.print_depreciation_table.start:"
+msgid "Choose Dates"
+msgstr "Auswahl Datum"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
@@ -525,6 +626,14 @@ msgstr "OK"
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
+msgid "Print"
+msgstr "Drucken"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
