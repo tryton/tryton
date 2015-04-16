@@ -676,6 +676,10 @@ msgid "Productions"
 msgstr "Produktionen"
 
 msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Auf Stückliste zurücksetzen"
+
+msgctxt "view:production:"
 msgid "Run"
 msgstr "Ausführen"
 
