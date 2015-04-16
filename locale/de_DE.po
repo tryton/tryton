@@ -160,7 +160,7 @@ msgstr "Nachfolger"
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Aufgabenabgleich"
+msgstr "Aufgaben abgleichen"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
