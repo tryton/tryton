@@ -192,7 +192,7 @@ msgstr "Aktivno"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr "Komentar"
+msgstr "Opomba"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
@@ -406,6 +406,10 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Kategorije"
 
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Partnerji po kategorijah"
@@ -449,6 +453,10 @@ msgstr "Kategorije"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Nastavitve"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
