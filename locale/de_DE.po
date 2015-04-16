@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:country.country:"
-msgid "The code of the country must be unique."
-msgstr "Der Code für ein Land kann nur einmal vergeben werden."
-
-msgctxt "error:country.country:"
-msgid "The name of the country must be unique."
-msgstr "Der Name für ein Land kann nur einmal vergeben werden."
-
 msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Länderkürzel"
