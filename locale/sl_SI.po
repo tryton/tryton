@@ -34,6 +34,10 @@ msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr "Napoved \"%s\" mora biti pred brisanjem preklicana."
 
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktivno"
+
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Družba"
@@ -209,6 +213,10 @@ msgstr "Izpolnitev napovedi"
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr "Vse"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Zaključeno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
