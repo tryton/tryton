@@ -1438,7 +1438,7 @@ msgstr "Kupec"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr "Prevzem"
+msgstr "Vhodna cona"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
@@ -1446,7 +1446,7 @@ msgstr "Izgubljeno/najdeno"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr "Izdaja"
+msgstr "Izhodna cona"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
@@ -1742,7 +1742,7 @@ msgstr "Šifra:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr "Terjatve do kupcev"
+msgstr "Kupec"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1843,6 +1843,10 @@ msgstr "Zaključeno"
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "V pripravi"
+
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "Zbiranje"
 
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
