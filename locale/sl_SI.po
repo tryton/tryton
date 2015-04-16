@@ -422,6 +422,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
 msgctxt "field:sale.sale,party:"
 msgid "Party"
 msgstr "Partner"
@@ -1001,6 +1005,10 @@ msgstr "Prodajna postavka"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Prodajne postavke"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Davki"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
