@@ -38,6 +38,10 @@ msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Aktivno"
+
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Banka"
@@ -144,7 +148,7 @@ msgstr "Zap.št."
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
