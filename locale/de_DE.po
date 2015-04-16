@@ -20,7 +20,7 @@ msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
-msgstr "Kreditlimit"
+msgstr "Kreditlimit anwenden"
 
 msgctxt "field:party.party,credit_amount:"
 msgid "Credit Amount"
