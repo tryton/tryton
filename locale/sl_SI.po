@@ -3,16 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
-msgid "Hours field must be positive"
-msgstr "Vrednost polja \"Ure\" mora biti pozitivna"
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"Every work must be in the same company as it's parent work but \"%(child)s\""
-" and \"%(parent)s\" are in different companies."
-msgstr ""
-"Vsaka dejavnost mora biti v isti družbi kot njena matična dejavnost, vendar "
-"sta \"%(child)s\" in \"%(parent)s\" v različnih družbah."
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr "Trajanje na postavki \"%(line)s\" mora biti nenegativno."
 
 msgctxt "error:timesheet.work:"
 msgid ""
@@ -30,13 +22,13 @@ msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Zaposlenec"
-
-msgctxt "field:timesheet.hours_employee,hours:"
-msgid "Hours"
-msgstr "Ure"
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
@@ -74,13 +66,13 @@ msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Zaposlenec"
-
-msgctxt "field:timesheet.hours_employee_monthly,hours:"
-msgid "Hours"
-msgstr "Ure"
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
@@ -114,13 +106,13 @@ msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Zaposlenec"
-
-msgctxt "field:timesheet.hours_employee_weekly,hours:"
-msgid "Hours"
-msgstr "Ure"
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
@@ -146,6 +138,10 @@ msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Leto"
 
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Družba"
+
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -162,13 +158,13 @@ msgctxt "field:timesheet.line,description:"
 msgid "Description"
 msgstr "Opis"
 
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Zaposlenec"
-
-msgctxt "field:timesheet.line,hours:"
-msgid "Hours"
-msgstr "Ure"
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
@@ -222,9 +218,9 @@ msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-msgctxt "field:timesheet.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Ure prisotnosti"
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Trajanje"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
@@ -286,9 +282,9 @@ msgctxt "field:timesheet.work.open.start,to_date:"
 msgid "To Date"
 msgstr "Do"
 
-msgctxt "help:timesheet.work,hours:"
+msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work"
-msgstr "Skupni porabljen čas na dejavnosti"
+msgstr "Skupen porabljen čas na tej nalogi"
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
@@ -439,8 +435,8 @@ msgid "Hours per Employee"
 msgstr "Ure po zaposlencu"
 
 msgctxt "view:timesheet.hours_employee:"
-msgid "Hours"
-msgstr "Ure"
+msgid "Duration"
+msgstr "Trajanje"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Hours per Employee"
@@ -459,8 +455,8 @@ msgid "Enter Timesheet"
 msgstr "Vnos prisotnosti"
 
 msgctxt "view:timesheet.line:"
-msgid "Hours"
-msgstr "Ure"
+msgid "Duration"
+msgstr "Trajanje"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
