@@ -466,6 +466,10 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "OUT"
 
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Nachricht erzeugen"
+
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
@@ -500,7 +504,7 @@ msgstr "Prüfen"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr "Annulliert"
+msgstr "Annullieren"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
