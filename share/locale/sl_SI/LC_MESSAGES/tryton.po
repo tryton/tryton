@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tryton 3.0\n"
 "Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
-"POT-Creation-Date: 2015-03-23 18:56+0100\n"
-"PO-Revision-Date: 2014-10-15 11:36+0200\n"
+"POT-Creation-Date: 2015-04-04 11:14+0200\n"
+"PO-Revision-Date: 2015-04-04 11:19+0200\n"
 "Last-Translator: Venceslav Vezjak <vezjakv@gmail.com>\n"
 "Language-Team: sl_SI <LL@li.org>\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 "
@@ -187,30 +187,26 @@ msgstr "<i>Išči...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Ustvari...</i>"
 
-#, fuzzy
 msgid "Value"
-msgstr "Dodaj vrednost"
+msgstr "Vrednost"
 
-#, fuzzy
 msgid "Displayed value"
-msgstr "Dodaj vrednost"
+msgstr "Prikazana vrednost"
 
-#, fuzzy
 msgid "Format"
-msgstr "_Navaden"
+msgstr "Oblika"
 
 msgid "Display format"
-msgstr ""
+msgstr "Oblika prikaza"
 
-#, fuzzy
 msgid "Open the calendar"
-msgstr "Odpri koledar <F2>"
+msgstr "Odpri koledar"
 
 msgid "Date Format"
-msgstr ""
+msgstr "Oblika datuma"
 
 msgid "Displayed date format"
-msgstr ""
+msgstr "Prikazana oblika datuma"
 
 msgid "y"
 msgstr "d"
@@ -270,7 +266,7 @@ msgid "m"
 msgstr "m"
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "_File"
 msgstr "_Datoteka"
