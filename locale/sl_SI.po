@@ -53,3 +53,7 @@ msgstr "Zgodovina cen izdelka"
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
 msgstr "Zgodovina cen izdelka"
+
+msgctxt "view:product.product.cost_history:"
+msgid "Time"
+msgstr "Čas"
