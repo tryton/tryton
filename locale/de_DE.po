@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "Die Zahlung \"%s\" ist eine Überzahlung von Posten \"%s\"."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "Zahlung \"%(payment)s\" überzahlt die Position \"%(line)s\""
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
@@ -268,7 +268,7 @@ msgstr "Entwurf"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr "Fehlgeschlagen"
+msgstr "Erfolglos"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
@@ -346,7 +346,7 @@ msgstr "Entwurf"
 
 msgctxt "selection:account.payment,state:"
 msgid "Failed"
-msgstr "Fehlgeschlagen"
+msgstr "Erfolglos"
 
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
@@ -418,7 +418,7 @@ msgstr "Entwurf"
 
 msgctxt "view:account.payment:"
 msgid "Fail"
-msgstr "Fehlschlag"
+msgstr "Erfolglos"
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
