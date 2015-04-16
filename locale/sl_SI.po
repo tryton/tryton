@@ -18,7 +18,7 @@ msgstr "Soglasja \"%s\" ni možno zbrisati, ker ni v pripravi ali preklicano."
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "Štetje soglasij SEPA"
+msgstr "Štetje SEPA soglasij"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -26,7 +26,7 @@ msgstr "ID SEPA End-to-End "
 
 msgctxt "field:account.payment,sepa_instruction_id:"
 msgid "SEPA Instruction ID"
-msgstr "ID navodila SEPA"
+msgstr "ID SEPA navodila"
 
 msgctxt "field:account.payment,sepa_mandate:"
 msgid "Mandate"
@@ -46,7 +46,7 @@ msgstr "Podrobnosti razloga zavrnitve"
 
 msgctxt "field:account.payment.group,sepa_messages:"
 msgid "SEPA Messages"
-msgstr "Sporočila SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "field:account.payment.journal,company_party:"
 msgid "Company Party"
@@ -126,7 +126,7 @@ msgstr "Stanje"
 
 msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:account.payment.sepa.mandate,write_date:"
 msgid "Write Date"
@@ -174,7 +174,7 @@ msgstr "Stanje"
 
 msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:account.payment.sepa.message,write_date:"
 msgid "Write Date"
@@ -186,27 +186,27 @@ msgstr "Zapisal"
 
 msgctxt "field:party.party,sepa_creditor_identifier:"
 msgid "SEPA Creditor Identifier"
-msgstr "Identifikacija upnika SEPA"
+msgstr "Identifikacija  SEPA upnika"
 
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
-msgstr "Uporabljena Identifikacija upnika SEPA"
+msgstr "Uporabljena Identifikacija SEPA upnika"
 
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
-msgstr "Soglasja SEPA"
+msgstr "SEPA soglasja"
 
 msgctxt "model:account.payment.sepa.mandate,name:"
 msgid "SEPA Mandate"
-msgstr "Soglasje SEPA"
+msgstr "SEPA soglasje"
 
 msgctxt "model:account.payment.sepa.message,name:"
 msgid "SEPA Message"
-msgstr "Sporočilo SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
-msgstr "Soglasja SEPA"
+msgstr "SEPA soglasja"
 
 msgctxt "model:ir.action,name:act_mandate_form2"
 msgid "Mandates"
@@ -214,7 +214,7 @@ msgstr "Soglasja"
 
 msgctxt "model:ir.action,name:act_message_form"
 msgid "SEPA Messages"
-msgstr "Sporočila SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
@@ -235,7 +235,7 @@ msgstr "Zaključeno"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
@@ -249,15 +249,15 @@ msgstr "Terjatve s soglasjem"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
-msgstr "Soglasje SEPA"
+msgstr "SEPA soglasje"
 
 msgctxt "model:ir.ui.menu,name:menu_mandate_form"
 msgid "SEPA Mandates"
-msgstr "Soglasja SEPA"
+msgstr "SEPA soglasja"
 
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "SEPA Messages"
-msgstr "Sporočila SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "."
@@ -312,7 +312,7 @@ msgstr "Datum"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Direct Debit MANDATE"
-msgstr "Soglasje direktne obremenitve"
+msgstr "Soglasje direktne bremenitve"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "E-Mail:"
@@ -462,6 +462,10 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Izhod"
 
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Izdelava sporočila"
+
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
@@ -504,15 +508,15 @@ msgstr "Izvedi"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Priprava"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "SEPA Message"
-msgstr "Sporočilo SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "SEPA Messages"
-msgstr "Sporočila SEPA"
+msgstr "SEPA sporočilo"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"
