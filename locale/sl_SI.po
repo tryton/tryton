@@ -223,7 +223,7 @@ msgstr "Na lokacijo"
 
 msgctxt "field:purchase.line,type:"
 msgid "Type"
-msgstr "Vrsta"
+msgstr "Tip"
 
 msgctxt "field:purchase.line,unit:"
 msgid "Unit"
@@ -769,6 +769,11 @@ msgid "Draft"
 msgstr "Priprava"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
 msgstr "Ponudba"
@@ -1100,6 +1105,10 @@ msgstr "Nabavna postavka"
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Nabavne postavke"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Davki"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
