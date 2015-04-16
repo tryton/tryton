@@ -152,7 +152,7 @@ msgstr "Charge"
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Lagerperiode"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
@@ -240,8 +240,8 @@ msgstr "Chargen"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
-msgstr "Cache Periode Charge"
+msgstr "Lagerperiode Charge Cache"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Caches"
-msgstr "Caches Perioden Chargen"
+msgstr "Lagerperiode Charge Caches"
