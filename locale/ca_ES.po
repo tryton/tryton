@@ -134,7 +134,7 @@ msgstr "Enviaments directes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Totes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
@@ -168,7 +168,7 @@ msgstr "Cancel·lat"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Realitzat"
+msgstr "Finalitzat"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
@@ -184,7 +184,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Realitzat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
