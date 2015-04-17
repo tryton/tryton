@@ -40,7 +40,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de moneda"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -76,7 +76,7 @@ msgstr "Segunda moneda"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Decimales segunda moneda"
+msgstr "Decimales de la segunda moneda"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
@@ -224,7 +224,7 @@ msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizada"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -256,7 +256,7 @@ msgstr "Reclamación"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizada"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
