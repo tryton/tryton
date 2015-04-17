@@ -24,7 +24,7 @@ msgstr "ID"
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Tercers"
+msgstr "Tercer"
 
 msgctxt "field:bank,rec_name:"
 msgid "Name"
@@ -37,6 +37,10 @@ msgstr "Data modificació"
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
+
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Actiu"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
