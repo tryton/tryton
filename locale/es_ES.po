@@ -169,7 +169,7 @@ msgstr "Cancelado"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
@@ -185,7 +185,7 @@ msgstr "Cancelar"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizar"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
