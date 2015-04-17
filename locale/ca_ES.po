@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
-msgstr "No es troba el \"Compte a cobrar\" al producte \"%s\"."
+msgstr "No es troba el \"Compte d'ingressos\" al producte \"%s\"."
 
 msgctxt "field:sale.configuration,sale_carrier:"
 msgid "Carrier"
