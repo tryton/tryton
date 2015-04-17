@@ -68,7 +68,7 @@ msgstr "Número"
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
@@ -156,7 +156,7 @@ msgstr "Període"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Name"
