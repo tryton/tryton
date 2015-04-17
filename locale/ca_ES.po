@@ -3,16 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
-msgid "Hours field must be positive"
-msgstr "El camp Hores ha de ser positiu."
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"Every work must be in the same company as it's parent work but \"%(child)s\""
-" and \"%(parent)s\" are in different companies."
-msgstr ""
-"Tot treball ha d'estar a la mateixa empresa que el seu pare, però "
-"\"%(child)s\" i \"%(parent)s\" estan a empreses diferents."
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr "El temps de la línia \"%(line)s\" ha de ser positiu."
 
 msgctxt "error:timesheet.work:"
 msgid ""
@@ -30,13 +22,13 @@ msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Temps"
+
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Empleat"
-
-msgctxt "field:timesheet.hours_employee,hours:"
-msgid "Hours"
-msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
@@ -64,7 +56,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee.open.start,start_date:"
 msgid "Start Date"
-msgstr "Data inici"
+msgstr "Data inicial"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
@@ -74,13 +66,13 @@ msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Temps"
+
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Empleat"
-
-msgctxt "field:timesheet.hours_employee_monthly,hours:"
-msgid "Hours"
-msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
@@ -114,13 +106,13 @@ msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Temps"
+
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Empleat"
-
-msgctxt "field:timesheet.hours_employee_weekly,hours:"
-msgid "Hours"
-msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
@@ -146,6 +138,10 @@ msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Any"
 
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -162,13 +158,13 @@ msgctxt "field:timesheet.line,description:"
 msgid "Description"
 msgstr "Descripció"
 
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Temps"
+
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Empleat"
-
-msgctxt "field:timesheet.line,hours:"
-msgid "Hours"
-msgstr "Hores"
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
@@ -222,9 +218,9 @@ msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-msgctxt "field:timesheet.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Hores del full de treball"
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Temps del full de treball"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
@@ -256,7 +252,7 @@ msgstr "Disponible en fulls de treball"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Final de full de treball"
+msgstr "Final del full de treball"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
@@ -264,7 +260,7 @@ msgstr "Línies del full de treball"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr "Començament de full de treball"
+msgstr "Inici del full de treball"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -286,9 +282,9 @@ msgctxt "field:timesheet.work.open.start,to_date:"
 msgid "To Date"
 msgstr "Fins a la data"
 
-msgctxt "help:timesheet.work,hours:"
+msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work"
-msgstr "Temps total empleat en aquest treball."
+msgstr "Temps total dedicat en aquest treball."
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
@@ -439,8 +435,8 @@ msgid "Hours per Employee"
 msgstr "Hores per empleat"
 
 msgctxt "view:timesheet.hours_employee:"
-msgid "Hours"
-msgstr "Hores"
+msgid "Duration"
+msgstr "Temps"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Hours per Employee"
@@ -459,8 +455,8 @@ msgid "Enter Timesheet"
 msgstr "Afegeix full de treball"
 
 msgctxt "view:timesheet.line:"
-msgid "Hours"
-msgstr "Hores"
+msgid "Duration"
+msgstr "Temps"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
