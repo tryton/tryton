@@ -14,13 +14,13 @@ msgctxt "error:purchase.line:"
 msgid ""
 "Product \"%(product)s\" of purchase %(purchase)s misses an expense account."
 msgstr ""
-"Falta el compte a pagar del producte \"%(product)s\" de la compra "
+"Falta el compte de despeses del producte \"%(product)s\" de la compra "
 "%(purchase)s."
 
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
 msgstr ""
-"Falta la propietat \"compte a pagar\" per defecte de la compra "
+"Falta la propietat \"Compte de despeses\" per defecte de la compra "
 "\"%(purchase)s\"."
 
 msgctxt "error:purchase.line:"
@@ -131,7 +131,7 @@ msgstr "Refer moviments"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
@@ -227,7 +227,7 @@ msgstr "Unitat"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals unitaris"
+msgstr "Decimals de la unitat"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -752,17 +752,22 @@ msgstr "Gestiona excepció d'enviament"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Totes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmat"
+msgstr "Confirmada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "En procés"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
@@ -863,7 +868,7 @@ msgstr "Administració de compres"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Date:"
@@ -1063,7 +1068,7 @@ msgstr "Configuració de les compres"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
-msgstr "Seleccioni les factures a recrear"
+msgstr "Seleccioneu les factures a recrear"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Handle Invoice Exception"
@@ -1071,7 +1076,7 @@ msgstr "Gestiona l'excepció de factura"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
-msgstr "Esculli un moviment a refer"
+msgstr "Seleccioneu els moviments a recrear"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Handle shipment Exception"
@@ -1096,6 +1101,10 @@ msgstr "Línia de compra"
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Línies de compra"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Impostos"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
