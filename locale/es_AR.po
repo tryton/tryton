@@ -2,9 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Falta una cuenta root obligatoria en «%(name)s»"
+
 msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\"."
-msgstr "Se requiere la cuenta analítica en la línea «%s»."
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr ""
+"Se requiere la cuenta analítica para «%(roots)s» en la línea «%(line)s»."
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -12,7 +17,7 @@ msgstr "Activa"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr "Balance"
+msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
@@ -36,7 +41,7 @@ msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -44,7 +49,7 @@ msgstr "Debe"
 
 msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
-msgstr "Mostrar balance"
+msgstr "Mostrar saldo"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
@@ -85,6 +90,10 @@ msgstr "Importe"
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Cuentas analíticas"
+
+msgctxt "field:purchase.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Tamaño de cuentas analíticas"
 
 msgctxt "field:purchase.line,description:"
 msgid "Description"
@@ -152,7 +161,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -172,7 +181,7 @@ msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -256,7 +265,7 @@ msgstr "Base imponible"
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr "Depósito"
+msgstr "Almacén"
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
@@ -280,7 +289,7 @@ msgstr "Debe - Haber"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
-msgstr "Cerrado"
+msgstr "Cerrada"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
