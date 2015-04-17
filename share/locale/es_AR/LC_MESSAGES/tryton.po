@@ -1,14 +1,14 @@
 # Spanish (Argentina) translations for tryton.
-# Copyright (C) 2012-2014 Thymbra Latinoamericana
+# Copyright (C) 2012-2015 Thymbra Latinoamericana
 # This file is distributed under the same license as the tryton project.
-# Bruno M. Villasanti <bvillasanti@thymbra.com>, 2012-2014.
+# Bruno M. Villasanti <bvillasanti@thymbra.com>, 2012-2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: tryton 3.4.0\n"
+"Project-Id-Version: tryton 3.6.0\n"
 "Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
 "POT-Creation-Date: 2015-03-23 18:56+0100\n"
-"PO-Revision-Date: 2014-10-16 23:39-0300\n"
+"PO-Revision-Date: 2015-04-16 21:23-0300\n"
 "Last-Translator: Bruno M. Villasanti <bvillasanti@thymbra.com>\n"
 "Language-Team: Argentina\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -187,30 +187,26 @@ msgstr "<i>Buscar...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crear...</i>"
 
-#, fuzzy
 msgid "Value"
-msgstr "Añadir un valor"
+msgstr "Valor"
 
-#, fuzzy
 msgid "Displayed value"
-msgstr "Añadir un valor"
+msgstr "Valor a mostrar"
 
-#, fuzzy
 msgid "Format"
-msgstr "_Normal"
+msgstr "Formato"
 
 msgid "Display format"
-msgstr ""
+msgstr "Formato a mostrar"
 
-#, fuzzy
 msgid "Open the calendar"
-msgstr "Abrir el calendario <F2>"
+msgstr "Abrir el calendario"
 
 msgid "Date Format"
-msgstr ""
+msgstr "Formato fecha"
 
 msgid "Displayed date format"
-msgstr ""
+msgstr "Formato fecha a mostrar"
 
 msgid "y"
 msgstr "a"
@@ -270,7 +266,7 @@ msgid "m"
 msgstr "m"
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "_File"
 msgstr "_Archivo"
@@ -378,7 +374,7 @@ msgid "_Next Tab"
 msgstr "_Siguiente pestaña"
 
 msgid "Search Limit..."
-msgstr "Límite de búsqueda..."
+msgstr "_Límite de búsqueda..."
 
 msgid "_Email..."
 msgstr "_Correo electrónico..."
@@ -587,7 +583,7 @@ msgid ""
 "user. This password is usually defined in the trytond configuration."
 msgstr ""
 "Esta es la contraseña del servidor Tryton. No corresponde a un usuario "
-"real. Esta contraseña se suele definir en la configuración de trytond."
+"real. Esta contraseña se define en la configuración de trytond."
 
 msgid "New database setup:"
 msgstr "Nueva configuración de la base de datos:"
@@ -1366,7 +1362,7 @@ msgid "Search a record <F2>"
 msgstr "Buscar registro <F2>"
 
 msgid "Remove selected record"
-msgstr "Eliminar registro seleccionado <Supr>"
+msgstr "Eliminar registro seleccionado"
 
 msgid "Edit selected record <F2>"
 msgstr "Editar registro seleccionado <F2>"
