@@ -14,7 +14,7 @@ msgid ""
 "already posted invoices in this fiscal year."
 msgstr ""
 "No puede cambiar la secuencia de factura en el ejercicio fiscal \"%s\" "
-"porque ya hay facturas confirmadas en este ejercicio fiscal."
+"porque ya hay facturas contabilizadas en este ejercicio fiscal."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
@@ -30,7 +30,7 @@ msgstr ""
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
-msgstr "No puede abonar de la factura \"%s\" porque no está confirmada."
+msgstr "No puede abonar de la factura \"%s\" porque no está contabilizada."
 
 msgctxt "error:account.invoice.line:"
 msgid "Line with \"line\" type must have an account."
@@ -46,17 +46,7 @@ msgid ""
 "cancelled."
 msgstr ""
 "No puede añadir una línea a la factura \"%(invoice)s\" porque está "
-"confirmada, pagada o cancelada."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s of "
-"company \"%(invoice_line_company)s because account \"%(account)s has company"
-" \"%(account_company)s\"."
-msgstr ""
-"No puede crear la línea de factura \"%(line)s\" en la factura "
-"\"%(invoice)s\" de la empresa \"%(invoice_line_company)s\" porque la cuenta "
-"\"%(account)s\" tiene la empresa \"%(account_company)s\"."
+"contabilizada, pagada o cancelada."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
@@ -72,7 +62,7 @@ msgid ""
 "posted or paid."
 msgstr ""
 "No puede modificar la línea \"%(line)s\" de la factura \"%(invoice)s\", "
-"porque está confirmada o pagada."
+"porque está contabilizada o pagada."
 
 msgctxt "error:account.invoice.pay:"
 msgid ""
@@ -81,10 +71,6 @@ msgid ""
 msgstr ""
 "No puede crear un pago parcial en la factura \"%s\" por un importe mayor al "
 "importe a pagar."
-
-msgctxt "error:account.invoice.payment_term.line:"
-msgid "Day of month must be between 1 and 31."
-msgstr "El día del mes debe estar entre 1 y 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
@@ -112,17 +98,7 @@ msgid ""
 "posted, paid or canceled."
 msgstr ""
 "No puede añadir la línea \"%(line)s\" a la factura \"%(invoice)s\" porque "
-"está confirmada, pagada o cancelada."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using account \"%(account)s\" from company "
-"\"%(account_company)s\"."
-msgstr ""
-"No puede crear la factura \"%(invoice)s\" en la empresa "
-"\"%(invoice_company)s\" utilizando la cuenta \"%(account)s\" de la empresa "
-"\"%(account_company)s\"."
+"está contabilizada, pagada o cancelada."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -150,11 +126,13 @@ msgid ""
 "is posted or paid."
 msgstr ""
 "No puede modificar el impuesto \"%(tax)s\" de la factura \"%(invoice)s\" "
-"porque está confirmada o pagada."
+"porque está contabilizada o pagada."
 
 msgctxt "error:account.invoice:"
 msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
-msgstr "No se puede cancelar la factura  \"%s\" porque ya está confirmada."
+msgstr ""
+"No se puede cancelar la factura o abono  \"%s\" porque ya está "
+"contabilizada."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -218,7 +196,7 @@ msgstr "Falta la cuenta debe del diario \"%s\"."
 
 msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
-msgstr "No se puede borrar la factura numerada \"%s\"."
+msgstr "No se puede eliminar la factura numerada \"%s\"."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -229,18 +207,9 @@ msgstr ""
 "período/ejercicio fiscal \"%(period)s\"."
 
 msgctxt "error:account.invoice:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company \"%(invoice_company)s "
-"because account \"%(account)s has a different company (%(account_company)s.)"
-msgstr ""
-"No puede crear la factura \"%(Invoice)s\" en la empresa "
-"\"%(invoice_company)s\" porque la cuenta \"%(account)s\" tiene una empresa "
-"(%(account_company)s) diferente."
-
-msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
-"No puede modificar la factura \"%s\" porque está confirmada, pagada o "
+"No puede modificar la factura \"%s\" porque está contabilizada, pagada o "
 "cancelada."
 
 msgctxt "error:account.period:"
@@ -263,7 +232,7 @@ msgid ""
 "already an invoice posted in this period"
 msgstr ""
 "No puede cambiar la secuencia de facturas en el período \"%s\" porque ya hay"
-" facturas confirmadas en este período."
+" facturas contabilizadas en este período."
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -691,11 +660,11 @@ msgstr "Moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Decimales moneda de pago"
+msgstr "Decimales de la moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Decimales moneda del desajuste"
+msgstr "Decimales de la moneda del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -817,14 +786,6 @@ msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimales de la moneda"
 
-msgctxt "field:account.invoice.payment_term.line,day:"
-msgid "Day of Month"
-msgstr "Día del mes"
-
-msgctxt "field:account.invoice.payment_term.line,days:"
-msgid "Number of Days"
-msgstr "Número de días"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Divisor"
@@ -832,14 +793,6 @@ msgstr "Divisor"
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:account.invoice.payment_term.line,month:"
-msgid "Month"
-msgstr "Mes"
-
-msgctxt "field:account.invoice.payment_term.line,months:"
-msgid "Number of Months"
-msgstr "Número de meses"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -853,6 +806,10 @@ msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr "Incrementos"
+
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
@@ -861,14 +818,6 @@ msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:account.invoice.payment_term.line,weekday:"
-msgid "Day of Week"
-msgstr "Día de la semana"
-
-msgctxt "field:account.invoice.payment_term.line,weeks:"
-msgid "Number of Weeks"
-msgstr "Número de semanas"
-
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
 msgstr "Fecha modificación"
@@ -876,6 +825,106 @@ msgstr "Fecha modificación"
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgid "Day of Month"
+msgstr "Día del mes"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgid "Number of Days"
+msgstr "Número de días"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+msgid "Payment Term Line"
+msgstr "Línea del plazo de pago"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgid "Number of Months"
+msgstr "Número de meses"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid "Day of Week"
+msgstr "Día de la semana"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgid "Number of Weeks"
+msgstr "Número de semanas"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.payment_term.test,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.invoice.payment_term.test,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "Plazo de pago"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "Resultado"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.invoice.payment_term.test.result,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
@@ -1033,6 +1082,18 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Línea del plazo de pago"
 
+msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr "Incremento relativo línea de plazo de pago"
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr "Probar plazo de pago"
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr "Probar plazo de pago"
+
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
 msgstr "Aviso al imprimir la factura"
@@ -1085,6 +1146,10 @@ msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Pagar factura"
 
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Probar plazo de pago"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
 msgid "All"
@@ -1098,7 +1163,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_posted"
 msgid "Posted"
-msgstr "Confirmada"
+msgstr "Contabilizada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_validated"
@@ -1118,7 +1183,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_posted"
 msgid "Posted"
-msgstr "Confirmada"
+msgstr "Contabilizada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_validated"
@@ -1138,7 +1203,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_posted"
 msgid "Posted"
-msgstr "Confirmada"
+msgstr "Contabilizada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_validated"
@@ -1158,7 +1223,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_posted"
 msgid "Posted"
-msgstr "Confirmada"
+msgstr "Contabilizada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_validated"
@@ -1192,6 +1257,10 @@ msgstr "Facturas"
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
 msgstr "Plazos de pago"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Probar plazo de pago"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
@@ -1355,7 +1424,7 @@ msgstr "Pagada"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Posted"
-msgstr "Confirmada"
+msgstr "Contabilizada"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
@@ -1421,58 +1490,6 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr "Desajuste"
 
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "April"
-msgstr "Abril"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "August"
-msgstr "Agosto"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "December"
-msgstr "Diciembre"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "February"
-msgstr "Febrero"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "January"
-msgstr "Enero"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "July"
-msgstr "Julio"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "June"
-msgstr "Junio"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "March"
-msgstr "Marzo"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "May"
-msgstr "Mayo"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "November"
-msgstr "Noviembre"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "October"
-msgstr "Octubre"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "September"
-msgstr "Septiembre"
-
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
 msgstr "Fijo"
@@ -1489,35 +1506,87 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Remanente"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "August"
+msgstr "Agosto"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "December"
+msgstr "Diciembre"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "February"
+msgstr "Febrero"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "January"
+msgstr "Enero"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "July"
+msgstr "Julio"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "June"
+msgstr "Junio"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "March"
+msgstr "Marzo"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "May"
+msgstr "Mayo"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "November"
+msgstr "Noviembre"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "September"
+msgstr "Septiembre"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Friday"
 msgstr "Viernes"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Monday"
 msgstr "Lunes"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Saturday"
 msgstr "Sábado"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Sunday"
 msgstr "Domingo"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Thursday"
 msgstr "Jueves"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Tuesday"
 msgstr "Martes"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Wednesday"
 msgstr "Miércoles"
 
@@ -1561,13 +1630,25 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr "Pagar factura"
 
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Delta"
+msgstr "Incremento relativo línea de plazo de pago"
+
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Deltas"
+msgstr "Incrementos relativos línea de plazo de pago"
+
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Línea del plazo de pago"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Lines"
-msgstr "Líneas del plazo de pago"
+msgctxt "view:account.invoice.payment_term.test.result:"
+msgid "Payment Term Test Results"
+msgstr "Resultados de la prueba de plazo de pago"
+
+msgctxt "view:account.invoice.payment_term.test:"
+msgid "Payment Term Test"
+msgstr "Prueba plazo de pago"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1614,6 +1695,14 @@ msgid "Are you sure to cancel the invoice?"
 msgstr "¿Está seguro de cancelar la factura?"
 
 msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Factura"
 
@@ -1628,6 +1717,10 @@ msgstr "Información adicional"
 msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pago"
+
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr "Contabilizar"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"
@@ -1647,7 +1740,7 @@ msgstr "_Pagar"
 
 msgctxt "view:account.invoice:"
 msgid "_Post"
-msgstr "Co_nfirmar"
+msgstr "Co_ntabilizar"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
@@ -1696,6 +1789,10 @@ msgstr "Aceptar"
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "Cerrar"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
