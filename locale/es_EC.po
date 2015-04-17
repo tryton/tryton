@@ -8,11 +8,11 @@ msgstr "Costo"
 
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de Moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Precio de Venta"
+msgstr "Precio de venta"
 
 msgctxt "field:project.work,product:"
 msgid "Product"
