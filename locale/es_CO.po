@@ -174,7 +174,7 @@ msgstr "Idioma del Tercero"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Secuencia de Terceros"
+msgstr "Secuencia de Tercero"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -411,6 +411,10 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
 
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Medios de Contacto"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Terceros por Categoría"
@@ -454,6 +458,10 @@ msgstr "Categorías"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Medios de Contacto"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
