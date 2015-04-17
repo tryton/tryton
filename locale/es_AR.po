@@ -3,25 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-"La cuenta «%(account)s» en la línea de estracto «%(line)s» es la misma que "
-"la configurada como haber o debe en el diario «%(journal)s»."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr "El importe «%s» es mayor que el importe a pagar de la factura."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "El importe debería ser un valor positivo o negativo."
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr ""
-"Proporcione una cuenta de crédito y de débito en el diario de extracto «%s»."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
@@ -30,6 +17,11 @@ msgstr "El saldo final debe ser «%s»."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "Número de Líneas debe ser «%s»."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr ""
+"Proporcione una cuenta de crédito y de débito en el diario de extracto «%s»."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -61,7 +53,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -227,6 +219,66 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de moneda"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Asiento"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Entidad"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Extracto"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Extracto"
@@ -243,9 +295,33 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de extracto bancario"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Cuenta de grupo de líneas de extracto"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grupos de líneas de extracto"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Grupos de líneas"
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Líneas de asiento"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Líneas de asiento"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Asientos"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Asientos"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -254,6 +330,14 @@ msgstr "Todos los extractos"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Diarios de extracto"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Líneas de extracto bancario"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Líneas de extracto bancario"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -277,6 +361,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Validado"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grupos de líneas de extracto"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -393,6 +481,14 @@ msgstr "Diario de extracto"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Diarios de extracto"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Grupo de líneas de extracto"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Grupos de líneas de extracto"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
