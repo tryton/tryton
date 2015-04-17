@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "El Pago «%s» excede el pago de la línea «%s»."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "El Pago «%(payment)s» excede el pago de la línea «%(line)s»."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
@@ -52,7 +52,7 @@ msgstr "Moneda"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -200,7 +200,7 @@ msgstr "Pago"
 
 msgctxt "model:account.payment.group,name:"
 msgid "Payment Group"
-msgstr "Grupo de pago"
+msgstr "Grupo de pagos"
 
 msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
@@ -232,7 +232,7 @@ msgstr "Pagos"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Grupos de pago"
+msgstr "Grupos de pagos"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
@@ -302,7 +302,7 @@ msgstr "Pagos"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Grupos de pago"
+msgstr "Grupos de pagos"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
@@ -382,11 +382,11 @@ msgstr "Líneas de pago"
 
 msgctxt "view:account.payment.group:"
 msgid "Payment Group"
-msgstr "Grupo de pago"
+msgstr "Grupo de pagos"
 
 msgctxt "view:account.payment.group:"
 msgid "Payment Groups"
-msgstr "Grupos de pago"
+msgstr "Grupos de pagos"
 
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journal"
