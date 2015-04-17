@@ -46,13 +46,9 @@ msgctxt "field:project.work,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-msgctxt "field:project.work,effort:"
+msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Esfuerzo"
-
-msgctxt "field:project.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Registro de Horas"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -86,6 +82,10 @@ msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponibilidad en los registros de tiempos"
 
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Duración"
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Esfuerzo tTotal"
@@ -110,13 +110,13 @@ msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
 msgstr "Lineas de Registro de Tiempo"
 
-msgctxt "help:project.work,effort:"
+msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "El esfuerzo estimado para esta tarea"
+msgstr "Esfuerzo Estimado para este trabajo"
 
-msgctxt "help:project.work,hours:"
+msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work"
-msgstr "Tiempo total gastado en esta tarea"
+msgstr "Total de tiempo de gastado en este trabajo"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
