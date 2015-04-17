@@ -458,7 +458,7 @@ msgstr "Todo"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Reservado"
+msgstr "Reservada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
@@ -574,7 +574,7 @@ msgstr "Cancelada"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizada"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -654,7 +654,7 @@ msgstr "Cancelar"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizar"
 
 msgctxt "view:production:"
 msgid "Draft"
@@ -675,6 +675,10 @@ msgstr "Producción"
 msgctxt "view:production:"
 msgid "Productions"
 msgstr "Producciones"
+
+msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Reestrablecer con la LdM"
 
 msgctxt "view:production:"
 msgid "Run"
