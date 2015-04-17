@@ -24,7 +24,7 @@ msgstr "Moneda cost"
 
 msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Decimals moneda del cost"
+msgstr "Decimals de la moneda de cost"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
