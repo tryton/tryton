@@ -1,5 +1,5 @@
 # Spanish (Ecuador) translations for tryton.
-# Copyright (C) 2014 Fabyc
+# Copyright (C) 2014-2015 Fabian Calle
 # This file is distributed under the same license as the tryton project.
 # FIRST AUTHOR <fabianc7@gmail.com>, 2014.
 # Fabian Calle <fabianc7@gmail.com>, 2014.
@@ -22,13 +22,13 @@ msgid "specify alternate config file"
 msgstr "Especifique un archivo de configuración alternativo"
 
 msgid "development mode"
-msgstr "modo desarrollo"
+msgstr "Modo desarrollo"
 
 msgid "logging everything at INFO level"
 msgstr "Registra toda la información con nivel INFO"
 
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
-msgstr "especifique el nivel log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "Indica el nivel de log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the login user"
 msgstr "especifique el usuario"
@@ -44,7 +44,7 @@ msgstr "Demasiados argumentos"
 
 #, python-format
 msgid "File \"%s\" not found"
-msgstr "No se ha encontró el archivo \"%s\""
+msgstr "No se encontró el archivo \"%s\""
 
 #, python-format
 msgid "Unable to write config file %s!"
@@ -164,7 +164,7 @@ msgid ""
 "The application will stop connecting to this server until its fingerprint"
 " is fixed."
 msgstr ""
-"La huella de seguridad del servidor ha cambiado desde la última conexión!"
+"¡La huella de seguridad del servidor ha cambiado desde la última conexión!"
 "\n"
 "La aplicación detendrá la conexión al servidor hasta que se corrija la "
 "huella de seguridad."
@@ -188,30 +188,26 @@ msgstr "<i>Buscar...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Crear...</i>"
 
-#, fuzzy
 msgid "Value"
-msgstr "Agregar valor"
+msgstr "Valor"
 
-#, fuzzy
 msgid "Displayed value"
-msgstr "Agregar valor"
+msgstr "Valor mostrado"
 
-#, fuzzy
 msgid "Format"
-msgstr "_Normal"
+msgstr "Formato"
 
 msgid "Display format"
-msgstr ""
+msgstr "Formato a mostrar"
 
-#, fuzzy
 msgid "Open the calendar"
-msgstr "Abrir el calendario <F2>"
+msgstr "Abrir el calendario"
 
 msgid "Date Format"
-msgstr ""
+msgstr "Formato de fecha"
 
 msgid "Displayed date format"
-msgstr ""
+msgstr "Formato de fecha mostrado"
 
 msgid "y"
 msgstr "s"
@@ -271,7 +267,7 @@ msgid "m"
 msgstr "m"
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "_File"
 msgstr "_Archivo"
@@ -310,7 +306,7 @@ msgid "_Restore Database..."
 msgstr "_Restaurar Base de Datos..."
 
 msgid "_Backup Database..."
-msgstr "Realizar _Copia de Seguridad de la Base de Datos..."
+msgstr "Realizar _copia de seguridad de la base de datos..."
 
 msgid "Dro_p Database..."
 msgstr "_Eliminar Base de Datos..."
@@ -358,7 +354,7 @@ msgid "_Normal"
 msgstr "_Normal"
 
 msgid "_PDA"
-msgstr "_Celular"
+msgstr "_PDA"
 
 msgid "_Form"
 msgstr "_Formulario"
@@ -373,7 +369,7 @@ msgid "Spell Checking"
 msgstr "Corrección Ortográfica"
 
 msgid "_Previous Tab"
-msgstr "_Anterior Pestaña"
+msgstr "_Pestaña Anterior"
 
 msgid "_Next Tab"
 msgstr "_Siguiente Pestaña"
@@ -382,7 +378,7 @@ msgid "Search Limit..."
 msgstr "Límite de Búsqueda..."
 
 msgid "_Email..."
-msgstr "_Correo Electrónico..."
+msgstr "_Correo electrónico..."
 
 msgid "_Save Options"
 msgstr "_Guardar Opciones"
@@ -391,13 +387,13 @@ msgid "_Tips..."
 msgstr "Conse_jos..."
 
 msgid "_Keyboard Shortcuts..."
-msgstr "Com_binaciones de teclas..."
+msgstr "_Atajos de teclado..."
 
 msgid "_About..."
 msgstr "_Acerca de..."
 
 msgid "Manage Favorites"
-msgstr "_Administrar Menús Favoritos"
+msgstr "_Administrar favoritos"
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -420,7 +416,7 @@ msgid ""
 "Wrong Tryton Server Password\n"
 "Please try again."
 msgstr ""
-"La contraseña del Servidor Tryton es incorrecta.\n"
+"La contraseña del servidor Tryton es incorrecta.\n"
 "Inténtelo de nuevo."
 
 msgid "Access denied!"
@@ -433,10 +429,10 @@ msgid "Database drop failed!"
 msgstr "Falló la eliminación de la base de datos!"
 
 msgid "Database dropped successfully!"
-msgstr "La base de datos se ha eliminado satisfactoriamente!"
+msgstr "¡La base de datos se ha eliminado satisfactoriamente!"
 
 msgid "Open Backup File to Restore..."
-msgstr "Abrir una Copia de Seguridad para Restaurar..."
+msgstr "Abrir una Copia de Seguridad para restaurar..."
 
 msgid ""
 "It is not possible to restore a password protected database.\n"
@@ -446,7 +442,7 @@ msgstr ""
 "La copia de seguridad y su restauración tiene que ser manual."
 
 msgid "Database is password protected!"
-msgstr "La base de datos está protegida por contraseña!"
+msgstr "¡La base de datos está protegida con contraseña!"
 
 msgid ""
 "Wrong Tryton Server Password.\n"
@@ -456,7 +452,7 @@ msgstr ""
 "Inténtelo de nuevo."
 
 msgid "Database restore failed with error message:\n"
-msgstr "La restauración de la base de datos ha fallado con el error:\n"
+msgstr "La restauración de la base de datos ha fallado con el mensaje de error:\n"
 
 msgid "Database restore failed!"
 msgstr "¡La restauración de la base de datos ha fallado!"
@@ -528,7 +524,7 @@ msgid ""
 "change the address."
 msgstr ""
 "Esta es la URL del servidor Tryton. Use el servidor «localhost» y el "
-"puerto «8000» si el servidor está instalado en este ordenador. Pulse "
+"puerto «8000» si el servidor está instalado en este computador. Pulse "
 "«Cambiar» para cambiar la dirección."
 
 msgid "No connection!"
@@ -571,7 +567,7 @@ msgid ""
 " address."
 msgstr ""
 "Esta es la URL del servidor. Use el servidor «localhost» y el puerto "
-"«8000» si el servidor está instalado en este ordenador. Pulse en "
+"«8000» si el servidor está instalado en este computador. Pulse en "
 "«Cambiar» para cambiar la dirección."
 
 msgid "C_hange"
@@ -633,7 +629,7 @@ msgstr ""
 "Contraseña: <La contraseña que introduzca aquí>"
 
 msgid "Confirm admin password:"
-msgstr "Confirme la contraseña del Administrador:"
+msgstr "Confirme la contraseña del administrador:"
 
 msgid "Type the Admin password again"
 msgstr "Teclee la contraseña del Administrador de nuevo"
@@ -672,13 +668,13 @@ msgstr ""
 "Mensaje de error:\n"
 
 msgid "Error creating database!"
-msgstr "Se ha producido un error al crear la base de datos!"
+msgstr "¡Se ha producido un error al crear la base de datos!"
 
 msgid "Could not connect to server!"
 msgstr "No se ha podido conectar al servidor!"
 
 msgid "This client version is not compatible with the server!"
-msgstr "Esta versión del cliente no es compatible con el servidor!"
+msgstr "¡Esta versión del cliente no es compatible con el servidor!"
 
 msgid "No database found, you must create one!"
 msgstr "No se ha encontrado ninguna base de datos, debe crear una!"
@@ -690,10 +686,10 @@ msgid "Backup"
 msgstr "Copia de seguridad"
 
 msgid "Backup the choosen database."
-msgstr "Hacer copia de seguridad de la base de datos elegida."
+msgstr "Realizar copia de seguridad de la base de datos elegida."
 
 msgid "Choose a Tryton database to backup:"
-msgstr "Elija una base de datos Tryton para hacer una copia de seguridad:"
+msgstr "Elija una base de datos Tryton para realizar una copia de seguridad:"
 
 msgid "Delete a database"
 msgstr "Eliminar una base de datos"
@@ -720,7 +716,7 @@ msgid "Profile"
 msgstr "Perfil"
 
 msgid "_Add"
-msgstr "_Agregar"
+msgstr "_Añadir"
 
 msgid "_Remove"
 msgstr "_Eliminar"
@@ -744,7 +740,7 @@ msgid "Incompatible version of the server"
 msgstr "El cliente no es compatible con la versión del servidor"
 
 msgid "Login"
-msgstr "Usuario"
+msgstr "Conexión"
 
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -810,7 +806,7 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 msgid "Email Program Settings"
-msgstr "Configuración del Programa de Correo Electrónico"
+msgstr "Configuración del programa de correo electrónico"
 
 msgid "Command Line:"
 msgstr "Línea de comando:"
@@ -849,7 +845,7 @@ msgid "Attachment(0)"
 msgstr "Adjunto(0)"
 
 msgid "Add an attachment to the record"
-msgstr "Agregar un adjunto al registro"
+msgstr "Añadir un adjunto al registro"
 
 msgid "_Duplicate"
 msgstr "_Duplicar"
@@ -882,7 +878,7 @@ msgid "_Report..."
 msgstr "_Informes..."
 
 msgid "_E-Mail..."
-msgstr "_Correo Electrónico..."
+msgstr "_Correo electrónico..."
 
 msgid "_Print..."
 msgstr "Im_primir..."
@@ -1013,10 +1009,10 @@ msgid "Revision:"
 msgstr "Versión:"
 
 msgid "Keyboard Shortcuts"
-msgstr "Combinaciones de Teclas"
+msgstr "Atajos de teclado"
 
 msgid "Text Entries Shortcuts"
-msgstr "Atajos de Campos de Texto"
+msgstr "Atajos en campos de texto"
 
 msgid "Cut selected text"
 msgstr "Cortar texto seleccionado"
@@ -1034,7 +1030,7 @@ msgid "Previous widget"
 msgstr "Campo anterior"
 
 msgid "Relation Entries Shortcuts"
-msgstr "Atajos en Campos de Relación"
+msgstr "Atajos en campos de relación"
 
 msgid "Create new relation"
 msgstr "Crear nueva relación"
@@ -1043,7 +1039,7 @@ msgid "Open/Search relation"
 msgstr "Abrir/Buscar relación"
 
 msgid "List Entries Shortcuts"
-msgstr "Atajos en Listas"
+msgstr "Atajos en listas"
 
 msgid "Create new line"
 msgstr "Crear nueva línea"
@@ -1114,7 +1110,7 @@ msgid ""
 msgstr ""
 "<b>Exportar gráficos</b>\n"
 "\n"
-"Puedes guardar los gráficos como imagen PNG haciendo clic con el botón "
+"Puede guardar los gráficos como imagen PNG haciendo clic con el botón "
 "derecho sobre el mismo.\n"
 
 msgid "Tips"
@@ -1127,7 +1123,7 @@ msgid "Export to CSV"
 msgstr "Exportar a CSV"
 
 msgid "<b>Predefined exports</b>"
-msgstr "<b>Exportaciones predeterminadas</b>"
+msgstr "<b>Exportaciones predefinidas</b>"
 
 msgid "<b>All fields</b>"
 msgstr "<b>Todos los campos</b>"
@@ -1165,7 +1161,7 @@ msgstr "¿Cuál es el nombre de esta exportación?"
 
 #, python-format
 msgid "Override '%s' definition?"
-msgstr "¿Desea sobreescribir la definición '%s'?"
+msgstr "¿Sobreescribir la definición de '%s'?"
 
 #, python-format
 msgid "%d record saved!"
@@ -1189,7 +1185,7 @@ msgid "Link"
 msgstr "Enlace"
 
 msgid "Add"
-msgstr "Agregar"
+msgstr "Añadir"
 
 msgid "Remove <Del>"
 msgstr "Eliminar <Supr>"
@@ -1231,13 +1227,13 @@ msgid "Encoding:"
 msgstr "Codificación:"
 
 msgid "Lines to Skip:"
-msgstr "Líneas a Omitir:"
+msgstr "Líneas a omitir:"
 
 msgid "Field name"
 msgstr "Nombre del campo"
 
 msgid "You must select an import file first!"
-msgstr "Primero debe elegir un archivo a importar!"
+msgstr "¡Primero debe seleccionar un archivo a importar!"
 
 msgid "Error opening CSV file"
 msgstr "Error al abrir el archivo CSV"
@@ -1273,10 +1269,10 @@ msgid "Modification Date"
 msgstr "Fecha de Modificación"
 
 msgid "Unable to get view tree state"
-msgstr "No es posible obtener el estado de la vista de árbol"
+msgstr "No se puede obtener el estado de la vista de árbol"
 
 msgid "Unable to set view tree state"
-msgstr "No se puede establecer la vista de estado del árbol"
+msgstr "No se puede establecer el estado de la vista de árbol"
 
 msgid ":"
 msgstr ":"
@@ -1306,16 +1302,16 @@ msgid "F_ilters"
 msgstr "F_iltros"
 
 msgid "Show bookmarks of filters"
-msgstr "Mostrar marcadores de filtros"
+msgstr "Muestra las búsquedas favoritas"
 
 msgid "Remove this bookmark"
-msgstr "Eliminar este marcador"
+msgstr "Eliminar de las búsquedas favoritas"
 
 msgid "Bookmark this filter"
-msgstr "Marcar este filtro"
+msgstr "Guardar como búsqueda favorita"
 
 msgid "Bookmark Name:"
-msgstr "Nombre del Marcador:"
+msgstr "Nombre de la búsqueda favorita:"
 
 msgid "Find"
 msgstr "Buscar"
@@ -1324,10 +1320,10 @@ msgid "Today"
 msgstr "Hoy"
 
 msgid "Week View"
-msgstr "Vista Semanal"
+msgstr "Vista semanal"
 
 msgid "Month View"
-msgstr "Vista Mensual"
+msgstr "Vista mensual"
 
 msgid "Week"
 msgstr "Semana"
@@ -1339,14 +1335,14 @@ msgid "Show plain text"
 msgstr "Mostrar como texto plano"
 
 msgid "Add value"
-msgstr "Agregar valor"
+msgstr "Añadir un valor"
 
 #, python-format
 msgid "Remove \"%s\""
-msgstr "Remover \"%s\""
+msgstr "Eliminar \"%s\""
 
 msgid "Select an Image..."
-msgstr "Seleccionar una Imagen..."
+msgstr "Seleccionar una imagen..."
 
 msgid "All files"
 msgstr "Todos los archivos"
@@ -1355,7 +1351,7 @@ msgid "Images"
 msgstr "Imágenes"
 
 msgid "Add existing record"
-msgstr "Agregar registro existente"
+msgstr "Añadir un registro existente"
 
 msgid "Remove selected record <Del>"
 msgstr "Eliminar registro seleccionado <Supr>"
@@ -1382,19 +1378,19 @@ msgid "Change text to underline"
 msgstr "Cambiar texto a subrallado"
 
 msgid "Choose font-family"
-msgstr "Escojer tipo de letra"
+msgstr "Elegir tipo de letra"
 
 msgid "Choose font-size"
-msgstr "Escojer tamaño de letra"
+msgstr "Elegir tamaño de letra"
 
 msgid "Justify of line to the left"
-msgstr "Alinear la línea a la izquierda"
+msgstr "Alinear a la izquierda"
 
 msgid "Justify of line to the center"
 msgstr "Centrar la línea"
 
 msgid "Justify of line to the right"
-msgstr "Alinear la línea a la derecha"
+msgstr "Alinear a la derecha"
 
 msgid "Justify of line to fill window"
 msgstr "Justificar la línea para rellenar ventana"
@@ -1424,10 +1420,10 @@ msgid "Fuzzy"
 msgstr "Confuso"
 
 msgid "You need to save the record before adding translations!"
-msgstr "Debe guardar el registro antes de añadir traducciones!"
+msgstr "¡Debe guardar el registro antes de añadir traducciones!"
 
 msgid "No other language available!"
-msgstr "No hay otro idioma disponible!"
+msgstr "¡No hay otro idioma disponible!"
 
 msgid "Translate view"
 msgstr "Traducir vista"
