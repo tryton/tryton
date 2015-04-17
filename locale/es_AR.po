@@ -227,7 +227,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -459,7 +459,7 @@ msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -503,7 +503,7 @@ msgstr "Movimientos"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
-msgstr "Entidades"
+msgstr "Entidad"
 
 msgctxt "field:purchase.purchase,party_lang:"
 msgid "Party Language"
@@ -759,12 +759,17 @@ msgstr "Todo"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmado"
+msgstr "Confirmada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Procesamiento"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
@@ -1021,7 +1026,7 @@ msgstr "Cancelada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr "Confirmado"
+msgstr "Confirmada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
@@ -1098,6 +1103,10 @@ msgstr "Línea de compra"
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Líneas de compra"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Impuestos"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
