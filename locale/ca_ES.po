@@ -2,13 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account.selection:"
-msgid ""
-"Can not have many accounts with the same root or a missing mandatory root "
-"account on \"%s\"."
-msgstr ""
-"No es poden tenir molts comptes amb la mateixa arrel o sense un compte arrel"
-" obligatori a \"%s\"."
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
+msgstr "Només es pot seleccionar un compte per cada origen i arrel analítica."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
@@ -25,6 +21,46 @@ msgstr "No podeu crear un apunt utilitzant el compte de vista \"%s\"."
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Línies analítiques"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Requerit"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Compte arrel analític"
+
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -118,77 +154,6 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,account:"
-msgid "Account"
-msgstr "Compte"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Data creació"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Usuari creació"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,selection:"
-msgid "Selection"
-msgstr "Selecció"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Data modificació"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
-
-msgctxt "field:analytic_account.account.selection,accounts:"
-msgid "Accounts"
-msgstr "Comptes"
-
-msgctxt "field:analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Data creació"
-
-msgctxt "field:analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Usuari creació"
-
-msgctxt "field:analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Data modificació"
-
-msgctxt "field:analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
-
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
 msgstr "Compte"
@@ -277,18 +242,13 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
 
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Assentament compte analític"
+
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Compte analític"
-
-msgctxt ""
-"model:analytic_account.account-analytic_account.account.selection,name:"
-msgid "Analytic Account - Analytic Account Selection"
-msgstr "Compte analític - Selecció de compte analític"
-
-msgctxt "model:analytic_account.account.selection,name:"
-msgid "Analytic Account Selection"
-msgstr "Selecció compte analític"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
@@ -377,6 +337,10 @@ msgstr "Vista"
 msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analítica"
+
+msgctxt "view:analytic.account.entry:"
+msgid "Analytic Entry"
+msgstr "Assentament analític"
 
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
