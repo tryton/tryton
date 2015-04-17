@@ -3,21 +3,21 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Heu de canviar l'actiu \"%s\" a esborrany per poder-lo eliminar."
+msgid "Asset \"%s\" must be in draft to be deleted."
+msgstr "L'actiu \"%s\" ha d'estar en esborrany per ser eliminat."
 
 msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset!"
+msgid "Supplier Invoice Line can be used only once on asset."
 msgstr ""
-"La línia de factura de proveïdor només es pot utilitzar un cop a l'actiu."
+"La línia de factura de proveïdor pot ser usada una sola vegada en un actiu."
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "L'actiu només es pot utilitzar un cop a la línia de factura."
 
 msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Falta un \"Compte d'actiu\" al producte \"%s\"."
+msgid "It misses an \"Account Asset\" on product \"%s\"."
+msgstr "Falta un \"Compte d'actiu\" en el producte \"%s\"."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -227,6 +227,18 @@ msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.asset.print_depreciation_table.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Import"
@@ -359,6 +371,10 @@ msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
 msgstr "Línia d'actiu"
 
+msgctxt "model:account.asset.print_depreciation_table.start,name:"
+msgid "Asset Depreciation Table Start"
+msgstr "Taula d'amortització d'actiu - Inici"
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Actualitza actius - Mostra amortització"
@@ -379,9 +395,17 @@ msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
 msgstr "Actius"
 
+msgctxt "model:ir.action,name:report_depreciation_table"
+msgid "Depreciation Table"
+msgstr "Taula d'amortització"
+
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
 msgstr "Crea assentaments d'actiu"
+
+msgctxt "model:ir.action,name:wizard_print_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Imprimeix taula d'amortització"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
@@ -389,7 +413,7 @@ msgstr "Actualitza actius"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Tots"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
@@ -419,9 +443,85 @@ msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
 msgstr "Actius"
 
+msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr "Imprimeix taula d'amortització"
+
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Crea assentaments d'actiu"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "("
+msgstr "("
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid ")"
+msgstr ")"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "+"
+msgstr "+"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "-"
+msgstr "-"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Actual Value"
+msgstr "Valor real"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization"
+msgstr "Amortització"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Amortization Table"
+msgstr "Taula d'amortització"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Closing Value"
+msgstr "Valor al tancament"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Company:"
+msgstr "Empresa:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "From:"
+msgstr "De:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Print Date:"
+msgstr "Data d'impressió:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "To:"
+msgstr "Per:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "Total -"
+msgstr "Total -"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "User:"
+msgstr "Usuari:"
+
+msgctxt "odt:account.asset.depreciation_table:"
+msgid "at"
+msgstr "a les"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
@@ -462,6 +562,10 @@ msgstr "Línia d'actiu"
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
 msgstr "Línies d'actiu"
+
+msgctxt "view:account.asset.print_depreciation_table.start:"
+msgid "Choose Dates"
+msgstr "Seleccioneu dates"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
@@ -522,6 +626,14 @@ msgstr "Accepta"
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
+msgid "Print"
+msgstr "Imprimeix"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
