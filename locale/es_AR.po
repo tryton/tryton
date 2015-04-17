@@ -465,6 +465,10 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "SALIDA"
 
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Generar mensaje"
+
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "Área Única de Pagos en Euros (SEPA)"
