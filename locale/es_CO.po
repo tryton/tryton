@@ -767,6 +767,11 @@ msgid "Draft"
 msgstr "Borrador"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Procesada"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
 msgstr "Cotización"
@@ -1099,6 +1104,10 @@ msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Líneas de Compra"
 
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Impuestos"
+
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
 msgstr "Precio del Proveedor del Producto"
@@ -1117,7 +1126,7 @@ msgstr "Proveedores de Producto"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Anular"
 
 msgctxt "view:purchase.purchase:"
 msgid "Confirm"
