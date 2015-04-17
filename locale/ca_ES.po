@@ -3,24 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-"El compte \"%(account)s\" a la línia d'extracte \"%(line)s\" és la mateixa "
-"que la configurada com a haver o deure al diari \"%(journal)s\"."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr "L'import \"%s\" és més gran que l'import a pagar de la factura."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "L'import hauria de ser un valor positiu o negatiu."
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr "Proporcioneu un compte d'haver i de deure al diari d'extracte \"%s\"."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
@@ -29,6 +17,10 @@ msgstr "El saldo final ha de ser \"%s\"."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "El nombre de línies ha de ser \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr "Afegeix un compte deure i haver en el diari d'extracte \"%s\"."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -226,6 +218,66 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Assentament"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Extracte"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Extracte"
@@ -242,9 +294,33 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línia d'extracte bancari"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Grup de línies d'extracte"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grups de línies d'extracte"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Grups de línies"
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Apunts"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Apunts"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Assentaments"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Assentaments"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -254,13 +330,21 @@ msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Diaris d'extracte"
 
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Línies extracte"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Línies extracte"
+
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
 msgstr "Extracte"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Tots"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
@@ -270,12 +354,16 @@ msgstr "Esborrany"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Confirmat"
+msgstr "Comptabilitzat"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Validat"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grups de línies d'extracte"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -367,7 +455,7 @@ msgstr "Esborrany"
 
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
-msgstr "Confirmat"
+msgstr "Comptabilitzat"
 
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
@@ -392,6 +480,14 @@ msgstr "Diari d'extracte"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Diaris d'extracte"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Grup de línies d'extracte"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Grups de línies d'extracte"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
@@ -419,7 +515,7 @@ msgstr "Informació addicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
-msgstr "Confirma"
+msgstr "Comptabilitza"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
