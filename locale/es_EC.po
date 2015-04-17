@@ -2,25 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:country.country:"
-msgid "The code of the country must be unique."
-msgstr "El código del país debe ser único."
-
-msgctxt "error:country.country:"
-msgid "The name of the country must be unique."
-msgstr "El nombre del país debe ser único."
-
 msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Código"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
@@ -40,11 +32,11 @@ msgstr "Subdivisiones"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -56,11 +48,11 @@ msgstr "País"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
@@ -84,11 +76,11 @@ msgstr "Tipo"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
@@ -100,11 +92,11 @@ msgstr "País"
 
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:country.zip,id:"
 msgid "ID"
@@ -120,15 +112,15 @@ msgstr "Subdivisión"
 
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de modificación"
 
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
-msgstr "Código Postal"
+msgstr "Código postal"
 
 msgctxt "help:country.country,code:"
 msgid ""
@@ -628,11 +620,11 @@ msgstr "San Cristobo y Nevis"
 
 msgctxt "model:country.country,name:kp"
 msgid "Korea, Democratic People's Republic of"
-msgstr "Corea, República Democrática Popular de"
+msgstr "República Popular Democrática de Corea"
 
 msgctxt "model:country.country,name:kr"
 msgid "Korea, Republic of"
-msgstr "Corea, República de"
+msgstr "República de Corea"
 
 msgctxt "model:country.country,name:kw"
 msgid "Kuwait"
@@ -720,7 +712,7 @@ msgstr "Islas Marshall"
 
 msgctxt "model:country.country,name:mk"
 msgid "Macedonia, Republic of"
-msgstr "Macedonia, República de"
+msgstr "República de Macedonia"
 
 msgctxt "model:country.country,name:ml"
 msgid "Mali"
@@ -988,7 +980,7 @@ msgstr "El Salvador"
 
 msgctxt "model:country.country,name:sx"
 msgid "Sint Maarten (Dutch part)"
-msgstr "Isla de San Martín (zona holandsea)"
+msgstr "Isla de San Martín (zona holandesa)"
 
 msgctxt "model:country.country,name:sy"
 msgid "Syrian Arab Republic"
@@ -1060,7 +1052,7 @@ msgstr "Taiwán, Provincia de China"
 
 msgctxt "model:country.country,name:tz"
 msgid "Tanzania, United Republic of"
-msgstr "Tanzania, República unida de"
+msgstr "República unida de Tanzania"
 
 msgctxt "model:country.country,name:ua"
 msgid "Ukraine"
@@ -1096,7 +1088,7 @@ msgstr "San Vicente y las Granadinas"
 
 msgctxt "model:country.country,name:ve"
 msgid "Venezuela, Bolivarian Republic of"
-msgstr "Venezuela, República Bolivariana de"
+msgstr "República Bolivariana de Venezuela"
 
 msgctxt "model:country.country,name:vg"
 msgid "Virgin Islands, British"
@@ -2576,7 +2568,7 @@ msgstr "Liège"
 
 msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
-msgstr "Luxembourg"
+msgstr "Luxemburgo"
 
 msgctxt "model:country.subdivision,name:be-wna"
 msgid "Namur"
@@ -20652,7 +20644,7 @@ msgstr "Distrito capital"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
-msgstr "Ciudad capital metropolitana"
+msgstr "Ciudad Capital Metropolitana"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
@@ -20740,7 +20732,7 @@ msgstr "Entidad"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr "Dependencia federal"
+msgstr "Dependencia Federal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
@@ -20968,4 +20960,4 @@ msgstr "Subdivisiones"
 
 msgctxt "view:country.zip:"
 msgid "Zip"
-msgstr "Código Postal"
+msgstr "Código postal"
