@@ -38,6 +38,10 @@ msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Activa"
+
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Banco"
