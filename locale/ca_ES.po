@@ -20,7 +20,7 @@ msgstr "Producte"
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Benefici"
+msgstr "Ingressos"
 
 msgctxt "view:project.work:"
 msgid "Cost"
@@ -28,4 +28,4 @@ msgstr "Cost"
 
 msgctxt "view:project.work:"
 msgid "Revenue"
-msgstr "Benefici"
+msgstr "Ingressos"
