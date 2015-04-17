@@ -112,7 +112,7 @@ msgstr "Restricció de temps d'inici"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Durada"
+msgstr "Temps"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
@@ -124,11 +124,11 @@ msgstr "Hora de finalització avançada"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Inici avançat"
+msgstr "Inici prematur"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Temps d'inici prematur"
+msgstr "Hora d'inici prematur"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
