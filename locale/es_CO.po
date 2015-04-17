@@ -94,9 +94,9 @@ msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
 msgstr "Referencia"
 
-msgctxt "field:sale.opportunity,sale:"
-msgid "Sale"
-msgstr "Venta"
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Ventas"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
@@ -118,6 +118,10 @@ msgctxt "field:sale.opportunity.history,address:"
 msgid "Address"
 msgstr "Dirección"
 
+msgctxt "field:sale.opportunity.history,amount:"
+msgid "Amount"
+msgstr "Valor"
+
 msgctxt "field:sale.opportunity.history,comment:"
 msgid "Comment"
 msgstr "Comentario"
@@ -133,6 +137,14 @@ msgstr "Fecha de Creación"
 msgctxt "field:sale.opportunity.history,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
+
+msgctxt "field:sale.opportunity.history,currency:"
+msgid "Currency"
+msgstr "Monedas"
+
+msgctxt "field:sale.opportunity.history,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
@@ -226,10 +238,6 @@ msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:sale.opportunity.line,sale_line:"
-msgid "Sale Line"
-msgstr "Línea de Venta"
-
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
@@ -309,6 +317,22 @@ msgstr "Número"
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Porcentaje Utilidad"
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr "Porcentaje Ganado"
+
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "Ganada"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr "Valor Ganado"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -394,6 +418,22 @@ msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Porcentaje de Valor Ganado"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "Ganada"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Valor Ganado"
+
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
@@ -466,6 +506,22 @@ msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Margen Utilidad Ganado"
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "Porcentage Utilidad"
+
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "Ganada"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Valor Ganado"
+
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
@@ -498,11 +554,27 @@ msgctxt "help:sale.opportunity_employee,conversion_rate:"
 msgid "In %"
 msgstr "en %"
 
+msgctxt "help:sale.opportunity_employee,winning_amount_rate:"
+msgid "In %"
+msgstr "en %"
+
+msgctxt "help:sale.opportunity_employee,winning_rate:"
+msgid "In %"
+msgstr "en %"
+
 msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "In %"
 msgstr "en %"
 
 msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "In %"
+msgstr "en %"
+
+msgctxt "help:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "en %"
+
+msgctxt "help:sale.opportunity_employee_monthly,winning_rate:"
 msgid "In %"
 msgstr "en %"
 
@@ -513,6 +585,18 @@ msgstr "en %"
 msgctxt "help:sale.opportunity_monthly,conversion_rate:"
 msgid "In %"
 msgstr "en %"
+
+msgctxt "help:sale.opportunity_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "en %"
+
+msgctxt "help:sale.opportunity_monthly,winning_rate:"
+msgid "In %"
+msgstr "en %"
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
@@ -567,6 +651,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
 msgstr "Oportunidades"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Ganada"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -648,6 +737,10 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
 msgstr "Oportunidad"
 
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Ganada"
+
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
 msgstr "Anulada"
@@ -667,6 +760,14 @@ msgstr "Perdido"
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr "Oportunidad"
+
+msgctxt "selection:sale.opportunity.history,state:"
+msgid "Won"
+msgstr "Ganada"
+
+msgctxt "view:sale.opportunity.history:"
+msgid "Change Time"
+msgstr ""
 
 msgctxt "view:sale.opportunity.history:"
 msgid "History"
