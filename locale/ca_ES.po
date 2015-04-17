@@ -12,7 +12,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
-msgstr "Dígits"
+msgstr "Decimals"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"
