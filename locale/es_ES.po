@@ -112,7 +112,7 @@ msgstr "Restricción hora de inicio"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Duración"
+msgstr "Tiempo"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
