@@ -7,109 +7,109 @@ msgid ""
 "You cannot change the cost price for a product which is associated to stock moves.\n"
 "You must use the \"Update Cost Price\" wizard."
 msgstr ""
-"No puede cambiar el precio de costo de un producto el cual está asociado a movimientos de existencias.\n"
+"No puede cambiar el precio de costo de un producto el cual está asociado a movimientos de stock.\n"
 "Debe utilizar el asistente \"Actualizar Precio de Costo\"."
 
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr ""
-"La cuenta de existencias y la de contrapartida no puede ser la misma cuenta."
+"La cuenta de stock y la de contrapartida no pueden ser la misma cuenta."
 
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
-msgstr "Cuenta Contrapartida de Costo"
+msgstr "Cuenta contrapartida del precio de costo"
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
-msgstr "Libro Diario de Existencias"
+msgstr "Libro diario de stock"
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
-msgstr "Método de Contabilización de Existencias"
+msgstr "Método de contabilización de stock"
 
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta de Existencias"
+msgstr "Cuenta de stock"
 
 msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
-msgstr "Cuenta de Existencias del Cliente"
+msgstr "Cuenta de stock del cliente"
 
 msgctxt "field:product.category,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Cuenta de Existencias del Cliente Utilizada"
+msgstr "Cuenta de stock del cliente utilizada"
 
 msgctxt "field:product.category,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta de Existencias Perdidas y Encontradas"
+msgstr "Cuenta de stock perdido y encontrado"
 
 msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta de Existencias Perdidas y Encontradas"
+msgstr "Cuenta de stock perdido y encontrado"
 
 msgctxt "field:product.category,account_stock_production:"
 msgid "Account Stock Production"
-msgstr "Cuenta de Existencias de Producción"
+msgstr "Cuenta de stock de producción"
 
 msgctxt "field:product.category,account_stock_production_used:"
 msgid "Account Stock Production Used"
-msgstr "Cuenta de Existencias de Producción Utilizada"
+msgstr "Cuenta de stock de producción utilizada"
 
 msgctxt "field:product.category,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Cuenta de Existencias del Proveedor"
+msgstr "Cuenta de stock del proveedor"
 
 msgctxt "field:product.category,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
-msgstr "Cuenta de Existencias del Proveedor Utilizada"
+msgstr "Cuenta de stock del proveedor utilizada"
 
 msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
-msgstr "Cuenta de Existencias Utilizada"
+msgstr "Cuenta de stock utilizada"
 
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta de Existencias"
+msgstr "Cuenta de stock"
 
 msgctxt "field:product.template,account_stock_customer:"
 msgid "Account Stock Customer"
-msgstr "Cuenta de Existencias del Cliente"
+msgstr "Cuenta de stock del cliente"
 
 msgctxt "field:product.template,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Cuenta de Existencias del Cliente Utilizada"
+msgstr "Cuenta de stock del cliente utilizada"
 
 msgctxt "field:product.template,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta de Existencias Perdidas y Encontradas"
+msgstr "Cuenta de stock perdido y encontrado"
 
 msgctxt "field:product.template,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta de Existencias Perdidas y Encontradas"
+msgstr "Cuenta de stock perdido y encontrado"
 
 msgctxt "field:product.template,account_stock_production:"
 msgid "Account Stock Production"
-msgstr "Cuenta de Existencias de Producción"
+msgstr "Cuenta de stock de producción"
 
 msgctxt "field:product.template,account_stock_production_used:"
 msgid "Account Stock Production Used"
-msgstr "Cuenta de Existencias de Producción Utilizada"
+msgstr "Cuenta de stock de producción utilizada"
 
 msgctxt "field:product.template,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Cuenta de Existencias del Proveedor"
+msgstr "Cuenta de stock del proveedor"
 
 msgctxt "field:product.template,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
-msgstr "Cuenta de Existencias del Proveedor Utilizada"
+msgstr "Cuenta de stock del proveedor utilizada"
 
 msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
-msgstr "Cuenta de Existencias Utilizada"
+msgstr "Cuenta de stock utilizada"
 
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
-msgstr "Costo"
+msgstr "Precio de costo"
 
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
@@ -125,7 +125,7 @@ msgstr "Producto"
 
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
-msgstr "Valor"
+msgstr "Importe"
 
 msgctxt "field:product.update_cost_price.show_move,counterpart:"
 msgid "Counterpart"
@@ -133,7 +133,7 @@ msgstr "Contrapartida"
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de Moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
@@ -145,15 +145,15 @@ msgstr "ID"
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro diario"
 
 msgctxt "field:product.update_cost_price.show_move,price_difference:"
 msgid "Price Difference"
-msgstr "Diferencia de Precio"
+msgstr "Diferencia de precio"
 
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
-msgstr "Cuenta de de Existencias"
+msgstr "Cuenta de stock"
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
@@ -177,25 +177,25 @@ msgstr "Se utilizará esta cuenta en lugar de la definida en la categoría."
 
 msgctxt "model:account.account.template,name:account_template_stock"
 msgid "Stock"
-msgstr "Existencias"
+msgstr "Stock"
 
 msgctxt "model:account.account.template,name:account_template_stock_customer"
 msgid "Stock Customer"
-msgstr "Existencias del Cliente"
+msgstr "Stock del cliente"
 
 msgctxt ""
 "model:account.account.template,name:account_template_stock_lost_found"
 msgid "Stock Lost and Found"
-msgstr "Existencias Perdidas y Encontradas"
+msgstr "Stock perdido y encontrado"
 
 msgctxt ""
 "model:account.account.template,name:account_template_stock_production"
 msgid "Stock Production"
-msgstr "Existencias de Producción"
+msgstr "Stock de producción"
 
 msgctxt "model:account.account.template,name:account_template_stock_supplier"
 msgid "Stock Supplier"
-msgstr "Existencias de Proveedor"
+msgstr "Stock del proveedor"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_current_inventories"
@@ -204,15 +204,15 @@ msgstr "Inventarios"
 
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
-msgstr "Actualizar Precio de Costo"
+msgstr "Actualizar precio de costo"
 
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
-msgstr "Solicitar Actualizar Precio de Costo"
+msgstr "Solicitar actualizar precio de costo"
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
-msgstr "Actualizar Precio de Costo - Mostrar Asiento"
+msgstr "Actualizar precio de costo - Mostrar asiento"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
@@ -224,15 +224,15 @@ msgstr "Ninguno"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
-msgstr "Cuenta de Existencias"
+msgstr "Cuenta de stock"
 
 msgctxt "view:product.update_cost_price.ask:"
 msgid "Update Cost Price"
-msgstr "Actualizar Precio de Costo"
+msgstr "Actualizar precio de costo"
 
 msgctxt "view:product.update_cost_price.show_move:"
 msgid "Update Cost Price - Move"
-msgstr "Actualizar Precio de Costo - Asiento"
+msgstr "Actualizar precio de costo - Asiento"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
@@ -240,11 +240,11 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "OK"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "OK"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
