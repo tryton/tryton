@@ -34,6 +34,10 @@ msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr "Debe cancelar la previsión «%s» antes de eliminar."
 
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Activo"
+
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -152,7 +156,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -209,6 +213,10 @@ msgstr "Previsión completa"
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Realizado"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
