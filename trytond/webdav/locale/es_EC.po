@@ -28,7 +28,7 @@ msgstr "Ruta"
 
 msgctxt "field:ir.attachment,shares:"
 msgid "Shares"
-msgstr "Recursos Compartidos"
+msgstr "Recursos compartidos"
 
 msgctxt "field:ir.attachment,url:"
 msgid "URL"
@@ -40,15 +40,15 @@ msgstr "Hijos"
 
 msgctxt "field:webdav.collection,complete_name:"
 msgid "Complete Name"
-msgstr "Nombre Completo"
+msgstr "Nombre completo"
 
 msgctxt "field:webdav.collection,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:webdav.collection,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:webdav.collection,domain:"
 msgid "Domain"
@@ -76,23 +76,23 @@ msgstr "Nombre"
 
 msgctxt "field:webdav.collection,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:webdav.collection,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:webdav.share,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:webdav.share,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:webdav.share,expiration_date:"
 msgid "Expiration Date"
-msgstr "Fecha de Expiración"
+msgstr "Fecha de expiración"
 
 msgctxt "field:webdav.share,id:"
 msgid "ID"
@@ -124,11 +124,11 @@ msgstr "Usuario"
 
 msgctxt "field:webdav.share,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:webdav.share,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_collection_list"
 msgid "Collections"
@@ -140,7 +140,7 @@ msgstr "Colecciones"
 
 msgctxt "model:ir.action,name:act_share_list"
 msgid "Shares"
-msgstr "Recursos Compartidos"
+msgstr "Recursos compartidos"
 
 msgctxt "model:ir.ui.menu,name:menu_collection_list"
 msgid "Collections"
@@ -152,7 +152,7 @@ msgstr "Colecciones"
 
 msgctxt "model:ir.ui.menu,name:menu_share_list"
 msgid "Shares"
-msgstr "Recursos Compartidos"
+msgstr "Recursos compartidos"
 
 msgctxt "model:ir.ui.menu,name:menu_webdav"
 msgid "WebDAV"
@@ -164,7 +164,7 @@ msgstr "Colección"
 
 msgctxt "model:webdav.share,name:"
 msgid "Share"
-msgstr "Recurso Compartido"
+msgstr "Recurso compartido"
 
 msgctxt "view:ir.attachment:"
 msgid "WebDAV"
@@ -180,8 +180,8 @@ msgstr "Colecciones"
 
 msgctxt "view:webdav.share:"
 msgid "Share"
-msgstr "Recurso Compartido"
+msgstr "Recurso compartido"
 
 msgctxt "view:webdav.share:"
 msgid "Shares"
-msgstr "Recursos Compartidos"
+msgstr "Recursos compartidos"
