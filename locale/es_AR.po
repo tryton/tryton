@@ -319,7 +319,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -491,7 +491,7 @@ msgstr "A ubicación"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
@@ -719,7 +719,7 @@ msgstr "Almacén de entrada"
 
 msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Depósito de almacenamiento"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.in,write_date:"
 msgid "Write Date"
@@ -947,7 +947,7 @@ msgstr "Almacén de salida"
 
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Depósito de almacenamiento"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.out,write_date:"
 msgid "Write Date"
@@ -1043,7 +1043,7 @@ msgstr "Almacén de entrada"
 
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Depósito de almacenamiento"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.out.return,write_date:"
 msgid "Write Date"
@@ -1858,6 +1858,10 @@ msgstr "Realizado"
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "En proceso"
 
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
