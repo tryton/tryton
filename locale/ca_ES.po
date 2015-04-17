@@ -64,7 +64,7 @@ msgid ""
 "You can not delete stock move \"%s\" because it is not in draft or cancelled"
 " state."
 msgstr ""
-"No podeu esborrar el moviment d'estoc \"%s\" perquè no està en estat "
+"No podeu eliminar el moviment d'estoc \"%s\" perquè no està en estat "
 "esborrany o cancel·lat."
 
 msgctxt "error:stock.move:"
@@ -85,7 +85,7 @@ msgid ""
 " state."
 msgstr ""
 "No podeu canviar el moviment d'estoc \"%s\" perquè es troba en l'estat "
-"\"Realitzat\" o \"Cancel·lat\"."
+"\"Finalitzat\" o \"Cancel·lat\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
@@ -93,7 +93,7 @@ msgstr "No podeu canviar el moviment d'estoc \"%s\" a estat reservat."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to done state."
-msgstr "No podeu canviar el moviment d'estoc \"%s\" a estat realitzat."
+msgstr "No podeu canviar el moviment d'estoc \"%s\" a estat finalitzat."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to draft state."
@@ -492,7 +492,7 @@ msgstr "A la ubicació"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals d'unitat"
+msgstr "Decimals de la unitat"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
@@ -1859,6 +1859,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Esborrany"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "En procés"
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr "Tancat"
@@ -2089,7 +2093,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
-msgstr "Finalitzat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
@@ -2113,7 +2117,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
-msgstr "Acabat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Incoming Moves"
@@ -2157,7 +2161,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
-msgstr "Finalitzat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
@@ -2197,7 +2201,7 @@ msgstr "Albarans devolució client"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
-msgstr "Finalitzat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
@@ -2233,7 +2237,7 @@ msgstr "Albarans client"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
-msgstr "Acabat"
+msgstr "Finalitza"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Draft"
@@ -2245,7 +2249,7 @@ msgstr "Moviments interns"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Make shipment"
-msgstr "Realitza enviament"
+msgstr "Empaqueta"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
