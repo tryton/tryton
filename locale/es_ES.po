@@ -154,7 +154,7 @@ msgstr "Tercero erróneo"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Tercero correcto"
+msgstr "Terceros correctos"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
@@ -410,6 +410,10 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
 
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Medios de contacto"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Terceros por categoría"
@@ -453,6 +457,10 @@ msgstr "Categorías"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Medios de contacto"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
