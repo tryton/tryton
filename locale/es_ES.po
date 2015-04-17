@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "El pago \"%s\" excede el importe del efecto \"%s\"."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "El pago \"%(payment)s\" paga en exceso el apunte \"%(line)s\"."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
@@ -52,7 +52,7 @@ msgstr "Moneda"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de moneda"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
