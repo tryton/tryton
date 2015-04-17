@@ -233,7 +233,7 @@ msgstr "Cancel·lat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Realitzat"
+msgstr "Finalitzat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
@@ -451,7 +451,7 @@ msgstr "Cancel·lat"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
-msgstr "Realitzat"
+msgstr "Finalitzat"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Draft"
@@ -468,6 +468,10 @@ msgstr "Entrada"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Sortida"
+
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Missatge generat"
 
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
