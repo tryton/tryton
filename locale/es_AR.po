@@ -232,7 +232,7 @@ msgstr "Unidad"
 
 msgctxt "field:sale.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
@@ -240,7 +240,7 @@ msgstr "Precio unitario"
 
 msgctxt "field:sale.line,warehouse:"
 msgid "Warehouse"
-msgstr "Depósito"
+msgstr "Almacén"
 
 msgctxt "field:sale.line,write_date:"
 msgid "Write Date"
@@ -372,7 +372,7 @@ msgstr "Moneda"
 
 msgctxt "field:sale.sale,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
@@ -413,6 +413,10 @@ msgstr "Líneas"
 msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Origen"
 
 msgctxt "field:sale.sale,party:"
 msgid "Party"
@@ -994,6 +998,10 @@ msgstr "Línea de venta"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Líneas de venta"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Impuestos"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
