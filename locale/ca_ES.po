@@ -34,6 +34,10 @@ msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr "Heu de cancel·lar la previsió \"%s\" abans de ser eliminat."
 
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Actiu"
+
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -208,7 +212,11 @@ msgstr "Previsió completa"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
-msgstr "Tots"
+msgstr "Totes"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Finalitzada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
@@ -249,7 +257,7 @@ msgstr "Cancel·lada"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
-msgstr "Acabada"
+msgstr "Finalitzada"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
@@ -257,11 +265,11 @@ msgstr "Esborrany"
 
 msgctxt "view:stock.forecast.complete.ask:"
 msgid "Choose dates"
-msgstr "Triar dates"
+msgstr "Seleccioneu dates"
 
 msgctxt "view:stock.forecast.complete.choose:"
 msgid "Choose products"
-msgstr "Triar productes"
+msgstr "Seleccioneu productes"
 
 msgctxt "view:stock.forecast.line:"
 msgid "Forecast Line"
@@ -301,7 +309,7 @@ msgstr "Restaura a esborrany"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
-msgstr "Seleccioni productes"
+msgstr "Selecciona productes"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
@@ -313,7 +321,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
-msgstr "Seleccioni dates"
+msgstr "Selecciona dates"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
