@@ -1859,6 +1859,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Borrador"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "Preparación"
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr "Cerrado"
