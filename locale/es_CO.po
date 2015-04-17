@@ -417,6 +417,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Origen"
+
 msgctxt "field:sale.sale,party:"
 msgid "Party"
 msgstr "Tercero"
@@ -998,6 +1002,10 @@ msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Líneas de Venta"
 
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Impuestos"
+
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr "Esta seguro que desea devolver esta(s) venta(s)?"
@@ -1008,7 +1016,7 @@ msgstr "Crear Devolución de Venta"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Anular"
 
 msgctxt "view:sale.sale:"
 msgid "Confirm"
