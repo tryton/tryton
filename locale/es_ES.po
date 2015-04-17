@@ -2,9 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Faltan algunas cuentas analíticas obligatorias en \"%(name)s\"."
+
 msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\"."
-msgstr "Se requiere la cuenta analítica en la línea \"%s\"."
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "La cuenta analítica de \"%(root)s\" es obligatoria en la línea \"%(line)s\"."
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -86,6 +90,10 @@ msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Cuentas analíticas"
 
+msgctxt "field:purchase.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Tamaño de cuentas analíticas"
+
 msgctxt "field:purchase.line,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -96,7 +104,7 @@ msgstr "Líneas de factura"
 
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
-msgstr "Movimientos realizados"
+msgstr "Movimientos finalizados"
 
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
@@ -356,7 +364,7 @@ msgstr "Confirmada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
