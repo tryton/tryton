@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr "Creado por Usuario"
+msgstr "Fecha de Creación"
 
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
@@ -68,7 +68,7 @@ msgstr "Kit"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr "Creado por Usuario"
+msgstr "Fecha de Creación"
 
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
