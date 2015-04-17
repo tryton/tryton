@@ -265,6 +265,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
+        <record model="ir.model.access" id="access_ir_model_data_admin">
+            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
         <record model="ir.model.access" id="access_ir_cron">
             <field name="model" search="[('model', '=', 'ir.cron')]"/>
             <field name="perm_read" eval="True"/>
