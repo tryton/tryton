@@ -60,6 +60,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "UdM calculada"
 
+msgctxt "field:purchase.request,computed_uom_digits:"
+msgid "Computed UOM Digits"
+msgstr "Decimales de UdM calculada"
+
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -67,6 +71,10 @@ msgstr "Fecha creación"
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
 msgstr "Usuario creación"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Decimales de UdM por defecto"
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
@@ -119,6 +127,10 @@ msgstr "Fecha estimada de suministro"
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
 msgstr "UdM"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "Decimales de UdM"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -198,7 +210,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr "Ubicación del depósito"
+msgstr "Ubicación de depósito"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
@@ -210,7 +222,7 @@ msgstr "Unidad"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
@@ -233,6 +245,14 @@ msgid "Purchases"
 msgstr "Compras"
 
 msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
 msgstr "Reglas de abastecimiento"
 
