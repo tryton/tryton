@@ -7,8 +7,8 @@ msgid ""
 "You are trying to create a recursive BOM with product \"%s\" which is not "
 "allowed."
 msgstr ""
-"Está intentando crear una LDM recursiva con el producto \"%s\" que no está "
-"permitido."
+"Está intentando crear una LDM recursiva con el producto \"%s\" lo cual no "
+"está permitido."
 
 msgctxt "error:production.bom.input:"
 msgid "Product must be unique per BOM."
@@ -28,7 +28,7 @@ msgstr "El producto debe ser único por LDM."
 
 msgctxt "error:production.bom.output:"
 msgid "You can not create recursive BOMs."
-msgstr "No puede crear LDMs recursivas!"
+msgstr "No puede crear LDMs recursivas."
 
 msgctxt "error:production.bom.output:"
 msgid "product_bom_uniq"
@@ -52,11 +52,11 @@ msgstr "LDM"
 
 msgctxt "field:product.product-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.product-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
@@ -76,11 +76,11 @@ msgstr "Secuencia"
 
 msgctxt "field:product.product-production.bom,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
@@ -100,11 +100,11 @@ msgstr "Costo"
 
 msgctxt "field:production,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:production,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -160,19 +160,19 @@ msgstr "UdM"
 
 msgctxt "field:production,uom_category:"
 msgid "Uom Category"
-msgstr "Categoría UdM"
+msgstr "Categoría de UdM"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
-msgstr "Depósito"
+msgstr "Almacén"
 
 msgctxt "field:production,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:production,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:production.assign.failed,id:"
 msgid "ID"
@@ -188,11 +188,11 @@ msgstr "Activo"
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:production.bom,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:production.bom,id:"
 msgid "ID"
@@ -220,11 +220,11 @@ msgstr "Nombre"
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:production.bom,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
@@ -232,11 +232,11 @@ msgstr "LDM"
 
 msgctxt "field:production.bom.input,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:production.bom.input,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
@@ -264,15 +264,15 @@ msgstr "UdM"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
-msgstr "Categoría UdM"
+msgstr "Categoría de UdM"
 
 msgctxt "field:production.bom.input,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:production.bom.input,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
@@ -280,11 +280,11 @@ msgstr "LDM"
 
 msgctxt "field:production.bom.output,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:production.bom.output,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
@@ -312,15 +312,15 @@ msgstr "UdM"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
-msgstr "Categoría UdM"
+msgstr "Categoría de UdM"
 
 msgctxt "field:production.bom.output,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:production.bom.output,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
@@ -376,7 +376,7 @@ msgstr "Unidad"
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt "field:production.bom.tree.open.tree,id:"
 msgid "ID"
@@ -384,11 +384,11 @@ msgstr "ID"
 
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:production.configuration,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:production.configuration,id:"
 msgid "ID"
@@ -404,11 +404,11 @@ msgstr "Nombre"
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
@@ -448,7 +448,7 @@ msgstr "Asignar Producción"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -458,7 +458,7 @@ msgstr "Todo"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Asignado"
+msgstr "Asignada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
@@ -490,7 +490,7 @@ msgstr "Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr "Listas de Materiales"
+msgstr "LDMs"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -538,7 +538,7 @@ msgstr "Salida de Lista de Materiales"
 
 msgctxt "model:production.bom.tree,name:"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
@@ -560,13 +560,9 @@ msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
 msgstr "Administración de Producción"
 
-msgctxt "model:stock.location,name:location_production"
-msgid "Production"
-msgstr "Producción"
-
 msgctxt "selection:production,state:"
 msgid "Assigned"
-msgstr "Asignado"
+msgstr "Asignada"
 
 msgctxt "selection:production,state:"
 msgid "Canceled"
@@ -582,7 +578,7 @@ msgstr "Borrador"
 
 msgctxt "selection:production,state:"
 msgid "Request"
-msgstr "Solicitud"
+msgstr "Solicitada"
 
 msgctxt "selection:production,state:"
 msgid "Running"
@@ -610,23 +606,23 @@ msgstr "No se pueden asignar estos productos:"
 
 msgctxt "view:production.bom.input:"
 msgid "BOM Inputs"
-msgstr "Entradas LDM"
+msgstr "Entradas de LDM"
 
 msgctxt "view:production.bom.output:"
 msgid "BOM Outputs"
-msgstr "Salidas LDM"
+msgstr "Salidas de LDM"
 
 msgctxt "view:production.bom.tree.open.start:"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt "view:production.bom.tree.open.tree:"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
-msgstr "Árbol LDM"
+msgstr "Árbol de LDM"
 
 msgctxt "view:production.bom:"
 msgid "BOM"
@@ -654,7 +650,7 @@ msgstr "Cancelar"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Realizada"
 
 msgctxt "view:production:"
 msgid "Draft"
@@ -677,12 +673,16 @@ msgid "Productions"
 msgstr "Producciones"
 
 msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Restablecer a LDM"
+
+msgctxt "view:production:"
 msgid "Run"
 msgstr "Ejecutar"
 
 msgctxt "view:production:"
 msgid "Wait"
-msgstr "Espera"
+msgstr "En Espera"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
