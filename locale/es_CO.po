@@ -650,7 +650,7 @@ msgstr "Administración de Productos"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Activo Fijo"
+msgstr "Activos Fijos"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
@@ -670,7 +670,7 @@ msgstr "Fijo"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Activo Fijo"
+msgstr "Activos Fijos"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
