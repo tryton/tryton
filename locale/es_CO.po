@@ -102,7 +102,7 @@ msgstr "Identificación de Solo Lectura"
 
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
-msgstr "Terceros"
+msgstr "Tercero"
 
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
@@ -178,7 +178,7 @@ msgstr "Tipo"
 
 msgctxt "field:account.payment.sepa.message,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
@@ -462,6 +462,10 @@ msgstr "ENTRADA"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "SALIDA"
+
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Generar Mensaje"
 
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
