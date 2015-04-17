@@ -2,238 +2,1154 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:bank.account.number:"
-msgid "Invalid IBAN \"%s\"."
-msgstr "Inválido IBAN \"%s\"."
+msgctxt "error:calendar.calendar:"
+msgid "A user can have only one calendar."
+msgstr "Un usuario solo puede tener un calendario."
 
-msgctxt "field:bank,bic:"
-msgid "BIC"
-msgstr "CIB"
+msgctxt "error:calendar.calendar:"
+msgid "Calendar name \"%s\" can not end with .ics"
+msgstr "El nombre del calendario \"%s\" no puede terminar con .ics"
 
-msgctxt "field:bank,create_date:"
+msgctxt "error:calendar.calendar:"
+msgid "The name of calendar must be unique."
+msgstr "El nombre de calendario debe ser único."
+
+msgctxt "error:calendar.category:"
+msgid "The name of calendar category must be unique."
+msgstr "¡El nombre de la categoría de calendario debe ser único!"
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Hour\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Hora\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Minute\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Minuto\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Month Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día del Mes\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Month\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Mes\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Position\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Position\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Second\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Segundo\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Week Number\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Número de la Semana\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Invalid \"By Year Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día del Año\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.exrule:"
+msgid "Only one of \"until\" and \"count\" can be set."
+msgstr "Solo un \"hasta\" y \"contar\" pude ser establecido!"
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Hour\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Hora\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Minute\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Minuto\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Month Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día del Mes\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Month\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Mes\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Position\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Posición\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Second\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Segundo\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Week Number\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Número de Semana\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Invalid \"By Year Day\" in recurrence rule \"%s\""
+msgstr "Inválido \"Por Día del Año\" en regla recurrente \"%s\""
+
+msgctxt "error:calendar.event.rrule:"
+msgid "Only one of \"until\" and \"count\" can be set."
+msgstr "Solo un \"hasta\" y \"contar\" pude ser establecido!"
+
+msgctxt "error:calendar.event:"
+msgid "Recurrence \"%s\" can not be recurrent."
+msgstr "Recurrencia \"%s\" no puede ser recurrente."
+
+msgctxt "error:calendar.event:"
+msgid "UUID and recurrence must be unique in a calendar."
+msgstr "UUID y recurrencia debe ser única en un calendario."
+
+msgctxt "error:calendar.location:"
+msgid "The name of calendar location must be unique."
+msgstr "El nombre de la ubicación del calendario bede ser único."
+
+msgctxt "field:calendar.calendar,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
 
-msgctxt "field:bank,create_uid:"
+msgctxt "field:calendar.calendar,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-msgctxt "field:bank,id:"
+msgctxt "field:calendar.calendar,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:calendar.calendar,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:bank,party:"
-msgid "Party"
-msgstr "Tercero"
-
-msgctxt "field:bank,rec_name:"
+msgctxt "field:calendar.calendar,name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "Modificado por Usuario"
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "Modificado por Usuario"
-
-msgctxt "field:bank.account,bank:"
-msgid "Bank"
-msgstr "Banco"
-
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "Fecha de Creación"
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "Creado por Usuario"
-
-msgctxt "field:bank.account,currency:"
-msgid "Currency"
-msgstr "Moneda"
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:bank.account,numbers:"
-msgid "Numbers"
-msgstr "Números"
-
-msgctxt "field:bank.account,owners:"
-msgid "Owners"
-msgstr "Propietario"
-
-msgctxt "field:bank.account,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "Fecha de Modificación"
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "Modificado por Usuario"
-
-msgctxt "field:bank.account-party.party,account:"
-msgid "Account"
-msgstr "Cuenta"
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "Fecha de Creación"
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "Creado por Usuario"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:bank.account-party.party,owner:"
+msgctxt "field:calendar.calendar,owner:"
 msgid "Owner"
 msgstr "Propietario"
 
-msgctxt "field:bank.account-party.party,rec_name:"
+msgctxt "field:calendar.calendar,read_users:"
+msgid "Read Users"
+msgstr "Usuarios que pueden Leer"
+
+msgctxt "field:calendar.calendar,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:bank.account-party.party,write_date:"
+msgctxt "field:calendar.calendar,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
 
-msgctxt "field:bank.account-party.party,write_uid:"
+msgctxt "field:calendar.calendar,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-msgctxt "field:bank.account.number,account:"
-msgid "Account"
-msgstr "Cuenta"
+msgctxt "field:calendar.calendar,write_users:"
+msgid "Write Users"
+msgstr "Modificado por Usuario"
 
-msgctxt "field:bank.account.number,create_date:"
+msgctxt "field:calendar.calendar-read-res.user,calendar:"
+msgid "Calendar"
+msgstr "Calendario"
+
+msgctxt "field:calendar.calendar-read-res.user,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
 
-msgctxt "field:bank.account.number,create_uid:"
+msgctxt "field:calendar.calendar-read-res.user,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-msgctxt "field:bank.account.number,id:"
+msgctxt "field:calendar.calendar-read-res.user,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:bank.account.number,number:"
-msgid "Number"
-msgstr "Número"
-
-msgctxt "field:bank.account.number,number_compact:"
-msgid "Number Compact"
-msgstr "Número Compacto"
-
-msgctxt "field:bank.account.number,rec_name:"
+msgctxt "field:calendar.calendar-read-res.user,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
+msgctxt "field:calendar.calendar-read-res.user,user:"
+msgid "User"
+msgstr "Usuario"
 
-msgctxt "field:bank.account.number,type:"
-msgid "Type"
-msgstr "Tipo"
-
-msgctxt "field:bank.account.number,write_date:"
+msgctxt "field:calendar.calendar-read-res.user,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
 
-msgctxt "field:bank.account.number,write_uid:"
+msgctxt "field:calendar.calendar-read-res.user,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-msgctxt "field:party.party,bank_accounts:"
-msgid "Bank Accounts"
-msgstr "Cuenta Bancaria"
+msgctxt "field:calendar.calendar-write-res.user,calendar:"
+msgid "Calendar"
+msgstr "Calendario"
 
-msgctxt "help:bank,bic:"
-msgid "Bank/Business Identifier Code"
-msgstr "Código de Identificación del Banco"
+msgctxt "field:calendar.calendar-write-res.user,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
 
-msgctxt "model:bank,name:"
-msgid "Bank"
-msgstr "Banco"
+msgctxt "field:calendar.calendar-write-res.user,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
 
-msgctxt "model:bank.account,name:"
-msgid "Bank Account"
-msgstr "Cuenta Bancaria"
+msgctxt "field:calendar.calendar-write-res.user,id:"
+msgid "ID"
+msgstr "ID"
 
-msgctxt "model:bank.account-party.party,name:"
-msgid "Bank Account - Party"
-msgstr "Cuenta Bancaria - Tercero"
+msgctxt "field:calendar.calendar-write-res.user,rec_name:"
+msgid "Name"
+msgstr "Nombre"
 
-msgctxt "model:bank.account.number,name:"
-msgid "Bank Account Number"
-msgstr "Número de Cuenta de Bancaria"
+msgctxt "field:calendar.calendar-write-res.user,user:"
+msgid "User"
+msgstr "Usuario"
 
-msgctxt "model:ir.action,name:act_bank_account_form"
-msgid "Accounts"
-msgstr "Cuentas"
+msgctxt "field:calendar.calendar-write-res.user,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
 
-msgctxt "model:ir.action,name:act_bank_form"
-msgid "Banks"
-msgstr "Bancos"
+msgctxt "field:calendar.calendar-write-res.user,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
 
-msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
-msgid "Accounts"
-msgstr "Cuentas Bancarias"
+msgctxt "field:calendar.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
 
-msgctxt "model:ir.ui.menu,name:menu_bank_form"
-msgid "Banks"
-msgstr "Bancos"
+msgctxt "field:calendar.category,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
 
-msgctxt "model:ir.ui.menu,name:menu_banking"
-msgid "Banking"
-msgstr "Bancos"
+msgctxt "field:calendar.category,id:"
+msgid "ID"
+msgstr "ID"
 
-msgctxt "model:res.group,name:group_bank_admin"
-msgid "Bank Administration"
-msgstr "Administración de Bancos"
+msgctxt "field:calendar.category,name:"
+msgid "Name"
+msgstr "Nombre"
 
-msgctxt "selection:bank.account.number,type:"
-msgid "IBAN"
-msgstr "IBAN"
+msgctxt "field:calendar.category,rec_name:"
+msgid "Name"
+msgstr "Nombre"
 
-msgctxt "selection:bank.account.number,type:"
-msgid "Other"
-msgstr "Otro"
+msgctxt "field:calendar.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
 
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Number"
-msgstr "Números de Cuenta Bancaria"
+msgctxt "field:calendar.category,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
 
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr "Números de Cuentas Bancarias"
+msgctxt "field:calendar.event,alarms:"
+msgid "Alarms"
+msgstr "Alarmas"
 
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr "Cuenta Bancaria"
+msgctxt "field:calendar.event,all_day:"
+msgid "All Day"
+msgstr "Todo el Día"
 
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr "Cuentas Bancaria"
+msgctxt "field:calendar.event,attendees:"
+msgid "Attendees"
+msgstr "Asistentes"
 
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr "Banco"
+msgctxt "field:calendar.event,calendar:"
+msgid "Calendar"
+msgstr "Calendario"
 
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr "Bancos"
+msgctxt "field:calendar.event,categories:"
+msgid "Categories"
+msgstr "Categorías"
 
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr "Banco"
+msgctxt "field:calendar.event,classification:"
+msgid "Classification"
+msgstr "Clasificación"
+
+msgctxt "field:calendar.event,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:calendar.event,dtend:"
+msgid "End Date"
+msgstr "Fecha Final"
+
+msgctxt "field:calendar.event,dtstart:"
+msgid "Start Date"
+msgstr "Fecha Inicial"
+
+msgctxt "field:calendar.event,exdates:"
+msgid "Exception Dates"
+msgstr "Fechas de Excepción"
+
+msgctxt "field:calendar.event,exrules:"
+msgid "Exception Rules"
+msgstr "Reglas de Excepción"
+
+msgctxt "field:calendar.event,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event,location:"
+msgid "Location"
+msgstr "Lugar"
+
+msgctxt "field:calendar.event,occurences:"
+msgid "Occurences"
+msgstr "Ocurrencias"
+
+msgctxt "field:calendar.event,organizer:"
+msgid "Organizer"
+msgstr "Organizador"
+
+msgctxt "field:calendar.event,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:calendar.event,rdates:"
+msgid "Recurrence Dates"
+msgstr "Fechas de Repetición"
+
+msgctxt "field:calendar.event,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event,recurrence:"
+msgid "Recurrence"
+msgstr "Repetición"
+
+msgctxt "field:calendar.event,rrules:"
+msgid "Recurrence Rules"
+msgstr "Reglas de Repetición"
+
+msgctxt "field:calendar.event,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:calendar.event,status:"
+msgid "Status"
+msgstr "Estado"
+
+msgctxt "field:calendar.event,summary:"
+msgid "Summary"
+msgstr "Resumen"
+
+msgctxt "field:calendar.event,timezone:"
+msgid "Timezone"
+msgstr "Zona Horaria"
+
+msgctxt "field:calendar.event,transp:"
+msgid "Time Transparency"
+msgstr "Transparencia de Tiempo"
+
+msgctxt "field:calendar.event,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:calendar.event,vevent:"
+msgid "vevent"
+msgstr "vevento"
+
+msgctxt "field:calendar.event,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event-calendar.category,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:calendar.event-calendar.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event-calendar.category,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event-calendar.category,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event-calendar.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event-calendar.category,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event-calendar.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event-calendar.category,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.alarm,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.alarm,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.alarm,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.alarm,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.alarm,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.alarm,valarm:"
+msgid "valarm"
+msgstr "valarma"
+
+msgctxt "field:calendar.event.alarm,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.alarm,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.attendee,attendee:"
+msgid "attendee"
+msgstr "Asistente"
+
+msgctxt "field:calendar.event.attendee,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.attendee,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.attendee,email:"
+msgid "Email"
+msgstr "Correo Electrónico"
+
+msgctxt "field:calendar.event.attendee,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.attendee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.attendee,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.attendee,status:"
+msgid "Participation Status"
+msgstr "Estado de Participación"
+
+msgctxt "field:calendar.event.attendee,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.attendee,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.exdate,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.exdate,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.exdate,date:"
+msgid "Is Date"
+msgstr "Esta Fecha"
+
+msgctxt "field:calendar.event.exdate,datetime:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:calendar.event.exdate,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.exdate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.exdate,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.exdate,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.exdate,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.exrule,byday:"
+msgid "By Day"
+msgstr "Por Día"
+
+msgctxt "field:calendar.event.exrule,byhour:"
+msgid "By Hour"
+msgstr "Por Hora"
+
+msgctxt "field:calendar.event.exrule,byminute:"
+msgid "By Minute"
+msgstr "Por Minuto"
+
+msgctxt "field:calendar.event.exrule,bymonth:"
+msgid "By Month"
+msgstr "Por Mes"
+
+msgctxt "field:calendar.event.exrule,bymonthday:"
+msgid "By Month Day"
+msgstr "Por Día del Mes"
+
+msgctxt "field:calendar.event.exrule,bysecond:"
+msgid "By Second"
+msgstr "Por Segundo"
+
+msgctxt "field:calendar.event.exrule,bysetpos:"
+msgid "By Position"
+msgstr "Por Posición"
+
+msgctxt "field:calendar.event.exrule,byweekno:"
+msgid "By Week Number"
+msgstr "Por Número de la Semana"
+
+msgctxt "field:calendar.event.exrule,byyearday:"
+msgid "By Year Day"
+msgstr "Por Día del Año"
+
+msgctxt "field:calendar.event.exrule,count:"
+msgid "Count"
+msgstr "Contar"
+
+msgctxt "field:calendar.event.exrule,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.exrule,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.exrule,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.exrule,freq:"
+msgid "Frequency"
+msgstr "Frecuencia"
+
+msgctxt "field:calendar.event.exrule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.exrule,interval:"
+msgid "Interval"
+msgstr "Intervalo"
+
+msgctxt "field:calendar.event.exrule,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.exrule,until:"
+msgid "Until Date"
+msgstr "Hasta la Fecha"
+
+msgctxt "field:calendar.event.exrule,until_date:"
+msgid "Is Date"
+msgstr "Esta Fecha"
+
+msgctxt "field:calendar.event.exrule,wkst:"
+msgid "Week Day"
+msgstr "Día de Semana"
+
+msgctxt "field:calendar.event.exrule,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.exrule,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.rdate,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.rdate,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.rdate,date:"
+msgid "Is Date"
+msgstr "Esta Fecha"
+
+msgctxt "field:calendar.event.rdate,datetime:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:calendar.event.rdate,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.rdate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.rdate,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.rdate,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.rdate,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.event.rrule,byday:"
+msgid "By Day"
+msgstr "Por Día"
+
+msgctxt "field:calendar.event.rrule,byhour:"
+msgid "By Hour"
+msgstr "Por Hora"
+
+msgctxt "field:calendar.event.rrule,byminute:"
+msgid "By Minute"
+msgstr "Por Minuto"
+
+msgctxt "field:calendar.event.rrule,bymonth:"
+msgid "By Month"
+msgstr "Por Mes"
+
+msgctxt "field:calendar.event.rrule,bymonthday:"
+msgid "By Month Day"
+msgstr "Por Día del Mes"
+
+msgctxt "field:calendar.event.rrule,bysecond:"
+msgid "By Second"
+msgstr "Por Segundo"
+
+msgctxt "field:calendar.event.rrule,bysetpos:"
+msgid "By Position"
+msgstr "Por Posición"
+
+msgctxt "field:calendar.event.rrule,byweekno:"
+msgid "By Week Number"
+msgstr "Por Número de la Semana"
+
+msgctxt "field:calendar.event.rrule,byyearday:"
+msgid "By Year Day"
+msgstr "Por Día del Año"
+
+msgctxt "field:calendar.event.rrule,count:"
+msgid "Count"
+msgstr "Contar"
+
+msgctxt "field:calendar.event.rrule,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.event.rrule,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.event.rrule,event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "field:calendar.event.rrule,freq:"
+msgid "Frequency"
+msgstr "Frecuencia"
+
+msgctxt "field:calendar.event.rrule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.event.rrule,interval:"
+msgid "Interval"
+msgstr "Intervalo"
+
+msgctxt "field:calendar.event.rrule,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.event.rrule,until:"
+msgid "Until Date"
+msgstr "Hasta la Fecha"
+
+msgctxt "field:calendar.event.rrule,until_date:"
+msgid "Is Date"
+msgstr "Esta Fecha"
+
+msgctxt "field:calendar.event.rrule,wkst:"
+msgid "Week Day"
+msgstr "Día de Semana"
+
+msgctxt "field:calendar.event.rrule,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.event.rrule,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:calendar.location,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:calendar.location,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:calendar.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:calendar.location,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.location,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:calendar.location,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:calendar.location,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:res.user,calendars:"
+msgid "Calendars"
+msgstr "Calendarios"
+
+msgctxt "help:calendar.calendar,owner:"
+msgid "The user must have an email"
+msgstr "El usuario debe tener un email"
+
+msgctxt "help:calendar.event,uuid:"
+msgid "Universally Unique Identifier"
+msgstr "Identificador Único Universal"
+
+msgctxt "help:calendar.event.exdate,date:"
+msgid "Ignore time of field \"Date\", but handle as date only."
+msgstr "Ignore tiempo del campo \"Fecha\", pero manejelo como fecha solamente."
+
+msgctxt "help:calendar.event.exrule,until_date:"
+msgid "Ignore time of field \"Until Date\", but handle as date only."
+msgstr ""
+"Ignore tiempo del campo \"Hasta la Fecha\", pero manejelo como fecha "
+"solamente."
+
+msgctxt "help:calendar.event.rdate,date:"
+msgid "Ignore time of field \"Date\", but handle as date only."
+msgstr "Ignore tiempo del campo \"Fecha\", pero manejelo como fecha solamente."
+
+msgctxt "help:calendar.event.rrule,until_date:"
+msgid "Ignore time of field \"Until Date\", but handle as date only."
+msgstr ""
+"Ignore tiempo del campo \"Hasta la Fecha\", pero manejelo como fecha "
+"solamente."
+
+msgctxt "model:calendar.calendar,name:"
+msgid "Calendar"
+msgstr "Calendario"
+
+msgctxt "model:calendar.calendar-read-res.user,name:"
+msgid "Calendar - read - User"
+msgstr "Calendario - leer - Usuario"
+
+msgctxt "model:calendar.calendar-write-res.user,name:"
+msgid "Calendar - write - User"
+msgstr "Calendario - escribir - Usuario"
+
+msgctxt "model:calendar.category,name:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "model:calendar.event,name:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "model:calendar.event-calendar.category,name:"
+msgid "Event - Category"
+msgstr "Evento - Categoría"
+
+msgctxt "model:calendar.event.alarm,name:"
+msgid "Alarm"
+msgstr "Alarma"
+
+msgctxt "model:calendar.event.attendee,name:"
+msgid "Attendee"
+msgstr "Asistente"
+
+msgctxt "model:calendar.event.exdate,name:"
+msgid "Exception Date"
+msgstr "Fecha de Excepción"
+
+msgctxt "model:calendar.event.exrule,name:"
+msgid "Exception Rule"
+msgstr "Regla de Excepción"
+
+msgctxt "model:calendar.event.rdate,name:"
+msgid "Recurrence Date"
+msgstr "Fecha de Repetición"
+
+msgctxt "model:calendar.event.rrule,name:"
+msgid "Recurrence Rule"
+msgstr "Regla de Repetición"
+
+msgctxt "model:calendar.location,name:"
+msgid "Location"
+msgstr "Lugar"
+
+msgctxt "model:ir.action,name:act_calendar_form"
+msgid "Calendars"
+msgstr "Calendarios"
+
+msgctxt "model:ir.action,name:act_event_form"
+msgid "Events"
+msgstr "Eventos"
+
+msgctxt "model:ir.action,name:act_event_form3"
+msgid "Events"
+msgstr "Eventos"
+
+msgctxt "model:ir.ui.menu,name:menu_calendar"
+msgid "Calendar"
+msgstr "Calendario"
+
+msgctxt "model:ir.ui.menu,name:menu_calendar_form"
+msgid "Calendars"
+msgstr "Calendarios"
+
+msgctxt "model:ir.ui.menu,name:menu_event_form"
+msgid "Events"
+msgstr "Eventos"
+
+msgctxt "model:res.group,name:group_calendar_admin"
+msgid "Calendar Administration"
+msgstr "Administración Calendario"
+
+msgctxt "selection:calendar.event,classification:"
+msgid "Confidential"
+msgstr "Confidencial"
+
+msgctxt "selection:calendar.event,classification:"
+msgid "Private"
+msgstr "Privado"
+
+msgctxt "selection:calendar.event,classification:"
+msgid "Public"
+msgstr "Público"
+
+msgctxt "selection:calendar.event,status:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:calendar.event,status:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:calendar.event,status:"
+msgid "Confirmed"
+msgstr "Confirmado"
+
+msgctxt "selection:calendar.event,status:"
+msgid "Tentative"
+msgstr "Tentativa"
+
+msgctxt "selection:calendar.event,transp:"
+msgid "Opaque"
+msgstr "Opaco"
+
+msgctxt "selection:calendar.event,transp:"
+msgid "Transparent"
+msgstr "Transparente"
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid "Accepted"
+msgstr "Aceptado"
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid "Declined"
+msgstr "Declinado"
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid "Delegated"
+msgstr "Delegado"
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid "Needs Action"
+msgstr "Necesita una Acción"
+
+msgctxt "selection:calendar.event.attendee,status:"
+msgid "Tentative"
+msgstr "Tentativa"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Daily"
+msgstr "Diario"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Hourly"
+msgstr "Cada Hora"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Minutely"
+msgstr "Cada Minuto"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Monthly"
+msgstr "Mensualmente"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Secondly"
+msgstr "En segundo lugar"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Weekly"
+msgstr "Semanalmente"
+
+msgctxt "selection:calendar.event.exrule,freq:"
+msgid "Yearly"
+msgstr "Anualmente"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Friday"
+msgstr "Viernes"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Monday"
+msgstr "Lunes"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Saturday"
+msgstr "Sábado"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Sunday"
+msgstr "Domingo"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Thursday"
+msgstr "Jueves"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Tuesday"
+msgstr "Martes"
+
+msgctxt "selection:calendar.event.exrule,wkst:"
+msgid "Wednesday"
+msgstr "Miércoles"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Daily"
+msgstr "Diario"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Hourly"
+msgstr "Cada Hora"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Minutely"
+msgstr "Cada Minuto"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Monthly"
+msgstr "Mensualmente"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Secondly"
+msgstr "En segundo lugar"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Weekly"
+msgstr "Semanalmente"
+
+msgctxt "selection:calendar.event.rrule,freq:"
+msgid "Yearly"
+msgstr "Anualmente"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Friday"
+msgstr "Viernes"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Monday"
+msgstr "Lunes"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Saturday"
+msgstr "Sábado"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Sunday"
+msgstr "Domingo"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Thursday"
+msgstr "Jueves"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Tuesday"
+msgstr "Martes"
+
+msgctxt "selection:calendar.event.rrule,wkst:"
+msgid "Wednesday"
+msgstr "Miércoles"
+
+msgctxt "view:calendar.calendar:"
+msgid "Access Permissions"
+msgstr "Permisos de Acceso"
+
+msgctxt "view:calendar.calendar:"
+msgid "Calendar"
+msgstr "Calendario"
+
+msgctxt "view:calendar.calendar:"
+msgid "Calendars"
+msgstr "Calendarios"
+
+msgctxt "view:calendar.calendar:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:calendar.category:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "view:calendar.category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "view:calendar.event.attendee:"
+msgid "Attendee"
+msgstr "Asistente"
+
+msgctxt "view:calendar.event.attendee:"
+msgid "Attendees"
+msgstr "Asistentes"
+
+msgctxt "view:calendar.event.exdate:"
+msgid "Exception Date"
+msgstr "Fecha de Excepción"
+
+msgctxt "view:calendar.event.exdate:"
+msgid "Exception Dates"
+msgstr "Fechas de Excepción"
+
+msgctxt "view:calendar.event.exdate:"
+msgid "Time"
+msgstr "Tiempo"
+
+msgctxt "view:calendar.event.exrule:"
+msgid "Exception Rule"
+msgstr "Regla de Excepción"
+
+msgctxt "view:calendar.event.exrule:"
+msgid "Exception Rules"
+msgstr "Reglas de Excepción"
+
+msgctxt "view:calendar.event.rdate:"
+msgid "Recurrence Date"
+msgstr "Fecha de Repetición"
+
+msgctxt "view:calendar.event.rdate:"
+msgid "Recurrence Dates"
+msgstr "Fechas de Repetición"
+
+msgctxt "view:calendar.event.rdate:"
+msgid "Time"
+msgstr "Tiempo"
+
+msgctxt "view:calendar.event.rrule:"
+msgid "Recurrence Rule"
+msgstr "Regla de Repetición"
+
+msgctxt "view:calendar.event.rrule:"
+msgid "Recurrence Rules"
+msgstr "Reglas de Repetición"
+
+msgctxt "view:calendar.event:"
+msgid "Attendees"
+msgstr "Asistentes"
+
+msgctxt "view:calendar.event:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "view:calendar.event:"
+msgid "End Time"
+msgstr "Hora Final"
+
+msgctxt "view:calendar.event:"
+msgid "Event"
+msgstr "Evento"
+
+msgctxt "view:calendar.event:"
+msgid "Events"
+msgstr "Eventos"
+
+msgctxt "view:calendar.event:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:calendar.event:"
+msgid "Occurences"
+msgstr "Ocurrencias"
+
+msgctxt "view:calendar.event:"
+msgid "Start Time"
+msgstr "Hora de Inicio"
+
+msgctxt "view:calendar.location:"
+msgid "Location"
+msgstr "Lugar"
+
+msgctxt "view:calendar.location:"
+msgid "Locations"
+msgstr "Lugares"
