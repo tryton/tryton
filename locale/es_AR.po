@@ -8,7 +8,7 @@ msgstr "Moneda"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Dígitos moneda del peso"
+msgstr "Decimales de moneda del peso"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
