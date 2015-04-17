@@ -40,7 +40,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimals de moneda"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -224,7 +224,7 @@ msgstr "Totes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Realitzada"
+msgstr "Finalitzada"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -256,7 +256,7 @@ msgstr "Reclamació"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Realitzada"
+msgstr "Finalitzada"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
