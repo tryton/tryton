@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Valores de factor y ratio en UdM \"%s\" no correctos."
+msgstr "Los valores de factor y conversión de la UdM \"%s\" no son correctos."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
