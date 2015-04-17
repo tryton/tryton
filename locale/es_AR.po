@@ -40,7 +40,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -60,7 +60,7 @@ msgstr "Fecha vencimiento"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Entidades"
+msgstr "Entidad"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
@@ -76,7 +76,7 @@ msgstr "Segunda moneda"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Decimales moneda secundaria"
+msgstr "Decimales de moneda secundaria"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
