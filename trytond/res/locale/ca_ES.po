@@ -8,7 +8,7 @@ msgstr "El nom del grup ha de ser únic."
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
-msgstr "Contrasenya incorrecta."
+msgstr "La contrasenya és incorrecta."
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
