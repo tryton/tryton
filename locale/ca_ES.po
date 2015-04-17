@@ -453,12 +453,12 @@ msgstr "Arbre de la llista de materials"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Totes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Reservat"
+msgstr "Reservada"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
@@ -574,7 +574,7 @@ msgstr "Cancel·lada"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Realitzada"
+msgstr "Finalitzada"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -654,7 +654,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Realitzat"
+msgstr "Finalitza"
 
 msgctxt "view:production:"
 msgid "Draft"
@@ -675,6 +675,10 @@ msgstr "Producció"
 msgctxt "view:production:"
 msgid "Productions"
 msgstr "Produccions"
+
+msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Reestableix amb la LdM"
 
 msgctxt "view:production:"
 msgid "Run"
