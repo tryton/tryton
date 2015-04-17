@@ -133,7 +133,7 @@ msgstr "Contrapartida"
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
@@ -224,7 +224,7 @@ msgstr "Ninguno"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
-msgstr "Cuenta de existencias"
+msgstr "Contabilización de existencias"
 
 msgctxt "view:product.update_cost_price.ask:"
 msgid "Update Cost Price"
