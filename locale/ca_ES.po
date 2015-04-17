@@ -16,7 +16,7 @@ msgstr "Quantitat"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals unitaris"
+msgstr "Decimals de la unitat"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
