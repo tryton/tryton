@@ -12,7 +12,7 @@ msgstr "¡Contraseña incorrecta!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr "No puede tener dos usuarios con el mismo nombre de usuario"
+msgstr "¡No puede tener dos usuarios con el mismo nombre de usuario!"
 
 msgctxt "error:res.user:"
 msgid ""
@@ -538,7 +538,7 @@ msgstr "Usuario modificación"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
-msgstr "Los grupos son autorizados para editar secuencias en este tipo"
+msgstr "Los grupos autorizados para editar las secuencias de este tipo"
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
@@ -646,7 +646,7 @@ msgstr "Cancelar instalación"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Uninstallation"
-msgstr "Cancelar la desinstalación"
+msgstr "Cancelar desinstalación"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Upgrade"
