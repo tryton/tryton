@@ -870,7 +870,7 @@ msgstr "Platinum"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Code for testing purposes"
-msgstr "Code for testing purposes"
+msgstr "Codi reservat per a fer proves"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
