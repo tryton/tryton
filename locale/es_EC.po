@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "El Pago \"%s\" excede el pago de la línea \"%s\"."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "El Pago \"%(payment)s\" excede el pago de la línea \"%(line)s\"."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
@@ -315,10 +315,6 @@ msgstr "Pagos"
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
 msgstr "Pago"
-
-msgctxt "selection:account.move.line,payment_kind:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
