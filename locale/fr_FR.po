@@ -39,7 +39,7 @@ msgstr ""
 
 msgctxt "error:sale.sale:"
 msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr "Le compte à recevoir est manquant sur le tiers « %s »."
+msgstr "Le « compte client » est manquant sur le tiers « %s »."
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
@@ -416,6 +416,10 @@ msgstr "Lignes"
 msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Mouvements"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Origine"
 
 msgctxt "field:sale.sale,party:"
 msgid "Party"
@@ -997,6 +1001,10 @@ msgstr "Ligne de vente"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Lignes de vente"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Taxes"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
