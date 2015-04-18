@@ -178,7 +178,7 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
     def make_connection(self, host):
         if self._connection and host == self._connection[0]:
             return self._connection[1]
-        host, extra_headers, x509 = self.get_host_info(host)
+        host, self._extra_headers, x509 = self.get_host_info(host)
 
         ca_certs = self.__ca_certs
         cert_reqs = ssl.CERT_REQUIRED if ca_certs else ssl.CERT_NONE
