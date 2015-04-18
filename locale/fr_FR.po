@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
-msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "La paiement « %s » excède le montant de la ligne « %s »."
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "Le paiement « %(payment)s » surpaye la ligne « %(line)s »."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
@@ -322,19 +322,19 @@ msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
-msgstr "À payer"
+msgstr "Fournisseur"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Receivable"
-msgstr "À recevoir"
+msgstr "Compte client"
 
 msgctxt "selection:account.payment,kind:"
 msgid "Payable"
-msgstr "À payer"
+msgstr "Fournisseur"
 
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
-msgstr "À recevoir"
+msgstr "Compte client"
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"
@@ -358,11 +358,11 @@ msgstr "Réussi"
 
 msgctxt "selection:account.payment.group,kind:"
 msgid "Payable"
-msgstr "À payer"
+msgstr "Fournisseur"
 
 msgctxt "selection:account.payment.group,kind:"
 msgid "Receivable"
-msgstr "À recevoir"
+msgstr "Compte client"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
