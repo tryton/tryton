@@ -187,30 +187,26 @@ msgstr "<i>Recherche...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Créer...</i>"
 
-#, fuzzy
 msgid "Value"
-msgstr "Ajouter une valeur"
+msgstr "Valeur"
 
-#, fuzzy
 msgid "Displayed value"
-msgstr "Ajouter une valeur"
+msgstr "Valeur affichée"
 
-#, fuzzy
 msgid "Format"
-msgstr "_Normal"
+msgstr "Format"
 
 msgid "Display format"
-msgstr ""
+msgstr "Format d'affichage"
 
-#, fuzzy
 msgid "Open the calendar"
-msgstr "Ouvrir le calendrier <F2>"
+msgstr "Ouvrir le calendrier"
 
 msgid "Date Format"
-msgstr ""
+msgstr "Format de date"
 
 msgid "Displayed date format"
-msgstr ""
+msgstr "Format de date affichée"
 
 msgid "y"
 msgstr "y"
@@ -270,7 +266,7 @@ msgid "m"
 msgstr "m"
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "_File"
 msgstr "_Fichier"
@@ -951,7 +947,6 @@ msgstr "Formulaire non-valide !"
 msgid " of "
 msgstr " de "
 
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it ?"
