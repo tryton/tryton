@@ -35,7 +35,7 @@ msgstr "Un entrepôt doit être défini pour le devis de l'achat « %s »."
 
 msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Le compte à payer est manquant sur le tiers « %s »."
+msgstr "Le « compte fournisseur » est manquant sur le tiers « %s »."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -767,6 +767,11 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Traitement"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
 msgstr "Devis"
@@ -1098,6 +1103,10 @@ msgstr "Ligne d'achat"
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Lignes d'achat"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Taxes"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
