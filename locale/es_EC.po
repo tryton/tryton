@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
 msgid "\"From Date\" should be smaller than \"To Date\"."
-msgstr "\"Desde la Fecha\" debe ser menor que \"Hasta la Fecha\"."
+msgstr "\"Desde la Fecha\" debe ser anterior que \"Hasta la Fecha\"."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be greater than the minimal quantity"
@@ -12,15 +12,15 @@ msgstr "La cantidad por línea debe ser mayor que la cantidad mínima"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be positive"
-msgstr "La cantidad en la línea debe ser positiva"
+msgstr "La cantidad de la línea debe ser positiva"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
-msgstr "El producto debe ser único en la previsión de existencias"
+msgstr "El producto debe ser único en la previsión de stocks"
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Hasta la Fecha\" debe ser mayor que \"Desde la Fecha\""
+msgstr "\"Hasta la Fecha\" debe ser posterior que \"Desde la Fecha\""
 
 msgctxt "error:stock.forecast:"
 msgid ""
@@ -33,6 +33,10 @@ msgstr ""
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr "Debe cancelar la previsión \"%s\" antes de eliminarla."
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Activo"
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
@@ -210,6 +214,10 @@ msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr "Todo"
 
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Realizado"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
@@ -221,11 +229,11 @@ msgstr "Previsiones"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
-msgstr "Previsión de Existencias"
+msgstr "Previsión de Stock"
 
 msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
-msgstr "Previsión de Existencias"
+msgstr "Previsión de Stock"
 
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
@@ -237,7 +245,7 @@ msgstr "Elegir Previsión Completa"
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
-msgstr "Línea de Previsión de Existencias"
+msgstr "Línea de Previsión de Stock"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
@@ -273,7 +281,7 @@ msgstr "Líneas de Previsión"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
-msgstr "Adicione líneas de proyecciones basadas en fechas pasadas."
+msgstr "Añadir líneas de proyecciones basadas en fechas pasadas."
 
 msgctxt "view:stock.forecast:"
 msgid "Cancel"
@@ -297,7 +305,7 @@ msgstr "Previsiones"
 
 msgctxt "view:stock.forecast:"
 msgid "Reset to Draft"
-msgstr "Restaurar a Borrador"
+msgstr "Restablecer a Borrador"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
@@ -317,7 +325,7 @@ msgstr "Seleccionar Fechas"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
-msgstr "Completa"
+msgstr "Completar"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
