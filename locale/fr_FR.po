@@ -3,14 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-"Le compte « %(account)s » sur la ligne de relevé  « %(line)s » que celui "
-"configuré comme crédit ou débit sur le journal « %(journal)s »."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr ""
 "Le montant « %s » est plus grand que le montant restant à payer de la "
@@ -20,12 +12,6 @@ msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "Le montant doit être une valeur positive ou négative."
 
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr ""
-"Veuillez remplir les comptes de débit et crédit sur le journal des relevés «"
-" %s »."
-
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
 msgstr "La balance de fin doit valoir « %s »."
@@ -33,6 +19,11 @@ msgstr "La balance de fin doit valoir « %s »."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "Le nombre de lignes doit être « %s »."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr ""
+"Veullez fournir les comptes de débit et crédit sur le journal de relevés."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -230,6 +221,66 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Mouvement"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Relevé"
@@ -246,9 +297,33 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Ligne de relevé comptable"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Groupe de lignes de relevé comptable"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Groupes de lignes de relevé"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Groupes de ligne"
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Lignes de mouvement"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Lignes de mouvement"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Mouvements"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -257,6 +332,14 @@ msgstr "Relevés"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -280,6 +363,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Validé"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Groupes de lignes de relevé"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -396,6 +483,14 @@ msgstr "Journal de relevés"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Groupe de lignes de relevé"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Groupes de lignes de relevé"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
