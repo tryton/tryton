@@ -465,6 +465,10 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Sortant"
 
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Générer le message"
+
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
