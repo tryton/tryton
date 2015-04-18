@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "Une ligne ne peut être utilisée qu'une seul fois sur une relance."
+msgstr "Une ligne ne peut être utilisée qu'une seule fois sur une relance."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
