@@ -677,6 +677,10 @@ msgid "Productions"
 msgstr "Productions"
 
 msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Réinitialiser à la nomenclature"
+
+msgctxt "view:production:"
 msgid "Run"
 msgstr "Lancer"
 
