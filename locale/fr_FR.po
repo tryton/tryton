@@ -3,16 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
-msgid "Hours field must be positive"
-msgstr "Le champ Heures doit être positif"
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"Every work must be in the same company as it's parent work but \"%(child)s\""
-" and \"%(parent)s\" are in different companies."
-msgstr ""
-"Chaque travail doit être dans la même société que son parent mais « "
-"%(child)s » et « %(parent)s » ont des sociétés différentes."
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr "La durée de la ligne « %(line)s » doit être positive."
 
 msgctxt "error:timesheet.work:"
 msgid ""
@@ -30,13 +22,13 @@ msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Durée"
+
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "field:timesheet.hours_employee,hours:"
-msgid "Hours"
-msgstr "Heures"
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
@@ -74,13 +66,13 @@ msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Durée"
+
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "field:timesheet.hours_employee_monthly,hours:"
-msgid "Hours"
-msgstr "Heures"
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
@@ -114,13 +106,13 @@ msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Durée"
+
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "field:timesheet.hours_employee_weekly,hours:"
-msgid "Hours"
-msgstr "Heures"
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
@@ -146,6 +138,10 @@ msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Année"
 
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Société"
+
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -162,13 +158,13 @@ msgctxt "field:timesheet.line,description:"
 msgid "Description"
 msgstr "Description"
 
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Durée"
+
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "field:timesheet.line,hours:"
-msgid "Hours"
-msgstr "Heures"
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
@@ -222,9 +218,9 @@ msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
-msgctxt "field:timesheet.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Heures de présence"
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Durée de feuille de présence"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
@@ -286,7 +282,7 @@ msgctxt "field:timesheet.work.open.start,to_date:"
 msgid "To Date"
 msgstr "Date de fin"
 
-msgctxt "help:timesheet.work,hours:"
+msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work"
 msgstr "Temps total passé sur ce travail"
 
@@ -439,8 +435,8 @@ msgid "Hours per Employee"
 msgstr "Heures par employé"
 
 msgctxt "view:timesheet.hours_employee:"
-msgid "Hours"
-msgstr "Heures"
+msgid "Duration"
+msgstr "Durée"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Hours per Employee"
@@ -459,8 +455,8 @@ msgid "Enter Timesheet"
 msgstr "Entrer feuille de présence"
 
 msgctxt "view:timesheet.line:"
-msgid "Hours"
-msgstr "Heures"
+msgid "Duration"
+msgstr "Durée"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
