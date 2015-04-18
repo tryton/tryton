@@ -44,7 +44,7 @@ msgstr "Ensembles"
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
-msgstr "String"
+msgstr "Chaîne de caractères"
 
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
