@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:production.create_request:"
+msgid "There are some late productions."
+msgstr "Il y a des productions en retard."
+
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Période d'approvisionnement"
