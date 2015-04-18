@@ -1860,6 +1860,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Brouillon"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "Intermédiaire"
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr "Clôturée"
