@@ -410,6 +410,10 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Catégories"
 
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Moyens de contact"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Tiers par catégorie"
@@ -453,6 +457,10 @@ msgstr "Catégories"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Moyens de contact"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
