@@ -32,11 +32,15 @@ msgstr "Nombre"
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
+
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Activo"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
