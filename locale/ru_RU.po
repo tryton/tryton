@@ -410,6 +410,11 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Категории"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Контактные способы"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Контрагенты по категориям"
@@ -453,6 +458,11 @@ msgstr "Категории в виде дерева"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Контактные способы"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
