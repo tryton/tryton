@@ -317,6 +317,10 @@ msgid "Payment"
 msgstr "Pago"
 
 msgctxt "selection:account.move.line,payment_kind:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
 msgstr "Por Pagar"
 
