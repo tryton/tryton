@@ -560,6 +560,11 @@ msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
 msgstr "Administración de Producción"
 
+#, fuzzy
+msgctxt "model:stock.location,name:location_production"
+msgid "Production"
+msgstr "Producción"
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Asignada"
