@@ -408,6 +408,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:sale.sale,party:"
 msgid "Party"
 msgstr ""

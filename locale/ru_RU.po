@@ -415,6 +415,11 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Перемещения"
 
+#, fuzzy
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Первоисточник"
+
 msgctxt "field:sale.sale,party:"
 msgid "Party"
 msgstr "Контрагент"
