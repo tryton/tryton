@@ -42,12 +42,8 @@ msgctxt "field:project.work,create_uid:"
 msgid "Create User"
 msgstr ""
 
-msgctxt "field:project.work,effort:"
+msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr ""
-
-msgctxt "field:project.work,hours:"
-msgid "Timesheet Hours"
 msgstr ""
 
 msgctxt "field:project.work,id:"
@@ -82,6 +78,10 @@ msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr ""
 
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr ""
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr ""
@@ -102,11 +102,11 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "help:project.work,effort:"
+msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr ""
 
-msgctxt "help:project.work,hours:"
+msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work"
 msgstr ""
 

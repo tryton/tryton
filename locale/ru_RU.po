@@ -42,13 +42,9 @@ msgctxt "field:project.work,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
 
-msgctxt "field:project.work,effort:"
+msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Затраты"
-
-msgctxt "field:project.work,hours:"
-msgid "Timesheet Hours"
-msgstr "Часы табеля"
+msgstr ""
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -82,6 +78,11 @@ msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Доступно в табелях"
 
+#, fuzzy
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Общие затраты"
@@ -102,13 +103,13 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
-msgctxt "help:project.work,effort:"
+msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "Предположительные затраты для этой работы"
+msgstr ""
 
-msgctxt "help:project.work,hours:"
+msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work"
-msgstr "Общее время потраченное на эту работу"
+msgstr ""
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
