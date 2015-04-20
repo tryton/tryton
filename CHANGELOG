@@ -1,3 +1,5 @@
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
 * Add support for PyPy
 * Ensure that uom rouding is always greather than zero
 * Add price_digits
