@@ -59,6 +59,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Расчитанные ед. измерения"
 
+msgctxt "field:purchase.request,computed_uom_digits:"
+msgid "Computed UOM Digits"
+msgstr ""
+
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -66,6 +70,10 @@ msgstr "Дата создания"
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr ""
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
@@ -118,6 +126,10 @@ msgstr "Ожидаемая дата поставки"
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
 msgstr "Ед.изм."
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr ""
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -233,6 +245,16 @@ msgid "Purchases"
 msgstr "Покупки"
 
 msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Точки заказа"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Точки заказа"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
 msgstr "Точки заказа"
 
