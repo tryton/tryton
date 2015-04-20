@@ -3,21 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -26,6 +16,10 @@ msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -228,6 +222,81 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Управление на валути"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Движение"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Номер"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Управление на партньор"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Отчет"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Отчет"
@@ -244,9 +313,35 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Ред от отчет за сметка"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Движения"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Движения"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
@@ -256,6 +351,16 @@ msgstr "Всички отчети"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Дневник за отчети"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Редове от отчет"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Редове от отчет"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_statement"
@@ -283,6 +388,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Проверен"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"

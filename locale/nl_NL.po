@@ -3,21 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
-"one configured as credit or debit on journal \"%(journal)s\"."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -26,6 +16,10 @@ msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -230,6 +224,76 @@ msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Vervaldatum"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Boeking"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Nummer"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Relaties"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Bankafschrift"
@@ -246,9 +310,35 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Rekeningafschriftregel"
 
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Boekingen"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Boekingen"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
@@ -258,6 +348,16 @@ msgstr "Alle bankafschriften"
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Dagboeken bankafschriften"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_statement"
@@ -285,6 +385,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
 msgstr "Goedgekeurd"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
