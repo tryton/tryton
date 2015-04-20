@@ -114,9 +114,10 @@ msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Sale Extras"
