@@ -1,3 +1,5 @@
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
 * Add support for PyPy
 * Add 'staging' state to stock move
 * Apply stock_assign of compute_quantity_query only on outgoing moves
