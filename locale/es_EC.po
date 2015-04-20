@@ -608,8 +608,9 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "u"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
-msgid "wdg"
+msgid "wd"
 msgstr "wd"
 
 msgctxt "model:product.uom,symbol:uom_yard"
