@@ -51,9 +51,10 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "Depósito"
 
+#, fuzzy
 msgctxt "view:account.invoice.recall_deposit.start:"
 msgid "Recall Deposit"
-msgstr ""
+msgstr "Recordar Deposito"
 
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
