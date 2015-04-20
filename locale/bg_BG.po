@@ -2,10 +2,8 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account.selection:"
-msgid ""
-"Can not have many accounts with the same root or a missing mandatory root "
-"account on \"%s\"."
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
 msgstr ""
 
 msgctxt "error:analytic_account.line:"
@@ -27,6 +25,55 @@ msgstr "Аналитични сметки"
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Редове от аналитична сметка"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Източник"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Задължителен"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -120,77 +167,6 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,account:"
-msgid "Account"
-msgstr "Фактури"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,selection:"
-msgid "Selection"
-msgstr "Избор"
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-msgctxt "field:analytic_account.account.selection,accounts:"
-msgid "Accounts"
-msgstr "Сметки"
-
-msgctxt "field:analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:analytic_account.account.selection,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt "field:analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
 msgstr "Фактури"
@@ -280,18 +256,13 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Начална дата"
 
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr ""
+
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Аналитична сметка"
-
-msgctxt ""
-"model:analytic_account.account-analytic_account.account.selection,name:"
-msgid "Analytic Account - Analytic Account Selection"
-msgstr "Аналитична сметка - Избор на аналитична сметка "
-
-msgctxt "model:analytic_account.account.selection,name:"
-msgid "Analytic Account Selection"
-msgstr "Избор на аналитична сметка"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"

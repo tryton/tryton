@@ -2,10 +2,8 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account.selection:"
-msgid ""
-"Can not have many accounts with the same root or a missing mandatory root "
-"account on \"%s\"."
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
 msgstr ""
 
 msgctxt "error:analytic_account.line:"
@@ -22,6 +20,46 @@ msgstr ""
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
 msgstr ""
 
 msgctxt "field:analytic_account.account,active:"
@@ -116,77 +154,6 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,account:"
-msgid "Account"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,selection:"
-msgid "Selection"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-"
-"analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt ""
-"field:analytic_account.account-analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,accounts:"
-msgid "Accounts"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,rec_name:"
-msgid "Name"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account.selection,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
 msgstr ""
@@ -275,17 +242,12 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr ""
 
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr ""
+
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr ""
-
-msgctxt ""
-"model:analytic_account.account-analytic_account.account.selection,name:"
-msgid "Analytic Account - Analytic Account Selection"
-msgstr ""
-
-msgctxt "model:analytic_account.account.selection,name:"
-msgid "Analytic Account Selection"
 msgstr ""
 
 msgctxt "model:analytic_account.line,name:"
