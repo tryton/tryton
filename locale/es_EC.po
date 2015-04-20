@@ -286,6 +286,11 @@ msgstr ""
 "Expresión Python que se evaluará con:\n"
 "- amount: el importe original"
 
+#, fuzzy
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "Comisión"
+
 msgctxt "model:account.journal.type,name:journal_type_commission"
 msgid "Commission"
 msgstr "Comisión"
@@ -373,6 +378,10 @@ msgstr "Comisión"
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "Administración de Comisiones"
+
+msgctxt "selection:commission,invoice_state:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"

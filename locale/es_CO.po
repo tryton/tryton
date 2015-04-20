@@ -318,9 +318,10 @@ msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr "Agentes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr ""
+msgstr "Crear Facturas de Comisión"
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
@@ -342,9 +343,10 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "Planes de Comision"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
@@ -418,9 +420,10 @@ msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Incoming"
 msgstr "Ingresos"
 
+#, fuzzy
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Outgoing"
-msgstr ""
+msgstr "Saliente"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Payment"
@@ -430,9 +433,10 @@ msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
 msgstr "Al Contabilizar"
 
+#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "view:commission.agent:"
 msgid "Agent"
@@ -458,17 +462,20 @@ msgctxt "view:commission.plan:"
 msgid "Commission Plan"
 msgstr "Plan de Comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
-msgstr ""
+msgstr "Planes de Comisión"
 
+#, fuzzy
 msgctxt "view:commission:"
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
+#, fuzzy
 msgctxt "view:commission:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "view:commission:"
 msgid "Invoice"
