@@ -33,6 +33,11 @@ msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -223,6 +228,11 @@ msgstr ""
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Klaar"
 
 #, fuzzy
 msgctxt ""

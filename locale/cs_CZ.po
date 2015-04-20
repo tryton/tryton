@@ -32,6 +32,10 @@ msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr ""
 
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr ""
@@ -206,6 +210,10 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
 msgstr ""
 
 msgctxt ""
