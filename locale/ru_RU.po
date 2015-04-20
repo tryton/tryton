@@ -1850,6 +1850,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Черновик"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr ""
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr "Закрыто"

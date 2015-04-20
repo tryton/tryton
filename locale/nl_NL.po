@@ -1976,6 +1976,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Draft"
 msgstr "Concept"
 
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr ""
+
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
 msgstr ""
