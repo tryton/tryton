@@ -3,20 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "El activo fijo \"%s\" debe estar en borrador antes de ser eliminado!"
+msgid "Asset \"%s\" must be in draft to be deleted."
+msgstr ""
 
 msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset!"
-msgstr "Línea de factura de proveedor puede ser usada solo una vez en activo!"
+msgid "Supplier Invoice Line can be used only once on asset."
+msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "El activo solo puede ser usado una vez en línea de factura!"
 
 msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Falta la \"Cuenta de Activo Fijo\" en el producto \"%s\"!"
+msgid "It misses an \"Account Asset\" on product \"%s\"."
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -226,6 +226,21 @@ msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
+msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
+msgid "End Date"
+msgstr "Fecha Final"
+
+#, fuzzy
+msgctxt "field:account.asset.print_depreciation_table.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
 msgstr "Valor"
@@ -358,6 +373,10 @@ msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
 msgstr "Línea de Activo"
 
+msgctxt "model:account.asset.print_depreciation_table.start,name:"
+msgid "Asset Depreciation Table Start"
+msgstr ""
+
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
 msgstr "Actualizar Depreciación Mostrada del Activo"
@@ -378,9 +397,17 @@ msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
 msgstr "Activos Fijos"
 
+msgctxt "model:ir.action,name:report_depreciation_table"
+msgid "Depreciation Table"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
 msgstr "Crear Asiento de Activos Fijos"
+
+msgctxt "model:ir.action,name:wizard_print_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
@@ -417,6 +444,10 @@ msgstr "Activos Fijos"
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
 msgstr "Activos Fijos"
+
+msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
+msgid "Print Depreciation Table"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
@@ -521,6 +552,16 @@ msgstr "Aceptar"
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
+msgid "Print"
+msgstr "Imprimir"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
