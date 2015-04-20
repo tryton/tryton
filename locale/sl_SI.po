@@ -866,8 +866,9 @@ msgctxt "model:country.country,name:pr"
 msgid "Puerto Rico"
 msgstr "Portoriko"
 
+#, fuzzy
 msgctxt "model:country.country,name:ps"
-msgid "Palestinsko ozemlje, zasedeno"
+msgid "Palestine, State of"
 msgstr "Palestina, država"
 
 msgctxt "model:country.country,name:pt"
@@ -16506,8 +16507,9 @@ msgctxt "model:country.subdivision,name:se-y"
 msgid "Västernorrlands län"
 msgstr "Västernorrlands län"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:se-z"
-msgid "Jämtlande län"
+msgid "Jämtlands län"
 msgstr "Jämtlands län"
 
 msgctxt "model:country.subdivision,name:sg-01"
