@@ -4428,9 +4428,10 @@ msgctxt "view:account.move.template.create.template:"
 msgid "Create Move from Template"
 msgstr "Crear Asiento desde Plantilla"
 
+#, fuzzy
 msgctxt "view:account.move.template.keyword:"
 msgid "Account Move Template Keyword"
-msgstr ""
+msgstr "Plantilla de Asiento Clave"
 
 msgctxt "view:account.move.template.keyword:"
 msgid "Account Move Template Keywords"

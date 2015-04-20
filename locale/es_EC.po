@@ -2925,6 +2925,26 @@ msgctxt "model:account.journal,name:"
 msgid "Journal"
 msgstr "Libro Diario"
 
+#, fuzzy
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "Efectivo"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "Gastos"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "Ingresos"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "Stock"
+
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
 msgstr "Libro Diario - Período"
