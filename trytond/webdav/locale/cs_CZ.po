@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:ir.attachment:"
 msgid ""
-"You can not create an attachment named \"%(attachment)s in collection "
+"You can not create an attachment named \"%(attachment)s\" in collection "
 "\"%(collection)s\" because there is already a collection with that name."
 msgstr ""
 

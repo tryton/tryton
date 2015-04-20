@@ -3555,6 +3555,10 @@ msgid "Wizard Button"
 msgstr "Botón del asistente"
 
 msgctxt "selection:ir.ui.menu,action:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
 msgstr "ir.action.act_window"
 
@@ -3569,6 +3573,10 @@ msgstr "ir.action.url"
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.wizard"
 msgstr "ir.action.wizard"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"

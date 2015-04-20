@@ -4,10 +4,10 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:ir.attachment:"
 msgid ""
-"You can not create an attachment named \"%(attachment)s in collection "
+"You can not create an attachment named \"%(attachment)s\" in collection "
 "\"%(collection)s\" because there is already a collection with that name."
 msgstr ""
-"No podeu crear un adjunt anomenat \"%(attachment)s al directori "
+"No podeu crear un adjunt anomenat \"%(attachment)s\" al directori "
 "\"%(collection)s\" perquè ja existeix un altre amb aquest nom."
 
 msgctxt "error:webdav.collection:"

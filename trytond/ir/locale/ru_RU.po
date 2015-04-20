@@ -44,6 +44,13 @@ msgctxt "error:foreign_model_missing:"
 msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 msgstr ""
 
+#, fuzzy
+msgctxt "error:ir.action.act_window.domain:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr ""
+"Некорректный домен или условия поиска \"%(domain)s\" у действия "
+"\"%(action)s\"."
+
 msgctxt "error:ir.action.act_window:"
 msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
 msgstr "Некорректный контекст \"%(context)s\" у действия \"%(action)s\"."
@@ -65,10 +72,6 @@ msgstr "Некорректная модель мастера в ключевом
 msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Некорректная эл.почта у отчета \"%s\"."
-
-msgctxt "error:ir.action.report:"
-msgid "The internal name must be unique by module!"
-msgstr "Наименование модуля должно быть уникальным!"
 
 msgctxt "error:ir.attachment:"
 msgid "The  names of attachments must be unique by resource!"
@@ -2200,9 +2203,9 @@ msgctxt "field:ir.trigger,limit_number:"
 msgid "Limit Number"
 msgstr "Номер лимита"
 
-msgctxt "field:ir.trigger,minimum_delay:"
+msgctxt "field:ir.trigger,minimum_time_delay:"
 msgid "Minimum Delay"
-msgstr "Минимальная задержка"
+msgstr ""
 
 msgctxt "field:ir.trigger,model:"
 msgid "Model"
@@ -2705,8 +2708,11 @@ msgstr ""
 "Ввод регулярного выражения Python исключит соответствующие модели из "
 "диаграммы."
 
+#, fuzzy
 msgctxt "help:ir.rule,domain:"
-msgid "Domain is evaluated with \"user\" as the current user"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user"
 msgstr ""
 "Домен расчитывается для пользователя \"user\" как для текущего пользователя"
 
@@ -2741,13 +2747,11 @@ msgstr ""
 "Ограничение количества вызовов \"Действие функции\" от записей. \"0\" - нет "
 "ограничений."
 
-msgctxt "help:ir.trigger,minimum_delay:"
+msgctxt "help:ir.trigger,minimum_time_delay:"
 msgid ""
-"Set a minimum delay in minutes between call to \"Action Function\" for the same record.\n"
-"0 for no delay."
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
 msgstr ""
-"Задайте минимальную задержку в минутах между вызовом \"Действие функции\" для одинаковых записей.\n"
-"\"0\" для отсутствия задержки."
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
