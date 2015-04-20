@@ -1449,6 +1449,10 @@ msgid "Supplier Invoice"
 msgstr "Factura de Proveedor"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
 msgstr "Nota de Crédito"
 
@@ -1505,6 +1509,10 @@ msgid "Remainder"
 msgstr "Remanente"
 
 msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
 msgid "April"
 msgstr "Abril"
 
@@ -1551,6 +1559,10 @@ msgstr "Octubre"
 msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
 msgid "September"
 msgstr "Septiembre"
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Friday"

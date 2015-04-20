@@ -50,16 +50,6 @@ msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s of "
-"company \"%(invoice_line_company)s because account \"%(account)s has company"
-" \"%(account_company)s\"."
-msgstr ""
-"Вы не можете создать строку \"%(line)s\" у инвойса \"%(invoice)s организации"
-" \"%(invoice_line_company)s так как счет \"%(account)s\" принадлежит "
-"организации \"%(account_company)s\"."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
 "You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
 "because the invoice uses the same account (%(account)s)."
 msgstr ""
@@ -80,10 +70,6 @@ msgid ""
 "greater than the amount to pay."
 msgstr ""
 "У инвойса \"%s\" нельзя создать частичную оплату превышающую общую оплату."
-
-msgctxt "error:account.invoice.payment_term.line:"
-msgid "Day of month must be between 1 and 31."
-msgstr "День месяца должен быть между 1 и 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
@@ -112,16 +98,6 @@ msgid ""
 msgstr ""
 "Вы не можете добавить строчку \"%(line)s\" в инвойс \"%(invoice)s\" так как "
 "он \"Отправлен\", \"Оплачен\" или \"Отменен\"."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using account \"%(account)s\" from company "
-"\"%(account_company)s\"."
-msgstr ""
-"Вы не можете создать инвойс \"%(invoice)s\" для организации "
-"\"%(invoice_company)s\" используя счет \"%(account)s\" от организации "
-"\"%(account_company)s\"."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -226,15 +202,6 @@ msgid ""
 msgstr ""
 "Не существует нумерации инвойсов для инвойса \"%(invoice)s\" за "
 "период/финансовый год \"%(period)s\"."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company \"%(invoice_company)s "
-"because account \"%(account)s has a different company (%(account_company)s.)"
-msgstr ""
-"Вы не можете создать инвойс \"%(invoice)s\" для организации "
-"\"%(invoice_company)s так как счет \"%(account)s принадлежит другой "
-"организации (%(account_company)s.)"
 
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
@@ -827,14 +794,6 @@ msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
 
-msgctxt "field:account.invoice.payment_term.line,day:"
-msgid "Day of Month"
-msgstr "День месяца"
-
-msgctxt "field:account.invoice.payment_term.line,days:"
-msgid "Number of Days"
-msgstr "Кол-во дней"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Делитель"
@@ -842,14 +801,6 @@ msgstr "Делитель"
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:account.invoice.payment_term.line,month:"
-msgid "Month"
-msgstr "Месяц"
-
-msgctxt "field:account.invoice.payment_term.line,months:"
-msgid "Number of Months"
-msgstr "Кол-во месяцев"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -863,6 +814,10 @@ msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr ""
+
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
 msgstr "Нумерация"
@@ -871,14 +826,6 @@ msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
 msgstr "Тип"
 
-msgctxt "field:account.invoice.payment_term.line,weekday:"
-msgid "Day of Week"
-msgstr "День недели"
-
-msgctxt "field:account.invoice.payment_term.line,weeks:"
-msgid "Number of Weeks"
-msgstr "Кол-во недель"
-
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
 msgstr "Дата изменения"
@@ -886,6 +833,125 @@ msgstr "Дата изменения"
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgid "Day of Month"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgid "Number of Days"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+msgid "Payment Term Line"
+msgstr "Строка правила оплаты"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+msgid "Month"
+msgstr "Месяц"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgid "Number of Months"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+msgid "Name"
+msgstr "Правило оплаты"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+msgid "Sequence"
+msgstr "Последовательность"
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid "Day of Week"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgid "Number of Weeks"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "Правило оплаты"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
@@ -1044,6 +1110,18 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Строка правила оплаты"
 
+msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr ""
+
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
 msgstr "Предупреждение при распечатке отчета Инвойса"
@@ -1095,6 +1173,10 @@ msgstr "Инвойс"
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Оплата инвойса"
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
@@ -1203,6 +1285,10 @@ msgstr "Инвойсы"
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
 msgstr "Правила оплаты"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
@@ -1433,58 +1519,6 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr "Списание"
 
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "April"
-msgstr "Апрель"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "August"
-msgstr "Август"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "December"
-msgstr "Декабрь"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "February"
-msgstr "Февраль"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "January"
-msgstr "Январь"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "July"
-msgstr "Июль"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "June"
-msgstr "Июнь"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "March"
-msgstr "Март"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "May"
-msgstr "Май"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "November"
-msgstr "Ноябрь"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "October"
-msgstr "Октябрь"
-
-msgctxt "selection:account.invoice.payment_term.line,month:"
-msgid "September"
-msgstr "Сентябрь"
-
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
 msgstr "Фиксированная"
@@ -1501,35 +1535,94 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Остаток"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "April"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "August"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "December"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "February"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "January"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "July"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "June"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "March"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "May"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "November"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "October"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgid "September"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgid ""
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Friday"
 msgstr "Пятница"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Monday"
 msgstr "Понедельник"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Saturday"
 msgstr "Суббота"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Sunday"
 msgstr "Воскресенье"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Thursday"
 msgstr "Четверг"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Tuesday"
 msgstr "Вторник"
 
-msgctxt "selection:account.invoice.payment_term.line,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Wednesday"
 msgstr "Среда"
 
@@ -1708,6 +1801,11 @@ msgstr "Ок"
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
 msgstr "Отменить"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "Закрыть"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
