@@ -109,9 +109,9 @@ msgid "Reference"
 msgstr "Referentie"
 
 #, fuzzy
-msgctxt "field:sale.opportunity,sale:"
-msgid "Sale"
-msgstr "Verkoop"
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Verkoopbeheer"
 
 #, fuzzy
 msgctxt "field:sale.opportunity,start_date:"
@@ -137,6 +137,11 @@ msgid "Address"
 msgstr "Adres"
 
 #, fuzzy
+msgctxt "field:sale.opportunity.history,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+#, fuzzy
 msgctxt "field:sale.opportunity.history,comment:"
 msgid "Comment"
 msgstr "Opmerking"
@@ -153,6 +158,16 @@ msgstr ""
 msgctxt "field:sale.opportunity.history,create_uid:"
 msgid "Create User"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity.history,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.history,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
@@ -259,11 +274,6 @@ msgid "Name"
 msgstr "Naam bijlage"
 
 #, fuzzy
-msgctxt "field:sale.opportunity.line,sale_line:"
-msgid "Sale Line"
-msgstr "Offerteregel"
-
-#, fuzzy
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
 msgstr "Reeks"
@@ -352,6 +362,23 @@ msgstr "Nummer"
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -447,6 +474,23 @@ msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
 
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr ""
+
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
 msgstr ""
@@ -527,6 +571,23 @@ msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
 
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr ""
+
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
 msgstr ""
@@ -563,12 +624,32 @@ msgid "In %"
 msgstr "In %"
 
 #, fuzzy
+msgctxt "help:sale.opportunity_employee,winning_amount_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
+msgctxt "help:sale.opportunity_employee,winning_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
 msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "In %"
 msgstr "In %"
 
 #, fuzzy
 msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
+msgctxt "help:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
+msgctxt "help:sale.opportunity_employee_monthly,winning_rate:"
 msgid "In %"
 msgstr "In %"
 
@@ -581,6 +662,21 @@ msgstr "In %"
 msgctxt "help:sale.opportunity_monthly,conversion_rate:"
 msgid "In %"
 msgstr "In %"
+
+#, fuzzy
+msgctxt "help:sale.opportunity_monthly,winning_amount_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
+msgctxt "help:sale.opportunity_monthly,winning_rate:"
+msgid "In %"
+msgstr "In %"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Verkoopbeheer"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
@@ -635,6 +731,12 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
 msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -717,6 +819,11 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
+
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
 msgstr ""
@@ -736,6 +843,11 @@ msgstr ""
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.history,state:"
+msgid "Won"
+msgstr "Zuid-Koreaanse won"
 
 msgctxt "view:sale.opportunity.history:"
 msgid "History"

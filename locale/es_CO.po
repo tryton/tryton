@@ -422,9 +422,10 @@ msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
 msgstr "Porcentaje de Valor Ganado"
 
+#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
 msgid "Winning Rate"
-msgstr ""
+msgstr "Porcentaje Ganado"
 
 msgctxt "field:sale.opportunity_employee_monthly,won:"
 msgid "Won"
