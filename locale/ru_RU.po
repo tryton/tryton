@@ -768,6 +768,12 @@ msgctxt ""
 msgid "Draft"
 msgstr "Черновик"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Обслуживание"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"

@@ -770,6 +770,12 @@ msgstr "Проект"
 
 #, fuzzy
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Обработване"
+
+#, fuzzy
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
 msgstr "Запитване"

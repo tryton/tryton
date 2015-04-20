@@ -938,6 +938,10 @@ msgid "VAT:"
 msgstr "RUC:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
 msgstr "Ignorado"
 
@@ -1040,6 +1044,10 @@ msgstr "En Proceso"
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Cotización"
+
+msgctxt "selection:stock.move,purchase_exception_state:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
