@@ -3,7 +3,9 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.price_list.line:"
-msgid "Invalid formula \"%(formula)s\" in price list line \"%(line)s\"."
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
 msgstr ""
 
 #, fuzzy
@@ -37,6 +39,10 @@ msgstr "Naam bijlage"
 msgctxt "field:product.price_list,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
+
+msgctxt "field:product.price_list,tax_included:"
+msgid "Tax Included"
+msgstr ""
 
 msgctxt "field:product.price_list,write_date:"
 msgid "Write Date"
