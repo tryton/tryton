@@ -1,3 +1,5 @@
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
 * Add support for PyPy
 * Remove unique constraints from country name and code
 
