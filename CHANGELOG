@@ -1,3 +1,5 @@
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
 * Add localization infrastructure
 * Add support for PyPy
 * Synchronize chart of account with the official source
