@@ -406,7 +406,7 @@ elif sys.platform == 'darwin':
                 Popen(['install_name_tool', '-change', lib, fixed, library]
                     ).wait()
 
-        for file in ('CHANGELOG', 'COPYRIGHT', 'LICENSE', 'README', 'TODO'):
+        for file in ('CHANGELOG', 'COPYRIGHT', 'LICENSE', 'README'):
             shutil.copyfile(os.path.join(os.path.dirname(__file__), file),
                 os.path.join(dist_dir, file + '.txt'))
 
