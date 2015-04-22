@@ -26,7 +26,6 @@ Section
     File "INSTALL"
     File "LICENSE"
     File "README"
-    File "TODO"
     File "CHANGELOG"
 
     SetOutPath "$PLUGINSDIR\doc"
