@@ -98,7 +98,6 @@ SectionIn 1 2 RO
     File "INSTALL"
     File "LICENSE"
     File "README"
-    File "TODO"
     File "CHANGELOG"
 
     SetOutPath "$INSTDIR\doc"
