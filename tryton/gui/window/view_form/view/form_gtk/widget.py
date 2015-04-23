@@ -200,7 +200,7 @@ class TranslateDialog(NoModal):
             else:
                 label = language['name'] + _(':')
             label = gtk.Label(label)
-            label.set_alignment(1.0, 0.5)
+            label.set_alignment(1.0, 0.0 if self.widget.expand else 0.5)
             table.attach(label, 0, 1, i, i + 1, xoptions=gtk.FILL)
 
             context = dict(
@@ -225,7 +225,10 @@ class TranslateDialog(NoModal):
             widget = self.widget.translate_widget()
             self.widget.translate_widget_set(widget, fuzzy_value)
             self.widget.translate_widget_set_readonly(widget, True)
-            table.attach(widget, 1, 2, i, i + 1)
+            yopt = 0
+            if self.widget.expand:
+                yopt |= gtk.EXPAND | gtk.FILL
+            table.attach(widget, 1, 2, i, i + 1, yoptions=yopt)
             editing = gtk.CheckButton()
             editing.connect('toggled', self.editing_toggled, widget)
             tooltips.set_tip(editing, _('Edit'))
@@ -239,7 +242,7 @@ class TranslateDialog(NoModal):
 
         tooltips.enable()
         vbox = gtk.VBox()
-        vbox.pack_start(table, False, True)
+        vbox.pack_start(table, self.widget.expand, True)
         viewport = gtk.Viewport()
         viewport.set_shadow_type(gtk.SHADOW_NONE)
         viewport.add(vbox)
