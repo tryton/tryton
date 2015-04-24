@@ -87,6 +87,13 @@
                 'class': 'col-md-8'
             }).appendTo(this.filter_box));
 
+            this.search_entry.attr('autocomplete', 'off');
+            this.search_entry.typeahead({
+                'highlight': false
+            }, {
+                'source': this.update.bind(this),
+            });
+
             this.but_prev = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default',
@@ -158,6 +165,17 @@
         set_text: function(value) {
             this.search_entry.val(value);
             this.bookmark_match();
+        },
+        update: function(query, process) {
+            var completions = this.screen.domain_parser.completion(query);
+            console.log(completions);
+            var suggestions = [];
+            completions.forEach(function(e) {
+                suggestions.push({
+                    'value': e.trim()
+                });
+            });
+            process(suggestions);
         },
         set_star: function(star) {
             var glyphicon = this.but_star.children('span.glyphicon');
@@ -238,11 +256,18 @@
             }
             this.set_star(false);
         },
+        search_val: function(value) {
+            if (!arguments.length) {
+                return this.search_entry.typeahead('val');
+            } else {
+                return this.search_entry.typeahead('val', value);
+            }
+        },
         search_prev: function() {
-            this.screen.search_prev(this.search_entry.val());
+            this.screen.search_prev(this.search_val());
         },
         search_next: function() {
-            this.screen.search_next(this.search_entry.val());
+            this.screen.search_next(this.search_val());
         },
         get_tab_domain: function() {
             if (!this.tab) {
@@ -252,7 +277,7 @@
             return this.tab_domain[i][1];
         },
         do_search: function() {
-            return this.screen.search_filter(this.search_entry.val());
+            return this.screen.search_filter(this.search_val());
         },
         key_press: function(e) {
             if (e.which == Sao.common.RETURN_KEYCODE) {
@@ -293,7 +318,7 @@
             }
         },
         get_text: function() {
-            return this.search_entry.val();
+            return this.search_val();
         },
         search_box: function() {
             var search = function() {

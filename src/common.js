@@ -1043,6 +1043,264 @@
             }
             return domain.map(string).join(nary);
         },
+        completion: function(input) {
+            var results = [];
+            var domain = this.parse(input);
+            var closing = 0;
+            var i, len;
+            for (i=input.length; i>0; i--) {
+                if (input[i] == ')' || input[i] == ' ') {
+                    break;
+                }
+                if (input[i] == ')') {
+                    closing += 1;
+                }
+            }
+            var endings = this.ending_clause(domain);
+            var ending = endings[0];
+            var deep_ending = endings[1];
+            var deep = deep_ending - closing;
+            var string_domain = this.string(domain);
+
+            if (deep > 0) {
+                string_domain = string_domain.substring(0,
+                        string_domain.length - deep);
+            }
+            if (string_domain != input) {
+                results.push(string_domain);
+            }
+
+            var pslice = function(string, depth) {
+                if (depth > 0) {
+                    return string.substring(0, depth);
+                }
+                return string;
+            };
+            var complete, complete_string;
+            if (ending !== null && closing === 0) {
+                var completes = this.complete(ending);
+                for (i=0, len=completes.length; i < len; i++) {
+                    complete = completes[i];
+                    complete_string = this.string(
+                            this.replace_ending_clause(domain, complete));
+                    results.push(pslice(complete_string, deep));
+                }
+            }
+            if (input.length > 0) {
+                if (input.substr(input.length - 1, 1) != ' ') {
+                    return results;
+                }
+                if (input.length >= 2 ||
+                        input.substr(input.length - 2, 1) == ':') {
+                    return results;
+                }
+            }
+            var field, operator, value;
+            for (var key in this.strings) {
+                field = this.strings[key];
+                operator = this.default_operator(field);
+                value = '';
+                if ((operator == 'ilike') || (operator == 'not ilike')) {
+                    value = this.likify(value);
+                }
+                new_domain = this.append_ending_clause(domain,
+                        [field.name, operator, value], deep);
+                new_domain_string = this.string(new_domain);
+                results.push(pslice(new_domain_string, deep));
+            }
+            return results;
+        },
+        complete: function(clause) {
+            var results = [];
+            var name, operator, value, target;
+            if (clause.length == 1) {
+                name = clause[0];
+            } else if (clause.length == 3) {
+                name = clause[0];
+                operator = clause[1];
+                value = clause[2];
+            } else {
+                name = clause[0];
+                operator = clause[1];
+                value = clause[2];
+                target = clause[3];
+                if (name.endsWith('.rec_name')) {
+                    name = name.substring(0, name.length - 9);
+                }
+            }
+            var escaped;
+            if (name == "rec_name") {
+                if (operator == "ilike") {
+                    escaped = value.replace(/%%/g, '__');
+                    if (escaped.startsWith('%') || escaped.endsWith('%')) {
+                        value = escaped.substring(1, escaped.length - 1);
+                    } else if (~escaped.indexOf('%')) {
+                        value = value.replace(/%%/g, '%');
+                    }
+                    operator = null;
+                }
+                name = value;
+                value = '';
+            }
+            var field;
+            if (!(name.toLowerCase() in this.strings) &&
+                    !(name in this.fields)) {
+                for (var key in this.strings) {
+                    field = this.strings[key];
+                    if (field.string.toLowerCase()
+                            .startsWith(name.toLowerCase())) {
+                        operator = this.default_operator(field);
+                        value = '';
+                        if (operator == 'ilike') {
+                            value = this.likify(value);
+                        }
+                        results.push([field.name, operator, value]);
+                    }
+                }
+                return results;
+            }
+            if (name in this.fields) {
+                field = this.fields[name];
+            } else {
+                field = this.strings[name.toLowerCase()];
+            }
+            if (operator === null) {
+                operator = this.default_operator(field);
+                value = '';
+                if ((operator == 'ilike') || (operator == 'not ilike')) {
+                    value = this.likify(value);
+                }
+                results.push([field.name, operator, value]);
+            } else {
+                var completes = this.complete_value(field, value);
+                for (var i=0, len=completes.length; i < len; i++) {
+                    results.push([field.name, operator, completes[i]]);
+                }
+            }
+            return results;
+        },
+        is_leaf: function(element) {
+            return ((element instanceof Array) && element.clause);
+        },
+        ending_clause: function(domain, depth) {
+            if (depth === undefined) {
+                depth = 0;
+            }
+            if (domain.length === 0) {
+                return [null, depth];
+            }
+            var last_element = domain[domain.length - 1];
+            if (!this.is_leaf(last_element)) {
+                return this.ending_clause(last_element, depth + 1);
+            }
+            return [last_element, depth];
+        },
+        replace_ending_clause: function(domain, clause) {
+            var results = [];
+            var i, len;
+            for (i = 0, len=domain.length - 1; i < len; i++) {
+                results.push(domain[i]);
+            }
+            if (!this.is_leaf(domain[i])) {
+                results = results.concat(this.replace_ending_clause(domain[i],
+                            clause));
+            } else {
+                results.push(clause);
+            }
+            return results;
+        },
+        append_ending_clause: function(domain, clause, depth) {
+            if (domain.length === 0) {
+                return [clause];
+            }
+            var results = domain.slice(0, -1);
+            var last_element = domain[domain.length - 1];
+            if (!this.is_leaf(last_element)) {
+                results.push(this.append_ending_clause(last_element, clause,
+                            depth - 1));
+            } else {
+                results.push(last_element);
+                if (depth === 0) {
+                    results.push(clause);
+                }
+            }
+            return results;
+        },
+        complete_value: function(field, value) {
+            var complete_boolean = function() {
+                return value ? [true] : [false];
+            };
+
+            var complete_selection = function() {
+                var results = [];
+                var test_value = value !== null ? value : '';
+                if (value instanceof Array) {
+                    test_value = value[value.length - 1];
+                }
+                test_value = test_value.replace(/^%*|%*$/g, '');
+                var i, len, svalue, test;
+                for (i=0, len=field.selection.length; i<len; i++) {
+                    svalue = field.selection[i][0];
+                    test = field.selection[i][1].toLowerCase();
+                    if (test.startsWith(test_value.toLowerCase())) {
+                        if (value instanceof Array) {
+                            results.push(value.slice(0, -1).concat([svalue]));
+                        } else {
+                            results.push(svalue);
+                        }
+                    }
+                }
+                return results;
+            };
+
+            var complete_reference = function() {
+                var results = [];
+                var test_value = value !== null ? value : '';
+                if (value instanceof Array) {
+                    test_value = value[value.length - 1];
+                }
+                test_value = test_value.replace(/^%*|%*$/g, '');
+                var i, len, svalue, test;
+                for (i=0, len=field.selection.length; i<len; i++) {
+                    svalue = field.selection[i][0];
+                    test = field.selection[i][1].toLowerCase();
+                    if (test.startsWith(test_value.toLowerCase())) {
+                        if (value instanceof Array) {
+                            results.push(value.slice(0, -1).concat([svalue]));
+                        } else {
+                            results.push(this.likify(svalue));
+                        }
+                    }
+                }
+                return results;
+            };
+
+            var complete_datetime = function() {
+                return [Sao.Date(), Sao.DateTime().utc()];
+            };
+
+            var complete_date = function() {
+                return [Sao.Date()];
+            };
+
+            var complete_time = function() {
+                return [Sao.Time()];
+            };
+
+            var completes = {
+                'boolean': complete_boolean,
+                'selection': complete_selection,
+                'reference': complete_reference,
+                'datetime': complete_datetime,
+                'date': complete_date,
+                'time': complete_time
+            };
+
+            if (field.type in completes) {
+                return completes[field.type]();
+            }
+            return [];
+        },
         group_operator: function(tokens) {
             var cur = tokens[0];
             var nex = null;
@@ -1094,6 +1352,9 @@
                 var i = parts.indexOf(':');
                 if (!~i) {
                     parts.forEach(push_result);
+                    result.forEach(function (e) {
+                        e.clause = true;
+                    });
                     return result;
                 }
                 var sub_group = function(name, lvalue) {
@@ -1248,6 +1509,10 @@
             }
             return result;
         },
+        _clausify: function(e) {
+            e.clause = true;
+            return e;
+        },
         parse_clause: function(tokens) {
             var result = [];
             tokens.forEach(function(clause) {
@@ -1257,7 +1522,8 @@
                     result.push(clause);
                 } else if ((clause.length == 1) &&
                     !(clause[0] instanceof Array)) {
-                    result.push(['rec_name', 'ilike', this.likify(clause[0])]);
+                    result.push(this._clausify(['rec_name', 'ilike',
+                                this.likify(clause[0])]));
                 } else if ((clause.length == 3) &&
                     (clause[0].toLowerCase() in this.strings)) {
                     var name = clause[0];
@@ -1293,8 +1559,8 @@
                             var lvalue = this.convert_value(field, values[0]);
                             var rvalue = this.convert_value(field, values[1]);
                             result.push([
-                                    [field.name, '>=', lvalue],
-                                    [field.name, '<=', rvalue]
+                                    this._clausify([field.name, '>=', lvalue]),
+                                    this._clausify([field.name, '<=', rvalue])
                                     ]);
                             return;
                         }
@@ -1310,10 +1576,11 @@
                         value = this.likify(value);
                     }
                     if (target) {
-                        result.push([field.name + '.rec_name', operator, value,
-                                target]);
+                        result.push(this._clausify([field.name + '.rec_name',
+                                    operator, value, target]));
                     } else {
-                        result.push([field.name, operator, value]);
+                        result.push(this._clausify(
+                                    [field.name, operator, value]));
                     }
                 }
             }.bind(this));
@@ -1592,7 +1859,7 @@
             }
         },
         simplify: function(value) {
-            if (value instanceof Array) {
+            if ((value instanceof Array) && !this.is_leaf(value)) {
                 if ((value.length == 1) && (value[0] instanceof Array) &&
                         ((value[0][0] == 'AND') || (value[0][0] == 'OR') ||
                          (value[0][0] instanceof Array))) {

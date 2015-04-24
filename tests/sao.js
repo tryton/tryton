@@ -903,70 +903,78 @@
             }
             return tokens;
         };
+        var c = function(clause) {
+            clause.clause = true;
+            return clause;
+        };
         [
-        ['Name: Doe', [['Name', null, 'Doe']]],
-        ['"(Sur)Name": Doe', [['(Sur)Name', null, 'Doe']]],
+        ['Name: Doe', [c(['Name', null, 'Doe'])]],
+        ['"(Sur)Name": Doe', [c(['(Sur)Name', null, 'Doe'])]],
         ['Name: Doe Name: John', [
-            ['Name', null, 'Doe'],
-            ['Name', null, 'John']
+            c(['Name', null, 'Doe']),
+            c(['Name', null, 'John'])
             ]],
         ['Name: Name: John', [
-            ['Name', null, null],
-            ['Name', null, 'John']
+            c(['Name', null, null]),
+            c(['Name', null, 'John'])
             ]],
-        ['First Name: John', [['First Name', null, 'John']]],
+        ['First Name: John', [c(['First Name', null, 'John'])]],
         ['Name: Doe First Name: John', [
-            ['Name', null, 'Doe'],
-            ['First Name', null, 'John']
+            c(['Name', null, 'Doe']),
+            c(['First Name', null, 'John'])
             ]],
         ['First Name: John Name: Doe', [
-            ['First Name', null, 'John'],
-            ['Name', null, 'Doe']
+            c(['First Name', null, 'John']),
+            c(['Name', null, 'Doe'])
             ]],
         ['First Name: John First Name: Jane', [
-            ['First Name', null, 'John'],
-            ['First Name', null, 'Jane']
+            c(['First Name', null, 'John']),
+            c(['First Name', null, 'Jane'])
             ]],
         ['Name: John Doe', [
-            ['Name', null, 'John'],
-            ['Doe']
+            c(['Name', null, 'John']),
+            c(['Doe'])
             ]],
-        ['Name: "John Doe"', [['Name', null, 'John Doe']]],
+        ['Name: "John Doe"', [c(['Name', null, 'John Doe'])]],
         ['Name: =Doe', [['Name', '=', 'Doe']]],
         ['Name: =Doe Name: >John', [
-            ['Name', '=', 'Doe'],
-            ['Name', '>', 'John']
+            c(['Name', '=', 'Doe']),
+            c(['Name', '>', 'John'])
             ]],
         ['First Name: =John First Name: =Jane', [
-            ['First Name', '=', 'John'],
-            ['First Name', '=', 'Jane']
+            c(['First Name', '=', 'John']),
+            c(['First Name', '=', 'Jane'])
             ]],
-        ['Name: John;Jane', [['Name', null, ['John', 'Jane']]]],
-        ['Name: John;', [['Name', null, ['John']]]],
+        ['Name: John;Jane', [c(['Name', null, ['John', 'Jane']])]],
+        ['Name: John;', [c(['Name', null, ['John']])]],
         ['Name: John;Jane Name: Doe', [
-            ['Name', null, ['John', 'Jane']],
-            ['Name', null, 'Doe']
+            c(['Name', null, ['John', 'Jane']]),
+            c(['Name', null, 'Doe'])
             ]],
         ['Name: John; Name: Doe', [
-            ['Name', null, ['John']],
-            ['Name', null, 'Doe']
+            c(['Name', null, ['John']]),
+            c(['Name', null, 'Doe'])
             ]],
-        ['Name:', [['Name', null, null]]],
-        ['Name: =', [['Name', '=', null]]],
-        ['Name: =""', [['Name', '=', '']]],
-        ['Name: = ""', [['Name', '=', '']]],
+        ['Name:', [c(['Name', null, null])]],
+        ['Name: =', [c(['Name', '=', null])]],
+        ['Name: =""', [c(['Name', '=', ''])]],
+        ['Name: = ""', [c(['Name', '=', ''])]],
         ['Name: = Name: Doe', [
-            ['Name', '=', null],
-            ['Name', null, 'Doe']
+            c(['Name', '=', null]),
+            c(['Name', null, 'Doe'])
             ]],
         ['Name: \\"foo\\"', [
-            ['Name', null, '"foo"']
+            c(['Name', null, '"foo"'])
             ]]
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
-            QUnit.ok(Sao.common.compare(parser.group(udlex(value)), result),
+            var parsed = parser.group(udlex(value));
+            QUnit.deepEqual(parsed, result,
                 'group(udlex(' + JSON.stringify(value) + ')');
+            parsed.forEach(function(clause) {
+                QUnit.ok(clause.clause, JSON.stringify(clause));
+            });
         });
     });
 
@@ -1483,6 +1491,51 @@
             QUnit.strictEqual(parser.string(value), result,
                 'string(' + JSON.stringify(value) + ')');
         });
+    });
+
+    QUnit.test('DomainParser.complete_value', function () {
+        var parser = new Sao.common.DomainParser();
+        var field;
+
+        var test_func = function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.deepEqual(parser.complete_value(this, value), result,
+                    'complete_value(' + JSON.stringify(this) +
+                        ', ' + JSON.stringify(value) + ')');
+        };
+
+        field = {
+            'type': 'selection',
+            'selection': [
+                ['male', 'Male'],
+                ['female', 'Female'],
+                ],
+        };
+        [
+            ['m', ['male']],
+            ['test', []],
+            ['', ['male', 'female']],
+            [null, ['male', 'female']],
+            [['male', 'f'], [['male', 'female']]],
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'selection',
+            'selection': [
+                ['male', 'Male'],
+                ['female', 'Female'],
+                ['', ''],
+                ],
+        };
+        [
+            ['m', ['male']],
+            ['test', []],
+            ['', ['male', 'female', '']],
+            [null, ['male', 'female', '']],
+            [['male', 'f'], [['male', 'female']]],
+        ].forEach(test_func, field);
+
     });
 
     QUnit.test('DomainInversion simple_inversion', function() {
