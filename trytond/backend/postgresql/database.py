@@ -142,6 +142,7 @@ class Database(DatabaseInterface):
         database.create(cursor, database_name)
         cursor.commit()
         cursor.close()
+        database.close()
 
         cmd = ['pg_restore', '--no-owner']
         env = {}
