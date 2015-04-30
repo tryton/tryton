@@ -711,9 +711,22 @@
                 prm = this.model.execute('default_get',
                         [Object.keys(this.model.fields)], this.get_context());
                 var force_parent = function(values) {
-                    // TODO
+                    if (this.group.parent &&
+                            this.group.parent_name in this.group.model.fields) {
+                        var parent_field =
+                            this.group.model.fields[this.group.parent_name];
+                        if (parent_field instanceof Sao.field.Reference) {
+                            values[this.group.parent_name] = [
+                                this.group.parent.model.name,
+                                this.group.parent.id];
+                        } else if (parent_field.description.relation ==
+                                this.group.parent.model.name) {
+                            values[this.group.parent_name] =
+                                this.group.parent.id;
+                        }
+                    }
                     return values;
-                };
+                }.bind(this);
                 prm = prm.pipe(force_parent).then(function(values) {
                     this.set_default(values);
                     return values;
