@@ -532,34 +532,48 @@
                 var filter_group = function(record) {
                     return !(name in record._loaded) && (record.id >= 0);
                 };
-                // TODO pool
-                [[this.group, filter_group]].forEach(function(e) {
-                    var group = e[0];
-                    var filter = e[1];
-                    var idx = this.group.indexOf(this);
-                    if (~idx) {
-                        var length = group.length;
-                        var n = 1;
-                        while (Object.keys(id2record).length < limit &&
-                            ((idx - n >= 0) || (idx + n < length)) &&
-                            (n < 2 * limit)) {
-                                var record;
-                                if (idx - n >= 0) {
-                                    record = group[idx - n];
-                                    if (filter(record)) {
-                                        id2record[record.id] = record;
-                                    }
+                var filter_parent_group = function(record) {
+                    return (filter_group(record) &&
+                            (id2record[record.id] === undefined) &&
+                            ((record.group === this.group) ||
+                             // Don't compute context for same group
+                             (JSON.stringify(record.get_context()) ===
+                              JSON.stringify(context))));
+                }.bind(this);
+                var group, filter;
+                if (this.group.parent &&
+                        (this.group.parent.model.name && this.model.name)) {
+                    group = [];
+                    group = group.concat.apply(
+                            group, this.group.parent.group.children);
+                    filter = filter_parent_group;
+                } else {
+                    group = this.group;
+                    filter = filter_group;
+                }
+                var idx = group.indexOf(this);
+                if (~idx) {
+                    var length = group.length;
+                    var n = 1;
+                    while ((Object.keys(id2record).length < limit) &&
+                        ((idx - n >= 0) || (idx + n < length)) &&
+                        (n < 2 * limit)) {
+                            var record;
+                            if (idx - n >= 0) {
+                                record = group[idx - n];
+                                if (filter(record)) {
+                                    id2record[record.id] = record;
                                 }
-                                if (idx + n < length) {
-                                    record = group[idx + n];
-                                    if (filter(record)) {
-                                        id2record[record.id] = record;
-                                    }
-                                }
-                                n++;
                             }
-                    }
-                }.bind(this));
+                            if (idx + n < length) {
+                                record = group[idx + n];
+                                if (filter(record)) {
+                                    id2record[record.id] = record;
+                                }
+                            }
+                            n++;
+                        }
+                }
             }
 
             for (fname in this.model.fields) {
