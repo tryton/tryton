@@ -197,7 +197,7 @@
                         field instanceof Sao.field.Reference) {
                     var value = [this.parent.id, ''];
                     if (field instanceof Sao.field.Reference) {
-                        value = [this.parent.model_name, value];
+                        value = [this.parent.model.name, value];
                     }
                     field.set_client(record, value);
                 }
@@ -329,7 +329,7 @@
         };
         array.set_parent = function(parent) {
             this.parent = parent;
-            if (parent && parent.model_name == this.model.name) {
+            if (parent && parent.model.name == this.model.name) {
                 this.parent.group.children.push(this);
             }
         };
@@ -2050,7 +2050,7 @@
         get_on_change_value: function(record) {
             if ((record.group.parent_name == this.name) &&
                     record.group.parent) {
-                return [record.group.parent.model_name,
+                return [record.group.parent.model.name,
                     record.group.parent.get_on_change_value(
                         [record.group.child_name])];
             }
