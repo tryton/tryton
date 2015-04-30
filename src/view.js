@@ -2399,9 +2399,20 @@
             prm.done(process);
         },
         _completion_match_selected: function(event_, selected_item, name) {
-            this.record().field_set_client(this.field_name,
-                    this.value_from_id(selected_item.id,
-                        selected_item.rec_name), true);
+            if (selected_item.id == 'search') {
+                // it's necessary to set the value so that edit() can get it
+                // and make the search on the user provided content
+                this.value(selected_item.query);
+                this.edit();
+                this.value('');
+            } else if (selected_item.id == 'create') {
+                this.new_();
+                this.value('');
+            } else {
+                this.record().field_set_client(this.field_name,
+                        this.value_from_id(selected_item.id,
+                            selected_item.rec_name), true);
+            }
         },
         display: function(record, field) {
             var screen_record = this.record();

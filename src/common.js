@@ -2836,15 +2836,41 @@
     });
     Sao.common.processing = new Sao.common.Processing();
 
-    Sao.common.get_completion = function(entry, source, match_selected,
-            search, create) {
+    Sao.common.get_completion = function(entry, source, match_selected) {
         entry.attr('autocomplete', 'off');
         entry.typeahead({
             'minLength': 1,
             'highlight': true
         }, {
+            'name': 'suggestions',
             'source': source,
-            'displayKey': 'rec_name'
+            'displayKey': 'rec_name',
+        }, {
+            'name': 'actions',
+            'source': function(query, process) {
+                var results = [];
+                if (entry.data('search')) {
+                    results.push({
+                        'id': 'search',
+                        'action': 'Search …',
+                        'query': query
+                    });
+                }
+                if (entry.data('create')) {
+                    results.push({
+                        'id': 'create',
+                        'action': 'Create …',
+                        'query': query
+                    });
+                }
+                process(results);
+            },
+            'displayKey': 'query',
+            'templates': {
+                'suggestion': function(context) {
+                    return '<p>' + context.action + '</p>';
+                }
+            }
         });
         entry.on('typeahead:selected', match_selected);
     };
@@ -2871,7 +2897,6 @@
                 if (entry.typeahead('val') != search_text) {
                     return prm.reject();
                 }
-                // TODO search & create
                 prm.resolve(results);
             }, prm.reject);
         };
