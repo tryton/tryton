@@ -421,7 +421,7 @@
                     path_idx < len ; path_idx++) {
                 path = starting_path.concat([path_idx]);
                 row = children_rows[path_idx];
-                if (row.is_expanded()) {
+                if (row && row.is_expanded()) {
                     id_path = starting_id_path.concat(row.record.id);
                     id_paths.push(id_path);
                     id_paths = id_paths.concat(this.get_expanded_paths(path,
