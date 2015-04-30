@@ -1164,7 +1164,7 @@
             var buttons = this.current_view.get_buttons();
             selected_records.forEach(function(record) {
                 buttons = buttons.filter(function(button) {
-                    if (record.group.get_readonly() || record.readonly) {
+                    if (record.group.get_readonly() || record.readonly()) {
                         return false;
                     }
                     if (button.attributes.type === 'instance') {

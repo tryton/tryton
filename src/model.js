@@ -418,6 +418,7 @@
             this._timestamp = null;
             this.attachment_count = -1;
             this.state_attrs = {};
+            this.exception = false;
         },
         has_changed: function() {
             return !jQuery.isEmptyObject(this._changed);
@@ -588,7 +589,8 @@
             prm = this.model.execute('read', [Object.keys(id2record).map(
                         function (e) { return parseInt(e, 10); }),
                     fnames_to_fetch], context);
-            var succeed = function(values) {
+            var succeed = function(values, exception) {
+                if (exception === undefined) exception = false;
                 var id2value = {};
                 values.forEach(function(e, i, a) {
                     id2value[e.id] = e;
@@ -598,7 +600,9 @@
                         continue;
                     }
                     var record = id2record[id];
-                    // TODO exception
+                    if (!record.exception) {
+                        record.exception = exception;
+                    }
                     var value = id2value[id];
                     if (record && value) {
                         for (var key in this._changed) {
@@ -623,7 +627,7 @@
                     }
                     failed_values.push(default_values);
                 }
-                succeed(failed_values);
+                succeed(failed_values, true);
             };
             this.group.prm = prm.then(succeed, failed);
             return this.group.prm;
@@ -1013,6 +1017,9 @@
         removed: function() {
             return Boolean(~this.group.record_removed.indexOf(this));
         },
+        readonly: function() {
+            return this.deleted() || this.removed() || this.exception;
+        },
         set_field_context: function() {
             for (var name in this.model.fields) {
                 if (!this.model.fields.hasOwnProperty(name)) {
@@ -1230,7 +1237,7 @@
                 record.state_attrs[this.name] = jQuery.extend(
                         {}, this.description);
             }
-            if (record.group.get_readonly() || record.readonly) {
+            if (record.group.get_readonly() || record.readonly()) {
                 record.state_attrs[this.name].readonly = true;
             }
             return record.state_attrs[this.name];

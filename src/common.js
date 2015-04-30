@@ -717,7 +717,7 @@
             var states;
             if (record) {
                 states = record.expr_eval(this.attributes.states || {});
-                if (record.group.get_readonly() || record.readonly) {
+                if (record.group.get_readonly() || record.readonly()) {
                     states.readonly = true;
                 }
             } else {
