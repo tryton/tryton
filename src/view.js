@@ -2861,7 +2861,7 @@
                 'class': 'btn btn-default btn-sm',
                 'aria-label': 'Previous'
             }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-arrow-left'
+                'class': 'glyphicon glyphicon-chevron-left'
             })).appendTo(buttons);
             this.but_previous.click(this.previous.bind(this));
 
@@ -2874,7 +2874,7 @@
                 'class': 'btn btn-default btn-sm',
                 'aria-label': 'Next'
             }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-arrow-right'
+                'class': 'glyphicon glyphicon-chevron-right'
             })).appendTo(buttons);
             this.but_next.click(this.next.bind(this));
 

@@ -243,9 +243,9 @@
         },
         // TODO translate labels
         toolbar_def: [
-            ['new', 'glyphicon-file', 'New', 'Create a new record', 'new_'],
+            ['new', 'glyphicon-edit', 'New', 'Create a new record', 'new_'],
             ['save', 'glyphicon-save', 'Save', 'Save this record', 'save'],
-            ['switch', 'glyphicon-move', 'Switch', 'Switch view',
+            ['switch', 'glyphicon-list-alt', 'Switch', 'Switch view',
             'switch_'],
             ['reload', 'glyphicon-refresh', 'Reload', 'Reload', 'reload'],
             ['previous', 'glyphicon-chevron-left', 'Previous',
@@ -255,11 +255,11 @@
             'Add an attachment to the record', 'attach']
             ],
         menu_def: [
-            ['glyphicon-file', 'New', 'new_'],
+            ['glyphicon-edit', 'New', 'new_'],
             ['glyphicon-save', 'Save', 'save'],
-            ['glyphicon-move', 'Switch', 'switch_'],
+            ['glyphicon-list-alt', 'Switch', 'switch_'],
             ['glyphicon-refresh', 'Reload/Undo', 'reload'],
-            ['glyphicon-repeat', 'Duplicate', 'copy'],
+            ['glyphicon-duplicate', 'Duplicate', 'copy'],
             ['glyphicon-trash', 'Delete', 'delete_'],
             ['glyphicon-chevron-left', 'Previous', 'previous'],
             ['glyphicon-chevron-right', 'Next', 'next'],
