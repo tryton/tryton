@@ -633,12 +633,14 @@
             return this.group.prm;
         },
         set: function(values) {
+            var name, value;
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
-            for (var name in values) {
+            var later = {};
+            for (name in values) {
                 if (!values.hasOwnProperty(name)) {
                     continue;
                 }
-                var value = values[name];
+                value = values[name];
                 if (name == '_timestamp') {
                     this._timestamp = value;
                     continue;
@@ -649,7 +651,9 @@
                     }
                     continue;
                 }
-                // TODO delay O2M
+                if (this.model.fields[name] instanceof Sao.field.One2Many) {
+                    later[name] = value;
+                }
                 if ((this.model.fields[name] instanceof Sao.field.Many2One) ||
                         (this.model.fields[name] instanceof Sao.field.Reference)) {
                     var field_rec_name = name + '.rec_name';
@@ -660,6 +664,11 @@
                         delete this._values[field_rec_name];
                     }
                 }
+                this.model.fields[name].set(this, value);
+                this._loaded[name] = true;
+            }
+            for (name in later) {
+                value = later[name];
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;
             }
