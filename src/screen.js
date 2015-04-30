@@ -776,16 +776,18 @@
             }
         },
         display: function() {
+            var deferreds = [];
             if (this.views) {
                 this.search_active(~['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type));
                 for (var i = 0; i < this.views.length; i++) {
                     if (this.views[i]) {
-                        this.views[i].display();
+                        deferreds.push(this.views[i].display());
                     }
                 }
             }
-            this.set_tree_state();
+            return jQuery.when.apply(jQuery, deferreds).then(
+                    this.set_tree_state.bind(this));
         },
         display_next: function() {
             var view = this.current_view;

@@ -299,6 +299,7 @@
             }.bind(this));
 
             this.redraw(selected, expanded);
+            return jQuery.when();
         },
         construct: function(selected, expanded) {
             this.rows = [];
@@ -1485,7 +1486,7 @@
                 }
                 widgets.forEach(display(record, field, name));
             }
-            jQuery.when.apply(jQuery,
+            return jQuery.when.apply(jQuery,
                     jQuery.map(promesses, function(p) {
                         return p;
                     })

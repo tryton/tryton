@@ -431,7 +431,7 @@
                             this.screen.screen_container.search_entry.val());
                         // TODO set current_record
                     }
-                    this.screen.display();
+                    return this.screen.display();
                     // TODO message
                     // TODO activate_save
                 }.bind(this));
