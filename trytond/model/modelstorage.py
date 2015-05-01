@@ -302,10 +302,11 @@ class ModelStorage(Model):
                 or isinstance(f, fields.Property))]
         ids = map(int, records)
         datas = cls.read(ids, fields_names=fields_names)
+        datas = dict((d['id'], d) for d in datas)
         field_defs = cls.fields_get(fields_names=fields_names)
         to_create = []
-        for data in datas:
-            data = convert_data(field_defs, data)
+        for id in ids:
+            data = convert_data(field_defs, datas[id])
             to_create.append(data)
         new_records = cls.create(to_create)
         new_ids = dict(izip(ids, map(int, new_records)))
