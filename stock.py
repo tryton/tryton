@@ -131,7 +131,7 @@ class Move:
             if consumed_qty >= quantity:
                 break
 
-            if type_ == 'in_supplier':
+            if type_.endswith('supplier'):
                 with Transaction().set_context(date=move.effective_date):
                     unit_price = Currency.compute(move.currency,
                         move.unit_price, move.company.currency, round=False)
