@@ -1802,7 +1802,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         '_parent_invoice.type')
     def on_change_account(self):
         if self.product:
-            return {}
+            return
         taxes = []
         if (self.invoice and self.invoice.party
                 and self.invoice.type):
