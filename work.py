@@ -110,8 +110,9 @@ class Work:
                     leafs.add(work.id)
 
                 total_allocation = 0
-                if not work.allocations or not work.effort_duration:
-                    durations[work.id] = work.effort_duration
+                if not work.allocations:
+                    durations[work.id] = (work.effort_duration
+                        or datetime.timedelta())
                     continue
                 for allocation in work.allocations:
                     total_allocation += allocation.percentage
