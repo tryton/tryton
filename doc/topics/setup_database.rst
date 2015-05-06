@@ -4,8 +4,8 @@
 How to setup a database
 =======================
 
-The database section of the `configuration <topics-configuration>` must be set
-before starting.
+The database section of the :ref:`configuration <topics-configuration>` must be
+set before starting.
 
 Create a database
 =================
