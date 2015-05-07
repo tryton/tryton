@@ -418,6 +418,7 @@
             this._timestamp = null;
             this.attachment_count = -1;
             this.state_attrs = {};
+            this.autocompletion = {};
             this.exception = false;
         },
         has_changed: function() {
@@ -706,9 +707,9 @@
             this.model.fields[name].set_client(this, value, force_change);
         },
         default_get: function() {
-            var prm;
+            var promises = [];
             if (!jQuery.isEmptyObject(this.model.fields)) {
-                prm = this.model.execute('default_get',
+                var prm = this.model.execute('default_get',
                         [Object.keys(this.model.fields)], this.get_context());
                 var force_parent = function(values) {
                     if (this.group.parent &&
@@ -731,11 +732,15 @@
                     this.set_default(values);
                     return values;
                 }.bind(this));
-            } else {
-                prm = jQuery.when();
+                promises.push(prm);
             }
-            // TODO autocomplete
-            return prm;
+            for (var fname in this.model.fields) {
+                var field = this.model.fields[fname];
+                if (field.description.autocomplete) {
+                    promises.push(this.do_autocomplete(fname));
+                }
+            }
+            return jQuery.when.apply(promises);
         },
         set_default: function(values) {
             var fieldnames = [];
@@ -944,6 +949,29 @@
                     field_x2many.in_on_change = false;
                 }
             }
+        },
+        autocomplete_with: function(fieldname) {
+            var promises = [];
+            for (var fname in this.model.fields) {
+                var field = this.model.fields[fname];
+                var autocomplete = field.description.autocomplete || [];
+                if (!~autocomplete.indexOf(fieldname)) {
+                    continue;
+                }
+                promises.push(this.do_autocomplete(fname));
+            }
+            return jQuery.when.apply(promises);
+        },
+        do_autocomplete: function(fieldname) {
+            this.autocompletion[fieldname] = [];
+            var field = this.model.fields[fieldname];
+            var autocomplete = field.description.autocomplete;
+            var values = this._get_on_change_args(autocomplete);
+            var prm = this.model.execute(
+                    'autocomplete_' + fieldname, [values], this.get_context());
+            return prm.then(function(result) {
+                this.autocompletion[fieldname] = result;
+            }.bind(this));
         },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
@@ -1185,7 +1213,7 @@
             // TODO check readonly
             prms.push(record.on_change([this.name]));
             prms.push(record.on_change_with([this.name]));
-            // TODO autocomplete_with
+            prms.push(record.autocomplete_with(this.name));
             record.set_field_context();
             return jQuery.when.apply(jQuery, prms);
         },

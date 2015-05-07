@@ -1970,10 +1970,27 @@
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
+            if (attributes.autocomplete) {
+                this.datalist = jQuery('<datalist/>').appendTo(this.el);
+                this.datalist.uniqueId();
+                this.input.attr('list', this.datalist.attr('id'));
+            }
             this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
+            if (this.datalist) {
+                this.datalist.children().remove();
+                var selection = [];
+                if (record) {
+                    selection = record.autocompletion[this.field_name] || [];
+                }
+                selection.forEach(function(e) {
+                    jQuery('<option/>', {
+                        'value': e
+                    }).appendTo(this.datalist);
+                }.bind(this));
+            }
             if (record) {
                 var value = record.field_get_client(this.field_name);
                 this.input.val(value || '');

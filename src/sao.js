@@ -56,6 +56,20 @@ var Sao = {};
         };
     }
 
+    // Add .uniqueId to jQuery
+    jQuery.fn.extend({
+        uniqueId: (function() {
+            var uuid = 0;
+            return function() {
+                return this.each(function() {
+                    if (!this.id) {
+                        this.id = "ui-id-" + (++uuid);
+                    }
+                });
+            };
+        })()
+    });
+
     Sao.class_ = function(Parent, props) {
         var ClassConstructor = function() {
             if (!(this instanceof ClassConstructor))
