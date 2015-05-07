@@ -58,7 +58,7 @@
                 } else if (data.error[0] == 'UserError') {
                     msg = data.error[1];
                     description = data.error[2];
-                    Sao.common.warning.run(description, msg)
+                    Sao.common.warning.run(msg, description)
                         .always(dfd.reject);
                     return;
                 } else if (data.error[0] == 'ConcurrencyException') {
