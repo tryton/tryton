@@ -17,12 +17,12 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "bootstrap": "~3.3.4",
-    "moment": "~2.9.0",
+    "moment": "~2.10.2",
     "eonasdan-bootstrap-datetimepicker": "~4.7.14",
-    "typeahead.js": "~0.10.5",
+    "typeahead.js": "~0.11.1",
     "typeahead.js-bootstrap3.less": "~0"
   },
   "devDependencies": {
-    "qunit": "~1.17.1"
+    "qunit": "~1.18.0"
   }
 }
