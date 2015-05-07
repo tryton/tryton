@@ -5,8 +5,8 @@ Models
 ======
 
 A model represents a single business logic or concept. It contains fields and
-defines the behaviors of the record. Most of the time, each model stores record
-in a single database table.
+defines the behaviors of the record. Most of the time, each model stores
+records in a single database table.
 
 The basics:
 
