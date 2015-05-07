@@ -466,6 +466,8 @@
             this.screen = new Sao.Screen('res.user', {
                 mode: []
             });
+            // Reset readonly set automaticly by MODELACCESS
+            this.screen.attributes.readonly = false;
             this.screen.group.set_readonly(false);
             this.screen.group.skip_model_access = true;
 
