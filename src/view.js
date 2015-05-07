@@ -196,7 +196,6 @@
                     column = new ColumnFactory(model, attributes);
 
                     var prefixes = [], suffixes = [];
-                    // TODO support for url/email/callto/sip
                     if (~['url', 'email', 'callto', 'sip'
                             ].indexOf(attributes.widget)) {
                         column.prefixes.push(new Sao.View.Tree.Affix(
