@@ -2518,7 +2518,8 @@
             }).append('Message: ')
             ).append(message));
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
@@ -2549,7 +2550,8 @@
             }).append('Warning: ')
             ).append(message));
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
@@ -2577,13 +2579,15 @@
             dialog.body.append(jQuery('<p/>').text('Do you want to proceed?'));
             dialog.footer.children().remove();
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('No').click(function() {
                 this.close(dialog);
                 prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('Yes').click(function() {
                 this.close(dialog);
                 if (this.always) {
@@ -2621,13 +2625,15 @@
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve();
@@ -2642,19 +2648,22 @@
             var dialog = Sao.common.SurDialog._super.build_dialog.call(
                 this, message);
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.resolve('cancel');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-default'
+                'class': 'btn btn-default',
+                'type': 'button'
             }).append('No').click(function() {
                 this.close(dialog);
                 prm.resolve('ko');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('Yes').click(function() {
                 this.close(dialog);
                 prm.resolve('ok');
@@ -2688,13 +2697,15 @@
                 'for': 'ask-dialog-entry'
             }).append(question)).append(entry));
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('OK').click(function() {
                 this.close(dialog);
                 prm.resolve(entry.val());
@@ -2734,13 +2745,15 @@
                         .text('"Write Anyway" to save your current version.')))
                 );
             jQuery('<button/>', {
-                'class': 'btn btn-link'
+                'class': 'btn btn-link',
+                'type': 'button'
             }).append('Cancel').click(function() {
                 this.close(dialog);
                 prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-default'
+                'class': 'btn btn-default',
+                'type': 'button'
             }).append('Compare').click(function() {
                 this.close(dialog);
                 Sao.Tab.create({
@@ -2753,7 +2766,8 @@
                 prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
-                'class': 'btn btn-default'
+                'class': 'btn btn-default',
+                'type': 'button'
             }).append('Write Anyway').click(function() {
                 this.close(dialog);
                 prm.resolve();
@@ -2790,7 +2804,8 @@
                         target: '_blank'
                     }).text('Report Bug'))));
             jQuery('<button/>', {
-                'class': 'btn btn-primary'
+                'class': 'btn btn-primary',
+                'type': 'button'
             }).append('Close').click(function() {
                 this.close(dialog);
                 prm.resolve();
