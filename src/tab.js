@@ -409,7 +409,7 @@
         },
         save: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).write) {
-                return;
+                return jQuery.when();
             }
             // TODO message
             return this.screen.save_current();
