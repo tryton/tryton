@@ -1246,7 +1246,7 @@
                             });
                         });
                 } else {
-                    var context = jQuery.extend(this.context);
+                    var context = jQuery.extend({}, this.context);
                     context._timestamp = {};
                     for (i = 0; i < selected_records.length; i++) {
                         record = selected_records[i];
