@@ -1209,7 +1209,10 @@
             if (record != this.screen.current_record) {
                 return;
             }
-            // TODO check state
+            var states = record.expr_eval(this.attributes.states || {});
+            if (states.invisible || states.readonly) {
+                return;
+            }
             this.screen.button(this.attributes);
         }
     });
