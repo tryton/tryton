@@ -32,14 +32,16 @@ class StockForecastTestCase(ModuleTestCase):
 
     def test0020distribute(self):
         'Test distribute'
-        for values, result in (
-                ((1, 5), {0: 5}),
-                ((4, 8), {0: 2, 1: 2, 2: 2, 3: 2}),
-                ((2, 5), {0: 2, 1: 3}),
-                ((10, 4), {0: 0, 1: 1, 2: 0, 3: 1, 4: 0,
-                        5: 0, 6: 1, 7: 0, 8: 1, 9: 0}),
-                ):
-            self.assertEqual(self.line.distribute(*values), result)
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            line = self.line()
+            for values, result in (
+                    ((1, 5), {0: 5}),
+                    ((4, 8), {0: 2, 1: 2, 2: 2, 3: 2}),
+                    ((2, 5), {0: 2, 1: 3}),
+                    ((10, 4), {0: 0, 1: 1, 2: 0, 3: 1, 4: 0,
+                            5: 0, 6: 1, 7: 0, 8: 1, 9: 0}),
+                    ):
+                self.assertEqual(line.distribute(*values), result)
 
     def test0030create_moves(self):
         'Test create_moves'

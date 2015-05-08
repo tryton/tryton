@@ -471,8 +471,7 @@ class ForecastLine(ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         Move.delete([m for l in lines for m in l.moves])
 
-    @staticmethod
-    def distribute(delta, qty):
+    def distribute(self, delta, qty):
         'Distribute qty over delta'
         range_delta = range(delta)
         a = {}.fromkeys(range_delta, 0)
