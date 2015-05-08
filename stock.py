@@ -119,10 +119,9 @@ class ShipmentIn:
                 move.currency, round=False)
             unit_shipment_cost = unit_shipment_cost.quantize(
                 exp, rounding=ROUND_HALF_EVEN)
-            Move.write([move], {
-                    'unit_price': move.unit_price + unit_shipment_cost,
-                    'unit_shipment_cost': unit_shipment_cost,
-                    })
+            move.unit_price += unit_shipment_cost
+            move.unit_shipment_cost = unit_shipment_cost
+        Move.save(moves)
 
     @classmethod
     @ModelView.button
