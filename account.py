@@ -21,10 +21,14 @@ class AccountTemplate:
         model_data = ModelData.__table__()
 
         # Migration from 3.4: translation of the account chart
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=[Concat(model_data.fs_id, '_fr')],
-                where=((Position('_fr', model_data.fs_id) == 0)
+        cursor.execute(*model_data.select(model_data.id,
+                where=((model_data.fs_id == 'be')
                     & (model_data.module == 'account_be'))))
+        if cursor.fetchone():
+            cursor.execute(*model_data.update(
+                    columns=[model_data.fs_id],
+                    values=[Concat(model_data.fs_id, '_fr')],
+                    where=((Position('_fr', model_data.fs_id) == 0)
+                        & (model_data.module == 'account_be'))))
 
         super(AccountTemplate, cls).__register__(module_name)
