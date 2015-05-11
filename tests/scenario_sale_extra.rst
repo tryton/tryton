@@ -94,8 +94,11 @@ Create payment term::
 Create Extra::
 
     >>> PriceList = Model.get('product.price_list')
+    >>> Extra = Model.get('sale.extra')
     >>> price_list = PriceList(name='Default')
-    >>> extra = price_list.sale_extras.new(name='Free Extra')
+    >>> price_list.save()
+    >>> extra = Extra(name='Free Extra')
+    >>> extra.price_list = price_list
     >>> line = extra.lines.new()
     >>> line.sale_amount = Decimal('100')
     >>> line.product = extra_product
@@ -105,7 +108,7 @@ Create Extra::
     >>> line.sale_amount = Decimal('50')
     >>> line.product = extra_product
     >>> line.quantity = 1
-    >>> price_list.save()
+    >>> extra.save()
 
 Sale for 100, 2 free extra added::
 

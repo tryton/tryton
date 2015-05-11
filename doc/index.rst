@@ -11,9 +11,11 @@ The criteria are defined by the *Sale Extras* of the *Price List*.
 Sale Extra
 **********
 
-Each matching *Sale Extra* of the *Price List* is evaluated to add an extra
-line. The criteria are the fields:
+Each matching *Sale Extra* is evaluated to add an extra line.
+The criteria are the fields:
 
+- *Price List*
+- *Start/End Date*
 - *Sale Amount*: If untaxed sale amount is greater or equal
   (in the price list company currency).
 

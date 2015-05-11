@@ -1,10 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
 from decimal import Decimal
+
+from sql import Null
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
+from trytond.transaction import Transaction
+from trytond import backend
 
 __all__ = ['Sale', 'SaleLine',
     'SaleExtra', 'SaleExtraLine']
@@ -55,9 +60,38 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
     __name__ = 'sale.extra'
 
     name = fields.Char('Name', translate=True, required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Eval('id', 0) > 0,
+            },
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', -1)),
+            ],
+        select=True)
     active = fields.Boolean('Active')
+    start_date = fields.Date('Start Date',
+        domain=['OR',
+            ('start_date', '<=', If(~Eval('end_date', None),
+                    datetime.date.max,
+                    Eval('end_date', datetime.date.max))),
+            ('start_date', '=', None),
+            ],
+        depends=['end_date'])
+    end_date = fields.Date('End Date',
+        domain=['OR',
+            ('end_date', '>=', If(~Eval('start_date', None),
+                    datetime.date.min,
+                    Eval('start_date', datetime.date.min))),
+            ('end_date', '=', None),
+            ],
+        depends=['start_date'])
     price_list = fields.Many2One('product.price_list', 'Price List',
-        required=True, ondelete='CASCADE')
+        ondelete='CASCADE',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     sale_amount = fields.Numeric('Sale Amount',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
@@ -65,38 +99,80 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
         'on_change_with_currency_digits')
     lines = fields.One2Many('sale.extra.line', 'extra', 'Lines')
 
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        PriceList = pool.get('product.price_list')
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        sql_table = cls.__table__()
+        price_list = PriceList.__table__()
+
+        super(SaleExtra, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
+        # Migration from 3.6: price_list not required and new company
+        table.not_null_action('price_list', 'remove')
+        query = sql_table.join(price_list,
+            condition=sql_table.price_list == price_list.id
+            ).select(sql_table.id, price_list.company,
+                where=sql_table.company == Null)
+        cursor.execute(*query)
+        for extra_id, company_id in cursor.fetchall():
+            query = sql_table.update([sql_table.company], [company_id],
+                where=sql_table.id == extra_id)
+            cursor.execute(*query)
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
     @staticmethod
     def default_active():
         return True
 
-    @fields.depends('price_list')
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
-        if self.price_list.company:
-            return self.price_list.company.currency.digits
+        if self.company:
+            return self.company.currency.digits
         return 2
 
     @classmethod
+    def _extras_domain(cls, sale):
+        return [
+            ['OR',
+                ('start_date', '<=', sale.sale_date),
+                ('start_date', '=', None),
+                ],
+            ['OR',
+                ('end_date', '=', None),
+                ('end_date', '>=', sale.sale_date),
+                ],
+            ['OR',
+                ('price_list', '=', None),
+                ('price_list', '=',
+                    sale.price_list.id if sale.price_list else None),
+                ],
+            ('company', '=', sale.company.id),
+            ]
+
+    @classmethod
     def get_lines(cls, sale, pattern=None):
-        'Return extra sale lines'
+        'Yield extra sale lines'
         pool = Pool()
         Currency = pool.get('currency.currency')
-
-        if not sale.price_list:
-            return []
-
+        extras = cls.search(cls._extras_domain(sale))
         if pattern is None:
             pattern = {}
         pattern['sale_amount'] = Currency.compute(sale.currency,
             sale.untaxed_amount, sale.company.currency)
 
-        lines = []
-        for extra in sale.price_list.sale_extras:
+        for extra in extras:
             if extra.match(pattern):
                 for line in extra.lines:
                     if line.match(pattern):
-                        lines.append(line.get_line(sale))
+                        yield line.get_line(sale)
                         break
-        return lines
 
     def match(self, pattern):
         pattern = pattern.copy()
