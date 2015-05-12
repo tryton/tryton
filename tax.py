@@ -634,7 +634,7 @@ class Tax(ModelSQL, ModelView):
             },
         depends=['parent'],
         help=('If checked then the unit price for further tax computation will'
-            'be modified by this tax'))
+            ' be modified by this tax'))
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
