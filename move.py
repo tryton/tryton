@@ -96,7 +96,7 @@ class Move(ModelSQL, ModelView):
                 'modify_posted_move': ('You can not modify move "%s" because '
                     'it is already posted.'),
                 'date_outside_period': ('You can not create move "%(move)s" '
-                    'because it\'s date is outside its period.'),
+                    'because its date is outside its period.'),
                 'draft_closed_period': ('You can not set to draft move '
                     '"%(move)s" because period "%(period)s" is closed.'),
                 'period_cancel': (
@@ -469,14 +469,14 @@ class Reconciliation(ModelSQL, ModelView):
                 'reconciliation_line_not_valid': ('You can not reconcile line '
                     '"%s" because it is not in valid state.'),
                 'reconciliation_different_accounts': ('You can not reconcile '
-                    'line "%(line)s" because it\'s account "%(account1)s" is '
+                    'line "%(line)s" because its account "%(account1)s" is '
                     'different from "%(account2)s".'),
                 'reconciliation_account_no_reconcile': (
                     'You can not reconcile '
-                    'line "%(line)s" because it\'s account "%(account)s" is '
+                    'line "%(line)s" because its account "%(account)s" is '
                     'configured as not reconcilable.'),
                 'reconciliation_different_parties': ('You can not reconcile '
-                    'line "%(line)s" because it\'s party "%(party1)s" is '
+                    'line "%(line)s" because its party "%(party1)s" is '
                     'different from "%(party2)s".'),
                 'reconciliation_unbalanced': ('You can not create a '
                     'reconciliation where debit "%(debit)s" and credit '
