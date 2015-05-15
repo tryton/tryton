@@ -9,6 +9,12 @@
         init: function(screen, callback, kwargs) {
             kwargs = kwargs || {};
             this.screen = screen;
+            this.callback = callback;
+            this.many = kwargs.many || 0;
+            this.domain = kwargs.domain || null;
+            this.context = kwargs.context || null;
+            this.save_current = kwargs.save_current;
+            this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
             var view_type = kwargs.view_type || 'form';
 
@@ -29,12 +35,6 @@
                     }
                 }.bind(this));
             }.bind(this));
-            this.many = kwargs.many || 0;
-            this.domain = kwargs.domain || null;
-            this.context = kwargs.context || null;
-            this.save_current = kwargs.save_current;
-            this.prev_view = screen.current_view;
-            this.callback = callback;
             var dialog = new Sao.Dialog('', '', 'lg');
             this.el = dialog.modal;
 
