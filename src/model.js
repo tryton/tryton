@@ -1812,7 +1812,6 @@
             if (!Sao.common.compare(previous_ids.sort(), value.sort())) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
-                    // TODO parent
                     record.validate(null, true).then(function() {
                         record.group.changed().done(function() {
                             var root_group = record.group.root_group();
