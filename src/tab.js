@@ -8,6 +8,7 @@
             Sao.Tab.tabs.push(this);
             this.buttons = {};
             this.id = 'tab-' + Sao.Tab.counter++;
+            this.name_el = jQuery('<span/>');
         },
         create_tabcontent: function() {
             this.el = jQuery('<div/>', {
@@ -111,6 +112,9 @@
         },
         _close_allowed: function() {
             return jQuery.when();
+        },
+        set_name: function(name) {
+            this.name_el.text(name);
         }
     });
 
@@ -181,7 +185,7 @@
         }).append('Close')).click(function() {
             tab.close();
         }))
-        .append(tab.name);
+        .append(tab.name_el);
         jQuery('<li/>', {
             'role': 'presentation',
             id: 'nav-' + tab.id
@@ -204,7 +208,6 @@
             screen.tab = this;
             this.screen = screen;
             this.attributes = jQuery.extend({}, attributes);
-            this.name = attributes.name; // XXX use screen current view title
 
             if (!Sao.common.MODELHISTORY.contains(model_name)) {
                 this.menu_def = jQuery.extend([], this.menu_def);
@@ -578,9 +581,9 @@
                 var time_format = '%H:%M:%S.%f';
                 revision = Sao.common.format_datetime(date_format, time_format,
                         revision);
-                label = this.name + ' @ '+ revision;
+                label = this.name_el.text() + ' @ '+ revision;
             } else {
-                label = this.name;
+                label = this.name_el.text();
             }
             this.title.html(label);
             ['new', 'save'].forEach(function(button) {
@@ -628,10 +631,10 @@
         init: function(wizard) {
             Sao.Tab.Wizard._super.init.call(this);
             this.wizard = wizard;
-            this.name = wizard.name;
+            this.set_name(wizard.name);
             wizard.tab = this;
             this.create_tabcontent();
-            this.title.html(this.name);
+            this.title.html(this.name_el.text());
             this.el.append(wizard.form);
         },
         create_toolbar: function() {

@@ -653,6 +653,11 @@
             }
             this.model.add_fields(fields);
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
+            // This call to set_name is in screen.js instead than in tab.js in
+            // order to prevent using a callback in the Tab code
+            if (jQuery.isEmptyObject(this.views) && (this.tab !== null)) {
+                this.tab.set_name(view_widget.attributes.string || '');
+            }
             this.views.push(view_widget);
 
             return view_widget;
