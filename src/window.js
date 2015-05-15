@@ -181,7 +181,7 @@
 
 
             switch_prm.done(function() {
-                // TODO header this.screen.current_view
+                dialog.add_title(this.screen.current_view.attributes.string);
                 dialog.body.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
                 this.screen.display();
