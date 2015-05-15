@@ -4,6 +4,7 @@
 import operator
 import types
 import datetime
+from collections import defaultdict
 
 
 def in_(a, b):
@@ -15,23 +16,17 @@ def in_(a, b):
     else:
         return operator.contains(b, a)
 
-OPERATORS = {
-    '=': operator.eq,
-    '>': operator.gt,
-    '<': operator.lt,
-    '<=': operator.le,
-    '>=': operator.ge,
-    '!=': operator.ne,
-    'in': in_,
-    'not in': lambda a, b: not in_(a, b),
-    # Those operators are not supported (yet ?)
-    'like': lambda a, b: True,
-    'ilike': lambda a, b: True,
-    'not like': lambda a, b: True,
-    'not ilike': lambda a, b: True,
-    'child_of': lambda a, b: True,
-    'not child_of': lambda a, b: True,
-}
+OPERATORS = defaultdict(lambda: lambda a, b: True)
+OPERATORS.update({
+        '=': operator.eq,
+        '>': operator.gt,
+        '<': operator.lt,
+        '<=': operator.le,
+        '>=': operator.ge,
+        '!=': operator.ne,
+        'in': in_,
+        'not in': lambda a, b: not in_(a, b),
+        })
 
 
 def locale_part(expression, field_name, locale_name='id'):
@@ -46,8 +41,7 @@ def locale_part(expression, field_name, locale_name='id'):
 def is_leaf(expression):
     return (isinstance(expression, (list, tuple))
         and len(expression) > 2
-        and isinstance(expression[1], basestring)
-        and expression[1] in OPERATORS)
+        and isinstance(expression[1], basestring))
 
 
 def constrained_leaf(part, boolop=operator.and_):
