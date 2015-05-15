@@ -1732,7 +1732,6 @@
             var model;
             if (group !== undefined) {
                 model = group.model;
-                // TODO unconnect
                 group.destroy();
             } else if (record.model.name == this.description.relation) {
                 model = record.model;
@@ -1741,9 +1740,7 @@
             }
             record._values[this.name] = undefined;
             this._set_default_value(record, model);
-            // TODO unconnect
             return this._set_value(record, value, _default);
-            // TODO connect
         },
         get: function(record) {
             var group = record._values[this.name];
@@ -1946,7 +1943,6 @@
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
             record._values[this.name] = group;
-            // TODO signal
         },
         get_timestamp: function(record) {
             var group = record._values[this.name];
