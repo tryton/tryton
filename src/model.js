@@ -691,6 +691,20 @@
             }
             return value;
         },
+        invalid_fields: function() {
+            var fields = {};
+            for (var fname in this.model.fields) {
+                var field = this.model.fields[fname];
+                var valid = field.get_state_attrs(this).valid;
+                if (valid === undefined) {
+                    valid = true;
+                }
+                if (!valid) {
+                    fields[fname] = field.description.string;
+                }
+            }
+            return fields;
+        },
         get_context: function() {
             return this.group.context();
         },
@@ -1033,8 +1047,17 @@
             }.bind(this));
         },
         pre_validate: function() {
-            // TODO
-            return jQuery.when();
+            if (jQuery.isEmptyObject(this._changed)) {
+                return jQuery.Deferred().resolve(true);
+            }
+            var values = this._get_on_change_args(Object.keys(this._changed));
+            return this.model.execute('pre_validate',
+                    [values], this.get_context())
+                .then(function() {
+                    return true;
+                }, function() {
+                    return false;
+                });
         },
         cancel: function() {
             this._loaded = {};

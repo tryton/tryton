@@ -223,6 +223,10 @@
                     !readonly &&
                     this.screen.current_record) {
                 this.screen.current_record.validate().then(function(validate) {
+                    if (validate && this.screen.attributes.pre_validate) {
+                        return this.screen.current_record.pre_validate();
+                    }
+                }.bind(this)).then(function(validate) {
                     var closing_prm = jQuery.Deferred();
                     if (validate && this.save_current) {
                         this.screen.save_current().then(closing_prm.resolve,
@@ -231,9 +235,10 @@
                             this.screen.current_view.view_type == 'form') {
                         var view = this.screen.current_view;
                         var validate_prms = [];
-                        for (var name in this.widgets) {
-                            var widget = this.widgets[name];
-                            if (widget.screen && widget.screen.pre_validate) {
+                        for (var name in view.widgets) {
+                            var widget = view.widgets[name];
+                            if (widget.screen &&
+                                widget.screen.attributes.pre_validate) {
                                 var record = widget.screen.current_record;
                                 if (record) {
                                     validate_prms.push(record.pre_validate());

@@ -333,8 +333,31 @@
             this.screen.row_activate();
         },
         select_changed: function(record) {
+            var previous_record = this.screen.current_record;
             this.screen.set_current_record(record);
-            // TODO validate if editable
+            if (this.editable && previous_record) {
+                var go_previous = function() {
+                    this.screen.set_current_record(previous_record);
+                    // TODO set_cursor
+                }.bind(this);
+                if (!this.screen.group.parent && previous_record !== record) {
+                    previous_record.validate(this.get_fields())
+                        .then(function(validate) {
+                            if (!validate) {
+                                go_previous();
+                            } else {
+                                previous_record.save().fail(go_previous);
+                            }
+                        });
+                } else if (previous_record !== record &&
+                        this.screen.attributes.pre_validate) {
+                    previous_record.pre_validate().then(function(validate) {
+                        if (!validate) {
+                            go_previous();
+                        }
+                    });
+                }
+            }
             // TODO update_children
         },
         selected_records: function() {
@@ -852,33 +875,79 @@
             return this._get_column_td(this.edited_column);
         },
         key_press: function(event_) {
-            var current_td, selector, next_column;
-            if (event_.which == Sao.common.TAB_KEYCODE) {
-                var sign = 1;
-                if (event_.shiftKey) {
-                    sign = -1;
-                }
-                event_.preventDefault();
-                next_column = ((this.edited_column + sign * 1) %
-                    this.tree.columns.length);
-                window.setTimeout(function() {
-                    this._get_column_td(next_column).trigger('click');
-                }.bind(this), 0);
-            } else if (event_.which == Sao.common.UP_KEYCODE ||
-                event_.which == Sao.common.DOWN_KEYCODE) {
-                var next_row;
-                if (event_.which == Sao.common.UP_KEYCODE) {
-                    next_row = this.el.prev('tr');
-                } else {
-                    next_row = this.el.next('tr');
-                }
-                window.setTimeout(function() {
-                    this._get_column_td(this.edited_column, next_row)
-                    .trigger('click').trigger('click');
-                }.bind(this), 0);
-            }
+            var current_td, selector, next_column, i;
+
             this.get_active_td().one('keydown',
                 this.key_press.bind(this));
+            if ((event_.which != Sao.common.TAB_KEYCODE) &&
+                    (event_.which != Sao.common.UP_KEYCODE) &&
+                    (event_.which != Sao.common.DOWN_KEYCODE)) {
+                return;
+            }
+            var column = this.tree.columns[this.edited_column];
+            if (column.field.validate(this.record)) {
+                if (event_.which == Sao.common.TAB_KEYCODE) {
+                    var sign = 1;
+                    if (event_.shiftKey) {
+                        sign = -1;
+                    }
+                    event_.preventDefault();
+                    next_column = this.edited_column;
+                    while(true) {
+                        next_column = ((next_column + sign) %
+                                this.tree.columns.length);
+                        if (!this.tree.columns[next_column]
+                                .attributes.tree_invisible &&
+                                this.tree.columns[next_column]
+                                .header.css('display') != 'none') {
+                            break;
+                        }
+                    }
+                    window.setTimeout(function() {
+                        this._get_column_td(next_column).trigger('click');
+                    }.bind(this), 0);
+                } else if (event_.which == Sao.common.UP_KEYCODE ||
+                    event_.which == Sao.common.DOWN_KEYCODE) {
+                    var next_row;
+                    if (event_.which == Sao.common.UP_KEYCODE) {
+                        next_row = this.el.prev('tr');
+                    } else {
+                        next_row = this.el.next('tr');
+                    }
+                    next_column = this.edited_column;
+                    this.record.validate(this.tree.get_fields())
+                        .then(function(validate) {
+                            if (!validate) {
+                                next_row = null;
+                                var invalid_fields =
+                                    this.record.invalid_fields();
+                                for (i = 0; i < this.tree.columns.length; i++) {
+                                    var col = this.tree.columns[i];
+                                    if (col.attributes.name in invalid_fields) {
+                                        next_column = i;
+                                    }
+                                }
+                            } else {
+                                if (this.tree.screen.attributes.pre_validate) {
+                                    return this.record.pre_validate()
+                                        .fail(function() {
+                                            next_row = null;
+                                        });
+                                } else if (!this.tree.screen.model.parent) {
+                                    return this.record.save()
+                                        .fail(function() {
+                                            next_row = null;
+                                        });
+                                }
+                            }
+                        }.bind(this)).then(function() {
+                            window.setTimeout(function() {
+                                this._get_column_td(next_column, next_row)
+                                .trigger('click').trigger('click');
+                            }.bind(this), 0);
+                        }.bind(this));
+                }
+            }
         }
     });
 
@@ -2928,7 +2997,8 @@
                 views_preload: attributes.views || {},
                 row_activate: this.activate.bind(this),
                 readonly: attributes.readonly || false,
-                exclude_field: attributes.relation_field || null
+                exclude_field: attributes.relation_field || null,
+                pre_validate: attributes.pre_validate
             });
             this.prm = this.screen.switch_view(modes[0]).done(function() {
                 this.content.append(this.screen.screen_container.el);
