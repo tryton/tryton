@@ -1839,13 +1839,15 @@
                 'class': 'tab-content'
             }).appendTo(this.el);
             this.selected = false;
-            this.counter = 0;
         },
         add: function(tab, text) {
-            var tab_id = 'tab-form-' + this.counter++;
+            var pane = jQuery('<div/>', {
+                'role': 'tabpanel',
+                'class': 'tab-pane',
+            }).uniqueId();
+            var tab_id = pane.attr('id');
             var page = jQuery('<li/>', {
-                'role': 'presentation',
-                id: 'nav-' + tab_id
+                'role': 'presentation'
             }).append(
                 jQuery('<a/>', {
                     'aria-controls': tab_id,
@@ -1853,11 +1855,7 @@
                     'data-toggle': 'tab',
                     'href': '#' + tab_id
                 }).append(text)).appendTo(this.nav);
-            var pane = jQuery('<div/>', {
-                role: 'tabpanel',
-                'class': 'tab-pane',
-                id: tab_id
-            }).html(tab).appendTo(this.panes);
+            pane.html(tab).appendTo(this.panes);
             if (!this.selected) {
                 // Can not use .tab('show')
                 page.addClass('active');
