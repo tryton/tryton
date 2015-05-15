@@ -1931,7 +1931,7 @@
         is_leaf: function(expression) {
             return ((expression instanceof Array) &&
                 (expression.length > 2) &&
-                (expression[1] in this.OPERATORS));
+                (expression[1] instanceof String));
         },
         eval_leaf: function(part, context, boolop) {
             if (boolop === undefined) {
@@ -1982,7 +1982,11 @@
                     '!=': 'not in'
                 }[operand];
             }
-            return this.OPERATORS[operand](context_field, value);
+            if (operand in this.OPERATORS) {
+                return this.OPERATORS[operand](context_field, value);
+            } else {
+                return true;
+            }
         },
         inverse_leaf: function(domain) {
             if (~['AND', 'OR'].indexOf(domain)) {
