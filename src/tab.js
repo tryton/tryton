@@ -226,6 +226,8 @@
             }.bind(this));
 
             this.view_prm = this.screen.switch_view().done(function() {
+                this.set_name(attributes.name ||
+                        this.screen.current_view.attributes.string);
                 this.el.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     screen.group.load([attributes.res_id]);
