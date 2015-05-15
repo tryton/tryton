@@ -1931,7 +1931,7 @@
         is_leaf: function(expression) {
             return ((expression instanceof Array) &&
                 (expression.length > 2) &&
-                (expression[1] instanceof String));
+                (typeof expression[1] == 'string'));
         },
         eval_leaf: function(part, context, boolop) {
             if (boolop === undefined) {
