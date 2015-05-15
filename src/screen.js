@@ -168,7 +168,6 @@
         },
         update: function(query, process) {
             var completions = this.screen.domain_parser.completion(query);
-            console.log(completions);
             var suggestions = [];
             completions.forEach(function(e) {
                 suggestions.push({
