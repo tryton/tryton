@@ -10,6 +10,8 @@ from MySQLdb import OperationalError as DatabaseOperationalError
 import os
 import time
 import tempfile
+import urllib
+
 from sql import Flavor, Expression
 from sql.functions import Extract, Overlay, CharLength
 
@@ -100,7 +102,7 @@ class Database(DatabaseInterface):
         if uri.username:
             args['user'] = uri.username
         if uri.password:
-            args['passwd'] = uri.password
+            args['passwd'] = urllib.unquote_plus(uri.password)
         conn = MySQLdb.connect(**args)
         cursor = Cursor(conn, self.database_name)
         cursor.execute('SET time_zone = `UTC`')
