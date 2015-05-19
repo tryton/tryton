@@ -12,6 +12,7 @@ import smtplib
 from array import array
 from itertools import islice
 import types
+import urllib
 
 from sql import Literal
 from sql.operators import Or
@@ -114,7 +115,9 @@ def get_smtp_server():
         smtp_server.starttls()
 
     if uri.username and uri.password:
-        smtp_server.login(uri.username, uri.password)
+        smtp_server.login(
+            urllib.unquote_plus(uri.username),
+            urllib.unquote_plus(uri.password))
 
     return smtp_server
 
