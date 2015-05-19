@@ -2049,6 +2049,7 @@ class ThirdPartyBalance(Report):
         report_context['total_debit'] = sum((x['debit'] for x in objects))
         report_context['total_credit'] = sum((x['credit'] for x in objects))
         report_context['total_solde'] = sum((x['solde'] for x in objects))
+        report_context['records'] = objects
 
         return report_context
 
