@@ -1285,6 +1285,10 @@ class TaxRule(ModelSQL, ModelView):
     def default_kind():
         return 'both'
 
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
     def apply(self, tax, pattern):
         '''
         Apply rule on tax
