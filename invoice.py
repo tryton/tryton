@@ -1501,6 +1501,8 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                     'uses the same account (%(account)s).'),
                 })
 
+        cls._check_modify_exclude = {'note', 'origin'}
+
         # Set account domain dynamically for kind
         cls.account.domain = [
             ('company', '=', Eval('company', -1)),
@@ -1840,17 +1842,18 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
-    def check_modify(cls, lines):
+    def check_modify(cls, lines, fields=None):
         '''
         Check if the lines can be modified
         '''
-        for line in lines:
-            if (line.invoice
-                    and line.invoice.state in ('posted', 'paid')):
-                cls.raise_user_error('modify', {
-                        'line': line.rec_name,
-                        'invoice': line.invoice.rec_name
-                        })
+        if fields is None or fields - cls._check_modify_exclude:
+            for line in lines:
+                if (line.invoice
+                        and line.invoice.state in ('posted', 'paid')):
+                    cls.raise_user_error('modify', {
+                            'line': line.rec_name,
+                            'invoice': line.invoice.rec_name
+                            })
 
     @classmethod
     def view_attributes(cls):
@@ -1866,8 +1869,9 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def write(cls, *args):
-        lines = sum(args[0::2], [])
-        cls.check_modify(lines)
+        actions = iter(args)
+        for lines, values in zip(actions, actions):
+            cls.check_modify(lines, set(values))
         super(InvoiceLine, cls).write(*args)
 
     @classmethod
