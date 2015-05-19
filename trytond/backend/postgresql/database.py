@@ -4,6 +4,7 @@ import time
 import logging
 import re
 import os
+import urllib
 if os.name == 'posix':
     import pwd
 from decimal import Decimal
@@ -69,7 +70,8 @@ class Database(DatabaseInterface):
         port = uri.port and "port=%s" % uri.port or ''
         name = "dbname=%s" % self.database_name
         user = uri.username and "user=%s" % uri.username or ''
-        password = uri.password and "password=%s" % uri.password or ''
+        password = ("password=%s" % urllib.unquote_plus(uri.password)
+            if uri.password else '')
         minconn = config.getint('database', 'minconn', default=1)
         maxconn = config.getint('database', 'maxconn', default=64)
         dsn = '%s %s %s %s %s' % (host, port, name, user, password)
