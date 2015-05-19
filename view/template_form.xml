@@ -13,6 +13,9 @@ this repository contains the full copyright notices and license terms. -->
             <label name="width"/>
             <field name="width"/>
             <field name="width_uom"/>
+            <label name="volume"/>
+            <field name="volume"/>
+            <field name="volume_uom"/>
             <label name="weight"/>
             <field name="weight"/>
             <field name="weight_uom"/>

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval, Bool, Id
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 
 __all__ = ['Template']
 __metaclass__ = PoolMeta
@@ -58,6 +58,23 @@ class Template:
         depends=['type', 'width'])
     width_digits = fields.Function(fields.Integer('Width Digits'),
         'on_change_with_width_digits')
+    volume = fields.Float('Volume',
+        digits=(16, Eval('volume_digits', 2)),
+        states={
+            'invisible': Eval('type').in_(NON_MEASURABLE),
+            'readonly': (Bool(Eval('length'))
+                & Bool(Eval('height')) & Bool(Eval('width'))),
+            },
+        depends=['type', 'volume_digits'])
+    volume_uom = fields.Many2One('product.uom', 'Volume Uom',
+        domain=[('category', '=', Id('product', 'uom_cat_volume'))],
+        states={
+            'invisible': Eval('type').in_(NON_MEASURABLE),
+            'required': Bool(Eval('volume')),
+            },
+        depends=['type', 'volume'])
+    volume_digits = fields.Function(fields.Integer('Volume Digits'),
+        'on_change_with_volume_digits')
     weight = fields.Float('Weight',
         digits=(16, Eval('weight_digits', 2)),
         states={
@@ -99,6 +116,43 @@ class Template:
 
     @staticmethod
     def default_width_digits():
+        return 2
+
+    @fields.depends('volume', 'volume_uom',
+        'length', 'length_uom',
+        'height', 'height_uom',
+        'width', 'width_uom')
+    def on_change_with_volume(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
+        if not all([self.volume_uom, self.length, self.length_uom,
+                    self.height, self.height_uom, self.width, self.width_uom]):
+            if all([self.length, self.height, self.width]):
+                return
+            return self.volume
+
+        meter = Uom(ModelData.get_id('product', 'uom_meter'))
+        cubic_meter = Uom(ModelData.get_id('product', 'uom_cubic_meter'))
+
+        length = Uom.compute_qty(
+            self.length_uom, self.length, meter, round=False)
+        height = Uom.compute_qty(
+            self.height_uom, self.height, meter, round=False)
+        width = Uom.compute_qty(
+            self.width_uom, self.width, meter, round=False)
+
+        return Uom.compute_qty(
+            cubic_meter, length * height * width, self.volume_uom)
+
+    @fields.depends('volume_uom')
+    def on_change_with_volume_digits(self, name=None):
+        return (self.volume_uom.digits if self.volume_uom
+            else self.default_volume_digits())
+
+    @staticmethod
+    def default_volume_digits():
         return 2
 
     @fields.depends('weight_uom')
