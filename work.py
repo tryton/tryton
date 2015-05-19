@@ -229,7 +229,7 @@ class Work:
             values.update(method(m_works))
 
         default = getattr(cls, 'default_%s' % name)()
-        return cls.sum_tree(works, lambda w: values.get(w.id, default))
+        return cls.sum_tree(works, lambda w: values.get(w.id) or default)
 
     @classmethod
     @ModelView.button
