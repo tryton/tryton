@@ -97,10 +97,14 @@ class DepositRecall(Wizard):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
+        Currency = pool.get('currency.currency')
         invoice = Invoice(Transaction().context['active_id'])
 
         amount = 0
-        balance = invoice.party.get_deposit_balance(self.start.account)
+        account = self.start.account
+        balance = invoice.party.get_deposit_balance(account)
+        balance = Currency.compute(account.company.currency, balance,
+            invoice.currency)
         if invoice.type.startswith('in'):
             if balance > 0 and invoice.total_amount > 0:
                 amount = -min(balance, invoice.total_amount)
