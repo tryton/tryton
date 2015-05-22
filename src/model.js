@@ -1008,15 +1008,8 @@
                 return values[0].rec_name;
             });
         },
-        validate: function(fields, softvalidation, pre_validate) {
-            var prms = [];
-            if (fields === undefined) {
-                fields = null;
-            }
-            (fields || ['*']).forEach(function(field) {
-                prms.push(this.load(field));
-            }.bind(this));
-            return jQuery.when.apply(jQuery, prms).then(function() {
+        validate: function(fields, softvalidation, pre_validate, sync) {
+            var validate_fields = function() {
                 var result = true;
                 var exclude_fields = [];
                 this.group.screens.forEach(function(screen) {
@@ -1044,7 +1037,19 @@
                     }
                 }
                 return result;
-            }.bind(this));
+            }.bind(this);
+            if (sync) {
+                return validate_fields();
+            } else {
+                var prms = [];
+                if (fields === undefined) {
+                    fields = null;
+                }
+                (fields || ['*']).forEach(function(field) {
+                    prms.push(this.load(field));
+                }.bind(this));
+                return jQuery.when.apply(jQuery, prms).then(validate_fields);
+            }
         },
         pre_validate: function() {
             if (jQuery.isEmptyObject(this._changed)) {
@@ -2020,15 +2025,17 @@
                     ldomain = [['id', '=', null]];
                 }
             }
-            for (var i = 0, len = record._values[this.name] || []; i < len; i++) {
-                var record2 = record._values[i];
+            for (var i = 0, len = (record._values[this.name] || []).length;
+                    i < len; i++) {
+                var record2 = record._values[this.name][i];
                 if (jQuery.isEmptyObject(record2._loaded) &&
                         (record2.id >= 0) &&
                         !pre_validate) {
                     continue;
                 }
-                // XXX manage promises
-                record2.validate(undefined, softvalidation, ldomain);
+                if (!record2.validate(null, softvalidation, ldomain, true)) {
+                    result = false;
+                }
             }
             if (!Sao.field.One2Many._super.validate.call(this, record,
                         softvalidation, pre_validate)) {
