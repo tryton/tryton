@@ -173,7 +173,6 @@ var Sao = {};
             'params': [false, {}]
         }, session).then(function(preferences) {
             var deferreds = [];
-            // TODO view_search
             deferreds.push(Sao.common.MODELACCESS.load_models());
             deferreds.push(Sao.common.ICONFACTORY.load_icons());
             deferreds.push(Sao.common.MODELHISTORY.load_history());
