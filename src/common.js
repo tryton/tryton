@@ -15,7 +15,7 @@
     Sao.common.F3_KEYCODE = 114;
 
     Sao.common.SELECTION_NONE = 1;
-    Sao.common.SELECTION_SINGLE = 2;  // Not implemented yet
+    Sao.common.SELECTION_SINGLE = 2;
     Sao.common.SELECTION_MULTIPLE = 3;
 
     Sao.common.BIG_IMAGE_SIZE = Math.pow(10, 6);
