@@ -25,12 +25,12 @@ Create database::
 
 Install account_deposit::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> deposit_module, = Module.find([
     ...         ('name', '=', 'account_deposit'),
     ...         ])
     >>> deposit_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
