@@ -403,7 +403,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_general_account_configuration"
             action="wizard_create_chart" id="menu_create_chart"/>
-        <record model="ir.module.module.config_wizard.item"
+        <record model="ir.module.config_wizard.item"
             id="config_wizard_item_chart_account">
             <field name="action" ref="wizard_create_chart"/>
         </record>

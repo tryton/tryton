@@ -22,7 +22,7 @@ def allow_modify_party(database):
 
 
 def get_modules():
-    Module = Model.get('ir.module.module')
+    Module = Model.get('ir.module')
     modules = Module.find([
             ('state', '=', 'installed'),
             ])
