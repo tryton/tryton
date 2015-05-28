@@ -20,10 +20,10 @@ Create database::
 
 Install sale_opportunity::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> sale_opportunity_module, = Module.find([('name', '=', 'sale_opportunity')])
     >>> sale_opportunity_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
