@@ -23,14 +23,14 @@ Create database::
 
 Install sale_supply, sale, purchase::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> modules = Module.find([
     ...         ('name', 'in', ('sale_supply_drop_shipment', 'sale',
     ...             'purchase')),
     ...         ])
     >>> for module in modules:
     ...     module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
