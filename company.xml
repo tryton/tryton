@@ -164,7 +164,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">company.company.config</field>
         </record>
 
-        <record model="ir.module.module.config_wizard.item"
+        <record model="ir.module.config_wizard.item"
             id="config_wizard_item_company">
             <field name="action" ref="act_company_config"/>
         </record>
