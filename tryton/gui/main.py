@@ -1314,8 +1314,9 @@ class Main(object):
             with open(filename, 'rb') as file_p:
                 data = file_p.read()
             host, port = url.rsplit(':', 1)
+            cast = bytearray if bytes == str else bytes
             rpcprogress = common.RPCProgress('db_exec', (host, int(port),
-                'restore', dbname, passwd, buffer(data), update))
+                'restore', dbname, passwd, cast(data), update))
             try:
                 res = rpcprogress.run(False)
             except TrytonServerError, exception:
