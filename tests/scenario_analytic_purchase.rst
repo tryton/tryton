@@ -24,11 +24,11 @@ Create database::
 
 Install purchase::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> analytic_purchase_module, = Module.find(
     ...     [('name', '=', 'analytic_purchase')])
     >>> analytic_purchase_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
