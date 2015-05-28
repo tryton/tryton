@@ -21,12 +21,12 @@ Create database::
 
 Install analytic_account::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> analytic_account_module, = Module.find([
     ...         ('name', '=', 'analytic_account'),
     ...         ])
     >>> analytic_account_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
