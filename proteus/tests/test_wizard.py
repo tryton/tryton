@@ -16,7 +16,7 @@ class TestWizard(ProteusTestCase):
 
     def test_translation_export(self):
         Lang = Model.get('ir.lang')
-        Module = Model.get('ir.module.module')
+        Module = Model.get('ir.module')
         translation_export = Wizard('ir.translation.export')
         translation_export.form.language, = Lang.find([('code', '=', 'en_US')])
         translation_export.form.module, = Module.find([('name', '=', 'ir')])
