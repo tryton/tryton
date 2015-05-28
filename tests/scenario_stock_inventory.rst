@@ -19,10 +19,10 @@ Create database::
 
 Install stock Module::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> stock_module, = Module.find([('name', '=', 'stock')])
     >>> stock_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
