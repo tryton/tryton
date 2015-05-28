@@ -640,27 +640,27 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Avertissement utilisateur"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Installation"
 msgstr "Annuler l'installation"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
 msgstr "Annuler la désinstallation"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Annuler la mise à jour"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Installation"
 msgstr "Marquer pour l'installation"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
 msgstr "Marquer pour la désinstallation (beta)"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Marquer pour la mise à jour"
 

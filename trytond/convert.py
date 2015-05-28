@@ -412,7 +412,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.grouped_write = defaultdict(list)
         self.grouped_model_data = []
         self.skip_data = False
-        Module = pool.get('ir.module.module')
+        Module = pool.get('ir.module')
         self.installed_modules = [m.name for m in Module.search([
                     ('state', 'in', ['installed', 'to upgrade']),
                     ])]

@@ -117,10 +117,10 @@ CREATE TABLE "res_user-res_group" (
     PRIMARY KEY(id)
 );
 
-CREATE SEQUENCE ir_module_module_id_seq;
+CREATE SEQUENCE ir_module_id_seq;
 
-CREATE TABLE ir_module_module (
-    id INTEGER DEFAULT NEXTVAL('ir_module_module_id_seq') NOT NULL,
+CREATE TABLE ir_module (
+    id INTEGER DEFAULT NEXTVAL('ir_module_id_seq') NOT NULL,
     create_uid INTEGER NOT NULL,
     create_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     write_date TIMESTAMP WITHOUT TIME ZONE,
@@ -132,12 +132,12 @@ CREATE TABLE ir_module_module (
     FOREIGN KEY (write_uid) REFERENCES res_user ON DELETE SET NULL
 );
 
-ALTER TABLE ir_module_module ADD CONSTRAINT name_uniq UNIQUE (name);
+ALTER TABLE ir_module ADD CONSTRAINT name_uniq UNIQUE (name);
 
-CREATE SEQUENCE ir_module_module_dependency_id_seq;
+CREATE SEQUENCE ir_module_dependency_id_seq;
 
-CREATE TABLE ir_module_module_dependency (
-    id INTEGER DEFAULT NEXTVAL('ir_module_module_dependency_id_seq') NOT NULL,
+CREATE TABLE ir_module_dependency (
+    id INTEGER DEFAULT NEXTVAL('ir_module_dependency_id_seq') NOT NULL,
     create_uid INTEGER NOT NULL,
     create_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     write_date TIMESTAMP WITHOUT TIME ZONE,
@@ -147,5 +147,5 @@ CREATE TABLE ir_module_module_dependency (
     PRIMARY KEY(id),
     FOREIGN KEY (create_uid) REFERENCES res_user ON DELETE SET NULL,
     FOREIGN KEY (write_uid) REFERENCES res_user ON DELETE SET NULL,
-    FOREIGN KEY (module) REFERENCES ir_module_module ON DELETE CASCADE
+    FOREIGN KEY (module) REFERENCES ir_module ON DELETE CASCADE
 );

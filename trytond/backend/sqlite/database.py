@@ -297,8 +297,8 @@ class Database(DatabaseInterface):
                 if (len(line) > 0) and (not line.isspace()):
                     cursor.execute(line)
 
-        ir_module = Table('ir_module_module')
-        ir_module_dependency = Table('ir_module_module_dependency')
+        ir_module = Table('ir_module')
+        ir_module_dependency = Table('ir_module_dependency')
         for module in ('ir', 'res', 'webdav'):
             state = 'uninstalled'
             if module in ('ir', 'res'):
@@ -387,8 +387,8 @@ class Cursor(CursorInterface):
                 'ir_ui_menu',
                 'res_user',
                 'res_group',
-                'ir_module_module',
-                'ir_module_module_dependency',
+                'ir_module',
+                'ir_module_dependency',
                 'ir_translation',
                 'ir_lang',
                 ])

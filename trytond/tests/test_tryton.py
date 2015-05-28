@@ -41,7 +41,7 @@ def install_module(name):
     create_db()
     with Transaction().start(DB_NAME, USER,
             context=CONTEXT) as transaction:
-        Module = POOL.get('ir.module.module')
+        Module = POOL.get('ir.module')
 
         modules = Module.search([
                 ('name', '=', name),
@@ -59,7 +59,7 @@ def install_module(name):
         Module.install(modules)
         transaction.cursor.commit()
 
-        InstallUpgrade = POOL.get('ir.module.module.install_upgrade',
+        InstallUpgrade = POOL.get('ir.module.install_upgrade',
             type='wizard')
         instance_id, _, _ = InstallUpgrade.create()
         transaction.cursor.commit()

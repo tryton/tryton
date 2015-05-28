@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">res.user.config</field>
         </record>
 
-        <record model="ir.module.module.config_wizard.item"
+        <record model="ir.module.config_wizard.item"
             id="config_wizard_item_user">
             <field name="action" ref="act_user_config"/>
         </record>

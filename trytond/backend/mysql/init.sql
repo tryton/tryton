@@ -97,7 +97,7 @@ CREATE TABLE `res_user-res_group` (
     CONSTRAINT `res_user-res_group_group_fkey` FOREIGN KEY (`group`) REFERENCES res_group (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE ir_module_module (
+CREATE TABLE ir_module (
     id BIGINT AUTO_INCREMENT NOT NULL,
     create_uid BIGINT,
     create_date TIMESTAMP NOT NULL,
@@ -106,13 +106,13 @@ CREATE TABLE ir_module_module (
     name VARCHAR(255) NOT NULL,
     state VARCHAR(255),
     PRIMARY KEY(id),
-    CONSTRAINT ir_module_module_create_uid_fkey FOREIGN KEY (create_uid) REFERENCES res_user (id) ON DELETE SET NULL,
-    CONSTRAINT ir_module_module_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL
+    CONSTRAINT ir_module_create_uid_fkey FOREIGN KEY (create_uid) REFERENCES res_user (id) ON DELETE SET NULL,
+    CONSTRAINT ir_module_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
-ALTER TABLE ir_module_module ADD CONSTRAINT name_uniq UNIQUE (name);
+ALTER TABLE ir_module ADD CONSTRAINT name_uniq UNIQUE (name);
 
-CREATE TABLE ir_module_module_dependency (
+CREATE TABLE ir_module_dependency (
     id BIGINT AUTO_INCREMENT NOT NULL,
     create_uid BIGINT,
     create_date TIMESTAMP NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE ir_module_module_dependency (
     name VARCHAR(255),
     module BIGINT,
     PRIMARY KEY(id),
-    CONSTRAINT ir_module_module_dependency_create_uid_fkey FOREIGN KEY (create_uid) REFERENCES res_user (id) ON DELETE SET NULL,
-    CONSTRAINT ir_module_module_dependency_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL,
-    CONSTRAINT ir_module_module_dependency_module_fkey FOREIGN KEY (module) REFERENCES ir_module_module (id) ON DELETE CASCADE
+    CONSTRAINT ir_module_dependency_create_uid_fkey FOREIGN KEY (create_uid) REFERENCES res_user (id) ON DELETE SET NULL,
+    CONSTRAINT ir_module_dependency_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL,
+    CONSTRAINT ir_module_dependency_module_fkey FOREIGN KEY (module) REFERENCES ir_module (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;

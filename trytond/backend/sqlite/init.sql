@@ -82,7 +82,7 @@ CREATE TABLE "res_user-res_group" (
     "group" INTEGER
 );
 
-CREATE TABLE ir_module_module (
+CREATE TABLE ir_module (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     create_uid INTEGER,
     create_date TIMESTAMP,
@@ -92,7 +92,7 @@ CREATE TABLE ir_module_module (
     state VARCHAR
 );
 
-CREATE TABLE ir_module_module_dependency (
+CREATE TABLE ir_module_dependency (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     create_uid INTEGER,
     create_date TIMESTAMP,

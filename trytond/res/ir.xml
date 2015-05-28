@@ -363,30 +363,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
-        <record model="ir.model.access" id="access_ir_module_module">
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+        <record model="ir.model.access" id="access_ir_module">
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_ir_module_module_admin">
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+        <record model="ir.model.access" id="access_ir_module_admin">
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
             <field name="group" ref="group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
-        <record model="ir.model.access" id="access_ir_module_module_dependency">
-            <field name="model" search="[('model', '=', 'ir.module.module.dependency')]"/>
+        <record model="ir.model.access" id="access_ir_module_dependency">
+            <field name="model" search="[('model', '=', 'ir.module.dependency')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_ir_module_module_dependency_admin">
-            <field name="model" search="[('model', '=', 'ir.module.module.dependency')]"/>
+        <record model="ir.model.access" id="access_ir_module_dependency_admin">
+            <field name="model" search="[('model', '=', 'ir.module.dependency')]"/>
             <field name="group" ref="group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -702,7 +702,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_install_button">
             <field name="name">install</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_install_button_group_admin">
@@ -712,7 +712,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_install_cancel_button">
             <field name="name">install_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_install_cancel_button_group_admin">
@@ -722,7 +722,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_uninstall_button">
             <field name="name">uninstall</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_uninstall_button_group_admin">
@@ -732,7 +732,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_uninstall_cancel_button">
             <field name="name">uninstall_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_uninstall_cancel_button_group_admin">
@@ -742,7 +742,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_upgrade_button">
             <field name="name">upgrade</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_upgrade_button_group_admin">
@@ -752,7 +752,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="module_upgrade_cancel_button">
             <field name="name">upgrade_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module.module')]"/>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_upgrade_cancel_button_group_admin">

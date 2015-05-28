@@ -306,7 +306,7 @@ class SequenceStrict(Sequence):
 
 
 class ModuleConfigWizardItem:
-    __name__ = 'ir.module.module.config_wizard.item'
+    __name__ = 'ir.module.config_wizard.item'
 
     @classmethod
     def create(cls, vlist):

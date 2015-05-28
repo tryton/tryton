@@ -169,25 +169,25 @@ msgctxt "error:ir.model:"
 msgid "The model must be unique!"
 msgstr "El model ha de ser únic."
 
-msgctxt "error:ir.module.module.dependency:"
+msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
 msgstr "La dependència ha de ser únic en el mòdul."
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
 msgstr "No es troba la dependència %s pel mòdul \"%s\"."
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
 "Els mòduls que esteu intentant desinstal·lar depenen d'altres mòduls "
 "instal·lats:"
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "El nom del mòdul ha de ser únic."
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
 msgstr "No podeu eliminar un mòdul que està instal·lat o serà instal·lat."
 
@@ -1553,151 +1553,151 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Nivell"
 
-msgctxt "field:ir.module.module,childs:"
+msgctxt "field:ir.module,childs:"
 msgid "Childs"
 msgstr "Fills"
 
-msgctxt "field:ir.module.module,create_date:"
+msgctxt "field:ir.module,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-msgctxt "field:ir.module.module,create_uid:"
+msgctxt "field:ir.module,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-msgctxt "field:ir.module.module,dependencies:"
+msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
 msgstr "Dependències"
 
-msgctxt "field:ir.module.module,id:"
+msgctxt "field:ir.module,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module,name:"
+msgctxt "field:ir.module,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.module.module,parents:"
+msgctxt "field:ir.module,parents:"
 msgid "Parents"
 msgstr "Pares"
 
-msgctxt "field:ir.module.module,rec_name:"
+msgctxt "field:ir.module,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.module.module,state:"
+msgctxt "field:ir.module,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:ir.module.module,version:"
+msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "Versió"
 
-msgctxt "field:ir.module.module,write_date:"
+msgctxt "field:ir.module,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-msgctxt "field:ir.module.module,write_uid:"
+msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:ir.module.module.config_wizard.done,id:"
+msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.first,id:"
+msgctxt "field:ir.module.config_wizard.first,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.item,action:"
+msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
 msgstr "Acció"
 
-msgctxt "field:ir.module.module.config_wizard.item,create_date:"
+msgctxt "field:ir.module.config_wizard.item,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-msgctxt "field:ir.module.module.config_wizard.item,create_uid:"
+msgctxt "field:ir.module.config_wizard.item,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-msgctxt "field:ir.module.module.config_wizard.item,id:"
+msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.item,rec_name:"
+msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.module.module.config_wizard.item,sequence:"
+msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-msgctxt "field:ir.module.module.config_wizard.item,state:"
+msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:ir.module.module.config_wizard.item,write_date:"
+msgctxt "field:ir.module.config_wizard.item,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-msgctxt "field:ir.module.module.config_wizard.item,write_uid:"
+msgctxt "field:ir.module.config_wizard.item,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:ir.module.module.config_wizard.other,id:"
+msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.other,percentage:"
+msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
 msgstr "Percentatge"
 
-msgctxt "field:ir.module.module.dependency,create_date:"
+msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-msgctxt "field:ir.module.module.dependency,create_uid:"
+msgctxt "field:ir.module.dependency,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-msgctxt "field:ir.module.module.dependency,id:"
+msgctxt "field:ir.module.dependency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.dependency,module:"
+msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
 msgstr "Mòdul"
 
-msgctxt "field:ir.module.module.dependency,name:"
+msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.module.module.dependency,rec_name:"
+msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.module.module.dependency,state:"
+msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:ir.module.module.dependency,write_date:"
+msgctxt "field:ir.module.dependency,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-msgctxt "field:ir.module.module.dependency,write_uid:"
+msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:ir.module.module.install_upgrade.done,id:"
+msgctxt "field:ir.module.install_upgrade.done,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.install_upgrade.start,id:"
+msgctxt "field:ir.module.install_upgrade.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.install_upgrade.start,module_info:"
+msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Mòduls a actualitzar"
 
@@ -3093,35 +3093,35 @@ msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
 msgstr "Imprimeix gràfica del model"
 
-msgctxt "model:ir.module.module,name:"
+msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Mòdul"
 
-msgctxt "model:ir.module.module.config_wizard.done,name:"
+msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "Finalització assistent de configuració de mòduls"
 
-msgctxt "model:ir.module.module.config_wizard.first,name:"
+msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Inicialització de l'assistent de configuració del mòdul"
 
-msgctxt "model:ir.module.module.config_wizard.item,name:"
+msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
 msgstr "Assistent configuració després d'instal·lar un mòdul"
 
-msgctxt "model:ir.module.module.config_wizard.other,name:"
+msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
 msgstr "Un altre assistent de configuració del mòdul"
 
-msgctxt "model:ir.module.module.dependency,name:"
+msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Dependències del mòdul"
 
-msgctxt "model:ir.module.module.install_upgrade.done,name:"
+msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
 msgstr "Finalització instal·lació/actualització de mòduls"
 
-msgctxt "model:ir.module.module.install_upgrade.start,name:"
+msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "Inici instal·lació/actualització mòdul"
 
@@ -3465,55 +3465,55 @@ msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "De dreta a esquerra"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "Installed"
 msgstr "Instal·lat"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
 msgstr "No instal·lat"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be installed"
 msgstr "Per instal·lar"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be removed"
 msgstr "Per eliminar"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
 msgstr "Per actualitzar"
 
-msgctxt "selection:ir.module.module.config_wizard.item,state:"
+msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
 msgstr "Realitzat"
 
-msgctxt "selection:ir.module.module.config_wizard.item,state:"
+msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
 msgstr "Pendent"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Installed"
 msgstr "Instal·lat"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Installed"
 msgstr "No instal·lat"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
 msgstr "Per instal·lar"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
 msgstr "Per eliminar"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
 msgstr "Per actualitzar"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
 msgstr "No es coneix"
 
@@ -3769,19 +3769,19 @@ msgctxt "view:ir.model:"
 msgid "Model Description"
 msgstr "Descripció model"
 
-msgctxt "view:ir.module.module.config_wizard.done:"
+msgctxt "view:ir.module.config_wizard.done:"
 msgid "Module configuration"
 msgstr "Configuració del mòdul"
 
-msgctxt "view:ir.module.module.config_wizard.done:"
+msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
 msgstr "La configuració s'ha realitzat correctament."
 
-msgctxt "view:ir.module.module.config_wizard.first:"
+msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
 msgstr "Benvingut a la configuració del mòdul."
 
-msgctxt "view:ir.module.module.config_wizard.first:"
+msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
@@ -3789,71 +3789,71 @@ msgstr ""
 "Heu de configurar la seva instal·lació depenent dels mòduls que ha "
 "instal·lat."
 
-msgctxt "view:ir.module.module.config_wizard.item:"
+msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
 msgstr "Assistent configuració"
 
-msgctxt "view:ir.module.module.config_wizard.other:"
+msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
 msgstr "Següent pas de l'assistent de configuració."
 
-msgctxt "view:ir.module.module.dependency:"
+msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
 msgstr "Dependències"
 
-msgctxt "view:ir.module.module.dependency:"
+msgctxt "view:ir.module.dependency:"
 msgid "Dependency"
 msgstr "Dependència"
 
-msgctxt "view:ir.module.module.install_upgrade.done:"
+msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
 msgstr "S'ha actualitzat el sistema."
 
-msgctxt "view:ir.module.module.install_upgrade.done:"
+msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr "Els mòduls han estat actualitzats/instal·lats."
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr "Tingueu en compte que aquesta operació pot trigar uns minuts."
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "System Upgrade"
 msgstr "Actualització del sistema"
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "El seu sistema serà actualitzat."
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Installation"
 msgstr "Cancel·la instal·lació"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
 msgstr "Cancel·la desinstal·lació"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Cancel·la actualització"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Installation"
 msgstr "Marca per instal·lar"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
 msgstr "Per desinstal·lar (beta)"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Per actualitzar"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Module"
 msgstr "Mòdul"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Mòduls"
 
@@ -4043,35 +4043,35 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,done,end:"
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
 msgstr "D'acord"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,first,action:"
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
 msgstr "D'acord"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,first,end:"
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,other,action:"
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
 msgstr "Següent"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,other,end:"
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,done,config:"
+msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
 msgstr "D'acord"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,start,end:"
+msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,start,upgrade:"
+msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Inicia actualització"
 

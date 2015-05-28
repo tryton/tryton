@@ -303,7 +303,7 @@ class User(ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Action = pool.get('ir.action')
-        ConfigItem = pool.get('ir.module.module.config_wizard.item')
+        ConfigItem = pool.get('ir.module.config_wizard.item')
 
         res = {}
         if context_only:

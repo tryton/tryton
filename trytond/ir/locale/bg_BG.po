@@ -151,24 +151,24 @@ msgctxt "error:ir.model:"
 msgid "The model must be unique!"
 msgstr "Модела трябва да е уникален!"
 
-msgctxt "error:ir.module.module.dependency:"
+msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
 msgstr "Зависимостта трябва да е уникална за модул!"
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
 msgstr "Липсващи зависимости %s за модул \"%s\""
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
 "От модула който исакте да деинсталирате зависят следните инсталирани модули:"
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "Името на модула трябва да е уникално!"
 
-msgctxt "error:ir.module.module:"
+msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
 msgstr "Не може да изтривате модул който инсталиран или ще бъде инсталиран"
 
@@ -1569,152 +1569,152 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Ниво"
 
-msgctxt "field:ir.module.module,childs:"
+msgctxt "field:ir.module,childs:"
 msgid "Childs"
 msgstr "Деца"
 
-msgctxt "field:ir.module.module,create_date:"
+msgctxt "field:ir.module,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
 
-msgctxt "field:ir.module.module,create_uid:"
+msgctxt "field:ir.module,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
-msgctxt "field:ir.module.module,dependencies:"
+msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
 msgstr "Зависимости"
 
-msgctxt "field:ir.module.module,id:"
+msgctxt "field:ir.module,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module,name:"
+msgctxt "field:ir.module,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:ir.module.module,parents:"
+msgctxt "field:ir.module,parents:"
 msgid "Parents"
 msgstr "Родители"
 
-msgctxt "field:ir.module.module,rec_name:"
+msgctxt "field:ir.module,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:ir.module.module,state:"
+msgctxt "field:ir.module,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:ir.module.module,version:"
+msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "Версия"
 
-msgctxt "field:ir.module.module,write_date:"
+msgctxt "field:ir.module,write_date:"
 msgid "Write Date"
 msgstr "Променено на"
 
-msgctxt "field:ir.module.module,write_uid:"
+msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
 #, fuzzy
-msgctxt "field:ir.module.module.config_wizard.done,id:"
+msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.first,id:"
+msgctxt "field:ir.module.config_wizard.first,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.item,action:"
+msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
 msgstr "Действие"
 
-msgctxt "field:ir.module.module.config_wizard.item,create_date:"
+msgctxt "field:ir.module.config_wizard.item,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
 
-msgctxt "field:ir.module.module.config_wizard.item,create_uid:"
+msgctxt "field:ir.module.config_wizard.item,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
-msgctxt "field:ir.module.module.config_wizard.item,id:"
+msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.item,rec_name:"
+msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:ir.module.module.config_wizard.item,sequence:"
+msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
 msgstr "Последователност"
 
-msgctxt "field:ir.module.module.config_wizard.item,state:"
+msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:ir.module.module.config_wizard.item,write_date:"
+msgctxt "field:ir.module.config_wizard.item,write_date:"
 msgid "Write Date"
 msgstr "Променено на"
 
-msgctxt "field:ir.module.module.config_wizard.item,write_uid:"
+msgctxt "field:ir.module.config_wizard.item,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:ir.module.module.config_wizard.other,id:"
+msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.config_wizard.other,percentage:"
+msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
 msgstr "Процент"
 
-msgctxt "field:ir.module.module.dependency,create_date:"
+msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
 
-msgctxt "field:ir.module.module.dependency,create_uid:"
+msgctxt "field:ir.module.dependency,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
-msgctxt "field:ir.module.module.dependency,id:"
+msgctxt "field:ir.module.dependency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.dependency,module:"
+msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
 msgstr "Модул"
 
-msgctxt "field:ir.module.module.dependency,name:"
+msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:ir.module.module.dependency,rec_name:"
+msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:ir.module.module.dependency,state:"
+msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:ir.module.module.dependency,write_date:"
+msgctxt "field:ir.module.dependency,write_date:"
 msgid "Write Date"
 msgstr "Променено на"
 
-msgctxt "field:ir.module.module.dependency,write_uid:"
+msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:ir.module.module.install_upgrade.done,id:"
+msgctxt "field:ir.module.install_upgrade.done,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.install_upgrade.start,id:"
+msgctxt "field:ir.module.install_upgrade.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:ir.module.module.install_upgrade.start,module_info:"
+msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Модули за обновяване"
 
@@ -3143,35 +3143,35 @@ msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
 msgstr "Печат на графика на модел"
 
-msgctxt "model:ir.module.module,name:"
+msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Модул"
 
-msgctxt "model:ir.module.module.config_wizard.done,name:"
+msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr ""
 
-msgctxt "model:ir.module.module.config_wizard.first,name:"
+msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Първи помощник на конфигуриране на модул"
 
-msgctxt "model:ir.module.module.config_wizard.item,name:"
+msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
 msgstr "Задаване на помощника да се стартира след инсталиране на модула"
 
-msgctxt "model:ir.module.module.config_wizard.other,name:"
+msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
 msgstr "Помощник за настройка на модук - други"
 
-msgctxt "model:ir.module.module.dependency,name:"
+msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Зависимости на модула"
 
-msgctxt "model:ir.module.module.install_upgrade.done,name:"
+msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
 msgstr "Приключи инсталиране/обновяване на модул"
 
-msgctxt "model:ir.module.module.install_upgrade.start,name:"
+msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "Начало на инсталиране/обновяване на модул"
 
@@ -3516,55 +3516,55 @@ msgctxt "selection:ir.lang,direction:"
 msgid "Right-to-left"
 msgstr "Отдясно наляво"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "Installed"
 msgstr "Инсталиран"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
 msgstr "Не е инсталиран"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be installed"
 msgstr "За инсталиране"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be removed"
 msgstr "За премахване"
 
-msgctxt "selection:ir.module.module,state:"
+msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
 msgstr "За обновяване"
 
-msgctxt "selection:ir.module.module.config_wizard.item,state:"
+msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
 msgstr "Приключен"
 
-msgctxt "selection:ir.module.module.config_wizard.item,state:"
+msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
 msgstr "Отваряне"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Installed"
 msgstr "Инсталиран"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Installed"
 msgstr "Не е инсталиран"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
 msgstr "За инсталиране"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
 msgstr "За премахване"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
 msgstr "За обновяване"
 
-msgctxt "selection:ir.module.module.dependency,state:"
+msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
 msgstr "Неизвестен"
 
@@ -3820,90 +3820,90 @@ msgctxt "view:ir.model:"
 msgid "Model Description"
 msgstr "Описание на модел"
 
-msgctxt "view:ir.module.module.config_wizard.done:"
+msgctxt "view:ir.module.config_wizard.done:"
 msgid "Module configuration"
 msgstr ""
 
-msgctxt "view:ir.module.module.config_wizard.done:"
+msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
 msgstr ""
 
-msgctxt "view:ir.module.module.config_wizard.first:"
+msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
 msgstr "Добре дошли в помощника за конфигуриране на модула!"
 
-msgctxt "view:ir.module.module.config_wizard.first:"
+msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
 "Може да настроите инсталацията си в зависимост от инсталираните модули."
 
-msgctxt "view:ir.module.module.config_wizard.item:"
+msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
 msgstr "Елементи на помощника за конфигуриране"
 
-msgctxt "view:ir.module.module.config_wizard.other:"
+msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
 msgstr "Следваща стъпа на помощника за конфигуриране!"
 
-msgctxt "view:ir.module.module.dependency:"
+msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
 msgstr "Зависимости"
 
-msgctxt "view:ir.module.module.dependency:"
+msgctxt "view:ir.module.dependency:"
 msgid "Dependency"
 msgstr "Зависимост"
 
-msgctxt "view:ir.module.module.install_upgrade.done:"
+msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
 msgstr "Обновяване на системата завършено"
 
-msgctxt "view:ir.module.module.install_upgrade.done:"
+msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr "Модулите са обновени / инсталирани !"
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr ""
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "System Upgrade"
 msgstr "Обновяване на системата"
 
-msgctxt "view:ir.module.module.install_upgrade.start:"
+msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "Системата ще бъде обновена."
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Installation"
 msgstr "Отказ от инсталалиране"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
 msgstr "Отказ от деинсталиране"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Отказ от обновяване"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Installation"
 msgstr "Отбелязване за инсталиране"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
 msgstr "Отбелязване за деинсталиране (beta)"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Отбелязване за обновяване"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Module"
 msgstr "Модул"
 
-msgctxt "view:ir.module.module:"
+msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Модули"
 
@@ -4093,35 +4093,35 @@ msgid "Print"
 msgstr "Печат"
 
 #, fuzzy
-msgctxt "wizard_button:ir.module.module.config_wizard,done,end:"
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
 msgstr "Добре"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,first,action:"
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
 msgstr "Добре"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,first,end:"
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,other,action:"
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
 msgstr "Напред"
 
-msgctxt "wizard_button:ir.module.module.config_wizard,other,end:"
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,done,config:"
+msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
 msgstr "Добре"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,start,end:"
+msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:ir.module.module.install_upgrade,start,upgrade:"
+msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Започване на обновяване"
 

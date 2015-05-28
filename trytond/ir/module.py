@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
+from sql.operators import NotIn
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.modules import create_graph, get_module_list, get_module_info
 from trytond.wizard import Wizard, StateView, Button, StateTransition, \
@@ -33,15 +35,15 @@ def filter_state(state):
 
 class Module(ModelSQL, ModelView):
     "Module"
-    __name__ = "ir.module.module"
+    __name__ = "ir.module"
     name = fields.Char("Name", readonly=True, required=True)
     version = fields.Function(fields.Char('Version'), 'get_version')
-    dependencies = fields.One2Many('ir.module.module.dependency',
+    dependencies = fields.One2Many('ir.module.dependency',
         'module', 'Dependencies', readonly=True)
-    parents = fields.Function(fields.One2Many('ir.module.module', None,
-            'Parents'), 'get_parents')
-    childs = fields.Function(fields.One2Many('ir.module.module', None,
-            'Childs'), 'get_childs')
+    parents = fields.Function(fields.One2Many('ir.module', None, 'Parents'),
+        'get_parents')
+    childs = fields.Function(fields.One2Many('ir.module', None, 'Childs'),
+        'get_childs')
     state = fields.Selection([
         ('uninstalled', 'Not Installed'),
         ('installed', 'Installed'),
@@ -88,6 +90,18 @@ class Module(ModelSQL, ModelView):
                     'invisible': Eval('state') != 'to upgrade',
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+
+        # Migration from 3.6: remove double module
+        old_table = 'ir_module_module'
+        if TableHandler.table_exist(cursor, old_table):
+            TableHandler.table_rename(cursor, old_table, cls._table)
+
+        super(Module, cls).__register__(module_name)
 
     @staticmethod
     def default_state():
@@ -228,15 +242,18 @@ class Module(ModelSQL, ModelView):
     @ModelView.button
     @filter_state('installed')
     def uninstall(cls, modules):
+        pool = Pool()
+        Module = pool.get('ir.module')
+        Dependency = pool.get('ir.module.dependency')
+        module_table = Module.__table__()
+        dep_table = Dependency.__table__()
         cursor = Transaction().cursor
         for module in modules:
-            cursor.execute('SELECT m.state, m.name '
-                'FROM ir_module_module_dependency d '
-                'JOIN ir_module_module m on (d.module = m.id) '
-                'WHERE d.name = %s '
-                    'AND m.state not in '
-                    '(\'uninstalled\', \'to remove\')',
-                (module.name,))
+            cursor.execute(*dep_table.join(module_table,
+                    condition=(dep_table.module == module_table.id)
+                    ).select(module_table.state, module_table.name,
+                    where=(dep_table.name == module.name)
+                    & NotIn(module_table.state, ['uninstalled', 'to remove'])))
             res = cursor.fetchall()
             if res:
                 cls.raise_user_error('uninstall_dep',
@@ -287,7 +304,7 @@ class Module(ModelSQL, ModelView):
     @classmethod
     def _update_dependencies(cls, module, depends=None):
         pool = Pool()
-        Dependency = pool.get('ir.module.module.dependency')
+        Dependency = pool.get('ir.module.dependency')
         Dependency.delete([x for x in module.dependencies
             if x.name not in depends])
         if depends is None:
@@ -308,9 +325,9 @@ class Module(ModelSQL, ModelView):
 
 class ModuleDependency(ModelSQL, ModelView):
     "Module dependency"
-    __name__ = "ir.module.module.dependency"
+    __name__ = "ir.module.dependency"
     name = fields.Char('Name')
-    module = fields.Many2One('ir.module.module', 'Module', select=True,
+    module = fields.Many2One('ir.module', 'Module', select=True,
        ondelete='CASCADE', required=True)
     state = fields.Function(fields.Selection([
                 ('uninstalled', 'Not Installed'),
@@ -329,9 +346,21 @@ class ModuleDependency(ModelSQL, ModelView):
                 'Dependency must be unique by module!'),
         ]
 
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+
+        # Migration from 3.6: remove double module
+        old_table = 'ir_module_module_dependency'
+        if TableHandler.table_exist(cursor, old_table):
+            TableHandler.table_rename(cursor, old_table, cls._table)
+
+        super(ModuleDependency, cls).__register__(module_name)
+
     def get_state(self, name):
         pool = Pool()
-        Module = pool.get('ir.module.module')
+        Module = pool.get('ir.module')
         dependencies = Module.search([
                 ('name', '=', self.name),
                 ])
@@ -343,7 +372,7 @@ class ModuleDependency(ModelSQL, ModelView):
 
 class ModuleConfigWizardItem(ModelSQL, ModelView):
     "Config wizard to run after installing module"
-    __name__ = 'ir.module.module.config_wizard.item'
+    __name__ = 'ir.module.config_wizard.item'
     _rec_name = 'action'
     action = fields.Many2One('ir.action', 'Action', required=True,
         readonly=True)
@@ -361,7 +390,22 @@ class ModuleConfigWizardItem(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        table = TableHandler(Transaction().cursor, cls, module_name)
+        cursor = Transaction().cursor
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        model_data = ModelData.__table__()
+
+        # Migration from 3.6: remove double module
+        old_table = 'ir_module_module_config_wizard_item'
+        if TableHandler.table_exist(cursor, old_table):
+            TableHandler.table_rename(cursor, old_table, cls._table)
+        cursor.execute(*model_data.update(
+                columns=[model_data.model],
+                values=[cls.__name__],
+                where=(model_data.model ==
+                    'ir.module.module.config_wizard.item')))
+
+        table = TableHandler(cursor, cls, module_name)
 
         # Migrate from 2.2 remove name
         table.drop_column('name')
@@ -379,19 +423,19 @@ class ModuleConfigWizardItem(ModelSQL, ModelView):
 
 class ModuleConfigWizardFirst(ModelView):
     'Module Config Wizard First'
-    __name__ = 'ir.module.module.config_wizard.first'
+    __name__ = 'ir.module.config_wizard.first'
 
 
 class ModuleConfigWizardOther(ModelView):
     'Module Config Wizard Other'
-    __name__ = 'ir.module.module.config_wizard.other'
+    __name__ = 'ir.module.config_wizard.other'
 
     percentage = fields.Float('Percentage', readonly=True)
 
     @staticmethod
     def default_percentage():
         pool = Pool()
-        Item = pool.get('ir.module.module.config_wizard.item')
+        Item = pool.get('ir.module.config_wizard.item')
         done = Item.search([
             ('state', '=', 'done'),
             ], count=True)
@@ -401,12 +445,12 @@ class ModuleConfigWizardOther(ModelView):
 
 class ModuleConfigWizardDone(ModelView):
     'Module Config Wizard Done'
-    __name__ = 'ir.module.module.config_wizard.done'
+    __name__ = 'ir.module.config_wizard.done'
 
 
 class ModuleConfigWizard(Wizard):
     'Run config wizards'
-    __name__ = 'ir.module.module.config_wizard'
+    __name__ = 'ir.module.config_wizard'
 
     class ConfigStateAction(StateAction):
 
@@ -415,7 +459,7 @@ class ModuleConfigWizard(Wizard):
 
         def get_action(self):
             pool = Pool()
-            Item = pool.get('ir.module.module.config_wizard.item')
+            Item = pool.get('ir.module.config_wizard.item')
             Action = pool.get('ir.action')
             items = Item.search([
                 ('state', '=', 'open'),
@@ -429,18 +473,18 @@ class ModuleConfigWizard(Wizard):
                     [item.action.id])[0]
 
     start = StateTransition()
-    first = StateView('ir.module.module.config_wizard.first',
+    first = StateView('ir.module.config_wizard.first',
         'ir.module_config_wizard_first_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('OK', 'action', 'tryton-ok', default=True),
             ])
-    other = StateView('ir.module.module.config_wizard.other',
+    other = StateView('ir.module.config_wizard.other',
         'ir.module_config_wizard_other_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Next', 'action', 'tryton-go-next', default=True),
             ])
     action = ConfigStateAction()
-    done = StateView('ir.module.module.config_wizard.done',
+    done = StateView('ir.module.config_wizard.done',
         'ir.module_config_wizard_done_view_form', [
             Button('OK', 'end', 'tryton-close', default=True),
             ])
@@ -453,7 +497,7 @@ class ModuleConfigWizard(Wizard):
 
     def transition_action(self):
         pool = Pool()
-        Item = pool.get('ir.module.module.config_wizard.item')
+        Item = pool.get('ir.module.config_wizard.item')
         items = Item.search([
                 ('state', '=', 'open'),
                 ])
@@ -467,26 +511,26 @@ class ModuleConfigWizard(Wizard):
 
 class ModuleInstallUpgradeStart(ModelView):
     'Module Install Upgrade Start'
-    __name__ = 'ir.module.module.install_upgrade.start'
+    __name__ = 'ir.module.install_upgrade.start'
     module_info = fields.Text('Modules to update', readonly=True)
 
 
 class ModuleInstallUpgradeDone(ModelView):
     'Module Install Upgrade Done'
-    __name__ = 'ir.module.module.install_upgrade.done'
+    __name__ = 'ir.module.install_upgrade.done'
 
 
 class ModuleInstallUpgrade(Wizard):
     "Install / Upgrade modules"
-    __name__ = 'ir.module.module.install_upgrade'
+    __name__ = 'ir.module.install_upgrade'
 
-    start = StateView('ir.module.module.install_upgrade.start',
+    start = StateView('ir.module.install_upgrade.start',
         'ir.module_install_upgrade_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Start Upgrade', 'upgrade', 'tryton-ok', default=True),
             ])
     upgrade = StateTransition()
-    done = StateView('ir.module.module.install_upgrade.done',
+    done = StateView('ir.module.install_upgrade.done',
         'ir.module_install_upgrade_done_view_form', [
             Button('OK', 'config', 'tryton-ok', default=True),
             ])
@@ -501,7 +545,7 @@ class ModuleInstallUpgrade(Wizard):
     @staticmethod
     def default_start(fields):
         pool = Pool()
-        Module = pool.get('ir.module.module')
+        Module = pool.get('ir.module')
         modules = Module.search([
                 ('state', 'in', ['to upgrade', 'to remove', 'to install']),
                 ])
@@ -518,7 +562,7 @@ class ModuleInstallUpgrade(Wizard):
 
     def transition_upgrade(self):
         pool = Pool()
-        Module = pool.get('ir.module.module')
+        Module = pool.get('ir.module')
         Lang = pool.get('ir.lang')
         with Transaction().new_cursor() as transaction:
             modules = Module.search([
@@ -537,7 +581,7 @@ class ModuleInstallUpgrade(Wizard):
 
 class ModuleConfig(Wizard):
     'Configure Modules'
-    __name__ = 'ir.module.module.config'
+    __name__ = 'ir.module.config'
 
     start = StateAction('ir.act_module_form')
 

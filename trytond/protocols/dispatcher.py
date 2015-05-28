@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 ir_configuration = Table('ir_configuration')
 ir_lang = Table('ir_lang')
-ir_module = Table('ir_module_module')
+ir_module = Table('ir_module')
 res_user = Table('res_user')
 
 
@@ -237,7 +237,7 @@ def create(database_name, password, lang, admin_password):
             User.write([admin], {
                     'password': admin_password,
                     })
-            Module = pool.get('ir.module.module')
+            Module = pool.get('ir.module')
             if Module:
                 Module.update_list()
             transaction.cursor.commit()

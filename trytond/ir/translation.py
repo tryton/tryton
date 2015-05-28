@@ -1576,7 +1576,7 @@ class TranslationExportStart(ModelView):
             ('translatable', '=', True),
             ('code', '!=', 'en_US'),
             ])
-    module = fields.Many2One('ir.module.module', 'Module', required=True,
+    module = fields.Many2One('ir.module', 'Module', required=True,
         domain=[
             ('state', 'in', ['installed', 'to upgrade', 'to remove']),
             ])

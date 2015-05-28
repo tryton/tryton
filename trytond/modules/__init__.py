@@ -17,11 +17,12 @@ import trytond.tools as tools
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.cache import Cache
+from trytond import backend
 import trytond.convert as convert
 
 logger = logging.getLogger(__name__)
 
-ir_module = Table('ir_module_module')
+ir_module = Table('ir_module')
 ir_model_data = Table('ir_model_data')
 
 OPJ = os.path.join
@@ -366,7 +367,14 @@ def load_modules(database_name, pool, update=None, lang=None):
 
     def _load_modules():
         global res
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+
+        # Migration from 3.6: remove double module
+        old_table = 'ir_module_module'
+        new_table = 'ir_module'
+        if TableHandler.table_exist(cursor, old_table):
+            TableHandler.table_rename(cursor, old_table, new_table)
         if update:
             cursor.execute(*ir_module.select(ir_module.name,
                     where=ir_module.state.in_(('installed', 'to install',
@@ -407,7 +415,7 @@ def load_modules(database_name, pool, update=None, lang=None):
                 cursor.commit()
                 res = False
 
-            Module = pool.get('ir.module.module')
+            Module = pool.get('ir.module')
             Module.update_list()
         cursor.commit()
         Cache.resets(database_name)
