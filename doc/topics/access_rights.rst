@@ -4,7 +4,7 @@
 Access Rights
 =============
 
-There are 3 levels of access rights: model, field, button and record.
+There are 4 levels of access rights: model, field, button and record.
 Every access right is based on the groups of the user.
 The model and field access rights are checked for every RPC call for which
 :attr:`trytond.rpc.RPC.check_access` is set. The others are always enforced.
