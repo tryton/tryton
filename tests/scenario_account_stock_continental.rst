@@ -25,14 +25,14 @@ Create database::
 
 Install account_stock_continental, sale and purchase::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> modules = Module.find([
     ...         ('name', 'in', ('account_stock_continental',
     ...             'sale', 'purchase', 'sale_supply_drop_shipment')),
     ...     ])
     >>> for module in modules:
     ...     module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
