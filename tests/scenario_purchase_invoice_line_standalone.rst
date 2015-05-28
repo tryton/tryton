@@ -24,11 +24,11 @@ Create database::
 
 Install purchase_invoice_line_standalone::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> purchase_module, = Module.find([('name', '=',
     ...     'purchase_invoice_line_standalone')])
     >>> purchase_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
