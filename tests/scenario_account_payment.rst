@@ -18,11 +18,11 @@ Create database::
 
 Install account_payment::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> account_payment_module, = Module.find(
     ...     [('name', '=', 'account_payment')])
     >>> account_payment_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
