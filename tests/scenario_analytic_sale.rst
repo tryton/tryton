@@ -24,10 +24,10 @@ Create database::
 
 Install analytic sale::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> analytic_sale_module, = Module.find([('name', '=', 'analytic_sale')])
     >>> analytic_sale_module.click('install')
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Create company::
 
