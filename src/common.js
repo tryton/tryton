@@ -262,12 +262,12 @@
     Sao.common.timedelta._get_separator = function() {
         return {
             Y: Sao.i18n.gettext('Y'),
-            M: sao.i18n.gettext('M'),
-            w: sao.i18n.gettext('w'),
-            d: sao.i18n.gettext('d'),
-            h: sao.i18n.gettext('h'),
-            m: sao.i18n.gettext('m'),
-            s: sao.i18n.gettext('s')
+            M: Sao.i18n.gettext('M'),
+            w: Sao.i18n.gettext('w'),
+            d: Sao.i18n.gettext('d'),
+            h: Sao.i18n.gettext('h'),
+            m: Sao.i18n.gettext('m'),
+            s: Sao.i18n.gettext('s')
         };
     };
     Sao.common.timedelta.format = function(value, converter) {
