@@ -21,7 +21,10 @@
     "eonasdan-bootstrap-datetimepicker": "~4.7.14",
     "typeahead.js": "~0.10.5",
     "typeahead.js-bootstrap3.less": "~0",
-    "gettext.js": "~0.5.0"
+    "gettext.js": "~0.5.0",
+    "d3": "~3.5.0",
+    "c3": "~0.4.10"
+    "typeahead.js-bootstrap3.less": "~0"
   },
   "devDependencies": {
     "qunit": "~1.18.0"
