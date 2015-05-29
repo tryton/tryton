@@ -881,7 +881,8 @@
                 this.key_press.bind(this));
             if ((event_.which != Sao.common.TAB_KEYCODE) &&
                     (event_.which != Sao.common.UP_KEYCODE) &&
-                    (event_.which != Sao.common.DOWN_KEYCODE)) {
+                    (event_.which != Sao.common.DOWN_KEYCODE) &&
+                    (event_.which != Sao.common.ESC_KEYCODE)) {
                 return;
             }
             var column = this.tree.columns[this.edited_column];
@@ -946,6 +947,14 @@
                                 .trigger('click').trigger('click');
                             }.bind(this), 0);
                         }.bind(this));
+                } else if (event_.which == Sao.common.ESC_KEYCODE) {
+                    this.get_widget().show();
+                    this.get_widget_editable().hide();
+                    current_td = this.get_active_td();
+                    current_td.one('click',
+                            {column: this.edited_column, td: current_td},
+                            this.select_row.bind(this));
+                    this.edited_column = undefined;
                 }
             }
         }
