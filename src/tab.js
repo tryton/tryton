@@ -45,7 +45,9 @@
                     '<button type="button" class="navbar-toggle collapsed" ' +
                     'data-toggle="collapse" ' +
                     'data-target="#navbar-' + this.id + '">' +
-                    '<span class="sr-only">Toggle navigation</span>' +
+                    '<span class="sr-only">' +
+                    Sao.i18n.gettext('Toggle navigation') +
+                    '</span>' +
                     '<span class="icon-bar"></span>' +
                     '<span class="icon-bar"></span>' +
                     '<span class="icon-bar"></span>' +
@@ -59,7 +61,9 @@
                     'aria-expanded="false">' +
                     '<span class="glyphicon glyphicon-wrench" ' +
                     'aria-hidden="true"></span>' +
-                    '<span class="visible-xs">Menu</span>' +
+                    '<span class="visible-xs">' +
+                    Sao.i18n.gettext('Menu') +
+                    '</span>' +
                     '<span class="caret"></span>' +
                     '</a>' +
                     '<ul class="dropdown-menu" role="menu">' +
@@ -123,10 +127,11 @@
     Sao.Tab.tabs.close = function(warning) {
         if (warning && Sao.Tab.tabs.length) {
             return Sao.common.sur.run(
-                    'The following action requires to close all tabs.\n' +
-                    'Do you want to continue?').then(function() {
-                        return Sao.Tab.tabs.close(false);
-                    });
+                    Sao.i18n.gettext(
+                        'The following action requires to close all tabs.\n' +
+                        'Do you want to continue?')).then(function() {
+                return Sao.Tab.tabs.close(false);
+            });
         }
         if (Sao.Tab.tabs.length) {
             var tab = Sao.Tab.tabs[0];
@@ -182,7 +187,7 @@
             'aria-hidden': true
         }).append('&times;')).append(jQuery('<span/>', {
             'class': 'sr-only'
-        }).append('Close')).click(function() {
+        }).append(Sao.i18n.gettext('Close'))).click(function() {
             tab.close();
         }))
         .append(tab.name_el);
@@ -246,36 +251,48 @@
                 this.update_revision();
             }.bind(this));
         },
-        // TODO translate labels
         toolbar_def: [
-            ['new', 'glyphicon-edit', 'New', 'Create a new record', 'new_'],
-            ['save', 'glyphicon-save', 'Save', 'Save this record', 'save'],
-            ['switch', 'glyphicon-list-alt', 'Switch', 'Switch view',
-            'switch_'],
-            ['reload', 'glyphicon-refresh', 'Reload', 'Reload', 'reload'],
-            ['previous', 'glyphicon-chevron-left', 'Previous',
-            'Previous Record', 'previous'],
-            ['next', 'glyphicon-chevron-right', 'Next', 'Next Record', 'next'],
-            ['attach', 'glyphicon-paperclip', 'Attachment',
-            'Add an attachment to the record', 'attach']
+            ['new', 'glyphicon-edit',
+                Sao.i18n.gettext('New'),
+                Sao.i18n.gettext('Create a new record'), 'new_'],
+            ['save', 'glyphicon-save',
+                Sao.i18n.gettext('Save'),
+                Sao.i18n.gettext('Save this record'), 'save'],
+            ['switch', 'glyphicon-list-alt',
+                Sao.i18n.gettext('Switch'),
+                Sao.i18n.gettext('Switch view'), 'switch_'],
+            ['reload', 'glyphicon-refresh',
+                Sao.i18n.gettext('Reload'),
+                Sao.i18n.gettext('Reload'), 'reload'],
+            ['previous', 'glyphicon-chevron-left',
+                Sao.i18n.gettext('Previous'),
+                Sao.i18n.gettext('Previous Record'), 'previous'],
+            ['next', 'glyphicon-chevron-right',
+                Sao.i18n.gettext('Next'),
+                Sao.i18n.gettext('Next Record'), 'next'],
+            ['attach', 'glyphicon-paperclip',
+                Sao.i18n.gettext('Attachment'),
+                Sao.i18n.gettext('Add an attachment to the record'), 'attach']
             ],
         menu_def: [
-            ['glyphicon-edit', 'New', 'new_'],
-            ['glyphicon-save', 'Save', 'save'],
-            ['glyphicon-list-alt', 'Switch', 'switch_'],
-            ['glyphicon-refresh', 'Reload/Undo', 'reload'],
-            ['glyphicon-duplicate', 'Duplicate', 'copy'],
-            ['glyphicon-trash', 'Delete', 'delete_'],
-            ['glyphicon-chevron-left', 'Previous', 'previous'],
-            ['glyphicon-chevron-right', 'Next', 'next'],
-            ['glyphicon-search', 'Search', 'search'],
-            ['glyphicon-time', 'View Logs...', 'logs'],
-            ['glyphicon-time', 'Show revisions...', 'revision'],
-            ['glyphicon-remove', 'Close Tab', 'close'],
-            ['glyphicon-paperclip', 'Attachment', 'attach'],
-            ['glyphicon-cog', 'Action', 'action'],
-            ['glyphicon-share-alt', 'Relate', 'relate'],
-            ['glyphicon-print', 'Print', 'print']
+            ['glyphicon-edit', Sao.i18n.gettext('New'), 'new_'],
+            ['glyphicon-save', Sao.i18n.gettext('Save'), 'save'],
+            ['glyphicon-list-alt', Sao.i18n.gettext('Switch'), 'switch_'],
+            ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload'],
+            ['glyphicon-duplicate', Sao.i18n.gettext('Duplicate'), 'copy'],
+            ['glyphicon-trash', Sao.i18n.gettext('Delete'), 'delete_'],
+            ['glyphicon-chevron-left', Sao.i18n.gettext('Previous'),
+                'previous'],
+            ['glyphicon-chevron-right', Sao.i18n.gettext('Next'), 'next'],
+            ['glyphicon-search', Sao.i18n.gettext('Search'), 'search'],
+            ['glyphicon-time', Sao.i18n.gettext('View Logs...'), 'logs'],
+            ['glyphicon-time', Sao.i18n.gettext('Show revisions...'),
+                'revision'],
+            ['glyphicon-remove', Sao.i18n.gettext('Close Tab'), 'close'],
+            ['glyphicon-paperclip', Sao.i18n.gettext('Attachment'), 'attach'],
+            ['glyphicon-cog', Sao.i18n.gettext('Action'), 'action'],
+            ['glyphicon-share-alt', Sao.i18n.gettext('Relate'), 'relate'],
+            ['glyphicon-print', Sao.i18n.gettext('Print'), 'print']
             ],
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
@@ -284,12 +301,16 @@
             var prm = screen.model.execute('view_toolbar_get', [],
                     screen.context);
             prm.done(function(toolbars) {
-                // TODO translation
                 [
-                ['action', 'glyphicon-cog', 'Action', 'Launch action'],
-                ['relate', 'glyphicon-share-alt', 'Relate',
-                'Open related records'],
-                ['print', 'glyphicon-print', 'Print', 'Print report']
+                ['action', 'glyphicon-cog',
+                    Sao.i18n.gettext('Action'),
+                    Sao.i18n.gettext('Launch action')],
+                ['relate', 'glyphicon-share-alt',
+                     Sao.i18n.gettext('Relate'),
+                     Sao.i18n.gettext('Open related records')],
+                ['print', 'glyphicon-print',
+                     Sao.i18n.gettext('Print'),
+                     Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
                     var button = jQuery('<li/>', {
                         'class': 'dropdown'
@@ -387,8 +408,9 @@
             this.screen.save_tree_state();
             this.screen.current_view.set_value();
             if (this.screen.modified()) {
-                return Sao.common.sur_3b.run('This record has been modified\n' +
-                        'do you want to save it?')
+                return Sao.common.sur_3b.run(
+                        Sao.i18n.gettext('This record has been modified\n' +
+                            'do you want to save it?'))
                     .then(function(result) {
                         switch(result) {
                             case 'ok':
@@ -462,9 +484,9 @@
             }
             var msg;
             if (this.screen.current_view.view_type == 'form') {
-                msg = 'Are you sure to remove this record?'; // TODO translate
+                msg = Soa.i18n.gettext('Are you sure to remove this record?');
             } else {
-                msg = 'Are you sure to remove those records?';
+                msg = Sao.i18n.gettext('Are you sure to remove those records?');
             }
             Sao.common.sur.run(msg).done(function() {
                 this.screen.remove(true, false, true).done(function() {
@@ -498,13 +520,14 @@
                 // TODO message
                 return;
             }
-            // TODO translation
             var fields = [
-                ['id', 'ID:'],
-                ['create_uid.rec_name', 'Creation User:'],
-                ['create_date', 'Creation Date:'],
-                ['write_uid.rec_name', 'Latest Modification by:'],
-                ['write_date', 'Latest Modification Date:']
+                ['id', Sao.i18n.gettext('ID:')],
+                ['create_uid.rec_name',
+                    Sao.i18n.gettext('Creation User:')],
+                ['create_date', Sao.i18n.gettext('Creation Date:')],
+                ['write_uid.rec_name',
+                    Sao.i18n.gettext('Latest Modification by:')],
+                ['write_date', Sao.i18n.gettext('Latest Modification Date:')]
                 ];
 
             this.screen.model.execute('read', [[record.id],
@@ -527,7 +550,7 @@
                     }
                     message += label + ' ' + value + '\n';
                 });
-                message += 'Model: ' + this.screen.model.name;
+                message += Sao.i18n.gettext('Model: ') + this.screen.model.name;
                 Sao.common.message.run(message);
             }.bind(this));
         },
@@ -611,7 +634,7 @@
             }
         },
         attachment_count: function(count) {
-            var label = 'Attachment(' + count + ')';  // TODO translate
+            var label = Sao.i18n.gettext('Attachment(%1)', count);
             this.buttons.attach.text(label);
             var record_id = this.screen.get_id();
             this.buttons.attach.prop('disabled',

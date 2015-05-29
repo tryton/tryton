@@ -46,7 +46,7 @@
                     'class': 'btn btn-link',
                     'type': 'button'
                 }).append(!kwargs.new_ && this.screen.current_record.id < 0 ?
-                    'Delete' : 'Cancel')
+                    Sao.i18n.gettext('Delete') : Sao.i18n.gettext('Cancel'))
                         .click(function() {
                             this.response('RESPONSE_CANCEL');
                         }.bind(this)));
@@ -56,7 +56,7 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append('New').click(function() {
+                }).append(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)));
             }
@@ -65,12 +65,12 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit'
-                }).append('Save'));
+                }).append(Sao.i18n.gettext('Save')));
             } else {
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit'
-                }).append('OK'));
+                }).append(Sao.i18n.gettext('OK')));
             }
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -98,7 +98,7 @@
                     this.but_add = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
-                        'aria-label': 'Add'
+                        'aria-label': Sao.i18n.gettext('Add')
                     }).append(jQuery('<span/>', {
                         'class': 'glyphicon glyphicon-plus'
                     })).appendTo(buttons);
@@ -108,7 +108,7 @@
                     this.but_remove = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
-                        'aria-label': 'Remove'
+                        'aria-label': Sao.i18n.gettext('Remove')
                     }).append(jQuery('<span/>', {
                         'class': 'glyphicon glyphicon-minus'
                     })).appendTo(buttons);
@@ -119,7 +119,7 @@
                 this.but_new = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'New'
+                    'aria-label': Sao.i18n.gettext('New')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-edit'
                 })).appendTo(buttons);
@@ -129,7 +129,7 @@
                 this.but_del = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'Delete'
+                    'aria-label': Sao.i18n.gettext('Delete')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-trash'
                 })).appendTo(buttons);
@@ -139,7 +139,7 @@
                 this.but_undel = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'Undelete'
+                    'aria-label': Sao.i18n.gettext('Undelete')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-repeat'
                 })).appendTo(buttons);
@@ -149,7 +149,7 @@
                 this.but_previous = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'Previous'
+                    'aria-label': Sao.i18n.gettext('Previous')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-chevron-left'
                 })).appendTo(buttons);
@@ -163,7 +163,7 @@
                 this.but_next = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'Next'
+                    'aria-label': Sao.i18n.gettext('Next')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-chevron-right'
                 })).appendTo(buttons);
@@ -172,7 +172,7 @@
                 this.but_switch = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': 'Switch'
+                    'aria-label': Sao.i18n.gettext('Switch')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-list-alt'
                 })).appendTo(buttons);
@@ -355,27 +355,27 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append('Cancel').click(function() {
+            }).append(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
-            }).append('Find').click(function() {
+            }).append(Sao.i18n.gettext('Find')).click(function() {
                 this.response('RESPONSE_APPLY');
             }.bind(this)).appendTo(dialog.footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append('New').click(function() {
+                }).append(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)).appendTo(dialog.footer);
             }
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append('OK').appendTo(dialog.footer);
+            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -457,13 +457,13 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append('Cancel').click(function() {
+            }).append(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append('OK').appendTo(dialog.footer);
+            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -540,19 +540,20 @@
     Sao.Window.Revision = Sao.class_(Object, {
         init: function(revisions, callback) {
             this.callback = callback;
-            var dialog = new Sao.Dialog('Revision', '', 'lg');
+            var dialog = new Sao.Dialog(
+                    Sao.i18n.gettext('Revision'), '', 'lg');
             this.el = dialog.modal;
 
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append('Cancel').click(function() {
+            }).append(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append('OK').appendTo(dialog.footer);
+            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -568,7 +569,7 @@
             this.select = jQuery('<select/>', {
                 'class': 'form-control',
                 id: 'revision',
-                'placeholder': 'Revision'
+                'placeholder': Sao.i18n.gettext('Revision')
             }).appendTo(group);
             var date_format = Sao.common.date_format();
             var time_format = '%H:%M:%S.%f';

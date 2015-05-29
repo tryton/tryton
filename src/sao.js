@@ -166,6 +166,19 @@ var Sao = {};
     Sao.config.roundup = {};
     Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
 
+    Sao.i18n = i18n();
+    Sao.i18n.setlang = function(lang) {
+        Sao.i18n.setLocale(lang);
+        return jQuery.getJSON('locale/' + lang + '.json', function(data) {
+            Sao.i18n.loadJSON(data);
+        });
+    };
+    Sao.i18n.setlang(
+            (navigator.language ||
+             navigator.browserLanguge ||
+             navigator.userLanguage ||
+             'en_US').replace('-', '_'));
+
     Sao.get_preferences = function() {
         var session = Sao.Session.current_session;
         return Sao.rpc({
@@ -186,8 +199,15 @@ var Sao = {};
                     title += ' - ' + preferences.status_bar;
                 }
                 document.title = title;
-                // TODO language
-                return jQuery.when(preferences);
+                var new_lang = preferences.language != Sao.i18n.getLocale();
+                var prm = jQuery.Deferred();
+                Sao.i18n.setlang(preferences.language).always(function() {
+                    if (new_lang) {
+                        Sao.user_menu(preferences);
+                    }
+                    prm.resolve(preferences);
+                });
+                return prm;
             });
         });
     };
@@ -236,7 +256,7 @@ var Sao = {};
         }).click(Sao.preferences).append(preferences.status_bar));
         jQuery('#user-logout').append(jQuery('<a/>', {
             'href': '#'
-        }).click(Sao.logout).append('Logout'));
+        }).click(Sao.logout).append(Sao.i18n.gettext('Logout')));
     };
 
     Sao.menu = function(preferences) {
@@ -314,7 +334,7 @@ var Sao = {};
             });
             this.search_entry = jQuery('<input>', {
                 'class': 'form-control',
-                'placeholder': 'Search…'
+                'placeholder': Sao.i18n.gettext('Search...')
             });
             this.el.append(this.search_entry);
             this.search_entry.typeahead({

@@ -20,7 +20,8 @@
     "moment": "~2.10.2",
     "eonasdan-bootstrap-datetimepicker": "~4.7.14",
     "typeahead.js": "~0.10.5",
-    "typeahead.js-bootstrap3.less": "~0"
+    "typeahead.js-bootstrap3.less": "~0",
+    "gettext.js": "~0.5.0"
   },
   "devDependencies": {
     "qunit": "~1.18.0"

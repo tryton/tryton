@@ -149,7 +149,7 @@
                 'class': 'treefooter'
             });
             this.more = jQuery('<button/>').button({
-                'label': 'More' // TODO translation
+                'label': Sao.i18n.gettext('More')
             }).click(function() {
                 this.display_size += Sao.config.display_size;
                 this.display();
@@ -1443,7 +1443,7 @@
                 }
             }
             if (!text) {
-                text = 'No String Attr.'; // TODO translate
+                text = Sao.i18n.gettext('No String Attr.');
             }
             var page = this.parse(model, node);
             page = new Sao.View.Form.Page(container.add(page.el, text),
@@ -2907,7 +2907,7 @@
                 //
                 this.but_add = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
-                    'aria-label': 'Add'
+                    'aria-label': Sao.i18n.gettext('Add')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-plus'
                 })).appendTo(buttons);
@@ -2915,7 +2915,7 @@
 
                 this.but_remove = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
-                    'aria-label': 'Remove'
+                    'aria-label': Sao.i18n.gettext('Remove')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-minus'
                 })).appendTo(buttons);
@@ -2924,7 +2924,7 @@
 
             this.but_new = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'New'
+                'aria-label': Sao.i18n.gettext('New')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-edit'
             })).appendTo(buttons);
@@ -2932,7 +2932,7 @@
 
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Open'
+                'aria-label': Sao.i18n.gettext('Open')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-folder-open'
             })).appendTo(buttons);
@@ -2940,7 +2940,7 @@
 
             this.but_del = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Delete'
+                'aria-label': Sao.i18n.gettext('Delete')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-trash'
             })).appendTo(buttons);
@@ -2948,7 +2948,7 @@
 
             this.but_undel = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Undelete'
+                'aria-label': Sao.i18n.gettext('Undelete')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-repeat'
             })).appendTo(buttons);
@@ -2956,7 +2956,7 @@
 
             this.but_previous = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Previous'
+                'aria-label': Sao.i18n.gettext('Previous')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-left'
             })).appendTo(buttons);
@@ -2969,7 +2969,7 @@
 
             this.but_next = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Next'
+                'aria-label': Sao.i18n.gettext('Next')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-right'
             })).appendTo(buttons);
@@ -2977,7 +2977,7 @@
 
             this.but_switch = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Switch'
+                'aria-label': Sao.i18n.gettext('Switch')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-list-alt'
             })).appendTo(buttons);
@@ -3297,7 +3297,7 @@
             }).appendTo(group);
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Add'
+                'aria-label': Sao.i18n.gettext('Add')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-plus'
             })).appendTo(buttons);
@@ -3305,7 +3305,7 @@
 
             this.but_remove = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
-                'aria-label': 'Remove'
+                'aria-label': Sao.i18n.gettext('Remove')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-minus'
             })).appendTo(buttons);
@@ -3637,15 +3637,16 @@
                 }
             }.bind(this);
 
-            var file_dialog = new Sao.Dialog('Select a file', 'file-dialog');
+            var file_dialog = new Sao.Dialog(
+                    Sao.i18n.gettext('Select a file'), 'file-dialog');
             file_dialog.footer.append(jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append('Cancel').click(close))
+            }).append(Sao.i18n.gettext('Cancel')).click(close))
             .append(jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append('OK').click(save_file));
+            }).append(Sao.i18n.gettext('OK')).click(save_file));
             file_dialog.content.submit(function(e) {
                 save_file();
                 e.preventDefault();

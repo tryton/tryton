@@ -199,7 +199,7 @@
     Sao.Wizard.Dialog = Sao.class_(Sao.Wizard, { // TODO nomodal
         init: function(name) {
             if (!name) {
-                name = 'Wizard'; // TODO translate
+                name = Sao.i18n.gettext('Wizard');
             }
             Sao.Wizard.Dialog._super.init.call(this);
             var dialog = new Sao.Dialog(name, 'wizard-dialog', 'lg');

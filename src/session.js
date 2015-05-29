@@ -30,7 +30,8 @@
 
             var ajax_success = function(data) {
                 if (data === null) {
-                    Sao.common.warning.run('', 'Unable to reach the server.');
+                    Sao.common.warning.run('',
+                           Sao.i18n.gettext('Unable to reach the server.'));
                     dfd.reject();
                 } else if (data.error) {
                     Sao.common.error.run(data.error[0], data.error[1]);
@@ -81,21 +82,63 @@
         }
     });
 
+    Sao.Session.login_dialog = function() {
+        var dialog = new Sao.Dialog(Sao.i18n.gettext('Login'), 'lg');
+        dialog.database_select = jQuery('<select/>', {
+            'class': 'form-control',
+            'id': 'login-database'
+        });
+        dialog.login_input = jQuery('<input/>', {
+            'class': 'form-control',
+            'id': 'login-login',
+            'placeholder': Sao.i18n.gettext('Login')
+        });
+        dialog.password_input = jQuery('<input/>', {
+            'class': 'form-control',
+            'type': 'password',
+            'id': 'login-password',
+            'placeholder': Sao.i18n.gettext('Password')
+        });
+        dialog.body.append(jQuery('<div/>', {
+            'class': 'form-group'
+        }).append(jQuery('<label/>', {
+            'for': 'login-database'
+        }).append(Sao.i18n.gettext('Database')))
+        .append(dialog.database_select)
+        ).append(jQuery('<div/>', {
+            'class': 'form-group'
+        }).append(jQuery('<label/>', {
+            'for': 'login-login'
+        }).append(Sao.i18n.gettext('Login')))
+        .append(dialog.login_input)
+        ).append(jQuery('<div/>', {
+            'class': 'form-group'
+        }).append(jQuery('<label/>', {
+            'for': 'login-password'
+        }).append(Sao.i18n.gettext('Password')))
+        .append(dialog.password_input));
+        jQuery('<button/>', {
+            'class': 'btn btn-primary',
+            'type': 'submit'
+        }).append(Sao.i18n.gettext('Login')).appendTo(dialog.footer);
+        dialog.modal.on('hidden.bs.modal', function(event) {
+            jQuery(this).remove();
+        });
+        return dialog;
+    };
+
     Sao.Session.get_credentials = function() {
         var dfd = jQuery.Deferred();
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
-        var database_select = jQuery('#login-database');
-        var login_input = jQuery('#login-login');
-        var password_input = jQuery('#login-password');
-        var login_modal = jQuery('#login');
+        var dialog = Sao.Session.login_dialog();
 
         var ok_func = function() {
-            var login = login_input.val();
-            var password = password_input.val();
+            var login = dialog.login_input.val();
+            var password = dialog.password_input.val();
             // clear the password as the input will stay in the DOM
-            password_input.val('');
-            var database = database || database_select.val();
+            dialog.password_input.val('');
+            var database = database || dialog.database_select.val();
             if (!(login && password)) {
                 return;
             }
@@ -104,79 +147,102 @@
                 .then(function() {
                     dfd.resolve(session);
                 }, function() {
-                    login_modal.modal('show');
+                    dialog.modal.modal('show');
                 });
-            login_modal.modal('hide');
+            dialog.modal.modal('hide');
         };
 
-        login_modal.modal({
+        dialog.modal.modal({
             backdrop: false,
             keyboard: false
         });
-        login_modal.on('shown.bs.modal', function() {
+        dialog.modal.on('shown.bs.modal', function() {
             if (database) {
-                if (!login_input.val()) {
-                    login_input.focus();
+                if (!dialog.login_input.val()) {
+                    dialog.login_input.focus();
                 } else {
-                    password_input.focus();
+                    dialog.password_input.focus();
                 }
             } else {
-                database_select.focus();
+                dialog.database_select.focus();
             }
         });
-        login_modal.find('form').unbind().submit(function(e) {
+        dialog.modal.find('form').unbind().submit(function(e) {
             ok_func();
             e.preventDefault();
         });
 
         jQuery.when(Sao.DB.list()).then(function(databases) {
             databases.forEach(function(database) {
-                database_select.append(jQuery('<option/>', {
+                dialog.database_select.append(jQuery('<option/>', {
                     'value': database,
                     'text': database
                 }));
             });
             if (database) {
-                database_select.val(database);
+                dialog.database_select.val(database);
             }
-            login_modal.modal('show');
+            dialog.modal.modal('show');
         });
         return dfd.promise();
     };
 
+    Sao.Session.password_dialog = function() {
+        var dialog = new Sao.Dialog(Sao.i18n.gettext('Password'), 'lg');
+        dialog.password_input = jQuery('<input/>', {
+            'class': 'form-control',
+            'tye': 'password',
+            'id': 'password-password',
+            'placeholder': Sao.i18n.gettext('Password')
+        });
+        dialog.body.append(jQuery('<div/>', {
+            'class': 'form-group'
+        }).append(jQuery('<label/>', {
+            'for': 'password-password'
+        }).append(Sao.i18n.gettext('Password')))
+        .append(dialog.password_input));
+        jQuery('<button/>', {
+            'class': 'btn btn-primary',
+            'type': 'submit'
+        }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+        dialog.modal.on('hidden.bs.modal', function(event) {
+            jQuery(this).remove();
+        });
+        return dialog;
+    };
+
     Sao.Session.renew = function(session) {
         var dfd = jQuery.Deferred();
-        var password_modal = jQuery('#password');
-        var password_input = jQuery('#password-password');
+        var dialog = Sao.Session.password_dialog();
         if (!session.login) {
             return dfd.reject();
         }
 
         var ok_func = function() {
-            var password = password_input.val();
+            var password = dialog.password_input.val();
             // clear the password as the input will stay in the DOM
-            password_input.val('');
+            dialog.password_input.val('');
             session.do_login(session.login, password)
                 .then(function() {
                     dfd.resolve();
                 }, function() {
-                    password_modal.modal('show');
+                    dialog.modal.modal('show');
                 });
-            password_modal.modal('hide');
+            dialog.modal.modal('hide');
         };
 
-        password_modal.modal({
+        dialog.modal.modal({
             backdrop: false,
             keyboard: false
         });
-        password_modal.on('shown.bs.modal', function() {
-            password_input.focus();
+        dialog.modal.on('shown.bs.modal', function() {
+            dialog.password_input.focus();
         });
-        password_modal.find('form').unbind().submit(function(e) {
+        dialog.modal.find('form').unbind().submit(function(e) {
             ok_func();
             e.preventDefault();
         });
-        password_modal.modal('show');
+        dialog.modal.modal('show');
         return dfd.promise();
     };
 

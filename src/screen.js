@@ -22,11 +22,11 @@
             this.filter_button = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default'
-            }).append('Filters'); // TODO translation
+            }).append(Sao.i18n.gettext('Filters'));
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
                 'class': 'form-control',
-                'placeholder': 'Search'
+                'placeholder': Sao.i18n.gettext('Search')
             });
             this.search_entry.keypress(this.key_press.bind(this));
             this.but_bookmark = jQuery('<button/>', {
@@ -34,7 +34,7 @@
                 'class': 'btn btn-default dropdown-toggle',
                 'data-toggle': 'dropdown',
                 'aria-expanded': false,
-                'aria-label': 'Bookmarks',
+                'aria-label': Sao.i18n.gettext('Bookmarks'),
                 'id': 'bookmarks'
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-bookmark',
@@ -97,7 +97,7 @@
             this.but_prev = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default',
-                'aria-label': 'Previous'
+                'aria-label': Sao.i18n.gettext('Previous')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-menu-left',
                 'aria-hidden': true
@@ -106,7 +106,7 @@
             this.but_next = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default',
-                'aria-label': 'Next'
+                'aria-label': Sao.i18n.gettext('Next')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-menu-right',
                 'aria-hidden': true
@@ -181,11 +181,13 @@
             if (star) {
                 glyphicon.removeClass('glyphicon-star-empty');
                 glyphicon.addClass('glyphicon-star');
-                this.but_star.attr('aria-label', 'Remove this bookmark');
+                this.but_star.attr('aria-label',
+                        Sao.i18n.gettext('Remove this bookmark'));
             } else {
                 glyphicon.removeClass('glyphicon-star');
                 glyphicon.addClass('glyphicon-star-empty');
-                this.but_star.attr('aria-label', 'Bookmark this filter');
+                this.but_star.attr('aria-label',
+                       Sao.i18n.gettext('Bookmark this filter'));
             }
         },
         get_star: function() {
@@ -205,7 +207,7 @@
                 if (!text) {
                     return;
                 }
-                Sao.common.ask.run('Bookmark Name:')
+                Sao.common.ask.run(Sao.i18n.gettext('Bookmark Name:'))
                     .then(function(name) {
                         if (!name) {
                             return;
@@ -349,7 +351,8 @@
                 }.bind(this));
             }.bind(this);
             if (!this.search_modal) {
-                var dialog = new Sao.Dialog('Filters', '', 'lg');
+                var dialog = new Sao.Dialog(
+                        Sao.i18n.gettext('Filters'), '', 'lg');
                 this.search_modal = dialog.modal;
                 this.search_form = dialog.content;
                 this.search_form.addClass('form-horizontal');
@@ -401,8 +404,9 @@
                                 'class': 'form-control input-sm',
                                 id: prefix + field.name
                             });
-                            // TODO translate
-                            ['', 'True', 'False'].forEach(
+                            ['',
+                            Sao.i18n.gettext('True'),
+                            Sao.i18n.gettext('False')].forEach(
                                     boolean_option(input));
                             break;
                         case 'selection':
@@ -449,7 +453,8 @@
                 jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     type: 'submit'
-                }).append('Find').click(search).appendTo(dialog.footer);
+                }).append(Sao.i18n.gettext('Find'))
+                .click(search).appendTo(dialog.footer);
             }
             this.search_modal.modal('show');
             if (this.last_search_text.trim() !== this.get_text().trim()) {
@@ -1070,11 +1075,15 @@
                         dom_fields[name] = fields[name];
                     });
                     [
-                        ['id', 'ID', 'integer'],
-                        ['create_uid', 'Creation User', 'many2one'],
-                        ['create_date', 'Creation Date', 'datetime'],
-                        ['write_uid', 'Modification User', 'many2one'],
-                        ['write_date', 'Modification Date', 'datetime']
+                        ['id', Sao.i18n.gettext('ID'), 'integer'],
+                        ['create_uid', Sao.i18n.gettext('Creation User'),
+                            'many2one'],
+                        ['create_date', Sao.i18n.gettext('Creation Date'),
+                            'datetime'],
+                        ['write_uid', Sao.i18n.gettext('Modification User'),
+                             'many2one'],
+                        ['write_date', Sao.i18n.gettext('Modification Date'),
+                             'datetime']
                             ] .forEach(function(e) {
                                 var name = e[0];
                                 var string = e[1];
@@ -1092,7 +1101,7 @@
                             });
                     if (!('id' in fields)) {
                         fields.id = {
-                            'string': 'ID',  // TODO translate
+                            'string': Sao.i18n.gettext('ID'),
                             'name': 'id',
                             'type': 'integer'
                         };

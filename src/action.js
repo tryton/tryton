@@ -132,15 +132,14 @@
                 var action = actions[i];
                 keyact[action.name.replace(/_/g, '')] = action;
             }
-            // TODO translation
-            var prm = Sao.common.selection('Select your action', keyact,
-                    alwaysask);
+            var prm = Sao.common.selection(
+                    Sao.i18n.gettext('Select your action'),
+                    keyact, alwaysask);
             return prm.then(function(action) {
                 Sao.Action.exec_action(action, data, context);
             }, function() {
                 if (jQuery.isEmptyObject(keyact) && warning) {
-                    // TODO translation
-                    alert('No action defined!');
+                    alert(Sao.i18n.gettext('No action defined!'));
                 }
             });
         };
