@@ -21,13 +21,13 @@
         switch (action.type) {
             case 'ir.action.act_window':
                 params.view_ids = false;
-                params.view_mode = null;
+                params.mode = null;
                 if (!jQuery.isEmptyObject(action.views)) {
                     params.view_ids = [];
-                    params.view_mode = [];
+                    params.mode = [];
                     action.views.forEach(function(x) {
                         params.view_ids.push(x[0]);
-                        params.view_mode.push(x[1]);
+                        params.mode.push(x[1]);
                     });
                 } else if (!jQuery.isEmptyObject(action.view_id)) {
                     params.view_ids = [action.view_id[0]];
