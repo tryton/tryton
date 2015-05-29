@@ -690,9 +690,8 @@
                 }
             }
             this.screen_container.set(this.current_view.el);
-            this.display();
             // TODO cursor
-            return jQuery.when();
+            return this.display();
         },
         search_filter: function(search_string) {
             var domain = [];
@@ -782,8 +781,10 @@
         display: function() {
             var deferreds = [];
             if (this.views) {
-                this.search_active(~['tree', 'graph', 'calendar'].indexOf(
+                var search_prm = this.search_active(
+                        ~['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type));
+                deferreds.push(search_prm);
                 for (var i = 0; i < this.views.length; i++) {
                     if (this.views[i]) {
                         deferreds.push(this.views[i].display());
@@ -1029,13 +1030,12 @@
         search_active: function(active) {
             if (active && !this.group.parent) {
                 if (!this.fields_view_tree) {
-                    this.model.execute('fields_view_get',
+                    return this.model.execute('fields_view_get',
                             [false, 'tree'], this.context)
                         .then(function(view) {
                             this.fields_view_tree = view;
-                            this.search_active(active);
+                            return this.search_active(active);
                         }.bind(this));
-                    return;
                 }
                 if (!this.domain_parser) {
                     var fields = jQuery.extend({},
@@ -1113,6 +1113,7 @@
             } else {
                 this.screen_container.hide_filter();
             }
+            return jQuery.when();
         },
         get_selection: function(props) {
             var prm;
