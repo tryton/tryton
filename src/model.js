@@ -750,7 +750,8 @@
             }
             for (var fname in this.model.fields) {
                 var field = this.model.fields[fname];
-                if (field.description.autocomplete) {
+                if (field.description.autocomplete &&
+                        field.description.autocomplete.length > 0) {
                     promises.push(this.do_autocomplete(fname));
                 }
             }
