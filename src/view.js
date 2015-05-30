@@ -549,6 +549,7 @@
                 }));
                 td.one('click', {column: i, td: td},
                         this.select_row.bind(this));
+                td.dblclick(this.switch_row.bind(this));
                 var widgets = this.build_widgets();
                 var table = widgets[0];
                 var row = widgets[1];
@@ -733,22 +734,29 @@
             this.record.load(this.children_field).done(
                     add_children.bind(this));
         },
+        switch_row: function() {
+            if (window.getSelection) {
+                if (window.getSelection().empty) {  // Chrome
+                    window.getSelection().empty();
+                } else if (window.getSelection().removeAllRanges) {  // Firefox
+                    window.getSelection().removeAllRanges();
+                }
+            } else if (document.selection) {  // IE?
+                document.selection.empty();
+            }
+            this.tree.switch_(this.path);
+        },
         select_row: function(event_) {
             if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
                 this.tree.select_changed(this.record);
-                this.tree.switch_(this.path);
+                this.switch_row();
             } else {
-                if (!event_.ctrlKey) {
+                if (!event_.ctrlKey &&
+                        this.tree.selection_mode ==
+                        Sao.common.SELECTION_SINGLE) {
                     this.tree.rows.forEach(function(row) {
-                        if (row != this) {
-                            row.set_selection(false);
-                        }
+                        row.set_selection(false);
                     }.bind(this));
-                    this.selection_changed();
-                    if (this.is_selected()) {
-                        this.tree.switch_(this.path);
-                        return;
-                    }
                 }
                 this.set_selection(!this.is_selected());
                 this.selection_changed();
