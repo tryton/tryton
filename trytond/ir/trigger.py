@@ -77,7 +77,7 @@ class Trigger(ModelSQL, ModelView):
         super(Trigger, cls).__register__(module_name)
 
         # Migration from 3.4:
-        # change minimum_delay into timedelta minimu_time_delay
+        # change minimum_delay into timedelta minimum_time_delay
         if table.column_exist('minimum_delay'):
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.minimum_delay,
@@ -85,7 +85,7 @@ class Trigger(ModelSQL, ModelView):
             for id_, delay in cursor.fetchall():
                 delay = datetime.timedelta(hours=delay)
                 cursor.execute(*sql_table.update(
-                        [sql_table.minimu_time_delay],
+                        [sql_table.minimum_time_delay],
                         [delay],
                         where=sql_table.id == id_))
             table.drop_column('minimum_delay')
