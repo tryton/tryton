@@ -3,6 +3,17 @@
 import os
 import sys
 import unittest
+import doctest
+
+import proteus
+import proteus.config
+
+os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite://')
+os.environ.setdefault('DB_NAME', ':memory:')
+from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+
+here = os.path.dirname(__file__)
+readme = os.path.normpath(os.path.join(here, '..', '..', 'README'))
 
 
 def test_suite():
@@ -14,6 +25,18 @@ def test_suite():
             __import__(modname)
             module = sys.modules[modname]
             suite.addTests(loader.loadTestsFromModule(module))
+    additional_tests(suite)
+    return suite
+
+
+def additional_tests(suite):
+    for mod in (proteus, proteus.config):
+        suite.addTest(doctest.DocTestSuite(mod))
+    if os.path.isfile(readme):
+        suite.addTest(doctest.DocFileSuite(readme, module_relative=False,
+                setUp=doctest_setup, tearDown=doctest_teardown,
+                encoding='utf-8',
+                optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
 
 
