@@ -75,5 +75,6 @@ setup(name=name,
     dependency_links=dependency_links,
     zip_safe=True,
     test_suite='proteus.tests',
-    tests_require=[get_require_version('trytond')],
+    tests_require=[get_require_version('trytond'),
+        get_require_version('trytond_party')],
     )
