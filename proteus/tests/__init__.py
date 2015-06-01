@@ -8,7 +8,7 @@ import doctest
 import proteus
 import proteus.config
 
-os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite://')
+os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite:///:memory:')
 os.environ.setdefault('DB_NAME', ':memory:')
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
@@ -25,11 +25,12 @@ def test_suite():
             __import__(modname)
             module = sys.modules[modname]
             suite.addTests(loader.loadTestsFromModule(module))
-    additional_tests(suite)
+    suite.addTests(additional_tests())
     return suite
 
 
-def additional_tests(suite):
+def additional_tests():
+    suite = unittest.TestSuite()
     for mod in (proteus, proteus.config):
         suite.addTest(doctest.DocTestSuite(mod))
     if os.path.isfile(readme):

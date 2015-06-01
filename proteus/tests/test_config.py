@@ -29,4 +29,4 @@ class TestConfig(ProteusTestCase):
         config = proteus.config.TrytondConfig()
         self.assertEqual(repr(config),
             "proteus.config.TrytondConfig("
-            "'sqlite://', 'admin', config_file=None)")
+            "'sqlite:///:memory:', 'admin', config_file=None)")
