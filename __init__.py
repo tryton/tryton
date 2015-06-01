@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .complaint import *
 from .sale import *
+from .account import *
 
 
 def register():
@@ -15,4 +16,5 @@ def register():
         Action_InvoiceLine,
         Configuration,
         Sale,
+        InvoiceLine,
         module='sale_complaint', type_='model')

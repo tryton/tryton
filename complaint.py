@@ -427,9 +427,11 @@ class Action(ModelSQL, ModelView):
             values = invoice._credit()
             lines_values = []
             for invoice_line in invoice_lines:
-                lines_values.append(invoice_line._credit())
+                credit_line = invoice_line._credit()
+                lines_values.append(credit_line)
                 # Remove product as it is not a return
-                lines_values[0].pop('product', None)
+                credit_line.pop('product', None)
+                credit_line['origin'] = str(self.complaint)
             if isinstance(self.complaint.origin, Line):
                 if self.quantity is not None:
                     lines_values[0]['quantity'] = self.quantity
