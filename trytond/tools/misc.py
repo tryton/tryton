@@ -19,7 +19,6 @@ from sql.operators import Or
 
 from trytond.const import OPERATORS
 from trytond.config import config, parse_uri
-from trytond.transaction import Transaction
 
 
 def find_in_path(name):
@@ -370,6 +369,7 @@ def reduce_domain(domain):
 
 def grouped_slice(records, count=None):
     'Grouped slice'
+    from trytond.transaction import Transaction
     if count is None:
         count = Transaction().cursor.IN_MAX
     for i in xrange(0, len(records), count):
