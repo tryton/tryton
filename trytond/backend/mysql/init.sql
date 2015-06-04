@@ -78,7 +78,7 @@ CREATE TABLE res_user (
     PRIMARY KEY(id)
 ) ENGINE=InnoDB;
 
-ALTER TABLE res_user ADD CONSTRAINT res_user_login_uniq UNIQUE (login);
+ALTER TABLE res_user ADD CONSTRAINT res_user_login_key UNIQUE (login);
 
 INSERT INTO res_user (id, login, password, name, active) VALUES (0, 'root', NULL, 'Root', False);
 UPDATE res_user set id = 0;
@@ -110,7 +110,7 @@ CREATE TABLE ir_module (
     CONSTRAINT ir_module_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
-ALTER TABLE ir_module ADD CONSTRAINT name_uniq UNIQUE (name);
+ALTER TABLE ir_module ADD CONSTRAINT ir_module_name_uniq UNIQUE (name);
 
 CREATE TABLE ir_module_dependency (
     id BIGINT AUTO_INCREMENT NOT NULL,

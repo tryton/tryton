@@ -89,12 +89,12 @@ CREATE TABLE res_user (
     id INTEGER DEFAULT NEXTVAL('res_user_id_seq') NOT NULL,
     name VARCHAR NOT NULL,
     active BOOLEAN NOT NULL,
-    login VARCHAR NOT NULL UNIQUE,
+    login VARCHAR NOT NULL,
     password VARCHAR,
     PRIMARY KEY(id)
 );
 
-ALTER TABLE res_user ADD CONSTRAINT res_user_login_uniq UNIQUE (login);
+ALTER TABLE res_user ADD CONSTRAINT res_user_login_key UNIQUE (login);
 
 INSERT INTO res_user (id, login, password, name, active) VALUES (0, 'root', NULL, 'Root', False);
 
@@ -132,7 +132,7 @@ CREATE TABLE ir_module (
     FOREIGN KEY (write_uid) REFERENCES res_user ON DELETE SET NULL
 );
 
-ALTER TABLE ir_module ADD CONSTRAINT name_uniq UNIQUE (name);
+ALTER TABLE ir_module ADD CONSTRAINT ir_module_name_uniq UNIQUE (name);
 
 CREATE SEQUENCE ir_module_dependency_id_seq;
 
