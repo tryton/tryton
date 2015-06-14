@@ -191,7 +191,7 @@ class Rule(ModelSQL, ModelView):
                 condition=rule_group.model == model.id
                 ).select(rule_table.id,
                 where=(model.model == model_name)
-                & getattr(rule_group, 'perm_%s' % mode)
+                & (getattr(rule_group, 'perm_%s' % mode) == True)
                 & (rule_group.id.in_(
                         rule_group_user.select(rule_group_user.rule_group,
                             where=rule_group_user.user == user_id)
@@ -202,8 +202,8 @@ class Rule(ModelSQL, ModelView):
                             ).select(rule_group_group.rule_group,
                             where=user_group.user == user_id)
                         )
-                    | rule_group.default_p
-                    | rule_group.global_p
+                    | (rule_group.default_p == True)
+                    | (rule_group.global_p == True)
                     )))
         ids = [x[0] for x in cursor.fetchall()]
         if not ids:

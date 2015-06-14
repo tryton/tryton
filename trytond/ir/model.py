@@ -509,10 +509,10 @@ class ModelAccess(ModelSQL, ModelView):
                 condition=user_group.group == model_access.group
                 ).select(
                 ir_model.model,
-                Max(Case((model_access.perm_read, 1), else_=0)),
-                Max(Case((model_access.perm_write, 1), else_=0)),
-                Max(Case((model_access.perm_create, 1), else_=0)),
-                Max(Case((model_access.perm_delete, 1), else_=0)),
+                Max(Case((model_access.perm_read == True, 1), else_=0)),
+                Max(Case((model_access.perm_write == True, 1), else_=0)),
+                Max(Case((model_access.perm_create == True, 1), else_=0)),
+                Max(Case((model_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
                 & ((user_group.user == user) | (model_access.group == Null)),
                 group_by=ir_model.model))
@@ -694,10 +694,10 @@ class ModelFieldAccess(ModelSQL, ModelView):
                 ).select(
                 ir_model.model,
                 model_field.name,
-                Max(Case((field_access.perm_read, 1), else_=0)),
-                Max(Case((field_access.perm_write, 1), else_=0)),
-                Max(Case((field_access.perm_create, 1), else_=0)),
-                Max(Case((field_access.perm_delete, 1), else_=0)),
+                Max(Case((field_access.perm_read == True , 1), else_=0)),
+                Max(Case((field_access.perm_write == True, 1), else_=0)),
+                Max(Case((field_access.perm_create == True, 1), else_=0)),
+                Max(Case((field_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
                 & ((user_group.user == user) | (field_access.group == Null)),
                 group_by=[ir_model.model, model_field.name]))
