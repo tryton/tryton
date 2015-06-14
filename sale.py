@@ -23,13 +23,20 @@ class Sale:
     @ModelView.button
     @Workflow.transition('quotation')
     def quote(cls, sales):
+        pool = Pool()
+        Line = pool.get('sale.line')
+
         super(Sale, cls).quote(sales)
+
+        lines_to_delete = []
         for sale in sales:
-            sale.set_extra()
+            sale.set_extra(lines_to_delete)
+        if lines_to_delete:
+            Line.delete(lines_to_delete)
         cls.save(sales)
 
-    def set_extra(self):
-        'Set extra lines'
+    def set_extra(self, lines_to_delete):
+        'Set extra lines and fill lines_to_delete'
         pool = Pool()
         Extra = pool.get('sale.extra')
 
@@ -44,6 +51,7 @@ class Sale:
                 continue
             else:
                 lines.remove(line)
+                lines_to_delete.append(line)
         if extra2lines:
             lines.extend(extra2lines.values())
         self.lines = lines
