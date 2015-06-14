@@ -18,9 +18,9 @@ class Many2One(Field):
     _type = 'many2one'
 
     def __init__(self, model_name, string='', left=None, right=None,
-            ondelete='SET NULL', datetime_field=None, help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
-            on_change=None, on_change_with=None, depends=None,
+            ondelete='SET NULL', datetime_field=None, target_search='join',
+            help='', required=False, readonly=False, domain=None, states=None,
+            select=False, on_change=None, on_change_with=None, depends=None,
             context=None, loading='eager'):
         '''
         :param model_name: The name of the target model.
@@ -33,6 +33,7 @@ class Many2One(Field):
             ``SET NULL`` will be changed into ``RESTRICT`` if required is set.
         :param datetime_field: The name of the field that contains the datetime
             value to read the target record.
+        :param target_search: The kind of target search 'subquery' or 'join'
         '''
         self.__required = required
         if ondelete not in ('CASCADE', 'RESTRICT', 'SET NULL'):
@@ -51,6 +52,8 @@ class Many2One(Field):
         self.left = left
         self.right = right
         self.datetime_field = datetime_field
+        assert target_search in ['subquery', 'join']
+        self.target_search = target_search
     __init__.__doc__ += Field.__init__.__doc__
 
     def __get_required(self):
@@ -132,7 +135,10 @@ class Many2One(Field):
         return expression
 
     def convert_domain(self, domain, tables, Model):
+        pool = Pool()
+        Rule = pool.get('ir.rule')
         Target = self.get_target()
+
         table, _ = tables[None]
         name, operator, value = domain[:3]
         column = self.sql_column(table)
@@ -176,8 +182,18 @@ class Many2One(Field):
         target_domain = [(target_name,) + tuple(domain[1:])]
         if 'active' in Target._fields:
             target_domain.append(('active', 'in', [True, False]))
-        query = Target.search(target_domain, order=[], query=True)
-        return column.in_(query)
+        if self.target_search == 'subquery':
+            query = Target.search(target_domain, order=[], query=True)
+            return column.in_(query)
+        else:
+            target_tables = self._get_target_tables(tables)
+            target_table, _ = target_tables[None]
+            _, expression = Target.search_domain(
+                target_domain, tables=target_tables)
+            rule_domain = Rule.domain_get(Target.__name__, mode='read')
+            if rule_domain:
+                expression &= target_table.id.in_(rule_domain)
+            return expression
 
     def convert_order(self, name, tables, Model):
         fname, _, oexpr = name.partition('.')
@@ -202,11 +218,17 @@ class Many2One(Field):
             return [self.sql_column(table)]
 
         ofield = Target._fields[oname]
-        target_tables = tables.get(fname)
+        target_tables = self._get_target_tables(tables)
+        return ofield.convert_order(oexpr, target_tables, Target)
+
+    def _get_target_tables(self, tables):
+        Target = self.get_target()
+        table, _ = tables[None]
+        target_tables = tables.get(self.name)
         if target_tables is None:
             target = Target.__table__()
             target_tables = {
                 None: (target, target.id == self.sql_column(table)),
                 }
-            tables[fname] = target_tables
-        return ofield.convert_order(oexpr, target_tables, Target)
+            tables[self.name] = target_tables
+        return target_tables

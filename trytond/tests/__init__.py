@@ -159,6 +159,7 @@ def register():
         Many2OneTarget,
         Many2OneDomainValidation,
         Many2OneOrderBy,
+        Many2OneSearch,
         TestHistory,
         TestHistoryLine,
         FieldContextChild,

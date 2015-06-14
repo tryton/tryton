@@ -36,6 +36,7 @@ __all__ = [
     'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
     'Binary', 'BinaryDefault', 'BinaryRequired',
     'Many2OneDomainValidation', 'Many2OneTarget', 'Many2OneOrderBy',
+    'Many2OneSearch',
     ]
 
 
@@ -733,4 +734,10 @@ class Many2OneDomainValidation(ModelSQL):
 class Many2OneOrderBy(ModelSQL):
     "Many2One OrderBy"
     __name__ = 'test.many2one_orderby'
+    many2one = fields.Many2One('test.many2one_target', 'many2one')
+
+
+class Many2OneSearch(ModelSQL):
+    "Many2One Search"
+    __name__ = 'test.many2one_search'
     many2one = fields.Many2One('test.many2one_target', 'many2one')

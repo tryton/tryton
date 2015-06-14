@@ -118,6 +118,7 @@ class FieldsTestCase(unittest.TestCase):
         self.m2o_domain_validation = POOL.get('test.many2one_domainvalidation')
         self.m2o_orderby = POOL.get('test.many2one_orderby')
         self.m2o_target = POOL.get('test.many2one_target')
+        self.m2o_search = POOL.get('test.many2one_search')
 
     def test0010boolean(self):
         'Test Boolean'
@@ -3264,6 +3265,30 @@ class FieldsTestCase(unittest.TestCase):
                     for x, y in zip(search, search[1:])))
 
             transaction.cursor.rollback()
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+
+            target1, target2 = self.m2o_target.create([
+                    {'value': 1},
+                    {'value': 2},
+                    ])
+
+            search1, search2 = self.m2o_search.create([
+                    {'many2one': target1.id},
+                    {'many2one': target2.id},
+                    ])
+
+            # Search join
+            self.m2o_search.target_search = 'join'
+            self.assertEqual(self.m2o_search.search([
+                        ('many2one.value', '=', 1),
+                        ]), [search1])
+
+            # Search subquery
+            self.m2o_search.target_search = 'subquery'
+            self.assertEqual(self.m2o_search.search([
+                        ('many2one.value', '=', 1),
+                        ]), [search1])
 
     def test0200timedelta(self):
         'Test timedelta'

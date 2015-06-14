@@ -155,20 +155,8 @@ Instance methods:
 .. method:: Field.convert_domain(domain, tables, Model)
 
     Convert the simple :ref:`domain <topics-domain>` clause into a SQL
-    expression or a new domain.
-
-Where ``tables`` is a nested dictionary containing the existing joins (and it
-could be updated to add new joins)::
-
-    {
-        None: (<Table invoice>, None),
-        'party': {
-            None: (<Table party>, <join_on sql expression>),
-            'addresses': {
-                None: (<Table address>, <join_on sql expression>),
-                },
-            },
-        }
+    expression or a new domain. :ref:`tables <ref-tables>` could be updated to
+    add new joins.
 
 .. method:: Field.sql_format(value)
 
@@ -478,7 +466,7 @@ Same like :attr:`Selection.selection_change_with`.
 Many2One
 --------
 
-.. class:: Many2One(model_name, string[, left[, right[, ondelete[, datetime_field[, \**options]]]]])
+.. class:: Many2One(model_name, string[, left[, right[, ondelete[, datetime_field[, target_search[, \**options]]]]])
 
 A many-to-one relation field.
 
@@ -528,6 +516,23 @@ A many-to-one relation field.
     It is usually used in combination with
     :attr:`trytond.model.ModelSQL._history` to request a value for a given date
     and time on a historicized model.
+
+.. attribute:: Many2One.target_search
+
+    Define the kind of SQL query to use when searching on related target.
+    Allowed values are:
+
+        - ``subquery``: it will use a subquery based on the ids.
+
+        - ``join``: it will add a join on the main query.
+
+    ``join`` is the default value.
+
+    .. note::
+
+        ``join`` could improve the performance if the target has a huge amount
+        of records.
+    ..
 
 One2Many
 --------

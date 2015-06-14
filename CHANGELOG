@@ -1,3 +1,5 @@
+* Add target_search option to Many2One
+* Add tables argument to ModelSQL.search_domain
 * Rename ir.module.module* into ir.module*
 
 Version 3.6.0 - 2015-04-20

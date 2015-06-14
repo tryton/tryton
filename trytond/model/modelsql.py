@@ -1140,7 +1140,7 @@ class ModelSQL(ModelStorage):
         return cls.browse([x['id'] for x in rows])
 
     @classmethod
-    def search_domain(cls, domain, active_test=True):
+    def search_domain(cls, domain, active_test=True, tables=None):
         '''
         Return SQL tables and expression
         Set active_test to add it.
@@ -1148,9 +1148,10 @@ class ModelSQL(ModelStorage):
         transaction = Transaction()
         domain = cls._search_domain_active(domain, active_test=active_test)
 
-        tables = {
-            None: (cls.__table__(), None)
-            }
+        if tables is None:
+            tables = {}
+        if None not in tables:
+            tables[None] = (cls.__table__(), None)
         if cls._history and transaction.context.get('_datetime'):
             tables[None] = (cls.__table_history__(), None)
 

@@ -452,17 +452,24 @@ Class methods:
     Return a list of records that match the :ref:`domain <topics-domain>` or
     the sql query if query is True.
 
-.. classmethod:: ModelSQL.search_domain(domain[, active_test])
+.. classmethod:: ModelSQL.search_domain(domain[, active_test[, tables]])
 
-    Convert a :ref:`domain <topics-domain>` into a tuple containing:
+    Convert a :ref:`domain <topics-domain>` into a SQL expression by returning
+    the updated tables dictionary and a SQL expression.
 
-    - a SQL clause string
+.. _ref-tables:
 
-    - a list of arguments for the SQL clause
+    Where ``tables`` is a nested dictionary containing the existing joins::
 
-    - a list of tables used in the SQL clause
-
-    - a list of arguments for the tables
+        {
+            None: (<Table invoice>, None),
+            'party': {
+                None: (<Table party>, <join_on sql expression>),
+                'addresses': {
+                    None: (<Table address>, <join_on sql expression>),
+                    },
+                },
+            }
 
 ========
 Workflow
