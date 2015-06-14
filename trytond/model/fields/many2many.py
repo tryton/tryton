@@ -90,7 +90,7 @@ class Many2Many(Field):
                 clause = [(self.origin, 'in', references)]
             else:
                 clause = [(self.origin, 'in', list(sub_ids))]
-            clause += [(self.target + '.id', '!=', None)]
+            clause += [(self.target, '!=', None)]
             relations.append(Relation.search(clause, order=order))
         relations = list(chain(*relations))
 
