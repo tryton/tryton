@@ -247,31 +247,6 @@ class Database(DatabaseInterface):
                     (0, module_id, dependency))
 
 
-class _Cursor(MySQLdb.cursors.Cursor):
-
-    def __build_dict(self, row):
-        return dict((desc[0], row[i])
-                for i, desc in enumerate(self.description))
-
-    def dictfetchone(self):
-        row = self.fetchone()
-        if row:
-            return self.__build_dict(row)
-        else:
-            return row
-
-    def dictfetchmany(self, size):
-        rows = self.fetchmany(size)
-        return [self.__build_dict(row) for row in rows]
-
-    def dictfetchall(self):
-        rows = self.fetchall()
-        return [self.__build_dict(row) for row in rows]
-
-    def fetchall(self):
-        return list(super(_Cursor, self).fetchall())
-
-
 class Cursor(CursorInterface):
 
     def __init__(self, conn, database_name):
@@ -279,7 +254,7 @@ class Cursor(CursorInterface):
         self._conn = conn
         self.database_name = database_name
         self.dbname = self.database_name  # XXX to remove
-        self.cursor = conn.cursor(_Cursor)
+        self.cursor = conn.cursor()
 
     def __getattr__(self, name):
         return getattr(self.cursor, name)

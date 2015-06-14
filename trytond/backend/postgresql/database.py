@@ -15,7 +15,6 @@ try:
 except ImportError:
     pass
 from psycopg2.pool import ThreadedConnectionPool
-from psycopg2.extensions import cursor as PsycopgCursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extensions import register_type, register_adapter
@@ -269,28 +268,6 @@ class Database(DatabaseInterface):
                     (0, module_id, dependency))
 
 
-class _Cursor(PsycopgCursor):
-
-    def __build_dict(self, row):
-        return dict((desc[0], row[i])
-                for i, desc in enumerate(self.description))
-
-    def dictfetchone(self):
-        row = self.fetchone()
-        if row:
-            return self.__build_dict(row)
-        else:
-            return row
-
-    def dictfetchmany(self, size):
-        rows = self.fetchmany(size)
-        return [self.__build_dict(row) for row in rows]
-
-    def dictfetchall(self):
-        rows = self.fetchall()
-        return [self.__build_dict(row) for row in rows]
-
-
 class Cursor(CursorInterface):
 
     def __init__(self, connpool, conn, database):
@@ -298,7 +275,7 @@ class Cursor(CursorInterface):
         self._connpool = connpool
         self._conn = conn
         self._database = database
-        self.cursor = conn.cursor(cursor_factory=_Cursor)
+        self.cursor = conn.cursor()
         self.commit()
         self.sql_from_log = {}
         self.sql_into_log = {}

@@ -219,3 +219,22 @@ class CursorInterface(object):
 
         :return: a boolean
         '''
+
+    def __build_dict(self, row):
+        return dict((desc[0], row[i])
+                for i, desc in enumerate(self.description))
+
+    def dictfetchone(self):
+        row = self.fetchone()
+        if row:
+            return self.__build_dict(row)
+        else:
+            return row
+
+    def dictfetchmany(self, size):
+        rows = self.fetchmany(size)
+        return [self.__build_dict(row) for row in rows]
+
+    def dictfetchall(self):
+        rows = self.fetchall()
+        return [self.__build_dict(row) for row in rows]

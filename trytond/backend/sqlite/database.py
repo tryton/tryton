@@ -321,28 +321,6 @@ class Database(DatabaseInterface):
                 cursor.execute(*insert)
 
 
-class _Cursor(sqlite.Cursor):
-
-    def __build_dict(self, row):
-        return dict((desc[0], row[i])
-                for i, desc in enumerate(self.description))
-
-    def dictfetchone(self):
-        row = self.fetchone()
-        if row:
-            return self.__build_dict(row)
-        else:
-            return row
-
-    def dictfetchmany(self, size):
-        rows = self.fetchmany(size)
-        return [self.__build_dict(row) for row in rows]
-
-    def dictfetchall(self):
-        rows = self.fetchall()
-        return [self.__build_dict(row) for row in rows]
-
-
 class Cursor(CursorInterface):
     IN_MAX = 200
 
@@ -351,7 +329,7 @@ class Cursor(CursorInterface):
         self._conn = conn
         self.database_name = database_name
         self.dbname = self.database_name  # XXX to remove
-        self.cursor = conn.cursor(_Cursor)
+        self.cursor = conn.cursor()
 
     def __getattr__(self, name):
         if _FIX_ROWCOUNT and name == 'rowcount':
