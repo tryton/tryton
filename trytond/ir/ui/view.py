@@ -88,6 +88,9 @@ class View(ModelSQL, ModelView):
 
         super(View, cls).__register__(module_name)
 
+        # New instance to refresh definition
+        table = TableHandler(cursor, cls, module_name)
+
         # Migration from 1.0 arch no more required
         table.not_null_action('arch', action='remove')
 
