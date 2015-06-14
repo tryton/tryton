@@ -209,7 +209,6 @@ class Rule(ModelSQL, ModelView):
         if not ids:
             cls._domain_get_cache.set(key, None)
             return
-        obj = pool.get(model_name)
         clause = {}
         clause_global = {}
         ctx = cls._get_context()
@@ -245,21 +244,33 @@ class Rule(ModelSQL, ModelView):
             group_id = fetchone[0]
             clause[group_id] = []
         clause = clause.values()
-        clause.insert(0, 'OR')
+        if clause:
+            clause.insert(0, 'OR')
 
         clause_global = clause_global.values()
 
         if clause_global:
             clause_global.insert(0, 'AND')
+
+        if clause and clause_global:
             clause = ['AND', clause_global, clause]
+        elif clause_global:
+            clause = clause_global
+
+        cls._domain_get_cache.set(key, clause)
+        return clause
+
+    @classmethod
+    def query_get(cls, model_name, mode='read'):
+        pool = Pool()
+        Model = pool.get(model_name)
+
+        domain = cls.domain_get(model_name, mode=mode)
 
         # Use root to prevent infinite recursion
         with Transaction().set_user(0), \
                 Transaction().set_context(active_test=False, user=0):
-            query = obj.search(clause, order=[], query=True)
-
-        cls._domain_get_cache.set(key, query)
-        return query
+            return Model.search(domain, order=[], query=True)
 
     @classmethod
     def delete(cls, rules):

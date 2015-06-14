@@ -401,6 +401,7 @@ class ModelSQL(ModelStorage):
         cursor = transaction.cursor
         pool = Pool()
         Translation = pool.get('ir.translation')
+        Rule = pool.get('ir.rule')
 
         super(ModelSQL, cls).create(vlist)
 
@@ -464,15 +465,18 @@ class ModelSQL(ModelStorage):
                     cls.__raise_integrity_error(exception, values)
                 raise
 
-        domain = pool.get('ir.rule').domain_get(cls.__name__,
-                mode='create')
+        domain = Rule.domain_get(cls.__name__, mode='create')
         if domain:
+            tables = {None: (table, None)}
+            tables, expression = cls.search_domain(
+                domain, active_test=False, tables=tables)
+            from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(new_ids):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
 
-                cursor.execute(*table.select(table.id,
-                        where=red_sql & table.id.in_(domain)))
+                cursor.execute(*from_.select(table.id,
+                        where=red_sql & expression))
                 if len(cursor.fetchall()) != len(sub_ids):
                     cls.raise_user_error('access_error', cls.__name__)
 
@@ -581,6 +585,11 @@ class ModelSQL(ModelStorage):
             if 'id' not in fields_names:
                 columns.append(table.id.as_('id'))
 
+            tables = {None: (table, None)}
+            if domain:
+                tables, dom_exp = cls.search_domain(
+                    domain, active_test=False, tables=tables)
+            from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(ids, in_max):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
@@ -588,8 +597,8 @@ class ModelSQL(ModelStorage):
                 if history_clause:
                     where &= history_clause
                 if domain:
-                    where &= table.id.in_(domain)
-                cursor.execute(*table.select(*columns, where=where,
+                    where &= dom_exp
+                cursor.execute(*from_.select(*columns, where=where,
                         order_by=history_order, limit=history_limit))
                 dictfetchall = cursor.dictfetchall()
                 if not len(dictfetchall) == len({}.fromkeys(sub_ids)):
@@ -597,8 +606,8 @@ class ModelSQL(ModelStorage):
                         where = red_sql
                         if history_clause:
                             where &= history_clause
-                        where &= table.id.in_(domain)
-                        cursor.execute(*table.select(table.id, where=where,
+                        where &= dom_exp
+                        cursor.execute(*from_.select(table.id, where=where,
                                 order_by=history_order, limit=history_limit))
                         rowcount = cursor.rowcount
                         if rowcount == -1 or rowcount is None:
@@ -752,6 +761,7 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
+        Rule = pool.get('ir.rule')
 
         assert not len(args) % 2
         # Remove possible duplicates from all records
@@ -794,14 +804,19 @@ class ModelSQL(ModelStorage):
                         columns.append(Column(table, fname))
                         update_values.append(field.sql_format(value))
 
-            domain = pool.get('ir.rule').domain_get(cls.__name__, mode='write')
+            domain = Rule.domain_get(cls.__name__, mode='write')
+            tables = {None: (table, None)}
+            if domain:
+                tables, dom_exp = cls.search_domain(
+                    domain, active_test=False, tables=tables)
+            from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
                 where = red_sql
                 if domain:
-                    where &= table.id.in_(domain)
-                cursor.execute(*table.select(table.id, where=where))
+                    where &= dom_exp
+                cursor.execute(*from_.select(table.id, where=where))
                 rowcount = cursor.rowcount
                 if rowcount == -1 or rowcount is None:
                     rowcount = len(cursor.fetchall())
@@ -854,6 +869,7 @@ class ModelSQL(ModelStorage):
         cursor = transaction.cursor
         pool = Pool()
         Translation = pool.get('ir.translation')
+        Rule = pool.get('ir.rule')
         ids = map(int, records)
 
         if not ids:
@@ -905,14 +921,18 @@ class ModelSQL(ModelStorage):
 
         transaction.delete.setdefault(cls.__name__, set()).update(ids)
 
-        domain = pool.get('ir.rule').domain_get(cls.__name__, mode='delete')
+        domain = Rule.domain_get(cls.__name__, mode='delete')
 
         if domain:
+            tables = {None: (table, None)}
+            tables, dom_exp = cls.search_domain(
+                domain, active_test=False, tables=tables)
+            from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
-                cursor.execute(*table.select(table.id,
-                        where=red_sql & table.id.in_(domain)))
+                cursor.execute(*from_.select(table.id,
+                        where=red_sql & dom_exp))
                 rowcount = cursor.rowcount
                 if rowcount == -1 or rowcount is None:
                     rowcount = len(cursor.fetchall())
@@ -1007,26 +1027,15 @@ class ModelSQL(ModelStorage):
             forder = field.convert_order(oexpr, tables, cls)
             order_by.extend((Order(o) for o in forder))
 
-        main_table, _ = tables[None]
-
-        def convert_from(table, tables):
-            right, condition = tables[None]
-            if table:
-                table = table.join(right, 'LEFT', condition)
-            else:
-                table = right
-            for k, sub_tables in tables.iteritems():
-                if k is None:
-                    continue
-                table = convert_from(table, sub_tables)
-            return table
-        # Don't nested joins as SQLite doesn't support
-        table = convert_from(None, tables)
-
         # construct a clause for the rules :
         domain = Rule.domain_get(cls.__name__, mode='read')
         if domain:
-            expression &= main_table.id.in_(domain)
+            tables, dom_exp = cls.search_domain(
+                domain, active_test=False, tables=tables)
+            expression &= dom_exp
+
+        main_table, _ = tables[None]
+        table = convert_from(None, tables)
 
         if count:
             cursor.execute(*table.select(Count(Literal(1)),
@@ -1342,3 +1351,17 @@ class ModelSQL(ModelStorage):
                     if cursor.fetchone():
                         cls.raise_user_error(error)
                     continue
+
+
+def convert_from(table, tables):
+    # Don't nested joins as SQLite doesn't support
+    right, condition = tables[None]
+    if table:
+        table = table.join(right, 'LEFT', condition)
+    else:
+        table = right
+    for k, sub_tables in tables.iteritems():
+        if k is None:
+            continue
+        table = convert_from(table, sub_tables)
+    return table

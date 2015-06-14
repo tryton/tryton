@@ -76,7 +76,7 @@ class Property(Function):
 
         sql_type = self._field.sql_type().base
 
-        property_cond = Rule.domain_get('ir.property')
+        property_cond = Rule.query_get('ir.property')
 
         property_ = Property.__table__()
         model_field = Field.__table__()

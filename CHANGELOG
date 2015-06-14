@@ -1,3 +1,4 @@
+* Rule.domain_get returns a domain and Rule.query_get a SQL query
 * Add target_search option to Many2One
 * Add tables argument to ModelSQL.search_domain
 * Rename ir.module.module* into ir.module*
