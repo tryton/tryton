@@ -1,12 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import csv
+from io import BytesIO
+
 from sql import Table
 
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
+from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.model import ModelView, fields
 
 
-__all__ = ['TaxTemplate', 'TaxRuleTemplate']
+__all__ = ['TaxTemplate', 'TaxRuleTemplate',
+    'AccountFrFEC', 'AccountFrFECStart', 'AccountFrFECResult']
 __metaclass__ = PoolMeta
 
 
@@ -68,3 +74,196 @@ class TaxRuleTemplate:
                         & (model_data.module == module_name)))
 
         super(TaxRuleTemplate, cls).__register__(module_name)
+
+
+class AccountFrFEC(Wizard):
+    'Generate FEC'
+    __name__ = 'account.fr.fec'
+
+    start = StateView('account.fr.fec.start',
+        'account_fr.fec_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Generate', 'generate', 'tryton-ok', default=True),
+            ])
+    generate = StateTransition()
+    result = StateView('account.fr.fec.result',
+        'account_fr.fec_result_view_form', [
+            Button('Close', 'end', 'tryton-close'),
+            ])
+
+    def transition_generate(self):
+        fec = BytesIO()
+        writer = self.get_writer(fec)
+        format_date = self.get_format_date()
+        format_number = self.get_format_number()
+        for row in self.get_start_balance():
+            writer.writerow([(c or '').encode('utf-8') for c in row])
+        for line in self.get_lines():
+            row = self.get_row(line, format_date, format_number)
+            writer.writerow([(c or '').encode('utf-8') for c in row])
+        self.result.file = fec.getvalue()
+        return 'result'
+
+    def default_result(self, fields):
+        file_ = self.result.file
+        self.result.file = None  # No need to store it in session
+        format_date = self.get_format_date()
+        filename = '%sFEC%s.csv' % (
+            self.start.fiscalyear.company.party.siren or '',
+            format_date(self.start.fiscalyear.end_date),
+            )
+        return {
+            'file': file_,
+            'filename': filename,
+            }
+
+    def get_writer(self, fd):
+        return csv.writer(fd)
+
+    def get_format_date(self):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        fr, = Lang.search([('code', '=', 'fr_FR')])
+        return lambda value: Lang.strftime(value, fr.code, '%Y%m%d')
+
+    def get_format_number(self):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        fr, = Lang.search([('code', '=', 'fr_FR')])
+        return lambda value: Lang.format(fr, '%.2f', value)
+
+    def get_start_balance(self):
+        pool = Pool()
+        Account = pool.get('account.account')
+        format_date = self.get_format_date()
+        format_number = self.get_format_number()
+
+        with Transaction().set_context(
+                periods=[-1],
+                fiscalyear=self.start.fiscalyear.id,
+                posted=True,
+                cumulate=True):
+            accounts = Account.search([])
+
+        for account in accounts:
+            if not account.credit and not account.debit:
+                continue
+            yield [
+                self.start.deferral_journal.code,
+                self.start.deferral_journal.name,
+                self.start.deferral_post_number,
+                format_date(self.start.fiscalyear.start_date),
+                account.code,
+                account.name,
+                '',
+                '',
+                '',
+                format_date(self.start.fiscalyear.start_date),
+                '',
+                format_number(account.debit or 0),
+                format_number(account.credit or 0),
+                '',
+                '',
+                format_date(self.start.fiscalyear.start_date),
+                '',
+                '',
+                ]
+
+    def get_lines(self):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        return Line.search([
+                ('move.period.fiscalyear', '=', self.start.fiscalyear.id),
+                ('move.state', '=', 'posted'),
+                ],
+            order=[
+                ('move.post_number', 'ASC'),
+                ])
+
+    def get_row(self, line, format_date, format_number):
+        def description():
+            value = line.move.description or ''
+            if line.description:
+                if value:
+                    value += ' - '
+                value += line.description
+            return value
+        return [
+            line.move.journal.code,
+            line.move.journal.name,
+            line.move.post_number,
+            format_date(line.move.date),
+            line.account.code,
+            line.account.name,
+            line.party.code if line.party else '',
+            line.party.name if line.party else '',
+            self.get_reference(line),
+            format_date(self.get_reference_date(line)),
+            description(),
+            format_number(line.debit or 0),
+            format_number(line.credit or 0),
+            line.reconciliation.rec_name if line.reconciliation else '',
+            format_date(line.reconciliation.create_date)
+            if line.reconciliation else '',
+            format_date(line.move.post_date),
+            format_number(line.amount_second_currency)
+            if line.amount_second_currency else '',
+            line.second_currency.code if line.amount_second_currency else '',
+            ]
+
+    def get_reference(self, line):
+        pool = Pool()
+        try:
+            Invoice = pool.get('account.invoice')
+        except KeyError:
+            Invoice = None
+        if not line.move.origin:
+            return ''
+        if Invoice and isinstance(line.move.origin, Invoice):
+            return line.move.origin.number
+        return line.move.origin.rec_name
+
+    def get_reference_date(self, line):
+        pool = Pool()
+        try:
+            Invoice = pool.get('account.invoice')
+        except KeyError:
+            Invoice = None
+        if Invoice and isinstance(line.move.origin, Invoice):
+            return line.move.origin.invoice_date
+        return line.move.post_date
+
+
+class AccountFrFECStart(ModelView):
+    'Generate FEC'
+    __name__ = 'account.fr.fec.start'
+
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+        required=True, domain=[
+            ('state', '=', 'close'),
+            ])
+    type = fields.Selection([
+            ('is-bic', 'IS-BIC'),
+            ], 'Type', required=True)
+    deferral_journal = fields.Many2One('account.journal',
+        'Deferral Journal', required=True,
+        help='Journal used for pseudo deferral move')
+    deferral_post_number = fields.Char('Deferral Number', required=True,
+        help='Post number used for pseudo deferral move')
+
+    @classmethod
+    def default_type(cls):
+        return 'is-bic'
+
+    @classmethod
+    def default_deferral_post_number(cls):
+        return '0'
+
+
+class AccountFrFECResult(ModelView):
+    'Generate FEC'
+    __name__ = 'account.fr.fec.result'
+
+    file = fields.Binary('File', readonly=True, filename='filename')
+    filename = fields.Char('File Name', readonly=True)

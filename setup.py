@@ -55,7 +55,7 @@ setup(name=name,
     author_email='issue_tracker@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
-    keywords='tryton account chart french',
+    keywords='tryton account chart french fec',
     package_dir={'trytond.modules.account_fr': '.'},
     packages=[
         'trytond.modules.account_fr',
@@ -63,7 +63,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_fr': (info.get('xml', [])
-            + ['tryton.cfg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

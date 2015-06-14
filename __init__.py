@@ -9,4 +9,9 @@ def register():
     Pool.register(
         TaxTemplate,
         TaxRuleTemplate,
+        AccountFrFECStart,
+        AccountFrFECResult,
         module='account_fr', type_='model')
+    Pool.register(
+        AccountFrFEC,
+        module='account_fr', type_='wizard')
