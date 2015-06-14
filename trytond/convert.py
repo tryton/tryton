@@ -4,7 +4,6 @@ import time
 from xml import sax
 import logging
 import re
-from sql import Table
 from itertools import izip
 from collections import defaultdict
 from decimal import Decimal
@@ -65,14 +64,15 @@ class MenuitemTagHandler:
             action_id = self.mh.get_id(values['action'])
 
             # TODO maybe use a prefetch for this:
-            action = Table('ir_action')
-            report = Table('ir_action_report')
-            act_window = Table('ir_action_act_window')
-            wizard = Table('ir_action_wizard')
-            url = Table('ir_action_url')
-            act_window_view = Table('ir_action_act_window_view')
-            view = Table('ir_ui_view')
-            icon = Table('ir_ui_icon')
+            action = self.mh.pool.get('ir.action').__table__()
+            report = self.mh.pool.get('ir.action.report').__table__()
+            act_window = self.mh.pool.get('ir.action.act_window').__table__()
+            wizard = self.mh.pool.get('ir.action.wizard').__table__()
+            url = self.mh.pool.get('ir.action.url').__table__()
+            act_window_view = self.mh.pool.get(
+                'ir.action.act_window.view').__table__()
+            view = self.mh.pool.get('ir.ui.view').__table__()
+            icon = self.mh.pool.get('ir.ui.icon').__table__()
             cursor.execute(*action.join(
                     report, 'LEFT',
                     condition=action.id == report.action
@@ -88,9 +88,11 @@ class MenuitemTagHandler:
                     condition=view.id == act_window_view.view
                     ).join(icon, 'LEFT',
                     condition=action.icon == icon.id).select(
-                    action.name, action.type,
-                    view.type, view.field_childs,
-                    icon.name,
+                    action.name.as_('action_name'),
+                    action.type.as_('action_type'),
+                    view.type.as_('view_type'),
+                    view.field_childs.as_('field_childs'),
+                    icon.name.as_('icon_name'),
                     where=(report.id == action_id)
                     | (act_window.id == action_id)
                     | (wizard.id == action_id)
