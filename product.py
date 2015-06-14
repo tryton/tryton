@@ -231,7 +231,7 @@ class Product(ModelSQL, ModelView):
             yield id_, rec_name, icon
 
     @classmethod
-    def search_domain(cls, domain, active_test=True):
+    def search_domain(cls, domain, active_test=True, tables=None):
         def is_leaf(expression):
             return (isinstance(expression, (list, tuple))
                 and len(expression) > 2
@@ -252,4 +252,4 @@ class Product(ModelSQL, ModelView):
             else:
                 return [convert_domain(d) for d in domain]
         return super(Product, cls).search_domain(convert_domain(domain),
-            active_test=active_test)
+            active_test=active_test, tables=tables)
