@@ -243,19 +243,27 @@ class UpdateCostPrice(Wizard):
                 })
 
     def default_ask_price(self, fields):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+
         context = Transaction().context
+        default = {}
         if ('product' in fields
                 and context['active_model'] == 'product.product'):
-            return {
-                'product': context['active_id'],
-                }
+            product = Product(context['active_id'])
+            template = product.template
+            default['product'] = product.id
         elif ('template' in fields
                 and context['active_model'] == 'product.template'):
-            return {
-                'template': context['active_id'],
-                }
+            template = Template(context['active_id'])
+            product = template.products[0]
+            default['template'] = template.id
         else:
-            return {}
+            return default
+        default['cost_price'] = getattr(product, 'recompute_cost_price_%s' %
+            product.cost_price_method)()
+        return default
 
     @staticmethod
     def get_product():
