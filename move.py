@@ -766,7 +766,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 product_ids=[m.product.id for m in moves],
                 grouping=grouping)
 
-        def get_key(location):
+        def get_key(move, location):
             key = (location.id,)
             for field in grouping:
                 value = getattr(move, field)
@@ -790,7 +790,7 @@ class Move(Workflow, ModelSQL, ModelView):
             else:
                 childs = [move.from_location]
             for location in childs:
-                key = get_key(location)
+                key = get_key(move, location)
                 if key in pbl:
                     location_qties[location] = Uom.compute_qty(
                         move.product.default_uom, pbl[key], move.uom,
@@ -826,7 +826,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
-                from_key, to_key = get_key(from_location), get_key(to_location)
+                from_key = get_key(move, from_location)
+                to_key = get_key(move, to_location)
                 pbl[from_key] = pbl.get(from_key, 0.0) - qty_default_uom
                 pbl[to_key] = pbl.get(to_key, 0.0) + qty_default_uom
         return success
