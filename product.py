@@ -9,7 +9,8 @@ from sql.functions import Now
 from sql.conditionals import Coalesce
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.wizard import Wizard, StateView, StateAction, Button
+from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
+    Button
 from trytond.pyson import PYSONEncoder, Eval, Or
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -20,7 +21,8 @@ from .move import StockMixin
 __all__ = ['Template', 'Product',
     'ProductByLocationStart', 'ProductByLocation',
     'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseStart',
-    'OpenProductQuantitiesByWarehouse']
+    'OpenProductQuantitiesByWarehouse',
+    'RecomputeCostPrice']
 __metaclass__ = PoolMeta
 
 
@@ -80,6 +82,14 @@ class Template:
                         cls.check_no_move(templates, error)
                         break
         super(Template, cls).write(*args)
+
+    @classmethod
+    def recompute_cost_price(cls, templates):
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        products = [p for t in templates for p in t.products]
+        Product.recompute_cost_price(products)
 
 
 class Product(object, StockMixin):
@@ -172,6 +182,93 @@ class Product(object, StockMixin):
                         if storage in storage_to_remove:
                             del quantities[key]
         return quantities
+
+    @classmethod
+    def recompute_cost_price(cls, products):
+        pool = Pool()
+        Template = pool.get('product.template')
+
+        costs = []
+        for product in products:
+            if product.type == 'service':
+                continue
+            costs.append(getattr(product, 'recompute_cost_price_%s' %
+                product.cost_price_method)())
+
+        if hasattr(cls, 'cost_price'):
+            digits = cls.cost_price.digits
+            write = cls.write
+            records = products
+        else:
+            digits = Template.cost_price.digits
+            write = Template.write
+            records = [p.template for p in products]
+
+        costs = [c.quantize(
+            Decimal(str(10.0 ** -digits[1]))) for c in costs]
+
+        to_write = []
+        for record, cost in zip(records, costs):
+            to_write.append([record])
+            to_write.append({'cost_price': cost})
+
+        # Enforce check access for account_stock*
+        with Transaction().set_context(_check_access=True):
+            write(*to_write)
+
+    def recompute_cost_price_fixed(self):
+        return self.cost_price
+
+    def recompute_cost_price_average(self):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Currency = pool.get('currency.currency')
+        Uom = pool.get('product.uom')
+
+        context = Transaction().context
+
+        if hasattr(self.__class__, 'cost_price'):
+            product_clause = ('product', '=', self.id)
+        else:
+            product_clause = ('product.template', '=', self.template.id)
+
+        moves = Move.search([
+                product_clause,
+                ('state', '=', 'done'),
+                ('company', '=', context.get('company')),
+                ['OR',
+                    [
+                        ('to_location.type', '=', 'storage'),
+                        ('from_location.type', '!=', 'storage'),
+                        ],
+                    [
+                        ('from_location.type', '=', 'storage'),
+                        ('to_location.type', '!=', 'storage'),
+                        ],
+                    ],
+                ], order=[('effective_date', 'ASC'), ('id', 'ASC')])
+
+        cost_price = Decimal(0)
+        quantity = 0
+        for move in moves:
+            qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
+            qty = Decimal(str(qty))
+            if move.from_location.type == 'storage':
+                qty *= -1
+            if (move.from_location.type in ['supplier', 'production']
+                    or move.to_location.type == 'supplier'):
+                with Transaction().set_context(date=move.effective_date):
+                    unit_price = Currency.compute(
+                        move.currency, move.unit_price,
+                        move.company.currency, round=False)
+                unit_price = Uom.compute_price(move.uom, unit_price,
+                    self.default_uom)
+                if quantity + qty != 0:
+                    cost_price = (
+                        (cost_price * quantity) + (unit_price * qty)
+                        ) / (quantity + qty)
+            quantity += qty
+        return cost_price
 
 
 class ProductByLocationStart(ModelView):
@@ -337,3 +434,25 @@ class OpenProductQuantitiesByWarehouse(Wizard):
                 ('date', '>=', Date.today()),
                 ])
         return action, {}
+
+
+class RecomputeCostPrice(Wizard):
+    'Recompute Cost Price'
+    __name__ = 'product.recompute_cost_price'
+    start_state = 'recompute'
+    recompute = StateTransition()
+
+    def transition_recompute(self):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+
+        context = Transaction().context
+
+        if context['active_model'] == 'product.product':
+            products = Product.browse(context['active_ids'])
+            Product.recompute_cost_price(products)
+        elif context['active_model'] == 'product.template':
+            templates = Template.browse(context['active_ids'])
+            Template.recompute_cost_price(templates)
+        return 'end'

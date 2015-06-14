@@ -10,6 +10,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_tree_qty</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_recompute_cost_price">
+            <field name="name">Recompute Cost Price</field>
+            <field name="wiz_name">product.recompute_cost_price</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_recompute_cost_price_product_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_recompute_cost_price"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_recompute_cost_price_template_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="wizard_recompute_cost_price"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_recompute_cost_price-group_product_admin">
+            <field name="action" ref="wizard_recompute_cost_price"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="location_quantity_view_tree">
             <field name="model">stock.location</field>
             <field name="type">tree</field>

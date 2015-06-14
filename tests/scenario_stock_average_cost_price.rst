@@ -134,8 +134,14 @@ Add twice 1 more unit @ 200::
 
     >>> StockMove.click(incoming_moves, 'do')
 
-Check Cost Price Average is 125::
+Check Cost Price Average is 175::
 
     >>> product.reload()
+    >>> product.template.cost_price
+    Decimal('175.0000')
+
+Recompute Cost Price::
+
+    >>> recompute = Wizard('product.recompute_cost_price', [product])
     >>> product.template.cost_price
     Decimal('175.0000')

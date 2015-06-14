@@ -44,6 +44,7 @@ def register():
         AssignShipmentInReturn,
         ProductByLocation,
         OpenProductQuantitiesByWarehouse,
+        RecomputeCostPrice,
         module='stock', type_='wizard')
     Pool.register(
         DeliveryNote,
