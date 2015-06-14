@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond import backend
 from trytond.transaction import Transaction
@@ -168,7 +168,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
         return new_inventories
 
     @staticmethod
-    def complete_lines(inventories):
+    def grouping():
+        return ('product',)
+
+    @classmethod
+    @ModelView.button
+    def complete_lines(cls, inventories):
         '''
         Complete or update the inventories
         '''
@@ -176,24 +181,20 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Line = pool.get('stock.inventory.line')
         Product = pool.get('product.product')
 
+        grouping = cls.grouping()
         to_create = []
         for inventory in inventories:
             # Compute product quantities
             with Transaction().set_context(stock_date_end=inventory.date):
-                pbl = Product.products_by_location([inventory.location.id])
+                pbl = Product.products_by_location(
+                    [inventory.location.id], grouping=grouping)
 
             # Index some data
-            product2uom = {}
             product2type = {}
             product2consumable = {}
             for product in Product.browse([line[1] for line in pbl]):
-                product2uom[product.id] = product.default_uom.id
                 product2type[product.id] = product.type
                 product2consumable[product.id] = product.consumable
-
-            product_qty = {}
-            for (location, product), quantity in pbl.iteritems():
-                product_qty[product] = (quantity, product2uom[product])
 
             # Update existing lines
             for line in inventory.lines:
@@ -202,26 +203,28 @@ class Inventory(Workflow, ModelSQL, ModelView):
                         and not line.product.consumable):
                     Line.delete([line])
                     continue
-                if line.product.id in product_qty:
-                    quantity, uom_id = product_qty.pop(line.product.id)
-                elif line.product.id in product2uom:
-                    quantity, uom_id = 0.0, product2uom[line.product.id]
+
+                key = (inventory.location.id,) + line.unique_key
+                if key in pbl:
+                    quantity = pbl.pop(key)
                 else:
-                    quantity, uom_id = 0.0, line.product.default_uom.id
-                values = line.update_values4complete(quantity, uom_id)
+                    quantity = 0.0
+                values = line.update_values4complete(quantity)
                 if values:
                     Line.write([line], values)
 
             # Create lines if needed
-            for product_id in product_qty:
+            for key, quantity in pbl.iteritems():
+                product_id = key[grouping.index('product') + 1]
                 if (product2type[product_id] != 'goods'
                         or product2consumable[product_id]):
                     continue
-                quantity, uom_id = product_qty[product_id]
                 if not quantity:
                     continue
-                values = Line.create_values4complete(product_id, inventory,
-                    quantity, uom_id)
+
+                values = Line.create_values4complete(inventory, quantity)
+                for i, fname in enumerate(grouping, 1):
+                    values[fname] = key[i]
                 to_create.append(values)
         if to_create:
             Line.create(to_create)
@@ -309,7 +312,13 @@ class InventoryLine(ModelSQL, ModelView):
 
     @property
     def unique_key(self):
-        return (self.product,)
+        key = []
+        for fname in self.inventory.grouping():
+            value = getattr(self, fname)
+            if isinstance(value, Model):
+                value = value.id
+            key.append(value)
+        return tuple(key)
 
     @classmethod
     def cancel_move(cls, lines):
@@ -348,31 +357,27 @@ class InventoryLine(ModelSQL, ModelView):
             origin=self,
             )
 
-    def update_values4complete(self, quantity, uom_id):
+    def update_values4complete(self, quantity):
         '''
         Return update values to complete inventory
         '''
         values = {}
         # if nothing changed, no update
-        if self.quantity == self.expected_quantity == quantity \
-                and self.uom.id == uom_id:
+        if self.quantity == self.expected_quantity == quantity:
             return values
         values['expected_quantity'] = quantity
-        values['uom'] = uom_id
         # update also quantity field if not edited
         if self.quantity == self.expected_quantity:
             values['quantity'] = max(quantity, 0.0)
         return values
 
     @classmethod
-    def create_values4complete(cls, product_id, inventory, quantity, uom_id):
+    def create_values4complete(cls, inventory, quantity):
         '''
         Return create values to complete inventory
         '''
         return {
             'inventory': inventory.id,
-            'product': product_id,
             'expected_quantity': quantity,
             'quantity': max(quantity, 0.0),
-            'uom': uom_id,
         }

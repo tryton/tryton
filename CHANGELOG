@@ -1,6 +1,8 @@
 * Allow to re-compute cost price
 * Allow to change unit price of move done
 
+* Compute inventory lines in complete_lines() using new grouping() method
+
 Version 3.6.0 - 2015-04-20
 * Bug fixes (see mercurial logs for details)
 * Add support for PyPy
