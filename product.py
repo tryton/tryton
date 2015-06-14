@@ -4,7 +4,7 @@ import datetime
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Template']
+__all__ = ['Template', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -72,3 +72,10 @@ class Template:
 
         fifo_moves.reverse()
         return fifo_moves
+
+
+class Product:
+    __name__ = 'product.product'
+
+    def recompute_cost_price_fifo(self):
+        return self.recompute_cost_price_average()

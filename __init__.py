@@ -8,5 +8,6 @@ from .move import *
 def register():
     Pool.register(
         Template,
+        Product,
         Move,
         module='product_cost_fifo', type_='model')
