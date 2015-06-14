@@ -881,7 +881,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 raise ValueError('"%s" has no field "%s"' % (Move, field))
         assert grouping_filter is None or len(grouping_filter) == len(grouping)
 
-        move_rule_query = Rule.domain_get('stock.move')
+        move_rule_query = Rule.query_get('stock.move')
 
         PeriodCache = Period.get_cache(grouping)
         period = None
