@@ -666,7 +666,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         line = Line.__table__()
         tax = Tax.__table__()
 
-        invoice_query = Rule.domain_get('account.invoice')
+        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[clause[1]]
 
         union = (line.select(line.invoice.as_('invoice'),
@@ -691,7 +691,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         type_name = cls.untaxed_amount._field.sql_type().base
         line = Line.__table__()
 
-        invoice_query = Rule.domain_get('account.invoice')
+        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[clause[1]]
 
         query = line.select(line.invoice,
@@ -709,7 +709,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         type_name = cls.tax_amount._field.sql_type().base
         tax = Tax.__table__()
 
-        invoice_query = Rule.domain_get('account.invoice')
+        invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[clause[1]]
 
         query = tax.select(tax.invoice,
