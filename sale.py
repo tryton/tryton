@@ -27,7 +27,9 @@ class Sale:
         'Set extra lines'
         pool = Pool()
         Extra = pool.get('sale.extra')
+        Line = pool.get('sale.line')
 
+        lines_to_delete = []
         extra_lines = Extra.get_lines(self)
         extra2lines = {line.extra: line for line in extra_lines}
         lines = list(self.lines)
@@ -39,9 +41,12 @@ class Sale:
                 continue
             else:
                 lines.remove(line)
+                lines_to_delete.append(line)
         if extra2lines:
             lines.extend(extra2lines.values())
         self.lines = lines
+        if lines_to_delete:
+            Line.delete(lines_to_delete)
 
 
 class SaleLine:
