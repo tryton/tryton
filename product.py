@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Null
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
@@ -83,3 +85,8 @@ class ProductBom(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('bom.rec_name',) + tuple(clause[1:])]
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == Null, table.sequence]
