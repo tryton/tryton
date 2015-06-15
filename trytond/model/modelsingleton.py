@@ -76,7 +76,7 @@ class ModelSingleton(ModelStorage):
     def search(cls, domain, offset=0, limit=None, order=None, count=False):
         res = super(ModelSingleton, cls).search(domain, offset=offset,
                 limit=limit, order=order, count=count)
-        if not res:
+        if not res and not domain:
             if count:
                 return 1
             return [cls(1)]

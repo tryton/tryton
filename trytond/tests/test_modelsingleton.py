@@ -121,6 +121,11 @@ class ModelSingletonTestCase(unittest.TestCase):
             count = self.singleton.search([], count=True)
             self.assertEqual(count, 1)
 
+            self.singleton.create([{'name': 'foo'}])
+            singleton, = self.singleton.search([('name', '=', 'foo')])
+            self.assertEqual(singleton.name, 'foo')
+            singletons = self.singleton.search([('name', '=', 'bar')])
+            self.assertEqual(singletons, [])
             transaction.cursor.rollback()
 
 
