@@ -188,11 +188,11 @@ class Many2One(Field):
         else:
             target_tables = self._get_target_tables(tables)
             target_table, _ = target_tables[None]
-            _, expression = Target.search_domain(
-                target_domain, tables=target_tables)
             rule_domain = Rule.domain_get(Target.__name__, mode='read')
             if rule_domain:
-                expression &= target_table.id.in_(rule_domain)
+                target_domain = [target_domain, rule_domain]
+            _, expression = Target.search_domain(
+                target_domain, tables=target_tables)
             return expression
 
     def convert_order(self, name, tables, Model):
