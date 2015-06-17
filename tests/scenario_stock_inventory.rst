@@ -179,7 +179,7 @@ Empty storage::
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
     >>> outgoing_move.uom = unit
-    >>> outgoing_move.quantity = 2
+    >>> outgoing_move.quantity = 3
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
     >>> outgoing_move.planned_date = today
