@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, fields
-from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Move']
@@ -11,9 +10,7 @@ __metaclass__ = PoolMeta
 
 class Move:
     __name__ = 'stock.move'
-    fifo_quantity = fields.Float('FIFO Quantity',
-        digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    fifo_quantity = fields.Float('FIFO Quantity')
 
     @classmethod
     def __setup__(cls):
