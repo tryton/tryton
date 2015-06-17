@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
 from decimal import Decimal
 from sql import Table
 
@@ -134,7 +135,11 @@ class Uom(ModelSQL, ModelView):
 
     @staticmethod
     def round(number, precision=1.0):
-        return round(number / precision) * precision
+        i, d = divmod(precision, 1)
+        base = round(number / precision)
+        # Instead of multiply by the decimal part, we must divide by the
+        # integer to avoid precision lost due to float
+        return (base * i) + ((base / (1 / d)) if d != 0 else 0)
 
     @classmethod
     def validate(cls, uoms):
