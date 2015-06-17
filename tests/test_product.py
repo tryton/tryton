@@ -6,6 +6,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class ProductTestCase(ModuleTestCase):
@@ -252,6 +253,26 @@ class ProductTestCase(ModuleTestCase):
                 self.product.search([
                     ('template.category', '=', category2.id),
                     ], count=True), 2)
+
+    def test_uom_round(self):
+        'Test uom round function'
+        tests = [
+            (2.53, .1, 2.5),
+            (3.8, .1, 3.8),
+            (3.7, .1, 3.7),
+            (1.3, .5, 1.5),
+            (1.1, .3, 1.2),
+            (17, 10, 20),
+            (7, 10, 10),
+            (4, 10, 0),
+            (17, 15, 15),
+            (2.5, 1.4, 2.8),
+            ]
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Uom = pool.get('product.uom')
+            for number, precision, result in tests:
+                self.assertEqual(Uom.round(number, precision), result)
 
 
 def suite():
