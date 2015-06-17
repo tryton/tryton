@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import fields
-from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond import backend
@@ -21,11 +20,9 @@ def _get_field(type_):
 class Move:
     __name__ = 'stock.move'
     in_anglo_saxon_quantity = fields.Float('Input Anglo-Saxon Quantity',
-        required=True, digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+        required=True)
     out_anglo_saxon_quantity = fields.Float('Output Anglo-Saxon Quantity',
-        required=True, digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+        required=True)
 
     @classmethod
     def __setup__(cls):
