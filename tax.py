@@ -207,7 +207,7 @@ class TaxCode(ModelSQL, ModelView):
                 ).join(move_line, condition=tax_line.move_line == move_line.id
                 ).select(code.id, Sum(tax_line.amount),
                 where=code.id.in_([c.id for c in all_codes])
-                & code.active & line_query,
+                & (code.active == True) & line_query,
                 group_by=code.id))
         code_sum = {}
         for code_id, sum in cursor.fetchall():
