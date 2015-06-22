@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.pyson import If, Equal, Eval, Not, In
 from trytond.transaction import Transaction
 from trytond import backend
@@ -71,9 +71,10 @@ class OrderPoint(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(OrderPoint, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('check_max_qty_greater_min_qty',
-                'CHECK(max_quantity >= min_quantity)',
+                Check(t, t.max_quantity >= t.min_quantity),
                 'Maximal quantity must be bigger than Minimal quantity'),
             ]
         cls._error_messages.update({

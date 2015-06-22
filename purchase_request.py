@@ -5,7 +5,7 @@ import operator
 from itertools import groupby
 from functools import partial
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.pyson import If, In, Eval
@@ -88,8 +88,9 @@ class PurchaseRequest(ModelSQL, ModelView):
                 'delete_purchase_line': ('You can not delete purchased '
                     'request.'),
                 })
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('check_purchase_request_quantity', 'CHECK(quantity > 0)',
+            ('check_purchase_request_quantity', Check(t, t.quantity > 0),
                 'The requested quantity must be greater than 0'),
             ]
 
