@@ -68,6 +68,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                 ('fr_FR', 'Français'),
                 ('lt_LT', 'Lietuvių'),
                 ('nl_NL', 'Nederlands'),
+                ('pt_BR', 'Português (Brasil)'),
                 ('ru_RU', 'Russian'),
                 ('sl_SI', 'Slovenščina'),
             ]
