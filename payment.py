@@ -12,7 +12,8 @@ from lxml import etree
 from sql import Literal
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, Workflow, fields, dualmethod
+from trytond.model import (ModelSQL, ModelView, Workflow, fields, dualmethod,
+    Unique)
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids, grouped_slice
@@ -394,8 +395,9 @@ class Mandate(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'requested',
                     },
                 })
+        t = cls.__table__()
         cls._sql_constraints = [
-            ('identification_unique', 'UNIQUE(company, identification)',
+            ('identification_unique', Unique(t, t.company, t.identification),
                 'The identification of the SEPA mandate must be unique '
                 'in a company.'),
             ]
