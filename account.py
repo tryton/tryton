@@ -159,7 +159,7 @@ class Account(ModelSQL, ModelView):
                 company.currency,
                 where=(table.type != 'view')
                 & table.id.in_(all_ids)
-                & table.active & line_query,
+                & (table.active == True) & line_query,
                 group_by=(table.id, company.currency)))
         account_sum = {}
         id2currency = {}
@@ -238,7 +238,7 @@ class Account(ModelSQL, ModelView):
                 ).select(*columns,
                 where=(table.type != 'view')
                 & table.id.in_(ids)
-                & table.active & line_query,
+                & (table.active == True) & line_query,
                 group_by=(table.id, company.currency)))
 
         id2currency = {}
