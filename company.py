@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pyson import Eval
 from trytond.cache import Cache
 from trytond.transaction import Transaction
@@ -110,9 +110,10 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(EmployeeCostPrice, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints = [
             ('employee_date_cost_price_uniq',
-                'UNIQUE(employee, date, cost_price)',
+                Unique(t, t.employee, t.date, t.cost_price),
                 'A employee can only have one cost price by date.'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
