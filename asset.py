@@ -8,7 +8,7 @@ from dateutil import rrule
 from itertools import groupby
 from cached_property import cached_property
 
-from trytond.model import Workflow, ModelSQL, ModelView, fields
+from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -170,8 +170,9 @@ class Asset(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Asset, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints = [
-            ('invoice_line_uniq', 'UNIQUE(supplier_invoice_line)',
+            ('invoice_line_uniq', Unique(table, table.supplier_invoice_line),
                 'Supplier Invoice Line can be used only once on asset.'),
             ]
         cls._error_messages.update({

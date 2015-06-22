@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond.model import fields, Unique
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 
@@ -27,8 +27,9 @@ class InvoiceLine:
     @classmethod
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('asset_uniq', 'UNIQUE(asset)',
+            ('asset_uniq', Unique(table, table.asset),
                 'Asset can be used only once on invoice line!'),
             ]
 
