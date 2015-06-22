@@ -10,7 +10,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
 from trytond.report import Report
@@ -643,13 +643,14 @@ class Line(ModelSQL, ModelView):
         cls._reconciliation_modify_disallow = {
             'account', 'debit', 'credit', 'party',
             }
+        table = cls.__table__()
         cls._sql_constraints += [
             ('credit_debit',
-                'CHECK(credit * debit = 0.0)',
+                Check(table, table.credit * table.debit == 0),
                 'Wrong credit/debit values.'),
             ('second_currency_sign',
-                'CHECK(COALESCE(amount_second_currency, 0) '
-                '* (debit - credit) >= 0)',
+                Check(table, Coalesce(table.amount_second_currency, 0)
+                    * (table.debit - table.credit) >= 0),
                 'wrong_second_currency_sign'),
             ]
         cls.__rpc__.update({
