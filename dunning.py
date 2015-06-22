@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from sql import Null
 
-from trytond.model import Model, ModelView, ModelSQL, fields
+from trytond.model import Model, ModelView, ModelSQL, fields, Unique
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
@@ -111,8 +111,9 @@ class Dunning(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Dunning, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints = [
-            ('line_unique', 'UNIQUE(line)',
+            ('line_unique', Unique(table, table.line),
                 'Line can be used only once on dunning.'),
             ]
 
