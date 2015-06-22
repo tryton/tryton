@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pyson import Eval
 
 __all__ = ['Category']
@@ -27,8 +27,9 @@ class Category(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Category, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints = [
-            ('name_parent_uniq', 'UNIQUE(name, parent)',
+            ('name_parent_uniq', Unique(t, t.name, t.parent),
                 'The name of a party category must be unique by parent.'),
             ]
         cls._error_messages.update({

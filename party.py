@@ -5,7 +5,7 @@ from importlib import import_module
 
 from sql.functions import CharLength
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
@@ -78,8 +78,9 @@ class Party(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Party, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints = [
-            ('code_uniq', 'UNIQUE(code)',
+            ('code_uniq', Unique(t, t.code),
              'The code of the party must be unique.')
         ]
         cls._error_messages.update({
