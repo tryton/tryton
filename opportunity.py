@@ -9,7 +9,7 @@ from sql.aggregate import Min, Max, Count, Sum
 from sql.conditionals import Coalesce, Case
 from sql.functions import Extract
 
-from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelView, ModelSQL, Workflow, fields, Check
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
@@ -143,9 +143,10 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(SaleOpportunity, cls).__setup__()
         cls._order.insert(0, ('start_date', 'DESC'))
+        t = cls.__table__()
         cls._sql_constraints += [
             ('check_percentage',
-                'CHECK(probability >= 0 AND probability <= 100)',
+                Check(t, (t.probability >= 0) & (t.probability <= 100)),
                 'Probability must be between 0 and 100.')
             ]
         cls._error_messages.update({
