@@ -457,7 +457,7 @@ class User(ModelSQL, ModelView):
         cursor = Transaction().cursor
         table = cls.__table__()
         cursor.execute(*table.select(table.id, table.password_hash,
-                where=(table.login == login) & table.active))
+                where=(table.login == login) & (table.active == True)))
         result = cursor.fetchone() or (None, None)
         cls._get_login_cache.set(login, result)
         return result
