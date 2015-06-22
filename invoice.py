@@ -9,7 +9,7 @@ from sql import Literal, Null
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields, Check
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -1480,14 +1480,15 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('type_account',
-                'CHECK((type = \'line\' AND account IS NOT NULL) '
-                'OR (type != \'line\'))',
+                Check(t, ((t.type == 'line') & (t.account != Null))
+                    | (t.type != 'line')),
                 'Line with "line" type must have an account.'),
             ('type_invoice',
-                'CHECK((type != \'line\' AND invoice IS NOT NULL) '
-                'OR (type = \'line\'))',
+                Check(t, ((t.type != 'line') & (t.invoice != Null))
+                    | (t.type == 'line')),
                 'Line without "line" type must have an invoice.'),
             ]
         cls._order.insert(0, ('sequence', 'ASC'))
