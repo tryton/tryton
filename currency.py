@@ -4,7 +4,7 @@ import datetime
 import json
 
 from decimal import Decimal, ROUND_HALF_EVEN
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique, Check
 from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -254,10 +254,11 @@ class Rate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Rate, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints = [
-            ('date_currency_uniq', 'UNIQUE(date, currency)',
+            ('date_currency_uniq', Unique(t, t.date, t.currency),
                 'A currency can only have one rate by date.'),
-            ('check_currency_rate', 'CHECK(rate >= 0)',
+            ('check_currency_rate', Check(t, t.rate >= 0),
                 'The currency rate must greater than or equal to 0'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
