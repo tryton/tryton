@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import Workflow, ModelView, fields
+from trytond.model import Workflow, ModelView, fields, Check
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Move']
@@ -15,11 +15,12 @@ class Move:
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-                ('check_fifo_quantity_out',
-                    'CHECK(quantity >= fifo_quantity)',
-                    'FIFO quantity can not be greater than quantity.'),
-                ]
+            ('check_fifo_quantity_out',
+                Check(t, t.quantity >= t.fifo_quantity),
+                'FIFO quantity can not be greater than quantity.'),
+            ]
         cls._error_messages.update({
                 'del_move_fifo': ('You can not delete move "%s" that is used '
                     'for FIFO cost price.'),
