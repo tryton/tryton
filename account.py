@@ -6,7 +6,7 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
@@ -361,8 +361,9 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     @classmethod
     def __setup__(cls):
         super(AnalyticAccountEntry, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('root_origin_uniq', 'UNIQUE(origin, root)',
+            ('root_origin_uniq', Unique(t, t.origin, t.root),
                 'Only one account is allowed per analytic root and origin.'),
             ]
 

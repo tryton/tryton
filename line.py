@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateAction
 from trytond import backend
 from trytond.pyson import Eval, PYSONEncoder
@@ -47,9 +47,11 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('credit_debit',
-                'CHECK((credit * debit = 0.0) AND (credit + debit >= 0.0))',
+                Check(t,
+                    (t.credit * t.debit == 0) & (t.credit + t.debit >= 0)),
                 'Wrong credit/debit values.'),
             ]
         cls._error_messages.update({
