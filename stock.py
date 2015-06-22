@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import fields
+from trytond.model import fields, Check
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond import backend
@@ -29,12 +29,14 @@ class Move:
         super(Move, cls).__setup__()
         cls._allow_modify_closed_period.update(['in_anglo_saxon_quantity',
                 'out_anglo_saxon_quantity'])
+
+        t = cls.__table__()
         cls._sql_constraints += [
             ('check_in_anglo_saxon_quantity',
-                'CHECK(quantity >= in_anglo_saxon_quantity)',
+                Check(t, t.quantity >= t.in_anglo_saxon_quantity),
                 'Anglo-Saxon quantity can not be greater than quantity.'),
             ('check_out_anglo_saxon_quantity',
-                'CHECK(quantity >= out_anglo_saxon_quantity)',
+                Check(t, t.quantity >= t.out_anglo_saxon_quantity),
                 'Anglo-Saxon quantity can not be greater than quantity.'),
             ]
 
