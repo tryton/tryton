@@ -8,7 +8,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.model import ModelView, Workflow, ModelSQL, fields
+from trytond.model import ModelView, Workflow, ModelSQL, fields, Check, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool, If
 from trytond import backend
@@ -64,10 +64,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('check_from_to_date',
-             'CHECK(to_date >= from_date)',
-             '"To Date" must be greater than "From Date"'),
+            ('check_from_to_date', Check(t, t.to_date >= t.from_date),
+                '"To Date" must be greater than "From Date"'),
             ]
         cls._error_messages.update({
                 'date_overlap': ('Forecast "%(first)s" overlaps with dates '
@@ -319,14 +319,15 @@ class ForecastLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ForecastLine, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('check_line_qty_pos',
-             'CHECK(quantity >= 0.0)', 'Line quantity must be positive'),
+            ('check_line_qty_pos', Check(t, t.quantity >= 0),
+                'Line quantity must be positive'),
             ('check_line_minimal_qty',
-             'CHECK(quantity >= minimal_quantity)',
-             'Line quantity must be greater than the minimal quantity'),
-            ('forecast_product_uniq', 'UNIQUE(forecast, product)',
-             'Product must be unique by forecast'),
+                Check(t, t.quantity >= t.minimal_quantity),
+                'Line quantity must be greater than the minimal quantity'),
+            ('forecast_product_uniq', Unique(t, t.forecast, t.product),
+                'Product must be unique by forecast'),
             ]
 
     @staticmethod
