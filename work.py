@@ -4,7 +4,7 @@ import datetime
 
 from sql import Null
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
@@ -122,8 +122,10 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('work_uniq', 'UNIQUE(work)', 'There should be only one '
+            ('work_uniq', Unique(t, t.work),
+                'There should be only one '
                 'timesheet work by task/project.'),
             ]
         cls._order.insert(0, ('sequence', 'ASC'))
