@@ -5,7 +5,7 @@ import hashlib
 from sql.operators import Concat
 from sql.conditionals import Coalesce
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Unique
 from ..config import config
 from .. import backend
 from ..transaction import Transaction
@@ -56,8 +56,11 @@ class Attachment(ModelSQL, ModelView):
     def __setup__(cls):
         super(Attachment, cls).__setup__()
         cls._order.insert(0, ('last_modification', 'DESC'))
+
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('resource_name', 'UNIQUE(resource, name)',
+            ('resource_name',
+                Unique(table, table.resource, table.name),
                 'The  names of attachments must be unique by resource!'),
         ]
 

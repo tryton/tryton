@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Group"
 from itertools import chain
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Unique
 from ..pool import Pool, PoolMeta
 from ..tools import grouped_slice
 
@@ -46,8 +46,9 @@ class Group(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Group, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('name_uniq', 'unique (name)',
+            ('name_uniq', Unique(table, table.name),
                 'The name of the group must be unique!')
         ]
 

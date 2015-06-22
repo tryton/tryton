@@ -4,7 +4,7 @@ from .model import Model
 from .modelview import ModelView
 from .modelstorage import ModelStorage, EvalEnvironment
 from .modelsingleton import ModelSingleton
-from .modelsql import ModelSQL
+from .modelsql import ModelSQL, Check, Unique
 from .workflow import Workflow
 from .dictschema import DictSchemaMixin
 from .match import MatchMixin

@@ -400,11 +400,11 @@ Class attributes are:
 
     A list of SQL constraints that are added on the table:
 
-        [ ('constraint name', 'SQL constraint', 'error message key'), ... ]
+        [ ('constraint name', constraint, 'error message key'), ... ]
 
     - `constraint name` is the name of the SQL constraint in the database
 
-    - `SQL constraint` is the actual SQL constraint
+    - constraint is an instance of :class:`Constraint`
 
     - `error message key` is the key of
       :attr:`_sql_error_messages`
@@ -470,6 +470,48 @@ Class methods:
                     },
                 },
             }
+
+Constraint
+==========
+
+.. class:: Constraint(table)
+
+It represents a SQL constraint on a table of the database and it follows the
+API of the python-sql expression.
+
+Instance attributes:
+
+.. attribute:: Constraint.table
+
+    The SQL Table on which the constraint is defined.
+
+Check
+-----
+
+.. class:: Check(table, expression)
+
+It represents a check :class:`Constraint` which enforce the validity of the
+expression.
+
+Instance attributes:
+
+.. attribute:: Check.expression
+
+    The SQL expression to check.
+
+Unique
+------
+
+.. class:: Unique(table, \*columns)
+
+It represents a unique :class:`Constraint` which enforce the uniqeness of the
+group of columns with respect to all the rows in the table.
+
+Instance attributes:
+
+.. attribute:: Unique.columns
+
+    The tuple of SQL Column instances.
 
 ========
 Workflow

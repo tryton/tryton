@@ -4,7 +4,7 @@ from functools import wraps
 
 from sql.operators import NotIn
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.modules import create_graph, get_module_list, get_module_info
 from trytond.wizard import Wizard, StateView, Button, StateTransition, \
     StateAction
@@ -55,8 +55,9 @@ class Module(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Module, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints = [
-            ('name_uniq', 'unique (name)',
+            ('name_uniq', Unique(table, table.name),
                 'The name of the module must be unique!'),
         ]
         cls._order.insert(0, ('name', 'ASC'))
@@ -341,8 +342,9 @@ class ModuleDependency(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModuleDependency, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('name_module_uniq', 'UNIQUE(name, module)',
+            ('name_module_uniq', Unique(table, table.name, table.module),
                 'Dependency must be unique by module!'),
         ]
 

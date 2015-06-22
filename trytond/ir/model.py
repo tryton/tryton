@@ -12,7 +12,7 @@ try:
 except ImportError:
     import json
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Unique
 from ..report import Report
 from ..wizard import Wizard, StateView, StateAction, Button
 from ..transaction import Transaction
@@ -64,8 +64,9 @@ class Model(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Model, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('model_uniq', 'UNIQUE(model)',
+            ('model_uniq', Unique(table, table.model),
                 'The model must be unique!'),
             ]
         cls._error_messages.update({
@@ -249,8 +250,9 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelField, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('name_model_uniq', 'UNIQUE(name, model)',
+            ('name_model_uniq', Unique(table, table.name, table.model),
                 'The field name in model must be unique!'),
             ]
         cls._error_messages.update({
@@ -770,8 +772,9 @@ class ModelButton(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelButton, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('name_model_uniq', 'UNIQUE(name, model)',
+            ('name_model_uniq', Unique(table, table.name, table.model),
                 'The button name in model must be unique!'),
             ]
         cls._order.insert(0, ('model', 'ASC'))
@@ -838,8 +841,10 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelData, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints = [
-            ('fs_id_module_model_uniq', 'UNIQUE("fs_id", "module", "model")',
+            ('fs_id_module_model_uniq',
+                Unique(table, table.fs_id, table.module, table.model),
                 'The triple (fs_id, module, model) must be unique!'),
         ]
         cls._buttons.update({

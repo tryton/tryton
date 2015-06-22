@@ -382,7 +382,7 @@ class TableHandler(TableHandlerInterface):
         try:
             self.cursor.execute('ALTER TABLE "%s" '
                 'ADD CONSTRAINT "%s" %s'
-                % (self.table_name, ident, constraint))
+                % (self.table_name, ident, constraint), constraint.params)
         except Exception:
             if exception:
                 raise

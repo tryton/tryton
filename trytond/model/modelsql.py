@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import re
 import datetime
-from functools import reduce
 from itertools import islice, izip, chain, ifilter
 from collections import OrderedDict
 
-from sql import Table, Column, Literal, Desc, Asc, Expression, Flavor, Null
+from sql import Table, Column, Literal, Desc, Asc, Expression, Null
 from sql.functions import Now, Extract
 from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator
@@ -25,8 +23,67 @@ from trytond.rpc import RPC
 
 from .modelstorage import cache_size
 
-_RE_UNIQUE = re.compile('UNIQUE\s*\((.*)\)', re.I)
-_RE_CHECK = re.compile('CHECK\s*\((.*)\)', re.I)
+
+class Constraint(object):
+    __slots__ = ('_table',)
+
+    def __init__(self, table):
+        assert isinstance(table, Table)
+        self._table = table
+
+    @property
+    def table(self):
+        return self._table
+
+    def __str__(self):
+        raise NotImplementedError
+
+    @property
+    def params(self):
+        raise NotImplementedError
+
+
+class Check(Constraint):
+    __slots__ = ('_expression',)
+
+    def __init__(self, table, expression):
+        super(Check, self).__init__(table)
+        assert isinstance(expression, Expression)
+        self._expression = expression
+
+    @property
+    def expression(self):
+        return self._expression
+
+    def __str__(self):
+        return 'CHECK(%s)' % self.expression
+
+    @property
+    def params(self):
+        return self.expression.params
+
+
+class Unique(Constraint):
+    __slots__ = ('_columns',)
+
+    def __init__(self, table, *columns):
+        super(Unique, self).__init__(table)
+        assert all(isinstance(col, Column) for col in columns)
+        self._columns = tuple(columns)
+
+    @property
+    def columns(self):
+        return self._columns
+
+    def __str__(self):
+        return 'UNIQUE(%s)' % (', '.join(map(str, self.columns)))
+
+    @property
+    def params(self):
+        p = []
+        for column in self.columns:
+            p.extend(column.params)
+        return tuple(p)
 
 
 class ModelSQL(ModelStorage):
@@ -1310,47 +1367,36 @@ class ModelSQL(ModelStorage):
             return
         # Works only for a single transaction
         ids = map(int, records)
-        table = cls.__table__()
-        param = Flavor.get().param
         for _, sql, error in cls._sql_constraints:
-            match = _RE_UNIQUE.match(sql)
-            if match:
-                sql = match.group(1)
-                columns = sql.split(',')
-                sql_clause = ' AND '.join('%s = %s'
-                    % (i, param) for i in columns)
-                sql_clause = '(id != ' + param + ' AND ' + sql_clause + ')'
-
+            table = sql.table
+            if isinstance(sql, Unique):
+                columns = [Column(table, c.name) for c in sql.columns]
+                columns.insert(0, table.id)
                 in_max = cursor.IN_MAX / (len(columns) + 1)
                 for sub_ids in grouped_slice(ids, in_max):
                     red_sql = reduce_ids(table.id, sub_ids)
 
-                    cursor.execute('SELECT id,' + sql + ' '
-                        'FROM "' + cls._table + '" '
-                        'WHERE ' + str(red_sql), red_sql.params)
+                    cursor.execute(*table.select(*columns, where=red_sql))
 
-                    fetchall = cursor.fetchall()
-                    cursor.execute('SELECT id '
-                        'FROM "' + cls._table + '" '
-                        'WHERE ' +
-                            ' OR '.join((sql_clause,) * len(fetchall)),
-                        reduce(lambda x, y: x + list(y), fetchall, []))
-
+                    where = Literal(False)
+                    for row in cursor.fetchall():
+                        clause = table.id != row[0]
+                        for column, value in zip(sql.columns, row[1:]):
+                            if value is None:
+                                # NULL is always unique
+                                clause &= Literal(False)
+                            clause &= Column(table, column.name) == value
+                        where |= clause
+                    cursor.execute(*table.select(table.id, where=where))
                     if cursor.fetchone():
                         cls.raise_user_error(error)
-                continue
-            match = _RE_CHECK.match(sql)
-            if match:
-                sql = match.group(1)
+            elif isinstance(sql, Check):
                 for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
-                    cursor.execute('SELECT id '
-                        'FROM "' + cls._table + '" '
-                        'WHERE NOT (' + sql + ') '
-                            'AND ' + str(red_sql), red_sql.params)
+                    cursor.execute(*table.select(table.id,
+                            where=~sql.expression & red_sql))
                     if cursor.fetchone():
                         cls.raise_user_error(error)
-                    continue
 
 
 def convert_from(table, tables):

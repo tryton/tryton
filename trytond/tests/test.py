@@ -3,7 +3,7 @@
 
 import datetime
 from decimal import Decimal
-from trytond.model import ModelSQL, DictSchemaMixin, fields
+from trytond.model import ModelSQL, DictSchemaMixin, fields, Unique
 from trytond.pyson import Eval
 
 __all__ = [
@@ -365,10 +365,11 @@ class One2OneRelation(ModelSQL):
     @classmethod
     def __setup__(cls):
         super(One2OneRelation, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('origin_unique', 'UNIQUE(origin)',
+            ('origin_unique', Unique(table, table.origin),
                 'Origin must be unique'),
-            ('target_unique', 'UNIQUE(target)',
+            ('target_unique', Unique(table, table.target),
                 'Target must be unique'),
             ]
 
@@ -390,10 +391,11 @@ class One2OneRequiredRelation(ModelSQL):
     @classmethod
     def __setup__(cls):
         super(One2OneRequiredRelation, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('origin_unique', 'UNIQUE(origin)',
+            ('origin_unique', Unique(table, table.origin),
                 'Origin must be unique'),
-            ('target_unique', 'UNIQUE(target)',
+            ('target_unique', Unique(table, table.target),
                 'Target must be unique'),
             ]
 
@@ -416,10 +418,11 @@ class One2OneDomainRelation(ModelSQL):
     @classmethod
     def __setup__(cls):
         super(One2OneDomainRelation, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('origin_unique', 'UNIQUE(origin)',
+            ('origin_unique', Unique(table, table.origin),
                 'Origin must be unique'),
-            ('target_unique', 'UNIQUE(target)',
+            ('target_unique', Unique(table, table.target),
                 'Target must be unique'),
             ]
 

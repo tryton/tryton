@@ -4,7 +4,7 @@ import datetime
 import warnings
 from ast import literal_eval
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Check
 from ..cache import Cache
 from ..tools import datetime_strftime
 from ..transaction import Transaction
@@ -49,9 +49,11 @@ class Lang(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Lang, cls).__setup__()
+
+        table = cls.__table__()
         cls._sql_constraints += [
             ('check_decimal_point_thousands_sep',
-                'CHECK(decimal_point != thousands_sep)',
+                Check(table, table.decimal_point != table.thousands_sep),
                 'decimal_point and thousands_sep must be different!'),
             ]
         cls._error_messages.update({

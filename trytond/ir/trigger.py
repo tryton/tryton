@@ -5,7 +5,7 @@ import time
 from sql import Literal, Null
 from sql.aggregate import Count, Max
 
-from ..model import ModelView, ModelSQL, fields, EvalEnvironment
+from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
 from ..pyson import Eval, PYSONDecoder
 from ..tools import grouped_slice
 from .. import backend
@@ -56,9 +56,13 @@ class Trigger(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Trigger, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('on_exclusive',
-                'CHECK(NOT(on_time AND (on_create OR on_write OR on_delete)))',
+                Check(t, ~((t.on_time == True)
+                        & ((t.on_create == True)
+                            | (t.on_write == True)
+                            | (t.on_delete == True)))),
                 '"On Time" and others are mutually exclusive!'),
             ]
         cls._error_messages.update({

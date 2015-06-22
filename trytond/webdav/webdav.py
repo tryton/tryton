@@ -14,7 +14,7 @@ from dateutil.relativedelta import relativedelta
 from sql.functions import Extract
 from sql.conditionals import Coalesce
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -57,8 +57,9 @@ class Collection(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Collection, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('name_parent_uniq', 'UNIQUE (name, parent)',
+            ('name_parent_uniq', Unique(table, table.name, table.parent),
                 'The collection name must be unique inside a collection!'),
         ]
         cls._error_messages.update({

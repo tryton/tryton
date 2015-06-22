@@ -13,6 +13,8 @@ import time
 from getpass import getpass
 import threading
 
+from sql import Table
+
 from trytond.config import config, parse_listen
 from trytond import backend
 from trytond.pool import Pool
@@ -101,8 +103,9 @@ class TrytonServer(object):
                     if not cursor.test():
                         raise Exception("'%s' is not a Tryton database!"
                             % db_name)
-                    cursor.execute('SELECT code FROM ir_lang '
-                        'WHERE translatable = %s', (True,))
+                    lang = Table('ir_lang')
+                    cursor.execute(*lang.select(lang.code,
+                            where=lang.translatable == True))
                     lang = [x[0] for x in cursor.fetchall()]
             else:
                 lang = None

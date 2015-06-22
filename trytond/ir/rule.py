@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from ..model import ModelView, ModelSQL, fields, EvalEnvironment
+from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
@@ -40,10 +40,13 @@ class RuleGroup(ModelSQL, ModelView):
         cls._order.insert(0, ('model', 'ASC'))
         cls._order.insert(1, ('global_p', 'ASC'))
         cls._order.insert(2, ('default_p', 'ASC'))
+
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('global_default_exclusive', 'CHECK(NOT(global_p AND default_p))',
+            ('global_default_exclusive',
+                Check(t, (t.global_p == False) | (t.default_p == False)),
                 'Global and Default are mutually exclusive!'),
-        ]
+            ]
 
     @staticmethod
     def default_global_p():

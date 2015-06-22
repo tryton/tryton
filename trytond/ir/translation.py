@@ -19,7 +19,7 @@ from sql.conditionals import Case
 from sql.operators import Or, And
 from sql.aggregate import Max
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from ..tools import file_open, reduce_ids, grouped_slice
@@ -80,9 +80,11 @@ class Translation(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Translation, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
             ('translation_md5_uniq',
-                'UNIQUE (name, res_id, lang, type, src_md5, module)',
+                Unique(t,
+                    t.name, t.res_id, t.lang, t.type, t.src_md5, t.module),
                 'Translation must be unique'),
         ]
         cls._error_messages.update({

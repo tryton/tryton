@@ -5,7 +5,7 @@ import time
 from itertools import izip
 from sql import Flavor
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, Check
 from ..tools import datetime_strftime
 from ..pyson import Eval, And
 from ..transaction import Transaction
@@ -84,8 +84,10 @@ class Sequence(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Sequence, cls).__setup__()
+        table = cls.__table__()
         cls._sql_constraints += [
-            ('check_timestamp_rounding', 'CHECK(timestamp_rounding > 0)',
+            ('check_timestamp_rounding',
+                Check(table, table.timestamp_rounding > 0),
                 'Timestamp rounding should be greater than 0'),
             ]
         cls._error_messages.update({
