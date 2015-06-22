@@ -10,7 +10,7 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.operators import Concat
 
-from trytond.model import Workflow, Model, ModelView, ModelSQL, fields
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond import backend
 from trytond.pyson import In, Eval, Not, Equal, If, Bool
 from trytond.tools import reduce_ids
@@ -241,14 +241,15 @@ class Move(Workflow, ModelSQL, ModelView):
             set(['planned_date', 'effective_date', 'state']))
         cls._allow_modify_closed_period = set()
 
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('check_move_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+            ('check_move_qty_pos', Check(t, t.quantity >= 0),
+                'Move quantity must be positive'),
             ('check_move_internal_qty_pos',
-                'CHECK(internal_quantity >= 0.0)',
+                Check(t, t.internal_quantity >= 0),
                 'Internal move quantity must be positive'),
             ('check_from_to_locations',
-                'CHECK(from_location != to_location)',
+                Check(t, t.from_location != t.to_location),
                 'Source and destination location must be different'),
             ]
         cls._order[0] = ('id', 'DESC')

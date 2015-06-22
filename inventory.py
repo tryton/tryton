@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
-from trytond.model import Workflow, Model, ModelView, ModelSQL, fields
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond import backend
 from trytond.transaction import Transaction
@@ -254,9 +254,10 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(InventoryLine, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('check_line_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Line quantity must be positive.'),
+            ('check_line_qty_pos', Check(t, t.quantity >= 0),
+                'Line quantity must be positive.'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
 
