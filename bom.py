@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, Button
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
@@ -76,8 +76,9 @@ class BOMInput(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(BOMInput, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints = [
-            ('product_bom_uniq', 'UNIQUE(product, bom)',
+            ('product_bom_uniq', Unique(t, t.product, t.bom),
                 'product_bom_uniq'),
             ]
         cls._error_messages.update({
