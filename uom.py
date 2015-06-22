@@ -4,7 +4,7 @@ from __future__ import division
 from decimal import Decimal
 from sql import Table
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
@@ -68,8 +68,9 @@ class Uom(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Uom, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
+            ('non_zero_rate_factor', Check(t, (t.rate != 0) | (t.factor != 0)),
                 'Rate and factor can not be both equal to zero.')
             ]
         cls._order.insert(0, ('name', 'ASC'))
