@@ -1,3 +1,4 @@
+* Allow to modify internal shipment moves in waiting state
 * Allow to re-compute cost price
 * Allow to change unit price of move done
 

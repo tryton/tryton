@@ -1784,7 +1784,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             ], depends=['state'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
-            'readonly': ((Eval('state') != 'draft')
+            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
                 | ~Eval('from_location') | ~Eval('to_location')),
             },
         domain=[
