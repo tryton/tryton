@@ -26,15 +26,22 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                 ]),
         'get_account', setter='set_account')
 
+    @classmethod
+    def _get_account_field(cls, name):
+        pool = Pool()
+        ModelField = pool.get('ir.model.field')
+        if name in ['default_account_receivable', 'default_account_payable']:
+            field, = ModelField.search([
+                ('model.model', '=', 'party.party'),
+                ('name', '=', name[8:]),
+                ], limit=1)
+            return field
+
     def get_account(self, name):
         pool = Pool()
         Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
         company_id = Transaction().context.get('company')
-        account_field, = ModelField.search([
-            ('model.model', '=', 'party.party'),
-            ('name', '=', name[8:]),
-            ], limit=1)
+        account_field = self._get_account_field(name)
         properties = Property.search([
             ('field', '=', account_field.id),
             ('res', '=', None),
@@ -48,12 +55,8 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     def set_account(cls, configurations, name, value):
         pool = Pool()
         Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
         company_id = Transaction().context.get('company')
-        account_field, = ModelField.search([
-            ('model.model', '=', 'party.party'),
-            ('name', '=', name[8:]),
-            ], limit=1)
+        account_field = cls._get_account_field(name)
         properties = Property.search([
             ('field', '=', account_field.id),
             ('res', '=', None),
