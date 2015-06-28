@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from .product import *
+from .configuration import *
 
 
 def register():
@@ -13,4 +14,5 @@ def register():
         Template,
         TemplateCustomerTax,
         TemplateSupplierTax,
+        Configuration,
         module='account_product', type_='model')
