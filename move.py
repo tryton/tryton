@@ -12,7 +12,7 @@ from sql.operators import Concat
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond import backend
-from trytond.pyson import In, Eval, Not, Equal, If, Bool
+from trytond.pyson import Eval, If, Bool
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -22,7 +22,7 @@ from trytond.modules.product import price_digits
 __all__ = ['StockMixin', 'Move']
 
 STATES = {
-    'readonly': In(Eval('state'), ['cancel', 'assigned', 'done']),
+    'readonly': Eval('state').in_(['cancel', 'assigned', 'done']),
 }
 DEPENDS = ['state']
 
@@ -187,7 +187,7 @@ class Move(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     planned_date = fields.Date("Planned Date", states={
-            'readonly': (In(Eval('state'), ['cancel', 'assigned', 'done'])
+            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
                 | Eval('shipment'))
             }, depends=['state', 'shipment'],
         select=True)
@@ -205,27 +205,27 @@ class Move(Workflow, ModelSQL, ModelView):
         ], 'State', select=True, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
-            'invisible': Not(Bool(Eval('unit_price_required'))),
+            'invisible': ~Eval('unit_price_required'),
             'required': Bool(Eval('unit_price_required')),
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         depends=['unit_price_required', 'state'])
     cost_price = fields.Numeric('Cost Price', digits=price_digits,
         readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
-            'invisible': Not(Bool(Eval('unit_price_required'))),
+            'invisible': ~Eval('unit_price_required'),
             'required': Bool(Eval('unit_price_required')),
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         depends=['unit_price_required', 'state'])
     unit_price_required = fields.Function(

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Equal, Eval, If, In
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
@@ -15,11 +15,11 @@ class Period(Workflow, ModelSQL, ModelView):
     __name__ = 'stock.period'
     _rec_name = 'date'
     date = fields.Date('Date', required=True, states={
-        'readonly': Equal(Eval('state'), 'closed'),
-        }, depends=['state'])
+            'readonly': Eval('state') == 'closed',
+            }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ])
     caches = fields.One2Many('stock.period.cache', 'period', 'Caches',

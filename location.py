@@ -5,7 +5,7 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond import backend
-from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date, If
+from trytond.pyson import Eval, PYSONEncoder, Date, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
@@ -15,7 +15,7 @@ __all__ = ['Location', 'Party', 'ProductsByLocationsStart',
 __metaclass__ = PoolMeta
 
 STATES = {
-    'readonly': Not(Bool(Eval('active'))),
+    'readonly': ~Eval('active'),
 }
 DEPENDS = ['active']
 
@@ -30,8 +30,8 @@ class Location(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     address = fields.Many2One("party.address", "Address",
         states={
-            'invisible': Not(Equal(Eval('type'), 'warehouse')),
-            'readonly': Not(Bool(Eval('active'))),
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
             },
         depends=['type', 'active'])
     type = fields.Selection([
@@ -54,9 +54,9 @@ class Location(ModelSQL, ModelView):
     childs = fields.One2Many("stock.location", "parent", "Children")
     input_location = fields.Many2One(
         "stock.location", "Input", states={
-            'invisible': Not(Equal(Eval('type'), 'warehouse')),
-            'readonly': Not(Bool(Eval('active'))),
-            'required': Equal(Eval('type'), 'warehouse'),
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            'required': Eval('type') == 'warehouse',
             },
         domain=[
             ('type', '=', 'storage'),
@@ -68,9 +68,9 @@ class Location(ModelSQL, ModelView):
         depends=['type', 'active', 'id'])
     output_location = fields.Many2One(
         "stock.location", "Output", states={
-            'invisible': Not(Equal(Eval('type'), 'warehouse')),
-            'readonly': Not(Bool(Eval('active'))),
-            'required': Equal(Eval('type'), 'warehouse'),
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            'required': Eval('type') == 'warehouse',
         },
         domain=[
             ('type', '=', 'storage'),
@@ -80,9 +80,9 @@ class Location(ModelSQL, ModelView):
         depends=['type', 'active', 'id'])
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
-            'invisible': Not(Equal(Eval('type'), 'warehouse')),
-            'readonly': Not(Bool(Eval('active'))),
-            'required': Equal(Eval('type'), 'warehouse'),
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            'required': Eval('type') == 'warehouse',
         },
         domain=[
             ('type', '=', 'storage'),

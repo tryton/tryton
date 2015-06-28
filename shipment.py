@@ -13,7 +13,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond import backend
-from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Id
+from trytond.pyson import Eval, If, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -45,25 +45,26 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     planned_date = fields.Date('Planned Date', states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
-            'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('incoming_moves', [0]))), Bool(Eval('supplier'))),
+            'readonly': (((Eval('state') != 'draft')
+                    | Eval('incoming_moves', [0]))
+                & Eval('supplier')),
             }, required=True,
         depends=['state', 'supplier'])
     supplier_location = fields.Function(fields.Many2One('stock.location',
@@ -71,14 +72,14 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         'on_change_with_supplier_location')
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('supplier'))],
         depends=['state', 'supplier'])
     warehouse = fields.Many2One('stock.location', "Warehouse",
         required=True, domain=[('type', '=', 'warehouse')],
         states={
-            'readonly': Or(In(Eval('state'), ['cancel', 'done']),
-                Bool(Eval('incoming_moves', [0]))),
+            'readonly': (Eval('state').in_(['cancel', 'done'])
+                | Eval('incoming_moves', [0])),
             }, depends=['state'])
     warehouse_input = fields.Function(fields.Many2One('stock.location',
             'Warehouse Input'),
@@ -115,7 +116,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': In(Eval('state'), ['draft', 'done', 'cancel']),
+                'readonly': Eval('state').in_(['draft', 'done', 'cancel']),
                 },
             depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
@@ -485,39 +486,36 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     code = fields.Char("Code", size=None, select=True, readonly=True)
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             }, domain=[('type', '=', 'storage')],
         depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             }, domain=[('type', '=', 'supplier')],
         depends=['state'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
-            'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('from_location')))),
-                Bool(Eval('to_location'))),
+            'readonly': (((Eval('state') != 'draft') | ~Eval('from_location'))
+                & Eval('to_location')),
             },
         domain=[
             ('from_location', '=', Eval('from_location')),
@@ -765,21 +763,21 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('outgoing_moves', [0]))),
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('outgoing_moves', [0])),
             },
         depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
@@ -787,17 +785,17 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('customer'))],
         depends=['state', 'customer'])
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('outgoing_moves', [0]))),
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('outgoing_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
@@ -1315,21 +1313,21 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('incoming_moves', [0]))),
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('incoming_moves', [0])),
             },
         depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
@@ -1337,17 +1335,17 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, domain=[('party', '=', Eval('customer'))],
         depends=['state', 'customer'])
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('incoming_moves', [0]))),
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('incoming_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
@@ -1751,34 +1749,32 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             },
         domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     code = fields.Char("Code", size=None, select=True, readonly=True)
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             },
         domain=[
             ('type', 'in', ['storage', 'lost_found']),
             ], depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             }, domain=[
             ('type', 'in', ['storage', 'lost_found']),
             ], depends=['state'])

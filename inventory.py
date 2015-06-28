@@ -3,7 +3,7 @@
 from sql import Null
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
-from trytond.pyson import Not, Equal, Eval, Or, Bool
+from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -11,7 +11,7 @@ from trytond.pool import Pool
 __all__ = ['Inventory', 'InventoryLine']
 
 STATES = {
-    'readonly': Not(Equal(Eval('state'), 'draft')),
+    'readonly': Eval('state') != 'draft',
 }
 DEPENDS = ['state']
 
@@ -22,13 +22,11 @@ class Inventory(Workflow, ModelSQL, ModelView):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         depends=['state'])
     date = fields.Date('Date', required=True, states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         depends=['state'])
     lost_found = fields.Many2One(
@@ -39,8 +37,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         depends=DEPENDS)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         depends=['state'])
     state = fields.Selection([
