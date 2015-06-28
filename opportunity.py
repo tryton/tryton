@@ -509,10 +509,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
     employee = fields.Many2One('company.employee', 'Employee',
             datetime_field='date')
     start_date = fields.Date('Start Date')
-    end_date = fields.Date('End Date', states={
-        'invisible': Not(In(Eval('state'),
-            ['converted', 'cancelled', 'lost'])),
-    }, depends=['state'])
+    end_date = fields.Date('End Date')
     description = fields.Char('Description')
     comment = fields.Text('Comment')
     lines = fields.Function(fields.One2Many('sale.opportunity.line', None,
