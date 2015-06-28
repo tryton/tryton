@@ -227,7 +227,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
             return False
         children = record.children_group(self.children_field)
         if children is None:
-            return True
+            return False
         length = len(children)
         if self.__removed and self.__removed in children:
             length -= 1
@@ -235,7 +235,10 @@ class AdaptModelGroup(gtk.GenericTreeModel):
 
     def on_iter_children(self, record):
         if record is None:
-            return None
+            if self.group:
+                return self.group[0]
+            else:
+                return None
         if self.children_field:
             children = record.children_group(self.children_field)
             if children:
@@ -243,14 +246,18 @@ class AdaptModelGroup(gtk.GenericTreeModel):
         return None
 
     def on_iter_n_children(self, record):
-        if record is None or not self.children_field:
+        if record is None:
             return len(self.group)
+        if not self.children_field:
+            return 0
         return len(record.children_group(self.children_field))
 
     def on_iter_nth_child(self, record, nth):
-        if record is None or not self.children_field:
+        if record is None:
             if nth < len(self.group):
                 return self.group[nth]
+            return None
+        if not self.children_field:
             return None
         if nth < len(record.children_group(self.children_field)):
             return record.children_group(self.children_field)[nth]
