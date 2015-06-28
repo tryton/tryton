@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
+        <separator id="asset" string="Asset" colspan="4"/>
         <label name="asset_sequence"/>
         <field name="asset_sequence"/>
         <newline/>
