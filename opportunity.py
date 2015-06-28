@@ -341,6 +341,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         cls.write(filter(lambda o: o.is_forecast, opportunities), {
                 'end_date': Date.today(),
+                'state': 'won',
                 })
 
     @classmethod
@@ -350,6 +351,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Date = Pool().get('ir.date')
         cls.write(filter(lambda o: o.is_forecast, opportunities), {
                 'end_date': Date.today(),
+                'state': 'lost',
                 })
 
     @classmethod
@@ -404,7 +406,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         lost = []
         converted = []
         for opportunity in opportunities:
-            opportunity.amount = opportunity.sale_amount
+            sale_amount = opportunity.sale_amount
+            if opportunity.amount != sale_amount:
+                opportunity.amount = sale_amount
             if opportunity.is_won():
                 won.append(opportunity)
             elif opportunity.is_lost():
