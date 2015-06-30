@@ -203,11 +203,17 @@
                     'second': value.second(),
                     'microsecond': value.millisecond() * 1000
                 };
+                if (parent) {
+                    parent[index] = value;
+                }
             } else if (value.isTimeDelta) {
                 value = {
                     '__class__': 'timedelta',
                     'seconds': value.asSeconds()
                 };
+                if (parent) {
+                    parent[index] = value;
+                }
             } else if (value instanceof Sao.Decimal) {
                 value = {
                     '__class__': 'Decimal',
