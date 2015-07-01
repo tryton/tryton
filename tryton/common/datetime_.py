@@ -154,7 +154,7 @@ class Date(gtk.Entry):
         self.emit('date-changed')
         return False
 
-    def activate(self, entry):
+    def activate(self, entry=None):
         self.parse()
         self.update_label()
         self.emit('date-changed')
@@ -293,7 +293,7 @@ class Time(gtk.ComboBoxEntry):
         self.emit('time-changed')
         return False
 
-    def activate(self, entry):
+    def activate(self, entry=None):
         self.parse()
         self.update_label()
         self.emit('time-changed')
