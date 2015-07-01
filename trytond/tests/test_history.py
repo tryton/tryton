@@ -76,8 +76,8 @@ class HistoryTestCase(unittest.TestCase):
             with Transaction().set_context(_datetime=datetime.datetime.min):
                 self.assertRaises(UserError, History.read, [history_id])
 
-    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
-        'now() is not the start of the transaction')
+    @unittest.skipUnless(backend.name() == 'postgresql',
+        'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     def test0020read_same_timestamp(self):
         'Test read history with same timestamp'
         History = POOL.get('test.history')
@@ -227,8 +227,8 @@ class HistoryTestCase(unittest.TestCase):
             history = History(history_id)
             self.assertEqual(history.value, 1)
 
-    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
-        'now() is not the start of the transaction')
+    @unittest.skipUnless(backend.name() == 'postgresql',
+        'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     def test0045restore_history_same_timestamp(self):
         'Test restore history with same timestamp'
         History = POOL.get('test.history')
@@ -330,8 +330,8 @@ class HistoryTestCase(unittest.TestCase):
                     records = History.search([], order=order)
                     self.assertEqual(records, instances)
 
-    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
-        'now() is not the start of the transaction')
+    @unittest.skipUnless(backend.name() == 'postgresql',
+        'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     def test0060_ordered_search_same_timestamp(self):
         'Test ordered search  with same timestamp'
         History = POOL.get('test.history')

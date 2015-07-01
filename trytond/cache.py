@@ -4,7 +4,7 @@ from threading import Lock
 from collections import OrderedDict
 
 from sql import Table
-from sql.functions import Now
+from sql.functions import CurrentTimestamp
 
 from trytond.transaction import Transaction
 
@@ -108,11 +108,12 @@ class Cache(object):
                     if cursor.fetchone():
                         # It would be better to insert only
                         cursor.execute(*table.update([table.timestamp],
-                                [Now()], where=table.name == name))
+                                [CurrentTimestamp()],
+                                where=table.name == name))
                     else:
                         cursor.execute(*table.insert(
                                 [table.timestamp, table.name],
-                                [[Now(), name]]))
+                                [[CurrentTimestamp(), name]]))
                 Cache._resets[dbname].clear()
             cursor.commit()
 

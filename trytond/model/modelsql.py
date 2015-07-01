@@ -5,7 +5,7 @@ from itertools import islice, izip, chain, ifilter
 from collections import OrderedDict
 
 from sql import Table, Column, Literal, Desc, Asc, Expression, Null
-from sql.functions import Now, Extract
+from sql.functions import CurrentTimestamp, Extract
 from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator
 from sql.aggregate import Count, Max
@@ -352,7 +352,7 @@ class ModelSQL(ModelStorage):
                         table.select(*columns, where=where)))
             else:
                 cursor.execute(*history.insert(hcolumns,
-                        [[id_, Now(), user] for id_ in sub_ids]))
+                        [[id_, CurrentTimestamp(), user] for id_ in sub_ids]))
 
     @classmethod
     def _restore_history(cls, ids, datetime, _before=False):
@@ -371,7 +371,7 @@ class ModelSQL(ModelStorage):
             if fname == 'write_uid':
                 hcolumns.append(Literal(transaction.user))
             elif fname == 'write_date':
-                hcolumns.append(Now())
+                hcolumns.append(CurrentTimestamp())
             else:
                 hcolumns.append(Column(history, fname))
 
@@ -490,7 +490,7 @@ class ModelSQL(ModelStorage):
                 values.update(cls._clean_defaults(defaults))
 
             insert_columns = [table.create_uid, table.create_date]
-            insert_values = [transaction.user, Now()]
+            insert_values = [transaction.user, CurrentTimestamp()]
 
             # Insert record
             for fname, value in values.iteritems():
@@ -851,7 +851,7 @@ class ModelSQL(ModelStorage):
                     del values[key]
 
             columns = [table.write_uid, table.write_date]
-            update_values = [transaction.user, Now()]
+            update_values = [transaction.user, CurrentTimestamp()]
             store_translation = Transaction().language == Config.get_language()
             for fname, value in values.iteritems():
                 field = cls._fields[fname]

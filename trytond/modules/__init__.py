@@ -11,7 +11,7 @@ import ConfigParser
 from glob import iglob
 
 from sql import Table
-from sql.functions import Now
+from sql.functions import CurrentTimestamp
 
 import trytond.tools as tools
 from trytond.config import config
@@ -272,7 +272,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 cursor.execute(*ir_module.insert(
                         [ir_module.create_uid, ir_module.create_date,
                             ir_module.name, ir_module.state],
-                        [[0, Now(), package.name, 'installed']]))
+                        [[0, CurrentTimestamp(), package.name, 'installed']]))
             module2state[package.name] = 'installed'
 
         cursor.commit()

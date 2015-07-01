@@ -1,3 +1,4 @@
+* Use CURRENT_TIMESTAMP instead of now
 * Use Constraint instance in ModelSQL._sql_constraints
 * Only return default record if no domain supplied on ModelSingleton search
 * Rule.domain_get returns a domain and Rule.query_get a SQL query
