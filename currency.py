@@ -159,11 +159,10 @@ class Currency(ModelSQL, ModelView):
         closer = datetime.date.min
         res = Decimal('0.0')
         for rate in self.rates or []:
-            if 'date' not in rate or 'rate' not in rate:
-                continue
-            if rate['date'] <= now and rate['date'] > closer:
-                res = rate['rate']
-                closer = rate['date']
+            date = getattr(rate, 'date', now)
+            if date <= now and date > closer:
+                res = rate
+                closer = date
         return res
 
     @staticmethod
