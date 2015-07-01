@@ -172,6 +172,8 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
         extras = cls.search(cls._extras_domain(sale))
         if pattern is None:
             pattern = {}
+        else:
+            pattern = pattern.copy()
         pattern['sale_amount'] = Currency.compute(sale.currency,
             sale.untaxed_amount, sale.company.currency)
 
