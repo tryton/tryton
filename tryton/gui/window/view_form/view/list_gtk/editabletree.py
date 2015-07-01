@@ -111,6 +111,7 @@ class EditableTreeView(TreeView):
         if hasattr(field, 'editabletree_entry'):
             entry = field.editabletree_entry
             if isinstance(entry, (Date, Time)):
+                entry.activate()
                 txt = entry.props.value
             if isinstance(entry, gtk.Entry):
                 txt = entry.get_text()
@@ -144,6 +145,7 @@ class EditableTreeView(TreeView):
 
         if event.keyval in self.leaving_events or leaving:
             if isinstance(entry, (Date, Time)):
+                entry.activate()
                 txt = entry.props.value
             elif isinstance(entry, gtk.Entry):
                 txt = entry.get_text()
@@ -263,6 +265,7 @@ class EditableTreeView(TreeView):
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
         if isinstance(entry, (Date, Time)):
+            entry.activate()
             self.on_quit_cell(record, column, entry.props.value)
         elif isinstance(entry, gtk.Entry):
             self.on_quit_cell(record, column, entry.get_text())
