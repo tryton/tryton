@@ -5,7 +5,7 @@ from decimal import Decimal
 
 from sql import Literal, Null
 from sql.aggregate import Max
-from sql.functions import Now
+from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce
 
 from trytond.model import ModelSQL, ModelView, fields
@@ -354,7 +354,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         return move.select(
             Max(move.id).as_('id'),
             Literal(0).as_('create_uid'),
-            Now().as_('create_date'),
+            CurrentTimestamp().as_('create_date'),
             Literal(None).as_('write_uid'),
             Literal(None).as_('write_date'),
             date_column,
