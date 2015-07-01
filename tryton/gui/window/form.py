@@ -246,6 +246,8 @@ class Form(SignalEvent, TabContent):
                 [x[0] for x in fields], context=self.screen.context)
         except RPCException:
             return
+        date_format = self.screen.context.get('date_format', '%x')
+        datetime_format = date_format + ' %X.%f'
         message_str = ''
         for line in res:
             for (key, val) in fields:
@@ -253,7 +255,7 @@ class Form(SignalEvent, TabContent):
                 if line.get(key, False) \
                         and key in ('create_date', 'write_date'):
                     date = timezoned_date(line[key])
-                    value = common.datetime_strftime(date, '%X')
+                    value = common.datetime_strftime(date, datetime_format)
                 message_str += val + ' ' + value + '\n'
         message_str += _('Model:') + ' ' + self.model
         message(message_str)
