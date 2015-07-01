@@ -178,11 +178,18 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
             sale.untaxed_amount, sale.company.currency)
 
         for extra in extras:
-            if extra.match(pattern):
+            epattern = pattern.copy()
+            epattern.update(extra.get_pattern(sale))
+            if extra.match(epattern):
                 for line in extra.lines:
-                    if line.match(pattern):
+                    lpattern = epattern.copy()
+                    lpattern.update(line.get_pattern(sale))
+                    if line.match(lpattern):
                         yield line.get_line(sale)
                         break
+
+    def get_pattern(self, sale):
+        return {}
 
     def match(self, pattern):
         pattern = pattern.copy()
@@ -247,6 +254,9 @@ class SaleExtraLine(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def default_free():
         return False
+
+    def get_pattern(self, sale):
+        return {}
 
     def match(self, pattern):
         pattern = pattern.copy()
