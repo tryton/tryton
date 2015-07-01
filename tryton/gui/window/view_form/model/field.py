@@ -210,8 +210,10 @@ class DateTimeField(Field):
         elif value and not isinstance(value, datetime.datetime):
             current_value = self.get_client(record)
             if current_value:
-                value = datetime.datetime.combine(
-                    value, current_value.time())
+                time = current_value.time()
+            else:
+                time = datetime.time()
+            value = datetime.datetime.combine(value, time)
         if value:
             value = common.untimezoned_date(value)
         super(DateTimeField, self).set_client(record, value,
