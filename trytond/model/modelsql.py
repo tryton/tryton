@@ -1105,7 +1105,7 @@ class ModelSQL(ModelStorage):
             columns.append(Coalesce(
                     main_table.write_date,
                     main_table.create_date).as_('_datetime'))
-            columns.append(Column(main_table, '__id'))
+            columns.append(Column(main_table, '__id').as_('__id'))
         if not query:
             columns += [f.sql_column(main_table).as_(n)
                 for n, f in cls._fields.iteritems()
@@ -1150,7 +1150,9 @@ class ModelSQL(ModelStorage):
             history = cls.__table_history__()
             for sub_ids in grouped_slice([r['id'] for r in rows]):
                 where = reduce_ids(history.id, sub_ids)
-                cursor.execute(*history.select(history.id, history.write_date,
+                cursor.execute(*history.select(
+                        history.id.as_('id'),
+                        history.write_date.as_('write_date'),
                         where=where
                         & (history.write_date != Null)
                         & (history.create_date == Null)
