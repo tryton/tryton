@@ -17,9 +17,9 @@
                 'aria-label': Sao.i18n.gettext('Close')
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
-            }).append('&times;').click(function() {
+            }).append('&times;')).click(function() {
                 this.el.hide();
-            }.bind(this)))).append(this.text);
+            }.bind(this))).append(this.text);
             this.el.hide();
         },
         message: function(message, type) {
