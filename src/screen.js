@@ -776,6 +776,7 @@
                 } else {
                     this.tab.attachment_count(0);
                 }
+                this.tab.record_message();
             }
         },
         display: function() {

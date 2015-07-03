@@ -24,6 +24,7 @@
             this.session = Sao.Session.current_session;
             this.__processing = false;
             this.__waiting_response = false;
+            this.info_bar = new Sao.Window.InfoBar();
         },
         run: function(attributes) {
             this.action = attributes.action;
@@ -116,8 +117,11 @@
             return this.screen.current_record.validate().then(function(validate) {
                 if ((!validate) && state != this.end_state) {
                     this.screen.display();
+                    this.info_bar.message(
+                            Sao.i18n.gettext('Invalid form.'), 'danger');
                     return;
                 }
+                this.info_bar.message();
                 this.state = state;
                 this.process();
             }.bind(this));
@@ -206,7 +210,7 @@
             this.dialog = dialog.modal;
             this.content = dialog.content;
             this.footer = dialog.footer;
-            dialog.body.append(this.widget);
+            dialog.body.append(this.info_bar.el).append(this.widget);
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);

@@ -5,6 +5,36 @@
 
     Sao.Window = {};
 
+    Sao.Window.InfoBar = Sao.class_(Object, {
+        init: function() {
+            this.text = jQuery('<span/>');
+            this.el = jQuery('<div/>', {
+                'class': 'alert',
+                'role': 'alert'
+            }).append(jQuery('<button/>', {
+                'type': 'button',
+                'class': 'close',
+                'aria-label': Sao.i18n.gettext('Close')
+            }).append(jQuery('<span/>', {
+                'aria-hidden': true
+            }).append('&times;').click(function() {
+                this.el.hide();
+            }.bind(this)))).append(this.text);
+            this.el.hide();
+        },
+        message: function(message, type) {
+            if (message) {
+                this.el.removeClass(
+                        'alert-success alert-info alert-warning alert-danger');
+                this.el.addClass('alert-' + (type || 'info'));
+                this.text.text(message);
+                this.el.show();
+            } else {
+                this.el.hide();
+            }
+        }
+    });
+
     Sao.Window.Form = Sao.class_(Object, {
         init: function(screen, callback, kwargs) {
             kwargs = kwargs || {};
@@ -16,6 +46,7 @@
             this.save_current = kwargs.save_current;
             this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
+            this.info_bar = new Sao.Window.InfoBar();
             var view_type = kwargs.view_type || 'form';
 
             var form_prm = jQuery.when();
@@ -37,6 +68,8 @@
             }.bind(this));
             var dialog = new Sao.Dialog('', '', 'lg');
             this.el = dialog.modal;
+
+            dialog.body.append(this.info_bar.el);
 
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.get_readonly());
@@ -249,8 +282,11 @@
                         jQuery.when.apply(jQuery, validate_prms).then(
                             closing_prm.resolve, closing_prm.reject);
                     } else if (!validate) {
+                        this.info_bar.message(
+                                Sao.i18n.gettext('Invalid form.'), 'danger');
                         closing_prm.reject();
                     } else {
+                        this.info_bar.message();
                         closing_prm.resolve();
                     }
 
