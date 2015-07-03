@@ -8,11 +8,12 @@ import pango
 import tryton.common as common
 from tryton.config import CONFIG
 from tryton.gui import Main
+from .infobar import InfoBar
 
 _ = gettext.gettext
 
 
-class TabContent(object):
+class TabContent(InfoBar):
 
     def create_tabcontent(self):
         self.buttons = {}
@@ -24,6 +25,9 @@ class TabContent(object):
 
         title_box = self.make_title_bar()
         self.widget.pack_start(title_box, expand=False, fill=True, padding=3)
+
+        self.create_info_bar()
+        self.widget.pack_start(self.info_bar, False, True)
 
         self.toolbar = self.create_toolbar(self.get_toolbars())
         self.toolbar.show_all()
@@ -63,19 +67,6 @@ class TabContent(object):
         title_menu.append(title_item)
         title_menu.show_all()
 
-        self.info_label = gtk.Label()
-        self.info_label.set_padding(3, 3)
-        self.info_label.set_alignment(1.0, 0.5)
-
-        self.eb_info = gtk.EventBox()
-        self.eb_info.add(self.info_label)
-        self.eb_info.connect('button-release-event',
-                lambda *a: self.message_info(''))
-
-        vbox = gtk.VBox()
-        vbox.pack_start(self.eb_info, expand=True, fill=True, padding=5)
-        vbox.show()
-
         self.status_label = gtk.Label()
         self.status_label.set_padding(5, 4)
         self.status_label.set_alignment(0.0, 0.5)
@@ -83,7 +74,6 @@ class TabContent(object):
 
         hbox = gtk.HBox()
         hbox.pack_start(title, expand=True, fill=True)
-        hbox.pack_start(vbox, expand=False, fill=True, padding=20)
         hbox.pack_start(self.status_label, expand=False, fill=True)
         hbox.show()
 
@@ -106,7 +96,6 @@ class TabContent(object):
         title_box.pack_start(frame_menu, expand=False, fill=True)
         title_box.pack_start(eb, expand=True, fill=True)
         title_box.show()
-
         return title_box
 
     def create_base_toolbar(self, toolbar):

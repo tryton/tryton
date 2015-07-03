@@ -1,17 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from tryton.common import TRYTON_ICON, COLOR_SCHEMES
+from tryton.common import TRYTON_ICON
 import tryton.common as common
 import gtk
 import pango
 import gettext
 from tryton.gui.window.nomodal import NoModal
 from tryton.common.domain_parser import quote
+from .infobar import InfoBar
 
 _ = gettext.gettext
 
 
-class WinForm(NoModal):
+class WinForm(NoModal, InfoBar):
     "Form window"
 
     def __init__(self, screen, callback, view_type='form',
@@ -91,22 +92,8 @@ class WinForm(NoModal):
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
-        self.info_label = gtk.Label()
-        self.info_label.set_padding(3, 3)
-        self.info_label.set_alignment(1.0, 0.5)
-
-        self.eb_info = gtk.EventBox()
-        self.eb_info.add(self.info_label)
-        self.eb_info.connect('button-release-event',
-                lambda *a: self.message_info(''))
-
-        vbox = gtk.VBox()
-        vbox.pack_start(self.eb_info, expand=True, fill=True, padding=5)
-        vbox.show()
-
         hbox = gtk.HBox()
         hbox.pack_start(title, expand=True, fill=True)
-        hbox.pack_start(vbox, expand=False, fill=True, padding=20)
         hbox.show()
 
         frame = gtk.Frame()
@@ -120,6 +107,9 @@ class WinForm(NoModal):
         eb.show()
 
         self.win.vbox.pack_start(eb, expand=False, fill=True, padding=3)
+
+        self.create_info_bar()
+        self.win.vbox.pack_start(self.info_bar, False, True)
 
         if view_type == 'tree':
             hbox = gtk.HBox(homogeneous=False, spacing=0)
@@ -282,16 +272,6 @@ class WinForm(NoModal):
         self.screen.display()
         self.screen.current_view.set_cursor()
 
-    def message_info(self, message, color='red'):
-        if message:
-            self.info_label.set_label(message)
-            self.eb_info.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(
-                COLOR_SCHEMES.get(color, 'white')))
-            self.eb_info.show_all()
-        else:
-            self.info_label.set_label('')
-            self.eb_info.hide()
-
     def on_keypress(self, widget, event):
         if (event.keyval == gtk.keysyms.F3) \
                 and self.but_new.get_property('sensitive'):
@@ -415,9 +395,11 @@ class WinForm(NoModal):
                             if record:
                                 validate = record.pre_validate()
             if not validate:
+                self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
                 self.screen.set_cursor()
                 self.screen.display()
                 return
+            self.message_info()
             if response_id == gtk.RESPONSE_ACCEPT:
                 self.new()
                 return

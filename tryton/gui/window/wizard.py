@@ -13,10 +13,11 @@ from tryton.gui.window.nomodal import NoModal
 from tryton.common.button import Button
 from tryton.common import RPCExecute, RPCException
 from tryton.common import TRYTON_ICON
+from .infobar import InfoBar
 _ = gettext.gettext
 
 
-class Wizard(object):
+class Wizard(InfoBar):
 
     def __init__(self, name=False):
         super(Wizard, self).__init__()
@@ -144,7 +145,9 @@ class Wizard(object):
         if (not self.screen.current_record.validate()
                 and state != self.end_state):
             self.screen.display(set_cursor=True)
+            self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
             return
+        self.message_info()
         self.state = state
         self.process()
 
@@ -183,22 +186,8 @@ class Wizard(object):
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
-        self.info_label = gtk.Label()
-        self.info_label.set_padding(3, 3)
-        self.info_label.set_alignment(1.0, 0.5)
-
-        self.eb_info = gtk.EventBox()
-        self.eb_info.add(self.info_label)
-        self.eb_info.connect('button-release-event',
-                lambda *a: self.message_info(''))
-
-        vbox = gtk.VBox()
-        vbox.pack_start(self.eb_info, expand=True, fill=True, padding=5)
-        vbox.show()
-
         hbox = gtk.HBox()
         hbox.pack_start(title, expand=True, fill=True)
-        hbox.pack_start(vbox, expand=False, fill=True, padding=20)
         hbox.show()
 
         frame = gtk.Frame()
@@ -212,6 +201,9 @@ class Wizard(object):
         eb.show()
 
         self.widget.pack_start(eb, expand=False, fill=True, padding=3)
+
+        self.create_info_bar()
+        self.widget.pack_start(self.info_bar, False, True)
 
         if self.toolbar_box:
             self.widget.pack_start(self.toolbar_box, False, True)

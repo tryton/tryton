@@ -13,7 +13,7 @@ from tryton.gui.window.win_import import WinImport
 from tryton.gui.window.attachment import Attachment
 from tryton.gui.window.revision import Revision
 from tryton.signal_event import SignalEvent
-from tryton.common import message, sur, sur_3b, COLOR_SCHEMES, timezoned_date
+from tryton.common import message, sur, sur_3b, timezoned_date
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
 from tryton.common.datetime_strftime import datetime_strftime
@@ -230,7 +230,8 @@ class Form(SignalEvent, TabContent):
     def sig_logs(self, widget=None):
         obj_id = self.id_get()
         if obj_id < 0 or obj_id is False:
-            self.message_info(_('You have to select one record!'))
+            self.message_info(
+                _('You have to select one record.'), gtk.MESSAGE_INFO)
             return False
 
         fields = [
@@ -314,9 +315,9 @@ class Form(SignalEvent, TabContent):
             msg = _('Are you sure to remove those records?')
         if sur(msg):
             if not self.screen.remove(delete=True, force_remove=True):
-                self.message_info(_('Records not removed!'))
+                self.message_info(_('Records not removed.'), gtk.MESSAGE_ERROR)
             else:
-                self.message_info(_('Records removed!'), 'green')
+                self.message_info(_('Records removed.'), gtk.MESSAGE_INFO)
 
     def sig_import(self, widget=None):
         WinImport(self.model, self.screen.context)
@@ -334,7 +335,7 @@ class Form(SignalEvent, TabContent):
             if not self.modified_save():
                 return
         self.screen.new()
-        self.message_info('')
+        self.message_info()
         self.activate_save()
 
     def sig_copy(self, widget=None):
@@ -343,8 +344,8 @@ class Form(SignalEvent, TabContent):
         if not self.modified_save():
             return
         self.screen.copy()
-        self.message_info(_('Working now on the duplicated record(s)!'),
-            'green')
+        self.message_info(_('Working now on the duplicated record(s).'),
+            gtk.MESSAGE_INFO)
 
     def sig_save(self, widget=None):
         if widget:
@@ -353,24 +354,24 @@ class Form(SignalEvent, TabContent):
         if not common.MODELACCESS[self.model]['write']:
             return
         if self.screen.save_current():
-            self.message_info(_('Record saved!'), 'green')
+            self.message_info(_('Record saved.'), gtk.MESSAGE_INFO)
             return True
         else:
-            self.message_info(_('Invalid form!'))
+            self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
             return False
 
     def sig_previous(self, widget=None):
         if not self.modified_save():
             return
         self.screen.display_prev()
-        self.message_info('')
+        self.message_info()
         self.activate_save()
 
     def sig_next(self, widget=None):
         if not self.modified_save():
             return
         self.screen.display_next()
-        self.message_info('')
+        self.message_info()
         self.activate_save()
 
     def sig_reload(self, test_modified=True):
@@ -391,7 +392,7 @@ class Form(SignalEvent, TabContent):
                     set_cursor = True
                     break
         self.screen.display(set_cursor=set_cursor)
-        self.message_info('')
+        self.message_info()
         self.activate_save()
         return True
 
@@ -440,16 +441,6 @@ class Form(SignalEvent, TabContent):
         menu.show_all()
         menu.popup(None, None, menu_position, 0, 0)
 
-    def message_info(self, message, color='red'):
-        if message:
-            self.info_label.set_label(message)
-            self.eb_info.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(
-                COLOR_SCHEMES.get(color, 'white')))
-            self.eb_info.show_all()
-        else:
-            self.info_label.set_label('')
-            self.eb_info.hide()
-
     def _record_message(self, screen, signal_data):
         name = '_'
         if signal_data[0]:
@@ -467,7 +458,7 @@ class Form(SignalEvent, TabContent):
         if signal_data[1] < signal_data[2]:
             msg += _(' of ') + str(signal_data[2])
         self.status_label.set_text(msg)
-        self.message_info('')
+        self.message_info()
         self.activate_save()
         self.url_entry.set_text(self.screen.get_url())
 
