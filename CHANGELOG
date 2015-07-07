@@ -1,3 +1,5 @@
+* Add reversed operators to PYSON expressions
+
 Version 3.6.0 - 2015-04-20
 * Bug fixes (see mercurial logs for details)
 * Hide columns containing always the same value
