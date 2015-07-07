@@ -1,3 +1,4 @@
+* Add reversed operators to PYSON expressions
 * Use CURRENT_TIMESTAMP instead of now
 * Use Constraint instance in ModelSQL._sql_constraints
 * Only return default record if no domain supplied on ModelSingleton search

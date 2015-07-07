@@ -33,6 +33,12 @@ class PYSONTestCase(unittest.TestCase):
         self.assertEqual(repr(pyson.Eval('test', 'foo')),
             "Eval('test', 'foo')")
 
+        self.assertIsInstance(~pyson.Eval('test', False), pyson.Not)
+        self.assertIsInstance(pyson.Eval('test', False) & True, pyson.And)
+        self.assertIsInstance(True & pyson.Eval('test', False), pyson.And)
+        self.assertIsInstance(pyson.Eval('test', False) | False, pyson.Or)
+        self.assertIsInstance(False | pyson.Eval('test', False), pyson.Or)
+
     def test0020Not(self):
         'Test pyson.Not'
         self.assertEqual(pyson.Not(True).pyson(), {
