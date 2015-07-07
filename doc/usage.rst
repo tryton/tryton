@@ -481,16 +481,6 @@ Save Tree Expanded State:
 Spell Checking:
   Check box to enable spell checking in fields.
 
-.. _Menu-Options-Form-Tabs_Position:
-
-Tabs Position
-  Sets up the position of the :term:`tabs` inside :term:`views`:
-
-  * Top
-  * Left
-  * Right
-  * Bottom
-
 .. _Menu-Options-Email:
 
 Email...:
