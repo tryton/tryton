@@ -1107,7 +1107,11 @@
                             'type': 'integer'
                         };
                     }
-                    this.domain_parser = new Sao.common.DomainParser(fields);
+                    var context = jQuery.extend({},
+                            this.model.session.context,
+                            this.context);
+                    this.domain_parser = new Sao.common.DomainParser(
+                            fields, context);
                 }
                 this.screen_container.set_screen(this);
                 this.screen_container.show_filter();

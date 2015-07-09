@@ -901,7 +901,7 @@
 
     Sao.common.DomainParser = Sao.class_(Object, {
         OPERATORS: ['!=', '<=', '>=', '=', '!', '<', '>'],
-        init: function(fields) {
+        init: function(fields, context) {
             this.fields = {};
             this.strings = {};
             for (var name in fields) {
@@ -911,6 +911,7 @@
                     this.strings[field.string.toLowerCase()] = field;
                 }
             }
+            this.context = context;
         },
         parse: function(input) {
             try {
@@ -1738,6 +1739,13 @@
                         return null;
                     }
                 }.bind(this),
+                'timedelta': function() {
+                    var converter = null;
+                    if (field.converter) {
+                        converter = this.context[field.converter];
+                    }
+                    return Sao.common.timedelta.parse(value, converter);
+                }.bind(this),
                 'many2one': function() {
                     if (value === '') {
                         return null;
@@ -1839,6 +1847,16 @@
                     return Sao.common.format_time(
                             this.time_format(field),
                             value);
+                }.bind(this),
+                'timedelta': function() {
+                    if (!value || !value.valueOf()) {
+                        return '';
+                    }
+                    var converter = null;
+                    if (field.converter) {
+                        converter = this.context[field.converter];
+                    }
+                    return Sao.common.timedelta.format(value, converter);
                 }.bind(this),
                 'many2one': function() {
                     if (value === null) {

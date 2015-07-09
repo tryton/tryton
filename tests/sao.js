@@ -1208,6 +1208,17 @@
         [
         [null, null]
         ].forEach(test_func, field);
+
+        field = {
+            'type': 'timedelta'
+        };
+        [
+        ['1d 2:00', Sao.TimeDelta(1, 2 * 60 * 60)],
+        ['foo', Sao.TimeDelta()],
+        ].forEach(test_valueOf_func, field);
+        [
+        [null, null]
+        ].forEach(test_func, field);
     });
 
     QUnit.test('DomainParser.parse_clause', function() {
@@ -1391,6 +1402,15 @@
         [Sao.Time(12, 30, 0), '"12:30:00"'],
         [false, ''],
         [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'timedelta'
+        };
+        [
+        [Sao.TimeDelta(1, 2 * 60 * 60), '"1d 02:00"'],
+        [Sao.TimeDelta(), ''],
+        ['', '']
         ].forEach(test_func, field);
     });
 
