@@ -40,3 +40,9 @@ class TestWizard(ProteusTestCase):
 
         self.assert_(User.find([('name', '=', 'Foo')]))
         self.assertFalse(User.find([('name', '=', 'Bar')]))
+
+    def test_translation_update(self):
+        print_model_graph = Wizard('ir.translation.update')
+        self.assertEqual(len(print_model_graph.actions), 0)
+        print_model_graph.execute('update')
+        self.assertEqual(len(print_model_graph.actions), 1)

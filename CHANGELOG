@@ -1,3 +1,5 @@
+* Add StateAction support to Wizard
+
 Version 3.6.0 - 2015-04-20
 * Bug fixes (see mercurial logs for details)
 * Add support for PyPy

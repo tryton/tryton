@@ -1047,6 +1047,7 @@ class Wizard(object):
         self.name = name
         self.form = None
         self.form_state = None
+        self.actions = []
         self._config = config or proteus.config.get_config()
         self._context = context or {}
         self._proxy = self._config.get_proxy(name, type='wizard')
@@ -1099,8 +1100,12 @@ class Wizard(object):
             else:
                 self.state = self.end_state
 
-            if 'actions' in result:
-                pass  # TODO
+            self.actions = []
+            for action in result.get('actions', []):
+                proteus_action = _convert_action(*action,
+                    context=self._context)
+                if proteus_action:
+                    self.actions.append(proteus_action)
 
         if self.state == self.end_state:
             self._proxy.delete(self.session_id, self._config.context)
@@ -1119,5 +1124,69 @@ class Report(object):
         self._context = context or {}
         self._proxy = self._config.get_proxy(name, type='report')
 
-    def execute(self, models, data):
-        return self._proxy.execute([m.id for m in models], data, self._context)
+    def execute(self, models=None, data=None):
+        if data is None:
+            data = {}
+        ids = [m.id for m in models] if models else data.get('ids', [])
+        return self._proxy.execute(ids, data, self._context)
+
+
+def _convert_action(action, data=None, context=None, config=None):
+    if config is None:
+        config = proteus.config.get_config()
+    if data is None:
+        data = {}
+    else:
+        data = data.copy()
+
+    if 'type' not in (action or {}):
+        return None
+
+    data['action_id'] = action['id']
+    if action['type'] == 'ir.action.act_window':
+        from .pyson import PYSONDecoder
+
+        action.setdefault('pyson_domain', '[]')
+        ctx = {
+            'active_model': data.get('model'),
+            'active_id': data.get('id'),
+            'active_ids': data.get('ids', []),
+        }
+        ctx.update(config.context)
+        ctx['_user'] = config.user
+        decoder = PYSONDecoder(ctx)
+        action_ctx = decoder.decode(action.get('pyson_context') or '{}')
+        ctx.update(action_ctx)
+        ctx.update(context)
+        action_ctx.update(context)
+        if 'date_format' not in action_ctx:
+            action_ctx['date_format'] = config.context.get(
+                'locale', {}).get('date', '%x')
+
+        ctx['context'] = ctx
+        decoder = PYSONDecoder(ctx)
+        domain = decoder.decode(action['pyson_domain'])
+
+        res_model = action.get('res_model', data.get('res_model'))
+        res_id = action.get('res_id', data.get('res_id'))
+        Model_ = Model.get(res_model)
+        with config.set_context(action_ctx):
+            if res_id is None:
+                return Model_.find(domain)
+            else:
+                return [Model_(id_) for id_ in res_id]
+    elif action['type'] == 'ir.action.wizard':
+        kwargs = {
+            'action': action,
+            'config': config,
+            'context': context,
+            }
+        if 'model' in data:
+            Model_ = Model.get(data['model'])
+            kwargs['models'] = [Model_(id_) for id_ in data.get('ids', [])]
+        return Wizard(action['wiz_name'], **kwargs)
+    elif action['type'] == 'ir.action.report':
+        ActionReport = Report(action['report_name'], context=context)
+        return ActionReport.execute(data=data)
+    elif action['type'] == 'ir.action.url':
+        return action.get('url')
