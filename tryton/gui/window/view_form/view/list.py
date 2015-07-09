@@ -634,43 +634,6 @@ class ViewTree(View):
                 and event.state & gtk.gdk.CONTROL_MASK):
             self.on_paste()
             return False
-        if event.keyval in (gtk.keysyms.Down, gtk.keysyms.Up):
-            path, column = widget.get_cursor()
-            if not path:
-                return False
-            model = widget.get_model()
-            if event.keyval == gtk.keysyms.Down:
-                test = True
-                for i in xrange(len(path)):
-                    iter_ = model.get_iter(path[0:i + 1])
-                    if model.iter_next(iter_):
-                        test = False
-                if test:
-                    iter_ = model.get_iter(path)
-                    if (model.iter_has_child(iter_)
-                            and widget.row_expanded(path)):
-                        test = False
-                return test
-            elif event.keyval == gtk.keysyms.Up:
-                if path == (0,):
-                    return True
-        if (event.keyval in (gtk.keysyms.Left, gtk.keysyms.Right)
-                and self.children_field):
-            selection = widget.get_selection()
-            model, paths = selection.get_selected_rows()
-            if event.keyval == gtk.keysyms.Left:
-                if len(paths) == 1:
-                    path, = paths
-                    if not widget.row_expanded(path):
-                        path = path[:-1]
-                        if path:
-                            selection.select_path(path)
-                            widget.collapse_row(path)
-                for path in paths:
-                    widget.collapse_row(path)
-            elif event.keyval == gtk.keysyms.Right:
-                for path in paths:
-                    widget.expand_row(path, False)
 
     def test_expand_row(self, widget, iter_, path):
         model = widget.get_model()
