@@ -4,10 +4,12 @@ from itertools import chain
 
 from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
+from sql.conditionals import Coalesce
 
 from .field import Field, size_validate
 from ...pool import Pool
 from ...tools import grouped_slice
+from ...transaction import Transaction
 
 
 class Many2Many(Field):
@@ -260,13 +262,23 @@ class Many2Many(Field):
         return expression
 
     def convert_domain(self, domain, tables, Model):
+        from ..modelsql import convert_from
         pool = Pool()
+        Rule = pool.get('ir.rule')
         Target = self.get_target()
         Relation = pool.get(self.relation_name)
-        relation = Relation.__table__()
+        transaction = Transaction()
         table, _ = tables[None]
         name, operator, value = domain[:3]
 
+        if Relation._history and transaction.context.get('_datetime'):
+            relation = Relation.__table_history__()
+            history_where = (
+                Coalesce(relation.write_date, relation.create_date)
+                <= transaction.context['_datetime'])
+        else:
+            relation = Relation.__table__()
+            history_where = None
         origin_field = Relation._fields[self.origin]
         origin = getattr(Relation, self.origin).sql_column(relation)
         origin_where = None
@@ -283,6 +295,8 @@ class Many2Many(Field):
                     query = Target.search([(domain[3], 'child_of', value)],
                         order=[], query=True)
                     where = (target.in_(query) & (origin != Null))
+                    if history_where:
+                        where &= history_where
                     if origin_where:
                         where &= origin_where
                     query = relation.select(origin, where=where)
@@ -309,6 +323,8 @@ class Many2Many(Field):
 
             if value is None:
                 where = origin != value
+                if history_where:
+                    where &= history_where
                 if origin_where:
                     where &= origin_where
                 query = relation.select(origin, where=where)
@@ -323,10 +339,20 @@ class Many2Many(Field):
                     target_name = 'id'
         else:
             _, target_name = name.split('.', 1)
-        target_domain = [(target_name,) + tuple(domain[1:])]
-        query = Target.search(target_domain, order=[], query=True)
-        where = target.in_(query)
-        if origin_where:
-            where &= origin_where
-        query = relation.select(origin, where=where)
+
+        relation_domain = [('%s.%s' % (self.target, target_name),)
+            + tuple(domain[1:])]
+        if origin_field._type == 'reference':
+            relation_domain.append(
+                (self.origin, 'like', Model.__name__ + ',%'))
+        rule_domain = Rule.domain_get(Relation.__name__, mode='read')
+        if rule_domain:
+            relation_domain = [relation_domain, rule_domain]
+        relation_tables = {
+            None: (relation, None),
+            }
+        tables, expression = Relation.search_domain(
+            relation_domain, tables=relation_tables)
+        query_table = convert_from(None, relation_tables)
+        query = query_table.select(origin, where=expression)
         return table.id.in_(query)

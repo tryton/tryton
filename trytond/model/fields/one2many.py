@@ -3,10 +3,12 @@
 from itertools import chain
 from sql import Cast, Literal
 from sql.functions import Substring, Position
+from sql.conditionals import Coalesce
 
 from .field import Field, size_validate
 from ...pool import Pool
 from ...tools import grouped_slice
+from ...transaction import Transaction
 
 
 def add_remove_validate(value):
@@ -222,11 +224,22 @@ class One2Many(Field):
         super(One2Many, self).__set__(inst, value)
 
     def convert_domain(self, domain, tables, Model):
+        from ..modelsql import convert_from
+        pool = Pool()
+        Rule = pool.get('ir.rule')
         Target = self.get_target()
-        target = Target.__table__()
+        transaction = Transaction()
         table, _ = tables[None]
         name, operator, value = domain[:3]
 
+        if Target._history and transaction.context.get('_datetime'):
+            target = Target.__table_history__()
+            history_where = (
+                Coalesce(target.write_date, target.create_date)
+                <= transaction.context['_datetime'])
+        else:
+            target = Target.__table__()
+            history_where = None
         origin_field = Target._fields[self.field]
         origin = getattr(Target, self.field).sql_column(target)
         origin_where = None
@@ -239,6 +252,8 @@ class One2Many(Field):
         if '.' not in name:
             if value is None:
                 where = origin != value
+                if history_where:
+                    where &= history_where
                 if origin_where:
                     where &= origin_where
                 query = target.select(origin, where=where)
@@ -254,9 +269,17 @@ class One2Many(Field):
         else:
             _, target_name = name.split('.', 1)
         target_domain = [(target_name,) + tuple(domain[1:])]
-        query = Target.search(target_domain, order=[], query=True)
-        where = target.id.in_(query)
-        if origin_where:
-            where &= origin_where
-        query = target.select(origin, where=where)
+        if origin_field._type == 'reference':
+            target_domain.append(
+                (self.field, 'like', Model.__name__ + ',%'))
+        rule_domain = Rule.domain_get(Target.__name__, mode='read')
+        if rule_domain:
+            target_domain = [target_domain, rule_domain]
+        target_tables = {
+            None: (target, None),
+            }
+        tables, expression = Target.search_domain(
+            target_domain, tables=target_tables)
+        query_table = convert_from(None, target_tables)
+        query = query_table.select(origin, where=expression)
         return table.id.in_(query)
