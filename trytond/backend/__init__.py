@@ -2,6 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import sys
 import urlparse
+import os
+import imp
+try:
+    import pkg_resources
+except ImportError:
+    pkg_resources = None
 
 from trytond.config import config
 
@@ -15,6 +21,16 @@ def name():
 def get(prop):
     db_type = name()
     modname = 'trytond.backend.%s' % db_type
-    __import__(modname)
+    if modname not in sys.modules:
+        try:
+            __import__(modname)
+        except ImportError:
+            if not pkg_resources:
+                raise
+            ep, = pkg_resources.iter_entry_points('trytond.backend', db_type)
+            mod_path = os.path.join(ep.dist.location,
+                *ep.module_name.split('.')[:-1])
+            fp, pathname, description = imp.find_module(db_type, [mod_path])
+            imp.load_module(modname, fp, pathname, description)
     module = sys.modules[modname]
     return getattr(module, prop)
