@@ -852,30 +852,27 @@ class AssetDepreciationTable(CompanyReport):
             def __init__(self, key, depreciations):
                 self.product = key
                 self.depreciations = depreciations
-                for attr_name in self.grouped_attributes():
-                    setattr(self, attr_name,
-                        cached_property(self.adder(attr_name)))
 
-            def adder(self, attr_name):
-                def _sum(self):
-                    return sum(getattr(d, attr_name)
-                        for d in self.depreciations if getattr(d, attr_name))
-                return _sum
+        def adder(attr_name):
+            def _sum(self):
+                return sum(getattr(d, attr_name)
+                    for d in self.depreciations if getattr(d, attr_name))
+            return _sum
 
-            @staticmethod
-            def grouped_attributes():
-                return {
-                    'start_fixed_value',
-                    'value_increase',
-                    'value_decrease',
-                    'end_fixed_value',
-                    'start_value',
-                    'amortization_increase',
-                    'amortization_decrease',
-                    'end_value',
-                    'actual_value',
-                    'closing_value',
-                    }
+        grouped_attributes = {
+            'start_fixed_value',
+            'value_increase',
+            'value_decrease',
+            'end_fixed_value',
+            'start_value',
+            'amortization_increase',
+            'amortization_decrease',
+            'end_value',
+            'actual_value',
+            'closing_value',
+            }
+        for attr_name in grouped_attributes:
+            setattr(Grouper, attr_name, cached_property(adder(attr_name)))
 
         return Grouper
 
