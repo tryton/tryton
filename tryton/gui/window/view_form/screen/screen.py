@@ -142,7 +142,9 @@ class Screen(SignalEvent):
                         if type_ == 'datetime':
                             fields[name]['format'] = '"%H:%M:%S"'
 
-                self.domain_parser = DomainParser(fields)
+                context = rpc.CONTEXT.copy()
+                context.update(self.context)
+                self.domain_parser = DomainParser(fields, context)
 
             self.screen_container.set_screen(self)
             self.screen_container.show_filter()

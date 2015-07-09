@@ -12,6 +12,8 @@ from collections import OrderedDict
 
 from tryton.common import untimezoned_date, timezoned_date, datetime_strftime
 from tryton.common.datetime_ import date_parse
+from tryton.common.timedelta import parse as timedelta_parse
+from tryton.common.timedelta import format as timedelta_format
 from tryton.pyson import PYSONDecoder
 
 __all__ = ['DomainParser']
@@ -288,6 +290,9 @@ def convert_value(field, value, context=None):
         except (ValueError, TypeError):
             return
 
+    def convert_timedelta():
+        return timedelta_parse(value, context.get(field.get('converter')))
+
     def convert_many2one():
         if value == '':
             return None
@@ -303,6 +308,7 @@ def convert_value(field, value, context=None):
         'datetime': convert_datetime,
         'date': convert_date,
         'time': convert_time,
+        'timedelta': convert_timedelta,
         'many2one': convert_many2one,
         }
     return converts.get(field['type'], lambda: value)()
@@ -430,6 +436,18 @@ def test_convert_time():
         assert convert_value(field, value) == result
 
 
+def test_convert_timedelta():
+    field = {
+        'type': 'timedelta',
+        }
+    for value, result in [
+            ('1d 2:00', datetime.timedelta(days=1, hours=2)),
+            ('foo', datetime.timedelta()),
+            (None, None),
+            ]:
+        assert convert_value(field, value) == result
+
+
 def format_value(field, value, target=None, context=None):
     "Format value for field"
     if context is None:
@@ -487,6 +505,11 @@ def format_value(field, value, target=None, context=None):
             return ''
         return datetime.time.strftime(value, time_format(field))
 
+    def format_timedelta():
+        if not value:
+            return ''
+        return timedelta_format(value, context.get(field.get('converter')))
+
     def format_many2one():
         if value is None:
             return ''
@@ -502,6 +525,7 @@ def format_value(field, value, target=None, context=None):
         'datetime': format_datetime,
         'date': format_date,
         'time': format_time,
+        'timedelta': format_timedelta,
         'many2one': format_many2one,
         }
     if isinstance(value, (list, tuple)):
@@ -631,6 +655,19 @@ def test_format_time():
             (False, ''),
             (None, ''),
             ):
+        assert format_value(field, value) == result
+
+
+def test_format_timedelta():
+    field = {
+        'type': 'timedelta',
+        }
+    for value, result in [
+            (datetime.timedelta(days=1, hours=2), '"1d 02:00"'),
+            (datetime.timedelta(), ''),
+            (None, ''),
+            ('', ''),
+            ]:
         assert format_value(field, value) == result
 
 
