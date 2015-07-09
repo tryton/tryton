@@ -4,7 +4,6 @@ import copy
 
 from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
-from sql.conditionals import Case
 
 from .function import Function
 from .field import Field, SQL_OPERATORS
@@ -96,9 +95,7 @@ class Property(Function):
                         Position(',', property_.res) + Literal(1)),
                     Model.id.sql_type().base),
                 property_.id,
-                where=Case((cond, self.get_condition(sql_type, domain,
-                            property_)),
-                    else_=False)))
+                where=cond & self.get_condition(sql_type, domain, property_)))
 
         props = cursor.fetchall()
         default = None
@@ -165,7 +162,7 @@ class Property(Function):
             return column.in_(value)
         elif ((value is False or value is None)
                 and operator in ('=', '!=')):
-            return (column == Null) == value
+            return column != Null
         elif operator == 'not like':
             return column.like(value)
         elif operator == 'not ilike':
