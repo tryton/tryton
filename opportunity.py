@@ -135,7 +135,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             for id_, sale_id in cursor.fetchall():
                 cursor.execute(*sale.update(
                         columns=[sale.origin],
-                        values=['%s,%s' % (Sale.__name__, sale_id)],
+                        values=['%s,%s' % (cls.__name__, id_)],
                         where=sale.id == sale_id))
             table.drop_column('sale', exception=True)
 
