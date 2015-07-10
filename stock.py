@@ -158,6 +158,7 @@ class Move:
     @property
     def to_check_expiration(self):
         if (self.lot
+                and self.lot.shelf_life_expiration_date
                 and self.effective_date > self.lot.shelf_life_expiration_date):
             return True
         return False
