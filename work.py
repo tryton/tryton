@@ -3,6 +3,7 @@
 import datetime
 
 from sql import Null
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pyson import Eval
@@ -64,7 +65,7 @@ class Work(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
