@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from stdnum import iban
 from sql import operators, Literal, Null
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields
 
@@ -70,7 +71,7 @@ class BankAccountNumber(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def domain_number(cls, domain, tables):
