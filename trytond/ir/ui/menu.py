@@ -3,6 +3,7 @@
 from itertools import groupby
 
 from sql import Null
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
@@ -296,7 +297,7 @@ class UIMenuFavorite(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_user():
