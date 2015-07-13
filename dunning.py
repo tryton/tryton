@@ -3,6 +3,7 @@
 from collections import defaultdict
 
 from sql import Null
+from sql.conditionals import Case
 
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique
 from trytond.pyson import If, Eval
@@ -40,7 +41,7 @@ class Level(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
