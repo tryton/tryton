@@ -689,7 +689,9 @@ class ModelView(Model):
             return changed
         for fname, value in self._values.iteritems():
             field = self._fields[fname]
-            if (value == init_values.get(fname)
+            # Always test key presence in case value is None
+            if (fname in init_values
+                    and value == init_values[fname]
                     and field._type != 'one2many'):
                 continue
             if field._type in ('many2one', 'one2one', 'reference'):
