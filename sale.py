@@ -7,6 +7,7 @@ from functools import partial
 from sql import Table, Null
 from sql.functions import Overlay, Position
 from sql.operators import Concat
+from sql.conditionals import Case
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
@@ -1084,7 +1085,7 @@ class SaleLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
