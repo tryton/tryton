@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from sql import Null
+from sql.conditionals import Case
 from simpleeval import simple_eval
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
@@ -105,7 +106,7 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_formula():
