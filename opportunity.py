@@ -459,7 +459,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
