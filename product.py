@@ -4,6 +4,7 @@ import datetime
 
 from sql import Literal, Null
 from sql.aggregate import Count
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.pyson import Eval, If
@@ -222,7 +223,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_company():
@@ -331,7 +332,7 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_quantity():
