@@ -753,7 +753,7 @@ class ModelSQL(ModelStorage):
         all_field_names = set()
 
         # Call before cursor cache cleaning
-        trigger_eligibles = cls.trigger_write_get_eligibles(records)
+        trigger_eligibles = cls.trigger_write_get_eligibles(all_records)
 
         super(ModelSQL, cls).write(records, values, *args)
 
