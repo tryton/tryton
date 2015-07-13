@@ -4,6 +4,7 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
 from sql import Null, Column
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond import backend
@@ -175,7 +176,7 @@ class PaymentTermLine(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_currency_digits():
@@ -358,7 +359,7 @@ class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_months():
