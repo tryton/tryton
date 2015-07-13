@@ -8,7 +8,7 @@ from functools import wraps
 
 from sql import Column, Literal, Null
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
@@ -80,7 +80,7 @@ class TypeTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -223,7 +223,7 @@ class Type(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_balance_sheet():

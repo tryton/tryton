@@ -3,10 +3,11 @@
 import datetime
 from collections import namedtuple
 from decimal import Decimal
+from itertools import groupby
 
 from sql import Null
 from sql.aggregate import Sum
-from itertools import groupby
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -448,7 +449,7 @@ class TaxTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
@@ -770,7 +771,7 @@ class Tax(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_active():
@@ -1409,7 +1410,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     def _get_tax_rule_line_value(self, rule_line=None):
         '''
@@ -1523,7 +1524,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     def match(self, pattern):
         if 'group' in pattern and not self.group:
