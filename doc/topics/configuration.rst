@@ -167,6 +167,18 @@ The number of field to load with an `eager` :attr:`Field.loading`.
 
 Default: `100`
 
+table
+-----
+
+This section allows to override the default generated table name for a
+:class:`ModelSQL`. The main goal is to bypass limitation on the name length of
+the database backend.
+For example::
+
+    [table]
+    account.invoice.line = acc_inv_line
+    account.invoice.tax = acc_inv_tax
+
 ssl
 ---
 
