@@ -4,7 +4,8 @@ import gtk
 import gettext
 
 from .many2one import Many2One
-from tryton.common.selection import SelectionMixin, PopdownMixin
+from tryton.common.selection import SelectionMixin, PopdownMixin, \
+        selection_shortcuts
 
 _ = gettext.gettext
 
@@ -16,10 +17,13 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
 
         self.widget_combo = gtk.ComboBoxEntry()
         child = self.widget_combo.get_child()
-        child.set_editable(False)
-        child.connect('changed', self.sig_changed_combo)
-        self.widget.pack_start(self.widget_combo, expand=False, fill=True)
+        child.connect('activate', lambda *a: self._focus_out())
+        child.connect('focus-out-event', lambda *a: self._focus_out())
+        self.widget_combo.connect('changed', self.sig_changed_combo)
+        selection_shortcuts(self.widget_combo)
+        self.widget_combo.set_focus_chain([child])
 
+        self.widget.pack_start(self.widget_combo, expand=False, fill=True)
         self.widget.pack_start(gtk.Label('-'), expand=False, fill=False)
 
         self.init_selection()
