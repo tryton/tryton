@@ -349,6 +349,7 @@ Create customer invoice with negative quantity::
     >>> invoice_line = invoice.lines.new()
     >>> invoice_line.product = product
     >>> invoice_line.quantity = -1
+    >>> invoice_line.unit_price = Decimal('10')
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
