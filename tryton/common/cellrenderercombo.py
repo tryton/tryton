@@ -2,99 +2,56 @@
 # this repository contains the full copyright notices and license terms.
 import gtk
 import gobject
-import pango
 
 from tryton.common.selection import selection_shortcuts
 
 
-class CellRendererCombo(gtk.GenericCellRenderer):
+class CellRendererCombo(gtk.CellRendererCombo):
     __gproperties__ = {
-        'text': (gobject.TYPE_STRING, None, 'Text',
-            'Text', gobject.PARAM_READWRITE),
-        'foreground': (gobject.TYPE_STRING, None, 'Foreground',
-            'Foreground', gobject.PARAM_WRITABLE),
-        'foreground-set': (gobject.TYPE_INT, 'Foreground Set',
-            'Foreground Set', 0, 10, 0, gobject.PARAM_READWRITE),
-        'background': (gobject.TYPE_STRING, None, 'Background',
-            'Background', gobject.PARAM_WRITABLE),
-        'background-set': (gobject.TYPE_INT, 'Background Set',
-            'Background Set', 0, 10, 0, gobject.PARAM_READWRITE),
-        'editable': (gobject.TYPE_INT, 'Editable',
-            'Editable', 0, 10, 0, gobject.PARAM_READWRITE),
-        'xalign': (gobject.TYPE_FLOAT, 'XAlign',
-            'XAlign', 0, 1, 0, gobject.PARAM_READWRITE),
         'visible': (gobject.TYPE_INT, 'Visible',
             'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
-        'has-entry': (gobject.TYPE_INT, 'Has Entry',
-            'Has Entry', 0, 10, 0, gobject.PARAM_READWRITE),
-        'model': (gobject.TYPE_OBJECT, 'Model', 'Model',
-            gobject.PARAM_READWRITE),
-        'text-column': (gobject.TYPE_INT, 'Text Column',
-            'Text Column', 0, 10, 0, gobject.PARAM_READWRITE),
-        'strikethrough': (gobject.TYPE_BOOLEAN, 'Strikethrough',
-            'Strikethrough', False, gobject.PARAM_WRITABLE),
         }
 
     def __init__(self):
-        self.__gobject_init__()
-        self._renderer = gtk.CellRendererCombo()
-        self.set_property("mode", self._renderer.get_property("mode"))
-
-        self.text = self._renderer.get_property('text')
-        self.editable = self._renderer.get_property('editable')
-        self.visible = True
+        gtk.CellRendererCombo.__init__(self)
+        self.__visible = True
 
     def set_sensitive(self, value):
-        if hasattr(self._renderer, 'set_sensitive'):
-            return self._renderer.set_sensitive(value)
-        return self._renderer.set_property('sensitive', value)
+        self.set_property('sensitive', value)
 
-    def do_set_property(self, pspec, value):
-        setattr(self, pspec.name, value)
-        if pspec.name == 'visible':
+    def do_set_property(self, prop, value):
+        if prop.name == 'visible':
+            self.__visible = value
             return
-        self._renderer.set_property(pspec.name, value)
-        self.set_property("mode", self._renderer.get_property("mode"))
+        gtk.CellRendererCombo.do_set_property(self, prop, value)
 
-    def do_get_property(self, pspec):
-        return getattr(self, pspec.name)
+    def do_get_property(self, prop):
+        if prop.name == 'visible':
+            return self.__visible
+        return gtk.CellRendererCombo.do_get_property(self, prop)
 
-    def on_get_size(self, widget, cell_area):
-        return self._renderer.get_size(widget, cell_area)
-
-    def on_render(self, window, widget, background_area, cell_area,
+    def do_render(self, window, widget, background_area, cell_area,
             expose_area, flags):
-        if not self.visible:
+        if not self.__visible:
             return
-        # Handle Pixmap window as pygtk failed
-        if type(window) == gtk.gdk.Pixmap:
-            layout = widget.create_pango_layout(self.text)
-            layout.set_font_description(widget.style.font_desc)
-            w, h = layout.get_size()
-            xalign = self._renderer.get_property('xalign')
-            x = int(cell_area.x + (cell_area.width - w / pango.SCALE) * xalign)
-            y = int(cell_area.y + (cell_area.height - h / pango.SCALE) / 2)
-            window.draw_layout(widget.style.text_gc[0], x, y, layout)
-            return
-        return self._renderer.render(window, widget, background_area,
-                cell_area, expose_area, flags)
+        gtk.CellRendererCombo.do_render(self, window, widget,
+            background_area, cell_area, expose_area, flags)
 
-    def on_activate(self, event, widget, path, background_area, cell_area,
+    def do_activate(self, event, widget, path, background_area, cell_area,
             flags):
-        if not self.visible:
+        if not self.__visible:
             return
-        return self._renderer.activate(event, widget, path, background_area,
-                cell_area, flags)
+        return gtk.CellRendererCombo.do_activate(self, event, widget, path,
+            background_area, cell_area, flags)
 
-    def on_start_editing(self, event, widget, path, background_area,
+    def do_start_editing(self, event, widget, path, background_area,
             cell_area, flags):
-        if not self.visible:
+        if not self.__visible:
             return
         if not event:
             event = gtk.gdk.Event(gtk.keysyms.Tab)
-        editable = self._renderer.start_editing(event, widget, path,
-                background_area, cell_area, flags)
-
+        editable = gtk.CellRendererCombo.do_start_editing(self, event, widget,
+            path, background_area, cell_area, flags)
         return selection_shortcuts(editable)
 
 gobject.type_register(CellRendererCombo)
