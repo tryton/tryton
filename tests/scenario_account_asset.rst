@@ -103,6 +103,7 @@ Buy an asset::
     >>> supplier_invoice.lines.append(invoice_line)
     >>> invoice_line.product = asset_product
     >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('1000')
     >>> invoice_line.account == asset_account
     True
     >>> supplier_invoice.invoice_date = today + relativedelta(day=1, month=1)
