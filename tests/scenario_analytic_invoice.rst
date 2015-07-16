@@ -112,6 +112,7 @@ Create invoice with analytic accounts::
     >>> mandatory_entry.account = mandatory_analytic_account
     >>> line.product = product
     >>> line.quantity = 5
+    >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
@@ -137,6 +138,7 @@ Create invoice with an empty analytic account::
     >>> mandatory_entry.account = mandatory_analytic_account
     >>> line.product = product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
