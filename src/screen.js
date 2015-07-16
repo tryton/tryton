@@ -1148,6 +1148,47 @@
             this.offset += this.limit;
             this.search_filter(search_string);
         },
+        invalid_message: function(record) {
+            if (!record) {
+                record = this.current_record;
+            }
+            var fields_desc = {};
+            for (var fname in record.model.fields) {
+                var field = record.model.fields[fname];
+                fields_desc[fname] = field.description;
+            }
+            var domain_parser = new Sao.common.DomainParser(fields_desc);
+            var fields = [];
+            var invalid_fields = record.invalid_fields();
+            Object.keys(invalid_fields).sort().forEach(
+                function(field) {
+                    var invalid = invalid_fields[field];
+                    var string = record.model.fields[field].description.string;
+                    if (invalid == 'required') {
+                        fields.push(Sao.i18n.gettext('"%1" is required', string));
+                    } else if (invalid == 'domain') {
+                        fields.push(Sao.i18n.gettext(
+                                '"%1" is not valid according to its domain'),
+                            string);
+                    } else if (invalid == 'children') {
+                        fields.push(Sao.i18n.gettext(
+                                'The values of "%1" are not valid', string));
+                    } else {
+                        if (domain_parser.stringable(invalid)) {
+                            fields.push(domain_parser.string(invalid));
+                        } else {
+                            fields.push(Sao.i18n.gettext(
+                                    '"%1" is not valid according to its domain'),
+                                string);
+                        }
+                    }
+                });
+            if (fields.length > 5) {
+                fields.splice(5, fields.length);
+                fields.push('...');
+            }
+            return fields.join('\n');
+        },
         get: function() {
             if (!this.current_record) {
                 return null;

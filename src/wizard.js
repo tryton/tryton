@@ -118,7 +118,7 @@
                 if ((!validate) && state != this.end_state) {
                     this.screen.display();
                     this.info_bar.message(
-                            Sao.i18n.gettext('Invalid form.'), 'danger');
+                        this.screen.invalid_message(), 'danger');
                     return;
                 }
                 this.info_bar.message();

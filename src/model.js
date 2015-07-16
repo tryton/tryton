@@ -695,12 +695,9 @@
             var fields = {};
             for (var fname in this.model.fields) {
                 var field = this.model.fields[fname];
-                var valid = field.get_state_attrs(this).valid;
-                if (valid === undefined) {
-                    valid = true;
-                }
-                if (!valid) {
-                    fields[fname] = field.description.string;
+                var invalid = field.get_state_attrs(this).invalid;
+                if (invalid) {
+                    fields[fname] = invalid;
                 }
             }
             return fields;
@@ -1332,21 +1329,25 @@
             return true;
         },
         validate: function(record, softvalidation, pre_validate) {
-            var result = true;
             if (this.description.readonly) {
                 return true;
             }
+            var invalid = false;
             this.get_state_attrs(record).domain_readonly = false;
             var inversion = new Sao.common.DomainInversion();
             var domain = inversion.simplify(this.validation_domains(record,
                         pre_validate));
             if (!softvalidation) {
-                result &= this.check_required(record);
+                if (!this.check_required(record)) {
+                    invalid = 'required';
+                }
             }
             if (typeof domain == 'boolean') {
-                result &= domain;
+                if (!domain) {
+                    invalid = 'domain';
+                }
             } else if (Sao.common.compare(domain, [['id', '=', null]])) {
-                result = false;
+                invalid = 'domain';
             } else {
                 var uniques = inversion.unique_value(domain);
                 var unique = uniques[0];
@@ -1392,11 +1393,13 @@
                             domain_readonly;
                     }
                 }
-                result &= inversion.eval_domain(domain,
-                        Sao.common.EvalEnvironment(record));
+                if (!inversion.eval_domain(domain,
+                            Sao.common.EvalEnvironment(record))) {
+                    invalid = domain;
+                }
             }
-            this.get_state_attrs(record).valid = result;
-            return result;
+            this.get_state_attrs(record).invalid = invalid;
+            return !invalid;
         }
     });
 
@@ -2011,10 +2014,10 @@
             return this.get_domains(record, pre_validate)[0];
         },
         validate: function(record, softvalidation, pre_validate) {
-            var result = true;
             if (this.description.readonly) {
                 return true;
             }
+            var invalid = false;
             var inversion = new Sao.common.DomainInversion();
             var ldomain = inversion.localize_domain(inversion.domain_inversion(
                         record.group.clean4inversion(pre_validate || []), this.name,
@@ -2035,15 +2038,16 @@
                     continue;
                 }
                 if (!record2.validate(null, softvalidation, ldomain, true)) {
-                    result = false;
+                    invalid = 'children';
                 }
             }
-            if (!Sao.field.One2Many._super.validate.call(this, record,
-                        softvalidation, pre_validate)) {
-                result = false;
+            var test = Sao.field.One2Many._super.validate.call(this, record,
+                        softvalidation, pre_validate);
+            if (test && invalid) {
+                this.get_state_attrs(record).invalid = invalid;
+                return false;
             }
-            this.get_state_attrs(record).valid = result;
-            return result;
+            return test;
         },
         set_state: function(record, states) {
             this._set_default_value(record);

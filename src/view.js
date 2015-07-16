@@ -137,10 +137,13 @@
             }
             thead.append(tr);
             this.columns.forEach(function(column) {
-                th = jQuery('<th/>', {
-                    text: column.attributes.string
-                });
-                tr.append(th);
+                th = jQuery('<th/>');
+                var label = jQuery('<label/>')
+                    .text(column.attributes.string);
+                if (column.attributes.required) {
+                    label.addClass('required');
+                }
+                tr.append(th.append(label));
                 column.header = th;
             });
             this.tbody = jQuery('<tbody/>');
@@ -184,7 +187,7 @@
                         'relation_field', 'string', 'views', 'invisible',
                         'add_remove', 'sort', 'context', 'filename',
                         'autocomplete', 'translate', 'create', 'delete',
-                        'selection_change_with', 'schema_model'];
+                        'selection_change_with', 'schema_model', 'required'];
                     for (i in attribute_names) {
                         var attr = attribute_names[i];
                         if ((attr in model.fields[name].description) &&
@@ -1832,13 +1835,28 @@
         },
         set_state: function(record) {
             Sao.View.Form.Label._super.set_state.call(this, record);
-            if ((this.attributes.string === undefined) &&
-                    this.attributes.name) {
+            var field;
+            if (this.attributes.name && record) {
+                field = record.model.fields[this.attributes.name];
+            }
+            if ((this.attributes.string === undefined) && field) {
                 var text = '';
                 if (record) {
-                    text = record.field_get_client(this.attributes.name) || '';
+                    text = field.get_client(record) || '';
                 }
                 this.el.val(text);
+            }
+            var state_changes;
+            if (record) {
+                state_changes = record.expr_eval(this.attributes.states || {});
+            } else {
+                state_changes = {};
+            }
+            if ((field && field.description.required) ||
+                    state_changes.required) {
+                this.el.addClass('required');
+            } else {
+                this.el.removeClass('required');
             }
         }
     });
@@ -1982,19 +2000,12 @@
                 readonly = true;
             }
             this.set_readonly(readonly);
-            var valid = true;
-            if (state_attrs.valid !== undefined) {
-                valid = state_attrs.valid;
+            var invalid = state_attrs.invalid;
+            if (!readonly && invalid) {
+                this.el.addClass('has-error');
+            } else {
+                this.el.removeClass('has-error');
             }
-            // XXX allow to customize colors
-            var color = 'inherit';
-            if (readonly) {
-            } else if (!valid) {
-                color = 'red';
-            } else if (state_attrs.required) {
-                color = 'lightblue';
-            }
-            this.set_color(color);
             if (invisible === undefined) {
                 invisible = field.get_state_attrs(record).invisible;
                 if (invisible === undefined) {
@@ -2027,14 +2038,6 @@
         },
         set_readonly: function(readonly) {
             this.el.prop('disabled', readonly);
-        },
-        _get_color_el: function() {
-            return this.el;
-        },
-        set_color: function(color) {
-            var el = this._get_color_el();
-            el.css('background-color', color);
-            el.css('background-image', 'none');
         },
         set_invisible: function(invisible) {
             this.visible = !invisible;
@@ -2263,9 +2266,6 @@
             this.select.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
             this.init_selection();
-        },
-        _get_color_el: function() {
-            return this.select;
         },
         init_selection: function(key) {
             Sao.common.selection_mixin.init_selection.call(this, key,
@@ -3022,14 +3022,6 @@
             }.bind(this));
             // TODO sensitivity of buttons
         },
-        _get_color_el: function() {
-            if (this.screen.current_view &&
-                    (this.screen.current_view.view_type == 'tree') &&
-                    this.screen.current_view.el) {
-                return this.screen.current_view.el;
-            }
-            return Sao.View.Form.One2Many._super._get_color_el.call(this);
-        },
         set_readonly: function(readonly) {
             this._readonly = readonly;
             this._set_button_sensitive();
@@ -3235,7 +3227,6 @@
         },
         switch_: function(event_) {
             this.screen.switch_view();
-            // TODO color_set
         },
         edit: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).read) {
@@ -3344,14 +3335,6 @@
             this.prm = this.screen.switch_view('tree').done(function() {
                 this.content.append(this.screen.screen_container.el);
             }.bind(this));
-        },
-        _get_color_el: function() {
-            if (this.screen.current_view &&
-                    (this.screen.current_view.view_type == 'tree') &&
-                    this.screen.current_view.el) {
-                return this.screen.current_view.el;
-            }
-            return Sao.View.Form.Many2Many._super._get_color_el.call(this);
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;
@@ -3694,13 +3677,6 @@
             if (this.text) {
                 this.filename_field().set_client(record,
                         this.text.val() || '');
-            }
-        },
-        _get_color_el: function() {
-            if (this.text) {
-                return this.text;
-            } else {
-                return this.size;
             }
         },
         set_readonly: function(readonly) {

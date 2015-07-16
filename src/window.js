@@ -8,6 +8,7 @@
     Sao.Window.InfoBar = Sao.class_(Object, {
         init: function() {
             this.text = jQuery('<span/>');
+            this.text.css('white-space', 'pre-wrap');
             this.el = jQuery('<div/>', {
                 'class': 'alert',
                 'role': 'alert'
@@ -283,7 +284,7 @@
                             closing_prm.resolve, closing_prm.reject);
                     } else if (!validate) {
                         this.info_bar.message(
-                                Sao.i18n.gettext('Invalid form.'), 'danger');
+                            this.screen.invalid_message(), 'danger');
                         closing_prm.reject();
                     } else {
                         this.info_bar.message();

@@ -450,7 +450,7 @@
                     }.bind(this),
                     function() {
                         this.info_bar.message(
-                                Sao.i18n.gettext('Invalid form.'), 'danger');
+                            this.screen.invalid_message(), 'danger');
                     }.bind(this));
         },
         switch_: function() {
