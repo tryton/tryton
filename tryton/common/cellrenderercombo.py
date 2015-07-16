@@ -95,26 +95,6 @@ class CellRendererCombo(gtk.GenericCellRenderer):
         editable = self._renderer.start_editing(event, widget, path,
                 background_area, cell_area, flags)
 
-        colormap = editable.get_colormap()
-        style = editable.get_style()
-        if hasattr(self, 'background') \
-                and getattr(self, 'background') != 'white':
-            bg_color = colormap.alloc_color(getattr(self, 'background'))
-            fg_color = gtk.gdk.color_parse("black")
-            editable.modify_bg(gtk.STATE_ACTIVE, bg_color)
-            editable.modify_base(gtk.STATE_NORMAL, bg_color)
-            editable.modify_fg(gtk.STATE_NORMAL, fg_color)
-            editable.modify_text(gtk.STATE_NORMAL, fg_color)
-            editable.modify_text(gtk.STATE_INSENSITIVE, fg_color)
-        else:
-            editable.modify_bg(gtk.STATE_ACTIVE, style.bg[gtk.STATE_ACTIVE])
-            editable.modify_base(gtk.STATE_NORMAL,
-                style.base[gtk.STATE_NORMAL])
-            editable.modify_fg(gtk.STATE_NORMAL, style.fg[gtk.STATE_NORMAL])
-            editable.modify_text(gtk.STATE_NORMAL,
-                style.text[gtk.STATE_NORMAL])
-            editable.modify_text(gtk.STATE_INSENSITIVE,
-                style.text[gtk.STATE_INSENSITIVE])
         return selection_shortcuts(editable)
 
 gobject.type_register(CellRendererCombo)

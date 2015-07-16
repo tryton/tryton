@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gtk
+import pango
 
 
 class StateMixin(object):
@@ -24,13 +25,28 @@ class Label(StateMixin, gtk.Label):
 
     def state_set(self, record):
         super(Label, self).state_set(record)
-        if not self.attrs.get('string', True) and 'name' in self.attrs:
+        if 'name' in self.attrs and record:
+            field = record.group.fields[self.attrs['name']]
+        else:
+            field = None
+        if not self.attrs.get('string', True) and field:
             if record:
-                field = record.group.fields[self.attrs['name']]
                 text = field.get_client(record) or ''
             else:
                 text = ''
             self.set_text(text)
+        if record:
+            state_changes = record.expr_eval(self.attrs.get('states', {}))
+        else:
+            state_changes = {}
+        if ((field and field.attrs.get('required'))
+                or state_changes.get('required')):
+            weight = pango.WEIGHT_BOLD
+        else:
+            weight = pango.WEIGHT_NORMAL
+        attrlist = pango.AttrList()
+        attrlist.change(pango.AttrWeight(weight, 0, -1))
+        self.set_attributes(attrlist)
 
 
 class VBox(StateMixin, gtk.VBox):
@@ -68,7 +84,6 @@ class Notebook(StateMixin, gtk.Notebook):
             for widgets in self.widgets.itervalues():
                 for widget in widgets:
                     widget._readonly_set(True)
-                    widget.color_set('readonly')
 
 
 class Alignment(gtk.Alignment):

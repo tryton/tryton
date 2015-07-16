@@ -18,16 +18,13 @@ class DBCreate(object):
         Method to set the server connection information depending on the
         connection state. If state is True, the connection string will shown.
         Otherwise the wrong connection string will be shown plus an additional
-        errormessage, colored in red. In this case, all entryboxes set
-        insensitive
+        errormessage. In this case, all entryboxes set insensitive
         """
         if state:
             self.entry_serverpasswd.set_sensitive(True)
             self.entry_dbname.set_sensitive(True)
             self.entry_adminpasswd.set_sensitive(True)
             self.entry_adminpasswd2.set_sensitive(True)
-            self.entry_server_connection.modify_text(gtk.STATE_INSENSITIVE,
-                gtk.gdk.color_parse(common.COLOR_SCHEMES["black"]))
             self.tooltips.set_tip(self.entry_server_connection,
                 _("This is the URL of the Tryton server. Use server "
                     "'localhost' and port '8000' if the server is installed "
@@ -43,8 +40,6 @@ class DBCreate(object):
             self.entry_server_connection.set_text(
                 self.entry_server_connection.get_text()
                 + "  " + _("No connection!"))
-            self.entry_server_connection.modify_text(gtk.STATE_INSENSITIVE,
-                gtk.gdk.color_parse(common.COLORS["invalid"]))
             self.tooltips.set_tip(self.entry_server_connection, _(
                     "Can not connect to the server!\n"
                     "1. Try to check if the server is running.\n"

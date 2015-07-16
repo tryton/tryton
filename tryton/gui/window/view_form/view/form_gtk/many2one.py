@@ -89,9 +89,6 @@ class Many2One(Widget):
             return self.field.get_client(self.record) != value
         return False
 
-    def _color_widget(self):
-        return self.wid_text
-
     @staticmethod
     def has_target(value):
         return value is not None

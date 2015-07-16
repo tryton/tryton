@@ -357,7 +357,7 @@ class Form(SignalEvent, TabContent):
             self.message_info(_('Record saved.'), gtk.MESSAGE_INFO)
             return True
         else:
-            self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
+            self.message_info(self.screen.invalid_message(), gtk.MESSAGE_ERROR)
             return False
 
     def sig_previous(self, widget=None):

@@ -145,7 +145,7 @@ class Wizard(InfoBar):
         if (not self.screen.current_record.validate()
                 and state != self.end_state):
             self.screen.display(set_cursor=True)
-            self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
+            self.message_info(self.screen.invalid_message(), gtk.MESSAGE_ERROR)
             return
         self.message_info()
         self.state = state

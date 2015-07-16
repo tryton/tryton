@@ -863,6 +863,30 @@ class Screen(SignalEvent):
         self.set_cursor(reset_view=False)
         view.display()
 
+    def invalid_message(self, record=None):
+        if record is None:
+            record = self.current_record
+        domain_string = _('"%s" is not valid according to its domain')
+        domain_parser = DomainParser(
+            {n: f.attrs for n, f in record.group.fields.iteritems()})
+        fields = []
+        for field, invalid in sorted(record.invalid_fields.items()):
+            string = record.group.fields[field].attrs['string']
+            if invalid == 'required':
+                fields.append(_('"%s" is required') % string)
+            elif invalid == 'domain':
+                fields.append(domain_string % string)
+            elif invalid == 'children':
+                fields.append(_('The values of "%s" are not valid') % string)
+            else:
+                if domain_parser.stringable(invalid):
+                    fields.append(domain_parser.string(invalid))
+                else:
+                    fields.append(domain_string % string)
+        if len(fields) > 5:
+            fields = fields[:5] + ['...']
+        return '\n'.join(fields)
+
     @property
     def selected_records(self):
         return self.current_view.selected_records

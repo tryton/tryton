@@ -416,9 +416,9 @@ class ViewForm(View):
         if record:
             for name, widgets in self.widgets.iteritems():
                 field = record.group.fields.get(name)
-                if field and 'valid' in field.get_state_attrs(record):
+                if field and 'invalid' in field.get_state_attrs(record):
                     for widget in widgets:
-                        field.get_state_attrs(record)['valid'] = True
+                        field.get_state_attrs(record)['invalid'] = False
                         widget.display(record, field)
 
     def display(self):
@@ -466,15 +466,12 @@ class ViewForm(View):
         record = self.screen.current_record
         if record:
             invalid_widgets = []
-            for name, widgets in self.widgets.iteritems():
+            for name in record.invalid_fields:
+                widgets = self.widgets.get(name, [])
                 for widget in widgets:
-                    field = record.group.fields.get(name)
-                    if not field:
-                        continue
-                    if not field.get_state_attrs(record).get('valid', True):
-                        invalid_widget = find_focusable_child(widget.widget)
-                        if invalid_widget:
-                            invalid_widgets.append(invalid_widget)
+                    invalid_widget = find_focusable_child(widget.widget)
+                    if invalid_widget:
+                        invalid_widgets.append(invalid_widget)
             if invalid_widgets:
                 focus_widget = find_first_focus_widget(
                     self._viewport, invalid_widgets)

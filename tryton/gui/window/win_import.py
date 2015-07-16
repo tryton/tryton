@@ -182,8 +182,7 @@ class WinImport(NoModal):
         self.view2.set_headers_visible(False)
 
         cell = gtk.CellRendererText()
-        column = gtk.TreeViewColumn(_('Field name'), cell, text=0,
-                background=2)
+        column = gtk.TreeViewColumn(_('Field name'), cell, text=0)
         self.view1.append_column(column)
 
         cell = gtk.CellRendererText()
@@ -219,15 +218,14 @@ class WinImport(NoModal):
             if not fields[field].get('readonly', False):
                 self.fields_data[prefix_field + field] = fields[field]
                 name = fields[field]['string'] or field
-                node = self.model1.insert(parent_node, 0, [name, prefix_field +
-                    field, (fields[field].get('required', False) and
-                        common.COLORS['required']) or 'white'])
+                node = self.model1.insert(
+                    parent_node, 0, [name, prefix_field + field])
                 name = prefix_name + name
                 self.fields[prefix_field + field] = (name,
                         fields[field].get('relation'))
                 self.fields_invert[name] = prefix_field + field
                 if fields[field].get('relation'):
-                    self.model1.insert(node, 0, [None, '', 'white'])
+                    self.model1.insert(node, 0, [None, ''])
 
     def _get_fields(self, model):
         try:

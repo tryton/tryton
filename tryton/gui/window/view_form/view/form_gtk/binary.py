@@ -193,9 +193,3 @@ class Binary(Widget):
             self.filename_field.set_client(self.record,
                     self.wid_text.get_text() or False)
         return
-
-    def _color_widget(self):
-        if self.wid_text:
-            return self.wid_text
-        else:
-            return self.wid_size

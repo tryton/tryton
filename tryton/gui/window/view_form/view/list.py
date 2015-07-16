@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gobject
 import gtk
+import pango
 import sys
 try:
     import simplejson as json
@@ -455,6 +456,10 @@ class ViewTree(View):
         tooltips = Tooltips()
         hbox = gtk.HBox(False, 2)
         label = gtk.Label(attributes['string'])
+        if field.attrs.get('required'):
+            attrlist = pango.AttrList()
+            attrlist.insert(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
+            label.set_attributes(attrlist)
         label.show()
         help = attributes['string']
         if field and field.attrs.get('help'):

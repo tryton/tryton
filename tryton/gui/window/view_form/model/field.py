@@ -78,15 +78,17 @@ class Field(object):
     def validate(self, record, softvalidation=False, pre_validate=None):
         if self.attrs.get('readonly'):
             return True
-        res = True
+        invalid = False
         self.get_state_attrs(record)['domain_readonly'] = False
         domain = simplify(self.validation_domains(record, pre_validate))
         if not softvalidation:
-            res = res and self.check_required(record)
+            if not self.check_required(record):
+                invalid = 'required'
         if isinstance(domain, bool):
-            res = res and domain
+            if not domain:
+                invalid = 'domain'
         elif domain == [('id', '=', None)]:
-            res = False
+            invalid = 'domain'
         else:
             unique, leftpart, value = unique_value(domain)
             if unique:
@@ -115,9 +117,10 @@ class Field(object):
                     self.set_client(record, value)
                     self.get_state_attrs(record)['domain_readonly'] = (
                         domain_readonly)
-            res = res and eval_domain(domain, EvalEnvironment(record))
-        self.get_state_attrs(record)['valid'] = res
-        return res
+            if not eval_domain(domain, EvalEnvironment(record)):
+                invalid = domain
+        self.get_state_attrs(record)['invalid'] = invalid
+        return not invalid
 
     def set(self, record, value):
         record.value[self.name] = value
@@ -717,7 +720,7 @@ class O2MField(Field):
     def validate(self, record, softvalidation=False, pre_validate=None):
         if self.attrs.get('readonly'):
             return True
-        test = True
+        invalid = False
         ldomain = localize_domain(domain_inversion(
                 record.group.clean4inversion(pre_validate or []), self.name,
                 EvalEnvironment(record)), self.name)
@@ -729,11 +732,14 @@ class O2MField(Field):
         for record2 in record.value.get(self.name, []):
             if not record2.loaded and record2.id >= 0 and not pre_validate:
                 continue
-            test &= record2.validate(softvalidation=softvalidation,
-                pre_validate=ldomain)
-        test &= super(O2MField, self).validate(record, softvalidation,
+            if not record2.validate(softvalidation=softvalidation,
+                    pre_validate=ldomain):
+                invalid = 'children'
+        test = super(O2MField, self).validate(record, softvalidation,
             pre_validate)
-        self.get_state_attrs(record)['valid'] = test
+        if test and invalid:
+            self.get_state_attrs(record)['invalid'] = invalid
+            return False
         return test
 
     def state_set(self, record, states=('readonly', 'required', 'invisible')):

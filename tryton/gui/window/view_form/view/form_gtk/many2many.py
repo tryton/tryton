@@ -98,11 +98,6 @@ class Many2Many(Widget):
         self.screen.widget.connect('key_press_event', self.on_keypress)
         self.wid_text.connect('key_press_event', self.on_keypress)
 
-    def _color_widget(self):
-        if hasattr(self.screen.current_view, 'treeview'):
-            return self.screen.current_view.treeview
-        return super(Many2Many, self)._color_widget()
-
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
         activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]
@@ -133,15 +128,6 @@ class Many2Many(Widget):
 
     def destroy(self):
         self.screen.destroy()
-
-    def color_set(self, name):
-        super(Many2Many, self).color_set(name)
-        widget = self._color_widget()
-        # if the style to apply is different from readonly then insensitive
-        # cellrenderers should use the default insensitive color
-        if name != 'readonly':
-            widget.modify_text(gtk.STATE_INSENSITIVE,
-                    self.colors['text_color_insensitive'])
 
     def _sig_add(self, *args):
         if not self.focus_out:

@@ -395,7 +395,8 @@ class WinForm(NoModal, InfoBar):
                             if record:
                                 validate = record.pre_validate()
             if not validate:
-                self.message_info(_('Invalid form.'), gtk.MESSAGE_ERROR)
+                self.message_info(self.screen.invalid_message(),
+                    gtk.MESSAGE_ERROR)
                 self.screen.set_cursor()
                 self.screen.display()
                 return

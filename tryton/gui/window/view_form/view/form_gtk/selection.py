@@ -43,9 +43,6 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         super(Selection, self)._readonly_set(value)
         self.entry.set_sensitive(not value)
 
-    def _color_widget(self):
-        return self.entry.child
-
     def get_value(self):
         if not self.entry.child:  # entry is destroyed
             return
