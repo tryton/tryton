@@ -141,6 +141,7 @@ Create invoice::
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal(100)
     >>> invoice.save()
 
 Post invoice::
