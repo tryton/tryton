@@ -106,6 +106,7 @@ Create invoice::
     >>> invoice.lines.append(line)
     >>> line.product = product
     >>> line.quantity = 5
+    >>> line.unit_price = Decimal('40')
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.account = revenue

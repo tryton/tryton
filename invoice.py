@@ -1691,16 +1691,11 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         '''
         return {}
 
-    @fields.depends('product', 'unit', 'quantity', 'description',
-        '_parent_invoice.type', '_parent_invoice.party',
-        '_parent_invoice.currency', '_parent_invoice.currency_date',
-        'party', 'currency', 'invoice', 'invoice_type')
+    @fields.depends('product', 'unit', 'description', '_parent_invoice.type',
+        '_parent_invoice.party', 'party', 'invoice', 'invoice_type')
     def on_change_product(self):
         pool = Pool()
         Product = pool.get('product.product')
-        Company = pool.get('company.company')
-        Currency = pool.get('currency.currency')
-        Date = pool.get('ir.date')
 
         if not self.product:
             return
@@ -1714,31 +1709,11 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         if party and party.lang:
             context['language'] = party.lang.code
 
-        company = None
-        if Transaction().context.get('company'):
-            company = Company(Transaction().context['company'])
-        currency = None
-        currency_date = Date.today()
-        if self.invoice and self.invoice.currency_date:
-            currency_date = self.invoice.currency_date
-        # TODO check if today date is correct
-        if self.invoice and self.invoice.currency:
-            currency = self.invoice.currency
-        elif self.currency:
-            currency = self.currency
-
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         else:
             type_ = self.invoice_type
         if type_ in ('in_invoice', 'in_credit_note'):
-            if company and currency:
-                with Transaction().set_context(date=currency_date):
-                    self.unit_price = Currency.compute(
-                        company.currency, self.product.cost_price,
-                        currency, round=False)
-            else:
-                self.unit_price = self.product.cost_price
             try:
                 self.account = self.product.account_expense_used
             except Exception:
@@ -1758,13 +1733,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                     taxes.extend(tax_ids)
             self.taxes = taxes
         else:
-            if company and currency:
-                with Transaction().set_context(date=currency_date):
-                    self.unit_price = Currency.compute(
-                        company.currency, self.product.list_price,
-                        currency, round=False)
-            else:
-                self.unit_price = self.product.list_price
             try:
                 self.account = self.product.account_revenue_used
             except Exception:
@@ -1792,9 +1760,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         if not self.unit or self.unit not in category.uoms:
             self.unit = self.product.default_uom.id
             self.unit_digits = self.product.default_uom.digits
-
-        self.type = 'line'
-        self.amount = self.on_change_with_amount()
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):

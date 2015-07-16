@@ -104,6 +104,7 @@ Create invoice::
     >>> invoice.lines.append(line)
     >>> line.product = product
     >>> line.quantity = 5
+    >>> line.unit_price = Decimal('20')
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.account = expense
@@ -178,6 +179,7 @@ Create a posted and a draft invoice  to cancel::
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 1
+    >>> line.unit_price = Decimal('20')
     >>> invoice.click('post')
     >>> invoice_draft, = Invoice.duplicate([invoice])
 

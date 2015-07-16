@@ -107,6 +107,7 @@ Create invoice with alternate currency::
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
+    >>> line.unit_price = Decimal('80')
     >>> line.amount
     Decimal('400.00')
     >>> line = invoice.lines.new()
@@ -146,6 +147,7 @@ Create invoice with alternate currency and negative taxes::
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 5
+    >>> line.unit_price = Decimal('80')
     >>> _ = line.taxes.pop(0)
     >>> line.taxes.append(negative_tax)
     >>> line.amount
