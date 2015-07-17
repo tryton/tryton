@@ -456,7 +456,7 @@ class ViewTree(View):
         tooltips = Tooltips()
         hbox = gtk.HBox(False, 2)
         label = gtk.Label(attributes['string'])
-        if field.attrs.get('required'):
+        if field and field.attrs.get('required'):
             attrlist = pango.AttrList()
             attrlist.insert(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
             label.set_attributes(attrlist)
