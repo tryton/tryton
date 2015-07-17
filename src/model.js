@@ -549,7 +549,7 @@
                 }.bind(this);
                 var group, filter;
                 if (this.group.parent &&
-                        (this.group.parent.model.name && this.model.name)) {
+                        (this.group.parent.model.name == this.model.name)) {
                     group = [];
                     group = group.concat.apply(
                             group, this.group.parent.group.children);
