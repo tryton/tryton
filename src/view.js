@@ -1329,6 +1329,7 @@
                     Number(node.getAttribute('col') || 4));
                 this.containers.push(container);
             }
+            var labels = {}, widget;
             var _parse = function(index, child) {
                 var attributes = {};
                 for (var i = 0, len = child.attributes.length; i < len; i++) {
@@ -1355,7 +1356,11 @@
                                 model, child, container, attributes);
                         break;
                     case 'label':
-                        this._parse_label(model, child, container, attributes);
+                        widget = this._parse_label(
+                                model, child, container, attributes);
+                        if (attributes.name && widget) {
+                            labels[attributes.name] = widget;
+                        }
                         break;
                     case 'newline':
                         container.add_row();
@@ -1371,7 +1376,18 @@
                         this._parse_page(model, child, container, attributes);
                         break;
                     case 'field':
-                        this._parse_field(model, child, container, attributes);
+                        widget = this._parse_field(
+                                model, child, container, attributes);
+                        if ((attributes.name in labels) &&
+                                widget &&
+                                widget.labelled) {
+                            var label = labels[attributes.name];
+                            label.el.uniqueId();
+                            widget.labelled.uniqueId();
+                            widget.labelled.attr(
+                                    'aria-labelledby', label.el.attr('id'));
+                            label.el.attr('for', widget.labelled.attr('id'));
+                        }
                         break;
                     case 'group':
                         this._parse_group(model, child, container, attributes);
@@ -1437,6 +1453,7 @@
             }
             container.add(attributes, label);
             // TODO help
+            return label;
         },
         _parse_button: function(node, container, attributes) {
             var button = new Sao.common.Button(attributes);
@@ -1510,6 +1527,7 @@
             }
             this.widgets[name].push(widget);
             this.fields[name] = true;
+            return widget;
         },
         _parse_group: function(model, node, container, attributes) {
             var group = new Sao.View.Form.Group(attributes);
@@ -1974,6 +1992,7 @@
             this.el = null;
             this.position = 0;
             this.visible = true;
+            this.labelled = null;  // Element which received the labelledby
         },
         display: function(record, field) {
             var readonly = this.attributes.readonly;
@@ -2057,7 +2076,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.input = jQuery('<input/>', {
+            this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
@@ -2114,7 +2133,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.date = jQuery('<div/>', {
+            this.date = this.labelled = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(this.el);
             jQuery('<input/>', {
@@ -2200,7 +2219,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.input = jQuery('<input/>', {
+            this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
@@ -2259,7 +2278,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.select = jQuery('<select/>', {
+            this.select = this.labelled = jQuery('<select/>', {
                 'class': 'form-control input-sm'
             });
             this.el.append(this.select);
@@ -2346,7 +2365,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.input = jQuery('<input/>', {
+            this.input = this.labelled = jQuery('<input/>', {
                 'type': 'checkbox',
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
@@ -2377,7 +2396,7 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-            this.input = jQuery('<textarea/>', {
+            this.input = this.labelled = jQuery('<textarea/>', {
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
@@ -2411,7 +2430,7 @@
             var group = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(this.el);
-            this.entry = jQuery('<input/>', {
+            this.entry = this.labelled = jQuery('<input/>', {
                 'type': 'input',
                 'class': 'form-control input-sm'
             }).appendTo(group);
@@ -2745,7 +2764,8 @@
                 attributes);
             this.el.addClass('form-inline');
             this.select = jQuery('<select/>', {
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm',
+                'aria-label': attributes.string
             });
             this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
@@ -2900,6 +2920,11 @@
                 text: attributes.string
             });
             this.menu.append(label);
+
+            label.uniqueId();
+            this.el.uniqueId();
+            this.el.attr('aria-labelledby', label.attr('id'));
+            label.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
@@ -3284,6 +3309,11 @@
                 text: attributes.string
             });
             this.menu.append(label);
+
+            label.uniqueId();
+            this.el.uniqueId();
+            this.el.attr('aria-labelledby', label.attr('id'));
+            label.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
