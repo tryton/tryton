@@ -1248,9 +1248,6 @@
                     }, null, this.context);
                 }
             };
-            var reload_ids = function() {
-                this.reload(ids, true);
-            }.bind(this);
 
             var selected_records = this.current_view.selected_records();
             var ids = selected_records.map(
@@ -1309,8 +1306,7 @@
                     }
                     record.save(false).done(function() {
                         record.model.execute(attributes.name,
-                            [ids], context).then(process_action.bind(this))
-                            .then(reload_ids);
+                            [ids], context).then(process_action.bind(this));
                     }.bind(this));
                 }
             }.bind(this));
