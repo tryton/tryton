@@ -74,6 +74,7 @@ class DBListEditor(object):
         self.host_entry.connect('focus-out-event', self.display_dbwidget)
         self.host_entry.connect('changed', self.update_profiles, 'host')
         self.host_entry.set_activates_default(True)
+        host.set_mnemonic_widget(self.host_entry)
         table.attach(host, 0, 1, 1, 2, yoptions=False, xoptions=gtk.FILL)
         table.attach(self.host_entry, 1, 2, 1, 2, yoptions=False)
         database = gtk.Label(_(u'Database:'))
@@ -121,6 +122,7 @@ class DBListEditor(object):
         self.username_entry = gtk.Entry()
         self.username_entry.connect('changed', self.update_profiles,
             'username')
+        username.set_mnemonic_widget(self.username_entry)
         self.username_entry.set_activates_default(True)
         table.attach(username, 0, 1, 3, 4, yoptions=False, xoptions=gtk.FILL)
         table.attach(self.username_entry, 1, 2, 3, 4, yoptions=False)
@@ -426,6 +428,7 @@ class DBLogin(object):
         self.entry_host.connect_after('focus-out-event',
             self.clear_profile_combo)
         self.entry_host.set_activates_default(True)
+        self.label_host.set_mnemonic_widget(self.entry_host)
         self.table_main.attach(self.label_host, 0, 1, 4, 5, xoptions=gtk.FILL)
         self.table_main.attach(self.entry_host, 1, 3, 4, 5)
         self.label_database = gtk.Label(_('Database:'))
@@ -436,6 +439,7 @@ class DBLogin(object):
         self.entry_database.connect_after('focus-out-event',
             self.clear_profile_combo)
         self.entry_database.set_activates_default(True)
+        self.label_database.set_mnemonic_widget(self.entry_database)
         self.table_main.attach(self.label_database, 0, 1, 5, 6,
             xoptions=gtk.FILL)
         self.table_main.attach(self.entry_database, 1, 3, 5, 6)
@@ -450,10 +454,12 @@ class DBLogin(object):
         label_password.set_justify(gtk.JUSTIFY_RIGHT)
         label_password.set_alignment(1, 0.5)
         label_password.set_padding(3, 3)
+        label_password.set_mnemonic_widget(self.entry_password)
         self.table_main.attach(label_password, 0, 1, 7, 8, xoptions=gtk.FILL)
         label_username = gtk.Label(str=_("User name:"))
         label_username.set_alignment(1, 0.5)
         label_username.set_padding(3, 3)
+        label_username.set_mnemonic_widget(self.entry_login)
         self.table_main.attach(label_username, 0, 1, 6, 7, xoptions=gtk.FILL)
 
         # Profile informations

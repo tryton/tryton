@@ -137,6 +137,7 @@ class DBBackupDrop(object):
         self.entry_server_connection.set_sensitive(False)
         self.entry_server_connection.unset_flags(gtk.CAN_FOCUS)
         self.entry_server_connection.set_editable(False)
+        self.label_server.set_mnemonic_widget(self.entry_server_connection)
         self.tooltips.set_tip(self.entry_server_connection, _("This is the "
                 "URL of the server. Use server 'localhost' and port '8000' "
                 "if the server is installed on this computer. "
@@ -193,6 +194,7 @@ class DBBackupDrop(object):
         self.entry_serverpasswd = gtk.Entry()
         self.entry_serverpasswd.set_visibility(False)
         self.entry_serverpasswd.set_activates_default(True)
+        self.label_serverpasswd.set_mnemonic_widget(self.entry_serverpasswd)
         self.tooltips.set_tip(self.entry_serverpasswd, _("This is the "
                 "password of the Tryton server. It doesn't belong to a "
                 "real user. This password is usually defined in the trytond "

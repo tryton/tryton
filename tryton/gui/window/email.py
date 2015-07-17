@@ -25,12 +25,13 @@ class Email(object):
             _('Email Program Settings')), expand=False, fill=True)
         self.win.vbox.pack_start(gtk.HSeparator())
         hbox = gtk.HBox(spacing=3)
-        hbox.pack_start(gtk.Label(_('Command Line:')), expand=True,
-            fill=True)
+        label = gtk.Label(_('Command Line:'))
+        hbox.pack_start(label, expand=True, fill=True)
         self.entry = gtk.Entry()
         self.entry.set_property('activates_default', True)
         self.entry.set_width_chars(50)
         self.entry.set_text(CONFIG['client.email'])
+        label.set_mnemonic_widget(label)
         hbox.pack_start(self.entry, expand=True, fill=True)
         self.win.vbox.pack_start(hbox, expand=True, fill=True)
 

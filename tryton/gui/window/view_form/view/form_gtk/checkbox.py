@@ -11,7 +11,7 @@ class CheckBox(Widget):
 
     def __init__(self, view, attrs):
         super(CheckBox, self).__init__(view, attrs)
-        self.widget = gtk.CheckButton()
+        self.widget = self.mnemonic_widget = gtk.CheckButton()
         self.widget.connect('focus-out-event', lambda x, y: self._focus_out())
         self.widget.connect_after('toggled', self.sig_activate)
 

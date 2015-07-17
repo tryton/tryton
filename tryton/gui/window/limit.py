@@ -26,12 +26,14 @@ class Limit(object):
             _('Search Limit Settings')), expand=False, fill=True)
         self.win.vbox.pack_start(gtk.HSeparator())
         hbox = gtk.HBox(spacing=3)
-        hbox.pack_start(gtk.Label(_('Limit:')), expand=True, fill=True)
+        label = gtk.Label(_('Limit:'))
+        hbox.pack_start(label, expand=True, fill=True)
         adjustment = gtk.Adjustment(value=CONFIG['client.limit'],
             lower=1, upper=sys.maxint, step_incr=10, page_incr=100)
         self.spin_limit = gtk.SpinButton(adjustment, climb_rate=1, digits=0)
         self.spin_limit.set_numeric(False)
         self.spin_limit.set_activates_default(True)
+        label.set_mnemonic_widget(self.spin_limit)
         hbox.pack_start(self.spin_limit, expand=True, fill=True)
         self.win.vbox.pack_start(hbox, expand=True, fill=True)
 

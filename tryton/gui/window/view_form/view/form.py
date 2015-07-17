@@ -126,6 +126,7 @@ class ViewForm(View):
         if not container:
             node_attrs = node_attributes(node)
             container = Container(int(node_attrs.get('col', 4)))
+        mnemonics = {}
         for node in node.childNodes:
             if node.nodeType != node.ELEMENT_NODE:
                 continue
@@ -139,7 +140,16 @@ class ViewForm(View):
                     node_attrs[i_field] = int(node_attrs[i_field])
 
             parser = getattr(self, '_parse_%s' % node.tagName)
-            parser(node, container, node_attrs)
+            widget = parser(node, container, node_attrs)
+            if not widget:
+                continue
+            name = node_attrs.get('name')
+            if node.tagName == 'label' and name:
+                mnemonics[name] = widget
+            if node.tagName == 'field':
+                if name in mnemonics and widget.mnemonic_widget:
+                    mnemonics.pop(name).set_mnemonic_widget(
+                        widget.mnemonic_widget)
         return container
 
     def _parse_image(self, node, container, attributes):
@@ -189,6 +199,7 @@ class ViewForm(View):
         attributes.setdefault('xexpand', 0)
         self.state_widgets.append(label)
         container.add(label, attributes)
+        return label
 
     def _parse_newline(self, node, container, attributes):
         container.add_row()
@@ -296,6 +307,7 @@ class ViewForm(View):
                 int(attributes.get('width', -1)),
                 int(attributes.get('height', -1)))
         container.add(Alignment(widget.widget, attributes), attributes)
+        return widget
 
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)

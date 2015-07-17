@@ -29,6 +29,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         else:
             self.entry = gtk.Entry()
             focus_entry = self.entry
+        self.mnemonic_widget = focus_entry
 
         focus_entry.set_property('activates_default', True)
         focus_entry.connect('activate', self.sig_activate)

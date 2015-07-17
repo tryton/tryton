@@ -109,6 +109,7 @@ class WinImport(NoModal):
         label_csv_import = gtk.Label(_("File to Import:"))
         hbox_csv_import.pack_start(label_csv_import, False, False, 0)
         self.import_csv_file = gtk.FileChooserButton(_("Open..."))
+        label_csv_import.set_mnemonic_widget(self.import_csv_file)
         hbox_csv_import.pack_start(self.import_csv_file, True, True, 0)
 
         expander_csv_import = gtk.Expander(None)
@@ -128,6 +129,7 @@ class WinImport(NoModal):
         self.import_csv_sep.set_max_length(1)
         self.import_csv_sep.set_text(",")
         self.import_csv_sep.set_width_chars(1)
+        label_import_csv_sep.set_mnemonic_widget(self.import_csv_sep)
         table.attach(self.import_csv_sep, 1, 2, 0, 1)
 
         label_import_csv_del = gtk.Label(_("Text Delimiter:"))
@@ -136,6 +138,7 @@ class WinImport(NoModal):
         self.import_csv_del = gtk.Entry()
         self.import_csv_del.set_text("\"")
         self.import_csv_del.set_width_chars(1)
+        label_import_csv_del.set_mnemonic_widget(self.import_csv_del)
         table.attach(self.import_csv_del, 3, 4, 0, 1)
 
         label_import_csv_enc = gtk.Label(_("Encoding:"))
@@ -145,6 +148,7 @@ class WinImport(NoModal):
         self.import_csv_enc.append_text("UTF-8")
         self.import_csv_enc.append_text("Latin1")
         self.import_csv_enc.set_active(0)
+        label_import_csv_enc.set_mnemonic_widget(self.import_csv_enc)
         table.attach(self.import_csv_enc, 1, 2, 1, 2)
 
         label_import_csv_skip = gtk.Label(_("Lines to Skip:"))
@@ -153,6 +157,7 @@ class WinImport(NoModal):
 
         self.import_csv_skip_adj = gtk.Adjustment(0, 0, 100, 1, 10)
         self.import_csv_skip = gtk.SpinButton(self.import_csv_skip_adj, 1, 0)
+        label_import_csv_skip.set_mnemonic_widget(self.import_csv_skip)
         table.attach(self.import_csv_skip, 3, 4, 1, 2)
 
         button_cancel = gtk.Button("gtk-cancel", stock="gtk-cancel")

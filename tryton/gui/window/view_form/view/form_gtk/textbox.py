@@ -23,7 +23,7 @@ class TextBox(Widget, TranslateMixin):
         self.scrolledwindow.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         self.scrolledwindow.set_size_request(-1, 80)
 
-        self.textview = self._get_textview()
+        self.textview = self.mnemonic_widget = self._get_textview()
         self.textview.connect('focus-out-event',
             lambda x, y: self._focus_out())
         self.textview.connect('key-press-event', self.send_modified)

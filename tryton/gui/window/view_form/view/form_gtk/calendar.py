@@ -16,7 +16,7 @@ class Date(Widget):
         super(Date, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
-        self.entry = add_operators(_entry())
+        self.entry = self.mnemonic_widget = add_operators(_entry())
         self.real_entry.set_property('activates_default', True)
         self.real_entry.connect('key_press_event', self.sig_key_press)
         self.real_entry.connect('activate', self.sig_activate)
@@ -100,7 +100,7 @@ class DateTime(Date):
         Widget.__init__(self, view, attrs)
 
         self.widget = gtk.HBox()
-        self.entry = DateTimeEntry()
+        self.entry = self.mnemonic_widget = DateTimeEntry()
         for child in self.entry.get_children():
             add_operators(child)
             if isinstance(child, gtk.ComboBoxEntry):

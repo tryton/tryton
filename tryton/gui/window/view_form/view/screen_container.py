@@ -525,6 +525,7 @@ class ScreenContainer(object):
                 else:
                     entry = gtk.Entry()
                     entry.connect('activate', lambda *a: search())
+                label.set_mnemonic_widget(entry)
                 self.search_table.attach(entry, 1, 2, i, i + 1,
                     yoptions=yoptions)
                 self.search_table.fields.append((field['string'], entry))

@@ -17,6 +17,7 @@ class MultiSelection(Widget, SelectionMixin):
         self.widget = gtk.ScrolledWindow()
         self.widget.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.widget.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        self.widget.get_accessible().set_name(attrs.get('string', ''))
 
         self.model = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING)
         self.tree = TreeViewControl()

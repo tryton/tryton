@@ -15,7 +15,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
 
         self.widget = gtk.HBox(spacing=3)
         self.entry = gtk.ComboBoxEntry()
-        child = self.entry.child
+        child = self.mnemonic_widget = self.entry.child
         child.set_property('activates_default', True)
         child.set_max_length(int(attrs.get('size', 0)))
         child.set_width_chars(10)

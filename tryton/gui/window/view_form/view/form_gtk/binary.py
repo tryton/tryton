@@ -35,6 +35,7 @@ class Binary(Widget):
             self.widget.pack_start(self.wid_text, expand=True, fill=True)
         else:
             self.wid_text = None
+        self.mnemonic_widget = self.wid_text
         self.widget.pack_start(self.wid_size, expand=not self.filename,
             fill=True)
 

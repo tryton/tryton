@@ -21,7 +21,11 @@ class Many2Many(Widget):
     def __init__(self, view, attrs):
         super(Many2Many, self).__init__(view, attrs)
 
-        self.widget = gtk.VBox(homogeneous=False, spacing=5)
+        self.widget = gtk.Frame()
+        self.widget.set_shadow_type(gtk.SHADOW_NONE)
+        self.widget.get_accessible().set_name(attrs.get('string', ''))
+        vbox = gtk.VBox(homogeneous=False, spacing=5)
+        self.widget.add(vbox)
         self._readonly = True
         self._position = 0
 
@@ -85,7 +89,7 @@ class Many2Many(Widget):
         frame = gtk.Frame()
         frame.add(hbox)
         frame.set_shadow_type(gtk.SHADOW_OUT)
-        self.widget.pack_start(frame, expand=False, fill=True)
+        vbox.pack_start(frame, expand=False, fill=True)
 
         self.screen = Screen(attrs['relation'],
             view_ids=attrs.get('view_ids', '').split(','),
@@ -93,7 +97,7 @@ class Many2Many(Widget):
             row_activate=self._on_activate)
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
-        self.widget.pack_start(self.screen.widget, expand=True, fill=True)
+        vbox.pack_start(self.screen.widget, expand=True, fill=True)
 
         self.screen.widget.connect('key_press_event', self.on_keypress)
         self.wid_text.connect('key_press_event', self.on_keypress)

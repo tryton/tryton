@@ -85,6 +85,7 @@ class DBRestore(object):
         self.entry_server_url.set_editable(False)
         self.entry_server_url.set_activates_default(True)
         self.entry_server_url.set_width_chars(16)
+        self.label_server_url.set_mnemonic_widget(self.entry_server_url)
         self.tooltips.set_tip(self.entry_server_url, _("This is the URL of "
                 "the server. Use server 'localhost' and port '8000' if "
                 "the server is installed on this computer. Click on "
@@ -108,6 +109,8 @@ class DBRestore(object):
         self.entry_server_password.set_visibility(False)
         self.entry_server_password.set_activates_default(True)
         self.entry_server_password.set_width_chars(16)
+        self.label_server_password.set_mnemonic_widget(
+            self.entry_server_password)
         self.tooltips.set_tip(self.entry_server_password, _("This is the "
                 "password of the Tryton server. It doesn't belong to a "
                 "real user. This password is usually defined in the trytond "
@@ -138,11 +141,13 @@ class DBRestore(object):
         table.attach(self.entry_db_name, 1, 3, 4, 5, yoptions=gtk.FILL)
         label_db_name = gtk.Label(_("New Database Name:"))
         label_db_name.set_alignment(1, 0.5)
+        label_db_name.set_mnemonic_widget(self.entry_db_name)
         table.attach(label_db_name, 0, 1, 4, 5, yoptions=gtk.FILL)
         label_db_update = gtk.Label(_('Update Database:'))
         label_db_update.set_alignment(1, 0.5)
         table.attach(label_db_update, 0, 1, 5, 6, yoptions=gtk.FILL)
         self.check_update = gtk.CheckButton()
+        label_db_update.set_mnemonic_widget(self.check_update)
         self.tooltips.set_tip(self.check_update, _('Check for an automatic '
                 'database update after restoring a database from a previous '
                 'Tryton version.'))

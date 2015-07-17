@@ -20,6 +20,7 @@ class Widget(object):
         self.view = view
         self.attrs = attrs
         self.widget = None
+        self.mnemonic_widget = None
         self.visible = True
 
     @property
@@ -160,6 +161,7 @@ class TranslateDialog(NoModal):
             except RPCException:
                 return
             widget = self.widget.translate_widget()
+            label.set_mnemonic_widget(widget)
             self.widget.translate_widget_set(widget, fuzzy_value)
             self.widget.translate_widget_set_readonly(widget, True)
             yopt = 0

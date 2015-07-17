@@ -28,12 +28,14 @@ class Revision(object):
                 _('Select a revision')), expand=False, fill=True)
         self.win.vbox.pack_start(gtk.HSeparator())
         hbox = gtk.HBox(spacing=3)
-        hbox.pack_start(gtk.Label(_('Revision:')), expand=True, fill=True)
+        label = gtk.Label(_('Revision:'))
+        hbox.pack_start(label, expand=True, fill=True)
         list_store = gtk.ListStore(str, str)
         combobox = gtk.ComboBoxEntry(list_store)
         self.entry = combobox.child
         self.entry.connect('focus-out-event', self.focus_out)
         self.entry.connect('activate', self.activate)
+        label.set_mnemonic_widget(self.entry)
         combobox.connect('changed', self.changed)
         self.entry.set_property('activates_default', True)
         self._format = format_

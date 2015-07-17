@@ -11,7 +11,7 @@ class TimeDelta(Widget):
         super(TimeDelta, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
-        self.entry = gtk.Entry()
+        self.entry = self.mnemonic_widget = gtk.Entry()
         self.entry.set_alignment(1.0)
         self.entry.set_property('activates_default', True)
 

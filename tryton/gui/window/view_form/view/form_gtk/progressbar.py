@@ -16,7 +16,7 @@ class ProgressBar(Widget):
 
     def __init__(self, view, attrs):
         super(ProgressBar, self).__init__(view, attrs)
-        self.widget = gtk.ProgressBar()
+        self.widget = self.mnemonic_widget = gtk.ProgressBar()
         orientation = self.orientations.get(attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
         self.widget.set_orientation(orientation)

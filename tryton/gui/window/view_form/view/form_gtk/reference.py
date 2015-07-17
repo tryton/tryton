@@ -19,6 +19,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         child = self.widget_combo.get_child()
         child.connect('activate', lambda *a: self._focus_out())
         child.connect('focus-out-event', lambda *a: self._focus_out())
+        child.get_accessible().set_name(attrs.get('string', ''))
         self.widget_combo.connect('changed', self.sig_changed_combo)
         selection_shortcuts(self.widget_combo)
         self.widget_combo.set_focus_chain([child])
