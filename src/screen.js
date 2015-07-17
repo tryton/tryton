@@ -997,7 +997,7 @@
                 if (delete_) {
                     records.forEach(function(record) {
                         if (record.group.parent) {
-                            prms.push(record.group.parent.save());
+                            prms.push(record.group.parent.save(false));
                         }
                         if (~record.group.record_deleted.indexOf(record)) {
                             record.group.record_deleted.splice(
@@ -1307,7 +1307,7 @@
                         record = selected_records[i];
                         jQuery.extend(context, record.get_timestamp());
                     }
-                    record.save().done(function() {
+                    record.save(false).done(function() {
                         record.model.execute(attributes.name,
                             [ids], context).then(process_action.bind(this))
                             .then(reload_ids);

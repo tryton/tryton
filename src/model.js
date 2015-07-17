@@ -424,7 +424,10 @@
         has_changed: function() {
             return !jQuery.isEmptyObject(this._changed);
         },
-        save: function() {
+        save: function(force_reload) {
+            if (force_reload === undefined) {
+                force_reload = false;
+            }
             var context = this.get_context();
             var prm = jQuery.when();
             var values = this.get();
@@ -443,7 +446,9 @@
             }
             prm.done(function() {
                 this.cancel();
-                this.reload();
+                if (force_reload) {
+                    return this.reload();
+                }
             }.bind(this));
             if (this.group) {
                 this.group.written(this.id);
@@ -451,7 +456,7 @@
             if (this.group.parent) {
                 delete this.group.parent._changed[this.group.child_name];
                 prm = prm.done(function() {
-                    return this.group.parent.save();
+                    return this.group.parent.save(force_reload);
                 }.bind(this));
             }
             return prm;
