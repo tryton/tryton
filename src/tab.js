@@ -351,7 +351,8 @@
                             var buttons = screen.get_buttons();
                             buttons.forEach(function(button) {
                                 var item = jQuery('<li/>', {
-                                    'role': 'presentation'
+                                    'role': 'presentation',
+                                    'class': 'action_button'
                                 })
                                 .append(
                                     jQuery('<a/>', {
