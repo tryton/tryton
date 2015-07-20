@@ -228,7 +228,7 @@ class DBCreate(object):
         self.entry_dbname.set_max_length(63)
         self.entry_dbname.set_width_chars(16)
         self.entry_dbname.set_activates_default(True)
-        self.entry_dbname.set_mnemonic_widget(label_dbname)
+        label_dbname.set_mnemonic_widget(self.entry_dbname)
         table.attach(self.entry_dbname, 1, 3, 5, 6, yoptions=gtk.FILL)
         self.tooltips.set_tip(self.entry_dbname,
             _("Choose the name of the new database.\n"
