@@ -58,6 +58,13 @@ def ldap_connection():
     return conn
 
 
+# python-ldap works only with str
+def unicode2str(param):
+    if isinstance(param, unicode):
+        param = param.encode('utf-8')
+    return param
+
+
 class User:
     __name__ = 'res.user'
 
@@ -85,9 +92,9 @@ class User:
             }.get(scope)
         uid = config.get(section, 'uid', default='uid')
         if filter_:
-            filter_ = '(&(%s=%s)%s)' % (uid, login, filter_)
+            filter_ = '(&(%s=%s)%s)' % (uid, unicode2str(login), filter_)
         else:
-            filter_ = '(%s=%s)' % (uid, login)
+            filter_ = '(%s=%s)' % (uid, unicode2str(login))
 
         result = con.search_s(dn, scope, filter_, attrs)
         if config.get(section, 'active_directory'):
@@ -143,8 +150,10 @@ class User:
                     users = cls.ldap_search_user(user.login, con, attrs=[uid])
                     if users and len(users) == 1:
                         [(dn, attrs)] = users
-                        if con.simple_bind_s(dn, old_password):
-                            con.passwd_s(dn, old_password, values['password'])
+                        if con.simple_bind_s(dn, unicode2str(old_password)):
+                            con.passwd_s(
+                                dn, unicode2str(old_password),
+                                unicode2str(values['password']))
                             values = values.copy()
                             del values['password']
                         else:
@@ -165,7 +174,8 @@ class User:
                 users = cls.ldap_search_user(login, con, attrs=[uid])
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
-                    if password and con.simple_bind_s(dn, password):
+                    if (password
+                            and con.simple_bind_s(dn, unicode2str(password))):
                         # Use ldap uid so we always get the right case
                         login = attrs.get(uid, [login])[0]
                         user_id, _ = cls._get_login(login)
