@@ -909,6 +909,11 @@
                     event_.preventDefault();
                     next_idx = ((this.edited_column + sign) %
                             this.tree.columns.length);
+                    // javascript modulo returns negative number for negative
+                    // numbers
+                    if (next_idx < 0) {
+                        next_idx += this.tree.columns.length;
+                    }
                     while(next_idx != this.edited_column) {
                         next_column = this.tree.columns[next_idx];
                         states = next_column.field.get_state_attrs(this.record);
@@ -919,6 +924,9 @@
                         }
                         next_idx = ((next_idx + sign) %
                                 this.tree.columns.length);
+                        if (next_idx < 0) {
+                            next_idx += this.tree.columns.length;
+                        }
                     }
                     window.setTimeout(function() {
                         this._get_column_td(next_idx).trigger('click');
