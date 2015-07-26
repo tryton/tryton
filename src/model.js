@@ -1539,14 +1539,17 @@
             }
             return value;
         },
+        apply_factor: function(value, factor) {
+            if (value !== null) {
+                value /= factor;
+            }
+            return value;
+        },
         set_client: function(record, value, force_change, factor) {
             if (factor === undefined) {
                 factor = 1;
             }
-            value = this.convert(value);
-            if (value !== null) {
-                value /= factor;
-            }
+            value = this.apply_factor(this.convert(value), factor);
             Sao.field.Float._super.set_client.call(this, record, value,
                 force_change);
         },
@@ -1571,6 +1574,10 @@
                 value = this._default;
             }
             return value;
+        },
+        apply_factor: function(value, factor) {
+            value = Sao.field.Numeric._super.apply_factor(value, factor);
+            return new Sao.Decimal(value);
         }
     });
 

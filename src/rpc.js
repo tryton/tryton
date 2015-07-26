@@ -217,7 +217,7 @@
             } else if (value instanceof Sao.Decimal) {
                 value = {
                     '__class__': 'Decimal',
-                    'decimal': value.valueOf()
+                    'decimal': value.toString()
                 };
                 if (parent) {
                     parent[index] = value;
