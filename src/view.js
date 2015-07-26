@@ -888,7 +888,8 @@
             return this._get_column_td(this.edited_column);
         },
         key_press: function(event_) {
-            var current_td, selector, next_column, i;
+            var current_td, selector, next_column, next_idx, i;
+            var states;
 
             this.get_active_td().one('keydown',
                 this.key_press.bind(this));
@@ -906,19 +907,21 @@
                         sign = -1;
                     }
                     event_.preventDefault();
-                    next_column = this.edited_column;
-                    while(true) {
-                        next_column = ((next_column + sign) %
-                                this.tree.columns.length);
-                        if (!this.tree.columns[next_column]
-                                .attributes.tree_invisible &&
-                                this.tree.columns[next_column]
-                                .header.css('display') != 'none') {
+                    next_idx = ((this.edited_column + sign) %
+                            this.tree.columns.length);
+                    while(next_idx != this.edited_column) {
+                        next_column = this.tree.columns[next_idx];
+                        states = next_column.field.get_state_attrs(this.record);
+                        if (!next_column.attributes.tree_invisible &&
+                                next_column.header.css('display') != 'none' &&
+                                !states.readonly) {
                             break;
                         }
+                        next_idx = ((next_idx + sign) %
+                                this.tree.columns.length);
                     }
                     window.setTimeout(function() {
-                        this._get_column_td(next_column).trigger('click');
+                        this._get_column_td(next_idx).trigger('click');
                     }.bind(this), 0);
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
                     event_.which == Sao.common.DOWN_KEYCODE) {
