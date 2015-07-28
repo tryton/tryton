@@ -1784,9 +1784,15 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 | ~Eval('from_location') | ~Eval('to_location')),
             },
         domain=[
-            ('from_location', 'child_of', [Eval('from_location', -1)],
-                'parent'),
-            ('to_location', '=', Eval('to_location')),
+            If(Eval('state') == 'draft', [
+                    ('from_location', '=', Eval('from_location')),
+                    ('to_location', '=', Eval('to_location')),
+                    ], [
+                    ('from_location', 'child_of', [Eval('from_location', -1)],
+                        'parent'),
+                    ('to_location', 'child_of', [Eval('to_location', -1)],
+                        'parent'),
+                    ]),
             ('company', '=', Eval('company')),
             ],
         depends=['state', 'from_location', 'to_location', 'planned_date',
@@ -1934,13 +1940,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.draft([m for s in shipments for m in s.moves])
-
-    @classmethod
-    @ModelView.button
-    @Workflow.transition('waiting')
-    def wait(cls, shipments):
-        Move = Pool().get('stock.move')
         # First reset state to draft to allow update from and to location
         Move.draft([m for s in shipments for m in s.moves])
         for shipment in shipments:
@@ -1950,6 +1949,20 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                     'to_location': shipment.to_location.id,
                     'planned_date': shipment.planned_date,
                     })
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('waiting')
+    def wait(cls, shipments):
+        Move = Pool().get('stock.move')
+        Move.draft([m for s in shipments for m in s.moves])
+        moves = []
+        for shipment in shipments:
+            for move in shipment.moves:
+                if move.state != 'done':
+                    move.planned_date = shipment.planned_date
+                    moves.append(move)
+        Move.save(moves)
 
     @classmethod
     @Workflow.transition('assigned')

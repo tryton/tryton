@@ -1,3 +1,4 @@
+* Allow to change the destination of internal shipment's moves
 * Allow to modify internal shipment moves in waiting state
 * Compute inventory lines in complete_lines() using new grouping() method
 * Allow to re-compute cost price
