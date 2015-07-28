@@ -582,7 +582,7 @@ class WebDAVAuthRequestHandler(WebDAVServer.DAVRequestHandler):
 
         Transaction().start(dbname, user, context={
                 '_check_access': True,
-                })
+                }, autocommit=True)
         Cache.clean(dbname)
         return user
 
