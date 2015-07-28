@@ -167,7 +167,7 @@
             this.bookmark_match();
         },
         update: function(query, process) {
-            var completions = this.screen.domain_parser.completion(query);
+            var completions = this.screen.domain_parser().completion(query);
             var suggestions = [];
             completions.forEach(function(e) {
                 suggestions.push({
@@ -212,13 +212,13 @@
                         if (!name) {
                             return;
                         }
-                        var domain = this.screen.domain_parser.parse(text);
+                        var domain = this.screen.domain_parser().parse(text);
                         Sao.common.VIEW_SEARCH.add(model_name, name, domain)
                         .then(function() {
                             refresh();
                         });
                         this.set_text(
-                            this.screen.domain_parser.string(domain));
+                            this.screen.domain_parser().string(domain));
                     }.bind(this));
             } else {
                 var id = this.bookmark_match();
@@ -230,17 +230,17 @@
         bookmarks: function() {
             var searches = Sao.common.VIEW_SEARCH.get(this.screen.model_name);
             return searches.filter(function(search) {
-                return this.screen.domain_parser.stringable(search[2]);
+                return this.screen.domain_parser().stringable(search[2]);
             }.bind(this));
         },
         bookmark_activate: function(e) {
             var domain = e.data;
-            this.set_text(this.screen.domain_parser.string(domain));
+            this.set_text(this.screen.domain_parser().string(domain));
             this.do_search();
         },
         bookmark_match: function() {
             var current_text = this.get_text();
-            var current_domain = this.screen.domain_parser.parse(current_text);
+            var current_domain = this.screen.domain_parser().parse(current_text);
             this.but_star.prop('disabled', !current_text);
             var star = this.get_star();
             var bookmarks = this.bookmarks();
@@ -248,7 +248,7 @@
                 var id = bookmarks[i][0];
                 var name = bookmarks[i][1];
                 var domain = bookmarks[i][2];
-                var text = this.screen.domain_parser.string(domain);
+                var text = this.screen.domain_parser().string(domain);
                 if ((text === current_text) ||
                         (Sao.common.compare(domain, current_domain))) {
                     this.set_star(true);
@@ -322,11 +322,11 @@
             return this.search_val();
         },
         search_box: function() {
+            var domain_parser = this.screen.domain_parser();
             var search = function() {
                 this.search_modal.modal('hide');
                 var text = '';
-                var quote = this.screen.domain_parser.quote.bind(
-                        this.screen.domain_parser);
+                var quote = domain_parser.quote.bind(domain_parser);
                 for (var i = 0; i < this.search_form.fields.length; i++) {
                     var label = this.search_form.fields[i][0];
                     var entry = this.search_form.fields[i][1];
@@ -360,8 +360,8 @@
 
                 var fields = [];
                 var field;
-                for (var f in this.screen.domain_parser.fields) {
-                    field = this.screen.domain_parser.fields[f];
+                for (var f in domain_parser.fields) {
+                    field = domain_parser.fields[f];
                     if (field.searchable || field.searchable === undefined) {
                         fields.push(field);
                     }
@@ -605,8 +605,8 @@
             }
             this.tree_states = {};
             this.tree_states_done = [];
-            this.fields_view_tree = null;
-            this.domain_parser = null;
+            this.fields_view_tree = {};
+            this._domain_parser = {};
             this.tab = null;
         },
         load_next_view: function() {
@@ -637,10 +637,11 @@
         add_view: function(view) {
             var arch = view.arch;
             var fields = view.fields;
+            var view_id = view.view_id;
             var xml_view = jQuery(jQuery.parseXML(arch));
 
             if (xml_view.children().prop('tagName') == 'tree') {
-                this.fields_view_tree = view;
+                this.fields_view_tree[view_id] = view;
             }
 
             var loading = 'eager';
@@ -657,6 +658,7 @@
             }
             this.model.add_fields(fields);
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
+            view_widget.view_id = view_id;
             this.views.push(view_widget);
 
             return view_widget;
@@ -695,15 +697,16 @@
         },
         search_filter: function(search_string) {
             var domain = [];
+            var domain_parser = this.domain_parser();
 
-            if (this.domain_parser && !this.group.parent) {
+            if (domain_parser && !this.group.parent) {
                 if (search_string || search_string === '') {
-                    domain = this.domain_parser.parse(search_string);
+                    domain = domain_parser.parse(search_string);
                 } else {
                     domain = this.attributes.search_value;
                 }
                 this.screen_container.set_text(
-                        this.domain_parser.string(domain));
+                        domain_parser.string(domain));
             } else {
                 domain = [['id', 'in', this.group.map(function(r) {
                     return r.id;
@@ -1030,95 +1033,109 @@
         },
         search_active: function(active) {
             if (active && !this.group.parent) {
-                if (!this.fields_view_tree) {
-                    return this.model.execute('fields_view_get',
-                            [false, 'tree'], this.context)
-                        .then(function(view) {
-                            this.fields_view_tree = view;
-                            return this.search_active(active);
-                        }.bind(this));
-                }
-                if (!this.domain_parser) {
-                    var fields = jQuery.extend({},
-                            this.fields_view_tree.fields);
-
-                    var set_selection = function(props) {
-                        return function(selection) {
-                            props.selection = selection;
-                        };
-                    };
-                    for (var name in fields) {
-                        if (!fields.hasOwnProperty(name)) {
-                            continue;
-                        }
-                        var props = fields[name];
-                        if ((props.type != 'selection') &&
-                                (props.type != 'reference')) {
-                            continue;
-                        }
-                        if (props.selection instanceof Array) {
-                            continue;
-                        }
-                        this.get_selection(props).then(set_selection);
-                    }
-
-                    // Filter only fields in XML view
-                    var xml_view = jQuery(jQuery.parseXML(
-                                this.fields_view_tree.arch));
-                    var xml_fields = xml_view.find('tree').children()
-                        .filter(function(node) {
-                            return node.tagName == 'field';
-                        }).map(function(node) {
-                            return node.getAttribute('name');
-                        });
-                    var dom_fields = {};
-                    xml_fields.each(function(name) {
-                        dom_fields[name] = fields[name];
-                    });
-                    [
-                        ['id', Sao.i18n.gettext('ID'), 'integer'],
-                        ['create_uid', Sao.i18n.gettext('Creation User'),
-                            'many2one'],
-                        ['create_date', Sao.i18n.gettext('Creation Date'),
-                            'datetime'],
-                        ['write_uid', Sao.i18n.gettext('Modification User'),
-                             'many2one'],
-                        ['write_date', Sao.i18n.gettext('Modification Date'),
-                             'datetime']
-                            ] .forEach(function(e) {
-                                var name = e[0];
-                                var string = e[1];
-                                var type = e[2];
-                                if (!(name in fields)) {
-                                    fields[name] = {
-                                        'string': string,
-                                        'name': name,
-                                        'type': type
-                                    };
-                                    if (type == 'datetime') {
-                                        fields[name].format = '"%H:%M:%S"';
-                                    }
-                                }
-                            });
-                    if (!('id' in fields)) {
-                        fields.id = {
-                            'string': Sao.i18n.gettext('ID'),
-                            'name': 'id',
-                            'type': 'integer'
-                        };
-                    }
-                    var context = jQuery.extend({},
-                            this.model.session.context,
-                            this.context);
-                    this.domain_parser = new Sao.common.DomainParser(
-                            fields, context);
-                }
                 this.screen_container.set_screen(this);
                 this.screen_container.show_filter();
             } else {
                 this.screen_container.hide_filter();
             }
             return jQuery.when();
+        },
+        domain_parser: function() {
+            var view_id, view_tree;
+            if (this.current_view) {
+                view_id = this.current_view.view_id;
+            } else {
+                view_id = null;
+            }
+            if (view_id in this._domain_parser) {
+                return this._domain_parser[view_id];
+            }
+            if (!(view_id in this.fields_view_tree)) {
+                // Fetch default view for the next time
+                this.model.execute('fields_view_get', [false, 'tree'],
+                        this.context).then(function(view) {
+                    this.fields_view_tree[view_id] = view;
+                }.bind(this));
+                view_tree = {};
+                view_tree.fields = {};
+            } else {
+                view_tree = this.fields_view_tree[view_id];
+            }
+            var fields = jQuery.extend({}, view_tree.fields);
+
+            var set_selection = function(props) {
+                return function(selection) {
+                    props.selection = selection;
+                };
+            };
+            for (var name in fields) {
+                var props = fields[name];
+                if ((props.type != 'selection') &&
+                        (props.type != 'reference')) {
+                    continue;
+                }
+                if (props.selection instanceof Array) {
+                    continue;
+                }
+                this.get_selection(props).then(set_selection);
+            }
+
+            if ('arch' in view_tree) {
+                // Filter only fields in XML view
+                var xml_view = jQuery(jQuery.parseXML(view_tree.arch));
+                var xml_fields = xml_view.find('tree').children()
+                    .filter(function(node) {
+                        return node.tagName == 'field';
+                    }).map(function(node) {
+                        return node.getAttribute('name');
+                    });
+                var dom_fields = {};
+                xml_fields.each(function(name) {
+                    dom_fields[name] = fields[name];
+                });
+            }
+
+            // Add common fields
+            [
+                ['id', Sao.i18n.gettext('ID'), 'integer'],
+                ['create_uid', Sao.i18n.gettext('Creation User'),
+                    'many2one'],
+                ['create_date', Sao.i18n.gettext('Creation Date'),
+                    'datetime'],
+                ['write_uid', Sao.i18n.gettext('Modification User'),
+                     'many2one'],
+                ['write_date', Sao.i18n.gettext('Modification Date'),
+                     'datetime']
+                    ] .forEach(function(e) {
+                        var name = e[0];
+                        var string = e[1];
+                        var type = e[2];
+                        if (!(name in fields)) {
+                            fields[name] = {
+                                'string': string,
+                                'name': name,
+                                'type': type
+                            };
+                            if (type == 'datetime') {
+                                fields[name].format = '"%H:%M:%S"';
+                            }
+                        }
+                    });
+            if (!('id' in fields)) {
+                fields.id = {
+                    'string': Sao.i18n.gettext('ID'),
+                    'name': 'id',
+                    'type': 'integer'
+                };
+            }
+
+            var context = jQuery.extend({},
+                    this.model.session.context,
+                    this.context);
+            var domain_parser = new Sao.common.DomainParser(
+                    fields, context);
+            this._domain_parser[view_id] = domain_parser;
+            return domain_parser;
         },
         get_selection: function(props) {
             var prm;

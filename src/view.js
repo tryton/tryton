@@ -8,6 +8,7 @@
             this.screen = screen;
             this.view_type = null;
             this.el = null;
+            this.view_id = null;
             this.fields = {};
             var attributes = xml.children()[0].attributes;
             this.attributes = {};
