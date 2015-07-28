@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/notebook/page[@id='accounting']/field[@name='vat_number']"
-        position="after">
+        expr="/form/notebook/page[@id='accounting']/separator[@id='account']"
+        position="before">
         <separator string="SEPA" colspan="4" id="sepa"/>
         <label name="sepa_creditor_identifier"/>
         <field name="sepa_creditor_identifier"/>
