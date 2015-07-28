@@ -226,7 +226,10 @@ class Many2One(Field):
         table, _ = tables[None]
         target_tables = tables.get(self.name)
         if target_tables is None:
-            target = Target.__table__()
+            if Target._history and Transaction().context.get('_datetime'):
+                target = Target.__table_history__()
+            else:
+                target = Target.__table__()
             target_tables = {
                 None: (target, target.id == self.sql_column(table)),
                 }

@@ -1227,9 +1227,10 @@ class ModelSQL(ModelStorage):
         if tables is None:
             tables = {}
         if None not in tables:
-            tables[None] = (cls.__table__(), None)
-        if cls._history and transaction.context.get('_datetime'):
-            tables[None] = (cls.__table_history__(), None)
+            if cls._history and transaction.context.get('_datetime'):
+                tables[None] = (cls.__table_history__(), None)
+            else:
+                tables[None] = (cls.__table__(), None)
 
         def is_leaf(expression):
             return (isinstance(expression, (list, tuple))
