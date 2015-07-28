@@ -856,11 +856,12 @@
                     widget.view = this.tree;
                     this.get_widget_editable().empty().append(widget.el);
                     // We use keydown to be able to catch TAB events
-                    current_td.one('keydown', this.key_press.bind(this));
+                    widget.el.on('keydown', this.key_press.bind(this));
                     field = this.record.model.fields[widget.field_name];
                     widget.display(this.record, field);
                     this.get_widget().hide();
                     this.get_widget_editable().show();
+                    widget.focus();
                 } else {
                     this.set_selection(true);
                     this.selection_changed();
@@ -892,8 +893,6 @@
             var current_td, selector, next_column, next_idx, i;
             var states;
 
-            this.get_active_td().one('keydown',
-                this.key_press.bind(this));
             if ((event_.which != Sao.common.TAB_KEYCODE) &&
                     (event_.which != Sao.common.UP_KEYCODE) &&
                     (event_.which != Sao.common.DOWN_KEYCODE) &&
@@ -930,7 +929,11 @@
                         }
                     }
                     window.setTimeout(function() {
-                        this._get_column_td(next_idx).trigger('click');
+                        var td = this._get_column_td(next_idx);
+                        td.triggerHandler('click', {
+                            column: next_idx,
+                            td: td
+                        });
                     }.bind(this), 0);
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
                     event_.which == Sao.common.DOWN_KEYCODE) {
@@ -2125,6 +2128,9 @@
         },
         set_readonly: function(readonly) {
             this.input.prop('disabled', readonly);
+        },
+        focus: function() {
+            this.input.focus();
         }
     });
 
@@ -2148,7 +2154,7 @@
             this.date = this.labelled = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(this.el);
-            jQuery('<input/>', {
+            this.input = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.date);
@@ -2186,6 +2192,9 @@
                 value = null;
             }
             this.date.data('DateTimePicker').date(value);
+        },
+        focus: function() {
+            this.input.focus();
         },
         set_value: function(record, field) {
             field.set_client(record, this.get_value(record, field));
@@ -2245,6 +2254,9 @@
             } else {
                 this.input.val('');
             }
+        },
+        focus: function() {
+            this.input.focus();
         },
         set_value: function(record, field) {
             field.set_client(record, this.input.val());
@@ -2357,6 +2369,9 @@
             Sao.View.Form.Selection._super.display.call(this, record, field);
             this.display_update_selection(record, field);
         },
+        focus: function() {
+            this.select.focus();
+        },
         value_get: function() {
             return JSON.parse(this.select.val());
         },
@@ -2391,6 +2406,9 @@
                 this.input.prop('checked', false);
             }
         },
+        focus: function() {
+            this.input.focus();
+        },
         set_value: function(record, field) {
             var value = this.input.prop('checked');
             field.set_client(record, value);
@@ -2421,6 +2439,9 @@
             } else {
                 this.input.val('');
             }
+        },
+        focus: function() {
+            this.input.focus();
         },
         set_value: function(record, field) {
             var value = this.input.val() || '';
@@ -2579,6 +2600,9 @@
                         'primary': 'glyphicon-search'
                     }});
             }
+        },
+        focus: function() {
+            this.entry.focus();
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;
@@ -3120,6 +3144,11 @@
                 this.screen.display();
             }.bind(this));
         },
+        focus: function() {
+            if (this.wid_text.is(':visible')) {
+                this.wid_text.focus();
+            }
+        },
         activate: function(event_) {
             this.edit();
         },
@@ -3413,6 +3442,9 @@
                 }
                 this.screen.display();
             }.bind(this));
+        },
+        focus: function() {
+            this.entry.focus();
         },
         activate: function() {
             this.edit();
