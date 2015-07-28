@@ -226,7 +226,28 @@
 
         },
         add: function() {
-            // TODO
+            var domain = jQuery.extend([], this.domain);
+            var model_name = this.screen.model_name;
+            var value = this.wid_text.val();
+
+            var callback = function(result) {
+                if (!jQuery.isEmptyObject(result)) {
+                    var ids = [];
+                    for (var i = 0, len = result.length; i < len; i++) {
+                        ids.push(result[i][0]);
+                    }
+                    this.screen.group.load(ids, true);
+                    this.screen.display();
+                }
+                this.entry.val('');
+            }.bind(this);
+            var parser = new Sao.common.DomainParser();
+            var win = new Sao.Window.Search(model_name, callback, {
+                sel_multi: true,
+                context: this.context,
+                domain: domain,
+                search_filter: parser.quote(value)
+            });
         },
         remove: function() {
             this.screen.remove(false, true, false);
