@@ -1,33 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import logging
-from importlib import import_module
-
+import stdnum.eu.vat as vat
+import stdnum.exceptions
+from sql import Null
 from sql.functions import CharLength
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond import backend
 
-__all__ = ['Party', 'PartyCategory', 'CheckVIESNoResult', 'CheckVIESResult',
-           'CheckVIES']
+__all__ = ['Party', 'PartyCategory', 'PartyIdentifier',
+    'CheckVIESResult', 'CheckVIES']
 
-logger = logging.getLogger(__name__)
-
-HAS_VATNUMBER = False
 VAT_COUNTRIES = [('', '')]
-try:
-    import vatnumber
-    HAS_VATNUMBER = True
-    for country in vatnumber.countries():
-        VAT_COUNTRIES.append((country, country))
-except ImportError:
-    logger.warning(
-        'Unable to import vatnumber. VAT number validation disabled.',
-        exc_info=True)
-
 STATES = {
     'readonly': ~Eval('active', True),
 }
@@ -49,18 +37,10 @@ class Party(ModelSQL, ModelView):
         'get_code_readonly')
     lang = fields.Many2One("ir.lang", 'Language', states=STATES,
         depends=DEPENDS)
-    vat_number = fields.Char('VAT Number', help="Value Added Tax number",
-        states={
-            'readonly': ~Eval('active', True),
-            'required': Bool(Eval('vat_country')),
-            },
-        depends=['active', 'vat_country'])
-    vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
-        depends=DEPENDS,
-        help="Setting VAT country will enable validation of the VAT number.",
-        translate=False)
+    identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
+        states=STATES, depends=DEPENDS)
     vat_code = fields.Function(fields.Char('VAT Code'),
-        'on_change_with_vat_code', searcher='search_vat_code')
+        'get_vat_code', searcher='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
         'Addresses', states=STATES, depends=DEPENDS)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -83,10 +63,6 @@ class Party(ModelSQL, ModelView):
             ('code_uniq', Unique(t, t.code),
              'The code of the party must be unique.')
         ]
-        cls._error_messages.update({
-                'invalid_vat': ('Invalid VAT number "%(vat)s" on party '
-                    '"%(party)s".'),
-                })
         cls._order.insert(0, ('name', 'ASC'))
 
     @staticmethod
@@ -128,40 +104,22 @@ class Party(ModelSQL, ModelView):
     def get_code_readonly(self, name):
         return True
 
-    @fields.depends('vat_country', 'vat_number')
-    def on_change_with_vat_code(self, name=None):
-        return (self.vat_country or '') + (self.vat_number or '')
+    @classmethod
+    def _vat_types(cls):
+        return ['eu_vat']
 
-    @fields.depends('vat_country', 'vat_number')
-    def on_change_with_vat_number(self):
-        if not self.vat_country:
-            return self.vat_number
-        code = self.vat_country.lower()
-        vat_module = None
-        try:
-            module = import_module('stdnum.%s' % code)
-            vat_module = getattr(module, 'vat', None)
-            if not vat_module:
-                vat_module = import_module('stdnum.%s.vat' % code)
-        except ImportError:
-            pass
-        if vat_module:
-            return vat_module.compact(self.vat_number)
-        return self.vat_number
+    def get_vat_code(self, name):
+        types = self._vat_types()
+        for identifier in self.identifiers:
+            if identifier.type in types:
+                return identifier.code
 
     @classmethod
     def search_vat_code(cls, name, clause):
-        res = []
-        value = clause[2]
-        for country, _ in VAT_COUNTRIES:
-            if isinstance(value, basestring) \
-                    and country \
-                    and value.upper().startswith(country):
-                res.append(('vat_country', '=', country))
-                value = value[len(country):]
-                break
-        res.append(('vat_number', clause[1], value))
-        return res
+        return [
+            ('identifier.code',) + tuple(clause[1:]),
+            ('identifier.type', 'in', cls._vat_types()),
+            ]
 
     def get_full_name(self, name):
         return self.name
@@ -207,6 +165,7 @@ class Party(ModelSQL, ModelView):
             bool_op = 'OR'
         return [bool_op,
             ('code',) + tuple(clause[1:]),
+            ('identifiers.code',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
             ]
 
@@ -229,35 +188,6 @@ class Party(ModelSQL, ModelView):
                 return address
         return default_address
 
-    @classmethod
-    def validate(cls, parties):
-        super(Party, cls).validate(parties)
-        for party in parties:
-            party.check_vat()
-
-    def check_vat(self):
-        '''
-        Check the VAT number depending of the country.
-        http://sima-pc.com/nif.php
-        '''
-        if not HAS_VATNUMBER:
-            return
-
-        if not self.vat_country:
-            return
-
-        vat_number = self.on_change_with_vat_number()
-        if vat_number != self.vat_number:
-            self.vat_number = vat_number
-            self.save()
-
-        if not getattr(vatnumber, 'check_vat_' +
-                self.vat_country.lower())(vat_number):
-            self.raise_user_error('invalid_vat', {
-                    'vat': vat_number,
-                    'party': self.rec_name,
-                    })
-
 
 class PartyCategory(ModelSQL):
     'Party - Category'
@@ -269,9 +199,81 @@ class PartyCategory(ModelSQL):
         ondelete='CASCADE', required=True, select=True)
 
 
-class CheckVIESNoResult(ModelView):
-    'Check VIES'
-    __name__ = 'party.check_vies.no_result'
+class PartyIdentifier(ModelSQL, ModelView):
+    'Party Identifier'
+    __name__ = 'party.identifier'
+    _rec_name = 'code'
+    party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
+        required=True, select=True)
+    type = fields.Selection('get_types', 'Type')
+    code = fields.Char('Code', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyIdentifier, cls).__setup__()
+        cls._error_messages.update({
+                'invalid_vat': ('Invalid VAT number "%(code)s" '
+                    'on party "%(party)s".'),
+                })
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Party = pool.get('party.party')
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        party = Party.__table__()
+
+        super(PartyIdentifier, cls).__register__(module_name)
+
+        party_h = TableHandler(cursor, Party, module_name)
+        if (party_h.column_exist('vat_number')
+                and party_h.column_exist('vat_country')):
+            identifiers = []
+            cursor.execute(*party.select(
+                    party.id, party.vat_number, party.vat_country,
+                    where=(party.vat_number != Null)
+                    & (party.vat_country != Null)))
+            for party_id, number, country in cursor.fetchall():
+                code = (country or '') + (number or '')
+                type = None
+                if vat.is_valid(code):
+                    type = 'eu_vat'
+                identifiers.append(
+                    cls(party=party_id, code=code, type=type))
+            cls.save(identifiers)
+            party_h.drop_column('vat_number')
+            party_h.drop_column('vat_country')
+
+    @classmethod
+    def get_types(cls):
+        return [
+            (None, ''),
+            ('eu_vat', 'VAT'),
+            ]
+
+    @fields.depends('type', 'code')
+    def on_change_with_code(self):
+        if self.type == 'eu_vat':
+            try:
+                return vat.compact(self.code)
+            except stdnum.exceptions.ValidationError:
+                pass
+        return self.code
+
+    @classmethod
+    def validate(cls, identifiers):
+        super(PartyIdentifier, cls).validate(identifiers)
+        for identifier in identifiers:
+            identifier.check_code()
+
+    def check_code(self):
+        if self.type == 'eu_vat':
+            if not vat.is_valid(self.code):
+                self.raise_user_error('invalid_eu_vat', {
+                        'code': self.code,
+                        'party': self.party.rec_name,
+                        })
 
 
 class CheckVIESResult(ModelView):
@@ -297,10 +299,6 @@ class CheckVIES(Wizard):
         'party.check_vies_result', [
             Button('OK', 'end', 'tryton-ok', True),
             ])
-    no_result = StateView('party.check_vies.no_result',
-        'party.check_vies_no_result', [
-            Button('OK', 'end', 'tryton-ok', True),
-            ])
 
     @classmethod
     def __setup__(cls):
@@ -313,32 +311,30 @@ class CheckVIES(Wizard):
     def transition_check(self):
         Party = Pool().get('party.party')
 
-        if not HAS_VATNUMBER or not hasattr(vatnumber, 'check_vies'):
-            return 'no_result'
-
         parties_succeed = []
         parties_failed = []
         parties = Party.browse(Transaction().context.get('active_ids'))
         for party in parties:
-            if not party.vat_code:
-                continue
-            try:
-                if not vatnumber.check_vies(party.vat_code):
-                    parties_failed.append(party.id)
-                else:
-                    parties_succeed.append(party.id)
-            except Exception, e:
-                if hasattr(e, 'faultstring') \
-                        and hasattr(e.faultstring, 'find'):
-                    if e.faultstring.find('INVALID_INPUT'):
+            for identifier in party.identifiers:
+                if identifier.type != 'eu_vat':
+                    continue
+                try:
+                    if not vat.check_vies(identifier.code):
                         parties_failed.append(party.id)
-                        continue
-                    if e.faultstring.find('SERVICE_UNAVAILABLE') \
-                            or e.faultstring.find('MS_UNAVAILABLE') \
-                            or e.faultstring.find('TIMEOUT') \
-                            or e.faultstring.find('SERVER_BUSY'):
-                        self.raise_user_error('vies_unavailable')
-                raise
+                    else:
+                        parties_succeed.append(party.id)
+                except Exception, e:
+                    if hasattr(e, 'faultstring') \
+                            and hasattr(e.faultstring, 'find'):
+                        if e.faultstring.find('INVALID_INPUT'):
+                            parties_failed.append(party.id)
+                            continue
+                        if e.faultstring.find('SERVICE_UNAVAILABLE') \
+                                or e.faultstring.find('MS_UNAVAILABLE') \
+                                or e.faultstring.find('TIMEOUT') \
+                                or e.faultstring.find('SERVER_BUSY'):
+                            self.raise_user_error('vies_unavailable')
+                    raise
         self.result.parties_succeed = parties_succeed
         self.result.parties_failed = parties_failed
         return 'result'

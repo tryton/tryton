@@ -105,6 +105,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">party.party</field>
         </record>
 
+        <record model="ir.ui.view" id="identifier_form">
+            <field name="model">party.identifier</field>
+            <field name="type">form</field>
+            <field name="name">identifier_form</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_list">
+            <field name="model">party.identifier</field>
+            <field name="type">tree</field>
+            <field name="name">identifier_list</field>
+        </record>
+
         <record model="ir.action.wizard" id="wizard_check_vies">
             <field name="name">Check VIES</field>
             <field name="wiz_name">party.check_vies</field>
@@ -114,12 +125,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_action</field>
             <field name="model">party.party,-1</field>
             <field name="action" ref="wizard_check_vies"/>
-        </record>
-
-        <record model="ir.ui.view" id="check_vies_no_result">
-            <field name="model">party.check_vies.no_result</field>
-            <field name="type">form</field>
-            <field name="name">check_vies_no_result</field>
         </record>
 
         <record model="ir.ui.view" id="check_vies_result">
