@@ -19,7 +19,8 @@ _ = gettext.gettext
 
 def get_home_dir():
     if os.name == 'nt':
-        return os.path.join(os.environ['HOMEDRIVE'], os.environ['HOMEPATH'])
+        return os.path.join(os.environ['HOMEDRIVE'], os.environ['HOMEPATH']
+            ).decode(sys.getfilesystemencoding()).encode('utf-8')
     return os.environ['HOME']
 
 
