@@ -275,7 +275,8 @@ class Record(SignalEvent):
     def get_timestamp(self):
         result = {self.model_name + ',' + str(self.id): self._timestamp}
         for name, field in self.group.fields.iteritems():
-            result.update(field.get_timestamp(self))
+            if name in self._loaded:
+                result.update(field.get_timestamp(self))
         return result
 
     def pre_validate(self):
