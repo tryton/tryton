@@ -797,6 +797,9 @@
                 if (!this.model.fields.hasOwnProperty(fname)) {
                     continue;
                 }
+                if (!(fname in this._loaded)) {
+                    continue;
+                }
                 jQuery.extend(timestamps,
                     this.model.fields[fname].get_timestamp(this));
             }
