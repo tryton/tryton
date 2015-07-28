@@ -353,8 +353,14 @@ class ModelSQL(ModelStorage):
                 cursor.execute(*history.insert(hcolumns,
                         table.select(*columns, where=where)))
             else:
-                cursor.execute(*history.insert(hcolumns,
-                        [[id_, CurrentTimestamp(), user] for id_ in sub_ids]))
+                if cursor.has_multirow_insert():
+                    cursor.execute(*history.insert(hcolumns,
+                            [[id_, CurrentTimestamp(), user]
+                                for id_ in sub_ids]))
+                else:
+                    for id_ in sub_ids:
+                        cursor.execute(*history.insert(hcolumns,
+                                [[id_, CurrentTimestamp(), user]]))
 
     @classmethod
     def _restore_history(cls, ids, datetime, _before=False):

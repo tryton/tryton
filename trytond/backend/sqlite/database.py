@@ -392,6 +392,9 @@ class Cursor(CursorInterface):
     def has_constraint(self):
         return False
 
+    def has_multirow_insert(self):
+        return True
+
 sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
 if sys.version_info[0] == 2:
     sqlite.register_adapter(Decimal, lambda val: buffer(str(val)))

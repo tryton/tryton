@@ -308,6 +308,9 @@ class Cursor(CursorInterface):
     def has_constraint(self):
         return False
 
+    def has_multirow_insert(self):
+        return True
+
     def limit_clause(self, select, limit=None, offset=None):
         if offset and limit is None:
             limit = 18446744073709551610  # max bigint

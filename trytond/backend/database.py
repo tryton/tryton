@@ -220,6 +220,10 @@ class CursorInterface(object):
         :return: a boolean
         '''
 
+    def has_multirow_insert(self):
+        'Return True if database supports multirow insert'
+        return False
+
     def __build_dict(self, row):
         return dict((desc[0], row[i])
                 for i, desc in enumerate(self.description))

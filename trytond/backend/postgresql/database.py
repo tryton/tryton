@@ -361,6 +361,9 @@ class Cursor(CursorInterface):
         # RETURNING clause is available since PostgreSQL 8.2
         return self._database.get_version(self) >= (8, 2)
 
+    def has_multirow_insert(self):
+        return True
+
 register_type(UNICODE)
 if PYDATE:
     register_type(PYDATE)
