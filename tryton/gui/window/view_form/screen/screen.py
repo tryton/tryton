@@ -86,10 +86,10 @@ class Screen(SignalEvent):
         self.widget = self.screen_container.widget_get()
         self.__current_view = 0
         self.search_value = search_value
-        self.fields_view_tree = None
+        self.fields_view_tree = {}
         self.order = order
         self.view_to_load = []
-        self.domain_parser = None
+        self._domain_parser = {}
         self.pre_validate = False
         self.view_to_load = mode[:]
         if view_ids or mode:
@@ -100,56 +100,70 @@ class Screen(SignalEvent):
 
     def search_active(self, active=True):
         if active and not self.parent:
-            if not self.fields_view_tree:
-                try:
-                    self.fields_view_tree = RPCExecute('model',
-                        self.model_name, 'fields_view_get', False, 'tree',
-                        context=self.context)
-                except RPCException:
-                    return
-
-            if not self.domain_parser:
-                fields = copy.deepcopy(self.fields_view_tree['fields'])
-                for name, props in fields.iteritems():
-                    if props['type'] not in ('selection', 'reference'):
-                        continue
-                    if isinstance(props['selection'], (tuple, list)):
-                        continue
-                    props['selection'] = self.get_selection(props)
-
-                # Filter only fields in XML view
-                xml_dom = xml.dom.minidom.parseString(
-                    self.fields_view_tree['arch'])
-                root_node, = xml_dom.childNodes
-                xml_fields = [node_attributes(node).get('name')
-                    for node in root_node.childNodes
-                    if node.nodeName == 'field']
-                fields = collections.OrderedDict(
-                    (name, fields[name]) for name in xml_fields)
-                for name, string, type_ in (
-                        ('id', _('ID'), 'integer'),
-                        ('create_uid', _('Creation User'), 'many2one'),
-                        ('create_date', _('Creation Date'), 'datetime'),
-                        ('write_uid', _('Modification User'), 'many2one'),
-                        ('write_date', _('Modification Date'), 'datetime'),
-                        ):
-                    if name not in fields:
-                        fields[name] = {
-                            'string': string.decode('utf-8'),
-                            'name': name,
-                            'type': type_,
-                            }
-                        if type_ == 'datetime':
-                            fields[name]['format'] = '"%H:%M:%S"'
-
-                context = rpc.CONTEXT.copy()
-                context.update(self.context)
-                self.domain_parser = DomainParser(fields, context)
-
             self.screen_container.set_screen(self)
             self.screen_container.show_filter()
         else:
             self.screen_container.hide_filter()
+
+    @property
+    def domain_parser(self):
+        view_id = self.current_view.view_id if self.current_view else None
+
+        if view_id in self._domain_parser:
+            return self._domain_parser[view_id]
+
+        if view_id not in self.fields_view_tree:
+            try:
+                self.fields_view_tree[view_id] = view_tree = RPCExecute(
+                    'model', self.model_name, 'fields_view_get', False, 'tree',
+                    context=self.context)
+            except RPCException:
+                view_tree = {
+                    'fields': {},
+                    }
+        else:
+            view_tree = self.fields_view_tree[view_id]
+
+        fields = copy.deepcopy(view_tree['fields'])
+        for name, props in fields.iteritems():
+            if props['type'] not in ('selection', 'reference'):
+                continue
+            if isinstance(props['selection'], (tuple, list)):
+                continue
+            props['selection'] = self.get_selection(props)
+
+        if 'arch' in view_tree:
+            # Filter only fields in XML view
+            xml_dom = xml.dom.minidom.parseString(view_tree['arch'])
+            root_node, = xml_dom.childNodes
+            xml_fields = [node_attributes(node).get('name')
+                for node in root_node.childNodes
+                if node.nodeName == 'field']
+            fields = collections.OrderedDict(
+                (name, fields[name]) for name in xml_fields)
+
+        # Add common fields
+        for name, string, type_ in (
+                ('id', _('ID'), 'integer'),
+                ('create_uid', _('Creation User'), 'many2one'),
+                ('create_date', _('Creation Date'), 'datetime'),
+                ('write_uid', _('Modification User'), 'many2one'),
+                ('write_date', _('Modification Date'), 'datetime'),
+                ):
+            if name not in fields:
+                fields[name] = {
+                    'string': string.decode('utf-8'),
+                    'name': name,
+                    'type': type_,
+                    }
+                if type_ == 'datetime':
+                    fields[name]['format'] = '"%H:%M:%S"'
+
+        context = rpc.CONTEXT.copy()
+        context.update(self.context)
+        domain_parser = DomainParser(fields, context)
+        self._domain_parser[view_id] = domain_parser
+        return domain_parser
 
     def get_selection(self, props):
         try:
@@ -408,7 +422,7 @@ class Screen(SignalEvent):
         xml_dom = xml.dom.minidom.parseString(arch)
         root, = xml_dom.childNodes
         if root.tagName == 'tree':
-            self.fields_view_tree = view
+            self.fields_view_tree[view_id] = view
 
         # Ensure that loading is always lazy for fields on form view
         # and always eager for fields on tree or graph view
