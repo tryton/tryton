@@ -453,8 +453,8 @@ def file_selection(title, filename='',
         filename = win.get_preview_filename()
         if filename:
             try:
-                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(filename.decode(
-                        sys.getfilesystemencoding().encode('utf-8')), 128, 128)
+                pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(
+                    filename, 128, 128)
                 img.set_from_pixbuf(pixbuf)
                 have_preview = True
             except (IOError, glib.GError):
