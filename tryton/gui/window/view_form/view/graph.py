@@ -1,14 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import sys
-import os
 
 import gtk
 import gettext
 
 from . import View
 from tryton.common import node_attributes, get_toplevel_window, message
-from tryton.config import TRYTON_ICON, CONFIG
+from tryton.config import TRYTON_ICON
 from .graph_gtk.bar import VerticalBar, HorizontalBar
 from .graph_gtk.line import Line
 from .graph_gtk.pie import Pie
@@ -134,7 +133,6 @@ class ViewGraph(View):
         dia.vbox.pack_start(table)
 
         filechooser = gtk.FileChooserWidget(gtk.FILE_CHOOSER_ACTION_SAVE, None)
-        filechooser.set_current_folder(CONFIG['client.default_path'])
         filter = gtk.FileFilter()
         filter.set_name(_('PNG image (*.png)'))
         filter.add_mime_type('image/png')
@@ -149,14 +147,6 @@ class ViewGraph(View):
             width = spinwidth.get_value_as_int()
             height = spinheight.get_value_as_int()
             filename = filechooser.get_filename()
-            if filename:
-                filename = filename.decode('utf-8')
-                try:
-                    CONFIG['client.default_path'] = \
-                        os.path.dirname(filename)
-                    CONFIG.save()
-                except IOError:
-                    pass
             if response == gtk.RESPONSE_OK:
                 if width and height and filename:
                     if not filename.endswith('.png'):

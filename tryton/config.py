@@ -17,13 +17,6 @@ from tryton import __version__
 _ = gettext.gettext
 
 
-def get_home_dir():
-    if os.name == 'nt':
-        return os.path.join(os.environ['HOMEDRIVE'], os.environ['HOMEPATH']
-            ).decode(sys.getfilesystemencoding()).encode('utf-8')
-    return os.environ['HOME']
-
-
 def get_config_dir():
     if os.name == 'nt':
         return os.path.join(os.environ['APPDATA'], '.config', 'tryton',
@@ -59,7 +52,6 @@ class ConfigManager(object):
             'client.save_width_height': True,
             'client.save_tree_state': True,
             'client.spellcheck': False,
-            'client.default_path': get_home_dir(),
             'client.lang': locale.getdefaultlocale()[0],
             'client.language_direction': 'ltr',
             'client.email': '',

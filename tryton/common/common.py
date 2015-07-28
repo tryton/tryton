@@ -435,7 +435,6 @@ def file_selection(title, filename='',
     win = gtk.FileChooserDialog(title, None, action, buttons)
     win.set_transient_for(parent)
     win.set_icon(TRYTON_ICON)
-    win.set_current_folder(CONFIG['client.default_path'])
     if filename:
         if action in (gtk.FILE_CHOOSER_ACTION_SAVE,
                 gtk.FILE_CHOOSER_ACTION_CREATE_FOLDER):
@@ -469,34 +468,14 @@ def file_selection(title, filename='',
 
     button = win.run()
     if button != gtk.RESPONSE_OK:
-        parent.present()
-        win.destroy()
-        return False
-    if not multi:
-        filepath = win.get_filename()
-        if filepath:
-            filepath = filepath.decode('utf-8')
-            try:
-                CONFIG['client.default_path'] = \
-                    os.path.dirname(filepath)
-                CONFIG.save()
-            except IOError:
-                pass
-        parent.present()
-        win.destroy()
-        return filepath
+        result = False
+    elif not multi:
+        result = win.get_filename()
     else:
-        filenames = win.get_filenames()
-        if filenames:
-            filenames = [x.decode('utf-8') for x in filenames]
-            try:
-                CONFIG['client.default_path'] = \
-                    os.path.dirname(filenames[0])
-            except IOError:
-                pass
-        parent.present()
-        win.destroy()
-        return filenames
+        result = win.get_filenames()
+    parent.present()
+    win.destroy()
+    return result
 
 
 _slugify_strip_re = re.compile(r'[^\w\s-]')

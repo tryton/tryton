@@ -5,7 +5,7 @@ import gobject
 import gettext
 import tryton.common as common
 import csv
-from tryton.config import TRYTON_ICON, CONFIG
+from tryton.config import TRYTON_ICON
 from tryton.common import RPCExecute, RPCException
 from tryton.gui.window.nomodal import NoModal
 
@@ -173,8 +173,6 @@ class WinImport(NoModal):
         self.model = model
         self.context = context
         self.fields_data = {}
-
-        self.import_csv_file.set_current_folder(CONFIG['client.default_path'])
 
         self.view1 = gtk.TreeView()
         self.view1.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
