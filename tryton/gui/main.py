@@ -42,9 +42,9 @@ import tryton.plugins
 from tryton.common.placeholder_entry import PlaceholderEntry
 import pango
 import time
-try:
+if os.environ.get('GTKOSXAPPLICATION'):
     import gtkosx_application
-except ImportError:
+else:
     gtkosx_application = None
 try:
     import gtkspell

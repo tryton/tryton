@@ -49,6 +49,11 @@ Options
 
 -s SERVER, --server=SERVER           Specify the server hostname
 
+Environment
+***********
+
+`GTKOSXAPPLICATION`                  Activate with native Mac desktop
+
 URL
 ***
 
