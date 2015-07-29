@@ -207,36 +207,50 @@ class Uom(ModelSQL, ModelView):
             return 'rate'
 
     @classmethod
-    def compute_qty(cls, from_uom, qty, to_uom=None, round=True):
+    def compute_qty(cls, from_uom, qty, to_uom, round=True):
         """
         Convert quantity for given uom's.
         """
-        if not from_uom or not qty or not to_uom:
+        if not qty or (from_uom is None and to_uom is None):
             return qty
+        if from_uom is None:
+            raise ValueError("missing from_uom")
+        if to_uom is None:
+            raise ValueError("missing to_uom")
         if from_uom.category.id != to_uom.category.id:
-            return qty
+            raise ValueError("cannot convert between %s and %s"
+                    % (from_uom.category.name, to_uom.category.name))
+
         if from_uom.accurate_field == 'factor':
             amount = qty * from_uom.factor
         else:
             amount = qty / from_uom.rate
-        if to_uom is not None:
-            if to_uom.accurate_field == 'factor':
-                amount = amount / to_uom.factor
-            else:
-                amount = amount * to_uom.rate
-            if round:
-                amount = cls.round(amount, to_uom.rounding)
+
+        if to_uom.accurate_field == 'factor':
+            amount = amount / to_uom.factor
+        else:
+            amount = amount * to_uom.rate
+
+        if round:
+            amount = cls.round(amount, to_uom.rounding)
+
         return amount
 
     @classmethod
-    def compute_price(cls, from_uom, price, to_uom=None):
+    def compute_price(cls, from_uom, price, to_uom):
         """
         Convert price for given uom's.
         """
-        if not from_uom or not price or not to_uom:
+        if not price or (from_uom is None and to_uom is None):
             return price
+        if from_uom is None:
+            raise ValueError("missing from_uom")
+        if to_uom is None:
+            raise ValueError("missing to_uom")
         if from_uom.category.id != to_uom.category.id:
-            return price
+            raise ValueError('cannot convert between %s and %s'
+                    % (from_uom.category.name, to_uom.category.name))
+
         factor_format = '%%.%df' % cls.factor.digits[1]
         rate_format = '%%.%df' % cls.rate.digits[1]
 

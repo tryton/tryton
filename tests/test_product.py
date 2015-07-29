@@ -118,6 +118,8 @@ class ProductTestCase(ModuleTestCase):
             ('Second', 5, 'Minute', 0.083333333333333343, 0.08),
             ('Second', 25, 'Hour', 0.0069444444444444441, 0.01),
             ('Millimeter', 3, 'Inch', 0.11811023622047245, 0.12),
+            ('Millimeter', 0, 'Inch', 0, 0),
+            ('Millimeter', None, 'Inch', None, None),
             ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for from_name, qty, to_name, result, rounded_result in tests:
@@ -127,19 +129,33 @@ class ProductTestCase(ModuleTestCase):
                 to_uom, = self.uom.search([
                         ('name', '=', to_name),
                         ], limit=1)
-                self.assertEqual(result, self.uom.compute_qty(from_uom,
-                        qty, to_uom, False))
+                self.assertEqual(result, self.uom.compute_qty(
+                        from_uom, qty, to_uom, False))
                 self.assertEqual(rounded_result, self.uom.compute_qty(
                         from_uom, qty, to_uom, True))
+            self.assertEqual(0.2, self.uom.compute_qty(None, 0.2, None, False))
+            self.assertEqual(0.2, self.uom.compute_qty(None, 0.2, None, True))
 
-            self.assertEqual(10, self.uom.compute_qty(None, 10, to_uom))
-            self.assertEqual(10, self.uom.compute_qty(None, 10, to_uom, True))
-            self.assertEqual(0, self.uom.compute_qty(from_uom, 0, to_uom))
-            self.assertEqual(0,
-                self.uom.compute_qty(from_uom, 0, to_uom, True))
-            self.assertEqual(10, self.uom.compute_qty(from_uom, 10, None))
-            self.assertEqual(10,
-                self.uom.compute_qty(from_uom, 10, None, True))
+        tests_exceptions = [
+            ('Millimeter', 3, 'Pound', ValueError),
+            ('Kilogram', 'not a number', 'Pound', TypeError),
+            ]
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for from_name, qty, to_name, exception in tests_exceptions:
+                from_uom, = self.uom.search([
+                        ('name', '=', from_name),
+                        ], limit=1)
+                to_uom, = self.uom.search([
+                        ('name', '=', to_name),
+                        ], limit=1)
+                self.assertRaises(exception, self.uom.compute_qty,
+                        from_uom, qty, to_uom, False)
+                self.assertRaises(exception, self.uom.compute_qty,
+                        from_uom, qty, to_uom, True)
+            self.assertRaises(ValueError, self.uom.compute_qty,
+                    None, qty, to_uom, True)
+            self.assertRaises(ValueError, self.uom.compute_qty,
+                    from_uom, qty, None, True)
 
     def test0050uom_compute_price(self):
         'Test uom compute_price function'
@@ -149,6 +165,8 @@ class ProductTestCase(ModuleTestCase):
             ('Second', Decimal('5'), 'Minute', Decimal('300')),
             ('Second', Decimal('25'), 'Hour', Decimal('90000')),
             ('Millimeter', Decimal('3'), 'Inch', Decimal('76.2')),
+            ('Millimeter', Decimal('0'), 'Inch', Decimal('0')),
+            ('Millimeter', None, 'Inch', None),
             ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for from_name, price, to_name, result in tests:
@@ -158,8 +176,29 @@ class ProductTestCase(ModuleTestCase):
                 to_uom, = self.uom.search([
                         ('name', '=', to_name),
                         ], limit=1)
-                self.assertEqual(result, self.uom.compute_price(from_uom,
-                        price, to_uom))
+                self.assertEqual(result, self.uom.compute_price(
+                        from_uom, price, to_uom))
+            self.assertEqual(Decimal('0.2'), self.uom.compute_price(
+                    None, Decimal('0.2'), None))
+
+        tests_exceptions = [
+            ('Millimeter', Decimal('3'), 'Pound', ValueError),
+            ('Kilogram', 'not a number', 'Pound', TypeError),
+            ]
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for from_name, price, to_name, exception in tests_exceptions:
+                from_uom, = self.uom.search([
+                        ('name', '=', from_name),
+                        ], limit=1)
+                to_uom, = self.uom.search([
+                        ('name', '=', to_name),
+                        ], limit=1)
+                self.assertRaises(exception, self.uom.compute_price,
+                        from_uom, price, to_uom)
+            self.assertRaises(ValueError, self.uom.compute_price,
+                    None, price, to_uom)
+            self.assertRaises(ValueError, self.uom.compute_price,
+                    from_uom, price, None)
 
     def test0060product_search_domain(self):
         'Test product.product search_domain function'
