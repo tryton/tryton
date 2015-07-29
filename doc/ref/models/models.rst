@@ -424,6 +424,12 @@ Class methods:
     Could be overrided to use a custom SQL query instead of a table of the
     database. It should return a SQL FromItem.
 
+    .. warning::
+        By default all CRUD operation will raise an error on models
+        implementing this method so the create, write and delete methods may
+        also been overriden if needed.
+    ..
+
 .. classmethod:: ModelSQL.history_revisions(ids)
 
     Return a sorted list of all revisions for ids. The list is composed of

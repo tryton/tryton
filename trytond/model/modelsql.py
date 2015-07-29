@@ -471,7 +471,7 @@ class ModelSQL(ModelStorage):
         super(ModelSQL, cls).create(vlist)
 
         if cls.table_query():
-            return False
+            raise NotImplementedError('Can not create model with table_query')
 
         table = cls.__table__()
         modified_fields = set()
@@ -841,7 +841,8 @@ class ModelSQL(ModelStorage):
         super(ModelSQL, cls).write(records, values, *args)
 
         if cls.table_query():
-            return
+            raise NotImplementedError(
+                'Can not write on model with table_query')
         table = cls.__table__()
 
         cls.__check_timestamp(all_ids)
@@ -941,7 +942,7 @@ class ModelSQL(ModelStorage):
             return
 
         if cls.table_query():
-            return
+            raise NotImplementedError('Can not delete model with table_query')
         table = cls.__table__()
 
         if transaction.delete and transaction.delete.get(cls.__name__):
