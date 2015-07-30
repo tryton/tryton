@@ -12,5 +12,6 @@ from .union import UnionMixin
 from .descriptors import dualmethod
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
+    'Check', 'Unique',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'EvalEnvironment']
