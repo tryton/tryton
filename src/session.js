@@ -191,7 +191,7 @@
         var dialog = new Sao.Dialog(Sao.i18n.gettext('Password'), 'lg');
         dialog.password_input = jQuery('<input/>', {
             'class': 'form-control',
-            'tye': 'password',
+            'type': 'password',
             'id': 'password-password',
             'placeholder': Sao.i18n.gettext('Password')
         });
