@@ -117,8 +117,8 @@ class Party(ModelSQL, ModelView):
     @classmethod
     def search_vat_code(cls, name, clause):
         return [
-            ('identifier.code',) + tuple(clause[1:]),
-            ('identifier.type', 'in', cls._vat_types()),
+            ('identifiers.code',) + tuple(clause[1:]),
+            ('identifiers.type', 'in', cls._vat_types()),
             ]
 
     def get_full_name(self, name):
