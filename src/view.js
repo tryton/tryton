@@ -1199,21 +1199,27 @@
         init_selection: function(key) {
             Sao.common.selection_mixin.init_selection.call(this, key);
         },
+        update_selection: function(record, callback) {
+            Sao.common.selection_mixin.update_selection.call(this, record,
+                this.field, callback);
+        },
         update_text: function(cell, record) {
-            var value = this.field.get_client(record);
-            var model, name;
-            if (!value) {
-                model = '';
-                name = '';
-            } else {
-                model = value[0];
-                name = value[1];
-            }
-            if (model) {
-                cell.text(this.selection[model] || model + ',' + name);
-            } else {
-                cell.text(name);
-            }
+            this.update_selection(record, function() {
+                var value = this.field.get_client(record);
+                var model, name;
+                if (!value) {
+                    model = '';
+                    name = '';
+                } else {
+                    model = value[0];
+                    name = value[1];
+                }
+                if (model) {
+                    cell.text(this.selection[model] || model + ',' + name);
+                } else {
+                    cell.text(name);
+                }
+            }.bind(this));
         }
     });
 
