@@ -355,8 +355,18 @@ class Graph(gtk.DrawingArea):
                 minx = x
             if not maxx:
                 maxx = x
-            minx = min(minx, x)
-            maxx = max(maxx, x)
+            if minx is None and maxx is None:
+                if isinstance(x, datetime.datetime):
+                    minx, maxx = datetime.datetime.min, datetime.datetime.max
+                elif isinstance(x, datetime.date):
+                    minx, maxx = datetime.date.min, datetime.date.max
+                elif isinstance(x, datetime.timedelta):
+                    minx, maxx = datetime.timedelta.min, datetime.timedelta.max
+            try:
+                minx = min(minx, x)
+                maxx = max(maxx, x)
+            except TypeError:
+                continue
             self.labels[x] = model[self.xfield['name']].get_client(model)
             self.ids.setdefault(x, [])
             self.ids[x].append(model.id)
