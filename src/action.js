@@ -10,6 +10,13 @@
     Sao.Action.exec_action = function(action, data, context) {
         if (context === undefined) {
             context = {};
+        } else {
+            context = jQuery.extend({}, context);
+        }
+        if (!('date_format' in context)) {
+            if (session.context.locale && session.context.locale.date) {
+                context.date_format = session.context.locale.date;
+            }
         }
         if (data === undefined) {
             data = {};
@@ -50,11 +57,6 @@
                 ctx = jQuery.extend(ctx, params.context);
                 ctx = jQuery.extend(ctx, context);
                 params.context = jQuery.extend(params.context, context);
-                if (!('date_format' in params.context)) {
-                    if (session.context.locale && session.context.locale.date) {
-                        params.context.date_format = session.context.locale.date;
-                    }
-                }
 
                 var domain_context = jQuery.extend({}, ctx);
                 domain_context.context = ctx;
