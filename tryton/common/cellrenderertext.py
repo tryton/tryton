@@ -61,7 +61,7 @@ class CellRendererTextCompletion(CellRendererText):
     def do_start_editing(self, event, widget, path, background_area, cell_area,
             flags):
         editable = super(CellRendererTextCompletion,
-            self).on_start_editing(event, widget, path, background_area,
+            self).do_start_editing(event, widget, path, background_area,
                 cell_area, flags)
         self.set_completion(editable, path)
         return editable
