@@ -87,8 +87,11 @@
                 return Sao.View.Tree.BooleanColumn;
             case 'image':
                 return Sao.View.Tree.ImageColumn;
-            default:
-                return Sao.View.Tree.CharColumn;
+            case 'url':
+            case 'email':
+            case 'callto':
+            case 'sip':
+                return Sao.View.Tree.URLColumn;
         }
     };
 
@@ -1292,6 +1295,19 @@
         }
     });
 
+    Sao.View.Tree.URLColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        render: function(record) {
+            var cell = Sao.View.Tree.URLColumn._super.render.call(this, record);
+            this.field.set_state(record);
+            var state_attrs = this.field.get_state_attrs(record);
+            if (state_attrs.readonly) {
+                cell.hide();
+            } else {
+                cell.show();
+            }
+        }
+    });
+
     Sao.View.Tree.ButtonColumn = Sao.class_(Object, {
         init: function(screen, attributes) {
             this.screen = screen;
@@ -2000,6 +2016,14 @@
                 return Sao.View.Form.Binary;
             case 'multiselection':
                 return Sao.View.Form.MultiSelection;
+            case 'url':
+                return Sao.View.Form.URL;
+            case 'email':
+                return Sao.View.Form.Email;
+            case 'callto':
+                return Sao.View.Form.CallTo;
+            case 'sip':
+                return Sao.View.Form.SIP;
         }
     };
 
@@ -2097,10 +2121,13 @@
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
+            this.group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm'
-            }).appendTo(this.el);
+            }).appendTo(this.group);
             if (attributes.autocomplete) {
                 this.datalist = jQuery('<datalist/>').appendTo(this.el);
                 this.datalist.uniqueId();
@@ -3805,6 +3832,82 @@
                 value = [];
             field.set_client(record, value);
             }
+        }
+    });
+
+    Sao.View.Form.URL = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-url',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.URL._super.init.call(
+                    this, field_name, model, attributes);
+            this.button = jQuery('<a/>', {
+                'class': 'btn btn-default',
+                'target': '_new'
+            }).appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).appendTo(this.group));
+            this.icon = jQuery('<img/>').appendTo(this.button);
+            this.set_icon();
+        },
+        display: function(record, field) {
+            Sao.View.Form.URL._super.display.call(this, record, field);
+            var url = '';
+            if (record) {
+                url = record.field_get_client(this.field_name);
+            }
+            this.set_url(url);
+            if (record & this.attributes.icon) {
+                var icon = this.attributes.icon;
+                var value;
+                if (icon in record.model.fields) {
+                    value = record.field_get_client(icon);
+                } else {
+                    value = icon;
+                }
+                this.set_icon(value);
+            }
+        },
+        set_icon: function(value) {
+            value = value || 'tryton-web-browser';
+            Sao.common.ICONFACTORY.register_icon(value).done(function(url) {
+                this.icon.attr('src', url);
+            }.bind(this));
+        },
+        set_url: function(value) {
+            this.button.attr('href', value);
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.URL._super.set_readonly.call(this, readonly);
+            if (readonly) {
+                this.input.hide();
+                this.button.removeClass('btn-default');
+                this.button.addClass('btn-link');
+            } else {
+                this.input.show();
+                this.button.removeClass('btn-link');
+                this.button.addClass('btn-default');
+            }
+        }
+    });
+
+    Sao.View.Form.Email = Sao.class_(Sao.View.Form.URL, {
+        class_: 'form-email',
+        set_url: function(value) {
+            Sao.View.Form.Email._super.set_url.call(this, 'mailto:' + value);
+        }
+    });
+
+    Sao.View.Form.CallTo = Sao.class_(Sao.View.Form.URL, {
+        class_: 'form-callto',
+        set_url: function(value) {
+            Sao.View.Form.CallTo._super.set_url.call(this, 'callto:' + value);
+        }
+    });
+
+    Sao.View.Form.SIP = Sao.class_(Sao.View.Form.URL, {
+        class_: 'form-sip',
+        set_url: function(value) {
+            Sao.View.Form.SIP._super.set_url.call(this, 'sip:' + value);
         }
     });
 
