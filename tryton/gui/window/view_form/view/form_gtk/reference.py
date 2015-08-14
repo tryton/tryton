@@ -126,17 +126,13 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         else:
             model, value = None, None
         super(Reference, self).set_text(value)
-
-        active = -1
-        combo_model = self.widget_combo.get_model()
-        for i, selection in enumerate(combo_model):
-            if selection[1] == model:
-                active = i
-                break
-        self.widget_combo.set_active(active)
-        if active == -1:
-            # When setting no item GTK doesn't clear the entry
-            self.widget_combo.child.set_text('')
+        self.widget_combo.handler_block_by_func(self.sig_changed_combo)
+        if not self.set_popdown_value(self.widget_combo, model):
+            text = self.get_inactive_selection(model)
+            self.set_popdown(
+                self.selection[:] + [(model, text)], self.widget_combo)
+            self.set_popdown_value(self.widget_combo, value)
+        self.widget_combo.handler_unblock_by_func(self.sig_changed_combo)
 
     def display(self, record, field):
         self.update_selection(record, field)
