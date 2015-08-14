@@ -233,9 +233,11 @@ class PartyIdentifier(ModelSQL, ModelView):
             cursor.execute(*party.select(
                     party.id, party.vat_number, party.vat_country,
                     where=(party.vat_number != Null)
-                    & (party.vat_country != Null)))
+                    | (party.vat_country != Null)))
             for party_id, number, country in cursor.fetchall():
                 code = (country or '') + (number or '')
+                if not code:
+                    continue
                 type = None
                 if vat.is_valid(code):
                     type = 'eu_vat'
