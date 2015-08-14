@@ -12,7 +12,7 @@ from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.wizard import (Wizard, StateView, StateTransition, StateAction,
+from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
     Button)
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
@@ -995,7 +995,7 @@ class PrintDepreciationTable(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account_asset.report_depreciation_table')
+    print_ = StateReport('account.asset.depreciation_table')
 
     def do_print_(self, action):
         pool = Pool()
