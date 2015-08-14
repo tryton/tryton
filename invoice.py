@@ -12,7 +12,7 @@ from sql.conditionals import Coalesce, Case
 from trytond.model import Workflow, ModelView, ModelSQL, fields, Check
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
-    Button
+    StateReport, Button
 from trytond import backend
 from trytond.pyson import If, Eval, Bool, Id
 from trytond.tools import reduce_ids, grouped_slice
@@ -2228,7 +2228,7 @@ class PrintInvoice(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account_invoice.report_invoice')
+    print_ = StateReport('account.invoice')
 
     def transition_start(self):
         if len(Transaction().context['active_ids']) > 1:
