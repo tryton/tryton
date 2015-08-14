@@ -5,7 +5,7 @@ from itertools import groupby, chain
 
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.wizard import StateAction
+from trytond.wizard import StateReport
 from trytond.modules.company import CompanyReport
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -23,7 +23,7 @@ class Level:
 
 class ProcessDunning:
     __name__ = 'account.dunning.process'
-    print_letter = StateAction('account_dunning_letter.report_letter')
+    print_letter = StateReport('account.dunning.letter')
 
     @classmethod
     def __setup__(cls):
