@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-__all__ = ['Wizard', 'StateView', 'StateTransition', 'StateAction', 'Button']
+__all__ = ['Wizard',
+    'StateView', 'StateTransition', 'StateAction', 'StateReport',
+    'Button']
 
 try:
     import simplejson as json
@@ -143,6 +145,27 @@ class StateAction(StateTransition):
         action_id = Action.get_action_id(
             ModelData.get_id(module, fs_id))
         action = Action(action_id)
+        return Action.get_action_values(action.type, [action.id])[0]
+
+
+class StateReport(StateAction):
+    'An report state of a wizard'
+
+    def __init__(self, report_name):
+        super(StateReport, self).__init__(None)
+        self.report_name = report_name
+
+    def get_action(self):
+        'Return report definition'
+        pool = Pool()
+        ActionReport = pool.get('ir.action.report')
+        Action = pool.get('ir.action')
+        action_reports = ActionReport.search([
+                ('report_name', '=', self.report_name),
+                ])
+        assert action_reports, '%s not found' % self.report_name
+        action_report = action_reports[0]
+        action = action_report.action
         return Action.get_action_values(action.type, [action.id])[0]
 
 

@@ -172,6 +172,15 @@ Instance methods are:
 
     Returns the `ir.action` definition.
 
+===========
+StateReport
+===========
+
+.. class:: StateReport(report_name)
+
+    A :class:`StateReport` is a :class:`StateAction` which find the report
+    action by name instead of `XML` id.
+
 ======
 Button
 ======
