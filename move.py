@@ -12,7 +12,7 @@ from sql.conditionals import Coalesce, Case
 
 from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
-    Button
+    StateReport, Button
 from trytond.report import Report
 from trytond import backend
 from trytond.pyson import Eval, Bool, PYSONEncoder, If
@@ -2080,7 +2080,7 @@ class PrintGeneralJournal(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account.report_general_journal')
+    print_ = StateReport('account.move.general_journal')
 
     def do_print_(self, action):
         data = {

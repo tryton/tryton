@@ -12,7 +12,7 @@ from sql.conditionals import Coalesce, Case
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
-    Button
+    StateReport, Button
 from trytond.report import Report
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.pyson import Eval, PYSONEncoder, Date
@@ -1146,7 +1146,7 @@ class PrintGeneralLedger(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account.report_general_ledger')
+    print_ = StateReport('account.general_ledger')
 
     def do_print_(self, action):
         if self.start.start_period:
@@ -1360,7 +1360,7 @@ class PrintTrialBalance(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account.report_trial_balance')
+    print_ = StateReport('account.trial_balance')
 
     def do_print_(self, action):
         if self.start.start_period:
@@ -1977,7 +1977,7 @@ class OpenThirdPartyBalance(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account.report_third_party_balance')
+    print_ = StateReport('account.third_party_balance')
 
     def do_print_(self, action):
         data = {
@@ -2106,7 +2106,7 @@ class OpenAgedBalance(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
-    print_ = StateAction('account.report_aged_balance')
+    print_ = StateReport('account.aged_balance')
 
     @classmethod
     def __setup__(cls):
