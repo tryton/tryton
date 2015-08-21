@@ -1,10 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-try:
-    import cStringIO as StringIO
-except ImportError:
-    import StringIO
-import zipfile
 import os
 import datetime
 import tempfile
@@ -18,7 +13,6 @@ try:
 except ImportError:
     Manifest, MANIFEST = None, None
 from genshi.filters import Translator
-import lxml.etree
 from trytond.config import config
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
@@ -199,82 +193,14 @@ class Report(URLMixin, PoolBase):
         # Convert to str as value from DB is not supported by StringIO
         report_content = (bytes(report.report_content) if report.report_content
             else None)
-        style_content = (bytes(report.style_content) if report.style_content
-            else None)
-
         if not report_content:
             raise Exception('Error', 'Missing report file!')
 
         fd, path = tempfile.mkstemp(
             suffix=(os.extsep + report.template_extension),
             prefix='trytond_')
-        outzip = zipfile.ZipFile(path, mode='w')
-
-        content_io = StringIO.StringIO()
-        content_io.write(report_content)
-        content_z = zipfile.ZipFile(content_io, mode='r')
-
-        style_info = None
-        style_xml = None
-        manifest = None
-        for f in content_z.infolist():
-            if f.filename == 'styles.xml' and style_content:
-                style_info = f
-                style_xml = content_z.read(f.filename)
-                continue
-            elif Manifest and f.filename == MANIFEST:
-                manifest = Manifest(content_z.read(f.filename))
-                continue
-            outzip.writestr(f, content_z.read(f.filename))
-
-        if style_content:
-            pictures = []
-
-            # cStringIO difference:
-            # calling StringIO() with a string parameter creates a read-only
-            # object
-            new_style_io = StringIO.StringIO()
-            new_style_io.write(style_content)
-            new_style_z = zipfile.ZipFile(new_style_io, mode='r')
-            new_style_xml = new_style_z.read('styles.xml')
-            for file in new_style_z.namelist():
-                if file.startswith('Pictures'):
-                    picture = new_style_z.read(file)
-                    pictures.append((file, picture))
-                    if manifest:
-                        manifest.add_file_entry(file)
-            new_style_z.close()
-            new_style_io.close()
-
-            style_tree = lxml.etree.parse(StringIO.StringIO(style_xml))
-            style_root = style_tree.getroot()
-
-            new_style_tree = lxml.etree.parse(StringIO.StringIO(new_style_xml))
-            new_style_root = new_style_tree.getroot()
-
-            for style in ('master-styles', 'automatic-styles'):
-                node, = style_tree.xpath(
-                        '/office:document-styles/office:%s' % style,
-                        namespaces=style_root.nsmap)
-                new_node, = new_style_tree.xpath(
-                        '/office:document-styles/office:%s' % style,
-                        namespaces=new_style_root.nsmap)
-                node.getparent().replace(node, new_node)
-
-            outzip.writestr(style_info,
-                    lxml.etree.tostring(style_tree, encoding='utf-8',
-                        xml_declaration=True))
-
-            for file, picture in pictures:
-                outzip.writestr(file, picture)
-
-        if manifest:
-            outzip.writestr(MANIFEST, bytes(manifest))
-
-        content_z.close()
-        content_io.close()
-        outzip.close()
-
+        with open(path, 'wb') as f:
+            f.write(report_content)
         return fd, path
 
     @classmethod

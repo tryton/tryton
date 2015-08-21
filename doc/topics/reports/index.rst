@@ -4,14 +4,13 @@
 Reports
 =======
 
-Tryton can generate dynamic reports in many formats from report and style
-templates. The reports are generated in one step as follows: a report template
-in a special file format, explained later, is interpolated with dynamic data
-and placed into a document of the same file format. Tryton's ability to
-generate documents in this way allows documents to be generated for any editor
-that supports the Open Document Format which can be converted to third party
-formats, such as PDF.  Extra libraries are required for this, see INSTALL for
-more information.
+Tryton can generate dynamic reports in many formats from templates. The reports
+are generated in one step as follows: a report template in a special file
+format, explained later, is interpolated with dynamic data and placed into a
+document of the same file format. Tryton's ability to generate documents in
+this way allows documents to be generated for any editor that supports the Open
+Document Format which can be converted to third party formats, such as PDF.
+Extra libraries are required for this, see INSTALL for more information.
 
 Report Templates
 ================
@@ -38,13 +37,6 @@ first address of each party. The genshi code is placed in the template using
   </for>
 
 
-Report styles
-=============
-
-Reports styles let you standardize the header, footer and styles of your
-templates.
-
-
 Report API
 ==========
 
@@ -69,10 +61,6 @@ When defining an `ir.action.report` the following attributes are available:
 
     * ``report``: The path to the template file starting with the module, for
       example my_module/my_report.odt.
-
-    * ``style``: The path to the style file starting with the module, for
-      example, my_module/my_style.odt. If no style is to be used this field
-      will be blank.
 
     * ``template_extension``: The template format.
 
@@ -123,8 +111,7 @@ steps:
     * Use Liberation fonts (Only necessary if being officially included in
       Tryton)
 
-    * Try to use styles in report templates so that they can be extended in
-      report styles.
+    * Try to use styles in report templates so that they can be extended.
 
 Using Genshi in an ODT file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,7 +199,6 @@ Then you must activate the new invoice report that exists in your new module:
     <field name="report_name">account.invoice</field>
     <field name="model">account.invoice</field>
     <field name="report">my_module/invoice.odt</field>
-    <field name="style">module_name/header_A4.odt</field>
     <field name="template_extension">odt</field>
   </record>
 
@@ -248,14 +234,6 @@ employee object.
             return context
 
     Pool.register(InvoiceReport, type_='report')
-
-
-Replacing existing Tryton styles
---------------------------------
-
-TODO: Explanation of how to override `ir.report.get_style_content` to change
-the default style.
-
 
 .. _Genshi XML Templates: http://genshi.edgewall.org/wiki/Documentation/0.5.x/xml-templates.html
 

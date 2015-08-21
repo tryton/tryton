@@ -392,10 +392,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         'on_change_with_report_content_name')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
-    style = fields.Property(fields.Char('Style',
-            help='Define the style to apply on the report.'))
-    style_content = fields.Function(fields.Binary('Style'),
-            'get_style_content')
     direct_print = fields.Boolean('Direct Print')
     template_extension = fields.Selection([
             ('odt', 'OpenDocument Text'),
@@ -621,26 +617,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         if not self.name:
             return
         return ''.join([self.name, os.extsep, self.template_extension])
-
-    @classmethod
-    def get_style_content(cls, reports, name):
-        contents = {}
-        converter = fields.Binary.cast
-        default = None
-        format_ = Transaction().context.pop('%s.%s'
-            % (cls.__name__, name), '')
-        if format_ == 'size':
-            converter = len
-            default = 0
-        for report in reports:
-            try:
-                with file_open(report.style.replace('/', os.sep),
-                        mode='rb') as fp:
-                    data = fp.read()
-            except Exception:
-                data = None
-            contents[report.id] = converter(data) if data else default
-        return contents
 
     @classmethod
     def get_pyson(cls, reports, name):
