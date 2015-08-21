@@ -27,7 +27,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.dunning</field>
             <field name="report_name">account.dunning.letter</field>
             <field name="report">account_dunning_letter/letter.odt</field>
-            <field name="style">company/header_A4.odt</field>
         </record>
     </data>
 </tryton>
