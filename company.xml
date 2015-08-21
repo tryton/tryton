@@ -221,7 +221,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.party</field>
             <field name="report_name">party.letter</field>
             <field name="report">company/letter.odt</field>
-            <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_letter_party">
             <field name="keyword">form_print</field>

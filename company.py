@@ -48,7 +48,7 @@ class Company(ModelSQL, ModelView):
         cls.check_recursion(companies)
 
     def get_rec_name(self, name):
-        return self.party.rec_name
+        return self.party.name
 
     @classmethod
     def write(cls, companies, values, *args):
