@@ -2016,6 +2016,8 @@
                 return Sao.View.Form.Binary;
             case 'multiselection':
                 return Sao.View.Form.MultiSelection;
+            case 'image':
+                return Sao.View.Form.Image;
             case 'url':
                 return Sao.View.Form.URL;
             case 'email':
@@ -3598,13 +3600,137 @@
         }
     });
 
-    Sao.View.Form.Binary = Sao.class_(Sao.View.Form.Widget, {
+    Sao.View.Form.BinaryMixin = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.BinaryMixin._super.init.call(
+                    this, field_name, model, attributes);
+            this.filename = attributes.filename || null;
+        },
+        toolbar: function(class_) {
+            var group = jQuery('<div/>', {
+                'class': class_,
+                'role': 'group'
+            });
+
+            this.but_select = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-search'
+            })).appendTo(group);
+            this.but_select.click(this.select.bind(this));
+
+            if (this.filename) {
+                this.but_open = jQuery('<button/>', {
+                    'class': 'btn btn-default',
+                    'type': 'button'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-folder-open'
+                })).appendTo(group);
+                this.but_open.click(this.open.bind(this));
+            }
+
+            this.but_save_as = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-save'
+            })).appendTo(group);
+            this.but_save_as.click(this.save_as.bind(this));
+
+            this.but_clear = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-erase'
+            })).appendTo(group);
+            this.but_clear.click(this.clear.bind(this));
+
+            return group;
+        },
+        filename_field: function() {
+            var record = this.record();
+            if (record) {
+                return record.model.fields[this.filename];
+            }
+        },
+        select: function() {
+            var record = this.record();
+
+            var close = function() {
+                file_dialog.modal.on('hidden.bs.modal', function(event) {
+                    jQuery(this).remove();
+                });
+                file_dialog.modal.modal('hide');
+            };
+
+            var save_file = function() {
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    var uint_array = new Uint8Array(reader.result);
+                    this.field().set_client(record, uint_array);
+                }.bind(this);
+                reader.onloadend = function(evt) {
+                    close();
+                };
+                var file = file_selector[0].files[0];
+                reader.readAsArrayBuffer(file);
+                if (this.filename) {
+                    this.filename_field().set_client(record, file.name);
+                }
+            }.bind(this);
+
+            var file_dialog = new Sao.Dialog(
+                    Sao.i18n.gettext('Select'), 'file-dialog');
+            file_dialog.footer.append(jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button'
+            }).append(Sao.i18n.gettext('Cancel')).click(close))
+            .append(jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'submit'
+            }).append(Sao.i18n.gettext('OK')).click(save_file));
+            file_dialog.content.submit(function(e) {
+                save_file();
+                e.preventDefault();
+            });
+
+            var file_selector = jQuery('<input/>', {
+                type: 'file'
+            }).appendTo(file_dialog.body);
+
+            file_dialog.modal.modal('show');
+        },
+        open: function() {
+            // TODO find a way to make the difference
+            // between downloading and opening
+            this.save_as();
+        },
+        save_as: function() {
+            var field = this.field();
+            var record = this.record();
+            field.get_data(record).done(function(data) {
+                var blob = new Blob([data[0].binary],
+                        {type: 'application/octet-binary'});
+                var blob_url = window.URL.createObjectURL(blob);
+                if (this.blob_url) {
+                    window.URL.revokeObjectURL(this.blob_url);
+                }
+                this.blob_url = blob_url;
+                window.open(blob_url);
+            }.bind(this));
+        },
+        clear: function() {
+            this.field().set_client(this.record(), null);
+        }
+    });
+
+    Sao.View.Form.Binary = Sao.class_(Sao.View.Form.BinaryMixin, {
         class_: 'form-binary',
         blob_url: '',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Binary._super.init.call(this, field_name, model,
                 attributes);
-            this.filename = attributes.filename || null;
 
             this.el = jQuery('<div/>', {
                 'class': this.class_
@@ -3628,48 +3754,7 @@
                 'class': 'form-control input-sm'
             }).appendTo(group);
 
-            var buttons = jQuery('<div/>', {
-                'class': 'input-group-btn'
-            }).appendTo(group);
-            this.but_new = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-file'
-            })).appendTo(buttons);
-            this.but_new.click(this.new_.bind(this));
-
-            if (this.filename) {
-                this.but_open = jQuery('<button/>', {
-                    'class': 'btn btn-default',
-                    'type': 'button'
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-folder-open'
-                })).appendTo(buttons);
-                this.but_open.click(this.open.bind(this));
-            }
-
-            this.but_save_as = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-save'
-            })).appendTo(buttons);
-            this.but_save_as.click(this.save_as.bind(this));
-
-            this.but_remove = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-trash'
-            })).appendTo(buttons);
-            this.but_remove.click(this.remove.bind(this));
-        },
-        filename_field: function() {
-            var record = this.record();
-            if (record) {
-                return record.model.fields[this.filename];
-            }
+            this.toolbar('input-group-btn').appendTo(group);
         },
         display: function(record, field) {
             Sao.View.Form.Binary._super.display.call(this, record, field);
@@ -3701,75 +3786,6 @@
             this.size.val(Sao.common.humanize(size));
             this.but_save_as.button(button_sensitive);
         },
-        save_as: function(evt) {
-            var field = this.field();
-            var record = this.record();
-            field.get_data(record).done(function(data) {
-                var blob = new Blob([data[0].binary],
-                        {type: 'application/octet-binary'});
-                var blob_url = window.URL.createObjectURL(blob);
-                if (this.blob_url) {
-                    window.URL.revokeObjectURL(this.blob_url);
-                }
-                this.blob_url = blob_url;
-                window.open(blob_url);
-            }.bind(this));
-        },
-        open: function(evt) {
-            // TODO find a way to make the difference between downloading and
-            // opening
-            this.save_as(evt);
-        },
-        new_: function(evt) {
-            var record = this.record();
-
-            var close = function() {
-                file_dialog.modal.on('hidden.bs.modal', function(event) {
-                    jQuery(this).remove();
-                });
-                file_dialog.modal.modal('hide');
-            };
-
-            var save_file = function() {
-                var reader = new FileReader();
-                reader.onload = function(evt) {
-                    var uint_array = new Uint8Array(reader.result);
-                    this.field().set_client(record, uint_array);
-                }.bind(this);
-                reader.onloadend = function(evt) {
-                    close();
-                };
-                var file = file_selector[0].files[0];
-                reader.readAsArrayBuffer(file);
-                if (this.filename) {
-                    this.filename_field().set_client(record, file.name);
-                }
-            }.bind(this);
-
-            var file_dialog = new Sao.Dialog(
-                    Sao.i18n.gettext('Select a file'), 'file-dialog');
-            file_dialog.footer.append(jQuery('<button/>', {
-                'class': 'btn btn-link',
-                'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(close))
-            .append(jQuery('<button/>', {
-                'class': 'btn btn-primary',
-                'type': 'submit'
-            }).append(Sao.i18n.gettext('OK')).click(save_file));
-            file_dialog.content.submit(function(e) {
-                save_file();
-                e.preventDefault();
-            });
-
-            var file_selector = jQuery('<input/>', {
-                type: 'file'
-            }).appendTo(file_dialog.body);
-
-            file_dialog.modal.modal('show');
-        },
-        remove: function(evt) {
-            this.field().set_client(this.record(), null);
-        },
         key_press: function(evt) {
             var editable = true; // TODO compute editable
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
@@ -3788,12 +3804,12 @@
         },
         set_readonly: function(readonly) {
             if (readonly) {
-                this.but_new.hide();
-                this.but_remove.hide();
+                this.but_select.hide();
+                this.but_clear.hide();
 
             } else {
-                this.but_new.show();
-                this.but_remove.show();
+                this.but_select.show();
+                this.but_clear.show();
             }
         }
     });
@@ -3832,6 +3848,76 @@
                 value = [];
             field.set_client(record, value);
             }
+        }
+    });
+
+    Sao.View.Form.Image = Sao.class_(Sao.View.Form.BinaryMixin, {
+        class_: 'form-image',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Image._super.init.call(
+                    this, field_name, model, attributes);
+            this.height = parseInt(attributes.height || 100, 10);
+            this.width = parseInt(attributes.width || 300, 10);
+
+            this.el = jQuery('<div/>');
+            this.image = jQuery('<img/>', {
+                'class': 'center-block'
+            }).appendTo(this.el);
+            this.image.css('max-height', this.height);
+            this.image.css('max-width', this.width);
+            this.image.css('height', 'auto');
+            this.image.css('width', 'auto');
+
+            var group = this.toolbar('btn-group');
+            if (!attributes.readonly) {
+                jQuery('<div/>', {
+                    'class': 'text-center'
+                }).append(group).appendTo(this.el);
+            }
+            this.update_img();
+        },
+        set_readonly: function(readonly) {
+            [this.but_select, this.but_open, this.but_save_as, this.but_clear]
+                .forEach(function(button) {
+                    if (button) {
+                        button.prop('disable', readonly);
+                    }
+                });
+        },
+        clear: function() {
+            Sao.View.Form.Image._super.clear.call(this);
+            this.update_img();
+        },
+        update_img: function() {
+            var value;
+            var record = this.record();
+            if (record) {
+                value = record.field_get_client(this.field_name);
+            }
+            if (value) {
+                if (value > Sao.common.BIG_IMAGE_SIZE) {
+                    value = jQuery.when(null);
+                } else {
+                    value = record.model.fields[this.field_name]
+                        .get_data(record);
+                }
+            } else {
+                value = jQuery.when(null);
+            }
+            value.done(function(data) {
+                var url, blob;
+                if (!data) {
+                    url = null;
+                } else {
+                    blob = new Blob([data[0][this.field_name]]);
+                    url = window.URL.createObjectURL(blob);
+                }
+                this.image.attr('src', url);
+            }.bind(this));
+        },
+        display: function(record, field) {
+            Sao.View.Form.Image._super.display.call(this, record, field);
+            this.update_img();
         }
     });
 
