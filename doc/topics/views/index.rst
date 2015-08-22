@@ -497,9 +497,6 @@ Each tree view must start with this tag.
       must be an integer and it will be updated to match the new sort order
       when the user uses ``Drag and Drop`` on list rows.
 
-    * ``colors``: A PySON string that will be evaluated for each record. A
-      string containing the name of the color will be returned.
-
     * ``keyword_open``: A boolean to specify if the client should look for a
       tree_open action on double click instead of switching view.
 
