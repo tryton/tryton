@@ -192,8 +192,7 @@ class WinImport(NoModal):
         column = gtk.TreeViewColumn(_('Field name'), cell, text=0)
         self.view2.append_column(column)
 
-        self.model1 = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING,
-                gobject.TYPE_STRING)
+        self.model1 = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
         self.model2 = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
 
         self.fields = {}
