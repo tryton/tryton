@@ -171,10 +171,12 @@ class EnterLines(Wizard):
         date = Date(date.year, date.month, date.day)
         action['pyson_domain'] = PYSONEncoder().encode([
                 ('employee', '=', self.start.employee.id),
+                ('company', '=', self.start.employee.company.id),
                 ('date', '=', date),
                 ])
         action['pyson_context'] = PYSONEncoder().encode({
                 'employee': self.start.employee.id,
+                'company': self.start.employee.company.id,
                 'date': date,
                 })
         action['name'] += " - " + self.start.employee.rec_name
