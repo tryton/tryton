@@ -13,6 +13,7 @@
         } else {
             context = jQuery.extend({}, context);
         }
+        var session = Sao.Session.current_session;
         if (!('date_format' in context)) {
             if (session.context.locale && session.context.locale.date) {
                 context.date_format = session.context.locale.date;
@@ -48,7 +49,6 @@
                     active_id: data.id || null,
                     active_ids: data.ids
                 };
-                var session = Sao.Session.current_session;
                 ctx = jQuery.extend(ctx, session.context);
                 var eval_ctx = jQuery.extend({}, ctx);
                 eval_ctx._user = session.user_id;
