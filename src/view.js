@@ -60,6 +60,7 @@
     Sao.View.tree_column_get = function(type) {
         switch (type) {
             case 'char':
+            case 'text':
                 return Sao.View.Tree.CharColumn;
             case 'many2one':
                 return Sao.View.Tree.Many2OneColumn;
