@@ -1296,6 +1296,7 @@
     });
 
     Sao.View.Tree.URLColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-url',
         render: function(record) {
             var cell = Sao.View.Tree.URLColumn._super.render.call(this, record);
             this.field.set_state(record);
