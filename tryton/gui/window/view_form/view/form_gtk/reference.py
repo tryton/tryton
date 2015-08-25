@@ -6,6 +6,7 @@ import gettext
 from .many2one import Many2One
 from tryton.common.selection import SelectionMixin, PopdownMixin, \
         selection_shortcuts
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -46,14 +47,15 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
                 return model, name
         return '', ''
 
-    def _readonly_set(self, value):
-        super(Reference, self)._readonly_set(value)
-        if not value:
-            self.widget.set_focus_chain([self.widget_combo, self.wid_text])
-
     def _set_button_sensitive(self):
         super(Reference, self)._set_button_sensitive()
-        self.widget_combo.set_sensitive(not self._readonly)
+        self.widget_combo.child.set_editable(not self._readonly)
+        self.widget_combo.set_button_sensitivity(
+            gtk.SENSITIVITY_OFF if self._readonly else gtk.SENSITIVITY_AUTO)
+        if self._readonly and CONFIG['client.fast_tabbing']:
+            self.widget.set_focus_chain([])
+        else:
+            self.widget.unset_focus_chain()
 
     @property
     def modified(self):

@@ -17,6 +17,7 @@ class CheckBox(Widget):
 
     def _readonly_set(self, value):
         super(CheckBox, self)._readonly_set(value)
+        # TODO find a better solution to accept focus
         self.widget.set_sensitive(not value)
 
     def set_value(self, record, field):

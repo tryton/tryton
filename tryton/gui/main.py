@@ -631,6 +631,16 @@ class Main(object):
         if CONFIG['client.save_tree_state']:
             checkmenuitem_save_tree_state.set_active(True)
 
+        checkmenuitem_fast_tabbing = gtk.CheckMenuItem(
+            _('Fast Tabbing'))
+        checkmenuitem_fast_tabbing.connect('activate',
+            lambda menuitem: CONFIG.__setitem__('client.fast_tabbing',
+                menuitem.get_active()))
+        checkmenuitem_fast_tabbing.set_accel_path(
+            '<tryton>/Options/Form/Fast Tabbing')
+        menu_form.add(checkmenuitem_fast_tabbing)
+        checkmenuitem_fast_tabbing.set_active(CONFIG['client.fast_tabbing'])
+
         if gtkspell:
             checkmenuitem_spellcheck = gtk.CheckMenuItem(_('Spell Checking'))
             checkmenuitem_spellcheck.connect('activate',

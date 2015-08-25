@@ -8,6 +8,7 @@ from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips
 from tryton.common.entry_position import manage_entry_position
 from tryton.common.selection import PopdownMixin, selection_shortcuts
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -140,10 +141,10 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             self.entry.set_editable(not value)
         if self.button:
             self.button.set_sensitive(not value)
-        if value:
+        if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:
-            self.widget.set_focus_chain([self.entry])
+            self.widget.unset_focus_chain()
 
 
 class Password(Char):
@@ -161,10 +162,10 @@ class Password(Char):
         super(Char, self)._readonly_set(value)
         self.entry.set_editable(not value)
         self.visibility_checkbox.props.visible = not value
-        if value:
+        if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:
-            self.widget.set_focus_chain([self.entry, self.visibility_checkbox])
+            self.widget.unset_focus_chain()
 
     def toggle_visibility(self, button):
         self.entry.props.visibility = not self.entry.props.visibility

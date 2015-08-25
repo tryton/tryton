@@ -6,6 +6,7 @@ import gettext
 from .widget import Widget
 from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
     DateTime as DateTimeEntry, add_operators)
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -35,10 +36,10 @@ class Date(Widget):
 
     def _readonly_set(self, value):
         self._set_editable(not value)
-        if value:
+        if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:
-            self.widget.set_focus_chain([self.entry])
+            self.widget.unset_focus_chain()
 
     @property
     def modified(self):

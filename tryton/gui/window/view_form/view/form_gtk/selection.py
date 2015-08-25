@@ -6,6 +6,7 @@ import gobject
 from .widget import Widget
 from tryton.common.selection import SelectionMixin, selection_shortcuts, \
     PopdownMixin
+from tryton.config import CONFIG
 
 
 class Selection(Widget, SelectionMixin, PopdownMixin):
@@ -41,7 +42,13 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
 
     def _readonly_set(self, value):
         super(Selection, self)._readonly_set(value)
-        self.entry.set_sensitive(not value)
+        self.entry.child.set_editable(not value)
+        self.entry.set_button_sensitivity(
+            gtk.SENSITIVITY_OFF if value else gtk.SENSITIVITY_AUTO)
+        if value and CONFIG['client.fast_tabbing']:
+            self.widget.set_focus_chain([])
+        else:
+            self.widget.unset_focus_chain()
 
     def get_value(self):
         if not self.entry.child:  # entry is destroyed

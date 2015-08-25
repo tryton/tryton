@@ -6,6 +6,7 @@ import os
 import tempfile
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, slugify
+from tryton.config import CONFIG
 from .widget import Widget
 
 _ = gettext.gettext
@@ -160,19 +161,13 @@ class Binary(BinaryMixin, Widget):
         if value:
             self.but_select.hide()
             self.but_clear.hide()
-            self.widget.set_focus_chain([])
         else:
             self.but_select.show()
             self.but_clear.show()
-            if self.wid_text:
-                focus_chain = [self.wid_text]
-            elif self.filename:
-                focus_chain = [self.but_select, self.but_open,
-                    self.but_save_as, self.but_clear]
-            else:
-                focus_chain = [self.but_select, self.but_save_as,
-                    self.but_clear]
-            self.widget.set_focus_chain(focus_chain)
+        if value and CONFIG['client.fast_tabbing']:
+            self.widget.set_focus_chain([])
+        else:
+            self.widget.unset_focus_chain()
 
     def sig_key_press(self, widget, event, *args):
         editable = self.wid_text and self.wid_text.get_editable()

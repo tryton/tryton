@@ -4,6 +4,7 @@ import gtk
 from .char import Char
 import webbrowser
 import tryton.common as common
+from tryton.config import CONFIG
 
 
 class URL(Char):
@@ -50,9 +51,11 @@ class URL(Char):
         super(URL, self)._readonly_set(value)
         if value:
             self.entry.hide()
-            self.widget.set_focus_chain([self.button])
         else:
             self.entry.show()
+        if value and CONFIG['client.fast_tabbing']:
+            self.widget.set_focus_chain([self.button])
+        else:
             self.widget.set_focus_chain([self.entry])
         self.button.set_sensitive(True)
 
