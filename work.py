@@ -156,6 +156,12 @@ class Work(ModelSQL, ModelView):
                             'child': child.rec_name,
                             })
 
+    @property
+    def effort_hours(self):
+        if not self.effort_duration:
+            return 0
+        return self.effort_duration.total_seconds() / 60 / 60
+
     def get_rec_name(self, name):
         return self.work.name
 
