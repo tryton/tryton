@@ -99,12 +99,6 @@ class Work:
         else:
             return 'manual'
 
-    @property
-    def effort_hours(self):
-        if not self.effort_duration:
-            return 0
-        return self.effort_duration.total_seconds() / 60 / 60
-
     @staticmethod
     def default_invoiced_duration():
         return datetime.timedelta()
