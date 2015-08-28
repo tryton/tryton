@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+
 from functools import wraps
 
 from sql.operators import NotIn
@@ -433,7 +435,7 @@ class ModuleConfigWizardOther(ModelView):
             ('state', '=', 'done'),
             ], count=True)
         all = Item.search([], count=True)
-        return 100.0 * done / all
+        return done / all
 
 
 class ModuleConfigWizardDone(ModelView):
