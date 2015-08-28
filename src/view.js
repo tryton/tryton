@@ -64,6 +64,8 @@
                 return Sao.View.Tree.CharColumn;
             case 'many2one':
                 return Sao.View.Tree.Many2OneColumn;
+            case 'one2one':
+                return Sao.View.Tree.One2OneColumn;
             case 'date':
                 return Sao.View.Tree.DateColumn;
             case 'time':
@@ -1153,6 +1155,10 @@
         class_: 'column-many2one'
     });
 
+    Sao.View.Tree.One2OneColumn = Sao.class_(Sao.View.Tree.Many2OneColumn, {
+        class_: 'column-one2one'
+    });
+
     Sao.View.Tree.SelectionColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-selection',
         init: function(model, attributes) {
@@ -2034,6 +2040,8 @@
                 return Sao.View.Form.Text;
             case 'many2one':
                 return Sao.View.Form.Many2One;
+            case 'one2one':
+                return Sao.View.Form.One2One;
             case 'reference':
                 return Sao.View.Form.Reference;
             case 'one2many':
@@ -2857,6 +2865,10 @@
                 }
             }
         }
+    });
+
+    Sao.View.Form.One2One = Sao.class_(Sao.View.Form.Many2One, {
+        class_: 'form-one2one'
     });
 
     Sao.View.Form.Reference = Sao.class_(Sao.View.Form.Many2One, {
@@ -4086,6 +4098,8 @@
                 return Sao.View.EditableTree.Boolean;
             case 'many2one':
                 return Sao.View.EditableTree.Many2One;
+            case 'one2one':
+                return Sao.View.EditableTree.One2One;
             case 'one2many':
             case 'many2many':
                 return Sao.View.EditableTree.One2Many;
@@ -4191,6 +4205,23 @@
                 this.focus_out();
             } else {
                 Sao.View.EditableTree.Many2One._super.key_press.call(this,
+                    event_);
+            }
+        }
+    });
+
+    Sao.View.EditableTree.One2One = Sao.class_(Sao.View.Form.One2One, {
+        class_: 'editabletree-one2one',
+        init: function(field_name, model, attributes) {
+            Sao.View.EditableTree.One2One._super.init.call(this, field_name,
+                model, attributes);
+            this.el.on('keydown', this.key_press.bind(this));
+        },
+        key_press: function(event_) {
+            if (event_.which == Sao.common.TAB_KEYCODE) {
+                this.focus_out();
+            } else {
+                Sao.View.EditableTree.One2One._super.key_press.call(this,
                     event_);
             }
         }
