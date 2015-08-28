@@ -2378,7 +2378,7 @@ class PayInvoiceAsk(ModelView):
         return 'partial'
 
     @fields.depends('lines', 'amount', 'currency', 'currency_writeoff',
-        'invoice')
+        'invoice', 'payment_lines')
     def on_change_lines(self):
         Currency = Pool().get('currency.currency')
 
@@ -2389,6 +2389,8 @@ class PayInvoiceAsk(ModelView):
         self.amount_writeoff = Decimal('0.0')
         for line in self.lines:
             self.amount_writeoff += line.debit - line.credit
+        for line in self.payment_lines:
+            self.amount_writeoff += line.debit - line.credit            
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             self.amount_writeoff = - self.amount_writeoff - amount
         else:
