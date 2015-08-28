@@ -61,6 +61,7 @@
         switch (type) {
             case 'char':
             case 'text':
+            case 'binary':
                 return Sao.View.Tree.CharColumn;
             case 'many2one':
                 return Sao.View.Tree.Many2OneColumn;
@@ -4079,6 +4080,10 @@
         switch (type) {
             case 'char':
             case 'text':
+            case 'url':
+            case 'email':
+            case 'callto':
+            case 'sip':
                 return Sao.View.EditableTree.Char;
             case 'date':
                 return Sao.View.EditableTree.Date;
@@ -4105,8 +4110,6 @@
                 return Sao.View.EditableTree.One2Many;
             case 'binary':
                 return Sao.View.EditableTree.Binary;
-            default:
-                return Sao.View.EditableTree.Char;
         }
     };
 
