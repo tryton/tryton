@@ -93,6 +93,8 @@
             case 'callto':
             case 'sip':
                 return Sao.View.Tree.URLColumn;
+            case 'progressbar':
+                return Sao.View.Tree.ProgressBar;
         }
     };
 
@@ -1310,6 +1312,30 @@
         }
     });
 
+    Sao.View.Tree.ProgressBar = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-progressbar',
+        get_cell: function() {
+            var cell = jQuery('<div/>', {
+                'class': this.class_ + ' progress'
+            });
+            var progressbar = jQuery('<div/>', {
+                'class': 'progress-bar',
+                'role': 'progressbar',
+                'aria-valuemin': 0,
+                'aria-valuemax': 100
+            }).appendTo(cell);
+            progressbar.css('min-width: 2em');
+            return cell;
+        },
+        update_text: function(cell, record) {
+            var value = this.field.get_client(record, 100);
+            var progressbar = cell.find('.progress-bar');
+            progressbar.prop('aria-valuenow', value);
+            progressbar.css('width', value + '%');
+            progressbar.text(Sao.i18n.gettext('%1%', value));
+        }
+    });
+
     Sao.View.Tree.ButtonColumn = Sao.class_(Object, {
         init: function(screen, attributes) {
             this.screen = screen;
@@ -2028,6 +2054,8 @@
                 return Sao.View.Form.CallTo;
             case 'sip':
                 return Sao.View.Form.SIP;
+            case 'progressbar':
+                return Sao.View.Form.ProgressBar;
         }
     };
 
@@ -3996,6 +4024,41 @@
         class_: 'form-sip',
         set_url: function(value) {
             Sao.View.Form.SIP._super.set_url.call(this, 'sip:' + value);
+        }
+    });
+
+    Sao.View.Form.ProgressBar = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-char',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.ProgressBar._super.init.call(
+                    this, field_name, model, attributes);
+            this.el = jQuery('<div/>', {
+                'class': this.class_ + ' progress'
+            });
+            this.progressbar = jQuery('<div/>', {
+                'class': 'progress-bar',
+                'role': 'progressbar',
+                'aria-valuemin': 0,
+                'aria-valuemax': 100
+            }).appendTo(this.el);
+            this.progressbar.css('min-width: 2em');
+        },
+        display: function(record, field) {
+            Sao.View.Form.ProgressBar._super.display.call(
+                    this, record, field);
+            var value;
+            if (!field) {
+                value = 0;
+            } else {
+                value = record.model.fields[this.field_name].get_client(
+                        record, 100);
+            }
+            this.set_fraction(value);
+        },
+        set_fraction: function(value) {
+            this.progressbar.prop('aria-valuenow', value);
+            this.progressbar.css('width', value + '%');
+            this.progressbar.text(Sao.i18n.gettext('%1%', value));
         }
     });
 
