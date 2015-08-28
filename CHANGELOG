@@ -1,3 +1,4 @@
+* Change Progressbar to work with float between 0 and 1
 * Add Fast Tabbing option
 * Remove colors on widgets
 * Bold label of required fields
