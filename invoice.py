@@ -2451,7 +2451,7 @@ class PayInvoiceAsk(ModelView):
         states={
             'invisible': Eval('type') != 'writeoff',
             }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
-            'invoice'],
+            'invoice', 'payment_lines'],
         depends=['lines_to_pay', 'type'])
     payment_lines = fields.Many2Many('account.move.line', None, None,
         'Payment Lines', readonly=True,
@@ -2476,6 +2476,8 @@ class PayInvoiceAsk(ModelView):
         res['amount_writeoff'] = Decimal('0.0')
         for line in self.lines:
             res['amount_writeoff'] += line.debit - line.credit
+        for line in self.payment_lines:
+            res['amount_writeoff'] += line.debit - line.credit            
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             res['amount_writeoff'] = - res['amount_writeoff'] - amount
         else:
