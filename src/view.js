@@ -2192,7 +2192,7 @@
             field.set_client(record, this.input.val());
         },
         set_readonly: function(readonly) {
-            this.input.prop('disabled', readonly);
+            this.input.prop('readonly', readonly);
         },
         focus: function() {
             this.input.focus();
@@ -2265,7 +2265,8 @@
             field.set_client(record, this.get_value(record, field));
         },
         set_readonly: function(readonly) {
-            this.date.find('input, button').prop('disabled', readonly);
+            this.date.find('button').prop('disabled', readonly);
+            this.date.find('input').prop('readonly', readonly);
         }
     });
 
@@ -2327,7 +2328,7 @@
             field.set_client(record, this.input.val());
         },
         set_readonly: function(readonly) {
-            this.input.prop('disabled', readonly);
+            this.input.prop('readonly', readonly);
         }
     });
 
@@ -2479,7 +2480,7 @@
             field.set_client(record, value);
         },
         set_readonly: function(readonly) {
-            this.input.prop('disabled', readonly);
+            this.input.prop('readonly', readonly);
         }
     });
 
@@ -2513,7 +2514,7 @@
             field.set_client(record, value);
         },
         set_readonly: function(readonly) {
-            this.input.prop('disabled', readonly);
+            this.input.prop('readonly', readonly);
         }
     });
 
@@ -2674,7 +2675,7 @@
             this._set_button_sensitive();
         },
         _set_button_sensitive: function() {
-            this.entry.prop('disabled', this._readonly);
+            this.entry.prop('readonly', this._readonly);
             this.but_open.prop('disabled',
                     this._readonly || !this.read_access());
         },
@@ -2934,7 +2935,7 @@
         },
         _set_button_sensitive: function() {
             Sao.View.Form.Reference._super._set_button_sensitive.call(this);
-            this.select.prop('disabled', this.entry.prop('disabled'));
+            this.select.prop('disabled', this.entry.prop('readonly'));
         },
         select_changed: function() {
             this.value('');
