@@ -161,6 +161,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">journal_tree</field>
         </record>
+        <record model="ir.ui.view" id="journal_view_list_cash">
+            <field name="model">account.journal</field>
+            <field name="priority" eval="20"/>
+            <field name="type">tree</field>
+            <field name="name">journal_list_cash</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_journal_form">
             <field name="name">Journals</field>
             <field name="res_model">account.journal</field>
@@ -177,6 +184,32 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_journal_configuration"
             action="act_journal_form" id="menu_journal_form"/>
+
+        <record model="ir.ui.view" id="journal_open_cash_start_view_form">
+            <field name="model">account.journal.open_cash.start</field>
+            <field name="type">form</field>
+            <field name="name">journal_open_cash_start</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_journal_open_cash">
+            <field name="name">Open Journal Cash</field>
+            <field name="wiz_name">account.journal.open_cash</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_journal_open_cash"
+            id="menu_journal_open_cash" icon="tryton-list"
+            name="Journals Cash"/>
+
+        <record model="ir.action.act_window" id="act_journal_open_cash">
+            <field name="name">Journals Cash</field>
+            <field name="res_model">account.journal</field>
+            <field name="domain" eval="[('type', '=', 'cash')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_journal_open_cash_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_view_list_cash"/>
+            <field name="act_window" ref="act_journal_open_cash"/>
+        </record>
 
         <record model="ir.model.access" id="access_journal">
             <field name="model" search="[('model', '=', 'account.journal')]"/>

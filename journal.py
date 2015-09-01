@@ -1,16 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from sql import Null
 from sql.conditionals import Case
+from sql.aggregate import Sum
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.wizard import Wizard, StateTransition
+from trytond.wizard import Wizard, StateTransition, StateView, StateAction
+from trytond.wizard import Button
 from trytond import backend
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['JournalType', 'JournalView', 'JournalViewColumn', 'Journal',
+    'OpenJournalCash', 'OpenJournalCashStart',
     'JournalPeriod', 'CloseJournalPeriod', 'ReOpenJournalPeriod']
 
 STATES = {
@@ -128,6 +134,17 @@ class Journal(ModelSQL, ModelView):
                     & (Eval('context', {}).get('company', -1) != -1)),
                 'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
+    debit = fields.Function(fields.Numeric('Debit',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_debit_credit_balance')
+    credit = fields.Function(fields.Numeric('Credit',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_debit_credit_balance')
+    balance = fields.Function(fields.Numeric('Balance',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_debit_credit_balance')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'get_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -180,6 +197,110 @@ class Journal(ModelSQL, ModelView):
             ('code',) + tuple(clause[1:]),
             (cls._rec_name,) + tuple(clause[1:]),
             ]
+
+    @classmethod
+    def get_currency_digits(cls, journals, name):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = Transaction().context.get('company')
+        if company_id:
+            company = Company(company_id)
+            digits = company.currency.digits
+        else:
+            digits = 2
+        return dict.fromkeys([j.id for j in journals], digits)
+
+    @classmethod
+    def get_debit_credit_balance(cls, journals, names):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        context = Transaction().context
+        cursor = Transaction().cursor
+
+        result = {}
+        ids = [j.id for j in journals]
+        for name in ['debit', 'credit', 'balance']:
+            result[name] = dict.fromkeys(ids, 0)
+
+        line = MoveLine.__table__()
+        move = Move.__table__()
+        where = ((move.date >= context['start_date'])
+            & (move.date <= context['end_date']))
+        for sub_journals in grouped_slice(journals):
+            sub_journals = list(sub_journals)
+            red_sql = reduce_ids(move.journal, [j.id for j in sub_journals])
+            accounts = None
+            for journal in sub_journals:
+                credit_account = (journal.credit_account.id
+                    if journal.credit_account else None)
+                debit_account = (journal.debit_account.id
+                    if journal.debit_account else None)
+                clause = ((move.journal == journal.id)
+                    & (((line.credit != Null)
+                            & (line.account == credit_account))
+                        | ((line.debit != Null)
+                            & (line.account == debit_account))))
+                if accounts is None:
+                    accounts = clause
+                else:
+                    accounts |= clause
+
+            query = line.join(move, 'LEFT', condition=line.move == move.id
+                ).select(move.journal, Sum(line.debit), Sum(line.credit),
+                    where=where & red_sql & accounts,
+                    group_by=move.journal)
+            cursor.execute(*query)
+            for journal_id, debit, credit in cursor.fetchall():
+                # SQLite uses float for SUM
+                if not isinstance(debit, Decimal):
+                    debit = Decimal(str(debit))
+                if not isinstance(credit, Decimal):
+                    credit = Decimal(str(credit))
+                result['debit'][journal_id] = debit
+                result['credit'][journal_id] = credit
+                result['balance'][journal_id] = debit - credit
+        return result
+
+
+class OpenJournalCash(Wizard):
+    'Open Journal Cash'
+    __name__ = 'account.journal.open_cash'
+    start = StateView('account.journal.open_cash.start',
+        'account.journal_open_cash_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_journal_open_cash')
+
+    def do_open_(self, action):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+
+        lang, = Lang.search([
+                ('code', '=', Transaction().language),
+                ])
+
+        action['pyson_context'] = PYSONEncoder().encode({
+                'start_date': self.start.start_date,
+                'end_date': self.start.end_date,
+                })
+        action['name'] += ' %s - %s' % (
+            Lang.strftime(self.start.start_date, lang.code, lang.date),
+            Lang.strftime(self.start.end_date, lang.code, lang.date))
+        return action, {}
+
+
+class OpenJournalCashStart(ModelView):
+    'Open Journal Cash'
+    __name__ = 'account.journal.open_cash.start'
+    start_date = fields.Date('Start Date', required=True)
+    end_date = fields.Date('End Date', required=True)
+
+    @classmethod
+    def default_start_date(cls):
+        return Pool().get('ir.date').today()
+    default_end_date = default_start_date
 
 
 class JournalPeriod(ModelSQL, ModelView):
