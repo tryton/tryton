@@ -40,7 +40,7 @@ class Trigger(ModelSQL, ModelView):
         'invisible': Eval('on_time', False),
         }, depends=['on_time'])
     condition = fields.Char('Condition', required=True,
-        help='A Python statement evaluated with record represented by '
+        help='A PYSON statement evaluated with record represented by '
         '"self"\nIt triggers the action if true.')
     limit_number = fields.Integer('Limit Number', required=True,
         help='Limit the number of call to "Action Function" by records.\n'
@@ -67,7 +67,7 @@ class Trigger(ModelSQL, ModelView):
             ]
         cls._error_messages.update({
                 'invalid_condition': ('Condition "%(condition)s" is not a '
-                    'valid python expression on trigger "%(trigger)s".'),
+                    'valid PYSON expression on trigger "%(trigger)s".'),
                 })
         cls._order.insert(0, ('name', 'ASC'))
 
@@ -106,8 +106,8 @@ class Trigger(ModelSQL, ModelView):
         '''
         for trigger in triggers:
             try:
-                compile(trigger.condition, '', 'eval')
-            except (SyntaxError, TypeError):
+                PYSONDecoder(noeval=True).decode(trigger.condition)
+            except Exception:
                 cls.raise_user_error('invalid_condition', {
                         'condition': trigger.condition,
                         'trigger': trigger.rec_name,
