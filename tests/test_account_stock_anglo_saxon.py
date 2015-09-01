@@ -35,8 +35,10 @@ class AccountStockAngloSaxonTestCase(ModuleTestCase):
                 return move
 
             with patch.object(Uom, 'compute_qty') as compute_qty, \
+                    patch.object(Uom, 'compute_price') as compute_price, \
                     patch.object(Currency, 'compute') as compute:
                 compute_qty.side_effect = lambda *args, **kwargs: args[1]
+                compute_price.side_effect = lambda *args, **kwargs: args[1]
                 compute.side_effect = lambda *args, **kwargs: args[1]
 
                 moves = [move(1, 3), move(2, 2)]
