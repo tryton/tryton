@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_sale_stock_quantity">
+            <field name="name">Sale Stock Quantity</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_sale_stock_quantity">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_stock_quantity"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_sale_stock_quantity">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_sale_stock_quantity"/>
+        </record>
+    </data>
+</tryton>
