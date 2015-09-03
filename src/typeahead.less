@@ -1,0 +1,82 @@
+@import "variables";
+
+.twitter-typeahead {
+  width: 100%;
+  .input-group &{
+    //overwrite `display:inline-block` style
+    display: table-cell!important;
+    float: left;
+  }
+
+  & .tt-hint {
+      background-color: transparent !important;
+  }
+
+  & img.global-search-icon {
+      width: 2em;
+      height: 2em;
+      float: left;
+  }
+
+  & p.global-search-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }
+}
+
+.tt-dataset-actions {
+    font-style: italic;
+    font-variant: small-caps;
+    border-top: 1px #ddd solid;
+}
+
+.tt-menu {
+  //dropdown menu
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: @zindex-dropdown;
+  min-width: 160px;
+  width: 100%;
+  padding: 5px 0;
+  margin: 0;
+  list-style: none;
+  font-size: @font-size-base;
+  background-color: @dropdown-bg;
+  border: 1px solid @dropdown-fallback-border;
+  border: 1px solid @dropdown-border;
+  border-bottom-right-radius: @border-radius-base;
+  border-bottom-left-radius: @border-radius-base;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+
+  .tt-suggestion {
+    //item
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: @line-height-base;
+    color: @dropdown-link-color;
+    white-space: nowrap;
+
+    &.tt-cursor {
+      //item selected
+      text-decoration: none;
+      outline: 0;
+      background-color: @dropdown-link-hover-bg;
+      color: @dropdown-link-hover-color;
+      a {
+        //link in item selected
+        color: @dropdown-link-hover-color;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+

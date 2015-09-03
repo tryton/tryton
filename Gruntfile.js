@@ -90,7 +90,7 @@ module.exports = function(grunt) {
     less: {
         dev: {
             options: {
-                paths: ['src']
+                paths: ['src', 'bower_components/bootstrap/less']
             },
             files: {
                 'dist/<%= pkg.name %>.css': 'src/*.less'
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
         },
         'default': {
             options: {
-                paths: ['src'],
+                paths: ['src', 'bower_components/bootstrap/less'],
                 yuicompress: true
             },
             files: {
