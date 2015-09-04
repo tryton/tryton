@@ -126,6 +126,13 @@ class PayLineStart(ModelView):
         required=True, domain=[
             ('company', '=', Eval('context', {}).get('company', -1)),
             ])
+    date = fields.Date('Date', required=True)
+
+    @staticmethod
+    def default_date():
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        return Payment.default_date()
 
 
 class PayLine(Wizard):
@@ -152,6 +159,7 @@ class PayLine(Wizard):
             journal=self.start.journal,
             party=line.party,
             kind=kind,
+            date=self.start.date,
             amount=line.payment_amount,
             line=line,
             )

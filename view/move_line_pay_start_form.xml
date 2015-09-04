@@ -4,4 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Pay Line">
     <label name="journal"/>
     <field name="journal"/>
+    <label name="date"/>
+    <field name="date"/>
 </form>
