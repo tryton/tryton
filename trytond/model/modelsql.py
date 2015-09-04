@@ -188,7 +188,11 @@ class ModelSQL(ModelStorage):
                     ref = field.model_name.replace('.', '_')
                 else:
                     ref = pool.get(field.model_name)._table
-                table.add_fk(field_name, ref, field.ondelete)
+                if field_name in ['create_uid', 'write_uid']:
+                    # migration from 3.6
+                    table.drop_fk(field_name)
+                else:
+                    table.add_fk(field_name, ref, field.ondelete)
 
             table.index_action(
                 field_name, action=field.select and 'add' or 'remove')

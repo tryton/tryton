@@ -103,12 +103,11 @@ class User(ModelSQL, ModelView):
             'groups',
         ]
         cls._error_messages.update({
-            'rm_root': ('You can not remove the root user\n'
-                    'as it is used internally for resources\n'
-                    'created by the system '
-                    '(updates, module installation, ...)'),
-            'wrong_password': 'Wrong password!',
-            })
+                'delete_forbidden': ('Users can not be deleted '
+                    'for logging purpose.\n'
+                    'Instead you must inactivate them.'),
+                'wrong_password': 'Wrong password!',
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -267,11 +266,7 @@ class User(ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, users):
-        if [u.id for u in users if u.id == 0]:
-            cls.raise_user_error('rm_root')
-        super(User, cls).delete(users)
-        # Restart the cache for _get_login
-        cls._get_login_cache.clear()
+        cls.raise_user_error('delete_forbidden')
 
     @classmethod
     def search_rec_name(cls, name, clause):

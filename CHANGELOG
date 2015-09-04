@@ -1,3 +1,5 @@
+* Remove foreign-key on create_uid and write_uid
+* Prevent deletion of any user
 * Manage PostgreSQL schema
 * Remove colors attribute on tree view
 * Remove style on Report
