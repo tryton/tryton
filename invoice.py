@@ -2420,7 +2420,7 @@ class PayInvoiceAsk(ModelView):
         for line in self.lines:
             self.amount_writeoff += line.debit - line.credit
         for line in self.payment_lines:
-            self.amount_writeoff += line.debit - line.credit            
+            self.amount_writeoff += line.debit - line.credit
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             self.amount_writeoff = - self.amount_writeoff - amount
         else:
