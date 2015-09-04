@@ -153,9 +153,9 @@ class Work:
         id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
         for work in works:
-            if work.invoice_line and work.effort_hours:
+            if work.invoice_line:
                 invoice_line = id2invoice_lines[work.invoice_line.id]
-                amounts[work.id] = work.effort_hours * invoice_line.list_price
+                amounts[work.id] = invoice_line.amount
             else:
                 amounts[work.id] = Decimal(0)
         return amounts
