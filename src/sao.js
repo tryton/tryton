@@ -340,6 +340,7 @@ var Sao = {};
             this.search_entry.typeahead({
                 'highlight': false
             }, {
+                'limit': Sao.config.limit,
                 'source': this.update.bind(this),
                 'displayKey': 'record_name',
                 'templates': {
@@ -361,7 +362,7 @@ var Sao = {};
                     }
                 }
             });
-            this.search_entry.on('typeahead:selected',
+            this.search_entry.on('typeahead:select',
                     this.match_selected.bind(this));
         },
         query: function(value) {
@@ -371,7 +372,7 @@ var Sao = {};
                 return this.search_entry.typeahead('val', value);
             }
         },
-        update: function(query, process) {
+        update: function(query, sync, async) {
             if (query != this.query()) {
                 return;
             }
@@ -393,7 +394,7 @@ var Sao = {};
                         'icon': s_results[i][5],
                     });
                 }
-                process(results);
+                async(results);
             }.bind(this));
         },
         match_selected: function(event_, item, name) {

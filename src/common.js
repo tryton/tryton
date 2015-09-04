@@ -2888,6 +2888,7 @@
             'minLength': 1,
             'highlight': true
         }, {
+            'limit': Sao.config.limit,
             'name': 'suggestions',
             'source': source,
             'displayKey': 'rec_name',
@@ -2918,7 +2919,7 @@
                 }
             }
         });
-        entry.on('typeahead:selected', match_selected);
+        entry.on('typeahead:select', match_selected);
     };
     Sao.common.update_completion = function(entry, record, field, model,
             domain) {

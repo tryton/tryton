@@ -2611,7 +2611,7 @@
             this.entry.data('search', this.read_access());
             this.entry.data('create', this.create_access());
         },
-        _update_completion: function(query, process) {
+        _update_completion: function(query, sync, async) {
             var record = this.record();
             if (!record) {
                 return;
@@ -2628,7 +2628,7 @@
 
             var prm = Sao.common.update_completion(this.entry, record, field,
                     model);
-            prm.done(process);
+            prm.done(async);
         },
         _completion_match_selected: function(event_, selected_item, name) {
             if (selected_item.id == 'search') {
