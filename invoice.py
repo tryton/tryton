@@ -964,7 +964,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        return [('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
 
     @classmethod
     def delete(cls, invoices):
@@ -1823,8 +1823,9 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('//field[@name="note"]|//field[@name="description"]', 'spell',
-                If(Bool(Eval('_parent_invoice')),
+        return [
+            ('/form//field[@name="note"]|/form//field[@name="description"]',
+                'spell', If(Bool(Eval('_parent_invoice')),
                     Eval('_parent_invoice', {}).get('party_lang'),
                     Eval('party_lang')))]
 
