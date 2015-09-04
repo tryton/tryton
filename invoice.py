@@ -2555,7 +2555,7 @@ class PayInvoiceAsk(ModelView):
         for line in self.lines:
             res['amount_writeoff'] += line.debit - line.credit
         for line in self.payment_lines:
-            res['amount_writeoff'] += line.debit - line.credit            
+            res['amount_writeoff'] += line.debit - line.credit
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             res['amount_writeoff'] = - res['amount_writeoff'] - amount
         else:
