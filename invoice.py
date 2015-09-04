@@ -192,7 +192,7 @@ class InvoiceLine:
     @classmethod
     def view_attributes(cls):
         return super(InvoiceLine, cls).view_attributes() + [
-            ('//page[@id="commissions"]', 'state', {
+            ('//page[@id="commissions"]', 'states', {
                     'invisible': Eval('type') != 'line',
                     })]
 
