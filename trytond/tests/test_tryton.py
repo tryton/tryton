@@ -106,6 +106,10 @@ class ModuleTestCase(unittest.TestCase):
                 res = Model.fields_view_get(view_id)
                 assert res['model'] == model
                 tree = etree.fromstring(res['arch'])
+
+                validator = etree.RelaxNG(etree=View.get_rng(res['type']))
+                validator.assert_(tree)
+
                 tree_root = tree.getroottree().getroot()
 
                 for element in tree_root.iter():

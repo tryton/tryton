@@ -145,6 +145,9 @@ attlist.button &=
 attlist.button &= attribute icon { text }?
 attlist.button &= attribute confirm { text }?
 attlist.button &= attribute name { text }
+attlist.button &= attribute states { text }?
+attlist.button &= attribute change { text }?
+attlist.button &= attribute type { "class" | "instance" }?
 notebook = element notebook { attlist.notebook, page* }
 attlist.notebook &= [ a:defaultValue = "4" ] attribute colspan { text }?
 attlist.notebook &= attribute states { text }?

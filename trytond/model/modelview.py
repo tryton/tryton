@@ -503,6 +503,8 @@ class ModelView(Model):
             for attr in ('name', 'icon'):
                 if element.get(attr):
                     fields_attrs.setdefault(element.get(attr), {})
+                    if type != 'form':
+                        continue
                     try:
                         field = cls._fields[element.get(attr)]
                         if hasattr(field, 'model_name'):
@@ -547,7 +549,7 @@ class ModelView(Model):
                             map(str, view_ids))
                         fields_attrs[element.get(attr)].setdefault('views', {}
                             ).update(views)
-            if element.get('name') in fields_width:
+            if type == 'tree' and element.get('name') in fields_width:
                 element.set('width', str(fields_width[element.get('name')]))
 
         encoder = PYSONEncoder()

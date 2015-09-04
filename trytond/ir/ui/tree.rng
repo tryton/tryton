@@ -251,6 +251,26 @@
   </define>
   <define name="attlist.button" combine="interleave">
     <optional>
+      <attribute name="states"/>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute name="change"/>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute name="type">
+        <choice>
+          <value>class</value>
+          <value>instance</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
       <attribute name="tree_invisible" a:defaultValue="0">
         <choice>
           <value>0</value>
