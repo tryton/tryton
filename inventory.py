@@ -140,6 +140,17 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Line.cancel_move([l for i in inventories for l in i.lines])
 
     @classmethod
+    def create(cls, values):
+        inventories = super(Inventory, cls).create(values)
+        cls.complete_lines(inventories, fill=False)
+        return inventories
+
+    @classmethod
+    def write(cls, inventories, values):
+        super(Inventory, cls).write(inventories, values)
+        cls.complete_lines(inventories, fill=False)
+
+    @classmethod
     def copy(cls, inventories, default=None):
         pool = Pool()
         Date = pool.get('ir.date')
@@ -160,7 +171,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     'inventory': new_inventory.id,
                     'moves': None,
                     })
-            cls.complete_lines([new_inventory])
+            cls.complete_lines([new_inventory], fill=False)
             new_inventories.append(new_inventory)
         return new_inventories
 
@@ -170,7 +181,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    def complete_lines(cls, inventories):
+    def complete_lines(cls, inventories, fill=True):
         '''
         Complete or update the inventories
         '''
@@ -182,9 +193,14 @@ class Inventory(Workflow, ModelSQL, ModelView):
         to_create = []
         for inventory in inventories:
             # Compute product quantities
+            if fill:
+                product_ids = None
+            else:
+                product_ids = [l.product.id for l in inventory.lines]
             with Transaction().set_context(stock_date_end=inventory.date):
                 pbl = Product.products_by_location(
-                    [inventory.location.id], grouping=grouping)
+                    [inventory.location.id], product_ids=product_ids,
+                    grouping=grouping)
 
             # Index some data
             product2type = {}
@@ -210,6 +226,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 if values:
                     Line.write([line], values)
 
+            if not fill:
+                continue
             # Create lines if needed
             for key, quantity in pbl.iteritems():
                 product_id = key[grouping.index('product') + 1]
