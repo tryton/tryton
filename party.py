@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from itertools import groupby
+
 import stdnum.eu.vat as vat
 import stdnum.exceptions
 from sql import Null
@@ -35,8 +37,8 @@ class Party(ModelSQL, ModelView):
         depends=['code_readonly'])
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
-    lang = fields.Many2One("ir.lang", 'Language', states=STATES,
-        depends=DEPENDS)
+    lang = fields.Property(fields.Many2One("ir.lang", 'Language',
+            states=STATES, depends=DEPENDS))
     identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
         states=STATES, depends=DEPENDS)
     vat_code = fields.Function(fields.Char('VAT Code'),
@@ -64,6 +66,29 @@ class Party(ModelSQL, ModelView):
              'The code of the party must be unique.')
         ]
         cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Property = pool.get('ir.property')
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = cls.__table__()
+
+        super(Party, cls).__register__(module_name)
+
+        table_h = TableHandler(cursor, cls, module_name)
+        if table_h.column_exist('lang'):
+            cursor.execute(*table.select(table.id, table.lang,
+                    order_by=table.lang))
+            for lang_id, group in groupby(cursor.fetchall(), lambda r: r[1]):
+                ids = [id_ for id_, _ in group]
+                if lang_id is not None:
+                    value = '%s,%s' % (cls.lang.model_name, lang_id)
+                else:
+                    value = None
+                Property.set('lang', cls.__name__, ids, value)
+            table_h.drop_column('lang')
 
     @staticmethod
     def order_code(tables):
