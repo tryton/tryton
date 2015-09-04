@@ -27,8 +27,14 @@ class TableHandler(TableHandlerInterface):
         # Create new table if necessary
         if not self.table_exist(self.cursor, self.table_name):
             self.cursor.execute('CREATE TABLE "%s" ()' % self.table_name)
+        self.table_schema = self.get_table_schema(self.cursor, self.table_name)
 
-        if model.__doc__:
+        self.cursor.execute('SELECT tableowner = current_user FROM pg_tables '
+            'WHERE tablename = %s AND schemaname = %s',
+            (self.table_name, self.table_schema))
+        self.is_owner, = self.cursor.fetchone()
+
+        if model.__doc__ and self.is_owner:
             self.cursor.execute('COMMENT ON TABLE "%s" IS \'%s\'' %
                 (self.table_name, model.__doc__.replace("'", "''")))
 
@@ -52,22 +58,32 @@ class TableHandler(TableHandlerInterface):
                 (self.table_name, self.sequence_name))
             self.cursor.execute('ALTER TABLE "%s" '
                 'ADD PRIMARY KEY(__id)' % self.table_name)
-        if self.history:
-            self.cursor.execute('ALTER TABLE "%s" '
-                'ALTER __id SET DEFAULT nextval(\'"%s"\')'
-                % (self.table_name, self.sequence_name))
         else:
-            self.cursor.execute('ALTER TABLE "%s" '
-                'ALTER id SET DEFAULT nextval(\'"%s"\')'
-                % (self.table_name, self.sequence_name))
+            default = "nextval('%s'::regclass)" % self.sequence_name
+            if self.history:
+                if self._columns['__id']['default'] != default:
+                    self.cursor.execute('ALTER TABLE "%s" '
+                        'ALTER __id SET DEFAULT %s'
+                        % (self.table_name, default))
+            if self._columns['id']['default'] != default:
+                    self.cursor.execute('ALTER TABLE "%s" '
+                        'ALTER id SET DEFAULT %s'
+                        % (self.table_name, default))
         self._update_definitions()
 
-    @staticmethod
-    def table_exist(cursor, table_name):
-        cursor.execute("SELECT relname FROM pg_class "
-            "WHERE relkind = 'r' AND relname = %s",
-            (table_name,))
-        return bool(cursor.rowcount)
+    @classmethod
+    def get_table_schema(cls, cursor, table_name):
+        for schema in cursor.search_path:
+            cursor.execute('SELECT 1 '
+                'FROM information_schema.tables '
+                'WHERE table_name = %s AND table_schema = %s',
+                (table_name, schema))
+            if cursor.rowcount:
+                return schema
+
+    @classmethod
+    def table_exist(cls, cursor, table_name):
+        return bool(cls.get_table_schema(cursor, table_name))
 
     @staticmethod
     def table_rename(cursor, old_name, new_name):
@@ -88,11 +104,19 @@ class TableHandler(TableHandlerInterface):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_history, new_history))
 
-    @staticmethod
-    def sequence_exist(cursor, sequence_name):
-        cursor.execute('SELECT relname FROM pg_class '
-            'WHERE relkind = \'S\' and relname = %s', (sequence_name,))
-        return bool(cursor.rowcount)
+    @classmethod
+    def sequence_schema(cls, cursor, sequence_name):
+        for schema in cursor.search_path:
+            cursor.execute('SELECT 1 '
+                'FROM information_schema.sequences '
+                'WHERE sequence_name = %s AND sequence_schema = %s',
+                (sequence_name, schema))
+            if cursor.rowcount:
+                return schema
+
+    @classmethod
+    def sequence_exist(cls, cursor, sequence_name):
+        return bool(cls.sequence_schema(cursor, sequence_name))
 
     @staticmethod
     def sequence_rename(cursor, old_name, new_name):
@@ -117,53 +141,46 @@ class TableHandler(TableHandlerInterface):
                     self.table_name, new_name))
 
     def _update_definitions(self):
-        # Fetch columns definitions from the table
-        self.cursor.execute("SELECT at.attname, at.attlen, "
-            "at.atttypmod, at.attnotnull, at.atthasdef, ty.typname, "
-            "CASE WHEN at.attlen = -1 "
-            "THEN at.atttypmod-4 "
-            "ELSE at.attlen END as size "
-            "FROM pg_class cl "
-                "JOIN pg_attribute at on (cl.oid = at.attrelid) "
-                "JOIN pg_type ty on (at.atttypid = ty.oid) "
-            "WHERE cl.relname = %s AND at.attnum > 0",
-            (self.table_name,))
         self._columns = {}
-        for line in self.cursor.fetchall():
-            column, length, typmod, notnull, hasdef, typname, size = line
+        # Fetch columns definitions from the table
+        self.cursor.execute('SELECT '
+            'column_name, udt_name, is_nullable, character_maximum_length, '
+            'column_default '
+            'FROM information_schema.columns '
+            'WHERE table_name = %s AND table_schema = %s',
+            (self.table_name, self.table_schema))
+        for column, typname, nullable, size, default in self.cursor.fetchall():
             self._columns[column] = {
-                "length": length,
-                "typmod": typmod,
-                "notnull": notnull,
-                "hasdef": hasdef,
-                "size": size,
-                "typname": typname}
+                'typname': typname,
+                'notnull': True if nullable == 'NO' else False,
+                'size': size,
+                'default': default,
+                }
 
         # fetch constraints for the table
-        self.cursor.execute("SELECT co.contype, co.confdeltype, at.attname, "
-            "cl2.relname, co.conname "
-            "FROM pg_constraint co "
-                "LEFT JOIN pg_class cl ON (co.conrelid = cl.oid) "
-                "LEFT JOIN pg_class cl2 ON (co.confrelid = cl2.oid) "
-                "LEFT JOIN pg_attribute at ON (co.conkey[1] = at.attnum) "
-            "WHERE cl.relname = %s AND at.attrelid = cl.oid",
-            (self.table_name,))
-        self._constraints = []
-        self._fk_deltypes = {}
-        for line in self.cursor.fetchall():
-            contype, confdeltype, column, ref, conname = line
-            if contype == 'f':
-                self._fk_deltypes[column] = confdeltype
-            if conname not in self._constraints:
-                self._constraints.append(conname)
+        self.cursor.execute('SELECT constraint_name '
+            'FROM information_schema.table_constraints '
+            'WHERE table_name = %s AND table_schema = %s',
+            (self.table_name, self.table_schema))
+        self._constraints = [c for c, in self.cursor.fetchall()]
+
+        self.cursor.execute('SELECT k.column_name, r.delete_rule '
+            'FROM information_schema.key_column_usage AS k '
+            'JOIN information_schema.referential_constraints AS r '
+            'ON r.constraint_schema = k.constraint_schema '
+            'AND r.constraint_name = k.constraint_name '
+            'WHERE k.table_name = %s AND k.table_schema = %s',
+            (self.table_name, self.table_schema))
+        self._fk_deltypes = dict(self.cursor.fetchall())
 
         # Fetch indexes defined for the table
         self.cursor.execute("SELECT cl2.relname "
             "FROM pg_index ind "
                 "JOIN pg_class cl on (cl.oid = ind.indrelid) "
+                "JOIN pg_namespace n ON (cl.relnamespace = n.oid) "
                 "JOIN pg_class cl2 on (cl2.oid = ind.indexrelid) "
-            "WHERE cl.relname = %s",
-            (self.table_name,))
+            "WHERE cl.relname = %s AND n.nspname = %s",
+            (self.table_name, self.table_schema))
         self._indexes = [l[0] for l in self.cursor.fetchall()]
 
         # Keep track of which module created each field
@@ -199,14 +216,20 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions()
 
     def db_default(self, column_name, value):
-        self.cursor.execute('ALTER TABLE "' + self.table_name + '" '
-            'ALTER COLUMN "' + column_name + '" SET DEFAULT %s',
-            (value,))
+        if value in [True, False]:
+            test = str(value).lower()
+        else:
+            test = value
+        if self._columns[column_name]['default'] != test:
+            self.cursor.execute('ALTER TABLE "' + self.table_name + '" '
+                'ALTER COLUMN "' + column_name + '" SET DEFAULT %s',
+                (value,))
 
     def add_raw_column(self, column_name, column_type, column_format,
             default_fun=None, field_size=None, migrate=True, string=''):
         def comment():
-            self.cursor.execute('COMMENT ON COLUMN "%s"."%s" IS \'%s\'' %
+            if self.is_owner:
+                self.cursor.execute('COMMENT ON COLUMN "%s"."%s" IS \'%s\'' %
                     (self.table_name, column_name, string.replace("'", "''")))
         if self.column_exist(column_name):
             if (column_name in ('create_date', 'write_date')
@@ -274,33 +297,27 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions()
 
     def add_fk(self, column_name, reference, on_delete=None):
-        on_delete_code = {
-            'RESTRICT': 'r',
-            'NO ACTION': 'a',
-            'CASCADE': 'c',
-            'SET NULL': 'n',
-            'SET DEFAULT': 'd',
-            }
         if on_delete is not None:
             on_delete = on_delete.upper()
-            if on_delete not in on_delete_code:
-                raise Exception('On delete action not supported!')
         else:
             on_delete = 'SET NULL'
-        code = on_delete_code[on_delete]
 
-        self.cursor.execute('SELECT conname FROM pg_constraint '
-            'WHERE conname = %s',
-            (self.table_name + '_' + column_name + '_fkey',))
+        name = self.table_name + '_' + column_name + '_fkey'
+        self.cursor.execute('SELECT 1 '
+            'FROM information_schema.key_column_usage '
+            'WHERE table_name = %s AND table_schema = %s '
+            'AND constraint_name = %s',
+            (self.table_name, self.table_schema, name))
         add = False
         if not self.cursor.rowcount:
             add = True
-        elif self._fk_deltypes.get(column_name) != code:
+        elif self._fk_deltypes.get(column_name) != on_delete:
             self.drop_fk(column_name)
             add = True
         if add:
             self.cursor.execute('ALTER TABLE "' + self.table_name + '" '
-                'ADD FOREIGN KEY ("' + column_name + '") '
+                'ADD CONSTRAINT "' + name + '" '
+                'FOREIGN KEY ("' + column_name + '") '
                 'REFERENCES "' + reference + '" '
                 'ON DELETE ' + on_delete)
         self._update_definitions()

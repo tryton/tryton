@@ -5,8 +5,6 @@ import logging
 import re
 import os
 import urllib
-if os.name == 'posix':
-    import pwd
 from decimal import Decimal
 
 try:
@@ -202,27 +200,8 @@ class Database(DatabaseInterface):
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
-        uri = parse_uri(config.get('database', 'uri'))
-        db_user = uri.username or os.environ.get('PGUSER')
-        if not db_user and os.name == 'posix':
-            db_user = pwd.getpwuid(os.getuid())[0]
-        if db_user:
-            cursor.execute("SELECT datname "
-                "FROM pg_database "
-                "WHERE datdba = ("
-                    "SELECT usesysid "
-                    "FROM pg_user "
-                    "WHERE usename=%s) "
-                    "AND datname not in "
-                        "('template0', 'template1', 'postgres') "
-                "ORDER BY datname",
-                (db_user,))
-        else:
-            cursor.execute("SELECT datname "
-                "FROM pg_database "
-                "WHERE datname not in "
-                    "('template0', 'template1','postgres') "
-                "ORDER BY datname")
+        cursor.execute('SELECT datname FROM pg_database '
+            'WHERE datistemplate = false ORDER BY datname')
         res = []
         for db_name, in cursor.fetchall():
             db_name = db_name.encode('utf-8')
@@ -275,6 +254,8 @@ class Cursor(CursorInterface):
         self._connpool = connpool
         self._conn = conn
         self._database = database
+        self._current_user = None
+        self._search_path = None
         self.cursor = conn.cursor()
         self.commit()
         self.sql_from_log = {}
@@ -316,20 +297,11 @@ class Cursor(CursorInterface):
         self._conn.rollback()
 
     def test(self):
-        self.cursor.execute("SELECT relname "
-            "FROM pg_class "
-            "WHERE relkind = 'r' AND relname in ("
-                "'ir_model', "
-                "'ir_model_field', "
-                "'ir_ui_view', "
-                "'ir_ui_menu', "
-                "'res_user', "
-                "'res_group', "
-                "'ir_module', "
-                "'ir_module_dependency', "
-                "'ir_translation', "
-                "'ir_lang'"
-                ")")
+        self.cursor.execute('SELECT 1 FROM information_schema.tables '
+            'WHERE table_name IN %s',
+            (('ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
+                    'res_user', 'res_group', 'ir_module',
+                    'ir_module_dependency', 'ir_translation', 'ir_lang'),))
         return len(self.cursor.fetchall()) != 0
 
     def nextid(self, table):
@@ -363,6 +335,21 @@ class Cursor(CursorInterface):
 
     def has_multirow_insert(self):
         return True
+
+    @property
+    def current_user(self):
+        if self._current_user is None:
+            self.execute('SELECT current_user')
+            self._current_user, = self.fetchone()
+        return self._current_user
+
+    @property
+    def search_path(self):
+        if self._search_path is None:
+            self.execute('SHOW search_path')
+            self._search_path = self.fetchone()[0].replace(
+                '"$user"', self.current_user).split(',')
+        return self._search_path
 
 register_type(UNICODE)
 if PYDATE:

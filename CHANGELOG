@@ -1,3 +1,4 @@
+* Manage PostgreSQL schema
 * Remove colors attribute on tree view
 * Remove style on Report
 * Add StateReport to Wizard
