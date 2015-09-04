@@ -597,7 +597,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        return [('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
 
     @classmethod
     def copy(cls, purchases, default=None):
@@ -1283,7 +1283,8 @@ class PurchaseLine(ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [('//field[@name="note"]|//field[@name="description"]',
+        return [
+            ('/form//field[@name="note"]|/form//field[@name="description"]',
                 'spell', Eval('_parent_purchase', {}).get('party_lang'))]
 
     @classmethod
