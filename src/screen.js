@@ -1185,8 +1185,8 @@
                         fields.push(Sao.i18n.gettext('"%1" is required', string));
                     } else if (invalid == 'domain') {
                         fields.push(Sao.i18n.gettext(
-                                '"%1" is not valid according to its domain'),
-                            string);
+                                    '"%1" is not valid according to its domain',
+                                    string));
                     } else if (invalid == 'children') {
                         fields.push(Sao.i18n.gettext(
                                 'The values of "%1" are not valid', string));
