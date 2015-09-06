@@ -2543,7 +2543,9 @@
             })).append(jQuery('<span/>', {
                 'class': 'sr-only'
             }).append(Sao.i18n.gettext('Message: '))
-            ).append(message));
+            ).append(jQuery('<span/>')
+                .append(message)
+                .css('white-space', 'pre-wrap')));
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button'
@@ -2575,7 +2577,9 @@
             })).append(jQuery('<span/>', {
                 'class': 'sr-only'
             }).append(Sao.i18n.gettext('Warning: '))
-            ).append(message));
+            ).append(jQuery('<span/>')
+                .append(message)
+                .css('white-space', 'pre-wrap')));
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button'
@@ -2644,7 +2648,9 @@
             })).append(jQuery('<span/>', {
                 'class': 'sr-only'
             }).append(Sao.i18n.gettext('Confirmation: '))
-            ).append(message));
+            ).append(jQuery('<span/>')
+                .append(message)
+                .css('white-space', 'pre-wrap')));
             return dialog;
         }
     });
