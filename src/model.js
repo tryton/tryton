@@ -1287,7 +1287,7 @@
         },
         validation_domains: function(record, pre_validate) {
             var inversion = new Sao.common.DomainInversion();
-            return inversion.concat(this.get_domains(record), pre_validate);
+            return inversion.concat(this.get_domains(record, pre_validate));
         },
         get_eval: function(record) {
             return this.get(record);
