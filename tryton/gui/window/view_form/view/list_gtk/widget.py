@@ -831,7 +831,7 @@ class ProgressBar(object):
         field = record[self.attrs['name']]
         value = float(self.get_textual_value(record) or 0.0)
         cell.set_property('value', value)
-        digit = field.digits(record)[1]
+        digit = field.digits(record, factor=100)[1]
         text = locale.format('%.*f', (digit, value), True)
         cell.set_property('text', text + '%')
 
@@ -840,7 +840,7 @@ class ProgressBar(object):
         raise NotImplementedError
 
     def get_textual_value(self, record):
-        return record[self.attrs['name']].get_client(record) or ''
+        return record[self.attrs['name']].get_client(record, factor=100) or ''
 
     def value_from_text(self, record, text, callback=None):
         field = record[self.attrs['name']]
