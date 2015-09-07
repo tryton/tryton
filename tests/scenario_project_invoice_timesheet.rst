@@ -116,6 +116,7 @@ Create a Project::
     >>> ProjectWork = Model.get('project.work')
     >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
+    >>> project.name = 'Test timesheet'
     >>> work = TimesheetWork()
     >>> work.name = 'Test timesheet'
     >>> work.save()
@@ -125,6 +126,7 @@ Create a Project::
     >>> project.project_invoice_method = 'timesheet'
     >>> project.product = product
     >>> task = ProjectWork()
+    >>> task.name = 'Task 1'
     >>> work = TimesheetWork()
     >>> work.name = 'Task 1'
     >>> work.save()

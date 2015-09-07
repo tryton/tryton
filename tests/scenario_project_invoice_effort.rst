@@ -116,6 +116,7 @@ Create a Project::
     >>> ProjectWork = Model.get('project.work')
     >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
+    >>> project.name = 'Test effort'
     >>> work = TimesheetWork()
     >>> work.name = 'Test effort'
     >>> work.save()
@@ -126,6 +127,7 @@ Create a Project::
     >>> project.product = product
     >>> project.effort_duration = datetime.timedelta(hours=1)
     >>> task = ProjectWork()
+    >>> task.name = 'Task 1'
     >>> work = TimesheetWork()
     >>> work.name = 'Task 1'
     >>> work.save()
