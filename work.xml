@@ -16,10 +16,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">work_tree</field>
         </record>
 
-        <record model="ir.ui.view" id="work_view_list2">
+        <record model="ir.ui.view" id="work_view_list">
             <field name="model">project.work</field>
-            <field name="inherit" ref="project.work_view_list2"/>
-            <field name="name">work_list2</field>
+            <field name="inherit" ref="project.work_view_list"/>
+            <field name="name">work_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_list_children">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_list_children"/>
+            <field name="name">work_list_children</field>
         </record>
 
     </data>
