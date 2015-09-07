@@ -168,7 +168,7 @@ Invoice project::
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount
-    Decimal('100.000000000000')
+    Decimal('100.00')
 
 Create more timesheets::
 
@@ -188,7 +188,7 @@ Check project duration::
     >>> project.duration_to_invoice
     datetime.timedelta(0, 14400)
     >>> project.invoiced_amount
-    Decimal('100.000000000000')
+    Decimal('100.00')
 
 Invoice again project::
 
@@ -199,4 +199,4 @@ Invoice again project::
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount
-    Decimal('180.000000000000')
+    Decimal('180.00')
