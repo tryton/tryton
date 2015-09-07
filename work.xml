@@ -10,24 +10,38 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field_childs">children</field>
             <field name="name">work_tree</field>
         </record>
+        <record model="ir.ui.view" id="work_view_tree_simple">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">work_tree_simple</field>
+        </record>
 
         <record model="ir.ui.view" id="work_view_list">
             <field name="model">project.work</field>
             <field name="type">tree</field>
-            <field name="priority" eval="10"/>
+            <field name="priority" eval="20"/>
             <field name="name">work_list</field>
         </record>
-
-        <record model="ir.ui.view" id="work_view_list2">
+        <record model="ir.ui.view" id="work_view_list_simple">
             <field name="model">project.work</field>
             <field name="type">tree</field>
-            <field name="name">work_list2</field>
+            <field name="priority" eval="10"/>
+            <field name="name">work_list_simple</field>
         </record>
+        <record model="ir.ui.view" id="work_view_list_children">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="name">work_list_children</field>
+        </record>
+
         <record model="ir.ui.view" id="work_view_form">
             <field name="model">project.work</field>
             <field name="type">form</field>
             <field name="name">work_form</field>
         </record>
+
         <record model="ir.action.act_window" id="act_work_tree">
             <field name="name">Works Efforts</field>
             <field name="res_model">project.work</field>
@@ -36,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_work_tree_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree"/>
+            <field name="view" ref="work_view_tree_simple"/>
             <field name="act_window" ref="act_work_tree"/>
         </record>
         <record model="ir.action.act_window.view"
@@ -55,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_work_list_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_list"/>
+            <field name="view" ref="work_view_list_simple"/>
             <field name="act_window" ref="act_work_list"/>
         </record>
         <record model="ir.action.act_window.view"
@@ -84,8 +98,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_project_tree"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_project_tree_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="act_window" ref="act_project_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_project_tree_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
+            <field name="act_window" ref="act_project_tree"/>
+        </record>
         <menuitem parent="menu_project" action="act_project_tree"
-            id="menu_project_tree"/>
+            id="menu_project_tree" sequence="20"/>
 
         <record model="ir.action.act_window" id="act_project_form">
             <field name="name">Projects</field>
@@ -96,13 +122,25 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_project_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_list2"/>
+            <field name="view" ref="work_view_list"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_project_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_project_form_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_project_form_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
         <menuitem parent="menu_project_tree" action="act_project_form"
@@ -117,13 +155,25 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_task_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_list2"/>
+            <field name="view" ref="work_view_list"/>
             <field name="act_window" ref="act_task_form"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_task_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_task_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_task_form_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="act_window" ref="act_task_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_task_form_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
             <field name="act_window" ref="act_task_form"/>
         </record>
         <menuitem parent="menu_project_tree" action="act_task_form"
@@ -146,7 +196,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_open_project_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_list2"/>
+            <field name="view" ref="work_view_list"/>
             <field name="act_window" ref="act_open_child_work"/>
         </record>
         <record model="ir.action.act_window.view"
