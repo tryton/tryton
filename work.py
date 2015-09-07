@@ -140,6 +140,7 @@ class Work:
     def _get_invoiced_amount_effort(works):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
+        Currency = pool.get('currency.currency')
 
         with Transaction().set_user(0, set_context=True):
             invoice_lines = InvoiceLine.browse([
@@ -149,9 +150,14 @@ class Work:
         id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
         for work in works:
+            currency = work.company.currency
             if work.invoice_line:
                 invoice_line = id2invoice_lines[work.invoice_line.id]
-                amounts[work.id] = invoice_line.amount
+                invoice_currency = (invoice_line.invoice.currency
+                    if invoice_line.invoice else invoice_line.currency)
+                amounts[work.id] = Currency.compute(invoice_currency,
+                    Decimal(str(work.effort_hours)) * invoice_line.unit_price,
+                    currency)
             else:
                 amounts[work.id] = Decimal(0)
         return amounts
@@ -160,6 +166,7 @@ class Work:
     def _get_invoiced_amount_timesheet(works):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
+        Currency = pool.get('currency.currency')
 
         with Transaction().set_user(0, set_context=True):
             invoice_lines = InvoiceLine.browse([
@@ -170,13 +177,18 @@ class Work:
         id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
         for work in works:
+            currency = work.company.currency
             amounts[work.id] = Decimal(0)
             for timesheet_line in work.work.timesheet_lines:
                 if not timesheet_line.invoice_line:
                     continue
                 invoice_line = id2invoice_lines[timesheet_line.invoice_line.id]
-                amounts[work.id] += (invoice_line.unit_price
-                    * Decimal(str(timesheet_line.hours)))
+                invoice_currency = (invoice_line.invoice.currency
+                    if invoice_line.invoice else invoice_line.currency)
+                amounts[work.id] += Currency.compute(invoice_currency,
+                    (Decimal(str(timesheet_line.hours))
+                        * invoice_line.unit_price),
+                    currency)
         return amounts
 
     @staticmethod
