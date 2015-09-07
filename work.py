@@ -98,7 +98,7 @@ class Work:
         if 'duration' in names:
             all_works = cls.search([
                     ('parent', 'child_of', ids),
-                    ('active', '=', True)]) + works
+                    ])
             all_works = set(all_works)
 
             durations = {}
@@ -124,8 +124,6 @@ class Work:
                 for work_id in leafs:
                     work = id2work[work_id]
                     all_works.remove(work)
-                    if not work.active:
-                        continue
                     if work.parent and work.parent.id in durations:
                         durations[work.parent.id] += durations[work_id]
                 next_leafs = set(w.id for w in all_works)
