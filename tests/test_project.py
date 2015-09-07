@@ -33,6 +33,8 @@ class ProjectTestCase(ModuleTestCase):
                         'company': company.id,
                         }])
             p_work_1, = self.project_work.create([{
+                        'name': 'Work 1',
+                        'company': company.id,
                         'work': t_work_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
@@ -43,6 +45,9 @@ class ProjectTestCase(ModuleTestCase):
                         'parent': t_work_1.id,
                         }])
             p_work_1_1, = self.project_work.create([{
+                        'name': 'Work 1 1',
+                        'company': company.id,
+                        'parent': p_work_1.id,
                         'work': t_work_1_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
@@ -53,6 +58,9 @@ class ProjectTestCase(ModuleTestCase):
                         'parent': t_work_1.id,
                         }])
             p_work_1_2, = self.project_work.create([{
+                        'name': 'Work 1 2',
+                        'company': company.id,
+                        'parent': p_work_1.id,
                         'work': t_work_1_2.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
@@ -63,6 +71,9 @@ class ProjectTestCase(ModuleTestCase):
                         'parent': t_work_1_1.id,
                         }])
             p_work_1_1_1, = self.project_work.create([{
+                        'name': 'Work 1 1 1',
+                        'company': company.id,
+                        'parent': p_work_1_1.id,
                         'work': t_work_1_1_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
@@ -73,16 +84,22 @@ class ProjectTestCase(ModuleTestCase):
                         'parent': t_work_1_1.id,
                         }])
             p_work_1_1_2, = self.project_work.create([{
+                        'name': 'Work 1 1 2',
+                        'company': company.id,
+                        'parent': p_work_1_1.id,
                         'work': t_work_1_1_2.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
             t_work_1_1_3, = self.timesheet_work.create([{
-                        'name': 'Work 1 1 2',
+                        'name': 'Work 1 1 3',
                         'company': company.id,
                         'parent': t_work_1_1.id,
                         }])
             p_work_1_1_3, = self.project_work.create([{
+                        'name': 'Work 1 1 3',
+                        'company': company.id,
+                        'parent': p_work_1_1.id,
                         'work': t_work_1_1_3.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
