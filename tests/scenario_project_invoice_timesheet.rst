@@ -212,7 +212,7 @@ Invoice project::
     >>> project.hours_to_invoice
     0.0
     >>> project.invoiced_amount
-    Decimal('100.000000000000')
+    Decimal('100.00')
 
 Create more timesheets::
 
@@ -232,7 +232,7 @@ Check project hours::
     >>> project.hours_to_invoice
     4.0
     >>> project.invoiced_amount
-    Decimal('100.000000000000')
+    Decimal('100.00')
 
 Invoice again project::
 
@@ -244,4 +244,4 @@ Invoice again project::
     >>> project.hours_to_invoice
     0.0
     >>> project.invoiced_amount
-    Decimal('180.000000000000')
+    Decimal('180.00')
