@@ -47,11 +47,11 @@ class Work:
         transaction = Transaction()
         cursor = transaction.cursor
 
-        works += cls.search([
+        works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
-                ('active', '=', True)]) + works
+                ])
         costs = dict.fromkeys([w.id for w in works], 0)
-        works_to_timesheet = dict((w.work.id, w.id) for w in works)
+        works_to_timesheet = {w.work.id: w.id for w in works if w.work}
 
         table_w = Work.__table__()
         table_c = Work.__table__()
@@ -90,7 +90,7 @@ class Work:
     def get_revenue(cls, works, name):
         works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
-                ('active', '=', True)]) + works
+                ])
 
         def getter(work):
             if work.list_price:
