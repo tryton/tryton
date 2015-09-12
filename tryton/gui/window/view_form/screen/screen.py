@@ -25,7 +25,7 @@ from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.jsonrpc import JSONEncoder
 from tryton.common.domain_parser import DomainParser
 from tryton.common import RPCExecute, RPCException, MODELACCESS, \
-    node_attributes, sur, RPCContextReload
+    node_attributes, sur, RPCContextReload, warning
 from tryton.action import Action
 import tryton.rpc as rpc
 
@@ -886,7 +886,7 @@ class Screen(SignalEvent):
         fields = []
         for field, invalid in sorted(record.invalid_fields.items()):
             string = record.group.fields[field].attrs['string']
-            if invalid == 'required':
+            if invalid == 'required' or invalid == [[field, '!=', None]]:
                 fields.append(_('"%s" is required') % string)
             elif invalid == 'domain':
                 fields.append(domain_string % string)
@@ -950,6 +950,7 @@ class Screen(SignalEvent):
             domain = record.expr_eval(
                 button.get('states', {})).get('pre_validate', [])
             if not record.validate(fields, pre_validate=domain):
+                warning(self.invalid_message(record), _('Pre-validation'))
                 self.display(set_cursor=True)
                 if domain:
                     # Reset valid state with normal domain
