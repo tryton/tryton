@@ -1181,7 +1181,9 @@
                 function(field) {
                     var invalid = invalid_fields[field];
                     var string = record.model.fields[field].description.string;
-                    if (invalid == 'required') {
+                    if ((invalid == 'required') ||
+                            (Sao.common.compare(invalid,
+                                                [[field, '!=', null]]))) {
                         fields.push(Sao.i18n.gettext('"%1" is required', string));
                     } else if (invalid == 'domain') {
                         fields.push(Sao.i18n.gettext(
@@ -1275,35 +1277,36 @@
             var fields = this.current_view.get_fields();
 
             var prms = [];
-            var reset_state = function(record, domain) {
-                return function(result) {
-                    if (!result) {
-                        this.display();
-                        if (!jQuery.isEmptyObject(domain)) {
-                            // Reset valid state with normal domain
-                            record.validate(fields);
-                        }
-                    }
-                    return result;
+            var reset_state = function(record) {
+                return function() {
+                    this.display();
+                    // Reset valid state with normal domain
+                    record.validate(fields);
                 }.bind(this);
             }.bind(this);
             for (var i = 0; i < selected_records.length; i++) {
                 var record = selected_records[i];
                 var domain = record.expr_eval(
                     (attributes.states || {})).pre_validate || [];
-                var prm = record.validate(fields, false, domain);
-                prms.push(prm.then(reset_state(record, domain)));
+                prms.push(record.validate(fields, false, domain));
             }
             jQuery.when.apply(jQuery, prms).then(function() {
-                var test = function(result) {
-                    return !result;
-                };
-                if (Array.prototype.some.call(arguments, test)) {
+                var record;
+                for (var i = 0; i < selected_records.length; i++) {
+                    record = selected_records[i];
+                    var result = arguments[i];
+                    if (result) {
+                        continue;
+                    }
+                    Sao.common.warning.run(
+                            this.invalid_message(record),
+                            Sao.i18n.gettext('Pre-validation'))
+                        .then(reset_state(record));
                     return;
                 }
 
                 // TODO confirm
-                var record = this.current_record;
+                record = this.current_record;
                 if (attributes.type === 'instance') {
                     var args = record.expr_eval(attributes.change || []);
                     var values = record._get_on_change_args(args);
