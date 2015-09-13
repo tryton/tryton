@@ -757,6 +757,13 @@
             } else if (document.selection) {  // IE?
                 document.selection.empty();
             }
+            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
+                this.set_selection(true);
+                this.selection_changed();
+                if (!this.is_selected()) {
+                    return;
+                }
+            }
             this.tree.switch_(this.path);
         },
         select_row: function(event_) {
