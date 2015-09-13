@@ -948,7 +948,7 @@
                 }.bind(this));
             }
             var display = function() {
-                this.display();
+                return this.display();
             }.bind(this);
             return prm.then(display, display);
         },
