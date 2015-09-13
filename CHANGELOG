@@ -1,3 +1,5 @@
+Version 3.6.1 - 2015-09-13
+* Bug fixes (see mercurial logs for details)
 * Fix origin migration from 3.4
 
 Version 3.6.0 - 2015-04-20
