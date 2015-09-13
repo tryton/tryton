@@ -92,6 +92,10 @@
             alwaysask = false;
         }
         var prm = jQuery.Deferred();
+        if (jQuery.isEmptyObject(values)) {
+            prm.fail();
+            return prm;
+        }
         var keys = Object.keys(values).sort();
         if ((keys.length == 1) && (!alwaysask)) {
             var key = keys[0];

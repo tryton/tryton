@@ -863,7 +863,7 @@
                     'model': this.model_name,
                     'id': this.get_id(),
                     'ids': [this.get_id()]
-                    }, jQuery.extend({}, this.context));
+                    }, jQuery.extend({}, this.context), false);
             } else {
                 this.switch_view('form');
             }
