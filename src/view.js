@@ -163,9 +163,11 @@
             var footer = jQuery('<div/>', {
                 'class': 'treefooter'
             });
-            this.more = jQuery('<button/>').button({
-                'label': Sao.i18n.gettext('More')
-            }).click(function() {
+            this.more = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(Sao.i18n.gettext('More')
+                ).click(function() {
                 this.display_size += Sao.config.display_size;
                 this.display();
             }.bind(this));
