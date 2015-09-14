@@ -8,6 +8,8 @@ from sql.functions import Substring, Position
 from .function import Function
 from .field import Field, SQL_OPERATORS
 from .numeric import Numeric
+from .integer import Integer
+from .float import Float
 from ...transaction import Transaction
 from ...pool import Pool
 
@@ -142,8 +144,12 @@ class Property(Function):
         operator = clause[1]
         value = clause[2]
 
-        numeric = Numeric('numeric')
-        if sql_type == numeric.sql_type().base and value:
+        sql_types = [
+            Numeric('numeric').sql_type().base,
+            Integer('integer').sql_type().base,
+            Float('float').sql_type().base,
+            ]
+        if sql_type in sql_types and value:
             if isinstance(value, (list, tuple)):
                 value = [Cast(v, sql_type) for v in value]
             else:

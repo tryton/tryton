@@ -10,6 +10,12 @@ __all__ = [
     'Property',
     ]
 
+_CAST = {
+    'numeric': Decimal,
+    'integer': int,
+    'float': float,
+    }
+
 
 class Property(ModelSQL, ModelView):
     "Property"
@@ -70,8 +76,9 @@ class Property(ModelSQL, ModelView):
                 if not isinstance(value, basestring):
                     val = int(value)
                 else:
-                    if property_.field.ttype == 'numeric':
-                        val = Decimal(value.split(',')[1])
+                    if property_.field.ttype in _CAST:
+                        cast = _CAST[property_.field.ttype]
+                        val = cast(value.split(',')[1])
                     elif property_.field.ttype in ('char', 'selection'):
                         val = value.split(',')[1]
                     else:
@@ -92,8 +99,9 @@ class Property(ModelSQL, ModelView):
                 if not isinstance(property_.value, basestring):
                     val = int(property_.value)
                 else:
-                    if property_.field.ttype == 'numeric':
-                        val = Decimal(property_.value.split(',')[1])
+                    if property_.field.ttype in _CAST:
+                        cast = _CAST[property_.field.ttype]
+                        val = cast(property_.value.split(',')[1])
                     elif property_.field.ttype in ('char', 'selection'):
                         val = property_.value.split(',')[1]
                     else:
@@ -149,8 +157,9 @@ class Property(ModelSQL, ModelView):
                 if not isinstance(value, basestring):
                     default_val = int(value)
                 else:
-                    if field._type == 'numeric':
-                        default_val = Decimal(value.split(',')[1])
+                    if field._type in _CAST:
+                        cast = _CAST[field._type]
+                        default_val = cast(value.split(',')[1])
                     elif field._type in ('char', 'selection'):
                         default_val = value.split(',')[1]
                     else:

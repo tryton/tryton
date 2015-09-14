@@ -1,3 +1,4 @@
+* Add support for float and integer on Property fields
 * Remove foreign-key on create_uid and write_uid
 * Prevent deletion of any user
 * Manage PostgreSQL schema
