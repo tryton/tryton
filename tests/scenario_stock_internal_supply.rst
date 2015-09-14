@@ -94,8 +94,9 @@ Get stock locations::
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
     >>> output_loc, = Location.find([('code', '=', 'OUT')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
+    >>> lost_loc, = Location.find([('type', '=', 'lost_found')])
 
-Create new internal location::
+Create provisioning location::
 
     >>> Location = Model.get('stock.location')
     >>> provisioning_loc = Location()
@@ -104,12 +105,20 @@ Create new internal location::
     >>> provisioning_loc.parent = warehouse_loc
     >>> provisioning_loc.save()
 
+Create a new storage location::
+
+    >>> sec_storage_loc = Location()
+    >>> sec_storage_loc.name = 'Second Storage'
+    >>> sec_storage_loc.type = 'storage'
+    >>> sec_storage_loc.parent = warehouse_loc
+    >>> sec_storage_loc.provisioning_location = provisioning_loc
+    >>> sec_storage_loc.save()
+
 Create internal order point::
 
     >>> OrderPoint = Model.get('stock.order_point')
     >>> order_point = OrderPoint()
     >>> order_point.product = product
-    >>> order_point.warehouse_location = warehouse_loc
     >>> order_point.storage_location = storage_loc
     >>> order_point.provisioning_location = provisioning_loc
     >>> order_point.type = 'internal'
@@ -148,3 +157,33 @@ Execute internal supply::
     u'Provisioning Location'
     >>> move.to_location.code
     u'STO'
+
+Create negative quantity in Second Storage::
+
+    >>> Move = Model.get('stock.move')
+    >>> move = Move()
+    >>> move.product = product
+    >>> move.quantity = 10
+    >>> move.from_location = sec_storage_loc
+    >>> move.to_location = lost_loc
+    >>> move.click('do')
+    >>> move.state
+    u'done'
+
+Execute internal supply::
+
+    >>> Wizard('stock.shipment.internal.create').execute('create_')
+    >>> shipment, = ShipmentInternal.find([('id', '!=', shipment.id)])
+    >>> shipment.state
+    u'waiting'
+    >>> len(shipment.moves)
+    1
+    >>> move, = shipment.moves
+    >>> move.product.template.name
+    u'Product'
+    >>> move.quantity
+    10.0
+    >>> move.from_location.name
+    u'Provisioning Location'
+    >>> move.to_location.name
+    u'Second Storage'

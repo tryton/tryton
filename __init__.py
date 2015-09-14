@@ -6,6 +6,7 @@ from .order_point import *
 from .product import *
 from .purchase_request import *
 from .shipment import *
+from .location import *
 
 
 def register():
@@ -17,6 +18,7 @@ def register():
         CreatePurchaseAskParty,
         ShipmentInternal,
         CreateShipmentInternalStart,
+        Location,
         module='stock_supply', type_='model')
     Pool.register(
         CreatePurchaseRequest,

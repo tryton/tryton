@@ -46,6 +46,7 @@ class ShipmentInternal(ModelSQL, ModelView):
         """
         pool = Pool()
         OrderPoint = pool.get('stock.order_point')
+        Location = pool.get('stock.location')
         Product = pool.get('product.product')
         Date = pool.get('ir.date')
         User = pool.get('res.user')
@@ -57,25 +58,50 @@ class ShipmentInternal(ModelSQL, ModelView):
             ('type', '=', 'internal'),
             ])
         id2product = {}
-        location_ids = []
+        product2op = {}
+        id2location = {}
         for op in order_points:
             id2product[op.product.id] = op.product
-            location_ids.append(op.storage_location.id)
+            product2op[
+                (op.storage_location.id, op.product.id)
+                ] = op
+            id2location[op.storage_location.id] = op.storage_location
+        provisioned = Location.search([
+                ('provisioning_location', '!=', None),
+                ])
+        id2location.update({l.id: l for l in provisioned})
 
+        # ordered by ids to speedup reduce_ids in products_by_location
+        if provisioned:
+            products = Product.search([
+                    ('type', 'in', ['goods', 'assets']),
+                    ], order=[('id', 'ASC')])
+            product_ids = [p.id for p in products]
+        else:
+            product_ids = id2product.keys()
+            product_ids.sort()
         # TODO Allow to compute for other future date
         with Transaction().set_context(forecast=True, stock_date_end=today):
-            pbl = Product.products_by_location(location_ids,
-                list(id2product.iterkeys()), with_childs=True)
+            pbl = Product.products_by_location(id2location.keys(),
+                product_ids, with_childs=True)
 
         # Create a list of move to create
         moves = {}
-        for op in order_points:
-            qty = pbl.get((op.storage_location.id, op.product.id), 0)
-            if qty < op.min_quantity:
-                key = (op.provisioning_location.id,
-                       op.storage_location.id,
-                       op.product.id)
-                moves[key] = op.max_quantity - qty
+        for location in id2location.itervalues():
+            for product_id in product_ids:
+                qty = pbl.get((location.id, product_id), 0)
+                op = product2op.get((location.id, product_id))
+                if op:
+                    min_qty, max_qty = op.min_quantity, op.max_quantity
+                    provisioning_location = op.provisioning_location
+                elif location and location.provisioning_location:
+                    min_qty, max_qty = 0, 0
+                    provisioning_location = location.provisioning_location
+                else:
+                    continue
+                if qty < min_qty:
+                    key = (provisioning_location.id, location.id, product_id)
+                    moves[key] = max_qty - qty
 
         # Group moves by {from,to}_location
         to_create = {}
@@ -94,13 +120,16 @@ class ShipmentInternal(ModelSQL, ModelView):
                 )
             shipment_moves = []
             for move in moves:
-                product, qty = move
+                product_id, qty = move
+                product = id2product.setdefault(
+                    product_id, Product(product_id))
                 shipment_moves.append(Move(
                         from_location=from_location,
                         to_location=to_location,
+                        planned_date=today,
                         product=product,
                         quantity=qty,
-                        uom=id2product[product].default_uom,
+                        uom=product.default_uom,
                         company=user_record.company,
                         ))
             shipment.moves = shipment_moves
