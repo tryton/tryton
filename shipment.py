@@ -1068,8 +1068,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         'Return inventory move for the outgoing move'
         pool = Pool()
         Move = pool.get('stock.move')
+        wrh = move.shipment.warehouse
         return Move(
-            from_location=move.shipment.warehouse.storage_location,
+            from_location=wrh.picking_location or wrh.storage_location,
             to_location=move.from_location,
             product=move.product,
             uom=move.uom,

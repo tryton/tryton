@@ -19,12 +19,13 @@ virtually stored. There are six types of locations:
 
 * Warehouse
 
-  Warehouses are meta-locations which define input, storage and output
-  locations. These locations are all of type Storage. Input and Output
-  are locations where incoming an outgoing product are temporally
-  stored awaiting transportation. The storage location is often the
-  biggest location where products are stored for middle or long
-  periods of time.
+  Warehouses are meta-locations which define input, storage, picking and output
+  locations. These locations are all of type Storage. Input and Output are
+  locations where incoming an outgoing product are temporally stored awaiting
+  transportation. The storage location is often the biggest location where
+  products are stored for middle or long periods of time. The picking location
+  is optionally where the products are picked by the customer shipment
+  otherwise the storage location is used.
 
 * Customer
 
@@ -154,8 +155,8 @@ out of which the product are going) and two list of moves:
 
 * Inventory moves
 
-  The moves between a storage location and the output location of the
-  warehouse
+  The moves between the picking or storage location and the output location of
+  the warehouse
 
 * Outgoing moves
 

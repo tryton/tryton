@@ -90,6 +90,17 @@ class Location(ModelSQL, ModelView):
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
         depends=['type', 'active', 'id'])
+    picking_location = fields.Many2One(
+        'stock.location', 'Picking', states={
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            },
+        domain=[
+            ('type', '=', 'storage'),
+            ('parent', 'child_of', [Eval('storage_location', -1)]),
+            ],
+        depends=['type', 'active', 'storage_location'],
+        help='If empty the Storage is used')
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity')
