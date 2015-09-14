@@ -412,10 +412,11 @@ class OpenInvoice(Wizard):
         for work in works:
             if work.invoice_line and work.invoice_line.invoice:
                 invoice_ids.add(work.invoice_line.invoice.id)
-            for timesheet_line in work.work.timesheet_lines:
-                if (timesheet_line.invoice_line
-                        and timesheet_line.invoice_line.invoice):
-                    invoice_ids.add(timesheet_line.invoice_line.invoice.id)
+            if work.work:
+                for timesheet_line in work.work.timesheet_lines:
+                    if (timesheet_line.invoice_line
+                            and timesheet_line.invoice_line.invoice):
+                        invoice_ids.add(timesheet_line.invoice_line.invoice.id)
         encoder = PYSONEncoder()
         action['pyson_domain'] = encoder.encode(
             [('id', 'in', list(invoice_ids))])
