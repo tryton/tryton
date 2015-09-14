@@ -14,6 +14,7 @@ optional or completed with sensible default values:
 
 - Party: The customer.
 - Invoice Address: The invoice address of the customer.
+- Shipment Party: An optional different party where the shipment will be sent.
 - Shipment Address: The address where the shipment will be sent.
 - Description: An optional description for the order.
 - Reference: The internal reference of the sale (will be generated

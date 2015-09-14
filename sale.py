@@ -83,12 +83,21 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             }, depends=['state', 'party'])
+    shipment_party = fields.Many2One('party.party', 'Shipment Party',
+        states={
+            'readonly': (Eval('state') != 'draft'),
+            },
+        depends=['state'])
     shipment_address = fields.Many2One('party.address', 'Shipment Address',
-        domain=[('party', '=', Eval('party'))], states={
+        domain=[
+            ('party', '=', If(Bool(Eval('shipment_party')),
+                    Eval('shipment_party'), Eval('party'))),
+            ],
+        states={
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             },
-        depends=['party', 'state'])
+        depends=['party', 'shipment_party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')], states={
             'readonly': Eval('state') != 'draft',
@@ -385,16 +394,26 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'payment_term')
+    @fields.depends('party', 'shipment_party', 'payment_term')
     def on_change_party(self):
         self.invoice_address = None
-        self.shipment_address = None
+        if not self.shipment_party:
+            self.shipment_address = None
         self.payment_term = self.default_payment_term()
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
-            self.shipment_address = self.party.address_get(type='delivery')
+            if not self.shipment_party:
+                self.shipment_address = self.party.address_get(type='delivery')
             if self.party.customer_payment_term:
                 self.payment_term = self.party.customer_payment_term
+
+    @fields.depends('party', 'shipment_party')
+    def on_change_shipment_party(self):
+        if self.shipment_party:
+            self.shipment_address = self.shipment_party.address_get(
+                type='delivery')
+        elif self.party:
+            self.shipment_address = self.party.address_get(type='delivery')
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -802,7 +821,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def _get_shipment_sale(self, Shipment, key):
         values = {
-            'customer': self.party.id,
+            'customer': (self.shipment_party.id if self.shipment_party
+                else self.party.id),
             'delivery_address': self.shipment_address.id,
             'company': self.company.id,
             }
