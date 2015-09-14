@@ -37,7 +37,7 @@ def _inherit_apply(src, inherit):
             pos = element2.get('position', 'inside')
             if pos == 'replace':
                 parent = element.getparent()
-                if not parent:
+                if parent is not None:
                     tree_src, = element2
                     continue
                 enext = element.getnext()
