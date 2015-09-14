@@ -9,6 +9,7 @@ from .stock import *
 def register():
     Pool.register(
         Template,
+        Configuration,
         Lot,
         Move,
         Period,

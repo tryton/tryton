@@ -11,7 +11,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
-__all__ = ['Lot', 'Move', 'Period']
+__all__ = ['Configuration', 'Lot', 'Move', 'Period']
 __metaclass__ = PoolMeta
 
 DATE_STATE = [
@@ -19,6 +19,14 @@ DATE_STATE = [
     ('optional', 'Optional'),
     ('required', 'Required'),
     ]
+
+
+class Configuration:
+    __name__ = 'stock.configuration'
+
+    shelf_life_delay = fields.Property(fields.Integer('Shelf Life Delay',
+            help='The delay in number of days before '
+            'removal from the forecast'))
 
 
 class Lot:
@@ -208,6 +216,7 @@ class Move:
         pool = Pool()
         Date = pool.get('ir.date')
         Lot = pool.get('stock.lot')
+        Config = pool.get('stock.configuration')
 
         query = super(Move, cls).compute_quantities_query(
             location_ids, with_childs=with_childs, grouping=grouping,
@@ -220,6 +229,13 @@ class Move:
         if query and ((stock_date_end == today and context.get('forecast'))
                 or stock_date_end > today):
             lot = Lot.__table__()
+
+            config = Config(1)
+            if config.shelf_life_delay:
+                expiration_date = stock_date_end + datetime.timedelta(
+                    days=config.shelf_life_delay)
+            else:
+                expiration_date = stock_date_end
 
             def join(move):
                 return move.join(lot, 'LEFT',
@@ -260,7 +276,7 @@ class Move:
                     # Not query on move table
                     continue
                 sub_query.where &= ((lot.shelf_life_expiration_date == Null)
-                    | (lot.shelf_life_expiration_date >= stock_date_end))
+                    | (lot.shelf_life_expiration_date >= expiration_date))
         return query
 
 
