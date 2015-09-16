@@ -153,7 +153,7 @@ class Work(ModelSQL, ModelView):
             query = project.join(timesheet,
                 condition=project.work == timesheet.id
                 ).join(second_project,
-                    condition=timesheet.parent == second_project.id
+                    condition=timesheet.parent == second_project.work
                     ).select(project.id, second_project.id)
             cursor.execute(*query)
             for id_, parent in cursor.fetchall():
