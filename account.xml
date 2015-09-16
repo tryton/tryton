@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Lines to Pay</field>
             <field name="res_model">account.move.line</field>
             <field name="domain"
-                eval="[('account.kind', 'in', ['receivable', 'payable']), ('party', '!=', None), ('reconciliation', '=', None), ('payment_amount', '!=', 0)]"
+                eval="[('account.kind', 'in', ['receivable', 'payable']), ('party', '!=', None), ('reconciliation', '=', None), ('payment_amount', '!=', 0), ('move_state', '=', 'posted')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_line_form_view1">
@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable</field>
             <field name="sequence" eval="10"/>
             <field name="domain"
-                eval="['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]"
+                eval="[('account.kind', '=', 'payable'), ['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]]"
                 pyson="1"/>
             <field name="act_window" ref="act_move_line_form"/>
         </record>
@@ -37,7 +37,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Receivable</field>
             <field name="sequence" eval="20"/>
             <field name="domain"
-                eval="['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]"
+                eval="[('account.kind', '=', 'receivable'), ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]]"
                 pyson="1"/>
             <field name="act_window" ref="act_move_line_form"/>
         </record>
