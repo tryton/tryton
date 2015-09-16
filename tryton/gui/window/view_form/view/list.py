@@ -468,15 +468,17 @@ class ViewTree(View):
             help += '\n' + attributes['help']
         tooltips.set_tip(label, help)
         tooltips.enable()
-        arrow = gtk.Arrow(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-        column.arrow = arrow
-        column.arrow_show = False
+        if arrow:
+            arrow_widget = gtk.Arrow(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+            arrow_widget.show()
+            column.arrow = arrow_widget
         hbox.pack_start(label, True, True, 0)
         if arrow:
-            hbox.pack_start(arrow, False, False, 0)
+            hbox.pack_start(arrow_widget, False, False, 0)
             column.set_clickable(True)
         hbox.show()
         column.set_widget(hbox)
+        column.set_alignment(0.5)
 
     def set_column_width(self, column, field, attributes):
         default_width = {
@@ -540,22 +542,18 @@ class ViewTree(View):
 
     def sort_model(self, column):
         for col in self.treeview.get_columns():
-            if col != column:
-                col.arrow_show = False
-                col.arrow.hide()
+            if col != column and getattr(col, 'arrow', None):
+                col.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
         self.screen.order = None
-        if not column.arrow_show:
-            column.arrow_show = True
+        if column.arrow.props.arrow_type == gtk.ARROW_NONE:
             column.arrow.set(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-            column.arrow.show()
             self.screen.order = [(column.name, 'ASC')]
         else:
-            if column.arrow.get_property('arrow-type') == gtk.ARROW_DOWN:
+            if column.arrow.props.arrow_type == gtk.ARROW_DOWN:
                 column.arrow.set(gtk.ARROW_UP, gtk.SHADOW_IN)
                 self.screen.order = [(column.name, 'DESC')]
             else:
-                column.arrow_show = False
-                column.arrow.hide()
+                column.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
         model = self.treeview.get_model()
         unsaved_records = [x for x in model.group if x.id < 0]
         search_string = self.screen.screen_container.get_text() or u''
@@ -576,8 +574,6 @@ class ViewTree(View):
             column = gtk.TreeViewColumn()
             column._type = 'fill'
             column.name = None
-            column.arrow = gtk.Arrow(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-            column.arrow_show = False
             column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
             self.treeview.append_column(column)
 
