@@ -829,6 +829,9 @@ class ProgressBar(object):
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         field = record[self.attrs['name']]
+        field.state_set(record, states=('invisible',))
+        invisible = field.get_state_attrs(record).get('invisible', False)
+        cell.set_property('visible', not invisible)
         value = float(self.get_textual_value(record) or 0.0)
         cell.set_property('value', value)
         digit = field.digits(record, factor=100)[1]
