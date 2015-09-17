@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Works">
     <field name="name"/>
-    <field name="duration"/>
+    <field name="total_duration"/>
 </tree>

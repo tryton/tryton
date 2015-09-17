@@ -38,6 +38,10 @@ class Work(ModelSQL, ModelView):
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
             'company_work_time', help="Total time spent on this work"),
         'get_duration')
+    total_duration = fields.Function(fields.TimeDelta(
+            'Total Timesheet Duration', 'company_work_time',
+            help='Total time spent on this work and the sub-works'),
+        'get_duration')
     timesheet_available = fields.Boolean('Available on timesheets',
         help="Allow to fill in timesheets with this work")
     timesheet_start_date = fields.Date('Timesheet Start',
@@ -103,7 +107,6 @@ class Work(ModelSQL, ModelView):
         context = transaction.context
 
         table_w = cls.__table__()
-        table_c = cls.__table__()
         line = Line.__table__()
         ids = [w.id for w in works]
         durations = dict.fromkeys(ids, None)
@@ -114,13 +117,20 @@ class Work(ModelSQL, ModelView):
             where &= line.date <= context['to_date']
         if context.get('employees'):
             where &= line.employee.in_(context['employees'])
+
+        if name == 'duration':
+            query_table = table_w.join(line, 'LEFT',
+                condition=line.work == table_w.id)
+        else:
+            table_c = cls.__table__()
+            query_table = table_w.join(table_c,
+                condition=(table_c.left >= table_w.left)
+                & (table_c.right <= table_w.right)
+                ).join(line, 'LEFT', condition=line.work == table_c.id)
+
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_w.id, sub_ids)
-            cursor.execute(*table_w.join(table_c,
-                    condition=(table_c.left >= table_w.left)
-                    & (table_c.right <= table_w.right)
-                    ).join(line, 'LEFT', condition=line.work == table_c.id
-                    ).select(table_w.id, Sum(line.duration),
+            cursor.execute(*query_table.select(table_w.id, Sum(line.duration),
                     where=red_sql & where,
                     group_by=table_w.id))
             for work_id, duration in cursor.fetchall():
