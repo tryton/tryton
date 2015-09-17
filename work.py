@@ -19,22 +19,15 @@ class Work:
         domain=[
             ('type', '=', 'service'),
             ('default_uom_category', '=', Id('product', 'uom_cat_time')),
-            ],
-        states={
-            'invisible': ~Eval('timesheet_available'),
-            },
-        depends=['timesheet_available'])
+            ])
     list_price = fields.Numeric('List Price',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_revenue')
     cost = fields.Function(fields.Numeric('Cost',
-            states={
-                'invisible': ~Eval('timesheet_available'),
-                },
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits', 'timesheet_available']), 'get_cost')
+            depends=['currency_digits']), 'get_cost')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
 
