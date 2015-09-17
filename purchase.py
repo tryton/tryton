@@ -950,11 +950,9 @@ class PurchaseLine(ModelSQL, ModelView):
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
-                'invisible': ((Eval('type') != 'line')
-                    | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
-                        <= 0)),
+                'invisible': Eval('type') != 'line',
                 },
-            depends=['type', 'quantity']),
+            depends=['type']),
         'on_change_with_delivery_date')
 
     @classmethod
@@ -1177,9 +1175,12 @@ class PurchaseLine(ModelSQL, ModelView):
         else:
             return self.purchase.party.supplier_location.id
 
-    @fields.depends('product', 'quantity',
+    @fields.depends('product', 'quantity', 'moves',
         '_parent_purchase.purchase_date', '_parent_purchase.party')
     def on_change_with_delivery_date(self, name=None):
+        if self.moves:
+            return min(m.effective_date if m.effective_date else m.planned_date
+                for m in self.moves)
         if (self.product
                 and self.quantity > 0
                 and self.purchase and self.purchase.party
