@@ -3,6 +3,7 @@
 from __future__ import division
 
 from itertools import groupby
+from collections import defaultdict
 from decimal import Decimal
 import datetime
 
@@ -45,20 +46,20 @@ class Work:
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
-            depends=['invoice_method']), 'get_invoice_values')
+            depends=['invoice_method']), 'get_total')
     duration_to_invoice = fields.Function(fields.TimeDelta(
             'Duration to Invoice', 'company_work_time',
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
-            depends=['invoice_method']), 'get_invoice_values')
+            depends=['invoice_method']), 'get_total')
     invoiced_amount = fields.Function(fields.Numeric('Invoiced Amount',
             digits=(16, Eval('currency_digits', 2)),
             states={
                 'invisible': Eval('invoice_method') == 'manual',
                 },
             depends=['currency_digits', 'invoice_method']),
-        'get_invoice_values')
+        'get_total')
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         readonly=True)
 
@@ -110,7 +111,7 @@ class Work:
     @staticmethod
     def _get_invoiced_duration_effort(works):
         return dict((w.id, w.effort_duration) for w in works
-            if w.invoice_line)
+            if w.invoice_line and w.effort_duration)
 
     @classmethod
     def _get_invoiced_duration_timesheet(cls, works):
@@ -214,28 +215,37 @@ class Work:
                     where=red_sql & where,
                     group_by=line.work))
             for twork_id, duration in cursor.fetchall():
-                # SQLite uses float for SUM
-                if not isinstance(duration, datetime.timedelta):
-                    duration = datetime.timedelta(seconds=duration)
-                durations[twork2work[twork_id]] = duration
+                if duration:
+                    # SQLite uses float for SUM
+                    if not isinstance(duration, datetime.timedelta):
+                        duration = datetime.timedelta(seconds=duration)
+                    durations[twork2work[twork_id]] = duration
         return durations
 
     @classmethod
-    def get_invoice_values(cls, works, name):
-        works += cls.search([
-                ('parent', 'child_of', [w.id for w in works]),
-                ])
-
-        values = {}
-        method2works = {}
+    def _get_invoice_values(cls, works, name):
+        default = getattr(cls, 'default_%s' % name)
+        durations = dict.fromkeys((w.id for w in works), default())
+        method2works = defaultdict(list)
         for work in works:
-            method2works.setdefault(work.invoice_method, []).append(work)
+            method2works[work.invoice_method].append(work)
         for method, m_works in method2works.iteritems():
             method = getattr(cls, '_get_%s_%s' % (name, method))
-            values.update(method(m_works))
+            # Re-browse for cache alignment
+            durations.update(method(cls.browse(m_works)))
+        return durations
 
-        default = getattr(cls, 'default_%s' % name)()
-        return cls.sum_tree(works, lambda w: values.get(w.id) or default)
+    @classmethod
+    def _get_invoiced_duration(cls, works):
+        return cls._get_invoice_values(works, 'invoiced_duration')
+
+    @classmethod
+    def _get_duration_to_invoice(cls, works):
+        return cls._get_invoice_values(works, 'duration_to_invoice')
+
+    @classmethod
+    def _get_invoiced_amount(cls, works):
+        return cls._get_invoice_values(works, 'invoiced_amount')
 
     @classmethod
     @ModelView.button
