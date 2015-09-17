@@ -1063,11 +1063,9 @@ class SaleLine(ModelSQL, ModelView):
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
-                'invisible': ((Eval('type') != 'line')
-                    | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
-                        <= 0)),
+                'invisible': Eval('type') != 'line',
                 },
-            depends=['type', 'quantity']),
+            depends=['type']),
         'on_change_with_delivery_date')
 
     @classmethod
@@ -1299,8 +1297,11 @@ class SaleLine(ModelSQL, ModelView):
             if self.warehouse:
                 return self.warehouse.input_location.id
 
-    @fields.depends('product', 'quantity', '_parent_sale.sale_date')
+    @fields.depends('product', 'quantity', 'moves', '_parent_sale.sale_date')
     def on_change_with_delivery_date(self, name=None):
+        if self.moves:
+            return min(m.effective_date if m.effective_date else m.planned_date
+                for m in self.moves)
         if self.product and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_delivery_date(date=date)
