@@ -10,6 +10,7 @@ from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Work']
 
@@ -45,7 +46,7 @@ class Work(ModelSQL, ModelView):
     timesheet_duration = fields.Function(fields.TimeDelta('Duration',
             'company_work_time',
             help="Total time spent on this work and the sub-works"),
-        'get_timesheet_duration')
+        'get_total')
     effort_duration = fields.TimeDelta('Effort', 'company_work_time',
         states={
             'invisible': Eval('type') != 'task',
@@ -53,7 +54,7 @@ class Work(ModelSQL, ModelView):
     total_effort = fields.Function(fields.TimeDelta('Total Effort',
             'company_work_time',
             help="Estimated total effort for this work and the sub-works"),
-        'get_total_effort')
+        'get_total')
     comment = fields.Text('Comment')
     parent = fields.Many2One('project.work', 'Parent',
         left='left', right='right', ondelete='RESTRICT',
@@ -268,23 +269,8 @@ class Work(ModelSQL, ModelView):
         return self.work.timesheet_available if self.work else None
 
     @classmethod
-    def get_timesheet_duration(cls, works, name):
-        works = cls.search([
-                ('parent', 'child_of', [w.id for w in works]),
-                ])
-        return cls.sum_tree(works,
-            lambda w: w.work.duration if w.work and w.work.duration
-            else datetime.timedelta())
-
-    @classmethod
-    def sum_tree(cls, works, getter):
-        result = {}
-        parents = {}
-        for work in works:
-            result[work.id] = getter(work)
-            parent = work.parent
-            if parent:
-                parents[work.id] = parent.id
+    def sum_tree(cls, works, values, parents):
+        result = values.copy()
         works = set((w.id for w in works))
         leafs = works - set(parents.itervalues())
         while leafs:
@@ -304,12 +290,36 @@ class Work(ModelSQL, ModelView):
         return result
 
     @classmethod
-    def get_total_effort(cls, works, name):
+    def get_total(cls, works, names):
+        cursor = Transaction().cursor
+        table = cls.__table__()
+
         works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ])
-        return cls.sum_tree(works,
-            lambda w: w.effort_duration or datetime.timedelta())
+        work_ids = [w.id for w in works]
+        parents = {}
+        for sub_ids in grouped_slice(work_ids):
+            where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.select(table.id, table.parent,
+                    where=where))
+            parents.update(cursor.fetchall())
+
+        result = {}
+        for name in names:
+            values = getattr(cls, '_get_%s' % name)(works)
+            result[name] = cls.sum_tree(works, values, parents)
+        return result
+
+    @classmethod
+    def _get_total_effort(cls, works):
+        return {w.id: w.effort_duration or datetime.timedelta() for w in works}
+
+    @classmethod
+    def _get_timesheet_duration(cls, works):
+        return {w.id: (w.work.duration if w.work and w.work.duration
+                else datetime.timedelta())
+            for w in works}
 
     @classmethod
     def copy(cls, project_works, default=None):
