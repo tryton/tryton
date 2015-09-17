@@ -24,15 +24,15 @@ class Work:
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_revenue')
+            depends=['currency_digits']), 'get_total')
     cost = fields.Function(fields.Numeric('Cost',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_cost')
+            depends=['currency_digits']), 'get_total')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
 
     @classmethod
-    def get_cost(cls, works, name):
+    def _get_cost(cls, works):
         pool = Pool()
         Employee = pool.get('company.employee')
         Line = pool.get('timesheet.line')
@@ -40,25 +40,19 @@ class Work:
         transaction = Transaction()
         cursor = transaction.cursor
 
-        works = cls.search([
-                ('parent', 'child_of', [w.id for w in works]),
-                ])
         costs = dict.fromkeys([w.id for w in works], 0)
 
         table = cls.__table__()
-        table_c = cls.__table__()
         work = Work.__table__()
         line = Line.__table__()
 
         work_ids = [w.id for w in works]
+        work_with_timesheet_ids = [w.id for w in works if w.work]
         employee_ids = set()
         for sub_ids in grouped_slice(work_ids):
             red_sql = reduce_ids(table.id, sub_ids)
-            cursor.execute(*table.join(table_c,
-                    condition=(table_c.left >= table.left)
-                    & (table_c.right <= table.right)
-                    ).join(work,
-                    condition=table_c.work == work.id
+            cursor.execute(*table.join(work,
+                    condition=table.work == work.id
                     ).join(line, condition=line.work == work.id
                     ).select(line.employee,
                     where=red_sql,
@@ -72,27 +66,19 @@ class Work:
                         from_date=from_date,
                         to_date=to_date,
                         employees=[employee.id]):
-                    for work in cls.browse(work_ids):
+                    for work in cls.browse(work_with_timesheet_ids):
                         costs[work.id] += (
-                            Decimal(str(work.timesheet_duration_hours)) * cost)
+                            Decimal(str(work.work.hours)) * cost)
                 to_date = from_date - datetime.timedelta(1)
         for work in works:
             costs[work.id] = work.company.currency.round(costs[work.id])
         return costs
 
     @classmethod
-    def get_revenue(cls, works, name):
-        works = cls.search([
-                ('parent', 'child_of', [w.id for w in works]),
-                ])
-
-        def getter(work):
-            if work.list_price:
-                return work.list_price * Decimal(str(work.effort_hours))
-            else:
-                return Decimal(0)
-
-        return cls.sum_tree(works, getter)
+    def _get_revenue(cls, works):
+        return {w.id: (w.list_price * Decimal(str(w.effort_hours))
+                if w.list_price else Decimal(0))
+            for w in works}
 
     @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
