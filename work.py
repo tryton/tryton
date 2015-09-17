@@ -51,20 +51,22 @@ class Work:
                 ('parent', 'child_of', [w.id for w in works]),
                 ])
         costs = dict.fromkeys([w.id for w in works], 0)
-        works_to_timesheet = {w.work.id: w.id for w in works if w.work}
 
-        table_w = Work.__table__()
-        table_c = Work.__table__()
+        table = cls.__table__()
+        table_c = cls.__table__()
+        work = Work.__table__()
         line = Line.__table__()
 
-        timesheet_work_ids = works_to_timesheet.keys()
+        work_ids = [w.id for w in works]
         employee_ids = set()
-        for sub_ids in grouped_slice(timesheet_work_ids):
-            red_sql = reduce_ids(table_w.id, sub_ids)
-            cursor.execute(*table_w.join(table_c,
-                    condition=(table_c.left >= table_w.left)
-                    & (table_c.right <= table_w.right)
-                    ).join(line, condition=line.work == table_c.id
+        for sub_ids in grouped_slice(work_ids):
+            red_sql = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.join(table_c,
+                    condition=(table_c.left >= table.left)
+                    & (table_c.right <= table.right)
+                    ).join(work,
+                    condition=table_c.work == work.id
+                    ).join(line, condition=line.work == work.id
                     ).select(line.employee,
                     where=red_sql,
                     group_by=line.employee))
@@ -77,10 +79,9 @@ class Work:
                         from_date=from_date,
                         to_date=to_date,
                         employees=[employee.id]):
-                    for timesheet_work in Work.browse(timesheet_work_ids):
-                        work_id = works_to_timesheet[timesheet_work.id]
-                        costs[work_id] += (
-                            Decimal(str(timesheet_work.hours)) * cost)
+                    for work in cls.browse(work_ids):
+                        costs[work.id] += (
+                            Decimal(str(work.timesheet_duration_hours)) * cost)
                 to_date = from_date - datetime.timedelta(1)
         for work in works:
             costs[work.id] = work.company.currency.round(costs[work.id])
