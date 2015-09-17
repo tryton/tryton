@@ -43,8 +43,9 @@ class Work(ModelSQL, ModelView):
         fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
     timesheet_duration = fields.Function(fields.TimeDelta('Duration',
-            'company_work_time', help="Total time spent on this work"),
-        'on_change_with_timesheet_duration')
+            'company_work_time',
+            help="Total time spent on this work and the sub-works"),
+        'get_timesheet_duration')
     effort_duration = fields.TimeDelta('Effort', 'company_work_time',
         states={
             'invisible': Eval('type') != 'task',
@@ -227,6 +228,12 @@ class Work(ModelSQL, ModelView):
             return 0
         return self.effort_duration.total_seconds() / 60 / 60
 
+    @property
+    def timesheet_duration_hours(self):
+        if not self.timesheet_duration:
+            return 0
+        return self.timesheet_duration.total_seconds() / 60 / 60
+
     def get_rec_name(self, name):
         if self.parent:
             return self.parent.get_rec_name(name) + '\\' + self.name
@@ -260,9 +267,14 @@ class Work(ModelSQL, ModelView):
     def on_change_with_timesheet_available(self, name=None):
         return self.work.timesheet_available if self.work else None
 
-    @fields.depends('work')
-    def on_change_with_timesheet_duration(self, name=None):
-        return self.work.duration if self.work else None
+    @classmethod
+    def get_timesheet_duration(cls, works, name):
+        works = cls.search([
+                ('parent', 'child_of', [w.id for w in works]),
+                ])
+        return cls.sum_tree(works,
+            lambda w: w.work.duration if w.work and w.work.duration
+            else datetime.timedelta())
 
     @classmethod
     def sum_tree(cls, works, getter):
