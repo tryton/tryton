@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
-import locale
 
 from .widget import Widget
 
@@ -31,9 +30,9 @@ class ProgressBar(Widget):
             self.widget.set_text('')
             self.widget.set_fraction(0.0)
             return False
-        value = float(field.get_client(record, factor=100) or 0.0)
-        digits = field.digits(record, factor=100)
-        self.widget.set_text(_('%s%%') %
-            locale.format('%.*f', (digits[1], value), True))
-        value = float(field.get(record) or 0.0)
+        text = field.get_client(record, factor=100)
+        if text:
+            text = _('%s%%') % text
+        self.widget.set_text(text)
+        value = field.get(record) or 0.0
         self.widget.set_fraction(value)

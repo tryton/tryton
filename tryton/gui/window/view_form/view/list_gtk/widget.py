@@ -4,7 +4,6 @@
 import os
 import tempfile
 import gtk
-import locale
 import gettext
 import webbrowser
 
@@ -832,11 +831,12 @@ class ProgressBar(object):
         field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
-        value = float(self.get_textual_value(record) or 0.0)
-        cell.set_property('value', value)
-        digit = field.digits(record, factor=100)[1]
-        text = locale.format('%.*f', (digit, value), True)
-        cell.set_property('text', text + '%')
+        text = self.get_textual_value(record)
+        if text:
+            text = _('%s%%') % text
+        cell.set_property('text', text)
+        value = field.get(record) or 0.0
+        cell.set_property('value', value * 100)
 
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
