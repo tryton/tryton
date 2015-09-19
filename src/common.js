@@ -65,6 +65,19 @@
         return result;
     };
 
+    // Handle click and Return press event
+    // If one, the handler is executed at most once for both events
+    Sao.common.click_press = function(func, one) {
+        return function handler(evt) {
+            if (evt.type != 'key_press' || e.keyCode == Sao.common.Return) {
+                if (one) {
+                    jQuery(this).off('click keypress', null, handler);
+                }
+                return func(evt);
+            }
+        };
+    };
+
     // Cartesian product
     Sao.common.product = function(array, repeat) {
         repeat = repeat || 1;

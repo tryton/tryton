@@ -562,8 +562,9 @@
                 }).append(jQuery('<div/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
-                td.one('click', {column: i, td: td},
-                        this.select_row.bind(this));
+                td.on('click keypress', {column: i, td: td},
+                        Sao.common.click_press(this.select_row.bind(this),
+                            true));
                 td.dblclick(this.switch_row.bind(this));
                 var widgets = this.build_widgets();
                 var table = widgets[0];
@@ -576,12 +577,14 @@
                         expanded_icon = 'glyphicon-minus';
                     }
                     this.expander = jQuery('<span/>', {
-                        'class': 'glyphicon ' + expanded_icon
+                        'class': 'glyphicon ' + expanded_icon,
+                        'tabindex': 0
                     });
                     this.expander.html('&nbsp;');
                     this.expander.css('margin-left', (depth - 1) + 'em');
                     this.expander.css('float', 'left');
-                    this.expander.click(this.toggle_row.bind(this));
+                    this.expander.on('click keypress',
+                            Sao.common.click_press(this.toggle_row.bind(this)));
                     row.append(jQuery('<td/>', {
                         'class': 'expander'
                     }).append(this.expander).css('width', 1));
@@ -787,8 +790,8 @@
             // The 'click'-event must be handled next time the row is clicked
             var td = event_.data.td;
             var column = event_.data.column;
-            td.one('click', {column: column, td: td},
-                    this.select_row.bind(this));
+            td.on('click keypress', {column: column, td: td},
+                    Sao.common.click_press(this.select_row.bind(this), true));
         },
         is_selected: function() {
             if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
@@ -850,10 +853,12 @@
                 if (previously_selected &&
                     previously_selected.edited_column !== undefined) {
                     previous_td = previously_selected.get_active_td();
-                    previous_td.one('click', {
+                    previous_td.on('click keypress', {
                         td: previous_td,
                         column: previously_selected.edited_column
-                    }, previously_selected.select_row.bind(previously_selected));
+                    }, Sao.common.click_press(
+                        previously_selected.select_row.bind(previously_selected),
+                        true));
                     var previous_column = this.tree.columns[
                         previously_selected.edited_column];
                     previously_selected.get_widget()
@@ -885,8 +890,9 @@
                     this.selection_changed();
                     var td = event_.data.td;
                     var column = event_.data.column;
-                    td.one('click', {column: column, td: td},
-                        this.select_row.bind(this));
+                    td.on('click keypress', {column: column, td: td},
+                        Sao.common.click_press(this.select_row.bind(this),
+                            true));
                 }
             }.bind(this));
         },
@@ -997,9 +1003,10 @@
                     this.get_widget().show();
                     this.get_widget_editable().hide();
                     current_td = this.get_active_td();
-                    current_td.one('click',
+                    current_td.on('click keypress',
                             {column: this.edited_column, td: current_td},
-                            this.select_row.bind(this));
+                            Sao.common.click_press(this.select_row.bind(this),
+                                true));
                     this.edited_column = undefined;
                 }
             }
@@ -1027,6 +1034,7 @@
                 cell = jQuery('<img/>');
             } else {
                 cell = jQuery('<span/>');
+                cell.attr('tabindex', 0);
             }
             cell.addClass('column-affix');
             return cell;
@@ -1105,8 +1113,10 @@
             this.header = null;
         },
         get_cell: function() {
-            var cell = jQuery('<div/>');
-            cell.addClass(this.class_);
+            var cell = jQuery('<div/>', {
+                'class': this.class_,
+                'tabindex': 0
+            });
             return cell;
         },
         update_text: function(cell, record) {
@@ -1153,7 +1163,8 @@
             return jQuery('<input/>', {
                 'type': 'checkbox',
                 'disabled': true,
-                'class': this.class_
+                'class': this.class_,
+                'tabindex': 0
             });
         },
         update_text: function(cell, record) {
@@ -1281,8 +1292,10 @@
     Sao.View.Tree.ImageColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-image',
         get_cell: function() {
-            var cell = jQuery('<img/>');
-            cell.addClass(this.class_);
+            var cell = jQuery('<img/>', {
+                'class': this.class_,
+                'tabindex': 0
+            });
             cell.css('width', '100%');
             return cell;
         },
@@ -1332,7 +1345,8 @@
         class_: 'column-progressbar',
         get_cell: function() {
             var cell = jQuery('<div/>', {
-                'class': this.class_ + ' progress'
+                'class': this.class_ + ' progress',
+                'tabindex': 0
             });
             var progressbar = jQuery('<div/>', {
                 'class': 'progress-bar',
