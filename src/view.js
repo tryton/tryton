@@ -1344,11 +1344,15 @@
             return cell;
         },
         update_text: function(cell, record) {
-            var value = this.field.get_client(record, 100);
+            var text = this.field.get_client(record, 100);
+            if (text) {
+                text = Sao.i18n.gettext('%1%', text);
+            }
+            var value = this.field.get(record) || 0;
             var progressbar = cell.find('.progress-bar');
-            progressbar.prop('aria-valuenow', value);
+            progressbar.prop('aria-valuenow', value * 100);
             progressbar.css('width', value + '%');
-            progressbar.text(Sao.i18n.gettext('%1%', value));
+            progressbar.text(text);
         }
     });
 
@@ -4069,19 +4073,20 @@
         display: function(record, field) {
             Sao.View.Form.ProgressBar._super.display.call(
                     this, record, field);
-            var value;
+            var value, text;
             if (!field) {
                 value = 0;
+                text = '';
             } else {
-                value = record.model.fields[this.field_name].get_client(
-                        record, 100);
+                value = field.get(record);
+                text = field.get_client(record, 100);
+                if (text) {
+                    text = Sao.i18n.gettext('%1%', text);
+                }
             }
-            this.set_fraction(value);
-        },
-        set_fraction: function(value) {
             this.progressbar.prop('aria-valuenow', value);
             this.progressbar.css('width', value + '%');
-            this.progressbar.text(Sao.i18n.gettext('%1%', value));
+            this.progressbar.text(text);
         }
     });
 
