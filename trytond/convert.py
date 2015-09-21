@@ -792,9 +792,9 @@ def post_import(pool, module, to_delete):
             ], order=[('id', 'DESC')])
 
     for mrec in mdata:
-        model, db_id = mrec.model, mrec.db_id
+        model, db_id, fs_id = mrec.model, mrec.db_id, mrec.fs_id
 
-        logger.info('Deleting %s@%s', db_id, model)
+        logger.info('Deleting %s@%s from %s.%s', db_id, model, module, fs_id)
         try:
             # Deletion of the record
             try:
@@ -819,9 +819,15 @@ def post_import(pool, module, to_delete):
                 'and restart --update=module\n',
                 db_id, model, exc_info=True)
             if 'active' in Model._fields:
-                Model.write([Model(db_id)], {
-                        'active': False,
-                        })
+                try:
+                    Model.write([Model(db_id)], {
+                            'active': False,
+                            })
+                except Exception:
+                    cursor.rollback()
+                    logger.error(
+                        'Could not inactivate id: %d of model %s\n',
+                        db_id, model, exc_info=True)
 
     # Clean model_data:
     if mdata_delete:
