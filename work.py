@@ -156,7 +156,7 @@ class Work:
                 invoice_currency = (invoice_line.invoice.currency
                     if invoice_line.invoice else invoice_line.currency)
                 amounts[work.id] = Currency.compute(invoice_currency,
-                    Decimal(str(work.effort_hours)) * invoice_line.unit_price,
+                    Decimal(str(work.effort)) * invoice_line.unit_price,
                     currency)
             else:
                 amounts[work.id] = Decimal(0)
