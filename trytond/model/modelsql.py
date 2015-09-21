@@ -849,7 +849,7 @@ class ModelSQL(ModelStorage):
                 cursor.execute(*table.delete(where=red_sql))
             except DatabaseIntegrityError, exception:
                 with Transaction().new_cursor():
-                    cls.__raise_integrity_error(exception, [])
+                    cls.__raise_integrity_error(exception, {})
                 raise
 
         Translation.delete_ids(cls.__name__, 'model', ids)
