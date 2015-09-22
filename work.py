@@ -211,11 +211,11 @@ class Work:
 
         for work in works:
             currency = id2currency[work2currency[work.id]]
-            amount = amounts[work.id]
+            amount = amounts.get(work.id, 0)
             if isinstance(amount, datetime.timedelta):
                 amount = amount.total_seconds()
             amount = amount / 60 / 60
-            amounts[work.id] = currency.round(Decimal(amount))
+            amounts[work.id] = currency.round(Decimal(str(amount)))
         return amounts
 
     @staticmethod

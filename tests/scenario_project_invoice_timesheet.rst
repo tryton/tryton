@@ -159,7 +159,7 @@ Check project duration::
     >>> project.duration_to_invoice
     datetime.timedelta(0, 18000)
     >>> project.invoiced_amount
-    Decimal('0')
+    Decimal('0.00')
 
 Invoice project::
 
