@@ -167,32 +167,55 @@ class Work:
                 amounts[work.id] = Decimal(0)
         return amounts
 
-    @staticmethod
-    def _get_invoiced_amount_timesheet(works):
+    @classmethod
+    def _get_invoiced_amount_timesheet(cls, works):
         pool = Pool()
+        TimesheetWork = pool.get('timesheet.work')
+        TimesheetLine = pool.get('timesheet.line')
         InvoiceLine = pool.get('account.invoice.line')
+        Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
 
-        invoice_lines = InvoiceLine.browse([
-                t.invoice_line.id for w in works
-                for t in w.work.timesheet_lines
-                if t.invoice_line])
+        cursor = Transaction().cursor
+        table = cls.__table__()
+        timesheet_work = TimesheetWork.__table__()
+        timesheet_line = TimesheetLine.__table__()
+        invoice_line = InvoiceLine.__table__()
+        company = Company.__table__()
 
-        id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
+        work2currency = {}
+        work_ids = [w.id for w in works]
+        for sub_ids in grouped_slice(work_ids):
+            where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.join(timesheet_work,
+                    condition=table.work == timesheet_work.id
+                    ).join(timesheet_line,
+                    condition=timesheet_line.work == timesheet_work.id
+                    ).join(invoice_line,
+                    condition=timesheet_line.invoice_line == invoice_line.id
+                    ).select(table.id,
+                    Sum(timesheet_line.duration * invoice_line.unit_price),
+                    where=where,
+                    group_by=table.id))
+            amounts.update(cursor.fetchall())
+
+            cursor.execute(*table.join(company,
+                    condition=table.company == company.id
+                    ).select(table.id, company.currency,
+                    where=where))
+            work2currency.update(cursor.fetchall())
+
+        currencies = Currency.browse(set(work2currency.itervalues()))
+        id2currency = {c.id: c for c in currencies}
+
         for work in works:
-            currency = work.company.currency
-            amounts[work.id] = Decimal(0)
-            for timesheet_line in work.work.timesheet_lines:
-                if not timesheet_line.invoice_line:
-                    continue
-                invoice_line = id2invoice_lines[timesheet_line.invoice_line.id]
-                invoice_currency = (invoice_line.invoice.currency
-                    if invoice_line.invoice else invoice_line.currency)
-                amounts[work.id] += Currency.compute(invoice_currency,
-                    (Decimal(str(timesheet_line.hours))
-                        * invoice_line.unit_price),
-                    currency)
+            currency = id2currency[work2currency[work.id]]
+            amount = amounts[work.id]
+            if isinstance(amount, datetime.timedelta):
+                amount = amount.total_seconds()
+            amount = amount / 60 / 60
+            amounts[work.id] = currency.round(Decimal(amount))
         return amounts
 
     @staticmethod
