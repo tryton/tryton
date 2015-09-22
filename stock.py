@@ -23,3 +23,12 @@ class StockMove:
             quantity += Uom.compute_qty(invoice_line.unit,
                 invoice_line.quantity, self.uom)
         return quantity
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('invoice_lines', None)
+        return super(StockMove, cls).copy(moves, default=default)
