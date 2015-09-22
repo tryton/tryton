@@ -251,10 +251,10 @@ class ActionMixin(ModelSQL):
                 default_func = 'default_' + name
                 if getattr(Action, default_func, None):
                     setattr(cls, default_func,
-                        partial(ActionMixin.default_action, name))
+                        partial(ActionMixin._default_action, name))
 
     @staticmethod
-    def default_action(name):
+    def _default_action(name):
         pool = Pool()
         Action = pool.get('ir.action')
         return getattr(Action, 'default_' + name, None)()
