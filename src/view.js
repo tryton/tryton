@@ -306,7 +306,7 @@
                         inv_domain = inversion.simplify(inv_domain);
                     }
                     var unique = inversion.unique_value(inv_domain)[0];
-                    if (unique) {
+                    if (unique && jQuery.isEmptyObject(this.children_field)) {
                         column.header.hide();
                     } else {
                         column.header.show();
