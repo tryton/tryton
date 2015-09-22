@@ -505,7 +505,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
-            }, domain=[('type', '=', 'storage')],
+            }, domain=[('type', 'in', ['storage', 'view'])],
         depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
@@ -1771,13 +1771,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             },
         domain=[
-            ('type', 'in', ['storage', 'lost_found']),
+            ('type', 'in', ['view', 'storage', 'lost_found']),
             ], depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
             'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
             }, domain=[
-            ('type', 'in', ['storage', 'lost_found']),
+            ('type', 'in', ['view', 'storage', 'lost_found']),
             ], depends=['state'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={

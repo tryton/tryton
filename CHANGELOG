@@ -1,3 +1,4 @@
+* Allow to use view location on staging and draft moves
 * Add picking location on warehouse
 * Always compute expected quantity in inventory
 * Allow to change the destination of internal shipment's moves

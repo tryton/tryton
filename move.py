@@ -25,6 +25,12 @@ STATES = {
     'readonly': Eval('state').in_(['cancel', 'assigned', 'done']),
 }
 DEPENDS = ['state']
+LOCATION_DOMAIN = [
+    If(Eval('state').in_(['staging', 'draft']),
+        ('type', 'not in', ['warehouse']),
+        ('type', 'not in', ['warehouse', 'view'])),
+    ]
+LOCATION_DEPENDS = ['state']
 
 
 class StockMixin:
@@ -174,11 +180,11 @@ class Move(Workflow, ModelSQL, ModelView):
     internal_quantity = fields.Float('Internal Quantity', readonly=True,
         required=True)
     from_location = fields.Many2One("stock.location", "From Location",
-        select=True, required=True, states=STATES, depends=DEPENDS,
-        domain=[('type', 'not in', ('warehouse', 'view'))])
+        select=True, required=True, states=STATES,
+        depends=DEPENDS + LOCATION_DEPENDS, domain=LOCATION_DOMAIN)
     to_location = fields.Many2One("stock.location", "To Location", select=True,
-        required=True, states=STATES, depends=DEPENDS,
-        domain=[('type', 'not in', ('warehouse', 'view'))])
+        required=True, states=STATES,
+        depends=DEPENDS + LOCATION_DEPENDS, domain=LOCATION_DOMAIN)
     shipment = fields.Reference('Shipment', selection='get_shipment',
         readonly=True, select=True)
     origin = fields.Reference('Origin', selection='get_origin', select=True,

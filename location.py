@@ -85,7 +85,7 @@ class Location(ModelSQL, ModelView):
             'required': Eval('type') == 'warehouse',
         },
         domain=[
-            ('type', '=', 'storage'),
+            ('type', 'in', ['storage', 'view']),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
@@ -175,9 +175,12 @@ class Location(ModelSQL, ModelView):
         invalid_move_types = ['warehouse', 'view']
         Move = Pool().get('stock.move')
         if (self.type in invalid_move_types
-                and Move.search(['OR',
-                        ('to_location', '=', self.id),
-                        ('from_location', '=', self.id),
+                and Move.search([
+                        ['OR',
+                            ('to_location', '=', self.id),
+                            ('from_location', '=', self.id),
+                            ],
+                        ('state', 'not in', ['staging', 'draft']),
                         ])):
             self.raise_user_error('invalid_type_for_moves', (self.rec_name,))
 
