@@ -327,7 +327,7 @@ class Work:
             currency=self.company.currency,
             account=self.party.account_receivable,
             payment_term=self.party.customer_payment_term,
-            description=self.work.name,
+            description=self.name,
             )
 
     def _group_lines_to_invoice_key(self, line):
@@ -391,7 +391,7 @@ class Work:
                     'quantity': self.effort_hours,
                     'unit_price': self.list_price,
                     'origin': self,
-                    'description': self.work.name,
+                    'description': self.name,
                     }]
         return []
 
@@ -406,7 +406,7 @@ class Work:
                     'quantity': l.hours,
                     'unit_price': self.list_price,
                     'origin': l,
-                    'description': self.work.name,
+                    'description': self.name,
                     } for l in self.work.timesheet_lines
                 if not l.invoice_line]
         return []
