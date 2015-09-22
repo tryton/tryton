@@ -5,6 +5,7 @@ from sql import Null
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
+from trytond import backend
 
 from .company import price_digits
 
@@ -22,24 +23,29 @@ class TimesheetLine:
     def __register__(cls, module_name):
         pool = Pool()
         Employee = pool.get('company.employee')
+        TableHandler = backend.get('TableHandler')
 
         cursor = Transaction().cursor
         table = cls.__table__()
+        table_h = TableHandler(cursor, cls, module_name)
+
+        migrate_cost_price = not table_h.column_exist('cost_price')
 
         super(TimesheetLine, cls).__register__(module_name)
 
         # Migration from 3.6: add cost_price
-        cursor.execute(*table.select(table.id, table.employee, table.date,
-                where=(table.cost_price == Null)
-                & (table.employee != Null)
-                & (table.date != Null)))
-        for line_id, employee_id, date in cursor.fetchall():
-            employee = Employee(employee_id)
-            cost_price = employee.compute_cost_price(date=date)
-            cursor.execute(*table.update(
-                    [table.cost_price],
-                    [cost_price],
-                    where=table.id == line_id))
+        if migrate_cost_price:
+            cursor.execute(*table.select(table.id, table.employee, table.date,
+                    where=(table.cost_price == 0)
+                    & (table.employee != Null)
+                    & (table.date != Null)))
+            for line_id, employee_id, date in cursor.fetchall():
+                employee = Employee(employee_id)
+                cost_price = employee.compute_cost_price(date=date)
+                cursor.execute(*table.update(
+                        [table.cost_price],
+                        [cost_price],
+                        where=table.id == line_id))
 
     @classmethod
     def default_cost_price(cls):
