@@ -2186,8 +2186,8 @@
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
             return inversion.concat([inversion.localize_domain(
-                        inversion.filter_leaf(screen_domain, this.name, model)),
-                    attr_domain]);
+                        inversion.filter_leaf(screen_domain, this.name, model),
+                        True), attr_domain]);
         }
     });
 

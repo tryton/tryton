@@ -2065,12 +2065,18 @@
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
         domain = [['x.id', '=', 1, 'y']];
-        QUnit.ok(compare(localize_domain(domain, 'x'),
+        QUnit.ok(compare(localize_domain(domain, 'x', false),
+                [['id', '=', 1, 'y']]),
+            'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
+        QUnit.ok(compare(localize_domain(domain, 'x', true),
                 [['id', '=', 1]]),
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
         domain = [['a.b.c', '=', 1, 'y', 'z']];
-        QUnit.ok(compare(localize_domain(domain, 'x'),
+        QUnit.ok(compare(localize_domain(domain, 'x', false),
+                [['b.c', '=', 1, 'y', 'z']]),
+            'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
+        QUnit.ok(compare(localize_domain(domain, 'x', true),
                 [['b.c', '=', 1, 'z']]),
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
