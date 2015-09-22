@@ -852,7 +852,8 @@ class ReferenceField(Field):
             model = None
         screen_domain, attr_domain = self.domains_get(record)
         return concat(localize_domain(
-                filter_leaf(screen_domain, self.name, model)), attr_domain)
+                filter_leaf(screen_domain, self.name, model),
+                strip_target=True), attr_domain)
 
 
 class _FileCache(object):

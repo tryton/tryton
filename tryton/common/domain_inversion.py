@@ -135,7 +135,7 @@ def eval_domain(domain, context, boolop=operator.and_):
             eval_domain(domain[1:], context, boolop))
 
 
-def localize_domain(domain, field_name=None):
+def localize_domain(domain, field_name=None, strip_target=False):
     "returns only locale part of domain. eg: langage.code -> code"
     if domain in ('AND', 'OR', True, False):
         return domain
@@ -148,10 +148,12 @@ def localize_domain(domain, field_name=None):
         locale_name = 'id'
         if isinstance(domain[2], basestring):
             locale_name = 'rec_name'
+        n = 3 if strip_target else 4
         return [locale_part(domain[0], field_name, locale_name)] \
-            + list(domain[1:3]) + list(domain[4:])
+            + list(domain[1:n]) + list(domain[4:])
     else:
-        return [localize_domain(part, field_name) for part in domain]
+        return [localize_domain(part, field_name, strip_target)
+            for part in domain]
 
 
 def simplify(domain):
@@ -602,10 +604,12 @@ def test_localize():
     assert localize_domain(domain, 'x') == [['y', 'child_of', [1]]]
 
     domain = [['x.id', '=', 1, 'y']]
-    assert localize_domain(domain, 'x') == [['id', '=', 1]]
+    assert localize_domain(domain, 'x', False) == [['id', '=', 1, 'y']]
+    assert localize_domain(domain, 'x', True) == [['id', '=', 1]]
 
     domain = [['a.b.c', '=', 1, 'y', 'z']]
-    assert localize_domain(domain, 'x') == [['b.c', '=', 1, 'z']]
+    assert localize_domain(domain, 'x', False) == [['b.c', '=', 1, 'y', 'z']]
+    assert localize_domain(domain, 'x', True) == [['b.c', '=', 1, 'z']]
 
 if __name__ == '__main__':
     test_simple_inversion()
