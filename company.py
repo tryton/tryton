@@ -2,25 +2,26 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.pyson import Eval
 from trytond.cache import Cache
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond import backend
+from trytond.config import config
 
-__all__ = ['Employee', 'EmployeeCostPrice']
+__all__ = ['Employee', 'EmployeeCostPrice', 'price_digits']
 __metaclass__ = PoolMeta
+
+price_digits = (16, config.getint(
+        'timesheet_cost', 'price_decimal', default=4))
 
 
 class Employee:
     __name__ = 'company.employee'
     cost_price = fields.Function(fields.Numeric('Cost Price',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'],
-        help="Hourly cost price for this Employee"), 'get_cost_price')
+            digits=price_digits,
+            help="Hourly cost price for this Employee"), 'get_cost_price')
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
     _cost_prices_cache = Cache('company_employee.cost_prices')
 
     def get_cost_price(self, name):
@@ -68,21 +69,6 @@ class Employee:
                     break
         return cost
 
-    @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
-        if self.company:
-            return self.company.currency.digits
-        return 2
-
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.digits
-        return 2
-
 
 class EmployeeCostPrice(ModelSQL, ModelView):
     'Employee Cost Price'
@@ -90,12 +76,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     _rec_name = 'date'
     date = fields.Date('Date', required=True, select=True)
     cost_price = fields.Numeric('Cost Price',
-            digits=(16, Eval('currency_digits', 2)),
-            required=True, depends=['currency_digits'],
-            help="Hourly cost price")
+        digits=price_digits, required=True, help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
 
     @classmethod
     def __register__(cls, module_name):
@@ -145,18 +127,3 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         Employee = Pool().get('company.employee')
         super(EmployeeCostPrice, cls).write(*args)
         Employee._cost_prices_cache.clear()
-
-    @fields.depends('employee')
-    def on_change_with_currency_digits(self, name=None):
-        if self.employee:
-            return self.employee.company.currency.digits
-        return 2
-
-    @staticmethod
-    def default_currency_digits():
-        Company = Pool().get('company.company')
-        company = Transaction().context.get('company')
-        if company:
-            company = Company(company)
-            return company.currency.digits
-        return 2

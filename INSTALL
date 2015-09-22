@@ -5,8 +5,10 @@ Prerequisites
 -------------
 
  * Python 2.7 or later (http://www.python.org/)
+ * python-sql 0.4 or later (http://pypi.python.org/pypi/python-sql)
  * trytond (http://www.tryton.org/)
  * trytond_timesheet (http://www.tryton.org/)
+ * trytond_party (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
 
 Installation
