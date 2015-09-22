@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-import datetime
+
+from sql.aggregate import Sum
 
 from trytond.model import fields
 from trytond.pyson import Eval, Id
@@ -34,7 +35,6 @@ class Work:
     @classmethod
     def _get_cost(cls, works):
         pool = Pool()
-        Employee = pool.get('company.employee')
         Line = pool.get('timesheet.line')
         Work = pool.get('timesheet.work')
         transaction = Transaction()
@@ -47,29 +47,25 @@ class Work:
         line = Line.__table__()
 
         work_ids = [w.id for w in works]
-        work_with_timesheet_ids = [w.id for w in works if w.work]
-        employee_ids = set()
         for sub_ids in grouped_slice(work_ids):
             red_sql = reduce_ids(table.id, sub_ids)
+            # Group by cost_price as databases will manage differently
+            # the product of duration and cost_price
             cursor.execute(*table.join(work,
                     condition=table.work == work.id
                     ).join(line, condition=line.work == work.id
-                    ).select(line.employee,
+                    ).select(table.id, line.cost_price, Sum(line.duration),
                     where=red_sql,
-                    group_by=line.employee))
-            employee_ids |= set(r[0] for r in cursor.fetchall())
-        for employee in Employee.browse(list(employee_ids)):
-            employee_costs = employee.get_employee_costs()
-            to_date = None
-            for from_date, cost in reversed(employee_costs):
-                with transaction.set_context(
-                        from_date=from_date,
-                        to_date=to_date,
-                        employees=[employee.id]):
-                    for work in cls.browse(work_with_timesheet_ids):
-                        costs[work.id] += (
-                            Decimal(str(work.work.hours)) * cost)
-                to_date = from_date - datetime.timedelta(1)
+                    group_by=[table.id, line.cost_price]))
+            for work_id, cost, duration in cursor.fetchall():
+                # SQLite stores timedelta as float
+                if not isinstance(duration, float):
+                    duration = duration.total_seconds()
+                # SQLite uses float for SUM
+                if not isinstance(cost, Decimal):
+                    cost = Decimal(str(cost))
+                hours = duration / 60 / 60
+                costs[work_id] += Decimal(str(hours)) * cost
         for work in works:
             costs[work.id] = work.company.currency.round(costs[work.id])
         return costs
