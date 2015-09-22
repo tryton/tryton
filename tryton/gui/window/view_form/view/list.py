@@ -1078,7 +1078,7 @@ class ViewTree(View):
                 if not isinstance(inv_domain, bool):
                     inv_domain = simplify(inv_domain)
                 unique, _, _ = unique_value(inv_domain)
-                column.set_visible(not unique)
+                column.set_visible(not unique or bool(self.children_field))
 
     def set_state(self):
         record = self.screen.current_record
