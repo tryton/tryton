@@ -530,7 +530,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice.id',) + tuple(clause[1:])]
+        return [('lines.invoice_lines.invoice',) + tuple(clause[1:])]
 
     def get_invoice_state(self):
         '''
@@ -578,7 +578,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         Search on shipments or returns
         '''
         def method(self, name, clause):
-            return [('lines.moves.shipment.id',) + tuple(clause[1:])
+            return [('lines.moves.shipment',) + tuple(clause[1:])
                 + (model_name,)]
         return classmethod(method)
 

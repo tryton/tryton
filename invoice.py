@@ -73,8 +73,7 @@ class Invoice:
 
     @classmethod
     def search_sales(cls, name, clause):
-        return [('lines.origin.sale.id',) + tuple(clause[1:])
-            + ('sale.line',)]
+        return [('lines.origin.sale',) + tuple(clause[1:]) + ('sale.line',)]
 
     @classmethod
     def copy(cls, invoices, default=None):
