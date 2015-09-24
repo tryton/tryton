@@ -3,9 +3,11 @@
 
 from trytond.pool import Pool
 from .work import *
+from .purchase import *
 
 
 def register():
     Pool.register(
         Work,
+        PurchaseLine,
         module='project_revenue', type_='model')

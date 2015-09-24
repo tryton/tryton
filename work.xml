@@ -29,4 +29,13 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
+    <data depends="purchase">
+
+        <record model="ir.ui.view" id="work_view_form_purchase">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_form"/>
+            <field name="name">work_form_purchase</field>
+        </record>
+
+    </data>
 </tryton>
