@@ -10,7 +10,7 @@ import datetime
 from sql import Null
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool, PYSONEncoder
 from trytond.pool import Pool
@@ -19,12 +19,13 @@ from trytond.wizard import Wizard, StateAction
 from trytond.tools import reduce_ids, grouped_slice
 
 
-__all__ = ['Work', 'OpenInvoice']
+__all__ = ['Work', 'WorkInvoicedProgress', 'OpenInvoice']
 __metaclass__ = PoolMeta
 
 INVOICE_METHODS = [
     ('manual', 'Manual'),
     ('effort', 'On Effort'),
+    ('progress', 'On Progress'),
     ('timesheet', 'On Timesheet'),
     ]
 
@@ -62,6 +63,8 @@ class Work:
         'get_total')
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         readonly=True)
+    invoiced_progress = fields.One2Many('project.work.invoiced_progress',
+        'work', 'Invoiced Progress', readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -113,6 +116,15 @@ class Work:
         return dict((w.id, w.effort_duration) for w in works
             if w.invoice_line and w.effort_duration)
 
+    @staticmethod
+    def _get_invoiced_duration_progress(works):
+        durations = {}
+        for work in works:
+            durations[work.id] = sum((p.effort_duration
+                    for p in work.invoiced_progress if p.effort_duration),
+                datetime.timedelta())
+        return durations
+
     @classmethod
     def _get_invoiced_duration_timesheet(cls, works):
         return cls._get_duration_timesheet(works, True)
@@ -129,6 +141,24 @@ class Work:
     def _get_duration_to_invoice_effort(works):
         return dict((w.id, w.effort_duration) for w in works
             if w.state == 'done' and not w.invoice_line)
+
+    @staticmethod
+    def _get_duration_to_invoice_progress(works):
+        durations = {}
+        for work in works:
+            if work.progress is None or work.effort_duration is None:
+                continue
+            effort_to_invoice = datetime.timedelta(
+                hours=work.effort_hours * work.progress)
+            effort_invoiced = sum(
+                (p.effort_duration
+                    for p in work.invoiced_progress),
+                datetime.timedelta())
+            if effort_to_invoice > effort_invoiced:
+                durations[work.id] = effort_to_invoice - effort_invoiced
+            else:
+                durations[work.id] = datetime.timedelta()
+        return durations
 
     @classmethod
     def _get_duration_to_invoice_timesheet(cls, works):
@@ -165,6 +195,57 @@ class Work:
                     currency)
             else:
                 amounts[work.id] = Decimal(0)
+        return amounts
+
+    @classmethod
+    def _get_invoiced_amount_progress(cls, works):
+        pool = Pool()
+        Progress = pool.get('project.work.invoiced_progress')
+        InvoiceLine = pool.get('account.invoice.line')
+        Company = pool.get('company.company')
+        Currency = pool.get('currency.currency')
+
+        cursor = Transaction().cursor
+        table = cls.__table__()
+        progress = Progress.__table__()
+        invoice_line = InvoiceLine.__table__()
+        company = Company.__table__()
+
+        amounts = defaultdict(Decimal)
+        work2currency = {}
+        work_ids = [w.id for w in works]
+        for sub_ids in grouped_slice(work_ids):
+            where = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.join(progress,
+                    condition=progress.work == table.id
+                    ).join(invoice_line,
+                    condition=progress.invoice_line == invoice_line.id
+                    ).select(table.id,
+                    Sum(progress.effort_duration * invoice_line.unit_price),
+                    where=where,
+                    group_by=table.id))
+            for work_id, amount in cursor.fetchall():
+                if isinstance(amount, datetime.timedelta):
+                    amount = amount.total_seconds()
+                # Amount computed in second instead of hours
+                if amount is not None:
+                    amount /= 60 * 60
+                else:
+                    amount = 0
+                amounts[work_id] = amount
+
+            cursor.execute(*table.join(company,
+                    condition=table.company == company.id
+                    ).select(table.id, company.currency,
+                    where=where))
+            work2currency.update(cursor.fetchall())
+
+        currencies = Currency.browse(set(work2currency.itervalues()))
+        id2currency = {c.id: c for c in currencies}
+
+        for work in works:
+            currency = id2currency[work2currency[work.id]]
+            amounts[work.id] = currency.round(Decimal(amounts[work.id]))
         return amounts
 
     @classmethod
@@ -296,6 +377,7 @@ class Work:
                     origin = line['origin']
                     origins.setdefault(origin.__class__, []).append(origin)
                 for klass, records in origins.iteritems():
+                    klass.save(records)  # Store first new origins
                     klass.write(records, {
                             'invoice_line': invoice_line.id,
                             })
@@ -395,6 +477,37 @@ class Work:
                     }]
         return []
 
+    def _get_lines_to_invoice_progress(self):
+        pool = Pool()
+        InvoicedProgress = pool.get('project.work.invoiced_progress')
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
+        hour = Uom(ModelData.get_id('product', 'uom_hour'))
+
+        if self.progress is None or self.effort_duration is None:
+            return []
+
+        invoiced_progress = sum(x.effort_hours for x in self.invoiced_progress)
+        quantity = self.effort_hours * self.progress - invoiced_progress
+        quantity = Uom.compute_qty(hour, quantity, self.product.default_uom)
+        if quantity > 0:
+            if not self.product:
+                self.raise_user_error('missing_product', (self.rec_name,))
+            elif self.list_price is None:
+                self.raise_user_error('missing_list_price', (self.rec_name,))
+            invoiced_progress = InvoicedProgress(work=self,
+                effort_duration=datetime.timedelta(hours=quantity))
+            return [{
+                    'product': self.product,
+                    'quantity': quantity,
+                    'unit_price': self.list_price,
+                    'origin': invoiced_progress,
+                    'description': self.name,
+                    'description': self.name,
+                    }]
+        return []
+
     def _get_lines_to_invoice_timesheet(self):
         if self.work.timesheet_lines:
             if not self.product:
@@ -429,6 +542,22 @@ class Work:
         return lines
 
 
+class WorkInvoicedProgress(ModelView, ModelSQL):
+    'Work Invoiced Progress'
+    __name__ = 'project.work.invoiced_progress'
+    work = fields.Many2One('project.work', 'Work', ondelete='RESTRICT',
+        select=True)
+    effort_duration = fields.TimeDelta('Effort', 'company_work_time')
+    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
+        ondelete='CASCADE')
+
+    @property
+    def effort_hours(self):
+        if not self.effort_duration:
+            return 0
+        return self.effort_duration.total_seconds() / 60 / 60
+
+
 class OpenInvoice(Wizard):
     'Open Invoice'
     __name__ = 'project.open_invoice'
@@ -450,6 +579,9 @@ class OpenInvoice(Wizard):
                     if (timesheet_line.invoice_line
                             and timesheet_line.invoice_line.invoice):
                         invoice_ids.add(timesheet_line.invoice_line.invoice.id)
+            if work.invoiced_progress:
+                for progress in work.invoiced_progress:
+                    invoice_ids.add(progress.invoice_line.invoice.id)
         encoder = PYSONEncoder()
         action['pyson_domain'] = encoder.encode(
             [('id', 'in', list(invoice_ids))])

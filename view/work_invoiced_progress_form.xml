@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Work Invoiced Progress">
+    <label name="work"/>
+    <field name="work"/>
+    <newline/>
+    <label name="effort_duration"/>
+    <field name="effort_duration"/>
+    <label name="invoice_line"/>
+    <field name="invoice_line"/>
+</form>

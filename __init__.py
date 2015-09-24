@@ -4,12 +4,15 @@
 from trytond.pool import Pool
 from .work import *
 from .timesheet import *
+from .invoice import *
 
 
 def register():
     Pool.register(
         Work,
+        WorkInvoicedProgress,
         TimesheetLine,
+        InvoiceLine,
         module='project_invoice', type_='model')
     Pool.register(
         OpenInvoice,
