@@ -109,10 +109,9 @@ class Many2One(Field):
         where = Or()
         for l, r in cursor.fetchall():
             where.append((left >= l) & (right <= r))
-        expression = table.id.in_(table.select(table.id, where=where))
         if operator == 'not child_of':
-            return ~expression
-        return expression
+            return ~where
+        return where
 
     def convert_domain_child(self, domain, tables):
         Target = self.get_target()
