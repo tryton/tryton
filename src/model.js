@@ -928,7 +928,6 @@
             return jQuery.when.apply(jQuery, prms);
         },
         set_on_change: function(values) {
-            var later = {};
             var fieldname, value;
             for (fieldname in values) {
                 if (!values.hasOwnProperty(fieldname)) {
@@ -936,11 +935,6 @@
                 }
                 value = values[fieldname];
                 if (!(fieldname in this.model.fields)) {
-                    continue;
-                }
-                if (this.model.fields[fieldname] instanceof
-                        Sao.field.One2Many) {
-                    later[fieldname] = value;
                     continue;
                 }
                 if ((this.model.fields[fieldname] instanceof
@@ -955,19 +949,6 @@
                     }
                 }
                 this.model.fields[fieldname].set_on_change(this, value);
-            }
-            for (fieldname in later) {
-                if (!later.hasOwnProperty(fieldname)) {
-                    continue;
-                }
-                value = later[fieldname];
-                var field_x2many = this.model.fields[fieldname];
-                try {
-                    field_x2many.in_on_change = true;
-                    field_x2many.set_on_change(this, value);
-                } finally {
-                    field_x2many.in_on_change = false;
-                }
             }
         },
         autocomplete_with: function(fieldname) {
@@ -1682,7 +1663,6 @@
     Sao.field.One2Many = Sao.class_(Sao.field.Field, {
         init: function(description) {
             Sao.field.One2Many._super.init.call(this, description);
-            this.in_on_change = false;
         },
         _default: null,
         _set_value: function(record, value, default_) {
@@ -1867,11 +1847,10 @@
             record._changed[this.name] = true;
         },
         set_on_change: function(record, value) {
+            record._changed[this.name] = true;
             this._set_default_value(record);
             if (value instanceof Array) {
                 this._set_value(record, value);
-                record._changed[this.name] = true;
-                record.group.changed();
                 return;
             }
             var prm = jQuery.when();
@@ -2010,11 +1989,6 @@
                                 [this.description.relation_field || '']));
             }
             return result;
-        },
-        changed: function(record) {
-            if (!this.in_on_change) {
-                return Sao.field.One2Many._super.changed.call(this, record);
-            }
         },
         get_domain: function(record) {
             var domains = this.get_domains(record);
