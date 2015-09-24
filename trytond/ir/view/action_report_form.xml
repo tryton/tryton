@@ -25,6 +25,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="extension"/>
             <label name="direct_print"/>
             <field name="direct_print"/>
+            <newline/>
             <label name="email"/>
             <field name="email" colspan="3"/>
         </page>
