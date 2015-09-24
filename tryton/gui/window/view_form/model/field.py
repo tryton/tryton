@@ -454,11 +454,6 @@ class O2MField(Field):
 
     def __init__(self, attrs):
         super(O2MField, self).__init__(attrs)
-        self.in_on_change = False
-
-    def sig_changed(self, record):
-        if not self.in_on_change:
-            return super(O2MField, self).sig_changed(record)
 
     def _group_changed(self, group, record):
         if not record.parent:
@@ -661,11 +656,10 @@ class O2MField(Field):
         record.modified_fields.setdefault(self.name)
 
     def set_on_change(self, record, value):
+        record.modified_fields.setdefault(self.name)
         self._set_default_value(record)
         if isinstance(value, (list, tuple)):
             self._set_value(record, value)
-            record.modified_fields.setdefault(self.name)
-            record.signal('record-modified')
             return
 
         if value and (value.get('add') or value.get('update')):
@@ -703,8 +697,6 @@ class O2MField(Field):
                 new_record = record.value[self.name].new(default=False)
                 record.value[self.name].add(new_record, index, signal=False)
                 new_record.set_on_change(vals)
-            if value.get('add'):
-                record.value[self.name].signal('group-changed', new_record)
 
             for vals in value.get('update', []):
                 if 'id' not in vals:

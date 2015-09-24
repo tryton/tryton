@@ -461,12 +461,8 @@ class Record(SignalEvent):
             self.signal('record-changed')
 
     def set_on_change(self, values):
-        later = {}
         for fieldname, value in values.items():
             if fieldname not in self.group.fields:
-                continue
-            if isinstance(self.group.fields[fieldname], fields.O2MField):
-                later[fieldname] = value
                 continue
             if isinstance(self.group.fields[fieldname], (fields.M2OField,
                         fields.ReferenceField)):
@@ -476,14 +472,6 @@ class Record(SignalEvent):
                 elif field_rec_name in self.value:
                     del self.value[field_rec_name]
             self.group.fields[fieldname].set_on_change(self, value)
-        for fieldname, value in later.items():
-            # on change recursion checking is done only for x2many
-            field_x2many = self.group.fields[fieldname]
-            try:
-                field_x2many.in_on_change = True
-                field_x2many.set_on_change(self, value)
-            finally:
-                field_x2many.in_on_change = False
 
     def reload(self, fields=None):
         if self.id < 0:
