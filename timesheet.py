@@ -54,6 +54,10 @@ class TimesheetLine:
 
     @classmethod
     def create(cls, vlist):
+        # XXX Remove cost_price because proteus set it as default value
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            values.pop('cost_price', None)
         lines = super(TimesheetLine, cls).create(vlist)
         cls.sync_cost(lines)
         return lines
