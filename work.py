@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+
 import datetime
 
 from sql import Null
@@ -54,6 +56,25 @@ class Work(ModelSQL, ModelView):
     total_effort = fields.Function(fields.TimeDelta('Total Effort',
             'company_work_time',
             help="Estimated total effort for this work and the sub-works"),
+        'get_total')
+    progress = fields.Float('Progress',
+        domain=['OR',
+            ('progress', '=', None),
+            [
+                ('progress', '>=', 0),
+                ('progress', '<=', 1),
+                ],
+            ],
+        states={
+            'invisible': Eval('type') != 'task',
+            },
+        depends=['type'],
+        help='Estimated progress for this work')
+    total_progress = fields.Function(fields.Float('Total Progress',
+            help='Estimated total progress for this work and the sub-works',
+            states={
+                'invisible': Eval('total_progress', None) == None,
+                }),
         'get_total')
     comment = fields.Text('Comment')
     parent = fields.Many2One('project.work', 'Parent',
@@ -230,6 +251,12 @@ class Work(ModelSQL, ModelView):
         return self.effort_duration.total_seconds() / 60 / 60
 
     @property
+    def total_effort_hours(self):
+        if not self.total_effort:
+            return 0
+        return self.total_effort.total_seconds() / 60 / 60
+
+    @property
     def timesheet_duration_hours(self):
         if not self.timesheet_duration:
             return 0
@@ -305,10 +332,24 @@ class Work(ModelSQL, ModelView):
                     where=where))
             parents.update(cursor.fetchall())
 
+        if 'total_progress' in names and 'total_effort' not in names:
+            names = list(names)
+            names.append('total_effort')
+
         result = {}
         for name in names:
             values = getattr(cls, '_get_%s' % name)(works)
             result[name] = cls.sum_tree(works, values, parents)
+
+        if 'total_progress' in names:
+            total_progress = result['total_progress']
+            total_effort = result['total_effort']
+            for work in works:
+                if total_effort[work.id]:
+                    total_progress[work.id] /= (
+                        total_effort[work.id].total_seconds() / 60 / 60)
+                else:
+                    total_effort[work.id] = None
         return result
 
     @classmethod
@@ -320,6 +361,10 @@ class Work(ModelSQL, ModelView):
         return {w.id: (w.work.duration if w.work and w.work.duration
                 else datetime.timedelta())
             for w in works}
+
+    @classmethod
+    def _get_total_progress(cls, works):
+        return {w.id: w.effort_hours * (w.progress or 0) for w in works}
 
     @classmethod
     def copy(cls, project_works, default=None):

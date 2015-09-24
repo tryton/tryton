@@ -25,4 +25,6 @@ be split. The following fields are defined on the model:
 - Total Effort: Available on projects. Gives the total effort of the
   sub-tasks (I.E. tasks of the project and tasks of the sub-projects)
   of the current project.
+- Progress: The progression on the task.
+- Total Progress: Gives the total of progress of the sub-tasks.
 - Comment: A description.

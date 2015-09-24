@@ -25,6 +25,11 @@ this repository contains the full copyright notices and license terms. -->
             <newline/>
             <label name="effort_duration"/>
             <field name="effort_duration"/>
+            <label name="progress"/>
+            <group col="2" id="progress">
+                <field name="progress" factor="100" xexpand="0"/>
+                <label name="progress" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <newline/>
             <label name="timesheet_duration"/>
             <field name="timesheet_duration"/>
