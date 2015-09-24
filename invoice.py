@@ -250,9 +250,21 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         'tryton-go-previous'),
                     },
                 'validate_invoice': {
+                    'pre_validate':
+                        ['OR',
+                            ('invoice_date', '!=', None),
+                            ('type', 'not in',
+                                ['in_invoice', 'in_credit_note']),
+                        ],
                     'invisible': Eval('state') != 'draft',
                     },
                 'post': {
+                    'pre_validate':
+                        ['OR',
+                            ('invoice_date', '!=', None),
+                            ('type', 'not in',
+                                ['in_invoice', 'in_credit_note']),
+                        ],
                     'invisible': ~Eval('state').in_(['draft', 'validated']),
                     },
                 'pay': {
