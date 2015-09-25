@@ -184,6 +184,7 @@ dist = setup(name=name,
     install_requires=[
         # "pygtk >= 2.6",
         "python-dateutil",
+        "chardet",
         ],
     extras_require={
         'simplejson': ['simplejson'],
