@@ -73,10 +73,10 @@ this repository contains the full copyright notices and license terms. -->
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>
-        <page string="Invoices" id="invoices">
+        <page name="invoices">
             <field name="invoices" colspan="4"/>
         </page>
-        <page string="Shipments" id="shipments">
+        <page name="shipments">
             <field name="moves" colspan="4"
                 view_ids="sale.move_view_list_shipment"/>
             <field name="shipments" colspan="4"/>
