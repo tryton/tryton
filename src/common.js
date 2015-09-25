@@ -2493,11 +2493,40 @@
                     [ids, ['name', 'icon']], {});
                 return read_prm.then(function(icons) {
                     icons.forEach(function(icon) {
-                        var blob = new Blob([icon.icon],
-                            {type: 'image/svg+xml'});
-                        var img_url = window.URL.createObjectURL(blob);
+                        var img_url;
+                        if (navigator.userAgent.match(/firefox/i)) {
+                            // Fixefox doesn't support SVG inside Blob
+                            // https://bugzilla.mozilla.org/show_bug.cgi?id=841920
+                            // Temporary use the embeded base64 version which
+                            // will be replaced later by the URL of the png object
+                            img_url = 'data:image/svg+xml;base64,' +
+                                window.btoa(unescape(encodeURIComponent(icon.icon)));
+                            var image = new Image();
+                            image.src = img_url;
+                            image.onload = function() {
+                                var canvas = document.createElement('canvas');
+                                canvas.width = image.width;
+                                canvas.height = image.height;
+                                var context = canvas.getContext('2d');
+                                context.drawImage(image, 0, 0);
+                                canvas.toBlob(function(blob) {
+                                    var old_img_url = img_url;
+                                    img_url =  window.URL.createObjectURL(blob);
+                                    this.loaded_icons[icon.name] = img_url;
+                                    jQuery(document).find('img').each(function(i, el) {
+                                        if (el.src == old_img_url) {
+                                            el.src = img_url;
+                                        }
+                                    });
+                                    canvas.remove();
+                                }.bind(this), 'image/png');
+                            }.bind(this);
+                        } else {
+                            var blob = new Blob([icon.icon],
+                                {type: 'image/svg+xml'});
+                            img_url = window.URL.createObjectURL(blob);
+                        }
                         this.loaded_icons[icon.name] = img_url;
-
                         delete this.name2id[icon.name];
                         this.tryton_icons.splice(
                             find_array([icon.id, icon.name]), 1);
