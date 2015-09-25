@@ -343,9 +343,9 @@ class Form(SignalEvent, TabContent):
             return
         if not self.modified_save():
             return
-        self.screen.copy()
-        self.message_info(_('Working now on the duplicated record(s).'),
-            gtk.MESSAGE_INFO)
+        if self.screen.copy():
+            self.message_info(_('Working now on the duplicated record(s).'),
+                gtk.MESSAGE_INFO)
 
     def sig_save(self, widget=None):
         if widget:

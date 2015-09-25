@@ -489,24 +489,26 @@ class Screen(SignalEvent):
             else:
                 return True
         self.current_view.set_value()
-        obj_id = False
+        saved = False
+        record_id = None
         fields = self.current_view.get_fields()
         path = self.current_record.get_path(self.group)
         if self.current_view.view_type == 'tree':
-            self.group.save()
-            obj_id = self.current_record.id
+            saved = all(self.group.save())
+            record_id = self.current_record.id
         elif self.current_record.validate(fields):
-            obj_id = self.current_record.save(force_reload=True)
+            record_id = self.current_record.save(force_reload=True)
+            saved = bool(record_id)
         else:
             self.set_cursor()
             self.current_view.display()
             return False
-        if path and obj_id:
-            path = path[:-1] + ((path[-1][0], obj_id),)
+        if path and record_id:
+            path = path[:-1] + ((path[-1][0], record_id),)
         self.current_record = self.group.get_by_path(path)
         self.display()
         self.signal('record-saved')
-        return obj_id
+        return saved
 
     def __get_current_view(self):
         if not len(self.views):
@@ -614,8 +616,9 @@ class Screen(SignalEvent):
             new_ids = RPCExecute('model', self.model_name, 'copy', ids, {},
                 context=self.context)
         except RPCException:
-            return
+            return False
         self.load(new_ids)
+        return True
 
     def set_tree_state(self):
         view = self.current_view
