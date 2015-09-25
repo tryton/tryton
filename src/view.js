@@ -2066,6 +2066,8 @@
                 return Sao.View.Form.Boolean;
             case 'text':
                 return Sao.View.Form.Text;
+            case 'richtext':
+                return Sao.View.Form.RichText;
             case 'many2one':
                 return Sao.View.Form.Many2One;
             case 'one2one':
@@ -2551,6 +2553,179 @@
         },
         set_readonly: function(readonly) {
             this.input.prop('readonly', readonly);
+        }
+    });
+
+    Sao.View.Form.RichText = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-richtext',
+        init: function(field_name, model, attributes) {
+            var i, properties, button;
+            Sao.View.Form.RichText._super.init.call(
+                    this, field_name, model, attributes);
+            this.el = jQuery('<div/>', {
+                'class': this.class_ + ' panel panel-default'
+            });
+            this.toolbar = jQuery('<div/>', {
+                'class': 'btn-toolbar',
+                'role': 'toolbar'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-heading'
+            }).appendTo(this.el));
+
+            var button_apply_command = function(evt) {
+                document.execCommand(evt.data);
+            };
+
+            var add_buttons = function(buttons) {
+                var group = jQuery('<div/>', {
+                    'class': 'btn-group',
+                    'role': 'group'
+                }).appendTo(this.toolbar);
+                for (i in buttons) {
+                    properties = buttons[i];
+                    button = jQuery('<button/>', {
+                        'class': 'btn btn-default',
+                        'type': 'button'
+                    }).append(jQuery('<span/>', {
+                        'class': 'glyphicon glyphicon-' + properties.icon
+                    })).appendTo(group);
+                    button.click(properties.command, button_apply_command);
+                }
+            }.bind(this);
+
+            add_buttons([
+                    {
+                        'icon': 'bold',
+                        'command': 'bold'
+                    }, {
+                        'icon': 'italic',
+                        'command': 'italic'
+                    }, {
+                        'icon': 'text-color',  // XXX
+                        'command': 'underline'
+                    }]);
+
+            var selections = [
+            {
+                'heading': Sao.i18n.gettext('Font'),
+                'options': ['Normal', 'Serif', 'Sans', 'Monospace'],  // XXX
+                'command': 'fontname'
+            }, {
+                'heading': Sao.i18n.gettext('Size'),
+                'options': [1, 2, 3, 4, 5, 6, 7],
+                'command': 'fontsize'
+            }];
+            var add_option = function(dropdown, properties) {
+                return function(option) {
+                    dropdown.append(jQuery('<li/>').append(jQuery('<a/>', {
+                        'href': '#'
+                    }).append(option).click(function() {
+                        document.execCommand(properties.command, false, option);
+                    })));
+                };
+            };
+            for (i in selections) {
+                properties = selections[i];
+                var group = jQuery('<div/>', {
+                    'class': 'btn-group',
+                    'role': 'group'
+                }).appendTo(this.toolbar);
+                button = jQuery('<button/>', {
+                    'class': 'btn btn-default dropdown-toggle',
+                    'data-toggle': 'dropdown',
+                    'aria-expanded': false,
+                    'aria-haspopup': true
+                }).append(properties.heading)
+                .append(jQuery('<span/>', {
+                    'class': 'caret'
+                })).appendTo(group);
+                var dropdown = jQuery('<ul/>', {
+                    'class': 'dropdown-menu'
+                }).appendTo(group);
+                properties.options.forEach(add_option(dropdown, properties));
+            }
+
+            add_buttons([
+                    {
+                        'icon': 'align-left',
+                        'command': 'justifyLeft'
+                    }, {
+                        'icon': 'align-center',
+                        'command': 'justifyCenter'
+                    }, {
+                        'icon': 'align-right',
+                        'command': 'justifyRight'
+                    }, {
+                        'icon': 'align-justify',
+                        'command': 'justifyFull'
+                    }]);
+
+            // TODO backColor
+            [['foreColor', '#000000']].forEach(
+                    function(e) {
+                        var command = e[0];
+                        var color = e[1];
+                        jQuery('<input/>', {
+                            'class': 'btn btn-default',
+                            'type': 'color'
+                        }).appendTo(this.toolbar)
+                        .change(function() {
+                            document.execCommand(command, false, jQuery(this).val());
+                        }).focusin(function() {
+                            document.execCommand(command, false, jQuery(this).val());
+                        }).val(color);
+            }.bind(this));
+
+            this.input = this.labelled = jQuery('<div/>', {
+                'class': 'richtext',
+                'contenteditable': true
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body'
+            }).appendTo(this.el));
+            this.el.focusout(this.focus_out.bind(this));
+        },
+        focus_out: function() {
+            // Let browser set the next focus before testing
+            // if it moved out of the widget
+            window.setTimeout(function() {
+                if (this.el.find(':focus').length === 0) {
+                    Sao.View.Form.RichText._super.focus_out.call(this);
+                }
+            }.bind(this), 0);
+        },
+        display: function(record, field) {
+            Sao.View.Form.RichText._super.display.call(this, record, field);
+            var value = '';
+            if (record) {
+                value = record.field_get_client(this.field_name);
+            }
+            this.input.html(value);
+        },
+        focus: function() {
+            this.input.focus();
+        },
+        set_value: function(record, field) {
+            // TODO order attributes
+            this.input.find('div').each(function(i, el) {
+                el = jQuery(el);
+                // Not all browsers respect the styleWithCSS
+                if (el.css('text-align')) {
+                    // Remove browser specific prefix
+                    var align = el.css('text-align').split('-').pop();
+                    el.attr('align', align);
+                    el.css('text-align', '');
+                }
+                // Some browsers set start as default align
+                if (el.attr('align') == 'start') {
+                    el.attr('align', 'left');
+                }
+            });
+            var value = this.input.html() || '';
+            field.set_client(record, value);
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('contenteditable', !readonly);
+            this.toolbar.find('button,select').prop('disabled', readonly);
         }
     });
 

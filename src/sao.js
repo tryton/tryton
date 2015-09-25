@@ -56,6 +56,16 @@ var Sao = {};
         };
     }
 
+    // Ensure RichText doesn't use style with css
+    try {
+        document.execCommand('styleWithCSS', false, false);
+    } catch (e) {
+    }
+    try {
+        document.execCommand('useCSS', false, true);
+    } catch (e) {
+    }
+
     // Add .uniqueId to jQuery
     jQuery.fn.extend({
         uniqueId: (function() {

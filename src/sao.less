@@ -1,3 +1,5 @@
+@import "variables";
+
 .tab-form {
     & .toolbar {
         margin-bottom: 1px;
@@ -10,6 +12,21 @@
 .nav-tabs > li .close {
     margin: -2px 0 0 10px;
     font-size: 18px;
+}
+
+input[type='color'] {
+    & .btn {
+        height: @line-height-base;
+    }
+    & .btn-lg {
+        height: @line-height-large;
+    }
+    & .btn-sm {
+        height: @line-height-small;
+    }
+    & .btn-xs {
+        height: @line-height-small;
+    }
 }
 
 .treeview {
@@ -104,6 +121,11 @@
         & .form-one2many-toolbar, .form-many2many-toolbar {
             display: inline-table;
             float: right;
+        }
+    }
+    & .form-richtext {
+        & .richtext {
+            min-height: 5em;
         }
     }
     & .form-separator {
