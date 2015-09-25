@@ -2094,6 +2094,8 @@
                 return Sao.View.Form.SIP;
             case 'progressbar':
                 return Sao.View.Form.ProgressBar;
+            case 'dict':
+                return Sao.View.Form.Dict;
         }
     };
 
@@ -4276,6 +4278,453 @@
             this.progressbar.prop('aria-valuenow', value);
             this.progressbar.css('width', value + '%');
             this.progressbar.text(text);
+        }
+    });
+
+    Sao.View.Form.Dict = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-dict',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Dict._super.init.call(
+                    this, field_name, model, attributes);
+
+            this.schema_model = new Sao.Model(attributes.schema_model);
+            this.keys = {};
+            this.fields = {};
+            this.rows = {};
+
+            this.el = jQuery('<div/>', {
+                'class': this.class_ + ' panel panel-default'
+            });
+            var heading = jQuery('<div/>', {
+                'class': this.class_ + '-heading panel-heading'
+            }).appendTo(this.el);
+            var label = jQuery('<label/>', {
+                'class': this.class_ + '-string',
+                'text': attributes.string
+            }).appendTo(heading);
+
+            label.uniqueId();
+            this.el.uniqueId();
+            this.el.attr('aria-labelledby', label.attr('id'));
+            label.attr('for', this.el.attr('id'));
+
+            var body = jQuery('<div/>', {
+                'class': this.class_ + '-body panel-body'
+            }).appendTo(this.el);
+            this.container = jQuery('<div/>', {
+                'class': this.class_ + '-container container-fluid'
+            }).appendTo(body);
+
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(jQuery('<div>', {
+                'class': 'col-md-12'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'row'
+            }).appendTo(jQuery('<div/>', {
+                'class': 'container-fluid'
+            }).appendTo(body))));
+            this.wid_text = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
+
+            // TODO completion
+
+            this.but_add = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext('Add')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-plus'
+            })).appendTo(jQuery('<div/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group));
+            this.but_add.click(this.add.bind(this));
+
+            this._readonly = false;
+            this._record_id = null;
+        },
+        add: function() {
+            var context = this.field().get_context(this.record());
+            var value = this.wid_text.val();
+            var domain = this.field().get_domain(this.record());
+
+            var callback = function(result) {
+                if (!jQuery.isEmptyObject(result)) {
+                    var ids = result.map(function(e) {
+                        return e[0];
+                    });
+                    this.add_new_keys(ids);
+                }
+                this.wid_text.val('');
+            }.bind(this);
+
+            var parser = new Sao.common.DomainParser();
+            var win = new Sao.Window.Search(this.schema_model.name,
+                    callback, {
+                        sel_multi: true,
+                        context: context,
+                        domain: domain,
+                        new_: false,
+                        search_filter: parser.quote(value)
+                    });
+        },
+        add_new_keys: function(ids) {
+            var context = this.field().get_context(this.record());
+            this.schema_model.execute('get_keys', [ids], context)
+                .then(function(new_fields) {
+                    var focus = false;
+                    new_fields.forEach(function(new_field) {
+                        if (this.fields[new_field.name]) {
+                            return;
+                        }
+                        this.keys[new_field.name] = new_field;
+                        this.add_line(new_field.name);
+                        if (!focus) {
+                            this.fields[new_field.name].input.focus();
+                            focus = true;
+                        }
+                    }.bind(this));
+                }.bind(this));
+        },
+        remove: function(key, modified) {
+            if (modified === undefined) {
+                modified = true;
+            }
+            delete this.fields[key];
+            this.rows[key].remove();
+            delete this.rows[key];
+            if (modified) {
+                this.set_value(this.record(), this.field());
+            }
+        },
+        set_value: function(record, field) {
+            field.set_client(record, this.get_value());
+        },
+        get_value: function() {
+            var value = {};
+            for (var key in this.fields) {
+                var widget = this.fields[key];
+                value[key] = widget.get_value();
+            }
+            return value;
+        },
+        set_readonly: function(readonly) {
+            this._readonly = readonly;
+            this._set_button_sensitive();
+            for (var key in this.fields) {
+                var widget = this.fields[key];
+                widget.set_readonly(readonly);
+            }
+            this.wid_text.prop('disabled', readonly);
+        },
+        _set_button_sensitive: function() {
+            var create = this.attributes.create;
+            if (create === undefined) {
+                create = true;
+            }
+            var delete_ = this.attributes['delete'];
+            if (delete_ === undefined) {
+                delete_ = true;
+            }
+            this.but_add.prop('disabled', this._readonly || !create);
+            for (var key in this.fields) {
+                var button = this.fields[key].button;
+                button.prop('disabled', this._readonly || !delete_);
+            }
+        },
+        add_line: function(key) {
+            var field, row;
+            this.fields[key] = field = new (this.get_entries(
+                        this.keys[key].type_))(key, this);
+            this.rows[key] = row = jQuery('<div/>', {
+                'class': 'row'
+            });
+            // TODO RTL
+            var text = this.keys[key].string + Sao.i18n.gettext(':');
+            var label = jQuery('<label/>', {
+                'text': text
+            }).appendTo(jQuery('<div/>', {
+                'class': 'dict-label col-md-4'
+            }).appendTo(row));
+
+            field.el.addClass('col-md-8').appendTo(row);
+
+            label.uniqueId();
+            field.labelled.uniqueId();
+            field.labelled.attr('aria-labelledby', label.attr('id'));
+            label.attr('for', field.labelled.attr('id'));
+
+            field.button.click(function() {
+                this.remove(key, true);
+            }.bind(this));
+
+            row.appendTo(this.container);
+        },
+        add_keys: function(keys) {
+            var context = this.field().get_context(this.record());
+            var domain = this.field().get_domain(this.record());
+            var batchlen = Math.min(10, Sao.config.limit);
+            keys = jQuery.extend([], keys);
+
+            var get_keys = function(key_ids) {
+                return this.schema_model.execute('get_keys',
+                        [key_ids], context).then(update_keys);
+            }.bind(this);
+            var update_keys = function(values) {
+                for (var i = 0, len = values.length; i < len; i++) {
+                    var k = values[i];
+                    this.keys[k.name] = k;
+                }
+            }.bind(this);
+
+            var prms = [];
+            while (keys.length > 0) {
+                var sub_keys = keys.splice(0, batchlen);
+                prms.push(this.schema_model.execute('search',
+                            [[['name', 'in', sub_keys], domain],
+                            0, Sao.config.limit, null], context)
+                        .then(get_keys));
+            }
+            return jQuery.when.apply(jQuery, prms);
+        },
+        display: function(record, field) {
+            Sao.View.Form.Dict._super.display.call(this, record, field);
+
+            if (!field) {
+                return;
+            }
+
+            var record_id = record ? record.id : null;
+            var key;
+
+            if (record_id != this._record_id) {
+                for (key in this.fields) {
+                    this.remove(key, false);
+                }
+                this._record_id = record_id;
+            }
+
+            var value = field.get_client(record);
+            var new_key_names = Object.keys(value).filter(function(e) {
+                return !this.keys[e];
+            }.bind(this));
+
+            var prm;
+            if (!jQuery.isEmptyObject(new_key_names)) {
+                prm = this.add_keys(new_key_names);
+            } else {
+                prm = jQuery.when();
+            }
+            prm.then(function() {
+                var i, len, key;
+                var keys = Object.keys(value).sort();
+                for (i = 0, len = keys.length; i < len; i++) {
+                    key = keys[i];
+                    var val = value[key];
+                    if (!this.keys[key]) {
+                        continue;
+                    }
+                    if (!this.fields[key]) {
+                        this.add_line(key);
+                    }
+                    var widget = this.fields[key];
+                    widget.set_value(val);
+                    widget.set_readonly(this._readonly);
+                }
+                var removed_key_names = Object.keys(this.fields).filter(
+                        function(e) {
+                            return !value[e];
+                        });
+                for (i = 0, len = removed_key_names.length; i < len; i++) {
+                    key = removed_key_names[i];
+                    this.remove(key, false);
+                }
+            }.bind(this));
+            this._set_button_sensitive();
+        },
+        get_entries: function(type) {
+            switch (type) {
+                case 'char':
+                    return Sao.View.Form.Dict.Entry;
+                case 'boolean':
+                    return Sao.View.Form.Dict.Boolean;
+                case 'selection':
+                    return Sao.View.Form.Dict.Selection;
+                case 'integer':
+                    return Sao.View.Form.Dict.Integer;
+                case 'float':
+                    return Sao.View.Form.Dict.Float;
+                case 'numeric':
+                    return Sao.View.Form.Dict.Numeric;
+                case 'date':
+                    return Sao.View.Form.Dict.Date;
+                case 'datetime':
+                    return Sao.View.Form.Dict.DateTime;
+            }
+        }
+    });
+
+    Sao.View.Form.Dict.Entry = Sao.class_(Object, {
+        class_: 'dict-char',
+        init: function(name, parent_widget) {
+            this.name = name;
+            this.definition = parent_widget.keys[name];
+            this.parent_widget = parent_widget;
+            this.create_widget();
+        },
+        create_widget: function() {
+            this.el = jQuery('<div/>', {
+                'class': this.class_
+            });
+            var group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).appendTo(this.el);
+            this.input = this.labelled = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm'
+            }).appendTo(group);
+            this.button = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button',
+                'arial-label': Sao.i18n.gettext('Remove')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-minus'
+            })).appendTo(jQuery('<div/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group));
+
+            this.el.change(
+                    this.parent_widget.focus_out.bind(this.parent_widget));
+        },
+        get_value: function() {
+            return this.input.val();
+        },
+        set_value: function(value) {
+            this.input.val(value || '');
+        },
+        set_readonly: function(readonly) {
+            this.input.prop('readonly', readonly);
+        }
+    });
+
+    Sao.View.Form.Dict.Boolean = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-boolean',
+        create_widget: function() {
+            Sao.View.Form.Dict.Boolean._super.create_widget.call(this);
+            this.input.attr('type', 'checkbox');
+            this.input.change(
+                    this.parent_widget.focus_out.bind(this.parent_widget));
+        },
+        get_value: function() {
+            return this.input.prop('checked');
+        },
+        set_value: function(value) {
+            this.input.prop('checked', value);
+        }
+    });
+
+    Sao.View.Form.Dict.Selection = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-selection',
+        create_widget: function() {
+            Sao.View.Form.Dict.Selection._super.create_widget.call(this);
+            var select = jQuery('<select/>', {
+                'class': 'form-control input-sm'
+            });
+            select.change(
+                    this.parent_widget.focus_out.bind(this.parent_widget));
+            this.input.replaceWith(select);
+            this.input = this.labelled = select;
+            var selection = jQuery.extend([], this.definition.selection);
+            selection.splice(0, 0, [null, '']);
+            selection.forEach(function(e) {
+                select.append(jQuery('<option/>', {
+                    'value': JSON.stringify(e[0]),
+                    'text': e[1],
+                }));
+            });
+        },
+        get_value: function() {
+            return JSON.parse(this.input.val());
+        },
+        set_value: function(value) {
+            this.input.val(JSON.stringify(value));
+        }
+    });
+
+    Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-integer',
+        get_value: function() {
+            var value = parseInt(this.input.val(), 10);
+            if (isNaN(value)) {
+                return null;
+            }
+            return value;
+        }
+    });
+
+    Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Integer, {
+        class_: 'dict-float',
+        get_value: function() {
+            var value = Number(this.input.val());
+            if (isNaN(value)) {
+                return null;
+            }
+            return value;
+        }
+    });
+
+    Sao.View.Form.Dict.Numeric = Sao.class_(Sao.View.Form.Dict.Float, {
+        class_: 'dict-numeric',
+        get_value: function() {
+            var value = new Sao.Decimal(this.input.val());
+            if (isNaN(value.valueOf())) {
+                return null;
+            }
+            return value;
+        }
+    });
+
+    Sao.View.Form.Dict.Date = Sao.class_(Sao.View.Form.Dict.Entry, {
+        class_: 'dict-date',
+        format: '%x',
+        create_widget: function() {
+            Sao.View.Form.Dict.Date._super.create_widget.call(this);
+            var group = this.button.parent();
+            jQuery('<button/>', {
+                'class': 'datepickerbutton btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-calendar'
+            })).prependTo(group);
+            this.input.datetimepicker({
+                'format': Sao.common.moment_format(this.format)
+            });
+            this.input.on('dp.change',
+                    this.parent_widget.focus_out.bind(this.parent_widget));
+        },
+        get_value: function() {
+            var value = this.input.data('DateTimePicker').date();
+            if (value) {
+                value.isDate = true;
+            }
+            return value;
+        },
+        set_value: function(value) {
+            this.date.data('DateTimePicker').date(value);
+        }
+    });
+
+    Sao.View.Form.Dict.DateTime = Sao.class_(Sao.View.Form.Dict.Date, {
+        class_: 'dict-datetime',
+        format: '%x %X',
+        get_value: function() {
+            var value = this.input.data('DateTimePicker').date();
+            if (value) {
+                value.isDateTime = true;
+            }
+            return value;
         }
     });
 

@@ -154,6 +154,7 @@ input[type='color'] {
 }
 
 .form-integer, .form-float, .form-float-time,
+.dict-integer, .dict-float, .dict-numeric,
 .editabletree-integer, .editabletree-float, .editabletree-timedelta {
     & input {
         text-align: right;
@@ -166,6 +167,16 @@ input[type='color'] {
 .form-boolean, .editabletree-boolean {
     & input[type=checkbox] {
         width: initial;
+    }
+}
+
+.dict-label {
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    .dict-label {
+        text-align: left;
     }
 }
 

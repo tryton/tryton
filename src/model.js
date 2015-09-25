@@ -1161,6 +1161,8 @@
                 return Sao.field.Reference;
             case 'binary':
                 return Sao.field.Binary;
+            case 'dict':
+                return Sao.field.Dict;
             default:
                 return Sao.field.Char;
         }
@@ -2189,6 +2191,37 @@
                 }.bind(this));
                 return prm;
             }
+        }
+    });
+
+    Sao.field.Dict = Sao.class_(Sao.field.Field, {
+        _default: {},
+        get: function(record) {
+            return (Sao.field.Dict._super.get.call(this, record) ||
+                    this._default);
+        },
+        get_client: function(record) {
+            return (Sao.field.Dict._super.get_client.call(this, record) ||
+                    this._default);
+        },
+        validation_domains: function(record, pre_validate) {
+            return this.get_domains(record, pre_validate)[0];
+        },
+        get_domain: function(record) {
+            var inversion = new Sao.common.DomainInversion();
+            var domains = this.get_domains(record);
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            return inversion.concat([inversion.localize_domain(
+                        inversion.inverse_leaf(screen_domain)),
+                    attr_domain]);
+        },
+        date_format: function(record) {
+            var context = this.get_context(record);
+            return Sao.common.date_format(context.date_format);
+        },
+        time_format: function(record) {
+            return '%X';
         }
     });
 }());
