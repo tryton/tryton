@@ -926,8 +926,9 @@
                 if ((this.current_view.view_type == 'tree') &&
                         (!jQuery.isEmptyObject(this.group))) {
                     this.set_current_record(this.group[0]);
+                } else {
+                    return jQuery.when();
                 }
-                return jQuery.when();
             }
             this.current_view.set_value();
             var fields = this.current_view.get_fields();
@@ -947,10 +948,13 @@
                     }
                 }.bind(this));
             }
-            var display = function() {
-                return this.display();
-            }.bind(this);
-            return prm.then(display, display);
+            var dfd = jQuery.Deferred();
+            prm.then(function() {
+                this.display().always(dfd.resolve);
+            }.bind(this), function() {
+                this.display().always(dfd.reject);
+            }.bind(this));
+            return dfd.promise();
         },
         modified: function() {
             var test = function(record) {
@@ -1022,14 +1026,17 @@
             }.bind(this));
         },
         copy: function() {
+            var dfd = jQuery.Deferred();
             var records = this.current_view.selected_records();
-            return this.model.copy(records, this.context).then(function(new_ids) {
-                this.group.load(new_ids);
-                if (!jQuery.isEmptyObject(new_ids)) {
-                    this.set_current_record(this.group.get(new_ids[0]));
-                }
-                this.display();
-            }.bind(this));
+            this.model.copy(records, this.context).then(function(new_ids) {
+                this.group.load(new_ids).always(function() {
+                    if (!jQuery.isEmptyObject(new_ids)) {
+                        this.set_current_record(this.group.get(new_ids[0]));
+                    }
+                    this.display().always(dfd.resolve);
+                }.bind(this));
+            }.bind(this), dfd.reject);
+            return dfd.promise();
         },
         search_active: function(active) {
             if (active && !this.group.parent) {
