@@ -151,8 +151,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     shipment_returns = fields.Function(
         fields.One2Many('stock.shipment.in.return', None, 'Shipment Returns'),
         'get_shipment_returns')
-    moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
-        'get_moves')
+    moves = fields.One2Many('stock.move', 'purchase', 'Moves', readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -548,9 +547,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     get_shipments = get_shipments_returns('stock.shipment.in')
     get_shipment_returns = get_shipments_returns('stock.shipment.in.return')
-
-    def get_moves(self, name):
-        return [m.id for l in self.lines for m in l.moves]
 
     def get_shipment_state(self):
         '''
