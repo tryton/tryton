@@ -179,8 +179,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     shipment_returns = fields.Function(
         fields.One2Many('stock.shipment.out.return', None, 'Shipment Returns'),
         'get_shipment_returns', searcher='search_shipment_returns')
-    moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
-        'get_moves')
+    moves = fields.One2Many('stock.move', 'sale', 'Moves', readonly=True)
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -585,9 +584,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     search_shipments = search_shipments_returns('stock.shipment.out')
     search_shipment_returns = search_shipments_returns(
         'stock.shipment.out.return')
-
-    def get_moves(self, name):
-        return [m.id for l in self.lines for m in l.moves]
 
     def get_shipment_state(self):
         '''
