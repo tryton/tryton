@@ -287,9 +287,11 @@ class Move(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    'readonly': Eval('shipment'),
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['assigned']),
+                    'readonly': Eval('shipment'),
                     },
                 'assign': {
                     'invisible': ~Eval('state').in_(['assigned']),

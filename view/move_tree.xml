@@ -2,6 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree string="Moves">
+    <field name="shipment"/>
     <field name="product"/>
     <field name="from_location"/>
     <field name="to_location"/>
@@ -10,5 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="planned_date"/>
     <field name="effective_date"/>
     <field name="state"/>
+    <button name="cancel" string="Cancel" icon="tryton-cancel"/>
+    <button name="draft" string="Reset to Draft" icon="tryton-clear"/>
     <field name="unit_digits" tree_invisible="1"/>
 </tree>

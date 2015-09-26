@@ -27,6 +27,10 @@ this repository contains the full copyright notices and license terms. -->
     <separator colspan="4" id="separator"/>
     <label name="state"/>
     <field name="state"/>
+    <group col="2" colspan="2" id="buttons">
+        <button name="cancel" string="Cancel" icon="tryton-cancel"/>
+        <button name="draft" string="Reset to Draft" icon="tryton-clear"/>
+    </group>
     <field name="unit_price_required" invisible="1" colspan="4"/>
     <field name="unit_digits" invisible="1" colspan="4"/>
 </form>
