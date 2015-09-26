@@ -249,8 +249,10 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
             modules_todo.append((module, list(tryton_parser.to_delete)))
 
-            for filename in iglob('%s/%s/*.po'
-                    % (package.info['directory'], 'locale')):
+            localedir = '%s/%s' % (package.info['directory'], 'locale')
+            for filename in itertools.chain(
+                    iglob('%s/*.po' % localedir),
+                    iglob('%s/override/*.po' % localedir)):
                 filename = filename.replace('/', os.sep)
                 lang2 = os.path.splitext(os.path.basename(filename))[0]
                 if lang2 not in lang:

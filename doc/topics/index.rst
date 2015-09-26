@@ -25,3 +25,4 @@ Introduction to all the key parts of trytond:
     wizard
     reports/index
     modules/index
+    translation
