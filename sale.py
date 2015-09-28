@@ -686,7 +686,8 @@ class Sale(Workflow, ModelSQL, ModelView):
             return
 
         invoice = self._get_invoice_sale(invoice_type)
-        invoice.lines = list(chain.from_iterable(invoice_lines.itervalues()))
+        invoice.lines = list(chain.from_iterable(invoice_lines[l.id]
+                for l in self.lines if l.id in invoice_lines)))
         invoice.save()
 
         with Transaction().set_user(0, set_context=True):
