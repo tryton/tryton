@@ -352,7 +352,11 @@ class Mandate(Workflow, ModelSQL, ModelView):
     scheme = fields.Selection([
             ('CORE', 'Core'),
             ('B2B', 'Business to Business'),
-            ], 'Scheme', required=True)
+            ], 'Scheme', required=True,
+        states={
+            'readonly': Eval('state').in_(['validated', 'canceled']),
+            },
+        depends=['state'])
     scheme_string = scheme.translated('scheme')
     signature_date = fields.Date('Signature Date',
         states={
