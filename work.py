@@ -113,10 +113,6 @@ class Work(ModelSQL, ModelView):
     def default_state():
         return 'opened'
 
-    @staticmethod
-    def default_effort():
-        return 0.0
-
     @classmethod
     def default_left(cls):
         return 0
