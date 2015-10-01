@@ -9,7 +9,7 @@ from itertools import chain
 import operator
 from lxml import etree
 
-from trytond.pool import Pool
+from trytond.pool import Pool, isregisteredby
 from trytond import backend
 from trytond.model import Workflow
 from trytond.model.fields import get_eval_fields
@@ -78,9 +78,7 @@ class ModuleTestCase(unittest.TestCase):
     def test_rec_name(self):
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for mname, model in Pool().iterobject():
-                # Don't test model not registered by the module
-                if not any(issubclass(model, cls) for cls in
-                        Pool().classes['model'].get(self.module, [])):
+                if not isregisteredby(model, self.module):
                     continue
                 # Skip testing default value even if the field doesn't exist
                 # as there is a fallback to id
@@ -125,9 +123,7 @@ class ModuleTestCase(unittest.TestCase):
         'Test for missing depends'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for mname, model in Pool().iterobject():
-                # Don't test model not registered by the module
-                if not any(issubclass(model, cls) for cls in
-                        Pool().classes['model'].get(self.module, [])):
+                if not isregisteredby(model, self.module):
                     continue
                 for fname, field in model._fields.iteritems():
                     fields = set()
@@ -146,6 +142,35 @@ class ModuleTestCase(unittest.TestCase):
                     assert depends <= set(model._fields), (
                         'Unknown depends %s in "%s"."%s"' % (
                             list(depends - set(model._fields)), mname, fname))
+
+    def test_field_methods(self):
+        'Test field methods'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for mname, model in Pool().iterobject():
+                if not isregisteredby(model, self.module):
+                    continue
+                for attr in dir(model):
+                    for prefixes in [['default_'],
+                            ['on_change_', 'on_change_with_'],
+                            ['order_'], ['domain_'], ['autocomplete_']]:
+                        if attr == 'on_change_with':
+                            continue
+                        # TODO those method should be renamed
+                        if attr == 'default_get':
+                            continue
+                        if mname == 'ir.rule' and attr == 'domain_get':
+                            continue
+
+                        # Skip if it is a field
+                        if attr in model._fields:
+                            continue
+                        fnames = [attr[len(prefix):] for prefix in prefixes
+                            if attr.startswith(prefix)]
+                        if not fnames:
+                            continue
+                        assert any(f in model._fields for f in fnames), (
+                            'Field method "%s"."%s" for unknown field' % (
+                                mname, attr))
 
     def test_menu_action(self):
         'Test that menu actions are accessible to menu\'s group'
@@ -196,9 +221,7 @@ class ModuleTestCase(unittest.TestCase):
         'Test all workflow transitions exist'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for mname, model in Pool().iterobject():
-                # Don't test model not registered by the module
-                if not any(issubclass(model, cls) for cls in
-                        Pool().classes['model'].get(self.module, [])):
+                if not isregisteredby(model, self.module):
                     continue
                 if not issubclass(model, Workflow):
                     continue

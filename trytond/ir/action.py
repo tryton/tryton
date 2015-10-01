@@ -1009,7 +1009,3 @@ class ActionURL(ActionMixin, ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'ir.action.url'
-
-    @staticmethod
-    def default_target():
-        return 'new'

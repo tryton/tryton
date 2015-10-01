@@ -6,7 +6,7 @@ from trytond.modules import load_modules, register_classes
 from trytond.transaction import Transaction
 import __builtin__
 
-__all__ = ['Pool', 'PoolMeta', 'PoolBase']
+__all__ = ['Pool', 'PoolMeta', 'PoolBase', 'isregisteredby']
 
 logger = logging.getLogger(__name__)
 
@@ -218,3 +218,9 @@ class Pool(object):
             for cls in classes[type_]:
                 cls.__post_setup__()
         return classes
+
+
+def isregisteredby(obj, module, type_='model'):
+    pool = Pool()
+    classes = pool.classes[type_]
+    return any(issubclass(obj, cls) for cls in classes.get(module, []))

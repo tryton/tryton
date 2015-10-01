@@ -74,7 +74,7 @@ class Collection(ModelSQL, ModelView):
         }
 
     @classmethod
-    def order_complet_name(cls, tables):
+    def order_complete_name(cls, tables):
         return cls.name.convert_order('name', tables, cls)
 
     @staticmethod
