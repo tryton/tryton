@@ -12,6 +12,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
 
+from trytond.modules.product import price_digits
+
 __all__ = ['Work']
 __metaclass__ = PoolMeta
 
@@ -23,8 +25,7 @@ class Work:
             ('type', '=', 'service'),
             ('default_uom_category', '=', Id('product', 'uom_cat_time')),
             ])
-    list_price = fields.Numeric('List Price',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    list_price = fields.Numeric('List Price', digits=price_digits)
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_total')
@@ -75,18 +76,16 @@ class Work:
             cursor.execute(*table.join(work,
                     condition=table.work == work.id
                     ).join(line, condition=line.work == work.id
-                    ).select(table.id, line.cost_price, Sum(line.duration),
+                    ).select(table.id, Sum(line.cost_price * line.duration),
                     where=red_sql,
-                    group_by=[table.id, line.cost_price]))
-            for work_id, cost, duration in cursor.fetchall():
+                    group_by=[table.id]))
+            for work_id, cost in cursor.fetchall():
                 # SQLite stores timedelta as float
-                if not isinstance(duration, float):
-                    duration = duration.total_seconds()
-                # SQLite uses float for SUM
-                if not isinstance(cost, Decimal):
-                    cost = Decimal(str(cost))
-                hours = duration / 60 / 60
-                costs[work_id] += Decimal(str(hours)) * cost
+                if not isinstance(cost, float):
+                    cost = cost.total_seconds()
+                # Convert from seconds
+                cost /= 60 * 60
+                costs[work_id] += Decimal(str(cost))
 
         # Purchase cost
         if hasattr(cls, 'purchase_lines'):
@@ -176,7 +175,7 @@ class Work:
             return company.currency.digits
         return 2
 
-    @fields.depends('product', 'party', 'company')
+    @fields.depends('product', 'company')
     def on_change_product(self):
         pool = Pool()
         User = pool.get('res.user')
@@ -187,20 +186,17 @@ class Work:
         if not self.product:
             return
 
-        context = {}
-
-        if self.party:
-            context['customer'] = self.party.id
-
         hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
-
-        with Transaction().set_context(context):
-            self.list_price = Uom.compute_price(self.product.default_uom,
-                self.product.list_price, hour_uom)
+        self.list_price = Uom.compute_price(self.product.default_uom,
+            self.product.list_price, hour_uom)
 
         if self.company:
             user = User(Transaction().user)
             if user.company != self.company:
                 if user.company.currency != self.company.currency:
                     self.list_price = Currency.compute(user.company.currency,
-                        self.list_price, self.company.currency)
+                        self.list_price, self.company.currency, round=False)
+
+        digits = self.__class__.list_price.digits
+        self.list_price = self.list_price.quantize(
+            Decimal(str(10.0 ** -digits[1])))
