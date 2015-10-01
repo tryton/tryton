@@ -456,10 +456,6 @@ class TaxTemplate(ModelSQL, ModelView):
         return 'percentage'
 
     @staticmethod
-    def default_include_base_amount():
-        return False
-
-    @staticmethod
     def default_invoice_base_sign():
         return Decimal('1')
 
@@ -780,10 +776,6 @@ class Tax(ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'percentage'
-
-    @staticmethod
-    def default_include_base_amount():
-        return False
 
     @staticmethod
     def default_invoice_base_sign():
