@@ -52,7 +52,7 @@ class SaleLine:
         if self.product:
             if self.product.principals:
                 if self.principal not in self.product.principals:
-                    self.principal = self.product.default_principal
+                    self.principal = self.product.principal
             elif self.principal:
                 self.principal = None
 

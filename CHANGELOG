@@ -1,2 +1,4 @@
+* Rename default_principal property into principal
+
 Version 3.6.0 - 2015-04-20
 * Initial release

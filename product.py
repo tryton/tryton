@@ -19,7 +19,7 @@ class Template:
             ])
 
     @property
-    def default_principal(self):
+    def principal(self):
         if self.principals:
             return self.principals[0]
 
