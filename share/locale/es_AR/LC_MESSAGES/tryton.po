@@ -254,7 +254,7 @@ msgid "M"
 msgstr "M"
 
 msgid "w"
-msgstr "s"
+msgstr "S"
 
 msgid "d"
 msgstr "d"
