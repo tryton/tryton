@@ -96,10 +96,11 @@ class Action(SignalEvent):
         if (self.screen.current_view.view_type == 'tree' and
                 self.screen.current_view.attributes.get('keyword_open')):
             GenericAction.exec_keyword('tree_open', {
-                'model': self.screen.model_name,
-                'id': self.screen.id_get(),
-                'ids': [self.screen.id_get()],
-                }, context=self.screen.context.copy(), warning=False)
+                    'model': self.screen.model_name,
+                    'id': (self.screen.current_record.id
+                        if self.screen.current_record else None),
+                    'ids': [r.id for r in self.screen.selected_records],
+                    }, context=self.screen.context.copy(), warning=False)
         else:
             def callback(result):
                 if result:

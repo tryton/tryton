@@ -349,8 +349,8 @@ class Screen(SignalEvent):
                 self.current_view.attributes.get('keyword_open')):
             return Action.exec_keyword('tree_open', {
                 'model': self.model_name,
-                'id': self.id_get(),
-                'ids': [self.id_get()],
+                'id': self.current_record.id if self.current_record else None,
+                'ids': [r.id for r in self.selected_records],
                 }, context=self.context.copy(), warning=False)
         else:
             self.switch_view(view_type='form')
@@ -907,14 +907,6 @@ class Screen(SignalEvent):
     @property
     def selected_records(self):
         return self.current_view.selected_records
-
-    def id_get(self):
-        if not self.current_record:
-            return False
-        return self.current_record.id
-
-    def ids_get(self):
-        return [x.id for x in self.group if x.id]
 
     def clear(self):
         self.current_record = None
