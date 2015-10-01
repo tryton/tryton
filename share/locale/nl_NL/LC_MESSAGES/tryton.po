@@ -257,7 +257,7 @@ msgid "Print..."
 msgstr "Afdrukken"
 
 msgid "Y"
-msgstr " J"
+msgstr "J"
 
 msgid "M"
 msgstr "M"
@@ -266,7 +266,7 @@ msgid "w"
 msgstr "w"
 
 msgid "d"
-msgstr " d"
+msgstr "d"
 
 msgid "h"
 msgstr "u"
