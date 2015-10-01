@@ -944,7 +944,7 @@ class ModelData(ModelSQL, ModelView):
             if values != fs_values:
                 record = Model(data.db_id)
                 Model.write([record], fs_values)
-                values.update(fs_values)
+                values = fs_values
             to_write.extend([[data], {
                         'values': cls.dump_values(values),
                         }])
