@@ -124,13 +124,14 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         else:
             model, value = None, None
         super(Reference, self).set_text(value)
-        self.widget_combo.handler_block_by_func(self.sig_changed_combo)
+        child = self.widget_combo.get_child()
+        child.handler_block_by_func(self.sig_changed_combo)
         if not self.set_popdown_value(self.widget_combo, model):
             text = self.get_inactive_selection(model)
             self.set_popdown(
                 self.selection[:] + [(model, text)], self.widget_combo)
             self.set_popdown_value(self.widget_combo, value)
-        self.widget_combo.handler_unblock_by_func(self.sig_changed_combo)
+        child.handler_unblock_by_func(self.sig_changed_combo)
 
     def display(self, record, field):
         self.update_selection(record, field)
