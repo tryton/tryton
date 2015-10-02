@@ -2994,7 +2994,7 @@
             var sao_model = new Sao.Model(model);
 
             if (model && !this.has_target(value)) {
-                var text = this.entry.value();
+                var text = this.entry.val();
                 if (!this._readonly && (text ||
                             this.field().get_state_attrs(this.record())
                             .required)) {
@@ -3157,7 +3157,7 @@
             this.select.prop('disabled', this.entry.prop('readonly'));
         },
         select_changed: function() {
-            this.value('');
+            this.entry.val('');
             var model = this.get_model();
             var value;
             if (model) {
@@ -3170,7 +3170,7 @@
         set_value: function(record, field) {
             var value;
             if (!this.get_model()) {
-                value = this.value();
+                value = this.entry.val();
                 if (jQuery.isEmptyObject(value)) {
                     field.set_client(record, null);
                 } else {
@@ -3187,9 +3187,9 @@
                     name = '';
                 }
                 if ((model != this.get_model()) ||
-                        (name != this.value())) {
+                        (name != this.entry.val())) {
                     field.set_client(record, null);
-                    this.value('');
+                    this.entry.val('');
                 }
             }
         },
