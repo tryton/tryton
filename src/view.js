@@ -2211,6 +2211,10 @@
                 this.input.attr('list', this.datalist.attr('id'));
             }
             this.el.change(this.focus_out.bind(this));
+
+            if (!attributes.size) {
+                this.group.css('width', '100%');
+            }
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
@@ -2226,6 +2230,20 @@
                     }).appendTo(this.datalist);
                 }.bind(this));
             }
+
+            // Set size
+            var length = '';
+            var width = '100%';
+            if (record) {
+                length = record.expr_eval(this.attributes.size);
+                if (length > 0) {
+                    width = null;
+                }
+            }
+            this.input.attr('maxlength', length);
+            this.input.attr('size', length);
+            this.group.css('width', width);
+
             if (record) {
                 var value = record.field_get_client(this.field_name);
                 this.input.val(value || '');
@@ -2255,6 +2273,7 @@
 
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-date',
+        _width: '12em',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
@@ -2277,6 +2296,7 @@
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
             this.date.datetimepicker();
+            this.date.css('width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
         },
         get_format: function(record, field) {
@@ -2317,6 +2337,7 @@
 
     Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-datetime',
+        _width: '25em',
         get_format: function(record, field) {
             return field.date_format(record) + ' ' + field.time_format(record);
         },
@@ -2331,6 +2352,7 @@
 
     Sao.View.Form.Time = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-time',
+        _width: '10em',
         get_format: function(record, field) {
             return field.time_format(record);
         },
@@ -2383,6 +2405,8 @@
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
             this.input.attr('type', 'text');
+            this.input.attr('width', 8);
+            this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
         },
         set_value: function(record, field) {
