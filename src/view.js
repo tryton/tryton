@@ -1781,6 +1781,12 @@
                 'colspan': colspan,
                 'class': widget ? widget.class_ || '' : ''
             }).append(el);
+            row.append(cell);
+
+            if (!widget) {
+                return;
+            }
+
             if (attributes.xalign !== undefined) {
                 // TODO replace by start/end when supported
                 cell.css('text-align', attributes.xalign >= 0.5? 'right': 'left');
@@ -1791,11 +1797,10 @@
             }
             if (xfill) {
                 cell.addClass('xfill');
-                if (xexpand && el) {
+                if (xexpand) {
                     el.css('width', '100%');
                 }
             }
-            row.append(cell);
         },
         resize: function() {
             var rows = this.rows().toArray();
