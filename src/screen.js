@@ -304,7 +304,6 @@
         set: function(widget) {
             if (this.alternate_view) {
                 this.alternate_viewport.children().detach();
-                // TODO test if widget is content_box widget
                 this.alternate_viewport.append(widget);
             } else {
                 this.content_box.children().detach();
