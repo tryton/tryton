@@ -1376,6 +1376,8 @@
             store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
+            var timestamp = this.group.parent ?
+                this.group.parent._timestamp : null;
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -1397,11 +1399,9 @@
                         }
                         this.tree_states[parent_][
                             view.children_field || null] = [
-                            [], [[this.current_record.id]]];
+                            timestamp, [], [[this.current_record.id]]];
                     }
                 } else if (view.view_type == 'tree') {
-                    parent_ = this.group.parent ? this.group.parent.id : null;
-                    var timestamp = this.parent ? this._timestamp : null;
                     var paths = view.get_expanded_paths();
                     var selected_paths = view.get_selected_paths();
                     if (!(parent_ in this.tree_states)) {
