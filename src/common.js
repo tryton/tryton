@@ -2937,8 +2937,13 @@
 
     Sao.common.InputCompletion = Sao.class_(Object, {
         init: function(el, source, match_selected, format) {
-            el.wrap('<div class="dropdown"/>');
-            this.dropdown = el.parent();
+            if (!el.is('input')) {
+                el.addClass('dropdown');
+                this.dropdown = el;
+            } else {
+                el.wrap('<div class="dropdown"/>');
+                this.dropdown = el.parent();
+            }
             this.input = el.find('input').add(el.filter('input')).first();
             // bootstrap requires an element with data-toggle
             jQuery('<span/>', {
