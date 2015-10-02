@@ -2163,7 +2163,7 @@
             var inversion = new Sao.common.DomainInversion();
             return inversion.concat([inversion.localize_domain(
                         inversion.filter_leaf(screen_domain, this.name, model),
-                        True), attr_domain]);
+                        true), attr_domain]);
         }
     });
 
