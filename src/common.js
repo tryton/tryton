@@ -2935,74 +2935,174 @@
     });
     Sao.common.processing = new Sao.common.Processing();
 
-    Sao.common.get_completion = function(entry, source, match_selected) {
-        entry.attr('autocomplete', 'off');
-        entry.typeahead({
-            'minLength': 1,
-            'highlight': true
-        }, {
-            'limit': Sao.config.limit,
-            'name': 'suggestions',
-            'source': source,
-            'displayKey': 'rec_name',
-        }, {
-            'name': 'actions',
-            'source': function(query, process) {
-                var results = [];
-                if (entry.data('search')) {
-                    results.push({
-                        'id': 'search',
-                        'action': Sao.i18n.gettext('Search...'),
-                        'query': query
-                    });
-                }
-                if (entry.data('create')) {
-                    results.push({
-                        'id': 'create',
-                        'action': Sao.i18n.gettext('Create...'),
-                        'query': query
-                    });
-                }
-                process(results);
-            },
-            'displayKey': 'query',
-            'templates': {
-                'suggestion': function(context) {
-                    return '<p>' + context.action + '</p>';
-                }
-            }
-        });
-        entry.on('typeahead:select', match_selected);
-    };
-    Sao.common.update_completion = function(entry, record, field, model,
-            domain) {
-        var prm = jQuery.Deferred();
-        var update = function(search_text, domain) {
-            if (entry.typeahead('val') != search_text) {
-                return prm.reject();
-            }
-            if (!search_text || !model) {
-                return prm.reject();
-            }
-            if (domain === undefined) {
-                domain = field.get_domain(record);
-            }
-            var context = field.get_context(record);
-            domain = [['rec_name', 'ilike', '%' + search_text + '%'], domain];
+    Sao.common.InputCompletion = Sao.class_(Object, {
+        init: function(el, source, match_selected, format) {
+            el.wrap('<div class="dropdown"/>');
+            this.dropdown = el.parent();
+            this.input = el.find('input').add(el.filter('input')).first();
+            // bootstrap requires an element with data-toggle
+            jQuery('<span/>', {
+                'data-toggle': 'dropdown'
+            }).appendTo(this.dropdown);
+            this.menu = jQuery('<ul/>', {
+                'class': 'dropdown-menu',
+                'role': 'listbox'
+            }).appendTo(this.dropdown);
+            this.separator = jQuery('<li/>', {
+                'role': 'separator',
+                'class': 'divider'
+            }).appendTo(this.menu);
+            this.separator.hide();
 
-            var sao_model = new Sao.Model(model);
-            var search_prm = sao_model.execute('search_read', [domain, 0,
-                    Sao.config.limit, null, ['rec_name']], context);
-            search_prm.then(function(results) {
-                if (entry.typeahead('val') != search_text) {
-                    return prm.reject();
+            this.source = source;
+            this.match_selected = match_selected;
+            this.format = format;
+            this.action_activated = null;
+
+            this._search_text = null;
+
+            this.input.on('input', function() {
+                window.setTimeout(this._input.bind(this), 300,
+                        this.input.val());
+            }.bind(this));
+            this.input.keydown(function(evt) {
+                if (evt.which == Sao.common.DOWN_KEYCODE) {
+                    this.menu.find('a').first().focus();
+                    evt.preventDefault();
+                } else if (evt.which == Sao.common.ESC_KEYCODE) {
+                    if (this.dropdown.hasClass('open')) {
+                        this.menu.dropdown('toggle');
+                    }
+                } else if (evt.which == Sao.common.RETURN_KEYCODE) {
+                    if (!this.dropdown.hasClass('open')) {
+                        this.menu.dropdown('toggle');
+                    }
                 }
-                prm.resolve(results);
-            }, prm.reject);
+            }.bind(this));
+            this.menu.on('hide.bs.dropdown', function() {
+                this.input.focus();
+            }.bind(this));
+        },
+        set_actions: function(actions, action_activated) {
+            if (action_activated !== undefined) {
+                this.action_activated = action_activated;
+            }
+            this.menu.find('li.action').remove();
+            if (jQuery.isEmptyObject(actions)) {
+                this.separator.hide();
+                return;
+            }
+            this.separator.show();
+            actions.forEach(function(action) {
+                var action_id = action[0];
+                var content = action[1];
+                jQuery('<li/>', {
+                    'class': 'action action-' + action_id
+                }).append(jQuery('<a/>', {
+                    'href': '#'
+                }).append(this._format_action(content)))
+                .click(function() {
+                    if (this.action_activated) {
+                        this.action_activated(action_id);
+                    }
+                    this.input.val('');
+                }.bind(this))
+                .appendTo(this.menu);
+            }, this);
+        },
+        _format: function(content) {
+            if (this.format) {
+                return this.format(content);
+            }
+            return content;
+        },
+        _format_action: function(content) {
+            if (this.format_action) {
+                return this.format_action(content);
+            }
+            return content;
+        },
+        _input: function(text) {
+            if (text != this.input.val()) {
+                return;
+            }
+            var prm;
+            if (this.source instanceof Array) {
+                prm = jQuery.when(source.filter(function(value) {
+                    return value.toLowerCase().startsWith(text.toLowerCase());
+                }));
+            } else {
+                prm = this.source(text);
+            }
+            prm.then(function(values) {
+                if (text != this.input.val()) {
+                    return;
+                }
+                this._set_selection(values);
+            }.bind(this));
+        },
+        _set_selection: function(values) {
+            if (values === undefined) {
+                values = [];
+            }
+            this.menu.find('li.completion').remove();
+            values.reverse().forEach(function(value) {
+                jQuery('<li/>', {
+                    'class': 'completion'
+                }).append(jQuery('<a/>', {
+                    'href': '#'
+                }).append(this._format(value)))
+                .click(function() {
+                    if (this.match_selected) {
+                        this.match_selected(value);
+                    }
+                    this.input.focus();
+                }.bind(this)).prependTo(this.menu);
+            }, this);
+            this.menu.find('a').first().keyup(function(evt) {
+                if (evt.which == Sao.common.UP_KEYCODE) {
+                    this.input.focus();
+                }
+            }.bind(this));
+            if (!this.input.val()) {
+                if (this.dropdown.hasClass('open')) {
+                    this.menu.dropdown('toggle');
+                }
+            } else {
+                if (!this.dropdown.hasClass('open')) {
+                    this.menu.dropdown('toggle');
+                }
+            }
+        }
+    });
+
+    Sao.common.get_completion = function(el, source,
+            match_selected, action_activated) {
+        var format = function(content) {
+            return content.rec_name;
         };
+        var completion = new Sao.common.InputCompletion(
+                el, source, match_selected, format);
+        completion.set_actions([
+                ['search', Sao.i18n.gettext('Search...')],
+                ['create', Sao.i18n.gettext('Create..')]],
+                action_activated);
+    };
 
-        var search_text = entry.typeahead('val');
-        window.setTimeout(update, 300, search_text, domain);
-        return prm.promise();
+    Sao.common.update_completion = function(
+            entry, record, field, model, domain) {
+        var search_text = entry.val();
+        if (!search_text || !model) {
+            return jQuery.when();
+        }
+        if (domain === undefined) {
+            domain = field.get_domain(record);
+        }
+        var context = field.get_context(record);
+        domain = [['rec_name', 'ilike', '%' + search_text + '%'], domain];
+
+        var sao_model = new Sao.Model(model);
+        return sao_model.execute('search_read',
+                [domain, 0, Sao.config.limit, null, ['rec_name']], context);
     };
 }());

@@ -347,53 +347,31 @@ var Sao = {};
                 'placeholder': Sao.i18n.gettext('Search...')
             });
             this.el.append(this.search_entry);
-            this.search_entry.typeahead({
-                'highlight': false
-            }, {
-                'limit': Sao.config.limit,
-                'source': this.update.bind(this),
-                'displayKey': 'record_name',
-                'templates': {
-                    'suggestion': function(context) {
-                        var html = jQuery('<div/>');
-                        var img = jQuery('<img/>', {
-                            'class': 'global-search-icon'
-                        });
-                        var img_prm = Sao.common.ICONFACTORY.register_icon(
-                                context.icon);
-                        img_prm.then(function(icon_url) {
-                            img.attr('src', icon_url);
-                        }.bind(this));
-                        html.append(img);
-                        html.append(jQuery('<p/>', {
-                            'class': 'global-search-text'
-                        }).text(context.record_name));
-                        return html;
-                    }
-                }
-            });
-            this.search_entry.on('typeahead:select',
-                    this.match_selected.bind(this));
+            var completion = new Sao.common.InputCompletion(
+                    this.search_entry,
+                    this.update.bind(this),
+                    this.match_selected.bind(this),
+                    this.format.bind(this));
         },
-        query: function(value) {
-            if (!arguments.length) {
-                return this.search_entry.typeahead('val');
-            } else {
-                return this.search_entry.typeahead('val', value);
-            }
+        format: function(content) {
+            var el = jQuery('<div/>');
+            var img = jQuery('<img/>', {
+                'class': 'global-search-icon'
+            }).appendTo(el);
+            Sao.common.ICONFACTORY.register_icon(content.icon).then(
+                    function(icon_url) {
+                        img.attr('src', icon_url);
+                    });
+            jQuery('<span/>', {
+                'class': 'global-search-text'
+            }).text(content.record_name).appendTo(el);
+            return el;
         },
-        update: function(query, sync, async) {
-            if (query != this.query()) {
-                return;
-            }
+        update: function(text) {
             var ir_model = new Sao.Model('ir.model');
-            var search_prm = ir_model.execute('global_search',
-                    [query, Sao.config.limit, Sao.main_menu_screen.model_name],
-                    Sao.main_menu_screen.context);
-            search_prm.then(function(s_results) {
-                if (query != this.query()) {
-                    return;
-                }
+            return ir_model.execute('global_search',
+                    [text, Sao.config.limit, Sao.main_menu_screen.model_name],
+                    Sao.main_menu_screen.context).then(function(s_results) {
                 var results = [];
                 for (var i=0, len=s_results.length; i < len; i++) {
                     results.push({
@@ -404,10 +382,10 @@ var Sao = {};
                         'icon': s_results[i][5],
                     });
                 }
-                async(results);
+                return results;
             }.bind(this));
         },
-        match_selected: function(event_, item, name) {
+        match_selected: function(item) {
             if (item.model == Sao.main_menu_screen.model_name) {
                 Sao.Action.exec_keyword('tree_open', {
                     'model': item.model,
@@ -422,7 +400,7 @@ var Sao = {};
                 };
                 Sao.Tab.create(params);
             }
-            this.query('');
+            this.search_entry.val('');
         }
     });
 

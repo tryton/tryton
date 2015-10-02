@@ -2759,11 +2759,13 @@
             })).appendTo(buttons);
             this.but_open.click(this.edit.bind(this));
             if (!attributes.completion || attributes.completion == "1") {
-                Sao.common.get_completion(this.entry,
-                        this._update_completion.bind(this),
-                        this._completion_match_selected.bind(this));
+                Sao.common.get_completion(group,
+                    this._update_completion.bind(this),
+                    this._completion_match_selected.bind(this),
+                    this._completion_action_activated.bind(this));
                 this.wid_completion = true;
             }
+            this.el.change(this.focus_out.bind(this));
             this._readonly = false;
         },
         get_screen: function() {
@@ -2782,27 +2784,7 @@
             if (jQuery.isEmptyObject(value)) {
                 value = '';
             }
-            this.value(value);
-        },
-        // This function is required because once typeahead is activated on an
-        // entry then .val() function should not be used anymore.
-        // In order to keep the same semantics as .val() we use the same
-        // signature
-        value: function(value) {
-            if (this.wid_completion) {
-                if (!arguments.length) {
-                    return this.entry.typeahead('val');
-                } else {
-                    return this.entry.typeahead('val', value);
-                }
-            } else {
-                if (!arguments.length) {
-                    return this.entry.val();
-                } else {
-                    return this.entry.val(value);
-                }
-            }
-
+            this.entry.val(value);
         },
         get_text: function() {
             var record = this.record();
@@ -2811,43 +2793,19 @@
             }
             return '';
         },
-        _set_completion: function() {
-            this.entry.data('search', this.read_access());
-            this.entry.data('create', this.create_access());
-        },
-        _update_completion: function(query, sync, async) {
-            var record = this.record();
-            if (!record) {
-                return;
-            }
-            var field = this.field();
-            var value = field.get(record);
-            if (this.has_target(value)) {
-                var id = this.id_from_value(value);
-                if ((id !== undefined) && (id > 0)) {
+        focus_out: function() {
+            if (!this.attributes.completion ||
+                    this.attributes.completion == "1") {
+                if (this.el.find('.dropdown').hasClass('open')) {
                     return;
                 }
             }
-            var model = this.get_model();
-
-            var prm = Sao.common.update_completion(this.entry, record, field,
-                    model);
-            prm.done(async);
+            Sao.View.Form.Many2One._super.focus_out.call(this);
         },
-        _completion_match_selected: function(event_, selected_item, name) {
-            if (selected_item.id == 'search') {
-                // it's necessary to set the value so that edit() can get it
-                // and make the search on the user provided content
-                this.value(selected_item.query);
-                this.edit();
-                this.value('');
-            } else if (selected_item.id == 'create') {
-                this.new_();
-                this.value('');
-            } else {
-                this.record().field_set_client(this.field_name,
-                        this.value_from_id(selected_item.id,
-                            selected_item.rec_name), true);
+        set_value: function(record, field) {
+            if (field.get_client(record) != this.entry.val()) {
+                field.set_client(record, this.value_from_id(null, ''));
+                this.entry.val('');
             }
         },
         display: function(record, field) {
@@ -2863,7 +2821,7 @@
             this._set_completion();
 
             if (!record) {
-                this.value('');
+                this.entry.val('');
                 return;
             }
             this.set_text(field.get_client(record));
@@ -3018,9 +2976,9 @@
             } else if (this.has_target(this.record().field_get(
                             this.field_name)) && editable) {
                 var value = this.get_text();
-                if ((value != this.value()) ||
+                if ((value != this.entry.val()) ||
                         ~delete_keys.indexOf(event_.which)) {
-                    this.value('');
+                    this.entry.val('');
                     this.record().field_set_client(this.field_name,
                         this.value_from_id(null, ''));
                 }
@@ -3036,7 +2994,7 @@
             var sao_model = new Sao.Model(model);
 
             if (model && !this.has_target(value)) {
-                var text = this.value();
+                var text = this.entry.value();
                 if (!this._readonly && (text ||
                             this.field().get_state_attrs(this.record())
                             .required)) {
@@ -3068,6 +3026,50 @@
                                 search_filter: parser.quote(text)
                             });
                 }
+            }
+        },
+        _set_completion: function() {
+            var search = this.el.find('.action-search');
+            if (this.read_access()) {
+                search.removeClass('disabled');
+            } else {
+                search.addClass('disabled');
+            }
+            var create = this.el.find('.action-create');
+            if (this.create_access()) {
+                create.removeClass('disabled');
+            } else {
+                create.addClass('disabled');
+            }
+        },
+        _update_completion: function(text) {
+            var record = this.record();
+            if (!record) {
+                return;
+            }
+            var field = this.field();
+            var value = field.get(record);
+            if (this.has_target(value)) {
+                var id = this.id_from_value(value);
+                if ((id !== undefined) && (id > 0)) {
+                    return jQuery.when();
+                }
+            }
+            var model = this.get_model();
+
+            return Sao.common.update_completion(
+                    this.entry, record, field, model);
+        },
+        _completion_match_selected: function(value) {
+            this.record().field_set_client(this.field_name,
+                    this.value_from_id(
+                        value.id, value.rec_name), true);
+        },
+        _completion_action_activated: function(action) {
+            if (action == 'search') {
+                this.edit();
+            } else if (action == 'create') {
+                this.new_();
             }
         }
     });
