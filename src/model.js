@@ -1519,6 +1519,9 @@
             return true;
         },
         convert: function(value) {
+            if (!value) {
+                return null;
+            }
             value = Number(value);
             if (isNaN(value)) {
                 value = this._default;
@@ -1555,6 +1558,9 @@
 
     Sao.field.Numeric = Sao.class_(Sao.field.Float, {
         convert: function(value) {
+            if (!value) {
+                return null;
+            }
             value = new Sao.Decimal(value);
             if (isNaN(value.valueOf())) {
                 value = this._default;
