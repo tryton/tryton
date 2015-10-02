@@ -20,7 +20,7 @@ CursorInterface.cache_keys.update({'company', 'employee'})
 
 __all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
     'Sequence', 'SequenceStrict', 'Date', 'CompanyConfigStart',
-    'CompanyConfig', 'CompanyReport', 'LetterReport']
+    'CompanyConfig', 'CompanyReport', 'LetterReport', 'Rule']
 __metaclass__ = PoolMeta
 
 
@@ -249,6 +249,14 @@ class User:
                         values['employee'] = employee_id
         return result
 
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Rule = pool.get('ir.rule')
+        super(User, cls).write(*args)
+        # Restart the cache on the domain_get method
+        Rule._domain_get_cache.clear()
+
 
 class Property:
     __name__ = 'ir.property'
@@ -361,3 +369,14 @@ class CompanyReport(Report):
 
 class LetterReport(CompanyReport):
     __name__ = 'party.letter'
+
+
+class Rule:
+    __name__ = 'ir.rule'
+
+    @classmethod
+    def _get_cache_key(cls):
+        key = super(Rule, cls)._get_cache_key()
+        # XXX Use company from context instead of browse to prevent infinite
+        # loop, but the cache is cleared when User is written.
+        return key + (Transaction().context.get('company'),)
