@@ -4075,7 +4075,7 @@
             this.nullable_widget = false;
             Sao.View.Form.MultiSelection._super.init.call(this, field_name,
                 model, attributes);
-            this.el.prop('multiple', true);
+            this.select.prop('multiple', true);
         },
         display_update_selection: function(record, field) {
             var i, len, element;
