@@ -76,8 +76,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         depends=['state', 'company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
-    date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
-        select=True)
+    date = fields.Date('Date', required=True, select=True)
     start_balance = fields.Numeric('Start Balance',
         digits=(16, Eval('currency_digits', 2)),
         states=_BALANCE_STATES, depends=_BALANCE_DEPENDS + ['currency_digits'])
