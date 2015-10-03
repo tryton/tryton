@@ -1408,13 +1408,7 @@ class OpenSupplier(Wizard):
         supplier_ids = [line[0] for line in cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', supplier_ids)])
-
-        model_data, = ModelData.search([
-                ('fs_id', '=', 'act_open_supplier'),
-                ('module', '=', 'purchase'),
-                ], limit=1)
-        wizard = Wizard(model_data.db_id)
-
+        wizard = Wizard(ModelData.get_id('purchase', 'act_open_supplier'))
         action['name'] = wizard.name
         return action, {}
 
