@@ -1113,7 +1113,11 @@ class ViewTree(View):
                         else:
                             selected_sum += value
                     if hasattr(field, 'digits'):
-                        digit = max(field.digits(record)[1], digit)
+                        fdigits = field.digits(record)
+                        if fdigits and digit is not None:
+                            digit = max(fdigits[1], digit)
+                        else:
+                            digit = None
 
             if loaded:
                 if field.attrs['type'] == 'timedelta':
@@ -1122,10 +1126,14 @@ class ViewTree(View):
                     selected_sum = common.timedelta.format(
                         selected_sum, converter)
                     sum_ = common.timedelta.format(sum_, converter)
-                else:
+                elif digit:
                     selected_sum = locale.format(
                         '%.*f', (digit, selected_sum or 0), True)
                     sum_ = locale.format('%.*f', (digit, sum_ or 0), True)
+                else:
+                    selected_sum = locale.format(
+                        '%s', selected_sum or 0, True)
+                    sum_ = locale.format('%s', sum_ or 0, True)
 
                 text = '%s / %s' % (selected_sum, sum_)
             else:

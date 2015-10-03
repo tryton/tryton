@@ -16,7 +16,10 @@ class Float(Integer):
         super(Float, self).display(record, field)
         if field:
             digits = field.digits(record, factor=self.factor)
-            self.entry.set_width_chars(sum(digits))
+            if digits:
+                self.entry.set_width_chars(sum(digits))
+            else:
+                self.entry.set_width_chars(18)
 
     def key_press_event(self, widget, event):
         for name in ('KP_Decimal', 'KP_Separator'):
@@ -50,6 +53,7 @@ class Float(Integer):
         if decimal_point in new_value:
             new_int, new_decimal = new_value.rsplit(decimal_point, 1)
 
-        if len(new_int) > digits[0] \
-                or len(new_decimal) > digits[1]:
+        if (digits
+                and (len(new_int) > digits[0]
+                    or len(new_decimal) > digits[1])):
             entry.stop_emission('insert-text')

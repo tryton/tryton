@@ -10,7 +10,7 @@ class CellRendererFloat(CellRendererInteger):
 
     def __init__(self):
         super(CellRendererFloat, self).__init__()
-        self.digits = (16, 2)
+        self.digits = None
 
     def on_start_editing(self, event, widget, path, background_area,
             cell_area, flags):
@@ -45,8 +45,9 @@ class CellRendererFloat(CellRendererInteger):
         if decimal_point in new_value:
             new_int, new_decimal = new_value.rsplit(decimal_point, 1)
 
-        if len(new_int) > self.digits[0] \
-                or len(new_decimal) > self.digits[1]:
+        if (self.digits
+                and (len(new_int) > self.digits[0]
+                    or len(new_decimal) > self.digits[1])):
             entry.stop_emission('insert-text')
 
 

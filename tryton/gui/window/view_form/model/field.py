@@ -286,7 +286,6 @@ class TimeDeltaField(Field):
 
 class FloatField(Field):
     _default = None
-    default_digits = (16, 2)
 
     def check_required(self, record):
         state_attrs = self.get_state_attrs(record)
@@ -300,10 +299,9 @@ class FloatField(Field):
         return record.value.get(self.name, self._default)
 
     def digits(self, record, factor=1):
-        digits = tuple(y if x is None else x for x, y in zip(
-                record.expr_eval(
-                    self.attrs.get('digits', self.default_digits)),
-                self.default_digits))
+        digits = record.expr_eval(self.attrs.get('digits'))
+        if not digits:
+            return
         shift = int(round(math.log(abs(factor), 10)))
         return (digits[0] + shift, digits[1] - shift)
 
@@ -324,8 +322,11 @@ class FloatField(Field):
     def get_client(self, record, factor=1):
         value = record.value.get(self.name)
         if value is not None:
-            digit = self.digits(record, factor=factor)[1]
-            return locale.format('%.*f', (digit, value * factor), True)
+            digits = self.digits(record, factor=factor)
+            if digits:
+                return locale.format('%.*f', (digits[1], value * factor), True)
+            else:
+                return locale.format('%s', value * factor, True)
         else:
             return ''
 
@@ -348,7 +349,6 @@ class NumericField(FloatField):
 
 
 class IntegerField(FloatField):
-    default_digits = (16, 0)
 
     def convert(self, value):
         try:
