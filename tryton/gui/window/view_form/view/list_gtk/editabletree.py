@@ -14,6 +14,10 @@ _ = gettext.gettext
 class TreeView(gtk.TreeView):
     display_counter = 0
 
+    def __init__(self, view):
+        super(TreeView, self).__init__()
+        self.view = view
+
     def next_column(self, path, column=None, editable=True, _sign=1):
         columns = self.get_columns()
         if column is None:
@@ -27,11 +31,13 @@ class TreeView(gtk.TreeView):
                 len(columns) + current_idx):
             if not column.name:
                 continue
+            widget = self.view.get_column_widget(column)
             field = record[column.name]
             field.state_set(record, states=('readonly', 'invisible'))
             invisible = field.get_state_attrs(record).get('invisible', False)
             if editable:
-                readonly = field.get_state_attrs(record).get('readonly', False)
+                readonly = widget.attrs.get('readonly',
+                    field.get_state_attrs(record).get('readonly', False))
             else:
                 readonly = False
             if not (invisible or readonly):
@@ -50,9 +56,8 @@ class EditableTreeView(TreeView):
             gtk.keysyms.ISO_Left_Tab, gtk.keysyms.KP_Enter)
 
     def __init__(self, position, view):
-        super(EditableTreeView, self).__init__()
+        super(EditableTreeView, self).__init__(view)
         self.editable = position
-        self.view = view
 
     def on_quit_cell(self, current_record, column, value, callback=None):
         field = current_record[column.name]

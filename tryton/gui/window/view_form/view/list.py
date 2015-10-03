@@ -284,7 +284,7 @@ class ViewTree(View):
         if self.attributes.get('editable'):
             self.treeview = EditableTreeView(self.attributes['editable'], self)
         else:
-            self.treeview = TreeView()
+            self.treeview = TreeView(self)
 
         self.parse(xml)
 
