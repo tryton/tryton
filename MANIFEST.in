@@ -13,11 +13,3 @@ include doc/*
 recursive-include doc *.rst
 recursive-include doc *.po
 recursive-include doc *.pot
-include share/pixmaps/tryton/LICENSE
-include share/pixmaps/tryton/*.png
-include share/pixmaps/tryton/*.svg
-include share/pixmaps/tryton/*.ico
-include share/pixmaps/tryton/*.icns
-recursive-include share/locale *.mo
-recursive-include share/locale *.po
-include share/locale/*.pot

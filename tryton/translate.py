@@ -4,10 +4,12 @@
 import os
 import locale
 import gettext
-from tryton.config import CURRENT_DIR
 import logging
 import gtk
 import sys
+import pkg_resources
+
+from tryton.config import CURRENT_DIR
 
 _ = gettext.gettext
 
@@ -152,9 +154,10 @@ _LOCALE2WIN32 = {
 
 def setlang(lang=None, locale_dict=None):
     "Set language"
-    locale_dir = os.path.join(CURRENT_DIR, 'share/locale')
+    locale_dir = os.path.join(CURRENT_DIR, 'data/locale')
     if not os.path.isdir(locale_dir):
-        locale_dir = os.path.join(sys.prefix, 'share/locale')
+        locale_dir = pkg_resources.resource_filename(
+            'tryton', 'data/locale')
     if lang:
         encoding = locale.getdefaultlocale()[1]
         if not encoding:

@@ -24,9 +24,6 @@ Package Contents
 
         python doc/build.py
 
-  share/
-      The shared files like translations and images.
-
   tryton/
       tryton sources.
 

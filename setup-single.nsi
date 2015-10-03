@@ -12,7 +12,7 @@ OutFile "tryton-${VERSION}.exe"
 SetCompressor lzma
 SetCompress auto
 SilentInstall silent
-Icon "share\pixmaps\tryton\tryton.ico"
+Icon "tryton\data\pixmaps\tryton\tryton.ico"
 
 Section
     InitPluginsDir

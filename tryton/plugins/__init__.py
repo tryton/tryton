@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import sys
 import imp
 import gettext
 
-from tryton.config import get_config_dir
+from tryton.config import get_config_dir, CURRENT_DIR
 
 __all__ = ['MODULES', 'register']
 
@@ -18,10 +17,7 @@ def register():
     global MODULES
     paths = [
         os.path.join(get_config_dir(), 'plugins'),
-        os.path.dirname(__file__),
-        # py2exe
-        os.path.join(os.path.abspath(os.path.normpath(
-                    os.path.dirname(sys.argv[0]))), 'plugins'),
+        os.path.join(CURRENT_DIR, 'plugins'),
         ]
     paths = filter(os.path.isdir, paths)
 
