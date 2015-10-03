@@ -1489,21 +1489,13 @@
 
     Sao.field.Float = Sao.class_(Sao.field.Field, {
         _default: null,
-        default_digits: [16, 2],
         digits: function(record, factor) {
             if (factor === undefined) {
                 factor = 1;
             }
-            var digits = [];
-            var default_ = [16, 2];
-            var record_digits = record.expr_eval(
-                this.description.digits || default_);
-            for (var idx in record_digits) {
-                if (record_digits[idx] !== null) {
-                    digits.push(record_digits[idx]);
-                } else {
-                    digits.push(default_[idx]);
-                }
+            var digits = record.expr_eval( this.description.digits);
+            if (!digits) {
+                return;
             }
             var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
             return [digits[0] + shift, digits[1] - shift];
@@ -1549,7 +1541,11 @@
             var value = this.get(record);
             if (value !== null) {
                 var digits = this.digits(record, factor);
-                return (value * factor).toFixed(digits[1]);
+                if (digits) {
+                    return (value * factor).toFixed(digits[1]);
+                } else {
+                    return (value * factor);
+                }
             } else {
                 return '';
             }
@@ -1574,7 +1570,6 @@
     });
 
     Sao.field.Integer = Sao.class_(Sao.field.Float, {
-        default_digits: [16, 0],
         convert: function(value) {
             value = parseInt(value, 10);
             if (isNaN(value)) {
