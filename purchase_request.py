@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import operator
+from sql import Null
+from sql.conditionals import Case
 from itertools import groupby
 from functools import partial
 from decimal import Decimal
@@ -76,7 +78,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         ('done', 'Done'),
         ('draft', 'Draft'),
         ('cancel', 'Cancel'),
-        ], 'State'), 'get_state')
+        ], 'State'), 'get_state', searcher='search_state')
 
     @classmethod
     def __setup__(cls):
@@ -142,6 +144,34 @@ class PurchaseRequest(ModelSQL, ModelView):
             else:
                 return 'purchased'
         return 'draft'
+
+    @classmethod
+    def search_state(cls, name, clause):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
+
+        request = cls.__table__()
+        purchase_line = PurchaseLine.__table__()
+        purchase = Purchase.__table__()
+
+        _, operator_, state = clause
+        Operator = fields.SQL_OPERATORS[operator_]
+        state_case = Case(
+            (purchase.state == 'cancel', 'cancel'),
+            (purchase.state == 'done', 'done'),
+            (request.purchase_line != Null, 'purchased'),
+            else_='draft')
+        state_query = request.join(
+            purchase_line, type_='LEFT',
+            condition=request.purchase_line == purchase_line.id
+            ).join(purchase, type_='LEFT',
+            condition=purchase_line.purchase == purchase.id
+            ).select(
+            request.id,
+            where=Operator(state_case, state))
+
+        return [('id', 'in', state_query)]
 
     def get_warehouse_required(self, name):
         return self.product.type in ('goods', 'assets')
