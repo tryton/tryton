@@ -1525,13 +1525,7 @@ class OpenCustomer(Wizard):
         customer_ids = [line[0] for line in Transaction().cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', customer_ids)])
-
-        model_data, = ModelData.search([
-                ('fs_id', '=', 'act_open_customer'),
-                ('module', '=', 'sale'),
-                ], limit=1)
-        wizard = Wizard(model_data.db_id)
-
+        wizard = Wizard(ModelData.get_id('sale', 'act_open_customer'))
         action['name'] = wizard.name
         return action, {}
 
