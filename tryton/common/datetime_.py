@@ -275,7 +275,7 @@ class Time(gtk.ComboBoxEntry):
         self.__time = time
 
     def update_label(self):
-        if not self.__time:
+        if self.__time is None:
             self.__entry.set_text('')
             return
 
