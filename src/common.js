@@ -715,21 +715,22 @@
             this.el = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
-            }).text(attributes.string || '')
-            .append(jQuery('<span/>', {
-                'class': 'glyphicon',
+            });
+            this.icon = jQuery('<img/>', {
+                'class': 'icon',
                 'aria-hidden': true
-            }));
+            }).appendTo(this.el);
+            this.el.append(attributes.string || '');
             this.set_icon(attributes.icon);
         },
         set_icon: function(icon_name) {
             if (!icon_name) {
+                this.icon.attr('src', '');
                 return;
             }
             var prm = Sao.common.ICONFACTORY.register_icon(icon_name);
             prm.done(function(url) {
-                this.el.children('.glyphicon').css(
-                    'background-image', 'url("' + url + '")');
+                this.icon.attr('src', url);
             }.bind(this));
         },
         set_state: function(record) {
