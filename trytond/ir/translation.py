@@ -1053,15 +1053,6 @@ class TranslationSet(Wizard):
                 document = xml.dom.minidom.parseString(style_xml)
                 strings += self._translate_report(document.documentElement)
 
-            if report.style_content:
-                style_io = StringIO.StringIO(report.style_content)
-                style_z = zipfile.ZipFile(style_io, mode='r')
-                style_xml = style_z.read('styles.xml')
-
-                document = xml.dom.minidom.parseString(style_xml)
-
-                strings += self._translate_report(document.documentElement)
-
             for string in {}.fromkeys(strings).keys():
                 src_md5 = Translation.get_src_md5(string)
                 done = False

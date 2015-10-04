@@ -90,8 +90,7 @@ class Action(ModelSQL, ModelView):
         columns.add('icon.rec_name')
         to_remove = ()
         if type_ == 'ir.action.report':
-            to_remove = ('report_content_custom', 'report_content',
-                'style_content')
+            to_remove = ('report_content_custom', 'report_content')
         elif type_ == 'ir.action.act_window':
             to_remove = ('domain', 'context', 'search_value')
         columns.difference_update(to_remove)
