@@ -10,7 +10,7 @@ Location
 ********
 
 Locations are generic places where products are physically or
-virtually stored. There are six types of locations:
+virtually stored. There are seven types of locations:
 
 * Storage
 
@@ -41,6 +41,11 @@ virtually stored. There are six types of locations:
 
   Lost And Found locations collects inventory gaps. See
   :ref:inventory for details.
+
+* Drop
+
+  Drop locations are virtual locations used as intermediary locations in the
+  process of drop shipping.
 
 Locations are organised in tree structures, allowing to define
 fine grained structures.

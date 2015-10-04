@@ -41,6 +41,7 @@ class Location(ModelSQL, ModelView):
         ('warehouse', 'Warehouse'),
         ('storage', 'Storage'),
         ('production', 'Production'),
+        ('drop', 'Drop'),
         ('view', 'View'),
         ], 'Location type', states=STATES, depends=DEPENDS)
     parent = fields.Many2One("stock.location", "Parent", select=True,
