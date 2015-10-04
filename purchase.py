@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond.model import fields, ModelView, Workflow
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.tools import grouped_slice
 
 
-__all__ = ['PurchaseRequest', 'Purchase', 'PurchaseLine', 'ProductSupplier',
-    'CreatePurchase', 'PurchaseHandleShipmentException']
+__all__ = ['PurchaseRequest', 'PurchaseConfig', 'Purchase', 'PurchaseLine',
+    'ProductSupplier', 'CreatePurchase', 'PurchaseHandleShipmentException']
 __metaclass__ = PoolMeta
 
 
@@ -25,6 +26,14 @@ class PurchaseRequest:
             'readonly': Eval('state') != 'draft',
             },
         depends=['customer', 'state'])
+
+
+class PurchaseConfig:
+    __name__ = 'purchase.configuration'
+
+    purchase_drop_location = fields.Property(
+        fields.Many2One('stock.location', 'Purchase Drop Location',
+            domain=[('type', '=', 'drop')]))
 
 
 class Purchase:
@@ -48,6 +57,13 @@ class Purchase:
                 },
             depends=['customer']),
         'get_drop_shipments')
+    drop_location = fields.Many2One('stock.location', 'Drop Location',
+        domain=[('type', '=', 'drop')],
+        states={
+            'invisible': ~Eval('customer', False),
+            'required': Eval('customer', False),
+            },
+        depends=['customer'])
 
     @classmethod
     def __setup__(cls):
@@ -56,6 +72,14 @@ class Purchase:
                 'delivery_address_required': ('A delivery address must be '
                     'defined for quotation of purchase "%s".'),
                 })
+
+    @staticmethod
+    def default_drop_location():
+        pool = Pool()
+        PurchaseConfig = pool.get('purchase.configuration')
+
+        config = PurchaseConfig(1)
+        return config.purchase_drop_location.id
 
     @fields.depends('customer', 'delivery_address')
     def on_change_customer(self):
@@ -73,6 +97,49 @@ class Purchase:
         if self.customer and not self.delivery_address:
             self.raise_user_error('delivery_address_required', self.rec_name)
 
+    def create_move(self, move_type):
+        pool = Pool()
+        DropShipment = pool.get('stock.shipment.drop')
+
+        moves = super(Purchase, self).create_move(move_type)
+        if moves and self.customer and move_type == 'in':
+            drop_shipment = self.create_drop_shipment()
+            drop_shipment.supplier_moves = moves
+            drop_shipment.save()
+            DropShipment.wait([drop_shipment])
+
+        return moves
+
+    def create_drop_shipment(self):
+        pool = Pool()
+        DropShipment = pool.get('stock.shipment.drop')
+
+        return DropShipment(
+            company=self.company,
+            supplier=self.party,
+            contact_address=self.party.address_get(),
+            customer=self.customer,
+            delivery_address=self.delivery_address,
+            )
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, purchases):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        Move = pool.get('stock.move')
+
+        super(Purchase, cls).cancel(purchases)
+        sale_lines = []
+        for sub_purchases in grouped_slice(purchases):
+            sale_lines += SaleLine.search([
+                    ('purchase_request.purchase_line.purchase', 'in',
+                        [p.id for p in sub_purchases]),
+                    ])
+        Move.cancel([m for sl in sale_lines for m in sl.moves
+                if m.state != 'done' and m.from_location.type == 'drop'])
+
 
 class PurchaseLine:
     __name__ = 'purchase.line'
@@ -80,7 +147,7 @@ class PurchaseLine:
     def get_to_location(self, name):
         result = super(PurchaseLine, self).get_to_location(name)
         if self.purchase.customer:
-            return self.purchase.customer.customer_location.id
+            return self.purchase.drop_location.id
         return result
 
     def get_move(self):
@@ -122,36 +189,44 @@ class PurchaseHandleShipmentException:
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
+        Purchase = pool.get('purchase.purchase')
+        PurchaseRequest = pool.get('purchase.request')
+        Move = pool.get('stock.move')
 
         super(PurchaseHandleShipmentException, self).transition_handle()
 
-        to_recreate = self.ask.recreate_moves
-        domain_moves = self.ask.domain_moves
-        sales, saleline_write = set(), []
-        sale_lines = SaleLine.search([
-                ('purchase_request.purchase_line.purchase', '=',
-                    Transaction().context['active_id']),
-                ])
-        saleline_write = []
-        for sale_line in sale_lines:
-            moves_ignored = []
-            moves_recreated = []
-            skip = set(sale_line.moves_ignored)
-            skip.update(sale_line.moves_recreated)
-            for move in sale_line.moves:
-                if move not in domain_moves or move in skip:
-                    continue
-                if move in to_recreate:
-                    moves_recreated.append(move.id)
-                else:
-                    moves_ignored.append(move.id)
-                sales.add(sale_line.sale)
-            saleline_write.append([sale_line])
-            saleline_write.append({
-                    'moves_ignored': [('add', moves_ignored)],
-                    'moves_recreated': [('add', moves_recreated)],
-                    })
+        sales = set()
+        moves = set()
+        to_recreate = set(self.ask.recreate_moves)
+        domain_moves = set(self.ask.domain_moves)
+        purchase = Purchase(Transaction().context['active_id'])
 
-            SaleLine.write(*saleline_write)
+        requests = []
+        for sub_lines in grouped_slice([pl.id for pl in purchase.lines]):
+            requests += PurchaseRequest.search([
+                    ('purchase_line', 'in', list(sub_lines)),
+                    ])
+        pline2request = {r.purchase_line: r for r in requests}
+        request2sline = {}
+        for sub_requests in grouped_slice(requests):
+            sale_lines = SaleLine.search([
+                    ('purchase_request', 'in', [r.id for r in sub_requests]),
+                    ])
+            request2sline.update({sl.purchase_request: sl
+                    for sl in sale_lines})
+
+        for line in purchase.lines:
+            if not set(line.moves) & domain_moves:
+                continue
+            if not any(m in to_recreate for m in line.moves):
+                sale_line = request2sline[pline2request[line]]
+                moves.update({m for m in sale_line.moves
+                        if (m.state != 'done'
+                            and m.from_location.type == 'drop')})
+                sales.add(sale_line.sale)
+
+        if moves:
+            Move.cancel(list(moves))
+        if sales:
             Sale.process(list(sales))
         return 'end'

@@ -77,6 +77,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
             <field name="act_window" ref="act_shipment_drop_form"/>
         </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_drop_form_domain_shipped">
+            <field name="name">Shipped</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'shipped')]" pyson="1"/>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
         <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
@@ -185,6 +192,30 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('user', {}).get('company', None))]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_shipment_drop"/>
+        </record>
+
+    </data>
+
+    <data noupdate="1">
+
+        <!-- Default locations -->
+        <record model="stock.location" id="location_drop">
+            <field name="name">Drop</field>
+            <field name="code">DROP</field>
+            <field name="type">drop</field>
+        </record>
+
+        <record model="ir.property" id="default_sale_location_drop">
+            <field name="field" 
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_drop_location')]"/>
+            <field name="value"
+                eval="'stock.location,' + str(ref('location_drop'))"/>
+        </record>
+        <record model="ir.property" id="default_purchase_location_drop">
+            <field name="field" 
+                search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_drop_location')]"/>
+            <field name="value"
+                eval="'stock.location,' + str(ref('location_drop'))"/>
         </record>
 
     </data>

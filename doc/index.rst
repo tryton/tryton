@@ -22,7 +22,12 @@ The drop shipment can be in one of this states:
 
 * Waiting
 
-  All moves are in draft but the shipment is in readonly.
+  All moves are in draft, the synchronization between the moves of the supplier
+  and the moves to the customer has occured.
+
+* Shipped
+
+  All moves from the supplier are done.
 
 * Done
 

@@ -9,6 +9,11 @@ this repository contains the full copyright notices and license terms. -->
         <field name="delivery_address"/>
         <newline/>
     </xpath>
+    <xpath expr="/form/notebook/page[@id='info']/field[@name='invoice_method']"
+        position="after">
+        <label name="drop_location"/>
+        <field name="drop_location"/>
+    </xpath>
     <xpath
         expr="/form/notebook/page[@name='shipments']/field[@name='shipments']"
         position="after">

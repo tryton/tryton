@@ -12,9 +12,11 @@ def register():
         Configuration,
         ShipmentDrop,
         Move,
+        SaleConfig,
         Sale,
         SaleLine,
         PurchaseRequest,
+        PurchaseConfig,
         Purchase,
         PurchaseLine,
         ProductSupplier,
@@ -22,5 +24,4 @@ def register():
     Pool.register(
         CreatePurchase,
         PurchaseHandleShipmentException,
-        SaleHandleShipmentException,
         module='sale_supply_drop_shipment', type_='wizard')
