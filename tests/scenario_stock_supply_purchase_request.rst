@@ -81,6 +81,18 @@ Create product user::
     >>> product_admin_user.groups.append(product_admin_group)
     >>> product_admin_user.save()
 
+Create purchase user::
+
+    >>> purchase_user = User()
+    >>> purchase_user.name = 'Purchase'
+    >>> purchase_user.login = 'purchase'
+    >>> purchase_user.main_company = company
+    >>> purchase_group, = Group.find([
+    ...     ('name', '=', 'Purchase')
+    ...     ])
+    >>> purchase_user.groups.append(purchase_group)
+    >>> purchase_user.save()
+
 Create product::
 
     >>> config.user = product_admin_user.id
@@ -145,8 +157,9 @@ Create the purchase request::
 
 There is now a draft purchase request::
 
+    >>> config.user = purchase_user.id
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.product == product
     True
     >>> pr.quantity
-    1
+    1.0
