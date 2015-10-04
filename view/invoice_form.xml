@@ -46,19 +46,17 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="total_amount" xalign="1.0" xexpand="0"/>
                     </group>
                     <group col="5" colspan="4" id="buttons">
-                        <button name="cancel" string="_Cancel"
+                        <button name="cancel" string="Cancel"
                             icon="tryton-cancel"
                             confirm="Are you sure to cancel the invoice?"/>
-                        <button name="draft" string="_Draft"
+                        <button name="draft" string="Draft"
                             icon="tryton-go-previous"/>
                         <button name="validate_invoice"
                             string="Validate"
                             help="Also known as Pro Forma"
                             icon="tryton-go-next"/>
-                        <button name="post" string="_Post"
-                            icon="tryton-ok"/>
-                        <button name="pay" string="_Pay"
-                            icon="tryton-go-next"/>
+                        <button name="post" string="Post" icon="tryton-ok"/>
+                        <button name="pay" string="Pay" icon="tryton-go-next"/>
                     </group>
                 </group>
             </group>
