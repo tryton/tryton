@@ -4,15 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
 
-        <record model="account.account.template" id="account_template_cogs">
-            <field name="name">COGS</field>
-            <field name="type" ref="account.account_type_template_expense"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
-            <field name="parent" ref="account.account_template_root"/>
-            <field name="kind">other</field>
-        </record>
-
         <!-- Read access to compute anglo saxon account.move lines -->
         <record model="ir.model.access" id="access_purchase_line_account">
             <field name="model" search="[('model', '=', 'purchase.line')]"/>
