@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record id="account_template_assets_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Sredstva</field>
+            <field name="type" ref="account.account_type_template_asset_long_term_sl"/>
+            <field name="reconcile" eval="False"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root_sl"/>
+            <field name="kind">expense</field>
+        </record>
+
+        <record id="account_template_depretiation_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Amortizacija</field>
+            <field name="type" ref="account.account_type_template_asset_long_term_sl"/>
+            <field name="reconcile" eval="False"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account_template_assets_sl"/>
+            <field name="kind">other</field>
+        </record>
+
+    </data>
+</tryton>
