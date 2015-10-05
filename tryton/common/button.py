@@ -9,9 +9,7 @@ class Button(gtk.Button):
 
     def __init__(self, attrs=None):
         self.attrs = attrs or {}
-        label = attrs.get('string', '')
-        if '_' not in label:
-            label = '_' + label
+        label = '_' + attrs.get('string', '').replace('_', '__')
         super(Button, self).__init__(label=label, stock=None,
             use_underline=True)
         self._set_icon(attrs.get('icon'))
