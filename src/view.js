@@ -150,12 +150,17 @@
                 th = jQuery('<th/>');
                 var label = jQuery('<label/>')
                     .text(column.attributes.string);
-                if (column.attributes.required) {
-                    label.addClass('required');
+                if (this.editable) {
+                    if (column.attributes.required) {
+                        label.addClass('required');
+                    }
+                    if (!column.attributes.readonly) {
+                        label.addClass('editable');
+                    }
                 }
                 tr.append(th.append(label));
                 column.header = th;
-            });
+            }, this);
             this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
 
@@ -199,7 +204,8 @@
                         'relation_field', 'string', 'views', 'invisible',
                         'add_remove', 'sort', 'context', 'filename',
                         'autocomplete', 'translate', 'create', 'delete',
-                        'selection_change_with', 'schema_model', 'required'];
+                        'selection_change_with', 'schema_model', 'required',
+                        'readonly'];
                     for (i in attribute_names) {
                         var attr = attribute_names[i];
                         if ((attr in model.fields[name].description) &&
@@ -1979,6 +1985,13 @@
                 this.el.addClass('required');
             } else {
                 this.el.removeClass('required');
+            }
+            if ((field && field.description.readonly) ||
+                    state_changes.readonly) {
+                this.el.removeClass('editable');
+                this.el.removeClass('required');
+            } else {
+                this.el.addClass('editable');
             }
         }
     });
