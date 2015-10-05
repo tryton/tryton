@@ -451,15 +451,20 @@ class ViewTree(View):
     def get_widget(cls, name):
         return cls.WIDGETS[name]
 
-    @staticmethod
-    def set_column_widget(column, field, attributes, arrow=True):
+    def set_column_widget(self, column, field, attributes, arrow=True):
         tooltips = Tooltips()
         hbox = gtk.HBox(False, 2)
         label = gtk.Label(attributes['string'])
-        if field and field.attrs.get('required'):
-            attrlist = pango.AttrList()
-            attrlist.insert(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
-            label.set_attributes(attrlist)
+        if field and self.editable:
+            required = field.attrs.get('required')
+            readonly = field.attrs.get('readonly')
+            if required or not readonly:
+                attrlist = pango.AttrList()
+                if required:
+                    attrlist.insert(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
+                if not readonly:
+                    attrlist.change(pango.AttrStyle(pango.STYLE_ITALIC, 0, -1))
+                label.set_attributes(attrlist)
         label.show()
         help = attributes['string']
         if field and field.attrs.get('help'):

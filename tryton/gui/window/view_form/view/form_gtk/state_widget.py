@@ -44,8 +44,15 @@ class Label(StateMixin, gtk.Label):
             weight = pango.WEIGHT_BOLD
         else:
             weight = pango.WEIGHT_NORMAL
+        if ((field and field.attrs.get('readonly'))
+                or state_changes.get('readonly')):
+            style = pango.STYLE_NORMAL
+            weight = pango.WEIGHT_NORMAL
+        else:
+            style = pango.STYLE_ITALIC
         attrlist = pango.AttrList()
         attrlist.change(pango.AttrWeight(weight, 0, -1))
+        attrlist.change(pango.AttrStyle(style, 0, -1))
         self.set_attributes(attrlist)
 
 

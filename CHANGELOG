@@ -1,3 +1,4 @@
+* Use italic labels for editable fields
 * Escape '_' in button string
 * Export selected records only
 * Use HTML for RichText widget
