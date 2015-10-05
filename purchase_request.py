@@ -7,7 +7,9 @@ from sql.conditionals import Case
 from itertools import groupby
 from functools import partial
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields, Check
+
+from trytond import backend
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.pyson import If, In, Eval
@@ -38,14 +40,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         states=STATES, depends=DEPENDS)
     uom_digits = fields.Function(fields.Integer('UOM Digits'),
         'on_change_with_uom_digits')
-    computed_quantity = fields.Float('Computed Quantity', readonly=True,
-        digits=(16, Eval('computed_uom_digits', 2)),
-        depends=['computed_uom_digits'])
+    computed_quantity = fields.Float('Computed Quantity', readonly=True)
     computed_uom = fields.Many2One('product.uom', 'Computed UOM',
         readonly=True)
-    computed_uom_digits = fields.Function(fields.Integer(
-            'Computed UOM Digits'),
-        'on_change_with_computed_uom_digits')
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
     default_uom_digits = fields.Function(fields.Integer('Default UOM Digits'),
@@ -90,14 +87,10 @@ class PurchaseRequest(ModelSQL, ModelView):
                 'delete_purchase_line': ('You can not delete purchased '
                     'request.'),
                 })
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('check_purchase_request_quantity', Check(t, t.quantity > 0),
-                'The requested quantity must be greater than 0'),
-            ]
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         sql_table = cls.__table__()
         super(PurchaseRequest, cls).__register__(module_name)
@@ -107,6 +100,10 @@ class PurchaseRequest(ModelSQL, ModelView):
                 columns=[sql_table.origin],
                 values=['stock.order_point,-1'],
                 where=sql_table.origin == 'stock.order_point,0'))
+
+        # Migration from 3.6: removing the constraint on the quantity
+        tablehandler = TableHandler(cursor, cls, module_name)
+        tablehandler.drop_constraint('check_purchase_request_quantity')
 
     def get_rec_name(self, name):
         if self.warehouse:
@@ -180,12 +177,6 @@ class PurchaseRequest(ModelSQL, ModelView):
     def on_change_with_uom_digits(self, name=None):
         if self.uom:
             return self.uom.digits
-        return 2
-
-    @fields.depends('computed_uom')
-    def on_change_with_computed_uom_digits(self, name=None):
-        if self.computed_uom:
-            return self.computed_uom.digits
         return 2
 
     @fields.depends('product')
@@ -308,7 +299,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         for new_req in new_requests:
             if new_req.supply_date == datetime.date.max:
                 new_req.supply_date = None
-            if new_req.quantity > 0.0:
+            if new_req.computed_quantity > 0:
                 new_req.save()
 
     @classmethod
@@ -335,14 +326,9 @@ class PurchaseRequest(ModelSQL, ModelView):
                     request.warehouse.id != pline.purchase.warehouse.id:
                 continue
             # Take smallest amount between request and purchase line
-            req_qty = Uom.compute_qty(request.uom, request.quantity,
-                    pline.unit)
-            if req_qty < pline.quantity:
-                quantity = request.quantity
-                uom = request.uom
-            else:
-                quantity = pline.quantity
-                uom = pline.unit
+            pline_qty = Uom.compute_qty(pline.unit, pline.quantity,
+                pline.product.default_uom, round=False)
+            quantity = min(request.computed_quantity, pline_qty)
 
             existing_req.setdefault(
                 (request.product.id, request.warehouse.id),
@@ -350,7 +336,6 @@ class PurchaseRequest(ModelSQL, ModelView):
                         'supply_date': (
                             request.supply_date or datetime.date.max),
                         'quantity': quantity,
-                        'uom': uom,
                         })
 
         for i in existing_req.itervalues():
@@ -362,12 +347,13 @@ class PurchaseRequest(ModelSQL, ModelView):
             for old_req in existing_req.get(
                     (new_req.product.id, new_req.warehouse.id), []):
                 if old_req['supply_date'] <= new_req.supply_date:
-                    quantity = Uom.compute_qty(old_req['uom'],
-                        old_req['quantity'], new_req.uom)
-                    new_req.quantity = max(0.0, new_req.quantity - quantity)
-                    new_req.computed_quantity = new_req.quantity
-                    old_req['quantity'] = Uom.compute_qty(new_req.uom,
-                        max(0.0, quantity - new_req.quantity), old_req['uom'])
+                    new_req.computed_quantity = max(0.0,
+                        new_req.computed_quantity - old_req['quantity'])
+                    new_req.quantity = Uom.compute_qty(
+                        new_req.product.default_uom, new_req.computed_quantity,
+                        new_req.uom)
+                    old_req['quantity'] = max(0.0,
+                        old_req['quantity'] - new_req.computed_quantity)
                 else:
                     break
 
@@ -445,9 +431,9 @@ class PurchaseRequest(ModelSQL, ModelView):
             shortage_date)
 
         max_quantity = order_point and order_point.max_quantity or 0.0
-        quantity = Uom.compute_qty(product.default_uom,
-                max_quantity - product_quantity,
-                product.purchase_uom or product.default_uom)
+        computed_quantity = max_quantity - product_quantity
+        quantity = Uom.compute_qty(product.default_uom, computed_quantity,
+            product.purchase_uom or product.default_uom)
 
         if order_point:
             origin = 'stock.order_point,%s' % order_point.id
@@ -457,8 +443,8 @@ class PurchaseRequest(ModelSQL, ModelView):
             party=supplier and supplier or None,
             quantity=quantity,
             uom=product.purchase_uom or product.default_uom,
-            computed_quantity=quantity,
-            computed_uom=product.purchase_uom or product.default_uom,
+            computed_quantity=computed_quantity,
+            computed_uom=product.default_uom,
             purchase_date=purchase_date,
             supply_date=shortage_date,
             stock_level=product_quantity,
