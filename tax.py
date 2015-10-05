@@ -34,7 +34,7 @@ KINDS = [
 class TaxGroup(ModelSQL, ModelView):
     'Tax Group'
     __name__ = 'account.tax.group'
-    name = fields.Char('Name', size=None, required=True, translate=True)
+    name = fields.Char('Name', size=None, required=True)
     code = fields.Char('Code', size=None, required=True)
     kind = fields.Selection(KINDS, 'Kind', required=True)
 
@@ -56,13 +56,13 @@ class TaxGroup(ModelSQL, ModelView):
 class TaxCodeTemplate(ModelSQL, ModelView):
     'Tax Code Template'
     __name__ = 'account.tax.code.template'
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     parent = fields.Many2One('account.tax.code.template', 'Parent')
     childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
-    description = fields.Text('Description', translate=True)
+    description = fields.Text('Description')
 
     @classmethod
     def __setup__(cls):
@@ -101,8 +101,6 @@ class TaxCodeTemplate(ModelSQL, ModelView):
         '''
         pool = Pool()
         TaxCode = pool.get('account.tax.code')
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -114,24 +112,9 @@ class TaxCodeTemplate(ModelSQL, ModelView):
 
             new_tax_code, = TaxCode.create([vals])
 
-            prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
             for field_name, field in self._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    template = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(template, field_name) !=
-                                    prev_data[field_name])):
-                            data[field_name] = getattr(template, field_name)
-                    if data:
-                        TaxCode.write([new_tax_code], data)
+                prev_data[field_name] = getattr(self, field_name)
             template2tax_code[self.id] = new_tax_code.id
         new_id = template2tax_code[self.id]
 
@@ -145,8 +128,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
 class TaxCode(ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
-    name = fields.Char('Name', size=None, required=True, select=True,
-                       translate=True)
+    name = fields.Char('Name', size=None, required=True, select=True)
     code = fields.Char('Code', size=None, select=True)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -161,7 +143,7 @@ class TaxCode(ModelSQL, ModelView):
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_sum')
     template = fields.Many2One('account.tax.code.template', 'Template')
-    description = fields.Text('Description', translate=True)
+    description = fields.Text('Description')
 
     @classmethod
     def __setup__(cls):
@@ -259,9 +241,6 @@ class TaxCode(ModelSQL, ModelView):
         tax code id as value, used to convert template id into tax code. The
         dictionary is filled with new tax codes
         '''
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -270,26 +249,6 @@ class TaxCode(ModelSQL, ModelView):
             vals = self.template._get_tax_code_value(code=self)
             if vals:
                 self.write([self], vals)
-
-            prev_lang = self._context.get('language') or Config.get_language()
-            prev_data = {}
-            for field_name, field in self.template._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self.template, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    code = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in code.template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(code.template, field_name) !=
-                                    prev_data[field_name])):
-                            data[field_name] = getattr(code.template,
-                                field_name)
-                    if data:
-                        self.write([code], data)
             template2tax_code[self.template.id] = self.id
 
         for child in self.childs:
@@ -353,8 +312,8 @@ class OpenChartTaxCode(Wizard):
 class TaxTemplate(ModelSQL, ModelView):
     'Account Tax Template'
     __name__ = 'account.tax.template'
-    name = fields.Char('Name', required=True, translate=True)
-    description = fields.Char('Description', required=True, translate=True)
+    name = fields.Char('Name', required=True)
+    description = fields.Char('Description', required=True)
     group = fields.Many2One('account.tax.group', 'Group')
     sequence = fields.Integer('Sequence')
     start_date = fields.Date('Starting Date')
@@ -514,8 +473,6 @@ class TaxTemplate(ModelSQL, ModelView):
         '''
         pool = Pool()
         Tax = pool.get('account.tax')
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2tax is None:
             template2tax = {}
@@ -557,24 +514,6 @@ class TaxTemplate(ModelSQL, ModelView):
 
             new_tax, = Tax.create([vals])
 
-            prev_lang = self._context.get('language') or Config.get_language()
-            prev_data = {}
-            for field_name, field in self._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    template = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(template, field_name)
-                                    != prev_data[field_name])):
-                            data[field_name] = getattr(template, field_name)
-                    if data:
-                        Tax.write([new_tax], data)
             template2tax[self.id] = new_tax.id
         new_id = template2tax[self.id]
 
@@ -596,8 +535,8 @@ class Tax(ModelSQL, ModelView):
         none: tax = none
     '''
     __name__ = 'account.tax'
-    name = fields.Char('Name', required=True, translate=True)
-    description = fields.Char('Description', required=True, translate=True,
+    name = fields.Char('Name', required=True)
+    description = fields.Char('Description', required=True,
             help="The name that will be used in reports")
     group = fields.Many2One('account.tax.group', 'Group',
             states={
@@ -945,9 +884,6 @@ class Tax(ModelSQL, ModelView):
         value, used to convert template id into tax.  The dictionary is filled
         with new taxes.
         '''
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2tax is None:
             template2tax = {}
@@ -1018,25 +954,6 @@ class Tax(ModelSQL, ModelView):
             if vals:
                 self.write([self], vals)
 
-            prev_lang = self._context.get('language') or Config.get_language()
-            prev_data = {}
-            for field_name, field in self.template._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self.template, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    tax = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in tax.template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(tax.template, field_name)
-                                    != prev_data[field_name])):
-                            data[field_name] = getattr(tax.template,
-                                field_name)
-                    if data:
-                        self.write([tax], data)
             template2tax[self.template.id] = self.id
 
         for child in self.childs:
@@ -1195,7 +1112,7 @@ class TaxLine(ModelSQL, ModelView):
 class TaxRuleTemplate(ModelSQL, ModelView):
     'Tax Rule Template'
     __name__ = 'account.tax.rule.template'
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True)
     kind = fields.Selection(KINDS, 'Kind', required=True)
     lines = fields.One2Many('account.tax.rule.line.template', 'rule', 'Lines')
     account = fields.Many2One('account.account.template', 'Account Template',
@@ -1228,8 +1145,6 @@ class TaxRuleTemplate(ModelSQL, ModelView):
         '''
         pool = Pool()
         Rule = pool.get('account.tax.rule')
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2rule is None:
             template2rule = {}
@@ -1239,24 +1154,6 @@ class TaxRuleTemplate(ModelSQL, ModelView):
             vals['company'] = company_id
             new_rule, = Rule.create([vals])
 
-            prev_lang = self._context.get('language') or Config.get_language()
-            prev_data = {}
-            for field_name, field in self._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    template = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(self, field_name)
-                                    != prev_data[field_name])):
-                            data[field_name] = getattr(self, field_name)
-                    if data:
-                        Rule.write([new_rule], data)
             template2rule[self.id] = new_rule.id
         return template2rule[self.id]
 
@@ -1264,7 +1161,7 @@ class TaxRuleTemplate(ModelSQL, ModelView):
 class TaxRule(ModelSQL, ModelView):
     'Tax Rule'
     __name__ = 'account.tax.rule'
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True)
     kind = fields.Selection(KINDS, 'Kind', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
@@ -1305,9 +1202,6 @@ class TaxRule(ModelSQL, ModelView):
         rule id as value, used to convert template id into tax rule. The
         dictionary is filled with new tax rules.
         '''
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
 
         if template2rule is None:
             template2rule = {}
@@ -1317,25 +1211,6 @@ class TaxRule(ModelSQL, ModelView):
             if vals:
                 self.write([self], vals)
 
-            prev_lang = self._context.get('language') or Config.get_language()
-            prev_data = {}
-            for field_name, field in self.template._fields.iteritems():
-                if getattr(field, 'translate', False):
-                    prev_data[field_name] = getattr(self.template, field_name)
-            for lang in Lang.get_translatable_languages():
-                if lang == prev_lang:
-                    continue
-                with Transaction().set_context(language=lang):
-                    rule = self.__class__(self.id)
-                    data = {}
-                    for field_name, field in rule.template._fields.iteritems():
-                        if (getattr(field, 'translate', False)
-                                and (getattr(rule.template, field_name)
-                                    != prev_data[field_name])):
-                            data[field_name] = getattr(rule.template,
-                                field_name)
-                    if data:
-                        self.write([rule], data)
             template2rule[self.template.id] = self.id
 
 

@@ -37,17 +37,16 @@ class AccountTestCase(ModuleTestCase):
             'account.fiscalyear.balance_non_deferral', type='wizard')
         self.tax = POOL.get('account.tax')
         self.party = POOL.get('party.party')
+        self.model_data = POOL.get('ir.model.data')
 
     def test0010account_chart(self):
         'Test creation of minimal chart of accounts'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            account_template, = self.account_template.search([
-                    ('parent', '=', None),
-                    ])
-            tax_account, = self.account_template.search([
-                    ('name', '=', 'Main Tax'),
-                    ])
+            account_template = self.account_template(self.model_data.get_id(
+                    'account', 'account_template_root_en'))
+            tax_account = self.account_template(self.model_data.get_id(
+                    'account', 'account_template_tax_en'))
             with Transaction().set_user(0):
                 tax_code = self.tax_code_template()
                 tax_code.name = 'Tax Code'

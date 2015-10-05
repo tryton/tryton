@@ -38,11 +38,16 @@ def create_fiscalyear(company=None, today=None, config=None):
 def create_chart(company=None, config=None):
     "Create chart of accounts"
     AccountTemplate = Model.get('account.account.template', config=config)
+    ModelData = Model.get('ir.model.data')
 
     if not company:
         company = get_company()
+    data, = ModelData.find([
+            ('module', '=', 'account'),
+            ('fs_id', '=', 'account_template_root_en'),
+            ], limit=1)
 
-    account_template, = AccountTemplate.find([('parent', '=', None)])
+    account_template = AccountTemplate(data.db_id)
 
     create_chart = Wizard('account.create_chart')
     create_chart.execute('account')
