@@ -1021,12 +1021,11 @@
             var dfd = jQuery.Deferred();
             var records = this.current_view.selected_records();
             this.model.copy(records, this.context).then(function(new_ids) {
-                this.group.load(new_ids).always(function() {
-                    if (!jQuery.isEmptyObject(new_ids)) {
-                        this.set_current_record(this.group.get(new_ids[0]));
-                    }
-                    this.display().always(dfd.resolve);
-                }.bind(this));
+                this.group.load(new_ids);
+                if (!jQuery.isEmptyObject(new_ids)) {
+                    this.set_current_record(this.group.get(new_ids[0]));
+                }
+                this.display().always(dfd.resolve);
             }.bind(this), dfd.reject);
             return dfd.promise();
         },
