@@ -2431,7 +2431,7 @@
             if (record) {
                 var value = record.model.fields[this.field_name]
                     .get_client(record, this.factor);
-                this.input.val(value || '');
+                this.input.val(value);
             } else {
                 this.input.val('');
             }

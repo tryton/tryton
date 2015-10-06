@@ -1544,7 +1544,7 @@
                 if (digits) {
                     return (value * factor).toFixed(digits[1]);
                 } else {
-                    return (value * factor);
+                    return '' + (value * factor);
                 }
             } else {
                 return '';
