@@ -2951,7 +2951,7 @@
                 var dom;
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
-                var text = this.value();
+                var text = this.entry.val();
                 callback = function(result) {
                     if (!jQuery.isEmptyObject(result)) {
                         var value = this.value_from_id(result[0][0],
@@ -3051,7 +3051,7 @@
                             this.record().field_set_client(this.field_name,
                                 value, true);
                         } else {
-                            this.value('');
+                            this.entry.val('');
                         }
                     };
                     var parser = new Sao.common.DomainParser();
