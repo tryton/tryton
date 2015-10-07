@@ -444,7 +444,8 @@
                 context: this.context,
                 domain: this.domain,
                 view_ids: kwargs.view_ids,
-                views_preload: views_preload
+                views_preload: views_preload,
+                row_activate: this.activate.bind(this)
             });
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
@@ -459,6 +460,9 @@
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
+        },
+        activate: function() {
+            this.response('RESPONSE_OK');
         },
         response: function(response_id) {
             var records;
