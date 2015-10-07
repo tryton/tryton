@@ -1255,6 +1255,7 @@
             return buttons;
         },
         button: function(attributes) {
+            var ids;
             var process_action = function(action) {
                 this.reload(ids, true);
                 if (typeof action == 'string') {
@@ -1270,10 +1271,6 @@
             };
 
             var selected_records = this.current_view.selected_records();
-            var ids = selected_records.map(
-                function(record) {
-                    return record.id;
-                });
             this.current_view.set_value();
             var fields = this.current_view.get_fields();
 
@@ -1326,6 +1323,10 @@
                         jQuery.extend(context, record.get_timestamp());
                     }
                     record.save(false).done(function() {
+                        ids = selected_records.map(
+                                function(record) {
+                                    return record.id;
+                                });
                         record.model.execute(attributes.name,
                             [ids], context).then(process_action.bind(this));
                     }.bind(this));
