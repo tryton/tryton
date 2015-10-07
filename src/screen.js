@@ -788,7 +788,10 @@
                 }
             }
             return jQuery.when.apply(jQuery, deferreds).then(
-                    this.set_tree_state.bind(this));
+                    this.set_tree_state.bind(this)).then(function() {
+                // Force tab update
+                this.set_current_record(this.current_record);
+            }.bind(this));
         },
         display_next: function() {
             var view = this.current_view;
