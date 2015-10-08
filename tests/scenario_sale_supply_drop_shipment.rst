@@ -219,7 +219,7 @@ The purchase is now waiting for his new drop shipment::
     >>> purchase.reload()
     >>> purchase.shipment_state
     u'waiting'
-    >>> shipment, = [s for s in purchase.drop_shipments 
+    >>> shipment, = [s for s in purchase.drop_shipments
     ...     if s.state == 'waiting']
     >>> move, = shipment.customer_moves
     >>> move.quantity
