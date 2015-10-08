@@ -600,6 +600,9 @@ class M2O(GenericText):
     def search_remote(self, record, relation, text, domain=None,
             context=None, callback=None):
         field = record.group.fields[self.attrs['name']]
+        relation = field.attrs['relation']
+        access = common.MODELACCESS[relation]
+        create_access = self.attrs.get('create', True) and access['create']
 
         def search_callback(found):
             value = None
@@ -609,7 +612,7 @@ class M2O(GenericText):
             if callback:
                 callback()
         win = WinSearch(relation, search_callback, sel_multi=False,
-            context=context, domain=domain)
+            context=context, domain=domain, new=create_access)
         win.screen.search_filter(quote(text.decode('utf-8')))
         return win
 
