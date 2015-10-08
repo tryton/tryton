@@ -211,6 +211,7 @@ Create Purchase from Request::
 Receive 50 products::
 
     >>> config.user = stock_user.id
+    >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
     u'done'
@@ -226,9 +227,9 @@ Receive 50 products::
     Decimal('0.00')
     >>> stock.reload()
     >>> stock.debit
-    Decimal('0.00')
+    Decimal('150.00')
     >>> stock.credit
-    Decimal('0.00')
+    Decimal('150.00')
 
 Open supplier invoice::
 
