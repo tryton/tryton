@@ -66,8 +66,8 @@ class SaleLine:
     def supply_on_sale(self):
         supply_on_sale = super(SaleLine, self).supply_on_sale
         return (supply_on_sale
-            or all(m.from_location.type == 'drop'
-                for m in self.moves))
+            or (self.moves and all(m.from_location.type == 'drop'
+                    for m in self.moves)))
 
     def get_move(self, shipment_type):
         result = super(SaleLine, self).get_move(shipment_type)
