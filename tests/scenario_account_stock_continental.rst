@@ -322,6 +322,7 @@ Create Drop Shipment Move::
     u'processing'
 
     >>> shipment, = sale.drop_shipments
+    >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
     u'done'
@@ -373,6 +374,7 @@ Create Drop Shipment Move::
     u'processing'
 
     >>> shipment, = sale.drop_shipments
+    >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
     u'done'

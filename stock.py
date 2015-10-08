@@ -75,11 +75,11 @@ class Move:
         Get account move type
         '''
         type_ = (self.from_location.type, self.to_location.type)
-        if type_ == ('supplier', 'storage'):
+        if type_ in [('supplier', 'storage'), ('supplier', 'drop')]:
             return 'in_supplier'
         elif type_ == ('storage', 'supplier'):
             return 'out_supplier'
-        elif type_ == ('storage', 'customer'):
+        elif type_ in [('storage', 'customer'), ('drop', 'customer')]:
             return 'out_customer'
         elif type_ == ('customer', 'storage'):
             return 'in_customer'
