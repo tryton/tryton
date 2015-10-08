@@ -194,8 +194,6 @@ Receiving only 100 products::
 
     >>> config.user = stock_user.id
     >>> move, = shipment.supplier_moves
-    >>> move.unit_price == move.cost_price
-    True
     >>> move.quantity = 100
     >>> shipment.click('ship')
     >>> config.user = sale_user.id
@@ -224,13 +222,9 @@ The purchase is now waiting for his new drop shipment::
     >>> move, = shipment.customer_moves
     >>> move.quantity
     150.0
-    >>> move.unit_price == move.cost_price
-    True
     >>> move, = shipment.supplier_moves
     >>> move.quantity
     150.0
-    >>> move.unit_price == move.cost_price
-    True
 
 Let's cancel the shipment and handle the issue on the purchase.
 As a consequence the sale order is now in exception::

@@ -104,6 +104,5 @@ class SaleLine:
             move = self.get_move('out')
             if move is not None:
                 move.from_location = self.sale.drop_location
-                move.cost_price = move.unit_price
                 moves.append(move)
         return moves
