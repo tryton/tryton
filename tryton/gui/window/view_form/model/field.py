@@ -300,7 +300,7 @@ class FloatField(Field):
 
     def digits(self, record, factor=1):
         digits = record.expr_eval(self.attrs.get('digits'))
-        if not digits:
+        if not digits or any(d is None for d in digits):
             return
         shift = int(round(math.log(abs(factor), 10)))
         return (digits[0] + shift, digits[1] - shift)
