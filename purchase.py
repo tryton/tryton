@@ -14,5 +14,4 @@ class PurchaseLine:
     work = fields.Many2One('project.work', 'Work Effort', select=True,
         domain=[
             ('company', '=', Eval('_parent_purchase', {}).get('company', -1)),
-            ],
-        depends=['_parent_purchase'])
+            ])
