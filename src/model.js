@@ -1493,8 +1493,10 @@
             if (factor === undefined) {
                 factor = 1;
             }
-            var digits = record.expr_eval( this.description.digits);
-            if (!digits) {
+            var digits = record.expr_eval(this.description.digits);
+            if (!digits || !digits.every(function(e) {
+                return e !== null;
+            })) {
                 return;
             }
             var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
