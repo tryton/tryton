@@ -145,10 +145,12 @@ Receive 9 products::
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> Move = Model.get('stock.move')
     >>> shipment = ShipmentIn(supplier=supplier)
-    >>> move = Move(purchase.moves[0].id)
+    >>> move, = [m for m in purchase.moves if m.product == product]
+    >>> move = Move(move.id)
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 4.0
-    >>> move = Move(purchase.moves[1].id)
+    >>> move, = [m for m in purchase.moves if m.product == product_average]
+    >>> move = Move(move.id)
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
     >>> shipment.click('receive')
@@ -171,9 +173,10 @@ Open supplier invoice::
     >>> Invoice = Model.get('account.invoice')
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
-    >>> invoice_line = invoice.lines[0]
+    >>> invoice_line, = [l for l in invoice.lines if l.product == product]
     >>> invoice_line.unit_price = Decimal('6')
-    >>> invoice_line = invoice.lines[1]
+    >>> invoice_line, = [l for l in invoice.lines
+    ...     if l.product == product_average]
     >>> invoice_line.unit_price = Decimal('4')
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
@@ -261,9 +264,10 @@ Create an Inventory::
     >>> inventory = Inventory()
     >>> inventory.location = storage
     >>> inventory.click('complete_lines')
-    >>> inventory_line = inventory.lines[0]
+    >>> inventory_line, = [l for l in inventory.lines if l.product == product]
     >>> inventory_line.quantity = 1.0
-    >>> inventory_line = inventory.lines[1]
+    >>> inventory_line, = [l for l in inventory.lines
+    ...     if l.product == product_average]
     >>> inventory_line.quantity = 1.0
     >>> inventory.click('confirm')
     >>> inventory.state
