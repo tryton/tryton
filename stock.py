@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from decimal import Decimal
 
 from sql.operators import Concat
 from sql.aggregate import Count
@@ -352,20 +353,36 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
 
         to_save = []
+        cost_exp = Decimal(str(10.0 ** -Move.cost_price.digits[1]))
         for shipment in shipments:
             product_qty = defaultdict(lambda: 0)
+            product_cost = defaultdict(lambda: 0)
             for s_move in shipment.supplier_moves:
-                product_qty[s_move.product] += UoM.compute_qty(s_move.uom,
-                    s_move.quantity, s_move.product.default_uom)
-            for c_move in shipment.customer_moves:
-                if product_qty[c_move.product] <= 0:
+                if s_move.state == 'cancel':
                     continue
-                move_qty = UoM.compute_qty(c_move.uom, c_move.quantity,
-                    c_move.product.default_uom)
-                qty = min(product_qty[c_move.product], move_qty)
-                c_move.quantity = UoM.compute_qty(c_move.product.default_uom,
-                    qty, c_move.uom)
-                product_qty[c_move.product] -= qty
+                product_qty[s_move.product] += UoM.compute_qty(s_move.uom,
+                    s_move.quantity, s_move.product.default_uom, round=False)
+                if s_move.cost_price:
+                    internal_quantity = Decimal(str(s_move.internal_quantity))
+                    product_cost[s_move.product] += (
+                        s_move.unit_price * internal_quantity)
+            for product, cost in product_cost.iteritems():
+                qty = Decimal(str(product_qty[product]))
+                product_cost[product] = (cost / qty).quantize(cost_exp)
+            for c_move in shipment.customer_moves:
+                if c_move.state == 'cancel':
+                    continue
+                if product_qty[c_move.product] <= 0:
+                    c_move.shipment = None
+                else:
+                    move_qty = UoM.compute_qty(c_move.uom, c_move.quantity,
+                        c_move.product.default_uom, round=False)
+                    qty = min(product_qty[c_move.product], move_qty)
+                    c_move.quantity = UoM.compute_qty(
+                        c_move.product.default_uom,
+                        qty, c_move.uom)
+                    product_qty[c_move.product] -= qty
+                    c_move.cost_price = product_cost[c_move.product]
                 to_save.append(c_move)
         if to_save:
             Move.save(to_save)
@@ -397,6 +414,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 sale_line = request2sline[pline2request[move.origin]]
                 for move in sale_line.moves:
                     if (move.state not in ('cancel', 'done')
+                            and not move.shipment
                             and move.from_location.type == 'drop'):
                         move.shipment = shipment
                         to_save.append(move)
