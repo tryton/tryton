@@ -917,7 +917,10 @@
         },
         new_model_position: function() {
             var position = -1;
-            // TODO editable
+            if (this.current_view && (this.current_view.view_type == 'tree') &&
+                    (this.current_view.attributes.editable == 'top')) {
+                position = 0;
+            }
             return position;
         },
         set_on_write: function(name) {
