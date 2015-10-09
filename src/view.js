@@ -901,6 +901,16 @@
                     widget = new EditableBuilder(attributes.name,
                             this.tree.screen.model, attributes);
                     widget.view = this.tree;
+                    // We have to define an overflow:visible in order for the
+                    // completion widget to be shown
+                    widget.el.on('focusin', function() {
+                        jQuery(this).parents('.treeview td')
+                            .css('overflow', 'visible');
+                    });
+                    widget.el.on('focusout', function() {
+                        jQuery(this).parents('.treeview td')
+                            .css('overflow', 'hidden');
+                    });
                     var editable_el = this.get_editable_el();
                     editable_el.append(widget.el);
                     editable_el.data('widget', widget);
@@ -4958,14 +4968,6 @@
             Sao.View.EditableTree.Many2One._super.init.call(this, field_name,
                 model, attributes);
             this.el.on('keydown', this.key_press.bind(this));
-            // We have to define an overflow:visible in order for the
-            // completion widget to be shown
-            this.el.on('focusin', function() {
-                this.el.parents('.treeview td').css('overflow', 'visible');
-            }.bind(this));
-            this.el.on('focusout', function() {
-                this.el.parents('.treeview td').css('overflow', 'hidden');
-            }.bind(this));
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.TAB_KEYCODE) {
