@@ -444,14 +444,16 @@
                         context);
                 }
             }
-            prm.done(function() {
+            prm = prm.done(function() {
                 this.cancel();
                 if (force_reload) {
                     return this.reload();
                 }
             }.bind(this));
             if (this.group) {
-                this.group.written(this.id);
+                prm = prm.done(function() {
+                    return this.group.written(this.id);
+                }.bind(this));
             }
             if (this.group.parent) {
                 delete this.group.parent._changed[this.group.child_name];
