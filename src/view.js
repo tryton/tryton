@@ -748,8 +748,8 @@
                     return;
                 }
                 var add_row = function(record, pos, group) {
-                    var tree_row = new Sao.View.Tree.Row(this.tree, record,
-                            pos, this);
+                    var tree_row = new this.Class(
+                            this.tree, record, pos, this);
                     tree_row.construct(selected, expanded);
                     tree_row.redraw(selected, expanded);
                     this.rows.push(tree_row);
@@ -859,14 +859,20 @@
             var inner_rows, readonly_row, editable_row, current_td;
             var field, widget;
 
-            this.tree.rows.forEach(function(row) {
-                if (row.is_selected()) {
-                    previously_selected = row;
+            function get_previously_selected(rows, selected) {
+                var i, r;
+                for (i = 0; i < rows.length; i++) {
+                    r = rows[i];
+                    if (r.is_selected()) {
+                        previously_selected = r;
+                    }
+                    if (r != selected) {
+                        r.set_selection(false);
+                    }
+                    get_previously_selected(r.rows, selected);
                 }
-                if (row != this) {
-                    row.set_selection(false);
-                }
-            }.bind(this));
+            }
+            get_previously_selected(this.tree.rows, this);
             this.selection_changed();
 
             var save_prm;

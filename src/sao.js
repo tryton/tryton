@@ -84,6 +84,7 @@ var Sao = {};
         var ClassConstructor = function() {
             if (!(this instanceof ClassConstructor))
                 throw new Error('Constructor function requires new operator');
+            this.Class = ClassConstructor;
             if (this.init) {
                 this.init.apply(this, arguments);
             }
