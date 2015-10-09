@@ -572,7 +572,9 @@
                 td.on('click keypress', {column: i, td: td},
                         Sao.common.click_press(this.select_row.bind(this),
                             true));
-                td.dblclick(this.switch_row.bind(this));
+                if (!this.tree.editable) {
+                    td.dblclick(this.switch_row.bind(this));
+                }
                 var widgets = this.build_widgets();
                 var table = widgets[0];
                 var row = widgets[1];
