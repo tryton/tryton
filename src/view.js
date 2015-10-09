@@ -2791,6 +2791,16 @@
             }).appendTo(group);
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
+
+            if (!attributes.completion || attributes.completion == "1") {
+                Sao.common.get_completion(group,
+                    this._update_completion.bind(this),
+                    this._completion_match_selected.bind(this),
+                    this._completion_action_activated.bind(this));
+                this.wid_completion = true;
+            }
+
+            // Append buttons after the completion to not break layout
             var buttons = jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).appendTo(group);
@@ -2801,13 +2811,7 @@
                 'class': 'glyphicon glyphicon-search'
             })).appendTo(buttons);
             this.but_open.click(this.edit.bind(this));
-            if (!attributes.completion || attributes.completion == "1") {
-                Sao.common.get_completion(group,
-                    this._update_completion.bind(this),
-                    this._completion_match_selected.bind(this),
-                    this._completion_action_activated.bind(this));
-                this.wid_completion = true;
-            }
+
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
         },
