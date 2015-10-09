@@ -832,7 +832,7 @@
         init: function(tree, record, pos, parent) {
             Sao.View.Tree.RowEditable._super.init.call(this, tree, record, pos,
                 parent);
-            this.edited_column = undefined;
+            this.edited_column = null;
         },
         redraw: function(selected, expanded) {
             var i, tr, td, widget;
@@ -876,7 +876,7 @@
             }
             save_prm.done(function () {
                 if (previously_selected &&
-                    previously_selected.edited_column !== undefined) {
+                        previously_selected.edited_column !== null) {
                     previous_td = previously_selected.get_active_td();
                     previous_td.on('click keypress', {
                         td: previous_td,
