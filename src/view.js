@@ -568,6 +568,7 @@
                 }).append(jQuery('<div/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
+                td.css('overflow', 'hidden');
                 td.on('click keypress', {column: i, td: td},
                         Sao.common.click_press(this.select_row.bind(this),
                             true));
@@ -833,6 +834,24 @@
                 parent);
             this.edited_column = undefined;
         },
+        redraw: function(selected, expanded) {
+            var i, tr, td, widget;
+            var field;
+
+            Sao.View.Tree.RowEditable._super.redraw.call(this, selected,
+                    expanded);
+            // The autocompletion widget do not call display thus we have to
+            // call it when redrawing the row
+            for (i = 0; i < this.tree.columns.length; i++) {
+                td = this._get_column_td(i);
+                tr = td.find('tr');
+                widget = jQuery(tr.children('.widget-editable')).data('widget');
+                if (widget) {
+                    field = this.record.model.fields[widget.field_name];
+                    widget.display(this.record, field);
+                }
+            }
+        },
         select_row: function(event_) {
             var previously_selected, previous_td;
             var inner_rows, readonly_row, editable_row, current_td;
@@ -867,11 +886,10 @@
                         true));
                     var previous_column = this.tree.columns[
                         previously_selected.edited_column];
-                    previously_selected.get_widget()
+                    previously_selected.get_static_el()
                         .html(previous_column.render(previously_selected.record))
                         .show();
-                    previously_selected.get_widget_editable().hide();
-                    previously_selected.edited_column = undefined;
+                    previously_selected.empty_editable_el();
                 }
                 if (this.is_selected()) {
                     this.edited_column = event_.data.column;
@@ -883,13 +901,15 @@
                     widget = new EditableBuilder(attributes.name,
                             this.tree.screen.model, attributes);
                     widget.view = this.tree;
-                    this.get_widget_editable().empty().append(widget.el);
+                    var editable_el = this.get_editable_el();
+                    editable_el.append(widget.el);
+                    editable_el.data('widget', widget);
                     // We use keydown to be able to catch TAB events
                     widget.el.on('keydown', this.key_press.bind(this));
                     field = this.record.model.fields[widget.field_name];
                     widget.display(this.record, field);
-                    this.get_widget().hide();
-                    this.get_widget_editable().show();
+                    this.get_static_el().hide();
+                    this.get_editable_el().show();
                     widget.focus();
                 } else {
                     this.set_selection(true);
@@ -902,11 +922,11 @@
                 }
             }.bind(this));
         },
-        get_widget: function() {
+        get_static_el: function() {
             var td = this.get_active_td();
             return td.find('.widget');
         },
-        get_widget_editable: function() {
+        get_editable_el: function() {
             var td = this.get_active_td();
             var editable = td.find('.widget-editable');
             if (!editable.length) {
@@ -916,17 +936,25 @@
             }
             return editable;
         },
+        empty_editable_el: function() {
+            var editable;
+            editable = this.get_editable_el();
+            editable.empty();
+            editable.data('widget', null);
+            this.edited_column = null;
+        },
         get_active_td: function() {
             return this._get_column_td(this.edited_column);
         },
         key_press: function(event_) {
-            var current_td, selector, next_column, next_idx, i;
+            var current_td, selector, next_column, next_idx, i, next_row;
             var states;
 
             if ((event_.which != Sao.common.TAB_KEYCODE) &&
                     (event_.which != Sao.common.UP_KEYCODE) &&
                     (event_.which != Sao.common.DOWN_KEYCODE) &&
-                    (event_.which != Sao.common.ESC_KEYCODE)) {
+                    (event_.which != Sao.common.ESC_KEYCODE) &&
+                    (event_.which != Sao.common.RETURN_KEYCODE)) {
                 return;
             }
             var column = this.tree.columns[this.edited_column];
@@ -967,7 +995,6 @@
                     }.bind(this), 0);
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
                     event_.which == Sao.common.DOWN_KEYCODE) {
-                    var next_row;
                     if (event_.which == Sao.common.UP_KEYCODE) {
                         next_row = this.el.prev('tr');
                     } else {
@@ -1006,14 +1033,38 @@
                             }.bind(this), 0);
                         }.bind(this));
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
-                    this.get_widget().show();
-                    this.get_widget_editable().hide();
+                    this.get_static_el().show();
                     current_td = this.get_active_td();
                     current_td.on('click keypress',
                             {column: this.edited_column, td: current_td},
                             Sao.common.click_press(this.select_row.bind(this),
                                 true));
-                    this.edited_column = undefined;
+                    this.empty_editable_el();
+                } else if (event_.which == Sao.common.RETURN_KEYCODE) {
+                    var focus_cell = function(row) {
+                        var td = this._get_column_td(this.edited_column, row);
+                        td.triggerHandler('click');
+                        td.triggerHandler('click');
+                    }.bind(this);
+                    if (this.tree.attributes.editable == 'bottom') {
+                        next_row = this.el.next('tr');
+                    } else {
+                        next_row = this.el.prev('tr');
+                    }
+                    if (next_row.length) {
+                        focus_cell(next_row);
+                    } else {
+                        this.tree.screen.new_().done(function() {
+                            var new_row;
+                            var rows = this.tree.tbody.children('tr');
+                            if (this.tree.attributes.editable == 'bottom') {
+                                new_row = rows.last();
+                            } else {
+                                new_row = rows.first();
+                            }
+                            focus_cell(new_row);
+                        }.bind(this));
+                    }
                 }
             }
         }
@@ -4818,7 +4869,11 @@
 
     Sao.View.EditableTree.editable_mixin = function(widget) {
         var key_press = function(event_) {
-            if (event_.which == Sao.common.TAB_KEYCODE) {
+            if ((event_.which == Sao.common.TAB_KEYCODE) ||
+                    (event_.which == Sao.common.UP_KEYCODE) ||
+                    (event_.which == Sao.common.DOWN_KEYCODE) ||
+                    (event_.which == Sao.common.ESC_KEYCODE) ||
+                    (event_.which == Sao.common.RETURN_KEYCODE)) {
                 this.focus_out();
             }
         };
@@ -4903,6 +4958,14 @@
             Sao.View.EditableTree.Many2One._super.init.call(this, field_name,
                 model, attributes);
             this.el.on('keydown', this.key_press.bind(this));
+            // We have to define an overflow:visible in order for the
+            // completion widget to be shown
+            this.el.on('focusin', function() {
+                this.el.parents('.treeview td').css('overflow', 'visible');
+            }.bind(this));
+            this.el.on('focusout', function() {
+                this.el.parents('.treeview td').css('overflow', 'hidden');
+            }.bind(this));
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.TAB_KEYCODE) {
