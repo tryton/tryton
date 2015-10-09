@@ -431,29 +431,31 @@
             var context = this.get_context();
             var prm = jQuery.when();
             var values = this.get();
-            if (this.id < 0) {
-                prm = this.model.execute('create', [[values]], context);
-                var created = function(ids) {
-                    this.id = ids[0];
-                };
-                prm.done(created.bind(this));
-            } else {
-                if (!jQuery.isEmptyObject(values)) {
-                    context._timestamp = this.get_timestamp();
-                    prm = this.model.execute('write', [[this.id], values],
-                        context);
+            if ((this.id < 0) || !jQuery.isEmptyObject(values)) {
+                if (this.id < 0) {
+                    prm = this.model.execute('create', [[values]], context);
+                    var created = function(ids) {
+                        this.id = ids[0];
+                    };
+                    prm.done(created.bind(this));
+                } else {
+                    if (!jQuery.isEmptyObject(values)) {
+                        context._timestamp = this.get_timestamp();
+                        prm = this.model.execute('write', [[this.id], values],
+                            context);
+                    }
                 }
-            }
-            prm = prm.done(function() {
-                this.cancel();
-                if (force_reload) {
-                    return this.reload();
-                }
-            }.bind(this));
-            if (this.group) {
                 prm = prm.done(function() {
-                    return this.group.written(this.id);
+                    this.cancel();
+                    if (force_reload) {
+                        return this.reload();
+                    }
                 }.bind(this));
+                if (this.group) {
+                    prm = prm.done(function() {
+                        return this.group.written(this.id);
+                    }.bind(this));
+                }
             }
             if (this.group.parent) {
                 delete this.group.parent._changed[this.group.child_name];
