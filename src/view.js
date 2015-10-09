@@ -1414,6 +1414,7 @@
     });
 
     Sao.View.Form = Sao.class_(Sao.View, {
+        editable: true,
         init: function(screen, xml) {
             Sao.View.Form._super.init.call(this, screen, xml);
             this.view_type = 'form';

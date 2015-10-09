@@ -659,33 +659,54 @@
             return this.views.length + this.view_to_load.length;
         },
         switch_view: function(view_type) {
-            // TODO check validity
-            if ((!view_type) || (!this.current_view) ||
-                    (this.current_view.view_type != view_type)) {
-                var switch_current_view = (function() {
-                    this.current_view = this.views[this.views.length - 1];
-                    return this.switch_view(view_type);
-                }.bind(this));
-                for (var i = 0; i < this.number_of_views(); i++) {
-                    if (this.view_to_load.length) {
-                        if (!view_type) {
-                            view_type = this.view_to_load[0];
-                        }
-                        return this.load_next_view().pipe(switch_current_view);
-                    }
-                    this.current_view = this.views[
-                        (this.views.indexOf(this.current_view) + 1) %
-                        this.views.length];
-                    if (!view_type) {
-                        break;
-                    } else if (this.current_view.view_type == view_type) {
-                        break;
-                    }
+            if (this.current_view) {
+                if (!this.group.parent && this.modified()) {
+                    return jQuery.when();
+                }
+                this.current_view.set_value();
+                if (this.current_record &&
+                        !~this.current_record.group.indexOf(
+                            this.current_record)) {
+                    this.current_record = null;
+                }
+                var fields = this.current_view.get_fields();
+                if (this.current_record && this.current_view.editable &&
+                        !this.current_record.validate(
+                            fields, false, false, true)) {
+                    this.screen_container.set(this.current_view.el);
+                    // TODO cursor
+                    return this.current_view.display();
                 }
             }
-            this.screen_container.set(this.current_view.el);
-            // TODO cursor
-            return this.display();
+            var _switch = function() {
+                if ((!view_type) || (!this.current_view) ||
+                        (this.current_view.view_type != view_type)) {
+                    var switch_current_view = (function() {
+                        this.current_view = this.views[this.views.length - 1];
+                        return _switch_view();
+                    }.bind(this));
+                    for (var i = 0; i < this.number_of_views(); i++) {
+                        if (this.view_to_load.length) {
+                            if (!view_type) {
+                                view_type = this.view_to_load[0];
+                            }
+                            return this.load_next_view().then(_switch);
+                        }
+                        this.current_view = this.views[
+                            (this.views.indexOf(this.current_view) + 1) %
+                            this.views.length];
+                        if (!view_type) {
+                            break;
+                        } else if (this.current_view.view_type == view_type) {
+                            break;
+                        }
+                    }
+                }
+                this.screen_container.set(this.current_view.el);
+                // TODO cursor
+                return this.display();
+            }.bind(this);
+            return _switch();
         },
         search_filter: function(search_string) {
             var domain = [];
