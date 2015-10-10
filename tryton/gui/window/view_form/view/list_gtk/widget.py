@@ -533,6 +533,11 @@ class Image(GenericText):
                 self.attrs['width'], self.attrs['height'])
         cell.set_property('pixbuf', pixbuf)
 
+    def get_textual_value(self, record):
+        if not record:
+            return ''
+        return str(record[self.attrs['name']].get_size(record))
+
 
 class M2O(GenericText):
 
