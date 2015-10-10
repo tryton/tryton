@@ -222,8 +222,6 @@ class UIMenu(ModelSQL, ModelView):
 
     @classmethod
     def set_action(cls, menus, name, value):
-        if not value:
-            return
         pool = Pool()
         ActionKeyword = pool.get('ir.action.keyword')
         action_keywords = []
@@ -237,11 +235,13 @@ class UIMenu(ModelSQL, ModelView):
         if action_keywords:
             with Transaction().set_context(_timestamp=False):
                 ActionKeyword.delete(action_keywords)
+        if not value:
+            return
         if isinstance(value, basestring):
             action_type, action_id = value.split(',')
         else:
             action_type, action_id = value
-        if not int(action_id):
+        if int(action_id) <= 0:
             return
         Action = pool.get(action_type)
         action = Action(int(action_id))
