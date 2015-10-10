@@ -277,8 +277,8 @@ class TestModel(ProteusTestCase):
         self.assertEqual([x.name for x in test.groups], ['Group 1', 'Group 2'])
 
     def test_delete(self):
-        User = Model.get('res.user')
-        test = User()
+        Group = Model.get('res.group')
+        test = Group()
         test.name = 'Test delete'
         test.login = 'test delete'
         test.save()
