@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='state']" position="after">
-        <button name="split_wizard" string="Split" colspan="2"/>
+    <xpath expr="/form/group[@id='buttons']" position="inside">
+        <button name="split_wizard" string="Split"/>
     </xpath>
 </data>
