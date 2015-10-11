@@ -720,17 +720,20 @@
                 'class': 'icon',
                 'aria-hidden': true
             }).appendTo(this.el);
+            this.icon.hide();
             this.el.append(attributes.string || '');
             this.set_icon(attributes.icon);
         },
         set_icon: function(icon_name) {
             if (!icon_name) {
                 this.icon.attr('src', '');
+                this.icon.hide();
                 return;
             }
             var prm = Sao.common.ICONFACTORY.register_icon(icon_name);
             prm.done(function(url) {
                 this.icon.attr('src', url);
+                this.icon.show();
             }.bind(this));
         },
         set_state: function(record) {
