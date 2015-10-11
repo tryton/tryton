@@ -54,6 +54,8 @@
                 return new Sao.View.Form(screen, xml);
             case 'graph':
                 return new Sao.View.Graph(screen, xml);
+            case 'calendar':
+                return new Sao.View.Calendar(screen, xml);
         }
     };
 
@@ -5352,6 +5354,23 @@
         },
         _action_key: function(data) {
             return data.id;
+        }
+    });
+
+    Sao.View.Calendar = Sao.class_(Sao.View, {
+        init: function(screen, xml) {
+            Sao.View.Graph._super.init.call(this, screen, xml);
+            this.view_type = 'calendar';
+            this.el = jQuery('<div/>', {
+                'class': 'calendar'
+            });
+            // TODO
+            Sao.common.warning.run(
+                    Sao.i18n.gettext('Calendar view not yet implemented'),
+                    Sao.i18n.gettext('Warning'));
+        },
+        display: function() {
+            return jQuery.when();
         }
     });
 
