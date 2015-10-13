@@ -123,7 +123,7 @@
             // Table of records
             this.rows = [];
             this.table = jQuery('<table/>', {
-                'class': 'tree table table-hover'
+                'class': 'tree table table-hover table-striped'
             });
             if (this.columns.filter(function(c) {
                 return !c.attributes.tree_invisible;
