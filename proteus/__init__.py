@@ -946,11 +946,7 @@ class Model(object):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
                     record = relation(_default=False)
-                    for i, j in vals.iteritems():
-                        if '.' in i:
-                            continue
-                        record._values[i] = j
-                        record._changed.add(i)
+                    record._set_on_change(vals)
                     # append without signal
                     if index == -1:
                         list.append(getattr(self, field), record)
@@ -961,11 +957,15 @@ class Model(object):
                         continue
                     for record in getattr(self, field):
                         if record.id == vals['id']:
-                            for i, j in vals.iteritems():
-                                if '.' in i:
-                                    continue
-                                record._values[i] = j
-                                record._changed.add(i)
+                            record._set_on_change(vals)
+        elif (self._fields[field]['type'] in ('one2many', 'many2many')
+                and len(value) and not isinstance(value[0], (int, long))):
+            self._values[field] = []
+            for vals in value:
+                relation = Model.get(self._fields[field]['relation'],
+                        self._config)
+                record = relation(_default=False, **vals)
+                getattr(self, field).append(record)
         else:
             self._values[field] = value
         self._changed.add(field)
