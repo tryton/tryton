@@ -527,6 +527,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                         *time.strptime(values['date'],
                             '%Y-%m-%d %H:%M:%S.%f')[:6])
                 values['date'] = values['date'].replace(microsecond=0)
+                values['date'] += datetime.timedelta(seconds=1)
         return res
 
 
