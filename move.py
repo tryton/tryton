@@ -547,7 +547,7 @@ class Move(Workflow, ModelSQL, ModelView):
             product_qty = product.quantity
         else:
             product_qty = product.template.quantity
-        product_qty = Decimal(str(product_qty))
+        product_qty = Decimal(str(max(product_qty, 0)))
         # convert wrt currency
         with Transaction().set_context(date=self.effective_date):
             unit_price = Currency.compute(self.currency, self.unit_price,
