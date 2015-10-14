@@ -51,12 +51,24 @@ Create product::
     >>> template.save()
     >>> product.template = template
     >>> product.save()
+    >>> negative_product = Product()
+    >>> template = ProductTemplate()
+    >>> template.name = 'Negative Product'
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.list_price = Decimal('28')
+    >>> template.cost_price = Decimal('5')
+    >>> template.cost_price_method = 'average'
+    >>> template.save()
+    >>> negative_product.template = template
+    >>> negative_product.save()
 
 Get stock locations::
 
     >>> Location = Model.get('stock.location')
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
+    >>> customer_loc, = Location.find([('code', '=', 'CUS')])
 
 Make 1 unit of the product available @ 100 ::
 
@@ -145,3 +157,37 @@ Recompute Cost Price::
     >>> recompute = Wizard('product.recompute_cost_price', [product])
     >>> product.template.cost_price
     Decimal('175.0000')
+
+Send one product we dont have in stock::
+
+    >>> outgoing_move = StockMove()
+    >>> outgoing_move.product = negative_product
+    >>> outgoing_move.uom = unit
+    >>> outgoing_move.quantity = 1
+    >>> outgoing_move.from_location = storage_loc
+    >>> outgoing_move.to_location = customer_loc
+    >>> outgoing_move.planned_date = today
+    >>> outgoing_move.effective_date = today
+    >>> outgoing_move.company = company
+    >>> outgoing_move.currency = company.currency
+    >>> outgoing_move.click('do')
+
+Recieve two units of the product with negative stock::
+
+    >>> incoming_move = StockMove()
+    >>> incoming_move.product = negative_product
+    >>> incoming_move.uom = unit
+    >>> incoming_move.quantity = 2
+    >>> incoming_move.from_location = supplier_loc
+    >>> incoming_move.to_location = storage_loc
+    >>> incoming_move.planned_date = today
+    >>> incoming_move.effective_date = today
+    >>> incoming_move.company = company
+    >>> incoming_move.unit_price = Decimal('2')
+    >>> incoming_move.currency = company.currency
+    >>> incoming_move.click('do')
+
+Cost price should be set to 2::
+
+    >>> negative_product.template.cost_price
+    Decimal('2.0000')
