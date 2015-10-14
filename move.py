@@ -628,7 +628,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 and self.from_location.type == 'storage'
                 and self.product.cost_price_method == 'average'):
             self._update_product_cost_price('out')
-        if not self.cost_price:
+        if self.cost_price is None:
             self.cost_price = self.product.cost_price
 
     @classmethod
