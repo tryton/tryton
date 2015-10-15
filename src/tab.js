@@ -17,7 +17,9 @@
 
             this.title = jQuery('<h4/>').appendTo(this.el);
 
-            this.el.append(this.info_bar.el);
+            if (this.info_bar) {
+                this.el.append(this.info_bar.el);
+            }
 
             this.create_toolbar().appendTo(this.el);
         },
@@ -680,6 +682,55 @@
         },
         print: function() {
             this.buttons.print.click();
+        }
+    });
+
+    Sao.Tab.Board = Sao.class_(Sao.Tab, {
+        class_: 'tab-board',
+        init: function(attributes) {
+            var UIView, view_prm;
+            Sao.Tab.Board._super.init.call(this);
+            this.model = attributes.model;
+            this.view_id = (attributes.view_ids.length > 0 ?
+                    attributes.view_ids[0] : null);
+            this.context = attributes.context;
+            this.name = attributes.name;
+            this.dialogs = [];
+            this.board = null;
+            UIView = new Sao.Model('ir.ui.view');
+            view_prm = UIView.execute('read', [[this.view_id], ['arch']],
+                    this.context);
+            view_prm.done(function(views) {
+                var view, board;
+                view = jQuery(jQuery.parseXML(views[0].arch));
+                this.board = new Sao.View.Board(view, this.context);
+                this.board.actions_prms.done(function() {
+                    var i, len, action;
+                    for (i = 0, len = this.board.actions.length; i < len; i++) {
+                        action = this.board.actions[i];
+                        action.screen.tab = this;
+                    }
+                }.bind(this));
+                this.el.append(this.board.el);
+            }.bind(this));
+            this.create_tabcontent();
+            this.set_name(this.name);
+            this.title.html(this.name_el.text());
+        },
+        create_toolbar: function() {
+            return jQuery('<span/>');
+        },
+        record_message: function() {
+            var i, len;
+            var action;
+
+            len = this.board.actions.length;
+            for (i = 0, len=len; i < len; i++) {
+                action = this.board.actions[i];
+                action.update_domain(this.board.actions);
+            }
+        },
+        attachment_count: function() {
         }
     });
 

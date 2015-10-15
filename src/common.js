@@ -3115,4 +3115,38 @@
         return sao_model.execute('search_read',
                 [domain, 0, Sao.config.limit, null, ['rec_name']], context);
     };
+
+    Sao.common.Paned = Sao.class_(Object, {
+        init: function(orientation) {
+            var row;
+            this._orientation = orientation;
+            this.el = jQuery('<div/>', {
+                'class': 'container-fluid'
+            });
+            if (orientation == 'horizontal') {
+                row = jQuery('<div/>', {
+                    'class': 'row'
+                }).appendTo(this.el);
+                this.child1 = jQuery('<div/>', {
+                    'class': 'col-md-6'
+                }).appendTo(row);
+                this.child2 = jQuery('<div/>', {
+                    'class': 'col-md-6'
+                }).appendTo(row);
+            } else if (orientation == 'vertical') {
+                this.child1 = jQuery('<div/>', {
+                    'class': 'row'
+                }).appendTo(this.el);
+                this.child2 = jQuery('<div/>', {
+                    'class': 'row'
+                }).appendTo(this.el);
+            }
+        },
+        get_child1: function() {
+            return this.child1;
+        },
+        get_child2: function() {
+            return this.child2;
+        }
+    });
 }());

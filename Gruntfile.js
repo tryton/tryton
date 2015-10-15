@@ -10,13 +10,14 @@ module.exports = function(grunt) {
       'src/pyson.js',
       'src/session.js',
       'src/model.js',
-       'src/tab.js',
-       'src/screen.js',
-       'src/view.js',
-       'src/action.js',
-       'src/common.js',
-       'src/window.js',
-       'src/wizard.js'
+      'src/tab.js',
+      'src/screen.js',
+      'src/view.js',
+      'src/action.js',
+      'src/common.js',
+      'src/window.js',
+      'src/wizard.js',
+      'src/board.js'
   ];
 
   // Project configuration.
