@@ -36,9 +36,10 @@ button {
 }
 
 .treeview {
+    overflow-x: auto;
+
     & > table.tree {
         width: 100%;
-        table-layout: fixed;
 
         & > thead > tr > th.selection {
             width: 30px;
@@ -46,6 +47,7 @@ button {
         & > thead > tr > th {
             overflow: hidden;
             text-overflow: ellipsis;
+            min-width: 30px;
         }
         & > tbody > tr > td {
             cursor: pointer;
@@ -192,6 +194,10 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+    .treeview.responsive {
+        /* Override the width from Sao.View.resize */
+        width: 100% !important;
+    }
     table.responsive,
     table.responsive > thead,
     table.responsive > thead > tr,

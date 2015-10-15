@@ -110,7 +110,7 @@
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_SINGLE);
             this.el = jQuery('<div/>', {
-                'class': 'treeview'
+                'class': 'treeview responsive'
             });
             this.expanded = {};
             this.children_field = children_field;
@@ -509,6 +509,30 @@
             }
             return row.record._values[this.children_field].length;
         }
+    });
+
+    Sao.View.resize = function(el) {
+        // Let the browser compute the table size with the fixed layout
+        // then set this size to the treeview to allow scroll on overflow
+        // and set the table layout to auto to get the width from the content.
+        if (!el) {
+            el = jQuery(document);
+        }
+        el.find('.treeview').each(function() {
+            var treeview = jQuery(this);
+            treeview.css('width', '100%');
+            treeview.children('.tree').css('table-layout', 'fixed');
+        });
+        el.find('.treeview').each(function() {
+            var treeview = jQuery(this);
+            if (treeview.width()) {
+                treeview.css('width', treeview.width());
+                treeview.children('.tree').css('table-layout', 'auto');
+            }
+        });
+    };
+    jQuery(window).resize(function() {
+        Sao.View.resize();
     });
 
     Sao.View.Tree.Row = Sao.class_(Object, {
@@ -1797,6 +1821,7 @@
                         var container = this.containers[j];
                         container.resize();
                     }
+                    Sao.View.resize(this.el);
                 }.bind(this));
         },
         set_value: function() {
