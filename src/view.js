@@ -274,17 +274,26 @@
             var current_record = this.screen.current_record;
             if (!selected) {
                 selected = this.get_selected_paths();
-                if (current_record && !Sao.common.contains(selected,
-                            [[current_record.id]])) {
-                    selected = [[current_record.id]];
+                if (current_record) {
+                    var current_path = current_record.get_path(this.screen.group);
+                    current_path = current_path.map(function(e) {
+                        return e[1];
+                    });
+                    if (!Sao.common.contains(selected, current_path)) {
+                        selected = [current_path];
+                    }
+                } else if (!current_record) {
+                    selected = [];
                 }
             }
             expanded = expanded || [];
 
             if ((this.screen.group.length != this.rows.length) ||
-                    !Sao.common.compare(this.screen.group, this.rows.map(function(row) {
-                        return row.record;
-                    }))) {
+                    !Sao.common.compare(
+                        this.screen.group, this.rows.map(function(row) {
+                            return row.record;
+                        })) || this.children_field) {  // XXX find better check
+                                                       // to keep focus
                 this.construct(selected, expanded);
             }
 

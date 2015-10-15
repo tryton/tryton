@@ -402,6 +402,35 @@
             }
             return this.__domain4inversion[1];
         };
+        array.get_by_path = function(path) {
+            path = jQuery.extend([], path);
+            var record = null;
+            var group = this;
+
+            var browse_child = function() {
+                if (jQuery.isEmptyObject(path)) {
+                    return record;
+                }
+                var child_name = path[0][0];
+                var id = path[0][1];
+                path.splice(0, 1);
+                record = group.get(id);
+                if (!record) {
+                    return null;
+                }
+                if (!child_name) {
+                    return browse_child();
+                }
+                return record.load(child_name).then(function() {
+                    group = record._values[child_name];
+                    if (!group) {
+                        return null;
+                    }
+                    return browse_child();
+                });
+            };
+            return jQuery.when().then(browse_child);
+        };
         return array;
     };
 
@@ -1079,6 +1108,21 @@
                 parent = parent.group.parent;
             }
             return parent;
+        },
+        get_path: function(group) {
+            var path = [];
+            var i = this;
+            var child_name = '';
+            while (i) {
+                path.push([child_name, i.id]);
+                if (i.group === group) {
+                    break;
+                }
+                child_name = i.group.child_name;
+                i = i.group.parent;
+            }
+            path.reverse();
+            return path;
         },
         deleted: function() {
             return Boolean(~this.group.record_deleted.indexOf(this));
