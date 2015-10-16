@@ -2986,8 +2986,16 @@
                     }
                 }
             }.bind(this));
-            this.menu.on('hide.bs.dropdown', function() {
+            // We must set the overflow of the treeview containing the input to
+            // visible to prevent vertical scrollbar inherited from the auto
+            // overflow-x
+            // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
+            this.dropdown.on('hide.bs.dropdown', function() {
                 this.input.focus();
+                this.input.closest('.treeview').css('overflow', '');
+            }.bind(this));
+            this.dropdown.on('show.bs.dropdown', function() {
+                this.input.closest('.treeview').css('overflow', 'visible');
             }.bind(this));
         },
         set_actions: function(actions, action_activated) {
