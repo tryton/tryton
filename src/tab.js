@@ -504,7 +504,7 @@
             }
             var msg;
             if (this.screen.current_view.view_type == 'form') {
-                msg = Soa.i18n.gettext('Are you sure to remove this record?');
+                msg = Sao.i18n.gettext('Are you sure to remove this record?');
             } else {
                 msg = Sao.i18n.gettext('Are you sure to remove those records?');
             }
