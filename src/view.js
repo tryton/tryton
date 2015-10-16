@@ -1662,7 +1662,6 @@
                 this.state_widgets.push(label);
             }
             container.add(attributes, label);
-            // TODO help
             return label;
         },
         _parse_button: function(node, container, attributes) {
@@ -1670,7 +1669,6 @@
             this.state_widgets.push(button);
             container.add(attributes, button);
             button.el.click(button, this.button_clicked.bind(this));
-            // TODO help
         },
         _parse_notebook: function(model, node, container, attributes) {
             if (attributes.colspan === undefined) {
@@ -1709,7 +1707,7 @@
                 attributes.widget = model.fields[name]
                     .description.type;
             }
-            var attribute_names = ['relation', 'domain', 'selection',
+            var attribute_names = ['relation', 'domain', 'selection', 'help',
                 'relation_field', 'string', 'views', 'add_remove', 'sort',
                 'context', 'size', 'filename', 'autocomplete', 'translate',
                 'create', 'delete', 'selection_change_with', 'schema_model'];
@@ -1730,7 +1728,7 @@
             var widget = new WidgetFactory(name, model, attributes);
             widget.position = this.widget_id += 1;
             widget.view = this;
-            // TODO expand, fill, help, height, width
+            // TODO expand, fill, height, width
             container.add(attributes, widget);
             if (this.widgets[name] === undefined) {
                 this.widgets[name] = [];
@@ -1912,6 +1910,12 @@
                 if (xexpand) {
                     el.css('width', '100%');
                 }
+            }
+
+            if (attributes.help) {
+                widget.el.data('toggle', 'tooltip');
+                widget.el.attr('title', attributes.help);
+                widget.el.tooltip();
             }
         },
         resize: function() {
