@@ -1243,7 +1243,6 @@
                 } else {
                     cell.show();
                 }
-                // TODO editable: readonly and required
             }.bind(this));
             return cell;
         }
