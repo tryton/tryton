@@ -1099,8 +1099,8 @@
                 }.bind(this));
                 return result;
             }
-            return Sao.common.compare(Object.keys(this.model.fields),
-                    Object.keys(this._loaded));
+            return Sao.common.compare(Object.keys(this.model.fields).sort(),
+                    Object.keys(this._loaded).sort());
         },
         root_parent: function root_parent() {
             var parent = this;
