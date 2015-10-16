@@ -498,7 +498,14 @@
             if (this.id < 0) {
                 return jQuery.when();
             }
-            return this.validate(fields);
+            if (!fields) {
+                return this.load('*');
+            } else {
+                var prms = fields.map(function(field) {
+                    return this.load(field);
+                }.bind(this));
+                return jQuery.when.apply(jQuery, prms);
+            }
         },
         load: function(name) {
             var fname;
@@ -1061,14 +1068,7 @@
             if (sync) {
                 return validate_fields();
             } else {
-                var prms = [];
-                if (fields === undefined) {
-                    fields = null;
-                }
-                (fields || ['*']).forEach(function(field) {
-                    prms.push(this.load(field));
-                }.bind(this));
-                return jQuery.when.apply(jQuery, prms).then(validate_fields);
+                return this._check_load(fields).then(validate_fields);
             }
         },
         pre_validate: function() {
@@ -1088,6 +1088,12 @@
             this._loaded = {};
             this._changed = {};
             this._timestamp = null;
+        },
+        _check_load: function(fields) {
+            if (!this.get_loaded(fields)) {
+                return this.reload(fields);
+            }
+            return jQuery.when();
         },
         get_loaded: function(fields) {
             if (!jQuery.isEmptyObject(fields)) {
