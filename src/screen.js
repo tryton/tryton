@@ -1059,7 +1059,7 @@
                     prms.push(this.group.get_by_path(path).then(function(record) {
                         this.set_current_record(record);
                     }.bind(this)));
-                } else if (self.group.length) {
+                } else if (this.group.length) {
                     this.set_current_record(this.group[0]);
                 }
                 // TODO set_cursor
