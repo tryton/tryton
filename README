@@ -13,7 +13,6 @@ Once you've downloaded and unpacked the sao source release, enter the directory
 where the archive was unpacked, and run:
 
     # npm install
-    # bower install
     # grunt
 
 Note that the entry `data` in the section `[jsonrpc]` of `trytond.conf` must be
