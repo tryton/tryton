@@ -67,10 +67,10 @@
                             (args.method.endsWith('.write') ||
                              args.method.endsWith('.delete'))) {
                         var model = args.method.split('.').slice(1, -1).join('.');
-                        Sao.common.concurrency.run( model, args.params[1][0],
-                                args.params[-1])
+                        Sao.common.concurrency.run(model, args.params[0][0],
+                                args.params.slice(-1)[0])
                             .then(function() {
-                                delete args.params.slice(-1)._timestamp;
+                                delete args.params.slice(-1)[0]._timestamp;
                                 Sao.rpc(args, session).then(
                                     dfd.resolve, dfd.reject);
                             }, dfd.reject);
