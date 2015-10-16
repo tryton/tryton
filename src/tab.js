@@ -31,11 +31,16 @@
                 if (!func) {
                     return;
                 }
-                var item = jQuery('<li/>').append(
-                    jQuery('<a/>').append(jQuery('<span/>', {
-                        'class': 'glyphicon ' + icon,
-                        'aria-hidden': 'true'
-                    })).append(' ' + name));
+                var item = jQuery('<li/>', {
+                    'role': 'presentation'
+                }).append(jQuery('<a/>', {
+                    'role': 'menuitem',
+                    'href': '#',
+                    'tabindex': -1
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon ' + icon,
+                    'aria-hidden': 'true'
+                })).append(' ' + name));
                 menu.append(item);
                 item.click(function() {
                     this[func]();
@@ -83,8 +88,9 @@
 
             var add_button = function(tool) {
                 this.buttons[tool[0]] = jQuery('<a/>', {
-                    href: '#',
-                    id: tool[0]
+                    'role': 'menuitem',
+                    'href': '#',
+                    'id': tool[0]
                 })
                 .append(jQuery('<span/>', {
                     'class': 'glyphicon ' + tool[1],
@@ -94,8 +100,9 @@
                     'class': 'hidden-sm'
                 }).append(' ' + tool[2]))
                 .click(this[tool[4]].bind(this))
-                .appendTo(jQuery('<li/>')
-                        .appendTo(toolbar.find('.navbar-collapse > ul')));
+                .appendTo(jQuery('<li/>', {
+                    'role': 'presentation'
+                }).appendTo(toolbar.find('.navbar-collapse > ul')));
                 // TODO tooltip
             };
             this.toolbar_def.forEach(add_button.bind(this));
@@ -675,13 +682,22 @@
             this.info_bar.message();
         },
         action: function() {
-            this.buttons.action.click();
+            window.setTimeout(function() {
+                this.buttons.action.find('ul.dropdown-menu')
+                    .dropdown('toggle');
+            }.bind(this));
         },
         relate: function() {
-            this.buttons.relate.click();
+            window.setTimeout(function() {
+                this.buttons.relate.find('ul.dropdown-menu')
+                    .dropdown('toggle');
+            }.bind(this));
         },
         print: function() {
-            this.buttons.print.click();
+            window.setTimeout(function() {
+                this.buttons.print.find('ul.dropdown-menu')
+                    .dropdown('toggle');
+            }.bind(this));
         }
     });
 
