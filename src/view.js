@@ -1602,13 +1602,15 @@
                         this._parse_group(model, child, container, attributes);
                         break;
                     case 'hpaned':
-                        // TODO
+                        this._parse_paned(model, child, container, attributes,
+                                'horizontal');
                         break;
                     case 'vpaned':
-                        // TODO
+                        this._parse_paned(model, child, container, attributes,
+                                'vertical');
                         break;
                     case 'child':
-                        // TODO
+                        this._parse_child(model, child, container, attributes);
                         break;
                 }
             };
@@ -1741,6 +1743,29 @@
             group.add(this.parse(model, node));
             this.state_widgets.push(group);
             container.add(attributes, group);
+        },
+        _parse_paned: function(model, node, container, attributes,
+                              orientation) {
+            if (attributes.yexpand === undefined) {
+                attributes.yexpand = true;
+            }
+            if (attributes.yfill === undefined) {
+                attributes.yfill = true;
+            }
+            var paned = new Sao.common.Paned(orientation);
+            // TODO position
+            container.add(attributes, paned);
+            this.parse(model, node, paned);
+        },
+        _parse_child: function(model, node, paned, attributes) {
+            var container = this.parse(model, node);
+            var child;
+            if (!paned.get_child1().children().length) {
+                child = paned.get_child1();
+            } else {
+                child = paned.get_child2();
+            }
+            child.append(container.el);
         },
         get_buttons: function() {
             var buttons = [];
