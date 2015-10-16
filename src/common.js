@@ -2976,10 +2976,7 @@
                         this.input.val());
             }.bind(this));
             this.input.keydown(function(evt) {
-                if (evt.which == Sao.common.DOWN_KEYCODE) {
-                    this.menu.find('a').first().focus();
-                    evt.preventDefault();
-                } else if (evt.which == Sao.common.ESC_KEYCODE) {
+                if (evt.which == Sao.common.ESC_KEYCODE) {
                     if (this.dropdown.hasClass('open')) {
                         this.menu.dropdown('toggle');
                     }
@@ -3069,11 +3066,6 @@
                     this.input.focus();
                 }.bind(this)).prependTo(this.menu);
             }, this);
-            this.menu.find('a').first().keyup(function(evt) {
-                if (evt.which == Sao.common.UP_KEYCODE) {
-                    this.input.focus();
-                }
-            }.bind(this));
             if (!this.input.val()) {
                 if (this.dropdown.hasClass('open')) {
                     this.menu.dropdown('toggle');
