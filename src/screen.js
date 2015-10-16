@@ -746,12 +746,11 @@
             grp_prm.done(this.set_group.bind(this));
             grp_prm.done(this.display.bind(this));
             jQuery.when(grp_prm, count_prm).done(function(group, count) {
-                this.screen_container.but_next.button('option', 'disabled',
-                    !(group.length == this.limit &&
-                        count > this.limit + this.offset));
+                this.screen_container.but_next.prop('disabled',
+                        !(group.length == this.limit &&
+                            count > this.limit + this.offset));
             }.bind(this));
-            this.screen_container.but_prev.button('option', 'disabled',
-                    this.offset <= 0);
+            this.screen_container.but_prev.prop('disabled', this.offset <= 0);
             return grp_prm;
         },
         set_group: function(group) {
