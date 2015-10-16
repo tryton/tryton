@@ -2,23 +2,36 @@
   "name": "sao",
   "title": "sao",
   "description": "Tryton webclient",
-  "version": "0.0.1",
+  "version": "3.7.0",
   "homepage": "http://www.tryton.org/",
   "author": {
     "name": "Tryton"
   },
   "repository": {
     "type": "hg",
-    "url": "http://hg.tryton.org/sandbox/sao"
+    "url": "http://hg.tryton.org/sao"
   },
   "bugs": {
     "url": "http://bugs.tryton.org/"
   },
-  "licenses": [
-    "GPL-3"
+  "license": "GPL-3.0+",
+  "files": [
+      "COPYRIGHT",
+      "Gruntfile.js",
+      "LICENSE",
+      "README",
+      "bower.json",
+      "dist",
+      "images",
+      "index.html",
+      "offcanvas.css",
+      "package.json",
+      "src",
+      "tests"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/grunt"
+    "test": "./node_modules/.bin/grunt",
+    "postinstall": "./node_modules/.bin/bower install"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
