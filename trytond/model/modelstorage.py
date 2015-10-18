@@ -288,9 +288,18 @@ class ModelStorage(Model):
                 del data['id']
             return data
 
+        # Reset MPTT field to the default value
+        mptt = set()
+        for field in cls._fields.itervalues():
+            if (isinstance(field, fields.Many2One)
+                    and field.model_name == cls.__name__
+                    and field.left and field.right):
+                mptt.add(field.left)
+                mptt.add(field.right)
         fields_names = [n for n, f in cls._fields.iteritems()
             if (not isinstance(f, fields.Function)
-                or isinstance(f, fields.Property))]
+                or isinstance(f, fields.Property))
+            and n not in mptt]
         ids = map(int, records)
         datas = cls.read(ids, fields_names=fields_names)
         datas = dict((d['id'], d) for d in datas)
