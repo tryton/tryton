@@ -436,7 +436,9 @@ class Record(SignalEvent):
         later = {}
         for fieldname, value in val.iteritems():
             if fieldname == '_timestamp':
-                self._timestamp = value
+                # Always keep the older timestamp
+                if not self._timestamp:
+                    self._timestamp = value
                 continue
             if fieldname not in self.group.fields:
                 if fieldname == 'rec_name':
