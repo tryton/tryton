@@ -740,10 +740,10 @@ class M2M(O2M):
 
 class Selection(GenericText, SelectionMixin, PopdownMixin):
 
-    def __init__(self, *args):
-        super(Selection, self).__init__(*args)
-        self.renderer = CellRendererCombo()
-        self.renderer.connect('editing-started', self.editing_started)
+    def __init__(self, *args, **kwargs):
+        if 'renderer' not in kwargs:
+            kwargs['renderer'] = CellRendererCombo
+        super(Selection, self).__init__(*args, **kwargs)
         self.init_selection()
         self.renderer.set_property('model',
             self.get_popdown_model(self.selection)[0])
