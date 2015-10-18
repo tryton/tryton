@@ -593,10 +593,14 @@
             } else {
                 prm = this.model.execute(selection, []);
             }
+            prm = prm.then(function(selection) {
+                this._values2selection[key] = selection;
+                return selection;
+            }.bind(this));
             prm = prm.then(prepare_selection.bind(this));
         } else {
             if (key in this._values2selection) {
-                selection = this._values2selection.selection;
+                selection = this._values2selection[key];
             }
             prepare_selection.call(this, selection);
             prm = jQuery.when();
