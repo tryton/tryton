@@ -688,7 +688,10 @@
                 }
                 value = values[name];
                 if (name == '_timestamp') {
-                    this._timestamp = value;
+                    // Always keep the older timestamp
+                    if (!this._timestamp) {
+                        this._timestamp = value;
+                    }
                     continue;
                 }
                 if (!(name in this.model.fields)) {
