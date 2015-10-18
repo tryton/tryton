@@ -2169,7 +2169,10 @@
                     'role': 'tab',
                     'data-toggle': 'tab',
                     'href': '#' + tab_id
-                }).append(text)).appendTo(this.nav);
+                }).append(text)
+                .on('shown.bs.tab', function() {
+                    Sao.View.resize(tab);
+                })).appendTo(this.nav);
             pane.html(tab).appendTo(this.panes);
             if (!this.selected) {
                 // Can not use .tab('show')
