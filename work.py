@@ -376,11 +376,12 @@ class Work(ModelSQL, ModelView):
         timesheet_default['children'] = None
         new_project_works = []
         for project_work in project_works:
-            timesheet_work, = TimesheetWork.copy([project_work.work],
-                default=timesheet_default)
             pwdefault = default.copy()
             pwdefault['children'] = None
-            pwdefault['work'] = timesheet_work.id
+            if project_work.work:
+                timesheet_work, = TimesheetWork.copy([project_work.work],
+                    default=timesheet_default)
+                pwdefault['work'] = timesheet_work.id
             new_project_works.extend(super(Work, cls).copy([project_work],
                     default=pwdefault))
         return new_project_works
@@ -390,11 +391,12 @@ class Work(ModelSQL, ModelView):
         TimesheetWork = Pool().get('timesheet.work')
 
         # Get the timesheet works linked to the project works
-        timesheet_works = [pw.work for pw in project_works]
+        timesheet_works = [pw.work for pw in project_works if pw.work]
 
         super(Work, cls).delete(project_works)
 
-        TimesheetWork.delete(timesheet_works)
+        if timesheet_works:
+            TimesheetWork.delete(timesheet_works)
 
     @classmethod
     def search_global(cls, text):
