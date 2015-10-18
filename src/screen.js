@@ -683,14 +683,15 @@
                         (this.current_view.view_type != view_type)) {
                     var switch_current_view = (function() {
                         this.current_view = this.views[this.views.length - 1];
-                        return _switch_view();
+                        return _switch();
                     }.bind(this));
                     for (var i = 0; i < this.number_of_views(); i++) {
                         if (this.view_to_load.length) {
                             if (!view_type) {
                                 view_type = this.view_to_load[0];
                             }
-                            return this.load_next_view().then(_switch);
+                            return this.load_next_view().then(
+                                    switch_current_view);
                         }
                         this.current_view = this.views[
                             (this.views.indexOf(this.current_view) + 1) %
