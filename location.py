@@ -339,9 +339,6 @@ class Location(ModelSQL, ModelView):
         if default is None:
             default = {}
 
-        default['left'] = 0
-        default['right'] = 0
-
         res = []
         for location in locations:
             if location.type == 'warehouse':
