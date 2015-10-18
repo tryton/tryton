@@ -1921,6 +1921,11 @@
                 return;
             }
 
+            // TODO yexpand
+            if (attributes.yfill) {
+                cell.css('vertical-align', 'top');
+            }
+
             if (attributes.xalign !== undefined) {
                 // TODO replace by start/end when supported
                 cell.css('text-align', attributes.xalign >= 0.5? 'right': 'left');
