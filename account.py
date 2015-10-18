@@ -803,8 +803,6 @@ class Account(ModelSQL, ModelView):
     def copy(cls, accounts, default=None):
         if default is None:
             default = {}
-        default['left'] = 0
-        default['right'] = 0
         default.setdefault('template')
         default.setdefault('deferrals', [])
         new_accounts = super(Account, cls).copy(accounts, default=default)
