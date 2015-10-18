@@ -1532,13 +1532,73 @@
             var container = this.parse(screen.model, root);
             this.el.append(container.el);
         },
+        _parse_node: function(model, child, container, attributes, labels) {
+            var widget;
+            switch (child.tagName) {
+                case 'image':
+                    // TODO
+                    break;
+                case 'separator':
+                    this._parse_separator(
+                            model, child, container, attributes);
+                    break;
+                case 'label':
+                    widget = this._parse_label(
+                            model, child, container, attributes);
+                    if (attributes.name && widget) {
+                        labels[attributes.name] = widget;
+                    }
+                    break;
+                case 'newline':
+                    container.add_row();
+                    break;
+                case 'button':
+                    this._parse_button(child, container, attributes);
+                    break;
+                case 'notebook':
+                    this._parse_notebook(
+                            model, child, container, attributes);
+                    break;
+                case 'page':
+                    this._parse_page(model, child, container, attributes);
+                    break;
+                case 'field':
+                    widget = this._parse_field(
+                            model, child, container, attributes);
+                    if ((attributes.name in labels) &&
+                            widget &&
+                            widget.labelled) {
+                        var label = labels[attributes.name];
+                        label.el.uniqueId();
+                        widget.labelled.uniqueId();
+                        widget.labelled.attr(
+                                'aria-labelledby', label.el.attr('id'));
+                        label.el.attr('for', widget.labelled.attr('id'));
+                    }
+                    break;
+                case 'group':
+                    this._parse_group(model, child, container, attributes);
+                    break;
+                case 'hpaned':
+                    this._parse_paned(model, child, container, attributes,
+                            'horizontal');
+                    break;
+                case 'vpaned':
+                    this._parse_paned(model, child, container, attributes,
+                            'vertical');
+                    break;
+                case 'child':
+                    this._parse_child(model, child, container, attributes);
+                    break;
+            }
+        },
         parse: function(model, node, container) {
             if (container === undefined) {
                 container = new Sao.View.Form.Container(
                     Number(node.getAttribute('col') || 4));
                 this.containers.push(container);
             }
-            var labels = {}, widget;
+            var labels = {};
             var _parse = function(index, child) {
                 var attributes = {};
                 for (var i = 0, len = child.attributes.length; i < len; i++) {
@@ -1556,63 +1616,7 @@
                                 attributes[name] = Number(attributes[name]);
                             }
                         });
-                switch (child.tagName) {
-                    case 'image':
-                        // TODO
-                        break;
-                    case 'separator':
-                        this._parse_separator(
-                                model, child, container, attributes);
-                        break;
-                    case 'label':
-                        widget = this._parse_label(
-                                model, child, container, attributes);
-                        if (attributes.name && widget) {
-                            labels[attributes.name] = widget;
-                        }
-                        break;
-                    case 'newline':
-                        container.add_row();
-                        break;
-                    case 'button':
-                        this._parse_button(child, container, attributes);
-                        break;
-                    case 'notebook':
-                        this._parse_notebook(
-                                model, child, container, attributes);
-                        break;
-                    case 'page':
-                        this._parse_page(model, child, container, attributes);
-                        break;
-                    case 'field':
-                        widget = this._parse_field(
-                                model, child, container, attributes);
-                        if ((attributes.name in labels) &&
-                                widget &&
-                                widget.labelled) {
-                            var label = labels[attributes.name];
-                            label.el.uniqueId();
-                            widget.labelled.uniqueId();
-                            widget.labelled.attr(
-                                    'aria-labelledby', label.el.attr('id'));
-                            label.el.attr('for', widget.labelled.attr('id'));
-                        }
-                        break;
-                    case 'group':
-                        this._parse_group(model, child, container, attributes);
-                        break;
-                    case 'hpaned':
-                        this._parse_paned(model, child, container, attributes,
-                                'horizontal');
-                        break;
-                    case 'vpaned':
-                        this._parse_paned(model, child, container, attributes,
-                                'vertical');
-                        break;
-                    case 'child':
-                        this._parse_child(model, child, container, attributes);
-                        break;
-                }
+                this._parse_node(model, child, container, attributes, labels);
             };
             jQuery(node).children().each(_parse.bind(this));
             return container;
