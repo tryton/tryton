@@ -1052,8 +1052,7 @@
                         continue;
                     }
                     var field = this.model.fields[fname];
-                    if ((fields !== null) &&
-                        (!~fields.indexOf(fname))) {
+                    if (fields && !~fields.indexOf(fname)) {
                         continue;
                     }
                     if (field.get_state_attrs(this).readonly) {
