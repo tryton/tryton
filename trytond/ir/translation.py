@@ -849,6 +849,8 @@ class Translation(ModelSQL, ModelView):
                 id2translation = dict((t.id, t)
                     for t in cls.browse(translation_ids))
             for entry in pofile:
+                if entry.obsolete:
+                    continue
                 translation, res_id = cls.from_poentry(entry)
                 translation.lang = lang
                 translation.module = module
