@@ -162,8 +162,8 @@ class ViewBoard(object):
         return self.widget
 
     def reload(self):
-        for widget in self.widgets:
-            widget.display()
+        for action in self.actions:
+            action.display()
 
     def _active_changed(self, event_action, *args):
         for action in self.actions:
