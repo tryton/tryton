@@ -450,7 +450,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.draft([m for s in shipments for m in s.incoming_moves])
+        Move.draft([m for s in shipments for m in s.incoming_moves
+                if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancel')])
 
@@ -692,7 +693,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.draft([m for s in shipments for m in s.moves])
+        Move.draft([m for s in shipments for m in s.moves
+                if m.state != 'staging'])
 
     @classmethod
     @ModelView.button
@@ -1039,7 +1041,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
         Move.draft([m for s in shipments
-                for m in s.inventory_moves + s.outgoing_moves])
+                for m in s.inventory_moves + s.outgoing_moves
+                if m.state != 'staging'])
 
     @classmethod
     @ModelView.button
@@ -1625,7 +1628,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.draft([m for s in shipments for m in s.incoming_moves])
+        Move.draft([m for s in shipments for m in s.incoming_moves
+                if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancel')])
 
@@ -1942,7 +1946,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
         # First reset state to draft to allow update from and to location
-        Move.draft([m for s in shipments for m in s.moves])
+        Move.draft([m for s in shipments for m in s.moves
+                if m.state != 'staging'])
         for shipment in shipments:
             Move.write([m for m in shipment.moves
                     if m.state != 'done'], {
