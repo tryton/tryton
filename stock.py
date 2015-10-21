@@ -240,7 +240,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 if (move.state == 'cancel'
                         and isinstance(move.origin, (PurchaseLine, SaleLine))):
                     cls.raise_user_error('reset_move', (move.rec_name,))
-        Move.draft([m for s in shipments for m in s.moves])
+        Move.draft([m for s in shipments for m in s.moves
+                if m.state != 'staging'])
 
     @classmethod
     @ModelView.button
