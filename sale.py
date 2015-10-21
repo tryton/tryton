@@ -89,7 +89,9 @@ class Sale:
         def filter_line(line):
             return (line.product
                 and line.product.type == 'goods'
-                and line.quantity > 0)
+                and line.quantity > 0
+                # Use getattr as supply_on_sale comes from sale_supply module
+                and not getattr(line, 'supply_on_sale', False))
 
         def get_delta(date):
             'Compute quantity delta at the date'
