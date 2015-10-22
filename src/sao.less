@@ -1,17 +1,34 @@
 @import "variables";
 
+.navbar {
+    z-index: @zindex-navbar;
+}
+
 .tab-form {
-    & .toolbar {
+    & nav.toolbar {
         margin-bottom: 1px;
         & ul.nav > li > a {
             padding-right: 0px;
         }
+    }
+    & nav.toolbar.affix {
+        top: @navbar-height + 1px;
+        z-index: @zindex-navbar - 1;
     }
 }
 
 .nav-tabs > li .close {
     margin: -2px 0 0 10px;
     font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .tab-form {
+        .navbar-nav > li {
+            float: left;
+            width: 50%;
+        }
+    }
 }
 
 input[type='color'] {

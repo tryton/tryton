@@ -15,13 +15,12 @@
                 'class': this.class_
             });
 
-            this.title = jQuery('<h4/>').appendTo(this.el);
-
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
             }
 
-            this.create_toolbar().appendTo(this.el);
+            var toolbar = this.create_toolbar().appendTo(this.el);
+            this.title = toolbar.find('a.navbar-brand');
         },
         set_menu: function(menu) {
             this.menu_def.forEach(function(definition) {
@@ -53,6 +52,7 @@
                     '<nav class="navbar navbar-default toolbar" role="navigation">' +
                     '<div class="container-fluid">' +
                     '<div class="navbar-header">' +
+                    '<a class="navbar-brand" href="#"></a>' +
                     '<button type="button" class="navbar-toggle collapsed" ' +
                     'data-toggle="collapse" ' +
                     'data-target="#navbar-' + this.id + '">' +
@@ -112,6 +112,22 @@
                 // TODO tooltip
             };
             this.toolbar_def.forEach(add_button.bind(this));
+            var tabs = jQuery('#tabs');
+            toolbar.affix({
+                'target': tabs.parent(),
+                'offset': {
+                    'top': function() {
+                        return tabs.find('.nav-tabs').height();
+                    }
+                }
+            });
+            toolbar.on('affixed.bs.affix', function() {
+                Sao.Tab.affix_set_with(toolbar);
+            });
+            toolbar.on('affixed-top.bs.affix affixed-bottom.bs.affix',
+                    function() {
+                        Sao.Tab.affix_unset_width(toolbar);
+                    });
             return toolbar;
         },
         close: function() {
@@ -138,6 +154,25 @@
         set_name: function(name) {
             this.name_el.text(name);
         }
+    });
+
+    Sao.Tab.affix_set_with = function(toolbar) {
+        var width = jQuery(toolbar.parent()).width();
+        toolbar.css('width', width);
+    };
+    Sao.Tab.affix_unset_width = function(toolbar) {
+        toolbar.css('width', '');
+    };
+    jQuery(window).resize(function() {
+        jQuery('.toolbar').each(function(i, toolbar) {
+            toolbar = jQuery(toolbar);
+            toolbar.affix('checkPosition');
+            if (toolbar.hasClass('affix')) {
+                Sao.Tab.affix_set_with(toolbar);
+            } else {
+                Sao.Tab.affix_unset_width(toolbar);
+            }
+        });
     });
 
     Sao.Tab.counter = 0;
