@@ -99,7 +99,7 @@ class Move:
                     and move.to_location.type != 'storage'
                     and move.product.cost_price_method == 'fifo'):
                 cost_price = move._update_fifo_out_product_cost_price()
-                if not move.cost_price:
+                if move.cost_price is None:
                     move.cost_price = cost_price
             move.save()
 
