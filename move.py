@@ -4,6 +4,7 @@ from decimal import Decimal
 from trytond.model import Workflow, ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['Move']
 __metaclass__ = PoolMeta
@@ -38,8 +39,9 @@ class Move:
         fifo_quantity on the concerned incomming moves. Return the
         cost price for outputing the given product and quantity.
         '''
-
-        Uom = Pool().get('product.uom')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
 
         total_qty = Uom.compute_qty(self.uom, self.quantity,
             self.product.default_uom, round=False)
@@ -51,7 +53,11 @@ class Move:
         for move, move_qty in fifo_moves:
             consumed_qty += move_qty
 
-            move_unit_price = Uom.compute_price(move.uom, move.unit_price,
+            with Transaction().set_context(date=move.effective_date):
+                move_unit_price = Currency.compute(
+                    move.currency, move.unit_price,
+                    self.company.currency, round=False)
+            move_unit_price = Uom.compute_price(move.uom, move_unit_price,
                     move.product.default_uom)
             cost_price += move_unit_price * Decimal(str(move_qty))
 
