@@ -4,6 +4,7 @@ import datetime
 import operator
 from decimal import Decimal
 from functools import partial
+from collections import OrderedDict
 
 from sql import Literal, Union, Column, Null
 from sql.aggregate import Sum
@@ -791,7 +792,8 @@ class Move(Workflow, ModelSQL, ModelView):
                     success = False
                 continue
             to_location = move.to_location
-            location_qties = {}
+            # Keep location order for pick_product
+            location_qties = OrderedDict()
             if with_childs:
                 childs = Location.search([
                         ('parent', 'child_of', [move.from_location.id]),
