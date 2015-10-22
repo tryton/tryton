@@ -324,9 +324,10 @@ class FloatField(Field):
         if value is not None:
             digits = self.digits(record, factor=factor)
             if digits:
-                return locale.format('%.*f', (digits[1], value * factor), True)
+                p = digits[1]
             else:
-                return locale.format('%s', value * factor, True)
+                p = -int(Decimal(str(value * factor)).as_tuple().exponent)
+            return locale.format('%.*f', (p, value * factor), True)
         else:
             return ''
 
