@@ -166,6 +166,11 @@
             action = new Sao.View.Board.Action(attributes, this.context);
             this.actions.push(action);
             container.add(attributes, action);
+        },
+        reload: function() {
+            for (var i = 0; i < this.actions.length; i++) {
+                this.actions[i].display();
+            }
         }
     });
 

@@ -28,23 +28,24 @@
                 var icon = definition[0];
                 var name = definition[1];
                 var func = definition[2];
-                if (!func) {
-                    return;
-                }
                 var item = jQuery('<li/>', {
                     'role': 'presentation'
-                }).append(jQuery('<a/>', {
+                }).appendTo(menu);
+                var link = jQuery('<a/>', {
                     'role': 'menuitem',
                     'href': '#',
                     'tabindex': -1
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon ' + icon,
                     'aria-hidden': 'true'
-                })).append(' ' + name));
-                menu.append(item);
-                item.click(function() {
-                    this[func]();
-                }.bind(this));
+                })).append(' ' + name).appendTo(item);
+                if (func) {
+                    link.click(function() {
+                        this[func]();
+                    }.bind(this));
+                } else {
+                    item.addClass('disabled');
+                }
             }.bind(this));
         },
         create_toolbar: function() {
@@ -87,6 +88,9 @@
             this.set_menu(toolbar.find('ul[role*="menu"]'));
 
             var add_button = function(tool) {
+                var item = jQuery('<li/>', {
+                    'role': 'presentation'
+                }).appendTo(toolbar.find('.navbar-collapse > ul'));
                 this.buttons[tool[0]] = jQuery('<a/>', {
                     'role': 'menuitem',
                     'href': '#',
@@ -99,10 +103,12 @@
                 .append(jQuery('<span/>', {
                     'class': 'hidden-sm'
                 }).append(' ' + tool[2]))
-                .click(this[tool[4]].bind(this))
-                .appendTo(jQuery('<li/>', {
-                    'role': 'presentation'
-                }).appendTo(toolbar.find('.navbar-collapse > ul')));
+                .appendTo(item);
+                if (tool[4]) {
+                    this.buttons[tool[0]].click(this[tool[4]].bind(this));
+                } else {
+                    item.addClass('disabled');
+                }
                 // TODO tooltip
             };
             this.toolbar_def.forEach(add_button.bind(this));
@@ -736,8 +742,28 @@
             this.set_name(this.name);
             this.title.html(this.name_el.text());
         },
-        create_toolbar: function() {
-            return jQuery('<span/>');
+        toolbar_def: [
+            ['new', 'glyphicon-edit',
+                Sao.i18n.gettext('New'),
+                Sao.i18n.gettext('Create a new record'), null],
+            ['save', 'glyphicon-save',
+                Sao.i18n.gettext('Save'),
+                Sao.i18n.gettext('Save this record'), null],
+            ['switch', 'glyphicon-list-alt',
+                Sao.i18n.gettext('Switch'),
+                Sao.i18n.gettext('Switch view'), null],
+            ['reload', 'glyphicon-refresh',
+                Sao.i18n.gettext('Reload'),
+                Sao.i18n.gettext('Reload'), 'reload']
+        ],
+        menu_def: [
+            ['glyphicon-edit', Sao.i18n.gettext('New'), null],
+            ['glyphicon-save', Sao.i18n.gettext('Save'), null],
+            ['glyphicon-list-alt', Sao.i18n.gettext('Switch'), null],
+            ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload']
+        ],
+        reload: function() {
+            this.board.reload();
         },
         record_message: function() {
             var i, len;
