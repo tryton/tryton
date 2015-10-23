@@ -788,23 +788,11 @@
             this.title.html(this.name_el.text());
         },
         toolbar_def: [
-            ['new', 'glyphicon-edit',
-                Sao.i18n.gettext('New'),
-                Sao.i18n.gettext('Create a new record'), null],
-            ['save', 'glyphicon-save',
-                Sao.i18n.gettext('Save'),
-                Sao.i18n.gettext('Save this record'), null],
-            ['switch', 'glyphicon-list-alt',
-                Sao.i18n.gettext('Switch'),
-                Sao.i18n.gettext('Switch view'), null],
             ['reload', 'glyphicon-refresh',
                 Sao.i18n.gettext('Reload'),
                 Sao.i18n.gettext('Reload'), 'reload']
         ],
         menu_def: [
-            ['glyphicon-edit', Sao.i18n.gettext('New'), null],
-            ['glyphicon-save', Sao.i18n.gettext('Save'), null],
-            ['glyphicon-list-alt', Sao.i18n.gettext('Switch'), null],
             ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload']
         ],
         reload: function() {
