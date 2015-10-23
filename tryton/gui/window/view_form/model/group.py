@@ -190,7 +190,7 @@ class Group(SignalEvent, list):
         for id_ in ids:
             record = self.get(id_)
             if record and not record.modified:
-                record._loaded.clear()
+                record.cancel()
 
     def on_write_ids(self, ids):
         if not self.on_write:
