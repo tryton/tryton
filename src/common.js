@@ -2954,6 +2954,7 @@
                 this.dropdown = el.parent();
             }
             this.input = el.find('input').add(el.filter('input')).first();
+            this.input.attr('autocomplete', 'off');
             // bootstrap requires an element with data-toggle
             jQuery('<span/>', {
                 'data-toggle': 'dropdown'
