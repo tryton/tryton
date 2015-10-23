@@ -307,7 +307,7 @@
             ids.forEach(function(id) {
                 var record = this.get(id);
                 if (record && jQuery.isEmptyObject(record._changed)) {
-                    record._loaded = {};
+                    record.cancel();
                 }
             }.bind(this));
         };
