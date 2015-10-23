@@ -3125,9 +3125,7 @@
         init: function(orientation) {
             var row;
             this._orientation = orientation;
-            this.el = jQuery('<div/>', {
-                'class': 'container-fluid'
-            });
+            this.el = jQuery('<div/>');
             if (orientation == 'horizontal') {
                 row = jQuery('<div/>', {
                     'class': 'row'
