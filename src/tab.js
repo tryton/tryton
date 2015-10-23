@@ -156,6 +156,7 @@
                 if (next) {
                     next.find('a').tab('show');
                 }
+                tabs.trigger('ready');
             }.bind(this));
         },
         _close_allowed: function() {
@@ -269,6 +270,7 @@
             Sao.View.resize(tab.el);
         });
         tab_link.tab('show');
+        tabs.trigger('ready');
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {
