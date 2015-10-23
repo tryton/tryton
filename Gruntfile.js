@@ -43,14 +43,15 @@ module.exports = function(grunt) {
                 var po = "locale/" + locale + ".po";
                 return "msgmerge -U " + po + " locale/messages.pot;";
             }).join("")
+        }
+    },
+    po2json: {
+        options: {
+            format: 'raw'
         },
-        po2json: {
-            command: _.map(locales, function(locale) {
-                var po = "locale/" + locale + ".po";
-                var json = "locale/" + locale + ".json";
-                return "./node_modules/.bin/po2json-gettextjs " +
-                    po + " " + json + ";";
-            }).join("")
+        all: {
+            src: ['locale/*.po'],
+            dest: 'locale/'
         }
     },
     concat: {
@@ -128,11 +129,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-po2json');
 
   // Default task(s).
   grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'less:default']);
   grunt.registerTask('dev', ['concat', 'jshint', 'less:dev']);
   grunt.registerTask('msgmerge', ['shell:msgmerge']);
-  grunt.registerTask('po2json', ['shell:po2json']);
 
 };

@@ -181,6 +181,18 @@ var Sao = {};
     Sao.i18n.setlang = function(lang) {
         Sao.i18n.setLocale(lang);
         return jQuery.getJSON('locale/' + lang + '.json', function(data) {
+            if (!data['']['plural-forms']) {
+                data['']['plural-forms'] = 'nplurals=2; plural=(n!=1);';
+            }
+            // gettext.js requires to dump untranslated keys
+            for (var key in data) {
+                if ('' === key) {
+                    continue;
+                }
+                if ('' !== data[key][1]) {
+                    data[key] = 2 == data[key].length ? data[key][1] : data[key].slice(1);
+                }
+            }
             Sao.i18n.loadJSON(data);
         });
     };
