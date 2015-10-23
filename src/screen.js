@@ -1369,7 +1369,7 @@
                     context._timestamp = {};
                     for (i = 0; i < selected_records.length; i++) {
                         record = selected_records[i];
-                        jQuery.extend(context, record.get_timestamp());
+                        jQuery.extend(context._timestamp, record.get_timestamp());
                     }
                     record.save(false).done(function() {
                         ids = selected_records.map(
