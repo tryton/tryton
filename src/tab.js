@@ -23,7 +23,7 @@
             this.title = toolbar.find('a.navbar-brand');
         },
         set_menu: function(menu) {
-            this.menu_def.forEach(function(definition) {
+            this.menu_def().forEach(function(definition) {
                 var icon = definition[0];
                 var name = definition[1];
                 var func = definition[2];
@@ -114,7 +114,7 @@
                 }
                 // TODO tooltip
             };
-            this.toolbar_def.forEach(add_button.bind(this));
+            this.toolbar_def().forEach(add_button.bind(this));
             var tabs = jQuery('#tabs');
             toolbar.affix({
                 'target': tabs.parent(),
@@ -282,13 +282,6 @@
             this.screen = screen;
             this.attributes = jQuery.extend({}, attributes);
 
-            if (!Sao.common.MODELHISTORY.contains(model_name)) {
-                this.menu_def = jQuery.extend([], this.menu_def);
-                this.menu_def[10] = jQuery.extend([], this.menu_def[10]);
-                // Remove callback to revision
-                this.menu_def[10][2] = null;
-            }
-
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
 
@@ -320,49 +313,56 @@
                 this.update_revision();
             }.bind(this));
         },
-        toolbar_def: [
-            ['new', 'glyphicon-edit',
+        toolbar_def: function() {
+            return [
+                ['new', 'glyphicon-edit',
                 Sao.i18n.gettext('New'),
                 Sao.i18n.gettext('Create a new record'), 'new_'],
-            ['save', 'glyphicon-save',
+                ['save', 'glyphicon-save',
                 Sao.i18n.gettext('Save'),
                 Sao.i18n.gettext('Save this record'), 'save'],
-            ['switch', 'glyphicon-list-alt',
+                ['switch', 'glyphicon-list-alt',
                 Sao.i18n.gettext('Switch'),
                 Sao.i18n.gettext('Switch view'), 'switch_'],
-            ['reload', 'glyphicon-refresh',
+                ['reload', 'glyphicon-refresh',
                 Sao.i18n.gettext('Reload'),
                 Sao.i18n.gettext('Reload'), 'reload'],
-            ['previous', 'glyphicon-chevron-left',
+                ['previous', 'glyphicon-chevron-left',
                 Sao.i18n.gettext('Previous'),
                 Sao.i18n.gettext('Previous Record'), 'previous'],
-            ['next', 'glyphicon-chevron-right',
+                ['next', 'glyphicon-chevron-right',
                 Sao.i18n.gettext('Next'),
                 Sao.i18n.gettext('Next Record'), 'next'],
-            ['attach', 'glyphicon-paperclip',
+                ['attach', 'glyphicon-paperclip',
                 Sao.i18n.gettext('Attachment'),
                 Sao.i18n.gettext('Add an attachment to the record'), 'attach']
-            ],
-        menu_def: [
-            ['glyphicon-edit', Sao.i18n.gettext('New'), 'new_'],
-            ['glyphicon-save', Sao.i18n.gettext('Save'), 'save'],
-            ['glyphicon-list-alt', Sao.i18n.gettext('Switch'), 'switch_'],
-            ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload'],
-            ['glyphicon-duplicate', Sao.i18n.gettext('Duplicate'), 'copy'],
-            ['glyphicon-trash', Sao.i18n.gettext('Delete'), 'delete_'],
-            ['glyphicon-chevron-left', Sao.i18n.gettext('Previous'),
-                'previous'],
-            ['glyphicon-chevron-right', Sao.i18n.gettext('Next'), 'next'],
-            ['glyphicon-search', Sao.i18n.gettext('Search'), 'search'],
-            ['glyphicon-time', Sao.i18n.gettext('View Logs...'), 'logs'],
-            ['glyphicon-time', Sao.i18n.gettext('Show revisions...'),
-                'revision'],
-            ['glyphicon-remove', Sao.i18n.gettext('Close Tab'), 'close'],
-            ['glyphicon-paperclip', Sao.i18n.gettext('Attachment'), 'attach'],
-            ['glyphicon-cog', Sao.i18n.gettext('Action'), 'action'],
-            ['glyphicon-share-alt', Sao.i18n.gettext('Relate'), 'relate'],
-            ['glyphicon-print', Sao.i18n.gettext('Print'), 'print']
-            ],
+            ];
+        },
+        menu_def: function() {
+            return [
+                ['glyphicon-edit', Sao.i18n.gettext('New'), 'new_'],
+                ['glyphicon-save', Sao.i18n.gettext('Save'), 'save'],
+                ['glyphicon-list-alt', Sao.i18n.gettext('Switch'), 'switch_'],
+                ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'),
+                    'reload'],
+                ['glyphicon-duplicate', Sao.i18n.gettext('Duplicate'), 'copy'],
+                ['glyphicon-trash', Sao.i18n.gettext('Delete'), 'delete_'],
+                ['glyphicon-chevron-left', Sao.i18n.gettext('Previous'),
+                    'previous'],
+                ['glyphicon-chevron-right', Sao.i18n.gettext('Next'), 'next'],
+                ['glyphicon-search', Sao.i18n.gettext('Search'), 'search'],
+                ['glyphicon-time', Sao.i18n.gettext('View Logs...'), 'logs'],
+                ['glyphicon-time', Sao.i18n.gettext('Show revisions...'),
+                    Sao.common.MODELHISTORY.contains(this.screen.model_name) ?
+                        'revision' : null],
+                ['glyphicon-remove', Sao.i18n.gettext('Close Tab'), 'close'],
+                ['glyphicon-paperclip', Sao.i18n.gettext('Attachment'),
+                    'attach'],
+                ['glyphicon-cog', Sao.i18n.gettext('Action'), 'action'],
+                ['glyphicon-share-alt', Sao.i18n.gettext('Relate'), 'relate'],
+                ['glyphicon-print', Sao.i18n.gettext('Print'), 'print']
+            ];
+        },
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
             var screen = this.screen;
@@ -789,14 +789,18 @@
             this.set_name(this.name);
             this.title.html(this.name_el.text());
         },
-        toolbar_def: [
-            ['reload', 'glyphicon-refresh',
+        toolbar_def: function() {
+            return [
+                ['reload', 'glyphicon-refresh',
                 Sao.i18n.gettext('Reload'),
                 Sao.i18n.gettext('Reload'), 'reload']
-        ],
-        menu_def: [
-            ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload']
-        ],
+            ];
+        },
+        menu_def: function() {
+            return [
+                ['glyphicon-refresh', Sao.i18n.gettext('Reload/Undo'), 'reload']
+            ];
+        },
         reload: function() {
             this.board.reload();
         },
