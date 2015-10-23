@@ -666,14 +666,18 @@ class M2O(GenericText):
     def _completion_action_activated(self, completion, index, path):
         record, field = self._get_record_field(path)
         entry = completion.get_entry()
+        entry.handler_block(entry.editing_done_id)
 
         def callback():
+            entry.handler_unblock(entry.editing_done_id)
             entry.set_text(field.get_client(record))
         if index == 0:
             self.open_remote(record, create=False, changed=True,
                 text=entry.get_text(), callback=callback)
         elif index == 1:
             self.open_remote(record, create=True, callback=callback)
+        else:
+            entry.handler_unblock(entry.editing_done_id)
 
 
 class O2O(M2O):
