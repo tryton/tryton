@@ -85,6 +85,9 @@
                     '</div>' +
                     '</nav>'
                     );
+            var wrapper = jQuery('<div/>', {
+                'class': 'nav-wrapper'
+            }).append(toolbar);
             this.set_menu(toolbar.find('ul[role*="menu"]'));
 
             var add_button = function(tool) {
@@ -121,6 +124,13 @@
                     }
                 }
             });
+            toolbar.on('affix.bs.affix', function() {
+                wrapper.height(toolbar.height());
+            });
+            toolbar.on('affix-top.bs.affix affix-bottom.bs.affix',
+                    function() {
+                        wrapper.height('');
+                    });
             toolbar.on('affixed.bs.affix', function() {
                 Sao.Tab.affix_set_with(toolbar);
             });
@@ -128,7 +138,7 @@
                     function() {
                         Sao.Tab.affix_unset_width(toolbar);
                     });
-            return toolbar;
+            return wrapper;
         },
         close: function() {
             var tabs = jQuery('#tabs');
