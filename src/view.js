@@ -4506,7 +4506,7 @@
                 'class': this.class_ + '-body panel-body'
             }).appendTo(this.el);
             this.container = jQuery('<div/>', {
-                'class': this.class_ + '-container container-fluid'
+                'class': this.class_ + '-container'
             }).appendTo(body);
 
             var group = jQuery('<div/>', {
