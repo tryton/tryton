@@ -2035,6 +2035,8 @@
                             width += widths[i + j] || 0;
                         }
                         cell.css('width', width + '%');
+                    } else {
+                        cell.css('width', '');
                     }
                     if (cell.children().css('display') == 'none') {
                         cell.css('visibility', 'collapse');
