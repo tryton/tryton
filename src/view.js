@@ -2037,9 +2037,9 @@
                         cell.css('width', width + '%');
                     }
                     if (cell.children().css('display') == 'none') {
-                        cell.hide();
+                        cell.css('visibility', 'collapse');
                     } else {
-                        cell.show();
+                        cell.css('visibility', 'visible');
                     }
                     i += colspan;
                 });
