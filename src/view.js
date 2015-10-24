@@ -1966,7 +1966,7 @@
                     var colspan = Math.min(Number(cell.attr('colspan')), col);
                     if (cell.hasClass('xexpand') &&
                         (!jQuery.isEmptyObject(cell.children())) &&
-                        (cell.children().css('display') != 'none')) {
+                        (cell.children(':not(.tooltip)').css('display') != 'none')) {
                         xexpands.push([cell, i]);
                     }
                     i += colspan;
@@ -2028,7 +2028,8 @@
                     var cell = jQuery(this);
                     var colspan = Math.min(Number(cell.attr('colspan')), col);
                     if (cell.hasClass('xexpand') &&
-                        (cell.children().css('display') != 'none')) {
+                        (cell.children(':not(.tooltip)').css('display') !=
+                         'none')) {
                         var width = 0;
                         for (j = 0; j < colspan; j++) {
                             width += widths[i + j] || 0;
