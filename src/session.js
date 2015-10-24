@@ -7,6 +7,7 @@
         init: function(database, login) {
             this.user_id = null;
             this.session = null;
+            this.prm = jQuery.when();  // renew promise
             this.database = database;
             this.login = login;
             this.context = {};
@@ -225,10 +226,15 @@
     };
 
     Sao.Session.renew = function(session) {
+        if (session.prm.state() == 'pending') {
+            return session.prm;
+        }
         var dfd = jQuery.Deferred();
+        session.prm = dfd.promise();
         var dialog = Sao.Session.password_dialog();
         if (!session.login) {
-            return dfd.reject();
+            dfd.reject();
+            return session.prm;
         }
 
         var ok_func = function() {
@@ -257,7 +263,7 @@
             e.preventDefault();
         });
         dialog.modal.modal('show');
-        return dfd.promise();
+        return session.prm;
     };
 
     Sao.Session.current_session = null;
