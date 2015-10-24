@@ -16,6 +16,7 @@
         },
         do_login: function(login, password) {
             var dfd = jQuery.Deferred();
+            var timeoutID = Sao.common.processing.show();
             var args = {
                 'method': 'common.db.login',
                 'params': [login, password]
@@ -25,7 +26,10 @@
                 'data': JSON.stringify(args),
                 'dataType': 'json',
                 'url': '/' + this.database,
-                'type': 'post'
+                'type': 'post',
+                'complete': [function() {
+                    Sao.common.processing.hide(timeoutID);
+                }]
             });
 
             var ajax_success = function(data) {
@@ -87,7 +91,11 @@
         dialog.database_select = jQuery('<select/>', {
             'class': 'form-control',
             'id': 'login-database'
-        });
+        }).hide();
+        dialog.database_input = jQuery('<input/>', {
+            'class': 'form-control',
+            'id': 'login-database'
+        }).hide();
         dialog.login_input = jQuery('<input/>', {
             'class': 'form-control',
             'id': 'login-login',
@@ -102,28 +110,29 @@
         dialog.body.append(jQuery('<div/>', {
             'class': 'form-group'
         }).append(jQuery('<label/>', {
+            'class': 'control-label',
             'for': 'login-database'
         }).append(Sao.i18n.gettext('Database')))
         .append(dialog.database_select)
+        .append(dialog.database_input)
         ).append(jQuery('<div/>', {
             'class': 'form-group'
         }).append(jQuery('<label/>', {
+            'class': 'control-label',
             'for': 'login-login'
         }).append(Sao.i18n.gettext('Login')))
         .append(dialog.login_input)
         ).append(jQuery('<div/>', {
             'class': 'form-group'
         }).append(jQuery('<label/>', {
+            'class': 'control-label',
             'for': 'login-password'
         }).append(Sao.i18n.gettext('Password')))
         .append(dialog.password_input));
-        jQuery('<button/>', {
+        dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary',
             'type': 'submit'
         }).append(Sao.i18n.gettext('Login')).appendTo(dialog.footer);
-        dialog.modal.on('hidden.bs.modal', function(event) {
-            jQuery(this).remove();
-        });
         return dialog;
     };
 
@@ -133,39 +142,41 @@
                 /^(#(!|))/, '') || null;
         var dialog = Sao.Session.login_dialog();
 
+        var empty_field = function() {
+            return dialog.modal.find('input,select').filter(':visible')
+                .filter(function() {
+                    return !jQuery(this).val();
+                });
+        };
+
         var ok_func = function() {
             var login = dialog.login_input.val();
             var password = dialog.password_input.val();
-            // clear the password as the input will stay in the DOM
-            dialog.password_input.val('');
-            var database = database || dialog.database_select.val();
-            if (!(login && password)) {
+            var database = database || dialog.database_select.val() ||
+                dialog.database_input.val();
+            dialog.modal.find('.has-error').removeClass('has-error');
+            if (!(login && password && database)) {
+                empty_field().closest('.form-group').addClass('has-error');
                 return;
             }
+            dialog.button.focus();
+            dialog.button.prop('disabled', true);
             var session = new Sao.Session(database, login);
             session.do_login(login, password)
                 .then(function() {
                     dfd.resolve(session);
+                    dialog.modal.remove();
                 }, function() {
-                    dialog.modal.modal('show');
+                    dialog.button.prop('disabled', false);
+                    dialog.password_input.val('');
+                    empty_field().closest('.form-group').addClass('has-error');
+                    empty_field().first().focus();
                 });
-            dialog.modal.modal('hide');
         };
 
         dialog.modal.modal({
             backdrop: false,
             keyboard: false
-        });
-        dialog.modal.on('shown.bs.modal', function() {
-            if (database) {
-                if (!dialog.login_input.val()) {
-                    dialog.login_input.focus();
-                } else {
-                    dialog.password_input.focus();
-                }
-            } else {
-                dialog.database_select.focus();
-            }
         });
         dialog.modal.find('form').unbind().submit(function(e) {
             ok_func();
@@ -173,16 +184,21 @@
         });
 
         jQuery.when(Sao.DB.list()).then(function(databases) {
-            databases.forEach(function(database) {
-                dialog.database_select.append(jQuery('<option/>', {
-                    'value': database,
-                    'text': database
-                }));
-            });
-            if (database) {
-                dialog.database_select.val(database);
+            var el;
+            if (jQuery.isEmptyObject(databases)) {
+                el = dialog.database_input;
+            } else {
+                el = dialog.database_select;
+                databases.forEach(function(database) {
+                    el.append(jQuery('<option/>', {
+                        'value': database,
+                        'text': database
+                    }));
+                });
             }
-            dialog.modal.modal('show');
+            el.show();
+            el.val(database || '');
+            empty_field().first().focus();
         });
         return dfd.promise();
     };
@@ -201,13 +217,10 @@
             'for': 'password-password'
         }).append(Sao.i18n.gettext('Password')))
         .append(dialog.password_input));
-        jQuery('<button/>', {
+        dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary',
             'type': 'submit'
         }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
-        dialog.modal.on('hidden.bs.modal', function(event) {
-            jQuery(this).remove();
-        });
         return dialog;
     };
 
@@ -220,15 +233,16 @@
 
         var ok_func = function() {
             var password = dialog.password_input.val();
-            // clear the password as the input will stay in the DOM
-            dialog.password_input.val('');
+            dialog.button.focus();
+            dialog.button.prop('disabled', true);
             session.do_login(session.login, password)
                 .then(function() {
                     dfd.resolve();
+                    dialog.modal.remove();
                 }, function() {
-                    dialog.modal.modal('show');
+                    dialog.button.prop('disabled', false);
+                    dialog.password_input.val('').focus();
                 });
-            dialog.modal.modal('hide');
         };
 
         dialog.modal.modal({
@@ -251,10 +265,21 @@
     Sao.DB = {};
 
     Sao.DB.list = function() {
-        var args = {
-            'method': 'common.db.list',
-            'params': []
-        };
-        return Sao.rpc(args);
+        var timeoutID = Sao.common.processing.show();
+        return jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify({
+                'method': 'common.db.list',
+                'params': [null, null]
+            }),
+            'dataType': 'json',
+            'url': '/',
+            'type': 'post',
+            'complete': [function() {
+                Sao.common.processing.hide(timeoutID);
+            }]
+        }).then(function(data) {
+            return data.result;
+        });
     };
 }());
