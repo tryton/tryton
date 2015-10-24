@@ -2082,8 +2082,7 @@
             for (var i = 0, len = (record._values[this.name] || []).length;
                     i < len; i++) {
                 var record2 = record._values[this.name][i];
-                if (jQuery.isEmptyObject(record2._loaded) &&
-                        (record2.id >= 0) &&
+                if (!record2.get_loaded() && (record2.id >= 0) &&
                         !pre_validate) {
                     continue;
                 }
