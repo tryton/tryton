@@ -132,7 +132,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-po2json');
 
   // Default task(s).
-  grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'less:default']);
+  grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'less']);
   grunt.registerTask('dev', ['concat', 'jshint', 'less:dev']);
   grunt.registerTask('msgmerge', ['shell:msgmerge']);
 
