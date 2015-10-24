@@ -15,12 +15,12 @@
                 'class': this.class_
             });
 
+            var toolbar = this.create_toolbar().appendTo(this.el);
+            this.title = toolbar.find('a.navbar-brand');
+
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
             }
-
-            var toolbar = this.create_toolbar().appendTo(this.el);
-            this.title = toolbar.find('a.navbar-brand');
         },
         set_menu: function(menu) {
             this.menu_def().forEach(function(definition) {
