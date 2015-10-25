@@ -1664,8 +1664,6 @@
                 if (attributes.xalign === undefined) {
                     attributes.xalign = 1.0;
                 }
-            } else if (!text) {
-                // TODO get content
             }
             var label;
             if (text) {
