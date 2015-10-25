@@ -1536,7 +1536,8 @@
             var widget;
             switch (child.tagName) {
                 case 'image':
-                    // TODO
+                    this._parse_image(
+                            model, child, container, attributes);
                     break;
                 case 'separator':
                     this._parse_separator(
@@ -1620,6 +1621,11 @@
             };
             jQuery(node).children().each(_parse.bind(this));
             return container;
+        },
+        _parse_image: function(model, node, container, attributes) {
+            var image = new Sao.View.Form.Image_(attributes);
+            this.state_widgets.push(image);
+            container.add(attributes, image);
         },
         _parse_separator: function(model, node, container, attributes) {
             var name = attributes.name;
@@ -2204,6 +2210,23 @@
         },
         add: function(widget) {
             this.el.append(widget.el);
+        }
+    });
+
+    Sao.View.Form.Image_ = Sao.class_(StateWidget, {
+        class_: 'form-image_',
+        init: function(attributes) {
+            Sao.View.Form.Image_._super.init.call(this, attributes);
+            this.el = jQuery('<div/>', {
+                'class_': this.class_
+            });
+            this.img = jQuery('<img/>', {
+                'class': 'center-block'
+            }).appendTo(this.el);
+            Sao.common.ICONFACTORY.register_icon(attributes.name)
+                .done(function(url) {
+                    this.img.attr('src', url);
+                }.bind(this));
         }
     });
 
