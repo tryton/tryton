@@ -42,7 +42,6 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             expand, fill = False, False
         self.widget.pack_start(self.entry, expand=expand, fill=fill)
 
-        self.button = None
         if attrs.get('translate'):
             self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
                 'tryton-locale')
@@ -139,8 +138,6 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             self.entry.set_button_sensitivity(sensitivity[value])
         else:
             self.entry.set_editable(not value)
-        if self.button:
-            self.button.set_sensitive(not value)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:
