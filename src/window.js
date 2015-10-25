@@ -218,6 +218,8 @@
                 dialog.add_title(this.screen.current_view.attributes.string);
                 dialog.body.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
+            }.bind(this));
+            this.el.on('shown.bs.modal', function(event) {
                 this.screen.display();
             }.bind(this));
             this.el.on('hidden.bs.modal', function(event) {
