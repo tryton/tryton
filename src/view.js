@@ -3171,7 +3171,7 @@
             });
         },
         key_press: function(event_) {
-            var editable = true; // TODO compute editable
+            var editable = !this.entry.prop('readonly');
             var activate_keys = [Sao.common.TAB_KEYCODE];
             var delete_keys = [Sao.common.BACKSPACE_KEYCODE,
                 Sao.common.DELETE_KEYCODE];
