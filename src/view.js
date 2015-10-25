@@ -1691,19 +1691,20 @@
         _parse_page: function(model, node, container, attributes) {
             var text = attributes.string;
             if (attributes.name in model.fields) {
-                // TODO check exclude
-                // sync attributes
-                if (!text) {
-                    text = model.fields[attributes.name]
-                        .description.string;
+                var field = model.fields[attributes.name];
+                if (attributes.name == this.screen.exclude_field) {
+                    return;
                 }
-            }
-            if (!text) {
-                text = Sao.i18n.gettext('No String Attr.');
+                ['states', 'string'].forEach(function(attr) {
+                    if ((attributes[attr] === undefined) &&
+                            (field.description[attr] !== undefined)) {
+                        attributes[attr] = field.description[attr];
+                    }
+                });
             }
             var page = this.parse(model, node);
-            page = new Sao.View.Form.Page(container.add(page.el, text),
-                    attributes);
+            page = new Sao.View.Form.Page(
+                    container.add(page.el, attributes.string), attributes);
             this.state_widgets.push(page);
         },
         _parse_field: function(model, node, container, attributes) {
