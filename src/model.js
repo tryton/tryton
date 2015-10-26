@@ -2051,6 +2051,11 @@
             }
             return result;
         },
+        get_removed_ids: function(record) {
+            return record._values[this.name].record_removed.map(function(r) {
+                return r.id;
+            });
+        },
         get_domain: function(record) {
             var domains = this.get_domains(record);
             var screen_domain = domains[0];

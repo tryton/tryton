@@ -581,7 +581,8 @@
             this.new_group();
             this.current_view = null;
             this.current_record = null;
-            this.domain = attributes.domain || null;
+            this.domain = attributes.domain || [];
+            this.size_limit = null;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
             if (!Sao.common.MODELACCESS.get(model_name).write) {
@@ -599,6 +600,7 @@
             this.tree_states_done = [];
             this.fields_view_tree = {};
             this._domain_parser = {};
+            this.pre_validate = false;
             this.tab = null;
         },
         load_next_view: function() {

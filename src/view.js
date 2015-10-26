@@ -1107,6 +1107,7 @@
                     if (next_row.length) {
                         focus_cell(next_row);
                     } else {
+                        // TODO access and size_limit
                         this.tree.screen.new_().done(function() {
                             var new_row;
                             var rows = this.tree.tbody.children('tr');
@@ -3586,10 +3587,14 @@
                 exclude_field: attributes.relation_field || null,
                 pre_validate: attributes.pre_validate
             });
+            this.screen.pre_validate = attributes.pre_validate == 1;
             this.prm = this.screen.switch_view(modes[0]).done(function() {
                 this.content.append(this.screen.screen_container.el);
             }.bind(this));
-            // TODO sensitivity of buttons
+
+            // TODO key_press
+
+            this.but_switch.prop('disabled', this.screen.number_of_views() <= 0);
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;
@@ -3597,9 +3602,18 @@
         },
         _set_button_sensitive: function() {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            var size_limit = false;
-            if (this.record() && this.field()) {
-                // TODO
+            var size_limit, o2m_size;
+            var record = this.record();
+            var field = this.field();
+            if (record && field) {
+                var field_size = record.expr_eval(this.attributes.size);
+                o2m_size = field.get_eval(record);
+                size_limit = (((field_size !== undefined) &&
+                            (field_size !== null)) &&
+                        (o2m_size >= field_size >= 0));
+            } else {
+                o2m_size = null;
+                size_limit = false;
             }
             var create = this.attributes.create;
             if (create === undefined) {
@@ -3646,8 +3660,25 @@
                 var new_group = record.field_get_client(this.field_name);
                 if (new_group != this.screen.group) {
                     this.screen.set_group(new_group);
-                    // TODO handle editable tree
-                    // TODO set readonly, domain, size_limit
+                    if ((this.screen.current_view.view_type == 'tree') &&
+                            this.screen.current_view.editable) {
+                        this.screen.set_current_record(null);
+                    }
+                    var readonly = false;
+                    var domain = [];
+                    var size_limit = null;
+                    if (record) {
+                        readonly = field.get_state_attrs(record).readonly;
+                        domain = field.get_domain(record);
+                        size_limit = record.expr_eval(this.attributes.size);
+                    }
+                    if (!Sao.common.compare(this.screen.domain, domain)) {
+                        this.screen.domain = domain;
+                    }
+                    if (!this.screen.group.get_readonly() && readonly) {
+                        this.screen.group.set_readonly(readonly);
+                    }
+                    this.screen.size_limit = size_limit;
                 }
                 this.screen.display();
             }.bind(this));
@@ -3665,7 +3696,42 @@
             if (!access.write || !access.read) {
                 return;
             }
-            // TODO
+            this.view.set_value();
+            var domain = this.field().get_domain(this.record());
+            var context = this.field().get_context(this.record());
+            domain = [domain,
+                this.record().expr_eval(this.attributes.add_remove)];
+            var removed_ids = this.field().get_removed_ids(this.record());
+            domain = ['OR', domain, ['id', 'in', removed_ids]];
+            var text = this.wid_text.val();
+
+            // TODO sequence
+
+            var callback = function(result) {
+                if (!jQuery.isEmptyObject(result)) {
+                    var ids = [];
+                    var i, len;
+                    for (i = 0, len = result.length; i < len; i++) {
+                        ids.push(result[i][0]);
+                    }
+                    this.screen.group.load(ids, true);
+                    this.screen.display();
+                }
+                // TODO set_cursor
+                this.wid_text.val('');
+            }.bind(this);
+            var parser = new Sao.common.DomainParser();
+            var win = new Sao.Window.Search(this.attributes.relation,
+                    callback, {
+                        sel_multi: true,
+                        context: context,
+                        domain: domain,
+                        view_ids: (this.attributes.view_ids ||
+                                '').split(','),
+                        views_preload: this.attributes.views || {},
+                        new_: !this.but_new.prop('disabled'),
+                        search_filter: parser.quote(text)
+                    });
         },
         remove: function(event_) {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
@@ -3823,8 +3889,17 @@
                     if (!validate) {
                         this.screen.display();
                         prm.reject();
+                        return;
                     }
-                    // TODO pre-validate
+                    if (this.screen.pre_validate) {
+                        return record.pre_validate().then(function(validate) {
+                            if (!validate) {
+                                prm.reject();
+                                return;
+                            }
+                            prm.resolve();
+                        });
+                    }
                     prm.resolve();
                 }.bind(this));
             } else {
