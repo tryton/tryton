@@ -220,7 +220,9 @@
                 this.el.modal('show');
             }.bind(this));
             this.el.on('shown.bs.modal', function(event) {
-                this.screen.display();
+                this.screen.display().done(function() {
+                    this.screen.set_cursor();
+                }.bind(this));
             }.bind(this));
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
@@ -233,14 +235,18 @@
             var value = this.wid_text.val();
 
             var callback = function(result) {
+                var prm = jQuery.when();
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
                     for (var i = 0, len = result.length; i < len; i++) {
                         ids.push(result[i][0]);
                     }
                     this.screen.group.load(ids, true);
-                    this.screen.display();
+                    prm = this.screen.display();
                 }
+                prm.done(function() {
+                    this.screen.set_cursor();
+                }.bind(this));
                 this.entry.val('');
             }.bind(this);
             var parser = new Sao.common.DomainParser();
@@ -315,16 +321,18 @@
                     }
 
                     closing_prm.fail(function() {
-                        // TODO set_cursor
-                        this.screen.display();
+                        this.screen.display().done(function() {
+                            this.screen.set_cursor();
+                        }.bind(this));
                     }.bind(this));
 
                     // TODO Add support for many
                     closing_prm.done(function() {
                         if (response_id == 'RESPONSE_ACCEPT') {
                             this.screen.new_();
-                            this.screen.current_view.display();
-                            // TODO set_cursor
+                            this.screen.current_view.display().done(function() {
+                                this.screen.set_cursor();
+                            }.bind(this));
                             this.many -= 1;
                             if (this.many === 0) {
                                 this.but_new.prop('disabled', true);
@@ -555,7 +563,7 @@
                     this.screen.model.session.user_id;
                 this.screen.current_record.validate(null, true).then(
                         function() {
-                            this.screen.display();
+                            this.screen.display(true);
                         }.bind(this));
                 dialog.body.append(this.screen.screen_container.el);
                 this.el.modal('show');

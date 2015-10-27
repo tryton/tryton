@@ -675,7 +675,7 @@
                             // Test if record exist in revisions
                             this.screen.new_group([current_id]);
                         }
-                        this.screen.display();
+                        this.screen.display(true);
                         this.update_revision();
                     }
                 }.bind(this);

@@ -3152,4 +3152,67 @@
             return this.child2;
         }
     });
+
+    Sao.common.get_focus_chain = function(element) {
+        var elements = element.find('input', 'textarea');
+        elements.sort(function(a, b) {
+            if (('tabindex' in a.attributes) && ('tabindex' in b.attributes)) {
+                var a_tabindex = parseInt(a.attributes.tabindex.value);
+                var b_tabindex = parseInt(b.attributes.tabindex.value);
+                return a_tabindex - b_tabindex;
+            } else if ('tabindex' in a.attributes) {
+                return -1;
+            } else if ('tabindex' in b.attributes) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        return elements;
+    };
+
+    Sao.common.find_focusable_child = function(element) {
+        var i, len, children, focusable;
+
+        if (!element.is(':visible')) {
+            return null;
+        }
+        if (~['input', 'select', 'textarea'].indexOf(element[0].tagName)) {
+            return element;
+        }
+        if (element.children()) {
+            return null;
+        }
+
+        children = Sao.common.get_focus_chain(element);
+        for (i = 0, len = children.length; i < len; i++) {
+            focusable = Sao.common.find_focusable_child(jQuery(children[i]));
+            if (focusable) {
+                return focusable;
+            }
+        }
+    };
+
+    Sao.common.find_first_focus_widget = function(ancestor, widgets) {
+        var i, j;
+        var children, commons, is_common;
+
+        if (widgets.length == 1) {
+            return jQuery(widgets[0]);
+        }
+        children = Sao.common.get_focus_chain(ancestor);
+        for (i = 0; i < children.length; i++) {
+            commons = [];
+            for (j = 0; j < widgets.length; j++) {
+                is_common = jQuery(widgets[j]).closest(children[i]).length > 0;
+                if (is_common) {
+                    commons.push(widgets[j]);
+                }
+            }
+            if (commons.length > 0) {
+                return Sao.common.find_first_focus_widget(jQuery(children[i]),
+                        commons);
+            }
+        }
+    };
 }());

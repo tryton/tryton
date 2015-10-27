@@ -676,8 +676,9 @@
                         !this.current_record.validate(
                             fields, false, false, true)) {
                     this.screen_container.set(this.current_view.el);
-                    // TODO cursor
-                    return this.current_view.display();
+                    return this.current_view.display().done(function() {
+                        this.set_cursor();
+                    }.bind(this));
                 }
             }
             var _switch = function() {
@@ -706,8 +707,9 @@
                     }
                 }
                 this.screen_container.set(this.current_view.el);
-                // TODO cursor
-                return this.display();
+                return this.display().done(function() {
+                    this.set_cursor();
+                }.bind(this));
             }.bind(this);
             return _switch();
         },
@@ -797,7 +799,7 @@
                 this.tab.record_message();
             }
         },
-        display: function() {
+        display: function(set_cursor) {
             var deferreds = [];
             if (this.views) {
                 var search_prm = this.search_active(
@@ -810,16 +812,20 @@
                     }
                 }
             }
-            return jQuery.when.apply(jQuery, deferreds).then(
-                    this.set_tree_state.bind(this)).then(function() {
-                // Force tab update
+            return jQuery.when.apply(jQuery, deferreds).then(function() {
+                this.set_tree_state();
                 this.set_current_record(this.current_record);
+                // set_cursor must be called after set_tree_state because
+                // set_tree_state redraws the tree
+                if (set_cursor) {
+                    this.set_cursor(false, false);
+                }
             }.bind(this));
         },
         display_next: function() {
             var view = this.current_view;
             view.set_value();
-            // TODO set cursor
+            this.set_cursor(false, false);
             if (~['tree', 'form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
@@ -842,13 +848,13 @@
             } else {
                 this.set_current_record(this.group[0]);
             }
-            // TODO set cursor
+            this.set_cursor(false, false);
             view.display();
         },
         display_previous: function() {
             var view = this.current_view;
             view.set_value();
-            // TODO set cursor
+            this.set_cursor(false, false);
             if (~['tree', 'form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
@@ -871,7 +877,7 @@
             } else {
                 this.set_current_record(this.group[0]);
             }
-            // TODO set cursor
+            this.set_cursor(false, false);
             view.display();
         },
         default_row_activate: function() {
@@ -912,8 +918,9 @@
                 var record = group.new_(default_);
                 group.add(record, this.new_model_position());
                 this.set_current_record(record);
-                this.display();
-                // TODO set_cursor
+                this.display().done(function() {
+                    this.set_cursor(true, true);
+                }.bind(this));
                 return record;
             }.bind(this));
         },
@@ -964,8 +971,8 @@
                         current_record.save().then(
                             prm.resolve, prm.reject);
                     } else {
-                        // TODO set_cursor
-                        this.current_view.display();
+                        this.current_view.display().done(
+                                this.set_cursor.bind(this));
                         prm.reject();
                     }
                 }.bind(this));
@@ -986,6 +993,13 @@
                 this.display().always(dfd.reject);
             }.bind(this));
             return dfd.promise();
+        },
+        set_cursor: function(new_, reset_view) {
+            if (!this.current_view) {
+                return;
+            } else if (~['tree', 'form'].indexOf(this.current_view.view_type)) {
+                this.current_view.set_cursor(new_, reset_view);
+            }
         },
         modified: function() {
             var test = function(record) {
@@ -1065,9 +1079,11 @@
                 } else if (this.group.length) {
                     this.set_current_record(this.group[0]);
                 }
-                // TODO set_cursor
+
                 return jQuery.when.apply(jQuery, prms).then(function() {
-                    this.display();
+                    this.display().done(function() {
+                        this.set_cursor();
+                    }.bind(this));
                 }.bind(this));
             }.bind(this));
         },
@@ -1328,7 +1344,7 @@
             var prms = [];
             var reset_state = function(record) {
                 return function() {
-                    this.display();
+                    this.display(true);
                     // Reset valid state with normal domain
                     record.validate(fields);
                 }.bind(this);

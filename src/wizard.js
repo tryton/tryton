@@ -116,7 +116,7 @@
             this.screen.current_view.set_value();
             return this.screen.current_record.validate().then(function(validate) {
                 if ((!validate) && state != this.end_state) {
-                    this.screen.display();
+                    this.screen.display(true);
                     this.info_bar.message(
                         this.screen.invalid_message(), 'danger');
                     return;
@@ -151,7 +151,7 @@
 
             this.screen.new_(false);
             this.screen.current_record.set_default(defaults);
-            // TODO set_cursor
+            this.screen.set_cursor();
         }
     });
 

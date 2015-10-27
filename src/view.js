@@ -372,7 +372,7 @@
             if (this.editable && previous_record) {
                 var go_previous = function() {
                     this.screen.set_current_record(previous_record);
-                    // TODO set_cursor
+                    this.set_cursor();
                 }.bind(this);
                 if (!this.screen.group.parent && previous_record !== record) {
                     previous_record.validate(this.get_fields())
@@ -508,6 +508,52 @@
                 return this.rows.length;
             }
             return row.record._values[this.children_field].length;
+        },
+        set_cursor: function(new_, reset_view) {
+            var i, root_group, path, row_path, row, column;
+            var row_idx, rest, td;
+
+            if (!this.screen.current_record) {
+                return;
+            }
+
+            path = null;
+            for (i = 0; i < this.rows.length; i++) {
+                row_path = this.rows[i].record_to_path(
+                        this.screen.current_record);
+                if (row_path) {
+                    row_path.unshift(i);
+                    path = row_path;
+                    break;
+                }
+            }
+
+            row = null;
+            if (path) {
+                row_idx = path[0];
+                rest = path.slice(1);
+                if (rest.length > 0) {
+                    this.rows[row_idx].expand_to_path(rest);
+                }
+                row = this.find_row(path);
+            } else if (this.rows.length > 0) {
+                row = this.rows[0];
+            }
+
+            if (row) {
+                column = row.next_column(null, new_);
+                td = row._get_column_td(column);
+                if (this.editable) {
+                    td.triggerHandler('click');
+                    if (new_) {
+                        td.triggerHandler('click');
+                    } else {
+                        td.find(':input,[tabindex=0]').focus();
+                    }
+                } else {
+                    td.find(':input,[tabindex=0]').focus();
+                }
+            }
         }
     });
 
@@ -793,7 +839,7 @@
                         this.children_field);
                 children.forEach(add_row.bind(this));
             };
-            this.record.load(this.children_field).done(
+            return this.record.load(this.children_field).done(
                     add_children.bind(this));
         },
         switch_row: function() {
@@ -862,6 +908,64 @@
                         this.tree.selected_records()[0] || null);
             }
             this.tree.update_selection();
+        },
+        record_to_path: function(record) {
+            // recursively get the path to the record
+            var i, path;
+            if (record == this.record) {
+                return [];
+            } else {
+                for (i = 0; i < this.rows.length; i++) {
+                    path = this.rows[i].record_to_path(record);
+                    if (path) {
+                        path.unshift(i);
+                        return path;
+                    }
+                }
+            }
+        },
+        expand_to_path: function(path) {
+            var row_idx, rest;
+            row_idx = path[0];
+            rest = path.slice(1);
+            if (rest.length > 0) {
+                this.rows[row_idx].expand_children().done(function() {
+                    this.rows[row_idx].expand_to_path(rest);
+                }.bind(this));
+            }
+        },
+        next_column: function(column, editable, sign) {
+            var i, readonly;
+            var column_index, state_attrs;
+
+            sign = sign || 1;
+            if ((column === null) && (sign > 0)) {
+                column = -1;
+            } else if (column === null) {
+                column = 0;
+            }
+            column_index = 0;
+            for (i = 0; i < this.tree.columns.length; i++) {
+                column_index = ((column + (sign * (i + 1))) %
+                        this.tree.columns.length);
+                // javascript modulo returns negative number for negative
+                // numbers
+                if (column_index < 0) {
+                    column_index += this.tree.columns.length;
+                }
+                column = this.tree.columns[column_index];
+                state_attrs = column.field.get_state_attrs(this.record);
+                if (editable) {
+                    readonly = (column.attributes.readonly ||
+                            state_attrs.readonly);
+                } else {
+                    readonly = false;
+                }
+                if (!(state_attrs.invisible || readonly)) {
+                    break;
+                }
+            }
+            return column_index;
         }
     });
 
@@ -1018,27 +1122,7 @@
                         sign = -1;
                     }
                     event_.preventDefault();
-                    next_idx = ((this.edited_column + sign) %
-                            this.tree.columns.length);
-                    // javascript modulo returns negative number for negative
-                    // numbers
-                    if (next_idx < 0) {
-                        next_idx += this.tree.columns.length;
-                    }
-                    while(next_idx != this.edited_column) {
-                        next_column = this.tree.columns[next_idx];
-                        states = next_column.field.get_state_attrs(this.record);
-                        if (!next_column.attributes.tree_invisible &&
-                                next_column.header.css('display') != 'none' &&
-                                !states.readonly) {
-                            break;
-                        }
-                        next_idx = ((next_idx + sign) %
-                                this.tree.columns.length);
-                        if (next_idx < 0) {
-                            next_idx += this.tree.columns.length;
-                        }
-                    }
+                    next_idx = this.next_column(this.edited_column, true, sign);
                     window.setTimeout(function() {
                         var td = this._get_column_td(next_idx);
                         td.triggerHandler('click', {
@@ -1529,6 +1613,7 @@
             this.widget_id = 0;
             this.state_widgets = [];
             this.containers = [];
+            this.notebooks = [];
             var root = xml.children()[0];
             var container = this.parse(screen.model, root);
             this.el.append(container.el);
@@ -1685,6 +1770,7 @@
                 attributes.colspan = 4;
             }
             var notebook = new Sao.View.Form.Notebook(attributes);
+            this.notebooks.push(notebook);
             this.state_widgets.push(notebook);
             container.add(attributes, notebook);
             this.parse(model, node, notebook);
@@ -1880,6 +1966,75 @@
                 return [this.screen.current_record];
             }
             return [];
+        },
+        set_cursor: function(new_, reset_view) {
+            var i, name, j;
+            var focus_el, notebook, child;
+            var widgets, error_el, pages, is_ancestor;
+
+            var currently_focused = jQuery(document.activeElement);
+            var has_focus = currently_focused.closest(this.el) > 0;
+            if (reset_view || has_focus) {
+                if (reset_view) {
+                    for (i = 0; i < this.notebooks.length; i++) {
+                        notebook = this.notebooks[i];
+                        notebook.set_current_page(0);
+                    }
+                }
+                if (this.attributes.cursor in this.widgets) {
+                    focus_el = Sao.common.find_focusable_child(
+                            this.widgets[this.attributes.cursor][0].el);
+                } else {
+                    child = Sao.common.find_focusable_child(this.el);
+                    if (child) {
+                        child.focus();
+                    }
+                }
+            }
+
+            var record = this.screen.current_record;
+            if (record) {
+                var invalid_widgets = [];
+                // We use the has-error class to find the invalid elements
+                // because Sao.common.find_focusable_child use the :visible
+                // selector which acts differently than GTK's get_visible
+                var error_els = this.el.find('.has-error');
+                var invalid_fields = record.invalid_fields();
+                for (name in invalid_fields) {
+                    widgets = this.widgets[name];
+                    for (i = 0; i < error_els.length; i++) {
+                        error_el = jQuery(error_els[i]);
+                        for (j = 0; j < widgets.length; j++) {
+                            if (error_el.closest(widgets[j].el).length > 0) {
+                                invalid_widgets.push(error_el);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (invalid_widgets.length > 0) {
+                    focus_el = Sao.common.find_first_focus_widget(this.el,
+                            invalid_widgets);
+                }
+            }
+
+            if (focus_el) {
+                for (i = 0; i < this.notebooks.length; i++) {
+                    notebook = this.notebooks[i];
+                    pages = notebook.get_n_pages();
+                    for (j = 0; j < pages; j++) {
+                        child = notebook.get_nth_page(j);
+                        is_ancestor = (
+                                jQuery(focus_el).closest(child).length > 0);
+                        if (is_ancestor) {
+                            notebook.set_current_page(j);
+                            break;
+                        }
+                    }
+                }
+                // Only input & textarea can grab the focus
+                jQuery(focus_el).find('input,select,textarea').focus();
+            }
         }
     });
 
@@ -2190,6 +2345,17 @@
                 this.selected = true;
             }
             return page;
+        },
+        set_current_page: function(page_index) {
+            var tab = this.nav.find(
+                    'li[role="presentation"]:eq(' + page_index + ') a');
+            tab.tab('show');
+        },
+        get_n_pages: function() {
+            return this.nav.find("li[role='presentation']").length;
+        },
+        get_nth_page: function(page_index) {
+            return jQuery(this.panes.find("div[role='tabpanel']")[page_index]);
         }
     });
 
@@ -3887,7 +4053,7 @@
                 var fields = this.screen.current_view.get_fields();
                 record.validate(fields).then(function(validate) {
                     if (!validate) {
-                        this.screen.display();
+                        this.screen.display(true);
                         prm.reject();
                         return;
                     }
