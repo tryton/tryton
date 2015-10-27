@@ -3177,11 +3177,9 @@
         if (!element.is(':visible')) {
             return null;
         }
-        if (~['input', 'select', 'textarea'].indexOf(element[0].tagName)) {
+        if (~['input', 'select', 'textarea'].indexOf(
+                    element[0].tagName.toLowerCase())) {
             return element;
-        }
-        if (element.children()) {
-            return null;
         }
 
         children = Sao.common.get_focus_chain(element);
