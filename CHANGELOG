@@ -1,5 +1,5 @@
 * Use italic labels for editable fields
-* Escape '_' in button string
+* Escape '_' in button string and page string
 * Export selected records only
 * Use HTML for RichText widget
 * Change Progressbar to work with float between 0 and 1

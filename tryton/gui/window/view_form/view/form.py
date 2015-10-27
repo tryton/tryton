@@ -243,9 +243,7 @@ class ViewForm(View):
             for attr in ('states', 'string'):
                 if attr not in attributes and attr in field.attrs:
                     attributes[attr] = field.attrs[attr]
-        if '_' not in attributes['string']:
-            attributes['string'] = '_' + attributes['string']
-        label = gtk.Label(attributes['string'])
+        label = gtk.Label('_' + attributes['string'].replace('_', '__'))
         label.set_use_underline(True)
         tab_box.pack_start(label)
 
