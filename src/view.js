@@ -3874,6 +3874,7 @@
             // TODO sequence
 
             var callback = function(result) {
+                var prm = jQuery.when();
                 if (!jQuery.isEmptyObject(result)) {
                     var ids = [];
                     var i, len;
@@ -3881,9 +3882,11 @@
                         ids.push(result[i][0]);
                     }
                     this.screen.group.load(ids, true);
-                    this.screen.display();
+                    prm = this.screen.display();
                 }
-                // TODO set_cursor
+                prm.done(function() {
+                    this.screen.set_cursor();
+                }.bind(this));
                 this.wid_text.val('');
             }.bind(this);
             var parser = new Sao.common.DomainParser();
