@@ -103,7 +103,7 @@ class Party:
         line = MoveLine.__table__()
         account = Account.__table__()
 
-        assert account.kind == 'deposit'
+        assert deposit_account.kind == 'deposit'
 
         cursor.lock(MoveLine._table)
 
