@@ -71,8 +71,6 @@ class Work:
         work_ids = [w.id for w in works]
         for sub_ids in grouped_slice(work_ids):
             red_sql = reduce_ids(table.id, sub_ids)
-            # Group by cost_price as databases will manage differently
-            # the product of duration and cost_price
             cursor.execute(*table.join(work,
                     condition=table.work == work.id
                     ).join(line, condition=line.work == work.id
