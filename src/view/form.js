@@ -617,7 +617,7 @@
         }
     });
 
-    var StateWidget = Sao.class_(Object, {
+    Sao.View.Form.StateWidget = Sao.class_(Object, {
         init: function(attributes) {
             this.attributes = attributes;
         },
@@ -646,7 +646,7 @@
         }
     });
 
-    Sao.View.Form.Separator = Sao.class_(StateWidget, {
+    Sao.View.Form.Separator = Sao.class_(Sao.View.Form.StateWidget, {
         init: function(text, attributes) {
             Sao.View.Form.Separator._super.init.call(this, attributes);
             this.el = jQuery('<div/>', {
@@ -661,7 +661,7 @@
         }
     });
 
-    Sao.View.Form.Label = Sao.class_(StateWidget, {
+    Sao.View.Form.Label = Sao.class_(Sao.View.Form.StateWidget, {
         class_: 'form-label',
         init: function(text, attributes) {
             Sao.View.Form.Label._super.init.call(this, attributes);
@@ -705,7 +705,7 @@
         }
     });
 
-    Sao.View.Form.Notebook = Sao.class_(StateWidget, {
+    Sao.View.Form.Notebook = Sao.class_(Sao.View.Form.StateWidget, {
         class_: 'form-notebook',
         init: function(attributes) {
             Sao.View.Form.Notebook._super.init.call(this, attributes);
@@ -761,14 +761,14 @@
         }
     });
 
-    Sao.View.Form.Page = Sao.class_(StateWidget, {
+    Sao.View.Form.Page = Sao.class_(Sao.View.Form.StateWidget, {
         init: function(el, attributes) {
             Sao.View.Form.Page._super.init.call(this, attributes);
             this.el = el;
         }
     });
 
-    Sao.View.Form.Group = Sao.class_(StateWidget, {
+    Sao.View.Form.Group = Sao.class_(Sao.View.Form.StateWidget, {
         class_: 'form-group_',
         init: function(attributes) {
             Sao.View.Form.Group._super.init.call(this, attributes);
@@ -781,7 +781,7 @@
         }
     });
 
-    Sao.View.Form.Image_ = Sao.class_(StateWidget, {
+    Sao.View.Form.Image_ = Sao.class_(Sao.View.Form.StateWidget, {
         class_: 'form-image_',
         init: function(attributes) {
             Sao.View.Form.Image_._super.init.call(this, attributes);
