@@ -139,7 +139,7 @@ Make a production::
     >>> output.quantity == 2
     True
     >>> production.cost
-    Decimal('25.0')
+    Decimal('25.0000')
     >>> production.click('wait')
     >>> production.state
     u'waiting'

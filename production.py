@@ -250,8 +250,7 @@ class Production(Workflow, ModelSQL, ModelView):
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        Template = pool.get('product.template')
-        Product = pool.get('product.product')
+        Move = pool.get('stock.move')
         if not (self.bom and self.product and self.uom):
             return
         self.cost = Decimal(0)
@@ -271,15 +270,15 @@ class Production(Workflow, ModelSQL, ModelView):
             if move:
                 inputs.append(move)
                 quantity = Uom.compute_qty(input_.uom, quantity,
-                    input_.product.default_uom)
+                    input_.product.default_uom, round=False)
                 self.cost += (Decimal(str(quantity)) *
                     input_.product.cost_price)
         self.inputs = inputs
+        digits = self.__class__.cost.digits
+        self.cost = self.cost.quantize(Decimal(str(10 ** -digits[1])))
 
-        if hasattr(Product, 'cost_price'):
-            digits = Product.cost_price.digits
-        else:
-            digits = Template.cost_price.digits
+        digits = Move.unit_price.digits
+        digit = Decimal(str(10 ** -digits[1]))
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
@@ -289,8 +288,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 move.unit_price = Decimal(0)
                 if output.product == move.product and quantity:
                     move.unit_price = Decimal(
-                        self.cost / Decimal(str(quantity))
-                        ).quantize(Decimal(str(10 ** -digits[1])))
+                        self.cost / Decimal(str(quantity))).quantize(digit)
                 outputs.append(move)
         self.outputs = outputs
 
@@ -373,8 +371,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     def set_moves(self):
         pool = Pool()
-        Template = pool.get('product.template')
-        Product = pool.get('product.product')
+        Move = pool.get('stock.move')
 
         storage_location = self.warehouse.storage_location
         location = self.location
@@ -401,13 +398,13 @@ class Production(Workflow, ModelSQL, ModelView):
             if move:
                 move.production_input = self
                 move.save()
-                cost += Decimal(str(quantity)) * product.cost_price
+                cost += (Decimal(str(move.internal_quantity)) *
+                    product.cost_price)
+        digits = self.__class__.cost.digits
+        cost = cost.quantize(Decimal(str(10 ** -digits[1])))
 
-        if hasattr(Product, 'cost_price'):
-            digits = Product.cost_price.digits
-        else:
-            digits = Template.cost_price.digits
-
+        digits = Move.unit_price.digits
+        digit = Decimal(str(10 ** -digits[1]))
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
             product = output.product
@@ -417,8 +414,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 move.production_output = self
                 if product == self.product:
                     move.unit_price = Decimal(
-                        cost / Decimal(str(quantity))
-                        ).quantize(Decimal(str(10 ** -digits[1])))
+                        cost / Decimal(str(quantity))).quantize(digit)
                 move.save()
         self._set_move_planned_date()
 
