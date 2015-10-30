@@ -161,7 +161,7 @@ class ShipmentInReturn(object, PackageMixin):
         for shipment in shipments:
             if not shipment.packages:
                 continue
-            if (len(shipment.outgoing_moves)
+            if (len(shipment.moves)
                     != sum(len(p.moves) for p in shipment.packages)):
                 cls.raise_user_error('package_mismatch', shipment.rec_name)
 
