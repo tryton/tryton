@@ -616,7 +616,7 @@ msgstr "Prospects et opportunités"
 
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr "Prospects / Opportunités de ventes"
+msgstr "Prospects/Opportunités de ventes"
 
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -783,7 +783,7 @@ msgstr "Ligne de contact / Opportunité de vente"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
-msgstr "Lignes de prospects / opportunités de vente"
+msgstr "Lignes de prospects/opportunités de vente"
 
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"

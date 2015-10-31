@@ -850,6 +850,10 @@ msgid "Won"
 msgstr "Zuid-Koreaanse won"
 
 msgctxt "view:sale.opportunity.history:"
+msgid "Change Time"
+msgstr ""
+
+msgctxt "view:sale.opportunity.history:"
 msgid "History"
 msgstr ""
 

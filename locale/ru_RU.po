@@ -786,6 +786,10 @@ msgid "Won"
 msgstr "Вона"
 
 msgctxt "view:sale.opportunity.history:"
+msgid "Change Time"
+msgstr ""
+
+msgctxt "view:sale.opportunity.history:"
 msgid "History"
 msgstr "История"
 

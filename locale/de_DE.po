@@ -94,7 +94,7 @@ msgstr "Name"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
-msgstr "Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "field:sale.opportunity,sales:"
 msgid "Sales"
@@ -230,7 +230,7 @@ msgstr "Verkaufschance"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
@@ -709,7 +709,7 @@ msgstr "Verkaufschance pro Mitarbeiter"
 
 msgctxt "model:sale.opportunity_employee.open.start,name:"
 msgid "Open Sale Opportunity per Employee"
-msgstr " Verkaufschancen pro Mitarbeiter Öffnen"
+msgstr "Verkaufschancen pro Mitarbeiter Öffnen"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
