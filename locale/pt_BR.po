@@ -4,32 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:act_invoice_line_in_credit_note_form"
 msgid "Supplier Credit Note Lines"
-msgstr "Líneas de factura de abono de proveedor"
+msgstr "Linhas de nota de crédito do fornecedor"
 
 msgctxt "model:ir.action,name:act_invoice_line_in_invoice_form"
 msgid "Supplier Invoice Lines"
-msgstr "Líneas de factura de proveedor"
+msgstr "Linhas de crédito do fornecedor"
 
 msgctxt "model:ir.action,name:act_invoice_line_out_credit_note_form"
 msgid "Credit Note Lines"
-msgstr "Líneas de factura de abono"
+msgstr "Linhas de nota de crédito"
 
 msgctxt "model:ir.action,name:act_invoice_line_out_invoice_form"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Linhas da fatura"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_credit_note_form"
 msgid "Supplier Credit Note Lines"
-msgstr "Líneas de factura de abono de proveedor"
+msgstr "Linhas da nota de crédito do fornecedor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_invoice_form"
 msgid "Supplier Invoice Lines"
-msgstr "Líneas"
+msgstr "Linhas da fatura do fornecedor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_credit_note_form"
 msgid "Credit Note Lines"
-msgstr "Líneas de factura de abono"
+msgstr "Linhas da nota de crédito"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_invoice_form"
 msgid "Invoice Lines"
-msgstr "Líneas"
+msgstr "Linhas da fatura"
