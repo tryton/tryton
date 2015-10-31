@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr "IBAN \"%s\" no válido."
+msgstr "Érvénytelen IBAN \"%s\""
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
-msgstr "BIC / SWIFT"
+msgstr "Bank SWIFT(BIC) kódja"
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Által Létrehozva"
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -24,39 +24,39 @@ msgstr "ID"
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Partner"
 
 msgctxt "field:bank,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Által módosítva"
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Aktív"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr "Banco"
+msgstr "Bank"
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Által Létrehozva"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Pénznem"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
@@ -64,35 +64,35 @@ msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Números"
+msgstr "Számok"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr "Titulares"
+msgstr "Számlatulajdonos"
 
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Által módosítva"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Számla"
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Által létrehozva"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -100,31 +100,31 @@ msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr "Titular"
+msgstr "Számlatulajdonos"
 
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Által módosítva"
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Számla"
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Által létrehozva"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -132,79 +132,79 @@ msgstr "ID"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr "Número"
+msgstr "Szám"
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
-msgstr "Número compacto"
+msgstr "Szám tagozódás formája"
 
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Sorrend"
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr "Típus"
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Által módosítva"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
-msgstr "Cuentas bancarias"
+msgstr "Bankszámla"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code"
-msgstr "Código de Identificación del Banco (BIC / SWIFT)"
+msgstr "Bank/BIC"
 
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr "Banco"
+msgstr "Bank"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr "Cuenta bancaria"
+msgstr "Bankszámla"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr "Cuenta bancaria - Tercero"
+msgstr "Bankszámla-Partner"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr "Número de cuenta bancaria"
+msgstr "Számlaszám"
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Cuentas"
+msgstr "Számla"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Bancos"
+msgstr "Bankok"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Cuentas"
+msgstr "Számlák"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Bancos"
+msgstr "Bankok"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Bancos"
+msgstr "Bankügylet"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "Administración de Bancos"
+msgstr "Bank adminisztráció"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -212,32 +212,32 @@ msgstr "IBAN"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr "Otro"
+msgstr "egyéb"
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
-msgstr "Número de cuenta bancaria"
+msgstr ""
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Numbers"
-msgstr "Números de cuenta bancaria"
+msgstr ""
 
 msgctxt "view:bank.account:"
 msgid "Bank Account"
-msgstr "Cuenta bancaria"
+msgstr ""
 
 msgctxt "view:bank.account:"
 msgid "Bank Accounts"
-msgstr "Cuentas bancarias"
+msgstr ""
 
 msgctxt "view:bank:"
 msgid "Bank"
-msgstr "Banco"
+msgstr ""
 
 msgctxt "view:bank:"
 msgid "Banks"
-msgstr "Bancos"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Bancos"
+msgstr ""
