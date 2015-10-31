@@ -7,8 +7,8 @@ msgid ""
 "You cannot change the default uom for a product which is associated to stock"
 " moves."
 msgstr ""
-"Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait "
-"l'objet de mouvements de stock"
+"Vous ne pouvez pas changer l'unité de mesure par défaut pour un produit qui "
+"a déjà fait l'objet de mouvements de stock."
 
 msgctxt "error:product.template:"
 msgid ""
@@ -40,8 +40,8 @@ msgid ""
 "Location \"%s\" with existing moves cannot be changed to a type that does "
 "not support moves."
 msgstr ""
-"L'emplacement « %s » est liée à des mouvements. Son type ne peut être un "
-"type qui ne supporte pas les mouvements."
+"L'emplacement « %s », liée à des mouvements, ne peut être changer en un type"
+" qui ne supporte pas les mouvements."
 
 msgctxt "error:stock.move:"
 msgid "Internal move quantity must be positive"
@@ -94,8 +94,7 @@ msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to done state."
-msgstr ""
-"Vous ne pouvez passer dans l'état « Fait » le mouvement de stock « %s »."
+msgstr "Vous ne pouvez passer le mouvement de stock « %s » dans l'état fait."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to draft state."
@@ -394,6 +393,10 @@ msgstr "Expédition"
 msgctxt "field:stock.location,parent:"
 msgid "Parent"
 msgstr "Parent"
+
+msgctxt "field:stock.location,picking_location:"
+msgid "Picking"
+msgstr "Prélèvement"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
@@ -1076,18 +1079,24 @@ msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
-msgstr "Prévoir le calcul du stock prévisionel pour cette date"
+msgstr ""
+"Prévoir le calcul du stock prévisionnel pour cette date.\n"
+"* Une valeur vide est une date infinie dans le future.\n"
+"* Une date dans le passé fournira des valeurs historiques."
+
+msgctxt "help:stock.location,picking_location:"
+msgid "If empty the Storage is used"
+msgstr "Si vide le magasin est utilisé"
 
 msgctxt "help:stock.products_by_locations.start,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
-msgstr "Prévoir le calcul du stock prévisionel pour cette date"
-
-msgctxt "model:ir.action,name:"
-msgid "Create Return Shipment"
-msgstr "Créer l'expédition de retour"
+msgstr ""
+"Prévoir le calcul du stock prévisionnel pour cette date.\n"
+"* Une valeur vide est une date infinie dans le future.\n"
+"* Une date dans le passé fournira des valeurs historiques."
 
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
@@ -1184,6 +1193,10 @@ msgstr "Quantités de produit par entrepôt"
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
 msgstr "Produits par emplacements"
+
+msgctxt "model:ir.action,name:wizard_recompute_cost_price"
+msgid "Recompute Cost Price"
+msgstr "Recalculer le prix de revient"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
@@ -1466,7 +1479,7 @@ msgstr "Zone de sortie"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr "Zone de stockage"
+msgstr "Zone de magasin"
 
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
@@ -1541,16 +1554,8 @@ msgid "Code:"
 msgstr "Code :"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -1581,10 +1586,6 @@ msgid "To Location"
 msgstr "Emplacement de destination"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Entrepôt :"
 
@@ -1597,10 +1598,6 @@ msgid "Code:"
 msgstr "Code :"
 
 msgctxt "odt:stock.shipment.internal.report:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
 
@@ -1611,10 +1608,6 @@ msgstr "Emplacement d'origine :"
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Expédition interne"
-
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -1640,10 +1633,6 @@ msgctxt "odt:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "Emplacement de destination :"
 
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
@@ -1661,14 +1650,6 @@ msgid "Delivery Note"
 msgstr "Bon de livraison"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "Phone:"
-msgstr "Téléphone :"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Produit"
 
@@ -1684,10 +1665,6 @@ msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr "Numéro d'expédition :"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
@@ -1701,16 +1678,8 @@ msgid "Customer:"
 msgstr "Client :"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -1737,10 +1706,6 @@ msgid "To Location"
 msgstr "Emplacement de destination"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Entrepôt :"
 
@@ -1750,7 +1715,7 @@ msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid ":"
-msgstr ":"
+msgstr " :"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
@@ -1761,16 +1726,8 @@ msgid "Customer"
 msgstr "Client"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -1797,10 +1754,6 @@ msgid "To Location"
 msgstr "Emplacement de destination"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Entrepôt :"
 
@@ -1810,7 +1763,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectué"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
@@ -1819,6 +1772,10 @@ msgstr "Brouillon"
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
 msgstr "Client"
+
+msgctxt "selection:stock.location,type:"
+msgid "Drop"
+msgstr "Livraison directe"
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
@@ -1854,7 +1811,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectué"
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
@@ -1878,7 +1835,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
@@ -1898,7 +1855,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
@@ -1918,7 +1875,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
@@ -1938,7 +1895,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
@@ -1958,7 +1915,7 @@ msgstr "Annulé"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
@@ -2033,12 +1990,20 @@ msgid "Locations"
 msgstr "Emplacements"
 
 msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:stock.move:"
 msgid "Move"
 msgstr "Mouvement"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Mouvements"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Remettre en brouillon"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
@@ -2094,7 +2059,7 @@ msgstr "Annuler"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
@@ -2118,7 +2083,7 @@ msgstr "Annuler"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Incoming Moves"
@@ -2162,7 +2127,7 @@ msgstr "Annuler"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
@@ -2202,7 +2167,7 @@ msgstr "Retours d'expédition client"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
@@ -2238,7 +2203,7 @@ msgstr "Expéditions client"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuée"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Draft"

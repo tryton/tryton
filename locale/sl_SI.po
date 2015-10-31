@@ -83,15 +83,15 @@ msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
-msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"dodeljeno\". "
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"dodeljeno\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to done state."
-msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"končano\". "
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"končano\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to draft state."
-msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje priprave. "
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje priprave."
 
 msgctxt "error:stock.period:"
 msgid "You can not close a period in the future or today."
@@ -380,6 +380,10 @@ msgstr "Izdaja"
 msgctxt "field:stock.location,parent:"
 msgid "Parent"
 msgstr "Matična lokacija"
+
+msgctxt "field:stock.location,picking_location:"
+msgid "Picking"
+msgstr "Prevzem"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
@@ -1063,6 +1067,10 @@ msgstr ""
 "* Prazno polje pomeni neskončen datum v prihodnost.\n"
 "* Datum v preteklosti daje pretekle vrednosti."
 
+msgctxt "help:stock.location,picking_location:"
+msgid "If empty the Storage is used"
+msgstr "Če je prazno, se uporabi Shramba"
+
 msgctxt "help:stock.products_by_locations.start,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
@@ -1168,6 +1176,10 @@ msgstr "Količine izdelkov po skladiščih"
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
 msgstr "Izdelki po lokacijah"
+
+msgctxt "model:ir.action,name:wizard_recompute_cost_price"
+msgid "Recompute Cost Price"
+msgstr "Preračun cene"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
@@ -1438,7 +1450,7 @@ msgstr "Kupec"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr "Vhodna cona"
+msgstr "Vstopna cona"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
@@ -1446,7 +1458,7 @@ msgstr "Izgubljeno/najdeno"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr "Izhodna cona"
+msgstr "Izstopna cona"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
@@ -1525,16 +1537,8 @@ msgid "Code:"
 msgstr "Šifra:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Iz lokacije"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -1565,10 +1569,6 @@ msgid "To Location"
 msgstr "Na lokacijo"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Skladišče:"
 
@@ -1581,10 +1581,6 @@ msgid "Code:"
 msgstr "Šifra:"
 
 msgctxt "odt:stock.shipment.internal.report:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Iz lokacije"
 
@@ -1595,10 +1591,6 @@ msgstr "Iz lokacije:"
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Notranja odpremnica"
-
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -1624,10 +1616,6 @@ msgctxt "odt:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "Na lokacijo:"
 
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
@@ -1645,14 +1633,6 @@ msgid "Delivery Note"
 msgstr "Dobavnica"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Izdelek"
 
@@ -1668,10 +1648,6 @@ msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr "Dobavnica št.:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
@@ -1685,16 +1661,8 @@ msgid "Customer:"
 msgstr "Kupec:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Iz lokacije"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -1721,10 +1689,6 @@ msgid "To Location"
 msgstr "Na lokacijo"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Skladišče:"
 
@@ -1745,16 +1709,8 @@ msgid "Customer"
 msgstr "Kupec"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Iz lokacije"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -1781,10 +1737,6 @@ msgid "To Location"
 msgstr "Na lokacijo"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Skladišče:"
 
@@ -1803,6 +1755,10 @@ msgstr "V pripravi"
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
 msgstr "Kupec"
+
+msgctxt "selection:stock.location,type:"
+msgid "Drop"
+msgstr "Dostava"
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
@@ -2017,12 +1973,20 @@ msgid "Locations"
 msgstr "Lokacije"
 
 msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Preklic"
+
+msgctxt "view:stock.move:"
 msgid "Move"
 msgstr "Promet"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Promet"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Ponastavitev"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"

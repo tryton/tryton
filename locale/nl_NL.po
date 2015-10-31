@@ -386,6 +386,10 @@ msgctxt "field:stock.location,parent:"
 msgid "Parent"
 msgstr "Bovenliggend niveau"
 
+msgctxt "field:stock.location,picking_location:"
+msgid "Picking"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
@@ -1132,15 +1136,15 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+msgctxt "help:stock.location,picking_location:"
+msgid "If empty the Storage is used"
+msgstr ""
+
 msgctxt "help:stock.products_by_locations.start,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
-msgstr ""
-
-msgctxt "model:ir.action,name:"
-msgid "Create Return Shipment"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_inventory_form"
@@ -1240,6 +1244,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_recompute_cost_price"
+msgid "Recompute Cost Price"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
@@ -1614,19 +1622,9 @@ msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Code:"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr ""
-
-#, fuzzy
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -1659,11 +1657,6 @@ msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "To Location"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
-
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr ""
@@ -1676,11 +1669,6 @@ msgctxt "odt:stock.shipment.internal.report:"
 msgid "Code:"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr ""
@@ -1692,11 +1680,6 @@ msgstr ""
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr ""
-
-#, fuzzy
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -1725,11 +1708,6 @@ msgctxt "odt:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
-
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr ""
@@ -1746,16 +1724,6 @@ msgstr "Datum:"
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr ""
-
-#, fuzzy
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
-#, fuzzy
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 #, fuzzy
 msgctxt "odt:stock.shipment.out.delivery_note:"
@@ -1776,11 +1744,6 @@ msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr ""
@@ -1793,19 +1756,9 @@ msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr ""
-
-#, fuzzy
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -1834,11 +1787,6 @@ msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr ""
@@ -1860,19 +1808,9 @@ msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Klant"
 
-#, fuzzy
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr ""
-
-#, fuzzy
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -1901,11 +1839,6 @@ msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr ""
 
-#, fuzzy
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
-
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr ""
@@ -1929,6 +1862,10 @@ msgstr "Concept"
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
 msgstr "Klant"
+
+msgctxt "selection:stock.location,type:"
+msgid "Drop"
+msgstr ""
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
@@ -2171,6 +2108,10 @@ msgctxt "view:stock.location:"
 msgid "Locations"
 msgstr ""
 
+msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:stock.move:"
 msgid "Move"
@@ -2180,6 +2121,10 @@ msgstr "Boeking"
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr ""
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"

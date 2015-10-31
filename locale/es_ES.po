@@ -257,7 +257,7 @@ msgstr "Ubicación"
 
 msgctxt "field:stock.inventory,lost_found:"
 msgid "Lost and Found"
-msgstr "Perdido/encontrado"
+msgstr "Perdido-encontrado"
 
 msgctxt "field:stock.inventory,rec_name:"
 msgid "Name"
@@ -333,7 +333,7 @@ msgstr "Activo"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
-msgstr "Direcciones"
+msgstr "Dirección"
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
@@ -382,6 +382,10 @@ msgstr "Salida"
 msgctxt "field:stock.location,parent:"
 msgid "Parent"
 msgstr "Padre"
+
+msgctxt "field:stock.location,picking_location:"
+msgid "Picking"
+msgstr "Recogida"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
@@ -493,7 +497,7 @@ msgstr "Precio unidad"
 
 msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
-msgstr "Precio unidad requerido"
+msgstr "Precio unidad obligatorio"
 
 msgctxt "field:stock.move,uom:"
 msgid "Uom"
@@ -645,7 +649,7 @@ msgstr "Empresa"
 
 msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
-msgstr "Dirección contacto"
+msgstr "Dirección de contacto"
 
 msgctxt "field:stock.shipment.in,create_date:"
 msgid "Create Date"
@@ -889,7 +893,7 @@ msgstr "Ubicación de cliente"
 
 msgctxt "field:stock.shipment.out,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
@@ -985,7 +989,7 @@ msgstr "Ubicación de cliente"
 
 msgctxt "field:stock.shipment.out.return,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
@@ -1067,6 +1071,10 @@ msgstr ""
 "* Un valor vacío es un fecha infinita en el futuro.\n"
 "* Una fecha en el pasado proporcionará valores históricos."
 
+msgctxt "help:stock.location,picking_location:"
+msgid "If empty the Storage is used"
+msgstr "Si está vacío se utilizará el almacenamiento."
+
 msgctxt "help:stock.products_by_locations.start,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
@@ -1076,10 +1084,6 @@ msgstr ""
 "Permite calcular las cantidades previstas de stock para esta fecha.\n"
 "* Un valor vacío es un fecha infinita en el futuro.\n"
 "* Una fecha en el pasado proporcionará valores históricos."
-
-msgctxt "model:ir.action,name:"
-msgid "Create Return Shipment"
-msgstr "Crear albarán de devolución"
 
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
@@ -1177,6 +1181,10 @@ msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
 msgstr "Productos por ubicación"
 
+msgctxt "model:ir.action,name:wizard_recompute_cost_price"
+msgid "Recompute Cost Price"
+msgstr "Recalcular precio de coste"
+
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
 msgstr "Reservar albarán de devolución de compra"
@@ -1191,7 +1199,7 @@ msgstr "Reservar albarán de salida"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "Todo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
@@ -1200,7 +1208,7 @@ msgstr "Borrador"
 
 msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "Todo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
@@ -1235,7 +1243,7 @@ msgstr "Recibido"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "Todo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
@@ -1275,7 +1283,7 @@ msgstr "En espera"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "Todo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
@@ -1300,7 +1308,7 @@ msgstr "En espera"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "Todo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
@@ -1450,7 +1458,7 @@ msgstr "Zona de entrada"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Perdido/encontrado"
+msgstr "Perdido-encontrado"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
@@ -1533,16 +1541,8 @@ msgid "Code:"
 msgstr "Código:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Desde ubicación"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
@@ -1573,10 +1573,6 @@ msgid "To Location"
 msgstr "A ubicación"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
-msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Almacén:"
 
@@ -1589,10 +1585,6 @@ msgid "Code:"
 msgstr "Código:"
 
 msgctxt "odt:stock.shipment.internal.report:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Desde ubicación"
 
@@ -1603,10 +1595,6 @@ msgstr "Desde ubicación:"
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Albarán interno"
-
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -1632,10 +1620,6 @@ msgctxt "odt:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "A ubicación:"
 
-msgctxt "odt:stock.shipment.internal.report:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
@@ -1653,14 +1637,6 @@ msgid "Delivery Note"
 msgstr "Nota de envío"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Producto"
 
@@ -1676,10 +1652,6 @@ msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr "Número de albarán:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
@@ -1693,16 +1665,8 @@ msgid "Customer:"
 msgstr "Cliente:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Desde ubicación"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Picking List"
@@ -1729,10 +1693,6 @@ msgid "To Location"
 msgstr "A ubicación"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
-msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Almacén:"
 
@@ -1753,16 +1713,8 @@ msgid "Customer"
 msgstr "Cliente"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Desde ubicación"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
@@ -1789,10 +1741,6 @@ msgid "To Location"
 msgstr "A ubicación"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Almacén:"
 
@@ -1813,8 +1761,12 @@ msgid "Customer"
 msgstr "Cliente"
 
 msgctxt "selection:stock.location,type:"
+msgid "Drop"
+msgstr "Desecho"
+
+msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
-msgstr "Perdido/encontrado"
+msgstr "Perdido-encontrado"
 
 msgctxt "selection:stock.location,type:"
 msgid "Production"
@@ -2025,12 +1977,20 @@ msgid "Locations"
 msgstr "Ubicaciones"
 
 msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:stock.move:"
 msgid "Move"
 msgstr "Movimiento"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Restaurar a borrador"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
