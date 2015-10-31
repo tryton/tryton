@@ -453,7 +453,7 @@ msgstr "Arbre de la llista de materials"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr "Totes"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
@@ -690,7 +690,7 @@ msgstr "En espera"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
@@ -702,7 +702,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"

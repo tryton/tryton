@@ -7,12 +7,12 @@ msgid ""
 "You are trying to create a recursive BOM with product \"%s\" which is not "
 "allowed."
 msgstr ""
-"Vous essayez de créer une BOM récursive avec le produit « %s », ce qui n'est"
-" pas autorisé."
+"Vous essayez de créer une BOM récursive avec le produit « %s » qui n'est pas"
+" autorisé."
 
 msgctxt "error:production.bom.input:"
 msgid "Product must be unique per BOM."
-msgstr "Le produit par nomeclature doit être unique"
+msgstr "Le produit par nomenclature doit être unique."
 
 msgctxt "error:production.bom.input:"
 msgid "You can not create recursive BOMs."
@@ -24,7 +24,7 @@ msgstr "product_bom_uniq"
 
 msgctxt "error:production.bom.output:"
 msgid "Product must be unique per BOM."
-msgstr "Le produit par nomeclature doit être unique"
+msgstr "Le produit par nomenclature doit être unique."
 
 msgctxt "error:production.bom.output:"
 msgid "You can not create recursive BOMs."
@@ -444,7 +444,7 @@ msgstr "Productions"
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "productions assignées"
+msgstr "Productions assignées"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
@@ -574,7 +574,7 @@ msgstr "Annulée"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Terminée"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -594,11 +594,11 @@ msgstr "En attente"
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOM"
-msgstr "produit - Nomenclature"
+msgstr "Produit - Nomenclature"
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOMs"
-msgstr "produit - Nomenclatures"
+msgstr "Produit - Nomenclatures"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to Assign"
@@ -654,7 +654,7 @@ msgstr "Annuler"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Terminer"
 
 msgctxt "view:production:"
 msgid "Draft"
