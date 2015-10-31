@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax.rule.line,from_country:"
+msgid "From Country"
+msgstr "País de Origem"
+
+msgctxt "field:account.tax.rule.line,to_country:"
+msgid "To Country"
+msgstr "País de Destino"
+
+msgctxt "field:account.tax.rule.line.template,from_country:"
+msgid "From Country"
+msgstr "País de Origem"
+
+msgctxt "field:account.tax.rule.line.template,to_country:"
+msgid "To Country"
+msgstr "País de Destino"
