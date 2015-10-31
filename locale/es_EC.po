@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Provisión en Venta"
+msgstr "Provisión en venta"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Solicitud de Compra"
+msgstr "Solicitud de compra"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
-msgstr "Estado de Solicitud de Compra"
+msgstr "Estado de solicitud de compra"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Solicitudes de Compra"
+msgstr "Solicitudes de compra"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Cancelado"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
