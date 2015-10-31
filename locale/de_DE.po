@@ -16,7 +16,8 @@ msgstr "Anzahl auf der Zeile muss einen positiven Wert aufweisen."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
-msgstr "Ein Artikel kann nur einmal pro Bedarfsermittlung eingetragen werden."
+msgstr ""
+"Eine Variante kann nur einmal pro Bedarfsermittlung eingetragen werden."
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
@@ -110,7 +111,7 @@ msgstr "ID"
 
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
-msgstr "Artikel"
+msgstr "Varianten"
 
 msgctxt "field:stock.forecast.line,create_date:"
 msgid "Create Date"
@@ -138,11 +139,11 @@ msgstr "Bewegungen"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Artikel Maßeinheit Kategorie"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
@@ -271,7 +272,7 @@ msgstr "Auswahl Datum"
 
 msgctxt "view:stock.forecast.complete.choose:"
 msgid "Choose products"
-msgstr "Auswahl Artikel"
+msgstr "Auswahl Varianten"
 
 msgctxt "view:stock.forecast.line:"
 msgid "Forecast Line"
@@ -312,7 +313,7 @@ msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
-msgstr "Artikel auswählen"
+msgstr "Varianten auswählen"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"

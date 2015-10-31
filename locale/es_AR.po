@@ -8,19 +8,19 @@ msgstr "«Desde la fecha» debe ser más pequeña que «Hasta la fecha»."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be greater than the minimal quantity"
-msgstr "La cantidad de la línea debe ser más grande que la cantidad mínima."
+msgstr "La cantidad de la línea debe ser más grande que la cantidad mínima"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be positive"
-msgstr "La cantidad de la línea debe ser positiva."
+msgstr "La cantidad de la línea debe ser positiva"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
-msgstr "El producto debe ser único en la previsión de existencias."
+msgstr "El producto debe ser único en la previsión de existencias"
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "«Hasta la fecha» debe ser más grande que «Desde la fecha»."
+msgstr "«Hasta la fecha» debe ser más grande que «Desde la fecha»"
 
 msgctxt "error:stock.forecast:"
 msgid ""

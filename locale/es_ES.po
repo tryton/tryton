@@ -212,7 +212,7 @@ msgstr "Previsión completa"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
-msgstr "Todas"
+msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
