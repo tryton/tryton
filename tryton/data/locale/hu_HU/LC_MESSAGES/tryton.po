@@ -1,85 +1,81 @@
-# Spanish (Ecuador) translations for tryton.
-# Copyright (C) 2014-2015 Fabian Calle
-# This file is distributed under the same license as the tryton project.
-# FIRST AUTHOR <fabianc7@gmail.com>, 2014.
-# Fabian Calle <fabianc7@gmail.com>, 2014.
+# 
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #: tryton/config.py:76
 msgid "specify alternate config file"
-msgstr "Especifique un archivo de configuración alternativo"
+msgstr "Alternatív beállítási adatok megadása"
 
 #: tryton/config.py:79
 msgid "development mode"
-msgstr "Modo desarrollo"
+msgstr "Fejlesztői mód"
 
 #: tryton/config.py:82
 msgid "logging everything at INFO level"
-msgstr "Registra toda la información con nivel INFO"
+msgstr "Általános belépési szint:INFO"
 
 #: tryton/config.py:84
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
-msgstr "Indica el nivel de log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "Belépési szint megadása: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 #: tryton/config.py:87
 msgid "specify the login user"
-msgstr "especifique el usuario"
+msgstr "Bejelentkezési név megadása"
 
 #: tryton/config.py:89
 msgid "specify the server port"
-msgstr "especifique el puerto del servidor"
+msgstr "Szerver Port megadása"
 
 #: tryton/config.py:91
 msgid "specify the server hostname"
-msgstr "especifique el nombre del servidor"
+msgstr "Szerver név megadása"
 
 #: tryton/config.py:95
 msgid "Too much arguments"
-msgstr "Demasiados argumentos"
+msgstr "Túl sok paraméter"
 
 #: tryton/config.py:98
 #, python-format
 msgid "File \"%s\" not found"
-msgstr "No se encontró el archivo \"%s\""
+msgstr "A fájl „%s” nem található"
 
 #: tryton/config.py:136
 #, python-format
 msgid "Unable to write config file %s!"
-msgstr "¡No es posible escribir el archivo de configuración %s!"
+msgstr "Nem lehet a következő konfigurációs fájlba írni: „%s”"
 
 #: tryton/translate.py:184
 #, python-format
 msgid "Unable to set locale %s"
-msgstr "No se ha podido establecer el idioma %s"
+msgstr "Nem lehet beállítani a csoportot: %s"
 
 #: tryton/action/main.py:176
 msgid "Select your action"
-msgstr "Seleccione su acción"
+msgstr "Válasszon műveletet"
 
 #: tryton/action/main.py:182
 msgid "No action defined!"
-msgstr "¡No se ha definido ninguna acción!"
+msgstr "Nincs megadva művelet"
 
 #: tryton/common/common.py:274
 msgid "Tryton Connection"
-msgstr "Conexión a Tryton"
+msgstr "Kapcsolódás"
 
 #: tryton/common/common.py:285
 msgid "Server:"
-msgstr "Servidor:"
+msgstr "Szerver:"
 
 #: tryton/common/common.py:303
 msgid "Port:"
-msgstr "Puerto:"
+msgstr "Port:"
 
 #: tryton/common/common.py:371 tryton/gui/window/shortcuts.py:57
 msgid "Selection"
-msgstr "Selección"
+msgstr "Kiválasztás"
 
 #: tryton/common/common.py:380
 msgid "Your selection:"
-msgstr "Su selección:"
+msgstr "Kiválasztva"
 
 #: tryton/common/common.py:495 tryton/gui/main.py:1388
 #: tryton/gui/window/win_export.py:454
@@ -88,23 +84,23 @@ msgstr "Su selección:"
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:121
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:495
 msgid "Save As..."
-msgstr "Guardar como..."
+msgstr "Mentés másként…"
 
 #: tryton/common/common.py:642
 msgid "Always ignore this warning."
-msgstr "Ignorar siempre esta advertencia."
+msgstr "Ne adja be többet ezt a figyelmeztetést"
 
 #: tryton/common/common.py:647
 msgid "Do you want to proceed?"
-msgstr "¿Desea continuar?"
+msgstr "Akarja folyatni?"
 
 #: tryton/common/common.py:666
 msgid "Confirmation"
-msgstr "Confirmación"
+msgstr "Jóváhagyás"
 
 #: tryton/common/common.py:772 tryton/common/common.py:1080
 msgid "Concurrency Exception"
-msgstr "Excepción de concurrencia"
+msgstr "Aktualizálási ellentét"
 
 #: tryton/common/common.py:786
 msgid ""
@@ -116,92 +112,92 @@ msgid ""
 "    - \"Compare\" to see the modified version;\n"
 "    - \"Write Anyway\" to save your current version."
 msgstr ""
-"<b>Aviso de concurrencia de escritura:</b>\n"
+"<b>aktualizálási ellentét az aktuális adatszó írásánál</b>\n"
 "\n"
-"Este registro ha sido modificado mientras lo editaba.\n"
-"  Elija:\n"
-"   - \"Cancelar\" para no guardar;\n"
-"   - \"Comparar\" para ver la versión modificada;\n"
-"   - \"Guardar de todas formas\" para guardar sus cambios."
+"Ez az adatszó másképp került megváltoztatásra, amíg Ön feldolgozta\n"
+"Megoldási lehetőségek\n"
+"\"Mégse\", hogy a mentés folyamatát megszakítsa\n"
+"\"Összehasonlít\", hogy az adat megváltoztatott verzióját megtekintse\n"
+"\"Felülír\", hogy a mentett verziót felülírja"
 
 #: tryton/common/common.py:795
 msgid "Compare"
-msgstr "Comparar"
+msgstr "Összehasonlítás"
 
 #: tryton/common/common.py:800
 msgid "Write Anyway"
-msgstr "Guardar de todas formas"
+msgstr "Felülír"
 
 #: tryton/common/common.py:826 tryton/gui/window/win_export.py:487
 #: tryton/gui/window/win_import.py:265 tryton/gui/window/win_import.py:293
 msgid "Error"
-msgstr "Error"
+msgstr "Hiba"
 
 #: tryton/common/common.py:830
 msgid "Report Bug"
-msgstr "Informar de un error"
+msgstr "Hibabejelentés"
 
 #: tryton/common/common.py:837
 msgid "Application Error!"
-msgstr "¡Error de aplicación!"
+msgstr "Alkalmazási hiba"
 
 #: tryton/common/common.py:860
 msgid "Error: "
-msgstr "Error: "
+msgstr "Hiba:"
 
 #: tryton/common/common.py:880
 #, python-format
 msgid "To report bugs you must have an account on <u>%s</u>"
-msgstr "Para informar errores debe tener una cuenta en <u>%s</u>"
+msgstr "Az online hibabejelentéshez szükség van <u>%s</u> fiókra"
 
 #: tryton/common/common.py:910
 msgid "Bug Tracker"
-msgstr "Seguimiento de errores"
+msgstr "Hiba bejelentése"
 
 #: tryton/common/common.py:928
 msgid "User:"
-msgstr "Usuario:"
+msgstr "Felhasználó:"
 
 #: tryton/common/common.py:936 tryton/common/common.py:1098
 #: tryton/gui/window/dblogin.py:453
 msgid "Password:"
-msgstr "Contraseña:"
+msgstr "Jelszó:"
 
 #: tryton/common/common.py:991
 msgid ""
 "The same bug was already reported by another user.\n"
 "To keep you informed your username is added to the nosy-list of this issue"
 msgstr ""
-"El mismo error ya fue notificado por otro usuario.\n"
-"Para mantenerle informado añadiremos su usuario a la lista de interesados en este asunto."
+"Ez a hiba egy másik felhasználó által már be lett jelentve \n"
+"Az Ön felhasználóneve az érdekeltségi listára felkerült."
 
 #: tryton/common/common.py:1002
 msgid "Created new bug with ID "
-msgstr "Se creó un nuevo error con ID "
+msgstr "Új hibabejelentés létesítése ezzel az ID -vel"
 
 #: tryton/common/common.py:1010 tryton/gui/main.py:900
 msgid ""
 "Connection error!\n"
 "Bad username or password!"
 msgstr ""
-"Error de conexión!\n"
-"¡Nombre de usuario o contraseña incorrectos!"
+"Kapcsolási hiba!\n"
+"Hibás felhasználónév vagy jelszó "
 
 #: tryton/common/common.py:1015
 msgid "Exception:"
-msgstr "Excepción:"
+msgstr "Kivétel:"
 
 #: tryton/common/common.py:1032
 msgid ""
 "The server fingerprint has changed since last connection!\n"
 "The application will stop connecting to this server until its fingerprint is fixed."
 msgstr ""
-"¡La huella de seguridad del servidor ha cambiado desde la última conexión!\n"
-"La aplicación detendrá la conexión al servidor hasta que se corrija la huella de seguridad."
+"Az utolsó kapcsolás óta a szerver ujjlenyomata változott!\n"
+"A kliens nem lép kapcsolatba a szerverrel, amíg az ujjlenyomat nem felel meg a szerverével."
 
 #: tryton/common/common.py:1034
 msgid "Security risk!"
-msgstr "¡Riesgo de seguridad!"
+msgstr "Biztonsági kockázat"
 
 #: tryton/common/common.py:1039 tryton/common/common.py:1104
 #: tryton/gui/main.py:897
@@ -209,110 +205,110 @@ msgid ""
 "Connection error!\n"
 "Unable to connect to the server!"
 msgstr ""
-"¡Error de conexión!\n"
-"¡No ha sido posible conectarse al servidor!"
+"Kapcsolási hiba!\n"
+"Nem kapcsolódik a szerverrel!"
 
 #: tryton/common/common.py:1119
 msgid "Network Error!"
-msgstr "¡Error de red!"
+msgstr "Hálózati hiba"
 
 #: tryton/common/completion.py:22
 msgid "<i>Search...</i>"
-msgstr "<i>Buscar...</i>"
+msgstr "<i>keresés...</i>"
 
 #: tryton/common/completion.py:24
 msgid "<i>Create...</i>"
-msgstr "<i>Crear...</i>"
+msgstr "<i>Készítve...</i>"
 
 #: tryton/common/datetime_.py:33 tryton/common/datetime_.py:233
 #: tryton/common/datetime_.py:383
 msgid "Value"
-msgstr "Valor"
+msgstr "Érték"
 
 #: tryton/common/datetime_.py:34 tryton/common/datetime_.py:234
 #: tryton/common/datetime_.py:384
 msgid "Displayed value"
-msgstr "Valor mostrado"
+msgstr "Megjelenített érték"
 
 #: tryton/common/datetime_.py:38 tryton/common/datetime_.py:191
 #: tryton/common/datetime_.py:237 tryton/common/datetime_.py:340
 msgid "Format"
-msgstr "Formato"
+msgstr "Formátum"
 
 #: tryton/common/datetime_.py:39 tryton/common/datetime_.py:192
 #: tryton/common/datetime_.py:238 tryton/common/datetime_.py:341
 msgid "Display format"
-msgstr "Formato a mostrar"
+msgstr "Megjelenítési formátum"
 
 #: tryton/common/datetime_.py:61
 msgid "Open the calendar"
-msgstr "Abrir el calendario"
+msgstr "Naptár megnyitása"
 
 #: tryton/common/datetime_.py:388 tryton/common/datetime_.py:393
 msgid "Date Format"
-msgstr "Formato de fecha"
+msgstr "Dátumformátum"
 
 #: tryton/common/datetime_.py:389 tryton/common/datetime_.py:394
 msgid "Displayed date format"
-msgstr "Formato de fecha mostrado"
+msgstr "Mutatott dátumformátum"
 
 #: tryton/common/domain_parser.py:235
 msgid "y"
-msgstr "s"
+msgstr "J"
 
 #: tryton/common/domain_parser.py:235
 msgid "yes"
-msgstr "sí"
+msgstr "Igen"
 
 #: tryton/common/domain_parser.py:235
 msgid "true"
-msgstr "verdadero"
+msgstr "Igaz"
 
 #: tryton/common/domain_parser.py:235
 msgid "t"
-msgstr "v"
+msgstr "w"
 
 #: tryton/common/domain_parser.py:457
 #: tryton/gui/window/view_form/view/screen_container.py:507
 msgid "True"
-msgstr "Verdadero"
+msgstr "Igaz"
 
 #: tryton/common/domain_parser.py:457
 #: tryton/gui/window/view_form/view/screen_container.py:507
 msgid "False"
-msgstr "Falso"
+msgstr "Hamis"
 
 #: tryton/common/popup_menu.py:77
 msgid "Edit..."
-msgstr "Editar..."
+msgstr "Szerkesztés…"
 
 #: tryton/common/popup_menu.py:82
 msgid "Attachments..."
-msgstr "Adjuntos..."
+msgstr "Mellékletek..."
 
 #: tryton/common/popup_menu.py:92
 msgid "Actions..."
-msgstr "Acciones..."
+msgstr "Műveletek"
 
 #: tryton/common/popup_menu.py:93
 msgid "Relate..."
-msgstr "Relacionado..."
+msgstr "Kapcsolatok..."
 
 #: tryton/common/popup_menu.py:94
 msgid "Report..."
-msgstr "Informe..."
+msgstr "Jelentés..."
 
 #: tryton/common/popup_menu.py:95
 msgid "E-Mail..."
-msgstr "Correo electrónico..."
+msgstr "E-Mail..."
 
 #: tryton/common/popup_menu.py:96
 msgid "Print..."
-msgstr "Imprimir..."
+msgstr "Nyomtatás..."
 
 #: tryton/common/timedelta.py:26
 msgid "Y"
-msgstr "A"
+msgstr "J"
 
 #: tryton/common/timedelta.py:27
 msgid "M"
@@ -320,11 +316,11 @@ msgstr "M"
 
 #: tryton/common/timedelta.py:28
 msgid "w"
-msgstr "S"
+msgstr "W"
 
 #: tryton/common/timedelta.py:29
 msgid "d"
-msgstr "d"
+msgstr "t"
 
 #: tryton/common/timedelta.py:30
 msgid "h"
@@ -340,171 +336,171 @@ msgstr "s"
 
 #: tryton/gui/main.py:218
 msgid "_File"
-msgstr "_Archivo"
+msgstr "_Fájl"
 
 #: tryton/gui/main.py:226
 msgid "_User"
-msgstr "U_suario"
+msgstr "_Felhasználó"
 
 #: tryton/gui/main.py:240
 msgid "_Options"
-msgstr "_Opciones"
+msgstr "_Beállítások"
 
 #: tryton/gui/main.py:248
 msgid "Fa_vorites"
-msgstr "Fa_voritos"
+msgstr "Fa_vorit"
 
 #: tryton/gui/main.py:264
 msgid "_Help"
-msgstr "Ay_uda"
+msgstr "_Segítség"
 
 #: tryton/gui/main.py:373
 msgid "No result found."
-msgstr "No se han encontrado resultados."
+msgstr "Nincs találat"
 
 #: tryton/gui/main.py:395
 msgid "_Connect..."
-msgstr "_Conectar..."
+msgstr "_Kapcsolódás…"
 
 #: tryton/gui/main.py:404
 msgid "_Disconnect"
-msgstr "_Desconectar"
+msgstr "Kapcsolat bontása"
 
 #: tryton/gui/main.py:414
 msgid "Data_base"
-msgstr "_Base de datos"
+msgstr "Adatbank"
 
 #: tryton/gui/main.py:425
 msgid "_New Database..."
-msgstr "_Nueva base de datos..."
+msgstr "_Új adatbank"
 
 #: tryton/gui/main.py:434
 msgid "_Restore Database..."
-msgstr "_Restaurar base de datos..."
+msgstr "Adatbank visszaállítása"
 
 #: tryton/gui/main.py:443
 msgid "_Backup Database..."
-msgstr "Realizar _copia de seguridad de la base de datos..."
+msgstr "Adatbank Backup előállítása"
 
 #: tryton/gui/main.py:452
 msgid "Dro_p Database..."
-msgstr "_Eliminar base de datos..."
+msgstr "Adatbank törlése"
 
 #: tryton/gui/main.py:461
 msgid "_Quit..."
-msgstr "_Salir..."
+msgstr "Kilépés..."
 
 #: tryton/gui/main.py:476
 msgid "_Preferences..."
-msgstr "_Preferencias..."
+msgstr "_Beállítások…"
 
 #: tryton/gui/main.py:487
 msgid "_Menu Reload"
-msgstr "_Recargar menú"
+msgstr "Menü újra mentése"
 
 #: tryton/gui/main.py:496
 msgid "_Menu Toggle"
-msgstr "Conmutar _menú"
+msgstr "Menü átkapcsolása"
 
 #: tryton/gui/main.py:503
 msgid "_Global Search"
-msgstr "Búsqueda _global"
+msgstr "Globális keresés"
 
 #: tryton/gui/main.py:518
 msgid "_Toolbar"
-msgstr "Barra de herramien_tas"
+msgstr "_Eszköztár"
 
 #: tryton/gui/main.py:526
 msgid "_Default"
-msgstr "Por _defecto"
+msgstr "_Alapértelmezett"
 
 #: tryton/gui/main.py:536
 msgid "_Text and Icons"
-msgstr "_Texto e iconos"
+msgstr "Szöveg és ikonok"
 
 #: tryton/gui/main.py:546
 msgid "_Icons"
-msgstr "_Iconos"
+msgstr "Ikonok"
 
 #: tryton/gui/main.py:555
 msgid "_Text"
-msgstr "_Texto"
+msgstr "_Szöveg"
 
 #: tryton/gui/main.py:564
 msgid "_Menubar"
-msgstr "Barra de _menú"
+msgstr "_Menüsáv"
 
 #: tryton/gui/main.py:572
 msgid "Change Accelerators"
-msgstr "Cambiar teclas rápidas"
+msgstr "Gyorsbillentyűk módosítása"
 
 #: tryton/gui/main.py:580
 msgid "_Mode"
-msgstr "_Modo"
+msgstr "Mód"
 
 #: tryton/gui/main.py:588
 msgid "_Normal"
-msgstr "_Normal"
+msgstr "Normál"
 
 #: tryton/gui/main.py:596
 msgid "_PDA"
-msgstr "_PDA"
+msgstr "PDA"
 
 #: tryton/gui/main.py:603
 msgid "_Form"
-msgstr "_Formulario"
+msgstr "Űrlap"
 
 #: tryton/gui/main.py:612
 msgid "Save Width/Height"
-msgstr "Guardar ancho/alto"
+msgstr "Szélesség/magasság mentése"
 
 #: tryton/gui/main.py:623
 msgid "Save Tree State"
-msgstr "Guardar estado de árbol"
+msgstr "Menünézet mentése"
 
 #: tryton/gui/main.py:635
 msgid "Fast Tabbing"
-msgstr "Tabulación rápida"
+msgstr ""
 
 #: tryton/gui/main.py:645
 msgid "Spell Checking"
-msgstr "Corrección ortográfica"
+msgstr "Helyesírás ellenőrzés"
 
 #: tryton/gui/main.py:655
 msgid "_Previous Tab"
-msgstr "_Pestaña anterior"
+msgstr "Előző lap"
 
 #: tryton/gui/main.py:661
 msgid "_Next Tab"
-msgstr "_Siguiente pestaña"
+msgstr "Következő lap"
 
 #: tryton/gui/main.py:667
 msgid "Search Limit..."
-msgstr "Límite de búsqueda..."
+msgstr "Keresés limit"
 
 #: tryton/gui/main.py:673
 msgid "_Email..."
-msgstr "_Correo electrónico..."
+msgstr "E-mail..."
 
 #: tryton/gui/main.py:681
 msgid "_Save Options"
-msgstr "_Guardar opciones"
+msgstr "Beállítások mentése"
 
 #: tryton/gui/main.py:693
 msgid "_Tips..."
-msgstr "Conse_jos..."
+msgstr "Tipp"
 
 #: tryton/gui/main.py:702
 msgid "_Keyboard Shortcuts..."
-msgstr "_Atajos de teclado..."
+msgstr "_Gyorsbillentyűk"
 
 #: tryton/gui/main.py:711
 msgid "_About..."
-msgstr "_Acerca de..."
+msgstr "Felett"
 
 #: tryton/gui/main.py:762
 msgid "Manage Favorites"
-msgstr "_Administrar favoritos"
+msgstr "Kedvencek kezelése..."
 
 #: tryton/gui/main.py:859 tryton/gui/window/win_search.py:26
 #: tryton/gui/window/view_form/view/screen_container.py:151
@@ -512,171 +508,168 @@ msgstr "_Administrar favoritos"
 #: tryton/gui/window/view_form/view/form_gtk/many2many.py:44
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:50
 msgid "Search"
-msgstr "Buscar"
+msgstr "Keresés"
 
 #: tryton/gui/main.py:914
 msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"La acción seleccionada requiere cerrar todas las pestañas. \n"
-"¿Desea continuar?"
+"A következő művelethez az összes lap bezárása szükséges\n"
+"Folytatja?"
 
 #: tryton/gui/main.py:1173
 msgid "Close Tab"
-msgstr "Cerrar pestaña"
+msgstr "Lap bezárása"
 
 #: tryton/gui/main.py:1294
 msgid ""
 "You are going to delete a Tryton database.\n"
 "Are you really sure to proceed?"
 msgstr ""
-"Va a eliminar una base de datos de Tryton.\n"
-"¿Está seguro que quiere continuar?"
+"Tryton adatbankot fog törölni.\n"
+"Biztos folytatja?"
 
 #: tryton/gui/main.py:1304
 msgid ""
 "Wrong Tryton Server Password\n"
 "Please try again."
 msgstr ""
-"La contraseña del servidor Tryton es incorrecta.\n"
-"Inténtelo de nuevo."
+"Rossz jelszó a Tryton szerverhez\n"
+"Kérem adja meg újra."
 
 #: tryton/gui/main.py:1306 tryton/gui/main.py:1343 tryton/gui/main.py:1379
 #: tryton/gui/window/dbcreate.py:362
 msgid "Access denied!"
-msgstr "¡Acceso denegado!"
+msgstr "Hozzáférés megtagadva"
 
 #: tryton/gui/main.py:1309
 msgid "Database drop failed with error message:\n"
-msgstr ""
-"La eliminación de la base de datos ha fallado con el mensaje de error:\n"
+msgstr "Az adatbank törlése hibás a következő hibajelentéssel\n"
 
 #: tryton/gui/main.py:1310
 msgid "Database drop failed!"
-msgstr "¡Falló la eliminación de la base de datos!"
+msgstr "Adatbank törlése sikertelen"
 
 #: tryton/gui/main.py:1312
 msgid "Database dropped successfully!"
-msgstr "¡La base de datos se ha eliminado satisfactoriamente!"
+msgstr "Adatbank sikeres törlése"
 
 #: tryton/gui/main.py:1317
 msgid "Open Backup File to Restore..."
-msgstr "Abrir una copia de seguridad para restaurar..."
+msgstr "Backup adatbank az visszaállításhoz megnyitni..."
 
 #: tryton/gui/main.py:1335
 msgid ""
 "It is not possible to restore a password protected database.\n"
 "Backup and restore needed to be proceed manual."
 msgstr ""
-"No es posible restaurar una base de datos protegida con contraseña.\n"
-"La copia de seguridad y su restauración tiene que ser manual."
+"Nem lehetséges jelszóval védett adatbank visszaállítása.\n"
+"Backup és visszaállítást ezért manuálisan kell véghez vinni."
 
 #: tryton/gui/main.py:1339 tryton/gui/main.py:1375
 msgid "Database is password protected!"
-msgstr "¡La base de datos está protegida con contraseña!"
+msgstr "Adatbank jelszóval védett"
 
 #: tryton/gui/main.py:1341 tryton/gui/main.py:1377
 msgid ""
 "Wrong Tryton Server Password.\n"
 "Please try again."
 msgstr ""
-"La contraseña del servidor Tryton es incorrecta.\n"
-"Inténtelo de nuevo."
+"Hibás jelszó a Tryton szerverhez\n"
+"Kérem újra megadni"
 
 #: tryton/gui/main.py:1346
 msgid "Database restore failed with error message:\n"
-msgstr ""
-"La restauración de la base de datos ha fallado con el mensaje de error:\n"
+msgstr "Sikertelen adatbank visszaállítás a következő hibajelentéssel\n"
 
 #: tryton/gui/main.py:1348 tryton/gui/main.py:1353
 msgid "Database restore failed!"
-msgstr "¡La restauración de la base de datos ha fallado!"
+msgstr "Adatbank visszaállítása sikertelen!"
 
 #: tryton/gui/main.py:1351
 msgid "Database restored successfully!"
-msgstr "¡La base de datos se ha restaurado correctamente!"
+msgstr "Adatbank sikeres visszaállítása"
 
 #: tryton/gui/main.py:1372
 msgid ""
 "It is not possible to dump a password protected Database.\n"
 "Backup and restore needed to be proceed manual."
 msgstr ""
-"No es posible hacer copia de una base de datos protegida por contraseña.\n"
-"La copia de seguridad y su restauración tiene que ser manual."
+"Nem lehetséges jelszóval védett adatbank biztosítása.\n"
+"Backup és visszaállítást ezért manuálisan kell véghez vinni."
 
 #: tryton/gui/main.py:1382
 msgid "Database dump failed with error message:\n"
-msgstr "La extracción de la base de datos ha fallado con el mensaje de error:\n"
+msgstr "Sikertelen adatbank biztosítás a következő hibajelentéssel:\n"
 
 #: tryton/gui/main.py:1384
 msgid "Database dump failed!"
-msgstr "¡La extracción de la base de datos ha fallado!"
+msgstr "Adatbank sikertelen biztosítása!"
 
 #: tryton/gui/main.py:1395
 msgid "Database backuped successfully!"
-msgstr ""
-"¡La copia de seguridad de la base de datos ha finalizado correctamente!"
+msgstr "Adatbank sikeres biztosítása!"
 
 #: tryton/gui/window/board.py:19 tryton/gui/window/form.py:31
 msgid "New"
-msgstr "Nuevo"
+msgstr "Új"
 
 #: tryton/gui/window/board.py:19 tryton/gui/window/form.py:31
 msgid "Create a new record"
-msgstr "Crear un nuevo registro"
+msgstr "Új bejegyzés létrehozása"
 
 #: tryton/gui/window/board.py:20 tryton/gui/window/form.py:33
 #: tryton/gui/window/win_export.py:143
 msgid "Save"
-msgstr "Guardar"
+msgstr "Mentés"
 
 #: tryton/gui/window/board.py:20 tryton/gui/window/form.py:33
 msgid "Save this record"
-msgstr "Guardar este registro"
+msgstr "Bejegyzés mentése"
 
 #: tryton/gui/window/board.py:21 tryton/gui/window/form.py:35
 #: tryton/gui/window/win_form.py:223
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:162
 msgid "Switch"
-msgstr "Cambiar vista"
+msgstr "Nézet váltása"
 
 #: tryton/gui/window/board.py:21 tryton/gui/window/form.py:35
 msgid "Switch view"
-msgstr "Cambiar vista"
+msgstr "Nézet váltása"
 
 #: tryton/gui/window/board.py:23 tryton/gui/window/form.py:37
 msgid "_Reload"
-msgstr "_Recargar"
+msgstr "_Frissítés"
 
 #: tryton/gui/window/board.py:23 tryton/gui/window/form.py:37
 msgid "Reload"
-msgstr "Recargar"
+msgstr "Frissítés"
 
 #: tryton/gui/window/board.py:28 tryton/gui/window/form.py:49
 msgid "_New"
-msgstr "_Nuevo"
+msgstr "_Új"
 
 #: tryton/gui/window/board.py:29 tryton/gui/window/form.py:50
 #: tryton/gui/window/win_form.py:67
 msgid "_Save"
-msgstr "_Guardar"
+msgstr "_Mentés"
 
 #: tryton/gui/window/board.py:30 tryton/gui/window/form.py:51
 msgid "_Switch View"
-msgstr "Cambiar Vi_sta"
+msgstr "Nézet váltása"
 
 #: tryton/gui/window/board.py:32 tryton/gui/window/form.py:53
 msgid "_Reload/Undo"
-msgstr "_Recargar/Deshacer"
+msgstr "Frissítés/ visszavonás"
 
 #: tryton/gui/window/board.py:34 tryton/gui/window/form.py:57
 msgid "_Delete..."
-msgstr "_Eliminar..."
+msgstr "_Törlés..."
 
 #: tryton/gui/window/board.py:36 tryton/gui/window/form.py:67
 msgid "_Close Tab"
-msgstr "_Cerrar pestaña"
+msgstr "Lap bezárása"
 
 #: tryton/gui/window/dbcreate.py:29
 msgid ""
@@ -684,13 +677,13 @@ msgid ""
 " if the server is installed on this computer. Click on 'Change' to change "
 "the address."
 msgstr ""
-"Esta es la URL del servidor Tryton. Use el servidor «localhost» y el puerto "
-"«8000» si el servidor está instalado en este computador. Pulse «Cambiar» "
-"para cambiar la dirección."
+"Tryton-szerver címe mutatkozik. Vigye be a szerverhez a 'localhost' és Port"
+"  '8000', ha a szerver lokal ezen a számítógépen van telepítve. Kattintson "
+"az \"Átdolgozás\"-ra, hogy ezt a címet megváltoztassa."
 
 #: tryton/gui/window/dbcreate.py:42
 msgid "No connection!"
-msgstr "¡No hay conexión!"
+msgstr "Nincs kapcsolat"
 
 #: tryton/gui/window/dbcreate.py:43
 msgid ""
@@ -700,31 +693,30 @@ msgid ""
 "3. If there is a firewall between the server and this client, make sure that the server address and port (usually 8000) are not blocked.\n"
 "Click on 'Change' to change the address."
 msgstr ""
-"¡No se ha podido conectar al servidor!\n"
-"1. Revise si el servidor se está ejecutando.\n"
-"2. Averigüe en qué dirección y puerto está escuchando.\n"
-"3. Si hay un cortafuegos entre el servidor y este cliente, asegúrese que la dirección y el puerto (normalmente 8000) del servidor no están bloqueados.\n"
-"Pulse en «Cambiar» para cambiar la dirección."
+"Nem lép a Tryton-szerverrel kapcsolatba!\n"
+"1.Ellenőrizze, hogy fut a Tryton-szerver.\n"
+"2.Ellenőrizze, milyen címről és melyik portról elérhető a szerver.\n"
+"3.Ha a kliens és a szerver között tűzfal van, ellenőrizze, hogy a Tryton-szerver címet és portot (általában 8000) a tűzfal nem blokkoljaVálassza az \"Átdolgozás\"-t, hogy a címet hozzá igazítsa."
 
 #: tryton/gui/window/dbcreate.py:134
 msgid "Create new database"
-msgstr "Crear nueva base de datos"
+msgstr "Új adatbank létrehozása"
 
 #: tryton/gui/window/dbcreate.py:144
 msgid "C_reate"
-msgstr "C_rear"
+msgstr "Létrehozás"
 
 #: tryton/gui/window/dbcreate.py:152
 msgid "Create the new database."
-msgstr "Crear la nueva base de datos."
+msgstr "Új adatbank létrehozása."
 
 #: tryton/gui/window/dbcreate.py:163
 msgid "Server Setup:"
-msgstr "Configuración del servidor:"
+msgstr "Tryton-szerver beállításai"
 
 #: tryton/gui/window/dbcreate.py:168
 msgid "Server connection:"
-msgstr "Conexión con el servidor:"
+msgstr "Szerver kapcsolat"
 
 #: tryton/gui/window/dbcreate.py:178 tryton/gui/window/dbdumpdrop.py:141
 #: tryton/gui/window/dbrestore.py:89
@@ -733,23 +725,23 @@ msgid ""
 " server is installed on this computer. Click on 'Change' to change the "
 "address."
 msgstr ""
-"Esta es la URL del servidor. Use el servidor «localhost» y el puerto «8000» "
-"si el servidor está instalado en este computador. Pulse en «Cambiar» para "
-"cambiar la dirección."
+"Tryton-szerver címe mutatkozik. Vigye be a szerverhez a 'localhost' és Port "
+"'8000', ha a szerver lokal ezen a számítógépen van telepítve. Kattintson az "
+"\"Átdolgozás\"-ra, hogy ezt a címet megváltoztassa."
 
 #: tryton/gui/window/dbcreate.py:181 tryton/gui/window/dbdumpdrop.py:148
 #: tryton/gui/window/dbrestore.py:94
 msgid "C_hange"
-msgstr "C_ambiar"
+msgstr "Átdolgoz"
 
 #: tryton/gui/window/dbcreate.py:190 tryton/gui/window/dbrestore.py:100
 msgid "Setup the server connection..."
-msgstr "Configurar la conexión con el servidor..."
+msgstr "Szerverkapcsolat konfiguráció..."
 
 #: tryton/gui/window/dbcreate.py:193 tryton/gui/window/dbdumpdrop.py:187
 #: tryton/gui/window/dbrestore.py:103
 msgid "Tryton Server Password:"
-msgstr "Contraseña del servidor Tryton:"
+msgstr "Tryton Server jelszó:"
 
 #: tryton/gui/window/dbcreate.py:204 tryton/gui/window/dbdumpdrop.py:198
 #: tryton/gui/window/dbrestore.py:114
@@ -757,16 +749,17 @@ msgid ""
 "This is the password of the Tryton server. It doesn't belong to a real user."
 " This password is usually defined in the trytond configuration."
 msgstr ""
-"Esta es la contraseña del servidor Tryton. No corresponde a un usuario real."
-" Esta contraseña se suele definir en la configuración de trytond."
+"Adminisztrációs jelszó megadása a Tryton szerverhez. Ez a jelszó nem egy "
+"Tryton felhasználó jelszava, hanem általában a Tryton szerver "
+"konfigurációjában van megadva."
 
 #: tryton/gui/window/dbcreate.py:215
 msgid "New database setup:"
-msgstr "Nueva configuración de la base de datos:"
+msgstr "Adatbank beállítások"
 
 #: tryton/gui/window/dbcreate.py:221
 msgid "Database name:"
-msgstr "Nombre de la base de datos:"
+msgstr "Adatbank neve:"
 
 #: tryton/gui/window/dbcreate.py:234
 msgid ""
@@ -774,13 +767,13 @@ msgid ""
 "Allowed characters are alphanumerical or _ (underscore)\n"
 "You need to avoid all accents, space or special characters! Example: tryton"
 msgstr ""
-"Elija un nombre para la nueva base de datos.\n"
-"Puede utilizar caracteres alfanuméricos o _ (subrayado)\n"
-"¡Evite cualquier acento, espacio o caracteres especiales! Ejemplo: tryton"
+"Adja meg az adatbank új nevét\n"
+"Minden betű, szám és _(aláhúzás) engedélyezett\n"
+"Nem engedélyezett: ékezet, szóköz vagy jelek mint"
 
 #: tryton/gui/window/dbcreate.py:241
 msgid "Default language:"
-msgstr "Idioma por defecto:"
+msgstr "Alapértelmezett nyelv:"
 
 #: tryton/gui/window/dbcreate.py:251
 msgid ""
@@ -788,13 +781,12 @@ msgid ""
 "will be able to install new languages after installation through the "
 "administration menu."
 msgstr ""
-"Escoja el idioma por defecto que se instalará para esta base de datos. Podrá"
-" instalar nuevos idiomas después de la instalación, a través del menú de "
-"administración."
+"Válasszon alapértelmezett nyelvet az új adatbankhoz. A telepítés után "
+"lehetőség van az adminisztrációs menüben a nyelvet beállítani."
 
 #: tryton/gui/window/dbcreate.py:255
 msgid "Admin password:"
-msgstr "Contraseña del administrador:"
+msgstr "Adminisztrátor jelszava"
 
 #: tryton/gui/window/dbcreate.py:266
 msgid ""
@@ -802,43 +794,43 @@ msgid ""
 "User name: admin\n"
 "Password: <The password you set here>"
 msgstr ""
-"Elija una contraseña para el usuario administrador de la nueva base de datos. Podrá acceder a la base de datos con dichas credenciales:\n"
-"Nombre de usuario: admin\n"
-"Contraseña: <La contraseña que introduzca aquí>"
+"Válasszon jelszót adminisztrációra jogosult felhasználónak az új adatbankhoz.Ezzel a jelszóval bejelentkezhet az új adatbankba\n"
+"Felhasználónév: admin\n"
+"Jelszó<az itt megadott jelszó>"
 
 #: tryton/gui/window/dbcreate.py:274
 msgid "Confirm admin password:"
-msgstr "Confirme la contraseña del administrador:"
+msgstr "Jelszó megerősítése:"
 
 #: tryton/gui/window/dbcreate.py:284
 msgid "Type the Admin password again"
-msgstr "Teclee la contraseña del administrador de nuevo"
+msgstr ""
+"Ismételje meg a adminisztrátor jelszót, hogy biztos legyen, hogy nem ütötte "
+"fékre először."
 
 #: tryton/gui/window/dbcreate.py:333
 msgid "The new admin password doesn't match the confirmation field.\n"
-msgstr ""
-"La nueva contraseña del administrador no coincide con el campo de "
-"confirmación.\n"
+msgstr "A két megadott adminisztrátor jelszó nem egyezik\n"
 
 #: tryton/gui/window/dbcreate.py:335
 msgid "Passwords doesn't match!"
-msgstr "¡Las contraseñas no coinciden!"
+msgstr "A jelszavak nem azonosak!"
 
 #: tryton/gui/window/dbcreate.py:343
 msgid ""
 "A database with the same name already exists.\n"
 "Try another database name."
 msgstr ""
-"Ya existe una base de datos con el mismo nombre.\n"
-"Inténtelo con otro nombre de base de datos."
+"Létezik mér egy adatbank ezzel a névvel\n"
+"Próbáljon meg egy másik nevet."
 
 #: tryton/gui/window/dbcreate.py:346
 msgid "This database name already exist!"
-msgstr "¡Ya existe una base de datos con este nombre!"
+msgstr "Ez az adatbank név már létezik!"
 
 #: tryton/gui/window/dbcreate.py:359
 msgid "Sorry, wrong password for the Tryton server. Please try again."
-msgstr "La contraseña del servidor Tryton no es correcta. Inténtelo de nuevo."
+msgstr "Hibás jelszó a Tryton szerverbe. Próbálja meg újra."
 
 #: tryton/gui/window/dbcreate.py:367
 msgid ""
@@ -846,152 +838,152 @@ msgid ""
 "If there is a database created, it could be broken. Maybe drop this database! Please check the error message for possible informations.\n"
 "Error message:\n"
 msgstr ""
-"No se ha podido crear la base de datos, la causa es desconocida.\n"
-"Si hay una base de datos creada, podría estar dañada. ¡Pruebe a eliminar esta base de datos! Revise el mensaje de error en busca de información adicional.\n"
-"Mensaje de error:\n"
+"Ismeretlen hiba miatt nem lép kapcsolatba a Tryton szerverrel\n"
+"Ha egy adatbank létesítve lett, lehet, hogy ez nem teljes vagy defektes. Tanácsos az adatbank törlése.Kérem ügyeljenek a következő hibajelentésre további információkhoz ezzel a hibával kapcsolatban.\n"
+"Hibajelentés:\n"
 
 #: tryton/gui/window/dbcreate.py:375
 msgid "Error creating database!"
-msgstr "¡Se ha producido un error al crear la base de datos!"
+msgstr "Hiba az adatbank létrehozásakor"
 
 #: tryton/gui/window/dbdumpdrop.py:26
 msgid "Could not connect to server!"
-msgstr "¡No se ha podido conectar al servidor!"
+msgstr "Nem sikerült csatlakozni a kiszolgálóhoz."
 
 #: tryton/gui/window/dbdumpdrop.py:30
 msgid "This client version is not compatible with the server!"
-msgstr "¡Esta versión del cliente no es compatible con el servidor!"
+msgstr "Ennek a kliensnek a verziója nem kompatibilis a szerverrel!"
 
 #: tryton/gui/window/dbdumpdrop.py:39
 msgid "No database found, you must create one!"
-msgstr "No se ha encontrado ninguna base de datos, debe crear una!"
+msgstr "Nem talált adatbankot! Kérem, egy újat létrehozni."
 
 #: tryton/gui/window/dbdumpdrop.py:77
 msgid "Backup a database"
-msgstr "Realizar copia de seguridad de una base de datos"
+msgstr "Adatbank mentése"
 
 #: tryton/gui/window/dbdumpdrop.py:78
 msgid "Backup"
-msgstr "Copia de seguridad"
+msgstr "Mentés"
 
 #: tryton/gui/window/dbdumpdrop.py:79
 msgid "Backup the choosen database."
-msgstr "Realizar copia de seguridad de la base de datos elegida."
+msgstr "A kiválasztott adatbank mentése."
 
 #: tryton/gui/window/dbdumpdrop.py:81
 msgid "Choose a Tryton database to backup:"
-msgstr "Elija una base de datos Tryton para realizar una copia de seguridad:"
+msgstr "Válassza ki a menteni kívánt adatbankot."
 
 #: tryton/gui/window/dbdumpdrop.py:83
 msgid "Delete a database"
-msgstr "Eliminar una base de datos"
+msgstr "Adatbank törlése"
 
 #: tryton/gui/window/dbdumpdrop.py:84
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Töröl"
 
 #: tryton/gui/window/dbdumpdrop.py:85
 msgid "Delete the choosen database."
-msgstr "Eliminar la base de datos elegida."
+msgstr "A kiválasztott adatbank törlése."
 
 #: tryton/gui/window/dbdumpdrop.py:87
 msgid "Choose a Tryton database to delete:"
-msgstr "Elija la base de datos Tryton a eliminar:"
+msgstr "Válassza ki a törölni kívánt adatbankot:"
 
 #: tryton/gui/window/dbdumpdrop.py:130 tryton/gui/window/dbrestore.py:77
 msgid "Server Connection:"
-msgstr "Conexión al servidor:"
+msgstr "Kiszolgálókapcsolat"
 
 #: tryton/gui/window/dbdumpdrop.py:157 tryton/gui/window/dblogin.py:80
 #: tryton/gui/window/dblogin.py:434
 msgid "Database:"
-msgstr "Base de datos:"
+msgstr "Adatbank:"
 
 #: tryton/gui/window/dblogin.py:31
 msgid "Profile Editor"
-msgstr "Editor de perfiles"
+msgstr "Profilszerkesztő"
 
 #: tryton/gui/window/dblogin.py:46
 msgid "Profile"
-msgstr "Perfil"
+msgstr "Profil"
 
 #: tryton/gui/window/dblogin.py:52 tryton/gui/window/win_export.py:66
 #: tryton/gui/window/win_import.py:47
 msgid "_Add"
-msgstr "_Añadir"
+msgstr "_Hozzáadás"
 
 #: tryton/gui/window/dblogin.py:57 tryton/gui/window/win_export.py:74
 #: tryton/gui/window/win_import.py:55
 msgid "_Remove"
-msgstr "_Eliminar"
+msgstr "_Eltávolítás"
 
 #: tryton/gui/window/dblogin.py:70 tryton/gui/window/dblogin.py:423
 msgid "Host:"
-msgstr "Servidor:"
+msgstr "Host:"
 
 #: tryton/gui/window/dblogin.py:98
 msgid "Create"
-msgstr "Crear"
+msgstr "Létrehozás"
 
 #: tryton/gui/window/dblogin.py:101
 msgid "Fetching databases list"
-msgstr "Recuperando lista de bases de datos"
+msgstr "Adatbanklista lekérdezése..."
 
 #: tryton/gui/window/dblogin.py:119
 msgid "Username:"
-msgstr "Nombre de usuario:"
+msgstr "Felhasználónév:"
 
 #: tryton/gui/window/dblogin.py:297
 msgid "Could not connect to the server"
-msgstr "No se ha podido conectar al servidor"
+msgstr "Nem sikerült csatlakozni a kiszolgálóhoz"
 
 #: tryton/gui/window/dblogin.py:299 tryton/gui/window/dblogin.py:601
 msgid "Incompatible version of the server"
-msgstr "El cliente no es compatible con la versión del servidor"
+msgstr "Inkompatibilis szerververzió"
 
 #: tryton/gui/window/dblogin.py:359
 msgid "Login"
-msgstr "Usuario"
+msgstr "Bejelentkezés"
 
 #: tryton/gui/window/dblogin.py:366
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Mégse"
 
 #: tryton/gui/window/dblogin.py:371
 msgid "Cancel connection to the Tryton server"
-msgstr "Cancelar conexión al servidor Tryton"
+msgstr "_Mégse"
 
 #: tryton/gui/window/dblogin.py:373
 msgid "C_onnect"
-msgstr "C_onectar"
+msgstr "Kapcsolódik"
 
 #: tryton/gui/window/dblogin.py:378
 msgid "Connect the Tryton server"
-msgstr "Conectar al servidor Tryton"
+msgstr "Kapcsolódás helyreállítása a Tryton szerverhez."
 
 #: tryton/gui/window/dblogin.py:406
 msgid "Profile:"
-msgstr "Perfil:"
+msgstr "Profil:"
 
 #: tryton/gui/window/dblogin.py:410
 msgid "_Manage profiles"
-msgstr "_Administrar perfiles"
+msgstr "Profilok kezelése"
 
 #: tryton/gui/window/dblogin.py:420
 msgid "Host / Database information"
-msgstr "Información del Servidor / Base de datos"
+msgstr "Host-/adatbank adatok"
 
 #: tryton/gui/window/dblogin.py:459
 msgid "User name:"
-msgstr "Nombre de usuario:"
+msgstr "Felhasználónév:"
 
 #: tryton/gui/window/dbrestore.py:66
 msgid "Restore Database"
-msgstr "Restaurar base de datos"
+msgstr "Adatbank visszaállítása"
 
 #: tryton/gui/window/dbrestore.py:122
 msgid "File to Restore:"
-msgstr "Archivo a restaurar:"
+msgstr "Adatok a visszaállításhoz:"
 
 #: tryton/gui/window/dbrestore.py:136
 msgid ""
@@ -1000,54 +992,53 @@ msgid ""
 "You need to avoid all accents, space or special characters! \n"
 "Example: tryton"
 msgstr ""
-"Elija el nombre de la base de datos a restaurar.\n"
-"Los caracteres permitidos son alfanuméricos o _ (subrayado)\n"
-"¡Evite todos los acentos, espacios, o caracteres especiales! \n"
-"Ejemplo: tryton"
+"Válassza ki a visszaállítani kívánt adatbankot.\n"
+"Engedélyezett az alfanumerikus karakter és_(aláhúzás)\n"
+"pl.: tryton"
 
 #: tryton/gui/window/dbrestore.py:142
 msgid "New Database Name:"
-msgstr "Nombre de la nueva base de datos:"
+msgstr "Új adatbank neve:"
 
 #: tryton/gui/window/dbrestore.py:146
 msgid "Update Database:"
-msgstr "Actualizar base de datos:"
+msgstr "Adatbank aktualizálása:"
 
 #: tryton/gui/window/dbrestore.py:151
 msgid ""
 "Check for an automatic database update after restoring a database from a "
 "previous Tryton version."
 msgstr ""
-"Márquelo para que se realice una actualización automática de la base de "
-"datos desde una versión anterior de Tryton, después de restaurarla."
+"Aktiváláskor egy adatbank újra előállításakor, amelyet egy korábbi Tryton "
+"verzióval lett előállítva, az adatbank automatikus aktualizálódik."
 
 #: tryton/gui/window/dbrestore.py:161
 msgid "Restore"
-msgstr "Restaurar"
+msgstr "Visszaállítás"
 
 #: tryton/gui/window/dbrestore.py:170
 msgid "Restore the database from file."
-msgstr "Restaurar la base de datos desde un archivo."
+msgstr "Adatbank visszaállítása adatokból."
 
 #: tryton/gui/window/email.py:16
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "E-mail"
 
 #: tryton/gui/window/email.py:25
 msgid "Email Program Settings"
-msgstr "Configuración del programa de correo electrónico"
+msgstr "E-mail beállítások"
 
 #: tryton/gui/window/email.py:28
 msgid "Command Line:"
-msgstr "Línea de comando:"
+msgstr "Parancssor:"
 
 #: tryton/gui/window/email.py:38
 msgid "Legend of Available Placeholders:"
-msgstr "Leyenda de palabras clave disponibles:"
+msgstr "Az elérhető helyettesítők jelmagyarázata:"
 
 #: tryton/gui/window/email.py:45
 msgid "To:"
-msgstr "Para:"
+msgstr "-hoz, -hez"
 
 #: tryton/gui/window/email.py:49
 msgid "CC:"
@@ -1055,110 +1046,110 @@ msgstr "CC:"
 
 #: tryton/gui/window/email.py:53
 msgid "Subject:"
-msgstr "Asunto:"
+msgstr "Tárgy:"
 
 #: tryton/gui/window/email.py:57
 msgid "Body:"
-msgstr "Mensaje:"
+msgstr "Szöveg:"
 
 #: tryton/gui/window/email.py:61
 msgid "Attachment:"
-msgstr "Adjunto:"
+msgstr "Melléklet:"
 
 #: tryton/gui/window/form.py:40 tryton/gui/window/tips.py:73
 #: tryton/gui/window/win_form.py:196
 #: tryton/gui/window/view_form/view/screen_container.py:214
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:136
 msgid "Previous"
-msgstr "Anterior"
+msgstr "Előző"
 
 #: tryton/gui/window/form.py:41
 msgid "Previous Record"
-msgstr "Registro anterior"
+msgstr "Előző adat"
 
 #: tryton/gui/window/form.py:42 tryton/gui/window/tips.py:80
 #: tryton/gui/window/win_form.py:210
 #: tryton/gui/window/view_form/view/screen_container.py:226
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:150
 msgid "Next"
-msgstr "Siguiente"
+msgstr "Következő"
 
 #: tryton/gui/window/form.py:42
 msgid "Next Record"
-msgstr "Registro siguiente"
+msgstr "Következő adat"
 
 #: tryton/gui/window/form.py:45
 msgid "Attachment(0)"
-msgstr "Adjunto(0)"
+msgstr "Mellékletek:"
 
 #: tryton/gui/window/form.py:46
 msgid "Add an attachment to the record"
-msgstr "Añadir un adjunto al registro"
+msgstr "Melléklet hozzáadása az üzenethez."
 
 #: tryton/gui/window/form.py:55
 msgid "_Duplicate"
-msgstr "_Duplicar"
+msgstr "Másolat"
 
 #: tryton/gui/window/form.py:60
 msgid "_Previous"
-msgstr "_Anterior"
+msgstr "_Előző"
 
 #: tryton/gui/window/form.py:62
 msgid "_Next"
-msgstr "Sig_uiente"
+msgstr "_Következő"
 
 #: tryton/gui/window/form.py:63
 msgid "_Search"
-msgstr "_Buscar"
+msgstr "_Keresés"
 
 #: tryton/gui/window/form.py:64
 msgid "View _Logs..."
-msgstr "Ver _Registro..."
+msgstr "Napló megtekintése…"
 
 #: tryton/gui/window/form.py:65
 msgid "Show revisions..."
-msgstr "Mostrar versiones..."
+msgstr "Feldolgozások megtekintése"
 
 #: tryton/gui/window/form.py:70
 msgid "A_ttachments..."
-msgstr "Adjun_tos..."
+msgstr "Csatolmány"
 
 #: tryton/gui/window/form.py:72
 msgid "_Actions..."
-msgstr "_Acciones..."
+msgstr "_Műveletek"
 
 #: tryton/gui/window/form.py:74
 msgid "_Relate..."
-msgstr "_Relacionado..."
+msgstr "Kapcsolat megnyitása"
 
 #: tryton/gui/window/form.py:77
 msgid "_Report..."
-msgstr "_Informes..."
+msgstr "Jelentés megnyitása..."
 
 #: tryton/gui/window/form.py:79
 msgid "_E-Mail..."
-msgstr "_Correo electrónico..."
+msgstr "Jelentés per e-mail"
 
 #: tryton/gui/window/form.py:81
 msgid "_Print..."
-msgstr "Im_primir..."
+msgstr "_Nyomtatás…"
 
 #: tryton/gui/window/form.py:84
 msgid "_Export Data..."
-msgstr "_Exportar datos..."
+msgstr "Adat exportálása"
 
 #: tryton/gui/window/form.py:86
 msgid "_Import Data..."
-msgstr "_Importar datos..."
+msgstr "Adat importálása"
 
 #: tryton/gui/window/form.py:209
 #, python-format
 msgid "Attachment(%d)"
-msgstr "Adjunto(%d)"
+msgstr "Melléklet(%d)"
 
 #: tryton/gui/window/form.py:228
 msgid "You have to select one record."
-msgstr "¡Debe seleccionar un registro!"
+msgstr ""
 
 #: tryton/gui/window/form.py:232
 msgid "ID:"
@@ -1166,297 +1157,297 @@ msgstr "ID:"
 
 #: tryton/gui/window/form.py:233
 msgid "Creation User:"
-msgstr "Creado por usuario:"
+msgstr "Által létrehozva"
 
 #: tryton/gui/window/form.py:234
 msgid "Creation Date:"
-msgstr "Fecha de creación:"
+msgstr "Létrehozás dátuma"
 
 #: tryton/gui/window/form.py:235
 msgid "Latest Modification by:"
-msgstr "Última modificación por:"
+msgstr "Utolsó módosítás"
 
 #: tryton/gui/window/form.py:236
 msgid "Latest Modification Date:"
-msgstr "Fecha de última modificación:"
+msgstr "Módosítás dátuma "
 
 #: tryton/gui/window/form.py:255
 msgid "Model:"
-msgstr "Modelo:"
+msgstr "Típus:"
 
 #: tryton/gui/window/form.py:307
 msgid "Are you sure to remove this record?"
-msgstr "¿Está seguro que quiere eliminar este registro?"
+msgstr "Biztos törölni szeretné?"
 
 #: tryton/gui/window/form.py:309
 msgid "Are you sure to remove those records?"
-msgstr "¿Está seguro que quiere eliminar estos registros?"
+msgstr "Biztos törölni  szeretné?"
 
 #: tryton/gui/window/form.py:312
 msgid "Records not removed."
-msgstr "Los registros no se han eliminado."
+msgstr ""
 
 #: tryton/gui/window/form.py:314
 msgid "Records removed."
-msgstr "Registros eliminados."
+msgstr ""
 
 #: tryton/gui/window/form.py:342
 msgid "Working now on the duplicated record(s)."
-msgstr "Ahora está trabajando en registro(s) duplicado(s)."
+msgstr ""
 
 #: tryton/gui/window/form.py:352
 msgid "Record saved."
-msgstr "Registro guardado."
+msgstr ""
 
 #: tryton/gui/window/form.py:454
 msgid " of "
-msgstr " de "
+msgstr "-tól"
 
 #: tryton/gui/window/form.py:475
 msgid ""
 "This record has been modified\n"
 "do you want to save it ?"
 msgstr ""
-"Este registro ha sido modificado.\n"
-"¿Desea guardarlo?"
+"Adat módosítva\n"
+"Szeretne menteni?"
 
 #: tryton/gui/window/form.py:528
 msgid "Action"
-msgstr "Acción"
+msgstr "Művelet"
 
 #: tryton/gui/window/form.py:528
 msgid "Launch action"
-msgstr "Lanzar acción"
+msgstr "Művelet indítása"
 
 #: tryton/gui/window/form.py:529
 msgid "Relate"
-msgstr "Relacionado"
+msgstr "Kapcsolat"
 
 #: tryton/gui/window/form.py:529
 msgid "Open related records"
-msgstr "Abrir registros relacionados"
+msgstr "Kapcsolat adatainak megnyitása"
 
 #: tryton/gui/window/form.py:531
 msgid "Report"
-msgstr "Informes"
+msgstr "Jelentés"
 
 #: tryton/gui/window/form.py:531
 msgid "Open report"
-msgstr "Abrir informe"
+msgstr "Jelentés megnyitása"
 
 #: tryton/gui/window/form.py:532
 msgid "E-Mail"
-msgstr "Email"
+msgstr "E-mail"
 
 #: tryton/gui/window/form.py:532
 msgid "E-Mail report"
-msgstr "Informe por email"
+msgstr "Jelentést e-mailon küldeni"
 
 #: tryton/gui/window/form.py:533
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Nyomtatás"
 
 #: tryton/gui/window/form.py:533
 msgid "Print report"
-msgstr "Imprimir informe"
+msgstr "Jelentés nyomtatása"
 
 #: tryton/gui/window/form.py:599
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:860
 msgid "Unknown"
-msgstr "Desconocido"
+msgstr "Ismeretlen"
 
 #: tryton/gui/window/limit.py:17
 msgid "Limit"
-msgstr "Límite"
+msgstr "Korlátozás"
 
 #: tryton/gui/window/limit.py:26
 msgid "Search Limit Settings"
-msgstr "Preferencias del límite de búsqueda"
+msgstr "Keresési beállítások"
 
 #: tryton/gui/window/limit.py:29
 msgid "Limit:"
-msgstr "Límite:"
+msgstr "Korlát:"
 
 #: tryton/gui/window/preference.py:23
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "Beállítások"
 
 #: tryton/gui/window/preference.py:49
 msgid "Edit User Preferences"
-msgstr "Editar preferencias de usuario"
+msgstr "Felhasználói beállítások szerkesztése"
 
 #: tryton/gui/window/preference.py:75
 msgid "Preference"
-msgstr "Preferencias"
+msgstr "Beállítások"
 
 #: tryton/gui/window/preference.py:88
 msgid "Current Password:"
-msgstr "Contraseña actual:"
+msgstr "Jelenlegi jelszó:"
 
 #: tryton/gui/window/revision.py:19
 msgid "Revision"
-msgstr "Versión"
+msgstr "Szerkesztés"
 
 #: tryton/gui/window/revision.py:28
 msgid "Select a revision"
-msgstr "Seleccione una versión"
+msgstr "Szerkesztés kiválasztása"
 
 #: tryton/gui/window/revision.py:31
 msgid "Revision:"
-msgstr "Versión:"
+msgstr "Szerkesztés:"
 
 #: tryton/gui/window/shortcuts.py:17
 msgid "Keyboard Shortcuts"
-msgstr "Atajos de teclado"
+msgstr "Gyorsbillentyűk"
 
 #: tryton/gui/window/shortcuts.py:28
 msgid "Text Entries Shortcuts"
-msgstr "Atajos en campos de texto"
+msgstr "Gyorsbillentyű szövegbeíráshoz"
 
 #: tryton/gui/window/shortcuts.py:29
 msgid "Cut selected text"
-msgstr "Cortar texto seleccionado"
+msgstr "Kijelölt szöveg kiválasztása"
 
 #: tryton/gui/window/shortcuts.py:30
 msgid "Copy selected text"
-msgstr "Copiar texto seleccionado"
+msgstr "_Kijelölt szöveg másolása"
 
 #: tryton/gui/window/shortcuts.py:31
 msgid "Paste copied text"
-msgstr "Pegar texto seleccionado"
+msgstr "Kijelölt szöveg beillesztése"
 
 #: tryton/gui/window/shortcuts.py:32
 msgid "Next widget"
-msgstr "Campo siguiente"
+msgstr "Következő Widget"
 
 #: tryton/gui/window/shortcuts.py:33
 msgid "Previous widget"
-msgstr "Campo anterior"
+msgstr "Előző Widget"
 
 #: tryton/gui/window/shortcuts.py:34
 msgid "Relation Entries Shortcuts"
-msgstr "Atajos en campos de relación"
+msgstr "Gyorsbillentyű az összekötő mezők beírásához"
 
 #: tryton/gui/window/shortcuts.py:35
 msgid "Create new relation"
-msgstr "Crear nueva relación"
+msgstr "Új kapcsolat létrehozása"
 
 #: tryton/gui/window/shortcuts.py:36
 msgid "Open/Search relation"
-msgstr "Abrir/Buscar relación"
+msgstr "Kapcsolatok keresése/megnyitása"
 
 #: tryton/gui/window/shortcuts.py:37
 msgid "List Entries Shortcuts"
-msgstr "Atajos en listas"
+msgstr "Gyorsbillentyűk lista mezők beírásához"
 
 #: tryton/gui/window/shortcuts.py:38
 msgid "Create new line"
-msgstr "Crear nueva línea"
+msgstr "Új sor létrehozása"
 
 #: tryton/gui/window/shortcuts.py:39
 msgid "Open relation"
-msgstr "Abrir relación"
+msgstr "Kapcsolat megnyitása"
 
 #: tryton/gui/window/shortcuts.py:40
 msgid "Mark line for deletion"
-msgstr "Marcar línea para eliminación"
+msgstr "Kijelölés törlésre"
 
 #: tryton/gui/window/shortcuts.py:41
 msgid "Unmark line for deletion"
-msgstr "Desmarcar línea para eliminación"
+msgstr "A törlési kijelölés visszavonása"
 
 #: tryton/gui/window/shortcuts.py:44
 msgid "Edition Widgets"
-msgstr "Widgets de edición"
+msgstr "Widget szerkesztéshez"
 
 #: tryton/gui/window/shortcuts.py:47
 msgid "Move Cursor"
-msgstr "Mover cursor"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:48
 msgid "Move to right"
-msgstr "Mover a la derecha"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:49
 msgid "Move to left"
-msgstr "Mover a la izquierda"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:50
 msgid "Move up"
-msgstr "Mover hacia arriba"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:51
 msgid "Move down"
-msgstr "Mover hacia abajo"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:52
 msgid "Move up of one page"
-msgstr "Mover una página hacia arriba"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:53
 msgid "Move down of one page"
-msgstr "Mover una página hacia abajo"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:54
 msgid "Move to top"
-msgstr "Mover al principio"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:55
 msgid "Move to bottom"
-msgstr "Mover al final"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:56
 msgid "Move to parent"
-msgstr "Mover al padre"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:58 tryton/gui/window/shortcuts.py:59
 msgid "Select all"
-msgstr "Seleccionar todo"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:60 tryton/gui/window/shortcuts.py:61
 msgid "Unselect all"
-msgstr "Deseleccionar todo"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:62
 msgid "Select parent"
-msgstr "Seleccionar padre"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:63 tryton/gui/window/shortcuts.py:64
 #: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
 msgid "Select/Activate current row"
-msgstr "Seleccionar/Activar fila actual"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:67
 msgid "Toggle selection"
-msgstr "Conmutar selección"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:68
 msgid "Expand/Collapse"
-msgstr "Expandir/Contraer"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:69
 msgid "Expand row"
-msgstr "Expandir fila"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:70
 msgid "Collapse row"
-msgstr "Contraer fila"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:71
 msgid "Toggle row"
-msgstr "Conmutar fila"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:72
 msgid "Expand all rows"
-msgstr "Expandir todas las filas"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:73
 msgid "Collapse all rows"
-msgstr "Contraer todas las filas"
+msgstr ""
 
 #: tryton/gui/window/shortcuts.py:76
 msgid "Tree view"
-msgstr "Vista de árbol"
+msgstr ""
 
 #: tryton/gui/window/tips.py:17
 msgid ""
@@ -1464,7 +1455,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"<b>Bienvenido a Tryton</b>\n"
+"<b>Üdvözöli Önz a Tryton</b>\n"
 "\n"
 "\n"
 
@@ -1482,17 +1473,16 @@ msgid ""
 "other known moons. It is also more massive than all the Solar System's\n"
 "159 known smaller moons combined.\n"
 msgstr ""
-"<b>¿Conoce Triton? uno de los apelativos de nuestro proyecto</b>\n"
+"<b>Ismeri a Tritont, névrokon a projektünkhöz</b>\n"
 "\n"
-"Triton (pronunciado /ˈtraɪtən/ TRYE-tən, o en griego Τρίτων) es la\n"
-"luna más grande del planeta Neptuno, descubierta el 10 de Octubre de\n"
-"1846 por William Lassell. Es la única luna grande del Sistema Solar\n"
-"con una órbita retrógrada, esto es, que orbita en dirección opuesta\n"
-"a la rotación del planeta.  Con 2.700 km de diámetro. es la séptima luna\n"
-"en tamaño del Sistema Solar. Triton cuenta con más del 99.5 porciento\n"
-"de toda la masa que orbita a Neptuno, incluyendo los anillos del planeta y\n"
-"veinte lunas conocidas.  Tiene más masa que todas las otras 159 lunas\n"
-"más pequeñas del Sistema Solar combinadas.\n"
+"Triton (ejtsd /ˈtraɪtən/ TRYE-tən, vagy görögül Τρίτων)\n"
+"a Neptunusz legnagyobb holdja, felfedezve 1846 okt.10-én\n"
+"William Lassell által.Ez az egyetlen nagy hold a szolárrendszerbe \n"
+"csökkenő keringési pályával, amely ellenkező irányba kering\n"
+"a bolygó forgásával. 2700 km átmérővel a szolárrendszer hetedik legnagyobb\n"
+"bolygója.A triton a Neptunusz körpályának az ismert össztömegének a 99,5%-át teszi ki\n"
+"a planetáris gyűrűk és 12 másik Holdat befoglalva. \n"
+"És gazdagabb tömegben, mint a naprendszer összesen ismert 159 Holdja.\n"
 
 #: tryton/gui/window/tips.py:33
 msgid ""
@@ -1501,10 +1491,10 @@ msgid ""
 "You can copy records from any list with Ctrl + C\n"
 "and paste in any application with Ctrl + V\n"
 msgstr ""
-"<b>Exportar lista de registros</b>\n"
+"<b>adatok exportálása listából</b>\n"
 "\n"
-"Puede copiar los registros de cualquier lista con Ctrl + C\n"
-"y pegarlas en cualquier aplicación con Ctrl + V\n"
+"Ctrl + C-vel lehet adatot listából másolni \n"
+"és a Ctrl + V-vel egy tetszőleges helyre beilleszteni.\n"
 
 #: tryton/gui/window/tips.py:38
 msgid ""
@@ -1512,86 +1502,86 @@ msgid ""
 "\n"
 "You can save any graphs in PNG file with right-click on it.\n"
 msgstr ""
-"<b>Exportar gráficos</b>\n"
+"<b>grafika exportálása</b>\n"
 "\n"
-"Puede guardar los gráficos como imagen PNG haciendo clic con el botón derecho sobre el mismo.\n"
+"Grafikát lehet jobb egérgombbal PNG-adatként menteni.\n"
 
 #: tryton/gui/window/tips.py:45
 msgid "Tips"
-msgstr "Consejos"
+msgstr "Tippek"
 
 #: tryton/gui/window/tips.py:65
 msgid "_Display a new tip next time"
-msgstr "_Mostrar un nuevo consejo la próxima vez"
+msgstr "Tippek mutatása Tryton indításakor"
 
 #: tryton/gui/window/win_export.py:25
 msgid "Export to CSV"
-msgstr "Exportar a CSV"
+msgstr "CSV ként exportálni"
 
 #: tryton/gui/window/win_export.py:40
 msgid "<b>Predefined exports</b>"
-msgstr "<b>Exportaciones predefinidas</b>"
+msgstr "<b>Előre megadott export</b>"
 
 #: tryton/gui/window/win_export.py:52 tryton/gui/window/win_import.py:38
 msgid "<b>All fields</b>"
-msgstr "<b>Todos los campos</b>"
+msgstr "<b>összes mező</b>"
 
 #: tryton/gui/window/win_export.py:83 tryton/gui/window/win_import.py:64
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:63
 msgid "Clear"
-msgstr "Limpiar"
+msgstr "Törlés"
 
 #: tryton/gui/window/win_export.py:95
 msgid "Save Export"
-msgstr "Guardar exportación"
+msgstr "Export mentése"
 
 #: tryton/gui/window/win_export.py:104
 msgid "Delete Export"
-msgstr "Eliminar exportación"
+msgstr "Export törlése"
 
 #: tryton/gui/window/win_export.py:115
 msgid "<b>Fields to export</b>"
-msgstr "<b>Campos a exportar</b>"
+msgstr "<b>exportálandó mezők</b>"
 
 #: tryton/gui/window/win_export.py:132
 msgid "<b>Options</b>"
-msgstr "<b>Opciones</b>"
+msgstr "<b>opciók</b>"
 
 #: tryton/gui/window/win_export.py:142
 msgid "Open"
-msgstr "Abrir"
+msgstr "Megnyitás"
 
 #: tryton/gui/window/win_export.py:147
 msgid "Add _field names"
-msgstr "Añadir nombres de _campo"
+msgstr "Mezőnév hozzáadása"
 
 #: tryton/gui/window/win_export.py:215
 msgid "Name"
-msgstr "Nombre"
+msgstr "Név"
 
 #: tryton/gui/window/win_export.py:247
 #, python-format
 msgid "%s (string)"
-msgstr "%s (cadena)"
+msgstr "%s (string)"
 
 #: tryton/gui/window/win_export.py:345
 msgid "What is the name of this export?"
-msgstr "¿Cuál es el nombre de esta exportación?"
+msgstr "Mi legyen az export neve?"
 
 #: tryton/gui/window/win_export.py:351
 #, python-format
 msgid "Override '%s' definition?"
-msgstr "¿Sobreescribir la definición de '%s'?"
+msgstr "'%s' definiálásának figyelembe vétele?"
 
 #: tryton/gui/window/win_export.py:481
 #, python-format
 msgid "%d record saved!"
-msgstr "¡%d registro guardado!"
+msgstr "%d adat mentve"
 
 #: tryton/gui/window/win_export.py:483
 #, python-format
 msgid "%d records saved!"
-msgstr "¡%d registros guardados!"
+msgstr "%d adatok mentve!"
 
 #: tryton/gui/window/win_export.py:486
 #, python-format
@@ -1600,109 +1590,109 @@ msgid ""
 "Error message:\n"
 "%s"
 msgstr ""
-"¡Ha fallado la operación!\n"
-"Mensaje de error:\n"
+"Sikertelen művelet!\n"
+"Error message:\n"
 "%s"
 
 #: tryton/gui/window/win_form.py:36
 msgid "Link"
-msgstr "Enlace"
+msgstr "Hivatkozás"
 
 #: tryton/gui/window/win_form.py:127
 msgid "Add"
-msgstr "Añadir"
+msgstr "Hozzáad"
 
 #: tryton/gui/window/win_form.py:140
 msgid "Remove <Del>"
-msgstr "Eliminar <Supr>"
+msgstr "Mező eltávolítása<Entf>"
 
 #: tryton/gui/window/win_form.py:155
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:94
 msgid "Create a new record <F3>"
-msgstr "Crear un nuevo registro <F3>"
+msgstr "Új adat létrehozása.<F3>"
 
 #: tryton/gui/window/win_form.py:167
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:114
 msgid "Delete selected record <Del>"
-msgstr "Eliminar registro seleccionado <Supr>"
+msgstr "Kiválasztott adatok törlése<Entf>"
 
 #: tryton/gui/window/win_form.py:181
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:124
 msgid "Undelete selected record <Ins>"
-msgstr "Recuperar registro seleccionado <Ins>"
+msgstr "Törlés visszavonása<Einfg>"
 
 #: tryton/gui/window/win_import.py:20
 msgid "Import from CSV"
-msgstr "Importar desde CSV"
+msgstr "CSV-ből adatok importálása"
 
 #: tryton/gui/window/win_import.py:76
 msgid "Auto-Detect"
-msgstr "Auto-Detectar"
+msgstr "Automatikus felismerés"
 
 #: tryton/gui/window/win_import.py:93
 msgid "<b>Fields to import</b>"
-msgstr "<b>Campos a importar</b>"
+msgstr "<b>mezők importálása</b>"
 
 #: tryton/gui/window/win_import.py:109
 msgid "File to Import:"
-msgstr "Archivo a importar:"
+msgstr "Importadatok:"
 
 #: tryton/gui/window/win_import.py:111
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:42
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:459
 msgid "Open..."
-msgstr "Abrir..."
+msgstr "Megnyitás..."
 
 #: tryton/gui/window/win_import.py:117
 msgid "CSV Parameters"
-msgstr "Parámetros CSV"
+msgstr "CSV Paraméter"
 
 #: tryton/gui/window/win_import.py:125
 msgid "Field Separator:"
-msgstr "Separador de Campo:"
+msgstr "Mezőelválasztó"
 
 #: tryton/gui/window/win_import.py:135
 msgid "Text Delimiter:"
-msgstr "Delimitador de texto:"
+msgstr "Szövegelválasztó"
 
 #: tryton/gui/window/win_import.py:144
 msgid "Encoding:"
-msgstr "Codificación:"
+msgstr "Kódolás:"
 
 #: tryton/gui/window/win_import.py:154
 msgid "Lines to Skip:"
-msgstr "Líneas a omitir:"
+msgstr "Átugrandó sorok:"
 
 #: tryton/gui/window/win_import.py:188 tryton/gui/window/win_import.py:192
 msgid "Field name"
-msgstr "Nombre del campo"
+msgstr "Mezőnév"
 
 #: tryton/gui/window/win_import.py:254
 msgid "You must select an import file first!"
-msgstr "¡Primero debe seleccionar un archivo a importar!"
+msgstr "Először ki kell jelölni legalább egy fájlt."
 
 #: tryton/gui/window/win_import.py:265
 msgid "Error opening CSV file"
-msgstr "Error al abrir el archivo CSV"
+msgstr "Hiba a CSV fájl megnyitásakor"
 
 #: tryton/gui/window/win_import.py:292
 #, python-format
 msgid "Error processing the file at field %s."
-msgstr "Se ha producido un error al procesar el archivo en el campo %s."
+msgstr "Hiba az adat feldolgozásnál a %s mezőben."
 
 #: tryton/gui/window/win_import.py:367
 #, python-format
 msgid "%d record imported!"
-msgstr "¡%d registro importado!"
+msgstr "%d adat importálva..."
 
 #: tryton/gui/window/win_import.py:369
 #, python-format
 msgid "%d records imported!"
-msgstr "¡%d registros importados!"
+msgstr "%d adat importálva..."
 
 #: tryton/gui/window/wizard.py:287
 msgid "Wizard"
-msgstr "Asistente"
+msgstr "Wizard"
 
 #: tryton/gui/window/view_form/screen/screen.py:147
 msgid "ID"
@@ -1710,46 +1700,46 @@ msgstr "ID"
 
 #: tryton/gui/window/view_form/screen/screen.py:148
 msgid "Creation User"
-msgstr "Creado por usuario"
+msgstr "Által létrehozva"
 
 #: tryton/gui/window/view_form/screen/screen.py:149
 msgid "Creation Date"
-msgstr "Fecha de creación"
+msgstr "Létrehozás dátuma"
 
 #: tryton/gui/window/view_form/screen/screen.py:150
 msgid "Modification User"
-msgstr "Modificado por usuario"
+msgstr "Által módosítva"
 
 #: tryton/gui/window/view_form/screen/screen.py:151
 msgid "Modification Date"
-msgstr "Fecha de modificación"
+msgstr "Módosítás dátuma"
 
 #: tryton/gui/window/view_form/screen/screen.py:651
 msgid "Unable to get view tree state"
-msgstr "No se puede obtener el estado de la vista de árbol"
+msgstr "A menü nem látható"
 
 #: tryton/gui/window/view_form/screen/screen.py:710
 msgid "Unable to set view tree state"
-msgstr "No se puede establecer el estado de la vista de árbol"
+msgstr "A menü láthatósága nem állítható be"
 
 #: tryton/gui/window/view_form/screen/screen.py:886
 #, python-format
 msgid "\"%s\" is not valid according to its domain"
-msgstr "\"%s\" no es válido de acuerdo a su dominio"
+msgstr ""
 
 #: tryton/gui/window/view_form/screen/screen.py:893
 #, python-format
 msgid "\"%s\" is required"
-msgstr "Se requiere \"%s\""
+msgstr ""
 
 #: tryton/gui/window/view_form/screen/screen.py:897
 #, python-format
 msgid "The values of \"%s\" are not valid"
-msgstr "Los valores de \"%s\" no son válidos"
+msgstr ""
 
 #: tryton/gui/window/view_form/screen/screen.py:948
 msgid "Pre-validation"
-msgstr "Prevalidación"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form.py:189
 #: tryton/gui/window/view_form/view/form.py:191
@@ -1764,27 +1754,27 @@ msgstr ":"
 
 #: tryton/gui/window/view_form/view/graph.py:99
 msgid "Save As"
-msgstr "Guardar como"
+msgstr "Mentés másként"
 
 #: tryton/gui/window/view_form/view/graph.py:110
 msgid "Image Size"
-msgstr "Tamaño de la imagen"
+msgstr "Kép mérete"
 
 #: tryton/gui/window/view_form/view/graph.py:119
 msgid "Width:"
-msgstr "Anchura:"
+msgstr "Szélesség:"
 
 #: tryton/gui/window/view_form/view/graph.py:126
 msgid "Height:"
-msgstr "Altura:"
+msgstr "Magasság:"
 
 #: tryton/gui/window/view_form/view/graph.py:137
 msgid "PNG image (*.png)"
-msgstr "Imagen PNG (*.png)"
+msgstr "PNG Kép (*.png)"
 
 #: tryton/gui/window/view_form/view/graph.py:159
 msgid "Image size too large!"
-msgstr "¡El tamaño de la imagen es muy grande.!"
+msgstr "Kép túl nagy!"
 
 #: tryton/gui/window/view_form/view/screen_container.py:24
 msgid ".."
@@ -1792,132 +1782,132 @@ msgstr ".."
 
 #: tryton/gui/window/view_form/view/screen_container.py:144
 msgid "F_ilters"
-msgstr "F_iltros"
+msgstr "Szűrő"
 
 #: tryton/gui/window/view_form/view/screen_container.py:198
 msgid "Show bookmarks of filters"
-msgstr "Muestra las búsquedas favoritas"
+msgstr "Szűrő könyvjelzők megjelenítése"
 
 #: tryton/gui/window/view_form/view/screen_container.py:359
 msgid "Remove this bookmark"
-msgstr "Eliminar de las búsquedas favoritas"
+msgstr "Könyvjelző eltávolítása"
 
 #: tryton/gui/window/view_form/view/screen_container.py:366
 msgid "Bookmark this filter"
-msgstr "Guardar como búsqueda favorita"
+msgstr "A szűrőt könyvjelzőként hozzáadni"
 
 #: tryton/gui/window/view_form/view/screen_container.py:431
 msgid "Bookmark Name:"
-msgstr "Nombre de la búsqueda favorita:"
+msgstr "Könyvjelző neve:"
 
 #: tryton/gui/window/view_form/view/screen_container.py:538
 msgid "Find"
-msgstr "Buscar"
+msgstr "Keresés"
 
 #: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:20
 msgid "Today"
-msgstr "Hoy"
+msgstr "Ma"
 
 #: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:87
 msgid "Week View"
-msgstr "Vista semanal"
+msgstr "Heti nézet"
 
 #: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:94
 msgid "Month View"
-msgstr "Vista mensual"
+msgstr "Havi nézet"
 
 #: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:115
 msgid "Week"
-msgstr "Semana"
+msgstr "Hét"
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:32
 msgid "Select..."
-msgstr "Seleccionar…"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:76
 msgid "All files"
-msgstr "Todos los archivos"
+msgstr "Összes fájl"
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:89
 msgid "Select"
-msgstr "Seleccionar"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form_gtk/char.py:158
 msgid "Show plain text"
-msgstr "Mostrar como texto plano"
+msgstr "Magyarázat mutatása"
 
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:356
 msgid "Add value"
-msgstr "Añadir un valor"
+msgstr "Érték hozzáadása"
 
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:480
 #, python-format
 msgid "Remove \"%s\""
-msgstr "Eliminar \"%s\""
+msgstr "„%s” eltávolítása"
 
 #: tryton/gui/window/view_form/view/form_gtk/image.py:49
 msgid "Images"
-msgstr "Imágenes"
+msgstr "Képek"
 
 #: tryton/gui/window/view_form/view/form_gtk/many2many.py:64
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:69
 msgid "Add existing record"
-msgstr "Añadir un registro existente"
+msgstr "Meglévő adat hozzáadása"
 
 #: tryton/gui/window/view_form/view/form_gtk/many2many.py:75
 msgid "Remove selected record <Del>"
-msgstr "Eliminar registro seleccionado <Supr>"
+msgstr "Kijelölt adat törlése<Entf>"
 
 #: tryton/gui/window/view_form/view/form_gtk/many2one.py:293
 msgid "Open a record <F2>"
-msgstr "Abrir registro <F2>"
+msgstr "Adat megnyitása<F2>"
 
 #: tryton/gui/window/view_form/view/form_gtk/many2one.py:295
 msgid "Search a record <F2>"
-msgstr "Buscar registro <F2>"
+msgstr "Adat keresése<F2>"
 
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:81
 msgid "Remove selected record"
-msgstr "Eliminar registro seleccionado"
+msgstr "A kiválasztott adat eltávolítása<Entf>"
 
 #: tryton/gui/window/view_form/view/form_gtk/one2many.py:104
 msgid "Edit selected record <F2>"
-msgstr "Editar registro seleccionado <F2>"
+msgstr "A kiválasztott adat átdolgozása<F2>"
 
 #: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:836
 #, python-format
 msgid "%s%%"
-msgstr "%s%%"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:86
 msgid "Foreground"
-msgstr "Color de texto"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:272
 msgid "Select a color"
-msgstr "Seleccionar un color"
+msgstr ""
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:113
 msgid "Translation"
-msgstr "Traducción"
+msgstr "Fordítás"
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:173
 msgid "Edit"
-msgstr "Editar"
+msgstr "Szerkesztés"
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:178
 msgid "Fuzzy"
-msgstr "Confuso"
+msgstr "Életlen"
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:247
 msgid "You need to save the record before adding translations!"
-msgstr "¡Debe guardar el registro antes de añadir traducciones!"
+msgstr "Az adatot menteni kell, mielőtt egy fordítást hozzá lehet adni!"
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:258
 msgid "No other language available!"
-msgstr "¡No hay otro idioma disponible!"
+msgstr "Más nyelv nem használható!"
 
 #: tryton/plugins/translation/__init__.py:22
 msgid "Translate view"
-msgstr "Traducir vista"
+msgstr "Nézet elfordítása"
