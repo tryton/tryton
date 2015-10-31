@@ -262,6 +262,10 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Inici del full de treball"
 
+msgctxt "field:timesheet.work,total_duration:"
+msgid "Total Timesheet Duration"
+msgstr "Temps total del full de treball"
+
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
@@ -289,6 +293,10 @@ msgstr "Temps total dedicat en aquest treball."
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
 msgstr "Permet completar fulls de treball amb aquest treball."
+
+msgctxt "help:timesheet.work,total_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr "Temps total dedicat en aquest treball i els seus subtreballs."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
