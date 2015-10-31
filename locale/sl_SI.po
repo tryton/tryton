@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "Datoteka"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr "Ime datoteke"
+
+msgctxt "field:account.fr.fec.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fr.fec.start,deferral_journal:"
+msgid "Deferral Journal"
+msgstr "Dnevnik odlogov"
+
+msgctxt "field:account.fr.fec.start,deferral_post_number:"
+msgid "Deferral Number"
+msgstr "Številka odloga"
+
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Poslovno leto"
+
+msgctxt "field:account.fr.fec.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "help:account.fr.fec.start,deferral_journal:"
+msgid "Journal used for pseudo deferral move"
+msgstr "Dnevnik za psevdo knjiženje odlogov"
+
+msgctxt "help:account.fr.fec.start,deferral_post_number:"
+msgid "Post number used for pseudo deferral move"
+msgstr "Številka knjižbe za psevdo knjiženje odlogov"
+
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr "IS-BIC"
+
+msgctxt "view:account.fr.fec.result:"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "view:account.fr.fec.start:"
+msgid "Generate FEC"
+msgstr "Izdelava FEC"
+
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "Zapri"
+
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr "Izdelaj"
