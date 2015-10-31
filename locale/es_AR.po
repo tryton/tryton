@@ -14,11 +14,13 @@ msgstr ""
 msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" is missing the customer location in line \"%(line)s\"."
 msgstr ""
-"Falta la ubicación del cliente en la línea «%(line)s» de la venta «%(sale)»."
+"Falta la ubicación del cliente en la línea «%(line)s» de la venta "
+"«%(sale)s»."
 
 msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" misses an \"account revenue\" default property."
-msgstr "Falta la propiedad «Cuenta a cobrar» por defecto de las ventas."
+msgstr ""
+"Falta la propiedad «Cuenta a cobrar» por defecto de la venta «%(sale)s»."
 
 msgctxt "error:sale.sale:"
 msgid "Invalid combination of shipment and invoicing methods on sale \"%s\"."
@@ -450,6 +452,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Método de envío"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Entidad de envío"
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Remitos de devolución"
@@ -760,14 +766,6 @@ msgid "Draft Sale Order"
 msgstr "Ordenes de venta en borrador"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Cantidad"
 
@@ -798,10 +796,6 @@ msgstr "Total:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Precio unitario"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "CUIT:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1032,10 +1026,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gestionar excepción de remito"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Facturas"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Información adicional"
 
@@ -1054,10 +1044,6 @@ msgstr "Venta"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Ventas"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Remitos"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

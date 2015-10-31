@@ -16,7 +16,7 @@ msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" is missing the customer location in line \"%(line)s\"."
 msgstr ""
 "No es troba la localització del client a la línia \"%(line)s\" de la venda "
-"\"%(sale)\"."
+"\"%(sale)s\"."
 
 msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" misses an \"account revenue\" default property."
@@ -35,7 +35,7 @@ msgid ""
 "Invoice and Shipment addresses must be defined for the quotation of sale "
 "\"%s\"."
 msgstr ""
-"L'adreça d'enviament i facturació s'han de definir per al pressupost de la "
+"L'adreça d'enviament i facturació s'han de definir pel pressupost de la "
 "venda \"%s\"."
 
 msgctxt "error:sale.sale:"
@@ -72,7 +72,7 @@ msgstr "Termini de lliurament"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
-msgstr "Pot ser venut"
+msgstr "Vendible"
 
 msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
@@ -448,11 +448,15 @@ msgstr "Data de venda"
 
 msgctxt "field:sale.sale,shipment_address:"
 msgid "Shipment Address"
-msgstr "Adreça enviament"
+msgstr "Adreça d'enviament"
 
 msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Mètode d'enviament"
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Tercer de l'enviament"
 
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
@@ -598,7 +602,7 @@ msgstr "Tercers amb vendes"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Devolució"
+msgstr "Albarans de devolució"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
@@ -642,7 +646,7 @@ msgstr "Gestiona excepció d'enviament"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
 msgid "All"
-msgstr "Totes"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
@@ -764,14 +768,6 @@ msgid "Draft Sale Order"
 msgstr "Comanda de venda esborrany"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "Correu electrònic:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Telèfon:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Quantitat"
 
@@ -802,10 +798,6 @@ msgstr "Total:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Preu unitari"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1036,10 +1028,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gestiona excepció d'enviament"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Factures"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Informació addicional"
 
@@ -1059,10 +1047,6 @@ msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Vendes"
 
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Albarans"
-
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Moviments"
@@ -1073,7 +1057,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
 msgid "Cancel"
@@ -1081,7 +1065,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:sale.return_sale,start,end:"
 msgid "Cancel"

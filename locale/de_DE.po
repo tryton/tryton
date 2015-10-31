@@ -42,7 +42,7 @@ msgstr ""
 
 msgctxt "error:sale.sale:"
 msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr "Fehlendes Forderungskonto für Partei \"%s\""
+msgstr "Fehlendes Forderungskonto für Partei \"%s\"."
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
@@ -204,11 +204,11 @@ msgstr "Notiz"
 
 msgctxt "field:sale.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Artikel Maßeinheit Kategorie"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
@@ -462,6 +462,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Liefermethode"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Lieferpartei"
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Lieferposten Rücknahmen"
@@ -603,7 +607,7 @@ msgstr "Rechnungsausgang"
 
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
-msgstr "Parteien: Verkäufen zugeordnet"
+msgstr "Parteien mit Verkäufen"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -686,7 +690,7 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Parties associated to Sales"
-msgstr "Parteien: Verkäufen zugeordnet"
+msgstr "Parteien mit Verkäufen"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
@@ -773,14 +777,6 @@ msgid "Draft Sale Order"
 msgstr "Auftrag (Entwurf)"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Anzahl"
 
@@ -813,10 +809,6 @@ msgid "Unit Price"
 msgstr "Einzelpreis"
 
 msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "USt-ID-Nr.:"
-
-msgctxt "odt:sale.sale:"
 msgid "VAT:"
 msgstr "USt-ID-Nr:"
 
@@ -838,7 +830,7 @@ msgstr "Manuell"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Order Processed"
-msgstr "Nach Auftragsausführung"
+msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Shipment Sent"
@@ -854,7 +846,7 @@ msgstr "Bei Bezahlung"
 
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
-msgstr "Nach Auftragsausführung"
+msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
@@ -878,7 +870,7 @@ msgstr "Manuell"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Order Processed"
-msgstr "Nach Auftragsausführung"
+msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Shipment Sent"
@@ -910,7 +902,7 @@ msgstr "Bei Bezahlung"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "On Order Processed"
-msgstr "Nach Auftragsausführung"
+msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Exception"
@@ -970,7 +962,7 @@ msgstr "Verkauf"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Artikel"
+msgstr "Varianten"
 
 msgctxt "view:product.template:"
 msgid "Customers"
@@ -1046,10 +1038,6 @@ msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Rechnungen"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Sonstiges"
 
@@ -1068,10 +1056,6 @@ msgstr "Verkauf"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Verkäufe"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Lieferposten"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

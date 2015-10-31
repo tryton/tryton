@@ -446,6 +446,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Начин на изпращане"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr ""
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Върнати доставки"
@@ -764,14 +768,6 @@ msgid "Draft Sale Order"
 msgstr "Проект на поръчка за продажба"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Телефон:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Количество"
 
@@ -802,10 +798,6 @@ msgstr "Общо:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Единична цена"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "ДДС номер:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1004,6 +996,10 @@ msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Редове от продажба"
 
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr ""
+
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr ""
@@ -1034,10 +1030,6 @@ msgid "Handle Shipment Exception"
 msgstr "Обработване на грешка при изпращане"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Фактури"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Друга информация"
 
@@ -1056,10 +1048,6 @@ msgstr "Продажба"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Продажби"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Изпращания"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

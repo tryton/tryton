@@ -20,7 +20,7 @@ msgstr ""
 msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" misses an \"account revenue\" default property."
 msgstr ""
-"La propriété par défaut « Compte de produit » est absente de la vente « "
+"La propriété par défaut « compte de produit » est absente de la vente « "
 "%(sale)s »."
 
 msgctxt "error:sale.sale:"
@@ -453,6 +453,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Méthode de livraison"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Tiers destinataire"
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Retours d'expédition"
@@ -763,14 +767,6 @@ msgid "Draft Sale Order"
 msgstr "Bon de commande brouillon"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Téléphone :"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Quantité"
 
@@ -792,7 +788,7 @@ msgstr "Taxes :"
 
 msgctxt "odt:sale.sale:"
 msgid "Total (excl. taxes):"
-msgstr "Total (HT) :"
+msgstr "Total (hors taxes) :"
 
 msgctxt "odt:sale.sale:"
 msgid "Total:"
@@ -801,10 +797,6 @@ msgstr "Total :"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -928,7 +920,7 @@ msgstr "Confirmé"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Terminée"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Draft"
@@ -960,7 +952,7 @@ msgstr "Vente"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "produits"
+msgstr "Produits"
 
 msgctxt "view:product.template:"
 msgid "Customers"
@@ -1035,10 +1027,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gérer l'exception d'expédition"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Factures"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Autre information"
 
@@ -1057,10 +1045,6 @@ msgstr "Vente"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Ventes"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Expéditions"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

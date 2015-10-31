@@ -453,6 +453,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Método de Envío"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr ""
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Devolución"
@@ -763,14 +767,6 @@ msgid "Draft Sale Order"
 msgstr "Pedido en Borrador"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Cantidad"
 
@@ -801,10 +797,6 @@ msgstr "Total:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Precio Unitario"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "Número Identificación:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1035,10 +1027,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gestionar Excepción de Envío"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Facturas"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Info Adicional"
 
@@ -1057,10 +1045,6 @@ msgstr "Venta"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Ventas"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Envios"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

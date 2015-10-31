@@ -458,6 +458,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Način odpreme"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Pošiljatelj"
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Vrnjene odpremnice"
@@ -767,14 +771,6 @@ msgid "Draft Sale Order"
 msgstr "Osnutek prodajnega naloga"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Količina"
 
@@ -805,10 +801,6 @@ msgstr "Skupaj:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1039,10 +1031,6 @@ msgid "Handle Shipment Exception"
 msgstr "Obravnava pridržanih odpremnic"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Računi"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Drugo"
 
@@ -1061,10 +1049,6 @@ msgstr "Prodaja"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Prodajni nalogi"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Odpremnice"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

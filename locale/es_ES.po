@@ -16,7 +16,7 @@ msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" is missing the customer location in line \"%(line)s\"."
 msgstr ""
 "Falta la ubicación del cliente en la línea \"%(line)s\" de la venta "
-"\"%(sale)\"."
+"\"%(sale)s\"."
 
 msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" misses an \"account revenue\" default property."
@@ -35,7 +35,7 @@ msgid ""
 "Invoice and Shipment addresses must be defined for the quotation of sale "
 "\"%s\"."
 msgstr ""
-"Las direcciones de envío y facturación se deben definir para el presupuesto "
+"Se deben definir las direcciones de envío y facturación para el presupuesto "
 "de venta \"%s\"."
 
 msgctxt "error:sale.sale:"
@@ -72,7 +72,7 @@ msgstr "Plazo de entrega"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
-msgstr "Puede ser vendido"
+msgstr "Vendible"
 
 msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
@@ -454,6 +454,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Método de envío"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Tercero del envío"
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr "Albaranes de devolución"
@@ -598,7 +602,7 @@ msgstr "Terceros con ventas"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Devolución"
+msgstr "Albaranes de devolución"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
@@ -764,14 +768,6 @@ msgid "Draft Sale Order"
 msgstr "Ventas borrador"
 
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Cantidad"
 
@@ -802,10 +798,6 @@ msgstr "Total:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Precio unidad"
-
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -1036,10 +1028,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gestionar excepción de envío"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Facturas"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Información adicional"
 
@@ -1058,10 +1046,6 @@ msgstr "Venta"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Ventas"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Albaranes"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

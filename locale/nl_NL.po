@@ -450,6 +450,10 @@ msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
 msgstr "Levering afhandeling"
 
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr ""
+
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
 msgstr ""
@@ -779,16 +783,6 @@ msgstr ""
 
 #, fuzzy
 msgctxt "odt:sale.sale:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
-#, fuzzy
-msgctxt "odt:sale.sale:"
-msgid "Phone:"
-msgstr "Telefoon:"
-
-#, fuzzy
-msgctxt "odt:sale.sale:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
@@ -824,11 +818,6 @@ msgstr "Totaal:"
 msgctxt "odt:sale.sale:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
-
-#, fuzzy
-msgctxt "odt:sale.sale:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
 
 #, fuzzy
 msgctxt "odt:sale.sale:"
@@ -1034,6 +1023,10 @@ msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Offerteregels"
 
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr ""
+
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr ""
@@ -1063,10 +1056,6 @@ msgid "Handle Shipment Exception"
 msgstr "Zendinguitzondering afhandelen"
 
 msgctxt "view:sale.sale:"
-msgid "Invoices"
-msgstr "Facturen"
-
-msgctxt "view:sale.sale:"
 msgid "Other Info"
 msgstr "Aanvullende informatie"
 
@@ -1085,10 +1074,6 @@ msgstr "Verkoop"
 msgctxt "view:sale.sale:"
 msgid "Sales"
 msgstr "Verkoop"
-
-msgctxt "view:sale.sale:"
-msgid "Shipments"
-msgstr "Leveringen"
 
 #, fuzzy
 msgctxt "view:stock.move:"
