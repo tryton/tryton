@@ -73,7 +73,3 @@ msgstr "Miércoles"
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
 msgstr "Día de Semana"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Week Days"
-msgstr "Días de Semana"

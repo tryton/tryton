@@ -4,73 +4,71 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr ""
+msgstr "Días de la semana"
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "Proveedor"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
-msgstr ""
+msgstr "Día de la semana"
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr ""
+msgstr "Día del proveedor del producto"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr ""
+msgstr "Viernes"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr ""
+msgstr "Lunes"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr ""
+msgstr "Sábado"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr ""
+msgstr "Domingo"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr ""
+msgstr "Jueves"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr ""
+msgstr "Martes"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr ""
+msgstr "Miércoles"
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
