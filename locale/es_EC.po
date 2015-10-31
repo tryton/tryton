@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr "Contar"
+msgstr "Contador"
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
@@ -16,7 +16,7 @@ msgstr "Cantidad"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de Unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
@@ -28,19 +28,19 @@ msgstr "Categoría de UdM"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr "El número límite de movimientos."
+msgstr "El número límite de movimientos"
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Dividir Movimiento"
+msgstr "Dividir movimiento"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Dividir Movimiento"
+msgstr "Dividir movimiento"
 
 msgctxt "view:stock.move.split.start:"
 msgid "Split Move"
-msgstr "Dividir Movimiento"
+msgstr "Dividir movimiento"
 
 msgctxt "view:stock.move:"
 msgid "Split"

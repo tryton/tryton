@@ -24,7 +24,7 @@ msgstr "Einheit"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr "Kategorie Maßeinheit"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
