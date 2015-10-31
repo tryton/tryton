@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "El lot és requerit pel moviment del producte \"%s\"."
+msgstr "El lot pel moviment del producte \"%s\" és obligatori."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -204,7 +204,7 @@ msgstr "Client"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Perdut/trobat"
+msgstr "Perdut-trobat"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
@@ -221,10 +221,6 @@ msgstr "Proveïdor"
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Període d'estoc precalculat per lot"
-
-msgctxt "view:product.product:"
-msgid "Lots"
-msgstr "Lots"
 
 msgctxt "view:product.template:"
 msgid "Lots"

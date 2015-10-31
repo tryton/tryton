@@ -8,15 +8,15 @@ msgstr "El lote es requerido para el movimiento del producto \"%s\"."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr "Lote Requerido"
+msgstr "Lote requerido"
 
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
@@ -36,11 +36,11 @@ msgstr "Tipo"
 
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
@@ -48,15 +48,15 @@ msgstr "Lote"
 
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Cantidad Prevista"
+msgstr "Cantidad prevista"
 
 msgctxt "field:stock.lot,id:"
 msgid "ID"
@@ -80,11 +80,11 @@ msgstr "Nombre"
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
@@ -92,11 +92,11 @@ msgstr "Código"
 
 msgctxt "field:stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
@@ -112,11 +112,11 @@ msgstr "Nombre"
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -124,15 +124,15 @@ msgstr "Lote"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
-msgstr "Caches de Lote"
+msgstr "Lote precalculado"
 
 msgctxt "field:stock.period.cache.lot,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.period.cache.lot,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.period.cache.lot,id:"
 msgid "ID"
@@ -140,11 +140,11 @@ msgstr "ID"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Cantidad Interna"
+msgstr "Cantidad interna"
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
-msgstr "Bodega"
+msgstr "Ubicación"
 
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
@@ -164,15 +164,15 @@ msgstr "Nombre"
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "El tipo de bodega para la cual el lote es requerido"
+msgstr "El tipo de ubicación para la cual el lote es requerido"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -188,15 +188,15 @@ msgstr "Lotes"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr "Plantilla - Tipo de Lote"
+msgstr "Plantilla - Tipo de lote de stock"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr "Lote de Existencias"
+msgstr "Lote de stock"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr "Tipo de Lote de Existencias"
+msgstr "Tipo de lote de stock"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
@@ -204,7 +204,7 @@ msgstr "Cliente"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Perdido y Encontrado"
+msgstr "Perdido y encontrado"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
@@ -212,7 +212,7 @@ msgstr "Producción"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Almacén"
+msgstr "Almacenamiento"
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
@@ -220,11 +220,7 @@ msgstr "Proveedor"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Cache de Período de Existencias por Lote"
-
-msgctxt "view:product.product:"
-msgid "Lots"
-msgstr "Lotes"
+msgstr "Período de stock precalculado por lote"
 
 msgctxt "view:product.template:"
 msgid "Lots"
@@ -240,8 +236,8 @@ msgstr "Lotes"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
-msgstr "Cache de Período Lote"
+msgstr "Período de lote precalculado"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Caches"
-msgstr "Caches de Período Lote"
+msgstr "Período de lote precalculados"

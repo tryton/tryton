@@ -222,10 +222,6 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Caches de période de stock par lot"
 
-msgctxt "view:product.product:"
-msgid "Lots"
-msgstr "Lots"
-
 msgctxt "view:product.template:"
 msgid "Lots"
 msgstr "Lots"

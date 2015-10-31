@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Artikel \"%s\"."
+msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Variante \"%s\"."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -68,7 +68,7 @@ msgstr "Nummer"
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
@@ -156,7 +156,7 @@ msgstr "Lagerperiode"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Name"
