@@ -2906,7 +2906,7 @@
             this.but_save_as.button(button_sensitive);
         },
         key_press: function(evt) {
-            var editable = true; // TODO compute editable
+            var editable = !this.wid_text.prop('readonly');
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
                 this.new_();
                 evt.preventDefault();
@@ -2929,6 +2929,9 @@
             } else {
                 this.but_select.show();
                 this.but_clear.show();
+            }
+            if (this.wid_text) {
+                this.wid_text.prop('readonly', readonly);
             }
         }
     });
