@@ -15,6 +15,10 @@ msgstr ""
 "Vous ne pouvez remettre en brouillon le mouvement « %s » car il a été généré"
 " par une vente ou un achat."
 
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Emplacement de livraison directe d'achat"
+
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr "Drop shipment"
@@ -27,6 +31,10 @@ msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
 msgstr "Adresse de livraison"
 
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "Emplacement de livraison directe"
+
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
 msgstr "Drop shipments"
@@ -38,6 +46,14 @@ msgstr "Client"
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
 msgstr "Adresse de livraison"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Emplacement de livraison directe de vente"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "Emplacement de livraison directe"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
@@ -75,6 +91,10 @@ msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
 msgstr "Client"
 
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "Mouvements clients"
+
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
 msgstr "Adresse de livraison"
@@ -111,6 +131,10 @@ msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
 msgstr "Fournisseur"
 
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "Mouvements fournisseurs"
+
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
 msgstr "Date de mise à jour"
@@ -142,6 +166,11 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "Livrés"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
 msgstr "En attente"
@@ -158,6 +187,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr "Drop shipments"
 
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Livraison directe"
+
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr "Drop shipment"
@@ -168,11 +201,15 @@ msgstr "Annulée"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectué"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
 msgstr "Brouillon"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "Livré"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
@@ -184,7 +221,7 @@ msgstr "Annuler"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectuer"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
@@ -199,13 +236,9 @@ msgid "Drop Shipments"
 msgstr "Expéditions drop shipping"
 
 msgctxt "view:stock.shipment.drop:"
+msgid "Ship"
+msgstr "Livrer"
+
+msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
 msgstr "Attendre"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Continuer"

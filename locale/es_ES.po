@@ -16,6 +16,10 @@ msgstr ""
 "No puede restaurar a borrador el movimiento \"%s\" generado por una venta o "
 "una compra."
 
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Ubicación compra directa"
+
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr "Envío directo"
@@ -26,7 +30,11 @@ msgstr "Cliente"
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "Ubicación envío directo"
 
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
@@ -38,7 +46,15 @@ msgstr "Cliente"
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Ubicación venta directa"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "Ubicación envío directo"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
@@ -76,9 +92,13 @@ msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
 msgstr "Cliente"
 
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "Movimientos de cliente"
+
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
@@ -112,6 +132,10 @@ msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
 msgstr "Proveedor"
 
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "Movimientos de proveedor"
+
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
 msgstr "Fecha modificación"
@@ -143,6 +167,11 @@ msgid "Draft"
 msgstr "Borrador"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "Enviado"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
 msgstr "En espera"
@@ -159,6 +188,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr "Envíos directos"
 
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Envío directo"
+
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr "Envío directo"
@@ -174,6 +207,10 @@ msgstr "Finalizado"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "Enviado"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
@@ -200,13 +237,9 @@ msgid "Drop Shipments"
 msgstr "Envíos directos"
 
 msgctxt "view:stock.shipment.drop:"
+msgid "Ship"
+msgstr "Enviar"
+
+msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
 msgstr "En espera"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Continuar"
