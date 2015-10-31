@@ -4,11 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
-msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!"
+msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Kategorie %s (%d)."
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Standardaufwandskonto"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Standardertragskonto"
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "Standardaufwandskonto"
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Standardertragskonto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -168,7 +184,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
-msgstr "Artikelvorlage"
+msgstr "Artikel"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
 msgid "Name"
@@ -200,7 +216,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
-msgstr "Artikelvorlage"
+msgstr "Artikel"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Name"
@@ -256,11 +272,19 @@ msgstr "Artikelkategorie - Steuer Lieferant"
 
 msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
-msgstr "Artikelvorlage - Steuer Kunde"
+msgstr "Artikel - Steuer Kunde"
 
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
-msgstr "Artikelvorlage - Steuer Lieferant"
+msgstr "Artikel - Steuer Lieferant"
+
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr "Kategorie"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Artikel"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

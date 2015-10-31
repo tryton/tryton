@@ -5,13 +5,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
 msgstr ""
-"No existe ninguna cuenta de gastos/ingresos definida en la categoría %s "
-"(%d)."
+"No existe ninguna cuenta de gastos/ingresos definida en la categoría %s (%d)"
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
-"No existe ninguna cuenta de gastos/ingresos definida en el producto %s (%d)."
+"No existe ninguna cuenta de gastos/ingresos definida en el producto %s (%d)"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Cuenta de gastos por defecto"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Cuenta de ingresos por defecto"
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "Cuenta de gastos por defecto"
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Cuenta de ingresos por defecto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -223,15 +238,15 @@ msgstr "Usuario modificación"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category"
-msgstr "Usar las cuentas definidas en la categoría padre."
+msgstr "Usar las cuentas definidas en la categoría padre"
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
-msgstr "Usar los impuestos definidos en la categoría padre."
+msgstr "Usar los impuestos definidos en la categoría padre"
 
 msgctxt "help:product.template,account_category:"
 msgid "Use the accounts defined on the category"
-msgstr "Usar las cuentas definidas en la categoría."
+msgstr "Usar las cuentas definidas en la categoría"
 
 msgctxt "help:product.template,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
@@ -243,7 +258,7 @@ msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
 
 msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
-msgstr "Usar los impuestos definidos en la categoría."
+msgstr "Usar los impuestos definidos en la categoría"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -261,6 +276,14 @@ msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Plantilla de producto - Impuesto de proveedor"
 
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Producto"
+
 msgctxt "view:product.category:"
 msgid "Accounting"
 msgstr "Contabilidad"
@@ -272,10 +295,6 @@ msgstr "Cuentas"
 msgctxt "view:product.category:"
 msgid "Taxes"
 msgstr "Impuestos"
-
-msgctxt "view:product.product:"
-msgid "Accounting"
-msgstr "Contabilidad"
 
 msgctxt "view:product.template:"
 msgid "Accounting"

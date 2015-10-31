@@ -10,6 +10,22 @@ msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr "Za izdelek %s (%d) ni določenega konta prihodkov/odhodkov"
 
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Privzet konto odhodkov"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Privzet konto prihodkov"
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "Privzet konto odhodkov"
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Privzet konto prihodkov"
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Konto odhodkov"
@@ -257,6 +273,14 @@ msgstr "Predloga - Davek kupca"
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Predloga - Davek dobavitelja"
+
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Izdelek"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

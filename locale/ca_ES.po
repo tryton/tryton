@@ -10,6 +10,22 @@ msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr "El producte %s (%d) no té cap compte de despeses/ingressos definit."
 
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Compte de despeses per defecte"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Compte d'ingressos per defecte"
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "Compte de despesa per defecte"
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Compte d'ingressos per defecte"
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de despeses"
@@ -257,6 +273,14 @@ msgstr "Plantilla de producte - Impost client"
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Plantilla de producte - Impost proveïdor"
+
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Producte"
 
 msgctxt "view:product.category:"
 msgid "Accounting"

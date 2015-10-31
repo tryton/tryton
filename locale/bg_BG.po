@@ -10,6 +10,22 @@ msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr "Няма зададен сметка за разходи/приходи за продукт %s (%d)"
 
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Разходи за сметка"
@@ -257,6 +273,14 @@ msgstr "Шаблон на продукт - Данък на клиент"
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Шаблон на продукт - Данък на доставчик"
+
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr ""
 
 msgctxt "view:product.category:"
 msgid "Accounting"
