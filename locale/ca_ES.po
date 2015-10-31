@@ -50,18 +50,6 @@ msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr "Ubicació de producte"
 
-msgctxt "view:product.product:"
-msgid "Default Locations"
-msgstr "Ubicacions predeterminades"
-
-msgctxt "view:product.product:"
-msgid "Product Location"
-msgstr "Ubicació de producte"
-
-msgctxt "view:product.product:"
-msgid "Product Locations"
-msgstr "Ubicacions de producte"
-
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
 msgstr "Ubicació de producte"

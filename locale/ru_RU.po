@@ -60,18 +60,6 @@ msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr ""
 
-msgctxt "view:product.product:"
-msgid "Default Locations"
-msgstr ""
-
-msgctxt "view:product.product:"
-msgid "Product Location"
-msgstr ""
-
-msgctxt "view:product.product:"
-msgid "Product Locations"
-msgstr ""
-
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
 msgstr ""

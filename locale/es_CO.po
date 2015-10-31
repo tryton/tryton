@@ -50,18 +50,6 @@ msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr "Bodega de Producto"
 
-msgctxt "view:product.product:"
-msgid "Default Locations"
-msgstr "Bodegas por Defecto"
-
-msgctxt "view:product.product:"
-msgid "Product Location"
-msgstr "Bodega de Producto"
-
-msgctxt "view:product.product:"
-msgid "Product Locations"
-msgstr "Bodegas de Producto"
-
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
 msgstr "Bodega de Producto"

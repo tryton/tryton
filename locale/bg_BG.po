@@ -50,18 +50,6 @@ msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr "Местонахождение на продукт"
 
-msgctxt "view:product.product:"
-msgid "Default Locations"
-msgstr "Местонахождения по подразбиране"
-
-msgctxt "view:product.product:"
-msgid "Product Location"
-msgstr "Местонахождение на продукт"
-
-msgctxt "view:product.product:"
-msgid "Product Locations"
-msgstr "Местонахождения на продукт"
-
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
 msgstr "Местонахождение на продукт"
