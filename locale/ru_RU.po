@@ -107,13 +107,3 @@ msgstr ""
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
 msgstr "Строки инвойса"
-
-#, fuzzy
-msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-#, fuzzy
-msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
-msgid "OK"
-msgstr "Да"

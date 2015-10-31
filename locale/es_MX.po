@@ -88,4 +88,4 @@ msgstr "Compra - Línea de factura ignorada"
 
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr ""
