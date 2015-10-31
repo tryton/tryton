@@ -15,7 +15,7 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden.\n"
+"Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden. "
 "Andernfalls kann sie nur deaktiviert und eine andere neue erstellt werden."
 
 msgctxt "error:product.uom:"
@@ -74,7 +74,7 @@ msgstr "Aktiv"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
-msgstr "Artikelnummer"
+msgstr "Variantennummer"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -110,7 +110,7 @@ msgstr "Name"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Artikelvorlage"
+msgstr "Artikel"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
@@ -320,7 +320,7 @@ msgstr "Artikel"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Kategorien Maßeinheiten"
+msgstr "Maßeinheitenkategorien"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
@@ -360,11 +360,11 @@ msgstr "Artikel Kategorie"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr "Artikel Variante"
+msgstr "Variante"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Artikel Vorlage"
+msgstr "Artikel"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -628,7 +628,7 @@ msgstr "yd"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "Artikel Maßeinheit Kategorie"
+msgstr "Artikel Maßeinheitenkategorie"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
@@ -704,7 +704,7 @@ msgstr "Artikelkategorie"
 
 msgctxt "view:product.product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -724,11 +724,11 @@ msgstr "Artikel"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
-msgstr "Kategorien Maßeinheiten"
+msgstr "Maßeinheitenkategorien"
 
 msgctxt "view:product.uom.category:"
 msgid "Category of Unit of Measure"
-msgstr "Kategorie Maßeinheit"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "view:product.uom:"
 msgid "Unit of Measure"

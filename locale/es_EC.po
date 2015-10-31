@@ -12,11 +12,12 @@ msgstr ""
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Valores de factor y tasa de conversión en UdM \"%s\" no son válidos."
+msgstr ""
+"Los valores de factor y tasa de conversión de la UdM \"%s\" no son válidos."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
-msgstr "Conversión y factor no pueden ser cero simultáneamente."
+msgstr "La conversión y el factor no pueden ser cero simultáneamente."
 
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
@@ -70,7 +71,7 @@ msgstr "Código"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Precio de costo"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -82,7 +83,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr "UdM por Defecto"
+msgstr "UdM por defecto"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -94,7 +95,7 @@ msgstr "ID"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr "Precio de Venta"
+msgstr "Precio de venta"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
@@ -102,7 +103,7 @@ msgstr "Nombre"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Plantilla de Producto"
+msgstr "Plantilla de producto"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
@@ -130,11 +131,11 @@ msgstr "Consumible"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Precio de costo"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
-msgstr "Método de Costo"
+msgstr "Método de costo"
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
@@ -158,7 +159,7 @@ msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr "Precio de Venta"
+msgstr "Precio de venta"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -190,7 +191,7 @@ msgstr "Activo"
 
 msgctxt "field:product.uom,category:"
 msgid "Category"
-msgstr "Categoría de UdM"
+msgstr "Categoría"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
@@ -310,7 +311,7 @@ msgstr "Productos"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Categorías de unidades de medida"
+msgstr "Categorías de la unidad de medida"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
@@ -608,10 +609,9 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "wd"
+msgstr "dt"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"

@@ -2,11 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr ""
-"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
-
 msgctxt "error:product.uom:"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
@@ -28,14 +23,6 @@ msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
 msgstr ""
 "U kunt Verhouding, Factor of Categorie van een maateenheid niet wijzigen."
 
-msgctxt "field:product.category,account_expense:"
-msgid "Account Expense"
-msgstr "Kostenrekening"
-
-msgctxt "field:product.category,account_revenue:"
-msgid "Account Revenue"
-msgstr "Opbrengstrekening"
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
@@ -47,10 +34,6 @@ msgstr ""
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
 msgstr ""
-
-msgctxt "field:product.category,customer_taxes:"
-msgid "Customer Taxes"
-msgstr "Belasting klanten"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
@@ -68,10 +51,6 @@ msgctxt "field:product.category,rec_name:"
 msgid "Name"
 msgstr "Naam"
 
-msgctxt "field:product.category,supplier_taxes:"
-msgid "Supplier Taxes"
-msgstr "Belastingen inkoop"
-
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
 msgstr ""
@@ -79,30 +58,6 @@ msgstr ""
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,category:"
-msgid "Category"
-msgstr "Categorie"
-
-msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
-
-msgctxt "field:product.category-customer-account.tax,tax:"
-msgid "Tax"
-msgstr "Belasting"
-
-msgctxt "field:product.category-supplier-account.tax,category:"
-msgid "Category"
-msgstr "Categorie"
-
-msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
-
-msgctxt "field:product.category-supplier-account.tax,tax:"
-msgid "Tax"
-msgstr "Belasting"
 
 #, fuzzy
 msgctxt "field:product.product,active:"
@@ -165,26 +120,6 @@ msgctxt "field:product.product,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:product.template,account_category:"
-msgid "Use Category's accounts"
-msgstr "Gebruik de rekeningen van de categorie"
-
-msgctxt "field:product.template,account_expense:"
-msgid "Account Expense"
-msgstr "Kostenrekening"
-
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Gebruikte kostenrekening"
-
-msgctxt "field:product.template,account_revenue:"
-msgid "Account Revenue"
-msgstr "Opbrengstrekening"
-
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Opbrengstrekening gebruikt"
-
 msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Actief"
@@ -212,14 +147,6 @@ msgstr ""
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
 msgstr ""
-
-msgctxt "field:product.template,customer_taxes:"
-msgid "Customer Taxes"
-msgstr "Belasting klanten"
-
-msgctxt "field:product.template,customer_taxes_used:"
-msgid "Customer Taxes Used"
-msgstr "Belasting klanten gebruikt"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
@@ -250,19 +177,6 @@ msgctxt "field:product.template,rec_name:"
 msgid "Name"
 msgstr "Naam"
 
-msgctxt "field:product.template,supplier_taxes:"
-msgid "Supplier Taxes"
-msgstr "Belastingen inkoop"
-
-#, fuzzy
-msgctxt "field:product.template,supplier_taxes_used:"
-msgid "Supplier Taxes Used"
-msgstr "Belasting klanten gebruikt"
-
-msgctxt "field:product.template,taxes_category:"
-msgid "Use Category's Taxes"
-msgstr "Gebruik de belastingen van de categorie"
-
 msgctxt "field:product.template,type:"
 msgid "Type"
 msgstr "Type"
@@ -274,30 +188,6 @@ msgstr ""
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
 msgstr ""
-
-msgctxt "field:product.template-customer-account.tax,product:"
-msgid "Product Template"
-msgstr "Productsjabloon"
-
-msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
-
-msgctxt "field:product.template-customer-account.tax,tax:"
-msgid "Tax"
-msgstr "Belasting"
-
-msgctxt "field:product.template-supplier-account.tax,product:"
-msgid "Product Template"
-msgstr "Productsjabloon"
-
-msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
-
-msgctxt "field:product.template-supplier-account.tax,tax:"
-msgid "Tax"
-msgstr "Belasting"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
@@ -388,24 +278,6 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "help:product.template,account_category:"
-msgid "Use the accounts defined on the category"
-msgstr "Gebruik de rekeningen van de categorie"
-
-msgctxt "help:product.template,account_expense:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
-
-msgctxt "help:product.template,account_revenue:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
-
-msgctxt "help:product.template,taxes_category:"
-msgid "Use the taxes defined on the category"
-msgstr "Gebruik de belastingen van de categorie"
-
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -488,14 +360,6 @@ msgctxt "model:product.category,name:"
 msgid "Product Category"
 msgstr "Product categorie"
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
-msgstr "Categorie - belasting klant"
-
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
-msgstr "Categorie - belasting leverancier"
-
 #, fuzzy
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
@@ -504,14 +368,6 @@ msgstr "Product"
 msgctxt "model:product.template,name:"
 msgid "Product Template"
 msgstr "Productsjabloon"
-
-msgctxt "model:product.template-customer-account.tax,name:"
-msgid "Product Template - Customer Tax"
-msgstr "Productsjabloon - Belasting verkoop"
-
-msgctxt "model:product.template-supplier-account.tax,name:"
-msgid "Product Template - Supplier Tax"
-msgstr "Productsjabloon - Belasting inkoop"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"

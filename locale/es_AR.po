@@ -7,7 +7,7 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Si no se ha usado la UdM, puede eliminarla, en caso contrario, puede "
+"Si aún no se ha usado la UdM, puede eliminarla, en caso contrario, puede "
 "desactivarla y crear una nueva."
 
 msgctxt "error:product.uom:"
