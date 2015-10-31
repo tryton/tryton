@@ -8,7 +8,7 @@ msgstr "Falten alguns comptes analítics obligatoris a \"%(name)s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "El compte analític de \"%(roots)s\" és obligatori a la línia \"%(line)s\"."
+msgstr "El compte analític de \"%(roots)s\" a la línia \"%(line)s\" és obligatori."
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
