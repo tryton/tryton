@@ -784,7 +784,7 @@ msgstr "Nueva Caledonia"
 
 msgctxt "model:country.country,name:ne"
 msgid "Niger"
-msgstr "Niger"
+msgstr "Níger"
 
 msgctxt "model:country.country,name:nf"
 msgid "Norfolk Island"
@@ -1096,7 +1096,7 @@ msgstr "Islas Vírgenes, Británicas"
 
 msgctxt "model:country.country,name:vi"
 msgid "Virgin Islands, U.S."
-msgstr "Islas Vírgenes, de EEUU"
+msgstr "Islas Vírgenes, EE.UU."
 
 msgctxt "model:country.country,name:vn"
 msgid "Viet Nam"
@@ -20820,7 +20820,7 @@ msgstr "Área externa"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region/department"
-msgstr "región/departamento de ultramar"
+msgstr "Región/departamento de ultramar"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"

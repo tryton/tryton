@@ -20820,7 +20820,7 @@ msgstr "Àrea externa"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region/department"
-msgstr "regió/departament d'ultramar"
+msgstr "Regió/departament d'ultramar"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
