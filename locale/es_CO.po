@@ -38,6 +38,10 @@ msgctxt "field:product.template,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Tiempo de Vida Útil"
 
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr ""
+
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "Fecha de Expiración"
@@ -61,6 +65,10 @@ msgstr "En número de días."
 msgctxt "help:product.template,shelf_life_time:"
 msgid "In number of days"
 msgstr "En número de días."
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"

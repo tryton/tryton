@@ -38,6 +38,10 @@ msgctxt "field:product.template,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Tiempo vida útil"
 
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Retraso de la vida útil"
+
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "Fecha caducidad"
@@ -62,6 +66,10 @@ msgctxt "help:product.template,shelf_life_time:"
 msgid "In number of days"
 msgstr "En número de días."
 
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr "El retraso en número de días antes de la eliminación de la previsión."
+
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forzar caducidades en logística"
@@ -76,7 +84,7 @@ msgstr "Opcional"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obligatorio"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "None"
@@ -88,7 +96,7 @@ msgstr "Opcional"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obligatorio"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "None"
@@ -100,7 +108,7 @@ msgstr "Opcional"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obligatorio"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "None"
@@ -112,7 +120,7 @@ msgstr "Opcional"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obligatorio"
 
 msgctxt "view:product.template:"
 msgid "Shelf Life"

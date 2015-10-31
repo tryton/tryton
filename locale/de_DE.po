@@ -33,11 +33,15 @@ msgstr "Ablaufzeit"
 
 msgctxt "field:product.template,shelf_life_state:"
 msgid "Shelf Life Time State"
-msgstr "Lagerzeit Status"
+msgstr "Lagerzeitstatus"
 
 msgctxt "field:product.template,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Lagerzeit"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Lagerzeit Wartedauer"
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
@@ -62,6 +66,12 @@ msgstr "In Anzahl von Tagen"
 msgctxt "help:product.template,shelf_life_time:"
 msgid "In number of days"
 msgstr "In Anzahl von Tagen"
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr ""
+"Die Anzahl von Tagen für die Wartezeit bis zur Entfernung aus der "
+"voraussichtlichen Verfügbarkeit"
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
