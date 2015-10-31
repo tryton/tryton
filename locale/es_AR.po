@@ -19,15 +19,15 @@ msgstr ""
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
-msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde"
+msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "No puede modificar la entidad del contacto «%s»."
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "CUIT «%(vat)s» de la entidad «%(party)s», no es correcto."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "El CUIT «%(code)s» de la entidad «%(party)s» no es correcto."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -140,10 +140,6 @@ msgstr "Fecha modificación"
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -261,6 +257,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Entidad"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "Contacto"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Activo"
@@ -309,6 +341,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identificadores"
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Idioma"
@@ -331,14 +367,6 @@ msgstr "Nombre"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "CUIT"
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr "País del CUIT"
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
 msgstr "CUIT"
 
 msgctxt "field:party.party,website:"
@@ -390,16 +418,6 @@ msgid "The value set on this field will preset the language on new parties"
 msgstr ""
 "El valor de este campo será el valor por defecto del idioma de las nuevas "
 "entidades"
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr ""
-"Al especificar el país del CUIT se habilitará la verificación de dicho "
-"número."
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
-msgstr "Número de Identificación Fiscal"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -485,10 +503,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr "Comprobar VIES"
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Comprobar VIES"
@@ -500,6 +514,10 @@ msgstr "Configuración de entidades"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Medio de contacto"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identificador de entidad"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -565,14 +583,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr "CUIT Sistema de Intercambio de Información"
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "¡Debe tener una versión reciente de «vatnumber» instalada!"
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr "CUIT Resultados del Sistema de Intercambio de Información"
@@ -589,9 +599,13 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Medios de contacto"
 
-msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Contabilidad"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr "Identificador de entidad"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr "Identificadores de entidad"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -604,14 +618,6 @@ msgstr "Entidades"
 msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Entidad"
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "CUIT"
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
-msgstr "Aceptar"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

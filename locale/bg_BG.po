@@ -22,8 +22,8 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr ""
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr ""
 
 msgctxt "error:party.party:"
@@ -137,10 +137,6 @@ msgstr "Променено на"
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -259,6 +255,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Активен"
@@ -307,6 +339,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Език"
@@ -330,14 +366,6 @@ msgstr "Име"
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
 msgstr "ДДС код"
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr "ДДС държава"
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
-msgstr "ДДС номер"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -386,14 +414,6 @@ msgstr "Променено от"
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr "Стойността в това поле ще се използва за език при нови партньори."
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr "Оказвайки държава за ДДС ще позволи да се провери ДДС номера."
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
-msgstr "ДДС номер"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -481,10 +501,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Категория"
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr "Провека в VIES"
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Провека в VIES"
@@ -496,6 +512,10 @@ msgstr "Конфигуриране на партньор"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Начин на контакт"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr ""
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -561,14 +581,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Категория"
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr "Система за обмен на ДДС информация"
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Трябва да имате инсталирана последната версия на \"vatnumber\"!"
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr "Резултати от Система за обмен на инфиормация за ДДС"
@@ -585,9 +597,13 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Начини на контакт"
 
-msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Счетоводство"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -600,14 +616,6 @@ msgstr "Партньори"
 msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Партньор"
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "ДДС"
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
-msgstr "Добре"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

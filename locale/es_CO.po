@@ -24,9 +24,9 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Usted no puede modificar los medios de contacto del tercero \"%s\" "
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "Inválido número NIT \"%(vat)s\" en tercero \"%(party)s\"."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr ""
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -139,10 +139,6 @@ msgstr "Fecha de Modificación"
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -260,6 +256,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Activo"
@@ -308,6 +340,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Idioma"
@@ -331,14 +367,6 @@ msgstr "Nombre"
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
 msgstr "Núm. Id."
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr "País del NIT"
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
-msgstr "Número Identificación"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -388,16 +416,6 @@ msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr ""
 "El valor de este campo predeterminada el idioma de las nuevos terceros"
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr ""
-"Al especificar el país del NIT se habilitará la verificación de dicho "
-"número."
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
-msgstr "Número de Identificación"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -483,10 +501,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr "Comprobar VIES"
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Comprobar VIES"
@@ -498,6 +512,10 @@ msgstr "Configuración de Terceros"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Medio de Contacto"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr ""
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -563,14 +581,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr "NIT Sistema de Intercambio de Información"
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "¡Debe tener una versión reciente de \"vatnumber\" instalada!"
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr "NIT Resultados del Sistema de Intercambio de Información"
@@ -587,9 +597,13 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Medios de Contacto"
 
-msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Contabilidad"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -602,14 +616,6 @@ msgstr "Terceros"
 msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Tercero"
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "NIT"
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
-msgstr "Aceptar"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

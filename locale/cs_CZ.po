@@ -22,8 +22,8 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr ""
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr ""
 
 msgctxt "error:party.party:"
@@ -137,10 +137,6 @@ msgstr ""
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr ""
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:party.check_vies.result,id:"
@@ -259,6 +255,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr ""
@@ -307,6 +339,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr ""
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr ""
@@ -329,14 +365,6 @@ msgstr ""
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr ""
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr ""
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
 msgstr ""
 
 msgctxt "field:party.party,website:"
@@ -385,14 +413,6 @@ msgstr ""
 
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr ""
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
@@ -479,10 +499,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr ""
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr ""
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr ""
@@ -493,6 +509,10 @@ msgstr ""
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
+msgstr ""
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
 msgstr ""
 
 msgctxt "model:party.party,name:"
@@ -559,14 +579,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr ""
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr ""
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr ""
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr ""
@@ -583,8 +595,12 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr ""
 
-msgctxt "view:party.party:"
-msgid "Accounting"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
 msgstr ""
 
 msgctxt "view:party.party:"
@@ -597,14 +613,6 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr ""
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
 msgstr ""
 
 msgctxt "wizard_button:party.check_vies,result,end:"

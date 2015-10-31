@@ -24,9 +24,9 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "No podeu modificar el tercer del contacte \"%s\"."
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "CIF/NIF \"%(vat)s\" del tercer \"%(party)s\", no és correcte."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "El CIF/NIF \"%(code)s\" del tercer \"%(party)s\" no és correcte."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -139,10 +139,6 @@ msgstr "Data modificació"
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -260,6 +256,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "Contacte"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Actiu"
@@ -308,6 +340,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identificadors"
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Idioma"
@@ -330,14 +366,6 @@ msgstr "Nom"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "CIF/NIF"
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr "País del NIF"
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
 msgstr "CIF/NIF"
 
 msgctxt "field:party.party,website:"
@@ -388,14 +416,6 @@ msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr ""
 "El valor d'aquest camp serà el valor per defecte de l'idioma dels tercers."
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr "Introduint el país del NIF s'habilitarà la verificació del número."
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
-msgstr "Número d'identificació fiscal."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -481,10 +501,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr "Comprova VIES"
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Comprova VIES"
@@ -496,6 +512,10 @@ msgstr "Configuració de tercers"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Mitjà de contacte"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identificador del tercer"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -561,14 +581,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr "Sistema d'intercanvi d'informació CIF/NIF"
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Heu de tenir instal·lada una versió recent de \"vatnumber\"."
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr "Resultat del sistema d'intercanvi d'informació CIF/NIF"
@@ -585,9 +597,13 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Mitjà de contacte"
 
-msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Comptabilitat"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr "Identificador del tercer"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr "Identificadors del tercer"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -601,14 +617,6 @@ msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "CIF/NIF"
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
-msgstr "Accepta"
-
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"

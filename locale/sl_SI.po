@@ -22,9 +22,9 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
 
-msgctxt "error:party.party:"
-msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "Neveljavna DDV številka \"%(vat)s\" pri partnerju \"%(party)s\"."
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -137,10 +137,6 @@ msgstr "Zapisano"
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
-
-msgctxt "field:party.check_vies.no_result,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -258,6 +254,42 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Aktivno"
@@ -306,6 +338,10 @@ msgctxt "field:party.party,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identifikatorji"
+
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Jezik"
@@ -329,14 +365,6 @@ msgstr "Ime"
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
 msgstr "DDV šifra"
-
-msgctxt "field:party.party,vat_country:"
-msgid "VAT Country"
-msgstr "DDV država"
-
-msgctxt "field:party.party,vat_number:"
-msgid "VAT Number"
-msgstr "DDV številka"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -385,14 +413,6 @@ msgstr "Zapisal"
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr "Vrednost v tem polju bo nastavila jezik za nove partnerje."
-
-msgctxt "help:party.party,vat_country:"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr "Nastavljena DDV država omogoča preverjanje DDV številke."
-
-msgctxt "help:party.party,vat_number:"
-msgid "Value Added Tax number"
-msgstr "Številka davka na dodano vrednost"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -478,10 +498,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Kategorija"
 
-msgctxt "model:party.check_vies.no_result,name:"
-msgid "Check VIES"
-msgstr "Preveri z VIES sistemom"
-
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Preveri z VIES sistemom"
@@ -493,6 +509,10 @@ msgstr "Konfiguracija partnerjev"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Kontakt"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identifikator partnerja"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -558,14 +578,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Kategorija"
 
-msgctxt "view:party.check_vies.no_result:"
-msgid "VAT Information Exchange System"
-msgstr "Sistem za izmenjavo DDV informacij"
-
-msgctxt "view:party.check_vies.no_result:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Nameščena mora biti zadnja inačica \"DDV številke\"."
-
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr "Rezultati sistem za izmenjavo DDV informacij"
@@ -582,9 +594,13 @@ msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Kontakti"
 
-msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Računovodstvo"
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr "Identifikatorji partnerjev"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -597,14 +613,6 @@ msgstr "Partnerji"
 msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Partner"
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "DDV"
-
-msgctxt "wizard_button:party.check_vies,no_result,end:"
-msgid "OK"
-msgstr "V redu"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
