@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr "Acción"
+msgstr "Ação"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Data de Criação"
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Criado por"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
@@ -20,72 +20,72 @@ msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Sequência"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr "Usuário"
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Data de Edição"
 
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Editado por"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "Acciones del panel de control"
+msgstr "Ações do Painel"
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr "Organización del panel de control"
+msgstr "Layout do Painel"
 
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "Acción del panel de control"
+msgstr "Ação do Painel"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Panel de control"
+msgstr "Painel"
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Panel de Control"
+msgstr "Painel"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr "Cuadrado"
+msgstr "Quadrado"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "De arriba a abajo"
+msgstr "Empilhar no Fundo"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "De derecha a izquierda"
+msgstr "Esquerda da Pilha"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "De izquierda a derecha"
+msgstr "Empilhar à Direita"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "De abajo a arriba"
+msgstr "Empilhar no Topo"
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
-msgstr "Acción del panel de control"
+msgstr ""
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
-msgstr "Acciones del panel de control"
+msgstr ""
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr "Panel de control"
+msgstr ""
