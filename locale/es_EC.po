@@ -26,7 +26,7 @@ msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado."
+msgstr "Debe cancelar el estado de cuenta \"%s\" antes de eliminarlo."
 
 msgctxt "error:account.statement:"
 msgid "There are paid invoices on draft statements."
@@ -54,7 +54,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de Moneda"
+msgstr "Decimales de moneda"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -98,7 +98,7 @@ msgstr "Estado"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
-msgstr "Valor total"
+msgstr "Importe total"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
@@ -290,7 +290,7 @@ msgstr "Estado de cuenta"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr "Libro diario de estados de cuenta"
+msgstr "Libro diario de estado de cuenta"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
@@ -298,7 +298,7 @@ msgstr "Línea de estado de cuenta"
 
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr "Cuenta de grupo de líneas de estado de cuenta"
+msgstr "Grupo de líneas de estado de cuenta"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
@@ -310,11 +310,11 @@ msgstr "Grupos de líneas"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr "Líneas de Asiento"
+msgstr "Líneas de asiento"
 
 msgctxt "model:ir.action,name:act_move_lines_form2"
 msgid "Move Lines"
-msgstr "Líneas de Asiento"
+msgstr "Líneas de asiento"
 
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
@@ -326,7 +326,7 @@ msgstr "Asientos"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Estados de Cuenta"
+msgstr "Estados de cuenta"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
@@ -338,7 +338,7 @@ msgstr "Líneas de estado de cuenta"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Línesa de estado de cuenta"
+msgstr "Líneas de estado de cuenta"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -369,11 +369,11 @@ msgstr "Grupos de Líneas de Estado de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Estados de cuenta"
+msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Estados de cuenta"
+msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -416,10 +416,6 @@ msgid "Draft"
 msgstr "Borrador"
 
 msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr "Libro diario:"
 
@@ -432,20 +428,12 @@ msgid "Party"
 msgstr "Tercero"
 
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Estado de cuenta"
 
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Total"
-
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "Número de RUC:"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"

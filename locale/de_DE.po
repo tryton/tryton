@@ -414,10 +414,6 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr "Journal:"
 
@@ -430,20 +426,12 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Zahlung"
 
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Gesamt"
-
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "USt-ID-Nr.:"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"

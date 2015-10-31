@@ -448,11 +448,6 @@ msgctxt "odt:account.statement:"
 msgid "Draft"
 msgstr "Проект"
 
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
 msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr ""
@@ -469,11 +464,6 @@ msgstr "Управление на партньор"
 
 #, fuzzy
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Телефон:"
-
-#, fuzzy
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Отчет"
 
@@ -481,11 +471,6 @@ msgstr "Отчет"
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Общо"
-
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "ДДС номер:"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -524,6 +509,14 @@ msgstr "Дневник за отчети"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Дневник за отчети"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr ""
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr ""
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"

@@ -23,7 +23,8 @@ msgstr "Le nombre de lignes doit être « %s »."
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
-"Veullez fournir les comptes de débit et crédit sur le journal de relevés."
+"Veuillez fournir les comptes de débit et crédit sur le journal de relevés « "
+"%s »."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -390,7 +391,7 @@ msgstr "Relevé"
 
 msgctxt "odt:account.statement:"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 msgctxt "odt:account.statement:"
 msgid "Amount"
@@ -417,10 +418,6 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr "Journal :"
 
@@ -433,20 +430,12 @@ msgid "Party"
 msgstr "Tiers"
 
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Téléphone :"
-
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Relevé"
 
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Total"
-
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"

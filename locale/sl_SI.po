@@ -414,10 +414,6 @@ msgid "Draft"
 msgstr "V pripravi"
 
 msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr "Dnevnik:"
 
@@ -430,20 +426,12 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Izpisek"
 
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Skupaj"
-
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"

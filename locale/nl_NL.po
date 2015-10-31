@@ -445,11 +445,6 @@ msgctxt "odt:account.statement:"
 msgid "Draft"
 msgstr "Concept"
 
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
 msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr ""
@@ -466,11 +461,6 @@ msgstr "Relaties"
 
 #, fuzzy
 msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Telefoon:"
-
-#, fuzzy
-msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr "Bankafschrift"
 
@@ -478,11 +468,6 @@ msgstr "Bankafschrift"
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Totaal"
-
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -521,6 +506,14 @@ msgstr "Dagboek bankafschriften"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Dagboeken bankafschriften"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr ""
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.statement.line:"

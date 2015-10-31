@@ -480,11 +480,6 @@ msgctxt "odt:account.statement:"
 msgid "Draft"
 msgstr "Черновик"
 
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "E-Mail:"
-msgstr "Эл.почта:"
-
 msgctxt "odt:account.statement:"
 msgid "Journal:"
 msgstr ""
@@ -499,11 +494,6 @@ msgctxt "odt:account.statement:"
 msgid "Party"
 msgstr "Организации"
 
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "Phone:"
-msgstr "Телефон:"
-
 msgctxt "odt:account.statement:"
 msgid "Statement"
 msgstr ""
@@ -512,11 +502,6 @@ msgstr ""
 msgctxt "odt:account.statement:"
 msgid "Total"
 msgstr "Итого"
-
-#, fuzzy
-msgctxt "odt:account.statement:"
-msgid "VAT Number:"
-msgstr "ИНН:"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
@@ -558,6 +543,14 @@ msgstr ""
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
+msgstr ""
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr ""
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
 msgstr ""
 
 #, fuzzy
