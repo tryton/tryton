@@ -1263,7 +1263,7 @@ msgstr ""
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Harmadik"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"

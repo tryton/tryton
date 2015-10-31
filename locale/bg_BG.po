@@ -134,20 +134,20 @@ msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
-"You can not reconcile line \"%(line)s\" because it's account \"%(account)s\""
-" is configured as not reconcilable."
+"You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
+"is configured as not reconcilable."
 msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
-"You can not reconcile line \"%(line)s\" because it's account "
-"\"%(account1)s\" is different from \"%(account2)s\"."
+"You can not reconcile line \"%(line)s\" because its account \"%(account1)s\""
+" is different from \"%(account2)s\"."
 msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
-"You can not reconcile line \"%(line)s\" because it's party \"%(party1)s\" is"
-" different from \"%(party2)s\"."
+"You can not reconcile line \"%(line)s\" because its party \"%(party1)s\" is "
+"different from \"%(party2)s\"."
 msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
@@ -162,8 +162,7 @@ msgstr ""
 
 msgctxt "error:account.move:"
 msgid ""
-"You can not create move \"%(move)s\" because it's date is outside its "
-"period."
+"You can not create move \"%(move)s\" because its date is outside its period."
 msgstr ""
 
 msgctxt "error:account.move:"
@@ -872,6 +871,10 @@ msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Активен"
 
+msgctxt "field:account.journal,balance:"
+msgid "Balance"
+msgstr ""
+
 msgctxt "field:account.journal,code:"
 msgid "Code"
 msgstr "Код"
@@ -884,9 +887,21 @@ msgctxt "field:account.journal,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
+msgctxt "field:account.journal,credit:"
+msgid "Credit"
+msgstr ""
+
 msgctxt "field:account.journal,credit_account:"
 msgid "Default Credit Account"
 msgstr "Кредитна сметка по подразбиране"
+
+msgctxt "field:account.journal,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.journal,debit:"
+msgid "Debit"
+msgstr ""
 
 msgctxt "field:account.journal,debit_account:"
 msgid "Default Debit Account"
@@ -928,6 +943,18 @@ msgstr "Променено на"
 msgctxt "field:account.journal,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
+
+msgctxt "field:account.journal.open_cash.start,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:account.journal.open_cash.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.journal.open_cash.start,start_date:"
+msgid "Start Date"
+msgstr ""
 
 msgctxt "field:account.journal.period,active:"
 msgid "Active"
@@ -2757,7 +2784,7 @@ msgstr "За подреждане на данъците"
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
-"If checked then the unit price for further tax computation willbe modified "
+"If checked then the unit price for further tax computation will be modified "
 "by this tax"
 msgstr ""
 
@@ -2808,34 +2835,6 @@ msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "Шаблон на сметка"
 
-msgctxt "model:account.account.template,name:account_template_cash"
-msgid "Main Cash"
-msgstr "Основна наличност"
-
-msgctxt "model:account.account.template,name:account_template_expense"
-msgid "Main Expense"
-msgstr "Основена разходи"
-
-msgctxt "model:account.account.template,name:account_template_payable"
-msgid "Main Payable"
-msgstr "Основна разходна сметка"
-
-msgctxt "model:account.account.template,name:account_template_receivable"
-msgid "Main Receivable"
-msgstr "Основна приходна сметка"
-
-msgctxt "model:account.account.template,name:account_template_revenue"
-msgid "Main Revenue"
-msgstr "Основна приходи"
-
-msgctxt "model:account.account.template,name:account_template_root"
-msgid "Minimal Account Chart"
-msgstr "Минимална графика на сметката"
-
-msgctxt "model:account.account.template,name:account_template_tax"
-msgid "Main Tax"
-msgstr "Основна данъци"
-
 msgctxt "model:account.account.template-account.tax.template,name:"
 msgid "Account Template - Tax Template"
 msgstr "Шаблон на сметка - Шаблон на данък"
@@ -2847,85 +2846,6 @@ msgstr "Вид сметка"
 msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
 msgstr "Шаблон на вид сметка"
-
-msgctxt "model:account.account.type.template,name:account_type_template_asset"
-msgid "Asset"
-msgstr "Притежание"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current"
-msgid "Current"
-msgstr "Текущ"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_cash"
-msgid "Cash"
-msgstr "В брой"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_receivable"
-msgid "Receivable"
-msgstr "За получаване"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_long_term"
-msgid "Long-term"
-msgstr "Дългосрочен"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_equity"
-msgid "Equity"
-msgstr "Капитал"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_expense"
-msgid "Expense"
-msgstr "Разход"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_income"
-msgid "Income"
-msgstr "Приход"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability"
-msgid "Liability"
-msgstr "Дълг"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current"
-msgid "Current"
-msgstr "Текущ"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current_payable"
-msgid "Payable"
-msgstr "Разходен"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current_tax"
-msgid "Tax"
-msgstr "Данък"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_long_term"
-msgid "Long-term"
-msgstr "Дългосрочен"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_minimal"
-msgid "Minimal Account Type Chart"
-msgstr "Минимален сметкоплан"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_off_balance"
-msgid "Off-Balance"
-msgstr "Неутрално салдо"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_revenue"
-msgid "Revenue"
-msgstr "Приход"
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
@@ -2978,6 +2898,10 @@ msgstr "Приход"
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Наличност"
+
+msgctxt "model:account.journal.open_cash.start,name:"
+msgid "Open Journal Cash"
+msgstr ""
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
@@ -3161,10 +3085,6 @@ msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
 msgstr "Обновяване на графика"
 
-msgctxt "model:ir.action,name:"
-msgid "Payable Lines"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
 msgstr "Дата на баланс"
@@ -3233,6 +3153,10 @@ msgstr "Финансови години"
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
 msgstr "Дневници"
+
+msgctxt "model:ir.action,name:act_journal_open_cash"
+msgid "Journals Cash"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_period_close"
 msgid "Close Journals - Periods"
@@ -3402,6 +3326,10 @@ msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
 msgstr "Създаване на сметкопланове от шаблон"
 
+msgctxt "model:ir.action,name:wizard_journal_open_cash"
+msgid "Open Journal Cash"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_open_aged_balance"
 msgid "Open Aged Balance"
 msgstr "Отваряне на хронологичен баланс"
@@ -3472,10 +3400,6 @@ msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
 msgstr "Съгласуване на движение по сметка"
-
-msgctxt "model:ir.ui.menu,name:"
-msgid "Reconcile Lines"
-msgstr "Съгласуване на редове"
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
@@ -3556,6 +3480,10 @@ msgstr "Дневници"
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
 msgstr "Дневници"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
+msgid "Journals Cash"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
 msgid "Close Journals - Periods"
@@ -4325,6 +4253,10 @@ msgctxt "view:account.configuration:"
 msgid "Account Configuration"
 msgstr "Настройване на сметка"
 
+msgctxt "view:account.configuration:"
+msgid "Party"
+msgstr ""
+
 msgctxt "view:account.create_chart.account:"
 msgid "Create Chart of Accounts"
 msgstr "Създаване на сметкопланове"
@@ -4389,6 +4321,10 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Последователности"
 
+msgctxt "view:account.journal.open_cash.start:"
+msgid "Open Journal Cash"
+msgstr ""
+
 msgctxt "view:account.journal.period:"
 msgid "Journal - Period"
 msgstr "Дневник - Период"
@@ -4433,6 +4369,22 @@ msgctxt "view:account.journal:"
 msgid "Journals"
 msgstr "Дневници"
 
+msgctxt "view:account.move.cancel.default:"
+msgid "Cancel Moves"
+msgstr ""
+
+msgctxt "view:account.move.line.template:"
+msgid "Account Move Line Template"
+msgstr ""
+
+msgctxt "view:account.move.line.template:"
+msgid "Account Move Line Templates"
+msgstr ""
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr ""
+
 msgctxt "view:account.move.line:"
 msgid "Account Move Line"
 msgstr "Ред от движение по сметка"
@@ -4473,6 +4425,30 @@ msgstr "Съгласуване"
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
 msgstr "Съгласувания"
+
+msgctxt "view:account.move.template.create.template:"
+msgid "Create Move from Template"
+msgstr ""
+
+msgctxt "view:account.move.template.keyword:"
+msgid "Account Move Template Keyword"
+msgstr ""
+
+msgctxt "view:account.move.template.keyword:"
+msgid "Account Move Template Keywords"
+msgstr ""
+
+msgctxt "view:account.move.template:"
+msgid "Account Move Template"
+msgstr ""
+
+msgctxt "view:account.move.template:"
+msgid "Account Move Templates"
+msgstr ""
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr ""
 
 msgctxt "view:account.move:"
 msgid "Account Move"
@@ -4583,6 +4559,14 @@ msgstr "Данъчна група"
 msgctxt "view:account.tax.group:"
 msgid "Tax Groups"
 msgstr "Група данъци"
+
+msgctxt "view:account.tax.line.template:"
+msgid "Account Tax Line Template"
+msgstr ""
+
+msgctxt "view:account.tax.line.template:"
+msgid "Account Tax Line Templates"
+msgstr ""
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
@@ -4697,6 +4681,10 @@ msgid "Account"
 msgstr "Сметка"
 
 msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr ""
+
+msgctxt "view:party.party:"
 msgid "Taxes"
 msgstr "Данъци"
 
@@ -4741,6 +4729,14 @@ msgstr "Затваряне"
 msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
+
+msgctxt "wizard_button:account.journal.open_cash,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.journal.open_cash,start,open_:"
+msgid "Open"
+msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,cancel:"
