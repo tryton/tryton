@@ -36,7 +36,6 @@ except ImportError:
 package_data = {
     'tryton': ['data/pixmaps/tryton/*.png',
         'data/pixmaps/tryton/*.svg',
-        'data/locale/tryton.pot',
         'data/locale/*/LC_MESSAGES/*.mo',
         'data/locale/*/LC_MESSAGES/*.po',
         ]
