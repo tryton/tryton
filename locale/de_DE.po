@@ -108,7 +108,7 @@ msgid ""
 "You can not add line \"%(line)s\" to invoice \"%(invoice)s\" because it is "
 "posted, paid or canceled."
 msgstr ""
-"Zu Rechnung \"%(invoice)s\" kann Position \"%(line)s\" nicht  mehr "
+"Zu Rechnung \"%(invoice)s\" kann Position \"%(line)s\" nicht mehr "
 "hinzugefügt werden, da sie festgeschrieben, bezahlt oder annulliert ist."
 
 msgctxt "error:account.invoice.tax:"
@@ -217,7 +217,7 @@ msgid ""
 "period/fiscal year \"%(period)s\"."
 msgstr ""
 "Fehlender Nummernkreis für Rechnung \"%(invoice)s\" in "
-"Buchungsperiode/Geschäftsjahr \"%(period)s\"."
+"Buchungszeitraum/Geschäftsjahr \"%(period)s\"."
 
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
@@ -244,9 +244,9 @@ msgid ""
 "You can not change the invoice sequence in period \"%s\" because there is "
 "already an invoice posted in this period"
 msgstr ""
-"Der Rechnungsnummernkreis für Buchungsperiode\"%s\" kann nicht mehr geändert"
-" werden, weil es bereits festgeschriebene Rechnungen in dieser "
-"Buchungsperiode gibt."
+"Der Rechnungsnummernkreis für Buchungszeitraum \"%s\" kann nicht mehr "
+"geändert werden, weil es bereits festgeschriebene Rechnungen in diesem "
+"Buchungszeitraum gibt."
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -298,19 +298,19 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Nummernkreis Gutschriften Lieferanten"
+msgstr "Nummernkreis Lieferantengutschriften"
 
 msgctxt "field:account.fiscalyear,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr "Nummernkreis Rechnungen Lieferanten"
+msgstr "Nummernkreis Lieferantenrechnungen"
 
 msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Nummernkreis Gutschriften Kunden"
+msgstr "Nummernkreis Kundengutschriften"
 
 msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Nummernkreis Rechnungen Kunden"
+msgstr "Nummernkreis Kundenrechnungen"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
@@ -434,7 +434,7 @@ msgstr "Abgestimmt"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr "Interner Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -578,11 +578,11 @@ msgstr "Sprache Partei"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Artikel Maßeinheit Kategorie"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -910,7 +910,7 @@ msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr "Zeitpunkt"
+msgstr "Datum"
 
 msgctxt "field:account.invoice.payment_term.test,id:"
 msgid "ID"
@@ -934,7 +934,7 @@ msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr "Zeitpunkt"
+msgstr "Datum"
 
 msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
@@ -998,7 +998,7 @@ msgstr "Reihenfolge"
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr "Name Nummernkreis"
+msgstr "Reihenfolge"
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
@@ -1022,19 +1022,19 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.period,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Nummernkreis Gutschriften Lieferanten"
+msgstr "Nummernkreis Lieferantengutschriften"
 
 msgctxt "field:account.period,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr "Nummernkreis Rechnungen Lieferanten"
+msgstr "Nummernkreis Lieferantenrechnungen"
 
 msgctxt "field:account.period,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Nummernkreis Gutschriften Kunden"
+msgstr "Nummernkreis Kundengutschriften"
 
 msgctxt "field:account.period,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Nummernkreis Rechnungen Kunden"
+msgstr "Nummernkreis Kundenrechnungen"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
@@ -1331,20 +1331,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Rechnung (Entwurf)"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Rechnung Nr.:"
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Zahlungsbedingung"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1360,7 +1352,7 @@ msgstr "Anzahl"
 
 msgctxt "odt:account.invoice:"
 msgid "Reference"
-msgstr "Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
@@ -1393,10 +1385,6 @@ msgstr "Rechnungsbetrag"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "USt-ID-Nr.:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1614,6 +1602,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr "Buchhaltung Konfiguration Steuerrundungen"
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "Rechnung"
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Wollen Sie diese Rechnung(en) wirklich gutschreiben?"
@@ -1731,6 +1723,10 @@ msgid "Other Info"
 msgstr "Sonstiges"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr "Bezahlen"
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Zahlung"
 
@@ -1741,22 +1737,6 @@ msgstr "Festschreiben"
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Prüfen"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "_Annullieren"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "_Entwurf"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "_Bezahlen"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr "_Festschreiben"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

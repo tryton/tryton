@@ -1309,20 +1309,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Concept inkoopfactuur"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Factuur:"
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Betalingstermijn"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Telefoon:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1372,10 +1364,6 @@ msgstr "Totaal:"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Eenheids- prijs"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1597,6 +1585,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr ""
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr ""
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr ""
@@ -1629,15 +1621,26 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr ""
 
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Delta"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Deltas"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Betalingstermijn regel"
 
-#, fuzzy
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Lines"
-msgstr "Betalingstermijn regels"
+msgctxt "view:account.invoice.payment_term.test.result:"
+msgid "Payment Term Test Results"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.test:"
+msgid "Payment Term Test"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1685,6 +1688,14 @@ msgid "Are you sure to cancel the invoice?"
 msgstr ""
 
 msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Verkoopfactuur"
 
@@ -1697,29 +1708,21 @@ msgid "Other Info"
 msgstr "Aanvullende informatie"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Betaling"
+
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Goedkeuren"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "_Annuleren"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "_Concept"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "_Betalen"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.move.line:"

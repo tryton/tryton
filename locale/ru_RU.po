@@ -1343,20 +1343,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Черновой инвойс поставщика"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "Эл.почта:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Инвойс №:"
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Правило оплаты"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Телефон:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1406,10 +1398,6 @@ msgstr "Итого:"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Цена за единицу"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "ИНН:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1634,6 +1622,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr ""
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr ""
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Вы уверены, что хотите выставить Сторно для этих инвойсов?"
@@ -1666,13 +1658,25 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr "Оплата инвойса"
 
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Delta"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Deltas"
+msgstr ""
+
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Строка правила оплаты"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Lines"
-msgstr "Строки правила оплаты"
+msgctxt "view:account.invoice.payment_term.test.result:"
+msgid "Payment Term Test Results"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.test:"
+msgid "Payment Term Test"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1719,6 +1723,14 @@ msgid "Are you sure to cancel the invoice?"
 msgstr "Вы уверены что хотите отменить инвойс?"
 
 msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Инвойс"
 
@@ -1731,28 +1743,20 @@ msgid "Other Info"
 msgstr "Другая информация"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Оплата"
 
 msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Утвердить"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "Отменить"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "Черновик"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "Оплата"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr "Отправить"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

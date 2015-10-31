@@ -1311,20 +1311,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Проект на фактура за доставчик"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Фактура N°:"
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Телефон:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1374,10 +1366,6 @@ msgstr "Общо:"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Единична цена"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "ДДС номер:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1604,6 +1592,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr ""
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr ""
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?"
@@ -1636,13 +1628,25 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr "Плащане на фактура"
 
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Delta"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line.relativedelta:"
+msgid "Payment Term Line Relative Deltas"
+msgstr ""
+
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Ред от условие за плащане"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Lines"
-msgstr "Ред от условие за плащане"
+msgctxt "view:account.invoice.payment_term.test.result:"
+msgid "Payment Term Test Results"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.test:"
+msgid "Payment Term Test"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1689,6 +1693,14 @@ msgid "Are you sure to cancel the invoice?"
 msgstr ""
 
 msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Фактура"
 
@@ -1701,29 +1713,21 @@ msgid "Other Info"
 msgstr "Друга информация"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr ""
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Плащане"
+
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Проверка"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "Отказ"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "Проект"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "Плащане"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

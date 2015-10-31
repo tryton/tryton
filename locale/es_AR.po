@@ -208,8 +208,8 @@ msgstr ""
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
-"No puede modificar la factura «%(invoice)s» porque está confirmada, pagada o"
-" cancelada."
+"No puede modificar la factura «%s» porque está confirmada, pagada o "
+"cancelada."
 
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
@@ -231,7 +231,7 @@ msgid ""
 "already an invoice posted in this period"
 msgstr ""
 "No puede cambiar la secuencia de facturas en el período «%s» porque ya hay "
-"facturas confirmadas en este período."
+"facturas confirmadas en este período"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -1039,7 +1039,7 @@ msgstr "Si está marcada, se pagarán las facturas actuales."
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
-msgstr "Usar para ordenar las líneas ascendentemente."
+msgstr "Usar para ordenar las líneas ascendentemente"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
@@ -1314,20 +1314,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Factura de proveedor borrador"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Factura Nº:"
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Término de pago"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1376,10 +1368,6 @@ msgstr "Total:"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Precio unidad"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "CUIT:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1597,6 +1585,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr "Configuración contable de Redondeos de impuesto"
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "Factura"
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "¿Está seguro de abonar esta/s factura/s?"
@@ -1687,7 +1679,7 @@ msgstr "Impuestos"
 
 msgctxt "view:account.invoice:"
 msgid "Also known as Pro Forma"
-msgstr "También conocida como Pro forma."
+msgstr "También conocida como Pro forma"
 
 msgctxt "view:account.invoice:"
 msgid "Are you sure to cancel the invoice?"
@@ -1714,6 +1706,10 @@ msgid "Other Info"
 msgstr "Información adicional"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr "Pagar"
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pago"
 
@@ -1724,22 +1720,6 @@ msgstr "Confirmar"
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Validar"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "_Borrador"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "_Pagar"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr "_Confirmar"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

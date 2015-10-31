@@ -155,7 +155,7 @@ msgid ""
 "Re-compute the invoice."
 msgstr ""
 "Račun \"%s\" ima na postavkah davke, ki ne obstajajo na računu.\n"
-"Račun znova preračunajte. "
+"Račun znova preračunajte."
 
 msgctxt "error:account.invoice:"
 msgid "Invoice \"%s\" must be cancelled before deletion."
@@ -1312,20 +1312,12 @@ msgid "Draft Supplier Invoice"
 msgstr "Osnutek računa dobavitelja"
 
 msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:account.invoice:"
 msgid "Invoice N°:"
 msgstr "Račun št."
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Plačilni rok"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
@@ -1374,10 +1366,6 @@ msgstr "Skupaj:"
 msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1595,6 +1583,10 @@ msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
 msgstr "Zaokroževanja davkov"
 
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "Račun"
+
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Ali res želite izvesti dobropis teh računov?"
@@ -1712,6 +1704,10 @@ msgid "Other Info"
 msgstr "Drugo"
 
 msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr "Plačilo"
+
+msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Plačilo"
 
@@ -1722,22 +1718,6 @@ msgstr "Vknjižba"
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Odobritev"
-
-msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "_Preklic"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "_Priprava"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "P_lačilo"
-
-msgctxt "view:account.invoice:"
-msgid "_Post"
-msgstr "_Knjižba"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
