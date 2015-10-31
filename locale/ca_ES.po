@@ -18,14 +18,18 @@ msgctxt "field:project.work,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Línies de compra"
+
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
 msgstr "Ingressos"
 
-msgctxt "view:project.work:"
-msgid "Cost"
-msgstr "Cost"
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr "Temps del treball"
 
 msgctxt "view:project.work:"
-msgid "Revenue"
-msgstr "Ingressos"
+msgid "Purchases"
+msgstr "Compres"

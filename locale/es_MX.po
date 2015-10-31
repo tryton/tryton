@@ -4,31 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Coste"
 
-#, fuzzy
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "Decimales de la moneda"
 
-#, fuzzy
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Catalogusprijs"
+msgstr "Precio de venta"
 
-#, fuzzy
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Producto"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Opbrengst"
+msgstr "Ingresos"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
