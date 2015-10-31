@@ -58,3 +58,7 @@ msgstr "История цен ТМЦ"
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
 msgstr "История цен ТМЦ"
+
+msgctxt "view:product.product.cost_history:"
+msgid "Time"
+msgstr ""

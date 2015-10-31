@@ -40,7 +40,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr "Kostenpreis Artikel Historie"
+msgstr "Historie Kostenpreis"
 
 msgctxt "model:ir.action,name:wizard_product_cost_history_open"
 msgid "Cost History"
@@ -52,7 +52,7 @@ msgstr "Historie Kostenpreis Artikel"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
-msgstr "Kostenpreis Artikel Historie"
+msgstr "Historie Kostenpreis"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Time"

@@ -4,51 +4,51 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product.cost_history,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Beszerzési ár"
 
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:product.product.cost_history,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva"
 
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:product.product.cost_history,template:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr ""
+msgstr "Beszerzési ár Termék előzmény"
 
 msgctxt "model:ir.action,name:wizard_product_cost_history_open"
 msgid "Cost History"
-msgstr ""
+msgstr "Költségelőzményei"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr ""
+msgstr "Cikk költségelőzményei"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
