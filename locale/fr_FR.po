@@ -31,16 +31,8 @@ msgid "Due Date"
 msgstr "Date d'échéance"
 
 msgctxt "odt:account.dunning.letter:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr "Paiements en attente reçus"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Reference"
@@ -49,7 +41,3 @@ msgstr "Référence"
 msgctxt "odt:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avis de rappel"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"

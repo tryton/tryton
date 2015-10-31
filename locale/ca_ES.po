@@ -31,16 +31,8 @@ msgid "Due Date"
 msgstr "Data de venciment"
 
 msgctxt "odt:account.dunning.letter:"
-msgid "E-Mail:"
-msgstr "Correu electrònic:"
-
-msgctxt "odt:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr "Pagaments pendents rebuts"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "Phone:"
-msgstr "Telèfon:"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Reference"
@@ -49,15 +41,3 @@ msgstr "Referència"
 msgctxt "odt:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avís recordatori"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
-
-msgctxt "wizard_button:account.dunning.process,start,end:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "wizard_button:account.dunning.process,start,process:"
-msgid "process"
-msgstr "Processa"

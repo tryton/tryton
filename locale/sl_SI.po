@@ -31,16 +31,8 @@ msgid "Due Date"
 msgstr "Zapadlost"
 
 msgctxt "odt:account.dunning.letter:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr "Dosedanja plačila"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Reference"
@@ -49,7 +41,3 @@ msgstr "Sklic"
 msgctxt "odt:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Opomin"
-
-msgctxt "odt:account.dunning.letter:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
