@@ -22,10 +22,6 @@ msgstr ""
 "El treball \"%(parent)s\" no es pot finalitzar perquè el treball fill "
 "\"%(child)s\" encara està obert."
 
-msgctxt "field:project.work,active:"
-msgid "Active"
-msgstr "Actiu"
-
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Fills"
@@ -48,11 +44,19 @@ msgstr "Usuari creació"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Esforç"
+msgstr "Temps"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Esquerra"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nom"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -66,9 +70,17 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Adreça de contacte"
 
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Progrés"
+
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Dreta"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
@@ -88,7 +100,11 @@ msgstr "Temps"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Total esforç"
+msgstr "Temps total"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Progrés total"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -106,21 +122,25 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:timesheet.work,timesheet_lines:"
-msgid "Timesheet Lines"
-msgstr "Línies de full de treball"
-
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Temps estimat per aquest treball."
 
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr "Progrés estimat per aquest treball."
+
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work"
-msgstr "Temps total dedicat en aquest treball."
+msgid "Total time spent on this work and the sub-works"
+msgstr "Temps total dedicat en aquest treball i els seus subtreballs."
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Esforç total estimat per a aquest treball i les seves subactivitats."
+msgstr "Temps total estimat per aquest treball i els seus subtreballs."
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "Progrés total estimat per aquest treball i els seus subtreballs."
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -145,6 +165,30 @@ msgstr "Projectes i tasques"
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Projectes i tasques"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Obert"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Obert"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Obert"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -199,16 +243,16 @@ msgid "Task"
 msgstr "Tasca"
 
 msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
 msgid "Children"
 msgstr "Fills"
 
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr "Tasques"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"

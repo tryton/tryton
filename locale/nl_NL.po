@@ -19,11 +19,6 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "field:project.work,active:"
-msgid "Active"
-msgstr "Actief"
-
-#, fuzzy
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
@@ -54,6 +49,14 @@ msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr ""
 
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr ""
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -68,10 +71,18 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr ""
 
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:project.work,sequence:"
@@ -96,6 +107,10 @@ msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr ""
 
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -118,12 +133,20 @@ msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr ""
 
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr ""
+
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work"
+msgid "Total time spent on this work and the sub-works"
 msgstr ""
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
+msgstr ""
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
@@ -148,6 +171,30 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
 msgstr ""
 
 #, fuzzy
@@ -205,6 +252,10 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr ""
 
+msgctxt "view:project.work:"
+msgid "%"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
@@ -214,10 +265,6 @@ msgstr "Onderliggende niveaus"
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "Algemeen"
-
-msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"

@@ -4,14 +4,14 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There should be only one timesheet work by task/project."
-msgstr "Na nalogo/projekt je možna samo ena evidentirana dejavnost."
+msgstr "Na nalogo/projekt je možno samo eno evidentiranje."
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
 msgstr ""
-"Dejavnosti \"%(child)s\" ni možno odpreti, ker je njena matična dejavnost "
+"Naloge \"%(child)s\" ni možno odpreti, ker je njena matična naloga "
 "\"%(parent)s\" že zaprta."
 
 msgctxt "error:project.work:"
@@ -19,16 +19,12 @@ msgid ""
 "Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
 "still opened."
 msgstr ""
-"Dejavnosti \"%(parent)s\" ni možno zaključiti zaradi njenih še odprtih "
-"poddejavnosti \"%(child)s\"."
-
-msgctxt "field:project.work,active:"
-msgid "Active"
-msgstr "Aktivno"
+"Naloge \"%(parent)s\" ni možno zaključiti zaradi njenih še odprtih podnalog "
+"\"%(child)s\"."
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Poddejavnosti"
+msgstr "Podnaloge"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
@@ -54,6 +50,14 @@ msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Levo"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Naziv"
+
 msgctxt "field:project.work,parent:"
 msgid "Parent"
 msgstr "Matičnia dejavnost"
@@ -66,9 +70,17 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Kontakt"
 
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Napredek"
+
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Desno"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
@@ -90,13 +102,17 @@ msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Ocena skupaj"
 
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Napredek skupaj"
+
 msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Tip"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
-msgstr "Dejavnost"
+msgstr "Naloga"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
@@ -108,15 +124,23 @@ msgstr "Zapisal"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "Ocenjen porabljen čas za ta teden"
+msgstr "Ocenjen čas za to nalogo"
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr "Ocenjen napredek za to nalogo"
 
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work"
-msgstr "Skupen porabljen čas na tej nalogi"
+msgid "Total time spent on this work and the sub-works"
+msgstr "Skupni čas, porabljen na tej nalogi in podnalogami."
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Skupna ocena porabljenega časa za to dejavnost in njene poddejavnosti"
+msgstr "Skupen čas, porabljen za to nalogo in podnaloge"
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "Skupen napredek za to nalogo in podnaloge"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -136,11 +160,35 @@ msgstr "Naloge"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Ocene dela"
+msgstr "Ocene nalog"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Ocene dela"
+msgstr "Ocene nalog"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Odprto"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Odprto"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Odprto"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -164,15 +212,15 @@ msgstr "Naloge"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Ocene dela"
+msgstr "Ocene nalog"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Ocene dela"
+msgstr "Ocene nalog"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Ocena dela"
+msgstr "Ocena naloge"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
@@ -195,17 +243,17 @@ msgid "Task"
 msgstr "Naloga"
 
 msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Poddejavnosti"
+msgstr "Podnaloge"
 
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "Splošno"
 
 msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr "Naloge"
-
-msgctxt "view:project.work:"
 msgid "Works Efforts"
-msgstr "Ocene dela"
+msgstr "Ocene naloge"

@@ -23,10 +23,6 @@ msgstr ""
 "Projekt/Aufgabe \"%(parent)s\" kann nicht auf 'Erledigt' gesetzt werden, "
 "weil das/die untergeordnete Projekt/Aufgabe \"%(child)s\" noch geöffnet ist."
 
-msgctxt "field:project.work,active:"
-msgid "Active"
-msgstr "Aktiv"
-
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Untergeordnet (Projekte/Aufgaben)"
@@ -55,6 +51,14 @@ msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Links"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Name"
+
 msgctxt "field:project.work,parent:"
 msgid "Parent"
 msgstr "Übergeordnet (Projekt/Aufgabe)"
@@ -67,9 +71,17 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Kontaktadresse"
 
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Fortschritt"
+
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Rechts"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
@@ -90,6 +102,10 @@ msgstr "Dauer"
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Gesamtaufwand (Personenstunden)"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Gesamtfortschritt"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -115,9 +131,14 @@ msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Geschätzter Zeitaufwand für diese Aufgabe"
 
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr "Geschätzter Forstchritt für diese Aufgabe"
+
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work"
-msgstr "Die gesamte Zeit, die für diese Aufgabe verwendet wurde"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
+"Die gesamte Zeit, die für diese Aufgabe inkl. Unteraufgaben verwendet wurde"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
@@ -125,6 +146,10 @@ msgstr ""
 "Veranschlagter Gesamtaufwand für diese(s) Projekt/Aufgabe inkl. aller "
 "untergeordneten Projekte/Aufgaben in Stunden (Format: Personenstunden, "
 "-tage, -wochen)"
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "Geschätzter Gesamtfortschritt für diese Aufgabe inkl. Unteraufgaben"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -149,6 +174,30 @@ msgstr "Aufgaben Aufwände"
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Aufgaben Aufwände"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Offen"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -203,16 +252,16 @@ msgid "Task"
 msgstr "Aufgabe"
 
 msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
 msgid "Children"
 msgstr "Untergeordnet (Projekte/Aufgaben)"
 
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "Allgemein"
-
-msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr "Aufgaben"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"

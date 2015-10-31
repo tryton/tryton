@@ -4,43 +4,47 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There should be only one timesheet work by task/project."
-msgstr "Должен быть только один рабочий табель у задачи/проекта."
+msgstr "Debe haber sólo un parte de horas de trabajo por tarea/proyecto."
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
 msgstr ""
+"El trabajo \"%(child)s\" no se puede abrir porque el trabajo padre "
+"\"%(parent)s\" ya está finalizado."
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
 "still opened."
 msgstr ""
+"El trabajo \"%(parent)s\" no puede finalizar porque el trabajo hijo "
+"\"%(child)s\" todavía se encuentra abierto."
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Подчиненый"
+msgstr "Hijos"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Комментарии"
+msgstr "Comentario"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Организация"
+msgstr "Empresa"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Fecha creación"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Usuario creación"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr ""
+msgstr "Esfuerzo"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -56,15 +60,15 @@ msgstr ""
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Предок"
+msgstr "Padre"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Entidad"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Контактный адрес"
+msgstr "Dirección de contacto"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
@@ -72,7 +76,7 @@ msgstr ""
 
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nombre"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -80,24 +84,23 @@ msgstr ""
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Нумерация"
+msgstr "Secuencia"
 
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Состояние"
+msgstr "Estado"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Доступно в табелях"
+msgstr "Disponible en partes de trabajo"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
-msgstr "Продолжительность"
+msgstr "Tiempo"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Общие затраты"
+msgstr "Total esfuerzo"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
@@ -105,23 +108,23 @@ msgstr ""
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Тип"
+msgstr "Tipo"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
-msgstr "Работа"
+msgstr "Trabajo"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Fecha modificación"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Usuario modificación"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr ""
+msgstr "Tiempo estimado para este trabajo."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work"
@@ -133,7 +136,7 @@ msgstr ""
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Предположительные общие затраты для этой работы и подчиненных работ"
+msgstr "El esfuerzo total estimado para este trabajo y sus subtrabajos."
 
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
@@ -141,27 +144,27 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tareas"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Проекты"
+msgstr "Proyectos"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Проекты"
+msgstr "Proyectos"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tareas"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Рабочие затраты"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Рабочие затраты"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
@@ -189,55 +192,55 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Проектирование"
+msgstr "Proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Проекты"
+msgstr "Proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Проекты"
+msgstr "Proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Рабочие затраты"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Рабочие затраты"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Рабочие затраты"
+msgstr "Proyecto y tarea"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Администрирование проектирования"
+msgstr "Administración de proyectos"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Выполнено"
+msgstr "Finalizado"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Открыт"
+msgstr "Abierto"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Проект"
+msgstr "Proyecto"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr "Задача"
+msgstr "Tarea"
 
 msgctxt "view:project.work:"
 msgid "%"
@@ -245,12 +248,12 @@ msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Подчиненый"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "Основной"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"
-msgstr "Рабочие затраты"
+msgstr ""

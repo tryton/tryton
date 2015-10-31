@@ -22,10 +22,6 @@ msgstr ""
 "La tarea \"%(parent)s\" no puede ser hecho porque su tarea hijo "
 "\"%(child)s\" esta todavía abierto."
 
-msgctxt "field:project.work,active:"
-msgid "Active"
-msgstr "Activo"
-
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Hijos"
@@ -54,6 +50,14 @@ msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr ""
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr ""
+
 msgctxt "field:project.work,parent:"
 msgid "Parent"
 msgstr "Padre"
@@ -66,9 +70,17 @@ msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Dirección de Contacto"
 
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr ""
+
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr ""
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
@@ -90,6 +102,10 @@ msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Esfuerzo tTotal"
 
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr ""
+
 msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -106,21 +122,25 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-msgctxt "field:timesheet.work,timesheet_lines:"
-msgid "Timesheet Lines"
-msgstr "Lineas de Registro de Tiempo"
-
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Esfuerzo Estimado para este trabajo"
 
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr ""
+
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work"
-msgstr "Total de tiempo de gastado en este trabajo"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -145,6 +165,30 @@ msgstr "Actividades"
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Actividades"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -199,16 +243,16 @@ msgid "Task"
 msgstr "Tarea"
 
 msgctxt "view:project.work:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:project.work:"
 msgid "Children"
 msgstr "Hijos"
 
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr "Tareas"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"
