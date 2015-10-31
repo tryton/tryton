@@ -22,45 +22,17 @@ msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Kostenstelle Zeilen"
 
-msgctxt "field:account.statement,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
-msgctxt "field:account.statement,date:"
-msgid "Date"
-msgstr "Datum"
-
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "Endsaldo"
-
-msgctxt "field:account.statement,journal:"
-msgid "Journal"
-msgstr "Journal"
 
 msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transaktionen"
 
-msgctxt "field:account.statement,rec_name:"
-msgid "Name"
-msgstr "Name"
-
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr "Anfangssaldo"
-
-msgctxt "field:account.statement,state:"
-msgid "State"
-msgstr "Status"
-
-msgctxt "field:account.statement.journal,company:"
-msgid "Company"
-msgstr "Unternehmen"
-
-msgctxt "field:account.statement.journal,currency:"
-msgid "Currency"
-msgstr "Währung"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -73,10 +45,6 @@ msgstr "Name"
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Name"
-
-msgctxt "field:account.statement.line,account:"
-msgid "Account"
-msgstr "Konto"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
@@ -97,10 +65,6 @@ msgstr "Rechnung"
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Buchungssatz"
-
-msgctxt "field:account.statement.line,party:"
-msgid "Party"
-msgstr "Partei"
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
@@ -308,7 +272,7 @@ msgstr "Name"
 
 msgctxt "field:analytic_account.line,reference:"
 msgid "Reference"
-msgstr "Interner Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
@@ -407,10 +371,6 @@ msgid "Canceled"
 msgstr "Annulliert"
 
 msgctxt "selection:account.statement,state:"
-msgid "Draft"
-msgstr "Entwurf"
-
-msgctxt "selection:account.statement,state:"
 msgid "Posted"
 msgstr "Festgeschrieben"
 
@@ -489,10 +449,6 @@ msgstr "Posten Bankauszüge"
 msgctxt "view:account.statement:"
 msgid "Bank Statements"
 msgstr "Bankauszüge"
-
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Annullieren"
 
 msgctxt "view:account.statement:"
 msgid "Move Lines"

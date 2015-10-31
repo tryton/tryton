@@ -348,9 +348,9 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Аналитика"
 
-msgctxt "view:account.move:"
-msgid "Analytic"
-msgstr "Аналитика"
+msgctxt "view:analytic.account.entry:"
+msgid "Analytic Entry"
+msgstr ""
 
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"

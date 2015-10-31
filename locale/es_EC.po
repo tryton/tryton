@@ -287,11 +287,11 @@ msgstr "Abrir plan de cuentas analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr "Cuentas Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr "Cuentas Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
@@ -338,10 +338,6 @@ msgid "View"
 msgstr "Vista"
 
 msgctxt "view:account.move.line:"
-msgid "Analytic"
-msgstr "Analítica"
-
-msgctxt "view:account.move:"
 msgid "Analytic"
 msgstr "Analítica"
 

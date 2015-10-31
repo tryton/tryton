@@ -49,7 +49,7 @@ msgstr "Nombre"
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
-msgstr "Requerido"
+msgstr "Obligatorio"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
@@ -65,7 +65,7 @@ msgstr "Usuario modificación"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Activo"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -161,7 +161,7 @@ msgstr "Cuenta"
 
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Activo"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
@@ -336,10 +336,6 @@ msgid "View"
 msgstr "Vista"
 
 msgctxt "view:account.move.line:"
-msgid "Analytic"
-msgstr "Analítica"
-
-msgctxt "view:account.move:"
 msgid "Analytic"
 msgstr "Analítica"
 

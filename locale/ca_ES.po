@@ -48,7 +48,7 @@ msgstr "Nom"
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
-msgstr "Requerit"
+msgstr "Obligatori"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"

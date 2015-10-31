@@ -18,10 +18,6 @@ msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
 msgstr ""
 
-msgctxt "field:account.invoice.line,analytic_accounts:"
-msgid "Analytic Accounts"
-msgstr "Аналитични сметки"
-
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Редове от аналитична сметка"
@@ -352,9 +348,9 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Задължителен"
 
-msgctxt "view:account.move:"
-msgid "Analytic"
-msgstr "Задължителен"
+msgctxt "view:analytic.account.entry:"
+msgid "Analytic Entry"
+msgstr ""
 
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
