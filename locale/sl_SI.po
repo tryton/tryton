@@ -2,13 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.price_list,sale_extras:"
-msgid "Sale Extras"
-msgstr "Prodajni dodatki"
-
 msgctxt "field:sale.extra,active:"
 msgid "Active"
 msgstr "Aktivno"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Družba"
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
@@ -21,6 +21,10 @@ msgstr "Izdelal"
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimalke"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
@@ -45,6 +49,10 @@ msgstr "Ime"
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
 msgstr "Znesek prodaje"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
@@ -118,9 +126,16 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Dodatno"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
+msgid "Dodatno"
+msgstr "Dodatno"
+
+msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
+msgstr "Dodatno"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
 msgstr "Dodatno"
 
 msgctxt "model:sale.extra,name:"

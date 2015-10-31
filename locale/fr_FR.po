@@ -2,13 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.price_list,sale_extras:"
-msgid "Sale Extras"
-msgstr "Extras de vente"
-
 msgctxt "field:sale.extra,active:"
 msgid "Active"
 msgstr "Actif"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Société"
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
@@ -21,6 +21,10 @@ msgstr "Créé par"
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
@@ -45,6 +49,10 @@ msgstr "Nom"
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
 msgstr "Montant de la vente"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
@@ -119,8 +127,16 @@ msgid "Extra"
 msgstr "Extra"
 
 msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
 msgstr "Extras de vente"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
