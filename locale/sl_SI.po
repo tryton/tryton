@@ -1,0 +1,159 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.promotion:"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Neveljavna formula \"%(formula)s\" v spodbude \"%(promotion)s\" z napako "
+"\"%(exception)s\"."
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr "Cena v pripravi"
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr "Spodbuda"
+
+msgctxt "field:sale.promotion,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:sale.promotion,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.promotion,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "Končni datum"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr "Formula"
+
+msgctxt "field:sale.promotion,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr "Cenik"
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:sale.promotion,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "enota"
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr "Kategorija enote"
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+msgctxt "field:sale.promotion,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.promotion-product.product,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.promotion-product.product,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.promotion-product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr "Spodbuda"
+
+msgctxt "field:sale.promotion-product.product,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.promotion-product.product,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.promotion-product.product,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Pythonski izraz, preračunan z:\n"
+"- cena: izvorna cena"
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr "Spodbude"
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr "Spodbude prodaje"
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr "Spodbude"
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr "Spodbuda prodaje"
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr "Spodbuda prodaje - Izdelek"
+
+msgctxt "view:sale.promotion:"
+msgid "Sale Promotion"
+msgstr "Spodbuda prodaje"
+
+msgctxt "view:sale.promotion:"
+msgid "Sale Promotions"
+msgstr "Spodbude prodaje"
