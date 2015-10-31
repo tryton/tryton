@@ -164,6 +164,8 @@ class Binary(BinaryMixin, Widget):
         else:
             self.but_select.show()
             self.but_clear.show()
+        if self.wid_text:
+            self.wid_text.set_editable(not value)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:
