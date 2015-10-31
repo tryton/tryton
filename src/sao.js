@@ -181,8 +181,8 @@ var Sao = {};
     Sao.i18n.setlang = function(lang) {
         Sao.i18n.setLocale(lang);
         return jQuery.getJSON('locale/' + lang + '.json', function(data) {
-            if (!data['']['language']) {
-                data['']['language'] = lang;
+            if (!data[''].language) {
+                data[''].language = lang;
             }
             if (!data['']['plural-forms']) {
                 data['']['plural-forms'] = 'nplurals=2; plural=(n!=1);';
