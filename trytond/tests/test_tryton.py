@@ -100,7 +100,10 @@ class ModuleTestCase(unittest.TestCase):
                     ('model', '!=', ''),
                     ])
             for view in views:
-                view_id = view.inherit and view.inherit.id or view.id
+                if view.inherit and view.inherit.model == view.model:
+                    view_id = view.inherit.id
+                else:
+                    view_id = view.id
                 model = view.model
                 Model = POOL.get(model)
                 res = Model.fields_view_get(view_id)
