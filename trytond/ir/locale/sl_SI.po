@@ -27,7 +27,7 @@ msgid ""
 "The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
 "exceeds its limit."
 msgstr ""
-"Število decimalk \"%(digits)s\" polja \"%(field)s\" pri \"%(model)s\" je "
+"Število decimalk \"%(digits)s\" polja \"%(field)s\" pri \"%(value)s\" je "
 "preseženo."
 
 msgctxt "error:domain_validation_record:"
@@ -170,24 +170,23 @@ msgstr "Model mora biti unikaten."
 
 msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
-msgstr "Odvisnost mora biti unikatno med moduli."
+msgstr "Odvisnost mora biti enolična po modulu."
 
 msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
-msgstr "Manjkajoče odvisnosti %s za modul \"%s\""
+msgstr "Manjkajo odvisnosti %s za modul \"%s\""
 
 msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr ""
-"Moduli, ki jih nameravate odstraniti, so odvisni od nameščenih modulov:"
+msgstr "Moduli, ki jih želiš odstraniti, so odvisni od nameščenih modulov:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
-msgstr "Ime modula mora biti edinstveno."
+msgstr "Ime modula mora biti enolično."
 
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
-msgstr "Modula, ki je ali bo nameščen, ne morete odstraniti."
+msgstr "Modula, ki je nameščen ali bo nameščen, ni možno odstraniti"
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -255,11 +254,11 @@ msgstr "\"Točno ob času\" in ostali so med seboj izključujoči."
 
 msgctxt "error:ir.trigger:"
 msgid ""
-"Condition \"%(condition)s\" is not a valid python expression on trigger "
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"Pogoj \"%(condition)s\" ni veljaven Python izraz za prožilnik "
-"\"%(trigger)s\"."
+"Pogoj \"%(condition)s\" na prožilniku \"%(trigger)s\" ni veljaven PYSON "
+"izraz."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
@@ -740,14 +739,6 @@ msgstr "Ime vsebine"
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Interni naziv"
-
-msgctxt "field:ir.action.report,style:"
-msgid "Style"
-msgstr "Slog"
-
-msgctxt "field:ir.action.report,style_content:"
-msgid "Style"
-msgstr "Slog"
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -1551,7 +1542,7 @@ msgstr "Nivo"
 
 msgctxt "field:ir.module,childs:"
 msgid "Childs"
-msgstr "Podmoduli"
+msgstr "Podrejeni"
 
 msgctxt "field:ir.module,create_date:"
 msgid "Create Date"
@@ -1575,7 +1566,7 @@ msgstr "Naziv"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
-msgstr "Matični moduli"
+msgstr "Nadrejeni"
 
 msgctxt "field:ir.module,rec_name:"
 msgid "Name"
@@ -1647,7 +1638,7 @@ msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr "Odstotek"
+msgstr "Odstotno"
 
 msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
@@ -1803,7 +1794,7 @@ msgstr "Izdelava"
 
 msgctxt "field:ir.rule.group,perm_delete:"
 msgid "Delete Access"
-msgstr " Brisanje"
+msgstr "Brisanje"
 
 msgctxt "field:ir.rule.group,perm_read:"
 msgid "Read Access"
@@ -2661,10 +2652,6 @@ msgstr ""
 "Za enako končnico kot v predlogi pustite prazno. Za združljiv format glejte "
 "navodila za unoconv."
 
-msgctxt "help:ir.action.report,style:"
-msgid "Define the style to apply on the report."
-msgstr "Določitev sloga za poročilo"
-
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Zaženi čarovnika v novem oknu"
@@ -2737,7 +2724,7 @@ msgstr "Pravilu je zadoščeno, če je vsaj en preizkus resničen"
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
-"A Python statement evaluated with record represented by \"self\"\n"
+"A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
 "Pythonski stavek, ki se preračuna z zapisom, dostopnim preko \"self\".\n"
@@ -3041,9 +3028,21 @@ msgctxt "model:ir.lang,name:lang_es_CO"
 msgid "Spanish (Colombia)"
 msgstr "Španščina (Kolumbija)"
 
+msgctxt "model:ir.lang,name:lang_es_MX"
+msgid "Spanish (Mexico)"
+msgstr "Španščina (Mehika)"
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francoščina"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr "Madžarščina"
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr "Italijanščina"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3052,6 +3051,10 @@ msgstr "Litovščina"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Holandščina"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr "Portugalščina (Brazilija)"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3095,31 +3098,31 @@ msgstr "Modul"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr "Konfiguracija modula zaključek"
+msgstr "Zaključek konfiguracije modula"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Konfiguracija modula zagon"
+msgstr "Začetek konfiguracije modula"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
-msgstr "Nastavitveni čarovnik, ki se zažene po namestitvi modula"
+msgstr "Nastavitveni čarovnik po namestitvi modula"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Konfiguracija modula drugo"
+msgstr "Ostala konfiguracija modula"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr "Odvisnost modula"
+msgstr "Odvisen modul"
 
 msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
-msgstr "Namestitev modula zaključek"
+msgstr "Zaključek nadgradnje modula"
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
-msgstr "Namestitev modula zagon"
+msgstr "Začetek nadgradnje modula"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3462,16 +3465,16 @@ msgid "Right-to-left"
 msgstr "Z desne proti levi"
 
 msgctxt "selection:ir.module,state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:ir.module,state:"
 msgid "Installed"
 msgstr "Nameščeno"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
 msgstr "Ni nameščeno"
-
-msgctxt "selection:ir.module,state:"
-msgid "To be installed"
-msgstr "Za namestiti"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3771,17 +3774,17 @@ msgstr "Konfiguracija modula"
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr "Konfiguracija je zaključena."
+msgstr "Konfiguracija modulov zaključena"
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
-msgstr "Dobrodošli v čarovniku za nastavitev modulov"
+msgstr "Dobrodošli v čarovniku za konfiguracijo modula."
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
-msgstr "Vašo namestitev je možno skonfigurirati glede na nameščene module."
+msgstr "Sedaj boste lahko skonfigurirali nameščene module."
 
 msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
@@ -3789,7 +3792,7 @@ msgstr "Nastavitveni čarovniki"
 
 msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
-msgstr "Naslednji korak čarovnika za konfiguracijo."
+msgstr "Naslednji korak nastavitvenega čarovnika"
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
@@ -3801,19 +3804,19 @@ msgstr "Odvisnost"
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
-msgstr "Nadgradnja sistema končana."
+msgstr "Zaključek nadgradnje sistema"
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
-msgstr "Moduli so bili nadgrajeni / nameščeni."
+msgstr "Moduli nadgrajeni / nameščeni."
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr "Upoštevajte, da lahko ta operacija traja nekaj minut."
+msgstr "Ta operacija lahko traja nekaj minut."
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "System Upgrade"
-msgstr "Nadgradnja sistema"
+msgstr "Začetek nadgradnje sistema"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
@@ -3997,12 +4000,12 @@ msgid "Menu"
 msgstr "Meni"
 
 msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Pogled"
+msgid "Show"
+msgstr "Prikaz"
 
 msgctxt "view:ir.ui.view:"
-msgid "_Show"
-msgstr "_Prikaz"
+msgid "View"
+msgstr "Pogled"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

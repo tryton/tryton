@@ -7,22 +7,18 @@ msgid "The name of the group must be unique!"
 msgstr "Наименование группы должно быть уникальным!"
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "Неверный пароль!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Такое имя пользователя уже есть!"
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"Вы не можете удалить основного пользователя базы данных\n"
-"т.к. он используется во внутренних процессах базы данных\n"
-"(обновление, установка модулей, ...)"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -640,30 +636,6 @@ msgstr "Попытка входа"
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Внимание Пользователь"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Отменить установку"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Отменить удаление"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr " Отменить обновление"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Установить"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Удалить (бета)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Обновить"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"

@@ -7,21 +7,20 @@ msgid "The name of the group must be unique!"
 msgstr "Der Name einer Gruppe kann nur einmal vergeben werden."
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"Benutzer können aus Dokumentationsgründen nicht gelöscht werden.\n"
+"Sie müssen stattdessen deaktiviert werden."
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "Ungültiges Passwort!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Der Anmeldename für einen Benutzer kann nur einmal vergeben werden."
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"Der Benutzer root kann nicht gelöscht werden, da er für interne Systemverwaltungsaufgaben\n"
-"(Updates, Modulinstallation, ...) benötigt wird."
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -221,7 +220,7 @@ msgstr "Name"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr "Typ Strikter Nummernkreis"
+msgstr "Nummernkreistyp"
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
@@ -582,7 +581,7 @@ msgstr "Gruppenregel - Benutzer"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "Typ Nummernkreis - Gruppe"
+msgstr "Nummernkreistyp - Gruppe"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -639,30 +638,6 @@ msgstr "Login Versuch"
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Benutzer Warnung"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Vormerkung für Installation aufheben"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Deinstallation abbrechen"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Vormerkung für Aktualisierung aufheben"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Für die Installation vormerken"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Für die Deinstallation (beta) vormerken"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Für die Aktualisierung vormerken"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"

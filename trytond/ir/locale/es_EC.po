@@ -116,19 +116,19 @@ msgstr "¡el punto decimal y el separador de miles deben ser distintos!"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not create this kind of document! (%s)"
-msgstr "No puede crear este tipo de documento (%s)"
+msgstr "¡No puede crear este tipo de documento! (%s)"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not delete this document! (%s)"
-msgstr "No puede eliminar este documento (%s)"
+msgstr "¡No puede eliminar este documento! (%s)"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not read this document! (%s)"
-msgstr "No puede leer este documento (%s)"
+msgstr "¡No puede leer este documento! (%s)"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
-msgstr "No puede escribir en este documento (%s)"
+msgstr "¡No puede escribir en este documento! (%s)"
 
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
@@ -140,7 +140,7 @@ msgstr "¡La terna (fs_id, modulo, modelo) debe ser única!"
 
 msgctxt "error:ir.model.field.access:"
 msgid "You can not read the field! (%s.%s)"
-msgstr "No puede leer el campo! (%s.%s)"
+msgstr "¡No puede leer el campo! (%s.%s)"
 
 msgctxt "error:ir.model.field.access:"
 msgid "You can not write on the field! (%s.%s)"
@@ -149,7 +149,7 @@ msgstr "¡No puede escribir en el campo! (%s.%s)"
 msgctxt "error:ir.model.field:"
 msgid "Model Field name \"%s\" is not a valid python identifier."
 msgstr ""
-"El nombre del Campo Modelo \"%s\" no es un identificador de Python válido."
+"El nombre del campo modelo \"%s\" no es un identificador de Python válido."
 
 msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
@@ -186,7 +186,7 @@ msgstr "No puede eliminar un módulo que está instalado o que será instalado"
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
-msgstr "¡\"Global\" y \"Por Defecto\" son mutuamente excluyentes!"
+msgstr "¡\"Global\" y \"Por defecto\" son mutuamente excluyentes!"
 
 msgctxt "error:ir.rule:"
 msgid "Invalid domain in rule \"%s\"."
@@ -246,19 +246,19 @@ msgstr ""
 
 msgctxt "error:ir.trigger:"
 msgid "\"On Time\" and others are mutually exclusive!"
-msgstr "¡\"A Tiempo\" y otros son mutuamente excluyentes!"
+msgstr "¡\"A tiempo\" y otros son mutuamente excluyentes!"
 
 msgctxt "error:ir.trigger:"
 msgid ""
-"Condition \"%(condition)s\" is not a valid python expression on trigger "
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"La condición \"%(condition)s\" no es una expressión python válida en el "
-"disparador \"%s(trigger)s\"."
+"La condición \"%(condition)s\" no es una expresión PYSON válida en el "
+"disparador \"%(trigger)s\"."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"%s\" no es un nombre de menú válido porque no puede contener \"/\""
+msgstr "\"%s\" no es un nombre de menú válido porque no puede contener \"/\"."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -462,7 +462,7 @@ msgstr "Nombre"
 
 msgctxt "field:ir.action.act_window,order:"
 msgid "Order Value"
-msgstr "Valor del orden"
+msgstr "Valor de la ordenación"
 
 msgctxt "field:ir.action.act_window,pyson_context:"
 msgid "PySON Context"
@@ -658,7 +658,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
-msgstr "Impresión Directa"
+msgstr "Impresión directa"
 
 msgctxt "field:ir.action.report,email:"
 msgid "Email"
@@ -718,23 +718,15 @@ msgstr "Contenido"
 
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
-msgstr "Nombre del Contenido"
+msgstr "Nombre del contenido"
 
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Nombre Interno"
 
-msgctxt "field:ir.action.report,style:"
-msgid "Style"
-msgstr "Estilo"
-
-msgctxt "field:ir.action.report,style_content:"
-msgid "Style"
-msgstr "Estilo"
-
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
-msgstr "Extensión de Plantilla"
+msgstr "Extensión de plantilla"
 
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
@@ -918,11 +910,11 @@ msgstr "ID"
 
 msgctxt "field:ir.attachment,last_modification:"
 msgid "Last Modification"
-msgstr "Última Modificación"
+msgstr "Última modificación"
 
 msgctxt "field:ir.attachment,last_user:"
 msgid "Last User"
-msgstr "Último Usuario"
+msgstr "Último usuario"
 
 msgctxt "field:ir.attachment,link:"
 msgid "Link"
@@ -1182,7 +1174,7 @@ msgstr "Fecha"
 
 msgctxt "field:ir.lang,decimal_point:"
 msgid "Decimal Separator"
-msgstr "Separador Decimal"
+msgstr "Separador decimal"
 
 msgctxt "field:ir.lang,direction:"
 msgid "Direction"
@@ -1370,11 +1362,11 @@ msgstr "ID del Recurso"
 
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
-msgstr "Identificador en el Sistema de Archivos"
+msgstr "Identificador en el sistema de archivos"
 
 msgctxt "field:ir.model.data,fs_values:"
 msgid "Values on File System"
-msgstr "Valores del Sistema de Archivos"
+msgstr "Valores del sistema de archivos"
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1390,7 +1382,7 @@ msgstr "Módulo"
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
-msgstr "Sin Actualizar"
+msgstr "No actualizar"
 
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
@@ -1970,7 +1962,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:ir.sequence.type,code:"
 msgid "Sequence Code"
-msgstr "Código de la secuencia"
+msgstr "Código de secuencia"
 
 msgctxt "field:ir.sequence.type,create_date:"
 msgid "Create Date"
@@ -1986,7 +1978,7 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
-msgstr "Nombre de la secuencia"
+msgstr "Nombre de secuencia"
 
 msgctxt "field:ir.sequence.type,rec_name:"
 msgid "Name"
@@ -2090,7 +2082,7 @@ msgstr "Nombre del campo"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
-msgstr "Sobreescritura del módulo"
+msgstr "Módulo principal"
 
 msgctxt "field:ir.translation,rec_name:"
 msgid "Name"
@@ -2102,11 +2094,11 @@ msgstr "ID del recurso"
 
 msgctxt "field:ir.translation,src:"
 msgid "Source"
-msgstr "Fuente"
+msgstr "Original"
 
 msgctxt "field:ir.translation,src_md5:"
 msgid "Source MD5"
-msgstr "Origen MD5"
+msgstr "MD5 del original"
 
 msgctxt "field:ir.translation,type:"
 msgid "Type"
@@ -2170,11 +2162,11 @@ msgstr "Idioma"
 
 msgctxt "field:ir.trigger,action_function:"
 msgid "Action Function"
-msgstr "Función de la Acción"
+msgstr "Función de la acción"
 
 msgctxt "field:ir.trigger,action_model:"
 msgid "Action Model"
-msgstr "Modelo de la Acción"
+msgstr "Modelo de la acción"
 
 msgctxt "field:ir.trigger,active:"
 msgid "Active"
@@ -2642,11 +2634,7 @@ msgid ""
 "compatible format"
 msgstr ""
 "Dejar vacío para el mismo tipo como plantilla, consulte la documentación de "
-"unoconv sobre formatos compatibles."
-
-msgctxt "help:ir.action.report,style:"
-msgid "Define the style to apply on the report."
-msgstr "Define el estilo a aplicar en el informe."
+"unoconv sobre formatos compatibles"
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
@@ -2722,10 +2710,10 @@ msgstr "La regla se satisface si al menos una condición es verdadera"
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
-"A Python statement evaluated with record represented by \"self\"\n"
+"A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Una instrucción Python evaluada con el registro representado por \"self\"\n"
+"Una instrucción PYSON evaluada con el registro representado por \"self\"\n"
 "Dispara la acción si es verdadera."
 
 msgctxt "help:ir.trigger,limit_number:"
@@ -3026,9 +3014,21 @@ msgctxt "model:ir.lang,name:lang_es_CO"
 msgid "Spanish (Colombia)"
 msgstr "Español (Colombia)"
 
+msgctxt "model:ir.lang,name:lang_es_MX"
+msgid "Spanish (Mexico)"
+msgstr "Español (México)"
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francés"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr "Húngaro"
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr "Italiano"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3037,6 +3037,10 @@ msgstr "Lituano"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Holandés"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr "Portugués (Brasil)"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3184,7 +3188,7 @@ msgstr "Icono"
 
 msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
-msgstr "Menú UI"
+msgstr "Menú de la UI"
 
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
@@ -3855,11 +3859,11 @@ msgstr ""
 
 msgctxt "view:ir.rule.group:"
 msgid "Record rules"
-msgstr "Reglas de Registros"
+msgstr "Reglas de registros"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
-msgstr "La regla se satisface si al menos una condición es cierta"
+msgstr "La regla se satisface si al menos una condición es verdadera"
 
 msgctxt "view:ir.rule:"
 msgid "Test"
@@ -3911,7 +3915,7 @@ msgstr "Año:"
 
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations"
-msgstr "Limpiar las traducciones"
+msgstr "Limpiar traducciones"
 
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
@@ -3986,12 +3990,12 @@ msgid "Menu"
 msgstr "Menú"
 
 msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Vista"
+msgid "Show"
+msgstr "Mostrar"
 
 msgctxt "view:ir.ui.view:"
-msgid "_Show"
-msgstr "_Mostrar"
+msgid "View"
+msgstr "Vista"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"
@@ -4027,11 +4031,11 @@ msgstr "Imprimir"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
@@ -4047,7 +4051,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
@@ -4067,7 +4071,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.translation.export,result,end:"
 msgid "Close"
@@ -4091,7 +4095,7 @@ msgstr "Definir"
 
 msgctxt "wizard_button:ir.translation.set,succeed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.translation.update,start,end:"
 msgid "Cancel"

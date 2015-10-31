@@ -7,21 +7,20 @@ msgid "The name of the group must be unique!"
 msgstr "Naziv skupine mora biti edinstven."
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"Uporabnikov ni možno izbrisati zaradi beleženja.\n"
+"Namesto tega jih morate deaktivirati."
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "Napačno geslo."
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Dva uporabnika ne moreta imeti isto prijavo."
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"Skrbnika ni možno odstraniti, ker se interno uporablja za vire, \n"
-"ki jih izdeluje sistem (posodobitve, nameščanje modulov, ...)"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -638,30 +637,6 @@ msgstr "Poskus prijave"
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Uporabniško opozorilo"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Prekliči namestitev"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Prekliči odstranitev"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Prekliči nadgradnjo"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Označi za namestitev"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Označi za odstranitev (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Označi za nadgradnjo"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"

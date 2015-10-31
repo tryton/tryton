@@ -99,7 +99,7 @@ msgstr ""
 "%s\n"
 " Traceback: \n"
 "\n"
-"%s"
+"%s\n"
 
 msgctxt "error:ir.lang:"
 msgid "Default language can not be deleted."
@@ -123,7 +123,7 @@ msgstr "Dezimalpunkt and Tausendertrennzeichen müssen unterschiedlich sein!"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not create this kind of document! (%s)"
-msgstr "Keine Berechtigung für die Erstellung dieser Dokumentenart! (%s) "
+msgstr "Keine Berechtigung für die Erstellung dieser Dokumentenart! (%s)"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not delete this document! (%s)"
@@ -173,7 +173,7 @@ msgstr "Das Modell kann nur einmal vergeben werden."
 
 msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
-msgstr "Die Abhängigkeit eines Moduls muss eindeutig sein!"
+msgstr "Abhängigkeit kann nur einmal pro Modul vergeben werden."
 
 msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
@@ -181,7 +181,7 @@ msgstr "Fehlende Abhängigkeiten %s für Modul \"%s\"."
 
 msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr "Die zu deinstallierenden Module hängen von installierten Module ab:"
+msgstr "Die zu deinstallierenden Module hängen von installierten Modulen ab:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
@@ -203,7 +203,7 @@ msgstr "Ungültiger Wertebereich (Domain) in Regel \"%s\"."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Ungüliger Präfix \"%(prefix)s\" in Nummernkreis \"%(sequence)s\"."
+msgstr "Ungültiger Präfix \"%(prefix)s\" in Nummernkreis \"%(sequence)s\"."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
@@ -225,7 +225,7 @@ msgstr "Die Rundung für Zeitstempel sollte größer als 0 sein."
 
 msgctxt "error:ir.sequence:"
 msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Ungüliger Präfix \"%(prefix)s\" in Nummernkreis \"%(sequence)s\"."
+msgstr "Ungültiger Präfix \"%(prefix)s\" in Nummernkreis \"%(sequence)s\"."
 
 msgctxt "error:ir.sequence:"
 msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
@@ -265,11 +265,11 @@ msgstr ""
 
 msgctxt "error:ir.trigger:"
 msgid ""
-"Condition \"%(condition)s\" is not a valid python expression on trigger "
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"Bedingung \"%(condition)s\" auf Trigger \"%(trigger)s\" ist kein gültiger "
-"Pythonausdruck."
+"Bedingung \"%(condition)s\" für Trigger \"%(trigger)s\" ist kein gültiger "
+"PYSON-Ausdruck."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
@@ -752,14 +752,6 @@ msgstr "Inhalt Name"
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Interner Name"
-
-msgctxt "field:ir.action.report,style:"
-msgid "Style"
-msgstr "Stil"
-
-msgctxt "field:ir.action.report,style_content:"
-msgid "Style"
-msgstr "Stil"
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -2673,10 +2665,6 @@ msgstr ""
 "Leer lassen für dasselbe Format wie in 'Erweiterung Vorlage', siehe unoconv-"
 "Dokumentation für kompatible Formate"
 
-msgctxt "help:ir.action.report,style:"
-msgid "Define the style to apply on the report."
-msgstr "Definiert den Stil für den Bericht"
-
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Wizard in separatem Fenster ausführen"
@@ -2686,8 +2674,8 @@ msgid ""
 "Number of times the function is called, a negative number indicates that the"
 " function will always be called"
 msgstr ""
-"Anzahl der Funktionsaufrufe\\n\n"
-"(Eine negative Zahl bewirkt, dass die Funktion immer aufgerufen wird.)"
+"Anzahl der Funktionsaufrufe (Eine negative Zahl bewirkt, dass die Funktion "
+"immer aufgerufen wird)."
 
 msgctxt "help:ir.cron,request_user:"
 msgid "The user who will receive requests in case of failure"
@@ -2752,11 +2740,11 @@ msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
-"A Python statement evaluated with record represented by \"self\"\n"
+"A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Ein Pythonausdruck, der mit dem Datensatz (repräsentiert durch \"self\") ausgewertet wird.\n"
-"Die Aktion wird getriggert, wenn der Ausdruck Wahr ist (zutrifft)."
+"Ein PYSON-Ausdruck, der mit dem Datensatz (repräsentiert durch \"self\") ausgewertet wird.\n"
+"Die Aktion wird getriggert, wenn der Ausdruck zutrifft (Wahr ist)."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
@@ -3056,9 +3044,21 @@ msgctxt "model:ir.lang,name:lang_es_CO"
 msgid "Spanish (Colombia)"
 msgstr "Spanisch (Kolumbien)"
 
+msgctxt "model:ir.lang,name:lang_es_MX"
+msgid "Spanish (Mexico)"
+msgstr "Spanisch (Mexiko)"
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Französisch"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr "Ungarisch"
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr "Italienisch"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3067,6 +3067,10 @@ msgstr "Litauisch"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Niederländisch"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr "Portugiesisch (Brasilien)"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3114,7 +3118,7 @@ msgstr "Modulkonfigurationswizard Erledigt"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Konfigurationswizard Module Erster"
+msgstr "Modulkonfigurationswizard Erster Schritt"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
@@ -3122,7 +3126,7 @@ msgstr "Konfigurationswizard nach Modulinstallation"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Konfigurationswizard Module Andere"
+msgstr "Modulkonfigurationswizard Weiterer Schritt"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
@@ -3130,11 +3134,11 @@ msgstr "Modulabhängigkeit"
 
 msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
-msgstr "Modul Installation Aktualisierung Erledigt"
+msgstr "Modulinstallation Aktualisierung Erledigt"
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
-msgstr "Module Installation Aktualisierung Start"
+msgstr "Modulinstallation Aktualisierung Start"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3158,7 +3162,7 @@ msgstr "Strikter Nummernkreis"
 
 msgctxt "model:ir.sequence.type,name:"
 msgid "Sequence type"
-msgstr "Typ Nummernkreis"
+msgstr "Nummernkreistyp"
 
 msgctxt "model:ir.session,name:"
 msgid "Session"
@@ -3486,15 +3490,15 @@ msgstr "Nicht installiert"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be installed"
-msgstr "Für die Installation vorgemerkt"
+msgstr "Für die Installation vorgesehen"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
-msgstr "Für die Entfernung vorgemerkt"
+msgstr "Für die Deinstallation vorgesehen"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
-msgstr "Für die Aktualisierung vorgemerkt"
+msgstr "Für die Aktualisierung vorgesehen"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
@@ -3514,15 +3518,15 @@ msgstr "Nicht installiert"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
-msgstr "Für die Installation vorgemerkt"
+msgstr "Für die Installation vorgesehen"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
-msgstr "Für die Entfernung vorgemerkt"
+msgstr "Für die Deinstallation vorgesehen"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
-msgstr "Für die Aktualisierung vorgemerkt"
+msgstr "Für die Aktualisierung vorgesehen"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
@@ -3832,19 +3836,19 @@ msgstr "Systemaktualisierung"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr "Das System wird aktualisiert"
+msgstr "Das System wird akualisiert."
 
 msgctxt "view:ir.module:"
 msgid "Cancel Installation"
-msgstr "Vormerkung für Installation / Aktualisierung aufheben"
+msgstr "Vormerkung für Installation aufheben"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
-msgstr "Deinstallation abbrechen"
+msgstr "Vormerkung für Deinstallation aufheben"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr "Vormerkung für Installation / Aktualisierung aufheben"
+msgstr "Vormerkung für Aktualisierung aufheben"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Installation"
@@ -3896,40 +3900,16 @@ msgid "Test"
 msgstr "Test"
 
 msgctxt "view:ir.sequence.strict:"
-msgid "${day}"
-msgstr "${day}"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "${month}"
-msgstr "${month}"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "${year}"
-msgstr "${year}"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "Day:"
-msgstr "Tag:"
-
-msgctxt "view:ir.sequence.strict:"
 msgid "Legend (for prefix, suffix)"
 msgstr "Legende (für Präfix, Suffix)"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "Month:"
-msgstr "Monat:"
 
 msgctxt "view:ir.sequence.strict:"
 msgid "Sequences Strict"
 msgstr "Strikte Nummernkreise"
 
-msgctxt "view:ir.sequence.strict:"
-msgid "Year:"
-msgstr "Jahr:"
-
 msgctxt "view:ir.sequence.type:"
 msgid "Sequence Type"
-msgstr "Typ Nummernkreis"
+msgstr "Nummernkreistyp"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -4048,12 +4028,12 @@ msgid "Menu"
 msgstr "Menü"
 
 msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Sicht"
+msgid "Show"
+msgstr "Anzeigen"
 
 msgctxt "view:ir.ui.view:"
-msgid "_Show"
-msgstr "_Anzeigen"
+msgid "View"
+msgstr "Sicht"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"
@@ -4117,7 +4097,7 @@ msgstr "Abbrechen"
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"
-msgstr "Start"
+msgstr "Aktualisierung starten"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

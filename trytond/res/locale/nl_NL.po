@@ -7,18 +7,17 @@ msgid "The name of the group must be unique!"
 msgstr ""
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr ""
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
 msgstr ""
 
 #, fuzzy
@@ -681,36 +680,6 @@ msgstr ""
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Installatie annuleren"
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Verwijderen ongedaan maken"
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Bijwerken annuleren"
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Selecteer voor installatie"
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Selecteer voor verwijderen (beta)"
-
-#, fuzzy
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Selecteer voor bijwerken"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"

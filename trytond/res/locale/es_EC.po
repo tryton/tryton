@@ -7,22 +7,20 @@ msgid "The name of the group must be unique!"
 msgstr "¡El nombre del grupo debe ser único!"
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"Para fines de registro, los usuarios no pueden ser eliminados.\n"
+"En vez de eso, debe desactivarlos."
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "¡Contraseña incorrecta!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "¡No puede tener dos usuarios con el mismo nombre de usuario!"
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"No puede eliminar al usuario root\n"
-"ya que se utiliza internamente para recursos\n"
-"creados por el sistema (actualizaciones, instalación de módulos, ...)"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -354,7 +352,7 @@ msgstr "Nombre de usuario"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
-msgstr "Acción Menú"
+msgstr "Acción menú"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
@@ -562,11 +560,11 @@ msgstr "Acción - Grupo"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Ejecutar Disparadores \"A tiempo\""
+msgstr "Ejecutar disparadores por tiempo"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Botón de Modelo - Grupo"
+msgstr "Botón del modelo - Grupo"
 
 msgctxt "model:ir.model.field-res.group,name:"
 msgid "Model Field Group Rel"
@@ -640,30 +638,6 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso al usuario"
 
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Cancelar instalación"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Cancelar desinstalación"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Cancelar actualización"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Marcar para instalar"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Marcar para desinstalar (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Marcar para actualizar"
-
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr "Permisos de acceso"
@@ -682,15 +656,15 @@ msgstr "Miembros"
 
 msgctxt "view:res.user.config.start:"
 msgid "Add Users"
-msgstr "Añadir usuarios"
+msgstr "Agregar usuarios"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "El identificador debe ser único."
+msgstr "¡El identificador debe ser único!"
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr "Si quiere, ahora puede añadir más usuarios en el sistema."
+msgstr "Si lo desea, ahora puede agregar más usuarios en el sistema."
 
 msgctxt "view:res.user.warning:"
 msgid "Warning"
@@ -710,7 +684,7 @@ msgstr "Acciones"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "Miembro del Grupo"
+msgstr "Grupos"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

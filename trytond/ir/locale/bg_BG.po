@@ -4,14 +4,6 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:access_error:"
 msgid ""
-"You try to bypass an access rule!\n"
-"(Document type: %s)"
-msgstr ""
-"Опитвате се да прескочите право за достъп!\n"
-"(Вид документ: %s)"
-
-msgctxt "error:access_error:"
-msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
@@ -153,24 +145,23 @@ msgstr "Модела трябва да е уникален!"
 
 msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
-msgstr "Зависимостта трябва да е уникална за модул!"
+msgstr ""
 
 msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
-msgstr "Липсващи зависимости %s за модул \"%s\""
+msgstr ""
 
 msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
-"От модула който исакте да деинсталирате зависят следните инсталирани модули:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
-msgstr "Името на модула трябва да е уникално!"
+msgstr ""
 
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
-msgstr "Не може да изтривате модул който инсталиран или ще бъде инсталиран"
+msgstr ""
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -236,7 +227,7 @@ msgstr "\"В даден момент\" и останалите са взаимн
 
 msgctxt "error:ir.trigger:"
 msgid ""
-"Condition \"%(condition)s\" is not a valid python expression on trigger "
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
 
@@ -247,14 +238,6 @@ msgstr ""
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr ""
-
-msgctxt "error:read_error:"
-msgid ""
-"You try to read records that don't exist anymore!\n"
-"(Document type: %s)"
-msgstr ""
-"Опитвате се да прочетете запис който вече не съществува!\n"
-"(Вид документ: %s)"
 
 msgctxt "error:read_error:"
 msgid ""
@@ -309,14 +292,6 @@ msgstr ""
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
 msgstr "Намерени са твърде много зависимости: %r в %s"
-
-msgctxt "error:write_error:"
-msgid ""
-"You try to write on records that don't exist anymore!\n"
-"(Document type: %s)"
-msgstr ""
-"Опитвате се да запишете в запис който вече не съшествува!\n"
-"(Вид документ: %s)"
 
 msgctxt "error:write_error:"
 msgid ""
@@ -736,14 +711,6 @@ msgstr ""
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Вътрешно име"
-
-msgctxt "field:ir.action.report,style:"
-msgid "Style"
-msgstr "Стил"
-
-msgctxt "field:ir.action.report,style_content:"
-msgid "Style"
-msgstr "Стил"
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -1571,152 +1538,151 @@ msgstr "Ниво"
 
 msgctxt "field:ir.module,childs:"
 msgid "Childs"
-msgstr "Деца"
+msgstr ""
 
 msgctxt "field:ir.module,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:ir.module,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
-msgstr "Зависимости"
+msgstr ""
 
 msgctxt "field:ir.module,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module,name:"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
-msgstr "Родители"
+msgstr ""
 
 msgctxt "field:ir.module,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:ir.module,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr ""
 
 msgctxt "field:ir.module,version:"
 msgid "Version"
-msgstr "Версия"
+msgstr ""
 
 msgctxt "field:ir.module,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.first,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
-msgstr "Действие"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr "Процент"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
-msgstr "Модул"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:ir.module.install_upgrade.done,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.install_upgrade.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
-msgstr "Модули за обновяване"
+msgstr ""
 
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
@@ -2715,10 +2681,6 @@ msgstr ""
 "Оставете празно за същото като шаблона, вижте документацията на unoconv за "
 "съвместими формати"
 
-msgctxt "help:ir.action.report,style:"
-msgid "Define the style to apply on the report."
-msgstr "Задайте стила който да се приложа на тази справка."
-
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Стартиране на помощник в нов прозорец"
@@ -2791,11 +2753,9 @@ msgstr "Правилото е удовлетворено ако поне еди�
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
-"A Python statement evaluated with record represented by \"self\"\n"
+"A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Python израз изчислен със запис представен със \"self\"\n"
-"Извиква действието ако е истина."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
@@ -3095,9 +3055,21 @@ msgctxt "model:ir.lang,name:lang_es_CO"
 msgid "Spanish (Colombia)"
 msgstr "Испански (Колумбия)"
 
+msgctxt "model:ir.lang,name:lang_es_MX"
+msgid "Spanish (Mexico)"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Френски"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3106,6 +3078,10 @@ msgstr ""
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Холандски"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3145,7 +3121,7 @@ msgstr "Печат на графика на модел"
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
-msgstr "Модул"
+msgstr ""
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3153,27 +3129,27 @@ msgstr ""
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Първи помощник на конфигуриране на модул"
+msgstr ""
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
-msgstr "Задаване на помощника да се стартира след инсталиране на модула"
+msgstr ""
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Помощник за настройка на модук - други"
+msgstr ""
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr "Зависимости на модула"
+msgstr ""
 
 msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
-msgstr "Приключи инсталиране/обновяване на модул"
+msgstr ""
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
-msgstr "Начало на инсталиране/обновяване на модул"
+msgstr ""
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3518,55 +3494,55 @@ msgstr "Отдясно наляво"
 
 msgctxt "selection:ir.module,state:"
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
-msgstr "Не е инсталиран"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "To be installed"
-msgstr "За инсталиране"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
-msgstr "За премахване"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
-msgstr "За обновяване"
+msgstr ""
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
-msgstr "Приключен"
+msgstr ""
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Installed"
-msgstr "Инсталиран"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Installed"
-msgstr "Не е инсталиран"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
-msgstr "За инсталиране"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
-msgstr "За премахване"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
-msgstr "За обновяване"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
-msgstr "Неизвестен"
+msgstr ""
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Decimal Timestamp"
@@ -3747,6 +3723,10 @@ msgctxt "view:ir.attachment:"
 msgid "Attachments"
 msgstr "Прикачени файлове"
 
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr ""
+
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Действие за стартиране"
@@ -3830,38 +3810,37 @@ msgstr ""
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
-msgstr "Добре дошли в помощника за конфигуриране на модула!"
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
-"Може да настроите инсталацията си в зависимост от инсталираните модули."
 
 msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
-msgstr "Елементи на помощника за конфигуриране"
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
-msgstr "Следваща стъпа на помощника за конфигуриране!"
+msgstr ""
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
-msgstr "Зависимости"
+msgstr ""
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependency"
-msgstr "Зависимост"
+msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
-msgstr "Обновяване на системата завършено"
+msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
-msgstr "Модулите са обновени / инсталирани !"
+msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
@@ -3869,43 +3848,43 @@ msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "System Upgrade"
-msgstr "Обновяване на системата"
+msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr "Системата ще бъде обновена."
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Installation"
-msgstr "Отказ от инсталалиране"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
-msgstr "Отказ от деинсталиране"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr "Отказ от обновяване"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Mark for Installation"
-msgstr "Отбелязване за инсталиране"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
-msgstr "Отбелязване за деинсталиране (beta)"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
-msgstr "Отбелязване за обновяване"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Module"
-msgstr "Модул"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Modules"
-msgstr "Модули"
+msgstr ""
 
 msgctxt "view:ir.property:"
 msgid "Properties"
@@ -3938,15 +3917,15 @@ msgstr "Вид последователност"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
-msgstr "${ден}"
+msgstr "${day}"
 
 msgctxt "view:ir.sequence:"
 msgid "${month}"
-msgstr "${month} - месец"
+msgstr "${month}"
 
 msgctxt "view:ir.sequence:"
 msgid "${year}"
-msgstr "${year} - година"
+msgstr "${year}"
 
 msgctxt "view:ir.sequence:"
 msgid "Day:"
@@ -4053,12 +4032,12 @@ msgid "Menu"
 msgstr "Меню"
 
 msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Изглед"
+msgid "Show"
+msgstr ""
 
 msgctxt "view:ir.ui.view:"
-msgid "_Show"
-msgstr "Показване"
+msgid "View"
+msgstr "Изглед"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"
@@ -4092,38 +4071,37 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Печат"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
-msgstr "Добре"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
-msgstr "Добре"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
-msgstr "Напред"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
-msgstr "Добре"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"
-msgstr "Започване на обновяване"
+msgstr ""
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

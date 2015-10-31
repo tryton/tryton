@@ -7,22 +7,20 @@ msgid "The name of the group must be unique!"
 msgstr "Le nom du groupe doit être unique !"
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"Les utilisateurs ne peuvent pas être supprimé pour des raisons de journalisation.\n"
+"Vous devez les désactiver à la place."
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "Mauvais mot de passe !"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Vous ne pouvez pas créer deux utilisateur avec le même identifiant !"
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"Vous ne pouvez pas supprimer l'utilisateur racine\n"
-"puisqu'il est utilisé en interne pour créer\n"
-"des ressources par le système (mise-à-jour, installation de module, ...)"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -640,30 +638,6 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Avertissement utilisateur"
 
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Annuler l'installation"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Annuler la désinstallation"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Annuler la mise à jour"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Marquer pour l'installation"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Marquer pour la désinstallation (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Marquer pour la mise à jour"
-
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr "Permissions d'accès"
@@ -686,11 +660,11 @@ msgstr "Ajouter des utilisateurs"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "L'identifiant doit être unique"
+msgstr "L'identifiant doit être unique !"
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr "Vous pouvez maintenant ajouter des utilisateur au système"
+msgstr "Vous pouvez maintenant ajouter des utilisateur au système."
 
 msgctxt "view:res.user.warning:"
 msgid "Warning"

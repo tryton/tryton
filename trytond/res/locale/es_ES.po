@@ -7,22 +7,20 @@ msgid "The name of the group must be unique!"
 msgstr "El nombre del grupo debe ser único."
 
 msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"Los usuarios no pueden ser eliminados para evitar que puedan acceder.\n"
+"Debe desactivarlos."
+
+msgctxt "error:res.user:"
 msgid "Wrong password!"
 msgstr "La contraseña es incorrecta."
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "No puede tener dos usuarios con el mismo nombre de usuario."
-
-msgctxt "error:res.user:"
-msgid ""
-"You can not remove the root user\n"
-"as it is used internally for resources\n"
-"created by the system (updates, module installation, ...)"
-msgstr ""
-"No puede eliminar el usuario principal que\n"
-"se usa internamente para los recursos creados\n"
-"por el sistema (actualizaciones, instalaciones, ...)."
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -639,30 +637,6 @@ msgstr "Intento de inicio de sesión"
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso usuario"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Cancelar instalación"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Cancelar desinstalación"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Cancelar actualización"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Marcar para instalar"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Marcar para desinstalar (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Marcar para actualizar"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"

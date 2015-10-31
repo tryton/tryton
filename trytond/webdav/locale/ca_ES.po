@@ -8,7 +8,7 @@ msgid ""
 "\"%(collection)s\" because there is already a collection with that name."
 msgstr ""
 "No podeu crear un adjunt anomenat \"%(attachment)s\" al directori "
-"\"%(collection)s\" perquè ja existeix un altre amb aquest nom."
+"\"%(collection)s\" perquè ja existeix un directori amb aquest nom."
 
 msgctxt "error:webdav.collection:"
 msgid "The collection name must be unique inside a collection!"
