@@ -72,7 +72,7 @@ msgstr "Preisliste"
 
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"

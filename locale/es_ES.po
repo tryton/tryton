@@ -122,10 +122,6 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Línea de tarifa"
 
-msgctxt "view:party.party:"
-msgid "Price List"
-msgstr "Tarifa"
-
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
 msgstr "Línea de tarifa"

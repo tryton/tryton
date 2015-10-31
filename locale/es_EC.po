@@ -112,7 +112,7 @@ msgstr "Listas de precios"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Listas de precios"
+msgstr "Listas de Precios"
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
@@ -121,10 +121,6 @@ msgstr "Lista de precios"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Línea de lista de precios"
-
-msgctxt "view:party.party:"
-msgid "Price List"
-msgstr "Lista de precios"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"

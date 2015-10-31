@@ -120,10 +120,6 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Ред от ценова листа"
 
-msgctxt "view:party.party:"
-msgid "Price List"
-msgstr "Ценова листа"
-
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
 msgstr "Ред от ценова листа"

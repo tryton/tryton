@@ -104,7 +104,7 @@ msgid ""
 "- unit_price: the original unit_price"
 msgstr ""
 "Pythonski izraz, preračunan z:\n"
-"- unit_price: izvorna cena "
+"- unit_price: izvorna cena"
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
