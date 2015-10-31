@@ -22,6 +22,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagaments"
 
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -254,7 +258,7 @@ msgstr "A cobrar"
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr "Tots"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"

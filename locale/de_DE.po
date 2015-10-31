@@ -22,6 +22,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Zahlungen"
 
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Datum"
+
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -136,7 +140,7 @@ msgstr "Name"
 
 msgctxt "field:account.payment.group,reference:"
 msgid "Reference"
-msgstr "Interner Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"

@@ -4,454 +4,515 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr "Plačilo \"%(payment)s\" je preplačalo postavko \"%(line)s\"."
+msgstr ""
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "Plačilo \"%s\" mora biti pred brisanjem v stanju priprave."
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
-msgstr "Znesek plačila"
+msgstr "Платена сума"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
-msgstr "Vrsta plačila"
+msgstr ""
 
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Дневник"
 
+#, fuzzy
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
-msgstr "Znesek"
+msgstr "Сума"
 
+#, fuzzy
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Управление на валути"
 
+#, fuzzy
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimalke"
+msgstr "Цифри за валута"
 
+#, fuzzy
 msgctxt "field:account.payment,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Дата"
 
+#, fuzzy
 msgctxt "field:account.payment,description:"
 msgid "Description"
-msgstr "Opis"
+msgstr "Описание"
 
+#, fuzzy
 msgctxt "field:account.payment,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Група"
 
+#, fuzzy
 msgctxt "field:account.payment,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Дневник"
 
+#, fuzzy
 msgctxt "field:account.payment,kind:"
 msgid "Kind"
-msgstr "Vrsta"
+msgstr "Вид"
 
+#, fuzzy
 msgctxt "field:account.payment,line:"
 msgid "Line"
-msgstr "Postavka"
+msgstr "Ред"
 
+#, fuzzy
 msgctxt "field:account.payment,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Управление на партньор"
 
+#, fuzzy
 msgctxt "field:account.payment,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:account.payment,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr "Щат"
 
+#, fuzzy
 msgctxt "field:account.payment,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:account.payment,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Дневник"
 
+#, fuzzy
 msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
-msgstr "Vrsta"
+msgstr "Вид"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:account.payment.group,reference:"
 msgid "Reference"
-msgstr "Sklic"
+msgstr "Препратка"
 
+#, fuzzy
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:account.payment.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Управление на валути"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Условие за плащане"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
-msgstr "Način obdelave"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.journal,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:account.payment,name:"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr "Плащане"
 
 msgctxt "model:account.payment.group,name:"
 msgid "Payment Group"
-msgstr "Plačilna skupina"
+msgstr ""
 
 msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
-msgstr "Dnevnik plačil"
+msgstr ""
 
 msgctxt "model:account.payment.process.start,name:"
 msgid "Process Payment"
-msgstr "Obdelava plačila"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
-msgstr "Postavke za plačat"
+msgstr "Редове за плащане"
 
 msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
-msgstr "Plačilo postavk"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Plačilne skupine"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Dnevniki plačil"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
-msgstr "Obdelava plačil"
+msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Разходен"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "За получаване"
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
 msgid "Approved"
-msgstr "Odobreno"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Проект"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr "Neuspešna"
+msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "Обработване"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
-msgstr "Uspešna"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
-msgstr "Privzeta plačilna skupina"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
-msgstr "Plačilna skupina"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
-msgstr "Postavke za plačat"
+msgstr "Редове за плащане"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr "Nakazila"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Plačilne skupine"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Dnevniki plačil"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr "Плащане"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Разходен"
 
+#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "За получаване"
 
+#, fuzzy
 msgctxt "selection:account.payment,kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Разходен"
 
+#, fuzzy
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "За получаване"
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"
-msgstr "Odobreno"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Проект"
 
 msgctxt "selection:account.payment,state:"
 msgid "Failed"
-msgstr "Neuspešno"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "Обработване"
 
 msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
-msgstr "Uspešno"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment.group,kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Разходен"
 
+#, fuzzy
 msgctxt "selection:account.payment.group,kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "За получаване"
 
+#, fuzzy
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
-msgstr "Ročno"
+msgstr "Ръчно"
 
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Account Move Lines"
-msgstr "Postavke knjižb"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
-msgstr "Plačilo postavk"
+msgstr ""
 
 msgctxt "view:account.payment.group:"
 msgid "Payment Group"
-msgstr "Plačilna skupina"
+msgstr ""
 
 msgctxt "view:account.payment.group:"
 msgid "Payment Groups"
-msgstr "Plačilne skupine"
+msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journal"
-msgstr "Dnevnik plačil"
+msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journals"
-msgstr "Dnevniki plačil"
+msgstr ""
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments"
-msgstr "Obdelava plačil"
+msgstr ""
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
-msgstr "Obdelava plačil?"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Approve"
-msgstr "Odobritev"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr "Opis"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Draft"
-msgstr "Priprava"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Fail"
-msgstr "Neuspelo"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
-msgstr "Drugo"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Payments"
-msgstr "Plačila"
+msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Succeed"
-msgstr "Uspelo"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Отказване"
 
 msgctxt "wizard_button:account.move.line.pay,start,pay:"
 msgid "Pay"
-msgstr "Plačilo"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Отказване"
 
+#, fuzzy
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
-msgstr "Obdelava"
+msgstr "Обработване"

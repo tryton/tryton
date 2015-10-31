@@ -22,6 +22,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagos"
 
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Fecha"
+
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
 msgstr "ID"
