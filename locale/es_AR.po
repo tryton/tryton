@@ -347,14 +347,6 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "En meses"
 
-msgctxt "model:account.account.template,name:account_template_assets"
-msgid "Assets"
-msgstr "Activos"
-
-msgctxt "model:account.account.template,name:account_template_depretiation"
-msgid "Depreciation"
-msgstr "Amortización"
-
 msgctxt "model:account.asset,name:"
 msgid "Asset"
 msgstr "Activo"
@@ -614,6 +606,10 @@ msgstr "Ejecutar"
 msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr "Actualizar activo"
+
+msgctxt "view:account.configuration:"
+msgid "Asset"
+msgstr "Activo"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

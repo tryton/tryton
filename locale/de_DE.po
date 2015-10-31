@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "Anlage \"%s\"  kann nur in Status 'Entwurf' gelöscht werden"
+msgstr "Anlage \"%s\" kann nur in Status \"Entwurf\" gelöscht werden."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
@@ -17,7 +17,7 @@ msgstr ""
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Fehlendes Anlagenkonto für Artikel \"%s\""
+msgstr "Fehlendes Anlagenkonto für Artikel \"%s\"."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -73,7 +73,7 @@ msgstr "Buchungssatz"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
@@ -89,7 +89,7 @@ msgstr "Name"
 
 msgctxt "field:account.asset,reference:"
 msgid "Reference"
-msgstr "Beleg"
+msgstr "Beleg-Nr."
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -347,11 +347,7 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "In Monaten"
 
-msgctxt "model:account.account.template,name:account_template_assets"
-msgid "Assets"
-msgstr "Anlagen"
-
-msgctxt "model:account.account.template,name:account_template_depretiation"
+msgctxt "model:account.account.template,name:"
 msgid "Depreciation"
 msgstr "Abschreibung"
 
@@ -614,6 +610,10 @@ msgstr "Ausführen"
 msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr "Anlage aktualisieren"
+
+msgctxt "view:account.configuration:"
+msgid "Asset"
+msgstr "Anlage"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

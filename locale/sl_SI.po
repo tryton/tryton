@@ -16,7 +16,7 @@ msgstr "Sredstvo je lahko samo enkrat na postavki računa."
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Pri izdelku \"%s\" manjka konto sredstva. "
+msgstr "Pri izdelku \"%s\" manjka konto sredstva."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -346,12 +346,8 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "V mesecih"
 
-msgctxt "model:account.account.template,name:account_template_assets"
+msgctxt "model:account.account.template,name:"
 msgid "Assets"
-msgstr "Sredstva"
-
-msgctxt "model:account.account.template,name:account_template_depretiation"
-msgid "Depreciation"
 msgstr "Amortizacija"
 
 msgctxt "model:account.asset,name:"
@@ -500,7 +496,7 @@ msgstr "Osnova"
 
 msgctxt "odt:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "Od: "
+msgstr "Od:"
 
 msgctxt "odt:account.asset.depreciation_table:"
 msgid "Print Date:"
@@ -613,6 +609,10 @@ msgstr "Izvajanje"
 msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr "Popravek sredstev"
+
+msgctxt "view:account.configuration:"
+msgid "Asset"
+msgstr "Sredstvo"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
