@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:commission,waiting_move:"
 msgid "Move"
-msgstr "Asiento"
+msgstr "Movimiento"
 
 msgctxt "field:commission.agent,waiting_account:"
 msgid "Waiting Account"

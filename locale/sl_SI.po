@@ -8,4 +8,4 @@ msgstr "Knjižba"
 
 msgctxt "field:commission.agent,waiting_account:"
 msgid "Waiting Account"
-msgstr "Čakalni konto "
+msgstr "Čakalni konto"
