@@ -2,29 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.address:"
-msgid "Invalid SIRET number \"%(siret)s\" on address \"%(address)s\""
-msgstr "Inválido número SIRET \"%(siret)s\" en la dirección \"%(address)s\""
-
-msgctxt "error:party.party:"
-msgid "Invalid SIREN number \"%(siren)s\" on party \"%(party)s\"."
-msgstr "Inválido número SIREN \"%(siren)s\" del tercero \"%(party)s\"."
-
-msgctxt "field:party.address,siret:"
-msgid "SIRET"
-msgstr "SIRET"
-
-msgctxt "field:party.address,siret_nic:"
-msgid "SIRET NIC"
-msgstr "SIRET NIC"
-
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr ""
-
-msgctxt "field:party.party,siren:"
-msgid "SIREN"
-msgstr "SIREN"
 
 #, fuzzy
 msgctxt "field:party.relation,create_date:"
@@ -181,4 +161,24 @@ msgstr ""
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr ""
+
+msgctxt "view:party.relation.all:"
+msgid "Relation"
+msgstr ""
+
+msgctxt "view:party.relation.all:"
+msgid "Relations"
+msgstr ""
+
+msgctxt "view:party.relation.type:"
+msgid "Party Relation Type"
+msgstr ""
+
+msgctxt "view:party.relation.type:"
+msgid "Party Relation Types"
 msgstr ""

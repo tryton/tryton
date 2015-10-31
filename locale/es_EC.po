@@ -12,7 +12,7 @@ msgstr "Fecha de creación"
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -28,7 +28,7 @@ msgstr "Nombre"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr "Para"
+msgstr "A"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
@@ -64,7 +64,7 @@ msgstr "Nombre"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr "Para"
+msgstr "A"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
@@ -80,7 +80,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
@@ -100,19 +100,19 @@ msgstr "Nombre"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
-msgstr "Relación Inversa"
+msgstr "Relación inversa"
 
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Relaciones entre Terceros"
+msgstr "Relaciones entre terceros"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
@@ -120,7 +120,7 @@ msgstr "Tipos de relación"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Relaciones entre terceros"
+msgstr "Relaciones entre Terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
@@ -128,15 +128,15 @@ msgstr "Tipos de Relación"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Relación entre Terceros"
+msgstr "Relación entre terceros"
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Relación entre Terceros"
+msgstr "Relación entre terceros"
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Tipo de Relación"
+msgstr "Tipo de relación"
 
 msgctxt "view:party.party:"
 msgid "Relations"
@@ -152,8 +152,8 @@ msgstr "Relaciones"
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Type"
-msgstr "Tipo de Relación entre Terceros"
+msgstr "Tipo de relación entre terceros"
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Types"
-msgstr "Tipos de Relación entre Terceros"
+msgstr "Tipos de relación entre terceros"

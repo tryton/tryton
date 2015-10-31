@@ -4,156 +4,177 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,relations:"
 msgid "Relations"
-msgstr "Relations"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Создано пользователем"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr "de"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.relation,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Правило оплаты"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr "À"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Тип"
 
+#, fuzzy
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Создано пользователем"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr "de"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation.all,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.relation.all,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Правило оплаты"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr "de"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Тип"
 
+#, fuzzy
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:party.relation.type,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Правило оплаты"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
-msgstr "Relation inverse"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Изменено пользователем"
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Relations tiers"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Types de relation"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Relations tiers"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Types de relation"
+msgstr ""
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Relation tiers"
+msgstr ""
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Relation tiers"
+msgstr ""
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Type de relation"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr "Relations"
+msgstr ""
 
 msgctxt "view:party.relation.all:"
 msgid "Relation"
-msgstr "Relation"
+msgstr ""
 
 msgctxt "view:party.relation.all:"
 msgid "Relations"
-msgstr "Relations"
+msgstr ""
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Type"
-msgstr "Type de relation tiers"
+msgstr ""
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Types"
-msgstr "Types de relation tiers"
+msgstr ""
