@@ -16,15 +16,15 @@ msgstr "ID"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
-msgstr "Bodegas"
+msgstr "Ubicaciones"
 
 msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
-msgstr "Perdido y Encontrado"
+msgstr "Perdido y encontrado"
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Crear Inventarios"
+msgstr "Crear inventarios"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
@@ -32,11 +32,11 @@ msgstr "Crear Inventarios"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr "Crear Inventarios"
+msgstr "Crear inventarios"
 
 msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
-msgstr "Crear Inventarios"
+msgstr "Crear inventarios"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
