@@ -224,7 +224,7 @@ msgstr "Toutes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Fait"
+msgstr "Terminée"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -256,11 +256,15 @@ msgstr "Relance"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Terminée"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Brouillon"
+
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Relance"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
@@ -292,7 +296,7 @@ msgstr "Traitement des relances"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "Traiter les relances?"
+msgstr "Traiter les relances ?"
 
 msgctxt "view:account.dunning:"
 msgid "Dunning"

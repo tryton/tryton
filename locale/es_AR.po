@@ -262,6 +262,10 @@ msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Borrador"
 
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Reclamo"
+
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
 msgstr "Crear Reclamo"

@@ -24,7 +24,7 @@ msgstr "Importe en moneda secundaria"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Bloqueado"
+msgstr "Bloqueada"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
@@ -180,11 +180,11 @@ msgstr "Procedimiento de cobro"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Cuenta de cobro"
+msgstr "Cobro contable"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear Cuenta de cobro"
+msgstr "Crear cobro contable"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
@@ -196,7 +196,7 @@ msgstr "Procedimiento de cobro contable"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear cuenta de cobro"
+msgstr "Crear cobro contable"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -262,37 +262,41 @@ msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Borrador"
 
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr ""
+
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
-msgstr "Crear Cobro"
+msgstr "Crear cobro"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr "Crear Cobro para la Fecha"
+msgstr "Crear cobro para la fecha"
 
 msgctxt "view:account.dunning.level:"
 msgid "Dunning Level"
-msgstr "Nivel de Cobro"
+msgstr "Nivel de cobro"
 
 msgctxt "view:account.dunning.level:"
 msgid "dunning levels"
-msgstr "niveles de cobro"
+msgstr "Niveles de cobro"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
-msgstr "Procedimiento de Cobro"
+msgstr "Procedimiento de cobro"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de Cobro"
+msgstr "Procedimientos de cobro"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning"
-msgstr "Procesar Cobro"
+msgstr "Procesar cobro"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "¿Procesar Cobro?"
+msgstr "¿Procesar cobro?"
 
 msgctxt "view:account.dunning:"
 msgid "Dunning"

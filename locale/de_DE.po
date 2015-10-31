@@ -262,6 +262,10 @@ msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Entwurf"
 
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Mahnung"
+
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
 msgstr "Mahnung erstellen"

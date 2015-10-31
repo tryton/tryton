@@ -220,7 +220,7 @@ msgstr "Processa reclamació"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "Totes"
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
@@ -261,6 +261,10 @@ msgstr "Finalitzada"
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Esborrany"
+
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Reclamació"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
