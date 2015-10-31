@@ -1,0 +1,21 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "FIFO quantity can not be greater than quantity."
+msgstr "FIFO mennyiség nem lehet nagyobb a mennyiségnél."
+
+msgctxt "error:stock.move:"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
+msgstr ""
+"\"%s\" könyvelési rész nem törölhető, mivel a FIFO ár kalkulációjához "
+"használandó."
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "FIFO mennyiség"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
