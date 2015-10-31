@@ -204,16 +204,16 @@ msgstr "Selección"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
-msgstr "Grupo de atributos"
+msgstr ""
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"
-msgstr "Grupos de atributos"
+msgstr ""
 
 msgctxt "view:product.attribute:"
 msgid "Attribute"
-msgstr "Atributo"
+msgstr ""
 
 msgctxt "view:product.attribute:"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""

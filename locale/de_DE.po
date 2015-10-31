@@ -40,7 +40,7 @@ msgstr "Sortierte Auswahl"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr "Sätze"
+msgstr "Attributssätze"
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
@@ -60,11 +60,11 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
-msgstr "Eigenschaft"
+msgstr "Attribut"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Eigenschaftssatz"
+msgstr "Attributssatz"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
@@ -92,7 +92,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr "Eigenschaften"
+msgstr "Attribute"
 
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
@@ -124,19 +124,19 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.product,attribute_set:"
 msgid "Set"
-msgstr "Eigenschaftssatz"
+msgstr "Attributssatz"
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr "Eigenschaften"
+msgstr "Attribute"
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr "Eigenschaftssatz"
+msgstr "Attributssatz"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr "Ein Paar pro Zeile für Schlüssel und Bezeichner getrennt durch \":\" "
+msgstr "Zeilenweise Schlüssel und Bezeichner getrennt durch \":\""
 
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
@@ -144,31 +144,31 @@ msgstr "Ob die Auswahl nach Bezeichner sortiert werden soll"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Eigenschaften"
+msgstr "Attribute"
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Eigenschaftssätze"
+msgstr "Attributssatz"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Eigenschaften"
+msgstr "Attribute"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Eigenschaftssätze"
+msgstr "Attributssatz"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
-msgstr "Artikel Eigenschaft"
+msgstr "Artikelattribut"
 
 msgctxt "model:product.attribute-product.attribute-set,name:"
 msgid "Product Attribute - Set"
-msgstr "Artikel Eigenschaft - Satz"
+msgstr "Artikelattribut - Satz"
 
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
-msgstr "Artikel Eigenschaftssatz"
+msgstr "Attributssatz"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
@@ -204,16 +204,16 @@ msgstr "Auswahl"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
-msgstr "Eigenschaftssatz"
+msgstr "Attributssatz"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"
-msgstr "Eigenschaftssätze"
+msgstr "Attributssatz"
 
 msgctxt "view:product.attribute:"
 msgid "Attribute"
-msgstr "Eigenschaft"
+msgstr "Attribut"
 
 msgctxt "view:product.attribute:"
 msgid "Attributes"
-msgstr "Eigenschaften"
+msgstr "Attribute"
