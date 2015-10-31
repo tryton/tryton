@@ -144,7 +144,7 @@ msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr "à"
+msgstr "À"
 
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"

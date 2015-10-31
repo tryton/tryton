@@ -48,7 +48,7 @@ msgstr "Währung"
 
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr "Zeitpunkt"
+msgstr "Datum"
 
 msgctxt "field:commission,id:"
 msgid "ID"
@@ -68,7 +68,7 @@ msgstr "Herkunft"
 
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:commission,rec_name:"
 msgid "Name"
@@ -156,7 +156,7 @@ msgstr "Kommissionsmethode"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
-msgstr "Kommissionsartikel"
+msgstr "Kommissionsvariante"
 
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
@@ -212,7 +212,7 @@ msgstr "Plan"
 
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Name"
@@ -368,7 +368,7 @@ msgstr "Kommissionspläne"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
-msgstr "Artikelvorlage - Kommissonsvertreter"
+msgstr "Artikel - Kommissonsvertreter"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
