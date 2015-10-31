@@ -216,7 +216,7 @@ msgstr "Така"
 
 msgctxt "model:currency.currency,name:bgn"
 msgid "Bulgarian Lev"
-msgstr "Лев"
+msgstr "Болгарский лев"
 
 msgctxt "model:currency.currency,name:bhd"
 msgid "Bahraini Dinar"
@@ -296,7 +296,7 @@ msgstr "Чилийское песо"
 
 msgctxt "model:currency.currency,name:cny"
 msgid "Yuan Renminbi"
-msgstr "Юань жэньминьби"
+msgstr "Китайский юань"
 
 msgctxt "model:currency.currency,name:cop"
 msgid "Colombian Peso"
@@ -304,7 +304,7 @@ msgstr "Колумбийское песо"
 
 msgctxt "model:currency.currency,name:cou"
 msgid "Unidad de Valor Real"
-msgstr "Unidad de Valor Real"
+msgstr "Единица реальной стоимости"
 
 msgctxt "model:currency.currency,name:crc"
 msgid "Costa Rican Colon"
@@ -344,7 +344,7 @@ msgstr "Алжирский динар"
 
 msgctxt "model:currency.currency,name:eek"
 msgid "Kroon"
-msgstr "Эстонская крона"
+msgstr "Эстонстая крона"
 
 msgctxt "model:currency.currency,name:egp"
 msgid "Egyptian Pound"
@@ -412,7 +412,7 @@ msgstr "Лемпира"
 
 msgctxt "model:currency.currency,name:hrk"
 msgid "Croatian Kuna"
-msgstr "Куна"
+msgstr "Хорватская куна"
 
 msgctxt "model:currency.currency,name:htg"
 msgid "Gourde"
@@ -440,7 +440,7 @@ msgstr "Иракский динар"
 
 msgctxt "model:currency.currency,name:irr"
 msgid "Iranian Rial"
-msgstr "Иракский динар"
+msgstr "Иранский риал"
 
 msgctxt "model:currency.currency,name:isk"
 msgid "Iceland Krona"
@@ -476,7 +476,7 @@ msgstr "Франк Комор"
 
 msgctxt "model:currency.currency,name:kpw"
 msgid "North Korean Won"
-msgstr "Северо-корейская вона"
+msgstr "Северокорейская вона"
 
 msgctxt "model:currency.currency,name:krw"
 msgid "Won"
@@ -488,7 +488,7 @@ msgstr "Кувейтский динар"
 
 msgctxt "model:currency.currency,name:kyd"
 msgid "Cayman Islands Dollar"
-msgstr "Доллар Каймановых островов"
+msgstr "Доллар Островов Кайман"
 
 msgctxt "model:currency.currency,name:kzt"
 msgid "Tenge"
@@ -540,7 +540,7 @@ msgstr "Малагасийский ариари"
 
 msgctxt "model:currency.currency,name:mkd"
 msgid "Denar"
-msgstr "Динар"
+msgstr "Македонский денар"
 
 msgctxt "model:currency.currency,name:mmk"
 msgid "Kyat"
@@ -652,7 +652,7 @@ msgstr "Катарский риал"
 
 msgctxt "model:currency.currency,name:ron"
 msgid "New Leu"
-msgstr "Румынский лей"
+msgstr "Новый румынский лей"
 
 msgctxt "model:currency.currency,name:rsd"
 msgid "Serbian Dinar"
@@ -660,7 +660,7 @@ msgstr "Сербский динар"
 
 msgctxt "model:currency.currency,name:rub"
 msgid "Russian Ruble"
-msgstr "Русский рубль"
+msgstr "Российский рубль"
 
 msgctxt "model:currency.currency,name:rwf"
 msgid "Rwanda Franc"
@@ -692,7 +692,7 @@ msgstr "Сингапурский доллар"
 
 msgctxt "model:currency.currency,name:shp"
 msgid "Saint Helena Pound"
-msgstr "Фунт Острова Святой Елены"
+msgstr "Фунт Святой Елены"
 
 msgctxt "model:currency.currency,name:sll"
 msgid "Leone"
@@ -712,7 +712,7 @@ msgstr "Добра"
 
 msgctxt "model:currency.currency,name:svc"
 msgid "El Salvador Colon"
-msgstr "Колон Сальвадора"
+msgstr "Сальвадорский колон"
 
 msgctxt "model:currency.currency,name:syp"
 msgid "Syrian Pound"
@@ -752,7 +752,7 @@ msgstr "Доллар Тринидада и Тобаго"
 
 msgctxt "model:currency.currency,name:twd"
 msgid "New Taiwan Dollar"
-msgstr "Тайваньский доллар"
+msgstr "Новый тайваньский доллар"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
@@ -792,7 +792,7 @@ msgstr "Узбекский сум"
 
 msgctxt "model:currency.currency,name:vef"
 msgid "Bolivar Fuerte"
-msgstr "Боливар"
+msgstr "Боливар фуэрте"
 
 msgctxt "model:currency.currency,name:vnd"
 msgid "Dong"
@@ -840,7 +840,7 @@ msgstr "Восточно-карибский доллар"
 
 msgctxt "model:currency.currency,name:xdr"
 msgid "Special Drawing Rights"
-msgstr "СДР (Специальные права заимствования)"
+msgstr "Специальные права заимствования"
 
 msgctxt "model:currency.currency,name:xfo"
 msgid "Gold-Franc"

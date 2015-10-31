@@ -4,173 +4,190 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date."
-msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
+msgstr "Una valuta può avere solo un cambio per giorno"
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0"
+msgstr "Il tasso di cambio dev'essere maggiore o uguale a 0"
 
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
-msgstr "Agrupación «%(grouping)s» en la moneda «%(currency)s» no es correcta."
+msgstr "Raggruppamento \"%(grouping)s\" invalido nella valuta \"%(currency)s\"."
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr ""
-"No se ha encontrado ninguna tasa de cambio para la moneda «%(currency)s» en "
-"la fecha «%(date)s»"
+msgstr "Tasso di cambio non trovato per la valuta \"%(currency)s\" il \"%(date)s\""
 
+#, fuzzy
 msgctxt "field:currency.currency,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Attivo"
 
+#, fuzzy
 msgctxt "field:currency.currency,code:"
 msgid "Code"
-msgstr "Código"
+msgstr "Codice"
 
+#, fuzzy
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Creazione Data"
 
+#, fuzzy
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Creazione Utente"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr "Decimales a mostrar"
+msgstr "Posizioni"
 
+#, fuzzy
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr "Separador decimal"
+msgstr "Separatore dei decimali"
 
+#, fuzzy
 msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
-msgstr "Agrupación"
+msgstr "Raggruppamento"
 
+#, fuzzy
 msgctxt "field:currency.currency,mon_thousands_sep:"
 msgid "Thousands Separator"
-msgstr "Separador de miles"
+msgstr "Separatore delle migliaia"
 
 msgctxt "field:currency.currency,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr "El signo negativo va delante"
+msgstr "Prefisso per simbolo di valuta negativo"
 
 msgctxt "field:currency.currency,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr "Signo negativo separado por espacio"
+msgstr ""
 
 msgctxt "field:currency.currency,n_sign_posn:"
 msgid "Negative Sign Position"
-msgstr "Posición del signo negativo"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:currency.currency,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 msgctxt "field:currency.currency,negative_sign:"
 msgid "Negative Sign"
-msgstr "Signo negativo"
+msgstr "Segno Negativo"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr "Código numérico"
+msgstr "Codice numerico"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr "El signo positivo va delante"
+msgstr "Prefisso per simbolo di valuta positivo"
 
 msgctxt "field:currency.currency,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr "Signo positivo separado por espacio"
+msgstr ""
 
 msgctxt "field:currency.currency,p_sign_posn:"
 msgid "Positive Sign Position"
-msgstr "Posición del signo positivo"
+msgstr ""
 
 msgctxt "field:currency.currency,positive_sign:"
 msgid "Positive Sign"
-msgstr "Signo positivo"
+msgstr "Segno Positivo"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
-msgstr "Tasa de cambio actual"
+msgstr "Cambio attuale"
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr "Tasas de cambio"
+msgstr "Tassi"
 
+#, fuzzy
 msgctxt "field:currency.currency,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
-msgstr "Factor de redondeo"
+msgstr "Fattore di arrotondamento"
 
 msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
-msgstr "Símbolo"
+msgstr "Simbolo"
 
+#, fuzzy
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Data di Scrittura"
 
+#, fuzzy
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Scrivente"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Creazione Data"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Creazione Utente"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuta"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Data"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
-msgstr "Tasa de cambio"
+msgstr "Cambio"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Data di Scrittura"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Scrivente"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuta"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
-msgstr "Dirham de los Emiratos Árabes Unidos"
+msgstr "Dirham degli EAU"
 
 msgctxt "model:currency.currency,name:afn"
 msgid "Afghani"
-msgstr "Afganí"
+msgstr "Afghani"
 
 msgctxt "model:currency.currency,name:all"
 msgid "Lek"
@@ -178,11 +195,11 @@ msgstr "Lek"
 
 msgctxt "model:currency.currency,name:amd"
 msgid "Armenian Dram"
-msgstr "Dram armenio"
+msgstr "Dram"
 
 msgctxt "model:currency.currency,name:ang"
 msgid "Netherlands Antillian Guilder"
-msgstr "Florín de las Antillas Neerlandesas"
+msgstr "Fiorino delle Antille olandesi"
 
 msgctxt "model:currency.currency,name:aoa"
 msgid "Kwanza"
@@ -194,23 +211,23 @@ msgstr "Peso argentino"
 
 msgctxt "model:currency.currency,name:aud"
 msgid "Australian Dollar"
-msgstr "Dólar australiano"
+msgstr "Dollaro australiano"
 
 msgctxt "model:currency.currency,name:awg"
 msgid "Aruban Guilder"
-msgstr "Florín de Aruba"
+msgstr "Fiorino di Aruba"
 
 msgctxt "model:currency.currency,name:azn"
 msgid "Azerbaijanian Manat"
-msgstr "Manat de Azerbayán"
+msgstr "Manat azero"
 
 msgctxt "model:currency.currency,name:bam"
 msgid "Convertible Marks"
-msgstr "Marcos convertibles"
+msgstr "Marco bosniaco"
 
 msgctxt "model:currency.currency,name:bbd"
 msgid "Barbados Dollar"
-msgstr "Dólar de Barbados"
+msgstr "Dollaro di Barbados"
 
 msgctxt "model:currency.currency,name:bdt"
 msgid "Taka"
@@ -218,23 +235,23 @@ msgstr "Taka"
 
 msgctxt "model:currency.currency,name:bgn"
 msgid "Bulgarian Lev"
-msgstr "Lev búlgaro"
+msgstr "Lev"
 
 msgctxt "model:currency.currency,name:bhd"
 msgid "Bahraini Dinar"
-msgstr "Dinar bahreiní"
+msgstr "Dinaro del Bahrein"
 
 msgctxt "model:currency.currency,name:bif"
 msgid "Burundi Franc"
-msgstr "Franco de Burundi"
+msgstr "Franco burundese"
 
 msgctxt "model:currency.currency,name:bmd"
 msgid "Bermudian Dollar"
-msgstr "Dólar de Bermudas"
+msgstr "Dollaro delle Bermuda"
 
 msgctxt "model:currency.currency,name:bnd"
 msgid "Brunei Dollar"
-msgstr "Dólar de Brunei"
+msgstr "Dollaro del Brunei"
 
 msgctxt "model:currency.currency,name:bob"
 msgid "Boliviano"
@@ -246,11 +263,11 @@ msgstr "Mvdol"
 
 msgctxt "model:currency.currency,name:brl"
 msgid "Brazilian Real"
-msgstr "Real brasileño"
+msgstr "Real"
 
 msgctxt "model:currency.currency,name:bsd"
 msgid "Bahamian Dollar"
-msgstr "Dólar de las Bahamas"
+msgstr "Dollaro delle Bahamas"
 
 msgctxt "model:currency.currency,name:btn"
 msgid "Ngultrum"
@@ -262,39 +279,39 @@ msgstr "Pula"
 
 msgctxt "model:currency.currency,name:byr"
 msgid "Belarussian Ruble"
-msgstr "Rubla bielorrusa"
+msgstr "Rublo bielorusso"
 
 msgctxt "model:currency.currency,name:bzd"
 msgid "Belize Dollar"
-msgstr "Dólar de Belize"
+msgstr "Dollaro beliziano"
 
 msgctxt "model:currency.currency,name:cad"
 msgid "Canadian Dollar"
-msgstr "Dólar canadiense"
+msgstr "Dollaro canadese"
 
 msgctxt "model:currency.currency,name:cdf"
 msgid "Congolese Franc"
-msgstr "Franco congoleño"
+msgstr "Franco congolese"
 
 msgctxt "model:currency.currency,name:che"
 msgid "WIR Euro"
-msgstr "Euro WIR"
+msgstr "WIR Euro"
 
 msgctxt "model:currency.currency,name:chf"
 msgid "Swiss Franc"
-msgstr "Franco suizo"
+msgstr "Franco svizzero"
 
 msgctxt "model:currency.currency,name:chw"
 msgid "WIR Franc"
-msgstr "Franco WIR"
+msgstr "WIR Franco"
 
 msgctxt "model:currency.currency,name:clf"
 msgid "Unidades de fomento"
-msgstr "Unidades de fomento"
+msgstr "Unidades de fomento cilena"
 
 msgctxt "model:currency.currency,name:clp"
 msgid "Chilean Peso"
-msgstr "Peso chileno"
+msgstr "Peso cileno"
 
 msgctxt "model:currency.currency,name:cny"
 msgid "Yuan Renminbi"
@@ -306,11 +323,11 @@ msgstr "Peso colombiano"
 
 msgctxt "model:currency.currency,name:cou"
 msgid "Unidad de Valor Real"
-msgstr "Unidad de Valor Real"
+msgstr "Unidad de valor real"
 
 msgctxt "model:currency.currency,name:crc"
 msgid "Costa Rican Colon"
-msgstr "Colón costarricense"
+msgstr "Colón costaricano"
 
 msgctxt "model:currency.currency,name:cup"
 msgid "Cuban Peso"
@@ -318,23 +335,23 @@ msgstr "Peso cubano"
 
 msgctxt "model:currency.currency,name:cve"
 msgid "Cape Verde Escudo"
-msgstr "Escudo de Cabo Verde"
+msgstr "Escudo del Capo Verde"
 
 msgctxt "model:currency.currency,name:cyp"
 msgid "Cyprus Pound"
-msgstr "Libra chipriota"
+msgstr "Sterlina cipriota"
 
 msgctxt "model:currency.currency,name:czk"
 msgid "Czech Koruna"
-msgstr "Corona checa"
+msgstr "Corona ceca"
 
 msgctxt "model:currency.currency,name:djf"
 msgid "Djibouti Franc"
-msgstr "Franco de Djibouti"
+msgstr "Franco gibutiano"
 
 msgctxt "model:currency.currency,name:dkk"
 msgid "Danish Krone"
-msgstr "Corona danesa"
+msgstr "Corona danese"
 
 msgctxt "model:currency.currency,name:dop"
 msgid "Dominican Peso"
@@ -342,15 +359,15 @@ msgstr "Peso dominicano"
 
 msgctxt "model:currency.currency,name:dzd"
 msgid "Algerian Dinar"
-msgstr "Dinar argelino"
+msgstr "Dinaro algerino"
 
 msgctxt "model:currency.currency,name:eek"
 msgid "Kroon"
-msgstr "Corona estonia"
+msgstr "Corona estone"
 
 msgctxt "model:currency.currency,name:egp"
 msgid "Egyptian Pound"
-msgstr "Libra egipcia"
+msgstr "Sterlina egiziana"
 
 msgctxt "model:currency.currency,name:ern"
 msgid "Nakfa"
@@ -358,7 +375,7 @@ msgstr "Nakfa"
 
 msgctxt "model:currency.currency,name:etb"
 msgid "Ethiopian Birr"
-msgstr "Birr de etíope"
+msgstr "Birr"
 
 msgctxt "model:currency.currency,name:eur"
 msgid "Euro"
@@ -366,15 +383,15 @@ msgstr "Euro"
 
 msgctxt "model:currency.currency,name:fjd"
 msgid "Fiji Dollar"
-msgstr "Dólar de las Islas Fiji"
+msgstr "Dollaro delle Fiji"
 
 msgctxt "model:currency.currency,name:fkp"
 msgid "Falkland Islands Pound"
-msgstr "Libra de las Islas Malvinas"
+msgstr "Sterlina delle Falkland"
 
 msgctxt "model:currency.currency,name:gbp"
 msgid "Pound Sterling"
-msgstr "Libra esterlina"
+msgstr "Lira sterlina"
 
 msgctxt "model:currency.currency,name:gel"
 msgid "Lari"
@@ -382,11 +399,11 @@ msgstr "Lari"
 
 msgctxt "model:currency.currency,name:ghs"
 msgid "Ghana Cedi"
-msgstr "Cedi ghanés"
+msgstr "Cédi ghaneano"
 
 msgctxt "model:currency.currency,name:gip"
 msgid "Gibraltar Pound"
-msgstr "Libra de Gibraltar"
+msgstr "Sterlina di Gibilterra"
 
 msgctxt "model:currency.currency,name:gmd"
 msgid "Dalasi"
@@ -402,59 +419,59 @@ msgstr "Quetzal"
 
 msgctxt "model:currency.currency,name:gyd"
 msgid "Guyana Dollar"
-msgstr "Dólar guayanés"
+msgstr "Dollaro della Guyana"
 
 msgctxt "model:currency.currency,name:hkd"
 msgid "Hong Kong Dollar"
-msgstr "Dólar de Hong Kong"
+msgstr "Dollaro di Hong Kong"
 
 msgctxt "model:currency.currency,name:hnl"
 msgid "Lempira"
-msgstr "Lempira hondureño"
+msgstr "Lempira"
 
 msgctxt "model:currency.currency,name:hrk"
 msgid "Croatian Kuna"
-msgstr "Kuna croata"
+msgstr "Kuna"
 
 msgctxt "model:currency.currency,name:htg"
 msgid "Gourde"
-msgstr "Gourde haitiano"
+msgstr "Gourde"
 
 msgctxt "model:currency.currency,name:huf"
 msgid "Forint"
-msgstr "Forint húngaro"
+msgstr "Forint"
 
 msgctxt "model:currency.currency,name:idr"
 msgid "Rupiah"
-msgstr "Rupia indonesia"
+msgstr "Rupia indonesiana"
 
 msgctxt "model:currency.currency,name:ils"
 msgid "New Israeli Sheqel"
-msgstr "Nuevo sheqel israelí"
+msgstr "Sheqel"
 
 msgctxt "model:currency.currency,name:inr"
 msgid "Indian Rupee"
-msgstr "Rupia india"
+msgstr "Rupia indiana"
 
 msgctxt "model:currency.currency,name:iqd"
 msgid "Iraqi Dinar"
-msgstr "Dinar iraquí"
+msgstr "Dinaro iracheno"
 
 msgctxt "model:currency.currency,name:irr"
 msgid "Iranian Rial"
-msgstr "Rial iraní"
+msgstr "Rial iraniano"
 
 msgctxt "model:currency.currency,name:isk"
 msgid "Iceland Krona"
-msgstr "Corona islandesa"
+msgstr "Corona islandese"
 
 msgctxt "model:currency.currency,name:jmd"
 msgid "Jamaican Dollar"
-msgstr "Dólar jamaiqueño"
+msgstr "Dollaro giamaicano"
 
 msgctxt "model:currency.currency,name:jod"
 msgid "Jordanian Dinar"
-msgstr "Dinar jordano"
+msgstr "Dinaro giordano"
 
 msgctxt "model:currency.currency,name:jpy"
 msgid "Yen"
@@ -462,7 +479,7 @@ msgstr "Yen"
 
 msgctxt "model:currency.currency,name:kes"
 msgid "Kenyan Shilling"
-msgstr "Chelín keniata"
+msgstr "Scellino keniota"
 
 msgctxt "model:currency.currency,name:kgs"
 msgid "Som"
@@ -470,7 +487,7 @@ msgstr "Som"
 
 msgctxt "model:currency.currency,name:khr"
 msgid "Riel"
-msgstr "Riel camboyano"
+msgstr "Riel"
 
 msgctxt "model:currency.currency,name:kmf"
 msgid "Comoro Franc"
@@ -478,19 +495,19 @@ msgstr "Franco comoriano"
 
 msgctxt "model:currency.currency,name:kpw"
 msgid "North Korean Won"
-msgstr "Won norcoreano"
+msgstr "Won nordcoreano"
 
 msgctxt "model:currency.currency,name:krw"
 msgid "Won"
-msgstr "Won surcoreano"
+msgstr "Won sudcoreano"
 
 msgctxt "model:currency.currency,name:kwd"
 msgid "Kuwaiti Dinar"
-msgstr "Dinar kuwaití"
+msgstr "Dinaro kuwaitiano"
 
 msgctxt "model:currency.currency,name:kyd"
 msgid "Cayman Islands Dollar"
-msgstr "Dólar de las Islas Caimán"
+msgstr "Dollaro delle isole Cayman"
 
 msgctxt "model:currency.currency,name:kzt"
 msgid "Tenge"
@@ -498,39 +515,39 @@ msgstr "Tenge"
 
 msgctxt "model:currency.currency,name:lak"
 msgid "Kip"
-msgstr "Kip laosiano"
+msgstr "Kip"
 
 msgctxt "model:currency.currency,name:lbp"
 msgid "Lebanese Pound"
-msgstr "Libra libanesa"
+msgstr "Sterlina libanese"
 
 msgctxt "model:currency.currency,name:lkr"
 msgid "Sri Lanka Rupee"
-msgstr "Rupia de Sri Lanka"
+msgstr "Rupia singalese"
 
 msgctxt "model:currency.currency,name:lrd"
 msgid "Liberian Dollar"
-msgstr "Dóla liberiano"
+msgstr "Dollaro liberiano"
 
 msgctxt "model:currency.currency,name:lsl"
 msgid "Loti"
-msgstr "Loti lesothense"
+msgstr "Loti"
 
 msgctxt "model:currency.currency,name:ltl"
 msgid "Lithuanian Litas"
-msgstr "Litas lituano"
+msgstr "Litas"
 
 msgctxt "model:currency.currency,name:lvl"
 msgid "Latvian Lats"
-msgstr "Lat letón"
+msgstr "Lats"
 
 msgctxt "model:currency.currency,name:lyd"
 msgid "Libyan Dinar"
-msgstr "Dinar libio"
+msgstr "Dinaro libico"
 
 msgctxt "model:currency.currency,name:mad"
 msgid "Moroccan Dirham"
-msgstr "Dirham marroquí"
+msgstr "Dirham marocchino"
 
 msgctxt "model:currency.currency,name:mdl"
 msgid "Moldovan Leu"
@@ -538,11 +555,11 @@ msgstr "Leu moldavo"
 
 msgctxt "model:currency.currency,name:mga"
 msgid "Malagasy Ariary"
-msgstr "Ariary malgache"
+msgstr "Ariary"
 
 msgctxt "model:currency.currency,name:mkd"
 msgid "Denar"
-msgstr "Denar"
+msgstr "Denaro"
 
 msgctxt "model:currency.currency,name:mmk"
 msgid "Kyat"
@@ -550,7 +567,7 @@ msgstr "Kyat"
 
 msgctxt "model:currency.currency,name:mnt"
 msgid "Tugrik"
-msgstr "Tugrik"
+msgstr "Tughrik"
 
 msgctxt "model:currency.currency,name:mop"
 msgid "Pataca"
@@ -558,43 +575,43 @@ msgstr "Pataca"
 
 msgctxt "model:currency.currency,name:mro"
 msgid "Ouguiya"
-msgstr "Uquiya"
+msgstr "Ouguiya"
 
 msgctxt "model:currency.currency,name:mtl"
 msgid "Maltese Lira"
-msgstr "Lira maltesa"
+msgstr "Lira maltese"
 
 msgctxt "model:currency.currency,name:mur"
 msgid "Mauritius Rupee"
-msgstr "Rupia mauricia"
+msgstr "Rupia mauriziana"
 
 msgctxt "model:currency.currency,name:mvr"
 msgid "Rufiyaa"
-msgstr "Rufiyaa"
+msgstr "Rufiya"
 
 msgctxt "model:currency.currency,name:mwk"
 msgid "Kwacha"
-msgstr "Kwacha malawiano"
+msgstr "kwacha malawiano"
 
 msgctxt "model:currency.currency,name:mxn"
 msgid "Mexican Peso"
-msgstr "Peso mexicano"
+msgstr "Peso messicano"
 
 msgctxt "model:currency.currency,name:mxv"
 msgid "Mexican Unidad de Inversion (UDI)"
-msgstr "Unidad de Inversión Mexicana (UDI)"
+msgstr "Unidad de Inversion messicano (UDI)"
 
 msgctxt "model:currency.currency,name:myr"
 msgid "Malaysian Ringgit"
-msgstr "Ringgit malasio"
+msgstr "Ringgit"
 
 msgctxt "model:currency.currency,name:mzn"
 msgid "Metical"
-msgstr "Metical mozambiqueño"
+msgstr "Metical"
 
 msgctxt "model:currency.currency,name:nad"
 msgid "Namibia Dollar"
-msgstr "Dóla namibio"
+msgstr "Dollaro namibiano"
 
 msgctxt "model:currency.currency,name:ngn"
 msgid "Naira"
@@ -602,23 +619,23 @@ msgstr "Naira"
 
 msgctxt "model:currency.currency,name:nio"
 msgid "Cordoba Oro"
-msgstr "Córdoba"
+msgstr "Cordoba"
 
 msgctxt "model:currency.currency,name:nok"
 msgid "Norwegian Krone"
-msgstr "Corona noruega"
+msgstr "Corona norvegese"
 
 msgctxt "model:currency.currency,name:npr"
 msgid "Nepalese Rupee"
-msgstr "Rupia nepalesa"
+msgstr "Rupia nepalese"
 
 msgctxt "model:currency.currency,name:nzd"
 msgid "New Zealand Dollar"
-msgstr "Dólar neozelandés"
+msgstr "Dollaro neozelandese"
 
 msgctxt "model:currency.currency,name:omr"
 msgid "Rial Omani"
-msgstr "Rial omaní"
+msgstr "Rial omani"
 
 msgctxt "model:currency.currency,name:pab"
 msgid "Balboa"
@@ -626,7 +643,7 @@ msgstr "Balboa"
 
 msgctxt "model:currency.currency,name:pen"
 msgid "Nuevo Sol"
-msgstr "Nuevo Sol"
+msgstr "Sol"
 
 msgctxt "model:currency.currency,name:pgk"
 msgid "Kina"
@@ -634,11 +651,11 @@ msgstr "Kina"
 
 msgctxt "model:currency.currency,name:php"
 msgid "Philippine Peso"
-msgstr "Peso filipino"
+msgstr "Peso filippino"
 
 msgctxt "model:currency.currency,name:pkr"
 msgid "Pakistan Rupee"
-msgstr "Rupia pakistaní"
+msgstr "Rupia pakistana"
 
 msgctxt "model:currency.currency,name:pln"
 msgid "Zloty"
@@ -646,55 +663,55 @@ msgstr "Zloty"
 
 msgctxt "model:currency.currency,name:pyg"
 msgid "Guarani"
-msgstr "Guaraní"
+msgstr "Guarani"
 
 msgctxt "model:currency.currency,name:qar"
 msgid "Qatari Rial"
-msgstr "Rial de Qatar"
+msgstr "Rial qatariano"
 
 msgctxt "model:currency.currency,name:ron"
 msgid "New Leu"
-msgstr "Leu"
+msgstr "Leu romeno"
 
 msgctxt "model:currency.currency,name:rsd"
 msgid "Serbian Dinar"
-msgstr "Dinar serbio"
+msgstr "Dinaro serbo"
 
 msgctxt "model:currency.currency,name:rub"
 msgid "Russian Ruble"
-msgstr "Rublo ruso"
+msgstr "Rublo russo"
 
 msgctxt "model:currency.currency,name:rwf"
 msgid "Rwanda Franc"
-msgstr "Franco ruandés"
+msgstr "Franco ruandese"
 
 msgctxt "model:currency.currency,name:sar"
 msgid "Saudi Riyal"
-msgstr "Rial saudí"
+msgstr "Riyal saudita"
 
 msgctxt "model:currency.currency,name:sbd"
 msgid "Solomon Islands Dollar"
-msgstr "Dólar de las Islas Solomón"
+msgstr "Dollaro delle Salomone"
 
 msgctxt "model:currency.currency,name:scr"
 msgid "Seychelles Rupee"
-msgstr "Rupia de Seychelles"
+msgstr "Rupia delle Seicelle"
 
 msgctxt "model:currency.currency,name:sdg"
 msgid "Sudanese Pound"
-msgstr "Libra sudanesa"
+msgstr "Sterlina sudanese"
 
 msgctxt "model:currency.currency,name:sek"
 msgid "Swedish Krona"
-msgstr "Corona sueca"
+msgstr "Corona svedese"
 
 msgctxt "model:currency.currency,name:sgd"
 msgid "Singapore Dollar"
-msgstr "Dólar de Singapur"
+msgstr "Dollaro di Singapore"
 
 msgctxt "model:currency.currency,name:shp"
 msgid "Saint Helena Pound"
-msgstr "Libra de Santa Helena"
+msgstr "Sterlina di Sant'Elena"
 
 msgctxt "model:currency.currency,name:sll"
 msgid "Leone"
@@ -702,11 +719,11 @@ msgstr "Leone"
 
 msgctxt "model:currency.currency,name:sos"
 msgid "Somali Shilling"
-msgstr "Chelín somalí"
+msgstr "Scellino somalo"
 
 msgctxt "model:currency.currency,name:srd"
 msgid "Surinam Dollar"
-msgstr "Dólar surinamés"
+msgstr "Dollaro del Suriname"
 
 msgctxt "model:currency.currency,name:std"
 msgid "Dobra"
@@ -714,15 +731,15 @@ msgstr "Dobra"
 
 msgctxt "model:currency.currency,name:svc"
 msgid "El Salvador Colon"
-msgstr "Colón salvadoreño"
+msgstr "Colón salvadoregno"
 
 msgctxt "model:currency.currency,name:syp"
 msgid "Syrian Pound"
-msgstr "Libra siria"
+msgstr "Lira sterlina siriana"
 
 msgctxt "model:currency.currency,name:szl"
 msgid "Lilangeni"
-msgstr "Lilangeni suazi"
+msgstr "Lilangeni"
 
 msgctxt "model:currency.currency,name:thb"
 msgid "Baht"
@@ -734,67 +751,67 @@ msgstr "Somoni"
 
 msgctxt "model:currency.currency,name:tmm"
 msgid "Manat"
-msgstr "Manat"
+msgstr "Manat turkmeno"
 
 msgctxt "model:currency.currency,name:tnd"
 msgid "Tunisian Dinar"
-msgstr "Dinar tunecino"
+msgstr "Dinaro tunisino"
 
 msgctxt "model:currency.currency,name:top"
 msgid "Pa'anga"
-msgstr "Pa'anga"
+msgstr "Paanga"
 
 msgctxt "model:currency.currency,name:try"
 msgid "New Turkish Lira"
-msgstr "Nueva lira turca"
+msgstr "Lira turca"
 
 msgctxt "model:currency.currency,name:ttd"
 msgid "Trinidad and Tobago Dollar"
-msgstr "Dólar de Trinidad y Tobago"
+msgstr "Dollaro di Trinidad e Tobago"
 
 msgctxt "model:currency.currency,name:twd"
 msgid "New Taiwan Dollar"
-msgstr "Nuevo dólar taiwanés"
+msgstr "Dollaro di Taiwan"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
-msgstr "Chelín tanzano"
+msgstr "Scellino tanzaniano"
 
 msgctxt "model:currency.currency,name:uah"
 msgid "Hryvnia"
-msgstr "Grivnia"
+msgstr "Hrivna"
 
 msgctxt "model:currency.currency,name:ugx"
 msgid "Uganda Shilling"
-msgstr "Chelín ugandés"
+msgstr "Scellino ugandese"
 
 msgctxt "model:currency.currency,name:usd"
 msgid "US Dollar"
-msgstr "Dólar estadounidense"
+msgstr "Dollaro USA"
 
 msgctxt "model:currency.currency,name:usn"
 msgid "US Dollar (Next day)"
-msgstr "Dólar estadounidense (dia siguiente)"
+msgstr "Dollaro USA (Next day) "
 
 msgctxt "model:currency.currency,name:uss"
 msgid "US Dollar (Same day)"
-msgstr "Dólar estadounidense (mismo dia)"
+msgstr "Dollaro USA (Same day)"
 
 msgctxt "model:currency.currency,name:uyi"
 msgid "Uruguay Peso en Unidades Indexadas"
-msgstr "Uruguay Peso en Unidades Indexadas"
+msgstr "Peso uruguaiano in unità indicizzate"
 
 msgctxt "model:currency.currency,name:uyu"
 msgid "Peso Uruguayo"
-msgstr "Peso uruguayo"
+msgstr "Peso uruguaiano"
 
 msgctxt "model:currency.currency,name:uzs"
 msgid "Uzbekistan Sum"
-msgstr "Som uzbeco"
+msgstr "Sum"
 
 msgctxt "model:currency.currency,name:vef"
 msgid "Bolivar Fuerte"
-msgstr "Bolivar Fuerte"
+msgstr "Bolivar forte"
 
 msgctxt "model:currency.currency,name:vnd"
 msgid "Dong"
@@ -810,11 +827,11 @@ msgstr "Tala"
 
 msgctxt "model:currency.currency,name:xaf"
 msgid "CFA Franc BEAC"
-msgstr "franco CFA BEAC"
+msgstr "Franco CFA (BEAC)"
 
 msgctxt "model:currency.currency,name:xag"
 msgid "Silver"
-msgstr "Plata"
+msgstr "Argento"
 
 msgctxt "model:currency.currency,name:xau"
 msgid "Gold"
@@ -822,43 +839,43 @@ msgstr "Oro"
 
 msgctxt "model:currency.currency,name:xba"
 msgid "European Composite Unit (EURCO)"
-msgstr "Unidad Compuesta Europea (EURCO)"
+msgstr "Unità composita europea (EURCO)"
 
 msgctxt "model:currency.currency,name:xbb"
 msgid "European Monetary Unit (E.M.U.-6)"
-msgstr "Unidad Monetaria Europea (E.U.M.-6)"
+msgstr "Unità monetaria europea (E.M.U.-6)"
 
 msgctxt "model:currency.currency,name:xbc"
 msgid "European Unit of Account 9 (E.U.A.-9)"
-msgstr "Unidad de cuenta europea 9 (E.U.A.-9)"
+msgstr "Unità di acconto europea 9 (E.U.A.-9)"
 
 msgctxt "model:currency.currency,name:xbd"
 msgid "European Unit of Account 17 (E.U.A.-17)"
-msgstr "Unidad de cuenta europea 17 (E.U.A.-17)"
+msgstr "Unità di acconto europea 17 (E.U.A.-17)"
 
 msgctxt "model:currency.currency,name:xcd"
 msgid "East Caribbean Dollar"
-msgstr "Dólar del Caribe oriental"
+msgstr "Dollaro dei Caraibi orientali"
 
 msgctxt "model:currency.currency,name:xdr"
 msgid "Special Drawing Rights"
-msgstr "Derechos especiales de giro"
+msgstr "Diritti speciali di prelievo"
 
 msgctxt "model:currency.currency,name:xfo"
 msgid "Gold-Franc"
-msgstr "Franco de oro"
+msgstr "Franco-Oro"
 
 msgctxt "model:currency.currency,name:xfu"
 msgid "UIC-Franc"
-msgstr "Franco UIC"
+msgstr "Fraco UIC"
 
 msgctxt "model:currency.currency,name:xof"
 msgid "CFA Franc BCEAO"
-msgstr "franco CFA BCEAO"
+msgstr "Franco CFA (BCEAO)"
 
 msgctxt "model:currency.currency,name:xpd"
 msgid "Palladium"
-msgstr "Paladio"
+msgstr "Palladio"
 
 msgctxt "model:currency.currency,name:xpf"
 msgid "CFP Franc"
@@ -870,15 +887,15 @@ msgstr "Platino"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Code for testing purposes"
-msgstr "Código reservado para pruebas"
+msgstr "Codice riservato a scopo di test"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin divisa"
+msgstr "Nessuna valuta/transazione"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
-msgstr "Rial yemení"
+msgstr "Rial yemenita"
 
 msgctxt "model:currency.currency,name:zar"
 msgid "Rand"
@@ -886,52 +903,53 @@ msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
 msgid "Zambian Kwacha"
-msgstr "Kwacha zambiano"
+msgstr "kwacha zambiano"
 
 msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
-msgstr "Dólar zimbabuense"
+msgstr "Dollaro dello Zimbabwe"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
-msgstr "Tasa de cambio"
+msgstr "Cambio"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr "Valute"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valute"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr "Valute"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Administración de monedas"
+msgstr "Gestione Valute"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
-msgstr "Tasa de cambio"
+msgstr ""
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr "Tasas de cambio"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
-msgstr "Formato"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr "Tasas de cambio"
+msgstr ""

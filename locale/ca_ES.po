@@ -694,7 +694,7 @@ msgstr "Singapore Dollar"
 
 msgctxt "model:currency.currency,name:shp"
 msgid "Saint Helena Pound"
-msgstr "Lliura de Sta. Helena"
+msgstr "Lliura de Santa Helena"
 
 msgctxt "model:currency.currency,name:sll"
 msgid "Leone"
@@ -870,7 +870,7 @@ msgstr "Platinum"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Code for testing purposes"
-msgstr "Codi reservat per a fer proves"
+msgstr "Codi reservat per a proves"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"

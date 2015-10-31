@@ -18,7 +18,7 @@ msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
 "No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
-"en la fecha \"%(date)s\"."
+"en la fecha \"%(date)s\""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -74,11 +74,11 @@ msgstr "Nombre"
 
 msgctxt "field:currency.currency,negative_sign:"
 msgid "Negative Sign"
-msgstr "Signo Negativo"
+msgstr "Signo negativo"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr "Código Numérico"
+msgstr "Código numérico"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
@@ -102,7 +102,7 @@ msgstr "Tasa de cambio actual"
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr "Tasas de Cambio"
+msgstr "Tasas de cambio"
 
 msgctxt "field:currency.currency,rec_name:"
 msgid "Name"
@@ -146,7 +146,7 @@ msgstr "ID"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
-msgstr "Tasa de Cambio"
+msgstr "Tasa de cambio"
 
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
@@ -902,7 +902,7 @@ msgstr "Monedas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Monedas"
+msgstr "Moneda"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"

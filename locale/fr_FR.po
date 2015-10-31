@@ -8,7 +8,7 @@ msgstr "Une devise ne peut avoir qu'un seul taux par date."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "Le taux de la devise doit être plus grand ou égal à zéro"
+msgstr "Le taux de la devise doit être plus grand ou égal à 0"
 
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
@@ -18,7 +18,7 @@ msgstr ""
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
-"Aucun taux trouvé pour la devise « %(currency)s » à la date « %(date)s »."
+"Aucun taux trouvé pour la devise « %(currency)s » à la date « %(date)s »"
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"

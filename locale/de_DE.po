@@ -900,7 +900,7 @@ msgstr "Währungen"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Währungen"
+msgstr "Währung"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"

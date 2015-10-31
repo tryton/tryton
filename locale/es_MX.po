@@ -4,25 +4,25 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date."
-msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
+msgstr "Una divisa sólo puede tener una tasa de cambio por fecha."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0"
+msgstr "La tasa de cambio de la divisa debe ser mayor o igual a 0."
 
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
-msgstr "Agrupación «%(grouping)s» en la moneda «%(currency)s» no es correcta."
+msgstr "Agrupación \"%(grouping)s\" en la divisa \"%(currency)s\" no es correcta."
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
-"No se ha encontrado ninguna tasa de cambio para la moneda «%(currency)s» en "
-"la fecha «%(date)s»"
+"No se ha encontrado ninguna tasa de cambio para la divisa \"%(currency)s\" "
+"en la fecha \"%(date)s\"."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Activo"
 
 msgctxt "field:currency.currency,code:"
 msgid "Code"
@@ -134,7 +134,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Divisa"
 
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
@@ -162,7 +162,7 @@ msgstr "Usuario modificación"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Divisa"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
@@ -754,7 +754,7 @@ msgstr "Dólar de Trinidad y Tobago"
 
 msgctxt "model:currency.currency,name:twd"
 msgid "New Taiwan Dollar"
-msgstr "Nuevo dólar taiwanés"
+msgstr "nuevo Dólar taiwanés"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
@@ -898,40 +898,40 @@ msgstr "Tasa de cambio"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr "Divisas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Divisa"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr "Divisas"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Administración de monedas"
+msgstr "Administración de divisas"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
-msgstr "Tasa de cambio"
+msgstr ""
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr "Tasas de cambio"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr "Monedas"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
-msgstr "Formato"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr "Tasas de cambio"
+msgstr ""
