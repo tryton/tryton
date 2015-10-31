@@ -891,14 +891,6 @@ msgid "Draft Purchase Order"
 msgstr "Osnutek nabavnega naloga"
 
 msgctxt "odt:purchase.purchase:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:purchase.purchase:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr "Nabavni nalog št.:"
 
@@ -929,10 +921,6 @@ msgstr "Skupaj:"
 msgctxt "odt:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "odt:purchase.purchase:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
@@ -1147,10 +1135,6 @@ msgid "Handle Shipment Exception"
 msgstr "Obravnava pridržanih prevzemnic"
 
 msgctxt "view:purchase.purchase:"
-msgid "Invoices"
-msgstr "Računi"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Drugo"
 
@@ -1169,10 +1153,6 @@ msgstr "Nabavni nalogi"
 msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Ponudba"
-
-msgctxt "view:purchase.purchase:"
-msgid "Shipments"
-msgstr "Pošiljke"
 
 msgctxt "view:stock.move:"
 msgid "Moves"

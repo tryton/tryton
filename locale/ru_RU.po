@@ -893,14 +893,6 @@ msgid "Draft Purchase Order"
 msgstr "Черновой заказ на покупку"
 
 msgctxt "odt:purchase.purchase:"
-msgid "E-Mail:"
-msgstr "Эл.почта:"
-
-msgctxt "odt:purchase.purchase:"
-msgid "Phone:"
-msgstr "Телефон:"
-
-msgctxt "odt:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr "Заказ на покупку №:"
 
@@ -931,10 +923,6 @@ msgstr "Итого:"
 msgctxt "odt:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Цена за единицу"
-
-msgctxt "odt:purchase.purchase:"
-msgid "VAT Number:"
-msgstr "ИНН:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
@@ -1109,6 +1097,10 @@ msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr "Строки покупки"
 
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr ""
+
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
 msgstr "Цена поставщика продукции"
@@ -1146,10 +1138,6 @@ msgid "Handle Shipment Exception"
 msgstr "Обработка особых ситуаций доставки"
 
 msgctxt "view:purchase.purchase:"
-msgid "Invoices"
-msgstr "Инвойсы"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Другая информация"
 
@@ -1170,10 +1158,6 @@ msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Котировать"
 
-msgctxt "view:purchase.purchase:"
-msgid "Shipments"
-msgstr "Доставка"
-
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Перемещения"
@@ -1193,11 +1177,3 @@ msgstr "Отменить"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "Ок"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Открыть"

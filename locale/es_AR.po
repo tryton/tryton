@@ -889,14 +889,6 @@ msgid "Draft Purchase Order"
 msgstr "Orden de compra en borrador"
 
 msgctxt "odt:purchase.purchase:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:purchase.purchase:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr "Orden de compra Nº:"
 
@@ -927,10 +919,6 @@ msgstr "Total:"
 msgctxt "odt:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Precio unitario"
-
-msgctxt "odt:purchase.purchase:"
-msgid "VAT Number:"
-msgstr "CUIT:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
@@ -1145,10 +1133,6 @@ msgid "Handle Shipment Exception"
 msgstr "Gestionar excepción de remito"
 
 msgctxt "view:purchase.purchase:"
-msgid "Invoices"
-msgstr "Facturas"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Información adicional"
 
@@ -1167,10 +1151,6 @@ msgstr "Compras"
 msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Presupuestar"
-
-msgctxt "view:purchase.purchase:"
-msgid "Shipments"
-msgstr "Remitos"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
@@ -1191,11 +1171,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "Aceptar"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Abrir"

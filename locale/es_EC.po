@@ -20,7 +20,7 @@ msgstr ""
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
 msgstr ""
-"A la compra \"%(purchase)s\" le falta la propiedad \"Cuenta de Gastos\" por "
+"A la compra \"%(purchase)s\" le falta la propiedad \"Cuenta de gastos\" por "
 "defecto."
 
 msgctxt "error:purchase.line:"
@@ -35,7 +35,7 @@ msgstr "Se debe definir una bodega para la cotización de la compra \"%s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Falta la \"Cuenta por Pagar\" en el tercero \"%s\"."
+msgstr "Falta la \"Cuenta por pagar\" en el tercero \"%s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -56,7 +56,7 @@ msgstr ""
 
 msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
-msgstr "Estado de Excepción"
+msgstr "Estado de excepción"
 
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
@@ -72,15 +72,15 @@ msgstr "Comprable"
 
 msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
-msgstr "UdM de Compra"
+msgstr "UdM de compra"
 
 msgctxt "field:purchase.configuration,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.configuration,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.configuration,id:"
 msgid "ID"
@@ -88,11 +88,11 @@ msgstr "ID"
 
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
-msgstr "Método de Facturación"
+msgstr "Método de facturación"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Reference Sequence"
-msgstr "Secuencia de Referencia de Compra"
+msgstr "Secuencia de referencia de compra"
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -100,15 +100,15 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
-msgstr "Dominio de Facturas"
+msgstr "Dominio de facturas"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,id:"
 msgid "ID"
@@ -116,11 +116,11 @@ msgstr "ID"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
-msgstr "Recrear Facturas"
+msgstr "Recrear facturas"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
-msgstr "Dominio de Movimientos"
+msgstr "Dominio de movimientos"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,id:"
 msgid "ID"
@@ -128,7 +128,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr "Recrear Movimientos"
+msgstr "Recrear movimientos"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
@@ -136,11 +136,11 @@ msgstr "Subtotal"
 
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.line,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -152,7 +152,7 @@ msgstr "Descripción"
 
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
-msgstr "Desde Bodega"
+msgstr "Desde ubicación"
 
 msgctxt "field:purchase.line,id:"
 msgid "ID"
@@ -160,15 +160,15 @@ msgstr "ID"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Líneas de Factura"
+msgstr "Líneas de factura"
 
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
-msgstr "Movimientos Realizados"
+msgstr "Movimientos realizados"
 
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
-msgstr "Excepción de Movimientos"
+msgstr "Excepción de movimientos"
 
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
@@ -176,11 +176,11 @@ msgstr "Movimientos"
 
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Movimientos Ignorados"
+msgstr "Movimientos ignorados"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Movimientos Recreados"
+msgstr "Movimientos recreados"
 
 msgctxt "field:purchase.line,note:"
 msgid "Note"
@@ -216,7 +216,7 @@ msgstr "Impuestos"
 
 msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
-msgstr "A Bodega"
+msgstr "A ubicación"
 
 msgctxt "field:purchase.line,type:"
 msgid "Type"
@@ -228,27 +228,27 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de Unidad"
+msgstr "Decimales de unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr "Precio Unitario"
+msgstr "Precio unitario"
 
 msgctxt "field:purchase.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.line-account.tax,id:"
 msgid "ID"
@@ -256,7 +256,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
-msgstr "Línea de Compra"
+msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
 msgid "Name"
@@ -268,19 +268,19 @@ msgstr "Impuesto"
 
 msgctxt "field:purchase.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.line-ignored-stock.move,id:"
 msgid "ID"
@@ -292,7 +292,7 @@ msgstr "Movimiento"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr "Línea de Compra"
+msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
 msgid "Name"
@@ -300,19 +300,19 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.line-recreated-stock.move,id:"
 msgid "ID"
@@ -324,7 +324,7 @@ msgstr "Movimiento"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr "Línea de Compra"
+msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
 msgid "Name"
@@ -332,11 +332,11 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
@@ -348,11 +348,11 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.product_supplier,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.product_supplier,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
@@ -392,19 +392,19 @@ msgstr "Secuencia"
 
 msgctxt "field:purchase.product_supplier,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.product_supplier,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.product_supplier.price,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.product_supplier.price,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.product_supplier.price,id:"
 msgid "ID"
@@ -428,15 +428,15 @@ msgstr "Secuencia"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
-msgstr "Precio Unitario"
+msgstr "Precio unitario"
 
 msgctxt "field:purchase.product_supplier.price,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.product_supplier.price,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -448,11 +448,11 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.purchase,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.purchase,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -472,15 +472,15 @@ msgstr "ID"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
-msgstr "Dirección de Facturación"
+msgstr "Dirección de facturación"
 
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
-msgstr "Método de Facturación"
+msgstr "Método de facturación"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
-msgstr "Estado de Factura"
+msgstr "Estado de factura"
 
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
@@ -516,7 +516,7 @@ msgstr "Término de Pago"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr "Fecha de Compra"
+msgstr "Fecha de compra"
 
 msgctxt "field:purchase.purchase,rec_name:"
 msgid "Name"
@@ -528,15 +528,15 @@ msgstr "Referencia"
 
 msgctxt "field:purchase.purchase,shipment_returns:"
 msgid "Shipment Returns"
-msgstr "Devoluciones"
+msgstr "Guías de remisión de devolución"
 
 msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
-msgstr "Estado de Envío"
+msgstr "Estado de envío"
 
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr "Guías de remisión"
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
@@ -544,7 +544,7 @@ msgstr "Estado"
 
 msgctxt "field:purchase.purchase,supplier_reference:"
 msgid "Supplier Reference"
-msgstr "Referencia de Proveedor"
+msgstr "Referencia de proveedor"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -564,31 +564,31 @@ msgstr "Total precalculado"
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr "Base Imponible"
+msgstr "Base imponible"
 
 msgctxt "field:purchase.purchase,untaxed_amount_cache:"
 msgid "Untaxed Cache"
-msgstr "Base Imponible precalculado"
+msgstr "Base imponible precalculada"
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr "Depósito"
+msgstr "Bodega"
 
 msgctxt "field:purchase.purchase,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.purchase,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
 msgid "ID"
@@ -608,19 +608,19 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Creado por Usuario"
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
 msgid "ID"
@@ -640,11 +640,11 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr "Modificado por Usuario"
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
@@ -652,27 +652,27 @@ msgstr "Compra"
 
 msgctxt "field:stock.move,purchase_currency:"
 msgid "Purchase Currency"
-msgstr "Moneda de Compra"
+msgstr "Moneda de compra"
 
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
-msgstr "Estado de Excepción"
+msgstr "Estado de excepción"
 
 msgctxt "field:stock.move,purchase_quantity:"
 msgid "Purchase Quantity"
-msgstr "Cantidad de Compra"
+msgstr "Cantidad de compra"
 
 msgctxt "field:stock.move,purchase_unit:"
 msgid "Purchase Unit"
-msgstr "Unidad de Compra"
+msgstr "Unidad de compra"
 
 msgctxt "field:stock.move,purchase_unit_digits:"
 msgid "Purchase Unit Digits"
-msgstr "Decimales de Unidad de Compra"
+msgstr "Decimales de unidad de compra"
 
 msgctxt "field:stock.move,purchase_unit_price:"
 msgid "Purchase Unit Price"
-msgstr "Precio Unitario de Compra"
+msgstr "Precio unitario de compra"
 
 msgctxt "field:stock.move,purchase_visible:"
 msgid "Purchase Visible"
@@ -711,7 +711,7 @@ msgstr "Proveedores"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
-msgstr "Proveedores de Productos"
+msgstr "Proveedores de productos"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
@@ -719,7 +719,7 @@ msgstr "Precios"
 
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
-msgstr "Configuración de Compras"
+msgstr "Configuración de compras"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
@@ -739,7 +739,7 @@ msgstr "Devolución"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr "Guías de remisión"
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
@@ -747,11 +747,11 @@ msgstr "Compra"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Gestionar excepción de factura"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Gestionar excepción de envío"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
@@ -799,7 +799,7 @@ msgstr "Compras"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
-msgstr "Compras"
+msgstr "Configuración de Compras"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
@@ -815,39 +815,39 @@ msgstr "Proveedores"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr "Configuración de Compras"
+msgstr "Configuración de compras"
 
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Gestionar excepción de factura"
 
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Gestionar excepción de envío"
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
-msgstr "Línea de Compra"
+msgstr "Línea de compra"
 
 msgctxt "model:purchase.line-account.tax,name:"
 msgid "Purchase Line - Tax"
-msgstr "Línea de Compra - Impuesto"
+msgstr "Línea de compra - Impuesto"
 
 msgctxt "model:purchase.line-ignored-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr "Línea de Compra - Movimiento Ignorado"
+msgstr "Línea de compra - Movimiento ignorado"
 
 msgctxt "model:purchase.line-recreated-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr "Línea de Compra - Movimiento Ignorado"
+msgstr "Línea de compra - Movimiento ignorado"
 
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr "Proveedor de Producto"
+msgstr "Proveedor de producto"
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
-msgstr "Precio del Proveedor del Producto"
+msgstr "Precio del proveedor del producto"
 
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
@@ -859,7 +859,7 @@ msgstr "Compra - Factura Ignorada"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
-msgstr "Compra - Factura Recreada"
+msgstr "Compra - Factura recreada"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
@@ -887,19 +887,11 @@ msgstr "Descripción:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Draft Purchase Order"
-msgstr "Orden de Compra en Borrador"
-
-msgctxt "odt:purchase.purchase:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:purchase.purchase:"
-msgid "Phone:"
-msgstr "Teléfono:"
+msgstr "Orden de compra en borrador"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr "Orden de Compra Nº:"
+msgstr "Orden de compra Nº:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Quantity"
@@ -907,7 +899,7 @@ msgstr "Cantidad"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Request for Quotation N°:"
-msgstr "Solicitud de Cotización Nº:"
+msgstr "Solicitud de cotización Nº:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Taxes"
@@ -919,7 +911,7 @@ msgstr "Impuestos:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Total (excl. taxes):"
-msgstr "Total (sin Impuestos):"
+msgstr "Total (sin impuestos):"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Total:"
@@ -927,15 +919,11 @@ msgstr "Total:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Unit Price"
-msgstr "Precio Unitario"
-
-msgctxt "odt:purchase.purchase:"
-msgid "VAT Number:"
-msgstr "Número de RUC:"
+msgstr "Precio unitario"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
-msgstr "RUC:"
+msgstr "CI/RUC:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
@@ -951,11 +939,11 @@ msgstr "Recreada"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Based On Order"
-msgstr "Basado en la Orden"
+msgstr "Basado en la orden"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el Envío"
+msgstr "Basado en el envío"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
@@ -979,11 +967,11 @@ msgstr "Título"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Order"
-msgstr "Basado en la Orden"
+msgstr "Basado en la orden"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el Envío"
+msgstr "Basado en el envío"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
@@ -1003,7 +991,7 @@ msgstr "Pagada"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Waiting"
-msgstr "En Espera"
+msgstr "En espera"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
@@ -1019,7 +1007,7 @@ msgstr "Recibido"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
-msgstr "En Espera"
+msgstr "En espera"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
@@ -1067,7 +1055,7 @@ msgstr "Proveedores"
 
 msgctxt "view:purchase.configuration:"
 msgid "Purchase Configuration"
-msgstr "Configuración de Compras"
+msgstr "Configuración de compras"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1075,7 +1063,7 @@ msgstr "Seleccione facturas a recrear"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Gestionar excepción de factura"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
@@ -1083,7 +1071,7 @@ msgstr "Seleccione movimientos a recrear"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Handle shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Gestionar excepción de envío"
 
 msgctxt "view:purchase.line:"
 msgid "General"
@@ -1099,11 +1087,11 @@ msgstr "Notas"
 
 msgctxt "view:purchase.line:"
 msgid "Purchase Line"
-msgstr "Línea de Compra"
+msgstr "Línea de compra"
 
 msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
-msgstr "Líneas de Compra"
+msgstr "Líneas de compra"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
@@ -1111,19 +1099,19 @@ msgstr "Impuestos"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
-msgstr "Precio del Proveedor del Producto"
+msgstr "Precio del proveedor del producto"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Prices"
-msgstr "Precios del Proveedor del Producto"
+msgstr "Precios del proveedor del producto"
 
 msgctxt "view:purchase.product_supplier:"
 msgid "Product Supplier"
-msgstr "Proveedor de Producto"
+msgstr "Proveedor del producto"
 
 msgctxt "view:purchase.product_supplier:"
 msgid "Product Suppliers"
-msgstr "Proveedores de Productos"
+msgstr "Proveedores de producto"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"
@@ -1139,19 +1127,15 @@ msgstr "Borrador"
 
 msgctxt "view:purchase.purchase:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Gestionar excepción de factura"
 
 msgctxt "view:purchase.purchase:"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar Excepción de Envío"
-
-msgctxt "view:purchase.purchase:"
-msgid "Invoices"
-msgstr "Facturas"
+msgstr "Gestionar excepción de envío"
 
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
-msgstr "Información Adicional"
+msgstr "Información adicional"
 
 msgctxt "view:purchase.purchase:"
 msgid "Process"
@@ -1169,10 +1153,6 @@ msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Cotizar"
 
-msgctxt "view:purchase.purchase:"
-msgid "Shipments"
-msgstr "Envíos"
-
 msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Movimientos"
@@ -1183,7 +1163,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
@@ -1191,12 +1171,4 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Abrir"
+msgstr "Aceptar"

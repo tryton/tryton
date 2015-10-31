@@ -191,11 +191,11 @@ msgstr "Notiz"
 
 msgctxt "field:purchase.line,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Artikel Maßeinheit Kategorie"
+msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
@@ -343,7 +343,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr "Artikelnummer Lieferant"
+msgstr "Variantennummer Lieferant"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
@@ -383,7 +383,7 @@ msgstr "Preise"
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Name"
@@ -712,7 +712,7 @@ msgstr "Rechnungseingang"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Parteien: Einkäufen zugeordnet"
+msgstr "Parteien mit Einkäufen"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
@@ -816,7 +816,7 @@ msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Parteien: Einkäufen zugeordnet"
+msgstr "Parteien mit Einkäufen"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
@@ -848,7 +848,7 @@ msgstr "Einkaufsposition - Ignorierte Lagerbewegung"
 
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr "Artikel Lieferant"
+msgstr "Variantenlieferanten"
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
@@ -895,14 +895,6 @@ msgid "Draft Purchase Order"
 msgstr "Auftrag (Entwurf)"
 
 msgctxt "odt:purchase.purchase:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:purchase.purchase:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr "Auftrag Nr.:"
 
@@ -933,10 +925,6 @@ msgstr "Gesamt"
 msgctxt "odt:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
-
-msgctxt "odt:purchase.purchase:"
-msgid "VAT Number:"
-msgstr "USt-ID-Nr.:"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
@@ -1064,7 +1052,7 @@ msgstr "Neu erstellt"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Artikel"
+msgstr "Varianten"
 
 msgctxt "view:product.template:"
 msgid "Suppliers"
@@ -1151,10 +1139,6 @@ msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "view:purchase.purchase:"
-msgid "Invoices"
-msgstr "Rechnungen"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Sonstiges"
 
@@ -1173,10 +1157,6 @@ msgstr "Einkäufe"
 msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Angebot"
-
-msgctxt "view:purchase.purchase:"
-msgid "Shipments"
-msgstr "Lieferposten"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
