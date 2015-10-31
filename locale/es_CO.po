@@ -316,10 +316,6 @@ msgid "Direct Debit MANDATE"
 msgstr "MANDATO Debito Directo"
 
 msgctxt "odt:account.payment.sepa.mandate:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "Lugar"
 
@@ -330,10 +326,6 @@ msgstr "Nombre del Debitante"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "One-off payment"
 msgstr "Pago de Contado"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "Phone:"
-msgstr "Teléfono:"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Postal code"
@@ -362,10 +354,6 @@ msgstr "Dirección y número"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Type of payment"
 msgstr "Tipo de Pago"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "VAT Number:"
-msgstr "Número Identificación:"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Your account number"
@@ -462,6 +450,10 @@ msgstr "ENTRADA"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "SALIDA"
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr ""
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"

@@ -233,7 +233,7 @@ msgstr "Annulé"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectué"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
@@ -318,10 +318,6 @@ msgid "Direct Debit MANDATE"
 msgstr "MANDAT de débit direct"
 
 msgctxt "odt:account.payment.sepa.mandate:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "Emplacement"
 
@@ -332,10 +328,6 @@ msgstr "Nom du débiteur"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "One-off payment"
 msgstr "Paiement unique"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "Phone:"
-msgstr "Téléphone :"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Postal code"
@@ -364,10 +356,6 @@ msgstr "Rue et numéro"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Type of payment"
 msgstr "Type de paiement"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Your account number"
@@ -447,7 +435,7 @@ msgstr "Annulé"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
-msgstr "Fait"
+msgstr "Effectué"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Draft"
@@ -464,6 +452,10 @@ msgstr "Entrant"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Sortant"
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr "SEPA"
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"

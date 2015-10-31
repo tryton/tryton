@@ -224,7 +224,7 @@ msgstr "Mandat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr "Tots"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
@@ -321,10 +321,6 @@ msgid "Direct Debit MANDATE"
 msgstr "Ordre de domiciliació de dèbit directe"
 
 msgctxt "odt:account.payment.sepa.mandate:"
-msgid "E-Mail:"
-msgstr "Correu electrònic:"
-
-msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Location"
 msgstr "Localitat"
 
@@ -335,10 +331,6 @@ msgstr "Nom del deutor"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "One-off payment"
 msgstr "Pagament únic"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "Phone:"
-msgstr "Telèfon:"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Postal code"
@@ -367,10 +359,6 @@ msgstr "Nom del carrer i número"
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Type of payment"
 msgstr "Tipus de pagament"
-
-msgctxt "odt:account.payment.sepa.mandate:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
 
 msgctxt "odt:account.payment.sepa.mandate:"
 msgid "Your account number"
@@ -468,6 +456,10 @@ msgstr "Entrada"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Sortida"
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr "SEPA"
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"
