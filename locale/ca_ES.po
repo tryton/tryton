@@ -24,20 +24,16 @@ msgstr "Compte cost béns venuts usada"
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"
-msgstr ""
+msgstr "Quantitat anglosaxona d'entrada"
 
 msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
-msgstr ""
+msgstr "Quantitat anglosaxona de sortida"
 
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Aquest compte s'usarà en lloc del definit a la categoria."
 
-msgctxt "model:account.account.template,name:account_template_cogs"
-msgid "COGS"
-msgstr "COGS"
-
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"
-msgstr ""
+msgstr "Anglosaxó"

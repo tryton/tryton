@@ -36,7 +36,7 @@ msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-msgctxt "model:account.account.template,name:account_template_cogs"
+msgctxt "model:account.account.template,name:"
 msgid "COGS"
 msgstr "Kosten der verkauften Waren (COGS)"
 
