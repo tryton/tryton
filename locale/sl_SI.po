@@ -174,30 +174,11 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
 
-msgctxt "model:account.account.template,name:account_template_stock"
+msgctxt "model:account.account.template,name:"
 msgid "Stock"
 msgstr "Zaloga"
 
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr "Zaloga kupca"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr "Zaloga izgubljeno/najdeno"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr "Zaloga proizvodnje"
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr "Zaloga dobavitelja"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgctxt "model:account.account.type.template,name:"
 msgid "Inventories"
 msgstr "Popisi"
 

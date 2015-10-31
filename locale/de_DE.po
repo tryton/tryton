@@ -8,7 +8,7 @@ msgid ""
 "You must use the \"Update Cost Price\" wizard."
 msgstr ""
 "Der Kostenpreis kann nicht direkt aktualisiert werden für Artikel, die Lagerbewegungen zugeordnet sind.\n"
-"Es muss die Aktion 'Kostenpreis aktualisieren' gewählt werden."
+"Es muss die Aktion \"Kostenpreis aktualisieren\" gewählt werden."
 
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
@@ -116,7 +116,7 @@ msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
@@ -184,30 +184,11 @@ msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-msgctxt "model:account.account.template,name:account_template_stock"
+msgctxt "model:account.account.template,name:"
 msgid "Stock"
 msgstr "Lager"
 
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr "Lager Kunde"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr "Lager Inventurdifferenz"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr "Lager Produktion"
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr "Lager Lieferant"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgctxt "model:account.account.type.template,name:"
 msgid "Inventories"
 msgstr "Bestandskorrekturen"
 

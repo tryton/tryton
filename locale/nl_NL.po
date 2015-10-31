@@ -189,34 +189,6 @@ msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Deze rekening zal gebruikt worden in de plaats van die van de categorie."
 
-#, fuzzy
-msgctxt "model:account.account.template,name:account_template_stock"
-msgid "Stock"
-msgstr "Voorraad"
-
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr ""
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr ""
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr ""
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr ""
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
-msgid "Inventories"
-msgstr ""
-
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr ""

@@ -174,33 +174,6 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
 
-msgctxt "model:account.account.template,name:account_template_stock"
-msgid "Stock"
-msgstr "Stock"
-
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr "Stock client"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr "Stock « pertes et surplus »"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr "Stock de production"
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr "Stock fournisseur"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
-msgid "Inventories"
-msgstr "Inventaires"
-
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Mise à jour du prix de revient"

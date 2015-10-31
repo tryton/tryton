@@ -40,11 +40,11 @@ msgstr "Compte d'estoc client usat"
 
 msgctxt "field:product.category,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Compte d'estoc perdut/trobat"
+msgstr "Compte d'estoc perdut-trobat"
 
 msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Compte d'estoc perdut/trobat"
+msgstr "Compte d'estoc perdut-trobat"
 
 msgctxt "field:product.category,account_stock_production:"
 msgid "Account Stock Production"
@@ -80,11 +80,11 @@ msgstr "Compte d'estoc client usat"
 
 msgctxt "field:product.template,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Compte d'estoc perdut/trobat"
+msgstr "Compte d'estoc perdut-trobat"
 
 msgctxt "field:product.template,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Compte d'estoc perdut/trobat"
+msgstr "Compte d'estoc perdut-trobat"
 
 msgctxt "field:product.template,account_stock_production:"
 msgid "Account Stock Production"
@@ -174,33 +174,6 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
-msgctxt "model:account.account.template,name:account_template_stock"
-msgid "Stock"
-msgstr "Estoc"
-
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr "Estoc client"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr "Estoc perdut/trobat"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr "Estoc producció"
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr "Estoc proveïdor"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
-msgid "Inventories"
-msgstr "Inventaris"
-
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Actualitza preu de cost"
@@ -211,7 +184,7 @@ msgstr "Demana actualitzar preu de cost"
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
-msgstr "Actualitza preu de cost. Mostra assentament"
+msgstr "Mostra assentament d'actualització del preu de cost"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
@@ -239,11 +212,11 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "Accepta"
+msgstr "D'acord"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"

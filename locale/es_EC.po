@@ -8,12 +8,12 @@ msgid ""
 "You must use the \"Update Cost Price\" wizard."
 msgstr ""
 "No puede cambiar el precio de costo de un producto el cual está asociado a movimientos de stock.\n"
-"Debe utilizar el asistente \"Actualizar Precio de Costo\"."
+"Debe utilizar el asistente \"Actualizar precio de costo\"."
 
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr ""
-"La cuenta de stock y la de contrapartida no pueden ser la misma cuenta."
+"La cuenta de stock y la de contrapartida no pueden ser la misma cuenta"
 
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
@@ -175,33 +175,6 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Se utilizará esta cuenta en lugar de la definida en la categoría."
 
-msgctxt "model:account.account.template,name:account_template_stock"
-msgid "Stock"
-msgstr "Stock"
-
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr "Stock del cliente"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr "Stock perdido y encontrado"
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr "Stock de producción"
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr "Stock del proveedor"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
-msgid "Inventories"
-msgstr "Inventarios"
-
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Actualizar precio de costo"
@@ -240,11 +213,11 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"

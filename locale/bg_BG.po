@@ -186,35 +186,6 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
 
-#, fuzzy
-msgctxt "model:account.account.template,name:account_template_stock"
-msgid "Stock"
-msgstr "Наличност"
-
-msgctxt "model:account.account.template,name:account_template_stock_customer"
-msgid "Stock Customer"
-msgstr ""
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_lost_found"
-msgid "Stock Lost and Found"
-msgstr ""
-
-msgctxt ""
-"model:account.account.template,name:account_template_stock_production"
-msgid "Stock Production"
-msgstr ""
-
-msgctxt "model:account.account.template,name:account_template_stock_supplier"
-msgid "Stock Supplier"
-msgstr ""
-
-#, fuzzy
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_asset_current_inventories"
-msgid "Inventories"
-msgstr "Инвентаризации"
-
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr ""
