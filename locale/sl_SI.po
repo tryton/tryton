@@ -26,12 +26,11 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Depozit"
 
-msgctxt "model:account.account.template,name:account_template_deposit"
+msgctxt "model:account.account.template,name:"
 msgid "Deposit"
 msgstr "Depozit"
 
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current_unearned_revenues"
+msgctxt "model:account.account.type.template,name:"
 msgid "Unearned Revenues"
 msgstr "Nezasluženi prihodki"
 

@@ -28,15 +28,6 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Anticipo"
 
-msgctxt "model:account.account.template,name:account_template_deposit"
-msgid "Deposit"
-msgstr "Anticipo"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current_unearned_revenues"
-msgid "Unearned Revenues"
-msgstr "Ingresos no devengados"
-
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
 msgstr "Recuperación de anticipo en factura"

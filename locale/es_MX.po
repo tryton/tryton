@@ -4,11 +4,13 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice:"
 msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
-msgstr "El compte \"%(account)s\" del tercer \"%(party)s\" no té suficient bestreta."
+msgstr ""
+"La cuenta \"%(account)s\" de la entidad \"%(party)s\" no tiene suficiente "
+"anticipo."
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr "Compte"
+msgstr "Cuenta"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
@@ -16,7 +18,7 @@ msgstr "Empresa"
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr "Descripció"
+msgstr "Descripción"
 
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
@@ -24,36 +26,36 @@ msgstr "ID"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
-msgstr "Bestreta"
+msgstr "Anticipo"
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
-msgstr "Recuperació de bestreta en factura"
+msgstr "Recuperación de anticipo en factura"
 
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr "Recupera bestreta"
+msgstr "Recuperar anticipo"
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
-msgstr "Bestreta"
+msgstr "Anticipo"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
-msgstr "Bestreta"
+msgstr "Anticipo"
 
 msgctxt "view:account.invoice.recall_deposit.start:"
 msgid "Recall Deposit"
-msgstr "Recupera bestreta"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
-msgstr "Recupera bestreta"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancelar"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
-msgstr "Recupera"
+msgstr "Recuperar"

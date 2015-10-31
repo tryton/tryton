@@ -27,15 +27,6 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Dépôt"
 
-msgctxt "model:account.account.template,name:account_template_deposit"
-msgid "Deposit"
-msgstr "Dépôt"
-
-msgctxt ""
-"model:account.account.type.template,name:account_type_template_liability_current_unearned_revenues"
-msgid "Unearned Revenues"
-msgstr "Revenus non acquis"
-
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
 msgstr "Rappeler les dépôts sur la facture"
