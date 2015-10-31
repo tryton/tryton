@@ -8,7 +8,7 @@ msgstr "Frachtführer Kostenmethode"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Frachtführer Artikel"
+msgstr "Variante Frachtführer"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
@@ -64,7 +64,7 @@ msgstr "Frachtführer Administration"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr "Artikelpreis"
+msgstr "Variantenpreis"
 
 msgctxt "view:carrier:"
 msgid "Carrier"

@@ -52,7 +52,7 @@ msgstr "Transportistes"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transportistes"
+msgstr "Transportista"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
@@ -68,7 +68,7 @@ msgstr "Preu producte"
 
 msgctxt "view:carrier:"
 msgid "Carrier"
-msgstr "Transportistes"
+msgstr "Transportista"
 
 msgctxt "view:carrier:"
 msgid "Carriers"

@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Método de costo de transporte"
+msgstr "Método de custo da transportadora"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Producto que transporta"
+msgstr "Produto da transportadora"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Data de criação"
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Criado por"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
@@ -24,52 +24,52 @@ msgstr "ID"
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Pessoa"
 
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nome"
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Data de gravação"
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Criado por"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
-msgstr "Método para calcular el costo del transporte"
+msgstr "Método para computar o custo da transportadora"
 
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr "Transportadora"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr "Transportes"
+msgstr "Transportadoras"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr "Transportadora"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Transportes"
+msgstr "Transportadoras"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración de Transporte"
+msgstr "Administração de transportadora"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr "Precio del producto"
+msgstr "Preço do produto"
 
 msgctxt "view:carrier:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carriers"
-msgstr "Transportes"
+msgstr ""
