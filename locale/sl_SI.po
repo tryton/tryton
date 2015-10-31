@@ -28,7 +28,7 @@ msgstr "Ime"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Dejavnost"
+msgstr "Naloga"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
@@ -96,19 +96,19 @@ msgstr "Izravnalna zakasnitev nazaj"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
-msgstr "Omejen datum zaključka"
+msgstr "Planiran konec"
 
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint  Finish Time"
-msgstr "Omejen čas zaključka"
+msgstr "Planiran konćni čas"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
-msgstr "Omejen datum začetka"
+msgstr "Planiran začetek"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Omejen čas začetka"
+msgstr "Planiran začetni čas"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
@@ -116,35 +116,35 @@ msgstr "Trajanje"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Datum predčasnega konca"
+msgstr "Predčasni konec"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Čas predčasnega konca"
+msgstr "Predčasni končni čas"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Datum predčasnega začetka"
+msgstr "Predčasni začetek"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Čas predčasnega začetka"
+msgstr "Predčasni začetni čas"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Zakasneli konec"
+msgstr "Pozen konec"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Zakasneli končni čas"
+msgstr "Pozen končni čas"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Zakasneli začetek"
+msgstr "Pozen začetek"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Zakasneli začetni čas"
+msgstr "Pozen začetni čas"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"

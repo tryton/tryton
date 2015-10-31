@@ -144,7 +144,7 @@ msgstr "Début au plus tard"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "au plus tard"
+msgstr "Au plus tard"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"

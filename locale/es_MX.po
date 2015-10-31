@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Usuario creación"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -32,19 +32,19 @@ msgstr "Trabajo"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Fecha modificación"
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Usuario modificación"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Usuario creación"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
@@ -64,19 +64,19 @@ msgstr "Sucesor"
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Fecha modificación"
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Usuario modificación"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
-msgstr "Fin real"
+msgstr "Finalización real"
 
 msgctxt "field:project.work,actual_finish_time:"
 msgid "Actual Finish Time"
-msgstr "Hora de fin real"
+msgstr "Hora de finalización real"
 
 msgctxt "field:project.work,actual_start_date:"
 msgid "Actual Start"
@@ -92,27 +92,27 @@ msgstr "Asignaciones"
 
 msgctxt "field:project.work,back_leveling_delay:"
 msgid "Back Leveling Delay"
-msgstr "Retraso del ajuste"
+msgstr "Retraso de la nivelación"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
-msgstr "Fin de limitación"
+msgstr "Restricción de finalización"
 
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint  Finish Time"
-msgstr "Hora fin de limitación"
+msgstr "Restricción hora de finalización"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
-msgstr "Inicio de limitación"
+msgstr "Restricción de inicio"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Hora inicio de limitación"
+msgstr "Restricción hora de inicio"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Duración"
+msgstr "Tiempo"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
@@ -148,7 +148,7 @@ msgstr "Hora de inicio con retraso"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
-msgstr "Retraso de ajuste"
+msgstr "Retraso de nivelación"
 
 msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
@@ -160,7 +160,7 @@ msgstr "Sucesores"
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Ajuste de tareas"
+msgstr "Nivelación de tareas"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
@@ -172,16 +172,16 @@ msgstr "Predecesor - Sucesor"
 
 msgctxt "view:project.allocation:"
 msgid "Allocation"
-msgstr "Asignación"
+msgstr ""
 
 msgctxt "view:project.allocation:"
 msgid "Allocations"
-msgstr "Asignaciones"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Allocations"
-msgstr "Asignaciones"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Planificación"
+msgstr ""
