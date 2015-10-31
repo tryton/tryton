@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr "Asiento de liquidación"
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr "Cuenta de liquidación"
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr "Diario de liquidación"
+
+msgctxt "field:account.statement.line,payment:"
+msgid "Payment"
+msgstr "Pago"
