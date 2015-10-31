@@ -27,6 +27,18 @@ msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
 msgstr ""
 
+msgctxt "field:product.template,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:product.template,volume_digits:"
+msgid "Volume Digits"
+msgstr ""
+
+msgctxt "field:product.template,volume_uom:"
+msgid "Volume Uom"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:product.template,weight:"
 msgid "Weight"
