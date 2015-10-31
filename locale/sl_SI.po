@@ -263,20 +263,8 @@ msgid "Dear Madams and Sirs,"
 msgstr "Spoštovani gospa in gospod,"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Zadeva:"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"

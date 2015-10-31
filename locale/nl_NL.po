@@ -270,20 +270,8 @@ msgid "Dear Madams and Sirs,"
 msgstr "Geachte heer/mevrouw,"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "E-mail:"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Telefoon:"
-
-msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Betreft:"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "BTW-nummer:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"

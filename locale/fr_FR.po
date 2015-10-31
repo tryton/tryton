@@ -263,20 +263,8 @@ msgid "Dear Madams and Sirs,"
 msgstr "Chère madame, cher monsieur,"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "Email :"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Téléphone"
-
-msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Sujet :"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
@@ -284,7 +272,7 @@ msgstr "Créer la sociéte"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Vous pouvez maintenant ajouter votre société au système"
+msgstr "Vous pouvez maintenant ajouter votre société au système."
 
 msgctxt "view:company.company:"
 msgid "Companies"

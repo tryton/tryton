@@ -2,42 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Prefijo \"%(prefix)s\" de la secuencia \"%(sequence)s\" no es correcto."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "Sufijo \"%(sufix)s\" de la secuencia \"%(sequence)s\" no es correcto."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La última fecha-hora no puede ser del futuro en la secuencia \"%s\"."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Missing sequence."
-msgstr "Falta la secuencia."
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Prefijo \"%(prefix)s\" de la secuencia \"%(sequence)s\" no es correcto."
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "Sufijo \"%(sufix)s\" de la secuencia \"%(sequence)s\" no es correcto."
-
-msgctxt "error:ir.sequence:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La última fecha-hora no puede ser del futuro en la secuencia \"%s\"."
-
-msgctxt "error:ir.sequence:"
-msgid "Missing sequence."
-msgstr "Falta la secuencia."
-
-msgctxt "error:res.user:"
-msgid "You can not set the password of ldap user \"%s\"."
-msgstr "No puede cambiar la contraseña del usuario \"%s\" de LDAP."
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Hijos"
@@ -299,20 +263,8 @@ msgid "Dear Madams and Sirs,"
 msgstr "Estimados señores y señoras,"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "Correo electrónico:"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Teléfono:"
-
-msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Asunto:"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "CIF/NIF:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"

@@ -263,20 +263,8 @@ msgid "Dear Madams and Sirs,"
 msgstr "Sehr geehrte Damen und Herren,"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Telefon:"
-
-msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Betreff:"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "USt-ID-Nr.:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
