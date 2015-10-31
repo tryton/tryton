@@ -19,10 +19,6 @@ msgid "Purchase requests are only created by the system."
 msgstr "Los requisitos de compras son creados por el sistema únicamente."
 
 msgctxt "error:purchase.request:"
-msgid "The requested quantity must be greater than 0"
-msgstr "La cantidad solicitada debe ser mayor que 0"
-
-msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr "No puede borrar ordenes de compra."
 
@@ -57,10 +53,6 @@ msgstr "Cantidad Calculada"
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "UdM Calculada"
-
-msgctxt "field:purchase.request,computed_uom_digits:"
-msgid "Computed UOM Digits"
-msgstr "Digitos UdM Computado"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
@@ -166,6 +158,10 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Producto"
 
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr ""
+
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Compañía"
@@ -238,9 +234,9 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "model:ir.action,name:"
-msgid "Purchases"
-msgstr "Compras"
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
@@ -350,10 +346,6 @@ msgstr "Requisición"
 msgctxt "model:stock.shipment.internal.create.start,name:"
 msgid "Create Shipment Internal"
 msgstr "Crear Envío Interno"
-
-msgctxt "selection:purchase.request,origin:"
-msgid "Order Point"
-msgstr "Requisición"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"

@@ -19,10 +19,6 @@ msgid "Purchase requests are only created by the system."
 msgstr ""
 
 msgctxt "error:purchase.request:"
-msgid "The requested quantity must be greater than 0"
-msgstr ""
-
-msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr ""
 
@@ -55,10 +51,6 @@ msgstr ""
 
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
-msgstr ""
-
-msgctxt "field:purchase.request,computed_uom_digits:"
-msgid "Computed UOM Digits"
 msgstr ""
 
 msgctxt "field:purchase.request,create_date:"
@@ -174,6 +166,10 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Producten"
 
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
@@ -252,8 +248,8 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "model:ir.action,name:"
-msgid "Purchases"
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"

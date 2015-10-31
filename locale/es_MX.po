@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
 msgid "There are some late supplier moves."
-msgstr "Hay pendientes algunos movimientos de proveedor."
+msgstr "Hay algunos movimientos de proveedor retrasados."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
-msgstr "Falta el precio de compra del producto «%s»."
+msgstr "Falta el precio de compra del producto \"%s\"."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "This price is necessary for creating purchases."
@@ -16,15 +16,15 @@ msgstr "Este precio es necesario para crear compras."
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
-msgstr "Las solicitudes de compra solo las crea el sistema."
+msgstr "Las solicitudes de compra sólo las crea el sistema."
 
 msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
-msgstr "No puede eliminar una solicitud comprada."
+msgstr "No puede eliminar una solicitud de compra."
 
 msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
-msgstr "La cantidad máxima debe ser mayor que la mínima"
+msgstr "La cantidad máxima debe ser mayor que la mínima."
 
 msgctxt "error:stock.order_point:"
 msgid "Only one order point is allowed for each product-location pair."
@@ -37,8 +37,8 @@ msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
 msgstr ""
-"No puede definir dos reglas de abastecimiento en el mismo producto con "
-"ubicaciones opuestas."
+"No puede definir dos reglas de abastecimiento del producto con ubicaciones "
+"opuestas."
 
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
@@ -66,7 +66,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
-msgstr "Decimales de UdM por defecto"
+msgstr "Decimales de la UdM predefinidos"
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
@@ -122,7 +122,7 @@ msgstr "UdM"
 
 msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"
-msgstr "Decimales de UdM"
+msgstr "Decimales de la UdM"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -162,7 +162,7 @@ msgstr "Producto"
 
 msgctxt "field:stock.location,provisioning_location:"
 msgid "Provisioning Location"
-msgstr "Ubicación del aprovisionamiento"
+msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
@@ -198,7 +198,7 @@ msgstr "Producto"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
-msgstr "Ubicación del aprovisionamiento"
+msgstr "Ubicación del abastecimiento"
 
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Name"
@@ -206,7 +206,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr "Ubicación de depósito"
+msgstr "Ubicación interna"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
@@ -218,7 +218,7 @@ msgstr "Unidad"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de unidad"
+msgstr "Decimales de la unidad"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
@@ -238,7 +238,7 @@ msgstr "ID"
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
-msgstr "Dejar vacío para ningún aprovisionamiento por defecto"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
@@ -262,7 +262,7 @@ msgstr "Solicitudes de compra"
 
 msgctxt "model:ir.action,name:act_shipment_internal_create"
 msgid "Create Internal Shipments"
-msgstr "Crear Remitos internos"
+msgstr "Crear reubicacion interna"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -271,7 +271,7 @@ msgstr "Crear compra"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Todas"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
@@ -286,7 +286,7 @@ msgstr "Compra"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Todas"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
@@ -299,7 +299,7 @@ msgstr "Generar solicitudes de compra"
 
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
-msgstr "Generar Remitos internos"
+msgstr "Generar reubicación interna"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
@@ -315,7 +315,7 @@ msgstr "Solicitudes de compra"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
 msgid "Create Internal Shipments"
-msgstr "Crear Remitos internos"
+msgstr "Crear reubicación interna"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -327,7 +327,7 @@ msgstr "Crear solicitud de compra"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr "Crear compra - Petición de tercero"
+msgstr "Crear compra - Petición de entidad"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -335,11 +335,11 @@ msgstr "Solicitud de compra"
 
 msgctxt "model:res.user,name:user_generate_request"
 msgid "Cron Purchase Request"
-msgstr "Programador de solicitud de compra"
+msgstr "Planificador de solicitudes de compra"
 
 msgctxt "model:res.user,name:user_generate_shipment_internal"
 msgid "Cron Intenal Shipment"
-msgstr "Programador de Remito interno"
+msgstr "Planificador de reubicación interna"
 
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
@@ -347,15 +347,15 @@ msgstr "Regla de abastecimiento"
 
 msgctxt "model:stock.shipment.internal.create.start,name:"
 msgid "Create Shipment Internal"
-msgstr "Crear Remito interno"
+msgstr "Crear reubicación interna"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr "Cancelado"
+msgstr "Cancelada"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizada"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
@@ -363,7 +363,7 @@ msgstr "Borrador"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
-msgstr "Comprado"
+msgstr "Comprada"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
@@ -375,55 +375,55 @@ msgstr "Compra"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests"
-msgstr "Crear solicitudes de compra"
+msgstr ""
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
-msgstr "¿Crear solicitudes de compra?"
+msgstr ""
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
-msgstr "Crear compra: sin proveedor"
+msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr "Información del producto"
+msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Purchase Request"
-msgstr "Solicitud de compra"
+msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Purchase Requests"
-msgstr "Solicitudes de compra"
+msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
-msgstr "Información del suministro"
+msgstr ""
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point"
-msgstr "Regla de abastecimiento"
+msgstr ""
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
-msgstr "Tipo de regla de abastecimiento"
+msgstr ""
 
 msgctxt "view:stock.order_point:"
 msgid "Order Points"
-msgstr "Reglas de abastecimiento"
+msgstr ""
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr "Información del producto"
+msgstr ""
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments"
-msgstr "Crear Remitos internos"
+msgstr ""
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"
-msgstr "¿Crear Remitos internos?"
+msgstr ""
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"

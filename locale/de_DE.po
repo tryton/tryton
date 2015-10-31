@@ -19,10 +19,6 @@ msgid "Purchase requests are only created by the system."
 msgstr "Bestellvorschläge werden nur durch das System generiert!"
 
 msgctxt "error:purchase.request:"
-msgid "The requested quantity must be greater than 0"
-msgstr "Die angefragte Menge muss größer als 0 sein"
-
-msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr ""
 "Für einen Einkauf benutzte Bestellvorschläge können nicht gelöscht werden."
@@ -33,14 +29,15 @@ msgstr "Die maximale Anzahl muss größer als die minimale Anzahl sein"
 
 msgctxt "error:stock.order_point:"
 msgid "Only one order point is allowed for each product-location pair."
-msgstr "Es ist nur ein Bestellpunkt für jede Paarung Artikel-Lagerort erlaubt"
+msgstr ""
+"Es ist nur ein Bestellpunkt für jede Paarung Variante-Lagerort erlaubt"
 
 msgctxt "error:stock.order_point:"
 msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
 msgstr ""
-"Für einen Artikel können keine verschiedenen Bestellpunkte mit "
+"Für eine Variante können keine verschiedenen Bestellpunkte mit "
 "unterschiedlichen Lagerstandorten erstellt werden."
 
 msgctxt "field:product.product,order_points:"
@@ -58,10 +55,6 @@ msgstr "Berechnete Anzahl"
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Berechnete Maßeinheit"
-
-msgctxt "field:purchase.request,computed_uom_digits:"
-msgid "Computed UOM Digits"
-msgstr "Maßeinheit berechnete Nachkommastellen"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
@@ -89,11 +82,11 @@ msgstr "Partei"
 
 msgctxt "field:purchase.request,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
-msgstr "Bestellvorschlag"
+msgstr "Einkauf"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
@@ -165,7 +158,11 @@ msgstr "Lieferant"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Bereitstellungsort"
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
@@ -197,7 +194,7 @@ msgstr "Minimale Anzahl"
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "Variante"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
@@ -238,6 +235,11 @@ msgstr "Letzte Änderung durch"
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr ""
+"Leer lassen, wenn kein Standardbereitstellungsort verwendet werden soll"
 
 msgctxt "model:ir.action,name:"
 msgid "Purchases"
@@ -370,7 +372,7 @@ msgstr "Entwurf"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
-msgstr "Auftrag erteilt"
+msgstr "Auftrag erstellt"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
@@ -378,7 +380,7 @@ msgstr "Intern"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
-msgstr "Bestellvorschlag"
+msgstr "Einkauf"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests"
@@ -394,7 +396,7 @@ msgstr "Auftragerstellung: Fehlender Lieferant"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr "Info Artikel"
+msgstr "Info"
 
 msgctxt "view:purchase.request:"
 msgid "Purchase Request"
@@ -422,7 +424,7 @@ msgstr "Bestellpunkte"
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr "Artikelinfo"
+msgstr "Info"
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments"

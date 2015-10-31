@@ -19,10 +19,6 @@ msgid "Purchase requests are only created by the system."
 msgstr "Nabavni zahtevki so izdelani samo s strani sistema."
 
 msgctxt "error:purchase.request:"
-msgid "The requested quantity must be greater than 0"
-msgstr "Zahtevana količina mora biti večja od nič."
-
-msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr "Nabavnega zahtevka ni možno zbrisati."
 
@@ -57,10 +53,6 @@ msgstr "Izračunana količina"
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Izračunana ME"
-
-msgctxt "field:purchase.request,computed_uom_digits:"
-msgid "Computed UOM Digits"
-msgstr "Decimalke izračunane ME"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
@@ -166,6 +158,10 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Izdelek"
 
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Preskrba"
+
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Družba"
@@ -237,6 +233,10 @@ msgstr "Zapisal"
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr "Pusti prazno, če ni privzete preskrbe"
 
 msgctxt "model:ir.action,name:"
 msgid "Purchases"
