@@ -14,10 +14,6 @@ msgctxt "field:company.employee,cost_prices:"
 msgid "Cost Prices"
 msgstr "Preus de cost"
 
-msgctxt "field:company.employee,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
 msgstr "Preu de cost"
@@ -29,10 +25,6 @@ msgstr "Data creació"
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
-
-msgctxt "field:company.employee_cost_price,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
@@ -57,6 +49,10 @@ msgstr "Data modificació"
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
+
+msgctxt "field:timesheet.line,cost_price:"
+msgid "Cost Price"
+msgstr ""
 
 msgctxt "help:company.employee,cost_price:"
 msgid "Hourly cost price for this Employee"

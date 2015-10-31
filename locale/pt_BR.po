@@ -4,37 +4,35 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:company.employee_cost_price:"
 msgid "A employee can only have one cost price by date."
-msgstr ""
-"Es kann nur ein Kostenpreis pro Datum für einen Mitarbeiter eingetragen "
-"werden."
+msgstr "Um empregado somente pode ter um preço de custo por data."
 
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
-msgstr "Kostenpreis"
+msgstr "Preço de custo"
 
 msgctxt "field:company.employee,cost_prices:"
 msgid "Cost Prices"
-msgstr "Kostenpreise"
+msgstr "Preços de custo"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Kostenpreis"
+msgstr "Preços de custo"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data de criação"
 
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Criado por"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
-msgstr "Mitarbeiter"
+msgstr "Empregado"
 
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
@@ -42,40 +40,40 @@ msgstr "ID"
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nome"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data de edição"
 
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Editado por"
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"
-msgstr "Kostenpreis"
+msgstr "Preço de custo"
 
 msgctxt "help:company.employee,cost_price:"
 msgid "Hourly cost price for this Employee"
-msgstr "Kostenpreis pro Stunde für diesen Mitarbeiter"
+msgstr "Preço de custo por hora para este empregado."
 
 msgctxt "help:company.employee,cost_prices:"
 msgid "List of hourly cost price over time"
-msgstr "Liste der Kostenpreise pro Stunde über die Zeit"
+msgstr "Lista de preços de custo por hora ao longo do tempo."
 
 msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price"
-msgstr "Kostenpreis pro Stunde"
+msgstr "Preço de custo por hora"
 
 msgctxt "model:company.employee_cost_price,name:"
 msgid "Employee Cost Price"
-msgstr "Mitarbeiter Kostenpreis"
+msgstr "Preço de custo do empregado"
 
 msgctxt "view:company.employee:"
 msgid "Cost"
-msgstr "Kosten"
+msgstr "Custo"
 
 msgctxt "view:company.employee_cost_price:"
 msgid "Cost Prices"
-msgstr "Kostenpreise"
+msgstr "Custo"

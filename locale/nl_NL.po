@@ -16,11 +16,6 @@ msgid "Cost Prices"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:company.employee,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-#, fuzzy
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
 msgstr "Kostprijs"
@@ -32,11 +27,6 @@ msgstr ""
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:company.employee_cost_price,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 #, fuzzy
 msgctxt "field:company.employee_cost_price,date:"
@@ -63,6 +53,10 @@ msgstr ""
 
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
+msgstr ""
+
+msgctxt "field:timesheet.line,cost_price:"
+msgid "Cost Price"
 msgstr ""
 
 msgctxt "help:company.employee,cost_price:"
