@@ -1920,8 +1920,10 @@
                 var fields = record._values[this.name].model.fields;
                 var field_names = {};
                 var adding_values = [];
-                for (var i=0; i < value.add.length; i++) {
-                    adding_values.push(value.add[i][1]);
+                if (value.add) {
+                    for (var i=0; i < value.add.length; i++) {
+                        adding_values.push(value.add[i][1]);
+                    }
                 }
                 [adding_values, value.update].forEach(function(l) {
                     if (!jQuery.isEmptyObject(l)) {
