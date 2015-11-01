@@ -668,6 +668,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         default['reference'] = None
         default['invoice_state'] = 'none'
         default['invoices_ignored'] = None
+        default['moves'] = None
         default['shipment_state'] = 'none'
         default.setdefault('sale_date', None)
         return super(Sale, cls).copy(sales, default=default)
