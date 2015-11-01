@@ -324,7 +324,7 @@ msgstr "M"
 
 #: tryton/common/timedelta.py:28
 msgid "w"
-msgstr "s"
+msgstr "S"
 
 #: tryton/common/timedelta.py:29
 msgid "d"

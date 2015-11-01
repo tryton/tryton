@@ -322,7 +322,7 @@ msgstr "Afdrukken"
 
 #: tryton/common/timedelta.py:26
 msgid "Y"
-msgstr " J"
+msgstr "J"
 
 #: tryton/common/timedelta.py:27
 msgid "M"
@@ -334,7 +334,7 @@ msgstr "w"
 
 #: tryton/common/timedelta.py:29
 msgid "d"
-msgstr " d"
+msgstr "d"
 
 #: tryton/common/timedelta.py:30
 msgid "h"
