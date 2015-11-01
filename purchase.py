@@ -604,6 +604,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         default['reference'] = None
         default['invoice_state'] = 'none'
         default['invoices_ignored'] = None
+        default['moves'] = None
         default['shipment_state'] = 'none'
         default.setdefault('purchase_date', None)
         return super(Purchase, cls).copy(purchases, default=default)
