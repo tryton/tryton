@@ -3149,8 +3149,8 @@
                     text = Sao.i18n.gettext('%1%', text);
                 }
             }
-            this.progressbar.prop('aria-valuenow', value);
-            this.progressbar.css('width', value + '%');
+            this.progressbar.attr('aria-valuenow', value * 100);
+            this.progressbar.css('width', value * 100 + '%');
             this.progressbar.text(text);
         }
     });

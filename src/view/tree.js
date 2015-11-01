@@ -1478,8 +1478,8 @@
             }
             var value = this.field.get(record) || 0;
             var progressbar = cell.find('.progress-bar');
-            progressbar.prop('aria-valuenow', value * 100);
-            progressbar.css('width', value + '%');
+            progressbar.attr('aria-valuenow', value * 100);
+            progressbar.css('width', value * 100 + '%');
             progressbar.text(text);
         }
     });
