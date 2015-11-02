@@ -2232,22 +2232,20 @@
                             this.screen.current_view.editable) {
                         this.screen.set_current_record(null);
                     }
-                    var readonly = false;
-                    var domain = [];
-                    var size_limit = null;
-                    if (record) {
-                        readonly = field.get_state_attrs(record).readonly;
-                        domain = field.get_domain(record);
-                        size_limit = record.expr_eval(this.attributes.size);
-                    }
-                    if (!Sao.common.compare(this.screen.domain, domain)) {
-                        this.screen.domain = domain;
-                    }
-                    if (!this.screen.group.get_readonly() && readonly) {
-                        this.screen.group.set_readonly(readonly);
-                    }
-                    this.screen.size_limit = size_limit;
                 }
+                var readonly = false;
+                var domain = [];
+                var size_limit = null;
+                if (record) {
+                    readonly = field.get_state_attrs(record).readonly;
+                    domain = field.get_domain(record);
+                    size_limit = record.expr_eval(this.attributes.size);
+                }
+                if (!Sao.common.compare(this.screen.domain, domain)) {
+                    this.screen.domain = domain;
+                }
+                this.screen.group.set_readonly(readonly);
+                this.screen.size_limit = size_limit;
                 this.screen.display();
             }.bind(this));
         },
