@@ -1,3 +1,5 @@
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
 * Add test for all field methods
 * Load po files also in 'override' subdirectory
 * Add support for float and integer on Property fields
