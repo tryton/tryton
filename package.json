@@ -1,8 +1,8 @@
 {
-  "name": "sao",
+  "name": "tryton-sao",
   "title": "sao",
   "description": "Tryton webclient",
-  "version": "3.7.0",
+  "version": "3.8.0",
   "homepage": "http://www.tryton.org/",
   "author": {
     "name": "Tryton"
@@ -17,6 +17,7 @@
   "license": "GPL-3.0+",
   "files": [
     "COPYRIGHT",
+    "CHANGELOG",
     "Gruntfile.js",
     "LICENSE",
     "README",
