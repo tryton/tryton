@@ -1,3 +1,5 @@
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
 * Add drop location type
 * Add buttons on stock move form & list
 * Allow to use view location on staging and draft moves
