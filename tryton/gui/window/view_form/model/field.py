@@ -326,7 +326,7 @@ class FloatField(Field):
             if digits:
                 p = digits[1]
             else:
-                p = -int(Decimal(str(value * factor)).as_tuple().exponent)
+                p = -int(Decimal(repr(value * factor)).as_tuple().exponent)
             return locale.format('%.*f', (p, value * factor), True)
         else:
             return ''
