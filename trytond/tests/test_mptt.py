@@ -181,6 +181,16 @@ class MPTTTestCase(unittest.TestCase):
 
                 self.assertTrue(mock.called)
 
+    def test0070_nested_create(self):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            record, = self.mptt.create([{
+                        'name': 'Test nested create 1',
+                        'childs': [('create', [{
+                                        'name': 'Test nested create 1 1',
+                                        }])],
+                        }])
+            self.CheckTree()
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(MPTTTestCase)
