@@ -637,12 +637,15 @@ class ViewTree(View):
             if isinstance(b.renderer, CellRendererButton)]
 
     def on_keypress(self, widget, event):
+        control_mask = gtk.gdk.CONTROL_MASK
+        if sys.platform == 'darwin':
+            control_mask = gtk.gdk.MOD2_MASK
         if (event.keyval == gtk.keysyms.c
-                and event.state & gtk.gdk.CONTROL_MASK):
+                and event.state & control_mask):
             self.on_copy()
             return False
         if (event.keyval == gtk.keysyms.v
-                and event.state & gtk.gdk.CONTROL_MASK):
+                and event.state & control_mask):
             self.on_paste()
             return False
 
