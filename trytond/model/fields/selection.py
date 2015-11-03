@@ -5,6 +5,7 @@ import warnings
 from sql.conditionals import Case
 
 from ... import backend
+from ...transaction import Transaction
 from .field import Field, SQLType
 
 
@@ -82,7 +83,9 @@ class TranslatedSelection(object):
     def __get__(self, inst, cls):
         if inst is None:
             return self
-        selection = dict(cls.fields_get([self.name])[self.name]['selection'])
+        with Transaction().set_context(getattr(inst, '_context', {})):
+            selection = dict(
+                cls.fields_get([self.name])[self.name]['selection'])
         value = getattr(inst, self.name)
         # None and '' are equivalent
         if value is None or value == '':

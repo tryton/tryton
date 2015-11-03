@@ -439,7 +439,8 @@ Instance methods:
 .. method:: Selection.translated([name])
 
     Returns a descriptor for the translated value of the field. The descriptor
-    must be used on the same class as the field.
+    must be used on the same class as the field. It will use the language
+    defined in the context of the instance accessed.
 
 Reference
 ---------
