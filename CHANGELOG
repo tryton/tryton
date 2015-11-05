@@ -1,3 +1,4 @@
+* Add parent_of operator
 * Enforce type of inheriting view
 * Use instance context in translated descriptor of Selection
 

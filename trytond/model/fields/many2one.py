@@ -97,7 +97,7 @@ class Many2One(Field):
         else:
             return SQLType('INTEGER', 'INTEGER')
 
-    def convert_domain_child_mptt(self, domain, tables):
+    def convert_domain_mptt(self, domain, tables):
         cursor = Transaction().cursor
         table, _ = tables[None]
         name, operator, ids = domain
@@ -108,30 +108,48 @@ class Many2One(Field):
         cursor.execute(*table.select(left, right, where=red_sql))
         where = Or()
         for l, r in cursor.fetchall():
-            where.append((left >= l) & (right <= r))
+            if operator.endswith('child_of'):
+                where.append((left >= l) & (right <= r))
+            else:
+                where.append((left <= l) & (right >= r))
         if not where:
             where = Literal(False)
-        if operator == 'not child_of':
+        if operator.startswith('not'):
             return ~where
         return where
 
-    def convert_domain_child(self, domain, tables):
+    def convert_domain_tree(self, domain, tables):
         Target = self.get_target()
         table, _ = tables[None]
         name, operator, ids = domain
-        ids = list(ids)  # Ensure it is a list for concatenation
+        ids = set(ids)  # Ensure it is a set for concatenation
 
         def get_child(ids):
             if not ids:
-                return []
+                return set()
             children = Target.search([
                     (name, 'in', ids),
                     (name, '!=', None),
                     ], order=[])
-            child_ids = get_child([c.id for c in children])
-            return ids + child_ids
-        expression = table.id.in_(ids + get_child(ids))
-        if operator == 'not child_of':
+            child_ids = get_child(set(c.id for c in children))
+            return ids | child_ids
+
+        def get_parent(ids):
+            if not ids:
+                return set()
+            parent_ids = set(getattr(p, name).id
+                for p in Target.browse(ids) if getattr(p, name))
+            return ids | get_parent(parent_ids)
+
+        if operator.endswith('child_of'):
+            ids = list(get_child(ids))
+        else:
+            ids = list(get_parent(ids))
+        if not ids:
+            expression = Literal(False)
+        else:
+            expression = table.id.in_(ids)
+        if operator.startswith('not'):
             return ~expression
         return expression
 
@@ -144,12 +162,17 @@ class Many2One(Field):
         name, operator, value = domain[:3]
         column = self.sql_column(table)
         if '.' not in name:
-            if operator in ('child_of', 'not child_of'):
+            if operator.endswith('child_of') or operator.endswith('parent_of'):
                 if Target != Model:
-                    query = Target.search([(domain[3], 'child_of', value)],
-                        order=[], query=True)
+                    if operator.endswith('child_of'):
+                        target_operator = 'child_of'
+                    else:
+                        target_operator = 'parent_of'
+                    query = Target.search([
+                            (domain[3], target_operator, value),
+                            ], order=[], query=True)
                     expression = column.in_(query)
-                    if operator == 'not child_of':
+                    if operator.startswith('not'):
                         return ~expression
                     return expression
 
@@ -162,15 +185,15 @@ class Many2One(Field):
                 else:
                     ids = value
                 if not ids:
-                    expression = column.in_([None])
-                    if operator == 'not child_of':
+                    expression = Literal(False)
+                    if operator.startswith('not'):
                         return ~expression
                     return expression
                 elif self.left and self.right:
-                    return self.convert_domain_child_mptt(
+                    return self.convert_domain_mptt(
                         (name, operator, ids), tables)
                 else:
-                    return self.convert_domain_child(
+                    return self.convert_domain_tree(
                         (name, operator, ids), tables)
 
             if not isinstance(value, basestring):

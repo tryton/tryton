@@ -30,13 +30,14 @@ __all__ = [
     'Many2ManyReference', 'Many2ManyReferenceTarget',
     'Many2ManyReferenceRelation',
     'Many2ManySize', 'Many2ManySizeTarget', 'Many2ManySizeRelation',
+    'Many2ManyTree', 'Many2ManyTreeRelation',
     'Reference', 'ReferenceTarget', 'ReferenceRequired',
     'Property',
     'Selection', 'SelectionRequired',
     'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
     'Binary', 'BinaryDefault', 'BinaryRequired',
     'Many2OneDomainValidation', 'Many2OneTarget', 'Many2OneOrderBy',
-    'Many2OneSearch',
+    'Many2OneSearch', 'Many2OneTree', 'Many2OneMPTT',
     ]
 
 
@@ -588,6 +589,22 @@ class Many2ManySizeRelation(ModelSQL):
     target = fields.Many2One('test.many2many_size.target', 'Target')
 
 
+class Many2ManyTree(ModelSQL):
+    'Many2Many Tree'
+    __name__ = 'test.many2many_tree'
+    parents = fields.Many2Many('test.many2many_tree.relation',
+        'child', 'parent', 'Parents')
+    children = fields.Many2Many('test.many2many_tree.relation',
+        'parent', 'child', 'Children')
+
+
+class Many2ManyTreeRelation(ModelSQL):
+    'Many2Many Tree Relation'
+    __name__ = 'test.many2many_tree.relation'
+    parent = fields.Many2One('test.many2many_tree', 'Parent')
+    child = fields.Many2One('test.many2many_tree', 'Child')
+
+
 class Reference(ModelSQL):
     'Reference'
     __name__ = 'test.reference'
@@ -744,3 +761,26 @@ class Many2OneSearch(ModelSQL):
     "Many2One Search"
     __name__ = 'test.many2one_search'
     many2one = fields.Many2One('test.many2one_target', 'many2one')
+
+
+class Many2OneTree(ModelSQL):
+    'Many2One Tree'
+    __name__ = 'test.many2one_tree'
+    many2one = fields.Many2One('test.many2one_tree', 'many2one')
+
+
+class Many2OneMPTT(ModelSQL):
+    'Many2One MPTT'
+    __name__ = 'test.many2one_mptt'
+    many2one = fields.Many2One('test.many2one_mptt', 'many2one',
+        left='left', right='right')
+    left = fields.Integer('Left', required=True)
+    right = fields.Integer('Right', required=True)
+
+    @classmethod
+    def default_left(cls):
+        return 0
+
+    @classmethod
+    def default_right(cls):
+        return 0

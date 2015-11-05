@@ -17,6 +17,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 from trytond.model import fields
+from trytond.pool import Pool
 
 
 class FieldsTestCase(unittest.TestCase):
@@ -2677,6 +2678,63 @@ class FieldsTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Many2Many = pool.get('test.many2many_tree')
+
+            second1, second2, second3, second4 = Many2Many.create([
+                    {},
+                    {},
+                    {},
+                    {},
+                    ])
+            first1, first2, first3, first4 = Many2Many.create([
+                    {'children': [('add', [second1.id, second2.id])]},
+                    {'children': [('add', [second1.id, second2.id])]},
+                    {'children': [('add', [second3.id, second4.id])]},
+                    {'children': [('add', [second4.id])]},
+                    ])
+            root1, root2 = Many2Many.create([
+                    {'children': [
+                            ('add', [first1.id, first2.id, second1.id])]},
+                    {'children': [('add', [first3.id, first4.id])]},
+                    ])
+
+            all_ = Many2Many.search([])
+
+            def not_(l):
+                return [r for r in all_ if r not in l]
+
+            for clause, test in [
+                    ([root1.id], [second1, second2, first1, first2, root1]),
+                    ([second1.id], [second1]),
+                    ([root2.id], [second3, second4, first3, first4, root2]),
+                    ([], []),
+                    ]:
+                result = Many2Many.search(
+                    [('parents', 'child_of', clause)])
+                self.assertEqual(result, test)
+
+                result = Many2Many.search(
+                    [('parents', 'not child_of', clause)])
+                self.assertEqual(result, not_(test))
+
+            for clause, test in [
+                    ([root1.id], [root1]),
+                    ([first3.id], [first3, root2]),
+                    ([second4.id], [second4, first3, first4, root2]),
+                    ([second4.id, first4.id], [second4, first3, first4,
+                            root2]),
+                    ([], []),
+                    ]:
+                result = Many2Many.search(
+                    [('parents', 'parent_of', clause)])
+                self.assertEqual(result, test)
+
+                result = Many2Many.search(
+                    [('parents', 'not parent_of', clause)])
+                self.assertEqual(result, not_(test))
+
     def test0140reference(self):
         'Test Reference'
         with Transaction().start(DB_NAME, USER,
@@ -3289,6 +3347,62 @@ class FieldsTestCase(unittest.TestCase):
             self.assertEqual(self.m2o_search.search([
                         ('many2one.value', '=', 1),
                         ]), [search1])
+
+        for model in ['test.many2one_tree', 'test.many2one_mptt']:
+            with Transaction().start(DB_NAME, USER, context=CONTEXT):
+                pool = Pool()
+                Many2One = pool.get(model)
+
+                root1, root2 = Many2One.create([{}, {}])
+                first1, first2, first3, first4 = Many2One.create([
+                        {'many2one': root1.id},
+                        {'many2one': root1.id},
+                        {'many2one': root2.id},
+                        {'many2one': root2.id},
+                        ])
+                second1, second2, second3, second4 = Many2One.create([
+                        {'many2one': first1.id},
+                        {'many2one': first1.id},
+                        {'many2one': first2.id},
+                        {'many2one': first2.id},
+                        ])
+                all_ = Many2One.search([])
+
+                def not_(l):
+                    return [r for r in all_ if r not in l]
+
+                for clause, test in [
+                        ([root1.id], [root1, first1, first2,
+                                second1, second2, second3, second4]),
+                        ([second1.id], [second1]),
+                        ([root2.id], [root2, first3, first4]),
+                        ([first2.id, first3.id], [first2, first3,
+                                second3, second4]),
+                        ([], []),
+                        ]:
+                    result = Many2One.search(
+                        [('many2one', 'child_of', clause)])
+                    self.assertEqual(result, test)
+
+                    result = Many2One.search(
+                        [('many2one', 'not child_of', clause)])
+                    self.assertEqual(result, not_(test))
+
+                for clause, test in [
+                        ([root1.id], [root1]),
+                        ([first3.id], [root2, first3]),
+                        ([second4.id], [root1, first2, second4]),
+                        ([second4.id, first4.id], [root1, root2,
+                                first2, first4, second4]),
+                        ([], []),
+                        ]:
+                    result = Many2One.search(
+                        [('many2one', 'parent_of', clause)])
+                    self.assertEqual(result, test)
+
+                    result = Many2One.search(
+                        [('many2one', 'not parent_of', clause)])
+                    self.assertEqual(result, not_(test))
 
     def test0200timedelta(self):
         'Test timedelta'

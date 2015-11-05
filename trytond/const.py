@@ -3,6 +3,8 @@
 OPERATORS = (
     'child_of',
     'not child_of',
+    'parent_of',
+    'not parent_of',
     '=',
     '!=',
     'like',

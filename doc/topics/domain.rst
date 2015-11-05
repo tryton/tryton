@@ -227,4 +227,14 @@ pattern, unless otherwise noted::
     Is a parent child comparison operator. It is the negation of the
     `child_of`_ operator.
 
+``parent_of``
+-------------
 
+    Is a parent child comparison operator. It is the same as `child_of`_
+    operator but if ``<field name>`` is a parent of ``<operand>``.
+
+``not parent_of``
+-----------------
+
+    Is a parent child comparison operator. it is the negation of this
+    `parent_of`_ operator.
