@@ -76,7 +76,7 @@ class WinSearch(NoModal):
 
         self.model_name = model
 
-        self.win.set_size_request(700, 500)
+        self.win.set_default_size(700, 500)
 
         self.register()
         sensible_allocation = self.sensible_widget.get_allocation()

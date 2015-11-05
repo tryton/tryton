@@ -375,7 +375,7 @@ def selection(title, values, alwaysask=False):
     dialog.set_icon(TRYTON_ICON)
     dialog.set_has_separator(True)
     dialog.set_default_response(gtk.RESPONSE_OK)
-    dialog.set_size_request(400, 400)
+    dialog.set_default_size(400, 400)
 
     label = gtk.Label(title or _('Your selection:'))
     dialog.vbox.pack_start(label, False, False)
@@ -888,7 +888,7 @@ class ErrorDialog(UniqueDialog):
         vbox.pack_start(button_roundup, False, False)
 
         dialog.vbox.pack_start(vbox)
-        dialog.set_size_request(600, 400)
+        dialog.set_default_size(600, 400)
         return dialog
 
     def __call__(self, title, details):
