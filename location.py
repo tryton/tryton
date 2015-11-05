@@ -53,6 +53,8 @@ class Location(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many("stock.location", "parent", "Children")
+    warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
+        'get_warehouse')
     input_location = fields.Many2One(
         "stock.location", "Input", states={
             'invisible': Eval('type') != 'warehouse',
@@ -204,6 +206,15 @@ class Location(ModelSQL, ModelView):
     @classmethod
     def check_xml_record(self, records, values):
         return True
+
+    def get_warehouse(self, name):
+        # Order by descending left to get the first one in the tree
+        locations = self.search([
+                ('parent', 'parent_of', [self.id]),
+                ('type', '=', 'warehouse'),
+                ], order=[('left', 'DESC')])
+        if locations:
+            return locations[0].id
 
     @classmethod
     def search_rec_name(cls, name, clause):
