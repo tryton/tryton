@@ -432,7 +432,7 @@ class WinExport(NoModal):
             return True
         except IOError, exception:
             common.warning(_("Operation failed!\nError message:\n%s")
-                % (exception.faultCode,), _('Error'))
+                % exception, _('Error'))
             return False
 
     def datas_read(self, ids, model, fields, context=None):
