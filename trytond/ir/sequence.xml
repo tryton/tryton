@@ -39,12 +39,12 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view" id="sequence_strict_view_form">
             <field name="model">ir.sequence.strict</field>
-            <field name="type">form</field>
+            <field name="type" eval="None"/>
             <field name="inherit" ref="sequence_view_form"/>
         </record>
         <record model="ir.ui.view" id="sequence_strict_view_tree">
             <field name="model">ir.sequence.strict</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
             <field name="inherit" ref="sequence_view_tree"/>
         </record>
         <record model="ir.action.act_window" id="act_sequence_strict_form">

@@ -1,3 +1,4 @@
+* Enforce type of inheriting view
 * Use instance context in translated descriptor of Selection
 
 Version 3.8.0 - 2015-11-02

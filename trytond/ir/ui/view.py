@@ -11,7 +11,7 @@ except ImportError:
 from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
 from trytond import backend
-from trytond.pyson import Eval, Bool, PYSONDecoder
+from trytond.pyson import Eval, Bool, PYSONDecoder, If
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, Button
@@ -42,7 +42,12 @@ class View(ModelSQL, ModelView):
             ('graph', 'Graph'),
             ('calendar', 'Calendar'),
             ('board', 'Board'),
-            ], 'View Type', select=True)
+            ], 'View Type', select=True,
+        domain=[
+            If(Bool(Eval('inherit')),
+                ('type', '=', None),
+                ('type', '!=', None)),
+            ])
     data = fields.Text('Data')
     name = fields.Char('Name', states={
             'invisible': ~(Eval('module') & Eval('name')),
