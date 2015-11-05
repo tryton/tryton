@@ -47,7 +47,8 @@ class View(ModelSQL, ModelView):
             If(Bool(Eval('inherit')),
                 ('type', '=', None),
                 ('type', '!=', None)),
-            ])
+            ],
+        depends=['inherit'])
     data = fields.Text('Data')
     name = fields.Char('Name', states={
             'invisible': ~(Eval('module') & Eval('name')),
