@@ -192,9 +192,7 @@ var Sao = {};
                 if ('' === key) {
                     continue;
                 }
-                if ('' !== data[key][1]) {
-                    data[key] = 2 == data[key].length ? data[key][1] : data[key].slice(1);
-                }
+                data[key] = 2 == data[key].length ? data[key][1] : data[key].slice(1);
             }
             Sao.i18n.loadJSON(data);
         });
