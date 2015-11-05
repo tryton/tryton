@@ -238,6 +238,9 @@ class Move(Workflow, ModelSQL, ModelView):
     unit_price_required = fields.Function(
         fields.Boolean('Unit Price Required'),
         'on_change_with_unit_price_required')
+    assignation_required = fields.Function(
+        fields.Boolean('Assignation Required'),
+        'on_change_with_assignation_required')
 
     @classmethod
     def __setup__(cls):
@@ -299,6 +302,9 @@ class Move(Workflow, ModelSQL, ModelView):
                     },
                 'do': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    'readonly': (Eval('shipment')
+                        | (Eval('assignation_required', True)
+                            & (Eval('state') == 'draft'))),
                     },
                 })
 
@@ -460,6 +466,11 @@ class Move(Workflow, ModelSQL, ModelView):
                 and self.to_location.type == 'supplier'):
             return True
         return False
+
+    @fields.depends('from_location')
+    def on_change_with_assignation_required(self, name=None):
+        if self.from_location:
+            return self.from_location.type == 'storage'
 
     @staticmethod
     def _get_shipment():
