@@ -12,6 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="es">CMV</field>
             <field name="name" lang="fr">Prix du bien vendu</field>
             <field name="name" lang="nl">COGS</field>
+            <field name="name" lang="pt">Custo das Mercadorias Vendidas (CMV)</field>
             <field name="name" lang="ru">COGS</field>
             <field name="name" lang="sl">COGS</field>
             <field name="type" ref="account.account_type_template_expense"/>
