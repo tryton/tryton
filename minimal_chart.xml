@@ -12,6 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="es">Activos</field>
             <field name="name" lang="fr">Actifs</field>
             <field name="name" lang="nl">Assets</field>
+            <field name="name" lang="pt">Ativos</field>
             <field name="name" lang="ru">Assets</field>
             <field name="name" lang="sl">Sredstva</field>
             <field name="type"
@@ -31,6 +32,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="es">Amortización</field>
             <field name="name" lang="fr">Amortissement</field>
             <field name="name" lang="nl">Depreciation</field>
+            <field name="name" lang="pt">Depreciação</field>
             <field name="name" lang="ru">Depreciation</field>
             <field name="name" lang="sl">Amortizacija</field>
             <field name="type"
