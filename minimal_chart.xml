@@ -12,6 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="es">Unearned Revenues</field>
             <field name="name" lang="fr">Unearned Revenues</field>
             <field name="name" lang="nl">Unearned Revenues</field>
+            <field name="name" lang="pt">Receitas Não Auferidas</field>
             <field name="name" lang="ru">Unearned Revenues</field>
             <field name="name" lang="sl">Unearned Revenues</field>
             <field name="parent"
@@ -27,6 +28,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="es">Deposit</field>
             <field name="name" lang="fr">Deposit</field>
             <field name="name" lang="nl">Deposit</field>
+            <field name="name" lang="pt">Depósito</field>
             <field name="name" lang="ru">Deposit</field>
             <field name="name" lang="sl">Deposit</field>
             <field name="type"
