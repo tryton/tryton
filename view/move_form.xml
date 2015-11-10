@@ -24,6 +24,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="planned_date"/>
     <label name="effective_date"/>
     <field name="effective_date"/>
+    <label name="origin"/>
+    <field name="origin"/>
     <separator colspan="4" id="separator"/>
     <label name="state"/>
     <field name="state"/>
