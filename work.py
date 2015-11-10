@@ -71,6 +71,7 @@ class Work(ModelSQL, ModelView):
         depends=['type'],
         help='Estimated progress for this work')
     total_progress = fields.Function(fields.Float('Total Progress',
+            digits=(16, 4),
             help='Estimated total progress for this work and the sub-works',
             states={
                 'invisible': Eval('total_progress', None) == None,
@@ -338,12 +339,14 @@ class Work(ModelSQL, ModelView):
             result[name] = cls.sum_tree(works, values, parents)
 
         if 'total_progress' in names:
+            digits = cls.total_progress.digits[1]
             total_progress = result['total_progress']
             total_effort = result['total_effort']
             for work in works:
                 if total_effort[work.id]:
-                    total_progress[work.id] /= (
-                        total_effort[work.id].total_seconds() / 60 / 60)
+                    total_progress[work.id] = round(total_progress[work.id] /
+                        (total_effort[work.id].total_seconds() / 60 / 60),
+                        digits)
                 else:
                     total_effort[work.id] = None
         return result
