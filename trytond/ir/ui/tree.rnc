@@ -62,6 +62,7 @@ attlist.field &= [a:defaultValue = "1"] attribute completion { "0" | "1" }?
 attlist.field &= attribute string { text }?
 attlist.field &= [a:defaultValue = "1"] attribute factor { text }?
 attlist.field &= attribute filename { text }?
+attlist.field &= attribute view_ids { text }?
 prefix = element prefix { attlist.affix, empty }
 suffix = element suffix { attlist.affix, empty }
 attlist.affix &= attribute string { text }?

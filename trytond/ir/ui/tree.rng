@@ -198,6 +198,11 @@
       <attribute name="filename"/>
     </optional>
   </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="view_ids"/>
+    </optional>
+  </define>
   <define name="prefix">
     <element name="prefix">
       <ref name="attlist.affix"/>
