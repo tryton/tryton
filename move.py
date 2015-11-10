@@ -796,6 +796,9 @@ class Move(Workflow, ModelSQL, ModelView):
                 key += (value,)
             return key
 
+        child_locations = {}
+        to_write = []
+        to_assign = []
         success = True
         for move in moves:
             if move.state != 'draft':
@@ -806,9 +809,12 @@ class Move(Workflow, ModelSQL, ModelView):
             # Keep location order for pick_product
             location_qties = OrderedDict()
             if with_childs:
-                childs = Location.search([
-                        ('parent', 'child_of', [move.from_location.id]),
-                        ])
+                childs = child_locations.get(move.from_location)
+                if childs is None:
+                    childs = Location.search([
+                            ('parent', 'child_of', [move.from_location.id]),
+                            ])
+                    child_locations[move.from_location] = childs
             else:
                 childs = [move.from_location]
             for location in childs:
@@ -827,10 +833,11 @@ class Move(Workflow, ModelSQL, ModelView):
             if move.quantity - picked_qties >= move.uom.rounding:
                 success = False
                 first = False
-                cls.write([move], {
+                values = {
                     'quantity': Uom.round(
-                            move.quantity - picked_qties, move.uom.rounding),
-                    })
+                        move.quantity - picked_qties, move.uom.rounding),
+                    }
+                to_write.extend([[move], values])
             else:
                 first = True
             for from_location, qty in to_pick:
@@ -839,11 +846,11 @@ class Move(Workflow, ModelSQL, ModelView):
                     'quantity': Uom.round(qty, move.uom.rounding),
                     }
                 if first:
-                    cls.write([move], values)
-                    cls.assign([move])
+                    to_write.extend([[move], values])
+                    to_assign.append(move)
                     first = False
                 else:
-                    cls.assign(cls.copy([move], default=values))
+                    to_assign.extend(cls.copy([move], default=values))
 
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
@@ -852,6 +859,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 to_key = get_key(move, to_location)
                 pbl[from_key] = pbl.get(from_key, 0.0) - qty_default_uom
                 pbl[to_key] = pbl.get(to_key, 0.0) + qty_default_uom
+        if to_write:
+            cls.write(*to_write)
+        if to_assign:
+            cls.assign(to_assign)
         return success
 
     @classmethod
