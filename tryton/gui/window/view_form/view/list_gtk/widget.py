@@ -587,7 +587,7 @@ class M2O(GenericText):
                 context=context, callback=callback).show()
             return
         screen = Screen(relation, domain=domain, context=context,
-            mode=['form'])
+            mode=['form'], exclude_field=field.attrs.get('relation_field'))
 
         def open_callback(result):
             if result:
