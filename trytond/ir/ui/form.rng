@@ -302,21 +302,6 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute name="sum"/>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
-      <attribute name="key"/>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
-      <attribute name="color"/>
-    </optional>
-  </define>
-  <define name="attlist.field" combine="interleave">
-    <optional>
       <attribute name="orientation" a:defaultValue="left_to_right">
         <choice>
           <value>left_to_right</value>

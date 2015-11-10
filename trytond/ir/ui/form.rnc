@@ -88,9 +88,6 @@ attlist.field &= attribute view_ids { text }?
 attlist.field &= attribute product { text }?
 attlist.field &=
   [ a:defaultValue = "0" ] attribute invisible { "0" | "1" }?
-attlist.field &= attribute sum { text }?
-attlist.field &= attribute key { text }?
-attlist.field &= attribute color { text }?
 attlist.field &=
   [ a:defaultValue = "left_to_right" ] attribute orientation {
     "left_to_right"
