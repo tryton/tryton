@@ -587,7 +587,8 @@ class M2O(GenericText):
                 context=context, callback=callback).show()
             return
         screen = Screen(relation, domain=domain, context=context,
-            mode=['form'], exclude_field=field.attrs.get('relation_field'))
+            mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
+            exclude_field=field.attrs.get('relation_field'))
 
         def open_callback(result):
             if result:
@@ -617,7 +618,9 @@ class M2O(GenericText):
             if callback:
                 callback()
         win = WinSearch(relation, search_callback, sel_multi=False,
-            context=context, domain=domain, new=create_access)
+            context=context, domain=domain,
+            view_ids=self.attrs.get('view_ids', '').split(','),
+            new=create_access)
         win.screen.search_filter(quote(text.decode('utf-8')))
         return win
 
@@ -711,6 +714,7 @@ class O2M(GenericText):
             return
 
         screen = Screen(relation, mode=['tree', 'form'],
+            view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'))
         screen.pre_validate = bool(int(self.attrs.get('pre_validate', 0)))
         screen.group = group
@@ -732,6 +736,7 @@ class M2M(O2M):
         domain = field.domain_get(record)
 
         screen = Screen(relation, mode=['tree', 'form'],
+            view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'))
         screen.group = group
 
