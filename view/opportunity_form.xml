@@ -57,8 +57,5 @@ this repository contains the full copyright notices and license terms. -->
         <page name="sales">
             <field name="sales" colspan="4"/>
         </page>
-        <page name="history">
-            <field name="history"/>
-        </page>
     </notebook>
 </form>

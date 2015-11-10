@@ -1,3 +1,5 @@
+* Replace history by revision on client
+
 Version 3.8.0 - 2015-11-02
 * Bug fixes (see mercurial logs for details)
 * Fix origin migration from 3.4

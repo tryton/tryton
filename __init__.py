@@ -11,7 +11,6 @@ def register():
     Pool.register(
         SaleOpportunity,
         SaleOpportunityLine,
-        SaleOpportunityHistory,
         SaleOpportunityEmployee,
         OpenSaleOpportunityEmployeeStart,
         SaleOpportunityMonthly,

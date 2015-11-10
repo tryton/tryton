@@ -2,22 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 "Sales extension for managing leads and opportunities"
 import datetime
-import time
 
-from sql import Column, Literal, Null
-from sql.aggregate import Min, Max, Count, Sum
-from sql.conditionals import Coalesce, Case
+from sql import Literal, Null
+from sql.aggregate import Max, Count, Sum
+from sql.conditionals import Case
 from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, Check
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
-from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
+from trytond.pyson import Eval, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 __all__ = ['SaleOpportunity', 'SaleOpportunityLine',
-    'SaleOpportunityHistory', 'SaleOpportunityEmployee',
+    'SaleOpportunityEmployee',
     'OpenSaleOpportunityEmployeeStart', 'OpenSaleOpportunityEmployee',
     'SaleOpportunityMonthly', 'SaleOpportunityEmployeeMonthly']
 
@@ -94,8 +93,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 ['opportunity', 'lead', 'converted']),
             },
         depends=['state'], help="Percentage between 0 and 100")
-    history = fields.One2Many('sale.opportunity.history', 'opportunity',
-            'History', readonly=True)
     lost_reason = fields.Text('Reason for loss', states={
             'invisible': Eval('state') != 'lost',
             }, depends=['state'])
@@ -244,7 +241,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default.setdefault('reference', None)
-        default.setdefault('history', None)
         default.setdefault('sales', None)
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
@@ -493,101 +489,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
             )
         sale_line.on_change_product()
         return sale_line
-
-
-class SaleOpportunityHistory(ModelSQL, ModelView):
-    'Sale Opportunity History'
-    __name__ = 'sale.opportunity.history'
-    date = fields.DateTime('Change Date')
-    opportunity = fields.Many2One('sale.opportunity', 'Sale Opportunity')
-    user = fields.Many2One('res.user', 'User')
-    party = fields.Many2One('party.party', 'Party', datetime_field='date')
-    address = fields.Many2One('party.address', 'Address',
-            datetime_field='date')
-    company = fields.Many2One('company.company', 'Company',
-            datetime_field='date')
-    employee = fields.Many2One('company.employee', 'Employee',
-            datetime_field='date')
-    start_date = fields.Date('Start Date')
-    end_date = fields.Date('End Date')
-    description = fields.Char('Description')
-    comment = fields.Text('Comment')
-    lines = fields.Function(fields.One2Many('sale.opportunity.line', None,
-            'Lines', datetime_field='date'), 'get_lines')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
-    currency = fields.Function(fields.Many2One('currency.currency',
-            'Currency'), 'get_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'get_currency_digits')
-    state = fields.Selection(STATES, 'State')
-    probability = fields.Integer('Conversion Probability')
-    lost_reason = fields.Text('Reason for loss', states={
-        'invisible': Not(Equal(Eval('state'), 'lost')),
-    }, depends=['state'])
-
-    @classmethod
-    def __setup__(cls):
-        super(SaleOpportunityHistory, cls).__setup__()
-        cls._order.insert(0, ('date', 'DESC'))
-
-    def get_currency(self, name):
-        return self.company.currency.id
-
-    def get_currency_digits(self, name):
-        return self.company.currency.digits
-
-    @classmethod
-    def table_query(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        opportunity_history = Opportunity.__table_history__()
-        columns = [
-            Min(Column(opportunity_history, '__id')).as_('id'),
-            opportunity_history.id.as_('opportunity'),
-            Min(Coalesce(opportunity_history.write_date,
-                    opportunity_history.create_date)).as_('date'),
-            Coalesce(opportunity_history.write_uid,
-                opportunity_history.create_uid).as_('user'),
-            ]
-        group_by = [
-            opportunity_history.id,
-            Coalesce(opportunity_history.write_uid,
-                opportunity_history.create_uid),
-            ]
-        for name, field in cls._fields.iteritems():
-            if name in ('id', 'opportunity', 'date', 'user'):
-                continue
-            if hasattr(field, 'set'):
-                continue
-            column = Column(opportunity_history, name)
-            columns.append(column.as_(name))
-            group_by.append(column)
-
-        return opportunity_history.select(*columns, group_by=group_by)
-
-    def get_lines(self, name):
-        Line = Pool().get('sale.opportunity.line')
-        # We will always have only one id per call due to datetime_field
-        lines = Line.search([
-                ('opportunity', '=', self.opportunity.id),
-                ])
-        return [l.id for l in lines]
-
-    @classmethod
-    def read(cls, ids, fields_names=None):
-        res = super(SaleOpportunityHistory, cls).read(ids,
-            fields_names=fields_names)
-
-        # Remove microsecond from timestamp
-        for values in res:
-            if 'date' in values:
-                if isinstance(values['date'], basestring):
-                    values['date'] = datetime.datetime(
-                        *time.strptime(values['date'],
-                            '%Y-%m-%d %H:%M:%S.%f')[:6])
-                values['date'] = values['date'].replace(microsecond=0)
-                values['date'] += datetime.timedelta(seconds=1)
-        return res
 
 
 class SaleOpportunityReportMixin:
