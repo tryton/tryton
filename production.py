@@ -104,6 +104,7 @@ class Production(Workflow, ModelSQL, ModelView):
             readonly=True), 'get_cost')
     inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
         domain=[
+            ('shipment', '=', None),
             ('from_location', 'child_of', [Eval('warehouse')], 'parent'),
             ('to_location', '=', Eval('location')),
             ('company', '=', Eval('company', -1)),
@@ -115,6 +116,7 @@ class Production(Workflow, ModelSQL, ModelView):
         depends=['warehouse', 'location', 'company'])
     outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
         domain=[
+            ('shipment', '=', None),
             ('from_location', '=', Eval('location')),
             ('to_location', 'child_of', [Eval('warehouse')], 'parent'),
             ('company', '=', Eval('company', -1)),
