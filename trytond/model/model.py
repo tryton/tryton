@@ -297,7 +297,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     res[field][arg] = copy.copy(getattr(cls._fields[field],
                         arg))
             if (isinstance(cls._fields[field],
-                        (fields.Function, fields.One2Many))
+                        (fields.Function, fields.One2Many, fields.Many2Many))
                     and not getattr(cls, 'order_%s' % field, None)):
                 res[field]['sortable'] = False
             if ((isinstance(cls._fields[field], fields.Function)
