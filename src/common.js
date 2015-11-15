@@ -3100,7 +3100,7 @@
                 el, source, match_selected, format);
         completion.set_actions([
                 ['search', Sao.i18n.gettext('Search...')],
-                ['create', Sao.i18n.gettext('Create..')]],
+                ['create', Sao.i18n.gettext('Create...')]],
                 action_activated);
     };
 
