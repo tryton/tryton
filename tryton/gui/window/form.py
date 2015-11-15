@@ -473,7 +473,7 @@ class Form(SignalEvent, TabContent):
         if self.screen.modified():
             value = sur_3b(
                 _('This record has been modified\n'
-                    'do you want to save it ?'))
+                    'do you want to save it?'))
             if value == 'ok':
                 return self.sig_save(None)
             if value == 'ko':
