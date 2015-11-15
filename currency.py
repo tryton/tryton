@@ -48,7 +48,7 @@ class Currency(ModelSQL, ModelView):
                 'no_rate': ('No rate found for currency "%(currency)s" on '
                     '"%(date)s"'),
                 'invalid_mon_grouping': ('Invalid grouping "%(grouping)s" on '
-                    ' currency "%(currency)s".'),
+                    'currency "%(currency)s".'),
                 })
         cls.__rpc__.update({
                 'compute': RPC(),
