@@ -97,20 +97,15 @@ class Party:
         'Return the deposit account balance (debit - credit) for the party'
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        Account = pool.get('account.account')
         cursor = Transaction().cursor
 
         line = MoveLine.__table__()
-        account = Account.__table__()
-
         assert deposit_account.kind == 'deposit'
 
         cursor.lock(MoveLine._table)
-
-        cursor.execute(*line.join(account, condition=account.id == line.account
-                ).select(
+        cursor.execute(*line.select(
                 Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                where=(account.id == deposit_account.id)
+                where=(line.account == deposit_account.id)
                 & (line.party == self.id)
                 & (line.reconciliation == Null)))
         amount, = cursor.fetchone()
