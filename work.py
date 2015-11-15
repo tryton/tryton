@@ -50,7 +50,7 @@ class Work:
     actual_start_time = fields.DateTime("Actual Start Time")
     actual_finish_time = fields.DateTime("Actual Finish Time")
     constraint_start_time = fields.DateTime("Constraint Start Time")
-    constraint_finish_time = fields.DateTime("Constraint  Finish Time")
+    constraint_finish_time = fields.DateTime("Constraint Finish Time")
     early_start_date = fields.Function(fields.Date('Early Start'),
             'get_function_fields')
     late_start_date = fields.Function(fields.Date('Late Start'),
