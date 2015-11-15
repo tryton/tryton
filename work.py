@@ -69,7 +69,7 @@ class Work(ModelSQL, ModelView):
         super(Work, cls).__setup__()
         cls._error_messages.update({
                 'change_timesheet_available': ('You can not unset "Available '
-                    'on timesheets" for work "%s" because it already has  '
+                    'on timesheets" for work "%s" because it already has '
                     'timesheets.'),
                 })
 
