@@ -94,3 +94,6 @@ Print some reports::
 
     >>> aged_balance = Wizard('account.open_aged_balance')
     >>> aged_balance.execute('print_')
+
+    >>> print_general_journal = Wizard('account.move.print_general_journal')
+    >>> print_general_journal.execute('print_')
