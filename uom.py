@@ -76,7 +76,7 @@ class Uom(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
                 'change_uom_rate_title': ('You cannot change Rate, Factor or '
-                    'Category on a Unit of Measure. '),
+                    'Category on a Unit of Measure.'),
                 'change_uom_rate': ('If the UOM is still not used, you can '
                     'delete it otherwise you can deactivate it '
                     'and create a new one.'),
