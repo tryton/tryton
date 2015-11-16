@@ -799,6 +799,11 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         pass
 
     @classmethod
+    @Workflow.transition('done')
+    def do(cls, purchases):
+        pass
+
+    @classmethod
     @ModelView.button_action('purchase.wizard_invoice_handle_exception')
     def handle_invoice_exception(cls, purchases):
         pass
@@ -828,9 +833,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         if process:
             cls.proceed(process)
         if done:
-            cls.write(done, {
-                    'state': 'done',
-                    })
+            cls.do(done)
 
 
 class PurchaseIgnoredInvoice(ModelSQL):
