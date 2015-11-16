@@ -3,6 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree_sequence"/>
+            <field name="name">address_tree_sequence</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_shipment_out_form2">
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
