@@ -14,6 +14,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">address_form</field>
         </record>
 
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree_sequence"/>
+            <field name="name">address_tree_sequence</field>
+        </record>
+
+
         <record model="ir.ui.view" id="party_view_form">
             <field name="model">party.party</field>
             <field name="inherit" ref="party.party_view_form"/>
