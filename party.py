@@ -297,7 +297,7 @@ class PartyIdentifier(ModelSQL, ModelView):
     def check_code(self):
         if self.type == 'eu_vat':
             if not vat.is_valid(self.code):
-                self.raise_user_error('invalid_eu_vat', {
+                self.raise_user_error('invalid_vat', {
                         'code': self.code,
                         'party': self.party.rec_name,
                         })
