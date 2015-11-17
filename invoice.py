@@ -211,8 +211,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'same_credit_account': ('The credit account on journal '
                     '"%(journal)s" is the same as invoice "%(invoice)s"\'s '
                     'account.'),
-                'missing_credit_account': ('The credit account on journal %s" '
-                    'is missing.'),
+                'missing_credit_account': ('The credit account on journal '
+                    '"%s" is missing.'),
                 'same_account_on_line': ('Invoice "%(invoice)s" uses the same '
                     'account "%(account)s" for the invoice and in line '
                     '"%(line)s".'),
