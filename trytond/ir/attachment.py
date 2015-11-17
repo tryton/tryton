@@ -61,7 +61,7 @@ class Attachment(ModelSQL, ModelView):
         cls._sql_constraints += [
             ('resource_name',
                 Unique(table, table.resource, table.name),
-                'The  names of attachments must be unique by resource!'),
+                'The names of attachments must be unique by resource.'),
         ]
 
     @classmethod
