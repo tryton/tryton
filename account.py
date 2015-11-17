@@ -1917,7 +1917,7 @@ class OpenThirdPartyBalance(Wizard):
     'Open Third Party Balance'
     __name__ = 'account.open_third_party_balance'
     start = StateView('account.open_third_party_balance.start',
-        'account.open_balance_sheet_start_view_form', [
+        'account.open_third_party_balance_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
