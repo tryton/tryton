@@ -7,7 +7,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest', 'Purchase']
+__all__ = ['PurchaseRequest', 'Purchase',
+    'HandlePurchaseCancellationException']
 __metaclass__ = PoolMeta
 
 
@@ -81,3 +82,24 @@ class Purchase:
     def cancel(cls, purchases):
         super(Purchase, cls).cancel(purchases)
         cls._sale_supply_process(purchases)
+
+
+class HandlePurchaseCancellationException:
+    __name__ = 'purchase.request.handle.purchase.cancellation'
+
+    def transition_cancel_request(self):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        Move = pool.get('stock.move')
+
+        next_state = super(HandlePurchaseCancellationException,
+            self).transition_cancel_request()
+        moves = []
+        for sub_ids in grouped_slice(Transaction().context['active_ids']):
+            sale_lines = SaleLine.search([
+                    ('purchase_request', 'in', sub_ids),
+                    ])
+            moves += [m for line in sale_lines for m in line.moves]
+        if moves:
+            Move.cancel(moves)
+        return next_state
