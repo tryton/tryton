@@ -276,6 +276,37 @@ Cancelling the workflow on the purchase step::
     ...     [purchase_request])
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase.click('cancel')
+    >>> purchase_request.state
+    'exception'
+
+Let's reset the purchase request and create a new purchase::
+
+    >>> handle_exception = Wizard(
+    ...     'purchase.request.handle.purchase.cancellation',
+    ...     [purchase_request])
+    >>> handle_exception.execute('reset')
+    >>> purchase_request.state
+    'draft'
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase_request.state
+    'purchased'
+
+Let's cancel it again and cancel the request in order to manage the process on
+the sale::
+
+    >>> purchase.click('cancel')
+    >>> purchase_request.reload()
+    >>> purchase_request.state
+    'exception'
+    >>> handle_exception = Wizard(
+    ...     'purchase.request.handle.purchase.cancellation',
+    ...     [purchase_request])
+    >>> handle_exception.execute('cancel_request')
+    >>> purchase_request.state
+    'cancel'
 
 The sale is then in exception::
 

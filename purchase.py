@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields, ModelView, Workflow
+from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -121,24 +121,6 @@ class Purchase:
             customer=self.customer,
             delivery_address=self.delivery_address,
             )
-
-    @classmethod
-    @ModelView.button
-    @Workflow.transition('cancel')
-    def cancel(cls, purchases):
-        pool = Pool()
-        SaleLine = pool.get('sale.line')
-        Move = pool.get('stock.move')
-
-        super(Purchase, cls).cancel(purchases)
-        sale_lines = []
-        for sub_purchases in grouped_slice(purchases):
-            sale_lines += SaleLine.search([
-                    ('purchase_request.purchase_line.purchase', 'in',
-                        [p.id for p in sub_purchases]),
-                    ])
-        Move.cancel([m for sl in sale_lines for m in sl.moves
-                if m.state != 'done' and m.from_location.type == 'drop'])
 
 
 class PurchaseLine:
