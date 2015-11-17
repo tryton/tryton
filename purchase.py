@@ -878,6 +878,7 @@ class PurchaseLine(ModelSQL, ModelView):
             },
         depends=['unit_digits', 'type'])
     unit = fields.Many2One('product.uom', 'Unit',
+        ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
             'invisible': Eval('type') != 'line',
@@ -892,7 +893,7 @@ class PurchaseLine(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
-        domain=[('purchasable', '=', True)],
+        ondelete='RESTRICT', domain=[('purchasable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_purchase'),
