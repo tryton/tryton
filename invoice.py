@@ -1417,7 +1417,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             'required': Eval('type') == 'line',
             },
         depends=['type', 'unit_digits'])
-    unit = fields.Many2One('product.uom', 'Unit',
+    unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
             'invisible': Eval('type') != 'line',
@@ -1431,6 +1431,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
+        ondelete='RESTRICT',
         states={
             'invisible': Eval('type') != 'line',
             },
@@ -1439,6 +1440,7 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
+        ondelete='RESTRICT',
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -2022,6 +2024,7 @@ class InvoiceTax(ModelSQL, ModelView):
             ])
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True)
     tax = fields.Many2One('account.tax', 'Tax',
+        ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
