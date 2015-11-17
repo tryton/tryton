@@ -989,7 +989,7 @@ class SaleLine(ModelSQL, ModelView):
             'readonly': ~Eval('_parent_sale', {}),
             },
         depends=['type', 'unit_digits'])
-    unit = fields.Many2One('product.uom', 'Unit',
+    unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
             states={
                 'required': Bool(Eval('product')),
                 'invisible': Eval('type') != 'line',
@@ -1004,7 +1004,7 @@ class SaleLine(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
-        domain=[('salable', '=', True)],
+        ondelete='RESTRICT', domain=[('salable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_sale', {}),
