@@ -43,11 +43,13 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
     >>> expense = accounts['expense']
 
-Create a customer::
+Create parties::
 
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
+    >>> supplier = Party(name='Supplier')
+    >>> supplier.save()
 
 Create stock admin user::
 
@@ -163,3 +165,48 @@ There is now a draft purchase request::
     True
     >>> pr.quantity
     1.0
+
+Create the purchase then cancel it::
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [pr])
+    >>> create_purchase.form.party = supplier
+    >>> create_purchase.execute('start')
+    >>> pr.state
+    'purchased'
+
+    >>> Purchase = Model.get('purchase.purchase')
+    >>> purchase, = Purchase.find()
+    >>> purchase.click('cancel')
+    >>> pr.reload()
+    >>> pr.state
+    'exception'
+
+Handle the exception::
+
+    >>> handle_exception = Wizard(
+    ...     'purchase.request.handle.purchase.cancellation', [pr])
+    >>> handle_exception.execute('reset')
+    >>> pr.state
+    'draft'
+
+Recreate a purchase and cancel it again::
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [pr])
+    >>> pr.state
+    'purchased'
+
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase.click('cancel')
+    >>> pr.reload()
+    >>> pr.state
+    'exception'
+
+Handle again the exception::
+
+    >>> handle_exception = Wizard(
+    ...     'purchase.request.handle.purchase.cancellation', [pr])
+    >>> handle_exception.execute('cancel_request')
+    >>> pr.state
+    'cancel'

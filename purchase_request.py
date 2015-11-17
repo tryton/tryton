@@ -19,7 +19,10 @@ from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest',
     'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
-    'CreatePurchaseAskParty', 'CreatePurchase']
+    'CreatePurchaseAskParty', 'CreatePurchase',
+    'HandlePurchaseCancellationException',
+    'HandlePurchaseCancellationExceptionStart',
+    ]
 
 STATES = {
     'readonly': Eval('state') != 'draft',
@@ -70,11 +73,13 @@ class PurchaseRequest(ModelSQL, ModelView):
             ])
     origin = fields.Reference('Origin', selection='get_origin', readonly=True,
             required=True)
+    exception_ignored = fields.Boolean('Ignored Exception')
     state = fields.Function(fields.Selection([
         ('purchased', 'Purchased'),
         ('done', 'Done'),
         ('draft', 'Draft'),
         ('cancel', 'Cancel'),
+        ('exception', 'Exception'),
         ], 'State'), 'get_state', searcher='search_state')
 
     @classmethod
@@ -86,6 +91,11 @@ class PurchaseRequest(ModelSQL, ModelView):
                     'by the system.'),
                 'delete_purchase_line': ('You can not delete purchased '
                     'request.'),
+                })
+        cls._buttons.update({
+                'handle_purchase_cancellation_exception': {
+                    'invisible': Eval('state') != 'exception',
+                    },
                 })
 
     @classmethod
@@ -124,6 +134,10 @@ class PurchaseRequest(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @staticmethod
+    def default_exception_ignored():
+        return False
+
     def get_purchase(self, name):
         if self.purchase_line:
             return self.purchase_line.purchase.id
@@ -134,7 +148,10 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     def get_state(self, name):
         if self.purchase_line:
-            if self.purchase_line.purchase.state == 'cancel':
+            if (self.purchase_line.purchase.state == 'cancel'
+                    and not self.exception_ignored):
+                return 'exception'
+            elif self.purchase_line.purchase.state == 'cancel':
                 return 'cancel'
             elif self.purchase_line.purchase.state == 'done':
                 return 'done'
@@ -155,7 +172,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         _, operator_, state = clause
         Operator = fields.SQL_OPERATORS[operator_]
         state_case = Case(
-            (purchase.state == 'cancel', 'cancel'),
+            ((purchase.state == 'cancel')
+                & (request.exception_ignored == False), 'exception'),
+            ((purchase.state == 'cancel')
+                & (request.exception_ignored == True), 'cancel'),
             (purchase.state == 'done', 'done'),
             (request.purchase_line != Null, 'purchased'),
             else_='draft')
@@ -525,6 +545,12 @@ class PurchaseRequest(ModelSQL, ModelView):
             cls.raise_user_error('delete_purchase_line')
         super(PurchaseRequest, cls).delete(requests)
 
+    @classmethod
+    @ModelView.button_action(
+        'stock_supply.wizard_purchase_cancellation_handle_exception')
+    def handle_purchase_cancellation_exception(cls, purchases):
+        pass
+
 
 class CreatePurchaseRequestStart(ModelView):
     'Create Purchase Request'
@@ -738,3 +764,43 @@ class CreatePurchase(Wizard):
             taxes.append(tax.id)
         line.taxes = taxes
         return line
+
+
+class HandlePurchaseCancellationException(Wizard):
+    'Handle Purchase Cancellation Exception'
+    __name__ = 'purchase.request.handle.purchase.cancellation'
+
+    start = StateView('purchase.request.handle.purchase.cancellation.start',
+        'stock_supply.handle_purchase_cancellation_start', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Reset to draft', 'reset', 'tryton-clear'),
+            Button('Cancel Request', 'cancel_request', 'tryton-delete',
+                default=True),
+            ])
+    reset = StateTransition()
+    cancel_request = StateTransition()
+
+    def transition_reset(self):
+        pool = Pool()
+        PurchaseRequest = pool.get('purchase.request')
+
+        requests = PurchaseRequest.browse(Transaction().context['active_ids'])
+        PurchaseRequest.write(requests, {
+                'purchase_line': None,
+                })
+        return 'end'
+
+    def transition_cancel_request(self):
+        pool = Pool()
+        PurchaseRequest = pool.get('purchase.request')
+
+        requests = PurchaseRequest.browse(Transaction().context['active_ids'])
+        PurchaseRequest.write(requests, {
+                'exception_ignored': True,
+                })
+        return 'end'
+
+
+class HandlePurchaseCancellationExceptionStart(ModelView):
+    'Handle Purchase Cancellation Exception - Start'
+    __name__ = 'purchase.request.handle.purchase.cancellation.start'
