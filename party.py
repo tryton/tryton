@@ -28,8 +28,7 @@ class Party(ModelSQL, ModelView):
     "Party"
     __name__ = 'party.party'
 
-    name = fields.Char('Name', required=True, select=True,
-        states=STATES, depends=DEPENDS)
+    name = fields.Char('Name', select=True, states=STATES, depends=DEPENDS)
     code = fields.Char('Code', required=True, select=True,
         states={
             'readonly': Eval('code_readonly', True),
@@ -89,6 +88,9 @@ class Party(ModelSQL, ModelView):
                     value = None
                 Property.set('lang', cls.__name__, ids, value)
             table_h.drop_column('lang')
+
+        # Migration from 3.8
+        table_h.not_null_action('name', 'remove')
 
     @staticmethod
     def order_code(tables):
@@ -181,6 +183,11 @@ class Party(ModelSQL, ModelView):
         for record, rec_name, icon in super(Party, cls).search_global(text):
             icon = icon or 'tryton-party'
             yield record, rec_name, icon
+
+    def get_rec_name(self, name):
+        if not self.name:
+            return '[' + self.code + ']'
+        return self.name
 
     @classmethod
     def search_rec_name(cls, name, clause):

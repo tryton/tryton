@@ -92,6 +92,14 @@ class PartyTestCase(ModuleTestCase):
             self.assertEqual(oext, 'odt')
             self.assertTrue(content)
 
+    def test0070party_without_name(self):
+        'Create party without name'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            party2, = self.party.create([{}])
+            self.assert_(party2.id)
+            code = party2.code
+            self.assertEqual(party2.rec_name, '[' + code + ']')
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
