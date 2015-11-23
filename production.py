@@ -448,7 +448,8 @@ class Production(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.production_sequence.id)
+            if not values.get('code'):
+                values['code'] = Sequence.get_id(config.production_sequence.id)
         productions = super(Production, cls).create(vlist)
         for production in productions:
             production._set_move_planned_date()
@@ -459,6 +460,14 @@ class Production(Workflow, ModelSQL, ModelView):
         super(Production, cls).write(*args)
         for production in sum(args[::2], []):
             production._set_move_planned_date()
+
+    @classmethod
+    def copy(cls, productions, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('code', None)
+        return super(Production, cls).copy(productions, default=default)
 
     def _get_move_planned_date(self):
         "Return the planned dates for input and output moves"
