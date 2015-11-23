@@ -65,7 +65,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
         readonly=True)
     purchase = fields.Function(fields.Many2One('purchase.purchase',
-        'Purchase'), 'get_purchase')
+        'Purchase'), 'get_purchase', searcher='search_purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
             readonly=True, domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
@@ -141,6 +141,10 @@ class PurchaseRequest(ModelSQL, ModelView):
     def get_purchase(self, name):
         if self.purchase_line:
             return self.purchase_line.purchase.id
+
+    @classmethod
+    def search_purchase(cls, name, clause):
+        return [('purchase_line.purchase',) + tuple(clause[1:])]
 
     @property
     def currency(self):
