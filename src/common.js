@@ -2781,8 +2781,7 @@
                 'type': visibility ? 'input' : 'password',
                 'id': 'ask-dialog-entry'
             });
-            var body = dialog.find('.modal-body');
-            body.append(jQuery('<div/>', {
+            dialog.body.append(jQuery('<div/>', {
                 'class': 'form-group'
             }).append(jQuery('<label/>', {
                 'for': 'ask-dialog-entry'
