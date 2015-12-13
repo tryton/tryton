@@ -723,17 +723,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'total_amount_cache': sale.total_amount,
                     })
 
-    def _get_invoice_line_sale_line(self, invoice_type):
-        '''
-        Return invoice line for each sale lines according to invoice_type
-        '''
-        res = {}
-        for line in self.lines:
-            val = line.get_invoice_line(invoice_type)
-            if val:
-                res[line.id] = val
-        return res
-
     def _get_invoice_sale(self, invoice_type):
         '''
         Return invoice of type invoice_type
@@ -774,7 +763,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.raise_user_error('missing_account_receivable',
                 (self.party.rec_name,))
 
-        invoice_lines = self._get_invoice_line_sale_line(invoice_type)
+        invoice_lines = {}
+        for line in self.lines:
+            ilines = line.get_invoice_line(invoice_type)
+            if ilines:
+                invoice_lines[line.id] = ilines
         if not invoice_lines:
             return
 
@@ -787,17 +780,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         Invoice.update_taxes([invoice])
         return invoice
-
-    def _get_move_sale_line(self, shipment_type):
-        '''
-        Return move for each sale lines of the right shipment_type
-        '''
-        res = {}
-        for line in self.lines:
-            val = line.get_move(shipment_type)
-            if val:
-                res[line.id] = val
-        return res
 
     def _group_shipment_key(self, moves, move):
         '''
@@ -836,7 +818,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.shipment_method == 'manual':
             return
 
-        moves = self._get_move_sale_line(shipment_type)
+        moves = {}
+        for line in self.lines:
+            move = line.get_move(shipment_type)
+            if move:
+                moves[line.id] = move
         if not moves:
             return
         if shipment_type == 'out':
@@ -1319,53 +1305,15 @@ class SaleLine(ModelSQL, ModelView):
         invoice_line.note = self.note
         invoice_line.origin = self
         if self.type != 'line':
-            if (self.sale.invoice_method == 'order'
-                    and not self.invoice_lines
-                    and ((all(l.quantity >= 0 for l in self.sale.lines
-                                if l.type == 'line')
-                            and invoice_type == 'out_invoice')
-                        or (all(l.quantity <= 0 for l in self.sale.lines
-                                if l.type == 'line')
-                            and invoice_type == 'out_credit_note'))):
+            if self._get_invoice_not_line(invoice_type):
                 return [invoice_line]
             else:
                 return []
-
         if (invoice_type == 'out_invoice') != (self.quantity >= 0):
             return []
 
-        stock_moves = []
-        if (self.sale.invoice_method == 'order'
-                or not self.product
-                or self.product.type == 'service'):
-            quantity = abs(self.quantity)
-            stock_moves = self.moves
-        else:
-            quantity = 0.0
-            for move in self.moves:
-                if move.state == 'done':
-                    quantity += Uom.compute_qty(move.uom, move.quantity,
-                        self.unit)
-                    if move.invoiced_quantity < move.quantity:
-                        stock_moves.append(move)
-        if self.sale.shipment_method == 'order':
-            invoice_line.stock_moves = stock_moves
-
-        skip_ids = set(l.id for i in self.sale.invoices_recreated
-            for l in i.lines)
-        for old_invoice_line in self.invoice_lines:
-            if old_invoice_line.type != 'line':
-                continue
-            if old_invoice_line.id not in skip_ids:
-                if old_invoice_line.invoice:
-                    old_invoice_type = old_invoice_line.invoice.type
-                else:
-                    old_invoice_type = old_invoice_line.invoice_type
-
-                sign = 1 if old_invoice_type == invoice_type else -1
-
-                quantity -= Uom.compute_qty(old_invoice_line.unit,
-                    sign * old_invoice_line.quantity, self.unit)
+        quantity = (self._get_invoice_line_quantity(invoice_type)
+            - self._get_invoiced_quantity(invoice_type))
 
         rounding = self.unit.rounding if self.unit else 0.01
         invoice_line.quantity = Uom.round(quantity, rounding)
@@ -1393,24 +1341,71 @@ class SaleLine(ModelSQL, ModelView):
                 self.raise_user_error('missing_account_revenue_property', {
                         'sale': self.sale.rec_name,
                         })
+        invoice_line.stock_moves = self._get_invoice_line_moves(invoice_type)
         return [invoice_line]
 
-    @classmethod
-    def view_attributes(cls):
-        return [
-            ('/form//field[@name="note"]|/form//field[@name="description"]',
-                'spell', Eval('_parent_sale', {}).get('party_lang'))]
+    def _get_invoice_not_line(self, invoice_type):
+        'Return if the not line should be invoiced'
+        return (self.sale.invoice_method == 'order'
+            and not self.invoice_lines
+            and ((all(l.quantity >= 0 for l in self.sale.lines
+                        if l.type == 'line')
+                    and invoice_type == 'out_invoice')
+                or (all(l.quantity <= 0 for l in self.sale.lines
+                        if l.type == 'line')
+                    and invoice_type == 'out_credit_note')))
 
-    @classmethod
-    def copy(cls, lines, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        default['moves'] = None
-        default['moves_ignored'] = None
-        default['moves_recreated'] = None
-        default['invoice_lines'] = None
-        return super(SaleLine, cls).copy(lines, default=default)
+    def _get_invoice_line_quantity(self, invoice_type):
+        'Return the quantity that should be invoiced'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+
+        if (self.sale.invoice_method == 'order'
+                or not self.product
+                or self.product.type == 'service'):
+            return abs(self.quantity)
+        elif self.sale.invoice_method == 'shipment':
+            quantity = 0.0
+            for move in self.moves:
+                if move.state == 'done':
+                    quantity += Uom.compute_qty(move.uom, move.quantity,
+                        self.unit)
+            return quantity
+
+    def _get_invoiced_quantity(self, invoice_type):
+        'Return the quantity already invoiced'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+
+        quantity = 0
+        skips = {l for i in self.sale.invoices_recreated for l in i.lines}
+        for invoice_line in self.invoice_lines:
+            if invoice_line.type != 'line':
+                continue
+            if invoice_line not in skips:
+                if invoice_line.invoice:
+                    line_type = invoice_line.invoice.type
+                else:
+                    line_type = invoice_line.invoice_type
+
+                sign = 1 if invoice_type == line_type else -1
+
+                quantity += Uom.compute_qty(invoice_line.unit,
+                    sign * invoice_line.quantity, self.unit)
+        return quantity
+
+    def _get_invoice_line_moves(self, invoice_type):
+        'Return the stock moves that should be invoiced'
+        moves = []
+        if self.sale.invoice_method == 'order':
+            if self.sale.shipment_method != 'order':
+                moves.extend(self.moves)
+        elif self.sale.invoice_method == 'shipment':
+            for move in self.moves:
+                if move.state == 'done':
+                    if move.invoiced_quantity < move.quantity:
+                        moves.append(move)
+        return moves
 
     def get_move(self, shipment_type):
         '''
@@ -1426,28 +1421,12 @@ class SaleLine(ModelSQL, ModelView):
             return
         if self.product.type == 'service':
             return
+
         if (shipment_type == 'out') != (self.quantity >= 0):
             return
 
-        invoice_lines = []
-        if self.sale.shipment_method == 'order':
-            quantity = abs(self.quantity)
-            if self.sale.invoice_method == 'order':
-                invoice_lines = self.invoice_lines
-        else:
-            quantity = 0.0
-            for invoice_line in self.invoice_lines:
-                if invoice_line.invoice.state == 'paid':
-                    quantity += Uom.compute_qty(invoice_line.unit,
-                        invoice_line.quantity, self.unit)
-                    if invoice_line.moved_quantity < invoice_line.quantity:
-                        invoice_lines.append(invoice_line)
-
-        skip_ids = set(x.id for x in self.moves_recreated)
-        for move in self.moves:
-            if move.id not in skip_ids:
-                quantity -= Uom.compute_qty(move.uom, move.quantity,
-                    self.unit)
+        quantity = (self._get_move_quantity(shipment_type)
+            - self._get_shipped_quantity(shipment_type))
 
         quantity = Uom.round(quantity, self.unit.rounding)
         if quantity <= 0:
@@ -1469,9 +1448,69 @@ class SaleLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
         move.planned_date = self.delivery_date
-        move.invoice_lines = invoice_lines
+        move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
         return move
+
+    def _get_move_quantity(self, shipment_type):
+        'Return the quantity that should be shipped'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+
+        if self.sale.shipment_method == 'order':
+            return abs(self.quantity)
+        elif self.sale.shipment_method == 'invoice':
+            quantity = 0.0
+            for invoice_line in self.invoice_lines:
+                if (invoice_line.invoice
+                        and invoice_line.invoice.state == 'paid'):
+                    quantity += Uom.compute_qty(invoice_line.unit,
+                        invoice_line.quantity, self.unit)
+            return quantity
+
+    def _get_shipped_quantity(self, shipment_type):
+        'Return the quantity already shipped'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+
+        quantity = 0
+        skips = set(m for m in self.moves_recreated)
+        for move in self.moves:
+            if move not in skips:
+                quantity += Uom.compute_qty(move.uom, move.quantity,
+                    self.unit)
+        return quantity
+
+    def _get_move_invoice_lines(self, shipment_type):
+        'Return the invoice lines that should be shipped'
+        invoice_lines = []
+        if self.sale.shipment_method == 'order':
+            if self.sale.invoice_method == 'order':
+                invoice_lines.extend(self.invoice_lines)
+        elif self.sale.shipment_method == 'invoice':
+            for invoice_line in self.invoice_lines:
+                if (invoice_line.invoice
+                        and invoice_line.invoice.state == 'paid'):
+                    if invoice_line.moved_quantity < invoice_line.quantity:
+                        invoice_lines.append(invoice_line)
+        return invoice_lines
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/form//field[@name="note"]|/form//field[@name="description"]',
+                'spell', Eval('_parent_sale', {}).get('party_lang'))]
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['moves'] = None
+        default['moves_ignored'] = None
+        default['moves_recreated'] = None
+        default['invoice_lines'] = None
+        return super(SaleLine, cls).copy(lines, default=default)
 
 
 class SaleLineTax(ModelSQL):
