@@ -128,6 +128,12 @@ class View(ModelSQL, ModelView):
             cls._get_rng_cache.set(key, rng)
         return rng
 
+    @property
+    def rng_type(self):
+        if self.inherit:
+            return self.inherit.rng_type
+        return self.type
+
     @classmethod
     def validate(cls, views):
         super(View, cls).validate(views)
@@ -145,8 +151,7 @@ class View(ModelSQL, ModelView):
             tree = etree.fromstring(xml)
 
             if hasattr(etree, 'RelaxNG'):
-                rng_type = view.inherit.type if view.inherit else view.type
-                validator = etree.RelaxNG(etree=cls.get_rng(rng_type))
+                validator = etree.RelaxNG(etree=cls.get_rng(view.rng_type))
                 if not validator.validate(tree):
                     error_log = reduce(lambda x, y: str(x) + '\n' + str(y),
                             validator.error_log.filter_from_errors())
