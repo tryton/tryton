@@ -143,14 +143,6 @@ class Sale:
                         })
         return shipments
 
-    def _get_invoice_line_sale_line(self, invoice_type):
-        result = super(Sale, self)._get_invoice_line_sale_line(invoice_type)
-        if self.shipment_cost_method == 'shipment':
-            for line in self.lines:
-                if line.id in result and line.shipment_cost:
-                    del result[line.id]
-        return result
-
     def create_invoice(self, invoice_type):
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -181,3 +173,11 @@ class SaleLine:
     __name__ = 'sale.line'
     shipment_cost = fields.Numeric('Shipment Cost',
         digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)))
+
+    def _get_invoice_line_quantity(self, invoice_type):
+        quantity = super(SaleLine, self)._get_invoice_line_quantity(
+            invoice_type)
+        if (self.shipment_cost
+                and self.sale.shipment_cost_method == 'shipment'):
+            return 0
+        return quantity
