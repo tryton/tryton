@@ -1217,18 +1217,26 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         Set planned date of moves for the shipments
         '''
         Move = Pool().get('stock.move')
+        to_write = []
         for shipment in shipments:
             outgoing_date, inventory_date = shipment._move_planned_date
-            Move.write([x for x in shipment.outgoing_moves
+            out_moves_to_write = [x for x in shipment.outgoing_moves
                     if (x.state not in ('assigned', 'done', 'cancel')
-                        and x.planned_date != outgoing_date)], {
-                    'planned_date': outgoing_date,
-                    })
-            Move.write([x for x in shipment.inventory_moves
+                        and x.planned_date != outgoing_date)]
+            if out_moves_to_write:
+                to_write.extend((out_moves_to_write, {
+                        'planned_date': outgoing_date,
+                        }))
+
+            inv_moves_to_write = [x for x in shipment.inventory_moves
                     if (x.state not in ('assigned', 'done', 'cancel')
-                        and x.planned_date != inventory_date)], {
-                    'planned_date': inventory_date,
-                    })
+                        and x.planned_date != inventory_date)]
+            if inv_moves_to_write:
+                to_write.extend((inv_moves_to_write, {
+                        'planned_date': inventory_date,
+                        }))
+        if to_write:
+            Move.write(*to_write)
 
     @classmethod
     def create(cls, vlist):
