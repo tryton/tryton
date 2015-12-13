@@ -85,7 +85,10 @@ def eval_leaf(part, context, boolop=operator.and_):
             context_field = '%s,%s' % context_field
         except TypeError:
             pass
-    return OPERATORS[operand](context_field, value)
+    try:
+        return OPERATORS[operand](context_field, value)
+    except TypeError:
+        return False
 
 
 def inverse_leaf(domain):
