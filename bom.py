@@ -197,7 +197,8 @@ class OpenBOMTreeTree(ModelView):
     'Open BOM Tree'
     __name__ = 'production.bom.tree.open.tree'
 
-    bom_tree = fields.One2Many('production.bom.tree', None, 'BOM Tree')
+    bom_tree = fields.One2Many('production.bom.tree', None, 'BOM Tree',
+        readonly=True)
 
     @classmethod
     def tree(cls, bom, product, quantity, uom):
