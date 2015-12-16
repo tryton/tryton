@@ -1,3 +1,5 @@
+Version 3.8.1 - 2015-12-16
+* Bug fixes (see mercurial logs for details)
 * Check all fields when writing a sequence of records, values (CVE-2015-0861)
 
 Version 3.8.0 - 2015-11-02
