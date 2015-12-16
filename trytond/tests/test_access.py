@@ -618,6 +618,8 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     'field1': 'ham',
                     'field2': 'spam',
                     })
+            self.assertRaises(UserError, self.test_access.write,
+                [test], {'field2': 'spam'}, [test], {'field1': 'ham'})
 
             # Two access rules with one group allowed
             group = self.group.search([('users', '=', USER)])[0]
