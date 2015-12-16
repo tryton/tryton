@@ -1,3 +1,4 @@
+* Check all fields when writing a sequence of records, values (CVE-2015-0861)
 * Add view_ids on tree view
 * Add parent_of operator
 * Enforce type of inheriting view
