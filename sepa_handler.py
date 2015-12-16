@@ -83,7 +83,7 @@ class CAMT054(SEPAHandler):
         date = element.find('./{%(ns)s}ValDt/{%(ns)s}Dt'
             % {'ns': tag.namespace})
         if date is not None:
-            return parse(date.text)
+            return parse(date.text).date()
         else:
             datetime = element.find('./{%(ns)s}ValDt/{%(ns)s}DtTm'
                 % {'ns': tag.namespace})
