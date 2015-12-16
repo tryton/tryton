@@ -138,18 +138,19 @@ class ModelStorage(Model):
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
 
-        ModelAccess.check(cls.__name__, 'write')
-        ModelFieldAccess.check(cls.__name__,
-            [x for x in values if x in cls._fields], 'write')
-
         assert not len(args) % 2
         actions = iter((records, values) + args)
         all_records = []
+        all_fields = set()
         for records, values in zip(actions, actions):
             if not cls.check_xml_record(records, values):
                 cls.raise_user_error('write_xml_record',
                         error_description='xml_record_desc')
             all_records += records
+            all_fields.update(values.iterkeys())
+
+        ModelAccess.check(cls.__name__, 'write')
+        ModelFieldAccess.check(cls.__name__, all_fields, 'write')
 
         # Increase transaction counter
         Transaction().counter += 1
