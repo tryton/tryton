@@ -135,18 +135,19 @@ class Line(ModelSQL, ModelView):
 class Move:
     __name__ = 'account.move'
 
-    def cancel(self, default=None):
+    def cancel(self):
         'Reverse credit/debit of analytic lines'
         pool = Pool()
         AnalyticLine = pool.get('analytic_account.line')
-        cancel_move = super(Move, self).cancel(default)
-        analytic_lines = []
+        cancel_move = super(Move, self).cancel()
+        to_write = []
         for line in cancel_move.lines:
             for analytic_line in line.analytic_lines:
                 analytic_line.debit, analytic_line.credit = (
                     analytic_line.credit, analytic_line.debit)
-                analytic_lines.append(analytic_line)
-        AnalyticLine.save(analytic_lines)
+                to_write.extend(([analytic_line], analytic_line._save_values))
+        if to_write:
+            AnalyticLine.write(*to_write)
         return cancel_move
 
 
