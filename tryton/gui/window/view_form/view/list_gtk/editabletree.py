@@ -35,6 +35,8 @@ class TreeView(gtk.TreeView):
             field = record[column.name]
             field.state_set(record, states=('readonly', 'invisible'))
             invisible = field.get_state_attrs(record).get('invisible', False)
+            if not column.get_visible():
+                invisible = True
             if editable:
                 readonly = widget.attrs.get('readonly',
                     field.get_state_attrs(record).get('readonly', False))
