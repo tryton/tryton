@@ -987,7 +987,7 @@
                     widget.display(this.record, field);
                     this.get_static_el().hide();
                     this.get_editable_el().show();
-                    widget.focus();
+                    widget.el.focus();
                 } else {
                     this.set_selection(true);
                     this.selection_changed();
