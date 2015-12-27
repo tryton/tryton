@@ -854,19 +854,19 @@
                 }.bind(this));
             }
         },
-        next_column: function(column, editable, sign) {
+        next_column: function(path, editable, sign) {
             var i, readonly;
-            var column_index, state_attrs;
+            var column, column_index, state_attrs;
 
             sign = sign || 1;
-            if ((column === null) && (sign > 0)) {
-                column = -1;
-            } else if (column === null) {
-                column = 0;
+            if ((path === null) && (sign > 0)) {
+                path = -1;
+            } else if (path === null) {
+                path = 0;
             }
             column_index = 0;
             for (i = 0; i < this.tree.columns.length; i++) {
-                column_index = ((column + (sign * (i + 1))) %
+                column_index = ((path + (sign * (i + 1))) %
                         this.tree.columns.length);
                 // javascript modulo returns negative number for negative
                 // numbers
