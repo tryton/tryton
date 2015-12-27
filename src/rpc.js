@@ -223,9 +223,18 @@
                     parent[index] = value;
                 }
             } else if (value instanceof Uint8Array) {
+                var strings = [], chunksize = 0xffff;
+                // JavaScript Core has hard-coded argument limit of 65536
+                // String.fromCharCode can not be called with too many
+                // arguments
+                for (var j = 0; j * chunksize < value.length; j++) {
+                    strings.push(String.fromCharCode.apply(
+                                null, value.subarray(
+                                    j * chunksize, (j + 1) * chunksize)));
+                }
                 value = {
                     '__class__': 'bytes',
-                    'base64': btoa(String.fromCharCode.apply(null, value))
+                    'base64': btoa(strings.join(''))
                 };
                 if (parent) {
                     parent[index] = value;
