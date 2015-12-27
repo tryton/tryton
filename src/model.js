@@ -2243,7 +2243,7 @@
             return data;
         },
         get_data: function(record) {
-            var prm = jQuery.when();
+            var prm;
             var data = record._values[this.name] || 0;
             if (!(data instanceof Uint8Array)) {
                 if (record.id < 0) {
@@ -2255,8 +2255,10 @@
                 prm.done(function(data) {
                     return data[0][this.name];
                 }.bind(this));
-                return prm;
+            } else {
+                prm = jQuery.when(data);
             }
+            return prm;
         }
     });
 
