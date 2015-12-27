@@ -423,13 +423,14 @@ class ModelView(Model):
             xpath = ('//field[@name="%(field)s"] | //label[@name="%(field)s"]'
                 ' | //page[@name="%(field)s"] | //group[@name="%(field)s"]'
                 ' | //separator[@name="%(field)s"]') % {'field': field}
-            for element in tree.xpath(xpath):
+            for i, element in enumerate(tree.xpath(xpath)):
                 if type == 'tree' or element.tag == 'page':
                     parent = element.getparent()
                     parent.remove(element)
                 elif type == 'form':
                     element.tag = 'label'
                     element.attrib.clear()
+                    element.attrib['id'] = 'hidden %s-%s' % (field, i)
 
         if type == 'tree':
             ViewTreeWidth = pool.get('ir.ui.view_tree_width')
