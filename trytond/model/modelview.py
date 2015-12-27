@@ -307,12 +307,13 @@ class ModelView(Model):
 
         # Remove field without read access
         for field in fields_to_remove:
-            for element in tree.xpath(
+            for i, element in enumerate(tree.xpath(
                     '//field[@name="%s"] | //label[@name="%s"]'
-                    % (field, field)):
+                    % (field, field))):
                 if type == 'form':
                     element.tag = 'label'
                     element.attrib.clear()
+                    element.attrib['id'] = 'hidden %s-%s' % (field, i)
                 elif type == 'tree':
                     parent = element.getparent()
                     parent.remove(element)
