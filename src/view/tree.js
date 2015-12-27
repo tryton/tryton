@@ -855,7 +855,7 @@
             }
         },
         next_column: function(path, editable, sign) {
-            var i, readonly;
+            var i, readonly, invisible;
             var column, column_index, state_attrs;
 
             sign = sign || 1;
@@ -875,13 +875,17 @@
                 }
                 column = this.tree.columns[column_index];
                 state_attrs = column.field.get_state_attrs(this.record);
+                invisible = state_attrs.invisible;
+                if (column.attributes.tree_invisible) {
+                    invisible = true;
+                }
                 if (editable) {
                     readonly = (column.attributes.readonly ||
                             state_attrs.readonly);
                 } else {
                     readonly = false;
                 }
-                if (!(state_attrs.invisible || readonly)) {
+                if (!(invisible || readonly)) {
                     break;
                 }
             }
