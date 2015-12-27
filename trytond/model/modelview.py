@@ -689,6 +689,9 @@ class ModelView(Model):
                 if value:
                     if isinstance(value, ModelStorage):
                         changed['%s.rec_name' % fname] = value.rec_name
+                    if value.id is None:
+                        # Don't consider temporary instance as a change
+                        continue
                     if field._type == 'reference':
                         value = str(value)
                     else:
