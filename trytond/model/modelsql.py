@@ -128,8 +128,6 @@ class ModelSQL(ModelStorage):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(ModelSQL, cls).__register__(module_name)
-        pool = Pool()
-        ModelField = pool.get('ir.model.field')
 
         if cls.table_query():
             return
@@ -207,13 +205,7 @@ class ModelSQL(ModelStorage):
             if isinstance(field, fields.Many2One) \
                     and field.model_name == cls.__name__ \
                     and field.left and field.right:
-                irfields = ModelField.search([
-                        ('model.model', '=', field.model_name),
-                        ('module', '=', module_name),
-                        ('name', 'in', [field.left, field.right]),
-                        ])
-                if irfields:
-                    cls._rebuild_tree(field_name, None, 0)
+                cls._rebuild_tree(field_name, None, 0)
 
         for ident, constraint, _ in cls._sql_constraints:
             table.add_constraint(ident, constraint)
