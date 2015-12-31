@@ -1556,6 +1556,8 @@
                 return Sao.View.EditableTree.Boolean;
             case 'many2one':
                 return Sao.View.EditableTree.Many2One;
+            case 'reference':
+                return Sao.View.EditableTree.Reference;
             case 'one2one':
                 return Sao.View.EditableTree.One2One;
             case 'one2many':
@@ -1665,6 +1667,23 @@
                 this.focus_out();
             } else {
                 Sao.View.EditableTree.Many2One._super.key_press.call(this,
+                    event_);
+            }
+        }
+    });
+
+    Sao.View.EditableTree.Reference = Sao.class_(Sao.View.Form.Reference, {
+        class_: 'editabletree-reference',
+        init: function(field_name, model, attributes) {
+            Sao.View.EditableTree.Reference._super.init.call(this, field_name,
+                model, attributes);
+            this.el.on('keydown', this.key_press.bind(this));
+        },
+        key_press: function(event_) {
+            if (event_.which == Sao.common.TAB_KEYCODE) {
+                this.focus_out();
+            } else {
+                Sao.View.EditableTree.Reference._super.key_press.call(this,
                     event_);
             }
         }
