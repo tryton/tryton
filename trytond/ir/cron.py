@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from ast import literal_eval
 
-from ..model import ModelView, ModelSQL, fields
+from ..model import ModelView, ModelSQL, fields, dualmethod
 from ..tools import get_smtp_server
 from ..transaction import Transaction
 from ..pool import Pool
@@ -69,6 +69,11 @@ class Cron(ModelSQL, ModelView):
                 'request_body': ("The following action failed to execute "
                     "properly: \"%s\"\n%s\n Traceback: \n\n%s\n")
                 })
+        cls._buttons.update({
+                'run_once': {
+                    'icon': 'tryton-executable',
+                    },
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -125,52 +130,55 @@ class Cron(ModelSQL, ModelView):
         '''
         return _INTERVALTYPES[cron.interval_type](cron.interval_number)
 
-    @classmethod
-    def send_error_message(cls, cron):
-        tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-        tb_s = tb_s.decode('utf-8', 'ignore')
-        subject = cls.raise_user_error('request_title',
-            raise_exception=False)
-        body = cls.raise_user_error('request_body',
-            (cron.name, cron.__url__, tb_s),
-            raise_exception=False)
-
-        from_addr = config.get('email', 'from')
-        to_addr = cron.request_user.email
-
-        msg = MIMEText(body, _charset='utf-8')
-        msg['To'] = to_addr
-        msg['From'] = from_addr
-        msg['Subject'] = Header(subject, 'utf-8')
-        if not to_addr:
-            logger.error(msg.as_string())
-        else:
-            try:
-                server = get_smtp_server()
-                server.sendmail(from_addr, to_addr, msg.as_string())
-                server.quit()
-            except Exception:
-                logger.error('Unable to deliver email:\n %s',
-                    msg.as_string(), exc_info=True)
-
-    @classmethod
-    def _callback(cls, cron):
+    def send_error_message(self):
         pool = Pool()
         Config = pool.get('ir.configuration')
-        try:
-            args = (cron.args or []) and literal_eval(cron.args)
+
+        if self.request_user.language:
+            language = self.request_user.language.code
+        else:
+            language = Config.get_language()
+
+        with Transaction().set_user(self.user.id), \
+                Transaction().set_context(language=language):
+            tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
+            tb_s = tb_s.decode('utf-8', 'ignore')
+            subject = self.raise_user_error('request_title',
+                raise_exception=False)
+            body = self.raise_user_error('request_body',
+                (self.name, self.__url__, tb_s),
+                raise_exception=False)
+
+            from_addr = config.get('email', 'from')
+            to_addr = self.request_user.email
+
+            msg = MIMEText(body, _charset='utf-8')
+            msg['To'] = to_addr
+            msg['From'] = from_addr
+            msg['Subject'] = Header(subject, 'utf-8')
+            if not to_addr:
+                logger.error(msg.as_string())
+            else:
+                try:
+                    server = get_smtp_server()
+                    server.sendmail(from_addr, to_addr, msg.as_string())
+                    server.quit()
+                except Exception:
+                    logger.error('Unable to deliver email:\n %s',
+                        msg.as_string(), exc_info=True)
+
+    @dualmethod
+    @ModelView.button
+    def run_once(cls, crons):
+        pool = Pool()
+        for cron in crons:
+            if cron.args:
+                args = literal_eval(cron.args)
+            else:
+                args = []
             Model = pool.get(cron.model)
             with Transaction().set_user(cron.user.id):
                 getattr(Model, cron.function)(*args)
-        except Exception:
-            Transaction().cursor.rollback()
-
-            req_user = cron.request_user
-            language = (req_user.language.code if req_user.language
-                    else Config.get_language())
-            with Transaction().set_user(cron.user.id), \
-                    Transaction().set_context(language=language):
-                cls.send_error_message(cron)
 
     @classmethod
     def run(cls, db_name):
@@ -189,7 +197,11 @@ class Cron(ModelSQL, ModelView):
                     first = True
                     while next_call < now and number_calls != 0:
                         if first or cron.repeat_missed:
-                            cls._callback(cron)
+                            try:
+                                cron.run_once()
+                            except Exception:
+                                transaction.cursor.rollback()
+                                cron.send_error_message()
                         next_call += cls.get_delta(cron)
                         if number_calls > 0:
                             number_calls -= 1
