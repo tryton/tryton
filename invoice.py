@@ -2108,7 +2108,7 @@ class InvoiceTax(ModelSQL, ModelView):
         if not self.tax:
             return
         if self.invoice:
-            context = self.invoice.get_tax_context()
+            context = self.invoice._get_tax_context()
         else:
             context = {}
         with Transaction().set_context(**context):
