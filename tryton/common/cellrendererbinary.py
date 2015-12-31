@@ -18,7 +18,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             gobject.PARAM_READWRITE),
     }
     __gsignals__ = {
-        'new': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'select': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
         'open': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
@@ -35,14 +35,14 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         self.set_property('mode', gtk.CELL_RENDERER_MODE_EDITABLE)
         self.use_filename = use_filename
         if use_filename:
-            self.buttons = ('new', 'open', 'save', 'clear')
+            self.buttons = ('select', 'open', 'save', 'clear')
         else:
-            self.buttons = ('new', 'save', 'clear')
+            self.buttons = ('select', 'save', 'clear')
         self.clicking = ''
         self.images = {}
         widget = gtk.Button()
         for key, stock_name in (
-                ('new', 'tryton-find'),
+                ('select', 'tryton-find'),
                 ('open', 'tryton-open'),
                 ('save', 'tryton-save-as'),
                 ('clear', 'tryton-clear')):
@@ -91,7 +91,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             button_name = None
         if not self.visible or not button_name:
             return
-        if not self.editable and button_name in ('new', 'clear'):
+        if not self.editable and button_name in ('select', 'clear'):
             return
         if not self.size and button_name == 'save':
             return
@@ -139,7 +139,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                     and flags & gtk.CELL_RENDERER_SELECTED):
                 state = gtk.STATE_ACTIVE
                 shadow = gtk.SHADOW_IN
-            if (not self.editable and button_name in ('new', 'clear')
+            if (not self.editable and button_name in ('select', 'clear')
                     or not self.size and button_name in ('open', 'save')):
                 state = gtk.STATE_INSENSITIVE
                 pixbuf = pxbf_insens

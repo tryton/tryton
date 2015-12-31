@@ -410,11 +410,10 @@ class Binary(GenericText):
         if renderer is None:
             renderer = partial(CellRendererBinary, bool(self.filename))
         super(Binary, self).__init__(view, attrs, renderer=renderer)
-        self.renderer.connect('new', self.new_binary)
+        self.renderer.connect('select', self.select_binary)
         self.renderer.connect('open', self.open_binary)
         self.renderer.connect('save', self.save_binary)
         self.renderer.connect('clear', self.clear_binary)
-        self.last_open_file = None
 
     def get_textual_value(self, record):
         pass
@@ -449,14 +448,10 @@ class Binary(GenericText):
                 readonly = True
             cell.set_property('editable', not readonly)
 
-    def new_binary(self, renderer, path):
+    def select_binary(self, renderer, path):
         record, field = self._get_record_field(path)
         filename = ''
-        if self.last_open_file:
-            last_id, last_filename = self.last_open_file
-            if last_id == record.id:
-                filename = last_filename
-        filename = file_selection(_('Open...'), filename=filename)
+        filename = file_selection(_('Open...'))
         if filename:
             field.set_client(record, open(filename, 'rb').read())
             if self.filename:
@@ -484,7 +479,6 @@ class Binary(GenericText):
         if type_:
             type_ = type_[1:]
         file_open(file_path, type_)
-        self.last_open_file = (record.id, file_path)
 
     def save_binary(self, renderer, path):
         filename = ''
