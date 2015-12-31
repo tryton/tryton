@@ -89,6 +89,7 @@ class ShipmentOut:
         invoice_line = InvoiceLine()
         product = self.carrier.carrier_product
         invoice_line.type = 'line'
+        invoice_line.product = product
 
         party = invoice.party
         party_context = {}
