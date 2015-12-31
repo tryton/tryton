@@ -18,7 +18,7 @@ from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, TemplateFunction
 
 __all__ = ['StockMixin', 'Move']
 
@@ -563,7 +563,7 @@ class Move(Workflow, ModelSQL, ModelView):
         qty = Uom.compute_qty(self.uom, quantity, product.default_uom)
 
         qty = Decimal(str(qty))
-        if hasattr(Product, 'cost_price'):
+        if not isinstance(Product.cost_price, TemplateFunction):
             product_qty = product.quantity
         else:
             product_qty = product.template.quantity
@@ -582,7 +582,7 @@ class Move(Workflow, ModelSQL, ModelView):
         else:
             new_cost_price = product.cost_price
 
-        if hasattr(Product, 'cost_price'):
+        if not isinstance(Product.cost_price, TemplateFunction):
             digits = Product.cost_price.digits
             write = partial(Product.write, [product])
         else:
