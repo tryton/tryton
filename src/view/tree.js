@@ -7,7 +7,6 @@
         switch (type) {
             case 'char':
             case 'text':
-            case 'binary':
                 return Sao.View.Tree.CharColumn;
             case 'many2one':
                 return Sao.View.Tree.Many2OneColumn;
@@ -35,6 +34,8 @@
                 return Sao.View.Tree.IntegerColumn;
             case 'boolean':
                 return Sao.View.Tree.BooleanColumn;
+            case 'binary':
+                return Sao.View.Tree.BinaryColumn;
             case 'image':
                 return Sao.View.Tree.ImageColumn;
             case 'url':
@@ -1401,6 +1402,13 @@
 
     Sao.View.Tree.Many2ManyColumn = Sao.class_(Sao.View.Tree.One2ManyColumn, {
         class_: 'column-many2many'
+    });
+
+    Sao.View.Tree.BinaryColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-binary',
+        update_text: function(cell, record) {
+            cell.text(Sao.common.humanize(this.field.get_size(record)));
+        }
     });
 
     Sao.View.Tree.ImageColumn = Sao.class_(Sao.View.Tree.CharColumn, {
