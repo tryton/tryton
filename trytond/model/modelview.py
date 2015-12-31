@@ -25,20 +25,18 @@ def _find(tree, element):
     return None
 
 
-def _inherit_apply(src, inherit):
-    tree_src = etree.fromstring(src)
-    tree_inherit = etree.fromstring(inherit)
-    root_inherit = tree_inherit.getroottree().getroot()
+def _inherit_apply(tree, inherit):
+    root_inherit = inherit.getroottree().getroot()
     for element2 in root_inherit:
         if element2.tag != 'xpath':
             continue
-        element = _find(tree_src, element2)
+        element = _find(tree, element2)
         if element is not None:
             pos = element2.get('position', 'inside')
             if pos == 'replace':
                 parent = element.getparent()
                 if parent is None:
-                    tree_src, = element2
+                    tree, = element2
                     continue
                 enext = element.getnext()
                 if enext is not None:
@@ -75,7 +73,7 @@ def _inherit_apply(src, inherit):
             raise AttributeError(
                 'Couldn\'t find tag (%s: %s) in parent view!'
                 % (element2.tag, element2.get('expr')))
-    return etree.tostring(tree_src, encoding='utf-8')
+    return tree
 
 
 def on_change(func):
@@ -294,6 +292,8 @@ class ModelView(Model):
                     # There is perhaps a new module in the directory
                     ModelView._reset_modules_list()
                     raise_p = True
+            parser = etree.XMLParser(remove_comments=True)
+            tree = etree.fromstring(result['arch'], parser=parser)
             for view in views:
                 if view.domain:
                     if not PYSONDecoder({'context': Transaction().context}
@@ -301,7 +301,9 @@ class ModelView(Model):
                         continue
                 if not view.arch or not view.arch.strip():
                     continue
-                result['arch'] = _inherit_apply(result['arch'], view.arch)
+                tree_inherit = etree.fromstring(view.arch, parser=parser)
+                tree = _inherit_apply(tree, tree_inherit)
+            result['arch'] = etree.tostring(tree, encoding='utf-8')
 
         # otherwise, build some kind of default view
         else:
