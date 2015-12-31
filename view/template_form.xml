@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
   <field name="name" xexpand="1"/>
   <label name="active"/>
   <field name="active" xexpand="0" width="100"/>
+  <newline/>
   <notebook colspan="6">
       <page string="General" id="general">
           <label name="type"/>
@@ -23,7 +24,8 @@ this repository contains the full copyright notices and license terms. -->
           <field name="cost_price"/>
           <label name="cost_price_method"/>
           <field name="cost_price_method"/>
-          <field name="products" mode="form,tree" colspan="4"/>
+          <field name="products" mode="form,tree" colspan="4"
+              view_ids="product.product_view_form_simple"/>
       </page>
   </notebook>
 </form>

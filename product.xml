@@ -80,16 +80,32 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view" id="product_view_tree">
             <field name="model">product.product</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="template_view_tree"/>
+            <field name="priority" eval="10"/>
+            <field name="name"></field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_tree_simple">
+            <field name="model">product.product</field>
             <field name="type">tree</field>
-            <field name="inherit" eval="None"/>
-            <field name="name">product_tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_tree_simple</field>
         </record>
 
         <record model="ir.ui.view" id="product_view_form">
             <field name="model">product.product</field>
-            <field name="type">form</field>
-            <field name="inherit" eval="None"/>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="template_view_form"/>
+            <field name="priority" eval="10"/>
             <field name="name">product_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form_simple">
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_form_simple</field>
         </record>
 
         <record model="ir.action.act_window" id="act_product_form">

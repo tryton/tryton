@@ -1,14 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+import copy
+
+from sql import Column
+
+from trytond.model import ModelView, ModelSQL, Model, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
-from trytond.const import OPERATORS
 from trytond.config import config
 
-__all__ = ['Template', 'Product', 'price_digits']
+__all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction']
 
 STATES = {
     'readonly': ~Eval('active', True),
@@ -129,6 +132,36 @@ class Template(ModelSQL, ModelView):
             yield record, rec_name, icon
 
 
+class TemplateFunction(fields.Function):
+
+    def __init__(self, field):
+        super(TemplateFunction, self).__init__(
+            field, 'get_template', searcher='search_template')
+
+    def __copy__(self):
+        return TemplateFunction(copy.copy(self._field))
+
+    def __deepcopy__(self, memo):
+        return TemplateFunction(copy.deepcopy(self._field, memo))
+
+    @staticmethod
+    def order(name):
+        @classmethod
+        def order(cls, tables):
+            pool = Pool()
+            Template = pool.get('product.template')
+            product, _ = tables[None]
+            if 'template' not in tables:
+                template = Template.__table__()
+                tables['template'] = {
+                    None: (template, product.template == template.id),
+                    }
+            else:
+                template = tables['template']
+            return [Column(template, name)]
+        return order
+
+
 class Product(ModelSQL, ModelView):
     "Product Variant"
     __name__ = "product.product"
@@ -141,14 +174,59 @@ class Product(ModelSQL, ModelView):
     description = fields.Text("Description", translate=True, states=STATES,
         depends=DEPENDS)
     active = fields.Boolean('Active', select=True)
-    default_uom = fields.Function(fields.Many2One('product.uom',
-            'Default UOM'), 'get_default_uom', searcher='search_default_uom')
-    type = fields.Function(fields.Selection(TYPES, 'Type'),
-        'on_change_with_type', searcher='search_type')
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=price_digits), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
         digits=price_digits), 'get_price_uom')
+
+    @classmethod
+    def __setup__(cls):
+        pool = Pool()
+        Template = pool.get('product.template')
+
+        if not hasattr(cls, '_no_template_field'):
+            cls._no_template_field = set()
+        cls._no_template_field.update(['products'])
+
+        super(Product, cls).__setup__()
+
+        for attr in dir(Template):
+            tfield = getattr(Template, attr)
+            if not isinstance(tfield, fields.Field):
+                continue
+            if attr in cls._no_template_field:
+                continue
+            field = getattr(cls, attr, None)
+            if not field or isinstance(field, TemplateFunction):
+                setattr(cls, attr, TemplateFunction(copy.deepcopy(tfield)))
+                order_method = getattr(cls, 'order_%s' % attr, None)
+                if not order_method:
+                    order_method = TemplateFunction.order(attr)
+                    setattr(cls, 'order_%s' % attr, order_method)
+
+    @fields.depends('template')
+    def on_change_template(self):
+        for name, field in self._fields.iteritems():
+            if isinstance(field, TemplateFunction):
+                if self.template:
+                    value = getattr(self.template, name)
+                else:
+                    value = None
+                setattr(self, name, value)
+
+    def get_template(self, name):
+        value = getattr(self.template, name)
+        if isinstance(value, Model):
+            return value.id
+        elif (isinstance(value, (list, tuple))
+                and value and isinstance(value[0], Model)):
+            return [r.id for r in value]
+        else:
+            return value
+
+    @classmethod
+    def search_template(cls, name, clause):
+        return [('template.%s' % name,) + tuple(clause[1:])]
 
     @classmethod
     def order_rec_name(cls, tables):
@@ -169,13 +247,6 @@ class Product(ModelSQL, ModelView):
     def default_active():
         return True
 
-    def __getattr__(self, name):
-        try:
-            return super(Product, self).__getattr__(name)
-        except AttributeError:
-            pass
-        return getattr(self.template, name)
-
     def get_rec_name(self, name):
         if self.code:
             return '[' + self.code + '] ' + self.name
@@ -192,22 +263,6 @@ class Product(ModelSQL, ModelView):
             ('code',) + tuple(clause[1:]),
             ('template.name',) + tuple(clause[1:]),
             ]
-
-    def get_default_uom(self, name):
-        return self.template.default_uom.id
-
-    @classmethod
-    def search_default_uom(cls, name, clause):
-        return [('template.default_uom',) + tuple(clause[1:])]
-
-    @fields.depends('template')
-    def on_change_with_type(self, name=None):
-        if self.template:
-            return self.template.type
-
-    @classmethod
-    def search_type(cls, name, clause):
-        return [('template.type',) + tuple(clause[1:])]
 
     @staticmethod
     def get_price_uom(products, name):
@@ -229,27 +284,3 @@ class Product(ModelSQL, ModelView):
         for id_, rec_name, icon in super(Product, cls).search_global(text):
             icon = icon or 'tryton-product'
             yield id_, rec_name, icon
-
-    @classmethod
-    def search_domain(cls, domain, active_test=True, tables=None):
-        def is_leaf(expression):
-            return (isinstance(expression, (list, tuple))
-                and len(expression) > 2
-                and isinstance(expression[1], basestring)
-                and expression[1] in OPERATORS)  # TODO remove OPERATORS test
-
-        def convert_domain(domain):
-            'Replace missing product field by the template one'
-            if is_leaf(domain):
-                field = domain[0].split('.', 1)[0]
-                if not getattr(cls, field, None):
-                    field = 'template.' + domain[0]
-                    return (field,) + tuple(domain[1:])
-                else:
-                    return domain
-            elif domain in ['OR', 'AND']:
-                return domain
-            else:
-                return [convert_domain(d) for d in domain]
-        return super(Product, cls).search_domain(convert_domain(domain),
-            active_test=active_test, tables=tables)

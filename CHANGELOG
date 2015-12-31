@@ -1,3 +1,5 @@
+* Add Function fields on Product from Template
+
 Version 3.8.0 - 2015-11-02
 * Bug fixes (see mercurial logs for details)
 * Be more strict on unit of measure conversion
