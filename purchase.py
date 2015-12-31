@@ -132,8 +132,8 @@ class PurchaseLine:
             return self.purchase.drop_location.id
         return result
 
-    def get_move(self):
-        move = super(PurchaseLine, self).get_move()
+    def get_move(self, move_type):
+        move = super(PurchaseLine, self).get_move(move_type)
         if move and self.purchase.customer:
             move.cost_price = move.unit_price
         return move
