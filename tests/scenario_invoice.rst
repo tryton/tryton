@@ -119,6 +119,18 @@ Create invoice::
     Decimal('20.00')
     >>> invoice.total_amount
     Decimal('240.00')
+    >>> invoice.save()
+
+Test change tax::
+
+    >>> tax_line, = invoice.taxes
+    >>> tax_line.tax == tax
+    True
+    >>> tax_line.tax = None
+    >>> tax_line.tax = tax
+
+Post invoice::
+
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
