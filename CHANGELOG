@@ -1,3 +1,4 @@
+* Allow nested inherited view
 * Add button on cron to run once
 * Check all fields when writing a sequence of records, values (CVE-2015-0861)
 * Add view_ids on tree view

@@ -241,13 +241,13 @@ class ModelView(Model):
         else:
             domain = [
                 ('model', '=', cls.__name__),
-                ('type', '=', view_type),
                 ['OR',
                     ('inherit', '=', None),
                     ('inherit.model', '!=', cls.__name__),
                     ],
                 ]
             views = View.search(domain)
+            views = filter(lambda v: v.rng_type == view_type, views)
             if views:
                 view = views[0]
         if view:
@@ -258,7 +258,7 @@ class ModelView(Model):
 
         # if a view was found
         if view:
-            result['type'] = view.type
+            result['type'] = view.rng_type
             result['view_id'] = view_id
             result['arch'] = view.arch
             result['field_childs'] = view.field_childs
