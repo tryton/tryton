@@ -8,7 +8,7 @@ from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, TemplateFunction
 
 __all__ = ['Production', 'AssignFailed', 'Assign']
 
