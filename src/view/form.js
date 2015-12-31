@@ -1416,6 +1416,7 @@
                 }).appendTo(this.toolbar);
                 button = jQuery('<button/>', {
                     'class': 'btn btn-default dropdown-toggle',
+                    'type': 'button',
                     'data-toggle': 'dropdown',
                     'aria-expanded': false,
                     'aria-haspopup': true
@@ -2064,6 +2065,7 @@
                 //
                 this.but_add = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': Sao.i18n.gettext('Add')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-plus'
@@ -2072,6 +2074,7 @@
 
                 this.but_remove = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
+                    'type': 'button',
                     'aria-label': Sao.i18n.gettext('Remove')
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-minus'
@@ -2081,6 +2084,7 @@
 
             this.but_new = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('New')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-edit'
@@ -2089,6 +2093,7 @@
 
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Open')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-folder-open'
@@ -2097,6 +2102,7 @@
 
             this.but_del = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Delete')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-trash'
@@ -2105,6 +2111,7 @@
 
             this.but_undel = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Undelete')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-repeat'
@@ -2113,6 +2120,7 @@
 
             this.but_previous = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Previous')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-left'
@@ -2126,6 +2134,7 @@
 
             this.but_next = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Next')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-right'
@@ -2134,6 +2143,7 @@
 
             this.but_switch = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Switch')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-list-alt'
@@ -2530,6 +2540,7 @@
             }).appendTo(group);
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Add')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-plus'
@@ -2538,6 +2549,7 @@
 
             this.but_remove = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
+                'type': 'button',
                 'aria-label': Sao.i18n.gettext('Remove')
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-minus'
