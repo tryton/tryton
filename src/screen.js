@@ -1383,17 +1383,15 @@
                             });
                         });
                 } else {
-                    var context = jQuery.extend({}, this.context);
-                    context._timestamp = {};
-                    for (i = 0; i < selected_records.length; i++) {
-                        record = selected_records[i];
-                        jQuery.extend(context._timestamp, record.get_timestamp());
-                    }
                     record.save(false).done(function() {
-                        ids = selected_records.map(
-                                function(record) {
-                                    return record.id;
-                                });
+                        var context = jQuery.extend({}, this.context);
+                        context._timestamp = {};
+                        ids = [];
+                        for (i = 0; i < selected_records.length; i++) {
+                            record = selected_records[i];
+                            jQuery.extend(context._timestamp, record.get_timestamp());
+                            ids.push(record.id);
+                        }
                         record.model.execute(attributes.name,
                             [ids], context).then(process_action.bind(this));
                     }.bind(this));
