@@ -607,7 +607,6 @@ class O2MField(Field):
                     new_record.set_default(vals)
                     group.add(new_record)
                 else:
-                    new_record.id *= -1  # Don't consider record as unsaved
                     new_record.set(vals)
                     group.append(new_record)
 
