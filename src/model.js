@@ -1781,7 +1781,6 @@
                             new_record.set_default(vals);
                             group.add(new_record);
                         } else {
-                            new_record.id *= 1;
                             new_record.set(vals);
                             group.push(new_record);
                         }
