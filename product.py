@@ -50,10 +50,3 @@ class Product:
                 & ~Eval('_parent_template', {}).get('attribute_set')),
             },
         depends=['attribute_set'])
-    attribute_set = fields.Function(fields.Many2One('product.attribute.set',
-            'Set'), 'on_change_with_attribute_set')
-
-    @fields.depends('template')
-    def on_change_with_attribute_set(self, name=None):
-        if self.template and getattr(self.template, 'attribute_set', None):
-            return self.template.attribute_set.id
