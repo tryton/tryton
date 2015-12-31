@@ -496,7 +496,7 @@ class ModelView(Model):
                         view_ids.append(int(view_id))
                     except ValueError:
                         view_ids.append(ModelData.get_id(*view_id.split('.')))
-            element.attrib['view_ids'] = ','.join(map(str, view_ids))
+                element.attrib['view_ids'] = ','.join(map(str, view_ids))
             return view_ids
 
         def get_relation(field):
