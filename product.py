@@ -10,7 +10,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_product import MissingFunction
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, TemplateFunction
 
 __all__ = ['Category', 'Template', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
@@ -371,7 +371,7 @@ class UpdateCostPrice(Wizard):
         Product = pool.get('product.product')
         ProductTemplate = pool.get('product.template')
 
-        if hasattr(Product, 'cost_price'):
+        if not isinstance(Product.cost_price, TemplateFunction):
             write = partial(Product.write, [self.ask_price.product])
         else:
             if self.ask_price.template:
