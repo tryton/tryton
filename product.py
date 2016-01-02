@@ -12,7 +12,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.account_product import MissingFunction
 from trytond.modules.product import price_digits, TemplateFunction
 
-__all__ = ['Category', 'Template', 'UpdateCostPriceAsk',
+__all__ = ['Category', 'Template', 'Product', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
 __metaclass__ = PoolMeta
 
@@ -178,6 +178,26 @@ class Template:
                     'a product which is associated to stock moves.\n'
                     'You must use the "Update Cost Price" wizard.'),
                 })
+
+
+class Product:
+    __name__ = 'product.product'
+    # Avoid raise of UserError from MissingFunction
+    account_stock_used = fields.Function(
+        fields.Many2One('account.account', 'Account Stock Used'),
+        'get_template')
+    account_stock_supplier_used = fields.Function(
+        fields.Many2One('account.account', 'Account Stock Supplier Used'),
+        'get_template')
+    account_stock_customer_used = fields.Function(
+        fields.Many2One('account.account', 'Account Stock Customer Used'),
+        'get_template')
+    account_stock_production_used = fields.Function(
+        fields.Many2One('account.account', 'Account Stock Production Used'),
+        'get_template')
+    account_stock_lost_found_used = fields.Function(
+        fields.Many2One('account.account', 'Account Stock Lost and Found'),
+        'get_template')
 
 
 class UpdateCostPriceAsk(ModelView):

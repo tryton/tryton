@@ -12,6 +12,7 @@ def register():
         Move,
         Category,
         Template,
+        Product,
         Configuration,
         FiscalYear,
         AccountMove,
