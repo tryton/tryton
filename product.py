@@ -4,7 +4,7 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-__all__ = ['Template']
+__all__ = ['Template', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -16,3 +16,7 @@ class Template:
             'invisible': ~Eval('purchasable') | ~Eval('salable'),
             },
         depends=['purchasable', 'salable'])
+
+
+class Product:
+    __name__ = 'product.product'

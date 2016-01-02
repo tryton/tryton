@@ -16,6 +16,7 @@ def register():
         Purchase,
         ShipmentIn,
         Template,
+        Product,
         module='sale_supply', type_='model')
     Pool.register(
         HandlePurchaseCancellationException,
