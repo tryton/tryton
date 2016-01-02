@@ -13,4 +13,5 @@ def register():
         Category,
         Template,
         Product_TariffCode,
+        Product,
         module='customs', type_='model')

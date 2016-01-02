@@ -7,7 +7,7 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, Or
 from trytond.tools import grouped_slice
 
-__all__ = ['Category', 'Template', 'Product_TariffCode']
+__all__ = ['Category', 'Template', 'Product_TariffCode', 'Product']
 
 
 class Category:
@@ -140,3 +140,8 @@ class Product_TariffCode(ModelSQL, ModelView):
     def order_sequence(tables):
         table, _ = tables[None]
         return [table.sequence == Null, table.sequence]
+
+
+class Product:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.product'
