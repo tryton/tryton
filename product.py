@@ -200,7 +200,11 @@ class Product(ModelSQL, ModelView):
             if not field or isinstance(field, TemplateFunction):
                 setattr(cls, attr, TemplateFunction(copy.deepcopy(tfield)))
                 order_method = getattr(cls, 'order_%s' % attr, None)
-                if not order_method:
+                if (not order_method
+                        and not isinstance(tfield, (
+                                fields.Function,
+                                fields.One2Many,
+                                fields.Many2Many))):
                     order_method = TemplateFunction.order(attr)
                     setattr(cls, 'order_%s' % attr, order_method)
 
