@@ -10,6 +10,7 @@ from .stock import *
 def register():
     Pool.register(
         Template,
+        Product,
         Configuration,
         LandedCost,
         LandedCost_Shipment,
