@@ -21,6 +21,7 @@ def register():
         SaleLine,
         Template,
         Template_Agent,
+        Product,
         module='commission', type_='model')
     Pool.register(
         CreateInvoice,

@@ -6,7 +6,7 @@ from trytond.pool import PoolMeta
 from trytond.model import ModelSQL, fields
 
 
-__all__ = ['Template', 'Template_Agent']
+__all__ = ['Template', 'Template_Agent', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -34,3 +34,11 @@ class Template_Agent(ModelSQL):
         domain=[
             ('type_', '=', 'principal'),
             ])
+
+
+class Product:
+    __name__ = 'product.product'
+
+    @property
+    def principal(self):
+        return self.template.principal
