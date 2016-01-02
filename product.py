@@ -6,7 +6,7 @@ from trytond.pyson import Eval
 
 from .stock import DATE_STATE
 
-__all__ = ['Template']
+__all__ = ['Template', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -37,3 +37,7 @@ class Template:
     @staticmethod
     def default_expiration_state():
         return 'none'
+
+
+class Product:
+    __name__ = 'product.product'
