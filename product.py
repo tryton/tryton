@@ -9,7 +9,7 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
-    'Template', 'TemplateCustomerTax', 'TemplateSupplierTax',
+    'Template', 'TemplateCustomerTax', 'TemplateSupplierTax', 'Product',
     'MissingFunction']
 __metaclass__ = PoolMeta
 
@@ -307,3 +307,12 @@ class TemplateSupplierTax(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
+
+
+class Product:
+    __name__ = 'product.product'
+    # Avoid raise of UserError from MissingFunction
+    account_expense_used = fields.Function(fields.Many2One('account.account',
+        'Account Expense Used'), 'get_template')
+    account_revenue_used = fields.Function(fields.Many2One('account.account',
+        'Account Revenue Used'), 'get_template')

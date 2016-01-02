@@ -14,5 +14,6 @@ def register():
         Template,
         TemplateCustomerTax,
         TemplateSupplierTax,
+        Product,
         Configuration,
         module='account_product', type_='model')
