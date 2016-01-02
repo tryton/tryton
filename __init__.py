@@ -12,6 +12,7 @@ def register():
     Pool.register(
         Category,
         Template,
+        Product,
         Move,
         InvoiceLine,
         FiscalYear,

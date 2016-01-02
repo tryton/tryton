@@ -6,7 +6,7 @@ from trytond.pool import PoolMeta
 
 from trytond.modules.account_product import MissingFunction
 
-__all__ = ['Category', 'Template']
+__all__ = ['Category', 'Template', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -45,3 +45,11 @@ class Template:
     account_cogs_used = MissingFunction(fields.Many2One('account.account',
             'Account Cost of Goods Sold Used'), 'missing_account',
         'get_account')
+
+
+class Product:
+    __name__ = 'product.product'
+    # Avoid raise of UserError from MissingFunction
+    account_cogs_used = fields.Function(
+        fields.Many2One('account.account', 'Account Cost of Goods Sold Used'),
+        'get_template')
