@@ -4,7 +4,7 @@ from trytond.model import fields
 from trytond.pyson import Eval, Bool, Id
 from trytond.pool import PoolMeta, Pool
 
-__all__ = ['Template']
+__all__ = ['Template', 'Product']
 __metaclass__ = PoolMeta
 
 NON_MEASURABLE = ['service']
@@ -170,3 +170,7 @@ class Template:
             ('//page[@id="measurements"]', 'states', {
                     'invisible': Eval('type').in_(NON_MEASURABLE),
                     })]
+
+
+class Product:
+    __name__ = 'product.product'
