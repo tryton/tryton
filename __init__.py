@@ -19,6 +19,7 @@ def register():
         PrintDepreciationTableStart,
         Category,
         Template,
+        Product,
         InvoiceLine,
         Configuration,
         Move,

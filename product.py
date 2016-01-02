@@ -5,7 +5,7 @@ from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from trytond.modules.account_product import MissingFunction
 
-__all__ = ['Category', 'Template']
+__all__ = ['Category', 'Template', 'Product']
 __metaclass__ = PoolMeta
 
 
@@ -89,3 +89,14 @@ class Template:
                 },
             depends=['active', 'depreciable', 'type'],
             help='In months'))
+
+
+class Product:
+    __name__ = 'product.product'
+    # Avoid raise of UserError from MissingFunction
+    account_depreciation_used = fields.Function(
+        fields.Many2One('account.account', 'Account Depreciation Used'),
+        'get_template')
+    account_asset_used = fields.Function(
+        fields.Many2One('account.account', 'Account Asset Used'),
+        'get_template')
