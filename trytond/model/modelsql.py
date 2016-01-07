@@ -849,7 +849,7 @@ class ModelSQL(ModelStorage):
                 cursor.execute(*table.delete(where=red_sql))
             except DatabaseIntegrityError, exception:
                 with Transaction().new_cursor():
-                    cls.__raise_integrity_error(exception, [])
+                    cls.__raise_integrity_error(exception, {})
                 raise
 
         Translation.delete_ids(cls.__name__, 'model', ids)
@@ -1063,10 +1063,24 @@ class ModelSQL(ModelStorage):
                     raise Exception('ValidateError',
                         'You can not update fields: "%s", "%s"' %
                         (field.left, field.right))
+
+                # Nested creation require a rebuild
+                # because initial values are 0
+                # and thus _update_tree can not find the children
+                table = cls.__table__()
+                parent = cls.__table__()
+                cursor.execute(*table.join(parent,
+                        condition=Column(table, field_name) == parent.id
+                        ).select(table.id,
+                        where=(Column(parent, field.left) == 0)
+                        & (Column(parent, field.right) == 0)))
+                nested_create = cursor.fetchone()
+
                 if count is None:
-                    cursor.execute(*cls.__table__().select(Count(Literal(1))))
+                    cursor.execute(*table.select(Count(Literal(1))))
                     count, = cursor.fetchone()
-                if len(ids) < count / 4:
+
+                if not nested_create and len(ids) < count / 4:
                     for id_ in ids:
                         cls._update_tree(id_, field_name,
                             field.left, field.right)
