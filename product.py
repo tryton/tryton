@@ -316,3 +316,7 @@ class Product:
         'Account Expense Used'), 'get_template')
     account_revenue_used = fields.Function(fields.Many2One('account.account',
         'Account Revenue Used'), 'get_template')
+    customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+            'Customer Taxes Used'), 'get_template')
+    supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+            'Supplier Taxes Used'), 'get_template')
