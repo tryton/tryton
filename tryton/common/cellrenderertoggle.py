@@ -22,7 +22,7 @@ class CellRendererToggle(gtk.CellRendererToggle):
             cell_area, flags):
         if not self.props.visible:
             return
-        return gtk.CellRendererToggle.do_start_editing(event, widget, path,
-            background_area, cell_area, flags)
+        return gtk.CellRendererToggle.do_start_editing(self, event, widget,
+            path, background_area, cell_area, flags)
 
 gobject.type_register(CellRendererToggle)
