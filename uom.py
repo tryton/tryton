@@ -134,8 +134,8 @@ class Uom(ModelSQL, ModelView):
             ('symbol',) + tuple(clause[1:]),
             ]
 
-    @staticmethod
-    def round(number, precision=1.0):
+    def round(self, number):
+        precision = self.rounding
         i, d = divmod(precision, 1)
         base = round(number / precision)
         # Instead of multiply by the decimal part, we must divide by the
@@ -232,7 +232,7 @@ class Uom(ModelSQL, ModelView):
             amount = amount * to_uom.rate
 
         if round:
-            amount = cls.round(amount, to_uom.rounding)
+            amount = to_uom.round(amount)
 
         return amount
 

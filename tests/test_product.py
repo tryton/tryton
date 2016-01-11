@@ -311,7 +311,7 @@ class ProductTestCase(ModuleTestCase):
             pool = Pool()
             Uom = pool.get('product.uom')
             for number, precision, result in tests:
-                self.assertEqual(Uom.round(number, precision), result)
+                self.assertEqual(Uom(rounding=precision).round(number), result)
 
 
 def suite():

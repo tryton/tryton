@@ -1,3 +1,4 @@
+* Change Uom.round into an instance method
 * Add Function fields on Product from Template
 
 Version 3.8.0 - 2015-11-02
