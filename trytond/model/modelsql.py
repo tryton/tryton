@@ -126,6 +126,8 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __register__(cls, module_name):
+        sql_table = cls.__table__()
+        cursor = Transaction().cursor
         TableHandler = backend.get('TableHandler')
         super(ModelSQL, cls).__register__(module_name)
 
@@ -135,10 +137,10 @@ class ModelSQL(ModelStorage):
         pool = Pool()
 
         # create/update table in the database
-        table = TableHandler(Transaction().cursor, cls, module_name)
+        table = TableHandler(cursor, cls, module_name)
         if cls._history:
-            history_table = TableHandler(Transaction().cursor, cls,
-                    module_name, history=True)
+            history_table = TableHandler(
+                cursor, cls, module_name, history=True)
             history_table.index_action('id', action='add')
 
         for field_name, field in cls._fields.iteritems():
@@ -205,17 +207,24 @@ class ModelSQL(ModelStorage):
             if isinstance(field, fields.Many2One) \
                     and field.model_name == cls.__name__ \
                     and field.left and field.right:
-                cls._rebuild_tree(field_name, None, 0)
+                left_default = cls._defaults.get(field.left, lambda: None)()
+                right_default = cls._defaults.get(field.right, lambda: None)()
+                cursor.execute(*sql_table.select(sql_table.id,
+                        where=(Column(sql_table, field.left) == left_default)
+                        | (Column(sql_table, field.left) == Null)
+                        | (Column(sql_table, field.right) == right_default)
+                        | (Column(sql_table, field.right) == Null),
+                        limit=1))
+                if cursor.fetchone():
+                    cls._rebuild_tree(field_name, None, 0)
 
         for ident, constraint, _ in cls._sql_constraints:
             table.add_constraint(ident, constraint)
 
         if cls._history:
             cls._update_history_table()
-            cursor = Transaction().cursor
-            table = cls.__table__()
             history_table = cls.__table_history__()
-            cursor.execute(*table.select(table.id))
+            cursor.execute(*sql_table.select(sql_table.id))
             if cursor.fetchone():
                 cursor.execute(*history_table.select(history_table.id))
                 if not cursor.fetchone():
@@ -223,7 +232,7 @@ class ModelSQL(ModelStorage):
                         if not hasattr(f, 'set')]
                     cursor.execute(*history_table.insert(
                             [Column(history_table, c) for c in columns],
-                            table.select(*(Column(table, c)
+                            sql_table.select(*(Column(sql_table, c)
                                     for c in columns))))
                     cursor.execute(*history_table.update(
                             [history_table.write_date], [None]))

@@ -485,6 +485,9 @@ A many-to-one relation field.
     Tree Traversal`_.
     It only works if the :attr:`model_name` is the same then the model.
 
+.. warning:: The MPTT Tree will be rebuild on database update if one record
+    is found having left or right field value equals to the default or NULL.
+
 .. _`Modified Preorder Tree Traversal`: http://en.wikipedia.org/wiki/Tree_traversal
 
 .. attribute:: Many2One.right
