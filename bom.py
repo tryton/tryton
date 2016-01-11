@@ -121,8 +121,7 @@ class BOMInput(ModelSQL, ModelView):
         self.product.check_bom_recursion()
 
     def compute_quantity(self, factor):
-        Uom = Pool().get('product.uom')
-        return Uom.round(self.quantity * factor, self.uom.rounding)
+        return self.uom.round(self.quantity * factor)
 
 
 class BOMOutput(BOMInput):
