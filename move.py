@@ -834,8 +834,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 success = False
                 first = False
                 values = {
-                    'quantity': Uom.round(
-                        move.quantity - picked_qties, move.uom.rounding),
+                    'quantity': move.uom.round(
+                        move.quantity - picked_qties),
                     }
                 to_write.extend([[move], values])
             else:
@@ -843,7 +843,7 @@ class Move(Workflow, ModelSQL, ModelView):
             for from_location, qty in to_pick:
                 values = {
                     'from_location': from_location.id,
-                    'quantity': Uom.round(qty, move.uom.rounding),
+                    'quantity': move.uom.round(qty),
                     }
                 if first:
                     to_write.extend([[move], values])
@@ -1152,7 +1152,6 @@ class Move(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Location = pool.get('stock.location')
         Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
 
         assert query is not None, (
             "Query in Move.compute_quantities() can't be None")
@@ -1221,6 +1220,6 @@ class Move(Workflow, ModelSQL, ModelView):
             location = key[0]
             product = product_getter(key)
             uom = default_uom[product]
-            quantities[key] = Uom.round(quantity, uom.rounding)
+            quantities[key] = uom.round(quantity)
 
         return quantities
