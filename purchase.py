@@ -1217,8 +1217,10 @@ class PurchaseLine(ModelSQL, ModelView):
         quantity = (self._get_invoice_line_quantity(invoice_type)
             - self._get_invoiced_quantity(invoice_type))
 
-        rounding = self.unit.rounding if self.unit else 0.01
-        invoice_line.quantity = Uom.round(quantity, rounding)
+        if self.unit:
+            quantity = self.unit.round(quantity)
+        invoice_line.quantity = quantity
+
         if invoice_line.quantity <= 0:
             return []
 
@@ -1328,7 +1330,7 @@ class PurchaseLine(ModelSQL, ModelView):
         quantity = (self._get_move_quantity(move_type)
             - self._get_shipped_quantity(move_type))
 
-        quantity = Uom.round(quantity, self.unit.rounding)
+        quantity = self.unit.round(quantity)
         if quantity <= 0:
             return
 
