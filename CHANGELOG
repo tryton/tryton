@@ -1,6 +1,6 @@
+* Only rebuild mptt tree if left or right values have their default values
 * Allow nested inherited view
 * Add button on cron to run once
-* Only rebuild mptt tree if left or right values have their default values
 * Check all fields when writing a sequence of records, values (CVE-2015-0861)
 * Add view_ids on tree view
 * Add parent_of operator
