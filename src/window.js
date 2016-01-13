@@ -399,11 +399,12 @@
                 {view_type: 'tree'});
         },
         callback: function(result) {
+            var prm = jQuery.when();
             if (result) {
-                this.screen.group.save();
+                prm = this.screen.group.save();
             }
             if (this.attachment_callback) {
-                this.attachment_callback();
+                prm.always(this.attachment_callback.bind(this));
             }
         }
     });
