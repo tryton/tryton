@@ -35,19 +35,12 @@ class CellRendererFloat(CellRendererInteger):
             return
 
         try:
-            locale.atof(new_value)
+            value = locale.atof(new_value)
         except ValueError:
             entry.stop_emission('insert-text')
             return
 
-        new_int = new_value
-        new_decimal = ''
-        if decimal_point in new_value:
-            new_int, new_decimal = new_value.rsplit(decimal_point, 1)
-
-        if (self.digits
-                and (len(new_int) > self.digits[0]
-                    or len(new_decimal) > self.digits[1])):
+        if self.digits and not (round(value, self.digits[1]) == float(value)):
             entry.stop_emission('insert-text')
 
 

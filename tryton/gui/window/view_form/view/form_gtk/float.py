@@ -43,17 +43,10 @@ class Float(Integer):
         digits = self.field.digits(self.record, factor=self.factor)
 
         try:
-            locale.atof(new_value)
+            value = locale.atof(new_value)
         except ValueError:
             entry.stop_emission('insert-text')
             return
 
-        new_int = new_value
-        new_decimal = ''
-        if decimal_point in new_value:
-            new_int, new_decimal = new_value.rsplit(decimal_point, 1)
-
-        if (digits
-                and (len(new_int) > digits[0]
-                    or len(new_decimal) > digits[1])):
+        if digits and not (round(value, digits[1]) == float(value)):
             entry.stop_emission('insert-text')
