@@ -404,8 +404,8 @@ A string field with limited values to choice.
     The first element in each tuple is the actual value stored. The second
     element is the human-readable name.
 
-    It can also be the name of a class method on the model, that will return an
-    appropriate list. The signature of the method is::
+    It can also be the name of a class or instance method on the model, that
+    will return an appropriate list. The signature of the method is::
 
         selection()
 
