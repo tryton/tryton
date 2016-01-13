@@ -3,6 +3,8 @@
 import gtk
 import gettext
 
+import gobject
+
 from .widget import Widget
 from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
     DateTime as DateTimeEntry, add_operators)
@@ -77,6 +79,7 @@ class Time(Date):
     def __init__(self, view, attrs):
         super(Time, self).__init__(view, attrs, _entry=TimeEntry)
         self.entry.set_focus_chain([self.entry.get_child()])
+        self.entry.connect('time-changed', self.changed)
 
     def _set_editable(self, value):
         self.entry.set_sensitive(value)
@@ -94,6 +97,15 @@ class Time(Date):
         else:
             format_ = '%X'
         self.entry.props.format = format_
+
+    def changed(self, combobox):
+        def focus_out():
+            if combobox.props.window:
+                self._focus_out()
+        # Only when changed from pop list
+        if not combobox.get_child().has_focus():
+            # Must be deferred because it triggers a display of the form
+            gobject.idle_add(focus_out)
 
 
 class DateTime(Date):
