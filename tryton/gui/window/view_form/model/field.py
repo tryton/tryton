@@ -67,10 +67,13 @@ class Field(object):
         context.update(record.expr_eval(self.attrs.get('context', {})))
         return context
 
+    def _is_empty(self, record):
+        return not self.get_eval(record)
+
     def check_required(self, record):
         state_attrs = self.get_state_attrs(record)
         if bool(int(state_attrs.get('required') or 0)):
-            if (not self.get_eval(record)
+            if (self._is_empty(record)
                     and not bool(int(state_attrs.get('readonly') or 0))):
                 return False
         return True
@@ -252,6 +255,9 @@ class TimeField(Field):
 
     _default = None
 
+    def _is_empty(self, record):
+        return self.get(record) is None
+
     def set_client(self, record, value, force_change=False):
         if isinstance(value, datetime.datetime):
             value = value.time()
@@ -265,6 +271,9 @@ class TimeField(Field):
 class TimeDeltaField(Field):
 
     _default = None
+
+    def _is_empty(self, record):
+        return self.get(record) is None
 
     def converter(self, record):
         # TODO allow local context converter
@@ -285,13 +294,8 @@ class FloatField(Field):
     _default = None
     default_digits = (16, 2)
 
-    def check_required(self, record):
-        state_attrs = self.get_state_attrs(record)
-        if bool(int(state_attrs.get('required') or 0)):
-            if (self.get(record) is None
-                    and not bool(int(state_attrs.get('readonly') or 0))):
-                return False
-        return True
+    def _is_empty(self, record):
+        return self.get(record) is None
 
     def get(self, record):
         return record.value.get(self.name, self._default)
