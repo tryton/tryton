@@ -18,6 +18,8 @@ logging.basicConfig(level=logging.ERROR)
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--config", dest="config",
     help="specify config file")
+parser.add_argument("-f", "--failfast", action="store_true", dest="failfast",
+    help="Stop the test run on the first error or failure")
 parser.add_argument("-m", "--modules", action="store_true", dest="modules",
     default=False, help="Run also modules tests")
 parser.add_argument("--no-doctest", action="store_false", dest="doctest",
@@ -42,5 +44,6 @@ if not opt.modules:
     suite = all_suite(opt.tests)
 else:
     suite = modules_suite(opt.tests, doc=opt.doctest)
-result = unittest.TextTestRunner(verbosity=opt.verbosity).run(suite)
+result = unittest.TextTestRunner(
+    verbosity=opt.verbosity, failfast=opt.failfast).run(suite)
 sys.exit(not result.wasSuccessful())
