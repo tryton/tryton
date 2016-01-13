@@ -767,6 +767,7 @@
                 group.on_write = group.on_write.filter(function(e, i, a) {
                     return i == a.indexOf(e);
                 });
+                group.parent = this.group.parent;
             }
             group.screens.push(this);
             this.tree_states_done = [];
