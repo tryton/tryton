@@ -766,11 +766,12 @@
             this.model.fields[name].set_client(this, value, force_change);
         },
         default_get: function() {
+            var dfd = jQuery.Deferred();
             var promises = [];
             if (!jQuery.isEmptyObject(this.model.fields)) {
                 var prm = this.model.execute('default_get',
                         [Object.keys(this.model.fields)], this.get_context());
-                var force_parent = function(values) {
+                prm.then(function(values) {
                     if (this.group.parent &&
                             this.group.parent_name in this.group.model.fields) {
                         var parent_field =
@@ -785,13 +786,11 @@
                                 this.group.parent.id;
                         }
                     }
-                    return values;
-                }.bind(this);
-                prm = prm.pipe(force_parent).then(function(values) {
                     this.set_default(values);
-                    return values;
+                    jQuery.when.apply(promises).then(function() {
+                        dfd.resolve(values);
+                    });
                 }.bind(this));
-                promises.push(prm);
             }
             for (var fname in this.model.fields) {
                 var field = this.model.fields[fname];
@@ -800,7 +799,7 @@
                     promises.push(this.do_autocomplete(fname));
                 }
             }
-            return jQuery.when.apply(promises);
+            return dfd;
         },
         set_default: function(values) {
             var fieldnames = [];
