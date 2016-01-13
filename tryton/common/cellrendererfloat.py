@@ -12,9 +12,9 @@ class CellRendererFloat(CellRendererInteger):
         super(CellRendererFloat, self).__init__()
         self.digits = None
 
-    def on_start_editing(self, event, widget, path, background_area,
+    def do_start_editing(self, event, widget, path, background_area,
             cell_area, flags):
-        editable = super(CellRendererFloat, self).on_start_editing(event,
+        editable = super(CellRendererFloat, self).do_start_editing(event,
             widget, path, background_area, cell_area, flags)
         editable.connect('key-press-event', self.key_press_event)
         return editable
