@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
+from collections import defaultdict
 
 from sql import Literal, Null
 from sql.aggregate import Max
@@ -188,28 +189,30 @@ class Product(object, StockMixin):
         pool = Pool()
         Template = pool.get('product.template')
 
-        costs = []
-        for product in products:
-            if product.type == 'service':
-                continue
-            costs.append(getattr(product, 'recompute_cost_price_%s' %
-                product.cost_price_method)())
-
         if hasattr(cls, 'cost_price'):
             digits = cls.cost_price.digits
             write = cls.write
-            records = products
+            record = lambda p: p
         else:
             digits = Template.cost_price.digits
             write = Template.write
-            records = [p.template for p in products]
+            record = lambda p: p.template
 
-        costs = [c.quantize(
-            Decimal(str(10.0 ** -digits[1]))) for c in costs]
+        costs = defaultdict(list)
+        for product in products:
+            if product.type == 'service':
+                continue
+            cost = getattr(product,
+                'recompute_cost_price_%s' % product.cost_price_method)()
+            cost = cost.quantize(Decimal(str(10.0 ** -digits[1])))
+            costs[cost].append(record(product))
+
+        if not costs:
+            return
 
         to_write = []
-        for record, cost in zip(records, costs):
-            to_write.append([record])
+        for cost, records in costs.iteritems():
+            to_write.append(records)
             to_write.append({'cost_price': cost})
 
         # Enforce check access for account_stock*
