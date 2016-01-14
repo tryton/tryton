@@ -1,3 +1,5 @@
+* Don't read historized user when evaluating record rules as it could lead to
+  past privilege escalation.
 * Only rebuild mptt tree if left or right values have their default values
 * Allow nested inherited view
 * Add button on cron to run once
