@@ -1,3 +1,6 @@
+* Don't read historized user when evaluating record rules as it could lead to
+  past privilege escalation.
+
 Version 3.0.13 - 2016-01-11
 * Bug fixes (see mercurial logs for details)
 
