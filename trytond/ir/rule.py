@@ -144,7 +144,7 @@ class Rule(ModelSQL, ModelView):
     def _get_context():
         User = Pool().get('res.user')
         user_id = Transaction().user
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False, _datetime=None):
             user = User(user_id)
         return {
             'user': user,
