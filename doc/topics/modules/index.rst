@@ -6,7 +6,7 @@ Modules
 
 The modules of Tryton extend the functionality of the platform. The server
 comes by default with only a basic functionality included in these modules:
-``ir``, ``res``, ``webdav``.
+``ir``, ``res``.
 
 Module Structure
 ================

@@ -307,7 +307,6 @@ def get_module_list():
     module_list.update(EGG_MODULES.keys())
     module_list.add('ir')
     module_list.add('res')
-    module_list.add('webdav')
     module_list.add('tests')
     return list(module_list)
 
@@ -320,8 +319,6 @@ def register_classes():
     trytond.ir.register()
     import trytond.res
     trytond.res.register()
-    import trytond.webdav
-    trytond.webdav.register()
     import trytond.tests
     trytond.tests.register()
 
@@ -329,7 +326,7 @@ def register_classes():
         module = package.name
         logger.info('%s:registering classes', module)
 
-        if module in ('ir', 'res', 'webdav', 'tests'):
+        if module in ('ir', 'res', 'tests'):
             MODULES.append(module)
             continue
 

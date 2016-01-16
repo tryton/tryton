@@ -43,7 +43,6 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         self.set('jsonrpc', 'listen', 'localhost:8000')
         self.set('jsonrpc', 'data', '/var/www/localhost/tryton')
         self.add_section('xmlrpc')
-        self.add_section('webdav')
         self.add_section('database')
         self.set('database', 'uri',
             os.environ.get('TRYTOND_DATABASE_URI', 'sqlite://'))

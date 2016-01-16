@@ -229,7 +229,7 @@ class Database(DatabaseInterface):
                 if (len(line) > 0) and (not line.isspace()):
                     cursor.execute(line)
 
-        for module in ('ir', 'res', 'webdav'):
+        for module in ('ir', 'res'):
             state = 'uninstalled'
             if module in ('ir', 'res'):
                 state = 'to install'

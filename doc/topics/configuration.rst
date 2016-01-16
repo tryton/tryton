@@ -64,10 +64,6 @@ listen
 
 Same as for `jsonrpc` except it has no default value.
 
-webdav
-------
-
-Define the behavior of the WebDAV_ network interface.
 
 listen
 ~~~~~~
@@ -250,7 +246,6 @@ Default: `pipe,name=trytond;urp;StarOffice.ComponentContext`
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
-.. _WebDAV: http://en.wikipedia.org/wiki/WebDAV
 .. _RFC-3986: http://tools.ietf.org/html/rfc3986
 .. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer

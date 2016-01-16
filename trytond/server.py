@@ -54,7 +54,6 @@ class TrytonServer(object):
         self.logger.info('initialising distributed objects services')
         self.xmlrpcd = []
         self.jsonrpcd = []
-        self.webdavd = []
         self.options = options
 
         if time.tzname[0] != 'UTC':
@@ -202,20 +201,12 @@ class TrytonServer(object):
                 self.logger.info("starting XML-RPC%s protocol on %s:%d",
                     ssl and ' SSL' or '', hostname or '*', port)
 
-        if config.get('webdav', 'listen'):
-            from trytond.protocols.webdav import WebDAVServerThread
-            for hostname, port in parse_listen(
-                    config.get('webdav', 'listen')):
-                self.webdavd.append(WebDAVServerThread(hostname, port, ssl))
-                self.logger.info("starting WebDAV%s protocol on %s:%d",
-                    ssl and ' SSL' or '', hostname or '*', port)
-
-        for servers in (self.xmlrpcd, self.jsonrpcd, self.webdavd):
+        for servers in (self.xmlrpcd, self.jsonrpcd):
             for server in servers:
                 server.start()
 
     def stop(self, exit=True):
-        for servers in (self.xmlrpcd, self.jsonrpcd, self.webdavd):
+        for servers in (self.xmlrpcd, self.jsonrpcd):
             for server in servers:
                 server.stop()
                 server.join()

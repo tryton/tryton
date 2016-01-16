@@ -305,7 +305,7 @@ class Database(DatabaseInterface):
 
         ir_module = Table('ir_module')
         ir_module_dependency = Table('ir_module_dependency')
-        for module in ('ir', 'res', 'webdav'):
+        for module in ('ir', 'res'):
             state = 'uninstalled'
             if module in ('ir', 'res'):
                 state = 'to install'
