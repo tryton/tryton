@@ -359,7 +359,7 @@ class Cursor(CursorInterface):
     def search_path(self):
         if self._search_path is None:
             self.execute('SHOW search_path')
-            path, = self.fetchone().split(',')
+            path, = self.fetchone()
             special_values = {
                 'user': self.current_user,
             }
