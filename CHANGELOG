@@ -1,3 +1,4 @@
+* Strip and unquote double-quote from Postgresql schema in search_path
 * Move webdav into a separate module
 * Don't read historized user when evaluating record rules as it could lead to
   past privilege escalation.
