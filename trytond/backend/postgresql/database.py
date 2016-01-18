@@ -39,6 +39,18 @@ RE_VERSION = re.compile(r'\S+ (\d+)\.(\d+)')
 os.environ['PGTZ'] = os.environ.get('TZ', '')
 
 
+def unescape_quote(s):
+    if s.startswith('"') and s.endswith('"'):
+        return s.strip('"').replace('""', '"')
+    return s
+
+
+def replace_special_values(s, **mapping):
+    for name, value in mapping.iteritems():
+        s = s.replace('$' + name, value)
+    return s
+
+
 class Database(DatabaseInterface):
 
     _databases = {}
@@ -347,8 +359,14 @@ class Cursor(CursorInterface):
     def search_path(self):
         if self._search_path is None:
             self.execute('SHOW search_path')
-            self._search_path = self.fetchone()[0].replace(
-                '"$user"', self.current_user).split(',')
+            path, = self.fetchone().split(',')
+            special_values = {
+                'user': self.current_user,
+            }
+            self._search_path = [
+                unescape_quote(replace_special_values(
+                        p.strip(), **special_values))
+                for p in path.split(',')]
         return self._search_path
 
 register_type(UNICODE)
