@@ -5,7 +5,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 
-__all__ = ['Configuration']
+__all__ = ['Configuration', 'ProductConfiguration']
 
 
 class Configuration:
@@ -60,3 +60,21 @@ class Configuration:
                     ], limit=1)
             return field
         return super(Configuration, cls)._get_account_field(name)
+
+
+class ProductConfiguration:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.configuration'
+
+    default_account_category = fields.Boolean(
+        'Use Category\'s accounts by default')
+    default_taxes_category = fields.Boolean(
+        'Use Category\' taxes by default')
+
+    @classmethod
+    def default_default_account_category(cls):
+        return False
+
+    @classmethod
+    def default_default_taxes_category(cls):
+        return False

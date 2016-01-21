@@ -6,7 +6,7 @@ from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or
 from trytond import backend
 from trytond.transaction import Transaction
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateCustomerTax', 'TemplateSupplierTax', 'Product',
@@ -255,9 +255,17 @@ class Template:
             Eval('account_category', False) | Eval('taxes_category', False))
         cls.category.depends.extend(['account_category', 'taxes_category'])
 
-    @staticmethod
-    def default_taxes_category():
-        return None
+    @classmethod
+    def default_account_category(cls):
+        pool = Pool()
+        Config = pool.get('product.configuration')
+        return Config(1).default_account_category
+
+    @classmethod
+    def default_taxes_category(cls):
+        pool = Pool()
+        Config = pool.get('product.configuration')
+        return Config(1).default_taxes_category
 
     def get_account(self, name):
         if self.account_category:
