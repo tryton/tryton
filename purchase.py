@@ -1197,7 +1197,6 @@ class PurchaseLine(ModelSQL, ModelView):
         Return a list of invoice line for purchase line
         '''
         pool = Pool()
-        Uom = pool.get('product.uom')
         Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
 
@@ -1314,7 +1313,6 @@ class PurchaseLine(ModelSQL, ModelView):
         Return move values for purchase line
         '''
         pool = Pool()
-        Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
         if self.type != 'line':
