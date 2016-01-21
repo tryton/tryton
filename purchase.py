@@ -16,16 +16,17 @@ class ProductSupplier:
     def compute_supply_date(self, date=None):
         date = super(ProductSupplier, self).compute_supply_date(date=date)
         earlier_date = None
-        for day in self.weekdays:
-            weekday = int(day.weekday)
-            diff = weekday - date.weekday()
-            if diff < 0:
-                diff += 7
-            new_date = date + datetime.timedelta(diff)
+        if date != datetime.date.max:
+            for day in self.weekdays:
+                weekday = int(day.weekday)
+                diff = weekday - date.weekday()
+                if diff < 0:
+                    diff += 7
+                new_date = date + datetime.timedelta(diff)
 
-            if earlier_date and earlier_date <= new_date:
-                continue
-            earlier_date = new_date
+                if earlier_date and earlier_date <= new_date:
+                    continue
+                earlier_date = new_date
         return earlier_date or date
 
     def compute_purchase_date(self, date):
