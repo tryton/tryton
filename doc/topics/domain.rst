@@ -239,7 +239,7 @@ pattern, unless otherwise noted::
     Is a parent child comparison operator. it is the negation of this
     `parent_of`_ operator.
 
-``ẁhere``
+``where``
 ---------
 
     Is a :class:`trytond.model.fields.One2Many` /
