@@ -22,6 +22,10 @@ TYPES = [
     ('assets', 'Assets'),
     ('service', 'Service'),
     ]
+COST_PRICE_METHODS = [
+    ('fixed', 'Fixed'),
+    ('average', 'Average'),
+    ]
 
 price_digits = (16, config.getint('product', 'price_decimal', default=4))
 
@@ -45,11 +49,8 @@ class Template(ModelSQL, ModelView):
             digits=price_digits, depends=DEPENDS, required=True))
     cost_price = fields.Property(fields.Numeric('Cost Price', states=STATES,
             digits=price_digits, depends=DEPENDS, required=True))
-    cost_price_method = fields.Property(fields.Selection([
-                ("fixed", "Fixed"),
-                ("average", "Average")
-                ], 'Cost Method', required=True, states=STATES,
-            depends=DEPENDS))
+    cost_price_method = fields.Property(fields.Selection(COST_PRICE_METHODS,
+            'Cost Method', required=True, states=STATES, depends=DEPENDS))
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
         states=STATES, depends=DEPENDS)
     default_uom_category = fields.Function(
@@ -93,10 +94,6 @@ class Template(ModelSQL, ModelView):
     @staticmethod
     def default_consumable():
         return False
-
-    @staticmethod
-    def default_cost_price_method():
-        return 'fixed'
 
     @staticmethod
     def default_products():

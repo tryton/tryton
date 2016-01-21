@@ -23,6 +23,14 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Product" id="menu_main_product" sequence="1"
             icon="tryton-product"/>
 
+        <menuitem name="Configuration" parent="menu_main_product"
+            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_product_group_product_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
             <field name="type">tree</field>

@@ -1,3 +1,4 @@
+* Add configuration for default cost price method
 * Change Uom.round into an instance method
 * Add Function fields on Product from Template
 
