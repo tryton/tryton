@@ -1295,7 +1295,6 @@ class SaleLine(ModelSQL, ModelView):
         Return a list of invoice lines for sale line according to invoice_type
         '''
         pool = Pool()
-        Uom = pool.get('product.uom')
         Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
 
@@ -1414,7 +1413,6 @@ class SaleLine(ModelSQL, ModelView):
         Return moves for the sale line according to shipment_type
         '''
         pool = Pool()
-        Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
         if self.type != 'line':
