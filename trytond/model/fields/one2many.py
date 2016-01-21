@@ -231,6 +231,7 @@ class One2Many(Field):
         transaction = Transaction()
         table, _ = tables[None]
         name, operator, value = domain[:3]
+        assert operator not in {'where', 'not where'} or '.' not in name
 
         if Target._history and transaction.context.get('_datetime'):
             target = Target.__table_history__()
@@ -268,7 +269,10 @@ class One2Many(Field):
                     target_name = 'id'
         else:
             _, target_name = name.split('.', 1)
-        target_domain = [(target_name,) + tuple(domain[1:])]
+        if operator not in {'where', 'not where'}:
+            target_domain = [(target_name,) + tuple(domain[1:])]
+        else:
+            target_domain = value
         if origin_field._type == 'reference':
             target_domain.append(
                 (self.field, 'like', Model.__name__ + ',%'))
@@ -282,4 +286,8 @@ class One2Many(Field):
             target_domain, tables=target_tables)
         query_table = convert_from(None, target_tables)
         query = query_table.select(origin, where=expression)
-        return table.id.in_(query)
+        expression = table.id.in_(query)
+
+        if operator == 'not where':
+            expression = ~expression
+        return expression

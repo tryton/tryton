@@ -238,3 +238,19 @@ pattern, unless otherwise noted::
 
     Is a parent child comparison operator. it is the negation of this
     `parent_of`_ operator.
+
+``ẁhere``
+---------
+
+    Is a :class:`trytond.model.fields.One2Many` /
+    :class:`trytond.model.fields.Many2Many` domain operator. It returns true
+    for every row of the target model that match the domain specified as
+    ``<operand>``.
+
+``not where``
+-------------
+
+    Is a :class:`trytond.model.fields.One2Many` /
+    :class:`trytond.model.fields.Many2Many` domain operator. It returns true
+    for every row of the target model that does not match the domain specified
+    as ``<operand>``.

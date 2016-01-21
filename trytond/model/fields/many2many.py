@@ -286,6 +286,7 @@ class Many2Many(Field):
         transaction = Transaction()
         table, _ = tables[None]
         name, operator, value = domain[:3]
+        assert operator not in {'where', 'not where'} or '.' not in name
 
         if Relation._history and transaction.context.get('_datetime'):
             relation = Relation.__table_history__()
@@ -361,11 +362,18 @@ class Many2Many(Field):
         else:
             _, target_name = name.split('.', 1)
 
-        relation_domain = [('%s.%s' % (self.target, target_name),)
-            + tuple(domain[1:])]
-        if origin_field._type == 'reference':
-            relation_domain.append(
-                (self.origin, 'like', Model.__name__ + ',%'))
+        if operator not in {'where', 'not where'}:
+            relation_domain = [('%s.%s' % (self.target, target_name),)
+                + tuple(domain[1:])]
+            if origin_field._type == 'reference':
+                relation_domain.append(
+                    (self.origin, 'like', Model.__name__ + ',%'))
+        else:
+            relation_domain = []
+            for clause in value:
+                relation_domain.append(
+                        ('%s.%s' % (self.target, clause[0]),)
+                        + tuple(clause[1:]))
         rule_domain = Rule.domain_get(Relation.__name__, mode='read')
         if rule_domain:
             relation_domain = [relation_domain, rule_domain]
@@ -376,4 +384,8 @@ class Many2Many(Field):
             relation_domain, tables=relation_tables)
         query_table = convert_from(None, relation_tables)
         query = query_table.select(origin, where=expression)
-        return table.id.in_(query)
+        expression = table.id.in_(query)
+
+        if operator == 'not where':
+            expression = ~expression
+        return expression

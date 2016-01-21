@@ -2363,6 +2363,15 @@ class FieldsTestCase(unittest.TestCase):
                         ])
                 self.assertEqual(one2manys, [])
 
+                one2manys = one2many.search([
+                        ('targets', 'where', [('name', '=', 'target1')]),
+                        ])
+                self.assertEqual(one2manys, [one2many1])
+                one2manys = one2many.search([
+                        ('targets', 'not where', [('name', '=', 'target1')]),
+                        ])
+                self.assertEqual(one2manys, [])
+
                 one2many2, = one2many.create([{
                             'name': 'origin2',
                             }])
@@ -2554,6 +2563,15 @@ class FieldsTestCase(unittest.TestCase):
 
                 many2manys = many2many.search([
                         ('targets.name', '!=', 'target1'),
+                        ])
+                self.assertEqual(many2manys, [])
+
+                many2manys = many2many.search([
+                        ('targets', 'where', [('name', '=', 'target1')]),
+                        ])
+                self.assertEqual(many2manys, [many2many1])
+                many2manys = many2many.search([
+                        ('targets', 'not where', [('name', '=', 'target1')]),
                         ])
                 self.assertEqual(many2manys, [])
 
