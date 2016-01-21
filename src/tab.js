@@ -285,12 +285,7 @@
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
 
-            var access = Sao.common.MODELACCESS.get(model_name);
-            [['new', 'create'], ['save', 'write']].forEach(function(e) {
-                var button = e[0];
-                var access_type = e[1];
-                this.buttons[button].prop('disabled', !access[access_type]);
-            }.bind(this));
+            this.set_buttons_sensitive();
 
             this.view_prm = this.screen.switch_view().done(function() {
                 this.set_name(attributes.name ||
@@ -705,9 +700,25 @@
                 label = this.name_el.text();
             }
             this.title.html(label);
-            ['new', 'save'].forEach(function(button) {
-                this.buttons[button].prop('disabled', revision);
-            }.bind(this));
+            this.set_buttons_sensitive(revision);
+        },
+        set_buttons_sensitive: function(revision) {
+            if (!revision) {
+                var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+                [['new', 'create'], ['save', 'write']].forEach(function(e) {
+                    var button = e[0];
+                    var access_type = e[1];
+                    if (access[access_type]) {
+                        this.buttons[button].parent().removeClass('disabled');
+                    } else {
+                        this.buttons[button].parent().addClass('disabled');
+                    }
+                }.bind(this));
+            } else {
+                ['new', 'save'].forEach(function(button) {
+                    this.buttons[button].parent().addClass('disabled');
+                }.bind(this));
+            }
         },
         attach: function() {
             var record = this.screen.current_record;
