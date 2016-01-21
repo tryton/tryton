@@ -117,6 +117,7 @@ class Rule(ModelSQL, ModelView):
 
         # Migration from 2.6: replace field, operator and operand by domain
         table.not_null_action('field', action='remove')
+        table.drop_fk('field')
         table.not_null_action('operator', action='remove')
         table.not_null_action('operand', action='remove')
 
