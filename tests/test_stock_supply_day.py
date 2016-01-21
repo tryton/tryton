@@ -42,6 +42,7 @@ class StockSupplyDayTestCase(ModuleTestCase):
             (datetime.date(2011, 12, 22), 12, 6, datetime.date(2012, 1, 8)),
             (datetime.date(2011, 11, 21), 10, None,
                 datetime.date(2011, 12, 1)),
+            (datetime.date(2011, 11, 21), None, 0, datetime.date.max),
             ]
         # Purchase date is Monday, 2011-11-21, the regular days to deliver is
         # 10 days, which would be Wednesday 2011-12-01. But with the supplier
