@@ -133,12 +133,7 @@ class Form(SignalEvent, TabContent):
             style.bg[gtk.STATE_INSENSITIVE])
         self.widget.pack_start(url_entry, False, False)
 
-        access = common.MODELACCESS[self.model]
-        for button, access_type in (
-                ('new', 'create'),
-                ('save', 'write'),
-                ):
-            self.buttons[button].props.sensitive = access[access_type]
+        self.set_buttons_sensitive()
 
         self.screen.signal_connect(self, 'record-message',
             self._record_message)
@@ -297,8 +292,16 @@ class Form(SignalEvent, TabContent):
             self.title.set_label('%s @ %s' % (self.name, revision))
         else:
             self.title.set_label(self.name)
-        for button in ('new', 'save'):
-            self.buttons[button].props.sensitive = not revision
+        self.set_buttons_sensitive(revision)
+
+    def set_buttons_sensitive(self, revision=None):
+        if not revision:
+            access = common.MODELACCESS[self.model]
+            for button, access_type in [('new', 'create'), ('save', 'write')]:
+                self.buttons[button].props.sensitive = access[access_type]
+        else:
+            for button in ['new', 'save']:
+                self.buttons[button].props.sensitive = False
 
     def sig_remove(self, widget=None):
         if not common.MODELACCESS[self.model]['delete']:
