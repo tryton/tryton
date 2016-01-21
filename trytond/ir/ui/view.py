@@ -153,11 +153,12 @@ class View(ModelSQL, ModelView):
             if hasattr(etree, 'RelaxNG'):
                 validator = etree.RelaxNG(etree=cls.get_rng(view.rng_type))
                 if not validator.validate(tree):
-                    error_log = reduce(lambda x, y: str(x) + '\n' + str(y),
-                            validator.error_log.filter_from_errors())
-                    logger.error('Invalid xml view:\n%s',
-                        str(error_log) + '\n' + xml)
-                    cls.raise_user_error('invalid_xml', (view.rec_name,))
+                    error_log = '\n'.join(map(str,
+                            validator.error_log.filter_from_errors()))
+                    logger.error('Invalid XML view %s:\n%s\n%s',
+                        view.rec_name, error_log, xml)
+                    cls.raise_user_error(
+                        'invalid_xml', (view.rec_name,), error_log)
             root_element = tree.getroottree().getroot()
 
             # validate pyson attributes
@@ -167,22 +168,23 @@ class View(ModelSQL, ModelView):
 
             def encode(element):
                 for attr in ('states', 'domain', 'spell'):
-                    if element.get(attr):
-                        try:
-                            value = PYSONDecoder().decode(element.get(attr))
-                            validates.get(attr, lambda a: True)(value)
-                        except Exception, e:
-                            logger.error('Invalid pyson view element "%s:%s":'
-                                '\n%s\n%s',
-                                element.get('id') or element.get('name'), attr,
-                                str(e), xml)
-                            return False
+                    if not element.get(attr):
+                        continue
+                    try:
+                        value = PYSONDecoder().decode(element.get(attr))
+                        validates.get(attr, lambda a: True)(value)
+                    except Exception, e:
+                        error_log = '%s: <%s %s="%s"/>' % (
+                            e, element.get('id') or element.get('name'), attr,
+                            value)
+                        logger.error(
+                            'Invalid XML view %s:\n%s\n%s',
+                            view.rec_name, error_log, xml)
+                        cls.raise_user_error(
+                            'invalid_xml', (view.rec_name,), error_log)
                 for child in element:
-                    if not encode(child):
-                        return False
-                return True
-            if not encode(root_element):
-                cls.raise_user_error('invalid_xml', (view.rec_name,))
+                    encode(child)
+            encode(root_element)
 
     def get_arch(self, name):
         value = None
