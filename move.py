@@ -1691,6 +1691,7 @@ class OpenAccount(Wizard):
         action['pyson_domain'] = [
             ('period', 'in', [p.id for p in periods]),
             ('account', '=', Transaction().context['active_id']),
+            ('state', '=', 'valid'),
             ]
         if Transaction().context.get('posted'):
             action['pyson_domain'].append(('move.state', '=', 'posted'))
