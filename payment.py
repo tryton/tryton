@@ -51,7 +51,7 @@ class Payment:
             cls.write(*sum((([m.origin], {'clearing_move': m.id})
                         for m in moves), ()))
 
-        to_reconcile = defaultdict(list)
+        to_reconcile = []
         for payment in payments:
             if (payment.line
                     and not payment.line.reconciliation
@@ -59,8 +59,8 @@ class Payment:
                 lines = [l for l in payment.clearing_move.lines
                     if l.account == payment.line.account] + [payment.line]
                 if not sum(l.debit - l.credit for l in lines):
-                    to_reconcile[payment.party].extend(lines)
-        for lines in to_reconcile.itervalues():
+                    to_reconcile.append(lines)
+        for lines in to_reconcile:
             Line.reconcile(lines)
 
     def create_clearing_move(self, date=None):
