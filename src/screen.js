@@ -767,7 +767,9 @@
                 group.on_write = group.on_write.filter(function(e, i, a) {
                     return i == a.indexOf(e);
                 });
-                group.parent = this.group.parent;
+                if (this.group.parent) {
+                    group.parent = this.group.parent;
+                }
             }
             group.screens.push(this);
             this.tree_states_done = [];
@@ -802,6 +804,14 @@
         },
         display: function(set_cursor) {
             var deferreds = [];
+            if (this.current_record &&
+                    ~this.current_record.group.indexOf(this.current_record)) {
+            } else if (!jQuery.isEmptyObject(this.group) &&
+                    (this.current_view.view_type != 'calendar')) {
+                this.current_record = this.group[0];
+            } else {
+                this.current_record = null;
+            }
             if (this.views) {
                 var search_prm = this.search_active(
                         ~['tree', 'graph', 'calendar'].indexOf(
