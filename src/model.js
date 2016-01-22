@@ -802,6 +802,7 @@
             return dfd;
         },
         set_default: function(values) {
+            var promises = [];
             var fieldnames = [];
             for (var fname in values) {
                 if (!values.hasOwnProperty(fname)) {
@@ -820,16 +821,21 @@
                         delete this._values[field_rec_name];
                     }
                 }
-                this.model.fields[fname].set_default(this, value);
+                promises.push(this.model.fields[fname].set_default(this, value));
                 this._loaded[fname] = true;
                 fieldnames.push(fname);
             }
-            this.on_change(fieldnames);
-            this.on_change_with(fieldnames);
-            this.validate(null, true).then(function() {
-                this.group.root_group().screens.forEach(function(screen) {
-                    screen.display();
-                });
+            return jQuery.when.apply(promises).then(function() {
+                return this.on_change(fieldnames).then(function() {
+                    return this.on_change_with(fieldnames).then(function() {
+                        return this.validate(null, true).then(function() {
+                            return this.group.root_group().screens
+                                .forEach(function(screen) {
+                                    return screen.display();
+                                });
+                        }.bind(this));
+                    }.bind(this));
+                }.bind(this));
             }.bind(this));
         },
         get_timestamp: function() {
@@ -1739,17 +1745,14 @@
             if ((mode == 'list values') && !jQuery.isEmptyObject(value)) {
                 var context = this.get_context(record);
                 var field_names = {};
-                for (var val in value) {
-                    if (!value.hasOwnProperty(val)) {
-                        continue;
-                    }
+                value.forEach(function(val) {
                     for (var fieldname in val) {
                         if (!val.hasOwnProperty(fieldname)) {
                             continue;
                         }
                         field_names[fieldname] = true;
                     }
-                }
+                });
                 if (!jQuery.isEmptyObject(field_names)) {
                     var args = {
                         'method': 'model.' + this.description.relation +
@@ -1760,6 +1763,7 @@
                 }
             }
             var set_value = function(fields) {
+                var promises = [];
                 if (!jQuery.isEmptyObject(fields)) {
                     group.model.add_fields(fields);
                 }
@@ -1771,23 +1775,21 @@
                     }
                     group.load(value);
                 } else {
-                    for (var vals in value) {
-                        if (!value.hasOwnProperty(vals)) {
-                            continue;
-                        }
+                    value.forEach(function(vals) {
                         var new_record = group.new_(false);
                         if (default_) {
-                            new_record.set_default(vals);
+                            promises.push(new_record.set_default(vals));
                             group.add(new_record);
                         } else {
                             new_record.id *= 1;
                             new_record.set(vals);
                             group.push(new_record);
                         }
-                    }
+                    });
                 }
+                return jQuery.when.apply(promises);
             };
-            return prm.pipe(set_value.bind(this));
+            return prm.then(set_value);
         },
         set: function(record, value, _default) {
             if (_default === undefined) {
@@ -1903,9 +1905,8 @@
             return record._values[this.name];
         },
         set_default: function(record, value) {
-            var previous_group = record._values[this.name];
-            this.set(record, value, true);
             record._changed[this.name] = true;
+            return this.set(record, value, true);
         },
         set_on_change: function(record, value) {
             record._changed[this.name] = true;
