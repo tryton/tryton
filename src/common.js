@@ -1033,10 +1033,16 @@
                     }
                 }
                 var def_operator = this.default_operator(field);
-                if ((def_operator == operator.trim()) ||
-                        (operator.contains(def_operator) &&
-                         (operator.contains('not') ||
-                          operator.contains('!')))) {
+                if (def_operator == operator.trim()) {
+                    operator = '';
+                    if (~this.OPERATORS.indexOf(value)) {
+                        // As the value could be interpreted as an operator
+                        // the default operator must be forced
+                        operator = '"" ';
+                    }
+                } else if ((operator.contains(def_operator) &&
+                            (operator.contains('not') ||
+                             operator.contains('!')))) {
                     operator = operator.replace(def_operator, '')
                         .replace('not', '!').trim();
                 }
@@ -1192,7 +1198,7 @@
             } else {
                 field = this.strings[name.toLowerCase()];
             }
-            if (operator === null) {
+            if (!operator) {
                 operator = this.default_operator(field);
                 value = '';
                 if ((operator == 'ilike') || (operator == 'not ilike')) {
@@ -1416,8 +1422,10 @@
                             push_result(null);
                         }
                         name = [name];
+                        // empty string is also the default operator
+                        var operators = [''].concat(this.OPERATORS);
                         if (((i + 1) < parts.length) &&
-                                (~this.OPERATORS.indexOf(parts[i + 1]))) {
+                                (~operators.indexOf(parts[i + 1]))) {
                             name = name.concat([parts[i + 1]]);
                             i += 1;
                         } else {
@@ -1566,7 +1574,7 @@
                         value = split[1];
                     }
 
-                    if (operator === null) {
+                    if (!operator) {
                         operator = this.default_operator(field);
                     }
                     if (value instanceof Array) {
