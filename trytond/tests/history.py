@@ -11,6 +11,10 @@ class TestHistory(ModelSQL):
     _history = True
     value = fields.Integer('Value')
     lines = fields.One2Many('test.history.line', 'history', 'Lines')
+    lines_at_stamp = fields.One2Many(
+        'test.history.line', 'history', 'Lines at Stamp',
+        datetime_field='stamp')
+    stamp = fields.Timestamp('Stamp')
 
 
 class TestHistoryLine(ModelSQL):

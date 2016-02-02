@@ -382,6 +382,9 @@ class HistoryTestCase(unittest.TestCase):
 
             first_stamp = line_b.create_date
 
+            history.stamp = first_stamp
+            history.save()
+
             transaction.cursor.commit()
 
         with Transaction().start(DB_NAME, USER,
@@ -405,6 +408,9 @@ class HistoryTestCase(unittest.TestCase):
             history = History(history_id)
             self.assertEqual(history.value, 2)
             self.assertEqual([l.name for l in history.lines], ['c'])
+            self.assertEqual(history.stamp, first_stamp)
+            self.assertEqual(
+                [l.name for l in history.lines_at_stamp], ['a', 'b'])
 
             with Transaction().set_context(_datetime=first_stamp):
                 history = History(history_id)
@@ -415,6 +421,9 @@ class HistoryTestCase(unittest.TestCase):
                 history = History(history_id)
             self.assertEqual(history.value, 2)
             self.assertEqual([l.name for l in history.lines], ['c'])
+            self.assertEqual(history.stamp, first_stamp)
+            self.assertEqual(
+                [l.name for l in history.lines_at_stamp], ['a', 'b'])
 
     def test0080_search_cursor_max(self):
         'Test search with number of history entries at cursor.IN_MAX'
