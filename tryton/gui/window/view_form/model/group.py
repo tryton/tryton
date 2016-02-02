@@ -282,14 +282,14 @@ class Group(SignalEvent, list):
         record.signal('record-modified')
         if signal:
             self.signal('group-changed', record)
-        # Set parent field to trigger on_change
-        if self.parent and self.parent_name in self.fields:
-            field = self.fields[self.parent_name]
-            if isinstance(field, (M2OField, ReferenceField)):
-                value = self.parent.id, ''
-                if isinstance(field, ReferenceField):
-                    value = self.parent.model_name, value
-                field.set_client(record, value)
+            # Set parent field to trigger on_change
+            if self.parent and self.parent_name in self.fields:
+                field = self.fields[self.parent_name]
+                if isinstance(field, (M2OField, ReferenceField)):
+                    value = self.parent.id, ''
+                    if isinstance(field, ReferenceField):
+                        value = self.parent.model_name, value
+                    field.set_client(record, value)
         return record
 
     def set_sequence(self, field='sequence'):
