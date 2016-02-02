@@ -168,9 +168,12 @@
             }
             return record;
         };
-        array.add = function(record, position) {
+        array.add = function(record, position, changed) {
             if ((position === undefined) || (position == -1)) {
                 position = this.length;
+            }
+            if (changed === undefined) {
+                changed = true;
             }
             if (record.group != this) {
                 record.group = this;
@@ -189,17 +192,19 @@
                 }
             }
             record._changed.id = true;
-            this.changed();
-            // Set parent field to trigger on_change
-            if (this.parent && this.model.fields[this.parent_name]) {
-                var field = this.model.fields[this.parent_name];
-                if ((field instanceof Sao.field.Many2One) ||
-                        field instanceof Sao.field.Reference) {
-                    var value = [this.parent.id, ''];
-                    if (field instanceof Sao.field.Reference) {
-                        value = [this.parent.model.name, value];
+            if (changed) {
+                this.changed();
+                // Set parent field to trigger on_change
+                if (this.parent && this.model.fields[this.parent_name]) {
+                    var field = this.model.fields[this.parent_name];
+                    if ((field instanceof Sao.field.Many2One) ||
+                            field instanceof Sao.field.Reference) {
+                        var value = [this.parent.id, ''];
+                        if (field instanceof Sao.field.Reference) {
+                            value = [this.parent.model.name, value];
+                        }
+                        field.set_client(record, value);
                     }
-                    field.set_client(record, value);
                 }
             }
             return record;
@@ -1975,7 +1980,7 @@
                             var index = vals[0];
                             var data = vals[1];
                             var new_record = group.new_(false);
-                            group.add(new_record, index);
+                            group.add(new_record, index, false);
                             new_record.set_on_change(data);
                         });
                     }
