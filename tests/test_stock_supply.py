@@ -11,14 +11,21 @@ from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 DATES = [
-    # purchase date, delivery time, supply date
-    (datetime.date(2011, 11, 21), 10, datetime.date(2011, 12, 1)),
-    (datetime.date(2011, 11, 21), 9, datetime.date(2011, 11, 30)),
-    (datetime.date(2011, 11, 21), 8, datetime.date(2011, 11, 29)),
-    (datetime.date(2011, 11, 21), 7, datetime.date(2011, 11, 28)),
-    (datetime.date(2011, 11, 21), 6, datetime.date(2011, 11, 27)),
-    (datetime.date(2011, 11, 21), 5, datetime.date(2011, 11, 26)),
-    (datetime.date(2011, 11, 21), 4, datetime.date(2011, 11, 25)),
+    # purchase date, lead time, supply date
+    (datetime.date(2011, 11, 21), datetime.timedelta(10),
+        datetime.date(2011, 12, 1)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(9),
+        datetime.date(2011, 11, 30)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(8),
+        datetime.date(2011, 11, 29)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(7),
+        datetime.date(2011, 11, 28)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(6),
+        datetime.date(2011, 11, 27)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(5),
+        datetime.date(2011, 11, 26)),
+    (datetime.date(2011, 11, 21), datetime.timedelta(4),
+        datetime.date(2011, 11, 25)),
     ]
 
 
@@ -41,27 +48,27 @@ class StockSupplyTestCase(ModuleTestCase):
 
     def test0010compute_supply_date(self):
         'Test compute_supply_date'
-        for purchase_date, delivery_time, supply_date in DATES:
+        for purchase_date, lead_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier(delivery_time)
+                product_supplier = self.create_product_supplier(lead_time)
                 date = self.product_supplier.compute_supply_date(
                     product_supplier, purchase_date)
                 self.assertEqual(date, supply_date)
 
     def test0020compute_purchase_date(self):
         'Test compute_purchase_date'
-        for purchase_date, delivery_time, supply_date in DATES:
+        for purchase_date, lead_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier(delivery_time)
+                product_supplier = self.create_product_supplier(lead_time)
                 date = self.product_supplier.compute_purchase_date(
                     product_supplier, supply_date)
                 self.assertEqual(date, purchase_date)
 
-    def create_product_supplier(self, delivery_time):
+    def create_product_supplier(self, lead_time):
         '''
         Create a Product with a Product Supplier
 
-        :param delivery_time: time in days needed to supply
+        :param lead_time: timedelta needed to supply
         :return: the id of the Product Supplier
         '''
         uom_category, = self.uom_category.create([{'name': 'Test'}])
@@ -108,7 +115,7 @@ class StockSupplyTestCase(ModuleTestCase):
                     'product': template.id,
                     'company': company.id,
                     'party': supplier.id,
-                    'delivery_time': delivery_time,
+                    'lead_time': lead_time,
                     }])
         return product_supplier
 
