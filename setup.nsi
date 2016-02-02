@@ -55,10 +55,10 @@ Var STARTMENU_FOLDER
 
 ;Languages
 
+!insertmacro MUI_LANGUAGE "English" ; First is the default
+!include "english.nsh"
 !insertmacro MUI_LANGUAGE "Catalan"
 !include "catalan.nsh"
-!insertmacro MUI_LANGUAGE "English"
-!include "english.nsh"
 !insertmacro MUI_LANGUAGE "French"
 !include "french.nsh"
 !insertmacro MUI_LANGUAGE "German"
