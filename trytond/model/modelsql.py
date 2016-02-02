@@ -717,7 +717,7 @@ class ModelSQL(ModelStorage):
                             _datetime=row[field.datetime_field]):
                         date_result = field.get([row['id']], cls, fname,
                             values=[row])
-                    row[field] = date_result[row['id']]
+                    row[fname] = date_result[row['id']]
             else:
                 # get the value of that field for all records/ids
                 getter_result = field.get(ids, cls, fname, values=result)
