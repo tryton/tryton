@@ -24,8 +24,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="unit_price"/>
             <label name="amount"/>
             <field name="amount"/>
-            <label name="delivery_date"/>
-            <field name="delivery_date"/>
+            <label name="shipping_date"/>
+            <field name="shipping_date"/>
         </page>
         <page string="Taxes" id="taxes">
             <field name="taxes" colspan="4"/>

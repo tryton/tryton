@@ -1045,12 +1045,12 @@ class SaleLine(ModelSQL, ModelView):
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
-    delivery_date = fields.Function(fields.Date('Delivery Date',
+    shipping_date = fields.Function(fields.Date('Shipping Date',
             states={
                 'invisible': Eval('type') != 'line',
                 },
             depends=['type']),
-        'on_change_with_delivery_date')
+        'on_change_with_shipping_date')
 
     @classmethod
     def __setup__(cls):
@@ -1282,13 +1282,13 @@ class SaleLine(ModelSQL, ModelView):
                 return self.warehouse.input_location.id
 
     @fields.depends('product', 'quantity', 'moves', '_parent_sale.sale_date')
-    def on_change_with_delivery_date(self, name=None):
+    def on_change_with_shipping_date(self, name=None):
         if self.moves:
             return min(m.effective_date if m.effective_date else m.planned_date
                 for m in self.moves)
         if self.product and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
-            return self.product.compute_delivery_date(date=date)
+            return self.product.compute_shipping_date(date=date)
 
     def get_invoice_line(self, invoice_type):
         '''
@@ -1447,7 +1447,7 @@ class SaleLine(ModelSQL, ModelView):
         move.company = self.sale.company
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
-        move.planned_date = self.delivery_date
+        move.planned_date = self.shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
         return move

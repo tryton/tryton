@@ -13,8 +13,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="salable"/>
             <label name="sale_uom"/>
             <field name="sale_uom"/>
-            <label name="delivery_time"/>
-            <field name="delivery_time"/>
+            <label name="lead_time"/>
+            <field name="lead_time"/>
         </page>
     </xpath>
 </data>

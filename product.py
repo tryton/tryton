@@ -6,6 +6,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond import backend
 
 __all__ = ['Template', 'Product']
 __metaclass__ = PoolMeta
@@ -25,13 +26,12 @@ class Template:
             ('category', '=', Eval('default_uom_category')),
             ],
         depends=['active', 'salable', 'default_uom_category'])
-    delivery_time = fields.Integer('Delivery Time', states={
+    lead_time = fields.TimeDelta('Lead Time', states={
             'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
             'required': Eval('salable', False),
             },
-        depends=['active', 'salable'],
-        help='In number of days')
+        depends=['active', 'salable'])
 
     @classmethod
     def __setup__(cls):
@@ -47,9 +47,30 @@ class Template:
         if 'salable' not in cls.account_revenue.depends:
             cls.account_revenue.depends.append('salable')
 
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
+
+        super(Template, cls).__register__(module_name)
+
+        # Migration from 3.8: change delivery_time into timedelta lead_time
+        if table.column_exist('delivery_time'):
+            cursor.execute(*sql_table.select(
+                    sql_table.id, sql_table.delivery_time))
+            for id_, delivery_time in cursor.fetchall():
+                lead_time = datetime.timedelta(days=delivery_time)
+                cursor.execute(*sql_table.update(
+                        [sql_table.lead_time],
+                        [lead_time],
+                        where=sql_table.id == id_))
+            table.drop_column('delivery_time')
+
     @staticmethod
-    def default_delivery_time():
-        return 0
+    def default_lead_time():
+        return datetime.timedelta(0)
 
     @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_default_uom(self):
@@ -116,12 +137,12 @@ class Product:
                             currency, round=False)
         return prices
 
-    def compute_delivery_date(self, date=None):
+    def compute_shipping_date(self, date=None):
         '''
-        Compute the delivery date a the given date
+        Compute the shipping date at the given date
         '''
         Date = Pool().get('ir.date')
 
         if not date:
             date = Date.today()
-        return date + datetime.timedelta(self.delivery_time)
+        return date + self.lead_time
