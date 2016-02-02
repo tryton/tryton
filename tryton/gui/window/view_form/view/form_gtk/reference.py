@@ -95,8 +95,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
     def sig_changed_combo(self, *args):
         if not self.changed:
             return
-        self.wid_text.set_text('')
-        self.wid_text.set_position(0)
+        self.set_text('')
         model = self.get_model()
         if model:
             value = (model, (-1, ''))
@@ -120,7 +119,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             if (model != self.get_model()
                     or name != self.wid_text.get_text()):
                 field.set_client(record, None)
-                self.wid_text.set_text('')
+                self.set_text('')
 
     def set_text(self, value):
         if value:

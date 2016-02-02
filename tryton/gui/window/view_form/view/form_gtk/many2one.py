@@ -11,7 +11,7 @@ from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.common.popup_menu import populate
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.entry_position import manage_entry_position
+from tryton.common.entry_position import reset_position
 from tryton.common.domain_parser import quote
 from tryton.config import CONFIG
 
@@ -35,7 +35,6 @@ class Many2One(Widget):
         self.wid_text.connect('focus-out-event',
             lambda x, y: self._focus_out())
         self.wid_text.connect('changed', self.sig_changed)
-        manage_entry_position(self.wid_text)
         self.changed = True
         self.focus_out = True
 
@@ -128,7 +127,7 @@ class Many2One(Widget):
                         self.field.set_client(self.record,
                             self.value_from_id(*result[0]), force_change=True)
                     else:
-                        self.wid_text.set_text('')
+                        self.set_text('')
                     self.focus_out = True
                     self.changed = True
 
@@ -238,7 +237,7 @@ class Many2One(Widget):
                 and editable
                 and event.keyval in (gtk.keysyms.Delete,
                     gtk.keysyms.BackSpace)):
-            self.wid_text.set_text('')
+            self.set_text('')
         return False
 
     def sig_changed(self, *args):
@@ -257,7 +256,7 @@ class Many2One(Widget):
                 # in such case, the original text should not be restored
                 if not self.wid_text.get_text():
                     # Restore text and position after display
-                    self.wid_text.set_text(text)
+                    self.set_text(text)
                     self.wid_text.set_position(position)
             gobject.idle_add(clean)
         return False
@@ -268,13 +267,13 @@ class Many2One(Widget):
     def set_value(self, record, field):
         if field.get_client(record) != self.wid_text.get_text():
             field.set_client(record, self.value_from_id(None, ''))
-            self.wid_text.set_text('')
+            self.set_text('')
 
     def set_text(self, value):
         if not value:
             value = ''
         self.wid_text.set_text(value)
-        self.wid_text.set_position(len(value))
+        reset_position(self.wid_text)
 
     def display(self, record, field):
         self.changed = False
@@ -284,8 +283,7 @@ class Many2One(Widget):
         self._set_completion()
 
         if not field:
-            self.wid_text.set_text('')
-            self.wid_text.set_position(0)
+            self.set_text('')
             self.changed = True
             return False
         self.set_text(field.get_client(record))

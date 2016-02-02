@@ -3,6 +3,8 @@
 from .char import Char
 import locale
 
+from tryton.common.entry_position import reset_position
+
 
 class Integer(Char):
     "Integer"
@@ -38,6 +40,7 @@ class Integer(Char):
             self.entry.set_text('')
             return False
         self.entry.set_text(field.get_client(record, factor=self.factor))
+        reset_position(self.entry)
 
     def sig_insert_text(self, entry, new_text, new_text_length, position):
         value = entry.get_text()

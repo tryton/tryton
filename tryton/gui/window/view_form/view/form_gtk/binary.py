@@ -6,6 +6,7 @@ import os
 import tempfile
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, slugify
+from tryton.common.entry_position import reset_position
 from tryton.config import CONFIG
 from .widget import Widget
 
@@ -196,11 +197,13 @@ class Binary(BinaryMixin, Widget):
             return False
         if self.wid_text:
             self.wid_text.set_text(self.filename_field.get(record) or '')
+            reset_position(self.wid_text)
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
         else:
             size = len(field.get(record))
         self.wid_size.set_text(common.humanize(size or 0))
+        reset_position(self.wid_size)
         if self.but_open:
             self.but_open.set_sensitive(bool(size))
         self.but_save_as.set_sensitive(bool(size))

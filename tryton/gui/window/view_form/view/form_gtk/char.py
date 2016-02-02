@@ -6,7 +6,7 @@ import gobject
 import gtk
 from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips
-from tryton.common.entry_position import manage_entry_position
+from tryton.common.entry_position import reset_position
 from tryton.common.selection import PopdownMixin, selection_shortcuts
 from tryton.config import CONFIG
 
@@ -36,7 +36,6 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         focus_entry.connect('activate', self.sig_activate)
         focus_entry.connect('focus-out-event', lambda x, y: self._focus_out())
         focus_entry.connect('key-press-event', self.send_modified)
-        manage_entry_position(focus_entry)
         expand, fill = True, True
         if attrs.get('size'):
             expand, fill = False, False
@@ -59,6 +58,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
     @staticmethod
     def translate_widget_set(widget, value):
         widget.set_text(value or '')
+        reset_position(widget)
 
     @staticmethod
     def translate_widget_get(widget):
@@ -124,10 +124,13 @@ class Char(Widget, TranslateMixin, PopdownMixin):
 
         if not self.autocomplete:
             self.entry.set_text(value)
+            reset_position(self.entry)
         else:
             self.entry.handler_block_by_func(self.changed)
             if not self.set_popdown_value(self.entry, value) or not value:
-                self.entry.get_child().set_text(value)
+                child = self.entry.get_child()
+                child.set_text(value)
+                reset_position(child)
             self.entry.handler_unblock_by_func(self.changed)
 
     def _readonly_set(self, value):

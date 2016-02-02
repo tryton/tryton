@@ -19,6 +19,7 @@ from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
+from tryton.common.entry_position import reset_position
 
 _ = gettext.gettext
 
@@ -47,7 +48,8 @@ class DictEntry(object):
         return self.widget.get_text()
 
     def set_value(self, value):
-        return self.widget.set_text(value or '')
+        self.widget.set_text(value or '')
+        reset_position(self.widget)
 
     def set_readonly(self, readonly):
         self.widget.set_editable(not readonly)
@@ -131,6 +133,7 @@ class DictSelectionEntry(DictEntry):
     def set_value(self, value):
         values = dict(self.definition['selection'])
         self.widget.child.set_text(values.get(value, ''))
+        reset_position(self.widget.child)
 
     def set_readonly(self, readonly):
         self.widget.set_sensitive(not readonly)
@@ -174,6 +177,7 @@ class DictIntegerEntry(DictEntry):
         else:
             txt_val = ''
         self.widget.set_text(txt_val)
+        reset_position(self.widget)
 
 
 class DictFloatEntry(DictIntegerEntry):
@@ -230,6 +234,7 @@ class DictFloatEntry(DictIntegerEntry):
             txt_val = ''
         self.widget.set_width_chars(sum(digits))
         self.widget.set_text(txt_val)
+        reset_position(self.widget)
 
 
 class DictNumericEntry(DictFloatEntry):
