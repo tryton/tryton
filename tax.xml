@@ -194,30 +194,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">tax_template_form</field>
         </record>
-        <record model="ir.ui.view" id="tax_template_view_tree">
+        <record model="ir.ui.view" id="tax_template_view_list">
             <field name="model">account.tax.template</field>
             <field name="type">tree</field>
-            <field name="field_childs">childs</field>
-            <field name="name">tax_template_tree</field>
+            <field name="name">tax_template_list</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_tax_template_tree">
+        <record model="ir.action.act_window" id="act_tax_template_list">
             <field name="name">Taxes Templates</field>
             <field name="res_model">account.tax.template</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_tax_template_tree_view1">
+        <record model="ir.action.act_window.view" id="act_tax_template_list_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="tax_template_view_tree"/>
-            <field name="act_window" ref="act_tax_template_tree"/>
+            <field name="view" ref="tax_template_view_list"/>
+            <field name="act_window" ref="act_tax_template_list"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_tax_template_tree_view2">
+        <record model="ir.action.act_window.view" id="act_tax_template_list_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="tax_template_view_form"/>
-            <field name="act_window" ref="act_tax_template_tree"/>
+            <field name="act_window" ref="act_tax_template_list"/>
         </record>
-        <menuitem parent="menu_taxes" action="act_tax_template_tree"
-            id="menu_tax_template_tree"/>
+        <menuitem parent="menu_taxes" action="act_tax_template_list"
+            id="menu_tax_template_list"/>
 
         <record model="ir.model.access" id="access_tax_template">
             <field name="model" search="[('model', '=', 'account.tax.template')]"/>
@@ -232,39 +231,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">tax_form</field>
         </record>
-        <record model="ir.ui.view" id="tax_view_tree">
-            <field name="model">account.tax</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="20"/>
-            <field name="field_childs">childs</field>
-            <field name="name">tax_tree</field>
-        </record>
         <record model="ir.ui.view" id="tax_view_list">
             <field name="model">account.tax</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
             <field name="name">tax_list</field>
         </record>
-
-        <record model="ir.action.act_window" id="act_tax_tree">
-            <field name="name">Taxes</field>
-            <field name="res_model">account.tax</field>
-            <field name="domain"
-                eval="[('company', '=', Eval('company')), ('parent', '=', None)]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_tax_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="tax_view_tree"/>
-            <field name="act_window" ref="act_tax_tree"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_tax_tree_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="tax_view_form"/>
-            <field name="act_window" ref="act_tax_tree"/>
-        </record>
-        <menuitem parent="menu_taxes" action="act_tax_tree"
-            id="menu_tax_tree"/>
 
         <record model="ir.action.act_window" id="act_tax_list">
             <field name="name">Taxes</field>
@@ -283,7 +255,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_view_form"/>
             <field name="act_window" ref="act_tax_list"/>
         </record>
-        <menuitem parent="menu_tax_tree"
+        <menuitem parent="menu_taxes"
             action="act_tax_list" id="menu_tax_list"
             sequence="10"/>
 
