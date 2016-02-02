@@ -1,3 +1,4 @@
+* Add note on resources
 * Add 'where' operator for xxx2many fields
 * Strip and unquote double-quote from Postgresql schema in search_path
 * Move webdav into a separate module

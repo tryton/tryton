@@ -3,14 +3,13 @@
 import os
 import hashlib
 from sql.operators import Concat
-from sql.conditionals import Coalesce
 
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..config import config
 from .. import backend
 from ..transaction import Transaction
 from ..pyson import Eval
-from ..pool import Pool
+from .resource import ResourceMixin
 
 __all__ = [
     'Attachment',
@@ -24,7 +23,7 @@ def firstline(description):
         return ''
 
 
-class Attachment(ModelSQL, ModelView):
+class Attachment(ResourceMixin, ModelSQL, ModelView):
     "Attachment"
     __name__ = 'ir.attachment'
     name = fields.Char('Name', required=True)
@@ -37,8 +36,6 @@ class Attachment(ModelSQL, ModelView):
                 }, depends=['type']), 'get_data', setter='set_data')
     description = fields.Text('Description')
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
-    resource = fields.Reference('Resource', selection='models_get',
-        select=True)
     link = fields.Char('Link', states={
             'invisible': Eval('type') != 'link',
             }, depends=['type'])
@@ -47,16 +44,10 @@ class Attachment(ModelSQL, ModelView):
     data_size = fields.Function(fields.Integer('Data size', states={
                 'invisible': Eval('type') != 'data',
                 }, depends=['type']), 'get_data')
-    last_modification = fields.Function(fields.DateTime('Last Modification'),
-        'get_last_modification')
-    last_user = fields.Function(fields.Char('Last User'),
-        'get_last_user')
 
     @classmethod
     def __setup__(cls):
         super(Attachment, cls).__setup__()
-        cls._order.insert(0, ('last_modification', 'DESC'))
-
         table = cls.__table__()
         cls._sql_constraints += [
             ('resource_name',
@@ -91,25 +82,8 @@ class Attachment(ModelSQL, ModelView):
         return 'data'
 
     @staticmethod
-    def default_resource():
-        return Transaction().context.get('resource')
-
-    @staticmethod
     def default_collision():
         return 0
-
-    @staticmethod
-    def models_get():
-        pool = Pool()
-        Model = pool.get('ir.model')
-        ModelAccess = pool.get('ir.model.access')
-        models = Model.search([])
-        access = ModelAccess.get_access([m.model for m in models])
-        res = []
-        for model in models:
-            if access[model.model]['read']:
-                res.append([model.model, model.name])
-        return res
 
     def get_data(self, name):
         db_name = Transaction().cursor.dbname
@@ -191,72 +165,3 @@ class Attachment(ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
-
-    def get_last_modification(self, name):
-        return (self.write_date if self.write_date else self.create_date
-            ).replace(microsecond=0)
-
-    @staticmethod
-    def order_last_modification(tables):
-        table, _ = tables[None]
-        return [Coalesce(table.write_date, table.create_date)]
-
-    def get_last_user(self, name):
-        return (self.write_uid.rec_name if self.write_uid
-            else self.create_uid.rec_name)
-
-    @classmethod
-    def check_access(cls, ids, mode='read'):
-        pool = Pool()
-        ModelAccess = pool.get('ir.model.access')
-        if ((Transaction().user == 0)
-                or not Transaction().context.get('_check_access')):
-            return
-        model_names = set()
-        with Transaction().set_context(_check_access=False):
-            for attachment in cls.browse(ids):
-                if attachment.resource:
-                    model_names.add(attachment.resource.__name__)
-        for model_name in model_names:
-            ModelAccess.check(model_name, mode=mode)
-
-    @classmethod
-    def read(cls, ids, fields_names=None):
-        cls.check_access(ids, mode='read')
-        return super(Attachment, cls).read(ids, fields_names=fields_names)
-
-    @classmethod
-    def delete(cls, attachments):
-        cls.check_access([a.id for a in attachments], mode='delete')
-        super(Attachment, cls).delete(attachments)
-
-    @classmethod
-    def write(cls, attachments, values, *args):
-        all_attachments = []
-        actions = iter((attachments, values) + args)
-        for records, _ in zip(actions, actions):
-            all_attachments += records
-        cls.check_access([a.id for a in all_attachments], mode='write')
-        super(Attachment, cls).write(attachments, values, *args)
-        cls.check_access(all_attachments, mode='write')
-
-    @classmethod
-    def create(cls, vlist):
-        attachments = super(Attachment, cls).create(vlist)
-        cls.check_access([a.id for a in attachments], mode='create')
-        return attachments
-
-    @classmethod
-    def view_header_get(cls, value, view_type='form'):
-        pool = Pool()
-        Model = pool.get('ir.model')
-        value = super(Attachment, cls).view_header_get(value,
-                view_type=view_type)
-        resource = Transaction().context.get('resource')
-        if resource:
-            model_name, record_id = resource.split(',', 1)
-            ir_model, = Model.search([('model', '=', model_name)])
-            Resource = pool.get(model_name)
-            record = Resource(int(record_id))
-            value = '%s - %s - %s' % (ir_model.name, record.rec_name, value)
-        return value

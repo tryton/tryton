@@ -11,6 +11,7 @@ from .property import *
 from .action import *
 from .model import *
 from .attachment import *
+from .note import *
 from .cron import *
 from .lang import *
 from .export import *
@@ -61,6 +62,8 @@ def register():
         ModelData,
         PrintModelGraphStart,
         Attachment,
+        Note,
+        NoteRead,
         Cron,
         Lang,
         Export,
