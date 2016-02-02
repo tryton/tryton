@@ -887,10 +887,14 @@ class DomainParser(object):
                         operator = '!'
                     value = value.replace('%%', '%')
             def_operator = default_operator(field)
-            if (def_operator == operator.strip()
-                    or (def_operator in operator
-                        and ('not' in operator
-                            or '!' in operator))):
+            if def_operator == operator.strip():
+                operator = ''
+                if value in OPERATORS:
+                    # As the value could be interpreted as an operator,
+                    # the default operator must be forced
+                    operator = '"" '
+            elif (def_operator in operator
+                    and ('not' in operator or '!' in operator)):
                 operator = operator.rstrip(def_operator
                     ).replace('not', '!').strip()
             if operator.endswith('in'):
@@ -986,7 +990,7 @@ class DomainParser(object):
             field = self.fields[name]
         else:
             field = self.strings[name.lower()]
-        if operator is None:
+        if not operator:
             operator = default_operator(field)
             value = ''
             if 'ilike' in operator:
@@ -1015,7 +1019,9 @@ class DomainParser(object):
                     else:
                         yield (None,)
                     name = (name,)
-                    if i + 1 < len(parts) and parts[i + 1] in OPERATORS:
+                    # empty string is also the default operator
+                    if (i + 1 < len(parts)
+                            and parts[i + 1] in OPERATORS + ('',)):
                         name += (parts[i + 1],)
                         i += 1
                     else:
@@ -1080,7 +1086,7 @@ class DomainParser(object):
                         if target:
                             field_name += '.rec_name'
 
-                    if operator is None:
+                    if not operator:
                         operator = default_operator(field)
                     if isinstance(value, list):
                         if operator == '!':
@@ -1174,6 +1180,7 @@ def test_string():
     assert dom.string([('name', '=', '')]) == 'Name: =""'
     assert dom.string([('name', 'ilike', '%')]) == 'Name: '
     assert dom.string([('name', 'ilike', '%Doe%')]) == 'Name: Doe'
+    assert dom.string([('name', 'ilike', '%<%')]) == 'Name: "" "<"'
     assert dom.string([('name', 'ilike', 'Doe')]) == 'Name: =Doe'
     assert dom.string([('name', 'ilike', 'Doe%')]) == 'Name: Doe%'
     assert dom.string([('name', 'ilike', 'Doe%%')]) == 'Name: =Doe%'
@@ -1302,6 +1309,9 @@ def test_group():
     assert rlist(dom.group(udlex(u'Name: \\"foo\\"'))) == [
         ('Name', None, '"foo"'),
         ]
+    assert rlist(dom.group(udlex(u'Name: "" <'))) == [
+        ('Name', '', '<'),
+        ]
 
 
 def test_parse_clause():
@@ -1343,6 +1353,8 @@ def test_parse_clause():
     assert rlist(dom.parse_clause([('John',)])) == [
         ('rec_name', 'ilike', '%John%')]
     assert rlist(dom.parse_clause([('Name', None, None)])) == [
+        ('name', 'ilike', '%')]
+    assert rlist(dom.parse_clause([('Name', '', None)])) == [
         ('name', 'ilike', '%')]
     assert rlist(dom.parse_clause([('Name', '=', None)])) == [
         ('name', '=', None)]
