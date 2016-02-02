@@ -126,7 +126,7 @@ class SaleLine:
 
         product = self.product
         supplier, purchase_date = Request.find_best_supplier(product,
-            self.delivery_date)
+            self.shipping_date)
         uom = product.purchase_uom or product.default_uom
         quantity = Uom.compute_qty(self.unit, self.quantity, uom)
         return Request(
@@ -137,7 +137,7 @@ class SaleLine:
             computed_quantity=quantity,
             computed_uom=uom,
             purchase_date=purchase_date,
-            supply_date=self.delivery_date,
+            supply_date=self.shipping_date,
             company=self.sale.company,
             warehouse=self.warehouse,
             origin=self.sale,
