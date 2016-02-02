@@ -6,8 +6,9 @@
     Sao.View.tree_column_get = function(type) {
         switch (type) {
             case 'char':
-            case 'text':
                 return Sao.View.Tree.CharColumn;
+            case 'text':
+                return Sao.View.Tree.TextColum;
             case 'many2one':
                 return Sao.View.Tree.Many2OneColumn;
             case 'one2one':
@@ -1256,6 +1257,10 @@
             }.bind(this));
             return cell;
         }
+    });
+
+    Sao.View.Tree.TextColum = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-text'
     });
 
     Sao.View.Tree.IntegerColumn = Sao.class_(Sao.View.Tree.CharColumn, {

@@ -409,6 +409,46 @@
         }
     });
 
+    Sao.Window.Note = Sao.class_(Sao.Window.Form, {
+        init: function(record, callback) {
+            this.resource = record.model.name + ',' + record.id;
+            this.note_callback = callback;
+            var context = record.get_context();
+            context.resource = this.resource;
+            var screen = new Sao.Screen('ir.note', {
+                domain: [['resource', '=', this.resource]],
+                mode: ['tree', 'form'],
+                context: context,
+                exclude_field: 'resource'
+            });
+            screen.switch_view().done(function() {
+                screen.search_filter();
+                screen.group.parent = record;
+            });
+            Sao.Window.Note._super.init.call(this, screen, this.callback,
+                    {view_type: 'tree'});
+        },
+        callback: function(result) {
+            var prm = jQuery.when();
+            if (result) {
+                var resource = this.screen.group.model.fields.resource;
+                var unread = this.screen.group.model.fields.unread;
+                this.screen.group.forEach(function(record) {
+                    if (record.get_loaded()) {
+                        resource.set_client(record, this.resource);
+                        if (!record._changed.unread) {
+                            unread.set_client(record, false);
+                        }
+                    }
+                }.bind(this));
+                prm = this.screen.group.save();
+            }
+            if (this.note_callback) {
+                prm.always(this.note_callback.bind(this));
+            }
+        }
+    });
+
     Sao.Window.Search = Sao.class_(Object, {
         init: function(model, callback, kwargs) {
             kwargs = kwargs || {};

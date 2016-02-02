@@ -451,6 +451,7 @@
             this.fields = {};
             this._timestamp = null;
             this.attachment_count = -1;
+            this.unread_note = -1;
             this.state_attrs = {};
             this.autocompletion = {};
             this.exception = false;
@@ -1186,6 +1187,28 @@
                 }.bind(this));
             } else {
                 prm.resolve(this.attachment_count);
+            }
+            return prm;
+        },
+        get_unread_note: function(reload) {
+            var prm = jQuery.Deferred();
+            if (this.id < 0) {
+                prm.resolve(0);
+                return prm;
+            }
+            if ((this.unread_note < 0) || reload) {
+                prm = Sao.rpc({
+                    method: 'model.ir.note.search_count',
+                    params: [
+                        [['resource', '=', this.model.name + ',' + this.id],
+                        ['unread', '=', true]],
+                        this.get_context()]
+                }, this.model.session).then(function(count) {
+                    this.unread_note = count;
+                    return count;
+                }.bind(this));
+            } else {
+                prm.resolve(this.unread_note);
             }
             return prm;
         }

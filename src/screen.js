@@ -796,8 +796,11 @@
                 if (record) {
                     record.get_attachment_count().always(
                             this.tab.attachment_count.bind(this.tab));
+                    record.get_unread_note().always(
+                            this.tab.update_unread_note.bind(this.tab));
                 } else {
                     this.tab.attachment_count(0);
+                    this.tab.update_unread_note(0);
                 }
                 this.tab.record_message();
             }
