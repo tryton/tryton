@@ -174,7 +174,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ])
-    delivery_time = fields.Integer('Delivery Time', help="In number of days")
+    lead_time = fields.TimeDelta('Lead Time')
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
 
@@ -219,6 +219,18 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
 
         # Migration from 2.6: drop required on delivery_time
         table.not_null_action('delivery_time', action='remove')
+
+        # Migration from 3.8: change delivery_time inte timedelta lead_time
+        if table.column_exist('delivery_time'):
+            cursor.execute(*sql_table.select(
+                    sql_table.id, sql_table.delivery_time))
+            for id_, delivery_time in cursor.fetchall():
+                lead_time = datetime.timedelta(days=delivery_time)
+                cursor.execute(*sql_table.update(
+                        [sql_table.lead_time],
+                        [lead_time],
+                        where=sql_table.id == id_))
+            table.drop_column('delivery_time')
 
     @staticmethod
     def order_sequence(tables):
@@ -276,9 +288,9 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
 
         if not date:
             date = Date.today()
-        if self.delivery_time is None:
+        if self.lead_time is None:
             return datetime.date.max
-        return date + datetime.timedelta(self.delivery_time)
+        return date + self.lead_time
 
     def compute_purchase_date(self, date):
         '''
@@ -286,9 +298,9 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
         '''
         Date = Pool().get('ir.date')
 
-        if self.delivery_time is None:
+        if self.lead_time is None:
             return Date.today()
-        return date - datetime.timedelta(self.delivery_time)
+        return date - self.lead_time
 
     @staticmethod
     def get_pattern():

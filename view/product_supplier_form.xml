@@ -12,8 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="code"/>
     <field name="code"/>
-    <label name="delivery_time"/>
-    <field name="delivery_time"/>
+    <label name="lead_time"/>
+    <field name="lead_time"/>
     <newline/>
     <label name="currency"/>
     <field name="currency"/>
