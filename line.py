@@ -5,7 +5,7 @@ import datetime
 
 from sql import Literal
 from sql.aggregate import Max, Sum
-from sql.functions import Extract
+from sql.functions import Extract, CharLength
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -246,7 +246,9 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     'Hours per Employee per Week'
     __name__ = 'timesheet.hours_employee_weekly'
     year = fields.Char('Year', select=True)
-    week = fields.Integer('Week', select=True)
+    week_internal = fields.Char('Week', select=True)
+    week = fields.Function(fields.Char('Week'),
+        'get_week', searcher='search_week')
     employee = fields.Many2One('company.employee', 'Employee', select=True)
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
@@ -264,7 +266,9 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
         line = Line.__table__()
         type_name = cls.year.sql_type().base
         year_column = Extract('YEAR', line.date).cast(type_name).as_('year')
-        week_column = Extract('WEEK', line.date).as_('week')
+        type_name = cls.week_internal.sql_type().base
+        week_column = Extract('WEEK', line.date).cast(type_name).as_(
+            'week_internal')
         return line.select(
             Max(Extract('WEEK', line.date)
                 + Extract('YEAR', line.date) * 100
@@ -279,12 +283,26 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
             Sum(line.duration).as_('duration'),
             group_by=(year_column, week_column, line.employee))
 
+    def get_week(self, name):
+        return '%02i' % int(self.week_internal)
+
+    @classmethod
+    def search_week(self, name, domain):
+        return [('week_internal',) + tuple(domain[1:])]
+
+    @classmethod
+    def order_week(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.week_internal), table.week_internal]
+
 
 class HoursEmployeeMonthly(ModelSQL, ModelView):
     'Hours per Employee per Month'
     __name__ = 'timesheet.hours_employee_monthly'
     year = fields.Char('Year', select=True)
-    month = fields.Integer('Month', select=True)
+    month_internal = fields.Char('Month', select=True)
+    month = fields.Function(fields.Char('Month'),
+        'get_month', searcher='search_month')
     employee = fields.Many2One('company.employee', 'Employee', select=True)
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
@@ -302,7 +320,9 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
         line = Line.__table__()
         type_name = cls.year.sql_type().base
         year_column = Extract('YEAR', line.date).cast(type_name).as_('year')
-        month_column = Extract('MONTH', line.date).as_('month')
+        type_name = cls.month_internal.sql_type().base
+        month_column = Extract('MONTH', line.date).cast(type_name).as_(
+            'month_internal')
         return line.select(
             Max(Extract('MONTH', line.date)
                 + Extract('YEAR', line.date) * 100
@@ -316,3 +336,15 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
             line.employee,
             Sum(line.duration).as_('duration'),
             group_by=(year_column, month_column, line.employee))
+
+    def get_month(self, name):
+        return '%02i' % int(self.month_internal)
+
+    @classmethod
+    def search_month(self, name, domain):
+        return [('month_internal',) + tuple(domain[1:])]
+
+    @classmethod
+    def order_month(cls, tables):
+        table, _ = tables[None]
+        return [CharLength(table.month_internal), table.month_internal]
