@@ -965,6 +965,9 @@
             ]],
         ['Name: \\"foo\\"', [
             c(['Name', null, '"foo"'])
+            ]],
+        ['Name: "" <', [
+            c(['Name', '', '<'])
             ]]
         ].forEach(function(test) {
             var value = test[0];
@@ -1259,6 +1262,7 @@
         [
         [[c(['John'])], [['rec_name', 'ilike', '%John%']]],
         [[c(['Name', null, null])], [['name', 'ilike', '%']]],
+        [[c(['Name', '', null])], [['name', 'ilike', '%']]],
         [[c(['Name', '=', null])], [['name', '=', null]]],
         [[c(['Name', '=', ''])], [['name', '=', '']]],
         [[c(['Name', null, 'Doe'])], [['name', 'ilike', '%Doe%']]],
@@ -1469,6 +1473,7 @@
         [[['name', '=', '']], 'Name: =""'],
         [[['name', 'ilike', '%']], 'Name: '],
         [[['name', 'ilike', '%Doe%']], 'Name: Doe'],
+        [[['name', 'ilike', '%<%']], 'Name: "" "<"'],
         [[['name', 'ilike', 'Doe']], 'Name: =Doe'],
         [[['name', 'ilike', 'Doe%']], 'Name: Doe%'],
         [[['name', 'ilike', 'Doe%%']], 'Name: =Doe%'],
