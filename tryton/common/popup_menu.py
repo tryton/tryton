@@ -7,6 +7,7 @@ from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui.window import Window
 from tryton.gui.window.attachment import Attachment
+from tryton.gui.window.note import Note
 
 _ = gettext.gettext
 
@@ -55,6 +56,9 @@ def populate(menu, model, record, title='', field=None):
     def attachment(menuitem):
         Attachment(load(record), None)
 
+    def note(menuitem):
+        Note(load(record), None)
+
     def edit(menuitem):
         with Window(hide_current=True, allow_similar=True):
             Window.create(field.attrs.get('view_ids'), model, id_(record),
@@ -82,6 +86,10 @@ def populate(menu, model, record, title='', field=None):
     attachment_item.set_label(_('Attachments...'))
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
+    note_item = gtk.ImageMenuItem('tryton-note')
+    note_item.set_label(_('Notes...'))
+    action_menu.append(note_item)
+    note_item.connect('activate', note)
 
     def set_toolbar(toolbar):
         try:

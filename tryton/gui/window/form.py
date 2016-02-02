@@ -11,6 +11,7 @@ from tryton.gui.window import Window
 from tryton.gui.window.win_export import WinExport
 from tryton.gui.window.win_import import WinImport
 from tryton.gui.window.attachment import Attachment
+from tryton.gui.window.note import Note
 from tryton.gui.window.revision import Revision
 from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, timezoned_date
@@ -44,6 +45,8 @@ class Form(SignalEvent, TabContent):
         (None,) * 5,
         ('attach', 'tryton-attachment', _('Attachment(0)'),
             _('Add an attachment to the record'), 'sig_attach'),
+        ('note', 'tryton-note', _('Note(0)'),
+            _('Add a note to the record'), 'sig_note'),
     ]
     menu_def = [
         (_('_New'), 'tryton-new', 'sig_new', '<tryton>/Form/New'),
@@ -69,6 +72,7 @@ class Form(SignalEvent, TabContent):
         (None,) * 4,
         (_('A_ttachments...'), 'tryton-attachment', 'sig_attach',
             '<tryton>/Form/Attachments'),
+        (_('_Notes...'), 'tryton-note', 'sig_note', '<tryton>/Form/Notes'),
         (_('_Actions...'), 'tryton-executable', 'sig_action',
             '<tryton>/Form/Actions'),
         (_('_Relate...'), 'tryton-go-jump', 'sig_relate',
@@ -143,6 +147,7 @@ class Form(SignalEvent, TabContent):
         self.screen.signal_connect(self, 'record-saved', self._record_saved)
         self.screen.signal_connect(self, 'attachment-count',
                 self._attachment_count)
+        self.screen.signal_connect(self, 'unread-note', self._unread_note)
 
         if res_id not in (None, False):
             if isinstance(res_id, (int, long)):
@@ -210,6 +215,35 @@ class Form(SignalEvent, TabContent):
         record = self.screen.current_record
         self.buttons['attach'].props.sensitive = bool(
             record.id >= 0 if record else False)
+
+    def sig_note(self, widget=None):
+        record = self.screen.current_record
+        if not record or record.id < 0:
+            return
+        Note(record,
+            lambda: self.update_unread_note(reload=True))
+
+    def update_unread_note(self, reload=False):
+        record = self.screen.current_record
+        if record:
+            unread = record.get_unread_note(reload=reload)
+        else:
+            unread = 0
+        self._unread_note(None, unread)
+
+    def _unread_note(self, widget, signal_data):
+        label = _('Note(%d)') % signal_data
+        self.buttons['note'].set_label(label)
+        if signal_data:
+            self.buttons['note'].set_stock_id('tryton-note-hi')
+        else:
+            self.buttons['note'].set_stock_id('tryton-note')
+        record = self.screen.current_record
+        if not record or record.id < 0:
+            sensitive = False
+        else:
+            sensitive = True
+        self.buttons['note'].props.sensitive = sensitive
 
     def sig_switch(self, widget=None):
         if not self.modified_save():

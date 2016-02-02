@@ -324,8 +324,13 @@ class Screen(SignalEvent):
         if record and record.attachment_count > 0:
             attachment_count = record.attachment_count
         self.signal('attachment-count', attachment_count)
+        unread_note = 0
+        if record and record.unread_note > 0:
+            unread_note = record.unread_note
+        self.signal('unread-note', unread_note)
         # update attachment-count after 1 second
         gobject.timeout_add(1000, self.update_attachment, record)
+        gobject.timeout_add(1000, self.update_note, record)
         return True
 
     current_record = property(__get_current_record, __set_current_record)
@@ -336,6 +341,14 @@ class Screen(SignalEvent):
         if record and self.signal_connected('attachment-count'):
             attachment_count = record.get_attachment_count()
             self.signal('attachment-count', attachment_count)
+        return False
+
+    def update_note(self, record):
+        if record != self.current_record:
+            return False
+        if record and self.signal_connected('unread-note'):
+            unread_note = record.get_unread_note()
+            self.signal('unread-note', unread_note)
         return False
 
     def destroy(self):

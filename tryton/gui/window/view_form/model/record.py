@@ -31,6 +31,7 @@ class Record(SignalEvent):
         self.modified_fields = {}
         self._timestamp = None
         self.attachment_count = -1
+        self.unread_note = -1
         self.next = {}  # Used in Group list
         self.value = {}
         self.autocompletion = {}
@@ -615,6 +616,21 @@ class Record(SignalEvent):
             except RPCException:
                 return 0
         return self.attachment_count
+
+    def get_unread_note(self, reload=False):
+        if self.id < 0:
+            return 0
+        if self.unread_note < 0 or reload:
+            try:
+                self.unread_note = RPCExecute('model', 'ir.note',
+                    'search_count', [
+                        ('resource', '=',
+                            '%s,%s' % (self.model_name, self.id)),
+                        ('unread', '=', True),
+                        ], context=self.context_get())
+            except RPCException:
+                return 0
+        return self.unread_note
 
     def destroy(self):
         for v in self.value.itervalues():
