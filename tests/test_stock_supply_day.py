@@ -31,16 +31,24 @@ class StockSupplyDayTestCase(ModuleTestCase):
     def test0010compute_supply_date(self):
         'Test compute_supply_date'
         dates = [
-            # purchase date, delivery time, weekday, supply date
-            (datetime.date(2011, 11, 21), 10, 0, datetime.date(2011, 12, 5)),
-            (datetime.date(2011, 11, 21), 9, 1, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 21), 8, 2, datetime.date(2011, 11, 30)),
-            (datetime.date(2011, 11, 21), 7, 3, datetime.date(2011, 12, 1)),
-            (datetime.date(2011, 11, 21), 6, 4, datetime.date(2011, 12, 2)),
-            (datetime.date(2011, 11, 21), 5, 5, datetime.date(2011, 11, 26)),
-            (datetime.date(2011, 11, 21), 4, 6, datetime.date(2011, 11, 27)),
-            (datetime.date(2011, 12, 22), 12, 6, datetime.date(2012, 1, 8)),
-            (datetime.date(2011, 11, 21), 10, None,
+            # purchase date, lead time, weekday, supply date
+            (datetime.date(2011, 11, 21), datetime.timedelta(10), 0,
+                datetime.date(2011, 12, 5)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(9), 1,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(8), 2,
+                datetime.date(2011, 11, 30)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(7), 3,
+                datetime.date(2011, 12, 1)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(6), 4,
+                datetime.date(2011, 12, 2)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(5), 5,
+                datetime.date(2011, 11, 26)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(4), 6,
+                datetime.date(2011, 11, 27)),
+            (datetime.date(2011, 12, 22), datetime.timedelta(12), 6,
+                datetime.date(2012, 1, 8)),
+            (datetime.date(2011, 11, 21), datetime.timedelta(10), None,
                 datetime.date(2011, 12, 1)),
             (datetime.date(2011, 11, 21), None, 0, datetime.date.max),
             ]
@@ -48,41 +56,49 @@ class StockSupplyDayTestCase(ModuleTestCase):
         # 10 days, which would be Wednesday 2011-12-01. But with the supplier
         # weekday 0 (Monday) the forecast supply date is next Monday, the
         # 2011-12-05.
-        for purchase_date, delivery_time, weekday, supply_date in dates:
+        for purchase_date, lead_time, weekday, supply_date in dates:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier_day(
-                    delivery_time, weekday)
+                    lead_time, weekday)
                 date = product_supplier.compute_supply_date(purchase_date)
                 self.assertEqual(date, supply_date)
 
     def test0020compute_purchase_date(self):
         'Test compute_purchase_date'
         dates = [
-            # purchase date, delivery time, weekday, supply date
-            (datetime.date(2011, 11, 25), 10, 0, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 27), 9, 1, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 22), 8, 2, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 24), 7, 3, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 26), 6, 4, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 28), 5, 5, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 11, 30), 4, 6, datetime.date(2011, 12, 6)),
-            (datetime.date(2011, 12, 27), 6, 0, datetime.date(2012, 1, 3)),
+            # purchase date, lead time, weekday, supply date
+            (datetime.date(2011, 11, 25), datetime.timedelta(10), 0,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 27), datetime.timedelta(9), 1,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 22), datetime.timedelta(8), 2,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 24), datetime.timedelta(7), 3,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 26), datetime.timedelta(6), 4,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 28), datetime.timedelta(5), 5,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 11, 30), datetime.timedelta(4), 6,
+                datetime.date(2011, 12, 6)),
+            (datetime.date(2011, 12, 27), datetime.timedelta(6), 0,
+                datetime.date(2012, 1, 3)),
             ]
         # Supply date max is Tuesday, 2012-01-03, the supplier weekday 0 which
         # would be Monday 2012-01-02. But with the 6 days of delivery the
         # forecast purchase date is the 2011-12-27.
-        for purchase_date, delivery_time, weekday, supply_date in dates:
+        for purchase_date, lead_time, weekday, supply_date in dates:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier_day(
-                    delivery_time, weekday)
+                    lead_time, weekday)
                 date = product_supplier.compute_purchase_date(supply_date)
                 self.assertEqual(date, purchase_date)
 
-    def create_product_supplier_day(self, delivery_time, weekday):
+    def create_product_supplier_day(self, lead_time, weekday):
         '''
         Create a Product with a Product Supplier Day
 
-        :param delivery_time: minimal time in days needed to supply
+        :param lead_time: minimal timedelta needed to supply
         :param weekday: supply day of the week (0 - 6)
         :return: the id of the Product Supplier Day
         '''
@@ -130,7 +146,7 @@ class StockSupplyDayTestCase(ModuleTestCase):
                     'product': template.id,
                     'company': company.id,
                     'party': supplier.id,
-                    'delivery_time': delivery_time,
+                    'lead_time': lead_time,
                     }])
         if weekday is not None:
             self.product_supplier_day.create([{
