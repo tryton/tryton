@@ -502,7 +502,7 @@ class Reconciliation(ModelSQL, ModelView):
         super(Reconciliation, cls).__register__(module_name)
 
         # Migration from 3.8: new date field
-        if not date_exist:
+        if not date_exist and TableHandler.table_exist(cursor, Line._table):
             cursor.execute(*sql_table.update(
                     [sql_table.date],
                     line.join(move,
