@@ -10,8 +10,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <label name="currency"/>
     <field name="currency"/>
-    <label name="percentage"/>
-    <field name="percentage"/>
+    <label name="ratio"/>
+    <group col="2" id="ratio">
+        <field name="ratio" factor="100" xexpand="0"/>
+        <label name="ratio" string="%" xalign="0.0" xexpand="1"/>
+    </group>
     <label name="divisor"/>
     <field name="divisor"/>
     <field name="relativedeltas" mode="form,tree" colspan="4"

@@ -4,7 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <tree string="Payment Term Line">
     <field name="payment"/>
     <field name="type"/>
-    <field name="percentage"/>
+    <field name="ratio" factor="100">
+        <suffix string="%" name="ratio"/>
+    </field>
     <field name="amount"/>
     <field name="currency"/>
 </tree>

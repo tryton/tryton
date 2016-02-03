@@ -36,7 +36,7 @@ class AccountInvoiceTestCase(ModuleTestCase):
                                         'sequence': 0,
                                         'type': 'percent',
                                         'divisor': 4,
-                                        'percentage': 25,
+                                        'ratio': Decimal('.25'),
                                         'relativedeltas': [('create', [{
                                                         'days': 30,
                                                         },
@@ -46,7 +46,7 @@ class AccountInvoiceTestCase(ModuleTestCase):
                                         'sequence': 1,
                                         'type': 'percent_on_total',
                                         'divisor': 4,
-                                        'percentage': 25,
+                                        'ratio': Decimal('.25'),
                                         'relativedeltas': [('create', [{
                                                         'months': 1,
                                                         },

@@ -105,12 +105,12 @@ class PaymentTermLine(ModelSQL, ModelView):
             ('percent_on_total', 'Percentage on Total'),
             ('remainder', 'Remainder'),
             ], 'Type', required=True)
-    percentage = fields.Numeric('Percentage', digits=(16, 8),
+    ratio = fields.Numeric('Ratio', digits=(14, 10),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
             }, depends=['type'])
-    divisor = fields.Numeric('Divisor', digits=(16, 8),
+    divisor = fields.Numeric('Divisor', digits=(10, 14),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
@@ -135,7 +135,7 @@ class PaymentTermLine(ModelSQL, ModelView):
         super(PaymentTermLine, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'invalid_percentage_and_divisor': ('Percentage and '
+                'invalid_ratio_and_divisor': ('Ratio and '
                     'Divisor values are not consistent in line "%(line)s" '
                     'of payment term "%(term)s".'),
                 })
@@ -173,6 +173,13 @@ class PaymentTermLine(ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 3.8: rename percentage into ratio
+        if table.column_exist('percentage'):
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.ratio],
+                    values=[sql_table.percentage / 100]))
+            table.drop_column('percentage')
+
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
@@ -192,24 +199,24 @@ class PaymentTermLine(ModelSQL, ModelView):
             self.amount = Decimal('0.0')
             self.currency = None
         if self.type not in ('percent', 'percent_on_total'):
-            self.percentage = Decimal('0.0')
+            self.ratio = Decimal('0.0')
             self.divisor = Decimal('0.0')
 
-    @fields.depends('percentage')
-    def on_change_percentage(self):
-        if not self.percentage:
-            self.divisor = 0.0
+    @fields.depends('ratio')
+    def on_change_ratio(self):
+        if not self.ratio:
+            self.divisor = Decimal('0.0')
         else:
-            self.divisor = self.round(Decimal('100.0') / self.percentage,
+            self.divisor = self.round(1 / self.ratio,
                 self.__class__.divisor.digits[1])
 
     @fields.depends('divisor')
     def on_change_divisor(self):
         if not self.divisor:
-            self.percentage = 0.0
+            self.ratio = Decimal('0.0')
         else:
-            self.percentage = self.round(Decimal('100.0') / self.divisor,
-                self.__class__.percentage.digits[1])
+            self.ratio = self.round(1 / self.divisor,
+                self.__class__.ratio.digits[1])
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -237,11 +244,9 @@ class PaymentTermLine(ModelSQL, ModelView):
         if self.type == 'fixed':
             return Currency.compute(self.currency, self.amount, currency)
         elif self.type == 'percent':
-            return currency.round(
-                remainder * self.percentage / Decimal('100'))
+            return currency.round(remainder * self.ratio)
         elif self.type == 'percent_on_total':
-            return currency.round(
-                amount * self.percentage / Decimal('100'))
+            return currency.round(amount * self.ratio)
         elif self.type == 'remainder':
             return currency.round(remainder)
         return None
@@ -254,33 +259,26 @@ class PaymentTermLine(ModelSQL, ModelView):
     @classmethod
     def validate(cls, lines):
         super(PaymentTermLine, cls).validate(lines)
-        cls.check_percentage_and_divisor(lines)
+        cls.check_ratio_and_divisor(lines)
 
     @classmethod
-    def check_percentage_and_divisor(cls, lines):
-        "Check consistency between percentage and divisor"
-        percentage_digits = cls.percentage.digits[1]
-        divisor_digits = cls.divisor.digits[1]
-        for line in lines:
+    def check_ratio_and_divisor(cls, lines):
+        "Check consistency between ratio and divisor"
+        # Use a copy because on_change will change the records
+        for line in cls.browse(lines):
             if line.type not in ('percent', 'percent_on_total'):
                 continue
-            if line.percentage is None or line.divisor is None:
-                cls.raise_user_error('invalid_percentage_and_divisor', {
+            if line.ratio is None or line.divisor is None:
+                cls.raise_user_error('invalid_ratio_and_divisor', {
                         'line': line.rec_name,
                         'term': line.payment.rec_name,
                         })
-            if line.percentage == line.divisor == Decimal('0.0'):
-                continue
-            percentage = line.percentage
+            ratio = line.ratio
             divisor = line.divisor
-            calc_percentage = cls.round(Decimal('100.0') / divisor,
-                    percentage_digits)
-            calc_divisor = cls.round(Decimal('100.0') / percentage,
-                    divisor_digits)
-            if (percentage == Decimal('0.0') or divisor == Decimal('0.0')
-                    or percentage != calc_percentage
-                    and divisor != calc_divisor):
-                cls.raise_user_error('invalid_percentage_and_divisor', {
+            line.on_change_ratio()
+            line.on_change_divisor()
+            if (line.divisor != divisor) or (line.ratio != ratio):
+                cls.raise_user_error('invalid_ratio_and_divisor', {
                         'line': line.rec_name,
                         'term': line.payment.rec_name,
                         })

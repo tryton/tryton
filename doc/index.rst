@@ -104,13 +104,13 @@ It defines the maximum dates of how an due amount should be paid.
 
     - *Percentage on Remainder*:
 
-      - Percentage: The percentage to use on the remainder amount.
-      - Divisor: The reversed percentage.
+      - Ratio: The ratio to use on the remainder amount.
+      - Divisor: The reversed ratio.
 
     - *Percentage on Total*:
 
-      - Percentage: The percentage to use on the total amount.
-      - Divisor: The reversed percentage.
+      - Ratio: The ratio to use on the total amount.
+      - Divisor: The reversed ratio.
 
     - *Remainder*
 
