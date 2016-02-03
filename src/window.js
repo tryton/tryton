@@ -434,7 +434,7 @@
                 var resource = this.screen.group.model.fields.resource;
                 var unread = this.screen.group.model.fields.unread;
                 this.screen.group.forEach(function(record) {
-                    if (record.get_loaded()) {
+                    if (record.get_loaded() || record.id < 0) {
                         resource.set_client(record, this.resource);
                         if (!record._changed.unread) {
                             unread.set_client(record, false);
