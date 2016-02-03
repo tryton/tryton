@@ -31,7 +31,7 @@ class Note(WinForm):
             resource = self.screen.group.fields['resource']
             unread = self.screen.group.fields['unread']
             for record in self.screen.group:
-                if record.loaded:
+                if record.loaded or record.id < 0:
                     resource.set_client(record, self.resource)
                     if 'unread' not in record.modified_fields:
                         unread.set_client(record, False)
