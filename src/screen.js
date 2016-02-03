@@ -348,7 +348,10 @@
                 this.search_modal = dialog.modal;
                 this.search_form = dialog.content;
                 this.search_form.addClass('form-horizontal');
-                this.search_form.submit(search);
+                this.search_form.submit(function(e) {
+                    search();
+                    e.preventDefault();
+                });
 
                 var fields = [];
                 var field;
