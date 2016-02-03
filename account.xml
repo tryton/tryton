@@ -523,25 +523,6 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_open_income_statement" icon="tryton-tree"
             name="Income Statement"/>
 
-        <record model="ir.ui.view" id="open_third_party_balance_start_view_form">
-            <field name="model">account.open_third_party_balance.start</field>
-            <field name="type">form</field>
-            <field name="name">open_third_party_balance_start_form</field>
-        </record>
-        <record model="ir.action.report" id="report_third_party_balance">
-            <field name="name">Third Party Balance</field>
-            <field name="model"></field>
-            <field name="report_name">account.third_party_balance</field>
-            <field name="report">account/third_party_balance.odt</field>
-        </record>
-        <record model="ir.action.wizard" id="wizard_open_third_party_balance">
-            <field name="name">Open Third Party Balance</field>
-            <field name="wiz_name">account.open_third_party_balance</field>
-        </record>
-        <menuitem parent="menu_reporting" action="wizard_open_third_party_balance"
-            id="menu_third_party_balance" icon="tryton-print"
-            name="Third Party Balance"/>
-
         <record model="ir.ui.view" id="open_aged_balance_start_view_form">
             <field name="model">account.open_aged_balance.start</field>
             <field name="type">form</field>

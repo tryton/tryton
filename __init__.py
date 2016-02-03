@@ -33,7 +33,6 @@ def register():
         CreateChartProperties,
         UpdateChartStart,
         UpdateChartSucceed,
-        OpenThirdPartyBalanceStart,
         OpenAgedBalanceStart,
         Configuration,
         Period,
@@ -87,7 +86,6 @@ def register():
         OpenIncomeStatement,
         CreateChart,
         UpdateChart,
-        OpenThirdPartyBalance,
         OpenAgedBalance,
         ClosePeriod,
         ReOpenPeriod,
@@ -108,7 +106,6 @@ def register():
     Pool.register(
         GeneralLedger,
         TrialBalance,
-        ThirdPartyBalance,
         AgedBalance,
         GeneralJournal,
         module='account', type_='report')

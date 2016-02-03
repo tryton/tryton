@@ -7,7 +7,7 @@ from operator import itemgetter
 from collections import defaultdict
 
 from sql import Null
-from sql.aggregate import Sum
+from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
 from trytond.model import ModelView, ModelSQL, fields, Check
@@ -460,6 +460,8 @@ class Reconciliation(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True)
     lines = fields.One2Many('account.move.line', 'reconciliation',
             'Lines')
+    date = fields.Date('Date', required=True, select=True,
+        help='Highest date of the reconciled lines')
 
     @classmethod
     def __setup__(cls):
@@ -482,6 +484,32 @@ class Reconciliation(ModelSQL, ModelView):
                     'reconciliation where debit "%(debit)s" and credit '
                     '"%(credit)s" differ.'),
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        move = Move.__table__()
+        line = Line.__table__()
+
+        date_exist = table.column_exist('date')
+
+        super(Reconciliation, cls).__register__(module_name)
+
+        # Migration from 3.8: new date field
+        if not date_exist:
+            cursor.execute(*sql_table.update(
+                    [sql_table.date],
+                    line.join(move,
+                        condition=move.id == line.move
+                        ).select(Max(move.date),
+                        where=line.reconciliation == sql_table.id,
+                        group_by=line.reconciliation)))
 
     @classmethod
     def create(cls, vlist):
@@ -1579,6 +1607,7 @@ class Line(ModelSQL, ModelView):
                     ], limit=1)
         return Reconciliation.create([{
                     'lines': [('add', [x.id for x in lines])],
+                    'date': max(l.date for l in lines),
                     }])[0]
 
 

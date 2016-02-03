@@ -9,6 +9,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <label name="posted"/>
     <field name="posted"/>
+    <label name="date"/>
+    <field name="date"/>
     <separator string="Terms" colspan="4" id="terms"/>
     <label name="term1"/>
     <field name="term1"/>

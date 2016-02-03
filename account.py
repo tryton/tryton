@@ -6,7 +6,7 @@ import operator
 from itertools import izip, groupby
 from functools import wraps
 
-from sql import Column, Literal, Null
+from sql import Column, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
 
@@ -28,7 +28,6 @@ __all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
     'OpenIncomeStatementStart', 'OpenIncomeStatement',
     'CreateChartStart', 'CreateChartAccount', 'CreateChartProperties',
     'CreateChart', 'UpdateChartStart', 'UpdateChartSucceed', 'UpdateChart',
-    'OpenThirdPartyBalanceStart', 'OpenThirdPartyBalance', 'ThirdPartyBalance',
     'OpenAgedBalanceStart', 'OpenAgedBalance', 'AgedBalance']
 
 
@@ -1856,115 +1855,6 @@ class UpdateChart(Wizard):
         return 'succeed'
 
 
-class OpenThirdPartyBalanceStart(ModelView):
-    'Open Third Party Balance'
-    __name__ = 'account.open_third_party_balance.start'
-    company = fields.Many2One('company.company', 'Company', required=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
-
-    @staticmethod
-    def default_fiscalyear():
-        Fiscalyear = Pool().get('account.fiscalyear')
-        return Fiscalyear.find(
-            Transaction().context.get('company'), exception=False)
-
-    @staticmethod
-    def default_posted():
-        return False
-
-    @staticmethod
-    def default_company():
-        return Transaction().context.get('company')
-
-
-class OpenThirdPartyBalance(Wizard):
-    'Open Third Party Balance'
-    __name__ = 'account.open_third_party_balance'
-    start = StateView('account.open_third_party_balance.start',
-        'account.open_third_party_balance_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Print', 'print_', 'tryton-print', default=True),
-            ])
-    print_ = StateReport('account.third_party_balance')
-
-    def do_print_(self, action):
-        data = {
-            'company': self.start.company.id,
-            'fiscalyear': self.start.fiscalyear.id,
-            'posted': self.start.posted,
-            }
-        return action, data
-
-    def transition_print_(self):
-        return 'end'
-
-
-class ThirdPartyBalance(Report):
-    __name__ = 'account.third_party_balance'
-
-    @classmethod
-    def get_context(cls, records, data):
-        report_context = super(ThirdPartyBalance, cls).get_context(records,
-            data)
-
-        pool = Pool()
-        Party = pool.get('party.party')
-        MoveLine = pool.get('account.move.line')
-        Move = pool.get('account.move')
-        Account = pool.get('account.account')
-        Company = pool.get('company.company')
-        Date = pool.get('ir.date')
-        cursor = Transaction().cursor
-
-        line = MoveLine.__table__()
-        move = Move.__table__()
-        account = Account.__table__()
-
-        company = Company(data['company'])
-        report_context['company'] = company
-        report_context['digits'] = company.currency.digits
-        report_context['fiscalyear'] = data['fiscalyear']
-        with Transaction().set_context(context=report_context):
-            line_query, _ = MoveLine.query_get(line)
-        if data['posted']:
-            posted_clause = move.state == 'posted'
-        else:
-            posted_clause = Literal(True)
-
-        cursor.execute(*line.join(move, condition=line.move == move.id
-                ).join(account, condition=line.account == account.id
-                ).select(line.party, Sum(line.debit), Sum(line.credit),
-                where=(line.party != Null)
-                & (account.active == True)
-                & account.kind.in_(('payable', 'receivable'))
-                & (account.company == data['company'])
-                & ((line.maturity_date <= Date.today())
-                    | (line.maturity_date == Null))
-                & line_query & posted_clause,
-                group_by=line.party,
-                having=(Sum(line.debit) != 0) | (Sum(line.credit) != 0)))
-
-        res = cursor.fetchall()
-        id2party = {}
-        for party in Party.browse([x[0] for x in res]):
-            id2party[party.id] = party
-        objects = [{
-            'name': id2party[x[0]].rec_name,
-            'debit': x[1],
-            'credit': x[2],
-            'solde': x[1] - x[2],
-            } for x in res]
-        objects.sort(lambda x, y: cmp(x['name'], y['name']))
-        report_context['total_debit'] = sum((x['debit'] for x in objects))
-        report_context['total_credit'] = sum((x['credit'] for x in objects))
-        report_context['total_solde'] = sum((x['solde'] for x in objects))
-        report_context['records'] = objects
-
-        return report_context
-
-
 class OpenAgedBalanceStart(ModelView):
     'Open Aged Balance'
     __name__ = 'account.open_aged_balance.start'
@@ -1972,9 +1862,18 @@ class OpenAgedBalanceStart(ModelView):
     balance_type = fields.Selection(
         [('customer', 'Customer'), ('supplier', 'Supplier'), ('both', 'Both')],
         "Type", required=True)
+    date = fields.Date('Date', required=True)
     term1 = fields.Integer("First Term", required=True)
-    term2 = fields.Integer("Second Term", required=True)
-    term3 = fields.Integer("Third Term", required=True)
+    term2 = fields.Integer("Second Term", required=True,
+        domain=[
+            ('term2', '>', Eval('term1', 0)),
+            ],
+        depends=['term1'])
+    term3 = fields.Integer("Third Term", required=True,
+        domain=[
+            ('term3', '>', Eval('term2', 0)),
+            ],
+        depends=['term2'])
     unit = fields.Selection(
         [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
@@ -1986,6 +1885,10 @@ class OpenAgedBalanceStart(ModelView):
     @staticmethod
     def default_posted():
         return False
+
+    @classmethod
+    def default_date(cls):
+        return Pool().get('ir.date').today()
 
     @staticmethod
     def default_term1():
@@ -2032,6 +1935,7 @@ class OpenAgedBalance(Wizard):
                 error_description="term_overlap_desc")
         data = {
             'company': self.start.company.id,
+            'date': self.start.date,
             'term1': self.start.term1,
             'term2': self.start.term2,
             'term3': self.start.term3,
@@ -2056,13 +1960,14 @@ class AgedBalance(Report):
         Party = pool.get('party.party')
         MoveLine = pool.get('account.move.line')
         Move = pool.get('account.move')
+        Reconciliation = pool.get('account.move.reconciliation')
         Account = pool.get('account.account')
         Company = pool.get('company.company')
-        Date = pool.get('ir.date')
         cursor = Transaction().cursor
 
         line = MoveLine.__table__()
         move = Move.__table__()
+        reconciliation = Reconciliation.__table__()
         account = Account.__table__()
 
         company = Company(data['company'])
@@ -2071,7 +1976,7 @@ class AgedBalance(Report):
         with Transaction().set_context(context=report_context):
             line_query, _ = MoveLine.query_get(line)
 
-        terms = (data['term1'], data['term2'], data['term3'])
+        terms = (0, data['term1'], data['term2'], data['term3'])
         if data['unit'] == 'month':
             coef = datetime.timedelta(days=30)
         else:
@@ -2083,20 +1988,27 @@ class AgedBalance(Report):
             'customer': ('receivable',),
             }[data['balance_type']]
 
+        report_context['date'] = date = data['date']
         res = {}
         for position, term in enumerate(terms):
-            term_query = line.maturity_date <= (Date.today() - term * coef)
-            if position != 2:
+            term_query = line.maturity_date <= (date - term * coef)
+            if position + 1 < len(terms):
                 term_query &= line.maturity_date > (
-                    Date.today() - terms[position + 1] * coef)
+                    date - terms[position + 1] * coef)
+            else:
+                term_query |= line.maturity_date == Null
 
             cursor.execute(*line.join(move, condition=line.move == move.id
                     ).join(account, condition=line.account == account.id
+                    ).join(reconciliation, 'LEFT',
+                    condition=reconciliation.id == line.reconciliation
                     ).select(line.party, Sum(line.debit) - Sum(line.credit),
                     where=(line.party != Null)
                     & (account.active == True)
                     & account.kind.in_(kind)
-                    & (line.reconciliation == Null)
+                    & ((line.reconciliation == Null)
+                        | (reconciliation.date > date))
+                    & (move.date <= date)
                     & (account.company == data['company'])
                     & term_query & line_query,
                     group_by=line.party,
@@ -2113,17 +2025,22 @@ class AgedBalance(Report):
 
         report_context['main_title'] = data['balance_type']
         report_context['unit'] = data['unit']
-        for i in range(3):
+        total = 0
+        for i in range(len(terms)):
             report_context['total' + str(i)] = sum(
                 (v[i] for v in res.itervalues()))
+            total += report_context['total' + str(i)]
             report_context['term' + str(i)] = terms[i]
+        report_context['total'] = total
 
         report_context['company'] = company
         report_context['parties'] = [{
                 'name': p.rec_name,
+                'balance': sum(res[p.id]),
                 'amount0': res[p.id][0],
                 'amount1': res[p.id][1],
                 'amount2': res[p.id][2],
+                'amount3': res[p.id][3],
                 } for p in parties]
 
         return report_context
