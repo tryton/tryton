@@ -89,9 +89,6 @@ Print some reports::
     >>> print_trial_balance.form.end_period = None
     >>> print_trial_balance.execute('print_')
 
-    >>> third_party_balance = Wizard('account.open_third_party_balance')
-    >>> third_party_balance.execute('print_')
-
     >>> aged_balance = Wizard('account.open_aged_balance')
     >>> aged_balance.execute('print_')
 
