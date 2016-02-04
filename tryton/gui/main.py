@@ -490,14 +490,14 @@ class Main(object):
         image.set_from_stock('tryton-start-here', gtk.ICON_SIZE_MENU)
         imagemenuitem_menu.set_image(image)
         imagemenuitem_menu.connect('activate', lambda *a: self.sig_win_menu())
-        imagemenuitem_menu.set_accel_path('<tryton>/User/Menu Reload')
+        imagemenuitem_menu.set_accel_path('<tryton>/User/Reload Menu')
         menu_user.add(imagemenuitem_menu)
 
         imagemenuitem_menu_toggle = gtk.ImageMenuItem(_('_Menu Toggle'),
                 self.accel_group)
         imagemenuitem_menu_toggle.connect('activate',
             lambda *a: self.menu_toggle())
-        imagemenuitem_menu_toggle.set_accel_path('<tryton>/User/Menu Toggle')
+        imagemenuitem_menu_toggle.set_accel_path('<tryton>/User/Toggle Menu')
         menu_user.add(imagemenuitem_menu_toggle)
 
         imagemenuitem_global_search = gtk.ImageMenuItem(_('_Global Search'),
