@@ -1,43 +1,49 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
 
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
 from trytond.exceptions import UserError, UserWarning
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart, get_fiscalyear
 
 
 class AccountCreditLimitTestCase(ModuleTestCase):
     'Test AccountCreditLimit module'
     module = 'account_credit_limit'
 
-    def setUp(self):
-        super(AccountCreditLimitTestCase, self).setUp()
-        self.account = POOL.get('account.account')
-        self.move = POOL.get('account.move')
-        self.period = POOL.get('account.period')
-        self.journal = POOL.get('account.journal')
-        self.party = POOL.get('party.party')
-
-    def test0010check_credit_limit(self):
+    @with_transaction()
+    def test_check_credit_limit(self):
         'Test check_credit_limit'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            receivable, = self.account.search([
+        pool = Pool()
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Journal = pool.get('account.journal')
+        Party = pool.get('party.party')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            fiscalyear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+
+            receivable, = Account.search([
                     ('kind', '=', 'receivable'),
                     ])
-            revenue, = self.account.search([
+            revenue, = Account.search([
                     ('kind', '=', 'revenue'),
                     ])
-            journal, = self.journal.search([], limit=1)
-            period, = self.period.search([], limit=1)
-            party, = self.party.create([{
+            journal, = Journal.search([], limit=1)
+            party, = Party.create([{
                         'name': 'Party',
                         }])
-            self.move.create([{
+            Move.create([{
                         'journal': journal.id,
                         'period': period.id,
                         'date': period.start_date,
@@ -76,10 +82,6 @@ class AccountCreditLimitTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountCreditLimitTestCase))
     return suite
