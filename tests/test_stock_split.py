@@ -1,55 +1,47 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
 
 
 class StockSplitTestCase(ModuleTestCase):
     'Test Stock Lot module'
     module = 'stock_split'
 
-    def setUp(self):
-        super(StockSplitTestCase, self).setUp()
-        self.uom = POOL.get('product.uom')
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.location = POOL.get('stock.location')
-        self.company = POOL.get('company.company')
-        self.user = POOL.get('res.user')
-        self.move = POOL.get('stock.move')
-
-    def test0010split(self):
+    @with_transaction()
+    def test_split(self):
         'Test split'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            unit, = self.uom.search([('name', '=', 'Unit')])
-            template, = self.template.create([{
-                        'name': 'Test Split',
-                        'type': 'goods',
-                        'cost_price_method': 'fixed',
-                        'default_uom': unit.id,
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            input_, = self.location.search([('code', '=', 'IN')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            self.user.write([self.user(USER)], {
-                    'main_company': company.id,
-                    'company': company.id,
-                    })
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test Split',
+                    'type': 'goods',
+                    'cost_price_method': 'fixed',
+                    'default_uom': unit.id,
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        input_, = Location.search([('code', '=', 'IN')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
 
             def create_move(quantity):
-                move, = self.move.create([{
+                move, = Move.create([{
                             'product': product.id,
                             'uom': unit.id,
                             'quantity': quantity,
@@ -90,7 +82,7 @@ class StockSplitTestCase(ModuleTestCase):
             self.assertEqual([m.quantity for m in moves], [5, 5])
 
             move = create_move(10)
-            self.move.write([move], {
+            Move.write([move], {
                     'state': 'assigned',
                     })
             moves = move.split(5, unit)
@@ -102,10 +94,6 @@ class StockSplitTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             StockSplitTestCase))
     return suite
