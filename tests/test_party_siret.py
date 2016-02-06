@@ -10,7 +10,7 @@ class PartySiretTestCase(ModuleTestCase):
     'Test PartySiret module'
     module = 'party_siret'
 
-    def test0010luhn(self):
+    def test_luhn(self):
         'Test luhn'
         values = (
             (4111111111111111, True),
