@@ -4,6 +4,7 @@ Sale Promotion Scenario
 
 Imports::
 
+    >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company, \
