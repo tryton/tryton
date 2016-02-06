@@ -1,14 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
 import datetime
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT
-from trytond.pool import Pool
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
 
 
 class StockLotSLEDTestCase(ModuleTestCase):
@@ -16,45 +16,37 @@ class StockLotSLEDTestCase(ModuleTestCase):
     module = 'stock_lot_sled'
     longMessage = True
 
+    @with_transaction()
     def test_sled(self):
         'Test SLED'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            pool = Pool()
-            Uom = pool.get('product.uom')
-            Template = pool.get('product.template')
-            Product = pool.get('product.product')
-            Location = pool.get('stock.location')
-            Company = pool.get('company.company')
-            User = pool.get('res.user')
-            Date = pool.get('ir.date')
-            Move = pool.get('stock.move')
-            Lot = pool.get('stock.lot')
-            Period = pool.get('stock.period')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Date = pool.get('ir.date')
+        Move = pool.get('stock.move')
+        Lot = pool.get('stock.lot')
+        Period = pool.get('stock.period')
 
-            u, = Uom.search([('name', '=', 'Unit')])
-            template = Template(
-                name='Test SLED',
-                type='goods',
-                list_price=0,
-                cost_price=0,
-                default_uom=u,
-                shelf_life_state='optional',
-                )
-            template.save()
-            product = Product(template=template)
-            product.save()
+        u, = Uom.search([('name', '=', 'Unit')])
+        template = Template(
+            name='Test SLED',
+            type='goods',
+            list_price=0,
+            cost_price=0,
+            default_uom=u,
+            shelf_life_state='optional',
+            )
+        template.save()
+        product = Product(template=template)
+        product.save()
 
-            supplier, = Location.search([('code', '=', 'SUP')])
-            storage, = Location.search([('code', '=', 'CUS')])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'CUS')])
 
-            company, = Company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            user = User(USER)
-            user.main_company = company
-            user.company = company
-            user.save()
-
+        company = create_company()
+        with set_company(company):
             today = Date.today()
 
             lot = Lot(
@@ -108,10 +100,6 @@ class StockLotSLEDTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             StockLotSLEDTestCase))
     return suite
