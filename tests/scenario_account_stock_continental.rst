@@ -96,7 +96,7 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
-    >>> template.delivery_time = 0
+    >>> template.lead_time = datetime.timedelta(0)
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> template.account_stock = stock
@@ -290,7 +290,7 @@ Create Drop Shipment Move::
     >>> product_supplier.product = product.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.delivery_time = 0
+    >>> product_supplier.lead_time = datetime.timedelta(0)
     >>> product_supplier.save()
     >>> product.template.supply_on_sale = True
     >>> product.template.save()
@@ -342,7 +342,7 @@ Create Drop Shipment Move::
     >>> product_supplier.product = product_average.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.delivery_time = 0
+    >>> product_supplier.lead_time = datetime.timedelta(0)
     >>> product_supplier.save()
     >>> product_average.template.supply_on_sale = True
     >>> product_average.template.save()
