@@ -7,58 +7,49 @@ from dateutil.relativedelta import relativedelta
 from decimal import Decimal
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
 
 
 class StockLotTestCase(ModuleTestCase):
     'Test Stock Lot module'
     module = 'stock_lot'
 
-    def setUp(self):
-        super(StockLotTestCase, self).setUp()
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.uom = POOL.get('product.uom')
-        self.lot = POOL.get('stock.lot')
-        self.location = POOL.get('stock.location')
-        self.move = POOL.get('stock.move')
-        self.company = POOL.get('company.company')
-        self.user = POOL.get('res.user')
-        self.period = POOL.get('stock.period')
-        self.cache = POOL.get('stock.period.cache')
-
-    def test0010products_by_location(self):
+    @with_transaction()
+    def test_products_by_location(self):
         'Test products_by_location'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            kg, = self.uom.search([('name', '=', 'Kilogram')])
-            g, = self.uom.search([('name', '=', 'Gram')])
-            template, = self.template.create([{
-                        'name': 'Test products_by_location',
-                        'type': 'goods',
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        'cost_price_method': 'fixed',
-                        'default_uom': kg.id,
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            supplier, = self.location.search([('code', '=', 'SUP')])
-            customer, = self.location.search([('code', '=', 'CUS')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            currency = company.currency
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Lot = pool.get('stock.lot')
 
-            lot1, lot2 = self.lot.create([{
+        kg, = Uom.search([('name', '=', 'Kilogram')])
+        g, = Uom.search([('name', '=', 'Gram')])
+        template, = Template.create([{
+                    'name': 'Test products_by_location',
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    'cost_price_method': 'fixed',
+                    'default_uom': kg.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        customer, = Location.search([('code', '=', 'CUS')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        currency = company.currency
+        with set_company(company):
+            lot1, lot2 = Lot.create([{
                         'number': '1',
                         'product': product.id,
                         }, {
@@ -66,7 +57,7 @@ class StockLotTestCase(ModuleTestCase):
                         'product': product.id,
                         }])
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'lot': lot1.id,
                         'uom': kg.id,
@@ -107,13 +98,13 @@ class StockLotTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do(moves)
+            Move.do(moves)
 
-            self.assertEqual(self.product.products_by_location([storage.id],
+            self.assertEqual(Product.products_by_location([storage.id],
                     [product.id]), {
                     (storage.id, product.id): 16,
                     })
-            self.assertEqual(self.product.products_by_location([storage.id],
+            self.assertEqual(Product.products_by_location([storage.id],
                     [product.id], grouping=('product', 'lot')), {
                     (storage.id, product.id, lot1.id): 5,
                     (storage.id, product.id, lot2.id): 8,
@@ -123,33 +114,36 @@ class StockLotTestCase(ModuleTestCase):
                 self.assertEqual(lot1.quantity, 5)
                 self.assertEqual(lot2.quantity, 8)
 
-    def test0020period(self):
+    @with_transaction()
+    def test_period(self):
         'Test period'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            unit, = self.uom.search([('name', '=', 'Unit')])
-            template, = self.template.create([{
-                        'name': 'Test period',
-                        'type': 'goods',
-                        'cost_price_method': 'fixed',
-                        'default_uom': unit.id,
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            supplier, = self.location.search([('code', '=', 'SUP')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            currency = company.currency
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Lot = pool.get('stock.lot')
+        Period = pool.get('stock.period')
 
-            lot1, lot2 = self.lot.create([{
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test period',
+                    'type': 'goods',
+                    'cost_price_method': 'fixed',
+                    'default_uom': unit.id,
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        currency = company.currency
+        with set_company(company):
+            lot1, lot2 = Lot.create([{
                         'number': '1',
                         'product': product.id,
                         }, {
@@ -159,7 +153,7 @@ class StockLotTestCase(ModuleTestCase):
 
             today = datetime.date.today()
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'lot': lot1.id,
                         'uom': unit.id,
@@ -196,13 +190,13 @@ class StockLotTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do(moves)
+            Move.do(moves)
 
-            period, = self.period.create([{
+            period, = Period.create([{
                         'date': today - relativedelta(days=1),
                         'company': company.id,
                         }])
-            self.period.close([period])
+            Period.close([period])
             self.assertEqual(period.state, 'closed')
 
             quantities = {
@@ -230,10 +224,6 @@ class StockLotTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             StockLotTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_stock_lot_shipment_out.rst',
