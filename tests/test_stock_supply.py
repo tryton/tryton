@@ -5,10 +5,12 @@ import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
-from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart
 
 DATES = [
     # purchase date, lead time, supply date
@@ -33,36 +35,31 @@ class StockSupplyTestCase(ModuleTestCase):
     'Test StockSupply module'
     module = 'stock_supply'
 
-    def setUp(self):
-        super(StockSupplyTestCase, self).setUp()
-        self.uom = POOL.get('product.uom')
-        self.uom_category = POOL.get('product.uom.category')
-        self.category = POOL.get('product.category')
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.company = POOL.get('company.company')
-        self.party = POOL.get('party.party')
-        self.account = POOL.get('account.account')
-        self.product_supplier = POOL.get('purchase.product_supplier')
-        self.user = POOL.get('res.user')
-
-    def test0010compute_supply_date(self):
+    def test_compute_supply_date(self):
         'Test compute_supply_date'
+        @with_transaction()
+        def run(purchase_date, lead_time, supply_date):
+            pool = Pool()
+            ProductSupplier = pool.get('purchase.product_supplier')
+            product_supplier = self.create_product_supplier(lead_time)
+            date = ProductSupplier.compute_supply_date(
+                product_supplier, purchase_date)
+            self.assertEqual(date, supply_date)
         for purchase_date, lead_time, supply_date in DATES:
-            with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier(lead_time)
-                date = self.product_supplier.compute_supply_date(
-                    product_supplier, purchase_date)
-                self.assertEqual(date, supply_date)
+            run(purchase_date, lead_time, supply_date)
 
-    def test0020compute_purchase_date(self):
+    def test_compute_purchase_date(self):
         'Test compute_purchase_date'
+        @with_transaction()
+        def run(purchase_date, lead_time, supply_date):
+            pool = Pool()
+            ProductSupplier = pool.get('purchase.product_supplier')
+            product_supplier = self.create_product_supplier(lead_time)
+            date = ProductSupplier.compute_purchase_date(
+                product_supplier, supply_date)
+            self.assertEqual(date, purchase_date)
         for purchase_date, lead_time, supply_date in DATES:
-            with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier(lead_time)
-                date = self.product_supplier.compute_purchase_date(
-                    product_supplier, supply_date)
-                self.assertEqual(date, purchase_date)
+            run(purchase_date, lead_time, supply_date)
 
     def create_product_supplier(self, lead_time):
         '''
@@ -71,16 +68,26 @@ class StockSupplyTestCase(ModuleTestCase):
         :param lead_time: timedelta needed to supply
         :return: the id of the Product Supplier
         '''
-        uom_category, = self.uom_category.create([{'name': 'Test'}])
-        uom, = self.uom.create([{
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        UomCategory = pool.get('product.uom.category')
+        Category = pool.get('product.category')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Party = pool.get('party.party')
+        Account = pool.get('account.account')
+        ProductSupplier = pool.get('purchase.product_supplier')
+
+        uom_category, = UomCategory.create([{'name': 'Test'}])
+        uom, = Uom.create([{
                     'name': 'Test',
                     'symbol': 'T',
                     'category': uom_category.id,
                     'rate': 1.0,
                     'factor': 1.0,
                     }])
-        category, = self.category.create([{'name': 'ProdCategoryTest'}])
-        template, = self.template.create([{
+        category, = Category.create([{'name': 'ProdCategoryTest'}])
+        template, = Template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
                     'category': category.id,
@@ -88,48 +95,36 @@ class StockSupplyTestCase(ModuleTestCase):
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     }])
-        product, = self.product.create([{
+        product, = Product.create([{
                     'template': template.id,
                     }])
-        company, = self.company.search([
-                ('rec_name', '=', 'Dunder Mifflin'),
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            receivable, = Account.search([
+                ('kind', '=', 'receivable'),
+                ('company', '=', company.id),
                 ])
-        self.user.write([self.user(USER)], {
-            'main_company': company.id,
-            'company': company.id,
-            })
-        receivable, = self.account.search([
-            ('kind', '=', 'receivable'),
-            ('company', '=', company.id),
-            ])
-        payable, = self.account.search([
-            ('kind', '=', 'payable'),
-            ('company', '=', company.id),
-            ])
-        supplier, = self.party.create([{
-                    'name': 'supplier',
-                    'account_receivable': receivable.id,
-                    'account_payable': payable.id,
-                    }])
-        product_supplier, = self.product_supplier.create([{
-                    'product': template.id,
-                    'company': company.id,
-                    'party': supplier.id,
-                    'lead_time': lead_time,
-                    }])
-        return product_supplier
+            payable, = Account.search([
+                ('kind', '=', 'payable'),
+                ('company', '=', company.id),
+                ])
+            supplier, = Party.create([{
+                        'name': 'supplier',
+                        'account_receivable': receivable.id,
+                        'account_payable': payable.id,
+                        }])
+            product_supplier, = ProductSupplier.create([{
+                        'product': template.id,
+                        'company': company.id,
+                        'party': supplier.id,
+                        'lead_time': lead_time,
+                        }])
+            return product_supplier
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockSupplyTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_stock_internal_supply.rst',
