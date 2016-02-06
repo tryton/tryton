@@ -55,7 +55,7 @@ Create products::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
-    >>> template.delivery_time = 0
+    >>> template.lead_time = datetime.timedelta(0)
     >>> template.list_price = Decimal('20')
     >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
