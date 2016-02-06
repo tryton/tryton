@@ -80,7 +80,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
-    >>> template.delivery_time = 0
+    >>> template.lead_time = datetime.timedelta(0)
     >>> template.list_price = Decimal('20')
     >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
@@ -94,7 +94,7 @@ Create product::
     >>> carrier_template.default_uom = unit
     >>> carrier_template.type = 'service'
     >>> carrier_template.salable = True
-    >>> carrier_template.delivery_time = 0
+    >>> carrier_template.lead_time = datetime.timedelta(0)
     >>> carrier_template.list_price = Decimal('3')
     >>> carrier_template.cost_price = Decimal(0)
     >>> carrier_template.account_revenue = revenue
