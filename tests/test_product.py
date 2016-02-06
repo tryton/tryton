@@ -3,8 +3,7 @@
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -13,105 +12,110 @@ class ProductTestCase(ModuleTestCase):
     'Test Product module'
     module = 'product'
 
-    def setUp(self):
-        super(ProductTestCase, self).setUp()
-        self.uom = POOL.get('product.uom')
-        self.uom_category = POOL.get('product.uom.category')
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.category = POOL.get('product.category')
-
-    def test0010uom_non_zero_rate_factor(self):
+    @with_transaction()
+    def test_uom_non_zero_rate_factor(self):
         'Test uom non_zero_rate_factor constraint'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            category, = self.uom_category.create([{'name': 'Test'}])
-            transaction.cursor.commit()
+        pool = Pool()
+        UomCategory = pool.get('product.uom.category')
+        Uom = pool.get('product.uom')
+        transaction = Transaction()
+        category, = UomCategory.create([{'name': 'Test'}])
 
-            self.assertRaises(Exception, self.uom.create, [{
-                    'name': 'Test',
-                    'symbol': 'T',
-                    'category': category.id,
-                    'rate': 0,
-                    'factor': 0,
-                    }])
-            transaction.cursor.rollback()
+        self.assertRaises(Exception, Uom.create, [{
+                'name': 'Test',
+                'symbol': 'T',
+                'category': category.id,
+                'rate': 0,
+                'factor': 0,
+                }])
+        transaction.cursor.rollback()
 
-            uom, = self.uom.create([{
+        def create():
+            return Uom.create([{
                         'name': 'Test',
                         'symbol': 'T',
                         'category': category.id,
                         'rate': 1.0,
                         'factor': 1.0,
-                        }])
-            transaction.cursor.commit()
+                        }])[0]
 
-            self.assertRaises(Exception, self.uom.write, [uom], {
-                    'rate': 0.0,
-                    })
-            transaction.cursor.rollback()
+        uom = create()
+        self.assertRaises(Exception, Uom.write, [uom], {
+                'rate': 0.0,
+                })
+        transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.uom.write, [uom], {
-                    'factor': 0.0,
-                    })
-            transaction.cursor.rollback()
+        uom = create()
+        self.assertRaises(Exception, Uom.write, [uom], {
+                'factor': 0.0,
+                })
+        transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.uom.write, [uom], {
-                    'rate': 0.0,
-                    'factor': 0.0,
-                    })
-            transaction.cursor.rollback()
+        uom = create()
+        self.assertRaises(Exception, Uom.write, [uom], {
+                'rate': 0.0,
+                'factor': 0.0,
+                })
+        transaction.cursor.rollback()
 
-    def test0020uom_check_factor_and_rate(self):
+    @with_transaction()
+    def test_uom_check_factor_and_rate(self):
         'Test uom check_factor_and_rate constraint'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            category, = self.uom_category.search([
-                    ('name', '=', 'Test'),
-                    ], limit=1)
+        pool = Pool()
+        UomCategory = pool.get('product.uom.category')
+        Uom = pool.get('product.uom')
+        transaction = Transaction()
+        category, = UomCategory.create([{'name': 'Test'}])
 
-            self.assertRaises(Exception, self.uom.create, [{
+        self.assertRaises(Exception, Uom.create, [{
+                'name': 'Test',
+                'symbol': 'T',
+                'category': category.id,
+                'rate': 2,
+                'factor': 2,
+                }])
+        transaction.cursor.rollback()
+
+        uom, = Uom.create([{
                     'name': 'Test',
                     'symbol': 'T',
                     'category': category.id,
-                    'rate': 2,
-                    'factor': 2,
+                    'rate': 1.0,
+                    'factor': 1.0,
                     }])
-            transaction.cursor.rollback()
 
-            uom, = self.uom.search([
-                    ('name', '=', 'Test'),
-                    ], limit=1)
+        self.assertRaises(Exception, Uom.write, [uom], {
+                'rate': 2.0,
+                })
+        transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.uom.write, [uom],
-                {
-                    'rate': 2.0,
-                    })
-            transaction.cursor.rollback()
+        self.assertRaises(Exception, Uom.write, [uom], {
+                'factor': 2.0,
+                })
+        transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.uom.write, [uom],
-                {
-                    'factor': 2.0,
-                    })
-            transaction.cursor.rollback()
-
-    def test0030uom_select_accurate_field(self):
+    @with_transaction()
+    def test_uom_select_accurate_field(self):
         'Test uom select_accurate_field function'
+        pool = Pool()
+        Uom = pool.get('product.uom')
         tests = [
             ('Meter', 'factor'),
             ('Kilometer', 'factor'),
             ('centimeter', 'rate'),
             ('Foot', 'factor'),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for name, result in tests:
-                uom, = self.uom.search([
-                        ('name', '=', name),
-                        ], limit=1)
-                self.assertEqual(result, uom.accurate_field)
+        for name, result in tests:
+            uom, = Uom.search([
+                    ('name', '=', name),
+                    ], limit=1)
+            self.assertEqual(result, uom.accurate_field)
 
-    def test0040uom_compute_qty(self):
+    @with_transaction()
+    def test_uom_compute_qty(self):
         'Test uom compute_qty function'
+        pool = Pool()
+        Uom = pool.get('product.uom')
         tests = [
             ('Kilogram', 100, 'Gram', 100000, 100000),
             ('Gram', 1, 'Pound', 0.0022046226218487759, 0.0),
@@ -121,44 +125,45 @@ class ProductTestCase(ModuleTestCase):
             ('Millimeter', 0, 'Inch', 0, 0),
             ('Millimeter', None, 'Inch', None, None),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for from_name, qty, to_name, result, rounded_result in tests:
-                from_uom, = self.uom.search([
-                        ('name', '=', from_name),
-                        ], limit=1)
-                to_uom, = self.uom.search([
-                        ('name', '=', to_name),
-                        ], limit=1)
-                self.assertEqual(result, self.uom.compute_qty(
-                        from_uom, qty, to_uom, False))
-                self.assertEqual(rounded_result, self.uom.compute_qty(
-                        from_uom, qty, to_uom, True))
-            self.assertEqual(0.2, self.uom.compute_qty(None, 0.2, None, False))
-            self.assertEqual(0.2, self.uom.compute_qty(None, 0.2, None, True))
+        for from_name, qty, to_name, result, rounded_result in tests:
+            from_uom, = Uom.search([
+                    ('name', '=', from_name),
+                    ], limit=1)
+            to_uom, = Uom.search([
+                    ('name', '=', to_name),
+                    ], limit=1)
+            self.assertEqual(result, Uom.compute_qty(
+                    from_uom, qty, to_uom, False))
+            self.assertEqual(rounded_result, Uom.compute_qty(
+                    from_uom, qty, to_uom, True))
+        self.assertEqual(0.2, Uom.compute_qty(None, 0.2, None, False))
+        self.assertEqual(0.2, Uom.compute_qty(None, 0.2, None, True))
 
         tests_exceptions = [
             ('Millimeter', 3, 'Pound', ValueError),
             ('Kilogram', 'not a number', 'Pound', TypeError),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for from_name, qty, to_name, exception in tests_exceptions:
-                from_uom, = self.uom.search([
-                        ('name', '=', from_name),
-                        ], limit=1)
-                to_uom, = self.uom.search([
-                        ('name', '=', to_name),
-                        ], limit=1)
-                self.assertRaises(exception, self.uom.compute_qty,
-                        from_uom, qty, to_uom, False)
-                self.assertRaises(exception, self.uom.compute_qty,
-                        from_uom, qty, to_uom, True)
-            self.assertRaises(ValueError, self.uom.compute_qty,
-                    None, qty, to_uom, True)
-            self.assertRaises(ValueError, self.uom.compute_qty,
-                    from_uom, qty, None, True)
+        for from_name, qty, to_name, exception in tests_exceptions:
+            from_uom, = Uom.search([
+                    ('name', '=', from_name),
+                    ], limit=1)
+            to_uom, = Uom.search([
+                    ('name', '=', to_name),
+                    ], limit=1)
+            self.assertRaises(exception, Uom.compute_qty,
+                from_uom, qty, to_uom, False)
+            self.assertRaises(exception, Uom.compute_qty,
+                from_uom, qty, to_uom, True)
+        self.assertRaises(ValueError, Uom.compute_qty,
+            None, qty, to_uom, True)
+        self.assertRaises(ValueError, Uom.compute_qty,
+            from_uom, qty, None, True)
 
-    def test0050uom_compute_price(self):
+    @with_transaction()
+    def test_uom_compute_price(self):
         'Test uom compute_price function'
+        pool = Pool()
+        Uom = pool.get('product.uom')
         tests = [
             ('Kilogram', Decimal('100'), 'Gram', Decimal('0.1')),
             ('Gram', Decimal('1'), 'Pound', Decimal('453.59237')),
@@ -168,133 +173,145 @@ class ProductTestCase(ModuleTestCase):
             ('Millimeter', Decimal('0'), 'Inch', Decimal('0')),
             ('Millimeter', None, 'Inch', None),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for from_name, price, to_name, result in tests:
-                from_uom, = self.uom.search([
-                        ('name', '=', from_name),
-                        ], limit=1)
-                to_uom, = self.uom.search([
-                        ('name', '=', to_name),
-                        ], limit=1)
-                self.assertEqual(result, self.uom.compute_price(
-                        from_uom, price, to_uom))
-            self.assertEqual(Decimal('0.2'), self.uom.compute_price(
-                    None, Decimal('0.2'), None))
+        for from_name, price, to_name, result in tests:
+            from_uom, = Uom.search([
+                    ('name', '=', from_name),
+                    ], limit=1)
+            to_uom, = Uom.search([
+                    ('name', '=', to_name),
+                    ], limit=1)
+            self.assertEqual(result, Uom.compute_price(
+                    from_uom, price, to_uom))
+        self.assertEqual(Decimal('0.2'), Uom.compute_price(
+                None, Decimal('0.2'), None))
 
         tests_exceptions = [
             ('Millimeter', Decimal('3'), 'Pound', ValueError),
             ('Kilogram', 'not a number', 'Pound', TypeError),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for from_name, price, to_name, exception in tests_exceptions:
-                from_uom, = self.uom.search([
-                        ('name', '=', from_name),
-                        ], limit=1)
-                to_uom, = self.uom.search([
-                        ('name', '=', to_name),
-                        ], limit=1)
-                self.assertRaises(exception, self.uom.compute_price,
-                        from_uom, price, to_uom)
-            self.assertRaises(ValueError, self.uom.compute_price,
-                    None, price, to_uom)
-            self.assertRaises(ValueError, self.uom.compute_price,
-                    from_uom, price, None)
-
-    def test0060product_search_domain(self):
-        'Test product.product search_domain function'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            kilogram, = self.uom.search([
-                    ('name', '=', 'Kilogram'),
+        for from_name, price, to_name, exception in tests_exceptions:
+            from_uom, = Uom.search([
+                    ('name', '=', from_name),
                     ], limit=1)
-            millimeter, = self.uom.search([
-                    ('name', '=', 'Millimeter'),
-                    ])
-            pt1, pt2 = self.template.create([{
-                        'name': 'P1',
-                        'type': 'goods',
-                        'list_price': Decimal(20),
-                        'cost_price': Decimal(10),
-                        'default_uom': kilogram.id,
-                        'products': [('create', [{
-                                        'code': '1',
-                                        }])]
-                        }, {
-                        'name': 'P2',
-                        'type': 'goods',
-                        'list_price': Decimal(20),
-                        'cost_price': Decimal(10),
-                        'default_uom': millimeter.id,
-                        'products': [('create', [{
-                                        'code': '2',
-                                        }])]
-                        }])
-            p, = self.product.search([
-                    ('default_uom.name', '=', 'Kilogram'),
-                    ])
-            self.assertEqual(p, pt1.products[0])
-            p, = self.product.search([
-                    ('default_uom.name', '=', 'Millimeter'),
-                    ])
-            self.assertEqual(p, pt2.products[0])
+            to_uom, = Uom.search([
+                    ('name', '=', to_name),
+                    ], limit=1)
+            self.assertRaises(exception, Uom.compute_price,
+                from_uom, price, to_uom)
+        self.assertRaises(ValueError, Uom.compute_price,
+            None, price, to_uom)
+        self.assertRaises(ValueError, Uom.compute_price,
+            from_uom, price, None)
 
-    def test0060search_domain_conversion(self):
+    @with_transaction()
+    def test_product_search_domain(self):
+        'Test product.product search_domain function'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+
+        kilogram, = Uom.search([
+                ('name', '=', 'Kilogram'),
+                ], limit=1)
+        millimeter, = Uom.search([
+                ('name', '=', 'Millimeter'),
+                ])
+        pt1, pt2 = Template.create([{
+                    'name': 'P1',
+                    'type': 'goods',
+                    'list_price': Decimal(20),
+                    'cost_price': Decimal(10),
+                    'default_uom': kilogram.id,
+                    'products': [('create', [{
+                                    'code': '1',
+                                    }])]
+                    }, {
+                    'name': 'P2',
+                    'type': 'goods',
+                    'list_price': Decimal(20),
+                    'cost_price': Decimal(10),
+                    'default_uom': millimeter.id,
+                    'products': [('create', [{
+                                    'code': '2',
+                                    }])]
+                    }])
+        p, = Product.search([
+                ('default_uom.name', '=', 'Kilogram'),
+                ])
+        self.assertEqual(p, pt1.products[0])
+        p, = Product.search([
+                ('default_uom.name', '=', 'Millimeter'),
+                ])
+        self.assertEqual(p, pt2.products[0])
+
+    @with_transaction()
+    def test_search_domain_conversion(self):
         'Test the search domain conversion'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category1, = self.category.create([{'name': 'Category1'}])
-            category2, = self.category.create([{'name': 'Category2'}])
-            uom, = self.uom.search([], limit=1)
-            values1 = {
-                'name': 'Some product-1',
-                'category': category1.id,
-                'type': 'goods',
-                'list_price': Decimal('10'),
-                'cost_price': Decimal('5'),
-                'default_uom': uom.id,
-                'products': [('create', [{}])],
-                }
-            values2 = {
-                'name': 'Some product-2',
-                'category': category2.id,
-                'type': 'goods',
-                'list_price': Decimal('10'),
-                'cost_price': Decimal('5'),
-                'default_uom': uom.id,
-                'products': [('create', [{}])],
-                }
+        pool = Pool()
+        Category = pool.get('product.category')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
 
-            # This is a false positive as there is 1 product with the
-            # template 1 and the same product with category 1. If you do not
-            # create two categories (or any other relation on the template
-            # model) you wont be able to check as in most cases the
-            # id of the template and the related model would be same (1).
-            # So two products have been created with same category. So that
-            # domain ('template.category', '=', 1) will return 2 records which
-            # it supposed to be.
-            template1, template2, template3, template4 = self.template.create(
-                [values1, values1.copy(), values2, values2.copy()]
-                )
-            self.assertEqual(self.product.search([], count=True), 4)
-            self.assertEqual(
-                self.product.search([
+        category1, = Category.create([{'name': 'Category1'}])
+        category2, = Category.create([{'name': 'Category2'}])
+        uom, = Uom.search([], limit=1)
+        values1 = {
+            'name': 'Some product-1',
+            'category': category1.id,
+            'type': 'goods',
+            'list_price': Decimal('10'),
+            'cost_price': Decimal('5'),
+            'default_uom': uom.id,
+            'products': [('create', [{}])],
+            }
+        values2 = {
+            'name': 'Some product-2',
+            'category': category2.id,
+            'type': 'goods',
+            'list_price': Decimal('10'),
+            'cost_price': Decimal('5'),
+            'default_uom': uom.id,
+            'products': [('create', [{}])],
+            }
+
+        # This is a false positive as there is 1 product with the
+        # template 1 and the same product with category 1. If you do not
+        # create two categories (or any other relation on the template
+        # model) you wont be able to check as in most cases the
+        # id of the template and the related model would be same (1).
+        # So two products have been created with same category. So that
+        # domain ('template.category', '=', 1) will return 2 records which
+        # it supposed to be.
+        template1, template2, template3, template4 = Template.create(
+            [values1, values1.copy(), values2, values2.copy()]
+            )
+        self.assertEqual(Product.search([], count=True), 4)
+        self.assertEqual(
+            Product.search([
                     ('category', '=', category1.id),
                     ], count=True), 2)
 
-            self.assertEqual(
-                self.product.search([
+        self.assertEqual(
+            Product.search([
                     ('template.category', '=', category1.id),
                     ], count=True), 2)
 
-            self.assertEqual(
-                self.product.search([
+        self.assertEqual(
+            Product.search([
                     ('category', '=', category2.id),
                     ], count=True), 2)
-            self.assertEqual(
-                self.product.search([
+        self.assertEqual(
+            Product.search([
                     ('template.category', '=', category2.id),
                     ], count=True), 2)
 
+    @with_transaction()
     def test_uom_round(self):
         'Test uom round function'
+        pool = Pool()
+        Uom = pool.get('product.uom')
         tests = [
             (2.53, .1, 2.5),
             (3.8, .1, 3.8),
@@ -307,11 +324,8 @@ class ProductTestCase(ModuleTestCase):
             (17, 15, 15),
             (2.5, 1.4, 2.8),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            pool = Pool()
-            Uom = pool.get('product.uom')
-            for number, precision, result in tests:
-                self.assertEqual(Uom(rounding=precision).round(number), result)
+        for number, precision, result in tests:
+            self.assertEqual(Uom(rounding=precision).round(number), result)
 
 
 def suite():
