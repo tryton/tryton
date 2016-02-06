@@ -1,3 +1,6 @@
+Version 3.8.1 - 2016-02-06
+* Bug fixes (see mercurial logs for details)
+
 Version 3.8.0 - 2015-11-02
 * Bug fixes (see mercurial logs for details)
 * Add drop location type
