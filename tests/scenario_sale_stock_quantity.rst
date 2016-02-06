@@ -86,7 +86,7 @@ Create product::
     >>> product_supplier = ProductSupplier()
     >>> product_supplier.product = template
     >>> product_supplier.party = supplier
-    >>> product_supplier.delivery_time = 3
+    >>> product_supplier.lead_time = datetime.timedelta(3)
     >>> product_supplier.save()
 
 Create payment term::
