@@ -77,19 +77,23 @@ class ProductTestCase(ModuleTestCase):
                 }])
         transaction.cursor.rollback()
 
-        uom, = Uom.create([{
-                    'name': 'Test',
-                    'symbol': 'T',
-                    'category': category.id,
-                    'rate': 1.0,
-                    'factor': 1.0,
-                    }])
+        def create():
+            category, = UomCategory.create([{'name': 'Test'}])
+            return Uom.create([{
+                        'name': 'Test',
+                        'symbol': 'T',
+                        'category': category.id,
+                        'rate': 1.0,
+                        'factor': 1.0,
+                        }])[0]
 
+        uom = create()
         self.assertRaises(Exception, Uom.write, [uom], {
                 'rate': 2.0,
                 })
         transaction.cursor.rollback()
 
+        uom = create()
         self.assertRaises(Exception, Uom.write, [uom], {
                 'factor': 2.0,
                 })
