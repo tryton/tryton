@@ -1,34 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart
 
 
 class StockSupplyDayTestCase(ModuleTestCase):
     'Test StockSupplyDay module'
     module = 'stock_supply_day'
 
-    def setUp(self):
-        super(StockSupplyDayTestCase, self).setUp()
-        self.uom = POOL.get('product.uom')
-        self.uom_category = POOL.get('product.uom.category')
-        self.category = POOL.get('product.category')
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.company = POOL.get('company.company')
-        self.party = POOL.get('party.party')
-        self.account = POOL.get('account.account')
-        self.product_supplier = POOL.get('purchase.product_supplier')
-        self.product_supplier_day = POOL.get('purchase.product_supplier.day')
-        self.user = POOL.get('res.user')
-
-    def test0010compute_supply_date(self):
+    def test_compute_supply_date(self):
         'Test compute_supply_date'
         dates = [
             # purchase date, lead time, weekday, supply date
@@ -56,14 +43,17 @@ class StockSupplyDayTestCase(ModuleTestCase):
         # 10 days, which would be Wednesday 2011-12-01. But with the supplier
         # weekday 0 (Monday) the forecast supply date is next Monday, the
         # 2011-12-05.
-        for purchase_date, lead_time, weekday, supply_date in dates:
-            with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier_day(
-                    lead_time, weekday)
-                date = product_supplier.compute_supply_date(purchase_date)
-                self.assertEqual(date, supply_date)
 
-    def test0020compute_purchase_date(self):
+        @with_transaction()
+        def run(purchase_date, lead_time, weekday, supply_date):
+            product_supplier = self.create_product_supplier_day(
+                lead_time, weekday)
+            date = product_supplier.compute_supply_date(purchase_date)
+            self.assertEqual(date, supply_date)
+        for purchase_date, lead_time, weekday, supply_date in dates:
+            run(purchase_date, lead_time, weekday, supply_date)
+
+    def test_compute_purchase_date(self):
         'Test compute_purchase_date'
         dates = [
             # purchase date, lead time, weekday, supply date
@@ -87,12 +77,15 @@ class StockSupplyDayTestCase(ModuleTestCase):
         # Supply date max is Tuesday, 2012-01-03, the supplier weekday 0 which
         # would be Monday 2012-01-02. But with the 6 days of delivery the
         # forecast purchase date is the 2011-12-27.
+
+        @with_transaction()
+        def run(purchase_date, lead_time, weekday, supply_date):
+            product_supplier = self.create_product_supplier_day(
+                lead_time, weekday)
+            date = product_supplier.compute_purchase_date(supply_date)
+            self.assertEqual(date, purchase_date)
         for purchase_date, lead_time, weekday, supply_date in dates:
-            with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier = self.create_product_supplier_day(
-                    lead_time, weekday)
-                date = product_supplier.compute_purchase_date(supply_date)
-                self.assertEqual(date, purchase_date)
+            run(purchase_date, lead_time, weekday, supply_date)
 
     def create_product_supplier_day(self, lead_time, weekday):
         '''
@@ -102,16 +95,27 @@ class StockSupplyDayTestCase(ModuleTestCase):
         :param weekday: supply day of the week (0 - 6)
         :return: the id of the Product Supplier Day
         '''
-        uom_category, = self.uom_category.create([{'name': 'Test'}])
-        uom, = self.uom.create([{
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        UomCategory = pool.get('product.uom.category')
+        Category = pool.get('product.category')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Party = pool.get('party.party')
+        Account = pool.get('account.account')
+        ProductSupplier = pool.get('purchase.product_supplier')
+        ProductSupplierDay = pool.get('purchase.product_supplier.day')
+
+        uom_category, = UomCategory.create([{'name': 'Test'}])
+        uom, = Uom.create([{
                     'name': 'Test',
                     'symbol': 'T',
                     'category': uom_category.id,
                     'rate': 1.0,
                     'factor': 1.0,
                     }])
-        category, = self.category.create([{'name': 'ProdCategoryTest'}])
-        template, = self.template.create([{
+        category, = Category.create([{'name': 'ProdCategoryTest'}])
+        template, = Template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
                     'category': category.id,
@@ -119,53 +123,41 @@ class StockSupplyDayTestCase(ModuleTestCase):
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     }])
-        product, = self.product.create([{
+        product, = Product.create([{
                     'template': template.id,
                     }])
-        company, = self.company.search([
-                ('rec_name', '=', 'Dunder Mifflin'),
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            receivable, = Account.search([
+                ('kind', '=', 'receivable'),
+                ('company', '=', company.id),
                 ])
-        self.user.write([self.user(USER)], {
-            'main_company': company.id,
-            'company': company.id,
-            })
-        receivable, = self.account.search([
-            ('kind', '=', 'receivable'),
-            ('company', '=', company.id),
-            ])
-        payable, = self.account.search([
-            ('kind', '=', 'payable'),
-            ('company', '=', company.id),
-            ])
-        supplier, = self.party.create([{
-                    'name': 'supplier',
-                    'account_receivable': receivable.id,
-                    'account_payable': payable.id,
-                    }])
-        product_supplier, = self.product_supplier.create([{
-                    'product': template.id,
-                    'company': company.id,
-                    'party': supplier.id,
-                    'lead_time': lead_time,
-                    }])
-        if weekday is not None:
-            self.product_supplier_day.create([{
-                        'product_supplier': product_supplier.id,
-                        'weekday': str(weekday),
+            payable, = Account.search([
+                ('kind', '=', 'payable'),
+                ('company', '=', company.id),
+                ])
+            supplier, = Party.create([{
+                        'name': 'supplier',
+                        'account_receivable': receivable.id,
+                        'account_payable': payable.id,
                         }])
-        return product_supplier
+            product_supplier, = ProductSupplier.create([{
+                        'product': template.id,
+                        'company': company.id,
+                        'party': supplier.id,
+                        'lead_time': lead_time,
+                        }])
+            if weekday is not None:
+                ProductSupplierDay.create([{
+                            'product_supplier': product_supplier.id,
+                            'weekday': str(weekday),
+                            }])
+            return product_supplier
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockSupplyDayTestCase))
     return suite
