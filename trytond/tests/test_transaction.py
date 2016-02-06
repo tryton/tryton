@@ -30,10 +30,11 @@ def manipulate_cursor(*args, **kwargs):
 class TransactionTestCase(unittest.TestCase):
     'Test the Transaction Context manager'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
 
-    def test0010nonexistdb(self):
+    def test_nonexistdb(self):
         '''Attempt opening a transaction with a non existant DB
         and ensure that it stops cleanly and allows starting of next
         transaction'''
@@ -42,7 +43,7 @@ class TransactionTestCase(unittest.TestCase):
             context=CONTEXT)
         self.assertTrue(empty_transaction(DB_NAME, USER, context=CONTEXT))
 
-    def test0020cursorclose(self):
+    def test_cursorclose(self):
         '''Manipulate the cursor during the transaction so that
         the close in transaction stop fails.
         Ensure that this does not affect opening of another transaction'''
@@ -50,7 +51,7 @@ class TransactionTestCase(unittest.TestCase):
             Exception, manipulate_cursor, DB_NAME, USER, context=CONTEXT)
         self.assertTrue(empty_transaction(DB_NAME, USER, context=CONTEXT))
 
-    def test0030set_user(self):
+    def test_set_user(self):
         'Test set_user'
         with Transaction().start(DB_NAME, USER, context=CONTEXT) \
                 as transaction:

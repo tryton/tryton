@@ -3,36 +3,36 @@
 
 import unittest
 
-from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT, install_module
+from trytond.tests.test_tryton import install_module, with_transaction
 
 
 class ModelStorageTestCase(unittest.TestCase):
     'Test ModelStorage'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
 
+    @with_transaction()
     def test_search_read_order(self):
         'Test search_read order'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            pool = Pool()
-            ModelStorage = pool.get('test.modelstorage')
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
 
-            ModelStorage.create([{'name': i} for i in ['foo', 'bar', 'test']])
+        ModelStorage.create([{'name': i} for i in ['foo', 'bar', 'test']])
 
-            rows = ModelStorage.search_read([])
-            self.assertTrue(
-                all(x['id'] < y['id'] for x, y in zip(rows, rows[1:])))
+        rows = ModelStorage.search_read([])
+        self.assertTrue(
+            all(x['id'] < y['id'] for x, y in zip(rows, rows[1:])))
 
-            rows = ModelStorage.search_read([], order=[('name', 'ASC')])
-            self.assertTrue(
-                all(x['name'] <= y['name'] for x, y in zip(rows, rows[1:])))
+        rows = ModelStorage.search_read([], order=[('name', 'ASC')])
+        self.assertTrue(
+            all(x['name'] <= y['name'] for x, y in zip(rows, rows[1:])))
 
-            rows = ModelStorage.search_read([], order=[('name', 'DESC')])
-            self.assertTrue(
-                all(x['name'] >= y['name'] for x, y in zip(rows, rows[1:])))
+        rows = ModelStorage.search_read([], order=[('name', 'DESC')])
+        self.assertTrue(
+            all(x['name'] >= y['name'] for x, y in zip(rows, rows[1:])))
 
 
 def suite():

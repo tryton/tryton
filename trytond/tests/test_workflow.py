@@ -3,30 +3,32 @@
 
 import unittest
 
-from trytond.transaction import Transaction
-from trytond.tests.test_tryton import (POOL, DB_NAME, USER, CONTEXT,
-    install_module)
+from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.pool import Pool
 
 
 class WorkflowTestCase(unittest.TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
-        self.workflow = POOL.get('test.workflowed')
 
     # TODO add test for Workflow.transition
-    def test0010transition(self):
+    @with_transaction()
+    def test_transition(self):
         'Test transition'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            wkf, = self.workflow.create([{}])
+        pool = Pool()
+        Workflowed = pool.get('test.workflowed')
 
-            self.workflow.run([wkf])
-            self.assertEqual(wkf.state, 'running')
+        wkf, = Workflowed.create([{}])
 
-            wkf.state = 'end'
-            wkf.save()
-            self.workflow.run([wkf])
-            self.assertEqual(wkf.state, 'end')
+        Workflowed.run([wkf])
+        self.assertEqual(wkf.state, 'running')
+
+        wkf.state = 'end'
+        wkf.save()
+        Workflowed.run([wkf])
+        self.assertEqual(wkf.state, 'end')
 
 
 def suite():

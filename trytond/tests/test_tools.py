@@ -16,41 +16,41 @@ class ToolsTestCase(unittest.TestCase):
     'Test tools'
     table = sql.Table('test')
 
-    def test0000reduce_ids_empty(self):
+    def test_reduce_ids_empty(self):
         'Test reduce_ids empty list'
         self.assertEqual(reduce_ids(self.table.id, []), sql.Literal(False))
 
-    def test0010reduce_ids_continue(self):
+    def test_reduce_ids_continue(self):
         'Test reduce_ids continue list'
         self.assertEqual(reduce_ids(self.table.id, range(10)),
             sql.operators.Or(((self.table.id >= 0) & (self.table.id <= 9),)))
 
-    def test0020reduce_ids_one_hole(self):
+    def test_reduce_ids_one_hole(self):
         'Test reduce_ids continue list with one hole'
         self.assertEqual(reduce_ids(self.table.id, range(10) + range(20, 30)),
             ((self.table.id >= 0) & (self.table.id <= 9))
             | ((self.table.id >= 20) & (self.table.id <= 29)))
 
-    def test0030reduce_ids_short_continue(self):
+    def test_reduce_ids_short_continue(self):
         'Test reduce_ids short continue list'
         self.assertEqual(reduce_ids(self.table.id, range(4)),
             sql.operators.Or((self.table.id.in_(range(4)),)))
 
-    def test0040reduce_ids_complex(self):
+    def test_reduce_ids_complex(self):
         'Test reduce_ids complex list'
         self.assertEqual(reduce_ids(self.table.id,
                 range(10) + range(25, 30) + range(15, 20)),
             (((self.table.id >= 0) & (self.table.id <= 14))
                 | (self.table.id.in_(range(25, 30)))))
 
-    def test0050reduce_ids_complex_small_continue(self):
+    def test_reduce_ids_complex_small_continue(self):
         'Test reduce_ids complex list with small continue'
         self.assertEqual(reduce_ids(self.table.id,
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 18, 19, 21]),
             (((self.table.id >= 1) & (self.table.id <= 12))
                 | (self.table.id.in_([15, 18, 19, 21]))))
 
-    def test0055reduce_ids_float(self):
+    def test_reduce_ids_float(self):
         'Test reduce_ids with integer as float'
         self.assertEqual(reduce_ids(self.table.id,
                 [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0,
@@ -59,7 +59,7 @@ class ToolsTestCase(unittest.TestCase):
                 | (self.table.id.in_([15.0, 18.0, 19.0, 21.0]))))
         self.assertRaises(AssertionError, reduce_ids, self.table.id, [1.1])
 
-    def test0070datetime_strftime(self):
+    def test_datetime_strftime(self):
         'Test datetime_strftime'
         self.assert_(datetime_strftime(datetime.date(2005, 3, 2),
             '%Y-%m-%d'), '2005-03-02')

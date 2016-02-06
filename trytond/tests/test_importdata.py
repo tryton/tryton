@@ -4,442 +4,473 @@
 import unittest
 from decimal import InvalidOperation
 
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-        install_module
+from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 from trytond.exceptions import UserError
 
 
 class ImportDataTestCase(unittest.TestCase):
     'Test import_data'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
-        self.boolean = POOL.get('test.import_data.boolean')
-        self.integer = POOL.get('test.import_data.integer')
-        self.integer_required = POOL.get('test.import_data.integer_required')
-        self.float = POOL.get('test.import_data.float')
-        self.float_required = POOL.get('test.import_data.float_required')
-        self.numeric = POOL.get('test.import_data.numeric')
-        self.numeric_required = POOL.get('test.import_data.numeric_required')
-        self.char = POOL.get('test.import_data.char')
-        self.text = POOL.get('test.import_data.text')
-        self.date = POOL.get('test.import_data.date')
-        self.datetime = POOL.get('test.import_data.datetime')
-        self.selection = POOL.get('test.import_data.selection')
-        self.many2one = POOL.get('test.import_data.many2one')
-        self.many2many = POOL.get('test.import_data.many2many')
-        self.one2many = POOL.get('test.import_data.one2many')
-        self.reference = POOL.get('test.import_data.reference')
 
-    def test0010boolean(self):
+    @with_transaction()
+    def test_boolean(self):
         'Test boolean'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['True']]), 1)
+        pool = Pool()
+        Boolean = pool.get('test.import_data.boolean')
 
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['1']]), 1)
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['True']]), 1)
 
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['False']]), 1)
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['1']]), 1)
 
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['0']]), 1)
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['False']]), 1)
 
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['']]), 1)
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['0']]), 1)
 
-            self.assertEqual(self.boolean.import_data(['boolean'],
-                [['True'], ['False']]), 2)
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['']]), 1)
 
-            self.assertRaises(ValueError, self.boolean.import_data,
-                ['boolean'], [['foo']])
+        self.assertEqual(Boolean.import_data(['boolean'],
+            [['True'], ['False']]), 2)
 
-    def test0020integer(self):
+        self.assertRaises(ValueError, Boolean.import_data,
+            ['boolean'], [['foo']])
+
+    @with_transaction()
+    def test_integer(self):
         'Test integer'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.integer.import_data(['integer'],
-                [['1']]), 1)
+        pool = Pool()
+        Integer = pool.get('test.import_data.integer')
 
-            self.assertEqual(self.integer.import_data(['integer'],
-                [['-1']]), 1)
+        self.assertEqual(Integer.import_data(['integer'],
+            [['1']]), 1)
 
-            self.assertEqual(self.integer.import_data(['integer'],
-                [['']]), 1)
+        self.assertEqual(Integer.import_data(['integer'],
+            [['-1']]), 1)
 
-            self.assertEqual(self.integer.import_data(['integer'],
-                [['1'], ['2']]), 2)
+        self.assertEqual(Integer.import_data(['integer'],
+            [['']]), 1)
 
-            self.assertRaises(ValueError, self.integer.import_data,
-                ['integer'], [['1.1']])
+        self.assertEqual(Integer.import_data(['integer'],
+            [['1'], ['2']]), 2)
 
-            self.assertRaises(ValueError, self.integer.import_data,
-                ['integer'], [['-1.1']])
+        self.assertRaises(ValueError, Integer.import_data,
+            ['integer'], [['1.1']])
 
-            self.assertRaises(ValueError, self.integer.import_data,
-                ['integer'], [['foo']])
+        self.assertRaises(ValueError, Integer.import_data,
+            ['integer'], [['-1.1']])
 
-            self.assertEqual(self.integer.import_data(['integer'],
-                [['0']]), 1)
+        self.assertRaises(ValueError, Integer.import_data,
+            ['integer'], [['foo']])
 
-    def test0021integer_required(self):
+        self.assertEqual(Integer.import_data(['integer'],
+            [['0']]), 1)
+
+    @with_transaction()
+    def test_integer_required(self):
         'Test required integer'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.integer_required.import_data(['integer'],
-                [['1']]), 1)
+        pool = Pool()
+        IntegerRequired = pool.get('test.import_data.integer_required')
+        transaction = Transaction()
 
-            self.assertEqual(self.integer_required.import_data(['integer'],
-                [['-1']]), 1)
+        self.assertEqual(IntegerRequired.import_data(['integer'],
+            [['1']]), 1)
 
-            self.assertRaises(UserError, self.integer_required.import_data,
-                ['integer'], [['']])
-            transaction.cursor.rollback()
+        self.assertEqual(IntegerRequired.import_data(['integer'],
+            [['-1']]), 1)
 
-            self.assertEqual(self.integer_required.import_data(['integer'],
-                [['1'], ['2']]), 2)
+        self.assertRaises(UserError, IntegerRequired.import_data,
+            ['integer'], [['']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(ValueError, self.integer_required.import_data,
-                ['integer'], [['1.1']])
+        self.assertEqual(IntegerRequired.import_data(['integer'],
+            [['1'], ['2']]), 2)
 
-            self.assertRaises(ValueError, self.integer_required.import_data,
-                ['integer'], [['-1.1']])
+        self.assertRaises(ValueError, IntegerRequired.import_data,
+            ['integer'], [['1.1']])
 
-            self.assertRaises(ValueError, self.integer_required.import_data,
-                ['integer'], [['foo']])
+        self.assertRaises(ValueError, IntegerRequired.import_data,
+            ['integer'], [['-1.1']])
 
-            self.assertEqual(self.integer_required.import_data(['integer'],
-                [['0']]), 1)
+        self.assertRaises(ValueError, IntegerRequired.import_data,
+            ['integer'], [['foo']])
 
-    def test0030float(self):
+        self.assertEqual(IntegerRequired.import_data(['integer'],
+            [['0']]), 1)
+
+    @with_transaction()
+    def test_float(self):
         'Test float'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.float.import_data(['float'],
-                [['1.1']]), 1)
+        pool = Pool()
+        Float = pool.get('test.import_data.float')
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['-1.1']]), 1)
+        self.assertEqual(Float.import_data(['float'],
+            [['1.1']]), 1)
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['1']]), 1)
+        self.assertEqual(Float.import_data(['float'],
+            [['-1.1']]), 1)
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['']]), 1)
+        self.assertEqual(Float.import_data(['float'],
+            [['1']]), 1)
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['1.1'], ['2.2']]), 2)
+        self.assertEqual(Float.import_data(['float'],
+            [['']]), 1)
 
-            self.assertRaises(ValueError, self.float.import_data,
-                ['float'], [['foo']])
+        self.assertEqual(Float.import_data(['float'],
+            [['1.1'], ['2.2']]), 2)
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['0']]), 1)
+        self.assertRaises(ValueError, Float.import_data,
+            ['float'], [['foo']])
 
-            self.assertEqual(self.float.import_data(['float'],
-                [['0.0']]), 1)
+        self.assertEqual(Float.import_data(['float'],
+            [['0']]), 1)
 
-    def test0031float_required(self):
+        self.assertEqual(Float.import_data(['float'],
+            [['0.0']]), 1)
+
+    @with_transaction()
+    def test_float_required(self):
         'Test required float'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['1.1']]), 1)
+        pool = Pool()
+        FloatRequired = pool.get('test.import_data.float_required')
+        transaction = Transaction()
 
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['-1.1']]), 1)
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['1.1']]), 1)
 
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['1']]), 1)
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['-1.1']]), 1)
 
-            self.assertRaises(UserError, self.float_required.import_data,
-                ['float'], [['']])
-            transaction.cursor.rollback()
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['1']]), 1)
 
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['1.1'], ['2.2']]), 2)
+        self.assertRaises(UserError, FloatRequired.import_data,
+            ['float'], [['']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(ValueError, self.float_required.import_data,
-                ['float'], [['foo']])
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['1.1'], ['2.2']]), 2)
 
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['0']]), 1)
+        self.assertRaises(ValueError, FloatRequired.import_data,
+            ['float'], [['foo']])
 
-            self.assertEqual(self.float_required.import_data(['float'],
-                [['0.0']]), 1)
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['0']]), 1)
 
-    def test0040numeric(self):
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [['0.0']]), 1)
+
+    @with_transaction()
+    def test_numeric(self):
         'Test numeric'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['1.1']]), 1)
+        pool = Pool()
+        Numeric = pool.get('test.import_data.numeric')
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['-1.1']]), 1)
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['1.1']]), 1)
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['1']]), 1)
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['-1.1']]), 1)
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['']]), 1)
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['1']]), 1)
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['1.1'], ['2.2']]), 2)
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['']]), 1)
 
-            self.assertRaises(InvalidOperation, self.numeric.import_data,
-                ['numeric'], [['foo']])
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['1.1'], ['2.2']]), 2)
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['0']]), 1)
+        self.assertRaises(InvalidOperation, Numeric.import_data,
+            ['numeric'], [['foo']])
 
-            self.assertEqual(self.numeric.import_data(['numeric'],
-                [['0.0']]), 1)
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['0']]), 1)
 
-    def test0041numeric_required(self):
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [['0.0']]), 1)
+
+    @with_transaction()
+    def test_numeric_required(self):
         'Test required numeric'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['1.1']]), 1)
+        pool = Pool()
+        NumericRequired = pool.get('test.import_data.numeric_required')
+        transaction = Transaction()
 
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['-1.1']]), 1)
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['1.1']]), 1)
 
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['1']]), 1)
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['-1.1']]), 1)
 
-            self.assertRaises(UserError, self.numeric_required.import_data,
-                ['numeric'], [['']])
-            transaction.cursor.rollback()
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['1']]), 1)
 
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['1.1'], ['2.2']]), 2)
+        self.assertRaises(UserError, NumericRequired.import_data,
+            ['numeric'], [['']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(InvalidOperation,
-                self.numeric_required.import_data, ['numeric'], [['foo']])
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['1.1'], ['2.2']]), 2)
 
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['0']]), 1)
+        self.assertRaises(InvalidOperation,
+            NumericRequired.import_data, ['numeric'], [['foo']])
 
-            self.assertEqual(self.numeric_required.import_data(['numeric'],
-                [['0.0']]), 1)
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['0']]), 1)
 
-    def test0050char(self):
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [['0.0']]), 1)
+
+    @with_transaction()
+    def test_char(self):
         'Test char'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.char.import_data(['char'],
-                [['test']]), 1)
+        pool = Pool()
+        Char = pool.get('test.import_data.char')
 
-            self.assertEqual(self.char.import_data(['char'],
-                [['']]), 1)
+        self.assertEqual(Char.import_data(['char'],
+            [['test']]), 1)
 
-            self.assertEqual(self.char.import_data(['char'],
-                [['test'], ['foo'], ['bar']]), 3)
+        self.assertEqual(Char.import_data(['char'],
+            [['']]), 1)
 
-    def test0060text(self):
+        self.assertEqual(Char.import_data(['char'],
+            [['test'], ['foo'], ['bar']]), 3)
+
+    @with_transaction()
+    def test_text(self):
         'Test text'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.text.import_data(['text'],
-                [['test']]), 1)
+        pool = Pool()
+        Text = pool.get('test.import_data.text')
 
-            self.assertEqual(self.text.import_data(['text'],
-                [['']]), 1)
+        self.assertEqual(Text.import_data(['text'],
+            [['test']]), 1)
 
-            self.assertEqual(self.text.import_data(['text'],
-                [['test'], ['foo'], ['bar']]), 3)
+        self.assertEqual(Text.import_data(['text'],
+            [['']]), 1)
 
-    def test0080date(self):
+        self.assertEqual(Text.import_data(['text'],
+            [['test'], ['foo'], ['bar']]), 3)
+
+    @with_transaction()
+    def test_date(self):
         'Test date'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.date.import_data(['date'],
-                [['2010-01-01']]), 1)
+        pool = Pool()
+        Date = pool.get('test.import_data.date')
 
-            self.assertEqual(self.date.import_data(['date'],
-                [['']]), 1)
+        self.assertEqual(Date.import_data(['date'],
+            [['2010-01-01']]), 1)
 
-            self.assertEqual(self.date.import_data(['date'],
-                [['2010-01-01'], ['2010-02-01']]), 2)
+        self.assertEqual(Date.import_data(['date'],
+            [['']]), 1)
 
-            self.assertRaises(ValueError, self.date.import_data,
-                ['date'], [['foo']])
+        self.assertEqual(Date.import_data(['date'],
+            [['2010-01-01'], ['2010-02-01']]), 2)
 
-    def test0090datetime(self):
+        self.assertRaises(ValueError, Date.import_data,
+            ['date'], [['foo']])
+
+    @with_transaction()
+    def test_datetime(self):
         'Test datetime'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.datetime.import_data(['datetime'],
-                [['2010-01-01 12:00:00']]), 1)
+        pool = Pool()
+        Datetime = pool.get('test.import_data.datetime')
 
-            self.assertEqual(self.datetime.import_data(['datetime'],
-                [['']]), 1)
+        self.assertEqual(Datetime.import_data(['datetime'],
+            [['2010-01-01 12:00:00']]), 1)
 
-            self.assertEqual(self.datetime.import_data(['datetime'],
-                [['2010-01-01 12:00:00'], ['2010-01-01 13:30:00']]), 2)
+        self.assertEqual(Datetime.import_data(['datetime'],
+            [['']]), 1)
 
-            self.assertRaises(ValueError, self.datetime.import_data,
-                ['datetime'], [['foo']])
+        self.assertEqual(Datetime.import_data(['datetime'],
+            [['2010-01-01 12:00:00'], ['2010-01-01 13:30:00']]), 2)
 
-    def test0100selection(self):
+        self.assertRaises(ValueError, Datetime.import_data,
+            ['datetime'], [['foo']])
+
+    @with_transaction()
+    def test_selection(self):
         'Test selection'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.selection.import_data(['selection'],
-                [['select1']]), 1)
+        pool = Pool()
+        Selection = pool.get('test.import_data.selection')
 
-            self.assertEqual(self.selection.import_data(['selection'],
-                [['']]), 1)
+        self.assertEqual(Selection.import_data(['selection'],
+            [['select1']]), 1)
 
-            self.assertEqual(self.selection.import_data(['selection'],
-                [['select1'], ['select2']]), 2)
+        self.assertEqual(Selection.import_data(['selection'],
+            [['']]), 1)
 
-            self.assertRaises(UserError, self.selection.import_data,
-                ['selection'], [['foo']])
-            transaction.cursor.rollback()
+        self.assertEqual(Selection.import_data(['selection'],
+            [['select1'], ['select2']]), 2)
 
-    def test0110many2one(self):
+        self.assertRaises(UserError, Selection.import_data,
+            ['selection'], [['foo']])
+
+    @with_transaction()
+    def test_many2one(self):
         'Test many2one'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.many2one.import_data(['many2one'],
-                [['Test']]), 1)
+        pool = Pool()
+        Many2one = pool.get('test.import_data.many2one')
+        transaction = Transaction()
 
-            self.assertEqual(self.many2one.import_data(['many2one:id'],
-                [['tests.import_data_many2one_target_test']]), 1)
+        self.assertEqual(Many2one.import_data(['many2one'],
+            [['Test']]), 1)
 
-            self.assertEqual(self.many2one.import_data(['many2one'],
-                [['']]), 1)
+        self.assertEqual(Many2one.import_data(['many2one:id'],
+            [['tests.import_data_many2one_target_test']]), 1)
 
-            self.assertEqual(self.many2one.import_data(['many2one'],
-                [['Test'], ['Test']]), 2)
+        self.assertEqual(Many2one.import_data(['many2one'],
+            [['']]), 1)
 
-            self.assertRaises(UserError, self.many2one.import_data,
-                ['many2one'], [['foo']])
-            transaction.cursor.rollback()
+        self.assertEqual(Many2one.import_data(['many2one'],
+            [['Test'], ['Test']]), 2)
 
-            self.assertRaises(UserError, self.many2one.import_data,
-                ['many2one'], [['Duplicate']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2one.import_data,
+            ['many2one'], [['foo']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(UserError, self.many2one.import_data,
-                ['many2one:id'], [['foo']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2one.import_data,
+            ['many2one'], [['Duplicate']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.many2one.import_data,
-                ['many2one:id'], [['tests.foo']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2one.import_data,
+            ['many2one:id'], [['foo']])
+        transaction.cursor.rollback()
 
-    def test0120many2many(self):
+        self.assertRaises(Exception, Many2one.import_data,
+            ['many2one:id'], [['tests.foo']])
+        transaction.cursor.rollback()
+
+    @with_transaction()
+    def test_many2many(self):
         'Test many2many'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['Test 1']]), 1)
+        pool = Pool()
+        Many2many = pool.get('test.import_data.many2many')
+        transaction = Transaction()
 
-            self.assertEqual(self.many2many.import_data(['many2many:id'],
-                [['tests.import_data_many2many_target_test1']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['Test 1']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['Test 1,Test 2']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many:id'],
+            [['tests.import_data_many2many_target_test1']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many:id'],
-                [['tests.import_data_many2many_target_test1,'
-                    'tests.import_data_many2many_target_test2']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['Test 1,Test 2']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['Test\, comma']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many:id'],
+            [['tests.import_data_many2many_target_test1,'
+                'tests.import_data_many2many_target_test2']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['Test\, comma,Test 1']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['Test\, comma']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['']]), 1)
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['Test\, comma,Test 1']]), 1)
 
-            self.assertEqual(self.many2many.import_data(['many2many'],
-                [['Test 1'], ['Test 2']]), 2)
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['']]), 1)
 
-            self.assertRaises(UserError, self.many2many.import_data,
-                ['many2many'], [['foo']])
-            transaction.cursor.rollback()
+        self.assertEqual(Many2many.import_data(['many2many'],
+            [['Test 1'], ['Test 2']]), 2)
 
-            self.assertRaises(UserError, self.many2many.import_data,
-                ['many2many'], [['Test 1,foo']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2many.import_data,
+            ['many2many'], [['foo']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(UserError, self.many2many.import_data,
-                ['many2many'], [['Duplicate']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2many.import_data,
+            ['many2many'], [['Test 1,foo']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(UserError, self.many2many.import_data,
-                ['many2many'], [['Test 1,Duplicate']])
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Many2many.import_data,
+            ['many2many'], [['Duplicate']])
+        transaction.cursor.rollback()
 
-    def test0130one2many(self):
+        self.assertRaises(UserError, Many2many.import_data,
+            ['many2many'], [['Test 1,Duplicate']])
+        transaction.cursor.rollback()
+
+    @with_transaction()
+    def test_one2many(self):
         'Test one2many'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.one2many.import_data(
-                    ['name', 'one2many/name'], [['Test', 'Test 1']]), 1)
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2many')
 
-            self.assertEqual(self.one2many.import_data(
-                    ['name', 'one2many/name'],
-                    [['Test', 'Test 1'], ['', 'Test 2']]), 1)
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many/name'], [['Test', 'Test 1']]), 1)
 
-            self.assertEqual(self.one2many.import_data(
-                    ['name', 'one2many/name'],
-                    [
-                        ['Test 1', 'Test 1'],
-                        ['', 'Test 2'],
-                        ['Test 2', 'Test 1']]), 2)
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many/name'],
+                [['Test', 'Test 1'], ['', 'Test 2']]), 1)
 
-    def test0140reference(self):
+        self.assertEqual(One2many.import_data(
+                ['name', 'one2many/name'],
+                [
+                    ['Test 1', 'Test 1'],
+                    ['', 'Test 2'],
+                    ['Test 2', 'Test 1']]), 2)
+
+    @with_transaction()
+    def test_reference(self):
         'Test reference'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.reference.import_data(['reference'],
-                [['test.import_data.reference.selection,Test']]), 1)
-            reference, = self.reference.search([])
+        pool = Pool()
+        Reference = pool.get('test.import_data.reference')
+        transaction = Transaction()
+
+        self.assertEqual(Reference.import_data(['reference'],
+            [['test.import_data.reference.selection,Test']]), 1)
+        reference, = Reference.search([])
+        self.assertEqual(reference.reference.__name__,
+            'test.import_data.reference.selection')
+        transaction.cursor.rollback()
+
+        self.assertEqual(Reference.import_data(['reference:id'],
+            [['test.import_data.reference.selection,'
+                'tests.import_data_reference_selection_test']]), 1)
+        reference, = Reference.search([])
+        self.assertEqual(reference.reference.__name__,
+            'test.import_data.reference.selection')
+        transaction.cursor.rollback()
+
+        self.assertEqual(Reference.import_data(['reference'],
+            [['']]), 1)
+        reference, = Reference.search([])
+        self.assertEqual(reference.reference, None)
+        transaction.cursor.rollback()
+
+        self.assertEqual(Reference.import_data(['reference'],
+            [['test.import_data.reference.selection,Test'],
+                ['test.import_data.reference.selection,Test']]), 2)
+        for reference in Reference.search([]):
             self.assertEqual(reference.reference.__name__,
                 'test.import_data.reference.selection')
-            transaction.cursor.rollback()
+        transaction.cursor.rollback()
 
-            self.assertEqual(self.reference.import_data(['reference:id'],
-                [['test.import_data.reference.selection,'
-                    'tests.import_data_reference_selection_test']]), 1)
-            reference, = self.reference.search([])
-            self.assertEqual(reference.reference.__name__,
-                'test.import_data.reference.selection')
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Reference.import_data,
+            ['reference'], [['test.import_data.reference.selection,foo']])
+        transaction.cursor.rollback()
 
-            self.assertEqual(self.reference.import_data(['reference'],
-                [['']]), 1)
-            reference, = self.reference.search([])
-            self.assertEqual(reference.reference, None)
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Reference.import_data,
+            ['reference'],
+            [['test.import_data.reference.selection,Duplicate']])
+        transaction.cursor.rollback()
 
-            self.assertEqual(self.reference.import_data(['reference'],
-                [['test.import_data.reference.selection,Test'],
-                    ['test.import_data.reference.selection,Test']]), 2)
-            for reference in self.reference.search([]):
-                self.assertEqual(reference.reference.__name__,
-                    'test.import_data.reference.selection')
-            transaction.cursor.rollback()
+        self.assertRaises(UserError, Reference.import_data,
+            ['reference:id'],
+            [['test.import_data.reference.selection,foo']])
+        transaction.cursor.rollback()
 
-            self.assertRaises(UserError, self.reference.import_data,
-                ['reference'], [['test.import_data.reference.selection,foo']])
-            transaction.cursor.rollback()
-
-            self.assertRaises(UserError, self.reference.import_data,
-                ['reference'],
-                [['test.import_data.reference.selection,Duplicate']])
-            transaction.cursor.rollback()
-
-            self.assertRaises(UserError, self.reference.import_data,
-                ['reference:id'],
-                [['test.import_data.reference.selection,foo']])
-            transaction.cursor.rollback()
-
-            self.assertRaises(Exception, self.reference.import_data,
-                ['reference:id'],
-                [['test.import_data.reference.selection,test.foo']])
-            transaction.cursor.rollback()
+        self.assertRaises(Exception, Reference.import_data,
+            ['reference:id'],
+            [['test.import_data.reference.selection,test.foo']])
+        transaction.cursor.rollback()
 
 
 def suite():

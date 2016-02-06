@@ -3,30 +3,31 @@
 
 import unittest
 
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-        install_module
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.pool import Pool
 
 
 class FieldContextTestCase(unittest.TestCase):
     "Test context on field"
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
 
+    @with_transaction()
     def test_context(self):
-        Parent = POOL.get('test.field_context.parent')
-        Child = POOL.get('test.field_context.child')
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            child = Child()
-            child.save()
-            parent = Parent(name='foo', child=child)
-            parent.save()
-            self.assertEqual(parent.child._context['name'], 'foo')
+        pool = Pool()
+        Parent = pool.get('test.field_context.parent')
+        Child = pool.get('test.field_context.child')
+        child = Child()
+        child.save()
+        parent = Parent(name='foo', child=child)
+        parent.save()
+        self.assertEqual(parent.child._context['name'], 'foo')
 
-            parent.name = 'bar'
-            parent.save()
-            self.assertEqual(parent.child._context['name'], 'bar')
+        parent.name = 'bar'
+        parent.save()
+        self.assertEqual(parent.child._context['name'], 'bar')
 
 
 def suite():

@@ -5,38 +5,44 @@
 import unittest
 import urllib
 
-from trytond.tests.test_tryton import (POOL, DB_NAME, USER, CONTEXT,
-    install_module)
+from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 from trytond.url import HOSTNAME
 
 
 class UrlTestCase(unittest.TestCase):
     "Test URL generation"
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
-        self.urlmodel = POOL.get('test.urlobject')
-        self.urlwizard = POOL.get('test.test_wizard', type='wizard')
-        self.hostname = HOSTNAME
 
+    @with_transaction()
     def testModelURL(self):
         "Test model URLs"
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.urlmodel.__url__,
-                'tryton://%s/%s/model/test.urlobject' % (self.hostname,
-                    urllib.quote(DB_NAME)))
+        pool = Pool()
+        UrlObject = pool.get('test.urlobject')
+        db_name = Transaction().database.database_name
 
-            self.assertEqual(self.urlmodel(1).__url__,
-                'tryton://%s/%s/model/test.urlobject/1' % (self.hostname,
-                    urllib.quote(DB_NAME)))
+        self.assertEqual(UrlObject.__url__,
+            'tryton://%s/%s/model/test.urlobject' % (
+                HOSTNAME, urllib.quote(db_name)))
 
+        self.assertEqual(UrlObject(1).__url__,
+            'tryton://%s/%s/model/test.urlobject/1' % (
+                HOSTNAME, urllib.quote(db_name)))
+
+    @with_transaction()
     def testWizardURL(self):
         "Test wizard URLs"
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            self.assertEqual(self.urlwizard.__url__,
-                'tryton://%s/%s/wizard/test.test_wizard' % (self.hostname,
-                    urllib.quote(DB_NAME)))
+        pool = Pool()
+        UrlWizard = pool.get('test.test_wizard', type='wizard')
+        db_name = Transaction().database.database_name
+
+        self.assertEqual(UrlWizard.__url__,
+            'tryton://%s/%s/wizard/test.test_wizard' % (
+                HOSTNAME, urllib.quote(db_name)))
 
 
 def suite():

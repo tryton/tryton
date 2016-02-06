@@ -3,130 +3,131 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 from datetime import datetime
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-        install_module
+from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class ModelSingletonTestCase(unittest.TestCase):
     'Test ModelSingleton'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
-        self.singleton = POOL.get('test.singleton')
 
-    def test0010read(self):
+    @with_transaction()
+    def test_read(self):
         'Test read method'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            singleton, = self.singleton.read([1], ['name'])
-            self.assert_(singleton['name'] == 'test')
-            self.assert_(singleton['id'] == 1)
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
 
-            singleton, = self.singleton.read([1], ['name'])
-            self.assert_(singleton['name'] == 'test')
-            self.assert_(singleton['id'] == 1)
+        singleton, = Singleton.read([1], ['name'])
+        self.assert_(singleton['name'] == 'test')
+        self.assert_(singleton['id'] == 1)
 
-            singleton, = self.singleton.read([1], [
-                'create_uid',
-                'create_uid.rec_name',
-                'create_date',
-                'write_uid',
-                'write_date',
-                ])
-            self.assertEqual(singleton['create_uid'], USER)
-            self.assertEqual(singleton['create_uid.rec_name'], 'Administrator')
-            self.assert_(isinstance(singleton['create_date'], datetime))
-            self.assertEqual(singleton['write_uid'], None)
-            self.assertEqual(singleton['write_date'], None)
+        singleton, = Singleton.read([1], ['name'])
+        self.assert_(singleton['name'] == 'test')
+        self.assert_(singleton['id'] == 1)
 
-            transaction.cursor.rollback()
+        singleton, = Singleton.read([1], [
+            'create_uid',
+            'create_uid.rec_name',
+            'create_date',
+            'write_uid',
+            'write_date',
+            ])
+        self.assertEqual(singleton['create_uid'], Transaction().user)
+        self.assertEqual(singleton['create_uid.rec_name'], 'Administrator')
+        self.assert_(isinstance(singleton['create_date'], datetime))
+        self.assertEqual(singleton['write_uid'], None)
+        self.assertEqual(singleton['write_date'], None)
 
-    def test0020create(self):
+    @with_transaction()
+    def test_create(self):
         'Test create method'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            singleton, = self.singleton.create([{'name': 'bar'}])
-            self.assert_(singleton)
-            self.assertEqual(singleton.name, 'bar')
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
 
-            singleton2, = self.singleton.create([{'name': 'foo'}])
-            self.assertEqual(singleton2, singleton)
+        singleton, = Singleton.create([{'name': 'bar'}])
+        self.assert_(singleton)
+        self.assertEqual(singleton.name, 'bar')
 
-            self.assertEqual(singleton.name, 'foo')
+        singleton2, = Singleton.create([{'name': 'foo'}])
+        self.assertEqual(singleton2, singleton)
 
-            singletons = self.singleton.search([])
-            self.assertEqual(singletons, [singleton])
+        self.assertEqual(singleton.name, 'foo')
 
-            transaction.cursor.rollback()
+        singletons = Singleton.search([])
+        self.assertEqual(singletons, [singleton])
 
-    def test0030copy(self):
+    @with_transaction()
+    def test_copy(self):
         'Test copy method'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            singleton, = self.singleton.search([])
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
 
-            singleton2, = self.singleton.copy([singleton])
-            self.assertEqual(singleton2, singleton)
+        singleton, = Singleton.search([])
 
-            singletons = self.singleton.search([])
-            self.assertEqual(len(singletons), 1)
+        singleton2, = Singleton.copy([singleton])
+        self.assertEqual(singleton2, singleton)
 
-            singleton3, = self.singleton.copy([singleton], {'name': 'bar'})
-            self.assertEqual(singleton3, singleton)
+        singletons = Singleton.search([])
+        self.assertEqual(len(singletons), 1)
 
-            singletons = self.singleton.search([])
-            self.assertEqual(len(singletons), 1)
+        singleton3, = Singleton.copy([singleton], {'name': 'bar'})
+        self.assertEqual(singleton3, singleton)
 
-            transaction.cursor.rollback()
+        singletons = Singleton.search([])
+        self.assertEqual(len(singletons), 1)
 
-    def test0040default_get(self):
+    @with_transaction()
+    def test_default_get(self):
         'Test default_get method'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            default = self.singleton.default_get(['name'])
-            self.assertEqual(default, {'name': 'test'})
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
 
-            default = self.singleton.default_get(['create_uid'])
-            self.assertEqual(len(default), 2)
+        default = Singleton.default_get(['name'])
+        self.assertEqual(default, {'name': 'test'})
 
-            default = self.singleton.default_get(['create_uid'],
-                    with_rec_name=False)
-            self.assertEqual(len(default), 1)
+        default = Singleton.default_get(['create_uid'])
+        self.assertEqual(len(default), 2)
 
-            self.singleton.create([{'name': 'bar'}])
+        default = Singleton.default_get(['create_uid'],
+                with_rec_name=False)
+        self.assertEqual(len(default), 1)
 
-            default = self.singleton.default_get(['name'])
-            self.assertEqual(default, {'name': 'bar'})
+        Singleton.create([{'name': 'bar'}])
 
-            default = self.singleton.default_get(['create_uid'])
-            self.assertEqual(len(default), 2)
+        default = Singleton.default_get(['name'])
+        self.assertEqual(default, {'name': 'bar'})
 
-            default = self.singleton.default_get(['create_uid'],
-                    with_rec_name=False)
-            self.assertEqual(len(default), 1)
+        default = Singleton.default_get(['create_uid'])
+        self.assertEqual(len(default), 2)
 
-            transaction.cursor.rollback()
+        default = Singleton.default_get(['create_uid'],
+                with_rec_name=False)
+        self.assertEqual(len(default), 1)
 
-    def test0050search(self):
+    @with_transaction()
+    def test_search(self):
         'Test search method'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            singletons = self.singleton.search([])
-            self.assertEqual(map(int, singletons), [1])
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
 
-            singletons = self.singleton.search([])
-            self.assertEqual(map(int, singletons), [1])
+        singletons = Singleton.search([])
+        self.assertEqual(map(int, singletons), [1])
 
-            count = self.singleton.search([], count=True)
-            self.assertEqual(count, 1)
+        singletons = Singleton.search([])
+        self.assertEqual(map(int, singletons), [1])
 
-            self.singleton.create([{'name': 'foo'}])
-            singleton, = self.singleton.search([('name', '=', 'foo')])
-            self.assertEqual(singleton.name, 'foo')
-            singletons = self.singleton.search([('name', '=', 'bar')])
-            self.assertEqual(singletons, [])
-            transaction.cursor.rollback()
+        count = Singleton.search([], count=True)
+        self.assertEqual(count, 1)
+
+        Singleton.create([{'name': 'foo'}])
+        singleton, = Singleton.search([('name', '=', 'foo')])
+        self.assertEqual(singleton.name, 'foo')
+        singletons = Singleton.search([('name', '=', 'bar')])
+        self.assertEqual(singletons, [])
 
 
 def suite():

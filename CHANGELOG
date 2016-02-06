@@ -1,3 +1,5 @@
+* Make TestCase create and drop its database
+* Add with_transaction decorator for tests
 * Add note on resources
 * Add 'where' operator for xxx2many fields
 * Strip and unquote double-quote from Postgresql schema in search_path

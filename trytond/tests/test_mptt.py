@@ -4,21 +4,24 @@
 import sys
 import unittest
 from mock import patch
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-        install_module
+from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class MPTTTestCase(unittest.TestCase):
     'Test Modified Preorder Tree Traversal'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
-        self.mptt = POOL.get('test.mptt')
 
-    def CheckTree(self, parent_id=None, left=-1, right=sys.maxint):
+    def check_tree(self, parent_id=None, left=-1, right=sys.maxint):
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
+
         with Transaction().set_context(active_test=False):
-            childs = self.mptt.search([
+            childs = Mptt.search([
                     ('parent', '=', parent_id),
                     ], order=[('left', 'ASC')])
         for child in childs:
@@ -31,7 +34,7 @@ class MPTTTestCase(unittest.TestCase):
             assert child.right < right, \
                 '%s: right %d >= parent right %d' % \
                 (child, child.right, right)
-            self.CheckTree(child.id, left=child.left,
+            self.check_tree(child.id, left=child.left,
                 right=child.right)
         next_left = -1
         for child in childs:
@@ -47,8 +50,11 @@ class MPTTTestCase(unittest.TestCase):
                 % (child, child.right, previous_right)
             previous_right = child.left
 
-    def ReParent(self, parent=None):
-        records = self.mptt.search([
+    def reparent(self, parent=None):
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
+
+        records = Mptt.search([
                 ('parent', '=', parent),
                 ])
         if not records:
@@ -61,135 +67,137 @@ class MPTTTestCase(unittest.TestCase):
                     record.parent = parent
                     record.save()
         for record in records:
-            self.ReParent(record)
+            self.reparent(record)
 
-    def test0010create(self):
+    def create(self):
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
+
+        new_records = [None, None, None]
+        for j in range(3):
+            parent_records = new_records
+            new_records = []
+            k = 0
+            to_create = []
+            for parent_record in parent_records:
+                to_create.extend([{
+                            'name': 'Test %d %d %d' % (j, k, i),
+                            'parent': (parent_record.id
+                                if parent_record else None),
+                            } for i in range(3)])
+                k += 1
+            new_records = Mptt.create(to_create)
+
+    @with_transaction()
+    def test_create(self):
         'Test create tree'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            new_records = [None, None, None]
-            for j in range(3):
-                parent_records = new_records
-                new_records = []
-                k = 0
-                for parent_record in parent_records:
-                    new_records += self.mptt.create([{
-                                'name': 'Test %d %d %d' % (j, k, i),
-                                'parent': (parent_record.id
-                                    if parent_record else None),
-                                } for i in range(3)])
-                    k += 1
-            self.CheckTree()
+        self.create()
+        self.check_tree()
 
-            transaction.cursor.commit()
-
-    def test0030reparent(self):
+    @with_transaction()
+    def test_reparent(self):
         'Test re-parent'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.ReParent()
-            transaction.cursor.rollback()
+        self.create()
+        self.reparent()
 
-    def test0040active(self):
+    @with_transaction()
+    def test_active(self):
         'Test active'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            for record in records:
-                if record.id % 2:
-                    record.active = False
-                    record.save()
-            self.CheckTree()
-            self.ReParent()
-            self.CheckTree()
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
 
-            transaction.cursor.rollback()
+        self.create()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            self.mptt.write(records[::2], {
-                    'active': False
-                    })
-            self.CheckTree()
+        records = Mptt.search([])
+        for record in records:
+            if record.id % 2:
+                record.active = False
+                record.save()
+        self.check_tree()
+        self.reparent()
+        self.check_tree()
 
-            transaction.cursor.rollback()
+        records = Mptt.search([])
+        Mptt.write(records, {
+                'active': True,
+                })
+        Mptt.write(records[::2], {
+                'active': False
+                })
+        self.check_tree()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            self.mptt.write(records[:len(records) // 2], {
-                    'active': False
-                    })
-            self.CheckTree()
+        records = Mptt.search([])
+        Mptt.write(records, {
+                'active': True,
+                })
+        Mptt.write(records[:len(records) // 2], {
+                'active': False
+                })
+        self.check_tree()
 
-            transaction.cursor.rollback()
+        records = Mptt.search([])
+        Mptt.write(records, {
+                'active': False
+                })
+        self.reparent()
+        self.check_tree()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            self.mptt.write(records, {
-                    'active': False
-                    })
-            self.ReParent()
-            self.CheckTree()
-
-            transaction.cursor.rollback()
-
-    def test0050delete(self):
+    @with_transaction()
+    def test_delete(self):
         'Test delete'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            for record in records:
-                if record.id % 2:
-                    self.mptt.delete([record])
-            self.CheckTree()
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
 
-            transaction.cursor.rollback()
+        self.create()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            self.mptt.delete(records[:len(records) // 2])
-            self.CheckTree()
+        records = Mptt.search([])
+        for record in records:
+            if record.id % 2:
+                Mptt.delete([record])
+        self.check_tree()
 
-            transaction.cursor.rollback()
+        records = Mptt.search([])
+        Mptt.delete(records[:len(records) // 2])
+        self.check_tree()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            records = self.mptt.search([])
-            self.mptt.delete(records)
-            self.CheckTree()
+        records = Mptt.search([])
+        Mptt.delete(records)
+        self.check_tree()
 
-            transaction.cursor.rollback()
-
-    def test0060_update_only_if_parent_is_modified(self):
+    @with_transaction()
+    def test_update_only_if_parent_is_modified(self):
         'The left and right fields must only be updated if parent is modified'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            records = self.mptt.search([
-                    ('parent', '=', None),
-                    ])
-            with patch.object(self.mptt, '_update_tree') as mock:
-                self.mptt.write(records, {'name': 'Parent Records'})
-                self.assertFalse(mock.called)
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
 
-                first_parent, second_parent = records[:2]
-                self.mptt.write(list(first_parent.childs), {
-                        'parent': second_parent.id,
-                        })
+        self.create()
 
-                self.assertTrue(mock.called)
+        records = Mptt.search([
+                ('parent', '=', None),
+                ])
+        with patch.object(Mptt, '_update_tree') as mock:
+            Mptt.write(records, {'name': 'Parent Records'})
+            self.assertFalse(mock.called)
 
-    def test0070_nested_create(self):
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            record, = self.mptt.create([{
-                        'name': 'Test nested create 1',
-                        'childs': [('create', [{
-                                        'name': 'Test nested create 1 1',
-                                        }])],
-                        }])
-            self.CheckTree()
+            first_parent, second_parent = records[:2]
+            Mptt.write(list(first_parent.childs), {
+                    'parent': second_parent.id,
+                    })
+
+            self.assertTrue(mock.called)
+
+    @with_transaction()
+    def test_nested_create(self):
+        pool = Pool()
+        Mptt = pool.get('test.mptt')
+
+        record, = Mptt.create([{
+                    'name': 'Test nested create 1',
+                    'childs': [('create', [{
+                                    'name': 'Test nested create 1 1',
+                                    }])],
+                    }])
+        self.check_tree()
 
 
 def suite():

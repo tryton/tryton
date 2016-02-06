@@ -3,9 +3,9 @@
 import unittest
 import datetime
 
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-        install_module
+from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 from trytond.exceptions import UserError
 from trytond import backend
 
@@ -13,286 +13,266 @@ from trytond import backend
 class HistoryTestCase(unittest.TestCase):
     'Test History'
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         install_module('tests')
 
+    @with_transaction()
     def tearDown(self):
-        History = POOL.get('test.history')
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cursor = transaction.cursor
-            table = History.__table__()
-            history_table = History.__table_history__()
-            cursor.execute(*table.delete())
-            cursor.execute(*history_table.delete())
-            cursor.commit()
+        pool = Pool()
+        History = pool.get('test.history')
+        cursor = Transaction().cursor
+        table = History.__table__()
+        history_table = History.__table_history__()
+        cursor.execute(*table.delete())
+        cursor.execute(*history_table.delete())
+        cursor.commit()
 
-    def test0010read(self):
+    @with_transaction()
+    def test_read(self):
         'Test read history'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
         # Create some history entry
         # It is needed to commit to have different timestamps
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            first = history.create_date
+        transaction.cursor.commit()
 
-            transaction.cursor.commit()
+        history = History(history_id)
+        history.value = 2
+        history.save()
+        second = history.write_date
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 2
-            history.save()
-            second = history.write_date
+        transaction.cursor.commit()
 
-            transaction.cursor.commit()
+        history = History(history_id)
+        history.value = 3
+        history.save()
+        third = history.write_date
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 3
-            history.save()
-            third = history.write_date
+        transaction.cursor.commit()
 
-            transaction.cursor.commit()
+        for timestamp, value in [
+                (first, 1),
+                (second, 2),
+                (third, 3),
+                (datetime.datetime.now(), 3),
+                (datetime.datetime.max, 3),
+                ]:
+            with Transaction().set_context(_datetime=timestamp):
+                history = History(history_id)
+                self.assertEqual(history.value, value)
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for timestamp, value in [
-                    (first, 1),
-                    (second, 2),
-                    (third, 3),
-                    (datetime.datetime.now(), 3),
-                    (datetime.datetime.max, 3),
-                    ]:
-                with Transaction().set_context(_datetime=timestamp):
-                    history = History(history_id)
-                    self.assertEqual(history.value, value)
-
-            with Transaction().set_context(_datetime=datetime.datetime.min):
-                self.assertRaises(UserError, History.read, [history_id])
+        with Transaction().set_context(_datetime=datetime.datetime.min):
+            self.assertRaises(UserError, History.read, [history_id])
 
     @unittest.skipUnless(backend.name() == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
-    def test0020read_same_timestamp(self):
+    @with_transaction()
+    def test_read_same_timestamp(self):
         'Test read history with same timestamp'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            first = history.create_date
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
 
-            history.value = 2
-            history.save()
-            second = history.write_date
+        history.value = 2
+        history.save()
+        second = history.write_date
 
-            self.assertEqual(first, second)
+        self.assertEqual(first, second)
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 3
-            history.save()
-            third = history.write_date
+        history = History(history_id)
+        history.value = 3
+        history.save()
+        third = history.write_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for timestamp, value in [
-                    (first, 2),
-                    (third, 3),
-                    ]:
-                with Transaction().set_context(_datetime=timestamp):
-                    history = History(history_id)
-                    self.assertEqual(history.value, value)
+        for timestamp, value in [
+                (first, 2),
+                (third, 3),
+                ]:
+            with Transaction().set_context(_datetime=timestamp):
+                history = History(history_id)
+                self.assertEqual(history.value, value)
 
-    def test0030history_revisions(self):
+    @with_transaction()
+    def test_history_revisions(self):
         'Test history revisions'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            first = history.create_date
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 2
-            history.save()
-            second = history.write_date
+        history = History(history_id)
+        history.value = 2
+        history.save()
+        second = history.write_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 3
-            history.save()
-            third = history.write_date
+        history = History(history_id)
+        history.value = 3
+        history.save()
+        third = history.write_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            revisions = History.history_revisions([history_id])
-            self.assertEqual(revisions, [
-                    (third, history_id, u'Administrator'),
-                    (second, history_id, u'Administrator'),
-                    (first, history_id, u'Administrator'),
-                    ])
+        revisions = History.history_revisions([history_id])
+        self.assertEqual(revisions, [
+                (third, history_id, u'Administrator'),
+                (second, history_id, u'Administrator'),
+                (first, history_id, u'Administrator'),
+                ])
 
-    def test0040restore_history(self):
+    @with_transaction()
+    def test_restore_history(self):
         'Test restore history'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            first = history.create_date
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 2
-            history.save()
+        history = History(history_id)
+        history.value = 2
+        history.save()
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.restore_history([history_id], first)
-            history = History(history_id)
-            self.assertEqual(history.value, 1)
+        History.restore_history([history_id], first)
+        history = History(history_id)
+        self.assertEqual(history.value, 1)
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.restore_history([history_id], datetime.datetime.min)
-            self.assertRaises(UserError, History.read, [history_id])
+        transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.delete([History(history_id)])
+        History.restore_history([history_id], datetime.datetime.min)
+        self.assertRaises(UserError, History.read, [history_id])
 
-            transaction.cursor.commit()
+        transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.restore_history([history_id], datetime.datetime.max)
-            self.assertRaises(UserError, History.read, [history_id])
+        History.delete([History(history_id)])
 
-    def test0041restore_history_before(self):
+        transaction.cursor.commit()
+
+        History.restore_history([history_id], datetime.datetime.max)
+        self.assertRaises(UserError, History.read, [history_id])
+
+    @with_transaction()
+    def test_restore_history_before(self):
         'Test restore history before'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
+        history = History(value=1)
+        history.save()
+        history_id = history.id
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 2
-            history.save()
-            second = history.write_date
+        history = History(history_id)
+        history.value = 2
+        history.save()
+        second = history.write_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 3
-            history.save()
+        history = History(history_id)
+        history.value = 3
+        history.save()
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.restore_history_before([history_id], second)
-            history = History(history_id)
-            self.assertEqual(history.value, 1)
+        History.restore_history_before([history_id], second)
+        history = History(history_id)
+        self.assertEqual(history.value, 1)
 
     @unittest.skipUnless(backend.name() == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
-    def test0045restore_history_same_timestamp(self):
+    @with_transaction()
+    def test_restore_history_same_timestamp(self):
         'Test restore history with same timestamp'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            first = history.create_date
-            history.value = 2
-            history.save()
-            second = history.create_date
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
+        history.value = 2
+        history.save()
+        second = history.create_date
 
-            self.assertEqual(first, second)
+        self.assertEqual(first, second)
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(history_id)
-            history.value = 3
-            history.save()
+        history = History(history_id)
+        history.value = 3
+        history.save()
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            History.restore_history([history_id], first)
-            history = History(history_id)
-            self.assertEqual(history.value, 2)
+        History.restore_history([history_id], first)
+        history = History(history_id)
+        self.assertEqual(history.value, 2)
 
-    def test0050ordered_search(self):
+    @with_transaction()
+    def test_ordered_search(self):
         'Test ordered search of history models'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
         order = [('value', 'ASC')]
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            first_id = history.id
-            first_stamp = history.create_date
-            transaction.cursor.commit()
+        history = History(value=1)
+        history.save()
+        first_id = history.id
+        first_stamp = history.create_date
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=2)
-            history.save()
-            second_id = history.id
-            second_stamp = history.create_date
+        history = History(value=2)
+        history.save()
+        second_id = history.id
+        second_stamp = history.create_date
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            first, second = History.search([], order=order)
+        first, second = History.search([], order=order)
 
-            self.assertEqual(first.id, first_id)
-            self.assertEqual(second.id, second_id)
+        self.assertEqual(first.id, first_id)
+        self.assertEqual(second.id, second_id)
 
-            first.value = 3
-            first.save()
-            third_stamp = first.write_date
-            transaction.cursor.commit()
+        first.value = 3
+        first.save()
+        third_stamp = first.write_date
+        transaction.cursor.commit()
 
         results = [
             (first_stamp, [first]),
@@ -301,20 +281,18 @@ class HistoryTestCase(unittest.TestCase):
             (datetime.datetime.now(), [second, first]),
             (datetime.datetime.max, [second, first]),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for timestamp, instances in results:
-                with Transaction().set_context(_datetime=timestamp):
-                    records = History.search([], order=order)
-                    self.assertEqual(records, instances)
+        for timestamp, instances in results:
+            with Transaction().set_context(_datetime=timestamp):
+                records = History.search([], order=order)
+                self.assertEqual(records, instances)
+            transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            to_delete, _ = History.search([], order=order)
+        to_delete, _ = History.search([], order=order)
 
-            self.assertEqual(to_delete.id, second.id)
+        self.assertEqual(to_delete.id, second.id)
 
-            History.delete([to_delete])
-            transaction.cursor.commit()
+        History.delete([to_delete])
+        transaction.cursor.commit()
 
         results = [
             (first_stamp, [first]),
@@ -323,31 +301,32 @@ class HistoryTestCase(unittest.TestCase):
             (datetime.datetime.now(), [first]),
             (datetime.datetime.max, [first]),
             ]
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for timestamp, instances in results:
-                with Transaction().set_context(_datetime=timestamp,
-                        from_test=True):
-                    records = History.search([], order=order)
-                    self.assertEqual(records, instances)
+        for timestamp, instances in results:
+            with Transaction().set_context(_datetime=timestamp,
+                    from_test=True):
+                records = History.search([], order=order)
+                self.assertEqual(records, instances)
+            transaction.cursor.rollback()
 
     @unittest.skipUnless(backend.name() == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
-    def test0060_ordered_search_same_timestamp(self):
+    @with_transaction()
+    def test_ordered_search_same_timestamp(self):
         'Test ordered search  with same timestamp'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
         order = [('value', 'ASC')]
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            first_stamp = history.create_date
-            history.value = 4
-            history.save()
-            second_stamp = history.write_date
+        history = History(value=1)
+        history.save()
+        first_stamp = history.create_date
+        history.value = 4
+        history.save()
+        second_stamp = history.write_date
 
-            self.assertEqual(first_stamp, second_stamp)
-            transaction.cursor.commit()
+        self.assertEqual(first_stamp, second_stamp)
+        transaction.cursor.commit()
 
         results = [
             (second_stamp, [history], [4]),
@@ -355,132 +334,129 @@ class HistoryTestCase(unittest.TestCase):
             (datetime.datetime.max, [history], [4]),
             ]
 
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            for timestamp, instances, values in results:
-                with Transaction().set_context(_datetime=timestamp,
-                        last_test=True):
-                    records = History.search([], order=order)
-                    self.assertEqual(records, instances)
-                    self.assertEqual([x.value for x in records], values)
+        for timestamp, instances, values in results:
+            with Transaction().set_context(_datetime=timestamp,
+                    last_test=True):
+                records = History.search([], order=order)
+                self.assertEqual(records, instances)
+                self.assertEqual([x.value for x in records], values)
+            transaction.cursor.rollback()
 
-    def test0070_browse(self):
+    @with_transaction()
+    def test_browse(self):
         'Test browsing history'
-        History = POOL.get('test.history')
-        Line = POOL.get('test.history.line')
+        pool = Pool()
+        History = pool.get('test.history')
+        Line = pool.get('test.history.line')
+        transaction = Transaction()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            history = History(value=1)
-            history.save()
-            history_id = history.id
-            line_a = Line(name='a', history=history)
-            line_a.save()
-            line_a_id = line_a.id
-            line_b = Line(name='b', history=history)
-            line_b.save()
-            line_b_id = line_b.id
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        line_a = Line(name='a', history=history)
+        line_a.save()
+        line_a_id = line_a.id
+        line_b = Line(name='b', history=history)
+        line_b.save()
+        line_b_id = line_b.id
 
-            first_stamp = line_b.create_date
+        first_stamp = line_b.create_date
 
-            history.stamp = first_stamp
-            history.save()
+        history.stamp = first_stamp
+        history.save()
 
-            transaction.cursor.commit()
+        transaction.cursor.commit()
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
+        history = History(history_id)
+        history.value = 2
+        history.save()
+
+        Line.delete([Line(line_b_id)])
+
+        line_a = Line(line_a_id)
+        line_a.name = 'c'
+        line_a.save()
+
+        second_stamp = line_a.write_date
+
+        transaction.cursor.commit()
+
+        history = History(history_id)
+        self.assertEqual(history.value, 2)
+        self.assertEqual([l.name for l in history.lines], ['c'])
+        self.assertEqual(history.stamp, first_stamp)
+        self.assertEqual(
+            [l.name for l in history.lines_at_stamp], ['a', 'b'])
+
+        with Transaction().set_context(_datetime=first_stamp):
             history = History(history_id)
-            history.value = 2
-            history.save()
+        self.assertEqual(history.value, 1)
+        self.assertEqual([l.name for l in history.lines], ['a', 'b'])
 
-            Line.delete([Line(line_b_id)])
-
-            line_a = Line(line_a_id)
-            line_a.name = 'c'
-            line_a.save()
-
-            second_stamp = line_a.write_date
-
-            transaction.cursor.commit()
-
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
+        with Transaction().set_context(_datetime=second_stamp):
             history = History(history_id)
-            self.assertEqual(history.value, 2)
-            self.assertEqual([l.name for l in history.lines], ['c'])
-            self.assertEqual(history.stamp, first_stamp)
-            self.assertEqual(
-                [l.name for l in history.lines_at_stamp], ['a', 'b'])
+        self.assertEqual(history.value, 2)
+        self.assertEqual([l.name for l in history.lines], ['c'])
+        self.assertEqual(history.stamp, first_stamp)
+        self.assertEqual(
+            [l.name for l in history.lines_at_stamp], ['a', 'b'])
 
-            with Transaction().set_context(_datetime=first_stamp):
-                history = History(history_id)
-            self.assertEqual(history.value, 1)
-            self.assertEqual([l.name for l in history.lines], ['a', 'b'])
-
-            with Transaction().set_context(_datetime=second_stamp):
-                history = History(history_id)
-            self.assertEqual(history.value, 2)
-            self.assertEqual([l.name for l in history.lines], ['c'])
-            self.assertEqual(history.stamp, first_stamp)
-            self.assertEqual(
-                [l.name for l in history.lines_at_stamp], ['a', 'b'])
-
-    def test0080_search_cursor_max(self):
+    @with_transaction()
+    def test_search_cursor_max(self):
         'Test search with number of history entries at cursor.IN_MAX'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+        cursor = transaction.cursor
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cursor = transaction.cursor
+        history = History(value=-1)
+        history.save()
 
+        for history.value in range(cursor.IN_MAX + 1):
+            history.save()
+
+        with transaction.set_context(_datetime=datetime.datetime.max):
+            record, = History.search([])
+
+            self.assertEqual(record.value, cursor.IN_MAX)
+
+    @with_transaction()
+    def test_search_cursor_max_entries(self):
+        'Test search for skipping first history entries at cursor.IN_MAX'
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+        cursor = transaction.cursor
+
+        for i in xrange(0, 2):
             history = History(value=-1)
             history.save()
 
             for history.value in range(cursor.IN_MAX + 1):
                 history.save()
 
-            with transaction.set_context(_datetime=datetime.datetime.max):
-                record, = History.search([])
+        with transaction.set_context(_datetime=datetime.datetime.max):
+            records = History.search([])
 
-                self.assertEqual(record.value, cursor.IN_MAX)
+            self.assertEqual({r.value for r in records}, {cursor.IN_MAX})
+            self.assertEqual(len(records), 2)
 
-    def test0090_search_cursor_max_entries(self):
-        'Test search for skipping first history entries at cursor.IN_MAX'
-        History = POOL.get('test.history')
-
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cursor = transaction.cursor
-
-            for i in xrange(0, 2):
-                history = History(value=-1)
-                history.save()
-
-                for history.value in range(cursor.IN_MAX + 1):
-                    history.save()
-
-            with transaction.set_context(_datetime=datetime.datetime.max):
-                records = History.search([])
-
-                self.assertEqual({r.value for r in records}, {cursor.IN_MAX})
-                self.assertEqual(len(records), 2)
-
-    def test0100_search_cursor_max_histories(self):
+    @with_transaction()
+    def test_search_cursor_max_histories(self):
         'Test search with number of histories at cursor.IN_MAX'
-        History = POOL.get('test.history')
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+        cursor = transaction.cursor
 
-        with Transaction().start(DB_NAME, USER,
-                                 context=CONTEXT) as transaction:
-            cursor = transaction.cursor
+        n = cursor.IN_MAX + 1
+        History.create([{'value': 1}] * n)
 
-            n = cursor.IN_MAX + 1
-            History.create([{'value': 1}] * n)
+        with transaction.set_context(_datetime=datetime.datetime.max):
+            records = History.search([])
 
-            with transaction.set_context(_datetime=datetime.datetime.max):
-                records = History.search([])
-
-                self.assertEqual({r.value for r in records}, {1})
-                self.assertEqual(len(records), n)
+            self.assertEqual({r.value for r in records}, {1})
+            self.assertEqual(len(records), n)
 
 
 def suite():
