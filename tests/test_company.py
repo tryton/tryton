@@ -1,143 +1,134 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
+from contextlib import contextmanager
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.currency.tests import create_currency, add_currency_rate
+
+
+def create_company(name='Dunder Mifflin', currency=None):
+    pool = Pool()
+    Party = pool.get('party.party')
+    Company = pool.get('company.company')
+
+    if currency is None:
+        currency = create_currency('usd')
+        add_currency_rate(currency, 1)
+
+    party, = Party.create([{
+                'name': name,
+                'addresses': [('create', [{}])],
+                }])
+    company = Company(party=party, currency=currency)
+    company.save()
+    return company
+
+
+@contextmanager
+def set_company(company):
+    pool = Pool()
+    User = pool.get('res.user')
+    User.write([User(Transaction().user)], {
+            'main_company': company.id,
+            'company': company.id,
+                })
+    with Transaction().set_context(User.get_preferences(context_only=True)):
+        yield
 
 
 class CompanyTestCase(ModuleTestCase):
     'Test Company module'
     module = 'company'
 
-    def setUp(self):
-        super(CompanyTestCase, self).setUp()
-        self.party = POOL.get('party.party')
-        self.company = POOL.get('company.company')
-        self.employee = POOL.get('company.employee')
-        self.currency = POOL.get('currency.currency')
-        self.user = POOL.get('res.user')
-
-    def test0010company(self):
+    @with_transaction()
+    def test_company(self):
         'Create company'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            currency1, = self.currency.search([
-                    ('code', '=', 'cu1'),
-                    ], 0, 1, None)
+        company = create_company()
+        self.assert_(company)
 
-            party1, = self.party.create([{
-                        'name': 'Dunder Mifflin',
-                        'addresses': [('create', [{}])],
-                        }])
-            company1, = self.company.create([{
-                        'party': party1.id,
-                        'currency': currency1.id,
-                        }])
-            self.assert_(company1)
-            transaction.cursor.commit()
-
-    def test0020company_recursion(self):
+    @with_transaction()
+    def test_company_recursion(self):
         'Test company recursion'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            currency1, = self.currency.search([
-                ('code', '=', 'cu1'),
-                ], 0, 1, None)
+        pool = Pool()
+        Company = pool.get('company.company')
 
-            company1, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ], 0, 1, None)
+        company1 = create_company()
+        company2 = create_company('Michael Scott Paper Company')
+        company2.parent = company1
+        company2.save()
+        self.assert_(company2)
 
-            party2, = self.party.create([{
-                        'name': 'Michael Scott Paper Company',
-                        }])
-            company2, = self.company.create([{
-                        'party': party2.id,
-                        'parent': company1.id,
-                        'currency': currency1.id,
-                        }])
-            self.assert_(company2)
+        self.assertRaises(Exception, Company.write,
+            [company1], {
+                'parent': company2.id,
+                })
 
-            self.assertRaises(Exception, self.company.write,
-                [company1], {
-                    'parent': company2.id,
-                    })
-
-    def test0030employe(self):
+    @with_transaction()
+    def test_employe(self):
         'Create employee'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            company1, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ], 0, 1, None)
+        pool = Pool()
+        Party = pool.get('party.party')
+        Employee = pool.get('company.employee')
+        company1 = create_company()
 
-            party, = self.party.create([{
-                        'name': 'Pam Beesly',
-                        }])
-            self.employee.create([{
-                        'party': party.id,
-                        'company': company1.id,
-                        }])
-            transaction.cursor.commit()
+        party, = Party.create([{
+                    'name': 'Pam Beesly',
+                    }])
+        employee, = Employee.create([{
+                    'party': party.id,
+                    'company': company1.id,
+                    }])
+        self.assert_(employee)
 
-    def test0040user(self):
+    @with_transaction()
+    def test_user(self):
         'Test user company'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            currency1, = self.currency.search([
-                    ('code', '=', 'cu1'),
-                    ], 0, 1, None)
+        pool = Pool()
+        User = pool.get('res.user')
+        transaction = Transaction()
 
-            company1, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ], 0, 1, None)
+        company1 = create_company()
+        company2 = create_company('Michael Scott Paper Company',
+            currency=company1.currency)
+        company2.parent = company1
+        company2.save()
 
-            party2, = self.party.create([{
-                        'name': 'Michael Scott Paper Company',
-                        }])
-            company2, = self.company.create([{
-                        'party': party2.id,
-                        'parent': company1.id,
-                        'currency': currency1.id,
-                        }])
-            user1, user2 = self.user.create([{
-                        'name': 'Jim Halper',
-                        'login': 'jim',
-                        'main_company': company1.id,
-                        'company': company1.id,
-                        }, {
-                        'name': 'Pam Beesly',
-                        'login': 'pam',
-                        'main_company': company2.id,
-                        'company': company2.id,
-                        }])
-            self.assert_(user1)
+        user1, user2 = User.create([{
+                    'name': 'Jim Halper',
+                    'login': 'jim',
+                    'main_company': company1.id,
+                    'company': company1.id,
+                    }, {
+                    'name': 'Pam Beesly',
+                    'login': 'pam',
+                    'main_company': company2.id,
+                    'company': company2.id,
+                    }])
+        self.assert_(user1)
 
-            with transaction.set_user(user1.id):
-                user1, user2 = self.user.browse([user1.id, user2.id])
-                self.assertEqual(user1.company, company1)
+        with transaction.set_user(user1.id):
+            user1, user2 = User.browse([user1.id, user2.id])
+            self.assertEqual(user1.company, company1)
+            self.assertEqual(user2.company, company2)
+
+            with transaction.set_context({'company': company2.id}):
+                user1, user2 = User.browse([user1.id, user2.id])
+                self.assertEqual(user1.company, company2)
                 self.assertEqual(user2.company, company2)
 
-                with transaction.set_context({'company': company2.id}):
-                    user1, user2 = self.user.browse([user1.id, user2.id])
-                    self.assertEqual(user1.company, company2)
-                    self.assertEqual(user2.company, company2)
-
-                with transaction.set_context({'company': None}):
-                    user1, user2 = self.user.browse([user1.id, user2.id])
-                    self.assertEqual(user1.company, None)
-                    self.assertEqual(user2.company, company2)
+            with transaction.set_context({'company': None}):
+                user1, user2 = User.browse([user1.id, user2.id])
+                self.assertEqual(user1.company, None)
+                self.assertEqual(user2.company, company2)
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.currency.tests import test_currency
-    for test in test_currency.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             CompanyTestCase))
     return suite
