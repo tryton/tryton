@@ -4,59 +4,65 @@ import unittest
 import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart, get_fiscalyear
 
 
 class AnalyticAccountTestCase(ModuleTestCase):
     'Test AnalyticAccount module'
     module = 'analytic_account'
 
-    def setUp(self):
-        super(AnalyticAccountTestCase, self).setUp()
-        self.fiscalyear = POOL.get('account.fiscalyear')
-        self.journal = POOL.get('account.journal')
-        self.move = POOL.get('account.move')
-        self.account = POOL.get('account.account')
-        self.analytic_account = POOL.get('analytic_account.account')
-        self.party = POOL.get('party.party')
-
-    def test0010account_debit_credit(self):
+    @with_transaction()
+    def test_account_debit_credit(self):
         'Test account debit/credit'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            party = self.party(name='Party')
-            party.save()
-            root, = self.analytic_account.create([{
+        pool = Pool()
+        Party = pool.get('party.party')
+        AnalyticAccount = pool.get('analytic_account.account')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        transaction = Transaction()
+
+        party = Party(name='Party')
+        party.save()
+        company = create_company()
+        with set_company(company):
+            root, = AnalyticAccount.create([{
                         'type': 'root',
                         'name': 'Root',
                         }])
-            analytic_account, = self.analytic_account.create([{
+            analytic_account, = AnalyticAccount.create([{
                         'type': 'normal',
                         'name': 'Analytic Account',
                         'parent': root.id,
                         'root': root.id,
                         }])
-            fiscalyear, = self.fiscalyear.search([])
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            fiscalyear.create_period([fiscalyear])
             period = fiscalyear.periods[0]
-            journal_revenue, = self.journal.search([
+            journal_revenue, = Journal.search([
                     ('code', '=', 'REV'),
                     ])
-            journal_expense, = self.journal.search([
+            journal_expense, = Journal.search([
                     ('code', '=', 'EXP'),
                     ])
-            revenue, = self.account.search([
+            revenue, = Account.search([
                     ('kind', '=', 'revenue'),
                     ])
-            receivable, = self.account.search([
+            receivable, = Account.search([
                     ('kind', '=', 'receivable'),
                     ])
-            expense, = self.account.search([
+            expense, = Account.search([
                     ('kind', '=', 'expense'),
                     ])
-            payable, = self.account.search([
+            payable, = Account.search([
                     ('kind', '=', 'payable'),
                     ])
 
@@ -111,21 +117,21 @@ class AnalyticAccountTestCase(ModuleTestCase):
                         ],
                     },
                 ]
-            self.move.create(vlist)
+            Move.create(vlist)
 
             self.assertEqual((analytic_account.debit, analytic_account.credit),
                 (Decimal(30), Decimal(100)))
             self.assertEqual(analytic_account.balance, Decimal(70))
 
             with transaction.set_context(start_date=period.end_date):
-                analytic_account = self.analytic_account(analytic_account.id)
+                analytic_account = AnalyticAccount(analytic_account.id)
                 self.assertEqual((analytic_account.debit,
                         analytic_account.credit),
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(analytic_account.balance, Decimal(0))
 
             with transaction.set_context(end_date=period.end_date):
-                analytic_account = self.analytic_account(analytic_account.id)
+                analytic_account = AnalyticAccount(analytic_account.id)
                 self.assertEqual((analytic_account.debit,
                         analytic_account.credit),
                     (Decimal(30), Decimal(100)))
@@ -134,10 +140,6 @@ class AnalyticAccountTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AnalyticAccountTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_analytic_account.rst',
