@@ -6,10 +6,9 @@ from mock import patch
 import ldap
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.config import config
+from trytond.pool import Pool
 
 from trytond.modules.ldap_authentication.res import parse_ldap_url
 
@@ -28,43 +27,45 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
     def tearDown(self):
         config.remove_section(section)
 
+    @with_transaction()
     def test_user_get_login(self):
         'Test User.get_login'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            User = POOL.get('res.user')
+        pool = Pool()
+        User = pool.get('res.user')
 
-            @patch.object(ldap, 'initialize')
-            @patch.object(User, 'ldap_search_user')
-            def get_login(login, password, find, ldap_search_user, initialize):
-                con = initialize.return_value
-                con.simple_bind_s.return_value = True
-                if find:
-                    ldap_search_user.return_value = [('dn', {'uid': [find]})]
-                else:
-                    ldap_search_user.return_value = None
-                return User.get_login(login, password)
+        @patch.object(ldap, 'initialize')
+        @patch.object(User, 'ldap_search_user')
+        def get_login(login, password, find, ldap_search_user, initialize):
+            con = initialize.return_value
+            con.simple_bind_s.return_value = True
+            if find:
+                ldap_search_user.return_value = [('dn', {'uid': [find]})]
+            else:
+                ldap_search_user.return_value = None
+            return User.get_login(login, password)
 
-            # Test existing user
-            self.assertEqual(get_login('admin', 'admin', None), USER)
-            self.assertEqual(get_login('admin', 'admin', 'admin'), USER)
-            self.assertEqual(get_login('AdMiN', 'admin', 'admin'), USER)
+        # Test existing user
+        user, = User.search([('login', '=', 'admin')])
+        self.assertEqual(get_login('admin', 'admin', None), user.id)
+        self.assertEqual(get_login('admin', 'admin', 'admin'), user.id)
+        self.assertEqual(get_login('AdMiN', 'admin', 'admin'), user.id)
 
-            # Test new user
-            self.assertFalse(get_login('foo', 'bar', None))
-            self.assertFalse(get_login('foo', 'bar', 'foo'))
+        # Test new user
+        self.assertFalse(get_login('foo', 'bar', None))
+        self.assertFalse(get_login('foo', 'bar', 'foo'))
 
-            # Test create new user
-            config.set(section, 'create_user', 'True')
-            user_id = get_login('foo', 'bar', 'foo')
-            foo, = User.search([('login', '=', 'foo')])
-            self.assertEqual(user_id, foo.id)
-            self.assertEqual(foo.name, 'foo')
+        # Test create new user
+        config.set(section, 'create_user', 'True')
+        user_id = get_login('foo', 'bar', 'foo')
+        foo, = User.search([('login', '=', 'foo')])
+        self.assertEqual(user_id, foo.id)
+        self.assertEqual(foo.name, 'foo')
 
-            # Test create new user with different case
-            user_id = get_login('BaR', 'foo', 'bar')
-            bar, = User.search([('login', '=', 'bar')])
-            self.assertEqual(user_id, bar.id)
-            self.assertEqual(bar.name, 'bar')
+        # Test create new user with different case
+        user_id = get_login('BaR', 'foo', 'bar')
+        bar, = User.search([('login', '=', 'bar')])
+        self.assertEqual(user_id, bar.id)
+        self.assertEqual(bar.name, 'bar')
 
     def test_parse_ldap_url(self):
         'Test parse_ldap_url'
