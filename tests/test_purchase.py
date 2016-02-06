@@ -5,33 +5,33 @@ import doctest
 from decimal import Decimal
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart
 
 
 class PurchaseTestCase(ModuleTestCase):
     'Test Purchase module'
     module = 'purchase'
 
+    @with_transaction()
     def test_purchase_price(self):
         'Test purchase price'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            Company = POOL.get('company.company')
-            User = POOL.get('res.user')
-            Account = POOL.get('account.account')
-            Template = POOL.get('product.template')
-            Product = POOL.get('product.product')
-            Uom = POOL.get('product.uom')
-            ProductSupplier = POOL.get('purchase.product_supplier')
-            Party = POOL.get('party.party')
+        pool = Pool()
+        Account = pool.get('account.account')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        ProductSupplier = pool.get('purchase.product_supplier')
+        Party = pool.get('party.party')
 
-            company, = Company.search([('rec_name', '=', 'Dunder Mifflin')])
-            User.write([User(USER)], {
-                    'main_company': company.id,
-                    'company': company.id,
-                    })
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
 
             receivable, = Account.search([
                     ('kind', '=', 'receivable'),
@@ -104,14 +104,6 @@ class PurchaseTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         PurchaseTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_purchase.rst',
