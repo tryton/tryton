@@ -7,148 +7,157 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from trytond.pool import Pool
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
+
+from trytond.modules.company.tests import create_company, set_company
+
+
+def create_chart(company, tax=False):
+    pool = Pool()
+    AccountTemplate = pool.get('account.account.template')
+    TaxTemplate = pool.get('account.tax.template')
+    TaxCodeTemplate = pool.get('account.tax.code.template')
+    ModelData = pool.get('ir.model.data')
+    CreateChart = pool.get('account.create_chart', type='wizard')
+    Account = pool.get('account.account')
+
+    template = AccountTemplate(ModelData.get_id(
+            'account', 'account_template_root_en'))
+    if tax:
+        tax_account = AccountTemplate(ModelData.get_id(
+                'account', 'account_template_tax_en'))
+        with Transaction().set_user(0):
+            tax_code = TaxCodeTemplate()
+            tax_code.name = 'Tax Code'
+            tax_code.account = template
+            tax_code.save()
+            base_code = TaxCodeTemplate()
+            base_code.name = 'Base Code'
+            base_code.account = template
+            base_code.save()
+            tax = TaxTemplate()
+            tax.name = tax.description = '20% VAT'
+            tax.type = 'percentage'
+            tax.rate = Decimal('0.2')
+            tax.account = template
+            tax.invoice_account = tax_account
+            tax.credit_note_account = tax_account
+            tax.invoice_base_code = base_code
+            tax.invoice_base_sign = Decimal(1)
+            tax.invoice_tax_code = tax_code
+            tax.invoice_tax_sign = Decimal(1)
+            tax.credit_note_base_code = base_code
+            tax.credit_note_base_sign = Decimal(-1)
+            tax.credit_note_tax_code = tax_code
+            tax.credit_note_tax_sign = Decimal(-1)
+            tax.save()
+
+    session_id, _, _ = CreateChart.create()
+    create_chart = CreateChart(session_id)
+    create_chart.account.account_template = template
+    create_chart.account.company = company
+    create_chart.transition_create_account()
+    receivable, = Account.search([
+            ('kind', '=', 'receivable'),
+            ('company', '=', company.id),
+            ])
+    payable, = Account.search([
+            ('kind', '=', 'payable'),
+            ('company', '=', company.id),
+            ])
+    create_chart.properties.company = company
+    create_chart.properties.account_receivable = receivable
+    create_chart.properties.account_payable = payable
+    create_chart.transition_create_properties()
+
+
+def get_fiscalyear(company, today=None):
+    pool = Pool()
+    Sequence = pool.get('ir.sequence')
+    FiscalYear = pool.get('account.fiscalyear')
+
+    if not today:
+        today = datetime.date.today()
+
+    sequence, = Sequence.create([{
+                'name': '%s' % today.year,
+                'code': 'account.move',
+                'company': company.id,
+                }])
+    fiscalyear = FiscalYear(name='%s' % today.year, company=company)
+    fiscalyear.start_date = today.replace(month=1, day=1)
+    fiscalyear.end_date = today.replace(month=12, day=31)
+    fiscalyear.post_move_sequence = sequence
+    return fiscalyear
 
 
 class AccountTestCase(ModuleTestCase):
     'Test Account module'
     module = 'account'
 
-    def setUp(self):
-        super(AccountTestCase, self).setUp()
-        self.account_template = POOL.get('account.account.template')
-        self.tax_code_template = POOL.get('account.tax.code.template')
-        self.tax_template = POOL.get('account.tax.code.template')
-        self.account = POOL.get('account.account')
-        self.account_create_chart = POOL.get(
-            'account.create_chart', type='wizard')
-        self.company = POOL.get('company.company')
-        self.user = POOL.get('res.user')
-        self.fiscalyear = POOL.get('account.fiscalyear')
-        self.sequence = POOL.get('ir.sequence')
-        self.move = POOL.get('account.move')
-        self.journal = POOL.get('account.journal')
-        self.account_type = POOL.get('account.account.type')
-        self.period = POOL.get('account.period')
-        self.balance_non_deferral = POOL.get(
-            'account.fiscalyear.balance_non_deferral', type='wizard')
-        self.tax = POOL.get('account.tax')
-        self.party = POOL.get('party.party')
-        self.model_data = POOL.get('ir.model.data')
-
-    def test0010account_chart(self):
+    @with_transaction()
+    def test_account_chart(self):
         'Test creation of minimal chart of accounts'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            account_template = self.account_template(self.model_data.get_id(
-                    'account', 'account_template_root_en'))
-            tax_account = self.account_template(self.model_data.get_id(
-                    'account', 'account_template_tax_en'))
-            with Transaction().set_user(0):
-                tax_code = self.tax_code_template()
-                tax_code.name = 'Tax Code'
-                tax_code.account = account_template
-                tax_code.save()
-                base_code = self.tax_code_template()
-                base_code.name = 'Base Code'
-                base_code.account = account_template
-                base_code.save()
-                tax = self.tax_template()
-                tax.name = tax.description = '20% VAT'
-                tax.type = 'percentage'
-                tax.rate = Decimal('0.2')
-                tax.account = account_template
-                tax.invoice_account = tax_account
-                tax.credit_note_account = tax_account
-                tax.invoice_base_code = base_code
-                tax.invoice_base_sign = Decimal(1)
-                tax.invoice_tax_code = tax_code
-                tax.invoice_tax_sign = Decimal(1)
-                tax.credit_note_base_code = base_code
-                tax.credit_note_base_sign = Decimal(-1)
-                tax.credit_note_tax_code = tax_code
-                tax.credit_note_tax_sign = Decimal(-1)
-                tax.save()
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
 
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            self.user.write([self.user(USER)], {
-                    'main_company': company.id,
-                    'company': company.id,
-                    })
-            CONTEXT.update(self.user.get_preferences(context_only=True))
-
-            session_id, _, _ = self.account_create_chart.create()
-            create_chart = self.account_create_chart(session_id)
-            create_chart.account.account_template = account_template
-            create_chart.account.company = company
-            create_chart.transition_create_account()
-            receivable, = self.account.search([
-                    ('kind', '=', 'receivable'),
-                    ('company', '=', company.id),
-                    ])
-            payable, = self.account.search([
-                    ('kind', '=', 'payable'),
-                    ('company', '=', company.id),
-                    ])
-            create_chart.properties.company = company
-            create_chart.properties.account_receivable = receivable
-            create_chart.properties.account_payable = payable
-            create_chart.transition_create_properties()
-            transaction.cursor.commit()
-
-    def test0020fiscalyear(self):
+    @with_transaction()
+    def test_fiscalyear(self):
         'Test fiscalyear'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            today = datetime.date.today()
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            sequence, = self.sequence.create([{
-                        'name': '%s' % today.year,
-                        'code': 'account.move',
-                        'company': company.id,
-                        }])
-            fiscalyear, = self.fiscalyear.create([{
-                        'name': '%s' % today.year,
-                        'start_date': today.replace(month=1, day=1),
-                        'end_date': today.replace(month=12, day=31),
-                        'company': company.id,
-                        'post_move_sequence': sequence.id,
-                        }])
-            self.fiscalyear.create_period([fiscalyear])
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
             self.assertEqual(len(fiscalyear.periods), 12)
-            transaction.cursor.commit()
 
-    def test0030account_debit_credit(self):
+    @with_transaction()
+    def test_account_debit_credit(self):
         'Test account debit/credit'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            party = self.party(name='Party')
-            party.save()
-            fiscalyear, = self.fiscalyear.search([])
+        pool = Pool()
+        Party = pool.get('party.party')
+        FiscalYear = pool.get('account.fiscalyear')
+        Period = pool.get('account.period')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
+        Move = pool.get('account.move')
+        Sequence = pool.get('ir.sequence')
+        BalanceNonDeferral = pool.get(
+            'account.fiscalyear.balance_non_deferral', type='wizard')
+
+        party = Party(name='Party')
+        party.save()
+
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
             period = fiscalyear.periods[0]
-            journal_revenue, = self.journal.search([
+            create_chart(company)
+
+            journal_revenue, = Journal.search([
                     ('code', '=', 'REV'),
                     ])
-            journal_expense, = self.journal.search([
+            journal_expense, = Journal.search([
                     ('code', '=', 'EXP'),
                     ])
-            revenue, = self.account.search([
+            revenue, = Account.search([
                     ('kind', '=', 'revenue'),
                     ])
-            receivable, = self.account.search([
+            receivable, = Account.search([
                     ('kind', '=', 'receivable'),
                     ])
-            expense, = self.account.search([
+            expense, = Account.search([
                     ('kind', '=', 'expense'),
                     ])
-            payable, = self.account.search([
+            payable, = Account.search([
                     ('kind', '=', 'payable'),
                     ])
             # Create some moves
@@ -184,7 +193,7 @@ class AccountTestCase(ModuleTestCase):
                         ],
                     },
                 ]
-            self.move.create(vlist)
+            Move.create(vlist)
 
             # Test debit/credit
             self.assertEqual((revenue.debit, revenue.credit),
@@ -192,23 +201,15 @@ class AccountTestCase(ModuleTestCase):
             self.assertEqual(revenue.balance, Decimal(-100))
 
             # Use next fiscalyear
-            next_sequence, = self.sequence.create([{
-                        'name': 'Next Year',
-                        'code': 'account.move',
-                        'company': fiscalyear.company.id,
-                        }])
-            next_fiscalyear, = self.fiscalyear.copy([fiscalyear],
-                default={
-                    'start_date': fiscalyear.end_date + datetime.timedelta(1),
-                    'end_date': fiscalyear.end_date + datetime.timedelta(360),
-                    'post_move_sequence': next_sequence.id,
-                    'periods': None,
-                    })
-            self.fiscalyear.create_period([next_fiscalyear])
+            today = datetime.date.today()
+            next_fiscalyear = get_fiscalyear(company,
+                today=today.replace(year=today.year + 1))
+            next_fiscalyear.save()
+            FiscalYear.create_period([next_fiscalyear])
 
             # Test debit/credit for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id):
-                revenue = self.account(revenue.id)
+                revenue = Account(revenue.id)
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(revenue.balance, Decimal(-100))
@@ -216,32 +217,32 @@ class AccountTestCase(ModuleTestCase):
             # Test debit/credit cumulate for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id,
                     cumulate=True):
-                revenue = self.account(revenue.id)
+                revenue = Account(revenue.id)
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(0), Decimal(100)))
                 self.assertEqual(revenue.balance, Decimal(-100))
 
             # Balance non-deferral
-            journal_sequence, = self.sequence.search([
+            journal_sequence, = Sequence.search([
                     ('code', '=', 'account.journal'),
                     ])
-            journal_closing, = self.journal.create([{
+            journal_closing, = Journal.create([{
                         'name': 'Closing',
                         'code': 'CLO',
                         'type': 'situation',
                         'sequence': journal_sequence.id,
                         }])
-            period_closing, = self.period.create([{
+            period_closing, = Period.create([{
                         'name': 'Closing',
                         'start_date': fiscalyear.end_date,
                         'end_date': fiscalyear.end_date,
                         'fiscalyear': fiscalyear.id,
                         'type': 'adjustment',
                         }])
-            type_equity, = self.account_type.search([
+            type_equity, = AccountType.search([
                     ('name', '=', 'Equity'),
                     ])
-            account_pl, = self.account.create([{
+            account_pl, = Account.create([{
                         'name': 'P&L',
                         'type': type_equity.id,
                         'deferral': True,
@@ -249,8 +250,8 @@ class AccountTestCase(ModuleTestCase):
                         'kind': 'other',
                         }])
 
-            session_id = self.balance_non_deferral.create()[0]
-            balance_non_deferral = self.balance_non_deferral(session_id)
+            session_id = BalanceNonDeferral.create()[0]
+            balance_non_deferral = BalanceNonDeferral(session_id)
 
             balance_non_deferral.start.fiscalyear = fiscalyear
             balance_non_deferral.start.journal = journal_closing
@@ -260,14 +261,14 @@ class AccountTestCase(ModuleTestCase):
 
             balance_non_deferral._execute('balance')
 
-            moves = self.move.search([
+            moves = Move.search([
                     ('state', '=', 'draft'),
                     ('period.fiscalyear', '=', fiscalyear.id),
                     ])
-            self.move.post(moves)
+            Move.post(moves)
 
             # Close fiscalyear
-            self.fiscalyear.close([fiscalyear])
+            FiscalYear.close([fiscalyear])
 
             # Check deferral
             self.assertEqual(revenue.deferrals, ())
@@ -280,24 +281,24 @@ class AccountTestCase(ModuleTestCase):
 
             # Test debit/credit
             with Transaction().set_context(fiscalyear=fiscalyear.id):
-                revenue = self.account(revenue.id)
+                revenue = Account(revenue.id)
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(100), Decimal(100)))
                 self.assertEqual(revenue.balance, Decimal(0))
 
-                receivable = self.account(receivable.id)
+                receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
                     (Decimal(100), Decimal(0)))
                 self.assertEqual(receivable.balance, Decimal(100))
 
             # Test debit/credit for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id):
-                revenue = self.account(revenue.id)
+                revenue = Account(revenue.id)
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(revenue.balance, Decimal(0))
 
-                receivable = self.account(receivable.id)
+                receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(receivable.balance, Decimal(100))
@@ -305,33 +306,38 @@ class AccountTestCase(ModuleTestCase):
             # Test debit/credit cumulate for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id,
                     cumulate=True):
-                revenue = self.account(revenue.id)
+                revenue = Account(revenue.id)
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(revenue.balance, Decimal(0))
 
-                receivable = self.account(receivable.id)
+                receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
                     (Decimal(100), Decimal(0)))
                 self.assertEqual(receivable.balance, Decimal(100))
 
-            transaction.cursor.rollback()
-
-    def test0040tax_compute(self):
+    @with_transaction()
+    def test_tax_compute(self):
         'Test tax compute/reverse_compute'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            today = datetime.date.today()
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        today = datetime.date.today()
 
-            tax_account, = self.account.search([
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            tax_account, = Account.search([
                     ('name', '=', 'Main Tax'),
                     ])
-            tax = self.tax()
+            tax = Tax()
             tax.name = tax.description = 'Test'
             tax.type = 'none'
             tax.invoice_account = tax_account
             tax.credit_note_account = tax_account
 
-            child1 = self.tax()
+            child1 = Tax()
             child1.name = child1.description = 'Child 1'
             child1.type = 'percentage'
             child1.rate = Decimal('0.2')
@@ -339,7 +345,7 @@ class AccountTestCase(ModuleTestCase):
             child1.credit_note_account = tax_account
             child1.save()
 
-            child2 = self.tax()
+            child2 = Tax()
             child2.name = child2.description = 'Child 1'
             child2.type = 'fixed'
             child2.amount = Decimal('10')
@@ -350,7 +356,7 @@ class AccountTestCase(ModuleTestCase):
             tax.childs = [child1, child2]
             tax.save()
 
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2),
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2),
                 [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -362,12 +368,12 @@ class AccountTestCase(ModuleTestCase):
                         }])
 
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('130'), [tax]),
+                Tax.reverse_compute(Decimal('130'), [tax]),
                 Decimal('100'))
 
             child1.end_date = today + relativedelta(days=5)
             child1.save()
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2, today),
                 [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -379,21 +385,21 @@ class AccountTestCase(ModuleTestCase):
                         }])
 
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('130'), [tax], today),
+                Tax.reverse_compute(Decimal('130'), [tax], today),
                 Decimal('100'))
 
             child1.start_date = today + relativedelta(days=1)
             child1.save()
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2, today),
                 [{
                         'base': Decimal('200'),
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('110'), [tax], today),
+                Tax.reverse_compute(Decimal('110'), [tax], today),
                 Decimal('100'))
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=1)), [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -404,10 +410,10 @@ class AccountTestCase(ModuleTestCase):
                         'tax': child2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(
+                Tax.reverse_compute(
                     Decimal('130'), [tax], today + relativedelta(days=1)),
                 Decimal('100'))
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=5)), [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -418,23 +424,23 @@ class AccountTestCase(ModuleTestCase):
                         'tax': child2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('130'), [tax],
+                Tax.reverse_compute(Decimal('130'), [tax],
                     today + relativedelta(days=5)),
                 Decimal('100'))
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=6)), [{
                         'base': Decimal('200'),
                         'amount': Decimal('20'),
                         'tax': child2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('110'), [tax],
+                Tax.reverse_compute(Decimal('110'), [tax],
                     today + relativedelta(days=6)),
                 Decimal('100'))
 
             child1.end_date = None
             child1.save()
-            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+            self.assertEqual(Tax.compute([tax], Decimal('100'), 2,
                     today + relativedelta(days=6)), [{
                         'base': Decimal('200'),
                         'amount': Decimal('40.0'),
@@ -445,11 +451,11 @@ class AccountTestCase(ModuleTestCase):
                         'tax': child2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('130'), [tax],
+                Tax.reverse_compute(Decimal('130'), [tax],
                     today + relativedelta(days=6)),
                 Decimal('100'))
 
-            ecotax1 = self.tax()
+            ecotax1 = Tax()
             ecotax1.name = ecotax1.description = 'EcoTax 1'
             ecotax1.type = 'fixed'
             ecotax1.amount = Decimal(5)
@@ -458,7 +464,7 @@ class AccountTestCase(ModuleTestCase):
             ecotax1.sequence = 10
             ecotax1.save()
 
-            vat0 = self.tax()
+            vat0 = Tax()
             vat0.name = vat0.description = 'VAT0'
             vat0.type = 'percentage'
             vat0.rate = Decimal('0.1')
@@ -467,7 +473,7 @@ class AccountTestCase(ModuleTestCase):
             vat0.sequence = 5
             vat0.save()
 
-            vat1 = self.tax()
+            vat1 = Tax()
             vat1.name = vat1.description = 'VAT1'
             vat1.type = 'percentage'
             vat1.rate = Decimal('0.2')
@@ -477,7 +483,7 @@ class AccountTestCase(ModuleTestCase):
             vat1.save()
 
             self.assertEqual(
-                self.tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
+                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -492,16 +498,24 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat1,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal(135), [vat0, ecotax1, vat1]),
+                Tax.reverse_compute(Decimal(135), [vat0, ecotax1, vat1]),
                 Decimal(100))
 
-    def test0045tax_compute_with_update_unit_price(self):
+    @with_transaction()
+    def test_tax_compute_with_update_unit_price(self):
         'Test tax compute with unit_price modifying tax'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            tax_account, = self.account.search([
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            tax_account, = Account.search([
                     ('name', '=', 'Main Tax'),
                     ])
-            ecotax1 = self.tax()
+            ecotax1 = Tax()
             ecotax1.name = ecotax1.description = 'EcoTax 1'
             ecotax1.type = 'fixed'
             ecotax1.amount = Decimal(5)
@@ -511,7 +525,7 @@ class AccountTestCase(ModuleTestCase):
             ecotax1.sequence = 10
             ecotax1.save()
 
-            vat1 = self.tax()
+            vat1 = Tax()
             vat1.name = vat1.description = 'VAT1'
             vat1.type = 'percentage'
             vat1.rate = Decimal('0.2')
@@ -521,7 +535,7 @@ class AccountTestCase(ModuleTestCase):
             vat1.save()
 
             self.assertEqual(
-                self.tax.compute([ecotax1, vat1], Decimal(100), 5),
+                Tax.compute([ecotax1, vat1], Decimal(100), 5),
                 [{
                         'base': Decimal(500),
                         'amount': Decimal(25),
@@ -532,10 +546,10 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat1,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal(126), [ecotax1, vat1]),
+                Tax.reverse_compute(Decimal(126), [ecotax1, vat1]),
                 Decimal(100))
 
-            ecotax2 = self.tax()
+            ecotax2 = Tax()
             ecotax2.name = ecotax2.description = 'EcoTax 2'
             ecotax2.type = 'percentage'
             ecotax2.rate = Decimal('0.5')
@@ -546,7 +560,7 @@ class AccountTestCase(ModuleTestCase):
             ecotax2.save()
 
             self.assertEqual(
-                self.tax.compute([ecotax1, ecotax2, vat1], Decimal(100), 1),
+                Tax.compute([ecotax1, ecotax2, vat1], Decimal(100), 1),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(5),
@@ -561,11 +575,11 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat1,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal(186),
+                Tax.reverse_compute(Decimal(186),
                     [ecotax1, ecotax2, vat1]),
                 Decimal(100))
 
-            vat0 = self.tax()
+            vat0 = Tax()
             vat0.name = vat0.description = 'VAT0'
             vat0.type = 'percentage'
             vat0.rate = Decimal('0.1')
@@ -575,7 +589,7 @@ class AccountTestCase(ModuleTestCase):
             vat0.save()
 
             self.assertEqual(
-                self.tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
+                Tax.compute([vat0, ecotax1, vat1], Decimal(100), 1),
                 [{
                         'base': Decimal(100),
                         'amount': Decimal(10),
@@ -590,12 +604,12 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat1,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal(136),
+                Tax.reverse_compute(Decimal(136),
                     [vat0, ecotax1, vat1]),
                 Decimal(100))
 
             self.assertEqual(
-                self.tax.compute([vat0, ecotax1, ecotax2, vat1],
+                Tax.compute([vat0, ecotax1, ecotax2, vat1],
                     Decimal(100), 1),
                 [{
                         'base': Decimal(100),
@@ -615,11 +629,11 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat1,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal(196),
+                Tax.reverse_compute(Decimal(196),
                     [vat0, ecotax1, ecotax2, vat1]),
                 Decimal(100))
 
-            vat2 = self.tax()
+            vat2 = Tax()
             vat2.name = vat2.description = 'VAT2'
             vat2.type = 'percentage'
             vat2.rate = Decimal('0.3')
@@ -629,7 +643,7 @@ class AccountTestCase(ModuleTestCase):
             vat2.save()
 
             self.assertEqual(
-                self.tax.compute([vat0, ecotax1, vat1, vat2],
+                Tax.compute([vat0, ecotax1, vat1, vat2],
                     Decimal(100), 1),
                 [{
                         'base': Decimal(100),
@@ -649,11 +663,11 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat2,
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('167.5'),
+                Tax.reverse_compute(Decimal('167.5'),
                     [vat0, ecotax1, vat1, vat2]),
                 Decimal(100))
 
-            ecotax3 = self.tax()
+            ecotax3 = Tax()
             ecotax3.name = ecotax3.description = 'ECOTAX3'
             ecotax3.type = 'percentage'
             ecotax3.rate = Decimal('0.4')
@@ -664,7 +678,7 @@ class AccountTestCase(ModuleTestCase):
             ecotax3.save()
 
             self.assertEqual(
-                self.tax.compute([vat0, ecotax1, vat1, ecotax3, vat2],
+                Tax.compute([vat0, ecotax1, vat1, ecotax3, vat2],
                     Decimal(100), 1),
                 [{
                         'base': Decimal(100),
@@ -688,33 +702,43 @@ class AccountTestCase(ModuleTestCase):
                         'tax': vat2
                         }])
             self.assertEqual(
-                self.tax.reverse_compute(Decimal('222.1'),
+                Tax.reverse_compute(Decimal('222.1'),
                     [vat0, ecotax1, vat1, ecotax3, vat2]),
                 Decimal(100))
 
-    def test0050_receivable_payable(self):
+    @with_transaction()
+    def test_receivable_payable(self):
         'Test party receivable payable'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            pool = Pool()
-            Party = pool.get('party.party')
-            fiscalyear, = self.fiscalyear.search([])
+        pool = Pool()
+        Party = pool.get('party.party')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
             period = fiscalyear.periods[0]
-            journal_revenue, = self.journal.search([
+            journal_revenue, = Journal.search([
                     ('code', '=', 'REV'),
                     ])
-            journal_expense, = self.journal.search([
+            journal_expense, = Journal.search([
                     ('code', '=', 'EXP'),
                     ])
-            revenue, = self.account.search([
+            revenue, = Account.search([
                     ('kind', '=', 'revenue'),
                     ])
-            receivable, = self.account.search([
+            receivable, = Account.search([
                     ('kind', '=', 'receivable'),
                     ])
-            expense, = self.account.search([
+            expense, = Account.search([
                     ('kind', '=', 'expense'),
                     ])
-            payable, = self.account.search([
+            payable, = Account.search([
                     ('kind', '=', 'payable'),
                     ])
             party, = Party.create([{
@@ -750,8 +774,8 @@ class AccountTestCase(ModuleTestCase):
                 get_move(journal_revenue, Decimal(60), expense, payable,
                     party, tomorrow),
                 ]
-            moves = self.move.create(vlist)
-            self.move.post(moves)
+            moves = Move.create(vlist)
+            Move.post(moves)
 
             party = Party(party.id)
             self.assertEqual(party.receivable, Decimal('300'))
@@ -762,10 +786,6 @@ class AccountTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite:
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         AccountTestCase))
     suite.addTests(doctest.DocFileSuite(
