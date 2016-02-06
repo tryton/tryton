@@ -1,52 +1,58 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
 from trytond.exceptions import UserWarning
+
+from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tests import create_chart, get_fiscalyear
+from trytond.modules.account_invoice.tests import set_invoice_sequences
 
 
 class SaleCreditLimitTestCase(ModuleTestCase):
     'Test SaleCreditLimit module'
     module = 'sale_credit_limit'
 
-    def setUp(self):
-        super(SaleCreditLimitTestCase, self).setUp()
-        self.account = POOL.get('account.account')
-        self.move = POOL.get('account.move')
-        self.period = POOL.get('account.period')
-        self.journal = POOL.get('account.journal')
-        self.party = POOL.get('party.party')
-        self.sale = POOL.get('sale.sale')
-        self.sale_line = POOL.get('sale.line')
-        self.company = POOL.get('company.company')
-        self.payment_term = POOL.get('account.invoice.payment_term')
-        self.property = POOL.get('ir.property')
-        self.model_field = POOL.get('ir.model.field')
-
-    def test0010check_credit_limit(self):
+    @with_transaction()
+    def test_check_credit_limit(self):
         'Test check_credit_limit'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            receivable, = self.account.search([
+        pool = Pool()
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Journal = pool.get('account.journal')
+        Party = pool.get('party.party')
+        Sale = pool.get('sale.sale')
+        PaymentTerm = pool.get('account.invoice.payment_term')
+        Property = pool.get('ir.property')
+        ModelField = pool.get('ir.model.field')
+        FiscalYear = pool.get('account.fiscalyear')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = set_invoice_sequences(get_fiscalyear(company))
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+
+            receivable, = Account.search([
                     ('kind', '=', 'receivable'),
                     ])
-            revenue, = self.account.search([
+            revenue, = Account.search([
                     ('kind', '=', 'revenue'),
                     ])
-            journal, = self.journal.search([], limit=1)
-            period, = self.period.search([], limit=1)
-            party, = self.party.create([{
+            journal, = Journal.search([], limit=1)
+            party, = Party.create([{
                         'name': 'Party',
                         'addresses': [
                             ('create', [{}]),
                             ],
                         'credit_limit_amount': Decimal('100'),
                         }])
-            self.move.create([{
+            Move.create([{
                         'journal': journal.id,
                         'period': period.id,
                         'date': period.start_date,
@@ -61,10 +67,7 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                                         }]),
                             ],
                         }])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            payment_term, = self.payment_term.create([{
+            payment_term, = PaymentTerm.create([{
                         'name': 'Test',
                         'lines': [
                             ('create', [{
@@ -72,16 +75,16 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                                         }])
                             ],
                         }])
-            field, = self.model_field.search([
+            field, = ModelField.search([
                     ('model.model', '=', 'product.template'),
                     ('name', '=', 'account_revenue'),
                     ], limit=1)
-            self.property.create([{
+            Property.create([{
                     'field': field.id,
                     'value': str(revenue),
                     'company': company.id,
                     }])
-            sale, = self.sale.create([{
+            sale, = Sale.create([{
                         'party': party.id,
                         'company': company.id,
                         'payment_term': payment_term.id,
@@ -97,34 +100,30 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                             ],
                         }])
             self.assertEqual(party.credit_amount, Decimal('100'))
-            self.sale.quote([sale])
-            self.sale.confirm([sale])
+            Sale.quote([sale])
+            Sale.confirm([sale])
             self.assertEqual(party.credit_amount, Decimal('100'))
             # Test limit reaches
-            self.assertRaises(UserWarning, self.sale.process, [sale])
+            self.assertRaises(UserWarning, Sale.process, [sale])
             # Increase limit
             party.credit_limit_amount = Decimal('200')
             party.save()
             # process should work
-            self.sale.process([sale])
+            Sale.process([sale])
             self.assertEqual(sale.state, 'processing')
             self.assertEqual(party.credit_amount, Decimal('150'))
 
             # Re-process
-            self.sale.process([sale])
+            Sale.process([sale])
             # Decrease limit
             party.credit_limit_amount = Decimal('100')
             party.save()
             # process should still work as sale is already processing
-            self.sale.process([sale])
+            Sale.process([sale])
 
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.account.tests import test_account
-    for test in test_account.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         SaleCreditLimitTestCase))
     return suite
