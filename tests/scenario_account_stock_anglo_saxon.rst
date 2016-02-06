@@ -138,7 +138,7 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
-    >>> template.delivery_time = 0
+    >>> template.lead_time = datetime.timedelta(0)
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> template.account_stock = stock
@@ -386,7 +386,7 @@ Now we will use a product with different unit of measure::
     >>> template_by5.list_price = Decimal('10')
     >>> template_by5.cost_price = Decimal('5')
     >>> template_by5.cost_price_method = 'fixed'
-    >>> template_by5.delivery_time = 0
+    >>> template_by5.lead_time = datetime.timedelta(0)
     >>> template_by5.account_expense = expense
     >>> template_by5.account_revenue = revenue
     >>> template_by5.account_stock = stock
