@@ -9,12 +9,13 @@ from functools import partial
 from collections import defaultdict
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 from trytond.exceptions import UserWarning
 from trytond.pool import Pool
+
+from trytond.modules.company.tests import create_company, set_company
 
 
 class StockTestCase(ModuleTestCase):
@@ -22,50 +23,39 @@ class StockTestCase(ModuleTestCase):
     module = 'stock'
     longMessage = True
 
-    def setUp(self):
-        super(StockTestCase, self).setUp()
-        self.template = POOL.get('product.template')
-        self.product = POOL.get('product.product')
-        self.category = POOL.get('product.category')
-        self.uom = POOL.get('product.uom')
-        self.location = POOL.get('stock.location')
-        self.move = POOL.get('stock.move')
-        self.company = POOL.get('company.company')
-        self.user = POOL.get('res.user')
-        self.period = POOL.get('stock.period')
-        self.cache = POOL.get('stock.period.cache')
-
-    def test0010move_internal_quantity(self):
+    @with_transaction()
+    def test_move_internal_quantity(self):
         'Test Move.internal_quantity'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category, = self.category.create([{
-                        'name': 'Test Move.internal_quantity',
-                        }])
-            kg, = self.uom.search([('name', '=', 'Kilogram')])
-            g, = self.uom.search([('name', '=', 'Gram')])
-            template, = self.template.create([{
-                        'name': 'Test Move.internal_quantity',
-                        'type': 'goods',
-                        'list_price': Decimal(1),
-                        'cost_price': Decimal(0),
-                        'category': category.id,
-                        'cost_price_method': 'fixed',
-                        'default_uom': kg.id,
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            supplier, = self.location.search([('code', '=', 'SUP')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            currency = company.currency
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+        pool = Pool()
+        Category = pool.get('product.category')
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
 
+        category, = Category.create([{
+                    'name': 'Test Move.internal_quantity',
+                    }])
+        kg, = Uom.search([('name', '=', 'Kilogram')])
+        g, = Uom.search([('name', '=', 'Gram')])
+        template, = Template.create([{
+                    'name': 'Test Move.internal_quantity',
+                    'type': 'goods',
+                    'list_price': Decimal(1),
+                    'cost_price': Decimal(0),
+                    'category': category.id,
+                    'cost_price_method': 'fixed',
+                    'default_uom': kg.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        currency = company.currency
+        with set_company(company):
             tests = [
                 (kg, 10, 10, 0),
                 (g, 100, 0.1, 1),
@@ -73,7 +63,7 @@ class StockTestCase(ModuleTestCase):
                 (kg, 35.23, 35.23, 2),  # check infinite loop
             ]
             for uom, quantity, internal_quantity, ndigits in tests:
-                move, = self.move.create([{
+                move, = Move.create([{
                             'product': product.id,
                             'uom': uom.id,
                             'quantity': quantity,
@@ -87,49 +77,52 @@ class StockTestCase(ModuleTestCase):
                     internal_quantity)
 
                 for uom, quantity, internal_quantity, ndigits in tests:
-                    self.move.write([move], {
+                    Move.write([move], {
                         'uom': uom.id,
                         'quantity': quantity,
                         })
                     self.assertEqual(round(move.internal_quantity, ndigits),
                         internal_quantity)
 
-    def test0020products_by_location(self):
+    @with_transaction()
+    def test_products_by_location(self):
         'Test products_by_location'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            category, = self.category.create([{
-                        'name': 'Test products_by_location',
-                        }])
-            kg, = self.uom.search([('name', '=', 'Kilogram')])
-            g, = self.uom.search([('name', '=', 'Gram')])
-            template, = self.template.create([{
-                        'name': 'Test products_by_location',
-                        'type': 'goods',
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        'category': category.id,
-                        'cost_price_method': 'fixed',
-                        'default_uom': kg.id,
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            supplier, = self.location.search([('code', '=', 'SUP')])
-            customer, = self.location.search([('code', '=', 'CUS')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            currency = company.currency
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+        pool = Pool()
+        Category = pool.get('product.category')
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Period = pool.get('stock.period')
+        transaction = Transaction()
 
+        category, = Category.create([{
+                    'name': 'Test products_by_location',
+                    }])
+        kg, = Uom.search([('name', '=', 'Kilogram')])
+        g, = Uom.search([('name', '=', 'Gram')])
+        template, = Template.create([{
+                    'name': 'Test products_by_location',
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    'category': category.id,
+                    'cost_price_method': 'fixed',
+                    'default_uom': kg.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        customer, = Location.search([('code', '=', 'CUS')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        currency = company.currency
+        with set_company(company):
             today = datetime.date.today()
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'uom': kg.id,
                         'quantity': 5,
@@ -192,9 +185,9 @@ class StockTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do([moves[0], moves[2]])
+            Move.do([moves[0], moves[2]])
 
-            products_by_location = partial(self.product.products_by_location,
+            products_by_location = partial(Product.products_by_location,
                     [storage.id], [product.id])
 
             tests = [
@@ -254,7 +247,7 @@ class StockTestCase(ModuleTestCase):
 
             def tests_product_quantity(context, quantity):
                 with transaction.set_context(locations=[storage.id]):
-                    product_reloaded = self.product(product.id)
+                    product_reloaded = Product(product.id)
                     if (not context.get('stock_date_end')
                             or context['stock_date_end'] > today
                             or context.get('forecast')):
@@ -271,50 +264,50 @@ class StockTestCase(ModuleTestCase):
                         fname = 'forecast_quantity'
                     else:
                         fname = 'quantity'
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '=', quantity),
                             ])
                     self.assertIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '!=', quantity),
                             ])
                     self.assertNotIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, 'in', (quantity, quantity + 1)),
                             ])
                     self.assertIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, 'not in', (quantity, quantity + 1)),
                             ])
                     self.assertNotIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '<', quantity),
                             ])
                     self.assertNotIn(product, found_products)
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '<', quantity + 1),
                             ])
                     self.assertIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '>', quantity),
                             ])
                     self.assertNotIn(product, found_products)
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '>', quantity - 1),
                             ])
                     self.assertIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '>=', quantity),
                             ])
                     self.assertIn(product, found_products)
 
-                    found_products = self.product.search([
+                    found_products = Product.search([
                             (fname, '<=', quantity),
                             ])
                     self.assertIn(product, found_products)
@@ -340,7 +333,7 @@ class StockTestCase(ModuleTestCase):
                 today + relativedelta(days=-2),
                 ]
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'uom': g.id,
                         'quantity': 1,
@@ -353,63 +346,65 @@ class StockTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do(moves)
+            Move.do(moves)
             # Nothing should change when adding a small quantity
             test_products_by_location()
 
             for period_date in periods:
-                period, = self.period.create([{
+                period, = Period.create([{
                             'date': period_date,
                             'company': company.id,
                             }])
-                self.period.close([period])
+                Period.close([period])
                 test_products_by_location()
 
-        # Test with_childs and stock_skip_warehouse
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+    @with_transaction()
+    def test_products_by_location_with_childs(self):
+        'Test products_by_location with_childs and stock_skip_warehouse'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
 
-            unit, = self.uom.search([('name', '=', 'Unit')])
-            template, = self.template.create([{
-                        'name': 'Test products_by_location',
-                        'type': 'goods',
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        'cost_price_method': 'fixed',
-                        'default_uom': unit.id,
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test products_by_location',
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    'cost_price_method': 'fixed',
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
 
-            lost_found, = self.location.search([('type', '=', 'lost_found')])
-            warehouse, = self.location.search([('type', '=', 'warehouse')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            input_, = self.location.search([('code', '=', 'IN')])
-            storage1, = self.location.create([{
-                        'name': 'Storage 1',
-                        'type': 'view',
-                        'parent': storage.id,
-                        }])
-            storage2, = self.location.create([{
-                        'name': 'Storage 1.1',
-                        'type': 'view',
-                        'parent': storage1.id,
-                        }])
-            storage3, = self.location.create([{
-                        'name': 'Storage 2',
-                        'type': 'view',
-                        'parent': storage.id,
-                        }])
+        lost_found, = Location.search([('type', '=', 'lost_found')])
+        warehouse, = Location.search([('type', '=', 'warehouse')])
+        storage, = Location.search([('code', '=', 'STO')])
+        input_, = Location.search([('code', '=', 'IN')])
+        storage1, = Location.create([{
+                    'name': 'Storage 1',
+                    'type': 'view',
+                    'parent': storage.id,
+                    }])
+        storage2, = Location.create([{
+                    'name': 'Storage 1.1',
+                    'type': 'view',
+                    'parent': storage1.id,
+                    }])
+        storage3, = Location.create([{
+                    'name': 'Storage 2',
+                    'type': 'view',
+                    'parent': storage.id,
+                    }])
+        company = create_company()
+        with set_company(company):
+            today = datetime.date.today()
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'uom': unit.id,
                         'quantity': 1,
@@ -428,58 +423,61 @@ class StockTestCase(ModuleTestCase):
                         'effective_date': today,
                         'company': company.id,
                         }])
-            self.move.do(moves)
+            Move.do(moves)
 
-            products_by_location = self.product.products_by_location(
+            products_by_location = Product.products_by_location(
                 [warehouse.id], [product.id], with_childs=True)
             self.assertEqual(products_by_location[(warehouse.id, product.id)],
                 1)
 
             with Transaction().set_context(stock_skip_warehouse=True):
-                products_by_location = self.product.products_by_location(
+                products_by_location = Product.products_by_location(
                     [warehouse.id], [product.id], with_childs=True)
-                products_by_location_all = self.product.products_by_location(
+                products_by_location_all = Product.products_by_location(
                     [warehouse.id], None, with_childs=True)
-            self.assertEqual(products_by_location[(warehouse.id, product.id)],
-                2)
+            self.assertEqual(
+                products_by_location[(warehouse.id, product.id)], 2)
             self.assertEqual(
                 products_by_location_all[(warehouse.id, product.id)], 2)
 
-    def test0030period(self):
+    @with_transaction()
+    def test_period(self):
         'Test period'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            category, = self.category.create([{
-                        'name': 'Test period',
-                        }])
-            unit, = self.uom.search([('name', '=', 'Unit')])
-            template, = self.template.create([{
-                        'name': 'Test period',
-                        'type': 'goods',
-                        'category': category.id,
-                        'cost_price_method': 'fixed',
-                        'default_uom': unit.id,
-                        'list_price': Decimal(0),
-                        'cost_price': Decimal(0),
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            supplier, = self.location.search([('code', '=', 'SUP')])
-            customer, = self.location.search([('code', '=', 'CUS')])
-            storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            currency = company.currency
-            self.user.write([self.user(USER)], {
-                'main_company': company.id,
-                'company': company.id,
-                })
+        pool = Pool()
+        Category = pool.get('product.category')
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Period = pool.get('stock.period')
+        transaction = Transaction()
 
+        category, = Category.create([{
+                    'name': 'Test period',
+                    }])
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test period',
+                    'type': 'goods',
+                    'category': category.id,
+                    'cost_price_method': 'fixed',
+                    'default_uom': unit.id,
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        customer, = Location.search([('code', '=', 'CUS')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        currency = company.currency
+        with set_company(company):
             today = datetime.date.today()
 
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'uom': unit.id,
                         'quantity': 10,
@@ -513,8 +511,8 @@ class StockTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do(moves)
-            self.move.create([{
+            Move.do(moves)
+            Move.create([{
                         'product': product.id,
                         'uom': unit.id,
                         'quantity': 3,
@@ -539,7 +537,7 @@ class StockTestCase(ModuleTestCase):
                 })
             ]
 
-            products_by_location = partial(self.product.products_by_location,
+            products_by_location = partial(Product.products_by_location,
                 [storage.id], [product.id])
 
             tests_pbl = [
@@ -563,11 +561,11 @@ class StockTestCase(ModuleTestCase):
 
             test_products_by_location()
             for days, quantities in tests:
-                period, = self.period.create([{
+                period, = Period.create([{
                             'date': today + relativedelta(days=days),
                             'company': company.id,
                             }])
-                self.period.close([period])
+                Period.close([period])
 
                 self.assertEqual(period.state, 'closed')
 
@@ -580,7 +578,7 @@ class StockTestCase(ModuleTestCase):
                 test_products_by_location()
 
             # Test check_period_closed
-            moves = self.move.create([{
+            moves = Move.create([{
                         'product': product.id,
                         'uom': unit.id,
                         'quantity': 10,
@@ -592,9 +590,9 @@ class StockTestCase(ModuleTestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-            self.move.do(moves)
+            Move.do(moves)
 
-            self.assertRaises(Exception, self.move.create, [{
+            self.assertRaises(Exception, Move.create, [{
                         'product': product.id,
                         'uom': unit.id,
                         'quantity': 10,
@@ -608,40 +606,45 @@ class StockTestCase(ModuleTestCase):
                         }])
 
             # Test close period check
-            period, = self.period.create([{
+            period, = Period.create([{
                         'date': today,
                         'company': company.id,
                         }])
-            self.assertRaises(Exception, self.period.close, [period])
+            self.assertRaises(Exception, Period.close, [period])
 
-            period, = self.period.create([{
+            period, = Period.create([{
                         'date': today + relativedelta(days=1),
                         'company': company.id,
                         }])
-            self.assertRaises(Exception, self.period.close, [period])
+            self.assertRaises(Exception, Period.close, [period])
 
-    def test0040check_origin(self):
+    @with_transaction()
+    def test_check_origin(self):
         'Test Move check_origin'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            uom, = self.uom.search([('name', '=', 'Unit')])
-            template, = self.template.create([{
-                        'name': 'Test Move.check_origin',
-                        'type': 'goods',
-                        'list_price': Decimal(1),
-                        'cost_price': Decimal(0),
-                        'cost_price_method': 'fixed',
-                        'default_uom': uom.id,
-                        }])
-            product, = self.product.create([{
-                        'template': template.id,
-                        }])
-            storage, = self.location.search([('code', '=', 'STO')])
-            customer, = self.location.search([('code', '=', 'CUS')])
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
 
-            moves = self.move.create([{
+        uom, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test Move.check_origin',
+                    'type': 'goods',
+                    'list_price': Decimal(1),
+                    'cost_price': Decimal(0),
+                    'cost_price_method': 'fixed',
+                    'default_uom': uom.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        storage, = Location.search([('code', '=', 'STO')])
+        customer, = Location.search([('code', '=', 'CUS')])
+        company = create_company()
+        with set_company(company):
+            moves = Move.create([{
                         'product': product.id,
                         'uom': uom.id,
                         'quantity': 1,
@@ -652,9 +655,9 @@ class StockTestCase(ModuleTestCase):
                         'currency': company.currency.id,
                         }])
 
-            self.move.check_origin(moves, set())
-            self.move.check_origin(moves, {'supplier'})
-            self.assertRaises(UserWarning, self.move.check_origin, moves,
+            Move.check_origin(moves, set())
+            Move.check_origin(moves, {'supplier'})
+            self.assertRaises(UserWarning, Move.check_origin, moves,
                 {'customer'})
 
     def test_assign_try(self):
@@ -668,37 +671,34 @@ class StockTestCase(ModuleTestCase):
                 ]:
             self._test_assign_try(quantity, quantities, success, result)
 
+    @with_transaction()
     def _test_assign_try(self, quantity, quantities, success, result):
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            pool = Pool()
-            Template = pool.get('product.template')
-            Product = pool.get('product.product')
-            Uom = pool.get('product.uom')
-            Location = pool.get('stock.location')
-            Company = pool.get('company.company')
-            Move = pool.get('stock.move')
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
 
-            uom, = Uom.search([('name', '=', 'Meter')])
-            template = Template(
-                name='Test Move.assign_try',
-                type='goods',
-                list_price=Decimal(1),
-                cost_price=Decimal(0),
-                cost_price_method='fixed',
-                default_uom=uom,
-                )
-            template.save()
-            product = Product(template=template.id)
-            product.save()
+        uom, = Uom.search([('name', '=', 'Meter')])
+        template = Template(
+            name='Test Move.assign_try',
+            type='goods',
+            list_price=Decimal(1),
+            cost_price=Decimal(0),
+            cost_price_method='fixed',
+            default_uom=uom,
+            )
+        template.save()
+        product = Product(template=template.id)
+        product.save()
 
-            supplier, = Location.search([('code', '=', 'SUP')])
-            storage, = Location.search([('code', '=', 'STO')])
-            customer, = Location.search([('code', '=', 'CUS')])
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        customer, = Location.search([('code', '=', 'CUS')])
 
-            company, = Company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-
+        company = create_company()
+        with set_company(company):
             move, = Move.create([{
                         'product': product.id,
                         'uom': uom.id,
@@ -740,10 +740,6 @@ class StockTestCase(ModuleTestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.company.tests import test_company
-    for test in test_company.suite():
-        if test not in suite and not isinstance(test, doctest.DocTestCase):
-            suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(StockTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_stock_shipment_out.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
