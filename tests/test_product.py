@@ -31,6 +31,7 @@ class ProductTestCase(ModuleTestCase):
         transaction.cursor.rollback()
 
         def create():
+            category, = UomCategory.create([{'name': 'Test'}])
             return Uom.create([{
                         'name': 'Test',
                         'symbol': 'T',
