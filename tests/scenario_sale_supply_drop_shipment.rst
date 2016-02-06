@@ -134,7 +134,7 @@ Create product::
     >>> product_supplier.product = template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.delivery_time = 0
+    >>> product_supplier.lead_time = datetime.timedelta(0)
     >>> product_supplier.save()
 
 Create payment term::
