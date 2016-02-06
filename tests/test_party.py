@@ -2,103 +2,110 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
 
 
 class PartyTestCase(ModuleTestCase):
     'Test Party module'
     module = 'party'
 
-    def setUp(self):
-        super(PartyTestCase, self).setUp()
-        self.category = POOL.get('party.category')
-        self.party = POOL.get('party.party')
-        self.address = POOL.get('party.address')
-
-    def test0010category(self):
+    @with_transaction()
+    def test_category(self):
         'Create category'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            category1, = self.category.create([{
-                        'name': 'Category 1',
-                        }])
-            self.assert_(category1.id)
-            transaction.cursor.commit()
+        pool = Pool()
+        Category = pool.get('party.category')
+        category1, = Category.create([{
+                    'name': 'Category 1',
+                    }])
+        self.assert_(category1.id)
 
-    def test0020category_recursion(self):
+    @with_transaction()
+    def test_category_recursion(self):
         'Test category recursion'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category1, = self.category.search([
-                ('name', '=', 'Category 1'),
-                ], limit=1)
+        pool = Pool()
+        Category = pool.get('party.category')
+        category1, = Category.create([{
+                    'name': 'Category 1',
+                    }])
+        category2, = Category.create([{
+                    'name': 'Category 2',
+                    'parent': category1.id,
+                    }])
+        self.assert_(category2.id)
 
-            category2, = self.category.create([{
-                        'name': 'Category 2',
-                        'parent': category1.id,
-                        }])
-            self.assert_(category2.id)
-
-            self.assertRaises(Exception, self.category.write,
-                [category1], {
-                    'parent': category2.id,
+        self.assertRaises(Exception, Category.write, [category1], {
+                'parent': category2.id,
                 })
 
-    def test0030party(self):
+    @with_transaction()
+    def test_party(self):
         'Create party'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            party1, = self.party.create([{
-                        'name': 'Party 1',
-                        }])
-            self.assert_(party1.id)
-            transaction.cursor.commit()
+        pool = Pool()
+        Party = pool.get('party.party')
+        party1, = Party.create([{
+                    'name': 'Party 1',
+                    }])
+        self.assert_(party1.id)
 
-    def test0040party_code(self):
+    @with_transaction()
+    def test_party_code(self):
         'Test party code constraint'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party1, = self.party.search([], limit=1)
+        pool = Pool()
+        Party = pool.get('party.party')
+        party1, = Party.create([{
+                    'name': 'Party 1',
+                    }])
 
-            code = party1.code
+        code = party1.code
 
-            party2, = self.party.create([{
-                        'name': 'Party 2',
-                        }])
+        party2, = Party.create([{
+                    'name': 'Party 2',
+                    }])
 
-            self.assertRaises(Exception, self.party.write,
-                [party2], {
-                    'code': code,
+        self.assertRaises(Exception, Party.write, [party2], {
+                'code': code,
                 })
 
-    def test0050address(self):
+    @with_transaction()
+    def test_address(self):
         'Create address'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party1, = self.party.search([], limit=1)
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        party1, = Party.create([{
+                    'name': 'Party 1',
+                    }])
 
-            address, = self.address.create([{
-                        'party': party1.id,
-                        'street': 'St sample, 15',
-                        'city': 'City',
-                        }])
-            self.assert_(address.id)
+        address, = Address.create([{
+                    'party': party1.id,
+                    'street': 'St sample, 15',
+                    'city': 'City',
+                    }])
+        self.assert_(address.id)
 
-    def test0060party_label_report(self):
+    @with_transaction()
+    def test_party_label_report(self):
         'Test party label report'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party1, = self.party.search([], limit=1)
-            report = POOL.get('party.label', type='report')
-            oext, content, _, _ = report.execute([party1.id], {})
-            self.assertEqual(oext, 'odt')
-            self.assertTrue(content)
+        pool = Pool()
+        Party = pool.get('party.party')
+        Label = pool.get('party.label', type='report')
+        party1, = Party.create([{
+                    'name': 'Party 1',
+                    }])
+        oext, content, _, _ = Label.execute([party1.id], {})
+        self.assertEqual(oext, 'odt')
+        self.assertTrue(content)
 
-    def test0070party_without_name(self):
+    @with_transaction()
+    def test_party_without_name(self):
         'Create party without name'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party2, = self.party.create([{}])
-            self.assert_(party2.id)
-            code = party2.code
-            self.assertEqual(party2.rec_name, '[' + code + ']')
+        pool = Pool()
+        Party = pool.get('party.party')
+        party2, = Party.create([{}])
+        self.assert_(party2.id)
+        code = party2.code
+        self.assertEqual(party2.rec_name, '[' + code + ']')
 
 
 def suite():
