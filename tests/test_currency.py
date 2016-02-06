@@ -3,243 +3,234 @@
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.pool import Pool
+
+
+def create_currency(name):
+    pool = Pool()
+    Currency = pool.get('currency.currency')
+    return Currency.create([{
+                'name': name,
+                'symbol': name,
+                'code': name,
+                }])[0]
+
+
+def add_currency_rate(currency, rate):
+    pool = Pool()
+    Rate = pool.get('currency.currency.rate')
+    return Rate.create([{
+                'currency': currency.id,
+                'rate': rate,
+                }])[0]
 
 
 class CurrencyTestCase(ModuleTestCase):
     'Test Currency module'
     module = 'currency'
 
-    def setUp(self):
-        super(CurrencyTestCase, self).setUp()
-        self.rate = POOL.get('currency.currency.rate')
-        self.currency = POOL.get('currency.currency')
-        self.date = POOL.get('ir.date')
-
     def get_currency(self, code):
         return self.currency.search([
             ('code', '=', code),
             ], limit=1)[0]
 
-    def test0010currencies(self):
+    @with_transaction()
+    def test_currencies(self):
         'Create currencies'
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
+        self.assert_(cu1)
+        self.assert_(cu2)
 
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu1, cu2 = self.currency.create([{
-                        'name': 'cu1',
-                        'symbol': 'cu1',
-                        'code': 'cu1'
-                        }, {
-                        'name': 'cu2',
-                        'symbol': 'cu2',
-                        'code': 'cu2'
-                        }])
-            self.assert_(cu1)
-            self.assert_(cu2)
-
-            transaction.cursor.commit()
-
-    def test0020mon_grouping(self):
+    @with_transaction()
+    def test_mon_grouping(self):
         'Check grouping'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1 = self.get_currency('cu1')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
 
-            self.assertRaises(Exception, self.currency.write, [cu1],
-                {'mon_grouping': ''})
+        self.assertRaises(Exception, Currency.write, [cu1],
+            {'mon_grouping': ''})
 
-            self.assertRaises(Exception, self.currency.write, [cu1],
-                {'mon_grouping': '[a]'})
+        self.assertRaises(Exception, Currency.write, [cu1],
+            {'mon_grouping': '[a]'})
 
-            self.assertRaises(Exception, self.currency.write, [cu1],
-                {'mon_grouping': '[1,"a"]'})
+        self.assertRaises(Exception, Currency.write, [cu1],
+            {'mon_grouping': '[1,"a"]'})
 
-            self.assertRaises(Exception, self.currency.write, [cu1],
-                {'mon_grouping': '[1,"1"]'})
+        self.assertRaises(Exception, Currency.write, [cu1],
+            {'mon_grouping': '[1,"1"]'})
 
-    def test0030rate(self):
+    @with_transaction()
+    def test_rate(self):
         'Create rates'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
 
-            rate1, rate2 = self.rate.create([{
-                        'rate': Decimal("1.3"),
-                        'currency': cu1.id,
-                        }, {
-                        'rate': Decimal("1"),
-                        'currency': cu2.id,
-                        }])
-            self.assert_(rate1)
-            self.assert_(rate2)
+        rate1 = add_currency_rate(cu1, Decimal("1.3"))
+        rate2 = add_currency_rate(cu2, Decimal("1"))
+        self.assert_(rate1)
+        self.assert_(rate2)
 
-            self.assertEqual(cu1.rate, Decimal("1.3"))
+        self.assertEqual(cu1.rate, Decimal("1.3"))
 
-            transaction.cursor.commit()
-
-    def test0040rate_unicity(self):
+    @with_transaction()
+    def test_rate_unicity(self):
         'Rate unicity'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            today = self.date.today()
+        pool = Pool()
+        Rate = pool.get('currency.currency.rate')
+        Date = pool.get('ir.date')
+        today = Date.today()
 
-            cu, = self.currency.create([{
-                        'name': 'cu',
-                        'symbol': 'cu',
-                        'code': 'cu'
-                        }])
+        cu = create_currency('cu')
 
-            self.rate.create([{
-                        'rate': Decimal("1.3"),
-                        'currency': cu.id,
-                        'date': today,
-                        }])
-
-            self.assertRaises(Exception, self.rate.create, {
+        Rate.create([{
                     'rate': Decimal("1.3"),
                     'currency': cu.id,
                     'date': today,
-                    })
+                    }])
 
-            transaction.cursor.rollback()
+        self.assertRaises(Exception, Rate.create, {
+                'rate': Decimal("1.3"),
+                'currency': cu.id,
+                'date': today,
+                })
 
-    def test0050compute_simple(self):
+    @with_transaction()
+    def test_compute_simple(self):
         'Simple conversion'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
+        add_currency_rate(cu1, Decimal("1.3"))
+        add_currency_rate(cu2, Decimal("1"))
 
-            amount = Decimal("10")
-            expected = Decimal("13")
-            converted_amount = self.currency.compute(
-                cu2, amount, cu1, True)
-            self.assertEqual(converted_amount, expected)
+        amount = Decimal("10")
+        expected = Decimal("13")
+        converted_amount = Currency.compute(
+            cu2, amount, cu1, True)
+        self.assertEqual(converted_amount, expected)
 
-            transaction.cursor.commit()
-
-    def test0060compute_nonfinite(self):
+    @with_transaction()
+    def test_compute_nonfinite(self):
         'Conversion with rounding on non-finite decimal representation'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
+        add_currency_rate(cu1, Decimal("1.3"))
+        add_currency_rate(cu2, Decimal("1"))
 
-            amount = Decimal("10")
-            expected = Decimal("7.69")
-            converted_amount = self.currency.compute(
-                cu1, amount, cu2, True)
-            self.assertEqual(converted_amount, expected)
+        amount = Decimal("10")
+        expected = Decimal("7.69")
+        converted_amount = Currency.compute(
+            cu1, amount, cu2, True)
+        self.assertEqual(converted_amount, expected)
 
-    def test0070compute_nonfinite_worounding(self):
+    @with_transaction()
+    def test_compute_nonfinite_worounding(self):
         'Same without rounding'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
+        add_currency_rate(cu1, Decimal("1.3"))
+        add_currency_rate(cu2, Decimal("1"))
 
-            amount = Decimal("10")
-            expected = Decimal('7.692307692307692307692307692')
-            converted_amount = self.currency.compute(
-                cu1, amount, cu2, False)
-            self.assertEqual(converted_amount, expected)
+        amount = Decimal("10")
+        expected = Decimal('7.692307692307692307692307692')
+        converted_amount = Currency.compute(
+            cu1, amount, cu2, False)
+        self.assertEqual(converted_amount, expected)
 
-    def test0080compute_same(self):
+    @with_transaction()
+    def test_compute_same(self):
         'Conversion to the same currency'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1 = self.get_currency('cu1')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        add_currency_rate(cu1, Decimal("1.3"))
 
-            amount = Decimal("10")
-            converted_amount = self.currency.compute(
-                cu1, amount, cu1, True)
-            self.assertEqual(converted_amount, amount)
+        amount = Decimal("10")
+        converted_amount = Currency.compute(
+            cu1, amount, cu1, True)
+        self.assertEqual(converted_amount, amount)
 
-    def test0090compute_zeroamount(self):
+    @with_transaction()
+    def test_compute_zeroamount(self):
         'Conversion with zero amount'
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
+        add_currency_rate(cu1, Decimal("1.3"))
+        add_currency_rate(cu2, Decimal("1"))
 
-            expected = Decimal("0")
-            converted_amount = self.currency.compute(
-                cu1, Decimal("0"), cu2, True)
-            self.assertEqual(converted_amount, expected)
+        expected = Decimal("0")
+        converted_amount = Currency.compute(
+            cu1, Decimal("0"), cu2, True)
+        self.assertEqual(converted_amount, expected)
 
-    def test0100compute_zerorate(self):
+    @with_transaction()
+    def test_compute_zerorate(self):
         'Conversion with zero rate'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu1 = self.get_currency('cu1')
-            cu2 = self.get_currency('cu2')
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu2 = create_currency('cu2')
 
-            rates = self.rate.search([
-                    ('currency', '=', cu1.id),
-                    ], 0, 1, None)
-            self.rate.write(rates, {
-                    'rate': Decimal("0"),
-                    })
-            amount = Decimal("10")
-            self.assertRaises(Exception, self.currency.compute,
-                cu1, amount, cu2, True)
-            self.assertRaises(Exception, self.currency.compute,
-                cu2, amount, cu1, True)
+        add_currency_rate(cu1, Decimal('0'))
+        add_currency_rate(cu2, Decimal('1'))
 
-            transaction.cursor.rollback()
+        amount = Decimal("10")
+        self.assertRaises(Exception, Currency.compute,
+            cu1, amount, cu2, True)
+        self.assertRaises(Exception, Currency.compute,
+            cu2, amount, cu1, True)
 
-    def test0110compute_missingrate(self):
+    @with_transaction()
+    def test_compute_missingrate(self):
         'Conversion with missing rate'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu1 = self.get_currency('cu1')
-            cu3, = self.currency.create([{
-                        'name': 'cu3',
-                        'symbol': 'cu3',
-                        'code': 'cu3'
-                        }])
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu1 = create_currency('cu1')
+        cu3 = create_currency('cu3')
+        add_currency_rate(cu1, Decimal("1.3"))
 
-            amount = Decimal("10")
-            self.assertRaises(Exception, self.currency.compute,
-                cu3, amount, cu1, True)
-            self.assertRaises(Exception, self.currency.compute,
-                cu1, amount, cu3, True)
+        amount = Decimal("10")
+        self.assertRaises(Exception, Currency.compute,
+            cu3, amount, cu1, True)
+        self.assertRaises(Exception, Currency.compute,
+            cu1, amount, cu3, True)
 
-            transaction.cursor.rollback()
-
-    def test0120compute_bothmissingrate(self):
+    @with_transaction()
+    def test_compute_bothmissingrate(self):
         'Conversion with both missing rate'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            cu3, cu4 = self.currency.create([{
-                        'name': 'cu3',
-                        'symbol': 'cu3',
-                        'code': 'cu3'
-                        }, {
-                        'name': 'cu4',
-                        'symbol': 'cu4',
-                        'code': 'cu4'
-                        }])
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        cu3 = create_currency('cu3')
+        cu4 = create_currency('cu4')
 
-            amount = Decimal("10")
-            self.assertRaises(Exception, self.currency.compute,
-                cu3, amount, cu4, True)
+        amount = Decimal("10")
+        self.assertRaises(Exception, Currency.compute,
+            cu3, amount, cu4, True)
 
-            transaction.cursor.rollback()
-
-    def test0130delete_cascade(self):
+    @with_transaction()
+    def test_delete_cascade(self):
         'Test deletion of currency deletes rates'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            codes = ['cu%s' % (i + 1) for i in range(2)]
-            currencies = [self.get_currency(i) for i in codes]
-            self.currency.delete(currencies)
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Rate = pool.get('currency.currency.rate')
+        currencies = [create_currency('cu%s' % i) for i in range(3)]
+        [add_currency_rate(c, Decimal('1')) for c in currencies]
+        Currency.delete(currencies)
 
-            rates = self.rate.search([(
-                        'currency', 'in', map(int, currencies),
-                        )], 0, None, None)
-            self.assertFalse(rates)
-
-            transaction.cursor.rollback()
+        rates = Rate.search([(
+                    'currency', 'in', map(int, currencies),
+                    )], 0, None, None)
+        self.assertFalse(rates)
 
 
 def suite():
