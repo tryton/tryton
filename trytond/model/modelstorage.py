@@ -5,10 +5,6 @@ import datetime
 import time
 import csv
 import warnings
-try:
-    import cStringIO as StringIO
-except ImportError:
-    import StringIO
 
 from decimal import Decimal
 from itertools import islice, ifilter, chain, izip
@@ -569,7 +565,7 @@ class ModelStorage(Model):
                 return None
             res = []
             Relation = pool.get(relation)
-            for word in csv.reader(StringIO.StringIO(value), delimiter=',',
+            for word in csv.reader(value.splitlines(), delimiter=',',
                     quoting=csv.QUOTE_NONE, escapechar='\\').next():
                 res2 = Relation.search([
                     ('rec_name', '=', word),
@@ -618,7 +614,7 @@ class ModelStorage(Model):
             relation = None
             ftype = fields_def[field[-1][:-3]]['type']
             if ftype == 'many2many':
-                value = csv.reader(StringIO.StringIO(value), delimiter=',',
+                value = csv.reader(value.splitlines(), delimiter=',',
                         quoting=csv.QUOTE_NONE, escapechar='\\').next()
             elif ftype == 'reference':
                 try:
@@ -1191,7 +1187,7 @@ class ModelStorage(Model):
         try:
             return super(ModelStorage, self).__getattr__(name)
         except AttributeError:
-            if self.id < 0:
+            if self.id is None or self.id < 0:
                 raise
 
         counter = Transaction().counter
@@ -1373,7 +1369,8 @@ class ModelStorage(Model):
             field = self._fields[fname]
             if field._type in ('many2one', 'one2one', 'reference'):
                 if value:
-                    if value.id < 0 and field._type != 'reference':
+                    if ((value.id is None or value.id < 0)
+                            and field._type != 'reference'):
                         value.save()
                     if field._type == 'reference':
                         value = str(value)
@@ -1381,7 +1378,7 @@ class ModelStorage(Model):
                         value = value.id
             if field._type in ('one2many', 'many2many'):
                 targets = value
-                if self.id >= 0:
+                if self.id is not None and self.id >= 0:
                     _values, self._values = self._values, None
                     try:
                         to_remove = [t.id for t in getattr(self, fname)]
@@ -1393,7 +1390,7 @@ class ModelStorage(Model):
                 to_create = []
                 to_write = []
                 for target in targets:
-                    if target.id < 0:
+                    if target.id is None or target.id < 0:
                         if field._type == 'one2many':
                             # Don't store old target link
                             setattr(target, field.field, None)

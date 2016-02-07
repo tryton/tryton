@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from types import NoneType
 from sql import Query, Expression, Literal
 from sql.operators import Or
 
@@ -76,7 +75,7 @@ class Many2One(Field):
             value = Target(**value)
         elif isinstance(value, (int, long)):
             value = Target(value)
-        assert isinstance(value, (Target, NoneType))
+        assert isinstance(value, (Target, type(None)))
         super(Many2One, self).__set__(inst, value)
 
     @staticmethod

@@ -8,11 +8,10 @@ from trytond.exceptions import UserError, UserWarning, NotLogged, \
 from trytond import security
 import SimpleXMLRPCServer
 import SocketServer
-import xmlrpclib
+import xmlrpclib as client
 import socket
 import base64
 import datetime
-from types import DictType
 import logging
 
 # convert decimal to float before marshalling:
@@ -30,7 +29,7 @@ def dump_decimal(self, value, write):
 
 def dump_bytes(self, value, write):
     self.write = write
-    value = xmlrpclib.Binary(value)
+    value = client.Binary(value)
     value.encode(self)
     del self.write
 
@@ -60,18 +59,17 @@ def dump_timedelta(self, value, write):
         }
     self.dump_struct(value, write)
 
-xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
-xmlrpclib.Marshaller.dispatch[type(None)] = \
+client.Marshaller.dispatch[Decimal] = dump_decimal
+client.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: write("<value><nil/></value>")
-xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
-xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
-xmlrpclib.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-if bytes != str:
-    xmlrpclib.Marshaller.dispatch[bytes] = dump_bytes
-xmlrpclib.Marshaller.dispatch[bytearray] = dump_bytes
+client.Marshaller.dispatch[datetime.date] = dump_date
+client.Marshaller.dispatch[datetime.time] = dump_time
+client.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
+if bytes == str:
+    client.Marshaller.dispatch[bytearray] = dump_bytes
 
 
-def dump_struct(self, value, write, escape=xmlrpclib.escape):
+def dump_struct(self, value, write, escape=client.escape):
     converted_value = {}
     for k, v in value.items():
         if type(k) in (int, long):
@@ -81,7 +79,7 @@ def dump_struct(self, value, write, escape=xmlrpclib.escape):
         converted_value[k] = v
     return self.dump_struct(converted_value, write, escape=escape)
 
-xmlrpclib.Marshaller.dispatch[DictType] = dump_struct
+client.Marshaller.dispatch[dict] = dump_struct
 
 
 class XMLRPCDecoder(object):
@@ -114,29 +112,30 @@ def end_struct(self, data):
     dct = {}
     items = self._stack[mark:]
     for i in range(0, len(items), 2):
-        dct[xmlrpclib._stringify(items[i])] = items[i + 1]
+        dct[items[i]] = items[i + 1]
     dct = XMLRPCDecoder()(dct)
     self._stack[mark:] = [dct]
     self._value = 0
 
-xmlrpclib.Unmarshaller.dispatch['struct'] = end_struct
+client.Unmarshaller.dispatch['struct'] = end_struct
 
 
 def _end_dateTime(self, data):
-    value = xmlrpclib.DateTime()
+    value = client.DateTime()
     value.decode(data)
-    value = xmlrpclib._datetime_type(data)
+    value = client._datetime_type(data)
     self.append(value)
-xmlrpclib.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
+client.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
 
 
 def _end_base64(self, data):
-    value = xmlrpclib.Binary()
-    value.decode(data)
+    value = client.Binary()
+    value.decode(data.encode('ascii'))
     cast = bytearray if bytes == str else bytes
     self.append(cast(value.data))
     self._value = 0
-xmlrpclib.Unmarshaller.dispatch['base64'] = _end_base64
+if bytes == str:
+    client.Unmarshaller.dispatch['base64'] = _end_base64
 
 
 class GenericXMLRPCRequestHandler:
@@ -165,14 +164,14 @@ class GenericXMLRPCRequestHandler:
                         session, object_type, object_name, method, *params)
             except (NotLogged, ConcurrencyException), exception:
                 logger.debug(exception_message, exc_info=True)
-                raise xmlrpclib.Fault(exception.code, str(exception))
+                raise client.Fault(exception.code, str(exception))
             except (UserError, UserWarning), exception:
                 logger.debug(exception_message, exc_info=True)
                 error, description = exception.args
-                raise xmlrpclib.Fault(exception.code, str(exception))
+                raise client.Fault(exception.code, str(exception))
             except Exception, exception:
                 logger.error(exception_message, exc_info=True)
-                raise xmlrpclib.Fault(255, str(exception))
+                raise client.Fault(255, str(exception))
         finally:
             security.logout(database_name, user, session)
 

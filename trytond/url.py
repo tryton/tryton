@@ -11,9 +11,9 @@ from trytond.transaction import Transaction
 __all__ = ['URLMixin']
 
 HOSTNAME = (config.get('jsonrpc', 'hostname')
-    or unicode(socket.getfqdn(), 'utf8'))
-HOSTNAME = '.'.join(encodings.idna.ToASCII(part) if part else ''
-    for part in HOSTNAME.split('.'))
+    or socket.getfqdn())
+HOSTNAME = '.'.join(encodings.idna.ToASCII(part).decode('ascii')
+    if part else '' for part in HOSTNAME.split('.'))
 
 
 class URLAccessor(object):

@@ -303,7 +303,8 @@ class ModelView(Model):
                     continue
                 tree_inherit = etree.fromstring(view.arch, parser=parser)
                 tree = _inherit_apply(tree, tree_inherit)
-            result['arch'] = etree.tostring(tree, encoding='utf-8')
+            result['arch'] = etree.tostring(
+                tree, encoding='utf-8').decode('utf-8')
 
         # otherwise, build some kind of default view
         else:
@@ -465,7 +466,8 @@ class ModelView(Model):
         if 'active' in cls._fields:
             fields_def.setdefault('active', {'name': 'active'})
 
-        arch = etree.tostring(tree, encoding='utf-8', pretty_print=False)
+        arch = etree.tostring(
+            tree, encoding='utf-8', pretty_print=False).decode('utf-8')
         fields2 = cls.fields_get(fields_def.keys())
         for field in fields_def:
             if field in fields2:

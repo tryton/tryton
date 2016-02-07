@@ -5,11 +5,14 @@
 from setuptools import setup, find_packages
 import os
 import re
+import io
 import platform
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    return io.open(
+        os.path.join(os.path.dirname(__file__), fname),
+        'r', encoding='utf-8').read()
 
 
 def get_version():
@@ -78,6 +81,9 @@ setup(name=name,
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
@@ -106,4 +112,5 @@ setup(name=name,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=['mock'],
+    use_2to3=True,
     )

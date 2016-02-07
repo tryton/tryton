@@ -7,7 +7,7 @@ import datetime
 from decimal import Decimal
 
 from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder
-from trytond.protocols.xmlrpc import xmlrpclib
+from trytond.protocols.xmlrpc import client
 
 
 class JSONTestCase(unittest.TestCase):
@@ -44,8 +44,8 @@ class XMLTestCase(unittest.TestCase):
     'Test XML'
 
     def dumps_loads(self, value):
-        s = xmlrpclib.dumps((value,))
-        result, _ = xmlrpclib.loads(s)
+        s = client.dumps((value,))
+        result, _ = client.loads(s)
         result, = result
         self.assertEqual(value, result)
 

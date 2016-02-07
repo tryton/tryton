@@ -11,7 +11,6 @@ __all__ = [
     'SequenceTypeGroup', 'Sequence', 'SequenceStrict',
     'ModuleConfigWizardItem',
     ]
-__metaclass__ = PoolMeta
 
 
 class UIMenuGroup(ModelSQL):
@@ -220,6 +219,7 @@ class RuleGroupUser(ModelSQL):
 
 
 class Lang:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.lang'
 
     @classmethod
@@ -230,6 +230,7 @@ class Lang:
 
 
 class SequenceType:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.sequence.type'
     groups = fields.Many2Many('ir.sequence.type-res.group', 'sequence_type',
             'group', 'User Groups',
@@ -268,6 +269,7 @@ class SequenceTypeGroup(ModelSQL):
 
 
 class Sequence:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.sequence'
     groups = fields.Function(fields.Many2Many('res.group', None, None,
         'User Groups'), 'get_groups', searcher='search_groups')
@@ -306,6 +308,7 @@ class SequenceStrict(Sequence):
 
 
 class ModuleConfigWizardItem:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.module.config_wizard.item'
 
     @classmethod

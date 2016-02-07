@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from types import NoneType
 import warnings
 
 from sql import Cast, Literal, Query, Expression
@@ -93,7 +92,7 @@ class Reference(Field):
 
     def __set__(self, inst, value):
         from ..model import Model
-        if not isinstance(value, (Model, NoneType)):
+        if not isinstance(value, (Model, type(None))):
             if isinstance(value, basestring):
                 target, value = value.split(',')
             else:

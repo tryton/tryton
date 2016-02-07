@@ -298,10 +298,10 @@ class ModelSQL(ModelStorage):
                     cls.raise_user_error('foreign_model_missing',
                         error_args=error_args)
         for name, _, error in cls._sql_constraints:
-            if name in str(exception[0]):
+            if name in unicode(exception):
                 cls.raise_user_error(error)
         for name, error in cls._sql_error_messages.iteritems():
-            if name in str(exception[0]):
+            if name in unicode(exception):
                 cls.raise_user_error(error)
 
     @classmethod
@@ -1411,7 +1411,7 @@ class ModelSQL(ModelStorage):
             if isinstance(sql, Unique):
                 columns = [Column(table, c.name) for c in sql.columns]
                 columns.insert(0, table.id)
-                in_max = cursor.IN_MAX / (len(columns) + 1)
+                in_max = cursor.IN_MAX // (len(columns) + 1)
                 for sub_ids in grouped_slice(ids, in_max):
                     red_sql = reduce_ids(table.id, sub_ids)
 

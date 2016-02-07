@@ -121,10 +121,13 @@ class View(ModelSQL, ModelView):
         key = (cls.__name__, type_)
         rng = cls._get_rng_cache.get(key)
         if rng is None:
-            rng_name = os.path.join(os.path.dirname(
-                    unicode(__file__, sys.getfilesystemencoding())),
-                type_ + '.rng')
-            rng = etree.fromstring(open(rng_name).read())
+            if sys.version_info < (3,):
+                filename = __file__.decode(sys.getfilesystemencoding())
+            else:
+                filename = __file__
+            rng_name = os.path.join(os.path.dirname(filename), type_ + '.rng')
+            with open(rng_name, 'rb') as fp:
+                rng = etree.fromstring(fp.read())
             cls._get_rng_cache.set(key, rng)
         return rng
 

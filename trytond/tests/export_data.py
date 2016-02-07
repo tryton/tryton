@@ -7,7 +7,6 @@ from trytond.pool import PoolMeta
 __all__ = [
     'ExportDataTarget', 'ExportData', 'ExportDataTarget2',
     'ExportDataRelation']
-__metaclass__ = PoolMeta
 
 
 class ExportDataTarget(ModelSQL):
@@ -46,6 +45,7 @@ class ExportData(ModelSQL):
 
 class ExportDataTarget2:
     'Export Date Target'
+    __metaclass__ = PoolMeta
     __name__ = 'test.export_data.target'
     one2many = fields.Many2One('test.export_data', 'Export Data')
 

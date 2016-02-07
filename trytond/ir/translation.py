@@ -1,9 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-try:
-    import cStringIO as StringIO
-except ImportError:
-    import StringIO
 import zipfile
 import polib
 import xml.dom.minidom
@@ -12,6 +8,7 @@ import os
 from hashlib import md5
 from lxml import etree
 from itertools import izip
+from io import BytesIO
 
 from sql import Column, Null
 from sql.functions import Substring, Position
@@ -438,7 +435,7 @@ class Translation(ModelSQL, ModelView):
             fuzzy_sql = table.fuzzy == False
             if Transaction().context.get('fuzzy_translation', False):
                 fuzzy_sql = None
-            in_max = cursor.IN_MAX / 7
+            in_max = cursor.IN_MAX // 7
             for sub_to_fetch in grouped_slice(to_fetch, in_max):
                 red_sql = reduce_ids(table.res_id, sub_to_fetch)
                 where = And(((table.lang == lang),
@@ -673,7 +670,7 @@ class Translation(ModelSQL, ModelView):
                     where &= table.src == source
                 clause.append(where)
         if clause:
-            in_max = cursor.IN_MAX / 7
+            in_max = cursor.IN_MAX // 7
             for sub_clause in grouped_slice(clause, in_max):
                 cursor.execute(*table.select(
                         table.lang, table.type, table.name, table.src,
@@ -1041,7 +1038,7 @@ class TranslationSet(Wizard):
                 if not content:
                     continue
 
-                content_io = StringIO.StringIO(content)
+                content_io = BytesIO(content)
                 try:
                     content_z = zipfile.ZipFile(content_io, mode='r')
                 except zipfile.BadZipfile:

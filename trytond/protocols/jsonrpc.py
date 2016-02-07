@@ -6,6 +6,7 @@ from trytond.config import config
 from trytond.protocols.common import daemon, RegisterHandlerMixin
 from trytond.exceptions import UserError, UserWarning, NotLogged, \
     ConcurrencyException
+
 import SimpleXMLRPCServer
 import SimpleHTTPServer
 import SocketServer
@@ -27,10 +28,7 @@ except ImportError:
     import json
 import base64
 import encodings
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import BytesIO
 
 
 class JSONDecoder(object):
@@ -61,7 +59,7 @@ JSONDecoder.register('timedelta',
 
 def _bytes_decoder(dct):
     cast = bytearray if bytes == str else bytes
-    return cast(base64.decodestring(dct['base64']))
+    return cast(base64.decodestring(dct['base64'].encode('utf-8')))
 JSONDecoder.register('bytes', _bytes_decoder)
 JSONDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
 
@@ -118,7 +116,7 @@ JSONEncoder.register(datetime.timedelta,
         })
 _bytes_encoder = lambda o: {
     '__class__': 'bytes',
-    'base64': base64.encodestring(o),
+    'base64': base64.encodestring(o).decode('utf-8'),
     }
 JSONEncoder.register(bytes, _bytes_encoder)
 JSONEncoder.register(bytearray, _bytes_encoder)
@@ -148,7 +146,7 @@ class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
         existing method through subclassing is the prefered means
         of changing method dispatch behavior.
         """
-        rawreq = json.loads(data, object_hook=JSONDecoder())
+        rawreq = json.loads(data.decode('utf-8'), object_hook=JSONDecoder())
 
         req_id = rawreq.get('id', 0)
         method = rawreq['method']
@@ -172,7 +170,7 @@ class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
             # report exception back to server
             response['error'] = (str(sys.exc_value), tb_s)
 
-        return json.dumps(response, cls=JSONEncoder)
+        return json.dumps(response, cls=JSONEncoder).encode('utf-8')
 
 
 class GenericJSONRPCRequestHandler:
@@ -263,20 +261,23 @@ class SimpleJSONRPCRequestHandler(RegisterHandlerMixin,
             'hostname': hostname,
             'path': path,
             }
-        content = StringIO()
-        content.write('<html')
-        content.write('<head>')
-        content.write('<meta http-equiv="Refresh" '
+        content = BytesIO()
+
+        def write(str_):
+            content.write(str_.encode('utf-8'))
+        write('<html')
+        write('<head>')
+        write('<meta http-equiv="Refresh" '
             'content="0;url=tryton://%(hostname)s%(path)s"/>' % values)
-        content.write('<title>Moved</title>')
-        content.write('</head>')
-        content.write('<body>')
-        content.write('<h1>Moved</h1>')
-        content.write('<p>This page has moved to '
+        write('<title>Moved</title>')
+        write('</head>')
+        write('<body>')
+        write('<h1>Moved</h1>')
+        write('<p>This page has moved to '
             '<a href="tryton://%(hostname)s%(path)s">'
             'tryton://%(hostname)s%(path)s</a>.</p>' % values)
-        content.write('</body>')
-        content.write('</html>')
+        write('</body>')
+        write('</html>')
         length = content.tell()
         content.seek(0)
         self.send_header('Location', 'tryton://%(hostname)s%(path)s' % values)

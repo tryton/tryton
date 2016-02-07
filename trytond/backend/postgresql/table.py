@@ -260,11 +260,11 @@ class TableHandler(TableHandlerInterface):
                     and self._columns[column_name]['typname'] == 'varchar'):
                 # Migrate size
                 if field_size is None:
-                    if self._columns[column_name]['size'] > 0:
+                    if self._columns[column_name]['size']:
                         self.alter_size(column_name, base_type)
                 elif self._columns[column_name]['size'] == field_size:
                     pass
-                elif (self._columns[column_name]['size'] > 0
+                elif (self._columns[column_name]['size']
                         and self._columns[column_name]['size'] < field_size):
                     self.alter_size(column_name, column_type[1])
                 else:

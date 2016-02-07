@@ -314,8 +314,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         Session = pool.get('ir.session.wizard')
         self._session_id = session_id
         session = Session(session_id)
-        data = json.loads(session.data.encode('utf-8'),
-            object_hook=JSONDecoder())
+        data = json.loads(session.data, object_hook=JSONDecoder())
         for state_name, state in self.states.iteritems():
             if isinstance(state, StateView):
                 Target = pool.get(state.model_name)

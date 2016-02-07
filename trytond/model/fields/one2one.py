@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from types import NoneType
 
 from trytond.model.fields.field import Field
 from trytond.model.fields.many2many import Many2Many
@@ -59,5 +58,5 @@ class One2One(Many2Many):
             value = Target(*value)
         elif isinstance(value, (int, long)):
             value = Target(value)
-        assert isinstance(value, (Target, NoneType))
+        assert isinstance(value, (Target, type(None)))
         Field.__set__(self, inst, value)
