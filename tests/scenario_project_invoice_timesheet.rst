@@ -137,6 +137,13 @@ Create a Project::
     >>> project.save()
     >>> task, = project.children
 
+Add a task without timesheet work::
+
+    >>> task2 = project.children.new()
+    >>> task2.name = 'Task 2'
+    >>> task2.type = 'task'
+    >>> project.save()
+
 Create timesheets::
 
     >>> TimesheetLine = Model.get('timesheet.line')
