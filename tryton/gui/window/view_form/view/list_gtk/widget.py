@@ -252,6 +252,9 @@ class Char(object):
                 pass
             else:
                 cell.set_property('editable', not readonly)
+        else:
+            if isinstance(cell, CellRendererToggle):
+                cell.set_property('activatable', False)
 
         cell.set_property('xalign', align)
 
