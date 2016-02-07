@@ -507,6 +507,8 @@ def timelist_set_list(model, min_, max_, format_):
 
 def add_operators(widget):
     def key_press(editable, event):
+        if not editable.get_editable():
+            return False
         if event.keyval in OPERATORS:
             value = widget.props.value
             if value:
