@@ -284,10 +284,6 @@ class Work(ModelSQL, ModelView):
     def on_change_with_company(self, name=None):
         return self.work.company.id if self.work else None
 
-    @classmethod
-    def search_comany(cls, name, clause):
-        return [('work.company',) + tuple(clause[1:])]
-
     @fields.depends('work')
     def on_change_with_timesheet_available(self, name=None):
         return self.work.timesheet_available if self.work else None
