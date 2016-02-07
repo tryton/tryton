@@ -39,6 +39,11 @@ class MultiSelection(Widget, SelectionMixin):
         self.init_selection()
         self.id2path = {}
 
+    def _readonly_set(self, readonly):
+        super(MultiSelection, self)._readonly_set(readonly)
+        selection = self.tree.get_selection()
+        selection.set_select_function(lambda info: not readonly)
+
     @property
     def modified(self):
         if self.record and self.field:
@@ -65,8 +70,10 @@ class MultiSelection(Widget, SelectionMixin):
         selection = self.tree.get_selection()
         selection.handler_block_by_func(self.changed)
         try:
+            # Remove select_function to allow update,
+            # it will be set back in the super call
+            selection.set_select_function(lambda info: True)
             self.update_selection(record, field)
-            super(MultiSelection, self).display(record, field)
             self.model.clear()
             if field is None:
                 return
@@ -81,5 +88,6 @@ class MultiSelection(Widget, SelectionMixin):
                         and element not in group.record_deleted
                         and element.id in id2path):
                     selection.select_path(id2path[element.id])
+            super(MultiSelection, self).display(record, field)
         finally:
             selection.handler_unblock_by_func(self.changed)
