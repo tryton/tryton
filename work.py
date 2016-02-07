@@ -307,7 +307,7 @@ class Work:
         line = TimesheetLine.__table__()
 
         durations = {}
-        twork2work = dict((w.work.id, w.id) for w in works)
+        twork2work = dict((w.work.id, w.id) for w in works if w.work)
         ids = twork2work.keys()
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(line.work, sub_ids)
@@ -509,7 +509,7 @@ class Work:
         return []
 
     def _get_lines_to_invoice_timesheet(self):
-        if self.work.timesheet_lines:
+        if self.work and self.work.timesheet_lines:
             if not self.product:
                 self.raise_user_error('missing_product', (self.rec_name,))
             elif self.list_price is None:
