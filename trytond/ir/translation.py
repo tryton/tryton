@@ -883,12 +883,15 @@ class Translation(ModelSQL, ModelView):
 
                 if not ids:
                     to_save.append(translation)
-                elif not noupdate:
+                else:
                     for translation_id in ids:
                         old_translation = id2translation[translation_id]
-                        old_translation.value = translation.value
-                        old_translation.fuzzy = translation.fuzzy
-                        to_save.append(old_translation)
+                        if not noupdate:
+                            old_translation.value = translation.value
+                            old_translation.fuzzy = translation.fuzzy
+                            to_save.append(old_translation)
+                        else:
+                            translations.add(old_translation)
         cls.save(to_save)
         translations |= set(to_save)
 
