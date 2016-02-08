@@ -1480,9 +1480,12 @@ class Line(ModelSQL, ModelView):
             if not journal.view:
                 return result
 
+            colors = PYSONEncoder().encode(
+                If(Eval('state', '') == 'draft', 'red', 'black'))
+            # Use single quote for colors as pyson contains double quote
             xml = '<?xml version="1.0"?>\n' \
                 '<tree string="%s" editable="top" on_write="on_write" ' \
-                'colors="red:state==\'draft\'">\n' % title
+                'colors=\'%s\'>\n' % (title, colors)
             fields = set()
             for column in journal.view.columns:
                 fields.add(column.field.name)
