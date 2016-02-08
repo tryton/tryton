@@ -26,10 +26,19 @@ Same as for model access but applied on the field. It uses records of
 Button
 ======
 
-For each button of a model the records of 'ir.model.button` define the list of
+For each button of a model the records of `ir.model.button` define the list of
 groups that are allowed to call it.
 
 Record Rule
 ===========
 
-.. TODO
+They are defined by records of `ir.rule.group` which contains a list of
+`ir.rule` domain to which the rule applies. The group are selected by groups or
+users. The access is granted for a record:
+
+    - if the user is in at least one group that has the permission activated,
+
+    - or if the user is in no group by there is a default group with the
+      permission,
+
+    - or if there is a global group with the permission.
