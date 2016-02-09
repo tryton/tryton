@@ -244,7 +244,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 filename = filename.replace('/', os.sep)
                 logger.info('%s:loading %s', module, filename)
                 # Feed the parser with xml content:
-                with tools.file_open(OPJ(module, filename)) as fp:
+                with tools.file_open(OPJ(module, filename), 'rb') as fp:
                     tryton_parser.parse_xmlstream(fp)
 
             modules_todo.append((module, list(tryton_parser.to_delete)))

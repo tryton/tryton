@@ -51,7 +51,7 @@ def exec_command_pipe(name, *args, **kwargs):
         stdout=subprocess.PIPE, env=child_env)
 
 
-def file_open(name, mode="r", subdir='modules', encoding='utf-8'):
+def file_open(name, mode="r", subdir='modules', encoding=None):
     """Open a file from the root dir, using a subdir folder."""
     from trytond.modules import EGG_MODULES
     if sys.version_info < (3,):
