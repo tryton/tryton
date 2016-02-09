@@ -4,6 +4,7 @@
 from trytond.backend.table import TableHandlerInterface
 import logging
 import re
+import warnings
 
 __all__ = ['TableHandler']
 
@@ -161,22 +162,13 @@ class TableHandler(TableHandlerInterface):
                 self._field2module[line[0]] = line[1]
 
     def alter_size(self, column_name, column_type):
-        logger.warning(
-            'Unable to alter size of column %s '
-            'of table %s!',
-            column_name, self.table_name)
+        warnings.warn('Unable to alter size of column with SQLite backend')
 
     def alter_type(self, column_name, column_type):
-        logger.warning(
-            'Unable to alter type of column %s '
-            'of table %s!',
-            column_name, self.table_name)
+        warnings.warn('Unable to alter type of column with SQLite backend')
 
     def db_default(self, column_name, value):
-        logger.warning(
-            'Unable to set default on column %s '
-            'of table %s!',
-            column_name, self.table_name)
+        warnings.warn('Unable to set default on column with SQLite backend')
 
     def add_raw_column(self, column_name, column_type, column_format,
             default_fun=None, field_size=None, migrate=True, string=''):
@@ -240,14 +232,10 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions()
 
     def add_fk(self, column_name, reference, on_delete=None):
-        logger.warning(
-            'Unable to add foreign key on table %s!',
-            self.table_name)
+        warnings.warn('Unable to add foreign key with SQLite backend')
 
     def drop_fk(self, column_name, table=None):
-        logger.warning(
-            'Unable to drop foreign key on table %s!',
-            self.table_name)
+        warnings.warn('Unable to drop foreign key with SQLite backend')
 
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
@@ -279,32 +267,20 @@ class TableHandler(TableHandlerInterface):
             return
 
         if action == 'add':
-            logger.warning(
-                'Unable to set not null on column %s '
-                'of table %s!',
-                column_name, self.table_name)
+            warnings.warn('Unable to set not null with SQLite backend')
         elif action == 'remove':
-            logger.warning(
-                'Unable to remove not null on column %s '
-                'of table %s!',
-                column_name, self.table_name)
+            warnings.warn('Unable to remove not null with SQLite backend')
         else:
             raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint, exception=False):
-        logger.warning(
-            'Unable to add constraint on table %s!',
-            self.table_name)
+        warnings.warn('Unable to add constraint with SQLite backend')
 
     def drop_constraint(self, ident, exception=False, table=None):
-        logger.warning(
-            'Unable to drop constraint on table %s!',
-            self.table_name)
+        warnings.warn('Unable to drop constraint with SQLite backend')
 
     def drop_column(self, column_name, exception=False):
-        logger.warning(
-            'Unable to drop "%s" column on table %s!',
-            column_name, self.table_name)
+        warnings.warn('Unable to drop column with SQLite backend')
 
     @staticmethod
     def drop_table(cursor, model, table, cascade=False):

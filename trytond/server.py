@@ -43,6 +43,7 @@ class TrytonServer(object):
             else:
                 level = logging.ERROR
             logging.basicConfig(level=level, format=logformat)
+        logging.captureWarnings(True)
 
         self.logger = logging.getLogger(__name__)
 
