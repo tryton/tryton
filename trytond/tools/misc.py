@@ -13,6 +13,7 @@ from array import array
 from itertools import islice
 import types
 import urllib
+import io
 
 from sql import Literal
 from sql.operators import Or
@@ -50,7 +51,7 @@ def exec_command_pipe(name, *args, **kwargs):
         stdout=subprocess.PIPE, env=child_env)
 
 
-def file_open(name, mode="r", subdir='modules'):
+def file_open(name, mode="r", subdir='modules', encoding='utf-8'):
     """Open a file from the root dir, using a subdir folder."""
     from trytond.modules import EGG_MODULES
     if sys.version_info < (3,):
@@ -94,7 +95,7 @@ def file_open(name, mode="r", subdir='modules'):
 
     for i in (name, egg_name):
         if i and os.path.isfile(i):
-            return open(i, mode)
+            return io.open(i, mode, encoding=encoding)
 
     raise IOError('File not found : %s ' % name)
 
