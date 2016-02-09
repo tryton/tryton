@@ -133,7 +133,8 @@ class ModuleTestCase(unittest.TestCase):
             tree = etree.fromstring(res['arch'])
 
             validator = etree.RelaxNG(etree=View.get_rng(res['type']))
-            validator.assert_(tree)
+            # Don't use assert_ because 2to3 convert to assertTrue
+            validator.assertValid(tree)
 
             tree_root = tree.getroottree().getroot()
 
