@@ -781,7 +781,7 @@ class ModelStorage(Model):
             if values is None:
                 return False
             for model_data in models_data:
-                if not model_data.values:
+                if not model_data.values or model_data.noupdate:
                     continue
                 xml_values = ModelData.load_values(model_data.values)
                 for key, val in values.iteritems():
