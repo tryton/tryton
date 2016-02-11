@@ -189,7 +189,7 @@ class EnterLines(Wizard):
 class HoursEmployee(ModelSQL, ModelView):
     'Hours per Employee'
     __name__ = 'timesheet.hours_employee'
-    employee = fields.Many2One('company.employee', 'Employee', select=True)
+    employee = fields.Many2One('company.employee', 'Employee')
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @staticmethod
@@ -245,11 +245,11 @@ class OpenHoursEmployee(Wizard):
 class HoursEmployeeWeekly(ModelSQL, ModelView):
     'Hours per Employee per Week'
     __name__ = 'timesheet.hours_employee_weekly'
-    year = fields.Char('Year', select=True)
-    week_internal = fields.Char('Week', select=True)
+    year = fields.Char('Year')
+    week_internal = fields.Char('Week')
     week = fields.Function(fields.Char('Week'),
         'get_week', searcher='search_week')
-    employee = fields.Many2One('company.employee', 'Employee', select=True)
+    employee = fields.Many2One('company.employee', 'Employee')
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @classmethod
@@ -299,11 +299,11 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
 class HoursEmployeeMonthly(ModelSQL, ModelView):
     'Hours per Employee per Month'
     __name__ = 'timesheet.hours_employee_monthly'
-    year = fields.Char('Year', select=True)
-    month_internal = fields.Char('Month', select=True)
+    year = fields.Char('Year')
+    month_internal = fields.Char('Month')
     month = fields.Function(fields.Char('Month'),
         'get_month', searcher='search_month')
-    employee = fields.Many2One('company.employee', 'Employee', select=True)
+    employee = fields.Many2One('company.employee', 'Employee')
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
     @classmethod
