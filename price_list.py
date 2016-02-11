@@ -144,7 +144,8 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
     def match(self, pattern):
         if 'quantity' in pattern:
             pattern = pattern.copy()
-            if self.quantity > pattern.pop('quantity'):
+            quantity = pattern.pop('quantity')
+            if self.quantity is not None and self.quantity > quantity:
                 return False
         return super(PriceListLine, self).match(pattern)
 
