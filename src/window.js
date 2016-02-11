@@ -401,6 +401,10 @@
         callback: function(result) {
             var prm = jQuery.when();
             if (result) {
+                var resource = this.screen.group.model.fields.resource;
+                this.screen.group.forEach(function(record) {
+                    resource.set_client(record, this.resource);
+                });
                 prm = this.screen.group.save();
             }
             if (this.attachment_callback) {
