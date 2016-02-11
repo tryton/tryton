@@ -7,10 +7,10 @@ from trytond.cache import Cache
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['View']
-__metaclass__ = PoolMeta
 
 
 class View:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.ui.view'
     _dashboard_cache = Cache('ir.ui.view.dashboard_id')
 

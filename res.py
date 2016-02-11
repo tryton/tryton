@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 __all__ = ['User']
-__metaclass__ = PoolMeta
 
 
 class User:
+    __metaclass__ = PoolMeta
     __name__ = "res.user"
     dashboard_layout = fields.Selection([
         ('square', 'Square'),
