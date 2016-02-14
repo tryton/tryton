@@ -3,9 +3,9 @@
 from trytond.pool import PoolMeta
 
 __all__ = ['Property']
-__metaclass__ = PoolMeta
 
 
 class Property:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.property'
     _history = True
