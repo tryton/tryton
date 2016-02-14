@@ -4,13 +4,13 @@ from trytond.model import ModelSQL, ModelView, DictSchemaMixin, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-__metaclass__ = PoolMeta
 __all__ = ['ProductAttributeSet', 'ProductAttribute',
     'ProductAttributeAttributeSet', 'Template', 'Product']
 
 
 class ProductAttributeSet(ModelSQL, ModelView):
     "Product Attribute Set"
+    __metaclass__ = PoolMeta
     __name__ = 'product.attribute.set'
     name = fields.Char('Name', required=True, translate=True)
     attributes = fields.Many2Many('product.attribute-product.attribute-set',
@@ -19,6 +19,7 @@ class ProductAttributeSet(ModelSQL, ModelView):
 
 class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView):
     "Product Attribute"
+    __metaclass__ = PoolMeta
     __name__ = 'product.attribute'
     sets = fields.Many2Many('product.attribute-product.attribute-set',
         'attribute', 'attribute_set', 'Sets')
@@ -26,6 +27,7 @@ class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView):
 
 class ProductAttributeAttributeSet(ModelSQL):
     "Product Attribute - Set"
+    __metaclass__ = PoolMeta
     __name__ = 'product.attribute-product.attribute-set'
     attribute = fields.Many2One('product.attribute', 'Attribute',
         ondelete='CASCADE', select=True, required=True)
@@ -34,11 +36,13 @@ class ProductAttributeAttributeSet(ModelSQL):
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     attribute_set = fields.Many2One('product.attribute.set', 'Set')
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
     attributes = fields.Dict('product.attribute', 'Attributes',
         domain=[
