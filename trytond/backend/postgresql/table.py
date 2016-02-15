@@ -134,6 +134,7 @@ class TableHandler(TableHandlerInterface):
             self.cursor.execute('ALTER TABLE "%s" '
                 'RENAME COLUMN "%s" TO "%s"'
                 % (self.table_name, old_name, new_name))
+            self._update_definitions()
         elif exception and self.column_exist(new_name):
             raise Exception('Unable to rename column %s.%s to %s.%s: '
                 '%s.%s already exist!'
