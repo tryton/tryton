@@ -115,6 +115,7 @@ class TableHandler(TableHandlerInterface):
                     ','.join('"%s"' % x for x in old_columns) + ' ' +
                     'FROM "%s"') % (self.table_name, temp_table))
             self.cursor.execute('DROP TABLE "%s"' % temp_table)
+            self._update_definitions()
         elif exception and self.column_exist(new_name):
             raise Exception('Unable to rename column %s.%s to %s.%s: '
                 '%s.%s already exist!'
