@@ -5,12 +5,12 @@ from trytond.pyson import Eval, Bool, Id
 from trytond.pool import PoolMeta, Pool
 
 __all__ = ['Template', 'Product']
-__metaclass__ = PoolMeta
 
 NON_MEASURABLE = ['service']
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
 
     length = fields.Float('Length',
@@ -173,4 +173,5 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
