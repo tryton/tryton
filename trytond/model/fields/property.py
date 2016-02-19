@@ -4,6 +4,7 @@ import copy
 
 from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
+from sql.conditionals import Case
 
 from .function import Function
 from .field import Field, SQL_OPERATORS
@@ -97,7 +98,11 @@ class Property(Function):
                         Position(',', property_.res) + Literal(1)),
                     Model.id.sql_type().base),
                 property_.id,
-                where=cond & self.get_condition(sql_type, domain, property_)))
+                # Use a Case because the condition created by get_condition
+                # could result in an invalid Cast
+                where=Case(
+                    (cond, self.get_condition(sql_type, domain, property_)),
+                    else_=(Literal(1) == Literal(0)))))
 
         props = cursor.fetchall()
         default = None
