@@ -5,10 +5,10 @@ from trytond.model import fields
 
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     bank_accounts = fields.Many2Many('bank.account-party.party', 'owner',
         'account', 'Bank Accounts')
