@@ -7,7 +7,6 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.transaction import Transaction
 
 __all__ = ['RelationType', 'PartyRelation', 'PartyRelationAll', 'Party']
-__metaclass__ = PoolMeta
 
 
 class RelationType(ModelSQL, ModelView):
@@ -190,6 +189,7 @@ class PartyRelationAll(PartyRelation, ModelView):
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     relations = fields.One2Many('party.relation.all', 'from_', 'Relations')
