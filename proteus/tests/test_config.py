@@ -26,7 +26,7 @@ class TestConfig(ProteusTestCase):
         self.assertRaises(NotImplementedError, config1.__eq__, None)
 
     def test_repr(self):
-        config = proteus.config.TrytondConfig()
+        config = proteus.config.TrytondConfig('sqlite:///:memory:')
         self.assertEqual(repr(config),
             "proteus.config.TrytondConfig("
             "'sqlite:///:memory:', 'admin', config_file=None)")

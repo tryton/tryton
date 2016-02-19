@@ -18,7 +18,6 @@ import threading
 import datetime
 import functools
 from decimal import Decimal
-from types import NoneType
 
 import proteus.config
 
@@ -159,14 +158,14 @@ class BinaryDescriptor(FieldDescriptor):
 class IntegerDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
-        assert isinstance(value, (int, long, NoneType))
+        assert isinstance(value, (int, long, type(None)))
         super(IntegerDescriptor, self).__set__(instance, value)
 
 
 class FloatDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
-        assert isinstance(value, (int, long, float, Decimal, NoneType))
+        assert isinstance(value, (int, long, float, Decimal, type(None)))
         if value is not None:
             value = float(value)
         super(FloatDescriptor, self).__set__(instance, value)
@@ -175,7 +174,7 @@ class FloatDescriptor(FieldDescriptor):
 class NumericDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
-        assert isinstance(value, (NoneType, Decimal))
+        assert isinstance(value, (type(None), Decimal))
         # TODO add digits validation
         super(NumericDescriptor, self).__set__(instance, value)
 
@@ -192,7 +191,7 @@ class ReferenceDescriptor(FieldDescriptor):
         return value
 
     def __set__(self, instance, value):
-        assert isinstance(value, (Model, NoneType, basestring))
+        assert isinstance(value, (Model, type(None), basestring))
         if isinstance(value, basestring):
             assert value.startswith(',')
         elif isinstance(value, Model):
@@ -254,7 +253,7 @@ class Many2OneDescriptor(FieldDescriptor):
         return value
 
     def __set__(self, instance, value):
-        assert isinstance(value, (Model, NoneType))
+        assert isinstance(value, (Model, type(None)))
         if value:
             assert value._config == instance._config
         super(Many2OneDescriptor, self).__set__(instance, value)
@@ -661,7 +660,7 @@ class Model(object):
     @classmethod
     def get(cls, name, config=None):
         'Get a class for the named Model'
-        if isinstance(name, unicode):
+        if (bytes == str) and isinstance(name, unicode):
             name = name.encode('utf-8')
 
         class Spam(Model):
@@ -692,14 +691,14 @@ class Model(object):
                 repr(self._config), self.id)
     __repr__.__doc__ = object.__repr__.__doc__
 
-    def __cmp__(self, other):
-        'Compare with other'
+    def __eq__(self, other):
         if isinstance(other, Model):
-            return cmp((self.__class__.__name__, self.id),
+            return ((self.__class__.__name__, self.id) ==
                 (other.__class__.__name__, other.id))
-        if isinstance(other, (bool, NoneType)):
-            return 1
-        raise NotImplementedError
+        return NotImplemented
+
+    def __hash__(self):
+        return hash(self.__class__.__name__) ^ hash(self.id)
 
     @property
     def id(self):

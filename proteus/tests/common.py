@@ -9,7 +9,10 @@ from proteus import config
 
 class ProteusTestCase(TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         if not db_exist():
             create_db()
+
+    def setUp(self):
         self.config = config.set_trytond()

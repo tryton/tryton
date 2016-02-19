@@ -233,11 +233,11 @@ class TestModel(ProteusTestCase):
         self.assertEqual(test.groups, [])
         self.assertEqual(len(Group.find([('id', '=', group_id)])), 0)
 
-    def test_cmp(self):
+    def test_eq(self):
         User = Model.get('res.user')
         test = User()
-        test.name = 'Test cmp'
-        test.login = 'test_cmp'
+        test.name = 'Test eq'
+        test.login = 'test_eq'
         test.save()
         admin1 = User.find([('login', '=', 'admin')])[0]
         admin2 = User.find([('login', '=', 'admin')])[0]
@@ -246,8 +246,7 @@ class TestModel(ProteusTestCase):
         self.assertNotEqual(admin1, test)
         self.assertNotEqual(admin1, None)
         self.assertNotEqual(admin1, False)
-
-        self.assertRaises(NotImplementedError, lambda: admin1 == 1)
+        self.assertNotEqual(admin1, 1)
 
     def test_default_set(self):
         User = Model.get('res.user')

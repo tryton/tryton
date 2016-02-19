@@ -3,11 +3,19 @@
 # this repository contains the full copyright notices and license terms.
 from setuptools import setup, find_packages
 import os
-import proteus
+import re
+import io
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    return io.open(
+        os.path.join(os.path.dirname(__file__), fname),
+        'r', encoding='utf-8').read()
+
+
+def get_version():
+    init = read(os.path.join('proteus', '__init__.py'))
+    return re.search('__version__ = "([0-9.]*)"', init).group(1)
 
 
 def get_require_version(name):
@@ -20,7 +28,7 @@ def get_require_version(name):
     return require
 
 name = 'proteus'
-version = proteus.__version__
+version = get_version()
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
@@ -58,6 +66,9 @@ setup(name=name,
         'GNU Library or Lesser General Public License (LGPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
@@ -77,4 +88,5 @@ setup(name=name,
     test_suite='proteus.tests',
     tests_require=[get_require_version('trytond'),
         get_require_version('trytond_party')],
+    use_2to3=True,
     )
