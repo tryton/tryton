@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 __all__ = ['Address']
-__metaclass__ = PoolMeta
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
 
     google_maps_url = fields.Function(fields.Char('Google Maps'),
