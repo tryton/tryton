@@ -6,10 +6,10 @@ from trytond.pool import PoolMeta
 from . import luhn
 
 __all__ = ['Address']
-__metaclass__ = PoolMeta
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
 
     siret_nic = fields.Char('SIRET NIC', select=True, states={

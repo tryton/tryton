@@ -6,10 +6,10 @@ from trytond.pool import PoolMeta
 from . import luhn
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     siren = fields.Char('SIREN', select=True, states={
