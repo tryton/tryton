@@ -4,10 +4,10 @@ from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
 __all__ = ['PartyConfiguration']
-__metaclass__ = PoolMeta
 
 
 class PartyConfiguration:
+    __metaclass__ = PoolMeta
     __name__ = 'party.configuration'
 
     @classmethod

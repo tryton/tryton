@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 
 
 __all__ = ['Cron', 'CronCompany']
-__metaclass__ = PoolMeta
 
 
 class Cron:
+    __metaclass__ = PoolMeta
     __name__ = "ir.cron"
     companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
             'Companies', help='Companies registered for this cron')

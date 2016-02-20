@@ -21,7 +21,6 @@ CursorInterface.cache_keys.update({'company', 'employee'})
 __all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
     'Sequence', 'SequenceStrict', 'Date', 'CompanyConfigStart',
     'CompanyConfig', 'CompanyReport', 'LetterReport', 'Rule']
-__metaclass__ = PoolMeta
 
 
 class Company(ModelSQL, ModelView):
@@ -82,6 +81,7 @@ class UserEmployee(ModelSQL):
 
 
 class User:
+    __metaclass__ = PoolMeta
     __name__ = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company')
     company = fields.Many2One('company.company', 'Current Company',
@@ -259,6 +259,7 @@ class User:
 
 
 class Property:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
         domain=[
@@ -288,6 +289,7 @@ class Property:
 
 
 class Sequence:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
         domain=[
@@ -310,6 +312,7 @@ class SequenceStrict(Sequence):
 
 
 class Date:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.date'
 
     @classmethod
@@ -372,6 +375,7 @@ class LetterReport(CompanyReport):
 
 
 class Rule:
+    __metaclass__ = PoolMeta
     __name__ = 'ir.rule'
 
     @classmethod
