@@ -5,10 +5,10 @@ from trytond.pool import PoolMeta
 
 
 __all__ = ['Company']
-__metaclass__ = PoolMeta
 
 
 class Company:
+    __metaclass__ = PoolMeta
     __name__ = 'company.company'
 
     hours_per_work_day = fields.Float("Hours per Work Day", required=True)
