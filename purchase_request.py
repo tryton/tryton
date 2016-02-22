@@ -515,7 +515,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     def create(cls, vlist):
         for vals in vlist:
             for field_name in ('product', 'quantity', 'uom', 'company'):
-                if not vals.get(field_name):
+                if vals.get(field_name) is None:
                     cls.raise_user_error('create_request')
         return super(PurchaseRequest, cls).create(vlist)
 
