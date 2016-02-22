@@ -15,6 +15,7 @@ from ..transaction import Transaction
 from ..pool import Pool
 from .. import backend
 from ..config import config
+from ..cache import Cache
 
 __all__ = [
     'Cron',
@@ -184,6 +185,7 @@ class Cron(ModelSQL, ModelView):
     def run(cls, db_name):
         now = datetime.datetime.now()
         with Transaction().start(db_name, 0) as transaction:
+            Cache.clean(db_name)
             transaction.cursor.lock(cls._table)
             crons = cls.search([
                     ('number_calls', '!=', 0),
@@ -216,3 +218,4 @@ class Cron(ModelSQL, ModelView):
                 except Exception:
                     transaction.cursor.rollback()
                     logger.error('Running cron %s', cron.id, exc_info=True)
+            Cache.resets(db_name)
