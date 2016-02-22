@@ -525,6 +525,10 @@ def add_operators(widget):
             return True
         return False
 
+    if isinstance(widget, DateTime):
+        for child in widget.get_children():
+            add_operators(child)
+        return widget
     if isinstance(widget, gtk.ComboBoxEntry):
         editable = widget.get_child()
     else:
@@ -569,8 +573,7 @@ if __name__ == '__main__':
     t.show()
     v.pack_start(t, False, False)
 
-    dt = DateTime()
-    [add_operators(c) for c in dt.get_children()]
+    dt = add_operators(DateTime())
     dt.show()
     v.pack_start(dt, False, False)
 
