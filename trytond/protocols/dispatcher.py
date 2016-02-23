@@ -296,12 +296,14 @@ def restore(database_name, password, data, update=False):
     Database = backend.get('Database')
     security.check_super(password)
     try:
-        database = Database().connect()
+        database = Database(database_name).connect()
         cursor = database.cursor()
         cursor.close(close=True)
-        raise Exception("Database already exists!")
+        existing = True
     except Exception:
-        pass
+        existing = False
+    if existing:
+        raise Exception('Database already exists!')
     Database.restore(database_name, data)
     logger.info('RESTORE DB: %s', database_name)
     if update:
