@@ -13,10 +13,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     account_payable = fields.Property(fields.Many2One('account.account',
             'Account Payable', domain=[

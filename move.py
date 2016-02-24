@@ -30,7 +30,6 @@ __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'CancelMoves', 'CancelMovesDefault',
     'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
-__metaclass__ = PoolMeta
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -2065,6 +2064,7 @@ class FiscalYearLine(ModelSQL):
 
 
 class FiscalYear2:
+    __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
     close_lines = fields.Many2Many('account.fiscalyear-account.move.line',
             'fiscalyear', 'line', 'Close Lines')

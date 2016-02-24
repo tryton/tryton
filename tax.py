@@ -22,7 +22,6 @@ __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
     'TaxRuleLineTemplate', 'TaxRuleLine',
     'OpenTaxCode',
     'AccountTemplateTaxTemplate', 'AccountTemplate2', 'AccountTax', 'Account2']
-__metaclass__ = PoolMeta
 
 KINDS = [
     ('sale', 'Sale'),
@@ -1501,6 +1500,7 @@ class AccountTemplateTaxTemplate(ModelSQL):
 
 
 class AccountTemplate2:
+    __metaclass__ = PoolMeta
     __name__ = 'account.account.template'
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
@@ -1518,6 +1518,7 @@ class AccountTax(ModelSQL):
 
 
 class Account2:
+    __metaclass__ = PoolMeta
     __name__ = 'account.account'
     taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
