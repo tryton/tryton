@@ -697,6 +697,9 @@ class Model(object):
                 (other.__class__.__name__, other.id))
         return NotImplemented
 
+    def __ne__(self, other):
+        return not self == other
+
     def __hash__(self):
         return hash(self.__class__.__name__) ^ hash(self.id)
 

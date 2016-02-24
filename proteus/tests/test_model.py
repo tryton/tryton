@@ -243,7 +243,9 @@ class TestModel(ProteusTestCase):
         admin2 = User.find([('login', '=', 'admin')])[0]
 
         self.assertEqual(admin1, admin2)
+        self.assertFalse(admin1 != admin2)
         self.assertNotEqual(admin1, test)
+        self.assertFalse(admin1 == test)
         self.assertNotEqual(admin1, None)
         self.assertNotEqual(admin1, False)
         self.assertNotEqual(admin1, 1)
