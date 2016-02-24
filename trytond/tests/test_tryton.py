@@ -5,6 +5,7 @@ import os
 import sys
 import unittest
 import doctest
+import re
 from itertools import chain
 import operator
 from functools import wraps
@@ -23,7 +24,7 @@ from trytond.cache import Cache
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'USER_PASSWORD', 'CONTEXT',
     'install_module', 'ModuleTestCase', 'with_transaction',
-    'doctest_setup', 'doctest_teardown',
+    'doctest_setup', 'doctest_teardown', 'doctest_checker',
     'suite', 'all_suite', 'modules_suite']
 
 Pool.start()
@@ -297,6 +298,16 @@ def drop_create():
 
 doctest_setup = lambda test: drop_create()
 doctest_teardown = lambda test: drop_db()
+
+
+class Py23DocChecker(doctest.OutputChecker):
+    def check_output(self, want, got, optionflags):
+        if sys.version_info[0] > 2:
+            want = re.sub("u'(.*?)'", "'\\1'", want)
+            want = re.sub('u"(.*?)"', '"\\1"', want)
+        return doctest.OutputChecker.check_output(self, want, got, optionflags)
+
+doctest_checker = Py23DocChecker()
 
 
 class TestSuite(unittest.TestSuite):
