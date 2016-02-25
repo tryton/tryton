@@ -7,10 +7,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['AccountTemplate']
-__metaclass__ = PoolMeta
 
 
 class AccountTemplate:
+    __metaclass__ = PoolMeta
     __name__ = 'account.account.template'
 
     @classmethod
