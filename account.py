@@ -8,10 +8,10 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval
 
 __all__ = ['Configuration', 'Level']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
 
     default_credit_limit_amount = fields.Function(fields.Numeric(
@@ -76,6 +76,7 @@ class Configuration:
 
 
 class Level:
+    __metaclass__ = PoolMeta
     __name__ = 'account.dunning.level'
     credit_limit = fields.Boolean('Credit Limit',
         help='Has reached the credit limit')

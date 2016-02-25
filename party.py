@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     credit_amount = fields.Function(fields.Numeric('Credit Amount',
