@@ -5,10 +5,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 
 __all__ = ['TaxRuleLineTemplate', 'TaxRuleLine', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class TaxRuleLineTemplate:
+    __metaclass__ = PoolMeta
     __name__ = 'account.tax.rule.line.template'
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT')
@@ -17,6 +17,7 @@ class TaxRuleLineTemplate:
 
 
 class TaxRuleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.tax.rule.line'
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT')
@@ -25,6 +26,7 @@ class TaxRuleLine:
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     def _get_tax_rule_pattern(self):

@@ -6,10 +6,10 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 __all__ = ['Purchase', 'PurchaseLine']
-__metaclass__ = PoolMeta
 
 
 class Purchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.purchase'
 
     @classmethod
@@ -22,6 +22,7 @@ class Purchase:
 
 
 class PurchaseLine:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.line'
 
     def _get_tax_rule_pattern(self):
