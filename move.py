@@ -34,7 +34,7 @@ LOCATION_DOMAIN = [
 LOCATION_DEPENDS = ['state']
 
 
-class StockMixin:
+class StockMixin(object):
     '''Mixin class with helper to setup stock quantity field.'''
 
     @classmethod

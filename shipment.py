@@ -28,7 +28,6 @@ __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'DeliveryNote', 'PickingList',
     'SupplierRestockingList', 'CustomerReturnRestockingList',
     'InteralShipmentReport']
-__metaclass__ = PoolMeta
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -2028,6 +2027,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
     delivery = fields.Boolean('Delivery')
 

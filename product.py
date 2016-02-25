@@ -24,10 +24,10 @@ __all__ = ['Template', 'Product',
     'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseStart',
     'OpenProductQuantitiesByWarehouse',
     'RecomputeCostPrice']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = "product.template"
     quantity = fields.Function(fields.Float('Quantity'), 'sum_product')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
@@ -93,7 +93,7 @@ class Template:
         Product.recompute_cost_price(products)
 
 
-class Product(object, StockMixin):
+class Product(StockMixin, object):
     __metaclass__ = PoolMeta
     __name__ = "product.product"
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',

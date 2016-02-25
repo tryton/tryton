@@ -12,7 +12,6 @@ from trytond.tools import grouped_slice
 
 __all__ = ['Location', 'Party', 'ProductsByLocationsStart',
     'ProductsByLocations']
-__metaclass__ = PoolMeta
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -395,6 +394,7 @@ class Location(ModelSQL, ModelView):
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     supplier_location = fields.Property(fields.Many2One('stock.location',
         'Supplier Location', domain=[('type', '=', 'supplier')],

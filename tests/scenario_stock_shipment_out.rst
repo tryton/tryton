@@ -152,8 +152,8 @@ Delete the draft move, assign and pack shipment::
     >>> shipment_out.click('assign_try')
     True
     >>> shipment_out.click('pack')
-    >>> set([m.state for m in shipment_out.outgoing_moves])
-    set([u'assigned'])
+    >>> all(m.state == 'assigned' for m in shipment_out.outgoing_moves)
+    True
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)
@@ -167,8 +167,8 @@ Delete the draft move, assign and pack shipment::
 Set the state as Done::
 
     >>> shipment_out.click('done')
-    >>> set([m.state for m in shipment_out.outgoing_moves])
-    set([u'done'])
+    >>> all(m.state == 'done' for m in shipment_out.outgoing_moves)
+    True
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
     >>> planned_dates == [today, today]
