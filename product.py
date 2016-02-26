@@ -11,7 +11,6 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateCustomerTax', 'TemplateSupplierTax', 'Product',
     'MissingFunction']
-__metaclass__ = PoolMeta
 
 
 class MissingFunction(fields.Function):
@@ -40,6 +39,7 @@ class MissingFunction(fields.Function):
 
 
 class Category:
+    __metaclass__ = PoolMeta
     __name__ = 'product.category'
     account_parent = fields.Boolean('Use Parent\'s accounts',
         help='Use the accounts defined on the parent category')
@@ -185,6 +185,7 @@ class CategorySupplierTax(ModelSQL):
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     account_category = fields.Boolean('Use Category\'s accounts',
             help='Use the accounts defined on the category')
@@ -318,6 +319,7 @@ class TemplateSupplierTax(ModelSQL):
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
     # Avoid raise of UserError from MissingFunction
     account_expense_used = fields.Function(fields.Many2One('account.account',
