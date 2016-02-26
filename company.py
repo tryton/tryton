@@ -9,13 +9,13 @@ from trytond import backend
 from trytond.config import config
 
 __all__ = ['Employee', 'EmployeeCostPrice', 'price_digits']
-__metaclass__ = PoolMeta
 
 price_digits = (16, config.getint(
         'timesheet_cost', 'price_decimal', default=4))
 
 
 class Employee:
+    __metaclass__ = PoolMeta
     __name__ = 'company.employee'
     cost_price = fields.Function(fields.Numeric('Cost Price',
             digits=price_digits,

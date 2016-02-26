@@ -10,10 +10,10 @@ from trytond import backend
 from .company import price_digits
 
 __all__ = ['TimesheetLine']
-__metaclass__ = PoolMeta
 
 
 class TimesheetLine:
+    __metaclass__ = PoolMeta
     __name__ = 'timesheet.line'
 
     cost_price = fields.Numeric('Cost Price',
