@@ -9,7 +9,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Line', 'Move', 'MoveLine', 'OpenAccount']
-__metaclass__ = PoolMeta
 
 
 class Line(ModelSQL, ModelView):
@@ -135,6 +134,7 @@ class Line(ModelSQL, ModelView):
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move'
 
     def cancel(self, default=None):
