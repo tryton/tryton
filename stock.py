@@ -10,7 +10,6 @@ __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
     'ShipmentOutReturn',
     'Period', 'PeriodCacheLot',
     'Inventory', 'InventoryLine']
-__metaclass__ = PoolMeta
 
 
 class Lot(ModelSQL, ModelView, StockMixin):
@@ -46,6 +45,7 @@ class LotType(ModelSQL, ModelView):
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[
@@ -80,6 +80,7 @@ class Move:
 
 
 class ShipmentIn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -91,6 +92,7 @@ class ShipmentIn:
 
 
 class ShipmentOut:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -131,6 +133,7 @@ class ShipmentOut:
 
 
 class ShipmentOutReturn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
@@ -143,6 +146,7 @@ class ShipmentOutReturn:
 
 
 class Period:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.period'
     lot_caches = fields.One2Many('stock.period.cache.lot', 'period',
         'Lot Caches', readonly=True)
@@ -179,6 +183,7 @@ class PeriodCacheLot(ModelSQL, ModelView):
 
 
 class Inventory:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.inventory'
 
     @classmethod
@@ -187,6 +192,7 @@ class Inventory:
 
 
 class InventoryLine:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.inventory.line'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[
