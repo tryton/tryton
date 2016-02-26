@@ -13,11 +13,11 @@ from trytond.transaction import Transaction
 
 from .payment import KINDS
 
-__metaclass__ = PoolMeta
 __all__ = ['MoveLine', 'PayLine', 'PayLineStart']
 
 
 class MoveLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move.line'
     payment_amount = fields.Function(fields.Numeric('Payment Amount',
             digits=(16,
