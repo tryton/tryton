@@ -5,10 +5,10 @@ from trytond.model import fields
 
 
 __all__ = ['Configuration', 'MoveLine']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
     default_dunning_procedure = fields.Function(fields.Many2One(
             'account.dunning.procedure', 'Default Dunning Procedure'),
@@ -52,6 +52,7 @@ class Configuration:
 
 
 class MoveLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move.line'
 
     dunnings = fields.One2Many('account.dunning', 'line', 'Dunnings')

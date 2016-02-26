@@ -4,10 +4,10 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     dunning_procedure = fields.Property(
         fields.Many2One('account.dunning.procedure', 'Dunning Procedure'))
