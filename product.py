@@ -8,10 +8,10 @@ from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
 __all__ = ['Product', 'ProductBom']
-__metaclass__ = PoolMeta
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     boms = fields.One2Many('product.product-production.bom', 'product',

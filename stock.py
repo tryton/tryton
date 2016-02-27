@@ -6,10 +6,10 @@ from trytond.pool import PoolMeta
 
 
 __all__ = ['Location', 'Move']
-__metaclass__ = PoolMeta
 
 
 class Location:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.location'
     production_location = fields.Many2One('stock.location', 'Production',
         states={
@@ -24,6 +24,7 @@ class Location:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
     production_input = fields.Many2One('production', 'Production Input',
         readonly=True, select=True, ondelete='CASCADE',
