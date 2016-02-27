@@ -604,7 +604,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 old_values = self.ModelData.load_values(old_values)
 
             for key in old_values:
-                if isinstance(old_values[key], str):
+                if isinstance(old_values[key], bytes):
                     # Fix for migration to unicode
                     old_values[key] = old_values[key].decode('utf-8')
 
@@ -644,7 +644,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
                 # if the fs value is the same has in the db, whe ignore it
                 val = values[key]
-                if isinstance(values[key], str):
+                if isinstance(values[key], bytes):
                     # Fix for migration to unicode
                     val = values[key].decode('utf-8')
                 if db_field == val:
