@@ -13,15 +13,16 @@ from trytond.tools import grouped_slice
 
 
 __all__ = ['Level', 'ProcessDunning', 'Letter']
-__metaclass__ = PoolMeta
 
 
 class Level:
+    __metaclass__ = PoolMeta
     __name__ = 'account.dunning.level'
     print_on_letter = fields.Boolean('Print on Letter')
 
 
 class ProcessDunning:
+    __metaclass__ = PoolMeta
     __name__ = 'account.dunning.process'
     print_letter = StateReport('account.dunning.letter')
 
@@ -42,6 +43,7 @@ class ProcessDunning:
 
 
 class Letter(CompanyReport):
+    __metaclass__ = PoolMeta
     __name__ = 'account.dunning.letter'
 
     @classmethod
@@ -84,6 +86,7 @@ class Letter(CompanyReport):
     def get_party_letter():
 
         class PartyLetter(object):
+            __metaclass__ = PoolMeta
 
             def __init__(self, dunnings, payments):
                 self.dunnings = dunnings
