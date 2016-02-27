@@ -5,10 +5,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Template', 'Product']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
 
     @classmethod
@@ -75,6 +75,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     def recompute_cost_price_fifo(self):
