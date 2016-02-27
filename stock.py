@@ -7,10 +7,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['Move', 'SplitMoveStart', 'SplitMove']
-__metaclass__ = PoolMeta
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
 
     @classmethod
