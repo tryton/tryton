@@ -10,11 +10,11 @@ from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['Location']
-__metaclass__ = PoolMeta
 
 
 class Location:
     "Stock Location"
+    __metaclass__ = PoolMeta
     __name__ = 'stock.location'
     sequence = fields.Integer('Sequence',
         states={
