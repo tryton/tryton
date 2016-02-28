@@ -92,7 +92,7 @@ class Move:
     package = fields.Many2One('stock.package', 'Package', select=True)
 
 
-class PackageMixin:
+class PackageMixin(object):
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         states={
             'readonly': Eval('state').in_(['done', 'cancel']),
@@ -116,7 +116,7 @@ class PackageMixin:
                 })
 
 
-class ShipmentOut(object, PackageMixin):
+class ShipmentOut(PackageMixin, object):
     __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
 
@@ -141,7 +141,7 @@ class ShipmentOut(object, PackageMixin):
                 cls.raise_user_error('package_mismatch', shipment.rec_name)
 
 
-class ShipmentInReturn(object, PackageMixin):
+class ShipmentInReturn(PackageMixin, object):
     __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in.return'
 
