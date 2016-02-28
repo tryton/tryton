@@ -4,10 +4,10 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Address', 'Party']
-__metaclass__ = PoolMeta
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
     invoice = fields.Boolean('Invoice')
 

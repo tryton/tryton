@@ -7,6 +7,7 @@ from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
 from trytond.modules.currency.tests import create_currency
@@ -87,9 +88,9 @@ class AccountInvoiceTestCase(ModuleTestCase):
             date=datetime.date(2011, 10, 1))
         self.assertEqual(terms, [
                 (datetime.date(2011, 10, 31), Decimal('396.84')),
-                (datetime.date(2011, 11, 01), Decimal('396.84')),
-                (datetime.date(2011, 12, 01), Decimal('396.84')),
-                (datetime.date(2012, 01, 14), Decimal('396.83')),
+                (datetime.date(2011, 11, 1), Decimal('396.84')),
+                (datetime.date(2011, 12, 1), Decimal('396.84')),
+                (datetime.date(2012, 1, 14), Decimal('396.83')),
                 ])
 
 
@@ -99,12 +100,15 @@ def suite():
         AccountInvoiceTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_invoice.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite('scenario_invoice_supplier.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
             'scenario_invoice_alternate_currency.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite

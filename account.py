@@ -10,7 +10,6 @@ from trytond.transaction import Transaction
 
 __all__ = ['Configuration', 'ConfigurationTaxRounding',
     'FiscalYear', 'Period', 'Move', 'Reconciliation']
-__metaclass__ = PoolMeta
 
 tax_roundings = [
     ('document', 'Per Document'),
@@ -19,6 +18,7 @@ tax_roundings = [
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
     tax_rounding = fields.Function(fields.Selection(tax_roundings,
             'Tax Rounding'), 'on_change_with_tax_rounding')
@@ -68,6 +68,7 @@ class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
 
 
 class FiscalYear:
+    __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Invoice Sequence', required=True,
@@ -182,6 +183,7 @@ class FiscalYear:
 
 
 class Period:
+    __metaclass__ = PoolMeta
     __name__ = 'account.period'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Invoice Sequence',
@@ -303,6 +305,7 @@ class Period:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move'
 
     @classmethod
@@ -311,6 +314,7 @@ class Move:
 
 
 class Reconciliation:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move.reconciliation'
 
     @classmethod
