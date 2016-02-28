@@ -10,7 +10,6 @@ from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['ProductLocation', 'ShipmentIn', 'ShipmentOutReturn']
-__metaclass__ = PoolMeta
 
 
 class ProductLocation(ModelSQL, ModelView):
@@ -55,6 +54,7 @@ class ProductLocation(ModelSQL, ModelView):
 
 
 class ShipmentIn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -70,6 +70,7 @@ class ShipmentIn:
 
 
 class ShipmentOutReturn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
