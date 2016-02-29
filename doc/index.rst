@@ -1,9 +1,9 @@
 Party Module
 ############
 
-The party module defines the concepts of party, category and contact
-mechanism. It also comes with reports to print labels and letters and
-a *Check VIES* wizard.
+The party module defines the concepts of party, identifier, category and
+contact mechanism. It also comes with reports to print labels and letters and a
+*Check VIES* wizard.
 
 
 Party
@@ -11,7 +11,7 @@ Party
 
 A party can be a person, a company or any organisation that one want
 to consider as the same entity. A party is defined by a name, a code,
-a language, a VAT code, categories, contact mechanisms and a list of
+a language, identifiers, categories, contact mechanisms and a list of
 addresses.
 
 Two reports are available:
@@ -23,8 +23,8 @@ Two reports are available:
   header, the address of the recipient, a date, a greeting, an ending
   and the signature of the current reader.
 
-The *Check VIES* wizard allow to check the VAT number of parties with
-the VIES web service.
+The *Check VIES* wizard allow to check the European VAT number identifier of
+parties with the VIES web service.
 
 
 Address
