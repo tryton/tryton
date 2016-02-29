@@ -5,10 +5,10 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
     asset = fields.Many2One('account.asset', 'Asset', domain=[
             ('state', '=', 'running'),

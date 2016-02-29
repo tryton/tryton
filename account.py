@@ -5,10 +5,10 @@ from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
 __all__ = ['Configuration', 'Move']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
     asset_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Asset Reference Sequence', domain=[
@@ -19,6 +19,7 @@ class Configuration:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move'
 
     @classmethod
