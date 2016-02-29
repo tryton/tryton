@@ -194,7 +194,7 @@ class View(ModelSQL, ModelView):
         if self.name and self.module:
             path = os.path.join(self.module, 'view', self.name + '.xml')
             try:
-                with file_open(path, subdir='modules') as fp:
+                with file_open(path, subdir='modules', mode='rb') as fp:
                     value = fp.read()
             except IOError:
                 pass
