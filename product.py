@@ -7,10 +7,10 @@ from trytond.model import ModelSQL, fields
 
 
 __all__ = ['Template', 'Template_Agent', 'Product']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     principals = fields.Many2Many('product.template-commission.agent',
         'template', 'agent', 'Commission Principals',
@@ -37,6 +37,7 @@ class Template_Agent(ModelSQL):
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     @property

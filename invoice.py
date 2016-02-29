@@ -10,10 +10,10 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
 __all__ = ['Invoice', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
         domain=[
@@ -105,6 +105,7 @@ class Invoice:
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[
