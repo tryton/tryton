@@ -6,10 +6,10 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 
 __all__ = ['Invoice']
-__metaclass__ = PoolMeta
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     open_date = fields.DateTime('Open Date')
 

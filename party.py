@@ -3,14 +3,15 @@
 from trytond.pool import PoolMeta
 
 __all__ = ['Party', 'Address']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     _history = True
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
     _history = True
