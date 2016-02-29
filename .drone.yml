@@ -1,9 +1,9 @@
-image: python2.7
+image: python:all
 env:
   - POSTGRESQL_URI=postgresql://postgres@127.0.0.1:5432/
   - MYSQL_URI=mysql://root@127.0.0.1:3306/
 script:
   - pip install tox
-  - tox -e "py27-{sqlite,postgresql}"
+  - tox -e "{py27,py33,py34,py35}-{sqlite,postgresql}" --skip-missing-interpreters
 services:
   - postgres

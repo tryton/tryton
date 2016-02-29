@@ -3,10 +3,10 @@
 from trytond.pool import PoolMeta
 
 __all__ = ['AccountTemplate', 'Account']
-__metaclass__ = PoolMeta
 
 
 class AccountTemplate:
+    __metaclass__ = PoolMeta
     __name__ = 'account.account.template'
 
     @classmethod
@@ -16,6 +16,7 @@ class AccountTemplate:
 
 
 class Account:
+    __metaclass__ = PoolMeta
     __name__ = 'account.account'
 
     @classmethod

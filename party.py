@@ -13,10 +13,10 @@ from trytond.tools import grouped_slice, reduce_ids
 
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     deposit = fields.Function(fields.Numeric('Deposit'),
