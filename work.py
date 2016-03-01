@@ -15,10 +15,10 @@ from trytond.tools import reduce_ids, grouped_slice
 from trytond.modules.product import price_digits
 
 __all__ = ['Work']
-__metaclass__ = PoolMeta
 
 
 class Work:
+    __metaclass__ = PoolMeta
     __name__ = 'project.work'
     product = fields.Many2One('product.product', 'Product',
         domain=[
