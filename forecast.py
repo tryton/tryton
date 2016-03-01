@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
 import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
@@ -435,8 +436,8 @@ class ForecastLine(ModelSQL, ModelView):
 
         delta = to_date - from_date
         delta = delta.days + 1
-        nb_packet = int((self.quantity - self.quantity_executed)
-            / self.minimal_quantity)
+        nb_packet = ((self.quantity - self.quantity_executed)
+            // self.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
         unit_price = None
         if self.forecast.destination.type == 'customer':
@@ -484,7 +485,7 @@ class ForecastLine(ModelSQL, ModelView):
             elif delta // qty > 1:
                 i = 0
                 while i < qty:
-                    a[i * delta // qty + (delta // qty / 2)] += 1
+                    a[i * delta // qty + (delta // qty // 2)] += 1
                     i += 1
                 qty = 0
             else:
@@ -493,7 +494,7 @@ class ForecastLine(ModelSQL, ModelView):
                 qty = delta - qty
                 i = 0
                 while i < qty:
-                    a[delta - ((i * delta // qty) + (delta // qty / 2)) - 1
+                    a[delta - ((i * delta // qty) + (delta // qty // 2)) - 1
                         ] -= 1
                     i += 1
                 qty = 0
