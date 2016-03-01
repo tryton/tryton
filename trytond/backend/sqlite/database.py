@@ -152,6 +152,22 @@ def sign(value):
         return value
 
 
+def greatest(*args):
+    args = filter(lambda a: a is not None, args)
+    if args:
+        return max(args)
+    else:
+        return None
+
+
+def least(*args):
+    args = filter(lambda a: a is not None, args)
+    if args:
+        return min(args)
+    else:
+        return None
+
+
 MAPPING = {
     Extract: SQLiteExtract,
     Position: SQLitePosition,
@@ -201,8 +217,8 @@ class Database(DatabaseInterface):
             self._conn.create_function('replace', 3, replace)
         self._conn.create_function('now', 0, now)
         self._conn.create_function('sign', 1, sign)
-        self._conn.create_function('greatest', -1, max)
-        self._conn.create_function('least', -1, min)
+        self._conn.create_function('greatest', -1, greatest)
+        self._conn.create_function('least', -1, least)
         self._conn.execute('PRAGMA foreign_keys = ON')
         return self
 
