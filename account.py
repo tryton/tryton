@@ -6,7 +6,6 @@ from trytond.pyson import Eval
 
 
 __all__ = ['InvoiceLineStockMove', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class InvoiceLineStockMove(ModelSQL):
@@ -20,6 +19,7 @@ class InvoiceLineStockMove(ModelSQL):
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
     stock_moves = fields.Many2Many('account.invoice.line-stock.move',
         'invoice_line', 'stock_move', 'Stock Moves',
