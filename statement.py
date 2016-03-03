@@ -148,11 +148,12 @@ class Statement(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
         # Migration from 1.8: new field company
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         company_exist = table.column_exist('company')
 
         super(Statement, cls).__register__(module_name)
@@ -160,7 +161,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         # Migration from 1.8: fill new field company
         if not company_exist:
             offset = 0
-            limit = cursor.IN_MAX
+            limit = transaction.database.IN_MAX
             statements = True
             while statements:
                 statements = cls.search([], offset=offset, limit=limit)
@@ -169,7 +170,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     cls.write([statement], {
                             'company': statement.journal.company.id,
                             })
-            table = TableHandler(cursor, cls, module_name)
+            table = TableHandler(cls, module_name)
             table.not_null_action('company', action='add')
 
         # Migration from 3.2: remove required on start/end balance

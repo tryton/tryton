@@ -20,7 +20,7 @@ class Move:
     def __register__(cls, module_name):
         pool = Pool()
         StatementLine = pool.get('account.statement.line')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
