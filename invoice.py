@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from collections import defaultdict
+from collections import defaultdict, namedtuple
+from itertools import combinations
 import base64
 import itertools
 
@@ -1051,58 +1052,26 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.raise_user_error('customer_invoice_cancel_move',
                 self.rec_name)
 
-    def get_reconcile_lines_for_amount(self, amount, exclude_lines=None):
+    def get_reconcile_lines_for_amount(self, amount):
         '''
         Return list of lines and the remainder to make reconciliation.
         '''
-        if exclude_lines is None:
-            exclude_lines = []
-        payment_amount = Decimal('0.0')
-        remainder = self.total_amount
-        lines = []
-        payment_lines = []
+        Result = namedtuple('Result', ['lines', 'remainder'])
 
-        for line in self.payment_lines:
-            if line.reconciliation:
-                continue
-            payment_amount += line.debit - line.credit
-            payment_lines.append(line)
+        lines = [l for l in self.payment_lines + self.lines_to_pay
+            if not l.reconciliation]
 
-        for line in self.lines_to_pay:
-
-            if line.reconciliation:
-                continue
-            if line in exclude_lines:
-                continue
-
-            test_amount = (line.debit - line.credit) - amount
-            if self.currency.is_zero(test_amount):
-                return ([line], Decimal('0.0'))
-            if abs(test_amount) < abs(remainder):
-                lines = [line]
-                remainder = test_amount
-
-            test_amount = payment_amount - amount
-            test_amount += (line.debit - line.credit)
-            if self.currency.is_zero(test_amount):
-                return ([line] + payment_lines, Decimal('0.0'))
-            if abs(test_amount) < abs(remainder):
-                lines = [line] + payment_lines
-                remainder = test_amount
-
-            exclude_lines2 = exclude_lines[:]
-            exclude_lines2.append(line)
-            lines2, remainder2 = self.get_reconcile_lines_for_amount(
-                ((line.debit - line.credit) - amount),
-                exclude_lines=exclude_lines2)
-            if remainder2 == Decimal('0.0'):
-                lines2.append(line)
-                return lines2, remainder2
-            if abs(remainder2) < abs(remainder):
-                lines2.append(line)
-                lines, remainder = lines2, remainder2
-
-        return (lines, remainder)
+        best = Result([], self.total_amount)
+        for n in xrange(len(lines), 0, -1):
+            for comb_lines in combinations(lines, n):
+                remainder = sum((l.debit - l.credit) for l in comb_lines)
+                remainder -= amount
+                result = Result(list(comb_lines), remainder)
+                if self.currency.is_zero(remainder):
+                    return result
+                if abs(remainder) < abs(best.remainder):
+                    best = result
+        return result
 
     def pay_invoice(self, amount, journal, date, description,
             amount_second_currency=None, second_currency=None):
@@ -2506,10 +2475,13 @@ class PayInvoice(Wizard):
             if line_id not in default['lines_to_pay']:
                 default['lines'].remove(line_id)
 
+        default['payment_lines'] = [x.id for x in invoice.payment_lines
+                if not x.reconciliation]
+
         default['amount_writeoff'] = Decimal('0.0')
         for line in Line.browse(default['lines']):
             default['amount_writeoff'] += line.debit - line.credit
-        for line in invoice.payment_lines:
+        for line in Line.browse(default['payment_lines']):
             default['amount_writeoff'] += line.debit - line.credit
         if invoice.type in ('in_invoice', 'out_credit_note'):
             default['amount_writeoff'] = - default['amount_writeoff'] - amount
@@ -2519,8 +2491,6 @@ class PayInvoice(Wizard):
         default['currency_writeoff'] = invoice.company.currency.id
         default['currency_digits_writeoff'] = invoice.company.currency.digits
         default['invoice'] = invoice.id
-        default['payment_lines'] = [x.id for x in invoice.payment_lines
-                if not x.reconciliation]
 
         if (amount > invoice.amount_to_pay
                 or invoice.company.currency.is_zero(amount)):
