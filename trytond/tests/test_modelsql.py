@@ -44,7 +44,7 @@ class ModelSQLTestCase(unittest.TestCase):
                 self.assertTrue(key not in err.message, msg)
             else:
                 self.fail('UserError should be caught')
-            transaction.cursor.rollback()
+            transaction.rollback()
 
     @with_transaction()
     def test_check_timestamp(self):
@@ -52,11 +52,10 @@ class ModelSQLTestCase(unittest.TestCase):
         pool = Pool()
         ModelsqlTimestamp = pool.get('test.modelsql.timestamp')
         transaction = Transaction()
-        # cursor must be committed between each changes otherwise NOW() returns
-        # always the same timestamp.
-        cursor = transaction.cursor
+        # transaction must be committed between each changes otherwise NOW()
+        # returns always the same timestamp.
         record, = ModelsqlTimestamp.create([{}])
-        cursor.commit()
+        transaction.commit()
 
         timestamp = ModelsqlTimestamp.read([record.id],
             ['_timestamp'])[0]['_timestamp']
@@ -66,7 +65,7 @@ class ModelSQLTestCase(unittest.TestCase):
             time.sleep(1)
 
         ModelsqlTimestamp.write([record], {})
-        cursor.commit()
+        transaction.commit()
 
         transaction.timestamp[str(record)] = timestamp
         self.assertRaises(ConcurrencyException,
@@ -78,9 +77,9 @@ class ModelSQLTestCase(unittest.TestCase):
 
         transaction.timestamp.pop(str(record), None)
         ModelsqlTimestamp.write([record], {})
-        cursor.commit()
+        transaction.commit()
         ModelsqlTimestamp.delete([record])
-        cursor.commit()
+        transaction.commit()
 
 
 def suite():

@@ -55,7 +55,7 @@ class Pool(object):
 
     def __new__(cls, database_name=None):
         if database_name is None:
-            database_name = Transaction().cursor.database_name
+            database_name = Transaction().database.name
         result = cls._instances.get(database_name)
         if result:
             return result
@@ -69,7 +69,7 @@ class Pool(object):
 
     def __init__(self, database_name=None):
         if database_name is None:
-            database_name = Transaction().cursor.database_name
+            database_name = Transaction().database.name
         self.database_name = database_name
 
     @staticmethod

@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.backend.database import DatabaseInterface, CursorInterface
+from trytond.backend.database import DatabaseInterface
 from trytond.config import config, parse_uri
 import MySQLdb
 import MySQLdb.cursors
@@ -15,8 +15,7 @@ import urllib
 from sql import Flavor, Expression
 from sql.functions import Extract, Overlay, CharLength
 
-__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
-    'Cursor']
+__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
 
 class MySQLExtract(Extract):
@@ -82,12 +81,12 @@ class Database(DatabaseInterface):
     def connect(self):
         return self
 
-    def cursor(self, autocommit=False, readonly=False):
+    def get_connection(self, autocommit=False, readonly=False):
         conv = MySQLdb.converters.conversions.copy()
         conv[float] = lambda value, _: repr(value)
         conv[MySQLdb.constants.FIELD_TYPE.TIME] = MySQLdb.times.Time_or_None
         args = {
-            'db': self.database_name,
+            'db': self.name,
             'sql_mode': 'traditional,postgresql',
             'use_unicode': True,
             'charset': 'utf8',
@@ -104,21 +103,26 @@ class Database(DatabaseInterface):
         if uri.password:
             args['passwd'] = urllib.unquote_plus(uri.password)
         conn = MySQLdb.connect(**args)
-        cursor = Cursor(conn, self.database_name)
+        cursor = conn.cursor()
         cursor.execute('SET time_zone = `UTC`')
-        return cursor
+        return conn
+
+    def put_connection(self, connection, close=False):
+        connection.close()
 
     def close(self):
         return
 
     @classmethod
-    def create(cls, cursor, database_name):
+    def create(cls, connection, database_name):
+        cursor = connection.cursor()
         cursor.execute('CREATE DATABASE `' + database_name + '` '
             'DEFAULT CHARACTER SET = \'utf8\'')
         cls._list_cache = None
 
     @classmethod
-    def drop(cls, cursor, database_name):
+    def drop(cls, connection, database_name):
+        cursor = connection.cursor()
         cursor.execute('DROP DATABASE `' + database_name + '`')
         cls._list_cache = None
 
@@ -195,13 +199,14 @@ class Database(DatabaseInterface):
         Database._list_cache = None
         return True
 
-    @staticmethod
-    def list(cursor):
+    def list(self):
         now = time.time()
         timeout = config.getint('session', 'timeout')
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
+        conn = self.get_connection()
+        cursor = conn.cursor()
         cursor.execute('SHOW DATABASES')
         res = []
         for db_name, in cursor.fetchall():
@@ -209,20 +214,19 @@ class Database(DatabaseInterface):
                 database = Database(db_name).connect()
             except Exception:
                 continue
-            cursor2 = database.cursor()
-            if cursor2.test():
+            if database.test():
                 res.append(db_name)
-                cursor2.close(close=True)
-            else:
-                cursor2.close()
-                database.close()
+            database.close()
+        self.put_connection(conn)
         Database._list_cache = res
         Database._list_cache_timestamp = now
         return res
 
-    @staticmethod
-    def init(cursor):
+    def init(self):
         from trytond.modules import get_module_info
+
+        connection = self.get_connection()
+        cursor = connection.cursor()
         sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
         with open(sql_file) as fp:
             for line in fp.read().split(';'):
@@ -246,40 +250,15 @@ class Database(DatabaseInterface):
                     'VALUES (%s, now(), %s, %s)',
                     (0, module_id, dependency))
 
-
-class Cursor(CursorInterface):
-
-    def __init__(self, conn, database_name):
-        super(Cursor, self).__init__()
-        self._conn = conn
-        self.database_name = database_name
-        self.dbname = self.database_name  # XXX to remove
-        self.cursor = conn.cursor()
-
-    def __getattr__(self, name):
-        return getattr(self.cursor, name)
-
-    def execute(self, sql, params=None):
-        if params:
-            return self.cursor.execute(sql, params)
-        else:
-            return self.cursor.execute(sql)
-
-    def close(self, close=False):
-        self.cursor.close()
-        self.rollback()
-
-    def commit(self):
-        super(Cursor, self).commit()
-        self._conn.commit()
-
-    def rollback(self):
-        super(Cursor, self).rollback()
-        self._conn.rollback()
+        connection.commit()
+        self.put_connection(connection)
 
     def test(self):
-        self.cursor.execute("SHOW TABLES")
-        for table, in self.cursor.fetchall():
+        is_tryton_database = False
+        connection = self.get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SHOW TABLES")
+        for table, in cursor.fetchall():
             if table in (
                     'ir_model',
                     'ir_model_field',
@@ -292,14 +271,17 @@ class Cursor(CursorInterface):
                     'ir_translation',
                     'ir_lang',
                     ):
-                return True
-        return False
+                is_tryton_database = True
+                break
+        self.put_connection(connection)
+        return is_tryton_database
 
-    def lastid(self):
-        self.cursor.execute('SELECT LAST_INSERT_ID()')
-        return self.cursor.fetchone()[0]
+    def lastid(self, cursor):
+        # This call is not thread safe
+        cursor.execute('SELECT LAST_INSERT_ID()')
+        return cursor.fetchone()[0]
 
-    def lock(self, table):
+    def lock(self, connection, table):
         # Lock of table doesn't work because MySQL require
         # that the session locks all tables that will be accessed
         # but 'FLUSH TABLES WITH READ LOCK' creates deadlock
@@ -311,15 +293,7 @@ class Cursor(CursorInterface):
     def has_multirow_insert(self):
         return True
 
-    def limit_clause(self, select, limit=None, offset=None):
-        if offset and limit is None:
-            limit = 18446744073709551610  # max bigint
-        if limit is not None:
-            select += ' LIMIT %d' % limit
-        if offset is not None and offset != 0:
-            select += ' OFFSET %d' % offset
-        return select
-
-    def update_auto_increment(self, table, value):
-        self.cursor.execute('ALTER TABLE `%s` AUTO_INCREMENT = %%s' % table,
+    def update_auto_increment(self, connection, table, value):
+        cursor = connection.cursor()
+        cursor.execute('ALTER TABLE `%s` AUTO_INCREMENT = %%s' % table,
                 (value,))

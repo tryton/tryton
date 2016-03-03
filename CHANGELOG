@@ -1,3 +1,4 @@
+* Follow PEP-0249 for Database, Transaction and Cursor
 * Add Python3 support
 * Make TestCase create and drop its database
 * Add with_transaction decorator for tests

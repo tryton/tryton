@@ -46,7 +46,7 @@ class TriggerTestCase(unittest.TestCase):
             }
         self.assert_(Trigger.create([values]))
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         # on_exclusive
         for i in range(1, 4):
@@ -57,14 +57,14 @@ class TriggerTestCase(unittest.TestCase):
                     combination_values['on_%s' % mode] = True
                 self.assertRaises(UserError, Trigger.create,
                     [combination_values])
-                transaction.cursor.rollback()
+                transaction.rollback()
 
         # check_condition
         condition_values = values.copy()
         condition_values['condition'] = '='
         self.assertRaises(UserError, Trigger.create,
             [condition_values])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         # Restart the cache on the get_triggers method of ir.trigger
         Trigger._get_triggers_cache.clear()

@@ -97,12 +97,11 @@ class Module(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
 
         super(Module, cls).__register__(module_name)
 
@@ -241,7 +240,7 @@ class Module(ModelSQL, ModelView):
         Dependency = pool.get('ir.module.dependency')
         module_table = Module.__table__()
         dep_table = Dependency.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         for module in modules:
             cursor.execute(*dep_table.join(module_table,
                     condition=(dep_table.module == module_table.id)
@@ -344,12 +343,11 @@ class ModuleDependency(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module_dependency'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
 
         super(ModuleDependency, cls).__register__(module_name)
 
@@ -385,22 +383,22 @@ class ModuleConfigWizardItem(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         model_data = ModelData.__table__()
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module_config_wizard_item'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
         cursor.execute(*model_data.update(
                 columns=[model_data.model],
                 values=[cls.__name__],
                 where=(model_data.model ==
                     'ir.module.module.config_wizard.item')))
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migrate from 2.2 remove name
         table.drop_column('name')
@@ -533,8 +531,8 @@ class ModuleInstallUpgrade(Wizard):
 
     @classmethod
     def check_access(cls):
-        # Use new cursor to prevent lock when installing modules
-        with Transaction().new_cursor():
+        # Use new transaction to prevent lock when installing modules
+        with Transaction().new_transaction():
             super(ModuleInstallUpgrade, cls).check_access()
 
     @staticmethod
@@ -559,7 +557,7 @@ class ModuleInstallUpgrade(Wizard):
         pool = Pool()
         Module = pool.get('ir.module')
         Lang = pool.get('ir.lang')
-        with Transaction().new_cursor() as transaction:
+        with Transaction().new_transaction():
             modules = Module.search([
                 ('state', 'in', ['to upgrade', 'to remove', 'to install']),
                 ])
@@ -568,7 +566,6 @@ class ModuleInstallUpgrade(Wizard):
                 ('translatable', '=', True),
                 ])
             lang = [x.code for x in langs]
-            transaction.cursor.commit()
         if update:
             pool.init(update=update, lang=lang)
         return 'done'

@@ -20,24 +20,22 @@ def _get_pool(dbname):
 
 
 def login(dbname, loginname, password, cache=True):
-    with Transaction().start(dbname, 0) as transaction:
+    with Transaction().start(dbname, 0):
         pool = _get_pool(dbname)
         User = pool.get('res.user')
         user_id = User.get_login(loginname, password)
-        transaction.cursor.commit()
     if user_id:
         if not cache:
             return user_id
-        with Transaction().start(dbname, user_id) as transaction:
+        with Transaction().start(dbname, user_id):
             Session = pool.get('ir.session')
             session, = Session.create([{}])
-            transaction.cursor.commit()
             return user_id, session.key
     return False
 
 
 def logout(dbname, user, session):
-    with Transaction().start(dbname, 0) as transaction:
+    with Transaction().start(dbname, 0):
         pool = _get_pool(dbname)
         Session = pool.get('ir.session')
         sessions = Session.search([
@@ -48,7 +46,6 @@ def logout(dbname, user, session):
         session, = sessions
         name = session.create_uid.login
         Session.delete(sessions)
-        transaction.cursor.commit()
     return name
 
 
@@ -73,4 +70,4 @@ def check(dbname, user, session):
             else:
                 return user
         finally:
-            transaction.cursor.commit()
+            transaction.commit()

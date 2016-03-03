@@ -16,9 +16,8 @@ from ..tools import datetime_strftime
 from ..transaction import Transaction
 from ..pool import Pool
 from .time_locale import TIME_LOCALE
-from ..backend.database import CursorInterface
 
-CursorInterface.cache_keys.add('translate_name')
+Transaction.cache_keys.add('translate_name')
 
 __all__ = [
     'Lang',

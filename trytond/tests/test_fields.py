@@ -300,7 +300,7 @@ class FieldsTestCase(unittest.TestCase):
         # We should catch UserError but mysql does not raise an
         # IntegrityError but an OperationalError
         self.assertRaises(Exception, IntegerRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         integer5, = IntegerRequired.create([{
                     'integer': 0,
@@ -308,7 +308,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(integer5)
         self.assertEqual(integer5.integer, 0)
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_integer_with_domain(self):
@@ -496,7 +496,7 @@ class FieldsTestCase(unittest.TestCase):
                 })
 
         self.assertRaises(UserError, FloatRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         float5, = FloatRequired.create([{
                     'float': 0.0,
@@ -742,7 +742,7 @@ class FieldsTestCase(unittest.TestCase):
                 })
 
         self.assertRaises(UserError, NumericRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         numeric5, = NumericRequired.create([{
                 'numeric': Decimal(0),
@@ -1044,12 +1044,12 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(char2.char, 'Test')
 
         self.assertRaises(UserError, CharRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, CharRequired.create, [{
                 'char': '',
                 }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         char5, = CharRequired.create([{
                     'char': 'Test',
@@ -1068,7 +1068,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertRaises(Exception, CharSize.write, [char6], {
                 'char': 'foobar',
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         char7, = Char.create([{
                     'char': u'é',
@@ -1299,7 +1299,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(text2.text, 'Test')
 
         self.assertRaises(UserError, TextRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         text5, = TextRequired.create([{
                     'text': 'Test',
@@ -1573,7 +1573,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(date5.date, datetime.date(2009, 1, 1))
 
         self.assertRaises(UserError, DateRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         date6, = DateRequired.create([{
                     'date': today,
@@ -1829,7 +1829,7 @@ class FieldsTestCase(unittest.TestCase):
             datetime.datetime(2009, 1, 1, 12, 0, 0))
 
         self.assertRaises(UserError, DatetimeRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         datetime6, = DatetimeRequired.create([{
                     'datetime': today,
@@ -2080,7 +2080,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(time5.time, datetime.time(12, 0))
 
         self.assertRaises(UserError, TimeRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         time6, = TimeRequired.create([{
                     'time': evening,
@@ -2197,17 +2197,17 @@ class FieldsTestCase(unittest.TestCase):
                     'name': 'one2one3',
                     'one2one': target1.id,
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, One2one.write, [one2one2], {
                 'one2one': target1.id,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, One2oneRequired.create, [{
                     'name': 'one2one3',
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         target3, = One2oneTarget.create([{
                     'name': 'target3',
@@ -2226,7 +2226,7 @@ class FieldsTestCase(unittest.TestCase):
                     'name': 'one2one4',
                     'one2one': target4.id,
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         target5, = One2oneTarget.create([{
                     'name': 'domain',
@@ -2434,12 +2434,12 @@ class FieldsTestCase(unittest.TestCase):
                     ])
             self.assertEqual(targets, [])
 
-            transaction.cursor.rollback()
+            transaction.rollback()
 
         self.assertRaises(UserError, One2manyRequired.create, [{
                     'name': 'origin3',
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         origin3_id, = One2manyRequired.create([{
                     'name': 'origin3',
@@ -2642,12 +2642,12 @@ class FieldsTestCase(unittest.TestCase):
                     ])
             self.assertEqual(targets, [])
 
-            transaction.cursor.rollback()
+            transaction.rollback()
 
         self.assertRaises(UserError, Many2manyRequired.create, [{
                     'name': 'origin3',
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         origin3_id, = Many2manyRequired.create([{
                     'name': 'origin3',
@@ -2663,7 +2663,7 @@ class FieldsTestCase(unittest.TestCase):
                     'name': str(i),
                     } for i in range(6)])
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_many2many_tree(self):
@@ -2846,7 +2846,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertRaises(UserError, ReferenceRequired.create, [{
                     'name': 'reference4',
                     }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         target4, = ReferenceTarget.create([{
                     'name': 'target4_id',
@@ -2942,7 +2942,7 @@ class FieldsTestCase(unittest.TestCase):
         Property.write([prop_b], {'char': 'Test'})
         self.assertEqual(prop_b.char, 'Test')
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         # Test Many2One
         char_a, = Char.create([{'char': 'Test'}])
@@ -2985,7 +2985,7 @@ class FieldsTestCase(unittest.TestCase):
         Property.write([prop_b], {'many2one': char_a.id})
         self.assertEqual(prop_b.many2one, char_a)
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         # Test Numeric
         prop_a, = Property.create([{'numeric': Decimal('1.1')}])
@@ -3069,7 +3069,7 @@ class FieldsTestCase(unittest.TestCase):
         Property.write([prop_b], {'numeric': Decimal('3.11')})
         self.assertEqual(prop_b.numeric, Decimal('3.11'))
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         # Test Selection
         prop_a, = Property.create([{'selection': 'option_a'}])
@@ -3173,11 +3173,11 @@ class FieldsTestCase(unittest.TestCase):
             [{'select': 'hexa', 'dyn_select': '3'}])
 
         self.assertRaises(UserError, SelectionRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, SelectionRequired.create,
             [{'select': None}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         selection6, = SelectionRequired.create([{'select': 'latin'}])
         self.assert_(selection6)
@@ -3239,7 +3239,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(dict3.dico == {'a': 1})
 
         self.assertRaises(UserError, DictRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         dict4, = DictRequired.create([{'dico': dict(a=1)}])
         self.assert_(dict4.dico == {'a': 1})
@@ -3276,7 +3276,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(bin3.binary == fields.Binary.cast(b'default'))
 
         self.assertRaises(UserError, BinaryRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         bin4, = BinaryRequired.create([{
                     'binary': fields.Binary.cast(b'baz'),
@@ -3332,7 +3332,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertTrue(all(x.many2one.value <= y.many2one.value
                 for x, y in zip(search, search[1:])))
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         target1, target2 = Many2oneTarget.create([
                 {'value': 1},
@@ -3356,7 +3356,7 @@ class FieldsTestCase(unittest.TestCase):
                     ('many2one.value', '=', 1),
                     ]), [search1])
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         for model in ['test.many2one_tree', 'test.many2one_mptt']:
             pool = Pool()
@@ -3413,7 +3413,7 @@ class FieldsTestCase(unittest.TestCase):
                     [('many2one', 'not parent_of', clause)])
                 self.assertEqual(result, not_(test))
 
-            transaction.cursor.rollback()
+            transaction.rollback()
 
     @with_transaction()
     def test_timedelta(self):
@@ -3621,7 +3621,7 @@ class FieldsTestCase(unittest.TestCase):
                 })
 
         self.assertRaises(UserError, TimedeltaRequired.create, [{}])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         timedelta6, = TimedeltaRequired.create([{
                     'timedelta': day,

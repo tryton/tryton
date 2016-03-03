@@ -58,11 +58,11 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         super(Attachment, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         attachment = cls.__table__()
 
         # Migration from 1.4 res_model and res_id merged into resource
@@ -86,7 +86,7 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
         return 0
 
     def get_data(self, name):
-        db_name = Transaction().cursor.dbname
+        db_name = Transaction().database.name
         format_ = Transaction().context.pop('%s.%s'
             % (self.__name__, name), '')
         value = None
@@ -116,9 +116,10 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     def set_data(cls, attachments, name, value):
         if value is None:
             return
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table = cls.__table__()
-        db_name = cursor.dbname
+        db_name = transaction.database.name
         directory = os.path.join(config.get('database', 'path'), db_name)
         if not os.path.isdir(directory):
             os.makedirs(directory, 0770)

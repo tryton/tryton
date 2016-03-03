@@ -225,9 +225,9 @@ class UIMenu(ModelSQL, ModelView):
         pool = Pool()
         ActionKeyword = pool.get('ir.action.keyword')
         action_keywords = []
-        cursor = Transaction().cursor
-        for i in range(0, len(menus), cursor.IN_MAX):
-            sub_menus = menus[i:i + cursor.IN_MAX]
+        transaction = Transaction()
+        for i in range(0, len(menus), transaction.database.IN_MAX):
+            sub_menus = menus[i:i + transaction.database.IN_MAX]
             action_keywords += ActionKeyword.search([
                 ('keyword', '=', 'tree_open'),
                 ('model', 'in', [str(menu) for menu in sub_menus]),

@@ -16,17 +16,6 @@ def empty_transaction(*args, **kwargs):
         return True
 
 
-def manipulate_cursor(*args, **kwargs):
-    '''
-    Just start a transaction in the context manager and close the cursor
-    during the transaction so that the cursor.close in the stop fails
-    '''
-    with Transaction().start(*args, **kwargs) as transaction:
-        transaction.cursor.close()
-        transaction.cursor = None
-        return True
-
-
 class TransactionTestCase(unittest.TestCase):
     'Test the Transaction Context manager'
 
@@ -41,14 +30,6 @@ class TransactionTestCase(unittest.TestCase):
         self.assertRaises(
             Exception, empty_transaction, "Non existant DB", USER,
             context=CONTEXT)
-        self.assertTrue(empty_transaction(DB_NAME, USER, context=CONTEXT))
-
-    def test_cursorclose(self):
-        '''Manipulate the cursor during the transaction so that
-        the close in transaction stop fails.
-        Ensure that this does not affect opening of another transaction'''
-        self.assertRaises(
-            Exception, manipulate_cursor, DB_NAME, USER, context=CONTEXT)
         self.assertTrue(empty_transaction(DB_NAME, USER, context=CONTEXT))
 
     def test_set_user(self):
@@ -83,6 +64,16 @@ class TransactionTestCase(unittest.TestCase):
             # not set context for non root
             with Transaction().set_user(2):
                 self.assertEqual(transaction.user, 2)
+
+    def test_stacked_transactions(self):
+        'Test that transactions are stacked / unstacked correctly'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT) \
+                as transaction:
+            with transaction.new_transaction() as new_transaction:
+                self.assertIsNot(new_transaction, transaction)
+                self.assertIsNot(Transaction(), transaction)
+                self.assertIs(Transaction(), new_transaction)
+            self.assertIs(Transaction(), transaction)
 
 
 def suite():

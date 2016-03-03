@@ -60,15 +60,15 @@ def install_module(name):
             return
 
         Module.install(modules)
-        transaction.cursor.commit()
+        transaction.commit()
 
         InstallUpgrade = POOL.get('ir.module.install_upgrade',
             type='wizard')
         instance_id, _, _ = InstallUpgrade.create()
-        transaction.cursor.commit()
+        transaction.commit()
         InstallUpgrade(instance_id).transition_upgrade()
         InstallUpgrade.delete(instance_id)
-        transaction.cursor.commit()
+        transaction.commit()
 
 
 def with_transaction(user=1, context=None):
@@ -78,7 +78,7 @@ def with_transaction(user=1, context=None):
             transaction = Transaction()
             with transaction.start(DB_NAME, user, context=context):
                 result = func(*args, **kwargs)
-                transaction.cursor.rollback()
+                transaction.rollback()
                 # Drop the cache as the transaction is rollbacked
                 Cache.drop(DB_NAME)
                 return result
@@ -275,10 +275,7 @@ class ModuleTestCase(unittest.TestCase):
 def db_exist():
     Database = backend.get('Database')
     database = Database().connect()
-    cursor = database.cursor()
-    databases = database.list(cursor)
-    cursor.close()
-    return DB_NAME in databases
+    return DB_NAME in database.list()
 
 
 def create_db():

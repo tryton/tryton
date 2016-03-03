@@ -103,8 +103,7 @@ class Sequence(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.0 rename number_next into number_next_internal
         table.column_rename('number_next', 'number_next_internal')
@@ -117,7 +116,7 @@ class Sequence(ModelSQL, ModelView):
             for sequence in sequences:
                 if sequence.type != 'incremental':
                     continue
-                if not TableHandler.sequence_exist(cursor,
+                if not TableHandler.sequence_exist(
                         sequence._sql_sequence_name):
                     sequence.create_sql_sequence(sequence.number_next_internal)
 
@@ -158,7 +157,7 @@ class Sequence(ModelSQL, ModelView):
         return Transaction().context.get('code')
 
     def get_number_next(self, name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_name = self._sql_sequence_name
         if sql_sequence and not self._strict:
             cursor.execute('SELECT '
@@ -258,7 +257,7 @@ class Sequence(ModelSQL, ModelView):
 
     def create_sql_sequence(self, number_next=None):
         'Create the SQL sequence'
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         param = Flavor.get().param
         if self.type != 'incremental':
             return
@@ -271,9 +270,9 @@ class Sequence(ModelSQL, ModelView):
     def update_sql_sequence(self, number_next=None):
         'Update the SQL sequence'
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         param = Flavor.get().param
-        exist = TableHandler.sequence_exist(cursor, self._sql_sequence_name)
+        exist = TableHandler.sequence_exist(self._sql_sequence_name)
         if self.type != 'incremental':
             if exist:
                 self.delete_sql_sequence()
@@ -289,7 +288,7 @@ class Sequence(ModelSQL, ModelView):
 
     def delete_sql_sequence(self):
         'Delete the SQL sequence'
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         if self.type != 'incremental':
             return
         cursor.execute('DROP SEQUENCE "%s"'
@@ -319,7 +318,7 @@ class Sequence(ModelSQL, ModelView):
     def _get_sequence(cls, sequence):
         if sequence.type == 'incremental':
             if sql_sequence and not cls._strict:
-                cursor = Transaction().cursor
+                cursor = Transaction().connection.cursor()
                 cursor.execute('SELECT nextval(\'"%s"\')'
                     % sequence._sql_sequence_name)
                 number_next, = cursor.fetchone()
@@ -382,5 +381,6 @@ class SequenceStrict(Sequence):
 
     @classmethod
     def get_id(cls, clause):
-        Transaction().cursor.lock(cls._table)
+        transaction = Transaction()
+        transaction.database.lock(transaction.connection, cls._table)
         return super(SequenceStrict, cls).get_id(clause)

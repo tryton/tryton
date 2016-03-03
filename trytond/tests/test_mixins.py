@@ -23,7 +23,7 @@ class UrlTestCase(unittest.TestCase):
         "Test model URLs"
         pool = Pool()
         UrlObject = pool.get('test.urlobject')
-        db_name = Transaction().database.database_name
+        db_name = Transaction().database.name
 
         self.assertEqual(UrlObject.__url__,
             'tryton://%s/%s/model/test.urlobject' % (
@@ -38,7 +38,7 @@ class UrlTestCase(unittest.TestCase):
         "Test wizard URLs"
         pool = Pool()
         UrlWizard = pool.get('test.test_wizard', type='wizard')
-        db_name = Transaction().database.database_name
+        db_name = Transaction().database.name
 
         self.assertEqual(UrlWizard.__url__,
             'tryton://%s/%s/wizard/test.test_wizard' % (

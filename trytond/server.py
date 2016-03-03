@@ -78,18 +78,20 @@ class TrytonServer(object):
         if not self.options.update:
             self.start_servers()
 
+        Database = backend.get('Database')
         for db_name in self.options.database_names:
             init[db_name] = False
             try:
-                with Transaction().start(db_name, 0) as transaction:
-                    cursor = transaction.cursor
+                with Transaction().start(db_name, 0) as transaction,\
+                        transaction.connection.cursor() as cursor:
+                    database = Database(db_name)
+                    database.connect()
                     if self.options.update:
-                        if not cursor.test():
+                        if not database.test():
                             self.logger.info("init db")
-                            backend.get('Database').init(cursor)
+                            database.init(cursor)
                             init[db_name] = True
-                        cursor.commit()
-                    elif not cursor.test():
+                    elif not database.test():
                         raise Exception("'%s' is not a Tryton database!" %
                             db_name)
             except Exception:
@@ -98,9 +100,11 @@ class TrytonServer(object):
 
         for db_name in self.options.database_names:
             if self.options.update:
-                with Transaction().start(db_name, 0) as transaction:
-                    cursor = transaction.cursor
-                    if not cursor.test():
+                with Transaction().start(db_name, 0) as transaction,\
+                        transaction.connection.cursor() as cursor:
+                    database = Database(db_name)
+                    database.connect()
+                    if not database.test():
                         raise Exception("'%s' is not a Tryton database!"
                             % db_name)
                     lang = Table('ir_lang')
@@ -145,7 +149,6 @@ class TrytonServer(object):
                     User.write([admin], {
                             'password': password,
                             })
-                    transaction.cursor.commit()
 
         if self.options.update:
             self.logger.info('Update/Init succeed!')

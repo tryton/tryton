@@ -34,7 +34,7 @@ class Property(ModelSQL, ModelView):
         models = cls._models_get_cache.get(None)
         if models:
             return models
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model = Model.__table__()
         cursor.execute(*model.select(model.model, model.name,
                 order_by=model.name.asc))

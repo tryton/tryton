@@ -3,20 +3,8 @@
 from threading import local
 from sql import Flavor
 
-from trytond.tools.singleton import Singleton
 from trytond import backend
-
-
-class _TransactionManager(object):
-    '''
-    Manage transaction start/stop
-    '''
-
-    def __enter__(self):
-        return Transaction()
-
-    def __exit__(self, type, value, traceback):
-        Transaction().stop()
+from trytond.config import config
 
 
 class _AttributeManager(object):
@@ -35,30 +23,25 @@ class _AttributeManager(object):
             setattr(Transaction(), name, value)
 
 
-class _CursorManager(object):
-    '''
-    Manage cursor of transaction
-    '''
+class _Local(local):
 
-    def __init__(self, cursor):
-        self.cursor = cursor
-
-    def __enter__(self):
-        return Transaction()
-
-    def __exit__(self, type, value, traceback):
-        Transaction().cursor.close()
-        Transaction().cursor = self.cursor
+    def __init__(self):
+        # Transaction stack control
+        self.transactions = []
 
 
-class Transaction(local):
+class Transaction(object):
     '''
     Control the transaction
     '''
-    __metaclass__ = Singleton
 
-    cursor = None
+    _local = _Local()
+
+    cache_keys = {'language', 'fuzzy_translation', '_datetime'}
+
     database = None
+    readonly = False
+    connection = None
     close = None
     user = None
     context = None
@@ -66,6 +49,24 @@ class Transaction(local):
     delete_records = None
     delete = None  # TODO check to merge with delete_records
     timestamp = None
+
+    def __new__(cls, new=False):
+        transactions = cls._local.transactions
+        if new or not transactions:
+            instance = super(Transaction, cls).__new__(cls)
+            instance.cache = {}
+            transactions.append(instance)
+        else:
+            instance = transactions[-1]
+        return instance
+
+    def get_cache(self):
+        from trytond.cache import LRUDict
+        keys = tuple(((key, self.context[key])
+                for key in sorted(self.cache_keys)
+                if key in self.context))
+        return self.cache.setdefault((self.user, keys),
+            LRUDict(config.getint('cache', 'model')))
 
     def start(self, database_name, user, readonly=False, context=None,
             close=False, autocommit=False):
@@ -75,7 +76,6 @@ class Transaction(local):
         Database = backend.get('Database')
         assert self.user is None
         assert self.database is None
-        assert self.cursor is None
         assert self.close is None
         assert self.context is None
         if not database_name:
@@ -83,11 +83,11 @@ class Transaction(local):
         else:
             database = Database(database_name).connect()
         Flavor.set(Database.flavor)
-        cursor = database.cursor(readonly=readonly,
-            autocommit=autocommit)
         self.user = user
         self.database = database
-        self.cursor = cursor
+        self.readonly = readonly
+        self.connection = database.get_connection(readonly=readonly,
+            autocommit=autocommit)
         self.close = close
         self.context = context or {}
         self.create_records = {}
@@ -95,24 +95,32 @@ class Transaction(local):
         self.delete = {}
         self.timestamp = {}
         self.counter = 0
-        return _TransactionManager()
+        return self
 
-    def stop(self):
-        '''
-        Stop transaction
-        '''
-        try:
-            self.cursor.close(close=self.close)
-        finally:
-            self.cursor = None
-            self.database = None
-            self.close = None
-            self.user = None
-            self.context = None
-            self.create_records = None
-            self.delete_records = None
-            self.delete = None
-            self.timestamp = None
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        transactions = self._local.transactions
+        if transactions.count(self) == 1:
+            if type is None and not self.readonly:
+                self.commit()
+            try:
+                self.rollback()
+                self.database.put_connection(self.connection)
+            finally:
+                self.database = None
+                self.readonly = False
+                self.connection = None
+                self.close = None
+                self.user = None
+                self.context = None
+                self.create_records = None
+                self.delete_records = None
+                self.delete = None
+                self.timestamp = None
+        current_instance = transactions.pop()
+        assert current_instance is self
 
     def set_context(self, context=None, **kwargs):
         if context is None:
@@ -143,17 +151,23 @@ class Transaction(local):
         self.user = user
         return manager
 
-    def set_cursor(self, cursor):
-        manager = _AttributeManager(cursor=self.cursor)
-        self.cursor = cursor
-        return manager
+    def set_current_transaction(self, transaction):
+        self._local.transactions.append(transaction)
+        return transaction
 
-    def new_cursor(self, autocommit=False, readonly=False):
-        Database = backend.get('Database')
-        manager = _CursorManager(self.cursor)
-        database = Database(self.cursor.database_name).connect()
-        self.cursor = database.cursor(autocommit=autocommit, readonly=readonly)
-        return manager
+    def new_transaction(self, autocommit=False, readonly=False):
+        transaction = Transaction(new=True)
+        return transaction.start(self.database.name, self.user,
+            context=self.context, close=self.close, readonly=readonly,
+            autocommit=autocommit)
+
+    def commit(self):
+        self.connection.commit()
+
+    def rollback(self):
+        for cache in self.cache.itervalues():
+            cache.clear()
+        self.connection.rollback()
 
     @property
     def language(self):

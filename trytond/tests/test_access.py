@@ -384,7 +384,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # With field access
@@ -400,7 +400,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # One access disallowed for any group
@@ -413,7 +413,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         self.assertRaises(UserError, TestAccess.read, [test.id])
         self.assertRaises(UserError, getattr, test, 'field1')
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules with one group allowed
@@ -429,7 +429,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules with both allowed
@@ -441,7 +441,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules with any group allowed
@@ -453,7 +453,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules with both disallowed
@@ -466,7 +466,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         self.assertRaises(UserError, TestAccess.read, [test.id])
         self.assertRaises(UserError, getattr, test, 'field1')
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # One access disallowed for one group
@@ -477,7 +477,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         self.assertRaises(UserError, TestAccess.read, [test.id])
         self.assertRaises(UserError, getattr, test, 'field1')
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # One access allowed for one group
@@ -489,7 +489,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # One access allowed for one other group
@@ -502,7 +502,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # One access disallowed for one other group
@@ -514,7 +514,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules on both fields allowed
@@ -536,7 +536,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         TestAccess.read([test.id])
         test.field1
         test.field2
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules on both fields one allowed and one disallowed
@@ -549,7 +549,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         self.assertRaises(UserError, TestAccess.read, [test.id])
         test.field1
         self.assertRaises(UserError, getattr, test, 'field2')
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
         # Two access rules on both fields disallowed
@@ -563,7 +563,7 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         self.assertRaises(UserError, TestAccess.read, [test.id])
         self.assertRaises(UserError, getattr, test, 'field1')
         self.assertRaises(UserError, getattr, test, 'field2')
-        transaction.cursor.cache.clear()
+        transaction.cache.clear()
         test = TestAccess(test.id)
 
     @with_transaction(context=_context)

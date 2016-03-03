@@ -34,7 +34,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
         if method == 'login':
             try:
                 database = Database(database_name).connect()
-                cursor = database.cursor()
+                cursor = database.get_connection().cursor()
                 cursor.close()
             except Exception:
                 return False
@@ -87,7 +87,7 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
             if not config.getboolean('database', 'list'):
                 raise Exception('AccessDenied')
             with Transaction().start(None, 0, close=True) as transaction:
-                return transaction.database.list(transaction.cursor)
+                return transaction.database.list()
         elif method == 'create':
             return create(*args, **kwargs)
         elif method == 'restore':
@@ -168,33 +168,25 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                     else:
                         result = [rpc.result(meth(i, *c_args, **c_kwargs))
                             for i in inst]
-                if not rpc.readonly:
-                    transaction.cursor.commit()
             except DatabaseOperationalError:
-                transaction.cursor.rollback()
                 if count and not rpc.readonly:
+                    transaction.rollback()
                     continue
                 raise
             except (NotLogged, ConcurrencyException, UserError, UserWarning):
                 logger.debug(log_message, *log_args, exc_info=True)
-                transaction.cursor.rollback()
                 raise
             except Exception:
                 logger.error(log_message, *log_args, exc_info=True)
-                transaction.cursor.rollback()
                 raise
             Cache.resets(database_name)
-        with Transaction().start(database_name, 0) as transaction:
-            pool = Pool(database_name)
-            Session = pool.get('ir.session')
-            try:
+        try:
+            with Transaction().start(database_name, 0) as transaction:
+                pool = Pool(database_name)
+                Session = pool.get('ir.session')
                 Session.reset(session)
-            except DatabaseOperationalError:
-                logger.debug('Reset session failed', exc_info=True)
-                # Silently fail when reseting session
-                transaction.cursor.rollback()
-            else:
-                transaction.cursor.commit()
+        except DatabaseOperationalError:
+            logger.debug('Reset session failed', exc_info=True)
         logger.debug('Result: %s', result)
         return result
 
@@ -216,14 +208,13 @@ def create(database_name, password, lang, admin_password):
     try:
         with Transaction().start(None, 0, close=True, autocommit=True) \
                 as transaction:
-            transaction.database.create(transaction.cursor, database_name)
-            transaction.cursor.commit()
+            transaction.database.create(transaction.connection, database_name)
 
-        with Transaction().start(database_name, 0) as transaction:
-            Database.init(transaction.cursor)
-            transaction.cursor.execute(*ir_configuration.insert(
+        with Transaction().start(database_name, 0) as transaction,\
+                transaction.connection.cursor() as cursor:
+            Database(database_name).init()
+            cursor.execute(*ir_configuration.insert(
                     [ir_configuration.language], [[lang]]))
-            transaction.cursor.commit()
 
         pool = Pool(database_name)
         pool.init(update=['res', 'ir'], lang=[lang])
@@ -244,7 +235,6 @@ def create(database_name, password, lang, admin_password):
             Module = pool.get('ir.module')
             if Module:
                 Module.update_list()
-            transaction.cursor.commit()
             res = True
     except Exception:
         logger.error('CREATE DB: %s failed', database_name, exc_info=True)
@@ -257,16 +247,15 @@ def create(database_name, password, lang, admin_password):
 def drop(database_name, password):
     Database = backend.get('Database')
     security.check_super(password)
-    Database(database_name).close()
+    database = Database(database_name)
+    database.close()
     # Sleep to let connections close
     time.sleep(1)
 
     with Transaction().start(None, 0, close=True, autocommit=True) \
             as transaction:
-        cursor = transaction.cursor
         try:
-            Database.drop(cursor, database_name)
-            cursor.commit()
+            database.drop(transaction.connection, database_name)
         except Exception:
             logger.error('DROP DB: %s failed', database_name, exc_info=True)
             raise
@@ -296,9 +285,7 @@ def restore(database_name, password, data, update=False):
     Database = backend.get('Database')
     security.check_super(password)
     try:
-        database = Database(database_name).connect()
-        cursor = database.cursor()
-        cursor.close(close=True)
+        Database(database_name).connect()
         existing = True
     except Exception:
         existing = False
@@ -307,8 +294,8 @@ def restore(database_name, password, data, update=False):
     Database.restore(database_name, data)
     logger.info('RESTORE DB: %s', database_name)
     if update:
-        with Transaction().start(database_name, 0) as transaction:
-            cursor = transaction.cursor
+        with Transaction().start(database_name, 0) as transaction,\
+                transaction.connection.cursor() as cursor:
             cursor.execute(*ir_lang.select(ir_lang.code,
                     where=ir_lang.translatable))
             lang = [x[0] for x in cursor.fetchall()]

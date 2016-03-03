@@ -43,7 +43,7 @@ class MenuitemTagHandler:
         self.xml_id = None
 
     def startElement(self, name, attributes):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         values = {}
 
@@ -354,7 +354,7 @@ class Fs2bdAccessor:
         models = Model.browse(ids)
         for model in models:
             if model.id in self.browserecord[module][model_name]:
-                for cache in Transaction().cursor.cache.values():
+                for cache in Transaction().cache.values():
                     for cache in (cache, cache.get('_language_cache',
                                 {}).values()):
                         if (model_name in cache
@@ -783,7 +783,7 @@ def post_import(pool, module, to_delete):
     """
     Remove the records that are given in to_delete.
     """
-    cursor = Transaction().cursor
+    transaction = Transaction()
     mdata_delete = []
     ModelData = pool.get("ir.model.data")
 
@@ -810,9 +810,9 @@ def post_import(pool, module, to_delete):
                 logger.warning(
                     'Could not delete id %d of model %s because model no '
                     'longer exists.', db_id, model)
-            cursor.commit()
+            transaction.commit()
         except Exception:
-            cursor.rollback()
+            transaction.rollback()
             logger.error(
                 'Could not delete id: %d of model %s\n'
                 'There should be some relation '
@@ -826,7 +826,7 @@ def post_import(pool, module, to_delete):
                             'active': False,
                             })
                 except Exception:
-                    cursor.rollback()
+                    transaction.rollback()
                     logger.error(
                         'Could not inactivate id: %d of model %s\n',
                         db_id, model, exc_info=True)
@@ -834,6 +834,6 @@ def post_import(pool, module, to_delete):
     # Clean model_data:
     if mdata_delete:
         ModelData.delete(mdata_delete)
-        cursor.commit()
+        transaction.commit()
 
     return True

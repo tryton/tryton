@@ -43,11 +43,10 @@ class Cache(object):
         return key
 
     def get(self, key, default=None):
-        cursor = Transaction().cursor
+        dbname = Transaction().database.name
         key = self._key(key)
         with self._lock:
-            cache = self._cache.setdefault(cursor.dbname,
-                LRUDict(self.size_limit))
+            cache = self._cache.setdefault(dbname, LRUDict(self.size_limit))
             try:
                 result = cache[key] = cache.pop(key)
                 return result
@@ -55,11 +54,10 @@ class Cache(object):
                 return default
 
     def set(self, key, value):
-        cursor = Transaction().cursor
+        dbname = Transaction().database.name
         key = self._key(key)
         with self._lock:
-            cache = self._cache.setdefault(cursor.dbname,
-                LRUDict(self.size_limit))
+            cache = self._cache.setdefault(dbname, LRUDict(self.size_limit))
             try:
                 cache[key] = value
             except TypeError:
@@ -67,15 +65,15 @@ class Cache(object):
         return value
 
     def clear(self):
-        cursor = Transaction().cursor
-        Cache.reset(cursor.dbname, self._name)
+        dbname = Transaction().database.name
+        Cache.reset(dbname, self._name)
         with self._lock:
-            self._cache[cursor.dbname] = LRUDict(self.size_limit)
+            self._cache[dbname] = LRUDict(self.size_limit)
 
     @staticmethod
     def clean(dbname):
-        with Transaction().new_cursor():
-            cursor = Transaction().cursor
+        with Transaction().new_transaction() as transaction,\
+                transaction.connection.cursor() as cursor:
             table = Table('ir_cache')
             cursor.execute(*table.select(table.timestamp, table.name))
             timestamps = {}
@@ -97,25 +95,24 @@ class Cache(object):
 
     @staticmethod
     def resets(dbname):
-        with Transaction().new_cursor():
-            cursor = Transaction().cursor
-            table = Table('ir_cache')
-            with Cache._resets_lock:
-                Cache._resets.setdefault(dbname, set())
-                for name in Cache._resets[dbname]:
-                    cursor.execute(*table.select(table.name,
+        table = Table('ir_cache')
+        with Transaction().new_transaction() as transaction,\
+                transaction.connection.cursor() as cursor,\
+                Cache._resets_lock:
+            Cache._resets.setdefault(dbname, set())
+            for name in Cache._resets[dbname]:
+                cursor.execute(*table.select(table.name,
+                        where=table.name == name))
+                if cursor.fetchone():
+                    # It would be better to insert only
+                    cursor.execute(*table.update([table.timestamp],
+                            [CurrentTimestamp()],
                             where=table.name == name))
-                    if cursor.fetchone():
-                        # It would be better to insert only
-                        cursor.execute(*table.update([table.timestamp],
-                                [CurrentTimestamp()],
-                                where=table.name == name))
-                    else:
-                        cursor.execute(*table.insert(
-                                [table.timestamp, table.name],
-                                [[CurrentTimestamp(), name]]))
-                Cache._resets[dbname].clear()
-            cursor.commit()
+                else:
+                    cursor.execute(*table.insert(
+                            [table.timestamp, table.name],
+                            [[CurrentTimestamp(), name]]))
+            Cache._resets[dbname].clear()
 
     @classmethod
     def drop(cls, dbname):

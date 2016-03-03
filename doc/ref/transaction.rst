@@ -7,19 +7,21 @@ Transaction
 
 .. class:: Transaction
 
-This class is a `singleton`_ that contains thread-local parameters of the
-database transaction.
-
-.. _`singleton`: http://en.wikipedia.org/wiki/Singleton_pattern
-
-
-.. attribute:: Transaction.cursor
-
-    The database cursor.
+This class represents a Tryton transaction that contains thread-local
+parameters of a database connection. The Transaction instances are 
+`context manager`_ that will commit or rollback the database transaction. In
+the event of an exception the transaction is rolled back, otherwise it is
+commited.
 
 .. attribute:: Transaction.database
 
     The database.
+
+.. attribute:: Transaction.readonly
+
+.. attribute:: Transaction.connection
+
+    The database connection as defined by the `PEP-0249`_.
 
 .. attribute:: Transaction.user
 
@@ -43,14 +45,20 @@ database transaction.
 
     Count the number of modification made in this transaction.
 
+.. method:: Transaction.cursor()
+
+    Returns a cursor object using the ``Transaction.connection``.
+
 .. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit]]]])
 
     Start a new transaction and return a `context manager`_.
 
 .. method:: Transaction.stop()
 
-    Stop a started transaction. This method should not be called directly as it
-    will be by the context manager when exiting the `with` statement.
+    Stop a started transaction and pop it from the stack of transactions.
+
+    This method should not be called directly as it will be by the context
+    manager when exiting the `with` statement.
 
 .. method:: Transaction.set_context(context, \**kwargs)
 
@@ -63,15 +71,16 @@ database transaction.
     `set_context` will put the previous user id in the context to simulate the
     record rules. The user will be restored when exiting the `with` statement.
 
-.. method:: Transaction.set_cursor(cursor)
+.. method:: Transaction.set_current_transaction(transaction)
 
-    Modify the cursor of the transaction and return a `context manager`_. The
-    previous cursor will be restored when exiting the `with` statement.
+    Add a specific ``transaction`` on the top of the transaction stack. A
+    transaction is commited or rollbacked only when its last reference is
+    popped from the stack.
 
-.. method:: Transaction.new_cursor([autocommit[, readonly]])
+.. method:: Transaction.new_transaction([autocommit[, readonly]])
 
-    Change the cursor of the transaction with a new one on the same database
-    and return a `context manager`_. The previous cursor will be restored when
-    exiting the `with` statement and the new one will be closed.
+    Create a new transaction with the same database, user and context as the
+    original transaction and adds it to the stack of transactions.
 
 .. _`context manager`: http://docs.python.org/reference/datamodel.html#context-managers
+.. _`PEP-0249`: https://www.python.org/dev/peps/pep-0249/

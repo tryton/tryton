@@ -22,7 +22,7 @@ from ..pyson import Bool, Eval
 from ..rpc import RPC
 from .. import backend
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
-from ..tools import is_instance_method
+from ..tools import is_instance_method, cursor_dict
 try:
     from ..tools.StringMatcher import StringMatcher
 except ImportError:
@@ -84,7 +84,7 @@ class Model(ModelSQL, ModelView):
     def register(cls, model, module_name):
         pool = Pool()
         Property = pool.get('ir.property')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         ir_model = cls.__table__()
         cursor.execute(*ir_model.select(ir_model.id,
@@ -265,7 +265,7 @@ class ModelField(ModelSQL, ModelView):
     def register(cls, model, module_name, model_id):
         pool = Pool()
         Model = pool.get('ir.model')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
         ir_model = Model.__table__()
@@ -280,7 +280,7 @@ class ModelField(ModelSQL, ModelView):
                 ir_model_field.module.as_('module'),
                 ir_model_field.help.as_('help'),
                 where=ir_model.model == model.__name__))
-        model_fields = dict((f['name'], f) for f in cursor.dictfetchall())
+        model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
         for field_name, field in model._fields.iteritems():
             if hasattr(field, 'model_name'):
@@ -374,7 +374,7 @@ class ModelField(ModelSQL, ModelView):
                 else:
                     model_ids.add(rec['model'])
             model_ids = list(model_ids)
-            cursor = Transaction().cursor
+            cursor = Transaction().connection.cursor()
             model = Model.__table__()
             cursor.execute(*model.select(model.id, model.model,
                     where=model.id.in_(model_ids)))
@@ -449,11 +449,10 @@ class ModelAccess(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         super(ModelAccess, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.6 (model, group) no more unique
         table.drop_constraint('model_group_uniq')
@@ -488,7 +487,7 @@ class ModelAccess(ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get('ir.model')
         UserGroup = pool.get('res.user-res.group')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         user = Transaction().user
         model_access = cls.__table__()
         ir_model = Model.__table__()
@@ -628,11 +627,10 @@ class ModelFieldAccess(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         super(ModelFieldAccess, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.6 (field, group) no more unique
         table.drop_constraint('field_group_uniq')
@@ -669,7 +667,6 @@ class ModelFieldAccess(ModelSQL, ModelView):
         Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
         UserGroup = pool.get('res.user-res.group')
-        cursor = Transaction().cursor
         user = Transaction().user
         field_access = cls.__table__()
         ir_model = Model.__table__()
@@ -687,6 +684,7 @@ class ModelFieldAccess(ModelSQL, ModelView):
 
         default = {}
         accesses = dict((m, default) for m in models)
+        cursor = Transaction().connection.cursor()
         cursor.execute(*field_access.join(model_field,
                 condition=field_access.field == model_field.id
                 ).join(ir_model,
@@ -856,12 +854,12 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = cls.__table__()
 
         super(ModelData, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.6: remove inherit
         if table.column_exist('inherit'):

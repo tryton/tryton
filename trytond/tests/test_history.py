@@ -21,12 +21,13 @@ class HistoryTestCase(unittest.TestCase):
     def tearDown(self):
         pool = Pool()
         History = pool.get('test.history')
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table = History.__table__()
         history_table = History.__table_history__()
         cursor.execute(*table.delete())
         cursor.execute(*history_table.delete())
-        cursor.commit()
+        transaction.commit()
 
     @with_transaction()
     def test_read(self):
@@ -42,21 +43,21 @@ class HistoryTestCase(unittest.TestCase):
         history_id = history.id
         first = history.create_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 2
         history.save()
         second = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 3
         history.save()
         third = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         for timestamp, value in [
                 (first, 1),
@@ -92,14 +93,14 @@ class HistoryTestCase(unittest.TestCase):
 
         self.assertEqual(first, second)
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 3
         history.save()
         third = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         for timestamp, value in [
                 (first, 2),
@@ -121,21 +122,21 @@ class HistoryTestCase(unittest.TestCase):
         history_id = history.id
         first = history.create_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 2
         history.save()
         second = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 3
         history.save()
         third = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         revisions = History.history_revisions([history_id])
         self.assertEqual(revisions, [
@@ -156,28 +157,28 @@ class HistoryTestCase(unittest.TestCase):
         history_id = history.id
         first = history.create_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 2
         history.save()
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         History.restore_history([history_id], first)
         history = History(history_id)
         self.assertEqual(history.value, 1)
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         History.restore_history([history_id], datetime.datetime.min)
         self.assertRaises(UserError, History.read, [history_id])
 
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         History.delete([History(history_id)])
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         History.restore_history([history_id], datetime.datetime.max)
         self.assertRaises(UserError, History.read, [history_id])
@@ -193,20 +194,20 @@ class HistoryTestCase(unittest.TestCase):
         history.save()
         history_id = history.id
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 2
         history.save()
         second = history.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 3
         history.save()
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         History.restore_history_before([history_id], second)
         history = History(history_id)
@@ -231,13 +232,13 @@ class HistoryTestCase(unittest.TestCase):
 
         self.assertEqual(first, second)
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 3
         history.save()
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         History.restore_history([history_id], first)
         history = History(history_id)
@@ -255,14 +256,14 @@ class HistoryTestCase(unittest.TestCase):
         history.save()
         first_id = history.id
         first_stamp = history.create_date
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(value=2)
         history.save()
         second_id = history.id
         second_stamp = history.create_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         first, second = History.search([], order=order)
 
@@ -272,7 +273,7 @@ class HistoryTestCase(unittest.TestCase):
         first.value = 3
         first.save()
         third_stamp = first.write_date
-        transaction.cursor.commit()
+        transaction.commit()
 
         results = [
             (first_stamp, [first]),
@@ -285,14 +286,14 @@ class HistoryTestCase(unittest.TestCase):
             with Transaction().set_context(_datetime=timestamp):
                 records = History.search([], order=order)
                 self.assertEqual(records, instances)
-            transaction.cursor.rollback()
+            transaction.rollback()
 
         to_delete, _ = History.search([], order=order)
 
         self.assertEqual(to_delete.id, second.id)
 
         History.delete([to_delete])
-        transaction.cursor.commit()
+        transaction.commit()
 
         results = [
             (first_stamp, [first]),
@@ -306,7 +307,7 @@ class HistoryTestCase(unittest.TestCase):
                     from_test=True):
                 records = History.search([], order=order)
                 self.assertEqual(records, instances)
-            transaction.cursor.rollback()
+            transaction.rollback()
 
     @unittest.skipUnless(backend.name() == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
@@ -326,7 +327,7 @@ class HistoryTestCase(unittest.TestCase):
         second_stamp = history.write_date
 
         self.assertEqual(first_stamp, second_stamp)
-        transaction.cursor.commit()
+        transaction.commit()
 
         results = [
             (second_stamp, [history], [4]),
@@ -340,7 +341,7 @@ class HistoryTestCase(unittest.TestCase):
                 records = History.search([], order=order)
                 self.assertEqual(records, instances)
                 self.assertEqual([x.value for x in records], values)
-            transaction.cursor.rollback()
+            transaction.rollback()
 
     @with_transaction()
     def test_browse(self):
@@ -365,7 +366,7 @@ class HistoryTestCase(unittest.TestCase):
         history.stamp = first_stamp
         history.save()
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         history.value = 2
@@ -379,7 +380,7 @@ class HistoryTestCase(unittest.TestCase):
 
         second_stamp = line_a.write_date
 
-        transaction.cursor.commit()
+        transaction.commit()
 
         history = History(history_id)
         self.assertEqual(history.value, 2)
@@ -403,53 +404,53 @@ class HistoryTestCase(unittest.TestCase):
 
     @with_transaction()
     def test_search_cursor_max(self):
-        'Test search with number of history entries at cursor.IN_MAX'
+        'Test search with number of history entries at database.IN_MAX'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        cursor = transaction.cursor
+        database = transaction.database
 
         history = History(value=-1)
         history.save()
 
-        for history.value in range(cursor.IN_MAX + 1):
+        for history.value in range(database.IN_MAX + 1):
             history.save()
 
         with transaction.set_context(_datetime=datetime.datetime.max):
             record, = History.search([])
 
-            self.assertEqual(record.value, cursor.IN_MAX)
+            self.assertEqual(record.value, database.IN_MAX)
 
     @with_transaction()
     def test_search_cursor_max_entries(self):
-        'Test search for skipping first history entries at cursor.IN_MAX'
+        'Test search for skipping first history entries at database.IN_MAX'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        cursor = transaction.cursor
+        database = transaction.database
 
         for i in xrange(0, 2):
             history = History(value=-1)
             history.save()
 
-            for history.value in range(cursor.IN_MAX + 1):
+            for history.value in range(database.IN_MAX + 1):
                 history.save()
 
         with transaction.set_context(_datetime=datetime.datetime.max):
             records = History.search([])
 
-            self.assertEqual({r.value for r in records}, {cursor.IN_MAX})
+            self.assertEqual({r.value for r in records}, {database.IN_MAX})
             self.assertEqual(len(records), 2)
 
     @with_transaction()
     def test_search_cursor_max_histories(self):
-        'Test search with number of histories at cursor.IN_MAX'
+        'Test search with number of histories at database.IN_MAX'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        cursor = transaction.cursor
+        database = transaction.database
 
-        n = cursor.IN_MAX + 1
+        n = database.IN_MAX + 1
         History.create([{'value': 1}] * n)
 
         with transaction.set_context(_datetime=datetime.datetime.max):

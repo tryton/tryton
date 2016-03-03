@@ -19,7 +19,7 @@ from sql.aggregate import Max
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
-from ..tools import file_open, reduce_ids, grouped_slice
+from ..tools import file_open, reduce_ids, grouped_slice, cursor_dict
 from .. import backend
 from ..pyson import PYSONEncoder, Eval
 from ..transaction import Transaction
@@ -93,9 +93,10 @@ class Translation(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         ir_translation = cls.__table__()
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 1.8: new field src_md5
         src_md5_exist = table.column_exist('src_md5')
         if not src_md5_exist:
@@ -111,7 +112,7 @@ class Translation(ModelSQL, ModelView):
         # Migration from 1.8: fill new field src_md5
         if not src_md5_exist:
             offset = 0
-            limit = cursor.IN_MAX
+            limit = transaction.database.IN_MAX
             translations = True
             while translations:
                 translations = cls.search([], offset=offset, limit=limit)
@@ -121,7 +122,7 @@ class Translation(ModelSQL, ModelView):
                     cls.write([translation], {
                         'src_md5': src_md5,
                     })
-            table = TableHandler(cursor, cls, module_name)
+            table = TableHandler(cls, module_name)
             table.not_null_action('src_md5', action='add')
 
         # Migration from 2.2 and 2.8
@@ -129,12 +130,12 @@ class Translation(ModelSQL, ModelView):
                 [-1], where=(ir_translation.res_id == Null)
                 | (ir_translation.res_id == 0)))
 
-        table = TableHandler(Transaction().cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action(['lang', 'type', 'name'], 'add')
 
     @classmethod
     def register_model(cls, model, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
 
         if not model.__doc__:
@@ -173,7 +174,7 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def register_fields(cls, model, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
 
         # Prefetch field translations
@@ -189,7 +190,7 @@ class Translation(ModelSQL, ModelView):
                         & ir_translation.type.in_(
                             ('field', 'help', 'selection'))
                         & ir_translation.name.in_(names))))
-            for trans in cursor.dictfetchall():
+            for trans in cursor_dict(cursor):
                 if trans['type'] == 'field':
                     trans_fields[trans['name']] = trans
                 elif trans['type'] == 'help':
@@ -260,7 +261,7 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def register_error_messages(cls, model, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
 
         cursor.execute(*ir_translation.select(
@@ -268,7 +269,7 @@ class Translation(ModelSQL, ModelView):
                 where=((ir_translation.lang == 'en_US')
                     & (ir_translation.type == 'error')
                     & (ir_translation.name == model.__name__))))
-        trans_error = dict((t['src'], t) for t in cursor.dictfetchall())
+        trans_error = {t['src']: t for t in cursor_dict(cursor)}
 
         errors = model._get_error_messages()
         for error in set(errors):
@@ -285,7 +286,7 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def register_wizard(cls, wizard, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
 
         # Prefetch button translations
@@ -294,7 +295,7 @@ class Translation(ModelSQL, ModelView):
                 where=((ir_translation.lang == 'en_US')
                     & (ir_translation.type == 'wizard_button')
                     & (ir_translation.name.like(wizard.__name__ + ',%')))))
-        trans_buttons = dict((t['name'], t) for t in cursor.dictfetchall())
+        trans_buttons = {t['name']: t for t in cursor_dict(cursor)}
 
         def update_insert_button(state_name, button):
             trans_name = '%s,%s,%s' % (
@@ -430,12 +431,13 @@ class Translation(ModelSQL, ModelView):
         else:
             to_fetch = ids
         if to_fetch:
-            cursor = Transaction().cursor
+            transaction = Transaction()
+            cursor = transaction.connection.cursor()
             table = cls.__table__()
             fuzzy_sql = table.fuzzy == False
             if Transaction().context.get('fuzzy_translation', False):
                 fuzzy_sql = None
-            in_max = cursor.IN_MAX // 7
+            in_max = transaction.database.IN_MAX // 7
             for sub_to_fetch in grouped_slice(to_fetch, in_max):
                 red_sql = reduce_ids(table.res_id, sub_to_fetch)
                 where = And(((table.lang == lang),
@@ -469,8 +471,8 @@ class Translation(ModelSQL, ModelView):
         ModelFields = pool.get('ir.model.field')
         Model = pool.get('ir.model')
         Config = pool.get('ir.configuration')
-        cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
+        transaction = Transaction()
+        in_max = transaction.database.IN_MAX
 
         if len(ids) > in_max:
             for i in range(0, len(ids), in_max):
@@ -611,7 +613,7 @@ class Translation(ModelSQL, ModelView):
         if trans != -1:
             return trans
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         where = ((table.lang == lang)
             & (table.type == ttype)
@@ -640,9 +642,10 @@ class Translation(ModelSQL, ModelView):
         '''
         res = {}
         clause = []
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table = cls.__table__()
-        if len(args) > cursor.IN_MAX:
+        if len(args) > transaction.database.IN_MAX:
             for sub_args in grouped_slice(args):
                 res.update(cls.get_sources(list(sub_args)))
             return res
@@ -670,7 +673,7 @@ class Translation(ModelSQL, ModelView):
                     where &= table.src == source
                 clause.append(where)
         if clause:
-            in_max = cursor.IN_MAX // 7
+            in_max = transaction.database.IN_MAX // 7
             for sub_clause in grouped_slice(clause, in_max):
                 cursor.execute(*table.select(
                         table.lang, table.type, table.name, table.src,
@@ -696,7 +699,7 @@ class Translation(ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
         vlist = [x.copy() for x in vlist]
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         for vals in vlist:
             if not vals.get('module'):
@@ -1017,7 +1020,7 @@ class TranslationSet(Wizard):
         if not reports:
             return
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
         for report in reports:
             cursor.execute(*translation.select(
@@ -1026,9 +1029,7 @@ class TranslationSet(Wizard):
                     & (translation.type == 'odt')
                     & (translation.name == report.report_name)
                     & (translation.module == report.module or '')))
-            trans_reports = {}
-            for trans in cursor.dictfetchall():
-                trans_reports[trans['src']] = trans
+            trans_reports = {t['src']: t for t in cursor_dict(cursor)}
 
             strings = []
 
@@ -1119,7 +1120,7 @@ class TranslationSet(Wizard):
 
         if not views:
             return
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
         for view in views:
             cursor.execute(*translation.select(
@@ -1128,9 +1129,7 @@ class TranslationSet(Wizard):
                     & (translation.type == 'view')
                     & (translation.name == view.model)
                     & (translation.module == view.module)))
-            trans_views = {}
-            for trans in cursor.dictfetchall():
-                trans_views[trans['src']] = trans
+            trans_views = {t['src']: t for t in cursor_dict(cursor)}
 
             xml = (view.arch or '').strip()
             if not xml:
@@ -1465,7 +1464,7 @@ class TranslationUpdate(Wizard):
     def do_update(self, action):
         pool = Pool()
         Translation = pool.get('ir.translation')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
         lang = self.start.language.code
         columns = [translation.name.as_('name'),
@@ -1478,7 +1477,7 @@ class TranslationUpdate(Wizard):
                     where=(translation.lang == lang)
                     & translation.type.in_(self._source_types))))
         to_create = []
-        for row in cursor.dictfetchall():
+        for row in cursor_dict(cursor):
             to_create.append({
                 'name': row['name'],
                 'res_id': row['res_id'],
@@ -1499,7 +1498,7 @@ class TranslationUpdate(Wizard):
                     where=(translation.lang == lang)
                     & translation.type.in_(self._ressource_types))))
         to_create = []
-        for row in cursor.dictfetchall():
+        for row in cursor_dict(cursor):
             to_create.append({
                 'name': row['name'],
                 'res_id': row['res_id'],
@@ -1518,7 +1517,7 @@ class TranslationUpdate(Wizard):
                 - translation.select(*columns,
                     where=(translation.lang == lang)
                     & translation.type.in_(self._updatable_types))))
-        for row in cursor.dictfetchall():
+        for row in cursor_dict(cursor):
             cursor.execute(*translation.update(
                     [translation.fuzzy, translation.src],
                     [True, row['src']],
@@ -1541,7 +1540,7 @@ class TranslationUpdate(Wizard):
                 & (translation.value != Null),
                 group_by=translation.src))
 
-        for row in cursor.dictfetchall():
+        for row in cursor_dict(cursor):
             cursor.execute(*translation.update(
                     [translation.fuzzy, translation.value],
                     [True, row['value']],

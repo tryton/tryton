@@ -166,8 +166,8 @@ class ModelStorage(Model):
             if local_cache:
                 local_cache.clear()
 
-        # Clean cursor cache
-        for cache in Transaction().cursor.cache.itervalues():
+        # Clean transaction cache
+        for cache in Transaction().cache.itervalues():
             if cls.__name__ in cache:
                 for record in all_records:
                     if record.id in cache[cls.__name__]:
@@ -220,8 +220,8 @@ class ModelStorage(Model):
         # Increase transaction counter
         Transaction().counter += 1
 
-        # Clean cursor cache
-        for cache in Transaction().cursor.cache.values():
+        # Clean transaction cache
+        for cache in Transaction().cache.values():
             for cache in (cache, cache.get('_language_cache', {}).values()):
                 if cls.__name__ in cache:
                     for record in records:
@@ -1155,7 +1155,7 @@ class ModelStorage(Model):
     def __init__(self, id=None, **kwargs):
         _ids = kwargs.pop('_ids', None)
         _local_cache = kwargs.pop('_local_cache', None)
-        self._cursor = Transaction().cursor
+        self._transaction = Transaction()
         self._user = Transaction().user
         self._context = Transaction().context
         if id is not None:
@@ -1166,7 +1166,7 @@ class ModelStorage(Model):
         else:
             self._ids = [id]
 
-        self._cursor_cache = self._cursor.get_cache()
+        self._transaction_cache = self._transaction.get_cache()
 
         if _local_cache is not None:
             self._local_cache = _local_cache
@@ -1178,7 +1178,7 @@ class ModelStorage(Model):
 
     @property
     def _cache(self):
-        cache = self._cursor_cache
+        cache = self._transaction_cache
         if self.__name__ not in cache:
             cache[self.__name__] = LRUDict(cache_size())
         return cache[self.__name__]
@@ -1275,7 +1275,8 @@ class ModelStorage(Model):
         index = self._ids.index(self.id)
         ids = chain(islice(self._ids, index, None),
             islice(self._ids, 0, max(index - 1, 0)))
-        ids = islice(unique(ifilter(filter_, ids)), self._cursor.IN_MAX)
+        ids = islice(unique(ifilter(filter_, ids)),
+            self._transaction.database.IN_MAX)
 
         def instantiate(field, value, data):
             if field._type in ('many2one', 'one2one', 'reference'):
@@ -1320,14 +1321,14 @@ class ModelStorage(Model):
         model2ids = {}
         model2cache = {}
         # Read the data
-        with Transaction().set_cursor(self._cursor), \
+        with Transaction().set_current_transaction(self._transaction), \
                 Transaction().set_user(self._user), \
                 Transaction().set_context(self._context):
             if self.id in self._cache and name in self._cache[self.id]:
                 # Use values from cache
                 ids = islice(chain(islice(self._ids, index, None),
                         islice(self._ids, 0, max(index - 1, 0))),
-                    self._cursor.IN_MAX)
+                    self._transaction.database.IN_MAX)
                 ffields = {name: ffields[name]}
                 read_data = [{'id': i, name: self._cache[i][name]}
                     for i in ids
@@ -1424,11 +1425,11 @@ class ModelStorage(Model):
         save_values = {}
         to_create = []
         to_write = []
-        cursor = records[0]._cursor
+        transaction = records[0]._transaction
         user = records[0]._user
         context = records[0]._context
         for record in records:
-            assert cursor == record._cursor
+            assert transaction == record._transaction
             assert user == record._user
             assert context == record._context
             save_values[record] = record._save_values
@@ -1440,7 +1441,7 @@ class ModelStorage(Model):
                 to_write.append(record)
         transaction = Transaction()
         try:
-            with transaction.set_cursor(cursor), \
+            with transaction.set_current_transaction(transaction), \
                     transaction.set_user(user), \
                     transaction.set_context(context):
                 if to_create:

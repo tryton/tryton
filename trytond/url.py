@@ -34,7 +34,7 @@ class URLAccessor(object):
             raise NotImplementedError
 
         url_part['name'] = cls.__name__
-        url_part['database'] = Transaction().cursor.database_name
+        url_part['database'] = Transaction().database.name
 
         local_part = urllib.quote('%(database)s/%(type)s/%(name)s' % url_part)
         if isinstance(inst, Model) and inst.id:

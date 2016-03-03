@@ -89,7 +89,7 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, IntegerRequired.import_data,
             ['integer'], [['']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(IntegerRequired.import_data(['integer'],
             [['1'], ['2']]), 2)
@@ -154,7 +154,7 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, FloatRequired.import_data,
             ['float'], [['']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(FloatRequired.import_data(['float'],
             [['1.1'], ['2.2']]), 2)
@@ -216,7 +216,7 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, NumericRequired.import_data,
             ['numeric'], [['']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(NumericRequired.import_data(['numeric'],
             [['1.1'], ['2.2']]), 2)
@@ -335,19 +335,19 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, Many2one.import_data,
             ['many2one'], [['foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Many2one.import_data,
             ['many2one'], [['Duplicate']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Many2one.import_data,
             ['many2one:id'], [['foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(Exception, Many2one.import_data,
             ['many2one:id'], [['tests.foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_many2many(self):
@@ -383,19 +383,19 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, Many2many.import_data,
             ['many2many'], [['foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Many2many.import_data,
             ['many2many'], [['Test 1,foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Many2many.import_data,
             ['many2many'], [['Duplicate']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Many2many.import_data,
             ['many2many'], [['Test 1,Duplicate']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_one2many(self):
@@ -429,7 +429,7 @@ class ImportDataTestCase(unittest.TestCase):
         reference, = Reference.search([])
         self.assertEqual(reference.reference.__name__,
             'test.import_data.reference.selection')
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(Reference.import_data(['reference:id'],
             [['test.import_data.reference.selection,'
@@ -437,13 +437,13 @@ class ImportDataTestCase(unittest.TestCase):
         reference, = Reference.search([])
         self.assertEqual(reference.reference.__name__,
             'test.import_data.reference.selection')
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(Reference.import_data(['reference'],
             [['']]), 1)
         reference, = Reference.search([])
         self.assertEqual(reference.reference, None)
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertEqual(Reference.import_data(['reference'],
             [['test.import_data.reference.selection,Test'],
@@ -451,26 +451,26 @@ class ImportDataTestCase(unittest.TestCase):
         for reference in Reference.search([]):
             self.assertEqual(reference.reference.__name__,
                 'test.import_data.reference.selection')
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Reference.import_data,
             ['reference'], [['test.import_data.reference.selection,foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Reference.import_data,
             ['reference'],
             [['test.import_data.reference.selection,Duplicate']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(UserError, Reference.import_data,
             ['reference:id'],
             [['test.import_data.reference.selection,foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         self.assertRaises(Exception, Reference.import_data,
             ['reference:id'],
             [['test.import_data.reference.selection,test.foo']])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
 
 def suite():

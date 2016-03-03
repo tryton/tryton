@@ -97,7 +97,7 @@ class Many2One(Field):
             return SQLType('INTEGER', 'INTEGER')
 
     def convert_domain_mptt(self, domain, tables):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table, _ = tables[None]
         name, operator, ids = domain
         red_sql = reduce_ids(table.id, ids)

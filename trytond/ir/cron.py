@@ -79,11 +79,11 @@ class Cron(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         cron = cls.__table__()
 
         # Migration from 2.0: rename numbercall, doall and nextcall
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.column_rename('numbercall', 'number_calls')
         table.column_rename('doall', 'repeat_missed')
         table.column_rename('nextcall', 'next_call')
@@ -186,7 +186,7 @@ class Cron(ModelSQL, ModelView):
         now = datetime.datetime.now()
         with Transaction().start(db_name, 0) as transaction:
             Cache.clean(db_name)
-            transaction.cursor.lock(cls._table)
+            transaction.database.lock(transaction.connection, cls._table)
             crons = cls.search([
                     ('number_calls', '!=', 0),
                     ('next_call', '<=', datetime.datetime.now()),
@@ -202,7 +202,7 @@ class Cron(ModelSQL, ModelView):
                             try:
                                 cron.run_once()
                             except Exception:
-                                transaction.cursor.rollback()
+                                transaction.rollback()
                                 cron.send_error_message()
                         next_call += cls.get_delta(cron)
                         if number_calls > 0:
@@ -214,8 +214,8 @@ class Cron(ModelSQL, ModelView):
                     if not number_calls:
                         cron.active = False
                     cron.save()
-                    transaction.cursor.commit()
+                    transaction.commit()
                 except Exception:
-                    transaction.cursor.rollback()
+                    transaction.rollback()
                     logger.error('Running cron %s', cron.id, exc_info=True)
             Cache.resets(db_name)

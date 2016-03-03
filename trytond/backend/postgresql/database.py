@@ -26,11 +26,10 @@ from psycopg2 import OperationalError as DatabaseOperationalError
 
 from sql import Flavor
 
-from trytond.backend.database import DatabaseInterface, CursorInterface
+from trytond.backend.database import DatabaseInterface
 from trytond.config import config, parse_uri
 
-__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
-    'Cursor']
+__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
 logger = logging.getLogger(__name__)
 
@@ -60,24 +59,26 @@ class Database(DatabaseInterface):
     _version_cache = {}
     flavor = Flavor(ilike=True)
 
-    def __new__(cls, database_name='template1'):
-        if database_name in cls._databases:
-            return cls._databases[database_name]
-        return DatabaseInterface.__new__(cls, database_name=database_name)
+    def __new__(cls, name='template1'):
+        if name in cls._databases:
+            return cls._databases[name]
+        return DatabaseInterface.__new__(cls, name=name)
 
-    def __init__(self, database_name='template1'):
-        super(Database, self).__init__(database_name=database_name)
-        self._databases.setdefault(database_name, self)
+    def __init__(self, name='template1'):
+        super(Database, self).__init__(name=name)
+        self._databases.setdefault(name, self)
+        self._search_path = None
+        self._current_user = None
 
     def connect(self):
         if self._connpool is not None:
             return self
-        logger.info('connect to "%s"', self.database_name)
+        logger.info('connect to "%s"', self.name)
         uri = parse_uri(config.get('database', 'uri'))
         assert uri.scheme == 'postgresql'
         host = uri.hostname and "host=%s" % uri.hostname or ''
         port = uri.port and "port=%s" % uri.port or ''
-        name = "dbname=%s" % self.database_name
+        name = "dbname=%s" % self.name
         user = uri.username and "user=%s" % uri.username or ''
         password = ("password=%s" % urllib.unquote_plus(uri.password)
             if uri.password else '')
@@ -87,7 +88,7 @@ class Database(DatabaseInterface):
         self._connpool = ThreadedConnectionPool(minconn, maxconn, dsn)
         return self
 
-    def cursor(self, autocommit=False, readonly=False):
+    def get_connection(self, autocommit=False, readonly=False):
         if self._connpool is None:
             self.connect()
         conn = self._connpool.getconn()
@@ -95,10 +96,13 @@ class Database(DatabaseInterface):
             conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         else:
             conn.set_isolation_level(ISOLATION_LEVEL_REPEATABLE_READ)
-        cursor = Cursor(self._connpool, conn, self)
         if readonly:
+            cursor = conn.cursor()
             cursor.execute('SET TRANSACTION READ ONLY')
-        return cursor
+        return conn
+
+    def put_connection(self, connection, close=False):
+        self._connpool.putconn(connection, close=close)
 
     def close(self):
         if self._connpool is None:
@@ -107,23 +111,26 @@ class Database(DatabaseInterface):
         self._connpool = None
 
     @classmethod
-    def create(cls, cursor, database_name):
+    def create(cls, connection, database_name):
+        cursor = connection.cursor()
         cursor.execute('CREATE DATABASE "' + database_name + '" '
             'TEMPLATE template0 ENCODING \'unicode\'')
+        connection.commit()
         cls._list_cache = None
 
-    @classmethod
-    def drop(cls, cursor, database_name):
+    def drop(self, connection, database_name):
+        cursor = connection.cursor()
         cursor.execute('DROP DATABASE "' + database_name + '"')
-        cls._list_cache = None
+        Database._list_cache = None
 
-    def get_version(self, cursor):
-        if self.database_name not in self._version_cache:
+    def get_version(self, connection):
+        if self.name not in self._version_cache:
+            cursor = connection.cursor()
             cursor.execute('SELECT version()')
             version, = cursor.fetchone()
-            self._version_cache[self.database_name] = tuple(map(int,
+            self._version_cache[self.name] = tuple(map(int,
                 RE_VERSION.search(version).groups()))
-        return self._version_cache[self.database_name]
+        return self._version_cache[self.name]
 
     @staticmethod
     def dump(database_name):
@@ -158,10 +165,8 @@ class Database(DatabaseInterface):
         from trytond.tools import exec_command_pipe
 
         database = Database().connect()
-        cursor = database.cursor(autocommit=True)
-        database.create(cursor, database_name)
-        cursor.commit()
-        cursor.close()
+        connection = database.get_connection(autocommit=True)
+        database.create(connection, database_name)
         database.close()
 
         cmd = ['pg_restore', '--no-owner']
@@ -195,8 +200,8 @@ class Database(DatabaseInterface):
             raise Exception('Couldn\'t restore database')
 
         database = Database(database_name).connect()
-        cursor = database.cursor()
-        if not cursor.test():
+        cursor = database.get_connection().cursor()
+        if not database.test():
             cursor.close()
             database.close()
             raise Exception('Couldn\'t restore database!')
@@ -205,35 +210,38 @@ class Database(DatabaseInterface):
         Database._list_cache = None
         return True
 
-    @staticmethod
-    def list(cursor):
+    def list(self):
         now = time.time()
         timeout = config.getint('session', 'timeout')
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
+
+        connection = self.get_connection()
+        cursor = connection.cursor()
         cursor.execute('SELECT datname FROM pg_database '
             'WHERE datistemplate = false ORDER BY datname')
         res = []
-        for db_name, in cursor.fetchall():
+        for db_name, in cursor:
             try:
                 database = Database(db_name).connect()
             except Exception:
                 continue
-            cursor2 = database.cursor()
-            if cursor2.test():
+            if database.test():
                 res.append(db_name)
-                cursor2.close(close=True)
             else:
-                cursor2.close(close=True)
                 database.close()
+        self.put_connection(connection)
+
         Database._list_cache = res
         Database._list_cache_timestamp = now
         return res
 
-    @staticmethod
-    def init(cursor):
+    def init(self):
         from trytond.modules import get_module_info
+
+        connection = self.get_connection()
+        cursor = connection.cursor()
         sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
         with open(sql_file) as fp:
             for line in fp.read().split(';'):
@@ -257,108 +265,72 @@ class Database(DatabaseInterface):
                     'VALUES (%s, now(), %s, %s)',
                     (0, module_id, dependency))
 
-
-class Cursor(CursorInterface):
-
-    def __init__(self, connpool, conn, database):
-        super(Cursor, self).__init__()
-        self._connpool = connpool
-        self._conn = conn
-        self._database = database
-        self._current_user = None
-        self._search_path = None
-        self.cursor = conn.cursor()
-        self.commit()
-        self.sql_from_log = {}
-        self.sql_into_log = {}
-        self.count = {
-            'from': 0,
-            'into': 0,
-        }
-
-    @property
-    def database_name(self):
-        return self._database.database_name
-
-    # TODO to remove
-    @property
-    def dbname(self):
-        return self.database_name
-
-    def __getattr__(self, name):
-        return getattr(self.cursor, name)
-
-    def execute(self, sql, params=None):
-        if params:
-            return self.cursor.execute(sql, params)
-        else:
-            return self.cursor.execute(sql)
-
-    def close(self, close=False):
-        self.cursor.close()
-        self.rollback()
-        self._connpool.putconn(self._conn, close=close)
-
-    def commit(self):
-        super(Cursor, self).commit()
-        self._conn.commit()
-
-    def rollback(self):
-        super(Cursor, self).rollback()
-        self._conn.rollback()
+        connection.commit()
+        self.put_connection(connection)
 
     def test(self):
-        self.cursor.execute('SELECT 1 FROM information_schema.tables '
+        connection = self.get_connection()
+        cursor = connection.cursor()
+        cursor.execute('SELECT 1 FROM information_schema.tables '
             'WHERE table_name IN %s',
             (('ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
                     'res_user', 'res_group', 'ir_module',
-                    'ir_module_dependency', 'ir_translation', 'ir_lang'),))
-        return len(self.cursor.fetchall()) != 0
+                    'ir_module_dependency', 'ir_translation',
+                    'ir_lang'),))
+        is_tryton_database = len(cursor.fetchall()) != 0
+        self.put_connection(connection)
+        return is_tryton_database
 
-    def nextid(self, table):
-        self.cursor.execute("SELECT NEXTVAL('" + table + "_id_seq')")
-        return self.cursor.fetchone()[0]
+    def nextid(self, connection, table):
+        cursor = connection.cursor()
+        cursor.execute("SELECT NEXTVAL('" + table + "_id_seq')")
+        return cursor.fetchone()[0]
 
-    def setnextid(self, table, value):
-        self.cursor.execute("SELECT SETVAL('" + table + "_id_seq', %d)"
-            % value)
+    def setnextid(self, connection, table, value):
+        cursor = connection.cursor()
+        cursor.execute("SELECT SETVAL('" + table + "_id_seq', %d)" % value)
 
-    def currid(self, table):
-        self.cursor.execute('SELECT last_value FROM "' + table + '_id_seq"')
-        return self.cursor.fetchone()[0]
+    def currid(self, connection, table):
+        cursor = connection.cursor()
+        cursor.execute('SELECT last_value FROM "' + table + '_id_seq"')
+        return cursor.fetchone()[0]
 
-    def lock(self, table):
-        self.cursor.execute('LOCK "%s" IN EXCLUSIVE MODE NOWAIT' % table)
+    def lock(self, connection, table):
+        cursor = connection.cursor()
+        cursor.execute('LOCK "%s" IN EXCLUSIVE MODE NOWAIT' % table)
 
     def has_constraint(self):
         return True
 
-    def limit_clause(self, select, limit=None, offset=None):
-        if limit is not None:
-            select += ' LIMIT %d' % limit
-        if offset is not None and offset != 0:
-            select += ' OFFSET %d' % offset
-        return select
-
-    def has_returning(self):
-        # RETURNING clause is available since PostgreSQL 8.2
-        return self._database.get_version(self) >= (8, 2)
-
     def has_multirow_insert(self):
         return True
+
+    def get_table_schema(self, connection, table_name):
+        cursor = connection.cursor()
+        for schema in self.search_path:
+            cursor.execute('SELECT 1 '
+                'FROM information_schema.tables '
+                'WHERE table_name = %s AND table_schema = %s',
+                (table_name, schema))
+            if cursor.rowcount:
+                return schema
 
     @property
     def current_user(self):
         if self._current_user is None:
-            self.execute('SELECT current_user')
-            self._current_user, = self.fetchone()
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            cursor.execute('SELECT current_user')
+            self._current_user = cursor.fetchone()[0]
         return self._current_user
 
     @property
     def search_path(self):
         if self._search_path is None:
-            self.execute('SHOW search_path')
-            path, = self.fetchone()
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            cursor.execute('SHOW search_path')
+            path, = cursor.fetchone()
             special_values = {
                 'user': self.current_user,
             }

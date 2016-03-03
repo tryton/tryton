@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.config import config
-
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
 
@@ -11,12 +9,13 @@ class DatabaseInterface(object):
     Define generic interface for database connection
     '''
     flavor = None
+    IN_MAX = 1000
 
-    def __new__(cls, database_name=''):
+    def __new__(cls, name=''):
         return object.__new__(cls)
 
-    def __init__(self, database_name=''):
-        self.database_name = database_name
+    def __init__(self, name=''):
+        self.name = name
 
     def connect(self):
         '''
@@ -26,12 +25,18 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    def cursor(self, autocommit=False, readonly=False):
-        '''
-        Retreive a cursor on the database
+    def get_connection(self, autocommit, readonly=False):
+        '''Retrieve a connection on the database
 
-        :param autocommit: a boolean to active autocommit
-        :return: a Cursor
+        :param autocommit: a boolean to activate autocommit
+        :param readonly: a boolean to specify if the transaction is readonly
+        '''
+        raise NotImplementedError
+
+    def put_connection(self, connection, close=False):
+        '''Release the connection
+
+        :param close: if close is True the connection is discarded
         '''
         raise NotImplementedError
 
@@ -41,21 +46,21 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def create(cursor, database_name):
+    @classmethod
+    def create(cls, connection, database_name):
         '''
         Create a database
 
-        :param database_name: the database name
+        :param connection: the connection to the database
+        :param database_name: the new database name
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def drop(cursor, database_name):
+    def drop(self, connection, database_name):
         '''
         Drop a database
 
-        :param cursor: a cursor on an other database
+        :param connection: the connection to the database
         :param database_name: the database name
         '''
         raise NotImplementedError
@@ -81,8 +86,7 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def list(cursor):
+    def list(self):
         '''
         Get the list of database
 
@@ -90,66 +94,11 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def init(cursor):
+    def init(self):
         '''
         Initialize a database
-
-        :param cursor: a cursor on the database
         '''
         raise NotImplementedError
-
-
-class CursorInterface(object):
-    '''
-    Define generic interface for database cursor
-    '''
-    IN_MAX = 1000
-    cache_keys = {'language', 'fuzzy_translation', '_datetime'}
-
-    def __init__(self):
-        self.cache = {}
-
-    def get_cache(self):
-        from trytond.cache import LRUDict
-        from trytond.transaction import Transaction
-        user = Transaction().user
-        context = Transaction().context
-        keys = tuple(((key, context[key]) for key in sorted(self.cache_keys)
-                if key in context))
-        return self.cache.setdefault((user, keys),
-            LRUDict(config.getint('cache', 'model')))
-
-    def execute(self, sql, params=None):
-        '''
-        Execute a query
-
-        :param sql: a sql query string
-        :param params: a tuple or list of parameters
-        '''
-        raise NotImplementedError
-
-    def close(self, close=False):
-        '''
-        Close the cursor
-
-        :param close: boolean to not release cursor in pool
-        '''
-        raise NotImplementedError
-
-    def commit(self):
-        '''
-        Commit the cursor
-        '''
-        for cache in self.cache.itervalues():
-            cache.clear()
-
-    def rollback(self):
-        '''
-        Rollback the cursor
-        '''
-        for cache in self.cache.itervalues():
-            cache.clear()
 
     def test(self):
         '''
@@ -157,40 +106,48 @@ class CursorInterface(object):
         '''
         raise NotImplementedError
 
-    def nextid(self, table):
+    def nextid(self, connection, table):
         '''
         Return the next sequenced id for a table.
 
+        :param connection: a connection on the database
         :param table: the table name
         :return: an integer
         '''
 
-    def setnextid(self, table, value):
+    def setnextid(self, connection, table, value):
         '''
         Set the current sequenced id for a table.
 
+        :param connection: a connection on the database
         :param table: the table name
         '''
 
-    def currid(self, table):
+    def currid(self, connection, table):
         '''
         Return the current sequenced id for a table.
 
+        :param connection: a connection on the database
         :param table: the table name
         :return: an integer
         '''
 
-    def lastid(self):
+    def update_auto_increment(self, connection, table, value):
         '''
-        Return the last id inserted.
+        Update auto_increment value of table
 
-        :return: an integer
+        :param connection: a connection on the database
+        :param table: the table name
+        :param value: the auto_increment value
         '''
+        pass
 
-    def lock(self, table):
+    @classmethod
+    def lock(cls, connection, table):
         '''
         Lock the table
 
+        :param connection: a connection on the database
         :param table: the table name
         '''
         raise NotImplementedError
@@ -203,15 +160,6 @@ class CursorInterface(object):
         '''
         raise NotImplementedError
 
-    def update_auto_increment(self, table, value):
-        '''
-        Update auto_increment value of table
-
-        :param table: the table name
-        :param value: the auto_increment value
-        '''
-        pass
-
     def has_returning(self):
         '''
         Return True if database implements RETURNING clause in INSERT or UPDATE
@@ -219,26 +167,8 @@ class CursorInterface(object):
 
         :return: a boolean
         '''
+        return False
 
     def has_multirow_insert(self):
         'Return True if database supports multirow insert'
         return False
-
-    def __build_dict(self, row):
-        return dict((desc[0], row[i])
-                for i, desc in enumerate(self.description))
-
-    def dictfetchone(self):
-        row = self.fetchone()
-        if row:
-            return self.__build_dict(row)
-        else:
-            return row
-
-    def dictfetchmany(self, size):
-        rows = self.fetchmany(size)
-        return [self.__build_dict(row) for row in rows]
-
-    def dictfetchall(self):
-        rows = self.fetchall()
-        return [self.__build_dict(row) for row in rows]

@@ -205,92 +205,92 @@ def load_module_graph(graph, pool, update=None, lang=None):
         update = []
     modules_todo = []
     models_to_update_history = set()
-    cursor = Transaction().cursor
 
-    modules = [x.name for x in graph]
-    cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
-            where=ir_module.name.in_(modules)))
-    module2state = dict(cursor.fetchall())
+    with Transaction().connection.cursor() as cursor:
+        modules = [x.name for x in graph]
+        cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
+                where=ir_module.name.in_(modules)))
+        module2state = dict(cursor.fetchall())
 
-    for package in graph:
-        module = package.name
-        if module not in MODULES:
-            continue
-        logger.info(module)
-        classes = pool.setup(module)
-        package_state = module2state.get(module, 'uninstalled')
-        if (is_module_to_install(module, update)
-                or package_state in ('to install', 'to upgrade')):
-            if package_state not in ('to install', 'to upgrade'):
-                if package_state == 'installed':
-                    package_state = 'to upgrade'
-                elif package_state != 'to remove':
-                    package_state = 'to install'
-            for child in package.childs:
-                module2state[child.name] = package_state
-            for type in classes.keys():
-                for cls in classes[type]:
-                    logger.info('%s:register %s', module, cls.__name__)
-                    cls.__register__(module)
-            for model in classes['model']:
-                if hasattr(model, '_history'):
-                    models_to_update_history.add(model.__name__)
-
-            # Instanciate a new parser for the package:
-            tryton_parser = convert.TrytondXmlHandler(pool=pool, module=module,
-                module_state=package_state)
-
-            for filename in package.info.get('xml', []):
-                filename = filename.replace('/', os.sep)
-                logger.info('%s:loading %s', module, filename)
-                # Feed the parser with xml content:
-                with tools.file_open(OPJ(module, filename), 'rb') as fp:
-                    tryton_parser.parse_xmlstream(fp)
-
-            modules_todo.append((module, list(tryton_parser.to_delete)))
-
-            localedir = '%s/%s' % (package.info['directory'], 'locale')
-            for filename in itertools.chain(
-                    iglob('%s/*.po' % localedir),
-                    iglob('%s/override/*.po' % localedir)):
-                filename = filename.replace('/', os.sep)
-                lang2 = os.path.splitext(os.path.basename(filename))[0]
-                if lang2 not in lang:
-                    continue
-                logger.info('%s:loading %s', module,
-                    filename[len(package.info['directory']) + 1:])
-                Translation = pool.get('ir.translation')
-                Translation.translation_import(lang2, module, filename)
-
-            if package_state == 'to remove':
+        for package in graph:
+            module = package.name
+            if module not in MODULES:
                 continue
-            cursor.execute(*ir_module.select(ir_module.id,
-                    where=(ir_module.name == package.name)))
-            try:
-                module_id, = cursor.fetchone()
-                cursor.execute(*ir_module.update([ir_module.state],
-                        ['installed'], where=(ir_module.id == module_id)))
-            except TypeError:
-                cursor.execute(*ir_module.insert(
-                        [ir_module.create_uid, ir_module.create_date,
-                            ir_module.name, ir_module.state],
-                        [[0, CurrentTimestamp(), package.name, 'installed']]))
-            module2state[package.name] = 'installed'
+            logger.info(module)
+            classes = pool.setup(module)
+            package_state = module2state.get(module, 'uninstalled')
+            if (is_module_to_install(module, update)
+                    or package_state in ('to install', 'to upgrade')):
+                if package_state not in ('to install', 'to upgrade'):
+                    if package_state == 'installed':
+                        package_state = 'to upgrade'
+                    elif package_state != 'to remove':
+                        package_state = 'to install'
+                for child in package.childs:
+                    module2state[child.name] = package_state
+                for type in classes.keys():
+                    for cls in classes[type]:
+                        logger.info('%s:register %s', module, cls.__name__)
+                        cls.__register__(module)
+                for model in classes['model']:
+                    if hasattr(model, '_history'):
+                        models_to_update_history.add(model.__name__)
 
-        cursor.commit()
+                # Instanciate a new parser for the package:
+                tryton_parser = convert.TrytondXmlHandler(pool=pool,
+                    module=module, module_state=package_state)
 
-    for model_name in models_to_update_history:
-        model = pool.get(model_name)
-        if model._history:
-            logger.info('history:update %s', model.__name__)
-            model._update_history_table()
+                for filename in package.info.get('xml', []):
+                    filename = filename.replace('/', os.sep)
+                    logger.info('%s:loading %s', module, filename)
+                    # Feed the parser with xml content:
+                    with tools.file_open(OPJ(module, filename), 'rb') as fp:
+                        tryton_parser.parse_xmlstream(fp)
 
-    # Vacuum :
-    while modules_todo:
-        (module, to_delete) = modules_todo.pop()
-        convert.post_import(pool, module, to_delete)
+                modules_todo.append((module, list(tryton_parser.to_delete)))
 
-    cursor.commit()
+                localedir = '%s/%s' % (package.info['directory'], 'locale')
+                for filename in itertools.chain(
+                        iglob('%s/*.po' % localedir),
+                        iglob('%s/override/*.po' % localedir)):
+                    filename = filename.replace('/', os.sep)
+                    lang2 = os.path.splitext(os.path.basename(filename))[0]
+                    if lang2 not in lang:
+                        continue
+                    logger.info('%s:loading %s', module,
+                        filename[len(package.info['directory']) + 1:])
+                    Translation = pool.get('ir.translation')
+                    Translation.translation_import(lang2, module, filename)
+
+                if package_state == 'to remove':
+                    continue
+                cursor.execute(*ir_module.select(ir_module.id,
+                        where=(ir_module.name == package.name)))
+                try:
+                    module_id, = cursor.fetchone()
+                    cursor.execute(*ir_module.update([ir_module.state],
+                            ['installed'], where=(ir_module.id == module_id)))
+                except TypeError:
+                    cursor.execute(*ir_module.insert(
+                            [ir_module.create_uid, ir_module.create_date,
+                                ir_module.name, ir_module.state],
+                            [[0, CurrentTimestamp(), package.name,
+                                    'installed'],
+                                ]))
+                module2state[package.name] = 'installed'
+
+            Transaction().connection.commit()
+
+        for model_name in models_to_update_history:
+            model = pool.get(model_name)
+            if model._history:
+                logger.info('history:update %s', model.__name__)
+                model._update_history_table()
+
+        # Vacuum :
+        while modules_todo:
+            (module, to_delete) = modules_todo.pop()
+            convert.post_import(pool, module, to_delete)
 
 
 def get_module_list():
@@ -367,63 +367,58 @@ def load_modules(database_name, pool, update=None, lang=None):
     def _load_modules():
         global res
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
-        # Migration from 3.6: remove double module
-        old_table = 'ir_module_module'
-        new_table = 'ir_module'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, new_table)
-        if update:
-            cursor.execute(*ir_module.select(ir_module.name,
-                    where=ir_module.state.in_(('installed', 'to install',
-                            'to upgrade', 'to remove'))))
-        else:
-            cursor.execute(*ir_module.select(ir_module.name,
-                    where=ir_module.state.in_(('installed', 'to upgrade',
-                            'to remove'))))
-        module_list = [name for (name,) in cursor.fetchall()]
-        if update:
-            module_list += update
-        graph = create_graph(module_list)[0]
+        with Transaction().connection.cursor() as cursor:
+            # Migration from 3.6: remove double module
+            old_table = 'ir_module_module'
+            new_table = 'ir_module'
+            if TableHandler.table_exist(old_table):
+                TableHandler.table_rename(old_table, new_table)
+            if update:
+                cursor.execute(*ir_module.select(ir_module.name,
+                        where=ir_module.state.in_(('installed', 'to install',
+                                'to upgrade', 'to remove'))))
+            else:
+                cursor.execute(*ir_module.select(ir_module.name,
+                        where=ir_module.state.in_(('installed', 'to upgrade',
+                                'to remove'))))
+            module_list = [name for (name,) in cursor.fetchall()]
+            if update:
+                module_list += update
+            graph = create_graph(module_list)[0]
 
-        try:
             load_module_graph(graph, pool, update, lang)
-        except Exception:
-            cursor.rollback()
-            raise
 
-        if update:
-            cursor.execute(*ir_module.select(ir_module.name,
-                    where=(ir_module.state == 'to remove')))
-            fetchall = cursor.fetchall()
-            if fetchall:
-                for (mod_name,) in fetchall:
-                    # TODO check if ressource not updated by the user
-                    cursor.execute(*ir_model_data.select(ir_model_data.model,
-                            ir_model_data.db_id,
-                            where=(ir_model_data.module == mod_name),
-                            order_by=ir_model_data.id.desc))
-                    for rmod, rid in cursor.fetchall():
-                        Model = pool.get(rmod)
-                        Model.delete([Model(rid)])
-                    cursor.commit()
-                cursor.execute(*ir_module.update([ir_module.state],
-                        ['uninstalled'],
+            if update:
+                cursor.execute(*ir_module.select(ir_module.name,
                         where=(ir_module.state == 'to remove')))
-                cursor.commit()
-                res = False
+                fetchall = cursor.fetchall()
+                if fetchall:
+                    for (mod_name,) in fetchall:
+                        # TODO check if ressource not updated by the user
+                        cursor.execute(*ir_model_data.select(
+                                ir_model_data.model, ir_model_data.db_id,
+                                where=(ir_model_data.module == mod_name),
+                                order_by=ir_model_data.id.desc))
+                        for rmod, rid in cursor.fetchall():
+                            Model = pool.get(rmod)
+                            Model.delete([Model(rid)])
+                        Transaction().connection.commit()
+                    cursor.execute(*ir_module.update([ir_module.state],
+                            ['uninstalled'],
+                            where=(ir_module.state == 'to remove')))
+                    Transaction().connection.commit()
+                    res = False
 
-            Module = pool.get('ir.module')
-            Module.update_list()
-        cursor.commit()
+                Module = pool.get('ir.module')
+                Module.update_list()
         Cache.resets(database_name)
 
-    if not Transaction().cursor:
+    if not Transaction().connection:
         with Transaction().start(database_name, 0):
             _load_modules()
     else:
-        with Transaction().new_cursor(), \
+        with Transaction().new_transaction(), \
                 Transaction().set_user(0), \
                 Transaction().reset_context():
             _load_modules()

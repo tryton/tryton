@@ -74,8 +74,8 @@ class Trigger(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
         sql_table = cls.__table__()
 
         super(Trigger, cls).__register__(module_name)
@@ -187,7 +187,7 @@ class Trigger(ModelSQL, ModelView):
         TriggerLog = pool.get('ir.trigger.log')
         Model = pool.get(trigger.model.model)
         ActionModel = pool.get(trigger.action_model.model)
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         trigger_log = TriggerLog.__table__()
         ids = map(int, records)
 
@@ -218,7 +218,7 @@ class Trigger(ModelSQL, ModelView):
                 red_sql = reduce_ids(trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
                         trigger_log.record_id, Max(trigger_log.create_date),
-                        where=red_sql & (trigger_log.trigger == trigger.id),
+                        where=(red_sql & (trigger_log.trigger == trigger.id)),
                         group_by=trigger_log.record_id))
                 delay = dict(cursor.fetchall())
                 for record_id in sub_ids:
@@ -236,8 +236,8 @@ class Trigger(ModelSQL, ModelView):
                             microseconds = int(timepart_full[1])
                         else:
                             microseconds = 0
-                        delay[record_id] = datetime.datetime(year, month, day,
-                                hours, minutes, seconds, microseconds)
+                        delay[record_id] = datetime.datetime(year, month,
+                            day, hours, minutes, seconds, microseconds)
                     if (datetime.datetime.now() - delay[record_id]
                             >= trigger.minimum_time_delay):
                         new_ids.append(record_id)
@@ -307,5 +307,5 @@ class TriggerLog(ModelSQL):
         TableHandler = backend.get('TableHandler')
         super(TriggerLog, cls).__register__(module_name)
 
-        table = TableHandler(Transaction().cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action(['trigger', 'record_id'], 'add')

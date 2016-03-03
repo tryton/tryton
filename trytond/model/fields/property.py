@@ -72,7 +72,7 @@ class Property(Function):
         Property = pool.get('ir.property')
         IrModel = pool.get('ir.model')
         Field = pool.get('ir.model.field')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         name, operator, value = domain
 
@@ -135,7 +135,7 @@ class Property(Function):
             return [('id', 'in', [x[0] for x in props])]
 
         else:
-            other_ids = [x[0] for x in cursor.fetchall()]
+            other_ids = [x[0] for x in fetchall]
 
             res_ids = Model.search(['OR',
                 ('id', 'in', [x[0] for x in props]),

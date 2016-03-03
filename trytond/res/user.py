@@ -112,9 +112,9 @@ class User(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.6
 
@@ -243,7 +243,7 @@ class User(ModelSQL, ModelView):
             args.extend((users, cls._convert_vals(values)))
         super(User, cls).write(*args)
         # Clean cursor cache as it could be filled by domain_get
-        for cache in Transaction().cursor.cache.itervalues():
+        for cache in Transaction().cache.itervalues():
             if cls.__name__ in cache:
                 for user in all_users:
                     if user.id in cache[cls.__name__]:
@@ -450,7 +450,7 @@ class User(ModelSQL, ModelView):
         result = cls._get_login_cache.get(login)
         if result:
             return result
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.select(table.id, table.password_hash,
                 where=(table.login == login) & (table.active == True)))
@@ -543,7 +543,7 @@ class LoginAttempt(ModelSQL):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(LoginAttempt, cls).__register__(module_name)
-        table = TableHandler(Transaction().cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.8: remove user
         table.drop_column('user')
@@ -562,13 +562,13 @@ class LoginAttempt(ModelSQL):
 
     @classmethod
     def remove(cls, login):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.delete(where=table.login == login))
 
     @classmethod
     def count(cls, login):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.select(Count(Literal(1)),
                 where=(table.login == login)
@@ -618,13 +618,12 @@ class UserGroup(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
         # Migration from 1.0 table name change
-        TableHandler.table_rename(cursor, 'res_group_user_rel', cls._table)
-        TableHandler.sequence_rename(cursor, 'res_group_user_rel_id_seq',
+        TableHandler.table_rename('res_group_user_rel', cls._table)
+        TableHandler.sequence_rename('res_group_user_rel_id_seq',
             cls._table + '_id_seq')
         # Migration from 2.0 uid and gid rename into user and group
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.column_rename('uid', 'user')
         table.column_rename('gid', 'group')
         super(UserGroup, cls).__register__(module_name)
