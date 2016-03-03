@@ -74,7 +74,7 @@ class Party:
         Account = pool.get('account.account')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         line = MoveLine.__table__()
         account = Account.__table__()

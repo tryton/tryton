@@ -63,8 +63,7 @@ class TypeTemplate(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(TypeTemplate, cls).__register__(module_name)
 
@@ -186,8 +185,7 @@ class Type(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(Type, cls).__register__(module_name)
 
@@ -634,7 +632,7 @@ class Account(ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         table_a = cls.__table__()
         table_c = cls.__table__()
@@ -682,7 +680,7 @@ class Account(ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         result = {}
         ids = [a.id for a in accounts]
@@ -1963,7 +1961,7 @@ class AgedBalance(Report):
         Reconciliation = pool.get('account.move.reconciliation')
         Account = pool.get('account.account')
         Company = pool.get('company.company')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         line = MoveLine.__table__()
         move = Move.__table__()

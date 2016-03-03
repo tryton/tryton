@@ -105,7 +105,7 @@ class FiscalYear(ModelSQL, ModelView):
             year.check_post_move_sequence()
 
     def check_dates(self):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = self.__table__()
         cursor.execute(*table.select(table.id,
                 where=(((table.start_date <= self.start_date)

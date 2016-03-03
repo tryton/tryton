@@ -53,11 +53,10 @@ class Period(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         super(Period, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 2.6: post_move_sequence is no longer required
         table.not_null_action('post_move_sequence', 'remove')
 
@@ -114,7 +113,7 @@ class Period(ModelSQL, ModelView):
             period.check_post_move_sequence()
 
     def check_dates(self):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         if self.type != 'standard':
             return True
         table = self.__table__()

@@ -41,8 +41,7 @@ class TaxGroup(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(TaxGroup, cls).__register__(module_name)
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.4 drop code_uniq constraint
         table.drop_constraint('code_uniq')
@@ -170,7 +169,7 @@ class TaxCode(ModelSQL, ModelView):
 
     @classmethod
     def get_sum(cls, codes, name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         res = {}
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -375,8 +374,8 @@ class TaxTemplate(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(TaxTemplate, cls).__register__(module_name)
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
@@ -673,8 +672,8 @@ class Tax(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(Tax, cls).__register__(module_name)
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
@@ -1265,8 +1264,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(TaxRuleLineTemplate, cls).__register__(module_name)
 
@@ -1379,8 +1377,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(TaxRuleLine, cls).__register__(module_name)
 
