@@ -279,8 +279,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         super(Invoice, cls).__register__(module_name)
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.2 invoice_date is no more required
         table.not_null_action('invoice_date', action='remove')
@@ -290,7 +291,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         if (table.column_exist('invoice_report')
                 and table.column_exist('invoice_report_cache')):
-            limit = cursor.IN_MAX
+            limit = transaction.database.IN_MAX
             cursor.execute(*sql_table.select(Count(Literal(1))))
             invoice_count, = cursor.fetchone()
             for offset in range(0, invoice_count, limit):
@@ -501,7 +502,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         InvoiceTax = pool.get('account.invoice.tax')
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         untaxed_amount = dict((i.id, _ZERO) for i in invoices)
         tax_amount = dict((i.id, _ZERO) for i in invoices)
@@ -604,7 +605,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         MoveLine = pool.get('account.move.line')
         line = MoveLine.__table__()
         invoice = cls.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         lines = defaultdict(list)
         for sub_ids in grouped_slice(invoices):
@@ -1565,8 +1566,8 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         super(InvoiceLine, cls).__register__(module_name)
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.0 invoice is no more required
         table.not_null_action('invoice', action='remove')
@@ -2062,8 +2063,7 @@ class InvoiceTax(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(InvoiceTax, cls).__register__(module_name)
 
