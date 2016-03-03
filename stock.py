@@ -42,11 +42,11 @@ class Move:
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         TableHandler = backend.get('TableHandler')
 
         super(Move, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.8: split anglo_saxon_quantity
         if table.column_exist('anglo_saxon_quantity'):
