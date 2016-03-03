@@ -504,7 +504,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Payment = pool.get('account.payment')
         payment = Payment.__table__
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         has_payments = dict.fromkeys([m.id for m in mandates], False)
         for sub_ids in grouped_slice(mandates):
@@ -613,15 +613,15 @@ class Message(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         pool = Pool()
         Group = pool.get('account.payment.group')
 
         super(Message, cls).__register__(module_name)
 
         # Migration from 3.2
-        if TableHandler.table_exist(cursor, Group._table):
-            group_table = TableHandler(cursor, Group, module_name)
+        if TableHandler.table_exist(Group._table):
+            group_table = TableHandler(Group, module_name)
             if group_table.column_exist('sepa_message'):
                 group = Group.__table__()
                 table = cls.__table__()
