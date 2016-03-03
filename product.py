@@ -5,7 +5,6 @@ import copy
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or
 from trytond import backend
-from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
@@ -152,9 +151,8 @@ class CategoryCustomerTax(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cursor, cls)
+        table = TableHandler(cls)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
@@ -174,9 +172,8 @@ class CategorySupplierTax(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cursor, cls)
+        table = TableHandler(cls)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
