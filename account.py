@@ -129,7 +129,7 @@ class Account(ModelSQL, ModelView):
         Account = pool.get('account.account')
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
@@ -205,7 +205,7 @@ class Account(ModelSQL, ModelView):
         Account = pool.get('account.account')
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
@@ -330,17 +330,17 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
         pool = Pool()
         Account = pool.get('analytic_account.account')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         # Migration from 3.4: use origin as the key for One2Many
         migration_3_4 = False
         old_table = 'analytic_account_account_selection_rel'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
             migration_3_4 = True
 
         # Don't create table before renaming
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(AnalyticAccountEntry, cls).__register__(module_name)
 
@@ -409,11 +409,11 @@ class AnalyticMixin(ModelSQL):
         pool = Pool()
         AccountEntry = pool.get('analytic.account.entry')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         super(AnalyticMixin, cls).__register__(module_name)
 
-        handler = TableHandler(cursor, cls, module_name)
+        handler = TableHandler(cls, module_name)
         # Migration from 3.4: analytic accounting changed to reference field
         if handler.column_exist('analytic_accounts'):
             entry = AccountEntry.__table__()
