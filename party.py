@@ -136,7 +136,7 @@ class PartyRelationAll(PartyRelation, ModelView):
                     local_cache.clear()
 
         # Clean cursor cache
-        for cache in Transaction().cursor.cache.itervalues():
+        for cache in Transaction().cache.itervalues():
             if cls.__name__ in cache:
                 for record in all_records:
                     for record_id in (record.id, record.reverse_id):
@@ -177,7 +177,7 @@ class PartyRelationAll(PartyRelation, ModelView):
         Transaction().counter += 1
 
         # Clean cursor cache
-        for cache in Transaction().cursor.cache.values():
+        for cache in Transaction().cache.values():
             for cache in (cache, cache.get('_language_cache', {}).values()):
                 if cls.__name__ in cache:
                     for record in relations:
