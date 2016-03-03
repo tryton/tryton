@@ -12,7 +12,6 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
 __all__ = ['Configuration', 'Lot', 'Move', 'Period']
-__metaclass__ = PoolMeta
 
 DATE_STATE = [
     ('none', 'None'),
@@ -22,6 +21,7 @@ DATE_STATE = [
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.configuration'
 
     shelf_life_delay = fields.Property(fields.Integer('Shelf Life Delay',
@@ -30,6 +30,7 @@ class Configuration:
 
 
 class Lot:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.lot'
 
     shelf_life_expiration_date = fields.Date('Shelf Life Expiration Date',
@@ -131,6 +132,7 @@ class Lot:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
 
     @classmethod
@@ -281,6 +283,7 @@ class Move:
 
 
 class Period:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.period'
 
     @classmethod

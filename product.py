@@ -7,10 +7,10 @@ from trytond.pyson import Eval
 from .stock import DATE_STATE
 
 __all__ = ['Template', 'Product']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
 
     shelf_life_state = fields.Selection(
@@ -40,4 +40,5 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
