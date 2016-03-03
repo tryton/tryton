@@ -102,17 +102,17 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         sale = Sale.__table__()
 
         reference_exists = True
-        if TableHandler.table_exist(cursor, cls._table):
-            table = TableHandler(cursor, cls, module_name)
+        if TableHandler.table_exist(cls._table):
+            table = TableHandler(cls, module_name)
             reference_exists = table.column_exist('reference')
         super(SaleOpportunity, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.8: make party not required and add reference as
         # required
@@ -444,8 +444,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(SaleOpportunityLine, cls).__register__(module_name)
 
