@@ -21,7 +21,7 @@ class TaxTemplate:
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
 
         # Migration from 3.0: new tax rates
@@ -57,7 +57,7 @@ class TaxRuleTemplate:
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
 
         if module_name == 'account_fr':
