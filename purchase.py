@@ -227,7 +227,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         Move = pool.get('stock.move')
         InvoiceLine = pool.get('account.invoice.line')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
         model_field = Table('ir_model_field')
         sql_table = cls.__table__()
@@ -254,7 +254,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                         len('packing'))],
                 where=model_field.name.like('%packing%')
                 & (model_field.module == module_name)))
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
 
         super(Purchase, cls).__register__(module_name)
@@ -266,7 +266,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 values=['shipment'],
                 where=sql_table.invoice_method == 'packing'))
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 2.2: warehouse is no more required
         table.not_null_action('warehouse', 'remove')
 
@@ -275,9 +275,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Migration from 3.2
         # state confirmed splitted into confirmed and processing
-        if (TableHandler.table_exist(cursor, PurchaseLine._table)
-                and TableHandler.table_exist(cursor, Move._table)
-                and TableHandler.table_exist(cursor, InvoiceLine._table)):
+        if (TableHandler.table_exist(PurchaseLine._table)
+                and TableHandler.table_exist(Move._table)
+                and TableHandler.table_exist(InvoiceLine._table)):
             purchase_line = PurchaseLine.__table__()
             move = Move.__table__()
             invoice_line = InvoiceLine.__table__()
@@ -302,7 +302,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @classmethod
@@ -362,7 +362,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     def on_change_party(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = self.__table__()
         self.invoice_address = None
         self.payment_term = self.default_payment_term()
@@ -969,10 +969,10 @@ class PurchaseLine(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         super(PurchaseLine, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
@@ -1437,7 +1437,7 @@ class OpenSupplier(Wizard):
         ModelData = pool.get('ir.model.data')
         Wizard = pool.get('ir.action.wizard')
         Purchase = pool.get('purchase.purchase')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         purchase = Purchase.__table__()
 
         cursor.execute(*purchase.select(purchase.party,
@@ -1463,7 +1463,7 @@ class HandleShipmentExceptionAsk(ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model = Table('ir_model')
         # Migration from 1.2: packing renamed into shipment
         cursor.execute(*model.update(

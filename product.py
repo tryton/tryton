@@ -186,8 +186,9 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table = TableHandler(cls, module_name)
         sql_table = cls.__table__()
 
         # Migration from 2.2 new field currency
@@ -199,7 +200,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
         if not created_currency:
             Company = Pool().get('company.company')
             company = Company.__table__()
-            limit = cursor.IN_MAX
+            limit = transaction.database.IN_MAX
             cursor.execute(*sql_table.select(Count(sql_table.id)))
             product_supplier_count, = cursor.fetchone()
             for offset in range(0, product_supplier_count, limit):
@@ -252,7 +253,7 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
 
     @fields.depends('party')
     def on_change_party(self):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         self.currency = self.default_currency()
         if self.party:
             table = self.__table__()
@@ -330,8 +331,8 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
         sql_table = cls.__table__()
 
         fill_sequence = not table.column_exist('sequence')
