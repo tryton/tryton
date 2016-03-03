@@ -71,12 +71,12 @@ class Party(ModelSQL, ModelView):
         pool = Pool()
         Property = pool.get('ir.property')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
 
         super(Party, cls).__register__(module_name)
 
-        table_h = TableHandler(cursor, cls, module_name)
+        table_h = TableHandler(cls, module_name)
         if table_h.column_exist('lang'):
             cursor.execute(*table.select(table.id, table.lang,
                     order_by=table.lang))
@@ -253,12 +253,12 @@ class PartyIdentifier(ModelSQL, ModelView):
         pool = Pool()
         Party = pool.get('party.party')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         party = Party.__table__()
 
         super(PartyIdentifier, cls).__register__(module_name)
 
-        party_h = TableHandler(cursor, Party, module_name)
+        party_h = TableHandler(Party, module_name)
         if (party_h.column_exist('vat_number')
                 and party_h.column_exist('vat_country')):
             identifiers = []

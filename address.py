@@ -6,7 +6,6 @@ from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
-from trytond.transaction import Transaction
 from trytond import backend
 from trytond.pool import Pool
 
@@ -53,8 +52,7 @@ class Address(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(Address, cls).__register__(module_name)
 
