@@ -17,7 +17,7 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
 from trytond import backend
 from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.product import price_digits
@@ -27,7 +27,6 @@ __all__ = ['Purchase', 'PurchaseIgnoredInvoice',
     'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
     'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException']
-__metaclass__ = PoolMeta
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -1161,13 +1160,13 @@ class PurchaseLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def get_from_location(self, name):
-        if self.quantity >= 0:
+        if self.quantity is not None and self.quantity >= 0:
             return self.purchase.party.supplier_location.id
         elif self.purchase.warehouse:
             return self.purchase.warehouse.storage_location.id
 
     def get_to_location(self, name):
-        if self.quantity >= 0:
+        if self.quantity is not None and self.quantity >= 0:
             if self.purchase.warehouse:
                 return self.purchase.warehouse.input_location.id
         else:
@@ -1180,6 +1179,7 @@ class PurchaseLine(ModelSQL, ModelView):
             return min(m.effective_date if m.effective_date else m.planned_date
                 for m in self.moves)
         if (self.product
+                and self.quantity is not None
                 and self.quantity > 0
                 and self.purchase and self.purchase.party
                 and self.product.product_suppliers):

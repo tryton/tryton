@@ -15,10 +15,10 @@ from trytond import backend
 from trytond.modules.product import price_digits
 
 __all__ = ['Template', 'Product', 'ProductSupplier', 'ProductSupplierPrice']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = "product.template"
     purchasable = fields.Boolean('Purchasable', states={
             'readonly': ~Eval('active', True),
@@ -96,6 +96,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     @classmethod

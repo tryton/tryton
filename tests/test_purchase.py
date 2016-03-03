@@ -6,7 +6,8 @@ from decimal import Decimal
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import (doctest_setup, doctest_teardown,
+    doctest_checker)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -108,5 +109,6 @@ def suite():
         PurchaseTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_purchase.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='UTF-8',
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
+            checker=doctest_checker))
     return suite

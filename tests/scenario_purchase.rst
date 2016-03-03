@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts, create_tax
-    >>> from.trytond.modules.account_invoice.tests.tools import \
+    >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
@@ -204,7 +204,7 @@ Purchase 5 products::
 Invoice line must be linked to stock move::
 
     >>> _, invoice_line1, invoice_line2 = sorted(invoice.lines,
-    ...     key=lambda l: l.quantity)
+    ...     key=lambda l: l.quantity or 0)
     >>> stock_move1, stock_move2 = sorted(purchase.moves,
     ...     key=lambda m: m.quantity)
     >>> invoice_line1.stock_moves == [stock_move1]
@@ -290,7 +290,7 @@ Open supplier invoice::
     >>> invoice.type
     u'in_invoice'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
-    ...     key=lambda l: l.quantity)
+    ...     key=lambda l: l.quantity or 0)
     >>> for line in invoice.lines:
     ...     line.quantity = 1
     ...     line.save()

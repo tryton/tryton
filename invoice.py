@@ -9,7 +9,6 @@ from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['Invoice', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 def process_purchase(func):
@@ -26,6 +25,7 @@ def process_purchase(func):
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
@@ -112,6 +112,7 @@ class Invoice:
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     @classmethod
