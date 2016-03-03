@@ -21,7 +21,7 @@ from trytond.const import OPERATORS
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.cache import LRUDict, freeze
+from trytond.cache import LRUDict, LRUDictTransaction, freeze
 from trytond import backend
 from trytond.rpc import RPC
 from .modelview import ModelView
@@ -451,7 +451,7 @@ class ModelStorage(Model):
         Return a list of instance for the ids
         '''
         ids = map(int, ids)
-        local_cache = LRUDict(cache_size())
+        local_cache = LRUDictTransaction(cache_size())
         return [cls(int(x), _ids=ids, _local_cache=local_cache) for x in ids]
 
     @staticmethod
@@ -1169,10 +1169,10 @@ class ModelStorage(Model):
         self._transaction_cache = self._transaction.get_cache()
 
         if _local_cache is not None:
+            assert isinstance(_local_cache, LRUDictTransaction)
             self._local_cache = _local_cache
         else:
-            self._local_cache = LRUDict(cache_size())
-        self._local_cache.counter = Transaction().counter
+            self._local_cache = LRUDictTransaction(cache_size())
 
         super(ModelStorage, self).__init__(id, **kwargs)
 
@@ -1190,10 +1190,7 @@ class ModelStorage(Model):
             if self.id is None or self.id < 0:
                 raise
 
-        counter = Transaction().counter
-        if self._local_cache.counter != counter:
-            self._local_cache.clear()
-            self._local_cache.counter = counter
+        self._local_cache.refresh()
 
         # fetch the definition of the field
         try:
@@ -1308,7 +1305,7 @@ class ModelStorage(Model):
             with Transaction().set_context(**ctx):
                 key = (Model, freeze(ctx))
                 local_cache = model2cache.setdefault(key,
-                    LRUDict(cache_size()))
+                    LRUDictTransaction(cache_size()))
                 ids = model2ids.setdefault(key, [])
                 if field._type in ('many2one', 'one2one', 'reference'):
                     ids.append(value)

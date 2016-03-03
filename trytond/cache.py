@@ -125,6 +125,8 @@ class LRUDict(OrderedDict):
     Dictionary with a size limit.
     If size limit is reached, it will remove the first added items.
     """
+    __slots__ = ('size_limit',)
+
     def __init__(self, size_limit, *args, **kwargs):
         assert size_limit > 0
         self.size_limit = size_limit
@@ -147,3 +149,24 @@ class LRUDict(OrderedDict):
     def _check_size_limit(self):
         while len(self) > self.size_limit:
             self.popitem(last=False)
+
+
+class LRUDictTransaction(LRUDict):
+    """
+    Dictionary with a size limit. (see LRUDict)
+    It is refreshed when transaction counter is changed.
+    """
+    __slots__ = ('transaction', 'counter')
+
+    def __init__(self, *args, **kwargs):
+        super(LRUDictTransaction, self).__init__(*args, **kwargs)
+        self.transaction = Transaction()
+        self.counter = self.transaction.counter
+
+    def clear(self):
+        super(LRUDictTransaction, self).clear()
+        self.counter = self.transaction.counter
+
+    def refresh(self):
+        if self.counter != self.transaction.counter:
+            self.clear()
