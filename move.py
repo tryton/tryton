@@ -594,6 +594,7 @@ class Line(ModelSQL, ModelView):
             domain=[('kind', '!=', 'view')],
             select=True)
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
+        ondelete='CASCADE',
         states={
             'required': False,
             'readonly': Eval('state') == 'valid',
