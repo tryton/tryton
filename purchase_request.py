@@ -101,7 +101,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         super(PurchaseRequest, cls).__register__(module_name)
 
@@ -112,7 +112,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 where=sql_table.origin == 'stock.order_point,0'))
 
         # Migration from 3.6: removing the constraint on the quantity
-        tablehandler = TableHandler(cursor, cls, module_name)
+        tablehandler = TableHandler(cls, module_name)
         tablehandler.drop_constraint('check_purchase_request_quantity')
 
     def get_rec_name(self, name):

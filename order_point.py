@@ -88,9 +88,8 @@ class OrderPoint(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
         # Migration from 2.2
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.drop_constraint('check_min_max_quantity')
 
         super(OrderPoint, cls).__register__(module_name)
