@@ -103,17 +103,17 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         Location = Pool().get('stock.location')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         migrate_warehouse = (not table.column_exist('warehouse')
             and table.column_exist('location'))
 
         super(Forecast, cls).__register__(module_name)
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
         if migrate_warehouse:
@@ -194,7 +194,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
             forecast.check_date_overlap()
 
     def check_date_overlap(self):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         if self.state != 'done':
             return
         forcast = self.__table__()
@@ -362,7 +362,7 @@ class ForecastLine(ModelSQL, ModelView):
 
     @classmethod
     def get_quantity_executed(cls, lines, name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         pool = Pool()
         Move = pool.get('stock.move')
         Location = pool.get('stock.location')
