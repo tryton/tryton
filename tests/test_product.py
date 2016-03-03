@@ -28,7 +28,7 @@ class ProductTestCase(ModuleTestCase):
                 'rate': 0,
                 'factor': 0,
                 }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         def create():
             category, = UomCategory.create([{'name': 'Test'}])
@@ -44,20 +44,20 @@ class ProductTestCase(ModuleTestCase):
         self.assertRaises(Exception, Uom.write, [uom], {
                 'rate': 0.0,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         uom = create()
         self.assertRaises(Exception, Uom.write, [uom], {
                 'factor': 0.0,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         uom = create()
         self.assertRaises(Exception, Uom.write, [uom], {
                 'rate': 0.0,
                 'factor': 0.0,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_uom_check_factor_and_rate(self):
@@ -75,7 +75,7 @@ class ProductTestCase(ModuleTestCase):
                 'rate': 2,
                 'factor': 2,
                 }])
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         def create():
             category, = UomCategory.create([{'name': 'Test'}])
@@ -91,13 +91,13 @@ class ProductTestCase(ModuleTestCase):
         self.assertRaises(Exception, Uom.write, [uom], {
                 'rate': 2.0,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
         uom = create()
         self.assertRaises(Exception, Uom.write, [uom], {
                 'factor': 2.0,
                 })
-        transaction.cursor.rollback()
+        transaction.rollback()
 
     @with_transaction()
     def test_uom_select_accurate_field(self):

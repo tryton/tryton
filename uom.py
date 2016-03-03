@@ -55,7 +55,7 @@ class Uom(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
         # Migration from 1.6: corrected misspelling of ounce (was once)
         cursor.execute(*model_data.update(

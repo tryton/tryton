@@ -64,12 +64,12 @@ class Template(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         super(Template, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 2.2: category is no more required
         table.not_null_action('category', 'remove')
 
