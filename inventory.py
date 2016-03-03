@@ -76,10 +76,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         super(Inventory, cls).__register__(module_name)
-        cursor = Transaction().cursor
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -279,7 +278,7 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         pool = Pool()
         Move = pool.get('stock.move')
         sql_table = cls.__table__()
@@ -287,7 +286,7 @@ class InventoryLine(ModelSQL, ModelView):
 
         super(InventoryLine, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 2.8: Remove constraint inventory_product_uniq
         table.drop_constraint('inventory_product_uniq')
 

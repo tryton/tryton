@@ -169,7 +169,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
         model = Table('ir_model')
         model_field = Table('ir_model_field')
@@ -206,9 +206,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 & (model_field.module == module_name)))
 
         old_table = 'stock_packing_in'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
-        table = TableHandler(cursor, cls, module_name)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
+        table = TableHandler(cls, module_name)
         for field in ('create_uid', 'write_uid', 'contact_address',
                 'warehouse', 'supplier'):
             table.drop_fk(field, table=old_table)
@@ -223,7 +223,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         Move = Pool().get('stock.move')
         if (not created_company
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             move = Move.__table__()
             cursor.execute(*sql_table.join(move,
                     condition=(Concat(cls.__name__ + ',', sql_table.id)
@@ -243,7 +243,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -580,13 +580,13 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_in_return'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
-        table = TableHandler(cursor, cls, module_name)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
+        table = TableHandler(cls, module_name)
         for field in ('create_uid', 'write_uid', 'from_location',
                 'to_location'):
             table.drop_fk(field, table=old_table)
@@ -601,7 +601,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         Move = Pool().get('stock.move')
         if (not created_company
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             move = Move.__table__()
             cursor.execute(*sql_table.join(move,
                     condition=(Concat(cls.__name__ + ',', sql_table.id)
@@ -621,7 +621,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -904,14 +904,14 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_out'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         for field in ('create_uid', 'write_uid', 'delivery_address',
                 'warehouse', 'customer'):
             table.drop_fk(field, table=old_table)
@@ -926,7 +926,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         Move = Pool().get('stock.move')
         if (not created_company
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             move = Move.__table__()
             cursor.execute(*sql_table.join(move,
                     condition=(Concat(cls.__name__ + ',', sql_table.id)
@@ -946,7 +946,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.drop_column('customer_location', exception=True)
 
         # Add index on create_date
@@ -1437,14 +1437,14 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_out_return'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         for field in ('create_uid', 'write_uid', 'delivery_address',
                 'warehouse', 'customer'):
             table.drop_fk(field, table=old_table)
@@ -1459,7 +1459,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         Move = Pool().get('stock.move')
         if (not created_company
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             move = Move.__table__()
             cursor.execute(*sql_table.join(move,
                     condition=(Concat(cls.__name__ + ',', sql_table.id)
@@ -1479,7 +1479,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -1871,13 +1871,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_internal'
-        if TableHandler.table_exist(cursor, old_table):
-            TableHandler.table_rename(cursor, old_table, cls._table)
-        table = TableHandler(cursor, cls, module_name)
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
+        table = TableHandler(cls, module_name)
         for field in ('create_uid', 'write_uid', 'from_location',
                 'to_location'):
             table.drop_fk(field, table=old_table)
@@ -1892,7 +1892,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         Move = Pool().get('stock.move')
         if (not created_company
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             move = Move.__table__()
             cursor.execute(*sql_table.join(move,
                     condition=(Concat(cls.__name__ + ',', sql_table.id)
@@ -1912,7 +1912,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod

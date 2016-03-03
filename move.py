@@ -311,11 +311,12 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
         # Migration from 1.2: packing renamed into shipment
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.drop_constraint('check_packing')
         for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
             old_column = 'packing_%s' % suffix
@@ -333,7 +334,7 @@ class Move(Workflow, ModelSQL, ModelView):
         # Migration from 1.8: fill new field internal_quantity
         if not internal_quantity_exist:
             offset = 0
-            limit = cursor.IN_MAX
+            limit = transaction.database.IN_MAX
             moves = True
             while moves:
                 moves = cls.search([], offset=offset, limit=limit)
@@ -345,11 +346,11 @@ class Move(Workflow, ModelSQL, ModelView):
                             columns=[sql_table.internal_quantity],
                             values=[internal_quantity],
                             where=sql_table.id == move.id))
-            table = TableHandler(cursor, cls, module_name)
+            table = TableHandler(cls, module_name)
             table.not_null_action('internal_quantity', action='add')
 
         # Migration from 1.0 check_packing_in_out has been removed
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.drop_constraint('check_packing_in_out')
 
         # Migration from 2.6: merge all shipments
@@ -770,7 +771,7 @@ class Move(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
 
-        Transaction().cursor.lock(cls._table)
+        Transaction().database.lock(Transaction().connection, cls._table)
 
         if with_childs:
             locations = Location.search([
@@ -1157,7 +1158,7 @@ class Move(Workflow, ModelSQL, ModelView):
             "Query in Move.compute_quantities() can't be None")
         assert 'product' in grouping
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         cursor.execute(*query)
         raw_lines = cursor.fetchall()
 
