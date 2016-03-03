@@ -59,8 +59,8 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
         sql_table = cls.__table__()
         pool = Pool()
         Work = pool.get('timesheet.work')
@@ -69,8 +69,6 @@ class Line(ModelSQL, ModelView):
         created_company = not table.column_exist('company')
 
         super(Line, cls).__register__(module_name)
-
-        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 3.4: new company field
         if created_company:

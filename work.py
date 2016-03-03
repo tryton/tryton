@@ -103,7 +103,7 @@ class Work(ModelSQL, ModelView):
         pool = Pool()
         Line = pool.get('timesheet.line')
         transaction = Transaction()
-        cursor = transaction.cursor
+        cursor = transaction.connection.cursor()
         context = transaction.context
 
         table_w = cls.__table__()
