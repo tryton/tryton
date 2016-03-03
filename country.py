@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['Country', 'Subdivision', 'Zip']
@@ -27,8 +26,7 @@ class Country(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(Country, cls).__register__(module_name)
 
