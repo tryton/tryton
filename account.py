@@ -17,7 +17,7 @@ class AccountTemplate:
     def __register__(cls, module_name):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = ModelData.__table__()
 
         # Migration from 3.4: translation of the account chart
