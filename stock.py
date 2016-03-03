@@ -125,7 +125,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         purchase_request = PurchaseRequest.__table__()
         sale_line = SaleLine.__table__()
         location = Location.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         super(ShipmentDrop, cls).__register__(module_name)
 
