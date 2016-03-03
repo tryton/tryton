@@ -40,7 +40,7 @@ class Template:
                 stock_date_end=stock_date_end):
             template = Template(self.id)
         offset = 0
-        limit = Transaction().cursor.IN_MAX
+        limit = Transaction().database.IN_MAX
         avail_qty = template.quantity
         fifo_moves = []
 
