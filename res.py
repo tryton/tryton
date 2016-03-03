@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond import backend
-from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 __all__ = ['User']
@@ -32,11 +31,10 @@ class User:
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         super(User, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.6
         table.not_null_action('dashboard_layout', action='remove')
