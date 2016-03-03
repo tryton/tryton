@@ -25,9 +25,9 @@ class TimesheetLine:
         Employee = pool.get('company.employee')
         TableHandler = backend.get('TableHandler')
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
-        table_h = TableHandler(cursor, cls, module_name)
+        table_h = TableHandler(cls, module_name)
 
         migrate_cost_price = not table_h.column_exist('cost_price')
 

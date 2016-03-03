@@ -82,9 +82,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
         super(EmployeeCostPrice, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 2.8 drop date_cost_price_uniq
         table.drop_constraint('date_cost_price_uniq')
