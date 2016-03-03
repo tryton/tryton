@@ -126,9 +126,9 @@ class Work(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TimesheetWork = Pool().get('timesheet.work')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table_project_work = TableHandler(cursor, cls, module_name)
-        table_timesheet_work = TableHandler(cursor, TimesheetWork, module_name)
+        cursor = Transaction().connection.cursor()
+        table_project_work = TableHandler(cls, module_name)
+        table_timesheet_work = TableHandler(TimesheetWork, module_name)
         project = cls.__table__()
         timesheet = TimesheetWork.__table__()
 
@@ -311,7 +311,7 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def get_total(cls, works, names):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
 
         works = cls.search([
