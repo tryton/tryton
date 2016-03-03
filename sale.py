@@ -1120,7 +1120,7 @@ class SaleLine(ModelSQL, ModelView):
     def get_move_done(self, name):
         Uom = Pool().get('product.uom')
         done = True
-        if not self.product:
+        if self.type != 'line' or not self.product:
             return True
         if self.product.type == 'service':
             return True
