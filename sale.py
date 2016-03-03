@@ -260,7 +260,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         TableHandler = backend.get('TableHandler')
         sale_line_invoice_line_table_name = 'sale_line_invoice_lines_rel'
         Move = pool.get('stock.move')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
         model_field = Table('ir_model_field')
         sql_table = cls.__table__()
@@ -287,7 +287,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                         len('packing'))],
                 where=model_field.name.like('%packing%')
                 & (model_field.module == module_name)))
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
         table.column_rename('packing_address', 'shipment_address')
@@ -300,15 +300,15 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 values=['shipment'],
                 where=sql_table.invoice_method == 'packing'))
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 2.2
         table.not_null_action('sale_date', 'remove')
 
         # state confirmed splitted into confirmed and processing
-        if (TableHandler.table_exist(cursor, SaleLine._table)
-                and TableHandler.table_exist(cursor,
+        if (TableHandler.table_exist(SaleLine._table)
+                and TableHandler.table_exist(
                     sale_line_invoice_line_table_name)
-                and TableHandler.table_exist(cursor, Move._table)):
+                and TableHandler.table_exist(Move._table)):
             sale_line = SaleLine.__table__()
             sale_line_invoice_line = \
                 Table(sale_line_invoice_line_table_name)
@@ -333,7 +333,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @classmethod
@@ -1069,10 +1069,10 @@ class SaleLine(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         super(SaleLine, cls).__register__(module_name)
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
@@ -1558,11 +1558,11 @@ class OpenCustomer(Wizard):
         ModelData = pool.get('ir.model.data')
         Wizard = pool.get('ir.action.wizard')
         Sale = pool.get('sale.sale')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sale = Sale.__table__()
 
         cursor.execute(*sale.select(sale.party, group_by=sale.party))
-        customer_ids = [line[0] for line in Transaction().cursor.fetchall()]
+        customer_ids = [line[0] for line in cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', customer_ids)])
         wizard = Wizard(ModelData.get_id('sale', 'act_open_customer'))
@@ -1584,7 +1584,7 @@ class HandleShipmentExceptionAsk(ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model = Table('ir_model')
         # Migration from 1.2: packing renamed into shipment
         cursor.execute(*model.update(
