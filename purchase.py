@@ -23,7 +23,7 @@ class Purchase:
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         model_data = Table('ir_model_data')
         # Migration from 1.2: packing renamed into shipment
         cursor.execute(*model_data.update(
