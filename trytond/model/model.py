@@ -3,7 +3,6 @@
 
 import copy
 import collections
-import warnings
 from functools import total_ordering
 
 from trytond.model import fields
@@ -347,7 +346,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         super(Model, self).__init__()
         if id is not None:
             id = int(id)
-        self.__dict__['id'] = id
+        self._id = id
         self._values = None
         parent_values = {}
         for name, value in kwargs.iteritems():
@@ -366,23 +365,11 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         self._init_values = self._values.copy() if self._values else None
 
     def __getattr__(self, name):
-        if name == 'id':
-            return self.__dict__['id']
-        elif self._values and name in self._values:
-            return self._values.get(name)
-        raise AttributeError("'%s' Model has no attribute '%s': %s"
-            % (self.__name__, name, self._values))
-
-    def __setattr__(self, name, value):
-        if name == 'id':
-            self.__dict__['id'] = value
-            return
-        super(Model, self).__setattr__(name, value)
-
-    def __getitem__(self, name):
-        warnings.warn('Use __getattr__ instead of __getitem__',
-            DeprecationWarning, stacklevel=2)
-        return getattr(self, name)
+        try:
+            return self._values[name]
+        except (KeyError, TypeError):
+            raise AttributeError("'%s' Model has no attribute '%s': %s"
+                % (self.__name__, name, self._values))
 
     def __contains__(self, name):
         return name in self._fields

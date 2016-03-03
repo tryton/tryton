@@ -229,6 +229,8 @@ class Field(object):
         if inst is None:
             return self
         assert self.name is not None
+        if self.name == 'id':
+            return inst._id
         return inst.__getattr__(self.name)
 
     def __set__(self, inst, value):

@@ -1445,7 +1445,7 @@ class ModelStorage(Model):
                     news = cls.create([save_values[r] for r in to_create])
                     for record, new in izip(to_create, news):
                         record._ids.remove(record.id)
-                        record.id = new.id
+                        record._id = new.id
                         record._ids.append(record.id)
                 if to_write:
                     cls.write(*sum(
