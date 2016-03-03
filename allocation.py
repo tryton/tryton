@@ -3,7 +3,6 @@
 from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
-from trytond.transaction import Transaction
 
 __all__ = ['Allocation']
 
@@ -22,12 +21,11 @@ class Allocation(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
 
         super(Allocation, cls).__register__(module_name)
 
         # Migration from 3.2:
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         table.drop_constraint('percentage_positive')
 
     @staticmethod
