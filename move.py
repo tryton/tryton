@@ -4,7 +4,7 @@ import datetime
 import operator
 from decimal import Decimal
 from functools import partial
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 
 from sql import Literal, Union, Column, Null
 from sql.aggregate import Sum
@@ -1164,18 +1164,24 @@ class Move(Workflow, ModelSQL, ModelView):
 
         product_getter = operator.itemgetter(grouping.index('product') + 1)
         res_product_ids = set()
-        quantities = {}
+        quantities = defaultdict(lambda: 0)
         keys = set()
+        # We can do a quick loop without propagation if the request is for a
+        # single location because all the locations are children and we can sum
+        # them directly.
+        if len(location_ids) == 1:
+            location, = location_ids
         for line in raw_lines:
-            location = line[0]
+            if len(location_ids) > 1:
+                location = line[0]
             key = tuple(line[1:-1])
             quantity = line[-1]
-            quantities[(location,) + key] = quantity
+            quantities[(location,) + key] += quantity
             res_product_ids.add(product_getter(line))
             keys.add(key)
 
         # Propagate quantities on from child locations to their parents
-        if with_childs:
+        if with_childs and len(location_ids) > 1:
             # Fetch all child locations
             locations = Location.search([
                     ('parent', 'child_of', location_ids),

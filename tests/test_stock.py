@@ -430,6 +430,11 @@ class StockTestCase(ModuleTestCase):
                 [warehouse.id], [product.id], with_childs=True)
             self.assertEqual(products_by_location[(warehouse.id, product.id)],
                 1)
+            products_by_location = self.product.products_by_location(
+                [warehouse.id, storage.id], [product.id], with_childs=True)
+            self.assertEqual(
+                products_by_location[(warehouse.id, product.id)], 1)
+            self.assertEqual(products_by_location[(storage.id, product.id)], 2)
 
             with Transaction().set_context(stock_skip_warehouse=True):
                 products_by_location = Product.products_by_location(
