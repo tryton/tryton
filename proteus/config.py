@@ -181,7 +181,7 @@ class _TrytondMethod(object):
                     result = [rpc.result(meth(i, *args, **kwargs))
                         for i in inst]
             if not rpc.readonly:
-                transaction.cursor.commit()
+                transaction.commit()
             Cache.resets(self._config.database_name)
         return result
 
