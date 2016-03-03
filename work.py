@@ -205,7 +205,7 @@ class Work:
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         progress = Progress.__table__()
         invoice_line = InvoiceLine.__table__()
@@ -257,7 +257,7 @@ class Work:
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         timesheet_work = TimesheetWork.__table__()
         timesheet_line = TimesheetLine.__table__()
@@ -303,7 +303,7 @@ class Work:
     def _get_duration_timesheet(works, invoiced):
         pool = Pool()
         TimesheetLine = pool.get('timesheet.line')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         line = TimesheetLine.__table__()
 
         durations = {}
