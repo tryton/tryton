@@ -112,13 +112,13 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
         pool = Pool()
         PriceList = pool.get('product.price_list')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         price_list = PriceList.__table__()
 
         super(SaleExtra, cls).__register__(module_name)
 
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         # Migration from 3.6: price_list not required and new company
         table.not_null_action('price_list', 'remove')
         query = sql_table.join(price_list,
