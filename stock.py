@@ -5,7 +5,6 @@ from sql.conditionals import Case
 
 from trytond.model import fields
 from trytond.pyson import Not, Eval, Bool
-from trytond.transaction import Transaction
 from trytond import backend
 from trytond.pool import PoolMeta
 
@@ -30,8 +29,7 @@ class Location:
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().cursor
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
 
         super(Location, cls).__register__(module_name)
 
