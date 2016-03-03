@@ -74,7 +74,7 @@ class Party:
 
         for model in self._credit_limit_to_lock():
             Model = pool.get(model)
-            Transaction().cursor.lock(Model._table)
+            Transaction().database.lock(Transaction().connection, Model._table)
         if self.credit_limit_amount < self.credit_amount + amount:
             if not in_group():
                 self.raise_user_error('credit_limit_amount',
