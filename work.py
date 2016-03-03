@@ -59,7 +59,7 @@ class Work:
         Line = pool.get('timesheet.line')
         Work = pool.get('timesheet.work')
         transaction = Transaction()
-        cursor = transaction.cursor
+        cursor = transaction.connection.cursor()
 
         costs = dict.fromkeys([w.id for w in works], 0)
 
@@ -104,7 +104,7 @@ class Work:
         Invoice = pool.get('account.invoice')
         Company = pool.get('company.company')
 
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         purchase_line = PurchaseLine.__table__()
         invoice_line = InvoiceLine.__table__()
