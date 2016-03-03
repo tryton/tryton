@@ -303,7 +303,7 @@ class Period:
         Lot = pool.get('stock.lot')
         Date = pool.get('ir.date')
         Lang = pool.get('ir.lang')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         move = Move.__table__()
         lot = Lot.__table__()
 
