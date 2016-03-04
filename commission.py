@@ -79,7 +79,7 @@ class Agent(ModelSQL, ModelView):
         pool = Pool()
         Commission = pool.get('commission')
         commission = Commission.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         ids = [a.id for a in agents]
         amounts = dict.fromkeys(ids, None)
