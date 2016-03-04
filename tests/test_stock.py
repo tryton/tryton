@@ -430,7 +430,7 @@ class StockTestCase(ModuleTestCase):
                 [warehouse.id], [product.id], with_childs=True)
             self.assertEqual(products_by_location[(warehouse.id, product.id)],
                 1)
-            products_by_location = self.product.products_by_location(
+            products_by_location = Product.products_by_location(
                 [warehouse.id, storage.id], [product.id], with_childs=True)
             self.assertEqual(
                 products_by_location[(warehouse.id, product.id)], 1)
