@@ -107,7 +107,7 @@ class Transaction(object):
                 self.commit()
             try:
                 self.rollback()
-                self.database.put_connection(self.connection)
+                self.database.put_connection(self.connection, self.close)
             finally:
                 self.database = None
                 self.readonly = False
