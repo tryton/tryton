@@ -7,7 +7,6 @@ Miscelleanous tools used by tryton
 import os
 import sys
 import subprocess
-from threading import local
 import smtplib
 from array import array
 from itertools import islice
@@ -202,103 +201,6 @@ def mod10r(number):
         if digit.isdigit():
             report = codec[(int(digit) + report) % 10]
     return result + str((10 - report) % 10)
-
-
-class LocalDict(local):
-
-    def __init__(self):
-        super(LocalDict, self).__init__()
-        self._dict = {}
-
-    def __str__(self):
-        return str(self._dict)
-
-    def __repr__(self):
-        return str(self._dict)
-
-    def clear(self):
-        return self._dict.clear()
-
-    def keys(self):
-        return self._dict.keys()
-
-    def __setitem__(self, i, y):
-        self._dict.__setitem__(i, y)
-
-    def __getitem__(self, i):
-        return self._dict.__getitem__(i)
-
-    def copy(self):
-        return self._dict.copy()
-
-    def iteritems(self):
-        return self._dict.iteritems()
-
-    def iterkeys(self):
-        return self._dict.iterkeys()
-
-    def itervalues(self):
-        return self._dict.itervalues()
-
-    def pop(self, k, d=None):
-        return self._dict.pop(k, d)
-
-    def popitem(self):
-        return self._dict.popitem()
-
-    def setdefault(self, k, d=None):
-        return self._dict.setdefault(k, d)
-
-    def update(self, E, **F):
-        return self._dict.update(E, F)
-
-    def values(self):
-        return self._dict.values()
-
-    def get(self, k, d=None):
-        return self._dict.get(k, d)
-
-    def has_key(self, k):
-        return k in self._dict
-
-    def items(self):
-        return self._dict.items()
-
-    def __cmp__(self, y):
-        return self._dict.__cmp__(y)
-
-    def __contains__(self, k):
-        return self._dict.__contains__(k)
-
-    def __delitem__(self, y):
-        return self._dict.__delitem__(y)
-
-    def __eq__(self, y):
-        return self._dict.__eq__(y)
-
-    def __ge__(self, y):
-        return self._dict.__ge__(y)
-
-    def __gt__(self, y):
-        return self._dict.__gt__(y)
-
-    def __hash__(self):
-        return self._dict.__hash__()
-
-    def __iter__(self):
-        return self._dict.__iter__()
-
-    def __le__(self, y):
-        return self._dict.__le__(y)
-
-    def __len__(self):
-        return self._dict.__len__()
-
-    def __lt__(self, y):
-        return self._dict.__lt__(y)
-
-    def __ne__(self, y):
-        return self._dict.__ne__(y)
 
 
 def reduce_ids(field, ids):
