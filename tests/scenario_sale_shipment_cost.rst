@@ -176,8 +176,8 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> sorted([l.product for l in invoice.lines]) == \
-    ...     sorted([product, carrier_product])
+    >>> sorted([l.product.id for l in invoice.lines]) == \
+    ...     sorted([product.id, carrier_product.id])
     True
     >>> invoice.untaxed_amount
     Decimal('83.00')
