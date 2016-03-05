@@ -2680,10 +2680,13 @@ class PayInvoice(Wizard):
             if line_id not in default['lines_to_pay']:
                 default['lines'].remove(line_id)
 
+        default['payment_lines'] = [x.id for x in invoice.payment_lines
+                if not x.reconciliation]
+
         default['amount_writeoff'] = Decimal('0.0')
         for line in Line.browse(default['lines']):
             default['amount_writeoff'] += line.debit - line.credit
-        for line in invoice.payment_lines:
+        for line in Line.browse(default['payment_lines']):
             default['amount_writeoff'] += line.debit - line.credit
         if invoice.type in ('in_invoice', 'out_credit_note'):
             default['amount_writeoff'] = - default['amount_writeoff'] - amount
@@ -2693,8 +2696,6 @@ class PayInvoice(Wizard):
         default['currency_writeoff'] = invoice.company.currency.id
         default['currency_digits_writeoff'] = invoice.company.currency.digits
         default['invoice'] = invoice.id
-        default['payment_lines'] = [x.id for x in invoice.payment_lines
-                if not x.reconciliation]
 
         if (amount > invoice.amount_to_pay
                 or invoice.company.currency.is_zero(amount)):
