@@ -10,10 +10,10 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
 
 __all__ = ['Move']
-__metaclass__ = PoolMeta
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move'
 
     @classmethod
