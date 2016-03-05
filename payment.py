@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
-from decimal import Decimal
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
@@ -85,8 +84,10 @@ class Payment:
         move = Move(journal=self.journal.clearing_journal, origin=self,
             date=date, period=period)
         line = Line()
-        line.debit = self.amount if self.line.credit else Decimal(0)
-        line.credit = self.amount if self.line.debit else Decimal(0)
+        if self.kind == 'payable':
+            line.debit, line.credit = self.amount, 0
+        else:
+            line.debit, line.credit = 0, self.amount
         line.account = self.line.account
         line.amount_second_currency = (-self.line.amount_second_currency
             if self.line.amount_second_currency else None)
@@ -94,8 +95,10 @@ class Payment:
         line.party = (self.line.party
             if self.line.account.party_required else None)
         counterpart = Line()
-        counterpart.debit = self.amount if self.line.debit else Decimal(0)
-        counterpart.credit = self.amount if self.line.credit else Decimal(0)
+        if self.kind == 'payable':
+            counterpart.debit, counterpart.credit = 0, self.amount
+        else:
+            counterpart.debit, counterpart.credit = self.amount, 0
         counterpart.account = self.journal.clearing_account
         counterpart.amount_second_currency = self.line.amount_second_currency
         counterpart.second_currency = self.line.second_currency
