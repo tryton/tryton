@@ -9,8 +9,8 @@ __all__ = ['Template', 'Product']
 
 
 class Template:
-    __name__ = 'product.template'
     __metaclass__ = PoolMeta
+    __name__ = 'product.template'
     landed_cost = fields.Boolean('Landed Cost', states={
             'readonly': ~Eval('active', True),
             'invisible': Eval('type') != 'service',
