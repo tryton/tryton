@@ -488,16 +488,18 @@
 
             if (row) {
                 column = row.next_column(null, new_);
-                td = row._get_column_td(column);
-                if (this.editable) {
-                    td.triggerHandler('click');
-                    if (new_) {
+                if (column !== null) {
+                    td = row._get_column_td(column);
+                    if (this.editable) {
                         td.triggerHandler('click');
+                        if (new_) {
+                            td.triggerHandler('click');
+                        } else {
+                            td.find(':input,[tabindex=0]').focus();
+                        }
                     } else {
                         td.find(':input,[tabindex=0]').focus();
                     }
-                } else {
-                    td.find(':input,[tabindex=0]').focus();
                 }
             }
         }
@@ -888,10 +890,9 @@
                     readonly = false;
                 }
                 if (!(invisible || readonly)) {
-                    break;
+                    return column_index;
                 }
             }
-            return column_index;
         }
     });
 
@@ -1049,13 +1050,15 @@
                     }
                     event_.preventDefault();
                     next_idx = this.next_column(this.edited_column, true, sign);
-                    window.setTimeout(function() {
-                        var td = this._get_column_td(next_idx);
-                        td.triggerHandler('click', {
-                            column: next_idx,
-                            td: td
-                        });
-                    }.bind(this), 0);
+                    if (next_idx !== null) {
+                        window.setTimeout(function() {
+                            var td = this._get_column_td(next_idx);
+                            td.triggerHandler('click', {
+                                column: next_idx,
+                                td: td
+                            });
+                        }.bind(this), 0);
+                    }
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
                     event_.which == Sao.common.DOWN_KEYCODE) {
                     if (event_.which == Sao.common.UP_KEYCODE) {
