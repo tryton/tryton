@@ -125,13 +125,14 @@ class JSONParser(object):
 
 
 class JSONUnmarshaller(object):
-    data = ''
+    def __init__(self):
+        self.data = []
 
     def feed(self, data):
-        self.data += data
+        self.data.append(data)
 
     def close(self):
-        return json.loads(self.data, object_hook=object_hook)
+        return json.loads(''.join(self.data), object_hook=object_hook)
 
 
 class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
