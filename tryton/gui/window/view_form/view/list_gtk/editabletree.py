@@ -43,8 +43,7 @@ class TreeView(gtk.TreeView):
             else:
                 readonly = False
             if not (invisible or readonly):
-                break
-        return column
+                return column
 
     def prev_column(self, path, column=None, editable=True):
         return self.next_column(path, column=column, editable=editable,
