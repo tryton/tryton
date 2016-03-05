@@ -8,10 +8,10 @@ from trytond.model import ModelView, Workflow
 
 
 __all__ = ['Invoice', 'InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
 
     @classmethod
@@ -48,6 +48,7 @@ class Invoice:
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     def get_move_line(self):

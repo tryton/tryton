@@ -8,10 +8,10 @@ from trytond.pyson import Eval, Bool
 
 
 __all__ = ['Agent', 'Commission']
-__metaclass__ = PoolMeta
 
 
 class Agent:
+    __metaclass__ = PoolMeta
     __name__ = 'commission.agent'
     waiting_account = fields.Many2One('account.account', 'Waiting Account',
         domain=[
@@ -22,6 +22,7 @@ class Agent:
 
 
 class Commission:
+    __metaclass__ = PoolMeta
     __name__ = 'commission'
     waiting_move = fields.Many2One('account.move', 'Move', readonly=True)
 
