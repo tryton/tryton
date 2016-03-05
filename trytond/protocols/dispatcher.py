@@ -78,8 +78,6 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
         elif method == 'db_exist':
             try:
                 database = Database(*args, **kwargs).connect()
-                cursor = database.cursor()
-                cursor.close(close=True)
                 return True
             except Exception:
                 return False
