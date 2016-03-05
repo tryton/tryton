@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
                 view_ids="party.category_view_list"/>
         </page>
         <page name="identifiers">
-            <field name="identifiers" colspan="4"/>
+            <field name="identifiers" colspan="4" pre_validate="1"/>
         </page>
     </notebook>
 </form>

@@ -295,18 +295,20 @@ class PartyIdentifier(ModelSQL, ModelView):
                 pass
         return self.code
 
-    @classmethod
-    def validate(cls, identifiers):
-        super(PartyIdentifier, cls).validate(identifiers)
-        for identifier in identifiers:
-            identifier.check_code()
+    def pre_validate(self):
+        super(PartyIdentifier, self).pre_validate()
+        self.check_code()
 
     def check_code(self):
         if self.type == 'eu_vat':
             if not vat.is_valid(self.code):
+                if self.party.id > 0:
+                    party = self.party.rec_name
+                else:
+                    party = ''
                 self.raise_user_error('invalid_vat', {
                         'code': self.code,
-                        'party': self.party.rec_name,
+                        'party': party,
                         })
 
 
