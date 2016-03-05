@@ -373,6 +373,11 @@ Binary
 
 A binary field. It will be represented in Python by a ``bytes`` instance.
 
+.. warning::
+    If the context contains a key composed of the model name and field name
+    separated by a dot and its value is the string `size` then the read value
+    is the size instead of the content.
+
 :class:`Binary` has one extra optional argument:
 
 .. attribute:: Binary.filename

@@ -87,8 +87,8 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
 
     def get_data(self, name):
         db_name = Transaction().database.name
-        format_ = Transaction().context.pop('%s.%s'
-            % (self.__name__, name), '')
+        format_ = Transaction().context.get(
+            '%s.%s' % (self.__name__, name), '')
         value = None
         if name == 'data_size' or format_ == 'size':
             value = 0
