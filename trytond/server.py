@@ -82,14 +82,13 @@ class TrytonServer(object):
         for db_name in self.options.database_names:
             init[db_name] = False
             try:
-                with Transaction().start(db_name, 0) as transaction,\
-                        transaction.connection.cursor() as cursor:
+                with Transaction().start(db_name, 0) as transaction:
                     database = Database(db_name)
                     database.connect()
                     if self.options.update:
                         if not database.test():
                             self.logger.info("init db")
-                            database.init(cursor)
+                            database.init()
                             init[db_name] = True
                     elif not database.test():
                         raise Exception("'%s' is not a Tryton database!" %
