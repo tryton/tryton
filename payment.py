@@ -9,11 +9,11 @@ from trytond.pool import PoolMeta
 from trytond.modules.account_payment_sepa import payment as sepa_payment
 
 
-__metaclass__ = PoolMeta
 __all__ = ['Journal', 'Group']
 
 
 class Journal:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment.journal'
 
     @classmethod
@@ -39,6 +39,7 @@ loader = genshi.template.TemplateLoader([
 
 
 class Group:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment.group'
 
     def get_sepa_template(self):
