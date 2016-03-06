@@ -22,12 +22,29 @@ from trytond.modules.company import CompanyReport
 
 from .sepa_handler import CAMT054
 
-__metaclass__ = PoolMeta
 __all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message',
     'MandateReport']
 
+# XXX fix: https://genshi.edgewall.org/ticket/582
+from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
+if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
+    def visit_NameConstant(self, node):
+        if node.value is None:
+            self._write('None')
+        elif node.value is True:
+            self._write('True')
+        elif node.value is False:
+            self._write('False')
+        else:
+            raise Exception("Unknown NameConstant %r" % (node.value,))
+    ASTCodeGenerator.visit_NameConstant = visit_NameConstant
+if not hasattr(ASTTransformer, 'visit_NameConstant'):
+    # Re-use visit_Name because _clone is deleted
+    ASTTransformer.visit_NameConstant = ASTTransformer.visit_Name
+
 
 class Journal:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment.journal'
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party'), 'on_change_with_company_party')
@@ -116,6 +133,7 @@ loader = genshi.template.TemplateLoader(
 
 
 class Group:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment.group'
     sepa_messages = fields.One2Many('account.payment.sepa.message', 'origin',
         'SEPA Messages', readonly=True,
@@ -203,6 +221,7 @@ class Group:
 
 
 class Payment:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment'
 
     sepa_mandate = fields.Many2One('account.payment.sepa.mandate', 'Mandate',

@@ -3,11 +3,11 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 
-__metaclass__ = PoolMeta
 __all__ = ['Party']
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     sepa_creditor_identifier = fields.Char('SEPA Creditor Identifier', size=35)
     sepa_creditor_identifier_used = fields.Function(fields.Char(
