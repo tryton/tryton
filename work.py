@@ -11,7 +11,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Work', 'PredecessorSuccessor', 'Leveling']
-__metaclass__ = PoolMeta
 
 
 def intfloor(x):
@@ -19,6 +18,7 @@ def intfloor(x):
 
 
 class Work:
+    __metaclass__ = PoolMeta
     __name__ = 'project.work'
     predecessors = fields.Many2Many('project.predecessor_successor',
         'successor', 'predecessor', 'Predecessors',
