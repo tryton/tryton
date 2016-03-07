@@ -13,10 +13,10 @@ from trytond.model import ModelView, fields
 
 __all__ = ['TaxTemplate', 'TaxRuleTemplate',
     'AccountFrFEC', 'AccountFrFECStart', 'AccountFrFECResult']
-__metaclass__ = PoolMeta
 
 
 class TaxTemplate:
+    __metaclass__ = PoolMeta
     __name__ = 'account.tax.template'
 
     @classmethod
@@ -53,6 +53,7 @@ class TaxTemplate:
 
 
 class TaxRuleTemplate:
+    __metaclass__ = PoolMeta
     __name__ = 'account.tax.rule.template'
 
     @classmethod
