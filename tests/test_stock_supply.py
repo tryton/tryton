@@ -7,6 +7,7 @@ from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import create_company, set_company
@@ -129,9 +130,11 @@ def suite():
         StockSupplyTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_stock_internal_supply.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
             'scenario_stock_supply_purchase_request.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite

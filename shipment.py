@@ -6,11 +6,10 @@ from sql.functions import Overlay, Position
 from trytond.model import ModelView, ModelSQL
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 __all__ = ['ShipmentInternal',
     'CreateShipmentInternalStart', 'CreateShipmentInternal']
-__metaclass__ = PoolMeta
 
 
 class ShipmentInternal(ModelSQL, ModelView):
