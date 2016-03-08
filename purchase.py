@@ -5,10 +5,10 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import PoolMeta
 
 __all__ = ['ProductSupplier', 'ProductSupplierDay']
-__metaclass__ = PoolMeta
 
 
 class ProductSupplier:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.product_supplier'
     weekdays = fields.One2Many('purchase.product_supplier.day',
         'product_supplier', 'Week Days')
