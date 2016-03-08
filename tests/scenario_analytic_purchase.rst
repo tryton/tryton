@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> from.trytond.modules.account_invoice.tests.tools import \
+    >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
@@ -185,10 +185,10 @@ Analytic entries are not required until quotation::
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
     >>> purchase.save()
-    >>> purchase.click('quote')
+    >>> purchase.click('quote')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', (u'Analytic account is required for "Root" on line "product".', ''))
+    UserError: ...
     >>> purchase_line, = purchase.lines
     >>> entry, mandatory_entry = purchase_line.analytic_accounts
     >>> mandatory_entry.account = mandatory_analytic_account

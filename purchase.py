@@ -6,10 +6,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.analytic_account import AnalyticMixin
 
 __all__ = ['Purchase', 'PurchaseLine', 'AnalyticAccountEntry']
-__metaclass__ = PoolMeta
 
 
 class Purchase:
+    __metaclass__ = PoolMeta
     __name__ = "purchase.purchase"
 
     @classmethod
@@ -62,6 +62,7 @@ class PurchaseLine(AnalyticMixin):
 
 
 class AnalyticAccountEntry:
+    __metaclass__ = PoolMeta
     __name__ = 'analytic.account.entry'
 
     @classmethod
