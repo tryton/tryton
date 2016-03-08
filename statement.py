@@ -6,10 +6,10 @@ from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 
 __all__ = ['Statement', 'StatementLine']
-__metaclass__ = PoolMeta
 
 
 class Statement:
+    __metaclass__ = PoolMeta
     __name__ = 'account.statement'
 
     @classmethod
@@ -40,6 +40,7 @@ class Statement:
 
 
 class StatementLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.statement.line'
     payment = fields.Many2One('account.payment', 'Payment',
         domain=[

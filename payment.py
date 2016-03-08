@@ -7,10 +7,10 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
 
 __all__ = ['Journal', 'Payment']
-__metaclass__ = PoolMeta
 
 
 class Journal:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment.journal'
     clearing_account = fields.Many2One('account.account', 'Clearing Account',
         domain=[('party_required', '=', False)],
@@ -26,6 +26,7 @@ class Journal:
 
 
 class Payment:
+    __metaclass__ = PoolMeta
     __name__ = 'account.payment'
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
         readonly=True)
