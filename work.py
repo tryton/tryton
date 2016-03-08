@@ -20,7 +20,6 @@ from trytond.tools import reduce_ids, grouped_slice
 
 
 __all__ = ['Work', 'WorkInvoicedProgress', 'OpenInvoice']
-__metaclass__ = PoolMeta
 
 INVOICE_METHODS = [
     ('manual', 'Manual'),
@@ -31,6 +30,7 @@ INVOICE_METHODS = [
 
 
 class Work:
+    __metaclass__ = PoolMeta
     __name__ = 'project.work'
     project_invoice_method = fields.Selection(INVOICE_METHODS,
         'Invoice Method',

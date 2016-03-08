@@ -5,10 +5,10 @@ from trytond.pool import PoolMeta
 
 
 __all__ = ['TimesheetLine']
-__metaclass__ = PoolMeta
 
 
 class TimesheetLine:
+    __metaclass__ = PoolMeta
     __name__ = 'timesheet.line'
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         readonly=True)
