@@ -9,10 +9,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond import backend
 
 __all__ = ['ShipmentOut', 'ShipmentOutReturn', 'Move']
-__metaclass__ = PoolMeta
 
 
 class ShipmentOut:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -63,6 +63,7 @@ class ShipmentOut:
 
 
 class ShipmentOutReturn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
@@ -117,6 +118,7 @@ class ShipmentOutReturn:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
     sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=True),
         'get_sale', searcher='search_sale')

@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts, create_tax
-    >>> from.trytond.modules.account_invoice.tests.tools import \
+    >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
@@ -214,9 +214,9 @@ Sale 5 products::
 Invoice line must be linked to stock move::
 
     >>> _, invoice_line1, invoice_line2 = sorted(invoice.lines,
-    ...     key=lambda l: l.quantity)
+    ...     key=lambda l: l.quantity or 0)
     >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
-    ...     key=lambda m: m.quantity)
+    ...     key=lambda m: m.quantity or 0)
     >>> invoice_line1.stock_moves == [stock_move1]
     True
     >>> stock_move1.invoice_lines == [invoice_line1]
@@ -282,7 +282,7 @@ Not yet linked to invoice lines::
     >>> shipment, = sale.shipments
     >>> config.user = stock_user.id
     >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
-    ...     key=lambda m: m.quantity)
+    ...     key=lambda m: m.quantity or 0)
     >>> len(stock_move1.invoice_lines)
     0
     >>> len(stock_move2.invoice_lines)
@@ -306,7 +306,7 @@ Open customer invoice::
     >>> invoice.type
     u'out_invoice'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
-    ...     key=lambda l: l.quantity)
+    ...     key=lambda l: l.quantity or 0)
     >>> for line in invoice.lines:
     ...     line.quantity = 1
     ...     line.save()
@@ -651,8 +651,8 @@ Return sales using the wizard::
     ...     ])
     >>> returned_sale.origin == sale_to_return
     True
-    >>> sorted([x.quantity for x in returned_sale.lines])
-    [None, -1.0]
+    >>> sorted([x.quantity or 0 for x in returned_sale.lines])
+    [-1.0, 0]
 
 Create a sale to be invoiced on shipment partialy and check correctly linked
 to invoices::

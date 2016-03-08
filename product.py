@@ -9,10 +9,10 @@ from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['Template', 'Product']
-__metaclass__ = PoolMeta
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     salable = fields.Boolean('Salable', states={
             'readonly': ~Eval('active', True),
@@ -96,6 +96,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     @staticmethod

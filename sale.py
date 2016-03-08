@@ -27,7 +27,6 @@ __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
     'ReturnSaleStart', 'ReturnSale']
-__metaclass__ = PoolMeta
 
 _ZERO = Decimal(0)
 
@@ -677,7 +676,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         if not self.invoice_address or not self.shipment_address:
             self.raise_user_error('addresses_required', (self.rec_name,))
         for line in self.lines:
-            if line.quantity >= 0:
+            if line.quantity is not None and line.quantity >= 0:
                 location = line.from_location
             else:
                 location = line.to_location
@@ -1268,14 +1267,14 @@ class SaleLine(ModelSQL, ModelView):
         return self.sale.warehouse.id if self.sale.warehouse else None
 
     def get_from_location(self, name):
-        if self.quantity >= 0:
+        if self.quantity is not None and self.quantity >= 0:
             if self.warehouse:
                 return self.warehouse.output_location.id
         else:
             return self.sale.party.customer_location.id
 
     def get_to_location(self, name):
-        if self.quantity >= 0:
+        if self.quantity is not None and self.quantity >= 0:
             return self.sale.party.customer_location.id
         else:
             if self.warehouse:
@@ -1286,7 +1285,7 @@ class SaleLine(ModelSQL, ModelView):
         if self.moves:
             return min(m.effective_date if m.effective_date else m.planned_date
                 for m in self.moves)
-        if self.product and self.quantity > 0:
+        if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_shipping_date(date=date)
 
