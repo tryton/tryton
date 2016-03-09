@@ -9,10 +9,10 @@ from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest', 'Purchase',
     'HandlePurchaseCancellationException']
-__metaclass__ = PoolMeta
 
 
 class PurchaseRequest:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request'
 
     @classmethod
@@ -49,6 +49,7 @@ class PurchaseRequest:
 
 
 class Purchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.purchase'
 
     @classmethod
@@ -85,6 +86,7 @@ class Purchase:
 
 
 class HandlePurchaseCancellationException:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request.handle.purchase.cancellation'
 
     def transition_cancel_request(self):
