@@ -9,10 +9,10 @@ from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest', 'PurchaseConfig', 'Purchase', 'PurchaseLine',
     'ProductSupplier', 'CreatePurchase', 'PurchaseHandleShipmentException']
-__metaclass__ = PoolMeta
 
 
 class PurchaseRequest:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request'
 
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
@@ -29,6 +29,7 @@ class PurchaseRequest:
 
 
 class PurchaseConfig:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.configuration'
 
     purchase_drop_location = fields.Property(
@@ -37,6 +38,7 @@ class PurchaseConfig:
 
 
 class Purchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.purchase'
 
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
@@ -124,6 +126,7 @@ class Purchase:
 
 
 class PurchaseLine:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.line'
 
     def get_to_location(self, name):
@@ -140,6 +143,7 @@ class PurchaseLine:
 
 
 class ProductSupplier:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.product_supplier'
 
     drop_shipment = fields.Boolean('Drop Shipment',
@@ -150,6 +154,7 @@ class ProductSupplier:
 
 
 class CreatePurchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
@@ -165,6 +170,7 @@ class CreatePurchase:
 
 
 class PurchaseHandleShipmentException:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.handle.shipment.exception'
 
     def transition_handle(self):

@@ -6,10 +6,10 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['SaleConfig', 'Sale', 'SaleLine']
-__metaclass__ = PoolMeta
 
 
 class SaleConfig:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
 
     sale_drop_location = fields.Property(
@@ -18,6 +18,7 @@ class SaleConfig:
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     drop_shipments = fields.Function(fields.One2Many('stock.shipment.drop',
@@ -60,6 +61,7 @@ class Sale:
 
 
 class SaleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
     @property

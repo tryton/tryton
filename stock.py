@@ -14,10 +14,10 @@ from trytond.tools import grouped_slice
 
 
 __all__ = ['Configuration', 'ShipmentDrop', 'Move']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.configuration'
 
     shipment_drop_sequence = fields.Property(fields.Many2One('ir.sequence',
@@ -445,6 +445,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
 
     customer_drop = fields.Function(fields.Many2One('party.party',
