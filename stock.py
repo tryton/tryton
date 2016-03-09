@@ -4,10 +4,10 @@ from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
 __all__ = ['OrderPoint']
-__metaclass__ = PoolMeta
 
 
 class OrderPoint:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.order_point'
 
     @classmethod

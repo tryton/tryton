@@ -11,10 +11,10 @@ from trytond.tools import grouped_slice
 
 __all__ = ['Configuration', 'Production',
     'CreateProductionRequestStart', 'CreateProductionRequest']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'production.configuration'
     supply_period = fields.Property(fields.Numeric('Supply Period',
             digits=(16, 0), help='In number of days', required=True))
@@ -25,6 +25,7 @@ class Configuration:
 
 
 class Production:
+    __metaclass__ = PoolMeta
     __name__ = 'production'
 
     @classmethod

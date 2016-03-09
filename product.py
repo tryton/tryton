@@ -4,10 +4,10 @@
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Product']
-__metaclass__ = PoolMeta
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
     def get_supply_period(self):
