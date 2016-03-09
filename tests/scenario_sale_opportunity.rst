@@ -10,7 +10,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
-    >>> from.trytond.modules.account_invoice.tests.tools import \
+    >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
 
 Create database::

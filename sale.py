@@ -6,7 +6,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
 __all__ = ['Sale']
-__metaclass__ = PoolMeta
 
 
 def process_opportunity(func):
@@ -24,6 +23,7 @@ def process_opportunity(func):
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @classmethod
