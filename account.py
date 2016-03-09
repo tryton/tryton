@@ -8,8 +8,8 @@ __all__ = ['InvoiceLine']
 
 
 class InvoiceLine:
-    __name__ = 'account.invoice.line'
     __metaclass__ = PoolMeta
+    __name__ = 'account.invoice.line'
 
     @classmethod
     def _get_origin(cls):

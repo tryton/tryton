@@ -7,10 +7,10 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 __all__ = ['Configuration', 'Sale']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
 
     complaint_sequence = fields.Property(fields.Many2One('ir.sequence',
@@ -24,6 +24,7 @@ class Configuration:
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @classmethod
