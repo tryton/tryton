@@ -5,10 +5,10 @@ from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
 __all__ = ['Party']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     sale_price_list = fields.Property(fields.Many2One('product.price_list',
             'Sale Price List',

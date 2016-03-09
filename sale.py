@@ -5,10 +5,10 @@ from trytond.pyson import Eval, Not, Equal, Or, Bool
 from trytond.pool import PoolMeta
 
 __all__ = ['Sale', 'SaleLine']
-__metaclass__ = PoolMeta
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
     price_list = fields.Many2One('product.price_list', 'Price List',
         domain=[('company', '=', Eval('company'))],
@@ -36,6 +36,7 @@ class Sale:
 
 
 class SaleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
     @classmethod
