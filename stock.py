@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['ShipmentOut']
-__metaclass__ = PoolMeta
 
 
 class ShipmentOut:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',

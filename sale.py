@@ -6,10 +6,10 @@ from trytond.pyson import Eval, Bool
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Configuration', 'Sale', 'SaleLine']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
     sale_carrier = fields.Property(fields.Many2One('carrier', 'Carrier',
         domain=[('carrier_product.salable', '=', True)],
@@ -28,6 +28,7 @@ class Configuration:
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
     carrier = fields.Many2One('carrier', 'Carrier',
         domain=[('carrier_product.salable', '=', True)],
@@ -170,6 +171,7 @@ class Sale:
 
 
 class SaleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
     shipment_cost = fields.Numeric('Shipment Cost',
         digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)))
