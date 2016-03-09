@@ -4,11 +4,11 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
-__metaclass__ = PoolMeta
 __all__ = ['Party']
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     sale_invoice_grouping_method = fields.Property(fields.Selection([

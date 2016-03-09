@@ -3,11 +3,11 @@
 
 from trytond.pool import Pool, PoolMeta
 
-__metaclass__ = PoolMeta
 __all__ = ['Sale']
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @property
