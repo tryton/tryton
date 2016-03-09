@@ -9,10 +9,10 @@ from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Purchase', 'PurchaseInvoiceLine', 'PurchaseIgnoredInvoiceLine',
     'HandleInvoiceException']
-__metaclass__ = PoolMeta
 
 
 class Purchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.purchase'
     invoice_lines = fields.Function(fields.One2Many('account.invoice.line',
             None, 'Invoice Lines'), 'get_invoice_lines',
@@ -112,6 +112,7 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
 
 
 class HandleInvoiceException:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.handle.invoice.exception'
 
     def transition_handle(self):
