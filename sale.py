@@ -13,10 +13,10 @@ from trytond import backend
 
 __all__ = ['Sale', 'SaleLine',
     'SaleExtra', 'SaleExtraLine']
-__metaclass__ = PoolMeta
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @classmethod
@@ -58,6 +58,7 @@ class Sale:
 
 
 class SaleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
     extra = fields.Many2One('sale.extra.line', 'Extra', ondelete='RESTRICT')
