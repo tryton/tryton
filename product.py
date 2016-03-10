@@ -14,10 +14,10 @@ from trytond.modules.product import price_digits, TemplateFunction
 
 __all__ = ['Category', 'Template', 'Product', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
-__metaclass__ = PoolMeta
 
 
 class Category:
+    __metaclass__ = PoolMeta
     __name__ = 'product.category'
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock', domain=[
@@ -87,6 +87,7 @@ class Category:
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock',
@@ -181,6 +182,7 @@ class Template:
 
 
 class Product:
+    __metaclass__ = PoolMeta
     __name__ = 'product.product'
     # Avoid raise of UserError from MissingFunction
     account_stock_used = fields.Function(

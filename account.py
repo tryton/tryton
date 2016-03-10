@@ -5,10 +5,10 @@ from trytond.pyson import Eval, Bool, Get
 from trytond.pool import PoolMeta
 
 __all__ = ['Configuration', 'FiscalYear', 'AccountMove']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
     stock_journal = fields.Property(fields.Many2One(
             'account.journal', 'Stock Journal',
@@ -22,6 +22,7 @@ class Configuration:
 
 
 class FiscalYear:
+    __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
     account_stock_method = fields.Selection([
             (None, 'None'),
@@ -30,6 +31,7 @@ class FiscalYear:
 
 
 class AccountMove:
+    __metaclass__ = PoolMeta
     __name__ = 'account.move'
 
     @classmethod
