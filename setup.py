@@ -35,7 +35,7 @@ if minor_version % 2:
 if platform.python_implementation() == 'PyPy':
     pg_require = ['psycopg2cffi >= 2.5']
 else:
-    pg_require = ['psycopg2 >= 2.0']
+    pg_require = ['psycopg2 >= 2.5']
 
 setup(name=name,
     version=version,

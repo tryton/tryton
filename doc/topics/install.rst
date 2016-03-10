@@ -14,7 +14,7 @@ Prerequisites
     * python-dateutil (http://labix.org/python-dateutil)
     * polib (https://bitbucket.org/izi/polib/wiki/Home)
     * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
-    * Optional: psycopg 2 or later (http://www.initd.org/)
+    * Optional: psycopg 2.5.0 or later (http://www.initd.org/)
     * Optional: psycopg2cffi 2.5.0 or later
       (http://github.com/chtd/psycopg2cffi)
     * Optional: MySQL-python (http://sourceforge.net/projects/mysql-python/)
