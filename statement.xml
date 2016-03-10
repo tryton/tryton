@@ -349,43 +349,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_move_lines_form"/>
         </record>
 
-        <record model="ir.action.act_window" id="act_move_lines_form2">
-            <field name="name">Move Lines</field>
-            <field name="res_model">account.move.line</field>
-            <field name="domain"
-                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword" id="act_move_lines_form2_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">account.statement.line,-1</field>
-            <field name="action" ref="act_move_lines_form2"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_moves_form">
             <field name="name">Moves</field>
             <field name="res_model">account.move</field>
             <field name="domain"
-                eval="[('origin.statement.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_moves_form_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">account.statement,-1</field>
             <field name="action" ref="act_moves_form"/>
-        </record>
-
-        <record model="ir.action.act_window" id="act_moves_form2">
-            <field name="name">Moves</field>
-            <field name="res_model">account.move</field>
-            <field name="domain"
-                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword" id="act_moves_form2_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">account.statement.line,-1</field>
-            <field name="action" ref="act_moves_form2"/>
         </record>
 
         <record model="ir.action.act_window" id="act_line_groups_form">
