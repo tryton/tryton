@@ -3,10 +3,10 @@
 from trytond.pool import PoolMeta
 
 __all__ = ['FiscalYear']
-__metaclass__ = PoolMeta
 
 
 class FiscalYear:
+    __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
 
     @classmethod

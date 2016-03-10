@@ -7,7 +7,6 @@ from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['Move']
-__metaclass__ = PoolMeta
 
 
 def _get_field(type_):
@@ -18,6 +17,7 @@ def _get_field(type_):
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
     in_anglo_saxon_quantity = fields.Float('Input Anglo-Saxon Quantity',
         required=True)

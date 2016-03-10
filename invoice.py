@@ -5,10 +5,10 @@ import operator
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['InvoiceLine']
-__metaclass__ = PoolMeta
 
 
 class InvoiceLine:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     def _get_anglo_saxon_move_lines(self, amount, type_):
