@@ -6,6 +6,7 @@ import doctest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import doctest_checker
 
 
 class SaleStockQuantityTestCase(ModuleTestCase):
@@ -19,5 +20,6 @@ def suite():
         SaleStockQuantityTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_sale_stock_quantity.rst',
             setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
