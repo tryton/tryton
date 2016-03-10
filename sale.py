@@ -5,7 +5,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.analytic_account import AnalyticMixin
 
 __all__ = ['SaleLine', 'AnalyticAccountEntry']
-__metaclass__ = PoolMeta
 
 
 class SaleLine(AnalyticMixin):
@@ -26,6 +25,7 @@ class SaleLine(AnalyticMixin):
 
 
 class AnalyticAccountEntry:
+    __metaclass__ = PoolMeta
     __name__ = 'analytic.account.entry'
 
     @classmethod
