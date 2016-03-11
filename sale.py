@@ -6,10 +6,10 @@ from itertools import groupby
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Sale']
-__metaclass__ = PoolMeta
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     def _group_parcel_key(self, lines, line):

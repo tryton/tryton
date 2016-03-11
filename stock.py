@@ -6,10 +6,10 @@ from functools import partial
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['ShipmentIn', 'ShipmentOut']
-__metaclass__ = PoolMeta
 
 
 class ShipmentIn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
 
     def _group_parcel_key(self, lines, line):
@@ -51,6 +51,7 @@ class ShipmentIn:
 
 
 class ShipmentOut:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
 
     def _group_parcel_key(self, lines, line):
