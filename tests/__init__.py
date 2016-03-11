@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.currency.tests.test_currency import suite
+    from trytond.modules.currency.tests.test_currency import (
+        suite, create_currency, add_currency_rate)
 except ImportError:
     from .test_currency import suite, create_currency, add_currency_rate
 
