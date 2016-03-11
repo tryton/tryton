@@ -15,10 +15,10 @@ from trytond.modules.product import price_digits
 
 __all__ = ['Sale', 'SaleLine',
     'SalePromotion', 'SalePromotion_Product']
-__metaclass__ = PoolMeta
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @classmethod
@@ -66,6 +66,7 @@ class Sale:
 
 
 class SaleLine:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
     draft_unit_price = fields.Numeric('Draft Unit Price',
