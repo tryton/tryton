@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.company.tests.test_company import suite
+    from trytond.modules.company.tests.test_company import (
+        suite, create_company, set_company)
 except ImportError:
     from .test_company import suite, create_company, set_company
 
