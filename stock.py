@@ -11,10 +11,10 @@ from trytond.transaction import Transaction
 from trytond.modules.product import price_digits
 
 __all__ = ['ShipmentIn', 'Move']
-__metaclass__ = PoolMeta
 
 
 class ShipmentIn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
@@ -140,6 +140,7 @@ class ShipmentIn:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
     unit_shipment_cost = fields.Numeric('Unit Shipment Cost',
         digits=price_digits, readonly=True)
