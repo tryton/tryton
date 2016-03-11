@@ -6,7 +6,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['ShipmentIn', 'ShipmentOut']
-__metaclass__ = PoolMeta
 
 
 def _percentage_amount(lines, company):
@@ -30,6 +29,7 @@ def _percentage_amount(lines, company):
 
 
 class ShipmentIn:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
 
     def _get_carrier_context(self):
@@ -47,6 +47,7 @@ class ShipmentIn:
 
 
 class ShipmentOut:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.out'
 
     def _get_carrier_context(self):
