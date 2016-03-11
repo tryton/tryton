@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account.tests.test_account import suite
+    from trytond.modules.account.tests.test_account import (
+        suite, create_chart, get_fiscalyear)
 except ImportError:
     from .test_account import suite, create_chart, get_fiscalyear
 
