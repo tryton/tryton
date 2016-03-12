@@ -77,7 +77,7 @@ setup(name=name,
     package_data={
         'trytond.modules.account_payment_clearing': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
-                'icons/*.svg']),
+                'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
