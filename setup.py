@@ -75,7 +75,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_dunning_letter': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'letter.odt']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'letter.odt',
+                'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
