@@ -12,7 +12,6 @@ include trytond/ir/tryton.cfg
 include trytond/ir/*.xml
 include trytond/ir/view/*.xml
 include trytond/ir/locale/*.po
-include trytond/ir/module/*.xml
 include trytond/ir/ui/*.xml
 include trytond/ir/ui/*.rng
 include trytond/ir/ui/*.rnc
