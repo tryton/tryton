@@ -16,7 +16,7 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
 from trytond import backend
 from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.product import price_digits
