@@ -460,8 +460,6 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
             if name in self.taghandlerlist:
                 self.taghandler = self.taghandlerlist[name]
-                self.taghandler.startElement(name, attributes)
-
             elif name == "data":
                 self.noupdate = bool(int(attributes.get("noupdate", '0')))
                 self.grouped = bool(int(attributes.get('grouped', 0)))
@@ -482,7 +480,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             else:
                 logger.info("Tag %s not supported", (name,))
                 return
-        elif not self.skip_data:
+        if self.taghandler and not self.skip_data:
             self.taghandler.startElement(name, attributes)
 
     def characters(self, data):
