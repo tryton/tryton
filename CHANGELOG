@@ -1,3 +1,5 @@
+Version 3.6.8 - 2016-03-14
+* Bug fixes (see mercurial logs for details)
 * Limit the login size in LoginAttempt
 
 Version 3.6.7 - 2016-02-06
