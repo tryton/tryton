@@ -7,6 +7,7 @@ import random
 import hashlib
 import time
 import datetime
+from functools import wraps
 from itertools import groupby, ifilter
 from operator import attrgetter
 from ast import literal_eval
@@ -536,7 +537,7 @@ class LoginAttempt(ModelSQL):
     the res.user table when in a long running process.
     """
     __name__ = 'res.user.login.attempt'
-    login = fields.Char('Login')
+    login = fields.Char('Login', size=512)
 
     @classmethod
     def __register__(cls, module_name):
@@ -552,7 +553,14 @@ class LoginAttempt(ModelSQL):
         return (datetime.datetime.now()
             - datetime.timedelta(seconds=config.getint('session', 'timeout')))
 
+    def _login_size(func):
+        @wraps(func)
+        def wrapper(cls, login, *args, **kwargs):
+            return func(cls, login[:cls.login.size], *args, **kwargs)
+        return wrapper
+
     @classmethod
+    @_login_size
     def add(cls, login):
         cls.delete(cls.search([
                     ('create_date', '<', cls.delay()),
@@ -560,12 +568,14 @@ class LoginAttempt(ModelSQL):
         cls.create([{'login': login}])
 
     @classmethod
+    @_login_size
     def remove(cls, login):
         cursor = Transaction().cursor
         table = cls.__table__()
         cursor.execute(*table.delete(where=table.login == login))
 
     @classmethod
+    @_login_size
     def count(cls, login):
         cursor = Transaction().cursor
         table = cls.__table__()
@@ -573,6 +583,8 @@ class LoginAttempt(ModelSQL):
                 where=(table.login == login)
                 & (table.create_date >= cls.delay())))
         return cursor.fetchone()[0]
+
+    del _login_size
 
 
 class UserAction(ModelSQL):

@@ -1,3 +1,5 @@
+* Limit the login size in LoginAttempt
+
 Version 3.8.3 - 2016-02-06
 * Bug fixes (see mercurial logs for details)
 * Strip and unquote double-quote from Postgresql schema in search_path
