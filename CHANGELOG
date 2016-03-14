@@ -1,3 +1,5 @@
+* Limit the login size in LoginAttempt
+
 Version 3.6.7 - 2016-02-06
 * Bug fixes (see mercurial logs for details)
 * Don't read historized user when evaluating record rules as it could lead to
