@@ -1,3 +1,4 @@
+* Limit the login size in LoginAttempt
 * Remove LocalDict from tools
 * Add LRUDictTransaction
 * Follow PEP-0249 for Database, Transaction and Cursor
