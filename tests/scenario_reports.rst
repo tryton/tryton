@@ -79,18 +79,36 @@ Create a moves::
 
 Print some reports::
 
-    >>> print_general_ledger = Wizard('account.print_general_ledger')
-    >>> print_general_ledger.form.start_period = None
-    >>> print_general_ledger.form.end_period = None
-    >>> print_general_ledger.execute('print_')
+    >>> GeneralLedgerAccount = Model.get('account.general_ledger.account')
+    >>> gl_accounts = GeneralLedgerAccount.find([])
 
-    >>> print_trial_balance = Wizard('account.print_trial_balance')
-    >>> print_trial_balance.form.start_period = None
-    >>> print_trial_balance.form.end_period = None
-    >>> print_trial_balance.execute('print_')
+    >>> general_ledger = Report('account.general_ledger', context={
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     })
+    >>> _ = general_ledger.execute(gl_accounts)
 
-    >>> aged_balance = Wizard('account.open_aged_balance')
-    >>> aged_balance.execute('print_')
+    >>> trial_balance = Report('account.trial_balance', context={
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     })
+    >>> _ = trial_balance.execute(gl_accounts)
+
+    >>> AgedBalance = Model.get('account.aged_balance')
+    >>> context = {
+    ...     'company': company.id,
+    ...     'type': 'customer',
+    ...     'date': today,
+    ...     'term1': 30,
+    ...     'term2': 60,
+    ...     'term3': 90,
+    ...     'unit': 'day',
+    ...     }
+    >>> with config.set_context(context):
+    ...     aged_balances = AgedBalance.find([])
+
+    >>> aged_balance = Report('account.aged_balance', context=context)
+    >>> _ = aged_balance.execute(aged_balances)
 
     >>> print_general_journal = Wizard('account.move.print_general_journal')
     >>> print_general_journal.execute('print_')

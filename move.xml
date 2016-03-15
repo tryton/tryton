@@ -300,6 +300,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.move.line,-1</field>
             <field name="action" ref="act_reconcile_lines"/>
         </record>
+        <!-- TODO keyword general ledger -->
 
         <record model="ir.action.wizard" id="act_unreconcile_lines">
             <field name="name">Unreconcile Lines</field>

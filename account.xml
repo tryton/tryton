@@ -417,50 +417,118 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">open_chart_start_form</field>
         </record>
 
-        <record model="ir.ui.view" id="print_general_ledger_start_view_form">
-            <field name="model">account.print_general_ledger.start</field>
-            <field name="type">form</field>
-            <field name="name">print_general_legder_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="wizard_print_general_ledger">
-            <field name="name">Print General Legder</field>
-            <field name="wiz_name">account.print_general_ledger</field>
-        </record>
-        <menuitem parent="menu_reporting" action="wizard_print_general_ledger"
-            id="menu_print_general_ledger" icon="tryton-print"/>
-
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
-            <field name="model"></field>
+            <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.general_ledger</field>
             <field name="report">account/general_ledger.odt</field>
         </record>
-
-        <record model="ir.ui.view" id="print_trial_balance_start_view_form">
-            <field name="model">account.print_trial_balance.start</field>
-            <field name="type">form</field>
-            <field name="name">print_trial_balance_start_form</field>
+        <record model="ir.action.keyword" id="report_general_ledger_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="report_general_ledger"/>
         </record>
-
-        <record model="ir.action.wizard" id="wizard_print_trial_balance">
-            <field name="name">Print Trial Balance</field>
-            <field name="wiz_name">account.print_trial_balance</field>
-        </record>
-        <menuitem parent="menu_reporting" action="wizard_print_trial_balance"
-            id="menu_print_trial_balance" icon="tryton-print"/>
 
         <record model="ir.action.report" id="report_trial_balance">
             <field name="name">Trial Balance</field>
-            <field name="model"></field>
+            <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.trial_balance</field>
             <field name="report">account/trial_balance.odt</field>
         </record>
+        <record model="ir.action.keyword" id="report_trial_balance_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="report_trial_balance"/>
+        </record>
 
-        <record model="ir.ui.view" id="open_balance_sheet_start_view_form">
-            <field name="model">account.open_balance_sheet.start</field>
+        <record model="ir.ui.view" id="general_ledger_account_view_list">
+            <field name="model">account.general_ledger.account</field>
+            <field name="type">tree</field>
+            <field name="name">general_ledger_account_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_general_ledger_account_form">
+            <field name="name">General Ledger - Accounts</field>
+            <field name="res_model">account.general_ledger.account</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_general_ledger_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_view_list"/>
+            <field name="act_window" ref="act_general_ledger_account_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_general_ledger_account_form"
+            id="menu_general_ledger" name="General Ledger" sequence="10"/>
+
+        <record model="ir.model.access" id="access_general_ledger_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_general_ledger_account_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_line_view_list">
+            <field name="model">account.general_ledger.line</field>
+            <field name="type">tree</field>
+            <field name="name">general_ledger_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_general_ledger_line_form">
+            <field name="name">General Ledger - Lines</field>
+            <field name="res_model">account.general_ledger.line</field>
+            <field name="context_model">account.general_ledger.line.context</field>
+            <field name="domain" eval="[('account', 'in', Eval('active_ids', []))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_general_ledger_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_line_view_list"/>
+            <field name="act_window" ref="act_general_ledger_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_general_ledger_line_form_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="act_general_ledger_line_form"/>
+        </record>
+        <!-- TODO relate from account -->
+
+        <record model="ir.model.access" id="access_general_ledger_line">
+            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_general_ledger_line_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_account_context_view_form">
+            <field name="model">account.general_ledger.account.context</field>
             <field name="type">form</field>
-            <field name="name">open_balance_sheet_start_form</field>
+            <field name="name">general_ledger_account_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_line_context_view_form">
+            <field name="model">account.general_ledger.line.context</field>
+            <field name="inherit" ref="general_ledger_account_context_view_form"/>
+            <field name="name">general_ledger_line_context_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_balance_sheet_view_tree">
@@ -472,9 +540,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
+            <field name="context_model">account.balance_sheet.context</field>
             <field name="domain"
                 eval="[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]"
                 pyson="1"/>
+            <field name="context" eval="{'cumulate': True}" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
             <field name="sequence" eval="10"/>
@@ -482,18 +552,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_account_balance_sheet_tree"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_open_balance_sheet">
-            <field name="name">Open Balance Sheet</field>
-            <field name="wiz_name">account.open_balance_sheet</field>
-        </record>
-        <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
-            id="menu_open_balance_sheet" icon="tryton-tree"
-            name="Balance Sheet"/>
+        <menuitem parent="menu_reporting" action="act_account_balance_sheet_tree"
+            id="menu_open_balance_sheet"/>
 
-        <record model="ir.ui.view" id="open_income_statement_start_view_form">
-            <field name="model">account.open_income_statement.start</field>
+        <record model="ir.ui.view" id="balance_sheet_context_view_form">
+            <field name="model">account.balance_sheet.context</field>
             <field name="type">form</field>
-            <field name="name">open_income_statement_start_form</field>
+            <field name="name">balance_sheet_context_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_income_statement_view_tree">
@@ -505,6 +570,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_income_statement_tree">
             <field name="name">Income Statement</field>
             <field name="res_model">account.account.type</field>
+            <field name="context_model">account.income_statement.context</field>
             <field name="domain"
                 eval="[('income_statement', '=', True), ['OR', ('parent', '=', None), ('parent.income_statement', '=', False)]]"
                 pyson="1"/>
@@ -515,31 +581,49 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_account_income_statement_tree"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_open_income_statement">
-            <field name="name">Open Income Statement</field>
-            <field name="wiz_name">account.open_income_statement</field>
-        </record>
-        <menuitem parent="menu_reporting" action="wizard_open_income_statement"
-            id="menu_open_income_statement" icon="tryton-tree"
-            name="Income Statement"/>
+        <menuitem parent="menu_reporting" action="act_account_income_statement_tree"
+            id="menu_open_income_statement"/>
 
-        <record model="ir.ui.view" id="open_aged_balance_start_view_form">
-            <field name="model">account.open_aged_balance.start</field>
+        <record model="ir.ui.view" id="income_statement_context_view_form">
+            <field name="model">account.income_statement.context</field>
             <field name="type">form</field>
-            <field name="name">open_aged_balance_start_form</field>
+            <field name="name">income_statement_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="aged_balance_view_list">
+            <field name="model">account.aged_balance</field>
+            <field name="type">tree</field>
+            <field name="name">aged_balance_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aged_balance_list">
+            <field name="name">Aged Balance</field>
+            <field name="res_model">account.aged_balance</field>
+            <field name="context_model">account.aged_balance.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aged_balance_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aged_balance_view_list"/>
+            <field name="act_window" ref="act_aged_balance_list"/>
+        </record>
+
+        <menuitem parent="menu_reporting" action="act_aged_balance_list"
+            id="menu_aged_balance"/>
+
+        <record model="ir.ui.view" id="aged_balance_context_view_form">
+            <field name="model">account.aged_balance.context</field>
+            <field name="type">form</field>
+            <field name="name">aged_balance_context_form</field>
         </record>
         <record model="ir.action.report" id="report_aged_balance">
             <field name="name">Aged Balance</field>
-            <field name="model"></field>
+            <field name="model">account.aged_balance</field>
             <field name="report_name">account.aged_balance</field>
             <field name="report">account/aged_balance.odt</field>
         </record>
-        <record model="ir.action.wizard" id="wizard_open_aged_balance">
-            <field name="name">Open Aged Balance</field>
-            <field name="wiz_name">account.open_aged_balance</field>
+        <record model="ir.action.keyword" id="report_aged_balance_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.aged_balance,-1</field>
+            <field name="action" ref="report_aged_balance"/>
         </record>
-        <menuitem parent="menu_reporting" action="wizard_open_aged_balance"
-            id="menu_aged_balance" icon="tryton-print"
-            name="Aged Balance"/>
     </data>
 </tryton>
