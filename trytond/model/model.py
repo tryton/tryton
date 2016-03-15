@@ -347,22 +347,26 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         if id is not None:
             id = int(id)
         self._id = id
-        self._values = None
-        parent_values = {}
-        for name, value in kwargs.iteritems():
-            if not name.startswith('_parent_'):
-                setattr(self, name, value)
-            else:
-                parent_values[name] = value
-        for name, value in parent_values.iteritems():
-            parent_name, field = name.split('.', 1)
-            parent_name = parent_name[8:]  # Strip '_parent_'
-            parent = getattr(self, parent_name, None)
-            if parent is not None:
-                setattr(parent, field, value)
-            else:
-                setattr(self, parent_name, {field: value})
-        self._init_values = self._values.copy() if self._values else None
+        if kwargs:
+            self._values = {}
+            parent_values = {}
+            for name, value in kwargs.iteritems():
+                if not name.startswith('_parent_'):
+                    setattr(self, name, value)
+                else:
+                    parent_values[name] = value
+            for name, value in parent_values.iteritems():
+                parent_name, field = name.split('.', 1)
+                parent_name = parent_name[8:]  # Strip '_parent_'
+                parent = getattr(self, parent_name, None)
+                if parent is not None:
+                    setattr(parent, field, value)
+                else:
+                    setattr(self, parent_name, {field: value})
+            self._init_values = self._values.copy()
+        else:
+            self._values = None
+            self._init_values = None
 
     def __getattr__(self, name):
         try:

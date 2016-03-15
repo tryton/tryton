@@ -450,9 +450,14 @@ class ModelStorage(Model):
         '''
         Return a list of instance for the ids
         '''
+        transaction = Transaction()
         ids = map(int, ids)
         local_cache = LRUDictTransaction(cache_size())
-        return [cls(int(x), _ids=ids, _local_cache=local_cache) for x in ids]
+        transaction_cache = transaction.get_cache()
+        return [cls(x, _ids=ids,
+                _local_cache=local_cache,
+                _transaction_cache=transaction_cache,
+                _transaction=transaction) for x in ids]
 
     @staticmethod
     def __export_row(record, fields_names):
@@ -1155,9 +1160,13 @@ class ModelStorage(Model):
     def __init__(self, id=None, **kwargs):
         _ids = kwargs.pop('_ids', None)
         _local_cache = kwargs.pop('_local_cache', None)
-        self._transaction = Transaction()
-        self._user = Transaction().user
-        self._context = Transaction().context
+        _transaction_cache = kwargs.pop('_transaction_cache', None)
+        transaction = kwargs.pop('_transaction', None)
+        if transaction is None:
+            transaction = Transaction()
+        self._transaction = transaction
+        self._user = transaction.user
+        self._context = transaction.context
         if id is not None:
             id = int(id)
         if _ids is not None:
@@ -1166,7 +1175,10 @@ class ModelStorage(Model):
         else:
             self._ids = [id]
 
-        self._transaction_cache = self._transaction.get_cache()
+        if _transaction_cache is not None:
+            self._transaction_cache = _transaction_cache
+        else:
+            self._transaction_cache = transaction.get_cache()
 
         if _local_cache is not None:
             assert isinstance(_local_cache, LRUDictTransaction)
@@ -1294,6 +1306,7 @@ class ModelStorage(Model):
                     Model = field.get_target()
             except KeyError:
                 return value
+            transaction = Transaction()
             ctx = {}
             if field.context:
                 pyson_context = PYSONEncoder().encode(field.context)
@@ -1302,25 +1315,28 @@ class ModelStorage(Model):
             if getattr(field, 'datetime_field', None):
                 datetime_ = data.get(field.datetime_field)
                 ctx = {'_datetime': datetime_}
-            with Transaction().set_context(**ctx):
+            with transaction.set_context(**ctx):
+                kwargs = {}
                 key = (Model, freeze(ctx))
-                local_cache = model2cache.setdefault(key,
+                kwargs['_local_cache'] = model2cache.setdefault(key,
                     LRUDictTransaction(cache_size()))
-                ids = model2ids.setdefault(key, [])
+                kwargs['_ids'] = ids = model2ids.setdefault(key, [])
+                kwargs['_transaction_cache'] = transaction.get_cache()
+                kwargs['_transaction'] = transaction
                 if field._type in ('many2one', 'one2one', 'reference'):
+                    value = int(value)
                     ids.append(value)
-                    return Model(value, _ids=ids, _local_cache=local_cache)
+                    return Model(value, **kwargs)
                 elif field._type in ('one2many', 'many2many'):
-                    ids.extend(value)
-                    return tuple(Model(id, _ids=ids, _local_cache=local_cache)
-                        for id in value)
+                    ids.extend(int(x) for x in value)
+                    return tuple(Model(id, **kwargs) for id in value)
 
         model2ids = {}
         model2cache = {}
         # Read the data
         with Transaction().set_current_transaction(self._transaction), \
-                Transaction().set_user(self._user), \
-                Transaction().set_context(self._context):
+                self._transaction.set_user(self._user), \
+                self._transaction.set_context(self._context):
             if self.id in self._cache and name in self._cache[self.id]:
                 # Use values from cache
                 ids = islice(chain(islice(self._ids, index, None),
