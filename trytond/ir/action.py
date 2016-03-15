@@ -672,6 +672,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     context = fields.Char('Context Value')
     order = fields.Char('Order Value')
     res_model = fields.Char('Model')
+    context_model = fields.Char('Context Model')
     act_window_views = fields.One2Many('ir.action.act_window.view',
             'act_window', 'Views')
     views = fields.Function(fields.Binary('Views'), 'get_views')
