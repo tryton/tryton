@@ -98,4 +98,5 @@ def register():
         module='ir', type_='wizard')
     Pool.register(
         ModelGraph,
+        ModelWorkflowGraph,
         module='ir', type_='report')

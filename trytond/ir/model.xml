@@ -143,6 +143,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="print_model_graph"/>
         </record>
 
+        <record model="ir.action.report" id="report_model_workflow_graph">
+            <field name="name">Workflow Graph</field>
+            <field name="model">ir.model</field>
+            <field name="report_name">ir.model.workflow_graph</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="print_model_workflow_graph_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="report_model_workflow_graph"/>
+        </record>
+
         <record model="ir.ui.view" id="model_button_view_list">
             <field name="model">ir.model.button</field>
             <field name="type">tree</field>

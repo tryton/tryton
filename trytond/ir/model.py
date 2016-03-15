@@ -12,7 +12,7 @@ try:
 except ImportError:
     import json
 
-from ..model import ModelView, ModelSQL, fields, Unique
+from ..model import ModelView, ModelSQL, Workflow, fields, Unique
 from ..report import Report
 from ..wizard import Wizard, StateView, StateAction, Button
 from ..transaction import Transaction
@@ -31,6 +31,7 @@ except ImportError:
 __all__ = [
     'Model', 'ModelField', 'ModelAccess', 'ModelFieldAccess', 'ModelButton',
     'ModelData', 'PrintModelGraphStart', 'PrintModelGraph', 'ModelGraph',
+    'ModelWorkflowGraph',
     ]
 
 IDENTIFIER = re.compile(r'^[a-zA-z_][a-zA-Z0-9_]*$')
@@ -1095,3 +1096,58 @@ class ModelGraph(Report):
 
                     edge = pydot.Edge(str(tail), str(head), **args)
                     graph.add_edge(edge)
+
+
+class ModelWorkflowGraph(Report):
+    __name__ = 'ir.model.workflow_graph'
+
+    @classmethod
+    def execute(cls, ids, data):
+        import pydot
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ActionReport = pool.get('ir.action.report')
+
+        action_report_ids = ActionReport.search([
+            ('report_name', '=', cls.__name__)
+            ])
+        if not action_report_ids:
+            raise Exception('Error', 'Report (%s) not find!' % cls.__name__)
+        action_report = ActionReport(action_report_ids[0])
+
+        models = Model.browse(ids)
+
+        graph = pydot.Dot()
+        graph.set('center', '1')
+        graph.set('ratio', 'auto')
+        direction = Transaction().context.get('language_direction', 'ltr')
+        graph.set('rankdir', {'ltr': 'LR', 'rtl': 'RL'}[direction])
+        cls.fill_graph(models, graph)
+        data = graph.create(prog='dot', format='png')
+        return ('png', fields.Binary.cast(data), False, action_report.name)
+
+    @classmethod
+    def fill_graph(cls, models, graph):
+        'Fills pydot graph with models wizard.'
+        import pydot
+        pool = Pool()
+
+        for record in models:
+            Model = pool.get(record.model)
+
+            if not issubclass(Model, Workflow):
+                continue
+
+            subgraph = pydot.Cluster('%s' % record.id, label=record.model)
+            graph.add_subgraph(subgraph)
+
+            state_field = getattr(Model, Model._transition_state)
+            for state, _ in state_field.selection:
+                node = pydot.Node(
+                    '"%s"' % state, shape='octagon', label=state)
+                subgraph.add_node(node)
+
+            for from_, to in Model._transitions:
+                edge = pydot.Edge('"%s"' % from_, '"%s"' % to,
+                    arrowhead='normal')
+                subgraph.add_edge(edge)
