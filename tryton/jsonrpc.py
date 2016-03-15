@@ -18,6 +18,7 @@ import threading
 import errno
 from functools import partial
 from contextlib import contextmanager
+import string
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]
@@ -140,11 +141,12 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
     accept_gzip_encoding = True
     encode_threshold = 1400  # common MTU
 
-    def __init__(self, fingerprints=None, ca_certs=None):
+    def __init__(self, fingerprints=None, ca_certs=None, session=None):
         xmlrpclib.Transport.__init__(self)
         self._connection = (None, None)
         self.__fingerprints = fingerprints
         self.__ca_certs = ca_certs
+        self.session = session
 
     def getparser(self):
         target = JSONUnmarshaller()
@@ -156,6 +158,12 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
             self, host)
         if extra_headers is None:
             extra_headers = []
+        if self.session:
+            auth = base64.encodestring(self.session)
+            auth = string.join(string.split(auth), "")  # get rid of whitespace
+            extra_headers.append(
+                ('Authorization', 'Session ' + auth),
+                )
         extra_headers.append(('Connection', 'keep-alive'))
         return host, extra_headers, x509
 
@@ -249,10 +257,13 @@ class ServerProxy(xmlrpclib.ServerProxy):
     __id = 0
 
     def __init__(self, host, port, database='', verbose=0,
-            fingerprints=None, ca_certs=None):
+            fingerprints=None, ca_certs=None, session=None):
         self.__host = '%s:%s' % (host, port)
-        self.__handler = '/' + database
-        self.__transport = Transport(fingerprints, ca_certs)
+        if database:
+            self.__handler = '/%s/' % database
+        else:
+            self.__handler = '/'
+        self.__transport = Transport(fingerprints, ca_certs, session)
         self.__verbose = verbose
 
     def __request(self, methodname, params):
@@ -310,6 +321,7 @@ class ServerPool(object):
         self._lock = threading.Lock()
         self._pool = []
         self._used = {}
+        self.session = None
 
     def getconn(self):
         with self._lock:
