@@ -15,6 +15,9 @@
                 Sao.Session.current_session = this;
             }
         },
+        get_auth: function() {
+            return btoa(this.login + ':' + this.user_id + ':' + this.session);
+        },
         do_login: function(login, password) {
             var dfd = jQuery.Deferred();
             var timeoutID = Sao.common.processing.show();
@@ -26,7 +29,7 @@
                 'contentType': 'application/json',
                 'data': JSON.stringify(args),
                 'dataType': 'json',
-                'url': '/' + this.database,
+                'url': '/' + this.database + '/',
                 'type': 'post',
                 'complete': [function() {
                     Sao.common.processing.hide(timeoutID);
@@ -65,7 +68,16 @@
                 'method': 'common.db.logout',
                 'params': []
             };
-            var prm = Sao.rpc(args, this);
+            var prm = jQuery.ajax({
+                'headers': {
+                    'Authorization': 'Session ' + this.get_auth()
+                },
+                'contentType': 'application/json',
+                'data': JSON.stringify(args),
+                'dataType': 'json',
+                'url': '/' + this.database + '/',
+                'type': 'post',
+            });
             this.database = null;
             this.login = null;
             this.user_id = null;
@@ -276,7 +288,7 @@
             'contentType': 'application/json',
             'data': JSON.stringify({
                 'method': 'common.db.list',
-                'params': [null, null]
+                'params': []
             }),
             'dataType': 'json',
             'url': '/',

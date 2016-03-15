@@ -13,13 +13,16 @@
 
         var timeoutID = Sao.common.processing.show();
         var ajax_prm = jQuery.ajax({
+            'headers': {
+                'Authorization': 'Session ' + session.get_auth()
+            },
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
                 'method': args.method,
-                'params': [session.user_id, session.session].concat(params)
+                'params': params
             })),
             'dataType': 'json',
-            'url': '/' + (session.database || ''),
+            'url': '/' + (session.database || '') + '/',
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
