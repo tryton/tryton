@@ -120,7 +120,7 @@ class Transaction(object):
                 self.delete = None
                 self.timestamp = None
         current_instance = transactions.pop()
-        assert current_instance is self
+        assert current_instance is self, transactions
 
     def set_context(self, context=None, **kwargs):
         if context is None:

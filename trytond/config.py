@@ -3,9 +3,11 @@
 import os
 import ConfigParser
 import urlparse
+import logging
 
 __all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
     'parse_listen', 'parse_uri']
+logger = logging.getLogger(__name__)
 
 
 def get_hostname(netloc):
@@ -39,10 +41,9 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
 
     def __init__(self):
         ConfigParser.RawConfigParser.__init__(self)
-        self.add_section('jsonrpc')
-        self.set('jsonrpc', 'listen', 'localhost:8000')
-        self.set('jsonrpc', 'data', '/var/www/localhost/tryton')
-        self.add_section('xmlrpc')
+        self.add_section('web')
+        self.set('web', 'listen', 'localhost:8000')
+        self.set('web', 'root', '/var/www/localhost/tryton')
         self.add_section('database')
         self.set('database', 'uri',
             os.environ.get('TRYTOND_DATABASE_URI', 'sqlite://'))
@@ -62,10 +63,12 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         self.add_section('report')
         self.set('report', 'unoconv',
             'pipe,name=trytond;urp;StarOffice.ComponentContext')
+        self.update_etc()
 
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
         if not configfile:
             return
+        logger.info('using %s as configuration file', configfile)
         self.read(configfile)
 
     def get(self, section, option, *args, **kwargs):

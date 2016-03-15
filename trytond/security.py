@@ -8,7 +8,7 @@ except ImportError:
 from trytond.pool import Pool
 from trytond.config import config
 from trytond.transaction import Transaction
-from trytond.exceptions import NotLogged
+from trytond import backend
 
 
 def _get_pool(dbname):
@@ -31,7 +31,7 @@ def login(dbname, loginname, password, cache=True):
             Session = pool.get('ir.session')
             session, = Session.create([{}])
             return user_id, session.key
-    return False
+    return
 
 
 def logout(dbname, user, session):
@@ -57,17 +57,19 @@ def check_super(passwd):
 
 
 def check(dbname, user, session):
-    if user == 0:
-        raise Exception('AccessDenied')
-    if not user:
-        raise NotLogged()
-    with Transaction().start(dbname, user) as transaction:
-        pool = _get_pool(dbname)
-        Session = pool.get('ir.session')
-        try:
-            if not Session.check(user, session):
-                raise NotLogged()
-            else:
-                return user
-        finally:
-            transaction.commit()
+    DatabaseOperationalError = backend.get('DatabaseOperationalError')
+    for count in range(config.getint('database', 'retry'), -1, -1):
+        with Transaction().start(dbname, user) as transaction:
+            pool = _get_pool(dbname)
+            Session = pool.get('ir.session')
+            try:
+                if not Session.check(user, session):
+                    return
+                else:
+                    return user
+            except DatabaseOperationalError:
+                if count:
+                    continue
+                raise
+            finally:
+                transaction.commit()

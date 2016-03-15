@@ -20,7 +20,7 @@ Initialize a database
 
 A database can be initialized using this command line::
 
-    trytond -c <config file> -d <database name> --all
+    trytond-admin -c <config file> -d <database name> --all
 
-At the end of the process, `trytond` will ask to set the password for the
+At the end of the process, `trytond-admin` will ask to set the password for the
 `admin` user.

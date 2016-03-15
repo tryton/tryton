@@ -280,12 +280,12 @@ def db_exist():
 
 def create_db():
     if not db_exist():
-        create(DB_NAME, None, 'en_US', USER_PASSWORD)
+        create(None, DB_NAME, None, 'en_US', USER_PASSWORD)
 
 
 def drop_db():
     if db_exist():
-        drop(DB_NAME, None)
+        drop(None, DB_NAME, None)
 
 
 def drop_create():

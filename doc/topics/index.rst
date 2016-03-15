@@ -13,6 +13,7 @@ Introduction to all the key parts of trytond:
     configuration
     setup_database
     logs
+    start_server
     models/index
     models/fields_default_value
     models/fields_on_change

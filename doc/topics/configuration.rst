@@ -29,46 +29,30 @@ possible values.
 Some modules could request the usage of other sections for which the guideline
 asks them to be named like their module.
 
-jsonrpc
--------
+web
+---
 
-Defines the behavior of the JSON-RPC_ network interface.
+Defines the behavior of the web interface.
 
 listen
 ~~~~~~
 
-Defines a comma separated list of couples of host (or IP address) and port
-number separated by a colon to listen on.
+Defines the couple of host (or IP address) and port number separated by a colon
+to listen on.
 
 Default `localhost:8000`
 
 hostname
 ~~~~~~~~
 
-Defines the hostname for this network interface.
+Defines the hostname.
 
-data
+root
 ~~~~
 
-Defines the root path to retrieve data for `GET` requests.
+Defines the root path served by `GET` requests.
 
 Default: `/var/www/localhost/tryton`
-
-xmlrpc
-------
-
-Defines the behavior of the XML-RPC_ network interface.
-
-listen
-~~~~~~
-
-Same as for `jsonrpc` except it has no default value.
-
-
-listen
-~~~~~~
-
-Same as for `jsonrpc` except it has no default value.
 
 database
 --------

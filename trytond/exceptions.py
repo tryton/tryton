@@ -2,7 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 
-class UserError(Exception):
+class TrytonException(Exception):
+    pass
+
+
+class UserError(TrytonException):
 
     def __init__(self, message, description=''):
         super(UserError, self).__init__('UserError', (message, description))
@@ -11,7 +15,7 @@ class UserError(Exception):
         self.code = 1
 
 
-class UserWarning(Exception):
+class UserWarning(TrytonException):
 
     def __init__(self, name, message, description=''):
         super(UserWarning, self).__init__('UserWarning', (name, message,
@@ -22,14 +26,14 @@ class UserWarning(Exception):
         self.code = 2
 
 
-class NotLogged(Exception):
+class NotLogged(TrytonException):
 
     def __init__(self):
         super(NotLogged, self).__init__('NotLogged')
         self.code = 3
 
 
-class ConcurrencyException(Exception):
+class ConcurrencyException(TrytonException):
 
     def __init__(self, message):
         super(ConcurrencyException, self).__init__('ConcurrencyException',

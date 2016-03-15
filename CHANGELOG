@@ -1,3 +1,4 @@
+* Switch to WSGI API
 * Limit the login size in LoginAttempt
 * Remove LocalDict from tools
 * Add LRUDictTransaction

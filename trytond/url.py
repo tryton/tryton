@@ -10,7 +10,7 @@ from trytond.transaction import Transaction
 
 __all__ = ['URLMixin']
 
-HOSTNAME = (config.get('jsonrpc', 'hostname')
+HOSTNAME = (config.get('web', 'hostname')
     or socket.getfqdn())
 HOSTNAME = '.'.join(encodings.idna.ToASCII(part).decode('ascii')
     if part else '' for part in HOSTNAME.split('.'))

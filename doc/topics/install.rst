@@ -8,6 +8,8 @@ Prerequisites
 =============
 
     * Python 2.7 or later (http://www.python.org/)
+    * Werkzeug (http://werkzeug.pocoo.org/)
+    * wrapt (https://github.com/GrahamDumpleton/wrapt)
     * lxml 2.0 or later (http://lxml.de/)
     * relatorio 0.2.0 or later (http://code.google.com/p/python-relatorio/)
     * Genshi (http://genshi.edgewall.org/)
