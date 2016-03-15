@@ -139,7 +139,8 @@ class Action(object):
                     limit=action.get('limit'),
                     search_value=search_value,
                     icon=(action.get('icon.rec_name') or ''),
-                    tab_domain=tab_domain)
+                    tab_domain=tab_domain,
+                    context_model=action['context_model'])
         elif action['type'] == 'ir.action.wizard':
             Window.create_wizard(action['wiz_name'], data,
                 direct_print=action.get('direct_print', False),

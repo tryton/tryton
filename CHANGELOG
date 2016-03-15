@@ -1,3 +1,4 @@
+* Manage context model of ir.action.act_window
 * Add Note
 * Manage view_ids on tree view
 * Use Apple key for copy/past of list

@@ -571,7 +571,9 @@ class ScreenContainer(object):
 
         # Move the window under the button
         x, y = button.window.get_origin()
-        self.search_window.move(x, y + button_allocation.height)
+        self.search_window.move(
+            x + button_allocation.x,
+            y + button_allocation.y + button_allocation.height)
 
         from tryton.gui.main import Main
         page = Main.get_main().get_page()
