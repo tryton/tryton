@@ -15,9 +15,15 @@
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
             });
-            this.filter_box = jQuery('<div/>', {
-                'class': 'row filter-box'
-            });
+            this.filter_box = jQuery('<form/>', {
+                'class': 'filter-box'
+            }).submit(function(e) {
+                this.do_search();
+                e.preventDefault();
+            }.bind(this));
+            var search_row = jQuery('<div/>', {
+                'class': 'row'
+            }).appendTo(this.filter_box);
             this.el.append(this.filter_box);
             this.filter_button = jQuery('<button/>', {
                 type: 'button',
@@ -33,6 +39,14 @@
             this.search_entry.attr('list', this.search_list.attr('id'));
             this.search_entry.keypress(this.key_press.bind(this));
             this.search_entry.on('input', this.update.bind(this));
+
+            var but_submit = jQuery('<button/>', {
+                'type': 'submit',
+                'class': 'btn btn-default',
+                'aria-label': Sao.i18n.gettext('Search')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-search'
+            }));
 
             this.but_bookmark = jQuery('<button/>', {
                 type: 'button',
@@ -70,6 +84,7 @@
             }.bind(this));
             this.but_star = jQuery('<button/>', {
                 'class': 'btn btn-default',
+                'type': 'button'
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon',
                 'aria-hidden': true
@@ -86,12 +101,13 @@
             .append(this.search_list)
             .append(jQuery('<span/>', {
                 'class': 'input-group-btn'
-            }).append(this.but_star)
+            }).append(but_submit)
+                    .append(this.but_star)
                     .append(this.but_bookmark)
                     .append(dropdown_bookmark))
             .appendTo(jQuery('<div/>', {
                 'class': 'col-md-8'
-            }).appendTo(this.filter_box));
+            }).appendTo(search_row));
 
 
             this.but_prev = jQuery('<button/>', {
@@ -121,7 +137,7 @@
             .append(this.but_next)
             .appendTo(jQuery('<div/>', {
                 'class': 'col-md-4'
-            }).appendTo(this.filter_box));
+            }).appendTo(search_row));
 
             this.content_box = jQuery('<div/>', {
                 'class': 'content-box'
@@ -274,10 +290,6 @@
             return this.screen.search_filter(this.get_text());
         },
         key_press: function(e) {
-            if (e.which == Sao.common.RETURN_KEYCODE) {
-                this.do_search();
-                return false;
-            }
             // Wait the current event finished
             window.setTimeout(function() {
                 this.bookmark_match();
@@ -594,6 +606,30 @@
             this.search_count = 0;
             this.screen_container = new Sao.ScreenContainer(
                 attributes.tab_domain);
+
+            this.context_screen = null;
+            if (attributes.context_model) {
+                this.context_screen = new Sao.Screen(
+                        attributes.context_model, {
+                            'mode': ['form'],
+                            'context': attributes.context });
+
+                this.context_screen_prm = this.context_screen.switch_view()
+                    .then(function() {
+                        jQuery('<div/>', {
+                            'class': 'row'
+                        }).append(jQuery('<div/>', {
+                            'class': 'col-md-12'
+                        }).append(this.context_screen.screen_container.el))
+                        .prependTo(this.screen_container.filter_box);
+                        return this.context_screen.new_(false).then(function(record) {
+                            // Set manually default to get context_screen_prm
+                            // resolved when default is set.
+                            return record.default_get();
+                        });
+                    }.bind(this));
+            }
+
             if (!attributes.row_activate) {
                 this.row_activate = this.default_row_activate;
             } else {
@@ -717,6 +753,23 @@
             return _switch();
         },
         search_filter: function(search_string) {
+            if (this.context_screen) {
+                if (this.context_screen_prm.state() == 'pending') {
+                    return this.context_screen_prm.then(function() {
+                        return this.search_filter(search_string);
+                    }.bind(this));
+                }
+                var context_record = this.context_screen.current_record;
+                if (context_record &&
+                        !context_record.validate(null, false, null, true)) {
+                    this.new_group([]);
+                    this.context_screen.display(true);
+                    return jQuery.when();
+                }
+                this.context = jQuery.extend({}, this.context,
+                        this.context_screen.get_on_change_value());
+            }
+
             var domain = [];
             var domain_parser = this.domain_parser();
 
