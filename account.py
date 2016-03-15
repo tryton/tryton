@@ -1517,7 +1517,7 @@ class AgedBalance(ModelSQL, ModelView):
 
         terms = cls.get_terms()
         factor = cls.get_unit_factor()
-        term_values = sorted(terms.values())
+        term_values = sorted(terms.values(), key=lambda x: x or 0)
 
         for name, value in terms.iteritems():
             if value is None or factor is None or date is None:
