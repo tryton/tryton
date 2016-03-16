@@ -2138,7 +2138,8 @@ class InvoiceTax(ModelSQL, ModelView):
             self.tax_sign = tax.credit_note_tax_sign
             self.account = tax.credit_note_account
 
-    @fields.depends('tax', 'base', 'amount', 'manual')
+    @fields.depends('tax', 'base', 'amount', 'manual',
+        '_parent_invoice.currency')
     def on_change_with_amount(self):
         Tax = Pool().get('account.tax')
         if self.tax and self.manual:
@@ -2147,7 +2148,10 @@ class InvoiceTax(ModelSQL, ModelView):
             for values in Tax.compute([tax], base, 1):
                 if (values['tax'] == tax
                         and values['base'] == base):
-                    return values['amount']
+                    amount = values['amount']
+                    if self.invoice.currency:
+                        amount = self.invoice.currency.round(amount)
+                    return amount
         return self.amount
 
     @classmethod
