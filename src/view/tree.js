@@ -1512,7 +1512,7 @@
         },
         render: function(record) {
             var button = new Sao.common.Button(this.attributes);
-            button.el.click(record, this.button_clicked.bind(this));
+            button.el.click([record, button], this.button_clicked.bind(this));
             var fields = jQuery.map(this.screen.model.fields,
                 function(field, name) {
                     if ((field.description.loading || 'eager') ==
@@ -1529,7 +1529,8 @@
             return button.el;
         },
         button_clicked: function(event) {
-            var record = event.data;
+            var record = event.data[0];
+            var button = event.data[1];
             if (record != this.screen.current_record) {
                 return;
             }
@@ -1537,7 +1538,12 @@
             if (states.invisible || states.readonly) {
                 return;
             }
-            this.screen.button(this.attributes);
+            button.el.prop('disabled', true);
+            try {
+                this.screen.button(this.attributes);
+            } finally {
+                button.el.prop('disabled', false);
+            }
         }
     });
 

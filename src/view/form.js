@@ -361,7 +361,12 @@
         },
         button_clicked: function(event) {
             var button = event.data;
-            this.screen.button(button.attributes);
+            button.el.prop('disabled', true);
+            try {
+                this.screen.button(button.attributes);
+            } finally {
+                button.el.prop('disabled', false);
+            }
         },
         selected_records: function() {
             if (this.screen.current_record) {
