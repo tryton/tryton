@@ -2104,7 +2104,8 @@ class InvoiceTax(ModelSQL, ModelView):
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
     amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
-        on_change_with=['tax', 'base', 'amount', 'manual'],
+        on_change_with=['tax', 'base', 'amount', 'manual',
+            '_parent_invoice.currency'],
         depends=['tax', 'base', 'manual'])
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
@@ -2225,7 +2226,10 @@ class InvoiceTax(ModelSQL, ModelView):
             for values in Tax.compute([tax], base, 1):
                 if (values['tax'] == tax
                         and values['base'] == base):
-                    return values['amount']
+                    amount = values['amount']
+                    if self.invoice.currency:
+                        amount = self.invoice.currency.round(amount)
+                    return amount
         return self.amount
 
     @classmethod
