@@ -1137,6 +1137,8 @@ class ModelStorage(Model):
         pool = Pool()
         vals = {}
         for field in defaults.keys():
+            if '.' in field:  # skip all related fields
+                continue
             fld_def = cls._fields[field]
             if fld_def._type in ('many2one', 'one2one'):
                 if isinstance(defaults[field], (list, tuple)):
