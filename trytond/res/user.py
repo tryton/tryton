@@ -563,9 +563,10 @@ class LoginAttempt(ModelSQL):
     @classmethod
     @_login_size
     def add(cls, login):
-        cls.delete(cls.search([
-                    ('create_date', '<', cls.delay()),
-                    ]))
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        cursor.execute(*table.delete(where=table.create_date < cls.delay()))
+
         cls.create([{'login': login}])
 
     @classmethod
