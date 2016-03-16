@@ -367,8 +367,9 @@ def load_modules(database_name, pool, update=None, lang=None):
     def _load_modules():
         global res
         TableHandler = backend.get('TableHandler')
+        transaction = Transaction()
 
-        with Transaction().connection.cursor() as cursor:
+        with transaction.connection.cursor() as cursor:
             # Migration from 3.6: remove double module
             old_table = 'ir_module_module'
             new_table = 'ir_module'
@@ -412,6 +413,8 @@ def load_modules(database_name, pool, update=None, lang=None):
 
                 Module = pool.get('ir.module')
                 Module.update_list()
+        # Need to commit to unlock SQLite database
+        transaction.commit()
         Cache.resets(database_name)
 
     if not Transaction().connection:
