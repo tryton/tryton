@@ -12,6 +12,7 @@ try:
     compat.register()
 except ImportError:
     pass
+from psycopg2 import connect
 from psycopg2.pool import ThreadedConnectionPool
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -70,22 +71,26 @@ class Database(DatabaseInterface):
         self._search_path = None
         self._current_user = None
 
-    def connect(self):
-        if self._connpool is not None:
-            return self
-        logger.info('connect to "%s"', self.name)
+    @classmethod
+    def dsn(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
         assert uri.scheme == 'postgresql'
         host = uri.hostname and "host=%s" % uri.hostname or ''
         port = uri.port and "port=%s" % uri.port or ''
-        name = "dbname=%s" % self.name
+        name = "dbname=%s" % name
         user = uri.username and "user=%s" % uri.username or ''
         password = ("password=%s" % urllib.unquote_plus(uri.password)
             if uri.password else '')
+        return '%s %s %s %s %s' % (host, port, name, user, password)
+
+    def connect(self):
+        if self._connpool is not None:
+            return self
+        logger.info('connect to "%s"', self.name)
         minconn = config.getint('database', 'minconn', default=1)
         maxconn = config.getint('database', 'maxconn', default=64)
-        dsn = '%s %s %s %s %s' % (host, port, name, user, password)
-        self._connpool = ThreadedConnectionPool(minconn, maxconn, dsn)
+        self._connpool = ThreadedConnectionPool(
+            minconn, maxconn, self.dsn(self.name))
         return self
 
     def get_connection(self, autocommit=False, readonly=False):
@@ -224,13 +229,11 @@ class Database(DatabaseInterface):
         res = []
         for db_name, in cursor:
             try:
-                database = Database(db_name).connect()
+                with connect(self.dsn(db_name)) as conn:
+                    if self._test(conn):
+                        res.append(db_name)
             except Exception:
                 continue
-            if database.test():
-                res.append(db_name)
-            else:
-                database.close()
         self.put_connection(connection)
 
         Database._list_cache = res
@@ -270,6 +273,12 @@ class Database(DatabaseInterface):
 
     def test(self):
         connection = self.get_connection()
+        is_tryton_database = self._test(connection)
+        self.put_connection(connection)
+        return is_tryton_database
+
+    @classmethod
+    def _test(cls, connection):
         cursor = connection.cursor()
         cursor.execute('SELECT 1 FROM information_schema.tables '
             'WHERE table_name IN %s',
@@ -277,9 +286,7 @@ class Database(DatabaseInterface):
                     'res_user', 'res_group', 'ir_module',
                     'ir_module_dependency', 'ir_translation',
                     'ir_lang'),))
-        is_tryton_database = len(cursor.fetchall()) != 0
-        self.put_connection(connection)
-        return is_tryton_database
+        return len(cursor.fetchall()) != 0
 
     def nextid(self, connection, table):
         cursor = connection.cursor()
