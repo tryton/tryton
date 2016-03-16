@@ -157,6 +157,8 @@ class Sequence(ModelSQL, ModelView):
         return Transaction().context.get('code')
 
     def get_number_next(self, name):
+        if self.type != 'incremental':
+            return
         cursor = Transaction().connection.cursor()
         sql_name = self._sql_sequence_name
         if sql_sequence and not self._strict:
