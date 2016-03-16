@@ -54,31 +54,16 @@ class Action(object):
 
     @staticmethod
     def execute(act_id, data, action_type=None, context=None):
-        def get_action_type(actions):
-            try:
-                action, = actions()
-            except RPCException:
-                return
-            action_type = action['type']
-            exec_action(action_type)
-
-        def exec_action(action_type):
-            def callback(actions):
-                try:
-                    action, = actions()
-                except RPCException:
-                    return
-                Action._exec_action(action, data, context=context)
-
-            RPCExecute('model', action_type, 'search_read',
-                [('action', '=', act_id)], 0, 1, None, None,
-                context=context, callback=callback)
-
+        # Must be executed synchronously to avoid double execution
+        # on double click.
         if not action_type:
-            RPCExecute('model', 'ir.action', 'read', [act_id],
-                ['type'], context=context, callback=get_action_type)
-        else:
-            exec_action(action_type)
+            action, = RPCExecute('model', 'ir.action', 'read', [act_id],
+                ['type'], context=context)
+            action_type = action['type']
+        action, = RPCExecute('model', action_type, 'search_read',
+            [('action', '=', act_id)], 0, 1, None, None,
+            context=context)
+        Action._exec_action(action, data, context=context)
 
     @staticmethod
     def _exec_action(action, data=None, context=None):

@@ -909,4 +909,8 @@ class Button(object):
         if state_changes.get('invisible') \
                 or state_changes.get('readonly'):
             return True
-        self.view.screen.button(self.attrs)
+        widget.handler_block_by_func(self.button_clicked)
+        try:
+            self.view.screen.button(self.attrs)
+        finally:
+            widget.handler_unblock_by_func(self.button_clicked)
