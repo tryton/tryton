@@ -15,8 +15,8 @@ where the archive was unpacked, and run:
     # npm install
     # grunt
 
-Note that the entry `data` in the section `[jsonrpc]` of `trytond.conf` must be
-set to this directory.
+Note that the entry `root` in the section `[web]` of `trytond.conf` must be set
+to this directory.
 
 Support
 -------
