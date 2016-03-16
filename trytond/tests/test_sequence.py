@@ -29,17 +29,20 @@ class SequenceTestCase(unittest.TestCase):
                     'suffix': '',
                     'type': 'incremental',
                     }])
+        self.assertEqual(sequence.number_next, 1)
         self.assertEqual(Sequence.get_id(sequence), '1')
 
         Sequence.write([sequence], {
                 'number_increment': 10,
                 })
+        self.assertEqual(sequence.number_next, 2)
         self.assertEqual(Sequence.get_id(sequence), '2')
         self.assertEqual(Sequence.get_id(sequence), '12')
 
         Sequence.write([sequence], {
                 'padding': 3,
                 })
+        self.assertEqual(sequence.number_next, 22)
         self.assertEqual(Sequence.get_id(sequence), '022')
 
     @with_transaction()
@@ -57,6 +60,8 @@ class SequenceTestCase(unittest.TestCase):
                     }])
         timestamp = Sequence.get_id(sequence)
         self.assertEqual(timestamp, str(sequence.last_timestamp))
+
+        self.assertEqual(sequence.number_next, None)
 
         self.assertNotEqual(Sequence.get_id(sequence), timestamp)
 
@@ -81,6 +86,8 @@ class SequenceTestCase(unittest.TestCase):
         timestamp = Sequence.get_id(sequence)
         self.assertEqual(timestamp,
             hex(int(sequence.last_timestamp))[2:].upper())
+
+        self.assertEqual(sequence.number_next, None)
 
         self.assertNotEqual(Sequence.get_id(sequence), timestamp)
 
