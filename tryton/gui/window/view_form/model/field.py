@@ -395,6 +395,9 @@ class M2OField(Field):
 
     _default = None
 
+    def _is_empty(self, record):
+        return self.get(record) is None
+
     def get_client(self, record):
         rec_name = record.value.get(self.name + '.rec_name')
         if rec_name is None:
