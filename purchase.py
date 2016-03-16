@@ -1160,13 +1160,13 @@ class PurchaseLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def get_from_location(self, name):
-        if self.quantity is not None and self.quantity >= 0:
+        if (self.quantity or 0) >= 0:
             return self.purchase.party.supplier_location.id
         elif self.purchase.warehouse:
             return self.purchase.warehouse.storage_location.id
 
     def get_to_location(self, name):
-        if self.quantity is not None and self.quantity >= 0:
+        if (self.quantity or 0) >= 0:
             if self.purchase.warehouse:
                 return self.purchase.warehouse.input_location.id
         else:
