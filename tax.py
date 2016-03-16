@@ -1036,8 +1036,7 @@ class TaxableMixin(object):
         if not self.currency:
             return
         for taxline in taxes.itervalues():
-            for attribute in ('base', 'amount'):
-                taxline[attribute] = self.currency.round(taxline[attribute])
+            taxline['amount'] = self.currency.round(taxline['amount'])
 
     def _get_taxes(self):
         pool = Pool()
@@ -1054,6 +1053,8 @@ class TaxableMixin(object):
                     line.quantity, self.tax_date)
                 for tax in l_taxes:
                     taxline = self._compute_tax_line(self.tax_type, **tax)
+                    if self.currency:
+                        taxline['base'] = self.currency.round(taxline['base'])
                     if taxline not in taxes:
                         taxes[taxline] = taxline
                     else:
