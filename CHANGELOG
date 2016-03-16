@@ -1,7 +1,6 @@
+* Add Python3 support
 * Replace Delivery Time by Lead Time on Product Template
 * New workflow do() for purchase
-
-* Add Python3 support
 
 Version 3.8.0 - 2015-11-02
 * Bug fixes (see mercurial logs for details)
