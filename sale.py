@@ -676,7 +676,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         if not self.invoice_address or not self.shipment_address:
             self.raise_user_error('addresses_required', (self.rec_name,))
         for line in self.lines:
-            if line.quantity is not None and line.quantity >= 0:
+            if (line.quantity or 0) >= 0:
                 location = line.from_location
             else:
                 location = line.to_location
@@ -1267,14 +1267,14 @@ class SaleLine(ModelSQL, ModelView):
         return self.sale.warehouse.id if self.sale.warehouse else None
 
     def get_from_location(self, name):
-        if self.quantity is not None and self.quantity >= 0:
+        if (self.quantity or 0) >= 0:
             if self.warehouse:
                 return self.warehouse.output_location.id
         else:
             return self.sale.party.customer_location.id
 
     def get_to_location(self, name):
-        if self.quantity is not None and self.quantity >= 0:
+        if (self.quantity or 0) >= 0:
             return self.sale.party.customer_location.id
         else:
             if self.warehouse:
