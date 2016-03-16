@@ -1688,6 +1688,16 @@
 
     Sao.field.Many2One = Sao.class_(Sao.field.Field, {
         _default: null,
+        check_required: function(record) {
+            var state_attrs = this.get_state_attrs(record);
+            if (state_attrs.required == 1) {
+                if ((this.get(record) === null) &&
+                    (state_attrs.readonly != 1)) {
+                    return false;
+                }
+            }
+            return true;
+        },
         get_client: function(record) {
             var rec_name = record._values[this.name + '.rec_name'];
             if (rec_name === undefined) {
