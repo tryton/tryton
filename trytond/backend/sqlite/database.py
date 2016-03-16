@@ -318,7 +318,7 @@ class Database(DatabaseInterface):
                 else:
                     db_name = db_file[:-7]
                 try:
-                    database = Database(db_name)
+                    database = Database(db_name).connect()
                 except Exception:
                     continue
                 if database.test():
