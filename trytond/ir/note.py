@@ -43,7 +43,7 @@ class Note(ResourceMixin, ModelSQL, ModelView):
     def get_unread(cls, ids, name):
         pool = Pool()
         Read = pool.get('ir.note.read')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         user_id = Transaction().user
         table = cls.__table__()
         read = Read.__table__()
