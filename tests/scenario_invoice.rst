@@ -286,3 +286,21 @@ Create empty invoice::
     >>> invoice.click('post')
     >>> invoice.state
     u'paid'
+
+Create some complex invoice and test its taxes base rounding::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> invoice.invoice_date = today
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('0.0035')
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('0.0035')
+    >>> invoice.save()
+    >>> invoice.taxes[0].base == invoice.untaxed_amount
+    True
