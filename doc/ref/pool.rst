@@ -39,10 +39,15 @@ Instance methods:
 
     Return an interator over instances names.
 
-.. method:: Pool.setup(module)
+.. method:: Pool.fill(module)
 
-    Setup classes for module and return a list of classes for each type in a
-    dictionary.
+    Fill the pool with the registered class from the module and return a list
+    of classes for each type in a dictionary.
+
+.. method:: Pool.setup([classes])
+
+    Call all setup methods of the classes provided or for all the registered
+    classes.
 
 ========
 PoolMeta

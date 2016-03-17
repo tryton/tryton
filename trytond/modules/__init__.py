@@ -217,10 +217,13 @@ def load_module_graph(graph, pool, update=None, lang=None):
             if module not in MODULES:
                 continue
             logger.info(module)
-            classes = pool.setup(module)
+            classes = pool.fill(module)
+            if update:
+                pool.setup(classes)
             package_state = module2state.get(module, 'uninstalled')
             if (is_module_to_install(module, update)
-                    or package_state in ('to install', 'to upgrade')):
+                    or (update
+                        and package_state in ('to install', 'to upgrade'))):
                 if package_state not in ('to install', 'to upgrade'):
                     if package_state == 'installed':
                         package_state = 'to upgrade'
@@ -281,6 +284,9 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
             Transaction().connection.commit()
 
+        if not update:
+            pool.setup()
+
         for model_name in models_to_update_history:
             model = pool.get(model_name)
             if model._history:
@@ -291,6 +297,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
         while modules_todo:
             (module, to_delete) = modules_todo.pop()
             convert.post_import(pool, module, to_delete)
+    logger.info('all modules loaded')
 
 
 def get_module_list():

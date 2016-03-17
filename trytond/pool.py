@@ -196,10 +196,10 @@ class Pool(object):
         '''
         return self._pool[self.database_name][type].iteritems()
 
-    def setup(self, module):
+    def fill(self, module):
         '''
-        Setup classes for module and return a list of classes for each type in
-        a dictionary.
+        Fill the pool with the registered class from the module.
+        Return a list of classes for each type in a dictionary.
         '''
         classes = {}
         for type_ in self.classes.keys():
@@ -212,12 +212,21 @@ class Pool(object):
                     pass
                 if not issubclass(cls, PoolBase):
                     continue
-                cls.__setup__()
                 self.add(cls, type=type_)
                 classes[type_].append(cls)
-            for cls in classes[type_]:
-                cls.__post_setup__()
         return classes
+
+    def setup(self, classes=None):
+        logger.info('setup pool for "%s"', self.database_name)
+        if classes is None:
+            classes = {}
+            for type_ in self._pool[self.database_name]:
+                classes[type_] = self._pool[self.database_name][type_].values()
+        for type_, lst in classes.iteritems():
+            for cls in lst:
+                cls.__setup__()
+            for cls in lst:
+                cls.__post_setup__()
 
 
 def isregisteredby(obj, module, type_='model'):
