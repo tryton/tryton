@@ -15,17 +15,17 @@ this repository contains the full copyright notices and license terms. -->
     <label name="manual"/>
     <field name="manual"/>
     <group col="6" colspan="4" string="Tax Code" id="tax_code">
-        <label name="amount"/>
-        <field name="amount"/>
-        <label name="tax_code"/>
-        <field name="tax_code"/>
-        <label name="tax_sign"/>
-        <field name="tax_sign"/>
         <label name="base"/>
         <field name="base"/>
         <label name="base_code"/>
         <field name="base_code"/>
         <label name="base_sign"/>
         <field name="base_sign"/>
+        <label name="amount"/>
+        <field name="amount"/>
+        <label name="tax_code"/>
+        <field name="tax_code"/>
+        <label name="tax_sign"/>
+        <field name="tax_sign"/>
     </group>
 </form>
