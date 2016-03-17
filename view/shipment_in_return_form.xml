@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form string="Supplier Return Shipment" col="4" cursor="from_location">
+<form string="Supplier Return Shipment" col="4" cursor="supplier">
     <label name="reference"/>
     <field name="reference"/>
     <label name="code"/>
     <field name="code"/>
+    <label name="supplier"/>
+    <field name="supplier"/>
+    <label name="delivery_address"/>
+    <field name="delivery_address"/>
     <label name="from_location"/>
     <field name="from_location"/>
     <label name="to_location"/>

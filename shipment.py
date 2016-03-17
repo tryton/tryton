@@ -502,6 +502,21 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
+    supplier = fields.Many2One('party.party', 'Supplier',
+        states={
+            'readonly': (((Eval('state') != 'draft')
+                    | Eval('moves', [0]))
+                    & Eval('supplier', 0)),
+            }, required=True,
+        depends=['state', 'supplier'])
+    delivery_address = fields.Many2One('party.address', 'Delivery Address',
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        domain=[
+            ('party', '=', Eval('supplier'))
+            ],
+        depends=['state', 'supplier'])
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
@@ -631,6 +646,12 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('supplier')
+    def on_change_supplier(self):
+        if self.supplier:
+            self.delivery_address = self.supplier.address_get('delivery')
+            self.to_location = self.supplier.supplier_location
 
     @property
     def _move_planned_date(self):

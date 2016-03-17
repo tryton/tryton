@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="reference"/>
     <field name="planned_date"/>
     <field name="effective_date"/>
-    <field name="from_location"/>
-    <field name="to_location"/>
+    <field name="supplier"/>
+    <field name="delivery_address"/>
     <field name="state"/>
 </tree>
