@@ -100,6 +100,35 @@ class ShipmentInReturn:
                 })
 
     @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        PurchaseLine = pool.get('purchase.line')
+        Purchase = pool.get('purchase.purchase')
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+        move = Move.__table__()
+        line = PurchaseLine.__table__()
+        purchase = Purchase.__table__()
+
+        # Migration from 3.8: New supplier field
+        cursor.execute(*sql_table.select(sql_table.supplier,
+                where=sql_table.supplier == Null, limit=1))
+        if cursor.fetchone():
+            value = sql_table.join(move, condition=(
+                    Concat(cls.__name__ + ',', sql_table.id) == move.shipment)
+                ).join(line, condition=(
+                        Concat(PurchaseLine.__name__ + ',', line.id)
+                        == move.origin)
+                ).join(purchase,
+                    condition=(purchase.id == line.purchase)
+                ).select(purchase.party)
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.supplier],
+                    values=[value]))
+        super(ShipmentInReturn, cls).__register__(module_name)
+
+    @classmethod
     def write(cls, *args):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')

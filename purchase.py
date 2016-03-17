@@ -730,6 +730,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             company=self.company,
             from_location=self.warehouse.storage_location,
             to_location=self.party.supplier_location,
+            supplier=self.party,
+            delivery_address=self.party.address_get(type='delivery'),
             )
 
     def create_return_shipment(self, return_moves):
