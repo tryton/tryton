@@ -1465,6 +1465,7 @@ class TranslationUpdate(Wizard):
         pool = Pool()
         Translation = pool.get('ir.translation')
         cursor = Transaction().connection.cursor()
+        cursor_update = Transaction().connection.cursor()
         translation = Translation.__table__()
         lang = self.start.language.code
         columns = [translation.name.as_('name'),
@@ -1518,7 +1519,7 @@ class TranslationUpdate(Wizard):
                     where=(translation.lang == lang)
                     & translation.type.in_(self._updatable_types))))
         for row in cursor_dict(cursor):
-            cursor.execute(*translation.update(
+            cursor_update.execute(*translation.update(
                     [translation.fuzzy, translation.src],
                     [True, row['src']],
                     where=(translation.name == row['name'])
@@ -1541,14 +1542,14 @@ class TranslationUpdate(Wizard):
                 group_by=translation.src))
 
         for row in cursor_dict(cursor):
-            cursor.execute(*translation.update(
+            cursor_update.execute(*translation.update(
                     [translation.fuzzy, translation.value],
                     [True, row['value']],
                     where=(translation.src == row['src'])
                     & ((translation.value == '') | (translation.value == Null))
                     & (translation.lang == lang)))
 
-        cursor.execute(*translation.update(
+        cursor_update.execute(*translation.update(
                 [translation.fuzzy],
                 [False],
                 where=((translation.value == '') | (translation.value == Null))
