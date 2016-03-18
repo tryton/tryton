@@ -3,6 +3,7 @@
 import datetime
 
 from sql import Null
+from sql.aggregate import Max
 from sql.operators import Concat
 
 from trytond.model import Workflow, ModelView, fields
@@ -122,7 +123,7 @@ class ShipmentInReturn:
                         == move.origin)
                 ).join(purchase,
                     condition=(purchase.id == line.purchase)
-                ).select(purchase.party)
+                ).select(Max(purchase.party))
             cursor.execute(*sql_table.update(
                     columns=[sql_table.supplier],
                     values=[value]))
