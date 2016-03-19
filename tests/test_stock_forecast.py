@@ -35,7 +35,6 @@ class StockForecastTestCase(ModuleTestCase):
     def test_create_moves(self):
         'Test create_moves'
         pool = Pool()
-        Category = pool.get('product.category')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
@@ -43,14 +42,10 @@ class StockForecastTestCase(ModuleTestCase):
         Forecast = pool.get('stock.forecast')
         Move = pool.get('stock.move')
 
-        category, = Category.create([{
-                    'name': 'Test create_moves',
-                    }])
         unit, = Uom.search([('name', '=', 'Unit')])
         template, = Template.create([{
                     'name': 'Test create_moves',
                     'type': 'goods',
-                    'category': category.id,
                     'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal('1'),
@@ -118,7 +113,6 @@ class StockForecastTestCase(ModuleTestCase):
     def test_complete(self):
         'Test complete'
         pool = Pool()
-        Category = pool.get('product.category')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
@@ -127,14 +121,10 @@ class StockForecastTestCase(ModuleTestCase):
         Move = pool.get('stock.move')
         ForecastComplete = pool.get('stock.forecast.complete', type='wizard')
 
-        category, = Category.create([{
-                    'name': 'Test complete',
-                    }])
         unit, = Uom.search([('name', '=', 'Unit')])
         template, = Template.create([{
                     'name': 'Test complete',
                     'type': 'goods',
-                    'category': category.id,
                     'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal('1'),
