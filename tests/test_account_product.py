@@ -65,11 +65,11 @@ class AccountProductTestCase(ModuleTestCase):
 
             # with account on category
             category = ProductCategory(name='test account used',
-                account_expense=account_expense)
+                account_expense=account_expense, accounting=True)
             category.save()
             template.account_expense = None
-            template.account_category = True
-            template.category = category
+            template.accounts_category = True
+            template.account_category = category
             template.save()
 
             self.assertIsNone(template.account_expense)
@@ -77,7 +77,7 @@ class AccountProductTestCase(ModuleTestCase):
 
             # with account on grant category
             parent_category = ProductCategory(name='parent account used',
-                account_expense=account_expense)
+                account_expense=account_expense, accounting=True)
             parent_category.save()
             category.account_expense = None
             category.account_parent = True

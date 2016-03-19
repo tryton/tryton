@@ -2,6 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
+    <xpath expr="/form/group[@id='checkboxes']" position="inside">
+        <label name="accounting"/>
+        <field name="accounting" xexpand="0" width="25"/>
+    </xpath>
     <xpath
         expr="/form/notebook/page[@id='childs']"
         position="before">

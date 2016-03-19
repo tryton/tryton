@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
         <newline/>
-        <label name="default_account_category"/>
-        <field name="default_account_category"/>
+        <label name="default_accounts_category"/>
+        <field name="default_accounts_category"/>
         <label name="default_taxes_category"/>
         <field name="default_taxes_category"/>
     </xpath>

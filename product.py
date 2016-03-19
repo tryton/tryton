@@ -3,9 +3,10 @@
 import copy
 
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval, Or
+from trytond.pyson import Eval, Or, Bool
 from trytond import backend
 from trytond.pool import PoolMeta, Pool
+from trytond.transaction import Transaction
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateCustomerTax', 'TemplateSupplierTax', 'Product',
@@ -40,7 +41,16 @@ class MissingFunction(fields.Function):
 class Category:
     __metaclass__ = PoolMeta
     __name__ = 'product.category'
+    accounting = fields.Boolean('Accounting', select=True,
+        states={
+            'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
+            },
+        depends=['parent'])
     account_parent = fields.Boolean('Use Parent\'s accounts',
+        states={
+            'invisible': ~Eval('accounting', False),
+            },
+        depends=['accounting'],
         help='Use the accounts defined on the parent category')
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
@@ -49,9 +59,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
@@ -59,14 +70,19 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_expense_used = MissingFunction(fields.Many2One('account.account',
             'Account Expense Used'), 'missing_account', 'get_account')
     account_revenue_used = MissingFunction(fields.Many2One('account.account',
             'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
+        states={
+            'invisible': ~Eval('accounting', False),
+            },
+        depends=['accounting'],
         help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
         'category', 'tax', 'Customer Taxes',
@@ -77,9 +93,10 @@ class Category:
             ],
         states={
             'invisible': (~Eval('context', {}).get('company')
-                | Eval('taxes_parent')),
+                | Eval('taxes_parent')
+                | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent'])
+        depends=['taxes_parent', 'accounting'])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
         'category', 'tax', 'Supplier Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -89,9 +106,10 @@ class Category:
             ],
         states={
             'invisible': (~Eval('context', {}).get('company')
-                | Eval('taxes_parent')),
+                | Eval('taxes_parent')
+                | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent'])
+        depends=['taxes_parent', 'accounting'])
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
             'Customer Taxes Used'), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
@@ -105,10 +123,18 @@ class Category:
                     'expense/revenue defined on the category '
                     '%s (%d)'),
             })
+        cls.parent.domain = [
+            ('accounting', '=', Eval('accounting', False)),
+            cls.parent.domain or []]
+        cls.parent.depends.append('accounting')
         cls.parent.states['required'] = Or(
             cls.parent.states.get('required', False),
             Eval('account_parent', False) | Eval('taxes_parent', False))
         cls.parent.depends.extend(['account_parent', 'taxes_parent'])
+
+    @classmethod
+    def default_accounting(cls):
+        return False
 
     def get_account(self, name):
         if self.account_parent:
@@ -124,6 +150,12 @@ class Category:
         else:
             return [x.id for x in getattr(self, name[:-5])]
 
+    @fields.depends('parent', 'accounting')
+    def on_change_with_accounting(self):
+        if self.parent:
+            return self.parent.accounting
+        return self.accounting
+
     @fields.depends('account_expense')
     def on_change_account_expense(self):
         if self.account_expense:
@@ -137,6 +169,14 @@ class Category:
             self.customer_taxes = self.account_revenue.taxes
         else:
             self.customer_taxes = []
+
+    @classmethod
+    def view_attributes(cls):
+        return super(Category, cls).view_attributes() + [
+            ('/form/notebook/page[@id="accounting"]', 'states', {
+                    'invisible': ~Eval('accounting', False),
+                    }),
+            ]
 
 
 class CategoryCustomerTax(ModelSQL):
@@ -184,7 +224,16 @@ class CategorySupplierTax(ModelSQL):
 class Template:
     __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    account_category = fields.Boolean('Use Category\'s accounts',
+    account_category = fields.Many2One('product.category', 'Account Category',
+        domain=[
+            ('accounting', '=', True),
+            ],
+        states={
+            'required': (Eval('accounts_category', False)
+                | Eval('taxes_category', False)),
+            },
+        depends=['accounts_category', 'taxes_category'])
+    accounts_category = fields.Boolean('Use Category\'s accounts',
             help='Use the accounts defined on the category')
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
@@ -193,10 +242,10 @@ class Template:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('accounts_category')),
                 },
             help='This account will be used instead of the one defined'
-            ' on the category.', depends=['account_category']))
+            ' on the category.', depends=['accounts_category']))
     account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
@@ -204,10 +253,10 @@ class Template:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('accounts_category')),
                 },
             help='This account will be used instead of the one defined'
-            ' on the category.', depends=['account_category']))
+            ' on the category.', depends=['accounts_category']))
     account_expense_used = MissingFunction(fields.Many2One('account.account',
         'Account Expense Used'), 'missing_account', 'get_account')
     account_revenue_used = MissingFunction(fields.Many2One('account.account',
@@ -248,16 +297,38 @@ class Template:
                 'missing_account': ('There is no account '
                     'expense/revenue defined on the product %s (%d)'),
                 })
-        cls.category.states['required'] = Or(
-            cls.category.states.get('required', False),
-            Eval('account_category', False) | Eval('taxes_category', False))
-        cls.category.depends.extend(['account_category', 'taxes_category'])
 
     @classmethod
-    def default_account_category(cls):
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
+        pool = Pool()
+        Category = pool.get('product.category')
+        sql_table = cls.__table__()
+        category = Category.__table__()
+
+        table = TableHandler(cls, module_name)
+        category_exists = table.column_exist('category')
+
+        # Migration from 3.8: rename account_category into accounts_category
+        if table.column_exist('account_category'):
+            table.column_rename('account_category', 'accounts_category')
+
+        super(Template, cls).__register__(module_name)
+
+        # Migration from 3.8: duplicate category into account_category
+        if category_exists:
+            # Only accounting category until now
+            cursor.execute(*category.update([category.accounting], [True]))
+            cursor.execute(*sql_table.update(
+                    [sql_table.account_category],
+                    [sql_table.category]))
+
+    @classmethod
+    def default_accounts_category(cls):
         pool = Pool()
         Config = pool.get('product.configuration')
-        return Config(1).default_account_category
+        return Config(1).default_accounts_category
 
     @classmethod
     def default_taxes_category(cls):
@@ -266,15 +337,15 @@ class Template:
         return Config(1).default_taxes_category
 
     def get_account(self, name):
-        if self.account_category:
-            account = self.category.__getattr__(name)
+        if self.accounts_category:
+            account = self.account_category.__getattr__(name)
         else:
             account = getattr(self, name[:-5])
         return account.id if account else None
 
     def get_taxes(self, name):
         if self.taxes_category:
-            return [x.id for x in getattr(self.category, name)]
+            return [x.id for x in getattr(self.account_category, name)]
         else:
             return [x.id for x in getattr(self, name[:-5])]
 

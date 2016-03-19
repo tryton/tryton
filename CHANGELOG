@@ -1,3 +1,5 @@
+* Move category into account_category
+* Rename account_category into accounts_category
 * Add Python3 support
 * Add configuration for default use category's accounts and taxes
 

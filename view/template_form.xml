@@ -6,9 +6,11 @@ this repository contains the full copyright notices and license terms. -->
         expr="/form/notebook/page[@id='general']"
         position="after">
         <page string="Accounting" col="4" id="accounting">
-            <separator string="Accounts" id="accounts" colspan="4"/>
             <label name="account_category"/>
             <field name="account_category"/>
+            <separator string="Accounts" id="accounts" colspan="4"/>
+            <label name="accounts_category"/>
+            <field name="accounts_category"/>
             <newline/>
             <label name="account_revenue"/>
             <field name="account_revenue"/>
