@@ -28,16 +28,12 @@ class StockTestCase(ModuleTestCase):
     def test_move_internal_quantity(self):
         'Test Move.internal_quantity'
         pool = Pool()
-        Category = pool.get('product.category')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
 
-        category, = Category.create([{
-                    'name': 'Test Move.internal_quantity',
-                    }])
         kg, = Uom.search([('name', '=', 'Kilogram')])
         g, = Uom.search([('name', '=', 'Gram')])
         template, = Template.create([{
@@ -45,7 +41,6 @@ class StockTestCase(ModuleTestCase):
                     'type': 'goods',
                     'list_price': Decimal(1),
                     'cost_price': Decimal(0),
-                    'category': category.id,
                     'cost_price_method': 'fixed',
                     'default_uom': kg.id,
                     }])
@@ -89,7 +84,6 @@ class StockTestCase(ModuleTestCase):
     def test_products_by_location(self):
         'Test products_by_location'
         pool = Pool()
-        Category = pool.get('product.category')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
@@ -98,9 +92,6 @@ class StockTestCase(ModuleTestCase):
         Period = pool.get('stock.period')
         transaction = Transaction()
 
-        category, = Category.create([{
-                    'name': 'Test products_by_location',
-                    }])
         kg, = Uom.search([('name', '=', 'Kilogram')])
         g, = Uom.search([('name', '=', 'Gram')])
         template, = Template.create([{
@@ -108,7 +99,6 @@ class StockTestCase(ModuleTestCase):
                     'type': 'goods',
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
-                    'category': category.id,
                     'cost_price_method': 'fixed',
                     'default_uom': kg.id,
                     }])
@@ -450,7 +440,6 @@ class StockTestCase(ModuleTestCase):
     def test_period(self):
         'Test period'
         pool = Pool()
-        Category = pool.get('product.category')
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
@@ -459,14 +448,10 @@ class StockTestCase(ModuleTestCase):
         Period = pool.get('stock.period')
         transaction = Transaction()
 
-        category, = Category.create([{
-                    'name': 'Test period',
-                    }])
         unit, = Uom.search([('name', '=', 'Unit')])
         template, = Template.create([{
                     'name': 'Test period',
                     'type': 'goods',
-                    'category': category.id,
                     'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal(0),
