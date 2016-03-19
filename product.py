@@ -18,8 +18,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
-                }))
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
+                },
+            depends=['account_parent', 'accounting']))
     account_depreciation_used = MissingFunction(
         fields.Many2One('account.account', 'Account Depreciation Used'),
         'missing_account', 'get_account')
@@ -31,8 +33,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
-                }))
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
+                },
+            depends=['account_parent', 'accounting']))
     account_asset_used = MissingFunction(
         fields.Many2One('account.account', 'Account Asset Used'),
         'missing_account', 'get_account')
