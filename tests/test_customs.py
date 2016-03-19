@@ -72,13 +72,13 @@ class CustomsTestCase(ModuleTestCase):
 
         category1 = Category(tariff_codes=[
                 Product_TariffCode(tariff_code=tariff1),
-                ], tariff_codes_parent=False)
+                ], tariff_codes_parent=False, customs=True)
         category2 = Category(tariff_codes=[
                 Product_TariffCode(tariff_code=tariff2),
-                ], parent=category1, tariff_codes_parent=False)
+                ], parent=category1, tariff_codes_parent=False, customs=True)
         template = Template(tariff_codes=[
                 Product_TariffCode(tariff_code=tariff3),
-                ], category=category2, tariff_codes_category=False)
+                ], customs_category=category2, tariff_codes_category=False)
 
         self.assertEqual(template.get_tariff_code({}), tariff3)
 
@@ -163,7 +163,7 @@ class CustomsTestCase(ModuleTestCase):
         tariff = Tariff(code='170390')
         tariff.save()
 
-        category = Category(name='Test',
+        category = Category(name='Test', customs=True,
             tariff_codes=[
                 Product_TariffCode(tariff_code=tariff),
                 ])
