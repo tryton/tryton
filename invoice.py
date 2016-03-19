@@ -2017,7 +2017,7 @@ class InvoiceTax(ModelSQL, ModelView):
         cls._error_messages.update({
                 'modify': ('You can not modify tax "%(tax)s" from invoice '
                     '"%(invoice)s" because it is posted or paid.'),
-                'create': ('You can not add line "%(line)s" to invoice '
+                'create': ('You can not add tax to invoice '
                     '"%(invoice)s" because it is posted, paid or canceled.'),
                 'invalid_base_code_company': ('You can not create invoice '
                     '"%(invoice)s" on company "%(invoice_company)s" '
@@ -2116,7 +2116,10 @@ class InvoiceTax(ModelSQL, ModelView):
         '''
         for tax in taxes:
             if tax.invoice.state in ('posted', 'paid'):
-                cls.raise_user_error('modify')
+                cls.raise_user_error('modify', {
+                        'tax': tax.rec_name,
+                        'invoice': tax.invoice.rec_name,
+                        })
 
     def get_sequence_number(self, name):
         i = 1
@@ -2146,7 +2149,9 @@ class InvoiceTax(ModelSQL, ModelView):
                 invoice_ids.append(vals['invoice'])
         for invoice in Invoice.browse(invoice_ids):
             if invoice.state in ('posted', 'paid', 'cancel'):
-                cls.raise_user_error('create')
+                cls.raise_user_error('create', {
+                        'invoice': invoice.rec_name,
+                        })
         return super(InvoiceTax, cls).create(vlist)
 
     def get_move_line(self):
