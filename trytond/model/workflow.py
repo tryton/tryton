@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import OrderedDict
 from functools import wraps
 
 
@@ -20,7 +21,7 @@ class Workflow(object):
             @wraps(func)
             def wrapper(cls, records, *args, **kwargs):
                 filtered = []
-                to_update = {}
+                to_update = OrderedDict()
 
                 for record in records:
                     current_state = getattr(record, cls._transition_state)
@@ -32,11 +33,11 @@ class Workflow(object):
 
                 result = func(cls, filtered, *args, **kwargs)
                 if to_update:
-                    for record in to_update.keys():
+                    for record in to_update:
                         current_state = getattr(record, cls._transition_state)
                         if current_state != to_update[record]:
                             del to_update[record]
-                    cls.write(to_update.keys(), {
+                    cls.write(list(to_update), {
                             cls._transition_state: state,
                             })
                 return result
