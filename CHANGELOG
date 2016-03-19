@@ -1,3 +1,6 @@
+* Add all available encoding for import/export
+* Add CSV parameters to export window
+* Add DnD on import window
 * Manage context model of ir.action.act_window
 * Add Note
 * Manage view_ids on tree view
