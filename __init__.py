@@ -15,5 +15,6 @@ def register():
         Category,
         Template,
         Product,
+        TemplateCategory,
         Configuration,
         module='product', type_='model')

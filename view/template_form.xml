@@ -13,10 +13,9 @@ this repository contains the full copyright notices and license terms. -->
           <field name="type"/>
           <label name="consumable"/>
           <field name="consumable"/>
-          <label name="category"/>
-          <field name="category" />
           <label name="default_uom"/>
           <field name="default_uom" />
+          <newline/>
           <label name="list_price"/>
           <field name="list_price"/>
           <newline/>
@@ -24,8 +23,10 @@ this repository contains the full copyright notices and license terms. -->
           <field name="cost_price"/>
           <label name="cost_price_method"/>
           <field name="cost_price_method"/>
-          <field name="products" mode="form,tree" colspan="4"
+          <field name="products" mode="form,tree" colspan="2"
               view_ids="product.product_view_form_simple"/>
+          <field name="categories" colspan="2"
+              view_ids="product.category_view_list"/>
       </page>
   </notebook>
 </form>

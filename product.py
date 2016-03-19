@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import copy
+import logging
 
 from sql import Column
 
@@ -11,7 +12,9 @@ from trytond.pool import Pool
 from trytond import backend
 from trytond.config import config
 
-__all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction']
+__all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction',
+    'TemplateCategory']
+logger = logging.getLogger(__name__)
 
 STATES = {
     'readonly': ~Eval('active', True),
@@ -43,8 +46,6 @@ class Template(ModelSQL, ModelView):
             'invisible': Eval('type', 'goods') != 'goods',
             },
         depends=['active', 'type'])
-    category = fields.Many2One('product.category', 'Category',
-        states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
             digits=price_digits, depends=DEPENDS, required=True))
     cost_price = fields.Property(fields.Numeric('Cost Price', states=STATES,
@@ -58,6 +59,8 @@ class Template(ModelSQL, ModelView):
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
     active = fields.Boolean('Active', select=True)
+    categories = fields.Many2Many('product.template-product.category',
+        'template', 'category', 'Categories', states=STATES, depends=DEPENDS)
     products = fields.One2Many('product.product', 'template', 'Variants',
         states=STATES, depends=DEPENDS)
 
@@ -82,6 +85,12 @@ class Template(ModelSQL, ModelView):
                 columns=[sql_table.type],
                 values=['goods'],
                 where=sql_table.type.in_(['stockable', 'consumable'])))
+
+        # Migration from 3.8: rename category into categories
+        if table.column_exist('category'):
+            logger.warning(
+                'The column "category" on table "%s" must be dropped manually',
+                cls._table)
 
     @staticmethod
     def default_active():
@@ -285,3 +294,12 @@ class Product(ModelSQL, ModelView):
         for id_, rec_name, icon in super(Product, cls).search_global(text):
             icon = icon or 'tryton-product'
             yield id_, rec_name, icon
+
+
+class TemplateCategory(ModelSQL):
+    'Template - Category'
+    __name__ = 'product.template-product.category'
+    template = fields.Many2One('product.template', 'Template',
+        ondelete='CASCADE', required=True, select=True)
+    category = fields.Many2One('product.category', 'Category',
+        ondelete='CASCADE', required=True, select=True)

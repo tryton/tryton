@@ -264,7 +264,7 @@ class ProductTestCase(ModuleTestCase):
         uom, = Uom.search([], limit=1)
         values1 = {
             'name': 'Some product-1',
-            'category': category1.id,
+            'categories': [('add', [category1.id])],
             'type': 'goods',
             'list_price': Decimal('10'),
             'cost_price': Decimal('5'),
@@ -273,7 +273,7 @@ class ProductTestCase(ModuleTestCase):
             }
         values2 = {
             'name': 'Some product-2',
-            'category': category2.id,
+            'categories': [('add', [category2.id])],
             'type': 'goods',
             'list_price': Decimal('10'),
             'cost_price': Decimal('5'),
@@ -287,7 +287,7 @@ class ProductTestCase(ModuleTestCase):
         # model) you wont be able to check as in most cases the
         # id of the template and the related model would be same (1).
         # So two products have been created with same category. So that
-        # domain ('template.category', '=', 1) will return 2 records which
+        # domain ('template.categories', '=', 1) will return 2 records which
         # it supposed to be.
         template1, template2, template3, template4 = Template.create(
             [values1, values1.copy(), values2, values2.copy()]
@@ -295,21 +295,21 @@ class ProductTestCase(ModuleTestCase):
         self.assertEqual(Product.search([], count=True), 4)
         self.assertEqual(
             Product.search([
-                    ('category', '=', category1.id),
+                    ('categories', '=', category1.id),
                     ], count=True), 2)
 
         self.assertEqual(
             Product.search([
-                    ('template.category', '=', category1.id),
+                    ('template.categories', '=', category1.id),
                     ], count=True), 2)
 
         self.assertEqual(
             Product.search([
-                    ('category', '=', category2.id),
+                    ('categories', '=', category2.id),
                     ], count=True), 2)
         self.assertEqual(
             Product.search([
-                    ('template.category', '=', category2.id),
+                    ('template.categories', '=', category2.id),
                     ], count=True), 2)
 
     @with_transaction()

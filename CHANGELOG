@@ -1,3 +1,4 @@
+* Replace category by categories on Template
 * Add Python3 support
 * Add configuration for default cost price method
 * Change Uom.round into an instance method
