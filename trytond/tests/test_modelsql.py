@@ -5,6 +5,8 @@
 import unittest
 import time
 
+from mock import patch, call
+
 from trytond import backend
 from trytond.exceptions import UserError, ConcurrencyException
 from trytond.transaction import Transaction
@@ -80,6 +82,37 @@ class ModelSQLTestCase(unittest.TestCase):
         transaction.commit()
         ModelsqlTimestamp.delete([record])
         transaction.commit()
+
+    @with_transaction()
+    def test_create_field_set(self):
+        'Test field.set in create'
+        pool = Pool()
+        Model = pool.get('test.modelsql.field_set')
+
+        with patch.object(Model, 'set_field') as setter:
+            records = Model.create([{'field': 1}])
+            setter.assert_called_with(records, 'field', 1)
+
+        # Different values are not grouped
+        with patch.object(Model, 'set_field') as setter:
+            records = Model.create([{'field': 1}, {'field': 2}])
+            setter.assert_has_calls([
+                    call([records[0]], 'field', 1),
+                    call([records[1]], 'field', 2),
+                    ])
+
+        # Same values are grouped in one call
+        with patch.object(Model, 'set_field') as setter:
+            records = Model.create([{'field': 1}, {'field': 1}])
+            setter.assert_called_with(records, 'field', 1)
+
+        # Mixed values are grouped per value
+        with patch.object(Model, 'set_field') as setter:
+            records = Model.create([{'field': 1}, {'field': 2}, {'field': 1}])
+            setter.assert_has_calls([
+                    call([records[0], records[2]], 'field', 1),
+                    call([records[1]], 'field', 2),
+                    ])
 
 
 def suite():

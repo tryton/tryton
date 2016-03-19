@@ -5,7 +5,7 @@ from trytond.model import ModelSingleton, ModelSQL, UnionMixin, fields
 __all__ = [
     'Singleton', 'URLObject',
     'ModelStorage',
-    'ModelSQLRequiredField', 'ModelSQLTimestamp',
+    'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
     'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
     'Union', 'UnionUnion',
     'Model4UnionTree1', 'Model4UnionTree2', 'UnionTree',
@@ -45,6 +45,21 @@ class ModelSQLRequiredField(ModelSQL):
 class ModelSQLTimestamp(ModelSQL):
     'Model to test timestamp'
     __name__ = 'test.modelsql.timestamp'
+
+
+class ModelSQLFieldSet(ModelSQL):
+    'Model to test field set'
+    __name__ = 'test.modelsql.field_set'
+
+    field = fields.Function(fields.Integer('Field'),
+        'get_field', setter='set_field')
+
+    def get_field(self, name=None):
+        return
+
+    @classmethod
+    def set_field(cls, records, name, value):
+        pass
 
 
 class Model4Union1(ModelSQL):

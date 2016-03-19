@@ -106,6 +106,7 @@ def register():
         ModelStorage,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
+        ModelSQLFieldSet,
         Model4Union1,
         Model4Union2,
         Model4Union3,

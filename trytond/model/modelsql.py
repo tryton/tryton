@@ -576,8 +576,14 @@ class ModelSQL(ModelStorage):
                     translation_values.setdefault(
                         '%s,%s' % (cls.__name__, fname), {})[new_id] = value
                 if hasattr(field, 'set'):
-                    fields_to_set.setdefault(fname, []).extend(
-                        ([new_id], value))
+                    args = fields_to_set.setdefault(fname, [])
+                    actions = iter(args)
+                    for ids, val in zip(actions, actions):
+                        if val == value:
+                            ids.append(new_id)
+                            break
+                    else:
+                        args.extend(([new_id], value))
 
         if translation_values:
             for name, translations in translation_values.iteritems():
