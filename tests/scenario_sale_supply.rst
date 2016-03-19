@@ -98,12 +98,6 @@ Create parties::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
-Create category::
-
-    >>> ProductCategory = Model.get('product.category')
-    >>> category = ProductCategory(name='Category')
-    >>> category.save()
-
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -113,7 +107,6 @@ Create product::
     >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
-    >>> template.category = category
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.purchasable = True
@@ -227,7 +220,6 @@ not create a new purchase request::
     >>> changing_product = Product()
     >>> changing_template = ProductTemplate()
     >>> changing_template.name = 'product'
-    >>> changing_template.category = category
     >>> changing_template.default_uom = unit
     >>> changing_template.type = 'goods'
     >>> changing_template.purchasable = True
