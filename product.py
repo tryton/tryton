@@ -26,9 +26,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_stock_supplier = fields.Property(fields.Many2One('account.account',
             'Account Stock Supplier', domain=[
                 ('kind', '=', 'stock'),
@@ -36,9 +37,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_stock_customer = fields.Property(fields.Many2One('account.account',
             'Account Stock Customer', domain=[
                 ('kind', '=', 'stock'),
@@ -46,9 +48,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_stock_production = fields.Property(
         fields.Many2One('account.account',
             'Account Stock Production', domain=[
@@ -57,9 +60,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found', domain=[
                 ('kind', '=', 'stock'),
@@ -67,9 +71,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_stock_used = MissingFunction(fields.Many2One('account.account',
         'Account Stock Used'), 'missing_account', 'get_account')
     account_stock_supplier_used = MissingFunction(fields.Many2One(
