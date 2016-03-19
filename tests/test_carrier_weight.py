@@ -24,7 +24,6 @@ class CarrierWeightTestCase(ModuleTestCase):
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
-        Category = pool.get('product.category')
         Carrier = pool.get('carrier')
         WeightPriceList = pool.get('carrier.weight_price_list')
 
@@ -34,13 +33,9 @@ class CarrierWeightTestCase(ModuleTestCase):
         uom, = Uom.search([
                 ('name', '=', 'Unit'),
                 ])
-        category, = Category.create([{
-                    'name': 'Category',
-                    }])
         template, = Template.create([{
                     'name': 'Carrier',
                     'default_uom': uom.id,
-                    'category': category.id,
                     'type': 'service',
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
