@@ -98,7 +98,6 @@ class StockSupplyDayTestCase(ModuleTestCase):
         pool = Pool()
         Uom = pool.get('product.uom')
         UomCategory = pool.get('product.uom.category')
-        Category = pool.get('product.category')
         Template = pool.get('product.template')
         Product = pool.get('product.product')
         Party = pool.get('party.party')
@@ -114,12 +113,9 @@ class StockSupplyDayTestCase(ModuleTestCase):
                     'rate': 1.0,
                     'factor': 1.0,
                     }])
-        category, = Category.create([{'name': 'ProdCategoryTest'}])
         template, = Template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
-                    'category': category.id,
-                    'account_category': True,
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     }])
