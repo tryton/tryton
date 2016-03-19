@@ -19,9 +19,10 @@ class Category:
                 ],
             states={
                 'invisible': (~Eval('context', {}, ).get('company')
-                    | Eval('account_parent')),
+                    | Eval('account_parent')
+                    | ~Eval('accounting', False)),
                 },
-            depends=['account_parent']))
+            depends=['account_parent', 'accounting']))
     account_cogs_used = MissingFunction(fields.Many2One('account.account',
             'Account Cost of Goods Sold Used'), 'missing_account',
         'get_account')

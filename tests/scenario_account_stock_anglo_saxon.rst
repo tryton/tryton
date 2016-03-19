@@ -115,12 +115,6 @@ Create parties::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
-Create category::
-
-    >>> ProductCategory = Model.get('product.category')
-    >>> category = ProductCategory(name='Category')
-    >>> category.save()
-
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -130,7 +124,6 @@ Create product::
     >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
-    >>> template.category = category
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.purchasable = True
@@ -376,7 +369,6 @@ Now we will use a product with different unit of measure::
     >>> product_by5 = Product()
     >>> template_by5 = ProductTemplate()
     >>> template_by5.name = 'product'
-    >>> template_by5.category = category
     >>> template_by5.default_uom = unit
     >>> template_by5.type = 'goods'
     >>> template_by5.purchasable = True
