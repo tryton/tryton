@@ -486,6 +486,7 @@ class ModelSQL(ModelStorage):
 
         table = cls.__table__()
         modified_fields = set()
+        defaults_cache = {}  # Store already computed default values
         new_ids = []
         vlist = [v.copy() for v in vlist]
         for values in vlist:
@@ -502,11 +503,16 @@ class ModelSQL(ModelStorage):
                 if (f not in values
                         and f not in ('create_uid', 'create_date',
                             'write_uid', 'write_date', 'id')):
-                    default.append(f)
+                    if f in defaults_cache:
+                        values[f] = defaults_cache[f]
+                    else:
+                        default.append(f)
 
             if default:
                 defaults = cls.default_get(default, with_rec_name=False)
-                values.update(cls._clean_defaults(defaults))
+                defaults = cls._clean_defaults(defaults)
+                values.update(defaults)
+                defaults_cache.update(defaults)
 
             insert_columns = [table.create_uid, table.create_date]
             insert_values = [transaction.user, CurrentTimestamp()]
