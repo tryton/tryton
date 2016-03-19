@@ -61,12 +61,6 @@ Create customer::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
-Create category::
-
-    >>> ProductCategory = Model.get('product.category')
-    >>> category = ProductCategory(name='Category')
-    >>> category.save()
-
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -76,7 +70,6 @@ Create product::
     >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
-    >>> template.category = category
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
@@ -90,7 +83,6 @@ Create product::
     >>> carrier_product = Product()
     >>> carrier_template = ProductTemplate()
     >>> carrier_template.name = 'Carrier Product'
-    >>> carrier_template.category = category
     >>> carrier_template.default_uom = unit
     >>> carrier_template.type = 'service'
     >>> carrier_template.salable = True
