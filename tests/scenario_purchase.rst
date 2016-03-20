@@ -288,7 +288,7 @@ Open supplier invoice::
     >>> config.user = account_user.id
     >>> invoice = Invoice(invoice.id)
     >>> invoice.type
-    u'in_invoice'
+    u'in'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
     ...     key=lambda l: l.quantity or 0)
     >>> for line in invoice.lines:
@@ -373,11 +373,11 @@ Open supplier credit note::
     >>> config.user = account_user.id
     >>> credit_note = Invoice(credit_note.id)
     >>> credit_note.type
-    u'in_credit_note'
+    u'in'
     >>> len(credit_note.lines)
     1
     >>> sum(l.quantity for l in credit_note.lines)
-    4.0
+    -4.0
     >>> credit_note.invoice_date = today
     >>> credit_note.click('post')
 
@@ -407,7 +407,7 @@ Mixing return and purchase::
     u'processing'
     >>> mix.reload()
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
-    (2, 1, 2)
+    (2, 1, 1)
 
 Checking Shipments::
 
@@ -440,23 +440,17 @@ Checking the invoice::
 
     >>> config.user = purchase_user.id
     >>> mix.reload()
-    >>> mix_invoice, mix_credit_note = sorted(mix.invoices,
-    ...     key=attrgetter('type'), reverse=True)
+    >>> mix_invoice, = mix.invoices
     >>> config.user = account_user.id
     >>> mix_invoice = Invoice(mix_invoice.id)
-    >>> mix_credit_note = Invoice(mix_credit_note.id)
-    >>> mix_invoice.type, mix_credit_note.type
-    (u'in_invoice', u'in_credit_note')
-    >>> len(mix_invoice.lines), len(mix_credit_note.lines)
-    (1, 1)
-    >>> sum(l.quantity for l in mix_invoice.lines)
-    7.0
-    >>> sum(l.quantity for l in mix_credit_note.lines)
-    2.0
+    >>> mix_invoice.type
+    u'in'
+    >>> len(mix_invoice.lines)
+    3
+    >>> sorted(l.quantity for l in mix_invoice.lines if l.quantity)
+    [-2.0, 7.0]
     >>> mix_invoice.invoice_date = today
     >>> mix_invoice.click('post')
-    >>> mix_credit_note.invoice_date = today
-    >>> mix_credit_note.click('post')
 
 Mixing stuff with an invoice method 'on shipment'::
 
