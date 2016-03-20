@@ -151,7 +151,7 @@ Invoice landed cost::
 
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_invoice'
+    >>> invoice.type = 'in'
     >>> invoice.party = supplier
     >>> invoice.payment_term = payment_term
     >>> invoice.invoice_date = today
