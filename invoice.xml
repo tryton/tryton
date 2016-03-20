@@ -38,181 +38,93 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_invoice_form"/>
         </record>
 
-        <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
-            <field name="name">Invoices</field>
+        <record model="ir.action.act_window" id="act_invoice_out_form">
+            <field name="name">Customer Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain" eval="[('type', '=', 'out_invoice')]" pyson="1"/>
-            <field name="context" eval="{'type': 'out_invoice'}" pyson="1"/>
+            <field name="domain" eval="[('type', '=', 'out')]" pyson="1"/>
+            <field name="context" eval="{'type': 'out'}" pyson="1"/>
             <field name="search_value"></field>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view1">
+        <record model="ir.action.act_window.view" id="act_invoice_out_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view2">
+        <record model="ir.action.act_window.view" id="act_invoice_out_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_draft">
+        <record model="ir.action.act_window.domain" id="act_invoice_out_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_validated">
+        <record model="ir.action.act_window.domain" id="act_invoice_out_domain_validated">
             <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
             <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_posted">
+        <record model="ir.action.act_window.domain" id="act_invoice_out_domain_posted">
             <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
             <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_all">
+        <record model="ir.action.act_window.domain" id="act_invoice_out_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
             <field name="domain"></field>
-            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+            <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_out_invoice_form"
-            id="menu_invoice_out_invoice_form" sequence="1"/>
+        <menuitem parent="menu_invoices" action="act_invoice_out_form"
+            id="menu_invoice_out_form" sequence="1"/>
 
-        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form">
-            <field name="name">Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain" eval="[('type', '=', 'out_credit_note')]" pyson="1"/>
-            <field name="context" eval="{'type': 'out_credit_note'}" pyson="1"/>
-            <field name="search_value"></field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_draft">
-            <field name="name">Draft</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_validated">
-            <field name="name">Validated</field>
-            <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_posted">
-            <field name="name">Posted</field>
-            <field name="sequence" eval="30"/>
-            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_all">
-            <field name="name">All</field>
-            <field name="sequence" eval="9999"/>
-            <field name="domain"></field>
-            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
-        </record>
-        <menuitem parent="menu_invoices" action="act_invoice_out_credit_note_form"
-            id="menu_invoice_out_credit_note_form" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
+        <record model="ir.action.act_window" id="act_invoice_in_form">
             <field name="name">Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain" eval="[('type', '=', 'in_invoice')]" pyson="1"/>
-            <field name="context" eval="{'type': 'in_invoice'}" pyson="1"/>
+            <field name="domain" eval="[('type', '=', 'in')]" pyson="1"/>
+            <field name="context" eval="{'type': 'in'}" pyson="1"/>
             <field name="search_value"></field>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view1">
+        <record model="ir.action.act_window.view" id="act_invoice_in_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view2">
+        <record model="ir.action.act_window.view" id="act_invoice_in_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_draft">
+        <record model="ir.action.act_window.domain" id="act_invoice_in_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_validated">
+        <record model="ir.action.act_window.domain" id="act_invoice_in_domain_validated">
             <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
             <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_posted">
+        <record model="ir.action.act_window.domain" id="act_invoice_in_domain_posted">
             <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
             <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_all">
+        <record model="ir.action.act_window.domain" id="act_invoice_in_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
             <field name="domain"></field>
-            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+            <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_in_invoice_form"
-            id="menu_invoice_in_invoice_form" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form">
-            <field name="name">Supplier Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain" eval="[('type', '=', 'in_credit_note')]" pyson="1"/>
-            <field name="context" eval="{'type': 'in_credit_note'}" pyson="1"/>
-            <field name="search_value"></field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_draft">
-            <field name="name">Draft</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_validated">
-            <field name="name">Validated</field>
-            <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_posted">
-            <field name="name">Posted</field>
-            <field name="sequence" eval="30"/>
-            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_all">
-            <field name="name">All</field>
-            <field name="sequence" eval="9999"/>
-            <field name="domain"></field>
-            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
-        </record>
-        <menuitem parent="menu_invoices" action="act_invoice_in_credit_note_form"
-            id="menu_invoice_in_credit_note_form" sequence="4"/>
+        <menuitem parent="menu_invoices" action="act_invoice_in_form"
+            id="menu_invoice_in_form" sequence="3"/>
 
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>

@@ -1,3 +1,5 @@
+* Merge invoice and credit note
+* Inversed sign of tax report from credit note
 * Add Python3 support
 * Change payment term percentage into ratio
 
