@@ -10,11 +10,11 @@ __all__ = ['SaleLine', 'AnalyticAccountEntry']
 class SaleLine(AnalyticMixin):
     __name__ = 'sale.line'
 
-    def get_invoice_line(self, invoice_type):
+    def get_invoice_line(self):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        invoice_lines = super(SaleLine, self).get_invoice_line(invoice_type)
+        invoice_lines = super(SaleLine, self).get_invoice_line()
         for invoice_line in invoice_lines:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
