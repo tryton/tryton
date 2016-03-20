@@ -186,11 +186,11 @@ Create a complaint to credit the invoice::
     >>> action, = complaint.actions
     >>> credit_note = action.result
     >>> credit_note.type
-    u'out_credit_note'
+    u'out'
     >>> len(credit_note.lines)
     2
     >>> sum(l.quantity for l in credit_note.lines)
-    5.0
+    -5.0
 
 Create a complaint to credit a invoice line::
 
@@ -209,7 +209,7 @@ Create a complaint to credit a invoice line::
     >>> action, = complaint.actions
     >>> credit_note = action.result
     >>> credit_note.type
-    u'out_credit_note'
+    u'out'
     >>> credit_note_line, = credit_note.lines
     >>> credit_note_line.quantity
-    1.0
+    -1.0

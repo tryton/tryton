@@ -150,13 +150,13 @@ class Complaint(Workflow, ModelSQL, ModelView):
             'account.invoice': [
                 ('party', '=', Eval('customer')),
                 ('company', '=', Eval('company')),
-                ('type', '=', 'out_invoice'),
+                ('type', '=', 'out'),
                 ('state', 'in', ['posted', 'paid']),
                 ],
             'account.invoice.line': [
                 ('invoice.party', '=', Eval('customer')),
                 ('invoice.company', '=', Eval('company')),
-                ('invoice.type', '=', 'out_invoice'),
+                ('invoice.type', '=', 'out'),
                 ('invoice.state', 'in', ['posted', 'paid']),
                 ],
             }
@@ -434,7 +434,7 @@ class Action(ModelSQL, ModelView):
                 credit_line['origin'] = str(self.complaint)
             if isinstance(self.complaint.origin, Line):
                 if self.quantity is not None:
-                    lines_values[0]['quantity'] = self.quantity
+                    lines_values[0]['quantity'] = -self.quantity
                 if self.unit_price is not None:
                     lines_values[0]['unit_price'] = self.unit_price
             values['lines'] = [('create', lines_values)]
