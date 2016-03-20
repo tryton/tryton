@@ -175,7 +175,7 @@ Create commission invoices::
     >>> create_invoice.execute('create_')
 
     >>> invoice, = Invoice.find([
-    ...         ('type', '=', 'in_invoice'),
+    ...         ('type', '=', 'in'),
     ...         ])
     >>> invoice.total_amount
     Decimal('10.00')
@@ -186,7 +186,7 @@ Create commission invoices::
     True
 
     >>> invoice, = Invoice.find([
-    ...         ('type', '=', 'out_invoice'),
+    ...         ('type', '=', 'out'),
     ...         ('party', '=', principal.party.id),
     ...         ])
     >>> invoice.total_amount

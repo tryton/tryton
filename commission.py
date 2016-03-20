@@ -335,10 +335,7 @@ class Commission(ModelSQL, ModelView):
             'in': 'out',
             'out': 'in',
             }.get(self.type_)
-        document = 'invoice' if self.amount > 0 else 'credit_note'
-        return (('agent', self.agent),
-            ('type', '%s_%s' % (direction, document)),
-            )
+        return (('agent', self.agent), ('type', direction))
 
     @classmethod
     def get_journal(cls):
@@ -357,7 +354,7 @@ class Commission(ModelSQL, ModelView):
         Invoice = pool.get('account.invoice')
 
         agent = key['agent']
-        if key['type'].startswith('out'):
+        if key['type'] == 'out':
             payment_term = agent.party.customer_payment_term
         else:
             payment_term = agent.party.supplier_payment_term
@@ -381,7 +378,7 @@ class Commission(ModelSQL, ModelView):
         InvoiceLine = pool.get('account.invoice.line')
 
         def sign(commission):
-            if invoice.type.startswith(commission.type_):
+            if invoice.type == commission.type_:
                 return -1
             else:
                 return 1
@@ -389,9 +386,6 @@ class Commission(ModelSQL, ModelView):
         product = key['product']
         amount = invoice.currency.round(
             sum(c.amount * sign(c) for c in commissions))
-
-        if invoice.type.endswith('credit_note'):
-            amount *= -1
 
         invoice_line = InvoiceLine()
         invoice_line.invoice = invoice

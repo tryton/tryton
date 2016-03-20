@@ -115,10 +115,8 @@ class InvoiceLine:
             ],
         states={
             'invisible': If(Bool(Eval('_parent_invoice')),
-                Eval('_parent_invoice', {}).get('type').in_(
-                    ['in_invoice', 'in_credit_note']),
-                Eval('invoice_type').in_(
-                    ['in_invoice', 'in_credit_note'])),
+                Eval('_parent_invoice', {}).get('type') == 'in',
+                Eval('invoice_type') == 'in'),
             }, depends=['invoice_type', 'company'])
     commissions = fields.One2Many('commission', 'origin', 'Commissions',
         readonly=True,
