@@ -52,7 +52,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
             ],
         domain=[
             ('invoice.state', 'in', ['posted', 'paid']),
-            ('invoice.type', '=', 'in_invoice'),
+            ('invoice.type', '=', 'in'),
             ('product.template.landed_cost', '=', True),
             ('type', '=', 'line'),
             ],
