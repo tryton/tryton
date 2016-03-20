@@ -73,7 +73,7 @@ Create payment term::
 Create 2 customer invoices::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> customer_invoice1 = Invoice(type='out_invoice')
+    >>> customer_invoice1 = Invoice(type='out')
     >>> customer_invoice1.party = customer
     >>> customer_invoice1.payment_term = payment_term
     >>> invoice_line = customer_invoice1.lines.new()
@@ -85,7 +85,7 @@ Create 2 customer invoices::
     >>> customer_invoice1.state
     u'posted'
 
-    >>> customer_invoice2 = Invoice(type='out_invoice')
+    >>> customer_invoice2 = Invoice(type='out')
     >>> customer_invoice2.party = customer
     >>> customer_invoice2.payment_term = payment_term
     >>> invoice_line = customer_invoice2.lines.new()
@@ -99,11 +99,11 @@ Create 2 customer invoices::
 
 Create 1 customer credit note::
 
-    >>> customer_credit_note = Invoice(type='out_credit_note')
+    >>> customer_credit_note = Invoice(type='out')
     >>> customer_credit_note.party = customer
     >>> customer_credit_note.payment_term = payment_term
     >>> invoice_line = customer_credit_note.lines.new()
-    >>> invoice_line.quantity = 1
+    >>> invoice_line.quantity = -1
     >>> invoice_line.unit_price = Decimal('50')
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
@@ -113,7 +113,7 @@ Create 1 customer credit note::
 
 Create 1 supplier invoices::
 
-    >>> supplier_invoice = Invoice(type='in_invoice')
+    >>> supplier_invoice = Invoice(type='in')
     >>> supplier_invoice.party = supplier
     >>> supplier_invoice.payment_term = payment_term
     >>> invoice_line = supplier_invoice.lines.new()
@@ -240,7 +240,7 @@ Test statement report::
 
 Let's test the negative amount version of the supplier/customer invoices::
 
-    >>> customer_invoice3 = Invoice(type='out_invoice')
+    >>> customer_invoice3 = Invoice(type='out')
     >>> customer_invoice3.party = customer
     >>> customer_invoice3.payment_term = payment_term
     >>> invoice_line = customer_invoice3.lines.new()
@@ -252,7 +252,7 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> customer_invoice3.state
     u'posted'
 
-    >>> supplier_invoice2 = Invoice(type='in_invoice')
+    >>> supplier_invoice2 = Invoice(type='in')
     >>> supplier_invoice2.party = supplier
     >>> supplier_invoice2.payment_term = payment_term
     >>> invoice_line = supplier_invoice2.lines.new()
@@ -296,7 +296,7 @@ Let's test the negative amount version of the supplier/customer invoices::
 
 Testing the use of an invoice in multiple statements::
 
-    >>> customer_invoice4 = Invoice(type='out_invoice')
+    >>> customer_invoice4 = Invoice(type='out')
     >>> customer_invoice4.party = customer
     >>> customer_invoice4.payment_term = payment_term
     >>> invoice_line = customer_invoice4.lines.new()

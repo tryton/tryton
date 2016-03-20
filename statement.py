@@ -249,7 +249,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             invoice_id2amount_to_pay = {}
             for invoice in invoices:
                 with Transaction().set_context(date=invoice.currency_date):
-                    if invoice.type in ('out_invoice', 'in_credit_note'):
+                    if invoice.type == 'out':
                         sign = -1
                     else:
                         sign = 1
