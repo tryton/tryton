@@ -144,15 +144,13 @@ class Sale:
                         })
         return shipments
 
-    def create_invoice(self, invoice_type):
+    def create_invoice(self):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         Shipment = pool.get('stock.shipment.out')
 
-        invoice = super(Sale, self).create_invoice(invoice_type)
-        if (invoice
-                and invoice_type == 'out_invoice'
-                and self.shipment_cost_method == 'shipment'):
+        invoice = super(Sale, self).create_invoice()
+        if invoice and self.shipment_cost_method == 'shipment':
             for shipment in self.shipments:
                 if (shipment.state == 'done'
                         and shipment.carrier
@@ -176,9 +174,8 @@ class SaleLine:
     shipment_cost = fields.Numeric('Shipment Cost',
         digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)))
 
-    def _get_invoice_line_quantity(self, invoice_type):
-        quantity = super(SaleLine, self)._get_invoice_line_quantity(
-            invoice_type)
+    def _get_invoice_line_quantity(self):
+        quantity = super(SaleLine, self)._get_invoice_line_quantity()
         if (self.shipment_cost
                 and self.sale.shipment_cost_method == 'shipment'):
             return 0
