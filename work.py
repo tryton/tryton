@@ -402,7 +402,7 @@ class Work:
 
         return Invoice(
             company=self.company,
-            type='out_invoice',
+            type='out',
             journal=journal,
             party=self.party,
             invoice_address=self.party.address_get(type='invoice'),
