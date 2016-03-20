@@ -49,7 +49,7 @@ class Asset(Workflow, ModelSQL, ModelView):
                 ('product', '=', -1),
                 ('product', '=', Eval('product', -1)),
                 ),
-            ('invoice.type', '=', 'in_invoice'),
+            ('invoice.type', '=', 'in'),
             ['OR',
                 ('company', '=', Eval('company', -1)),
                 ('invoice.company', '=', Eval('company', -1)),

@@ -17,9 +17,8 @@ class PurchaseLine:
                     'an "Account Asset" on product "%s".'),
                 })
 
-    def get_invoice_line(self, invoice_type):
-        invoice_lines = super(PurchaseLine, self).get_invoice_line(
-            invoice_type)
+    def get_invoice_line(self):
+        invoice_lines = super(PurchaseLine, self).get_invoice_line()
         if (self.product
                 and self.product.type == 'assets'
                 and self.product.depreciable):

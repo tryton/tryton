@@ -17,7 +17,7 @@ class InvoiceLine:
         states={
             'invisible': (~Eval('is_assets_depreciable', False)
                 | (Eval('_parent_invoice', {}).get('type',
-                        Eval('invoice_type')) != 'out_invoice')),
+                        Eval('invoice_type')) != 'out')),
             },
         depends=['product', 'is_assets_depreciable'])
     is_assets_depreciable = fields.Function(fields.Boolean(
@@ -41,7 +41,7 @@ class InvoiceLine:
         else:
             type_ = self.invoice_type
 
-        if (self.product and type_ in ('in_invoice', 'in_credit_note')
+        if (self.product and type_ == 'in'
                 and self.product.type == 'assets'
                 and self.product.depreciable):
             self.account = self.product.account_asset_used
