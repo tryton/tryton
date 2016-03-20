@@ -46,12 +46,11 @@ class Purchase:
 class PurchaseLine(AnalyticMixin):
     __name__ = 'purchase.line'
 
-    def get_invoice_line(self, invoice_type):
+    def get_invoice_line(self):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        invoice_lines = super(PurchaseLine, self).get_invoice_line(
-            invoice_type)
+        invoice_lines = super(PurchaseLine, self).get_invoice_line()
         for invoice_line in invoice_lines:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
