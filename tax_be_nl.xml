@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record id="tax_code_be_nl" model="account.tax.code.template">
             
-            <field name="name">BTW-codes (België)</field>
+            <field name="name">Belastingen-codes (België)</field>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -566,7 +566,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="411_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -731,7 +731,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -771,7 +771,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -810,7 +810,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -850,7 +850,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -889,7 +889,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -929,7 +929,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -967,7 +967,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1132,7 +1132,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1172,7 +1172,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1211,7 +1211,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1251,7 +1251,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1290,7 +1290,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1330,7 +1330,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1368,7 +1368,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1533,7 +1533,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1573,7 +1573,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1612,7 +1612,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1652,7 +1652,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1691,7 +1691,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="411_nl"/>
             <field name="credit_note_account" ref="411_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -1731,7 +1731,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86_nl"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83_nl"/>
-            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="credit_note_base_sign" eval="1"/>
             <field name="account" ref="root_nl"/>
         </record>
 
