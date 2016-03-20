@@ -79,14 +79,10 @@ class InvoiceLine:
         # an empty list means we'll use the current cost price
         moves = [move for move in self._anglo_saxon_stock_moves
             if move.state == 'done']
-        if self.invoice.type == 'in_invoice':
+        if self.invoice.type == 'in':
             type_ = 'in_supplier'
-        elif self.invoice.type == 'out_invoice':
+        elif self.invoice.type == 'out':
             type_ = 'out_customer'
-        elif self.invoice.type == 'in_credit_note':
-            type_ = 'out_supplier'
-        elif self.invoice.type == 'out_credit_note':
-            type_ = 'in_customer'
         if self.quantity < 0:
             direction, target = type_.split('_')
             if direction == 'in':
