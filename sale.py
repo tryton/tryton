@@ -469,10 +469,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     if value is not None else default_value,)
         return taxable_lines
 
-    @property
-    def tax_type(self):
-        return 'invoice'
-
     def get_tax_amount(self):
         return sum(v['amount'] for v in self._get_taxes().itervalues())
 
@@ -722,37 +718,24 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'total_amount_cache': sale.total_amount,
                     })
 
-    def _get_invoice_sale(self, invoice_type):
-        '''
-        Return invoice of type invoice_type
-        '''
+    def _get_invoice_sale(self):
+        'Return invoice'
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        Journal = pool.get('account.journal')
-
-        journals = Journal.search([
-                ('type', '=', 'revenue'),
-                ], limit=1)
-        if journals:
-            journal, = journals
-        else:
-            journal = None
-
-        return Invoice(
+        invoice = Invoice(
             company=self.company,
-            type=invoice_type,
-            journal=journal,
+            type='out',
             party=self.party,
             invoice_address=self.invoice_address,
             currency=self.currency,
             account=self.party.account_receivable,
-            payment_term=self.payment_term,
             )
+        invoice.on_change_type()
+        invoice.payment_term = self.payment_term
+        return invoice
 
-    def create_invoice(self, invoice_type):
-        '''
-        Create and return an invoice of type invoice_type
-        '''
+    def create_invoice(self):
+        'Create and return an invoice'
         pool = Pool()
         Invoice = pool.get('account.invoice')
         if self.invoice_method == 'manual':
@@ -764,13 +747,13 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         invoice_lines = {}
         for line in self.lines:
-            ilines = line.get_invoice_line(invoice_type)
+            ilines = line.get_invoice_line()
             if ilines:
                 invoice_lines[line.id] = ilines
         if not invoice_lines:
             return
 
-        invoice = self._get_invoice_sale(invoice_type)
+        invoice = self._get_invoice_sale()
         invoice.lines = ((list(invoice.lines)
                 if hasattr(invoice, 'lines') else [])
             + list(chain.from_iterable(invoice_lines[l.id] for l in self.lines
@@ -916,8 +899,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         for sale in sales:
             if sale.state not in ('confirmed', 'processing', 'done'):
                 continue
-            sale.create_invoice('out_invoice')
-            sale.create_invoice('out_credit_note')
+            sale.create_invoice()
             sale.set_invoice_state()
             sale.create_shipment('out')
             sale.create_shipment('return')
@@ -1289,10 +1271,8 @@ class SaleLine(ModelSQL, ModelView):
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_shipping_date(date=date)
 
-    def get_invoice_line(self, invoice_type):
-        '''
-        Return a list of invoice lines for sale line according to invoice_type
-        '''
+    def get_invoice_line(self):
+        'Return a list of invoice lines for sale line'
         pool = Pool()
         Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
@@ -1303,28 +1283,26 @@ class SaleLine(ModelSQL, ModelView):
         invoice_line.note = self.note
         invoice_line.origin = self
         if self.type != 'line':
-            if self._get_invoice_not_line(invoice_type):
+            if self._get_invoice_not_line():
                 return [invoice_line]
             else:
                 return []
-        if (invoice_type == 'out_invoice') != (self.quantity >= 0):
-            return []
 
-        quantity = (self._get_invoice_line_quantity(invoice_type)
-            - self._get_invoiced_quantity(invoice_type))
+        quantity = (self._get_invoice_line_quantity()
+            - self._get_invoiced_quantity())
 
         if self.unit:
             quantity = self.unit.round(quantity)
         invoice_line.quantity = quantity
 
-        if invoice_line.quantity <= 0:
+        if not invoice_line.quantity:
             return []
 
         invoice_line.unit = self.unit
         invoice_line.product = self.product
         invoice_line.unit_price = self.unit_price
         invoice_line.taxes = self.taxes
-        invoice_line.invoice_type = invoice_type
+        invoice_line.invoice_type = 'out'
         if self.product:
             invoice_line.account = self.product.account_revenue_used
             if not invoice_line.account:
@@ -1341,21 +1319,14 @@ class SaleLine(ModelSQL, ModelView):
                 self.raise_user_error('missing_account_revenue_property', {
                         'sale': self.sale.rec_name,
                         })
-        invoice_line.stock_moves = self._get_invoice_line_moves(invoice_type)
+        invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
 
-    def _get_invoice_not_line(self, invoice_type):
+    def _get_invoice_not_line(self):
         'Return if the not line should be invoiced'
-        return (self.sale.invoice_method == 'order'
-            and not self.invoice_lines
-            and ((all(l.quantity >= 0 for l in self.sale.lines
-                        if l.type == 'line')
-                    and invoice_type == 'out_invoice')
-                or (all(l.quantity <= 0 for l in self.sale.lines
-                        if l.type == 'line')
-                    and invoice_type == 'out_credit_note')))
+        return self.sale.invoice_method == 'order' and not self.invoice_lines
 
-    def _get_invoice_line_quantity(self, invoice_type):
+    def _get_invoice_line_quantity(self):
         'Return the quantity that should be invoiced'
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -1363,16 +1334,18 @@ class SaleLine(ModelSQL, ModelView):
         if (self.sale.invoice_method == 'order'
                 or not self.product
                 or self.product.type == 'service'):
-            return abs(self.quantity)
+            return self.quantity
         elif self.sale.invoice_method == 'shipment':
             quantity = 0.0
             for move in self.moves:
                 if move.state == 'done':
                     quantity += Uom.compute_qty(move.uom, move.quantity,
                         self.unit)
+            if self.quantity < 0:
+                quantity *= -1
             return quantity
 
-    def _get_invoiced_quantity(self, invoice_type):
+    def _get_invoiced_quantity(self):
         'Return the quantity already invoiced'
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -1383,18 +1356,11 @@ class SaleLine(ModelSQL, ModelView):
             if invoice_line.type != 'line':
                 continue
             if invoice_line not in skips:
-                if invoice_line.invoice:
-                    line_type = invoice_line.invoice.type
-                else:
-                    line_type = invoice_line.invoice_type
-
-                sign = 1 if invoice_type == line_type else -1
-
                 quantity += Uom.compute_qty(invoice_line.unit,
-                    sign * invoice_line.quantity, self.unit)
+                    invoice_line.quantity, self.unit)
         return quantity
 
-    def _get_invoice_line_moves(self, invoice_type):
+    def _get_invoice_line_moves(self):
         'Return the stock moves that should be invoiced'
         moves = []
         if self.sale.invoice_method == 'order':
