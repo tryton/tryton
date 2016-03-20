@@ -422,11 +422,11 @@ class TaxTemplate(ModelSQL, ModelView):
 
     @staticmethod
     def default_credit_note_base_sign():
-        return Decimal('1')
+        return Decimal('-1')
 
     @staticmethod
     def default_credit_note_tax_sign():
-        return Decimal('1')
+        return Decimal('-1')
 
     @staticmethod
     def default_update_unit_price():
@@ -724,11 +724,11 @@ class Tax(ModelSQL, ModelView):
 
     @staticmethod
     def default_credit_note_base_sign():
-        return Decimal('1')
+        return Decimal('-1')
 
     @staticmethod
     def default_credit_note_tax_sign():
-        return Decimal('1')
+        return Decimal('-1')
 
     @staticmethod
     def default_update_unit_price():
@@ -992,11 +992,6 @@ class TaxableMixin(object):
         return []
 
     @property
-    def tax_type(self):
-        "The taxation type it can be 'invoice' or 'credit_note'"
-        return None
-
-    @property
     def currency(self):
         "The currency used by the taxable object"
         return None
@@ -1012,8 +1007,11 @@ class TaxableMixin(object):
         return {}
 
     @staticmethod
-    def _compute_tax_line(type_, amount, base, tax):
-        assert type_ in ('invoice', 'credit_note')
+    def _compute_tax_line(amount, base, tax):
+        if base >= 0:
+            type_ = 'invoice'
+        else:
+            type_ = 'credit_note'
 
         line = {}
         line['manual'] = False
@@ -1052,7 +1050,7 @@ class TaxableMixin(object):
                 l_taxes = Tax.compute(line.taxes, line.unit_price,
                     line.quantity, self.tax_date)
                 for tax in l_taxes:
-                    taxline = self._compute_tax_line(self.tax_type, **tax)
+                    taxline = self._compute_tax_line(**tax)
                     if self.currency:
                         taxline['base'] = self.currency.round(taxline['base'])
                     if taxline not in taxes:

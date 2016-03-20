@@ -1,3 +1,5 @@
+* Get the tax type from the base sign:
+  The tax signs for credit note must be inverted manually.
 * New reports design: General Ledger, Trial Balance and Aged Balance
 * Add Python3 support
 * Merge Third Party Balance into Aged Balance
