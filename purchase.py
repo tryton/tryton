@@ -43,12 +43,12 @@ class Purchase:
     def search_invoice_lines(cls, name, clause):
         return [('lines.invoice_lines',) + tuple(clause[1:])]
 
-    def create_invoice(self, invoice_type):
+    def create_invoice(self):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
 
-        invoice = super(Purchase, self).create_invoice(invoice_type)
+        invoice = super(Purchase, self).create_invoice()
 
         if invoice:
             lines_to_delete = [l for l in invoice.lines if l.type != 'line']

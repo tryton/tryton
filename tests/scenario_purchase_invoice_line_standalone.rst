@@ -137,13 +137,15 @@ Purchase 5 products::
     0
     >>> len(purchase.invoices)
     0
+    >>> len(purchase.invoice_lines)
+    3
 
 
 Create a supplier invoice::
 
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_invoice'
+    >>> invoice.type = 'in'
     >>> invoice.party = supplier
     >>> len(invoice.lines.find())
     3
@@ -159,7 +161,7 @@ Create a supplier invoice with an accountant::
     >>> supplier, = Partner.find([('name', '=', 'Supplier')])
 
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_invoice'
+    >>> invoice.type = 'in'
     >>> invoice.party = supplier
     >>> len(invoice.lines.find())
     2
