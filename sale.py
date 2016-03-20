@@ -37,9 +37,9 @@ class Sale:
                 )
         return invoice_domain
 
-    def _get_invoice_sale(self, invoice_type):
+    def _get_invoice_sale(self):
         Invoice = Pool().get('account.invoice')
-        invoice = super(Sale, self)._get_invoice_sale(invoice_type)
+        invoice = super(Sale, self)._get_invoice_sale()
         if self.invoice_grouping_method:
             domain = self._get_grouped_invoice_domain(invoice)
             order = self._get_grouped_invoice_order()

@@ -144,7 +144,7 @@ Check the invoices::
     2
     >>> invoice = invoices[0]
     >>> invoice.type
-    u'out_invoice'
+    u'out'
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
