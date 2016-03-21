@@ -26,13 +26,6 @@ class UserWarning(TrytonException):
         self.code = 2
 
 
-class NotLogged(TrytonException):
-
-    def __init__(self):
-        super(NotLogged, self).__init__('NotLogged')
-        self.code = 3
-
-
 class ConcurrencyException(TrytonException):
 
     def __init__(self, message):

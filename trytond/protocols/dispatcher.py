@@ -16,8 +16,7 @@ from trytond.config import config
 from trytond import __version__
 from trytond.transaction import Transaction
 from trytond.cache import Cache
-from trytond.exceptions import UserError, UserWarning, NotLogged, \
-    ConcurrencyException
+from trytond.exceptions import UserError, UserWarning, ConcurrencyException
 from trytond.tools import is_instance_method
 from trytond.wsgi import app
 
@@ -212,7 +211,7 @@ def _dispatch(request, pool, *args, **kwargs):
                     transaction.rollback()
                     continue
                 raise
-            except (NotLogged, ConcurrencyException, UserError, UserWarning):
+            except (ConcurrencyException, UserError, UserWarning):
                 logger.debug(log_message, *log_args, exc_info=True)
                 raise
             except Exception:
