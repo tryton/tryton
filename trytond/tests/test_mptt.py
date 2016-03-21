@@ -175,16 +175,18 @@ class MPTTTestCase(unittest.TestCase):
         records = Mptt.search([
                 ('parent', '=', None),
                 ])
-        with patch.object(Mptt, '_update_tree') as mock:
+        with patch.object(Mptt, '_update_tree') as update, \
+                patch.object(Mptt, '_rebuild_tree') as rebuild:
             Mptt.write(records, {'name': 'Parent Records'})
-            self.assertFalse(mock.called)
+            self.assertFalse(update.called)
+            self.assertFalse(rebuild.called)
 
             first_parent, second_parent = records[:2]
             Mptt.write(list(first_parent.childs), {
                     'parent': second_parent.id,
                     })
 
-            self.assertTrue(mock.called)
+            self.assertTrue(update.called or rebuild.called)
 
     @with_transaction()
     def test_nested_create(self):

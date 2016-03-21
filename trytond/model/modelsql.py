@@ -1291,7 +1291,6 @@ class ModelSQL(ModelStorage):
     @classmethod
     def _update_mptt(cls, field_names, list_ids, values=None):
         cursor = Transaction().connection.cursor()
-        count = None
         for field_name, ids in zip(field_names, list_ids):
             field = cls._fields[field_name]
             if (isinstance(field, fields.Many2One)
@@ -1315,11 +1314,7 @@ class ModelSQL(ModelStorage):
                         & (Column(parent, field.right) == 0)))
                 nested_create = cursor.fetchone()
 
-                if count is None:
-                    cursor.execute(*table.select(Count(Literal(1))))
-                    count, = cursor.fetchone()
-
-                if not nested_create and len(ids) < count / 4:
+                if not nested_create and len(ids) < 2:
                     for id_ in ids:
                         cls._update_tree(id_, field_name,
                             field.left, field.right)
