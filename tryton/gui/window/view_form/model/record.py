@@ -410,7 +410,7 @@ class Record(SignalEvent):
     def context_get(self):
         return self.group.context
 
-    def set_default(self, val, signal=True):
+    def set_default(self, val, signal=True, validate=True):
         fieldnames = []
         for fieldname, value in val.items():
             if fieldname not in self.group.fields:
@@ -429,7 +429,8 @@ class Record(SignalEvent):
             fieldnames.append(fieldname)
         self.on_change(fieldnames)
         self.on_change_with(fieldnames)
-        self.validate(softvalidation=True)
+        if validate:
+            self.validate(softvalidation=True)
         if signal:
             self.signal('record-changed')
 

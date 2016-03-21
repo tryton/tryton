@@ -593,7 +593,7 @@ class O2MField(Field):
         if mode == 'list values' and len(value):
             context = self.context_get(record)
             field_names = set(f for v in value for f in v
-                if f not in group.fields)
+                if f not in group.fields and '.' not in f)
             if field_names:
                 try:
                     fields = RPCExecute('model', self.attrs['relation'],
@@ -611,11 +611,14 @@ class O2MField(Field):
             for vals in value:
                 new_record = record.value[self.name].new(default=False)
                 if default:
-                    new_record.set_default(vals)
-                    group.add(new_record)
+                    # Don't validate as parent will validate
+                    new_record.set_default(vals, signal=False, validate=False)
+                    group.add(new_record, signal=False)
                 else:
-                    new_record.set(vals)
+                    new_record.set(vals, signal=False)
                     group.append(new_record)
+            # Trigger signal only once with the last record
+            new_record.signal('record-changed')
 
     def set(self, record, value, _default=False):
         group = record.value.get(self.name)
@@ -702,7 +705,7 @@ class O2MField(Field):
                 force_remove=False)
 
         if value and (value.get('add') or value.get('update', [])):
-            record.value[self.name].add_fields(fields, signal=False)
+            record.value[self.name].add_fields(fields)
             for index, vals in value.get('add', []):
                 new_record = record.value[self.name].new(default=False)
                 record.value[self.name].add(new_record, index, signal=False)

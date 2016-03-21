@@ -380,7 +380,7 @@ class Group(SignalEvent, list):
             return None
         return self[self.current_idx]
 
-    def add_fields(self, fields, signal=True):
+    def add_fields(self, fields):
         to_add = {}
         for name, attr in fields.iteritems():
             if name not in self.fields:
@@ -404,7 +404,9 @@ class Group(SignalEvent, list):
             except RPCException:
                 return False
             for record in new:
-                record.set_default(values, signal=signal)
+                record.set_default(values, signal=False)
+            # Trigger signal only once with the last record
+            record.signal('record-changed')
 
     def get(self, id):
         'Return record with the id'
