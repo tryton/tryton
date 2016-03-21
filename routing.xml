@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="routing_view_list">
+            <field name="model">production.routing</field>
+            <field name="type">tree</field>
+            <field name="name">routing_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="routing_view_form">
+            <field name="model">production.routing</field>
+            <field name="type">form</field>
+            <field name="name">routing_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_routing_list">
+            <field name="name">Routings</field>
+            <field name="res_model">production.routing</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_routing_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="routing_view_list"/>
+            <field name="act_window" ref="act_routing_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_routing_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="routing_view_form"/>
+            <field name="act_window" ref="act_routing_list"/>
+        </record>
+        <menuitem parent="production.menu_configuration" sequence="20"
+            action="act_routing_list" id="menu_routing_list"/>
+
+        <record model="ir.model.access" id="access_routing">
+            <field name="model" search="[('model', '=', 'production.routing')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_routing_admin">
+            <field name="model" search="[('model', '=', 'production.routing')]"/>
+            <field name="group" ref="production.group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="operation_view_list">
+            <field name="model">production.routing.operation</field>
+            <field name="type">tree</field>
+            <field name="name">operation_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="operation_view_form">
+            <field name="model">production.routing.operation</field>
+            <field name="type">form</field>
+            <field name="name">operation_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_operation_list">
+            <field name="name">Operations</field>
+            <field name="res_model">production.routing.operation</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_operation_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="operation_view_list"/>
+            <field name="act_window" ref="act_operation_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_operation_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="operation_view_form"/>
+            <field name="act_window" ref="act_operation_list"/>
+        </record>
+        <menuitem parent="menu_routing_list" sequence="20"
+            action="act_operation_list" id="menu_operation_list"/>
+
+        <record model="ir.model.access" id="access_operation">
+            <field name="model" search="[('model', '=', 'production.routing.operation')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_operation_admin">
+            <field name="model" search="[('model', '=', 'production.routing.operation')]"/>
+            <field name="group" ref="production.group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="routing_step_view_list">
+            <field name="model">production.routing.step</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">routing_step_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="routing_step_view_list_sequence">
+            <field name="model">production.routing.step</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">routing_step_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="routing_step_view_form">
+            <field name="model">production.routing.step</field>
+            <field name="type">form</field>
+            <field name="name">routing_step_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_routing_step">
+            <field name="model" search="[('model', '=', 'production.routing.step')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_routing_step_admin">
+            <field name="model" search="[('model', '=', 'production.routing.step')]"/>
+            <field name="group" ref="production.group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
