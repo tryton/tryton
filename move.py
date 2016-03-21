@@ -627,7 +627,7 @@ class Move(Workflow, ModelSQL, ModelView):
         cls.check_origin(moves)
         for move in moves:
             move.set_effective_date()
-            move.save()
+        cls.save(moves)
 
     @classmethod
     @ModelView.button
@@ -638,6 +638,8 @@ class Move(Workflow, ModelSQL, ModelView):
             move.set_effective_date()
             move._do()
             move.state = 'done'
+            # This save() call can't be grouped because the average computation
+            # of product cost price requires each move to be done separately
             move.save()
 
     def _do(self):
