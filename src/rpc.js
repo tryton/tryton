@@ -83,7 +83,7 @@
                                 'glyphicon-alert').always(dfd.reject);
                         return;
                     }
-                } else if (data.error[0] == 'NotLogged') {
+                } else if (data.error[0].startswith('403')) {
                     //Try to relog
                     Sao.Session.renew(session).then(function() {
                         Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
