@@ -15,6 +15,17 @@ class TaxRuleLineTemplate:
     to_country = fields.Many2One('country.country', 'To Country',
         ondelete='RESTRICT')
 
+    def _get_tax_rule_line_value(self, rule_line=None):
+        value = super(TaxRuleLineTemplate, self)._get_tax_rule_line_value(
+            rule_line=rule_line)
+        if not rule_line or rule_line.from_country != self.from_country:
+            value['from_country'] = (
+                self.from_country.id if self.from_country else None)
+        if not rule_line or rule_line.to_country != self.to_country:
+            value['to_country'] = (
+                self.to_country.id if self.to_country else None)
+        return value
+
 
 class TaxRuleLine:
     __metaclass__ = PoolMeta
