@@ -30,6 +30,7 @@ def register():
         Configuration,
         Invoice,
         InvoiceLine,
+        Location,
         module='purchase', type_='model')
     Pool.register(
         PurchaseReport,

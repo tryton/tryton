@@ -716,11 +716,17 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         Move.save(moves)
         return moves
 
+    @property
+    def return_from_location(self):
+        if self.warehouse:
+            return (self.warehouse.supplier_return_location
+                or self.warehouse.storage_location)
+
     def _get_return_shipment(self):
         ShipmentInReturn = Pool().get('stock.shipment.in.return')
         return ShipmentInReturn(
             company=self.company,
-            from_location=self.warehouse.storage_location,
+            from_location=self.return_from_location,
             to_location=self.party.supplier_location,
             supplier=self.party,
             delivery_address=self.party.address_get(type='delivery'),
@@ -1155,8 +1161,8 @@ class PurchaseLine(ModelSQL, ModelView):
     def get_from_location(self, name):
         if (self.quantity or 0) >= 0:
             return self.purchase.party.supplier_location.id
-        elif self.purchase.warehouse:
-            return self.purchase.warehouse.storage_location.id
+        elif self.purchase.return_from_location:
+            return self.purchase.return_from_location.id
 
     def get_to_location(self, name):
         if (self.quantity or 0) >= 0:

@@ -65,7 +65,9 @@ of them are optional or completed with sensible default values:
 - Invoices: The list of related invoices.
 - Moves: The list of related stock moves.
 - Shipments: The list of related shipments.
-- Return Shipments: The list of the related shipment returns.
+- Return Shipments: The list of the related shipment returns. If a Supplier
+  Return location is defined on warehouse it will be used on return shipments
+  as origin location. Otherwise the warehouse storage location will be used.
 
 The *Purchase* report allow to print the purchase orders or to send
 them by mail.

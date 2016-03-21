@@ -16,7 +16,7 @@ from trytond import backend
 
 from trytond.modules.product import price_digits
 
-__all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move',
+__all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move', 'Location',
     'OpenProductQuantitiesByWarehouse']
 
 
@@ -340,6 +340,24 @@ class Move:
                 with Transaction().set_context(_check_access=False):
                     purchases = Purchase.browse([p.id for p in purchases])
                     Purchase.process(purchases)
+
+
+class Location:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.location'
+
+    supplier_return_location = fields.Many2One(
+        'stock.location', 'Supplier Return',
+        states={
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            },
+        domain=[
+            ('type', '=', 'storage'),
+            ('parent', 'child_of', [Eval('id', -1)]),
+            ],
+        depends=['type', 'active', 'id'],
+        help='If empty the Storage location is used')
 
 
 class OpenProductQuantitiesByWarehouse(Wizard):

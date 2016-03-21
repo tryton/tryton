@@ -1,3 +1,4 @@
+* Add return location on warehouse
 * Add Python3 support
 * Replace Delivery Time by Lead Time on Product Template
 * New workflow do() for purchase

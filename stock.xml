@@ -10,6 +10,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_list_shipment</field>
         </record>
 
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="inherit" ref="stock.location_view_form"/>
+            <field name="name">location_form</field>
+        </record>
+
         <record model="ir.model.access" id="access_purchase_group_stock">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="group" ref="stock.group_stock"/>
