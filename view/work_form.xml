@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Work">
+    <label name="production"/>
+    <field name="production" colspan="3"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="operation"/>
+    <field name="operation"/>
+    <label name="work_center"/>
+    <field name="work_center"/>
+    <field name="cycles" mode="form,tree" colspan="4"/>
+    <label id="empty" colspan="2"/>
+    <label name="state"/>
+    <field name="state"/>
+</form>

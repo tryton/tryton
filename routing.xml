@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="operation_view_list">
+            <field name="model">production.routing.operation</field>
+            <field name="inherit" ref="production_routing.operation_view_list"/>
+            <field name="name">operation_list</field>
+        </record>
+        <record model="ir.ui.view" id="operation_view_form">
+            <field name="model">production.routing.operation</field>
+            <field name="inherit" ref="production_routing.operation_view_form"/>
+            <field name="name">operation_form</field>
+        </record>
+    </data>
+</tryton>
