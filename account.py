@@ -190,6 +190,10 @@ class AccountFrFEC(Wizard):
                     value += ' - '
                 value += line.description
             return value
+        end_date = self.start.fiscalyear.end_date
+        reconciliation = None
+        if line.reconciliation and line.reconciliation.date <= end_date:
+            reconciliation = line.reconciliation
         return [
             line.move.journal.code,
             line.move.journal.name,
@@ -204,9 +208,8 @@ class AccountFrFEC(Wizard):
             description(),
             format_number(line.debit or 0),
             format_number(line.credit or 0),
-            line.reconciliation.rec_name if line.reconciliation else '',
-            format_date(line.reconciliation.create_date)
-            if line.reconciliation else '',
+            reconciliation.rec_name if reconciliation else '',
+            format_date(reconciliation.create_date) if reconciliation else '',
             format_date(line.move.post_date),
             format_number(line.amount_second_currency)
             if line.amount_second_currency else '',
