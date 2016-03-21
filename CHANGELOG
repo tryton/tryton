@@ -1,3 +1,4 @@
+* Timedelta uses 30 days for month
 * Add all available encoding for import/export
 * Add CSV parameters to export window
 * Add DnD on import window
