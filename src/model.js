@@ -807,7 +807,10 @@
             }
             return dfd;
         },
-        set_default: function(values) {
+        set_default: function(values, validate) {
+            if (validate === null) {
+                validate = true;
+            }
             var promises = [];
             var fieldnames = [];
             for (var fname in values) {
@@ -834,12 +837,17 @@
             return jQuery.when.apply(promises).then(function() {
                 return this.on_change(fieldnames).then(function() {
                     return this.on_change_with(fieldnames).then(function() {
-                        return this.validate(null, true).then(function() {
+                        var callback = function() {
                             return this.group.root_group().screens
                                 .forEach(function(screen) {
                                     return screen.display();
                                 });
-                        }.bind(this));
+                        }.bind(this);
+                        if (validate) {
+                            return this.validate(null, true).then(callback);
+                        } else {
+                            return callback();
+                        }
                     }.bind(this));
                 }.bind(this));
             }.bind(this));
@@ -1788,7 +1796,10 @@
                         if (!val.hasOwnProperty(fieldname)) {
                             continue;
                         }
-                        field_names[fieldname] = true;
+                        if (!(fieldname in group.model.fields) &&
+                                (!~fieldname.indexOf('.'))) {
+                            field_names[fieldname] = true;
+                        }
                     }
                 });
                 if (!jQuery.isEmptyObject(field_names)) {
@@ -1816,7 +1827,8 @@
                     value.forEach(function(vals) {
                         var new_record = group.new_(false);
                         if (default_) {
-                            promises.push(new_record.set_default(vals));
+                            // Don't validate as parent will validate
+                            promises.push(new_record.set_default(vals, false));
                             group.add(new_record);
                         } else {
                             new_record.set(vals);
