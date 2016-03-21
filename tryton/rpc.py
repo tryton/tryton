@@ -128,7 +128,7 @@ def logout():
 def _execute(blocking, *args):
     global CONNECTION, _USER
     if CONNECTION is None:
-        raise TrytonServerError('NotLogged')
+        raise TrytonServerError('403')
     key = False
     model = args[1]
     method = args[2]

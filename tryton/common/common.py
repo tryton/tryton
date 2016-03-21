@@ -1034,7 +1034,7 @@ def process_exception(exception, *args, **kwargs):
                 'until its fingerprint is fixed.'), _('Security risk!'))
             from tryton.gui.main import Main
             Main.sig_quit()
-        elif exception.faultCode == 'NotLogged':
+        elif exception.faultCode.startswith('403'):
             if rpc.CONNECTION is None:
                 message(_('Connection error!\n'
                         'Unable to connect to the server!'))
@@ -1079,7 +1079,7 @@ def process_exception(exception, *args, **kwargs):
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
                 return False
-        elif exception.faultCode == 'NotLogged':
+        elif exception.faultCode.startswith('403'):
             from tryton.gui.main import Main
             if not PLOCK.acquire(False):
                 return False
