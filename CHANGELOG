@@ -1,3 +1,4 @@
+* Timedelta uses 30 days for month
 * Manage context model of ir.action.act_window
 * Add Note
 

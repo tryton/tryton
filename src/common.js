@@ -275,7 +275,7 @@
     Sao.common.timedelta.DEFAULT_CONVERTER.w =
         Sao.common.timedelta.DEFAULT_CONVERTER.d * 7;
     Sao.common.timedelta.DEFAULT_CONVERTER.M =
-        Sao.common.timedelta.DEFAULT_CONVERTER.w * 4;
+        Sao.common.timedelta.DEFAULT_CONVERTER.d * 30;
     Sao.common.timedelta.DEFAULT_CONVERTER.Y =
         Sao.common.timedelta.DEFAULT_CONVERTER.d * 365;
     Sao.common.timedelta._get_separator = function() {
