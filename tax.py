@@ -88,14 +88,13 @@ class TaxCodeTemplate(ModelSQL, ModelView):
             res['template'] = self.id
         return res
 
-    def create_tax_code(self, company_id, template2tax_code=None,
-            parent_id=None):
+    @classmethod
+    def create_tax_code(cls, account_id, company_id, template2tax_code=None):
         '''
         Create recursively tax codes based on template.
         template2tax_code is a dictionary with tax code template id as key and
         tax code id as value, used to convert template id into tax code. The
         dictionary is filled with new tax codes.
-        Return the id of the tax code created
         '''
         pool = Pool()
         TaxCode = pool.get('account.tax.code')
@@ -103,24 +102,31 @@ class TaxCodeTemplate(ModelSQL, ModelView):
         if template2tax_code is None:
             template2tax_code = {}
 
-        if self.id not in template2tax_code:
-            vals = self._get_tax_code_value()
-            vals['company'] = company_id
-            vals['parent'] = parent_id
+        def create(templates):
+            values = []
+            created = []
+            for template in templates:
+                if template.id not in template2tax_code:
+                    vals = template._get_tax_code_value()
+                    vals['company'] = company_id
+                    if template.parent:
+                        vals['parent'] = template2tax_code[template.parent.id]
+                    else:
+                        vals['parent'] = None
+                    values.append(vals)
+                    created.append(template)
 
-            new_tax_code, = TaxCode.create([vals])
+            tax_codes = TaxCode.create(values)
+            for template, tax_code in zip(created, tax_codes):
+                template2tax_code[template.id] = tax_code.id
 
-            prev_data = {}
-            for field_name, field in self._fields.iteritems():
-                prev_data[field_name] = getattr(self, field_name)
-            template2tax_code[self.id] = new_tax_code.id
-        new_id = template2tax_code[self.id]
-
-        new_childs = []
-        for child in self.childs:
-            new_childs.append(child.create_tax_code(company_id,
-                    template2tax_code=template2tax_code, parent_id=new_id))
-        return new_id
+        childs = cls.search([
+                ('account', '=', account_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            create(childs)
+            childs = sum((c.childs for c in childs), ())
 
 
 class TaxCode(ModelSQL, ModelView):
@@ -232,25 +238,33 @@ class TaxCode(ModelSQL, ModelView):
                 ])
         super(TaxCode, cls).delete(codes)
 
-    def update_tax_code(self, template2tax_code=None):
+    @classmethod
+    def update_tax_code(cls, company_id, template2tax_code=None):
         '''
         Update recursively tax code based on template.
         template2tax_code is a dictionary with tax code template id as key and
         tax code id as value, used to convert template id into tax code. The
         dictionary is filled with new tax codes
         '''
-
         if template2tax_code is None:
             template2tax_code = {}
 
-        if self.template:
-            vals = self.template._get_tax_code_value(code=self)
-            if vals:
-                self.write([self], vals)
-            template2tax_code[self.template.id] = self.id
-
-        for child in self.childs:
-            child.update_tax_code(template2tax_code=template2tax_code)
+        values = []
+        childs = cls.search([
+                ('company', '=', company_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            for child in childs:
+                if child.template:
+                    vals = child.template._get_tax_code_value(code=child)
+                    if vals:
+                        values.append([child])
+                        values.append(vals)
+                template2tax_code[child.template.id] = child.id
+            childs = sum((c.childs for c in childs), ())
+        if values:
+            cls.write(*values)
 
 
 class OpenChartTaxCodeStart(ModelView):
@@ -454,8 +468,9 @@ class TaxTemplate(ModelSQL, ModelView):
             res['template'] = self.id
         return res
 
-    def create_tax(self, company_id, template2tax_code, template2account,
-            template2tax=None, parent_id=None):
+    @classmethod
+    def create_tax(cls, account_id, company_id, template2tax_code,
+            template2account, template2tax=None):
         '''
         Create recursively taxes based on template.
 
@@ -467,7 +482,6 @@ class TaxTemplate(ModelSQL, ModelView):
         template2tax is a dictionary with tax template id as key and tax id as
         value, used to convert template id into tax.  The dictionary is filled
         with new taxes.
-        Return id of the tax created
         '''
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -475,52 +489,63 @@ class TaxTemplate(ModelSQL, ModelView):
         if template2tax is None:
             template2tax = {}
 
-        if self.id not in template2tax:
-            vals = self._get_tax_value()
-            vals['company'] = company_id
-            vals['parent'] = parent_id
-            if self.invoice_account:
-                vals['invoice_account'] = \
-                    template2account[self.invoice_account.id]
-            else:
-                vals['invoice_account'] = None
-            if self.credit_note_account:
-                vals['credit_note_account'] = \
-                    template2account[self.credit_note_account.id]
-            else:
-                vals['credit_note_account'] = None
-            if self.invoice_base_code:
-                vals['invoice_base_code'] = \
-                    template2tax_code[self.invoice_base_code.id]
-            else:
-                vals['invoice_base_code'] = None
-            if self.invoice_tax_code:
-                vals['invoice_tax_code'] = \
-                    template2tax_code[self.invoice_tax_code.id]
-            else:
-                vals['invoice_tax_code'] = None
-            if self.credit_note_base_code:
-                vals['credit_note_base_code'] = \
-                    template2tax_code[self.credit_note_base_code.id]
-            else:
-                vals['credit_note_base_code'] = None
-            if self.credit_note_tax_code:
-                vals['credit_note_tax_code'] = \
-                    template2tax_code[self.credit_note_tax_code.id]
-            else:
-                vals['credit_note_tax_code'] = None
+        def create(templates):
+            values = []
+            created = []
+            for template in templates:
+                if template.id not in template2tax:
+                    vals = template._get_tax_value()
+                    vals['company'] = company_id
+                    if template.parent:
+                        vals['parent'] = template2tax[template.parent.id]
+                    else:
+                        vals['parent'] = None
+                    if template.invoice_account:
+                        vals['invoice_account'] = \
+                            template2account[template.invoice_account.id]
+                    else:
+                        vals['invoice_account'] = None
+                    if template.credit_note_account:
+                        vals['credit_note_account'] = \
+                            template2account[template.credit_note_account.id]
+                    else:
+                        vals['credit_note_account'] = None
+                    if template.invoice_base_code:
+                        vals['invoice_base_code'] = \
+                            template2tax_code[template.invoice_base_code.id]
+                    else:
+                        vals['invoice_base_code'] = None
+                    if template.invoice_tax_code:
+                        vals['invoice_tax_code'] = \
+                            template2tax_code[template.invoice_tax_code.id]
+                    else:
+                        vals['invoice_tax_code'] = None
+                    if template.credit_note_base_code:
+                        vals['credit_note_base_code'] = \
+                            template2tax_code[
+                                template.credit_note_base_code.id]
+                    else:
+                        vals['credit_note_base_code'] = None
+                    if template.credit_note_tax_code:
+                        vals['credit_note_tax_code'] = \
+                            template2tax_code[template.credit_note_tax_code.id]
+                    else:
+                        vals['credit_note_tax_code'] = None
 
-            new_tax, = Tax.create([vals])
+                    values.append(vals)
+                    created.append(template)
 
-            template2tax[self.id] = new_tax.id
-        new_id = template2tax[self.id]
+            taxes = Tax.create(values)
+            for template, tax in zip(created, taxes):
+                template2tax[template.id] = tax.id
 
-        new_childs = []
-        for child in self.childs:
-            new_childs.append(child.create_tax(company_id, template2tax_code,
-                    template2account, template2tax=template2tax,
-                    parent_id=new_id))
-        return new_id
+        childs = cls.search([
+                ('account', '=', account_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            create(childs)
+            childs = sum((c.childs for c in childs), ())
 
 
 class Tax(ModelSQL, ModelView):
@@ -869,7 +894,8 @@ class Tax(ModelSQL, ModelView):
         taxes = cls.sort_taxes(taxes)
         return cls._reverse_unit_compute(price_unit, taxes, date)
 
-    def update_tax(self, template2tax_code, template2account,
+    @classmethod
+    def update_tax(cls, company_id, template2tax_code, template2account,
             template2tax=None):
         '''
         Update recursively taxes based on template.
@@ -882,81 +908,88 @@ class Tax(ModelSQL, ModelView):
         value, used to convert template id into tax.  The dictionary is filled
         with new taxes.
         '''
-
         if template2tax is None:
             template2tax = {}
 
-        if self.template:
-            vals = self.template._get_tax_value(tax=self)
-            invoice_account_id = (self.invoice_account.id
-                if self.invoice_account else None)
-            if (self.template.invoice_account and
-                    invoice_account_id != template2account.get(
-                            self.template.invoice_account.id)):
-                vals['invoice_account'] = template2account.get(
-                    self.template.invoice_account.id)
-            elif (not self.template.invoice_account
-                    and self.invoice_account):
-                vals['invoice_account'] = None
-            credit_note_account_id = (self.credit_note_account.id
-                if self.credit_note_account else None)
-            if (self.template.credit_note_account and
-                    credit_note_account_id != template2account.get(
-                        self.template.credit_note_account.id)):
-                vals['credit_note_account'] = template2account.get(
-                    self.template.credit_note_account.id)
-            elif (not self.template.credit_note_account
-                    and self.credit_note_account):
-                vals['credit_note_account'] = None
-            invoice_base_code_id = (self.invoice_base_code.id
-                if self.invoice_base_code else None)
-            if (self.template.invoice_base_code and
-                    invoice_base_code_id != template2tax_code.get(
-                            self.template.invoice_base_code.id)):
-                vals['invoice_base_code'] = template2tax_code.get(
-                    self.template.invoice_base_code.id)
-            elif (not self.template.invoice_base_code
-                    and self.invoice_base_code):
-                vals['invoice_base_code'] = None
-            invoice_tax_code_id = (self.invoice_tax_code.id
-                if self.invoice_tax_code else None)
-            if (self.template.invoice_tax_code
-                    and invoice_tax_code_id != template2tax_code.get(
-                        self.template.invoice_tax_code.id)):
-                vals['invoice_tax_code'] = template2tax_code.get(
-                    self.template.invoice_tax_code.id)
-            elif (not self.template.invoice_tax_code
-                    and self.invoice_tax_code):
-                vals['invoice_tax_code'] = None
-            credit_note_base_code_id = (self.credit_note_base_code.id
-                if self.credit_note_base_code else None)
-            if (self.template.credit_note_base_code
-                    and credit_note_base_code_id != template2tax_code.get(
-                        self.template.credit_note_base_code.id)):
-                vals['credit_note_base_code'] = template2tax_code.get(
-                    self.template.credit_note_base_code.id)
-            elif (not self.template.credit_note_base_code
-                    and self.credit_note_base_code):
-                vals['credit_note_base_code'] = None
-            credit_note_tax_code_id = (self.credit_note_tax_code.id
-                if self.credit_note_tax_code else None)
-            if (self.template.credit_note_tax_code
-                    and credit_note_tax_code_id != template2tax_code.get(
-                        self.template.credit_note_tax_code.id)):
-                vals['credit_note_tax_code'] = template2tax_code.get(
-                    self.template.credit_note_tax_code.id)
-            elif (not self.template.credit_note_tax_code
-                    and self.credit_note_tax_code):
-                vals['credit_note_tax_code'] = None
+        values = []
+        childs = cls.search([
+                ('company', '=', company_id),
+                ('parent', '=', None),
+                ])
+        while childs:
+            for child in childs:
+                if child.template:
+                    vals = child.template._get_tax_value(tax=child)
+                    invoice_account_id = (child.invoice_account.id
+                        if child.invoice_account else None)
+                    if (child.template.invoice_account and
+                            invoice_account_id != template2account.get(
+                                    child.template.invoice_account.id)):
+                        vals['invoice_account'] = template2account.get(
+                            child.template.invoice_account.id)
+                    elif (not child.template.invoice_account
+                            and child.invoice_account):
+                        vals['invoice_account'] = None
+                    credit_note_account_id = (child.credit_note_account.id
+                        if child.credit_note_account else None)
+                    if (child.template.credit_note_account and
+                            credit_note_account_id != template2account.get(
+                                child.template.credit_note_account.id)):
+                        vals['credit_note_account'] = template2account.get(
+                            child.template.credit_note_account.id)
+                    elif (not child.template.credit_note_account
+                            and child.credit_note_account):
+                        vals['credit_note_account'] = None
+                    invoice_base_code_id = (child.invoice_base_code.id
+                        if child.invoice_base_code else None)
+                    if (child.template.invoice_base_code and
+                            invoice_base_code_id != template2tax_code.get(
+                                    child.template.invoice_base_code.id)):
+                        vals['invoice_base_code'] = template2tax_code.get(
+                            child.template.invoice_base_code.id)
+                    elif (not child.template.invoice_base_code
+                            and child.invoice_base_code):
+                        vals['invoice_base_code'] = None
+                    invoice_tax_code_id = (child.invoice_tax_code.id
+                        if child.invoice_tax_code else None)
+                    if (child.template.invoice_tax_code
+                            and invoice_tax_code_id != template2tax_code.get(
+                                child.template.invoice_tax_code.id)):
+                        vals['invoice_tax_code'] = template2tax_code.get(
+                            child.template.invoice_tax_code.id)
+                    elif (not child.template.invoice_tax_code
+                            and child.invoice_tax_code):
+                        vals['invoice_tax_code'] = None
+                    credit_note_base_code_id = (child.credit_note_base_code.id
+                        if child.credit_note_base_code else None)
+                    if (child.template.credit_note_base_code
+                            and (credit_note_base_code_id
+                                != template2tax_code.get(
+                                    child.template.credit_note_base_code.id))):
+                        vals['credit_note_base_code'] = template2tax_code.get(
+                            child.template.credit_note_base_code.id)
+                    elif (not child.template.credit_note_base_code
+                            and child.credit_note_base_code):
+                        vals['credit_note_base_code'] = None
+                    credit_note_tax_code_id = (child.credit_note_tax_code.id
+                        if child.credit_note_tax_code else None)
+                    if (child.template.credit_note_tax_code
+                            and (credit_note_tax_code_id
+                                != template2tax_code.get(
+                                    child.template.credit_note_tax_code.id))):
+                        vals['credit_note_tax_code'] = template2tax_code.get(
+                            child.template.credit_note_tax_code.id)
+                    elif (not child.template.credit_note_tax_code
+                            and child.credit_note_tax_code):
+                        vals['credit_note_tax_code'] = None
 
-            if vals:
-                self.write([self], vals)
-
-            template2tax[self.template.id] = self.id
-
-        for child in self.childs:
-            child.update_tax(template2tax_code, template2account,
-                template2tax=template2tax)
+                    if vals:
+                        values.append([child])
+                        values.append(vals)
+                template2tax[child.template.id] = child.id
+            childs = sum((c.childs for c in childs), ())
+        if values:
+            cls.write(*values)
 
 
 class _TaxKey(dict):
@@ -1132,13 +1165,13 @@ class TaxRuleTemplate(ModelSQL, ModelView):
             res['template'] = self.id
         return res
 
-    def create_rule(self, company_id, template2rule=None):
+    @classmethod
+    def create_rule(cls, account_id, company_id, template2rule=None):
         '''
         Create tax rule based on template.
         template2rule is a dictionary with tax rule template id as key and tax
         rule id as value, used to convert template id into tax rule. The
         dictionary is filled with new tax rules.
-        Return id of the tax rule created
         '''
         pool = Pool()
         Rule = pool.get('account.tax.rule')
@@ -1146,13 +1179,22 @@ class TaxRuleTemplate(ModelSQL, ModelView):
         if template2rule is None:
             template2rule = {}
 
-        if self.id not in template2rule:
-            vals = self._get_tax_rule_value()
-            vals['company'] = company_id
-            new_rule, = Rule.create([vals])
+        templates = cls.search([
+                ('account', '=', account_id),
+                ])
 
-            template2rule[self.id] = new_rule.id
-        return template2rule[self.id]
+        values = []
+        created = []
+        for template in templates:
+            if template.id not in template2rule:
+                vals = template._get_tax_rule_value()
+                vals['company'] = company_id
+                values.append(vals)
+                created.append(template)
+
+        rules = Rule.create(values)
+        for template, rule in zip(created, rules):
+            template2rule[template.id] = rule.id
 
 
 class TaxRule(ModelSQL, ModelView):
@@ -1192,23 +1234,30 @@ class TaxRule(ModelSQL, ModelView):
                 return line.get_taxes()
         return tax and [tax.id] or None
 
-    def update_rule(self, template2rule=None):
+    @classmethod
+    def update_rule(cls, company_id, template2rule=None):
         '''
         Update tax rule based on template.
         template2rule is a dictionary with tax rule template id as key and tax
         rule id as value, used to convert template id into tax rule. The
         dictionary is filled with new tax rules.
         '''
-
         if template2rule is None:
             template2rule = {}
 
-        if self.template:
-            vals = self.template._get_tax_rule_value(rule=self)
-            if vals:
-                self.write([self], vals)
-
-            template2rule[self.template.id] = self.id
+        values = []
+        rules = cls.search([
+                ('company', '=', company_id),
+                ])
+        for rule in rules:
+            if rule.template:
+                vals = rule.template._get_tax_rule_value(rule=rule)
+                if vals:
+                    values.append([rule])
+                    values.append(vals)
+            template2rule[rule.template.id] = rule.id
+        if values:
+            cls.write(*values)
 
 
 class TaxRuleLineTemplate(ModelSQL, ModelView):
@@ -1288,7 +1337,8 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
             res['template'] = self.id
         return res
 
-    def create_rule_line(self, template2tax, template2rule,
+    @classmethod
+    def create_rule_line(cls, account_id, template2tax, template2rule,
             template2rule_line=None):
         '''
         Create tax rule line based on template.
@@ -1299,27 +1349,36 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         template2rule_line is a dictionary with tax rule line template id as
         key and tax rule line id as value, used to convert template id into tax
         rule line. The dictionary is filled with new tax rule lines.
-        Return id of the tax rule line created
         '''
         RuleLine = Pool().get('account.tax.rule.line')
 
         if template2rule_line is None:
             template2rule_line = {}
 
-        if self.id not in template2rule_line:
-            vals = self._get_tax_rule_line_value()
-            vals['rule'] = template2rule[self.rule.id]
-            if self.origin_tax:
-                vals['origin_tax'] = template2tax[self.origin_tax.id]
-            else:
-                vals['origin_tax'] = None
-            if self.tax:
-                vals['tax'] = template2tax[self.tax.id]
-            else:
-                vals['tax'] = None
-            new_rule_line, = RuleLine.create([vals])
-            template2rule_line[self.id] = new_rule_line.id
-        return template2rule_line[self.id]
+        templates = cls.search([
+                ('rule.account', '=', account_id),
+                ])
+
+        values = []
+        created = []
+        for template in templates:
+            if template.id not in template2rule_line:
+                vals = template._get_tax_rule_line_value()
+                vals['rule'] = template2rule[template.rule.id]
+                if template.origin_tax:
+                    vals['origin_tax'] = template2tax[template.origin_tax.id]
+                else:
+                    vals['origin_tax'] = None
+                if template.tax:
+                    vals['tax'] = template2tax[template.tax.id]
+                else:
+                    vals['tax'] = None
+                values.append(vals)
+                created.append(template)
+
+        rule_lines = RuleLine.create(values)
+        for template, rule_line in zip(created, rule_lines):
+            template2rule_line[template.id] = rule_line.id
 
 
 class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
@@ -1402,7 +1461,8 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
             return [self.tax.id]
         return None
 
-    def update_rule_line(self, template2tax, template2rule,
+    @classmethod
+    def update_rule_line(cls, company_id, template2tax, template2rule,
             template2rule_line=None):
         '''
         Update tax rule line based on template.
@@ -1417,31 +1477,40 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
         if template2rule_line is None:
             template2rule_line = {}
 
-        if self.template:
-            vals = self.template._get_tax_rule_line_value(rule_line=self)
-            if self.rule.id != template2rule[self.template.rule.id]:
-                vals['rule'] = template2rule[self.template.rule.id]
-            if self.origin_tax:
-                if self.template.origin_tax:
-                    if (self.origin_tax.id !=
-                            template2tax[self.template.origin_tax.id]):
-                        vals['origin_tax'] = template2tax[
-                            self.template.origin_tax.id]
-                else:
-                    vals['origin_tax'] = None
-            elif self.template.origin_tax:
-                vals['origin_tax'] = template2tax[self.template.origin_tax.id]
-            if self.tax:
-                if self.template.tax:
-                    if self.tax.id != template2tax[self.template.tax.id]:
-                        vals['tax'] = template2tax[self.template.tax.id]
-                else:
-                    vals['tax'] = None
-            elif self.template.tax:
-                vals['tax'] = template2tax[self.template.tax.id]
-            if vals:
-                self.write([self], vals)
-            template2rule_line[self.template.id] = self.id
+        values = []
+        lines = cls.search([
+                ('rule.company', '=', company_id),
+                ])
+        for line in lines:
+            if line.template:
+                vals = line.template._get_tax_rule_line_value(rule_line=line)
+                if line.rule.id != template2rule[line.template.rule.id]:
+                    vals['rule'] = template2rule[line.template.rule.id]
+                if line.origin_tax:
+                    if line.template.origin_tax:
+                        if (line.origin_tax.id !=
+                                template2tax[line.template.origin_tax.id]):
+                            vals['origin_tax'] = template2tax[
+                                line.template.origin_tax.id]
+                    else:
+                        vals['origin_tax'] = None
+                elif line.template.origin_tax:
+                    vals['origin_tax'] = template2tax[
+                        line.template.origin_tax.id]
+                if line.tax:
+                    if line.template.tax:
+                        if line.tax.id != template2tax[line.template.tax.id]:
+                            vals['tax'] = template2tax[line.template.tax.id]
+                    else:
+                        vals['tax'] = None
+                elif line.template.tax:
+                    vals['tax'] = template2tax[line.template.tax.id]
+                if vals:
+                    values.append([line])
+                    values.append(vals)
+            template2rule_line[line.template.id] = line.id
+        if values:
+            cls.write(*values)
 
 
 class OpenTaxCode(Wizard):

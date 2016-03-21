@@ -115,35 +115,42 @@ class TypeTemplate(ModelSQL, ModelView):
             res['template'] = self.id
         return res
 
-    def create_type(self, company_id, template2type=None, parent_id=None):
+    def create_type(self, company_id, template2type=None):
         '''
         Create recursively types based on template.
         template2type is a dictionary with template id as key and type id as
         value, used to convert template id into type. The dictionary is filled
         with new types.
-        Return the id of the type created
         '''
         pool = Pool()
         Type = pool.get('account.account.type')
+        assert self.parent is None
 
         if template2type is None:
             template2type = {}
 
-        if self.id not in template2type:
-            vals = self._get_type_value()
-            vals['company'] = company_id
-            vals['parent'] = parent_id
+        def create(templates):
+            values = []
+            created = []
+            for template in templates:
+                if template.id not in template2type:
+                    vals = template._get_type_value()
+                    vals['company'] = company_id
+                    if template.parent:
+                        vals['parent'] = template2type[template.parent.id]
+                    else:
+                        vals['parent'] = None
+                    values.append(vals)
+                    created.append(template)
 
-            new_type, = Type.create([vals])
+            types = Type.create(values)
+            for template, type_ in zip(created, types):
+                template2type[template.id] = type_.id
 
-            template2type[self.id] = new_type.id
-        new_id = template2type[self.id]
-
-        new_childs = []
-        for child in self.childs:
-            new_childs.append(child.create_type(company_id,
-                template2type=template2type, parent_id=new_id))
-        return new_id
+        childs = [self]
+        while childs:
+            create(childs)
+            childs = sum((c.childs for c in childs), ())
 
 
 class Type(ModelSQL, ModelView):
@@ -269,19 +276,22 @@ class Type(ModelSQL, ModelView):
         value, used to convert template id into type. The dictionary is filled
         with new types
         '''
-
         if template2type is None:
             template2type = {}
 
-        if self.template:
-            vals = self.template._get_type_value(type=self)
-            if vals:
-                self.write([self], vals)
-
-            template2type[self.template.id] = self.id
-
-        for child in self.childs:
-            child.update_type(template2type=template2type)
+        values = []
+        childs = [self]
+        while childs:
+            for child in childs:
+                if child.template:
+                    vals = child.template._get_type_value(type=child)
+                    if vals:
+                        values.append([child])
+                        values.append(vals)
+                template2type[child.template.id] = child.id
+            childs = sum((c.childs for c in childs), ())
+        if values:
+            self.write(*values)
 
 
 class OpenType(Wizard):
@@ -419,7 +429,7 @@ class AccountTemplate(ModelSQL, ModelView):
         return res
 
     def create_account(self, company_id, template2account=None,
-            template2type=None, parent_id=None):
+            template2type=None):
         '''
         Create recursively accounts based on template.
         template2account is a dictionary with template id as key and account id
@@ -427,10 +437,10 @@ class AccountTemplate(ModelSQL, ModelView):
         filled with new accounts
         template2type is a dictionary with type template id as key and type id
         as value, used to convert type template id into type.
-        Return the id of the account created
         '''
         pool = Pool()
         Account = pool.get('account.account')
+        assert self.parent is None
 
         if template2account is None:
             template2account = {}
@@ -438,24 +448,32 @@ class AccountTemplate(ModelSQL, ModelView):
         if template2type is None:
             template2type = {}
 
-        if self.id not in template2account:
-            vals = self._get_account_value()
-            vals['company'] = company_id
-            vals['parent'] = parent_id
-            vals['type'] = (template2type.get(self.type.id) if self.type
-                else None)
+        def create(templates):
+            values = []
+            created = []
+            for template in templates:
+                if template.id not in template2account:
+                    vals = template._get_account_value()
+                    vals['company'] = company_id
+                    if template.parent:
+                        vals['parent'] = template2account[template.parent.id]
+                    else:
+                        vals['parent'] = None
+                    if template.type:
+                        vals['type'] = template2type.get(template.type.id)
+                    else:
+                        vals['type'] = None
+                    values.append(vals)
+                    created.append(template)
 
-            new_account, = Account.create([vals])
+            accounts = Account.create(values)
+            for template, account in zip(created, accounts):
+                template2account[template.id] = account.id
 
-            template2account[self.id] = new_account.id
-        new_id = template2account[self.id]
-
-        new_childs = []
-        for child in self.childs:
-            new_childs.append(child.create_account(company_id,
-                template2account=template2account, template2type=template2type,
-                parent_id=new_id))
-        return new_id
+        childs = [self]
+        while childs:
+            create(childs)
+            childs = sum((c.childs for c in childs), ())
 
     def update_account_taxes(self, template2account, template2tax,
             template_done=None):
@@ -477,17 +495,25 @@ class AccountTemplate(ModelSQL, ModelView):
         if template_done is None:
             template_done = []
 
-        if self.id not in template_done:
-            if self.taxes:
-                Account.write([Account(template2account[self.id])], {
-                        'taxes': [
-                            ('add', [template2tax[x.id] for x in self.taxes])],
-                        })
-            template_done.append(self.id)
+        def update(templates):
+            to_write = []
+            for template in templates:
+                if template.id not in template_done:
+                    if template.taxes:
+                        tax_ids = [template2tax[x.id] for x in template.taxes]
+                        to_write.append([Account(template2account[template.id])])
+                        to_write.append({
+                                'taxes': [
+                                    ('add', tax_ids)],
+                                })
+                    template_done.append(template.id)
+            if to_write:
+                Account.write(to_write)
 
-        for child in self.childs:
-            child.update_account_taxes(template2account, template2tax,
-                template_done=template_done)
+        childs = [self]
+        while childs:
+            update(childs)
+            childs = sum((c.childs for c in childs), ())
 
 
 class Account(ModelSQL, ModelView):
@@ -846,28 +872,33 @@ class Account(ModelSQL, ModelView):
         template2type is a dictionary with type template id as key and type id
         as value, used to convert type template id into type.
         '''
-
         if template2account is None:
             template2account = {}
 
         if template2type is None:
             template2type = {}
 
-        if self.template:
-            vals = self.template._get_account_value(account=self)
-            current_type = self.type.id if self.type else None
-            template_type = (template2type.get(self.template.type.id)
-                if self.template.type else None)
-            if current_type != template_type:
-                vals['type'] = template_type
-            if vals:
-                self.write([self], vals)
-
-            template2account[self.template.id] = self.id
-
-        for child in self.childs:
-            child.update_account(template2account=template2account,
-                template2type=template2type)
+        values = []
+        childs = [self]
+        while childs:
+            for child in childs:
+                if child.template:
+                    vals = child.template._get_account_value(account=child)
+                    current_type = child.type.id if child.type else None
+                    if child.template.type:
+                        template_type = template2type.get(
+                            child.template.type.id)
+                    else:
+                        template_type = None
+                    if current_type != template_type:
+                        vals['type'] = template_type
+                    if vals:
+                        values.append([child])
+                        values.append(vals)
+                template2account[child.template.id] = child.id
+            childs = sum((c.childs for c in childs), ())
+        if values:
+            self.write(*values)
 
     def update_account_taxes(self, template2account, template2tax):
         '''
@@ -883,23 +914,30 @@ class Account(ModelSQL, ModelView):
         if template2tax is None:
             template2tax = {}
 
-        if self.template:
-            if self.template.taxes:
-                tax_ids = [template2tax[x.id] for x in self.template.taxes
-                        if x.id in template2tax]
-                old_tax_ids = [x.id for x in self.taxes]
+        values = []
+        childs = [self]
+        while childs:
+            for child in childs:
+                if not child.template:
+                    continue
+                if not child.template.taxes:
+                    continue
+                tax_ids = [template2tax[x.id] for x in child.template.taxes
+                    if x.id in template2tax]
+                old_tax_ids = [x.id for x in child.taxes]
                 for tax_id in tax_ids:
                     if tax_id not in old_tax_ids:
-                        self.write([self], {
-                            'taxes': [
+                        values.append([child])
+                        values.append({
+                                'taxes': [
                                     ('add', template2tax[x.id])
                                     for x in self.template.taxes
                                     if x.id in template2tax],
                                 })
                         break
-
-        for child in self.childs:
-            child.update_account_taxes(template2account, template2tax)
+            childs = sum((c.childs for c in childs), ())
+        if values:
+            self.write(*values)
 
 
 class AccountDeferral(ModelSQL, ModelView):
@@ -1685,38 +1723,34 @@ class CreateChart(Wizard):
         with Transaction().set_context(language=Config.get_language(),
                 company=self.account.company.id):
             account_template = self.account.account_template
+            company = self.account.company
 
             # Create account types
             template2type = {}
-            account_template.type.create_type(self.account.company.id,
+            account_template.type.create_type(
+                company.id,
                 template2type=template2type)
 
             # Create accounts
             template2account = {}
-            account_template.create_account(self.account.company.id,
-                template2account=template2account, template2type=template2type)
+            account_template.create_account(
+                company.id,
+                template2account=template2account,
+                template2type=template2type)
 
             # Create tax codes
             template2tax_code = {}
-            tax_code_templates = TaxCodeTemplate.search([
-                    ('account', '=', account_template.id),
-                    ('parent', '=', None),
-                    ])
-            for tax_code_template in tax_code_templates:
-                tax_code_template.create_tax_code(self.account.company.id,
-                    template2tax_code=template2tax_code)
+            TaxCodeTemplate.create_tax_code(
+                account_template.id, company.id,
+                template2tax_code=template2tax_code)
 
             # Create taxes
             template2tax = {}
-            tax_templates = TaxTemplate.search([
-                    ('account', '=', account_template.id),
-                    ('parent', '=', None),
-                    ])
-            for tax_template in tax_templates:
-                tax_template.create_tax(self.account.company.id,
-                    template2tax_code=template2tax_code,
-                    template2account=template2account,
-                    template2tax=template2tax)
+            TaxTemplate.create_tax(
+                account_template.id, company.id,
+                template2tax_code=template2tax_code,
+                template2account=template2account,
+                template2tax=template2tax)
 
             # Update taxes on accounts
             account_template.update_account_taxes(template2account,
@@ -1724,21 +1758,15 @@ class CreateChart(Wizard):
 
             # Create tax rules
             template2rule = {}
-            tax_rule_templates = TaxRuleTemplate.search([
-                    ('account', '=', account_template.id),
-                    ])
-            for tax_rule_template in tax_rule_templates:
-                tax_rule_template.create_rule(self.account.company.id,
-                    template2rule=template2rule)
+            TaxRuleTemplate.create_rule(
+                account_template.id, company.id,
+                template2rule=template2rule)
 
             # Create tax rule lines
             template2rule_line = {}
-            tax_rule_line_templates = TaxRuleLineTemplate.search([
-                    ('rule.account', '=', account_template.id),
-                    ])
-            for tax_rule_line_template in tax_rule_line_templates:
-                tax_rule_line_template.create_rule_line(template2tax,
-                    template2rule, template2rule_line=template2rule_line)
+            TaxRuleLineTemplate.create_rule_line(
+                account_template.id, template2tax, template2rule,
+                template2rule_line=template2rule_line)
         return 'properties'
 
     def default_properties(self, fields):
@@ -1829,13 +1857,15 @@ class UpdateChart(Wizard):
             pool.get('account.tax.rule.line.template')
 
         account = self.start.account
+        company = account.company
 
         # Update account types
         template2type = {}
         account.type.update_type(template2type=template2type)
         # Create missing account types
         if account.type.template:
-            account.type.template.create_type(account.company.id,
+            account.type.template.create_type(
+                company.id,
                 template2type=template2type)
 
         # Update accounts
@@ -1844,82 +1874,57 @@ class UpdateChart(Wizard):
             template2type=template2type)
         # Create missing accounts
         if account.template:
-            account.template.create_account(account.company.id,
-                template2account=template2account, template2type=template2type)
+            account.template.create_account(
+                company.id,
+                template2account=template2account,
+                template2type=template2type)
 
         # Update tax codes
         template2tax_code = {}
-        tax_codes = TaxCode.search([
-            ('company', '=', account.company.id),
-            ('parent', '=', None),
-            ])
-        for tax_code in tax_codes:
-            tax_code.update_tax_code(template2tax_code=template2tax_code)
+        TaxCode.update_tax_code(
+            company.id,
+            template2tax_code=template2tax_code)
         # Create missing tax codes
         if account.template:
-            tax_code_templates = TaxCodeTemplate.search([
-                ('account', '=', account.template.id),
-                ('parent', '=', None),
-                ])
-            for tax_code_template in tax_code_templates:
-                tax_code_template.create_tax_code(account.company.id,
-                    template2tax_code=template2tax_code)
+            TaxCodeTemplate.create_tax_code(
+                account.template.id, company.id,
+                template2tax_code=template2tax_code)
 
         # Update taxes
         template2tax = {}
-        taxes = Tax.search([
-            ('company', '=', account.company.id),
-            ('parent', '=', None),
-            ])
-        for tax in taxes:
-            tax.update_tax(template2tax_code=template2tax_code,
-                    template2account=template2account,
-                    template2tax=template2tax)
+        Tax.update_tax(
+            company.id,
+            template2tax_code=template2tax_code,
+            template2account=template2account,
+            template2tax=template2tax)
         # Create missing taxes
         if account.template:
-            tax_templates = TaxTemplate.search([
-                ('account', '=', account.template.id),
-                ('parent', '=', None),
-                ])
-            for tax_template in tax_templates:
-                tax_template.create_tax(account.company.id,
-                        template2tax_code=template2tax_code,
-                        template2account=template2account,
-                        template2tax=template2tax)
+            TaxTemplate.create_tax(
+                account.template.id, account.company.id,
+                template2tax_code=template2tax_code,
+                template2account=template2account,
+                template2tax=template2tax)
 
         # Update taxes on accounts
         account.update_account_taxes(template2account, template2tax)
 
         # Update tax rules
         template2rule = {}
-        tax_rules = TaxRule.search([
-            ('company', '=', account.company.id),
-            ])
-        for tax_rule in tax_rules:
-            tax_rule.update_rule(template2rule=template2rule)
+        TaxRule.update_rule(company.id, template2rule=template2rule)
         # Create missing tax rules
         if account.template:
-            tax_rule_templates = TaxRuleTemplate.search([
-                ('account', '=', account.template.id),
-                ])
-            for tax_rule_template in tax_rule_templates:
-                tax_rule_template.create_rule(account.company.id,
-                    template2rule=template2rule)
+            TaxRuleTemplate.create_rule(
+                account.template.id, account.company.id,
+                template2rule=template2rule)
 
         # Update tax rule lines
         template2rule_line = {}
-        tax_rule_lines = TaxRuleLine.search([
-            ('rule.company', '=', account.company.id),
-            ])
-        for tax_rule_line in tax_rule_lines:
-            tax_rule_line.update_rule_line(template2tax, template2rule,
-                template2rule_line=template2rule_line)
+        TaxRuleLine.update_rule_line(
+            company.id, template2tax, template2rule,
+            template2rule_line=template2rule_line)
         # Create missing tax rule lines
         if account.template:
-            tax_rule_line_templates = TaxRuleLineTemplate.search([
-                ('rule.account', '=', account.template.id),
-                ])
-            for tax_rule_line_template in tax_rule_line_templates:
-                tax_rule_line_template.create_rule_line(template2tax,
-                    template2rule, template2rule_line=template2rule_line)
+            TaxRuleLineTemplate.create_rule_line(
+                account.template.id, template2tax, template2rule,
+                template2rule_line=template2rule_line)
         return 'succeed'

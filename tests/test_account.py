@@ -100,10 +100,20 @@ class AccountTestCase(ModuleTestCase):
 
     @with_transaction()
     def test_account_chart(self):
-        'Test creation of minimal chart of accounts'
+        'Test creation and update of minimal chart of accounts'
+        pool = Pool()
+        Account = pool.get('account.account')
+        UpdateChart = pool.get('account.update_chart', type='wizard')
+
         company = create_company()
         with set_company(company):
             create_chart(company, tax=True)
+            root, = Account.search([('parent', '=', None)])
+
+            session_id, _, _ = UpdateChart.create()
+            update_chart = UpdateChart(session_id)
+            update_chart.start.account = root
+            update_chart.transition_update()
 
     @with_transaction()
     def test_fiscalyear(self):
