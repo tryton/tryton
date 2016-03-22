@@ -39,3 +39,9 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.internal'),
                 ], required=True))
+    inventory_sequence = fields.Property(fields.Many2One(
+            'ir.sequence', 'Inventory Sequence', domain=[
+                ('company', 'in',
+                    [Eval('context', {}).get('company', -1), None]),
+                ('code', '=', 'stock.inventory'),
+                ], required=True))

@@ -52,6 +52,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_internal'))"/>
         </record>
 
+        <record model="ir.property" id="property_inventory_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'inventory_sequence')]"/>
+            <field name="value"
+                eval="'ir.sequence,' + str(ref('sequence_inventory'))"/>
+        </record>
+
         <record model="ir.model.access" id="access_configuration">
             <field name="model" search="[('model', '=', 'stock.configuration')]"/>
             <field name="perm_read" eval="True"/>

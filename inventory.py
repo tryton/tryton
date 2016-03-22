@@ -19,6 +19,8 @@ DEPENDS = ['state']
 class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     __name__ = 'stock.inventory'
+    _rec_name = 'number'
+    number = fields.Char('Number', states=STATES, depends=DEPENDS)
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
@@ -139,8 +141,17 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Line.cancel_move([l for i in inventories for l in i.lines])
 
     @classmethod
-    def create(cls, values):
-        inventories = super(Inventory, cls).create(values)
+    def create(cls, vlist):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Configuration = pool.get('stock.configuration')
+        config = Configuration(1)
+        vlist = [x.copy() for x in vlist]
+        for values in vlist:
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.inventory_sequence.id)
+        inventories = super(Inventory, cls).create(vlist)
         cls.complete_lines(inventories, fill=False)
         return inventories
 
@@ -160,6 +171,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default['date'] = Date.today()
         default['lines'] = None
+        default.setdefault('number')
 
         new_inventories = []
         for inventory in inventories:

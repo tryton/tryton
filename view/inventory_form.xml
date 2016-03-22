@@ -4,13 +4,15 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Inventory" col="4">
     <label name="location"/>
     <field name="location"/>
-    <label name="lost_found"/>
-    <field name="lost_found"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="date"/>
     <field name="date"/>
+    <label name="lost_found"/>
+    <field name="lost_found"/>
     <label name="company"/>
     <field name="company"/>
-    <label colspan="2" id="empty"/>
+    <newline/>
     <button string="Complete Inventory"
         name="complete_lines" colspan="2"
         help="Add an inventory line for each missing products"/>
