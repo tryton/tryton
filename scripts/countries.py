@@ -11,8 +11,10 @@ for country in pycountry.countries:
         <record model="country.country" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
+            <field name="code3">%s</field>
+            <field name="code_numeric">%s</field>
         </record>\n''' % (country.alpha2.lower(), country.name,
-                country.alpha2)
+                country.alpha2, country.alpha3, country.numeric)
     sys.stdout.write(record.encode('utf-8'))
 sys.stdout.write(u'    </data>\n')
 

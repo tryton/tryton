@@ -6,5 +6,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="code"/>
     <field name="code"/>
+    <label name="code3"/>
+    <field name="code3"/>
+    <label name="code_numeric"/>
+    <field name="code_numeric"/>
     <field name="subdivisions" colspan="4"/>
 </form>

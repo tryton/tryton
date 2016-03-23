@@ -14,7 +14,13 @@ class Country(ModelSQL, ModelView):
            help='The full name of the country.', select=True)
     code = fields.Char('Code', size=2, select=True,
            help='The ISO country code in two chars.\n'
-           'You can use this field for quick search.', required=True)
+           'You can use this field for quick search.')
+    code3 = fields.Char('3-letters Code', size=3, select=True,
+        help=('The ISO country code in three chars.\n'
+            'You can use this field for quick search.'))
+    code_numeric = fields.Char('Numeric Code', select=True,
+        help=('The ISO numeric country code.\n'
+            'You can use this field for quick search.'))
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
 
@@ -34,18 +40,25 @@ class Country(ModelSQL, ModelView):
         table.drop_constraint('name_uniq')
         table.drop_constraint('code_uniq')
 
+        # Migration from 3.8: remove required on code
+        table.not_null_action('code', 'remove')
+
     @classmethod
     def search_rec_name(cls, name, clause):
-        if cls.search([('code',) + tuple(clause[1:])], limit=1):
-            return [('code',) + tuple(clause[1:])]
-        return [(cls._rec_name,) + tuple(clause[1:])]
+        return ['OR',
+            ('name',) + tuple(clause[1:]),
+            ('code',) + tuple(clause[1:]),
+            ('code3',) + tuple(clause[1:]),
+            ('code_numeric',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def create(cls, vlist):
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
-            if 'code' in vals and vals['code']:
-                vals['code'] = vals['code'].upper()
+            for code in {'code', 'code3', 'code_numeric'}:
+                if code in vals and vals[code]:
+                    vals[code] = vals[code].upper()
         return super(Country, cls).create(vlist)
 
     @classmethod
@@ -53,9 +66,10 @@ class Country(ModelSQL, ModelView):
         actions = iter(args)
         args = []
         for countries, values in zip(actions, actions):
-            if values.get('code'):
-                values = values.copy()
-                values['code'] = values['code'].upper()
+            for code in {'code', 'code3', 'code_numeric'}:
+                if values.get(code):
+                    values = values.copy()
+                    values[code] = values[code].upper()
             args.extend((countries, values))
         super(Country, cls).write(*args)
 

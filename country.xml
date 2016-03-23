@@ -90,1246 +90,1744 @@ this repository contains the full copyright notices and license terms. -->
         <record model="country.country" id="af">
             <field name="name">Afghanistan</field>
             <field name="code">AF</field>
+            <field name="code3">AFG</field>
+            <field name="code_numeric">004</field>
         </record>
 
         <record model="country.country" id="ax">
             <field name="name">Åland Islands</field>
             <field name="code">AX</field>
+            <field name="code3">ALA</field>
+            <field name="code_numeric">248</field>
         </record>
 
         <record model="country.country" id="al">
             <field name="name">Albania</field>
             <field name="code">AL</field>
+            <field name="code3">ALB</field>
+            <field name="code_numeric">008</field>
         </record>
 
         <record model="country.country" id="dz">
             <field name="name">Algeria</field>
             <field name="code">DZ</field>
+            <field name="code3">DZA</field>
+            <field name="code_numeric">012</field>
         </record>
 
         <record model="country.country" id="as">
             <field name="name">American Samoa</field>
             <field name="code">AS</field>
+            <field name="code3">ASM</field>
+            <field name="code_numeric">016</field>
         </record>
 
         <record model="country.country" id="ad">
             <field name="name">Andorra</field>
             <field name="code">AD</field>
+            <field name="code3">AND</field>
+            <field name="code_numeric">020</field>
         </record>
 
         <record model="country.country" id="ao">
             <field name="name">Angola</field>
             <field name="code">AO</field>
+            <field name="code3">AGO</field>
+            <field name="code_numeric">024</field>
         </record>
 
         <record model="country.country" id="ai">
             <field name="name">Anguilla</field>
             <field name="code">AI</field>
+            <field name="code3">AIA</field>
+            <field name="code_numeric">660</field>
         </record>
 
         <record model="country.country" id="aq">
             <field name="name">Antarctica</field>
             <field name="code">AQ</field>
+            <field name="code3">ATA</field>
+            <field name="code_numeric">010</field>
         </record>
 
         <record model="country.country" id="ag">
             <field name="name">Antigua and Barbuda</field>
             <field name="code">AG</field>
+            <field name="code3">ATG</field>
+            <field name="code_numeric">028</field>
         </record>
 
         <record model="country.country" id="ar">
             <field name="name">Argentina</field>
             <field name="code">AR</field>
+            <field name="code3">ARG</field>
+            <field name="code_numeric">032</field>
         </record>
 
         <record model="country.country" id="am">
             <field name="name">Armenia</field>
             <field name="code">AM</field>
+            <field name="code3">ARM</field>
+            <field name="code_numeric">051</field>
         </record>
 
         <record model="country.country" id="aw">
             <field name="name">Aruba</field>
             <field name="code">AW</field>
+            <field name="code3">ABW</field>
+            <field name="code_numeric">533</field>
         </record>
 
         <record model="country.country" id="au">
             <field name="name">Australia</field>
             <field name="code">AU</field>
+            <field name="code3">AUS</field>
+            <field name="code_numeric">036</field>
         </record>
 
         <record model="country.country" id="at">
             <field name="name">Austria</field>
             <field name="code">AT</field>
+            <field name="code3">AUT</field>
+            <field name="code_numeric">040</field>
         </record>
 
         <record model="country.country" id="az">
             <field name="name">Azerbaijan</field>
             <field name="code">AZ</field>
+            <field name="code3">AZE</field>
+            <field name="code_numeric">031</field>
         </record>
 
         <record model="country.country" id="bs">
             <field name="name">Bahamas</field>
             <field name="code">BS</field>
+            <field name="code3">BHS</field>
+            <field name="code_numeric">044</field>
         </record>
 
         <record model="country.country" id="bh">
             <field name="name">Bahrain</field>
             <field name="code">BH</field>
+            <field name="code3">BHR</field>
+            <field name="code_numeric">048</field>
         </record>
 
         <record model="country.country" id="bd">
             <field name="name">Bangladesh</field>
             <field name="code">BD</field>
+            <field name="code3">BGD</field>
+            <field name="code_numeric">050</field>
         </record>
 
         <record model="country.country" id="bb">
             <field name="name">Barbados</field>
             <field name="code">BB</field>
+            <field name="code3">BRB</field>
+            <field name="code_numeric">052</field>
         </record>
 
         <record model="country.country" id="by">
             <field name="name">Belarus</field>
             <field name="code">BY</field>
+            <field name="code3">BLR</field>
+            <field name="code_numeric">112</field>
         </record>
 
         <record model="country.country" id="be">
             <field name="name">Belgium</field>
             <field name="code">BE</field>
+            <field name="code3">BEL</field>
+            <field name="code_numeric">056</field>
         </record>
 
         <record model="country.country" id="bz">
             <field name="name">Belize</field>
             <field name="code">BZ</field>
+            <field name="code3">BLZ</field>
+            <field name="code_numeric">084</field>
         </record>
 
         <record model="country.country" id="bj">
             <field name="name">Benin</field>
             <field name="code">BJ</field>
+            <field name="code3">BEN</field>
+            <field name="code_numeric">204</field>
         </record>
 
         <record model="country.country" id="bm">
             <field name="name">Bermuda</field>
             <field name="code">BM</field>
+            <field name="code3">BMU</field>
+            <field name="code_numeric">060</field>
         </record>
 
         <record model="country.country" id="bt">
             <field name="name">Bhutan</field>
             <field name="code">BT</field>
+            <field name="code3">BTN</field>
+            <field name="code_numeric">064</field>
         </record>
 
         <record model="country.country" id="bo">
             <field name="name">Bolivia, Plurinational State of</field>
             <field name="code">BO</field>
+            <field name="code3">BOL</field>
+            <field name="code_numeric">068</field>
         </record>
 
         <record model="country.country" id="bq">
             <field name="name">Bonaire, Sint Eustatius and Saba</field>
             <field name="code">BQ</field>
+            <field name="code3">BES</field>
+            <field name="code_numeric">535</field>
         </record>
 
         <record model="country.country" id="ba">
             <field name="name">Bosnia and Herzegovina</field>
             <field name="code">BA</field>
+            <field name="code3">BIH</field>
+            <field name="code_numeric">070</field>
         </record>
 
         <record model="country.country" id="bw">
             <field name="name">Botswana</field>
             <field name="code">BW</field>
+            <field name="code3">BWA</field>
+            <field name="code_numeric">072</field>
         </record>
 
         <record model="country.country" id="bv">
             <field name="name">Bouvet Island</field>
             <field name="code">BV</field>
+            <field name="code3">BVT</field>
+            <field name="code_numeric">074</field>
         </record>
 
         <record model="country.country" id="br">
             <field name="name">Brazil</field>
             <field name="code">BR</field>
+            <field name="code3">BRA</field>
+            <field name="code_numeric">076</field>
         </record>
 
         <record model="country.country" id="io">
             <field name="name">British Indian Ocean Territory</field>
             <field name="code">IO</field>
+            <field name="code3">IOT</field>
+            <field name="code_numeric">086</field>
         </record>
 
         <record model="country.country" id="bn">
             <field name="name">Brunei Darussalam</field>
             <field name="code">BN</field>
+            <field name="code3">BRN</field>
+            <field name="code_numeric">096</field>
         </record>
 
         <record model="country.country" id="bg">
             <field name="name">Bulgaria</field>
             <field name="code">BG</field>
+            <field name="code3">BGR</field>
+            <field name="code_numeric">100</field>
         </record>
 
         <record model="country.country" id="bf">
             <field name="name">Burkina Faso</field>
             <field name="code">BF</field>
+            <field name="code3">BFA</field>
+            <field name="code_numeric">854</field>
         </record>
 
         <record model="country.country" id="bi">
             <field name="name">Burundi</field>
             <field name="code">BI</field>
+            <field name="code3">BDI</field>
+            <field name="code_numeric">108</field>
         </record>
 
         <record model="country.country" id="kh">
             <field name="name">Cambodia</field>
             <field name="code">KH</field>
+            <field name="code3">KHM</field>
+            <field name="code_numeric">116</field>
         </record>
 
         <record model="country.country" id="cm">
             <field name="name">Cameroon</field>
             <field name="code">CM</field>
+            <field name="code3">CMR</field>
+            <field name="code_numeric">120</field>
         </record>
 
         <record model="country.country" id="ca">
             <field name="name">Canada</field>
             <field name="code">CA</field>
+            <field name="code3">CAN</field>
+            <field name="code_numeric">124</field>
         </record>
 
         <record model="country.country" id="cv">
             <field name="name">Cape Verde</field>
             <field name="code">CV</field>
+            <field name="code3">CPV</field>
+            <field name="code_numeric">132</field>
         </record>
 
         <record model="country.country" id="ky">
             <field name="name">Cayman Islands</field>
             <field name="code">KY</field>
+            <field name="code3">CYM</field>
+            <field name="code_numeric">136</field>
         </record>
 
         <record model="country.country" id="cf">
             <field name="name">Central African Republic</field>
             <field name="code">CF</field>
+            <field name="code3">CAF</field>
+            <field name="code_numeric">140</field>
         </record>
 
         <record model="country.country" id="td">
             <field name="name">Chad</field>
             <field name="code">TD</field>
+            <field name="code3">TCD</field>
+            <field name="code_numeric">148</field>
         </record>
 
         <record model="country.country" id="cl">
             <field name="name">Chile</field>
             <field name="code">CL</field>
+            <field name="code3">CHL</field>
+            <field name="code_numeric">152</field>
         </record>
 
         <record model="country.country" id="cn">
             <field name="name">China</field>
             <field name="code">CN</field>
+            <field name="code3">CHN</field>
+            <field name="code_numeric">156</field>
         </record>
 
         <record model="country.country" id="cx">
             <field name="name">Christmas Island</field>
             <field name="code">CX</field>
+            <field name="code3">CXR</field>
+            <field name="code_numeric">162</field>
         </record>
 
         <record model="country.country" id="cc">
             <field name="name">Cocos (Keeling) Islands</field>
             <field name="code">CC</field>
+            <field name="code3">CCK</field>
+            <field name="code_numeric">166</field>
         </record>
 
         <record model="country.country" id="co">
             <field name="name">Colombia</field>
             <field name="code">CO</field>
+            <field name="code3">COL</field>
+            <field name="code_numeric">170</field>
         </record>
 
         <record model="country.country" id="km">
             <field name="name">Comoros</field>
             <field name="code">KM</field>
+            <field name="code3">COM</field>
+            <field name="code_numeric">174</field>
         </record>
 
         <record model="country.country" id="cg">
             <field name="name">Congo</field>
             <field name="code">CG</field>
+            <field name="code3">COG</field>
+            <field name="code_numeric">178</field>
         </record>
 
         <record model="country.country" id="cd">
             <field name="name">Congo, The Democratic Republic of the</field>
             <field name="code">CD</field>
+            <field name="code3">COD</field>
+            <field name="code_numeric">180</field>
         </record>
 
         <record model="country.country" id="ck">
             <field name="name">Cook Islands</field>
             <field name="code">CK</field>
+            <field name="code3">COK</field>
+            <field name="code_numeric">184</field>
         </record>
 
         <record model="country.country" id="cr">
             <field name="name">Costa Rica</field>
             <field name="code">CR</field>
+            <field name="code3">CRI</field>
+            <field name="code_numeric">188</field>
         </record>
 
         <record model="country.country" id="ci">
             <field name="name">Côte d'Ivoire</field>
             <field name="code">CI</field>
+            <field name="code3">CIV</field>
+            <field name="code_numeric">384</field>
         </record>
 
         <record model="country.country" id="hr">
             <field name="name">Croatia</field>
             <field name="code">HR</field>
+            <field name="code3">HRV</field>
+            <field name="code_numeric">191</field>
         </record>
 
         <record model="country.country" id="cu">
             <field name="name">Cuba</field>
             <field name="code">CU</field>
+            <field name="code3">CUB</field>
+            <field name="code_numeric">192</field>
         </record>
 
         <record model="country.country" id="cw">
             <field name="name">Curaçao</field>
             <field name="code">CW</field>
+            <field name="code3">CUW</field>
+            <field name="code_numeric">531</field>
         </record>
 
         <record model="country.country" id="cy">
             <field name="name">Cyprus</field>
             <field name="code">CY</field>
+            <field name="code3">CYP</field>
+            <field name="code_numeric">196</field>
         </record>
 
         <record model="country.country" id="cz">
             <field name="name">Czech Republic</field>
             <field name="code">CZ</field>
+            <field name="code3">CZE</field>
+            <field name="code_numeric">203</field>
         </record>
 
         <record model="country.country" id="dk">
             <field name="name">Denmark</field>
             <field name="code">DK</field>
+            <field name="code3">DNK</field>
+            <field name="code_numeric">208</field>
         </record>
 
         <record model="country.country" id="dj">
             <field name="name">Djibouti</field>
             <field name="code">DJ</field>
+            <field name="code3">DJI</field>
+            <field name="code_numeric">262</field>
         </record>
 
         <record model="country.country" id="dm">
             <field name="name">Dominica</field>
             <field name="code">DM</field>
+            <field name="code3">DMA</field>
+            <field name="code_numeric">212</field>
         </record>
 
         <record model="country.country" id="do">
             <field name="name">Dominican Republic</field>
             <field name="code">DO</field>
+            <field name="code3">DOM</field>
+            <field name="code_numeric">214</field>
         </record>
 
         <record model="country.country" id="ec">
             <field name="name">Ecuador</field>
             <field name="code">EC</field>
+            <field name="code3">ECU</field>
+            <field name="code_numeric">218</field>
         </record>
 
         <record model="country.country" id="eg">
             <field name="name">Egypt</field>
             <field name="code">EG</field>
+            <field name="code3">EGY</field>
+            <field name="code_numeric">818</field>
         </record>
 
         <record model="country.country" id="sv">
             <field name="name">El Salvador</field>
             <field name="code">SV</field>
+            <field name="code3">SLV</field>
+            <field name="code_numeric">222</field>
         </record>
 
         <record model="country.country" id="gq">
             <field name="name">Equatorial Guinea</field>
             <field name="code">GQ</field>
+            <field name="code3">GNQ</field>
+            <field name="code_numeric">226</field>
         </record>
 
         <record model="country.country" id="er">
             <field name="name">Eritrea</field>
             <field name="code">ER</field>
+            <field name="code3">ERI</field>
+            <field name="code_numeric">232</field>
         </record>
 
         <record model="country.country" id="ee">
             <field name="name">Estonia</field>
             <field name="code">EE</field>
+            <field name="code3">EST</field>
+            <field name="code_numeric">233</field>
         </record>
 
         <record model="country.country" id="et">
             <field name="name">Ethiopia</field>
             <field name="code">ET</field>
+            <field name="code3">ETH</field>
+            <field name="code_numeric">231</field>
         </record>
 
         <record model="country.country" id="fk">
             <field name="name">Falkland Islands (Malvinas)</field>
             <field name="code">FK</field>
+            <field name="code3">FLK</field>
+            <field name="code_numeric">238</field>
         </record>
 
         <record model="country.country" id="fo">
             <field name="name">Faroe Islands</field>
             <field name="code">FO</field>
+            <field name="code3">FRO</field>
+            <field name="code_numeric">234</field>
         </record>
 
         <record model="country.country" id="fj">
             <field name="name">Fiji</field>
             <field name="code">FJ</field>
+            <field name="code3">FJI</field>
+            <field name="code_numeric">242</field>
         </record>
 
         <record model="country.country" id="fi">
             <field name="name">Finland</field>
             <field name="code">FI</field>
+            <field name="code3">FIN</field>
+            <field name="code_numeric">246</field>
         </record>
 
         <record model="country.country" id="fr">
             <field name="name">France</field>
             <field name="code">FR</field>
+            <field name="code3">FRA</field>
+            <field name="code_numeric">250</field>
         </record>
 
         <record model="country.country" id="gf">
             <field name="name">French Guiana</field>
             <field name="code">GF</field>
+            <field name="code3">GUF</field>
+            <field name="code_numeric">254</field>
         </record>
 
         <record model="country.country" id="pf">
             <field name="name">French Polynesia</field>
             <field name="code">PF</field>
+            <field name="code3">PYF</field>
+            <field name="code_numeric">258</field>
         </record>
 
         <record model="country.country" id="tf">
             <field name="name">French Southern Territories</field>
             <field name="code">TF</field>
+            <field name="code3">ATF</field>
+            <field name="code_numeric">260</field>
         </record>
 
         <record model="country.country" id="ga">
             <field name="name">Gabon</field>
             <field name="code">GA</field>
+            <field name="code3">GAB</field>
+            <field name="code_numeric">266</field>
         </record>
 
         <record model="country.country" id="gm">
             <field name="name">Gambia</field>
             <field name="code">GM</field>
+            <field name="code3">GMB</field>
+            <field name="code_numeric">270</field>
         </record>
 
         <record model="country.country" id="ge">
             <field name="name">Georgia</field>
             <field name="code">GE</field>
+            <field name="code3">GEO</field>
+            <field name="code_numeric">268</field>
         </record>
 
         <record model="country.country" id="de">
             <field name="name">Germany</field>
             <field name="code">DE</field>
+            <field name="code3">DEU</field>
+            <field name="code_numeric">276</field>
         </record>
 
         <record model="country.country" id="gh">
             <field name="name">Ghana</field>
             <field name="code">GH</field>
+            <field name="code3">GHA</field>
+            <field name="code_numeric">288</field>
         </record>
 
         <record model="country.country" id="gi">
             <field name="name">Gibraltar</field>
             <field name="code">GI</field>
+            <field name="code3">GIB</field>
+            <field name="code_numeric">292</field>
         </record>
 
         <record model="country.country" id="gr">
             <field name="name">Greece</field>
             <field name="code">GR</field>
+            <field name="code3">GRC</field>
+            <field name="code_numeric">300</field>
         </record>
 
         <record model="country.country" id="gl">
             <field name="name">Greenland</field>
             <field name="code">GL</field>
+            <field name="code3">GRL</field>
+            <field name="code_numeric">304</field>
         </record>
 
         <record model="country.country" id="gd">
             <field name="name">Grenada</field>
             <field name="code">GD</field>
+            <field name="code3">GRD</field>
+            <field name="code_numeric">308</field>
         </record>
 
         <record model="country.country" id="gp">
             <field name="name">Guadeloupe</field>
             <field name="code">GP</field>
+            <field name="code3">GLP</field>
+            <field name="code_numeric">312</field>
         </record>
 
         <record model="country.country" id="gu">
             <field name="name">Guam</field>
             <field name="code">GU</field>
+            <field name="code3">GUM</field>
+            <field name="code_numeric">316</field>
         </record>
 
         <record model="country.country" id="gt">
             <field name="name">Guatemala</field>
             <field name="code">GT</field>
+            <field name="code3">GTM</field>
+            <field name="code_numeric">320</field>
         </record>
 
         <record model="country.country" id="gg">
             <field name="name">Guernsey</field>
             <field name="code">GG</field>
+            <field name="code3">GGY</field>
+            <field name="code_numeric">831</field>
         </record>
 
         <record model="country.country" id="gn">
             <field name="name">Guinea</field>
             <field name="code">GN</field>
+            <field name="code3">GIN</field>
+            <field name="code_numeric">324</field>
         </record>
 
         <record model="country.country" id="gw">
             <field name="name">Guinea-Bissau</field>
             <field name="code">GW</field>
+            <field name="code3">GNB</field>
+            <field name="code_numeric">624</field>
         </record>
 
         <record model="country.country" id="gy">
             <field name="name">Guyana</field>
             <field name="code">GY</field>
+            <field name="code3">GUY</field>
+            <field name="code_numeric">328</field>
         </record>
 
         <record model="country.country" id="ht">
             <field name="name">Haiti</field>
             <field name="code">HT</field>
+            <field name="code3">HTI</field>
+            <field name="code_numeric">332</field>
         </record>
 
         <record model="country.country" id="hm">
             <field name="name">Heard Island and McDonald Islands</field>
             <field name="code">HM</field>
+            <field name="code3">HMD</field>
+            <field name="code_numeric">334</field>
         </record>
 
         <record model="country.country" id="va">
             <field name="name">Holy See (Vatican City State)</field>
             <field name="code">VA</field>
+            <field name="code3">VAT</field>
+            <field name="code_numeric">336</field>
         </record>
 
         <record model="country.country" id="hn">
             <field name="name">Honduras</field>
             <field name="code">HN</field>
+            <field name="code3">HND</field>
+            <field name="code_numeric">340</field>
         </record>
 
         <record model="country.country" id="hk">
             <field name="name">Hong Kong</field>
             <field name="code">HK</field>
+            <field name="code3">HKG</field>
+            <field name="code_numeric">344</field>
         </record>
 
         <record model="country.country" id="hu">
             <field name="name">Hungary</field>
             <field name="code">HU</field>
+            <field name="code3">HUN</field>
+            <field name="code_numeric">348</field>
         </record>
 
         <record model="country.country" id="is">
             <field name="name">Iceland</field>
             <field name="code">IS</field>
+            <field name="code3">ISL</field>
+            <field name="code_numeric">352</field>
         </record>
 
         <record model="country.country" id="in">
             <field name="name">India</field>
             <field name="code">IN</field>
+            <field name="code3">IND</field>
+            <field name="code_numeric">356</field>
         </record>
 
         <record model="country.country" id="id">
             <field name="name">Indonesia</field>
             <field name="code">ID</field>
+            <field name="code3">IDN</field>
+            <field name="code_numeric">360</field>
         </record>
 
         <record model="country.country" id="ir">
             <field name="name">Iran, Islamic Republic of</field>
             <field name="code">IR</field>
+            <field name="code3">IRN</field>
+            <field name="code_numeric">364</field>
         </record>
 
         <record model="country.country" id="iq">
             <field name="name">Iraq</field>
             <field name="code">IQ</field>
+            <field name="code3">IRQ</field>
+            <field name="code_numeric">368</field>
         </record>
 
         <record model="country.country" id="ie">
             <field name="name">Ireland</field>
             <field name="code">IE</field>
+            <field name="code3">IRL</field>
+            <field name="code_numeric">372</field>
         </record>
 
         <record model="country.country" id="im">
             <field name="name">Isle of Man</field>
             <field name="code">IM</field>
+            <field name="code3">IMN</field>
+            <field name="code_numeric">833</field>
         </record>
 
         <record model="country.country" id="il">
             <field name="name">Israel</field>
             <field name="code">IL</field>
+            <field name="code3">ISR</field>
+            <field name="code_numeric">376</field>
         </record>
 
         <record model="country.country" id="it">
             <field name="name">Italy</field>
             <field name="code">IT</field>
+            <field name="code3">ITA</field>
+            <field name="code_numeric">380</field>
         </record>
 
         <record model="country.country" id="jm">
             <field name="name">Jamaica</field>
             <field name="code">JM</field>
+            <field name="code3">JAM</field>
+            <field name="code_numeric">388</field>
         </record>
 
         <record model="country.country" id="jp">
             <field name="name">Japan</field>
             <field name="code">JP</field>
+            <field name="code3">JPN</field>
+            <field name="code_numeric">392</field>
         </record>
 
         <record model="country.country" id="je">
             <field name="name">Jersey</field>
             <field name="code">JE</field>
+            <field name="code3">JEY</field>
+            <field name="code_numeric">832</field>
         </record>
 
         <record model="country.country" id="jo">
             <field name="name">Jordan</field>
             <field name="code">JO</field>
+            <field name="code3">JOR</field>
+            <field name="code_numeric">400</field>
         </record>
 
         <record model="country.country" id="kz">
             <field name="name">Kazakhstan</field>
             <field name="code">KZ</field>
+            <field name="code3">KAZ</field>
+            <field name="code_numeric">398</field>
         </record>
 
         <record model="country.country" id="ke">
             <field name="name">Kenya</field>
             <field name="code">KE</field>
+            <field name="code3">KEN</field>
+            <field name="code_numeric">404</field>
         </record>
 
         <record model="country.country" id="ki">
             <field name="name">Kiribati</field>
             <field name="code">KI</field>
+            <field name="code3">KIR</field>
+            <field name="code_numeric">296</field>
         </record>
 
         <record model="country.country" id="kp">
             <field name="name">Korea, Democratic People's Republic of</field>
             <field name="code">KP</field>
+            <field name="code3">PRK</field>
+            <field name="code_numeric">408</field>
         </record>
 
         <record model="country.country" id="kr">
             <field name="name">Korea, Republic of</field>
             <field name="code">KR</field>
+            <field name="code3">KOR</field>
+            <field name="code_numeric">410</field>
         </record>
 
         <record model="country.country" id="kw">
             <field name="name">Kuwait</field>
             <field name="code">KW</field>
+            <field name="code3">KWT</field>
+            <field name="code_numeric">414</field>
         </record>
 
         <record model="country.country" id="kg">
             <field name="name">Kyrgyzstan</field>
             <field name="code">KG</field>
+            <field name="code3">KGZ</field>
+            <field name="code_numeric">417</field>
         </record>
 
         <record model="country.country" id="la">
             <field name="name">Lao People's Democratic Republic</field>
             <field name="code">LA</field>
+            <field name="code3">LAO</field>
+            <field name="code_numeric">418</field>
         </record>
 
         <record model="country.country" id="lv">
             <field name="name">Latvia</field>
             <field name="code">LV</field>
+            <field name="code3">LVA</field>
+            <field name="code_numeric">428</field>
         </record>
 
         <record model="country.country" id="lb">
             <field name="name">Lebanon</field>
             <field name="code">LB</field>
+            <field name="code3">LBN</field>
+            <field name="code_numeric">422</field>
         </record>
 
         <record model="country.country" id="ls">
             <field name="name">Lesotho</field>
             <field name="code">LS</field>
+            <field name="code3">LSO</field>
+            <field name="code_numeric">426</field>
         </record>
 
         <record model="country.country" id="lr">
             <field name="name">Liberia</field>
             <field name="code">LR</field>
+            <field name="code3">LBR</field>
+            <field name="code_numeric">430</field>
         </record>
 
         <record model="country.country" id="ly">
             <field name="name">Libya</field>
             <field name="code">LY</field>
+            <field name="code3">LBY</field>
+            <field name="code_numeric">434</field>
         </record>
 
         <record model="country.country" id="li">
             <field name="name">Liechtenstein</field>
             <field name="code">LI</field>
+            <field name="code3">LIE</field>
+            <field name="code_numeric">438</field>
         </record>
 
         <record model="country.country" id="lt">
             <field name="name">Lithuania</field>
             <field name="code">LT</field>
+            <field name="code3">LTU</field>
+            <field name="code_numeric">440</field>
         </record>
 
         <record model="country.country" id="lu">
             <field name="name">Luxembourg</field>
             <field name="code">LU</field>
+            <field name="code3">LUX</field>
+            <field name="code_numeric">442</field>
         </record>
 
         <record model="country.country" id="mo">
             <field name="name">Macao</field>
             <field name="code">MO</field>
+            <field name="code3">MAC</field>
+            <field name="code_numeric">446</field>
         </record>
 
         <record model="country.country" id="mk">
             <field name="name">Macedonia, Republic of</field>
             <field name="code">MK</field>
+            <field name="code3">MKD</field>
+            <field name="code_numeric">807</field>
         </record>
 
         <record model="country.country" id="mg">
             <field name="name">Madagascar</field>
             <field name="code">MG</field>
+            <field name="code3">MDG</field>
+            <field name="code_numeric">450</field>
         </record>
 
         <record model="country.country" id="mw">
             <field name="name">Malawi</field>
             <field name="code">MW</field>
+            <field name="code3">MWI</field>
+            <field name="code_numeric">454</field>
         </record>
 
         <record model="country.country" id="my">
             <field name="name">Malaysia</field>
             <field name="code">MY</field>
+            <field name="code3">MYS</field>
+            <field name="code_numeric">458</field>
         </record>
 
         <record model="country.country" id="mv">
             <field name="name">Maldives</field>
             <field name="code">MV</field>
+            <field name="code3">MDV</field>
+            <field name="code_numeric">462</field>
         </record>
 
         <record model="country.country" id="ml">
             <field name="name">Mali</field>
             <field name="code">ML</field>
+            <field name="code3">MLI</field>
+            <field name="code_numeric">466</field>
         </record>
 
         <record model="country.country" id="mt">
             <field name="name">Malta</field>
             <field name="code">MT</field>
+            <field name="code3">MLT</field>
+            <field name="code_numeric">470</field>
         </record>
 
         <record model="country.country" id="mh">
             <field name="name">Marshall Islands</field>
             <field name="code">MH</field>
+            <field name="code3">MHL</field>
+            <field name="code_numeric">584</field>
         </record>
 
         <record model="country.country" id="mq">
             <field name="name">Martinique</field>
             <field name="code">MQ</field>
+            <field name="code3">MTQ</field>
+            <field name="code_numeric">474</field>
         </record>
 
         <record model="country.country" id="mr">
             <field name="name">Mauritania</field>
             <field name="code">MR</field>
+            <field name="code3">MRT</field>
+            <field name="code_numeric">478</field>
         </record>
 
         <record model="country.country" id="mu">
             <field name="name">Mauritius</field>
             <field name="code">MU</field>
+            <field name="code3">MUS</field>
+            <field name="code_numeric">480</field>
         </record>
 
         <record model="country.country" id="yt">
             <field name="name">Mayotte</field>
             <field name="code">YT</field>
+            <field name="code3">MYT</field>
+            <field name="code_numeric">175</field>
         </record>
 
         <record model="country.country" id="mx">
             <field name="name">Mexico</field>
             <field name="code">MX</field>
+            <field name="code3">MEX</field>
+            <field name="code_numeric">484</field>
         </record>
 
         <record model="country.country" id="fm">
             <field name="name">Micronesia, Federated States of</field>
             <field name="code">FM</field>
+            <field name="code3">FSM</field>
+            <field name="code_numeric">583</field>
         </record>
 
         <record model="country.country" id="md">
             <field name="name">Moldova, Republic of</field>
             <field name="code">MD</field>
+            <field name="code3">MDA</field>
+            <field name="code_numeric">498</field>
         </record>
 
         <record model="country.country" id="mc">
             <field name="name">Monaco</field>
             <field name="code">MC</field>
+            <field name="code3">MCO</field>
+            <field name="code_numeric">492</field>
         </record>
 
         <record model="country.country" id="mn">
             <field name="name">Mongolia</field>
             <field name="code">MN</field>
+            <field name="code3">MNG</field>
+            <field name="code_numeric">496</field>
         </record>
 
         <record model="country.country" id="me">
             <field name="name">Montenegro</field>
             <field name="code">ME</field>
+            <field name="code3">MNE</field>
+            <field name="code_numeric">499</field>
         </record>
 
         <record model="country.country" id="ms">
             <field name="name">Montserrat</field>
             <field name="code">MS</field>
+            <field name="code3">MSR</field>
+            <field name="code_numeric">500</field>
         </record>
 
         <record model="country.country" id="ma">
             <field name="name">Morocco</field>
             <field name="code">MA</field>
+            <field name="code3">MAR</field>
+            <field name="code_numeric">504</field>
         </record>
 
         <record model="country.country" id="mz">
             <field name="name">Mozambique</field>
             <field name="code">MZ</field>
+            <field name="code3">MOZ</field>
+            <field name="code_numeric">508</field>
         </record>
 
         <record model="country.country" id="mm">
             <field name="name">Myanmar</field>
             <field name="code">MM</field>
+            <field name="code3">MMR</field>
+            <field name="code_numeric">104</field>
         </record>
 
         <record model="country.country" id="na">
             <field name="name">Namibia</field>
             <field name="code">NA</field>
+            <field name="code3">NAM</field>
+            <field name="code_numeric">516</field>
         </record>
 
         <record model="country.country" id="nr">
             <field name="name">Nauru</field>
             <field name="code">NR</field>
+            <field name="code3">NRU</field>
+            <field name="code_numeric">520</field>
         </record>
 
         <record model="country.country" id="np">
             <field name="name">Nepal</field>
             <field name="code">NP</field>
+            <field name="code3">NPL</field>
+            <field name="code_numeric">524</field>
         </record>
 
         <record model="country.country" id="nl">
             <field name="name">Netherlands</field>
             <field name="code">NL</field>
+            <field name="code3">NLD</field>
+            <field name="code_numeric">528</field>
         </record>
 
         <record model="country.country" id="nc">
             <field name="name">New Caledonia</field>
             <field name="code">NC</field>
+            <field name="code3">NCL</field>
+            <field name="code_numeric">540</field>
         </record>
 
         <record model="country.country" id="nz">
             <field name="name">New Zealand</field>
             <field name="code">NZ</field>
+            <field name="code3">NZL</field>
+            <field name="code_numeric">554</field>
         </record>
 
         <record model="country.country" id="ni">
             <field name="name">Nicaragua</field>
             <field name="code">NI</field>
+            <field name="code3">NIC</field>
+            <field name="code_numeric">558</field>
         </record>
 
         <record model="country.country" id="ne">
             <field name="name">Niger</field>
             <field name="code">NE</field>
+            <field name="code3">NER</field>
+            <field name="code_numeric">562</field>
         </record>
 
         <record model="country.country" id="ng">
             <field name="name">Nigeria</field>
             <field name="code">NG</field>
+            <field name="code3">NGA</field>
+            <field name="code_numeric">566</field>
         </record>
 
         <record model="country.country" id="nu">
             <field name="name">Niue</field>
             <field name="code">NU</field>
+            <field name="code3">NIU</field>
+            <field name="code_numeric">570</field>
         </record>
 
         <record model="country.country" id="nf">
             <field name="name">Norfolk Island</field>
             <field name="code">NF</field>
+            <field name="code3">NFK</field>
+            <field name="code_numeric">574</field>
         </record>
 
         <record model="country.country" id="mp">
             <field name="name">Northern Mariana Islands</field>
             <field name="code">MP</field>
+            <field name="code3">MNP</field>
+            <field name="code_numeric">580</field>
         </record>
 
         <record model="country.country" id="no">
             <field name="name">Norway</field>
             <field name="code">NO</field>
+            <field name="code3">NOR</field>
+            <field name="code_numeric">578</field>
         </record>
 
         <record model="country.country" id="om">
             <field name="name">Oman</field>
             <field name="code">OM</field>
+            <field name="code3">OMN</field>
+            <field name="code_numeric">512</field>
         </record>
 
         <record model="country.country" id="pk">
             <field name="name">Pakistan</field>
             <field name="code">PK</field>
+            <field name="code3">PAK</field>
+            <field name="code_numeric">586</field>
         </record>
 
         <record model="country.country" id="pw">
             <field name="name">Palau</field>
             <field name="code">PW</field>
+            <field name="code3">PLW</field>
+            <field name="code_numeric">585</field>
         </record>
 
         <record model="country.country" id="ps">
             <field name="name">Palestine, State of</field>
             <field name="code">PS</field>
+            <field name="code3">PSE</field>
+            <field name="code_numeric">275</field>
         </record>
 
         <record model="country.country" id="pa">
             <field name="name">Panama</field>
             <field name="code">PA</field>
+            <field name="code3">PAN</field>
+            <field name="code_numeric">591</field>
         </record>
 
         <record model="country.country" id="pg">
             <field name="name">Papua New Guinea</field>
             <field name="code">PG</field>
+            <field name="code3">PNG</field>
+            <field name="code_numeric">598</field>
         </record>
 
         <record model="country.country" id="py">
             <field name="name">Paraguay</field>
             <field name="code">PY</field>
+            <field name="code3">PRY</field>
+            <field name="code_numeric">600</field>
         </record>
 
         <record model="country.country" id="pe">
             <field name="name">Peru</field>
             <field name="code">PE</field>
+            <field name="code3">PER</field>
+            <field name="code_numeric">604</field>
         </record>
 
         <record model="country.country" id="ph">
             <field name="name">Philippines</field>
             <field name="code">PH</field>
+            <field name="code3">PHL</field>
+            <field name="code_numeric">608</field>
         </record>
 
         <record model="country.country" id="pn">
             <field name="name">Pitcairn</field>
             <field name="code">PN</field>
+            <field name="code3">PCN</field>
+            <field name="code_numeric">612</field>
         </record>
 
         <record model="country.country" id="pl">
             <field name="name">Poland</field>
             <field name="code">PL</field>
+            <field name="code3">POL</field>
+            <field name="code_numeric">616</field>
         </record>
 
         <record model="country.country" id="pt">
             <field name="name">Portugal</field>
             <field name="code">PT</field>
+            <field name="code3">PRT</field>
+            <field name="code_numeric">620</field>
         </record>
 
         <record model="country.country" id="pr">
             <field name="name">Puerto Rico</field>
             <field name="code">PR</field>
+            <field name="code3">PRI</field>
+            <field name="code_numeric">630</field>
         </record>
 
         <record model="country.country" id="qa">
             <field name="name">Qatar</field>
             <field name="code">QA</field>
+            <field name="code3">QAT</field>
+            <field name="code_numeric">634</field>
         </record>
 
         <record model="country.country" id="re">
             <field name="name">Réunion</field>
             <field name="code">RE</field>
+            <field name="code3">REU</field>
+            <field name="code_numeric">638</field>
         </record>
 
         <record model="country.country" id="ro">
             <field name="name">Romania</field>
             <field name="code">RO</field>
+            <field name="code3">ROU</field>
+            <field name="code_numeric">642</field>
         </record>
 
         <record model="country.country" id="ru">
             <field name="name">Russian Federation</field>
             <field name="code">RU</field>
+            <field name="code3">RUS</field>
+            <field name="code_numeric">643</field>
         </record>
 
         <record model="country.country" id="rw">
             <field name="name">Rwanda</field>
             <field name="code">RW</field>
+            <field name="code3">RWA</field>
+            <field name="code_numeric">646</field>
         </record>
 
         <record model="country.country" id="bl">
             <field name="name">Saint Barthélemy</field>
             <field name="code">BL</field>
+            <field name="code3">BLM</field>
+            <field name="code_numeric">652</field>
         </record>
 
         <record model="country.country" id="sh">
             <field name="name">Saint Helena, Ascension and Tristan da Cunha</field>
             <field name="code">SH</field>
+            <field name="code3">SHN</field>
+            <field name="code_numeric">654</field>
         </record>
 
         <record model="country.country" id="kn">
             <field name="name">Saint Kitts and Nevis</field>
             <field name="code">KN</field>
+            <field name="code3">KNA</field>
+            <field name="code_numeric">659</field>
         </record>
 
         <record model="country.country" id="lc">
             <field name="name">Saint Lucia</field>
             <field name="code">LC</field>
+            <field name="code3">LCA</field>
+            <field name="code_numeric">662</field>
         </record>
 
         <record model="country.country" id="mf">
             <field name="name">Saint Martin (French part)</field>
             <field name="code">MF</field>
+            <field name="code3">MAF</field>
+            <field name="code_numeric">663</field>
         </record>
 
         <record model="country.country" id="pm">
             <field name="name">Saint Pierre and Miquelon</field>
             <field name="code">PM</field>
+            <field name="code3">SPM</field>
+            <field name="code_numeric">666</field>
         </record>
 
         <record model="country.country" id="vc">
             <field name="name">Saint Vincent and the Grenadines</field>
             <field name="code">VC</field>
+            <field name="code3">VCT</field>
+            <field name="code_numeric">670</field>
         </record>
 
         <record model="country.country" id="ws">
             <field name="name">Samoa</field>
             <field name="code">WS</field>
+            <field name="code3">WSM</field>
+            <field name="code_numeric">882</field>
         </record>
 
         <record model="country.country" id="sm">
             <field name="name">San Marino</field>
             <field name="code">SM</field>
+            <field name="code3">SMR</field>
+            <field name="code_numeric">674</field>
         </record>
 
         <record model="country.country" id="st">
             <field name="name">Sao Tome and Principe</field>
             <field name="code">ST</field>
+            <field name="code3">STP</field>
+            <field name="code_numeric">678</field>
         </record>
 
         <record model="country.country" id="sa">
             <field name="name">Saudi Arabia</field>
             <field name="code">SA</field>
+            <field name="code3">SAU</field>
+            <field name="code_numeric">682</field>
         </record>
 
         <record model="country.country" id="sn">
             <field name="name">Senegal</field>
             <field name="code">SN</field>
+            <field name="code3">SEN</field>
+            <field name="code_numeric">686</field>
         </record>
 
         <record model="country.country" id="rs">
             <field name="name">Serbia</field>
             <field name="code">RS</field>
+            <field name="code3">SRB</field>
+            <field name="code_numeric">688</field>
         </record>
 
         <record model="country.country" id="sc">
             <field name="name">Seychelles</field>
             <field name="code">SC</field>
+            <field name="code3">SYC</field>
+            <field name="code_numeric">690</field>
         </record>
 
         <record model="country.country" id="sl">
             <field name="name">Sierra Leone</field>
             <field name="code">SL</field>
+            <field name="code3">SLE</field>
+            <field name="code_numeric">694</field>
         </record>
 
         <record model="country.country" id="sg">
             <field name="name">Singapore</field>
             <field name="code">SG</field>
+            <field name="code3">SGP</field>
+            <field name="code_numeric">702</field>
         </record>
 
         <record model="country.country" id="sx">
             <field name="name">Sint Maarten (Dutch part)</field>
             <field name="code">SX</field>
+            <field name="code3">SXM</field>
+            <field name="code_numeric">534</field>
         </record>
 
         <record model="country.country" id="sk">
             <field name="name">Slovakia</field>
             <field name="code">SK</field>
+            <field name="code3">SVK</field>
+            <field name="code_numeric">703</field>
         </record>
 
         <record model="country.country" id="si">
             <field name="name">Slovenia</field>
             <field name="code">SI</field>
+            <field name="code3">SVN</field>
+            <field name="code_numeric">705</field>
         </record>
 
         <record model="country.country" id="sb">
             <field name="name">Solomon Islands</field>
             <field name="code">SB</field>
+            <field name="code3">SLB</field>
+            <field name="code_numeric">090</field>
         </record>
 
         <record model="country.country" id="so">
             <field name="name">Somalia</field>
             <field name="code">SO</field>
+            <field name="code3">SOM</field>
+            <field name="code_numeric">706</field>
         </record>
 
         <record model="country.country" id="za">
             <field name="name">South Africa</field>
             <field name="code">ZA</field>
+            <field name="code3">ZAF</field>
+            <field name="code_numeric">710</field>
         </record>
 
         <record model="country.country" id="gs">
             <field name="name">South Georgia and the South Sandwich Islands</field>
             <field name="code">GS</field>
+            <field name="code3">SGS</field>
+            <field name="code_numeric">239</field>
         </record>
 
         <record model="country.country" id="es">
             <field name="name">Spain</field>
             <field name="code">ES</field>
+            <field name="code3">ESP</field>
+            <field name="code_numeric">724</field>
         </record>
 
         <record model="country.country" id="lk">
             <field name="name">Sri Lanka</field>
             <field name="code">LK</field>
+            <field name="code3">LKA</field>
+            <field name="code_numeric">144</field>
         </record>
 
         <record model="country.country" id="sd">
             <field name="name">Sudan</field>
             <field name="code">SD</field>
+            <field name="code3">SDN</field>
+            <field name="code_numeric">729</field>
         </record>
 
         <record model="country.country" id="sr">
             <field name="name">Suriname</field>
             <field name="code">SR</field>
+            <field name="code3">SUR</field>
+            <field name="code_numeric">740</field>
         </record>
 
         <record model="country.country" id="ss">
             <field name="name">South Sudan</field>
             <field name="code">SS</field>
+            <field name="code3">SSD</field>
+            <field name="code_numeric">728</field>
         </record>
 
         <record model="country.country" id="sj">
             <field name="name">Svalbard and Jan Mayen</field>
             <field name="code">SJ</field>
+            <field name="code3">SJM</field>
+            <field name="code_numeric">744</field>
         </record>
 
         <record model="country.country" id="sz">
             <field name="name">Swaziland</field>
             <field name="code">SZ</field>
+            <field name="code3">SWZ</field>
+            <field name="code_numeric">748</field>
         </record>
 
         <record model="country.country" id="se">
             <field name="name">Sweden</field>
             <field name="code">SE</field>
+            <field name="code3">SWE</field>
+            <field name="code_numeric">752</field>
         </record>
 
         <record model="country.country" id="ch">
             <field name="name">Switzerland</field>
             <field name="code">CH</field>
+            <field name="code3">CHE</field>
+            <field name="code_numeric">756</field>
         </record>
 
         <record model="country.country" id="sy">
             <field name="name">Syrian Arab Republic</field>
             <field name="code">SY</field>
+            <field name="code3">SYR</field>
+            <field name="code_numeric">760</field>
         </record>
 
         <record model="country.country" id="tw">
             <field name="name">Taiwan, Province of China</field>
             <field name="code">TW</field>
+            <field name="code3">TWN</field>
+            <field name="code_numeric">158</field>
         </record>
 
         <record model="country.country" id="tj">
             <field name="name">Tajikistan</field>
             <field name="code">TJ</field>
+            <field name="code3">TJK</field>
+            <field name="code_numeric">762</field>
         </record>
 
         <record model="country.country" id="tz">
             <field name="name">Tanzania, United Republic of</field>
             <field name="code">TZ</field>
+            <field name="code3">TZA</field>
+            <field name="code_numeric">834</field>
         </record>
 
         <record model="country.country" id="th">
             <field name="name">Thailand</field>
             <field name="code">TH</field>
+            <field name="code3">THA</field>
+            <field name="code_numeric">764</field>
         </record>
 
         <record model="country.country" id="tl">
             <field name="name">Timor-Leste</field>
             <field name="code">TL</field>
+            <field name="code3">TLS</field>
+            <field name="code_numeric">626</field>
         </record>
 
         <record model="country.country" id="tg">
             <field name="name">Togo</field>
             <field name="code">TG</field>
+            <field name="code3">TGO</field>
+            <field name="code_numeric">768</field>
         </record>
 
         <record model="country.country" id="tk">
             <field name="name">Tokelau</field>
             <field name="code">TK</field>
+            <field name="code3">TKL</field>
+            <field name="code_numeric">772</field>
         </record>
 
         <record model="country.country" id="to">
             <field name="name">Tonga</field>
             <field name="code">TO</field>
+            <field name="code3">TON</field>
+            <field name="code_numeric">776</field>
         </record>
 
         <record model="country.country" id="tt">
             <field name="name">Trinidad and Tobago</field>
             <field name="code">TT</field>
+            <field name="code3">TTO</field>
+            <field name="code_numeric">780</field>
         </record>
 
         <record model="country.country" id="tn">
             <field name="name">Tunisia</field>
             <field name="code">TN</field>
+            <field name="code3">TUN</field>
+            <field name="code_numeric">788</field>
         </record>
 
         <record model="country.country" id="tr">
             <field name="name">Turkey</field>
             <field name="code">TR</field>
+            <field name="code3">TUR</field>
+            <field name="code_numeric">792</field>
         </record>
 
         <record model="country.country" id="tm">
             <field name="name">Turkmenistan</field>
             <field name="code">TM</field>
+            <field name="code3">TKM</field>
+            <field name="code_numeric">795</field>
         </record>
 
         <record model="country.country" id="tc">
             <field name="name">Turks and Caicos Islands</field>
             <field name="code">TC</field>
+            <field name="code3">TCA</field>
+            <field name="code_numeric">796</field>
         </record>
 
         <record model="country.country" id="tv">
             <field name="name">Tuvalu</field>
             <field name="code">TV</field>
+            <field name="code3">TUV</field>
+            <field name="code_numeric">798</field>
         </record>
 
         <record model="country.country" id="ug">
             <field name="name">Uganda</field>
             <field name="code">UG</field>
+            <field name="code3">UGA</field>
+            <field name="code_numeric">800</field>
         </record>
 
         <record model="country.country" id="ua">
             <field name="name">Ukraine</field>
             <field name="code">UA</field>
+            <field name="code3">UKR</field>
+            <field name="code_numeric">804</field>
         </record>
 
         <record model="country.country" id="ae">
             <field name="name">United Arab Emirates</field>
             <field name="code">AE</field>
+            <field name="code3">ARE</field>
+            <field name="code_numeric">784</field>
         </record>
 
         <record model="country.country" id="gb">
             <field name="name">United Kingdom</field>
             <field name="code">GB</field>
+            <field name="code3">GBR</field>
+            <field name="code_numeric">826</field>
         </record>
 
         <record model="country.country" id="us">
             <field name="name">United States</field>
             <field name="code">US</field>
+            <field name="code3">USA</field>
+            <field name="code_numeric">840</field>
         </record>
 
         <record model="country.country" id="um">
             <field name="name">United States Minor Outlying Islands</field>
             <field name="code">UM</field>
+            <field name="code3">UMI</field>
+            <field name="code_numeric">581</field>
         </record>
 
         <record model="country.country" id="uy">
             <field name="name">Uruguay</field>
             <field name="code">UY</field>
+            <field name="code3">URY</field>
+            <field name="code_numeric">858</field>
         </record>
 
         <record model="country.country" id="uz">
             <field name="name">Uzbekistan</field>
             <field name="code">UZ</field>
+            <field name="code3">UZB</field>
+            <field name="code_numeric">860</field>
         </record>
 
         <record model="country.country" id="vu">
             <field name="name">Vanuatu</field>
             <field name="code">VU</field>
+            <field name="code3">VUT</field>
+            <field name="code_numeric">548</field>
         </record>
 
         <record model="country.country" id="ve">
             <field name="name">Venezuela, Bolivarian Republic of</field>
             <field name="code">VE</field>
+            <field name="code3">VEN</field>
+            <field name="code_numeric">862</field>
         </record>
 
         <record model="country.country" id="vn">
             <field name="name">Viet Nam</field>
             <field name="code">VN</field>
+            <field name="code3">VNM</field>
+            <field name="code_numeric">704</field>
         </record>
 
         <record model="country.country" id="vg">
             <field name="name">Virgin Islands, British</field>
             <field name="code">VG</field>
+            <field name="code3">VGB</field>
+            <field name="code_numeric">092</field>
         </record>
 
         <record model="country.country" id="vi">
             <field name="name">Virgin Islands, U.S.</field>
             <field name="code">VI</field>
+            <field name="code3">VIR</field>
+            <field name="code_numeric">850</field>
         </record>
 
         <record model="country.country" id="wf">
             <field name="name">Wallis and Futuna</field>
             <field name="code">WF</field>
+            <field name="code3">WLF</field>
+            <field name="code_numeric">876</field>
         </record>
 
         <record model="country.country" id="eh">
             <field name="name">Western Sahara</field>
             <field name="code">EH</field>
+            <field name="code3">ESH</field>
+            <field name="code_numeric">732</field>
         </record>
 
         <record model="country.country" id="ye">
             <field name="name">Yemen</field>
             <field name="code">YE</field>
+            <field name="code3">YEM</field>
+            <field name="code_numeric">887</field>
         </record>
 
         <record model="country.country" id="zm">
             <field name="name">Zambia</field>
             <field name="code">ZM</field>
+            <field name="code3">ZMB</field>
+            <field name="code_numeric">894</field>
         </record>
 
         <record model="country.country" id="zw">
             <field name="name">Zimbabwe</field>
             <field name="code">ZW</field>
+            <field name="code3">ZWE</field>
+            <field name="code_numeric">716</field>
         </record>
     </data>
     <data skiptest="1" grouped="1">
