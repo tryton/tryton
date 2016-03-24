@@ -167,10 +167,11 @@ class ViewForm(View):
                     attributes[attr] = field.attrs[attr]
         vbox = VBox(attrs=attributes)
         if attributes.get('string'):
-            label = gtk.Label(attributes['string'])
+            label = Label(attributes['string'], attrs=attributes)
             label.set_alignment(float(attributes.get('xalign', 0.0)),
                 float(attributes.get('yalign', 0.5)))
             vbox.pack_start(label)
+            self.state_widgets.append(label)
         vbox.pack_start(gtk.HSeparator())
         self.state_widgets.append(vbox)
         container.add(vbox, attributes)
