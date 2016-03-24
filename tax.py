@@ -1269,6 +1269,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
         domain=[
+            ('parent', '=', None),
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
             ('group', '=', Eval('group')),
             ['OR',
@@ -1287,6 +1288,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         ondelete='RESTRICT')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
         domain=[
+            ('parent', '=', None),
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
             ('group', '=', Eval('group')),
             ['OR',
@@ -1391,6 +1393,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
         ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
         domain=[
+            ('parent', '=', None),
             ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
             ['OR',
@@ -1409,6 +1412,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
         ondelete='RESTRICT')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
+            ('parent', '=', None),
             ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
             ['OR',
