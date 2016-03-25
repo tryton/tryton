@@ -444,75 +444,75 @@ msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Crear asientos de activo"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "("
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
 msgstr ""
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
 msgstr ""
 

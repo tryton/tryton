@@ -446,75 +446,75 @@ msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Knjiženje sredstev"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "("
 msgstr "("
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
 msgstr ")"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
 msgstr "+"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
 msgstr "-"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
 msgstr "Dejanska vrednost"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
 msgstr "Amortizacija"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
 msgstr "Amortizacijska tabela"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
 msgstr "Sredstva"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
 msgstr "Končna vrednost"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
 msgstr "Družba:"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
 msgstr "Osnova"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
 msgstr "Od:"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
 msgstr "Izpisano:"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
 msgstr "Do:"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
 msgstr "Skupaj -"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
 msgstr "Izpisal:"
 
-msgctxt "odt:account.asset.depreciation_table:"
+msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
 msgstr "ob"
 
