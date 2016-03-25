@@ -1549,217 +1549,217 @@ msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
 msgstr "Пратка върната от клиент"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Code:"
 msgstr "Код:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "От местонахождение"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Планирана дата:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
 msgstr "Отпратка:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
 msgstr "Списък за увеличаване наличност на продукт"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
 msgstr "Доставчик:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
 msgstr "Към местонахождение"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Склад:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Code:"
 msgstr "Код:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "От местонахождение"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "От местонахождение:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Вътрешно пратка"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
 msgstr "Планирана дата:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
 msgstr "Отпратка:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
 msgstr "Към местонахождение"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "Към местонахождение:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
 msgstr "Код на клиент:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
 msgstr "Дата:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr "Бележка към доставка"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
 msgstr "Отпратка:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr "Номер на пратка:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Code:"
 msgstr "Код:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr "Клиент:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "От местонахождение"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
 msgstr "Списък за опаковане"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
 msgstr "Планирана дата:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
 msgstr "Отпратка:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr "Към местонахождение"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Склад:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
 msgstr "/"
 
 #, fuzzy
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ":"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Код:"
 
 #, fuzzy
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Клиент"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "От местонахождение"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Планирана дата:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
 msgstr "Отпратка:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Списък за увеличаване наличност на продукт"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr "Към местонахождение"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Склад:"
 

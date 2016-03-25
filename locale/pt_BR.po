@@ -1538,215 +1538,215 @@ msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
 msgstr "Devolução do Cliente"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Code:"
 msgstr "Código:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
 msgstr "Origem"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Data Planejada:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
 msgstr "Referências"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
 msgstr "Relação para re-estocagem"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
 msgstr "Fornecedor:"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
 msgstr "Destino"
 
-msgctxt "odt:stock.shipment.in.restocking_list:"
+msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Armazém:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Code:"
 msgstr "Código:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
 msgstr "Origem"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "Origem:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
 msgstr "Remessa Interna"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
 msgstr "Data Planejada:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
 msgstr "Referência:"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
 msgstr "Destino"
 
-msgctxt "odt:stock.shipment.internal.report:"
+msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "Destino:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
 msgstr "Código do Cliente:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
 msgstr "Data:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr "Notificação de entrega"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
 msgstr "Referência:"
 
-msgctxt "odt:stock.shipment.out.delivery_note:"
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr "Número da Remessa:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Code:"
 msgstr "Código:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
 msgstr "Cliente:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr "Origem"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
 msgstr "Relação para separação"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
 msgstr "Data Planejada:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
 msgstr "Referência:"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr "Destino"
 
-msgctxt "odt:stock.shipment.out.picking_list:"
+msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Armazém"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ":"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Código:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
 msgstr "Cliente"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
 msgstr "Origem"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Data Planejada:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
 msgstr "Referência:"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Relação para re-estocagem"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr "Destino"
 
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Armazém"
 
