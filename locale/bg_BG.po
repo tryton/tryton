@@ -252,19 +252,19 @@ msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
 msgstr "Потребител - Служител"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Best Regards,"
 msgstr "С уважение,"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Date:"
 msgstr "Дата:"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
 msgstr "Уважаеми дами и годпода,"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Subject:"
 msgstr "Относно:"
 

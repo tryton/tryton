@@ -257,19 +257,19 @@ msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
 msgstr ""
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Best Regards,"
 msgstr "Met vriendelijke groet,"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Date:"
 msgstr "Datum:"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
 msgstr "Geachte heer/mevrouw,"
 
-msgctxt "odt:party.letter:"
+msgctxt "report:party.letter:"
 msgid "Subject:"
 msgstr "Betreft:"
 
