@@ -40,7 +40,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
         'configuration', 'Tax Roundings')
 
     @classmethod
-    def default_tax_rounding():
+    def default_tax_rounding(cls):
         return 'document'
 
     @classmethod
