@@ -142,11 +142,11 @@ msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
 msgstr "Tipo de Inventario de Empaque"
 
-msgctxt "odt:stock.package.label:"
+msgctxt "report:stock.package.label:"
 msgid "Package:"
 msgstr "Empaque:"
 
-msgctxt "odt:stock.package.label:"
+msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr "Envío:"
 
