@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action-res.group"
             id="action_purchase_request_group_purchase_request">
             <field name="action" ref="act_purchase_request_form"/>
-            <field name="group" ref="stock_supply.group_purchase_request"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
         </record>
         <record model="ir.action-res.group"
             id="action_purchase_request_group_purchase">
