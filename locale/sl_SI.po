@@ -385,51 +385,51 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Izpisek"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "#"
 msgstr "#"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Znesek"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr "Preklicano"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Datum:"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Opis"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "V pripravi"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr "Dnevnik:"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Številka"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "Partner"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Statement"
 msgstr "Izpisek"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Skupaj"
 

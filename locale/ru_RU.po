@@ -446,60 +446,60 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr ""
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "#"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Сумма"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr "Отменено"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Дата"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Дата:"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Описание"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Черновик"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Номер"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "Организации"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Statement"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Итого"
 

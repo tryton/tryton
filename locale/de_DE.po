@@ -385,51 +385,51 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Bankauszug"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "#"
 msgstr "Nr."
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Betrag"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr "Annulliert"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Datum:"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Beschreibung"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Entwurf"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr "Journal:"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Nummer"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "Partei"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Statement"
 msgstr "Zahlung"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Gesamt"
 

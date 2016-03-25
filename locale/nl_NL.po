@@ -411,61 +411,61 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Bankafschrift"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "#"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Bedrag"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr "Geannuleerd"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Vervaldatum"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Datum:"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Specificatie"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Concept"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Nummer"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "Relaties"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Statement"
 msgstr "Bankafschrift"
 
 #, fuzzy
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Totaal"
 

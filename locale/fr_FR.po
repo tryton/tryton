@@ -389,51 +389,51 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Relevé"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "#"
 msgstr "#"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Montant"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr "Annulé"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Date:"
 msgstr "Date :"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Description"
 msgstr "Description"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Brouillon"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr "Journal :"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Number"
 msgstr "Numéro"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Statement"
 msgstr "Relevé"
 
-msgctxt "odt:account.statement:"
+msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Total"
 
