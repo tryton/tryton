@@ -10,34 +10,34 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr "Carta de reclamació"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Import"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Date:"
 msgstr "Data:"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Description"
 msgstr "Descripció"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
 msgstr "Data de venciment"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr "Pagaments pendents rebuts"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Reference"
 msgstr "Referència"
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avís recordatori"

@@ -10,34 +10,34 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Date"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Date:"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Description"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Reference"
 msgstr ""
 
-msgctxt "odt:account.dunning.letter:"
+msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr ""
