@@ -24,10 +24,14 @@ def get(prop):
     if modname not in sys.modules:
         try:
             __import__(modname)
-        except ImportError:
+        except ImportError, exception:
             if not pkg_resources:
-                raise
-            ep, = pkg_resources.iter_entry_points('trytond.backend', db_type)
+                raise exception
+            try:
+                ep, = pkg_resources.iter_entry_points(
+                    'trytond.backend', db_type)
+            except ValueError:
+                raise exception
             mod_path = os.path.join(ep.dist.location,
                 *ep.module_name.split('.')[:-1])
             fp, pathname, description = imp.find_module(db_type, [mod_path])
