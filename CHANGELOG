@@ -1,9 +1,9 @@
+* Improvement of charts design
 * Timedelta uses 30 days for month
 * Add all available encoding for import/export
 * Add CSV parameters to export window
 * Add DnD on import window
 * Manage context model of ir.action.act_window
-* Improvement of charts design
 * Add Note
 * Manage view_ids on tree view
 * Use Apple key for copy/past of list
