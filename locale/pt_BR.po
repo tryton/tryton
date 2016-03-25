@@ -742,59 +742,59 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr "Venda - Recriar fatura"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Quantidade"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Data:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Descrição"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description:"
 msgstr "Descrição:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr "Rascunho de Ordem de Venda"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Cotação n°:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
 msgstr "Ordem de Venda n°:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes"
 msgstr "Impostos"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes:"
 msgstr "Tributos"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total (excl. taxes):"
 msgstr "Total (sem tributos):"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total:"
 msgstr "Total:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Preço unitário"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "VAT:"
 msgstr "IVA:"
 

@@ -758,69 +758,69 @@ msgid "Sale - Recreated Invoice"
 msgstr "Verkoop - factuur opnieuw aanmaken"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Bedrag"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Datum:"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Specificatie"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description:"
 msgstr "Betreft:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr ""
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes"
 msgstr "Belastingen"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes:"
 msgstr "Belastingen:"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total (excl. taxes):"
 msgstr "Totaal (excl. belasting):"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total:"
 msgstr "Totaal:"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
 
 #, fuzzy
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "VAT:"
 msgstr "BTW:"
 

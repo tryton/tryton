@@ -747,59 +747,59 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr "Продажба - Наново създадена фактура"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Сума"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Дата:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Описание"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Description:"
 msgstr "Описание:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr "Проект на поръчка за продажба"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Запитване N°:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
 msgstr "Поръчка за продажба N°:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes"
 msgstr "Данъци"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Taxes:"
 msgstr "Данъци:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total (excl. taxes):"
 msgstr "Общо (без данъци):"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Total:"
 msgstr "Общо:"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Единична цена"
 
-msgctxt "odt:sale.sale:"
+msgctxt "report:sale.sale:"
 msgid "VAT:"
 msgstr "ДДС:"
 
