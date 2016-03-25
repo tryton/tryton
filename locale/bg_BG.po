@@ -3626,308 +3626,308 @@ msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Управление на счетоводство"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Customers"
 msgstr "Хронологичен баланс за клиенти"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Suppliers"
 msgstr "Хронологичен баланс за доставчици"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Suppliers and Customers"
 msgstr "Хронологични баланси за доставчици и клиенти"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Company:"
 msgstr "Фирма:"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Day"
 msgstr "Ден"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Days"
 msgstr "Дни"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Month"
 msgstr "Месец"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Months"
 msgstr "Месеци"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Total"
 msgstr "Общо"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "User:"
 msgstr "Потребител:"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "at"
 msgstr "на"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "Баланс"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Code"
 msgstr "Код"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Company:"
 msgstr "Фирма:"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Credit"
 msgstr "Кредит"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Date"
 msgstr "Дата"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Debit"
 msgstr "Дебит"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Descr."
 msgstr ""
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "From Period:"
 msgstr "От период:"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
 msgstr "Основен дневник"
 
 #, fuzzy
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Движение"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Name"
 msgstr "Име"
 
 #, fuzzy
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Origin"
 msgstr "Източник"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "To Period:"
 msgstr "До период:"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Total"
 msgstr "Общо"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "User:"
 msgstr "Потребител:"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "at"
 msgstr "на"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Account"
 msgstr "Сметка"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Company:"
 msgstr "Фирма"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Credit"
 msgstr "Кредит"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Date:"
 msgstr "Дата:"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Debit"
 msgstr "Дебит"
 
 #, fuzzy
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Description"
 msgstr "Описание"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Draft"
 msgstr "Проект"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
 msgstr "От дата:"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
 msgstr "Общ дневник"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
 msgstr "Запис от дневник"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
 msgstr ""
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Posted"
 msgstr "Публикуван"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "To Date:"
 msgstr "Към дата:"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "User:"
 msgstr "Потребител:"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "at"
 msgstr "на"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Balance"
 msgstr "Баланс"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Company:"
 msgstr "Фирма:"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Credit"
 msgstr "Кредит"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Debit"
 msgstr "Дебит"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Third Party Balance"
 msgstr "Баланс на външен партньор"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Total"
 msgstr "Общо"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "User:"
 msgstr "Потребител:"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "at"
 msgstr "на"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Account"
 msgstr "Сметка"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Company:"
 msgstr "Фирма:"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Credit"
 msgstr "Кредит"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Debit"
 msgstr "Дебит"
 
 #, fuzzy
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "End Balance"
 msgstr "Краен баланс"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "From Period:"
 msgstr "От период:"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
 
 #, fuzzy
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
 msgstr "Начален баланс"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "To Period:"
 msgstr "До период:"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Total"
 msgstr "Общо"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
 msgstr "Временен баланс"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "User:"
 msgstr "Потребител:"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "at"
 msgstr "на"
 

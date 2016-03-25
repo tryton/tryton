@@ -3592,303 +3592,303 @@ msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Administration de la comptablilité"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Customers"
 msgstr "Balance âgée des clients"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Suppliers"
 msgstr "Balance âgée des fournisseurs"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for Suppliers and Customers"
 msgstr "Balance âgée des fournisseurs et clients"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Company:"
 msgstr "Société :"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Day"
 msgstr "Jour"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Days"
 msgstr "Jours"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Month"
 msgstr "Mois"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Months"
 msgstr "Mois"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "User:"
 msgstr "Utilisateur :"
 
-msgctxt "odt:account.aged_balance:"
+msgctxt "report:account.aged_balance:"
 msgid "at"
 msgstr "à"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "Balance"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Code"
 msgstr "Code"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Company:"
 msgstr "Société :"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Debit"
 msgstr "Débit"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Descr."
 msgstr "Descr."
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "From Period:"
 msgstr "Période de début :"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
 msgstr "Grand livre"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Mouvement"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Origin"
 msgstr "Origine"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "State"
 msgstr "État"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "To Period:"
 msgstr "Période de fin :"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "User:"
 msgstr "Utilisateur :"
 
-msgctxt "odt:account.general_ledger:"
+msgctxt "report:account.general_ledger:"
 msgid "at"
 msgstr "à"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Company:"
 msgstr "Société :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Date:"
 msgstr "Date :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Debit"
 msgstr "Débit"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Description"
 msgstr "Description"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Draft"
 msgstr "Brouillon"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
 msgstr "De la date :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
 msgstr "Journal général"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
 msgstr "Entrée journal :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
 msgstr "Origine :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Posted"
 msgstr "Posté"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "To Date:"
 msgstr "À la Date :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "User:"
 msgstr "Utilisateur :"
 
-msgctxt "odt:account.move.general_journal:"
+msgctxt "report:account.move.general_journal:"
 msgid "at"
 msgstr "à"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Balance"
 msgstr "Balance"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Company:"
 msgstr "Société :"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Debit"
 msgstr "Débit"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Third Party Balance"
 msgstr "Balance tiers"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "User:"
 msgstr "Utilisateur :"
 
-msgctxt "odt:account.third_party_balance:"
+msgctxt "report:account.third_party_balance:"
 msgid "at"
 msgstr "à"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Company:"
 msgstr "Société :"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Debit"
 msgstr "Débit"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "End Balance"
 msgstr "Balance finale"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "From Period:"
 msgstr "Période de début :"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
 msgstr "Balace de départ"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "To Period:"
 msgstr "Période de fin :"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
 msgstr "Balance"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "User:"
 msgstr "Utilisateur :"
 
-msgctxt "odt:account.trial_balance:"
+msgctxt "report:account.trial_balance:"
 msgid "at"
 msgstr "à"
 
