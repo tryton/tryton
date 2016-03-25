@@ -1276,119 +1276,119 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Conditions de paiement"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid ":"
 msgstr " :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Amount"
 msgstr "Montant"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Base"
 msgstr "Base"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Credit Note N°:"
 msgstr "N° de note de crédit :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Date:"
 msgstr "Date :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Description"
 msgstr "Description"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Description:"
 msgstr "Description :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Draft Credit Note"
 msgstr "Note de crédit brouillon"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Facture brouillon"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Draft Supplier Credit Note"
 msgstr "Note de crédit fournisseur brouillon"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Draft Supplier Invoice"
 msgstr "Facture fournisseur brouillon"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
 msgstr "N° de facture :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Payment Term"
 msgstr "Condition de paiement"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Pro forma Credit Note"
 msgstr "Note de crédit pro forma"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
 msgstr "Facture pro forma"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Quantity"
 msgstr "Quantité"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Référence"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Supplier Credit Note N°:"
 msgstr "N° de note de crédit fournisseur :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
 msgstr "N° de facture fournisseur :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Tax"
 msgstr "Taxe"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Taxes"
 msgstr "Taxes"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Taxes:"
 msgstr "Taxes :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Total (excl. taxes):"
 msgstr "Total (hors-taxes) :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Total:"
 msgstr "Total :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "VAT:"
 msgstr "TVA :"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Validated Supplier Credit Note"
 msgstr "Note de crédit fournisseur validée"
 
-msgctxt "odt:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Validated Supplier Invoice"
 msgstr "Facture fournisseur validée"
 
