@@ -1055,15 +1055,18 @@ class TranslationSet(Wizard):
             for _, _, string, _ in genshi_extract(
                     content, keywords, comment_tags, options):
                 yield string
+        if not template_class:
+            raise ValueError('a template class is required')
         return method
-    extract_report_plain = extract_report_genshi(
-        MIMETemplateLoader().factories['text'])
+    factories = MIMETemplateLoader().factories
+    extract_report_plain = extract_report_genshi(factories['text'])
     extract_report_xml = extract_report_genshi(
-        MIMETemplateLoader().factories['markup'])
+        factories.get('markup', factories.get('xml')))
     extract_report_html = extract_report_genshi(
-        MIMETemplateLoader().factories['markup'])
+        factories.get('markup', factories.get('xml')))
     extract_report_xhtml = extract_report_genshi(
-        MIMETemplateLoader().factories['markup'])
+        factories.get('markup', factories.get('xml')))
+    del factories
 
     def set_report(self):
         pool = Pool()
