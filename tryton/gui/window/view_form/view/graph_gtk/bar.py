@@ -22,7 +22,7 @@ class Bar(Graph):
     def drawGraph(self, cr, width, height):
 
         def drawBar(bar):
-            cr.set_line_width(1.0)
+            cr.set_line_width(0.5)
 
             x = self.area.w * bar.x + self.area.x
             y = self.area.h * bar.y + self.area.y
@@ -31,11 +31,6 @@ class Bar(Graph):
 
             if w < 1 or h < 1:
                 return  # don't draw too small
-
-            cr.set_source_rgba(0, 0, 0, 0.15)
-            rectangle = self._getShadowRectangle(x, y, w, h)
-            self.drawRectangle(cr, *rectangle)
-            cr.fill()
 
             self.drawRectangle(cr, x, y, w, h)
             r, g, b = self.colorScheme[bar.yname]
@@ -51,12 +46,13 @@ class Bar(Graph):
         cr.restore()
 
     def drawRectangle(self, cr, x, y, w, h):
-        cr.arc(x + 5, y + 5, 5, 0, 2 * math.pi)
-        cr.arc(x + w - 5, y + 5, 5, 0, 2 * math.pi)
-        cr.arc(x + w - 5, y + h - 5, 5, 0, 2 * math.pi)
-        cr.arc(x + 5, y + h - 5, 5, 0, 2 * math.pi)
-        cr.rectangle(x + 5, y, w - 10, h)
-        cr.rectangle(x, y + 5, w, h - 10)
+        radius = 2.5
+        cr.arc(x + radius, y + radius, radius, 0, 2 * math.pi)
+        cr.arc(x + w - radius, y + radius, radius, 0, 2 * math.pi)
+        cr.arc(x + w - radius, y + h - radius, radius, 0, 2 * math.pi)
+        cr.arc(x + radius, y + h - radius, radius, 0, 2 * math.pi)
+        cr.rectangle(x + radius, y, w - radius * 2, h)
+        cr.rectangle(x, y + radius, w, h - radius * 2)
 
     def sourceRectangle(self, x, y, w, h, r, g, b):
         linear = cairo.LinearGradient((x + w) / 2, y, (x + w) / 2, y + h)
@@ -191,9 +187,6 @@ class VerticalBar(Bar):
                 for x in ylabels]
         return ylabels
 
-    def _getShadowRectangle(self, x, y, w, h):
-        return (x - 2, y - 2, w + 4, h + 2)
-
 
 class HorizontalBar(Bar):
     'Horizontal Bar Graph'
@@ -249,9 +242,6 @@ class HorizontalBar(Bar):
                         converter))
                 for x in ylabels]
         return [(x[0], x[1]) for x in ylabels]
-
-    def _getShadowRectangle(self, x, y, w, h):
-        return (x, y - 2, w + 2, h + 4)
 
     def _getLegendPosition(self, width, height):
         return self.area.x + self.area.w * 0.95 - width, \

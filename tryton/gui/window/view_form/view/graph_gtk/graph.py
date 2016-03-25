@@ -203,7 +203,7 @@ class Graph(gtk.DrawingArea):
 
     def drawAxis(self, cr, width, height):
         cr.set_source_rgb(*hex2rgb('#000000'))
-        cr.set_line_width(1.5)
+        cr.set_line_width(0.5)
 
         # Y axis
         def drawYLabel(h, label):
@@ -272,9 +272,10 @@ class Graph(gtk.DrawingArea):
             x2 = x1 + self.area.w
 
         cr.save()
-        cr.set_source_rgb(*hex2rgb('#808080'))
-        cr.set_line_width(1.5)
+        cr.set_source_rgb(*hex2rgb('#A0A0A0'))
+        cr.set_line_width(0.3)
         cr.new_path()
+        cr.set_dash([5.0, 4.0])
         cr.move_to(x1, y1)
         cr.line_to(x2, y2)
         cr.close_path()
@@ -307,7 +308,7 @@ class Graph(gtk.DrawingArea):
         cr.rectangle(pos_x, pos_y, width, height)
         cr.set_source_rgba(1, 1, 1, 0.8)
         cr.fill_preserve()
-        cr.set_line_width(2)
+        cr.set_line_width(0.5)
         cr.set_source_rgb(*hex2rgb('#000000'))
         cr.stroke()
 
@@ -321,7 +322,7 @@ class Graph(gtk.DrawingArea):
                     y + bullet / 2.0 + text_height / 2.0)
             cr.show_text(keys2txt[key])
 
-        cr.set_line_width(1)
+        cr.set_line_width(0.5)
         x = pos_x + padding
         y = pos_y + padding
         for key in keys:

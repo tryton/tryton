@@ -103,29 +103,36 @@ class Line(Graph):
 
         cr.save()
         cr.set_line_width(2)
-        for key in self._getDatasKeys():
-            if key2fill[key]:
-                cr.save()
-                cr.set_source_rgba(0, 0, 0, 0.15)
-                cr.translate(2, -2)
-                preparePath(key)
-                cr.fill()
-                cr.restore()
 
-                r, g, b = self.colorScheme[key]
-                linear = cairo.LinearGradient(width / 2, 0, width / 2, height)
-                linear.add_color_stop_rgb(0,
-                        3.5 * r / 5.0, 3.5 * g / 5.0, 3.5 * b / 5.0)
-                linear.add_color_stop_rgb(1, r, g, b)
-                cr.set_source(linear)
-                preparePath(key)
-                cr.fill()
-            else:
-                preparePath(key)
+        if self._getDatasKeys():
+            transparency = 0.8 / len(self._getDatasKeys())
+            for key in self._getDatasKeys():
+                if key2fill[key]:
+                    cr.save()
+
+                    r, g, b = self.colorScheme[key]
+                    preparePath(key)
+                    cr.set_source_rgb(r, g, b)
+                    cr.stroke_preserve()
+                    cr.restore()
+
+                    # Add soft transparency the area when line is filled
+                    cr.set_source_rgba(r, g, b, transparency)
+                    cr.fill()
+
+                    # Add gradient top to bottom
+                    linear = cairo.LinearGradient(
+                        width / 2, 0, width / 2, height)
+                    linear.add_color_stop_rgba(
+                        0, r * 0.65, g * 0.65, b * 0.65, transparency)
+                    linear.add_color_stop_rgba(1, r, g, b, 0.1)
+                    cr.set_source(linear)
+                    preparePath(key)
+                    cr.fill()
+                else:
+                    preparePath(key)
 
         for point in self.points:
-            if key2fill[point.yname]:
-                continue
             cr.set_source_rgb(*self.colorScheme[point.yname])
             cr.move_to(point.x * self.area.w + self.area.x,
                     point.y * self.area.h + self.area.y)
