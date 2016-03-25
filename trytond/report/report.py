@@ -25,6 +25,10 @@ MIMETYPES = {
     'odp': 'application/vnd.oasis.opendocument.presentation',
     'ods': 'application/vnd.oasis.opendocument.spreadsheet',
     'odg': 'application/vnd.oasis.opendocument.graphics',
+    'plain': 'text/plain',
+    'xml': 'text/xml',
+    'html': 'text/html',
+    'xhtml': 'text/xhtml',
     }
 FORMAT2EXT = {
     'doc6': 'doc',
@@ -70,7 +74,7 @@ class TranslateFactory:
             self.cache[self.language] = {}
             translations = self.translation.search([
                 ('lang', '=', self.language),
-                ('type', '=', 'odt'),
+                ('type', '=', 'report'),
                 ('name', '=', self.report_name),
                 ('value', '!=', ''),
                 ('value', '!=', None),
@@ -141,7 +145,8 @@ class Report(URLMixin, PoolBase):
         report_context = cls.get_context(records, data)
         oext, content = cls.convert(action_report,
             cls.render(action_report, report_context))
-        content = bytearray(content) if bytes == str else bytes(content)
+        if not isinstance(content, unicode):
+            content = bytearray(content) if bytes == str else bytes(content)
         return (oext, content, action_report.direct_print, action_report.name)
 
     @classmethod

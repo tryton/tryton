@@ -401,6 +401,10 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('odp', 'OpenDocument Presentation'),
             ('ods', 'OpenDocument Spreadsheet'),
             ('odg', 'OpenDocument Graphics'),
+            ('plain', 'Plain Text'),
+            ('xml', 'XML'),
+            ('html', 'HTML'),
+            ('xhtml', 'XHTML'),
             ], string='Template Extension', required=True,
         translate=False)
     extension = fields.Selection([

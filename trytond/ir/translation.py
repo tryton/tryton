@@ -16,6 +16,9 @@ from sql.conditionals import Case
 from sql.operators import Or, And
 from sql.aggregate import Max
 
+from genshi.filters.i18n import extract as genshi_extract
+from relatorio.reporting import MIMETemplateLoader
+
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -37,7 +40,7 @@ __all__ = ['Translation',
 TRANSLATION_TYPE = [
     ('field', 'Field'),
     ('model', 'Model'),
-    ('odt', 'ODT'),
+    ('report', 'Report'),
     ('selection', 'Selection'),
     ('view', 'View'),
     ('wizard_button', 'Wizard Button'),
@@ -129,6 +132,12 @@ class Translation(ModelSQL, ModelView):
         cursor.execute(*ir_translation.update([ir_translation.res_id],
                 [-1], where=(ir_translation.res_id == Null)
                 | (ir_translation.res_id == 0)))
+
+        # Migration from 3.8: rename odt type in report
+        cursor.execute(*ir_translation.update(
+                [ir_translation.type],
+                ['report'],
+                where=ir_translation.type == 'odt'))
 
         table = TableHandler(cls, module_name)
         table.index_action(['lang', 'type', 'name'], 'add')
@@ -705,8 +714,9 @@ class Translation(ModelSQL, ModelView):
             if not vals.get('module'):
                 if Transaction().context.get('module'):
                     vals['module'] = Transaction().context['module']
-                elif vals.get('type', '') in ('odt', 'view', 'wizard_button',
-                        'selection', 'error'):
+                elif vals.get('type', '') in {
+                        'report', 'view', 'wizard_button', 'selection',
+                        'error'}:
                     cursor.execute(*table.select(table.module,
                             where=(table.name == vals.get('name') or '')
                             & (table.res_id == vals.get('res_id') or -1)
@@ -754,7 +764,8 @@ class Translation(ModelSQL, ModelView):
 
     @property
     def unique_key(self):
-        if self.type in ('odt', 'view', 'wizard_button', 'selection', 'error'):
+        if self.type in {
+                'report', 'view', 'wizard_button', 'selection', 'error'}:
             return (self.name, self.res_id, self.type, self.src)
         elif self.type in ('field', 'model', 'help'):
             return (self.name, self.res_id, self.type)
@@ -825,8 +836,9 @@ class Translation(ModelSQL, ModelView):
                     ('type', '=', new_translation.type),
                     ('module', '=', res_id_module),
                     ]
-                if new_translation.type in ('odt', 'view', 'wizard_button',
-                        'selection', 'error'):
+                if new_translation.type in {
+                        'report', 'view', 'wizard_button', 'selection',
+                        'error'}:
                     domain.append(('src', '=', new_translation.src))
                 translation, = cls.search(domain)
                 if translation.value != new_translation.value:
@@ -991,23 +1003,67 @@ class TranslationSet(Wizard):
             Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
-    def _translate_report(self, node):
-        strings = []
+    def extract_report_opendocument(self, content):
+        def extract(node):
+            if node.nodeType in {node.CDATA_SECTION_NODE, node.TEXT_NODE}:
+                if (node.parentNode
+                        and node.parentNode.tagName in {
+                            'text:placeholder',
+                            'text:page-number',
+                            'text:page-count',
+                            }):
+                    return
+                if node.nodeValue:
+                    txt = node.nodeValue.strip()
+                    if txt:
+                        yield txt
 
-        if node.nodeType in (node.CDATA_SECTION_NODE, node.TEXT_NODE):
-            if node.parentNode \
-                    and node.parentNode.tagName in ('text:placeholder',
-                            'text:page-number', 'text:page-count'):
-                return strings
+            for child in [x for x in node.childNodes]:
+                for string in extract(child):
+                    yield string
 
-            if node.nodeValue:
-                txt = node.nodeValue.strip()
-                if txt:
-                    strings.append(txt)
+        content = BytesIO(content)
+        try:
+            content = zipfile.ZipFile(content, mode='r')
+        except zipfile.BadZipfile:
+            return
 
-        for child in [x for x in node.childNodes]:
-            strings.extend(self._translate_report(child))
-        return strings
+        content_xml = content.read('content.xml')
+        document = xml.dom.minidom.parseString(content_xml)
+        for string in extract(document.documentElement):
+            yield string
+
+        style_xml = content.read('styles.xml')
+        document = xml.dom.minidom.parseString(style_xml)
+        for string in extract(document.documentElement):
+            yield string
+    extract_report_odt = extract_report_opendocument
+    extract_report_odp = extract_report_opendocument
+    extract_report_ods = extract_report_opendocument
+    extract_report_odg = extract_report_opendocument
+
+    def extract_report_genshi(template_class):
+        def method(self, content,
+                keywords=None, comment_tags=None, **options):
+            options['template_class'] = template_class
+            content = BytesIO(content)
+            if keywords is None:
+                keywords = []
+            if comment_tags is None:
+                comment_tags = []
+
+            for _, _, string, _ in genshi_extract(
+                    content, keywords, comment_tags, options):
+                yield string
+        return method
+    extract_report_plain = extract_report_genshi(
+        MIMETemplateLoader().factories['text'])
+    extract_report_xml = extract_report_genshi(
+        MIMETemplateLoader().factories['markup'])
+    extract_report_html = extract_report_genshi(
+        MIMETemplateLoader().factories['markup'])
+    extract_report_xhtml = extract_report_genshi(
+        MIMETemplateLoader().factories['markup'])
 
     def set_report(self):
         pool = Pool()
@@ -1026,35 +1082,22 @@ class TranslationSet(Wizard):
             cursor.execute(*translation.select(
                     translation.id, translation.name, translation.src,
                     where=(translation.lang == 'en_US')
-                    & (translation.type == 'odt')
+                    & (translation.type == 'report')
                     & (translation.name == report.report_name)
                     & (translation.module == report.module or '')))
             trans_reports = {t['src']: t for t in cursor_dict(cursor)}
 
-            strings = []
-
-            odt_content = ''
+            content = None
             if report.report:
                 with file_open(report.report.replace('/', os.sep),
                         mode='rb') as fp:
-                    odt_content = fp.read()
-            for content in (report.report_content_custom, odt_content):
+                    content = fp.read()
+            strings = []
+            for content in [report.report_content_custom, content]:
                 if not content:
                     continue
-
-                content_io = BytesIO(content)
-                try:
-                    content_z = zipfile.ZipFile(content_io, mode='r')
-                except zipfile.BadZipfile:
-                    continue
-
-                content_xml = content_z.read('content.xml')
-                document = xml.dom.minidom.parseString(content_xml)
-                strings = self._translate_report(document.documentElement)
-
-                style_xml = content_z.read('styles.xml')
-                document = xml.dom.minidom.parseString(style_xml)
-                strings += self._translate_report(document.documentElement)
+                func_name = 'extract_report_%s' % report.template_extension
+                strings.extend(getattr(self, func_name)(content))
 
             for string in {}.fromkeys(strings).keys():
                 src_md5 = Translation.get_src_md5(string)
@@ -1077,7 +1120,7 @@ class TranslationSet(Wizard):
                                     translation.src_md5],
                                 [string, True, src_md5],
                                 where=(translation.name == report.report_name)
-                                & (translation.type == 'odt')
+                                & (translation.type == 'report')
                                 & (translation.src == string_trans)
                                 & (translation.module == report.module)))
                         del trans_reports[string_trans]
@@ -1090,12 +1133,12 @@ class TranslationSet(Wizard):
                                 translation.value, translation.module,
                                 translation.fuzzy, translation.src_md5,
                                 translation.res_id],
-                            [[report.report_name, 'en_US', 'odt', string, '',
-                                    report.module, False, src_md5, -1]]))
+                            [[report.report_name, 'en_US', 'report', string,
+                                    '', report.module, False, src_md5, -1]]))
             if strings:
                 cursor.execute(*translation.delete(
                         where=(translation.name == report.report_name)
-                        & (translation.type == 'odt')
+                        & (translation.type == 'report')
                         & (translation.module == report.module)
                         & ~translation.src.in_(strings)))
 
@@ -1260,7 +1303,7 @@ class TranslationClean(Wizard):
             return True
 
     @staticmethod
-    def _clean_odt(translation):
+    def _clean_report(translation):
         pool = Pool()
         Report = pool.get('ir.action.report')
         with Transaction().set_context(active_test=False):
@@ -1446,7 +1489,7 @@ class TranslationUpdate(Wizard):
     "Update translation"
     __name__ = "ir.translation.update"
 
-    _source_types = ['odt', 'view', 'wizard_button', 'selection', 'error']
+    _source_types = ['report', 'view', 'wizard_button', 'selection', 'error']
     _ressource_types = ['field', 'model', 'help']
     _updatable_types = ['field', 'model', 'selection', 'help']
 
