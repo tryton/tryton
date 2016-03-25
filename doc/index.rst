@@ -2,43 +2,7 @@ Stock Supply Module
 ###################
 
 The Stock Supply module add automatic supply mechanisms and introduce
-the concepts of order point and purchase request.
-
-
-Purchase Request
-****************
-
-A purchase request define the need for the purchase of a product. It
-is linked to a warehouse and eventually a supplier, it contains a
-ideal purchase date and an expected supply date. A purchase request
-can be in one of these states:
-
-* Draft
-
-  A draft purchase request is a request that is not linked to a
-  purchase.
-
-* Purchased
-
-  A Purchased request is a request that is linked to a purchase which
-  is not in state Done or Cancel.
-
-* Done
-
-  A purchase request is in state Done if it is linked to a Purchase
-  which is in state Done.
-
-* Cancel
-
-  A purchase request is in state Cancel if it is linked to a Purchase
-  which is cancelled.
-
-A wizard allow to create purchases based on a selection of Draft
-purchase requests. The new purchases contains one purchase line by
-purchase request and group them by warehouse and by supplier. Once the
-purchases are created, the corresponding purchase requests are set to
-the state Purchased.
-
+the concepts of order point.
 
 Order Point
 ***********

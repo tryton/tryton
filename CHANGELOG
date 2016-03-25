@@ -1,3 +1,4 @@
+* Move purchase request to purchase_request module
 * Add Python3 support
 * Add searcher on purchase
 * Adding exception state on the purchase requests

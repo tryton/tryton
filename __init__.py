@@ -7,7 +7,6 @@ from .product import *
 from .purchase_request import *
 from .shipment import *
 from .location import *
-from .purchase import *
 
 
 def register():
@@ -16,16 +15,11 @@ def register():
         Product,
         PurchaseRequest,
         CreatePurchaseRequestStart,
-        CreatePurchaseAskParty,
-        HandlePurchaseCancellationExceptionStart,
         ShipmentInternal,
         CreateShipmentInternalStart,
         Location,
-        Purchase,
         module='stock_supply', type_='model')
     Pool.register(
         CreatePurchaseRequest,
-        CreatePurchase,
         CreateShipmentInternal,
-        HandlePurchaseCancellationException,
         module='stock_supply', type_='wizard')
