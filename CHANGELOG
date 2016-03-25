@@ -1,5 +1,6 @@
 * Merge invoice and credit note
 * Inversed sign of tax report from credit note
+* Move tax Rounding configuration to account
 * Add Python3 support
 * Change payment term percentage into ratio
 

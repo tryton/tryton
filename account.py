@@ -1,70 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelSQL, ModelView, MatchMixin, fields
+from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
-__all__ = ['Configuration', 'ConfigurationTaxRounding',
-    'FiscalYear', 'Period', 'Move', 'Reconciliation']
-
-tax_roundings = [
-    ('document', 'Per Document'),
-    ('line', 'Per Line'),
-    ]
-
-
-class Configuration:
-    __metaclass__ = PoolMeta
-    __name__ = 'account.configuration'
-    tax_rounding = fields.Function(fields.Selection(tax_roundings,
-            'Tax Rounding'), 'on_change_with_tax_rounding')
-    tax_roundings = fields.One2Many('account.configuration.tax_rounding',
-        'configuration', 'Tax Roundings')
-
-    @staticmethod
-    def default_tax_rounding():
-        return 'document'
-
-    @fields.depends('tax_roundings')
-    def on_change_with_tax_rounding(self, name=None, pattern=None):
-        context = Transaction().context
-        if pattern is None:
-            pattern = {}
-        pattern = pattern.copy()
-        pattern['company'] = context.get('company')
-
-        for line in self.tax_roundings:
-            if line.match(pattern):
-                return line.method
-        return self.default_tax_rounding()
-
-
-class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
-    'Account Configuration Tax Rounding'
-    __name__ = 'account.configuration.tax_rounding'
-    configuration = fields.Many2One('account.configuration', 'Configuration',
-        required=True, ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
-    company = fields.Many2One('company.company', 'Company')
-    method = fields.Selection(tax_roundings, 'Method', required=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(ConfigurationTaxRounding, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
-
-    @staticmethod
-    def default_method():
-        return 'document'
+__all__ = ['FiscalYear',
+    'Period', 'Move', 'Reconciliation']
 
 
 class FiscalYear:
