@@ -326,25 +326,31 @@ class Database(DatabaseInterface):
     def current_user(self):
         if self._current_user is None:
             connection = self.get_connection()
-            cursor = connection.cursor()
-            cursor.execute('SELECT current_user')
-            self._current_user = cursor.fetchone()[0]
+            try:
+                cursor = connection.cursor()
+                cursor.execute('SELECT current_user')
+                self._current_user = cursor.fetchone()[0]
+            finally:
+                self.put_connection(connection)
         return self._current_user
 
     @property
     def search_path(self):
         if self._search_path is None:
             connection = self.get_connection()
-            cursor = connection.cursor()
-            cursor.execute('SHOW search_path')
-            path, = cursor.fetchone()
-            special_values = {
-                'user': self.current_user,
-            }
-            self._search_path = [
-                unescape_quote(replace_special_values(
-                        p.strip(), **special_values))
-                for p in path.split(',')]
+            try:
+                cursor = connection.cursor()
+                cursor.execute('SHOW search_path')
+                path, = cursor.fetchone()
+                special_values = {
+                    'user': self.current_user,
+                }
+                self._search_path = [
+                    unescape_quote(replace_special_values(
+                            p.strip(), **special_values))
+                    for p in path.split(',')]
+            finally:
+                self.put_connection(connection)
         return self._search_path
 
 register_type(UNICODE)

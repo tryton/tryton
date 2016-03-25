@@ -61,11 +61,10 @@ def rpc(request, database_name):
 
 def login(request, database_name, user, password):
     Database = backend.get('Database')
+    DatabaseOperationalError = backend.get('DatabaseOperationalError')
     try:
-        database = Database(database_name).connect()
-        cursor = database.get_connection().cursor()
-        cursor.close()
-    except Exception:
+        Database(database_name).connect()
+    except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
         return False
     session = security.login(database_name, user, password)
