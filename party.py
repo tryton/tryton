@@ -116,13 +116,6 @@ class Party(ModelSQL, ModelView):
         return [Address.default_get(fields_names)]
 
     @staticmethod
-    def default_lang():
-        Configuration = Pool().get('party.configuration')
-        config = Configuration(1)
-        if config.party_lang:
-            return config.party_lang.id
-
-    @staticmethod
     def default_code_readonly():
         Configuration = Pool().get('party.configuration')
         config = Configuration(1)

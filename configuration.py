@@ -13,6 +13,3 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             'Party Sequence', domain=[
                 ('code', '=', 'party.party'),
                 ]))
-    party_lang = fields.Property(fields.Many2One("ir.lang", 'Party Language',
-        help=('The value set on this field will preset the language on new '
-            'parties')))
