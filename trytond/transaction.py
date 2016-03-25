@@ -1,10 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
 from threading import local
 from sql import Flavor
 
 from trytond import backend
 from trytond.config import config
+
+logger = logging.getLogger(__name__)
 
 
 class _AttributeManager(object):
@@ -95,6 +98,7 @@ class Transaction(object):
         self.delete = {}
         self.timestamp = {}
         self.counter = 0
+        self._datamanagers = []
         return self
 
     def __enter__(self):
@@ -102,24 +106,31 @@ class Transaction(object):
 
     def __exit__(self, type, value, traceback):
         transactions = self._local.transactions
-        if transactions.count(self) == 1:
-            if type is None and not self.readonly:
-                self.commit()
-            try:
-                self.rollback()
-                self.database.put_connection(self.connection, self.close)
-            finally:
-                self.database = None
-                self.readonly = False
-                self.connection = None
-                self.close = None
-                self.user = None
-                self.context = None
-                self.create_records = None
-                self.delete_records = None
-                self.delete = None
-                self.timestamp = None
-        current_instance = transactions.pop()
+        try:
+            if transactions.count(self) == 1:
+                try:
+                    try:
+                        if type is None and not self.readonly:
+                            self.commit()
+                        else:
+                            self.rollback()
+                    finally:
+                        self.database.put_connection(
+                            self.connection, self.close)
+                finally:
+                    self.database = None
+                    self.readonly = False
+                    self.connection = None
+                    self.close = None
+                    self.user = None
+                    self.context = None
+                    self.create_records = None
+                    self.delete_records = None
+                    self.delete = None
+                    self.timestamp = None
+                    self._datamanagers = []
+        finally:
+            current_instance = transactions.pop()
         assert current_instance is self, transactions
 
     def set_context(self, context=None, **kwargs):
@@ -162,12 +173,41 @@ class Transaction(object):
             autocommit=autocommit)
 
     def commit(self):
-        self.connection.commit()
+        try:
+            if self._datamanagers:
+                for datamanager in self._datamanagers:
+                    datamanager.tpc_begin(self)
+                for datamanager in self._datamanagers:
+                    datamanager.commit(self)
+                for datamanager in self._datamanagers:
+                    datamanager.tpc_vote(self)
+            self.connection.commit()
+        except:
+            self.rollback()
+            raise
+        else:
+            try:
+                for datamanager in self._datamanagers:
+                    datamanager.tpc_finish(self)
+            except:
+                logger.critical('A datamanager raised an exception in'
+                    ' tpc_finish, the data might be inconsistant',
+                    exc_info=True)
 
     def rollback(self):
         for cache in self.cache.itervalues():
             cache.clear()
+        for datamanager in self._datamanagers:
+            datamanager.tpc_abort(self)
         self.connection.rollback()
+
+    def join(self, datamanager):
+        try:
+            idx = self._datamanagers.index(datamanager)
+            return self._datamanagers[idx]
+        except ValueError:
+            self._datamanagers.append(datamanager)
+            return datamanager
 
     @property
     def language(self):

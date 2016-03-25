@@ -1,3 +1,4 @@
+* Support Two-Phase Commit in Transaction
 * Allow Report to generate text plain, XML, HTML and XHTML
 * Add workflow graph on ir.model
 * Add context model on ir.action.act_window

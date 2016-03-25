@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+from mock import Mock
 from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT, install_module
 from trytond.transaction import Transaction
 
@@ -74,6 +75,51 @@ class TransactionTestCase(unittest.TestCase):
                 self.assertIsNot(Transaction(), transaction)
                 self.assertIs(Transaction(), new_transaction)
             self.assertIs(Transaction(), transaction)
+
+    def test_two_phase_commit(self):
+        # A successful transaction
+        dm = Mock()
+        with Transaction().start(DB_NAME, USER, context=CONTEXT) \
+                as transaction:
+            transaction.join(dm)
+
+        dm.tpc_begin.assert_called_once_with(transaction)
+        dm.commit.assert_called_once_with(transaction)
+        dm.tpc_vote.assert_called_once_with(transaction)
+        dm.tpc_abort.not_called()
+        dm.tpc_finish.assert_called_once_with(transaction)
+
+        # Failing in the datamanager
+        dm.reset_mock()
+        dm.tpc_vote.side_effect = ValueError('Failing the datamanager')
+        try:
+            with Transaction().start(DB_NAME, USER, context=CONTEXT) \
+                    as transaction:
+                transaction.join(dm)
+        except ValueError:
+            pass
+
+        dm.tpc_begin.assert_called_once_with(transaction)
+        dm.commit.assert_called_once_with(transaction)
+        dm.tpc_vote.assert_called_once_with(transaction)
+        dm.tpc_abort.assert_called_once_with(transaction)
+        dm.tpc_finish.assert_not_called()
+
+        # Failing in tryton
+        dm.reset_mock()
+        try:
+            with Transaction().start(DB_NAME, USER, context=CONTEXT) \
+                    as transaction:
+                transaction.join(dm)
+                raise ValueError('Failing in tryton')
+        except ValueError:
+            pass
+
+        dm.tpc_begin.assert_not_called()
+        dm.commit.assert_not_called()
+        dm.tpc_vote.assert_not_called()
+        dm.tpc_abort.assert_called_once_with(transaction)
+        dm.tpc_finish.assert_not_called()
 
 
 def suite():
