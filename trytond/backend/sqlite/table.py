@@ -20,7 +20,6 @@ class TableHandler(TableHandlerInterface):
         self._constraints = []
         self._fk_deltypes = {}
         self._indexes = []
-        self._field2module = {}
         self._model = model
 
         cursor = Transaction().connection.cursor()
@@ -126,44 +125,47 @@ class TableHandler(TableHandlerInterface):
                 % (self.table_name, old_name, self.table_name, new_name,
                     self.table_name, new_name))
 
-    def _update_definitions(self):
+    def _update_definitions(self, columns=None, indexes=None):
+        if columns is None and indexes is None:
+            columns = indexes = True
         cursor = Transaction().connection.cursor()
         # Fetch columns definitions from the table
-        cursor.execute('PRAGMA table_info("' + self.table_name + '")')
-        self._columns = {}
-        for _, column, type_, notnull, hasdef, _ in cursor.fetchall():
-            column = re.sub(r'^\"|\"$', '', column)
-            match = re.match(r'(\w+)(\((.*?)\))?', type_)
-            if match:
-                typname = match.group(1).upper()
-                size = match.group(3) and int(match.group(3)) or 0
-            else:
-                typname = type_.upper()
-                size = -1
-            self._columns[column] = {
-                'notnull': notnull,
-                'hasdef': hasdef,
-                'size': size,
-                'typname': typname,
-            }
+        if columns:
+            cursor.execute('PRAGMA table_info("' + self.table_name + '")')
+            self._columns = {}
+            for _, column, type_, notnull, hasdef, _ in cursor.fetchall():
+                column = re.sub(r'^\"|\"$', '', column)
+                match = re.match(r'(\w+)(\((.*?)\))?', type_)
+                if match:
+                    typname = match.group(1).upper()
+                    size = match.group(3) and int(match.group(3)) or 0
+                else:
+                    typname = type_.upper()
+                    size = -1
+                self._columns[column] = {
+                    'notnull': notnull,
+                    'hasdef': hasdef,
+                    'size': size,
+                    'typname': typname,
+                }
 
         # Fetch indexes defined for the table
-        try:
-            cursor.execute('PRAGMA index_list("' + self.table_name + '")')
-        except IndexError:  # There is sometimes IndexError
-            cursor.execute('PRAGMA index_list("' + self.table_name + '")')
-        self._indexes = [l[1] for l in cursor.fetchall()]
+        if indexes:
+            try:
+                cursor.execute('PRAGMA index_list("' + self.table_name + '")')
+            except IndexError:  # There is sometimes IndexError
+                cursor.execute('PRAGMA index_list("' + self.table_name + '")')
+            self._indexes = [l[1] for l in cursor.fetchall()]
 
-        # Keep track of which module created each field
-        self._field2module = {}
-        if self.object_name is not None:
-            cursor.execute('SELECT f.name, f.module '
-                'FROM ir_model_field f '
-                'JOIN ir_model m on (f.model=m.id) '
-                'WHERE m.model = ?',
-                (self.object_name,))
-            for line in cursor.fetchall():
-                self._field2module[line[0]] = line[1]
+    @property
+    def _field2module(self):
+        cursor = Transaction().connection.cursor()
+        cursor.execute('SELECT f.name, f.module '
+            'FROM ir_model_field f '
+            'JOIN ir_model m on (f.model=m.id) '
+            'WHERE m.model = ?',
+            (self.object_name,))
+        return dict(cursor)
 
     def alter_size(self, column_name, column_type):
         warnings.warn('Unable to alter size of column with SQLite backend')
@@ -234,7 +236,7 @@ class TableHandler(TableHandlerInterface):
                     'SET "' + column_name + '" = ?',
                     (column_format(default),))
 
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     def add_fk(self, column_name, reference, on_delete=None):
         warnings.warn('Unable to add foreign key with SQLite backend')
@@ -255,7 +257,7 @@ class TableHandler(TableHandlerInterface):
                 'ON "' + self.table_name + '" ( ' +
                 ','.join('"' + x + '"' for x in column_name) +
                 ')')
-            self._update_definitions()
+            self._update_definitions(indexes=True)
         elif action == 'remove':
             if len(column_name) == 1:
                 if self._field2module.get(column_name[0],
@@ -264,7 +266,7 @@ class TableHandler(TableHandlerInterface):
 
             if index_name in self._indexes:
                 cursor.execute('DROP INDEX "%s" ' % (index_name,))
-                self._update_definitions()
+                self._update_definitions(indexes=True)
         else:
             raise Exception('Index action not supported!')
 

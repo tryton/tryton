@@ -17,7 +17,6 @@ class TableHandler(TableHandlerInterface):
         self._constraints = []
         self._fkeys = []
         self._indexes = []
-        self._field2module = {}
         self._model = model
 
         cursor = Transaction().connection.cursor()
@@ -35,7 +34,7 @@ class TableHandler(TableHandlerInterface):
                     'PRIMARY KEY(__id)'
                     ') ENGINE=InnoDB;' % self.table_name)
 
-        self._update_definitions()
+        self._update_definitions(columns=True)
         if 'id' not in self._columns:
             if not self.history:
                 cursor.execute('ALTER TABLE `%s` '
@@ -44,7 +43,7 @@ class TableHandler(TableHandlerInterface):
             else:
                 cursor.execute('ALTER TABLE `%s` '
                     'ADD COLUMN id BIGINT' % self.table_name)
-            self._update_definitions()
+            self._update_definitions(columns=True)
         if self.history and '__id' not in self._columns:
             cursor.execute('ALTER TABLE `%s` '
                 'ADD COLUMN __id BIGINT AUTO_INCREMENT '
@@ -94,61 +93,66 @@ class TableHandler(TableHandlerInterface):
             cursor.execute('ALTER TABLE `%s` '
                 'RENAME COLUMN `%s` TO `%s`'
                 % (self.table_name, old_name, new_name))
-            self._update_definitions()
+            self._update_definitions(columns=True)
         elif exception and self.column_exist(new_name):
             raise Exception('Unable to rename column %s.%s to %s.%s: '
                 '%s.%s already exist!'
                 % (self.table_name, old_name, self.table_name, new_name,
                     self.table_name, new_name))
 
-    def _update_definitions(self):
+    def _update_definitions(self,
+            columns=None, constraints=None, indexes=None):
+        if columns is None and constraints is None and indexes is None:
+            columns = constraints = indexes = True
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        # Fetch columns definitions from the table
-        cursor.execute("SELECT column_name, character_maximum_length, "
-                "data_type, is_nullable, column_default "
-            "FROM information_schema.columns "
-            "WHERE table_schema = %s AND table_name = %s",
-            (transaction.database.name, self.table_name))
-        self._columns = {}
-        for line in cursor.fetchall():
-            column, size, typname, nullable, default = line
-            self._columns[column] = {
-                'size': size,
-                'typname': typname,
-                'nullable': nullable == 'YES' and True or False,
-                'default': default,
-            }
-
-        # fetch constraints for the table
-        cursor.execute("SELECT constraint_name, constraint_type "
-            "FROM information_schema.table_constraints "
-            "WHERE table_schema = %s AND table_name = %s",
-            (transaction.database.name, self.table_name))
-        self._constraints = []
-        self._fkeys = []
-        for line in cursor.fetchall():
-            conname, contype = line
-            if contype not in ('PRIMARY KEY', 'FOREIGN KEY'):
-                self._constraints.append(conname)
-            elif contype == 'FOREIGN KEY':
-                self._fkeys.append(conname)
-
-        # Fetch indexes defined for the table
-        cursor.execute('SHOW INDEXES FROM `%s`' % self.table_name)
-        self._indexes = list(set(x[2] for x in cursor.fetchall()
-            if x[2] != 'PRIMARY'))
-
-        # Keep track of which module created each field
-        self._field2module = {}
-        if self.object_name is not None:
-            cursor.execute('SELECT f.name, f.module '
-                'FROM ir_model_field f '
-                'JOIN ir_model m on (f.model=m.id) '
-                'WHERE m.model = %s',
-                (self.object_name,))
+        if columns:
+            # Fetch columns definitions from the table
+            cursor.execute("SELECT column_name, character_maximum_length, "
+                    "data_type, is_nullable, column_default "
+                "FROM information_schema.columns "
+                "WHERE table_schema = %s AND table_name = %s",
+                (transaction.database.name, self.table_name))
+            self._columns = {}
             for line in cursor.fetchall():
-                self._field2module[line[0]] = line[1]
+                column, size, typname, nullable, default = line
+                self._columns[column] = {
+                    'size': size,
+                    'typname': typname,
+                    'nullable': nullable == 'YES' and True or False,
+                    'default': default,
+                }
+
+        if constraints:
+            # fetch constraints for the table
+            cursor.execute("SELECT constraint_name, constraint_type "
+                "FROM information_schema.table_constraints "
+                "WHERE table_schema = %s AND table_name = %s",
+                (transaction.database.name, self.table_name))
+            self._constraints = []
+            self._fkeys = []
+            for line in cursor.fetchall():
+                conname, contype = line
+                if contype not in ('PRIMARY KEY', 'FOREIGN KEY'):
+                    self._constraints.append(conname)
+                elif contype == 'FOREIGN KEY':
+                    self._fkeys.append(conname)
+
+        if indexes:
+            # Fetch indexes defined for the table
+            cursor.execute('SHOW INDEXES FROM `%s`' % self.table_name)
+            self._indexes = list(set(x[2] for x in cursor.fetchall()
+                if x[2] != 'PRIMARY'))
+
+    @property
+    def _field2module(self):
+        cursor = Transaction().connection.cursor()
+        cursor.execute('SELECT f.name, f.module '
+            'FROM ir_model_field f '
+            'JOIN ir_model m on (f.model=m.id) '
+            'WHERE m.model = %s',
+            (self.object_name,))
+        return dict(cursor)
 
     def alter_size(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
@@ -156,7 +160,7 @@ class TableHandler(TableHandlerInterface):
             'MODIFY COLUMN `%s` %s'
             % (self.table_name, column_name,
                 self._column_definition(column_name)))
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     def alter_type(self, column_name, column_type):
         cursor = Transaction().connection.cursor()
@@ -164,7 +168,7 @@ class TableHandler(TableHandlerInterface):
             'MODIFY COLUMN `%s` %s'
             % (self.table_name, column_name,
                 self._column_definition(column_name, typname=column_type)))
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     def db_default(self, column_name, value):
         cursor = Transaction().connection.cursor()
@@ -172,7 +176,7 @@ class TableHandler(TableHandlerInterface):
             'MODIFY COLUMN `%s` %s'
             % (self.table_name, column_name,
                 self._column_definition(column_name, default=value)))
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     def add_raw_column(self, column_name, column_type, column_format,
             default_fun=None, field_size=None, migrate=True, string=''):
@@ -237,7 +241,7 @@ class TableHandler(TableHandlerInterface):
                     'SET `' + column_name + '` = %s',
                     (column_format(default),))
 
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     def add_fk(self, column_name, reference, on_delete=None):
         if on_delete is None:
@@ -251,7 +255,7 @@ class TableHandler(TableHandlerInterface):
             'REFERENCES `%s` (id) ON DELETE %s'
             % (self.table_name, conname, column_name, reference,
                 on_delete))
-        self._update_definitions()
+        self._update_definitions(constraints=True)
 
     def drop_fk(self, column_name, table=None):
         conname = '%s_%s_fkey' % (self.table_name, column_name)
@@ -260,7 +264,7 @@ class TableHandler(TableHandlerInterface):
         cursor = Transaction().connection.cursor()
         cursor.execute('ALTER TABLE `%s` '
             'DROP FOREIGN KEY `%s`' % (self.table_name, conname))
-        self._update_definitions()
+        self._update_definitions(constraints=True)
 
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
@@ -284,7 +288,7 @@ class TableHandler(TableHandlerInterface):
                     + '` ( '
                     + ','.join(['`' + x + '`' for x in column_name])
                     + ')')
-                self._update_definitions()
+                self._update_definitions(indexes=True)
             elif action == 'remove':
                 if len(column_name) == 1:
                     if (self._field2module.get(column_name[0],
@@ -294,7 +298,7 @@ class TableHandler(TableHandlerInterface):
                 if index_name in self._indexes:
                     cursor.execute('DROP INDEX `%s` ON `%s`'
                         % (index_name, self.table_name))
-                    self._update_definitions()
+                    self._update_definitions(indexes=True)
             else:
                 raise Exception('Index action not supported!')
 
@@ -315,7 +319,7 @@ class TableHandler(TableHandlerInterface):
                         % (self.table_name, column_name,
                             self._column_definition(column_name,
                                 nullable=False)))
-                    self._update_definitions()
+                    self._update_definitions(columns=True)
                 else:
                     logger.warning(
                         'Unable to set column %s '
@@ -338,7 +342,7 @@ class TableHandler(TableHandlerInterface):
                     'MODIFY COLUMN `%s` %s'
                     % (self.table_name, column_name,
                         self._column_definition(column_name, nullable=True)))
-                self._update_definitions()
+                self._update_definitions(columns=True)
             else:
                 raise Exception('Not null action not supported!')
 
@@ -363,7 +367,7 @@ class TableHandler(TableHandlerInterface):
                     'ALTER table `%s` ADD CONSTRAINT `%s` %s',
                     constraint, self.table_name, self.table_name, ident,
                     constraint, exc_info=True)
-        self._update_definitions()
+        self._update_definitions(constraints=True)
 
     def drop_constraint(self, ident, exception=False, table=None):
         ident = (table or self.table_name) + "_" + ident
@@ -381,7 +385,7 @@ class TableHandler(TableHandlerInterface):
                 logger.warning(
                     'unable to drop \'%s\' constraint on table %s!',
                     ident, self.table_name)
-        self._update_definitions()
+        self._update_definitions(constraints=True)
 
     def drop_column(self, column_name, exception=False):
         if not self.column_exist(column_name):
@@ -399,7 +403,7 @@ class TableHandler(TableHandlerInterface):
                 logger.warning(
                     'unable to drop \'%s\' column on table %s!',
                     column_name, self.table_name)
-        self._update_definitions()
+        self._update_definitions(columns=True)
 
     @staticmethod
     def drop_table(model, table, cascade=False):
