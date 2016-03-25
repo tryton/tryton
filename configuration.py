@@ -1,11 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
+from sql import Null
+from sql.conditionals import Case
+
+from trytond.model import (ModelView, ModelSQL,
+            ModelSingleton, MatchMixin, fields)
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
 
-__all__ = ['Configuration']
+__all__ = ['Configuration', 'ConfigurationTaxRounding']
+
+tax_roundings = [
+    ('document', 'Per Document'),
+    ('line', 'Per Line'),
+    ]
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
@@ -25,6 +34,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]),
         'get_account', setter='set_account')
+    tax_rounding = fields.Function(fields.Selection(tax_roundings,
+            'Tax Rounding'), 'on_change_with_tax_rounding')
+    tax_roundings = fields.One2Many('account.configuration.tax_rounding',
+        'configuration', 'Tax Roundings')
+
+    @classmethod
+    def default_tax_rounding():
+        return 'document'
 
     @classmethod
     def _get_account_field(cls, name):
@@ -69,3 +86,40 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                         'value': 'account.account,%s' % value,
                         'company': company_id,
                         }])
+
+    @fields.depends('tax_roundings')
+    def on_change_with_tax_rounding(self, name=None, pattern=None):
+        context = Transaction().context
+        if pattern is None:
+            pattern = {}
+        pattern = pattern.copy()
+        pattern['company'] = context.get('company')
+
+        for line in self.tax_roundings:
+            if line.match(pattern):
+                return line.method
+        return self.default_tax_rounding()
+
+
+class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
+    'Account Configuration Tax Rounding'
+    __name__ = 'account.configuration.tax_rounding'
+    configuration = fields.Many2One('account.configuration', 'Configuration',
+        required=True, ondelete='CASCADE')
+    sequence = fields.Integer('Sequence')
+    company = fields.Many2One('company.company', 'Company')
+    method = fields.Selection(tax_roundings, 'Method', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(ConfigurationTaxRounding, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
+
+    @classmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
+
+    @classmethod
+    def default_method():
+        return 'document'

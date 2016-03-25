@@ -47,6 +47,7 @@ def register():
         JournalPeriod,
         Move,
         Reconciliation,
+        ConfigurationTaxRounding,
         Line,
         OpenJournalAsk,
         ReconcileLinesWriteOff,

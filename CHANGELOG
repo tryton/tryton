@@ -1,3 +1,4 @@
+* Move tax Rounding configuration from account_invoice
 * Get the tax type from the base sign:
   The tax signs for credit note must be inverted manually.
 * New reports design: General Ledger, Trial Balance and Aged Balance
