@@ -869,59 +869,59 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Administrador de Compras"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Subtotal"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "Fecha:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Description"
 msgstr "Descripción"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Description:"
 msgstr "Descripción:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "Orden de compra en borrador"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr "Orden de compra Nº:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
 msgstr "Solicitud de cotización Nº:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Taxes"
 msgstr "Impuestos"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
 msgstr "Impuestos:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
 msgstr "Total (sin impuestos):"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Total:"
 msgstr "Total:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Precio unitario"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "VAT:"
 msgstr "CI/RUC:"
 

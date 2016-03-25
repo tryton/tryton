@@ -949,69 +949,69 @@ msgid "Purchase Administrator"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Bedrag"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "Datum:"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Description"
 msgstr "Specificatie"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Description:"
 msgstr "Betreft:"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr ""
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
 msgstr ""
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Taxes"
 msgstr "Belastingen"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
 msgstr "Belastingen:"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
 msgstr "Totaal (excl. belasting):"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Total:"
 msgstr "Totaal:"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
 
 #, fuzzy
-msgctxt "odt:purchase.purchase:"
+msgctxt "report:purchase.purchase:"
 msgid "VAT:"
 msgstr "BTW:"
 
