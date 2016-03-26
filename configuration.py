@@ -116,10 +116,10 @@ class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
         cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
-    def order_sequence(tables):
+    def order_sequence(cls, tables):
         table, _ = tables[None]
         return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
-    def default_method():
+    def default_method(cls):
         return 'document'
