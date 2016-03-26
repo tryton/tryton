@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="template" colspan="3"/>
     </xpath>
     <xpath expr="/form/notebook/page/field[@name='products']" position="replace">
-        <group colspan="2" col="1" yexpand="1" yfill="1">
+        <group id="description" colspan="2" col="1" yexpand="1" yfill="1">
             <separator name="description"/>
             <field name="description"/>
         </group>
