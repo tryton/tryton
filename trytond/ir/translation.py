@@ -1477,7 +1477,7 @@ class TranslationUpdateStart(ModelView):
     @staticmethod
     def default_language():
         Lang = Pool().get('ir.lang')
-        code = Transaction().context.get('language', False)
+        code = Transaction().context.get('language')
         try:
             lang, = Lang.search([
                     ('code', '=', code),
@@ -1625,7 +1625,7 @@ class TranslationExportStart(ModelView):
     @classmethod
     def default_language(cls):
         Lang = Pool().get('ir.lang')
-        code = Transaction().context.get('language', False)
+        code = Transaction().context.get('language')
         domain = [('code', '=', code)] + cls.language.domain
         try:
             lang, = Lang.search(domain, limit=1)
