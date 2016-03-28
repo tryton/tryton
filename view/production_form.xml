@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form string="Production">
+<form string="Production" cursor="planned_date">
     <label name="reference"/>
     <field name="reference"/>
-    <label name="code"/>
-    <field name="code"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="planned_date"/>
     <field name="planned_date"/>
     <label name="effective_date"/>

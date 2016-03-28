@@ -7,6 +7,7 @@ from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond import backend
 
 from trytond.modules.product import price_digits, TemplateFunction
 
@@ -19,9 +20,9 @@ BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
 class Production(Workflow, ModelSQL, ModelView):
     "Production"
     __name__ = 'production'
-    _rec_name = 'code'
+    _rec_name = 'number'
 
-    code = fields.Char('Code', select=True, readonly=True)
+    number = fields.Char('Number', select=True, readonly=True)
     reference = fields.Char('Reference', select=1,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
@@ -201,6 +202,17 @@ class Production(Workflow, ModelSQL, ModelView):
                 'assign_try': {},
                 'assign_force': {},
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 3.8: rename code into number
+        if table_h.column_exist('code'):
+            table_h.column_rename('code', 'number')
+
+        super(Production, cls).__register__(module_name)
 
     @staticmethod
     def default_state():
@@ -448,8 +460,9 @@ class Production(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            if not values.get('code'):
-                values['code'] = Sequence.get_id(config.production_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.production_sequence.id)
         productions = super(Production, cls).create(vlist)
         for production in productions:
             production._set_move_planned_date()
@@ -466,7 +479,7 @@ class Production(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('code', None)
+        default.setdefault('number', None)
         return super(Production, cls).copy(productions, default=default)
 
     def _get_move_planned_date(self):
