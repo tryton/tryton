@@ -6,8 +6,8 @@
     <field name="product"/>
     <label name="account_journal"/>
     <field name="account_journal"/>
-    <label name="reference"/>
-    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="supplier_invoice_line"/>
     <field name="supplier_invoice_line"/>
     <label name="value"/>

@@ -16,6 +16,7 @@ from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
     Button)
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
+from trytond import backend
 
 __all__ = ['Asset', 'AssetLine', 'AssetUpdateMove',
     'CreateMovesStart', 'CreateMoves',
@@ -31,8 +32,8 @@ def date2datetime(date):
 class Asset(Workflow, ModelSQL, ModelView):
     'Asset'
     __name__ = 'account.asset'
-    _rec_name = 'reference'
-    reference = fields.Char('Reference', readonly=True, select=True)
+    _rec_name = 'number'
+    number = fields.Char('Number', readonly=True, select=True)
     product = fields.Many2One('product.product', 'Product', required=True,
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
@@ -201,6 +202,16 @@ class Asset(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'running',
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 3.8: rename reference into number
+        if table_h.column_exist('reference'):
+            table_h.column_rename('reference', 'number')
+        super(Asset, cls).__register__(module_name)
 
     @staticmethod
     def default_state():
@@ -538,9 +549,9 @@ class Asset(Workflow, ModelSQL, ModelView):
             )
 
     @classmethod
-    def set_reference(cls, assets):
+    def set_number(cls, assets):
         '''
-        Fill the reference field with asset sequence.
+        Fill the number field with asset sequence.
         '''
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -548,18 +559,16 @@ class Asset(Workflow, ModelSQL, ModelView):
 
         config = Config(1)
         for asset in assets:
-            if asset.reference:
+            if asset.number:
                 continue
-            reference = Sequence.get_id(config.asset_sequence.id)
-            cls.write([asset], {
-                    'reference': reference,
-                    })
+            asset.number = Sequence.get_id(config.asset_sequence.id)
+        cls.save(assets)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('running')
     def run(cls, assets):
-        cls.set_reference(assets)
+        cls.set_number(assets)
         cls.create_lines(assets)
 
     @classmethod
@@ -584,12 +593,12 @@ class Asset(Workflow, ModelSQL, ModelView):
         Move.post(moves)
 
     def get_rec_name(self, name):
-        return '%s - %s' % (self.reference, self.product.rec_name)
+        return '%s - %s' % (self.number, self.product.rec_name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
         names = clause[2].split(' - ', 1)
-        res = [('reference', clause[1], names[0])]
+        res = [('number', clause[1], names[0])]
         if len(names) != 1 and names[1]:
             res.append(('product', clause[1], names[1]))
         return res
@@ -601,7 +610,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default.setdefault('lines', [])
         default.setdefault('state', 'draft')
-        default.setdefault('reference', None)
+        default.setdefault('number', None)
         default.setdefault('supplier_invoice_line', None)
         return super(Asset, cls).copy(assets, default=default)
 
