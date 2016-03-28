@@ -13,7 +13,7 @@ from trytond.transaction import Transaction
 
 from .payment import KINDS
 
-__all__ = ['MoveLine', 'PayLine', 'PayLineStart']
+__all__ = ['MoveLine', 'PayLine', 'PayLineStart', 'Configuration']
 
 
 class MoveLine:
@@ -178,3 +178,14 @@ class PayLine(Wizard):
         return action, {
             'res_id': [p.id for p in payments],
             }
+
+
+class Configuration:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.configuration'
+    payment_group_sequence = fields.Property(fields.Many2One('ir.sequence',
+            'Payment Group Sequence', domain=[
+                ('company', 'in',
+                    [Eval('context', {}).get('company', -1), None]),
+                ('code', '=', 'account.payment.group'),
+                ], required=True))

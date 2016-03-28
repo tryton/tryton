@@ -7,6 +7,7 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
+from trytond import backend
 
 __all__ = ['Journal', 'Group', 'Payment',
     'ProcessPaymentStart', 'ProcessPayment']
@@ -43,8 +44,8 @@ class Journal(ModelSQL, ModelView):
 class Group(ModelSQL, ModelView):
     'Payment Group'
     __name__ = 'account.payment.group'
-    _rec_name = 'reference'
-    reference = fields.Char('Reference', required=True, readonly=True)
+    _rec_name = 'number'
+    number = fields.Char('Number', required=True, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         readonly=True, select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -59,6 +60,16 @@ class Group(ModelSQL, ModelView):
     payments = fields.One2Many('account.payment', 'group', 'Payments',
         readonly=True)
 
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 3.8: rename reference into number
+        if table_h.column_exist('reference'):
+            table_h.column_rename('reference', 'number')
+        super(Group, cls).__register__(module_name)
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -67,11 +78,14 @@ class Group(ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
+        Config = pool.get('account.configuration')
 
         vlist = [v.copy() for v in vlist]
+        config = Config(1)
         for values in vlist:
-            if 'reference' not in values:
-                values['reference'] = Sequence.get('account.payment.group')
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.payment_group_sequence.id)
 
         return super(Group, cls).create(vlist)
 
