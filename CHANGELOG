@@ -1,3 +1,4 @@
+* Rename Purchase reference into number and supplier reference into reference
 * Add return location on warehouse
 * Add Python3 support
 * Replace Delivery Time by Lead Time on Product Template

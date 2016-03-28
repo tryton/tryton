@@ -10,7 +10,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     'Purchase Configuration'
     __name__ = 'purchase.configuration'
     purchase_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Purchase Reference Sequence', domain=[
+            'Purchase Sequence', domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'purchase.purchase'),

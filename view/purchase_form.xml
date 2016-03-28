@@ -6,8 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="invoice_address"/>
     <field name="invoice_address"/>
-    <label name="supplier_reference"/>
-    <field name="supplier_reference"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
     <label name="reference"/>

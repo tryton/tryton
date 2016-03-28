@@ -38,7 +38,7 @@ _ZERO = Decimal(0)
 class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Purchase'
     __name__ = 'purchase.purchase'
-    _rec_name = 'reference'
+    _rec_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -48,8 +48,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'], select=True)
-    reference = fields.Char('Reference', size=None, readonly=True, select=True)
-    supplier_reference = fields.Char('Supplier Reference', select=True)
+    number = fields.Char('Number', size=None, readonly=True, select=True)
+    reference = fields.Char('Reference', select=True)
     description = fields.Char('Description', size=None, states=_STATES,
         depends=_DEPENDS)
     state = fields.Selection([
@@ -255,6 +255,11 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 & (model_field.module == module_name)))
         table = TableHandler(cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
+
+        # Migration from 3.8:
+        if table.column_exist('supplier_reference'):
+            table.column_rename('reference', 'number')
+            table.column_rename('supplier_reference', 'reference')
 
         super(Purchase, cls).__register__(module_name)
 
@@ -567,20 +572,20 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     })
 
     def get_rec_name(self, name):
-        return (self.reference or str(self.id)
+        return (self.number or str(self.id)
             + ' - ' + self.party.name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
         _, operator, value = clause
-        if operator[1].startswith('!') or operator[1].startswith('not '):
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
         names = value.split(' - ', 1)
         domain = [bool_op,
+            ('number', operator, names[0]),
             ('reference', operator, names[0]),
-            ('supplier_reference', operator, names[0]),
             ]
         if len(names) != 1 and names[1]:
             domain = [bool_op, domain, ('party', operator, names[1])]
@@ -596,7 +601,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             default = {}
         default = default.copy()
         default['state'] = 'draft'
-        default['reference'] = None
+        default['number'] = None
         default['invoice_state'] = 'none'
         default['invoices_ignored'] = None
         default['moves'] = None
@@ -612,9 +617,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 self.raise_user_error('warehouse_required', (self.rec_name,))
 
     @classmethod
-    def set_reference(cls, purchases):
+    def set_number(cls, purchases):
         '''
-        Fill the reference field with the purchase sequence
+        Fill the number field with the purchase sequence
         '''
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -622,12 +627,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         config = Config(1)
         for purchase in purchases:
-            if purchase.reference:
+            if purchase.number:
                 continue
-            reference = Sequence.get_id(config.purchase_sequence.id)
-            cls.write([purchase], {
-                    'reference': reference,
-                    })
+            purchase.number = Sequence.get_id(config.purchase_sequence.id)
+        cls.save(purchases)
 
     @classmethod
     def set_purchase_date(cls, purchases):
@@ -778,7 +781,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     def quote(cls, purchases):
         for purchase in purchases:
             purchase.check_for_quotation()
-        cls.set_reference(purchases)
+        cls.set_number(purchases)
 
     @classmethod
     @ModelView.button
