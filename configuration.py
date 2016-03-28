@@ -10,7 +10,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     'Sale Configuration'
     __name__ = 'sale.configuration'
     sale_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Sale Reference Sequence', domain=[
+            'Sale Sequence', domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'sale.sale'),

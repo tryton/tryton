@@ -1,3 +1,4 @@
+* Rename Sale reference into number and add reference
 * Add Python3 support
 * Replace Delivery Time by Lead Time on Product Template
 * Rename Delivery Date of Sale Line into Shipping Date

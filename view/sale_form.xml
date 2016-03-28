@@ -6,15 +6,17 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="invoice_address"/>
     <field name="invoice_address"/>
-    <label name="reference"/>
-    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="shipment_party"/>
     <field name="shipment_party"/>
     <label name="shipment_address"/>
     <field name="shipment_address"/>
     <newline/>
     <label name="description"/>
-    <field name="description" colspan="5"/>
+    <field name="description" colspan="3"/>
+    <label name="reference"/>
+    <field name="reference"/>
     <notebook colspan="6">
         <page string="Sale" id="sale">
             <label name="sale_date"/>

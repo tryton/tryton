@@ -34,7 +34,7 @@ _ZERO = Decimal(0)
 class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Sale'
     __name__ = 'sale.sale'
-    _rec_name = 'reference'
+    _rec_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -44,7 +44,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'], select=True)
-    reference = fields.Char('Reference', readonly=True, select=True)
+    number = fields.Char('Number', readonly=True, select=True)
+    reference = fields.Char('Reference', select=True)
     description = fields.Char('Description',
         states={
             'readonly': Eval('state') != 'draft',
@@ -290,6 +291,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
         table.column_rename('packing_address', 'shipment_address')
+
+        # Migration from 3.8: rename reference into number
+        if (table.column_exist('reference')
+                and not table.column_exist('number')):
+            table.column_rename('reference', 'number')
 
         super(Sale, cls).__register__(module_name)
 
@@ -635,20 +641,24 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.raise_user_error('invalid_method', (self.rec_name,))
 
     def get_rec_name(self, name):
-        return (self.reference or str(self.id)
+        return (self.number or str(self.id)
             + ' - ' + self.party.rec_name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        names = clause[2].split(' - ', 1)
-        res = [bool_op, ('reference', clause[1], names[0])]
+        names = value.split(' - ', 1)
+        domain = [bool_op,
+            ('number', operator, names[0]),
+            ('reference', operator, names[0]),
+            ]
         if len(names) != 1 and names[1]:
-            res.append(('party', clause[1], names[1]))
-        return res
+            domain = [bool_op, domain, ('party', operator, names[1])]
+        return domain
 
     @classmethod
     def view_attributes(cls):
@@ -660,7 +670,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             default = {}
         default = default.copy()
         default['state'] = 'draft'
-        default['reference'] = None
+        default['number'] = None
         default['invoice_state'] = 'none'
         default['invoices_ignored'] = None
         default['moves'] = None
@@ -683,9 +693,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     (self.rec_name,))
 
     @classmethod
-    def set_reference(cls, sales):
+    def set_number(cls, sales):
         '''
-        Fill the reference field with the sale sequence
+        Fill the number field with the sale sequence
         '''
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -693,12 +703,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         config = Config(1)
         for sale in sales:
-            if sale.reference:
+            if sale.number:
                 continue
-            reference = Sequence.get_id(config.sale_sequence.id)
-            cls.write([sale], {
-                    'reference': reference,
-                    })
+            sale.number = Sequence.get_id(config.sale_sequence.id)
+        cls.save(sales)
 
     @classmethod
     def set_sale_date(cls, sales):
@@ -862,7 +870,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def quote(cls, sales):
         for sale in sales:
             sale.check_for_quotation()
-        cls.set_reference(sales)
+        cls.set_number(sales)
 
     @classmethod
     @ModelView.button
