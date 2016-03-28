@@ -1,3 +1,4 @@
+* Rename Shipments code into number
 * Add number to inventories
 * Add supplier and delivery address on supplier return shipment
 * Add Python3 support

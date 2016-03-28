@@ -37,7 +37,7 @@ STATES = {
 class ShipmentIn(Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
-    _rec_name = 'code'
+    _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
@@ -124,7 +124,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         domain=[('company', '=', Eval('company'))], readonly=True,
         depends=['company'])
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    number = fields.Char('Numer', size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -217,6 +217,10 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
         # Migration from 2.0:
         created_company = table.column_exist('company')
+
+        # Migration from 3.8: rename code into number
+        if table.column_exist('code'):
+            table.column_rename('code', 'number')
 
         super(ShipmentIn, cls).__register__(module_name)
 
@@ -373,7 +377,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.shipment_in_sequence)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(config.shipment_in_sequence)
         shipments = super(ShipmentIn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -478,7 +483,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
-    _rec_name = 'code'
+    _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
@@ -497,7 +502,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    number = fields.Char('Number', size=None, select=True, readonly=True)
     reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -611,6 +616,10 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         created_company = table.column_exist('company')
 
+        # Migration from 3.8: rename code into number
+        if table.column_exist('code'):
+            table.column_rename('code', 'number')
+
         super(ShipmentInReturn, cls).__register__(module_name)
 
         # Migration from 2.0:
@@ -686,8 +695,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(
-                config.shipment_in_return_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.shipment_in_return_sequence.id)
         shipments = super(ShipmentInReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -777,7 +787,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 class ShipmentOut(Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
-    _rec_name = 'code'
+    _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
@@ -857,7 +867,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    number = fields.Char('Number', size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -941,6 +951,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
         # Migration from 2.0:
         created_company = table.column_exist('company')
+
+        # Migration from 3.8: rename code into number
+        if table.column_exist('code'):
+            table.column_rename('code', 'number')
 
         super(ShipmentOut, cls).__register__(module_name)
 
@@ -1267,7 +1281,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.shipment_out_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.shipment_out_sequence.id)
         shipments = super(ShipmentOut, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1337,7 +1353,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
-    _rec_name = 'code'
+    _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
@@ -1416,7 +1432,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    number = fields.Char('Number', size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -1474,6 +1490,10 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
         # Migration from 2.0:
         created_company = table.column_exist('company')
+
+        # Migration from 3.8: rename code into number
+        if table.column_exist('code'):
+            table.column_rename('code', 'number')
 
         super(ShipmentOutReturn, cls).__register__(module_name)
 
@@ -1620,8 +1640,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(
-                    config.shipment_out_return_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                        config.shipment_out_return_sequence.id)
         shipments = super(ShipmentOutReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1774,7 +1795,7 @@ class AssignShipmentOut(Wizard):
 class ShipmentInternal(Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
-    _rec_name = 'code'
+    _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
@@ -1793,7 +1814,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    number = fields.Char('Number', size=None, select=True, readonly=True)
     reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -1908,6 +1929,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         # Migration from 2.0:
         created_company = table.column_exist('company')
 
+        # Migration from 3.8:
+        if table.column_exist('code'):
+            table.column_rename('code', 'number')
+
         super(ShipmentInternal, cls).__register__(module_name)
 
         # Migration from 2.0:
@@ -1953,8 +1978,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(
-                    config.shipment_internal_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                        config.shipment_internal_sequence.id)
         return super(ShipmentInternal, cls).create(vlist)
 
     @classmethod

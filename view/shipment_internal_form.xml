@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Internal Shipment" col="4" cursor="from_location">
     <label name="reference"/>
     <field name="reference"/>
-    <label name="code"/>
-    <field name="code"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="from_location"/>
     <field name="from_location"/>
     <label name="to_location"/>
