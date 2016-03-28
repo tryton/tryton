@@ -3,7 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form" position="inside">
-        <label name="landed_cost_sequence"/>
+        <separator id="landed_cost" string="Landed Cost" colspan="4"/>
+        <label name="landed_cost_sequence" string="Sequence"/>
         <field name="landed_cost_sequence"/>
         <newline/>
     </xpath>

@@ -7,6 +7,7 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond import backend
 
 __all__ = ['Configuration', 'LandedCost', 'LandedCost_Shipment', 'InvoiceLine']
 
@@ -25,8 +26,8 @@ class Configuration:
 class LandedCost(Workflow, ModelSQL, ModelView):
     'Landed Cost'
     __name__ = 'account.landed_cost'
-    _rec_name = 'code'
-    code = fields.Char('Code', select=True, readonly=True)
+    _rec_name = 'number'
+    number = fields.Char('Number', select=True, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -76,7 +77,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         super(LandedCost, cls).__setup__()
 
         cls._order = [
-            ('code', 'DESC'),
+            ('number', 'DESC'),
             ('id', 'DESC'),
             ]
         cls._transitions |= set((
@@ -95,6 +96,17 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'draft',
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 3.8: rename code into number
+        if table_h.column_exist('code'):
+            table_h.column_rename('code', 'number')
+
+        super(LandedCost, cls).__register__(module_name)
 
     @staticmethod
     def default_company():
@@ -235,7 +247,9 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         vlist = [v.copy() for v in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.landed_cost_sequence.id)
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
+                    config.landed_cost_sequence.id)
         return super(LandedCost, cls).create(vlist)
 
 
