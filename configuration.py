@@ -12,7 +12,7 @@ class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
     sale_opportunity_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Opportunity Reference Sequence', domain=[
+            'Opportunity Sequence', domain=[
                 ('company', 'in', [Eval('context', {}).get('company', -1),
                         None]),
                 ('code', '=', 'sale.opportunity'),

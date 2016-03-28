@@ -1,3 +1,4 @@
+* Rename Opportunity reference into number and add reference
 * Add Python3 support
 * Replace history by revision on client
 

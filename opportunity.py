@@ -42,9 +42,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
     __name__ = "sale.opportunity"
     _history = True
-    _rec_name = 'reference'
-    reference = fields.Char('Reference', readonly=True, required=True,
-        select=True)
+    _rec_name = 'number'
+    number = fields.Char('Number', readonly=True, required=True, select=True)
+    reference = fields.Char('Reference', select=True)
     party = fields.Many2One('party.party', 'Party', select=True,
         states={
             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
@@ -107,22 +107,26 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         sql_table = cls.__table__()
         sale = Sale.__table__()
 
-        reference_exists = True
-        if TableHandler.table_exist(cls._table):
-            table = TableHandler(cls, module_name)
-            reference_exists = table.column_exist('reference')
+        table = TableHandler(cls, module_name)
+        number_exists = table.column_exist('number')
+
+        # Migration from 3.8: rename reference into number
+        if table.column_exist('reference') and not number_exists:
+            table.column_rename('reference', 'number')
+            number_exists = True
+
         super(SaleOpportunity, cls).__register__(module_name)
         table = TableHandler(cls, module_name)
 
-        # Migration from 2.8: make party not required and add reference as
+        # Migration from 2.8: make party not required and add number as
         # required
         table.not_null_action('party', action='remove')
-        if not reference_exists:
+        if not number_exists:
             cursor.execute(*sql_table.update(
-                    columns=[sql_table.reference],
+                    columns=[sql_table.number],
                     values=[sql_table.id],
-                    where=sql_table.reference == Null))
-            table.not_null_action('reference', action='add')
+                    where=sql_table.number == Null))
+            table.not_null_action('number', action='add')
 
         # Migration from 3.4: replace sale by origin
         if table.column_exist('sale'):
@@ -228,11 +232,12 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
 
+        config = Config(1)
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
-            if not vals.get('reference'):
-                sequence = Config(1).sale_opportunity_sequence
-                vals['reference'] = Sequence.get_id(sequence.id)
+            if vals.get('number') is None:
+                vals['number'] = Sequence.get_id(
+                    config.sale_opportunity_sequence.id)
         return super(SaleOpportunity, cls).create(vlist)
 
     @classmethod
@@ -240,7 +245,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('reference', None)
+        default.setdefault('number', None)
         default.setdefault('sales', None)
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
