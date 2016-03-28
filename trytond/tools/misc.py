@@ -7,18 +7,16 @@ Miscelleanous tools used by tryton
 import os
 import sys
 import subprocess
-import smtplib
 from array import array
 from itertools import islice
 import types
-import urllib
 import io
+import warnings
 
 from sql import Literal
 from sql.operators import Or
 
 from trytond.const import OPERATORS
-from trytond.config import config, parse_uri
 
 
 def find_in_path(name):
@@ -106,21 +104,11 @@ def get_smtp_server():
     :return: A SMTP instance. The quit() method must be call when all
     the calls to sendmail() have been made.
     """
-    uri = parse_uri(config.get('email', 'uri'))
-    if uri.scheme.startswith('smtps'):
-        smtp_server = smtplib.SMTP_SSL(uri.hostname, uri.port)
-    else:
-        smtp_server = smtplib.SMTP(uri.hostname, uri.port)
-
-    if 'tls' in uri.scheme:
-        smtp_server.starttls()
-
-    if uri.username and uri.password:
-        smtp_server.login(
-            urllib.unquote_plus(uri.username),
-            urllib.unquote_plus(uri.password))
-
-    return smtp_server
+    from ..sendmail import _get_smtp_server
+    warnings.warn(
+        'get_smtp_server is deprecated use trytond.sendmail',
+        DeprecationWarning)
+    return _get_smtp_server()
 
 
 def memoize(maxsize):

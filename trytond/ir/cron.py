@@ -10,12 +10,12 @@ from email.header import Header
 from ast import literal_eval
 
 from ..model import ModelView, ModelSQL, fields, dualmethod
-from ..tools import get_smtp_server
 from ..transaction import Transaction
 from ..pool import Pool
 from .. import backend
 from ..config import config
 from ..cache import Cache
+from ..sendmail import sendmail
 
 __all__ = [
     'Cron',
@@ -160,13 +160,7 @@ class Cron(ModelSQL, ModelView):
             if not to_addr:
                 logger.error(msg.as_string())
             else:
-                try:
-                    server = get_smtp_server()
-                    server.sendmail(from_addr, to_addr, msg.as_string())
-                    server.quit()
-                except Exception:
-                    logger.error('Unable to deliver email:\n %s',
-                        msg.as_string(), exc_info=True)
+                sendmail(from_addr, to_addr, msg)
 
     @dualmethod
     @ModelView.button

@@ -14,3 +14,4 @@ API Reference
     tools/singleton
     pool
     rpc
+    sendmail
