@@ -7,6 +7,7 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pyson import Eval, If, Bool, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond import backend
 
 from trytond.modules.product import price_digits
 
@@ -27,14 +28,15 @@ class Type(ModelSQL, ModelView):
 class Complaint(Workflow, ModelSQL, ModelView):
     'Customer Complaint'
     __name__ = 'sale.complaint'
-    _rec_name = 'reference'
+    _rec_name = 'number'
 
     _states = {
         'readonly': Eval('state') != 'draft',
         }
     _depends = ['state']
 
-    reference = fields.Char('Reference', readonly=True, select=True)
+    number = fields.Char('Number', readonly=True, select=True)
+    reference = fields.Char('Reference', select=True)
     date = fields.Date('Date', states=_states, depends=_depends)
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states=_states, depends=_depends)
@@ -135,6 +137,18 @@ class Complaint(Workflow, ModelSQL, ModelView):
         cls.actions.domain = [actions_domain]
 
     @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 3.8: rename reference into number
+        if (table_h.column_exist('reference')
+                and not table_h.column_exist('number')):
+            table_h.column_rename('reference', 'number')
+
+        super(Complaint, cls).__register__(module_name)
+
+    @classmethod
     def _origin_domains(cls):
         return {
             'sale.sale': [
@@ -209,11 +223,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
         Sequence = pool.get('ir.sequence')
         Configuration = pool.get('sale.configuration')
 
+        config = Configuration(1)
         vlist = [v.copy() for v in vlist]
         for values in vlist:
-            if not values.get('reference'):
-                config = Configuration(1)
-                values['reference'] = Sequence.get_id(
+            if values.get('number') is None:
+                values['number'] = Sequence.get_id(
                     config.complaint_sequence.id)
         return super(Complaint, cls).create(vlist)
 
@@ -222,7 +236,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['reference'] = None
+        default['number'] = None
         return super(Complaint, cls).copy(complaints, default=default)
 
     @classmethod

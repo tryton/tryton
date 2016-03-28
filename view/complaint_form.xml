@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form string="Customer Complaint">
+<form string="Customer Complaint" cursor="customer">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
     <label name="customer"/>
     <field name="customer"/>
     <label name="address"/>
     <field name="address"/>
     <label name="date"/>
     <field name="date"/>
-    <label name="reference"/>
-    <field name="reference"/>
     <notebook>
         <page string="Complaint" id="complaint">
             <label name="company"/>
