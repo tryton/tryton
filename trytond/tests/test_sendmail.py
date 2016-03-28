@@ -8,11 +8,15 @@ from mock import Mock, patch, call
 from trytond.sendmail import (
     sendmail_transactional, sendmail, SMTPDataManager, get_smtp_server)
 from trytond.transaction import Transaction
-from .test_tryton import with_transaction
+from .test_tryton import with_transaction, install_module
 
 
 class SendmailTestCase(unittest.TestCase):
     'Test sendmail'
+
+    @classmethod
+    def setUpClass(cls):
+        install_module('tests')
 
     @with_transaction()
     def test_sendmail_transactional(self):
@@ -23,7 +27,8 @@ class SendmailTestCase(unittest.TestCase):
             'tryton@example.com', 'foo@example.com', message,
             datamanager=datamanager)
 
-        datamanager.put.assert_called()
+        datamanager.put.assert_called_once_with(
+            'tryton@example.com', 'foo@example.com', message)
 
     def test_sendmail(self):
         'Test sendmail'
@@ -31,8 +36,8 @@ class SendmailTestCase(unittest.TestCase):
         server = Mock()
         sendmail(
             'tryton@example.com', 'foo@example.com', message, server=server)
-        server.sendmail.assert_called(
-            'tryton@example.com', 'foo@example.com', message)
+        server.sendmail.assert_called_with(
+            'tryton@example.com', 'foo@example.com', message.as_string())
         server.quit.assert_not_called()
 
     def test_get_smtp_server(self):
@@ -40,27 +45,27 @@ class SendmailTestCase(unittest.TestCase):
         with patch.object(smtplib, 'SMTP') as SMTP:
             SMTP.return_value = server = Mock()
             self.assertEqual(get_smtp_server('smtp://localhost:25'), server)
-            SMTP.assert_called('localhost', 25)
+            SMTP.assert_called_once_with('localhost', 25)
 
         with patch.object(smtplib, 'SMTP') as SMTP:
             SMTP.return_value = server = Mock()
             self.assertEqual(
                 get_smtp_server('smtp://foo:bar@localhost:25'), server)
-            SMTP.assert_called('localhost', 25)
-            server.login.assert_called('foo', 'bar')
+            SMTP.assert_called_once_with('localhost', 25)
+            server.login.assert_called_once_with('foo', 'bar')
 
         with patch.object(smtplib, 'SMTP_SSL') as SMTP:
             SMTP.return_value = server = Mock()
             self.assertEqual(
                 get_smtp_server('smtps://localhost:25'), server)
-            SMTP.assert_called('localhost', 25)
+            SMTP.assert_called_once_with('localhost', 25)
 
         with patch.object(smtplib, 'SMTP') as SMTP:
             SMTP.return_value = server = Mock()
             self.assertEqual(
                 get_smtp_server('smtp+tls://localhost:25'), server)
-            SMTP.assert_called('localhost', 25)
-            server.starttls.assert_called()
+            SMTP.assert_called_once_with('localhost', 25)
+            server.starttls.assert_called_once_with()
 
     @patch('trytond.sendmail.get_smtp_server')
     @with_transaction()
