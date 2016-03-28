@@ -200,6 +200,12 @@ class ModuleTestCase(unittest.TestCase):
                         'Field method "%s"."%s" for unknown field' % (
                             mname, attr))
 
+                    if attr.startswith('default_'):
+                        getattr(model, attr)()
+                    elif attr.startswith('order_'):
+                        tables = {None: (model.__table__(), None)}
+                        getattr(model, attr)(tables)
+
     @with_transaction()
     def test_menu_action(self):
         'Test that menu actions are accessible to menu\'s group'
