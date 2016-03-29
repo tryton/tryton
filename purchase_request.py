@@ -98,12 +98,23 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
         TableHandler = backend.get('TableHandler')
+        model_data = ModelData.__table__()
         super(PurchaseRequest, cls).__register__(module_name)
 
         # Migration from 3.6: removing the constraint on the quantity
         tablehandler = TableHandler(cls, module_name)
         tablehandler.drop_constraint('check_purchase_request_quantity')
+
+        # Migration from 3.8: renaming module of Purchase Request group entry
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*model_data.update(
+                columns=[model_data.module],
+                values=['purchase_request'],
+                where=((model_data.fs_id == 'group_purchase_request')
+                    & (model_data.module == 'stock_supply'))))
 
     def get_rec_name(self, name):
         if self.warehouse:
