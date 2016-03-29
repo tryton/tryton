@@ -230,28 +230,6 @@ class PurchaseRequest:
         return (min_date, max_date)
 
     @classmethod
-    def find_best_supplier(cls, product, date):
-        '''
-        Return the best supplier and purchase_date for the product.
-        '''
-        Date = Pool().get('ir.date')
-
-        supplier = None
-        today = Date.today()
-        for product_supplier in product.product_suppliers:
-            supply_date = product_supplier.compute_supply_date(date=today)
-            timedelta = date - supply_date
-            if not supplier and timedelta >= datetime.timedelta(0):
-                supplier = product_supplier.party
-                break
-
-        if supplier:
-            purchase_date = product_supplier.compute_purchase_date(date)
-        else:
-            purchase_date = today
-        return supplier, purchase_date
-
-    @classmethod
     def compute_request(cls, product, location_id, shortage_date,
             product_quantity, company, order_point=None):
         """
