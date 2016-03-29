@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
 from decimal import Decimal
 from itertools import groupby
 from functools import partial
@@ -225,6 +226,28 @@ class PurchaseRequest(ModelSQL, ModelView):
         if any(r.purchase_line for r in requests):
             cls.raise_user_error('delete_purchase_line')
         super(PurchaseRequest, cls).delete(requests)
+
+    @classmethod
+    def find_best_supplier(cls, product, date):
+        '''
+        Return the best supplier and purchase_date for the product.
+        '''
+        Date = Pool().get('ir.date')
+
+        supplier = None
+        today = Date.today()
+        for product_supplier in product.product_suppliers:
+            supply_date = product_supplier.compute_supply_date(date=today)
+            timedelta = date - supply_date
+            if not supplier and timedelta >= datetime.timedelta(0):
+                supplier = product_supplier.party
+                break
+
+        if supplier:
+            purchase_date = product_supplier.compute_purchase_date(date)
+        else:
+            purchase_date = today
+        return supplier, purchase_date
 
     @classmethod
     @ModelView.button_action(
