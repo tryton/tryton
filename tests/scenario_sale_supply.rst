@@ -25,8 +25,7 @@ Install sale_supply, sale, purchase::
 
     >>> Module = Model.get('ir.module')
     >>> modules = Module.find([
-    ...         ('name', 'in', ('sale_supply', 'sale', 'purchase',
-    ...                 'stock_supply')),
+    ...         ('name', 'in', ('sale_supply', 'sale', 'purchase')),
     ...         ])
     >>> for module in modules:
     ...     module.click('install')
