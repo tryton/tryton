@@ -53,7 +53,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('stock_supply'),
+tests_require = [get_require_version('trytond_stock_supply'),
     get_require_version('proteus')]
 dependency_links = []
 if minor_version % 2:
