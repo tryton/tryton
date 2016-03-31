@@ -101,17 +101,31 @@ class Screen(SignalEvent):
                     for widget in walk_descendants(child):
                         yield widget
 
-            for widget in walk_descendants(context_widget):
-                if isinstance(widget, gtk.ScrolledWindow):
-                    widget.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
-                elif isinstance(widget, gtk.Viewport):
-                    widget.set_shadow_type(gtk.SHADOW_NONE)
-                elif isinstance(widget, gtk.Entry):
+            for widget in reversed(list(walk_descendants(context_widget))):
+                if isinstance(widget, gtk.Entry):
                     widget.connect_after(
                         'activate', self.screen_container.activate)
                 elif isinstance(widget, gtk.CheckButton):
                     widget.connect_after(
                         'toggled', self.screen_container.activate)
+
+            def remove_bin(widget):
+                assert isinstance(widget, (gtk.ScrolledWindow, gtk.Viewport))
+                parent = widget.parent
+                parent.remove(widget)
+                child = widget.get_child()
+                while isinstance(child, (gtk.ScrolledWindow, gtk.Viewport)):
+                    child = child.get_child()
+                child.parent.remove(child)
+                parent.add(child)
+                return child
+
+            # Remove first level Viewport and ScrolledWindow to fill the Vbox
+            for widget in [
+                    self.context_screen.screen_container.viewport,
+                    self.context_screen.current_view.widget.get_children()[0],
+                    ]:
+                remove_bin(widget)
 
             self.screen_container.filter_vbox.pack_start(
                 context_widget, expand=False, fill=True)
