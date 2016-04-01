@@ -479,7 +479,7 @@ class ModuleConfigWizard(Wizard):
     action = ConfigStateAction()
     done = StateView('ir.module.config_wizard.done',
         'ir.module_config_wizard_done_view_form', [
-            Button('OK', 'end', 'tryton-close', default=True),
+            Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
     def transition_start(self):
