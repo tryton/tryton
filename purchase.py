@@ -1178,8 +1178,12 @@ class PurchaseLine(ModelSQL, ModelView):
         '_parent_purchase.purchase_date', '_parent_purchase.party')
     def on_change_with_delivery_date(self, name=None):
         if self.moves:
-            return min(m.effective_date if m.effective_date else m.planned_date
-                for m in self.moves)
+            dates = filter(
+                None, (m.effective_date or m.planned_date for m in self.moves))
+            if dates:
+                return min(dates)
+            else:
+                return
         if (self.product
                 and self.quantity is not None
                 and self.quantity > 0
