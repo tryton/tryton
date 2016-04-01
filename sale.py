@@ -1298,8 +1298,12 @@ class SaleLine(ModelSQL, ModelView):
     @fields.depends('product', 'quantity', 'moves', '_parent_sale.sale_date')
     def on_change_with_delivery_date(self, name=None):
         if self.moves:
-            return min(m.effective_date if m.effective_date else m.planned_date
-                for m in self.moves)
+            dates = filter(
+                None, (m.effective_date or m.planned_date for m in self.moves))
+            if dates:
+                return min(dates)
+            else:
+                return
         if self.product and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_delivery_date(date=date)
