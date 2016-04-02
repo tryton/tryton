@@ -429,8 +429,11 @@ class ModelView(Model):
                     parent.remove(element)
                 elif type == 'form':
                     element.tag = 'label'
+                    colspan = element.attrib.get('colspan')
                     element.attrib.clear()
                     element.attrib['id'] = 'hidden %s-%s' % (field, i)
+                    if colspan is not None:
+                        element.attrib['colspan'] = colspan
 
         if type == 'tree':
             ViewTreeWidth = pool.get('ir.ui.view_tree_width')
