@@ -122,17 +122,26 @@ var Sao = {};
 
     Sao.DateTime = function(year, month, day, hour, minute, second,
             millisecond, utc) {
-        var datetime = moment();
+        var datetime;
+        if (month === undefined) {
+            datetime = moment(year);
+            year = undefined;
+        }
+        else {
+            datetime = moment();
+        }
         if (utc) {
             datetime.utc();
         }
         datetime.year(year);
         datetime.month(month);
         datetime.date(day);
-        datetime.hour(hour || 0);
-        datetime.minute(minute || 0);
-        datetime.second(second || 0);
-        datetime.milliseconds(millisecond || 0);
+        if (month !== undefined) {
+            datetime.hour(hour || 0);
+            datetime.minute(minute || 0);
+            datetime.second(second || 0);
+            datetime.milliseconds(millisecond || 0);
+        }
         datetime.isDateTime = true;
         datetime.local();
         return datetime;

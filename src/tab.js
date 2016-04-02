@@ -657,7 +657,7 @@
                 return function(revision) {
                     if (revision) {
                         // Add a millisecond as microseconds are truncated
-                        revision.setMilliseconds(revision.getMilliseconds() + 1);
+                        revision.add(1, 'milliseconds');
                     }
                     if ((this.screen.current_view.view_type == 'form') &&
                             (revision < revisions[revisions.length - 1][0])) {
