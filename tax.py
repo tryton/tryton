@@ -245,6 +245,15 @@ class TaxCode(ModelSQL, ModelView):
             ]
 
     @classmethod
+    def copy(cls, codes, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('template')
+        return super(TaxCode, cls).copy(codes, default=default)
+
+    @classmethod
     def delete(cls, codes):
         codes = cls.search([
                 ('parent', 'child_of', [c.id for c in codes]),
@@ -814,6 +823,15 @@ class Tax(ModelSQL, ModelView):
             return self.company.currency.digits
         return 2
 
+    @classmethod
+    def copy(cls, taxes, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('template')
+        return super(Tax, cls).copy(taxes, default=default)
+
     def _process_tax(self, price_unit):
         if self.type == 'percentage':
             amount = price_unit * self.rate
@@ -1285,6 +1303,15 @@ class TaxRule(ModelSQL, ModelView):
     def default_kind():
         return 'both'
 
+    @classmethod
+    def copy(cls, rules, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('template')
+        return super(TaxRule, cls).copy(rules, default=default)
+
     def apply(self, tax, pattern):
         '''
         Apply rule on tax
@@ -1520,6 +1547,15 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     def order_sequence(tables):
         table, _ = tables[None]
         return [table.sequence == Null, table.sequence]
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('template')
+        return super(TaxRuleLine, cls).copy(lines, default=default)
 
     def match(self, pattern):
         if 'group' in pattern and not self.group:
