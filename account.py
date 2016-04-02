@@ -826,6 +826,8 @@ class Account(ModelSQL, ModelView):
     def copy(cls, accounts, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default['left'] = 0
         default['right'] = 0
         default.setdefault('template')
