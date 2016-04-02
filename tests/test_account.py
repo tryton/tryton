@@ -103,12 +103,21 @@ class AccountTestCase(ModuleTestCase):
         'Test creation and update of minimal chart of accounts'
         pool = Pool()
         Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
         UpdateChart = pool.get('account.update_chart', type='wizard')
 
         company = create_company()
         with set_company(company):
             create_chart(company, tax=True)
             root, = Account.search([('parent', '=', None)])
+
+            # Create an account and tax without template
+
+            cash, = Account.search([('name', '=', 'Main Cash')])
+            Account.copy([cash.id])
+
+            tax, = Tax.search([])
+            Tax.copy([tax.id])
 
             session_id, _, _ = UpdateChart.create()
             update_chart = UpdateChart(session_id)

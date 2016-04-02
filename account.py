@@ -288,7 +288,7 @@ class Type(ModelSQL, ModelView):
                     if vals:
                         values.append([child])
                         values.append(vals)
-                template2type[child.template.id] = child.id
+                    template2type[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
             self.write(*values)
@@ -897,7 +897,7 @@ class Account(ModelSQL, ModelView):
                     if vals:
                         values.append([child])
                         values.append(vals)
-                template2account[child.template.id] = child.id
+                    template2account[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
             self.write(*values)

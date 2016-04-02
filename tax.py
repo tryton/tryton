@@ -270,7 +270,7 @@ class TaxCode(ModelSQL, ModelView):
                     if vals:
                         values.append([child])
                         values.append(vals)
-                template2tax_code[child.template.id] = child.id
+                    template2tax_code[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
             cls.write(*values)
@@ -1004,7 +1004,7 @@ class Tax(ModelSQL, ModelView):
                     if vals:
                         values.append([child])
                         values.append(vals)
-                template2tax[child.template.id] = child.id
+                    template2tax[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
             cls.write(*values)
@@ -1548,7 +1548,7 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
                 if vals:
                     values.append([line])
                     values.append(vals)
-            template2rule_line[line.template.id] = line.id
+                template2rule_line[line.template.id] = line.id
         if values:
             cls.write(*values)
 
