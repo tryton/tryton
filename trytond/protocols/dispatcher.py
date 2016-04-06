@@ -209,6 +209,7 @@ def _dispatch(request, pool, *args, **kwargs):
                 if count and not rpc.readonly:
                     transaction.rollback()
                     continue
+                logger.error(log_message, *log_args, exc_info=True)
                 raise
             except (ConcurrencyException, UserError, UserWarning):
                 logger.debug(log_message, *log_args, exc_info=True)
