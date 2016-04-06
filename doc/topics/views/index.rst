@@ -37,6 +37,10 @@ There is three types of views:
 
     * Graph
 
+    * Board
+
+    * Calendar
+
 Form view
 =========
 
@@ -267,8 +271,8 @@ image
 
 Display an image.
 
-    * ``name``: the name of the image. It must be the name with the extension
-      of an image from ``tryton/share/pixmaps/``.
+    * ``name``: the name of the image. It must be the name of a record of
+      `ir.ui.icon`.
 
     * ``yexpand``: see in common-attributes-yexpand_.
 
