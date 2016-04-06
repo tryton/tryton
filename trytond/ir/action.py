@@ -102,7 +102,6 @@ class ActionKeyword(ModelSQL, ModelView):
     __name__ = 'ir.action.keyword'
     keyword = fields.Selection([
             ('tree_open', 'Open tree'),
-            ('tree_action', 'Action tree'),
             ('form_print', 'Print form'),
             ('form_action', 'Action form'),
             ('form_relate', 'Form relate'),

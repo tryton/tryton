@@ -22,11 +22,9 @@ Keyword
 
 Keywords define where to display the action in the client.
 
-There are six places:
+There are five places:
 
     * Open tree (`tree_open`)
-
-    * Action tree (`tree_action`)
 
     * Print form (`form_print`)
 
