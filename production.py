@@ -415,6 +415,8 @@ class Production(Workflow, ModelSQL, ModelView):
                 if product == self.product:
                     move.unit_price = Decimal(
                         cost / Decimal(str(quantity))).quantize(digit)
+                else:
+                    move.unit_price = Decimal(0)
                 move.save()
         self._set_move_planned_date()
 
