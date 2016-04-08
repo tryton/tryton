@@ -226,6 +226,7 @@ class Type(ModelSQL, ModelView):
     def get_amount(cls, types, name):
         pool = Pool()
         Account = pool.get('account.account')
+        GeneralLedger = pool.get('account.general_ledger.account')
 
         res = {}
         for type_ in types:
@@ -238,10 +239,16 @@ class Type(ModelSQL, ModelView):
         for type_ in childs:
             type_sum[type_.id] = Decimal('0.0')
 
-        accounts = Account.search([
-                ('type', 'in', [t.id for t in childs]),
-                ('kind', '!=', 'view'),
-                ])
+        start_period_ids = GeneralLedger.get_period_ids('start_%s' % name)
+        end_period_ids = GeneralLedger.get_period_ids('end_%s' % name)
+        period_ids = list(
+            set(end_period_ids).difference(set(start_period_ids)))
+
+        with Transaction().set_context(periods=period_ids):
+            accounts = Account.search([
+                    ('type', 'in', [t.id for t in childs]),
+                    ('kind', '!=', 'view'),
+                    ])
         for account in accounts:
             type_sum[account.type.id] += (account.debit - account.credit)
 
@@ -1118,6 +1125,8 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
                     ('fiscalyear', '=', context.get('fiscalyear')),
                     ('end_date', '<=', period.start_date),
                     ])
+            if period.start_date == period.end_date:
+                periods.append(period)
             if periods:
                 period_ids = [p.id for p in periods]
         return period_ids
