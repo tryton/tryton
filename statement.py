@@ -431,7 +431,8 @@ class Statement(Workflow, ModelSQL, ModelView):
             to_write.append({
                     'move': move.id,
                     })
-        Line.write(*to_write)
+        if to_write:
+            Line.write(*to_write)
 
         move_lines = []
         for move, statement, lines in moves:

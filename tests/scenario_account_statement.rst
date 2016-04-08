@@ -430,3 +430,9 @@ Test number of lines validation::
     >>> second_line.account = receivable
     >>> second_line.party = customer
     >>> statement.click('validate_statement')
+
+Validate empty statement::
+
+    >>> statement = Statement(name='empty', journal=statement_journal)
+    >>> statement.end_balance = statement.start_balance
+    >>> statement.click('validate_statement')
