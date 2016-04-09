@@ -1098,7 +1098,6 @@ class Wizard(object):
                 self.form._default_set(view['defaults'])
                 self.states = [b['state'] for b in view['buttons']]
                 self.form_state = view['state']
-                return
             else:
                 self.state = self.end_state
 
@@ -1108,6 +1107,9 @@ class Wizard(object):
                     context=self._context)
                 if proteus_action:
                     self.actions.append(proteus_action)
+
+            if 'view' in result:
+                return
 
         if self.state == self.end_state:
             self._proxy.delete(self.session_id, self._config.context)
