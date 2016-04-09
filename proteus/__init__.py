@@ -928,12 +928,14 @@ class Wizard(object):
                 self.form._default_set(view['defaults'])
                 self.states = [b['state'] for b in view['buttons']]
                 self.form_state = view['state']
-                return
             else:
                 self.state = self.end_state
 
             if 'actions' in result:
                 pass  # TODO
+
+            if 'view' in result:
+                return
 
         if self.state == self.end_state:
             self._proxy.delete(self.session_id, self._config.context)
