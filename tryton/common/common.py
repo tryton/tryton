@@ -1377,11 +1377,12 @@ def humanize(size):
 
 def get_hostname(netloc):
     if '[' in netloc and ']' in netloc:
-        return netloc.split(']')[0][1:]
+        hostname = netloc.split(']')[0][1:]
     elif ':' in netloc:
-        return netloc.split(':')[0]
+        hostname = netloc.split(':')[0]
     else:
-        return netloc
+        hostname = netloc
+    return hostname.strip()
 
 
 def get_port(netloc):
