@@ -23,7 +23,7 @@ _ = gettext.gettext
 def date_parse(text, format_='%x'):
     formatted_date = datetime.date(1988, 7, 16).strftime(format_)
     dayfirst = formatted_date.index('16') == 0
-    monthfirst = formatted_date.index(7) <= 1
+    monthfirst = formatted_date.index('7') <= 1
     yearfirst = not dayfirst and not monthfirst
     return parse(text, dayfirst=dayfirst, yearfirst=yearfirst, ignoretz=True)
 
