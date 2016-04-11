@@ -23,6 +23,7 @@ this repository contains the full copyright notices and license terms. -->
           <field name="cost_price"/>
           <label name="cost_price_method"/>
           <field name="cost_price_method"/>
+          <newline/>
           <field name="products" mode="form,tree" colspan="2"
               view_ids="product.product_view_form_simple"/>
           <field name="categories" colspan="2"
