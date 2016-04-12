@@ -9,6 +9,7 @@ import itertools
 from sql import Literal, Null
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
+from sql.functions import Round
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields, Check
 from trytond.report import Report
@@ -692,16 +693,27 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.invoice.tax')
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
         type_name = cls.total_amount._field.sql_type().base
         line = Line.__table__()
+        invoice = Invoice.__table__()
+        currency = Currency.__table__()
         tax = Tax.__table__()
 
+        _, operator, value = clause
         invoice_query = Rule.query_get('account.invoice')
-        Operator = fields.SQL_OPERATORS[clause[1]]
+        Operator = fields.SQL_OPERATORS[operator]
+        # SQLite uses float for sum
+        if backend.name() == 'sqlite':
+            value = float(value)
 
-        union = (line.select(line.invoice.as_('invoice'),
-                Coalesce(Sum(line.quantity * line.unit_price), 0
-                    ).as_('total_amount'),
+        union = (line.join(invoice, condition=(invoice.id == line.invoice)
+                ).join(currency, condition=(currency.id == invoice.currency)
+                ).select(line.invoice.as_('invoice'),
+                Coalesce(Sum(Round((line.quantity * line.unit_price).cast(
+                                type_name),
+                                currency.digits)), 0).as_('total_amount'),
                 where=line.invoice.in_(invoice_query),
                 group_by=line.invoice)
             | tax.select(tax.invoice.as_('invoice'),
@@ -710,7 +722,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 group_by=tax.invoice))
         query = union.select(union.invoice, group_by=union.invoice,
             having=Operator(Sum(union.total_amount).cast(type_name),
-                clause[2]))
+                value))
         return [('id', 'in', query)]
 
     @classmethod
@@ -718,17 +730,32 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
         type_name = cls.untaxed_amount._field.sql_type().base
         line = Line.__table__()
+        invoice = Invoice.__table__()
+        currency = Currency.__table__()
 
+        _, operator, value = clause
         invoice_query = Rule.query_get('account.invoice')
-        Operator = fields.SQL_OPERATORS[clause[1]]
+        Operator = fields.SQL_OPERATORS[operator]
+        # SQLite uses float for sum
+        if backend.name() == 'sqlite':
+            value = float(value)
 
-        query = line.select(line.invoice,
-            where=line.invoice.in_(invoice_query),
-            group_by=line.invoice,
-            having=Operator(Coalesce(Sum(line.quantity * line.unit_price), 0
-                    ).cast(type_name), clause[2]))
+        query = line.join(invoice,
+            condition=(invoice.id == line.invoice)
+            ).join(currency,
+                condition=(currency.id == invoice.currency)
+                ).select(line.invoice,
+                    where=line.invoice.in_(invoice_query),
+                    group_by=line.invoice,
+                    having=Operator(Coalesce(Sum(
+                                Round((line.quantity * line.unit_price).cast(
+                                        type_name),
+                                    currency.digits)), 0).cast(type_name),
+                        value))
         return [('id', 'in', query)]
 
     @classmethod
@@ -739,14 +766,18 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         type_name = cls.tax_amount._field.sql_type().base
         tax = Tax.__table__()
 
+        _, operator, value = clause
         invoice_query = Rule.query_get('account.invoice')
-        Operator = fields.SQL_OPERATORS[clause[1]]
+        Operator = fields.SQL_OPERATORS[operator]
+        # SQLite uses float for sum
+        if backend.name() == 'sqlite':
+            value = float(value)
 
         query = tax.select(tax.invoice,
             where=tax.invoice.in_(invoice_query),
             group_by=tax.invoice,
             having=Operator(Coalesce(Sum(tax.amount), 0).cast(type_name),
-                clause[2]))
+                value))
         return [('id', 'in', query)]
 
     @property

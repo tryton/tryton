@@ -302,5 +302,13 @@ Create some complex invoice and test its taxes base rounding::
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('0.0035')
     >>> invoice.save()
+    >>> invoice.untaxed_amount
+    Decimal('0.00')
     >>> invoice.taxes[0].base == invoice.untaxed_amount
+    True
+    >>> found_invoice, = Invoice.find([('untaxed_amount', '=', Decimal(0))])
+    >>> found_invoice.id == invoice.id
+    True
+    >>> found_invoice, = Invoice.find([('total_amount', '=', Decimal(0))])
+    >>> found_invoice.id == invoice.id
     True
