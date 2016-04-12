@@ -966,7 +966,7 @@ class Wizard(object):
                 ctx['active_ids'] = None
                 ctx['active_model'] = None
             if self.action:
-                ctx['action_id'] = self.action.id
+                ctx['action_id'] = self.action['id']
             else:
                 ctx['action_id'] = None
 
