@@ -46,3 +46,8 @@ class TestWizard(ProteusTestCase):
         self.assertEqual(len(print_model_graph.actions), 0)
         print_model_graph.execute('update')
         self.assertEqual(len(print_model_graph.actions), 1)
+
+    def test_configuration_wizard(self):
+        config_wizard = Wizard('ir.module.config_wizard')
+        config_wizard.execute('action')
+        self.assertTrue(config_wizard.actions)
