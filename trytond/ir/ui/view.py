@@ -178,7 +178,7 @@ class View(ModelSQL, ModelView):
                     except Exception, e:
                         error_log = '%s: <%s %s="%s"/>' % (
                             e, element.get('id') or element.get('name'), attr,
-                            value)
+                            element.get(attr))
                         logger.error(
                             'Invalid XML view %s:\n%s\n%s',
                             view.rec_name, error_log, xml)
