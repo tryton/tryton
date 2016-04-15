@@ -312,7 +312,17 @@
         eval_ = new Sao.PYSON.Encoder().encode(
             new Sao.PYSON.Equal('foo', 'bar'));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-            "decode(Equal('test', 'test'))");
+            "decode(Equal('foo', 'bar'))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+                new Sao.PYSON.Equal(['test'], ['test']));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+                "decode(Equal(['test'], ['test']))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+                new Sao.PYSON.Equal(['foo'], ['bar']));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+                "decode(Equal(['foo'], ['bar']))");
     });
 
     QUnit.test('PYSON Greater', function() {
