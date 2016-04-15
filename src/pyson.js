@@ -249,7 +249,11 @@
     });
 
     Sao.PYSON.Equal.eval_ = function(value, context) {
-        return value.s1 == value.s2;
+        if (value.s1 instanceof Array  && value.s2 instanceof Array) {
+            return Sao.common.compare(value.s1, value.s2);
+        } else {
+            return value.s1 == value.s2;
+        }
     };
 
     Sao.PYSON.Greater = Sao.class_(Sao.PYSON.PYSON, {
