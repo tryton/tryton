@@ -1233,8 +1233,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             'invisible': ~Eval('party_required', False),
             },
         depends=['party_required'])
-    party_required = fields.Function(fields.Boolean('Party Required'),
-        'get_party_required')
+    party_required = fields.Boolean('Party Required')
     company = fields.Many2One('company.company', 'Company')
     debit = fields.Numeric('Debit',
         digits=(16, Eval('currency_digits', 2)),
@@ -1266,10 +1265,12 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         pool = Pool()
         Line = pool.get('account.move.line')
         Move = pool.get('account.move')
-        Account = pool.get('account.general_ledger.account')
+        LedgerAccount = pool.get('account.general_ledger.account')
+        Account = pool.get('account.account')
         context = Transaction().context
         line = Line.__table__()
         move = Move.__table__()
+        account = Account.__table__()
         columns = []
         for fname, field in cls._fields.iteritems():
             if hasattr(field, 'set'):
@@ -1288,6 +1289,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
                     column = (line.debit - line.credit).as_('balance')
             elif fname == 'move_description':
                 column = Column(move, 'description').as_(fname)
+            elif fname == 'party_required':
+                column = Column(account, 'party_required').as_(fname)
             elif (not field_line
                     or fname == 'state'
                     or isinstance(field_line, fields.Function)):
@@ -1295,13 +1298,14 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             else:
                 column = Column(line, fname).as_(fname)
             columns.append(column)
-        start_period_ids = set(Account.get_period_ids('start_balance'))
-        end_period_ids = set(Account.get_period_ids('end_balance'))
+        start_period_ids = set(LedgerAccount.get_period_ids('start_balance'))
+        end_period_ids = set(LedgerAccount.get_period_ids('end_balance'))
         period_ids = list(end_period_ids.difference(start_period_ids))
         with Transaction().set_context(periods=period_ids):
             line_query, fiscalyear_ids = Line.query_get(line)
         return line.join(move, condition=line.move == move.id
-            ).select(*columns, where=line_query)
+            ).join(account, condition=line.account == account.id
+                ).select(*columns, where=line_query)
 
     def get_party_required(self, name):
         return self.account.party_required

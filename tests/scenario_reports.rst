@@ -81,6 +81,8 @@ Print some reports::
 
     >>> GeneralLedgerAccount = Model.get('account.general_ledger.account')
     >>> gl_accounts = GeneralLedgerAccount.find([])
+    >>> _ = [(l.balance, l.party_required) for gl in gl_accounts
+    ...     for l in gl.lines]
 
     >>> general_ledger = Report('account.general_ledger', context={
     ...     'company': company.id,
