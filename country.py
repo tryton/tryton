@@ -184,7 +184,11 @@ class Subdivision(ModelSQL, ModelView):
         ('unitary authority (wales)', 'Unitary authority (wales)'),
         ('zone', 'zone'),
         ], 'Type', required=True)
-    parent = fields.Many2One('country.subdivision', 'Parent')
+    parent = fields.Many2One('country.subdivision', 'Parent',
+        domain=[
+            ('country', '=', Eval('country', -1)),
+            ],
+        depends=['country'])
 
     @classmethod
     def __setup__(cls):
