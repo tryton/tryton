@@ -1190,7 +1190,7 @@ class TranslationSet(Wizard):
                     ('module', '=', view.module),
                     ])
             for view2 in views2:
-                xml2 = view2.arch.strip()
+                xml2 = view2.arch
                 if not xml2:
                     continue
                 tree2 = etree.fromstring(xml2)
