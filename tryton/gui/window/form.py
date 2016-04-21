@@ -332,8 +332,9 @@ class Form(SignalEvent, TabContent):
     def set_buttons_sensitive(self, revision=None):
         if not revision:
             access = common.MODELACCESS[self.model]
-            for button, access_type in [('new', 'create'), ('save', 'write')]:
-                self.buttons[button].props.sensitive = access[access_type]
+            self.buttons['new'].props.sensitive = access['create']
+            self.buttons['save'].props.sensitive = (
+                access['create'] or access['write'])
         else:
             for button in ['new', 'save']:
                 self.buttons[button].props.sensitive = False
@@ -384,7 +385,8 @@ class Form(SignalEvent, TabContent):
         if widget:
             # Called from button so we must save the tree state
             self.screen.save_tree_state()
-        if not common.MODELACCESS[self.model]['write']:
+        if not (common.MODELACCESS[self.model]['write']
+                or common.MODELACCESS[self.model]['create']):
             return
         if self.screen.save_current():
             self.message_info(_('Record saved.'), gtk.MESSAGE_INFO)

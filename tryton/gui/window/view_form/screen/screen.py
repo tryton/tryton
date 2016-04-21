@@ -59,7 +59,8 @@ class Screen(SignalEvent):
         super(Screen, self).__init__()
 
         self.readonly = readonly
-        if not MODELACCESS[model_name]['write']:
+        if not (MODELACCESS[model_name]['write']
+                or MODELACCESS[model_name]['create']):
             self.readonly = True
         self.search_count = 0
         if not row_activate:
