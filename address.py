@@ -125,15 +125,14 @@ class Address(ModelSQL, ModelView):
                 if full_address[-1:] != '\n':
                     full_address += ' '
                 full_address += self.city
-        if self.country or self.subdivision:
+        if self.subdivision:
             if full_address:
                 full_address += '\n'
-            if self.subdivision:
-                full_address += self.subdivision.name
-            if self.country:
-                if full_address[-1:] != '\n':
-                    full_address += ' '
-                full_address += self.country.name
+            full_address += self.subdivision.name
+        if self.country:
+            if full_address:
+                full_address += '\n'
+            full_address += self.country.name.upper()
         return full_address
 
     def get_rec_name(self, name):
