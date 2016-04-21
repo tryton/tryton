@@ -588,7 +588,8 @@
             this.size_limit = null;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
-            if (!Sao.common.MODELACCESS.get(model_name).write) {
+            var access = Sao.common.MODELACCESS.get(model_name);
+            if (!(access.write || access.create)) {
                 this.attributes.readonly = true;
             }
             this.search_count = 0;

@@ -506,7 +506,8 @@
             }.bind(this));
         },
         save: function() {
-            if (!Sao.common.MODELACCESS.get(this.screen.model_name).write) {
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            if (!(access.write || access.create)) {
                 return jQuery.when();
             }
             return this.screen.save_current().then(
