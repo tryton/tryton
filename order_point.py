@@ -45,7 +45,7 @@ class OrderPoint(ModelSQL, ModelView):
             'get_location', searcher='search_location')
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
-        domain=[('type', '=', 'storage')],
+        domain=[('type', 'in', ['storage', 'view'])],
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': Equal(Eval('type'), 'internal'),

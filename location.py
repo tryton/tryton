@@ -19,7 +19,7 @@ class Location:
             'readonly': ~Eval('active'),
             },
         domain=[
-            ('type', '=', 'storage'),
+            ('type', 'in', ['storage', 'view']),
             ],
         depends=['type', 'active'],
         help='Leave empty for no default provisioning')
