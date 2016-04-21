@@ -505,7 +505,8 @@
             }.bind(this));
         },
         save: function() {
-            if (!Sao.common.MODELACCESS.get(this.screen.model_name).write) {
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            if (!(access.write || access.create)) {
                 return jQuery.when();
             }
             return this.screen.save_current().then(
@@ -709,10 +710,12 @@
         set_buttons_sensitive: function(revision) {
             if (!revision) {
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-                [['new', 'create'], ['save', 'write']].forEach(function(e) {
+                [['new', access.create],
+                ['save', access.create || access.write]
+                ].forEach(function(e) {
                     var button = e[0];
-                    var access_type = e[1];
-                    if (access[access_type]) {
+                    var access = e[1];
+                    if (access) {
                         this.buttons[button].parent().removeClass('disabled');
                     } else {
                         this.buttons[button].parent().addClass('disabled');
