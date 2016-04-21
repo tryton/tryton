@@ -351,7 +351,8 @@ class Form(SignalEvent, TabContent):
             'green')
 
     def sig_save(self, widget=None):
-        if not common.MODELACCESS[self.model]['write']:
+        if not (common.MODELACCESS[self.model]['write']
+                or common.MODELACCESS[self.model]['create']):
             return
         if self.screen.save_current():
             self.message_info(_('Record saved!'), 'green')
