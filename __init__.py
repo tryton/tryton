@@ -8,6 +8,7 @@ from .configuration import *
 
 def register():
     Pool.register(
+        ProductConfiguration,
         Category,
         CategoryCustomerTax,
         CategorySupplierTax,
@@ -16,5 +17,4 @@ def register():
         TemplateSupplierTax,
         Product,
         Configuration,
-        ProductConfiguration,
         module='account_product', type_='model')
