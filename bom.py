@@ -129,6 +129,15 @@ class BOMOutput(BOMInput):
     __name__ = 'production.bom.output'
     _table = 'production_bom_output'  # Needed to override BOMInput._table
 
+    @classmethod
+    def delete(cls, outputs):
+        pool = Pool()
+        ProductBOM = pool.get('product.product-production.bom')
+        bom_products = [b for o in outputs for b in o.product.boms]
+        super(BOMOutput, cls).delete(outputs)
+        # Validate that output_products domain on bom is still valid
+        ProductBOM._validate(bom_products, ['bom'])
+
 
 class BOMTree(ModelView):
     'BOM Tree'
