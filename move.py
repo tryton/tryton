@@ -1835,17 +1835,20 @@ class Reconcile(Wizard):
     def get_accounts(self):
         'Return a list of account id to reconcile'
         pool = Pool()
+        Rule = pool.get('ir.rule')
         Line = pool.get('account.move.line')
         line = Line.__table__()
         Account = pool.get('account.account')
         account = Account.__table__()
         cursor = Transaction().connection.cursor()
+        account_rule = Rule.query_get(Account.__name__)
 
         balance = line.debit - line.credit
         cursor.execute(*line.join(account,
                 condition=line.account == account.id).select(
                 account.id,
-                where=(line.reconciliation == Null) & account.reconcile,
+                where=((line.reconciliation == Null) & account.reconcile
+                    & account.id.in_(account_rule)),
                 group_by=account.id,
                 having=(
                     Sum(Case((balance > 0, 1), else_=0)) > 0)
