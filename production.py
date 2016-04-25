@@ -17,7 +17,8 @@ class Production:
     __name__ = 'production'
     work_center = fields.Many2One('production.work.center', 'Work Center',
         states={
-            'required': Bool(Eval('routing')),
+            'required': (Bool(Eval('routing'))
+                & (Eval('state') != 'request')),
             'invisible': ~Eval('routing'),
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
