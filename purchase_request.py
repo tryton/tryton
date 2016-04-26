@@ -5,6 +5,7 @@ import operator
 from itertools import groupby
 from functools import partial
 from decimal import Decimal
+from collections import defaultdict
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -196,8 +197,9 @@ class PurchaseRequest(ModelSQL, ModelView):
                     pbl = Product.products_by_location(warehouse_ids,
                         product_ids, with_childs=True)
                 for warehouse_id in warehouse_ids:
-                    min_date_qties = dict((x, pbl.pop((warehouse_id, x), 0))
-                        for x in product_ids)
+                    min_date_qties = defaultdict(lambda: 0,
+                        ((x, pbl.pop((warehouse_id, x), 0))
+                            for x in product_ids))
                     # Search for shortage between min-max
                     shortages = cls.get_shortage(warehouse_id, product_ids,
                         min_date, max_date, min_date_qties=min_date_qties,
