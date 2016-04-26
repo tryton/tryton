@@ -578,7 +578,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         Search on shipments or returns
         '''
         def method(self, name, clause):
-            return [('lines.moves.shipment',) + tuple(clause[1:])
+            if isinstance(clause[2], basestring):
+                target = 'rec_name'
+            else:
+                target = 'id'
+            return [('lines.moves.shipment.' + target,) + tuple(clause[1:])
                 + (model_name,)]
         return classmethod(method)
 
