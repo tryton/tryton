@@ -5,6 +5,10 @@ from trytond.pool import Pool
 from .opportunity import *
 from .configuration import *
 from .sale import *
+from .party import *
+from .account import *
+from .product import *
+from .company import *
 
 
 def register():
@@ -17,6 +21,14 @@ def register():
         SaleOpportunityEmployeeMonthly,
         Configuration,
         Sale,
+        Party,
+        Address,
+        PaymentTerm,
+        PaymentTermLine,
+        Template,
+        Product,
+        Company,
+        Employee,
         module='sale_opportunity', type_='model')
     Pool.register(
         OpenSaleOpportunityEmployee,
