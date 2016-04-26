@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
+from collections import defaultdict
 
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
@@ -86,8 +87,8 @@ class Production:
                     for p in products[i:i + cursor.IN_MAX]])
 
             for warehouse in warehouses:
-                quantities = dict((x, pbl.pop((warehouse.id, x), 0))
-                    for x in product_ids)
+                quantities = defaultdict(lambda: 0,
+                    ((x, pbl.pop((warehouse.id, x), 0)) for x in product_ids))
                 shortages = cls.get_shortage(warehouse.id, product_ids, today,
                     quantities, products_period, product2ops)
 
