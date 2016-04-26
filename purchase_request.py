@@ -272,8 +272,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         for request in requests:
             pline = request.purchase_line
             # Skip incoherent request
-            if request.product.id != pline.product.id or \
-                    request.warehouse.id != pline.purchase.warehouse.id:
+            if (request.product != pline.product
+                    or request.warehouse != pline.purchase.warehouse):
                 continue
             # Take smallest amount between request and purchase line
             req_qty = Uom.compute_qty(request.uom, request.quantity,
