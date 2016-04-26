@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import operator
+from collections import defaultdict
 
 from trytond.model import ModelView
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -100,8 +101,9 @@ class PurchaseRequest:
                     pbl = Product.products_by_location(warehouse_ids,
                         product_ids, with_childs=True)
                 for warehouse_id in warehouse_ids:
-                    min_date_qties = dict((x, pbl.pop((warehouse_id, x), 0))
-                        for x in product_ids)
+                    min_date_qties = defaultdict(lambda: 0,
+                        ((x, pbl.pop((warehouse_id, x), 0))
+                            for x in product_ids))
                     # Search for shortage between min-max
                     shortages = cls.get_shortage(warehouse_id, product_ids,
                         min_date, max_date, min_date_qties=min_date_qties,
