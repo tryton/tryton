@@ -43,8 +43,3 @@ class TestWizard(TestCase):
 
         self.assert_(User.find([('name', '=', 'Foo')]))
         self.assertFalse(User.find([('name', '=', 'Bar')]))
-
-    def test_configuration_wizard(self):
-        config_wizard = Wizard('ir.module.module.config_wizard')
-        config_wizard.execute('action')
-        self.assertTrue(config_wizard.actions)
