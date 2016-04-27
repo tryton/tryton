@@ -477,6 +477,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_general_ledger_account">
+            <field name="model"
+                search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_general_ledger_account1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_general_ledger_account"/>
+        </record>
+
         <record model="ir.ui.view" id="general_ledger_line_view_list">
             <field name="model">account.general_ledger.line</field>
             <field name="type">tree</field>
@@ -517,6 +529,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_general_ledger_line">
+            <field name="model"
+                search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_general_ledger_line1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_general_ledger_line"/>
         </record>
 
         <record model="ir.ui.view" id="general_ledger_account_context_view_form">
@@ -608,6 +632,33 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem parent="menu_reporting" action="act_aged_balance_list"
             id="menu_aged_balance"/>
+
+        <record model="ir.model.access" id="access_aged_balance">
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aged_balance_account">
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_aged_balance">
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_aged_balance1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_aged_balance"/>
+        </record>
 
         <record model="ir.ui.view" id="aged_balance_context_view_form">
             <field name="model">account.aged_balance.context</field>
