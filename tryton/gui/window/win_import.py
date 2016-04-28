@@ -68,10 +68,14 @@ class WinImport(WinCSV):
                 node = self.model1.insert(
                     parent_node, 0, [name, prefix_field + field])
                 name = prefix_name + name
-                self.fields[prefix_field + field] = (name,
-                        fields[field].get('relation'))
+                # Only One2Many can be nested for import
+                if fields[field]['type'] == 'one2many':
+                    relation = fields[field].get('relation')
+                else:
+                    relation = None
+                self.fields[prefix_field + field] = (name, relation)
                 self.fields_invert[name] = prefix_field + field
-                if fields[field].get('relation'):
+                if relation:
                     self.model1.insert(node, 0, [None, ''])
 
     def _get_fields(self, model):
