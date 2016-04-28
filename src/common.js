@@ -2579,8 +2579,16 @@
             var prm = jQuery.Deferred();
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
+            dialog.content.submit(function(evt) {
+                dialog.footer.find('button.btn-primary').first().click();
+                evt.preventDefault();
+            }.bind(this));
             this.running = true;
             dialog.modal.modal('show');
+            dialog.modal.on('shown.bs.modal', function() {
+                dialog.modal.find('input,select')
+                    .filter(':visible').first().focus();
+            });
             return prm;
         },
         close: function(dialog) {
