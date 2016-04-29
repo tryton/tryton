@@ -953,7 +953,7 @@
         },
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&
-                    this.current_view.attributes.keyword_open) {
+                    (this.current_view.attributes.keyword_open == 1)) {
                 Sao.Action.exec_keyword('tree_open', {
                     'model': this.model_name,
                     'id': this.get_id(),
