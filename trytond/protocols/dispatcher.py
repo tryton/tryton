@@ -217,6 +217,8 @@ def _dispatch(request, pool, *args, **kwargs):
             except Exception:
                 logger.error(log_message, *log_args, exc_info=True)
                 raise
+            # Need to commit to unlock SQLite database
+            transaction.commit()
             Cache.resets(pool.database_name)
         if request.authorization.type == 'session':
             try:
