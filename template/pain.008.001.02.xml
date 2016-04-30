@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
     </py:def>
     <CstmrDrctDbtInitn>
         <GrpHdr>
-            <MsgId>${group.reference[:35]}</MsgId>
+            <MsgId>${group.number[:35]}</MsgId>
             <CreDtTm>${datetime.datetime.now().isoformat()}</CreDtTm>
             <!-- Authstn -->
             <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
