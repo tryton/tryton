@@ -22,6 +22,26 @@ msgstr ""
 "No podeu tancar un període abans de la data de caducitat \"%(date)s\" del "
 "lot \"%(lot)s\"."
 
+#, fuzzy
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Estat caducitat"
+
+#, fuzzy
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Temps a caducar"
+
+#, fuzzy
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Estat vida útil"
+
+#, fuzzy
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Temps vida útil"
+
 msgctxt "field:product.template,expiration_state:"
 msgid "Expiration State"
 msgstr "Estat caducitat"
@@ -58,6 +78,16 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Estat caducitat"
 
+#, fuzzy
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
+#, fuzzy
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
 msgctxt "help:product.template,expiration_time:"
 msgid "In number of days"
 msgstr "En nombre de dies."
@@ -73,6 +103,36 @@ msgstr "El retard en número de dies abans de l'eliminació de la previsió."
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forçar caducitats a logística"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Cap"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Cap"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Obligatori"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"
