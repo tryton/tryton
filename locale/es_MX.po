@@ -34,9 +34,10 @@ msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
 msgstr "Crear inventarios"
 
+#, fuzzy
 msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Crear inventarios"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"

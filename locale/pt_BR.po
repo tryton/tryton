@@ -36,7 +36,7 @@ msgstr "Criar inventários"
 
 msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Criar inventários"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
