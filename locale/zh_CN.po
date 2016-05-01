@@ -12,9 +12,8 @@ msgstr ""
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Аналитични сметки"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Аналитични сметки"
+msgstr ""
