@@ -86,11 +86,6 @@ msgid "BOM"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:production,code:"
-msgid "Code"
-msgstr "Code"
-
-#, fuzzy
 msgctxt "field:production,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -122,6 +117,10 @@ msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
+msgstr ""
+
+msgctxt "field:production,number:"
+msgid "Number"
 msgstr ""
 
 msgctxt "field:production,outputs:"

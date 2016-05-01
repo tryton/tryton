@@ -86,10 +86,6 @@ msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "LdM"
 
-msgctxt "field:production,code:"
-msgid "Code"
-msgstr "Código"
-
 msgctxt "field:production,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -121,6 +117,10 @@ msgstr "Entradas"
 msgctxt "field:production,location:"
 msgid "Location"
 msgstr "Ubicación"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -592,13 +592,15 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "En espera"
 
+#, fuzzy
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOM"
-msgstr ""
+msgstr "Producto - LdM"
 
+#, fuzzy
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOMs"
-msgstr ""
+msgstr "Producto - LdM"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to Assign"
@@ -616,49 +618,59 @@ msgctxt "view:production.bom.output:"
 msgid "BOM Outputs"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production.bom.tree.open.start:"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Árbol LdM"
 
+#, fuzzy
 msgctxt "view:production.bom.tree.open.tree:"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Árbol LdM"
 
+#, fuzzy
 msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
-msgstr ""
+msgstr "Árbol LdM"
 
+#, fuzzy
 msgctxt "view:production.bom:"
 msgid "BOM"
-msgstr ""
+msgstr "LdM"
 
+#, fuzzy
 msgctxt "view:production.bom:"
 msgid "BOMs"
-msgstr ""
+msgstr "LdM"
 
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production.configuration:"
 msgid "Production Configuration"
-msgstr ""
+msgstr "Configuración de la producción"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Assign"
-msgstr ""
+msgstr "Reservada"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizada"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
 msgctxt "view:production:"
 msgid "Lines"
@@ -668,13 +680,15 @@ msgctxt "view:production:"
 msgid "Other Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Production"
-msgstr ""
+msgstr "Producción"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Productions"
-msgstr ""
+msgstr "Producciones"
 
 msgctxt "view:production:"
 msgid "Reset to BOM"

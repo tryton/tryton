@@ -84,10 +84,6 @@ msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "Kosovnica"
 
-msgctxt "field:production,code:"
-msgid "Code"
-msgstr "Šifra"
-
 msgctxt "field:production,company:"
 msgid "Company"
 msgstr "Družba"
@@ -119,6 +115,10 @@ msgstr "Vhodi"
 msgctxt "field:production,location:"
 msgid "Location"
 msgstr "Lokacija"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"

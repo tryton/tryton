@@ -82,10 +82,6 @@ msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr ""
 
-msgctxt "field:production,code:"
-msgid "Code"
-msgstr ""
-
 msgctxt "field:production,company:"
 msgid "Company"
 msgstr ""
@@ -116,6 +112,10 @@ msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
+msgstr ""
+
+msgctxt "field:production,number:"
+msgid "Number"
 msgstr ""
 
 msgctxt "field:production,outputs:"
