@@ -18,8 +18,9 @@ msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Taxa e Fator não podem ser ambos iguais a zero."
 
+#, fuzzy
 msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
 "Você não pode mudar Taxa, Fator ou Categoria em uma unidade de medida."
 
@@ -59,13 +60,67 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+#, fuzzy
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.configuration,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Ativo"
 
+#, fuzzy
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Categorias"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Código"
+
+#, fuzzy
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Consumível"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Preço de custo"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Method"
+msgstr "Método de custo"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -83,6 +138,11 @@ msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
 msgstr "UDM padrão"
 
+#, fuzzy
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoria padrão para UDM"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Descrição"
@@ -91,9 +151,19 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Preço de tabela"
+
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Preço de tabela"
+
+#, fuzzy
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Nome"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
@@ -119,9 +189,10 @@ msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Ativo"
 
-msgctxt "field:product.template,category:"
-msgid "Category"
-msgstr "Categoria"
+#, fuzzy
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Categorias"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
@@ -180,6 +251,45 @@ msgid "Write Date"
 msgstr "Data de gravação"
 
 msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Categoria"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
@@ -295,6 +405,10 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorias"
 
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Variantes"
@@ -323,6 +437,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorias"
 
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Produto"
@@ -330,6 +448,10 @@ msgstr "Produto"
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "Variantes"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -347,6 +469,10 @@ msgctxt "model:product.category,name:"
 msgid "Product Category"
 msgstr "Categoria do produto"
 
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr ""
+
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
 msgstr "Variante do Produto"
@@ -354,6 +480,10 @@ msgstr "Variante do Produto"
 msgctxt "model:product.template,name:"
 msgid "Product Template"
 msgstr "Modelo de produto"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr ""
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -647,6 +777,30 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administração de produtos"
 
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid ""
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Average"
+msgstr "Média"
+
+#, fuzzy
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Fixed"
+msgstr "Fixo"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Média"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Fixo"
+
 msgctxt "selection:product.product,type:"
 msgid "Assets"
 msgstr "Ativos"
@@ -690,6 +844,10 @@ msgstr "Categorias de Produto"
 msgctxt "view:product.category:"
 msgid "Product Category"
 msgstr "Categoria de produto"
+
+msgctxt "view:product.configuration:"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "view:product.product:"
 msgid "Product"

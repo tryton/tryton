@@ -18,8 +18,9 @@ msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Курса и коефициента не може едновременно да са нула."
 
+#, fuzzy
 msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
 "За мерна единица не може да променате отношение, коефициент или категория."
 
@@ -60,13 +61,67 @@ msgid "Write User"
 msgstr "Променено от"
 
 #, fuzzy
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.configuration,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Активен"
 
+#, fuzzy
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Категории"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Код"
+
+#, fuzzy
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Консуматив"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Фабрична цена"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Method"
+msgstr "Начин на остойностяване"
 
 #, fuzzy
 msgctxt "field:product.product,cost_price_uom:"
@@ -86,6 +141,11 @@ msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
 msgstr "Мер. ед. по подрабиране"
 
+#, fuzzy
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Категория мер. ед. по подразбиране"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Описание"
@@ -95,9 +155,19 @@ msgid "ID"
 msgstr "ID"
 
 #, fuzzy
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Каталожна цена"
+
+#, fuzzy
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Каталожна цена"
+
+#, fuzzy
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Име"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
@@ -124,9 +194,10 @@ msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Активен"
 
-msgctxt "field:product.template,category:"
-msgid "Category"
-msgstr "Категория"
+#, fuzzy
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Категории"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
@@ -186,6 +257,45 @@ msgid "Write Date"
 msgstr "Променено на"
 
 msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Категория"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
@@ -302,14 +412,19 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Категории"
 
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Продукти"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr ""
+msgstr "Категория на продукт"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
@@ -332,6 +447,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Категории"
 
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Продукт"
@@ -340,6 +459,10 @@ msgstr "Продукт"
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "Продукти"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
@@ -358,6 +481,10 @@ msgctxt "model:product.category,name:"
 msgid "Product Category"
 msgstr "Категория на продукт"
 
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
@@ -366,6 +493,10 @@ msgstr "Продукт"
 msgctxt "model:product.template,name:"
 msgid "Product Template"
 msgstr "Щаблон за продукт"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr ""
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -660,6 +791,30 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Управление на продукти"
 
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid ""
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Average"
+msgstr "Средна"
+
+#, fuzzy
+msgctxt "selection:product.configuration,default_cost_price_method:"
+msgid "Fixed"
+msgstr "Фиксирана"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Средна"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Фиксирана"
+
 #, fuzzy
 msgctxt "selection:product.product,type:"
 msgid "Assets"
@@ -706,6 +861,10 @@ msgstr "Категории продукти"
 msgctxt "view:product.category:"
 msgid "Product Category"
 msgstr "Категория на продукт"
+
+msgctxt "view:product.configuration:"
+msgid "Party Configuration"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:product.product:"
