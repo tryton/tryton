@@ -493,13 +493,15 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отменено"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Draft"
-msgstr ""
+msgstr "Черновик"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Mandate"
@@ -513,21 +515,24 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Request"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Validate"
-msgstr ""
+msgstr "Утвержденный"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отменено"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr ""
+msgstr "Черновик"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "SEPA Message"

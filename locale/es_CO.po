@@ -453,7 +453,7 @@ msgstr "SALIDA"
 
 msgctxt "view:account.configuration:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"

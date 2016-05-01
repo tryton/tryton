@@ -293,9 +293,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "Country"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
-msgstr ""
+msgstr "Identificador acreedor SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor name"
@@ -333,9 +334,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
@@ -447,70 +449,83 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Salida"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelado"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Mandate"
-msgstr ""
+msgstr "Mandato"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Mandates"
-msgstr ""
+msgstr "Mandatos"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Request"
-msgstr ""
+msgstr "Solicitado"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Validate"
-msgstr ""
+msgstr "Validado"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelado"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "SEPA Message"
-msgstr ""
+msgstr "Mensaje SEPA"
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "SEPA Messages"
-msgstr ""
+msgstr "Mensajes SEPA"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
