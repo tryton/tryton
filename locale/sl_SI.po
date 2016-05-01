@@ -14,10 +14,6 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr "Metoda porazdelitve"
 
-msgctxt "field:account.landed_cost,code:"
-msgid "Code"
-msgstr "Šifra"
-
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "Družba"
@@ -37,6 +33,10 @@ msgstr "ID"
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Postavke računov"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -93,6 +93,11 @@ msgstr "Zapisano"
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Raztovor"
 
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
@@ -156,6 +161,15 @@ msgstr "V pripravi"
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Knjiženo"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Raztovor"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"

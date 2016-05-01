@@ -14,10 +14,6 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr "Méthode d'allocation"
 
-msgctxt "field:account.landed_cost,code:"
-msgid "Code"
-msgstr "Code"
-
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "Société"
@@ -37,6 +33,10 @@ msgstr "ID"
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Lignes de facture"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -93,6 +93,11 @@ msgstr "Date de mise à jour"
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
+
+#, fuzzy
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
 
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
@@ -156,6 +161,15 @@ msgstr "Brouillon"
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Posté"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"

@@ -14,10 +14,6 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr ""
 
-msgctxt "field:account.landed_cost,code:"
-msgid "Code"
-msgstr ""
-
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr ""
@@ -36,6 +32,10 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
 msgstr ""
 
 msgctxt "field:account.landed_cost,posted_date:"
@@ -92,6 +92,10 @@ msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
 msgstr ""
 
 msgctxt "field:product.template,landed_cost:"
@@ -155,6 +159,14 @@ msgstr ""
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
 msgstr ""
 
 msgctxt "view:account.landed_cost:"
