@@ -44,7 +44,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Temps"
+msgstr "Esforç"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -100,7 +100,7 @@ msgstr "Temps"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Temps total"
+msgstr "Esforç total"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"

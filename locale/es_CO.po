@@ -56,7 +56,7 @@ msgstr ""
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -126,9 +126,10 @@ msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Esfuerzo Estimado para este trabajo"
 
+#, fuzzy
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work"
-msgstr ""
+msgstr "Esfuerzo Estimado para este trabajo"
 
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works"
@@ -138,9 +139,10 @@ msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
 
+#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr ""
+msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -168,27 +170,27 @@ msgstr "Actividades"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Abierto"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"

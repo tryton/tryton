@@ -123,10 +123,6 @@ msgctxt "field:project.work,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:timesheet.work,timesheet_lines:"
-msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
-
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Geschätzter Zeitaufwand für diese Aufgabe"

@@ -53,9 +53,10 @@ msgctxt "field:project.work,left:"
 msgid "Left"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
 #, fuzzy
 msgctxt "field:project.work,parent:"
@@ -173,29 +174,35 @@ msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Geopend"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Geopend"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Geopend"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"

@@ -53,7 +53,7 @@ msgstr ""
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -137,9 +137,10 @@ msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr ""
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -167,27 +168,27 @@ msgstr "Задачи"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Приключен"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Отворен"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr ""
+msgstr "Приключен"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Отворен"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Приключен"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr ""
+msgstr "Отворен"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
