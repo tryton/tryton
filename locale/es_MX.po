@@ -196,6 +196,10 @@ msgctxt "field:stock.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:stock.configuration,inventory_sequence:"
+msgid "Inventory Sequence"
+msgstr ""
+
 msgctxt "field:stock.configuration,rec_name:"
 msgid "Name"
 msgstr "Nombre"
@@ -259,6 +263,10 @@ msgstr "Ubicación"
 msgctxt "field:stock.inventory,lost_found:"
 msgid "Lost and Found"
 msgstr "Perdido/encontrado"
+
+msgctxt "field:stock.inventory,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.inventory,rec_name:"
 msgid "Name"
@@ -408,6 +416,11 @@ msgctxt "field:stock.location,type:"
 msgid "Location type"
 msgstr "Tipo de ubicación"
 
+#, fuzzy
+msgctxt "field:stock.location,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
 msgctxt "field:stock.location,write_date:"
 msgid "Write Date"
 msgstr "Fecha modificación"
@@ -415,6 +428,10 @@ msgstr "Fecha modificación"
 msgctxt "field:stock.location,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
+
+msgctxt "field:stock.move,assignation_required:"
+msgid "Assignation Required"
+msgstr ""
 
 msgctxt "field:stock.move,company:"
 msgid "Company"
@@ -640,10 +657,6 @@ msgctxt "field:stock.products_by_locations.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:stock.shipment.in,code:"
-msgid "Code"
-msgstr "Código"
-
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -679,6 +692,10 @@ msgstr "Movimientos internos"
 msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.in,number:"
+msgid "Numer"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
@@ -728,10 +745,6 @@ msgctxt "field:stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-msgctxt "field:stock.shipment.in.return,code:"
-msgid "Code"
-msgstr "Código"
-
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -743,6 +756,11 @@ msgstr "Fecha creación"
 msgctxt "field:stock.shipment.in.return,create_uid:"
 msgid "Create User"
 msgstr "Usuario creación"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,delivery_address:"
+msgid "Delivery Address"
+msgstr "Dirección envío"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
@@ -759,6 +777,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.in.return,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,origins:"
 msgid "Origins"
@@ -780,6 +802,11 @@ msgctxt "field:stock.shipment.in.return,state:"
 msgid "State"
 msgstr "Estado"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,supplier:"
+msgid "Supplier"
+msgstr "Proveedor"
+
 msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "A ubicación"
@@ -799,10 +826,6 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "Movimientos"
-
-msgctxt "field:stock.shipment.internal,code:"
-msgid "Code"
-msgstr "Código"
 
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
@@ -831,6 +854,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.internal,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,planned_date:"
 msgid "Planned Date"
@@ -867,10 +894,6 @@ msgstr "ID"
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "Movimientos"
-
-msgctxt "field:stock.shipment.out,code:"
-msgid "Code"
-msgstr "Código"
 
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
@@ -911,6 +934,10 @@ msgstr "Movimientos de inventario"
 msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.out,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,origins:"
 msgid "Origins"
@@ -964,10 +991,6 @@ msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
 msgid "Inventory Moves"
 msgstr "Movimientos internos"
 
-msgctxt "field:stock.shipment.out.return,code:"
-msgid "Code"
-msgstr "Código"
-
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -1011,6 +1034,10 @@ msgstr "Movimientos internos"
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.out.return,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
@@ -1322,6 +1349,11 @@ msgctxt ""
 msgid "Received"
 msgstr "Recibido"
 
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_inventory"
+msgid "Inventory"
+msgstr "Inventario"
+
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
 msgstr "Envío proveedor"
@@ -1341,6 +1373,11 @@ msgstr "Envío cliente"
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
 msgstr "Envío devolución cliente"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
+msgid "Inventory"
+msgstr "Inventario"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
@@ -1539,88 +1576,114 @@ msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
-msgstr ""
+msgstr "Desde ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Fecha estimada"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referencia"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "Lista de reabastecimiento"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Shipment Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
-msgstr ""
+msgstr "Proveedor"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "A ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Almacén"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
-msgstr ""
+msgstr "Desde ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
-msgstr ""
+msgstr "Desde ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Reubicaciones internas"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Fecha estimada"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
+msgstr "Referencia"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Shipment Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
-msgstr ""
+msgstr "A ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
-msgstr ""
+msgstr "A ubicación"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
@@ -1630,25 +1693,30 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
-msgstr ""
+msgstr "Fecha"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr ""
+msgstr "Nota de envío"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referencia"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
@@ -1659,44 +1727,57 @@ msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
-msgstr ""
+msgstr "Desde ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr ""
+msgstr "Lista recogida"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Fecha estimada"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
+msgstr "Referencia"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Shipment Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "A ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Almacén"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
@@ -1706,45 +1787,59 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ""
 
-msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Code:"
-msgstr ""
-
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr ""
+msgstr "Cliente"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
+msgstr "Desde ubicación"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
-msgstr ""
+msgstr "Fecha estimada"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referencia"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr ""
+msgstr "Lista de reabastecimiento"
 
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Shipment"
+msgstr "Envío"
+
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
-msgstr ""
+msgstr "A ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Almacén"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Canceled"
@@ -1914,41 +2009,58 @@ msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Received"
 msgstr "Recibido"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Stock"
-msgstr ""
+msgstr "Almacén y envíos"
 
+#, fuzzy
 msgctxt "view:product.by_location.start:"
 msgid "Product by Location"
-msgstr ""
+msgstr "Producto por ubicación"
 
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Cost Value"
-msgstr ""
+msgstr "Valor de costo"
 
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr ""
+msgstr "Productos"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Inventory"
+msgstr "Inventario"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Shipments"
+msgstr "Envío"
+
+#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Stock Configuration"
-msgstr ""
+msgstr "Configuración de almacén"
 
 msgctxt "view:stock.inventory.line:"
 msgid "Inventory Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.inventory.line:"
 msgid "Inventory Lines"
-msgstr ""
+msgstr "Movimientos internos"
 
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.inventory:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "view:stock.inventory:"
 msgid "Complete Inventory"
@@ -1958,37 +2070,48 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.inventory:"
 msgid "Inventories"
-msgstr ""
+msgstr "Inventarios"
 
+#, fuzzy
 msgctxt "view:stock.inventory:"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventario"
 
+#, fuzzy
 msgctxt "view:stock.location:"
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 msgctxt "view:stock.location:"
 msgid "Location Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.location:"
 msgid "Locations"
-msgstr ""
+msgstr "Configuración de ubicaciones"
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:stock.move:"
+msgid "Do"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Move"
-msgstr ""
+msgstr "Movimientos"
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Moves"
-msgstr ""
+msgstr "Movimientos"
 
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
@@ -2002,33 +2125,40 @@ msgctxt "view:stock.period.cache:"
 msgid "Period Caches"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.period:"
 msgid "Close"
-msgstr ""
+msgstr "Cerrado"
 
+#, fuzzy
 msgctxt "view:stock.period:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.period:"
 msgid "Period"
-msgstr ""
+msgstr "Período"
 
+#, fuzzy
 msgctxt "view:stock.period:"
 msgid "Periods"
-msgstr ""
+msgstr "Configuración de períodos"
 
+#, fuzzy
 msgctxt "view:stock.product_quantities_warehouse.start:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Unidades de producto por almacén"
 
+#, fuzzy
 msgctxt "view:stock.product_quantities_warehouse:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Unidades de producto por almacén"
 
+#, fuzzy
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Productos por ubicación"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to Assign"
@@ -2038,65 +2168,78 @@ msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
-msgstr ""
+msgstr "Reservado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Supplier Return Shipment"
-msgstr ""
+msgstr "Envío devolución proveedor"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in.return:"
 msgid "Supplier Return Shipments"
-msgstr ""
+msgstr "Envíos devolución proveedor"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Incoming Moves"
-msgstr ""
+msgstr "Movimientos de entrada"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Inventory Moves"
-msgstr ""
+msgstr "Movimientos internos"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
-msgstr ""
+msgstr "Recibido"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Supplier Shipment"
-msgstr ""
+msgstr "Envío proveedor"
 
+#, fuzzy
 msgctxt "view:stock.shipment.in:"
 msgid "Supplier Shipments"
-msgstr ""
+msgstr "Envíos proveedor"
 
 msgctxt "view:stock.shipment.internal.assign.failed:"
 msgid "Unable to Assign"
@@ -2106,29 +2249,35 @@ msgctxt "view:stock.shipment.internal.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
-msgstr ""
+msgstr "Reservado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipment"
-msgstr ""
+msgstr "Reubicaciones internas"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipments"
-msgstr ""
+msgstr "Reubicaciones internas"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Wait"
@@ -2142,73 +2291,89 @@ msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipment"
-msgstr ""
+msgstr "Envío devolución cliente"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipments"
-msgstr ""
+msgstr "Envíos devolución cliente "
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Incoming Moves"
-msgstr ""
+msgstr "Movimientos de entrada"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Inventory Moves"
-msgstr ""
+msgstr "Movimientos internos"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
-msgstr ""
+msgstr "Recibido"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Assign"
-msgstr ""
+msgstr "Reservado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Customer Shipment"
-msgstr ""
+msgstr "Envío cliente"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Customer Shipments"
-msgstr ""
+msgstr "Envíos cliente"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Inventory Moves"
-msgstr ""
+msgstr "Movimientos internos"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Make shipment"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
-msgstr ""
+msgstr "Movimientos de salida"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Wait"

@@ -180,6 +180,10 @@ msgctxt "field:stock.configuration,id:"
 msgid "ID"
 msgstr ""
 
+msgctxt "field:stock.configuration,inventory_sequence:"
+msgid "Inventory Sequence"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.configuration,rec_name:"
 msgid "Name"
@@ -246,6 +250,10 @@ msgstr ""
 
 msgctxt "field:stock.inventory,lost_found:"
 msgid "Lost and Found"
+msgstr ""
+
+msgctxt "field:stock.inventory,number:"
+msgid "Number"
 msgstr ""
 
 #, fuzzy
@@ -413,12 +421,21 @@ msgctxt "field:stock.location,type:"
 msgid "Location type"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
 msgctxt "field:stock.location,write_date:"
 msgid "Write Date"
 msgstr ""
 
 msgctxt "field:stock.location,write_uid:"
 msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.move,assignation_required:"
+msgid "Assignation Required"
 msgstr ""
 
 #, fuzzy
@@ -667,11 +684,6 @@ msgid "ID"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.shipment.in,code:"
-msgid "Code"
-msgstr "Code"
-
-#, fuzzy
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -709,6 +721,10 @@ msgstr ""
 msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.in,number:"
+msgid "Numer"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
@@ -764,11 +780,6 @@ msgid "Write User"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.shipment.in.return,code:"
-msgid "Code"
-msgstr "Code"
-
-#, fuzzy
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -779,6 +790,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.in.return,create_uid:"
 msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,delivery_address:"
+msgid "Delivery Address"
 msgstr ""
 
 #, fuzzy
@@ -798,6 +813,10 @@ msgstr ""
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.in.return,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,origins:"
 msgid "Origins"
@@ -822,6 +841,11 @@ msgctxt "field:stock.shipment.in.return,state:"
 msgid "State"
 msgstr "Status"
 
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
 msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr ""
@@ -842,11 +866,6 @@ msgstr ""
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "Boekingen"
-
-#, fuzzy
-msgctxt "field:stock.shipment.internal,code:"
-msgid "Code"
-msgstr "Code"
 
 #, fuzzy
 msgctxt "field:stock.shipment.internal,company:"
@@ -878,6 +897,10 @@ msgstr ""
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.internal,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,planned_date:"
 msgid "Planned Date"
@@ -918,11 +941,6 @@ msgstr ""
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "Boekingen"
-
-#, fuzzy
-msgctxt "field:stock.shipment.out,code:"
-msgid "Code"
-msgstr "Code"
 
 #, fuzzy
 msgctxt "field:stock.shipment.out,company:"
@@ -967,6 +985,10 @@ msgstr ""
 msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.out,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,origins:"
 msgid "Origins"
@@ -1025,11 +1047,6 @@ msgid "Inventory Moves"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.shipment.out.return,code:"
-msgid "Code"
-msgstr "Code"
-
-#, fuzzy
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -1076,6 +1093,10 @@ msgstr ""
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Boekingen"
+
+msgctxt "field:stock.shipment.out.return,number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
@@ -1394,6 +1415,10 @@ msgctxt ""
 msgid "Received"
 msgstr ""
 
+msgctxt "model:ir.sequence,name:sequence_inventory"
+msgid "Inventory"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
 msgstr ""
@@ -1412,6 +1437,10 @@ msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
+msgid "Inventory"
 msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
@@ -1619,7 +1648,7 @@ msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -1650,23 +1679,29 @@ msgid "Restocking List"
 msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "Supplier:"
+msgid "Shipment Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Supplier:"
+msgstr "Leverancier"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Magazijn"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
@@ -1699,6 +1734,10 @@ msgstr "Hoeveelheid"
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
 msgstr "Referentie:"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Shipment Number"
+msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
@@ -1749,12 +1788,13 @@ msgid "/"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "Code:"
+msgid ":"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr ""
+msgstr "Klant"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
@@ -1784,12 +1824,17 @@ msgid "Reference:"
 msgstr "Referentie:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "To Location"
+msgid "Shipment Number"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "Warehouse:"
+msgid "To Location"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Warehouse:"
+msgstr "Magazijn"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
@@ -1799,10 +1844,6 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ""
 
-msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Code:"
-msgstr ""
-
 #, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
@@ -1810,6 +1851,10 @@ msgstr "Klant"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
+msgstr ""
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Number"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -1836,12 +1881,17 @@ msgid "Restocking List"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "To Location"
+msgid "Shipment"
 msgstr ""
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "Warehouse:"
+msgid "To Location"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Warehouse:"
+msgstr "Magazijn"
 
 #, fuzzy
 msgctxt "selection:stock.inventory,state:"
@@ -1917,9 +1967,10 @@ msgctxt "selection:stock.move,state:"
 msgid "Staging"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
-msgstr ""
+msgstr "Sluiten"
 
 #, fuzzy
 msgctxt "selection:stock.period,state:"
@@ -2059,6 +2110,14 @@ msgid "Products"
 msgstr "Producten"
 
 msgctxt "view:stock.configuration:"
+msgid "Inventory"
+msgstr ""
+
+msgctxt "view:stock.configuration:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "view:stock.configuration:"
 msgid "Stock Configuration"
 msgstr ""
 
@@ -2108,8 +2167,13 @@ msgctxt "view:stock.location:"
 msgid "Locations"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "view:stock.move:"
+msgid "Do"
 msgstr ""
 
 #, fuzzy
@@ -2122,9 +2186,10 @@ msgctxt "view:stock.move:"
 msgid "Moves"
 msgstr "Boekingen"
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Terug naar concept"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
