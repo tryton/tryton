@@ -86,6 +86,7 @@ msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Compra - Línea de factura ignorada"
 
+#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Líneas de factura"
