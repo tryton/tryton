@@ -52,7 +52,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Precio de costo"
 
 msgctxt "help:company.employee,cost_price:"
 msgid "Hourly cost price for this Employee"
