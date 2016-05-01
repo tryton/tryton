@@ -642,11 +642,11 @@ msgstr ""
 
 msgctxt "view:res.group:"
 msgid "Group"
-msgstr ""
+msgstr "Csoport"
 
 msgctxt "view:res.group:"
 msgid "Groups"
-msgstr ""
+msgstr "Csoportok"
 
 msgctxt "view:res.group:"
 msgid "Members"
@@ -664,13 +664,14 @@ msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
 msgstr ""
 
+#, fuzzy
 msgctxt "view:res.user.warning:"
 msgid "Warning"
-msgstr ""
+msgstr "Figyelmeztetések"
 
 msgctxt "view:res.user.warning:"
 msgid "Warnings"
-msgstr ""
+msgstr "Figyelmeztetések"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
@@ -678,7 +679,7 @@ msgstr ""
 
 msgctxt "view:res.user:"
 msgid "Actions"
-msgstr ""
+msgstr "Műveletek"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
@@ -690,11 +691,11 @@ msgstr ""
 
 msgctxt "view:res.user:"
 msgid "User"
-msgstr ""
+msgstr "Felhasználó"
 
 msgctxt "view:res.user:"
 msgid "Users"
-msgstr ""
+msgstr "Felhasználók"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

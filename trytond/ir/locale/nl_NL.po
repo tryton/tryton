@@ -2,11 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:access_error:"
 msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
+"U probeert een toegangsregel te omzeilen!\n"
+"(Document type: %s)"
 
 msgctxt "error:delete_xml_record:"
 msgid "You are not allowed to delete this record."
@@ -58,8 +61,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "error:ir.attachment:"
-msgid "The  names of attachments must be unique by resource!"
+msgid "The names of attachments must be unique by resource."
 msgstr "De namen van de bijlagen moeten uniek zijn per bron!"
 
 msgctxt "error:ir.cron:"
@@ -111,9 +115,10 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "U kunt dit document niet muteren! (%s)"
 
+#, fuzzy
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
-msgstr ""
+msgstr "De veldnaam in het model moet uniek zijn!"
 
 msgctxt "error:ir.model.data:"
 msgid "The triple (fs_id, module, model) must be unique!"
@@ -145,23 +150,24 @@ msgstr "Het model moet uniek zijn!"
 
 msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
-msgstr ""
+msgstr "Afhankelijkheid moet uniek zijn per module!"
 
 msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
-msgstr ""
+msgstr "Afhankelijkheid %s ontbreekt voor module \"%s\""
 
 msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
+"De module die u wilt verwijderen is afhankelijk van geïnstalleerde modules:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
-msgstr ""
+msgstr "De naam van de module moet uniek zijn!"
 
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
-msgstr ""
+msgstr "U kunt een module niet verwijderen als die geïnstalleerd is of wordt."
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -239,11 +245,14 @@ msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "error:read_error:"
 msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
+"U probeert items te lezen die niet meer bestaan!\n"
+"(Document type: %s)"
 
 msgctxt "error:recursion_error:"
 msgid ""
@@ -293,11 +302,14 @@ msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
 msgstr "Te veel relaties gevonden: %r in %s"
 
+#, fuzzy
 msgctxt "error:write_error:"
 msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
+"U probeert items te lezen die niet meer bestaan!\n"
+"(Document type: %s)"
 
 msgctxt "error:write_xml_record:"
 msgid "You are not allowed to modify this record."
@@ -364,9 +376,10 @@ msgctxt "field:ir.action,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
-msgstr ""
+msgstr "Domein"
 
 msgctxt "field:ir.action.act_window,act_window_views:"
 msgid "Views"
@@ -385,6 +398,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Samenhang waarde"
 
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -397,9 +414,10 @@ msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
 msgstr "Domein waarde"
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
-msgstr ""
+msgstr "Domein"
 
 #, fuzzy
 msgctxt "field:ir.action.act_window,groups:"
@@ -680,9 +698,10 @@ msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:ir.action.report,pyson_email:"
 msgid "PySON Email"
-msgstr ""
+msgstr "PySON domein"
 
 msgctxt "field:ir.action.report,rec_name:"
 msgid "Name"
@@ -889,9 +908,10 @@ msgctxt "field:ir.attachment,create_uid:"
 msgid "Create User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:ir.attachment,data_size:"
 msgid "Data size"
@@ -995,9 +1015,10 @@ msgctxt "field:ir.configuration,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.configuration,language:"
 msgid "language"
-msgstr ""
+msgstr "Taal"
 
 #, fuzzy
 msgctxt "field:ir.configuration,rec_name:"
@@ -1554,7 +1575,7 @@ msgstr ""
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
-msgstr ""
+msgstr "Afhankelijkheden"
 
 msgctxt "field:ir.module,id:"
 msgid "ID"
@@ -1562,7 +1583,7 @@ msgstr ""
 
 msgctxt "field:ir.module,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
@@ -1570,15 +1591,15 @@ msgstr ""
 
 msgctxt "field:ir.module,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:ir.module,version:"
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgctxt "field:ir.module,write_date:"
 msgid "Write Date"
@@ -1598,7 +1619,7 @@ msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
-msgstr ""
+msgstr "Actie"
 
 msgctxt "field:ir.module.config_wizard.item,create_date:"
 msgid "Create Date"
@@ -1614,15 +1635,16 @@ msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:ir.module.config_wizard.item,write_date:"
 msgid "Write Date"
@@ -1636,9 +1658,10 @@ msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Percentage"
 
 msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
@@ -1654,19 +1677,19 @@ msgstr ""
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:ir.module.dependency,write_date:"
 msgid "Write Date"
@@ -1686,6 +1709,90 @@ msgstr ""
 
 msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
+msgstr ""
+
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr ""
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr ""
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr ""
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Middel"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr ""
+
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
 msgstr ""
 
 msgctxt "field:ir.property,create_date:"
@@ -2048,9 +2155,10 @@ msgctxt "field:ir.session.wizard,create_uid:"
 msgid "Create User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:ir.session.wizard,id:"
 msgid "ID"
@@ -2341,9 +2449,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "Actie"
 
+#, fuzzy
 msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
-msgstr ""
+msgstr "Actietrefwoord"
 
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
@@ -2457,9 +2566,10 @@ msgctxt "field:ir.ui.view,create_uid:"
 msgid "Create User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
@@ -2739,11 +2849,14 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "De regel is waar als tenminste aan één voorwaarde wordt voldaan"
 
+#, fuzzy
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
+"Een Python uitdrukking gekoppeld aan item \"self\"\n"
+"Het start de actie als het waar is."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
@@ -2803,9 +2916,10 @@ msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Export"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr ""
+msgstr "Icoon"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -2828,13 +2942,15 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr ""
+msgstr "Leesrecht"
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -2859,6 +2975,10 @@ msgstr "Modulen"
 msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Voer installatie / bijwerken uit"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -2936,13 +3056,18 @@ msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Grafiek"
 
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr ""
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr "Actie uitvoerend scherm"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
-msgstr ""
+msgstr "Actie uitvoerend schermaanzicht"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -3109,34 +3234,45 @@ msgstr ""
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
+#, fuzzy
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr ""
+msgstr "Module EHBC"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr ""
+msgstr "Module EHBC"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
-msgstr ""
+msgstr "Configuratie assistent die start na installatie van de module"
 
+#, fuzzy
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr ""
+msgstr "Module EHBC"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr ""
+msgstr "Module afhankelijkheid"
 
+#, fuzzy
 msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
-msgstr ""
+msgstr "Start module gaan bijwerken"
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
+msgstr "Start module gaan bijwerken"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr ""
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
 msgstr ""
 
 msgctxt "model:ir.property,name:"
@@ -3195,13 +3331,15 @@ msgctxt "model:ir.translation.export.start,name:"
 msgid "Export translation"
 msgstr "Vertaling exporteren - bestand"
 
+#, fuzzy
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
+#, fuzzy
 msgctxt "model:ir.translation.set.succeed,name:"
 msgid "Set Translation"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
 msgctxt "model:ir.translation.update.start,name:"
 msgid "Update translation"
@@ -3268,9 +3406,10 @@ msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "Export"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr ""
+msgstr "Icoon"
 
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
@@ -3297,13 +3436,15 @@ msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr ""
+msgstr "Leesrecht"
 
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
@@ -3324,6 +3465,10 @@ msgstr "Voer installatie / bijwerken uit"
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Modulen"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3365,9 +3510,10 @@ msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
 msgstr "Vertalingen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
@@ -3417,9 +3563,10 @@ msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
-msgstr ""
+msgstr "Aanzichten boomstructuurbreedte"
 
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
@@ -3449,9 +3596,10 @@ msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Print form"
 msgstr "Formulier afdrukken"
 
+#, fuzzy
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
-msgstr ""
+msgstr "Datum"
 
 #, fuzzy
 msgctxt "selection:ir.attachment,type:"
@@ -3488,55 +3636,55 @@ msgstr "Van rechts naar links"
 
 msgctxt "selection:ir.module,state:"
 msgid "Installed"
-msgstr ""
+msgstr "Geïnstalleerd"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
-msgstr ""
+msgstr "Niet geïnstalleerd"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be installed"
-msgstr ""
+msgstr "Te installeren"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
-msgstr ""
+msgstr "Te verwijderen"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
-msgstr ""
+msgstr "Bij te werken"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Installed"
-msgstr ""
+msgstr "Geïnstalleerd"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Installed"
-msgstr ""
+msgstr "Niet geïnstalleerd"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
-msgstr ""
+msgstr "Te installeren"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
-msgstr ""
+msgstr "Te verwijderen"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
-msgstr ""
+msgstr "Bij te werken"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Decimal Timestamp"
@@ -3578,9 +3726,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
-msgid "ODT"
-msgstr "ODT"
+msgid "Report"
+msgstr "Verslag"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3643,9 +3792,10 @@ msgctxt "view:ir.action.act_window.domain:"
 msgid "Domain"
 msgstr "Domein"
 
+#, fuzzy
 msgctxt "view:ir.action.act_window.domain:"
 msgid "Domains"
-msgstr ""
+msgstr "Domein"
 
 #, fuzzy
 msgctxt "view:ir.action.act_window.view:"
@@ -3728,6 +3878,10 @@ msgid "Action to trigger"
 msgstr "Actie om uit te voeren"
 
 msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr ""
+
+msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
 msgstr "Geplande actie"
 
@@ -3767,17 +3921,19 @@ msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:ir.model.data:"
 msgid "Model Data"
-msgstr ""
+msgstr "Model gegevens"
 
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
-msgstr ""
+msgstr "Leesrecht"
 
 #, fuzzy
 msgctxt "view:ir.model.field:"
@@ -3796,9 +3952,10 @@ msgctxt "view:ir.model:"
 msgid "Model Description"
 msgstr "Model omschrijving"
 
+#, fuzzy
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "Module configuration"
-msgstr ""
+msgstr "Module configuratie"
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3806,7 +3963,7 @@ msgstr ""
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
-msgstr ""
+msgstr "Welkom bij de module configuratie assistent!"
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
@@ -3816,7 +3973,7 @@ msgstr ""
 
 msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
-msgstr ""
+msgstr "Conf. assistent items"
 
 msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
@@ -3824,19 +3981,21 @@ msgstr ""
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
-msgstr ""
+msgstr "Afhankelijkheden"
 
+#, fuzzy
 msgctxt "view:ir.module.dependency:"
 msgid "Dependency"
-msgstr ""
+msgstr "Afhankelijkheden"
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
-msgstr ""
+msgstr "De modules zijn bijgewerkt / geïnstalleerd!"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
@@ -3852,35 +4011,57 @@ msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Installation"
-msgstr ""
+msgstr "Installatie annuleren"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
-msgstr ""
+msgstr "Verwijderen ongedaan maken"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Bijwerken annuleren"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Installation"
-msgstr ""
+msgstr "Selecteer voor installatie"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
-msgstr ""
+msgstr "Selecteer voor verwijderen (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
-msgstr ""
+msgstr "Selecteer voor bijwerken"
 
 msgctxt "view:ir.module:"
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
 msgctxt "view:ir.module:"
 msgid "Modules"
+msgstr "Modulen"
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "view:ir.note:"
+msgid "Note"
 msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Gebruiker"
 
 msgctxt "view:ir.property:"
 msgid "Properties"
@@ -3956,9 +4137,10 @@ msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations"
 msgstr "Vertalingen opschonen"
 
+#, fuzzy
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
 #, fuzzy
 msgctxt "view:ir.translation.clean.succeed:"
@@ -3979,21 +4161,24 @@ msgctxt "view:ir.translation.export.start:"
 msgid "Export Translation"
 msgstr "Vertaling exporteren"
 
+#, fuzzy
 msgctxt "view:ir.translation.set.start:"
 msgid "Set Translations"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
+#, fuzzy
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
-msgstr ""
+msgstr "Vertaling synchroniseren"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Translations"
-msgstr ""
+msgstr "Vertalingen opschonen"
 
 #, fuzzy
 msgctxt "view:ir.translation.update.start:"
@@ -4017,9 +4202,10 @@ msgctxt "view:ir.ui.icon:"
 msgid "Icon"
 msgstr "Icoon"
 
+#, fuzzy
 msgctxt "view:ir.ui.icon:"
 msgid "Icons"
-msgstr ""
+msgstr "Icoon"
 
 msgctxt "view:ir.ui.menu.favorite:"
 msgid "Menu Favorite"
@@ -4049,13 +4235,15 @@ msgctxt "view:ir.ui.view_search:"
 msgid "View Searches"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:ir.ui.view_tree_state:"
 msgid "View Tree State"
-msgstr ""
+msgstr "Aanzichten boomstructuurbreedte"
 
+#, fuzzy
 msgctxt "view:ir.ui.view_tree_state:"
 msgid "Views Tree State"
-msgstr ""
+msgstr "Aanzichten boomstructuurbreedte"
 
 msgctxt "view:ir.ui.view_tree_width:"
 msgid "View Tree Width"
@@ -4074,33 +4262,39 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"

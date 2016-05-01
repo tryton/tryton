@@ -71,8 +71,9 @@ msgid "Invalid email definition on report \"%s\"."
 msgstr ""
 "La definició del correu electrònic sobre l'informe \"%s\", no és correcta."
 
+#, fuzzy
 msgctxt "error:ir.attachment:"
-msgid "The  names of attachments must be unique by resource!"
+msgid "The names of attachments must be unique by resource."
 msgstr "El nom dels adjunts ha de ser únic per recurs."
 
 msgctxt "error:ir.cron:"
@@ -416,6 +417,10 @@ msgstr "Actiu"
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Context"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1669,6 +1674,102 @@ msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Mòduls a actualitzar"
 
+#, fuzzy
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+#, fuzzy
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+#, fuzzy
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Última modificació"
+
+#, fuzzy
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Últim usuari"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr ""
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Recurs"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+#, fuzzy
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+#, fuzzy
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Usuari"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -2827,6 +2928,10 @@ msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Realitza instal·lacions/actualitzacions pendents"
 
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
 msgstr "Propietats"
@@ -2902,6 +3007,10 @@ msgstr "Gràfica"
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Gràfica"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr ""
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3105,6 +3214,14 @@ msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "Inici instal·lació/actualització mòdul"
 
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr ""
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr ""
+
 msgctxt "model:ir.property,name:"
 msgid "Property"
 msgstr "Propietat"
@@ -3284,6 +3401,10 @@ msgstr "Instal·lacions/Actualitzacions pendents"
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Mòduls"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3537,9 +3658,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
-msgid "ODT"
-msgstr "ODT"
+msgid "Report"
+msgstr "Informe"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3680,6 +3802,10 @@ msgstr "Hora última modificació"
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Acció de disparador"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr ""
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3836,6 +3962,28 @@ msgstr "Mòdul"
 msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Mòduls"
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "view:ir.note:"
+msgid "Note"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Usuari"
 
 msgctxt "view:ir.property:"
 msgid "Properties"

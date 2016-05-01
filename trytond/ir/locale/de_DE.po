@@ -4,14 +4,6 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:access_error:"
 msgid ""
-"You try to bypass an access rule!\n"
-"(Document type: %s)"
-msgstr ""
-"Fehlende Zugriffsberechtigung.\n"
-"(Dokumententyp: %s)"
-
-msgctxt "error:access_error:"
-msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
@@ -78,8 +70,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Ungültige E-Mailadresse in Bericht \"%s\"."
 
+#, fuzzy
 msgctxt "error:ir.attachment:"
-msgid "The  names of attachments must be unique by resource!"
+msgid "The names of attachments must be unique by resource."
 msgstr ""
 "Der Name für einen Anhang kann nur einmal pro Ressource vergeben werden!"
 
@@ -281,14 +274,6 @@ msgstr "Ungültige XML-Daten für Sicht \"%s\"."
 
 msgctxt "error:read_error:"
 msgid ""
-"You try to read records that don't exist anymore!\n"
-"(Document type: %s)"
-msgstr ""
-"Leseversuch von nicht mehr vorhandenen Datensätzen.\n"
-"(Dokumententyp: %s)"
-
-msgctxt "error:read_error:"
-msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
@@ -348,14 +333,6 @@ msgstr ""
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
 msgstr "Zu viele Beziehungen gefunden: %r in %s"
-
-msgctxt "error:write_error:"
-msgid ""
-"You try to write on records that don't exist anymore!\n"
-"(Document type: %s)"
-msgstr ""
-"Schreibversuch auf nicht mehr vorhandene Datensätze.\n"
-"(Dokumententyp: %s)"
 
 msgctxt "error:write_error:"
 msgid ""
@@ -448,6 +425,10 @@ msgstr "Aktiv"
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Kontext"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1701,6 +1682,102 @@ msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Zu aktualisierende Module"
 
+#, fuzzy
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+#, fuzzy
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+#, fuzzy
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Letzte Änderung"
+
+#, fuzzy
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Letzter Benutzer"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr ""
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+#, fuzzy
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+#, fuzzy
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+#, fuzzy
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+#, fuzzy
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Benutzer"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -2862,6 +2939,10 @@ msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
 
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
 msgstr "Eigenschaften"
@@ -2937,6 +3018,10 @@ msgstr "Diagramm"
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Diagramm"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr ""
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3140,6 +3225,14 @@ msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "Modulinstallation Aktualisierung Start"
 
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr ""
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr ""
+
 msgctxt "model:ir.property,name:"
 msgid "Property"
 msgstr "Eigenschaft"
@@ -3319,6 +3412,10 @@ msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Module"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3572,9 +3669,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modell"
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
-msgid "ODT"
-msgstr "ODT"
+msgid "Report"
+msgstr "Bericht"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3715,6 +3813,10 @@ msgstr "Letzte Änderung"
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Auszuführende Aktion"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr ""
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3870,6 +3972,28 @@ msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Module"
 
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "view:ir.note:"
+msgid "Note"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Benutzer"
+
 msgctxt "view:ir.property:"
 msgid "Properties"
 msgstr "Eigenschaften"
@@ -3898,14 +4022,6 @@ msgstr ""
 msgctxt "view:ir.rule:"
 msgid "Test"
 msgstr "Test"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "Legend (for prefix, suffix)"
-msgstr "Legende (für Präfix, Suffix)"
-
-msgctxt "view:ir.sequence.strict:"
-msgid "Sequences Strict"
-msgstr "Strikte Nummernkreise"
 
 msgctxt "view:ir.sequence.type:"
 msgid "Sequence Type"

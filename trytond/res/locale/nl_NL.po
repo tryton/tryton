@@ -415,9 +415,10 @@ msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
-msgstr ""
+msgstr "Waarschuwing"
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
@@ -653,9 +654,10 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "model:res.user,name:user_admin"
 msgid "Administrator"
-msgstr ""
+msgstr "Systeembeheer"
 
 msgctxt "model:res.user,name:user_trigger"
 msgid "Cron Trigger"
@@ -716,9 +718,10 @@ msgctxt "view:res.user.warning:"
 msgid "Warning"
 msgstr "Waarschuwing"
 
+#, fuzzy
 msgctxt "view:res.user.warning:"
 msgid "Warnings"
-msgstr ""
+msgstr "Waarschuwing"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"

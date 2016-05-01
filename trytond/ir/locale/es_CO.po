@@ -70,8 +70,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "El correo electronico definido en el informe \"%s\" es inválido."
 
+#, fuzzy
 msgctxt "error:ir.attachment:"
-msgid "The  names of attachments must be unique by resource!"
+msgid "The names of attachments must be unique by resource."
 msgstr "¡Los nombres de los archivos adjuntos deben ser únicos por recurso!"
 
 msgctxt "error:ir.cron:"
@@ -162,23 +163,25 @@ msgstr "¡El modelo debe ser único!"
 
 msgctxt "error:ir.module.dependency:"
 msgid "Dependency must be unique by module!"
-msgstr ""
+msgstr "¡Las dependencias por módulo deben ser únicas!"
 
 msgctxt "error:ir.module:"
 msgid "Missing dependencies %s for module \"%s\""
-msgstr ""
+msgstr "Faltan las dependencias %s para el módulo \"%s\""
 
 msgctxt "error:ir.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
+"Los módulos que está intentando desinstalar dependen de módulos instalados:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
-msgstr ""
+msgstr "¡El nombre del módulo debe ser único!"
 
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is installed or will be installed"
 msgstr ""
+"No puede eliminar un módulo que está instalado o que va a ser instalado"
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -248,11 +251,14 @@ msgctxt "error:ir.trigger:"
 msgid "\"On Time\" and others are mutually exclusive!"
 msgstr "\"Al Tiempo\" y otros son mutuamente excluyentes!"
 
+#, fuzzy
 msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
+"Condición \"%(condition)s\" no es una expressión python válida en el "
+"disparador \"%s(trigger)s\"."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
@@ -415,6 +421,10 @@ msgstr "Activo"
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Valor del Contexto"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1522,151 +1532,247 @@ msgstr "Nivel"
 
 msgctxt "field:ir.module,childs:"
 msgid "Childs"
-msgstr ""
+msgstr "Hijos"
 
 msgctxt "field:ir.module,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
 msgctxt "field:ir.module,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por Usuario"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependencias"
 
 msgctxt "field:ir.module,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
-msgstr ""
+msgstr "Padres"
 
 msgctxt "field:ir.module,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 msgctxt "field:ir.module,version:"
 msgid "Version"
-msgstr ""
+msgstr "Versión"
 
 msgctxt "field:ir.module,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.first,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
-msgstr ""
+msgstr "Acción"
 
 msgctxt "field:ir.module.config_wizard.item,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
 msgctxt "field:ir.module.config_wizard.item,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por Usuario"
 
 msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 msgctxt "field:ir.module.config_wizard.item,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:ir.module.config_wizard.item,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Porcentaje"
 
 msgctxt "field:ir.module.dependency,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
 msgctxt "field:ir.module.dependency,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por Usuario"
 
 msgctxt "field:ir.module.dependency,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 msgctxt "field:ir.module.dependency,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.module.install_upgrade.done,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.install_upgrade.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
+msgstr "Módulos a actualizar"
+
+#, fuzzy
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+#, fuzzy
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+#, fuzzy
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Última Modificación"
+
+#, fuzzy
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Último Usuario"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
 msgstr ""
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+#, fuzzy
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Recurso"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+#, fuzzy
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+#, fuzzy
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+#, fuzzy
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Usuario"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
@@ -2704,11 +2810,14 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "La regla se satisface si al menos una condición es cierta"
 
+#, fuzzy
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
+"Una instrucción Python evaluada con el registro representado por \"self\"\n"
+"Se dispara la acción si es verdadera."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
@@ -2826,6 +2935,10 @@ msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Realizar Instalaciones/Actualizaciones Pendientes"
 
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
 msgstr "Propiedades"
@@ -2901,6 +3014,10 @@ msgstr "Gráfico"
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Gráfico"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr ""
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3016,9 +3133,10 @@ msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francés"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_hu_HU"
 msgid "Hungarian"
-msgstr ""
+msgstr "Búlgaro"
 
 msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
@@ -3074,34 +3192,43 @@ msgstr "Imprimir Gráfico del Modelo"
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr ""
+msgstr "Configuración del Módulo Terminada"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr ""
+msgstr "Primer Asistente de Configuración de Módulo"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after installing module"
 msgstr ""
+"Asistente de configuración a ejecutar después de la instalaciń del módulo"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr ""
+msgstr "Siguiente Asistente de Configuración de Módulo"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr ""
+msgstr "Dependencias del módulo"
 
 msgctxt "model:ir.module.install_upgrade.done,name:"
 msgid "Module Install Upgrade Done"
-msgstr ""
+msgstr "Actualización del Módulo Terminada"
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
+msgstr "Inicio de Asistente de Instalación del Módulo"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr ""
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
 msgstr ""
 
 msgctxt "model:ir.property,name:"
@@ -3284,6 +3411,10 @@ msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Módulos"
 
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
 msgstr "Propiedades"
@@ -3446,55 +3577,55 @@ msgstr "Derecha-a-Izquierda"
 
 msgctxt "selection:ir.module,state:"
 msgid "Installed"
-msgstr ""
+msgstr "Instalado"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
-msgstr ""
+msgstr "No instalado"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be installed"
-msgstr ""
+msgstr "Pendiente de ser instalado"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
-msgstr ""
+msgstr "Pendiente de ser eliminado"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be upgraded"
-msgstr ""
+msgstr "Pendiente de ser actualizado"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Done"
-msgstr ""
+msgstr "Terminado"
 
 msgctxt "selection:ir.module.config_wizard.item,state:"
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Installed"
-msgstr ""
+msgstr "Instalado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Installed"
-msgstr ""
+msgstr "No instalado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be installed"
-msgstr ""
+msgstr "Pendiente de ser instalado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
-msgstr ""
+msgstr "Pendiente de ser eliminado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be upgraded"
-msgstr ""
+msgstr "Pendiente de ser actualizado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Unknown"
-msgstr ""
+msgstr "Desconocido"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Decimal Timestamp"
@@ -3536,9 +3667,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modelo"
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
-msgid "ODT"
-msgstr "ODT"
+msgid "Report"
+msgstr "Reporte"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3672,13 +3804,18 @@ msgctxt "view:ir.attachment:"
 msgid "Attachments"
 msgstr "Adjuntos"
 
+#, fuzzy
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
-msgstr ""
+msgstr "Última Modificación"
 
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Acción a disparar"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr ""
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3750,89 +3887,114 @@ msgstr "Descripción del modelo"
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "Module configuration"
-msgstr ""
+msgstr "Configuración del módulo"
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr ""
+msgstr "La configuracion ha terminado."
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
-msgstr ""
+msgstr "Bienvenido al asistente de configuración del módulo!"
 
+#, fuzzy
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
+"Usted será capaz de configurar la instalación en función de los módulos que "
+"ha instalado."
 
 msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
-msgstr ""
+msgstr "Asistentes de Configuración"
 
 msgctxt "view:ir.module.config_wizard.other:"
 msgid "Configuration Wizard Next Step!"
-msgstr ""
+msgstr "¡Siguiente Paso del Asistente de Configuración!"
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependencias"
 
 msgctxt "view:ir.module.dependency:"
 msgid "Dependency"
-msgstr ""
+msgstr "Dependencia"
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "System Upgrade Done"
-msgstr ""
+msgstr "Actualización del Sistema Finalizada"
 
 msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
-msgstr ""
+msgstr "Los módulos se han actualizado / instalado"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr ""
+msgstr "Esta operación puede demorar varios minutos."
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "System Upgrade"
-msgstr ""
+msgstr "Actualización del Sistema"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
-msgstr ""
+msgstr "Su sistema sera actualizado."
 
 msgctxt "view:ir.module:"
 msgid "Cancel Installation"
-msgstr ""
+msgstr "Cancelar Instalación"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Uninstallation"
-msgstr ""
+msgstr "Cancelar Desinstalación"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Cancelar Actualización"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Installation"
-msgstr ""
+msgstr "Marcar para Instalar"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
-msgstr ""
+msgstr "Marcar para Desinstalar (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
-msgstr ""
+msgstr "Marcar para Actualizar"
 
 msgctxt "view:ir.module:"
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 msgctxt "view:ir.module:"
 msgid "Modules"
+msgstr "Módulos"
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "view:ir.note:"
+msgid "Note"
 msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Usuario"
 
 msgctxt "view:ir.property:"
 msgid "Properties"
@@ -3981,9 +4143,10 @@ msgctxt "view:ir.ui.menu:"
 msgid "Menu"
 msgstr "Menú"
 
+#, fuzzy
 msgctxt "view:ir.ui.view:"
 msgid "Show"
-msgstr ""
+msgstr "_Mostrar"
 
 msgctxt "view:ir.ui.view:"
 msgid "View"
@@ -4023,35 +4186,35 @@ msgstr "Imprimir"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
-msgstr ""
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,action:"
 msgid "OK"
-msgstr ""
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.config_wizard,first,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,action:"
 msgid "Next"
-msgstr ""
+msgstr "Siguiente"
 
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
 msgid "OK"
-msgstr ""
+msgstr "Aceptar"
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
 msgid "Start Upgrade"
-msgstr ""
+msgstr "Iniciar Mejora"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

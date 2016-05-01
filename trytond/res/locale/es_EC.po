@@ -328,7 +328,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"

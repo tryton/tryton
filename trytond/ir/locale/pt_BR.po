@@ -68,8 +68,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "E-mail inválido na definição do relatório\"%s\"."
 
+#, fuzzy
 msgctxt "error:ir.attachment:"
-msgid "The  names of attachments must be unique by resource!"
+msgid "The names of attachments must be unique by resource."
 msgstr "Os nomes dos anexos devem ser únicos por reurso!"
 
 msgctxt "error:ir.cron:"
@@ -416,6 +417,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Valor do contexto"
 
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -586,7 +591,7 @@ msgstr "Sequência"
 
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
-msgstr "Exibir"
+msgstr "Sumário"
 
 msgctxt "field:ir.action.act_window.view,write_date:"
 msgid "Write Date"
@@ -1667,6 +1672,102 @@ msgstr "ID"
 msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Módulos a atualizar"
+
+#, fuzzy
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+#, fuzzy
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Última modificação"
+
+#, fuzzy
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Último usuário"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr ""
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Recurso"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+#, fuzzy
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+#, fuzzy
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Usuário"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+#, fuzzy
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
 
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
@@ -2828,6 +2929,10 @@ msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Realizar instalações/atualizações pendentes"
 
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
 msgstr "Propriedades"
@@ -2903,6 +3008,10 @@ msgstr "Grafo"
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Grafo"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr ""
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3105,7 +3214,15 @@ msgstr "Atualização / Instalação do módulo terminada"
 
 msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
-msgstr "Atualização / Instalação do módulo iniciada"
+msgstr "Iniciar a Atualização / Instalação do módulo"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr ""
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr ""
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3287,6 +3404,10 @@ msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Módulos"
 
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
 msgstr "Propriedades"
@@ -3369,7 +3490,7 @@ msgstr "Menu Favoritos"
 
 msgctxt "model:ir.ui.view,name:"
 msgid "View"
-msgstr "Exibir"
+msgstr "Sumário"
 
 msgctxt "model:ir.ui.view.show.start,name:"
 msgid "Show view"
@@ -3539,9 +3660,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modelo"
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
-msgid "ODT"
-msgstr "ODT"
+msgid "Report"
+msgstr "Relatório"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -3549,7 +3671,7 @@ msgstr "Seleção"
 
 msgctxt "selection:ir.translation,type:"
 msgid "View"
-msgstr "Exibir"
+msgstr "Sumário"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
@@ -3609,7 +3731,7 @@ msgstr "Domínios"
 
 msgctxt "view:ir.action.act_window.view:"
 msgid "View"
-msgstr "Exibir"
+msgstr "Sumário"
 
 msgctxt "view:ir.action.act_window.view:"
 msgid "Views"
@@ -3682,6 +3804,10 @@ msgstr "Hora da última modificação"
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Ação a disparar"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr ""
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3821,7 +3947,7 @@ msgstr "Cancelar atualização"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Installation"
-msgstr "Cancelar atualização"
+msgstr "Marcar para instalação"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Uninstallation (beta)"
@@ -3838,6 +3964,28 @@ msgstr "Módulo"
 msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Módulos"
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "view:ir.note:"
+msgid "Note"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Usuário"
 
 msgctxt "view:ir.property:"
 msgid "Properties"
@@ -3992,7 +4140,7 @@ msgstr "Mostrar"
 
 msgctxt "view:ir.ui.view:"
 msgid "View"
-msgstr "Exibir"
+msgstr "Sumário"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

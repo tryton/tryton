@@ -118,10 +118,12 @@ def list_lang(*args):
         ('hu_HU', 'Magyar'),
         ('it_IT', 'Italiano'),
         ('lt_LT', 'Lietuvių'),
+        ('lo_LA', 'ລາວ'),
         ('nl_NL', 'Nederlands'),
         ('pt_BR', 'Português (Brasil)'),
         ('ru_RU', 'Russian'),
         ('sl_SI', 'Slovenščina'),
+        ('zh_CN', '中国（简体）'),
         ]
 
 
