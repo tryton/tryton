@@ -26,14 +26,6 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Anzahlung"
 
-msgctxt "model:account.account.template,name:"
-msgid "Deposit"
-msgstr "Anzahlung"
-
-msgctxt "model:account.account.type.template,name:"
-msgid "Unearned Revenues"
-msgstr "Anzahlungen"
-
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
 msgstr "Anzahlung auf Rechnung verrechnen"

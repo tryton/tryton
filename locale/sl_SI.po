@@ -26,14 +26,6 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Depozit"
 
-msgctxt "model:account.account.template,name:"
-msgid "Deposit"
-msgstr "Depozit"
-
-msgctxt "model:account.account.type.template,name:"
-msgid "Unearned Revenues"
-msgstr "Nezasluženi prihodki"
-
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
 msgstr "Odpoklic depozita za račun"
