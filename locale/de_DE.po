@@ -22,58 +22,6 @@ msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Kostenstelle Zeilen"
 
-msgctxt "field:account.statement,end_balance:"
-msgid "End Balance"
-msgstr "Endsaldo"
-
-msgctxt "field:account.statement,lines:"
-msgid "Transactions"
-msgstr "Transaktionen"
-
-msgctxt "field:account.statement,start_balance:"
-msgid "Start Balance"
-msgstr "Anfangssaldo"
-
-msgctxt "field:account.statement.journal,journal:"
-msgid "Journal"
-msgstr "Journal"
-
-msgctxt "field:account.statement.journal,name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:account.statement.journal,rec_name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:account.statement.line,amount:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "field:account.statement.line,date:"
-msgid "Date"
-msgstr "Datum"
-
-msgctxt "field:account.statement.line,description:"
-msgid "Description"
-msgstr "Beschreibung"
-
-msgctxt "field:account.statement.line,invoice:"
-msgid "Invoice"
-msgstr "Rechnung"
-
-msgctxt "field:account.statement.line,move:"
-msgid "Account Move"
-msgstr "Buchungssatz"
-
-msgctxt "field:account.statement.line,rec_name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:account.statement.line,statement:"
-msgid "Statement"
-msgstr "Zahlung"
-
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr "Konto"
@@ -294,18 +242,6 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Anfangsdatum"
 
-msgctxt "model:account.statement,name:"
-msgid "Account Statement"
-msgstr "Bankauszug"
-
-msgctxt "model:account.statement.journal,name:"
-msgid "Statement Journal"
-msgstr "Bankauszugsjournal"
-
-msgctxt "model:account.statement.line,name:"
-msgid "Account Statement Line"
-msgstr "Bankauszugsposition"
-
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr "Kostenstelleneintrag"
@@ -366,18 +302,6 @@ msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
 msgstr "Kostenstellen Administration"
 
-msgctxt "selection:account.statement,state:"
-msgid "Canceled"
-msgstr "Annulliert"
-
-msgctxt "selection:account.statement,state:"
-msgid "Posted"
-msgstr "Festgeschrieben"
-
-msgctxt "selection:account.statement,state:"
-msgid "Validated"
-msgstr "Geprüft"
-
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
 msgstr "Haben - Soll"
@@ -413,70 +337,6 @@ msgstr "Sicht"
 msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Kostenstelle"
-
-msgctxt "view:account.move:"
-msgid "Analytic"
-msgstr "Kostenstelle"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Bankauszugsjournal"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Bankauszugsjournale"
-
-msgctxt "view:account.statement.line:"
-msgid "Bank Statement Line"
-msgstr "Posten Bankauszüge"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr "Bankauszugszeile"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr "Bankauszugszeilen"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement"
-msgstr "Bankauszug"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement Lines"
-msgstr "Posten Bankauszüge"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statements"
-msgstr "Bankauszüge"
-
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Buchungszeilen"
-
-msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Festschreiben"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Auf Entwurf zurücksetzen"
-
-msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr "Zahlung"
-
-msgctxt "view:account.statement:"
-msgid "Statement Lines"
-msgstr "Bankauszugszeilen"
-
-msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr "Bankauszüge"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Prüfen"
 
 msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"

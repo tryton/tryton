@@ -343,37 +343,43 @@ msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica"
 
+#, fuzzy
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Cuentas analíticas"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr ""
+msgstr "Nota"
 
+#, fuzzy
 msgctxt "view:analytic_account.line:"
 msgid "Analytic Line"
-msgstr ""
+msgstr "Línea analítica"
 
+#, fuzzy
 msgctxt "view:analytic_account.line:"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Líneas analíticas"
 
 msgctxt "view:analytic_account.line:"
 msgid "General Information"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Abrir plan analítico"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
