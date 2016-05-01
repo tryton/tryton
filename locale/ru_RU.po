@@ -22,11 +22,14 @@ msgstr ""
 "Вы не можете создать возврат для инвойса  \"%s\" так как он содержит "
 "платежи."
 
+#, fuzzy
 msgctxt "error:account.invoice.credit:"
 msgid ""
 "You can not credit with refund invoice \"%s\" because it is a supplier "
 "invoice/credit note."
 msgstr ""
+"Вы не можете создать возврат для инвойса  \"%s\" так как он содержит "
+"платежи."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
@@ -71,10 +74,11 @@ msgid ""
 msgstr ""
 "У инвойса \"%s\" нельзя создать частичную оплату превышающую общую оплату."
 
+#, fuzzy
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
-"Percentage and Divisor values are not consistent in line \"%(line)s\" of "
-"payment term \"%(term)s\"."
+"Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
+"term \"%(term)s\"."
 msgstr ""
 "Проценты и делитель не совместимы в строке \"%(line)s\" правила оплаты "
 "\"%(term)s\"."
@@ -91,10 +95,11 @@ msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr "Отсутствует строчка остатка в правиле оплаты \"%s\"."
 
+#, fuzzy
 msgctxt "error:account.invoice.tax:"
 msgid ""
-"You can not add line \"%(line)s\" to invoice \"%(invoice)s\" because it is "
-"posted, paid or canceled."
+"You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
+" canceled."
 msgstr ""
 "Вы не можете добавить строчку \"%(line)s\" в инвойс \"%(invoice)s\" так как "
 "он \"Отправлен\", \"Оплачен\" или \"Отменен\"."
@@ -175,8 +180,9 @@ msgstr ""
 "Кредитный счет у журнала \"%(journal)s\" точно такой же как счет инвойса "
 "\"%(invoice)s\"."
 
+#, fuzzy
 msgctxt "error:account.invoice:"
-msgid "The credit account on journal %s\" is missing."
+msgid "The credit account on journal \"%s\" is missing."
 msgstr "Отсутствует кредитный счет в журнале \"%s\"."
 
 msgctxt "error:account.invoice:"
@@ -230,64 +236,6 @@ msgid ""
 msgstr ""
 "Вы не можете изменить нумерацию в периоде \"%s\" так как уже есть "
 "отправленные инвойсы в этом периоде."
-
-msgctxt "field:account.configuration,tax_rounding:"
-msgid "Tax Rounding"
-msgstr ""
-
-msgctxt "field:account.configuration,tax_roundings:"
-msgid "Tax Roundings"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,company:"
-msgid "Company"
-msgstr "Учет.орг."
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,configuration:"
-msgid "Configuration"
-msgstr "Конфигурация"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,method:"
-msgid "Method"
-msgstr "Метод"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,sequence:"
-msgid "Sequence"
-msgstr "Последовательность"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -397,9 +345,10 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Номер"
 
+#, fuzzy
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Первоисточник"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -806,9 +755,9 @@ msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
 msgstr "Правило оплаты"
 
-msgctxt "field:account.invoice.payment_term.line,percentage:"
-msgid "Percentage"
-msgstr "Процент"
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
@@ -1069,10 +1018,6 @@ msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "Используется для сортировки строк в порядке возрастания"
 
-msgctxt "model:account.configuration.tax_rounding,name:"
-msgid "Account Configuration Tax Rounding"
-msgstr ""
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "Инвойс"
@@ -1138,21 +1083,14 @@ msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
 msgstr "Инвойсы"
 
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
-msgid "Supplier Credit Notes"
-msgstr "Сторно поставщиков"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Инвойсы поставщиков"
 
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
-msgid "Credit Notes"
-msgstr "Сторно"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
-msgid "Invoices"
-msgstr "Инвойсы"
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1178,83 +1116,45 @@ msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
 msgstr ""
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
 msgstr "Все"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_draft"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
 msgstr "Черновик"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_posted"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
 msgstr "Отправлен"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_validated"
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
 msgstr "Утвержденный"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_all"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
 msgstr "Все"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_draft"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
 msgstr "Черновик"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_posted"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
 msgstr "Отправлен"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_validated"
-msgid "Validated"
-msgstr "Утвержденный"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_all"
-msgid "All"
-msgstr "Все"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_draft"
-msgid "Draft"
-msgstr "Черновик"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_posted"
-msgid "Posted"
-msgstr "Отправлен"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_validated"
-msgid "Validated"
-msgstr "Утвержденный"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_all"
-msgid "All"
-msgstr "Все"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_draft"
-msgid "Draft"
-msgstr "Черновик"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_posted"
-msgid "Posted"
-msgstr "Отправлен"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_validated"
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
 msgstr "Утвержденный"
 
@@ -1262,21 +1162,14 @@ msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Инвойс"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
-msgid "Supplier Credit Notes"
-msgstr "Сторно поставщиков"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Инвойсы поставщиков"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
-msgid "Credit Notes"
-msgstr "Сторно"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
-msgid "Invoices"
-msgstr "Инвойсы"
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1307,10 +1200,6 @@ msgid "Base"
 msgstr "База"
 
 msgctxt "report:account.invoice:"
-msgid "Credit Note N°:"
-msgstr "Сторно №:"
-
-msgctxt "report:account.invoice:"
 msgid "Date"
 msgstr "Дата"
 
@@ -1327,20 +1216,8 @@ msgid "Description:"
 msgstr "Описание:"
 
 msgctxt "report:account.invoice:"
-msgid "Draft Credit Note"
-msgstr "Черновое сторно"
-
-msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Черновой инвойс"
-
-msgctxt "report:account.invoice:"
-msgid "Draft Supplier Credit Note"
-msgstr "Черновое сторно поставщика"
-
-msgctxt "report:account.invoice:"
-msgid "Draft Supplier Invoice"
-msgstr "Черновой инвойс поставщика"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
@@ -1349,10 +1226,6 @@ msgstr "Инвойс №:"
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
 msgstr "Правило оплаты"
-
-msgctxt "report:account.invoice:"
-msgid "Pro forma Credit Note"
-msgstr "Предварительное сторно"
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
@@ -1366,10 +1239,6 @@ msgstr "Кол-во"
 msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Ссылка"
-
-msgctxt "report:account.invoice:"
-msgid "Supplier Credit Note N°:"
-msgstr "Сторно поставщика №:"
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
@@ -1403,30 +1272,6 @@ msgctxt "report:account.invoice:"
 msgid "VAT:"
 msgstr "ИНН:"
 
-msgctxt "report:account.invoice:"
-msgid "Validated Supplier Credit Note"
-msgstr "Утвержденное сторно поставщика"
-
-msgctxt "report:account.invoice:"
-msgid "Validated Supplier Invoice"
-msgstr "Утвержденный инвойс поставщика"
-
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Document"
-msgstr ""
-
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Line"
-msgstr ""
-
-msgctxt "selection:account.configuration.tax_rounding,method:"
-msgid "Per Document"
-msgstr ""
-
-msgctxt "selection:account.configuration.tax_rounding,method:"
-msgid "Per Line"
-msgstr ""
-
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Отменено"
@@ -1448,40 +1293,24 @@ msgid "Validated"
 msgstr "Утвержденный"
 
 msgctxt "selection:account.invoice,type:"
-msgid "Credit Note"
-msgstr "Сторно"
+msgid "Customer"
+msgstr ""
 
 msgctxt "selection:account.invoice,type:"
-msgid "Invoice"
-msgstr "Инвойс"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Credit Note"
-msgstr "Сторно поставщика"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Invoice"
-msgstr "Инвойс поставщика"
+msgid "Supplier"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
 msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Credit Note"
-msgstr "Сторно"
+msgid "Customer"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Invoice"
-msgstr "Инвойс"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Credit Note"
-msgstr "Сторно поставщика"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Invoice"
-msgstr "Инвойс поставщика"
+msgid "Supplier"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
@@ -1614,18 +1443,6 @@ msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Wednesday"
 msgstr "Среда"
 
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Rounding"
-msgstr ""
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Roundings"
-msgstr ""
-
-msgctxt "view:account.configuration:"
-msgid "Invoice"
-msgstr ""
-
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Вы уверены, что хотите выставить Сторно для этих инвойсов?"
@@ -1667,6 +1484,10 @@ msgid "Payment Term Line Relative Deltas"
 msgstr ""
 
 msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
 msgstr "Строка правила оплаты"
 
@@ -1674,9 +1495,10 @@ msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.invoice.payment_term.test:"
 msgid "Payment Term Test"
-msgstr ""
+msgstr "Строки правила оплаты"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1724,11 +1546,11 @@ msgstr "Вы уверены что хотите отменить инвойс?"
 
 msgctxt "view:account.invoice:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 msgctxt "view:account.invoice:"
 msgid "Draft"
-msgstr ""
+msgstr "Черновик"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1742,17 +1564,19 @@ msgctxt "view:account.invoice:"
 msgid "Other Info"
 msgstr "Другая информация"
 
+#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Pay"
-msgstr ""
+msgstr "Оплата"
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Оплата"
 
+#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Post"
-msgstr ""
+msgstr "Отправить"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"

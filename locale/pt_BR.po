@@ -5,16 +5,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
 msgstr ""
-"Ano fiscal \"%(first)s\" e \"%(second)s\" possuem a mesma sequencia de "
-"faturas."
+"Os exercícios fiscais \"%(first)s\" e \"%(second)s\" possuem a mesma "
+"sequência de faturas."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not change invoice sequence in fiscal year \"%s\" because there are "
 "already posted invoices in this fiscal year."
 msgstr ""
-"Você não pode mudar a sequencia de fatura no ano fiscal \"%s\" por que já "
-"existem faturas lançadas para este ano fiscal."
+"Você não pode mudar a sequência de fatura no exercício fiscal \"%s\" porque "
+"já existem faturas lançadas para este exercício social."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
@@ -76,31 +76,33 @@ msgstr ""
 "Na fatura \"%s\" você não pode criar um pagamento parcial com um montante "
 "maior do que o montante a pagar."
 
+#, fuzzy
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
-"Percentage and Divisor values are not consistent in line \"%(line)s\" of "
-"payment term \"%(term)s\"."
+"Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
+"term \"%(term)s\"."
 msgstr ""
 "Os valores de percentagem e divisor não são consistentes na linha "
-"\"%(line)s\" do termo de pagamento \"%(term)s\"."
+"\"%(line)s\" da forma de pagamento \"%(term)s\"."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
-msgstr "Linha \"%(line)s\" inválida no termo de pagamento \"%(term)s\"."
+msgstr "Linha \"%(line)s\" inválida na forma de pagamento \"%(term)s\"."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Last line of payment term \"%s\" must be of type remainder."
 msgstr ""
-"A última linha do termo de pagamento \"%s\" deve ser do tipo remanescente."
+"A última linha da forma de pagamento \"%s\" deve ser do tipo remanescente."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
-msgstr "Falta a linha de remanescente de pagamento no termo \"%s\"."
+msgstr "Falta a linha de remanescente de pagamento na forma \"%s\"."
 
+#, fuzzy
 msgctxt "error:account.invoice.tax:"
 msgid ""
-"You can not add line \"%(line)s\" to invoice \"%(invoice)s\" because it is "
-"posted, paid or canceled."
+"You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
+" canceled."
 msgstr ""
 "Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
 " ela já foi confirmada, paga ou cancelada."
@@ -183,8 +185,9 @@ msgstr ""
 "A conta de crédito do diário \"%(journal)s\" é a mesma conta da fatura "
 "\"%(invoice)s\"."
 
+#, fuzzy
 msgctxt "error:account.invoice:"
-msgid "The credit account on journal %s\" is missing."
+msgid "The credit account on journal \"%s\" is missing."
 msgstr "Falta a conta de crédito do diário \"%s\"."
 
 msgctxt "error:account.invoice:"
@@ -208,8 +211,8 @@ msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
-"Não há sequência de fatura para a fatura \"%(invoice)s\" no período/ano "
-"fiscal \"%(period)s\"."
+"Não há sequência de fatura para a fatura \"%(invoice)s\" no "
+"período/exercício social \"%(period)s\"."
 
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
@@ -228,7 +231,7 @@ msgid ""
 "Period \"%(period)s\" must have the same company as its fiscal year "
 "(%(fiscalyear)s)."
 msgstr ""
-"O período \"%(period)s\" deve ter a mesma empresa e ano fiscal "
+"O período \"%(period)s\" deve ter a mesma empresa e exercício social "
 "(%(fiscalyear)s)."
 
 msgctxt "error:account.period:"
@@ -238,54 +241,6 @@ msgid ""
 msgstr ""
 "Você não pode mudar a sequência de fatura no período \"%s\" porque já existe"
 " uma fatura confirmada para este período."
-
-msgctxt "field:account.configuration,tax_rounding:"
-msgid "Tax Rounding"
-msgstr "Arredondamento do Tributo"
-
-msgctxt "field:account.configuration,tax_roundings:"
-msgid "Tax Roundings"
-msgstr "Arredondamento de Tributos"
-
-msgctxt "field:account.configuration.tax_rounding,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt "field:account.configuration.tax_rounding,configuration:"
-msgid "Configuration"
-msgstr "Configuração"
-
-msgctxt "field:account.configuration.tax_rounding,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:account.configuration.tax_rounding,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
-
-msgctxt "field:account.configuration.tax_rounding,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.tax_rounding,method:"
-msgid "Method"
-msgstr "Método"
-
-msgctxt "field:account.configuration.tax_rounding,rec_name:"
-msgid "Name"
-msgstr "Nome"
-
-msgctxt "field:account.configuration.tax_rounding,sequence:"
-msgid "Sequence"
-msgstr "Sequência"
-
-msgctxt "field:account.configuration.tax_rounding,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:account.configuration.tax_rounding,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -301,7 +256,7 @@ msgstr "Sequência de Nota de Crédito do Cliente"
 
 msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Sequência das Faturas do Cliente"
+msgstr "Sequência de Fatura do Cliente"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
@@ -401,11 +356,11 @@ msgstr "Origem"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
-msgstr "Parceiro"
+msgstr "Pessoa"
 
 msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
-msgstr "Língua do parceiro"
+msgstr "Idioma da Pessoa"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
@@ -413,7 +368,7 @@ msgstr "Linhas de Pagamento"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Forma de Pagamento"
 
 msgctxt "field:account.invoice,rec_name:"
 msgid "Name"
@@ -561,11 +516,11 @@ msgstr "Origem"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr "Parceiro"
+msgstr "Pessoa"
 
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
-msgstr "Língua do parceiro"
+msgstr "Idioma da Pessoa"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
@@ -697,7 +652,7 @@ msgstr "Linhas a Pagar"
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr "Linas de Pagamento"
+msgstr "Linhas do Pagamento"
 
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
@@ -705,7 +660,7 @@ msgstr "Tipo"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -773,7 +728,7 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.invoice.payment_term.line,create_date:"
 msgid "Create Date"
@@ -801,11 +756,11 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Forma de Pagamento"
 
-msgctxt "field:account.invoice.payment_term.line,percentage:"
-msgid "Percentage"
-msgstr "Porcentagem"
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
@@ -853,7 +808,7 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
 msgid "Payment Term Line"
-msgstr "Linha do Prazo de Pagamento"
+msgstr "Linha da Forma de Pagamento"
 
 msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
 msgid "Month"
@@ -889,7 +844,7 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
@@ -909,7 +864,7 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Forma de Pagamento"
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
@@ -917,7 +872,7 @@ msgstr "Resultado"
 
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
@@ -941,7 +896,7 @@ msgstr "Contas"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
@@ -1033,11 +988,11 @@ msgstr "Faturar"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Prazo de Pagamento do Cliente"
+msgstr "Forma de Pagamento do Cliente"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Prazo de Pagamento do Fornecedor"
+msgstr "Forma de Pagamento do Fornecedor"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
@@ -1047,17 +1002,13 @@ msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "Utilizar para ordenar as linhas em ordem ascendente."
 
-msgctxt "model:account.configuration.tax_rounding,name:"
-msgid "Account Configuration Tax Rounding"
-msgstr "Configuração Contábil de Arredondamento de Tributos"
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "Faturar"
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr "Fatura - Linha de Pagamentos"
+msgstr "Fatura - Linha de Pagamento"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
@@ -1081,23 +1032,23 @@ msgstr "Pagar Fatura"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Forma de Pagamento"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr "Linha do Prazo de Pagamento"
+msgstr "Linha da Forma de Pagamento"
 
 msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
 msgid "Payment Term Line Relative Delta"
-msgstr "Linha do Prazo de Pagamento - Incremento Relativo"
+msgstr "Linha da Forma de Pagamento - Incremento Relativo"
 
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
-msgstr "Teste de Prazo de Pagamento"
+msgstr "Simulação da Forma de Pagamento"
 
 msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
-msgstr "Teste de Prazo de Pagamento"
+msgstr "Simulação da Forma de Pagamento"
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
@@ -1115,25 +1066,18 @@ msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
 msgstr "Faturas"
 
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
-msgid "Supplier Credit Notes"
-msgstr "Notas de Crédito do Fornecedor"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Faturas de Fornecedor"
 
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
-msgid "Credit Notes"
-msgstr "Notas de Crédito"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
-msgid "Invoices"
-msgstr "Faturas"
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Condições de pagamento"
+msgstr "Formas de Pagamento"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
@@ -1153,85 +1097,47 @@ msgstr "Pagar Fatura"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Teste de Prazo de Pagamento"
+msgstr "Simulação da Forma de Pagamento"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
 msgstr "Todos"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_draft"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
 msgstr "Rascunho"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_posted"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
 msgstr "Confirmado"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_validated"
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
 msgstr "Validado"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_all"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
 msgstr "Todos"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_draft"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
 msgstr "Rascunho"
 
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_posted"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
 msgstr "Confirmado"
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_validated"
-msgid "Validated"
-msgstr "Validado"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_all"
-msgid "All"
-msgstr "Todos"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_draft"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_posted"
-msgid "Posted"
-msgstr "Confirmado"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_validated"
-msgid "Validated"
-msgstr "Validado"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_all"
-msgid "All"
-msgstr "Todos"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_draft"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_posted"
-msgid "Posted"
-msgstr "Confirmado"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_validated"
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
 msgstr "Validado"
 
@@ -1239,21 +1145,14 @@ msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Faturar"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
-msgid "Supplier Credit Notes"
-msgstr "Notas de Crédito do Fornecedor"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Faturas de Fornecedor"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
-msgid "Credit Notes"
-msgstr "Notas de Crédito"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
-msgid "Invoices"
-msgstr "Faturas"
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1261,15 +1160,15 @@ msgstr "Faturas"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Condições de pagamento"
+msgstr "Formas de Pagamento"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Prova de Prazo de Pagamento"
+msgstr "Simulação da Forma de Pagamento"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Condições de pagamento"
+msgstr "Formas de Pagamento"
 
 msgctxt "report:account.invoice:"
 msgid ":"
@@ -1277,15 +1176,11 @@ msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "report:account.invoice:"
 msgid "Base"
 msgstr "Base"
-
-msgctxt "report:account.invoice:"
-msgid "Credit Note N°:"
-msgstr "Nota de Crédito nº:"
 
 msgctxt "report:account.invoice:"
 msgid "Date"
@@ -1304,20 +1199,8 @@ msgid "Description:"
 msgstr "Descrição:"
 
 msgctxt "report:account.invoice:"
-msgid "Draft Credit Note"
-msgstr "Rascunho de Nota de Crédito"
-
-msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Rascunho de Fatura"
-
-msgctxt "report:account.invoice:"
-msgid "Draft Supplier Credit Note"
-msgstr "Rascunho de Nota de Crédito do Fornecedor"
-
-msgctxt "report:account.invoice:"
-msgid "Draft Supplier Invoice"
-msgstr "Rascunho de Fatura de Fornecedor"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
@@ -1325,11 +1208,7 @@ msgstr "Fatura n°:"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
-
-msgctxt "report:account.invoice:"
-msgid "Pro forma Credit Note"
-msgstr "Nota de Crédito Pro Forma"
+msgstr "Forma de Pagamento"
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
@@ -1342,10 +1221,6 @@ msgstr "Quantidade"
 msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Referência"
-
-msgctxt "report:account.invoice:"
-msgid "Supplier Credit Note N°:"
-msgstr "Nota de Crédito de Fornecedor nº:"
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
@@ -1379,30 +1254,6 @@ msgctxt "report:account.invoice:"
 msgid "VAT:"
 msgstr "IVA:"
 
-msgctxt "report:account.invoice:"
-msgid "Validated Supplier Credit Note"
-msgstr "Nota de Crédito do Fornecedro Validada"
-
-msgctxt "report:account.invoice:"
-msgid "Validated Supplier Invoice"
-msgstr "Fatura de Fornecedor Validada"
-
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Document"
-msgstr "Por documento"
-
-msgctxt "selection:account.configuration,tax_rounding:"
-msgid "Per Line"
-msgstr "Por linha"
-
-msgctxt "selection:account.configuration.tax_rounding,method:"
-msgid "Per Document"
-msgstr "Por Documento"
-
-msgctxt "selection:account.configuration.tax_rounding,method:"
-msgid "Per Line"
-msgstr "Por Linha"
-
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Cancelado"
@@ -1424,40 +1275,24 @@ msgid "Validated"
 msgstr "Validado"
 
 msgctxt "selection:account.invoice,type:"
-msgid "Credit Note"
-msgstr "Nota de Crédito"
+msgid "Customer"
+msgstr ""
 
 msgctxt "selection:account.invoice,type:"
-msgid "Invoice"
-msgstr "Faturar"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Credit Note"
-msgstr "Nota de Crédito de Fornecedor"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Invoice"
-msgstr "Fatura de Fornecedor"
+msgid "Supplier"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
 msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Credit Note"
-msgstr "Nota de Crédito"
+msgid "Customer"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Invoice"
-msgstr "Faturar"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Credit Note"
-msgstr "Nota de Crédito do Fornecedor"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Invoice"
-msgstr "Fatura do Fornecedor"
+msgid "Supplier"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
@@ -1583,18 +1418,6 @@ msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
 msgid "Wednesday"
 msgstr "Quarta"
 
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Rounding"
-msgstr "Configuração Contábil de Arredondamento de Tributo"
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Roundings"
-msgstr "Configuração Contábil de Arredondamento de Tributo"
-
-msgctxt "view:account.configuration:"
-msgid "Invoice"
-msgstr "Faturar"
-
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Você tem certeza que quer creditas estas faturas?"
@@ -1629,31 +1452,35 @@ msgstr "Pagar a Fatura"
 
 msgctxt "view:account.invoice.payment_term.line.relativedelta:"
 msgid "Payment Term Line Relative Delta"
-msgstr "Linha de Prazo de Pagamento - Incremento Relativo"
+msgstr "Linha de Forma de Pagamento - Incremento Relativo"
 
 msgctxt "view:account.invoice.payment_term.line.relativedelta:"
 msgid "Payment Term Line Relative Deltas"
-msgstr "Linha de Prazo de Pagamento - Incrementos Relativos"
+msgstr "Linha de Forma de Pagamento - Incrementos Relativos"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
-msgstr "Linha do Prazo de Pagamento"
+msgstr "Linha da Forma de Pagamento"
 
 msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
-msgstr "Prazo de Pagamento - Resultados de Prova"
+msgstr "Forma de Pagamento - Resultados da Simulação"
 
 msgctxt "view:account.invoice.payment_term.test:"
 msgid "Payment Term Test"
-msgstr "Prazo de Pagamento - Prova"
+msgstr "Forma de Pagamento - Simulação"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Forma de Pagamento"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
-msgstr "Condições de pagamento"
+msgstr "Formas de Pagamento"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "Print Invoice"
@@ -1749,7 +1576,7 @@ msgstr "Linhas de Pagamento"
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr "Condições de pagamento"
+msgstr "Formas de Pagamento"
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
