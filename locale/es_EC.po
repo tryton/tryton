@@ -24,7 +24,7 @@ msgstr "Decimales de UdM del peso"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr "Transportista"
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
@@ -60,7 +60,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "Lista de precio de transporte por peso"
+msgstr "Lista de precio de transportista por peso"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
@@ -68,8 +68,8 @@ msgstr "Peso"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
-msgstr "Lista de precios de transporte por peso"
+msgstr "Lista de precios de transportista por peso"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
-msgstr "Listas de precios de transporte por peso"
+msgstr "Listas de precios de transportista por peso"
