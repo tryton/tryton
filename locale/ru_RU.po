@@ -158,12 +158,32 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:product.category,customs:"
+msgid "Customs"
+msgstr ""
+
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
 msgstr ""
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
+msgstr ""
+
+msgctxt "field:product.product,customs_category:"
+msgid "Customs Category"
+msgstr ""
+
+msgctxt "field:product.product,tariff_codes:"
+msgid "Tariff Codes"
+msgstr ""
+
+msgctxt "field:product.product,tariff_codes_category:"
+msgid "Use Category's Tariff Codes"
+msgstr ""
+
+msgctxt "field:product.template,customs_category:"
+msgid "Customs Category"
 msgstr ""
 
 msgctxt "field:product.template,tariff_codes:"
@@ -180,6 +200,10 @@ msgstr ""
 
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
+msgstr ""
+
+msgctxt "help:product.product,tariff_codes_category:"
+msgid "Use the tariff codes defined on the category"
 msgstr ""
 
 msgctxt "help:product.template,tariff_codes_category:"

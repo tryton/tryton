@@ -158,6 +158,11 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+#, fuzzy
+msgctxt "field:product.category,customs:"
+msgid "Customs"
+msgstr "Zölle"
+
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
 msgstr "Tarifcodes"
@@ -165,6 +170,24 @@ msgstr "Tarifcodes"
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Tarifcode der übergeordneten Kategorie anwenden"
+
+msgctxt "field:product.product,customs_category:"
+msgid "Customs Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,tariff_codes:"
+msgid "Tariff Codes"
+msgstr "Tarifcodes"
+
+#, fuzzy
+msgctxt "field:product.product,tariff_codes_category:"
+msgid "Use Category's Tariff Codes"
+msgstr "Tarifcodes der Kategorie anwenden"
+
+msgctxt "field:product.template,customs_category:"
+msgid "Customs Category"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -183,6 +206,11 @@ msgstr ""
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
 msgstr "Tarifcodes der übergeordneten Kategorie anwenden"
+
+#, fuzzy
+msgctxt "help:product.product,tariff_codes_category:"
+msgid "Use the tariff codes defined on the category"
+msgstr "Tarifcode der Kategorie anwenden"
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"

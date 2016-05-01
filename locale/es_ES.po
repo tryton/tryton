@@ -158,6 +158,11 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+#, fuzzy
+msgctxt "field:product.category,customs:"
+msgid "Customs"
+msgstr "Aduanas"
+
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
 msgstr "Códigos de arancel"
@@ -165,6 +170,24 @@ msgstr "Códigos de arancel"
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Usar los códigos de arancel del padre"
+
+msgctxt "field:product.product,customs_category:"
+msgid "Customs Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,tariff_codes:"
+msgid "Tariff Codes"
+msgstr "Códigos de arancel"
+
+#, fuzzy
+msgctxt "field:product.product,tariff_codes_category:"
+msgid "Use Category's Tariff Codes"
+msgstr "Usar los códigos de arancel de la categoría"
+
+msgctxt "field:product.template,customs_category:"
+msgid "Customs Category"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -181,6 +204,11 @@ msgstr "El código del sistema armonizado de nomenclatura."
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
 msgstr "Usar los códigos de arancel definidos en la categoría padre."
+
+#, fuzzy
+msgctxt "help:product.product,tariff_codes_category:"
+msgid "Use the tariff codes defined on the category"
+msgstr "Usar los códigos de arancel definidos en la categoría."
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
