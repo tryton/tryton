@@ -4,72 +4,72 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr "Hét napja:"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr "Beszállítók"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
-msgstr "Hét napja:"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr "Terméket szállító nap"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr "Péntek"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr "Hétfő"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr "Szombat"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr "Vasárnap"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr "Csütörtök"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr "Kedd"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr "Szerda"
+msgstr ""
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
-msgstr "Hét napja:"
+msgstr ""

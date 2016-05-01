@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr ""
+msgstr "День недели"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_date:"

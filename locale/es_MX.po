@@ -70,6 +70,7 @@ msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
 msgstr "Miércoles"
 
+#, fuzzy
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
-msgstr ""
+msgstr "Día de la semana"
