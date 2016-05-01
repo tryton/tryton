@@ -40,11 +40,11 @@ msgstr "Dividir movimento"
 
 msgctxt "view:stock.move.split.start:"
 msgid "Split Move"
-msgstr ""
+msgstr "Dividir movimentação"
 
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr ""
+msgstr "Dividir"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
