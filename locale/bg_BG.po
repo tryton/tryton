@@ -176,9 +176,10 @@ msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr ""
+msgstr "Ниво"
 
 #, fuzzy
 msgctxt "field:account.dunning.procedure,name:"

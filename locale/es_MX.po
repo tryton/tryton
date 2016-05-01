@@ -262,13 +262,15 @@ msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr ""
+msgstr "Reclamación"
 
+#, fuzzy
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
-msgstr ""
+msgstr "Crear reclamaciones"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
@@ -282,33 +284,40 @@ msgctxt "view:account.dunning.level:"
 msgid "dunning levels"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
-msgstr ""
+msgstr "Procedimiento de reclamación"
 
+#, fuzzy
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Procedimientos de reclamaciones"
 
+#, fuzzy
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning"
-msgstr ""
+msgstr "Procesar reclamación"
 
+#, fuzzy
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr ""
+msgstr "Procesar reclamación"
 
+#, fuzzy
 msgctxt "view:account.dunning:"
 msgid "Dunning"
-msgstr ""
+msgstr "Reclamación"
 
+#, fuzzy
 msgctxt "view:account.dunning:"
 msgid "Dunnings"
-msgstr ""
+msgstr "Reclamaciones"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr ""
+msgstr "Reclamación"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"

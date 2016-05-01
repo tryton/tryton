@@ -264,7 +264,7 @@ msgstr "Borrador"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr ""
+msgstr "Cobranzas"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
