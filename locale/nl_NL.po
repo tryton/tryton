@@ -61,8 +61,22 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Verkoopbeheer"
 
-msgctxt "field:product.template,delivery_time:"
-msgid "Delivery Time"
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Verkoopbaar"
+
+#, fuzzy
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "Maateenheid verkoop"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
 msgstr ""
 
 msgctxt "field:product.template,salable:"
@@ -94,12 +108,13 @@ msgid "Sale Invoice Method"
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_sequence:"
-msgid "Sale Reference Sequence"
-msgstr "Verkoopkenmerkreeks"
+msgid "Sale Sequence"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
-msgstr ""
+msgstr "Levering afhandeling"
 
 msgctxt "field:sale.configuration,write_date:"
 msgid "Write Date"
@@ -143,10 +158,6 @@ msgstr ""
 
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
-
-msgctxt "field:sale.line,delivery_date:"
-msgid "Delivery Date"
 msgstr ""
 
 msgctxt "field:sale.line,description:"
@@ -212,6 +223,10 @@ msgstr "Verkoop"
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
 msgstr "Reeks"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -414,6 +429,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Boekingen"
 
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
 msgstr ""
@@ -577,10 +596,6 @@ msgstr "Verkoop"
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Uitzonderingstoestand"
-
-msgctxt "help:product.template,delivery_time:"
-msgid "In number of days"
-msgstr ""
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
@@ -789,6 +804,11 @@ msgstr "Hoeveelheid"
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Referentie"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
@@ -1025,7 +1045,7 @@ msgstr "Offerteregels"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"

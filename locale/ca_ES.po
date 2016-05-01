@@ -66,9 +66,23 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Vendes"
 
-msgctxt "field:product.template,delivery_time:"
-msgid "Delivery Time"
-msgstr "Termini de lliurament"
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Vendible"
+
+#, fuzzy
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "UdM de venda"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -99,8 +113,8 @@ msgid "Sale Invoice Method"
 msgstr "Mètode de facturació"
 
 msgctxt "field:sale.configuration,sale_sequence:"
-msgid "Sale Reference Sequence"
-msgstr "Seqüència de numeració vendes"
+msgid "Sale Sequence"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -149,10 +163,6 @@ msgstr "Data creació"
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
-
-msgctxt "field:sale.line,delivery_date:"
-msgid "Delivery Date"
-msgstr "Data de lliurament"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -217,6 +227,10 @@ msgstr "Venda"
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -418,6 +432,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Moviments"
 
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
 msgstr "Origen"
@@ -581,10 +599,6 @@ msgstr "Venda"
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Estat excepció"
-
-msgctxt "help:product.template,delivery_time:"
-msgid "In number of days"
-msgstr "En nombre de dies."
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
@@ -774,6 +788,11 @@ msgstr "Quantitat"
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Pressupost Núm.:"
+
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Referència"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"

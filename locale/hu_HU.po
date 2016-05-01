@@ -56,8 +56,20 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr ""
 
-msgctxt "field:product.template,delivery_time:"
-msgid "Delivery Time"
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr ""
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr ""
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
 msgstr ""
 
 msgctxt "field:product.template,salable:"
@@ -89,7 +101,7 @@ msgid "Sale Invoice Method"
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_sequence:"
-msgid "Sale Reference Sequence"
+msgid "Sale Sequence"
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
@@ -138,10 +150,6 @@ msgstr ""
 
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
-
-msgctxt "field:sale.line,delivery_date:"
-msgid "Delivery Date"
 msgstr ""
 
 msgctxt "field:sale.line,description:"
@@ -206,6 +214,10 @@ msgstr ""
 
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
+msgstr ""
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
 msgstr ""
 
 msgctxt "field:sale.line,taxes:"
@@ -408,6 +420,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
 msgstr ""
@@ -570,10 +586,6 @@ msgstr ""
 
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
-msgstr ""
-
-msgctxt "help:product.template,delivery_time:"
-msgid "In number of days"
 msgstr ""
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
@@ -762,6 +774,10 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
 msgstr ""
 
 msgctxt "report:sale.sale:"

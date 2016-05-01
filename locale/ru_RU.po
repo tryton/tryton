@@ -62,9 +62,23 @@ msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Продажи"
 
-msgctxt "field:product.template,delivery_time:"
-msgid "Delivery Time"
-msgstr "Время доставки"
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Для продажи"
+
+#, fuzzy
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "Ед.измерения продажи"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -95,8 +109,8 @@ msgid "Sale Invoice Method"
 msgstr "Метод инвойса продажи"
 
 msgctxt "field:sale.configuration,sale_sequence:"
-msgid "Sale Reference Sequence"
-msgstr "Ссылка на нумерация продаж"
+msgid "Sale Sequence"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -145,10 +159,6 @@ msgstr "Дата создания"
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
-
-msgctxt "field:sale.line,delivery_date:"
-msgid "Delivery Date"
-msgstr "Дата доставки"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -213,6 +223,10 @@ msgstr "Продажа"
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
 msgstr "Нумерация"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -415,6 +429,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Перемещения"
 
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
@@ -579,10 +597,6 @@ msgstr "Продажа"
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
 msgstr "Состояние ситуации"
-
-msgctxt "help:product.template,delivery_time:"
-msgid "In number of days"
-msgstr "После указанного количества дней"
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
@@ -776,6 +790,11 @@ msgstr "Кол-во"
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Котировка N°:"
+
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Ссылка"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
@@ -1000,7 +1019,7 @@ msgstr "Строки продажи"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Налоги"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
@@ -1076,6 +1095,7 @@ msgctxt "wizard_button:sale.return_sale,start,end:"
 msgid "Cancel"
 msgstr "Отменить"
 
+#, fuzzy
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
-msgstr ""
+msgstr "Возвраты"
