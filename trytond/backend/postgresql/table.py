@@ -463,7 +463,7 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions(columns=True)
 
     @staticmethod
-    def drop_table(cursor, model, table, cascade=False):
+    def drop_table(model, table, cascade=False):
         cursor = Transaction().connection.cursor()
         cursor.execute('DELETE FROM ir_model_data '
             'WHERE model = \'%s\'' % model)
