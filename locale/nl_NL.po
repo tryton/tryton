@@ -229,17 +229,20 @@ msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "In afwachting"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr ""
+msgstr "Geannuleerd"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipment"

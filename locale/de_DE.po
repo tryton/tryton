@@ -243,11 +243,3 @@ msgstr "Versenden"
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
 msgstr "Warten"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Fortfahren"

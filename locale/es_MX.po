@@ -216,25 +216,30 @@ msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "En espera"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr ""
+msgstr "Finalizado"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipment"
-msgstr ""
+msgstr "Envío directo"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipments"
-msgstr ""
+msgstr "Envíos directos"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Ship"

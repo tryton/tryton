@@ -20,15 +20,13 @@ msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
-msgstr "Заказчик"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr "Адрес доставки"
+msgstr ""
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
@@ -38,15 +36,13 @@ msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
-msgstr "Заказчик"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr "Адрес доставки"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -68,98 +64,81 @@ msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
-msgstr "Код языка"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr "Учет.орг."
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
-msgstr "Контактный адрес"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
-msgstr "Заказчик"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr "Адрес доставки"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
-msgstr "Учетная дата"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr "Перемещения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
-msgstr "Плановая дата"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr "Ссылка"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr "Штат"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr "Поставщик"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
@@ -173,28 +152,25 @@ msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "Все"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "Ожидание"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
@@ -216,44 +192,37 @@ msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
-msgstr "Отменено"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Выполнено"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
-msgstr "Ожидание"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr "Отменено"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Выполнено"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipment"
