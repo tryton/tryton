@@ -216,28 +216,29 @@ msgstr "egyéb"
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Számlaszám"
 
+#, fuzzy
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Numbers"
-msgstr ""
+msgstr "Számlaszám"
 
 msgctxt "view:bank.account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Bankszámla"
 
 msgctxt "view:bank.account:"
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Bankszámla"
 
 msgctxt "view:bank:"
 msgid "Bank"
-msgstr ""
+msgstr "Bank"
 
 msgctxt "view:bank:"
 msgid "Banks"
-msgstr ""
+msgstr "Bankok"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr ""
+msgstr "Bankügylet"

@@ -214,30 +214,37 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Otro"
 
+#, fuzzy
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Número de cuenta bancaria"
 
+#, fuzzy
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Numbers"
-msgstr ""
+msgstr "Número de cuenta bancaria"
 
+#, fuzzy
 msgctxt "view:bank.account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Cuenta bancaria"
 
+#, fuzzy
 msgctxt "view:bank.account:"
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Cuentas bancarias"
 
+#, fuzzy
 msgctxt "view:bank:"
 msgid "Bank"
-msgstr ""
+msgstr "Banco"
 
+#, fuzzy
 msgctxt "view:bank:"
 msgid "Banks"
-msgstr ""
+msgstr "Bancos"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr ""
+msgstr "Banca"

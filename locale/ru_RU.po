@@ -74,13 +74,15 @@ msgctxt "field:bank.account,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr ""
+msgstr "Номер"
 
+#, fuzzy
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr ""
+msgstr "Владелец"
 
 #, fuzzy
 msgctxt "field:bank.account,rec_name:"

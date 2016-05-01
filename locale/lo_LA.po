@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr "Ongeldige IBAN \"%s\"."
+msgstr ""
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
-msgstr "BIC"
+msgstr ""
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
@@ -20,15 +20,15 @@ msgstr ""
 
 msgctxt "field:bank,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Relatie"
+msgstr ""
 
 msgctxt "field:bank,rec_name:"
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
@@ -38,10 +38,9 @@ msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr "Actief"
+msgstr ""
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
@@ -55,28 +54,25 @@ msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr ""
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Nummer"
+msgstr ""
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr ""
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
@@ -86,10 +82,9 @@ msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
@@ -101,16 +96,15 @@ msgstr ""
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
@@ -120,10 +114,9 @@ msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr ""
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
@@ -135,31 +128,27 @@ msgstr ""
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr ""
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
@@ -193,19 +182,17 @@ msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Rekeningen"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
@@ -223,10 +210,9 @@ msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr "Overig"
+msgstr ""
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
