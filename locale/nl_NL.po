@@ -9,7 +9,7 @@ msgstr ""
 msgctxt "error:timesheet.work:"
 msgid ""
 "You can not unset \"Available on timesheets\" for work \"%s\" because it "
-"already has  timesheets."
+"already has timesheets."
 msgstr ""
 
 msgctxt "field:timesheet.hours_employee,create_date:"
@@ -82,6 +82,11 @@ msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Maand"
 
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Maand"
+
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Naam"
@@ -123,6 +128,11 @@ msgid "Name"
 msgstr "Naam"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Week"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Week"
 
@@ -253,9 +263,10 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Beschikbaar in tijdregistartie"
 
+#, fuzzy
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr ""
+msgstr "Tijdregistratieregel"
 
 #, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
@@ -425,9 +436,10 @@ msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
 msgstr "Uren per werknemer"
 
+#, fuzzy
 msgctxt "model:timesheet.hours_employee.open.start,name:"
 msgid "Open Hours per Employee"
-msgstr ""
+msgstr "Uren per werknemer"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"

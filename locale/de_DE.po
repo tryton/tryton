@@ -6,10 +6,11 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "Zeitdauer von Zeile \"%(line)s\" muss positiv sein"
 
+#, fuzzy
 msgctxt "error:timesheet.work:"
 msgid ""
 "You can not unset \"Available on timesheets\" for work \"%s\" because it "
-"already has  timesheets."
+"already has timesheets."
 msgstr ""
 "\"Verfügbar für Zeiterfassung\" kann für Stunden pro Tätigkeit \"%s\" nicht "
 "abgewählt werden, da sie bereits für die Eingabe von Zeitpositionen "
@@ -83,6 +84,11 @@ msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Monat"
 
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Monat"
+
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Name"
@@ -124,6 +130,11 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Woche"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Woche"
 

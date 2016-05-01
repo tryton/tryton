@@ -6,10 +6,11 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "Duración de línea \"%(linea)s\" debe ser positivo."
 
+#, fuzzy
 msgctxt "error:timesheet.work:"
 msgid ""
 "You can not unset \"Available on timesheets\" for work \"%s\" because it "
-"already has  timesheets."
+"already has timesheets."
 msgstr ""
 "No puede cambiar \"Registros Disponibles\" para los trabajos \"%s\" porque "
 "hay registros activos."
@@ -82,6 +83,11 @@ msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Mes"
 
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Mes"
+
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Nombre"
@@ -123,6 +129,11 @@ msgid "Name"
 msgstr "Nombre"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Semana"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Semana"
 
@@ -262,9 +273,10 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Inicio de Registro de Tiempo"
 
+#, fuzzy
 msgctxt "field:timesheet.work,total_duration:"
 msgid "Total Timesheet Duration"
-msgstr ""
+msgstr "Duración de Registro de Tiempo"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
