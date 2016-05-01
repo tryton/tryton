@@ -126,17 +126,20 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extra"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extra"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Extras de venta"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
@@ -158,10 +161,12 @@ msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:sale.extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
+#, fuzzy
 msgctxt "view:sale.extra:"
 msgid "Extras"
-msgstr ""
+msgstr "Extra"
