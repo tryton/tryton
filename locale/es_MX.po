@@ -263,45 +263,53 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Borrador"
 
+#, fuzzy
 msgctxt "view:stock.forecast.complete.ask:"
 msgid "Choose dates"
-msgstr ""
+msgstr "Seleccionar fechas"
 
+#, fuzzy
 msgctxt "view:stock.forecast.complete.choose:"
 msgid "Choose products"
-msgstr ""
+msgstr "Seleccionar productos"
 
+#, fuzzy
 msgctxt "view:stock.forecast.line:"
 msgid "Forecast Line"
-msgstr ""
+msgstr "Línea de previsión"
 
+#, fuzzy
 msgctxt "view:stock.forecast.line:"
 msgid "Forecast Lines"
-msgstr ""
+msgstr "Línea de previsión"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelada"
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
-msgstr ""
+msgstr "Previsión completa"
 
 msgctxt "view:stock.forecast:"
 msgid "Confirm"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Forecast"
-msgstr ""
+msgstr "Previsión"
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Forecasts"
-msgstr ""
+msgstr "Previsiones"
 
 msgctxt "view:stock.forecast:"
 msgid "Reset to Draft"
