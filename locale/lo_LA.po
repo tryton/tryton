@@ -1,0 +1,155 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.promotion:"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr ""
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr ""
+
+msgctxt "field:sale.promotion,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.promotion,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.promotion,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr ""
+
+msgctxt "field:sale.promotion,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr ""
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.promotion,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr ""
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.promotion,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr ""
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr ""
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr ""
+
+msgctxt "view:sale.promotion:"
+msgid "Sale Promotion"
+msgstr ""
+
+msgctxt "view:sale.promotion:"
+msgid "Sale Promotions"
+msgstr ""
