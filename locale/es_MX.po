@@ -50,9 +50,10 @@ msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr "Historial de costos de producto"
 
+#, fuzzy
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
-msgstr ""
+msgstr "Historial de costos de producto"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Time"

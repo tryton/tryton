@@ -52,7 +52,7 @@ msgstr "Cikk költségelőzményei"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
-msgstr ""
+msgstr "Beszerzési ár Termék előzmény"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
