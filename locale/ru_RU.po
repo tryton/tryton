@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr ""
+msgstr "Хранилище перемещение товара"
 
 #, fuzzy
 msgctxt "field:account.invoice.line-stock.move,create_date:"
