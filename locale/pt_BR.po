@@ -11,8 +11,8 @@ msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "A Oportunidade de Venda \"%s\" deve ser cancelada antes de ser apagada."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
-msgid "Opportunity Reference Sequence"
-msgstr "Sequência de Referência de Oportunidade"
+msgid "Opportunity Sequence"
+msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -58,10 +58,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Data de extremidade"
 
-msgctxt "field:sale.opportunity,history:"
-msgid "History"
-msgstr "Histórico"
-
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr "ID"
@@ -73,6 +69,11 @@ msgstr "Linhas"
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Razão da perda"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Numero"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -111,102 +112,6 @@ msgid "Write Date"
 msgstr "Data de gravação"
 
 msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
-msgctxt "field:sale.opportunity.history,address:"
-msgid "Address"
-msgstr "Endereço"
-
-msgctxt "field:sale.opportunity.history,amount:"
-msgid "Amount"
-msgstr "Quantidade"
-
-msgctxt "field:sale.opportunity.history,comment:"
-msgid "Comment"
-msgstr "Comentário"
-
-msgctxt "field:sale.opportunity.history,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt "field:sale.opportunity.history,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.opportunity.history,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
-
-msgctxt "field:sale.opportunity.history,currency:"
-msgid "Currency"
-msgstr "Moeda"
-
-msgctxt "field:sale.opportunity.history,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
-
-msgctxt "field:sale.opportunity.history,date:"
-msgid "Change Date"
-msgstr "Data de Modificação"
-
-msgctxt "field:sale.opportunity.history,description:"
-msgid "Description"
-msgstr "Descrição"
-
-msgctxt "field:sale.opportunity.history,employee:"
-msgid "Employee"
-msgstr "Empregado"
-
-msgctxt "field:sale.opportunity.history,end_date:"
-msgid "End Date"
-msgstr "Data de extremidade"
-
-msgctxt "field:sale.opportunity.history,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.opportunity.history,lines:"
-msgid "Lines"
-msgstr "Linhas"
-
-msgctxt "field:sale.opportunity.history,lost_reason:"
-msgid "Reason for loss"
-msgstr "Razão para a perda"
-
-msgctxt "field:sale.opportunity.history,opportunity:"
-msgid "Sale Opportunity"
-msgstr "Oportunidade de Venda"
-
-msgctxt "field:sale.opportunity.history,party:"
-msgid "Party"
-msgstr "Parceiro"
-
-msgctxt "field:sale.opportunity.history,probability:"
-msgid "Conversion Probability"
-msgstr "Probabilidade de Conversão"
-
-msgctxt "field:sale.opportunity.history,rec_name:"
-msgid "Name"
-msgstr "Nome"
-
-msgctxt "field:sale.opportunity.history,start_date:"
-msgid "Start Date"
-msgstr "Data de início"
-
-msgctxt "field:sale.opportunity.history,state:"
-msgid "State"
-msgstr "Estado"
-
-msgctxt "field:sale.opportunity.history,user:"
-msgid "User"
-msgstr "Usuário"
-
-msgctxt "field:sale.opportunity.history,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:sale.opportunity.history,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
@@ -693,10 +598,6 @@ msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Oportunidade de Venda"
 
-msgctxt "model:sale.opportunity.history,name:"
-msgid "Sale Opportunity History"
-msgstr "Histórico das Oportunidades de Venda"
-
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Linha da Oportunidade de Venda"
@@ -740,42 +641,6 @@ msgstr "Oportunidade"
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Ganhou"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Cancelled"
-msgstr "Cancelado"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Converted"
-msgstr "Convertida"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lead"
-msgstr "Chumbo"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lost"
-msgstr "Perdida"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Opportunity"
-msgstr "Oportunidade"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Won"
-msgstr "Ganhou"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Change Time"
-msgstr "Hora de Modificação"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "History"
-msgstr "Histórico"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Lead/Opportunity"
-msgstr "Lead/Oportunidade"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"

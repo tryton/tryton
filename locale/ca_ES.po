@@ -11,8 +11,8 @@ msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "Heu de cancel·lar l 'oportunitat \"%s\" abans de ser eliminat."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
-msgid "Opportunity Reference Sequence"
-msgstr "Seqüència referència oportunitat"
+msgid "Opportunity Sequence"
+msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -58,10 +58,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Data final"
 
-msgctxt "field:sale.opportunity,history:"
-msgid "History"
-msgstr "Historial"
-
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr "ID"
@@ -73,6 +69,11 @@ msgstr "Línies"
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Motius de la pèrdua"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Número"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -111,102 +112,6 @@ msgid "Write Date"
 msgstr "Data modificació"
 
 msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
-
-msgctxt "field:sale.opportunity.history,address:"
-msgid "Address"
-msgstr "Adreça"
-
-msgctxt "field:sale.opportunity.history,amount:"
-msgid "Amount"
-msgstr "Import"
-
-msgctxt "field:sale.opportunity.history,comment:"
-msgid "Comment"
-msgstr "Comentari"
-
-msgctxt "field:sale.opportunity.history,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt "field:sale.opportunity.history,create_date:"
-msgid "Create Date"
-msgstr "Data creació"
-
-msgctxt "field:sale.opportunity.history,create_uid:"
-msgid "Create User"
-msgstr "Usuari creació"
-
-msgctxt "field:sale.opportunity.history,currency:"
-msgid "Currency"
-msgstr "Moneda"
-
-msgctxt "field:sale.opportunity.history,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
-msgctxt "field:sale.opportunity.history,date:"
-msgid "Change Date"
-msgstr "Data modificació"
-
-msgctxt "field:sale.opportunity.history,description:"
-msgid "Description"
-msgstr "Descripció"
-
-msgctxt "field:sale.opportunity.history,employee:"
-msgid "Employee"
-msgstr "Empleat"
-
-msgctxt "field:sale.opportunity.history,end_date:"
-msgid "End Date"
-msgstr "Data final"
-
-msgctxt "field:sale.opportunity.history,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.opportunity.history,lines:"
-msgid "Lines"
-msgstr "Línies"
-
-msgctxt "field:sale.opportunity.history,lost_reason:"
-msgid "Reason for loss"
-msgstr "Motius de la pèrdua"
-
-msgctxt "field:sale.opportunity.history,opportunity:"
-msgid "Sale Opportunity"
-msgstr "Oportunitat"
-
-msgctxt "field:sale.opportunity.history,party:"
-msgid "Party"
-msgstr "Tercer"
-
-msgctxt "field:sale.opportunity.history,probability:"
-msgid "Conversion Probability"
-msgstr "Probabilitat de conversió"
-
-msgctxt "field:sale.opportunity.history,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:sale.opportunity.history,start_date:"
-msgid "Start Date"
-msgstr "Data inicial"
-
-msgctxt "field:sale.opportunity.history,state:"
-msgid "State"
-msgstr "Estat"
-
-msgctxt "field:sale.opportunity.history,user:"
-msgid "User"
-msgstr "Usuari"
-
-msgctxt "field:sale.opportunity.history,write_date:"
-msgid "Write Date"
-msgstr "Data modificació"
-
-msgctxt "field:sale.opportunity.history,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
@@ -693,10 +598,6 @@ msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Oportunitat"
 
-msgctxt "model:sale.opportunity.history,name:"
-msgid "Sale Opportunity History"
-msgstr "Historial d'oportunitats"
-
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Línia d'oportunitat"
@@ -740,42 +641,6 @@ msgstr "Oportunitat"
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Guanyat"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Cancelled"
-msgstr "Cancel·lada"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Converted"
-msgstr "Convertida"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lead"
-msgstr "Iniciativa"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lost"
-msgstr "Perduda"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Opportunity"
-msgstr "Oportunitat"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Won"
-msgstr "Guanyat"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Change Time"
-msgstr "Canviar temps"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "History"
-msgstr "Historial"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Lead/Opportunity"
-msgstr "Iniciativa/Oportunitat"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"

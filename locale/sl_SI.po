@@ -11,8 +11,8 @@ msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "Prodajna priložnost \"%s\" more biti pred brisanjem preklicana."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
-msgid "Opportunity Reference Sequence"
-msgstr "Štetje priložnosti"
+msgid "Opportunity Sequence"
+msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -58,10 +58,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
 
-msgctxt "field:sale.opportunity,history:"
-msgid "History"
-msgstr "Zgodovina"
-
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr "ID"
@@ -73,6 +69,11 @@ msgstr "Postavke"
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Razlog za zapravljeno priložnost"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Številka"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -111,102 +112,6 @@ msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:sale.opportunity.history,address:"
-msgid "Address"
-msgstr "Naslov"
-
-msgctxt "field:sale.opportunity.history,amount:"
-msgid "Amount"
-msgstr "Znesek"
-
-msgctxt "field:sale.opportunity.history,comment:"
-msgid "Comment"
-msgstr "Opomba"
-
-msgctxt "field:sale.opportunity.history,company:"
-msgid "Company"
-msgstr "Družba"
-
-msgctxt "field:sale.opportunity.history,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:sale.opportunity.history,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:sale.opportunity.history,currency:"
-msgid "Currency"
-msgstr "Valuta"
-
-msgctxt "field:sale.opportunity.history,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimalke"
-
-msgctxt "field:sale.opportunity.history,date:"
-msgid "Change Date"
-msgstr "Spremenjeno"
-
-msgctxt "field:sale.opportunity.history,description:"
-msgid "Description"
-msgstr "Opis"
-
-msgctxt "field:sale.opportunity.history,employee:"
-msgid "Employee"
-msgstr "Zaposlenec"
-
-msgctxt "field:sale.opportunity.history,end_date:"
-msgid "End Date"
-msgstr "Končni datum"
-
-msgctxt "field:sale.opportunity.history,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.opportunity.history,lines:"
-msgid "Lines"
-msgstr "Postavke"
-
-msgctxt "field:sale.opportunity.history,lost_reason:"
-msgid "Reason for loss"
-msgstr "Razlog za zapravljeno priložnost"
-
-msgctxt "field:sale.opportunity.history,opportunity:"
-msgid "Sale Opportunity"
-msgstr "Prodajna priložnost"
-
-msgctxt "field:sale.opportunity.history,party:"
-msgid "Party"
-msgstr "Partner"
-
-msgctxt "field:sale.opportunity.history,probability:"
-msgid "Conversion Probability"
-msgstr "Verjetnost pretvorbe"
-
-msgctxt "field:sale.opportunity.history,rec_name:"
-msgid "Name"
-msgstr "Ime"
-
-msgctxt "field:sale.opportunity.history,start_date:"
-msgid "Start Date"
-msgstr "Začetni datum"
-
-msgctxt "field:sale.opportunity.history,state:"
-msgid "State"
-msgstr "Stanje"
-
-msgctxt "field:sale.opportunity.history,user:"
-msgid "User"
-msgstr "Uporabnik"
-
-msgctxt "field:sale.opportunity.history,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:sale.opportunity.history,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -693,10 +598,6 @@ msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Prodajna priložnost"
 
-msgctxt "model:sale.opportunity.history,name:"
-msgid "Sale Opportunity History"
-msgstr "Zgodovina prodajne priložnosti"
-
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Postavka prodajne priložnosti"
@@ -740,42 +641,6 @@ msgstr "Priložnost"
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Dobljeno"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Cancelled"
-msgstr "Preklicano"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Converted"
-msgstr "Pretvorjeno"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lead"
-msgstr "Sled"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lost"
-msgstr "Zapravljeno"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Opportunity"
-msgstr "Priložnost"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Won"
-msgstr "Dobljeno"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Change Time"
-msgstr "Spremenjeno"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "History"
-msgstr "Zgodovina"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Lead/Opportunity"
-msgstr "Sled/Priložnost"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"

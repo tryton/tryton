@@ -11,7 +11,7 @@ msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
-msgid "Opportunity Reference Sequence"
+msgid "Opportunity Sequence"
 msgstr ""
 
 #, fuzzy
@@ -67,10 +67,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Eind datum"
 
-msgctxt "field:sale.opportunity,history:"
-msgid "History"
-msgstr ""
-
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr ""
@@ -83,6 +79,11 @@ msgstr "Regels"
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Nummer"
 
 #, fuzzy
 msgctxt "field:sale.opportunity,party:"
@@ -128,117 +129,6 @@ msgid "Write Date"
 msgstr ""
 
 msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,address:"
-msgid "Address"
-msgstr "Adres"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,amount:"
-msgid "Amount"
-msgstr "Bedrag"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,comment:"
-msgid "Comment"
-msgstr "Opmerking"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.opportunity.history,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.opportunity.history,create_uid:"
-msgid "Create User"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,currency:"
-msgid "Currency"
-msgstr "Valuta"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.opportunity.history,date:"
-msgid "Change Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,description:"
-msgid "Description"
-msgstr "Specificatie"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,employee:"
-msgid "Employee"
-msgstr "Werknemer"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,end_date:"
-msgid "End Date"
-msgstr "Eind datum"
-
-msgctxt "field:sale.opportunity.history,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,lines:"
-msgid "Lines"
-msgstr "Regels"
-
-msgctxt "field:sale.opportunity.history,lost_reason:"
-msgid "Reason for loss"
-msgstr ""
-
-msgctxt "field:sale.opportunity.history,opportunity:"
-msgid "Sale Opportunity"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,party:"
-msgid "Party"
-msgstr "Relaties"
-
-msgctxt "field:sale.opportunity.history,probability:"
-msgid "Conversion Probability"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,start_date:"
-msgid "Start Date"
-msgstr "Start datum"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,state:"
-msgid "State"
-msgstr "Status"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,user:"
-msgid "User"
-msgstr "Gebruiker"
-
-msgctxt "field:sale.opportunity.history,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.opportunity.history,write_uid:"
 msgid "Write User"
 msgstr ""
 
@@ -775,10 +665,6 @@ msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr ""
 
-msgctxt "model:sale.opportunity.history,name:"
-msgid "Sale Opportunity History"
-msgstr ""
-
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr ""
@@ -823,43 +709,6 @@ msgstr ""
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Zuid-Koreaanse won"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Cancelled"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lead"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Opportunity"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Won"
-msgstr "Zuid-Koreaanse won"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Change Time"
-msgstr ""
-
-msgctxt "view:sale.opportunity.history:"
-msgid "History"
-msgstr ""
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Lead/Opportunity"
-msgstr ""
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"

@@ -11,7 +11,7 @@ msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "Продажа Возможной \"%s\" должна быть отменена перед удалением."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
-msgid "Opportunity Reference Sequence"
+msgid "Opportunity Sequence"
 msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
@@ -58,10 +58,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Дата окончания"
 
-msgctxt "field:sale.opportunity,history:"
-msgid "History"
-msgstr "История"
-
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr "ID"
@@ -73,6 +69,11 @@ msgstr "Строки"
 msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Причина потери"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Номер"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -113,105 +114,6 @@ msgid "Write Date"
 msgstr "Дата изменения"
 
 msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-msgctxt "field:sale.opportunity.history,address:"
-msgid "Address"
-msgstr "Адрес"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,amount:"
-msgid "Amount"
-msgstr "Сумма"
-
-msgctxt "field:sale.opportunity.history,comment:"
-msgid "Comment"
-msgstr "Комментарии"
-
-msgctxt "field:sale.opportunity.history,company:"
-msgid "Company"
-msgstr "Организация"
-
-msgctxt "field:sale.opportunity.history,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:sale.opportunity.history,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,currency:"
-msgid "Currency"
-msgstr "Валюты"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.history,currency_digits:"
-msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
-
-msgctxt "field:sale.opportunity.history,date:"
-msgid "Change Date"
-msgstr "Дата изменения"
-
-msgctxt "field:sale.opportunity.history,description:"
-msgid "Description"
-msgstr "Описание"
-
-msgctxt "field:sale.opportunity.history,employee:"
-msgid "Employee"
-msgstr "Сотрудник"
-
-msgctxt "field:sale.opportunity.history,end_date:"
-msgid "End Date"
-msgstr "Дата окончания"
-
-msgctxt "field:sale.opportunity.history,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.opportunity.history,lines:"
-msgid "Lines"
-msgstr "Строки"
-
-msgctxt "field:sale.opportunity.history,lost_reason:"
-msgid "Reason for loss"
-msgstr "Причина потери"
-
-msgctxt "field:sale.opportunity.history,opportunity:"
-msgid "Sale Opportunity"
-msgstr "Продажа Возможной"
-
-msgctxt "field:sale.opportunity.history,party:"
-msgid "Party"
-msgstr "Контрагент"
-
-msgctxt "field:sale.opportunity.history,probability:"
-msgid "Conversion Probability"
-msgstr "Вероятность обращения"
-
-msgctxt "field:sale.opportunity.history,rec_name:"
-msgid "Name"
-msgstr "Наименование"
-
-msgctxt "field:sale.opportunity.history,start_date:"
-msgid "Start Date"
-msgstr "Дата начала"
-
-msgctxt "field:sale.opportunity.history,state:"
-msgid "State"
-msgstr "Состояние"
-
-msgctxt "field:sale.opportunity.history,user:"
-msgid "User"
-msgstr "Пользователь"
-
-msgctxt "field:sale.opportunity.history,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:sale.opportunity.history,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
@@ -711,10 +613,6 @@ msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Продажа Возможной"
 
-msgctxt "model:sale.opportunity.history,name:"
-msgid "Sale Opportunity History"
-msgstr "История продажи Возможных"
-
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Строка продажи Возможных"
@@ -759,43 +657,6 @@ msgstr "Возможная продажа"
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Вона"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Cancelled"
-msgstr "Отмененно"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Converted"
-msgstr "Обращенные"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lead"
-msgstr "Неопределенная"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Lost"
-msgstr "Утраченная"
-
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Opportunity"
-msgstr "Возможная продажа"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.history,state:"
-msgid "Won"
-msgstr "Вона"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Change Time"
-msgstr ""
-
-msgctxt "view:sale.opportunity.history:"
-msgid "History"
-msgstr "История"
-
-msgctxt "view:sale.opportunity.history:"
-msgid "Lead/Opportunity"
-msgstr "Неопределенная/Возможная"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"
