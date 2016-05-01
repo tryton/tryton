@@ -1,0 +1,275 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:product.cultivar,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.cultivar,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr ""
+
+msgctxt "field:product.cultivar,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr ""
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "field:product.cultivar,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.cultivar,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.taxon,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:product.taxon,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.taxon,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.taxon,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:product.taxon,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr ""
+
+msgctxt "field:product.taxon,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.taxon,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr ""
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr ""
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr ""
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr ""
+
+msgctxt "view:product.cultivar.group:"
+msgid "Cultivar Group"
+msgstr ""
+
+msgctxt "view:product.cultivar.group:"
+msgid "Cultivar Groups"
+msgstr ""
