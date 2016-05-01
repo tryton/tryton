@@ -71,6 +71,10 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr "Asiento contable"
 
+msgctxt "field:account.asset,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.asset,product:"
 msgid "Product"
 msgstr "Producto"
@@ -86,10 +90,6 @@ msgstr "Cantidad"
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
 msgstr "Nombre"
-
-msgctxt "field:account.asset,reference:"
-msgid "Reference"
-msgstr "Referencia"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -311,6 +311,36 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Cuenta de amortización utilizada"
 
+#, fuzzy
+msgctxt "field:product.product,account_asset:"
+msgid "Account Asset"
+msgstr "Cuenta de activo"
+
+#, fuzzy
+msgctxt "field:product.product,account_asset_used:"
+msgid "Account Asset Used"
+msgstr "Cuenta de activo utilizada"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Cuenta de amortización"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr "Cuenta de amortización utilizada"
+
+#, fuzzy
+msgctxt "field:product.product,depreciable:"
+msgid "Depreciable"
+msgstr "Amortizable"
+
+#, fuzzy
+msgctxt "field:product.product,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr "Duración de la amortización"
+
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Cuenta de activo"
@@ -342,6 +372,11 @@ msgid ""
 msgstr ""
 "La fecha debe estar entre la última fecha de actualización/amortización y la"
 " siguiente fecha de amortización."
+
+#, fuzzy
+msgctxt "help:product.product,depreciation_duration:"
+msgid "In months"
+msgstr "En meses"
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
@@ -610,6 +645,10 @@ msgstr "Actualizar activo"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Activo"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

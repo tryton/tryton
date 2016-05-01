@@ -70,6 +70,10 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr "Knjižba"
 
+msgctxt "field:account.asset,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.asset,product:"
 msgid "Product"
 msgstr "Izdelek"
@@ -85,10 +89,6 @@ msgstr "Količina"
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
 msgstr "Ime"
-
-msgctxt "field:account.asset,reference:"
-msgid "Reference"
-msgstr "Sklic"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -310,6 +310,36 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Uporabljen konto amortizacije"
 
+#, fuzzy
+msgctxt "field:product.product,account_asset:"
+msgid "Account Asset"
+msgstr "Konto sredstev"
+
+#, fuzzy
+msgctxt "field:product.product,account_asset_used:"
+msgid "Account Asset Used"
+msgstr "Uporabljen konto sredstev"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Amortizacija"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr "Uporabljen konto amortizacije"
+
+#, fuzzy
+msgctxt "field:product.product,depreciable:"
+msgid "Depreciable"
+msgstr "Amortizirljivo"
+
+#, fuzzy
+msgctxt "field:product.product,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr "Trajanje amortizacije"
+
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Konto sredstev"
@@ -342,13 +372,14 @@ msgstr ""
 "Naslednji datum mora biti med datumom zadnje amortizacije in datumom "
 "naslednje amortizacije."
 
-msgctxt "help:product.template,depreciation_duration:"
+#, fuzzy
+msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "V mesecih"
 
-msgctxt "model:account.account.template,name:"
-msgid "Assets"
-msgstr "Amortizacija"
+msgctxt "help:product.template,depreciation_duration:"
+msgid "In months"
+msgstr "V mesecih"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
@@ -613,6 +644,10 @@ msgstr "Popravek sredstev"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Sredstvo"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

@@ -70,6 +70,10 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr ""
 
+msgctxt "field:account.asset,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.asset,product:"
 msgid "Product"
 msgstr ""
@@ -84,10 +88,6 @@ msgstr ""
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.asset,reference:"
-msgid "Reference"
 msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
@@ -310,6 +310,30 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr ""
 
+msgctxt "field:product.product,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.product,account_asset_used:"
+msgid "Account Asset Used"
+msgstr ""
+
+msgctxt "field:product.product,account_depreciation:"
+msgid "Account Depreciation"
+msgstr ""
+
+msgctxt "field:product.product,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr ""
+
+msgctxt "field:product.product,depreciable:"
+msgid "Depreciable"
+msgstr ""
+
+msgctxt "field:product.product,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr ""
+
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr ""
@@ -338,6 +362,10 @@ msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
+msgstr ""
+
+msgctxt "help:product.product,depreciation_duration:"
+msgid "In months"
 msgstr ""
 
 msgctxt "help:product.template,depreciation_duration:"
@@ -606,6 +634,10 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
 msgstr ""
 
 msgctxt "view:product.template:"

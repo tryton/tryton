@@ -71,6 +71,10 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr "Buchungssatz"
 
+msgctxt "field:account.asset,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.asset,product:"
 msgid "Product"
 msgstr "Variante"
@@ -86,10 +90,6 @@ msgstr "Menge"
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
 msgstr "Name"
-
-msgctxt "field:account.asset,reference:"
-msgid "Reference"
-msgstr "Beleg-Nr."
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -311,6 +311,36 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Verwendetes Abschreibungskonto"
 
+#, fuzzy
+msgctxt "field:product.product,account_asset:"
+msgid "Account Asset"
+msgstr "Anlagenkonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_asset_used:"
+msgid "Account Asset Used"
+msgstr "Verwendetes Anlagenkonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Abschreibungskonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr "Verwendetes Abschreibungskonto"
+
+#, fuzzy
+msgctxt "field:product.product,depreciable:"
+msgid "Depreciable"
+msgstr "Abschreibungsfähig"
+
+#, fuzzy
+msgctxt "field:product.product,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr "Abschreibungsdauer"
+
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Anlagenkonto"
@@ -343,13 +373,14 @@ msgstr ""
 "Das Datum muss zwischen dem letztem Aktualisierungs- bzw Abschreibungsdatum "
 "und dem nächsten Abschreibungsdatum liegen."
 
-msgctxt "help:product.template,depreciation_duration:"
+#, fuzzy
+msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "In Monaten"
 
-msgctxt "model:account.account.template,name:"
-msgid "Depreciation"
-msgstr "Abschreibung"
+msgctxt "help:product.template,depreciation_duration:"
+msgid "In months"
+msgstr "In Monaten"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
@@ -614,6 +645,10 @@ msgstr "Anlage aktualisieren"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Anlage"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

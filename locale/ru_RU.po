@@ -81,6 +81,10 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr "Проводка"
 
+msgctxt "field:account.asset,number:"
+msgid "Number"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -100,11 +104,6 @@ msgstr "Кол-во"
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
 msgstr "Правило оплаты"
-
-#, fuzzy
-msgctxt "field:account.asset,reference:"
-msgid "Reference"
-msgstr "Ссылка"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -361,6 +360,30 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr ""
 
+msgctxt "field:product.product,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.product,account_asset_used:"
+msgid "Account Asset Used"
+msgstr ""
+
+msgctxt "field:product.product,account_depreciation:"
+msgid "Account Depreciation"
+msgstr ""
+
+msgctxt "field:product.product,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr ""
+
+msgctxt "field:product.product,depreciable:"
+msgid "Depreciable"
+msgstr ""
+
+msgctxt "field:product.product,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr ""
+
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr ""
@@ -389,6 +412,10 @@ msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
+msgstr ""
+
+msgctxt "help:product.product,depreciation_duration:"
+msgid "In months"
 msgstr ""
 
 msgctxt "help:product.template,depreciation_duration:"
@@ -535,17 +562,19 @@ msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr ""
+msgstr "Активы"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr ""
+msgstr "Учет.орг."
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
@@ -636,29 +665,33 @@ msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Активы"
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Assets"
-msgstr ""
+msgstr "Активы"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr ""
+msgstr "Закрыто"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr ""
+msgstr "Строки"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
@@ -672,8 +705,13 @@ msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Asset"
+msgstr "Активы"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
 msgstr ""
 
 msgctxt "view:product.template:"
