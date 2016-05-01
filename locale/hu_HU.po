@@ -140,20 +140,23 @@ msgstr "Kapcsolat típusa"
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr ""
+msgstr "Kapcsolatok"
 
+#, fuzzy
 msgctxt "view:party.relation.all:"
 msgid "Relation"
-msgstr ""
+msgstr "Kapcsolatok"
 
 msgctxt "view:party.relation.all:"
 msgid "Relations"
-msgstr ""
+msgstr "Kapcsolatok"
 
+#, fuzzy
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Type"
-msgstr ""
+msgstr "Partner kapcsolat"
 
+#, fuzzy
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Types"
-msgstr ""
+msgstr "Partner kapcsolat"
