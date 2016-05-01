@@ -66,10 +66,12 @@ msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
 msgstr "Precio del producto"
 
+#, fuzzy
 msgctxt "view:carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Transporte"
 
+#, fuzzy
 msgctxt "view:carrier:"
 msgid "Carriers"
-msgstr ""
+msgstr "Transportes"

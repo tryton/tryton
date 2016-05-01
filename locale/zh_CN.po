@@ -4,72 +4,72 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Método de custo da transportadora"
+msgstr ""
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Produto da transportadora"
+msgstr ""
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr ""
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr ""
 
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Pessoa"
+msgstr ""
 
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr ""
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Criado por"
+msgstr ""
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
-msgstr "Método para computar o custo da transportadora"
+msgstr ""
 
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "Transportadora"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr "Transportadoras"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transportadora"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Transportadoras"
+msgstr ""
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administração de transportadora"
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr "Preço do produto"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carrier"
-msgstr "Transportadora"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carriers"
-msgstr "Transportadoras"
+msgstr ""
