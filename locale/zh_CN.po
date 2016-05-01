@@ -2,39 +2,33 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
-msgstr "Выбор"
+msgstr ""
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
@@ -44,121 +38,101 @@ msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr "Применить"
+msgstr ""
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
-msgstr "Тип"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Применить"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Set"
-msgstr "Применить"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr "Применить"
+msgstr ""
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -204,10 +178,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Char"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
@@ -225,10 +198,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Выбор"
+msgstr ""
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"

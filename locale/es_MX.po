@@ -202,18 +202,22 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Selección"
 
+#, fuzzy
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Grupos de atributos"
 
+#, fuzzy
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"
-msgstr ""
+msgstr "Grupos de atributos"
 
+#, fuzzy
 msgctxt "view:product.attribute:"
 msgid "Attribute"
-msgstr ""
+msgstr "Atributo"
 
+#, fuzzy
 msgctxt "view:product.attribute:"
 msgid "Attributes"
-msgstr ""
+msgstr "Atributos"
