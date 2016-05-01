@@ -68,7 +68,7 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Línea de Factura"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"

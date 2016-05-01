@@ -66,9 +66,10 @@ msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Línea de factura"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
@@ -146,6 +147,7 @@ msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Invoice"
-msgstr ""
+msgstr "Facturas"
