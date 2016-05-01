@@ -296,9 +296,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de Estado de Cuenta"
 
+#, fuzzy
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr ""
+msgstr "Línea de Estado de Cuenta"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
@@ -313,17 +314,9 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Líneas de Asiento"
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr "Líneas de Asiento"
-
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Asientos"
-
-msgctxt "model:ir.action,name:act_moves_form2"
-msgid "Moves"
-msgstr "Movimientos"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"

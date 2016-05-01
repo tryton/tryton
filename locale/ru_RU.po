@@ -365,17 +365,8 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Перемещения"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Перемещения"
 
@@ -480,9 +471,10 @@ msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Черновик"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Журнал"
 
 #, fuzzy
 msgctxt "report:account.statement:"

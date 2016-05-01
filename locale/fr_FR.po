@@ -314,15 +314,7 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Lignes de mouvement"
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr "Lignes de mouvement"
-
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Mouvements"
-
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Mouvements"
 

@@ -310,15 +310,7 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Apuntes"
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr "Apuntes"
-
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Asientos"
-
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Asientos"
 
@@ -389,45 +381,55 @@ msgctxt "report:account.statement:"
 msgid "#"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Amount"
-msgstr ""
+msgstr "Importe"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Canceled"
-msgstr ""
+msgstr "Cancelado"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date:"
-msgstr ""
+msgstr "Fecha"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Diario"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr ""
+msgstr "Entidad"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Extracto"
 
 msgctxt "report:account.statement:"
 msgid "Total"
@@ -461,41 +463,50 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Número de líneas"
 
+#, fuzzy
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
-msgstr ""
+msgstr "Diario de extracto"
 
+#, fuzzy
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Diarios de extracto"
 
+#, fuzzy
 msgctxt "view:account.statement.line.group:"
 msgid "Statement Line Group"
-msgstr ""
+msgstr "Grupos de líneas de extracto"
 
+#, fuzzy
 msgctxt "view:account.statement.line.group:"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Grupos de líneas de extracto"
 
+#, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Amount"
-msgstr ""
+msgstr "Importe"
 
+#, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
-msgstr ""
+msgstr "Líneas de extracto bancario"
 
+#, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Líneas de extracto bancario"
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelado"
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
@@ -505,18 +516,22 @@ msgctxt "view:account.statement:"
 msgid "Post"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Extracto"
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Líneas de extracto bancario"
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Statements"
-msgstr ""
+msgstr "Todos los extractos"
 
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Validate"
-msgstr ""
+msgstr "Validado"

@@ -313,9 +313,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Ред от отчет за сметка"
 
+#, fuzzy
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr ""
+msgstr "Ред от отчет за сметка"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
@@ -329,17 +330,8 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Движения"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Движения"
 
@@ -448,9 +440,10 @@ msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Проект"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Дневник"
 
 #, fuzzy
 msgctxt "report:account.statement:"

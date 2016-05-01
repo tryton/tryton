@@ -310,15 +310,7 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Buchungszeilen"
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr "Buchungszeilen"
-
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Buchungssätze"
-
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Buchungssätze"
 

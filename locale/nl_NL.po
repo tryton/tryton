@@ -310,9 +310,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Rekeningafschriftregel"
 
+#, fuzzy
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr ""
+msgstr "Rekeningafschriftregel"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
@@ -326,17 +327,8 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_move_lines_form2"
-msgid "Move Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
-msgid "Moves"
-msgstr "Boekingen"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_moves_form2"
 msgid "Moves"
 msgstr "Boekingen"
 
@@ -445,9 +437,10 @@ msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "Concept"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "Dagboek"
 
 #, fuzzy
 msgctxt "report:account.statement:"
