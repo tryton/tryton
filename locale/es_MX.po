@@ -51,13 +51,15 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Producción"
 
+#, fuzzy
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests"
-msgstr ""
+msgstr "Crear solicitudes de producción"
 
+#, fuzzy
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests?"
-msgstr ""
+msgstr "Crear solicitudes de producción"
 
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
