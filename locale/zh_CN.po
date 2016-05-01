@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "文件"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr "文件名"
+
+msgctxt "field:account.fr.fec.result,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.fr.fec.start,deferral_journal:"
+msgid "Deferral Journal"
+msgstr ""
+
+msgctxt "field:account.fr.fec.start,deferral_post_number:"
+msgid "Deferral Number"
+msgstr ""
+
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "财年"
+
+msgctxt "field:account.fr.fec.start,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "help:account.fr.fec.start,deferral_journal:"
+msgid "Journal used for pseudo deferral move"
+msgstr ""
+
+msgctxt "help:account.fr.fec.start,deferral_post_number:"
+msgid "Post number used for pseudo deferral move"
+msgstr ""
+
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr ""
+
+msgctxt "view:account.fr.fec.result:"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "view:account.fr.fec.start:"
+msgid "Generate FEC"
+msgstr ""
+
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "关闭"
+
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr "生成"
