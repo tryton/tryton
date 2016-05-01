@@ -230,6 +230,11 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+#, fuzzy
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "Comisión principales"
+
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
 msgstr "Comisión principales"
@@ -430,57 +435,70 @@ msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
 msgstr "Al contabilizar"
 
+#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
+#, fuzzy
 msgctxt "view:commission.agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
+#, fuzzy
 msgctxt "view:commission.agent:"
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
+#, fuzzy
 msgctxt "view:commission.create_invoice.ask:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Crear factura de comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Line"
-msgstr ""
+msgstr "Línea de plan comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr ""
+msgstr "Línea de plan comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
-msgstr ""
+msgstr "Plan comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
-msgstr ""
+msgstr "Planes comisión"
 
+#, fuzzy
 msgctxt "view:commission:"
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
+#, fuzzy
 msgctxt "view:commission:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
+#, fuzzy
 msgctxt "view:commission:"
 msgid "Invoice"
-msgstr ""
+msgstr "Facturada"
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
+#, fuzzy
 msgctxt "view:sale.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"

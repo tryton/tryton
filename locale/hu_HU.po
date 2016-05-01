@@ -228,6 +228,10 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr ""
+
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
 msgstr ""

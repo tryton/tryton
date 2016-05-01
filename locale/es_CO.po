@@ -230,6 +230,11 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "Principales Comisión"
+
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
 msgstr "Principales Comisión"
@@ -302,9 +307,10 @@ msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
 msgstr "Comisionista"
 
+#, fuzzy
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Crear Facturas de Comisión"
 
 msgctxt "model:commission.plan,name:"
 msgid "Commission Plan"
@@ -446,17 +452,19 @@ msgctxt "view:commission.agent:"
 msgid "Agents"
 msgstr "Agentes"
 
+#, fuzzy
 msgctxt "view:commission.create_invoice.ask:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Crear Facturas de Comisión"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Line"
 msgstr "Línea de Plan de Comisión"
 
+#, fuzzy
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr ""
+msgstr "Línea del Plan de Comisión"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
