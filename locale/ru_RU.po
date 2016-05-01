@@ -161,9 +161,10 @@ msgctxt "report:stock.package.label:"
 msgid "Package:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
-msgstr ""
+msgstr "Доставка"
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"

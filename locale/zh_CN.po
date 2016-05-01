@@ -4,166 +4,160 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.in.return:"
 msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr "El envío de devolución a proveedor \"%s\" no está completamente empacado."
+msgstr ""
 
 msgctxt "error:stock.shipment.out:"
 msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr "El envío de cliente \"%s\" no está completamente empacado."
+msgstr ""
 
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
-msgstr "Secuencia de empaque"
+msgstr ""
 
 msgctxt "field:stock.move,package:"
 msgid "Package"
-msgstr "Empaque"
+msgstr ""
 
 msgctxt "field:stock.package,children:"
 msgid "Children"
-msgstr "Hijos"
+msgstr ""
 
 msgctxt "field:stock.package,code:"
 msgid "Code"
-msgstr "Código"
+msgstr ""
 
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:stock.package,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:stock.package,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr ""
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
-msgstr "Envío"
+msgstr ""
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:stock.package,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:stock.package.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:stock.package.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
-msgstr "Empaques"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
-msgstr "Empaques"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,packages:"
 msgid "Packages"
-msgstr "Empaques"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
-msgstr "Empaques"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Tipos de empaque"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Etiquetas de empaque"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr "Empaque"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr "Empaque"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Tipos de empaque"
+msgstr ""
 
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"
-msgstr "Empaque"
+msgstr ""
 
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"
-msgstr "Tipo de empaque"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:stock.package.label:"
 msgid "Package:"
-msgstr "Empaque"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
-msgstr "Envío"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.package.type:"
 msgid "Package Type"
-msgstr "Tipos de empaque"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.package.type:"
 msgid "Package Types"
-msgstr "Tipos de empaque"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.package:"
 msgid "Package"
-msgstr "Empaque"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.package:"
 msgid "Packages"
-msgstr "Empaques"
+msgstr ""
