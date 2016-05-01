@@ -6,6 +6,11 @@ msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
 msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Variante \"%s\"."
 
+#, fuzzy
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Charge erforderlich für Lagerort"
+
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr "Charge erforderlich für Lagerort"
@@ -170,6 +175,11 @@ msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+#, fuzzy
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist"
+
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist"
@@ -221,10 +231,6 @@ msgstr "Lieferant"
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Lager Cache Periode pro Charge"
-
-msgctxt "view:product.product:"
-msgid "Lots"
-msgstr "Chargen"
 
 msgctxt "view:product.template:"
 msgid "Lots"

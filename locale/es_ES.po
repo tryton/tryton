@@ -6,6 +6,11 @@ msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
 msgstr "El lote para el movimiento del producto \"%s\" es obligatorio."
 
+#, fuzzy
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Lote obligatorio"
+
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr "Lote obligatorio"
@@ -169,6 +174,11 @@ msgstr "Fecha modificación"
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
+
+#, fuzzy
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "El tipo de ubicación en la que el lote es obligatorio."
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"

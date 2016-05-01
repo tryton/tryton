@@ -46,10 +46,9 @@ msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
@@ -123,10 +122,9 @@ msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
@@ -146,16 +144,15 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr ""
+msgstr "ຈຳນວນພາຍໃນ"
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
@@ -185,19 +182,17 @@ msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -235,20 +230,17 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lo"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.lot:"
 msgid "Lot"
-msgstr "Lo"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.lot:"
 msgid "Lots"
-msgstr "Lo"
+msgstr ""
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
