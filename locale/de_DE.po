@@ -50,6 +50,10 @@ msgctxt "field:sale.complaint,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
 msgstr "Herkunft"
