@@ -78,14 +78,17 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "De abajo a arriba"
 
+#, fuzzy
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
-msgstr ""
+msgstr "Acción del escritorio"
 
+#, fuzzy
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
-msgstr ""
+msgstr "Acciones del escritorio"
 
+#, fuzzy
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr ""
+msgstr "Escritorio"
