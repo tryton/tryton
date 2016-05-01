@@ -20,11 +20,12 @@ class IPCServer(object):
     instance = None
 
     def __init__(self, hostname, port, database):
+        from tryton.common import slugify
         if Server.instance:
             Server.instance.stop()
-        self.hostname = hostname
+        self.hostname = slugify(hostname)
         self.port = port
-        self.database = database
+        self.database = slugify(database)
         self.config = os.path.join(get_config_dir(), '%s@%s@%s' %
                 (self.hostname, self.port, self.database))
         self.tmpdir = tempfile.mkdtemp(prefix='.tryton')
