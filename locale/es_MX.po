@@ -98,8 +98,9 @@ msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
 msgstr "Restricción de finalización"
 
+#, fuzzy
 msgctxt "field:project.work,constraint_finish_time:"
-msgid "Constraint  Finish Time"
+msgid "Constraint Finish Time"
 msgstr "Restricción hora de finalización"
 
 msgctxt "field:project.work,constraint_start_date:"
@@ -170,17 +171,20 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr "Predecesor - Sucesor"
 
+#, fuzzy
 msgctxt "view:project.allocation:"
 msgid "Allocation"
-msgstr ""
+msgstr "Asignación"
 
+#, fuzzy
 msgctxt "view:project.allocation:"
 msgid "Allocations"
-msgstr ""
+msgstr "Asignaciones"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Allocations"
-msgstr ""
+msgstr "Asignaciones"
 
 msgctxt "view:project.work:"
 msgid "Plan"

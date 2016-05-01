@@ -104,7 +104,7 @@ msgid "Constraint Finish"
 msgstr ""
 
 msgctxt "field:project.work,constraint_finish_time:"
-msgid "Constraint  Finish Time"
+msgid "Constraint Finish Time"
 msgstr ""
 
 msgctxt "field:project.work,constraint_start_date:"

@@ -99,8 +99,9 @@ msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
 msgstr "Ограничение за край"
 
+#, fuzzy
 msgctxt "field:project.work,constraint_finish_time:"
-msgid "Constraint  Finish Time"
+msgid "Constraint Finish Time"
 msgstr "Ограничение за време на завършване"
 
 msgctxt "field:project.work,constraint_start_date:"
