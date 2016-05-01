@@ -231,14 +231,6 @@ msgstr ""
 "Vous ne pouvez passer en brouillon le mouvement « %(move)s » car la période "
 "« %(period)s » est clôturée."
 
-msgctxt "error:account.open_aged_balance:"
-msgid "Warning"
-msgstr "Avertissement"
-
-msgctxt "error:account.open_aged_balance:"
-msgid "You cannot define overlapping terms"
-msgstr "Vous ne pouvez créer des termes qui se chevauchent"
-
 msgctxt "error:account.period:"
 msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
 msgstr "Les périodes « %(first)s » et « %(second)s » se chevauchent."
@@ -729,6 +721,140 @@ msgctxt "field:account.account.type.template,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+#, fuzzy
+msgctxt "field:account.aged_balance,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,party:"
+msgid "Party"
+msgstr "Tiers"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.aged_balance,term0:"
+msgid "Now"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.aged_balance,term1:"
+msgid "First Term"
+msgstr "Premier terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,term2:"
+msgid "Second Term"
+msgstr "Deuxième terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,term3:"
+msgid "Third Term"
+msgstr "Troisième terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,date:"
+msgid "Date"
+msgstr "Date"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,posted:"
+msgid "Posted Move"
+msgstr "Mouvement posté"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,term1:"
+msgid "First Term"
+msgstr "Premier terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,term2:"
+msgid "Second Term"
+msgstr "Deuxième terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,term3:"
+msgid "Third Term"
+msgstr "Troisième terme"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,type:"
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgctxt "field:account.aged_balance.context,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,date:"
+msgid "Date"
+msgstr "Date"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "Mouvement posté"
+
 msgctxt "field:account.configuration,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -753,11 +879,69 @@ msgctxt "field:account.configuration,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr ""
+
+msgctxt "field:account.configuration,tax_roundings:"
+msgid "Tax Roundings"
+msgstr ""
+
 msgctxt "field:account.configuration,write_date:"
 msgid "Write Date"
 msgstr "Date de mise à jour"
 
 msgctxt "field:account.configuration,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,method:"
+msgid "Method"
+msgstr "Méthode"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
@@ -920,6 +1104,301 @@ msgstr "Année fiscale à clôturer"
 msgctxt "field:account.fiscalyear.close.start,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,active:"
+msgid "Active"
+msgstr "Actif"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,code:"
+msgid "Code"
+msgstr "Code"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,credit:"
+msgid "Credit"
+msgstr "Crédit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,debit:"
+msgid "Debit"
+msgstr "Débit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,end_balance:"
+msgid "End Balance"
+msgstr "Balance finale"
+
+msgctxt "field:account.general_ledger.account,end_credit:"
+msgid "End Credit"
+msgstr ""
+
+msgctxt "field:account.general_ledger.account,end_debit:"
+msgid "End Debit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Balance du grand livre"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,start_balance:"
+msgid "Start Balance"
+msgstr "Balace de départ"
+
+msgctxt "field:account.general_ledger.account,start_credit:"
+msgid "Start Credit"
+msgstr ""
+
+msgctxt "field:account.general_ledger.account,start_debit:"
+msgid "Start Debit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,end_period:"
+msgid "End Period"
+msgstr "Période de fin"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,posted:"
+msgid "Posted Move"
+msgstr "Mouvement posté"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,start_period:"
+msgid "Start Period"
+msgstr "Période de début"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,credit:"
+msgid "Credit"
+msgstr "Crédit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,date:"
+msgid "Date"
+msgstr "Date"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,debit:"
+msgid "Debit"
+msgstr "Débit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,description:"
+msgid "Description"
+msgstr "Description"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move:"
+msgid "Move"
+msgstr "Mouvement"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,move_description:"
+msgid "Move Description"
+msgstr "Description du mouvement"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,party:"
+msgid "Party"
+msgstr "Tiers"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,party_required:"
+msgid "Party Required"
+msgstr "Tiers requis"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,state:"
+msgid "State"
+msgstr "État"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,end_period:"
+msgid "End Period"
+msgstr "Période de fin"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.general_ledger.line.context,party_cumulate:"
+msgid "Cumulate per Party"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,posted:"
+msgid "Posted Move"
+msgstr "Mouvement posté"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,start_period:"
+msgid "Start Period"
+msgstr "Période de début"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,company:"
+msgid "Company"
+msgstr "Société"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,end_period:"
+msgid "End Period"
+msgstr "Période de fin"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "Mouvement posté"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,start_period:"
+msgid "Start Period"
+msgstr "Période de début"
 
 msgctxt "field:account.journal,active:"
 msgid "Active"
@@ -1485,6 +1964,11 @@ msgctxt "field:account.move.reconciliation,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
+#, fuzzy
+msgctxt "field:account.move.reconciliation,date:"
+msgid "Date"
+msgstr "Date"
+
 msgctxt "field:account.move.reconciliation,id:"
 msgid "ID"
 msgstr "ID"
@@ -1633,54 +2117,6 @@ msgctxt "field:account.move.template.keyword,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "field:account.open_aged_balance.start,balance_type:"
-msgid "Type"
-msgstr "Type"
-
-msgctxt "field:account.open_aged_balance.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.open_aged_balance.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.open_aged_balance.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
-
-msgctxt "field:account.open_aged_balance.start,term1:"
-msgid "First Term"
-msgstr "Premier terme"
-
-msgctxt "field:account.open_aged_balance.start,term2:"
-msgid "Second Term"
-msgstr "Deuxième terme"
-
-msgctxt "field:account.open_aged_balance.start,term3:"
-msgid "Third Term"
-msgstr "Troisième terme"
-
-msgctxt "field:account.open_aged_balance.start,unit:"
-msgid "Unit"
-msgstr "Unité"
-
-msgctxt "field:account.open_balance_sheet.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.open_balance_sheet.start,date:"
-msgid "Date"
-msgstr "Date"
-
-msgctxt "field:account.open_balance_sheet.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.open_balance_sheet.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
-
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Année fiscale"
@@ -1692,46 +2128,6 @@ msgstr "ID"
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
 msgstr "Mouvements postés"
-
-msgctxt "field:account.open_income_statement.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.open_income_statement.start,end_period:"
-msgid "End Period"
-msgstr "Période de fin"
-
-msgctxt "field:account.open_income_statement.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
-
-msgctxt "field:account.open_income_statement.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.open_income_statement.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
-
-msgctxt "field:account.open_income_statement.start,start_period:"
-msgid "Start Period"
-msgstr "Période de début"
-
-msgctxt "field:account.open_third_party_balance.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.open_third_party_balance.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
-
-msgctxt "field:account.open_third_party_balance.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.open_third_party_balance.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
 
 msgctxt "field:account.period,code:"
 msgid "Code"
@@ -1792,62 +2188,6 @@ msgstr "Date de mise à jour"
 msgctxt "field:account.period,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
-
-msgctxt "field:account.print_general_ledger.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.print_general_ledger.start,empty_account:"
-msgid "Empty Account"
-msgstr "Compte vide"
-
-msgctxt "field:account.print_general_ledger.start,end_period:"
-msgid "End Period"
-msgstr "Période de fin"
-
-msgctxt "field:account.print_general_ledger.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
-
-msgctxt "field:account.print_general_ledger.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.print_general_ledger.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
-
-msgctxt "field:account.print_general_ledger.start,start_period:"
-msgid "Start Period"
-msgstr "Période de début"
-
-msgctxt "field:account.print_trial_balance.start,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:account.print_trial_balance.start,empty_account:"
-msgid "Empty Account"
-msgstr "Compte vide"
-
-msgctxt "field:account.print_trial_balance.start,end_period:"
-msgid "End Period"
-msgstr "Période de fin"
-
-msgctxt "field:account.print_trial_balance.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
-
-msgctxt "field:account.print_trial_balance.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.print_trial_balance.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
-
-msgctxt "field:account.print_trial_balance.start,start_period:"
-msgid "Start Period"
-msgstr "Période de début"
 
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
@@ -2645,6 +2985,31 @@ msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
 msgstr "Utilisé pour trier les types de compte"
 
+#, fuzzy
+msgctxt "help:account.aged_balance.context,posted:"
+msgid "Show only posted move"
+msgstr "Montrer seulement les mouvements postés"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.context,posted:"
+msgid "Show only posted move"
+msgstr "Montrer seulement les mouvements postés"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,posted:"
+msgid "Show only posted move"
+msgstr "Montrer seulement les mouvements postés"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,posted:"
+msgid "Show only posted move"
+msgstr "Montrer seulement les mouvements postés"
+
+#, fuzzy
+msgctxt "help:account.income_statement.context,posted:"
+msgid "Show only posted move"
+msgstr "Montrer seulement les mouvements postés"
+
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
 msgstr "Aussi connu comme numéro de folio"
@@ -2675,6 +3040,10 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "Montrer seulement les mouvements postés"
 
+msgctxt "help:account.move.reconciliation,date:"
+msgid "Highest date of the reconciled lines"
+msgstr ""
+
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today"
 msgstr "Laissez vide pour aujourd'hui"
@@ -2685,44 +3054,12 @@ msgstr ""
 "Les substitutions des valeurs des mots-clés sont identifiées par des "
 "accolades (« { » et « } »)"
 
-msgctxt "help:account.open_aged_balance.start,posted:"
-msgid "Show only posted move"
-msgstr "Montrer seulement les mouvements postés"
-
-msgctxt "help:account.open_balance_sheet.start,posted:"
-msgid "Show only posted move"
-msgstr "Montrer seulement les mouvements postés"
-
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
 msgstr "Laisser vide pour toute les années fiscales ouvertes"
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
-msgstr "Montrer seulement les mouvements postés"
-
-msgctxt "help:account.open_income_statement.start,posted:"
-msgid "Show only posted move"
-msgstr "Montrer seulement les mouvements postés"
-
-msgctxt "help:account.open_third_party_balance.start,posted:"
-msgid "Show only posted move"
-msgstr "Montrer seulement les mouvements postés"
-
-msgctxt "help:account.print_general_ledger.start,empty_account:"
-msgid "With account without move"
-msgstr "Avec les comptes sans mouvement"
-
-msgctxt "help:account.print_general_ledger.start,posted:"
-msgid "Show only posted move"
-msgstr "Montrer seulement les mouvements postés"
-
-msgctxt "help:account.print_trial_balance.start,empty_account:"
-msgid "With account without move"
-msgstr "Avec les comptes sans mouvement"
-
-msgctxt "help:account.print_trial_balance.start,posted:"
-msgid "Show only posted move"
 msgstr "Montrer seulement les mouvements postés"
 
 msgctxt "help:account.tax,amount:"
@@ -2820,9 +3157,26 @@ msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
 msgstr "Modèle de type de compte"
 
+#, fuzzy
+msgctxt "model:account.aged_balance,name:"
+msgid "Aged Balance"
+msgstr "Balance âgée"
+
+msgctxt "model:account.aged_balance.context,name:"
+msgid "Aged Balance Context"
+msgstr ""
+
+msgctxt "model:account.balance_sheet.context,name:"
+msgid "Balance Sheet Context"
+msgstr ""
+
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
 msgstr "Configuration comptable"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr ""
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
@@ -2851,6 +3205,27 @@ msgstr "Équilibrer les non-reports"
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
 msgstr "Clôturer une année fiscale"
+
+msgctxt "model:account.general_ledger.account,name:"
+msgid "General Ledger Account"
+msgstr ""
+
+msgctxt "model:account.general_ledger.account.context,name:"
+msgid "General Ledger Account Context"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.general_ledger.line,name:"
+msgid "General Ledger Line"
+msgstr "Balance du grand livre"
+
+msgctxt "model:account.general_ledger.line.context,name:"
+msgid "General Ledger Line Context"
+msgstr ""
+
+msgctxt "model:account.income_statement.context,name:"
+msgid "Income Statement Context"
+msgstr ""
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
@@ -2964,37 +3339,13 @@ msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
 msgstr "Mot-clé de modèle de mouvement comptable"
 
-msgctxt "model:account.open_aged_balance.start,name:"
-msgid "Open Aged Balance"
-msgstr "Ouvrir la balance âgée"
-
-msgctxt "model:account.open_balance_sheet.start,name:"
-msgid "Open Balance Sheet"
-msgstr "Ouvrir le bilan"
-
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Ouvrir le plan comptable"
 
-msgctxt "model:account.open_income_statement.start,name:"
-msgid "Open Income Statement"
-msgstr "Ouvrir le compte de résultat"
-
-msgctxt "model:account.open_third_party_balance.start,name:"
-msgid "Open Third Party Balance"
-msgstr "Ouvrir la balance des tiers"
-
 msgctxt "model:account.period,name:"
 msgid "Period"
 msgstr "Période"
-
-msgctxt "model:account.print_general_ledger.start,name:"
-msgid "Print General Ledger"
-msgstr "Imprimer le grand livre"
-
-msgctxt "model:account.print_trial_balance.start,name:"
-msgid "Print Trial Balance"
-msgstr "Imprimer la balance"
 
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
@@ -3096,6 +3447,11 @@ msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
 msgstr "Types de compte"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_aged_balance_list"
+msgid "Aged Balance"
+msgstr "Balance âgée"
+
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr "Équilibrer les non-reports"
@@ -3119,6 +3475,14 @@ msgstr "Configuration comptable"
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Années fiscales"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_form"
+msgid "General Ledger - Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_general_ledger_line_form"
+msgid "General Ledger - Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
@@ -3260,13 +3624,10 @@ msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rule Templates"
 msgstr "Modèles de règle de taxe"
 
-msgctxt "model:ir.action,name:act_tax_template_tree"
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes Templates"
 msgstr "Modèle de taxe"
-
-msgctxt "model:ir.action,name:act_tax_tree"
-msgid "Taxes"
-msgstr "Taxes"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
@@ -3284,10 +3645,6 @@ msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
 msgstr "Grand livre"
 
-msgctxt "model:ir.action,name:report_third_party_balance"
-msgid "Third Party Balance"
-msgstr "Balance des tiers"
-
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
 msgstr "Balance"
@@ -3300,33 +3657,9 @@ msgctxt "model:ir.action,name:wizard_journal_open_cash"
 msgid "Open Journal Cash"
 msgstr "Ouvrir le journal de cash"
 
-msgctxt "model:ir.action,name:wizard_open_aged_balance"
-msgid "Open Aged Balance"
-msgstr "Ouvrir la balance âgée"
-
-msgctxt "model:ir.action,name:wizard_open_balance_sheet"
-msgid "Open Balance Sheet"
-msgstr "Ouvrir le bilan"
-
-msgctxt "model:ir.action,name:wizard_open_income_statement"
-msgid "Open Income Statement"
-msgstr "Ouvrir le compte de résultat"
-
-msgctxt "model:ir.action,name:wizard_open_third_party_balance"
-msgid "Open Third Party Balance"
-msgstr "Ouvrir la balance des tiers"
-
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimer le journal général"
-
-msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Legder"
-msgstr "Imprimer le grand livre"
-
-msgctxt "model:ir.action,name:wizard_print_trial_balance"
-msgid "Print Trial Balance"
-msgstr "Imprimer la balance"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
@@ -3440,6 +3773,11 @@ msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
 msgstr "Comptes généraux"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_general_ledger"
+msgid "General Ledger"
+msgstr "Grand livre"
+
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
 msgstr "Journaux"
@@ -3512,14 +3850,6 @@ msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimer le journal général"
 
-msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Legder"
-msgstr "Imprimer le grand livre"
-
-msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
-msgid "Print Trial Balance"
-msgstr "Imprimer la balance"
-
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
 msgstr "Traitement"
@@ -3560,21 +3890,14 @@ msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rule Templates"
 msgstr "Modèles de règle de taxe"
 
-msgctxt "model:ir.ui.menu,name:menu_tax_template_tree"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
-msgstr "Modèles de taxes"
-
-msgctxt "model:ir.ui.menu,name:menu_tax_tree"
-msgid "Taxes"
-msgstr "Taxes"
+msgstr "Modèle de taxe"
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
 msgstr "Taxes"
-
-msgctxt "model:ir.ui.menu,name:menu_third_party_balance"
-msgid "Third Party Balance"
-msgstr "Balance tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
@@ -3593,40 +3916,31 @@ msgid "Account Administration"
 msgstr "Administration de la comptablilité"
 
 msgctxt "report:account.aged_balance:"
+msgid "+"
+msgstr ""
+
+msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
-msgid "Aged Balance for Customers"
-msgstr "Balance âgée des clients"
+msgid "Aged Balance for"
+msgstr "Balance âgée"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
-msgid "Aged Balance for Suppliers"
-msgstr "Balance âgée des fournisseurs"
-
-msgctxt "report:account.aged_balance:"
-msgid "Aged Balance for Suppliers and Customers"
-msgstr "Balance âgée des fournisseurs et clients"
+msgid "Balance"
+msgstr "Balance"
 
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
 msgstr "Société :"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
-msgid "Day"
-msgstr "Jour"
-
-msgctxt "report:account.aged_balance:"
-msgid "Days"
-msgstr "Jours"
-
-msgctxt "report:account.aged_balance:"
-msgid "Month"
-msgstr "Mois"
-
-msgctxt "report:account.aged_balance:"
-msgid "Months"
-msgstr "Mois"
+msgid "Date:"
+msgstr "Date :"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
@@ -3651,6 +3965,10 @@ msgstr "à"
 msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
+
+msgctxt "report:account.general_ledger:"
+msgid ":"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
@@ -3680,8 +3998,14 @@ msgctxt "report:account.general_ledger:"
 msgid "Descr."
 msgstr "Descr."
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
-msgid "From Period:"
+msgid "Fiscal Year:"
+msgstr "Année fiscale"
+
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "From Period"
 msgstr "Période de début :"
 
 msgctxt "report:account.general_ledger:"
@@ -3700,6 +4024,11 @@ msgctxt "report:account.general_ledger:"
 msgid "Origin"
 msgstr "Origine"
 
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "Period:"
+msgstr "Période"
+
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
@@ -3709,8 +4038,8 @@ msgid "State"
 msgstr "État"
 
 msgctxt "report:account.general_ledger:"
-msgid "To Period:"
-msgstr "Période de fin :"
+msgid "To"
+msgstr ""
 
 msgctxt "report:account.general_ledger:"
 msgid "Total"
@@ -3792,50 +4121,6 @@ msgctxt "report:account.move.general_journal:"
 msgid "at"
 msgstr "à"
 
-msgctxt "report:account.third_party_balance:"
-msgid "/"
-msgstr "/"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Balance"
-msgstr "Balance"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Company:"
-msgstr "Société :"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Credit"
-msgstr "Crédit"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Debit"
-msgstr "Débit"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Party"
-msgstr "Tiers"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Print Date:"
-msgstr "Date d'impression :"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Third Party Balance"
-msgstr "Balance tiers"
-
-msgctxt "report:account.third_party_balance:"
-msgid "Total"
-msgstr "Total"
-
-msgctxt "report:account.third_party_balance:"
-msgid "User:"
-msgstr "Utilisateur :"
-
-msgctxt "report:account.third_party_balance:"
-msgid "at"
-msgstr "à"
-
 msgctxt "report:account.trial_balance:"
 msgid "/"
 msgstr "/"
@@ -3859,6 +4144,11 @@ msgstr "Débit"
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
 msgstr "Balance finale"
+
+#, fuzzy
+msgctxt "report:account.trial_balance:"
+msgid "Fiscal Year:"
+msgstr "Année fiscale"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
@@ -3964,6 +4254,46 @@ msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Debit - Credit"
 msgstr "Débit - Crédit"
 
+#, fuzzy
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers"
+msgstr "Client"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers and Suppliers"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Suppliers"
+msgstr "Fournisseur"
+
+#, fuzzy
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Days"
+msgstr "Jours"
+
+#, fuzzy
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Months"
+msgstr "Mois"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr ""
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr ""
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Document"
+msgstr ""
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Line"
+msgstr ""
+
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
 msgstr "Clôturé"
@@ -3971,6 +4301,16 @@ msgstr "Clôturé"
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
 msgstr "Ouverte"
+
+#, fuzzy
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+#, fuzzy
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Posted"
+msgstr "Posté"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
@@ -4027,26 +4367,6 @@ msgstr "Numérique"
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
 msgstr "Tiers"
-
-msgctxt "selection:account.open_aged_balance.start,balance_type:"
-msgid "Both"
-msgstr "Les deux"
-
-msgctxt "selection:account.open_aged_balance.start,balance_type:"
-msgid "Customer"
-msgstr "Client"
-
-msgctxt "selection:account.open_aged_balance.start,balance_type:"
-msgid "Supplier"
-msgstr "Fournisseur"
-
-msgctxt "selection:account.open_aged_balance.start,unit:"
-msgid "Day"
-msgstr "Jour"
-
-msgctxt "selection:account.open_aged_balance.start,unit:"
-msgid "Month"
-msgstr "Mois"
 
 msgctxt "selection:account.period,state:"
 msgid "Close"
@@ -4196,9 +4516,42 @@ msgctxt "view:account.account:"
 msgid "Notes"
 msgstr "Notes"
 
+#, fuzzy
+msgctxt "view:account.aged_balance.context:"
+msgid "Aged Balance"
+msgstr "Balance âgée"
+
+#, fuzzy
+msgctxt "view:account.aged_balance.context:"
+msgid "Terms"
+msgstr "Termes"
+
+#, fuzzy
+msgctxt "view:account.aged_balance:"
+msgid "Aged Balance"
+msgstr "Balance âgée"
+
+#, fuzzy
+msgctxt "view:account.balance_sheet.context:"
+msgid "Balance Sheet"
+msgstr "Bilan"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Rounding"
+msgstr ""
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Roundings"
+msgstr ""
+
 msgctxt "view:account.configuration:"
 msgid "Account Configuration"
 msgstr "Configuration comptable"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "Facture"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
@@ -4267,6 +4620,54 @@ msgstr "Ré-ouvrir l'année fiscale"
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Séquences"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.account.context:"
+msgid "General Ledger"
+msgstr "Grand livre"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.account:"
+msgid "Credit"
+msgstr "Crédit"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.account:"
+msgid "Debit"
+msgstr "Débit"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.account:"
+msgid "End Balance"
+msgstr "Balance finale"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "General Ledger - Accounts"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.general_ledger.account:"
+msgid "Start Balance"
+msgstr "Balace de départ"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.line:"
+msgid "Credit"
+msgstr "Crédit"
+
+#, fuzzy
+msgctxt "view:account.general_ledger.line:"
+msgid "Debit"
+msgstr "Débit"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "General Legder - Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.income_statement.context:"
+msgid "Income Statement"
+msgstr "Compte de résultat"
 
 msgctxt "view:account.journal.open_cash.start:"
 msgid "Open Journal Cash"
@@ -4412,29 +4813,9 @@ msgctxt "view:account.move:"
 msgid "Post"
 msgstr "Poster"
 
-msgctxt "view:account.open_aged_balance.start:"
-msgid "Open Aged Balance"
-msgstr "Ouvrir la balance âgée"
-
-msgctxt "view:account.open_aged_balance.start:"
-msgid "Terms"
-msgstr "Termes"
-
-msgctxt "view:account.open_balance_sheet.start:"
-msgid "Open Balance Sheet"
-msgstr "Ouvrir le bilan"
-
 msgctxt "view:account.open_chart.start:"
 msgid "Open Chart of Accounts"
 msgstr "Ouvrir le plan comptable"
-
-msgctxt "view:account.open_income_statement.start:"
-msgid "Open Income Statement"
-msgstr "Ouvrir le compte de résultat"
-
-msgctxt "view:account.open_third_party_balance.start:"
-msgid "Open Third Party Balance"
-msgstr "Ouvrir la balance des tiers"
 
 msgctxt "view:account.period:"
 msgid "Period"
@@ -4443,14 +4824,6 @@ msgstr "Période"
 msgctxt "view:account.period:"
 msgid "Periods"
 msgstr "Périodes"
-
-msgctxt "view:account.print_general_ledger.start:"
-msgid "Print General Ledger"
-msgstr "Imprimer le grand livre"
-
-msgctxt "view:account.print_trial_balance.start:"
-msgid "Print Trial Balance"
-msgstr "Imprimer la balance"
 
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
@@ -4728,22 +5101,6 @@ msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
 msgstr "Suivant"
 
-msgctxt "wizard_button:account.open_aged_balance,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.open_aged_balance,start,print_:"
-msgid "Print"
-msgstr "Imprimer"
-
-msgctxt "wizard_button:account.open_balance_sheet,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.open_balance_sheet,start,open_:"
-msgid "Open"
-msgstr "Ouvrir"
-
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
 msgstr "Annuler"
@@ -4751,38 +5108,6 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
 msgstr "Ouvrir"
-
-msgctxt "wizard_button:account.open_income_statement,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.open_income_statement,start,open_:"
-msgid "Open"
-msgstr "Ouvrir"
-
-msgctxt "wizard_button:account.open_third_party_balance,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.open_third_party_balance,start,print_:"
-msgid "Print"
-msgstr "Imprimer"
-
-msgctxt "wizard_button:account.print_general_ledger,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.print_general_ledger,start,print_:"
-msgid "Print"
-msgstr "Imprimer"
-
-msgctxt "wizard_button:account.print_trial_balance,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:account.print_trial_balance,start,print_:"
-msgid "Print"
-msgstr "Imprimer"
 
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
