@@ -252,47 +252,47 @@ msgstr "Felhasználó-Alkalmazott"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr ""
+msgstr "Üdvözlettel,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr ""
+msgstr "Tisztelt Hölgyek és Urak,"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr ""
+msgstr "Tárgy:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr ""
+msgstr "Vállalat létrehozása"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr ""
+msgstr "Most tudja a rendszerhez hozzáadni a vállalatot."
 
 msgctxt "view:company.company:"
 msgid "Companies"
-msgstr ""
+msgstr "Társaságok"
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr ""
+msgstr "Jelentések"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Alkalmazott"
 
 msgctxt "view:company.employee:"
 msgid "Employees"
-msgstr ""
+msgstr "Alkalmazott"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

@@ -272,7 +272,7 @@ msgstr "Crear empresa"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Ahora puede añadir su empresa al sistema."
+msgstr "Ahora puede agregar su empresa al sistema."
 
 msgctxt "view:company.company:"
 msgid "Companies"
@@ -296,7 +296,7 @@ msgstr "Empleados"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Añadir"
+msgstr "Agregar"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
