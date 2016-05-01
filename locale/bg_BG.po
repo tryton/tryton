@@ -64,6 +64,46 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr ""
 
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
 msgstr ""
@@ -160,6 +200,31 @@ msgstr ""
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr ""
+
+#, fuzzy
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
 
 #, fuzzy
 msgctxt "help:product.template,account_stock:"
