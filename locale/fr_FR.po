@@ -61,6 +61,21 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Achats"
 
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+#, fuzzy
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Achetable"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "UDM à l'achat"
+
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
 msgstr "Fournisseurs"
@@ -90,8 +105,8 @@ msgid "Invoice Method"
 msgstr "Méthode de facturation"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
-msgstr "Séquence de référence d'achat"
+msgid "Purchase Sequence"
+msgstr ""
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -357,13 +372,13 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Devise"
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr "Délai de livraison"
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -501,6 +516,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr "Mouvements"
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Tiers"
@@ -540,10 +559,6 @@ msgstr "Expéditions"
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
 msgstr "État"
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
-msgstr "Référence fournisseur"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -645,6 +660,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr "Achat"
@@ -692,13 +711,13 @@ msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr ""
 "Les mouvements sélectionnés seront recréés. Les autres seront ignorés."
 
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr "En nombre de jours"
-
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Quantité minimale"
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -895,6 +914,11 @@ msgstr "Commande d'achat n° :"
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Quantité"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Référence"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"

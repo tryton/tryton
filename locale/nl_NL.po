@@ -54,9 +54,23 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Leverancier"
+
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr ""
+
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Leverancier"
 
 msgctxt "field:product.template,purchasable:"
 msgid "Purchasable"
@@ -84,7 +98,7 @@ msgid "Invoice Method"
 msgstr "Factuur afhandeling"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
+msgid "Purchase Sequence"
 msgstr ""
 
 #, fuzzy
@@ -383,12 +397,12 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr ""
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
 msgstr ""
 
 #, fuzzy
@@ -550,6 +564,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr "Boekingen"
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -597,10 +615,6 @@ msgstr "Leveringen"
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
 msgstr "Status"
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.purchase,tax_amount:"
@@ -710,6 +724,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr ""
@@ -756,16 +774,19 @@ msgstr ""
 "De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
 "genegeerd."
 
+#, fuzzy
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr ""
-
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr ""
+"De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
+"genegeerd."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
+msgstr ""
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
 msgstr ""
 
 #, fuzzy
@@ -981,6 +1002,11 @@ msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Referentie"
+
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
 msgstr ""
@@ -1163,9 +1189,10 @@ msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Producten"
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Leverancier"
 
 msgctxt "view:purchase.configuration:"
 msgid "Purchase Configuration"
@@ -1214,9 +1241,10 @@ msgctxt "view:purchase.line:"
 msgid "Purchase Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"

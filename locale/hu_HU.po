@@ -53,6 +53,18 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr ""
 
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr ""
+
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr ""
+
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr ""
+
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
 msgstr ""
@@ -82,7 +94,7 @@ msgid "Invoice Method"
 msgstr ""
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
+msgid "Purchase Sequence"
 msgstr ""
 
 msgctxt "field:purchase.configuration,rec_name:"
@@ -349,12 +361,12 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr ""
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier,name:"
@@ -493,6 +505,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr ""
@@ -531,10 +547,6 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
-msgstr ""
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
 msgstr ""
 
 msgctxt "field:purchase.purchase,tax_amount:"
@@ -637,6 +649,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr ""
@@ -682,12 +698,12 @@ msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr ""
 
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr ""
-
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
+msgstr ""
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
@@ -884,6 +900,10 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
+msgstr ""
+
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
 msgstr ""
 
 msgctxt "report:purchase.purchase:"

@@ -54,6 +54,21 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Покупки"
 
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Доставчици"
+
+#, fuzzy
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Купуваем"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Мер. ед. на покупка"
+
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
 msgstr "Доставчици"
@@ -83,8 +98,8 @@ msgid "Invoice Method"
 msgstr "Начин на фактуриране"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
-msgstr "Последователност за отпратка на покупка"
+msgid "Purchase Sequence"
+msgstr ""
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -350,13 +365,13 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr "Време за доставка"
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -495,6 +510,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr "Движения"
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Партньор"
@@ -535,10 +554,6 @@ msgstr "Изпращания"
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
 msgstr "Състояние"
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
-msgstr "Отпратка към доставчик"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -640,6 +655,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr "Покупка"
@@ -688,13 +707,13 @@ msgstr ""
 "Избраните движение ще бъдат наново създадени, Останалите ще бъдат "
 "игнорирани."
 
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr "В брой дни"
-
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Минимално количество"
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -901,6 +920,11 @@ msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Количество"
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Отпратка"
+
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
 msgstr "Заявки за запитване N°:"
@@ -1100,7 +1124,7 @@ msgstr "Редове от покупка"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Данъци"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"

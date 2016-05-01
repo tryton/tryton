@@ -65,6 +65,21 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Nabavni nalogi"
 
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Dobavitelji"
+
+#, fuzzy
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Za nabavo"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Nabavna ME"
+
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
 msgstr "Dobavitelji"
@@ -94,8 +109,8 @@ msgid "Invoice Method"
 msgstr "Način obračuna"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
-msgstr "Štetje nabavnih nalogov"
+msgid "Purchase Sequence"
+msgstr ""
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -361,13 +376,13 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr "Dostavljeno"
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -505,6 +520,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Partner"
@@ -544,10 +563,6 @@ msgstr "Pošiljke"
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
 msgstr "Stanje"
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
-msgstr "Dobaviteljev sklic"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -649,6 +664,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr "Nabavni nalog"
@@ -694,13 +713,13 @@ msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr "Izbran promet bo ponovno izdelan, ostalo bo prezrto."
 
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr "V dnevih"
-
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Minimalna količina"
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -897,6 +916,11 @@ msgstr "Nabavni nalog št.:"
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Količina"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Sklic"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
@@ -1173,11 +1197,3 @@ msgstr "Prekliči"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "V redu"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Odpri"

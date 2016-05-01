@@ -65,6 +65,21 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Einkäufe"
 
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Lieferanten"
+
+#, fuzzy
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Käuflich"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Maßeinheit Einkauf"
+
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
 msgstr "Lieferanten"
@@ -94,8 +109,8 @@ msgid "Invoice Method"
 msgstr "Rechnungsstellung Einkauf"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
-msgid "Purchase Reference Sequence"
-msgstr "Nummernkreis Einkauf"
+msgid "Purchase Sequence"
+msgstr ""
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -361,13 +376,13 @@ msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "field:purchase.product_supplier,delivery_time:"
-msgid "Delivery Time"
-msgstr "Lieferzeitraum"
-
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -505,6 +520,10 @@ msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
 msgstr "Bewegungen"
 
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
 msgstr "Partei"
@@ -544,10 +563,6 @@ msgstr "Lieferposten"
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
 msgstr "Status"
-
-msgctxt "field:purchase.purchase,supplier_reference:"
-msgid "Supplier Reference"
-msgstr "Beleg-Nr. Lieferant"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -649,6 +664,10 @@ msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
@@ -698,13 +717,13 @@ msgstr ""
 "Die ausgewählten Lagerbewegungen werden neu erstellt. Alle anderen werden "
 "ignoriert."
 
-msgctxt "help:purchase.product_supplier,delivery_time:"
-msgid "In number of days"
-msgstr "In Anzahl von Tagen"
-
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Minimale Anzahl"
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -901,6 +920,11 @@ msgstr "Auftrag Nr.:"
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Anzahl"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Beleg-Nr."
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
@@ -1177,11 +1201,3 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "OK"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Öffnen"
