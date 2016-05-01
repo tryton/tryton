@@ -2,9 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
 msgstr ""
+"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
@@ -48,6 +50,11 @@ msgstr "Opbrengstrekening"
 msgctxt "field:product.category,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Opbrengstrekening gebruikt"
+
+#, fuzzy
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Boekhouden"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
@@ -135,9 +142,71 @@ msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:product.template,account_category:"
+msgctxt "field:product.configuration,default_accounts_category:"
+msgid "Use Category's accounts by default"
+msgstr ""
+
+msgctxt "field:product.configuration,default_taxes_category:"
+msgid "Use Category' taxes by default"
+msgstr ""
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,account_expense:"
+msgid "Account Expense"
+msgstr "Kostenrekening"
+
+#, fuzzy
+msgctxt "field:product.product,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Gebruikte kostenrekening"
+
+#, fuzzy
+msgctxt "field:product.product,account_revenue:"
+msgid "Account Revenue"
+msgstr "Opbrengstrekening"
+
+#, fuzzy
+msgctxt "field:product.product,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Opbrengstrekening gebruikt"
+
+#, fuzzy
+msgctxt "field:product.product,accounts_category:"
 msgid "Use Category's accounts"
 msgstr "Gebruik de rekeningen van de categorie"
+
+#, fuzzy
+msgctxt "field:product.product,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Belasting klanten"
+
+#, fuzzy
+msgctxt "field:product.product,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Belasting klanten gebruikt"
+
+#, fuzzy
+msgctxt "field:product.product,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Belastingen inkoop"
+
+#, fuzzy
+msgctxt "field:product.product,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Belasting klanten gebruikt"
+
+#, fuzzy
+msgctxt "field:product.product,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "Gebruik de belastingen van de categorie"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr ""
 
 msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
@@ -154,6 +223,11 @@ msgstr "Opbrengstrekening"
 msgctxt "field:product.template,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Opbrengstrekening gebruikt"
+
+#, fuzzy
+msgctxt "field:product.template,accounts_category:"
+msgid "Use Category's accounts"
+msgstr "Gebruik de rekeningen van de categorie"
 
 msgctxt "field:product.template,customer_taxes:"
 msgid "Customer Taxes"
@@ -240,17 +314,37 @@ msgctxt "field:product.template-supplier-account.tax,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category"
-msgstr ""
+msgstr "Gebruik de rekeningen van de categorie"
 
+#, fuzzy
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
-msgstr ""
+msgstr "Gebruik de belastingen van de categorie"
 
-msgctxt "help:product.template,account_category:"
+#, fuzzy
+msgctxt "help:product.product,account_expense:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,account_revenue:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,accounts_category:"
 msgid "Use the accounts defined on the category"
 msgstr "Gebruik de rekeningen van de categorie"
+
+#, fuzzy
+msgctxt "help:product.product,taxes_category:"
+msgid "Use the taxes defined on the category"
+msgstr "Gebruik de belastingen van de categorie"
 
 msgctxt "help:product.template,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
@@ -261,6 +355,11 @@ msgctxt "help:product.template,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,accounts_category:"
+msgid "Use the accounts defined on the category"
+msgstr "Gebruik de rekeningen van de categorie"
 
 msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
@@ -284,7 +383,7 @@ msgstr "Productsjabloon - Belasting inkoop"
 
 msgctxt "view:account.configuration:"
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
 msgctxt "view:account.configuration:"
 msgid "Product"

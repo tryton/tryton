@@ -46,6 +46,11 @@ msgctxt "field:product.category,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Verwendetes Ertragskonto"
 
+#, fuzzy
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Buchhaltung"
+
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
 msgstr "Steuern Kunde"
@@ -130,9 +135,71 @@ msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:product.template,account_category:"
+msgctxt "field:product.configuration,default_accounts_category:"
+msgid "Use Category's accounts by default"
+msgstr ""
+
+msgctxt "field:product.configuration,default_taxes_category:"
+msgid "Use Category' taxes by default"
+msgstr ""
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,account_expense:"
+msgid "Account Expense"
+msgstr "Aufwandskonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Verwendetes Aufwandskonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_revenue:"
+msgid "Account Revenue"
+msgstr "Ertragskonto"
+
+#, fuzzy
+msgctxt "field:product.product,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Verwendetes Ertragskonto"
+
+#, fuzzy
+msgctxt "field:product.product,accounts_category:"
 msgid "Use Category's accounts"
 msgstr "Konten der Kategorie anwenden"
+
+#, fuzzy
+msgctxt "field:product.product,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Steuern Kunde"
+
+#, fuzzy
+msgctxt "field:product.product,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Für Kunden verwendete Steuern"
+
+#, fuzzy
+msgctxt "field:product.product,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Steuern Lieferant"
+
+#, fuzzy
+msgctxt "field:product.product,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Für Lieferanten verwendete Steuern"
+
+#, fuzzy
+msgctxt "field:product.product,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "Steuern der Kategorie anwenden"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr ""
 
 msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
@@ -149,6 +216,11 @@ msgstr "Ertragskonto"
 msgctxt "field:product.template,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Verwendetes Ertragskonto"
+
+#, fuzzy
+msgctxt "field:product.template,accounts_category:"
+msgid "Use Category's accounts"
+msgstr "Konten der Kategorie anwenden"
 
 msgctxt "field:product.template,customer_taxes:"
 msgid "Customer Taxes"
@@ -242,9 +314,29 @@ msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
 msgstr "Steuern der übergeordneten Kategorie anwenden"
 
-msgctxt "help:product.template,account_category:"
+#, fuzzy
+msgctxt "help:product.product,account_expense:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+#, fuzzy
+msgctxt "help:product.product,account_revenue:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+#, fuzzy
+msgctxt "help:product.product,accounts_category:"
 msgid "Use the accounts defined on the category"
 msgstr "Wendet die Konten an, die in der Artikelkategorie definiert sind"
+
+#, fuzzy
+msgctxt "help:product.product,taxes_category:"
+msgid "Use the taxes defined on the category"
+msgstr "Wendet die Steuern an, die in der Artikelkategorie definiert sind"
 
 msgctxt "help:product.template,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
@@ -257,6 +349,11 @@ msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
+
+#, fuzzy
+msgctxt "help:product.template,accounts_category:"
+msgid "Use the accounts defined on the category"
+msgstr "Wendet die Konten an, die in der Artikelkategorie definiert sind"
 
 msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
@@ -295,14 +392,6 @@ msgid "Accounts"
 msgstr "Konten"
 
 msgctxt "view:product.category:"
-msgid "Taxes"
-msgstr "Steuern"
-
-msgctxt "view:product.product:"
-msgid "Accounting"
-msgstr "Buchhaltung"
-
-msgctxt "view:product.product:"
 msgid "Taxes"
 msgstr "Steuern"
 
