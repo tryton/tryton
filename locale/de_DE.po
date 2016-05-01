@@ -122,10 +122,6 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Preisliste Zeile"
 
-msgctxt "view:party.party:"
-msgid "Price List"
-msgstr "Preisliste"
-
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
 msgstr "Preisliste Zeile"

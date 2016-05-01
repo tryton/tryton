@@ -122,18 +122,22 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Línea de tarifa"
 
+#, fuzzy
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
-msgstr ""
+msgstr "Línea de tarifa"
 
+#, fuzzy
 msgctxt "view:product.price_list.line:"
 msgid "Price List Lines"
-msgstr ""
+msgstr "Línea de tarifa"
 
+#, fuzzy
 msgctxt "view:product.price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Tarifa"
 
+#, fuzzy
 msgctxt "view:product.price_list:"
 msgid "Price Lists"
-msgstr ""
+msgstr "Tarifas"
