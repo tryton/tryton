@@ -50,10 +50,12 @@ msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr "Ubicación de producto"
 
+#, fuzzy
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
-msgstr ""
+msgstr "Ubicación de producto"
 
+#, fuzzy
 msgctxt "view:stock.product.location:"
 msgid "Product Locations"
-msgstr ""
+msgstr "Ubicación de producto"
