@@ -10,20 +10,19 @@ msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Il tasso di cambio dev'essere maggiore o uguale a 0"
 
+#, fuzzy
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr "Raggruppamento \"%(grouping)s\" invalido nella valuta \"%(currency)s\"."
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr "Tasso di cambio non trovato per la valuta \"%(currency)s\" il \"%(date)s\""
 
-#, fuzzy
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Codice"
@@ -909,7 +908,6 @@ msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
 msgstr "Dollaro dello Zimbabwe"
 
-#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Cambio"
@@ -932,19 +930,19 @@ msgstr "Gestione Valute"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Cambio"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr ""
+msgstr "Tassi"
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr ""
+msgstr "Valute"
 
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
@@ -952,4 +950,4 @@ msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr ""
+msgstr "Tassi"

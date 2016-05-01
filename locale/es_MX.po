@@ -10,8 +10,9 @@ msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "La tasa de cambio de la divisa debe ser mayor o igual a 0."
 
+#, fuzzy
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr "Agrupación \"%(grouping)s\" en la divisa \"%(currency)s\" no es correcta."
 
 msgctxt "error:currency.currency:"
@@ -912,26 +913,31 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administración de divisas"
 
+#, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Tasa de cambio"
 
+#, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr ""
+msgstr "Tasas de cambio"
 
+#, fuzzy
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr ""
+msgstr "Divisas"
 
+#, fuzzy
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Divisa"
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr ""
+msgstr "Tasas de cambio"

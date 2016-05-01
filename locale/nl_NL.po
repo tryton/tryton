@@ -11,7 +11,7 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr ""
 
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr ""
 
 msgctxt "error:currency.currency:"
@@ -105,9 +105,10 @@ msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr ""
+msgstr "Verhouding"
 
 #, fuzzy
 msgctxt "field:currency.currency,rec_name:"
@@ -931,9 +932,10 @@ msgctxt "view:currency.currency.rate:"
 msgid "Rate"
 msgstr "Verhouding"
 
+#, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr ""
+msgstr "Verhouding"
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
@@ -948,6 +950,7 @@ msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr ""
+msgstr "Verhouding"

@@ -11,7 +11,7 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr "Валутния курс трябва да е по-голям или равен на 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr ""
 
 msgctxt "error:currency.currency:"

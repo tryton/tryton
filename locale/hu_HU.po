@@ -10,8 +10,9 @@ msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Az árfolyamnak nagyobb vagy egyenlőnek kell lennie 0-val"
 
+#, fuzzy
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr "Érvénytelen cspoprtosítás \"%(grouping)s\" pénznemben \"%(currency)s\"."
 
 msgctxt "error:currency.currency:"
@@ -912,19 +913,19 @@ msgstr "Pénznem adminisztráció"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Árfolyam"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
-msgstr ""
+msgstr "Árfolyam"
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr ""
+msgstr "Pénznemek"
 
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
@@ -932,4 +933,4 @@ msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr ""
+msgstr "Árfolyam"
