@@ -10,6 +10,10 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr ""
 
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr ""
@@ -130,16 +134,16 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr ""
 
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr ""
 
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.payment.group,reference:"
-msgid "Reference"
 msgstr ""
 
 msgctxt "field:account.payment.group,write_date:"
@@ -370,6 +374,14 @@ msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
 msgstr ""
 
 msgctxt "view:account.move.line.pay.start:"

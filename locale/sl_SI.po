@@ -10,6 +10,10 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr "Plačilo \"%s\" mora biti pred brisanjem v stanju priprave."
 
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Znesek plačila"
@@ -130,6 +134,10 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr "Vrsta"
 
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "Plačila"
@@ -137,10 +145,6 @@ msgstr "Plačila"
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
 msgstr "Ime"
-
-msgctxt "field:account.payment.group,reference:"
-msgid "Reference"
-msgstr "Sklic"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
@@ -371,6 +375,15 @@ msgstr "Terjatve"
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr "Ročno"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Plačilo"
 
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"

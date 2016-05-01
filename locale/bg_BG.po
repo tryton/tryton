@@ -10,6 +10,10 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr ""
 
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -19,13 +23,15 @@ msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #, fuzzy
 msgctxt "field:account.move.line.pay.start,id:"
@@ -157,19 +163,19 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr "Вид"
 
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
 #, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
 msgstr "Условие за плащане"
-
-#, fuzzy
-msgctxt "field:account.payment.group,reference:"
-msgid "Reference"
-msgstr "Препратка"
 
 #, fuzzy
 msgctxt "field:account.payment.group,write_date:"
@@ -265,17 +271,20 @@ msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
@@ -344,13 +353,15 @@ msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
 msgstr "Редове за плащане"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
@@ -360,9 +371,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_payment"
@@ -430,6 +442,15 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr "Ръчно"
 
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Плащане"
+
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"
 msgstr ""
@@ -470,13 +491,15 @@ msgctxt "view:account.payment:"
 msgid "Approve"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Draft"
-msgstr ""
+msgstr "Проект"
 
 msgctxt "view:account.payment:"
 msgid "Fail"
@@ -486,13 +509,15 @@ msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Плащане"
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Payments"
-msgstr ""
+msgstr "Плащане"
 
 msgctxt "view:account.payment:"
 msgid "Succeed"

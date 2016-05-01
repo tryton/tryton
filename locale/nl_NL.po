@@ -10,6 +10,10 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr ""
 
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr ""
@@ -18,13 +22,15 @@ msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Vervaldatum"
 
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
@@ -147,19 +153,19 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr "Soort"
 
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
 #, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
 msgstr "Naam bijlage"
-
-#, fuzzy
-msgctxt "field:account.payment.group,reference:"
-msgid "Reference"
-msgstr "Referentie"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
@@ -247,17 +253,20 @@ msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
@@ -326,13 +335,15 @@ msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
 msgstr "Te betalen boekingen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
@@ -342,9 +353,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_payment"
@@ -412,6 +424,15 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr "Handmatig"
 
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Betaling"
+
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"
 msgstr ""
@@ -452,13 +473,15 @@ msgctxt "view:account.payment:"
 msgid "Approve"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr ""
+msgstr "Specificatie"
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "view:account.payment:"
 msgid "Fail"
@@ -468,13 +491,15 @@ msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Betaling"
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Payments"
-msgstr ""
+msgstr "Betaling"
 
 msgctxt "view:account.payment:"
 msgid "Succeed"

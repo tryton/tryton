@@ -10,6 +10,10 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr "Le paiement « %s » doit être en brouillon avant suppression."
 
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Montant du paiement"
@@ -130,6 +134,10 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr "Genre"
 
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr "Paiements"
@@ -137,10 +145,6 @@ msgstr "Paiements"
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:account.payment.group,reference:"
-msgid "Reference"
-msgstr "Référence"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
@@ -371,6 +375,15 @@ msgstr "Compte client"
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
 msgstr "Manuelle"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Paiement"
 
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"
