@@ -2,8 +2,8 @@ module.exports = function(grunt) {
 
   var _ = grunt.util._;
   var locales = ["bg_BG", "ca_ES", "cs_CZ", "de_DE", "es_AR", "es_CO", "es_EC",
-  "es_ES", "es_MX", "fr_FR", "hu_HU", "it_IT", "lt_LT", "nl_NL", "pt_BR",
-  "ru_RU", "sl_SI"];
+  "es_ES", "es_MX", "fr_FR", "hu_HU", "it_IT", "lo_LA", "lt_LT", "nl_NL",
+  "pt_BR", "ru_RU", "sl_SI", "zh_CN"];
   var jsfiles = [
       'src/sao.js',
       'src/rpc.js',
