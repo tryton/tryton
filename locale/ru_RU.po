@@ -2,9 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr ""
+
 msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Код страны"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr ""
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -132,9 +140,27 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Индекс"
 
+#, fuzzy
+msgctxt "help:country.country,code3:"
+msgid ""
+"The ISO country code in three chars.\n"
+"You can use this field for quick search."
+msgstr ""
+"ISO-код страны из двух симовлов.\n"
+"Вы можете использовать это поле для быстрого поиска."
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
+"You can use this field for quick search."
+msgstr ""
+"ISO-код страны из двух симовлов.\n"
+"Вы можете использовать это поле для быстрого поиска."
+
+#, fuzzy
+msgctxt "help:country.country,code_numeric:"
+msgid ""
+"The ISO numeric country code.\n"
 "You can use this field for quick search."
 msgstr ""
 "ISO-код страны из двух симовлов.\n"
@@ -1664,9 +1690,10 @@ msgctxt "model:country.subdivision,name:ao-mal"
 msgid "Malange"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ao-mox"
 msgid "Moxico"
-msgstr ""
+msgstr "Мексика"
 
 msgctxt "model:country.subdivision,name:ao-nam"
 msgid "Namibe"
@@ -1680,9 +1707,10 @@ msgctxt "model:country.subdivision,name:ao-zai"
 msgid "Zaire"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ar-a"
 msgid "Salta"
-msgstr ""
+msgstr "Мальта"
 
 msgctxt "model:country.subdivision,name:ar-b"
 msgid "Buenos Aires"
@@ -2016,9 +2044,10 @@ msgctxt "model:country.subdivision,name:az-qaz"
 msgid "Qazax"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:az-qba"
 msgid "Quba"
-msgstr ""
+msgstr "Куба"
 
 msgctxt "model:country.subdivision,name:az-qbi"
 msgid "Qubadlı"
@@ -2228,9 +2257,10 @@ msgctxt "model:country.subdivision,name:bb-06"
 msgid "Saint Joseph"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:bb-07"
 msgid "Saint Lucy"
-msgstr ""
+msgstr "Сент-Люсия"
 
 msgctxt "model:country.subdivision,name:bb-08"
 msgid "Saint Michael"
@@ -2580,9 +2610,10 @@ msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
 msgstr "Люксембург"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:be-wna"
 msgid "Namur"
-msgstr ""
+msgstr "Наименование"
 
 msgctxt "model:country.subdivision,name:bf-01"
 msgid "Boucle du Mouhoun"
@@ -2636,9 +2667,10 @@ msgctxt "model:country.subdivision,name:bf-13"
 msgid "Sud-Ouest"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:bf-bal"
 msgid "Balé"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:bf-bam"
 msgid "Bam"
@@ -3032,9 +3064,10 @@ msgctxt "model:country.subdivision,name:bj-co"
 msgid "Collines"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:bj-do"
 msgid "Donga"
-msgstr ""
+msgstr "Тонга"
 
 msgctxt "model:country.subdivision,name:bj-ko"
 msgid "Kouffo"
@@ -3348,9 +3381,10 @@ msgctxt "model:country.subdivision,name:bs-so"
 msgid "South Abaco"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:bs-ss"
 msgid "San Salvador"
-msgstr ""
+msgstr "Сальвадор"
 
 msgctxt "model:country.subdivision,name:bs-sw"
 msgid "Spanish Wells"
@@ -3960,9 +3994,10 @@ msgctxt "model:country.subdivision,name:cl-ma"
 msgid "Magallanes y Antártica Chilena"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:cl-ml"
 msgid "Maule"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:cl-rm"
 msgid "Región Metropolitana de Santiago"
@@ -4440,9 +4475,10 @@ msgctxt "model:country.subdivision,name:cv-sf"
 msgid "São Filipe"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:cv-sl"
 msgid "Sal"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:cv-sm"
 msgid "São Miguel"
@@ -4976,9 +5012,10 @@ msgctxt "model:country.subdivision,name:de-th"
 msgid "Thüringen"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dj-ar"
 msgid "Arta"
-msgstr ""
+msgstr "Область"
 
 msgctxt "model:country.subdivision,name:dj-as"
 msgid "Ali Sabieh"
@@ -5044,9 +5081,10 @@ msgctxt "model:country.subdivision,name:dm-06"
 msgid "Saint Joseph"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dm-07"
 msgid "Saint Luke"
-msgstr ""
+msgstr "Сент-Люсия"
 
 msgctxt "model:country.subdivision,name:dm-08"
 msgid "Saint Mark"
@@ -5064,9 +5102,10 @@ msgctxt "model:country.subdivision,name:do-01"
 msgid "Distrito Nacional (Santo Domingo)"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:do-02"
 msgid "Azua"
-msgstr ""
+msgstr "Аруба"
 
 msgctxt "model:country.subdivision,name:do-03"
 msgid "Bahoruco"
@@ -5288,9 +5327,10 @@ msgctxt "model:country.subdivision,name:dz-27"
 msgid "Mostaganem"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dz-28"
 msgid "Msila"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:dz-29"
 msgid "Mascara"
@@ -5300,9 +5340,10 @@ msgctxt "model:country.subdivision,name:dz-30"
 msgid "Ouargla"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dz-31"
 msgid "Oran"
-msgstr ""
+msgstr "Оман"
 
 msgctxt "model:country.subdivision,name:dz-32"
 msgid "El Bayadh"
@@ -5348,9 +5389,10 @@ msgctxt "model:country.subdivision,name:dz-42"
 msgid "Tipaza"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dz-43"
 msgid "Mila"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:dz-44"
 msgid "Aïn Defla"
@@ -5372,9 +5414,10 @@ msgctxt "model:country.subdivision,name:dz-48"
 msgid "Relizane"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ec-a"
 msgid "Azuay"
-msgstr ""
+msgstr "Аруба"
 
 msgctxt "model:country.subdivision,name:ec-b"
 msgid "Bolívar"
@@ -5776,9 +5819,10 @@ msgctxt "model:country.subdivision,name:es-gi"
 msgid "Girona"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:es-gr"
 msgid "Granada"
-msgstr ""
+msgstr "Гренада"
 
 msgctxt "model:country.subdivision,name:es-gu"
 msgid "Guadalajara"
@@ -6396,9 +6440,10 @@ msgctxt "model:country.subdivision,name:fr-74"
 msgid "Haute-Savoie"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-75"
 msgid "Paris"
-msgstr ""
+msgstr "Округ"
 
 msgctxt "model:country.subdivision,name:fr-76"
 msgid "Seine-Maritime"
@@ -6488,9 +6533,10 @@ msgctxt "model:country.subdivision,name:fr-b"
 msgid "Aquitaine"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-bl"
 msgid "Saint-Barthélemy"
-msgstr ""
+msgstr "Сен-Бартельми"
 
 msgctxt "model:country.subdivision,name:fr-c"
 msgid "Auvergne"
@@ -6516,9 +6562,10 @@ msgctxt "model:country.subdivision,name:fr-g"
 msgid "Champagne-Ardenne"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-gf"
 msgid "Guyane"
-msgstr ""
+msgstr "Гайана"
 
 msgctxt "model:country.subdivision,name:fr-gp"
 msgid "Guadeloupe"
@@ -6576,9 +6623,10 @@ msgctxt "model:country.subdivision,name:fr-pf"
 msgid "Polynésie française"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-pm"
 msgid "Saint-Pierre-et-Miquelon"
-msgstr ""
+msgstr "Сен-Пьер и Микелон"
 
 msgctxt "model:country.subdivision,name:fr-q"
 msgid "Haute-Normandie"
@@ -6852,9 +6900,10 @@ msgctxt "model:country.subdivision,name:gb-con"
 msgid "Cornwall"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gb-cov"
 msgid "Coventry"
-msgstr ""
+msgstr "Страны мира"
 
 msgctxt "model:country.subdivision,name:gb-crf"
 msgid "Cardiff;Caerdydd"
@@ -7600,9 +7649,10 @@ msgctxt "model:country.subdivision,name:gb-yor"
 msgid "York"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gb-zet"
 msgid "Shetland Islands"
-msgstr ""
+msgstr "Аландские острова"
 
 msgctxt "model:country.subdivision,name:gd-01"
 msgid "Saint Andrew"
@@ -8028,9 +8078,10 @@ msgctxt "model:country.subdivision,name:gr-24"
 msgid "Lefkada"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gr-31"
 msgid "Arta"
-msgstr ""
+msgstr "Область"
 
 msgctxt "model:country.subdivision,name:gr-32"
 msgid "Thesprotia"
@@ -8084,9 +8135,10 @@ msgctxt "model:country.subdivision,name:gr-56"
 msgid "Kastoria"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gr-57"
 msgid "Kilkis"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:gr-58"
 msgid "Kozani"
@@ -8140,9 +8192,10 @@ msgctxt "model:country.subdivision,name:gr-83"
 msgid "Lesvos"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gr-84"
 msgid "Samos"
-msgstr ""
+msgstr "Самоа"
 
 msgctxt "model:country.subdivision,name:gr-85"
 msgid "Chios"
@@ -8764,9 +8817,10 @@ msgctxt "model:country.subdivision,name:id-ac"
 msgid "Aceh"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:id-ba"
 msgid "Bali"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:id-bb"
 msgid "Bangka Belitung"
@@ -9548,9 +9602,10 @@ msgctxt "model:country.subdivision,name:it-av"
 msgid "Avellino"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:it-ba"
 msgid "Bari"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:it-bg"
 msgid "Bergamo"
@@ -9964,9 +10019,10 @@ msgctxt "model:country.subdivision,name:jm-03"
 msgid "Saint Thomas"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:jm-04"
 msgid "Portland"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:jm-05"
 msgid "Saint Mary"
@@ -10100,9 +10156,10 @@ msgctxt "model:country.subdivision,name:jp-11"
 msgid "Saitama"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:jp-12"
 msgid "Chiba"
-msgstr ""
+msgstr "Китай"
 
 msgctxt "model:country.subdivision,name:jp-13"
 msgid "Tokyo"
@@ -11000,9 +11057,10 @@ msgctxt "model:country.subdivision,name:lr-mg"
 msgid "Margibi"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:lr-mo"
 msgid "Montserrado"
-msgstr ""
+msgstr "Монсеррат"
 
 msgctxt "model:country.subdivision,name:lr-my"
 msgid "Maryland"
@@ -11904,9 +11962,10 @@ msgctxt "model:country.subdivision,name:ma-mou"
 msgid "Moulay Yacoub"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ma-nad"
 msgid "Nador"
-msgstr ""
+msgstr "Наименование"
 
 msgctxt "model:country.subdivision,name:ma-nou"
 msgid "Nouaceur"
@@ -11932,9 +11991,10 @@ msgctxt "model:country.subdivision,name:ma-saf"
 msgid "Safi"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ma-sal"
 msgid "Salé"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:ma-sef"
 msgid "Sefrou"
@@ -12216,9 +12276,10 @@ msgctxt "model:country.subdivision,name:me-01"
 msgid "Andrijevica"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:me-02"
 msgid "Bar"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:me-03"
 msgid "Berane"
@@ -12352,9 +12413,10 @@ msgctxt "model:country.subdivision,name:mh-jal"
 msgid "Jaluit"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mh-kil"
 msgid "Kili"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:mh-kwa"
 msgid "Kwajalein"
@@ -12388,17 +12450,19 @@ msgctxt "model:country.subdivision,name:mh-mej"
 msgid "Mejit"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mh-mil"
 msgid "Mili"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:mh-nmk"
 msgid "Namdrik"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mh-nmu"
 msgid "Namu"
-msgstr ""
+msgstr "Наименование"
 
 msgctxt "model:country.subdivision,name:mh-ron"
 msgid "Rongelap"
@@ -12836,9 +12900,10 @@ msgctxt "model:country.subdivision,name:mm-13"
 msgid "Kayin"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mm-14"
 msgid "Chin"
-msgstr ""
+msgstr "Китай"
 
 msgctxt "model:country.subdivision,name:mm-15"
 msgid "Mon"
@@ -13124,9 +13189,10 @@ msgctxt "model:country.subdivision,name:mt-33"
 msgid "Mqabba"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mt-34"
 msgid "Msida"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:mt-35"
 msgid "Mtarfa"
@@ -13136,9 +13202,10 @@ msgctxt "model:country.subdivision,name:mt-36"
 msgid "Munxar"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mt-37"
 msgid "Nadur"
-msgstr ""
+msgstr "Наименование"
 
 msgctxt "model:country.subdivision,name:mt-38"
 msgid "Naxxar"
@@ -13416,9 +13483,10 @@ msgctxt "model:country.subdivision,name:mv-ce"
 msgid "Central"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mv-mle"
 msgid "Male"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:mv-nc"
 msgid "North Central"
@@ -13624,9 +13692,10 @@ msgctxt "model:country.subdivision,name:mx-jal"
 msgid "Jalisco"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mx-mex"
 msgid "México"
-msgstr ""
+msgstr "Мексика"
 
 msgctxt "model:country.subdivision,name:mx-mic"
 msgid "Michoacán"
@@ -13792,9 +13861,10 @@ msgctxt "model:country.subdivision,name:mz-p"
 msgid "Cabo Delgado"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mz-q"
 msgid "Zambezia"
-msgstr ""
+msgstr "Замбия"
 
 msgctxt "model:country.subdivision,name:mz-s"
 msgid "Sofala"
@@ -14064,9 +14134,10 @@ msgctxt "model:country.subdivision,name:ni-es"
 msgid "Estelí"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ni-gr"
 msgid "Granada"
-msgstr ""
+msgstr "Гренада"
 
 msgctxt "model:country.subdivision,name:ni-ji"
 msgid "Jinotega"
@@ -14220,9 +14291,10 @@ msgctxt "model:country.subdivision,name:no-11"
 msgid "Rogaland"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:no-12"
 msgid "Hordaland"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:no-14"
 msgid "Sogn og Fjordane"
@@ -14240,9 +14312,10 @@ msgctxt "model:country.subdivision,name:no-17"
 msgid "Nord-Trøndelag"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:no-18"
 msgid "Nordland"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:no-19"
 msgid "Troms"
@@ -14352,9 +14425,10 @@ msgctxt "model:country.subdivision,name:nr-04"
 msgid "Anibare"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nr-05"
 msgid "Baiti"
-msgstr ""
+msgstr "Гаити"
 
 msgctxt "model:country.subdivision,name:nr-06"
 msgid "Boe"
@@ -14424,29 +14498,33 @@ msgctxt "model:country.subdivision,name:nz-mwt"
 msgid "Manawatu-Wanganui"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nz-n"
 msgid "North Island"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:nz-nsn"
 msgid "Nelson City"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nz-ntl"
 msgid "Northland"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:nz-ota"
 msgid "Otago"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nz-s"
 msgid "South Island"
-msgstr ""
+msgstr "Польша"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nz-stl"
 msgid "Southland"
-msgstr ""
+msgstr "Польша"
 
 msgctxt "model:country.subdivision,name:nz-tas"
 msgid "Tasman District"
@@ -14532,9 +14610,10 @@ msgctxt "model:country.subdivision,name:pa-7"
 msgid "Los Santos"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:pa-8"
 msgid "Panamá"
-msgstr ""
+msgstr "Панама"
 
 msgctxt "model:country.subdivision,name:pa-9"
 msgid "Veraguas"
@@ -14924,9 +15003,10 @@ msgctxt "model:country.subdivision,name:ph-din"
 msgid "Dinagat Islands"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ph-eas"
 msgid "Eastern Samar"
-msgstr ""
+msgstr "Западная Сахара"
 
 msgctxt "model:country.subdivision,name:ph-gui"
 msgid "Guimaras"
@@ -15104,9 +15184,10 @@ msgctxt "model:country.subdivision,name:ph-taw"
 msgid "Tawi-Tawi"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ph-wsa"
 msgid "Western Samar"
-msgstr ""
+msgstr "Западная Сахара"
 
 msgctxt "model:country.subdivision,name:ph-zan"
 msgid "Zamboanga del Norte"
@@ -15240,9 +15321,10 @@ msgctxt "model:country.subdivision,name:ps-jem"
 msgid "Jerusalem"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ps-jen"
 msgid "Jenin"
-msgstr ""
+msgstr "Бенин"
 
 msgctxt "model:country.subdivision,name:ps-jrh"
 msgid "Jericho - Al Aghwar"
@@ -15492,9 +15574,10 @@ msgctxt "model:country.subdivision,name:py-8"
 msgid "Misiones"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:py-9"
 msgid "Paraguarí"
-msgstr ""
+msgstr "Парагвай"
 
 msgctxt "model:country.subdivision,name:py-asu"
 msgid "Asunción"
@@ -17544,9 +17627,10 @@ msgctxt "model:country.subdivision,name:so-bn"
 msgid "Banaadir"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:so-br"
 msgid "Bari"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:so-by"
 msgid "Bay"
@@ -17732,9 +17816,10 @@ msgctxt "model:country.subdivision,name:sv-so"
 msgid "Sonsonate"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:sv-ss"
 msgid "San Salvador"
-msgstr ""
+msgstr "Сальвадор"
 
 msgctxt "model:country.subdivision,name:sv-sv"
 msgid "San Vicente"
@@ -17972,9 +18057,10 @@ msgctxt "model:country.subdivision,name:th-20"
 msgid "Chon Buri"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:th-21"
 msgid "Rayong"
-msgstr ""
+msgstr "Район"
 
 msgctxt "model:country.subdivision,name:th-22"
 msgid "Chanthaburi"
@@ -18196,9 +18282,10 @@ msgctxt "model:country.subdivision,name:th-84"
 msgid "Surat Thani"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:th-85"
 msgid "Ranong"
-msgstr ""
+msgstr "Район"
 
 msgctxt "model:country.subdivision,name:th-86"
 msgid "Chumphon"
@@ -18604,9 +18691,10 @@ msgctxt "model:country.subdivision,name:tr-41"
 msgid "Kocaeli"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:tr-42"
 msgid "Konya"
-msgstr ""
+msgstr "Кения"
 
 msgctxt "model:country.subdivision,name:tr-43"
 msgid "Kütahya"
@@ -18752,9 +18840,10 @@ msgctxt "model:country.subdivision,name:tr-78"
 msgid "Karabük"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:tr-79"
 msgid "Kilis"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:tr-80"
 msgid "Osmaniye"
@@ -19048,9 +19137,10 @@ msgctxt "model:country.subdivision,name:tz-24"
 msgid "Tabora"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:tz-25"
 msgid "Tanga"
-msgstr ""
+msgstr "Тонга"
 
 msgctxt "model:country.subdivision,name:tz-26"
 msgid "Manyara"
@@ -19116,9 +19206,10 @@ msgctxt "model:country.subdivision,name:ua-46"
 msgid "L'vivs'ka Oblast'"
 msgstr "Львовская область"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ua-48"
 msgid "Mykolaïvs'ka Oblast'"
-msgstr ""
+msgstr "Киевская область"
 
 msgctxt "model:country.subdivision,name:ua-51"
 msgid "Odes'ka Oblast'"
@@ -19128,13 +19219,15 @@ msgctxt "model:country.subdivision,name:ua-53"
 msgid "Poltavs'ka Oblast'"
 msgstr "Полтавская область"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ua-56"
 msgid "Rivnens'ka Oblast'"
-msgstr ""
+msgstr "Донецкая область"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ua-59"
 msgid "Sums 'ka Oblast'"
-msgstr ""
+msgstr "Одесская область"
 
 msgctxt "model:country.subdivision,name:ua-61"
 msgid "Ternopil's'ka Oblast'"
@@ -19152,17 +19245,19 @@ msgctxt "model:country.subdivision,name:ua-68"
 msgid "Khmel'nyts'ka Oblast'"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ua-71"
 msgid "Cherkas'ka Oblast'"
-msgstr ""
+msgstr "Харьковская область"
 
 msgctxt "model:country.subdivision,name:ua-74"
 msgid "Chernihivs'ka Oblast'"
 msgstr "Черниговская область"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ua-77"
 msgid "Chernivets'ka Oblast'"
-msgstr ""
+msgstr "Черниговская область"
 
 msgctxt "model:country.subdivision,name:ug-101"
 msgid "Kalangala"
@@ -19260,9 +19355,10 @@ msgctxt "model:country.subdivision,name:ug-208"
 msgid "Kumi"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ug-209"
 msgid "Mbale"
-msgstr ""
+msgstr "Мали"
 
 msgctxt "model:country.subdivision,name:ug-210"
 msgid "Pallisa"
@@ -19332,9 +19428,10 @@ msgctxt "model:country.subdivision,name:ug-302"
 msgid "Apac"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ug-303"
 msgid "Arua"
-msgstr ""
+msgstr "Аруба"
 
 msgctxt "model:country.subdivision,name:ug-304"
 msgid "Gulu"
@@ -19776,9 +19873,10 @@ msgctxt "model:country.subdivision,name:uy-cl"
 msgid "Cerro Largo"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:uy-co"
 msgid "Colonia"
-msgstr ""
+msgstr "Колумбия"
 
 msgctxt "model:country.subdivision,name:uy-du"
 msgid "Durazno"
@@ -19820,9 +19918,10 @@ msgctxt "model:country.subdivision,name:uy-rv"
 msgid "Rivera"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:uy-sa"
 msgid "Salto"
-msgstr ""
+msgstr "Мальта"
 
 msgctxt "model:country.subdivision,name:uy-sj"
 msgid "San José"
@@ -20280,9 +20379,10 @@ msgctxt "model:country.subdivision,name:vu-map"
 msgid "Malampa"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:vu-pam"
 msgid "Pénama"
-msgstr ""
+msgstr "Панама"
 
 msgctxt "model:country.subdivision,name:vu-sam"
 msgid "Sanma"
@@ -20308,9 +20408,10 @@ msgctxt "model:country.subdivision,name:ws-al"
 msgid "Aiga-i-le-Tai"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ws-at"
 msgid "Atua"
-msgstr ""
+msgstr "Аруба"
 
 msgctxt "model:country.subdivision,name:ws-fa"
 msgid "Fa'asaleleaga"
@@ -20570,9 +20671,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
 msgstr "Административная область"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr ""
+msgstr "Административная область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
@@ -20610,9 +20712,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
 msgstr "Автономное сообщество"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr ""
+msgstr "Автономное сообщество"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
@@ -20754,9 +20857,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr "Федеральные территории"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
-msgstr ""
+msgstr "Географическая единица"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"

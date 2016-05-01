@@ -2,139 +2,174 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr ""
+
 msgctxt "field:country.country,code:"
 msgid "Code"
+msgstr "Kód"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
 msgstr ""
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:country.country,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
-msgstr ""
+msgstr "Szubnacionális egység"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utolsó módosítás"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
+#, fuzzy
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Felülrendelt"
 
+#, fuzzy
 msgctxt "field:country.subdivision,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
-msgstr ""
+msgstr "Város"
 
+#, fuzzy
 msgctxt "field:country.zip,country:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva"
 
 msgctxt "field:country.zip,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:country.zip,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Szubnacionális egység"
 
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
+msgstr "Irányítószám:"
+
+#, fuzzy
+msgctxt "help:country.country,code3:"
+msgid ""
+"The ISO country code in three chars.\n"
+"You can use this field for quick search."
 msgstr ""
+"ISO Országkód (2jel)\n"
+"Gyors keresés érdekében használható ebben a mezőben."
 
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
 "You can use this field for quick search."
 msgstr ""
+"ISO Országkód (2jel)\n"
+"Gyors keresés érdekében használható ebben a mezőben."
+
+#, fuzzy
+msgctxt "help:country.country,code_numeric:"
+msgid ""
+"The ISO numeric country code.\n"
+"You can use this field for quick search."
+msgstr ""
+"ISO Országkód (2jel)\n"
+"Gyors keresés érdekében használható ebben a mezőben."
 
 msgctxt "help:country.country,name:"
 msgid "The full name of the country."
-msgstr ""
+msgstr "Teljes országnév"
 
+#, fuzzy
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
 msgctxt "model:country.country,name:ad"
 msgid "Andorra"
@@ -1134,7 +1169,7 @@ msgstr "Zimbabwe"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Szubnacionális egység"
 
 msgctxt "model:country.subdivision,name:ad-02"
 msgid "Canillo"
@@ -20526,39 +20561,39 @@ msgstr "Mashonaland West"
 
 msgctxt "model:country.zip,name:"
 msgid "Zip"
-msgstr ""
+msgstr "Irányítószám:"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr ""
+msgstr "Országok"
 
 msgctxt "model:ir.action,name:act_zip_form"
 msgid "Zip"
-msgstr ""
+msgstr "Irányítószám:"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr ""
+msgstr "Országok"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr ""
+msgstr "Adminisztráció"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr ""
+msgstr "Kormányzási terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
-msgstr ""
+msgstr "Adminisztrációs terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
-msgstr ""
+msgstr "Adminisztrációs terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr ""
+msgstr "Adminisztrációs eszközök"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
@@ -20566,7 +20601,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr ""
+msgstr "Terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
@@ -20574,59 +20609,60 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr ""
+msgstr "Autonóm város"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr ""
+msgstr "Autonóm közösség"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr ""
+msgstr "Autonóm kerület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
-msgstr ""
+msgstr "Autonóm tartomány"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
-msgstr ""
+msgstr "Autonóm régió"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr ""
+msgstr "Autonóm község"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr ""
+msgstr "Autonóm község"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr ""
+msgstr "Autonóm sziget"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
-msgstr ""
+msgstr "Autonóm templomi állam"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr ""
+msgstr "Autonóm államigazgatási kerület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr ""
+msgstr "Autonóm köztársaság"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
-msgstr ""
+msgstr "Autonóm körzet"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territorial unit"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
-msgstr ""
+msgstr "Autonóm körzet"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
@@ -20654,15 +20690,15 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
-msgstr ""
+msgstr "Sziget lánc"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
-msgstr ""
+msgstr "Város"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
-msgstr ""
+msgstr "Önkormányzat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -20670,7 +20706,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
-msgstr ""
+msgstr "Község"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
@@ -20680,29 +20716,31 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr ""
+msgstr "Megye"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
-msgstr ""
+msgstr "Részleg"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr ""
+msgstr "Védett terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
-msgstr ""
+msgstr "Fejlesztési terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District"
-msgstr ""
+msgstr "Körzet"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
@@ -20710,7 +20748,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Division"
-msgstr ""
+msgstr "Felosztás"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic Prefecture"
@@ -20718,7 +20756,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic region"
-msgstr ""
+msgstr "Gazdasági terület"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
@@ -20726,11 +20764,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
-msgstr ""
+msgstr "Egység"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr ""
+msgstr "Szövetségi tartományok"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
@@ -20738,19 +20776,19 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
-msgstr ""
+msgstr "Megye"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
-msgstr ""
+msgstr "Földrajzi egység"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
-msgstr ""
+msgstr "Földrajzi régió"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
-msgstr ""
+msgstr "Földrajzi egység"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
@@ -20824,9 +20862,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr ""
+msgstr "Párizs"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -20848,9 +20887,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr ""
+msgstr "Rayong"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
@@ -20940,22 +20980,27 @@ msgctxt "selection:country.subdivision,type:"
 msgid "zone"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:country.country:"
 msgid "Countries"
-msgstr ""
+msgstr "Országok"
 
+#, fuzzy
 msgctxt "view:country.country:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
+#, fuzzy
 msgctxt "view:country.subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Szubnacionális egység"
 
+#, fuzzy
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
-msgstr ""
+msgstr "Szubnacionális egység"
 
+#, fuzzy
 msgctxt "view:country.zip:"
 msgid "Zip"
-msgstr ""
+msgstr "Irányítószám:"

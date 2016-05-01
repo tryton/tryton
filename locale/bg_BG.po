@@ -2,9 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr ""
+
 msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Код"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr ""
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -132,9 +140,27 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Пощ. код"
 
+#, fuzzy
+msgctxt "help:country.country,code3:"
+msgid ""
+"The ISO country code in three chars.\n"
+"You can use this field for quick search."
+msgstr ""
+"ISO кода на държавата в два символа.\n"
+"Може да използвате полета за бързо търсене."
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
+"You can use this field for quick search."
+msgstr ""
+"ISO кода на държавата в два символа.\n"
+"Може да използвате полета за бързо търсене."
+
+#, fuzzy
+msgctxt "help:country.country,code_numeric:"
+msgid ""
+"The ISO numeric country code.\n"
 "You can use this field for quick search."
 msgstr ""
 "ISO кода на държавата в два символа.\n"
@@ -20570,9 +20596,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
 msgstr "Административна област"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
-msgstr ""
+msgstr "Административна област"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
@@ -20610,9 +20637,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
 msgstr "Автономна общност"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr ""
+msgstr "Автономна общност"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
@@ -20754,9 +20782,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr "Федерални територии"
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
-msgstr ""
+msgstr "Географска единица"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
