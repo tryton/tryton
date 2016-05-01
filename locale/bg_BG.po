@@ -162,10 +162,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Език на партньор"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Последователност за партньор"
@@ -257,39 +253,39 @@ msgstr "Променено от"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Партньор"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Вид"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
@@ -410,10 +406,6 @@ msgstr "Променено на"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr "Стойността в това поле ще се използва за език при нови партньори."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"

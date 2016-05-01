@@ -23,9 +23,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "A partner kapcsolati mechanizmus \"%s\" módosítása nem lehetséges"
 
+#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "A partner \"%(party)s\"érvénytelen adóazonosító száma \"%(vat)s\""
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -163,10 +164,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Partner nyelvezete"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Partner számköre"
@@ -257,39 +254,39 @@ msgstr "Utolsó módosítás a következő felhasználó által"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Partner kód"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás dátuma"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utoljára módosított dátum"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
@@ -410,11 +407,6 @@ msgstr "Utolsó módosítás dátuma"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"Érték ebben a mezőben elő beállításként szolgál az új Partner nyelvezetére"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -570,15 +562,15 @@ msgstr "Weboldal"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr ""
+msgstr "Címek"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr ""
+msgstr "Kategóriák"
 
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
@@ -586,15 +578,15 @@ msgstr ""
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Kapcsolat lehetőségek"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Kapcsolat lehetőség"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
@@ -610,11 +602,11 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Parties"
-msgstr ""
+msgstr "Partnerek"
 
 msgctxt "view:party.party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

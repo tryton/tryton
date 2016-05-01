@@ -26,9 +26,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Вы не можете изменить контрагента в контакнтых данных \"%s\"."
 
+#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "Некорректный номер ИНН \"%(vat)s\" у контрагента \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -166,10 +167,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Язык контрагента"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Нумерация для контрагентов"
@@ -260,39 +257,39 @@ msgstr "Изменено пользователем"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Контрагент"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Наименование"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
@@ -413,10 +410,6 @@ msgstr "Дата изменения"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr "Значение этого поля задает язык по умолчанию у новых контрагентов"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"

@@ -27,9 +27,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "No puede modificar la entidad del contacto \"%s\"."
 
+#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "El RFC \"%(vat)s\" de la entidad \"%(party)s\" no es correcto."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -167,10 +168,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Idioma de la entidad"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secuencia de la entidad"
@@ -259,41 +256,50 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+#, fuzzy
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
+#, fuzzy
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
+#, fuzzy
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
+#, fuzzy
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Entidad"
 
+#, fuzzy
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Contacto"
 
+#, fuzzy
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
@@ -414,12 +420,6 @@ msgstr "Fecha modificación"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"El valor de este campo será el valor predefinido para el idioma de las "
-"entidades."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -573,33 +573,39 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Sitio Web"
 
+#, fuzzy
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr ""
+msgstr "Direcciones"
 
+#, fuzzy
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr ""
+msgstr "Categorías"
 
+#, fuzzy
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuración de entidades"
 
+#, fuzzy
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Medio de contacto"
 
+#, fuzzy
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Medios de contacto"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
@@ -613,13 +619,15 @@ msgctxt "view:party.party:"
 msgid "General"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Parties"
-msgstr ""
+msgstr "Entidades"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Party"
-msgstr ""
+msgstr "Entidad"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

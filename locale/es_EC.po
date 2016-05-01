@@ -26,7 +26,7 @@ msgstr "No puede modificar el tercero del medio de contacto \"%s\"."
 
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr "El número de CI/RUC \"%(vat)s\" del tercero \"%(party)s\" no es válido."
+msgstr "El número de C.I./RUC \"%(vat)s\" del tercero \"%(party)s\" no es válido."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -164,10 +164,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Idioma del tercero"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secuencia de terceros"
@@ -202,7 +198,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
@@ -326,7 +322,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
@@ -366,7 +362,7 @@ msgstr "Nombre"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "CI/RUC"
+msgstr "C.I./RUC"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -411,12 +407,6 @@ msgstr "Fecha de modificación"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"El valor de este campo será el valor por defecto del idioma de los nuevos "
-"terceros"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -532,7 +522,7 @@ msgstr "Administración de Terceros"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
@@ -584,7 +574,7 @@ msgstr "Categoría"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "Resultados del Sistema de Intercambio de Información de CI/RUC"
+msgstr "Resultados del Sistema de Intercambio de Información de C.I./RUC"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"

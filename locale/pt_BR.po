@@ -162,10 +162,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Idioma da pessoa"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Sequência da pessoa"
@@ -409,12 +405,6 @@ msgstr "Data de gravação"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"O valor configurado neste campo será atribuído como o idioma padrão ao se "
-"cadastrar novas pessoas"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"

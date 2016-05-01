@@ -165,10 +165,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Idioma de la entidad"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secuencia de entidades"
@@ -412,12 +408,6 @@ msgstr "Fecha modificación"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"El valor de este campo será el valor por defecto del idioma de las nuevas "
-"entidades"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"

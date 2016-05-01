@@ -162,11 +162,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Taal relatie"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Relatiecode"
@@ -258,7 +253,7 @@ msgstr ""
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
@@ -274,15 +269,15 @@ msgstr ""
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Aanhef"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
@@ -410,10 +405,6 @@ msgstr ""
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr ""
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"

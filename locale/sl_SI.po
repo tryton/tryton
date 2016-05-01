@@ -162,10 +162,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Jezik partnerja"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Štetje partnerjev"
@@ -409,10 +405,6 @@ msgstr "Zapisano"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr "Vrednost v tem polju bo nastavila jezik za nove partnerje."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"

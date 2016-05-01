@@ -22,9 +22,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Controparte in meccanismo di contatto \"%s\" non modificabile"
 
+#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "Identificativo IVA \"%(vat)s\" invalido per controparte \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -183,10 +184,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Lingua controparte"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Sequenza controparte"
@@ -291,39 +288,45 @@ msgstr "Scrivente"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data Creazione"
 
+#, fuzzy
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creazione Utente"
 
+#, fuzzy
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
+#, fuzzy
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data di Scrittura"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Scrivente"
 
 #, fuzzy
 msgctxt "field:party.party,active:"
@@ -457,12 +460,6 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Scrivente"
 
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"Il valore immesso per il campo predeterminerà la lingua delle nuove "
-"controparti"
-
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Indirizzi"
@@ -477,7 +474,7 @@ msgstr "Categorie"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Meccanismi di contatto"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
@@ -525,7 +522,7 @@ msgstr "Configurazione"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Meccanismi di contatto"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
@@ -617,15 +614,15 @@ msgstr "sito web"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr ""
+msgstr "Indirizzi"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr ""
+msgstr "Categorie"
 
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
@@ -633,15 +630,15 @@ msgstr ""
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Connfigurazione Controparte"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Meccanismo di contatto"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Meccanismi di contatto"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
@@ -657,11 +654,11 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Parties"
-msgstr ""
+msgstr "Controparti"
 
 msgctxt "view:party.party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

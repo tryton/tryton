@@ -163,10 +163,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr ""
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr ""
@@ -409,10 +405,6 @@ msgstr ""
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr ""
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"

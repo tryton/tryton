@@ -164,10 +164,6 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:party.configuration,party_lang:"
-msgid "Party Language"
-msgstr "Langue des tiers"
-
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Séquence de tiers"
@@ -411,12 +407,6 @@ msgstr "Date de mise à jour"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
-
-msgctxt "help:party.configuration,party_lang:"
-msgid "The value set on this field will preset the language on new parties"
-msgstr ""
-"La valeur de ce champs sera la valeur par défaut pour la langue des nouveaux"
-" tiers"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
