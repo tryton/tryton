@@ -92,6 +92,7 @@ class Screen(SignalEvent):
         if context_model:
             self.context_screen = Screen(
                 context_model, mode=['form'], context=context)
+            self.context_screen.new()
             context_widget = self.context_screen.widget
 
             def walk_descendants(widget):
@@ -132,7 +133,6 @@ class Screen(SignalEvent):
                 context_widget, expand=False, fill=True)
             self.screen_container.filter_vbox.reorder_child(
                 context_widget, 0)
-            self.context_screen.new()
             self.context_screen.widget.show()
 
         self.__current_view = 0
