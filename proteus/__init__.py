@@ -3,7 +3,7 @@
 '''
 A library to access Tryton's models like a client.
 '''
-__version__ = "4.0.0"
+__version__ = "4.1.0"
 __all__ = ['Model', 'Wizard', 'Report']
 import sys
 try:
