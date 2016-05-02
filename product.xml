@@ -132,7 +132,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <menuitem parent="menu_template" sequence="1" id="menu_product"
-            action="act_product_form"/>
+            action="act_product_form" icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_product">
             <field name="model" search="[('model', '=', 'product.product')]"/>
