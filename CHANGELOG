@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Rename Purchase reference into number and supplier reference into reference
 * Add return location on warehouse
 * Add Python3 support
