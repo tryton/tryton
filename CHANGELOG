@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Merge invoice and credit note
 * Inversed sign of tax report from credit note
 * Move tax Rounding configuration to account
