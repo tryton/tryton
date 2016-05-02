@@ -17,7 +17,7 @@ class Purchase:
         cls._error_messages.update({
                 'delete_purchase_request': ('You can not delete the purchase'
                     ' "%(purchase)s" because it is linked to at least one'
-                    ' purchase request."'),
+                    ' purchase request.'),
                 })
 
     @classmethod
