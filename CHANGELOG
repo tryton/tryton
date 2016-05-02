@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Rename Payment Group reference into number
 * Add payment group sequence in configuration
 * Add Python3 support
