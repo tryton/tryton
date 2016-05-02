@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Move purchase request to purchase_request module
 * Add Python3 support
 * Add searcher on purchase
