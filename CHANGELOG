@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Replace category by categories on Template
 * Add Python3 support
 * Add configuration for default cost price method
