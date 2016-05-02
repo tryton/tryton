@@ -1,3 +1,5 @@
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
 * Rename Complaint reference into number and add reference
 * Add Python3 support
 
