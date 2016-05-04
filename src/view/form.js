@@ -1285,6 +1285,11 @@
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
+            this.input.click(function() {
+                // Dont trigger click if field is readonly as readonly has no
+                // effect on checkbox
+                return !JQuery(this).input.prop('readonly');
+            });
         },
         display: function(record, field) {
             Sao.View.Form.Boolean._super.display.call(this, record, field);
