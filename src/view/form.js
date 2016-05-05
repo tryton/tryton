@@ -1297,7 +1297,7 @@
             this.input.click(function() {
                 // Dont trigger click if field is readonly as readonly has no
                 // effect on checkbox
-                return !JQuery(this).input.prop('readonly');
+                return !jQuery(this).prop('readonly');
             });
         },
         display: function(record, field) {
