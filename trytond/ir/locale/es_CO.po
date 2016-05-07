@@ -70,10 +70,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "El correo electronico definido en el informe \"%s\" es inválido."
 
-#, fuzzy
 msgctxt "error:ir.attachment:"
 msgid "The names of attachments must be unique by resource."
-msgstr "¡Los nombres de los archivos adjuntos deben ser únicos por recurso!"
+msgstr "Los nombres de los archivos adjuntos deben ser únicos por recurso."
 
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
@@ -251,14 +250,13 @@ msgctxt "error:ir.trigger:"
 msgid "\"On Time\" and others are mutually exclusive!"
 msgstr "\"Al Tiempo\" y otros son mutuamente excluyentes!"
 
-#, fuzzy
 msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"Condición \"%(condition)s\" no es una expressión python válida en el "
-"disparador \"%s(trigger)s\"."
+"La condición \"%(condition)s\" no es una expresión PYSON válida en el "
+"disparador \"%(trigger)s\"."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
@@ -424,7 +422,7 @@ msgstr "Valor del Contexto"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "Modelo Contexto"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1678,98 +1676,82 @@ msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Módulos a actualizar"
 
-#, fuzzy
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:ir.note,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-#, fuzzy
 msgctxt "field:ir.note,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Última Modificación"
 
-#, fuzzy
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
 msgstr "Último Usuario"
 
 msgctxt "field:ir.note,message:"
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
 msgstr "Recurso"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
-msgstr ""
+msgstr "No leído"
 
-#, fuzzy
 msgctxt "field:ir.note,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
 
-#, fuzzy
 msgctxt "field:ir.note,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-#, fuzzy
 msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "Usuario"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
@@ -2296,7 +2278,7 @@ msgstr "Número Límite"
 
 msgctxt "field:ir.trigger,minimum_time_delay:"
 msgid "Minimum Delay"
-msgstr ""
+msgstr "Retraso Mínimo"
 
 msgctxt "field:ir.trigger,model:"
 msgid "Model"
@@ -2810,13 +2792,12 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "La regla se satisface si al menos una condición es cierta"
 
-#, fuzzy
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Una instrucción Python evaluada con el registro representado por \"self\"\n"
+"Una instrucción PYSON evaluada con el registro representado por \"self\"\n"
 "Se dispara la acción si es verdadera."
 
 msgctxt "help:ir.trigger,limit_number:"
@@ -2937,7 +2918,7 @@ msgstr "Realizar Instalaciones/Actualizaciones Pendientes"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -3017,7 +2998,7 @@ msgstr "Gráfico"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Gráfico de Flujo de Trabajo"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3127,20 +3108,19 @@ msgstr "Español (Colombia)"
 
 msgctxt "model:ir.lang,name:lang_es_MX"
 msgid "Spanish (Mexico)"
-msgstr ""
+msgstr "Español (México)"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francés"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_hu_HU"
 msgid "Hungarian"
-msgstr "Búlgaro"
+msgstr "Hungaro"
 
 msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3152,7 +3132,7 @@ msgstr "Holandés"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugues"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3225,11 +3205,11 @@ msgstr "Inicio de Asistente de Instalación del Módulo"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
+msgstr "Leer Nota"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3413,7 +3393,7 @@ msgstr "Módulos"
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3667,7 +3647,6 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modelo"
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
 msgstr "Reporte"
@@ -3686,7 +3665,7 @@ msgstr "Botón de Asistente"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3706,7 +3685,7 @@ msgstr "ir.action.wizard"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid ""
-msgstr ""
+msgstr "Hora de Última Modificación"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
@@ -3804,10 +3783,9 @@ msgctxt "view:ir.attachment:"
 msgid "Attachments"
 msgstr "Adjuntos"
 
-#, fuzzy
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
-msgstr "Última Modificación"
+msgstr "Hora de Última Modificación"
 
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
@@ -3815,7 +3793,7 @@ msgstr "Acción a disparar"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Ejecutar Una Vez"
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3897,14 +3875,13 @@ msgctxt "view:ir.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
 msgstr "Bienvenido al asistente de configuración del módulo!"
 
-#, fuzzy
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
-"Usted será capaz de configurar la instalación en función de los módulos que "
-"ha instalado."
+"Usted podrá configurar la instalación dependiendo de los módulos que haya "
+"instalado."
 
 msgctxt "view:ir.module.config_wizard.item:"
 msgid "Config Wizard Items"
@@ -3974,24 +3951,22 @@ msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Módulos"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Fecha"
 
 msgctxt "view:ir.note:"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 msgctxt "view:ir.note:"
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Usuario"
@@ -4143,10 +4118,9 @@ msgctxt "view:ir.ui.menu:"
 msgid "Menu"
 msgstr "Menú"
 
-#, fuzzy
 msgctxt "view:ir.ui.view:"
 msgid "Show"
-msgstr "_Mostrar"
+msgstr "Mostrar"
 
 msgctxt "view:ir.ui.view:"
 msgid "View"

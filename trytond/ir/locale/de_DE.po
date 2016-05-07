@@ -70,7 +70,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Ungültige E-Mailadresse in Bericht \"%s\"."
 
-#, fuzzy
 msgctxt "error:ir.attachment:"
 msgid "The names of attachments must be unique by resource."
 msgstr ""
@@ -428,7 +427,7 @@ msgstr "Kontext"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "Kontextmodell"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1072,7 +1071,7 @@ msgstr "Name"
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
-msgstr "Ausgelassene wiederholen"
+msgstr "Ausgelassene Aktionen nachholen"
 
 msgctxt "field:ir.cron,request_user:"
 msgid "Request User"
@@ -1682,98 +1681,82 @@ msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Zu aktualisierende Module"
 
-#, fuzzy
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:ir.note,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:ir.note,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Letzte Änderung"
 
-#, fuzzy
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
 msgstr "Letzter Benutzer"
 
 msgctxt "field:ir.note,message:"
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Name"
 msgstr "Name"
 
-#, fuzzy
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
 msgstr "Ressource"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
-msgstr ""
+msgstr "Ungelesen"
 
-#, fuzzy
 msgctxt "field:ir.note,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:ir.note,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Name"
 msgstr "Name"
 
-#, fuzzy
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "Benutzer"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
@@ -2941,7 +2924,7 @@ msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -3013,15 +2996,15 @@ msgstr "Spaltenbreiten Sicht"
 
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "Diagramm"
+msgstr "Graph"
 
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "Diagramm"
+msgstr "Graph"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Workflow Graph"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3227,11 +3210,11 @@ msgstr "Modulinstallation Aktualisierung Start"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
+msgstr "Notiz gelesen"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3415,7 +3398,7 @@ msgstr "Module"
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3669,7 +3652,6 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modell"
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
 msgstr "Bericht"
@@ -3688,7 +3670,7 @@ msgstr "Wizardknopf"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3708,7 +3690,7 @@ msgstr "ir.action.wizard"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
@@ -3816,7 +3798,7 @@ msgstr "Auszuführende Aktion"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Einmalig durchführen"
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3972,24 +3954,22 @@ msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Module"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Datum"
 
 msgctxt "view:ir.note:"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 msgctxt "view:ir.note:"
 msgid "Notes"
-msgstr ""
+msgstr "Notizen"
 
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Benutzer"
