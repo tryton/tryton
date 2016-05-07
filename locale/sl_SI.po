@@ -118,7 +118,7 @@ msgstr "Lokacija"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Številka"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -680,7 +680,7 @@ msgstr "Ponastavi na kosovnico"
 
 msgctxt "view:production:"
 msgid "Run"
-msgstr "Izvajanje"
+msgstr "Zagon"
 
 msgctxt "view:production:"
 msgid "Wait"

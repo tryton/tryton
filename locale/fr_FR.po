@@ -120,7 +120,7 @@ msgstr "Emplacement"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numéro"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"

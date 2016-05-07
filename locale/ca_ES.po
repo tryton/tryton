@@ -120,7 +120,7 @@ msgstr "Ubicació"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -678,7 +678,7 @@ msgstr "Produccions"
 
 msgctxt "view:production:"
 msgid "Reset to BOM"
-msgstr "Reestableix amb la LdM"
+msgstr "Restaura amb la LdM"
 
 msgctxt "view:production:"
 msgid "Run"
