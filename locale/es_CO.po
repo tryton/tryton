@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:purchase.purchase:"
 msgid "A delivery address must be defined for quotation of purchase \"%s\"."
 msgstr ""
-"Una dirección de entrega debe definirse en la cotización de la compra "
+"Debe definirse una dirección de entrega en la cotización de la compra "
 "\"%s\"."
 
 msgctxt "error:stock.shipment.drop:"
@@ -18,11 +18,11 @@ msgstr ""
 
 msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
-msgstr ""
+msgstr "Bodega de Eliminación de la Compra"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Entrega de Envío"
+msgstr "Eliminar Envío"
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
@@ -34,11 +34,11 @@ msgstr "Dirección de Envío"
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
-msgstr ""
+msgstr "Bodega de Eliminación"
 
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr "Eliminar Envíos"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
@@ -50,11 +50,11 @@ msgstr "Dirección de Envío"
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
-msgstr ""
+msgstr "Bodega de Eliminación de la Venta"
 
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
-msgstr ""
+msgstr "Bodega de Eliminación"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
@@ -62,7 +62,7 @@ msgstr "Entrega de Envíos"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Secuencia Entrega de Envíos"
+msgstr "Secuencia Eliminación de Envíos"
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
@@ -94,7 +94,7 @@ msgstr "Cliente"
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
-msgstr ""
+msgstr "Movimientos de Cliente"
 
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
@@ -134,7 +134,7 @@ msgstr "Proveedor"
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
-msgstr ""
+msgstr "Asientos de Proveedor"
 
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
@@ -146,15 +146,15 @@ msgstr "Modificado por Usuario"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr "Eliminación de Envíos"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr "Eliminación de Envíos"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr "Eliminación de Envíos"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
@@ -169,7 +169,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr ""
+msgstr "Enviado"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
@@ -178,19 +178,19 @@ msgstr "En Espera"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Entrega de Envío"
+msgstr "Eliminación de Envío"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Entrega de Envío"
+msgstr "Eliminación de Envío"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr "Eliminación de Envíos"
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
-msgstr ""
+msgstr "Envio"
 
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
@@ -210,7 +210,7 @@ msgstr "Borrador"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
-msgstr ""
+msgstr "Enviado"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
@@ -218,7 +218,7 @@ msgstr "En Espera"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Anular"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
@@ -230,7 +230,7 @@ msgstr "Borrador"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipment"
-msgstr "Entrega de Envío"
+msgstr "Eliminación de Envío"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipments"
@@ -238,7 +238,7 @@ msgstr "Entrega de Envíos"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Ship"
-msgstr ""
+msgstr "Enviar"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
