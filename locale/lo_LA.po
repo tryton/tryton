@@ -4,104 +4,104 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.classification.dummy,active:"
 msgid "Active"
-msgstr ""
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:product.classification.dummy,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:product.classification.dummy,name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgctxt "field:product.classification.dummy,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgctxt "field:product.classification.dummy,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "ເລືອກໄດ້"
 
 msgctxt "field:product.classification.dummy,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້"
 
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
-msgstr ""
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:product.classification_tree.dummy,childs:"
 msgid "Children"
-msgstr ""
+msgstr "ບັນຊີຍ່ອຍ"
 
 msgctxt "field:product.classification_tree.dummy,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:product.classification_tree.dummy,name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື"
 
 msgctxt "field:product.classification_tree.dummy,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "ບັນຊີແມ່"
 
 msgctxt "field:product.classification_tree.dummy,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "ເລືອກໄດ້"
 
 msgctxt "field:product.classification_tree.dummy,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້"
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
-msgstr ""
+msgstr "ການຈັດປະເພດ"
 
 msgctxt "field:product.template,classification:"
 msgid "Classification"
-msgstr ""
+msgstr "ການຈັດປະເພດ"
 
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
-msgstr ""
+msgstr "ການຈັດປະເພດ"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"
-msgstr ""
+msgstr "ການຈັດປະເພດ ຜະລິດຕະພັນ "
 
 msgctxt "model:product.classification_tree.dummy,name:"
 msgid "Dummy Product Classification Tree"
-msgstr ""
+msgstr "ຕາຕະລາງຈັດປະເພດ ຜະລິດຕະພັນ"
 
 msgctxt "view:product.classification.dummy:"
 msgid "Classification"
-msgstr ""
+msgstr "ການຈັດປະເພດ"
