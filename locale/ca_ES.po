@@ -68,21 +68,19 @@ msgstr "Vendes"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Temps d'espera"
 
-#, fuzzy
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Vendible"
 
-#, fuzzy
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UOM"
 msgstr "UdM de venda"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Temps d'espera"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -114,7 +112,7 @@ msgstr "Mètode de facturació"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
-msgstr ""
+msgstr "Seqüència de venda"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -230,7 +228,7 @@ msgstr "Seqüència"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
-msgstr ""
+msgstr "Data d'enviament"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -434,7 +432,7 @@ msgstr "Moviments"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
@@ -789,10 +787,9 @@ msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Pressupost Núm.:"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Reference:"
-msgstr "Referència"
+msgstr "Referència:"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"

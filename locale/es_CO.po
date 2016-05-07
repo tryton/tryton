@@ -67,21 +67,19 @@ msgstr "Ventas"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Tiempo de Elaboración"
 
-#, fuzzy
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Vendible"
 
-#, fuzzy
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UOM"
 msgstr "UdM de Venta"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Tiemp de Elaboración"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -113,7 +111,7 @@ msgstr "Método de Facturación"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
-msgstr ""
+msgstr "Secuencia de Venta"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -229,7 +227,7 @@ msgstr "Secuencia"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
-msgstr ""
+msgstr "Fecha de Envio"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -433,7 +431,7 @@ msgstr "Movimientos"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
@@ -473,7 +471,7 @@ msgstr "Método de Envío"
 
 msgctxt "field:sale.sale,shipment_party:"
 msgid "Shipment Party"
-msgstr ""
+msgstr "Tercero de Envio"
 
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
@@ -788,10 +786,9 @@ msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Cotización Nº:"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Reference:"
-msgstr "Referencia"
+msgstr "Referencia:"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
@@ -823,7 +820,7 @@ msgstr "NIT:"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -955,7 +952,7 @@ msgstr "Cotización"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
