@@ -36,7 +36,7 @@ msgstr "Líneas de factura"
 
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -94,7 +94,6 @@ msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
-#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
 msgstr "Costo de recepción"
@@ -162,14 +161,13 @@ msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Contabilizado"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
 msgstr "Costo de recepción"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
