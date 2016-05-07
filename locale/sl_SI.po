@@ -4,16 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "Šarža je obvezna pri prometu izdelka \"%s\"."
+msgstr "Serija je obvezna pri prometu izdelka \"%s\"."
 
-#, fuzzy
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr "Šarža zahtevana"
+msgstr "Serija obvezna"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr "Šarža zahtevana"
+msgstr "Serija obvezna"
 
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
@@ -49,7 +48,7 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Šarža"
+msgstr "Serija"
 
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
@@ -125,11 +124,11 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Šarža"
+msgstr "Serija"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
-msgstr "Predpomnjene šarže"
+msgstr "Predpomnjene serije"
 
 msgctxt "field:stock.period.cache.lot,create_date:"
 msgid "Create Date"
@@ -153,7 +152,7 @@ msgstr "Lokacija"
 
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Šarža"
+msgstr "Serija"
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
@@ -175,18 +174,17 @@ msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Tip lokacije, za katero je šarža obvezna"
+msgstr "Tip lokacije, za katero je serija obvezna"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Tip lokacije, za katero je šarža obvezna"
+msgstr "Tip lokacije, za katero je serija obvezna"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Šarže"
+msgstr "Serije"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -194,19 +192,19 @@ msgstr "Promet"
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Šarže"
+msgstr "Serije"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr "Predloga - Tip šarže"
+msgstr "Predloga - Tip serije"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr "Šarža"
+msgstr "Serija"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr "Tip šarže"
+msgstr "Tip serije"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
@@ -230,24 +228,24 @@ msgstr "Dobavitelj"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Predpomnjena obdobja po šaržah"
+msgstr "Predpomnjena obdobja po serijah"
 
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Šarže"
+msgstr "Serije"
 
 msgctxt "view:stock.lot:"
 msgid "Lot"
-msgstr "Šarža"
+msgstr "Serija"
 
 msgctxt "view:stock.lot:"
 msgid "Lots"
-msgstr "Šarže"
+msgstr "Serije"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
-msgstr "Predpomnjena šarža po obdobjih"
+msgstr "Predpomnjena serija po obdobjih"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Caches"
-msgstr "Predpomnjene šarže po obdobjih"
+msgstr "Predpomnjene serije po obdobjih"
