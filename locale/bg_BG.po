@@ -4004,9 +4004,10 @@ msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
