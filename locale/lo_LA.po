@@ -48,7 +48,7 @@ msgstr "ຊື່"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr ""
+msgstr "ເຂດເວລາ"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
@@ -304,7 +304,7 @@ msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr ""
+msgstr "ຕົກລົງ"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"

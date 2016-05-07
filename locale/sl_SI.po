@@ -268,7 +268,7 @@ msgstr "Zadeva:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Ustvari družbo"
+msgstr "Nova družba"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
