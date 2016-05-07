@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr ""
+msgstr "ລະຫັດ 3 ໂຕອັກສອນ"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -12,7 +12,7 @@ msgstr "ລະຫັດປະເທດ"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "ລະຫັດໂຕເລກ"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -34,7 +34,6 @@ msgctxt "field:country.country,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "ແຂວງ"
@@ -59,15 +58,13 @@ msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
 
-#, fuzzy
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
-#, fuzzy
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr "ເລກທີ"
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -75,7 +72,7 @@ msgstr "ຊື່"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "ສາຍຂຶ້ນກັບ"
+msgstr "ຂຶ້ນກັບ"
 
 msgctxt "field:country.subdivision,rec_name:"
 msgid "Name"
@@ -95,73 +92,69 @@ msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
-msgstr ""
+msgstr "ບ້ານ"
 
-#, fuzzy
 msgctxt "field:country.zip,country:"
 msgid "Country"
 msgstr "ປະເທດ"
 
-#, fuzzy
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
 
-#, fuzzy
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
-#, fuzzy
 msgctxt "field:country.zip,id:"
 msgid "ID"
-msgstr "ເລກທີ"
+msgstr "ເລກລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:country.zip,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
 msgstr "ແຂວງ"
 
-#, fuzzy
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
 msgstr "ຂຽນວັນທີ"
 
-#, fuzzy
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
-msgstr ""
+msgstr "ລະຫັດປະເທດ"
 
 msgctxt "help:country.country,code3:"
 msgid ""
 "The ISO country code in three chars.\n"
 "You can use this field for quick search."
 msgstr ""
+"ລະຫັດ ISO ປະເທດ 3 ໂຕອັກສອນ.\n"
+"ທ່ານສາມາດໃຊ້ ຊ່ອງນີ້ ເພື່ອຊອກຫາໂດຍໄວ."
 
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
 "You can use this field for quick search."
 msgstr ""
+"ລະຫັດ ISO ປະເທດ 2 ໂຕອັກສອນ.\n"
+"ທ່ານສາມາດໃຊ້ຊ່ອງນີ້ ເພື່ອຊອກຫາໂດຍໄວ."
 
 msgctxt "help:country.country,code_numeric:"
 msgid ""
 "The ISO numeric country code.\n"
 "You can use this field for quick search."
-msgstr ""
+msgstr "ລະຫັດໂຕເລກ ISO ປະເທດ.\\ທ່ານສາມາດໃຊ້ຊ່ອງນີ້ ເພື່ອຊອກຫາໂດຍໄວ."
 
 msgctxt "help:country.country,name:"
 msgid "The full name of the country."
-msgstr ""
+msgstr "ຊື່ເຕັມຂອງປະເທດ"
 
 msgctxt "model:country.country,name:"
 msgid "Country"
@@ -169,871 +162,871 @@ msgstr "ປະເທດ"
 
 msgctxt "model:country.country,name:ad"
 msgid "Andorra"
-msgstr ""
+msgstr "ອັງໂດຣາ"
 
 msgctxt "model:country.country,name:ae"
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "ສະຫະຣາຊະອານາຈັກອາຣັບເອມີເຣດສ໌"
 
 msgctxt "model:country.country,name:af"
 msgid "Afghanistan"
-msgstr ""
+msgstr "ອັຟການີສຖານ"
 
 msgctxt "model:country.country,name:ag"
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "ອັງຕີກວາ ແລະ ບາກບູດາ"
 
 msgctxt "model:country.country,name:ai"
 msgid "Anguilla"
-msgstr ""
+msgstr "ອັງກູຍລາ"
 
 msgctxt "model:country.country,name:al"
 msgid "Albania"
-msgstr ""
+msgstr "ອານບານີ"
 
 msgctxt "model:country.country,name:am"
 msgid "Armenia"
-msgstr ""
+msgstr "ອາກເມນີ"
 
 msgctxt "model:country.country,name:ao"
 msgid "Angola"
-msgstr ""
+msgstr "ອັງໂກລາ"
 
 msgctxt "model:country.country,name:aq"
 msgid "Antarctica"
-msgstr ""
+msgstr "ອັງຕາກຕິກ"
 
 msgctxt "model:country.country,name:ar"
 msgid "Argentina"
-msgstr ""
+msgstr "ອາກຊັງຕິນ"
 
 msgctxt "model:country.country,name:as"
 msgid "American Samoa"
-msgstr ""
+msgstr "ຊາມົວ ອະເມຣິກາ"
 
 msgctxt "model:country.country,name:at"
 msgid "Austria"
-msgstr ""
+msgstr "ໂອຕຣີສ"
 
 msgctxt "model:country.country,name:au"
 msgid "Australia"
-msgstr ""
+msgstr "ໂອສຕຣາລີ"
 
 msgctxt "model:country.country,name:aw"
 msgid "Aruba"
-msgstr ""
+msgstr "ອາຣູບາ"
 
 msgctxt "model:country.country,name:ax"
 msgid "Åland Islands"
-msgstr ""
+msgstr "ອາລັງ ອີສລັງ"
 
 msgctxt "model:country.country,name:az"
 msgid "Azerbaijan"
-msgstr ""
+msgstr "ອາເຊີໄບຈັນ"
 
 msgctxt "model:country.country,name:ba"
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "ໂບສນີ ແລະ ເຮີເຊໂກວິນ"
 
 msgctxt "model:country.country,name:bb"
 msgid "Barbados"
-msgstr ""
+msgstr "ບາກບາໂດສ໌"
 
 msgctxt "model:country.country,name:bd"
 msgid "Bangladesh"
-msgstr ""
+msgstr "ບັງກະລາເທສ"
 
 msgctxt "model:country.country,name:be"
 msgid "Belgium"
-msgstr ""
+msgstr "ເບນຊິກ"
 
 msgctxt "model:country.country,name:bf"
 msgid "Burkina Faso"
-msgstr ""
+msgstr "ບຸກກີນາຟາໂຊ"
 
 msgctxt "model:country.country,name:bg"
 msgid "Bulgaria"
-msgstr ""
+msgstr "ບຸນກາຣີ"
 
 msgctxt "model:country.country,name:bh"
 msgid "Bahrain"
-msgstr ""
+msgstr "ບາເຣນ"
 
 msgctxt "model:country.country,name:bi"
 msgid "Burundi"
-msgstr ""
+msgstr "ບູຣູນດີ"
 
 msgctxt "model:country.country,name:bj"
 msgid "Benin"
-msgstr ""
+msgstr "ເບແນງ"
 
 msgctxt "model:country.country,name:bl"
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "ແຊັງ ບາຣ໌ເທເລີມີ"
 
 msgctxt "model:country.country,name:bm"
 msgid "Bermuda"
-msgstr ""
+msgstr "ແບກມູດາ"
 
 msgctxt "model:country.country,name:bn"
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "ບຣູໄນ ດາຣູຊາລຳ"
 
 msgctxt "model:country.country,name:bo"
 msgid "Bolivia, Plurinational State of"
-msgstr ""
+msgstr "ໂບລີວີ"
 
 msgctxt "model:country.country,name:bq"
 msgid "Bonaire, Sint Eustatius and Saba"
-msgstr ""
+msgstr "ໂບແນຣ໌"
 
 msgctxt "model:country.country,name:br"
 msgid "Brazil"
-msgstr ""
+msgstr "ເບຣຊີນ"
 
 msgctxt "model:country.country,name:bs"
 msgid "Bahamas"
-msgstr ""
+msgstr "ບາຮາມາສ໌"
 
 msgctxt "model:country.country,name:bt"
 msgid "Bhutan"
-msgstr ""
+msgstr "ພູຖານ"
 
 msgctxt "model:country.country,name:bv"
 msgid "Bouvet Island"
-msgstr ""
+msgstr "ເກາະບູເວຕ"
 
 msgctxt "model:country.country,name:bw"
 msgid "Botswana"
-msgstr ""
+msgstr "ໂບສະວານາ"
 
 msgctxt "model:country.country,name:by"
 msgid "Belarus"
-msgstr ""
+msgstr "ເບລາຣຸສ"
 
 msgctxt "model:country.country,name:bz"
 msgid "Belize"
-msgstr ""
+msgstr "ເບນລີສ"
 
 msgctxt "model:country.country,name:ca"
 msgid "Canada"
-msgstr ""
+msgstr "ການາດາ"
 
 msgctxt "model:country.country,name:cc"
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະໂກໂກສ"
 
 msgctxt "model:country.country,name:cd"
 msgid "Congo, The Democratic Republic of the"
-msgstr ""
+msgstr "ຄອງໂກ, ສາທາລະນະລັດ ປະຊາທິປະໄຕ"
 
 msgctxt "model:country.country,name:cf"
 msgid "Central African Republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດ ອາຟຣິກາ ກາງ"
 
 msgctxt "model:country.country,name:cg"
 msgid "Congo"
-msgstr ""
+msgstr "ຄອງໂກ"
 
 msgctxt "model:country.country,name:ch"
 msgid "Switzerland"
-msgstr ""
+msgstr "ສະວີສ"
 
 msgctxt "model:country.country,name:ci"
 msgid "Côte d'Ivoire"
-msgstr ""
+msgstr "ໂກດດີວົວຣ໌"
 
 msgctxt "model:country.country,name:ck"
 msgid "Cook Islands"
-msgstr ""
+msgstr "ກຸກ ອີສລັງ"
 
 msgctxt "model:country.country,name:cl"
 msgid "Chile"
-msgstr ""
+msgstr "ຊີເລ"
 
 msgctxt "model:country.country,name:cm"
 msgid "Cameroon"
-msgstr ""
+msgstr "ກາເນຣູນ"
 
 msgctxt "model:country.country,name:cn"
 msgid "China"
-msgstr ""
+msgstr "ຈີນ"
 
 msgctxt "model:country.country,name:co"
 msgid "Colombia"
-msgstr ""
+msgstr "ໂກລົມບີ"
 
 msgctxt "model:country.country,name:cr"
 msgid "Costa Rica"
-msgstr ""
+msgstr "ໂກສຕາຣີກາ"
 
 msgctxt "model:country.country,name:cu"
 msgid "Cuba"
-msgstr ""
+msgstr "ກູບາ"
 
 msgctxt "model:country.country,name:cv"
 msgid "Cape Verde"
-msgstr ""
+msgstr "ກັບແວກດ໌"
 
 msgctxt "model:country.country,name:cw"
 msgid "Curaçao"
-msgstr ""
+msgstr "ກູຣາກາວ"
 
 msgctxt "model:country.country,name:cx"
 msgid "Christmas Island"
-msgstr ""
+msgstr "ກຣີສມາສ ອີສລັງ"
 
 msgctxt "model:country.country,name:cy"
 msgid "Cyprus"
-msgstr ""
+msgstr "ໄຊປຣາສ໌"
 
 msgctxt "model:country.country,name:cz"
 msgid "Czech Republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດເຊັກ"
 
 msgctxt "model:country.country,name:de"
 msgid "Germany"
-msgstr ""
+msgstr "ເຢັຍລະມັນ"
 
 msgctxt "model:country.country,name:dj"
 msgid "Djibouti"
-msgstr ""
+msgstr "ທິບູຕິ"
 
 msgctxt "model:country.country,name:dk"
 msgid "Denmark"
-msgstr ""
+msgstr "ເດັນມາກ"
 
 msgctxt "model:country.country,name:dm"
 msgid "Dominica"
-msgstr ""
+msgstr "ໂດມີນີກາ"
 
 msgctxt "model:country.country,name:do"
 msgid "Dominican Republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດໂກມີນີແກນ"
 
 msgctxt "model:country.country,name:dz"
 msgid "Algeria"
-msgstr ""
+msgstr "ອານເຊຣີ"
 
 msgctxt "model:country.country,name:ec"
 msgid "Ecuador"
-msgstr ""
+msgstr "ເອກວາດໍຣ໌"
 
 msgctxt "model:country.country,name:ee"
 msgid "Estonia"
-msgstr ""
+msgstr "ເອສໂຕນີ"
 
 msgctxt "model:country.country,name:eg"
 msgid "Egypt"
-msgstr ""
+msgstr "ເອຢິບ"
 
 msgctxt "model:country.country,name:eh"
 msgid "Western Sahara"
-msgstr ""
+msgstr "ຊາຮາຣາຕາເວັນຕົກ"
 
 msgctxt "model:country.country,name:er"
 msgid "Eritrea"
-msgstr ""
+msgstr "ເອຣີຕຣີ"
 
 msgctxt "model:country.country,name:es"
 msgid "Spain"
-msgstr ""
+msgstr "ເອສປາຍ"
 
 msgctxt "model:country.country,name:et"
 msgid "Ethiopia"
-msgstr ""
+msgstr "ເອທິໂອປີ"
 
 msgctxt "model:country.country,name:fi"
 msgid "Finland"
-msgstr ""
+msgstr "ແຟັງລັງ"
 
 msgctxt "model:country.country,name:fj"
 msgid "Fiji"
-msgstr ""
+msgstr "ຟີຈິ"
 
 msgctxt "model:country.country,name:fk"
 msgid "Falkland Islands (Malvinas)"
-msgstr ""
+msgstr "ຟັອກແລນ ອີສລັງ (ມານວີນາ)"
 
 msgctxt "model:country.country,name:fm"
 msgid "Micronesia, Federated States of"
-msgstr ""
+msgstr "ໄມໂຄຣນິເຊຍ, ສະຫະພັນທະລັດ"
 
 msgctxt "model:country.country,name:fo"
 msgid "Faroe Islands"
-msgstr ""
+msgstr "ຟາໂຣ ອີສລັງ"
 
 msgctxt "model:country.country,name:fr"
 msgid "France"
-msgstr ""
+msgstr "ຝຣັ່ງ"
 
 msgctxt "model:country.country,name:ga"
 msgid "Gabon"
-msgstr ""
+msgstr "ກາບົງ"
 
 msgctxt "model:country.country,name:gb"
 msgid "United Kingdom"
-msgstr ""
+msgstr "ສະຫະຣາຊອານາຈັກ"
 
 msgctxt "model:country.country,name:gd"
 msgid "Grenada"
-msgstr ""
+msgstr "ເກຣີນາດ"
 
 msgctxt "model:country.country,name:ge"
 msgid "Georgia"
-msgstr ""
+msgstr "ຈໍເຈັຍ"
 
 msgctxt "model:country.country,name:gf"
 msgid "French Guiana"
-msgstr ""
+msgstr "ກຸຍນາ ຝຣັ່ງ"
 
 msgctxt "model:country.country,name:gg"
 msgid "Guernsey"
-msgstr ""
+msgstr "ເກີນນ໌ເຊຍ໌"
 
 msgctxt "model:country.country,name:gh"
 msgid "Ghana"
-msgstr ""
+msgstr "ການນາ"
 
 msgctxt "model:country.country,name:gi"
 msgid "Gibraltar"
-msgstr ""
+msgstr "ຊີບຣານຕາຣ໌"
 
 msgctxt "model:country.country,name:gl"
 msgid "Greenland"
-msgstr ""
+msgstr "ກຣີນແລນ"
 
 msgctxt "model:country.country,name:gm"
 msgid "Gambia"
-msgstr ""
+msgstr "ຊັງບີ"
 
 msgctxt "model:country.country,name:gn"
 msgid "Guinea"
-msgstr ""
+msgstr "ກວິນເນ"
 
 msgctxt "model:country.country,name:gp"
 msgid "Guadeloupe"
-msgstr ""
+msgstr "ກວາເດີລຸບ"
 
 msgctxt "model:country.country,name:gq"
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "ເອກວາຕໍຣີອານ ກວິນເນ"
 
 msgctxt "model:country.country,name:gr"
 msgid "Greece"
-msgstr ""
+msgstr "ເກັຣກ"
 
 msgctxt "model:country.country,name:gs"
 msgid "South Georgia and the South Sandwich Islands"
-msgstr ""
+msgstr "ຈໍເຈັຍໃຕ້ ແລະ ແຊນວີສ ໄອແລນ"
 
 msgctxt "model:country.country,name:gt"
 msgid "Guatemala"
-msgstr ""
+msgstr "ກວາເຕມາລາ"
 
 msgctxt "model:country.country,name:gu"
 msgid "Guam"
-msgstr ""
+msgstr "ກວາມ"
 
 msgctxt "model:country.country,name:gw"
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "ກວິນເນ-ບີສໂຊ"
 
 msgctxt "model:country.country,name:gy"
 msgid "Guyana"
-msgstr ""
+msgstr "ກຸຍຢານ"
 
 msgctxt "model:country.country,name:hk"
 msgid "Hong Kong"
-msgstr ""
+msgstr "ຮ່ອງກົງ"
 
 msgctxt "model:country.country,name:hm"
 msgid "Heard Island and McDonald Islands"
-msgstr ""
+msgstr "ເກາະເຮີດ ແລະ ເກາະ ແມັກໂດນານ"
 
 msgctxt "model:country.country,name:hn"
 msgid "Honduras"
-msgstr ""
+msgstr "ຮົງດູຣາສ"
 
 msgctxt "model:country.country,name:hr"
 msgid "Croatia"
-msgstr ""
+msgstr "ໂກຣອາຊີ"
 
 msgctxt "model:country.country,name:ht"
 msgid "Haiti"
-msgstr ""
+msgstr "ໄຮຍຕິ"
 
 msgctxt "model:country.country,name:hu"
 msgid "Hungary"
-msgstr ""
+msgstr "ຮົງກາຣີ"
 
 msgctxt "model:country.country,name:id"
 msgid "Indonesia"
-msgstr ""
+msgstr "ອິນໂດເນເຊັຍ"
 
 msgctxt "model:country.country,name:ie"
 msgid "Ireland"
-msgstr ""
+msgstr "ອຽກລັງ"
 
 msgctxt "model:country.country,name:il"
 msgid "Israel"
-msgstr ""
+msgstr "ອີສຣາແອນ"
 
 msgctxt "model:country.country,name:im"
 msgid "Isle of Man"
-msgstr ""
+msgstr "ອີສເລ ມັງ"
 
 msgctxt "model:country.country,name:in"
 msgid "India"
-msgstr ""
+msgstr "ອິນເດັຍ"
 
 msgctxt "model:country.country,name:io"
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "ດິນແດນມະຫາສະໝຸດອິນເດັຍອັງກິດ"
 
 msgctxt "model:country.country,name:iq"
 msgid "Iraq"
-msgstr ""
+msgstr "ອີຣັກ"
 
 msgctxt "model:country.country,name:ir"
 msgid "Iran, Islamic Republic of"
-msgstr ""
+msgstr "ອີຣານ, ສາທາລະນະລັດອີສລາມ"
 
 msgctxt "model:country.country,name:is"
 msgid "Iceland"
-msgstr ""
+msgstr "ອາຍສແລັນ"
 
 msgctxt "model:country.country,name:it"
 msgid "Italy"
-msgstr ""
+msgstr "ອີຕາລີ"
 
 msgctxt "model:country.country,name:je"
 msgid "Jersey"
-msgstr ""
+msgstr "ເຈີເຊ"
 
 msgctxt "model:country.country,name:jm"
 msgid "Jamaica"
-msgstr ""
+msgstr "ຈາໄມກາ"
 
 msgctxt "model:country.country,name:jo"
 msgid "Jordan"
-msgstr ""
+msgstr "ຊອກດານີ"
 
 msgctxt "model:country.country,name:jp"
 msgid "Japan"
-msgstr ""
+msgstr "ຍີ່ປຸ່ນ"
 
 msgctxt "model:country.country,name:ke"
 msgid "Kenya"
-msgstr ""
+msgstr "ເຄນຢາ"
 
 msgctxt "model:country.country,name:kg"
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "ກີສຈີສຖານ"
 
 msgctxt "model:country.country,name:kh"
 msgid "Cambodia"
-msgstr ""
+msgstr "ກຳປູເຈັຍ"
 
 msgctxt "model:country.country,name:ki"
 msgid "Kiribati"
-msgstr ""
+msgstr "ຄີຣີບາຕີ"
 
 msgctxt "model:country.country,name:km"
 msgid "Comoros"
-msgstr ""
+msgstr "ໂກໂມໂຮສ"
 
 msgctxt "model:country.country,name:kn"
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "ແຊັງຄີຕສ໌ ແລະ ເນວີ"
 
 msgctxt "model:country.country,name:kp"
 msgid "Korea, Democratic People's Republic of"
-msgstr ""
+msgstr "ເກົາຫຼີ, ສາທາລະນະລັດປະຊາຊົນປະຊາທິປະໄຕ"
 
 msgctxt "model:country.country,name:kr"
 msgid "Korea, Republic of"
-msgstr ""
+msgstr "ເກົາຫຼີ, ສາທາລະນະລັດ"
 
 msgctxt "model:country.country,name:kw"
 msgid "Kuwait"
-msgstr ""
+msgstr "ຄູເວດ"
 
 msgctxt "model:country.country,name:ky"
 msgid "Cayman Islands"
-msgstr ""
+msgstr "ເກາະ ໄກຍແມນ"
 
 msgctxt "model:country.country,name:kz"
 msgid "Kazakhstan"
-msgstr ""
+msgstr "ກາຊັກສະຖານ"
 
 msgctxt "model:country.country,name:la"
 msgid "Lao People's Democratic Republic"
-msgstr ""
+msgstr "ລາວ, ສປປ"
 
 msgctxt "model:country.country,name:lb"
 msgid "Lebanon"
-msgstr ""
+msgstr "ລີບັງ"
 
 msgctxt "model:country.country,name:lc"
 msgid "Saint Lucia"
-msgstr ""
+msgstr "ແຊັງລູເຊຍ"
 
 msgctxt "model:country.country,name:li"
 msgid "Liechtenstein"
-msgstr ""
+msgstr "ລີເຊັນສແຕັນ"
 
 msgctxt "model:country.country,name:lk"
 msgid "Sri Lanka"
-msgstr ""
+msgstr "ສຣີລັງກາ"
 
 msgctxt "model:country.country,name:lr"
 msgid "Liberia"
-msgstr ""
+msgstr "ຣີເບຣີ"
 
 msgctxt "model:country.country,name:ls"
 msgid "Lesotho"
-msgstr ""
+msgstr "ເລໂຊໂທ"
 
 msgctxt "model:country.country,name:lt"
 msgid "Lithuania"
-msgstr ""
+msgstr "ລິດທຸຍເນັຍ"
 
 msgctxt "model:country.country,name:lu"
 msgid "Luxembourg"
-msgstr ""
+msgstr "ລຸກຊໍາບວກ"
 
 msgctxt "model:country.country,name:lv"
 msgid "Latvia"
-msgstr ""
+msgstr "ລັດເວັຍ"
 
 msgctxt "model:country.country,name:ly"
 msgid "Libya"
-msgstr ""
+msgstr "ລີເບັຍ"
 
 msgctxt "model:country.country,name:ma"
 msgid "Morocco"
-msgstr ""
+msgstr "ມາຣົກ"
 
 msgctxt "model:country.country,name:mc"
 msgid "Monaco"
-msgstr ""
+msgstr "ໂມນາໂກ"
 
 msgctxt "model:country.country,name:md"
 msgid "Moldova, Republic of"
-msgstr ""
+msgstr "ໂມນໂດວາ, ສາທາລະນະລັດ"
 
 msgctxt "model:country.country,name:me"
 msgid "Montenegro"
-msgstr ""
+msgstr "ມົງເຕເນໂກ"
 
 msgctxt "model:country.country,name:mf"
 msgid "Saint Martin (French part)"
-msgstr ""
+msgstr "ແຊັງມາກແຕັງ (ສ່ວນໜຶ່ງຂອງຝຣັ່ງ)"
 
 msgctxt "model:country.country,name:mg"
 msgid "Madagascar"
-msgstr ""
+msgstr "ມາດາກາສກາ"
 
 msgctxt "model:country.country,name:mh"
 msgid "Marshall Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະມາແຊນ"
 
 msgctxt "model:country.country,name:mk"
 msgid "Macedonia, Republic of"
-msgstr ""
+msgstr "ມາເຊໂດນີ, ສາທາລະນະລັດ"
 
 msgctxt "model:country.country,name:ml"
 msgid "Mali"
-msgstr ""
+msgstr "ມາລີ"
 
 msgctxt "model:country.country,name:mm"
 msgid "Myanmar"
-msgstr ""
+msgstr "ມຽນມ້າ"
 
 msgctxt "model:country.country,name:mn"
 msgid "Mongolia"
-msgstr ""
+msgstr "ມົງໂກລີ"
 
 msgctxt "model:country.country,name:mo"
 msgid "Macao"
-msgstr ""
+msgstr "ມາກາວ"
 
 msgctxt "model:country.country,name:mp"
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະ ມາເຣຍນາ ເໜືອ"
 
 msgctxt "model:country.country,name:mq"
 msgid "Martinique"
-msgstr ""
+msgstr "ມາກຕີນີ"
 
 msgctxt "model:country.country,name:mr"
 msgid "Mauritania"
-msgstr ""
+msgstr "ໂມຣີຕານີ"
 
 msgctxt "model:country.country,name:ms"
 msgid "Montserrat"
-msgstr ""
+msgstr "ມົງເຊຣາດ"
 
 msgctxt "model:country.country,name:mt"
 msgid "Malta"
-msgstr ""
+msgstr "ມານຕາ"
 
 msgctxt "model:country.country,name:mu"
 msgid "Mauritius"
-msgstr ""
+msgstr "ໂມຣີຕຸຍສ"
 
 msgctxt "model:country.country,name:mv"
 msgid "Maldives"
-msgstr ""
+msgstr "ມານດາວີ"
 
 msgctxt "model:country.country,name:mw"
 msgid "Malawi"
-msgstr ""
+msgstr "ມາລາວີ"
 
 msgctxt "model:country.country,name:mx"
 msgid "Mexico"
-msgstr ""
+msgstr "ເມັກຊີໂກ"
 
 msgctxt "model:country.country,name:my"
 msgid "Malaysia"
-msgstr ""
+msgstr "ມາເລເຊັຍ"
 
 msgctxt "model:country.country,name:mz"
 msgid "Mozambique"
-msgstr ""
+msgstr "ໂມຊໍາບິກ"
 
 msgctxt "model:country.country,name:na"
 msgid "Namibia"
-msgstr ""
+msgstr "ນາມີບີ"
 
 msgctxt "model:country.country,name:nc"
 msgid "New Caledonia"
-msgstr ""
+msgstr "ກາເລໂດນີ ໃໝ່"
 
 msgctxt "model:country.country,name:ne"
 msgid "Niger"
-msgstr ""
+msgstr "ນີເຊ"
 
 msgctxt "model:country.country,name:nf"
 msgid "Norfolk Island"
-msgstr ""
+msgstr "ໝູເກາະ ນໍຣໂຟກຄ໌"
 
 msgctxt "model:country.country,name:ng"
 msgid "Nigeria"
-msgstr ""
+msgstr "ນີເຊຣ໌"
 
 msgctxt "model:country.country,name:ni"
 msgid "Nicaragua"
-msgstr ""
+msgstr "ນິກາຣາກົວ"
 
 msgctxt "model:country.country,name:nl"
 msgid "Netherlands"
-msgstr ""
+msgstr "ເນເທີແລນ"
 
 msgctxt "model:country.country,name:no"
 msgid "Norway"
-msgstr ""
+msgstr "ນັອກແວຣ໌"
 
 msgctxt "model:country.country,name:np"
 msgid "Nepal"
-msgstr ""
+msgstr "ເນປານ"
 
 msgctxt "model:country.country,name:nr"
 msgid "Nauru"
-msgstr ""
+msgstr "ໂນຣູ"
 
 msgctxt "model:country.country,name:nu"
 msgid "Niue"
-msgstr ""
+msgstr "ນຸຍ"
 
 msgctxt "model:country.country,name:nz"
 msgid "New Zealand"
-msgstr ""
+msgstr "ນີວຊີແລນ"
 
 msgctxt "model:country.country,name:om"
 msgid "Oman"
-msgstr ""
+msgstr "ໂອມັງ"
 
 msgctxt "model:country.country,name:pa"
 msgid "Panama"
-msgstr ""
+msgstr "ປານາມາ"
 
 msgctxt "model:country.country,name:pe"
 msgid "Peru"
-msgstr ""
+msgstr "ເປຣູ"
 
 msgctxt "model:country.country,name:pf"
 msgid "French Polynesia"
-msgstr ""
+msgstr "ໂປລີເນຊີ ຝຣັ່ງ"
 
 msgctxt "model:country.country,name:pg"
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "ປາປົວ ນີວກີເນຍ໌"
 
 msgctxt "model:country.country,name:ph"
 msgid "Philippines"
-msgstr ""
+msgstr "ຟີລິບປີນ"
 
 msgctxt "model:country.country,name:pk"
 msgid "Pakistan"
-msgstr ""
+msgstr "ປາກີສຕັງ"
 
 msgctxt "model:country.country,name:pl"
 msgid "Poland"
-msgstr ""
+msgstr "ໂປໂລຍ"
 
 msgctxt "model:country.country,name:pm"
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "ແຊັງປີແອຣ໌ ແລະ ມີເກລົງ"
 
 msgctxt "model:country.country,name:pn"
 msgid "Pitcairn"
-msgstr ""
+msgstr "ປີຕແກນນ໌"
 
 msgctxt "model:country.country,name:pr"
 msgid "Puerto Rico"
-msgstr ""
+msgstr "ປູເອກໂຕ ຣີໂກ"
 
 msgctxt "model:country.country,name:ps"
 msgid "Palestine, State of"
-msgstr ""
+msgstr "ປາເລສຕີນ, ລັດ"
 
 msgctxt "model:country.country,name:pt"
 msgid "Portugal"
-msgstr ""
+msgstr "ປັອກຕູຍການ"
 
 msgctxt "model:country.country,name:pw"
 msgid "Palau"
-msgstr ""
+msgstr "ປາໂລ"
 
 msgctxt "model:country.country,name:py"
 msgid "Paraguay"
-msgstr ""
+msgstr "ປາຣາໄກວ"
 
 msgctxt "model:country.country,name:qa"
 msgid "Qatar"
-msgstr ""
+msgstr "ກາຕາຣ໌"
 
 msgctxt "model:country.country,name:re"
 msgid "Réunion"
-msgstr ""
+msgstr "ເຣອູຍນີອົງ"
 
 msgctxt "model:country.country,name:ro"
 msgid "Romania"
-msgstr ""
+msgstr "ໂຣມານີ"
 
 msgctxt "model:country.country,name:rs"
 msgid "Serbia"
-msgstr ""
+msgstr "ແຊັກບີ"
 
 msgctxt "model:country.country,name:ru"
 msgid "Russian Federation"
-msgstr ""
+msgstr "ສະຫະພັນຣັດເຊັຍ"
 
 msgctxt "model:country.country,name:rw"
 msgid "Rwanda"
-msgstr ""
+msgstr "ຣາວານດາ"
 
 msgctxt "model:country.country,name:sa"
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "ຊາອູດິດ ອາຣາບີ"
 
 msgctxt "model:country.country,name:sb"
 msgid "Solomon Islands"
-msgstr ""
+msgstr "ໝູາເກາະ ໂຊໂຣມອນ"
 
 msgctxt "model:country.country,name:sc"
 msgid "Seychelles"
-msgstr ""
+msgstr "ເຊແຊນລ໌"
 
 msgctxt "model:country.country,name:sd"
 msgid "Sudan"
-msgstr ""
+msgstr "ຊູດັງ"
 
 msgctxt "model:country.country,name:se"
 msgid "Sweden"
-msgstr ""
+msgstr "ຊູແອັດ"
 
 msgctxt "model:country.country,name:sg"
 msgid "Singapore"
-msgstr ""
+msgstr "ສິງຄະໂປ"
 
 msgctxt "model:country.country,name:sh"
 msgid "Saint Helena, Ascension and Tristan da Cunha"
-msgstr ""
+msgstr "ແຊັງເຮເລັນ, ອາສຊັງຊົງ ແລະ ຕຣີສຕັງ ດາ ກຸນຮາ"
 
 msgctxt "model:country.country,name:si"
 msgid "Slovenia"
-msgstr ""
+msgstr "ສະໂລວານີ"
 
 msgctxt "model:country.country,name:sj"
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "ສະວານບາຣ໌ ແລະ ຈານ ມາເຢັນ"
 
 msgctxt "model:country.country,name:sk"
 msgid "Slovakia"
-msgstr ""
+msgstr "ສະໂລວາເກັຍ"
 
 msgctxt "model:country.country,name:sl"
 msgid "Sierra Leone"
-msgstr ""
+msgstr "ເຊຣາລີອອນ"
 
 msgctxt "model:country.country,name:sm"
 msgid "San Marino"
-msgstr ""
+msgstr "ແຊັງມາຣີໂນ"
 
 msgctxt "model:country.country,name:sn"
 msgid "Senegal"
-msgstr ""
+msgstr "ເຊເນການ"
 
 msgctxt "model:country.country,name:so"
 msgid "Somalia"
-msgstr ""
+msgstr "ໂຊມາລີ"
 
 msgctxt "model:country.country,name:sr"
 msgid "Suriname"
-msgstr ""
+msgstr "ຊູຣີນາເມ"
 
 msgctxt "model:country.country,name:ss"
 msgid "South Sudan"
-msgstr ""
+msgstr "ຊູດານໃຕ້"
 
 msgctxt "model:country.country,name:st"
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "ຊາວ ໂທມ ແລະ ປຣີນຊິບ"
 
 msgctxt "model:country.country,name:sv"
 msgid "El Salvador"
-msgstr ""
+msgstr "ແອນ ຊາວາດໍຣ໌"
 
 msgctxt "model:country.country,name:sx"
 msgid "Sint Maarten (Dutch part)"
-msgstr ""
+msgstr "ແຊັງ ມາເຕັນ (ພ່ກສ່ວນໜຶ່ງຂອງເຢຍລະມັນ)"
 
 msgctxt "model:country.country,name:sy"
 msgid "Syrian Arab Republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດ ອາຣັບ ຊີຣີ"
 
 msgctxt "model:country.country,name:sz"
 msgid "Swaziland"
-msgstr ""
+msgstr "ສະວາຊີແລນ"
 
 msgctxt "model:country.country,name:tc"
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "ເຕີກ ແລະ ໝູ່ເກາະ ກາຍໂກ"
 
 msgctxt "model:country.country,name:td"
 msgid "Chad"
-msgstr ""
+msgstr "ຊາດຕ໌"
 
 msgctxt "model:country.country,name:tf"
 msgid "French Southern Territories"
-msgstr ""
+msgstr "ດິນແດນຝຣັ່ງຕອນໃຕ້"
 
 msgctxt "model:country.country,name:tg"
 msgid "Togo"
-msgstr ""
+msgstr "ໂຕໂກ"
 
 msgctxt "model:country.country,name:th"
 msgid "Thailand"
@@ -1041,91 +1034,91 @@ msgstr "ໄທຍ"
 
 msgctxt "model:country.country,name:tj"
 msgid "Tajikistan"
-msgstr ""
+msgstr "ຕາດຈິກີສຖານ"
 
 msgctxt "model:country.country,name:tk"
 msgid "Tokelau"
-msgstr ""
+msgstr "ໂຕເກເລົາ"
 
 msgctxt "model:country.country,name:tl"
 msgid "Timor-Leste"
-msgstr ""
+msgstr "ຕີມໍຣ໌ ເລສເຕ"
 
 msgctxt "model:country.country,name:tm"
 msgid "Turkmenistan"
-msgstr ""
+msgstr "ເຕີກເມນີສຖານ"
 
 msgctxt "model:country.country,name:tn"
 msgid "Tunisia"
-msgstr ""
+msgstr "ຕູນີຊີ"
 
 msgctxt "model:country.country,name:to"
 msgid "Tonga"
-msgstr ""
+msgstr "ຕົງກາ"
 
 msgctxt "model:country.country,name:tr"
 msgid "Turkey"
-msgstr ""
+msgstr "ຕວຽກກີ"
 
 msgctxt "model:country.country,name:tt"
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "ຕຣີນີດາດ ແລະ ໂຕບາໂກ"
 
 msgctxt "model:country.country,name:tv"
 msgid "Tuvalu"
-msgstr ""
+msgstr "ຕູວາລູ"
 
 msgctxt "model:country.country,name:tw"
 msgid "Taiwan, Province of China"
-msgstr ""
+msgstr "ໄຕ້ຫວັນ"
 
 msgctxt "model:country.country,name:tz"
 msgid "Tanzania, United Republic of"
-msgstr ""
+msgstr "ຕັງຊານີ, ສະຫະພາບສາທາລະນະລັດ"
 
 msgctxt "model:country.country,name:ua"
 msgid "Ukraine"
-msgstr ""
+msgstr "ອູແກຣນ"
 
 msgctxt "model:country.country,name:ug"
 msgid "Uganda"
-msgstr ""
+msgstr "ອູການດາ"
 
 msgctxt "model:country.country,name:um"
 msgid "United States Minor Outlying Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະ ສະຫະຣັດ ມີນໍຣ໌ ອາວເລຢີງ"
 
 msgctxt "model:country.country,name:us"
 msgid "United States"
-msgstr ""
+msgstr "ສະຫະຣັດອາເມຣິກາ"
 
 msgctxt "model:country.country,name:uy"
 msgid "Uruguay"
-msgstr ""
+msgstr "ອູຣູໄກວຍ"
 
 msgctxt "model:country.country,name:uz"
 msgid "Uzbekistan"
-msgstr ""
+msgstr "ອູສເບັກກີສຖານ"
 
 msgctxt "model:country.country,name:va"
 msgid "Holy See (Vatican City State)"
-msgstr ""
+msgstr "ໂຮນລີຊີ (ຣັດ ວາຕິກກັງ)"
 
 msgctxt "model:country.country,name:vc"
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "ແຊັງແວັງຊັງ ແລະ ເກຣີນາດດິນ"
 
 msgctxt "model:country.country,name:ve"
 msgid "Venezuela, Bolivarian Republic of"
-msgstr ""
+msgstr "ເວເນຊູເອລາ, ສາທາລະນະລັດໂບລີວາຣຽນ"
 
 msgctxt "model:country.country,name:vg"
 msgid "Virgin Islands, British"
-msgstr ""
+msgstr "ໝູ່ເກາະ ວຽກຊີນີ, ອັງກິດ"
 
 msgctxt "model:country.country,name:vi"
 msgid "Virgin Islands, U.S."
-msgstr ""
+msgstr "ໝູ່ເກາະ ວຽກຊີນີ, ສະຫະຣັດ"
 
 msgctxt "model:country.country,name:vn"
 msgid "Viet Nam"
@@ -1133,35 +1126,35 @@ msgstr "ຫວຽດນາມ"
 
 msgctxt "model:country.country,name:vu"
 msgid "Vanuatu"
-msgstr ""
+msgstr "ວານົວຕູ"
 
 msgctxt "model:country.country,name:wf"
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "ວານນີ ແລະ ຟູຕູນາ"
 
 msgctxt "model:country.country,name:ws"
 msgid "Samoa"
-msgstr ""
+msgstr "ຊາໂມອາ"
 
 msgctxt "model:country.country,name:ye"
 msgid "Yemen"
-msgstr ""
+msgstr "ເຢເມນ"
 
 msgctxt "model:country.country,name:yt"
 msgid "Mayotte"
-msgstr ""
+msgstr "ມາໂຢດ"
 
 msgctxt "model:country.country,name:za"
 msgid "South Africa"
-msgstr ""
+msgstr "ອາຟຣິກກາໃຕ້"
 
 msgctxt "model:country.country,name:zm"
 msgid "Zambia"
-msgstr ""
+msgstr "ຊໍາເບັຍ"
 
 msgctxt "model:country.country,name:zw"
 msgid "Zimbabwe"
-msgstr ""
+msgstr "ຊິມບາເວ"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
@@ -1169,19 +1162,19 @@ msgstr "ແຂວງ"
 
 msgctxt "model:country.subdivision,name:ad-02"
 msgid "Canillo"
-msgstr ""
+msgstr "ການີໂລ"
 
 msgctxt "model:country.subdivision,name:ad-03"
 msgid "Encamp"
-msgstr ""
+msgstr "ອັງກັບ"
 
 msgctxt "model:country.subdivision,name:ad-04"
 msgid "La Massana"
-msgstr ""
+msgstr "ລາມາຊານາ"
 
 msgctxt "model:country.subdivision,name:ad-05"
 msgid "Ordino"
-msgstr ""
+msgstr "ອອກດີໂນ"
 
 msgctxt "model:country.subdivision,name:ad-06"
 msgid "Sant Julià de Lòria"
@@ -4161,7 +4154,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:cn-71"
 msgid "Taiwan"
-msgstr ""
+msgstr "ໄຕ້ຫວັນ"
 
 msgctxt "model:country.subdivision,name:cn-91"
 msgid "Xianggang (Hong-Kong)"
@@ -6417,7 +6410,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:fr-75"
 msgid "Paris"
-msgstr ""
+msgstr "ປາຣີ"
 
 msgctxt "model:country.subdivision,name:fr-76"
 msgid "Seine-Maritime"
@@ -6871,10 +6864,9 @@ msgctxt "model:country.subdivision,name:gb-con"
 msgid "Cornwall"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gb-cov"
 msgid "Coventry"
-msgstr "ປະເທດ"
+msgstr "ເມືອງ"
 
 msgctxt "model:country.subdivision,name:gb-crf"
 msgid "Cardiff;Caerdydd"
@@ -7534,7 +7526,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:gb-ukm"
 msgid "United Kingdom"
-msgstr ""
+msgstr "ສະຫະຣາຊະອານາຈັກ"
 
 msgctxt "model:country.subdivision,name:gb-vgl"
 msgid "Vale of Glamorgan, The;Bro Morgannwg"
@@ -10126,7 +10118,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:jp-13"
 msgid "Tokyo"
-msgstr ""
+msgstr "ໂຕກຽວ"
 
 msgctxt "model:country.subdivision,name:jp-14"
 msgid "Kanagawa"
@@ -10218,7 +10210,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:jp-36"
 msgid "Tokushima"
-msgstr ""
+msgstr "ໂຕກຸຊີມະ"
 
 msgctxt "model:country.subdivision,name:jp-37"
 msgid "Kagawa"
@@ -10338,7 +10330,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:kh-12"
 msgid "Phnom Penh"
-msgstr ""
+msgstr "ພະນົມເປັນ"
 
 msgctxt "model:country.subdivision,name:kh-13"
 msgid "Preah Vihear"
@@ -10706,51 +10698,51 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:la-at"
 msgid "Attapu"
-msgstr ""
+msgstr "ອັດຕະປື"
 
 msgctxt "model:country.subdivision,name:la-bk"
 msgid "Bokèo"
-msgstr ""
+msgstr "ບໍ່ແກ້ວ"
 
 msgctxt "model:country.subdivision,name:la-bl"
 msgid "Bolikhamxai"
-msgstr ""
+msgstr "ບໍລິຄຳໄຊ"
 
 msgctxt "model:country.subdivision,name:la-ch"
 msgid "Champasak"
-msgstr ""
+msgstr "ຈຳປາສັກ"
 
 msgctxt "model:country.subdivision,name:la-ho"
 msgid "Houaphan"
-msgstr ""
+msgstr "ຫົວພັນ"
 
 msgctxt "model:country.subdivision,name:la-kh"
 msgid "Khammouan"
-msgstr ""
+msgstr "ຄຳມ່ວນ"
 
 msgctxt "model:country.subdivision,name:la-lm"
 msgid "Louang Namtha"
-msgstr ""
+msgstr "ຫຼວງນໍ້າທາ"
 
 msgctxt "model:country.subdivision,name:la-lp"
 msgid "Louangphabang"
-msgstr ""
+msgstr "ຫຼວງພຣະບາງ"
 
 msgctxt "model:country.subdivision,name:la-ou"
 msgid "Oudômxai"
-msgstr ""
+msgstr "ອຸດົມໄຊ"
 
 msgctxt "model:country.subdivision,name:la-ph"
 msgid "Phôngsali"
-msgstr ""
+msgstr "ຜົ້ງສາລີ"
 
 msgctxt "model:country.subdivision,name:la-sl"
 msgid "Salavan"
-msgstr ""
+msgstr "ສາລະວັນ"
 
 msgctxt "model:country.subdivision,name:la-sv"
 msgid "Savannakhét"
-msgstr ""
+msgstr "ສະຫວັນນະເຂດ"
 
 msgctxt "model:country.subdivision,name:la-vi"
 msgid "Vientiane"
@@ -10762,19 +10754,19 @@ msgstr "ນະຄອນຫຼວງວຽງຈັນ"
 
 msgctxt "model:country.subdivision,name:la-xa"
 msgid "Xaignabouli"
-msgstr ""
+msgstr "ໄຊຍະບູລີ"
 
 msgctxt "model:country.subdivision,name:la-xe"
 msgid "Xékong"
-msgstr ""
+msgstr "ເຊກອງ"
 
 msgctxt "model:country.subdivision,name:la-xi"
 msgid "Xiangkhoang"
-msgstr ""
+msgstr "ຊຽງຂວາງ"
 
 msgctxt "model:country.subdivision,name:la-xn"
 msgid "Xiasômboun"
-msgstr ""
+msgstr "ໄຊສົມບູນ"
 
 msgctxt "model:country.subdivision,name:lb-ak"
 msgid "Aakkâr"
@@ -12416,10 +12408,9 @@ msgctxt "model:country.subdivision,name:mh-nmk"
 msgid "Namdrik"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:mh-nmu"
 msgid "Namu"
-msgstr "ຊື່"
+msgstr "ບ້ານ"
 
 msgctxt "model:country.subdivision,name:mh-ron"
 msgid "Rongelap"
@@ -16379,7 +16370,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:sc-23"
 msgid "Takamaka"
-msgstr ""
+msgstr "ຕາກາມາກາ"
 
 msgctxt "model:country.subdivision,name:sc-24"
 msgid "Les Mamelles"
@@ -17955,307 +17946,307 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:th-11"
 msgid "Samut Prakan"
-msgstr ""
+msgstr "ສະໝຸດປຣາການ"
 
 msgctxt "model:country.subdivision,name:th-12"
 msgid "Nonthaburi"
-msgstr ""
+msgstr "ນົນທະບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-13"
 msgid "Pathum Thani"
-msgstr ""
+msgstr "ປະທຸມທານີ"
 
 msgctxt "model:country.subdivision,name:th-14"
 msgid "Phra Nakhon Si Ayutthaya"
-msgstr ""
+msgstr "ພຣະນະຄອນສີອາຍຸດທະຍາ"
 
 msgctxt "model:country.subdivision,name:th-15"
 msgid "Ang Thong"
-msgstr ""
+msgstr "ອ່າງທອງ"
 
 msgctxt "model:country.subdivision,name:th-16"
 msgid "Lop Buri"
-msgstr ""
+msgstr "ລົບບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-17"
 msgid "Sing Buri"
-msgstr ""
+msgstr "ສິງບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-18"
 msgid "Chai Nat"
-msgstr ""
+msgstr "ໄຊນາດ"
 
 msgctxt "model:country.subdivision,name:th-19"
 msgid "Saraburi"
-msgstr ""
+msgstr "ສະຣະບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-20"
 msgid "Chon Buri"
-msgstr ""
+msgstr "ຊົນບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-21"
 msgid "Rayong"
-msgstr ""
+msgstr "ຣະຢອງ"
 
 msgctxt "model:country.subdivision,name:th-22"
 msgid "Chanthaburi"
-msgstr ""
+msgstr "ຈັນທະບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-23"
 msgid "Trat"
-msgstr ""
+msgstr "ຕຣາດ"
 
 msgctxt "model:country.subdivision,name:th-24"
 msgid "Chachoengsao"
-msgstr ""
+msgstr "ຊະເຊີງເຊົາ"
 
 msgctxt "model:country.subdivision,name:th-25"
 msgid "Prachin Buri"
-msgstr ""
+msgstr "ປາຈີນບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-26"
 msgid "Nakhon Nayok"
-msgstr ""
+msgstr "ນະຄອນນາຍົກ"
 
 msgctxt "model:country.subdivision,name:th-27"
 msgid "Sa Kaeo"
-msgstr ""
+msgstr "ສະແກ້ວ"
 
 msgctxt "model:country.subdivision,name:th-30"
 msgid "Nakhon Ratchasima"
-msgstr ""
+msgstr "ນະຄອນຣາຊະສີມາ"
 
 msgctxt "model:country.subdivision,name:th-31"
 msgid "Buri Ram"
-msgstr ""
+msgstr "ບູຣີີຣຳ"
 
 msgctxt "model:country.subdivision,name:th-32"
 msgid "Surin"
-msgstr ""
+msgstr "ສຸຣິນ"
 
 msgctxt "model:country.subdivision,name:th-33"
 msgid "Si Sa Ket"
-msgstr ""
+msgstr "ສີສະເກດ"
 
 msgctxt "model:country.subdivision,name:th-34"
 msgid "Ubon Ratchathani"
-msgstr ""
+msgstr "ອຸບົນຣາຊະທານີ"
 
 msgctxt "model:country.subdivision,name:th-35"
 msgid "Yasothon"
-msgstr ""
+msgstr "ຍະໂສທອນ"
 
 msgctxt "model:country.subdivision,name:th-36"
 msgid "Chaiyaphum"
-msgstr ""
+msgstr "ໄຊຍະພູມ"
 
 msgctxt "model:country.subdivision,name:th-37"
 msgid "Amnat Charoen"
-msgstr ""
+msgstr "ອຳນາດຈະເຣີນ"
 
 msgctxt "model:country.subdivision,name:th-39"
 msgid "Nong Bua Lam Phu"
-msgstr ""
+msgstr "ໜອງບົວບລຳພູ"
 
 msgctxt "model:country.subdivision,name:th-40"
 msgid "Khon Kaen"
-msgstr ""
+msgstr "ຂອນແກ່ນ"
 
 msgctxt "model:country.subdivision,name:th-41"
 msgid "Udon Thani"
-msgstr ""
+msgstr "ອຸດອນທານີ"
 
 msgctxt "model:country.subdivision,name:th-42"
 msgid "Loei"
-msgstr ""
+msgstr "ເລີຍ"
 
 msgctxt "model:country.subdivision,name:th-43"
 msgid "Nong Khai"
-msgstr ""
+msgstr "ໜອງຄາຍ"
 
 msgctxt "model:country.subdivision,name:th-44"
 msgid "Maha Sarakham"
-msgstr ""
+msgstr "ມະຫາສາຣະຄາມ"
 
 msgctxt "model:country.subdivision,name:th-45"
 msgid "Roi Et"
-msgstr ""
+msgstr "ຣ້ອຍເອັດ"
 
 msgctxt "model:country.subdivision,name:th-46"
 msgid "Kalasin"
-msgstr ""
+msgstr "ກາລະສີນ"
 
 msgctxt "model:country.subdivision,name:th-47"
 msgid "Sakon Nakhon"
-msgstr ""
+msgstr "ສາກົນນະຄອນ"
 
 msgctxt "model:country.subdivision,name:th-48"
 msgid "Nakhon Phanom"
-msgstr ""
+msgstr "ນະຄອນພະນົມ"
 
 msgctxt "model:country.subdivision,name:th-49"
 msgid "Mukdahan"
-msgstr ""
+msgstr "ມຸກດາຫານ"
 
 msgctxt "model:country.subdivision,name:th-50"
 msgid "Chiang Mai"
-msgstr ""
+msgstr "ຊຽງໃໝ່"
 
 msgctxt "model:country.subdivision,name:th-51"
 msgid "Lamphun"
-msgstr ""
+msgstr "ລຳພູນ"
 
 msgctxt "model:country.subdivision,name:th-52"
 msgid "Lampang"
-msgstr ""
+msgstr "ລຳປາງ"
 
 msgctxt "model:country.subdivision,name:th-53"
 msgid "Uttaradit"
-msgstr ""
+msgstr "ອຸດຕຣາດິດ"
 
 msgctxt "model:country.subdivision,name:th-54"
 msgid "Phrae"
-msgstr ""
+msgstr "ແພຣ່"
 
 msgctxt "model:country.subdivision,name:th-55"
 msgid "Nan"
-msgstr ""
+msgstr "ນ່ານ"
 
 msgctxt "model:country.subdivision,name:th-56"
 msgid "Phayao"
-msgstr ""
+msgstr "ພະເຍົາ"
 
 msgctxt "model:country.subdivision,name:th-57"
 msgid "Chiang Rai"
-msgstr ""
+msgstr "ຊຽງຮາຍ"
 
 msgctxt "model:country.subdivision,name:th-58"
 msgid "Mae Hong Son"
-msgstr ""
+msgstr "ແມ່ຮ່ອງສອນ"
 
 msgctxt "model:country.subdivision,name:th-60"
 msgid "Nakhon Sawan"
-msgstr ""
+msgstr "ນະຄອນສະຫວັນ"
 
 msgctxt "model:country.subdivision,name:th-61"
 msgid "Uthai Thani"
-msgstr ""
+msgstr "ອຸໄທທານີ"
 
 msgctxt "model:country.subdivision,name:th-62"
 msgid "Kamphaeng Phet"
-msgstr ""
+msgstr "ກຳແພງເພັດ"
 
 msgctxt "model:country.subdivision,name:th-63"
 msgid "Tak"
-msgstr ""
+msgstr "ຕາກ"
 
 msgctxt "model:country.subdivision,name:th-64"
 msgid "Sukhothai"
-msgstr ""
+msgstr "ສຸໂຂໄທ"
 
 msgctxt "model:country.subdivision,name:th-65"
 msgid "Phitsanulok"
-msgstr ""
+msgstr "ພິດສະນຸໂລກ"
 
 msgctxt "model:country.subdivision,name:th-66"
 msgid "Phichit"
-msgstr ""
+msgstr "ພິຈິດ"
 
 msgctxt "model:country.subdivision,name:th-67"
 msgid "Phetchabun"
-msgstr ""
+msgstr "ເພດຊະບູນ"
 
 msgctxt "model:country.subdivision,name:th-70"
 msgid "Ratchaburi"
-msgstr ""
+msgstr "ຣາດຊະບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-71"
 msgid "Kanchanaburi"
-msgstr ""
+msgstr "ການຈະນະບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-72"
 msgid "Suphan Buri"
-msgstr ""
+msgstr "ສຸພັນບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-73"
 msgid "Nakhon Pathom"
-msgstr ""
+msgstr "ນະຄອນປະຖົມ"
 
 msgctxt "model:country.subdivision,name:th-74"
 msgid "Samut Sakhon"
-msgstr ""
+msgstr "ສະໝຸດສາຄອນ"
 
 msgctxt "model:country.subdivision,name:th-75"
 msgid "Samut Songkhram"
-msgstr ""
+msgstr "ສະໝຸດສົງຄາມ"
 
 msgctxt "model:country.subdivision,name:th-76"
 msgid "Phetchaburi"
-msgstr ""
+msgstr "ເພັຊບູຣີ"
 
 msgctxt "model:country.subdivision,name:th-77"
 msgid "Prachuap Khiri Khan"
-msgstr ""
+msgstr "ປຣະຈວບຄີຣິຂັນ"
 
 msgctxt "model:country.subdivision,name:th-80"
 msgid "Nakhon Si Thammarat"
-msgstr ""
+msgstr "ນະຄອນສີທຳມະຣາດ"
 
 msgctxt "model:country.subdivision,name:th-81"
 msgid "Krabi"
-msgstr ""
+msgstr "ກຣະບີ່"
 
 msgctxt "model:country.subdivision,name:th-82"
 msgid "Phangnga"
-msgstr ""
+msgstr "ພັງງາ"
 
 msgctxt "model:country.subdivision,name:th-83"
 msgid "Phuket"
-msgstr ""
+msgstr "ພູເກັດ"
 
 msgctxt "model:country.subdivision,name:th-84"
 msgid "Surat Thani"
-msgstr ""
+msgstr "ສຸຣາດທານີ"
 
 msgctxt "model:country.subdivision,name:th-85"
 msgid "Ranong"
-msgstr ""
+msgstr "ຣະນອງ"
 
 msgctxt "model:country.subdivision,name:th-86"
 msgid "Chumphon"
-msgstr ""
+msgstr "ຊຸມພອນ"
 
 msgctxt "model:country.subdivision,name:th-90"
 msgid "Songkhla"
-msgstr ""
+msgstr "ສົງຂຼາ"
 
 msgctxt "model:country.subdivision,name:th-91"
 msgid "Satun"
-msgstr ""
+msgstr "ສະຕູນ"
 
 msgctxt "model:country.subdivision,name:th-92"
 msgid "Trang"
-msgstr ""
+msgstr "ຕຣັງ"
 
 msgctxt "model:country.subdivision,name:th-93"
 msgid "Phatthalung"
-msgstr ""
+msgstr "ພັດທະລຸງ"
 
 msgctxt "model:country.subdivision,name:th-94"
 msgid "Pattani"
-msgstr ""
+msgstr "ປັດຕະນີ"
 
 msgctxt "model:country.subdivision,name:th-95"
 msgid "Yala"
-msgstr ""
+msgstr "ຍະລາ"
 
 msgctxt "model:country.subdivision,name:th-96"
 msgid "Narathiwat"
-msgstr ""
+msgstr "ນາຣາທິວາດ"
 
 msgctxt "model:country.subdivision,name:th-s"
 msgid "Phatthaya"
-msgstr ""
+msgstr "ພັດທະຍາ"
 
 msgctxt "model:country.subdivision,name:tj-gb"
 msgid "Gorno-Badakhshan"
@@ -18943,7 +18934,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:tw-tnn"
 msgid "Tainan City"
-msgstr ""
+msgstr "ໄຕໜານ"
 
 msgctxt "model:country.subdivision,name:tw-tnq"
 msgid "Tainan"
@@ -18951,11 +18942,11 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:tw-tpe"
 msgid "Taipei City"
-msgstr ""
+msgstr "ໄທເປ"
 
 msgctxt "model:country.subdivision,name:tw-tpq"
 msgid "Taipei"
-msgstr ""
+msgstr "ໄທເປ"
 
 msgctxt "model:country.subdivision,name:tw-ttt"
 msgid "Taitung"
@@ -19771,7 +19762,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:us-wa"
 msgid "Washington"
-msgstr ""
+msgstr "ວໍຊິງຕັນ"
 
 msgctxt "model:country.subdivision,name:us-wi"
 msgid "Wisconsin"
@@ -20571,23 +20562,23 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr ""
+msgstr "ບັນດາປະເທດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr "Administration"
+msgstr "ເຂດການປົກຄອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr ""
+msgstr "ເຂດການປົກຄອງພາກ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
-msgstr ""
+msgstr "ດິນແດນການປົກຄອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
-msgstr ""
+msgstr "ພື້ນທີ່ການປົກຄອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative atoll"
@@ -20599,7 +20590,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr ""
+msgstr "ເຂດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
@@ -20607,11 +20598,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr ""
+msgstr "ເມືອງປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr ""
+msgstr "ເຂດການປົກຄອງສະຫະກອນ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
@@ -20627,11 +20618,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr ""
+msgstr "ຊຸມຊົນປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
-msgstr ""
+msgstr "ເຂດຊຸມຊົນເອກະລາດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
@@ -20717,10 +20708,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Country"
 msgstr "ປະເທດ"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "ປະເທດ"
+msgstr "ເຂດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
@@ -20834,7 +20824,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan region"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
 msgstr "ເທສະບານ"
@@ -20869,11 +20858,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Prefecture"
-msgstr ""
+msgstr "ກຳແພງນະຄອນ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
-msgstr ""
+msgstr "ອານາຈັກ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Province"
@@ -20889,7 +20878,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
-msgstr ""
+msgstr "ພາກ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
@@ -20897,11 +20886,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republican City"
-msgstr ""
+msgstr "ສາທາລະນະລັດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Self-governed part"
@@ -20909,31 +20898,31 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
-msgstr ""
+msgstr "ເມືອງພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
-msgstr ""
+msgstr "ກຳແພງນະຄອນພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
-msgstr ""
+msgstr "ພາກພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
-msgstr ""
+msgstr "ເຂດປົກຄອງພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
-msgstr ""
+msgstr "ບ້ານພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special island authority"
-msgstr ""
+msgstr "ເກາະພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
-msgstr ""
+msgstr "ເຂດພິເສດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
@@ -20941,11 +20930,11 @@ msgstr "ລັດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
-msgstr ""
+msgstr "ໜ່ວຍດິນແດນ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
-msgstr ""
+msgstr "ດິນແດນ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
@@ -20979,17 +20968,14 @@ msgctxt "view:country.country:"
 msgid "Countries"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:country.country:"
 msgid "Country"
 msgstr "ປະເທດ"
 
-#, fuzzy
 msgctxt "view:country.subdivision:"
 msgid "Subdivision"
 msgstr "ແຂວງ"
 
-#, fuzzy
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "ແຂວງ"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr ""
+msgstr "Codi de 3 lletres"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -12,7 +12,7 @@ msgstr "Codi"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Codi numèric"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -130,13 +130,12 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Codi postal"
 
-#, fuzzy
 msgctxt "help:country.country,code3:"
 msgid ""
 "The ISO country code in three chars.\n"
 "You can use this field for quick search."
 msgstr ""
-"El codi ISO del país en dos caràcters.\n"
+"El codi ISO del país en tres caràcters.\n"
 "Podeu usar aquest camp per una cerca més ràpida."
 
 msgctxt "help:country.country,code:"
@@ -147,13 +146,12 @@ msgstr ""
 "El codi ISO del país en dos caràcters.\n"
 "Podeu usar aquest camp per una cerca més ràpida."
 
-#, fuzzy
 msgctxt "help:country.country,code_numeric:"
 msgid ""
 "The ISO numeric country code.\n"
 "You can use this field for quick search."
 msgstr ""
-"El codi ISO del país en dos caràcters.\n"
+"El codi ISO numèric del país.\n"
 "Podeu usar aquest camp per una cerca més ràpida."
 
 msgctxt "help:country.country,name:"
