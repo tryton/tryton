@@ -84,10 +84,10 @@ msgid "Add an attachment to the record"
 msgstr "Dodaj priponko zapisu"
 
 msgid "Note"
-msgstr ""
+msgstr "Zabeležka"
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Dodaj zapisu zabeležko"
 
 msgid "Reload/Undo"
 msgstr "Ponovno naloži"
@@ -178,7 +178,7 @@ msgid "Attachment(%1)"
 msgstr "Priponka(%1)"
 
 msgid "Note(%1)"
-msgstr ""
+msgstr "Zabeležka(%1)"
 
 msgid "Filters"
 msgstr "Filtri"
@@ -366,9 +366,8 @@ msgstr "Programska napaka"
 msgid "Report Bug"
 msgstr "Prijavi programsko napako"
 
-#, fuzzy
 msgid "Create..."
-msgstr "Ustvari ..."
+msgstr "Izdelaj ..."
 
 msgid "Revision"
 msgstr "Različica"
