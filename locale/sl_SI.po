@@ -4,272 +4,272 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Skupine"
 
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Izbirno"
 
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr ""
+msgstr "Takson"
 
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
-msgstr ""
+msgstr "Kultivar"
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
-msgstr ""
+msgstr "Kultivarji"
 
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Podtaksoni"
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Nadtakson"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:product.taxon,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Izbirno"
 
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr ""
+msgstr "Kultivarji"
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Kultivarske skupine"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr ""
+msgstr "Taksoni"
 
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr ""
+msgstr "Taksoni"
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr ""
+msgstr "Kultivarji"
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Kultivarske skupine"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr ""
+msgstr "Taksoni"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr ""
+msgstr "Taksoni"
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
-msgstr ""
+msgstr "Kultivar"
 
 msgctxt "model:product.cultivar-product.cultivar.group,name:"
 msgid "Cultivar-CultivarGroup"
-msgstr ""
+msgstr "Kultivar - Kultivarska skupina"
 
 msgctxt "model:product.cultivar.group,name:"
 msgid "Cultivar Group"
-msgstr ""
+msgstr "Kultivarske skupine"
 
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr ""
+msgstr "Takson"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr ""
+msgstr "Razred"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr ""
+msgstr "Oddelek"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr ""
+msgstr "Domena"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr ""
+msgstr "Družina"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr ""
+msgstr "Oblika"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr ""
+msgstr "Rod"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr ""
+msgstr "Kraljestvo"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr ""
+msgstr "Red"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
-msgstr ""
+msgstr "Deblo"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr ""
+msgstr "Sekcija"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr ""
+msgstr "Serija"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr ""
+msgstr "Vrsta"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr ""
+msgstr "Pleme"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr ""
+msgstr "Sorta"
 
 msgctxt "view:product.cultivar.group:"
 msgid "Cultivar Group"
-msgstr ""
+msgstr "Kultivarske skupine"
 
 msgctxt "view:product.cultivar.group:"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Kultivarske skupine"
