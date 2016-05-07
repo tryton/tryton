@@ -2,10 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.product,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Provisión en Venta"
+msgstr "Provee en Venta"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
@@ -25,7 +24,7 @@ msgstr "Ordenes de Compra"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
