@@ -72,7 +72,7 @@ msgstr "Knjižba"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr ""
+msgstr "Številka"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -310,32 +310,26 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Uporabljen konto amortizacije"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Konto sredstev"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
 msgstr "Uporabljen konto sredstev"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Amortizacija"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Uporabljen konto amortizacije"
 
-#, fuzzy
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Amortizirljivo"
 
-#, fuzzy
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Trajanje amortizacije"
@@ -372,7 +366,6 @@ msgstr ""
 "Naslednji datum mora biti med datumom zadnje amortizacije in datumom "
 "naslednje amortizacije."
 
-#, fuzzy
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "V mesecih"
@@ -635,7 +628,7 @@ msgstr "Drugo"
 
 msgctxt "view:account.asset:"
 msgid "Run"
-msgstr "Izvajanje"
+msgstr "Zagon"
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
@@ -647,7 +640,7 @@ msgstr "Sredstvo"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Štetje"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

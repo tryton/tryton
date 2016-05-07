@@ -479,25 +479,29 @@ msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
 msgstr "Crear asientos de activo"
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
-msgstr ""
+msgstr "("
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
-msgstr ""
+msgstr ")"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
-msgstr ""
+msgstr "-"
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 #, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
