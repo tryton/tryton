@@ -74,7 +74,6 @@ msgstr ""
 "No podeu crear un pagament parcial a la factura \"%s\" per un import més "
 "gran que l'import a pagar."
 
-#, fuzzy
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
 "Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
@@ -96,14 +95,13 @@ msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr "Falta el romanent de la línia del termini de pagament \"%s\"."
 
-#, fuzzy
 msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
 " canceled."
 msgstr ""
-"No podeu afegir la línia \"%(line)s\" a la factura \"%(invoice)s\" perquè "
-"està comptabilitzada, pagada o cancel·lada."
+"No podeu afegir impostos a la factura \"%(invoice)s\" perquè està "
+"comptabilitzada, pagada o cancel·lada."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -183,7 +181,6 @@ msgstr ""
 "El compte haver del diari \"%(journal)s\" és el mateix que el compte de la "
 "factura \"%(invoice)s\"."
 
-#, fuzzy
 msgctxt "error:account.invoice:"
 msgid "The credit account on journal \"%s\" is missing."
 msgstr "Falta el compte haver del diari \"%s\"."
@@ -758,7 +755,7 @@ msgstr "Termini de pagament"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Percentatge"
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
@@ -1064,14 +1061,13 @@ msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
 msgstr "Factures"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Factures de proveïdor"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Factures de client"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1097,43 +1093,35 @@ msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Prova termini de pagament"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
 msgstr "Tot"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
 msgstr "Esborrany"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
 msgstr "Comptabilitzada"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
 msgstr "Validada"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
 msgstr "Tot"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
 msgstr "Esborrany"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
 msgstr "Comptabilitzada"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
@@ -1143,14 +1131,13 @@ msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Factura"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Factures de proveïdor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Factures de client"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1274,11 +1261,11 @@ msgstr "Validada"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Proveïdor"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
@@ -1286,11 +1273,11 @@ msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
-msgstr ""
+msgstr "Client"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Proveïdor"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
@@ -1458,7 +1445,7 @@ msgstr "Increments relatius línia de termini de pagament"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"

@@ -74,7 +74,6 @@ msgstr ""
 "Pri računu \"%s\" ni možno izdelati delnega plačila z zneskom, ki je večji "
 "od zneska za plačilo."
 
-#, fuzzy
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
 "Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
@@ -95,14 +94,13 @@ msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr "V plačilnem roku \"%s\" manjka postavka preostanka."
 
-#, fuzzy
 msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
 " canceled."
 msgstr ""
-"Postavke \"%(line)s\" pri računu \"%(invoice)s\" ni možno dodati, ker je "
-"bodisi knjižen ali plačan bodisi preklican."
+"Davka pri računu \"%(invoice)s\" ni možno dodati, ker je bodisi knjižen ali "
+"plačan bodisi preklican."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -179,7 +177,6 @@ msgstr ""
 "Kreditni konto v dnevniku \"%(journal)s\" je enak kontu računa "
 "\"%(invoice)s\"."
 
-#, fuzzy
 msgctxt "error:account.invoice:"
 msgid "The credit account on journal \"%s\" is missing."
 msgstr "V dnevniku \"%s\" manjka kreditni konto."
@@ -752,7 +749,7 @@ msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Odstotek"
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
@@ -1058,14 +1055,13 @@ msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
 msgstr "Računi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Prejeti računi"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Izdani računi"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1091,60 +1087,51 @@ msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Preizkus plačilnega roka"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
 msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
 msgstr "Priprava"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Knjiženi"
+msgstr "Knjiženo"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr "Odobreni"
+msgstr "Odobreno"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
 msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
 msgstr "Priprava"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Knjiženi"
+msgstr "Knjiženo"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr "Odobreni"
+msgstr "Odobreno"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Račun"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
 msgstr "Prejeti računi"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Izdani računi"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1268,11 +1255,11 @@ msgstr "Odobreno"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Kupec"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dobavitelj"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
@@ -1280,11 +1267,11 @@ msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
-msgstr ""
+msgstr "Kupec"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dobavitelj"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
@@ -1452,7 +1439,7 @@ msgstr "Obroki postavk plačilnega roka"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
