@@ -6,7 +6,6 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "El temps de la línia \"%(line)s\" ha de ser positiu."
 
-#, fuzzy
 msgctxt "error:timesheet.work:"
 msgid ""
 "You can not unset \"Available on timesheets\" for work \"%s\" because it "
@@ -83,7 +82,6 @@ msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Mes"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
 msgstr "Mes"
@@ -132,7 +130,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Setmana"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Setmana"
