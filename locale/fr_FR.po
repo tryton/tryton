@@ -53,7 +53,7 @@ msgstr "ID"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numéro"
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
