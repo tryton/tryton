@@ -4,52 +4,52 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr ""
+msgstr "ນັບ"
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "ຈຳນວນ"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "ຫົວໜ່ວຍ"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "ໝວດຫົວໜ່ວຍ"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr ""
+msgstr "ຕົວເລກຈຳກັດຂອງການເຄື່ອນຍ້າຍ"
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr ""
+msgstr "ແຍກການເຄື່ອນຍ້າຍ"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr ""
+msgstr "ແຍກການເຄື່ອນຍ້າຍ"
 
 msgctxt "view:stock.move.split.start:"
 msgid "Split Move"
-msgstr ""
+msgstr "ແຍກການເຄື່ອນຍ້າຍ"
 
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr ""
+msgstr "ແຍກ"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr ""
+msgstr "ແຍກ"
