@@ -12,7 +12,7 @@ msgstr "Plačilo \"%s\" mora biti pred brisanjem v stanju priprave."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Štetje plačilnih skupin"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Vrsta"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Številka"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -322,7 +322,7 @@ msgstr "Plačila"
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr "Računovodstvo - plačilo"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
@@ -378,9 +378,8 @@ msgstr "Ročno"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Štetje skupin"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Plačilo"

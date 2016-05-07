@@ -12,7 +12,7 @@ msgstr "El pagament \"%s\" ha d'estar en esborrany abans d'esborrar-lo."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Seqüència de grups de pagament"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Tipus"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -378,9 +378,8 @@ msgstr "Manual"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Seqüència de grup"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pagament"

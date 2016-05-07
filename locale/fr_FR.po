@@ -12,7 +12,7 @@ msgstr "Le paiement « %s » doit être en brouillon avant suppression."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Séquence de groupe de paiements"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Genre"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numéro"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -378,9 +378,8 @@ msgstr "Manuelle"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Séquence de groupe"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Paiement"

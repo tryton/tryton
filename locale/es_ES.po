@@ -12,7 +12,7 @@ msgstr "El pago \"%s\" debe estar en estado borrador antes de ser borrado."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Secuencia de grupos de pago"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Tipo"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -378,9 +378,8 @@ msgstr "Manual"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Secuencia de grupo"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pago"
