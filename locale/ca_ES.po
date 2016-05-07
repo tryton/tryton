@@ -12,7 +12,7 @@ msgstr "L'albarà de client \"%s\" no està completament empaquetat."
 
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
-msgstr "Seqüència de paquets"
+msgstr "Seqüència de paquet"
 
 msgctxt "field:stock.move,package:"
 msgid "Package"
