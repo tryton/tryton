@@ -230,7 +230,6 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Kommission Auftraggeber"
@@ -385,7 +384,7 @@ msgstr "Kommission Administration"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"

@@ -230,7 +230,6 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-#, fuzzy
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Principales Comisión"
@@ -307,7 +306,6 @@ msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
 msgstr "Comisionista"
 
-#, fuzzy
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
 msgstr "Crear Facturas de Comisión"
@@ -324,7 +322,6 @@ msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr "Agentes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
 msgstr "Crear Facturas de Comisión"
@@ -349,7 +346,6 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "Planes de Comision"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
 msgstr "Agentes"
@@ -388,7 +384,7 @@ msgstr "Administración de Comisiones"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
@@ -426,10 +422,9 @@ msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Incoming"
 msgstr "Ingresos"
 
-#, fuzzy
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Outgoing"
-msgstr "Saliente"
+msgstr "Venta"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Payment"
@@ -439,7 +434,6 @@ msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
 msgstr "Al Contabilizar"
 
-#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Comisiones"
@@ -452,7 +446,6 @@ msgctxt "view:commission.agent:"
 msgid "Agents"
 msgstr "Agentes"
 
-#, fuzzy
 msgctxt "view:commission.create_invoice.ask:"
 msgid "Create Commission Invoice"
 msgstr "Crear Facturas de Comisión"
@@ -461,26 +454,22 @@ msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Line"
 msgstr "Línea de Plan de Comisión"
 
-#, fuzzy
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr "Línea del Plan de Comisión"
+msgstr "Líneas del Plan de Comisión"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
 msgstr "Plan de Comisión"
 
-#, fuzzy
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
 msgstr "Planes de Comisión"
 
-#, fuzzy
 msgctxt "view:commission:"
 msgid "Commission"
 msgstr "Comisión"
 
-#, fuzzy
 msgctxt "view:commission:"
 msgid "Commissions"
 msgstr "Comisiones"

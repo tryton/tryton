@@ -230,7 +230,6 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-#, fuzzy
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Principales de comisión"
