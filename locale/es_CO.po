@@ -2,10 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:sale.line:"
 msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Alguna cuenta raíz obligatoria falta en \"%(name)s\""
+msgstr "Falta una cuenta raíz obligatoria en \"%(name)s\""
 
 msgctxt "field:sale.line,analytic_accounts:"
 msgid "Analytic Accounts"
