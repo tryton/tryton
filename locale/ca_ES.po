@@ -66,52 +66,42 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Compte d'estoc usat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
 msgstr "Compte d'estoc"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Compte d'estoc client"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
 msgstr "Compte d'estoc client usat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte d'estoc perdut-trobat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte d'estoc perdut-trobat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Compte d'estoc producció"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production_used:"
 msgid "Account Stock Production Used"
 msgstr "Compte d'estoc producció usat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Compte d'estoc proveïdor"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr "Compte d'estoc proveïdor usat"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Compte d'estoc usat"
@@ -204,27 +194,22 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Compte d'estoc"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
