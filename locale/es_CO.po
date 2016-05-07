@@ -5,6 +5,8 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:account.invoice:"
 msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
 msgstr ""
+"La cuenta \"%(account)s\" del tercero \"%(party)s\" no tiene suficiente "
+"depósito."
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
@@ -42,10 +44,9 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "Depósito"
 
-#, fuzzy
 msgctxt "view:account.invoice.recall_deposit.start:"
 msgid "Recall Deposit"
-msgstr "Recordar Deposito"
+msgstr "Recordar Depósito"
 
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
