@@ -14,7 +14,7 @@ msgstr ""
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Nummernkreis Varkaufschance"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -72,7 +72,6 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Ursache für Verlust"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
 msgstr "Anzahl"
