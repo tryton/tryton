@@ -44,7 +44,7 @@ msgstr "Fecha inicial"
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
-msgstr "Código de arancel"
+msgstr "Código arancelario"
 
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
@@ -148,7 +148,7 @@ msgstr "Secuencia"
 
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
-msgstr "Código de arancel"
+msgstr "Código arancelario"
 
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
@@ -158,44 +158,41 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
 msgstr "Aduanas"
 
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
-msgstr "Usar los códigos de arancel del padre"
+msgstr "Usar los códigos arancelarios del padre"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Categoría de aduanas"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Usar los códigos de arancel de la categoría"
+msgstr "Usar los códigos arancelarios de la categoría"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Categoría de aduanas"
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Usar los códigos de arancel de la categoría"
+msgstr "Usar los códigos arancelarios de la categoría"
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
@@ -203,16 +200,15 @@ msgstr "El código del sistema armonizado de nomenclatura."
 
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
-msgstr "Usar los códigos de arancel definidos en la categoría padre."
+msgstr "Usar los códigos arancelarios definidos en la categoría padre."
 
-#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Usar los códigos de arancel definidos en la categoría."
+msgstr "Usar los códigos arancelarios definidos en la categoría."
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Usar los códigos de arancel definidos en la categoría."
+msgstr "Usar los códigos arancelarios definidos en la categoría."
 
 msgctxt "model:customs.duty.rate,name:"
 msgid "Duty Rate"
@@ -220,7 +216,7 @@ msgstr "Tasa de arancel"
 
 msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
-msgstr "Código de arancel"
+msgstr "Código arancelario"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
@@ -228,7 +224,7 @@ msgstr "Tasas de arancel"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
@@ -248,11 +244,11 @@ msgstr "Tasas de arancel"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
-msgstr "Producto - Código de arancel"
+msgstr "Producto - Código arancelario"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
@@ -404,11 +400,11 @@ msgstr "Desde"
 
 msgctxt "view:customs.tariff.code:"
 msgid "Tariff Code"
-msgstr "Código de arancel"
+msgstr "Código arancelario"
 
 msgctxt "view:customs.tariff.code:"
 msgid "Tariff Codes"
-msgstr "Códigos de arancel"
+msgstr "Códigos arancelarios"
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"
@@ -416,7 +412,7 @@ msgstr "Hasta"
 
 msgctxt "view:product-customs.tariff.code:"
 msgid "Product - Tariff Code"
-msgstr "Producto - Código de arancel"
+msgstr "Producto - Código arancelario"
 
 msgctxt "view:product.category:"
 msgid "Customs"

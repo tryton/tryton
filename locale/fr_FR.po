@@ -158,7 +158,6 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
 msgstr "Douanes"
@@ -173,21 +172,19 @@ msgstr "Utiliser les codes du parent"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Catégorie de douane"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
 msgstr "Codes de douane"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Utiliser les codes de la catégorie"
+msgstr "Utiliser les codes de douane de la catégorie"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Catégorie de douane"
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -205,7 +202,6 @@ msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
 msgstr "Utiliser le code de douane défini sur la catégorie parent"
 
-#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
 msgstr "Utiliser les codes de douane définis sur la catégorie"

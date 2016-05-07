@@ -158,7 +158,6 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
 msgstr "Zölle"
@@ -173,21 +172,19 @@ msgstr "Tarifcode der übergeordneten Kategorie anwenden"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Zollkategorie"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
 msgstr "Tarifcodes"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Tarifcodes der Kategorie anwenden"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Zollkategorie"
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -207,7 +204,6 @@ msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
 msgstr "Tarifcodes der übergeordneten Kategorie anwenden"
 
-#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
 msgstr "Tarifcode der Kategorie anwenden"
@@ -278,7 +274,7 @@ msgstr "Import"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
@@ -330,7 +326,7 @@ msgstr "September"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
