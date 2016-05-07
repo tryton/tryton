@@ -4,88 +4,88 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr ""
+msgstr "ການປະຕິບັດ"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "ລໍາດັບ"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr ""
+msgstr "ຜູ້ໃຊ້"
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr ""
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr ""
+msgstr "ໂຄງກະດານບັນຊາ"
 
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr ""
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "ກະດານບັນຊາ"
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "ກະດານບັນຊາ"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr ""
+msgstr "ສີ່ຫຼ່ຽມ"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr ""
+msgstr "ແຖວຂໍ້ມູນລຸ່ມ"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr ""
+msgstr "ແຖວຂໍ້ມູນຊ້າຍ"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr ""
+msgstr "ແຖວຂໍ້ມູນຂວາ"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr ""
+msgstr "ແຖວຂໍ້ມູນເທິງ"
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
-msgstr ""
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
-msgstr ""
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr ""
+msgstr "ກະດານບັນຊາ"
