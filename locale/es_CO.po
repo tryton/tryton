@@ -52,7 +52,7 @@ msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 msgctxt "field:project.work,name:"
 msgid "Name"
@@ -72,7 +72,7 @@ msgstr "Dirección de Contacto"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr ""
+msgstr "Progreso"
 
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
@@ -80,7 +80,7 @@ msgstr "Nombre"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
@@ -104,7 +104,7 @@ msgstr "Esfuerzo tTotal"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr ""
+msgstr "Progreso Total"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -126,23 +126,21 @@ msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
 msgstr "Esfuerzo Estimado para este trabajo"
 
-#, fuzzy
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work"
-msgstr "Esfuerzo Estimado para este trabajo"
+msgstr "Progreso estimado para este trabajo"
 
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works"
-msgstr ""
+msgstr "Tiempo total gastado para este tarea y sub-tareas"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
 
-#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
+msgstr "Progreso total estimado para esta tarea y sus sub-tareas"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -246,7 +244,7 @@ msgstr "Tarea"
 
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "Children"
