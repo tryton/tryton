@@ -2,19 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,from_country:"
 msgid "From Country"
-msgstr "Al País"
+msgstr "Del País"
 
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
 msgstr "Al País"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,from_country:"
 msgid "From Country"
-msgstr "Al País"
+msgstr "Del País"
 
 msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
