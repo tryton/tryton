@@ -22,22 +22,18 @@ msgstr ""
 "No puede cerrar un período anterior a la fecha de caducidad de vida útil "
 "\"%(date)s\" del lote \"%(lot)s\"."
 
-#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
 msgstr "Estado de caducidad"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
 msgstr "Tiempo de caducidad"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
 msgstr "Estado de tiempo de vida útil"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Tiempo de vida útil"
@@ -78,12 +74,10 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Estado de caducidad de vida útil"
 
-#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days"
 msgstr "En número de días"
 
-#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
 msgid "In number of days"
 msgstr "En número de días"
@@ -104,32 +98,26 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forzar caducidad de stock"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
 msgstr "Ninguno"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
 msgstr "Opcional"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
 msgstr "Requerido"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
 msgstr "Ninguno"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
 msgstr "Opcional"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
 msgstr "Requerido"

@@ -23,22 +23,18 @@ msgstr ""
 "Die Lagerperiode kann nicht vor dem Ablaufdatum \"%(date)s\" der Charge "
 "\"%(lot)s\" geschlossen werden"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
 msgstr "Ablaufstatus"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
 msgstr "Ablaufzeit"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
 msgstr "Lagerzeitstatus"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Lagerzeit"
@@ -79,12 +75,10 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Lagerzeit Ablaufdatum"
 
-#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days"
 msgstr "In Anzahl von Tagen"
 
-#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
 msgid "In number of days"
 msgstr "In Anzahl von Tagen"
@@ -107,32 +101,26 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Lager Ablauferzwingung"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
 msgstr "Keiner"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
 msgstr "Optional"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
 msgstr "Erforderlich"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
 msgstr "Keiner"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
 msgstr "Optional"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
 msgstr "Erforderlich"
