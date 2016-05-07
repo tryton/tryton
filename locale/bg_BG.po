@@ -1598,9 +1598,10 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
@@ -1647,9 +1648,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
@@ -1728,9 +1730,10 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
