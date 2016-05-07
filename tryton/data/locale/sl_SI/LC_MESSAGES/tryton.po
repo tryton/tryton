@@ -291,7 +291,7 @@ msgstr "Priponke..."
 
 #: tryton/common/popup_menu.py:90
 msgid "Notes..."
-msgstr ""
+msgstr "Zabeležke ..."
 
 #: tryton/common/popup_menu.py:100
 msgid "Actions..."
@@ -1092,11 +1092,11 @@ msgstr "Dodaj priponko zapisu"
 
 #: tryton/gui/window/form.py:48
 msgid "Note(0)"
-msgstr ""
+msgstr "Zabeležka(0)"
 
 #: tryton/gui/window/form.py:49
 msgid "Add a note to the record"
-msgstr ""
+msgstr "K zapisu dodaj zabeležko"
 
 #: tryton/gui/window/form.py:58
 msgid "_Duplicate"
@@ -1128,7 +1128,7 @@ msgstr "P_riponke..."
 
 #: tryton/gui/window/form.py:75
 msgid "_Notes..."
-msgstr ""
+msgstr "_Zabeležke ..."
 
 #: tryton/gui/window/form.py:76
 msgid "_Actions..."
@@ -1166,7 +1166,7 @@ msgstr "Priponka(%d)"
 #: tryton/gui/window/form.py:236
 #, python-format
 msgid "Note(%d)"
-msgstr ""
+msgstr "Zabeležka(%d)"
 
 #: tryton/gui/window/form.py:258
 msgid "You have to select one record."
@@ -1225,7 +1225,6 @@ msgid " of "
 msgstr " od "
 
 #: tryton/gui/window/form.py:513
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -1542,13 +1541,12 @@ msgid "<b>All fields</b>"
 msgstr "<b>Vsa polja</b>"
 
 #: tryton/gui/window/win_csv.py:86
-#, fuzzy
 msgid "_Clear"
-msgstr "Počisti"
+msgstr "_Počisti"
 
 #: tryton/gui/window/win_csv.py:107
 msgid "<b>Fields selected</b>"
-msgstr ""
+msgstr "<b>Izbrana polja</b>"
 
 #: tryton/gui/window/win_csv.py:126
 msgid "CSV Parameters"
@@ -1556,11 +1554,11 @@ msgstr "CSV parametri"
 
 #: tryton/gui/window/win_csv.py:134
 msgid "Delimiter:"
-msgstr ""
+msgstr "Ločilo:"
 
 #: tryton/gui/window/win_csv.py:148
 msgid "Quote char:"
-msgstr ""
+msgstr "Narekovaj:"
 
 #: tryton/gui/window/win_csv.py:157
 msgid "Encoding:"
@@ -1583,14 +1581,12 @@ msgid "Name"
 msgstr "Naziv"
 
 #: tryton/gui/window/win_export.py:60
-#, fuzzy
 msgid "_Save Export"
-msgstr "Shrani izvoz"
+msgstr "_Shrani izvoz"
 
 #: tryton/gui/window/win_export.py:69
-#, fuzzy
 msgid "_Delete Export"
-msgstr "Izbriši izvoz"
+msgstr "_Izbriši izvoz"
 
 #: tryton/gui/window/win_export.py:82
 msgid "Open"
@@ -1667,9 +1663,8 @@ msgid "Import from CSV"
 msgstr "Uvozi iz CSV"
 
 #: tryton/gui/window/win_import.py:32
-#, fuzzy
 msgid "_Auto-Detect"
-msgstr "Samozaznava"
+msgstr "_Samozaznava"
 
 #: tryton/gui/window/win_import.py:43
 msgid "File to Import:"

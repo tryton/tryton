@@ -198,7 +198,7 @@ msgid ""
 "The application will stop connecting to this server until its fingerprint is fixed."
 msgstr ""
 "L'empremta digital del servidor ha canviat des de l'última connexió.\n"
-"L'aplicació no es podrà connectar a aquest servidor fins que es corregeixi l'empremta digital del servidor."
+"L'aplicació no es podrà connectar amb aquest servidor fins que es corregeixi l'empremta digital del servidor."
 
 #: tryton/common/common.py:1034
 msgid "Security risk!"
@@ -211,7 +211,7 @@ msgid ""
 "Unable to connect to the server!"
 msgstr ""
 "Error de connexió.\n"
-"No ha estat possible connectar-se al servidor."
+"No ha estat possible connectar amb el servidor."
 
 #: tryton/common/common.py:1111
 msgid "Network Error!"
@@ -293,7 +293,7 @@ msgstr "Adjunts..."
 
 #: tryton/common/popup_menu.py:90
 msgid "Notes..."
-msgstr ""
+msgstr "Notes..."
 
 #: tryton/common/popup_menu.py:100
 msgid "Actions..."
@@ -702,7 +702,7 @@ msgid ""
 "3. If there is a firewall between the server and this client, make sure that the server address and port (usually 8000) are not blocked.\n"
 "Click on 'Change' to change the address."
 msgstr ""
-"No s'ha pogut connectar al servidor\n"
+"No ha estat possible connectar amb el servidor.\n"
 "1. Reviseu si el servidor s'està executant.\n"
 "2. Esbrineu a quina adreça i port està escoltant.\n"
 "3. Si hi ha un tallafocs entre el servidor i aquest client, assegureu-vos que l'adreça i el port (normalment 8000) del servidor no estan bloquejats.\n"
@@ -859,7 +859,7 @@ msgstr "S'ha produït un error al crear la base de dades."
 
 #: tryton/gui/window/dbdumpdrop.py:26
 msgid "Could not connect to server!"
-msgstr "No s'ha pogut connectar al servidor."
+msgstr "No ha estat possible connectar amb el servidor."
 
 #: tryton/gui/window/dbdumpdrop.py:30
 msgid "This client version is not compatible with the server!"
@@ -903,7 +903,7 @@ msgstr "Trieu la base de dades Tryton a eliminar:"
 
 #: tryton/gui/window/dbdumpdrop.py:130 tryton/gui/window/dbrestore.py:77
 msgid "Server Connection:"
-msgstr "Connexió al servidor:"
+msgstr "Connexió amb el servidor:"
 
 #: tryton/gui/window/dbdumpdrop.py:157 tryton/gui/window/dblogin.py:80
 #: tryton/gui/window/dblogin.py:434
@@ -944,7 +944,7 @@ msgstr "Nom d'usuari:"
 
 #: tryton/gui/window/dblogin.py:297
 msgid "Could not connect to the server"
-msgstr "No s'ha pogut connectar al servidor"
+msgstr "No ha estat possible connectar amb el servidor"
 
 #: tryton/gui/window/dblogin.py:299 tryton/gui/window/dblogin.py:601
 msgid "Incompatible version of the server"
@@ -960,7 +960,7 @@ msgstr "_Cancel·la"
 
 #: tryton/gui/window/dblogin.py:371
 msgid "Cancel connection to the Tryton server"
-msgstr "Cancel·la connexió al servidor Tryton"
+msgstr "Cancel·la connexió amb el servidor Tryton"
 
 #: tryton/gui/window/dblogin.py:373
 msgid "C_onnect"
@@ -968,7 +968,7 @@ msgstr "C_onnecta"
 
 #: tryton/gui/window/dblogin.py:378
 msgid "Connect the Tryton server"
-msgstr "Connecta al servidor Tryton"
+msgstr "Connecta amb el servidor Tryton"
 
 #: tryton/gui/window/dblogin.py:406
 msgid "Profile:"
@@ -1098,11 +1098,11 @@ msgstr "Afegeix un adjunt al registre"
 
 #: tryton/gui/window/form.py:48
 msgid "Note(0)"
-msgstr ""
+msgstr "Nota(0)"
 
 #: tryton/gui/window/form.py:49
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Afegeix una nota al registre"
 
 #: tryton/gui/window/form.py:58
 msgid "_Duplicate"
@@ -1134,7 +1134,7 @@ msgstr "Adjun_ts..."
 
 #: tryton/gui/window/form.py:75
 msgid "_Notes..."
-msgstr ""
+msgstr "_Notes..."
 
 #: tryton/gui/window/form.py:76
 msgid "_Actions..."
@@ -1172,7 +1172,7 @@ msgstr "Adjunt(%d)"
 #: tryton/gui/window/form.py:236
 #, python-format
 msgid "Note(%d)"
-msgstr ""
+msgstr "Nota(%d)"
 
 #: tryton/gui/window/form.py:258
 msgid "You have to select one record."
@@ -1231,7 +1231,6 @@ msgid " of "
 msgstr " de "
 
 #: tryton/gui/window/form.py:513
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -1548,13 +1547,12 @@ msgid "<b>All fields</b>"
 msgstr "<b>Tots els camps</b>"
 
 #: tryton/gui/window/win_csv.py:86
-#, fuzzy
 msgid "_Clear"
-msgstr "Neteja"
+msgstr "_Neteja"
 
 #: tryton/gui/window/win_csv.py:107
 msgid "<b>Fields selected</b>"
-msgstr ""
+msgstr "<b>Camps seleccionats</b>"
 
 #: tryton/gui/window/win_csv.py:126
 msgid "CSV Parameters"
@@ -1562,11 +1560,11 @@ msgstr "Paràmetres CSV"
 
 #: tryton/gui/window/win_csv.py:134
 msgid "Delimiter:"
-msgstr ""
+msgstr "Separador de camp:"
 
 #: tryton/gui/window/win_csv.py:148
 msgid "Quote char:"
-msgstr ""
+msgstr "Delimitador de text:"
 
 #: tryton/gui/window/win_csv.py:157
 msgid "Encoding:"
@@ -1589,14 +1587,12 @@ msgid "Name"
 msgstr "Nom"
 
 #: tryton/gui/window/win_export.py:60
-#, fuzzy
 msgid "_Save Export"
-msgstr "Desa exportació"
+msgstr "_Desa exportació"
 
 #: tryton/gui/window/win_export.py:69
-#, fuzzy
 msgid "_Delete Export"
-msgstr "Elimina exportació"
+msgstr "_Elimina exportació"
 
 #: tryton/gui/window/win_export.py:82
 msgid "Open"
@@ -1673,9 +1669,8 @@ msgid "Import from CSV"
 msgstr "Importa des de CSV"
 
 #: tryton/gui/window/win_import.py:32
-#, fuzzy
 msgid "_Auto-Detect"
-msgstr "Auto-detecta"
+msgstr "_Auto-detecta"
 
 #: tryton/gui/window/win_import.py:43
 msgid "File to Import:"

@@ -292,7 +292,7 @@ msgstr "Adjuntos..."
 
 #: tryton/common/popup_menu.py:90
 msgid "Notes..."
-msgstr ""
+msgstr "Notas..."
 
 #: tryton/common/popup_menu.py:100
 msgid "Actions..."
@@ -468,7 +468,7 @@ msgstr "Guardar Estado de Árbol"
 
 #: tryton/gui/main.py:635
 msgid "Fast Tabbing"
-msgstr ""
+msgstr "Tabulación Rápida"
 
 #: tryton/gui/main.py:645
 msgid "Spell Checking"
@@ -1098,11 +1098,11 @@ msgstr "Agregar un adjunto al registro"
 
 #: tryton/gui/window/form.py:48
 msgid "Note(0)"
-msgstr ""
+msgstr "Nota(0)"
 
 #: tryton/gui/window/form.py:49
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Agregar nota al registro"
 
 #: tryton/gui/window/form.py:58
 msgid "_Duplicate"
@@ -1134,7 +1134,7 @@ msgstr "Adjun_tos..."
 
 #: tryton/gui/window/form.py:75
 msgid "_Notes..."
-msgstr ""
+msgstr "_Notas..."
 
 #: tryton/gui/window/form.py:76
 msgid "_Actions..."
@@ -1172,12 +1172,11 @@ msgstr "Adjunto(%d)"
 #: tryton/gui/window/form.py:236
 #, python-format
 msgid "Note(%d)"
-msgstr ""
+msgstr "Nota(%d)"
 
 #: tryton/gui/window/form.py:258
-#, fuzzy
 msgid "You have to select one record."
-msgstr "Debe seleccionar un registro!"
+msgstr "Debe seleccionar un registro."
 
 #: tryton/gui/window/form.py:262
 msgid "ID:"
@@ -1212,31 +1211,26 @@ msgid "Are you sure to remove those records?"
 msgstr "Está seguro que quiere eliminar estos registros?"
 
 #: tryton/gui/window/form.py:350
-#, fuzzy
 msgid "Records not removed."
-msgstr "Los registros no se han eliminado!"
+msgstr "Los registros no se han eliminado."
 
 #: tryton/gui/window/form.py:352
-#, fuzzy
 msgid "Records removed."
-msgstr "Registros eliminados!"
+msgstr "Registros eliminados."
 
 #: tryton/gui/window/form.py:380
-#, fuzzy
 msgid "Working now on the duplicated record(s)."
-msgstr "Está trabajando ahora registro(s) duplicado(s)!"
+msgstr "Está trabajando ahora registro(s) duplicado(s)."
 
 #: tryton/gui/window/form.py:390
-#, fuzzy
 msgid "Record saved."
-msgstr "¡Registro guardado!"
+msgstr "Registro guardado."
 
 #: tryton/gui/window/form.py:492
 msgid " of "
 msgstr " de "
 
 #: tryton/gui/window/form.py:513
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
@@ -1395,92 +1389,92 @@ msgstr "Widgets de Edición"
 
 #: tryton/gui/window/shortcuts.py:47
 msgid "Move Cursor"
-msgstr ""
+msgstr "Mover el Cursor"
 
 #: tryton/gui/window/shortcuts.py:48
 msgid "Move to right"
-msgstr ""
+msgstr "Mover a la derecha"
 
 #: tryton/gui/window/shortcuts.py:49
 msgid "Move to left"
-msgstr ""
+msgstr "Mover a la izquierda"
 
 #: tryton/gui/window/shortcuts.py:50
 msgid "Move up"
-msgstr ""
+msgstr "Mover arriba"
 
 #: tryton/gui/window/shortcuts.py:51
 msgid "Move down"
-msgstr ""
+msgstr "Mover abajo"
 
 #: tryton/gui/window/shortcuts.py:52
 msgid "Move up of one page"
-msgstr ""
+msgstr "Mover arriba una página"
 
 #: tryton/gui/window/shortcuts.py:53
 msgid "Move down of one page"
-msgstr ""
+msgstr "Mover abajo una página"
 
 #: tryton/gui/window/shortcuts.py:54
 msgid "Move to top"
-msgstr ""
+msgstr "Mover al inicio"
 
 #: tryton/gui/window/shortcuts.py:55
 msgid "Move to bottom"
-msgstr ""
+msgstr "Mover al final"
 
 #: tryton/gui/window/shortcuts.py:56
 msgid "Move to parent"
-msgstr ""
+msgstr "Mover al padre"
 
 #: tryton/gui/window/shortcuts.py:58 tryton/gui/window/shortcuts.py:59
 msgid "Select all"
-msgstr ""
+msgstr "Seleccionar todo"
 
 #: tryton/gui/window/shortcuts.py:60 tryton/gui/window/shortcuts.py:61
 msgid "Unselect all"
-msgstr ""
+msgstr "Deseleccionar todo"
 
 #: tryton/gui/window/shortcuts.py:62
 msgid "Select parent"
-msgstr ""
+msgstr "Seleccionar padre"
 
 #: tryton/gui/window/shortcuts.py:63 tryton/gui/window/shortcuts.py:64
 #: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
 msgid "Select/Activate current row"
-msgstr ""
+msgstr "Seleccionar/Activar fila actual"
 
 #: tryton/gui/window/shortcuts.py:67
 msgid "Toggle selection"
-msgstr ""
+msgstr "Alternar selección"
 
 #: tryton/gui/window/shortcuts.py:68
 msgid "Expand/Collapse"
-msgstr ""
+msgstr "Expandir/Colapsar"
 
 #: tryton/gui/window/shortcuts.py:69
 msgid "Expand row"
-msgstr ""
+msgstr "Expandir fila"
 
 #: tryton/gui/window/shortcuts.py:70
 msgid "Collapse row"
-msgstr ""
+msgstr "Colapsar fila"
 
 #: tryton/gui/window/shortcuts.py:71
 msgid "Toggle row"
-msgstr ""
+msgstr "Alternar fila"
 
 #: tryton/gui/window/shortcuts.py:72
 msgid "Expand all rows"
-msgstr ""
+msgstr "Expandir todas las filas"
 
 #: tryton/gui/window/shortcuts.py:73
 msgid "Collapse all rows"
-msgstr ""
+msgstr "Colapsar todas las filas"
 
 #: tryton/gui/window/shortcuts.py:76
 msgid "Tree view"
-msgstr ""
+msgstr "Vista de árbol"
 
 #: tryton/gui/window/tips.py:17
 msgid ""
@@ -1553,13 +1547,12 @@ msgid "<b>All fields</b>"
 msgstr "<b>Todos los campos</b>"
 
 #: tryton/gui/window/win_csv.py:86
-#, fuzzy
 msgid "_Clear"
-msgstr "Limpiar"
+msgstr "_Limpiar"
 
 #: tryton/gui/window/win_csv.py:107
 msgid "<b>Fields selected</b>"
-msgstr ""
+msgstr "<b>Campos seleccionados</b>"
 
 #: tryton/gui/window/win_csv.py:126
 msgid "CSV Parameters"
@@ -1567,11 +1560,11 @@ msgstr "Parámetros CSV"
 
 #: tryton/gui/window/win_csv.py:134
 msgid "Delimiter:"
-msgstr ""
+msgstr "Delimitador:"
 
 #: tryton/gui/window/win_csv.py:148
 msgid "Quote char:"
-msgstr ""
+msgstr "Entrecomillar cadena:"
 
 #: tryton/gui/window/win_csv.py:157
 msgid "Encoding:"
@@ -1594,14 +1587,12 @@ msgid "Name"
 msgstr "Nombre"
 
 #: tryton/gui/window/win_export.py:60
-#, fuzzy
 msgid "_Save Export"
-msgstr "Guardar Exportación"
+msgstr "_Guardar Exportación"
 
 #: tryton/gui/window/win_export.py:69
-#, fuzzy
 msgid "_Delete Export"
-msgstr "Eliminar Exportación"
+msgstr "_Eliminar Exportación"
 
 #: tryton/gui/window/win_export.py:82
 msgid "Open"
@@ -1678,9 +1669,8 @@ msgid "Import from CSV"
 msgstr "Importar desde CSV"
 
 #: tryton/gui/window/win_import.py:32
-#, fuzzy
 msgid "_Auto-Detect"
-msgstr "Auto-Detectar"
+msgstr "_Auto-Detectar"
 
 #: tryton/gui/window/win_import.py:43
 msgid "File to Import:"
@@ -1754,21 +1744,21 @@ msgstr "No se puede fijar la vista de estado del árbol"
 #: tryton/gui/window/view_form/screen/screen.py:945
 #, python-format
 msgid "\"%s\" is not valid according to its domain"
-msgstr ""
+msgstr "\"%s\" no es válido según su dominio"
 
 #: tryton/gui/window/view_form/screen/screen.py:952
 #, python-format
 msgid "\"%s\" is required"
-msgstr ""
+msgstr "\"%s\" es obligatorio"
 
 #: tryton/gui/window/view_form/screen/screen.py:956
 #, python-format
 msgid "The values of \"%s\" are not valid"
-msgstr ""
+msgstr "Los valores de \"%s\" no son válidos"
 
 #: tryton/gui/window/view_form/screen/screen.py:1007
 msgid "Pre-validation"
-msgstr ""
+msgstr "Pre-validación"
 
 #: tryton/gui/window/view_form/view/form.py:190
 #: tryton/gui/window/view_form/view/form.py:192
@@ -1851,7 +1841,7 @@ msgstr "Semana"
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:33
 msgid "Select..."
-msgstr ""
+msgstr "Seleccionar..."
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:64
 msgid "Clear"
@@ -1863,7 +1853,7 @@ msgstr "Todos los archivos"
 
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:90
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: tryton/gui/window/view_form/view/form_gtk/char.py:158
 msgid "Show plain text"
@@ -1911,15 +1901,15 @@ msgstr "Editar registro seleccionado <F2>"
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:852
 #, python-format
 msgid "%s%%"
-msgstr ""
+msgstr "%s%%"
 
 #: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:86
 msgid "Foreground"
-msgstr ""
+msgstr "Primer Plano"
 
 #: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:272
 msgid "Select a color"
-msgstr ""
+msgstr "Seleccionar un color"
 
 #: tryton/gui/window/view_form/view/form_gtk/widget.py:113
 msgid "Translation"
