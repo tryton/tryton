@@ -4,12 +4,12 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
 msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr ""
+msgstr "ບາງບັນຊີຫຼັກບັງຄັບບໍ່ມີໃນ \"%(name)s\""
 
 msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "ບັນຊີວິເຄາະ"
 
 msgctxt "field:account.invoice.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr ""
+msgstr "ຂະໜາດບັນຊີວິເຄາະ"
