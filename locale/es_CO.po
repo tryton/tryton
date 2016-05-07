@@ -40,11 +40,11 @@ msgstr "Valor Facturado"
 
 msgctxt "field:project.work,invoiced_duration:"
 msgid "Invoiced Duration"
-msgstr ""
+msgstr "Duración de la Facturación"
 
 msgctxt "field:project.work,invoiced_progress:"
 msgid "Invoiced Progress"
-msgstr ""
+msgstr "Progreso de la Facturación"
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
@@ -52,19 +52,19 @@ msgstr "Método de Facturación"
 
 msgctxt "field:project.work.invoiced_progress,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
 msgctxt "field:project.work.invoiced_progress,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por Usuario"
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
-msgstr ""
+msgstr "Esfuerzo"
 
 msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
@@ -72,19 +72,19 @@ msgstr "Línea de Factura"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
+msgstr "Tarea"
 
 msgctxt "field:project.work.invoiced_progress,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:project.work.invoiced_progress,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
@@ -100,7 +100,7 @@ msgstr "Facturas"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
-msgstr ""
+msgstr "Progreso de Tareas Facturadas"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
@@ -116,7 +116,7 @@ msgstr "Por Esfuerzo"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Progress"
-msgstr ""
+msgstr "En Progreso"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Timesheet"
@@ -132,7 +132,7 @@ msgstr "Por Esfuerzo"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Progress"
-msgstr ""
+msgstr "En Progreso"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
@@ -140,11 +140,11 @@ msgstr "Por Registro de Tiempo"
 
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progress"
-msgstr ""
+msgstr "Progreso de Tareas Facturadas"
 
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
-msgstr ""
+msgstr "Progresos de Tareas Facturadas"
 
 msgctxt "view:project.work:"
 msgid "Invoice"
