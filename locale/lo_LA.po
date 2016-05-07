@@ -4,16 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_invoice_grouping_method:"
 msgid "Sale Invoice Grouping Method"
-msgstr ""
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr ""
+msgstr "ບໍ່ມີ"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
-msgstr ""
+msgstr "ມາດຕະຖານ"
 
 msgctxt "view:party.party:"
 msgid "Invoicing"
-msgstr ""
+msgstr "ການສ້າງໃບເກັບເງິນ"
