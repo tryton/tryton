@@ -10,7 +10,6 @@ msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "La taxa de canvi de la moneda ha de ser més gran o igual a 0."
 
-#, fuzzy
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr "L'agrupació \"%(grouping)s\" de la moneda \"%(currency)s\" no és correcta."
