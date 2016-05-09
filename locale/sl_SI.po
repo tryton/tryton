@@ -52,7 +52,7 @@ msgstr "ID"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr ""
+msgstr "Številka"
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
@@ -294,7 +294,7 @@ msgstr "Odobreno"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
@@ -325,7 +325,6 @@ msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
 msgstr "Reklamacija kupca"
 
-#, fuzzy
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
 msgstr "Ukrep reklamacije kupca"
