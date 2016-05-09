@@ -377,9 +377,10 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 msgctxt "report:account.statement:"
 msgid "Amount"

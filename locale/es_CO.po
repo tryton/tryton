@@ -296,12 +296,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de Estado de Cuenta"
 
-#, fuzzy
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr "Línea de Estado de Cuenta"
+msgstr "Grupo de Línea de Estado de Cuenta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
 msgstr "Grupos de Línea de Estado de Cuenta"
@@ -357,7 +355,6 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validado"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
 msgstr "Grupos de Línea de Estado de Cuenta"

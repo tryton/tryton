@@ -406,9 +406,10 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Отчет"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #, fuzzy
 msgctxt "report:account.statement:"
