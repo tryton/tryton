@@ -178,7 +178,7 @@ msgstr "Planificador de solicitudes de compra"
 
 msgctxt "model:res.user,name:user_generate_shipment_internal"
 msgid "Cron Intenal Shipment"
-msgstr "Planificador de envíos internos"
+msgstr "Planificador de albaranes internos"
 
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"

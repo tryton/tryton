@@ -108,7 +108,7 @@ msgstr "ID"
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
-msgstr ""
+msgstr "Dejar vacío para no provisionar por defecto"
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
