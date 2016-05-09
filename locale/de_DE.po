@@ -84,10 +84,10 @@ msgid "Add an attachment to the record"
 msgstr "Einen Anhang zum Datensatz hinzufügen"
 
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Eine Notiz zu einem Datensatz hinzufügen"
 
 msgid "Reload/Undo"
 msgstr "Neu laden/Rückgängig"
@@ -178,7 +178,7 @@ msgid "Attachment(%1)"
 msgstr "Anhang(%1)"
 
 msgid "Note(%1)"
-msgstr ""
+msgstr "Notiz(%1)"
 
 msgid "Filters"
 msgstr "Filter"
@@ -370,7 +370,6 @@ msgstr "Anwendungsfehler"
 msgid "Report Bug"
 msgstr "Fehler berichten"
 
-#, fuzzy
 msgid "Create..."
 msgstr "Erstellen..."
 

@@ -11,10 +11,10 @@ msgid "Search..."
 msgstr "Cerca..."
 
 msgid "Unable to reach the server"
-msgstr "No ha estat possible connectar-se al servidor."
+msgstr "No ha estat possible connectar amb el servidor."
 
 msgid "Unable to reach the server."
-msgstr "No ha estat possible connectar-se al servidor."
+msgstr "No ha estat possible connectar amb el servidor."
 
 msgid "Login"
 msgstr "Identificació"
@@ -84,10 +84,10 @@ msgid "Add an attachment to the record"
 msgstr "Afegeix un adjunt en el registre"
 
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Afegeix una nota al registre"
 
 msgid "Reload/Undo"
 msgstr "Refresca/Desfés"
@@ -178,7 +178,7 @@ msgid "Attachment(%1)"
 msgstr "Adjunt(%1)"
 
 msgid "Note(%1)"
-msgstr ""
+msgstr "Nota(%1)"
 
 msgid "Filters"
 msgstr "Filtres"
@@ -366,7 +366,6 @@ msgstr "Error d'aplicació."
 msgid "Report Bug"
 msgstr "Informa de l'error"
 
-#, fuzzy
 msgid "Create..."
 msgstr "Crea..."
 

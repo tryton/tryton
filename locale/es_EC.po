@@ -84,10 +84,10 @@ msgid "Add an attachment to the record"
 msgstr "Agregar un adjunto al registro"
 
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Agregar una nota al registro"
 
 msgid "Reload/Undo"
 msgstr "Recargar/Deshacer"
@@ -178,7 +178,7 @@ msgid "Attachment(%1)"
 msgstr "Adjunto(%1)"
 
 msgid "Note(%1)"
-msgstr ""
+msgstr "Nota(%1)"
 
 msgid "Filters"
 msgstr "Filtros"
@@ -366,7 +366,6 @@ msgstr "Error de aplicación"
 msgid "Report Bug"
 msgstr "Informar error"
 
-#, fuzzy
 msgid "Create..."
 msgstr "Crear..."
 
