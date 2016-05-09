@@ -19,3 +19,7 @@ msgstr "Anzahl FIFO"
 msgctxt "selection:product.template,cost_price_method:"
 msgid "FIFO"
 msgstr "FIFO"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
