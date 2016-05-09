@@ -22,22 +22,18 @@ msgstr ""
 "Vous ne pouvez pas clôturer une période avant la date limite d'utilisation "
 "optimale « %(date)s » du lot « %(lot)s »"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
 msgstr "État d'expiration"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
 msgstr "Délai d'expiration"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
 msgstr "État de la durée limite d'utilisation optimale"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Durée limite d'utilisation optimale"
@@ -78,12 +74,10 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Date limite d'utilisation optimale"
 
-#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days"
 msgstr "En nombre de jours"
 
-#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
 msgid "In number of days"
 msgstr "En nombre de jours"
@@ -104,35 +98,29 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Stock forcer l'expiration"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
 msgstr "Aucune"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
 msgstr "Optionnelle"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
-msgstr "Requis"
+msgstr "Requise"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
 msgstr "Aucune"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
 msgstr "Optionnelle"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
-msgstr "Requis"
+msgstr "Requise"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"

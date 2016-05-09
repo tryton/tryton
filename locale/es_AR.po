@@ -22,22 +22,18 @@ msgstr ""
 "No puede cerrar un período antes de la fecha de vencimiento de vida útil "
 "«%(date)s» del Lote «%(lot)s»"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
 msgstr "Estado vencimiento"
 
-#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
 msgstr "Tiempo de vencimiento"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
 msgstr "Estado período de vida útil"
 
-#, fuzzy
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr "Período de vida útil"
@@ -78,12 +74,10 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Estado vencimiento de vida útil"
 
-#, fuzzy
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days"
 msgstr "En número de días"
 
-#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
 msgid "In number of days"
 msgstr "En número de días"
@@ -104,32 +98,26 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Vencimiento forzado de existencia"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
 msgstr "Ninguno"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
 msgstr "Opcional"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
 msgstr "Requerido"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
 msgstr "Ninguno"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
 msgstr "Opcional"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
 msgstr "Requerido"
