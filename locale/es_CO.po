@@ -20,7 +20,7 @@ msgstr "Producto"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
-msgstr ""
+msgstr "Líneas de Compra"
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
@@ -28,8 +28,8 @@ msgstr "Ingresos"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Esfuerzo de Trabajo"
 
 msgctxt "view:project.work:"
 msgid "Purchases"
-msgstr ""
+msgstr "Compras"
