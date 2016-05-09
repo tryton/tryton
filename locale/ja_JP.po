@@ -3738,9 +3738,10 @@ msgctxt "report:account.aged_balance:"
 msgid "+"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
@@ -3778,13 +3779,15 @@ msgctxt "report:account.aged_balance:"
 msgid "at"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
@@ -3866,9 +3869,10 @@ msgctxt "report:account.general_ledger:"
 msgid "at"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
@@ -3934,9 +3938,10 @@ msgctxt "report:account.move.general_journal:"
 msgid "at"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:account.trial_balance:"
 msgid "Account"
