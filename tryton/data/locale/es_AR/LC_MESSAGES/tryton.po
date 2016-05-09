@@ -291,7 +291,7 @@ msgstr "Adjuntos..."
 
 #: tryton/common/popup_menu.py:90
 msgid "Notes..."
-msgstr ""
+msgstr "Notas..."
 
 #: tryton/common/popup_menu.py:100
 msgid "Actions..."
@@ -1097,11 +1097,11 @@ msgstr "Añadir un adjunto al registro"
 
 #: tryton/gui/window/form.py:48
 msgid "Note(0)"
-msgstr ""
+msgstr "Nota(0)"
 
 #: tryton/gui/window/form.py:49
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Añadir una nota al registro"
 
 #: tryton/gui/window/form.py:58
 msgid "_Duplicate"
@@ -1133,7 +1133,7 @@ msgstr "Adjun_tos..."
 
 #: tryton/gui/window/form.py:75
 msgid "_Notes..."
-msgstr ""
+msgstr "_Notas..."
 
 #: tryton/gui/window/form.py:76
 msgid "_Actions..."
@@ -1171,7 +1171,7 @@ msgstr "Adjunto(%d)"
 #: tryton/gui/window/form.py:236
 #, python-format
 msgid "Note(%d)"
-msgstr ""
+msgstr "Nota(%d)"
 
 #: tryton/gui/window/form.py:258
 msgid "You have to select one record."
@@ -1230,13 +1230,12 @@ msgid " of "
 msgstr " de "
 
 #: tryton/gui/window/form.py:513
-#, fuzzy
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Este registro ha sido modificado.\n"
-"¿Desea guardarlo?"
+"Este registro ha sido modificado\n"
+"¿desea guardarlo?"
 
 #: tryton/gui/window/form.py:566
 msgid "Action"
@@ -1547,13 +1546,12 @@ msgid "<b>All fields</b>"
 msgstr "<b>Todos los campos</b>"
 
 #: tryton/gui/window/win_csv.py:86
-#, fuzzy
 msgid "_Clear"
-msgstr "Limpiar"
+msgstr "_Limpiar"
 
 #: tryton/gui/window/win_csv.py:107
 msgid "<b>Fields selected</b>"
-msgstr ""
+msgstr "<b>Campos seleccionados</b>"
 
 #: tryton/gui/window/win_csv.py:126
 msgid "CSV Parameters"
@@ -1561,11 +1559,11 @@ msgstr "Parámetros CSV"
 
 #: tryton/gui/window/win_csv.py:134
 msgid "Delimiter:"
-msgstr ""
+msgstr "Delimitador:"
 
 #: tryton/gui/window/win_csv.py:148
 msgid "Quote char:"
-msgstr ""
+msgstr "Caracter de entrecomillado:"
 
 #: tryton/gui/window/win_csv.py:157
 msgid "Encoding:"
@@ -1588,14 +1586,12 @@ msgid "Name"
 msgstr "Nombre"
 
 #: tryton/gui/window/win_export.py:60
-#, fuzzy
 msgid "_Save Export"
-msgstr "Guardar exportación"
+msgstr "_Guardar exportación"
 
 #: tryton/gui/window/win_export.py:69
-#, fuzzy
 msgid "_Delete Export"
-msgstr "Eliminar exportación"
+msgstr "_Eliminar exportación"
 
 #: tryton/gui/window/win_export.py:82
 msgid "Open"
@@ -1672,9 +1668,8 @@ msgid "Import from CSV"
 msgstr "Importar desde CSV"
 
 #: tryton/gui/window/win_import.py:32
-#, fuzzy
 msgid "_Auto-Detect"
-msgstr "Auto-detectar"
+msgstr "_Auto-detectar"
 
 #: tryton/gui/window/win_import.py:43
 msgid "File to Import:"

@@ -1612,14 +1612,14 @@ msgid "Override '%s' definition?"
 msgstr "Sostituisci definizione '%s'?"
 
 #: tryton/gui/window/win_export.py:324
-#, python-format, fuzzy, python-format
+#, python-format, python-format
 msgid "%d record saved!"
-msgstr "Record salvato!"
+msgstr "%d record salvato!"
 
 #: tryton/gui/window/win_export.py:326
-#, python-format, fuzzy, python-format
+#, python-format, python-format
 msgid "%d records saved!"
-msgstr "Record salvato!"
+msgstr "%d record salvato!"
 
 #: tryton/gui/window/win_export.py:329
 #, python-format
