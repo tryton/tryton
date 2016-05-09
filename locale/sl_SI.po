@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr ""
+msgstr "3-črkovna oznaka"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -12,7 +12,7 @@ msgstr "Šifra"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Številčna koda"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -130,13 +130,12 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Poštna številka"
 
-#, fuzzy
 msgctxt "help:country.country,code3:"
 msgid ""
 "The ISO country code in three chars.\n"
 "You can use this field for quick search."
 msgstr ""
-"ISO dvoznačna oznaka dežele.\n"
+"ISO tročrkovna oznaka dežele.\n"
 "To polje se lahko uporabi za hitro iskanje."
 
 msgctxt "help:country.country,code:"
@@ -144,16 +143,15 @@ msgid ""
 "The ISO country code in two chars.\n"
 "You can use this field for quick search."
 msgstr ""
-"ISO dvoznačna oznaka dežele.\n"
+"ISO dvočrkovna oznaka dežele.\n"
 "To polje se lahko uporabi za hitro iskanje."
 
-#, fuzzy
 msgctxt "help:country.country,code_numeric:"
 msgid ""
 "The ISO numeric country code.\n"
 "You can use this field for quick search."
 msgstr ""
-"ISO dvoznačna oznaka dežele.\n"
+"ISO troštevilčna oznaka dežele.\n"
 "To polje se lahko uporabi za hitro iskanje."
 
 msgctxt "help:country.country,name:"
@@ -894,7 +892,7 @@ msgstr "Portoriko"
 
 msgctxt "model:country.country,name:ps"
 msgid "Palestine, State of"
-msgstr ""
+msgstr "Palestina"
 
 msgctxt "model:country.country,name:pt"
 msgid "Portugal"
@@ -16532,7 +16530,6 @@ msgctxt "model:country.subdivision,name:se-y"
 msgid "Västernorrlands län"
 msgstr "Västernorrlands län"
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:se-z"
 msgid "Jämtlands län"
 msgstr "Jämtlands län"
