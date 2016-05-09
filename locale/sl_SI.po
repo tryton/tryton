@@ -68,7 +68,7 @@ msgstr "Aktivno"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr "Bilanca"
+msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
