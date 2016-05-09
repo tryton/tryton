@@ -252,7 +252,7 @@ msgstr "Izterjave"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Izterjava"
+msgstr "Računovodstvo - izterjava"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
