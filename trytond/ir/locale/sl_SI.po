@@ -70,7 +70,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Neveljavna definicija epošte na izpisu \"%s\"."
 
-#, fuzzy
 msgctxt "error:ir.attachment:"
 msgid "The names of attachments must be unique by resource."
 msgstr "Imena priponk morajo biti unikatna med resursi."
@@ -415,7 +414,7 @@ msgstr "Vrednost konteksta"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "Kontekstni model"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -1443,7 +1442,7 @@ msgstr "Ime"
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
-msgstr "Model veze"
+msgstr "Vezni model"
 
 msgctxt "field:ir.model.field,ttype:"
 msgid "Field Type"
@@ -1669,98 +1668,82 @@ msgctxt "field:ir.module.install_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Moduli za posodobitev"
 
-#, fuzzy
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:ir.note,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:ir.note,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Zadnja sprememba"
 
-#, fuzzy
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
 msgstr "Zadnji uporabnik"
 
 msgctxt "field:ir.note,message:"
 msgid "Message"
-msgstr ""
+msgstr "Sporočilo"
 
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
-msgstr ""
+msgstr "Sporočilo"
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
 msgstr "Vir"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
-msgstr ""
+msgstr "Neprebrano"
 
-#, fuzzy
 msgctxt "field:ir.note,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:ir.note,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr ""
+msgstr "Zabeležka"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
@@ -2925,7 +2908,7 @@ msgstr "Namesti/nadgradi"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Zabeležke"
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -3005,7 +2988,7 @@ msgstr "Diagram"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Grafa delovnega toka"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3211,11 +3194,11 @@ msgstr "Začetek nadgradnje modula"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr ""
+msgstr "Zabeležka"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
+msgstr "Prebrana zabeležka"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
@@ -3399,7 +3382,7 @@ msgstr "Moduli"
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Zabeležke"
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3506,10 +3489,6 @@ msgid "Action form"
 msgstr "Ukrep za obrazec"
 
 msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
-msgstr "Ukrep za drevesni prikaz"
-
-msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
 msgstr "Relacija"
 
@@ -3569,7 +3548,6 @@ msgctxt "selection:ir.module,state:"
 msgid "Not Installed"
 msgstr "Ni nameščeno"
 
-#, fuzzy
 msgctxt "selection:ir.module,state:"
 msgid "To be installed"
 msgstr "Za namestiti"
@@ -3654,7 +3632,6 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Model"
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
 msgstr "Poročilo"
@@ -3801,7 +3778,7 @@ msgstr "Sprožitev ukrepa"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Enkratni zagon"
 
 msgctxt "view:ir.cron:"
 msgid "Scheduled Action"
@@ -3957,24 +3934,22 @@ msgctxt "view:ir.module:"
 msgid "Modules"
 msgstr "Moduli"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Datum"
 
 msgctxt "view:ir.note:"
 msgid "Note"
-msgstr ""
+msgstr "Zabeležka"
 
 msgctxt "view:ir.note:"
 msgid "Notes"
-msgstr ""
+msgstr "Zabeležke"
 
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr ""
+msgstr "Čas"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Uporabnik"

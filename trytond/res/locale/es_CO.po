@@ -11,6 +11,8 @@ msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
 msgstr ""
+"Los usuarios no pueden ser borrados para impedir que se logueen.\n"
+"A cambio debe desactivarlos."
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
