@@ -1187,9 +1187,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Правила оплаты"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
@@ -1483,9 +1484,10 @@ msgctxt "view:account.invoice.payment_term.line.relativedelta:"
 msgid "Payment Term Line Relative Deltas"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
