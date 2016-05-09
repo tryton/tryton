@@ -74,7 +74,7 @@ msgstr "Mouvement comptable"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numéro"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -312,32 +312,26 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortissement utilisé"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Compte d'actif"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
 msgstr "Compte d'actif utilisé"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Compte d'amortissement"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortissement utilisé"
 
-#, fuzzy
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "Dépréciable"
+msgstr "Amortissable"
 
-#, fuzzy
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durée d'amortissement"
@@ -374,7 +368,6 @@ msgstr ""
 "La date doit être comprise entre la dernière date de mise à "
 "jour/d'amortissement et la prochaine date d'amortissement."
 
-#, fuzzy
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "En mois"
@@ -649,7 +642,7 @@ msgstr "Actif"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Séquence"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

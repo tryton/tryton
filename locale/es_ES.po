@@ -74,7 +74,7 @@ msgstr "Asiento contable"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -312,32 +312,26 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Cuenta de amortización utilizada"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Cuenta de activo"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
 msgstr "Cuenta de activo utilizada"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Cuenta de amortización"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Cuenta de amortización utilizada"
 
-#, fuzzy
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Amortizable"
 
-#, fuzzy
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Duración de la amortización"
@@ -374,7 +368,6 @@ msgstr ""
 "La fecha debe estar comprendida entre el último día de la fecha de "
 "amortización/actualización y la siguiente fecha de amortización."
 
-#, fuzzy
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "En meses"
@@ -649,7 +642,7 @@ msgstr "Activo"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"

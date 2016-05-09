@@ -73,7 +73,7 @@ msgstr "Assentament comptable"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
@@ -311,32 +311,26 @@ msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortització utilitzat"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Compte d'actiu"
 
-#, fuzzy
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
 msgstr "Compte d'actiu utilitzat"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Compte d'amortització"
 
-#, fuzzy
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortització utilitzat"
 
-#, fuzzy
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Amortitzable"
 
-#, fuzzy
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durada de l'amortització"
@@ -373,7 +367,6 @@ msgstr ""
 "La data ha d'estar compresa entre l'últim dia de la data de "
 "amortització/actualització i la següent data de amortització."
 
-#, fuzzy
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
 msgstr "En mesos"
@@ -648,7 +641,7 @@ msgstr "Actiu"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Seqüència"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
