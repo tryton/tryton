@@ -1571,13 +1571,15 @@ msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
 msgstr "Envío devolución cliente"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -1628,13 +1630,15 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
 msgstr "Almacén"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
@@ -1685,9 +1689,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
 msgstr "A ubicación"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
@@ -1722,13 +1727,15 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -1779,13 +1786,15 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
 msgstr "Almacén"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
-msgstr ""
+msgstr "/"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
