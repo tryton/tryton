@@ -126,7 +126,6 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Dodatno"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
 msgstr "Dodatno"
