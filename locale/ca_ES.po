@@ -18,7 +18,6 @@ msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Conversió i factor no poden ser zero simultàniament."
 
-#, fuzzy
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
@@ -61,36 +60,30 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Mètode de cost per defecte"
 
-#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
@@ -99,7 +92,6 @@ msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Actiu"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "Categories"
@@ -108,17 +100,14 @@ msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Codi"
 
-#, fuzzy
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
 msgstr "Consumible"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
 msgstr "Preu de cost"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Method"
 msgstr "Mètode de cost"
@@ -139,7 +128,6 @@ msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
 msgstr "UdM per defecte"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr "Categoria per defecte UdM"
@@ -152,7 +140,6 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
 msgstr "Preu de venda"
@@ -161,7 +148,6 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Preu de venda"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nom"
@@ -190,7 +176,6 @@ msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Actiu"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Categories"
@@ -255,41 +240,34 @@ msgctxt "field:product.template,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Plantilla"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
@@ -400,15 +378,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categories de producte"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categories de producte"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Configuració de productes"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
@@ -436,11 +414,11 @@ msgstr "Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Arbre de categories"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -452,7 +430,7 @@ msgstr "Variants"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Productes"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -472,7 +450,7 @@ msgstr "Categoria de producte"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Configuració de productes"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
@@ -484,7 +462,7 @@ msgstr "Plantilla de producte"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr ""
+msgstr "Plantilla - Categoria"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -782,22 +760,18 @@ msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid ""
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Average"
 msgstr "Mitjana"
 
-#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Fixed"
 msgstr "Fix"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Mitjana"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
 msgstr "Fix"
@@ -848,7 +822,7 @@ msgstr "Categoria de producte"
 
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuració de tercers"
 
 msgctxt "view:product.product:"
 msgid "Product"

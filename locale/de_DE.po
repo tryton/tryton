@@ -18,7 +18,6 @@ msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Faktor und Kehrwert Faktor können beide nicht 0 sein"
 
-#, fuzzy
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
@@ -61,36 +60,30 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Standardkostenmethode"
 
-#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
 msgstr "Name"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
@@ -99,7 +92,6 @@ msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Aktiv"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "Artikelkategorien"
@@ -108,17 +100,14 @@ msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Variantennummer"
 
-#, fuzzy
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
 msgstr "Verbrauchsmaterial"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
 msgstr "Kostenpreis"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Method"
 msgstr "Kostenmethode"
@@ -139,10 +128,9 @@ msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
 msgstr "Standardeinheit"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Standardkategorie Maßeinheit"
+msgstr "Standardmaßeinheit Kategorie"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -152,7 +140,6 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
 msgstr "Listenpreis"
@@ -161,7 +148,6 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Listenpreis"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Name"
@@ -190,7 +176,6 @@ msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Aktiv"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Artikelkategorien"
@@ -255,41 +240,34 @@ msgctxt "field:product.template,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
 msgstr "Artikelkategorie"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "Name"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Vorlage für Steuerkonto"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
@@ -410,7 +388,7 @@ msgstr "Artikelkategorien"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Einstellungen Artikel"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
@@ -442,7 +420,7 @@ msgstr "Artikelkategorien"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -454,7 +432,7 @@ msgstr "Varianten"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Artikel"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -474,7 +452,7 @@ msgstr "Artikel Kategorie"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Einstellungen Artikel"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
@@ -486,7 +464,7 @@ msgstr "Artikel"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr ""
+msgstr "Artikel - Kategorie"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -782,24 +760,20 @@ msgstr "Artikel Administration"
 
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid ""
-msgstr ""
+msgstr " "
 
-#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Average"
 msgstr "Durchschnitt"
 
-#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Fixed"
 msgstr "Fix"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Durchschnitt"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
 msgstr "Fix"
@@ -850,7 +824,7 @@ msgstr "Artikelkategorie"
 
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "view:product.product:"
 msgid "Product"
