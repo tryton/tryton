@@ -36,7 +36,7 @@ msgstr "Rechnungspositionen"
 
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -94,7 +94,6 @@ msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
 msgstr "Einstandskosten"
@@ -162,14 +161,13 @@ msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Festgeschrieben"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
 msgstr "Einstandskosten"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Nummernkreis"
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
