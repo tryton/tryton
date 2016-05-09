@@ -66,55 +66,45 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Verwendetes Konto Lager"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
-msgstr "Konto Lager"
+msgstr "Lagerkonto"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
-msgstr "Konto Lager Kunde"
+msgstr "Lagerkonto Kunde"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Verwendetes Konto Lager Kunde"
+msgstr "Verwendetes Lagerkonto Kunde"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto Lager Inventurdifferenz"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto Lager Inventurdifferenz"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production:"
 msgid "Account Stock Production"
-msgstr "Konto Lager Produktion"
+msgstr "Lagerkonto Produktion"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production_used:"
 msgid "Account Stock Production Used"
 msgstr "Verwendetes Konto Lager Produktion"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Konto Lager Lieferant"
+msgstr "Lagerkonto Lieferant"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr "Verwendetes Konto Lager Lieferant"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
-msgstr "Verwendetes Konto Lager"
+msgstr "Verwendetes Lagerkonto"
 
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
@@ -204,35 +194,30 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Lagerkonto"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""

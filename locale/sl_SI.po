@@ -66,52 +66,42 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Uporabljen konto zaloge"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
 msgstr "Konto zaloge"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Konto zaloge pri kupcu"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
 msgstr "Uporabljen konto zaloge pri kupcu"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto zaloge pri izgubljeno/najdeno"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto zaloge pri izgubljeno/najdeno"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Konto zaloge pri proizvodnji"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production_used:"
 msgid "Account Stock Production Used"
 msgstr "Uporabljen konto zaloge pri proizvodnji"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Konto zaloge pri dobavitelju"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr "Uporabljen konto zaloge pri dobavitelju"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Uporabljen konto zaloge"
@@ -204,30 +194,25 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Konto zaloge"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
+msgstr "Namesto konta v kategoriji se bo uporabil ta konto."
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
