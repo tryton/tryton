@@ -4,31 +4,31 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "ເຈົາບໍ່ສາມາດປ່ຽນທີ່ຢູ່ຂອງພາກສ່ນີ້ໄດ້ \"%s\"."
+msgstr "ເຈົ້າບໍ່ສາມາດປ່ຽນທີ່ຢູ່ຂອງພາກສ່ວນ \"%s\" ນີ້ໄດ້."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr "ຊື່ຂນິດນີບໍຖຶກ \"%s\": ເຈົາ \" / \" ໄຊ້ບໍໄດ້ ໃນຊື່ຄົນ"
+msgstr "ຊື່ປະເພດ \"%s\" ນີ້ບໍ່ຖືກ : ທ່ານບໍ່ສາມາດໃຊ້ \" / \" ໄດ້ ໃນຫ້ອງຊື່ຄົນ"
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
-msgstr "ຊື່ຂອງພາກສ່ວນນີຕ້ອງມີຊື່ດຽວຈາກພໍແມ່"
+msgstr "ຊື່ປະເພດຂອງພາກສ່ວນຕ້ອງບໍ່ຊໍ້າກັນ"
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
-msgstr "ການລໍລິການຊີວິດບໍມີ,ລອງອິກເທື່ອຫນ້າ"
+msgstr "ການບໍລິການລະບົບຂໍ້ມູນແລກປ່ຽນອາກອນບໍ່ທັນມີ, ລອງໃໝ່ອີກນໍາຫຼັງ."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "ເຈົາບໍ່ສາມາດປ່ຽນລະບົບຜູ້ຕິດຕໍຂອງພາກສ່ນີ້ໄດ້ \"%s\"."
+msgstr "ທ່ານບໍ່ສາມາດປັບປຸງແກ້ໄຂພາກສ່ວນຂອງກົນໄກການຕິດຕໍ່ \"%s\" ນີ້ໄດ້."
 
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "ເລກ ອມພ \"%(code)s\" ໃນພາກສ່ວນ \"%(party)s\" ບໍ່ຖືກຕ້ອງ."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
-msgstr "ລະຫັດຂອງພາກສ່ວນນີຕ້ອງເປັນເອກກະລັກ"
+msgstr "ລະຫັດຂອງພາກສ່ວນຕ້ອງບໍ່ຊໍ້າກັນ"
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -36,7 +36,7 @@ msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:party.address,city:"
 msgid "City"
-msgstr "ເມືອງ"
+msgstr "ບ້ານ"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
@@ -72,15 +72,15 @@ msgstr "ຊື່"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr "ບ່ອນທີ"
+msgstr "ລຳດັບ"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr "ບ້ານ"
+msgstr "ຖະໜົນ"
 
 msgctxt "field:party.address,streetbis:"
 msgid "Street (bis)"
-msgstr "ຖະໜົນ"
+msgstr "ຖະໜົນເຊື່ອມຕໍ່"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
@@ -96,7 +96,7 @@ msgstr "ຂຽນຊື່ຜູ້ໃຊ້"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "ລະຫັດໄປສະນີ"
+msgstr "ລະຫັດປະເທດ"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -124,7 +124,7 @@ msgstr "ຊື່"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "ໝວດລວມ"
+msgstr "ຂຶ້ນກັບ"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
@@ -140,15 +140,15 @@ msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
-msgstr "ບັດ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "ພາກສ່ວນຫຼົມເຫຼວ"
+msgstr "ພາກສ່ວນລົ້ມເຫຼວ"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "ພາກສ່ວນລຽບລ້ອຍດີ"
+msgstr "ພາກສ່ວນສຳເລັດຜົນ"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
@@ -180,7 +180,7 @@ msgstr "ຂຽນຊື່ຜູ້ໃຊ້"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr "ຍັງໃຊ້ຢູ່"
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
@@ -196,15 +196,15 @@ msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr "ອີເມນ"
+msgstr "ອີເມວລ໌"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
-msgstr "ບັດ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr "ຄ່າ"
+msgstr "ໝາຍເລກ"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
@@ -216,15 +216,15 @@ msgstr "ຊື່"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr "ລຽງ"
+msgstr "ລໍາດັບ"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
-msgstr "ຕິດຕໍ່ທາງSIP"
+msgstr "ຕິດຕໍ່ທາງສື່ອິນເຕີເນັດ"
 
 msgctxt "field:party.contact_mechanism,skype:"
 msgid "Skype"
-msgstr "ຫາໄກປີ"
+msgstr "ສະກາຍປີ (Skype)"
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
@@ -236,7 +236,7 @@ msgstr "ທີ່ຢູ່ເວບ"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr "ຄ່າ"
+msgstr "ໝາຍເລກ"
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
@@ -250,54 +250,45 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຊື່ຜູ້ໃຊ້"
 
-#, fuzzy
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
 
-#, fuzzy
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
 
-#, fuzzy
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
-#, fuzzy
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr "ເລກລະຫັດ"
+msgstr "ເລກລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:party.identifier,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
-#, fuzzy
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "ປະເພດ"
 
-#, fuzzy
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
 msgstr "ຂຽນວັນທີ"
 
-#, fuzzy
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຊື່ຜູ້ໃຊ້"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr "ໃຊ້ງານຢູ່"
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -313,11 +304,11 @@ msgstr "ລະຫັດ"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "ລະຫັດລຶບບໍ່ໄດ້"
+msgstr "ລະຫັດອ່ານໄດ້ຢ່າງດຽວ"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "ລະບົບການຕິດຕໍ່"
+msgstr "ກົນໄກການຕິດຕໍ່"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
@@ -341,11 +332,11 @@ msgstr "ຊື່ເຕັມ"
 
 msgctxt "field:party.party,id:"
 msgid "ID"
-msgstr "ເລກປະຈໍາ"
+msgstr "ເລກປະຈໍາໂຕ"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "ລະບຸຕົວຕົນ"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
@@ -369,7 +360,7 @@ msgstr "ຊື່"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "ລະຫັດ ອ.ມ.ພ"
+msgstr "ລະຫັດ ອມພ"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -397,7 +388,7 @@ msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
-msgstr "ບັດ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
@@ -445,7 +436,7 @@ msgstr "ພາກສ່ວນ"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "ບັດ"
+msgstr "ປ້າຍຊື່"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
@@ -509,11 +500,11 @@ msgstr "ການຕັ້ງຄ່າພາກສ່ວນ"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "ລະບົບການຕິດຕໍ່"
+msgstr "ກົນໄກການຕິດຕໍ່"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -529,19 +520,19 @@ msgstr "ການບໍລິຫານພາກສ່ວນ"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr "ອີເມນ"
+msgstr "ອີເມວລ໌"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
-msgstr "ແຟກ"
+msgstr "ໂທລະສານ"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
-msgstr "ພົວພັນທາງຄອມ"
+msgstr "ສື່ທາງອິນເຕີເນັດ"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Jabber"
-msgstr "ສົ່ງສັນຍານຄຳ"
+msgstr "ສົ່ງສັນຍານຄຳເວົ້າ"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
@@ -561,11 +552,11 @@ msgstr "ໂທລະສັບວິດິໂອ"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Skype"
-msgstr "ສະໄກປີ"
+msgstr "ສະກາຍປີ (Skype)"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
-msgstr "ເວບໄຊ"
+msgstr "ເວັບໄຊຕ໌"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
@@ -581,7 +572,7 @@ msgstr "ປະເພດ"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "ປົນລະບົບແລກປ່ຽນພາສີ"
+msgstr "ຜົນລະບົບຂໍ້ມູນແລກປ່ຽນອາກອນ"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
@@ -589,19 +580,19 @@ msgstr "ການຕັ້ງຄ່າພາກສ່ວນ"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "ລະບົບການຕິດຕໍ່"
+msgstr "ກົນໄກການຕິດຕໍ່"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr "ລະບົບການຕິດຕໍ່"
+msgstr "ກົນໄກການຕິດຕໍ່"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
-msgstr ""
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"
 
 msgctxt "view:party.party:"
 msgid "General"

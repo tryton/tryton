@@ -166,7 +166,7 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Seqüència del tercer"
+msgstr "Seqüència de tercer"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -414,11 +414,11 @@ msgstr "Adreces"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categories de tercer"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categories de tercer"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
@@ -462,7 +462,7 @@ msgstr "Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Arbre de categories"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -566,7 +566,7 @@ msgstr "Adreces"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categories de tercer"
 
 msgctxt "view:party.category:"
 msgid "Category"

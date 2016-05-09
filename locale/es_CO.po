@@ -24,7 +24,6 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Usted no puede modificar los medios de contacto del tercero \"%s\" "
 
-#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr "Inválido número NIT \"%(vat)s\" en tercero \"%(party)s\"."
@@ -339,7 +338,7 @@ msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificador"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
@@ -507,7 +506,7 @@ msgstr "Medio de Contacto"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Identificador de Tercero"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -591,11 +590,11 @@ msgstr "Medios de Contacto"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Identificador de Tercero"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
-msgstr ""
+msgstr "Identificador de Tercero"
 
 msgctxt "view:party.party:"
 msgid "General"
