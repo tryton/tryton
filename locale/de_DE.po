@@ -76,21 +76,19 @@ msgstr "Verkäufe"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Beschaffungszeit"
 
-#, fuzzy
 msgctxt "field:product.product,salable:"
 msgid "Salable"
 msgstr "Verkäuflich"
 
-#, fuzzy
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UOM"
 msgstr "Einheit Verkauf"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Beschaffungszeit"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -122,7 +120,7 @@ msgstr "Rechnungsstellung Verkauf"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
-msgstr ""
+msgstr "Nummernkreis Verkauf"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -238,7 +236,7 @@ msgstr "Reihenfolge"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
-msgstr ""
+msgstr "Lieferdatum"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -442,7 +440,7 @@ msgstr "Bewegungen"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
@@ -798,10 +796,9 @@ msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
 msgstr "Angebot Nr.:"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Reference:"
-msgstr "Beleg-Nr."
+msgstr "Beleg-Nr.:"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
@@ -833,7 +830,7 @@ msgstr "USt-ID-Nr:"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -853,7 +850,7 @@ msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Shipment Sent"
-msgstr "Bei Versand"
+msgstr "Bei Lieferung"
 
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "Manual"
@@ -893,7 +890,7 @@ msgstr "Bei Auftragsausführung"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Shipment Sent"
-msgstr "Bei Versand"
+msgstr "Bei Lieferung"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
@@ -965,7 +962,7 @@ msgstr "Angebot"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
