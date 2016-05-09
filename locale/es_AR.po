@@ -30,7 +30,7 @@ msgstr "Cliente"
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
@@ -46,7 +46,7 @@ msgstr "Cliente"
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -98,7 +98,7 @@ msgstr "Movimientos de cliente"
 
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr "Dirección envío"
+msgstr "Dirección de envío"
 
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
