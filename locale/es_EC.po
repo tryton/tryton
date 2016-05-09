@@ -12,7 +12,7 @@ msgstr "Debe cancelar la oportunidad de venta \"%s\" antes de eliminarla."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Secuencia de oportunidad"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -70,7 +70,6 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Motivo de la pérdida"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
 msgstr "Número"

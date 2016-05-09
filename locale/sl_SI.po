@@ -12,7 +12,7 @@ msgstr "Prodajna priložnost \"%s\" more biti pred brisanjem preklicana."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Štetje priložnosti"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -70,7 +70,6 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Razlog za zapravljeno priložnost"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
 msgstr "Številka"
@@ -592,7 +591,7 @@ msgstr "Poročila"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Prodajna priložnost"
+msgstr "Prodaja - priložnost"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"

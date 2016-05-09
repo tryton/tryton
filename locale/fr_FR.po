@@ -12,7 +12,7 @@ msgstr "L'opportunité de vente « %s » doit être annulée avant suppression
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Séquence d'opportunité"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -70,10 +70,9 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Raison de la perte"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
-msgstr "Nombre"
+msgstr "Numéro"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
