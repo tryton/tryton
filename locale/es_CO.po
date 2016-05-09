@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr ""
+msgstr "El Pago \"%(payment)s\" excede el valor a pagar en la Línea \"%(line)s.\""
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "El Pago \"%s\" debe estar en borrador antes de eliminarse."
+msgstr "El pago \"%s\" debe estar en borrador antes de eliminarse."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Secuencia de Grupo de Pago"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Clase"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -326,7 +326,7 @@ msgstr "Pago"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -378,9 +378,8 @@ msgstr "Manual"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Secuencia de Grupo"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pago"

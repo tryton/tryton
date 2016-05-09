@@ -12,7 +12,7 @@ msgstr "Zahlung \"%s\" kann nur in Status Entwurf gelöscht werden."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Nummernkreis Zahlungsgruppe"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -136,7 +136,7 @@ msgstr "Art"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -290,7 +290,7 @@ msgstr "Erfolgreich"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
-msgstr "Standardzahlungsgruppe"
+msgstr "Standard Zahlungsgruppe"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
@@ -326,7 +326,7 @@ msgstr "Zahlung"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -378,9 +378,8 @@ msgstr "Manuell"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Nummernkreis Gruppe"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Zahlung"
