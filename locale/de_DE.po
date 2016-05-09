@@ -65,17 +65,14 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Einkäufe"
 
-#, fuzzy
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "Lieferanten"
 
-#, fuzzy
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
 msgstr "Käuflich"
 
-#, fuzzy
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Maßeinheit Einkauf"
@@ -110,7 +107,7 @@ msgstr "Rechnungsstellung Einkauf"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
-msgstr ""
+msgstr "Nummernkreis Einkauf"
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -358,7 +355,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr "Variantennummer Lieferant"
+msgstr "Code Lieferant"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
@@ -382,7 +379,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Beschaffungszeit"
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -522,7 +519,7 @@ msgstr "Bewegungen"
 
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -666,7 +663,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
-msgstr ""
+msgstr "Rückgabe Lieferant"
 
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
@@ -723,7 +720,7 @@ msgstr "Minimale Anzahl"
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
-msgstr ""
+msgstr "Wenn kein Wert eingetragen ist, wird die Lagerzone verwendet."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -921,10 +918,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Anzahl"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
-msgstr "Beleg-Nr."
+msgstr "Beleg-Nr.:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
@@ -956,7 +952,7 @@ msgstr "USt-ID-Nr:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -1064,7 +1060,7 @@ msgstr "Angebot"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
-msgstr ""
+msgstr " "
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"

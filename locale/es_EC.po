@@ -62,17 +62,14 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Compras"
 
-#, fuzzy
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "Proveedores"
 
-#, fuzzy
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
 msgstr "Comprable"
 
-#, fuzzy
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "UdM de compra"
@@ -107,7 +104,7 @@ msgstr "Método de facturación"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
-msgstr ""
+msgstr "Secuencia de compra"
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
@@ -379,7 +376,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Tiempo de espera"
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
@@ -519,7 +516,7 @@ msgstr "Movimientos"
 
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -663,7 +660,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
-msgstr ""
+msgstr "Devolución a proveedor"
 
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
@@ -718,7 +715,7 @@ msgstr "Cantidad mínima"
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
-msgstr ""
+msgstr "Si se deja vacío, se utilizará la ubicación de almacenamiento"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -916,10 +913,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
-msgstr "Referencia"
+msgstr "Referencia:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
