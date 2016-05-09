@@ -272,9 +272,10 @@ msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "SEPA Messages"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "."
-msgstr ""
+msgstr "."
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"

@@ -263,7 +263,7 @@ msgstr "Messages SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "."
-msgstr ""
+msgstr "."
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
