@@ -120,7 +120,7 @@ msgstr "Ubicación"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -574,7 +574,7 @@ msgstr "Cancelada"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizado"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -654,7 +654,7 @@ msgstr "Cancelar"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Finalizar"
 
 msgctxt "view:production:"
 msgid "Draft"

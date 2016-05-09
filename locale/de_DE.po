@@ -19,7 +19,7 @@ msgstr "Erstellung rekursiver Stücklisten nicht möglich."
 
 msgctxt "error:production.bom.input:"
 msgid "product_bom_uniq"
-msgstr ""
+msgstr " "
 
 msgctxt "error:production.bom.output:"
 msgid "Product must be unique per BOM."
@@ -31,7 +31,7 @@ msgstr "Erstellung rekursiver Stücklisten nicht möglich."
 
 msgctxt "error:production.bom.output:"
 msgid "product_bom_uniq"
-msgstr ""
+msgstr " "
 
 msgctxt "error:production:"
 msgid ""
@@ -119,7 +119,7 @@ msgstr "Lagerort"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"

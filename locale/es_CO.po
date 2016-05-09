@@ -120,7 +120,7 @@ msgstr "Bodega"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -678,7 +678,7 @@ msgstr "Producciones"
 
 msgctxt "view:production:"
 msgid "Reset to BOM"
-msgstr ""
+msgstr "Restablecer a LDM"
 
 msgctxt "view:production:"
 msgid "Run"
