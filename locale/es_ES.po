@@ -230,7 +230,6 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-#, fuzzy
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Comisión principales"
@@ -353,7 +352,7 @@ msgstr "Agentes"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr "Comisión"
+msgstr "Comisiones"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
@@ -377,7 +376,7 @@ msgstr "Plantilla de producto - Agente de comisión"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "Comisión"
+msgstr "Comisiones"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
@@ -469,7 +468,7 @@ msgstr "Planes comisión"
 
 msgctxt "view:commission:"
 msgid "Commission"
-msgstr "Comisión"
+msgstr "Comisiones"
 
 msgctxt "view:commission:"
 msgid "Commissions"
