@@ -12,19 +12,19 @@ msgstr "No hay una cuenta gastos/ingresos definida para el producto %s (%d)"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "Cuenta de Gastos por Defecto"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Cuenta de Ingresos por Defecto"
 
 msgctxt "field:account.configuration,default_product_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "Cuenta de Ingresos por Defecto"
 
 msgctxt "field:account.configuration,default_product_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Cuenta de Ingresos por Defecto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -46,7 +46,6 @@ msgctxt "field:product.category,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Cuenta de Ingresos Usada"
 
-#, fuzzy
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Contabilidad"
@@ -137,69 +136,59 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:product.configuration,default_accounts_category:"
 msgid "Use Category's accounts by default"
-msgstr ""
+msgstr "Usar cuentas de la Categoría por defecto"
 
 msgctxt "field:product.configuration,default_taxes_category:"
 msgid "Use Category' taxes by default"
-msgstr ""
+msgstr "Usar impuestos de la Categoría por defecto"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Categoría de la Cuenta"
 
-#, fuzzy
 msgctxt "field:product.product,account_expense:"
 msgid "Account Expense"
 msgstr "Cuenta de Gastos"
 
-#, fuzzy
 msgctxt "field:product.product,account_expense_used:"
 msgid "Account Expense Used"
 msgstr "Cuenta de Gastos Usada"
 
-#, fuzzy
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr "Cuenta de Ingresos"
 
-#, fuzzy
 msgctxt "field:product.product,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Cuenta de Ingresos Usada"
 
-#, fuzzy
 msgctxt "field:product.product,accounts_category:"
 msgid "Use Category's accounts"
 msgstr "Use Cuentas de la Categoría"
 
-#, fuzzy
 msgctxt "field:product.product,customer_taxes:"
 msgid "Customer Taxes"
 msgstr "Impuestos del Cliente"
 
-#, fuzzy
 msgctxt "field:product.product,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Impuestos del Cliente Aplicados"
+msgstr "Impuestos del Cliente Utilizados"
 
-#, fuzzy
 msgctxt "field:product.product,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Impuestos del Proveedor"
 
-#, fuzzy
 msgctxt "field:product.product,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Impuestos del Proveedor Aplicados"
+msgstr "Impuestos del Proveedor Utilizado"
 
-#, fuzzy
 msgctxt "field:product.product,taxes_category:"
 msgid "Use Category's Taxes"
 msgstr "Usar Impuestos de la Categoría"
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr ""
+msgstr "Categoría de Cuenta"
 
 msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
@@ -217,7 +206,6 @@ msgctxt "field:product.template,account_revenue_used:"
 msgid "Account Revenue Used"
 msgstr "Cuenta de Ingresos Usada"
 
-#, fuzzy
 msgctxt "field:product.template,accounts_category:"
 msgid "Use Category's accounts"
 msgstr "Use Cuentas de la Categoría"
@@ -314,22 +302,18 @@ msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
 msgstr "Usar los impuestos definidos en la categoria padre"
 
-#, fuzzy
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
 
-#, fuzzy
 msgctxt "help:product.product,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
 
-#, fuzzy
 msgctxt "help:product.product,accounts_category:"
 msgid "Use the accounts defined on the category"
 msgstr "Use las cuentas definidas en la categoría"
 
-#, fuzzy
 msgctxt "help:product.product,taxes_category:"
 msgid "Use the taxes defined on the category"
 msgstr "Usar los impuestos definidos en la categoría"
@@ -342,7 +326,6 @@ msgctxt "help:product.template,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
 
-#, fuzzy
 msgctxt "help:product.template,accounts_category:"
 msgid "Use the accounts defined on the category"
 msgstr "Use las cuentas definidas en la categoría"
@@ -373,7 +356,7 @@ msgstr "Categoría"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
