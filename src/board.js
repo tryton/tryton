@@ -8,7 +8,6 @@
             var attributes, attribute, node, actions_prms;
 
             this.context = context;
-            this.widgets = [];
             this.actions = [];
             this.el = jQuery('<div/>', {
                 'class': 'board'
