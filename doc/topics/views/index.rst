@@ -223,8 +223,6 @@ Display a field of the object with the value of the current record.
 
     * ``readonly``: Boolean to set the field readonly.
 
-    * ``required``: Boolean to set the field required.
-
     * ``mode``: Only for One2Many fields: it is a comma separated list, that
       specifies the order of the view used to display the relation. (Example:
       ``tree,form``)
@@ -509,8 +507,6 @@ field
     * ``name``: The name of the field.
 
     * ``readonly``: Boolean to set the field readonly.
-
-    * ``required``: Boolean to set the field required.
 
     * ``widget``: The widget that must be used instead of the default one.
 
