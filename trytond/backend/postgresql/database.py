@@ -13,7 +13,7 @@ try:
 except ImportError:
     pass
 from psycopg2 import connect
-from psycopg2.pool import ThreadedConnectionPool
+from psycopg2.pool import ThreadedConnectionPool, PoolError
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extensions import register_type, register_adapter
@@ -96,7 +96,16 @@ class Database(DatabaseInterface):
     def get_connection(self, autocommit=False, readonly=False):
         if self._connpool is None:
             self.connect()
-        conn = self._connpool.getconn()
+        for count in range(config.getint('database', 'retry'), -1, -1):
+            try:
+                conn = self._connpool.getconn()
+                break
+            except PoolError:
+                if count and not self._connpool.closed:
+                    logger.info('waiting a connection')
+                    time.sleep(1)
+                    continue
+                raise
         if autocommit:
             conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         else:
