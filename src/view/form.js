@@ -2864,6 +2864,10 @@
             }.bind(this));
         },
         clear: function() {
+	    var filename_field = this.filename_field();
+            if (filename_field) {
+                filename_field.set_client(this.record(), null)
+            }
             this.field().set_client(this.record(), null);
         }
     });
