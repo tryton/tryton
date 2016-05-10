@@ -422,7 +422,7 @@ class ViewTree(View):
 
         decoder = PYSONDecoder(self.screen.context)
         column.set_visible(
-            not decoder.decoder(node_attrs.get('tree_invisible', '0')))
+            not decoder.decode(node_attrs.get('tree_invisible', '0')))
 
         self.treeview.append_column(column)
 
