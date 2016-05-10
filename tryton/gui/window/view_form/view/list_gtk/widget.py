@@ -501,7 +501,9 @@ class Binary(GenericText):
 
     def clear_binary(self, renderer, path):
         record, field = self._get_record_field(path)
-        field.set_client(record, False)
+        if self.filename_field:
+            self.filename_field.set_client(record, None)
+        field.set_client(record, None)
 
 
 class Image(GenericText):

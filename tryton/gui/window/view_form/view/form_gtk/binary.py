@@ -129,6 +129,8 @@ class BinaryMixin(Widget):
                     fp.write(self.field.get(self.record))
 
     def clear(self, widget=None):
+        if self.filename_field:
+            self.filename_field.set_client(self.record, None)
         self.field.set_client(self.record, None)
 
 
