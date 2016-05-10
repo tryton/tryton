@@ -16,7 +16,6 @@ class ViewBoard(object):
 
     def __init__(self, arch, context=None):
         self.context = context
-        self.widgets = []
         self.actions = []
 
         xml_dom = xml.dom.minidom.parseString(arch)
