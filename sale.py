@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Configuration', 'Sale', 'SaleLine']
@@ -11,9 +11,6 @@ __all__ = ['Configuration', 'Sale', 'SaleLine']
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
-    sale_carrier = fields.Property(fields.Many2One('carrier', 'Carrier',
-        domain=[('carrier_product.salable', '=', True)],
-    ))
     sale_shipment_cost_method = fields.Property(fields.Selection([
                 ('order', 'On Order'),
                 ('shipment', 'On Shipment'),
@@ -31,11 +28,19 @@ class Sale:
     __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
     carrier = fields.Many2One('carrier', 'Carrier',
-        domain=[('carrier_product.salable', '=', True)],
+        domain=[
+            ('carrier_product.salable', '=', True),
+            If(Eval('state').in_(['draft', 'quotation']),
+                ('id', 'in', Eval('available_carriers', [])),
+                ()),
+            ],
         states={
             'readonly': Eval('state') != 'draft',
         },
-        depends=['state'])
+        depends=['state', 'available_carriers'])
+    available_carriers = fields.Function(
+        fields.Many2Many('carrier', None, None, 'Available Carriers'),
+        'on_change_with_available_carriers')
     shipment_cost_method = fields.Selection([
         ('order', 'On Order'),
         ('shipment', 'On Shipment'),
@@ -44,16 +49,65 @@ class Sale:
             }, depends=['state'])
 
     @staticmethod
-    def default_carrier():
-        Config = Pool().get('sale.configuration')
-        config = Config(1)
-        return config.sale_carrier.id if config.sale_carrier else None
-
-    @staticmethod
     def default_shipment_cost_method():
         Config = Pool().get('sale.configuration')
         config = Config(1)
         return config.sale_shipment_cost_method
+
+    def _get_carrier_selection_pattern(self):
+        pattern = {}
+        if self.warehouse.address and self.warehouse.address.country:
+            pattern['from_country'] = self.warehouse.address.country.id
+        if self.shipment_address and self.shipment_address.country:
+            pattern['to_country'] = self.shipment_address.country.id
+        return pattern
+
+    @fields.depends('warehouse', 'shipment_address')
+    def on_change_with_available_carriers(self, name=None):
+        pool = Pool()
+        CarrierSelection = pool.get('carrier.selection')
+
+        pattern = self._get_carrier_selection_pattern()
+        carriers = CarrierSelection.get_carriers(pattern)
+        return [c.id for c in carriers]
+
+    # XXX We must have the same depends than on_change_with_available_carriers,
+    # for now it is maintain manually until we can specify cross-kind depends
+    # on on_changes
+    @fields.depends('warehouse', 'shipment_address')
+    def on_change_party(self):
+        super(Sale, self).on_change_party()
+        self.available_carriers = self.on_change_with_available_carriers()
+        if self.available_carriers:
+            self.carrier = self.available_carriers[0]
+        else:
+            self.carrier = None
+
+    @fields.depends('carrier', 'warehouse', 'shipment_address')
+    def on_change_shipment_party(self):
+        super(Sale, self).on_change_shipment_party()
+        self.available_carriers = self.on_change_with_available_carriers()
+        if self.available_carriers and (not self.carrier
+                or self.carrier not in self.available_carriers):
+            self.carrier = self.available_carriers[0]
+        else:
+            self.carrier = None
+
+    @fields.depends('warehouse', 'shipment_address')
+    def on_change_shipment_address(self):
+        try:
+            super_on_change = super(Sale, self).on_change_shipment_address
+        except AttributeError:
+            pass
+        else:
+            super_on_change()
+
+        self.available_carriers = self.on_change_with_available_carriers()
+        if self.available_carriers and (not self.carrier
+                or self.carrier not in self.available_carriers):
+            self.carrier = self.available_carriers[0]
+        else:
+            self.carrier = None
 
     @classmethod
     @ModelView.button

@@ -104,6 +104,12 @@ Create carrier::
     >>> carrier.carrier_product = carrier_product
     >>> carrier.save()
 
+Use it as the default carrier::
+
+    >>> CarrierSelection = Model.get('carrier.selection')
+    >>> csc = CarrierSelection(carrier=carrier)
+    >>> csc.save()
+
 Create payment term::
 
     >>> payment_term = create_payment_term()
