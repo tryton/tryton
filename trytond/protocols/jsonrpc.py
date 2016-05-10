@@ -121,7 +121,10 @@ class JSONRequest(Request):
     def parsed_data(self):
         if self.parsed_content_type in self.environ.get('CONTENT_TYPE', ''):
             try:
-                return json.loads(self.decoded_data, object_hook=JSONDecoder())
+                return json.loads(
+                    self.decoded_data.decode(
+                        self.charset, self.encoding_errors),
+                    object_hook=JSONDecoder())
             except Exception:
                 raise BadRequest('Unable to read JSON request')
         else:
