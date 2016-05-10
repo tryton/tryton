@@ -8,4 +8,5 @@ from .carrier import *
 def register():
     Pool.register(
         Carrier,
+        CarrierSelection,
         module='carrier', type_='model')

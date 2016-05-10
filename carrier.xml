@@ -68,5 +68,52 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="carrier_selection_view_form">
+            <field name="model">carrier.selection</field>
+            <field name="type">form</field>
+            <field name="name">selection_form</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list">
+            <field name="model">carrier.selection</field>
+            <field name="type">tree</field>
+            <field name="name">selection_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_carrier_selection_form">
+            <field name="name">Carrier Selection</field>
+            <field name="res_model">carrier.selection</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_selection_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="carrier_selection_view_list"/>
+            <field name="act_window" ref="act_carrier_selection_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_selection_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="carrier_selection_view_form"/>
+            <field name="act_window" ref="act_carrier_selection_form"/>
+        </record>
+        <menuitem parent="menu_carrier" action="act_carrier_selection_form"
+            id="menu_carrier_selection"/>
+
+        <record model="ir.model.access" id="access_carrier_selection">
+            <field name="model" search="[('model', '=', 'carrier.selection')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_carrier_selection_carrier_admin">
+            <field name="model" search="[('model', '=', 'carrier.selection')]"/>
+            <field name="group" ref="group_carrier_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
     </data>
 </tryton>
