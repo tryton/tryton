@@ -1216,7 +1216,7 @@
                 if (props.selection instanceof Array) {
                     continue;
                 }
-                this.get_selection(props).then(set_selection);
+                this.get_selection(props).then(set_selection(props));
             }
 
             if ('arch' in view_tree) {
