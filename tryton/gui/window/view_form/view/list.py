@@ -20,6 +20,7 @@ from tryton.gui.window import Window
 from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
 from tryton.common import domain_inversion, simplify, unique_value
+from tryton.pyson import PYSONDecoder
 import tryton.common as common
 from . import View
 from .list_gtk.editabletree import EditableTreeView, TreeView
@@ -337,7 +338,7 @@ class ViewTree(View):
         node_attrs = node_attributes(node)
         name = node_attrs['name']
         field = group.fields[name]
-        for b_field in ('readonly', 'expand', 'tree_invisible'):
+        for b_field in ('readonly', 'expand'):
             if b_field in node_attrs:
                 node_attrs[b_field] = bool(int(node_attrs[b_field]))
         for i_field in ('width', 'height'):
@@ -419,7 +420,9 @@ class ViewTree(View):
         self.set_column_widget(column, None, node_attrs, arrow=False)
         self.set_column_width(column, None, node_attrs)
 
-        column.set_visible(not node_attrs.get('tree_invisible', False))
+        decoder = PYSONDecoder(self.screen.context)
+        column.set_visible(
+            not decoder.decoder(node_attrs.get('tree_invisible', '0')))
 
         self.treeview.append_column(column)
 
@@ -1064,12 +1067,13 @@ class ViewTree(View):
         if tab_domain:
             domain.append(tab_domain)
         domain = simplify(domain)
+        decoder = PYSONDecoder(self.screen.context)
         for column in self.treeview.get_columns():
             name = column.name
             if not name:
                 continue
             widget = self.get_column_widget(column)
-            if widget.attrs.get('tree_invisible', False):
+            if decoder.decode(widget.attrs.get('tree_invisible', '0')):
                 column.set_visible(False)
             elif name == self.screen.exclude_field:
                 column.set_visible(False)
