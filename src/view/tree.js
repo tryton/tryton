@@ -71,12 +71,6 @@
             this.table = jQuery('<table/>', {
                 'class': 'tree table table-hover table-striped'
             });
-            if (this.columns.filter(function(c) {
-                return !c.attributes.tree_invisible;
-            }).length > 1) {
-                this.table.addClass('responsive');
-                this.table.addClass('responsive-header');
-            }
             this.el.append(this.table);
             var thead = jQuery('<thead/>');
             this.table.append(thead);
@@ -137,7 +131,7 @@
                     attribute = child.attributes[i];
                     attributes[attribute.name] = attribute.value;
                 }
-                ['readonly', 'tree_invisible', 'expand', 'completion'].forEach(
+                ['readonly', 'expand', 'completion'].forEach(
                     function(name) {
                         if (attributes[name]) {
                             attributes[name] = attributes[name] == 1;
@@ -254,12 +248,13 @@
             }
             var inversion = new Sao.common.DomainInversion();
             domain = inversion.simplify(domain);
+            var decoder = new Sao.PYSON.Decoder(this.screen.context);
             this.columns.forEach(function(column) {
                 var name = column.attributes.name;
                 if (!name) {
                     return;
                 }
-                if (column.attributes.tree_invisible) {
+                if (decoder.decode(column.attributes.tree_invisible || '0')) {
                     column.header.hide();
                 } else if (name === this.screen.exclude_field) {
                     column.header.hide();
@@ -276,6 +271,16 @@
                     }
                 }
             }.bind(this));
+
+            if (this.columns.filter(function(c) {
+                return c.header.is(':visible');
+            }).length > 1) {
+                this.table.addClass('responsive');
+                this.table.addClass('responsive-header');
+            } else {
+                this.table.removeClass('responsive');
+                this.table.removeClass('responsive-header');
+            }
 
             this.redraw(selected, expanded);
             return jQuery.when();
@@ -681,7 +686,8 @@
                             .html(suffix.render(this.record));
                     }
                 }
-                if (column.attributes.tree_invisible ||
+                if ((column.header.is(':hidden') &&
+                           this.tree.table.find('thead').is(':visible')) ||
                         column.header.css('display') == 'none') {
                     td.hide();
                 } else {
@@ -880,7 +886,7 @@
                 column = this.tree.columns[column_index];
                 state_attrs = column.field.get_state_attrs(this.record);
                 invisible = state_attrs.invisible;
-                if (column.attributes.tree_invisible) {
+                if (column.header.is(':hidden')) {
                     invisible = true;
                 }
                 if (editable) {
