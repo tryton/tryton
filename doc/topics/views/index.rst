@@ -514,7 +514,9 @@ field
 
     * ``widget``: The widget that must be used instead of the default one.
 
-    * ``tree_invisible``: Boolean to display or not the column.
+    * ``tree_invisible``: A string of :ref:`PYSON statement <topics-pyson>`
+      that will be evaluated as boolean with the context of the view to display
+      or not the column.
 
     * ``icon``: The name of the field that contains the name of the icon to
       display in the column.
