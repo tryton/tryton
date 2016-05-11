@@ -53,7 +53,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">stock.move</field>
             <field name="domain"
                 eval="[('lot', 'in', Eval('active_ids'))]" pyson="1"/>
-            <field name="order">[('effective_date', 'DESC'), ('planned_date', 'DESC')]</field>
+            <field name="order"
+                eval="[('effective_date', 'DESC'), ('planned_date', 'DESC')]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_move_form_relate_lot_keyword1">
