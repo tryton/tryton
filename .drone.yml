@@ -1,4 +1,4 @@
-image: node:0.10
+image: node0.10
 script:
     - npm -s install
     - npm test
