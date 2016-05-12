@@ -122,6 +122,9 @@ module.exports = function(grunt) {
             files: ['src/*.less'],
             tasks: 'less:dev'
         }
+    },
+    qunit: {
+        all: ['tests/*.html']
     }
   });
 
@@ -134,6 +137,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-po2json');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
   // Default task(s).
   grunt.registerTask('default', [
@@ -141,5 +145,6 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dev', ['concat', 'jshint', 'less:dev']);
   grunt.registerTask('msgmerge', ['shell:msgmerge']);
+  grunt.registerTask('test', ['concat', 'jshint', 'less:dev', 'qunit']);
 
 };
