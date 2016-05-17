@@ -69,7 +69,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             },
         depends=['state'])
     party = fields.Many2One('party.party', 'Party', required=True,
@@ -191,7 +190,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'quote': {
                     'pre_validate': [
                         ('purchase_date', '!=', None),
-                        ('payment_term', '!=', None),
                         ('invoice_address', '!=', None),
                         ],
                     'invisible': Eval('state') != 'draft',
