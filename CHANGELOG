@@ -1,3 +1,5 @@
+* Allow sale without payment term
+
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
 * Rename Sale reference into number and add reference

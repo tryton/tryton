@@ -66,7 +66,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', required=True, states={
+        'Payment Term',
+        states={
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
@@ -340,6 +341,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         # Add index on create_date
         table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 4.0: Drop not null on payment_term
+        table.not_null_action('payment_term', 'remove')
 
     @classmethod
     def default_payment_term(cls):
