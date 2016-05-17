@@ -129,7 +129,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('kind', '=', 'payable')),
             ])
     payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
+        'Payment Term', states=_STATES, depends=_DEPENDS)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -358,6 +358,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Add index on create_date
         table.index_action('create_date', action='add')
+
+        # Migration from 4.0: Drop not null on payment_term
+        table.not_null_action('payment_term', 'remove')
 
     @staticmethod
     def default_type():
@@ -937,11 +940,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if line['amount_second_currency']:
                 total_currency += line['amount_second_currency']
 
-        term_lines = self.payment_term.compute(total, self.company.currency,
-            self.invoice_date)
+        term_lines = [(Date.today(), total)]
+        if self.payment_term:
+            term_lines = self.payment_term.compute(
+                total, self.company.currency, self.invoice_date)
         remainder_total_currency = total_currency
-        if not term_lines:
-            term_lines = [(Date.today(), total)]
         for date, amount in term_lines:
             val = self._get_move_line(date, amount)
             if val['amount_second_currency']:
