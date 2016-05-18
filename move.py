@@ -1773,7 +1773,7 @@ class Reconcile(Wizard):
         Account = pool.get('account.account')
         account = Account.__table__()
         cursor = Transaction().cursor
-        account_rule = Rule.query_get(Account.__name__)
+        account_rule = Rule.domain_get(Account.__name__)
 
         balance = line.debit - line.credit
         cursor.execute(*line.join(account,
