@@ -26,5 +26,5 @@ Keywords=Business;Management;Enterprise;ERP;Framework;Client;
 Exec=tryton %u
 Icon=tryton-icon
 Terminal=false
-MimeType=application/tryton
+MimeType=application/tryton;
 Categories=Office;Finance;
