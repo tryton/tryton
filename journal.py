@@ -7,16 +7,15 @@ from sql.conditionals import Case
 from sql.aggregate import Sum
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.wizard import Wizard, StateTransition, StateView, StateAction
-from trytond.wizard import Button
+from trytond.wizard import Wizard, StateTransition
 from trytond import backend
-from trytond.pyson import Eval, Bool, PYSONEncoder
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['JournalType', 'JournalView', 'JournalViewColumn', 'Journal',
-    'OpenJournalCash', 'OpenJournalCashStart',
+    'JournalCashContext',
     'JournalPeriod', 'CloseJournalPeriod', 'ReOpenJournalPeriod']
 
 STATES = {
@@ -262,37 +261,9 @@ class Journal(ModelSQL, ModelView):
         return result
 
 
-class OpenJournalCash(Wizard):
-    'Open Journal Cash'
-    __name__ = 'account.journal.open_cash'
-    start = StateView('account.journal.open_cash.start',
-        'account.journal_open_cash_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('account.act_journal_open_cash')
-
-    def do_open_(self, action):
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-
-        lang, = Lang.search([
-                ('code', '=', Transaction().language),
-                ])
-
-        action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': self.start.start_date,
-                'end_date': self.start.end_date,
-                })
-        action['name'] += ' %s - %s' % (
-            Lang.strftime(self.start.start_date, lang.code, lang.date),
-            Lang.strftime(self.start.end_date, lang.code, lang.date))
-        return action, {}
-
-
-class OpenJournalCashStart(ModelView):
-    'Open Journal Cash'
-    __name__ = 'account.journal.open_cash.start'
+class JournalCashContext(ModelView):
+    'Journal Cash Context'
+    __name__ = 'account.journal.open_cash.context'
     start_date = fields.Date('Start Date', required=True)
     end_date = fields.Date('End Date', required=True)
 
