@@ -20,7 +20,7 @@ class Invoice:
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'invisible': Eval('type').in_(['in_invoice', 'in_credit_note']),
+            'invisible': Eval('type') == 'in',
             'readonly': Eval('state', '') != 'draft',
             },
         depends=['type', 'company', 'state'])
