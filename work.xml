@@ -182,6 +182,40 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_list"/>
         </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_request">
+            <field name="name">Request</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'request')]" pyson="1"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
         <menuitem parent="production.menu_production" sequence="20"
             action="act_work_list" id="menu_work_list"/>
 
