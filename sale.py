@@ -77,7 +77,7 @@ class Sale:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
 
-        party = None
+        party = self.party
         party_context = {}
         if self.party:
             if self.party.lang:
