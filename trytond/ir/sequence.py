@@ -296,20 +296,26 @@ class Sequence(ModelSQL, ModelView):
         cursor.execute('DROP SEQUENCE "%s"'
             % self._sql_sequence_name)
 
-    @staticmethod
-    def _process(string, date=None):
+    @classmethod
+    def _process(cls, string, date=None):
+        return Template(string or '').substitute(
+            **cls._get_substitutions(date))
+
+    @classmethod
+    def _get_substitutions(cls, date):
+        '''
+        Returns a dictionary with the keys and values of the substitutions
+        available to format the sequence
+        '''
         pool = Pool()
         Date = pool.get('ir.date')
         if not date:
             date = Date.today()
-        year = datetime_strftime(date, '%Y')
-        month = datetime_strftime(date, '%m')
-        day = datetime_strftime(date, '%d')
-        return Template(string or '').substitute(
-                year=year,
-                month=month,
-                day=day,
-                )
+        return {
+            'year': datetime_strftime(date, '%Y'),
+            'month': datetime_strftime(date, '%m'),
+            'day': datetime_strftime(date, '%d'),
+            }
 
     @staticmethod
     def _timestamp(sequence):
