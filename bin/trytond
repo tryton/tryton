@@ -14,15 +14,16 @@ if os.path.isdir(DIR):
 
 import trytond.commandline as commandline
 from trytond.config import config, split_netloc
-from trytond.application import app
-from trytond.pool import Pool
-from trytond.modules import get_module_list, get_module_info
-
 
 parser = commandline.get_parser_daemon()
 options = parser.parse_args()
 commandline.config_log(options)
 config.update_etc(options.configfile)
+
+# Import trytond things after it is configured
+from trytond.application import app
+from trytond.pool import Pool
+from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
     for name in options.database_names:
