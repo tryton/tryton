@@ -300,6 +300,7 @@ class TranslateMixin:
         return button
 
     def translate(self, *args):
+        self.view.set_value()
         if self.record.id < 0 or self.record.modified:
             common.message(
                 _('You need to save the record before adding translations!'))
