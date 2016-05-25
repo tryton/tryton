@@ -113,12 +113,7 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute name="tree_invisible" a:defaultValue="0">
-        <choice>
-          <value>0</value>
-          <value>1</value>
-        </choice>
-      </attribute>
+      <attribute name="tree_invisible" a:defaultValue="0"/>
     </optional>
   </define>
   <define name="attlist.field" combine="interleave">
