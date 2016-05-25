@@ -93,6 +93,53 @@ class AccountInvoiceTestCase(ModuleTestCase):
                 (datetime.date(2012, 1, 14), Decimal('396.83')),
                 ])
 
+    @with_transaction()
+    def test_payment_term_with_empty_value(self):
+        'Test payment_term with empty'
+        pool = Pool()
+        PaymentTerm = pool.get('account.invoice.payment_term')
+
+        cu1 = create_currency('cu1')
+        remainder_term, percent_term = PaymentTerm.create([{
+                    'name': 'Remainder',
+                    'lines': [
+                        ('create', [{'type': 'remainder',
+                                    'relativedeltas': [('create', [{
+                                                    'months': 1,
+                                                    },
+                                                ]),
+                                        ],
+                                    }])]
+                    }, {
+                    'name': '25% tomorrow, remainder un month later ',
+                    'lines': [
+                        ('create', [{'type': 'percent',
+                                    'divisor': 4,
+                                    'ratio': Decimal('.25'),
+                                    'relativedeltas': [('create', [{
+                                                    'days': 1,
+                                                    },
+                                                ]),
+                                        ],
+                                    }, {'type': 'remainder',
+                                    'relativedeltas': [('create', [{
+                                                    'months': 1,
+                                                    },
+                                                ]),
+                                        ],
+                                    }])]
+                    }])
+        terms = remainder_term.compute(Decimal('0.0'), cu1,
+            date=datetime.date(2016, 05, 17))
+        self.assertEqual(terms, [
+                (datetime.date(2016, 05, 17), Decimal('0.0')),
+                ])
+        terms = percent_term.compute(Decimal('0.0'), cu1,
+            date=datetime.date(2016, 05, 17))
+        self.assertEqual(terms, [
+                (datetime.date(2016, 05, 17), Decimal('0.0')),
+                ])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

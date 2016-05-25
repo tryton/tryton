@@ -73,7 +73,7 @@ class PaymentTerm(ModelSQL, ModelView):
         for line in self.lines:
             value = line.get_value(remainder, amount, currency)
             value_date = line.get_date(date)
-            if not value or not value_date:
+            if value is None or not value_date:
                 if (not remainder) and line.amount:
                     self.raise_user_error('invalid_line', {
                             'line': line.rec_name,
@@ -84,8 +84,13 @@ class PaymentTerm(ModelSQL, ModelView):
             if ((remainder - value) * sign) < Decimal('0.0'):
                 res.append((value_date, remainder))
                 break
-            res.append((value_date, value))
+            if value:
+                res.append((value_date, value))
             remainder -= value
+        else:
+            # Enforce to have at least one term
+            if not res:
+                res.append((date, Decimal(0)))
 
         if not currency.is_zero(remainder):
             self.raise_user_error('missing_remainder', (self.rec_name,))
