@@ -427,7 +427,8 @@ class Screen(SignalEvent):
                 'ids': [r.id for r in self.selected_records],
                 }, context=self.context.copy(), warning=False)
         else:
-            self.switch_view(view_type='form')
+            if not self.modified():
+                self.switch_view(view_type='form')
             return True
 
     @property
@@ -436,8 +437,6 @@ class Screen(SignalEvent):
 
     def switch_view(self, view_type=None):
         if self.current_view:
-            if not self.parent and self.modified():
-                return
             self.current_view.set_value()
             if (self.current_record and
                     self.current_record not in self.current_record.group):

@@ -19,8 +19,6 @@ class Note(WinForm):
             exclude_field='resource')
         super(Note, self).__init__(screen, self.callback, view_type='tree')
         screen.search_filter()
-        # Set parent after to be allowed to call search_filter
-        screen.parent = record
 
     def destroy(self):
         self.prev_view.save_width_height()
