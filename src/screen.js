@@ -702,9 +702,6 @@
         },
         switch_view: function(view_type) {
             if (this.current_view) {
-                if (!this.group.parent && this.modified()) {
-                    return jQuery.when();
-                }
                 this.current_view.set_value();
                 if (this.current_record &&
                         !~this.current_record.group.indexOf(
@@ -960,7 +957,9 @@
                     'ids': [this.get_id()]
                     }, jQuery.extend({}, this.context), false);
             } else {
-                this.switch_view('form');
+                if (!this.modified()) {
+                    this.switch_view('form');
+                }
             }
         },
         get_id: function() {

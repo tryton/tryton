@@ -393,7 +393,6 @@
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
-                screen.group.parent = record;
             });
             Sao.Window.Attachment._super.init.call(this, screen, this.callback,
                 {view_type: 'tree'});
@@ -427,7 +426,6 @@
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
-                screen.group.parent = record;
             });
             Sao.Window.Note._super.init.call(this, screen, this.callback,
                     {view_type: 'tree'});
