@@ -4,6 +4,7 @@ from decimal import Decimal
 import datetime
 from functools import wraps
 
+from dateutil.relativedelta import relativedelta
 from sql import Column, Null, Window, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
@@ -172,6 +173,9 @@ class Type(ModelSQL, ModelView):
     amount = fields.Function(fields.Numeric('Amount',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_amount')
+    amount_cmp = fields.Function(fields.Numeric('Amount',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_amount_cmp')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
@@ -262,6 +266,26 @@ class Type(ModelSQL, ModelView):
             if type_.display_balance == 'credit-debit':
                 res[type_.id] = - res[type_.id]
         return res
+
+    @classmethod
+    def get_amount_cmp(cls, types, name):
+        transaction = Transaction()
+        current = transaction.context
+        if not current.get('comparison'):
+            return dict.fromkeys([t.id for t in types], None)
+        new = {}
+        for key, value in current.iteritems():
+            if key.endswith('_cmp'):
+                new[key[:-4]] = value
+        with transaction.set_context(new):
+            return cls.get_amount(types, name)
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree/field[@name="amount_cmp"]', 'tree_invisible',
+                ~Eval('comparison', False)),
+            ]
 
     def get_rec_name(self, name):
         if self.parent:
@@ -1393,6 +1417,12 @@ class BalanceSheetContext(ModelView):
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
+    comparison = fields.Boolean('Comparison')
+    date_cmp = fields.Date('Date', states={
+            'required': Eval('comparison', False),
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['comparison'])
 
     @staticmethod
     def default_date():
@@ -1406,6 +1436,24 @@ class BalanceSheetContext(ModelView):
     @staticmethod
     def default_posted():
         return False
+
+    @classmethod
+    def default_comparison(cls):
+        return False
+
+    @fields.depends('comparison', 'date', 'date_cmp')
+    def on_change_comparison(self):
+        self.date_cmp = None
+        if self.comparison and self.date:
+            self.date_cmp = self.date - relativedelta(years=1)
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/form/separator[@id="comparison"]', 'states', {
+                    'invisible': ~Eval('comparison', False),
+                    }),
+            ]
 
 
 class IncomeStatementContext(ModelView):
@@ -1427,6 +1475,30 @@ class IncomeStatementContext(ModelView):
         depends=['start_period', 'fiscalyear'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
+    comparison = fields.Boolean('Comparison')
+    fiscalyear_cmp = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+        states={
+            'required': Eval('comparison', False),
+            'invisible': ~Eval('comparison', False),
+            })
+    start_period_cmp = fields.Many2One('account.period', 'Start Period',
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear_cmp')),
+            ('start_date', '<=', (Eval('end_period_cmp'), 'start_date'))
+            ],
+        states={
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['end_period_cmp', 'fiscalyear_cmp'])
+    end_period_cmp = fields.Many2One('account.period', 'End Period',
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear_cmp')),
+            ('start_date', '>=', (Eval('start_period_cmp'), 'start_date')),
+            ],
+        states={
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['start_period_cmp', 'fiscalyear_cmp'])
 
     @staticmethod
     def default_fiscalyear():
@@ -1442,10 +1514,22 @@ class IncomeStatementContext(ModelView):
     def default_posted():
         return False
 
+    @classmethod
+    def default_comparison(cls):
+        return False
+
     @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
         self.start_period = None
         self.end_period = None
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/form/separator[@id="comparison"]', 'states', {
+                    'invisible': ~Eval('comparison', False),
+                    }),
+            ]
 
 
 class AgedBalanceContext(ModelView):
