@@ -1555,16 +1555,24 @@
             }
 
             // Append buttons after the completion to not break layout
-            var buttons = jQuery('<span/>', {
-                'class': 'input-group-btn'
-            }).appendTo(group);
-            this.but_open = jQuery('<button/>', {
+            this.but_primary = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
             }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-search'
-            })).appendTo(buttons);
-            this.but_open.click(this.edit.bind(this));
+                'class': 'glyphicon'
+            })).appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).prependTo(group));
+            this.but_secondary = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon'
+            })).appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).appendTo(group));
+            this.but_primary.click('primary', this.edit.bind(this));
+            this.but_secondary.click('secondary', this.edit.bind(this));
 
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
@@ -1626,18 +1634,35 @@
                 return;
             }
             this.set_text(field.get_client(record));
+            var primary, secondary;
             value = field.get(record);
             if (this.has_target(value)) {
-                this.but_open.button({
-                    'icons': {
-                        'primary': 'glyphicon-folder-open'
-                    }});
+                primary = 'glyphicon-folder-open';
+                secondary = 'glyphicon-erase';
             } else {
-                this.but_open.button({
-                    'icons': {
-                        'primary': 'glyphicon-search'
-                    }});
+                primary = null;
+                secondary = 'glyphicon-search';
             }
+            if (this.entry.prop('readonly')) {
+                secondary = null;
+            }
+            [
+                [primary, this.but_primary],
+                [secondary, this.but_secondary]
+            ].forEach(function(items) {
+                var icon_name = items[0];
+                var button = items[1];
+                var icon = button.find('.glyphicon');
+                icon.removeClass().addClass('glyphicon');
+                // don't use .hide/.show because the display value is not
+                // correctly restored on modal.
+                if (!icon_name) {
+                    button.parent().css('display', 'none');
+                } else {
+                    button.parent().css('display', 'table-cell');
+                    icon.addClass(icon_name);
+                }
+            });
         },
         focus: function() {
             this.entry.focus();
@@ -1648,8 +1673,8 @@
         },
         _set_button_sensitive: function() {
             this.entry.prop('readonly', this._readonly);
-            this.but_open.prop('disabled',
-                    this._readonly || !this.read_access());
+            this.but_primary.prop('disabled', !this.read_access());
+            this.but_secondary.prop('disabled', this._readonly);
         },
         get_access: function(type) {
             var model = this.get_model();
@@ -1687,7 +1712,16 @@
             var win, callback;
             var record = this.record();
             var value = record.field_get(this.field_name);
-            if (model && this.has_target(value)) {
+
+            if ((evt.data == 'secondary') &&
+                    !this._readonly &&
+                    this.has_target(value)) {
+                this.record().field_set_client(this.field_name,
+                        this.value_from_id(null, ''));
+                this.entry.val('');
+                return;
+            }
+            if (this.has_target(value)) {
                 var screen = this.get_screen();
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
@@ -1706,7 +1740,9 @@
                 win = new Sao.Window.Form(screen, callback.bind(this), {
                     save_current: true
                 });
-            } else if (model) {
+                return;
+            }
+            if (model) {
                 var dom;
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
@@ -1731,6 +1767,7 @@
                             new_: this.create_access(),
                             search_filter: parser.quote(text)
                         });
+                return;
             }
         },
         new_: function(evt) {
