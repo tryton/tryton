@@ -42,8 +42,6 @@ class Many2One(Widget):
             self.wid_text.connect('changed', self._update_completion)
         self.wid_completion = None
 
-        self.wid_text.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
-            'tryton-find')
         self.wid_text.connect('icon-press', self.sig_edit)
 
         self.widget.pack_end(self.wid_text, expand=True, fill=True)
@@ -63,8 +61,10 @@ class Many2One(Widget):
 
     def _set_button_sensitive(self):
         self.wid_text.set_editable(not self._readonly)
-        self.wid_text.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY,
-            self.read_access)
+        self.wid_text.set_icon_sensitive(
+            gtk.ENTRY_ICON_PRIMARY, self.read_access)
+        self.wid_text.set_icon_sensitive(
+            gtk.ENTRY_ICON_SECONDARY, not self._readonly)
 
     def get_access(self, type_):
         model = self.get_model()
@@ -169,18 +169,26 @@ class Many2One(Widget):
             self.focus_out = True
         WinForm(screen, callback, new=True, save_current=True)
 
-    def sig_edit(self, *args):
+    def sig_edit(self, entry=None, icon_pos=None, *args):
         model = self.get_model()
         if not model or not common.MODELACCESS[model]['read']:
             return
         if not self.focus_out or not self.field:
             return
         self.changed = False
-        value = self.field.get(self.record)
-        model = self.get_model()
-
         self.focus_out = False
-        if model and self.has_target(value):
+        value = self.field.get(self.record)
+
+        if (icon_pos == gtk.ENTRY_ICON_SECONDARY
+                and not self._readonly
+                and self.has_target(value)):
+            self.field.set_client(self.record, self.value_from_id(None, ''))
+            self.wid_text.set_text('')
+            self.changed = True
+            self.focus_out = True
+            return
+
+        if self.has_target(value):
             screen = self.get_screen()
             screen.load([self.id_from_value(self.field.get(self.record))])
 
@@ -194,7 +202,7 @@ class Many2One(Widget):
                 self.changed = True
             WinForm(screen, callback, save_current=True)
             return
-        elif model and not self._readonly:
+        if not self._readonly:
             domain = self.field.domain_get(self.record)
             context = self.field.context_get(self.record)
             text = self.wid_text.get_text().decode('utf-8')
@@ -215,7 +223,6 @@ class Many2One(Widget):
             return
         self.focus_out = True
         self.changed = True
-        return
 
     def sig_key_press(self, widget, event, *args):
         editable = self.wid_text.get_editable()
@@ -288,11 +295,17 @@ class Many2One(Widget):
             return False
         self.set_text(field.get_client(record))
         if self.has_target(field.get(record)):
-            stock, tooltip = 'tryton-open', _('Open a record <F2>')
+            stock1, tooltip1 = 'tryton-open', _('Open the record <F2>')
+            stock2, tooltip2 = 'tryton-clear', _('Clear the record <Del>')
         else:
-            stock, tooltip = 'tryton-find', _('Search a record <F2>')
-        self.wid_text.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, stock)
-        self.wid_text.set_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY, tooltip)
+            stock1, tooltip1 = None, ''
+            stock2, tooltip2 = 'tryton-find', _('Search a record <F2>')
+        if not self.wid_text.get_editable():
+            stock2, tooltip2 = None, ''
+        for pos, stock, tooltip in [(gtk.ENTRY_ICON_PRIMARY, stock1, tooltip1),
+                (gtk.ENTRY_ICON_SECONDARY, stock2, tooltip2)]:
+            self.wid_text.set_icon_from_stock(pos, stock)
+            self.wid_text.set_icon_tooltip_text(pos, tooltip)
         self.changed = True
 
     def _populate_popup(self, widget, menu):

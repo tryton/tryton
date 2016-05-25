@@ -1,3 +1,6 @@
+* Add clear icon on Many2One
+* Re-position icons on Many2One widget
+
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
 * Improvement of charts design
