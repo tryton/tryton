@@ -107,7 +107,7 @@ class WinImport(WinCSV):
         try:
             data = csv.reader(
                 open(fname, 'rb'),
-                quotechar=self.get_delimiter(),
+                quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
         except IOError:
             common.warning(_('Error opening CSV file'), _('Error'))
