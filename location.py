@@ -207,10 +207,11 @@ class Location(ModelSQL, ModelView):
 
     def get_warehouse(self, name):
         # Order by descending left to get the first one in the tree
-        locations = self.search([
-                ('parent', 'parent_of', [self.id]),
-                ('type', '=', 'warehouse'),
-                ], order=[('left', 'DESC')])
+        with Transaction().set_context(active_test=False):
+            locations = self.search([
+                    ('parent', 'parent_of', [self.id]),
+                    ('type', '=', 'warehouse'),
+                    ], order=[('left', 'DESC')])
         if locations:
             return locations[0].id
 
