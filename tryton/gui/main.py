@@ -878,7 +878,12 @@ class Main(object):
         if not self.sig_logout(widget, disconnect=False):
             return
         language = CONFIG['client.lang']
-        host, port, database, username = DBLogin().run()
+        try:
+            host, port, database, username = DBLogin().run()
+        except TrytonError, exception:
+            if exception.faultCode == 'QueryCanceled':
+                return
+            raise
         func = lambda parameters: rpc.login(
             host, port, database, username, parameters, language)
         try:
