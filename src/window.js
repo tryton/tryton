@@ -629,19 +629,15 @@
                     .then(function(validate) {
                         if (validate) {
                             var values = jQuery.extend({}, this.screen.get());
-                            var set_preferences = function(password) {
-                                return this.screen.model.execute(
-                                    'set_preferences', [values, password], {});
-                            }.bind(this);
-                            if ('password' in values) {
-                                return Sao.common.ask.run(
-                                    'Current Password:', false)
-                                    .then(function(password) {
-                                        return set_preferences(password);
-                                    });
-                            } else {
-                                return set_preferences(false);
-                            }
+                            var context = jQuery.extend({},
+                                    Sao.Session.current_session.context);
+                            var func = function(parameters) {
+                                return {
+                                    'method': 'model.res.user.set_preferences',
+                                    'params': [values, parameters, context]
+                                };
+                            };
+                            return new Sao.Login(func).run();
                         }
                     }.bind(this));
             }

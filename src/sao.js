@@ -206,6 +206,9 @@ var Sao = {};
             Sao.i18n.loadJSON(data);
         });
     };
+    Sao.i18n.getlang = function() {
+        return Sao.i18n.getLocale();
+    };
     Sao.i18n.setlang(
             (navigator.language ||
              navigator.browserLanguge ||
