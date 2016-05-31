@@ -7,6 +7,7 @@ import random
 import hashlib
 import time
 import datetime
+import logging
 from functools import wraps
 from itertools import groupby, ifilter
 from operator import attrgetter
@@ -32,11 +33,13 @@ from ..pool import Pool
 from ..config import config
 from ..pyson import PYSONEncoder
 from ..rpc import RPC
+from ..exceptions import LoginException
 
 __all__ = [
     'User', 'LoginAttempt', 'UserAction', 'UserGroup', 'Warning_',
     'UserConfigStart', 'UserConfig',
     ]
+logger = logging.getLogger(__name__)
 
 
 class User(ModelSQL, ModelView):
@@ -361,9 +364,9 @@ class User(ModelSQL, ModelView):
         return preferences.copy()
 
     @classmethod
-    def set_preferences(cls, values, old_password=False):
+    def set_preferences(cls, values, parameters):
         '''
-        Set user preferences.
+        Set user preferences using login parameters
         '''
         pool = Pool()
         Lang = pool.get('ir.lang')
@@ -375,7 +378,7 @@ class User(ModelSQL, ModelView):
             if field not in fields or field == 'groups':
                 del values_clean[field]
             if field == 'password':
-                if not cls.get_login(user.login, old_password):
+                if not cls._login_password(user.login, parameters):
                     cls.raise_user_error('wrong_password')
             if field == 'language':
                 langs = Lang.search([
@@ -460,19 +463,35 @@ class User(ModelSQL, ModelView):
         return result
 
     @classmethod
-    def get_login(cls, login, password):
+    def get_login(cls, login, parameters):
         '''
         Return user id if password matches
         '''
         LoginAttempt = Pool().get('res.user.login.attempt')
         time.sleep(2 ** LoginAttempt.count(login) - 1)
-        user_id, password_hash = cls._get_login(login)
-        if user_id:
-            if cls.check_password(password, password_hash):
+        for method in config.get(
+                'session', 'authentications', default='password').split(','):
+            try:
+                func = getattr(cls, '_login_%s' % method)
+            except AttributeError:
+                logger.info('Missing login method: %s', method)
+                continue
+            user_id = func(login, parameters)
+            if user_id:
                 LoginAttempt.remove(login)
                 return user_id
         LoginAttempt.add(login)
-        return 0
+
+    @classmethod
+    def _login_password(cls, login, parameters):
+        if 'password' not in parameters:
+            msg = cls.fields_get(['password'])['password']['string']
+            raise LoginException('password', msg, type='password')
+        user_id, password_hash = cls._get_login(login)
+        if user_id and password_hash:
+            password = parameters['password']
+            if cls.check_password(password, password_hash):
+                return user_id
 
     @staticmethod
     def hash_method():

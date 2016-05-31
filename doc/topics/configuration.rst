@@ -201,6 +201,17 @@ Defines the default `From` address for emails sent by Tryton.
 session
 -------
 
+authentications
+~~~~~~~~~~~~~~~
+
+A comma separated list of login methods to use to authenticate the user.
+By default, Tryton supports only the `password` method which compare the
+password entered by the user against a stored hash. But other modules can
+define new methods (please refers to their documentation).
+The methods are tested following the order of the list.
+
+Default: `password`
+
 timeout
 ~~~~~~~
 

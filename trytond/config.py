@@ -59,6 +59,7 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         self.add_section('email')
         self.set('email', 'uri', 'smtp://localhost:25')
         self.add_section('session')
+        self.set('session', 'authentications', 'password')
         self.set('session', 'timeout', 600)
         self.add_section('report')
         self.set('report', 'unoconv',

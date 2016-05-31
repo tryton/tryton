@@ -26,6 +26,20 @@ class UserWarning(TrytonException):
         self.code = 2
 
 
+class LoginException(TrytonException):
+    """Request the named parameter for the login process.
+    The type can be 'password' or 'char'.
+    """
+
+    def __init__(self, name, message, type='password'):
+        super(LoginException, self).__init__(
+            'LoginException', (name, message, type))
+        self.name = name
+        self.message = message
+        self.type = type
+        self.code = 3
+
+
 class ConcurrencyException(TrytonException):
 
     def __init__(self, message):

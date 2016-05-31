@@ -25,5 +25,6 @@ Introduction to all the key parts of trytond:
     views/extension
     wizard
     reports/index
+    rpc
     modules/index
     translation

@@ -5,6 +5,7 @@ import unittest
 from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.pool import Pool
 from trytond.res.user import bcrypt
+from trytond.config import config
 
 
 class UserTestCase(unittest.TestCase):
@@ -13,6 +14,11 @@ class UserTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         install_module('res')
+
+    def setUp(self):
+        methods = config.get('session', 'authentications')
+        config.set('session', 'authentications', 'password')
+        self.addCleanup(config.set, 'session', 'authentications', methods)
 
     def create_user(self, login, password, hash_method=None):
         pool = Pool()
@@ -37,10 +43,14 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
 
         user, = User.search([('login', '=', login)])
-        user_id = User.get_login(login, password)
+        user_id = User.get_login(login, {
+                'password': password,
+                })
         self.assertEqual(user_id, user.id)
 
-        bad_user_id = User.get_login(login, password + 'wrong')
+        bad_user_id = User.get_login(login, {
+                'password': password + 'wrong',
+                })
         self.assertEqual(bad_user_id, 0)
 
     @with_transaction()

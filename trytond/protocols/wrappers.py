@@ -58,7 +58,7 @@ class Request(_Request):
                 abort(403)
         else:
             user_id = security.login(
-                database_name, auth.username, auth.password, cache=False)
+                database_name, auth.username, auth, cache=False)
             if not user_id:
                 abort(401)
         return user_id

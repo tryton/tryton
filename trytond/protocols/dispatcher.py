@@ -7,6 +7,7 @@ import pydoc
 from functools import wraps
 
 from werkzeug.utils import redirect
+from werkzeug.exceptions import abort
 from sql import Table
 
 from trytond.pool import Pool
@@ -16,7 +17,8 @@ from trytond.config import config
 from trytond import __version__
 from trytond.transaction import Transaction
 from trytond.cache import Cache
-from trytond.exceptions import UserError, UserWarning, ConcurrencyException
+from trytond.exceptions import (
+    UserError, UserWarning, ConcurrencyException, LoginException)
 from trytond.tools import is_instance_method
 from trytond.wsgi import app
 
@@ -59,21 +61,24 @@ def rpc(request, database_name):
         request, database_name, *request.params)
 
 
-def login(request, database_name, user, password):
+def login(request, database_name, user, parameters, language=None):
     Database = backend.get('Database')
     DatabaseOperationalError = backend.get('DatabaseOperationalError')
     try:
         Database(database_name).connect()
     except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
-        return False
-    session = security.login(database_name, user, password)
+        abort(403)
+    session = security.login(
+        database_name, user, parameters, language=language)
     with Transaction().start(database_name, 0):
         Cache.clean(database_name)
         Cache.resets(database_name)
     msg = 'successful login' if session else 'bad login or password'
     logger.info('%s \'%s\' from %s using %s on database \'%s\'',
         msg, user, request.remote_addr, request.scheme, database_name)
+    if not session:
+        abort(403)
     return session
 
 
@@ -213,7 +218,8 @@ def _dispatch(request, pool, *args, **kwargs):
                     continue
                 logger.error(log_message, *log_args, exc_info=True)
                 raise
-            except (ConcurrencyException, UserError, UserWarning):
+            except (ConcurrencyException, UserError, UserWarning,
+                    LoginException):
                 logger.debug(log_message, *log_args, exc_info=True)
                 raise
             except Exception:

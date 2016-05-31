@@ -1,3 +1,4 @@
+* Add customizable login process
 * Allow to customize the substitutions used on sequence
 * Allow PYSON in tree_invisible attribute
 

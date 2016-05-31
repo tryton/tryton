@@ -9,6 +9,7 @@ from trytond.pool import Pool
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond import backend
+from trytond.exceptions import LoginException
 
 
 def _get_pool(dbname):
@@ -19,11 +20,17 @@ def _get_pool(dbname):
     return pool
 
 
-def login(dbname, loginname, password, cache=True):
-    with Transaction().start(dbname, 0):
+def login(dbname, loginname, parameters, cache=True, language=None):
+    context = {'language': language}
+    with Transaction().start(dbname, 0, context=context) as transaction:
         pool = _get_pool(dbname)
         User = pool.get('res.user')
-        user_id = User.get_login(loginname, password)
+        try:
+            user_id = User.get_login(loginname, parameters)
+        except LoginException:
+            # Let's store any changes done
+            transaction.commit()
+            raise
     if user_id:
         if not cache:
             return user_id
