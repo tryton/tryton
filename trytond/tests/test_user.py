@@ -51,7 +51,7 @@ class UserTestCase(unittest.TestCase):
         bad_user_id = User.get_login(login, {
                 'password': password + 'wrong',
                 })
-        self.assertEqual(bad_user_id, 0)
+        self.assertFalse(bad_user_id)
 
     @with_transaction()
     def test_test_hash(self):
