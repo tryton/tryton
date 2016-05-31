@@ -11,6 +11,7 @@
             this.alternate_view = false;
             this.search_modal = null;
             this.search_form = null;
+            this.last_search_text = '';
             this.tab_domain = tab_domain || [];
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
