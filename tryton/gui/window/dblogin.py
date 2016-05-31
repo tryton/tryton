@@ -443,19 +443,9 @@ class DBLogin(object):
         self.table_main.attach(self.label_database, 0, 1, 5, 6,
             xoptions=gtk.FILL)
         self.table_main.attach(self.entry_database, 1, 3, 5, 6)
-        self.entry_password = gtk.Entry()
-        self.entry_password.set_visibility(False)
-        self.entry_password.set_activates_default(True)
-        self.table_main.attach(self.entry_password, 1, 3, 7, 8)
         self.entry_login = gtk.Entry()
         self.entry_login.set_activates_default(True)
         self.table_main.attach(self.entry_login, 1, 3, 6, 7)
-        label_password = gtk.Label(str=_("Password:"))
-        label_password.set_justify(gtk.JUSTIFY_RIGHT)
-        label_password.set_alignment(1, 0.5)
-        label_password.set_padding(3, 3)
-        label_password.set_mnemonic_widget(self.entry_password)
-        self.table_main.attach(label_password, 0, 1, 7, 8, xoptions=gtk.FILL)
         label_username = gtk.Label(str=_("User name:"))
         label_username.set_alignment(1, 0.5)
         label_username.set_padding(3, 3)
@@ -572,10 +562,7 @@ class DBLogin(object):
             self.entry_login.set_text(CONFIG['login.login'])
         self.dialog.show_all()
 
-        if not self.entry_login.get_text():
-            self.entry_login.grab_focus()
-        else:
-            self.entry_password.grab_focus()
+        self.entry_login.grab_focus()
 
         # Reshow dialog for gtk-quarks
         self.dialog.reshow_with_initial_size()
@@ -583,10 +570,10 @@ class DBLogin(object):
         # The previous action did not called expand_hostspec
         self.expand_hostspec(self.expander)
 
-        res, result = None, ('', '', '', '', '')
+        response, result = None, ('', '', '', '')
         while not all(result):
-            res = self.dialog.run()
-            if res != gtk.RESPONSE_OK:
+            response = self.dialog.run()
+            if response != gtk.RESPONSE_OK:
                 break
             active_profile = self.combo_profile.get_active()
             if active_profile != -1:
@@ -610,12 +597,12 @@ class DBLogin(object):
             CONFIG['login.db'] = database
             CONFIG['login.expanded'] = self.expander.props.expanded
             CONFIG['login.login'] = login
-            result = (self.entry_login.get_text(),
-                self.entry_password.get_text(), host, port, database)
+            result = (
+                host, port, database, self.entry_login.get_text())
 
         self.parent.present()
         self.dialog.destroy()
-        if res != gtk.RESPONSE_OK:
+        if response != gtk.RESPONSE_OK:
             rpc.logout()
             raise TrytonError('QueryCanceled')
         return result

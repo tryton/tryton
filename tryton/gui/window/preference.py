@@ -6,9 +6,9 @@ import gtk
 import copy
 from tryton.gui.window.view_form.screen import Screen
 from tryton.config import TRYTON_ICON
-import tryton.common as common
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException, process_exception, Login
 from tryton.gui.window.nomodal import NoModal
+from tryton.exceptions import TrytonError
 import tryton.rpc as rpc
 
 _ = gettext.gettext
@@ -84,17 +84,16 @@ class Preference(NoModal):
         if response_id == gtk.RESPONSE_OK:
             if self.screen.current_record.validate():
                 vals = copy.copy(self.screen.get())
-                if 'password' in vals:
-                    password = common.ask(_('Current Password:'),
-                        visibility=False)
-                    if not password:
-                        return
-                else:
-                    password = False
+                context = rpc.CONTEXT.copy()
+                func = lambda parameters: rpc.execute(
+                    'model', 'res.user', 'set_preferences', vals, parameters,
+                    context)
                 try:
-                    RPCExecute('model', 'res.user', 'set_preferences',
-                        vals, password)
-                except RPCException:
+                    Login(func)
+                except TrytonError, exception:
+                    if exception.faultCode == 'QueryCanceled':
+                        return
+                    process_exception(exception)
                     return
         self.parent.present()
         self.destroy()

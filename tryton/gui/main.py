@@ -874,32 +874,25 @@ class Main(object):
         self._sig_remove_book(widget,
             self.notebook.get_nth_page(self.notebook.get_current_page()))
 
-    def sig_login(self, widget=None, res=None):
+    def sig_login(self, widget=None):
         if not self.sig_logout(widget, disconnect=False):
             return
-        if not res:
-            try:
-                res = DBLogin().run()
-            except TrytonError, exception:
-                if exception.faultCode == 'QueryCanceled':
-                    return False
-            except TrytonServerError, exception:
-                common.process_exception(exception)
-                return
+        language = CONFIG['client.lang']
+        host, port, database, username = DBLogin().run()
+        func = lambda parameters: rpc.login(
+            host, port, database, username, parameters, language)
         try:
-            log_response = rpc.login(*res)
-        except TrytonServerError, exception:
+            common.Login(func)
+        except Exception, exception:
+            if (isinstance(exception, TrytonError)
+                    and exception.faultCode == 'QueryCanceled'):
+                return
+            if (isinstance(exception, TrytonServerError)
+                    and exception.faultCode.startswith('403')):
+                return self.sig_login()
             common.process_exception(exception)
             return
-        if log_response > 0:
-            self.get_preferences()
-        elif log_response == -1:
-            common.message(_('Connection error!\n'
-                    'Unable to connect to the server!'))
-        elif log_response == -2:
-            common.message(_('Connection error!\n'
-                    'Bad username or password!'))
-            return self.sig_login()
+        self.get_preferences()
         self.favorite_unset()
         self.menuitem_favorite.set_sensitive(True)
         self.menuitem_user.set_sensitive(True)

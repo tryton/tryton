@@ -1082,31 +1082,25 @@ def process_exception(exception, *args, **kwargs):
         elif exception.faultCode.startswith('403'):
             from tryton.gui.main import Main
             if not PLOCK.acquire(False):
-                return False
-            hostname = rpc._HOST
-            port = rpc._PORT
+                return
+            language = CONFIG['client.lang']
+            func = lambda parameters: rpc.login(
+                rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME, parameters,
+                language)
             try:
-                while True:
-                    password = ask(_('Password:'), visibility=False)
-                    if password is None:
-                        Main.get_main().sig_quit()
-                    res = rpc.login(rpc._USERNAME, password, hostname, port,
-                            rpc._DATABASE)
-                    if res == -1:
-                        message(_('Connection error!\n'
-                                'Unable to connect to the server!'))
-                        return False
-                    if res < 0:
-                        continue
-                    if args:
-                        try:
-                            return rpc_execute(*args)
-                        except TrytonServerError, exception:
-                            return process_exception(exception, *args,
-                                rpc_execute=rpc_execute)
-                    return True
+                Login(func)
+            except TrytonError, exception:
+                if exception.faultCode == 'QueryCanceled':
+                    Main.get_main().sig_quit()
+                raise
             finally:
                 PLOCK.release()
+            if args:
+                try:
+                    return rpc_execute(*args)
+                except TrytonServerError, exception:
+                    return process_exception(exception, *args,
+                        rpc_execute=rpc_execute)
     elif isinstance(exception, (socket.error, TrytonServerUnavailable)):
         warning(str(exception), _('Network Error!'))
         return False
@@ -1118,6 +1112,36 @@ def process_exception(exception, *args, **kwargs):
         error_detail = traceback.format_exc()
     error(error_title, error_detail)
     return False
+
+
+class Login(object):
+    def __init__(self, func):
+        parameters = {}
+        while True:
+            try:
+                func(parameters)
+            except TrytonServerError, exception:
+                if exception.faultCode.startswith('403'):
+                    parameters.clear()
+                    continue
+                if exception.faultCode != 'LoginException':
+                    raise
+                name, message, type = exception.args
+                value = getattr(self, 'get_%s' % type)(message)
+                if value is None:
+                    raise TrytonError('QueryCanceled')
+                parameters[name] = value
+                continue
+            else:
+                return
+
+    @classmethod
+    def get_char(self, message):
+        return ask(message)
+
+    @classmethod
+    def get_password(self, message):
+        return ask(message, visibility=False)
 
 
 def node_attributes(node):
