@@ -5,8 +5,9 @@ import urlparse
 
 import ldap
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.config import config, parse_uri
+from trytond.exceptions import LoginException
 
 __all__ = ['User']
 __metaclass__ = PoolMeta
@@ -140,8 +141,12 @@ class User:
         super(User, cls).write(*args)
 
     @classmethod
-    def set_preferences(cls, values, old_password=False):
+    def set_preferences(cls, values, parameters):
         if 'password' in values:
+            if 'password' not in parameters:
+                msg = cls.fields_get(['password'])['password']['string']
+                raise LoginException('password', msg, type='password')
+            old_password = parameters['password']
             try:
                 con = ldap_connection()
                 if con:
@@ -164,9 +169,11 @@ class User:
         super(User, cls).set_preferences(values, old_password=old_password)
 
     @classmethod
-    def get_login(cls, login, password):
-        pool = Pool()
-        LoginAttempt = pool.get('res.user.login.attempt')
+    def _login_ldap(cls, login, parameters):
+        if 'password' not in parameters:
+            msg = cls.fields_get(['password'])['password']['string']
+            raise LoginException('password', msg, type='password')
+        password = parameters['password']
         try:
             con = ldap_connection()
             if con:
@@ -180,7 +187,6 @@ class User:
                         login = attrs.get(uid, [login])[0]
                         user_id, _ = cls._get_login(login)
                         if user_id:
-                            LoginAttempt.remove(login)
                             return user_id
                         elif config.getboolean(section, 'create_user'):
                             user, = cls.create([{
@@ -190,4 +196,3 @@ class User:
                             return user.id
         except ldap.LDAPError:
             logger.error('LDAPError when login', exc_info=True)
-        return super(User, cls).get_login(login, password)

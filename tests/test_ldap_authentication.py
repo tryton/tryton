@@ -21,11 +21,12 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
 
     def setUp(self):
         super(LDAPAuthenticationTestCase, self).setUp()
+        methods = config.get('session', 'authentications')
+        config.set('session', 'authentications', 'ldap')
+        self.addCleanup(config.set, 'session', 'authentications', methods)
         config.add_section(section)
         config.set(section, 'uri', 'ldap://localhost/dc=tryton,dc=org')
-
-    def tearDown(self):
-        config.remove_section(section)
+        self.addCleanup(config.remove_section, section)
 
     @with_transaction()
     def test_user_get_login(self):
@@ -42,11 +43,12 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
                 ldap_search_user.return_value = [('dn', {'uid': [find]})]
             else:
                 ldap_search_user.return_value = None
-            return User.get_login(login, password)
+            return User.get_login(login, {
+                    'password': password,
+                    })
 
         # Test existing user
         user, = User.search([('login', '=', 'admin')])
-        self.assertEqual(get_login('admin', 'admin', None), user.id)
         self.assertEqual(get_login('admin', 'admin', 'admin'), user.id)
         self.assertEqual(get_login('AdMiN', 'admin', 'admin'), user.id)
 
