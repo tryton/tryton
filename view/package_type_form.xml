@@ -4,4 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Package Type">
     <label name="name"/>
     <field name="name"/>
+    <notebook colspan="4">
+    </notebook>
 </form>
