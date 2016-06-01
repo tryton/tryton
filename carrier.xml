@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="inherit" ref="carrier.carrier_view_form"/>
+            <field name="name">carrier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="credential_view_form">
+            <field name="model">carrier.credential.ups</field>
+            <field name="type">form</field>
+            <field name="name">ups_credential_form</field>
+        </record>
+        <record model="ir.ui.view" id="credential_view_tree">
+            <field name="model">carrier.credential.ups</field>
+            <field name="type">tree</field>
+            <field name="name">ups_credential_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_ups_credential_form">
+            <field name="name">UPS Credentials</field>
+            <field name="res_model">carrier.credential.ups</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_ups_credential_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="credential_view_tree"/>
+            <field name="act_window" ref="act_ups_credential_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_ups_credential_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="credential_view_form"/>
+            <field name="act_window" ref="act_ups_credential_form"/>
+        </record>
+
+        <menuitem 
+            parent="stock_package_shipping.menu_package_shipping_configuration"
+            action="act_ups_credential_form" id="menu_ups_credential_form"/>
+
+        <record model="ir.model.access" id="access_carrier_credential">
+            <field name="model"
+                search="[('model', '=', 'carrier.credential.ups')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_carrier_credential_carrier_admin">
+            <field name="model"
+                search="[('model', '=', 'carrier.credential.ups')]"/>
+            <field name="group" ref="carrier.group_carrier_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
