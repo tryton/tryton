@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page id="dimensions" string="Dimensions">
+            <label name="length"/>
+            <field name="length"/>
+            <label name="length_uom"/>
+            <field name="length_uom"/>
+            <label name="height"/>
+            <field name="height"/>
+            <label name="height_uom"/>
+            <field name="height_uom"/>
+            <label name="width"/>
+            <field name="width"/>
+            <label name="width_uom"/>
+            <field name="width_uom"/>
+        </page>
+    </xpath>
+</data>
