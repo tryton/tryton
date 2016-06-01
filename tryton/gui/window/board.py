@@ -85,9 +85,7 @@ class Board(SignalEvent, TabContent):
         Main.get_main().sig_win_close(widget)
 
     def set_cursor(self):
-        if not self.board.widgets:
+        if not self.board.actions:
             return
-        first_widget = self.board.widgets[0]
-        # only Actions are added to self.board.widgets, so no need to test
-        # further
-        first_widget.screen.set_cursor()
+        first_action = self.board.actions[0]
+        first_action.screen.set_cursor()
