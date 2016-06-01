@@ -12,4 +12,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="origin"/>
     <field name="description"/>
     <field name="state"/>
+    <button string="Post" name="post"/>
+    <button string="Draft" name="draft"/>
 </tree>
