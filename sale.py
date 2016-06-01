@@ -93,7 +93,7 @@ class Sale:
         else:
             self.carrier = None
 
-    @fields.depends('warehouse', 'shipment_address')
+    @fields.depends('carrier', 'warehouse', 'shipment_address')
     def on_change_shipment_address(self):
         try:
             super_on_change = super(Sale, self).on_change_shipment_address
