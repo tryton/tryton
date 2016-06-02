@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields, dualmethod
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -14,23 +14,26 @@ class Cron:
     companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
             'Companies', help='Companies registered for this cron')
 
-    @classmethod
-    def _callback(cls, cron):
+    @dualmethod
+    @ModelView.button
+    def run_once(cls, crons):
         User = Pool().get('res.user')
-        if not cron.companies:
-            return super(Cron, cls)._callback(cron)
-        # TODO replace with context
-        for company in cron.companies:
-            User.write([cron.user], {
-                    'company': company.id,
-                    'main_company': company.id,
-                    })
-            with Transaction().set_context(company=company.id):
-                super(Cron, cls)._callback(cron)
-        User.write([cron.user], {
-                'company': None,
-                'main_company': None,
-                })
+        for cron in crons:
+            if not cron.companies:
+                super(Cron, cls).run_once([cron])
+            else:
+                # TODO replace with context
+                for company in cron.companies:
+                    User.write([cron.user], {
+                            'company': company.id,
+                            'main_company': company.id,
+                            })
+                    with Transaction().set_context(company=company.id):
+                        super(Cron, cls).run_once([cron])
+                User.write([cron.user], {
+                        'company': None,
+                        'main_company': None,
+                        })
 
     @staticmethod
     def default_companies():
