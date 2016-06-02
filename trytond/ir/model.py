@@ -188,7 +188,7 @@ class Model(ModelSQL, ModelView):
                 ])
         access = ModelAccess.get_access([m.model for m in models])
         s = StringMatcher()
-        if isinstance(text, str):
+        if isinstance(text, bytes):
             text = text.decode('utf-8')
         s.set_seq2(text)
 
@@ -200,7 +200,7 @@ class Model(ModelSQL, ModelView):
                 if not hasattr(Model, 'search_global'):
                     continue
                 for record, name, icon in Model.search_global(text):
-                    if isinstance(name, str):
+                    if isinstance(name, bytes):
                         name = name.decode('utf-8')
                     s.set_seq1(name)
                     yield (s.ratio(), model.model, model.rec_name,
