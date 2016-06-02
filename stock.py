@@ -77,6 +77,8 @@ class CreateDPDShipping(Wizard):
         cls._error_messages.update({
                 'has_reference_number': ('Shipment "%(shipment)s" already has'
                     'a reference number.'),
+                'dpd_webservice_error': ('DPD webservice call failed with the'
+                    ' following error message:\n\n%(message)s'),
                 })
 
     def transition_start(self):
@@ -126,6 +128,13 @@ class CreateDPDShipping(Wizard):
                     'credential': credential.rec_name,
                     })
 
+        response, = shipment_response.shipmentResponses
+        if response.faults:
+            message = '\n'.join(f.message for f in response.faults)
+            self.raise_user_error('dpd_webservice_error', {
+                    'message': message,
+                    })
+
         labels = []
         labels_pdf = BytesIO(shipment_response.parcellabelsPDF)
         reader = PdfFileReader(labels_pdf)
@@ -136,7 +145,6 @@ class CreateDPDShipping(Wizard):
             new_pdf.write(new_label)
             labels.append(new_label)
 
-        response, = shipment_response.shipmentResponses
         shipment.reference = response.mpsId
         parcels = response.parcelInformation
         for package, label, parcel in zip(packages, labels, parcels):
