@@ -40,6 +40,13 @@ class IrTestCase(ModuleTestCase):
             self.assertEqual(Sequence.get_id(sequence.id),
                 '%s3' % str(next_year.year))
 
+    @with_transaction()
+    def test_global_search(self):
+        'Test Global Search'
+        pool = Pool()
+        Model = pool.get('ir.model')
+        Model.global_search('User', 10)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(IrTestCase)
