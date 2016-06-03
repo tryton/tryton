@@ -12,6 +12,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, Button
+from trytond.config import config
 
 __all__ = ['PaymentTerm', 'PaymentTermLine', 'PaymentTermLineRelativeDelta',
     'TestPaymentTerm', 'TestPaymentTermView', 'TestPaymentTermViewResult']
@@ -133,7 +134,7 @@ class PaymentTermLine(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     relativedeltas = fields.One2Many(
-        'account.invoice.payment_term.line.relativedelta', 'line', 'Deltas')
+        'account.invoice.payment_term.line.delta', 'line', 'Deltas')
 
     @classmethod
     def __setup__(cls):
@@ -291,7 +292,7 @@ class PaymentTermLine(ModelSQL, ModelView):
 
 class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
     'Payment Term Line Relative Delta'
-    __name__ = 'account.invoice.payment_term.line.relativedelta'
+    __name__ = 'account.invoice.payment_term.line.delta'
     sequence = fields.Integer('Sequence')
     line = fields.Many2One('account.invoice.payment_term.line',
         'Payment Term Line', required=True, ondelete='CASCADE')
@@ -342,6 +343,13 @@ class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
         Line = pool.get('account.invoice.payment_term.line')
         sql_table = cls.__table__()
         line = Line.__table__()
+
+        # Migration from 4.0: rename long table
+        old_model_name = 'account.invoice.payment_term.line.relativedelta'
+        old_table = config.get(
+            'table', old_model_name, default=old_model_name.replace('.', '_'))
+        if TableHandler.table_exist(old_table):
+            TableHandler.table_rename(old_table, cls._table)
 
         super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
 

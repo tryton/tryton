@@ -87,28 +87,28 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view"
             id="payment_term_line_relativedelta_view_list">
-            <field name="model">account.invoice.payment_term.line.relativedelta</field>
+            <field name="model">account.invoice.payment_term.line.delta</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
             <field name="name">payment_term_line_relativedelta_list</field>
         </record>
         <record model="ir.ui.view"
             id="payment_term_line_relativedelta_view_list_sequence">
-            <field name="model">account.invoice.payment_term.line.relativedelta</field>
+            <field name="model">account.invoice.payment_term.line.delta</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="name">payment_term_line_relativedelta_list_sequence</field>
         </record>
 
         <record model="ir.ui.view" id="payment_term_line_relativedelta_view_form">
-            <field name="model">account.invoice.payment_term.line.relativedelta</field>
+            <field name="model">account.invoice.payment_term.line.delta</field>
             <field name="type">form</field>
             <field name="name">payment_term_line_relativedelta_form</field>
         </record>
 
         <record model="ir.model.access" id="access_payment_term_line_relativedelta">
             <field name="model"
-                search="[('model', '=', 'account.invoice.payment_term.line.relativedelta')]"/>
+                search="[('model', '=', 'account.invoice.payment_term.line.delta')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -117,7 +117,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.access"
             id="access_payment_term_line_relativedelta_account_admin">
             <field name="model"
-                search="[('model', '=', 'account.invoice.payment_term.line.relativedelta')]"/>
+                search="[('model', '=', 'account.invoice.payment_term.line.delta')]"/>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
