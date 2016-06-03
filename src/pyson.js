@@ -25,6 +25,8 @@
             return JSON.stringify(pyson, function(k, v) {
                 if (v instanceof Sao.PYSON.PYSON) {
                     return v.pyson();
+                } else if (v === null || v === undefined) {
+                    return null;
                 } else if (v._isAMomentObject) {
                     if (v.isDate) {
                         return Sao.PYSON.Date(
