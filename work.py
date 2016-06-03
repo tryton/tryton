@@ -134,7 +134,7 @@ class WorkCenter(ModelSQL, ModelView):
 
 
 class Work(ModelSQL, ModelView):
-    'Work'
+    'Production Work'
     __name__ = 'production.work'
     sequence = fields.Integer('Sequence')
     operation = fields.Many2One('production.routing.operation', 'Operation',
