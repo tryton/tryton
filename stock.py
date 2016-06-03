@@ -2,19 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from io import BytesIO
-from urlparse import urljoin
 from lxml import etree
-from zeep import Client
 from zeep.exceptions import Fault
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-from trytond.config import config
 from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 from trytond.wizard import Wizard, StateAction, StateTransition
 from trytond.transaction import Transaction
 
-from .configuration import SERVER_URLS, SHIPMENT_SERVICE
+from .configuration import get_client, SHIPMENT_SERVICE
 
 __all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
 
@@ -96,9 +93,7 @@ class CreateDPDShipping(Wizard):
         if not credential.depot or not credential.token:
             credential.update_token()
 
-        api_base_url = config.get('stock_package_shipping_dpd',
-            credential.server, default=SERVER_URLS[credential.server])
-        shipping_client = Client(urljoin(api_base_url, SHIPMENT_SERVICE))
+        shipping_client = get_client(credential.server, SHIPMENT_SERVICE)
         print_options = self.get_print_options(shipment)
         packages = shipment.root_packages
         shipment_data = self.get_shipment_data(credential, shipment, packages)

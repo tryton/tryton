@@ -1,14 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from urlparse import urljoin
-from zeep import Client
 from zeep.exceptions import Fault
 
-from trytond.config import config
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
 from trytond.pool import PoolMeta
 
-from .configuration import SERVER_URLS, LOGIN_SERVICE
+from .configuration import get_client, LOGIN_SERVICE
 
 __all__ = ['CredentialDPD', 'Carrier']
 
@@ -40,9 +37,7 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
         return 'testing'
 
     def update_token(self):
-        api_base_url = config.get('stock_package_shipping_dpd',
-            self.server, default=SERVER_URLS[self.server])
-        auth_client = Client(urljoin(api_base_url, LOGIN_SERVICE))
+        auth_client = get_client(self.server, LOGIN_SERVICE)
         lang = (self.company.party.lang.code
             if self.company.party.lang else 'en_US')
         try:
