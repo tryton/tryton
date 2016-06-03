@@ -10,14 +10,13 @@ from trytond.config import config, parse_uri
 from trytond.exceptions import LoginException
 
 __all__ = ['User']
-__metaclass__ = PoolMeta
 
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
 
 # Old version of urlparse doesn't parse query for ldap
 # see http://bugs.python.org/issue9374
-if hasattr(urlparse, 'uses_query') and 'ldap' not in urlparse.uses_query:
+if 'ldap' not in urlparse.uses_query:
     urlparse.uses_query.append('ldap')
 
 
@@ -48,6 +47,7 @@ def ldap_server():
 
 
 class User:
+    __metaclass__ = PoolMeta
     __name__ = 'res.user'
 
     @classmethod
