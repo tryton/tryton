@@ -42,6 +42,14 @@
         QUnit.strictEqual(decoder.decode('null'), null, "decode('null')");
     });
 
+    QUnit.test('PYSON Encoder', function() {
+        var encoder = new Sao.PYSON.Encoder();
+        var none;
+        QUnit.strictEqual(encoder.encode(), 'null', "encode()");
+        QUnit.strictEqual(encoder.encode(none), 'null', "encode(none)");
+        QUnit.strictEqual(encoder.encode(null), 'null', "encode()");
+    });
+
     QUnit.test('PYSON.Eval', function() {
         var value;
         value = new Sao.PYSON.Eval('test').pyson();
