@@ -32,7 +32,7 @@ class SaleLine:
         pattern = super(SaleLine, self)._get_tax_rule_pattern()
 
         from_country, to_country = None, None
-        if self.id < 0:
+        if self.id is None or self.id < 0:
             warehouse = self.get_warehouse('warehouse')
             if warehouse:
                 warehouse = Location(warehouse)
