@@ -101,6 +101,7 @@ def register():
         Binary,
         BinaryDefault,
         BinaryRequired,
+        Model,
         Singleton,
         URLObject,
         ModelStorage,

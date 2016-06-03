@@ -388,7 +388,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         return u'%s,%s' % (self.__name__, self.id)
 
     def __repr__(self):
-        if self.id < 0:
+        if self.id is None or self.id < 0:
             return "Pool().get('%s')(**%s)" % (self.__name__,
                 repr(self._default_values))
         else:
