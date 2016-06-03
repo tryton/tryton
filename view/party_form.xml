@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
         <page string="Relations" id="relations">
-            <field name="relations"/>
+            <field name="relations" colspan="4"/>
         </page>
     </xpath>
 </data>
