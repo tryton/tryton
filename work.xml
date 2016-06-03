@@ -169,7 +169,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_work_list">
-            <field name="name">Work</field>
+            <field name="name">Works</field>
             <field name="res_model">production.work</field>
         </record>
         <record model="ir.action.act_window.view" id="act_work_list_view1">
