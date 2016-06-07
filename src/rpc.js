@@ -162,11 +162,13 @@
 
     Sao.rpc.prepareObject = function(value, index, parent) {
         if (value instanceof Array) {
+            value = jQuery.extend([], value);
             for (var i = 0, length = value.length; i < length; i++) {
                 Sao.rpc.prepareObject(value[i], i, value);
             }
         } else if ((typeof(value) != 'string') &&
                 (typeof(value) != 'number') &&
+                (typeof(value) != 'boolean') &&
                 (value !== null) &&
                 (value !== undefined)) {
             if (value.isDate){
@@ -176,10 +178,6 @@
                     'month': value.month() + 1,
                     'day': value.date()
                 };
-
-                if (parent) {
-                    parent[index] = value;
-                }
             } else if (value.isDateTime) {
                 value = value.clone();
                 value = {
@@ -192,9 +190,6 @@
                     'second': value.utc().second(),
                     'microsecond': value.utc().millisecond() * 1000
                 };
-                if (parent) {
-                    parent[index] = value;
-                }
             } else if (value.isTime) {
                 value = {
                     '__class__': 'time',
@@ -203,25 +198,16 @@
                     'second': value.second(),
                     'microsecond': value.millisecond() * 1000
                 };
-                if (parent) {
-                    parent[index] = value;
-                }
             } else if (value.isTimeDelta) {
                 value = {
                     '__class__': 'timedelta',
                     'seconds': value.asSeconds()
                 };
-                if (parent) {
-                    parent[index] = value;
-                }
             } else if (value instanceof Sao.Decimal) {
                 value = {
                     '__class__': 'Decimal',
                     'decimal': value.toString()
                 };
-                if (parent) {
-                    parent[index] = value;
-                }
             } else if (value instanceof Uint8Array) {
                 var strings = [], chunksize = 0xffff;
                 // JavaScript Core has hard-coded argument limit of 65536
@@ -236,14 +222,15 @@
                     '__class__': 'bytes',
                     'base64': btoa(strings.join(''))
                 };
-                if (parent) {
-                    parent[index] = value;
-                }
             } else {
+                value = jQuery.extend({}, value);
                 for (var p in value) {
                     Sao.rpc.prepareObject(value[p], p, value);
                 }
             }
+        }
+        if (parent) {
+            parent[index] = value;
         }
         return parent || value;
     };
