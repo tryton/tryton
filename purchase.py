@@ -290,10 +290,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 condition=purchase_line.purchase == sql_table.id
                 ).join(invoice_line, 'LEFT',
                     condition=(invoice_line.origin ==
-                        Concat(PurchaseLine.__name__, purchase_line.id))
+                        Concat(PurchaseLine.__name__ + ',', purchase_line.id))
                     ).join(move, 'LEFT',
-                        condition=(move.origin == Concat(PurchaseLine.__name__,
-                                purchase_line.id))
+                        condition=(move.origin == Concat(
+                                PurchaseLine.__name__ + ',', purchase_line.id))
                         ).select(sql_table.id,
                             where=((sql_table.state == 'confirmed')
                                 & ((invoice_line.id != Null)
