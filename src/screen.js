@@ -786,10 +786,13 @@
                 })]];
             }
 
-            if (!jQuery.isEmptyObject(domain) && this.attributes.domain) {
-                domain = ['AND', domain, this.attributes.domain];
-            } else
+            if (!jQuery.isEmptyObject(domain)) {
+                if (!jQuery.isEmptyObject(this.attributes.domain)) {
+                    domain = ['AND', domain, this.attributes.domain];
+                }
+            } else {
                 domain = this.attributes.domain || [];
+            }
 
             var tab_domain = this.screen_container.get_tab_domain();
             if (!jQuery.isEmptyObject(tab_domain)) {
