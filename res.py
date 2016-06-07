@@ -71,7 +71,7 @@ class User:
             'base': ldap3.BASE,
             'onelevel': ldap3.LEVEL,
             'subtree': ldap3.SUBTREE,
-            }.get(scope)
+            }[scope]
         uid = config.get(section, 'uid', default='uid')
         if filter_:
             filter_ = '(&(%s=%s)%s)' % (uid, login, filter_)
