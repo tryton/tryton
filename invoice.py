@@ -156,8 +156,6 @@ class InvoiceLine:
             with Transaction().set_context(date=self.invoice.currency_date):
                 amount = Currency.compute(self.invoice.currency,
                     self.amount, agent.currency, round=False)
-            if self.invoice.type == 'out_credit_note':
-                amount *= -1
             amount = self._get_commission_amount(amount, plan)
             if amount:
                 digits = Commission.amount.digits
