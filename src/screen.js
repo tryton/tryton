@@ -557,9 +557,9 @@
         get_value: function(quote) {
             var value = this.el.val();
             if (value) {
-                value = value.reduce(function(a, b) {
+                value = jQuery.map(value, quote).reduce(function(a, b) {
                     if (a) {a += ';';}
-                    return a + quote(b);
+                    return a + b;
                 });
             }
             return value;
