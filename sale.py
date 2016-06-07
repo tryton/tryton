@@ -312,8 +312,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ).join(sale_line_invoice_line, 'LEFT',
                     condition=sale_line_invoice_line.sale_line == sale_line.id
                     ).join(move, 'LEFT',
-                        condition=(move.origin == Concat(SaleLine.__name__,
-                                sale_line.id))
+                        condition=(move.origin == Concat(
+                                SaleLine.__name__ + ',', sale_line.id))
                         ).select(sql_table.id,
                             where=(sql_table.state == 'confirmed')
                             & ((sale_line_invoice_line.id != Null)
