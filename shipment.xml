@@ -95,14 +95,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain"
             id="act_shipment_in_return_form_domain_assigned">
             <field name="name">Assigned</field>
-            <field name="sequence" eval="20"/>
+            <field name="sequence" eval="30"/>
             <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_shipment_in_return_form_domain_waiting">
             <field name="name">Waiting</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="20"/>
             <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
