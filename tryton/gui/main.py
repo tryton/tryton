@@ -1426,7 +1426,7 @@ class Main(object):
             try:
                 view_ids = json.loads(params.get('views', 'false'))
                 limit = json.loads(params.get('limit', 'null'))
-                name = json.loads(params.get('window_name', 'false'))
+                name = json.loads(params.get('name', ''))
                 search_value = json.loads(params.get('search_value', '{}'),
                     object_hook=object_hook)
                 domain = json.loads(params.get('domain', '[]'),

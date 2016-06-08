@@ -113,9 +113,7 @@ class Action(object):
             search_value = decoder.decode(action['pyson_search_value'] or '[]')
             tab_domain = [(n, decoder.decode(d)) for n, d in action['domains']]
 
-            name = False
-            if action.get('window_name', True):
-                name = action.get('name', False)
+            name = action.get('name', '')
 
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))

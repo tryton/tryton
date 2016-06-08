@@ -73,16 +73,13 @@ class Action(SignalEvent):
             view_ids=view_ids, domain=self.domain,
             search_value=search_value, row_activate=self.row_activate)
         vbox.pack_start(self.screen.widget, expand=True, fill=True)
-        name = self.screen.current_view.title
         self.screen.signal_connect(self, 'record-message',
             self._active_changed)
 
         if attrs.get('string'):
             self.title.set_text(attrs['string'])
-        elif self.action.get('window_name'):
-            self.title.set_text(self.action['name'])
         else:
-            self.title.set_text(name)
+            self.title.set_text(self.action['name'])
 
         self.widget.set_size_request(int(attrs.get('width', -1)),
                 int(attrs.get('height', -1)))
