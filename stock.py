@@ -4,6 +4,7 @@
 import re
 import base64
 import requests
+import ssl
 
 from trytond.config import config
 from trytond.model import fields
@@ -153,8 +154,25 @@ class CreateShippingUPS(Wizard):
         shipment_request = self.get_request(shipment, packages, credential)
         api_url = config.get('stock_package_shipping_ups', credential.server,
             default=SERVER_URLS[credential.server])
-        req = requests.post(api_url, json=shipment_request)
-        response = req.json()
+        nb_tries, response = 0, None
+        error_message = ''
+        try:
+            while nb_tries < 5 and response is None:
+                try:
+                    req = requests.post(api_url, json=shipment_request)
+                except ssl.SSLError as e:
+                    error_message = e.message
+                    nb_tries += 1
+                    continue
+                req.raise_for_status()
+                response = req.json()
+        except requests.HTTPError as e:
+            error_message = e.message
+
+        if error_message:
+            self.raise_user_error('ups_webservice_error', {
+                    'message': error_message,
+                    })
 
         if 'Fault' in response:
             error = response['Fault']['detail']['Errors']
