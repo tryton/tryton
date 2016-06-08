@@ -60,11 +60,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_products_by_locations">
             <field name="name">Products</field>
             <field name="res_model">product.product</field>
-            <field name="window_name" eval="False"/>
             <field name="domain"
                 eval="['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]"
                 pyson="1"/>
-            <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view2">
             <field name="sequence" eval="10"/>

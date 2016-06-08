@@ -44,7 +44,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
-            <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_tree_view">
             <field name="sequence" eval="10"/>
