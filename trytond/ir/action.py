@@ -688,8 +688,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
             help='Default limit for the list view')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
-    window_name = fields.Boolean('Window Name',
-            help='Use the action name as window name')
     search_value = fields.Char('Search Criteria',
             help='Default search criteria for the list view')
     pyson_domain = fields.Function(fields.Char('PySON Domain'), 'get_pyson')
@@ -731,6 +729,9 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         # Migration from 3.0: auto_refresh removed
         table.drop_column('auto_refresh')
 
+        # Migration from 4.0: window_name removed
+        table.drop_column('window_name')
+
     @staticmethod
     def default_type():
         return 'ir.action.act_window'
@@ -742,10 +743,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     @staticmethod
     def default_limit():
         return 0
-
-    @staticmethod
-    def default_window_name():
-        return True
 
     @staticmethod
     def default_search_value():

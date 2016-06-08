@@ -30,8 +30,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="search_value" colspan="3"/>
             <label name="limit"/>
             <field name="limit"/>
-            <label name="window_name"/>
-            <field name="window_name"/>
         </page>
         <page name="keywords">
             <field name="keywords" colspan="4"/>
