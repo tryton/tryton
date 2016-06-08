@@ -79,10 +79,7 @@
                     params.tab_domain.push(
                         [element[0], decoder.decode(element[1])]);
                 });
-                params.name = false;
-                if (action.window_name) {
-                    params.name = action.name;
-                }
+                params.name = action.name;
                 params.model = action.res_model || data.res_model;
                 params.res_id = action.res_id || data.res_id;
                 params.context_model = action.context_model;

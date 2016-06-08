@@ -242,10 +242,8 @@
 
                 if (attributes.string) {
                     this.title.html(attributes.string);
-                } else if (this.action.window_name !== undefined) {
-                    this.title.html(this.action.name);
                 } else {
-                    this.title.html(this.screen.current_view.title);
+                    this.title.html(this.action.name);
                 }
                 this.screen.switch_view().done(function() {
                     this.body.append(this.screen.screen_container.el);
