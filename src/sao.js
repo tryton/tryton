@@ -151,6 +151,7 @@ var Sao = {};
         var datetime = date.clone();
         datetime.set({hour: time.hour(), minute: time.minute(),
             second: time.second(), millisecond: time.millisecond()});
+        datetime.isDateTime = true;
         return datetime;
     };
 
