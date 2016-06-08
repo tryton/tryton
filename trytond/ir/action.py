@@ -227,7 +227,9 @@ class ActionKeyword(ModelSQL, ModelView):
             type_ = action_keyword.action.type
             types[type_].append(action_keyword.action.id)
         for type_, action_ids in types.iteritems():
-            keywords.extend(Action.get_action_values(type_, action_ids))
+            for value in Action.get_action_values(type_, action_ids):
+                value['keyword'] = keyword
+                keywords.append(value)
         keywords.sort(key=itemgetter('name'))
         cls._get_keyword_cache.set(key, keywords)
         return keywords
