@@ -1176,6 +1176,9 @@
                 name = value;
                 value = '';
             }
+            if (name === undefined || name === null) {
+                name = '';
+            }
             var field;
             if (!(name.toLowerCase() in this.strings) &&
                     !(name in this.fields)) {
