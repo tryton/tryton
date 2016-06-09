@@ -2267,10 +2267,9 @@
                 }
                 var context = record.get_context();
                 prm = record.model.execute('read', [[record.id], [this.name]],
-                    context);
-                prm.done(function(data) {
-                    return data[0][this.name];
-                }.bind(this));
+                    context).then(function(data) {
+                        return data[0][this.name];
+                    }.bind(this));
             } else {
                 prm = jQuery.when(data);
             }
