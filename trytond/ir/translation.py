@@ -518,28 +518,20 @@ class Translation(ModelSQL, ModelView):
                         ]):
                 translations[translation.name] = translation
 
-            to_create = []
+            to_save = []
             for record, value in izip(records, values):
                 translation = translations.get(get_name(record))
                 if not translation:
-                    to_create.append({
-                            'name': name,
-                            'lang': lang,
-                            'type': ttype,
-                            'src': getattr(record, field_name),
-                            'value': value,
-                            'fuzzy': False,
-                            })
-                else:
-                    with Transaction().set_context(_check_access=False):
-                        cls.write([translation], {
-                            'src': getattr(record, field_name),
-                            'value': value,
-                            'fuzzy': False,
-                            })
-            if to_create:
-                with Transaction().set_context(_check_access=False):
-                    cls.create(to_create)
+                    translation = cls()
+                    translation.name = name
+                    translation.lang = lang
+                    translation.type = ttype
+                translation.src = getattr(record, field_name)
+                translation.value = value
+                translation.fuzzy = False
+                to_save.append(translation)
+            with Transaction().set_context(_check_access=False):
+                cls.save(to_save)
             return
 
         Model = pool.get(model_name)
@@ -567,19 +559,15 @@ class Translation(ModelSQL, ModelView):
                 other_translations.setdefault(translation.res_id, []
                     ).append(translation)
 
-        to_create = []
+        to_save = []
         for record, value in izip(records, values):
             translation = translations.get(record.id)
             if not translation:
-                to_create.append({
-                        'name': name,
-                        'lang': lang,
-                        'type': ttype,
-                        'res_id': record.id,
-                        'value': value,
-                        'src': getattr(record, field_name),
-                        'fuzzy': False,
-                        })
+                translation = cls()
+                translation.name = name
+                translation.lang = lang
+                translation.type = ttype
+                translation.res_id = record.id
             else:
                 with Transaction().set_context(_check_access=False):
                     cls.write([translation], {
@@ -589,13 +577,16 @@ class Translation(ModelSQL, ModelView):
                         })
                     other_langs = other_translations.get(record.id)
                     if other_langs:
-                        cls.write(other_langs, {
-                                'src': getattr(record, field_name),
-                                'fuzzy': True,
-                                })
-        if to_create:
-            with Transaction().set_context(_check_access=False):
-                cls.create(to_create)
+                        for other_lang in other_langs:
+                            other_lang.src = getattr(record, field_name)
+                            other_lang.fuzzy = True
+                            to_save.append(other_lang)
+            translation.value = value
+            translation.src = getattr(record, field_name)
+            translation.fuzzy = False
+            to_save.append(translation)
+        with Transaction().set_context(_check_access=False):
+            cls.save(to_save)
 
     @classmethod
     def delete_ids(cls, model, ttype, ids):
@@ -845,7 +836,7 @@ class Translation(ModelSQL, ModelView):
                     translation.value = new_translation.value
                     translation.overriding_module = module
                     translation.fuzzy = new_translation.fuzzy
-                    translation.save()
+                    return translation
 
         # Make a first loop to retreive translation ids in the right order to
         # get better read locality and a full usage of the cache.
@@ -869,7 +860,8 @@ class Translation(ModelSQL, ModelView):
                 noupdate = False
 
                 if '.' in res_id:
-                    override_translation(res_id, translation)
+                    to_save.append(override_translation(res_id,
+                            translation))
                     continue
 
                 model = translation.name.split(',')[0]
@@ -907,7 +899,7 @@ class Translation(ModelSQL, ModelView):
                             to_save.append(old_translation)
                         else:
                             translations.add(old_translation)
-        cls.save(to_save)
+        cls.save(filter(None, to_save))
         translations |= set(to_save)
 
         if translations:

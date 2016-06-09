@@ -166,6 +166,8 @@ class Property(ModelSQL, ModelView):
                         raise Exception('Not implemented')
 
         if (val != default_val):
+            to_create = []
             for res_id in ids:
                 vals = cls._set_values(model, res_id, val, model_field.id)
-                cls.create([vals])
+                to_create.append(vals)
+            cls.create(to_create)

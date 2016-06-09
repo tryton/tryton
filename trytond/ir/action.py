@@ -300,6 +300,7 @@ class ActionMixin(ModelSQL):
         Action = pool.get('ir.action')
         ir_action = cls.__table__()
         new_records = []
+        to_write = []
         for values in vlist:
             later = {}
             action_values = {}
@@ -331,7 +332,9 @@ class ActionMixin(ModelSQL):
                 transaction.connection, cls._table, action.id)
             record = cls(action.id)
             new_records.append(record)
-            cls.write([record], later)
+            to_write.extend(([record], later))
+        if to_write:
+            cls.write(*to_write)
         return new_records
 
     @classmethod

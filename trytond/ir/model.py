@@ -934,6 +934,7 @@ class ModelData(ModelSQL, ModelView):
     def sync(cls, records):
         pool = Pool()
         to_write = []
+        models_to_write = defaultdict(list)
         for data in records:
             Model = pool.get(data.model)
             values = cls.load_values(data.values)
@@ -942,11 +943,13 @@ class ModelData(ModelSQL, ModelView):
             # if they come from version < 3.2
             if values != fs_values:
                 record = Model(data.db_id)
-                Model.write([record], fs_values)
+                models_to_write[Model].extend(([record], fs_values))
                 values = fs_values
             to_write.extend([[data], {
                         'values': cls.dump_values(values),
                         }])
+        for Model, values_to_write in models_to_write.iteritems():
+            Model.write(*values_to_write)
         if to_write:
             cls.write(*to_write)
 
