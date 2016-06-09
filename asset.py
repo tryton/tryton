@@ -420,13 +420,17 @@ class Asset(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     def create_lines(cls, assets):
+        pool = Pool()
+        Line = pool.get('account.asset.line')
         cls.clear_lines(assets)
 
+        lines = []
         for asset in assets:
             for date, line in asset.depreciate().iteritems():
                 line.asset = asset.id
                 line.date = date
-                line.save()
+                lines.append(line)
+        Line.save(lines)
 
     @classmethod
     @ModelView.button
@@ -493,12 +497,11 @@ class Asset(Workflow, ModelSQL, ModelView):
                     ('move', '=', None),
                     ])
         for line in lines:
-            move = line.asset.get_move(line)
-            move.save()
-            moves.append(move)
-            Line.write([line], {
-                    'move': move.id,
-                    })
+            moves.append(line.asset.get_move(line))
+        Move.save(moves)
+        for move, line in zip(moves, lines):
+            line.move = move
+        Line.save(lines)
         Move.post(moves)
 
     def get_closing_move(self, account):
@@ -584,12 +587,11 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls.clear_lines(assets)
         moves = []
         for asset in assets:
-            move = asset.get_closing_move(account)
-            move.save()
-            moves.append(move)
-            cls.write([asset], {
-                    'move': move.id,
-                    })
+            moves.append(asset.get_closing_move(account))
+        Move.save(moves)
+        for move, asset in zip(moves, assets):
+            asset.move = move
+        cls.save(assets)
         Move.post(moves)
 
     def get_rec_name(self, name):
