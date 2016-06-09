@@ -976,6 +976,8 @@ class DomainParser(object):
                 operator = None
             name = value
             value = ''
+        if not name:
+            name = ''
         if (name.lower() not in self.strings
                 and name not in self.fields):
             for field in self.strings.itervalues():
@@ -1405,3 +1407,18 @@ def test_parse_clause():
     assert rlist(dom.parse_clause([('Many2One', None, ['John', 'Jane'])])) == [
         ('many2one.rec_name', 'in', ['John', 'Jane']),
         ]
+
+
+def test_completion():
+    dom = DomainParser({
+            'name': {
+                'string': 'Name',
+                'name': 'name',
+                'type': 'char',
+                },
+            })
+    assert list(dom.completion(u'Nam')) == ['Name: ']
+    assert list(dom.completion(u'Name:')) == ['Name: ']
+    assert list(dom.completion(u'Name: foo')) == []
+    assert list(dom.completion(u'Name: !=')) == []
+    assert list(dom.completion(u'Name: !=foo')) == []
