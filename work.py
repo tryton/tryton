@@ -434,6 +434,7 @@ class Work:
         # write values
         write_fields = ('early_start_time', 'early_finish_time',
                         'late_start_time', 'late_finish_time')
+        to_write = []
         for work, val in values.iteritems():
             write_cond = False
             for field in write_fields:
@@ -442,7 +443,9 @@ class Work:
                     break
 
             if write_cond:
-                self.write([work], val)
+                to_write.extend(([work], val))
+        if to_write:
+            self.write(*to_write)
 
     def reset_leveling(self):
         get_key = lambda w: (set(p.id for p in w.predecessors),
@@ -531,15 +534,12 @@ class Work:
         siblings = [s for s in siblings if get_key(s) == refkey]
 
         for sibling, delay in compute_delays(siblings):
-            self.write([sibling], {
-                    'leveling_delay': delay,
-                    })
+            sibling.leveling_delay = delay
 
         siblings.reverse()
         for sibling, delay in compute_delays(siblings):
-            self.write([sibling], {
-                    'back_leveling_delay': delay,
-                    })
+            sibling.back_leveling_delay = delay
+        self.__class__.save(siblings)
 
         if self.parent:
             self.parent.compute_dates()
