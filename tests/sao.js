@@ -2101,6 +2101,30 @@
 
     });
 
+    QUnit.test('DomainParser.completion', function() {
+        var compare = Sao.common.compare;
+        var parser = new Sao.common.DomainParser({
+            'name': {
+                'string': 'Name',
+                'name': 'name',
+                'type': 'char'
+            }
+        });
+
+        [
+        ['Nam', ["Name: "]],
+        ['Name:', ['Name: ']],
+        ['Name: foo', []],
+        ['Name: !=', []],
+        ['Name: !=foo', []],
+        ].forEach(function(test) {
+            var value = test[0];
+            var expected = test[1];
+            QUnit.ok(compare(parser.completion(value), expected),
+                'completion(' + value + ')');
+        });
+    });
+
         /*
     QUnit.test('CRUD', function() {
         var run_tests = function() {
