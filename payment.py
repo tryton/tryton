@@ -5,6 +5,7 @@ from collections import defaultdict
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
+from trytond.transaction import Transaction
 
 __all__ = ['Journal', 'Payment']
 
@@ -67,6 +68,7 @@ class Payment:
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
+        Currency = pool.get('currency.currency')
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
 
@@ -82,27 +84,37 @@ class Payment:
             date = Date.today()
         period = Period.find(self.company.id, date=date)
 
+        local_currency = self.journal.currency == self.company.currency
+        if not local_currency:
+            with Transaction().set_context(date=self.date):
+                local_amount = Currency.compute(
+                    self.journal.currency, self.amount, self.company.currency)
+        else:
+            local_amount = self.amount
+
         move = Move(journal=self.journal.clearing_journal, origin=self,
             date=date, period=period)
         line = Line()
         if self.kind == 'payable':
-            line.debit, line.credit = self.amount, 0
+            line.debit, line.credit = local_amount, 0
         else:
-            line.debit, line.credit = 0, self.amount
+            line.debit, line.credit = 0, local_amount
         line.account = self.line.account
-        line.amount_second_currency = (-self.line.amount_second_currency
-            if self.line.amount_second_currency else None)
-        line.second_currency = self.line.second_currency
+        if not local_currency:
+            line.amount_second_currency = self.amount
+            line.second_currency = self.journal.currency
+
         line.party = (self.line.party
             if self.line.account.party_required else None)
         counterpart = Line()
         if self.kind == 'payable':
-            counterpart.debit, counterpart.credit = 0, self.amount
+            counterpart.debit, counterpart.credit = 0, local_amount
         else:
-            counterpart.debit, counterpart.credit = self.amount, 0
+            counterpart.debit, counterpart.credit = local_amount, 0
         counterpart.account = self.journal.clearing_account
-        counterpart.amount_second_currency = self.line.amount_second_currency
-        counterpart.second_currency = self.line.second_currency
+        if not local_currency:
+            counterpart.amount_second_currency = -self.amount
+            counterpart.second_currency = self.journal.currency
         move.lines = (line, counterpart)
         return move
 
