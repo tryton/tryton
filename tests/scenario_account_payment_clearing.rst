@@ -7,6 +7,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -272,3 +273,51 @@ Validate statement::
     >>> bank_clearing.reload()
     >>> bank_clearing.balance
     Decimal('0.00')
+
+Payment in a foreign currency
+-----------------------------
+
+Create a payment journal in Euro::
+
+    >>> euro = get_currency('EUR')
+    >>> euro_payment_journal = PaymentJournal(
+    ...     name='Euro Payments', process_method='manual', currency=euro,
+    ...     clearing_journal=expense, clearing_account=bank_clearing)
+    >>> euro_payment_journal.save()
+
+Create a payable move::
+
+    >>> move = Move()
+    >>> move.journal = expense
+    >>> line = move.lines.new(
+    ...     account=payable, party=supplier, credit=Decimal('20.00'),
+    ...     amount_second_currency=Decimal('-40.00'), second_currency=euro)
+    >>> line = move.lines.new(
+    ...     account=expense, debit=Decimal('20.00'),
+    ...     amount_second_currency=Decimal('40.00'), second_currency=euro)
+    >>> move.click('post')
+
+Pay the line::
+
+    >>> line, = [l for l in move.lines if l.account == payable]
+    >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.form.journal = euro_payment_journal
+    >>> pay_line.execute('pay')
+    >>> payment, = Payment.find([('state', '=', 'draft')])
+    >>> payment.amount
+    Decimal('40.00')
+    >>> payment.click('approve')
+    >>> process_payment = Wizard('account.payment.process', [payment])
+    >>> process_payment.execute('process')
+    >>> payment.reload()
+    >>> payment.state
+    u'processing'
+
+Succeed payment::
+
+    >>> payment.click('succeed')
+    >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
+    >>> debit_line.debit
+    Decimal('20.00')
+    >>> debit_line.amount_second_currency
+    Decimal('40.00')
