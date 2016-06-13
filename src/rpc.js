@@ -34,10 +34,10 @@
             } else if (data.error) {
                 var name, msg, description;
                 if (data.error[0] == 'UserWarning') {
-                    name = data.error[1];
-                    msg = data.error[2];
-                    description = data.error[3];
-                    Sao.common.userwarning.run(description, msg)
+                    name = data.error[1][0];
+                    msg = data.error[1][1];
+                    description = data.error[1][2];
+                    Sao.common.userwarning.run(msg, description)
                         .done(function(result) {
                             if (!~['always', 'ok'].indexOf(result)) {
                                 dfd.reject();
@@ -57,8 +57,8 @@
                         });
                     return;
                 } else if (data.error[0] == 'UserError') {
-                    msg = data.error[1];
-                    description = data.error[2];
+                    msg = data.error[1][0];
+                    description = data.error[1][1];
                     Sao.common.warning.run(msg, description)
                         .always(dfd.reject);
                     return;
