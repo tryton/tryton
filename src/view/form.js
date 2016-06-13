@@ -2882,16 +2882,21 @@
             file_dialog.modal.modal('show');
         },
         open: function() {
-            // TODO find a way to make the difference
-            // between downloading and opening
-            this.save_as();
+            var params = {};
+            var filename_field = this.filename_field();
+            if (filename_field) {
+                var filename = filename_field.get_client(this.record());
+                // Valid mimetype will make the browser directly open the file
+                params.mimetype = Sao.common.guess_mimetype(filename);
+            }
+            this.save_as(params);
         },
-        save_as: function() {
+        save_as: function(params) {
+            var mimetype = params.mimetype || 'application/octet-binary';
             var field = this.field();
             var record = this.record();
             field.get_data(record).done(function(data) {
-                var blob = new Blob([data],
-                        {type: 'application/octet-binary'});
+                var blob = new Blob([data], {type: mimetype});
                 var blob_url = window.URL.createObjectURL(blob);
                 if (this.blob_url) {
                     window.URL.revokeObjectURL(this.blob_url);
