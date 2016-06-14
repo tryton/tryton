@@ -267,9 +267,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">opportunity_employee_graph2</field>
         </record>
 
+        <record model="ir.ui.view" id="opportunity_employee_context_view_form">
+            <field name="model">sale.opportunity_employee.context</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_employee_context_form</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_opportunity_employee_form">
             <field name="name">Opportunities per Employee</field>
             <field name="res_model">sale.opportunity_employee</field>
+            <field name="context_model">sale.opportunity_employee.context</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_opportunity_employee_form_view1">
@@ -301,18 +308,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
-        <record model="ir.ui.view" id="opportunity_employee_open_start_view_form">
-            <field name="model">sale.opportunity_employee.open.start</field>
-            <field name="type">form</field>
-            <field name="name">opportunity_employee_open_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="act_opportunity_employee_open">
-            <field name="name">Opportunities per Employee</field>
-            <field name="wiz_name">sale.opportunity_employee.open</field>
-        </record>
-        <menuitem parent="menu_reporting" action="act_opportunity_employee_open"
-            icon="tryton-list" id="menu_opportunity_employee_open"/>
+        <menuitem parent="menu_reporting" action="act_opportunity_employee_form"
+            id="menu_opportunity_employee_open"/>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_tree">
             <field name="model">sale.opportunity_monthly</field>

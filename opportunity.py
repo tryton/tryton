@@ -9,15 +9,13 @@ from sql.conditionals import Case
 from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, Check
-from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
-from trytond.pyson import Eval, In, If, Get, PYSONEncoder
+from trytond.pyson import Eval, In, If, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 __all__ = ['SaleOpportunity', 'SaleOpportunityLine',
-    'SaleOpportunityEmployee',
-    'OpenSaleOpportunityEmployeeStart', 'OpenSaleOpportunityEmployee',
+    'SaleOpportunityEmployee', 'SaleOpportunityEmployeeContext',
     'SaleOpportunityMonthly', 'SaleOpportunityEmployeeMonthly']
 
 STATES = [
@@ -615,29 +613,11 @@ class SaleOpportunityEmployee(SaleOpportunityReportMixin, ModelSQL, ModelView):
         return query
 
 
-class OpenSaleOpportunityEmployeeStart(ModelView):
-    'Open Sale Opportunity per Employee'
-    __name__ = 'sale.opportunity_employee.open.start'
+class SaleOpportunityEmployeeContext(ModelView):
+    'Sale Opportunity per Employee Context'
+    __name__ = 'sale.opportunity_employee.context'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-
-class OpenSaleOpportunityEmployee(Wizard):
-    'Open Sale Opportunity per Employee'
-    __name__ = 'sale.opportunity_employee.open'
-    start = StateView('sale.opportunity_employee.open.start',
-        'sale_opportunity.opportunity_employee_open_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('sale_opportunity.act_opportunity_employee_form')
-
-    def do_open_(self, action):
-        action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': self.start.start_date,
-                'end_date': self.start.end_date,
-                })
-        return action, {}
 
 
 class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):

@@ -16,7 +16,7 @@ def register():
         SaleOpportunity,
         SaleOpportunityLine,
         SaleOpportunityEmployee,
-        OpenSaleOpportunityEmployeeStart,
+        SaleOpportunityEmployeeContext,
         SaleOpportunityMonthly,
         SaleOpportunityEmployeeMonthly,
         Configuration,
@@ -30,6 +30,3 @@ def register():
         Company,
         Employee,
         module='sale_opportunity', type_='model')
-    Pool.register(
-        OpenSaleOpportunityEmployee,
-        module='sale_opportunity', type_='wizard')
