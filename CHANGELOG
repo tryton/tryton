@@ -1,3 +1,4 @@
+* Add count option on Action Window Domains
 * Remove window_name on Action Window
 * Return the calling keyword in ActionKeyword.get_keywords
 * Add customizable login process

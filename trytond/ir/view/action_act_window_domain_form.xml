@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="sequence"/>
     <label name="active"/>
     <field name="active"/>
+    <label name="count"/>
+    <field name="count"/>
     <label name="act_window"/>
     <field name="act_window"/>
     <newline/>

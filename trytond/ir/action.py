@@ -860,7 +860,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
             for view in self.act_window_views]
 
     def get_domains(self, name):
-        return [(domain.name, domain.domain or '[]')
+        return [(domain.name, domain.domain or '[]', domain.count)
             for domain in self.act_window_domains]
 
     @classmethod
@@ -945,6 +945,7 @@ class ActionActWindowDomain(ModelSQL, ModelView):
     name = fields.Char('Name', translate=True)
     sequence = fields.Integer('Sequence', required=True)
     domain = fields.Char('Domain')
+    count = fields.Boolean('Count')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
         select=True, required=True, ondelete='CASCADE')
     active = fields.Boolean('Active')
@@ -961,6 +962,10 @@ class ActionActWindowDomain(ModelSQL, ModelView):
     @staticmethod
     def default_active():
         return True
+
+    @classmethod
+    def default_count(cls):
+        return False
 
     @classmethod
     def validate(cls, actions):

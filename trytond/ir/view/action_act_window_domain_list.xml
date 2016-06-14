@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="act_window"/>
     <field name="name"/>
     <field name="domain"/>
+    <field name="count"/>
 </tree>
