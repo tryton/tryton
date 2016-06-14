@@ -77,7 +77,7 @@
                 params.tab_domain = [];
                 action.domains.forEach(function(element, index) {
                     params.tab_domain.push(
-                        [element[0], decoder.decode(element[1])]);
+                        [element[0], decoder.decode(element[1]), element[2]]);
                 });
                 params.name = action.name;
                 params.model = action.res_model || data.res_model;

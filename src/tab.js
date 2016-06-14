@@ -513,6 +513,7 @@
                     function() {
                         this.info_bar.message(
                                 Sao.i18n.gettext('Record saved.'), 'info');
+                        this.screen.count_tab_domain();
                     }.bind(this),
                     function() {
                         this.info_bar.message(
@@ -536,6 +537,7 @@
                             this.screen.screen_container.search_entry.val());
                         // TODO set current_record
                     }
+                    this.screen.count_tab_domain();
                     return this.screen.display().then(function() {
                         this.info_bar.message();
                     }.bind(this));
@@ -558,6 +560,7 @@
                             Sao.i18n.gettext(
                                 'Working now on the duplicated record(s).'),
                             'info');
+                    this.screen.count_tab_domain();
                 }.bind(this));
             }.bind(this));
         },
@@ -577,6 +580,7 @@
                             this.info_bar.message(
                                     Sao.i18n.gettext('Records removed.'),
                                     'info');
+                            this.screen.count_tab_domain();
                         }.bind(this), function() {
                             this.info_bar.message(
                                     Sao.i18n.gettext('Records not removed.'),
