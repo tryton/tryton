@@ -30,6 +30,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('account.kind', '=', 'payable'), ['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_line_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -39,6 +40,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('account.kind', '=', 'receivable'), ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_line_form"/>
         </record>
 
