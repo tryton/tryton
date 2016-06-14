@@ -82,6 +82,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'draft')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_complaint_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -91,6 +92,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'waiting')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_complaint_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -100,6 +102,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'approved')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_complaint_form"/>
         </record>
         <record model="ir.action.act_window.domain"
