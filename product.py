@@ -14,4 +14,4 @@ class Product:
         'Return the supply period for the product'
         pool = Pool()
         Configuration = pool.get('production.configuration')
-        return int(Configuration(1).supply_period or 0)
+        return Configuration(1).supply_period or 0

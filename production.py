@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from decimal import Decimal
 from collections import defaultdict
 
 from trytond.model import ModelView, fields
@@ -17,12 +16,12 @@ __all__ = ['Configuration', 'Production',
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'production.configuration'
-    supply_period = fields.Property(fields.Numeric('Supply Period',
-            digits=(16, 0), help='In number of days', required=True))
+    supply_period = fields.Property(fields.Integer('Supply Period',
+            help='In number of days', required=True))
 
-    @staticmethod
-    def default_supply_period():
-        return Decimal(0)
+    @classmethod
+    def default_supply_period(cls):
+        return 0
 
 
 class Production:
