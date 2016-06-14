@@ -1,11 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSingleton, ModelSQL, UnionMixin, fields
+from trytond.transaction import Transaction
 
 __all__ = [
     'Model',
     'Singleton', 'URLObject',
-    'ModelStorage',
+    'ModelStorage', 'ModelStorageContext',
     'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
     'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
     'Union', 'UnionUnion',
@@ -39,6 +40,15 @@ class ModelStorage(ModelSQL):
     'Model stored'
     __name__ = 'test.modelstorage'
     name = fields.Char('Name')
+
+
+class ModelStorageContext(ModelSQL):
+    'Model Storage to test Context'
+    __name__ = 'test.modelstorage.context'
+    context = fields.Function(fields.Binary('Context'), 'get_context')
+
+    def get_context(self, name):
+        return Transaction().context
 
 
 class ModelSQLRequiredField(ModelSQL):

@@ -105,6 +105,7 @@ def register():
         Singleton,
         URLObject,
         ModelStorage,
+        ModelStorageContext,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
         ModelSQLFieldSet,

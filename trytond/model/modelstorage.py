@@ -1338,6 +1338,7 @@ class ModelStorage(Model):
         # Read the data
         with Transaction().set_current_transaction(self._transaction), \
                 self._transaction.set_user(self._user), \
+                self._transaction.reset_context(), \
                 self._transaction.set_context(self._context):
             if self.id in self._cache and name in self._cache[self.id]:
                 # Use values from cache
