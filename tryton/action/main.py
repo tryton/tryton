@@ -111,7 +111,8 @@ class Action(object):
             domain = decoder.decode(action['pyson_domain'])
             order = decoder.decode(action['pyson_order'])
             search_value = decoder.decode(action['pyson_search_value'] or '[]')
-            tab_domain = [(n, decoder.decode(d)) for n, d in action['domains']]
+            tab_domain = [(n, decoder.decode(d), c)
+                for n, d, c in action['domains']]
 
             name = action.get('name', '')
 

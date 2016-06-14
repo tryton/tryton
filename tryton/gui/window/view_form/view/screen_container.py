@@ -133,6 +133,7 @@ class ScreenContainer(object):
         self.search_table = None
         self.last_search_text = ''
         self.tab_domain = tab_domain or []
+        self.tab_counter = []
 
         tooltips = common.Tooltips()
 
@@ -245,10 +246,16 @@ class ScreenContainer(object):
             self.notebook = gtk.Notebook()
             self.notebook.props.homogeneous = True
             self.notebook.set_scrollable(True)
-            for name, domain in self.tab_domain:
+            for name, domain, count in self.tab_domain:
+                hbox = gtk.HBox(spacing=3)
                 label = gtk.Label('_' + name)
                 label.set_use_underline(True)
-                self.notebook.append_page(gtk.VBox(), label)
+                hbox.pack_start(label, expand=True, fill=True)
+                counter = gtk.Label()
+                hbox.pack_start(counter, expand=False, fill=True)
+                hbox.show_all()
+                self.notebook.append_page(gtk.VBox(), hbox)
+                self.tab_counter.append(counter)
             self.filter_vbox.pack_start(self.notebook, expand=True, fill=True)
             self.notebook.show_all()
             # Set the current page before connecting to switch-page to not
@@ -384,6 +391,7 @@ class ScreenContainer(object):
     def switch_page_after(self, notebook, page, page_num):
         self.do_search()
         notebook.grab_focus()
+        self.screen.count_tab_domain()
 
     def get_tab_domain(self):
         if not self.notebook:
@@ -392,6 +400,22 @@ class ScreenContainer(object):
         if idx < 0:
             return []
         return self.tab_domain[idx][1]
+
+    def set_tab_counter(self, count, idx=None):
+        if not self.tab_counter or not self.notebook:
+            return
+        if idx is None:
+            idx = self.notebook.get_current_page()
+        if idx < 0:
+            return
+        label = self.tab_counter[idx]
+        tooltip = common.Tooltips()
+        tooltip.set_tip(label, '%d' % count)
+        fmt = '(%d)'
+        if count > 99:
+            fmt = '(%d+)'
+            count = 99
+        label.set_label(fmt % count)
 
     def match_selected(self, completion, model, iter):
         def callback():

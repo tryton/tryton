@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Screen"
 import copy
+import functools
 import gobject
 import datetime
 import calendar
@@ -145,6 +146,7 @@ class Screen(SignalEvent):
         self.view_to_load = mode[:]
         if view_ids or mode:
             self.switch_view()
+        self.count_tab_domain()
 
     def __repr__(self):
         return '<Screen %s at %s>' % (self.model_name, id(self))
@@ -304,6 +306,18 @@ class Screen(SignalEvent):
         self.clear()
         self.load(ids)
         return bool(ids)
+
+    def count_tab_domain(self):
+        def set_tab_counter(count, idx):
+            self.screen_container.set_tab_counter(count(), idx)
+        for idx, (name, domain, count) in enumerate(
+                self.screen_container.tab_domain):
+            if not count:
+                continue
+            domain = ['AND', domain, self.domain]
+            RPCExecute('model', self.model_name,
+                'search_count', domain, context=self.context,
+                callback=functools.partial(set_tab_counter, idx=idx))
 
     @property
     def context(self):
