@@ -33,8 +33,11 @@ class Address(ModelSQL, ModelView):
     country = fields.Many2One('country.country', 'Country',
         states=STATES, depends=DEPENDS)
     subdivision = fields.Many2One("country.subdivision",
-            'Subdivision', domain=[('country', '=', Eval('country'))],
-            states=STATES, depends=['active', 'country'])
+        'Subdivision', domain=[
+            ('country', '=', Eval('country', -1)),
+            ('parent', '=', None),
+            ],
+        states=STATES, depends=['active', 'country'])
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
     full_address = fields.Function(fields.Text('Full Address'),
@@ -76,7 +79,8 @@ class Address(ModelSQL, ModelView):
             domain.append(('country', '=', self.country.id))
         if self.subdivision:
             domain.append(['OR',
-                    ('subdivision', '=', self.subdivision.id),
+                    ('subdivision', 'child_of',
+                        [self.subdivision.id], 'parent'),
                     ('subdivision', '=', None),
                     ])
         return domain
