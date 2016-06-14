@@ -49,6 +49,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -56,6 +57,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
             <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
         <record model="ir.action.act_window.domain"
