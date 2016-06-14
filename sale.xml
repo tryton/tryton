@@ -128,6 +128,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'draft')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_quotation">
@@ -136,6 +137,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'quotation')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_confirmed">
@@ -144,6 +146,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'confirmed')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_processing">
@@ -152,6 +155,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('state', '=', 'processing')]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_sale_form_domain_all">
