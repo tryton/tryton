@@ -102,6 +102,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Opened</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_project_tree"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_project_tree_done">
@@ -135,6 +136,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Opened</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_project_form_done">
@@ -168,6 +170,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Opened</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'opened')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_task_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_task_form_done">
