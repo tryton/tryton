@@ -524,8 +524,15 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 Bool(Eval('to_location'))),
             },
         domain=[
-            ('from_location', '=', Eval('from_location')),
-            ('to_location', '=', Eval('to_location')),
+            If(Eval('state') == 'draft', [
+                    ('from_location', '=', Eval('from_location')),
+                    ('to_location', '=', Eval('to_location')),
+                    ], [
+                    ('from_location', 'child_of', [Eval('from_location', -1)],
+                        'parent'),
+                    ('to_location', 'child_of', [Eval('to_location', -1)],
+                        'parent'),
+                    ]),
             ('company', '=', Eval('company')),
             ],
         depends=['state', 'from_location', 'to_location', 'company'])
@@ -705,6 +712,13 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
         Move.draft([m for s in shipments for m in s.moves])
+        for shipment in shipments:
+            Move.write([m for m in shipment.moves
+                    if m.state != 'done'], {
+                    'from_location': shipment.from_location.id,
+                    'to_location': shipment.to_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
 
     @classmethod
     @ModelView.button
