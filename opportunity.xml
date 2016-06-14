@@ -65,6 +65,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Leads</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'lead')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -73,6 +74,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="domain"
                 eval="[('state', '=', 'opportunity')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
         <record model="ir.action.act_window.domain"
