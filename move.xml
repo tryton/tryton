@@ -58,6 +58,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment', '=', None)]"
                 pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_move_form_domain_to_customer">

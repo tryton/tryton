@@ -37,6 +37,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
             <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_inventory_form_domain_all">
