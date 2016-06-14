@@ -519,18 +519,18 @@ class Translation(ModelSQL, ModelView):
                 translations[translation.name] = translation
 
             to_save = []
-            for record, value in izip(records, values):
-                translation = translations.get(get_name(record))
-                if not translation:
-                    translation = cls()
-                    translation.name = name
-                    translation.lang = lang
-                    translation.type = ttype
-                translation.src = getattr(record, field_name)
-                translation.value = value
-                translation.fuzzy = False
-                to_save.append(translation)
             with Transaction().set_context(_check_access=False):
+                for record, value in izip(records, values):
+                    translation = translations.get(get_name(record))
+                    if not translation:
+                        translation = cls()
+                        translation.name = name
+                        translation.lang = lang
+                        translation.type = ttype
+                    translation.src = getattr(record, field_name)
+                    translation.value = value
+                    translation.fuzzy = False
+                    to_save.append(translation)
                 cls.save(to_save)
             return
 
@@ -560,16 +560,16 @@ class Translation(ModelSQL, ModelView):
                     ).append(translation)
 
         to_save = []
-        for record, value in izip(records, values):
-            translation = translations.get(record.id)
-            if not translation:
-                translation = cls()
-                translation.name = name
-                translation.lang = lang
-                translation.type = ttype
-                translation.res_id = record.id
-            else:
-                with Transaction().set_context(_check_access=False):
+        with Transaction().set_context(_check_access=False):
+            for record, value in izip(records, values):
+                translation = translations.get(record.id)
+                if not translation:
+                    translation = cls()
+                    translation.name = name
+                    translation.lang = lang
+                    translation.type = ttype
+                    translation.res_id = record.id
+                else:
                     cls.write([translation], {
                         'value': value,
                         'src': getattr(record, field_name),
@@ -581,24 +581,23 @@ class Translation(ModelSQL, ModelView):
                             other_lang.src = getattr(record, field_name)
                             other_lang.fuzzy = True
                             to_save.append(other_lang)
-            translation.value = value
-            translation.src = getattr(record, field_name)
-            translation.fuzzy = False
-            to_save.append(translation)
-        with Transaction().set_context(_check_access=False):
+                translation.value = value
+                translation.src = getattr(record, field_name)
+                translation.fuzzy = False
+                to_save.append(translation)
             cls.save(to_save)
 
     @classmethod
     def delete_ids(cls, model, ttype, ids):
         "Delete translation for each id"
         translations = []
-        for sub_ids in grouped_slice(ids):
-            translations += cls.search([
-                    ('type', '=', ttype),
-                    ('name', 'like', model + ',%'),
-                    ('res_id', 'in', list(sub_ids)),
-                    ])
         with Transaction().set_context(_check_access=False):
+            for sub_ids in grouped_slice(ids):
+                translations += cls.search([
+                        ('type', '=', ttype),
+                        ('name', 'like', model + ',%'),
+                        ('res_id', 'in', list(sub_ids)),
+                        ])
             cls.delete(translations)
 
     @classmethod
