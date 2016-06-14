@@ -1640,7 +1640,7 @@
         _set_button_sensitive: function() {
             this.entry.prop('readonly', this._readonly);
             this.but_open.prop('disabled',
-                    this._readonly || !this.read_access());
+                    !this.read_access());
         },
         get_access: function(type) {
             var model = this.get_model();
@@ -1697,7 +1697,7 @@
                 win = new Sao.Window.Form(screen, callback.bind(this), {
                     save_current: true
                 });
-            } else if (model) {
+            } else if (model && !this._readonly) {
                 var dom;
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
