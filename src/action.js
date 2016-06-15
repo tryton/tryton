@@ -85,7 +85,27 @@
                 params.context_model = action.context_model;
                 params.limit = action.limit;
                 params.icon = action['icon.rec_name'] || '';
-                Sao.Tab.create(params);
+                var dfd = jQuery.when();
+                var keyword = action.keyword || '';
+                if (keyword === 'form_relate' && data.model && data.ids) {
+                    var max_records = 5;
+                    var ids = data.ids.slice(0, max_records);
+                    dfd = Sao.rpc({
+                        'method': 'model.' + data.model + '.read',
+                        'params': [ids, ['rec_name'], context]
+                    }, Sao.Session.current_session).done(function(result) {
+                        var name_suffix = result.map(function(record){
+                            return record.rec_name;
+                        }).join(Sao.i18n.gettext(', '));
+
+                        if (data.ids.length > max_records) {
+                            name_suffix += Sao.i18n.gettext(',\u2026');
+                        }
+                        params.name = Sao.i18n.gettext(
+                            '%1 (%2)', params.name, name_suffix);
+                    }).promise();
+                }
+                dfd.done(Sao.Tab.create(params));
                 return;
             case 'ir.action.wizard':
                 params.action = action.wiz_name;
