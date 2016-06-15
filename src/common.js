@@ -2468,7 +2468,7 @@
         },
         register_icon: function(icon_name) {
             if (!icon_name) {
-                return jQuery.when('');
+                return jQuery.Deferred().reject();
             } else if ((icon_name in this.loaded_icons) ||
                     ~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
                 return jQuery.when(this.get_icon_url(icon_name));
