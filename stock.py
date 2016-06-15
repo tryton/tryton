@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
@@ -7,9 +9,9 @@ from trytond.transaction import Transaction
 from trytond.modules.stock import StockMixin
 
 __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
-    'ShipmentOutReturn',
+    'LotByLocationContext', 'ShipmentOutReturn',
     'Period', 'PeriodCacheLot',
-    'Inventory', 'InventoryLine']
+    'Inventory', 'InventoryLine', 'LotByLocationContext']
 
 
 class Lot(ModelSQL, ModelView, StockMixin):
@@ -35,6 +37,29 @@ class Lot(ModelSQL, ModelView, StockMixin):
         location_ids = Transaction().context.get('locations')
         return cls._search_quantity(name, location_ids, domain,
             grouping=('product', 'lot'))
+
+
+class LotByLocationContext(ModelView):
+    'Lot by Location'
+    __name__ = 'stock.lots_by_location.context'
+    forecast_date = fields.Date(
+        'At Date', help=('Allow to compute expected '
+            'stock quantities for this date.\n'
+            '* An empty value is an infinite date in the future.\n'
+            '* A date in the past will provide historical values.'))
+    stock_date_end = fields.Function(fields.Date('At Date'),
+        'on_change_with_stock_date_end')
+
+    @staticmethod
+    def default_forecast_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
+
+    @fields.depends('forecast_date')
+    def on_change_with_stock_date_end(self, name=None):
+        if self.forecast_date is None:
+            return datetime.datetime.max
+        return self.forecast_date
 
 
 class LotType(ModelSQL, ModelView):

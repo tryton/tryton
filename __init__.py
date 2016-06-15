@@ -9,6 +9,7 @@ from .product import *
 def register():
     Pool.register(
         Lot,
+        LotByLocationContext,
         LotType,
         Move,
         ShipmentIn,
