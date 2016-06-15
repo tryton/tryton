@@ -57,12 +57,23 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_configuration" sequence="10"
             action="act_location_form" id="menu_location_form"/>
 
+        <record model="ir.ui.view"
+                id="products_by_locations_context_view_form">
+            <field
+                name="model">stock.products_by_locations.context</field>
+            <field name="type">form</field>
+            <field name="name">products_by_locations_context_form</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_products_by_locations">
             <field name="name">Products</field>
             <field name="res_model">product.product</field>
+            <field name="context" eval="{'locations': Eval('active_ids')}"
+                pyson="1"/>
             <field name="domain"
                 eval="['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]"
                 pyson="1"/>
+            <field name="context_model">stock.products_by_locations.context</field>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view2">
             <field name="sequence" eval="10"/>
@@ -74,23 +85,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="product.product_view_form"/>
             <field name="act_window" ref="act_products_by_locations"/>
         </record>
-
-        <record model="ir.action.wizard" id="wizard_products_by_locations">
-            <field name="name">Products by Locations</field>
-            <field name="wiz_name">stock.products_by_locations</field>
-            <field name="model">stock.location</field>
-        </record>
         <record model="ir.action.keyword"
                 id="act_products_by_locations_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,-1</field>
-            <field name="action" ref="wizard_products_by_locations"/>
+            <field name="action" ref="act_products_by_locations"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_products_by_locations_keyword2">
             <field name="keyword">form_relate</field>
             <field name="model">stock.location,-1</field>
-            <field name="action" ref="wizard_products_by_locations"/>
+            <field name="action" ref="act_products_by_locations"/>
         </record>
 
         <record model="ir.model.access" id="access_location">
@@ -115,11 +120,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">party_form</field>
         </record>
 
-        <record model="ir.ui.view" id="products_by_locations_start_view_form">
-            <field name="model">stock.products_by_locations.start</field>
-            <field name="type">form</field>
-            <field name="name">products_by_locations_start_form</field>
-        </record>
 
     </data>
     <data noupdate="1">

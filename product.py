@@ -10,9 +10,8 @@ from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce
 
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
-    Button
-from trytond.pyson import PYSONEncoder, Eval, Or
+from trytond.wizard import Wizard, StateTransition
+from trytond.pyson import Eval, Or
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
@@ -20,9 +19,8 @@ from trytond.tools import grouped_slice
 from .move import StockMixin
 
 __all__ = ['Template', 'Product',
-    'ProductByLocationStart', 'ProductByLocation',
-    'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseStart',
-    'OpenProductQuantitiesByWarehouse',
+    'ProductByLocationContext',
+    'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseContext',
     'RecomputeCostPrice']
 
 
@@ -274,59 +272,27 @@ class Product(StockMixin, object):
         return cost_price
 
 
-class ProductByLocationStart(ModelView):
+class ProductByLocationContext(ModelView):
     'Product by Location'
-    __name__ = 'product.by_location.start'
+    __name__ = 'product.by_location.context'
     forecast_date = fields.Date(
         'At Date', help=('Allow to compute expected '
             'stock quantities for this date.\n'
             '* An empty value is an infinite date in the future.\n'
             '* A date in the past will provide historical values.'))
+    stock_date_end = fields.Function(fields.Date('At Date'),
+        'on_change_with_stock_date_end')
 
     @staticmethod
     def default_forecast_date():
         Date = Pool().get('ir.date')
         return Date.today()
 
-
-class ProductByLocation(Wizard):
-    'Product by Location'
-    __name__ = 'product.by_location'
-    start = StateView('product.by_location.start',
-        'stock.product_by_location_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open', 'tryton-ok', default=True),
-            ])
-    open = StateAction('stock.act_location_quantity_tree')
-
-    def do_open(self, action):
-        pool = Pool()
-        Product = pool.get('product.product')
-        Lang = pool.get('ir.lang')
-
-        context = {}
-        product_id = Transaction().context['active_id']
-        context['product'] = product_id
-        if self.start.forecast_date:
-            context['stock_date_end'] = self.start.forecast_date
-        else:
-            context['stock_date_end'] = datetime.date.max
-        action['pyson_context'] = PYSONEncoder().encode(context)
-        product = Product(product_id)
-
-        for code in [Transaction().language, 'en_US']:
-            langs = Lang.search([
-                    ('code', '=', code),
-                    ])
-            if langs:
-                break
-        lang, = langs
-        date = Lang.strftime(context['stock_date_end'],
-            lang.code, lang.date)
-
-        action['name'] += ' - %s (%s) @ %s' % (product.rec_name,
-            product.default_uom.rec_name, date)
-        return action, {}
+    @fields.depends('forecast_date')
+    def on_change_with_stock_date_end(self, name=None):
+        if self.forecast_date is None:
+            return datetime.datetime.max
+        return self.forecast_date
 
 
 class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
@@ -399,9 +365,9 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         return dict((l.id, quantities[l.date]) for l in lines)
 
 
-class ProductQuantitiesByWarehouseStart(ModelView):
+class ProductQuantitiesByWarehouseContext(ModelView):
     'Product Quantities By Warehouse'
-    __name__ = 'stock.product_quantities_warehouse.start'
+    __name__ = 'stock.product_quantities_warehouse.context'
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
             ('type', '=', 'warehouse'),
@@ -415,28 +381,6 @@ class ProductQuantitiesByWarehouseStart(ModelView):
                 ])
         if len(warehouses) == 1:
             return warehouses[0].id
-
-
-class OpenProductQuantitiesByWarehouse(Wizard):
-    'Product Quantities By Warehouse'
-    __name__ = 'stock.product_quantities_warehouse'
-    start = StateView('stock.product_quantities_warehouse.start',
-        'stock.product_quantities_warehouse_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('stock.act_product_quantities_warehouse')
-
-    def do_open_(self, action):
-        Date = Pool().get('ir.date')
-        action['pyson_context'] = PYSONEncoder().encode({
-                'product': Transaction().context['active_id'],
-                'warehouse': self.start.warehouse.id,
-                })
-        action['pyson_search_value'] = PYSONEncoder().encode([
-                ('date', '>=', Date.today()),
-                ])
-        return action, {}
 
 
 class RecomputeCostPrice(Wizard):

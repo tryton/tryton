@@ -3,15 +3,13 @@
 import datetime
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond import backend
-from trytond.pyson import Eval, PYSONEncoder, Date, If
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-__all__ = ['Location', 'Party', 'ProductsByLocationsStart',
-    'ProductsByLocations']
+__all__ = ['Location', 'Party', 'ProductsByLocationsContext']
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -406,53 +404,24 @@ class Party:
         'party.'))
 
 
-class ProductsByLocationsStart(ModelView):
+class ProductsByLocationsContext(ModelView):
     'Products by Locations'
-    __name__ = 'stock.products_by_locations.start'
+    __name__ = 'stock.products_by_locations.context'
     forecast_date = fields.Date(
         'At Date', help=('Allow to compute expected '
             'stock quantities for this date.\n'
             '* An empty value is an infinite date in the future.\n'
             '* A date in the past will provide historical values.'))
+    stock_date_end = fields.Function(fields.Date('At Date'),
+        'on_change_with_stock_date_end')
 
     @staticmethod
     def default_forecast_date():
         Date_ = Pool().get('ir.date')
         return Date_.today()
 
-
-class ProductsByLocations(Wizard):
-    'Products by Locations'
-    __name__ = 'stock.products_by_locations'
-    start = StateView('stock.products_by_locations.start',
-        'stock.products_by_locations_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open', 'tryton-ok', True),
-            ])
-    open = StateAction('stock.act_products_by_locations')
-
-    def do_open(self, action):
-        pool = Pool()
-        Location = pool.get('stock.location')
-        Lang = pool.get('ir.lang')
-
-        context = {}
-        context['locations'] = Transaction().context.get('active_ids')
-        date = self.start.forecast_date or datetime.date.max
-        context['stock_date_end'] = Date(date.year, date.month, date.day)
-        action['pyson_context'] = PYSONEncoder().encode(context)
-
-        locations = Location.browse(context['locations'])
-
-        for code in [Transaction().language, 'en_US']:
-            langs = Lang.search([
-                    ('code', '=', code),
-                    ])
-            if langs:
-                break
-        lang = langs[0]
-        date = Lang.strftime(date, lang.code, lang.date)
-
-        action['name'] += ' - (%s) @ %s' % (
-            ','.join(l.name for l in locations), date)
-        return action, {}
+    @fields.depends('forecast_date')
+    def on_change_with_stock_date_end(self, name=None):
+        if self.forecast_date is None:
+            return datetime.datetime.max
+        return self.forecast_date

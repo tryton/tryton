@@ -15,7 +15,7 @@ def register():
     Pool.register(
         Location,
         Party,
-        ProductsByLocationsStart,
+        ProductsByLocationsContext,
         Move,
         ShipmentIn,
         ShipmentInReturn,
@@ -30,20 +30,17 @@ def register():
         Cache,
         Template,
         Product,
-        ProductByLocationStart,
+        ProductByLocationContext,
         ProductQuantitiesByWarehouse,
-        ProductQuantitiesByWarehouseStart,
+        ProductQuantitiesByWarehouseContext,
         Inventory,
         InventoryLine,
         Configuration,
         module='stock', type_='model')
     Pool.register(
-        ProductsByLocations,
         AssignShipmentOut,
         AssignShipmentInternal,
         AssignShipmentInReturn,
-        ProductByLocation,
-        OpenProductQuantitiesByWarehouse,
         RecomputeCostPrice,
         module='stock', type_='wizard')
     Pool.register(

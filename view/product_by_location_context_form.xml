@@ -4,4 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <form string="Product by Location">
     <label name="forecast_date"/>
     <field name="forecast_date"/>
+    <field name="stock_date_end" invisible="1" colspan="4"/>
 </form>
