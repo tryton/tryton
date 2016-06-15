@@ -119,6 +119,16 @@ class Action(object):
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))
 
+            if (action.get('keyword', '') == 'form_relate'
+                    and data.get('model') and data.get('ids')):
+                max_records = 5
+                rec_names = RPCExecute('model', data.get('model'),
+                    'read', data.get('ids')[:max_records], ['rec_name'])
+                name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
+                if len(data.get('ids')) > max_records:
+                    name_suffix += _(u',\u2026')
+                name = _('%s (%s)') % (name, name_suffix)
+
             Window.create(view_ids, res_model, res_id, domain,
                     action_ctx, order, view_mode, name=name,
                     limit=action.get('limit'),
