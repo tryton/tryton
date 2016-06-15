@@ -112,6 +112,7 @@ class StockLotTestCase(ModuleTestCase):
                     (storage.id, product.id, None): 3,
                     })
             with Transaction().set_context(locations=[storage.id]):
+                lot1, lot2 = Lot.browse([lot1, lot2])
                 self.assertEqual(lot1.quantity, 5)
                 self.assertEqual(lot2.quantity, 8)
 
