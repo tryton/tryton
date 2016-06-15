@@ -693,12 +693,11 @@
             this.el = jQuery('<div/>', {
                 'class': 'form-separator'
             });
+            this.label_el = jQuery('<label/>');
             if (text) {
-            	this.label_el = jQuery('<label/>', {
-                    text: text
-                });
-                this.el.append(this.label_el);
+                this.label_el.text = text;
             }
+            this.el.append(this.label_el);
             this.el.append(jQuery('<hr/>'));
         }
     });
