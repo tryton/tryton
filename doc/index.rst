@@ -34,6 +34,6 @@ can be in one of these states:
   which is cancelled.
 
 A wizard allows to create purchases based on a selection of draft purchase
-requests. The new purchases contains one purchase line by purchase request and
+requests. The new purchases contains one purchase line by product and unit and
 group them by warehouses and by suppliers. Once the purchases are created, the
 corresponding purchase requests are set to the state Purchased.

@@ -325,6 +325,16 @@ class CreatePurchase(Wizard):
             ('invoice_address', request.party.address_get(type='invoice')),
             )
 
+    def _group_purchase_line_key(self, request):
+        '''
+        The key to group requests by lines
+        A list of key-value as tuples of the purchase line
+        '''
+        return (
+            ('product', request.product),
+            ('unit', request.uom),
+            )
+
     def transition_start(self):
         pool = Pool()
         Request = pool.get('purchase.request')
@@ -378,54 +388,55 @@ class CreatePurchase(Wizard):
             for f, v in key:
                 setattr(purchase, f, v)
             purchase.save()
-            for request in grouped_requests:
-                line = self.compute_purchase_line(request, purchase)
+            for line_key, line_requests in groupby(
+                    grouped_requests, key=self._group_purchase_line_key):
+                line_requests = list(line_requests)
+                line = self.compute_purchase_line(
+                    line_key, line_requests, purchase)
                 line.purchase = purchase
                 line.save()
-                Request.write([request], {
+                Request.write(line_requests, {
                         'purchase_line': line.id,
                         })
         return 'end'
 
     @staticmethod
-    def _get_tax_rule_pattern(request):
+    def _get_tax_rule_pattern(line, purchase):
         '''
         Get tax rule pattern
         '''
         return {}
 
     @classmethod
-    def compute_purchase_line(cls, request, purchase):
+    def compute_purchase_line(cls, key, requests, purchase):
         pool = Pool()
         Product = pool.get('product.product')
         Line = pool.get('purchase.line')
 
-        line = Line(
-            product=request.product,
-            unit=request.uom,
-            quantity=request.quantity,
-            description=request.product.name,
-            )
+        line = Line()
+        for f, v in key:
+            setattr(line, f, v)
+        line.description = line.product.name
+        line.quantity = sum(r.quantity for r in requests)
 
-        # XXX purchase with several lines of the same product
-        with Transaction().set_context(uom=request.uom.id,
-                supplier=request.party.id,
-                currency=request.currency.id):
+        with Transaction().set_context(uom=line.unit.id,
+                supplier=purchase.party.id,
+                currency=purchase.currency.id):
             product_price = Product.get_purchase_price(
-                [request.product], request.quantity)[request.product.id]
+                [line.product], line.quantity)[line.product.id]
             product_price = product_price.quantize(
                 Decimal(1) / 10 ** Line.unit_price.digits[1])
 
         if product_price is None:
-            cls.raise_user_error('missing_price', (request.product.rec_name,),
+            cls.raise_user_error('missing_price', (line.product.rec_name,),
                 'please_update')
         line.unit_price = product_price
 
         taxes = []
-        for tax in request.product.supplier_taxes_used:
-            if request.party and request.party.supplier_tax_rule:
-                pattern = cls._get_tax_rule_pattern(request)
-                tax_ids = request.party.supplier_tax_rule.apply(tax, pattern)
+        for tax in line.product.supplier_taxes_used:
+            if purchase.party and purchase.party.supplier_tax_rule:
+                pattern = cls._get_tax_rule_pattern(line, purchase)
+                tax_ids = purchase.party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
                     taxes.extend(tax_ids)
                 continue

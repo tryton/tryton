@@ -210,3 +210,46 @@ Handle again the exception::
     >>> handle_exception.execute('cancel_request')
     >>> pr.state
     'cancel'
+
+Re-create the purchase request::
+
+    >>> create_pr = Wizard('purchase.request.create')
+    >>> create_pr.execute('create_')
+
+Create a second purchase request manually::
+
+    >>> config.user = 1  # admin
+    >>> pr = PurchaseRequest()
+    >>> pr.product = product
+    >>> pr.quantity = 1
+    >>> pr.uom = unit
+    >>> pr.warehouse = warehouse_loc
+    >>> pr.origin = Model.get('stock.order_point')()
+    >>> pr.save()
+
+There is now 2 draft purchase requests::
+
+    >>> config.user = purchase_user.id
+    >>> prs = PurchaseRequest.find([('state', '=', 'draft')])
+    >>> len(prs)
+    2
+
+Create the purchase with a unique line::
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase', prs)
+    >>> create_purchase.form.party = supplier
+    >>> create_purchase.execute('start')
+    >>> pr.state
+    'purchased'
+
+    >>> Purchase = Model.get('purchase.purchase')
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> len(purchase.lines)
+    1
+    >>> line, = purchase.lines
+    >>> line.product == product
+    True
+    >>> line.quantity
+    2.0
+    >>> line.unit == unit
+    True
