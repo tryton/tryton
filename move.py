@@ -417,14 +417,11 @@ class Move(ModelSQL, ModelView):
             if not company.currency.is_zero(amount):
                 cls.raise_user_error('post_unbalanced_move', (move.rec_name,))
         for move in moves:
-            values = {
-                'state': 'posted',
-                }
+            move.state = 'posted'
             if not move.post_number:
-                values['post_date'] = Date.today()
-                values['post_number'] = Sequence.get_id(
+                move.post_date = Date.today()
+                move.post_number = Sequence.get_id(
                     move.period.post_move_sequence_used.id)
-            cls.write([move], values)
 
             keyfunc = lambda l: (l.party, l.account)
             to_reconcile = [l for l in move.lines
@@ -433,6 +430,7 @@ class Move(ModelSQL, ModelView):
             to_reconcile = sorted(to_reconcile, key=keyfunc)
             for _, zero_lines in groupby(to_reconcile, keyfunc):
                 Line.reconcile(list(zero_lines))
+        cls.save(moves)
 
     @classmethod
     @ModelView.button
@@ -1415,8 +1413,8 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Journal = pool.get('account.journal')
         Move = pool.get('account.move')
+        move = None
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if not vals.get('move'):
@@ -1424,14 +1422,14 @@ class Line(ModelSQL, ModelView):
                         or Transaction().context.get('journal'))
                 if not journal_id:
                     cls.raise_user_error('no_journal')
-                journal = Journal(journal_id)
-                if not vals.get('move'):
-                    vals['move'] = Move.create([{
-                                'period': (vals.get('period')
-                                    or Transaction().context.get('period')),
-                                'journal': journal_id,
-                                'date': vals.get('date'),
-                                }])[0].id
+                if move is None:
+                    move = Move()
+                    move.period = vals.get('period',
+                        Transaction().context.get('period'))
+                    move.journal = journal_id
+                    move.date = vals.get('date')
+                    move.save()
+                vals['move'] = move.id
             else:
                 # prevent computation of default date
                 vals.setdefault('date', None)
