@@ -48,6 +48,7 @@ class Move:
 
         cost_price = Decimal("0.0")
         consumed_qty = 0.0
+        to_write = []
         for move, move_qty in fifo_moves:
             consumed_qty += move_qty
 
@@ -66,9 +67,11 @@ class Move:
                     move.uom, round=False)
             # Use write as move instance quantity was modified to call
             # _update_product_cost_price
-            self.write([self.__class__(move.id)], {
-                    'fifo_quantity': (move.fifo_quantity or 0.0) + move_qty,
-                    })
+            new_quantity = (move.fifo_quantity or 0.0) + move_qty
+            to_write.extend(([self.__class__(move.id)], {
+                        'fifo_quantity': new_quantity,
+                        }))
+        self.__class__.write(*to_write)
 
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
