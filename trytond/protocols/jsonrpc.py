@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import traceback
-import sys
 import datetime
 from decimal import Decimal
 try:
@@ -155,11 +153,8 @@ class JSONProtocol:
         if isinstance(data, TrytonException):
             response['error'] = data.args
         elif isinstance(data, Exception):
-            tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-            for path in sys.path:
-                tb_s = tb_s.replace(path, '')
             # report exception back to server
-            response['error'] = (str(data), tb_s)
+            response['error'] = (str(data), data.__format_traceback__)
         else:
             response['result'] = data
         return Response(json.dumps(response, cls=JSONEncoder),
