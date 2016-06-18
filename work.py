@@ -231,7 +231,18 @@ class Work(ModelSQL, ModelView):
         cls.save(works)
 
     def get_rec_name(self, name):
-        return self.operation.rec_name
+        return '%s @ %s' % (self.operation.rec_name, self.production.rec_name)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('operation.rec_name',) + tuple(clause[1:]),
+            ('production.rec_name',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def delete(cls, works):

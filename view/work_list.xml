@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Works">
     <field name="production"/>
-    <field name="rec_name"/>
+    <field name="operation"/>
     <field name="work_center"/>
     <field name="state"/>
 </tree>
