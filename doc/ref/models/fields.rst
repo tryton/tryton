@@ -727,9 +727,12 @@ A function field can emulate any other given `field`.
     the value.
     The signature of the method id::
 
-        setter(ids, name, value)
+        setter(instances, name, value)
 
     where `name` is the name of the field and `value` the value to set.
+
+.. warning::
+    The modifications made to instances will not be saved automatically.
 
 .. attribute:: Function.searcher
 
