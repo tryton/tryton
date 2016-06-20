@@ -252,10 +252,15 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @staticmethod
     def create_moves(forecasts):
         'Create stock moves for the forecast ids'
+        pool = Pool()
+        Line = pool.get('stock.forecast.line')
+        to_save = []
         for forecast in forecasts:
             if forecast.state == 'done':
                 for line in forecast.lines:
-                    line.create_moves()
+                    line.moves += tuple(line.get_moves())
+                    to_save.append(line)
+        Line.save(to_save)
 
     @staticmethod
     def delete_moves(forecasts):
@@ -417,8 +422,8 @@ class ForecastLine(ModelSQL, ModelView):
         default['moves'] = None
         return super(ForecastLine, cls).copy(lines, default=default)
 
-    def create_moves(self):
-        'Create stock moves for the forecast line'
+    def get_moves(self):
+        'Get stock moves for the forecast line'
         pool = Pool()
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
@@ -445,27 +450,23 @@ class ForecastLine(ModelSQL, ModelView):
             unit_price = Uom.compute_price(self.product.default_uom,
                 unit_price, self.uom)
 
-        to_create = []
+        moves = []
         for day, qty in distribution.iteritems():
             if qty == 0.0:
                 continue
-            to_create.append({
-                    'from_location': (
-                        self.forecast.warehouse.storage_location.id),
-                    'to_location': self.forecast.destination.id,
-                    'product': self.product.id,
-                    'uom': self.uom.id,
-                    'quantity': qty * self.minimal_quantity,
-                    'planned_date': (self.forecast.from_date
-                        + datetime.timedelta(day)),
-                    'company': self.forecast.company.id,
-                    'currency': self.forecast.company.currency.id,
-                    'unit_price': unit_price,
-                    })
-        moves = []
-        if to_create:
-            moves = Move.create(to_create)
-        self.write([self], {'moves': [('add', [m.id for m in moves])]})
+            move = Move()
+            move.from_location = self.forecast.warehouse.storage_location
+            move.to_location = self.forecast.destination
+            move.product = self.product
+            move.uom = self.uom
+            move.quantity = qty * self.minimal_quantity
+            move.planned_date = (self.forecast.from_date
+                + datetime.timedelta(day))
+            move.company = self.forecast.company
+            move.currency = self.forecast.company.currency
+            move.unit_price = unit_price
+            moves.append(move)
+        return moves
 
     @classmethod
     def delete_moves(cls, lines):
@@ -593,12 +594,14 @@ class ForecastComplete(Wizard):
 
     def transition_complete(self):
         pool = Pool()
+        Forecast = pool.get('stock.forecast')
         ForecastLine = pool.get('stock.forecast.line')
         Product = pool.get('product.product')
 
+        forecast = Forecast(Transaction().context['active_id'])
         prod2line = {}
         forecast_lines = ForecastLine.search([
-                ('forecast', '=', Transaction().context['active_id']),
+                ('forecast', '=', forecast.id),
                 ])
         for forecast_line in forecast_lines:
             prod2line[forecast_line.product.id] = forecast_line
@@ -614,7 +617,7 @@ class ForecastComplete(Wizard):
         else:
             products = None
 
-        to_create = []
+        to_save = []
         for key, qty in pbl.iteritems():
             _, product = key
             if products and product not in products:
@@ -622,21 +625,15 @@ class ForecastComplete(Wizard):
             if -qty <= 0:
                 continue
             if product in prod2line:
-                ForecastLine.write([prod2line[product]], {
-                        'product': product,
-                        'quantity': -qty,
-                        'uom': prod2uom[product],
-                        'forecast': Transaction().context['active_id'],
-                        'minimal_quantity': min(1, -qty),
-                        })
+                line = prod2line[product]
             else:
-                to_create.append({
-                        'product': product,
-                        'quantity': -qty,
-                        'uom': prod2uom[product],
-                        'forecast': Transaction().context['active_id'],
-                        'minimal_quantity': min(1, -qty),
-                        })
-        if to_create:
-            ForecastLine.create(to_create)
+                line = ForecastLine()
+            line.product = product
+            line.quantity = -qty
+            line.uom = prod2uom[product]
+            line.forecast = forecast
+            line.minimal_quantity = min(1, -qty)
+            to_save.append(line)
+
+        ForecastLine.save(to_save)
         return 'end'
