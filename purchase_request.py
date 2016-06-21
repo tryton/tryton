@@ -4,15 +4,22 @@ import datetime
 import operator
 from collections import defaultdict
 
-from trytond.model import ModelView
+from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest',
+__all__ = ['PurchaseRequest', 'PurchaseConfiguration',
     'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
     ]
+
+
+class PurchaseConfiguration:
+    __metaclass__ = PoolMeta
+    __name__ = 'purchase.configuration'
+    supply_period = fields.Property(fields.Integer('Supply Period',
+            help='In number of days', required=True))
 
 
 class PurchaseRequest:
@@ -211,9 +218,8 @@ class PurchaseRequest:
 
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier.compute_supply_date(date=today)
-            # TODO next_day is by default today + 1 but should depends
-            # on the CRON activity
-            next_day = today + datetime.timedelta(1)
+            next_day = today + datetime.timedelta(
+                product_supplier.get_supply_period())
             next_supply_date = product_supplier.compute_supply_date(
                 date=next_day)
             if (not min_date) or supply_date < min_date:

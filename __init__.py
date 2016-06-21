@@ -13,6 +13,8 @@ def register():
     Pool.register(
         OrderPoint,
         Product,
+        ProductSupplier,
+        PurchaseConfiguration,
         PurchaseRequest,
         CreatePurchaseRequestStart,
         ShipmentInternal,

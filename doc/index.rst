@@ -28,8 +28,8 @@ can be:
 
 The internal shipments and purchase requests are created by schedulers
 with respect to stock levels and existing shipments and requests. The
-stock levels are computed between the next two supply dates. If the
-stock level of a product without order point on the given warehouse is
-below zero, a purchase request is also created. The same happens if
-the stock level of a storage location with a provisioning location is
-below zero.
+stock levels are computed between the next two supply dates computed over the
+Supply Period from the configuration (default: 1 day). If the stock level of a
+product without order point on the given warehouse is below zero, a purchase
+request is also created.  The same happens if the stock level of a storage
+location with a provisioning location is below zero.
