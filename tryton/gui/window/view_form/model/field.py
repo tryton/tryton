@@ -35,8 +35,6 @@ class Field(object):
         self.name = attrs['name']
 
     def sig_changed(self, record):
-        if self.get_state_attrs(record).get('readonly', False):
-            return
         if self.attrs.get('on_change', False):
             record.on_change(self.name, self.attrs['on_change'])
         record.on_change_with(self.name)
