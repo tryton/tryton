@@ -35,8 +35,6 @@ class Field(object):
         self.name = attrs['name']
 
     def sig_changed(self, record):
-        if self.get_state_attrs(record).get('readonly', False):
-            return
         record.on_change([self.name])
         record.on_change_with([self.name])
         record.autocomplete_with(self.name)
