@@ -1294,9 +1294,6 @@
         },
         changed: function(record) {
             var prms = [];
-            if (this.get_state_attrs(record).readonly) {
-                return jQuery.when();
-            }
             prms.push(record.on_change([this.name]));
             prms.push(record.on_change_with([this.name]));
             prms.push(record.autocomplete_with(this.name));
