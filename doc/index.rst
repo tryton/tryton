@@ -50,6 +50,12 @@ virtually stored. There are seven types of locations:
 Locations are organised in tree structures, allowing to define
 fine grained structures.
 
+Location Lead Time
+------------------
+
+It allows to define the time needed for an *Internal Shipment* between two
+warehouses.
+
 
 Move
 ****

@@ -4,7 +4,9 @@ import operator
 import itertools
 import functools
 import datetime
-from sql import Table
+from collections import defaultdict
+
+from sql import Table, Null
 from sql.functions import Overlay, Position
 from sql.aggregate import Max
 from sql.operators import Concat
@@ -13,7 +15,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond import backend
-from trytond.pyson import Eval, If, Id
+from trytond.pyson import Eval, If, Id, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -1819,6 +1821,17 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
+    effective_start_date = fields.Date('Effective Start Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'shipped', 'done']),
+            },
+        depends=['state'])
+    planned_start_date = fields.Date('Planned Start Date',
+        states={
+            'readonly': ~Eval('state').in_(['draft']),
+            'required': Bool(Eval('planned_date')),
+            },
+        depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -1846,32 +1859,88 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             }, domain=[
             ('type', 'in', ['view', 'storage', 'lost_found']),
             ], depends=['state'])
+    transit_location = fields.Function(fields.Many2One('stock.location',
+            'Transit Location'), 'on_change_with_transit_location')
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
                 | ~Eval('from_location') | ~Eval('to_location')),
+            'invisible': (Bool(Eval('transit_location'))
+                & (Eval('state') != 'draft')),
             },
         domain=[
             If(Eval('state') == 'draft', [
                     ('from_location', '=', Eval('from_location')),
                     ('to_location', '=', Eval('to_location')),
-                    ], [
-                    ('from_location', 'child_of', [Eval('from_location', -1)],
-                        'parent'),
-                    ('to_location', 'child_of', [Eval('to_location', -1)],
-                        'parent'),
-                    ]),
+                    ],
+                If(~Eval('transit_location'),
+                    [
+                        ('from_location', 'child_of',
+                            [Eval('from_location', -1)], 'parent'),
+                        ('to_location', 'child_of',
+                            [Eval('to_location', -1)], 'parent'),
+                        ],
+                    ['OR',
+                        [
+                            ('from_location', 'child_of',
+                                [Eval('from_location', -1)], 'parent'),
+                            ('to_location', '=', Eval('transit_location')),
+                            ],
+                        [
+                            ('from_location', '=', Eval('transit_location')),
+                            ('to_location', 'child_of',
+                                [Eval('to_location', -1)], 'parent'),
+                            ],
+                        ])),
             ('company', '=', Eval('company')),
             ],
-        depends=['state', 'from_location', 'to_location', 'planned_date',
+        depends=['state', 'from_location', 'to_location', 'transit_location',
             'company'])
+    outgoing_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
+            'Outgoing Moves',
+            domain=[
+                ('from_location', 'child_of', [Eval('from_location', -1)],
+                    'parent'),
+                If(~Eval('transit_location'),
+                    ('to_location', 'child_of', [Eval('to_location', -1)],
+                        'parent'),
+                    ('to_location', '=', Eval('transit_location'))),
+                ],
+            states={
+                'readonly': Eval('state').in_(
+                    ['assigned', 'shipped', 'done', 'cancel']),
+                'invisible': (~Eval('transit_location')
+                    | (Eval('state') == 'draft')),
+                },
+            depends=['from_location', 'to_location', 'transit_location',
+                'state']),
+        'get_outgoing_moves', setter='set_moves')
+    incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
+            'Incoming Moves',
+            domain=[
+                If(~Eval('transit_location'),
+                    ('from_location', 'child_of', [Eval('from_location', -1)],
+                        'parent'),
+                    ('from_location', '=', Eval('transit_location'))),
+                ('to_location', 'child_of', [Eval('to_location', -1)],
+                    'parent'),
+                ],
+            states={
+                'readonly': Eval('state').in_(['done', 'cancel']),
+                'invisible': (~Eval('transit_location')
+                    | (Eval('state') == 'draft')),
+                },
+            depends=['from_location', 'to_location', 'transit_location',
+                'state']),
+        'get_incoming_moves', setter='set_moves')
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('cancel', 'Canceled'),
-        ('assigned', 'Assigned'),
-        ('waiting', 'Waiting'),
-        ('done', 'Done'),
-        ], 'State', readonly=True)
+            ('draft', 'Draft'),
+            ('cancel', 'Canceled'),
+            ('waiting', 'Waiting'),
+            ('assigned', 'Assigned'),
+            ('shipped', 'Shipped'),
+            ('done', 'Done'),
+            ], 'State', readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -1885,7 +1954,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 ('draft', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'assigned'),
+                ('assigned', 'shipped'),
                 ('assigned', 'done'),
+                ('shipped', 'done'),
                 ('waiting', 'draft'),
                 ('assigned', 'waiting'),
                 ('draft', 'cancel'),
@@ -1895,7 +1966,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(
+                        ['cancel', 'shipped', 'done']),
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['cancel', 'waiting']),
@@ -1912,8 +1984,15 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                             'tryton-clear',
                             'tryton-go-next')),
                     },
+                'ship': {
+                    'invisible': ((Eval('state') != 'assigned') |
+                        ~Eval('transit_location')),
+                    },
                 'done': {
-                    'invisible': Eval('state') != 'assigned',
+                    'invisible': If(
+                        ~Eval('transit_location'),
+                        Eval('state') != 'assigned',
+                        Eval('state') != 'shipped'),
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
@@ -1971,6 +2050,14 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                             where=red_sql))
             table.not_null_action('company', action='add')
 
+        # Migration from 4.0: fill planned_start_date
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*sql_table.update(
+                [sql_table.planned_start_date],
+                [sql_table.planned_date],
+                where=(sql_table.planned_start_date == Null)
+                & (sql_table.planned_date != Null)))
+
         # Add index on create_date
         table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
@@ -1982,6 +2069,59 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('planned_date', 'planned_start_date')
+    def on_change_with_transit_location(self, name=None):
+        pool = Pool()
+        Config = pool.get('stock.configuration')
+        if self.planned_date != self.planned_start_date:
+            return Config(1).shipment_internal_transit.id
+
+    @fields.depends('planned_date', 'from_location', 'to_location')
+    def on_change_with_planned_start_date(self, pattern=None):
+        pool = Pool()
+        LocationLeadTime = pool.get('stock.location.lead_time')
+        if self.planned_date:
+            if pattern is None:
+                pattern = {}
+            pattern.setdefault('warehouse_from',
+                self.from_location.warehouse.id
+                if self.from_location and self.from_location.warehouse
+                else None)
+            pattern.setdefault('warehouse_to',
+                self.to_location.warehouse.id
+                if self.to_location and self.to_location.warehouse
+                else None)
+            lead_time = LocationLeadTime.get_lead_time(pattern)
+            if lead_time:
+                return self.planned_date - lead_time
+        return self.planned_date
+
+    def get_outgoing_moves(self, name):
+        if not self.transit_location:
+            return [m.id for m in self.moves]
+        moves = []
+        for move in self.moves:
+            if move.to_location == self.transit_location:
+                moves.append(move.id)
+        return moves
+
+    def get_incoming_moves(self, name):
+        if not self.transit_location:
+            return [m.id for m in self.moves]
+        moves = []
+        for move in self.moves:
+            if move.from_location == self.transit_location:
+                moves.append(move.id)
+        return moves
+
+    @classmethod
+    def set_moves(cls, shipments, name, value):
+        if not value:
+            return
+        cls.write(shipments, {
+                'moves': value,
+                })
 
     @classmethod
     def create(cls, vlist):
@@ -2009,13 +2149,76 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         super(ShipmentInternal, cls).delete(shipments)
 
     @classmethod
+    def copy(cls, shipments, default=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default['outgoing_moves'] = None
+        default['incoming_moves'] = None
+        default['moves'] = None
+        default.setdefault('number')
+        copies = super(ShipmentInternal, cls).copy(shipments, default=default)
+        for shipment, copy in zip(shipments, copies):
+            Move.copy(shipment.outgoing_moves, default={
+                    'shipment': str(copy),
+                    'from_location': shipment.from_location.id,
+                    'to_location': shipment.to_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
+        return copies
+
+    @classmethod
+    def _sync_moves(cls, shipments):
+        'Synchronise incoming moves with outgoing moves'
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        to_delete = []
+        to_save = []
+        for shipment in shipments:
+            product_qty = defaultdict(lambda: 0)
+            for move in shipment.outgoing_moves:
+                if move.state == 'cancel':
+                    continue
+                product_qty[move.product] += Uom.compute_qty(
+                    move.uom, move.quantity, move.product.default_uom,
+                    round=False)
+
+            for move in shipment.incoming_moves:
+                if move.state == 'cancel':
+                    continue
+                if product_qty[move.product] <= 0:
+                    to_delete.append(move)
+                else:
+                    quantity = Uom.compute_qty(
+                        move.uom, move.quantity, move.product.default_uom,
+                        round=False)
+                    quantity = min(product_qty[move.product], quantity)
+                    move.quantity = Uom.compute_qty(
+                        move.product.default_uom, quantity, move.uom)
+                    product_qty[move.product] -= quantity
+                    to_save.append(move)
+
+        if to_save:
+            Move.save(to_save)
+        if to_delete:
+            Move.delete(to_delete)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
         Move = Pool().get('stock.move')
+
         # First reset state to draft to allow update from and to location
         Move.draft([m for s in shipments for m in s.moves
                 if m.state != 'staging'])
+        Move.delete([m for s in shipments for m in s.moves
+                if m.from_location == s.transit_location])
         for shipment in shipments:
             Move.write([m for m in shipment.moves
                     if m.state != 'done'], {
@@ -2029,19 +2232,60 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @Workflow.transition('waiting')
     def wait(cls, shipments):
         Move = Pool().get('stock.move')
+
         Move.draft([m for s in shipments for m in s.moves])
-        moves = []
+
+        direct = []
+        transit = []
         for shipment in shipments:
+            if not shipment.transit_location:
+                direct.append(shipment)
+            else:
+                transit.append(shipment)
+
+        moves = []
+        for shipment in direct:
             for move in shipment.moves:
                 if move.state != 'done':
                     move.planned_date = shipment.planned_date
                     moves.append(move)
         Move.save(moves)
 
+        to_write = []
+        for shipment in transit:
+            moves = [m for m in shipment.moves
+                if m.state != 'done'
+                and m.from_location != shipment.transit_location
+                and m.to_location != shipment.transit_location]
+            Move.copy(moves, default={
+                    'from_location': shipment.transit_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
+            to_write.append(moves)
+            to_write.append({
+                    'to_location': shipment.transit_location.id,
+                    'planned_date': shipment.planned_start_date,
+                    })
+        if to_write:
+            Move.write(*to_write)
+        cls._sync_moves(transit)
+
     @classmethod
     @Workflow.transition('assigned')
     def assign(cls, shipments):
         pass
+
+    @classmethod
+    @Workflow.transition('shipped')
+    def ship(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+        Move.do([m for s in shipments for m in s.outgoing_moves])
+        cls._sync_moves(shipments)
+        cls.write([s for s in shipments if not s.effective_start_date], {
+                'effective_start_date': Date.today(),
+                })
 
     @classmethod
     @ModelView.button
@@ -2050,7 +2294,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
-        Move.do([m for s in shipments for m in s.moves])
+        Move.do([m for s in shipments for m in s.incoming_moves])
         cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
@@ -2071,7 +2315,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
-        to_assign = [m for s in shipments for m in s.moves
+        to_assign = [m for s in shipments for m in s.outgoing_moves
             if m.from_location.type != 'lost_found']
         if not to_assign or Move.assign_try(to_assign):
             cls.assign(shipments)
@@ -2083,7 +2327,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_force(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.assign([m for s in shipments for m in s.moves])
+        Move.assign([m for s in shipments for m in s.outgoing_moves])
         cls.assign(shipments)
 
 
@@ -2106,7 +2350,7 @@ class AssignShipmentInternalAssignFailed(ModelView):
         if not shipment_id:
             return []
         shipment = ShipmentInternal(shipment_id)
-        return [x.id for x in shipment.moves if x.state == 'draft']
+        return [x.id for x in shipment.outgoing_moves if x.state == 'draft']
 
 
 class AssignShipmentInternal(Wizard):

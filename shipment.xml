@@ -263,6 +263,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_shipped">
+            <field name="name">Shipped</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'shipped')]" pyson="1"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_shipment_internal_form_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>

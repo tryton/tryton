@@ -12,6 +12,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
+    >>> tomorrow = today + relativedelta(days=1)
 
 Create database::
 
@@ -103,7 +104,7 @@ Create Internal Shipment from lost_found location::
     >>> move = lost_found_shipment.moves.new()
     >>> move.product = product
     >>> move.oum = unit
-    >>> move.quantity = 1
+    >>> move.quantity = 2
     >>> move.from_location = lost_found_loc
     >>> move.to_location = internal_loc
     >>> move.currency = company.currency
@@ -122,4 +123,55 @@ Check that now whe can finish the older shipment::
     True
     >>> shipment.click('done')
     >>> shipment.state
+    u'done'
+
+Add lead time inside the warehouse::
+
+    >>> config.user = 1
+    >>> LeadTime = Model.get('stock.location.lead_time')
+    >>> lead_time = LeadTime()
+    >>> lead_time.from_warehouse = storage_loc.warehouse
+    >>> lead_time.to_warehouse = storage_loc.warehouse
+    >>> lead_time.lead_time = datetime.timedelta(1)
+    >>> lead_time.save()
+
+Create Internal Shipment with lead time::
+
+    >>> config.user = stock_user.id
+    >>> shipment = Shipment()
+    >>> shipment.planned_date = tomorrow
+    >>> shipment.from_location = internal_loc
+    >>> shipment.to_location = storage_loc
+    >>> shipment.planned_start_date == today
+    True
+    >>> move = shipment.moves.new()
+    >>> move.product = product
+    >>> move.quantity = 1
+    >>> move.from_location = internal_loc
+    >>> move.to_location = storage_loc
+    >>> shipment.click('wait')
+    >>> len(shipment.moves)
+    2
+    >>> outgoing_move, = shipment.outgoing_moves
+    >>> outgoing_move.quantity
+    1.0
+    >>> outgoing_move.from_location == internal_loc
+    True
+    >>> outgoing_move.to_location == shipment.transit_location
+    True
+    >>> incoming_move, = shipment.incoming_moves
+    >>> incoming_move.quantity
+    1.0
+    >>> incoming_move.from_location == shipment.transit_location
+    True
+    >>> incoming_move.to_location == storage_loc
+    True
+
+    >>> shipment.click('assign_try')
+    True
+    >>> shipment.click('ship')
+    >>> shipment.outgoing_moves[0].state
+    u'done'
+    >>> shipment.click('done')
+    >>> shipment.incoming_moves[0].state
     u'done'

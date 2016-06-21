@@ -1,3 +1,5 @@
+* Add lead time and transit location for internal shipments between warehouses
+
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
 * Rename Shipments code into number

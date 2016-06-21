@@ -39,6 +39,10 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.internal'),
                 ], required=True))
+    shipment_internal_transit = fields.Property(fields.Many2One(
+            'stock.location', 'Internal Shipment Transit', domain=[
+                ('type', '=', 'storage'),
+                ], required=True))
     inventory_sequence = fields.Property(fields.Many2One(
             'ir.sequence', 'Inventory Sequence', domain=[
                 ('company', 'in',

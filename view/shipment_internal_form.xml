@@ -12,18 +12,33 @@ this repository contains the full copyright notices and license terms. -->
     <field name="to_location"/>
     <label name="planned_date"/>
     <field name="planned_date"/>
+    <label name="planned_start_date"/>
+    <field name="planned_start_date"/>
     <label name="effective_date"/>
     <field name="effective_date"/>
+    <label name="effective_start_date"/>
+    <field name="effective_start_date"/>
     <label name="company"/>
     <field name="company"/>
-    <field name="moves"  colspan="4"/>
+    <notebook colspan="4">
+        <page name="moves">
+            <field name="moves"  colspan="4"/>
+        </page>
+        <page name="outgoing_moves">
+            <field name="outgoing_moves" colspan="4"/>
+        </page>
+        <page name="incoming_moves">
+            <field name="incoming_moves" colspan="4"/>
+        </page>
+    </notebook>
     <label name="state"/>
     <field name="state"/>
-    <group col="5" colspan="2" id="buttons">
+    <group col="6" colspan="2" id="buttons">
         <button string="Cancel" name="cancel" icon="tryton-cancel"/>
         <button string="Draft" name="draft"/>
         <button string="Wait" name="wait"/>
         <button string="Assign" name="assign_wizard" icon="tryton-go-next"/>
+        <button string="Ship" name="ship" icon="tryton-ok"/>
         <button string="Done" name="done" icon="tryton-ok"/>
     </group>
 </form>

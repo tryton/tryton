@@ -121,6 +121,56 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
 
+        <record model="ir.ui.view" id="location_lead_time_view_list">
+            <field name="model">stock.location.lead_time</field>
+            <field name="type">tree</field>
+            <field name="name">location_lead_time_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="location_lead_time_view_form">
+            <field name="model">stock.location.lead_time</field>
+            <field name="type">form</field>
+            <field name="name">location_lead_time_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_lead_time_form">
+            <field name="name">Location Lead Times</field>
+            <field name="res_model">stock.location.lead_time</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_location_lead_time_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_lead_time_view_list"/>
+            <field name="act_window" ref="act_location_lead_time_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_location_lead_time_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_lead_time_view_form"/>
+            <field name="act_window" ref="act_location_lead_time_form"/>
+        </record>
+
+        <menuitem parent="menu_location_form"
+            action="act_location_lead_time_form"
+            id="menu_location_lead_time_form"/>
+
+        <record model="ir.model.access" id="access_location_lead_time">
+            <field name="model"
+                search="[('model', '=', 'stock.location.lead_time')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_location_lead_time_admin">
+            <field name="model"
+                search="[('model', '=', 'stock.location.lead_time')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
     <data noupdate="1">
         <!-- Default locations -->
@@ -161,6 +211,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Lost and Found</field>
             <field name="type">lost_found</field>
         </record>
+        <record model="stock.location" id="location_transit">
+            <field name="name">Transit</field>
+            <field name="type">storage</field>
+        </record>
 
         <record model="ir.property" id="property_supplier_location">
             <field name="field"
@@ -173,6 +227,13 @@ this repository contains the full copyright notices and license terms. -->
                    search="[('model.model', '=', 'party.party'),
                            ('name', '=', 'customer_location')]"/>
             <field name="value" eval="'stock.location,' + str(ref('location_customer'))"/>
+        </record>
+
+        <record model="ir.property" id="property_shipment_internal_transit">
+            <field name="field"
+                   search="[('model.model', '=', 'stock.configuration'),
+                           ('name', '=', 'shipment_internal_transit')]"/>
+            <field name="value" eval="'stock.location,' + str(ref('location_transit'))"/>
         </record>
     </data>
 </tryton>
