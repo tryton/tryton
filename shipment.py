@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+
 from sql import Table
 from sql.functions import Overlay, Position
 
@@ -50,8 +52,11 @@ class ShipmentInternal(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         User = pool.get('res.user')
         Move = pool.get('stock.move')
+        LeadTime = pool.get('stock.location.lead_time')
+
         user_record = User(Transaction().user)
         today = Date.today()
+        lead_time = LeadTime.get_max_lead_time()
         # fetch quantities on order points
         order_points = OrderPoint.search([
             ('type', '=', 'internal'),
@@ -79,61 +84,68 @@ class ShipmentInternal(ModelSQL, ModelView):
         else:
             product_ids = id2product.keys()
             product_ids.sort()
-        # TODO Allow to compute for other future date
-        with Transaction().set_context(forecast=True, stock_date_end=today):
-            pbl = Product.products_by_location(id2location.keys(),
-                product_ids, with_childs=True)
 
-        # Create a list of move to create
-        moves = {}
-        for location in id2location.itervalues():
-            for product_id in product_ids:
-                qty = pbl.get((location.id, product_id), 0)
-                op = product2op.get((location.id, product_id))
-                if op:
-                    min_qty, max_qty = op.min_quantity, op.max_quantity
-                    provisioning_location = op.provisioning_location
-                elif location and location.provisioning_location:
-                    min_qty, max_qty = 0, 0
-                    provisioning_location = location.provisioning_location
-                else:
-                    continue
-                if qty < min_qty:
-                    key = (provisioning_location.id, location.id, product_id)
-                    moves[key] = max_qty - qty
-
-        # Group moves by {from,to}_location
-        to_create = {}
-        for key, qty in moves.iteritems():
-            from_location, to_location, product = key
-            to_create.setdefault(
-                (from_location, to_location), []).append((product, qty))
-        # Create shipments and moves
         shipments = []
-        for locations, moves in to_create.iteritems():
-            from_location, to_location = locations
-            shipment = cls(
-                from_location=from_location,
-                to_location=to_location,
-                planned_date=today,
-                )
-            shipment_moves = []
-            for move in moves:
-                product_id, qty = move
-                product = id2product.setdefault(
-                    product_id, Product(product_id))
-                shipment_moves.append(Move(
-                        from_location=from_location,
-                        to_location=to_location,
-                        planned_date=today,
-                        product=product,
-                        quantity=qty,
-                        uom=product.default_uom,
-                        company=user_record.company,
-                        ))
-            shipment.moves = shipment_moves
-            shipment.save()
-            shipments.append(shipment)
+        date = today
+        end_date = date + lead_time
+        while date <= end_date:
+            with Transaction().set_context(forecast=True, stock_date_end=date):
+                pbl = Product.products_by_location(id2location.keys(),
+                    product_ids, with_childs=True)
+
+            # Create a list of moves to create
+            moves = {}
+            for location in id2location.itervalues():
+                for product_id in product_ids:
+                    qty = pbl.get((location.id, product_id), 0)
+                    op = product2op.get((location.id, product_id))
+                    if op:
+                        min_qty, max_qty = op.min_quantity, op.max_quantity
+                        provisioning_location = op.provisioning_location
+                    elif location and location.provisioning_location:
+                        min_qty, max_qty = 0, 0
+                        provisioning_location = location.provisioning_location
+                    else:
+                        continue
+                    if qty < min_qty:
+                        key = (
+                            provisioning_location.id, location.id, product_id)
+                        moves[key] = max_qty - qty
+
+            # Group moves by {from,to}_location
+            to_create = {}
+            for key, qty in moves.iteritems():
+                from_location, to_location, product = key
+                to_create.setdefault(
+                    (from_location, to_location), []).append((product, qty))
+            # Create shipments and moves
+            for locations, moves in to_create.iteritems():
+                from_location, to_location = locations
+                shipment = cls(
+                    from_location=from_location,
+                    to_location=to_location,
+                    planned_date=date,
+                    )
+                shipment_moves = []
+                for move in moves:
+                    product_id, qty = move
+                    product = id2product.setdefault(
+                        product_id, Product(product_id))
+                    shipment_moves.append(Move(
+                            from_location=from_location,
+                            to_location=to_location,
+                            planned_date=date,
+                            product=product,
+                            quantity=qty,
+                            uom=product.default_uom,
+                            company=user_record.company,
+                            ))
+                shipment.moves = shipment_moves
+                shipment.planned_start_date = (
+                    shipment.on_change_with_planned_start_date())
+                shipments.append(shipment)
+            date += datetime.timedelta(1)
+        cls.save(shipments)
         cls.wait(shipments)
         return shipments
 

@@ -20,6 +20,7 @@ def register():
         ShipmentInternal,
         CreateShipmentInternalStart,
         Location,
+        LocationLeadTime,
         module='stock_supply', type_='model')
     Pool.register(
         CreatePurchaseRequest,
