@@ -59,6 +59,9 @@
             this.login = null;
             this.user_id = null;
             this.session = null;
+            if (Sao.Session.current_session === this) {
+                Sao.Session.current_session = null;
+            }
             return prm;
         },
         reload_context: function() {
