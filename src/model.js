@@ -1060,6 +1060,10 @@
                     }
                 });
                 for (var fname in this.model.fields) {
+                    // Skip not loaded fields if sync and record is not new
+                    if (sync && this.id >= 0 && !(fname in this._loaded)) {
+                        continue;
+                    }
                     if (!this.model.fields.hasOwnProperty(fname)) {
                         continue;
                     }
