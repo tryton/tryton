@@ -26,7 +26,7 @@
                     'params': [login, parameters, Sao.i18n.getlang()]
                 };
             };
-            new Sao.Login(func).run().then(function(result) {
+            new Sao.Login(func, this).run().then(function(result) {
                 this.user_id = result[0];
                 this.session = result[1];
                 dfd.resolve();
@@ -201,8 +201,9 @@
     Sao.Session.current_session = null;
 
     Sao.Login = Sao.class_(Object, {
-        init: function(func) {
+        init: function(func, session) {
             this.func = func;
+            this.session = session || Sao.Session.current_session;
         },
         run: function(parameters) {
             if (parameters === undefined) {
@@ -210,20 +211,19 @@
             }
             var dfd = jQuery.Deferred();
             var timeoutID = Sao.common.processing.show();
-            var session = Sao.Session.current_session;
             var args = {
                 'contentType': 'application/json',
                 'data': JSON.stringify(this.func(parameters)),
                 'dataType': 'json',
-                'url': '/' + session.database + '/',
+                'url': '/' + this.session.database + '/',
                 'type': 'post',
                 'complete': [function() {
                     Sao.common.processing.hide(timeoutID);
                 }]
             };
-            if (session.user_id && session.session) {
+            if (this.session.user_id && this.session.session) {
                 args.headers = {
-                    'Authorization': 'Session ' + session.get_auth()
+                    'Authorization': 'Session ' + this.session.get_auth()
                 };
             }
             var ajax_prm = jQuery.ajax(args);
