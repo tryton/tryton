@@ -127,6 +127,7 @@ class ShipmentOut:
         Move = pool.get('stock.move')
         super(ShipmentOut, cls)._sync_inventory_to_outgoing(
             shipments, create=create, write=write)
+        to_write = []
         for shipment in shipments:
             outgoing_by_product = {}
             for move in shipment.outgoing_moves:
@@ -143,18 +144,18 @@ class ShipmentOut:
                     out_quantity = Uom.compute_qty(out_move.uom,
                         out_move.quantity, out_move.product.default_uom,
                         round=False)
+                    values = {}
                     if quantity < out_quantity:
                         outgoing_moves.extend(Move.copy([out_move], default={
                                     'quantity': out_quantity - quantity,
                                     }))
-                        Move.write([out_move], {
-                                'quantity': quantity,
-                                })
-                    Move.write([out_move], {
-                            'lot': move.lot.id,
-                            })
+                        values['quantity'] = quantity
+                    values['lot'] = move.lot.id
+                    to_write.extend(([out_move], values))
                     quantity -= out_quantity
                 assert quantity <= 0
+        if to_write:
+            Move.write(*to_write)
 
 
 class ShipmentOutReturn:
