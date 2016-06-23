@@ -239,3 +239,20 @@ class Zip(ModelSQL, ModelView):
         super(Zip, cls).__setup__()
         cls._order.insert(0, ('country', 'ASC'))
         cls._order.insert(0, ('zip', 'ASC'))
+
+    def get_rec_name(self, name):
+        if self.city and self.zip:
+            return '%s (%s)' % (self.city, self.zip)
+        else:
+            return (self.zip or self.city or str(self.id))
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('zip',) + tuple(clause[1:]),
+            ('city',) + tuple(clause[1:]),
+            ]
