@@ -72,7 +72,7 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
 
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product')
+    product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
     sequence = fields.Integer('Sequence')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
