@@ -296,6 +296,7 @@ class Location(ModelSQL, ModelView):
         Set the parent of child location of warehouse if not set
         '''
         to_update = set()
+        to_save = []
         for location in locations:
             if location.type == 'warehouse':
                 if not location.input_location.parent:
@@ -305,10 +306,11 @@ class Location(ModelSQL, ModelView):
                 if not location.storage_location.parent:
                     to_update.add(location.storage_location)
                 if to_update:
-                    cls.write(list(to_update), {
-                        'parent': location.id,
-                        })
+                    for child_location in to_update:
+                        child_location.parent = location
+                        to_save.append(child_location)
                     to_update.clear()
+        cls.save(to_save)
 
     @classmethod
     def create(cls, vlist):

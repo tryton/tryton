@@ -201,7 +201,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Product = pool.get('product.product')
 
         grouping = cls.grouping()
-        to_create = []
+        to_create, to_write = [], []
         for inventory in inventories:
             # Compute product quantities
             if fill:
@@ -235,7 +235,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     quantity = 0.0
                 values = line.update_values4complete(quantity)
                 if values:
-                    Line.write([line], values)
+                    to_write.extend(([line], values))
 
             if not fill:
                 continue
@@ -254,6 +254,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 to_create.append(values)
         if to_create:
             Line.create(to_create)
+        if to_write:
+            Line.write(*to_write)
 
 
 class InventoryLine(ModelSQL, ModelView):

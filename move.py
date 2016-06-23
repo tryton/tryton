@@ -697,6 +697,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
         super(Move, cls).write(*args)
 
+        to_write = []
         actions = iter(args)
         for moves, values in zip(actions, actions):
             if any(f not in cls._allow_modify_closed_period for f in values):
@@ -707,9 +708,11 @@ class Move(Workflow, ModelSQL, ModelView):
                 if (internal_quantity != move.internal_quantity
                         and internal_quantity
                         != values.get('internal_quantity')):
-                    cls.write([move], {
+                    to_write.extend(([move], {
                             'internal_quantity': internal_quantity,
-                            })
+                            }))
+        if to_write:
+            cls.write(*to_write)
 
     @classmethod
     def delete(cls, moves):
