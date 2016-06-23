@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.transaction import Transaction
 
 __all__ = ['RPC']
 
@@ -38,17 +39,16 @@ class RPC(object):
             # Remove all private keyword but _datetime for history
             if key.startswith('_') and key != '_datetime':
                 del context[key]
-        if self.check_access:
-            context['_check_access'] = True
         if self.instantiate is not None:
 
             def instance(data):
-                if isinstance(data, (int, long)):
-                    return obj(data)
-                elif isinstance(data, dict):
-                    return obj(**data)
-                else:
-                    return obj.browse(data)
+                with Transaction().set_context(context):
+                    if isinstance(data, (int, long)):
+                        return obj(data)
+                    elif isinstance(data, dict):
+                        return obj(**data)
+                    else:
+                        return obj.browse(data)
             if isinstance(self.instantiate, slice):
                 for i, data in enumerate(args[self.instantiate]):
                     start, _, step = self.instantiate.indices(len(args))
@@ -57,4 +57,6 @@ class RPC(object):
             else:
                 data = args[self.instantiate]
                 args[self.instantiate] = instance(data)
+        if self.check_access:
+            context['_check_access'] = True
         return args, kwargs, context, timestamp
