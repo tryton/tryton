@@ -18,84 +18,48 @@ class ProjectTestCase(ModuleTestCase):
     def test_sum_tree(self):
         'Test sum_tree'
         pool = Pool()
-        TimesheetWork = pool.get('timesheet.work')
         ProjectWork = pool.get('project.work')
 
         company = create_company()
         with set_company(company):
-            t_work_1, = TimesheetWork.create([{
-                        'name': 'Work 1',
-                        'company': company.id,
-                        }])
             p_work_1, = ProjectWork.create([{
                         'name': 'Work 1',
                         'company': company.id,
-                        'work': t_work_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
-            t_work_1_1, = TimesheetWork.create([{
-                        'name': 'Work 1 1',
-                        'company': company.id,
-                        'parent': t_work_1.id,
-                        }])
             p_work_1_1, = ProjectWork.create([{
                         'name': 'Work 1 1',
                         'company': company.id,
                         'parent': p_work_1.id,
-                        'work': t_work_1_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
-            t_work_1_2, = TimesheetWork.create([{
-                        'name': 'Work 1 1',
-                        'company': company.id,
-                        'parent': t_work_1.id,
-                        }])
             p_work_1_2, = ProjectWork.create([{
                         'name': 'Work 1 2',
                         'company': company.id,
                         'parent': p_work_1.id,
-                        'work': t_work_1_2.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
-            t_work_1_1_1, = TimesheetWork.create([{
-                        'name': 'Work 1 1 1',
-                        'company': company.id,
-                        'parent': t_work_1_1.id,
-                        }])
             p_work_1_1_1, = ProjectWork.create([{
                         'name': 'Work 1 1 1',
                         'company': company.id,
                         'parent': p_work_1_1.id,
-                        'work': t_work_1_1_1.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
-            t_work_1_1_2, = TimesheetWork.create([{
-                        'name': 'Work 1 1 2',
-                        'company': company.id,
-                        'parent': t_work_1_1.id,
-                        }])
             p_work_1_1_2, = ProjectWork.create([{
                         'name': 'Work 1 1 2',
                         'company': company.id,
                         'parent': p_work_1_1.id,
-                        'work': t_work_1_1_2.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
-            t_work_1_1_3, = TimesheetWork.create([{
-                        'name': 'Work 1 1 3',
-                        'company': company.id,
-                        'parent': t_work_1_1.id,
-                        }])
             p_work_1_1_3, = ProjectWork.create([{
                         'name': 'Work 1 1 3',
                         'company': company.id,
                         'parent': p_work_1_1.id,
-                        'work': t_work_1_1_3.id,
                         'effort_duration': datetime.timedelta(hours=1),
                         }])
 
@@ -109,6 +73,30 @@ class ProjectTestCase(ModuleTestCase):
                     ):
                 self.assertEqual(work.total_effort,
                     datetime.timedelta(hours=total_effort))
+
+    @with_transaction()
+    def test_timesheet_available(self):
+        'Test timesheet available'
+        pool = Pool()
+        ProjectWork = pool.get('project.work')
+
+        company = create_company()
+        with set_company(company):
+            p_work = ProjectWork()
+            p_work.name = 'Project Work'
+            p_work.save()
+
+            self.assertFalse(p_work.timesheet_works)
+
+            p_work.timesheet_available = True
+            p_work.save()
+
+            self.assertEqual(len(p_work.timesheet_works), 1)
+
+            p_work.timesheet_available = False
+            p_work.save()
+
+            self.assertFalse(p_work.timesheet_works)
 
 
 def suite():

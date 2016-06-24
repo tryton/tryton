@@ -3,9 +3,11 @@
 
 from trytond.pool import Pool
 from .work import *
+from .timesheet import *
 
 
 def register():
     Pool.register(
         Work,
+        TimesheetWork,
         module='project', type_='model')

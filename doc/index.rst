@@ -14,13 +14,13 @@ be split. The following fields are defined on the model:
 
 
 - Name: The name of the Project/Task.
-- Work: The linked timesheet work.
 - Type: Can be *Project* or *Task*.
 - State: Can be *Opened* or *Done*.
 - Parent and Children: Define the tree structure of projects and
   tasks.
 - Party and Party Address: The optional party (and the contact
   address) for which the project is made. Available on projects.
+- Timesheet Available: Register the work for timesheets.
 - Effort: The estimated effort of a task.
 - Total Effort: Available on projects. Gives the total effort of the
   sub-tasks (I.E. tasks of the project and tasks of the sub-projects)

@@ -7,7 +7,7 @@ import datetime
 from sql import Null
 from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
@@ -21,11 +21,6 @@ class Work(ModelSQL, ModelView):
     'Work Effort'
     __name__ = 'project.work'
     name = fields.Char('Name', required=True, select=True)
-    work = fields.Many2One('timesheet.work', 'Work', ondelete='CASCADE',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
     type = fields.Selection([
             ('project', 'Project'),
             ('task', 'Task')
@@ -42,9 +37,23 @@ class Work(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'project',
             }, depends=['party', 'type'])
+    timesheet_works = fields.One2Many(
+        'timesheet.work', 'origin', 'Timesheet Works', readonly=True, size=1)
     timesheet_available = fields.Function(
         fields.Boolean('Available on timesheets'),
-        'on_change_with_timesheet_available')
+        'get_timesheet_available', setter='set_timesheet_available')
+    timesheet_start_date = fields.Function(fields.Date('Timesheet Start',
+            states={
+                'invisible': ~Eval('timesheet_available'),
+                },
+            depends=['timesheet_available']),
+        'get_timesheet_date', setter='set_timesheet_date')
+    timesheet_end_date = fields.Function(fields.Date('Timesheet End',
+            states={
+                'invisible': ~Eval('timesheet_available'),
+                },
+            depends=['timesheet_available']),
+        'get_timesheet_date', setter='set_timesheet_date')
     timesheet_duration = fields.Function(fields.TimeDelta('Duration',
             'company_work_time',
             help="Total time spent on this work and the sub-works"),
@@ -134,9 +143,13 @@ class Work(ModelSQL, ModelView):
 
         migrate_sequence = (not table_project_work.column_exist('sequence')
             and table_timesheet_work.column_exist('sequence'))
-        add_parent = not table_project_work.column_exist('parent')
-        add_company = not table_project_work.column_exist('company')
-        add_name = not table_project_work.column_exist('name')
+        work_exist = table_project_work.column_exist('work')
+        add_parent = (not table_project_work.column_exist('parent')
+            and work_exist)
+        add_company = (not table_project_work.column_exist('company')
+            and work_exist)
+        add_name = (not table_project_work.column_exist('name')
+            and work_exist)
 
         super(Work, cls).__register__(module_name)
 
@@ -202,15 +215,22 @@ class Work(ModelSQL, ModelView):
                         [name],
                         where=project.id == id_))
 
+        # Migration from 4.0: remove work
+        if work_exist:
+            table_project_work.drop_constraint('work_uniq')
+            update = Transaction().connection.cursor()
+            cursor.execute(*project.select(project.id, project.work,
+                    where=project.work != Null))
+            for project_id, work_id in cursor:
+                update.execute(*timesheet.update(
+                        [timesheet.origin, timesheet.name],
+                        ['%s,%s' % (cls.__name__, project_id), Null],
+                        where=timesheet.id == work_id))
+            table_project_work.drop_column('work', exception=True)
+
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('work_uniq', Unique(t, t.work),
-                'There should be only one '
-                'timesheet work by task/project.'),
-            ]
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_parent_state': ('Work "%(child)s" can not be opened '
@@ -280,13 +300,51 @@ class Work(ModelSQL, ModelView):
         ids = [w.id for w in cls.search(domain, order=[])]
         return [('parent', 'child_of', ids)]
 
-    @fields.depends('work')
-    def on_change_with_company(self, name=None):
-        return self.work.company.id if self.work else None
+    @classmethod
+    def default_timesheet_available(cls):
+        return False
 
-    @fields.depends('work')
-    def on_change_with_timesheet_available(self, name=None):
-        return self.work.timesheet_available if self.work else None
+    def get_timesheet_available(self, name):
+        return bool(self.timesheet_works)
+
+    @classmethod
+    def set_timesheet_available(cls, projects, name, value):
+        pool = Pool()
+        Timesheet = pool.get('timesheet.work')
+
+        to_create = []
+        to_delete = []
+        for project in projects:
+            if not project.timesheet_works and value:
+                to_create.append({
+                        'origin': str(project),
+                        'company': project.company.id,
+                        })
+            elif project.timesheet_works and not value:
+                to_delete.extend(project.timesheet_works)
+
+        if to_create:
+            Timesheet.create(to_create)
+        if to_delete:
+            Timesheet.delete(to_delete)
+
+    def get_timesheet_date(self, name):
+        if self.timesheet_works:
+            func = {
+                'timesheet_start_date': min,
+                'timesheet_end_date': max,
+                }[name]
+            return func(getattr(w, name) for w in self.timesheet_works)
+
+    @classmethod
+    def set_timesheet_date(cls, projects, name, value):
+        pool = Pool()
+        Timesheet = pool.get('timesheet.work')
+        timesheets = [w for p in projects for w in p.timesheet_works]
+        if timesheets:
+            Timesheet.write(timesheets, {
+                    name: value,
+                    })
 
     @classmethod
     def sum_tree(cls, works, values, parents):
@@ -353,9 +411,14 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def _get_timesheet_duration(cls, works):
-        return {w.id: (w.work.duration if w.work and w.work.duration
-                else datetime.timedelta())
-            for w in works}
+        durations = {}
+        for work in works:
+            value = datetime.timedelta()
+            for timesheet_work in work.timesheet_works:
+                if timesheet_work.duration:
+                    value += timesheet_work.duration
+            durations[work.id] = value
+        return durations
 
     @classmethod
     def _get_total_progress(cls, works):
@@ -377,10 +440,6 @@ class Work(ModelSQL, ModelView):
         for project_work in project_works:
             pwdefault = default.copy()
             pwdefault['children'] = None
-            if project_work.work:
-                timesheet_work, = TimesheetWork.copy([project_work.work],
-                    default=timesheet_default)
-                pwdefault['work'] = timesheet_work.id
             new_project_works.extend(super(Work, cls).copy([project_work],
                     default=pwdefault))
         return new_project_works
@@ -390,7 +449,8 @@ class Work(ModelSQL, ModelView):
         TimesheetWork = Pool().get('timesheet.work')
 
         # Get the timesheet works linked to the project works
-        timesheet_works = [pw.work for pw in project_works if pw.work]
+        timesheet_works = [
+            w for pw in project_works for w in pw.timesheet_works]
 
         super(Work, cls).delete(project_works)
 

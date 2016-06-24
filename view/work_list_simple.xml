@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Works Efforts">
     <field name="rec_name"/>
-    <field name="work"/>
     <field name="type"/>
     <field name="state"/>
 </tree>
