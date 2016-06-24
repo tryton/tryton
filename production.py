@@ -101,6 +101,8 @@ class Production:
                     for date, quantity in shortages[product.id]:
                         req = cls.compute_request(product, warehouse,
                             quantity, date, company)
+                        req.planned_start_date = (
+                            req.on_change_with_planned_start_date())
                         req.save()
                         req.set_moves()
                         requests.append(req)
