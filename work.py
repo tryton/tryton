@@ -7,86 +7,101 @@ import datetime
 from sql import Literal
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import PYSONEncoder, Not, Bool, Eval
+from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.pyson import Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
+from trytond import backend
 
-__all__ = ['Work', 'OpenWorkStart', 'OpenWork', 'OpenWork2', 'OpenWorkGraph']
+__all__ = ['Work', 'WorkContext']
 
 
 class Work(ModelSQL, ModelView):
     'Work'
     __name__ = 'timesheet.work'
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name',
+        states={
+            'invisible': Bool(Eval('origin')),
+            'required': ~Eval('origin'),
+            },
+        depends=['origin'])
+    origin = fields.Reference('Origin', selection='get_origin',
+        states={
+            'invisible': Bool(Eval('name')),
+            'required': ~Eval('name'),
+            },
+        depends=['name'])
     active = fields.Boolean('Active')
-    parent = fields.Many2One('timesheet.work', 'Parent', left="left",
-            right="right", select=True, ondelete="RESTRICT",
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
-    left = fields.Integer('Left', required=True, select=True)
-    right = fields.Integer('Right', required=True, select=True)
-    children = fields.One2Many('timesheet.work', 'parent', 'Children',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
             'company_work_time', help="Total time spent on this work"),
         'get_duration')
-    total_duration = fields.Function(fields.TimeDelta(
-            'Total Timesheet Duration', 'company_work_time',
-            help='Total time spent on this work and the sub-works'),
-        'get_duration')
-    timesheet_available = fields.Boolean('Available on timesheets',
-        help="Allow to fill in timesheets with this work")
-    timesheet_start_date = fields.Date('Timesheet Start',
-        states={
-            'invisible': ~Eval('timesheet_available'),
-            },
-        depends=['timesheet_available'])
-    timesheet_end_date = fields.Date('Timesheet End',
-        states={
-            'invisible': ~Eval('timesheet_available'),
-            },
-        depends=['timesheet_available'])
+    timesheet_start_date = fields.Date('Timesheet Start')
+    timesheet_end_date = fields.Date('Timesheet End')
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
         'Timesheet Lines',
-        depends=['timesheet_available', 'active'],
+        depends=['active'],
         states={
-            'invisible': Not(Bool(Eval('timesheet_available'))),
             'readonly': Not(Bool(Eval('active'))),
             })
 
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('origin_unique', Unique(t, t.origin, t.company),
+                'The origin must be unique per company.'),
+            ]
         cls._error_messages.update({
-                'change_timesheet_available': ('You can not unset "Available '
-                    'on timesheets" for work "%s" because it already has '
-                    'timesheets.'),
+                'mismatch_company': ('The company of the work "%(work)s" '
+                    'is different then the origin\'s company'),
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+        table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+
+        super(Work, cls).__register__(module_name)
+
+        # Migration from 4.0: remove required on name
+        table_h.not_null_action('name', 'remove')
+
+        # Migration from 4.0: remove parent, left and right
+        if table_h.column_exist('parent'):
+            id2name = {}
+            id2parent = {}
+            cursor.execute(*table.select(
+                    table.id, table.parent, table.name))
+            for id_, parent, name in cursor:
+                id2name[id_] = name
+                id2parent[id_] = parent
+
+            for id_, name in id2name.iteritems():
+                parent = id2parent[id_]
+                while parent:
+                    name = '%s\\%s' % (id2name[parent], name)
+                    parent = id2parent[parent]
+                cursor.execute(*table.update(
+                        [table.name], [name],
+                        where=table.id == id_))
+            table_h.drop_column('parent')
+        table_h.drop_column('left')
+        table_h.drop_column('right')
+
+        # Migration from 4.0: remove timesheet_available
+        if table_h.column_exist('timesheet_available'):
+            cursor.execute(*table.delete(
+                    where=table.timesheet_available == False))
+            table_h.drop_column('timesheet_available')
 
     @staticmethod
     def default_active():
-        return True
-
-    @staticmethod
-    def default_left():
-        return 0
-
-    @staticmethod
-    def default_right():
-        return 0
-
-    @staticmethod
-    def default_timesheet_available():
         return True
 
     @staticmethod
@@ -94,9 +109,18 @@ class Work(ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     @classmethod
-    def validate(cls, works):
-        super(Work, cls).validate(works)
-        cls.check_recursion(works, rec_name='name')
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [('', '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def get_duration(cls, works, name):
@@ -118,15 +142,8 @@ class Work(ModelSQL, ModelView):
         if context.get('employees'):
             where &= line.employee.in_(context['employees'])
 
-        if name == 'duration':
-            query_table = table_w.join(line, 'LEFT',
-                condition=line.work == table_w.id)
-        else:
-            table_c = cls.__table__()
-            query_table = table_w.join(table_c,
-                condition=(table_c.left >= table_w.left)
-                & (table_c.right <= table_w.right)
-                ).join(line, 'LEFT', condition=line.work == table_c.id)
+        query_table = table_w.join(line, 'LEFT',
+            condition=line.work == table_w.id)
 
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_w.id, sub_ids)
@@ -141,25 +158,22 @@ class Work(ModelSQL, ModelView):
         return durations
 
     def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + '\\' + self.name
+        if self.origin:
+            return self.origin.rec_name
         else:
             return self.name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if isinstance(clause[2], basestring):
-            values = clause[2].split('\\')
-            values.reverse()
-            domain = []
-            field = 'name'
-            for name in values:
-                domain.append((field, clause[1], name.strip()))
-                field = 'parent.' + field
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
         else:
-            domain = [('name',) + tuple(clause[1:])]
-        ids = [w.id for w in cls.search(domain, order=[])]
-        return [('parent', 'child_of', ids)]
+            bool_op = 'OR'
+        return [bool_op,
+            ('name',) + tuple(clause[1:]),
+            ] + [
+                ('origin.rec_name',) + tuple(clause[1:]) + (origin,)
+                for origin in cls._get_origin()]
 
     @classmethod
     def copy(cls, works, default=None):
@@ -171,32 +185,16 @@ class Work(ModelSQL, ModelView):
         return super(Work, cls).copy(works, default=default)
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Lines = pool.get('timesheet.line')
+    def validate(cls, works):
+        super(Work, cls).validate(works)
+        for work in works:
+            if work.origin and not work._validate_company():
+                cls.raise_user_error('mismatch_company', {
+                        'work': work.rec_name,
+                        })
 
-        actions = iter(args)
-        childs = []
-        for works, values in zip(actions, actions):
-            if not values.get('timesheet_available', True):
-                for sub_works in grouped_slice(works):
-                    lines = Lines.search([
-                            ('work', 'in', [x.id for x in sub_works]),
-                            ], limit=1)
-                    if lines:
-                        cls.raise_user_error('change_timesheet_available',
-                            lines[0].work.rec_name)
-            if not values.get('active', True):
-                childs += cls.search([
-                        ('parent', 'child_of', [w.id for w in works]),
-                        ])
-
-        super(Work, cls).write(*args)
-
-        if childs:
-            cls.write(childs, {
-                    'active': False,
-                    })
+    def _validate_company(self):
+        return True
 
     @classmethod
     def search_global(cls, text):
@@ -211,48 +209,8 @@ class Work(ModelSQL, ModelView):
         return self.duration.total_seconds() / 60 / 60
 
 
-class OpenWorkStart(ModelView):
-    'Open Work'
-    __name__ = 'timesheet.work.open.start'
+class WorkContext(ModelView):
+    'Work Context'
+    __name__ = 'timesheet.work.context'
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
-
-
-class OpenWork(Wizard):
-    'Open Work'
-    __name__ = 'timesheet.work.open'
-    start = StateView('timesheet.work.open.start',
-        'timesheet.work_open_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('timesheet.act_work_hours_board')
-
-    def do_open_(self, action):
-        action['pyson_context'] = PYSONEncoder().encode({
-                'from_date': self.start.from_date,
-                'to_date': self.start.to_date,
-                })
-        return action, {}
-
-    def transition_open_(self):
-        return 'end'
-
-
-class OpenWork2(OpenWork):
-    __name__ = 'timesheet.work.open2'
-    open_ = StateAction('timesheet.act_work_form2')
-
-
-class OpenWorkGraph(Wizard):
-    __name__ = 'timesheet.work.open_graph'
-    start_state = 'open_'
-    open_ = StateAction('timesheet.act_work_form3')
-
-    def do_open_(self, action):
-        Work = Pool().get('timesheet.work')
-
-        if 'active_id' in Transaction().context:
-            work = Work(Transaction().context['active_id'])
-            action['name'] = action['name'] + ' - ' + work.rec_name
-        return action, {}

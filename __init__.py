@@ -9,18 +9,14 @@ from .line import *
 def register():
     Pool.register(
         Work,
-        OpenWorkStart,
+        WorkContext,
         Line,
         EnterLinesStart,
         HoursEmployee,
-        OpenHoursEmployeeStart,
+        HoursEmployeeContext,
         HoursEmployeeWeekly,
         HoursEmployeeMonthly,
         module='timesheet', type_='model')
     Pool.register(
-        OpenWork,
-        OpenWork2,
-        OpenWorkGraph,
         EnterLines,
-        OpenHoursEmployee,
         module='timesheet', type_='wizard')

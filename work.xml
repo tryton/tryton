@@ -14,33 +14,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="8"/>
             <field name="name">work_list</field>
         </record>
-        <record model="ir.ui.view" id="work_view_tree">
+        <record model="ir.ui.view" id="work_view_list_report">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
-            <field name="priority" eval="16"/>
-            <field name="field_childs">children</field>
-            <field name="name">work_tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">work_list_report</field>
         </record>
-
-        <record model="ir.action.act_window" id="act_work_tree">
-            <field name="name">Works</field>
-            <field name="res_model">timesheet.work</field>
-            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        <record model="ir.ui.view" id="work_view_graph">
+            <field name="model">timesheet.work</field>
+            <field name="type">graph</field>
+            <field name="name">work_graph</field>
         </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree"/>
-            <field name="act_window" ref="act_work_tree"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_tree_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="work_view_form"/>
-            <field name="act_window" ref="act_work_tree"/>
-        </record>
-        <menuitem parent="menu_configuration" action="act_work_tree"
-            id="menu_work_tree"/>
 
         <record model="ir.action.act_window" id="act_work_list">
             <field name="name">Works</field>
@@ -58,97 +42,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_list"/>
         </record>
-        <menuitem parent="menu_work_tree"
+        <menuitem parent="menu_configuration"
             action="act_work_list" id="menu_work_list"/>
 
-        <record model="ir.ui.view" id="work_view_tree2">
-            <field name="model">timesheet.work</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="16"/>
-            <field name="field_childs">children</field>
-            <field name="name">work_tree2</field>
-        </record>
-        <record model="ir.action.act_window" id="act_work_tree2">
+        <record model="ir.action.act_window" id="act_work_report">
             <field name="name">Works</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+            <field name="context_model">timesheet.work.context</field>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_work_tree2_view1">
+            id="act_work_report_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree2"/>
-            <field name="act_window" ref="act_work_tree2"/>
-        </record>
-
-        <record model="ir.ui.view" id="work_view_graph">
-            <field name="model">timesheet.work</field>
-            <field name="type">graph</field>
-            <field name="name">work_graph</field>
-        </record>
-        <record model="ir.action.act_window" id="act_work_form2">
-            <field name="name">Hours per Work</field>
-            <field name="res_model">timesheet.work</field>
-            <field name="domain"
-                eval="[('parent', '=', Get(Eval('timesheet.act_work_tree2', {}), 'id', None))]"
-                pyson="1"/>
+            <field name="view" ref="work_view_list_report"/>
+            <field name="act_window" ref="act_work_report"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_work_form2_view1">
-            <field name="sequence" eval="10"/>
+            id="act_work_report_view2">
+            <field name="sequence" eval="20"/>
             <field name="view" ref="work_view_graph"/>
-            <field name="act_window" ref="act_work_form2"/>
+            <field name="act_window" ref="act_work_report"/>
         </record>
-
-        <record model="ir.ui.view" id="work_hours_board">
-            <field name="type">board</field>
-            <field name="model"></field>
-            <field name="name">work_hours_board</field>
-        </record>
-        <record model="ir.action.act_window" id="act_work_hours_board">
-            <field name="name">Hours per Work</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_hours_board_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_hours_board"/>
-            <field name="act_window" ref="act_work_hours_board"/>
-        </record>
-
-        <record model="ir.ui.view" id="work_open_start_view_form">
-            <field name="model">timesheet.work.open.start</field>
-            <field name="type">form</field>
-            <field name="name">work_open_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="act_open_work">
-            <field name="name">Hours per Work</field>
-            <field name="wiz_name">timesheet.work.open</field>
-        </record>
-        <menuitem parent="menu_reporting" action="act_open_work"
-            id="menu_work_tree2" icon="tryton-graph"/>
-
-
-        <record model="ir.action.act_window" id="act_work_form3">
-            <field name="name">Hours per Work</field>
-            <field name="res_model">timesheet.work</field>
-            <field name="domain"
-                eval="[('parent', 'in', Eval('active_ids'))]" pyson="1"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form3_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_graph"/>
-            <field name="act_window" ref="act_work_form3"/>
-        </record>
-        <record model="ir.action.wizard" id="act_open_work_graph">
-            <field name="name">Hours per Work</field>
-            <field name="wiz_name">timesheet.work.open_graph</field>
-        </record>
-        <record model="ir.action.keyword" id="act_work_keyword">
-            <field name="keyword">graph_open</field>
-            <field name="model">timesheet.work,-1</field>
-            <field name="action" ref="act_open_work_graph"/>
-        </record>
+        <menuitem parent="menu_reporting" action="act_work_report"
+            id="menu_work_report" sequence="10"/>
 
         <record model="ir.model.access" id="access_work">
             <field name="model" search="[('model', '=', 'timesheet.work')]"/>
@@ -186,6 +101,12 @@ this repository contains the full copyright notices and license terms. -->
             id="rule_group_work_admin_group_timesheet_admin">
             <field name="rule_group" ref="rule_group_work_admin"/>
             <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_context_view_form">
+            <field name="model">timesheet.work.context</field>
+            <field name="type">form</field>
+            <field name="name">work_context_form</field>
         </record>
     </data>
 </tryton>

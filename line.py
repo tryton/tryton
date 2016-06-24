@@ -15,8 +15,7 @@ from trytond.pool import Pool
 from trytond import backend
 
 __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
-    'HoursEmployee',
-    'OpenHoursEmployeeStart', 'OpenHoursEmployee',
+    'HoursEmployee', 'HoursEmployeeContext',
     'HoursEmployeeWeekly', 'HoursEmployeeMonthly']
 
 
@@ -34,7 +33,6 @@ class Line(ModelSQL, ModelView):
     work = fields.Many2One('timesheet.work', 'Work',
         required=True, select=True, domain=[
             ('company', '=', Eval('company', -1)),
-            ('timesheet_available', '=', True),
             ['OR',
                 ('timesheet_start_date', '=', None),
                 ('timesheet_start_date', '<=', Eval('date')),
@@ -212,32 +210,11 @@ class HoursEmployee(ModelSQL, ModelView):
             group_by=line.employee)
 
 
-class OpenHoursEmployeeStart(ModelView):
-    'Open Hours per Employee'
-    __name__ = 'timesheet.hours_employee.open.start'
+class HoursEmployeeContext(ModelView):
+    'Hours per Employee Context'
+    __name__ = 'timesheet.hours_employee.context'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-
-class OpenHoursEmployee(Wizard):
-    'Open Hours per Employee'
-    __name__ = 'timesheet.hours_employee.open'
-    start = StateView('timesheet.hours_employee.open.start',
-        'timesheet.hours_employee_open_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('timesheet.act_hours_employee_form')
-
-    def do_open_(self, action):
-        action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': self.start.start_date,
-                'end_date': self.start.end_date,
-                })
-        return action, {}
-
-    def transition_open_(self):
-        return 'end'
 
 
 class HoursEmployeeWeekly(ModelSQL, ModelView):

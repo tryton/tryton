@@ -1,3 +1,6 @@
+* Remove tree structure on Work
+* Add optional origin on Work
+
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
 * Add Python3 support

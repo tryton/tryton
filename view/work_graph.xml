@@ -6,6 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <field name="name"/>
     </x>
     <y>
-        <field name="total_duration" timedelta="company_work_time"/>
+        <field name="duration" timedelta="company_work_time"/>
     </y>
 </graph>

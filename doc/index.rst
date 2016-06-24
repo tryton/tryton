@@ -10,14 +10,11 @@ Work
 ****
 
 A work is a generic concept that encompass all activities from simple
-tasks to long-running projects. The Work model contains the following
-fields:
+tasks to long-running projects. It can be alone or linked to another document.
+The Work model contains the following fields:
 
-- Name: The name of the work.
+- Name or Origin: The name or the origin of the work.
 - Active: A checkbox that allow to disable the work.
-- Parent: The parent work.
-- Available on timesheets: A checkbox that tells if employees can
-  create timesheets for this work.
 - Company: The company for which the work is (or was) executed.
 
 
