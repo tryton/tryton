@@ -30,6 +30,15 @@ class Production:
         else:
             self.routing = None
 
+    @fields.depends('routing')
+    def on_change_with_planned_start_date(self, pattern=None):
+        if pattern is None:
+            pattern = {}
+        pattern.setdefault(
+            'routing', self.routing.id if self.routing else None)
+        return super(Production, self).on_change_with_planned_start_date(
+            pattern=pattern)
+
     @classmethod
     def compute_request(cls, product, warehouse, quantity, date, company):
         production = super(Production, cls).compute_request(

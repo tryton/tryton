@@ -15,4 +15,5 @@ def register():
         Routing_BOM,
         Production,
         ProductBom,
+        ProductionLeadTime,
         module='production_routing', type_='model')
