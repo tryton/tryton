@@ -114,23 +114,16 @@ Create a Project::
 
     >>> config.user = project_user.id
     >>> ProjectWork = Model.get('project.work')
-    >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test timesheet'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Test timesheet'
-    >>> work.save()
-    >>> project.work = work
     >>> project.type = 'project'
     >>> project.party = customer
     >>> project.project_invoice_method = 'timesheet'
     >>> project.product = product
+    >>> project.timesheet_available = True
     >>> task = ProjectWork()
     >>> task.name = 'Task 1'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Task 1'
-    >>> work.save()
-    >>> task.work = work
+    >>> task.timesheet_available = True
     >>> task.type = 'task'
     >>> task.product = product
     >>> project.children.append(task)
@@ -150,12 +143,12 @@ Create timesheets::
     >>> line = TimesheetLine()
     >>> line.employee = employee
     >>> line.duration = datetime.timedelta(hours=3)
-    >>> line.work = task.work
+    >>> line.work, = task.timesheet_works
     >>> line.save()
     >>> line = TimesheetLine()
     >>> line.employee = employee
     >>> line.duration = datetime.timedelta(hours=2)
-    >>> line.work = project.work
+    >>> line.work, = project.timesheet_works
     >>> line.save()
 
 Check project duration::
@@ -186,7 +179,7 @@ Create more timesheets::
     >>> line = TimesheetLine()
     >>> line.employee = employee
     >>> line.duration = datetime.timedelta(hours=4)
-    >>> line.work = task.work
+    >>> line.work, = task.timesheet_works
     >>> line.save()
 
 Check project duration::

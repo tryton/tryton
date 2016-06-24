@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/notebook/page[@id='general']/field[@name='timesheet_available']"
+        expr="/form/notebook/page[@id='general']/group[@id='progress']"
         position="after">
         <label name="project_invoice_method"/>
         <field name="project_invoice_method"/>

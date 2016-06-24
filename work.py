@@ -9,6 +9,7 @@ import datetime
 
 from sql import Null
 from sql.aggregate import Sum
+from sql.operators import Concat
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
@@ -270,7 +271,9 @@ class Work:
         for sub_ids in grouped_slice(work_ids):
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(timesheet_work,
-                    condition=table.work == timesheet_work.id
+                    condition=(
+                        Concat(cls.__name__ + ',', table.id)
+                        == timesheet_work.origin)
                     ).join(timesheet_line,
                     condition=timesheet_line.work == timesheet_work.id
                     ).join(invoice_line,
@@ -306,8 +309,8 @@ class Work:
         cursor = Transaction().connection.cursor()
         line = TimesheetLine.__table__()
 
-        durations = {}
-        twork2work = dict((w.work.id, w.id) for w in works if w.work)
+        durations = defaultdict(datetime.timedelta)
+        twork2work = {tw.id: w.id for w in works for tw in w.timesheet_works}
         ids = twork2work.keys()
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(line.work, sub_ids)
@@ -323,7 +326,7 @@ class Work:
                     # SQLite uses float for SUM
                     if not isinstance(duration, datetime.timedelta):
                         duration = datetime.timedelta(seconds=duration)
-                    durations[twork2work[twork_id]] = duration
+                    durations[twork2work[twork_id]] += duration
         return durations
 
     @classmethod
@@ -509,7 +512,8 @@ class Work:
         return []
 
     def _get_lines_to_invoice_timesheet(self):
-        if self.work and self.work.timesheet_lines:
+        if (self.timesheet_works
+                and any(tw.timesheet_lines for tw in self.timesheet_works)):
             if not self.product:
                 self.raise_user_error('missing_product', (self.rec_name,))
             elif self.list_price is None:
@@ -520,7 +524,9 @@ class Work:
                     'unit_price': self.list_price,
                     'origin': l,
                     'description': self.name,
-                    } for l in self.work.timesheet_lines
+                    }
+                for tw in self.timesheet_works
+                for l in tw.timesheet_lines
                 if not l.invoice_line]
         return []
 
@@ -574,8 +580,8 @@ class OpenInvoice(Wizard):
         for work in works:
             if work.invoice_line and work.invoice_line.invoice:
                 invoice_ids.add(work.invoice_line.invoice.id)
-            if work.work:
-                for timesheet_line in work.work.timesheet_lines:
+            for twork in work.timesheet_works:
+                for timesheet_line in twork.timesheet_lines:
                     if (timesheet_line.invoice_line
                             and timesheet_line.invoice_line.invoice):
                         invoice_ids.add(timesheet_line.invoice_line.invoice.id)
