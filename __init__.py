@@ -22,6 +22,7 @@ def register():
         AssignFailed,
         Product,
         ProductBom,
+        ProductionLeadTime,
         Location,
         Move,
         module='production', type_='model')

@@ -3,11 +3,11 @@
 from sql import Null
 from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
-__all__ = ['Product', 'ProductBom']
+__all__ = ['Product', 'ProductBom', 'ProductionLeadTime']
 
 
 class Product:
@@ -16,6 +16,14 @@ class Product:
 
     boms = fields.One2Many('product.product-production.bom', 'product',
         'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')],
+        states={
+            'invisible': (Eval('type', 'service').in_(['service', None])
+                & (Eval('_parent_template', {}).get(
+                        'type', 'service').in_(['service', None]))),
+            },
+        depends=['type'])
+    lead_times = fields.One2Many('production.lead_time',
+        'product', 'Lead Times', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
             'invisible': (Eval('type', 'service').in_(['service', None])
                 & (Eval('_parent_template', {}).get(
@@ -89,5 +97,36 @@ class ProductBom(ModelSQL, ModelView):
 
     @staticmethod
     def order_sequence(tables):
+        table, _ = tables[None]
+        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
+
+
+class ProductionLeadTime(ModelSQL, ModelView, MatchMixin):
+    'Production Lead Time'
+    __name__ = 'production.lead_time'
+
+    product = fields.Many2One('product.product', 'Product',
+        ondelete='CASCADE', select=True, required=True,
+        domain=[
+            ('type', '!=', 'service'),
+            ])
+    sequence = fields.Integer('Sequence')
+    bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
+        domain=[
+            ('output_products', '=', If(Bool(Eval('product')),
+                    Eval('product', -1),
+                    Get(Eval('_parent_product', {}), 'id', 0))),
+            ],
+        depends=['product'])
+    lead_time = fields.TimeDelta('Lead Time')
+
+    @classmethod
+    def __setup__(cls):
+        super(ProductionLeadTime, cls).__setup__()
+        cls._order.insert(0, ('product', 'ASC'))
+        cls._order.insert(0, ('sequence', 'ASC'))
+
+    @classmethod
+    def order_sequence(cls, tables):
         table, _ = tables[None]
         return [Case((table.sequence == Null, 0), else_=1), table.sequence]

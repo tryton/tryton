@@ -37,7 +37,7 @@ class Move:
 
     def set_effective_date(self):
         if not self.effective_date and self.production_input:
-            self.effective_date = self.production_input.effective_date
+            self.effective_date = self.production_input.effective_start_date
         if not self.effective_date and self.production_output:
             self.effective_date = self.production_output.effective_date
         super(Move, self).set_effective_date()

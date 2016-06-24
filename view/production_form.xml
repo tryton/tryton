@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <label name="planned_date"/>
     <field name="planned_date"/>
-    <label name="effective_date"/>
-    <field name="effective_date"/>
+    <label name="planned_start_date"/>
+    <field name="planned_start_date"/>
     <label name="product"/>
     <field name="product"/>
     <label name="bom"/>
@@ -31,6 +31,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="warehouse"/>
             <label name="location"/>
             <field name="location"/>
+            <label name="effective_date"/>
+            <field name="effective_date"/>
+            <label name="effective_start_date"/>
+            <field name="effective_start_date"/>
             <label name="cost"/>
             <field name="cost"/>
         </page>

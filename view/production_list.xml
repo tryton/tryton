@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product"/>
     <field name="quantity"/>
     <field name="uom"/>
+    <field name="planned_start_date"/>
     <field name="planned_date"/>
-    <field name="effective_date"/>
     <field name="state"/>
 </tree>

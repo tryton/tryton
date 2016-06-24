@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from sql import Null
+
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
@@ -36,6 +38,17 @@ class Production(Workflow, ModelSQL, ModelView):
     effective_date = fields.Date('Effective Date',
         states={
             'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
+    planned_start_date = fields.Date('Planned Start Date',
+        states={
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'required': Bool(Eval('planned_date')),
+            },
+        depends=['state', 'planned_date'])
+    effective_start_date = fields.Date('Effective Start Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'running', 'done']),
             },
         depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -207,12 +220,21 @@ class Production(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         table_h = TableHandler(cls, module_name)
+        table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table_h.column_exist('code'):
             table_h.column_rename('code', 'number')
 
         super(Production, cls).__register__(module_name)
+
+        # Migration from 4.0: fill planned_start_date
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*table.update(
+                [table.planned_start_date],
+                [table.planned_date],
+                where=(table.planned_start_date == Null)
+                & (table.planned_date != Null)))
 
     @staticmethod
     def default_state():
@@ -236,6 +258,17 @@ class Production(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('planned_date', 'product', 'bom')
+    def on_change_with_planned_start_date(self, pattern=None):
+        if self.planned_date and self.product:
+            if pattern is None:
+                pattern = {}
+            pattern.setdefault('bom', self.bom.id if self.bom else None)
+            for line in self.product.lead_times:
+                if line.match(pattern):
+                    return self.planned_date - line.lead_time
+        return self.planned_date
 
     def _move(self, from_location, to_location, company, product, uom,
             quantity):
@@ -486,7 +519,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     def _get_move_planned_date(self):
         "Return the planned dates for input and output moves"
-        return self.planned_date, self.planned_date
+        return self.planned_start_date, self.planned_date
 
     def _set_move_planned_date(self):
         "Set planned date of moves for the shipments"
@@ -541,7 +574,11 @@ class Production(Workflow, ModelSQL, ModelView):
     def run(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
         Move.do([m for p in productions for m in p.inputs])
+        cls.write([p for p in productions if not p.effective_start_date], {
+                'effective_start_date': Date.today(),
+                })
 
     @classmethod
     @ModelView.button

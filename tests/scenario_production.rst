@@ -13,6 +13,7 @@ Imports::
     >>> from trytond.modules.production.production import BOM_CHANGES
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
+    >>> before_yesterday = yesterday - relativedelta(days=1)
 
 Create database::
 
@@ -104,6 +105,13 @@ Create Bill of Material::
     >>> product.boms.append(ProductBom(bom=bom))
     >>> product.save()
 
+    >>> ProductionLeadTime = Model.get('production.lead_time')
+    >>> production_lead_time = ProductionLeadTime()
+    >>> production_lead_time.product = product
+    >>> production_lead_time.bom = bom
+    >>> production_lead_time.lead_time = datetime.timedelta(1)
+    >>> production_lead_time.save()
+
 Create an Inventory::
 
     >>> Inventory = Model.get('stock.inventory')
@@ -130,9 +138,12 @@ Make a production::
 
     >>> Production = Model.get('production')
     >>> production = Production()
+    >>> production.planned_date = today
     >>> production.product = product
     >>> production.bom = bom
     >>> production.quantity = 2
+    >>> production.planned_start_date == yesterday
+    True
     >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
     True
     >>> output, = production.outputs
@@ -177,11 +188,12 @@ Do the production::
     >>> product.quantity == 2
     True
 
-Make a production with effective date yesterday::
+Make a production with effective date yesterday and running the day before::
 
     >>> Production = Model.get('production')
     >>> production = Production()
     >>> production.effective_date = yesterday
+    >>> production.effective_start_date = before_yesterday
     >>> production.product = product
     >>> production.bom = bom
     >>> production.quantity = 2
@@ -190,7 +202,7 @@ Make a production with effective date yesterday::
     True
     >>> production.click('run')
     >>> production.reload()
-    >>> all(i.effective_date == yesterday for i in production.inputs)
+    >>> all(i.effective_date == before_yesterday for i in production.inputs)
     True
     >>> production.click('done')
     >>> production.reload()
