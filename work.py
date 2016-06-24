@@ -72,7 +72,8 @@ class Work:
         for sub_ids in grouped_slice(work_ids):
             red_sql = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(work,
-                    condition=table.work == work.id
+                    condition=(
+                        Concat(cls.__name__ + ',', table.id) == work.origin)
                     ).join(line, condition=line.work == work.id
                     ).select(table.id, Sum(line.cost_price * line.duration),
                     where=red_sql,
