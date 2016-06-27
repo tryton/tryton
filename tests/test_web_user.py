@@ -3,7 +3,10 @@
 
 import unittest
 
-from mock import patch, ANY
+try:
+    from unittest.mock import patch, ANY
+except ImportError:
+    from mock import patch, ANY
 
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
