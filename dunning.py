@@ -92,6 +92,10 @@ class Letter(CompanyReport):
                 self.dunnings = dunnings
                 self.payments = payments
 
+            @property
+            def fees(self):
+                return {}
+
             def highest_levels(self):
                 'Yield each procedure and the highest level'
                 key = attrgetter('procedure')
