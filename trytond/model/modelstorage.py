@@ -1459,6 +1459,7 @@ class ModelStorage(Model):
         try:
             with transaction.set_current_transaction(transaction), \
                     transaction.set_user(user), \
+                    transaction.reset_context(), \
                     transaction.set_context(context):
                 if to_create:
                     news = cls.create([save_values[r] for r in to_create])
