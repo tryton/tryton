@@ -1472,3 +1472,5 @@ def test_completion():
     assert list(dom.completion(u'Name: foo')) == []
     assert list(dom.completion(u'Name: !=')) == []
     assert list(dom.completion(u'Name: !=foo')) == []
+    assert list(dom.completion(u'')) == ['Name: ']
+    assert list(dom.completion(u' ')) == ['', 'Name: ']
