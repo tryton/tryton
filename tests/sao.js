@@ -2113,6 +2113,8 @@
         ['Name: foo', []],
         ['Name: !=', []],
         ['Name: !=foo', []],
+        ['', ["Name: "]],
+        [' ', ["", "Name: "]],
         ].forEach(function(test) {
             var value = test[0];
             var expected = test[1];

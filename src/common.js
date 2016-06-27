@@ -1139,7 +1139,7 @@
                 }
                 new_domain = this.append_ending_clause(domain,
                         [field.name, operator, value], deep);
-                new_domain_string = this.string(new_domain);
+                var new_domain_string = this.string(new_domain);
                 results.push(pslice(new_domain_string, deep));
             }
             return results;
