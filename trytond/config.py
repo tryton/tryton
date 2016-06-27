@@ -43,11 +43,12 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         ConfigParser.RawConfigParser.__init__(self)
         self.add_section('web')
         self.set('web', 'listen', 'localhost:8000')
-        self.set('web', 'root', '/var/www/localhost/tryton')
+        self.set('web', 'root', os.path.join(os.path.expanduser('~'), 'www'))
         self.add_section('database')
         self.set('database', 'uri',
             os.environ.get('TRYTOND_DATABASE_URI', 'sqlite://'))
-        self.set('database', 'path', '/var/lib/trytond')
+        self.set('database', 'path', os.path.join(
+                os.path.expanduser('~'), 'db'))
         self.set('database', 'list', 'True')
         self.set('database', 'retry', 5)
         self.set('database', 'language', 'en_US')

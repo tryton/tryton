@@ -52,7 +52,7 @@ root
 
 Defines the root path served by `GET` requests.
 
-Default: `/var/www/localhost/tryton`
+Default: Under the `www` directory of user's home running `trytond`.
 
 database
 --------
@@ -95,7 +95,7 @@ path
 The directory where Tryton stores files and so the user running `trytond`
 must have write access on this directory.
 
-Default: `/var/lib/trytond/`
+Default: The db folder under the user home directory running `trytond`.
 
 list
 ~~~~

@@ -1,3 +1,4 @@
+* Use home directory as default path for database and web root.
 * Add count option on Action Window Domains
 * Remove window_name on Action Window
 * Return the calling keyword in ActionKeyword.get_keywords
