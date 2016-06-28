@@ -166,7 +166,9 @@
 
         jQuery.when(Sao.DB.list()).then(function(databases) {
             var el;
-            if (jQuery.isEmptyObject(databases)) {
+            databases = databases || [];
+            if (databases.length <= 1 ) {
+                database = databases[0];
                 el = dialog.database_input;
             } else {
                 el = dialog.database_select;
@@ -177,6 +179,7 @@
                     }));
                 });
             }
+            el.prop('readonly', databases.length == 1);
             el.show();
             el.val(database || '');
             empty_field().first().focus();
