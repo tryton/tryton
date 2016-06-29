@@ -1137,7 +1137,7 @@
         },
         root_parent: function root_parent() {
             var parent = this;
-            while (!parent.group.parent) {
+            while (parent.group.parent) {
                 parent = parent.group.parent;
             }
             return parent;
