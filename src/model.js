@@ -793,7 +793,7 @@
                         }
                     }
                     this.set_default(values);
-                    jQuery.when.apply(promises).then(function() {
+                    jQuery.when.apply(jQuery, promises).then(function() {
                         dfd.resolve(values);
                     });
                 }.bind(this));
@@ -831,7 +831,7 @@
                 this._loaded[fname] = true;
                 fieldnames.push(fname);
             }
-            return jQuery.when.apply(promises).then(function() {
+            return jQuery.when.apply(jQuery, promises).then(function() {
                 return this.on_change(fieldnames).then(function() {
                     return this.on_change_with(fieldnames).then(function() {
                         return this.validate(null, true).then(function() {
@@ -1015,7 +1015,7 @@
                 }
                 promises.push(this.do_autocomplete(fname));
             }
-            return jQuery.when.apply(promises);
+            return jQuery.when.apply(jQuery, promises);
         },
         do_autocomplete: function(fieldname) {
             this.autocompletion[fieldname] = [];
@@ -1804,7 +1804,7 @@
                         }
                     });
                 }
-                return jQuery.when.apply(promises);
+                return jQuery.when.apply(jQuery, promises);
             };
             return prm.then(set_value);
         },
