@@ -1727,7 +1727,13 @@
                 Sao.rpc({
                     'method': 'model.' + model_name + '.read',
                     'params': [[value], ['rec_name'], record.get_context()]
-                }, record.model.session).done(store_rec_name.bind(this));
+                }, record.model.session).done(store_rec_name.bind(this)).done(
+                        function() {
+                            record.group.root_group().screens.forEach(
+                                function(screen) {
+                                    screen.display();
+                            });
+                       });
             } else {
                 store_rec_name.call(this, [{'rec_name': rec_name}]);
             }
