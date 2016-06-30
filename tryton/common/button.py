@@ -31,8 +31,6 @@ class Button(gtk.Button):
     def state_set(self, record):
         if record:
             states = record.expr_eval(self.attrs.get('states', {}))
-            if record.group.readonly or record.readonly:
-                states['readonly'] = True
         else:
             states = {}
         if states.get('invisible', False):
