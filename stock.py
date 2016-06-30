@@ -224,7 +224,10 @@ class InventoryLine:
         domain=[
             ('product', '=', Eval('product')),
             ],
-        depends=['product'])
+        states={
+            'readonly': Eval('inventory_state') != 'draft',
+            },
+        depends=['product', 'inventory_state'])
 
     @classmethod
     def __setup__(cls):
