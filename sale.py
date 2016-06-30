@@ -29,6 +29,14 @@ __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'ReturnSaleStart', 'ReturnSale']
 
 _ZERO = Decimal(0)
+STATES = [
+    ('draft', 'Draft'),
+    ('quotation', 'Quotation'),
+    ('confirmed', 'Confirmed'),
+    ('processing', 'Processing'),
+    ('done', 'Done'),
+    ('cancel', 'Canceled'),
+    ]
 
 
 class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -51,14 +59,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('quotation', 'Quotation'),
-        ('confirmed', 'Confirmed'),
-        ('processing', 'Processing'),
-        ('done', 'Done'),
-        ('cancel', 'Canceled'),
-    ], 'State', readonly=True, required=True)
+    state = fields.Selection(STATES, 'State', readonly=True, required=True)
     sale_date = fields.Date('Sale Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -956,48 +957,57 @@ class SaleLine(ModelSQL, ModelView):
     __name__ = 'sale.line'
     _rec_name = 'description'
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True)
+        select=True,
+        states={
+            'readonly': ((Eval('sale_state') != 'draft')
+                & Bool(Eval('sale'))),
+            },
+        depends=['sale_state'])
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=True, required=True)
+        ], 'Type', select=True, required=True,
+        states={
+            'readonly': Eval('sale_state') != 'draft',
+            },
+        depends=['sale_state'])
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
-            'readonly': ~Eval('_parent_sale', {}),
+            'readonly': Eval('sale_state') != 'draft',
             },
-        depends=['type', 'unit_digits'])
+        depends=['type', 'unit_digits', 'sale_state'])
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
             states={
                 'required': Bool(Eval('product')),
                 'invisible': Eval('type') != 'line',
-                'readonly': ~Eval('_parent_sale', {}),
+                'readonly': Eval('sale_state') != 'draft',
             },
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        depends=['product', 'type', 'product_uom_category'])
+        depends=['product', 'type', 'product_uom_category', 'sale_state'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT', domain=[('salable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
-            'readonly': ~Eval('_parent_sale', {}),
+            'readonly': Eval('sale_state') != 'draft',
             },
         context={
             'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'stock_skip_warehouse': True,
-            }, depends=['type'])
+            }, depends=['type', 'sale_state'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1005,15 +1015,19 @@ class SaleLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
-            }, depends=['type'])
+            'readonly': Eval('sale_state') != 'draft'
+            }, depends=['type', 'sale_state'])
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)),
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
-                'readonly': ~Eval('_parent_sale'),
                 },
-            depends=['type']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True)
+            depends=['type', 'sale_state']), 'get_amount')
+    description = fields.Text('Description', size=None, required=True,
+        states={
+            'readonly': Eval('sale_state') != 'draft',
+            },
+        depends=['sale_state'])
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -1025,7 +1039,8 @@ class SaleLine(ModelSQL, ModelView):
             ],
         states={
             'invisible': Eval('type') != 'line',
-            }, depends=['type'])
+            'readonly': Eval('sale_state') != 'draft',
+            }, depends=['type', 'sale_state'])
     invoice_lines = fields.One2Many('account.invoice.line', 'origin',
         'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
@@ -1048,6 +1063,8 @@ class SaleLine(ModelSQL, ModelView):
                 },
             depends=['type']),
         'on_change_with_shipping_date')
+    sale_state = fields.Function(fields.Selection(STATES, 'Sale State'),
+        'on_change_with_sale_state')
 
     @classmethod
     def __setup__(cls):
@@ -1290,6 +1307,11 @@ class SaleLine(ModelSQL, ModelView):
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_shipping_date(date=date)
+
+    @fields.depends('sale', '_parent_sale.state')
+    def on_change_with_sale_state(self, name=None):
+        if self.sale:
+            return self.sale.state
 
     def get_invoice_line(self):
         'Return a list of invoice lines for sale line'
