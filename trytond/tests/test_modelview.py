@@ -5,6 +5,7 @@ import unittest
 
 from trytond.tests.test_tryton import install_module, with_transaction
 from trytond.pool import Pool
+from trytond.exceptions import UserError
 
 
 class ModelView(unittest.TestCase):
@@ -71,6 +72,47 @@ class ModelView(unittest.TestCase):
                     'update': [{'id': 1, 'name': 'bar'}],
                     },
                 })
+
+    @with_transaction(context={'_check_access': True})
+    def test_button_access(self):
+        'Test Button Access'
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Model = pool.get('ir.model')
+        Button = pool.get('ir.model.button')
+        ModelAccess = pool.get('ir.model.access')
+        Group = pool.get('res.group')
+
+        model, = Model.search([('model', '=', 'test.modelview.button')])
+        admin, = Group.search([('name', '=', 'Administration')])
+        test = TestModel()
+
+        # Without model/button access
+        TestModel.test([test])
+
+        # Without read access
+        access = ModelAccess(model=model, group=None, perm_read=False)
+        access.save()
+        self.assertRaises(UserError, TestModel.test, [test])
+
+        # Without write access
+        access.perm_read = True
+        access.perm_write = False
+        access.save()
+        self.assertRaises(UserError, TestModel.test, [test])
+
+        # Without write access but with button access
+        button = Button(name='test', model=model, groups=[admin])
+        button.save()
+        TestModel.test([test])
+
+        # Without button access
+        ModelAccess.delete([access])
+        no_group = Group(name='no group')
+        no_group.save()
+        button.groups = [no_group]
+        button.save()
+        self.assertRaises(UserError, TestModel.test, [test])
 
 
 def suite():

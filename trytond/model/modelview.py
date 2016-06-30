@@ -483,6 +483,7 @@ class ModelView(Model):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ModelData = pool.get('ir.model.data')
+        ModelAccess = pool.get('ir.model.access')
         Button = pool.get('ir.model.button')
         User = pool.get('res.user')
 
@@ -562,7 +563,10 @@ class ModelView(Model):
                 states = {}
             groups = set(User.get_groups())
             button_groups = Button.get_groups(cls.__name__, button_name)
-            if button_groups and not groups & button_groups:
+            if ((button_groups and not groups & button_groups)
+                    or (not button_groups
+                        and not ModelAccess.check(
+                            cls.__name__, 'write', raise_exception=False))):
                 states = states.copy()
                 states['readonly'] = True
             element.set('states', encoder.encode(states))
@@ -614,13 +618,16 @@ class ModelView(Model):
             if ((Transaction().user != 0)
                     and Transaction().context.get('_check_access')):
                 ModelAccess.check(cls.__name__, 'read')
-                ModelAccess.check(cls.__name__, 'write')
                 groups = set(User.get_groups())
                 button_groups = Button.get_groups(cls.__name__,
                     func.__name__)
-                if button_groups and not groups & button_groups:
-                    raise UserError('Calling button %s on %s is not allowed!'
-                        % (func.__name__, cls.__name__))
+                if button_groups:
+                    if not groups & button_groups:
+                        raise UserError(
+                            'Calling button %s on %s is not allowed!'
+                            % (func.__name__, cls.__name__))
+                else:
+                    ModelAccess.check(cls.__name__, 'write')
             with Transaction().set_context(_check_access=False):
                 return func(cls, *args, **kwargs)
         return wrapper

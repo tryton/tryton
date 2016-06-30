@@ -8,6 +8,7 @@ from trytond.model import ModelView, fields
 __all__ = [
     'ModelViewChangedValues',
     'ModelViewChangedValuesTarget',
+    'ModelViewButton',
     ]
 
 
@@ -30,3 +31,20 @@ class ModelViewChangedValuesTarget(ModelView):
     __name__ = 'test.modelview.changed_values.target'
     name = fields.Char('Name')
     parent = fields.Many2One('test.modelview.changed_values', 'Parent')
+
+
+class ModelViewButton(ModelView):
+    'ModelView Button'
+    __name__ = 'test.modelview.button'
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelViewButton, cls).__setup__()
+        cls._buttons = {
+            'test': {},
+            }
+
+    @classmethod
+    @ModelView.button
+    def test(cls, records):
+        pass

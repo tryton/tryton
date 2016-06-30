@@ -120,6 +120,7 @@ def register():
         UnionTree,
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
+        ModelViewButton,
         MPTT,
         ImportDataBoolean,
         ImportDataInteger,
