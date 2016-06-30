@@ -601,6 +601,7 @@
                 }.bind(this));
             };
             var set_preferences = function(preferences) {
+                this.screen.current_record.cancel();
                 this.screen.current_record.set(preferences);
                 this.screen.current_record.id =
                     this.screen.model.session.user_id;
