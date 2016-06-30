@@ -16,6 +16,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_payment"/>
         </record>
 
+        <record model="res.group" id="group_payment_approval">
+            <field name="name">Payment Approval</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_payment_approval">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_payment_approval"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_payment_approval">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_payment_approval"/>
+        </record>
+
         <menuitem name="Payments" parent="account.menu_account" sequence="30"
             id="menu_payments"/>
         <menuitem name="Payments" parent="account.menu_account_configuration"
@@ -324,6 +338,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.access" id="access_payment_payment_approval">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="group" ref="group_payment_approval"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
 
         <record model="ir.model.button" id="payment_draft_button">
             <field name="name">draft</field>
@@ -338,9 +360,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">approve</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="payment_approve_button_group_payment">
+        <record model="ir.model.button-res.group" id="payment_approve_button_group_payment_approval">
             <field name="button" ref="payment_approve_button"/>
-            <field name="group" ref="group_payment"/>
+            <field name="group" ref="group_payment_approval"/>
         </record>
 
         <record model="ir.model.button" id="payment_succeed_button">
