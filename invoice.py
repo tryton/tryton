@@ -47,6 +47,13 @@ _TYPE2JOURNAL = {
 }
 
 _ZERO = Decimal('0.0')
+STATES = [
+    ('draft', 'Draft'),
+    ('validated', 'Validated'),
+    ('posted', 'Posted'),
+    ('paid', 'Paid'),
+    ('cancel', 'Canceled'),
+    ]
 
 
 class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -71,13 +78,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=_DEPENDS)
     description = fields.Char('Description', size=None, states=_STATES,
         depends=_DEPENDS)
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('validated', 'Validated'),
-        ('posted', 'Posted'),
-        ('paid', 'Paid'),
-        ('cancel', 'Canceled'),
-        ], 'State', readonly=True)
+    state = fields.Selection(STATES, 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date',
         states={
             'readonly': Eval('state').in_(['posted', 'paid', 'cancel']),
@@ -1367,13 +1368,21 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     'Invoice Line'
     __name__ = 'account.invoice.line'
     _rec_name = 'description'
+    _states = {
+        'readonly': Eval('invoice_state') != 'draft',
+        }
+    _depends = ['invoice_state']
+
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
         select=True, states={
             'required': (~Eval('invoice_type') & Eval('party')
                 & Eval('currency') & Eval('company')),
             'invisible': Bool(Eval('context', {}).get('standalone')),
+            'readonly': _states['readonly'] & Bool(Eval('invoice')),
             },
-        depends=['invoice_type', 'party', 'company', 'currency'])
+        depends=['invoice_type', 'party', 'company', 'currency'] + _depends)
+    invoice_state = fields.Function(fields.Selection(STATES, 'Invoice State'),
+        'on_change_with_invoice_state')
     invoice_type = fields.Selection(_TYPE + [(None, '')], 'Invoice Type',
         select=True,
         states={
@@ -1384,22 +1393,24 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     party = fields.Many2One('party.party', 'Party', select=True,
         states={
             'required': ~Eval('invoice'),
+            'readonly': _states['readonly'],
             },
-        depends=['invoice'])
+        depends=['invoice'] + _depends)
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': ~Eval('invoice'),
+            'readonly': _states['readonly'],
             },
-        depends=['invoice'])
+        depends=['invoice'] + _depends)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
-            ], select=True)
+            ], select=True, states=_states, depends=_depends)
     sequence = fields.Integer('Sequence',
         states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
@@ -1411,33 +1422,37 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         ('comment', 'Comment'),
         ], 'Type', select=True, required=True, states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
-        })
+            'readonly': _states['readonly'],
+            }, depends=_depends)
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
+            'readonly': _states['readonly'],
             },
-        depends=['type', 'unit_digits'])
+        depends=['type', 'unit_digits'] + _depends)
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
             'invisible': Eval('type') != 'line',
+            'readonly': _states['readonly'],
             },
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        depends=['product', 'type', 'product_uom_category'])
+        depends=['product', 'type', 'product_uom_category'] + _depends)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         states={
             'invisible': Eval('type') != 'line',
+            'readonly': _states['readonly'],
             },
-        depends=['type'])
+        depends=['type'] + _depends)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1446,14 +1461,16 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
+            'readonly': _states['readonly'],
             },
-        depends=['type', 'invoice_type', 'company'])
+        depends=['type', 'invoice_type', 'company'] + _depends)
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
+            'readonly': _states['readonly'],
             },
-        depends=['type'])
+        depends=['type'] + _depends)
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('_parent_invoice', {}).get('currency_digits',
                     Eval('currency_digits', 2))),
@@ -1461,7 +1478,8 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
             depends=['type', 'currency_digits']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True)
+    description = fields.Text('Description', size=None, required=True,
+        states=_states, depends=_depends)
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -1481,15 +1499,15 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             ],
         states={
             'invisible': Eval('type') != 'line',
+            'readonly': _states['readonly'],
             },
-        depends=['type', 'invoice_type', 'company'])
+        depends=['type', 'invoice_type', 'company'] + _depends)
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
-        states={
-            'readonly': Eval('_parent_invoice', {}
-                ).get('state') != 'draft',
-            })
+        states=_states, depends=_depends)
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -1603,6 +1621,12 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
     @staticmethod
     def default_type():
         return 'line'
+
+    @fields.depends('invoice', '_parent_invoice.state')
+    def on_change_with_invoice_state(self, name=None):
+        if self.invoice:
+            return self.invoice.state
+        return 'draft'
 
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
@@ -1986,9 +2010,21 @@ class InvoiceTax(ModelSQL, ModelView):
     'Invoice Tax'
     __name__ = 'account.invoice.tax'
     _rec_name = 'description'
+    _states = {
+        'readonly': Eval('invoice_state') != 'draft',
+        }
+    _depends = ['invoice_state']
+
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=True)
-    description = fields.Char('Description', size=None, required=True)
+            select=True,
+        states={
+            'readonly': _states['readonly'] & Bool(Eval('invoice')),
+            },
+        depends=_depends)
+    invoice_state = fields.Function(fields.Selection(STATES, 'Invoice State'),
+        'on_change_with_invoice_state')
+    description = fields.Char('Description', size=None, required=True,
+        states=_states, depends=_depends)
     sequence = fields.Integer('Sequence')
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
@@ -1996,32 +2032,41 @@ class InvoiceTax(ModelSQL, ModelView):
         domain=[
             ('kind', '!=', 'view'),
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
-            ])
+            ],
+        states=_states, depends=_depends)
     base = fields.Numeric('Base', required=True,
-        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
+        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
+        states=_states, depends=_depends)
     amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
-        depends=['tax', 'base', 'manual'])
-    manual = fields.Boolean('Manual')
+        states=_states,
+        depends=['tax', 'base', 'manual'] + _depends)
+    manual = fields.Boolean('Manual', states=_states, depends=_depends)
     base_code = fields.Many2One('account.tax.code', 'Base Code',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
-            ])
-    base_sign = fields.Numeric('Base Sign', digits=(2, 0), required=True)
+            ],
+        states=_states, depends=_depends)
+    base_sign = fields.Numeric('Base Sign', digits=(2, 0), required=True,
+        states=_states, depends=_depends)
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
-            ])
-    tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True)
+            ],
+        states=_states, depends=_depends)
+    tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True,
+        states=_states, depends=_depends)
     tax = fields.Many2One('account.tax', 'Tax',
         ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
         states={
-            'readonly': ~Eval('manual', False),
+            'readonly': ~Eval('manual', False) | _states['readonly'],
             },
-        depends=['manual'])
+        depends=['manual'] + _depends)
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -2076,6 +2121,11 @@ class InvoiceTax(ModelSQL, ModelView):
     @staticmethod
     def default_tax_sign():
         return Decimal('1')
+
+    @fields.depends('invoice', '_parent_invoice.state')
+    def on_change_with_invoice_state(self, name=None):
+        if self.invoice:
+            return self.invoice.state
 
     @fields.depends('tax', '_parent_invoice.party', 'base')
     def on_change_tax(self):

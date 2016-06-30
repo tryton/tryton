@@ -1,3 +1,4 @@
+* Manage readonly state on Invoice Line and Tax Line
 * Rename account.invoice.payment_term.line.relativedelta
   into account.invoice.payment_term.line.delta
 * Make payment term not required
