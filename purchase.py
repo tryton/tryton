@@ -33,6 +33,14 @@ _STATES = {
     }
 _DEPENDS = ['state']
 _ZERO = Decimal(0)
+STATES = [
+    ('draft', 'Draft'),
+    ('quotation', 'Quotation'),
+    ('confirmed', 'Confirmed'),
+    ('processing', 'Processing'),
+    ('done', 'Done'),
+    ('cancel', 'Canceled'),
+    ]
 
 
 class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -52,14 +60,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     reference = fields.Char('Reference', select=True)
     description = fields.Char('Description', size=None, states=_STATES,
         depends=_DEPENDS)
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('quotation', 'Quotation'),
-        ('confirmed', 'Confirmed'),
-        ('processing', 'Processing'),
-        ('done', 'Done'),
-        ('cancel', 'Canceled'),
-    ], 'State', readonly=True, required=True)
+    state = fields.Selection(STATES, 'State', readonly=True, required=True)
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -855,42 +856,51 @@ class PurchaseLine(ModelSQL, ModelView):
     __name__ = 'purchase.line'
     _rec_name = 'description'
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', select=True, required=True,
+        states={
+            'readonly': ((Eval('purchase_state') != 'draft')
+                & Bool(Eval('purchase'))),
+            },
+        depends=['purchase_state'])
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=True, required=True)
+        ], 'Type', select=True, required=True,
+        states={
+            'readonly': Eval('purchase_state') != 'draft',
+            },
+        depends=['purchase_state'])
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
-            'readonly': ~Eval('_parent_purchase'),
+            'readonly': Eval('purchase_state') != 'draft',
             },
-        depends=['unit_digits', 'type'])
+        depends=['unit_digits', 'type', 'purchase_state'])
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
         states={
             'required': Bool(Eval('product')),
             'invisible': Eval('type') != 'line',
-            'readonly': ~Eval('_parent_purchase'),
+            'readonly': Eval('purchase_state') != 'draft',
             },
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        depends=['product', 'type', 'product_uom_category'])
+        depends=['product', 'type', 'product_uom_category', 'purchase_state'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT', domain=[('purchasable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
-            'readonly': ~Eval('_parent_purchase'),
+            'readonly': Eval('purchase_state') != 'draft',
             },
         context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
@@ -900,7 +910,7 @@ class PurchaseLine(ModelSQL, ModelView):
             'stock_date_end': Eval('_parent_purchase', {}).get(
                 'purchase_date'),
             'stock_skip_warehouse': True,
-            }, depends=['type'])
+            }, depends=['type', 'purchase_state'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -908,16 +918,20 @@ class PurchaseLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
-            }, depends=['type'])
+            'readonly': Eval('purchase_state') != 'draft',
+            }, depends=['type', 'purchase_state'])
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16,
                 Eval('_parent_purchase', {}).get('currency_digits', 2)),
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
-                'readonly': ~Eval('_parent_purchase'),
                 },
             depends=['type']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True)
+    description = fields.Text('Description', size=None, required=True,
+        states={
+            'readonly': Eval('purchase_state') != 'draft',
+            },
+        depends=['purchase_state'])
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -930,7 +944,8 @@ class PurchaseLine(ModelSQL, ModelView):
             ],
         states={
             'invisible': Eval('type') != 'line',
-            }, depends=['type'])
+            'readonly': Eval('purchase_state') != 'draft',
+            }, depends=['type', 'purchase_state'])
     invoice_lines = fields.One2Many('account.invoice.line', 'origin',
         'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
@@ -951,6 +966,9 @@ class PurchaseLine(ModelSQL, ModelView):
                 },
             depends=['type']),
         'on_change_with_delivery_date')
+    purchase_state = fields.Function(
+        fields.Selection(STATES, 'Purchase State'),
+        'on_change_with_purchase_state')
 
     @classmethod
     def __setup__(cls):
@@ -1195,6 +1213,11 @@ class PurchaseLine(ModelSQL, ModelView):
                     if delivery_date == datetime.date.max:
                         return None
                     return delivery_date
+
+    @fields.depends('purchase', '_parent_purchase.state')
+    def on_change_with_purchase_state(self, name=None):
+        if self.purchase:
+            return self.purchase.state
 
     def get_invoice_line(self):
         'Return a list of invoice line for purchase line'
