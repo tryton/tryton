@@ -9,5 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="uom"/>
     <field name="state"/>
     <field name="sale_exception_state"/>
+    <button name="cancel" string="Cancel"/>
+    <button name="draft" string="Reset to Draft"/>
     <field name="unit_digits" tree_invisible="1"/>
 </tree>
