@@ -2129,9 +2129,6 @@
             return this.get_domains(record, pre_validate)[0];
         },
         validate: function(record, softvalidation, pre_validate) {
-            if (this.description.readonly) {
-                return true;
-            }
             var invalid = false;
             var inversion = new Sao.common.DomainInversion();
             var ldomain = inversion.localize_domain(inversion.domain_inversion(
@@ -2166,8 +2163,6 @@
         set_state: function(record, states) {
             this._set_default_value(record);
             Sao.field.One2Many._super.set_state.call(this, record, states);
-            record._values[this.name].readonly = this.get_state_attrs(record)
-                .readonly;
         }
     });
 

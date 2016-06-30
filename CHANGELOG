@@ -1,3 +1,4 @@
+* Limit readonly state for xxx2Many
 * Simplify login with single database 
 * Show records names in relate window title
 * Add support for count on Action Window Domains
