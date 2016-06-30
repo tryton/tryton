@@ -181,7 +181,6 @@ class Many2Many(Widget):
         screen = Screen(self.attrs['relation'], domain=domain,
             view_ids=self.attrs.get('view_ids', '').split(','),
             mode=['form'], views_preload=self.attrs.get('views', {}),
-            readonly=self.attrs.get('readonly', False),
             context=context)
         screen.load([self.screen.current_record.id])
 

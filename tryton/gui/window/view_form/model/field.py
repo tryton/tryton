@@ -721,8 +721,6 @@ class O2MField(Field):
         return screen_domain
 
     def validate(self, record, softvalidation=False, pre_validate=None):
-        if self.attrs.get('readonly'):
-            return True
         invalid = False
         ldomain = localize_domain(domain_inversion(
                 record.group.clean4inversion(pre_validate or []), self.name,
@@ -748,8 +746,6 @@ class O2MField(Field):
     def state_set(self, record, states=('readonly', 'required', 'invisible')):
         self._set_default_value(record)
         super(O2MField, self).state_set(record, states=states)
-        record.value[self.name].readonly = self.get_state_attrs(record).get(
-            'readonly', False)
 
     def get_removed_ids(self, record):
         return [x.id for x in record.value[self.name].record_removed]

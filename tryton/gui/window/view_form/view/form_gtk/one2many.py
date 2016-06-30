@@ -186,7 +186,6 @@ class One2Many(Widget):
             view_ids=attrs.get('view_ids', '').split(','),
             views_preload=attrs.get('views', {}),
             row_activate=self._on_activate,
-            readonly=self.attrs.get('readonly', False),
             exclude_field=attrs.get('relation_field', None))
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
         self.screen.signal_connect(self, 'record-message', self._sig_label)
@@ -501,16 +500,13 @@ class One2Many(Widget):
             if (self.screen.current_view.view_type == 'tree') \
                     and self.screen.current_view.editable:
                 self.screen.current_record = None
-        readonly = False
         domain = []
         size_limit = None
         if record:
-            readonly = field.get_state_attrs(record).get('readonly', False)
             domain = field.domain_get(record)
             size_limit = record.expr_eval(self.attrs.get('size'))
         if self.screen.domain != domain:
             self.screen.domain = domain
-        self.screen.group.readonly = readonly
         self.screen.size_limit = size_limit
         self.screen.display()
         return True
