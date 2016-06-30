@@ -65,6 +65,7 @@ class Preference(NoModal):
             self.win.destroy()
             self.win = None
             return
+        self.screen.current_record.cancel()
         self.screen.current_record.set(preferences)
         self.screen.current_record.id = rpc._USER
         self.screen.current_record.validate(softvalidation=True)
