@@ -41,6 +41,13 @@ _NUMBER_STATES.update({
         })
 _NUMBER_DEPENDS = _DEPENDS + ['validation']
 
+STATES = [
+    ('draft', 'Draft'),
+    ('validated', 'Validated'),
+    ('cancel', 'Canceled'),
+    ('posted', 'Posted'),
+    ]
+
 
 class Unequal(object):
     "Always different"
@@ -99,12 +106,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
             },
         depends=['state', 'journal'])
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('validated', 'Validated'),
-        ('cancel', 'Canceled'),
-        ('posted', 'Posted'),
-        ], 'State', readonly=True, select=True)
+    state = fields.Selection(STATES, 'State', readonly=True, select=True)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
 
@@ -524,20 +526,31 @@ class Statement(Workflow, ModelSQL, ModelView):
 class Line(ModelSQL, ModelView):
     'Account Statement Line'
     __name__ = 'account.statement.line'
+    _states = {
+        'readonly': Eval('statement_state') != 'draft',
+        }
+    _depends = ['statement_state']
+
     statement = fields.Many2One('account.statement', 'Statement',
-            required=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE', states=_states, depends=_depends)
+    statement_state = fields.Function(
+        fields.Selection(STATES, 'Statement State'),
+        'on_change_with_statement_state')
     sequence = fields.Integer('Sequence')
     number = fields.Char('Number')
-    date = fields.Date('Date', required=True)
+    date = fields.Date('Date', required=True, states=_states, depends=_depends)
     amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)))
-    party = fields.Many2One('party.party', 'Party')
+        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)),
+        states=_states, depends=_depends)
+    party = fields.Many2One('party.party', 'Party',
+        states=_states, depends=_depends)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
             ('kind', '!=', 'view'),
-            ])
-    description = fields.Char('Description')
+            ],
+        states=_states, depends=_depends)
+    description = fields.Char('Description', states=_states, depends=_depends)
     move = fields.Many2One('account.move', 'Account Move', readonly=True,
         domain=[
             ('company', '=', Eval('_parent_statement', {}).get('company', -1)),
@@ -550,7 +563,10 @@ class Line(ModelSQL, ModelView):
                 ('state', '=', 'posted'),
                 ('state', '!=', '')),
             ],
-        depends=['party', 'account'])
+        states=_states,
+        depends=['party', 'account'] + _depends)
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -565,6 +581,11 @@ class Line(ModelSQL, ModelView):
             ('check_statement_line_amount', Check(t, t.amount != 0),
                 'Amount should be a positive or negative value.'),
             ]
+
+    @fields.depends('statement', '_parent_statement.state')
+    def on_change_with_statement_state(self, name=None):
+        if self.statement:
+            return self.statement.state
 
     @staticmethod
     def order_sequence(tables):
