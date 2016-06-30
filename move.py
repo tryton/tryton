@@ -582,36 +582,49 @@ class Reconciliation(ModelSQL, ModelView):
 class Line(ModelSQL, ModelView):
     'Account Move Line'
     __name__ = 'account.move.line'
+
+    _states = {
+        'readonly': Eval('move_state') == 'posted',
+        }
+    _depends = ['move_state']
+
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-        required=True,
-        depends=['currency_digits', 'credit', 'tax_lines', 'journal'])
+        required=True, states=_states,
+        depends=['currency_digits', 'credit', 'tax_lines', 'journal'] +
+        _depends)
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-        required=True,
-        depends=['currency_digits', 'debit', 'tax_lines', 'journal'])
+        required=True, states=_states,
+        depends=['currency_digits', 'debit', 'tax_lines', 'journal'] +
+        _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
-            select=True)
+            select=True, states=_states, depends=_depends)
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
         ondelete='CASCADE',
         states={
             'required': False,
-            'readonly': Eval('state') == 'valid',
+            'readonly': (((Eval('state') == 'valid') | _states['readonly'])
+                & Bool(Eval('move'))),
             },
-        depends=['state'])
-    journal = fields.Function(fields.Many2One('account.journal', 'Journal'),
+        depends=['state'] + _depends)
+    journal = fields.Function(fields.Many2One('account.journal', 'Journal',
+            states=_states, depends=_depends),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
-    period = fields.Function(fields.Many2One('account.period', 'Period'),
+    period = fields.Function(fields.Many2One('account.period', 'Period',
+            states=_states, depends=_depends),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
-    date = fields.Function(fields.Date('Effective Date', required=True),
+    date = fields.Function(fields.Date('Effective Date', required=True,
+            states=_states, depends=_depends),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
     origin = fields.Function(fields.Reference('Origin',
             selection='get_origin'),
         'get_move_field', searcher='search_move_field')
-    description = fields.Char('Description')
-    move_description = fields.Function(fields.Char('Move Description'),
+    description = fields.Char('Description', states=_states, depends=_depends)
+    move_description = fields.Function(fields.Char('Move Description',
+            states=_states, depends=_depends),
         'get_move_field', setter='set_move_field',
         searcher='search_move_field')
     amount_second_currency = fields.Numeric('Amount Second Currency',
@@ -619,23 +632,27 @@ class Line(ModelSQL, ModelView):
         help='The amount expressed in a second currency',
         states={
             'required': Bool(Eval('second_currency')),
+            'readonly': _states['readonly'],
             },
-        depends=['second_currency_digits', 'second_currency'])
+        depends=['second_currency_digits', 'second_currency'] + _depends)
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency',
         states={
             'required': Bool(Eval('amount_second_currency')),
+            'readonly': _states['readonly']
             },
-        depends=['amount_second_currency'])
+        depends=['amount_second_currency'] + _depends)
     party = fields.Many2One('party.party', 'Party', select=True,
         states={
             'required': Eval('party_required', False),
             'invisible': ~Eval('party_required', False),
+            'readonly': _states['readonly'],
             },
-        depends=['party_required'], ondelete='RESTRICT')
+        depends=['party_required'] + _depends, ondelete='RESTRICT')
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
+        states=_states, depends=_depends,
         help='This field is used for payable and receivable lines. \n'
         'You can put the limit date for the payment.')
     state = fields.Selection([
@@ -648,7 +665,8 @@ class Line(ModelSQL, ModelView):
     move_state = fields.Function(fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'Move State'), 'get_move_field', searcher='search_move_field')
+        ], 'Move State'), 'on_change_with_move_state',
+        searcher='search_move_field')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     second_currency_digits = fields.Function(fields.Integer(
@@ -661,6 +679,8 @@ class Line(ModelSQL, ModelView):
             'Amount Currency'), 'get_amount_currency')
     amount_currency_digits = fields.Function(fields.Integer(
             'Amount Currency Digits'), 'get_amount_currency')
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -1169,6 +1189,11 @@ class Line(ModelSQL, ModelView):
         if name.startswith('move_'):
             name = name[5:]
         return [('move.' + name,) + tuple(clause[1:])]
+
+    @fields.depends('move','_parent_move.state')
+    def on_change_with_move_state(self, name=None):
+        if self.move:
+            return self.move.state
 
     def _order_move_field(name):
         def order_field(tables):
