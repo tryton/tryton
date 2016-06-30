@@ -10,7 +10,7 @@ from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, Check
 from trytond import backend
-from trytond.pyson import Eval, In, If, Get
+from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -429,15 +429,32 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     __name__ = "sale.opportunity.line"
     _rec_name = "product"
     _history = True
-    opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
+    _states = {
+        'readonly': Eval('opportunity_state').in_(
+            ['converted', 'won', 'lost', 'cancelled']),
+        }
+    _depends = ['opportunity_state']
+
+    opportunity = fields.Many2One('sale.opportunity', 'Opportunity',
+        states={
+            'readonly': _states['readonly'] & Bool(Eval('opportunity')),
+            },
+        depends=_depends)
+    opportunity_state = fields.Function(
+        fields.Selection(STATES, 'Opportunity State'),
+        'on_change_with_opportunity_state')
     sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True,
-        domain=[('salable', '=', True)])
+        domain=[('salable', '=', True)], states=_states, depends=_depends)
     quantity = fields.Float('Quantity', required=True,
-            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
-    unit = fields.Many2One('product.uom', 'Unit', required=True)
+        digits=(16, Eval('unit_digits', 2)),
+        states=_states, depends=['unit_digits'] + _depends)
+    unit = fields.Many2One('product.uom', 'Unit', required=True,
+        states=_states, depends=_depends)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -458,6 +475,11 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     def order_sequence(tables):
         table, _ = tables[None]
         return [Case((table.sequence == Null, 0), else_=1), table.sequence]
+
+    @fields.depends('opportunity', '_parent_opportunity.state')
+    def on_change_with_opportunity_state(self, name=None):
+        if self.opportunity:
+            return self.opportunity.state
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
