@@ -24,6 +24,11 @@ STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
 }
 DEPENDS = ['state']
+FORECAST_STATES = [
+    ('draft', 'Draft'),
+    ('done', 'Done'),
+    ('cancel', 'Cancel'),
+    ]
 
 
 class Forecast(Workflow, ModelSQL, ModelView):
@@ -54,11 +59,8 @@ class Forecast(Workflow, ModelSQL, ModelView):
                 Bool(Eval('lines', [0]))),
             },
         depends=['state'])
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-        ('cancel', 'Cancel'),
-        ], 'State', readonly=True, select=True)
+    state = fields.Selection(
+        FORECAST_STATES, 'State', readonly=True, select=True)
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
 
@@ -293,11 +295,17 @@ class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
     __name__ = 'stock.forecast.line'
     _rec_name = 'product'
+    _states = {
+        'readonly': Eval('forecast_state') != 'draft',
+        }
+    _depends = ['forecast_state']
+
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ])
+            ],
+        states=_states, depends=_depends)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -306,21 +314,33 @@ class ForecastLine(ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
-            ], depends=['product', 'product_uom_category'])
+            ],
+        states=_states,
+        depends=['product', 'product_uom_category'] + _depends)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, depends=['unit_digits'])
+        required=True, states=_states, depends=['unit_digits'] + _depends)
     minimal_quantity = fields.Float('Minimal Qty',
         digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
+        states=_states, depends=['unit_digits'] + _depends)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
         'line', 'move', 'Moves', readonly=True)
     forecast = fields.Many2One(
-        'stock.forecast', 'Forecast', required=True, ondelete='CASCADE')
+        'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',
+        states={
+            'readonly': ((Eval('forecast_state') != 'draft')
+                & Bool(Eval('forecast'))),
+            },
+        depends=['forecast_state'])
+    forecast_state = fields.Function(
+        fields.Selection(FORECAST_STATES, 'Forecast State'),
+        'on_change_with_forecast_state')
     quantity_executed = fields.Function(fields.Float('Quantity Executed',
             digits=(16, Eval('unit_digits', 2)), depends=['unit_digits']),
         'get_quantity_executed')
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -364,6 +384,11 @@ class ForecastLine(ModelSQL, ModelView):
 
     def get_unit_digits(self, name):
         return self.product.default_uom.digits
+
+    @fields.depends('forecast', '_parent_forecast.state')
+    def on_change_with_forecast_state(self, name=None):
+        if self.forecast:
+            return self.forecast.state
 
     @classmethod
     def get_quantity_executed(cls, lines, name):
