@@ -3,7 +3,7 @@
 from sql import Null
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -14,6 +14,11 @@ STATES = {
     'readonly': Eval('state') != 'draft',
 }
 DEPENDS = ['state']
+INVENTORY_STATES = [
+    ('draft', 'Draft'),
+    ('done', 'Done'),
+    ('cancel', 'Canceled'),
+    ]
 
 
 class Inventory(Workflow, ModelSQL, ModelView):
@@ -42,11 +47,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         depends=['state'])
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('done', 'Done'),
-        ('cancel', 'Canceled'),
-        ], 'State', readonly=True, select=True)
+    state = fields.Selection(
+        INVENTORY_STATES, 'State', readonly=True, select=True)
 
     @classmethod
     def __setup__(cls):
@@ -262,11 +264,16 @@ class InventoryLine(ModelSQL, ModelView):
     'Stock Inventory Line'
     __name__ = 'stock.inventory.line'
     _rec_name = 'product'
+    _states = {
+        'readonly': Eval('inventory_state') != 'draft',
+        }
+    _depends = ['inventory_state']
+
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ])
+            ], states=_states, depends=_depends)
     uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
@@ -274,10 +281,18 @@ class InventoryLine(ModelSQL, ModelView):
             digits=(16, Eval('unit_digits', 2)), readonly=True,
             depends=['unit_digits'])
     quantity = fields.Float('Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
+        digits=(16, Eval('unit_digits', 2)),
+        states=_states, depends=['unit_digits'] + _depends)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
-            ondelete='CASCADE')
+        ondelete='CASCADE',
+        states={
+            'readonly': _states['readonly'] & Bool(Eval('inventory')),
+            },
+        depends=_depends)
+    inventory_state = fields.Function(
+        fields.Selection(INVENTORY_STATES, 'Inventory State'),
+        'on_change_with_inventory_state')
 
     @classmethod
     def __setup__(cls):
@@ -329,6 +344,12 @@ class InventoryLine(ModelSQL, ModelView):
         if self.product:
             self.uom = self.product.default_uom
             self.unit_digits = self.product.default_uom.digits
+
+    @fields.depends('inventory', '_parent_inventory.state')
+    def on_change_with_inventory_state(self, name=None):
+        if self.inventory:
+            return self.inventory.state
+        return 'draft'
 
     def get_rec_name(self, name):
         return self.product.rec_name
