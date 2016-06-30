@@ -41,6 +41,12 @@ If ``True``, the field is not allowed to be empty. Default is ``False``.
 
 If ``True``, the field is not editable in the client. Default is ``False``.
 
+.. warning::
+    For relational fields, it means only the new, delete, add and remove
+    buttons are inactivated. The editable state of the target record must be
+    managed at the target model level.
+
+
 ``domain``
 ----------
 
