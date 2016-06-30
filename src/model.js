@@ -1117,7 +1117,7 @@
             if (!jQuery.isEmptyObject(fields)) {
                 var result = true;
                 fields.forEach(function(field) {
-                    if (!(field in this._loaded) | !(field in this._changed)) {
+                    if (!(field in this._loaded) && !(field in this._changed)) {
                         result = false;
                     }
                 }.bind(this));
