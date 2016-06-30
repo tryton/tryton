@@ -270,21 +270,20 @@ class TableHandler(TableHandlerInterface):
             if (base_type == 'varchar'
                     and self._columns[column_name]['typname'] == 'varchar'):
                 # Migrate size
+                from_size = self._columns[column_name]['size']
                 if field_size is None:
-                    if self._columns[column_name]['size']:
+                    if from_size:
                         self.alter_size(column_name, base_type)
-                elif self._columns[column_name]['size'] == field_size:
+                elif from_size == field_size:
                     pass
-                elif (self._columns[column_name]['size']
-                        and self._columns[column_name]['size'] < field_size):
+                elif from_size and from_size < field_size:
                     self.alter_size(column_name, column_type[1])
                 else:
                     logger.warning(
                         'Unable to migrate column %s on table %s '
                         'from varchar(%s) to varchar(%s).',
                         column_name, self.table_name,
-                        self._columns[column_name]['size'] > 0 and
-                        self._columns[column_name]['size'] or "",
+                        from_size if from_size and from_size > 0 else "",
                         field_size)
             return
 
