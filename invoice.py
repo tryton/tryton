@@ -1022,9 +1022,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 cls.raise_user_error('modify_invoice', (invoice.rec_name,))
 
     def get_rec_name(self, name):
-        return (self.number or unicode(self.id)
-            + (self.reference and (' ' + self.reference) or '')
-            + ' ' + self.party.rec_name)
+        if self.number:
+            return self.number
+        elif self.reference:
+            return '[%s]' % self.reference
+        return '(%s)' % self.id
 
     @classmethod
     def search_rec_name(cls, name, clause):
