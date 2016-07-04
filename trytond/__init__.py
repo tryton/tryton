@@ -4,7 +4,7 @@ import os
 import time
 from email import charset
 
-__version__ = "3.8.6"
+__version__ = "3.8.7"
 
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
