@@ -121,7 +121,7 @@ class EditableTreeView(TreeView):
             if isinstance(entry, (Date, Time)):
                 entry.activate()
                 txt = entry.props.value
-            if isinstance(entry, gtk.Entry):
+            elif isinstance(entry, gtk.Entry):
                 txt = entry.get_text()
             else:
                 txt = entry.get_active_text()
