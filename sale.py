@@ -650,8 +650,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.raise_user_error('invalid_method', (self.rec_name,))
 
     def get_rec_name(self, name):
-        return (self.number or str(self.id)
-            + ' - ' + self.party.rec_name)
+        if self.number:
+            return self.number
+        elif self.reference:
+            return '[%s]' % self.reference
+        return '(%s)' % self.id
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -660,13 +663,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        names = value.split(' - ', 1)
         domain = [bool_op,
-            ('number', operator, names[0]),
-            ('reference', operator, names[0]),
+            ('number', operator, value),
+            ('reference', operator, value),
             ]
-        if len(names) != 1 and names[1]:
-            domain = [bool_op, domain, ('party', operator, names[1])]
         return domain
 
     @classmethod
