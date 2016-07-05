@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- this file is part of tryton.  the copyright file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form string="Dunning">
+<form>
     <label name="line"/>
     <field name="line"/>
     <label name="company"/>
