@@ -1737,7 +1737,8 @@
                     }
                 };
                 win = new Sao.Window.Form(screen, callback.bind(this), {
-                    save_current: true
+                    save_current: true,
+                    title: this.attributes.string
                 });
                 return;
             }
@@ -1764,7 +1765,8 @@
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
                             new_: this.create_access(),
-                            search_filter: parser.quote(text)
+                            search_filter: parser.quote(text),
+                            title: this.attributes.string
                         });
                 return;
             }
@@ -1787,7 +1789,8 @@
             };
             var win = new Sao.Window.Form(screen, callback.bind(this), {
                 new_: true,
-                save_current: true
+                save_current: true,
+                title: this.attributes.string
             });
         },
         key_press: function(event_) {
@@ -1866,7 +1869,8 @@
                                 views_preload: (this.attributes.views ||
                                     {}),
                                 new_: this.create_access(),
-                                search_filter: parser.quote(text)
+                                search_filter: parser.quote(text),
+                                title: this.attributes.string
                             });
                 }
             }
@@ -2355,7 +2359,8 @@
                                 '').split(','),
                         views_preload: this.attributes.views || {},
                         new_: !this.but_new.prop('disabled'),
-                        search_filter: parser.quote(text)
+                        search_filter: parser.quote(text),
+                        title: this.attributes.string
                     });
         },
         remove: function(event_) {
@@ -2393,7 +2398,8 @@
                 var win = new Sao.Window.Form(this.screen, function() {}, {
                     new_: true,
                     many: field_size,
-                    context: context
+                    context: context,
+                    title: this.attributes.string
                 });
             }
         },
@@ -2430,7 +2436,9 @@
                                     sel_multi: true,
                                     context: context,
                                     domain: domain,
-                                    search_filter: ''
+                                    search_filter: '',
+                                    title: this.attributes.string
+
                         });
                     };
 
@@ -2500,7 +2508,8 @@
             this.validate().done(function() {
                 var record = this.screen.current_record;
                 if (record) {
-                    var win = new Sao.Window.Form(this.screen, function() {});
+                    var win = new Sao.Window.Form(this.screen, function() {},
+                        {title: this.attributes.string});
                 }
             }.bind(this));
         },
@@ -2687,7 +2696,8 @@
                             '').split(','),
                         views_preload: this.attributes.views || {},
                         new_: this.attributes.create,
-                        search_filter: parser.quote(value)
+                        search_filter: parser.quote(value),
+                        title: this.attributes.string
                     });
         },
         remove: function() {
@@ -2739,7 +2749,8 @@
                 }
             }.bind(this);
             screen.switch_view().done(function() {
-                new Sao.Window.Form(screen, callback);
+                new Sao.Window.Form(screen, callback,
+                    {title: this.attributes.string});
             });
         },
         new_: function() {
@@ -2768,7 +2779,8 @@
             screen.switch_view().done(function() {
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
-                    'save_current': true
+                    'save_current': true,
+                    title: this.attributes.string
                 });
             });
         }
@@ -3305,7 +3317,8 @@
                         context: context,
                         domain: domain,
                         new_: false,
-                        search_filter: parser.quote(value)
+                        search_filter: parser.quote(value),
+                        title: this.attributes.string
                     });
         },
         add_new_keys: function(ids) {

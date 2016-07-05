@@ -8,7 +8,7 @@
             this.widget = jQuery('<div/>', {
                 'class': 'wizard'
             });
-            this.name = name;
+            this.name = name || '';
             this.action_id = null;
             this.id = null;
             this.ids = null;
@@ -171,7 +171,7 @@
         init: function(name) {
             Sao.Wizard.Form._super.init.call(this);
             this.tab = null;  // Filled by Sao.Tab.Wizard
-            this.name = name;
+            this.name = name || '';
 
             this.form = jQuery('<div/>', {
                 'class': 'wizard-form',

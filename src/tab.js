@@ -288,8 +288,7 @@
             this.set_buttons_sensitive();
 
             this.view_prm = this.screen.switch_view().done(function() {
-                this.set_name(attributes.name ||
-                        this.screen.current_view.attributes.string);
+                this.set_name(attributes.name || '');
                 this.el.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     screen.group.load([attributes.res_id]);
@@ -813,7 +812,7 @@
             this.view_id = (attributes.view_ids.length > 0 ?
                     attributes.view_ids[0] : null);
             this.context = attributes.context;
-            this.name = attributes.name;
+            this.name = attributes.name || '';
             this.dialogs = [];
             this.board = null;
             UIView = new Sao.Model('ir.ui.view');

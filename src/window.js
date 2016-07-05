@@ -45,6 +45,7 @@
             this.domain = kwargs.domain || null;
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
+            this.title = kwargs.title || '';
             this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
             this.info_bar = new Sao.Window.InfoBar();
@@ -215,7 +216,7 @@
 
 
             switch_prm.done(function() {
-                dialog.add_title(this.screen.current_view.attributes.string);
+                dialog.add_title(this.title);
                 dialog.body.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
             }.bind(this));
@@ -383,8 +384,7 @@
         init: function(record, callback) {
             this.resource = record.model.name + ',' + record.id;
             this.attachment_callback = callback;
-            var context = jQuery.extend({}, record.get_context());
-            context.resource = this.resource;
+            var title = Sao.i18n.gettext('Attachments (%1)', record.rec_name);
             var screen = new Sao.Screen('ir.attachment', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
@@ -395,7 +395,7 @@
                 screen.search_filter();
             });
             Sao.Window.Attachment._super.init.call(this, screen, this.callback,
-                {view_type: 'tree'});
+                {view_type: 'tree', title: title});
         },
         callback: function(result) {
             var prm = jQuery.when();
@@ -416,8 +416,7 @@
         init: function(record, callback) {
             this.resource = record.model.name + ',' + record.id;
             this.note_callback = callback;
-            var context = record.get_context();
-            context.resource = this.resource;
+            var title = Sao.i18n.gettext('Notes (%1)', record.rec_name);
             var screen = new Sao.Screen('ir.note', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
@@ -428,7 +427,7 @@
                 screen.search_filter();
             });
             Sao.Window.Note._super.init.call(this, screen, this.callback,
-                    {view_type: 'tree'});
+                    {view_type: 'tree', title: title});
         },
         callback: function(result) {
             var prm = jQuery.when();
@@ -460,7 +459,9 @@
             this.context = kwargs.context || {};
             this.sel_multi = kwargs.sel_multi;
             this.callback = callback;
-            var dialog = new Sao.Dialog('Search', '', 'lg');
+            this.title = kwargs.title || '';
+            var dialog = new Sao.Dialog(Sao.i18n.gettext(
+                'Search %1', this.title), '', 'lg');
             this.el = dialog.modal;
 
             jQuery('<button/>', {
@@ -547,7 +548,8 @@
                 };
                 this.el.modal('hide');
                 new Sao.Window.Form(screen, callback.bind(this), {
-                    new_: true
+                    new_: true,
+                    title: this.title
                 });
                 return;
             }
@@ -695,7 +697,7 @@
                 this.select.append(jQuery('<option/>', {
                     value: revision.valueOf(),
                     text: Sao.common.format_datetime(
-                        date_format, time_format, revision) + ' ' + name
+                        date_format, time_format, revision) + ' ' + this.title
                 }));
             }.bind(this));
             this.el.modal('show');
