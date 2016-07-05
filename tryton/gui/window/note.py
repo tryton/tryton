@@ -1,8 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import gettext
 
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
+
+_ = gettext.gettext
 
 
 class Note(WinForm):
@@ -11,13 +14,12 @@ class Note(WinForm):
     def __init__(self, record, callback=None):
         self.resource = '%s,%s' % (record.model_name, record.id)
         self.note_callback = callback
-        context = record.context_get()
-        context['resource'] = self.resource
+        title = _('Notes (%s)') % (record.rec_name)
         screen = Screen('ir.note', domain=[
                 ('resource', '=', self.resource),
-                ], mode=['tree', 'form'], context=context,
-            exclude_field='resource')
-        super(Note, self).__init__(screen, self.callback, view_type='tree')
+                ], mode=['tree', 'form'], exclude_field='resource')
+        super(Note, self).__init__(screen, self.callback, view_type='tree',
+            title=title)
         screen.search_filter()
 
     def destroy(self):

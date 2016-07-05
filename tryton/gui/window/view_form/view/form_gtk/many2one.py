@@ -135,7 +135,8 @@ class Many2One(Widget):
                     context=context, domain=domain,
                     view_ids=self.attrs.get('view_ids', '').split(','),
                     views_preload=self.attrs.get('views', {}),
-                    new=self.create_access)
+                    new=self.create_access,
+                    title=self.attrs.get('string'))
                 win.screen.search_filter(quote(text))
                 if len(win.screen.group) == 1:
                     win.response(None, gtk.RESPONSE_OK)
@@ -167,7 +168,8 @@ class Many2One(Widget):
                     self.value_from_id(screen.current_record.id,
                         screen.current_record.rec_name()))
             self.focus_out = True
-        WinForm(screen, callback, new=True, save_current=True)
+        WinForm(screen, callback, new=True, save_current=True,
+            title=self.attrs.get('string'))
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
         model = self.get_model()
@@ -200,7 +202,8 @@ class Many2One(Widget):
                         force_change=True)
                 self.focus_out = True
                 self.changed = True
-            WinForm(screen, callback, save_current=True)
+            WinForm(screen, callback, save_current=True,
+                title=self.attrs.get('string'))
             return
         if not self._readonly:
             domain = self.field.domain_get(self.record)
@@ -217,7 +220,7 @@ class Many2One(Widget):
                 context=context, domain=domain,
                 view_ids=self.attrs.get('view_ids', '').split(','),
                 views_preload=self.attrs.get('views', {}),
-                new=self.create_access)
+                new=self.create_access, title=self.attrs.get('string'))
             win.screen.search_filter(quote(text))
             win.show()
             return
@@ -313,7 +316,8 @@ class Many2One(Widget):
         if self.has_target(value):
             # Delay filling of popup as it can take time
             gobject.idle_add(populate, menu, self.get_model(),
-                self.id_from_value(value), '', self.field)
+                self.id_from_value(value), '', self.field,
+                self.field.attrs.get('string'))
         return True
 
     def _set_completion(self):

@@ -153,10 +153,6 @@ class ViewBoard(object):
         self.actions.append(action)
         container.add(action.widget, attributes)
 
-    @property
-    def title(self):
-        self.attributes.get('string', '')
-
     def widget_get(self):
         return self.widget
 

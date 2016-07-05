@@ -600,9 +600,11 @@ class M2O(GenericText):
                 callback()
         if obj_id:
             screen.load([obj_id])
-            WinForm(screen, open_callback, save_current=True)
+            WinForm(screen, open_callback, save_current=True,
+                title=field.attrs.get('string'))
         else:
-            WinForm(screen, open_callback, new=True, save_current=True)
+            WinForm(screen, open_callback, new=True, save_current=True,
+                title=field.attrs.get('string'))
 
     def search_remote(self, record, relation, text, domain=None,
             context=None, callback=None):
@@ -621,7 +623,7 @@ class M2O(GenericText):
         win = WinSearch(relation, search_callback, sel_multi=False,
             context=context, domain=domain,
             view_ids=self.attrs.get('view_ids', '').split(','),
-            new=create_access)
+            new=create_access, title=self.attrs.get('string'))
         win.screen.search_filter(quote(text.decode('utf-8')))
         return win
 
@@ -723,7 +725,8 @@ class O2M(GenericText):
         def open_callback(result):
             if callback:
                 callback()
-        WinForm(screen, open_callback, view_type='tree', context=context)
+        WinForm(screen, open_callback, view_type='tree', context=context,
+            title=field.attrs.get('string'))
 
 
 class M2M(O2M):
@@ -745,7 +748,7 @@ class M2M(O2M):
             if callback:
                 callback()
         WinForm(screen, open_callback, view_type='tree', domain=domain,
-            context=context)
+            context=context, title=field.attrs.get('string'))
 
 
 class Selection(GenericText, SelectionMixin, PopdownMixin):

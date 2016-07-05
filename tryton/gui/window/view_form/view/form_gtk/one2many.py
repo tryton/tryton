@@ -348,7 +348,7 @@ class One2Many(Widget):
             field_size = self.record.expr_eval(self.attrs.get('size')) or -1
             field_size -= len(self.field.get_eval(self.record)) + 1
             WinForm(self.screen, lambda a: update_sequence(), new=True,
-                many=field_size, context=ctx)
+                many=field_size, context=ctx, title=self.attrs.get('string'))
 
     def _new_product(self):
         fields = self.attrs['product'].split(',')
@@ -374,7 +374,7 @@ class One2Many(Widget):
                     product[field.name] = result
 
             win_search = WinSearch(relation, callback, sel_multi=True,
-                context=context, domain=domain)
+                context=context, domain=domain, title=self.attrs.get('string'))
             win_search.win.connect('destroy', search_set)
             win_search.screen.search_filter()
             win_search.show()
@@ -407,7 +407,8 @@ class One2Many(Widget):
             return
         record = self.screen.current_record
         if record:
-            WinForm(self.screen, lambda a: None)
+            WinForm(self.screen, lambda a: None,
+                title=self.attrs.get('string'))
 
     def _sig_next(self, widget):
         if not self._validate():
@@ -467,7 +468,8 @@ class One2Many(Widget):
             context=context, domain=domain,
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
-            new=self.but_new.get_property('sensitive'))
+            new=self.but_new.get_property('sensitive'),
+            title=self.attrs.get('string'))
         win.screen.search_filter(quote(text))
         win.show()
 

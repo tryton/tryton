@@ -5,9 +5,12 @@ import os
 import urllib
 import urlparse
 import sys
+import gettext
 
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
+
+_ = gettext.gettext
 
 
 class Attachment(WinForm):
@@ -16,14 +19,12 @@ class Attachment(WinForm):
     def __init__(self, record, callback=None):
         self.resource = '%s,%s' % (record.model_name, record.id)
         self.attachment_callback = callback
-        context = record.context_get()
-        context['resource'] = self.resource
+        title = _('Attachments (%s)') % (record.rec_name)
         screen = Screen('ir.attachment', domain=[
             ('resource', '=', self.resource),
-            ], mode=['tree', 'form'], context=context,
-            exclude_field='resource')
+            ], mode=['tree', 'form'], exclude_field='resource')
         super(Attachment, self).__init__(screen, self.callback,
-            view_type='tree')
+            view_type='tree', title=title)
         screen.search_filter()
 
     def destroy(self):

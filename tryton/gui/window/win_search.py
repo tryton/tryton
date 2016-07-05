@@ -14,7 +14,8 @@ _ = gettext.gettext
 class WinSearch(NoModal):
 
     def __init__(self, model, callback, sel_multi=True, context=None,
-            domain=None, view_ids=None, views_preload=None, new=True):
+            domain=None, view_ids=None, views_preload=None, new=True,
+            title=''):
         NoModal.__init__(self)
         if views_preload is None:
             views_preload = {}
@@ -22,6 +23,7 @@ class WinSearch(NoModal):
         self.context = context or {}
         self.sel_multi = sel_multi
         self.callback = callback
+        self.title = title
 
         self.win = gtk.Dialog(_('Search'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
@@ -61,6 +63,7 @@ class WinSearch(NoModal):
         # Prevent to set tree_state
         self.screen.tree_states_done.add(id(self.view))
         sel = self.view.treeview.get_selection()
+        self.win.set_title(_('Search %s') % self.title)
 
         if not sel_multi:
             sel.set_mode(gtk.SELECTION_SINGLE)
@@ -119,7 +122,7 @@ class WinSearch(NoModal):
                 else:
                     self.callback(None)
             self.destroy()
-            WinForm(screen, callback, new=True)
+            WinForm(screen, callback, new=True, title=self.title)
             return
         if res:
             group = self.screen.group

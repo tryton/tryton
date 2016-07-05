@@ -17,7 +17,7 @@ class WinForm(NoModal, InfoBar):
 
     def __init__(self, screen, callback, view_type='form',
             new=False, many=0, domain=None, context=None,
-            save_current=False):
+            save_current=False, title=''):
         NoModal.__init__(self)
         self.screen = screen
         self.callback = callback
@@ -25,6 +25,7 @@ class WinForm(NoModal, InfoBar):
         self.domain = domain
         self.context = context
         self.save_current = save_current
+        self.title = title
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True
         if view_type not in (x.view_type for x in self.screen.views) and \
@@ -82,11 +83,11 @@ class WinForm(NoModal, InfoBar):
             gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
         self.win.set_default_response(gtk.RESPONSE_OK)
 
-        self.win.set_title(self.screen.current_view.title)
+        self.win.set_title(self.title)
 
         title = gtk.Label()
         title.modify_font(pango.FontDescription("bold 12"))
-        title.set_label(self.screen.current_view.title)
+        title.set_label(self.title)
         title.set_padding(20, 3)
         title.set_alignment(0.0, 0.5)
         title.set_size_request(0, -1)  # Allow overflow

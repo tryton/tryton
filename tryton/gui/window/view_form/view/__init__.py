@@ -30,10 +30,6 @@ class View(object):
     def get_buttons(self):
         raise NotImplementedError
 
-    @property
-    def title(self):
-        return self.attributes.get('string', '')
-
     @staticmethod
     def parse(screen, xml, children_field):
         from .list import ViewTree

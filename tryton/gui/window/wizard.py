@@ -19,7 +19,7 @@ _ = gettext.gettext
 
 class Wizard(InfoBar):
 
-    def __init__(self, name=False):
+    def __init__(self, name=''):
         super(Wizard, self).__init__()
         self.widget = gtk.VBox(spacing=3)
         self.toolbar_box = None
@@ -179,7 +179,7 @@ class Wizard(InfoBar):
 
         title = gtk.Label()
         title.modify_font(pango.FontDescription("bold 14"))
-        title.set_label(self.screen.current_view.title)
+        title.set_label(self.name)
         title.set_padding(20, 4)
         title.set_alignment(0.0, 0.5)
         title.set_size_request(0, -1)  # Allow overflow
@@ -230,7 +230,7 @@ class Wizard(InfoBar):
 class WizardForm(Wizard, SignalEvent):
     "Wizard"
 
-    def __init__(self, name=False):
+    def __init__(self, name=''):
         super(WizardForm, self).__init__(name=name)
         self.toolbar_box = gtk.HBox()
         self.hbuttonbox = gtk.HButtonBox()
@@ -282,7 +282,7 @@ class WizardForm(Wizard, SignalEvent):
 
 class WizardDialog(Wizard, NoModal):
 
-    def __init__(self, name=False):
+    def __init__(self, name=''):
         if not name:
             name = _('Wizard')
         Wizard.__init__(self, name=name)

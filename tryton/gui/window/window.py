@@ -20,7 +20,7 @@ class Window(object):
 
     @staticmethod
     def create(view_ids, model, res_id=False, domain=None,
-            context=None, order=None, mode=None, name=False, limit=None,
+            context=None, order=None, mode=None, name='', limit=None,
             search_value=None, icon=None, tab_domain=None, context_model=None):
         from tryton.gui import Main
         if context is None:
@@ -42,7 +42,7 @@ class Window(object):
 
     @staticmethod
     def create_wizard(action, data, direct_print=False, email_print=False,
-            email=None, name=False, context=None, icon=None, window=False):
+            email=None, name='', context=None, icon=None, window=False):
         from tryton.gui import Main
         from wizard import WizardForm, WizardDialog
         if window:

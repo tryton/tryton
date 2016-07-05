@@ -157,7 +157,8 @@ class Many2Many(Widget):
             context=context, domain=domain,
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
-            new=self.attrs.get('create', True))
+            new=self.attrs.get('create', True),
+            title=self.attrs.get('string'))
         win.screen.search_filter(quote(value))
         win.show()
 
@@ -191,7 +192,7 @@ class Many2Many(Widget):
                 self.screen.current_record.cancel()
                 # Force a display to clear the CellCache
                 self.screen.display()
-        WinForm(screen, callback)
+        WinForm(screen, callback, title=self.attrs.get('string'))
 
     def _sig_new(self):
         domain = self.field.domain_get(self.record)
@@ -214,7 +215,8 @@ class Many2Many(Widget):
             self.wid_text.grab_focus()
 
         self.focus_out = False
-        WinForm(screen, callback, new=True, save_current=True)
+        WinForm(screen, callback, new=True, save_current=True,
+            title=self.attrs.get('string'))
 
     def _readonly_set(self, value):
         self._readonly = value

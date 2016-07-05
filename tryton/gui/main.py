@@ -738,7 +738,7 @@ class Main(object):
 
         def _manage_favorites(widget):
             Window.create(False, self.menu_screen.model_name + '.favorite',
-                False, mode=['tree', 'form'])
+                False, mode=['tree', 'form'], name=_('Manage Favorites'))
         try:
             favorites = RPCExecute('model',
                 self.menu_screen.model_name + '.favorite', 'get')
