@@ -50,5 +50,6 @@ class Icon(ModelSQL, ModelView):
 
     def get_icon(self, name):
         path = os.path.join(self.module, self.path.replace('/', os.sep))
-        with file_open(path, subdir='modules', mode='r') as fp:
+        with file_open(path,
+                subdir='modules', mode='r', encoding='utf-8') as fp:
             return fp.read()
