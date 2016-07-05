@@ -14,8 +14,6 @@ form =
      | hpaned
      | vpaned)*
   }
-attlist.form &=
-  [ a:defaultValue = "Unknown" ] attribute string { text }?
 attlist.form &= attribute on_write { text }?
 attlist.form &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.form &= attribute cursor { text }?

@@ -21,11 +21,6 @@
   </define>
   <define name="attlist.form" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue="Unknown"/>
-    </optional>
-  </define>
-  <define name="attlist.form" combine="interleave">
-    <optional>
       <attribute name="on_write"/>
     </optional>
   </define>

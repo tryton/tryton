@@ -16,11 +16,6 @@
       <attribute name="dtend"/>
     </optional>
   </define>
-  <define name="attlist.calendar" combine="interleave">
-    <optional>
-      <attribute name="string" a:defaultValue="Unknown"/>
-    </optional>
-  </define>
   <define name="field">
     <element name="field">
       <ref name="attlist.field"/>

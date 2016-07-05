@@ -20,11 +20,6 @@
   </define>
   <define name="attlist.board" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue="Unknown"/>
-    </optional>
-  </define>
-  <define name="attlist.board" combine="interleave">
-    <optional>
       <attribute name="col" a:defaultValue="4"/>
     </optional>
   </define>

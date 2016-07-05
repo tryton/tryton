@@ -164,10 +164,6 @@ Class methods:
         - `action`: a list of available actions
         - `relate`: a list of available relations
 
-.. classmethod:: ModelView.view_header_get(value[, view_type])
-
-    Returns the window title used by the client for the specific view type.
-
 .. classmethod:: ModelView.view_attributes()
 
     Returns a list of XPath, attribute and value.

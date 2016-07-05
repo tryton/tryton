@@ -96,18 +96,3 @@ class ResourceMixin(ModelSQL, ModelView):
         records = super(ResourceMixin, cls).create(vlist)
         cls.check_access([r.id for r in records], mode='create')
         return records
-
-    @classmethod
-    def view_header_get(cls, value, view_type='form'):
-        pool = Pool()
-        Model = pool.get('ir.model')
-        value = super(ResourceMixin, cls).view_header_get(
-            value, view_type=view_type)
-        resource = Transaction().context.get('resource')
-        if resource:
-            model_name, record_id = resource.split(',', 1)
-            model, = Model.search([('model', '=', model_name)])
-            Resource = pool.get(model_name)
-            record = Resource(int(record_id))
-            value = '%s - %s - %s' % (model.name, record.rec_name, value)
-        return value

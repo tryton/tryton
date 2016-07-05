@@ -154,9 +154,6 @@ form
 
 Each form view must start with this tag.
 
-    * ``string``: The text that will be used as default title for the tab or
-      the window.
-
     .. _form-attributes-on_write:
 
     * ``on_write``: The name of a method on the Model of the view that will be
@@ -486,9 +483,6 @@ tree
 
 Each tree view must start with this tag.
 
-    * ``string``: The text that will be used as default title for the tab or
-      the window.
-
     * ``on_write``: see form-attributes-on_write_.
 
     * ``editable``: If it is set to ``top`` or ``bottom``, the list becomes
@@ -607,8 +601,6 @@ Each graph view must start with this tag.
 
     * ``type``: ``vbar``, ``hbar``, ``line``, ``pie``
 
-    * ``string``: the name of the graph.
-
     * ``background``: an hexaecimal value for the color of the
       background.
 
@@ -701,9 +693,6 @@ board
 
 Each board view must start with this tag.
 
-    * ``string``: The text that will be used as default titla for the atb or
-      the window.
-
     * ``col``: The number of columns for the view.
 
 image
@@ -778,9 +767,6 @@ Each calendar view must start with this tag.
     * ``dtstart``: The name of the field that contains the start date.
 
     * ``dtend``: The name of the field that contains the end date.
-
-    * ``string``: The text that will be used as default title for the tab or
-      the window.
 
 field
 ^^^^^

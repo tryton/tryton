@@ -13,8 +13,6 @@ board =
      | vpaned
      | action)*
   }
-attlist.board &=
-  [ a:defaultValue = "Unknown" ] attribute string { text }?
 attlist.board &= [ a:defaultValue = "4" ] attribute col { text }?
 image = element image { attlist.image, empty }
 attlist.image &= attribute name { text }

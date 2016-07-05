@@ -311,7 +311,7 @@ class ModelView(Model):
             if view_type == 'form':
                 res = cls.fields_get()
                 xml = '''<?xml version="1.0"?>''' \
-                    '''<form string="%s" col="4">''' % (cls.__doc__,)
+                    '''<form col="4">'''
                 for i in res:
                     if i in ('create_uid', 'create_date',
                             'write_uid', 'write_date', 'id', 'rec_name'):
@@ -329,8 +329,8 @@ class ModelView(Model):
                 if cls._rec_name in cls._fields:
                     field = cls._rec_name
                 xml = '''<?xml version="1.0"?>''' \
-                    '''<tree string="%s"><field name="%s"/></tree>''' \
-                    % (cls.__doc__, field)
+                    '''<tree><field name="%s"/></tree>''' \
+                    % (field,)
             else:
                 xml = ''
             result['type'] = view_type
@@ -373,18 +373,6 @@ class ModelView(Model):
             }
         cls._view_toolbar_get_cache.set(key, result)
         return result
-
-    @classmethod
-    def view_header_get(cls, value, view_type='form'):
-        """
-        Overload this method if you need a window title.
-        which depends on the context
-
-        :param value: the default header string
-        :param view_type: the type of the view
-        :return: the header string of the view
-        """
-        return value
 
     @classmethod
     def view_attributes(cls):
@@ -587,11 +575,6 @@ class ModelView(Model):
                             Transaction().language, element.get(attr))
                     if trans:
                         element.set(attr, trans)
-
-        # Set header string
-        if element.tag in ('form', 'tree', 'graph'):
-            element.set('string', cls.view_header_get(
-                element.get('string') or '', view_type=element.tag))
 
         if element.tag == 'tree' and element.get('sequence'):
             fields_attrs.setdefault(element.get('sequence'), {})

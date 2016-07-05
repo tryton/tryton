@@ -5,8 +5,6 @@ attlist.graph &=
   [ a:defaultValue = "vbar" ]
   attribute type { "vbar" | "hbar" | "line" | "pie" }?
 attlist.graph &=
-  [ a:defaultValue = "Unknown" ] attribute string { text }?
-attlist.graph &=
   [ a:defaultValue = "#f5f5f5" ] attribute background { text }?
 attlist.graph &= [ a:defaultValue = "blue" ] attribute color { text }?
 attlist.graph &=

@@ -4,8 +4,6 @@ tree = element tree { attlist.tree,
     (field
      | button)*
   }
-attlist.tree &=
-  [ a:defaultValue = "Unknown" ] attribute string { text }?
 attlist.tree &= attribute on_write { text }?
 attlist.tree &= attribute editable { "top" | "bottom" }?
 attlist.tree &= attribute sequence { text }?
