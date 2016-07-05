@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form string="Write-Off" cursor="journal">
+<form cursor="journal">
     <label name="amount"/>
     <field name="amount"/>
     <label name="date"/>

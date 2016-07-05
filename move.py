@@ -1477,21 +1477,6 @@ class Line(ModelSQL, ModelView):
         return super(Line, cls).copy(lines, default=default)
 
     @classmethod
-    def view_header_get(cls, value, view_type='form'):
-        JournalPeriod = Pool().get('account.journal.period')
-        if (not Transaction().context.get('journal')
-                or not Transaction().context.get('period')):
-            return value
-        journal_periods = JournalPeriod.search([
-                ('journal', '=', Transaction().context['journal']),
-                ('period', '=', Transaction().context['period']),
-                ], limit=1)
-        if not journal_periods:
-            return value
-        journal_period, = journal_periods
-        return value + ': ' + journal_period.rec_name
-
-    @classmethod
     def view_toolbar_get(cls):
         pool = Pool()
         Template = pool.get('account.move.template')
@@ -1525,15 +1510,13 @@ class Line(ModelSQL, ModelView):
         result = super(Line, cls).fields_view_get(view_id=view_id,
             view_type=view_type)
         if view_type == 'tree' and 'journal' in Transaction().context:
-            title = cls.view_header_get('', view_type=view_type)
             journal = Journal(Transaction().context['journal'])
 
             if not journal.view:
                 return result
 
             xml = '<?xml version="1.0"?>\n' \
-                '<tree string="%s" editable="top" on_write="on_write">\n' \
-                % title
+                '<tree editable="top" on_write="on_write">\n'
             fields = set()
             for column in journal.view.columns:
                 fields.add(column.field.name)
