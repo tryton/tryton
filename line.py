@@ -110,14 +110,6 @@ class Line(ModelSQL, ModelView):
         return Transaction().context.get('date') or Date_.today()
 
     @classmethod
-    def view_header_get(cls, value, view_type='form'):
-        if not Transaction().context.get('employee'):
-            return value
-        Employee = Pool().get('company.employee')
-        employee = Employee(Transaction().context['employee'])
-        return value + " (" + employee.rec_name + ")"
-
-    @classmethod
     def validate(cls, lines):
         super(Line, cls).validate(lines)
         for line in lines:
