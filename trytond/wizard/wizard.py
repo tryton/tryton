@@ -86,11 +86,21 @@ class StateView(State):
         '''
         Returns defaults values for the fields
         '''
-        Model_ = Pool().get(self.model_name)
+        pool = Pool()
+        Model_ = pool.get(self.model_name)
         defaults = Model_.default_get(fields)
         default = getattr(wizard, 'default_%s' % state_name, None)
         if default:
             defaults.update(default(fields))
+            for field_name, value in defaults.items():
+                field = Model_._fields[field_name]
+                field_rec_name = field_name + '.rec_name'
+                if (value
+                        and field._type == 'many2one'
+                        and field_rec_name not in defaults):
+                    Target = pool.get(field.model_name)
+                    if 'rec_name' in Target._fields:
+                        defaults[field_rec_name] = Target(value).rec_name
         return defaults
 
     def get_buttons(self, wizard, state_name):
