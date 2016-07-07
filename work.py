@@ -46,6 +46,9 @@ class Work(ModelSQL, ModelView):
         states={
             'readonly': Not(Bool(Eval('active'))),
             })
+    # Self referring field to use for aggregation in graph view
+    work = fields.Function(fields.Many2One('timesheet.work', 'Work'),
+        'get_work')
 
     @classmethod
     def __setup__(cls):
@@ -156,6 +159,9 @@ class Work(ModelSQL, ModelView):
                     duration = datetime.timedelta(seconds=duration)
                 durations[work_id] = duration
         return durations
+
+    def get_work(self, name):
+        return self.id
 
     def get_rec_name(self, name):
         if self.origin:

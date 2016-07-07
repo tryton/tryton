@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <graph type="pie">
     <x>
-        <field name="name"/>
+        <field name="work"/>
     </x>
     <y>
         <field name="duration" timedelta="company_work_time"/>
