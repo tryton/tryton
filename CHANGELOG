@@ -2,6 +2,7 @@
 * Remove string attribute from views
 * Don't check write access on model for button with groups
 * Limit readonly state for xxx2Many
+* Add option to update modules list with trytond-admin
 * Use home directory as default path for database and web root.
 * Add count option on Action Window Domains
 * Remove window_name on Action Window

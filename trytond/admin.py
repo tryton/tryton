@@ -45,7 +45,13 @@ def run(options):
                 lang = [x[0] for x in cursor.fetchall()]
         else:
             lang = None
-        Pool(db_name).init(update=options.update, lang=lang)
+        pool = Pool(db_name)
+        pool.init(update=options.update, lang=lang)
+
+        if options.update_modules_list:
+            with Transaction().start(db_name, 0) as transaction:
+                Module = pool.get('ir.module')
+                Module.update_list()
 
     for db_name in options.database_names:
         if init[db_name]:
