@@ -281,7 +281,6 @@ class WinExport(WinCSV):
                 fields2.append(self.model2.get_value(iter, 0))
                 iter = self.model2.iter_next(iter)
             action = self.saveas.get_active()
-            self.destroy()
             try:
                 data = RPCExecute('model', self.model, 'export_data',
                     self.ids, fields, context=self.context)
@@ -298,8 +297,7 @@ class WinExport(WinCSV):
                         action=gtk.FILE_CHOOSER_ACTION_SAVE)
                 if fname:
                     self.export_csv(fname, fields2, data)
-        else:
-            self.destroy()
+        self.destroy()
 
     def export_csv(self, fname, fields, data, popup=True):
         encoding = self.csv_enc.get_active_text() or 'UTF-8'
