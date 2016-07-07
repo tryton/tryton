@@ -172,12 +172,10 @@ class WinImport(WinCSV):
                 fields.append(self.model2.get_value(iter, 1))
                 iter = self.model2.iter_next(iter)
 
-            self.destroy()
             fname = self.import_csv_file.get_filename()
             if fname:
                 self.import_csv(fname, fields)
-        else:
-            self.destroy()
+        self.destroy()
 
     def import_csv(self, fname, fields):
         # TODO: make it works with references
