@@ -219,15 +219,6 @@ The time in seconds until a session expires.
 
 Default: `600`
 
-super_pwd
-~~~~~~~~~
-
-The server password used to authenticate from the client for database
-management tasks. It is encrypted using using the Unix `crypt(3)` routine.
-A password can be generated using this command line::
-
-    python -c 'import getpass,crypt,random,string; print crypt.crypt(getpass.getpass(), "".join(random.sample(string.ascii_letters + string.digits, 8)))'
-
 report
 ------
 

@@ -1,3 +1,5 @@
+* Remove super password
+* Remove database management from RPC
 * Remove ModelView.view_header_get
 * Remove string attribute from views
 * Don't check write access on model for button with groups

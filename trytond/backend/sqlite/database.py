@@ -279,31 +279,6 @@ class Database(DatabaseInterface):
         os.remove(os.path.join(config.get('database', 'path'),
             database_name + '.sqlite'))
 
-    @staticmethod
-    def dump(database_name):
-        if database_name == ':memory:':
-            raise Exception('Unable to dump memory database!')
-        if os.sep in database_name:
-            raise Exception('Wrong database name!')
-        path = os.path.join(config.get('database', 'path'),
-                database_name + '.sqlite')
-        with open(path, 'rb') as file_p:
-            data = file_p.read()
-        return data
-
-    @staticmethod
-    def restore(database_name, data):
-        if database_name == ':memory:':
-            raise Exception('Unable to restore memory database!')
-        if os.sep in database_name:
-            raise Exception('Wrong database name!')
-        path = os.path.join(config.get('database', 'path'),
-                database_name + '.sqlite')
-        if os.path.isfile(path):
-            raise Exception('Database already exists!')
-        with open(path, 'wb') as file_p:
-            file_p.write(data)
-
     def list(self):
         res = []
         listdir = [':memory:']

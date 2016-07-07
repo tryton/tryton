@@ -11,31 +11,28 @@ import operator
 from functools import wraps
 
 from lxml import etree
+from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
 from trytond.model import Workflow
 from trytond.model.fields import get_eval_fields
-from trytond.protocols.dispatcher import create, drop
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
-from trytond import security
 from trytond.cache import Cache
 
-__all__ = ['POOL', 'DB_NAME', 'USER', 'USER_PASSWORD', 'CONTEXT',
+__all__ = ['POOL', 'DB_NAME', 'USER', 'CONTEXT',
     'install_module', 'ModuleTestCase', 'with_transaction',
     'doctest_setup', 'doctest_teardown', 'doctest_checker',
     'suite', 'all_suite', 'modules_suite']
 
 Pool.start()
 USER = 1
-USER_PASSWORD = 'admin'
 CONTEXT = {}
 DB_NAME = os.environ['DB_NAME']
 DB = backend.get('Database')(DB_NAME)
 Pool.test = True
 POOL = Pool(DB_NAME)
-security.check_super = lambda *a, **k: True
 
 
 def install_module(name):
@@ -278,26 +275,58 @@ class ModuleTestCase(unittest.TestCase):
                     })
 
 
-def db_exist():
+def db_exist(name=DB_NAME):
     Database = backend.get('Database')
     database = Database().connect()
-    return DB_NAME in database.list()
+    return name in database.list()
 
 
-def create_db():
-    if not db_exist():
-        create(None, DB_NAME, None, 'en_US', USER_PASSWORD)
+def create_db(name=DB_NAME, lang='en_US'):
+    Database = backend.get('Database')
+    if not db_exist(name):
+        with Transaction().start(None, 0, close=True, autocommit=True) \
+                as transaction:
+            transaction.database.create(transaction.connection, name)
+
+        with Transaction().start(name, 0) as transaction,\
+                transaction.connection.cursor() as cursor:
+            Database(name).init()
+            ir_configuration = Table('ir_configuration')
+            cursor.execute(*ir_configuration.insert(
+                    [ir_configuration.language], [[lang]]))
+
+        pool = Pool(name)
+        pool.init(update=['res', 'ir'], lang=[lang])
+        with Transaction().start(name, 0) as transaction:
+            User = pool.get('res.user')
+            Lang = pool.get('ir.lang')
+            language, = Lang.search([('code', '=', lang)])
+            language.translatable = True
+            language.save()
+            users = User.search([('login', '!=', 'root')])
+            User.write(users, {
+                    'language': language.id,
+                    })
+            Module = pool.get('ir.module')
+            Module.update_list()
 
 
-def drop_db():
-    if db_exist():
-        drop(None, DB_NAME, None)
+def drop_db(name=DB_NAME):
+    if db_exist(name):
+        Database = backend.get('Database')
+        database = Database(name)
+
+        with Transaction().start(None, 0, close=True, autocommit=True) \
+                as transaction:
+            database.drop(transaction.connection, name)
+            Pool.stop(name)
+            Cache.drop(name)
 
 
-def drop_create():
-    if db_exist():
-        drop_db()
-    create_db()
+def drop_create(name=DB_NAME, lang='en_US'):
+    if db_exist(name):
+        drop_db(name)
+    create_db(name, lang)
 
 doctest_setup = lambda test: drop_create()
 doctest_teardown = lambda test: drop_db()

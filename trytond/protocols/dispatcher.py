@@ -2,7 +2,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
-import time
 import pydoc
 from functools import wraps
 
@@ -48,11 +47,6 @@ def rpc(request, database_name):
     methods = {
         'common.db.login': login,
         'common.db.logout': logout,
-        'common.db.db_exist': db_exist,
-        'common.db.create': create,
-        'common.db.restore': restore,
-        'common.db.drop': drop,
-        'common.db.dump': dump,
         'system.listMethods': list_method,
         'system.methodHelp': help_method,
         'system.methodSignature': lambda *a: 'signatures not supported',
@@ -96,7 +90,6 @@ def logout(request, database_name):
 def root(request, *args):
     methods = {
         'common.server.version': lambda *a: __version__,
-        'common.db.list_lang': list_lang,
         'common.db.list': db_list,
         }
     return methods[request.method](request, *request.params)
@@ -105,31 +98,6 @@ def root(request, *args):
 @app.route('/', methods=['GET'])
 def home(request):
     return redirect('/index.html')  # XXX find a better way
-
-
-def list_lang(*args):
-    return [
-        ('bg_BG', 'Български'),
-        ('ca_ES', 'Català'),
-        ('cs_CZ', 'Čeština'),
-        ('de_DE', 'Deutsch'),
-        ('en_US', 'English'),
-        ('es_AR', 'Español (Argentina)'),
-        ('es_EC', 'Español (Ecuador)'),
-        ('es_ES', 'Español (España)'),
-        ('es_CO', 'Español (Colombia)'),
-        ('es_MX', 'Español (México)'),
-        ('fr_FR', 'Français'),
-        ('hu_HU', 'Magyar'),
-        ('it_IT', 'Italiano'),
-        ('lt_LT', 'Lietuvių'),
-        ('lo_LA', 'ລາວ'),
-        ('nl_NL', 'Nederlands'),
-        ('pt_BR', 'Português (Brasil)'),
-        ('ru_RU', 'Russian'),
-        ('sl_SI', 'Slovenščina'),
-        ('zh_CN', '中国（简体）'),
-        ]
 
 
 def db_exist(request, database_name):
@@ -237,119 +205,3 @@ def _dispatch(request, pool, *args, **kwargs):
                 logger.debug('Reset session failed', exc_info=True)
         logger.debug('Result: %s', result)
         return result
-
-
-def create(request, database_name, password, lang, admin_password):
-    '''
-    Create a database
-
-    :param database_name: the database name
-    :param password: the server password
-    :param lang: the default language for the database
-    :param admin_password: the admin password
-    :return: True if succeed
-    '''
-    Database = backend.get('Database')
-    security.check_super(password)
-    res = False
-
-    try:
-        with Transaction().start(None, 0, close=True, autocommit=True) \
-                as transaction:
-            transaction.database.create(transaction.connection, database_name)
-
-        with Transaction().start(database_name, 0) as transaction,\
-                transaction.connection.cursor() as cursor:
-            Database(database_name).init()
-            cursor.execute(*ir_configuration.insert(
-                    [ir_configuration.language], [[lang]]))
-
-        pool = Pool(database_name)
-        pool.init(update=['res', 'ir'], lang=[lang])
-        with Transaction().start(database_name, 0) as transaction:
-            User = pool.get('res.user')
-            Lang = pool.get('ir.lang')
-            language, = Lang.search([('code', '=', lang)])
-            language.translatable = True
-            language.save()
-            users = User.search([('login', '!=', 'root')])
-            User.write(users, {
-                    'language': language.id,
-                    })
-            admin, = User.search([('login', '=', 'admin')])
-            User.write([admin], {
-                    'password': admin_password,
-                    })
-            Module = pool.get('ir.module')
-            if Module:
-                Module.update_list()
-            res = True
-    except Exception:
-        logger.error('CREATE DB: %s failed', database_name, exc_info=True)
-        raise
-    else:
-        logger.info('CREATE DB: %s', database_name)
-    return res
-
-
-def drop(request, database_name, password):
-    Database = backend.get('Database')
-    security.check_super(password)
-    database = Database(database_name)
-    database.close()
-    # Sleep to let connections close
-    time.sleep(1)
-
-    with Transaction().start(None, 0, close=True, autocommit=True) \
-            as transaction:
-        try:
-            database.drop(transaction.connection, database_name)
-        except Exception:
-            logger.error('DROP DB: %s failed', database_name, exc_info=True)
-            raise
-        else:
-            logger.info('DROP DB: %s', database_name)
-            Pool.stop(database_name)
-            Cache.drop(database_name)
-    return True
-
-
-def dump(request, database_name, password):
-    Database = backend.get('Database')
-    security.check_super(password)
-    Database(database_name).close()
-    # Sleep to let connections close
-    time.sleep(1)
-
-    data = Database.dump(database_name)
-    logger.info('DUMP DB: %s', database_name)
-    if bytes == str:
-        return bytearray(data)
-    else:
-        return bytes(data)
-
-
-def restore(request, database_name, password, data, update=False):
-    Database = backend.get('Database')
-    security.check_super(password)
-    try:
-        Database(database_name).connect()
-        existing = True
-    except Exception:
-        existing = False
-    if existing:
-        raise Exception('Database already exists!')
-    Database.restore(database_name, data)
-    logger.info('RESTORE DB: %s', database_name)
-    if update:
-        with Transaction().start(database_name, 0) as transaction,\
-                transaction.connection.cursor() as cursor:
-            cursor.execute(*ir_lang.select(ir_lang.code,
-                    where=ir_lang.translatable))
-            lang = [x[0] for x in cursor.fetchall()]
-            cursor.execute(*ir_module.select(ir_module.name,
-                    where=(ir_module.state == 'installed')))
-            update = [x[0] for x in cursor.fetchall()]
-        Pool(database_name).init(update=update, lang=lang)
-        logger.info('Update/Init succeed!')
-    return True

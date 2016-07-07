@@ -9,7 +9,6 @@ from MySQLdb import IntegrityError as DatabaseIntegrityError
 from MySQLdb import OperationalError as DatabaseOperationalError
 import os
 import time
-import tempfile
 import urllib
 
 from sql import Flavor, Expression
@@ -125,79 +124,6 @@ class Database(DatabaseInterface):
         cursor = connection.cursor()
         cursor.execute('DROP DATABASE `' + database_name + '`')
         cls._list_cache = None
-
-    @staticmethod
-    def dump(database_name):
-        from trytond.tools import exec_command_pipe
-
-        cmd = ['mysqldump', '--no-create-db']
-        uri = parse_uri(config.get('database', 'uri'))
-        if uri.username:
-            cmd.append('--user=' + uri.username)
-        if uri.hostname:
-            cmd.append('--host=' + uri.hostname)
-        if uri.port:
-            cmd.append('--port=' + str(uri.port))
-        if uri.password:
-            cmd.append('--password=' + uri.password)
-        cmd.append(database_name)
-
-        pipe = exec_command_pipe(*tuple(cmd))
-        pipe.stdin.close()
-        data = pipe.stdout.read()
-        res = pipe.wait()
-        if res:
-            raise Exception('Couldn\'t dump database!')
-        return data
-
-    @staticmethod
-    def restore(database_name, data):
-        from trytond.tools import exec_command_pipe
-
-        database = Database().connect()
-        cursor = database.cursor(autocommit=True)
-        database.create(cursor, database_name)
-        cursor.commit()
-        cursor.close()
-
-        cmd = ['mysql']
-        uri = parse_uri(config.get('database', 'uri'))
-        if uri.username:
-            cmd.append('--user=' + uri.username)
-        if uri.hostname:
-            cmd.append('--host=' + uri.hostname)
-        if uri.port:
-            cmd.append('--port=' + str(uri.port))
-        if uri.password:
-            cmd.append('--password=' + uri.password)
-        cmd.append(database_name)
-
-        fd, file_name = tempfile.mkstemp()
-        with os.fdopen(fd, 'wb+') as fd:
-            fd.write(data)
-
-        cmd.append('<')
-        cmd.append(file_name)
-
-        args2 = tuple(cmd)
-
-        pipe = exec_command_pipe(*args2)
-        pipe.stdin.close()
-        res = pipe.wait()
-        os.remove(file_name)
-        if res:
-            raise Exception('Couldn\'t restore database')
-
-        database = Database(database_name).connect()
-        cursor = database.cursor()
-        if not cursor.test():
-            cursor.close()
-            database.close()
-            raise Exception('Couldn\'t restore database!')
-        cursor.close()
-        database.close()
-        Database._list_cache = None
-        return True
 
     def list(self):
         now = time.time()

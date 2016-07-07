@@ -65,27 +65,6 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def dump(database_name):
-        '''
-        Dump a database
-
-        :param database_name: the database name
-        :return: the dump
-        '''
-        raise NotImplementedError
-
-    @staticmethod
-    def restore(database_name, data):
-        '''
-        Restore a database
-
-        :param database_name: the database name
-        :param data: the data
-        :return: True if succeed
-        '''
-        raise NotImplementedError
-
     def list(self):
         '''
         Get the list of database
