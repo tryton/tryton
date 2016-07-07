@@ -1373,7 +1373,6 @@ class Line(ModelSQL, ModelView):
                         journal_period.rec_name,))
         else:
             JournalPeriod.create([{
-                        'name': journal.name + ' - ' + period.name,
                         'journal': journal.id,
                         'period': period.id,
                         }])
@@ -1682,7 +1681,6 @@ class OpenJournal(Wizard):
                 ], limit=1)
         if not journal_periods:
             journal_period, = JournalPeriod.create([{
-                        'name': journal.name + ' - ' + period.name,
                         'journal': journal.id,
                         'period': period.id,
                         }])

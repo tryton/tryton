@@ -276,7 +276,6 @@ class JournalCashContext(ModelView):
 class JournalPeriod(ModelSQL, ModelView):
     'Journal - Period'
     __name__ = 'account.journal.period'
-    name = fields.Char('Name', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
     period = fields.Many2One('account.period', 'Period', required=True,
@@ -297,7 +296,7 @@ class JournalPeriod(ModelSQL, ModelView):
             ('journal_period_uniq', Unique(t, t.journal, t.period),
                 'You can only open one journal per period.'),
             ]
-        cls._order.insert(0, ('name', 'ASC'))
+
         cls._error_messages.update({
                 'modify_del_journal_period': ('You can not modify/delete '
                         'journal - period "%s" because it has moves.'),
@@ -308,6 +307,16 @@ class JournalPeriod(ModelSQL, ModelView):
                     '"%(period)s" is closed.'),
                 })
 
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+
+        super(JournalPeriod, cls).__register__(module_name)
+
+        table = TableHandler(cls, module_name)
+        # Migration from 4.2: remove name column
+        table.drop_column('name')
+
     @staticmethod
     def default_active():
         return True
@@ -315,6 +324,20 @@ class JournalPeriod(ModelSQL, ModelView):
     @staticmethod
     def default_state():
         return 'open'
+
+    def get_rec_name(self, name):
+        return '%s - %s' % (self.journal.rec_name, self.period.rec_name)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+                [('journal.rec_name',) + tuple(clause[1:])],
+                [('period.rec_name',) + tuple(clause[1:])],
+                ]
 
     def get_icon(self, name):
         return _ICONS.get(self.state, '')
