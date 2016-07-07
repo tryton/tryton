@@ -196,10 +196,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
             forecast.check_date_overlap()
 
     def check_date_overlap(self):
-        cursor = Transaction().connection.cursor()
         if self.state != 'done':
             return
+        transaction = Transaction()
+        connection = transaction.connection
+        transaction.database.lock(connection, self._table)
         forcast = self.__table__()
+        cursor = connection.cursor()
         cursor.execute(*forcast.select(forcast.id,
                 where=(((forcast.from_date <= self.from_date)
                         & (forcast.to_date >= self.from_date))
