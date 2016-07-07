@@ -1,3 +1,4 @@
+* Remove database management
 * Limit readonly state for xxx2Many
 * Show records names in relate window title
 * Add support for count on Action Window Domains

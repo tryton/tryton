@@ -22,7 +22,7 @@ Synopsis
 After startup, there raises the `login dialog`__ and optionally a
 `tips dialog`__.
 
-__ Menu-File-Connect_
+__ Menu-Connection_
 __ Menu-Help-Tips_
 
 
@@ -89,7 +89,7 @@ Figure: Tryton client application::
   Client Window       ________________________________________________________________
                      |                      Tryton                               _ o x|
                      |----------------------------------------------------------------|
-  Menu bar           | File User Options Favorites Help                               |
+  Menu bar           | Connection User Options Favorites Help                         |
                      |________________________________________________________________|
                      |             |          ______                                  |
   Tabs               | Menu        |  [Tab1] |[Tab2]| [Tab3]...                       |
@@ -202,12 +202,12 @@ menu action. Most dialogs provide a *Cancel* button, used to stop the
 complete dialog process.
 
 
-File
-^^^^
-The file menu level provides functions about Tryton server login,
-Database maintenance and closing the client application.
+Connection
+^^^^^^^^^^
+The connection menu level provides functions about Tryton server login,
+logout and closing the client application.
 
-.. _Menu-File-Connect:
+.. _Menu-Connection:
 
 Connect...
   By choosing this menu entry the client will be connected to an available
@@ -226,138 +226,19 @@ Connect...
    user may be logged out of the current session, and need to login again.
    Default timeout for inactivity logout is six minutes.
 
-__ File-Server-Connection_
+__ Connection-Server-Connection_
 
 
-.. _Menu-File-Disconnect:
+.. _Menu-Connection-Disconnect:
 
 Disconnect...
   Disconnects the client from an active server connection. In case of unsaved
   changes in an open tab, the Tryton client will request for saving the
   changes.
 
-Database
-++++++++
-This menu level provides tools to maintain Tryton databases.
-For all database operations the user needs to know the Tryton server password.
+__ Connection-Server-Connection_
 
-.. warning:: Consider not to use this server-site maintaining functions,
-             if there are security concerns. Since there are always security
-             concerns in a multiuser environment, better disclaim to provide
-             these functions on database level.
-
-.. note:: Database names are restricted by some rules:
-
-          * Allowed characters are alpha-nummeric [A-Za-z0-9] and
-            underscore (_).
-          * First character must be an alphabetic letter.
-          * The maximum length of a database name is 64 characters.
-
-          Tryton automatically checks if the given database name follows
-          the rules.
-
-.. _Menu-File-New_Database:
-
-New Database
-  Opens a :term:`dialog` for creating a new Tryton database with an initial
-  user called *admin*.
-
-  * Server Setup:
-
-    - `Server Connection`__
-    - Tryton Server Password: The password given in the Tryton server
-      configuration.
-
-  * New Database Setup:
-
-    - Database Name: The name of the new database.
-    - Default Language: The default language of the new database.
-    - Admin Password: The *admin*-user password of the new database.
-    - Confirm Admin Password: Repeat the password of the new 'admin' user.
-
-  * Actions:
-
-    - Create: Creates the new database with initial user *admin* and the
-      provided password.
-    - Cancel
-
-__ File-Server-Connection_
-
-.. note:: The appropriate Tryton database user (defined in the Tryton server
-   configuration) needs to be authorized to create databases for this step.
-
-.. _Menu-File-Restore_Database:
-
-Restore Database
-  Opens a :term:`dialog` to restore a previously created database backup
-  file.
-
-  * File choose menu dialog
-
-    - Choose a database backup file in the file system to be restored.
-    - Actions:
-
-      + Open: Open the chosen backup file.
-      + Cancel
-
-  * Restore Database dialog:
-
-    - `Server Connection`__
-    - Tryton Server Password: The password given in the Tryton server
-      configuration.
-    - File to Restore: Show filename and path.
-    - New Database Name: Enter a new name for the database to be restored
-    - Actions:
-
-      + Restore: Proceed database restore.
-      + Cancel
-
-__ File-Server-Connection_
-
-.. _Menu-File-Backup_Database:
-
-Backup Database
-  Open a :term:`dialog` to backup an existing database and save it as a file.
-
-  * `Backup a Database` dialog
-
-    - `Server connection`__
-    - Database: Choose the Tryton database to backup.
-    - Tryton Server Password: The password given in the Tryton server
-      configuration.
-    - Actions:
-
-      + Backup: Proceed database backup.
-      + Cancel
-
-  * `Save Backup File` dialog
-
-    - Choose a filename and location for the created backup file.
-    - Save the backup file.
-
-__ File-Server-Connection_
-
-.. _Menu-File-Drop_Database:
-
-Drop Database
-  Open a :term:`dialog` to delete an existing Tryton database.
-
-  * `Delete a Database` dialog
-
-    - `Server Connection`__
-    - Database: Choose a database to delete.
-    - Tryton Server Password: The password given in the Tryton server
-      configuration.
-
-  * Confirmation Dialog
-
-    - Yes: Drop the database
-    - No: Do not drop the database
-    - Cancel
-
-__ File-Server-Connection_
-
-.. _File-Server-Connection:
+.. _Connection-Server-Connection:
 
 Server (connection) dialog:
   This :term:`dialog` is widely used to setup a Tryton server connection.

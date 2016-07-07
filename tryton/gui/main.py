@@ -29,19 +29,15 @@ from tryton.gui.window.preference import Preference
 from tryton.gui.window import Limit
 from tryton.gui.window import Email
 from tryton.gui.window.dblogin import DBLogin
-from tryton.gui.window.dbcreate import DBCreate
-from tryton.gui.window.dbdumpdrop import DBBackupDrop
 from tryton.gui.window.tips import Tips
 from tryton.gui.window.about import About
 from tryton.gui.window.shortcuts import Shortcuts
-from tryton.gui.window.dbrestore import DBRestore
 from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 import tryton.translate as translate
 import tryton.plugins
 from tryton.common.placeholder_entry import PlaceholderEntry
 import pango
-import time
 if os.environ.get('GTKOSXAPPLICATION'):
     import gtkosx_application
 else:
@@ -215,13 +211,13 @@ class Main(object):
         self.vbox.pack_start(menubar, False, True)
         self.vbox.reorder_child(menubar, 0)
 
-        menuitem_file = gtk.MenuItem(_('_File'))
-        menubar.add(menuitem_file)
+        menuitem_connection = gtk.MenuItem(_('_Connection'))
+        menubar.add(menuitem_connection)
 
-        menu_file = self._set_menu_file()
-        menuitem_file.set_submenu(menu_file)
-        menu_file.set_accel_group(self.accel_group)
-        menu_file.set_accel_path('<tryton>/File')
+        menu_connection = self._set_menu_connection()
+        menuitem_connection.set_submenu(menu_connection)
+        menu_connection.set_accel_group(self.accel_group)
+        menu_connection.set_accel_path('<tryton>/Connection')
 
         menuitem_user = gtk.MenuItem(_('_User'))
         if self.menuitem_user:
@@ -273,7 +269,7 @@ class Main(object):
             self.menubar.set_no_show_all(True)
             self.macapp.set_menu_bar(self.menubar)
             self.macapp.insert_app_menu_item(self.aboutitem, 0)
-            menuitem_file.show_all()
+            menuitem_connection.show_all()
             menuitem_user.show_all()
             menuitem_options.show_all()
             menuitem_favorite.show_all()
@@ -389,8 +385,8 @@ class Main(object):
             title += ' - ' + value
         self.window.set_title(title)
 
-    def _set_menu_file(self):
-        menu_file = gtk.Menu()
+    def _set_menu_connection(self):
+        menu_connection = gtk.Menu()
 
         imagemenuitem_connect = gtk.ImageMenuItem(_('_Connect...'),
             self.accel_group)
@@ -398,65 +394,17 @@ class Main(object):
         image.set_from_stock('tryton-connect', gtk.ICON_SIZE_MENU)
         imagemenuitem_connect.set_image(image)
         imagemenuitem_connect.connect('activate', self.sig_login)
-        imagemenuitem_connect.set_accel_path('<tryton>/File/Connect')
-        menu_file.add(imagemenuitem_connect)
+        imagemenuitem_connect.set_accel_path('<tryton>/Connection/Connect')
+        menu_connection.add(imagemenuitem_connect)
 
         imagemenuitem_disconnect = gtk.ImageMenuItem(_('_Disconnect'))
         image = gtk.Image()
         image.set_from_stock('tryton-disconnect', gtk.ICON_SIZE_MENU)
         imagemenuitem_disconnect.set_image(image)
         imagemenuitem_disconnect.connect('activate', self.sig_logout)
-        imagemenuitem_disconnect.set_accel_path('<tryton>/File/Disconnect')
-        menu_file.add(imagemenuitem_disconnect)
-
-        menu_file.add(gtk.SeparatorMenuItem())
-
-        imagemenuitem_database = gtk.ImageMenuItem(_('Data_base'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-system-file-manager', gtk.ICON_SIZE_MENU)
-        imagemenuitem_database.set_image(image)
-        menu_file.add(imagemenuitem_database)
-
-        menu_database = gtk.Menu()
-        menu_database.set_accel_group(self.accel_group)
-        menu_database.set_accel_path('<tryton>/File/Database')
-        imagemenuitem_database.set_submenu(menu_database)
-
-        imagemenuitem_db_new = gtk.ImageMenuItem(_('_New Database...'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-folder-new', gtk.ICON_SIZE_MENU)
-        imagemenuitem_db_new.set_image(image)
-        imagemenuitem_db_new.connect('activate', self.sig_db_new)
-        imagemenuitem_db_new.set_accel_path(
-            '<tryton>/File/Database/New Database')
-        menu_database.add(imagemenuitem_db_new)
-
-        imagemenuitem_db_restore = gtk.ImageMenuItem(_('_Restore Database...'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-folder-saved-search', gtk.ICON_SIZE_MENU)
-        imagemenuitem_db_restore.set_image(image)
-        imagemenuitem_db_restore.connect('activate', self.sig_db_restore)
-        imagemenuitem_db_restore.set_accel_path(
-            '<tryton>/File/Database/Restore Database')
-        menu_database.add(imagemenuitem_db_restore)
-
-        imagemenuitem_db_dump = gtk.ImageMenuItem(_('_Backup Database...'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-save-as', gtk.ICON_SIZE_MENU)
-        imagemenuitem_db_dump.set_image(image)
-        imagemenuitem_db_dump.connect('activate', self.sig_db_dump)
-        imagemenuitem_db_dump.set_accel_path(
-            '<tryton>/File/Database/Backup Database')
-        menu_database.add(imagemenuitem_db_dump)
-
-        imagemenuitem_db_drop = gtk.ImageMenuItem(_('Dro_p Database...'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-delete', gtk.ICON_SIZE_MENU)
-        imagemenuitem_db_drop.set_image(image)
-        imagemenuitem_db_drop.connect('activate', self.sig_db_drop)
-        imagemenuitem_db_drop.set_accel_path(
-            '<tryton>/File/Database/Drop Database')
-        menu_database.add(imagemenuitem_db_drop)
+        imagemenuitem_disconnect.set_accel_path(
+            '<tryton>/Connection/Disconnect')
+        menu_connection.add(imagemenuitem_disconnect)
 
         imagemenuitem_close = gtk.ImageMenuItem(_('_Quit...'),
             self.accel_group)
@@ -464,11 +412,11 @@ class Main(object):
         image.set_from_stock('tryton-log-out', gtk.ICON_SIZE_MENU)
         imagemenuitem_close.set_image(image)
         imagemenuitem_close.connect('activate', self.sig_close)
-        imagemenuitem_close.set_accel_path('<tryton>/File/Quit')
+        imagemenuitem_close.set_accel_path('<tryton>/Connection/Quit')
         if self.macapp is None:
-            menu_file.add(gtk.SeparatorMenuItem())
-            menu_file.add(imagemenuitem_close)
-        return menu_file
+            menu_connection.add(gtk.SeparatorMenuItem())
+            menu_connection.add(imagemenuitem_close)
+        return menu_connection
 
     def _set_menu_user(self):
         menu_user = gtk.Menu()
@@ -1269,130 +1217,6 @@ class Main(object):
         gobject.idle_add(set_cursor)
         for dialog in current_form.dialogs:
             dialog.show()
-
-    def sig_db_new(self, widget):
-        if not self.sig_logout(widget):
-            return False
-        dia = DBCreate(CONFIG['login.server'], int(CONFIG['login.port']),
-            sig_login=self.sig_login)
-        res = dia.run()
-        if res:
-            CONFIG.save()
-        return res
-
-    def sig_db_drop(self, widget=None):
-        if not self.sig_logout(widget):
-            return False
-        url, dbname, passwd = DBBackupDrop(function='drop').run()
-        if not dbname:
-            rpc.logout()
-            return
-
-        host, port = url.rsplit(':', 1)
-        sure = common.sur_3b(_("You are going to delete a Tryton "
-                "database.\nAre you really sure to proceed?"))
-        if sure == "ko" or sure == "cancel":
-            return
-        rpcprogress = common.RPCProgress('db_exec', (host, int(port), 'drop',
-            dbname, passwd))
-        try:
-            rpcprogress.run(False)
-        except TrytonServerError, exception:
-            if exception.faultCode == "AccessDenied":
-                common.warning(_("Wrong Tryton Server Password\n"
-                        "Please try again."),
-                        _('Access denied!'))
-                self.sig_db_drop()
-            else:
-                common.warning(_('Database drop failed with error message:\n')
-                    + str(exception.faultCode), _('Database drop failed!'))
-            return
-        common.message(_("Database dropped successfully!"))
-
-    def sig_db_restore(self, widget=None):
-        if not self.sig_logout(widget):
-            return False
-        filename = common.file_selection(_('Open Backup File to Restore...'),
-            preview=False)
-        if not filename:
-            return
-        dialog = DBRestore(filename=filename)
-        url, dbname, passwd, update = dialog.run()
-        if dbname:
-            with open(filename, 'rb') as file_p:
-                data = file_p.read()
-            host, port = url.rsplit(':', 1)
-            cast = bytearray if bytes == str else bytes
-            rpcprogress = common.RPCProgress('db_exec', (host, int(port),
-                'restore', dbname, passwd, cast(data), update))
-            try:
-                res = rpcprogress.run(False)
-            except TrytonServerError, exception:
-                if exception.faultCode == \
-                        "Couldn't restore database with password":
-                    common.warning(_("It is not possible to restore a "
-                            "password protected database.\n"
-                            "Backup and restore needed to be proceed "
-                            "manual."),
-                            _('Database is password protected!'))
-                elif exception.faultCode == "AccessDenied":
-                    common.warning(_("Wrong Tryton Server Password.\n"
-                            "Please try again."),
-                            _('Access denied!'))
-                    self.sig_db_restore()
-                else:
-                    common.warning(_('Database restore failed with '
-                            'error message:\n') + str(exception.faultCode),
-                        _('Database restore failed!'))
-                return
-            if res:
-                common.message(_("Database restored successfully!"))
-            else:
-                common.message(_('Database restore failed!'))
-
-    def sig_db_dump(self, widget=None):
-        if not self.sig_logout(widget):
-            return False
-        dialog = DBBackupDrop(function='backup')
-        url, dbname, passwd = dialog.run()
-
-        if not (dbname and url and passwd):
-            rpc.logout()
-            return
-
-        host, port = url.rsplit(':', 1)
-        rpcprogress = common.RPCProgress('db_exec', (host, int(port), 'dump',
-            dbname, passwd))
-        try:
-            dump = rpcprogress.run(False)
-        except TrytonServerError, exception:
-            if exception.faultCode == "Couldn't dump database with password":
-                common.warning(_("It is not possible to dump a password "
-                        "protected Database.\nBackup and restore "
-                        "needed to be proceed manual."),
-                    _('Database is password protected!'))
-            elif exception.faultCode == "AccessDenied":
-                common.warning(_("Wrong Tryton Server Password.\n"
-                        "Please try again."),
-                    _('Access denied!'))
-                self.sig_db_dump()
-            else:
-                common.warning(_('Database dump failed with '
-                        'error message:\n') + str(exception.faultCode),
-                    _('Database dump failed!'))
-            rpc.logout()
-            return
-
-        filename = common.file_selection(_('Save As...'),
-            action=gtk.FILE_CHOOSER_ACTION_SAVE, preview=False,
-            filename=dbname + '-' + time.strftime('%Y%m%d%H%M') + '.dump')
-
-        if filename:
-            with open(filename, 'wb') as file_:
-                file_.write(dump)
-            common.message(_("Database backuped successfully!"))
-        else:
-            rpc.logout()
 
     def _open_url(self, url):
         urlp = urlparse(url)

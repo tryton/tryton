@@ -24,11 +24,8 @@ except ImportError:
     import md5
 import webbrowser
 import traceback
-import threading
 import tryton.rpc as rpc
-import locale
 import socket
-from tryton import __version__
 import thread
 import urllib
 from string import Template
@@ -225,46 +222,6 @@ def find_in_path(name):
         if os.path.isfile(val) or os.path.islink(val):
             return val
     return name
-
-
-def test_server_version(host, port):
-    version = rpc.server_version(host, port)
-    if not version:
-        return False
-    return version.split('.')[:2] == __version__.split('.')[:2]
-
-
-def refresh_dblist(host, port):
-    '''
-    Return the number of database available
-        or None if it is impossible to connect
-        or -1 if the server version doesn't match the client version
-    '''
-    rpc.logout()
-    if not test_server_version(host, port):
-        return -1
-    return rpc.db_list(host, port)
-
-
-def refresh_langlist(lang_widget, host, port):
-    liststore = lang_widget.get_model()
-    liststore.clear()
-    try:
-        lang_list = rpc.db_exec(host, port, 'list_lang')
-    except socket.error:
-        return []
-    index = -1
-    i = 0
-    lang = locale.getdefaultlocale()[0]
-    for key, val in lang_list:
-        liststore.insert(i, (val, key))
-        if key == lang:
-            index = i
-        if key == 'en_US' and index < 0:
-            index = i
-        i += 1
-    lang_widget.set_active(index)
-    return lang_list
 
 
 def request_server(server_widget):
@@ -1190,54 +1147,6 @@ def generateColorscheme(masterColor, keys, light=0.1):
     golden_angle = 0.618033988749895
     return {key: colorsys.hsv_to_rgb((h + golden_angle * i) % 1,
             s, (v + light * i) % 1) for i, key in enumerate(keys)}
-
-
-class DBProgress(object):
-
-    def __init__(self, host, port):
-        self.dbs = None, None
-        self.host, self.port = host, port
-        self.updated = threading.Event()
-
-    def start(self):
-        dbs = None
-        try:
-            dbs = refresh_dblist(self.host, self.port)
-        except Exception:
-            pass
-        finally:
-            self.dbs = dbs
-            self.updated.set()
-
-    def update(self, combo, progressbar, callback, dbname=''):
-        self.db_info = None
-        threading.Thread(target=self.start).start()
-        gobject.timeout_add(100, self.end, combo, progressbar, callback,
-            dbname)
-
-    def end(self, combo, progressbar, callback, dbname):
-        if not self.updated.isSet():
-            progressbar.show()
-            progressbar.pulse()
-            return True
-        progressbar.hide()
-        dbs = self.dbs
-
-        if dbs is not None and dbs not in (-1, -2):
-            liststore = combo.get_model()
-            liststore.clear()
-            index = -1
-            for db_num, db_name in enumerate(dbs):
-                liststore.append([db_name])
-                if db_name == dbname:
-                    index = db_num
-            if index == -1:
-                index = 0
-            combo.set_active(index)
-            dbs = len(dbs)
-
-        callback(dbs)
-        return False
 
 
 class RPCException(Exception):

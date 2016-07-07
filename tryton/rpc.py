@@ -42,19 +42,11 @@ def db_list(host, port):
         return result
     except Fault, exception:
         if exception.faultCode == 'AccessDenied':
-            logging.getLogger(__name__).debug(-2)
-            return -2
+            logging.getLogger(__name__).debug('AccessDenied')
+            return None
         else:
             logging.getLogger(__name__).debug(repr(None))
             return None
-
-
-def db_exec(host, port, method, database='', *args):
-    connection = ServerProxy(host, port, database=database)
-    logging.getLogger(__name__).info('common.db.%s(%s)' % (method, args))
-    result = getattr(connection.common.db, method)(*args)
-    logging.getLogger(__name__).debug(repr(result))
-    return result
 
 
 def server_version(host, port):

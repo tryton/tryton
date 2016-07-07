@@ -6,12 +6,12 @@ import gtk
 import gobject
 import os
 import gettext
+import threading
 
 from tryton import __version__
 import tryton.common as common
 from tryton.config import CONFIG, TRYTON_ICON, PIXMAPS_DIR, get_config_dir
 import tryton.rpc as rpc
-from tryton.gui.window.dbcreate import DBCreate
 from tryton.exceptions import TrytonError
 
 _ = gettext.gettext
@@ -95,18 +95,14 @@ class DBListEditor(object):
         self.database_combo.add_attribute(cell, 'text', 0)
         self.database_combo.set_model(dbstore)
         self.database_combo.connect('changed', self.dbcombo_changed)
-        self.database_button = gtk.Button(_(u'Create'))
-        self.database_button.connect('clicked', self.db_create)
         self.database_progressbar = gtk.ProgressBar()
         self.database_progressbar.set_text(_(u'Fetching databases list'))
         image = gtk.Image()
         image.set_from_stock('tryton-new', gtk.ICON_SIZE_BUTTON)
-        self.database_button.set_image(image)
         db_box = gtk.VBox(homogeneous=True)
         db_box.pack_start(self.database_entry)
         db_box.pack_start(self.database_combo)
         db_box.pack_start(self.database_label)
-        db_box.pack_start(self.database_button)
         db_box.pack_start(self.database_progressbar)
         # Compute size_request of box in order to prevent "form jumping"
         width, height = 0, 0
@@ -177,7 +173,6 @@ class DBListEditor(object):
         self.database_entry.hide()
         self.database_combo.hide()
         self.database_label.hide()
-        self.database_button.hide()
         self.database_progressbar.hide()
 
     def profile_create(self, button):
@@ -219,7 +214,7 @@ class DBListEditor(object):
             if field == 'database':
                 self.current_database = entry_value
 
-        self.display_dbwidget(None, None, self.current_database)
+        self.display_dbwidget(None, None)
 
     def edit_started(self, renderer, editable, path):
         if isinstance(editable, gtk.Entry):
@@ -266,7 +261,74 @@ class DBListEditor(object):
             for option in ('host', 'database'))
         model[selection][1] = active
 
-    def display_dbwidget(self, entry, event, dbname=None):
+    @classmethod
+    def test_server_version(cls, host, port):
+        '''
+        Tests if the server version is compatible with the client version
+        '''
+        version = rpc.server_version(host, port)
+        if not version:
+            return False
+        return version.split('.')[:2] == __version__.split('.')[:2]
+
+    def refresh_databases(self, host, port):
+        self.dbs_updated = threading.Event()
+        threading.Thread(target=self.refresh_databases_start,
+            args=(host, port)).start()
+        gobject.timeout_add(100, self.refresh_databases_end, host, port)
+
+    def refresh_databases_start(self, host, port):
+        dbs = None
+        try:
+            dbs = rpc.db_list(host, port)
+        except Exception:
+            pass
+        finally:
+            self.dbs = dbs
+            self.dbs_updated.set()
+
+    def refresh_databases_end(self, host, port):
+        if not self.dbs_updated.isSet():
+            self.database_progressbar.show()
+            self.database_progressbar.pulse()
+            return True
+        self.database_progressbar.hide()
+        dbs = self.dbs
+
+        label = None
+        if not self.test_server_version(host, port):
+            label = _(u'Incompatible version of the server')
+        elif dbs is None:
+            label = _(u'Could not connect to the server')
+        if label:
+            self.database_label.set_label('<b>%s</b>' % label)
+            self.database_label.show()
+        else:
+            liststore = self.database_combo.get_model()
+            liststore.clear()
+            index = -1
+            for db_num, db_name in enumerate(dbs):
+                liststore.append([db_name])
+                if self.current_database and db_name == self.current_database:
+                    index = db_num
+            if index == -1:
+                index = 0
+            self.database_combo.set_active(index)
+            dbs = len(dbs)
+            self.database_entry.set_text(self.current_database
+                if self.current_database else '')
+            self.database_combo.show()
+        self.db_cache = (host, port, self.current_profile['name'])
+
+        self.add_button.set_sensitive(True)
+        self.remove_button.set_sensitive(True)
+        self.ok_button.set_sensitive(True)
+        self.cell.set_property('editable', True)
+        self.host_entry.set_sensitive(True)
+        self.updating_db = False
+        return False
+
+    def display_dbwidget(self, entry, event):
         netloc = self.host_entry.get_text()
         host = common.get_hostname(netloc)
         if not host:
@@ -276,10 +338,7 @@ class DBListEditor(object):
             return
         if self.updating_db:
             return
-        if dbname is None:
-            dbname = self.current_database
 
-        dbprogress = common.DBProgress(host, port)
         self.hide_database_info()
         self.add_button.set_sensitive(False)
         self.remove_button.set_sensitive(False)
@@ -287,46 +346,7 @@ class DBListEditor(object):
         self.cell.set_property('editable', False)
         self.host_entry.set_sensitive(False)
         self.updating_db = True
-
-        def callback(dbs):
-            self.updating_db = False
-            self.db_cache = (host, port, self.current_profile['name'])
-
-            if dbs is None or dbs == -1:
-                if dbs is None:
-                    label = _(u'Could not connect to the server')
-                else:
-                    label = _(u'Incompatible version of the server')
-                self.database_label.set_label('<b>%s</b>' % label)
-                self.database_label.show()
-            elif dbs == 0:
-                self.database_button.show()
-            elif dbs == -2:
-                self.database_entry.show()
-            else:
-                self.database_entry.set_text(dbname if dbname else '')
-                self.database_combo.show()
-
-            self.add_button.set_sensitive(True)
-            self.remove_button.set_sensitive(True)
-            self.ok_button.set_sensitive(True)
-            self.cell.set_property('editable', True)
-            self.host_entry.set_sensitive(True)
-
-        dbprogress.update(self.database_combo,
-            self.database_progressbar, callback, dbname)
-
-    def db_create(self, button):
-        if not self.current_profile['name']:
-            return
-        netloc = self.host_entry.get_text()
-        host = common.get_hostname(netloc)
-        port = common.get_port(netloc)
-        dia = DBCreate(host, port)
-        dbname = dia.run()
-        self.db_cache = None
-        self.username_entry.set_text('admin')
-        self.display_dbwidget(None, None, dbname)
+        self.refresh_databases(host, port)
 
     def dbcombo_changed(self, combobox):
         dbname = combobox.get_active_text()
@@ -583,7 +603,7 @@ class DBLogin(object):
             host = common.get_hostname(netloc)
             port = common.get_port(netloc)
             try:
-                if not common.test_server_version(host, port):
+                if not DBListEditor.test_server_version(host, port):
                     common.warning('',
                         _(u'Incompatible version of the server'))
                     continue
