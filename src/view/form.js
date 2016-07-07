@@ -2719,12 +2719,7 @@
                 this.add();
             }
         },
-        edit: function() {
-            if (jQuery.isEmptyObject(this.screen.current_record)) {
-                return;
-            }
-            // Create a new screen that is not linked to the parent otherwise
-            // on the save of the record will trigger the save of the parent
+        _get_screen_form: function() {
             var domain = this.field().get_domain(this.record());
             var add_remove = this.record().expr_eval(
                     this.attributes.add_remove);
@@ -2732,13 +2727,26 @@
                 domain = [domain, add_remove];
             }
             var context = this.field().get_context(this.record());
-            var screen = new Sao.Screen(this.attributes.relation, {
+            var view_ids = (this.attributes.view_ids || '').split(',');
+            if (!jQuery.isEmptyObject(view_ids)) {
+                // Remove the first tree view as mode is form only
+                view_ids.shift();
+            }
+            return new Sao.Screen(this.attributes.relation, {
                 'domain': domain,
-                'view_ids': (this.attributes.view_ids || '').split(','),
+                'view_ids': view_ids,
                 'mode': ['form'],
                 'views_preload': this.attributes.views,
                 'context': context
             });
+        },
+        edit: function() {
+            if (jQuery.isEmptyObject(this.screen.current_record)) {
+                return;
+            }
+            // Create a new screen that is not linked to the parent otherwise
+            // on the save of the record will trigger the save of the parent
+            var screen = this._get_screen_form();
             screen.new_group([this.screen.current_record.id]);
             var callback = function(result) {
                 if (result) {
@@ -2754,21 +2762,7 @@
             });
         },
         new_: function() {
-            var domain = this.field().get_domain(this.record());
-            var add_remove = this.record().expr_eval(
-                    this.attributes.add_remove);
-            if (!jQuery.isEmptyObject(add_remove)) {
-                domain = [domain, add_remove];
-            }
-            var context = this.field().get_context(this.record());
-
-            var screen = new Sao.Screen(this.attributes.relation, {
-                'domain': domain,
-                'view_ids': (this.attributes.view_ids || '').split(','),
-                'mode': ['form'],
-                'views_preload': this.attributes.views,
-                'context': context
-            });
+            var screen = this._get_screen_form();
             var callback = function(result) {
                 if (result) {
                     var record = screen.current_record;
