@@ -168,21 +168,27 @@ class Many2Many(Widget):
     def _on_activate(self):
         self._sig_edit()
 
-    def _sig_edit(self):
-        if not self.screen.current_record:
-            return
-        # Create a new screen that is not linked to the parent otherwise on the
-        # save of the record will trigger the save of the parent
+    def _get_screen_form(self):
         domain = self.field.domain_get(self.record)
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
         context = self.field.context_get(self.record)
-
-        screen = Screen(self.attrs['relation'], domain=domain,
-            view_ids=self.attrs.get('view_ids', '').split(','),
+        view_ids = self.attrs.get('view_ids', '').split(',')
+        if view_ids:
+            # Remove the first tree view as mode is form only
+            view_ids.pop(0)
+        return Screen(self.attrs['relation'], domain=domain,
+            view_ids=view_ids,
             mode=['form'], views_preload=self.attrs.get('views', {}),
             context=context)
+
+    def _sig_edit(self):
+        if not self.screen.current_record:
+            return
+        # Create a new screen that is not linked to the parent otherwise on the
+        # save of the record will trigger the save of the parent
+        screen = self._get_screen_form()
         screen.load([self.screen.current_record.id])
 
         def callback(result):
@@ -195,16 +201,7 @@ class Many2Many(Widget):
         WinForm(screen, callback, title=self.attrs.get('string'))
 
     def _sig_new(self):
-        domain = self.field.domain_get(self.record)
-        add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
-        if add_remove:
-            domain = [domain, add_remove]
-        context = self.field.context_get(self.record)
-
-        screen = Screen(self.attrs['relation'], domain=domain,
-            view_ids=self.attrs.get('view_ids', '').split(','),
-            mode=['form'], views_preload=self.attrs.get('views', {}),
-            context=context)
+        screen = self._get_screen_form()
 
         def callback(result):
             self.focus_out = True
