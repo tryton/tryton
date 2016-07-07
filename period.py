@@ -113,10 +113,13 @@ class Period(ModelSQL, ModelView):
             period.check_post_move_sequence()
 
     def check_dates(self):
-        cursor = Transaction().connection.cursor()
         if self.type != 'standard':
             return True
+        transaction = Transaction()
+        connection = transaction.connection
+        transaction.database.lock(connection, self._table)
         table = self.__table__()
+        cursor = connection.cursor()
         cursor.execute(*table.select(table.id,
                 where=(((table.start_date <= self.start_date)
                         & (table.end_date >= self.start_date))
