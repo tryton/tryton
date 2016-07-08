@@ -46,12 +46,15 @@ def get_parser_admin():
         metavar='MODULE', help="update a module")
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all installed modules")
+    parser.add_argument("-p", "--password", dest="password",
+        action='store_true', help="set the admin password")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="Update list of tryton modules")
 
-    parser.epilog = ('The first time a database is initialized admin '
-        'password is read from file defined by TRYTONPASSFILE '
-        'environment variable or interactively ask user.\n'
+    parser.epilog = ('The first time a database is initialized '
+        'or when the password is set, the admin password is read '
+        'from file defined by TRYTONPASSFILE environment variable '
+        'or interactively asked from the user.\n'
         'The config file can be specified in the TRYTOND_CONFIG '
         'environment variable.\n'
         'The database URI can be specified in the TRYTOND_DATABASE_URI '

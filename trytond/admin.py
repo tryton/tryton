@@ -54,7 +54,7 @@ def run(options):
                 Module.update_list()
 
     for db_name in options.database_names:
-        if init[db_name]:
+        if init[db_name] or options.password:
             # try to read password from environment variable
             # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
             passpath = os.getenv('TRYTONPASSFILE')

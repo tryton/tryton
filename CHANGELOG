@@ -1,3 +1,4 @@
+* Add option to set admin password with trytond-admin
 * Remove super password
 * Remove database management from RPC
 * Remove ModelView.view_header_get
