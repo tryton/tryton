@@ -1619,7 +1619,8 @@ class TranslationExport(Wizard):
 
     def default_result(self, fields):
         file_ = self.result.file
+        cast = self.result.__class__.file.cast
         self.result.file = False  # No need to store it in session
         return {
-            'file': file_,
+            'file': cast(file_) if file_ else None,
             }
