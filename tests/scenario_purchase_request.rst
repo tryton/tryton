@@ -253,3 +253,29 @@ Create the purchase with a unique line::
     2.0
     >>> line.unit == unit
     True
+
+Create a purchase request without product::
+
+    >>> config.user = 1  # admin
+    >>> pr = PurchaseRequest()
+    >>> pr.description = "Custom product"
+    >>> pr.quantity = 1
+    >>> pr.origin = Model.get('stock.order_point')()
+    >>> pr.save()
+
+Create the purchase without product::
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
+    >>> create_purchase.form.party = supplier
+    >>> create_purchase.execute('start')
+    >>> pr.state
+    'purchased'
+
+    >>> pr.purchase_line.product
+    >>> pr.purchase_line.description
+    u'Custom product'
+    >>> pr.purchase_line.quantity
+    1.0
+    >>> pr.purchase_line.unit
+    >>> pr.purchase_line.unit_price
+    Decimal('0.0000')

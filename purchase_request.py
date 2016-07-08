@@ -11,7 +11,7 @@ from sql.conditionals import Case
 from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import If, In, Eval
+from trytond.pyson import If, In, Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -31,14 +31,24 @@ class PurchaseRequest(ModelSQL, ModelView):
     'Purchase Request'
     __name__ = 'purchase.request'
 
-    product = fields.Many2One('product.product', 'Product', required=True,
+    product = fields.Many2One('product.product', 'Product',
         select=True, readonly=True, domain=[('purchasable', '=', True)])
+    description = fields.Text('Description', readonly=True,
+        states={
+            'required': ~Eval('product'),
+            'readonly': STATES['readonly'],
+            },
+        depends=['product'] + DEPENDS)
     party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
         depends=DEPENDS)
     quantity = fields.Float('Quantity', required=True, states=STATES,
         digits=(16, Eval('uom_digits', 2)), depends=DEPENDS + ['uom_digits'])
-    uom = fields.Many2One('product.uom', 'UOM', required=True, select=True,
-        states=STATES, depends=DEPENDS)
+    uom = fields.Many2One('product.uom', 'UOM', select=True,
+        states={
+            'required': Bool(Eval('product')),
+            'readonly': STATES['readonly'],
+            },
+        depends=['product'] + DEPENDS)
     uom_digits = fields.Function(fields.Integer('UOM Digits'),
         'on_change_with_uom_digits')
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
@@ -116,11 +126,17 @@ class PurchaseRequest(ModelSQL, ModelView):
                 where=((model_data.fs_id == 'group_purchase_request')
                     & (model_data.module == 'stock_supply'))))
 
+        # Migration from 4.0: remove required on product and uom
+        tablehandler.not_null_action('product', action='remove')
+        tablehandler.not_null_action('uom', action='remove')
+
     def get_rec_name(self, name):
+        product_name = (self.product.name if self.product else
+            self.description.splitlines()[0])
         if self.warehouse:
-            return "%s@%s" % (self.product.name, self.warehouse.name)
+            return "%s@%s" % (product_name, self.warehouse.name)
         else:
-            return self.product.name
+            return product_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -129,7 +145,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         res.append(('product.template.name', clause[1], names[0]))
         if len(names) != 1 and names[1]:
             res.append(('warehouse', clause[1], names[1]))
-        return res
+        return ['OR', res,
+            ('description',) + tuple(clause[1:]),
+            ]
 
     @staticmethod
     def default_company():
@@ -196,7 +214,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         return [('id', 'in', state_query)]
 
     def get_warehouse_required(self, name):
-        return self.product.type in ('goods', 'assets')
+        return self.product and self.product.type in ('goods', 'assets')
 
     @fields.depends('uom')
     def on_change_with_uom_digits(self, name=None):
@@ -227,7 +245,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         for vals in vlist:
-            for field_name in ('product', 'quantity', 'uom', 'company'):
+            for field_name in ('quantity', 'company'):
                 if vals.get(field_name) is None:
                     cls.raise_user_error('create_request')
         return super(PurchaseRequest, cls).create(vlist)
@@ -271,6 +289,7 @@ class CreatePurchaseAskParty(ModelView):
     'Create Purchase Ask Party'
     __name__ = 'purchase.request.create_purchase.ask_party'
     product = fields.Many2One('product.product', 'Product', readonly=True)
+    description = fields.Text('Description', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     party = fields.Many2One('party.party', 'Supplier', required=True)
 
@@ -301,12 +320,10 @@ class CreatePurchase(Wizard):
             if request.purchase_line:
                 continue
             if not request.party:
-                return {
-                    'product': request.product.id,
-                    'company': request.company.id,
-                    }
+                break
         return {
-            'product': request.product.id,
+            'product': request.product.id if request.product else None,
+            'description': request.description,
             'company': request.company.id,
             }
 
@@ -332,6 +349,7 @@ class CreatePurchase(Wizard):
         '''
         return (
             ('product', request.product),
+            ('description', request.description),
             ('unit', request.uom),
             )
 
@@ -343,18 +361,22 @@ class CreatePurchase(Wizard):
 
         request_ids = Transaction().context['active_ids']
 
-        if (getattr(self.ask_party, 'product', None)
-                and getattr(self.ask_party, 'party', None)
+        if (getattr(self.ask_party, 'party', None)
                 and getattr(self.ask_party, 'company', None)):
             reqs = Request.search([
                     ('id', 'in', request_ids),
+                    ('purchase_line', '=', None),
                     ('party', '=', None),
+                    ('product', '=', (self.ask_party.product.id
+                            if self.ask_party.product else None)),
+                    ('description', '=', self.ask_party.description),
                     ])
             if reqs:
                 Request.write(reqs, {
                         'party': self.ask_party.party.id,
                         })
             self.ask_party.product = None
+            self.ask_party.description = None
             self.ask_party.party = None
             self.ask_party.company = None
 
@@ -416,32 +438,35 @@ class CreatePurchase(Wizard):
         line = Line()
         for f, v in key:
             setattr(line, f, v)
-        line.description = line.product.name
+        if not line.description:
+            line.description = line.product.name
         line.quantity = sum(r.quantity for r in requests)
 
-        with Transaction().set_context(uom=line.unit.id,
-                supplier=purchase.party.id,
-                currency=purchase.currency.id):
-            product_price = Product.get_purchase_price(
-                [line.product], line.quantity)[line.product.id]
+        if not getattr(line, 'unit_price', None):
+            if line.product and line.unit:
+                with Transaction().set_context(uom=line.unit.id,
+                        supplier=purchase.party.id,
+                        currency=purchase.currency.id):
+                    product_price = Product.get_purchase_price(
+                        [line.product], line.quantity)[line.product.id]
+            else:
+                product_price = Decimal(0)
             product_price = product_price.quantize(
                 Decimal(1) / 10 ** Line.unit_price.digits[1])
+            line.unit_price = product_price
 
-        if product_price is None:
-            cls.raise_user_error('missing_price', (line.product.rec_name,),
-                'please_update')
-        line.unit_price = product_price
-
-        taxes = []
-        for tax in line.product.supplier_taxes_used:
-            if purchase.party and purchase.party.supplier_tax_rule:
-                pattern = cls._get_tax_rule_pattern(line, purchase)
-                tax_ids = purchase.party.supplier_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-                continue
-            taxes.append(tax.id)
-        line.taxes = taxes
+        if line.product:
+            taxes = []
+            for tax in line.product.supplier_taxes_used:
+                if purchase.party and purchase.party.supplier_tax_rule:
+                    pattern = cls._get_tax_rule_pattern(line, purchase)
+                    tax_ids = purchase.party.supplier_tax_rule.apply(
+                        tax, pattern)
+                    if tax_ids:
+                        taxes.extend(tax_ids)
+                    continue
+                taxes.append(tax.id)
+            line.taxes = taxes
         return line
 
 

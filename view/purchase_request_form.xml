@@ -6,6 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product"/>
     <field name="product"/>
     <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3" yexpand="0"/>
     <label name="quantity"/>
     <field name="quantity"/>
     <label name="uom"/>
