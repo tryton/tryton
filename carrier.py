@@ -50,6 +50,21 @@ class Carrier(ModelSQL, ModelView):
             return self.carrier_product.cost_price, user.company.currency.id
         return 0, None
 
+    @classmethod
+    def create(cls, *args, **kwargs):
+        pool = Pool()
+        CarrierSelection = pool.get('carrier.selection')
+        carriers = super(Carrier, cls).create(*args, **kwargs)
+        CarrierSelection._get_carriers_cache.clear()
+        return carriers
+
+    @classmethod
+    def delete(cls, *args, **kwargs):
+        pool = Pool()
+        CarrierSelection = pool.get('carrier.selection')
+        super(Carrier, cls).delete(*args, **kwargs)
+        CarrierSelection._get_carriers_cache.clear()
+
 
 class CarrierSelection(MatchMixin, ModelSQL, ModelView):
     'Carrier Selection'
@@ -106,9 +121,14 @@ class CarrierSelection(MatchMixin, ModelSQL, ModelView):
             return Carrier.browse(carriers)
 
         carriers = []
-        for selection in cls.search([]):
-            if selection.match(pattern):
-                carriers.append(selection.carrier)
+        selections = cls.search([])
+        if not selections:
+            with Transaction().set_context(active_test=False):
+                carriers = Carrier.search([])
+        else:
+            for selection in selections:
+                if selection.match(pattern):
+                    carriers.append(selection.carrier)
 
         cls._get_carriers_cache.set(key, map(int, carriers))
         return carriers
