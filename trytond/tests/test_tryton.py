@@ -315,6 +315,7 @@ def drop_db(name=DB_NAME):
     if db_exist(name):
         Database = backend.get('Database')
         database = Database(name)
+        database.close()
 
         with Transaction().start(None, 0, close=True, autocommit=True) \
                 as transaction:
