@@ -774,6 +774,14 @@
         default_get: function() {
             var dfd = jQuery.Deferred();
             var promises = [];
+            // Ensure promisses is filled before default_get is resolved
+            for (var fname in this.model.fields) {
+                var field = this.model.fields[fname];
+                if (field.description.autocomplete &&
+                        field.description.autocomplete.length > 0) {
+                    promises.push(this.do_autocomplete(fname));
+                }
+            }
             if (!jQuery.isEmptyObject(this.model.fields)) {
                 var prm = this.model.execute('default_get',
                         [Object.keys(this.model.fields)], this.get_context());
@@ -792,18 +800,11 @@
                                 this.group.parent.id;
                         }
                     }
-                    this.set_default(values);
+                    promises.push(this.set_default(values));
                     jQuery.when.apply(jQuery, promises).then(function() {
                         dfd.resolve(values);
                     });
                 }.bind(this));
-            }
-            for (var fname in this.model.fields) {
-                var field = this.model.fields[fname];
-                if (field.description.autocomplete &&
-                        field.description.autocomplete.length > 0) {
-                    promises.push(this.do_autocomplete(fname));
-                }
             }
             return dfd;
         },
