@@ -430,7 +430,7 @@ class ProductsByLocationsContext(ModelView):
     @fields.depends('forecast_date')
     def on_change_with_stock_date_end(self, name=None):
         if self.forecast_date is None:
-            return datetime.datetime.max
+            return datetime.date.max
         return self.forecast_date
 
 
