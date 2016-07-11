@@ -865,23 +865,18 @@ class ViewTree(View):
             except TypeError:
                 # Outside row
                 return False
-            selection = treeview.get_selection()
-            if selection.get_mode() == gtk.SELECTION_SINGLE:
-                model = selection.get_selected()[0]
-            elif selection.get_mode() == gtk.SELECTION_MULTIPLE:
-                model = selection.get_selected_rows()[0]
-            record = model.get_value(model.get_iter(path), 0)
-            group = record.group
             menu = gtk.Menu()
-            menu.popup(None, None, None, event.button, event.time)
-
-            def pop(menu, group, record):
-                copy_item = gtk.ImageMenuItem('gtk-copy')
-                copy_item.connect('activate', lambda x: self.on_copy())
-                menu.append(copy_item)
+            copy_item = gtk.ImageMenuItem('gtk-copy')
+            copy_item.connect('activate', lambda x: self.on_copy())
+            menu.append(copy_item)
+            if self.editable:
                 paste_item = gtk.ImageMenuItem('gtk-paste')
                 paste_item.connect('activate', lambda x: self.on_paste())
                 menu.append(paste_item)
+            menu.show_all()
+            menu.popup(None, None, None, event.button, event.time)
+
+            def pop(menu, group, record):
                 # Don't activate actions if parent is modified
                 parent = record.parent if record else None
                 while parent:
@@ -908,8 +903,18 @@ class ViewTree(View):
                     label = field.attrs['string']
                     populate(menu, model, record_id, title=label, field=field)
                 menu.show_all()
-            # Delay filling of popup as it can take time
-            gobject.idle_add(pop, menu, group, record)
+
+            selection = treeview.get_selection()
+            if selection.count_selected_rows() == 1:
+                group = self.screen.group
+                if selection.get_mode() == gtk.SELECTION_SINGLE:
+                    model = selection.get_selected()[0]
+                elif selection.get_mode() == gtk.SELECTION_MULTIPLE:
+                    model = selection.get_selected_rows()[0]
+                record = model.get_value(model.get_iter(path), 0)
+                # Delay filling of popup as it can take time
+                gobject.idle_add(pop, menu, group, record)
+            return True  # Don't change the selection
         elif event.button == 2:
             event.button = 1
             event.state |= gtk.gdk.MOD1_MASK
