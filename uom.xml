@@ -67,9 +67,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Unit</field>
             <field name="symbol">u</field>
             <field name="category" ref="uom_cat_unit"/>
-            <field name="rate" eval="1"/>
-            <field name="factor" eval="1"/>
-            <field name="rounding" eval="1"/>
+            <field name="rate" eval="1."/>
+            <field name="factor" eval="1."/>
+            <field name="rounding" eval="1."/>
             <field name="digits" eval="0"/>
         </record>
 
@@ -80,21 +80,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Kilogram</field>
             <field name="symbol">kg</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="1"/>
-            <field name="rate" eval="1"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
         </record>
         <record model="product.uom" id="uom_gram">
             <field name="name">Gram</field>
             <field name="symbol">g</field>
             <field name="category" ref="uom_cat_weight"/>
             <field name="factor" eval="0.001"/>
-            <field name="rate" eval="1000"/>
+            <field name="rate" eval="1000."/>
         </record>
         <record model="product.uom" id="uom_carat">
             <field name="name">Carat</field>
             <field name="symbol">c</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="5000"/>
+            <field name="factor" eval="5000."/>
             <field name="rate" eval="0.0002"/>
         </record>
         <record model="product.uom" id="uom_pound">
@@ -120,34 +120,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="symbol">s</field>
             <field name="category" ref="uom_cat_time"/>
             <field name="factor" eval="round(1.0 / 3600, 12)"/>
-            <field name="rate" eval="3600"/>
+            <field name="rate" eval="3600."/>
         </record>
         <record model="product.uom" id="uom_minute">
             <field name="name">Minute</field>
             <field name="symbol">min</field>
             <field name="category" ref="uom_cat_time"/>
             <field name="factor" eval="round(1.0 / 60, 12)"/>
-            <field name="rate" eval="60"/>
+            <field name="rate" eval="60."/>
         </record>
         <record model="product.uom" id="uom_hour">
             <field name="name">Hour</field>
             <field name="symbol">h</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="factor" eval="1"/>
-            <field name="rate" eval="1"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
         </record>
         <record model="product.uom" id="uom_work_day">
             <field name="name">Work Day</field>
             <field name="symbol">wd</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="factor" eval="8"/>
+            <field name="factor" eval="8."/>
             <field name="rate" eval="0.125"/>
         </record>
         <record model="product.uom" id="uom_day">
             <field name="name">Day</field>
             <field name="symbol">d</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="factor" eval="24"/>
+            <field name="factor" eval="24."/>
             <field name="rate" eval="round(1.0 / 24, 12)"/>
         </record>
 
@@ -159,14 +159,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Meter</field>
             <field name="symbol">m</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="factor" eval="1"/>
-            <field name="rate" eval="1"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
         </record>
         <record model="product.uom" id="uom_kilometer">
             <field name="name">Kilometer</field>
             <field name="symbol">km</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="factor" eval="1000"/>
+            <field name="factor" eval="1000."/>
             <field name="rate" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_centimeter">
@@ -174,14 +174,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="symbol">cm</field>
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.01"/>
-            <field name="rate" eval="100"/>
+            <field name="rate" eval="100."/>
         </record>
         <record model="product.uom" id="uom_millimeter">
             <field name="name">Millimeter</field>
             <field name="symbol">mm</field>
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.001"/>
-            <field name="rate" eval="1000"/>
+            <field name="rate" eval="1000."/>
         </record>
         <record model="product.uom" id="uom_foot">
             <field name="name">Foot</field>
@@ -219,22 +219,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cubic meter</field>
             <field name="symbol">m³</field>
             <field name="category" ref="uom_cat_volume"/>
-            <field name="factor" eval="1000"/>
+            <field name="factor" eval="1000."/>
             <field name="rate" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_liter">
             <field name="name">Liter</field>
             <field name="symbol">l</field>
             <field name="category" ref="uom_cat_volume"/>
-            <field name="factor" eval="1"/>
-            <field name="rate" eval="1"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
         </record>
         <record model="product.uom" id="uom_cubic_centimeter">
             <field name="name">Cubic centimeter</field>
             <field name="symbol">cm³</field>
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="0.001"/>
-            <field name="rate" eval="1000"/>
+            <field name="rate" eval="1000."/>
         </record>
         <record model="product.uom" id="uom_cubic_inch">
             <field name="name">Cubic inch</field>
@@ -265,28 +265,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Square meter</field>
             <field name="symbol">m²</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="1"/>
-            <field name="rate" eval="1"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
         </record>
         <record model="product.uom" id="uom_square_centimeter">
             <field name="name">Square centimeter</field>
             <field name="symbol">cm²</field>
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="0.0001"/>
-            <field name="rate" eval="10000"/>
+            <field name="rate" eval="10000."/>
         </record>
         <record model="product.uom" id="uom_are">
             <field name="name">Are</field>
             <field name="symbol">a</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="100"/>
+            <field name="factor" eval="100."/>
             <field name="rate" eval="0.01"/>
         </record>
         <record model="product.uom" id="uom_hectare">
             <field name="name">Hectare</field>
             <field name="symbol">ha</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="10000"/>
+            <field name="factor" eval="10000."/>
             <field name="rate" eval="0.0001"/>
         </record>
         <record model="product.uom" id="uom_square_inch">
