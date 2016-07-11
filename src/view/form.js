@@ -2940,7 +2940,8 @@
             }).appendTo(this.el);
             this.size = jQuery('<input/>', {
                 type: 'input',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm',
+                'readonly': true
             }).appendTo(group);
 
             this.toolbar('input-group-btn').appendTo(group);
