@@ -292,10 +292,11 @@ class PartyIdentifier(ModelSQL, ModelView):
         super(PartyIdentifier, self).pre_validate()
         self.check_code()
 
+    @fields.depends('type', 'party', 'code')
     def check_code(self):
         if self.type == 'eu_vat':
             if not vat.is_valid(self.code):
-                if self.party.id > 0:
+                if self.party and self.party.id > 0:
                     party = self.party.rec_name
                 else:
                     party = ''
