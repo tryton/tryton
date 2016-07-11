@@ -1125,8 +1125,8 @@ class ViewTree(View):
 
     def set_cursor(self, new=False, reset_view=True):
         self.treeview.grab_focus()
-        if self.screen.current_record:
-            model = self.treeview.get_model()
+        model = self.treeview.get_model()
+        if self.screen.current_record and model:
             path = model.on_get_path(self.screen.current_record)
             if model.get_flags() & gtk.TREE_MODEL_LIST_ONLY:
                 path = (path[0],)
