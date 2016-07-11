@@ -136,10 +136,24 @@ class Party(ModelSQL, ModelView):
 
     @classmethod
     def search_vat_code(cls, name, clause):
-        return [
-            ('identifiers.code',) + tuple(clause[1:]),
-            ('identifiers.type', 'in', cls._vat_types()),
+        _, operator, value = clause
+        domain = [
+            ('identifiers', 'where', [
+                    ('code', operator, value),
+                    ('type', 'in', cls._vat_types()),
+                    ]),
             ]
+        # Add party without vat code
+        if ((operator == '=' and value is None)
+                or (operator == 'in' and None in value)):
+            domain = ['OR',
+                domain, [
+                    ('identifiers', 'not where', [
+                            ('type', 'in', cls._vat_types()),
+                            ]),
+                    ],
+                ]
+        return domain
 
     def get_full_name(self, name):
         return self.name
