@@ -5,7 +5,6 @@ from .field import *
 from .boolean import *
 from .integer import *
 from .char import *
-from .sha import *
 from .text import *
 from .float import *
 from .numeric import *
