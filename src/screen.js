@@ -775,7 +775,7 @@
                 group.on_write = group.on_write.filter(function(e, i, a) {
                     return i == a.indexOf(e);
                 });
-                if (this.group.parent) {
+                if (this.group.parent && !group.parent) {
                     group.parent = this.group.parent;
                 }
             }
