@@ -1152,7 +1152,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if self.type == 'out':
                 line1.debit, line1.credit = -amount, 0
             else:
-                line1.debit, line2.credit = 0, -amount
+                line1.debit, line1.credit = 0, -amount
 
         line2.debit, line2.credit = line1.credit, line1.debit
         if line2.debit:
