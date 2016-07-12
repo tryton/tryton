@@ -45,7 +45,11 @@
             this.domain = kwargs.domain || null;
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
-            this.title = kwargs.title || '';
+            var title_prm = jQuery.when(kwargs.title || '');
+            title_prm.then(function(title) {
+                this.title = title;
+            }.bind(this));
+
             this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
             this.info_bar = new Sao.Window.InfoBar();
@@ -216,7 +220,7 @@
 
 
             switch_prm.done(function() {
-                dialog.add_title(this.title);
+                title_prm.done(dialog.add_title.bind(dialog));
                 dialog.body.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
             }.bind(this));
@@ -384,7 +388,7 @@
         init: function(record, callback) {
             this.resource = record.model.name + ',' + record.id;
             this.attachment_callback = callback;
-            var title = Sao.i18n.gettext('Attachments (%1)', record.rec_name);
+            var context = jQuery.extend({}, record.get_context());
             var screen = new Sao.Screen('ir.attachment', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
@@ -393,6 +397,9 @@
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
+            });
+            var title = record.rec_name().then(function(rec_name) {
+                return Sao.i18n.gettext('Attachments (%1)', rec_name);
             });
             Sao.Window.Attachment._super.init.call(this, screen, this.callback,
                 {view_type: 'tree', title: title});
@@ -416,7 +423,7 @@
         init: function(record, callback) {
             this.resource = record.model.name + ',' + record.id;
             this.note_callback = callback;
-            var title = Sao.i18n.gettext('Notes (%1)', record.rec_name);
+            var context = jQuery.extend({}, record.get_context());
             var screen = new Sao.Screen('ir.note', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
@@ -426,8 +433,11 @@
             screen.switch_view().done(function() {
                 screen.search_filter();
             });
+            var title = record.rec_name().then(function(rec_name) {
+                return Sao.i18n.gettext('Notes (%1)', rec_name);
+            });
             Sao.Window.Note._super.init.call(this, screen, this.callback,
-                    {view_type: 'tree', title: title});
+                {view_type: 'tree', title: title});
         },
         callback: function(result) {
             var prm = jQuery.when();
