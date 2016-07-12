@@ -1501,9 +1501,9 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             ],
         states={
             'invisible': Eval('type') != 'line',
-            'readonly': _states['readonly'],
+            'readonly': _states['readonly'] | ~Bool(Eval('account')),
             },
-        depends=['type', 'invoice_type', 'company'] + _depends)
+        depends=['type', 'invoice_type', 'company', 'account'] + _depends)
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
