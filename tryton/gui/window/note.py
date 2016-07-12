@@ -14,7 +14,7 @@ class Note(WinForm):
     def __init__(self, record, callback=None):
         self.resource = '%s,%s' % (record.model_name, record.id)
         self.note_callback = callback
-        title = _('Notes (%s)') % (record.rec_name)
+        title = _('Notes (%s)') % (record.rec_name())
         screen = Screen('ir.note', domain=[
                 ('resource', '=', self.resource),
                 ], mode=['tree', 'form'], exclude_field='resource')
