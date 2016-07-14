@@ -708,7 +708,7 @@
             Sao.View.Form.Label._super.init.call(this, attributes);
             this.el = this.label_el = jQuery('<label/>', {
                 text: text,
-                'class': this.class_ + ' form-label'
+                'class': this.class_
             });
         }
     });
