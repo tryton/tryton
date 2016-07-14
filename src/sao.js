@@ -339,7 +339,8 @@ var Sao = {};
             size = size || 'sm';
             this.modal = jQuery('<div/>', {
                 'class': class_ + ' modal fade',
-                'role': 'dialog'
+                'role': 'dialog',
+                'data-backdrop': 'static',
             });
             this.content = jQuery('<form/>', {
                 'class': 'modal-content'
