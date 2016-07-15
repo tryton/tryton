@@ -93,6 +93,8 @@ class StateView(State):
         if default:
             defaults.update(default(fields))
             for field_name, value in defaults.items():
+                if '.' in field_name:
+                    continue
                 field = Model_._fields[field_name]
                 field_rec_name = field_name + '.rec_name'
                 if (value
