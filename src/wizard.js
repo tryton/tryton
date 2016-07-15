@@ -242,45 +242,45 @@
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
-            this.dialog.on('hidden.bsd.modal', function(event) {
-                jQuery(this).remove();
-            });
-            this.dialog.modal('hide');
-            var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
-            var is_menu = false;
-            var screen;
-            if (!dialog) {
-                dialog = Sao.Tab.tabs.get_current();
-                if (dialog) {
-                    if (dialog.screen &&
-                           dialog.screen.model_name != this.model) {
+            this.dialog.on('hidden.bs.modal', function(event) {
+                this.dialog.remove();
+                var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
+                var is_menu = false;
+                var screen;
+                if (!dialog) {
+                    dialog = Sao.Tab.tabs.get_current();
+                    if (dialog) {
+                        if (dialog.screen &&
+                               dialog.screen.model_name != this.model) {
+                            is_menu = true;
+                            screen = Sao.main_menu_screen;
+                        }
+                    } else {
                         is_menu = true;
                         screen = Sao.main_menu_screen;
                     }
-                } else {
-                    is_menu = true;
-                    screen = Sao.main_menu_screen;
                 }
-            }
-            if (dialog && dialog.screen) {
-                screen = dialog.screen;
-            }
-            if (screen) {
-                if (screen.current_record && !is_menu) {
-                    var ids;
-                    if (screen.model_name == this.model) {
-                        ids = this.ids;
-                    } else {
-                        // Wizard run form a children record so reload parent
-                        // record
-                        ids = [screen.current_record.id];
+                if (dialog && dialog.screen) {
+                    screen = dialog.screen;
+                }
+                if (screen) {
+                    if (screen.current_record && !is_menu) {
+                        var ids;
+                        if (screen.model_name == this.model) {
+                            ids = this.ids;
+                        } else {
+                            // Wizard run form a children record so reload
+                            // parent record
+                            ids = [screen.current_record.id];
+                        }
+                        screen.reload(ids, true);
                     }
-                    screen.reload(ids, true);
+                    if (action) {
+                        screen.client_action(action);
+                    }
                 }
-                if (action) {
-                    screen.client_action(action);
-                }
-            }
+            }.bind(this));
+            this.dialog.modal('hide');
         },
         end: function() {
             return Sao.Wizard.Dialog._super.end.call(this).then(
