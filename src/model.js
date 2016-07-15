@@ -2296,8 +2296,8 @@
             return data;
         },
         get_data: function(record) {
-            var prm;
-            var data = record._values[this.name] || 0;
+            var data = record._values[this.name] || [];
+            var prm = jQuery.when(data);
             if (!(data instanceof Uint8Array)) {
                 if (record.id < 0) {
                     return prm;
@@ -2307,8 +2307,6 @@
                     context).then(function(data) {
                         return data[0][this.name];
                     }.bind(this));
-            } else {
-                prm = jQuery.when(data);
             }
             return prm;
         }
