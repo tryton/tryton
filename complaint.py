@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from collections import defaultdict
 
 from trytond.model import ModelSQL, ModelView, Workflow, fields
-from trytond.pyson import Eval, If, Bool, Id
+from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond import backend
@@ -109,14 +109,10 @@ class Complaint(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(['draft']),
                     },
                 'approve': {
-                    'invisible': (~Eval('state').in_(['waiting'])
-                        & Eval('context', {}).get('groups', []).contains(
-                            Id('sale', 'group_sale_admin'))),
+                    'invisible': ~Eval('state').in_(['waiting']),
                     },
                 'reject': {
-                    'invisible': (~Eval('state').in_(['waiting'])
-                        & Eval('context', {}).get('groups', []).contains(
-                            Id('sale', 'group_sale_admin'))),
+                    'invisible': ~Eval('state').in_(['waiting']),
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(['approved']),
