@@ -3,7 +3,7 @@
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 __all__ = ['Invoice', 'InvoiceLine',
@@ -25,8 +25,6 @@ class Invoice:
         cls._buttons.update({
                 'recall_deposit': {
                     'invisible': Eval('state') != 'draft',
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('account', 'group_account')),
                     },
                 })
 
