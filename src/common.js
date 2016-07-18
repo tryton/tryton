@@ -443,7 +443,7 @@
             return prm;
         },
         get: function(model) {
-            return this._access[model];
+            return this._access[model] || {};
         }
     });
     Sao.common.MODELACCESS = new Sao.common.ModelAccess();
