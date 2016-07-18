@@ -15,7 +15,7 @@ from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
 from trytond import backend
-from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
+from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -205,14 +205,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancel')),
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('purchase', 'group_purchase')),
                     },
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
                         | (Eval('state') == 'cancel')),
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('purchase', 'group_purchase')),
                     },
                 })
         # The states where amounts are cached

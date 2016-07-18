@@ -276,6 +276,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase"/>
         </record>
 
+        <record model="ir.model.button"
+                id="purchase_hande_invoice_exception_button">
+            <field name="name">handle_invoice_exception</field>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="purchase_hande_invoice_exception_button_group_purchase">
+            <field name="button" ref="purchase_hande_invoice_exception_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="ir.model.button"
+                id="purchase_hande_shipment_exception_button">
+            <field name="name">handle_shipment_exception</field>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="purchase_hande_shipment_exception_button_group_purchase">
+            <field
+                name="button" ref="purchase_hande_shipment_exception_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
         <record model="ir.sequence.type" id="sequence_type_purchase">
             <field name="name">Purchase</field>
             <field name="code">purchase.purchase</field>
