@@ -599,8 +599,6 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('stock', 'group_stock')),
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -941,8 +939,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('stock', 'group_stock')),
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -1996,8 +1992,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('stock', 'group_stock')),
                     },
                 'assign_try': {},
                 'assign_force': {},

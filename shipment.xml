@@ -688,6 +688,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
+        <record model="ir.model.button" id="shipment_out_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_out_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_out_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
         <record model="ir.model.access" id="access_shipment_internal">
             <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="perm_read" eval="False"/>
@@ -776,6 +787,18 @@ this repository contains the full copyright notices and license terms. -->
             id="shipment_internal_assign_force_button_group_stock_force_assignment">
             <field name="button" ref="shipment_internal_assign_force_button"/>
             <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="shipment_internal_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_internal_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_internal_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
         </record>
 
         <record model="ir.model.access" id="access_shipment_out_return">
@@ -936,6 +959,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
+        <record model="ir.model.button"
+                id="shipment_in_return_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_in_return_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_in_return_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_in">
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
