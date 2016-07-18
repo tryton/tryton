@@ -85,9 +85,9 @@ class Main(object):
             self.macapp.connect("NSApplicationBlockTermination",
                 self.sig_close)
 
-        gtk.accel_map_add_entry('<tryton>/File/Connect', gtk.keysyms.O,
+        gtk.accel_map_add_entry('<tryton>/Connection/Connect', gtk.keysyms.O,
                 gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/File/Quit', gtk.keysyms.Q,
+        gtk.accel_map_add_entry('<tryton>/Connection/Quit', gtk.keysyms.Q,
                 gtk.gdk.CONTROL_MASK)
         if sys.platform != 'darwin':
             gtk.accel_map_add_entry('<tryton>/User/Reload Menu', gtk.keysyms.T,
