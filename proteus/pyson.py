@@ -58,6 +58,8 @@ class PYSON(object):
         else:
             return And(self, other)
 
+    __rand__ = __and__
+
     def __or__(self, other):
         if (isinstance(other, PYSON)
                 and other.types() != set([bool])):
@@ -69,6 +71,8 @@ class PYSON(object):
             return Or(Bool(self), other)
         else:
             return Or(self, other)
+
+    __ror__ = __or__
 
     def __eq__(self, other):
         return Equal(self, other)
