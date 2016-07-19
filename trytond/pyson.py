@@ -313,10 +313,10 @@ class Greater(PYSON):
         super(Greater, self).__init__()
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
-                assert i.types().issubset(set([int, long, float])), \
+                assert i.types().issubset({int, long, float, type(None)}), \
                     'statement must be an integer or a float'
             else:
-                assert isinstance(i, (int, long, float)), \
+                assert isinstance(i, (int, long, float, type(None))), \
                     'statement must be an integer or a float'
         if isinstance(equal, PYSON):
             assert equal.types() == set([bool])
@@ -344,6 +344,8 @@ class Greater(PYSON):
     @staticmethod
     def _convert(dct):
         for i in ('s1', 's2'):
+            if dct[i] is None:
+                dct[i] = 0.0
             if not isinstance(dct[i], (int, long, float)):
                 dct = dct.copy()
                 dct[i] = float(dct[i])

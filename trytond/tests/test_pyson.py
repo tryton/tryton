@@ -243,6 +243,12 @@ class PYSONTestCase(unittest.TestCase):
         eval = pyson.PYSONEncoder().encode(pyson.Greater(1, 1, True))
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(None, 1))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(1, None))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
         self.assertEqual(repr(pyson.Greater(1, 0)), 'Greater(1, 0, False)')
 
     def test_Less(self):
@@ -277,6 +283,12 @@ class PYSONTestCase(unittest.TestCase):
 
         eval = pyson.PYSONEncoder().encode(pyson.Less(1, 1, True))
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(None, 1))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(1, None))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         self.assertEqual(repr(pyson.Less(0, 1)), 'Less(0, 1, False)')
 

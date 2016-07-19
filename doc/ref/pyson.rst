@@ -126,6 +126,8 @@ true, then returns also true when both values of statements named by
 ``statement1`` and ``statement2`` are equal. In this case
 :class:`Greater` works as a *greater-than or equal* operator.
 
+.. note:: `None` value is replaced by `0` for the comparison.
+
 .. class:: Less(statement1, statement2[, equal])
 
 A :class:`Less` object represents the PYSON ``Less()``
@@ -136,6 +138,8 @@ returns false. Is the value of the variable named ``equal`` is true,
 then returns also true when both values of the statements named by
 ``statement1`` and ``statement2`` are equal. In this case
 :class:`Less`  works as a *less-than or equal* operator.
+
+.. note:: `None` value is replaced by `0` for the comparison.
 
 .. class:: If(condition, then_statement, else_statement)
 
