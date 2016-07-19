@@ -877,7 +877,9 @@ class Tax(ModelSQL, ModelView):
         '''
         Return a list of taxes sorted
         '''
-        return sorted(taxes, key=lambda t: (t.sequence, t.id), reverse=reverse)
+        def key(tax):
+            return 0 if tax.sequence is None else 1, tax.sequence or 0, tax.id
+        return sorted(taxes, key=key, reverse=reverse)
 
     @classmethod
     def compute(cls, taxes, price_unit, quantity, date=None):
