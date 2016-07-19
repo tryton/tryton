@@ -104,7 +104,7 @@
         init: function(value) {
             Sao.PYSON.Not._super.init.call(this);
             if (value instanceof Sao.PYSON.PYSON) {
-                if (jQuery(value.types()).not(['boolean']).length ||
+                if (jQuery(value.types()).not(['boolean', 'object']).length ||
                     jQuery(['boolean']).not(value.types()).length) {
                     throw 'value must be boolean';
                     }
@@ -269,7 +269,7 @@
                         throw 'statement must be an integer or a float';
                     }
                 } else {
-                    if (typeof statement != 'number') {
+                    if (!~['number', 'object'].indexOf(typeof statement)) {
                         throw 'statement must be an integer or a float';
                     }
                 }
