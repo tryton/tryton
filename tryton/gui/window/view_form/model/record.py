@@ -461,6 +461,9 @@ class Record(SignalEvent):
         for fieldname, value in later.iteritems():
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
+        for fieldname, fieldinfo in self.group.fields.iteritems():
+            if fieldinfo.attrs.get('autocomplete'):
+                self.do_autocomplete(fieldname)
         if signal:
             self.signal('record-changed')
 

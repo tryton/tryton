@@ -1,3 +1,4 @@
+* Call autocompletion when setting record value
 * Remove database management
 * Limit readonly state for xxx2Many
 * Show records names in relate window title
