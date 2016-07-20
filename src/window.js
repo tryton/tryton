@@ -613,14 +613,17 @@
                 }.bind(this));
             };
             var set_preferences = function(preferences) {
+                var prm;
                 this.screen.current_record.cancel();
-                this.screen.current_record.set(preferences);
+                prm = this.screen.current_record.set(preferences);
                 this.screen.current_record.id =
                     this.screen.model.session.user_id;
-                this.screen.current_record.validate(null, true).then(
+                prm.then(function() {
+                    this.screen.current_record.validate(null, true).then(
                         function() {
                             this.screen.display(true);
                         }.bind(this));
+                }.bind(this));
                 dialog.body.append(this.screen.screen_container.el);
                 this.el.modal('show');
             };
