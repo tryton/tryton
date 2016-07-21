@@ -311,7 +311,8 @@ class Template:
         category_exists = table.column_exist('category')
 
         # Migration from 3.8: rename account_category into accounts_category
-        if table.column_exist('account_category'):
+        if (table.column_exist('account_category')
+                and not table.column_exist('accounts_category')):
             table.column_rename('account_category', 'accounts_category')
 
         super(Template, cls).__register__(module_name)
