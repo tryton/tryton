@@ -1481,33 +1481,39 @@
                         .then(reset_state(record));
                     return;
                 }
-
-                // TODO confirm
-                record = this.current_record;
-                if (attributes.type === 'instance') {
-                    var args = record.expr_eval(attributes.change || []);
-                    var values = record._get_on_change_args(args);
-                    record.model.execute(attributes.name, [values], this.context)
-                        .then(function(changes) {
+                var prm = jQuery.when();
+                if (attributes.confirm !== undefined) {
+                    prm = Sao.common.sur.run(attributes.confirm);
+                }
+                prm.then(function() {
+                    var record = this.current_record;
+                    if (attributes.type === 'instance') {
+                        var args = record.expr_eval(attributes.change || []);
+                        var values = record._get_on_change_args(args);
+                        record.model.execute(attributes.name, [values],
+                                this.context).then(function(changes) {
                             record.set_on_change(changes);
-                            record.group.root_group().screens.forEach(function(screen) {
-                                screen.display();
+                            record.group.root_group().screens.forEach(
+                                function(screen) {
+                                    screen.display();
                             });
                         });
-                } else {
-                    record.save(false).done(function() {
-                        var context = jQuery.extend({}, this.context);
-                        context._timestamp = {};
-                        ids = [];
-                        for (i = 0; i < selected_records.length; i++) {
-                            record = selected_records[i];
-                            jQuery.extend(context._timestamp, record.get_timestamp());
-                            ids.push(record.id);
-                        }
-                        record.model.execute(attributes.name,
-                            [ids], context).then(process_action.bind(this));
-                    }.bind(this));
-                }
+                    } else {
+                        record.save(false).done(function() {
+                            var context = jQuery.extend({}, this.context);
+                            context._timestamp = {};
+                            ids = [];
+                            for (i = 0; i < selected_records.length; i++) {
+                                record = selected_records[i];
+                                jQuery.extend(context._timestamp,
+                                    record.get_timestamp());
+                                ids.push(record.id);
+                            }
+                            record.model.execute(attributes.name,
+                                [ids], context).then(process_action.bind(this));
+                        }.bind(this));
+                    }
+                }.bind(this));
             }.bind(this));
         },
         client_action: function(action) {
