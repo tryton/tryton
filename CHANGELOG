@@ -1,3 +1,4 @@
+* Manage confirm attribute on buttons
 * Call autocompletion when setting record value
 * Limit readonly state for xxx2Many
 * Simplify login with single database 
