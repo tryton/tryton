@@ -867,15 +867,15 @@ class Model(object):
             if definition['type'] in ('one2many', 'many2many'):
                 if value and len(value) and isinstance(value[0], (int, long)):
                     self._values[field] = value
-                    continue
-                relation = Model.get(definition['relation'], self._config)
-                records = []
-                for vals in (value or []):
-                    record = relation()
-                    record._default_set(vals)
-                    records.append(record)
-                self._values[field] = ModelList(definition, records, self,
-                    field)
+                else:
+                    relation = Model.get(definition['relation'], self._config)
+                    records = []
+                    for vals in (value or []):
+                        record = relation()
+                        record._default_set(vals)
+                        records.append(record)
+                    self._values[field] = ModelList(definition, records, self,
+                        field)
             else:
                 self._values[field] = value
             fieldnames.append(field)
