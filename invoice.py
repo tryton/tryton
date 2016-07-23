@@ -2431,17 +2431,18 @@ class PayInvoiceAsk(ModelView):
             }, depends=['type'])
     company = fields.Many2One('company.company', 'Company', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
+    date = fields.Date('Date', readonly=True)
 
     @staticmethod
     def default_type():
         return 'partial'
 
     @fields.depends('lines', 'amount', 'currency', 'currency_writeoff',
-        'invoice', 'payment_lines')
+        'invoice', 'payment_lines', 'date')
     def on_change_lines(self):
         Currency = Pool().get('currency.currency')
 
-        with Transaction().set_context(date=self.invoice.currency_date):
+        with Transaction().set_context(date=self.date):
             amount = Currency.compute(self.currency, self.amount,
                 self.currency_writeoff)
 
