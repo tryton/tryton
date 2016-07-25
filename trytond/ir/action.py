@@ -147,13 +147,16 @@ class ActionKeyword(ModelSQL, ModelView):
     def check_wizard_model(self):
         ActionWizard = Pool().get('ir.action.wizard')
         if self.action.type == 'ir.action.wizard':
-            action_wizard, = ActionWizard.search([
+            action_wizards = ActionWizard.search([
                 ('action', '=', self.action.id),
                 ], limit=1)
-            if action_wizard.model:
-                if self.model.__name__ != action_wizard.model:
-                    self.raise_user_error('wrong_wizard_model', (
-                            action_wizard.rec_name,))
+            # could be empty when copying an action
+            if action_wizards:
+                action_wizard, = action_wizards
+                if action_wizard.model:
+                    if self.model.__name__ != action_wizard.model:
+                        self.raise_user_error('wrong_wizard_model', (
+                                action_wizard.rec_name,))
 
     @staticmethod
     def _convert_vals(vals):
