@@ -1712,7 +1712,7 @@
             var record = this.record();
             var value = record.field_get(this.field_name);
 
-            if ((evt.data == 'secondary') &&
+            if ((evt && evt.data == 'secondary') &&
                     !this._readonly &&
                     this.has_target(value)) {
                 this.record().field_set_client(this.field_name,
