@@ -1058,7 +1058,7 @@
             }))).appendTo(this.date);
             this.date.datetimepicker();
             this.date.css('width', this._width);
-            this.date.on('dp.change', this.focus_out.bind(this));
+            this.date.on('dp.hide', this.focus_out.bind(this));
         },
         get_format: function(record, field) {
             return field.date_format(record);
@@ -3647,7 +3647,7 @@
             this.input.datetimepicker({
                 'format': Sao.common.moment_format(this.format)
             });
-            this.input.on('dp.change',
+            this.input.on('dp.hide',
                     this.parent_widget.focus_out.bind(this.parent_widget));
         },
         get_value: function() {
