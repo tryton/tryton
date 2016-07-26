@@ -2517,7 +2517,6 @@ class PayInvoice(Wizard):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
-        Line = pool.get('account.move.line')
 
         default = {}
         invoice = Invoice(Transaction().context['active_id'])
@@ -2545,16 +2544,6 @@ class PayInvoice(Wizard):
 
         default['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
-
-        default['amount_writeoff'] = Decimal('0.0')
-        for line in Line.browse(default['lines']):
-            default['amount_writeoff'] += line.debit - line.credit
-        for line in Line.browse(default['payment_lines']):
-            default['amount_writeoff'] += line.debit - line.credit
-        if invoice.type == 'in':
-            default['amount_writeoff'] = - default['amount_writeoff'] - amount
-        else:
-            default['amount_writeoff'] = default['amount_writeoff'] - amount
 
         default['currency_writeoff'] = invoice.company.currency.id
         default['currency_digits_writeoff'] = invoice.company.currency.digits
