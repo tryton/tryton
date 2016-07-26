@@ -1439,7 +1439,7 @@
                     if (!data) {
                         img_url = null;
                     } else {
-                        blob = new Blob([data[0][this.field.name]]);
+                        blob = new Blob([data]);
                         img_url = window.URL.createObjectURL(blob);
                     }
                     cell.attr('src', img_url);
