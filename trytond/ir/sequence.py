@@ -150,7 +150,7 @@ class Sequence(ModelSQL, ModelView):
 
     @staticmethod
     def default_last_timestamp():
-        return 0.0
+        return 0
 
     @staticmethod
     def default_code():
@@ -248,7 +248,8 @@ class Sequence(ModelSQL, ModelView):
 
         for sequence in sequences:
             next_timestamp = cls._timestamp(sequence)
-            if sequence.last_timestamp > next_timestamp:
+            if (sequence.last_timestamp is not None
+                    and sequence.last_timestamp > next_timestamp):
                 cls.raise_user_error('future_last_timestamp', (
                         sequence.rec_name,))
 
