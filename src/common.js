@@ -1310,7 +1310,7 @@
                     }
                 }
                 return results;
-            };
+            }.bind(this);
 
             var complete_datetime = function() {
                 return [Sao.Date(), Sao.DateTime().utc()];
