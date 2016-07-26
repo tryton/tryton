@@ -755,6 +755,25 @@ def test_complete_selection():
         assert list(complete_value(field_with_empty, value)) == result
 
 
+def test_complete_reference():
+    field = {
+        'type': 'reference',
+        'selection': [
+            ('spam', 'Spam'),
+            ('ham', 'Ham'),
+            ('', ''),
+            ],
+        }
+    for value, result in (
+            ('s', ['%spam%']),
+            ('test', []),
+            ('', ['%spam%', '%ham%', '%']),
+            (None, ['%spam%', '%ham%', '%']),
+            (['spam', 'h'], [['spam', 'ham']]),
+            ):
+        assert list(complete_value(field, value)) == result
+
+
 def parenthesize(tokens):
     "Nest tokens according to parenthesis"
     for token in tokens:
