@@ -9,7 +9,6 @@ import logging
 import sys
 import locale
 import gtk
-import pkg_resources
 
 from tryton.exceptions import TrytonError
 from tryton import __version__
@@ -178,6 +177,8 @@ elif (os.name == 'mac'
 
 PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'data', 'pixmaps', 'tryton')
 if not os.path.isdir(PIXMAPS_DIR):
+    # do not import when frozen
+    import pkg_resources
     PIXMAPS_DIR = pkg_resources.resource_filename(
         'tryton', 'data/pixmaps/tryton')
 

@@ -7,7 +7,6 @@ import gettext
 import logging
 import gtk
 import sys
-import pkg_resources
 
 from tryton.config import CURRENT_DIR
 
@@ -156,6 +155,8 @@ def setlang(lang=None, locale_dict=None):
     "Set language"
     locale_dir = os.path.join(CURRENT_DIR, 'data/locale')
     if not os.path.isdir(locale_dir):
+        # do not import when frozen
+        import pkg_resources
         locale_dir = pkg_resources.resource_filename(
             'tryton', 'data/locale')
     if lang:
