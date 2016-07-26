@@ -1599,6 +1599,22 @@
             [['male', 'f'], [['male', 'female']]],
         ].forEach(test_func, field);
 
+        field = {
+            'type': 'reference',
+            'selection': [
+                ['spam', 'Spam'],
+                ['ham', 'Ham'],
+                ['', ''],
+            ]
+        };
+        [
+            ['s', ['%spam%']],
+            ['test', []],
+            ['', ['%spam%', '%ham%', '%']],
+            [null, ['%spam%', '%ham%', '%']],
+            [['spam', 'h'], [['spam', 'ham']]],
+        ].forEach(test_func, field);
+
     });
 
     QUnit.test('DomainInversion simple_inversion', function() {
