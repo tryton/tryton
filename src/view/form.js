@@ -3054,7 +3054,7 @@
                 if (!data) {
                     url = null;
                 } else {
-                    blob = new Blob([data[0][this.field_name]]);
+                    blob = new Blob([data]);
                     url = window.URL.createObjectURL(blob);
                 }
                 this.image.attr('src', url);
