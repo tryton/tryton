@@ -142,11 +142,13 @@ class PurchaseRequest:
 
     @classmethod
     def create_requests(cls, new_requests):
+        to_save = []
         for new_req in new_requests:
             if new_req.supply_date == datetime.date.max:
                 new_req.supply_date = None
             if new_req.computed_quantity > 0:
-                new_req.save()
+                to_save.append(new_req)
+        cls.save(to_save)
 
     @classmethod
     def compare_requests(cls, new_requests):
