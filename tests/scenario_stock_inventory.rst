@@ -163,6 +163,8 @@ Confirm the inventory::
 
     >>> inventory.click('confirm')
     >>> line_p1.reload()
+    >>> line_p1.expected_quantity
+    2.0
     >>> move, = line_p1.moves
     >>> move.quantity
     1.0
