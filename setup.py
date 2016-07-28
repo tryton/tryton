@@ -53,6 +53,12 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [get_require_version('proteus')]
+dependency_links = []
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
+
 setup(name=name,
     version=version,
     description='Tryton module to add default location on product',
@@ -69,7 +75,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.stock_product_location': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'label.odt']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'label.odt',
+                'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -104,6 +111,7 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
@@ -111,5 +119,9 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     use_2to3=True,
+    convert_2to3_doctests=[
+            'tests/scenario_stock_product_location.rst',
+            ],
     )
