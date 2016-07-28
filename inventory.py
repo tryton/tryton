@@ -176,6 +176,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
         to_create = []
         for inventory in inventories:
+            # Once done computation is wrong because include created moves
+            if inventory.state == 'done':
+                continue
             # Compute product quantities
             with Transaction().set_context(stock_date_end=inventory.date):
                 pbl = Product.products_by_location([inventory.location.id])
