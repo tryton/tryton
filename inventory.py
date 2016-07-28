@@ -203,6 +203,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
         grouping = cls.grouping()
         to_create = []
         for inventory in inventories:
+            # Once done computation is wrong because include created moves
+            if inventory.state == 'done':
+                continue
             # Compute product quantities
             if fill:
                 product_ids = None
