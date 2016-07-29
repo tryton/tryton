@@ -199,9 +199,10 @@ class ModelSQL(ModelStorage):
                 field_name, action=field.select and 'add' or 'remove')
 
             required = field.required
-            # Do not set 'NOT NULL' for Binary field stored in the filestore
-            # as the database column will be left empty.
-            if isinstance(field, fields.Binary) and field.file_id:
+            # Do not set 'NOT NULL' for Binary field as the database column
+            # will be left empty if stored in the filestore or filled later by
+            # the set method.
+            if isinstance(field, fields.Binary):
                 required = False
             table.not_null_action(
                 field_name, action=required and 'add' or 'remove')
