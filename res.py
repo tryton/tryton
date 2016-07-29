@@ -10,6 +10,7 @@ from trytond.exceptions import LoginException
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
+from trytond.tools import resolve
 
 __all__ = ['User', 'SMSCode']
 logger = logging.getLogger(__name__)
@@ -18,25 +19,11 @@ logger = logging.getLogger(__name__)
 def send_sms(text, to):
     assert len(text) <= 160, text
     if config.has_option('authentication_sms', 'function'):
-        func = _resolve(config.get('authentication_sms', 'function'))
+        func = resolve(config.get('authentication_sms', 'function'))
         if func:
             from_ = config.get('authentication_sms', 'from', default=None)
             return func(text, to, from_)
     logger.error('Could not send SMS to %s: "%s"', to, text)
-
-
-def _resolve(name):
-    """Resolve a dotted name to a global object."""
-    name = name.split('.')
-    used = name.pop(0)
-    found = importlib.import_module(used)
-    for n in name:
-        used = used + '.' + n
-        try:
-            found = getattr(found, n)
-        except AttributeError:
-            found = importlib.import_module(used)
-    return found
 
 
 class User:
