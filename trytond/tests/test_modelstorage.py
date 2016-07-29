@@ -74,6 +74,7 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertIsNone(foo.name)
         self.assertEqual(bar.name, 'bar')
 
+        Transaction().rollback()
         bar.name = None
         foo.name = 'foo'
         with self.assertRaises(UserError):
