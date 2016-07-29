@@ -3,8 +3,12 @@
   <define name="graph">
     <element name="graph">
       <ref name="attlist.graph"/>
-      <ref name="x"/>
-      <ref name="y"/>
+      <oneOrMore>
+        <ref name="x"/>
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="y"/>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist.graph" combine="interleave">
@@ -128,9 +132,9 @@
   <define name="data">
     <element name="data">
       <ref name="attlist.data"/>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="xpath"/>
-      </oneOrMore>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist.data" combine="interleave">
@@ -144,6 +148,7 @@
           <ref name="graph"/>
           <ref name="x"/>
           <ref name="y"/>
+          <ref name="field"/>
         </choice>
       </zeroOrMore>
     </element>

@@ -77,7 +77,7 @@ attlist.button &= attribute change { text }?
 attlist.button &= attribute type { "class" | "instance" }?
 attlist.button &=
   [ a:defaultValue = "0" ] attribute tree_invisible { text }?
-data = element data { attlist.data, xpath+ }
+data = element data { attlist.data, xpath* }
 attlist.data &= empty
 xpath = element xpath { attlist.xpath,
     (field

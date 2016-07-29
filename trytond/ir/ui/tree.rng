@@ -272,9 +272,9 @@
   <define name="data">
     <element name="data">
       <ref name="attlist.data"/>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="xpath"/>
-      </oneOrMore>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist.data" combine="interleave">
