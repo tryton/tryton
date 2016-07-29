@@ -20,6 +20,7 @@ Introduction to all the key parts of trytond:
     domain
     pyson
     access_rights
+    triggers
     actions
     views/index
     views/extension

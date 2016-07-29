@@ -36,7 +36,8 @@ The model layer
       :ref:`Model syntax <topics-models>` |
       :ref:`Field types <ref-models-fields>` |
       :ref:`Domain syntax <topics-domain>` |
-      :ref:`Access rights <topics-access_rights>`
+      :ref:`Access rights <topics-access_rights>` |
+      :ref:`Triggers <topics-triggers>`
 
 The view layer
 ==============
