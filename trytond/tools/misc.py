@@ -12,6 +12,7 @@ from itertools import islice
 import types
 import io
 import warnings
+import importlib
 
 from sql import Literal
 from sql.operators import Or
@@ -274,3 +275,17 @@ def is_instance_method(cls, method):
         type_ = klass.__dict__.get(method)
         if type_ is not None:
             return isinstance(type_, types.FunctionType)
+
+
+def resolve(name):
+    "Resolve a dotted name to a global object."
+    name = name.split('.')
+    used = name.pop(0)
+    found = importlib.import_module(used)
+    for n in name:
+        used = used + '.' + n
+        try:
+            found = getattr(found, n)
+        except AttributeError:
+            found = importlib.import_module(used)
+    return found
