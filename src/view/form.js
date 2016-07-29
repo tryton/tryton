@@ -695,7 +695,7 @@
             });
             this.label_el = jQuery('<label/>');
             if (text) {
-                this.label_el.text = text;
+                this.label_el.text(text);
             }
             this.el.append(this.label_el);
             this.el.append(jQuery('<hr/>'));
