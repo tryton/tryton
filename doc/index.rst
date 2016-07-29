@@ -123,4 +123,16 @@ computed terms base on an amount and a date.
 
 .. note:: The last line of payment term must be a remainder.
 
+Configuration
+*************
+
+The account_invoice module uses the section `account_invoice` to retrieve some
+parameters:
+
+- `filestore`: a boolean value to store invoice report cache in the FileStore.
+  The default value is `False`.
+
+- `store_prefix`: the prefix to use with the FileStore. The default value is
+  `None`.
+
 .. _`python-dateutil library`: http://labix.org/python-dateutil#head-72c4689ec5608067d118b9143cef6bdffb6dad4e

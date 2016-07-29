@@ -21,6 +21,7 @@ from trytond.tools import reduce_ids, grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
+from trytond.config import config
 
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.product import price_digits
@@ -54,6 +55,13 @@ STATES = [
     ('paid', 'Paid'),
     ('cancel', 'Canceled'),
     ]
+
+if config.getboolean('account_invoice', 'filestore', default=False):
+    file_id = 'invoice_report_cache_id'
+    store_prefix = config.get('account_invoice', 'store_prefix', default=None)
+else:
+    file_id = None
+    store_prefix = None
 
 
 class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -169,7 +177,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     amount_to_pay = fields.Function(fields.Numeric('Amount to Pay',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
-    invoice_report_cache = fields.Binary('Invoice Report', readonly=True)
+    invoice_report_cache = fields.Binary('Invoice Report', readonly=True,
+        file_id=file_id, store_prefix=store_prefix)
+    invoice_report_cache_id = fields.Char('Invoice Report ID', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
     @classmethod
