@@ -6,7 +6,7 @@ from trytond.transaction import Transaction
 __all__ = [
     'Model',
     'Singleton', 'URLObject',
-    'ModelStorage', 'ModelStorageContext',
+    'ModelStorage', 'ModelStorageRequired', 'ModelStorageContext',
     'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
     'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
     'Union', 'UnionUnion',
@@ -40,6 +40,12 @@ class ModelStorage(ModelSQL):
     'Model stored'
     __name__ = 'test.modelstorage'
     name = fields.Char('Name')
+
+
+class ModelStorageRequired(ModelSQL):
+    'Model stored'
+    __name__ = 'test.modelstorage.required'
+    name = fields.Char('Name', required=True)
 
 
 class ModelStorageContext(ModelSQL):

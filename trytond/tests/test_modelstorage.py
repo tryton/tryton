@@ -3,6 +3,7 @@
 
 import unittest
 
+from trytond.error import UserError
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import install_module, with_transaction
@@ -54,6 +55,31 @@ class ModelStorageTestCase(unittest.TestCase):
 
             record = ModelStorageContext(record.id)
             self.assertDictContainsSubset({'foo': 'bar'}, record.context)
+
+    @with_transaction()
+    def test_save_mixed_context(self):
+        'Test save with mixed context '
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.required')
+
+        foo = ModelStorage(name='foo')
+        with Transaction().set_context(bar=True):
+            bar = ModelStorage(name='bar')
+        ModelStorage.save([foo, bar])
+        self.assertNotEqual(foo._context, bar._context)
+
+        foo.name = None
+        with self.assertRaises(UserError):
+            ModelStorage.save([foo, bar])
+        self.assertIsNone(foo.name)
+        self.assertEqual(bar.name, 'bar')
+
+        bar.name = None
+        foo.name = 'foo'
+        with self.assertRaises(UserError):
+            ModelStorage.save([foo, bar])
+        self.assertEqual(foo.name, 'foo')
+        self.assertIsNone(bar.name)
 
 
 def suite():
