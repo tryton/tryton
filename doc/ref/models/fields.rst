@@ -171,7 +171,8 @@ Instance methods:
 .. method:: Field.sql_type()
 
     Return the namedtuple('SQLType', 'base type') which defines the SQL type to
-    use for creation and casting.
+    use for creation and casting. Or `None` if the field is not stored in the
+    database.
 
 .. method:: Field.sql_column(table)
 
@@ -384,7 +385,7 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
     separated by a dot and its value is the string `size` then the read value
     is the size instead of the content.
 
-:class:`Binary` has one extra optional argument:
+:class:`Binary` has three extra optional arguments:
 
 .. attribute:: Binary.filename
 
@@ -393,6 +394,21 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
     filename is hidden, and the "Open" button is hidden when the widget is set
     to "image").
 
+.. attribute:: Binary.file_id
+
+    Name of the field that holds the `FileStore` identifier. Default value is
+    `None` which means the data is stored in the database. The field must be on
+    the same table and accept `char` values.
+
+.. warning::
+    Switching from database to file-store is supported transparently. But
+    switching from file-store to database is not supported without manually
+    upload to the database all the files.
+
+.. attribute:: Binary.store_prefix
+
+    The prefix to use with the `FileStore`. Default value is `None` which means
+    the database name is used.
 
 Selection
 ---------

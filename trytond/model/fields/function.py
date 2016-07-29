@@ -58,9 +58,8 @@ class Function(Field):
                 return
         setattr(self._field, name, value)
 
-    @property
     def sql_type(self):
-        raise AttributeError
+        return None
 
     def convert_domain(self, domain, tables, Model):
         name, operator, value = domain[:3]

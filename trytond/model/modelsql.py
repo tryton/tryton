@@ -145,10 +145,10 @@ class ModelSQL(ModelStorage):
         for field_name, field in cls._fields.iteritems():
             if field_name == 'id':
                 continue
-            default_fun = None
-            if hasattr(field, 'set'):
-                continue
             sql_type = field.sql_type()
+            if not sql_type:
+                continue
+            default_fun = None
             if field_name in cls._defaults:
                 default_fun = cls._defaults[field_name]
 
@@ -199,6 +199,10 @@ class ModelSQL(ModelStorage):
                 field_name, action=field.select and 'add' or 'remove')
 
             required = field.required
+            # Do not set 'NOT NULL' for Binary field stored in the filestore
+            # as the database column will be left empty.
+            if isinstance(field, fields.Binary) and field.file_id:
+                required = False
             table.not_null_action(
                 field_name, action=required and 'add' or 'remove')
 
@@ -228,7 +232,7 @@ class ModelSQL(ModelStorage):
                 cursor.execute(*history_table.select(history_table.id))
                 if not cursor.fetchone():
                     columns = [n for n, f in cls._fields.iteritems()
-                        if not hasattr(f, 'set')]
+                        if f.sql_type()]
                     cursor.execute(*history_table.insert(
                             [Column(history_table, c) for c in columns],
                             sql_table.select(*(Column(sql_table, c)
@@ -274,7 +278,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields[field_name]
             # Check required fields
             if (field.required
-                    and not hasattr(field, 'set')
+                    and field.sql_type()
                     and field_name not in ('create_uid', 'create_date')):
                 if values.get(field_name) is None:
                     cls.raise_user_error('required_field',
@@ -354,7 +358,7 @@ class ModelSQL(ModelStorage):
                 'write_date': cls.write_date,
                 }
         for fname, field in sorted(fields.iteritems()):
-            if hasattr(field, 'set'):
+            if not field.sql_type():
                 continue
             columns.append(Column(table, fname))
             hcolumns.append(Column(history, fname))
@@ -384,7 +388,7 @@ class ModelSQL(ModelStorage):
         columns = []
         hcolumns = []
         fnames = sorted(n for n, f in cls._fields.iteritems()
-            if not hasattr(f, 'set'))
+            if f.sql_type())
         for fname in fnames:
             columns.append(Column(table, fname))
             if fname == 'write_uid':
@@ -663,7 +667,7 @@ class ModelSQL(ModelStorage):
         columns = []
         for f in fields_names + fields_related.keys() + datetime_fields:
             field = cls._fields.get(f)
-            if field and not hasattr(field, 'set'):
+            if field and field.sql_type():
                 columns.append(field.sql_column(table).as_(f))
             elif f == '_timestamp' and not table_query:
                 sql_type = fields.Char('timestamp').sql_type().base
@@ -715,7 +719,7 @@ class ModelSQL(ModelStorage):
             if field == '_timestamp':
                 continue
             if (getattr(cls._fields[field], 'translate', False)
-                    and not hasattr(field, 'set')):
+                    and not hasattr(field, 'get')):
                 translations = Translation.get_ids(cls.__name__ + ',' + field,
                     'model', Transaction().language, ids)
                 for row in result:

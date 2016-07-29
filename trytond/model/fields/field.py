@@ -244,7 +244,7 @@ class Field(object):
         return value
 
     def sql_type(self):
-        raise NotImplementedError
+        return None
 
     def sql_column(self, table):
         return Column(table, self.name)

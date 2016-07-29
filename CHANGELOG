@@ -1,3 +1,5 @@
+* Add option to store Attachment in database
+* Allow to store Binary field in filestore
 * Add filestore module
 * Allow None in Greater/Less PYSON
 * Add option to set admin password with trytond-admin

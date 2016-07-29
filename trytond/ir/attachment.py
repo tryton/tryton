@@ -8,7 +8,7 @@ from .. import backend
 from ..transaction import Transaction
 from ..pyson import Eval
 from .resource import ResourceMixin
-from ..filestore import filestore
+from ..config import config
 
 __all__ = [
     'Attachment',
@@ -21,6 +21,13 @@ def firstline(description):
     except StopIteration:
         return ''
 
+if config.getboolean('attachment', 'filestore', default=True):
+    file_id = 'file_id'
+    store_prefix = config.get('attachment', 'store_prefix', default=None)
+else:
+    file_id = None
+    store_prefix = None
+
 
 class Attachment(ResourceMixin, ModelSQL, ModelView):
     "Attachment"
@@ -30,18 +37,20 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
         ('data', 'Data'),
         ('link', 'Link'),
         ], 'Type', required=True)
-    data = fields.Function(fields.Binary('Data', filename='name', states={
-                'invisible': Eval('type') != 'data',
-                }, depends=['type']), 'get_data', setter='set_data')
     description = fields.Text('Description')
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     link = fields.Char('Link', states={
             'invisible': Eval('type') != 'link',
             }, depends=['type'])
+    data = fields.Binary('Data', filename='name',
+        file_id=file_id, store_prefix=store_prefix,
+        states={
+            'invisible': Eval('type') != 'data',
+            }, depends=['type'])
     file_id = fields.Char('File ID', readonly=True)
     data_size = fields.Function(fields.Integer('Data size', states={
                 'invisible': Eval('type') != 'data',
-                }, depends=['type']), 'get_data')
+                }, depends=['type']), 'get_size')
 
     @classmethod
     def __setup__(cls):
@@ -95,37 +104,12 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     def default_type():
         return 'data'
 
-    def get_data(self, name):
-        db_name = Transaction().database.name
-        format_ = Transaction().context.get(
-            '%s.%s' % (self.__name__, name), '')
-        value = None
-        if name == 'data_size' or format_ == 'size':
-            value = 0
-        if self.file_id:
-            if name == 'data_size' or format_ == 'size':
-                try:
-                    value = filestore.size(self.file_id, prefix=db_name)
-                except OSError:
-                    pass
-            else:
-                try:
-                    value = fields.Binary.cast(
-                        filestore.get(self.file_id, prefix=db_name))
-                except IOError:
-                    pass
-        return value
-
-    @classmethod
-    def set_data(cls, attachments, name, value):
-        if value is None:
-            return
-        transaction = Transaction()
-        db_name = transaction.database.name
-        file_id = filestore.set(value, prefix=db_name)
-        cls.write(attachments, {
-                'file_id': file_id,
-                })
+    def get_size(self, name):
+        with Transaction().set_context({
+                    '%s.%s' % (self.__name__, name): 'size',
+                    }):
+            record = self.__class__(self.id)
+            return record.data
 
     @fields.depends('description')
     def on_change_with_summary(self, name=None):

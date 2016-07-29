@@ -229,6 +229,24 @@ The parameters for `unoconv`.
 
 Default: `pipe,name=trytond;urp;StarOffice.ComponentContext`
 
+attachment
+----------
+
+Defines how to store the attachments
+
+filestore
+~~~~~~~~~
+
+A boolean value to store attachment in the :ref:`FileStore <ref-filestore>`.
+
+Default: `True`
+
+store_prefix
+~~~~~~~~~~~~
+
+The prefix to use with the `FileStore`.
+
+Default: `None`
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
