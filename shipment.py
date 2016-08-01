@@ -1225,7 +1225,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         round=False)
                     if write:
                         Move.write([move], {
-                                'quantity': max(0.0, move.quantity - exc_qty),
+                                'quantity': max(
+                                    0.0,
+                                    move.uom.round(move.quantity - exc_qty)),
                                 })
                     outgoing_qty[move.product.id] -= removed_qty
 
