@@ -147,13 +147,14 @@ class ShipmentOut:
                     values = {}
                     if quantity < out_quantity:
                         outgoing_moves.extend(Move.copy([out_move], default={
-                                    'quantity': out_quantity - quantity,
+                                    'quantity': out_move.uom.round(
+                                        out_quantity - quantity),
                                     }))
-                        values['quantity'] = quantity
+                        values['quantity'] = out_move.uom.round(quantity)
                     values['lot'] = move.lot.id
                     to_write.extend(([out_move], values))
                     quantity -= out_quantity
-                assert quantity <= 0
+                assert move.uom.round(quantity) <= 0
         if to_write:
             Move.write(*to_write)
 
