@@ -40,7 +40,12 @@ def send_keys(renderer, editable, position, treeview):
     editable.editing_done_id = editable.connect('editing_done',
             treeview.on_editing_done)
     if isinstance(editable, (gtk.ComboBoxEntry, gtk.ComboBox)):
-        editable.connect('changed', treeview.on_editing_done)
+        def changed(combobox):
+            # "changed" signal is also triggered by text editing
+            # so only trigger editing-done if a row is active
+            if combobox.get_active_iter():
+                treeview.on_editing_done(combobox)
+        editable.connect('changed', changed)
 
 
 def realized(func):
