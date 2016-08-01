@@ -168,7 +168,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
 
         counterpart = Line()
         counterpart.credit = line.debit
-        counterpart.account = self.level.fee.journal.credit_account
+        counterpart.account = self.level.fee.product.account_revenue_used
         if counterpart.account and counterpart.account.party_required:
             counterpart.party = self.dunning.party
 

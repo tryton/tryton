@@ -54,7 +54,6 @@ Create chart of accounts::
     >>> journal_revenue, = Journal.find([
     ...         ('code', '=', 'REV'),
     ...         ])
-    >>> journal_revenue.credit_account = revenue
     >>> journal_revenue.save()
 
 Create fees::
