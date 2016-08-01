@@ -1113,7 +1113,7 @@ class SaleLine(ModelSQL, ModelView):
                 break
             quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
         if done:
-            if quantity > 0.0:
+            if self.unit.round(quantity) > 0.0:
                 done = False
         return done
 
