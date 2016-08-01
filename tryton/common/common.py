@@ -1039,7 +1039,7 @@ def process_exception(exception, *args, **kwargs):
         elif exception.faultCode.startswith('403'):
             from tryton.gui.main import Main
             if not PLOCK.acquire(False):
-                return
+                return False
             language = CONFIG['client.lang']
             func = lambda parameters: rpc.login(
                 rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME, parameters,

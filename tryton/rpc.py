@@ -64,24 +64,23 @@ def server_version(host, port):
 def login(host, port, database, username, parameters, language=None):
     global CONNECTION, _USER, _USERNAME, _HOST, _PORT, _DATABASE
     global _VIEW_CACHE, _TOOLBAR_CACHE, _KEYWORD_CACHE
-    _VIEW_CACHE = {}
-    _TOOLBAR_CACHE = {}
-    _KEYWORD_CACHE = {}
-    if CONNECTION is not None:
-        CONNECTION.close()
-    CONNECTION = ServerPool(host, port, database)
+    connection = ServerProxy(host, port, database)
     logging.getLogger(__name__).info('common.db.login(%s, %s, %s)'
         % (username, 'x' * 10, language))
-    with CONNECTION() as conn:
-        result = conn.common.db.login(username, parameters, language)
+    result = connection.common.db.login(username, parameters, language)
     logging.getLogger(__name__).debug(repr(result))
     _USER = result[0]
     _USERNAME = username
     session = ':'.join(map(str, [username] + result))
+    if CONNECTION is not None:
+        CONNECTION.close()
     CONNECTION = ServerPool(host, port, database, session=session)
     _HOST = host
     _PORT = port
     _DATABASE = database
+    _VIEW_CACHE = {}
+    _TOOLBAR_CACHE = {}
+    _KEYWORD_CACHE = {}
     IPCServer(host, port, database).run()
 
 
