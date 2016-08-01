@@ -776,6 +776,8 @@ class Translation(ModelSQL, ModelView):
     def translation_import(cls, lang, module, po_path):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
+        if isinstance(po_path, basestring):
+            filenames = [po_path]
         models_data = ModelData.search([
                 ('module', '=', module),
                 ])
@@ -791,7 +793,6 @@ class Translation(ModelSQL, ModelView):
 
         translations = set()
         to_save = []
-        pofile = polib.pofile(po_path)
 
         id2translation = {}
         key2ids = {}
@@ -850,54 +851,55 @@ class Translation(ModelSQL, ModelView):
                         'record')):
                 id2translation = dict((t.id, t)
                     for t in cls.browse(translation_ids))
-            for entry in pofile:
-                if entry.obsolete:
-                    continue
-                translation, res_id = cls.from_poentry(entry)
-                translation.lang = lang
-                translation.module = module
-                noupdate = False
+            for pofile in po_path:
+                for entry in polib.pofile(pofile):
+                    if entry.obsolete:
+                        continue
+                    translation, res_id = cls.from_poentry(entry)
+                    translation.lang = lang
+                    translation.module = module
+                    noupdate = False
 
-                if '.' in res_id:
-                    to_save.append(override_translation(res_id,
-                            translation))
-                    continue
+                    if '.' in res_id:
+                        to_save.append(override_translation(res_id,
+                                translation))
+                        continue
 
-                model = translation.name.split(',')[0]
-                if (model in fs_id2prop
-                        and res_id in fs_id2prop[model]):
-                    res_id, noupdate = fs_id2prop[model][res_id]
+                    model = translation.name.split(',')[0]
+                    if (model in fs_id2prop
+                            and res_id in fs_id2prop[model]):
+                        res_id, noupdate = fs_id2prop[model][res_id]
 
-                if res_id:
-                    try:
-                        res_id = int(res_id)
-                    except ValueError:
-                        res_id = None
-                if not res_id:
-                    res_id = -1
+                    if res_id:
+                        try:
+                            res_id = int(res_id)
+                        except ValueError:
+                            res_id = None
+                    if not res_id:
+                        res_id = -1
 
-                translation.res_id = res_id
-                key = translation.unique_key
-                if not key:
-                    raise ValueError('Unknow translation type: %s' %
-                        translation.type)
-                ids = key2ids.get(key, [])
+                    translation.res_id = res_id
+                    key = translation.unique_key
+                    if not key:
+                        raise ValueError('Unknow translation type: %s' %
+                            translation.type)
+                    ids = key2ids.get(key, [])
 
-                if not processing:
-                    translation_ids.extend(ids)
-                    continue
+                    if not processing:
+                        translation_ids.extend(ids)
+                        continue
 
-                if not ids:
-                    to_save.append(translation)
-                else:
-                    for translation_id in ids:
-                        old_translation = id2translation[translation_id]
-                        if not noupdate:
-                            old_translation.value = translation.value
-                            old_translation.fuzzy = translation.fuzzy
-                            to_save.append(old_translation)
-                        else:
-                            translations.add(old_translation)
+                    if not ids:
+                        to_save.append(translation)
+                    else:
+                        for translation_id in ids:
+                            old_translation = id2translation[translation_id]
+                            if not noupdate:
+                                old_translation.value = translation.value
+                                old_translation.fuzzy = translation.fuzzy
+                                to_save.append(old_translation)
+                            else:
+                                translations.add(old_translation)
         cls.save(filter(None, to_save))
         translations |= set(to_save)
 

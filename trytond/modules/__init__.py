@@ -9,6 +9,7 @@ import imp
 import operator
 import ConfigParser
 from glob import iglob
+from collections import defaultdict
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -253,6 +254,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 modules_todo.append((module, list(tryton_parser.to_delete)))
 
                 localedir = '%s/%s' % (package.info['directory'], 'locale')
+                lang2filenames = defaultdict(list)
                 for filename in itertools.chain(
                         iglob('%s/*.po' % localedir),
                         iglob('%s/override/*.po' % localedir)):
@@ -260,10 +262,13 @@ def load_module_graph(graph, pool, update=None, lang=None):
                     lang2 = os.path.splitext(os.path.basename(filename))[0]
                     if lang2 not in lang:
                         continue
-                    logger.info('%s:loading %s', module,
-                        filename[len(package.info['directory']) + 1:])
+                    lang2filenames[lang2].append(filename)
+                base_path_position = len(package.info['directory']) + 1
+                for language, files in lang2filenames.iteritems():
+                    filenames = [f[base_path_position:] for f in files]
+                    logger.info('%s:loading %s', module, ','.join(filenames))
                     Translation = pool.get('ir.translation')
-                    Translation.translation_import(lang2, module, filename)
+                    Translation.translation_import(language, module, files)
 
                 if package_state == 'to remove':
                     continue
