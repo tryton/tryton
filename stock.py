@@ -120,16 +120,17 @@ class ShipmentOut:
                         round=False)
                     if quantity < out_quantity:
                         outgoing_moves.extend(Move.copy([out_move], default={
-                                    'quantity': out_quantity - quantity,
+                                    'quantity': out_move.uom.round(
+                                        out_quantity - quantity),
                                     }))
                         Move.write([out_move], {
-                                'quantity': quantity,
+                                'quantity': out_move.uom.round(quantity),
                                 })
                     Move.write([out_move], {
                             'lot': move.lot.id,
                             })
                     quantity -= out_quantity
-                assert quantity <= 0
+                assert move.uom.round(quantity) <= 0
 
 
 class ShipmentOutReturn:
