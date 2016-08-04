@@ -12,6 +12,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
+    >>> from trytond.modules.currency.tests.tools import get_currency
     >>> today = datetime.date.today()
 
 Create database::
@@ -73,6 +74,8 @@ Create Move to cancel::
     >>> line.account = receivable
     >>> line.debit = Decimal(42)
     >>> line.party = customer
+    >>> line.second_currency = get_currency('EUR')
+    >>> line.amount_second_currency = Decimal(40)
     >>> move.save()
     >>> revenue.reload()
     >>> revenue.credit
