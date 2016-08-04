@@ -1,3 +1,4 @@
+* Use 'default_rec_name' context key in Model.default_get
 * Add option to store Attachment in database
 * Allow to store Binary field in filestore
 * Add filestore module

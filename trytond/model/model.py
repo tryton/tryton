@@ -126,6 +126,12 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         Property = pool.get('ir.property')
         value = {}
 
+        default_rec_name = Transaction().context.get('default_rec_name')
+        if (default_rec_name
+                and cls._rec_name in cls._fields
+                and cls._rec_name in fields_names):
+            value[cls._rec_name] = default_rec_name
+
         # get the default values defined in the object
         for field_name in fields_names:
             if field_name in cls._defaults:

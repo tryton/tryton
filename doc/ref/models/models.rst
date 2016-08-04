@@ -82,6 +82,8 @@ Class methods:
     ``fields_names``. Default values are defined by the returned value of each
     instance method with the pattern ``default_`field_name`()``.
     ``with_rec_name`` allow to add `rec_name` value for each many2one field.
+    The `default_rec_name` key in the context can be used to define the value
+    of the :attr:`Model._rec_name` field.
 
 .. classmethod:: Model.fields_get([fields_names])
 
