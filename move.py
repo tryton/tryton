@@ -390,6 +390,8 @@ class Move(ModelSQL, ModelView):
         for line in cancel_move.lines:
             line.debit *= -1
             line.credit *= -1
+            if line.second_currency:
+                line.amount_second_currency *= -1
             for tax_line in line.tax_lines:
                 tax_line.amount *= -1
             line.tax_lines = line.tax_lines  # Force tax_lines changing
