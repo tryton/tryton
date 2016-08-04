@@ -45,24 +45,20 @@ commited.
 
     Count the number of modification made in this transaction.
 
-.. method:: Transaction.cursor()
-
-    Returns a cursor object using the ``Transaction.connection``.
-
 .. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit]]]])
 
-    Start a new transaction and return a `context manager`_.
-
-.. method:: Transaction.stop()
-
-    Stop a started transaction and pop it from the stack of transactions.
-
-    This method should not be called directly as it will be by the context
-    manager when exiting the `with` statement.
+    Start a new transaction and return a `context manager`_. The non-readonly
+    transaction will be committed when exiting the `with` statement without
+    exception. The other cases will be rollbacked.
 
 .. method:: Transaction.set_context(context, \**kwargs)
 
     Update the transaction context and return a `context manager`_. The context
+    will be restored when exiting the `with` statement.
+
+.. method:: Transaction.reset_context()
+
+    Clear the transaction context and return a `context manager`_. The context
     will be restored when exiting the `with` statement.
 
 .. method:: Transaction.set_user(user[, set_context])
@@ -81,6 +77,14 @@ commited.
 
     Create a new transaction with the same database, user and context as the
     original transaction and adds it to the stack of transactions.
+
+.. method:: Transaction.commit()
+
+    Commit the transaction and all data managers associated.
+
+.. method:: Transaction.rollback()
+
+    Rollback the transaction and all data managers associated.
 
 .. method:: Transaction.join(datamanager)
 
