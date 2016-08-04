@@ -17,7 +17,7 @@ class WinForm(NoModal, InfoBar):
 
     def __init__(self, screen, callback, view_type='form',
             new=False, many=0, domain=None, context=None,
-            save_current=False, title=''):
+            save_current=False, title='', rec_name=None):
         NoModal.__init__(self)
         self.screen = screen
         self.callback = callback
@@ -33,7 +33,7 @@ class WinForm(NoModal, InfoBar):
             self.screen.add_view_id(None, view_type)
         self.screen.switch_view(view_type=view_type)
         if new:
-            self.screen.new()
+            self.screen.new(rec_name=rec_name)
         self.win = gtk.Dialog(_('Link'), self.parent,
                 gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)

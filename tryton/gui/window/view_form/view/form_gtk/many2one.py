@@ -169,7 +169,7 @@ class Many2One(Widget):
                         screen.current_record.rec_name()))
             self.focus_out = True
         WinForm(screen, callback, new=True, save_current=True,
-            title=self.attrs.get('string'))
+            title=self.attrs.get('string'), rec_name=self.wid_text.get_text())
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
         model = self.get_model()

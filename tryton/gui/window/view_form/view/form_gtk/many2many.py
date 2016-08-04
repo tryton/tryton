@@ -213,7 +213,7 @@ class Many2Many(Widget):
 
         self.focus_out = False
         WinForm(screen, callback, new=True, save_current=True,
-            title=self.attrs.get('string'))
+            title=self.attrs.get('string'), rec_name=self.wid_text.get_text())
 
     def _readonly_set(self, value):
         self._readonly = value

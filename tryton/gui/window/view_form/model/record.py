@@ -350,11 +350,13 @@ class Record(SignalEvent):
             root_group.reload(reload_ids)
         return True
 
-    def default_get(self):
+    def default_get(self, rec_name=None):
         if len(self.group.fields):
+            context = self.context_get()
+            context.setdefault('default_rec_name', rec_name)
             try:
                 vals = RPCExecute('model', self.model_name, 'default_get',
-                    self.group.fields.keys(), context=self.context_get())
+                    self.group.fields.keys(), context=context)
             except RPCException:
                 return
             if (self.parent

@@ -609,7 +609,7 @@ class M2O(GenericText):
                 title=field.attrs.get('string'))
         else:
             WinForm(screen, open_callback, new=True, save_current=True,
-                title=field.attrs.get('string'))
+                title=field.attrs.get('string'), rec_name=text)
 
     def search_remote(self, record, relation, text, domain=None,
             context=None, callback=None):

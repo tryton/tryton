@@ -530,7 +530,7 @@ class Screen(SignalEvent):
 
         return view
 
-    def new(self, default=True):
+    def new(self, default=True, rec_name=None):
         previous_view = self.current_view
         if self.current_view.view_type == 'calendar':
             selected_date = self.current_view.get_selected_date()
@@ -542,7 +542,7 @@ class Screen(SignalEvent):
             group = self.current_record.group
         else:
             group = self.group
-        record = group.new(default)
+        record = group.new(default, rec_name=rec_name)
         group.add(record, self.new_model_position())
         if previous_view.view_type == 'calendar':
             previous_view.set_default_date(record, selected_date)
