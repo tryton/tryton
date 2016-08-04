@@ -1009,7 +1009,7 @@
                 return this.current_record.id;
             }
         },
-        new_: function(default_) {
+        new_: function(default_, rec_name) {
             if (default_ === undefined) {
                 default_ = true;
             }
@@ -1027,7 +1027,7 @@
                 } else {
                     group = this.group;
                 }
-                var record = group.new_(default_);
+                var record = group.new_(default_, undefined, rec_name);
                 group.add(record, this.new_model_position());
                 this.set_current_record(record);
                 this.display().done(function() {

@@ -161,11 +161,11 @@
                 }
             }
         };
-        array.new_ = function(default_, id) {
+        array.new_ = function(default_, id, rec_name) {
             var record = new Sao.Record(this.model, id);
             record.group = this;
             if (default_) {
-                record.default_get();
+                record.default_get(rec_name);
             }
             return record;
         };
@@ -783,7 +783,7 @@
         field_set_client: function(name, value, force_change) {
             this.model.fields[name].set_client(this, value, force_change);
         },
-        default_get: function() {
+        default_get: function(rec_name) {
             var dfd = jQuery.Deferred();
             var promises = [];
             // Ensure promisses is filled before default_get is resolved
@@ -795,8 +795,12 @@
                 }
             }
             if (!jQuery.isEmptyObject(this.model.fields)) {
+                var context = this.get_context();
+                if (context.default_rec_name === undefined) {
+                    context.default_rec_name = rec_name;
+                }
                 var prm = this.model.execute('default_get',
-                        [Object.keys(this.model.fields)], this.get_context());
+                        [Object.keys(this.model.fields)], context);
                 prm.then(function(values) {
                     if (this.group.parent &&
                             this.group.parent_name in this.group.model.fields) {

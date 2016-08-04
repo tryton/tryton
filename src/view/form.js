@@ -1790,7 +1790,8 @@
             var win = new Sao.Window.Form(screen, callback.bind(this), {
                 new_: true,
                 save_current: true,
-                title: this.attributes.string
+                title: this.attributes.string,
+                rec_name: this.entry.val()
             });
         },
         key_press: function(event_) {
@@ -2774,7 +2775,8 @@
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
                     'save_current': true,
-                    title: this.attributes.string
+                    title: this.attributes.string,
+                    rec_name: this.entry.val()
                 });
             });
         }

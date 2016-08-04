@@ -68,7 +68,7 @@
             var switch_prm = form_prm.then(function() {
                 return this.screen.switch_view(view_type).done(function() {
                     if (kwargs.new_) {
-                        this.screen.new_();
+                        this.screen.new_(undefined, kwargs.rec_name);
                     }
                 }.bind(this));
             }.bind(this));
