@@ -601,8 +601,15 @@ class Model(object):
             definition = self._fields[field_name]
             if definition['type'] in ('one2many', 'many2many'):
                 relation = Model.get(definition['relation'])
-                value = [isinstance(x, (int, long)) and relation(x) or x
-                        for x in value]
+
+                def instantiate(v):
+                    if isinstance(v, (int, long)):
+                        return relation(v)
+                    elif isinstance(v, dict):
+                        return relation(_default=_default, **v)
+                    else:
+                        return v
+                value = [instantiate(x) for x in value]
                 getattr(self, field_name).extend(value)
             else:
                 if definition['type'] == 'many2one':
