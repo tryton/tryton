@@ -248,7 +248,8 @@ class PaymentTermLine(ModelSQL, ModelView):
     def get_value(self, remainder, amount, currency):
         Currency = Pool().get('currency.currency')
         if self.type == 'fixed':
-            return Currency.compute(self.currency, self.amount, currency)
+            fixed = Currency.compute(self.currency, self.amount, currency)
+            return fixed.copy_sign(amount)
         elif self.type == 'percent':
             return currency.round(remainder * self.ratio)
         elif self.type == 'percent_on_total':

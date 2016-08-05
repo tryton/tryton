@@ -140,6 +140,68 @@ class AccountInvoiceTestCase(ModuleTestCase):
                 (datetime.date(2016, 05, 17), Decimal('0.0')),
                 ])
 
+    @with_transaction()
+    def test_negative_amount(self):
+        'Test payment term with negative amount'
+        pool = Pool()
+        PaymentTerm = pool.get('account.invoice.payment_term')
+
+        cu1 = create_currency('cu1')
+        term, = PaymentTerm.create([{
+                    'name': '30 days, 1 month, 1 month + 15 days',
+                    'lines': [
+                        ('create', [{
+                                    'sequence': 0,
+                                    'type': 'percent',
+                                    'divisor': 4,
+                                    'ratio': Decimal('.25'),
+                                    'relativedeltas': [('create', [{
+                                                    'days': 30,
+                                                    },
+                                                ]),
+                                        ],
+                                    }, {
+                                    'sequence': 1,
+                                    'type': 'percent_on_total',
+                                    'divisor': 4,
+                                    'ratio': Decimal('.25'),
+                                    'relativedeltas': [('create', [{
+                                                    'months': 1,
+                                                    },
+                                                ]),
+                                        ],
+                                    }, {
+                                    'sequence': 2,
+                                    'type': 'fixed',
+                                    'amount': Decimal('4.0'),
+                                    'currency': cu1.id,
+                                    'relativedeltas': [('create', [{
+                                                    'months': 1,
+                                                    'days': 30,
+                                                    },
+                                                ]),
+                                        ],
+                                    }, {
+                                    'sequence': 3,
+                                    'type': 'remainder',
+                                    'relativedeltas': [('create', [{
+                                                    'months': 2,
+                                                    'days': 30,
+                                                    'day': 15,
+                                                    },
+                                                ]),
+                                        ],
+                                    }])]
+                    }])
+        terms = term.compute(Decimal('-10.00'), cu1,
+            date=datetime.date(2011, 10, 1))
+        self.assertListEqual(terms, [
+                (datetime.date(2011, 10, 31), Decimal('-2.5')),
+                (datetime.date(2011, 11, 1), Decimal('-2.5')),
+                (datetime.date(2011, 12, 1), Decimal('-4.0')),
+                (datetime.date(2012, 1, 14), Decimal('-1.0')),
+                ])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
