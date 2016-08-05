@@ -1,5 +1,5 @@
-* Add configuration option to store invoice report cache in filestore
 * Return original amount sign on fixed payment terms
+* Add configuration option to store invoice report cache in filestore
 * Manage readonly state on Invoice Line and Tax Line
 * Rename account.invoice.payment_term.line.relativedelta
   into account.invoice.payment_term.line.delta
