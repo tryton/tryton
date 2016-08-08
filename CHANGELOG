@@ -1,3 +1,4 @@
+* Add support for column sorting
 * Manage confirm attribute on buttons
 * Call autocompletion when setting record value
 * Limit readonly state for xxx2Many

@@ -100,6 +100,13 @@
                         label.addClass('editable');
                     }
                 }
+                if (column.sortable) {
+                    var arrow = jQuery('<span/>');
+                    label.append(arrow);
+                    column.arrow = arrow;
+                    th.click(column, this.sort_model.bind(this));
+                    label.addClass('sortable');
+                }
                 tr.append(th.append(label));
                 column.header = th;
             }, this);
@@ -191,7 +198,11 @@
                                         affix_attributes));
                         }
                     }
-
+                    if (!this.attributes.sequence &&
+                            !this.children_field &&
+                            model.fields[name].description.sortable !== false){
+                        column.sortable = true;
+                    }
                     this.fields[name] = true;
                     // TODO sum
                 } else if (child.tagName == 'button') {
@@ -200,6 +211,47 @@
                 }
                 this.columns.push(column);
             }.bind(this));
+        },
+        sort_model: function(e){
+            var column = e.data;
+            var arrow = column.arrow;
+            var arrow_top = 'glyphicon glyphicon-triangle-top';
+            var arrow_bottom = 'glyphicon glyphicon-triangle-bottom';
+            this.columns.forEach(function(col) {
+                if (col.arrow){
+                    if (col != column && col.arrow.hasClass('glyphicon')) {
+                        col.arrow.removeClass(arrow_top + ' ' + arrow_bottom);
+                    }
+                }
+            });
+            this.screen.order = null;
+            if (arrow.hasClass(arrow_bottom)) {
+                arrow.removeClass(arrow_bottom);
+                arrow.addClass(arrow_top);
+                this.screen.order = [[column.attributes.name, 'DESC']];
+            } else if (arrow.hasClass(arrow_top)) {
+                arrow.removeClass(arrow_top);
+            } else {
+                arrow.addClass(arrow_bottom);
+                this.screen.order = [[column.attributes.name, 'ASC']];
+            }
+            var unsaved_records = [];
+            this.screen.group.forEach(function(unsaved_record) {
+                    if (unsaved_record.id < 0) {
+                        unsaved_records = unsaved_record.group;
+                }
+            });
+            var search_string = this.screen.screen_container.get_text();
+            if ((!jQuery.isEmptyObject(unsaved_records)) ||
+                    (this.screen.search_count == this.screen.group.length) ||
+                    (this.screen.parent)) {
+                this.screen.search_filter(search_string, true).then(
+                function(ids) {
+                    this.screen.group.sort(ids);
+                }.bind(this));
+            } else {
+                this.screen.search_filter(search_string);
+            }
         },
         get_buttons: function() {
             var buttons = [];

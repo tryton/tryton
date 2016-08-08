@@ -437,6 +437,15 @@
             };
             return jQuery.when().then(browse_child);
         };
+        array.sort = function(ids) {
+                var id2record = {};
+                this.forEach(function(record) {
+                    id2record[record.id] = record;
+                });
+                ids.forEach(function(ordered_record, i){
+                    this[i] = id2record[ordered_record.id];
+                }.bind(this));
+        };
         return array;
     };
 
