@@ -558,7 +558,7 @@ class Line(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice',
         domain=[
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
-            If(Bool(Eval('party')), [('account', '=', Eval('account'))], []),
+            If(Bool(Eval('account')), [('account', '=', Eval('account'))], []),
             If(Eval('_parent_statement', {}).get('state') == 'draft',
                 ('state', '=', 'posted'),
                 ('state', '!=', '')),
