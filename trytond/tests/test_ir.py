@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from dateutil.relativedelta import relativedelta
+import datetime
 import unittest
 
 from trytond.pool import Pool
@@ -46,6 +47,21 @@ class IrTestCase(ModuleTestCase):
         pool = Pool()
         Model = pool.get('ir.model')
         Model.global_search('User', 10)
+
+    @with_transaction()
+    def test_lang_strftime(self):
+        "Test Lang.strftime"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        test_data = [
+            ((2016, 8, 3), 'en_EN', '%d %B %Y', u"03 August 2016"),
+            ((2016, 8, 3), 'fr_FR', '%d %B %Y', u"03 ao\xfbt 2016"),
+            ((2016, 8, 3), 'fr_FR', u'%d %B %Y', u"03 ao\xfbt 2016"),
+            ]
+        for date, code, format_, result in test_data:
+            self.assertEqual(
+                Lang.strftime(datetime.date(*date), code, format_),
+                result)
 
 
 def suite():

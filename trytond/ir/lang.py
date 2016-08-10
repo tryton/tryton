@@ -419,8 +419,9 @@ class Lang(ModelSQL, ModelView):
             format = format.replace('%p',
                 TIME_LOCALE[code]['%p'][datetime.timetuple()[3] < 12 and 0
                     or 1])
+        # Encode and decode under Python2 because strftime use bytes/str.
         if sys.version_info < (3,):
-            format.encode('utf-8')
+            format = format.encode('utf-8')
         result = datetime_strftime(datetime, format)
         if sys.version_info < (3,):
             result = result.decode('utf-8')
