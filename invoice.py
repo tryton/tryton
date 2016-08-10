@@ -26,11 +26,12 @@ class Invoice:
         if 'open_date' not in cls.payment_term.depends:
             cls.payment_term.depends.append('open_date')
 
-    def set_number(self):
-        set_open_date = not self.number
-        super(Invoice, self).set_number()
+    @classmethod
+    def set_number(cls, invoices):
+        set_open_date = [i for i in invoices if not i.number]
+        super(Invoice, cls).set_number(invoices)
         if set_open_date:
-            self.write([self], {
+            cls.write(set_open_date, {
                     'open_date': datetime.datetime.now(),
                     })
 
