@@ -29,6 +29,7 @@ class Fee(ModelSQL, ModelView):
     percentage = fields.Numeric('Percentage', digits=(16, 8),
         states={
             'invisible': Eval('compute_method') != 'percentage',
+            'required': Eval('compute_method') == 'percentage',
             },
         depends=['compute_method'])
 
