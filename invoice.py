@@ -14,43 +14,42 @@ class InvoiceLine(AnalyticMixin):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        result = super(InvoiceLine, self)._credit()
+        line = super(InvoiceLine, self)._credit()
         if self.analytic_accounts:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
                     'origin': None,
                     })
-            result['analytic_accounts'] = [('add',
-                    [e.id for e in new_entries])]
+            line.analytic_accounts = new_entries
+        return line
 
-        return result
+    def get_analytic_entry(self, entry, line):
+        pool = Pool()
+        AnalyticLine = pool.get('analytic_account.line')
 
-    def get_analytic_entry(self, entry, value):
-        analytic_entry = {}
-        analytic_entry['name'] = self.description
-        analytic_entry['debit'] = value['debit']
-        analytic_entry['credit'] = value['credit']
-        analytic_entry['account'] = entry.account.id
-        analytic_entry['journal'] = self.invoice.journal.id
-        analytic_entry['date'] = (self.invoice.accounting_date or
-            self.invoice.invoice_date)
-        analytic_entry['reference'] = self.invoice.reference
-        analytic_entry['party'] = self.invoice.party.id
-        return analytic_entry
+        analytic_line = AnalyticLine()
+        analytic_line.name = self.description
+        analytic_line.debit = line.debit
+        analytic_line.credit = line.credit
+        analytic_line.account = entry.account
+        analytic_line.journal = self.invoice.journal
+        analytic_line.date = (self.invoice.accounting_date
+            or self.invoice.invoice_date)
+        analytic_line.reference = self.invoice.reference
+        analytic_line.party = self.invoice.party
+        return analytic_line
 
-    def get_move_line(self):
-        values = super(InvoiceLine, self).get_move_line()
+    def get_move_lines(self):
+        lines = super(InvoiceLine, self).get_move_lines()
         if self.analytic_accounts:
-            for value in values:
-                value['analytic_lines'] = []
-                to_create = []
+            for line in lines:
+                analytic_lines = []
                 for entry in self.analytic_accounts:
                     if not entry.account:
                         continue
-                    to_create.append(self.get_analytic_entry(entry, value))
-                if to_create:
-                    value['analytic_lines'] = [('create', to_create)]
-        return values
+                    analytic_lines.append(self.get_analytic_entry(entry, line))
+                line.analytic_lines = analytic_lines
+        return lines
 
 
 class AnalyticAccountEntry:
