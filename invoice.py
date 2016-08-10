@@ -66,8 +66,8 @@ class InvoiceLine:
             return self.product.type == 'assets' and self.product.depreciable
         return False
 
-    def get_move_line(self):
+    def get_move_lines(self):
         Asset = Pool().get('account.asset')
         if self.asset:
             Asset.close([self.asset], account=self.account)
-        return super(InvoiceLine, self).get_move_line()
+        return super(InvoiceLine, self).get_move_lines()
