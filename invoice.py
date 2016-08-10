@@ -51,8 +51,11 @@ class InvoiceLine:
     __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
-    def get_move_line(self):
-        lines = super(InvoiceLine, self).get_move_line()
+    def get_move_lines(self):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+
+        lines = super(InvoiceLine, self).get_move_lines()
         if self.from_commissions:
             amounts = defaultdict(lambda: 0)
             for commission in self.from_commissions:
@@ -62,11 +65,11 @@ class InvoiceLine:
                     amounts[(line.account, line.party)] += (
                         line.debit - line.credit)
             for (account, party), amount in amounts.iteritems():
-                lines.append({
-                        'debit': -amount if amount < 0 else 0,
-                        'credit': amount if amount > 0 else 0,
-                        'account': account.id,
-                        'party': party.id if party else None,
-                        'amount_second_currency': None,
-                        })
+                line = MoveLine()
+                line.debit = -amount if amount < 0 else 0
+                line.credit = amount if amount > 0 else 0
+                line.account = account
+                line.party = party
+                line.amount_second_currency = None
+                lines.append(line)
         return lines
