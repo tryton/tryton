@@ -15,34 +15,39 @@ class InvoiceLine:
         '''
         Return account move for anglo-saxon stock accounting
         '''
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 
         result = []
-        move_line = {}
-        move_line['description'] = self.description
-        move_line['amount_second_currency'] = None
-        move_line['second_currency'] = None
+        move_line = MoveLine()
+        move_line.description = self.description
+        move_line.amount_second_currency = None
+        move_line.second_currency = None
 
         if type_.startswith('in_'):
-            move_line['debit'] = amount
-            move_line['credit'] = Decimal('0.0')
+            move_line.debit = amount
+            move_line.credit = Decimal('0.0')
             account_type = type_[3:]
         else:
-            move_line['debit'] = Decimal('0.0')
-            move_line['credit'] = amount
+            move_line.debit = Decimal('0.0')
+            move_line.credit = amount
             account_type = type_[4:]
-        move_line['account'] = getattr(self.product,
-                'account_stock_%s_used' % account_type).id
+        move_line.account = getattr(self.product,
+                'account_stock_%s_used' % account_type)
 
         result.append(move_line)
-        move_line = move_line.copy()
-        move_line['debit'], move_line['credit'] = \
-            move_line['credit'], move_line['debit']
+        debit, credit = move_line.debit, move_line.credit
+        move_line = MoveLine()
+        move_line.description = self.description
+        move_line.amount_second_currency = move_line.second_currency = None
+        move_line.debit, move_line.credit = credit, debit
         if type_.endswith('supplier'):
-            move_line['account'] = self.account.id
+            move_line.account = self.account
         else:
-            move_line['account'] = self.product.account_cogs_used.id
+            move_line.account = self.product.account_cogs_used
         result.append(move_line)
         return result
 
@@ -55,12 +60,12 @@ class InvoiceLine:
             return list(self.origin.moves)
         return []
 
-    def get_move_line(self):
+    def get_move_lines(self):
         pool = Pool()
         Move = pool.get('stock.move')
         Period = pool.get('account.period')
 
-        result = super(InvoiceLine, self).get_move_line()
+        result = super(InvoiceLine, self).get_move_lines()
 
         if self.type != 'line':
             return result
