@@ -1,3 +1,6 @@
+* Rename Invoice.create_move to get_move
+* Rename InvoiceLine and InvoiceTax get_move_line to get_move_lines
+* Change Invoice.set_number into classmethod
 * Return original amount sign on fixed payment terms
 * Add configuration option to store invoice report cache in filestore
 * Manage readonly state on Invoice Line and Tax Line
