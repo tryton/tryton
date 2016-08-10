@@ -583,12 +583,14 @@ class O2MField(Field):
     def _set_value(self, record, value, default=False):
         self._set_default_value(record)
         group = record.value[self.name]
-        if not value or (len(value) and isinstance(value[0], (int, long))):
+        if not value:
+            return
+        if isinstance(value[0], (int, long)):
             mode = 'list ids'
         else:
             mode = 'list values'
 
-        if mode == 'list values' and len(value):
+        if mode == 'list values':
             context = self.context_get(record)
             field_names = set(f for v in value for f in v
                 if f not in group.fields and '.' not in f)
