@@ -777,7 +777,7 @@ class Translation(ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         if isinstance(po_path, basestring):
-            filenames = [po_path]
+            po_path = [po_path]
         models_data = ModelData.search([
                 ('module', '=', module),
                 ])
