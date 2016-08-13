@@ -25,7 +25,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     __name__ = 'stock.inventory'
     _rec_name = 'number'
-    number = fields.Char('Number', states=STATES, depends=DEPENDS)
+    number = fields.Char('Number', readonly=True)
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={

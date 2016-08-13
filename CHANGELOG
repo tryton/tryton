@@ -1,3 +1,4 @@
+* Make inventory number always readonly
 * Manage readonly state on Inventory Line
 * Add lead time and transit location for internal shipments between warehouses
 
