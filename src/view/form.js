@@ -2441,7 +2441,7 @@
                                     title: this.attributes.string
 
                         });
-                    };
+                    }.bind(this);
 
                     var make_product = function() {
                         if (jQuery.isEmptyObject(product)) {
@@ -2474,8 +2474,8 @@
                     };
 
                     search_set();
-                });
-            });
+                }.bind(this));
+            }.bind(this));
         },
         open: function(event_) {
             this.edit();
@@ -2760,7 +2760,7 @@
             screen.switch_view().done(function() {
                 new Sao.Window.Form(screen, callback,
                     {title: this.attributes.string});
-            });
+            }.bind(this));
         },
         new_: function() {
             var screen = this._get_screen_form();
@@ -2778,7 +2778,7 @@
                     title: this.attributes.string,
                     rec_name: this.entry.val()
                 });
-            });
+            }.bind(this));
         }
     });
 
