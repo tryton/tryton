@@ -18,11 +18,11 @@
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-        <attribute name="mode">
-            <choice>
-              <value>week</value>
-              <value>month</value>
-            </choice>
+      <attribute name="mode">
+        <choice>
+          <value>week</value>
+          <value>month</value>
+        </choice>
       </attribute>
     </optional>
   </define>
@@ -50,9 +50,7 @@
     <element name="xpath">
       <ref name="attlist.xpath"/>
       <zeroOrMore>
-        <choice>
-          <ref name="field"/>
-        </choice>
+        <ref name="field"/>
       </zeroOrMore>
     </element>
   </define>
