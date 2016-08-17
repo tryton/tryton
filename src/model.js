@@ -67,7 +67,7 @@
             });
             return root_group.on_write_ids(record_ids).then(function(reload_ids) {
                 reload_ids = reload_ids.filter(function(e) {
-                    return !~reload_ids.indexOf(e);
+                    return !~record_ids.indexOf(e);
                 });
                 return this.execute('delete', [record_ids], context)
                 .then(function() {
