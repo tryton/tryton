@@ -10,7 +10,8 @@ class Calendar_(goocalendar.Calendar):
     'Calendar'
 
     def __init__(self, attrs, screen, fields, event_store=None):
-        super(Calendar_, self).__init__(event_store)
+        super(Calendar_, self).__init__(
+            event_store, attrs.get('mode', 'month'))
         self.attrs = attrs
         self.screen = screen
         self.fields = fields

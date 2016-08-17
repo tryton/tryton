@@ -95,8 +95,12 @@ class Toolbar(gtk.Toolbar):
         month_button.connect("clicked", self.on_month_button_clicked)
         month_button.add_accelerator("clicked", self.accel_group,
             gtk.keysyms.m, gtk.gdk.MODIFIER_MASK, gtk.ACCEL_VISIBLE)
-        month_button.set_active(True)
         self.insert(month_button, -1)
+        buttons = {
+            'month': month_button,
+            'week': week_button
+            }
+        buttons[self.goocalendar.view].set_active(True)
         self.update_displayed_date()
         self.set_style(gtk.TOOLBAR_ICONS)
 
