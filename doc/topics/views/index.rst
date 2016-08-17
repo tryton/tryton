@@ -768,6 +768,9 @@ Each calendar view must start with this tag.
 
     * ``dtend``: The name of the field that contains the end date.
 
+    * ``mode``: An optional name for the view that will be used first.
+      Available views are: `week` and `month`. The default value is `month`.
+
 field
 ^^^^^
 

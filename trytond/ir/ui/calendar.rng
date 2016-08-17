@@ -16,6 +16,15 @@
       <attribute name="dtend"/>
     </optional>
   </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+        <attribute name="mode"/>
+            <choice>
+              <value>week</value>
+              <value>month</value>
+            </choice>
+    </optional>
+  </define>
   <define name="field">
     <element name="field">
       <ref name="attlist.field"/>

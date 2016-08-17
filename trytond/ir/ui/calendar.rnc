@@ -5,6 +5,9 @@ attlist.calendar &=
   attribute dtstart { text }
 attlist.calendar &=
   attribute dtend { text }?
+attlist.calendar &=
+  attribute mode { "week"
+      | "month" }?
 field = element field { attlist.field, empty }
 attlist.field &= attribute name { text }
 data = element data { attlist.data, xpath* }
