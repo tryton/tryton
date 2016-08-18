@@ -1,3 +1,4 @@
+* Remove translate on field name of User
 * Allow to define the default mode in calendar view
 * Use 'default_rec_name' context key in Model.default_get
 * Add option to store Attachment in database

@@ -45,7 +45,7 @@ logger = logging.getLogger(__name__)
 class User(ModelSQL, ModelView):
     "User"
     __name__ = "res.user"
-    name = fields.Char('Name', required=True, select=True, translate=True)
+    name = fields.Char('Name', select=True)
     login = fields.Char('Login', required=True)
     password_hash = fields.Char('Password Hash')
     password = fields.Function(fields.Char('Password'), getter='get_password',
@@ -151,6 +151,9 @@ class User(ModelSQL, ModelView):
                 values=[password_hash_new]))
             table.drop_column('password', exception=True)
             table.drop_column('salt', exception=True)
+
+        # Migration from 4.2: Remove required on name
+        table.not_null_action('name', action='remove')
 
     @staticmethod
     def default_active():
@@ -272,6 +275,9 @@ class User(ModelSQL, ModelView):
     def delete(cls, users):
         cls.raise_user_error('delete_forbidden')
 
+    def get_rec_name(self, name):
+        return self.name if self.name else self.login
+
     @classmethod
     def search_rec_name(cls, name, clause):
         if clause[1].startswith('!') or clause[1].startswith('not '):
@@ -280,7 +286,7 @@ class User(ModelSQL, ModelView):
             bool_op = 'OR'
         return [bool_op,
             ('login',) + tuple(clause[1:]),
-            (cls._rec_name,) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
             ]
 
     @classmethod
