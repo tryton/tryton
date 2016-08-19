@@ -94,6 +94,70 @@ def get_fiscalyear(company, today=None):
     return fiscalyear
 
 
+def close_fiscalyear(fiscalyear):
+    pool = Pool()
+    Sequence = pool.get('ir.sequence')
+    Journal = pool.get('account.journal')
+    Period = pool.get('account.period')
+    AccountType = pool.get('account.account.type')
+    Account = pool.get('account.account')
+    Move = pool.get('account.move')
+    FiscalYear = pool.get('account.fiscalyear')
+    BalanceNonDeferral = pool.get(
+        'account.fiscalyear.balance_non_deferral', type='wizard')
+
+    # Balance non-deferral
+    journal_sequence, = Sequence.search([
+            ('code', '=', 'account.journal'),
+            ])
+    journal_closing, = Journal.create([{
+                'name': 'Closing',
+                'code': 'CLO',
+                'type': 'situation',
+                'sequence': journal_sequence.id,
+                }])
+    period_closing, = Period.create([{
+                'name': 'Closing',
+                'start_date': fiscalyear.end_date,
+                'end_date': fiscalyear.end_date,
+                'fiscalyear': fiscalyear.id,
+                'type': 'adjustment',
+                }])
+    type_equity, = AccountType.search([
+            ('name', '=', 'Equity'),
+            ])
+    revenue, = Account.search([
+            ('kind', '=', 'revenue'),
+            ])
+    account_pl, = Account.create([{
+                'name': 'P&L',
+                'type': type_equity.id,
+                'deferral': True,
+                'parent': revenue.parent.id,
+                'kind': 'other',
+                }])
+
+    session_id = BalanceNonDeferral.create()[0]
+    balance_non_deferral = BalanceNonDeferral(session_id)
+
+    balance_non_deferral.start.fiscalyear = fiscalyear
+    balance_non_deferral.start.journal = journal_closing
+    balance_non_deferral.start.period = period_closing
+    balance_non_deferral.start.credit_account = account_pl
+    balance_non_deferral.start.debit_account = account_pl
+
+    balance_non_deferral._execute('balance')
+
+    moves = Move.search([
+            ('state', '=', 'draft'),
+            ('period.fiscalyear', '=', fiscalyear.id),
+            ])
+    Move.post(moves)
+
+    # Close fiscalyear
+    FiscalYear.close([fiscalyear])
+
+
 class AccountTestCase(ModuleTestCase):
     'Test Account module'
     module = 'account'
@@ -142,14 +206,9 @@ class AccountTestCase(ModuleTestCase):
         pool = Pool()
         Party = pool.get('party.party')
         FiscalYear = pool.get('account.fiscalyear')
-        Period = pool.get('account.period')
         Journal = pool.get('account.journal')
         Account = pool.get('account.account')
-        AccountType = pool.get('account.account.type')
         Move = pool.get('account.move')
-        Sequence = pool.get('ir.sequence')
-        BalanceNonDeferral = pool.get(
-            'account.fiscalyear.balance_non_deferral', type='wizard')
 
         party = Party(name='Party')
         party.save()
@@ -242,53 +301,7 @@ class AccountTestCase(ModuleTestCase):
                     (Decimal(0), Decimal(100)))
                 self.assertEqual(revenue.balance, Decimal(-100))
 
-            # Balance non-deferral
-            journal_sequence, = Sequence.search([
-                    ('code', '=', 'account.journal'),
-                    ])
-            journal_closing, = Journal.create([{
-                        'name': 'Closing',
-                        'code': 'CLO',
-                        'type': 'situation',
-                        'sequence': journal_sequence.id,
-                        }])
-            period_closing, = Period.create([{
-                        'name': 'Closing',
-                        'start_date': fiscalyear.end_date,
-                        'end_date': fiscalyear.end_date,
-                        'fiscalyear': fiscalyear.id,
-                        'type': 'adjustment',
-                        }])
-            type_equity, = AccountType.search([
-                    ('name', '=', 'Equity'),
-                    ])
-            account_pl, = Account.create([{
-                        'name': 'P&L',
-                        'type': type_equity.id,
-                        'deferral': True,
-                        'parent': revenue.parent.id,
-                        'kind': 'other',
-                        }])
-
-            session_id = BalanceNonDeferral.create()[0]
-            balance_non_deferral = BalanceNonDeferral(session_id)
-
-            balance_non_deferral.start.fiscalyear = fiscalyear
-            balance_non_deferral.start.journal = journal_closing
-            balance_non_deferral.start.period = period_closing
-            balance_non_deferral.start.credit_account = account_pl
-            balance_non_deferral.start.debit_account = account_pl
-
-            balance_non_deferral._execute('balance')
-
-            moves = Move.search([
-                    ('state', '=', 'draft'),
-                    ('period.fiscalyear', '=', fiscalyear.id),
-                    ])
-            Move.post(moves)
-
-            # Close fiscalyear
-            FiscalYear.close([fiscalyear])
+            close_fiscalyear(fiscalyear)
 
             # Check deferral
             self.assertEqual(revenue.deferrals, ())
@@ -797,11 +810,16 @@ class AccountTestCase(ModuleTestCase):
             moves = Move.create(vlist)
             Move.post(moves)
 
-            party = Party(party.id)
-            self.assertEqual(party.receivable, Decimal('300'))
-            self.assertEqual(party.receivable_today, Decimal('100'))
-            self.assertEqual(party.payable, Decimal('90'))
-            self.assertEqual(party.payable_today, Decimal('30'))
+            def check_fields():
+                party_test = Party(party.id)
+                self.assertEqual(party_test.receivable, Decimal('300'))
+                self.assertEqual(party_test.receivable_today, Decimal('100'))
+                self.assertEqual(party_test.payable, Decimal('90'))
+                self.assertEqual(party_test.payable_today, Decimal('30'))
+
+            check_fields()
+            close_fiscalyear(fiscalyear)
+            check_fields()
 
     @with_transaction()
     def test_sort_taxes(self):
