@@ -379,4 +379,5 @@ class Rule:
         key = super(Rule, cls)._get_cache_key()
         # XXX Use company from context instead of browse to prevent infinite
         # loop, but the cache is cleared when User is written.
-        return key + (Transaction().context.get('company'),)
+        return key + (Transaction().context.get('company'),
+            Transaction().context.get('employee'))
