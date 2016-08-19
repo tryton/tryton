@@ -2677,6 +2677,33 @@ class FieldsTestCase(unittest.TestCase):
         transaction.rollback()
 
     @with_transaction()
+    def test_many2many_add_to_list(self):
+        "Test Many2Many add to list of records"
+        pool = Pool()
+        Many2Many = pool.get('test.many2many')
+        Many2manyTarget = pool.get('test.many2many.target')
+
+        record1, record2 = Many2Many.create([{'name': '1'}, {'name': '2'}])
+        target, = Many2manyTarget.create([{'name': 'target'}])
+
+        # First add to record1
+        Many2Many.write([record1], {
+                'targets': [
+                    ('add', [target.id]),
+                    ],
+                })
+        self.assertEqual(record1.targets, (target,))
+
+        # Add to both records
+        Many2Many.write([record1, record2], {
+                'targets': [
+                    ('add', [target.id]),
+                    ],
+                })
+        self.assertEqual(record1.targets, (target,))
+        self.assertEqual(record2.targets, (target,))
+
+    @with_transaction()
     def test_many2many_tree(self):
         pool = Pool()
         Many2Many = pool.get('test.many2many_tree')
