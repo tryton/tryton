@@ -162,11 +162,13 @@ class Many2Many(Field):
                         (self.target, 'in', list(sub_ids)),
                         ])
                 for relation in relations:
-                    existing_ids.add(getattr(relation, self.target).id)
+                    existing_ids.add((
+                            getattr(relation, self.origin).id,
+                            getattr(relation, self.target).id))
             for new_id in target_ids:
-                if new_id in existing_ids:
-                    continue
                 for record_id in ids:
+                    if (record_id, new_id) in existing_ids:
+                        continue
                     relation_to_create.append({
                             self.origin: field_value(record_id),
                             self.target: new_id,
