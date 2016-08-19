@@ -90,8 +90,6 @@ class Party:
             return result
         company_id = user.company.id
 
-        line_query, _ = MoveLine.query_get(line)
-
         amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
         for name in names:
             code = name
@@ -110,7 +108,6 @@ class Party:
                             & (account.kind == code)
                             & (line.reconciliation == Null)
                             & (account.company == company_id)
-                            & line_query
                             & party_where
                             & today_where
                             & (account.kind == code)),
