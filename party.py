@@ -91,8 +91,6 @@ class Party:
             return res
         company_id = user.company.id
 
-        line_query, _ = MoveLine.query_get(line)
-
         for name in names:
             code = name
             today_query = Literal(True)
@@ -110,7 +108,7 @@ class Party:
                     & line.party.in_([p.id for p in parties])
                     & (line.reconciliation == None)
                     & (account.company == company_id)
-                    & line_query & today_query,
+                    & today_query,
                     group_by=line.party))
             for party_id, sum in cursor.fetchall():
                 # SQLite uses float for SUM
