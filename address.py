@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import urllib
+import sys
+
 from trytond.model import fields
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
@@ -29,11 +31,14 @@ class Address:
                 self.subdivision.name if self.subdivision else None,
                 ):
             if value:
-                if isinstance(value, str):
+                if isinstance(value, str) and sys.version_info < (3,):
                     url += ' ' + value.decode('utf-8')
                 else:
                     url += ' ' + value
-        if url.strip():
+        url = url.strip()
+        if url:
+            if sys.version_info < (3,):
+                url = url.encode('utf-8')
             return 'http://maps.google.com/maps?hl=%s&q=%s' % \
-                (lang, urllib.quote(url.strip().encode('utf-8')))
+                (lang, urllib.quote(url))
         return ''
