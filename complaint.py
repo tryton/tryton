@@ -434,22 +434,22 @@ class Action(ModelSQL, ModelView):
                 invoice_line = self.complaint.origin
                 invoice = invoice_line.invoice
                 invoice_lines = [invoice_line]
-            values = invoice._credit()
-            lines_values = []
+            credit_note = invoice._credit()
+            credit_lines = []
             for invoice_line in invoice_lines:
                 credit_line = invoice_line._credit()
-                lines_values.append(credit_line)
+                credit_lines.append(credit_line)
                 # Remove product as it is not a return
-                credit_line.pop('product', None)
-                credit_line['origin'] = str(self.complaint)
+                credit_line.product = None
+                credit_line.origin = self.complaint
             if isinstance(self.complaint.origin, Line):
                 if self.quantity is not None:
-                    lines_values[0]['quantity'] = -self.quantity
+                    credit_lines[0].quantity = -self.quantity
                 if self.unit_price is not None:
-                    lines_values[0]['unit_price'] = self.unit_price
-            values['lines'] = [('create', lines_values)]
-            del values['taxes']
-            credit_note, = Invoice.create([values])
+                    credit_lines[0].unit_price = self.unit_price
+            credit_note.lines = credit_lines
+            credit_note.taxes = None
+            credit_note.save()
             Invoice.update_taxes([credit_note])
         else:
             return
