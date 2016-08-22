@@ -14,6 +14,9 @@ You can start the default web server bundled in Tryton with this command line::
 The server will wait for client connections on the interface defined in the
 `web` section of the :ref:`configuration <topics-configuration>`.
 
+.. note:: When using multiple config files the order is importart as last
+          entered files will override the items of first files
+
 WSGI server
 -----------
 

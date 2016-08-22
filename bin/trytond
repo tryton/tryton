@@ -38,7 +38,7 @@ with commandline.pidfile(options):
         ssl_context = (certificate, privatekey)
     else:
         ssl_context = None
-    extra_files = [options.configfile]
+    extra_files = options.configfile
     for module in get_module_list():
         info = get_module_info(module)
         path = os.path.join(info['directory'], 'view', '*.xml')

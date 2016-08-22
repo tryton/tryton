@@ -70,8 +70,8 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
         if not configfile:
             return
-        logger.info('using %s as configuration file', configfile)
-        self.read(configfile)
+        read_files = self.read(configfile)
+        logger.info('using %s as configuration files', ', '.join(read_files))
 
     def get(self, section, option, *args, **kwargs):
         default = kwargs.pop('default', None)

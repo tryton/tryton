@@ -18,7 +18,8 @@ def get_parser():
     parser.add_argument('--version', action='version',
         version='%(prog)s ' + __version__)
     parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
-        default=os.environ.get('TRYTOND_CONFIG'), help="specify config file")
+        nargs='+', default=[os.environ.get('TRYTOND_CONFIG')],
+        help='Specify configuration files')
     parser.add_argument("-v", "--verbose", action="store_true",
         dest="verbose", help="enable verbose mode")
     parser.add_argument('--dev', dest='dev', action='store_true',
