@@ -89,6 +89,19 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="ir.menu_models"
             action="act_model_access_form" id="menu_model_access_form"/>
 
+        <record model="ir.action.act_window" id="act_model_access_form_relate_model">
+            <field name="name">Access</field>
+            <field name="res_model">ir.model.access</field>
+            <field name="domain"
+                eval="[('model', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_model_access_form_relate_model_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_model_access_form_relate_model"/>
+        </record>
+
         <record model="ir.ui.view" id="model_field_access_view_tree">
             <field name="model">ir.model.field.access</field>
             <field name="type">tree</field>
@@ -119,6 +132,19 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_model_access_form"
             action="act_model_field_access_form" id="menu_model_field_access_form"/>
+
+        <record model="ir.action.act_window" id="act_model_field_access_form_relate_field">
+            <field name="name">Access</field>
+            <field name="res_model">ir.model.field.access</field>
+            <field name="domain"
+                eval="[('field', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_modelfield__access_form_relate_field_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model.field,-1</field>
+            <field name="action" ref="act_model_field_access_form_relate_field"/>
+        </record>
 
         <record model="ir.action.report" id="report_model_graph">
             <field name="name">Graph</field>
