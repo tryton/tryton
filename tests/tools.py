@@ -27,7 +27,7 @@ def create_company(party=None, currency=None, config=None):
 
     if not config:
         config = get_config()
-    config._context = User.get_preferences(True, config.context)
+    config._context = User.get_preferences(True, {})
     return company_config
 
 
