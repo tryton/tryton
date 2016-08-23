@@ -287,7 +287,36 @@ class TableHandler(TableHandlerInterface):
         warnings.warn('Unable to drop constraint with SQLite backend')
 
     def drop_column(self, column_name, exception=False):
-        warnings.warn('Unable to drop column with SQLite backend')
+        if not self.column_exist(column_name):
+            return
+        cursor = Transaction().connection.cursor()
+        temp_table = '_temp_%s' % self.table_name
+        try:
+            TableHandler.table_rename(self.table_name, temp_table)
+        except Exception:
+            if exception:
+                raise
+            logger.warning('Unable to drop column: Error renaming '
+                'table %s to temp!', self.table_name)
+        new_table = TableHandler(self._model, history=self.history)
+        for col in self._columns.iteritems():
+            if col != column_name:
+                new_table.add_raw_column(col, col['typname'], True,
+                    field_size=col['size'])
+        columns_name = [x for x in new_table._columns.keys()]
+        cursor.execute(('INSERT INTO "%s" (' +
+                        ','.join('"%s"' % c for c in columns_name) +
+                        ') SELECT ' +
+                        ','.join('"%s"' % c for c in columns_name) + ' ' +
+                        'FROM "%s"') % (self.table_name, temp_table))
+        try:
+            cursor.execute('DROP TABLE "%s"' % temp_table)
+        except Exception:
+            if exception:
+                raise
+            logger.warning('Unable to drop temporary table %s',
+                self.temp_table)
+        self._update_definitions()
 
     @staticmethod
     def drop_table(model, table, cascade=False):

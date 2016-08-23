@@ -6,6 +6,7 @@
 * Allow to store Binary field in filestore
 * Add filestore module
 * Allow None in Greater/Less PYSON
+* Implementation of drop_column for SQLite
 * Add option to set admin password with trytond-admin
 * Remove super password
 * Remove database management from RPC
