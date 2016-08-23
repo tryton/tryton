@@ -6,7 +6,6 @@ Miscelleanous tools used by tryton
 """
 import os
 import sys
-import subprocess
 from array import array
 from itertools import islice
 import types
@@ -18,35 +17,6 @@ from sql import Literal
 from sql.operators import Or
 
 from trytond.const import OPERATORS
-
-
-def find_in_path(name):
-    if os.name == "nt":
-        sep = ';'
-    else:
-        sep = ':'
-    path = [directory for directory in os.environ['PATH'].split(sep)
-            if os.path.isdir(directory)]
-    for directory in path:
-        val = os.path.join(directory, name)
-        if os.path.isfile(val) or os.path.islink(val):
-            return val
-    return name
-
-
-def exec_command_pipe(name, *args, **kwargs):
-    prog = find_in_path(name)
-    if not prog:
-        raise Exception('Couldn\'t find %s' % name)
-    if os.name == "nt":
-        cmd = '"' + prog + '" ' + ' '.join(args)
-    else:
-        cmd = prog + ' ' + ' '.join(args)
-    child_env = dict(os.environ)
-    if kwargs.get('env'):
-        child_env.update(kwargs['env'])
-    return subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE, env=child_env)
 
 
 def file_open(name, mode="r", subdir='modules', encoding=None):
@@ -173,23 +143,6 @@ def memoize(maxsize):
 
         return wrapper
     return wrap
-
-
-def mod10r(number):
-    """
-    Recursive mod10
-
-    :param number: a number
-    :return: the same number completed with the recursive modulo base 10
-    """
-    codec = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5]
-    report = 0
-    result = ""
-    for digit in number:
-        result += digit
-        if digit.isdigit():
-            report = codec[(int(digit) + report) % 10]
-    return result + str((10 - report) % 10)
 
 
 def reduce_ids(field, ids):
