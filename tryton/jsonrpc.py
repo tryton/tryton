@@ -315,6 +315,7 @@ class ServerProxy(xmlrpclib.ServerProxy):
 
 
 class ServerPool(object):
+    keep_max = 4
 
     def __init__(self, *args, **kwargs):
         self.ServerProxy = partial(ServerProxy, *args, **kwargs)
@@ -337,10 +338,17 @@ class ServerPool(object):
             self._pool.append(conn)
             del self._used[id(conn)]
 
+            # Remove oldest connections
+            while len(self._pool) > self.keep_max:
+                conn = self._pool.pop()
+                conn.close()
+
     def close(self):
         with self._lock:
             for conn in self._pool + self._used.values():
                 conn.close()
+            self._pool = []
+            self._used.clear()
 
     @property
     def ssl(self):
