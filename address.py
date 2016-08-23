@@ -25,7 +25,7 @@ class Address(ModelSQL, ModelView):
             'readonly': If(~Eval('active'), True, Eval('id', 0) > 0),
             },
         depends=['active', 'id'])
-    name = fields.Char('Name', states=STATES, depends=DEPENDS)
+    name = fields.Char("Building Name", states=STATES, depends=DEPENDS)
     street = fields.Char('Street', states=STATES, depends=DEPENDS)
     streetbis = fields.Char('Street (bis)', states=STATES, depends=DEPENDS)
     zip = fields.Char('Zip', states=STATES, depends=DEPENDS)
