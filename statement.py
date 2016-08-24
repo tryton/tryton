@@ -64,9 +64,7 @@ class StatementLine:
             if not self.party:
                 self.party = self.payment.party
             clearing_account = self.payment.journal.clearing_account
-            if (not self.account
-                    and self.payment.clearing_move
-                    and clearing_account):
+            if not self.account and clearing_account:
                 self.account = clearing_account
             if self.statement and self.statement.journal:
                 with Transaction().set_context(date=self.payment.date):
