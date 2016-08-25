@@ -284,6 +284,10 @@ class Database(DatabaseInterface):
                 self.put_connection(connection)
         return self._search_path
 
+    def has_returning(self):
+        # RETURNING clause is available since PostgreSQL 8.2
+        return self._database.get_version(self) >= (8, 2)
+
 register_type(UNICODE)
 if PYDATE:
     register_type(PYDATE)
