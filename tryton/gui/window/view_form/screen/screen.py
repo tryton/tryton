@@ -139,7 +139,7 @@ class Screen(SignalEvent):
         self.__current_view = 0
         self.search_value = search_value
         self.fields_view_tree = {}
-        self.order = order
+        self.order = self.default_order = order
         self.view_to_load = []
         self._domain_parser = {}
         self.pre_validate = False

@@ -555,7 +555,7 @@ class ViewTree(View):
         for col in self.treeview.get_columns():
             if col != column and getattr(col, 'arrow', None):
                 col.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
-        self.screen.order = None
+        self.screen.order = self.screen.default_order
         if column.arrow.props.arrow_type == gtk.ARROW_NONE:
             column.arrow.set(gtk.ARROW_DOWN, gtk.SHADOW_IN)
             self.screen.order = [(column.name, 'ASC')]

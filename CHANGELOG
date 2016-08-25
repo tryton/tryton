@@ -1,3 +1,4 @@
+* Restore tab default order when no manual change
 * Call autocompletion when setting record value
 * Remove database management
 * Limit readonly state for xxx2Many
