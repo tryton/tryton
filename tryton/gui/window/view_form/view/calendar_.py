@@ -82,8 +82,8 @@ class ViewCalendar(View):
         self.screen.switch_view('form')
 
     def on_event_released(self, goocalendar, event):
-        dtstart = self.attributes.get('dtstart')
-        dtend = self.attributes.get('dtend') or dtstart
+        dtstart = self.attributes['dtstart']
+        dtend = self.attributes.get('dtend')
         record = event.record
         group = record.group
         previous_start = record[dtstart].get(record)
@@ -93,12 +93,12 @@ class ViewCalendar(View):
             new_start = event.start.date()
             new_end = event.end.date() if event.end else None
         if previous_start <= new_start:
-            if new_end:
+            if dtend:
                 group.fields[dtend].set_client(record, new_end)
             group.fields[dtstart].set_client(record, new_start)
         else:
             group.fields[dtstart].set_client(record, new_start)
-            if new_end:
+            if dtend:
                 group.fields[dtend].set_client(record, new_end)
         goocalendar.select(new_start)
         record.save()

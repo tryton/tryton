@@ -19,7 +19,7 @@ class Calendar_(goocalendar.Calendar):
         self.current_domain_period = self.get_displayed_period()
 
     def set_default_date(self, record, selected_date):
-        dtstart = self.attrs.get('dtstart')
+        dtstart = self.attrs['dtstart']
         record[dtstart].set(record, datetime.datetime.combine(selected_date,
             datetime.time(0)))
 
@@ -50,7 +50,7 @@ class Calendar_(goocalendar.Calendar):
     def current_domain(self):
         first_datetime, last_datetime = \
             self.current_domain_period.get_dates(True)
-        dtstart = self.attrs.get('dtstart')
+        dtstart = self.attrs['dtstart']
         dtend = self.attrs.get('dtend') or dtstart
         domain = ['OR',
             ['AND', (dtstart, '>=', first_datetime),
@@ -62,8 +62,8 @@ class Calendar_(goocalendar.Calendar):
         return domain
 
     def display(self, group):
-        dtstart = self.attrs.get('dtstart')
-        dtend = self.attrs.get('dtend') or dtstart
+        dtstart = self.attrs['dtstart']
+        dtend = self.attrs.get('dtend')
         if self.screen.current_record:
             record = self.screen.current_record
             date = record[dtstart].get(record)
@@ -81,7 +81,10 @@ class Calendar_(goocalendar.Calendar):
                 continue
 
             start = record[dtstart].get_client(record)
-            end = record[dtend].get_client(record)
+            if dtend:
+                end = record[dtend].get_client(record)
+            else:
+                end = None
             midnight = datetime.time(0)
             all_day = False
             if not isinstance(start, datetime.datetime):
