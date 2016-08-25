@@ -1,3 +1,4 @@
+* Add database dump cache for tests
 * Remove unused tools: find_in_path, exec_command_pipe and mod10r
 * Implementation of drop_column for SQLite
 * Allow to pass many configuration files

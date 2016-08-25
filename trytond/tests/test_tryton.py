@@ -6,6 +6,7 @@ import sys
 import unittest
 import doctest
 import re
+import subprocess
 from itertools import chain
 import operator
 from functools import wraps
@@ -20,6 +21,7 @@ from trytond.model.fields import get_eval_fields
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 from trytond.cache import Cache
+from trytond.config import config, parse_uri
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'CONTEXT',
     'install_module', 'ModuleTestCase', 'with_transaction',
@@ -30,6 +32,7 @@ Pool.start()
 USER = 1
 CONTEXT = {}
 DB_NAME = os.environ['DB_NAME']
+DB_CACHE = os.environ.get('DB_CACHE')
 DB = backend.get('Database')(DB_NAME)
 Pool.test = True
 POOL = Pool(DB_NAME)
@@ -39,6 +42,8 @@ def install_module(name):
     '''
     Install module for the tested database
     '''
+    if not db_exist(DB_NAME) and restore_db_cache(name):
+        return
     create_db()
     with Transaction().start(DB_NAME, 1) as transaction:
         Module = POOL.get('ir.module')
@@ -53,19 +58,103 @@ def install_module(name):
                 ('state', '!=', 'installed'),
                 ])
 
-        if not modules:
-            return
+        if modules:
+            Module.install(modules)
+            transaction.commit()
 
-        Module.install(modules)
-        transaction.commit()
+            InstallUpgrade = POOL.get('ir.module.install_upgrade',
+                type='wizard')
+            instance_id, _, _ = InstallUpgrade.create()
+            transaction.commit()
+            InstallUpgrade(instance_id).transition_upgrade()
+            InstallUpgrade.delete(instance_id)
+            transaction.commit()
+    backup_db_cache(name)
 
-        InstallUpgrade = POOL.get('ir.module.install_upgrade',
-            type='wizard')
-        instance_id, _, _ = InstallUpgrade.create()
-        transaction.commit()
-        InstallUpgrade(instance_id).transition_upgrade()
-        InstallUpgrade.delete(instance_id)
-        transaction.commit()
+
+def restore_db_cache(name):
+    result = False
+    if DB_CACHE:
+        backend_name = backend.name()
+        cache_file = _db_cache_file(DB_CACHE, name, backend_name)
+        if os.path.exists(cache_file):
+            if backend_name == 'sqlite':
+                result = _sqlite_copy(cache_file, restore=True)
+            elif backend_name == 'postgresql':
+                result = _pg_restore(cache_file)
+    if result:
+        POOL.init()
+    return result
+
+
+def backup_db_cache(name):
+    if DB_CACHE:
+        if not os.path.exists(DB_CACHE):
+            os.makedirs(DB_CACHE)
+        backend_name = backend.name()
+        cache_file = _db_cache_file(DB_CACHE, name, backend_name)
+        if backend_name == 'sqlite':
+            _sqlite_copy(cache_file)
+        elif backend_name == 'postgresql':
+            _pg_dump(cache_file)
+
+
+def _db_cache_file(path, name, backend_name):
+    return os.path.join(path, '%s-%s-py%s.dump'
+        % (name, backend_name, sys.version_info.major))
+
+
+def _sqlite_copy(file_, restore=False):
+    try:
+        import sqlitebck
+    except ImportError:
+        return False
+    import sqlite3 as sqlite
+
+    with Transaction().start(DB_NAME, 0) as transaction, \
+            sqlite.connect(file_) as conn2:
+        conn1 = transaction.connection
+        # sqlitebck does not work with pysqlite2
+        if not isinstance(conn1, sqlite.Connection):
+            return False
+        if restore:
+            conn2, conn1 = conn1, conn2
+        sqlitebck.copy(conn1, conn2)
+    return True
+
+
+def _pg_options():
+    uri = parse_uri(config.get('database', 'uri'))
+    options = []
+    env = os.environ.copy()
+    if uri.hostname:
+        options.extend(['-h', uri.hostname])
+    if uri.port:
+        options.extend(['-p', str(uri.port)])
+    if uri.username:
+        options.extend(['-U', uri.username])
+    if uri.password:
+        env['PGPASSWORD'] = uri.password
+    return options, env
+
+
+def _pg_restore(cache_file):
+    with Transaction().start(None, 0, close=True, autocommit=True) \
+            as transaction:
+        transaction.database.create(transaction.connection, DB_NAME)
+    cmd = ['pg_restore', '-d', DB_NAME]
+    options, env = _pg_options()
+    cmd.extend(options)
+    cmd.append(cache_file)
+    return not subprocess.call(cmd, env=env)
+
+
+def _pg_dump(cache_file):
+    cmd = ['pg_dump', '-f', cache_file, '-F', 'c']
+    options, env = _pg_options()
+    cmd.extend(options)
+    cmd.append(DB_NAME)
+    return not subprocess.call(cmd, env=env)
 
 
 def with_transaction(user=1, context=None):
@@ -89,7 +178,7 @@ class ModuleTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        drop_create()
+        drop_db()
         install_module(cls.module)
         super(ModuleTestCase, cls).setUpClass()
 
