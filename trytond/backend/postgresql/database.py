@@ -70,6 +70,7 @@ class Database(DatabaseInterface):
         self._databases.setdefault(name, self)
         self._search_path = None
         self._current_user = None
+        self._has_returning = None
 
     @classmethod
     def dsn(cls, name):
@@ -285,8 +286,14 @@ class Database(DatabaseInterface):
         return self._search_path
 
     def has_returning(self):
-        # RETURNING clause is available since PostgreSQL 8.2
-        return self._database.get_version(self) >= (8, 2)
+        if self._has_returning is None:
+            connection = self.get_connection()
+            try:
+                # RETURNING clause is available since PostgreSQL 8.2
+                self._has_returning = self.get_version(connection) >= (8, 2)
+            finally:
+                self.put_connection(connection)
+        return self._has_returning
 
 register_type(UNICODE)
 if PYDATE:
