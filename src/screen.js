@@ -627,7 +627,7 @@
             this.size_limit = null;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
-            this.order = attributes.order;
+            this.order = this.default_order = attributes.order;
             var access = Sao.common.MODELACCESS.get(model_name);
             if (!(access.write || access.create)) {
                 this.attributes.readonly = true;

@@ -1,3 +1,4 @@
+* Restore tab default order when no manual change
 * Add support for column sorting
 * Manage confirm attribute on buttons
 * Call autocompletion when setting record value

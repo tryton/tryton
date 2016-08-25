@@ -223,7 +223,7 @@
                     }
                 }
             });
-            this.screen.order = null;
+            this.screen.order = this.screen.default_order;
             if (arrow.hasClass(arrow_bottom)) {
                 arrow.removeClass(arrow_bottom);
                 arrow.addClass(arrow_top);
