@@ -751,19 +751,36 @@
                 var column = this.tree.columns[i];
                 var td = this._get_column_td(i);
                 var tr = td.find('tr');
+                var cell;
                 if (column.prefixes) {
                     for (var j = 0; j < column.prefixes.length; j++) {
                         var prefix = column.prefixes[j];
-                        jQuery(tr.children('.prefix')[j])
-                            .html(prefix.render(this.record));
+                        var prefix_el = jQuery(tr.children('.prefix')[j]);
+                        cell = prefix_el.children();
+                        if (cell.length) {
+                            prefix.render(this.record, cell);
+                        } else {
+                            prefix_el.html(prefix.render(this.record));
+                        }
                     }
                 }
-                jQuery(tr.children('.widget')).html(column.render(this.record));
+                var widget = tr.children('.widget');
+                cell = widget.children();
+                if (cell.length) {
+                    column.render(this.record, cell);
+                } else {
+                    widget.html(column.render(this.record));
+                }
                 if (column.suffixes) {
                     for (var k = 0; k < column.suffixes.length; k++) {
                         var suffix = column.suffixes[k];
-                        jQuery(tr.children('.suffix')[k])
-                            .html(suffix.render(this.record));
+                        var suffix_el = jQuery(tr.children('.suffix')[k]);
+                        cell = suffix_el.children();
+                        if (cell.length) {
+                            suffix.render(this.record, cell);
+                        } else {
+                            suffix_el.html(suffix.render(this.record));
+                        }
                     }
                 }
                 if ((column.header.is(':hidden') && thead_visible) ||
@@ -1246,8 +1263,10 @@
             cell.addClass('column-affix');
             return cell;
         },
-        render: function(record) {
-            var cell = this.get_cell();
+        render: function(record, cell) {
+            if (!cell) {
+                cell = this.get_cell();
+            }
             record.load(this.attributes.name).done(function() {
                 var value, icon_prm;
                 var field = record.model.fields[this.attributes.name];
@@ -1329,8 +1348,10 @@
         update_text: function(cell, record) {
             cell.text(this.field.get_client(record));
         },
-        render: function(record) {
-            var cell = this.get_cell();
+        render: function(record, cell) {
+            if (!cell) {
+                cell = this.get_cell();
+            }
             record.load(this.attributes.name).done(function() {
                 this.update_text(cell, record);
                 this.field.set_state(record);
@@ -1516,8 +1537,10 @@
             cell.css('width', '100%');
             return cell;
         },
-        render: function(record) {
-            var cell = this.get_cell();
+        render: function(record, cell) {
+            if (!cell) {
+                cell = this.get_cell();
+            }
             record.load(this.attributes.name).done(function() {
                 var value = this.field.get_client(record);
                 if (value) {
@@ -1546,8 +1569,9 @@
 
     Sao.View.Tree.URLColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-url',
-        render: function(record) {
-            var cell = Sao.View.Tree.URLColumn._super.render.call(this, record);
+        render: function(record, cell) {
+            cell = Sao.View.Tree.URLColumn._super.render.call(
+                    this, record, cell);
             this.field.set_state(record);
             var state_attrs = this.field.get_state_attrs(record);
             if (state_attrs.readonly) {
@@ -1555,6 +1579,7 @@
             } else {
                 cell.show();
             }
+            return cell;
         }
     });
 
@@ -1593,9 +1618,12 @@
             this.type = 'button';
             this.attributes = attributes;
         },
-        render: function(record) {
-            var button = new Sao.common.Button(this.attributes);
-            button.el.click([record, button], this.button_clicked.bind(this));
+        render: function(record, el) {
+            var button = new Sao.common.Button(this.attributes, el);
+            if (!el) {
+                button.el.click(
+                        [record, button], this.button_clicked.bind(this));
+            }
             var fields = jQuery.map(this.screen.model.fields,
                 function(field, name) {
                     if ((field.description.loading || 'eager') ==

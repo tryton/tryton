@@ -714,17 +714,22 @@
     };
 
     Sao.common.Button = Sao.class_(Object, {
-        init: function(attributes) {
+        init: function(attributes, el) {
             this.attributes = attributes;
-            this.el = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            });
-            this.icon = jQuery('<img/>', {
-                'class': 'icon',
-                'aria-hidden': true
-            }).appendTo(this.el);
-            this.icon.hide();
+            if (el) {
+                this.el = el;
+            } else {
+                this.el = jQuery('<button/>');
+            }
+            this.icon = this.el.children('img');
+            if (!this.icon.length) {
+                this.icon = jQuery('<img/>').appendTo(this.el);
+                this.icon.hide();
+            }
+            this.el.addClass('btn btn-default');
+            this.el.attr('type', 'button');
+            this.icon.addClass('icon');
+            this.icon.attr('aria-hidden', true);
             this.el.append(attributes.string || '');
             this.set_icon(attributes.icon);
         },
