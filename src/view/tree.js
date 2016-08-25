@@ -72,8 +72,7 @@
                 'class': 'tree table table-hover table-striped'
             });
             this.el.append(this.table);
-            var thead = jQuery('<thead/>');
-            this.table.append(thead);
+            this.thead = jQuery('<thead/>').appendTo(this.table);
             var tr = jQuery('<tr/>');
             if (this.selection_mode != Sao.common.SELECTION_NONE) {
                 var th = jQuery('<th/>', {
@@ -87,7 +86,7 @@
                 th.append(this.selection);
                 tr.append(th);
             }
-            thead.append(tr);
+            this.thead.append(tr);
             this.columns.forEach(function(column) {
                 th = jQuery('<th/>');
                 var label = jQuery('<label/>')
@@ -339,7 +338,8 @@
         },
         construct: function(selected, expanded) {
             this.rows = [];
-            this.tbody.empty();
+            var tbody = this.tbody;
+            this.tbody = jQuery('<tbody/>');
             var add_row = function(record, pos, group) {
                 var RowBuilder;
                 if (this.editable) {
@@ -358,13 +358,10 @@
             } else {
                 this.more.show();
             }
+            tbody.replaceWith(this.tbody);
         },
         redraw: function(selected, expanded) {
-            var redraw_row = function(record, pos, group) {
-               this.rows[pos].redraw(selected, expanded);
-            };
-            this.screen.group.slice(0, this.display_size).forEach(
-                    redraw_row.bind(this));
+            redraw_async(this.rows, selected, expanded);
         },
         switch_: function(path) {
             this.screen.row_activate();
@@ -562,6 +559,20 @@
         }
     });
 
+    function redraw_async(rows, selected, expanded) {
+        var chunk = Sao.config.display_size;
+        var redraw_rows = function(i) {
+            rows.slice(i, i + chunk).forEach(function(row) {
+                row.redraw(selected, expanded);
+            });
+            i += chunk;
+            if (i < rows.length) {
+                setTimeout(redraw_rows, 0, i);
+            }
+        };
+        setTimeout(redraw_rows, 0, 0);
+    }
+
     Sao.View.Tree.Row = Sao.class_(Object, {
         init: function(tree, record, pos, parent) {
             this.tree = tree;
@@ -714,6 +725,7 @@
                     this.expander.css('visibility', 'hidden');
                 }
             };
+            var thead_visible = this.tree.thead.is(':visible');
 
             for (var i = 0; i < this.tree.columns.length; i++) {
                 if ((i === 0) && this.children_field) {
@@ -738,8 +750,7 @@
                             .html(suffix.render(this.record));
                     }
                 }
-                if ((column.header.is(':hidden') &&
-                           this.tree.table.find('thead').is(':visible')) ||
+                if ((column.header.is(':hidden') && thead_visible) ||
                         column.header.css('display') == 'none') {
                     td.hide();
                 } else {
@@ -756,11 +767,7 @@
                          this.rows.length === 0)) {
                     this.expand_children(selected, expanded);
                 } else {
-                    var child_row;
-                    for (i = 0; i < this.rows.length; i++) {
-                        child_row = this.rows[i];
-                        child_row.redraw(selected, expanded);
-                    }
+                    redraw_async(this.rows, selected, expanded);
                 }
                 if (this.expander) {
                     this.update_expander(true);
@@ -810,16 +817,18 @@
                 if (!jQuery.isEmptyObject(this.rows)) {
                     return;
                 }
+                var new_rows = [];
                 var add_row = function(record, pos, group) {
                     var tree_row = new this.Class(
                             this.tree, record, pos, this);
                     tree_row.construct(selected, expanded);
-                    tree_row.redraw(selected, expanded);
                     this.rows.push(tree_row);
+                    new_rows.push(tree_row);
                 };
                 var children = this.record.field_get_client(
                         this.children_field);
                 children.forEach(add_row.bind(this));
+                redraw_async(new_rows, selected, expanded);
             };
             return this.record.load(this.children_field).done(
                     add_children.bind(this));
