@@ -1270,15 +1270,16 @@
                 // Filter only fields in XML view
                 var xml_view = jQuery(jQuery.parseXML(view_tree.arch));
                 var xml_fields = xml_view.find('tree').children()
-                    .filter(function(node) {
+                    .filter(function(i, node) {
                         return node.tagName == 'field';
-                    }).map(function(node) {
+                    }).map(function(i, node) {
                         return node.getAttribute('name');
                     });
                 var dom_fields = {};
-                xml_fields.each(function(name) {
+                xml_fields.each(function(k, name) {
                     dom_fields[name] = fields[name];
                 });
+                fields = dom_fields;
             }
 
             // Add common fields
@@ -1307,13 +1308,6 @@
                             }
                         }
                     });
-            if (!('id' in fields)) {
-                fields.id = {
-                    'string': Sao.i18n.gettext('ID'),
-                    'name': 'id',
-                    'type': 'integer'
-                };
-            }
 
             var context = jQuery.extend({},
                     this.model.session.context,
