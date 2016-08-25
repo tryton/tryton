@@ -761,11 +761,13 @@ class ModelSQL(ModelStorage):
                             _datetime=row[datetime_field]):
                         date_results = field.get([row['id']], cls, field_list,
                             values=[row])
-                    for fname, date_result in date_results.iteritems():
+                    for fname in field_list:
+                        date_result = date_results[fname]
                         row[fname] = date_result[row['id']]
             else:
                 getter_results = field.get(ids, cls, field_list, values=result)
-                for fname, getter_result in getter_results.iteritems():
+                for fname in field_list:
+                    getter_result = getter_results[fname]
                     for row in result:
                         row[fname] = getter_result[row['id']]
 
