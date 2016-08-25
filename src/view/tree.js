@@ -279,12 +279,23 @@
             }
             expanded = expanded || [];
 
-            if ((this.screen.group.length != this.rows.length) ||
-                    !Sao.common.compare(
-                        this.screen.group, this.rows.map(function(row) {
-                            return row.record;
-                        })) || this.children_field) {  // XXX find better check
-                                                       // to keep focus
+            var row_records = function() {
+                return this.rows.map(function(row) {
+                    return row.record;
+                });
+            }.bind(this);
+            var min_display_size = Math.min(
+                    this.screen.group.length, this.display_size);
+            // XXX find better check to keep focus
+            if (this.children_field) {
+                this.construct(selected, expanded);
+            } else if ((min_display_size > this.rows.length) &&
+                    (Sao.common.compare(
+                            this.screen.group.slice(0, this.rows.length),
+                            row_records()))) {
+                this.construct(selected, expanded, true);
+            } else if ((min_display_size != this.rows.length) ||
+                    !Sao.common.compare(this.screen.group, row_records())){
                 this.construct(selected, expanded);
             }
 
@@ -336,10 +347,13 @@
             this.redraw(selected, expanded);
             return jQuery.when();
         },
-        construct: function(selected, expanded) {
-            this.rows = [];
+        construct: function(selected, expanded, extend) {
             var tbody = this.tbody;
-            this.tbody = jQuery('<tbody/>');
+            if (!extend) {
+                this.rows = [];
+                this.tbody = jQuery('<tbody/>');
+            }
+            var start = this.rows.length;
             var add_row = function(record, pos, group) {
                 var RowBuilder;
                 if (this.editable) {
@@ -347,18 +361,20 @@
                 } else {
                     RowBuilder = Sao.View.Tree.Row;
                 }
-                var tree_row = new RowBuilder(this, record, pos);
+                var tree_row = new RowBuilder(this, record, this.rows.length);
                 this.rows.push(tree_row);
                 tree_row.construct(selected, expanded);
             };
-            this.screen.group.slice(0, this.display_size).forEach(
+            this.screen.group.slice(start, this.display_size).forEach(
                     add_row.bind(this));
             if (this.display_size >= this.screen.group.length) {
                 this.more.hide();
             } else {
                 this.more.show();
             }
-            tbody.replaceWith(this.tbody);
+            if (!extend) {
+                tbody.replaceWith(this.tbody);
+            }
         },
         redraw: function(selected, expanded) {
             redraw_async(this.rows, selected, expanded);
