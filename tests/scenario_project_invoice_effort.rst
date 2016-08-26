@@ -7,7 +7,8 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -16,33 +17,19 @@ Imports::
     ...     create_payment_term
     >>> today = datetime.date.today()
 
-Create database::
-
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
 Install project_invoice::
 
-    >>> Module = Model.get('ir.module')
-    >>> module, = Module.find([
-    ...         ('name', '=', 'project_invoice'),
-    ...     ])
-    >>> module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules('project_invoice')
 
 Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
 
-Reload the context::
+Create project user::
 
     >>> User = Model.get('res.user')
     >>> Group = Model.get('res.group')
-    >>> config._context = User.get_preferences(True, config.context)
-
-Create project user::
-
     >>> project_user = User()
     >>> project_user.name = 'Project'
     >>> project_user.login = 'project'
