@@ -6,7 +6,8 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -16,21 +17,9 @@ Imports::
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
 
-Create database::
+Install account_payment_clearing and account_statement::
 
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
-Install account_payment_clearing::
-
-    >>> Module = Model.get('ir.module')
-    >>> account_payment_module, = Module.find(
-    ...     [('name', '=', 'account_payment_clearing')])
-    >>> account_payment_module.click('install')
-    >>> account_statement_module, = Module.find(
-    ...     [('name', '=', 'account_statement')])
-    >>> account_statement_module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules(['account_payment_clearing', 'account_statement'])
 
 Create company::
 
