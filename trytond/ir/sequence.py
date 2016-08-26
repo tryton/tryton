@@ -385,7 +385,7 @@ class Sequence(ModelSQL, ModelView):
 class SequenceStrict(Sequence):
     "Sequence Strict"
     __name__ = 'ir.sequence.strict'
-    _table = 'ir_sequence_strict'  # Needed to override Sequence._table
+    _table = None  # Needed to reset Sequence._table
     _strict = True
 
     @classmethod
