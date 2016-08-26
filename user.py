@@ -322,6 +322,7 @@ class User(ModelSQL, ModelView):
 class UserAuthenticateAttempt(LoginAttempt):
     'Web User Authenticate Attempt'
     __name__ = 'web.user.authenticate.attempt'
+    _table = None  # Needed to reset LoginAttempt._table
 
 
 class UserSession(ModelSQL):
