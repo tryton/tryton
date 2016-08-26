@@ -16,6 +16,7 @@ Imports::
 Install product_cost_fifo Module::
 
     >>> config = install_modules('product_cost_fifo')
+
 Create company::
 
     >>> _ = create_company()
