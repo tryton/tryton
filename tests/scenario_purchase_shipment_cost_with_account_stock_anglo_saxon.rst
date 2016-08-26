@@ -7,7 +7,8 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -20,43 +21,18 @@ Imports::
     ...     add_cogs_accounts
     >>> today = datetime.date.today()
 
-Create database::
-
-    >>> current_config = config.set_trytond()
-    >>> current_config.pool.test = True
-
 Install purchase_shipment_cost, account_stock_continental and purchase::
 
-    >>> Module = Model.get('ir.module')
-    >>> modules = Module.find([
-    ...         ('name', 'in', ('purchase_shipment_cost',
-    ...             'account_stock_anglo_saxon', 'purchase')),
-    ...     ])
-    >>> for module in modules:
-    ...     module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules([
+    ...         'purchase_shipment_cost',
+    ...         'account_stock_anglo_saxon',
+    ...         'purchase',
+    ...         ])
 
 Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
-
-Reload the context::
-
-    >>> User = Model.get('res.user')
-    >>> current_config._context = User.get_preferences(True,
-    ...     current_config.context)
-
-Create an accountant user::
-
-    >>> Group = Model.get('res.group')
-    >>> accountant = User()
-    >>> accountant.name = 'Accountant'
-    >>> accountant.login = 'accountant'
-    >>> accountant.password = 'accountant'
-    >>> account_group, = Group.find([('name', '=', 'Account')])
-    >>> accountant.groups.append(account_group)
-    >>> accountant.save()
 
 Create fiscal year::
 
