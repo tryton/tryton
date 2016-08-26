@@ -4,7 +4,7 @@ import unittest
 import doctest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
 
@@ -19,7 +19,7 @@ def suite():
             PurchaseInvoiceLineStandaloneTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_purchase_invoice_line_standalone.rst',
-            setUp=doctest_setup, tearDown=doctest_teardown, encoding='UTF-8',
+            tearDown=doctest_teardown, encoding='UTF-8',
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
