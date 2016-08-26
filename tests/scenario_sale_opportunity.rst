@@ -5,7 +5,8 @@ Sale Opportunity Scenario
 Imports::
 
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -13,28 +14,14 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
 
-Create database::
-
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
 Install sale_opportunity::
 
-    >>> Module = Model.get('ir.module')
-    >>> sale_opportunity_module, = Module.find([('name', '=', 'sale_opportunity')])
-    >>> sale_opportunity_module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules('sale_opportunity')
 
 Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
-
-Reload the context::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> config._context = User.get_preferences(True, config.context)
 
 Create chart of accounts::
 
@@ -44,6 +31,8 @@ Create chart of accounts::
 
 Create sale opportunity user::
 
+    >>> User = Model.get('res.user')
+    >>> Group = Model.get('res.group')
     >>> sale_opportunity_user = User()
     >>> sale_opportunity_user.name = 'Sale Opportunity'
     >>> sale_opportunity_user.login = 'sale_opportunity'
