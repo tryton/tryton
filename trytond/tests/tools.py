@@ -15,10 +15,10 @@ def install_modules(modules):
 
     cfg = _get_config()
     Module = Model.get('ir.module')
-    module, = Module.find([
+    modules = Module.find([
             ('name', 'in', modules),
             ])
-    module.click('install')
+    Module.click(modules, 'install')
     Wizard('ir.module.install_upgrade').execute('upgrade')
 
     backup_db_cache(cache_name)
