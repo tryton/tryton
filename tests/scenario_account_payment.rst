@@ -5,24 +5,16 @@ Payment Scenario
 Imports::
     >>> import datetime
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
-Create database::
-
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
 Install account_payment::
 
-    >>> Module = Model.get('ir.module')
-    >>> account_payment_module, = Module.find(
-    ...     [('name', '=', 'account_payment')])
-    >>> account_payment_module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules('account_payment')
 
 Create company::
 
