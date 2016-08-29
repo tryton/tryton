@@ -172,5 +172,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="value">,fixed</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_product_from_template">
+            <field name="name">Variants</field>
+            <field name="res_model">product.product</field>
+            <field name="domain" pyson="1"
+                eval="[If(Len(Eval('active_ids', [])) == 1, ('template', '=', Eval('active_id')), ('template', 'in', Eval('active_ids')))]"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_product_from_template_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree"/>
+            <field name="act_window" ref="act_product_from_template"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_productfrom_template_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_view_form"/>
+            <field name="act_window" ref="act_product_from_template"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_product_from_template_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_from_template"/>
+        </record>
+
     </data>
 </tryton>
