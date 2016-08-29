@@ -189,7 +189,14 @@ var Sao = {};
 
     Sao.i18n = i18n();
     Sao.i18n.setlang = function(lang) {
+        if (!lang) {
+            lang = (navigator.language ||
+                 navigator.browserLanguage ||
+                 navigator.userLanguage ||
+                 'en_US').replace('-', '_');
+        }
         Sao.i18n.setLocale(lang);
+        moment.locale(lang.slice(0, 2));
         return jQuery.getJSON('locale/' + lang + '.json', function(data) {
             if (!data[''].language) {
                 data[''].language = lang;
@@ -210,11 +217,7 @@ var Sao = {};
     Sao.i18n.getlang = function() {
         return Sao.i18n.getLocale();
     };
-    Sao.i18n.setlang(
-            (navigator.language ||
-             navigator.browserLanguge ||
-             navigator.userLanguage ||
-             'en_US').replace('-', '_'));
+    Sao.i18n.setlang();
 
     Sao.get_preferences = function() {
         var session = Sao.Session.current_session;

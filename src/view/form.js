@@ -1056,7 +1056,9 @@
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
-            this.date.datetimepicker();
+            this.date.datetimepicker({
+                'locale': moment.locale()
+            });
             this.date.css('width', this._width);
             this.date.on('dp.hide', this.focus_out.bind(this));
         },
@@ -3647,7 +3649,8 @@
                 'class': 'glyphicon glyphicon-calendar'
             })).prependTo(group);
             this.input.datetimepicker({
-                'format': Sao.common.moment_format(this.format)
+                'format': Sao.common.moment_format(this.format),
+                'locale': moment.locale()
             });
             this.input.on('dp.hide',
                     this.parent_widget.focus_out.bind(this.parent_widget));

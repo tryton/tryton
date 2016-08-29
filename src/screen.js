@@ -537,7 +537,9 @@
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-calendar'
                 }))).appendTo(entry);
-                entry.datetimepicker();
+                entry.datetimepicker({
+                    'locale': moment.locale()
+                });
                 entry.data('DateTimePicker').format(format);
                 return entry;
             };
