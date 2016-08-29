@@ -16,8 +16,17 @@ class Statement:
     def create_move(cls, statements):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        Payment = pool.get('account.payment')
 
         moves = super(Statement, cls).create_move(statements)
+
+        to_success = []
+        for move, statement, lines in moves:
+            for line in lines:
+                if line.payment:
+                    to_success.append(line.payment)
+        if to_success:
+            Payment.succeed(to_success)
 
         for move, statement, lines in moves:
             assert len({l.payment for l in lines}) == 1

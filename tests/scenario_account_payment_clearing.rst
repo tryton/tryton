@@ -310,3 +310,65 @@ Succeed payment::
     Decimal('20.00')
     >>> debit_line.amount_second_currency
     Decimal('40.00')
+
+Validate Statement with processing payment
+--------------------------------------------
+
+Create a payable move::
+
+    >>> move = Move()
+    >>> move.journal = expense
+    >>> line = move.lines.new(account=payable, party=supplier,
+    ...     credit=Decimal('50.00'))
+    >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
+    >>> move.click('post')
+
+Create a processing payment for the move::
+
+    >>> Payment = Model.get('account.payment')
+    >>> line, = [l for l in move.lines if l.account == payable]
+    >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.form.journal = payment_journal
+    >>> pay_line.execute('pay')
+    >>> payment, = Payment.find([('line', '=', line.id)])
+    >>> payment.click('approve')
+    >>> payment.state
+    u'approved'
+    >>> process_payment = Wizard('account.payment.process', [payment])
+    >>> process_payment.execute('process')
+    >>> payment.reload()
+    >>> payment.state
+    u'processing'
+
+Create statement for the payment::
+
+    >>> statement = Statement(name='test',
+    ...     journal=statement_journal,
+    ...     start_balance=Decimal('-50.00'),
+    ...     end_balance=Decimal('-100.00'))
+    >>> line = statement.lines.new(date=today)
+    >>> line.payment = payment
+    >>> line.party == supplier
+    True
+    >>> line.account == bank_clearing
+    True
+    >>> line.amount
+    Decimal('-50.00')
+    >>> statement.save()
+
+Validate statement and check the payment is confirmed::
+
+    >>> statement.click('validate_statement')
+    >>> statement.state
+    u'validated'
+    >>> line, = statement.lines
+    >>> move_line, = [l for l in line.move.lines
+    ...     if l.account == bank_clearing]
+    >>> bool(move_line.reconciliation)
+    True
+    >>> payment.reload()
+    >>> payment.state
+    u'succeeded'
+    >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
+    >>> debit_line.debit
+    Decimal('50.00')
