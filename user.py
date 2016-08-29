@@ -43,7 +43,7 @@ def _send_email(from_, users, email_func):
         msg, title = email_func(user)
         msg['From'] = from_
         msg['To'] = user.email
-        msg['Title'] = title
+        msg['Subject'] = title
         sendmail_transactional(from_, [user.email], msg)
 
 
