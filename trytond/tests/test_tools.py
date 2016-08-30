@@ -9,7 +9,7 @@ import sql
 import sql.operators
 
 from trytond.tools import reduce_ids, datetime_strftime, \
-    reduce_domain, decimal_, is_instance_method
+    reduce_domain, decimal_, is_instance_method, file_open
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -113,6 +113,20 @@ class ToolsTestCase(unittest.TestCase):
         self.assertFalse(is_instance_method(Foo, 'static'))
         self.assertFalse(is_instance_method(Foo, 'klass'))
         self.assertTrue(is_instance_method(Foo, 'instance'))
+
+    def test_file_open(self):
+        "Test file_open"
+        self.assertTrue(file_open('__init__.py', subdir=None))
+        self.assertTrue(file_open('ir/__init__.py'))
+
+        with self.assertRaisesRegexp(IOError, "File not found :"):
+            file_open('ir/noexist')
+
+        with self.assertRaisesRegexp(IOError, "Permission denied:"):
+            file_open('/etc/passwd')
+
+        with self.assertRaisesRegexp(IOError, "Permission denied:"):
+            file_open('../../foo')
 
 
 def suite():
