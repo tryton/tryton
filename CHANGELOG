@@ -1,3 +1,5 @@
+Version 4.0.4 - 2016-08-30
+* Bug fixes (see mercurial logs for details)
 * Sanitize path in file_open (CVE-2016-1242)
 * Prevent read of user password hash (CVE-2016-1241)
 
