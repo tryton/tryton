@@ -37,6 +37,7 @@ class UserTestCase(unittest.TestCase):
             User.write([user], {
                     'password': password,
                     })
+        return user
 
     def check_user(self, login, password):
         pool = Pool()
@@ -71,6 +72,12 @@ class UserTestCase(unittest.TestCase):
         'Test bcrypt password'
         self.create_user('user', '12345', 'bcrypt')
         self.check_user('user', '12345')
+
+    @with_transaction()
+    def test_read_password_hash(self):
+        "Test password_hash can not be read"
+        user = self.create_user('user', '12345')
+        self.assertIsNone(user.password_hash)
 
 
 def suite():
