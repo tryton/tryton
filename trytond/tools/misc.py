@@ -28,6 +28,14 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
         filename = __file__
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(filename)))
 
+    def secure_join(root, *paths):
+        "Join paths and ensure it still below root"
+        path = os.path.join(root, *paths)
+        path = os.path.normpath(path)
+        if not path.startswith(root):
+            raise IOError("Permission denied: %s" % name)
+        return path
+
     egg_name = False
     if subdir == 'modules':
         module_name = name.split(os.sep)[0]
@@ -35,19 +43,19 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
             epoint = EGG_MODULES[module_name]
             mod_path = os.path.join(epoint.dist.location,
                     *epoint.module_name.split('.')[:-1])
-            egg_name = os.path.join(mod_path, name)
+            egg_name = secure_join(mod_path, name)
             if not os.path.isfile(egg_name):
                 # Find module in path
                 for path in sys.path:
                     mod_path = os.path.join(path,
                             *epoint.module_name.split('.')[:-1])
-                    egg_name = os.path.join(mod_path, name)
+                    egg_name = secure_join(mod_path, name)
                     if os.path.isfile(egg_name):
                         break
                 if not os.path.isfile(egg_name):
                     # When testing modules from setuptools location is the
                     # module directory
-                    egg_name = os.path.join(
+                    egg_name = secure_join(
                         os.path.dirname(epoint.dist.location), name)
 
     if subdir:
@@ -55,11 +63,11 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
                 and (name.startswith('ir' + os.sep)
                     or name.startswith('res' + os.sep)
                     or name.startswith('tests' + os.sep))):
-            name = os.path.join(root_path, name)
+            name = secure_join(root_path, name)
         else:
-            name = os.path.join(root_path, subdir, name)
+            name = secure_join(root_path, subdir, name)
     else:
-        name = os.path.join(root_path, name)
+        name = secure_join(root_path, name)
 
     for i in (name, egg_name):
         if i and os.path.isfile(i):

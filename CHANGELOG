@@ -1,3 +1,4 @@
+* Sanitize path in file_open (CVE-2016-1242)
 * Prevent read of user password hash (CVE-2016-1241)
 * Add database dump cache for tests
 * Remove unused tools: find_in_path, exec_command_pipe and mod10r
