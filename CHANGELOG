@@ -1,3 +1,5 @@
+* Prevent read of user password hash (CVE-2016-1241)
+
 Version 4.0.3 - 2016-08-02
 * Bug fixes (see mercurial logs for details)
 
