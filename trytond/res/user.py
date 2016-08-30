@@ -227,6 +227,14 @@ class User(ModelSQL, ModelView):
         return vals
 
     @classmethod
+    def read(cls, ids, fields_names=None):
+        result = super(User, cls).read(ids, fields_names=fields_names)
+        if not fields_names or 'password_hash' in fields_names:
+            for values in result:
+                values['password_hash'] = None
+        return result
+
+    @classmethod
     def create(cls, vlist):
         vlist = [cls._convert_vals(vals) for vals in vlist]
         res = super(User, cls).create(vlist)
