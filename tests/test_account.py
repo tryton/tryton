@@ -812,10 +812,21 @@ class AccountTestCase(ModuleTestCase):
 
             def check_fields():
                 party_test = Party(party.id)
-                self.assertEqual(party_test.receivable, Decimal('300'))
-                self.assertEqual(party_test.receivable_today, Decimal('100'))
-                self.assertEqual(party_test.payable, Decimal('90'))
-                self.assertEqual(party_test.payable_today, Decimal('30'))
+
+                for field, value in [('receivable', Decimal('300')),
+                        ('receivable_today', Decimal('100')),
+                        ('payable', Decimal('90')),
+                        ('payable_today', Decimal('30')),
+                        ]:
+                    msg = 'field: %s, value: %s' % (field, value)
+                    self.assertEqual(
+                        getattr(party_test, field), value, msg=msg)
+                    self.assertEqual(
+                        Party.search([(field, '=', value)]),
+                        [party_test], msg=msg)
+                    self.assertEqual(
+                        Party.search([(field, '!=', value)]),
+                        [], msg=msg)
 
             check_fields()
             close_fiscalyear(fiscalyear)
