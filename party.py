@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from sql import Literal
+from sql import Literal, Cast
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -161,9 +161,14 @@ class Party:
             today_query = ((line.maturity_date <= Date.today())
                 | (line.maturity_date == None))
 
-        line_query, _ = MoveLine.query_get(line)
         Operator = fields.SQL_OPERATORS[clause[1]]
 
+        # Need to cast numeric for sqlite
+        type_ = MoveLine.debit.sql_type().base
+        amount = Cast(
+            Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+            type_)
+        value = Cast(Literal(Decimal(clause[2] or 0)), type_)
         query = line.join(account, condition=account.id == line.account
                 ).select(line.party,
                     where=account.active
@@ -171,9 +176,7 @@ class Party:
                     & (line.party != None)
                     & (line.reconciliation == None)
                     & (account.company == company_id)
-                    & line_query & today_query,
+                    & today_query,
                     group_by=line.party,
-                    having=Operator(Sum(Coalesce(line.debit, 0)
-                            - Coalesce(line.credit, 0)),
-                        Decimal(clause[2] or 0)))
+                    having=Operator(amount, value))
         return [('id', 'in', query)]
