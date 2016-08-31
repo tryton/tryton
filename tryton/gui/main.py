@@ -841,7 +841,7 @@ class Main(object):
                     and exception.faultCode == 'QueryCanceled'):
                 return
             if (isinstance(exception, TrytonServerError)
-                    and exception.faultCode.startswith('403')):
+                    and exception.faultCode.startswith('404')):
                 return self.sig_login()
             common.process_exception(exception)
             return
