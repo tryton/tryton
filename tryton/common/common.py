@@ -423,13 +423,19 @@ def file_selection(title, filename='',
         win.set_preview_widget(img_preview)
         win.connect('update-preview', update_preview_cb, img_preview)
 
+    if os.name == 'nt':
+        encoding = 'utf-8'
+    else:
+        encoding = sys.getfilesystemencoding()
     button = win.run()
     if button != gtk.RESPONSE_OK:
-        result = False
+        result = None
     elif not multi:
         result = win.get_filename()
+        if result:
+            result = unicode(result, encoding)
     else:
-        result = win.get_filenames()
+        result = [unicode(path, encoding) for path in win.get_filenames()]
     parent.present()
     win.destroy()
     return result
