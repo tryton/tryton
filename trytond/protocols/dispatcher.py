@@ -62,7 +62,7 @@ def login(request, database_name, user, parameters, language=None):
         Database(database_name).connect()
     except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
-        abort(403)
+        abort(404)
     session = security.login(
         database_name, user, parameters, language=language)
     with Transaction().start(database_name, 0):
