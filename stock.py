@@ -109,7 +109,9 @@ class CreateDPDShipping(Wizard):
                 }
             try:
                 shipment_response = shipping_client.service.storeOrders(
-                    print_options, shipment_data, _soapheader=authentication)
+                    print_options, shipment_data, _soapheaders={
+                        'authentication': authentication,
+                        })
                 break
             except Fault as e:
                 tag = etree.QName(e.detail[0].tag)
