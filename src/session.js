@@ -239,6 +239,8 @@
                 } else if (data.error) {
                     if (data.error[0].startsWith('403')) {
                         return this.run({}).then(dfd.resolve, dfd.reject);
+                    } else if (data.error[0].startsWith('404')) {
+                        dfd.reject();
                     } else if (data.error[0] != 'LoginException') {
                         Sao.common.error.run(data.error[0], data.error[1]);
                         dfd.reject();
