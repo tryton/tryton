@@ -467,6 +467,10 @@ def file_selection(title, filename='',
         win.set_preview_widget(img_preview)
         win.connect('update-preview', update_preview_cb, img_preview)
 
+    if os.name == 'nt':
+        encoding = 'utf-8'
+    else:
+        encoding = sys.getfilesystemencoding()
     button = win.run()
     if button != gtk.RESPONSE_OK:
         parent.present()
@@ -475,7 +479,7 @@ def file_selection(title, filename='',
     if not multi:
         filepath = win.get_filename()
         if filepath:
-            filepath = filepath.decode('utf-8')
+            filepath = unicode(filepath, encoding)
             try:
                 CONFIG['client.default_path'] = \
                     os.path.dirname(filepath)
@@ -488,7 +492,7 @@ def file_selection(title, filename='',
     else:
         filenames = win.get_filenames()
         if filenames:
-            filenames = [x.decode('utf-8') for x in filenames]
+            filenames = [unicode(x, encoding) for x in filenames]
             try:
                 CONFIG['client.default_path'] = \
                     os.path.dirname(filenames[0])
