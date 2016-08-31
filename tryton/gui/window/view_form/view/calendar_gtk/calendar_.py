@@ -95,6 +95,10 @@ class Calendar_(goocalendar.Calendar):
             elif not end:
                 all_day = True
 
+            # Skip invalid event
+            if end is not None and start > end:
+                continue
+
             # TODO define color code
             label = '\n'.join(record[attrs['name']].get_client(record)
                 for attrs in self.fields).rstrip()
