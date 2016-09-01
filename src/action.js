@@ -61,19 +61,11 @@
                 var domain_context = jQuery.extend({}, ctx);
                 domain_context.context = ctx;
                 domain_context._user = session.user_id;
-                params.domain = new Sao.PYSON.Decoder(domain_context).decode(
-                        action.pyson_domain);
-
-                var search_context = jQuery.extend({}, ctx);
-                search_context.context = ctx;
-                search_context._user = session.user_id;
-                params.search_value = new Sao.PYSON.Decoder(search_context)
-                    .decode(action.pyson_search_value || '[]');
-
-                var tab_domain_context = jQuery.extend({}, ctx);
-                tab_domain_context.context = ctx;
-                tab_domain_context._user = session.user_id;
-                var decoder = new Sao.PYSON.Decoder(tab_domain_context);
+                var decoder = new Sao.PYSON.Decoder(domain_context);
+                params.domain = decoder.decode(action.pyson_domain);
+                params.order = decoder.decode(action.pyson_order);
+                params.search_value = decoder.decode(
+                    action.pyson_search_value || '[]');
                 params.tab_domain = [];
                 action.domains.forEach(function(element, index) {
                     params.tab_domain.push(
