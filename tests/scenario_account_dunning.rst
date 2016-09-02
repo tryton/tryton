@@ -78,13 +78,13 @@ Create dunning procedure::
     >>> procedure = Procedure(name='Procedure')
     >>> level = procedure.levels.new()
     >>> level.sequence = 1
-    >>> level.days = 5
+    >>> level.overdue = datetime.timedelta(5)
     >>> level = procedure.levels.new()
     >>> level.sequence = 2
-    >>> level.days = 20
+    >>> level.overdue = datetime.timedelta(20)
     >>> level = procedure.levels.new()
     >>> level.sequence = 3
-    >>> level.days = 40
+    >>> level.overdue = datetime.timedelta(40)
     >>> procedure.save()
 
 Create parties::

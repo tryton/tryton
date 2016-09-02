@@ -1,12 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+import datetime
 
 from sql import Null
 from sql.conditionals import Case
 
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique
 from trytond.pyson import If, Eval
+from trytond import backend
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -31,7 +33,28 @@ class Level(ModelSQL, ModelView):
     sequence = fields.Integer('Sequence')
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
         required=True, select=True)
-    days = fields.Integer('Number of Overdue Days')
+    overdue = fields.TimeDelta('Overdue')
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
+        sql_table = cls.__table__()
+
+        super(Level, cls).__register__(module_name)
+
+        # Migration from 4.0: change days into timedelta overdue
+        if table.column_exist('days'):
+            cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
+                    where=sql_table.days != Null))
+            for id_, days in cursor:
+                overdue = datetime.timedelta(days)
+                cursor.execute(*sql_table.update(
+                        [sql_table.days_duration],
+                        [overdue],
+                        where=sql_table.id == id_))
+            table.drop_column('days')
 
     @classmethod
     def __setup__(cls):
@@ -48,8 +71,8 @@ class Level(ModelSQL, ModelView):
             self.procedure.rec_name)
 
     def test(self, line, date):
-        if self.days is not None:
-            return (date - line.maturity_date).days >= self.days
+        if self.overdue is not None:
+            return (date - line.maturity_date) >= self.overdue
 
 _STATES = {
     'readonly': Eval('state') != 'draft',

@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sequence"/>
     <field name="sequence"/>
     <newline/>
-    <label name="days"/>
-    <field name="days"/>
+    <label name="overdue"/>
+    <field name="overdue"/>
 </form>

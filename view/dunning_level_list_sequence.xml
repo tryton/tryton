@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="procedure" expand="1"/>
-    <field name="days" expand="1"/>
+    <field name="overdue" expand="1"/>
 </tree>
