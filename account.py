@@ -77,6 +77,7 @@ class Account(ModelSQL, ModelView):
     def __setup__(cls):
         super(Account, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
+        cls._order.insert(1, ('name', 'ASC'))
 
     @staticmethod
     def default_active():
