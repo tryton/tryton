@@ -211,9 +211,10 @@
     </optional>
   </define>
   <define name="attlist.affix" combine="interleave">
-    <optional>
+    <choice>
       <attribute name="name"/>
-    </optional>
+      <attribute name="id"/>
+    </choice>
   </define>
   <define name="attlist.affix" combine="interleave">
     <optional>

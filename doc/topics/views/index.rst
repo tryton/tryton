@@ -559,7 +559,7 @@ Example
   <tree string="Taxes" sequence="sequence">
       <field name="name"/>
       <field name="percentage">
-          <suffix string="%"/>
+          <suffix name="percentage" string="%"/>
       </field>
       <field name="group"/>
       <field name="type"/>

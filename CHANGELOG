@@ -1,3 +1,4 @@
+* Enforce suffix and prefix to have id or name
 * Sanitize path in file_open (CVE-2016-1242)
 * Prevent read of user password hash (CVE-2016-1241)
 * Add database dump cache for tests
