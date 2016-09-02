@@ -8,7 +8,7 @@ from sql.aggregate import Max, Count, Sum
 from sql.conditionals import Case
 from sql.functions import Extract
 
-from trytond.model import ModelView, ModelSQL, Workflow, fields, Check
+from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond import backend
 from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
@@ -85,7 +85,12 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         states=_STATES_STOP, depends=_DEPENDS_STOP)
     state = fields.Selection(STATES, 'State', required=True, select=True,
             sort=False, readonly=True)
-    probability = fields.Integer('Conversion Probability', required=True,
+    conversion_probability = fields.Float('Conversion Probability',
+        digits=(1, 4), required=True,
+        domain=[
+            ('conversion_probability', '>=', 0),
+            ('conversion_probability', '<=', 1),
+            ],
         states={
             'readonly': ~Eval('state').in_(
                 ['opportunity', 'lead', 'converted']),
@@ -138,16 +143,18 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                         where=sale.id == sale_id))
             table.drop_column('sale', exception=True)
 
+        # Migration from 4.0: change probability into conversion probability
+        if table.column_exist('probability'):
+            cursor.execute(*sql_table.update(
+                    [sql_table.conversion_probability],
+                    [sql_table.probability / 100.0]))
+            table.drop_column('probability')
+            table.drop_constraint('check_percentage')
+
     @classmethod
     def __setup__(cls):
         super(SaleOpportunity, cls).__setup__()
         cls._order.insert(0, ('start_date', 'DESC'))
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('check_percentage',
-                Check(t, (t.probability >= 0) & (t.probability <= 100)),
-                'Probability must be between 0 and 100.')
-            ]
         cls._error_messages.update({
                 'delete_cancel': ('Sale Opportunity "%s" must be cancelled '
                     'before deletion.'),
@@ -199,8 +206,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         return Date.today()
 
     @staticmethod
-    def default_probability():
-        return 50
+    def default_conversion_probability():
+        return 0.5
 
     @staticmethod
     def default_company():
