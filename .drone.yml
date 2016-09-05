@@ -1,4 +1,4 @@
 image: node0.10
 script:
-    - npm -s install
+    - npm -s install --unsafe-perm
     - npm test
