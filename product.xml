@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" eval="None"/>
             <field name="inherit" ref="template_view_tree"/>
             <field name="priority" eval="10"/>
-            <field name="name"></field>
+            <field name="name">product_tree</field>
         </record>
 
         <record model="ir.ui.view" id="product_view_tree_simple">
