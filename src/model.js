@@ -1692,7 +1692,10 @@
         },
         apply_factor: function(value, factor) {
             value = Sao.field.Numeric._super.apply_factor(value, factor);
-            return new Sao.Decimal(value);
+            if (value !== null) {
+                value = new Sao.Decimal(value);
+            }
+            return value;
         }
     });
 
