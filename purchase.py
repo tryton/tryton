@@ -1433,6 +1433,11 @@ class PurchaseLineRecreatedMove(ModelSQL):
 class PurchaseReport(CompanyReport):
     __name__ = 'purchase.purchase'
 
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(PurchaseReport, cls).execute(ids, data)
+
 
 class OpenSupplier(Wizard):
     'Open Suppliers'
