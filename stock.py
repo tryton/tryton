@@ -177,8 +177,7 @@ class CreateDPDShipping(Wizard):
         shipping_party = {
             'name1': party.name[:50],
             'name2': address.name[:35] if address.name else party.name[:35],
-            'street': (address.street
-                + (' ' + address.streetbis if address.streetbis else ''))[:35],
+            'street': ' '.join((address.street or '').splitlines())[:35],
             'country': address.country.code,
             'zipCode': address.zip[:9],
             'city': address.city[:50],
