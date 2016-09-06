@@ -80,7 +80,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         required=True, domain=[('type', '=', 'warehouse')],
         states={
             'readonly': (Eval('state').in_(['cancel', 'done'])
-                | Eval('incoming_moves', [0])),
+                | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
             }, depends=['state'])
     warehouse_input = fields.Function(fields.Many2One('stock.location',
             'Warehouse Input'),
@@ -841,7 +841,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
-                | Eval('outgoing_moves', [0])),
+                | Eval('outgoing_moves', [0]) | Eval('inventory_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
@@ -1407,7 +1407,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
-                | Eval('incoming_moves', [0])),
+                | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
