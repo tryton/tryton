@@ -1553,6 +1553,11 @@ class SaleLineRecreatedMove(ModelSQL):
 class SaleReport(CompanyReport):
     __name__ = 'sale.sale'
 
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(SaleReport, cls).execute(ids, data)
+
 
 class OpenCustomer(Wizard):
     'Open Customers'
