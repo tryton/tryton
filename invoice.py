@@ -2316,7 +2316,8 @@ class InvoiceReport(Report):
     def execute(cls, ids, data):
         Invoice = Pool().get('account.invoice')
 
-        result = super(InvoiceReport, cls).execute(ids, data)
+        with Transaction().set_context(address_with_party=True):
+            result = super(InvoiceReport, cls).execute(ids, data)
         invoice = Invoice(ids[0])
 
         if len(ids) > 1:
