@@ -340,7 +340,7 @@ class ModelSQL(ModelStorage):
         return revisions
 
     @classmethod
-    def __insert_history(cls, ids, deleted=False):
+    def _insert_history(cls, ids, deleted=False):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         if not cls._history:
@@ -435,9 +435,9 @@ class ModelSQL(ModelStorage):
             for sub_ids in grouped_slice(to_delete):
                 where = reduce_ids(table.id, sub_ids)
                 cursor.execute(*table.delete(where=where))
-            cls.__insert_history(to_delete, True)
+            cls._insert_history(to_delete, True)
         if to_update:
-            cls.__insert_history(to_update)
+            cls._insert_history(to_update)
 
     @classmethod
     def restore_history(cls, ids, datetime):
@@ -599,7 +599,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 
-        cls.__insert_history(new_ids)
+        cls._insert_history(new_ids)
 
         records = cls.browse(new_ids)
         for sub_records in grouped_slice(records, cache_size()):
@@ -955,7 +955,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 
-        cls.__insert_history(all_ids)
+        cls._insert_history(all_ids)
         for sub_records in grouped_slice(all_records, cache_size()):
             cls._validate(sub_records, field_names=all_field_names)
         cls.trigger_write(trigger_eligibles)
@@ -1095,7 +1095,7 @@ class ModelSQL(ModelStorage):
 
         Translation.delete_ids(cls.__name__, 'model', ids)
 
-        cls.__insert_history(ids, deleted=True)
+        cls._insert_history(ids, deleted=True)
 
         cls._update_mptt(tree_ids.keys(), tree_ids.values())
 
