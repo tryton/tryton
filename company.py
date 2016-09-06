@@ -372,6 +372,11 @@ class CompanyReport(Report):
 class LetterReport(CompanyReport):
     __name__ = 'party.letter'
 
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(LetterReport, cls).execute(ids, data)
+
 
 class Rule:
     __metaclass__ = PoolMeta
