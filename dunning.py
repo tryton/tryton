@@ -47,6 +47,11 @@ class Letter(CompanyReport):
     __name__ = 'account.dunning.letter'
 
     @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(Letter, cls).execute(ids, data)
+
+    @classmethod
     def get_context(cls, records, data):
         report_context = super(Letter, cls).get_context(records, data)
 
