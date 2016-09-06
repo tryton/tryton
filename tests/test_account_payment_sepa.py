@@ -38,8 +38,7 @@ def setup_environment():
     bank = Bank(party=bank_party, bic='BICODEBBXXX')
     bank.save()
     customer = Party(name='Customer')
-    address = Address(street='street', streetbis='street bis',
-        zip='1234', city='City')
+    address = Address(street='street', zip='1234', city='City')
     customer.addresses = [address]
     customer.save()
     return {
