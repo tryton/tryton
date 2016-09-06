@@ -148,8 +148,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             cursor.execute(*sql_table.update(
                     [sql_table.conversion_probability],
                     [sql_table.probability / 100.0]))
-            table.drop_column('probability')
             table.drop_constraint('check_percentage')
+            table.drop_column('probability')
 
     @classmethod
     def __setup__(cls):
