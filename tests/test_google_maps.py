@@ -15,10 +15,15 @@ class GoogleMapsTestCase(ModuleTestCase):
         "Test Google Maps URL"
         pool = Pool()
         Address = pool.get('party.address')
+        Party = pool.get('party.party')
+        party = Party()
+        party.save()
         address = Address()
+        address.party = party
         address.street = "300 Cliff Street"
         address.zip = "18503"
         address.city = "Scranton"
+        address.save()
 
         self.assertEqual(
             address.on_change_with_google_maps_url(),

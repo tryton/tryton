@@ -20,7 +20,7 @@ class Address:
     @fields.depends('street', 'zip', 'city', 'country', 'subdivision')
     def on_change_with_google_maps_url(self, name=None):
         lang = Transaction().language[:2]
-        url = ''.join(self.full_address.splitlines())
+        url = ' '.join(self.full_address.splitlines())
         if url.strip():
             if isinstance(url, str) and sys.version_info < (3,):
                 url = url.encode('utf-8')
