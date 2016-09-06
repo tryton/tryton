@@ -249,10 +249,7 @@ class CreateShippingUPS(Wizard):
             'AttentionName': (address.name[:35]
                 if address.name else party.name[:35]),
             'Address': {
-                'AddressLine': [
-                    address.street,
-                    address.streetbis if address.streetbis else '',
-                    ],
+                'AddressLine': (address.street or '').splitlines(),
                 'City': address.city,
                 'PostalCode': address.zip,
                 'CountryCode': address.country.code,
