@@ -689,9 +689,10 @@ class Main(object):
                 False, mode=['tree', 'form'], name=_('Manage Favorites'))
         try:
             favorites = RPCExecute('model',
-                self.menu_screen.model_name + '.favorite', 'get')
-        except RPCException:
-            favorites = []
+                self.menu_screen.model_name + '.favorite', 'get',
+                process_exception=False)
+        except Exception:
+            return False
         menu = self.menuitem_favorite.get_submenu()
         if not menu:
             menu = gtk.Menu()
