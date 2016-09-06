@@ -344,8 +344,7 @@
                 this.table.removeClass('responsive-header');
             }
 
-            this.redraw(selected, expanded);
-            return jQuery.when();
+            return this.redraw(selected, expanded);
         },
         construct: function(selected, expanded, extend) {
             var tbody = this.tbody;
@@ -377,7 +376,7 @@
             }
         },
         redraw: function(selected, expanded) {
-            redraw_async(this.rows, selected, expanded);
+            return redraw_async(this.rows, selected, expanded);
         },
         switch_: function(path) {
             this.screen.row_activate();
@@ -577,6 +576,7 @@
 
     function redraw_async(rows, selected, expanded) {
         var chunk = Sao.config.display_size;
+        var dfd = jQuery.Deferred();
         var redraw_rows = function(i) {
             rows.slice(i, i + chunk).forEach(function(row) {
                 row.redraw(selected, expanded);
@@ -584,9 +584,12 @@
             i += chunk;
             if (i < rows.length) {
                 setTimeout(redraw_rows, 0, i);
+            } else {
+                dfd.resolve();
             }
         };
         setTimeout(redraw_rows, 0, 0);
+        return dfd;
     }
 
     Sao.View.Tree.Row = Sao.class_(Object, {
