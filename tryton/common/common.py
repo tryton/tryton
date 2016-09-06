@@ -1166,7 +1166,7 @@ class RPCProgress(object):
     def __init__(self, method, args):
         self.method = method
         self.args = args
-        self.parent = get_toplevel_window()
+        self.parent = None
         self.res = None
         self.error = False
         self.exception = None
@@ -1189,11 +1189,14 @@ class RPCProgress(object):
     def run(self, process_exception_p=True, callback=None):
         self.process_exception_p = process_exception_p
         self.callback = callback
-        if self.parent.window:
-            watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
-            self.parent.window.set_cursor(watch)
 
         if callback:
+            # Parent is only useful if it is asynchronous
+            # otherwise the cursor is not updated.
+            self.parent = get_toplevel_window()
+            if self.parent.window:
+                watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
+                self.parent.window.set_cursor(watch)
             thread.start_new_thread(self.start, ())
             return
         else:
@@ -1201,7 +1204,7 @@ class RPCProgress(object):
             return self.process()
 
     def process(self):
-        if self.parent.window:
+        if self.parent and self.parent.window:
             self.parent.window.set_cursor(None)
         if self.exception:
             if self.process_exception_p:
