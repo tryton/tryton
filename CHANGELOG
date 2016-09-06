@@ -1,3 +1,5 @@
+* Remove streetbis from Address
+* Add address format per country and language
 * Restrict subdivision address to first level
 
 Version 4.0.0 - 2016-05-02

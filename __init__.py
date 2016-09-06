@@ -17,6 +17,7 @@ def register():
         PartyIdentifier,
         CheckVIESResult,
         Address,
+        AddressFormat,
         ContactMechanism,
         Configuration,
         module='party', type_='model')

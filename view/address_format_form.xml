@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<form>
+    <label name="country"/>
+    <field name="country"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="language"/>
+    <field name="language"/>
+    <separator name="format_" colspan="4"/>
+    <field name="format_" colspan="4"/>
+</form>

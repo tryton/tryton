@@ -32,6 +32,17 @@ Address
 
 An address is made of a name, a street, a zip number, a city, a
 country, a subdivision. A sequence allow to order them.
+The field *Full Address* returns the formatted address included the name of the
+party if the context has `address_with_party` set to True and without the
+country if the context key `address_from_country` is the same as the country of
+the address.
+
+
+Address Format
+**************
+
+It allows to define per country and language, how addresses should be
+formatted.
 
 
 Contact Mechanism

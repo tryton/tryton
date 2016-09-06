@@ -14,9 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <newline/>
     <label name="street"/>
-    <field name="street"/>
-    <label name="streetbis"/>
-    <field name="streetbis"/>
+    <field name="street" colspan="3"/>
     <newline/>
     <label name="zip"/>
     <field name="zip"/>

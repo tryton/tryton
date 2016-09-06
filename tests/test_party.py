@@ -4,6 +4,7 @@ import unittest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class PartyTestCase(ModuleTestCase):
@@ -83,6 +84,15 @@ class PartyTestCase(ModuleTestCase):
                     'city': 'City',
                     }])
         self.assert_(address.id)
+        self.assertMultiLineEqual(address.full_address,
+            "St sample, 15\n"
+            "City")
+        with Transaction().set_context(address_with_party=True):
+            address = Address(address.id)
+            self.assertMultiLineEqual(address.full_address,
+                "Party 1\n"
+                "St sample, 15\n"
+                "City")
 
     @with_transaction()
     def test_party_label_report(self):

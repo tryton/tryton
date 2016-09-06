@@ -4,8 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="party"/>
     <field name="name"/>
-    <field name="street"/>
-    <field name="streetbis"/>
     <field name="zip"/>
     <field name="city"/>
     <field name="country"/>
