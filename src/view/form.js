@@ -671,19 +671,15 @@
             } else {
                 state_changes = {};
             }
-            if ((field && field.description.required) ||
-                    state_changes.required) {
-                this.label_el.addClass('required');
-            } else {
-                this.label_el.removeClass('required');
-            }
             if ((field && field.description.readonly) ||
                     state_changes.readonly) {
-                this.label_el.removeClass('editable');
-                this.label_el.removeClass('required');
-            } else {
-                this.label_el.addClass('editable');
             }
+            Sao.common.apply_label_attributes(
+                    this.label_el,
+                    ((field && field.description.readonly) ||
+                     state_changes.readonly),
+                    ((field && field.description.required) ||
+                     state_changes.required));
         }
     });
 
@@ -880,6 +876,7 @@
         display: function(record, field) {
             var readonly = this.attributes.readonly;
             var invisible = this.attributes.invisible;
+            var required = this.attributes.required;
             if (!field) {
                 if (readonly === undefined) {
                     readonly = true;
@@ -887,8 +884,12 @@
                 if (invisible === undefined) {
                     invisible = false;
                 }
+                if (required === undefined) {
+                    required = false;
+                }
                 this.set_readonly(readonly);
                 this.set_invisible(invisible);
+                this.set_required(required);
                 return;
             }
             var state_attrs = field.get_state_attrs(record);
@@ -898,10 +899,17 @@
                     readonly = false;
                 }
             }
+            if (required === undefined) {
+                required = state_attrs.required;
+                if (required === undefined) {
+                    required = false;
+                }
+            }
             if (this.view.screen.attributes.readonly) {
                 readonly = true;
             }
             this.set_readonly(readonly);
+            this.set_required(required);
             var invalid = state_attrs.invalid;
             if (!readonly && invalid) {
                 this.el.addClass('has-error');
@@ -940,6 +948,8 @@
         },
         set_readonly: function(readonly) {
             this.el.prop('disabled', readonly);
+        },
+        set_required: function(required) {
         },
         set_invisible: function(invisible) {
             this.visible = !invisible;
@@ -2077,6 +2087,7 @@
                 attributes);
 
             this._readonly = true;
+            this._required = false;
 
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' panel panel-default'
@@ -2086,11 +2097,11 @@
             });
             this.el.append(this.menu);
 
-            var label = jQuery('<label/>', {
+            this.title = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
-            this.menu.append(label);
+            this.menu.append(this.title);
 
             label.uniqueId();
             this.el.uniqueId();
@@ -2233,6 +2244,15 @@
         set_readonly: function(readonly) {
             this._readonly = readonly;
             this._set_button_sensitive();
+            this._set_label_state();
+        },
+        set_required: function(required) {
+            this._required = required;
+            this._set_label_state();
+        },
+        _set_label_state: function() {
+            Sao.common.apply_label_attributes(this.title, this._readonly,
+                    this._required);
         },
         _set_button_sensitive: function() {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
@@ -2556,6 +2576,7 @@
                 attributes);
 
             this._readonly = true;
+            this._required = false;
 
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' panel panel-default'
@@ -2565,11 +2586,11 @@
             });
             this.el.append(this.menu);
 
-            var label = jQuery('<label/>', {
+            this.title = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
-            this.menu.append(label);
+            this.menu.append(this.title);
 
             label.uniqueId();
             this.el.uniqueId();
@@ -2632,6 +2653,15 @@
         set_readonly: function(readonly) {
             this._readonly = readonly;
             this._set_button_sensitive();
+            this._set_label_state();
+        },
+        set_required: function(required) {
+            this._required = required;
+            this._set_label_state();
+        },
+        _set_label_state: function() {
+            Sao.common.apply_label_attributes(this.title, this._readonly,
+                    this._required);
         },
         _set_button_sensitive: function() {
             var size_limit = false;

@@ -3236,4 +3236,17 @@
             }
         }
     };
+
+    Sao.common.apply_label_attributes = function(label, readonly, required) {
+        if (!readonly) {
+            label.addClass('editable');
+            if (required) {
+                label.addClass('required');
+            } else {
+                label.removeClass('required');
+            }
+        } else {
+            label.removeClass('editable required');
+        }
+    };
 }());
