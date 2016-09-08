@@ -2103,10 +2103,10 @@
             });
             this.menu.append(this.title);
 
-            label.uniqueId();
+            this.title.uniqueId();
             this.el.uniqueId();
-            this.el.attr('aria-labelledby', label.attr('id'));
-            label.attr('for', this.el.attr('id'));
+            this.el.attr('aria-labelledby', this.title.attr('id'));
+            this.title.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
@@ -2592,10 +2592,10 @@
             });
             this.menu.append(this.title);
 
-            label.uniqueId();
+            this.title.uniqueId();
             this.el.uniqueId();
-            this.el.attr('aria-labelledby', label.attr('id'));
-            label.attr('for', this.el.attr('id'));
+            this.el.attr('aria-labelledby', this.title.attr('id'));
+            this.title.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
