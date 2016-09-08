@@ -1370,3 +1370,20 @@ def data2pixbuf(data):
         except glib.GError:
             pass
     return pixbuf
+
+
+def get_label_attributes(readonly, required):
+    "Return the pango attributes applied to a label according to its state"
+    if readonly:
+        style = pango.STYLE_NORMAL
+        weight = pango.WEIGHT_NORMAL
+    else:
+        style = pango.STYLE_ITALIC
+        if required:
+            weight = pango.WEIGHT_BOLD
+        else:
+            weight = pango.WEIGHT_NORMAL
+    attrlist = pango.AttrList()
+    attrlist.change(pango.AttrWeight(weight, 0, -1))
+    attrlist.change(pango.AttrStyle(style, 0, -1))
+    return attrlist

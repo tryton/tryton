@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gtk
-import pango
+
+import tryton.common as common
 
 
 class StateMixin(object):
@@ -39,20 +40,11 @@ class Label(StateMixin, gtk.Label):
             state_changes = record.expr_eval(self.attrs.get('states', {}))
         else:
             state_changes = {}
-        if ((field and field.attrs.get('required'))
-                or state_changes.get('required')):
-            weight = pango.WEIGHT_BOLD
-        else:
-            weight = pango.WEIGHT_NORMAL
-        if ((field and field.attrs.get('readonly'))
-                or state_changes.get('readonly')):
-            style = pango.STYLE_NORMAL
-            weight = pango.WEIGHT_NORMAL
-        else:
-            style = pango.STYLE_ITALIC
-        attrlist = pango.AttrList()
-        attrlist.change(pango.AttrWeight(weight, 0, -1))
-        attrlist.change(pango.AttrStyle(style, 0, -1))
+        required = ((field and field.attrs.get('required'))
+                or state_changes.get('required'))
+        readonly = ((field and field.attrs.get('readonly'))
+                or state_changes.get('readonly'))
+        attrlist = common.get_label_attributes(readonly, required)
         self.set_attributes(attrlist)
 
 

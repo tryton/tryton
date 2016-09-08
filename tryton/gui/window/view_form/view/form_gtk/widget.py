@@ -50,6 +50,9 @@ class Widget(object):
     def _readonly_set(self, readonly):
         pass
 
+    def _required_set(self, required):
+        pass
+
     def _invisible_widget(self):
         return self.widget
 
@@ -92,6 +95,7 @@ class Widget(object):
         if not field:
             self._readonly_set(self.attrs.get('readonly', True))
             self.invisible_set(self.attrs.get('invisible', False))
+            self._required_set(False)
             return
         readonly = self.attrs.get('readonly',
             field.get_state_attrs(record).get('readonly', False))
@@ -100,6 +104,8 @@ class Widget(object):
         self._readonly_set(readonly)
         self.invisible_set(self.attrs.get('invisible',
             field.get_state_attrs(record).get('invisible', False)))
+        self._required_set(
+            field.get_state_attrs(record).get('required', False))
 
     def set_value(self, record, field):
         pass

@@ -28,15 +28,16 @@ class One2Many(Widget):
         vbox = gtk.VBox(homogeneous=False, spacing=2)
         self.widget.add(vbox)
         self._readonly = True
+        self._required = False
         self._position = 0
         self._length = 0
 
         self.title_box = hbox = gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        label = gtk.Label(attrs.get('string', ''))
-        label.set_alignment(0.0, 0.5)
-        hbox.pack_start(label, expand=True, fill=True)
+        self.title = gtk.Label(attrs.get('string', ''))
+        self.title.set_alignment(0.0, 0.5)
+        hbox.pack_start(self.title, expand=True, fill=True)
 
         hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
 
@@ -244,6 +245,15 @@ class One2Many(Widget):
     def _readonly_set(self, value):
         self._readonly = value
         self._set_button_sensitive()
+        self._set_label_state()
+
+    def _required_set(self, value):
+        self._required = value
+        self._set_label_state()
+
+    def _set_label_state(self):
+        attrlist = common.get_label_attributes(self._readonly, self._required)
+        self.title.set_attributes(attrlist)
 
     def _set_button_sensitive(self):
         access = common.MODELACCESS[self.screen.model_name]
