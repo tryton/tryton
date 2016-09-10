@@ -38,13 +38,17 @@ msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:product.product,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
+"Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
+#, fuzzy
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
+"Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"

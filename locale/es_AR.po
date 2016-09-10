@@ -40,11 +40,11 @@ msgstr "Entrada de cantidad anglo-sajona"
 
 msgctxt "help:product.product,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Se usará esta cuenta en lugar de la definida en la categoría."
+msgstr ""
 
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Se usará esta cuenta en lugar de la definida en la categoría."
+msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"
