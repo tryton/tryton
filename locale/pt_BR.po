@@ -58,8 +58,9 @@ msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.address,name:"
-msgid "Name"
+msgid "Building Name"
 msgstr "Nome"
 
 msgctxt "field:party.address,party:"
@@ -78,10 +79,6 @@ msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Rua"
 
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
-msgstr "Rua (complemento)"
-
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "UF"
@@ -97,6 +94,55 @@ msgstr "Gravado pelo usuário"
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "CEP"
+
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Ativo"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "País"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Usuário de Criação"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Idioma"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Gravado por"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -406,9 +452,27 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Endereços"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -454,6 +518,10 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Endereços"
 
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categorias"
@@ -485,6 +553,10 @@ msgstr "Pessoas"
 msgctxt "model:party.address,name:"
 msgid "Address"
 msgstr "Endereço"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -597,14 +669,6 @@ msgstr "Identificador de pessoa"
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "Geral"
-
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr "Pessoas"
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr "Pessoa"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

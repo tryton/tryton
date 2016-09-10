@@ -30,117 +30,182 @@ msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr ""
+msgstr "考文垂郡"
 
+#, fuzzy
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.address,name:"
-msgid "Name"
+msgid "Building Name"
 msgstr ""
 
 msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "序列"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr ""
-
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
 msgstr ""
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "考文垂郡"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "语言"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
+#, fuzzy
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr ""
+msgstr "子项"
 
+#, fuzzy
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:party.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级"
 
+#, fuzzy
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
@@ -150,73 +215,86 @@ msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:party.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "序列"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -226,69 +304,83 @@ msgctxt "field:party.contact_mechanism,skype:"
 msgid "Skype"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,url:"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
+#, fuzzy
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -298,9 +390,10 @@ msgctxt "field:party.party,categories:"
 msgid "Categories"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
@@ -310,13 +403,15 @@ msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
@@ -330,33 +425,37 @@ msgctxt "field:party.party,full_name:"
 msgid "Full Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,lang:"
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:party.party,phone:"
 msgid "Phone"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
@@ -366,48 +465,74 @@ msgctxt "field:party.party,website:"
 msgid "Website"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
@@ -454,6 +579,10 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr ""
@@ -462,9 +591,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
@@ -484,6 +614,10 @@ msgstr ""
 
 msgctxt "model:party.address,name:"
 msgid "Address"
+msgstr ""
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
 msgstr ""
 
 msgctxt "model:party.category,name:"
@@ -594,18 +728,12 @@ msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "General"
-msgstr ""
+msgstr "基本"
 
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr ""
-
+#, fuzzy
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr ""
+msgstr "确定"

@@ -60,8 +60,9 @@ msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.address,name:"
-msgid "Name"
+msgid "Building Name"
 msgstr "Név"
 
 msgctxt "field:party.address,party:"
@@ -80,10 +81,6 @@ msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Utca"
 
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
-msgstr "Utca 2"
-
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "Alrészleg"
@@ -99,6 +96,55 @@ msgstr "Által módosítva"
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "Irányítószám"
+
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Aktív"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "Ország"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Nyelv"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -408,9 +454,27 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Címek"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -456,6 +520,10 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Címek"
 
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Kategóriák"
@@ -487,6 +555,10 @@ msgstr "Partnerek"
 msgctxt "model:party.address,name:"
 msgid "Address"
 msgstr "Cím"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -599,14 +671,6 @@ msgstr ""
 msgctxt "view:party.party:"
 msgid "General"
 msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr "Partnerek"
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr "Partner"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"

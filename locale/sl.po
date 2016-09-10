@@ -4,117 +4,161 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "No podeu modificar el tercer de l'adreça \"%s\"."
+msgstr "Partnerjev naslov \"%s\" ni možno popravljati."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"El nom de la categoria \"%s\" no és correcte: No podeu utilitzar \" / \" en "
-"el camp nom."
+msgstr "Neveljavno ime kategorije \"%s\": V imenu uporaba znaka \" / \" ni možna."
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
-msgstr "El nom de la categoria del tercer ha de ser únic segons el pare."
+msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
-msgstr "El servei VIES no està disponible, intenteu-ho de nou més tard."
+msgstr "VIES storitev je nedostopna, poskusite kasneje."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "No podeu modificar el tercer del contacte \"%s\"."
+msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
 
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr "El CIF/NIF \"%(code)s\" del tercer \"%(party)s\" no és correcte."
+msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
-msgstr "El codi del tercer ha de ser únic."
+msgstr "Šifra partnerja mora biti edinstvena."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Aktivno"
 
 msgctxt "field:party.address,city:"
 msgid "City"
-msgstr "Ciutat"
+msgstr "Mesto"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr "País"
+msgstr "Država"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr "Adreça completa"
+msgstr "Polni naslov"
 
 msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.address,name:"
-msgid "Name"
-msgstr "Contacte"
+msgid "Building Name"
+msgstr "Naziv"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Name"
-msgstr "Contacte"
+msgstr "Ime"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr "Seqüència"
+msgstr "Zap.št."
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr "Carrer"
-
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
-msgstr "Carrer (bis)"
+msgstr "Ulica"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Subdivisió"
+msgstr "Regija"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Codi postal"
+msgstr "Poštna številka"
+
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "Država"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Jezik"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Plačilni rok"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Aktivno"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Fills"
+msgstr "Podkategorije"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
@@ -122,23 +166,23 @@ msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naziv"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "Pare"
+msgstr "Matična kategorija"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -146,19 +190,19 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Tercer erroni"
+msgstr "Partnerji neuspešno preverjeni"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Tercers correctes"
+msgstr "Partnerji uspešno preverjeni"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
@@ -166,39 +210,39 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Seqüència de tercer"
+msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Aktivno"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr "Comentari"
+msgstr "Opomba"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr "Correu electrònic"
+msgstr "E-pošta"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
@@ -206,19 +250,19 @@ msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr "Valor"
+msgstr "Drugo"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr "Seqüència"
+msgstr "Zap.št."
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -230,7 +274,7 @@ msgstr "Skype"
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Tip"
 
 msgctxt "field:party.contact_mechanism,url:"
 msgid "URL"
@@ -238,31 +282,31 @@ msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr "Valor"
+msgstr "Vrednost"
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
-msgstr "Lloc web"
+msgstr "Spletna stran"
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr "Codi"
+msgstr "Šifra"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
@@ -270,67 +314,67 @@ msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr "Contacte"
+msgstr "Ime"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Vrsta"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Aktivno"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr "Adreces"
+msgstr "Naslovi"
 
 msgctxt "field:party.party,categories:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorije"
 
 msgctxt "field:party.party,code:"
 msgid "Code"
-msgstr "Codi"
+msgstr "Šifra"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "Codi només lectura"
+msgstr "Šifra samo za branje"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Mitjans de contacte"
+msgstr "Kontakti"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
-msgstr "Correu electrònic"
+msgstr "E-pošta"
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
-msgstr "Fax"
+msgstr "Faks"
 
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
-msgstr "Nom complet"
+msgstr "Polno ime"
 
 msgctxt "field:party.party,id:"
 msgid "ID"
@@ -338,55 +382,55 @@ msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
-msgstr "Identificadors"
+msgstr "Identifikatorji"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
-msgstr "Idioma"
+msgstr "Jezik"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
-msgstr "Mòbil"
+msgstr "Mobilni"
 
 msgctxt "field:party.party,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naziv"
 
 msgctxt "field:party.party,phone:"
 msgid "Phone"
-msgstr "Telèfon"
+msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "CIF/NIF"
+msgstr "DDV šifra"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
-msgstr "Lloc web"
+msgstr "Spletna stran"
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "Kategorija"
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Izdelano"
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Izdelal"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
@@ -394,139 +438,165 @@ msgstr "ID"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Zapisano"
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Zapisal"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Adreces"
+msgstr "Naslovi"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories de tercer"
+msgstr "Kategorije"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories de tercer"
+msgstr "Kategorije"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Mitjans de contacte"
+msgstr "Kontakti"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Tercers per categoria"
+msgstr "Partnerji po kategorijah"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Configuració de tercers"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Tercers"
+msgstr "Partnerji"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "Etiquetes"
+msgstr "Nalepke"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr "Comprovar VIES"
+msgstr "Preveri z VIES sistemom"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Adreces"
+msgstr "Naslovi"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorije"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Arbre de categories"
+msgstr "Kategorije"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuració"
+msgstr "Nastavitve"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Mitjans de contacte"
+msgstr "Kontakti"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Tercers"
+msgstr "Partner"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Tercers"
+msgstr "Konfiguracija"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Tercers"
+msgstr "Partnerji"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
-msgstr "Adreça"
+msgstr "Naslov"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "Kategorija"
 
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr "Comprova VIES"
+msgstr "Preveri z VIES sistemom"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Configuració de tercers"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Mitjà de contacte"
+msgstr "Kontakt"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr "Identificador del tercer"
+msgstr "Identifikator partnerja"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Partner"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Tercer - Categoria"
+msgstr "Partner - Kategorija"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Administració de tercers"
+msgstr "Partner - vodenje"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr "Correu electrònic"
+msgstr "E-pošta"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
-msgstr "Fax"
+msgstr "Faks"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
@@ -538,15 +608,15 @@ msgstr "Jabber"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
-msgstr "Mòbil"
+msgstr "Mobilni"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
-msgstr "Un altre"
+msgstr "Drugo"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Phone"
-msgstr "Telèfon"
+msgstr "Telefon"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
@@ -558,56 +628,48 @@ msgstr "Skype"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
-msgstr "Lloc Web"
+msgstr "Spletna stran"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr "Adreces"
+msgstr "Naslovi"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr "Categories de tercer"
+msgstr "Kategorije"
 
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "Kategorija"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "Resultat del sistema d'intercanvi d'informació CIF/NIF"
+msgstr "Rezultati sistem za izmenjavo DDV informacij"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr "Configuració de tercers"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Mitjà de contacte"
+msgstr "Kontakt"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr "Mitjà de contacte"
+msgstr "Kontakti"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
-msgstr "Identificador del tercer"
+msgstr "Identifikator partnerja"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
-msgstr "Identificadors del tercer"
+msgstr "Identifikatorji partnerjev"
 
 msgctxt "view:party.party:"
 msgid "General"
-msgstr "General"
-
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr "Tercers"
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr "Tercer"
+msgstr "Splošno"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr "D'acord"
+msgstr "V redu"

@@ -4,120 +4,163 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "Вы не можете изменить контрагента в адресе \"%s\"."
+msgstr "Vous ne pouvez modifier le tiers de l'adresse « %s »."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
 msgstr ""
-"Некорректное имя категории \"%s\": вы не можете использовать \" / \" в "
-"названии."
+"Nom de catégorie « %s » invalide: vous ne pouvez utiliser « / » dans le "
+"champ nom."
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
-msgstr ""
-"Название категории должно быть уникальным в пределах каждого родительского "
-"узла."
+msgstr "Le nom de la catégorie de tiers doit être unique pour un même parent."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
-msgstr "Служба VIES недоступна, попробуйте позже."
+msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Вы не можете изменить контрагента в контакнтых данных \"%s\"."
+msgstr "Vous ne pouvez pas modifier le tiers sur le moyen de contact « %s »."
 
-#, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr "Некорректный номер ИНН \"%(vat)s\" у контрагента \"%(party)s\"."
+msgstr "Numéro de TVA « %(code)s » invalide sur le tiers « %(party)s »."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
-msgstr "Код контрагента должен быть уникальным"
+msgstr "Le code du tiers doit être unique."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Actif"
 
 msgctxt "field:party.address,city:"
 msgid "City"
-msgstr "Город"
+msgstr "Ville"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr "Страна"
+msgstr "Pays"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr "Полный адрес"
+msgstr "Adresse complète"
 
 msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.address,name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Building Name"
+msgstr "Nom"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr "Нумерация"
+msgstr "Séquence"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr "улица"
-
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
-msgstr "улица (доп.)"
+msgstr "Rue"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Подраздел"
+msgstr "Subdivision"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Индекс"
+msgstr "Code postal"
+
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Active"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "Pays"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Langues"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Actif"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Подчиненый"
+msgstr "Enfants"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
@@ -125,23 +168,23 @@ msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "Предок"
+msgstr "Parent"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -149,19 +192,19 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Контрагенты не прошедшие проверку"
+msgstr "Tiers échoués"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Контрагенты прошедшие проверку"
+msgstr "Tiers réussis"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
@@ -169,39 +212,39 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Нумерация для контрагентов"
+msgstr "Séquence de tiers"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Actif"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr "Комментарии"
+msgstr "Commentaire"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr "Эл.почта"
+msgstr "E-mail"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
@@ -209,19 +252,19 @@ msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr "Значение"
+msgstr "Valeur"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr "Нумерация"
+msgstr "Séquence"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -233,39 +276,39 @@ msgstr "Skype"
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
-msgstr "Тип"
+msgstr "Type"
 
 msgctxt "field:party.contact_mechanism,url:"
 msgid "URL"
-msgstr "Ссылка"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr "Значение"
+msgstr "Valeur"
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
-msgstr "Сайт"
+msgstr "Site web"
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Code"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
@@ -273,67 +316,67 @@ msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr "Тип"
+msgstr "Type"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Actif"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr "Адреса"
+msgstr "Adresses"
 
 msgctxt "field:party.party,categories:"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Catégories"
 
 msgctxt "field:party.party,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Code"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "Код только для чтения"
+msgstr "Code en lecture seule"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Контактные способы"
+msgstr "Moyens de contact"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
-msgstr "Эл.почта"
+msgstr "E-Mail"
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
-msgstr "Факс"
+msgstr "Fax"
 
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
-msgstr "Полное наименование"
+msgstr "Nom complet"
 
 msgctxt "field:party.party,id:"
 msgid "ID"
@@ -341,55 +384,55 @@ msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "Identifiants"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
-msgstr "Язык"
+msgstr "Langue"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
-msgstr "сот.телефон"
+msgstr "Mobile"
 
 msgctxt "field:party.party,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.party,phone:"
 msgid "Phone"
-msgstr "Телефон"
+msgstr "Téléphone"
 
 msgctxt "field:party.party,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "Код ИНН"
+msgstr "Code TVA"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
-msgstr "Сайт"
+msgstr "Site web"
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
-msgstr "Категория"
+msgstr "Catégorie"
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Date de création"
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Créé par"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
@@ -397,141 +440,165 @@ msgstr "ID"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nom"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Date de mise à jour"
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Mis à jour par"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Адреса"
+msgstr "Adresses"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Catégories"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Catégories"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Контактные способы"
+msgstr "Moyens de contact"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Контрагенты по категориям"
+msgstr "Tiers par catégorie"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Конфигурация контрагентов"
+msgstr "Configuration des tiers"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Контрагенты"
+msgstr "Tiers"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "Этикетки"
+msgstr "Étiquettes"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr "Проверить VIES"
+msgstr "Validation VIES"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Адреса"
+msgstr "Adresses"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Catégories"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Категории в виде дерева"
+msgstr "Catégories"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Контактные способы"
+msgstr "Moyens de contact"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Контрагенты"
+msgstr "Tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Конфигурация контрагентов"
+msgstr "Configuration des tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Контрагенты"
+msgstr "Tiers"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
-msgstr "Адрес"
+msgstr "Adresse"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"
-msgstr "Категория"
+msgstr "Catégorie"
 
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr "Проверить VIES"
+msgstr "Validation VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Конфигурация контрагентов"
+msgstr "Configuration des tiers"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Контактный способ"
+msgstr "Moyen de contact"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Identifiant de tiers"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Контрагент"
+msgstr "Tiers"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Контрагент - Категории"
+msgstr "Tiers - Catégorie"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Администрирование контрагентов"
+msgstr "Administration des tiers"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr "Эл.почта"
+msgstr "E-Mail"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
-msgstr "Факс"
+msgstr "Fax"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
@@ -539,19 +606,19 @@ msgstr "IRC"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Jabber"
-msgstr "Джаббер"
+msgstr "Jabber"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
-msgstr "сот.телефон"
+msgstr "Mobile"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
-msgstr "Прочий"
+msgstr "Autre"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Phone"
-msgstr "Телефон"
+msgstr "Téléphone"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
@@ -563,56 +630,48 @@ msgstr "Skype"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
-msgstr "Сайт"
+msgstr "Site web"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr "Адреса"
+msgstr "Adresses"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Catégories"
 
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr "Категория"
+msgstr "Catégorie"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "Результаты поиска в информационной службе VAT"
+msgstr "Résultats VIES"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr "Конфигурация контрагентов"
+msgstr "Configuration des tiers"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Контактный способ"
+msgstr "Moyen de contact"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr "Контактные способы"
+msgstr "Moyens de contact"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Identifiant de tiers"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
-msgstr ""
+msgstr "Identifiants de tiers"
 
 msgctxt "view:party.party:"
 msgid "General"
-msgstr "Основной"
-
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr "Контрагенты"
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr "Контрагент"
+msgstr "Général"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr "Ок"
+msgstr "OK"

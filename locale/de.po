@@ -4,608 +4,675 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr ""
+msgstr "Änderung der Partei von Adresse \"%s\" nicht möglich."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr ""
+msgstr "Ungültiger Kategoriename \"%s\": \" / \" ist in Feld Name nicht erlaubt."
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
 msgstr ""
+"Der Name einer Parteienkategorie kann pro übergeordneter Kategorie nur "
+"einmal vergeben werden."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr ""
+"VIES Dienst nicht erreichbar, bitte versuchen Sie es später noch einmal!"
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr ""
+msgstr "Änderung der Partei von Kontaktmechanismus \"%s\" nicht möglich."
 
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
+msgstr "Ungültige USt-ID-Nummer \"%(code)s\" für Partei \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
-msgstr ""
+msgstr "Der Code für eine Partei kann nur einmal vergeben werden."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 msgctxt "field:party.address,city:"
 msgid "City"
-msgstr ""
+msgstr "Stadt"
 
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr ""
+msgstr "Staat"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr ""
+msgstr "Vollständige Adresse"
 
 msgctxt "field:party.address,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:party.address,name:"
-msgid "Name"
-msgstr ""
+msgid "Building Name"
+msgstr "Name"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reihenfolge"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr ""
-
-msgctxt "field:party.address,streetbis:"
-msgid "Street (bis)"
-msgstr ""
+msgstr "Anschrift 1"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Subnationale Einheit"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
+msgstr "Postleitzahl"
+
+#, fuzzy
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+#, fuzzy
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "Staat"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+#, fuzzy
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Sprache"
+
+#, fuzzy
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Name Staat"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+#, fuzzy
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Untergeordnet (Kategorien)"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Kategorie Name"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Übergeordnet (Kategorie)"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr ""
+msgstr "Parteien mit fehlgeschlagener Überprüfung"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr ""
+msgstr "Parteien mit erfolgreicher Überprüfung"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr ""
+msgstr "Nummernkreis Partei"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr ""
+msgstr "E-Mail"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reihenfolge"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
-msgstr ""
+msgstr "SIP"
 
 msgctxt "field:party.contact_mechanism,skype:"
 msgid "Skype"
-msgstr ""
+msgstr "Skype"
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:party.contact_mechanism,url:"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
-msgstr ""
+msgstr "Homepage"
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr ""
+msgstr "Adressen"
 
 msgctxt "field:party.party,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 msgctxt "field:party.party,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code Partei"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Code (nur lesbar)"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
-msgstr ""
+msgstr "E-Mail"
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
-msgstr ""
+msgstr "Vollständiger Name"
 
 msgctxt "field:party.party,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "Identifikatoren"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
-msgstr ""
+msgstr "Mobiltelefon"
 
 msgctxt "field:party.party,name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.party,phone:"
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr ""
+msgstr "USt-ID-Nr."
 
 msgctxt "field:party.party,website:"
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
+msgstr "Adressen"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr ""
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr ""
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr ""
+msgstr "Parteien nach Kategorien"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr ""
+msgstr "Parteien"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr ""
+msgstr "Etiketten"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr ""
+msgstr "USt-ID-Nr. per VIES überprüfen"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
+msgstr "Adressen"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr ""
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr ""
+msgstr "Parteien"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr ""
+msgstr "Parteien"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
+msgstr "Adresse"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
 msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr ""
+msgstr "USt-ID-Nr. per VIES überprüfen"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Einstellungen Partei"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Kontaktmöglichkeit"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Partei Identifkator"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr ""
+msgstr "Partei"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr ""
+msgstr "Partei - Parteikategorie"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr ""
+msgstr "Parteien Administration"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr ""
+msgstr "E-Mail"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Jabber"
-msgstr ""
+msgstr "Jabber"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
-msgstr ""
+msgstr "Mobiltelefon"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
-msgstr ""
+msgstr "Anderer Kontakt"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
-msgstr ""
+msgstr "SIP"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Skype"
-msgstr ""
+msgstr "Skype"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
-msgstr ""
+msgstr "Homepage"
 
 msgctxt "view:party.address:"
 msgid "Addresses"
-msgstr ""
+msgstr "Adressen"
 
 msgctxt "view:party.category:"
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 msgctxt "view:party.category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr ""
+msgstr "Ergebnisse des Überprüfungssystems für USt-ID-Nummern (VIES)"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Einstellungen Partei"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Kontaktmöglichkeit"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr ""
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Partei Identifikator"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
-msgstr ""
+msgstr "Partei Identifikatoren"
 
 msgctxt "view:party.party:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Parties"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr ""
+msgstr "Allgemein"
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
