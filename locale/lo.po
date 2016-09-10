@@ -20,10 +20,9 @@ msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
-msgstr "Klant"
+msgstr ""
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
@@ -37,10 +36,9 @@ msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
-msgstr "Klant"
+msgstr ""
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
@@ -69,29 +67,30 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "ລະຫັດແຂວງ"
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr ""
-
-msgctxt "field:stock.shipment.drop,create_uid:"
-msgid "Create User"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 #, fuzzy
+msgctxt "field:stock.shipment.drop,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
-msgstr "Klant"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
@@ -104,16 +103,17 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
-msgstr "Effectieve datum"
+msgstr "ວັນທີມີຜົນ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "ຕັດບັນຊີສາງ"
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
@@ -122,34 +122,36 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr "Referentie"
+msgstr "ເອກະສານອ້າງອີງ"
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr "Status"
+msgstr "ສະຖານະ"
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
@@ -163,27 +165,27 @@ msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "ທັງໝົດ"
 
 #, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
@@ -208,49 +210,40 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
-msgstr "Geannuleerd"
+msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "ແລ້ວໆ"
 
 #, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr "Geannuleerd"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "ແລ້ວໆ"
 
 #, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr "Concept"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
-msgstr ""
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Ship"

@@ -20,9 +20,10 @@ msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
@@ -36,9 +37,10 @@ msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
@@ -64,29 +66,34 @@ msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
-msgstr ""
+msgstr "Partner kód"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
@@ -100,45 +107,52 @@ msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
@@ -152,10 +166,11 @@ msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
@@ -196,9 +211,10 @@ msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
@@ -212,24 +228,18 @@ msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
 msgstr ""
 
 msgctxt "view:stock.shipment.drop:"

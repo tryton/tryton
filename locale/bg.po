@@ -255,17 +255,10 @@ msgid "Draft"
 msgstr "Проект"
 
 msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
 msgid "Ship"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
-msgstr ""
+msgstr "Очаквано"

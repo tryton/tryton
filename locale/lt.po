@@ -112,9 +112,10 @@ msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -222,14 +223,6 @@ msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
 msgstr ""
 
 msgctxt "view:stock.shipment.drop:"

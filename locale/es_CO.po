@@ -26,7 +26,7 @@ msgstr "Eliminar Envío"
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
-msgstr "Cliente"
+msgstr ""
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
@@ -42,7 +42,7 @@ msgstr "Eliminar Envíos"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
-msgstr "Cliente"
+msgstr ""
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
@@ -70,7 +70,7 @@ msgstr "Cliente a Entregar"
 
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
-msgstr "Código"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
@@ -90,7 +90,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
-msgstr "Cliente"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
@@ -106,11 +106,11 @@ msgstr "Fecha Efectiva"
 
 msgctxt "field:stock.shipment.drop,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
@@ -118,19 +118,19 @@ msgstr "Fecha Planeada"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr "Proveedor"
+msgstr ""
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
@@ -159,17 +159,17 @@ msgstr "Eliminación de Envíos"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Enviado"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
@@ -206,11 +206,11 @@ msgstr "Hecho"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
-msgstr "Enviado"
+msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
@@ -226,19 +226,11 @@ msgstr "Hecho"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr "Eliminación de Envío"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
-msgstr "Entrega de Envíos"
+msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Ship"
-msgstr "Enviar"
+msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"

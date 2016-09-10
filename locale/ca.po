@@ -228,14 +228,6 @@ msgid "Draft"
 msgstr "Esborrany"
 
 msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr "Enviament directe"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
-msgstr "Enviaments directes"
-
-msgctxt "view:stock.shipment.drop:"
 msgid "Ship"
 msgstr "Envia"
 

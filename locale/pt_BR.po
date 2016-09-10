@@ -227,14 +227,6 @@ msgid "Draft"
 msgstr "Rascunho"
 
 msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipment"
-msgstr "Envio Direto"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Drop Shipments"
-msgstr "Envios Diretos"
-
-msgctxt "view:stock.shipment.drop:"
 msgid "Ship"
 msgstr "Enviar"
 
