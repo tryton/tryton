@@ -20,11 +20,11 @@ msgstr "Decimales de moneda"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
-msgstr "Límite de crédito"
+msgstr ""
 
 msgctxt "field:party.party,credit_amount:"
 msgid "Credit Amount"
-msgstr "Importe de crédito"
+msgstr ""
 
 msgctxt "field:party.party,credit_limit_amount:"
 msgid "Credit Limit Amount"
@@ -44,8 +44,8 @@ msgstr "Límite de Crédito Contable"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
-msgstr "Límite de crédito"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Credit Limit"
-msgstr "Límite de crédito"
+msgstr ""
