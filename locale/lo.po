@@ -6,45 +6,53 @@ msgctxt "field:product.product,locations:"
 msgid "Default Locations"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "ລໍາດັບ"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"

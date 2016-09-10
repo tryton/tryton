@@ -6,45 +6,53 @@ msgctxt "field:product.product,locations:"
 msgid "Default Locations"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
+#, fuzzy
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"

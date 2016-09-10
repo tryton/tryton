@@ -26,9 +26,10 @@ msgctxt "field:stock.product.location,product:"
 msgid "Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
