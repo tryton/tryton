@@ -26,57 +26,67 @@ msgctxt "field:production,work_center:"
 msgid "Work Center"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,works:"
 msgid "Works"
-msgstr ""
+msgstr "Зачади"
 
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:production.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:production.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,production:"
 msgid "Production"
-msgstr ""
+msgstr "Управление на производство"
 
+#, fuzzy
 msgctxt "field:production.work,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Последователност"
 
+#, fuzzy
 msgctxt "field:production.work,state:"
 msgid "State"
-msgstr ""
+msgstr "Щат"
 
+#, fuzzy
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Склад"
 
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
@@ -86,141 +96,175 @@ msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:production.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:production.work.center,active:"
 msgid "Active"
-msgstr ""
+msgstr "Активен"
 
+#, fuzzy
 msgctxt "field:production.work.center,category:"
 msgid "Category"
-msgstr ""
+msgstr "Категория мер. ед."
 
+#, fuzzy
 msgctxt "field:production.work.center,children:"
 msgid "Children"
-msgstr ""
+msgstr "Наследници"
 
+#, fuzzy
 msgctxt "field:production.work.center,company:"
 msgid "Company"
-msgstr ""
+msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:production.work.center,cost_method:"
 msgid "Cost Method"
-msgstr ""
+msgstr "Начин на остойностяване"
 
+#, fuzzy
 msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Фабрична цена"
 
+#, fuzzy
 msgctxt "field:production.work.center,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:production.work.center,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:production.work.center,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:production.work.center,name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work.center,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Родител"
 
+#, fuzzy
 msgctxt "field:production.work.center,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Склад"
 
+#, fuzzy
 msgctxt "field:production.work.center,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:production.work.center,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Цена"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Продължителност"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
-msgstr ""
+msgstr "Щат"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr ""
+msgstr "Задача"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -234,9 +278,34 @@ msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
-msgid "Work"
+msgid "Works"
+msgstr "Зачади"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Заявка"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "В изпълнение"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "Очакване"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
@@ -250,12 +319,13 @@ msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
-msgid "Work"
-msgstr ""
+msgid "Works"
+msgstr "Зачади"
 
 msgctxt "model:production.work,name:"
-msgid "Work"
+msgid "Production Work"
 msgstr ""
 
 msgctxt "model:production.work.center,name:"
@@ -270,29 +340,34 @@ msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Done"
-msgstr ""
+msgstr "Приключено"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Проект"
 
 msgctxt "selection:production.work,state:"
 msgid "Finished"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Request"
-msgstr ""
+msgstr "Заявка"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Running"
-msgstr ""
+msgstr "В изпълнение"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Очакване"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid ""
@@ -306,21 +381,25 @@ msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Hour"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Отказан"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Done"
-msgstr ""
+msgstr "Приключено"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Проект"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
-msgstr ""
+msgstr "В изпълнение"
 
 msgctxt "view:production.work.center.category:"
 msgid "Work Center Categories"
@@ -338,30 +417,26 @@ msgctxt "view:production.work.center:"
 msgid "Work Centers"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Cancel"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Cycle"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Cycles"
-msgstr ""
+msgstr "Отказване"
 
 msgctxt "view:production.work.cycle:"
 msgid "Do"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Run"
-msgstr ""
+msgstr "Изпълнявано"
 
+#, fuzzy
 msgctxt "view:production.work:"
 msgid "Work"
-msgstr ""
+msgstr "Задача"
 
+#, fuzzy
 msgctxt "view:production.work:"
 msgid "Works"
-msgstr ""
+msgstr "Зачади"

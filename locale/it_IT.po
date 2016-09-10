@@ -34,45 +34,53 @@ msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
+#, fuzzy
 msgctxt "field:production.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:production.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:production.work,operation:"
 msgid "Operation"
-msgstr ""
+msgstr "Operazione"
 
 msgctxt "field:production.work,production:"
 msgid "Production"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:production.work,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
+#, fuzzy
 msgctxt "field:production.work,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
@@ -86,29 +94,35 @@ msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:production.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:production.work.center,active:"
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
+#, fuzzy
 msgctxt "field:production.work.center,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
+#, fuzzy
 msgctxt "field:production.work.center,children:"
 msgid "Children"
-msgstr ""
+msgstr "Figlio"
 
+#, fuzzy
 msgctxt "field:production.work.center,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:production.work.center,cost_method:"
 msgid "Cost Method"
@@ -118,109 +132,131 @@ msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work.center,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:production.work.center,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:production.work.center,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:production.work.center,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:production.work.center,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Parte"
 
+#, fuzzy
 msgctxt "field:production.work.center,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work.center,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:production.work.center,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:production.work.center.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work.cycle,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work.cycle,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work.cycle,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -235,8 +271,33 @@ msgid "Work Centers"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
-msgid "Work"
+msgid "Works"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Tutti"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Bozza"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Richiesta"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "In funzione"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "In attesa"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
@@ -251,11 +312,11 @@ msgid "Work Centers"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
-msgid "Work"
+msgid "Works"
 msgstr ""
 
 msgctxt "model:production.work,name:"
-msgid "Work"
+msgid "Production Work"
 msgstr ""
 
 msgctxt "model:production.work.center,name:"
@@ -270,29 +331,34 @@ msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt "selection:production.work,state:"
 msgid "Finished"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Request"
-msgstr ""
+msgstr "Richiesta"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Running"
-msgstr ""
+msgstr "In funzione"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "In attesa"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid ""
@@ -310,17 +376,20 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Cancelled"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
-msgstr ""
+msgstr "In funzione"
 
 msgctxt "view:production.work.center.category:"
 msgid "Work Center Categories"
@@ -338,25 +407,20 @@ msgctxt "view:production.work.center:"
 msgid "Work Centers"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
-msgctxt "view:production.work.cycle:"
-msgid "Cycle"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Cycles"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Do"
-msgstr ""
+msgstr "Esegui"
 
+#, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Run"
-msgstr ""
+msgstr "Calcolo"
 
 msgctxt "view:production.work:"
 msgid "Work"
