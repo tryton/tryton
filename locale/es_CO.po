@@ -8,11 +8,12 @@ msgstr "Duración de línea \"%(linea)s\" debe ser positivo."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"You can not unset \"Available on timesheets\" for work \"%s\" because it "
-"already has timesheets."
+"The company of the work \"%(work)s\" is different then the origin's company"
 msgstr ""
-"No puede cambiar \"Registros disponibles\" para las tareas \"%s\" porque hay"
-" registros activos."
+
+msgctxt "error:timesheet.work:"
+msgid "The origin must be unique per company."
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -28,15 +29,15 @@ msgstr "Duración"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
@@ -46,15 +47,17 @@ msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-msgctxt "field:timesheet.hours_employee.open.start,end_date:"
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "Fecha Final"
 
-msgctxt "field:timesheet.hours_employee.open.start,id:"
+msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-msgctxt "field:timesheet.hours_employee.open.start,start_date:"
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Fecha de Inicio"
 
@@ -72,23 +75,23 @@ msgstr "Duración"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
-msgstr "Mes"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
-msgstr "Mes"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
@@ -100,7 +103,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
-msgstr "Año"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
@@ -116,23 +119,23 @@ msgstr "Duración"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
-msgstr "Semana"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
-msgstr "Semana"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
@@ -144,7 +147,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
-msgstr "Año"
+msgstr ""
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
@@ -160,11 +163,11 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:timesheet.line,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
@@ -172,19 +175,20 @@ msgstr "Duración"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr "Trabajo"
+msgstr "Tarea"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
@@ -196,23 +200,20 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:timesheet.work,active:"
 msgid "Active"
-msgstr "Activo"
-
-msgctxt "field:timesheet.work,children:"
-msgid "Children"
-msgstr "Hijos"
+msgstr "Activa"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
@@ -232,31 +233,19 @@ msgstr "Duración de Registro de Tiempo"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.work,left:"
-msgid "Left"
-msgstr "Izquierda"
+msgstr ""
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
-msgctxt "field:timesheet.work,parent:"
-msgid "Parent"
-msgstr "Padre"
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:timesheet.work,rec_name:"
 msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:timesheet.work,right:"
-msgid "Right"
-msgstr "Derecha"
-
-msgctxt "field:timesheet.work,timesheet_available:"
-msgid "Available on timesheets"
-msgstr "Disponible en los registros de tiempo"
+msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
@@ -270,9 +259,10 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Inicio de Registro de Tiempo"
 
-msgctxt "field:timesheet.work,total_duration:"
-msgid "Total Timesheet Duration"
-msgstr "Duración de Registro de Tiempo"
+#, fuzzy
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Tarea"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -282,29 +272,23 @@ msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
-msgctxt "field:timesheet.work.open.start,from_date:"
+#, fuzzy
+msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Fecha Inicial"
 
-msgctxt "field:timesheet.work.open.start,id:"
+msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-msgctxt "field:timesheet.work.open.start,to_date:"
+#, fuzzy
+msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr "A la Fecha"
+msgstr "Fecha Final"
 
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work"
 msgstr "Tiempo total gastado"
-
-msgctxt "help:timesheet.work,timesheet_available:"
-msgid "Allow to fill in timesheets with this work"
-msgstr "Permite llenar los registros de tiempo con este trabajo"
-
-msgctxt "help:timesheet.work,total_duration:"
-msgid "Total time spent on this work and the sub-works"
-msgstr "Tiempo total gastado en esta tarea y sub-tareas"
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -313,10 +297,6 @@ msgstr "Horas por Empleado"
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
 msgstr "Horas por Empleado por Mes"
-
-msgctxt "model:ir.action,name:act_hours_employee_open"
-msgid "Hours per Employee"
-msgstr "Horas por Empleado"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
@@ -334,43 +314,22 @@ msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Lineas de Registro de Tiempo"
 
-msgctxt "model:ir.action,name:act_open_work"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
-msgctxt "model:ir.action,name:act_open_work_graph"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
-msgctxt "model:ir.action,name:act_work_form2"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
-msgctxt "model:ir.action,name:act_work_form3"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
-msgctxt "model:ir.action,name:act_work_hours_board"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Trabajos"
+msgstr "Tareas"
 
-msgctxt "model:ir.action,name:act_work_tree"
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Trabajos"
-
-msgctxt "model:ir.action,name:act_work_tree2"
-msgid "Works"
-msgstr "Trabajos"
+msgstr "Tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuración"
+msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_hours_employee_open"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
 msgstr "Horas por Empleado"
 
@@ -392,23 +351,21 @@ msgstr "Lineas de Registro de Tiempo"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Informes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
 msgstr "Registro de Tiempo"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Trabajos"
+msgstr "Tareas"
 
-msgctxt "model:ir.ui.menu,name:menu_work_tree"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Trabajos"
-
-msgctxt "model:ir.ui.menu,name:menu_work_tree2"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
+msgstr "Tareas"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -418,9 +375,9 @@ msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
 msgstr "Horas por Empleado"
 
-msgctxt "model:timesheet.hours_employee.open.start,name:"
-msgid "Open Hours per Employee"
-msgstr "Abrir Horas por Empleado"
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr ""
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -438,25 +395,18 @@ msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
 msgstr "Ingresar Lineas"
 
+#, fuzzy
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr "Trabajo"
+msgstr "Tarea"
 
-msgctxt "model:timesheet.work.open.start,name:"
-msgid "Open Work"
-msgstr "Abrir Actividad"
-
-msgctxt "view:timesheet.hours_employee.open.start:"
-msgid "Hours per Employee"
-msgstr "Horas por Empleado"
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr ""
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Duración"
-
-msgctxt "view:timesheet.hours_employee:"
-msgid "Hours per Employee"
-msgstr "Horas por Empleado"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -474,38 +424,21 @@ msgctxt "view:timesheet.line:"
 msgid "Duration"
 msgstr "Duración"
 
-msgctxt "view:timesheet.line:"
-msgid "Timesheet Line"
-msgstr "Linea de Registro de Tiempo"
-
-msgctxt "view:timesheet.line:"
-msgid "Timesheet Lines"
-msgstr "Lineas de Registro de Tiempo"
-
-msgctxt "view:timesheet.work.open.start:"
-msgid "Hours per Work"
-msgstr "Horas por Trabajo"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Horas por Trabajo"
 
+#, fuzzy
 msgctxt "view:timesheet.work:"
 msgid "Work"
-msgstr "Trabajo"
+msgstr "Tarea"
 
+#, fuzzy
 msgctxt "view:timesheet.work:"
 msgid "Works"
-msgstr "Trabajos"
+msgstr "Tareas"
 
-msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:timesheet.hours_employee.open,start,open_:"
-msgid "Open"
-msgstr "Abrir"
-
+#, fuzzy
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -513,19 +446,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Ingresar"
-
-msgctxt "wizard_button:timesheet.work.open,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:timesheet.work.open,start,open_:"
-msgid "Open"
-msgstr "Abrir"
-
-msgctxt "wizard_button:timesheet.work.open2,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:timesheet.work.open2,start,open_:"
-msgid "Open"
-msgstr "Abrir"
