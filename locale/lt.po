@@ -86,9 +86,10 @@ msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -118,9 +119,10 @@ msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -246,9 +248,10 @@ msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-customer-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -278,9 +281,10 @@ msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"

@@ -381,7 +381,3 @@ msgstr "Konti"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Davki"
-
-msgctxt "field:product.configuration,default_taxes_category:"
-msgid "Use Category's Taxes by default"
-msgstr "Samodejno uporabi davke iz kategorije "

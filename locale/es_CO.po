@@ -48,7 +48,7 @@ msgstr "Cuenta de Ingresos Usada"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
-msgstr "Contabilidad"
+msgstr ""
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
@@ -72,7 +72,7 @@ msgstr "Usar Impuestos del Padre"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
-msgstr "Categoría"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,create_date:"
 msgid "Create Date"
@@ -84,12 +84,13 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
 msgstr "Impuesto"
@@ -104,7 +105,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
-msgstr "Categoría"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,create_date:"
 msgid "Create Date"
@@ -116,12 +117,13 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Impuesto"
@@ -240,7 +242,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.template-customer-account.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
@@ -248,8 +250,9 @@ msgstr "Plantilla de Producto"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
 msgstr "Impuesto"
@@ -272,7 +275,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
@@ -280,8 +283,9 @@ msgstr "Plantilla de Producto"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Impuesto"
@@ -352,32 +356,35 @@ msgstr "Plantilla Producto - Impuestos Proveedor"
 
 msgctxt "view:account.configuration:"
 msgid "Category"
-msgstr "Categoría"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
-msgstr "Contabilidad"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:product.category:"
 msgid "Accounts"
-msgstr "Cuentas"
+msgstr "Cuentas Bancarias"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
-msgstr "Impuestos"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Accounting"
-msgstr "Contabilidad"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Accounts"
-msgstr "Cuentas"
+msgstr "Cuentas Bancarias"
 
 msgctxt "view:product.template:"
 msgid "Taxes"
-msgstr "Impuestos"
+msgstr ""
