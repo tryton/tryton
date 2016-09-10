@@ -16,6 +16,7 @@ msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
 msgstr "Стандартный"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Shipments"
-msgstr ""
+msgstr "Доставка"

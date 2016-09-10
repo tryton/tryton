@@ -6,13 +6,15 @@ msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
+#, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgctxt "view:party.party:"
 msgid "Shipments"

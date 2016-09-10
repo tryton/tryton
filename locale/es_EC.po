@@ -8,11 +8,11 @@ msgstr "Método de agrupación de las guías de remisión de venta"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
-msgstr "Ninguno"
+msgstr ""
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
-msgstr "Estándar"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Shipments"

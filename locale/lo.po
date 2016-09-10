@@ -9,12 +9,12 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
-msgstr "Няма"
+msgstr "ບໍ່ມີ"
 
 #, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
-msgstr "Стандартен"
+msgstr "ມາດຕະຖານ"
 
 msgctxt "view:party.party:"
 msgid "Shipments"
