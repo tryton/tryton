@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
 
 from trytond.modules.company.tests import create_company, set_company
 
@@ -348,6 +349,89 @@ class AccountTestCase(ModuleTestCase):
                 self.assertEqual((receivable.debit, receivable.credit),
                     (Decimal(100), Decimal(0)))
                 self.assertEqual(receivable.balance, Decimal(100))
+
+    @with_transaction()
+    def test_move_post(self):
+        "Test posting move"
+        pool = Pool()
+        Party = pool.get('party.party')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        Period = pool.get('account.period')
+
+        party = Party(name='Party')
+        party.save()
+
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            create_chart(company)
+
+            journal_revenue, = Journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            revenue, = Account.search([
+                    ('kind', '=', 'revenue'),
+                    ])
+            receivable, = Account.search([
+                    ('kind', '=', 'receivable'),
+                    ])
+
+            move = Move()
+            move.period = period
+            move.journal = journal_revenue
+            move.date = period.start_date
+            move.lines = [
+                Line(account=revenue, credit=Decimal(100)),
+                Line(account=receivable, debit=Decimal(100), party=party),
+                ]
+            move.save()
+            Move.post([move])
+            move_id = move.id
+
+            self.assertEqual(move.state, 'posted')
+
+            # Can not post an empty move
+            with self.assertRaises(UserError):
+                move = Move()
+                move.period = period
+                move.journal = journal_revenue
+                move.date = period.start_date
+                move.save()
+                Move.post([move])
+            Move.delete([move])
+
+            # Can not modify posted move
+            with self.assertRaises(UserError):
+                move = Move(move_id)
+                move.date = period.end_date
+                move.save()
+
+            # Can not go back to draft
+            with self.assertRaises(UserError):
+                move = Move(move_id)
+                move.state = 'draft'
+                move.save()
+
+            Period.close([period])
+
+            # Can not create move with lines on closed period
+            with self.assertRaises(UserError):
+                move = Move()
+                move.period = period
+                move.journal = journal_revenue
+                move.date = period.start_date
+                move.lines = [
+                    Line(account=revenue, credit=Decimal(100)),
+                    Line(account=receivable, debit=Decimal(100), party=party),
+                    ]
+                move.save()
 
     @with_transaction()
     def test_tax_compute(self):

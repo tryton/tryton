@@ -105,7 +105,6 @@ class Journal(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     type = fields.Selection('get_types', 'Type', required=True)
     view = fields.Many2One('account.journal.view', 'View')
-    update_posted = fields.Boolean('Allow updating posted moves')
     sequence = fields.Property(fields.Many2One('ir.sequence', 'Sequence',
             domain=[('code', '=', 'account.journal')],
             context={'code': 'account.journal'},
@@ -170,10 +169,6 @@ class Journal(ModelSQL, ModelView):
     @staticmethod
     def default_active():
         return True
-
-    @staticmethod
-    def default_update_posted():
-        return False
 
     @staticmethod
     def default_sequence():

@@ -1,3 +1,4 @@
+* Remove journal option for updating posted moves
 * Replace Journal-Period name by function field
 * Manage readonly state on Move Line
 * Add comparison amount on Balance Sheet and Income Statement

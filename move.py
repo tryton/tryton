@@ -82,7 +82,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
-        cls._check_modify_exclude = ['state']
+        cls._check_modify_exclude = []
         cls._order.insert(0, ('date', 'DESC'))
         cls._order.insert(1, ('number', 'DESC'))
         cls._error_messages.update({
@@ -90,14 +90,10 @@ class Move(ModelSQL, ModelView):
                     'empty.'),
                 'post_unbalanced_move': ('You can not post move "%s" because '
                     'it is an unbalanced.'),
-                'draft_posted_move_journal': ('You can not set posted move '
-                    '"%(move)s" to draft in journal "%(journal)s".'),
                 'modify_posted_move': ('You can not modify move "%s" because '
                     'it is already posted.'),
                 'date_outside_period': ('You can not create move "%(move)s" '
                     'because its date is outside its period.'),
-                'draft_closed_period': ('You can not set to draft move '
-                    '"%(move)s" because period "%(period)s" is closed.'),
                 'period_cancel': (
                     'The period of move "%s" is closed.\n'
                     'Use the current period?'),
@@ -105,9 +101,6 @@ class Move(ModelSQL, ModelView):
         cls._buttons.update({
                 'post': {
                     'invisible': Eval('state') == 'posted',
-                    },
-                'draft': {
-                    'invisible': Eval('state') == 'draft',
                     },
                 })
 
@@ -433,24 +426,6 @@ class Move(ModelSQL, ModelView):
             for _, zero_lines in groupby(to_reconcile, keyfunc):
                 Line.reconcile(list(zero_lines))
         cls.save(moves)
-
-    @classmethod
-    @ModelView.button
-    def draft(cls, moves):
-        for move in moves:
-            if not move.journal.update_posted:
-                cls.raise_user_error('draft_posted_move_journal', {
-                        'move': move.rec_name,
-                        'journal': move.journal.rec_name,
-                        })
-            if move.period.state == 'close':
-                cls.raise_user_error('draft_closed_period', {
-                        'move': move.rec_name,
-                        'period': move.period.rec_name,
-                        })
-        cls.write(moves, {
-            'state': 'draft',
-            })
 
 
 class Reconciliation(ModelSQL, ModelView):
