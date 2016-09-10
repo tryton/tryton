@@ -2,22 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 #, fuzzy
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Werknemer"
 
+#, fuzzy
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:project.allocation,percentage:"
@@ -34,25 +37,30 @@ msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr "Werk"
 
+#, fuzzy
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -67,13 +75,15 @@ msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"

@@ -2,73 +2,88 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Alkalmazott"
 
+#, fuzzy
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
-msgstr ""
+msgstr "Százalék:"
 
+#, fuzzy
 msgctxt "field:project.allocation,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr ""
+msgstr "Tevékenység"
 
+#, fuzzy
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
@@ -110,9 +125,10 @@ msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Időtartam"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
