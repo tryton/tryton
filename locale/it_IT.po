@@ -10,9 +10,10 @@ msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Vettore"
 
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"

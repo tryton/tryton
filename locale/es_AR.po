@@ -10,9 +10,10 @@ msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
 msgstr "Costo unitario de Remito"
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
-msgstr "Transportista"
+msgstr "Transportistas"
 
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
@@ -28,4 +29,4 @@ msgstr "Decimales de moneda del costo"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
-msgstr "Por valor"
+msgstr ""

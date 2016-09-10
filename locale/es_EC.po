@@ -28,4 +28,4 @@ msgstr "Decimales de moneda de costo"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
-msgstr "Por valor"
+msgstr ""
