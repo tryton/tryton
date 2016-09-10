@@ -7,8 +7,6 @@ msgid ""
 "The forcast quantity %(forecast_quantity)s%(default_uom)s of \"%(line)s\" is"
 " lower than %(quantity)s%(unit)s."
 msgstr ""
-"La cantidad prevista %(forecast_quantity)s%(default_uom)s de \"%(line)s\" es"
-" menor que %(quantity)s%(unit)s."
 
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
