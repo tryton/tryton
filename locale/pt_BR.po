@@ -50,9 +50,10 @@ msgctxt "field:sale.complaint,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
@@ -400,14 +401,6 @@ msgstr "Cancelar"
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Reclamação"
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaint"
-msgstr "Reclamação do Cliente"
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaints"
-msgstr "Reclamações dos Clientes"
 
 msgctxt "view:sale.complaint:"
 msgid "Draft"

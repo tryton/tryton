@@ -402,14 +402,6 @@ msgid "Complaint"
 msgstr "Reklamacija"
 
 msgctxt "view:sale.complaint:"
-msgid "Customer Complaint"
-msgstr "Reklamacija kupca"
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaints"
-msgstr "Reklamacije kupcev"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "V pripravi"
 

@@ -12,7 +12,7 @@ msgstr "La queja \"%s\" debe estar en borrador para ser borrada."
 
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr "Acciones"
+msgstr ""
 
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
@@ -32,31 +32,31 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
-msgstr "Cliente"
+msgstr ""
 
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:sale.complaint,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
-msgstr "Origen"
+msgstr ""
 
 msgctxt "field:sale.complaint,origin_id:"
 msgid "Origin ID"
@@ -68,19 +68,19 @@ msgstr "Modelo de Origen"
 
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
@@ -108,7 +108,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
@@ -116,15 +116,15 @@ msgstr "Líneas de Facturas"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
-msgstr "Resultado"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
@@ -132,7 +132,7 @@ msgstr "Líneas de Venta"
 
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,unit_digits:"
 msgid "Unit Digits"
@@ -150,6 +150,7 @@ msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Acción"
@@ -164,7 +165,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -172,7 +173,7 @@ msgstr "Línea de Factura"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -196,7 +197,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
@@ -204,7 +205,7 @@ msgstr "Línea de Venta"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
@@ -224,19 +225,19 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
-msgstr "Origen"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
@@ -280,11 +281,11 @@ msgstr "Quejas"
 
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "Tipos"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
@@ -294,7 +295,7 @@ msgstr "Aprobado"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
@@ -319,7 +320,7 @@ msgstr "Queja de Cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "Tipos"
+msgstr ""
 
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
@@ -355,7 +356,7 @@ msgstr "Hecho"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
@@ -393,6 +394,7 @@ msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Aprobado"
 
+#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -402,16 +404,8 @@ msgid "Complaint"
 msgstr "Queja"
 
 msgctxt "view:sale.complaint:"
-msgid "Customer Complaint"
-msgstr "Queja de Cliente"
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaints"
-msgstr "Quejas de Cliente"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Process"
@@ -419,7 +413,7 @@ msgstr "Proceso"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"
-msgstr "Rechazar"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Wait"

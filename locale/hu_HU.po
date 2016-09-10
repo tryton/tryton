@@ -10,49 +10,60 @@ msgctxt "error:sale.complaint:"
 msgid "Complaint \"%s\" must be in draft to be deleted."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr ""
+msgstr "Műveletek"
 
+#, fuzzy
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr ""
+msgstr "Cím"
 
+#, fuzzy
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:sale.complaint,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
+#, fuzzy
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Alkalmazott"
 
+#, fuzzy
 msgctxt "field:sale.complaint,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
@@ -66,61 +77,72 @@ msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
-msgstr ""
+msgstr "Művelet"
 
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -130,121 +152,146 @@ msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Művelet"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Művelet"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -282,9 +329,10 @@ msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
@@ -349,9 +397,10 @@ msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
@@ -393,20 +442,13 @@ msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaint"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Customer Complaints"
 msgstr ""
 
 msgctxt "view:sale.complaint:"
