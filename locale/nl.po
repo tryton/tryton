@@ -3,262 +3,284 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-"Es kann nur ein Zeiterfassungsblatt pro Aufgabe/Projekt eingetragen werden."
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
 msgstr ""
-"Die Aufgabe \"%(child)s\" kann nicht auf 'Offen' gesetzt werden, weil "
-"das/die übergeordnete Projekt/Aufgabe \"%(parent)s\" erledigt ist."
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
 "still opened."
 msgstr ""
-"Projekt/Aufgabe \"%(parent)s\" kann nicht auf 'Erledigt' gesetzt werden, "
-"weil das/die untergeordnete Projekt/Aufgabe \"%(child)s\" noch geöffnet ist."
 
+#, fuzzy
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Untergeordnet (Projekte/Aufgaben)"
+msgstr "Onderliggende niveaus"
 
+#, fuzzy
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Kommentar"
+msgstr "Opmerking"
 
+#, fuzzy
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "Bedrijf"
 
+#, fuzzy
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Gebruiker"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Zeitaufwand"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:project.work,left:"
 msgid "Left"
 msgstr "Links"
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Übergeordnet (Projekt/Aufgabe)"
+msgstr "Bovenliggend niveau"
 
+#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr "Relaties"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Kontaktadresse"
+msgstr ""
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr "Fortschritt"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "Rechts"
 
+#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr "Reeks"
 
+#, fuzzy
 msgctxt "field:project.work,state:"
 msgid "State"
 msgstr "Status"
 
+#, fuzzy
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Verfügbar für Zeiterfassung"
+msgstr "Beschikbaar in tijdregistartie"
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
-msgstr "Dauer"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Tijdregistratieregel"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Gesamtaufwand (Personenstunden)"
+msgstr ""
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr "Gesamtfortschritt"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Typ"
+msgstr "Type"
 
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr "Tätigkeit"
-
+#, fuzzy
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Gebruiker"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "Geschätzter Zeitaufwand für diese Aufgabe"
+msgstr ""
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work"
-msgstr "Geschätzter Forstchritt für diese Aufgabe"
+msgstr ""
 
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works"
 msgstr ""
-"Die gesamte Zeit, die für diese Aufgabe inkl. Unteraufgaben verwendet wurde"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr ""
-"Veranschlagter Gesamtaufwand für diese(s) Projekt/Aufgabe inkl. aller "
-"untergeordneten Projekte/Aufgaben in Stunden (Format: Personenstunden, "
-"-tage, -wochen)"
 
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr "Geschätzter Gesamtfortschritt für diese Aufgabe inkl. Unteraufgaben"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Aufgaben Aufwände"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Aufgaben Aufwände"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geopend"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geopend"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geopend"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Einstellungen"
+msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Aufgaben Aufwände"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Aufgaben Aufwände"
+msgstr ""
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Aufgabe Aufwand"
+msgstr ""
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Projekte Administration"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geopend"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr "Aufgabe"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "%"
 msgstr "%"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Untergeordnet (Projekte/Aufgaben)"
+msgstr "Onderliggende niveaus"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr "Aufgaben Aufwände"
+msgstr "Algemeen"

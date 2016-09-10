@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -18,49 +14,58 @@ msgid ""
 "still opened."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr ""
+msgstr "Gyermek (csomag)"
 
+#, fuzzy
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Szülő (csomag)"
 
+#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
@@ -70,28 +75,46 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
+msgstr "Időtartam"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Időkövetés vége"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Időkövetés kezdete"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
 msgstr ""
 
 msgctxt "field:project.work,total_effort:"
@@ -102,21 +125,20 @@ msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr ""
-
+#, fuzzy
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
@@ -162,33 +184,37 @@ msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
@@ -222,9 +248,10 @@ msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
@@ -238,18 +265,16 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr ""
+msgstr "Gyermek (csomag)"
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
 msgstr ""

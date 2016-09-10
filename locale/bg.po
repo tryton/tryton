@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -18,28 +14,26 @@ msgid ""
 "still opened."
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr "Наследници"
 
-#, fuzzy
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Opmerking"
+msgstr "Коментар"
 
 #, fuzzy
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Фирма"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
@@ -47,88 +41,92 @@ msgstr ""
 
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr ""
+msgstr "Ляв"
 
-#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Име"
 
-#, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Bovenliggend niveau"
+msgstr "Родител"
 
-#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Партньор"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr ""
+msgstr "Адрес за контакт"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Име"
 
+#, fuzzy
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr ""
+msgstr "Десен"
 
-#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "Последователност"
 
-#, fuzzy
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Състояние"
 
 #, fuzzy
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Beschikbaar in tijdregistartie"
+msgstr "Наличен в график"
 
+#, fuzzy
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
+msgstr "Продължителност"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Ред от график"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
 msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr ""
+msgstr "Общо усилия"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Type"
-
-#, fuzzy
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr "Werk"
+msgstr "Вид"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
@@ -144,135 +142,122 @@ msgstr ""
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr ""
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr ""
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Проекти"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Проекти"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Задачи"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Приключен"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Geopend"
+msgstr "Отворен"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Приключен"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Geopend"
+msgstr "Отворен"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Приключен"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Geopend"
+msgstr "Отворен"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Конфигурация"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr ""
+msgstr "Управление на проекти"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Проекти"
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Проекти"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Дейност"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr ""
+msgstr "Управление на проекти"
 
-#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "Приключен"
 
-#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Geopend"
+msgstr "Отворен"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr ""
+msgstr "Проект"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr ""
+msgstr "Задача"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
-#, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr "Наследници"
 
-#, fuzzy
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "Algemeen"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr ""
+msgstr "Основен"

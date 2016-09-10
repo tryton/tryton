@@ -3,11 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-"Deve haver somente uma folha de registro de trabalho por tarefa/projeto."
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -99,6 +94,20 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Duração"
 
+#, fuzzy
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fim do Horário de Trabalho"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Início do Horário de Trabalho"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr "Esforço total"
@@ -110,10 +119,6 @@ msgstr "Progresso Total"
 msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr "Trabalho"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
@@ -254,7 +259,3 @@ msgstr "Criança"
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "Geral"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr "Esforços dos trabalhos"

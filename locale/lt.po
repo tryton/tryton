@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -50,9 +46,10 @@ msgctxt "field:project.work,left:"
 msgid "Left"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -70,9 +67,10 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -94,6 +92,18 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr ""
 
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
 msgstr ""
@@ -104,10 +114,6 @@ msgstr ""
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr ""
-
-msgctxt "field:project.work,work:"
-msgid "Work"
 msgstr ""
 
 msgctxt "field:project.work,write_date:"
@@ -238,9 +244,10 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "Children"
@@ -248,8 +255,4 @@ msgstr ""
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
 msgstr ""

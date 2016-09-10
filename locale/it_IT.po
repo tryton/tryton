@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr ""
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -18,49 +14,59 @@ msgid ""
 "still opened."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr ""
+msgstr "Figlio"
 
+#, fuzzy
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Commento"
 
+#, fuzzy
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
+#, fuzzy
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr ""
+msgstr "Sinistra"
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Parte"
 
+#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparti"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
@@ -70,21 +76,25 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr ""
+msgstr "Destra"
 
+#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
+#, fuzzy
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
@@ -92,6 +102,18 @@ msgstr ""
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
 msgstr ""
 
 msgctxt "field:project.work,total_effort:"
@@ -102,21 +124,20 @@ msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr ""
-
+#, fuzzy
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
@@ -162,33 +183,37 @@ msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Configurazione"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
@@ -222,9 +247,10 @@ msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
@@ -238,18 +264,17 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr ""
+msgstr "Figlio"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr ""
+msgstr "Generale"

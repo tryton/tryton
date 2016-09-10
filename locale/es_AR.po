@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr "Debe haber sólo un parte de horas de trabajo por tarea/proyecto."
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
@@ -28,39 +24,40 @@ msgstr "Tareas"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Comentario"
+msgstr ""
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Esfuerzo"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr "Izquierda"
+msgstr ""
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:project.work,party:"
 msgid "Party"
@@ -68,35 +65,47 @@ msgstr "Entidad"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Dirección de contacto"
+msgstr ""
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr "Progreso"
+msgstr ""
 
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr "Derecha"
+msgstr ""
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Disponible en partes de trabajo"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Duración"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
@@ -104,23 +113,19 @@ msgstr "Total esfuerzo"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr "Progreso total"
+msgstr ""
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Tipo"
-
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr "Actividad"
+msgstr ""
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
@@ -144,19 +149,21 @@ msgstr "Progreso total estimado para esta actividad y sus subactividades"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
 msgstr "Proyectos"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
 msgstr "Proyectos"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -172,7 +179,7 @@ msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
@@ -180,7 +187,7 @@ msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
@@ -188,16 +195,17 @@ msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuración"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Proyectos"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
 msgstr "Proyectos"
@@ -208,7 +216,7 @@ msgstr "Proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
@@ -232,19 +240,19 @@ msgstr "Realizado"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Abierto"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Proyecto"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr "Tarea"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Children"
@@ -252,8 +260,4 @@ msgstr "Tareas"
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "General"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr "Actividades"
+msgstr ""

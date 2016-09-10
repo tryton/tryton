@@ -3,48 +3,44 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project."
-msgstr "Debe haber sólo un parte de horas de trabajo por tarea/proyecto."
-
-msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
 "is already done."
 msgstr ""
-"El trabajo \"%(child)s\" no se puede abrir porque el trabajo padre "
-"\"%(parent)s\" ya está finalizado."
+"Le travail « %(child)s » ne peut pas être ouvert parce que son travail "
+"parent « %(parent)s » est déjà fait."
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
 "still opened."
 msgstr ""
-"El trabajo \"%(parent)s\" no puede finalizar porque el trabajo hijo "
-"\"%(child)s\" todavía se encuentra abierto."
+"Le travail « %(parent)s » ne peut pas étre dans l'état « Fait » parce que "
+"son travail enfant « %(child)s » est toujours ouvert."
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Hijos"
+msgstr "Enfants"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Comentario"
+msgstr "Commentaire"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Société"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Date de création"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Créé par"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Esfuerzo"
+msgstr "Effort"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -52,195 +48,205 @@ msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr "Izquierda"
+msgstr "Gauche"
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr "Parent"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Tiers"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Dirección de contacto"
+msgstr "Adresse"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr "Progreso"
+msgstr "Progression"
 
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr "Derecha"
+msgstr "Droite"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Séquence"
 
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Estado"
+msgstr "État"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Disponible en partes de trabajo"
+msgstr "Disponible sur les feuilles de présence"
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
-msgstr "Tiempo"
+msgstr "Durée"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de feuille de présence"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Début de feuille de présence"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Tiempo total"
+msgstr "Effort total"
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr "Progreso total"
+msgstr "Progression totale"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Tipo"
-
-msgctxt "field:project.work,work:"
-msgid "Work"
-msgstr "Trabajo"
+msgstr "Type"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Date de mise à jour"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Mis à jour par"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
-msgstr "Tiempo estimado para este trabajo."
+msgstr "Effort estimé pour ce travail"
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work"
-msgstr "Progreso estimado para este trabajo."
+msgstr "Progression estimée pour ce travail"
 
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works"
-msgstr "Tiempo total empleado en este trabajo y sus subtrabajos."
+msgstr "Temps total passé sur ce travail et ses sous-travaux"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Tiempo total estimado para este trabajo y sus subtrabajos."
+msgstr "Effort total estimé pour ce travail et ses sous-travaux"
 
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
-msgstr "Progreso total estimado para este trabajo y sus subtrabajos."
+msgstr "Progression total estimée pour ce travail et ses sous-travaux"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr "Tâches"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Projets"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Projets"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr "Tâches"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Efforts de travail"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Efforts de travail"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Terminé"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr "Ouvert"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Terminé"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr "Ouvert"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Terminé"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Abierto"
+msgstr "Ouvert"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuración"
+msgstr "Configuration"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Proyectos"
+msgstr "Projets"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Projets"
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Projets"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Tareas"
+msgstr "Tâches"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Efforts de travail"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Efforts de travail"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Proyecto y tarea"
+msgstr "Effort de travail"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Administración de proyectos"
+msgstr "Administration des projets"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Terminé"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Abierto"
+msgstr "Ouvert"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Projet"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr "Tarea"
+msgstr "Tâche"
 
 msgctxt "view:project.work:"
 msgid "%"
@@ -248,12 +254,8 @@ msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Hijos"
+msgstr "Enfants"
 
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr "Proyectos y tareas"
