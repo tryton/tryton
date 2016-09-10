@@ -123,6 +123,19 @@ msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
+
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
 msgstr "Lote"
@@ -184,9 +197,21 @@ msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr "O tipo de localização para a qual o lote é obrigatório"
 
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr "Lote"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -227,6 +252,10 @@ msgstr "Armazenamento"
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
 msgstr "Fornecedor"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr ""
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"

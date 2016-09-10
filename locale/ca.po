@@ -4,23 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Variante \"%s\"."
+msgstr "El lot pel moviment del producte \"%s\" és obligatori."
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr "Charge erforderlich für Lagerort"
+msgstr "Lot obligatori"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr "Charge erforderlich für Lagerort"
+msgstr "Lot obligatori"
 
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
@@ -28,39 +28,39 @@ msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
-msgstr "Vorlage für Steuerkonto"
+msgstr "Plantilla"
 
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
-msgstr "Typ"
+msgstr "Tipus"
 
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Charge"
+msgstr "Lot"
 
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Voraussichtliche Anzahl"
+msgstr "Quantitat prevista"
 
 msgctxt "field:stock.lot,id:"
 msgid "ID"
@@ -68,39 +68,39 @@ msgstr "ID"
 
 msgctxt "field:stock.lot,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Número"
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Producte"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Quantitat"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
-msgstr "Länderkürzel"
+msgstr "Codi"
 
 msgctxt "field:stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
@@ -108,35 +108,48 @@ msgstr "ID"
 
 msgctxt "field:stock.lot.type,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:stock.lot.type,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Charge"
+msgstr "Lot"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
-msgstr "Caches Charge"
+msgstr "Precàlculs de lot"
 
 msgctxt "field:stock.period.cache.lot,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:stock.period.cache.lot,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.period.cache.lot,id:"
 msgid "ID"
@@ -144,108 +157,124 @@ msgstr "ID"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Interne Anzahl"
+msgstr "Quantitat interna"
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
-msgstr "Ort"
+msgstr "Ubicació"
 
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Charge"
+msgstr "Lot"
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "Lagerperiode"
+msgstr "Període"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Producte"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist"
+msgstr "Tipus d'ubicació per la qual el lot és obligatori."
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist"
+msgstr "Tipus d'ubicació per la qual el lot és obligatori."
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Chargen"
+msgstr "Lots"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr "Lot"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Lagerbewegungen"
+msgstr "Moviments"
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Chargen"
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr "Vorlage - Lager Charge Typ"
+msgstr "Plantilla - Tipus de lot"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr "Lager Charge"
+msgstr "Lot"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr "Lager Charge Typ"
+msgstr "Tipus de lot"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Kunde"
+msgstr "Client"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Inventurdifferenz"
+msgstr "Perdut-trobat"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Produktion"
+msgstr "Producció"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Lager"
+msgstr "Emmagatzemament"
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Lieferant"
+msgstr "Proveïdor"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr ""
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Lager Cache Periode pro Charge"
+msgstr "Període d'estoc precalculat per lot"
 
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Chargen"
+msgstr "Lots"
 
 msgctxt "view:stock.lot:"
 msgid "Lot"
-msgstr "Charge"
+msgstr "Lot"
 
 msgctxt "view:stock.lot:"
 msgid "Lots"
-msgstr "Chargen"
+msgstr "Lots"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
-msgstr "Lagerperiode Charge Cache"
+msgstr "Període d'estoc precalculat "
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Caches"
-msgstr "Lagerperiode Charge Caches"
+msgstr "Períodes d'estoc precalculat "

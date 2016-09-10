@@ -14,181 +14,214 @@ msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Наименование"
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Шаблон"
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Тип"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.inventory.line,lot:"
-msgid "Lot"
-msgstr "Lot"
-
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr ""
+msgstr "Прогноз количества"
 
+#, fuzzy
 msgctxt "field:stock.lot,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.lot,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Номер"
 
 #, fuzzy
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Товарно материальные ценности (ТМЦ)"
 
 #, fuzzy
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "Кол-во"
 
 #, fuzzy
 msgctxt "field:stock.lot,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "Код страны"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.lot.type,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Наименование"
 
 #, fuzzy
 msgctxt "field:stock.lot.type,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
+
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.period.cache.lot,create_date:"
 msgid "Create Date"
-msgstr ""
-
-msgctxt "field:stock.period.cache.lot,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:stock.period.cache.lot,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:stock.period.cache.lot,internal_quantity:"
-msgid "Internal Quantity"
-msgstr ""
-
-msgctxt "field:stock.period.cache.lot,location:"
-msgid "Location"
-msgstr ""
+msgstr "Дата создания"
 
 #, fuzzy
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Местоположение"
+
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "Periode"
+msgstr "Период"
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Товарно материальные ценности (ТМЦ)"
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Полное наименование"
 
+#, fuzzy
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
@@ -198,20 +231,29 @@ msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr ""
 
-#, fuzzy
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lot"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "Перемещения"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -228,43 +270,47 @@ msgstr ""
 #, fuzzy
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Klant"
+msgstr "Заказчик"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Утраченный и обретенный"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr ""
+msgstr "Производство"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr ""
+msgstr "Хранилище"
 
 #, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "Поставщик"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr ""
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lot"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.lot:"
 msgid "Lots"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
