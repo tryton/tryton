@@ -26,14 +26,16 @@ msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr ""
+msgstr "Richiesto"

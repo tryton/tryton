@@ -10,30 +10,33 @@ msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
 msgstr "Provisión en venta"
 
+#, fuzzy
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Solicitud de compra"
+msgstr "Solicitud de Compra"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
-msgstr "Estado de solicitud de compra"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Solicitudes de compra"
+msgstr "Solicitudes de Compra"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr "Cancelado"
+msgstr "Cancelar"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
-msgstr "Comprado"
+msgstr ""
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr "Solicitado"
+msgstr ""
