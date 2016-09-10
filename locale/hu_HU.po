@@ -14,69 +14,83 @@ msgctxt "field:purchase.purchase,invoice_lines_ignored:"
 msgid "Invoice Lines Ignored"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "model:purchase.purchase-account.invoice.line,name:"
 msgid "Purchase - Invoice Line"

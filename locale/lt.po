@@ -34,9 +34,10 @@ msgctxt "field:purchase.purchase-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -66,9 +67,10 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"

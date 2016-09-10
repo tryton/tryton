@@ -24,7 +24,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.purchase-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -36,7 +36,7 @@ msgstr "Compras"
 
 msgctxt "field:purchase.purchase-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -56,7 +56,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
@@ -68,7 +68,7 @@ msgstr "Compras"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"
