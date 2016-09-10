@@ -2,17 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.classification.dummy,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:product.classification.dummy,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
@@ -32,15 +33,16 @@ msgstr ""
 
 msgctxt "field:product.classification.dummy,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:product.classification_tree.dummy,childs:"
 msgid "Children"
@@ -48,11 +50,11 @@ msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
@@ -76,11 +78,11 @@ msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
@@ -100,7 +102,7 @@ msgstr ""
 
 msgctxt "model:product.classification_tree.dummy,name:"
 msgid "Dummy Product Classification Tree"
-msgstr ""
+msgstr "Árbol de clasificación de productos de prueba"
 
 msgctxt "view:product.classification.dummy:"
 msgid "Classification"

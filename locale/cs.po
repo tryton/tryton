@@ -18,13 +18,15 @@ msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.classification.dummy,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.classification.dummy,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.classification.dummy,selectable:"
 msgid "Selectable"
@@ -58,17 +60,19 @@ msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.classification_tree.dummy,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.classification_tree.dummy,parent:"
 msgid "Parent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.classification_tree.dummy,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
 msgid "Selectable"
