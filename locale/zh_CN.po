@@ -20,81 +20,98 @@ msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr ""
+msgstr "子项"
 
+#, fuzzy
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级"
 
+#, fuzzy
 msgctxt "field:product.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.product,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
@@ -112,13 +129,15 @@ msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
@@ -128,13 +147,15 @@ msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
+#, fuzzy
 msgctxt "field:product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
@@ -144,33 +165,39 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.template,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:product.template,categories:"
 msgid "Categories"
@@ -188,13 +215,15 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
@@ -204,85 +233,100 @@ msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.template,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.uom,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:product.uom,category:"
 msgid "Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
@@ -292,21 +336,24 @@ msgctxt "field:product.uom,factor:"
 msgid "Factor"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.uom,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -316,45 +363,54 @@ msgctxt "field:product.uom,symbol:"
 msgid "Symbol"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
@@ -384,6 +440,10 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr ""
@@ -408,9 +468,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -800,17 +861,10 @@ msgctxt "selection:product.template,type:"
 msgid "Service"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr ""
-
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr ""
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr ""
+msgstr "子项"
 
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
@@ -824,17 +878,10 @@ msgctxt "view:product.product:"
 msgid "Products"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr ""
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr ""
+msgstr "基本"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

@@ -392,6 +392,11 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Variantes"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Variantes"
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Catégorie de produit"
@@ -812,14 +817,6 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Enfants"
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Catégories de produit"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Catégorie de produit"
-
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Configuration tiers"
@@ -835,14 +832,6 @@ msgstr "Produits"
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "Général"
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Produit"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Produits"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

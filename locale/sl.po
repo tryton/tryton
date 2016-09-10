@@ -391,6 +391,11 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Različice"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Različice"
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Izdelki po kategorijah"
@@ -811,14 +816,6 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Podkategorije"
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Kategorije"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Kategorija"
-
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Konfiguracija partnerjev"
@@ -834,14 +831,6 @@ msgstr "Izdelki"
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "Splošno"
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Izdelek"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Izdelki"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

@@ -279,9 +279,10 @@ msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modelo"
 
 #, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
@@ -413,6 +414,11 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Variantes"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Variantes"
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Produto por Categoria"
@@ -437,9 +443,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorias"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Configuração"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -777,9 +784,10 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administração de produtos"
 
+#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 #, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
@@ -837,17 +845,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Filhos"
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Categorias de Produto"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Categoria de produto"
-
+#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuração de Pessoas"
 
 msgctxt "view:product.product:"
 msgid "Product"
@@ -860,14 +861,6 @@ msgstr "Produtos"
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "Geral"
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Produto"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Produtos"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

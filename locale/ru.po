@@ -280,9 +280,10 @@ msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
@@ -415,6 +416,11 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Разновидности"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Разновидности"
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Товары по категориям"
@@ -439,9 +445,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Категории в виде дерева"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Конфигурация"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -840,17 +847,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Подчиненные"
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Категории продукции"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Категория продукции"
-
+#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Конфигурация контрагентов"
 
 msgctxt "view:product.product:"
 msgid "Product"
@@ -863,14 +863,6 @@ msgstr "Продукция"
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "Основные"
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Продукт"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Продукция"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

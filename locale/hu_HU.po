@@ -280,9 +280,10 @@ msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "Név"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Űrlap adószámlához"
 
 #, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
@@ -416,6 +417,11 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Változás"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Változás"
+
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Cikk kategória szerint"
@@ -440,9 +446,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Cikk kategóriák"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -841,17 +848,9 @@ msgid "Children"
 msgstr "Alárendelt (kategória)"
 
 #, fuzzy
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Cikk kategória"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Cikk kategória"
-
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Partner beállítások"
 
 msgctxt "view:product.product:"
 msgid "Product"
@@ -864,14 +863,6 @@ msgstr "Cikk"
 msgctxt "view:product.template:"
 msgid "General"
 msgstr ""
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Cikk"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Cikk"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

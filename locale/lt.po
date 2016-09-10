@@ -36,17 +36,19 @@ msgctxt "field:product.category,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.category,parent:"
 msgid "Parent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
@@ -72,9 +74,10 @@ msgctxt "field:product.configuration,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
@@ -144,13 +147,15 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -212,17 +217,19 @@ msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -252,9 +259,10 @@ msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
@@ -296,17 +304,19 @@ msgctxt "field:product.uom,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -336,13 +346,15 @@ msgctxt "field:product.uom.category,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
@@ -381,6 +393,10 @@ msgid "Product Configuration"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
 msgstr ""
 
@@ -804,14 +820,6 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr ""
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr ""
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr ""
-
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr ""
@@ -826,14 +834,6 @@ msgstr ""
 
 msgctxt "view:product.template:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr ""
-
-msgctxt "view:product.template:"
-msgid "Products"
 msgstr ""
 
 msgctxt "view:product.uom.category:"

@@ -7,506 +7,572 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Si no s'ha usat la UdM, podeu esborrar-la, en cas contrari, podeu eliminar-"
-"la i crear-ne una de nova."
+"Als de maateenheid nog niet is gebruikt kan je hem verwijderen, anders kan "
+"je hem deactiveren en een nieuwe aanmaken."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Els valors de factor i conversió de la UdM \"%s\" no són correctes."
+msgstr ""
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
-msgstr "Conversió i factor no poden ser zero simultàniament."
+msgstr "Verhouding en factor kunnen niet beiden nul zijn! "
 
+#, fuzzy
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
-"No podeu canviar la conversió, el factor o la categoria d'una unitat de "
-"mesura."
+"U kunt Verhouding, Factor of Categorie van een maateenheid niet wijzigen."
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "Fills"
+msgstr "Onderliggende niveaus"
 
+#, fuzzy
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.category,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr "Pare"
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:product.category,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr "Mètode de cost per defecte"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.product,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorieën"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
-msgstr "Codi"
+msgstr "Code"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr "Consumible"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr "Preu de cost"
+msgstr "Kostprijs"
 
+#, fuzzy
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Method"
-msgstr "Mètode de cost"
+msgstr "Kostprijsmethode"
 
+#, fuzzy
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Preu de cost"
+msgstr "Kostprijs"
 
+#, fuzzy
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr "UdM per defecte"
+msgstr "Standaard ME"
 
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Categoria per defecte UdM"
+msgstr ""
 
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr "Descripció"
+msgstr "Omschrijving"
 
+#, fuzzy
 msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
-msgstr "Preu de venda"
+msgstr "Catalogusprijs"
 
+#, fuzzy
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr "Preu de venda"
+msgstr "Catalogusprijs"
 
+#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Plantilla de producte"
+msgstr "Productsjabloon"
 
+#, fuzzy
 msgctxt "field:product.product,type:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Type"
 
+#, fuzzy
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
 msgctxt "field:product.template,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorieën"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr "Consumible"
+msgstr ""
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Preu de cost"
+msgstr "Kostprijs"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
-msgstr "Mètode de cost"
+msgstr "Kostprijsmethode"
 
+#, fuzzy
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "UdM per defecte"
+msgstr "Standaard ME"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Categoria per defecte UdM"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr "Preu de venda"
+msgstr "Catalogusprijs"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Producten"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Type"
 
+#, fuzzy
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "Categorie"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr "Plantilla"
+msgstr "Sjabloon"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
-msgstr "Actiu"
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.uom,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "ME categorie"
 
+#, fuzzy
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
-msgstr "Decimals a mostrar"
+msgstr "Zichtbare decimalen"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr "Factor"
+msgstr "Faktor"
 
+#, fuzzy
 msgctxt "field:product.uom,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr "Conversió"
+msgstr "Verhouding"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
-msgstr "Precisió d'arrodoniment"
+msgstr "Afronding"
 
 msgctxt "field:product.uom,symbol:"
 msgid "Symbol"
-msgstr "Símbol"
+msgstr "Symbool"
 
+#, fuzzy
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naam"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
-msgstr "Unitats de mesura"
+msgstr "Meeteenheid"
 
+#, fuzzy
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Gebruiker"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
 msgstr ""
-"El coeficient de la fórmula:\n"
-"coeficient (unitat base) = 1 (aquesta unitat)"
+"De coëfficiënt voor deze formule:\n"
+"coëf (basiseenheid) = 1 (deze eenheid)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
 msgstr ""
-"El coeficient de la fórmula:\n"
-"1 (unitat base) = coeficient (aquesta unitat)"
+"De coëfficiënt voor deze formule:\n"
+"1(basiseenheid) = coëf (deze eenheid)"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories de producte"
+msgstr "Categorieën"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories de producte"
+msgstr "Categorieën"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Configuració de productes"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Productes"
+msgstr "Producten"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Producten"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Productes per categoria"
+msgstr "Product categorie"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Productes"
+msgstr "Producten"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Categories d'unitats de mesura"
+msgstr "Categorieën van meeteenheden"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Unitats de mesura"
+msgstr "Meeteenheden"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorieën"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Arbre de categories"
+msgstr "Categorieën"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuració"
+msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Productes"
+msgstr "Productbeheer"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Producten"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Productes"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Productes"
+msgstr "Producten"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorieën"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Unitats de mesura"
+msgstr "Meeteenheden"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Categoria de producte"
+msgstr "Product categorie"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr "Configuració de productes"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr "Variant de producte"
+msgstr "Product"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Plantilla de producte"
+msgstr "Productsjabloon"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr "Plantilla - Categoria"
+msgstr ""
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
-msgstr "Unitat de mesura"
+msgstr "Meeteenheid"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Àrea"
+msgstr "Are"
 
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Quirat"
+msgstr "Karaat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centímetre"
+msgstr "centimeter"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Centímetre cúbic"
+msgstr "Kubieke centimeter"
 
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Peu cúbic"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Polzada cúbica"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Metre cúbic"
+msgstr "Kubieke meter"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Dia"
+msgstr "Dag"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Peu"
+msgstr "Voet"
 
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "Galó"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
@@ -514,99 +580,99 @@ msgstr "Gram"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "Hectàrea"
+msgstr "Hectare"
 
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Hora"
+msgstr "Uur"
 
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Polzada"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Quilogram"
+msgstr "Kilogram"
 
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Quilòmetre"
+msgstr "Kilometer"
 
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "Litre"
+msgstr "Liter"
 
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Metre"
+msgstr "Meter"
 
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Milla"
+msgstr "Mijl"
 
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Mil·límetre"
+msgstr "Milimeter"
 
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minut"
+msgstr "Minute"
 
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Unça"
+msgstr "Ons"
 
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Lliura"
+msgstr "Pond"
 
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Segon"
+msgstr "Seconde"
 
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Centímetre quadrat"
+msgstr "Vierkante centimeter"
 
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Peu quadrat"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Polzada quadrada"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Metre quadrat"
+msgstr "Vierkante meter"
 
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Iarda quadrada"
+msgstr ""
 
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Unitat"
+msgstr "Eenheid"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Dia de treball"
+msgstr "Werkdag"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "Iarda"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
-msgstr "a"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_carat"
 msgid "c"
-msgstr "c"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_centimeter"
 msgid "cm"
-msgstr "cm"
+msgstr "cm."
 
 msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
 msgid "cm³"
@@ -614,11 +680,11 @@ msgstr "cm³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
-msgstr "peu³"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr "pul³"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
@@ -626,71 +692,71 @@ msgstr "m³"
 
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
-msgstr "d"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
-msgstr "peu"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_gallon"
 msgid "gal"
-msgstr "gal"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_gram"
 msgid "g"
-msgstr "g"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_hectare"
 msgid "ha"
-msgstr "ha"
+msgstr "ha."
 
 msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
-msgstr "h"
+msgstr "uur"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "pul"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
-msgstr "kg"
+msgstr "kg."
 
 msgctxt "model:product.uom,symbol:uom_kilometer"
 msgid "km"
-msgstr "km"
+msgstr "km."
 
 msgctxt "model:product.uom,symbol:uom_liter"
 msgid "l"
-msgstr "l"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_meter"
 msgid "m"
-msgstr "m"
+msgstr "m."
 
 msgctxt "model:product.uom,symbol:uom_mile"
 msgid "mi"
-msgstr "mi"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_millimeter"
 msgid "mm"
-msgstr "mm"
+msgstr "mm."
 
 msgctxt "model:product.uom,symbol:uom_minute"
 msgid "min"
-msgstr "min"
+msgstr "min."
 
 msgctxt "model:product.uom,symbol:uom_ounce"
 msgid "oz"
-msgstr "oz"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_pound"
 msgid "lb"
-msgstr "lb"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_second"
 msgid "s"
-msgstr "s"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_square_centimeter"
 msgid "cm²"
@@ -698,11 +764,11 @@ msgstr "cm²"
 
 msgctxt "model:product.uom,symbol:uom_square_foot"
 msgid "ft²"
-msgstr "peu²"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr "pul²"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"
@@ -710,152 +776,145 @@ msgstr "m²"
 
 msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
-msgstr "yd²"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "u"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "wd"
+msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
-msgstr "yd"
+msgstr ""
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "Categoria d'UdM de producte"
+msgstr "Product ME catergorie"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Longitud"
+msgstr "Lengte"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Superfície"
+msgstr "Oppervlak"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Temps"
+msgstr "Tijd"
 
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Unitats"
+msgstr "Eenheden"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Volum"
+msgstr "Volume"
 
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Pes"
+msgstr "Gewicht"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Administració de productes"
+msgstr "Productregistratie"
 
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid ""
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Average"
-msgstr "Mitjana"
+msgstr "Gemiddeld"
 
+#, fuzzy
 msgctxt "selection:product.configuration,default_cost_price_method:"
 msgid "Fixed"
-msgstr "Fix"
+msgstr "Vast"
 
+#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
-msgstr "Mitjana"
+msgstr "Gemiddeld"
 
+#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
-msgstr "Fix"
+msgstr "Vast"
 
+#, fuzzy
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Actius"
+msgstr "Activa"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr "Béns"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.product,type:"
 msgid "Service"
-msgstr "Serveis"
+msgstr "Service"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
-msgstr "Mitjana"
+msgstr "Gemiddeld"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
-msgstr "Fix"
+msgstr "Vast"
 
+#, fuzzy
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Actius"
+msgstr "Activa"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Béns"
+msgstr ""
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr "Serveis"
+msgstr "Service"
 
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr "Fills"
+msgstr "Onderliggende niveaus"
 
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Categories de producte"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Categoria de producte"
-
+#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr "Configuració de tercers"
+msgstr "Relatie instellingen"
 
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producten"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Productes"
+msgstr "Producten"
 
 msgctxt "view:product.template:"
 msgid "General"
-msgstr "General"
-
-msgctxt "view:product.template:"
-msgid "Product"
-msgstr "Productes"
-
-msgctxt "view:product.template:"
-msgid "Products"
-msgstr "Productes"
+msgstr "Algemeen"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
-msgstr "Categories d'unitats de mesura"
+msgstr "Categorieën van meeteenheden"
 
 msgctxt "view:product.uom.category:"
 msgid "Category of Unit of Measure"
-msgstr "Categoria d'unitat de mesura"
+msgstr "Categorie van meeteenheden"
 
 msgctxt "view:product.uom:"
 msgid "Unit of Measure"
-msgstr "Unitat de mesura"
+msgstr "Meeteenheid"
 
 msgctxt "view:product.uom:"
 msgid "Units of Measure"
-msgstr "Unitats de mesura"
+msgstr "Meeteenheden"
