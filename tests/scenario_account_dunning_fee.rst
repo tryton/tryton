@@ -89,10 +89,10 @@ Create dunning procedure::
     >>> Procedure = Model.get('account.dunning.procedure')
     >>> procedure = Procedure(name='Procedure Fee')
     >>> level = procedure.levels.new()
-    >>> level.days = 5
+    >>> level.overdue = datetime.timedelta(5)
     >>> level.fee = fee
     >>> level = procedure.levels.new()
-    >>> level.days = 10
+    >>> level.overdue = datetime.timedelta(10)
     >>> level.fee = fee_pc
     >>> procedure.save()
 
