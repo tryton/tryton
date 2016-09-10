@@ -398,6 +398,8 @@ def file_selection(title, filename='',
             win.set_current_name(filename)
         else:
             win.set_filename(filename)
+    if hasattr(win, 'set_do_overwrite_confirmation'):
+        win.set_do_overwrite_confirmation(True)
     win.set_select_multiple(multi)
     win.set_default_response(gtk.RESPONSE_OK)
     if filters is not None:
