@@ -2,33 +2,40 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "用户组"
 
+#, fuzzy
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,129 +45,157 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "用户组"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
+#, fuzzy
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
+msgstr "子项"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级"
 
+#, fuzzy
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:product.taxon,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -218,17 +253,19 @@ msgctxt "selection:product.taxon,rank:"
 msgid "Division"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr ""
+msgstr "域配置"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr ""
+msgstr "表单"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"

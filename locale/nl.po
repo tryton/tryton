@@ -2,33 +2,40 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Groepen"
 
+#, fuzzy
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,129 +45,157 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggende niveaus"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
+#, fuzzy
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
+#, fuzzy
 msgctxt "field:product.taxon,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -218,17 +253,19 @@ msgctxt "selection:product.taxon,rank:"
 msgid "Division"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr ""
+msgstr "Domein"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr ""
+msgstr "Formulier"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"

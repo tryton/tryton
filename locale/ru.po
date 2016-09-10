@@ -2,33 +2,40 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "Действующий"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Группы"
 
+#, fuzzy
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,129 +45,157 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "Группа"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Действующий"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "Действующий"
 
+#, fuzzy
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Подчиненый"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Предок"
 
+#, fuzzy
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
+#, fuzzy
 msgctxt "field:product.taxon,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -214,21 +249,24 @@ msgctxt "selection:product.taxon,rank:"
 msgid "Class"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr ""
+msgstr "Область"
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr ""
+msgstr "Область"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr ""
+msgstr "Форма"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"

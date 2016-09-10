@@ -2,17 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
@@ -40,19 +41,19 @@ msgstr ""
 
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
@@ -72,23 +73,24 @@ msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
@@ -108,15 +110,16 @@ msgstr ""
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
@@ -124,11 +127,11 @@ msgstr ""
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.taxon,id:"
 msgid "ID"
@@ -156,19 +159,20 @@ msgstr ""
 
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Grupos de Cultivares"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
@@ -184,7 +188,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Grupos de Cultivares"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
@@ -270,6 +274,7 @@ msgctxt "view:product.cultivar.group:"
 msgid "Cultivar Group"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.cultivar.group:"
 msgid "Cultivar Groups"
-msgstr ""
+msgstr "Grupos de Cultivares"

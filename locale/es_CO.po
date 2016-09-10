@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
@@ -16,27 +17,27 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr "Grupos"
+msgstr ""
 
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr "Seleccionable"
+msgstr ""
 
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr "Taxón"
+msgstr ""
 
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
@@ -60,15 +61,15 @@ msgstr "Variedad Cultivada"
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr "Grupo"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -78,9 +79,10 @@ msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
@@ -96,15 +98,15 @@ msgstr "Variedad Cultivada"
 
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -114,13 +116,14 @@ msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr "Hijos"
+msgstr ""
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
@@ -132,27 +135,27 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:product.taxon,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr "Seleccionable"
+msgstr ""
 
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
@@ -172,11 +175,11 @@ msgstr "Grupos de Variedad Cultivada"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxones"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxones"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
@@ -188,11 +191,11 @@ msgstr "Grupos de Variedad Cultivada"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxones"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxones"
+msgstr ""
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
@@ -208,47 +211,47 @@ msgstr "Grupo Variedad Cultivada"
 
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr "Taxón"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr "Clase"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr "División"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr "Dominio"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr "Familia"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr "Forma"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr "Género"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr "Reino"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr "Orden"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
-msgstr "Filo"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr "Sección"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
@@ -260,11 +263,11 @@ msgstr "Especies"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr "Tribu"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr "Variedad"
+msgstr ""
 
 msgctxt "view:product.cultivar.group:"
 msgid "Cultivar Group"
