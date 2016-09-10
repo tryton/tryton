@@ -10,9 +10,10 @@ msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Código"
 
+#, fuzzy
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Código numérico"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"

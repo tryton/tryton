@@ -10,9 +10,10 @@ msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Kód"
 
+#, fuzzy
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Számkód"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
@@ -20940,9 +20941,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"

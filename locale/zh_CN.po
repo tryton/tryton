@@ -6,25 +6,29 @@ msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:country.country,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 #, fuzzy
 msgctxt "field:country.country,name:"
@@ -40,60 +44,70 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
 #, fuzzy
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
 msgstr "考文垂郡"
 
+#, fuzzy
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 #, fuzzy
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
 msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级"
 
 #, fuzzy
 msgctxt "field:country.subdivision,rec_name:"
 msgid "Name"
 msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
@@ -104,17 +118,20 @@ msgctxt "field:country.zip,country:"
 msgid "Country"
 msgstr "考文垂郡"
 
+#, fuzzy
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:country.zip,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 #, fuzzy
 msgctxt "field:country.zip,rec_name:"
@@ -125,13 +142,15 @@ msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
@@ -20568,9 +20587,10 @@ msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr ""
+msgstr "管理员"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
@@ -20723,9 +20743,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr ""
+msgstr "模块依赖关系"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
@@ -20933,9 +20954,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr ""
+msgstr "状态"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"

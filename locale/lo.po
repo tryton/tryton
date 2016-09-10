@@ -16,11 +16,11 @@ msgstr "ລະຫັດໂຕເລກ"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
@@ -40,11 +40,11 @@ msgstr "ແຂວງ"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -60,7 +60,7 @@ msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
@@ -84,11 +84,11 @@ msgstr "ຮູບແບບ"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ບັນມຶກ"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
@@ -100,11 +100,11 @@ msgstr "ປະເທດ"
 
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:country.zip,id:"
 msgid "ID"
@@ -120,11 +120,11 @@ msgstr "ແຂວງ"
 
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
@@ -2588,9 +2588,10 @@ msgctxt "model:country.subdivision,name:be-wlg"
 msgid "Liège"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
-msgstr ""
+msgstr "ລຸກຊໍາບວກ"
 
 msgctxt "model:country.subdivision,name:be-wna"
 msgid "Namur"
@@ -3516,9 +3517,10 @@ msgctxt "model:country.subdivision,name:by-vi"
 msgid "Vicebskaja voblasc'"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:bz-bz"
 msgid "Belize"
-msgstr ""
+msgstr "ເບນລີສ"
 
 msgctxt "model:country.subdivision,name:bz-cy"
 msgid "Cayo"
@@ -5000,9 +5002,10 @@ msgctxt "model:country.subdivision,name:dj-di"
 msgid "Dikhil"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:dj-dj"
 msgid "Djibouti"
-msgstr ""
+msgstr "ທິບູຕິ"
 
 msgctxt "model:country.subdivision,name:dj-ob"
 msgid "Obock"
@@ -6532,9 +6535,10 @@ msgctxt "model:country.subdivision,name:fr-gf"
 msgid "Guyane"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-gp"
 msgid "Guadeloupe"
-msgstr ""
+msgstr "ກວາເດີລຸບ"
 
 msgctxt "model:country.subdivision,name:fr-h"
 msgid "Corse"
@@ -6564,9 +6568,10 @@ msgctxt "model:country.subdivision,name:fr-mf"
 msgid "Saint-Martin"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-mq"
 msgid "Martinique"
-msgstr ""
+msgstr "ມາກຕີນີ"
 
 msgctxt "model:country.subdivision,name:fr-n"
 msgid "Midi-Pyrénées"
@@ -6600,9 +6605,10 @@ msgctxt "model:country.subdivision,name:fr-r"
 msgid "Pays de la Loire"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-re"
 msgid "Réunion"
-msgstr ""
+msgstr "ເຣອູຍນີອົງ"
 
 msgctxt "model:country.subdivision,name:fr-s"
 msgid "Picardie"
@@ -6628,9 +6634,10 @@ msgctxt "model:country.subdivision,name:fr-wf"
 msgid "Wallis-et-Futuna"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:fr-yt"
 msgid "Mayotte"
-msgstr ""
+msgstr "ມາໂຢດ"
 
 msgctxt "model:country.subdivision,name:ga-1"
 msgid "Estuaire"
@@ -7900,9 +7907,10 @@ msgctxt "model:country.subdivision,name:gn-md"
 msgid "Mandiana"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gn-ml"
 msgid "Mali"
-msgstr ""
+msgstr "ມາລີ"
 
 msgctxt "model:country.subdivision,name:gn-mm"
 msgid "Mamou"
@@ -8252,9 +8260,10 @@ msgctxt "model:country.subdivision,name:gt-es"
 msgid "Escuintla"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:gt-gu"
 msgid "Guatemala"
-msgstr ""
+msgstr "ກວາເຕມາລາ"
 
 msgctxt "model:country.subdivision,name:gt-hu"
 msgid "Huehuetenango"
@@ -10746,7 +10755,7 @@ msgstr "ສະຫວັນນະເຂດ"
 
 msgctxt "model:country.subdivision,name:la-vi"
 msgid "Vientiane"
-msgstr "ແຂວງວຽງຈັນ"
+msgstr "ວຽງຈັນ"
 
 msgctxt "model:country.subdivision,name:la-vt"
 msgid "Vientiane"
@@ -11120,9 +11129,10 @@ msgctxt "model:country.subdivision,name:lu-g"
 msgid "Grevenmacher"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:lu-l"
 msgid "Luxembourg"
-msgstr ""
+msgstr "ລຸກຊໍາບວກ"
 
 msgctxt "model:country.subdivision,name:lv-001"
 msgid "Aglonas novads"
@@ -14004,9 +14014,10 @@ msgctxt "model:country.subdivision,name:ng-na"
 msgid "Nassarawa"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ng-ni"
 msgid "Niger"
-msgstr ""
+msgstr "ນີເຊ"
 
 msgctxt "model:country.subdivision,name:ng-og"
 msgid "Ogun"
@@ -14116,9 +14127,10 @@ msgctxt "model:country.subdivision,name:ni-sj"
 msgid "Río San Juan"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nl-aw"
 msgid "Aruba"
-msgstr ""
+msgstr "ອາຣູບາ"
 
 msgctxt "model:country.subdivision,name:nl-bq1"
 msgid "Bonaire"
@@ -14132,9 +14144,10 @@ msgctxt "model:country.subdivision,name:nl-bq3"
 msgid "Sint Eustatius"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nl-cw"
 msgid "Curaçao"
-msgstr ""
+msgstr "ກູຣາກາວ"
 
 msgctxt "model:country.subdivision,name:nl-dr"
 msgid "Drenthe"
@@ -17476,9 +17489,10 @@ msgctxt "model:country.subdivision,name:sm-06"
 msgid "Borgo Maggiore"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:sm-07"
 msgid "San Marino"
-msgstr ""
+msgstr "ແຊັງມາຣີໂນ"
 
 msgctxt "model:country.subdivision,name:sm-08"
 msgid "Montegiardino"
@@ -18942,7 +18956,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:tw-tpe"
 msgid "Taipei City"
-msgstr "ໄທເປ"
+msgstr "ນະຄອນໄທເປ"
 
 msgctxt "model:country.subdivision,name:tw-tpq"
 msgid "Taipei"
@@ -19560,9 +19574,10 @@ msgctxt "model:country.subdivision,name:us-ar"
 msgid "Arkansas"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-as"
 msgid "American Samoa"
-msgstr ""
+msgstr "ຊາມົວ ອະເມຣິກາ"
 
 msgctxt "model:country.subdivision,name:us-az"
 msgid "Arizona"
@@ -19592,13 +19607,15 @@ msgctxt "model:country.subdivision,name:us-fl"
 msgid "Florida"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-ga"
 msgid "Georgia"
-msgstr ""
+msgstr "ຈໍເຈັຍ"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-gu"
 msgid "Guam"
-msgstr ""
+msgstr "ກວາມ"
 
 msgctxt "model:country.subdivision,name:us-hi"
 msgid "Hawaii"
@@ -19656,9 +19673,10 @@ msgctxt "model:country.subdivision,name:us-mo"
 msgid "Missouri"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-mp"
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະ ມາເຣຍນາ ເໜືອ"
 
 msgctxt "model:country.subdivision,name:us-ms"
 msgid "Mississippi"
@@ -19716,9 +19734,10 @@ msgctxt "model:country.subdivision,name:us-pa"
 msgid "Pennsylvania"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-pr"
 msgid "Puerto Rico"
-msgstr ""
+msgstr "ປູເອກໂຕ ຣີໂກ"
 
 msgctxt "model:country.subdivision,name:us-ri"
 msgid "Rhode Island"
@@ -19740,9 +19759,10 @@ msgctxt "model:country.subdivision,name:us-tx"
 msgid "Texas"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:us-um"
 msgid "United States Minor Outlying Islands"
-msgstr ""
+msgstr "ໝູ່ເກາະ ສະຫະຣັດ ມີນໍຣ໌ ອາວເລຢີງ"
 
 msgctxt "model:country.subdivision,name:us-ut"
 msgid "Utah"
@@ -20550,15 +20570,15 @@ msgstr ""
 
 msgctxt "model:country.zip,name:"
 msgid "Zip"
-msgstr ""
+msgstr "ລະຫັດທີ່ຢູ່"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr ""
+msgstr "ບັນດາປະເທດ"
 
 msgctxt "model:ir.action,name:act_zip_form"
 msgid "Zip"
-msgstr ""
+msgstr "ລະຫັດທີ່ຢູ່"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20606,7 +20626,7 @@ msgstr "ເຂດການປົກຄອງສະຫະກອນ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr ""
+msgstr "ເມືອງປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
@@ -20614,7 +20634,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
-msgstr ""
+msgstr "ເຂດປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
@@ -20634,23 +20654,23 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr ""
+msgstr "ກຳແພງນະຄອນປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr ""
+msgstr "ສາທາລະນະລັດປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
-msgstr ""
+msgstr "ຂະແໜງປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territorial unit"
-msgstr ""
+msgstr "ໜ່ວຍດິນແດນປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
-msgstr ""
+msgstr "ດິນແດນປົກຄອງຕົນເອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
@@ -20662,7 +20682,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
-msgstr ""
+msgstr "ເມືອງເອກ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
@@ -20674,7 +20694,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
-msgstr ""
+msgstr "ນະຄອນຫຼວງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
@@ -20682,7 +20702,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
-msgstr ""
+msgstr "ບ້ານ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
@@ -20694,7 +20714,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
-msgstr ""
+msgstr "ເຂດປົກຄອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
@@ -20710,11 +20730,11 @@ msgstr "ປະເທດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "ເຂດ"
+msgstr "ປະເທດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
-msgstr ""
+msgstr "ເຂດການປົກຄອງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
@@ -20742,7 +20762,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Economic region"
-msgstr ""
+msgstr "ເຂດເສດຖະກິດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
@@ -20870,7 +20890,7 @@ msgstr "ແຂວງ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
-msgstr ""
+msgstr "ຄຸ້ມ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
@@ -20882,7 +20902,7 @@ msgstr "ພາກ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
-msgstr ""
+msgstr "ສະພາເຂດ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
@@ -20962,11 +20982,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"
-msgstr ""
+msgstr "ເຂດ"
 
 msgctxt "view:country.country:"
 msgid "Countries"
-msgstr ""
+msgstr "ປະເທດ"
 
 msgctxt "view:country.country:"
 msgid "Country"
@@ -20982,4 +21002,4 @@ msgstr "ແຂວງ"
 
 msgctxt "view:country.zip:"
 msgid "Zip"
-msgstr ""
+msgstr "ລະຫັດປະເທດ"

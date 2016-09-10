@@ -10,9 +10,10 @@ msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Codice"
 
+#, fuzzy
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Codice numerico"
 
 #, fuzzy
 msgctxt "field:country.country,create_date:"
@@ -135,9 +136,10 @@ msgctxt "field:country.zip,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Divisione"
 
 #, fuzzy
 msgctxt "field:country.zip,write_date:"
@@ -1178,9 +1180,10 @@ msgctxt "model:country.country,name:zw"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Divisione"
 
 msgctxt "model:country.subdivision,name:ad-02"
 msgid "Canillo"
@@ -21005,9 +21008,10 @@ msgctxt "view:country.country:"
 msgid "Country"
 msgstr "Paese"
 
+#, fuzzy
 msgctxt "view:country.subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Divisione"
 
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
