@@ -20,35 +20,35 @@ msgstr "Precio de costo"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"

@@ -28,19 +28,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
-msgstr "Empleado"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"

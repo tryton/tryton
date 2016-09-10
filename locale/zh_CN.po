@@ -18,37 +18,44 @@ msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"

@@ -38,9 +38,10 @@ msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"

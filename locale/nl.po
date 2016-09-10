@@ -6,53 +6,65 @@ msgctxt "error:company.employee_cost_price:"
 msgid "A employee can only have one cost price by date."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Kostprijs"
 
+#, fuzzy
 msgctxt "field:company.employee,cost_prices:"
 msgid "Cost Prices"
-msgstr ""
+msgstr "Kostprijs"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Kostprijs"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
-msgstr ""
+msgstr "Vervaldatum"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Werknemer"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Kostprijs"
 
 msgctxt "help:company.employee,cost_price:"
 msgid "Hourly cost price for this Employee"
@@ -74,6 +86,7 @@ msgctxt "view:company.employee:"
 msgid "Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:company.employee_cost_price:"
 msgid "Cost Prices"
-msgstr ""
+msgstr "Kostprijs"
