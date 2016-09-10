@@ -7,200 +7,192 @@ msgid ""
 "You cannot change the default uom for a product which is associated to stock"
 " moves."
 msgstr ""
-"Vous ne pouvez pas changer l'unité de mesure par défaut pour un produit qui "
-"a déjà fait l'objet de mouvements de stock."
+"Privzete ME za izdelek, ki je povezan s prometom zaloge, ni možno "
+"spreminjati."
 
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the type for a product which is associated to stock moves."
-msgstr ""
-"Vous ne pouvez pas changer le type d'un produit qui a déjà fait l'objet de "
-"mouvements de stock"
+msgstr "Vrste izdelka, povezanega s prometom zaloge, ni možno popravljati."
 
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
-msgstr "La quantité de la ligne doit être positive."
+msgstr "Količina postavke mora biti večja od nič."
 
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion."
-msgstr "L'inventaire « %s » doit être annulé avant suppression."
+msgstr "Popis \"%s\" mora biti pred brisanjem preklican."
 
 msgctxt "error:stock.inventory:"
 msgid "Line \"%s\" is not unique on Inventory \"%s\"."
-msgstr "La ligne « %s » n'est pas unique pour l'inventaire « %s »."
+msgstr "Postavka \"%s\" ni edinstvena na popis \"%s\"."
 
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
-msgstr ""
-"L'emplacement « %(location)s » doit être un sous-emplacement de l'entrepôt «"
-" %(warehouse)s »."
+msgstr "Lokacija \"%(location)s\" mora biti pod skladiščem \"%(warehouse)s\"."
 
 msgctxt "error:stock.location:"
 msgid ""
 "Location \"%s\" with existing moves cannot be changed to a type that does "
 "not support moves."
 msgstr ""
-"L'emplacement « %s », liée à des mouvements, ne peut être changer en un type"
-" qui ne supporte pas les mouvements."
+"Lokacije \"%s\" z obstoječim prometom ni možno pretvoriti v lokacijo, ki ne "
+"podpira prometa."
 
 msgctxt "error:stock.move:"
 msgid "Internal move quantity must be positive"
-msgstr "La quantité interne doit être positive"
+msgstr "Količina notranjega prometa mora biti večja od nič."
 
 msgctxt "error:stock.move:"
 msgid "Move quantity must be positive"
-msgstr "La quantité sur le mouvement doit être positive."
+msgstr "Količina prometa mora biti večja od nič."
 
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
-msgstr "Les emplacements d'origine et de destination doivent être distincts"
+msgstr "Izvorna in ciljna lokacija mora biti različni."
 
 msgctxt "error:stock.move:"
 msgid "The stock move \"%s\" has no origin."
-msgstr "Le mouvement de stock « %s » n'a pas d'origine."
+msgstr "Promet zaloge \"%s\" nima porekla."
 
 msgctxt "error:stock.move:"
 msgid ""
 "You can not delete stock move \"%s\" because it is not in draft or cancelled"
 " state."
 msgstr ""
-"Vous ne pouvez supprimer le mouvement de stock « %s » car il n'est pas dans "
-"l'état brouillon ou annulé."
+"Prometa zaloge \"%s\" ni možno brisati, ker niso v stanju priprave ali "
+"preklica."
 
 msgctxt "error:stock.move:"
 msgid "You can not modify move \"%(move)s\" because period \"%(period)s\" is closed."
 msgstr ""
-"Vous ne pouvez modifier le mouvement « %(move)s » car la période « "
-"%(period)s » est clôturée."
+"Prometa \"%(move)s\" ni možno popravljati, ker je obdobje \"%(period)s\" "
+"zaključeno."
 
 msgctxt "error:stock.move:"
 msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
-msgstr ""
-"Vous ne pouvez pas modifier le mouvement de stock « %s » parce qu'il est "
-"dans l'état « Assigné »."
+msgstr "Prometa zaloge \"%s\" ni možno popravljati, ker je dodeljen."
 
 msgctxt "error:stock.move:"
 msgid ""
 "You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
 " state."
 msgstr ""
-"Vous ne pouvez pas modifier le mouvement de stock « %s » parce qu'il est "
-"dans l'état « Fait » ou « Annulé »."
+"Prometa zaloge \"%s\" ni možno popravljati, ker je bodisi zaključen bodisi "
+"preklican."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
-msgstr ""
-"Vous ne pouvez passer dans l'état assigné le mouvement de stock « %s »."
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"dodeljeno\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to done state."
-msgstr "Vous ne pouvez passer le mouvement de stock « %s » dans l'état fait."
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje \"končano\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to draft state."
-msgstr "Vous ne pouvez remettre en brouillon le mouvement de stock « %s »."
+msgstr "Prometa zaloge \"%s\" ni možno postaviti v stanje priprave."
 
 msgctxt "error:stock.period:"
 msgid "You can not close a period in the future or today."
-msgstr ""
-"Vous ne pouvez clôturer une période dans le futur ou à la date "
-"d'aujourd'hui."
+msgstr "Obdobja ni možno zaključiti v prihodnosti ali na današnji dan."
 
 msgctxt "error:stock.period:"
 msgid "You can not close a period when there still are assigned moves."
 msgstr ""
-"Vous ne pouvez pas clôturer une période quand il y a encore des mouvement "
-"assignés."
+"Obdobja ni možno zaključiti, če še vedno obstaja promet v stanju "
+"\"dodeljeno\"."
 
 msgctxt "error:stock.shipment.in.return:"
 msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-"Le retour d'expédition fournisseur « %s » doit être annulé avant "
-"suppression."
+msgstr "Vrnjena prevzemnica \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
 "Incoming Moves must have the warehouse input location as destination "
 "location."
 msgstr ""
-"Les mouvement entrants doivent avoir comme destination l'emplacement "
-"d'entrée de l'entrepôt."
+"Vhodni promet mora imeti za ciljno lokacijo lokacijo prevzema v skladišče."
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
 "Inventory Moves must have the warehouse input location as source location."
 msgstr ""
-"Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de "
-"l'entrepôt comme source."
+"Inventarni promet mora imeti za izvorno lokacijo lokacijo prevzema v "
+"skladišče."
 
 msgctxt "error:stock.shipment.in:"
 msgid "Supplier Shipment \"%s\" must be cancelled before deletion."
-msgstr "L'expédition fournisseur « %s » doit être annulée avant suppression."
+msgstr "Prevzemnica \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
-msgstr "L'expédition interne « %s » doit être annulée avant suppression."
+msgstr "Notranja odpremnica \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-"Le retour d'expédition client « %s » doit être annulé avant suppression."
+msgstr "Vrnjena odpremnica \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Customer Shipment \"%s\" must be cancelled before deletion."
-msgstr "L'expédition cliente « %s » doit être annulées avant suppression."
+msgstr "Odpremnica \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
-msgstr "Livraison"
+msgstr "Dostava"
 
 msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
-msgstr "Emplacement client"
+msgstr "Lokacija kupca"
 
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
-msgstr "Emplacement fournisseur"
+msgstr "Lokacija dobavitelja"
 
-msgctxt "field:product.by_location.start,forecast_date:"
+msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
-msgstr "À la date"
+msgstr ""
 
-msgctxt "field:product.by_location.start,id:"
+#, fuzzy
+msgctxt "field:product.by_location.context,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:product.by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
+
 msgctxt "field:product.product,cost_value:"
 msgid "Cost Value"
-msgstr "Valeur du coût"
+msgstr "Nabavna vrednost"
 
 msgctxt "field:product.product,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Quantités prévisionnelles"
+msgstr "Predvidena količina"
 
 msgctxt "field:product.product,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
-msgstr "Valeur du coût"
+msgstr "Nabavna vrednost"
 
 msgctxt "field:product.template,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Quantité prévue"
+msgstr "Predvidena količina"
 
 msgctxt "field:product.template,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:stock.configuration,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.configuration,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.configuration,id:"
 msgid "ID"
@@ -208,55 +200,59 @@ msgstr "ID"
 
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
-msgstr "Séquence d'inventaire"
+msgstr "Štetje inventur"
 
 msgctxt "field:stock.configuration,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Séquence de retour d'expédition fournisseur"
+msgstr "Štetje vrnjenih prevzemnic"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Séquence d'expédition fournisseur"
+msgstr "Štetje prevzemnic"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Séquence d'expédition interne"
+msgstr "Štetje notranjih odpremnic"
+
+msgctxt "field:stock.configuration,shipment_internal_transit:"
+msgid "Internal Shipment Transit"
+msgstr ""
 
 msgctxt "field:stock.configuration,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Séquence de retour d'expédition client"
+msgstr "Štetje vrnjenih odpremnic"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Séquence d'expéditions client"
+msgstr "Štetje odpremnic"
 
 msgctxt "field:stock.configuration,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.configuration,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.inventory,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.inventory,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.inventory,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
-msgstr "Date"
+msgstr "Datum"
 
 msgctxt "field:stock.inventory,id:"
 msgid "ID"
@@ -264,47 +260,47 @@ msgstr "ID"
 
 msgctxt "field:stock.inventory,lines:"
 msgid "Lines"
-msgstr "Lignes"
+msgstr "Postavke"
 
 msgctxt "field:stock.inventory,location:"
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Lokacija"
 
 msgctxt "field:stock.inventory,lost_found:"
 msgid "Lost and Found"
-msgstr "Pertes et surplus"
+msgstr "Izgubljeno/najdeno"
 
 msgctxt "field:stock.inventory,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "field:stock.inventory,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.inventory,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.inventory,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.inventory,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.inventory.line,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.inventory.line,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
-msgstr "Quantité attendue"
+msgstr "Predvidena količina"
 
 msgctxt "field:stock.inventory.line,id:"
 msgid "ID"
@@ -312,71 +308,75 @@ msgstr "ID"
 
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
-msgstr "Inventaire"
+msgstr "Popis"
+
+msgctxt "field:stock.inventory.line,inventory_state:"
+msgid "Inventory State"
+msgstr ""
 
 msgctxt "field:stock.inventory.line,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:stock.inventory.line,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Décimales de l'unité"
+msgstr "Decimalke"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
-msgstr "UDM"
+msgstr "ME"
 
 msgctxt "field:stock.inventory.line,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.inventory.line,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.location,active:"
 msgid "Active"
-msgstr "Actif"
+msgstr "Aktivno"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
-msgstr "Adresse"
+msgstr "Naslov"
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
-msgstr "Enfants"
+msgstr "Podlokacije"
 
 msgctxt "field:stock.location,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "Šifra"
 
 msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
-msgstr "Valeur du coût"
+msgstr "Nabavna vrednost"
 
 msgctxt "field:stock.location,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.location,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Quantité prévisionnelle"
+msgstr "Predvidena količina"
 
 msgctxt "field:stock.location,id:"
 msgid "ID"
@@ -384,91 +384,139 @@ msgstr "ID"
 
 msgctxt "field:stock.location,input_location:"
 msgid "Input"
-msgstr "Réception"
+msgstr "Prevzem"
 
 msgctxt "field:stock.location,left:"
 msgid "Left"
-msgstr "Gauche"
+msgstr "Levo"
 
 msgctxt "field:stock.location,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naziv"
 
 msgctxt "field:stock.location,output_location:"
 msgid "Output"
-msgstr "Expédition"
+msgstr "Izdaja"
 
 msgctxt "field:stock.location,parent:"
 msgid "Parent"
-msgstr "Parent"
+msgstr "Matična lokacija"
 
 msgctxt "field:stock.location,picking_location:"
 msgid "Picking"
-msgstr "Prélèvement"
+msgstr "Prevzem"
 
 msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:stock.location,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.location,right:"
 msgid "Right"
-msgstr "Droit"
+msgstr "Desno"
 
 msgctxt "field:stock.location,storage_location:"
 msgid "Storage"
-msgstr "Magasin"
+msgstr "Shramba"
 
 msgctxt "field:stock.location,type:"
 msgid "Location type"
-msgstr "Type d'emplacement"
+msgstr "Tip lokacije"
 
 msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
 msgctxt "field:stock.location,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.location,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Dobavni rok"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,rec_name:"
+msgid "Name"
+msgstr "Plačilni rok"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,sequence:"
+msgid "Sequence"
+msgstr "Štetje"
+
+msgctxt "field:stock.location.lead_time,warehouse_from:"
+msgid "Warehouse From"
+msgstr ""
+
+msgctxt "field:stock.location.lead_time,warehouse_to:"
+msgid "Warehouse To"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:stock.location.lead_time,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
 
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
-msgstr "Assignation requise"
+msgstr "Obvezna dodelitev"
 
 msgctxt "field:stock.move,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
-msgstr "Prix de revient"
+msgstr "Nabavna cena"
 
 msgctxt "field:stock.move,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.move,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
-msgstr "Devise"
+msgstr "Valuta"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
 
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "field:stock.move,id:"
 msgid "ID"
@@ -476,87 +524,87 @@ msgstr "ID"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Quantité interne"
+msgstr "Notranja količina"
 
 msgctxt "field:stock.move,origin:"
 msgid "Origin"
-msgstr "Origine"
+msgstr "Poreklo"
 
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
 
 msgctxt "field:stock.move,product:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "field:stock.move,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Catégorie d'unité de mesure"
+msgstr "Katerogija ME izdelka"
 
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:stock.move,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
-msgstr "Expédition"
+msgstr "Pošiljka"
 
 msgctxt "field:stock.move,state:"
 msgid "State"
-msgstr "Etat"
+msgstr "Stanje"
 
 msgctxt "field:stock.move,to_location:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Décimales de l'unité"
+msgstr "Decimalke"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
-msgstr "Prix unitaire"
+msgstr "Cena"
 
 msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
-msgstr "Prix unitaire requis"
+msgstr "Cena obvezna"
 
 msgctxt "field:stock.move,uom:"
 msgid "Uom"
-msgstr "UDM"
+msgstr "ME"
 
 msgctxt "field:stock.move,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.move,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
-msgstr "Caches"
+msgstr "Predpomnjenja"
 
 msgctxt "field:stock.period,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.period,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.period,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.period,date:"
 msgid "Date"
-msgstr "Date"
+msgstr "Datum"
 
 msgctxt "field:stock.period,id:"
 msgid "ID"
@@ -564,27 +612,27 @@ msgstr "ID"
 
 msgctxt "field:stock.period,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.period,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.period,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.period,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.period.cache,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.period.cache,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.period.cache,id:"
 msgid "ID"
@@ -592,43 +640,43 @@ msgstr "ID"
 
 msgctxt "field:stock.period.cache,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Quantité interne"
+msgstr "Notranja količina"
 
 msgctxt "field:stock.period.cache,location:"
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Lokacija"
 
 msgctxt "field:stock.period.cache,period:"
 msgid "Period"
-msgstr "Période"
+msgstr "Obdobje"
 
 msgctxt "field:stock.period.cache,product:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "field:stock.period.cache,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.period.cache,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.product_quantities_warehouse,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.product_quantities_warehouse,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
-msgstr "Date"
+msgstr "Datum"
 
 msgctxt "field:stock.product_quantities_warehouse,id:"
 msgid "ID"
@@ -636,55 +684,62 @@ msgstr "ID"
 
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "field:stock.product_quantities_warehouse,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.product_quantities_warehouse,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.product_quantities_warehouse,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
-msgctxt "field:stock.product_quantities_warehouse.start,id:"
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.context,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
-msgctxt "field:stock.products_by_locations.start,forecast_date:"
+msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
-msgstr "À la date"
+msgstr ""
 
-msgctxt "field:stock.products_by_locations.start,id:"
+#, fuzzy
+msgctxt "field:stock.products_by_locations.context,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:stock.products_by_locations.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
-msgstr "Adresse de contact"
+msgstr "Kontakt"
 
 msgctxt "field:stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
 
 msgctxt "field:stock.shipment.in,id:"
 msgid "ID"
@@ -692,91 +747,91 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
-msgstr "Mouvements entrants"
+msgstr "Vhodni promet"
 
 msgctxt "field:stock.shipment.in,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Mouvement internes"
+msgstr "Notranji promet"
 
 msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.in,number:"
 msgid "Numer"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "field:stock.shipment.in,origins:"
 msgid "Origins"
-msgstr "Origines"
+msgstr "Porekla"
 
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.in,reference:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "Sklic"
 
 msgctxt "field:stock.shipment.in,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.shipment.in,supplier:"
 msgid "Supplier"
-msgstr "Fournisseur"
+msgstr "Dobavitelj"
 
 msgctxt "field:stock.shipment.in,supplier_location:"
 msgid "Supplier Location"
-msgstr "Emplacement fournisseur"
+msgstr "Lokacija dobavitelja"
 
 msgctxt "field:stock.shipment.in,warehouse:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
 msgctxt "field:stock.shipment.in,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Entrée entrepôt"
+msgstr "Prevzem v skladišče"
 
 msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Magasin de l'entrepôt"
+msgstr "Shramba v skladišče"
 
 msgctxt "field:stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.shipment.in.return,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.in.return,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
-msgstr "Adresse de livraison"
+msgstr "Prejemnik"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
 
 msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "field:stock.shipment.in.return,id:"
 msgid "ID"
@@ -784,47 +839,47 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.in.return,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "field:stock.shipment.in.return,origins:"
 msgid "Origins"
-msgstr "Origines"
+msgstr "Porekla"
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.in.return,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "Sklic"
 
 msgctxt "field:stock.shipment.in.return,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.shipment.in.return,supplier:"
 msgid "Supplier"
-msgstr "Fournisseur"
+msgstr "Dobavitelj"
 
 msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "field:stock.shipment.in.return,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.shipment.in.return,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.shipment.in.return.assign.failed,id:"
 msgid "ID"
@@ -832,67 +887,89 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.shipment.internal,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.internal,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
+
+msgctxt "field:stock.shipment.internal,effective_start_date:"
+msgid "Effective Start Date"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,from_location:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "field:stock.shipment.internal,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "Vhodni promet"
+
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.internal,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "Izhodni promet"
 
 msgctxt "field:stock.shipment.internal,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
+
+msgctxt "field:stock.shipment.internal,planned_start_date:"
+msgid "Planned Start Date"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "Sklic"
 
 msgctxt "field:stock.shipment.internal,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
+
+msgctxt "field:stock.shipment.internal,transit_location:"
+msgid "Transit Location"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.shipment.internal,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.shipment.internal.assign.failed,id:"
 msgid "ID"
@@ -900,35 +977,35 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.shipment.out,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.out,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
-msgstr "Client"
+msgstr "Kupec"
 
 msgctxt "field:stock.shipment.out,customer_location:"
 msgid "Customer Location"
-msgstr "Emplacement client"
+msgstr "Lokacija kupca"
 
 msgctxt "field:stock.shipment.out,delivery_address:"
 msgid "Delivery Address"
-msgstr "Adresse de livraison"
+msgstr "Prejemnik"
 
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
 
 msgctxt "field:stock.shipment.out,id:"
 msgid "ID"
@@ -936,59 +1013,59 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Notranji promet"
 
 msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.out,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "field:stock.shipment.out,origins:"
 msgid "Origins"
-msgstr "Origines"
+msgstr "Porekla"
 
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
-msgstr "Mouvements sortants"
+msgstr "Izhodni promet"
 
 msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.out,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "Sklic"
 
 msgctxt "field:stock.shipment.out,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.shipment.out,warehouse:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
 msgctxt "field:stock.shipment.out,warehouse_output:"
 msgid "Warehouse Output"
-msgstr "Sortie entrepôt"
+msgstr "Izdaja iz skladišča"
 
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Magasin de l'entrepôt"
+msgstr "Shramba v skladišču"
 
 msgctxt "field:stock.shipment.out,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.shipment.out,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:stock.shipment.out.assign.failed,id:"
 msgid "ID"
@@ -996,35 +1073,35 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Inventarni promet"
 
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
-msgstr "Société"
+msgstr "Družba"
 
 msgctxt "field:stock.shipment.out.return,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.out.return,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
-msgstr "Client"
+msgstr "Kupec"
 
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
-msgstr "Emplacement client"
+msgstr "Lokacija kupca"
 
 msgctxt "field:stock.shipment.out.return,delivery_address:"
 msgid "Delivery Address"
-msgstr "Adresse de livraison"
+msgstr "Prejemnik"
 
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
-msgstr "Date effective"
+msgstr "Dejanski datum"
 
 msgctxt "field:stock.shipment.out.return,id:"
 msgid "ID"
@@ -1032,550 +1109,556 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
-msgstr "Mouvements entrants"
+msgstr "Vhodni promet"
 
 msgctxt "field:stock.shipment.out.return,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Inventarni promet"
 
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "field:stock.shipment.out.return,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "field:stock.shipment.out.return,origins:"
 msgid "Origins"
-msgstr "Origines"
+msgstr "Porekla"
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
-msgstr "Date planifiée"
+msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.out.return,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.out.return,reference:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "Sklic"
 
 msgctxt "field:stock.shipment.out.return,state:"
 msgid "State"
-msgstr "État"
+msgstr "Stanje"
 
 msgctxt "field:stock.shipment.out.return,warehouse:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
 msgctxt "field:stock.shipment.out.return,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Entrée entrepôt"
+msgstr "Prevzem v skladišče"
 
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Magasin de l'entrepôt"
+msgstr "Shramba v skladišče"
 
 msgctxt "field:stock.shipment.out.return,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:stock.shipment.out.return,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "help:party.party,customer_location:"
 msgid "The default destination location when sending products to the party."
-msgstr ""
-"L'emplacement de destination par défaut quand des produits sont envoyés vers"
-" ce tiers."
+msgstr "Privzeta ciljna lokacija pri odpremi izdelkov k partnerju."
 
 msgctxt "help:party.party,supplier_location:"
 msgid "The default source location when receiving products from the party."
-msgstr ""
-"L'emplacement d'origine par défaut quand des produits sont reçus depuis ce "
-"tiers."
+msgstr "Privzeta izvorna lokacija pri prevzemu izdelkov od partnerja."
 
-msgctxt "help:product.by_location.start,forecast_date:"
+msgctxt "help:product.by_location.context,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
-"Prévoir le calcul du stock prévisionnel pour cette date.\n"
-"* Une valeur vide est une date infinie dans le future.\n"
-"* Une date dans le passé fournira des valeurs historiques."
 
 msgctxt "help:stock.location,picking_location:"
 msgid "If empty the Storage is used"
-msgstr "Si vide le magasin est utilisé"
+msgstr "Če je prazno, se uporabi Shramba"
 
-msgctxt "help:stock.products_by_locations.start,forecast_date:"
+msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
-"Prévoir le calcul du stock prévisionnel pour cette date.\n"
-"* Une valeur vide est une date infinie dans le future.\n"
-"* Une date dans le passé fournira des valeurs historiques."
+
+msgctxt "model:ir.action,name:"
+msgid "Product by Locations"
+msgstr "Izdelek po lokacijah"
 
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
-msgstr "Inventaires"
+msgstr "Popisi"
 
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Lokacije"
 
+msgctxt "model:ir.action,name:act_location_lead_time_form"
+msgid "Location Lead Times"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations"
-msgstr "Quantités en stock"
+msgid "Locations Quantity"
+msgstr "Lokacije"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Lokacije"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Périodes"
+msgstr "Obdobja"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
+msgstr "Količine izdelkov po skladiščih"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
-msgstr "Produits par emplacements"
+msgstr "Izdelki"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Expéditions fournisseur"
+msgstr "Prevzemnice"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retours d'expédition fournisseur"
+msgstr "Vrnjene prevzemnice"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Expédition interne"
+msgstr "Notranje odpremnice"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Expéditions client"
+msgstr "Odpremnice"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Expéditions client"
+msgstr "Odpremnice"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Expéditions fournisseur"
+msgstr "Prevzeminice"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Retours d'expédition client"
+msgstr "Vrnjene odpremnice"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
-msgstr "Configuration des stocks"
+msgstr "Konfiguracija zaloge"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
-msgstr "Liste de restockage"
+msgstr "Obnova zaloge"
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Expédition interne"
+msgstr "Notranja odpremnica"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
-msgstr "Bon de livraison"
+msgstr "Dobavnica"
 
 msgctxt "model:ir.action,name:report_shipment_out_picking_list"
 msgid "Picking List"
-msgstr "Liste de prélèvement"
+msgstr "Prevzemni list"
 
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
-msgstr "Liste de restockage"
-
-msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Locations"
-msgstr "Produits par emplacement"
-
-msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
-msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
-
-msgctxt "model:ir.action,name:wizard_products_by_locations"
-msgid "Products by Locations"
-msgstr "Produits par emplacements"
+msgstr "Obnova zaloge"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
-msgstr "Recalculer le prix de revient"
+msgstr "Preračun cene"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
-msgstr "Assigner le retour d'expédition fournisseur"
+msgstr "Dodelitev vrnjene prevzemnice"
 
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
 msgid "Assign Shipment Internal"
-msgstr "Assigner l'expédition interne"
+msgstr "Dodelitev notranje odpremnice"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Shipment Out"
-msgstr "Assigner l'expédition de sortie"
+msgstr "Dodelitev odpremnice"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
-msgstr "Tous"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
 msgid "All"
-msgstr "Tous"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
 msgid "From Suppliers"
-msgstr "Depuis les fournisseurs"
+msgstr "Od dobaviteljev"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
 msgid "From Suppliers Waiting"
-msgstr "En attente depuis les fournisseurs"
+msgstr "Od dobaviteljev čakajoče"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
 msgid "To Customers"
-msgstr "Vers les clients"
+msgstr "Do kupcev"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Prejeto"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
+msgid "Shipped"
+msgstr "Poslano"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
 msgid "Packed"
-msgstr "Emballé"
+msgstr "Zapakirano"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
 msgid "All"
-msgstr "Tous"
+msgstr "Vse"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Prejeto"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
-msgstr "Inventaire"
+msgstr "Popis"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Expédition fournisseur"
+msgstr "Prevzemnica"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Retour d'expédition fournisseur"
+msgstr "Vrnjena prevzemnica"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Expédition interne"
+msgstr "Notranja odpremnica"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Expédition client"
+msgstr "Odpremnica"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Retours d'expédition client"
+msgstr "Vrnjena odpremnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
-msgstr "Inventaire"
+msgstr "Popis"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Expédition fournisseur"
+msgstr "Prevzemnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Retour d'expédition fournisseur"
+msgstr "Vrnjena prevzemnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Expédition interne"
+msgstr "Notranja odpremnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Expédition client"
+msgstr "Odpremnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Retour d'expédition client"
+msgstr "Vrnjena odpremnica"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Nastavitve"
 
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr "Inventaires"
+msgstr "Popisi"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr "Éditer les emplacements"
+msgstr "Lokacije"
+
+msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
+msgid "Location Lead Times"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Lokacije"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "Mouvements"
+msgstr "Promet"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Périodes"
+msgstr "Obdobja"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapports"
+msgstr "Poročila"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Expéditions fournisseur"
+msgstr "Prevzemnice"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retours d'expédition fournisseur"
+msgstr "Vrnjene prevzemnice"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Expéditions internes"
+msgstr "Notranje odpremnice"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Expéditions client"
+msgstr "Odpremnice"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Retours d'expédition client"
+msgstr "Vrnjene odpremnice"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
-msgstr "Stocks & inventaires"
+msgstr "Zaloga"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
-msgstr "Configuration des stocks"
+msgstr "Konfiguracija"
 
-msgctxt "model:product.by_location.start,name:"
+msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
-msgstr "Produits par emplacement"
+msgstr ""
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Zaloga"
 
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr "Administration des stocks"
+msgstr "Zaloga - vodenje"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Stock forcer assignation"
+msgstr "Zaloga - rezervacija"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
-msgstr "Configuration des stocks"
+msgstr "Konfiguracija zaloge"
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
-msgstr "Inventaire du stock"
+msgstr "Popis"
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
-msgstr "Ligne d'inventaire de stock"
+msgstr "Postavka popisa"
 
 msgctxt "model:stock.location,name:"
 msgid "Stock Location"
-msgstr "Lieu de Stockage"
+msgstr "Lokacija"
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr "Client"
+msgstr "Kupec"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr "Zone d'entrée"
+msgstr "Vhodna cona"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Pertes et surplus"
+msgstr "Izgubljeno/najdeno"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr "Zone de sortie"
+msgstr "Izhodna cona"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr "Zone de magasin"
+msgstr "Cona shrambe"
 
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
-msgstr "Fournisseur"
+msgstr "Dobavitelj"
+
+msgctxt "model:stock.location,name:location_transit"
+msgid "Transit"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
+
+msgctxt "model:stock.location.lead_time,name:"
+msgid "Location Lead Time"
+msgstr ""
 
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
-msgstr "Mouvement de stock"
+msgstr "Promet zaloge"
 
 msgctxt "model:stock.period,name:"
 msgid "Stock Period"
-msgstr "Période de stock"
+msgstr "Obdobje zaloge"
 
 msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
-msgstr "Cache de période et stock"
+msgstr "Predpomnjeno obdobje zaloge"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
+msgstr "Količine izdelkov po skladiščih"
 
-msgctxt "model:stock.product_quantities_warehouse.start,name:"
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
+msgstr "Količine izdelkov po skladiščih"
 
-msgctxt "model:stock.products_by_locations.start,name:"
+msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
-msgstr "Produits par emplacements"
+msgstr ""
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
-msgstr "Expédition fournisseur"
+msgstr "Prevzemnica"
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr "Retour d'expédition fournisseur"
+msgstr "Vrnjena prevzemnica"
 
 msgctxt "model:stock.shipment.in.return.assign.failed,name:"
 msgid "Assign Supplier Return Shipment"
-msgstr "Assigner les éxpéditions de retour fournisseur"
+msgstr "Dodelitev vrnjene prevzemnice"
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
-msgstr "Expédition interne"
+msgstr "Notranja odpremnica"
 
 msgctxt "model:stock.shipment.internal.assign.failed,name:"
 msgid "Assign Shipment Internal"
-msgstr "Assigner l'expédition interne"
+msgstr "Dodelitev notranje odpremnice"
 
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
-msgstr "Expédition Client"
+msgstr "Odpremnica"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
 msgid "Assign Shipment Out"
-msgstr "Assigner l'expédition de sortie"
+msgstr "Dodelitev odpremnice"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
-msgstr "Retour d'expédition client"
+msgstr "Vrnjena odpremnica"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -1583,47 +1666,47 @@ msgstr "/"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid ":"
-msgstr " :"
+msgstr ":"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
-msgstr "Date planifiée :"
+msgstr "Načrtovan datum:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
-msgstr "Référence :"
+msgstr "Sklic:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
-msgstr "Liste de restockage"
+msgstr "Obnova zaloge"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Shipment Number"
-msgstr "Numéro d'expédition :"
+msgstr "Številka pošiljke"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
-msgstr "Fournisseur :"
+msgstr "Dobavitelj:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr "Entrepôt :"
+msgstr "Skladišče:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "/"
@@ -1631,47 +1714,47 @@ msgstr "/"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid ":"
-msgstr " :"
+msgstr ":"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
-msgstr "Emplacement d'origine :"
+msgstr "Iz lokacije:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr "Expédition interne"
+msgstr "Notranja odpremnica"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
-msgstr "Date planifiée :"
+msgstr "Načrtovan datum:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
-msgstr "Référence :"
+msgstr "Sklic:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Shipment Number"
-msgstr "Numéro d'expédition :"
+msgstr "Številka pošiljke"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "To Location:"
-msgstr "Emplacement de destination :"
+msgstr "Na lokacijo:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "/"
@@ -1679,31 +1762,31 @@ msgstr "/"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Customer Code:"
-msgstr "Code client :"
+msgstr "Šifra kupca:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
-msgstr "Date :"
+msgstr "Datum:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr "Bon de livraison"
+msgstr "Dobavnica"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
-msgstr "Référence :"
+msgstr "Sklic:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
-msgstr "Numéro d'expédition :"
+msgstr "Dobavnica št.:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "/"
@@ -1711,47 +1794,47 @@ msgstr "/"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
-msgstr " :"
+msgstr ":"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr "Client :"
+msgstr "Kupec:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr "Liste de prélèvement"
+msgstr "Prevzemni list"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
-msgstr "Date planifiée :"
+msgstr "Načrtovan datum:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
-msgstr "Référence :"
+msgstr "Sklic:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Shipment Number"
-msgstr "Numéro d'expédition :"
+msgstr "Številka pošiljke"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
-msgstr "Entrepôt :"
+msgstr "Skladišče:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "/"
@@ -1759,576 +1842,481 @@ msgstr "/"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
-msgstr " :"
+msgstr ":"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr "Client"
+msgstr "Kupec"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
-msgstr "Emplacement d'origine"
+msgstr "Iz lokacije"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Number"
-msgstr "Numéro"
+msgstr "Številka"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
-msgstr "Date planifiée :"
+msgstr "Načrtovan datum:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
-msgstr "Produit"
+msgstr "Izdelek"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr "Količina"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
-msgstr "Référence :"
+msgstr "Sklic:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr "Liste de restockage"
+msgstr "Obnova zaloge"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Shipment"
-msgstr "Expédition"
+msgstr "Pošiljka"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
-msgstr "Emplacement de destination"
+msgstr "Na lokacijo"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
-msgstr "Entrepôt :"
+msgstr "Skladišče:"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Effectué"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
+
+#, fuzzy
+msgctxt "selection:stock.inventory.line,inventory_state:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+#, fuzzy
+msgctxt "selection:stock.inventory.line,inventory_state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+#, fuzzy
+msgctxt "selection:stock.inventory.line,inventory_state:"
+msgid "Draft"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
-msgstr "Client"
+msgstr "Kupec"
 
 msgctxt "selection:stock.location,type:"
 msgid "Drop"
-msgstr "Livraison directe"
+msgstr "Dostava"
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
-msgstr "Pertes et surplus"
+msgstr "Izgubljeno/najdeno"
 
 msgctxt "selection:stock.location,type:"
 msgid "Production"
-msgstr "Production"
+msgstr "Proizvodnja"
 
 msgctxt "selection:stock.location,type:"
 msgid "Storage"
-msgstr "Magasin"
+msgstr "Shramba"
 
 msgctxt "selection:stock.location,type:"
 msgid "Supplier"
-msgstr "Fournisseur"
+msgstr "Dobavitelj"
 
 msgctxt "selection:stock.location,type:"
 msgid "View"
-msgstr "Vue"
+msgstr "Vpogled"
 
 msgctxt "selection:stock.location,type:"
 msgid "Warehouse"
-msgstr "Entrepôt"
+msgstr "Skladišče"
 
 msgctxt "selection:stock.move,state:"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt "selection:stock.move,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr "Effectué"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.move,state:"
 msgid "Staging"
-msgstr "Intermédiaire"
+msgstr "Zbiranje"
 
 msgctxt "selection:stock.period,state:"
 msgid "Closed"
-msgstr "Clôturée"
+msgstr "Zaprto"
 
 msgctxt "selection:stock.period,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Prejeto"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Shipped"
+msgstr "Poslano"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Dodeljeno"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Packed"
-msgstr "Emballé"
+msgstr "Zapakirano"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "Čakajoče"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Prejeto"
 
 msgctxt "view:party.party:"
 msgid "Stock"
-msgstr "Stock"
-
-msgctxt "view:product.by_location.start:"
-msgid "Product by Location"
-msgstr "Produits par emplacement"
+msgstr "Zaloga"
 
 msgctxt "view:product.product:"
 msgid "Cost Value"
-msgstr "Valeur du coût"
-
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produits"
+msgstr "Nabavna vrednost"
 
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
-msgstr "Inventaire"
+msgstr "Popis"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
-msgstr "Expéditions"
-
-msgctxt "view:stock.configuration:"
-msgid "Stock Configuration"
-msgstr "Configuration des stocks"
+msgstr "Pošiljke"
 
 msgctxt "view:stock.inventory.line:"
 msgid "Inventory Line"
-msgstr "Ligne d'inventaire"
+msgstr "Postavka popisa"
 
 msgctxt "view:stock.inventory.line:"
 msgid "Inventory Lines"
-msgstr "Lignes d'inventaire"
+msgstr "Postavke popisa"
 
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
-msgstr "Ajouter une ligne d'inventaire pour chaque produit manquant"
+msgstr "Dodaj postavko popisa za vsak manjkajoči izdelek"
 
 msgctxt "view:stock.inventory:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Preklic"
 
 msgctxt "view:stock.inventory:"
 msgid "Complete Inventory"
-msgstr "Compléter l'inventaire"
+msgstr "Izpolnitev popisa"
 
 msgctxt "view:stock.inventory:"
 msgid "Confirm"
-msgstr "Confirmer"
-
-msgctxt "view:stock.inventory:"
-msgid "Inventories"
-msgstr "Inventaires"
-
-msgctxt "view:stock.inventory:"
-msgid "Inventory"
-msgstr "Inventaire"
+msgstr "Potrditev"
 
 msgctxt "view:stock.location:"
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Lokacija"
 
 msgctxt "view:stock.location:"
 msgid "Location Quantity"
-msgstr "Quantité de l'emplacement"
+msgstr "Količina na lokaciji"
 
 msgctxt "view:stock.location:"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Lokacije"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Preklic"
 
 msgctxt "view:stock.move:"
 msgid "Do"
-msgstr "Effectuer"
-
-msgctxt "view:stock.move:"
-msgid "Move"
-msgstr "Mouvement"
-
-msgctxt "view:stock.move:"
-msgid "Moves"
-msgstr "Mouvements"
+msgstr "Izvedi"
 
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
-msgstr "Remettre en brouillon"
+msgstr "Ponastavitev"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
-msgstr "Cache de la période"
+msgstr "Predpomnjeno obdobje"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Caches"
-msgstr "Caches des périodes"
+msgstr "Predpomnjena obdobja"
 
 msgctxt "view:stock.period:"
 msgid "Close"
-msgstr "Clôturer"
+msgstr "Zaključitev"
 
 msgctxt "view:stock.period:"
 msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.period:"
-msgid "Period"
-msgstr "Période"
-
-msgctxt "view:stock.period:"
-msgid "Periods"
-msgstr "Périodes"
-
-msgctxt "view:stock.product_quantities_warehouse.start:"
-msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
+msgstr "Priprava"
 
 msgctxt "view:stock.product_quantities_warehouse:"
 msgid "Product Quantities By Warehouse"
-msgstr "Quantités de produit par entrepôt"
-
-msgctxt "view:stock.products_by_locations.start:"
-msgid "Products by Locations"
-msgstr "Produits par emplacements"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to Assign"
-msgstr "Impossible d'assigner"
+msgstr "Količine izdelkov po skladiščih"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
+msgstr "Dodelitev ni možna za naslednje izdelke:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
-msgstr "Assigner"
+msgstr "Dodelitev"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Preklic"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Supplier Return Shipment"
-msgstr "Retour d'expédition fournisseur"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Supplier Return Shipments"
-msgstr "Retours d'expédition fournisseur"
+msgstr "Priprava"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
-msgstr "Attendre"
+msgstr "Čakanje"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Preklic"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Incoming Moves"
-msgstr "Mouvements entrants"
+msgstr "Vhodni promet"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Inventarni promet"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
-msgstr "Recevoir"
+msgstr "Prejem"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
-msgstr "Remettre en brouillon"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Supplier Shipment"
-msgstr "Expédition fournisseur"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Supplier Shipments"
-msgstr "Expéditions fournisseur"
-
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to Assign"
-msgstr "Impossible d'assigner"
+msgstr "Ponastavitev"
 
 msgctxt "view:stock.shipment.internal.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
+msgstr "Dodelitev ni možna za naslednje izdelke:"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
-msgstr "Assigner"
+msgstr "Dodelitev"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Preklic"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
-msgid "Internal Shipment"
-msgstr "Expédition interne"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Internal Shipments"
-msgstr "Expéditions internes"
+msgid "Ship"
+msgstr "Pošiljanje"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Wait"
-msgstr "Attendre"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to Assign"
-msgstr "Impossible d'assigner"
+msgstr "Čakanje"
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
+msgstr "Dodelitev ni možna za naslednje izdelke:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Customer Return Shipment"
-msgstr "Retour d'expédition client"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Customer Return Shipments"
-msgstr "Retours d'expédition client"
+msgstr "Preklic"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Incoming Moves"
-msgstr "Mouvements entrants"
+msgstr "Vhodni promet"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Inventarni promet"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Prejeto"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Assign"
-msgstr "Assigner"
+msgstr "Dodelitev"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Customer Shipment"
-msgstr "Expédition client"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Customer Shipments"
-msgstr "Expéditions client"
+msgstr "Preklic"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
-msgstr "Effectuée"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Priprava"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Inventory Moves"
-msgstr "Mouvements internes"
+msgstr "Inventarni promet"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Make shipment"
-msgstr "Faire l'expédition"
+msgstr "Odprema"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
-msgstr "Mouvements sortants"
+msgstr "Izhodni promet"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Wait"
-msgstr "Attendre"
-
-msgctxt "wizard_button:product.by_location,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:product.by_location,start,open:"
-msgid "Open"
-msgstr "Ouvrir"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
-msgid "Open"
-msgstr "Ouvrir"
-
-msgctxt "wizard_button:stock.products_by_locations,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:stock.products_by_locations,start,open:"
-msgid "Open"
-msgstr "Ouvrir"
+msgstr "Čakanje"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Forcer l'assignation"
+msgstr "Rezervacija"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Forcer l'assignation"
+msgstr "Rezervacija"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
 msgid "OK"
-msgstr "OK"
+msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Forcer l'assignation"
+msgstr "Rezervacija"
