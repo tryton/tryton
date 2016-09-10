@@ -608,14 +608,6 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr "Felhasználó"
 
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr "Adminisztrátor"
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr "Időterv Tigger"
-
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
 msgstr "Felhasználói művelet"
@@ -641,19 +633,7 @@ msgid "Access Permissions"
 msgstr ""
 
 msgctxt "view:res.group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "view:res.group:"
 msgid "Members"
-msgstr ""
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
 msgstr ""
 
 msgctxt "view:res.user.config.start:"
@@ -692,10 +672,6 @@ msgstr ""
 msgctxt "view:res.user:"
 msgid "User"
 msgstr "Felhasználó"
-
-msgctxt "view:res.user:"
-msgid "Users"
-msgstr "Felhasználók"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

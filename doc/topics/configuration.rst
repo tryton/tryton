@@ -117,7 +117,7 @@ language
 The main language of the database that will be used for storage in the main
 table for translations.
 
-Default: `en_US`
+Default: `en`
 
 cache
 -----

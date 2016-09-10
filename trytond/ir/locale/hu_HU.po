@@ -148,16 +148,8 @@ msgid "You can not write on the field! (%s.%s)"
 msgstr "Nem jogosult a mező kitöltésére.  (%s.%s)"
 
 msgctxt "error:ir.model.field:"
-msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr "A minta mező neve \"%s\" nem érvényes Python azonosító."
-
-msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
 msgstr "Egy mező neve csak egyszer adható."
-
-msgctxt "error:ir.model:"
-msgid "Module name \"%s\" is not a valid python identifier."
-msgstr "A modul neve \"%s\" nem érvényes Python azonosító."
 
 msgctxt "error:ir.model:"
 msgid "The model must be unique!"
@@ -504,10 +496,6 @@ msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
 msgstr "Nézetek"
 
-msgctxt "field:ir.action.act_window,window_name:"
-msgid "Window Name"
-msgstr "Ablaknév"
-
 msgctxt "field:ir.action.act_window,write_date:"
 msgid "Write Date"
 msgstr "Utolsó módosítás dátuma"
@@ -523,6 +511,10 @@ msgstr "Művelet"
 msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Aktív"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
@@ -876,10 +868,6 @@ msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-msgctxt "field:ir.attachment,collision:"
-msgid "Collision"
-msgstr "Ütközés"
-
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás détuma"
@@ -900,9 +888,9 @@ msgctxt "field:ir.attachment,description:"
 msgid "Description"
 msgstr "Leírás"
 
-msgctxt "field:ir.attachment,digest:"
-msgid "Digest"
-msgstr "Részlet"
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr ""
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -2712,10 +2700,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "Alap keresési érték a listanézetben"
 
-msgctxt "help:ir.action.act_window,window_name:"
-msgid "Use the action name as window name"
-msgstr "Műveletnevet Ablaknévként használni"
-
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2890,6 +2874,10 @@ msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
 msgstr "Minta jelentései"
 
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Gombok"
@@ -2901,6 +2889,10 @@ msgstr "Adatok"
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Mező hozzáférésének engedélyezése"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -3109,8 +3101,9 @@ msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Angol"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
-msgid "Spanish (Spain)"
+msgid "Spanish"
 msgstr "Spanyol (Spanyolország)"
 
 msgctxt "model:ir.lang,name:lang_es_CO"
@@ -3134,6 +3127,10 @@ msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
 msgstr ""
 
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "ລາວ"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
 msgstr "Litván"
@@ -3153,6 +3150,10 @@ msgstr "Orosz"
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
 msgstr "Szlovén"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "中国（简体）"
+msgstr ""
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3512,10 +3513,6 @@ msgid "Action form"
 msgstr "Űrlap művelet"
 
 msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
-msgstr ""
-
-msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
 msgstr "Hivatkozási űrlap"
 
@@ -3740,14 +3737,6 @@ msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr ""
 
-msgctxt "view:ir.action.act_window:"
-msgid "Open Window"
-msgstr ""
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open a Window"
-msgstr ""
-
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
 msgstr "Kulcsszó"
@@ -3760,44 +3749,17 @@ msgctxt "view:ir.action.report:"
 msgid "General"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.action.report:"
-msgid "Report"
-msgstr "Jelentések"
-
-msgctxt "view:ir.action.report:"
-msgid "Report xml"
-msgstr ""
-
 msgctxt "view:ir.action.url:"
 msgid "General"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.action.url:"
-msgid "URL"
-msgstr "URL"
 
 msgctxt "view:ir.action.wizard:"
 msgid "General"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.action.wizard:"
-msgid "Wizard"
-msgstr "Wizards"
-
-msgctxt "view:ir.action:"
-msgid "Action"
-msgstr "Művelet"
-
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr ""
-
-msgctxt "view:ir.attachment:"
-msgid "Attachments"
-msgstr "Mellékletek"
 
 #, fuzzy
 msgctxt "view:ir.attachment:"
@@ -3812,15 +3774,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.cron:"
-msgid "Scheduled Action"
-msgstr "Ütemezett műveletek"
-
-msgctxt "view:ir.cron:"
-msgid "Scheduled Actions"
-msgstr "Ütemezett műveletek"
-
 msgctxt "view:ir.export:"
 msgid "Exports"
 msgstr "Export"
@@ -3828,14 +3781,6 @@ msgstr "Export"
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr ""
-
-msgctxt "view:ir.lang:"
-msgid "Language"
-msgstr "Nyelv"
-
-msgctxt "view:ir.lang:"
-msgid "Languages"
-msgstr "Nyelvek"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
@@ -3853,11 +3798,6 @@ msgstr "Gombok"
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Gombok"
-
-#, fuzzy
-msgctxt "view:ir.model.data:"
-msgid "Model Data"
-msgstr "Minta adat"
 
 msgctxt "view:ir.model.data:"
 msgid "Sync"
@@ -3884,17 +3824,8 @@ msgctxt "view:ir.model:"
 msgid "Model Description"
 msgstr "Minta leírás"
 
-#, fuzzy
-msgctxt "view:ir.module.config_wizard.done:"
-msgid "Module configuration"
-msgstr "Modul konfiguráció"
-
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr ""
-
-msgctxt "view:ir.module.config_wizard.first:"
-msgid "Welcome to the module configuration wizard!"
 msgstr ""
 
 msgctxt "view:ir.module.config_wizard.first:"
@@ -3921,19 +3852,11 @@ msgid "Dependency"
 msgstr "Függőségek"
 
 msgctxt "view:ir.module.install_upgrade.done:"
-msgid "System Upgrade Done"
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "System Upgrade"
 msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
@@ -3964,30 +3887,15 @@ msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr ""
 
-msgctxt "view:ir.module:"
-msgid "Module"
-msgstr "Modul"
-
-msgctxt "view:ir.module:"
-msgid "Modules"
-msgstr "Modulok"
-
 #, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Dátum"
 
-msgctxt "view:ir.note:"
-msgid "Note"
-msgstr ""
-
-msgctxt "view:ir.note:"
-msgid "Notes"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr ""
+msgstr "Idő"
 
 #, fuzzy
 msgctxt "view:ir.note:"
@@ -4006,11 +3914,6 @@ msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.rule.group:"
-msgid "Record rules"
-msgstr "Adatszabályok"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
@@ -4057,10 +3960,6 @@ msgid "Month:"
 msgstr "Hónap"
 
 msgctxt "view:ir.sequence:"
-msgid "Sequences"
-msgstr "Számkör"
-
-msgctxt "view:ir.sequence:"
 msgid "Timestamp"
 msgstr "Időbélyeg"
 
@@ -4068,17 +3967,9 @@ msgctxt "view:ir.sequence:"
 msgid "Year:"
 msgstr ""
 
-msgctxt "view:ir.translation.clean.start:"
-msgid "Clean Translations"
-msgstr "Fordítások rendezése"
-
 #, fuzzy
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
-msgstr "Fordítások rendezése"
-
-msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations"
 msgstr "Fordítások rendezése"
 
 msgctxt "view:ir.translation.clean.succeed:"
@@ -4095,10 +3986,6 @@ msgctxt "view:ir.translation.export.start:"
 msgid "Export Translation"
 msgstr "Fordítások exportálása"
 
-msgctxt "view:ir.translation.set.start:"
-msgid "Set Translations"
-msgstr "Fordítás aktualizálása"
-
 #, fuzzy
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
@@ -4107,10 +3994,6 @@ msgstr "Fordítás megadás"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr ""
-
-msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Translations"
-msgstr "Fordítás aktualizálása"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -4152,10 +4035,6 @@ msgstr "Menü"
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr ""
-
-msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Nézet"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

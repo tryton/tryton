@@ -610,14 +610,6 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr "Usuari"
 
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr "Administrador"
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr "Planificador de disparadors"
-
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
 msgstr "Usuari - Acció"
@@ -643,20 +635,8 @@ msgid "Access Permissions"
 msgstr "Permisos d'accés"
 
 msgctxt "view:res.group:"
-msgid "Group"
-msgstr "Grup"
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr "Grups"
-
-msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Membres"
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
-msgstr "Afegir usuaris"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
@@ -693,10 +673,6 @@ msgstr "Preferències"
 msgctxt "view:res.user:"
 msgid "User"
 msgstr "Usuari"
-
-msgctxt "view:res.user:"
-msgid "Users"
-msgstr "Usuaris"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

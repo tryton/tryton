@@ -568,7 +568,7 @@ class ModelView(Model):
                 element.set('type', 'instance')
 
         # translate view
-        if Transaction().language != 'en_US':
+        if Transaction().language != 'en':
             for attr in ('string', 'sum', 'confirm', 'help'):
                 if element.get(attr):
                     trans = Translation.get_source(cls.__name__, 'view',

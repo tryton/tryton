@@ -144,16 +144,8 @@ msgid "You can not write on the field! (%s.%s)"
 msgstr "Você não pode editar o campo! (%s.%s)"
 
 msgctxt "error:ir.model.field:"
-msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr "O nome do campo do modelo \"%s\" não é um identificador python válido."
-
-msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
 msgstr "O nome do campo no modelo deve ser único!"
-
-msgctxt "error:ir.model:"
-msgid "Module name \"%s\" is not a valid python identifier."
-msgstr "O nome do módulo \"%s\" não é um identificador python válido."
 
 msgctxt "error:ir.model:"
 msgid "The model must be unique!"
@@ -505,10 +497,6 @@ msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
 msgstr "Visões"
 
-msgctxt "field:ir.action.act_window,window_name:"
-msgid "Window Name"
-msgstr "Nome da Janela"
-
 msgctxt "field:ir.action.act_window,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
@@ -524,6 +512,11 @@ msgstr "Ação"
 msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Ativo"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "Contagem"
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
@@ -877,10 +870,6 @@ msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-msgctxt "field:ir.attachment,collision:"
-msgid "Collision"
-msgstr "Colisão"
-
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -901,9 +890,9 @@ msgctxt "field:ir.attachment,description:"
 msgid "Description"
 msgstr "Descrição"
 
-msgctxt "field:ir.attachment,digest:"
-msgid "Digest"
-msgstr "Digest"
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr ""
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -1698,13 +1687,15 @@ msgctxt "field:ir.note,last_user:"
 msgid "Last User"
 msgstr "Último usuário"
 
+#, fuzzy
 msgctxt "field:ir.note,message:"
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
+#, fuzzy
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #, fuzzy
 msgctxt "field:ir.note,rec_name:"
@@ -1745,9 +1736,10 @@ msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr ""
+msgstr "Observação"
 
 #, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
@@ -2713,10 +2705,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "Critério de busca padrão para a listagem"
 
-msgctxt "help:ir.action.act_window,window_name:"
-msgid "Use the action name as window name"
-msgstr "Use o nome da ação como nome da janela"
-
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2893,6 +2881,10 @@ msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
 msgstr "Acesso a modelos"
 
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Botões"
@@ -2904,6 +2896,10 @@ msgstr "Dados"
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Acesso a campos"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -2929,9 +2925,10 @@ msgctxt "model:ir.action,name:act_module_install_upgrade"
 msgid "Perform Pending Installation/Upgrade"
 msgstr "Realizar instalações/atualizações pendentes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Observações"
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -3111,8 +3108,9 @@ msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Inglês"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
-msgid "Spanish (Spain)"
+msgid "Spanish"
 msgstr "Espanhol (Espanha)"
 
 msgctxt "model:ir.lang,name:lang_es_CO"
@@ -3135,6 +3133,10 @@ msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
 msgstr "Italiano"
 
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "ລາວ"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
 msgstr "Lituano"
@@ -3154,6 +3156,10 @@ msgstr "Russo"
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
 msgstr "Esloveno"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "中国（简体）"
+msgstr ""
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3216,9 +3222,10 @@ msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "Iniciar a Atualização / Instalação do módulo"
 
+#, fuzzy
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr ""
+msgstr "Observação"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
@@ -3404,9 +3411,10 @@ msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Módulos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "Observações"
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3511,10 +3519,6 @@ msgstr "Largura da tela de busca"
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
 msgstr "Formulário de ação"
-
-msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
-msgstr "Árvore de ação"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
@@ -3677,9 +3681,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
 msgstr "Botão do Assistente"
 
+#, fuzzy
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3741,14 +3746,6 @@ msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "Geral"
 
-msgctxt "view:ir.action.act_window:"
-msgid "Open Window"
-msgstr "Abrir janela"
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open a Window"
-msgstr "Abrir janela"
-
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
 msgstr "Palavra-chave"
@@ -3761,41 +3758,17 @@ msgctxt "view:ir.action.report:"
 msgid "General"
 msgstr "Geral"
 
-msgctxt "view:ir.action.report:"
-msgid "Report"
-msgstr "Relatório"
-
-msgctxt "view:ir.action.report:"
-msgid "Report xml"
-msgstr "Relatório xml"
-
 msgctxt "view:ir.action.url:"
 msgid "General"
 msgstr "Geral"
-
-msgctxt "view:ir.action.url:"
-msgid "URL"
-msgstr "URL"
 
 msgctxt "view:ir.action.wizard:"
 msgid "General"
 msgstr "Geral"
 
-msgctxt "view:ir.action.wizard:"
-msgid "Wizard"
-msgstr "Assistente"
-
-msgctxt "view:ir.action:"
-msgid "Action"
-msgstr "Ação"
-
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr "Assistente"
-
-msgctxt "view:ir.attachment:"
-msgid "Attachments"
-msgstr "Anexos"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
@@ -3809,14 +3782,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.cron:"
-msgid "Scheduled Action"
-msgstr "Ação Agendada"
-
-msgctxt "view:ir.cron:"
-msgid "Scheduled Actions"
-msgstr "Ações Agendadas"
-
 msgctxt "view:ir.export:"
 msgid "Exports"
 msgstr "Exportações"
@@ -3824,14 +3789,6 @@ msgstr "Exportações"
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Formato de data"
-
-msgctxt "view:ir.lang:"
-msgid "Language"
-msgstr "Idioma"
-
-msgctxt "view:ir.lang:"
-msgid "Languages"
-msgstr "Idiomas"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
@@ -3847,10 +3804,6 @@ msgstr "Botão"
 
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
-msgstr "Botões"
-
-msgctxt "view:ir.model.data:"
-msgid "Model Data"
 msgstr "Botões"
 
 msgctxt "view:ir.model.data:"
@@ -3878,16 +3831,8 @@ msgid "Model Description"
 msgstr "Descrição do modelo"
 
 msgctxt "view:ir.module.config_wizard.done:"
-msgid "Module configuration"
-msgstr "Configuração do módulo"
-
-msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
 msgstr "A configuração foi feita corretamente."
-
-msgctxt "view:ir.module.config_wizard.first:"
-msgid "Welcome to the module configuration wizard!"
-msgstr "Bemvindo ao assitente de configuração do módulo!"
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
@@ -3913,21 +3858,12 @@ msgid "Dependency"
 msgstr "Dependência"
 
 msgctxt "view:ir.module.install_upgrade.done:"
-msgid "System Upgrade Done"
-msgstr "Atualização do sistema terminada."
-
-msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr "Os módulos foram atualizados/instalados!"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr "Esta operação pode levar alguns minutos."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "System Upgrade"
-msgstr ""
-"Você poderá configurar sua instalação dependendo dos módulos que instalou."
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
@@ -3957,30 +3893,15 @@ msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Marcar para desinstação (beta)"
 
-msgctxt "view:ir.module:"
-msgid "Module"
-msgstr "Módulo"
-
-msgctxt "view:ir.module:"
-msgid "Modules"
-msgstr "Módulos"
-
 #, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "view:ir.note:"
-msgid "Note"
-msgstr ""
-
-msgctxt "view:ir.note:"
-msgid "Notes"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Time"
-msgstr ""
+msgstr "Tempo"
 
 #, fuzzy
 msgctxt "view:ir.note:"
@@ -4001,10 +3922,6 @@ msgid ""
 msgstr ""
 "Se não há nenhum teste definido, a regra é sempre satisfeita se não for "
 "global."
-
-msgctxt "view:ir.rule.group:"
-msgid "Record rules"
-msgstr "Regras de registro"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
@@ -4047,10 +3964,6 @@ msgid "Month:"
 msgstr "Mês:"
 
 msgctxt "view:ir.sequence:"
-msgid "Sequences"
-msgstr "Sequências"
-
-msgctxt "view:ir.sequence:"
 msgid "Timestamp"
 msgstr "Timestamp"
 
@@ -4059,16 +3972,8 @@ msgid "Year:"
 msgstr "Ano:"
 
 msgctxt "view:ir.translation.clean.start:"
-msgid "Clean Translations"
-msgstr "Limpar traduções"
-
-msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Limpar traduções?"
-
-msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations"
-msgstr "Limpar traduções"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
@@ -4083,20 +3988,12 @@ msgid "Export Translation"
 msgstr "Exportar traduções"
 
 msgctxt "view:ir.translation.set.start:"
-msgid "Set Translations"
-msgstr "Definir traduções"
-
-msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Sincronizar traduções?"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "As traduções foram realizadas corretamente."
-
-msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Translations"
-msgstr "Definir traduções"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -4137,10 +4034,6 @@ msgstr "Menu"
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "Mostrar"
-
-msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Sumário"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

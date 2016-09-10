@@ -207,6 +207,13 @@ def load_module_graph(graph, pool, update=None, lang=None):
     modules_todo = []
     models_to_update_history = set()
 
+    # Load also parent languages
+    lang = set(lang)
+    for code in list(lang):
+        while code:
+            lang.add(code)
+            code = tools.get_parent_language(code)
+
     with Transaction().connection.cursor() as cursor:
         modules = [x.name for x in graph]
         cursor.execute(*ir_module.select(ir_module.name, ir_module.state,

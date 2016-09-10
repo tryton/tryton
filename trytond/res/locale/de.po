@@ -4,37 +4,39 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.group:"
 msgid "The name of the group must be unique!"
-msgstr "Наименование группы должно быть уникальным!"
+msgstr "Der Name einer Gruppe kann nur einmal vergeben werden."
 
 msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
 msgstr ""
+"Benutzer können aus Dokumentationsgründen nicht gelöscht werden.\n"
+"Sie müssen stattdessen deaktiviert werden."
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
-msgstr "Неверный пароль!"
+msgstr "Ungültiges Passwort!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr "Такое имя пользователя уже есть!"
+msgstr "Der Anmeldename für einen Benutzer kann nur einmal vergeben werden."
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
-msgstr "Действие"
+msgstr "Aktion"
 
 msgctxt "field:ir.action-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
@@ -42,35 +44,35 @@ msgstr "ID"
 
 msgctxt "field:ir.action-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Aktiv"
 
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
-msgstr "Кнопка"
+msgstr "Knopf"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
@@ -78,31 +80,31 @@ msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.model.field-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.model.field-res.group,field:"
 msgid "Model Field"
-msgstr "Поле модели"
+msgstr "Modell Feld"
 
 msgctxt "field:ir.model.field-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:ir.model.field-res.group,id:"
 msgid "ID"
@@ -110,27 +112,27 @@ msgstr "ID"
 
 msgctxt "field:ir.model.field-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.model.field-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
@@ -138,27 +140,27 @@ msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
-msgstr "Правило группы"
+msgstr "Regel Gruppe"
 
 msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.rule.group-res.user,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.rule.group-res.user,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.rule.group-res.user,id:"
 msgid "ID"
@@ -166,47 +168,47 @@ msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.user,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.rule.group-res.user,rule_group:"
 msgid "Rule Group"
-msgstr "Правило группы"
+msgstr "Regel Gruppe"
 
 msgctxt "field:ir.rule.group-res.user,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Benutzer"
 
 msgctxt "field:ir.rule.group-res.user,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.rule.group-res.user,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
-msgstr "Группы пользователя"
+msgstr "Benutzergruppen"
 
 msgctxt "field:ir.sequence.strict,groups:"
 msgid "User Groups"
-msgstr "Группы пользователя"
+msgstr "Benutzergruppen"
 
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
-msgstr "Группы пользователя"
+msgstr "Benutzergruppen"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.sequence.type-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
-msgstr "Группы пользователя"
+msgstr "Benutzergruppen"
 
 msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
@@ -214,31 +216,31 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr "Тип нумерации"
+msgstr "Nummernkreistyp"
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:ir.ui.menu-res.group,id:"
 msgid "ID"
@@ -246,31 +248,31 @@ msgstr "ID"
 
 msgctxt "field:ir.ui.menu-res.group,menu:"
 msgid "Menu"
-msgstr "Меню"
+msgstr "Menü"
 
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
-msgstr "Поле доступа"
+msgstr "Zugriffsberechtigung Feld"
 
 msgctxt "field:res.group,id:"
 msgid "ID"
@@ -278,59 +280,59 @@ msgstr "ID"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
-msgstr "Меню доступа"
+msgstr "Menü Berechtigungen"
 
 msgctxt "field:res.group,model_access:"
 msgid "Access Model"
-msgstr "Доступ к модели"
+msgstr "Rechteverwaltung"
 
 msgctxt "field:res.group,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Gruppenname"
 
 msgctxt "field:res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
-msgstr "Правила"
+msgstr "Datensatzregeln"
 
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr "Пользователи"
+msgstr "Benutzer"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
-msgstr "Действия"
+msgstr "Aktionen"
 
 msgctxt "field:res.user,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Aktiv"
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "Эл.почта"
+msgstr "E-Mail"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
-msgstr "Группы"
+msgstr "Gruppen"
 
 msgctxt "field:res.user,id:"
 msgid "ID"
@@ -338,79 +340,79 @@ msgstr "ID"
 
 msgctxt "field:res.user,language:"
 msgid "Language"
-msgstr "Язык"
+msgstr "Sprache"
 
 msgctxt "field:res.user,language_direction:"
 msgid "Language Direction"
-msgstr "Направления языка"
+msgstr "Sprache Richtung"
 
 msgctxt "field:res.user,login:"
 msgid "Login"
-msgstr "Логин"
+msgstr "Anmeldename"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
-msgstr "Действия Меню"
+msgstr "Menüaktion"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
-msgstr "Полное имя"
+msgstr "Name"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
-msgstr "Пароль"
+msgstr "Passwort"
 
 msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
-msgstr ""
+msgstr "Passwort Hash"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
-msgstr "Меню PySON"
+msgstr "PySON Menü"
 
 msgctxt "field:res.user,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
-msgstr "Правила"
+msgstr "Datensatzregeln"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
-msgstr "Сессии"
+msgstr "Sitzungen"
 
 msgctxt "field:res.user,signature:"
 msgid "Signature"
-msgstr "Подпись"
+msgstr "Signatur"
 
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
-msgstr "Строка состояния"
+msgstr "Status Anzeige"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
-msgstr "Предупреждения"
+msgstr "Warnungen"
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
-msgstr "Действие"
+msgstr "Aktion"
 
 msgctxt "field:res.user-ir.action,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user-ir.action,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
@@ -418,31 +420,31 @@ msgstr "ID"
 
 msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Benutzer"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "field:res.user-res.group,id:"
 msgid "ID"
@@ -450,19 +452,19 @@ msgstr "ID"
 
 msgctxt "field:res.user-res.group,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Benutzer"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -470,44 +472,43 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
-msgstr "Логин"
+msgstr "Anmeldename"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
-msgstr "Всегда"
+msgstr "Immer"
 
 msgctxt "field:res.user.warning,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user.warning,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user.warning,id:"
 msgid "ID"
@@ -515,200 +516,178 @@ msgstr "ID"
 
 msgctxt "field:res.user.warning,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user.warning,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Benutzer"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
-msgstr "Группы которым разрешено редактирование нумерации этого типа"
+msgstr ""
+"Gruppen mit der Berechtigung zur Bearbeitung von Nummernkreisen dieses Typs"
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
-msgstr "Действия выполняемые при входе"
+msgstr "Diese Aktionen werden nach dem Login ausgeführt"
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
-msgstr "Группы"
+msgstr "Gruppen"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Конфигурация пользователей"
+msgstr "Benutzer konfigurieren"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Пользователи"
+msgstr "Benutzer"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
-msgstr "Действия - Группы"
+msgstr "Aktion - Gruppe"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Запуск на триггеры времени"
+msgstr "Ausführung zeitgesteuerter Trigger"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Кнопка модели - Группа"
+msgstr "Modell Knopf - Gruppe"
 
 msgctxt "model:ir.model.field-res.group,name:"
 msgid "Model Field Group Rel"
-msgstr "Модель Поля Группа Связь"
+msgstr "Modellfeld - Gruppe"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr "Правило группы - Группа"
+msgstr "Gruppenregel - Gruppe"
 
 msgctxt "model:ir.rule.group-res.user,name:"
 msgid "Rule Group - User"
-msgstr "Правило группы - Пользователь"
+msgstr "Gruppenregel - Benutzer"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "Тип нумерации - Группа"
+msgstr "Nummernkreistyp - Gruppe"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
-msgstr "Группы"
+msgstr "Gruppen"
 
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Пользователи"
+msgstr "Benutzer"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Пользователи"
+msgstr "Benutzer"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
-msgstr "Пользовательское меню - Группа"
+msgstr "Oberfläche Menü - Gruppe"
 
 msgctxt "model:res.group,name:"
 msgid "Group"
-msgstr "Группа"
+msgstr "Gruppe"
 
 msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
-msgstr "группа Управление"
+msgstr "Interne Administration"
 
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr "Пользователь"
-
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr "Администратор"
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr "Триггер планировщика"
+msgstr "Benutzer"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
-msgstr "Пользователь - Действия"
+msgstr "Benutzer - Aktion"
 
 msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
-msgstr "Пользователь - Группа"
+msgstr "Benutzer - Gruppe"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "Инициализация конфигурации пользователя"
+msgstr "Benutzer Konfiguration Init"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
-msgstr "Попытка входа"
+msgstr "Login Versuch"
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
-msgstr "Внимание Пользователь"
+msgstr "Benutzer Warnung"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "Права доступа"
-
-msgctxt "view:res.group:"
-msgid "Group"
-msgstr "Группа"
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr "Группы"
+msgstr "Zugriffsberechtigungen"
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr "Члены группы"
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
-msgstr "Добавить пользователей"
+msgstr "Mitglieder"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "Будьте внимательны - имена пользователей должны быть уникальными!"
+msgstr ""
+"Achten Sie darauf, dass ein Anmeldename nur einmal vergeben werden kann."
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr "Теперь вы можете добавить пользователей в базу данных."
+msgstr "Sie können nun Benutzer für das System hinzufügen."
 
 msgctxt "view:res.user.warning:"
 msgid "Warning"
-msgstr "Предупреждение"
+msgstr "Warnung"
 
 msgctxt "view:res.user.warning:"
 msgid "Warnings"
-msgstr "Предупреждения"
+msgstr "Warnungen"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Права доступа"
+msgstr "Zugriffsberechtigungen"
 
 msgctxt "view:res.user:"
 msgid "Actions"
-msgstr "Действия"
+msgstr "Aktionen"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "Входит в группы"
+msgstr "Gruppenzugehörigkeit"
 
 msgctxt "view:res.user:"
 msgid "Preferences"
-msgstr "Ссылки"
+msgstr "Einstellungen"
 
 msgctxt "view:res.user:"
 msgid "User"
-msgstr "Пользователь"
-
-msgctxt "view:res.user:"
-msgid "Users"
-msgstr "Пользователи"
+msgstr "Benutzer"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:res.user.config,start,user:"
 msgid "OK"
-msgstr "Ок"
+msgstr "OK"
 
 msgctxt "wizard_button:res.user.config,user,add:"
 msgid "Add"
-msgstr "Добавить"
+msgstr "Hinzufügen"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Закончить"
+msgstr "Fertig"

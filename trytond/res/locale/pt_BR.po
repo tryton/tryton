@@ -610,14 +610,6 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr "Usuário"
 
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr "Administrador"
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr "Cron Trigger"
-
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
 msgstr "Usuário - Ação"
@@ -643,20 +635,8 @@ msgid "Access Permissions"
 msgstr "Permissões de acesso"
 
 msgctxt "view:res.group:"
-msgid "Group"
-msgstr "Grupo"
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr "Grupos"
-
-msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Membros"
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
-msgstr "Adicionar usuários"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
@@ -693,10 +673,6 @@ msgstr "Preferências"
 msgctxt "view:res.user:"
 msgid "User"
 msgstr "Usuário"
-
-msgctxt "view:res.user:"
-msgid "Users"
-msgstr "Usuários"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

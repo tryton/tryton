@@ -9,7 +9,7 @@ Translations are stored in the ``locale/`` directory of a module, each language
 in a `PO-file <https://en.wikipedia.org/wiki/Gettext#Translating>`_. The
 official language files are named after the
 `POSIX locale <https://en.wikipedia.org/wiki/Locale#POSIX_platforms>`_
-standard, e.g. de_DE.po, es_AR.po, es_EC.po...
+standard, e.g. de_DE.po, es.po, es_AR.po, es_EC.po...
 
 The names of custom language files must match the code of the language in the
 Model ir.lang.
@@ -17,6 +17,9 @@ Model ir.lang.
 If a language is set ``translatable``, the translations will be loaded into
 the database on each trytond module update.
 
+Tryton supports derivative translations. This means that if the translation of
+a term is missing in one language, it will search on the parent languages.
+Also when activate a children language, you must also activate all parents.
 
 Translation Wizards
 ===================
@@ -24,7 +27,7 @@ Translation Wizards
 Set Report Translations Wizard
 ------------------------------
 
-The wizard adds new translations to the base language ``en_US``.
+The wizard adds new translations to the base language ``en``.
 
 Clean Translations Wizard
 -------------------------
@@ -35,7 +38,8 @@ Synchronize Translations Wizard
 -------------------------------
 
 The wizard updates the translations of the selected language based on the
-translations of the base language ``en_US``.
+translations of the base language ``en``. It will also remove duplicate
+translations with its direct parent.
 
 Export Translations Wizard
 --------------------------

@@ -51,7 +51,7 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
                 os.path.expanduser('~'), 'db'))
         self.set('database', 'list', 'True')
         self.set('database', 'retry', 5)
-        self.set('database', 'language', 'en_US')
+        self.set('database', 'language', 'en')
         self.add_section('cache')
         self.set('cache', 'model', 200)
         self.set('cache', 'record', 2000)

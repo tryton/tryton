@@ -8,7 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         lang_en is defined here to be in translation lang selection
         -->
         <record model="ir.lang" id="lang_en">
-            <field name="code">en_US</field>
+            <field name="code">en</field>
             <field name="name">English</field>
             <field name="date">%m/%d/%Y</field>
             <field name="grouping">[3, 3, 0]</field>

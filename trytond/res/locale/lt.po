@@ -40,9 +40,10 @@ msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
@@ -76,9 +77,10 @@ msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -108,9 +110,10 @@ msgctxt "field:ir.model.field-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.field-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
@@ -136,9 +139,10 @@ msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
@@ -164,9 +168,10 @@ msgctxt "field:ir.rule.group-res.user,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group-res.user,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.rule.group-res.user,rule_group:"
 msgid "Rule Group"
@@ -212,9 +217,10 @@ msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -248,9 +254,10 @@ msgctxt "field:ir.ui.menu-res.group,menu:"
 msgid "Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
@@ -284,13 +291,15 @@ msgctxt "field:res.group,model_access:"
 msgid "Access Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -352,9 +361,10 @@ msgctxt "field:res.user,menu:"
 msgid "Menu Action"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -368,9 +378,10 @@ msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
@@ -416,9 +427,10 @@ msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -448,9 +460,10 @@ msgctxt "field:res.user-res.group,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-res.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
@@ -484,9 +497,10 @@ msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -512,13 +526,15 @@ msgctxt "field:res.user.warning,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.warning,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:res.user.warning,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"
@@ -608,14 +624,6 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr ""
 
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr ""
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr ""
-
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
 msgstr ""
@@ -641,19 +649,7 @@ msgid "Access Permissions"
 msgstr ""
 
 msgctxt "view:res.group:"
-msgid "Group"
-msgstr ""
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr ""
-
-msgctxt "view:res.group:"
 msgid "Members"
-msgstr ""
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
 msgstr ""
 
 msgctxt "view:res.user.config.start:"
@@ -690,10 +686,6 @@ msgstr ""
 
 msgctxt "view:res.user:"
 msgid "User"
-msgstr ""
-
-msgctxt "view:res.user:"
-msgid "Users"
 msgstr ""
 
 msgctxt "wizard_button:res.user.config,start,end:"

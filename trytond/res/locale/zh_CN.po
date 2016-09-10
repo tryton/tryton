@@ -608,14 +608,6 @@ msgctxt "model:res.user,name:"
 msgid "User"
 msgstr "用户"
 
-msgctxt "model:res.user,name:user_admin"
-msgid "Administrator"
-msgstr "Administrator"
-
-msgctxt "model:res.user,name:user_trigger"
-msgid "Cron Trigger"
-msgstr "Cron 触发"
-
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
 msgstr "用户 - 操作"
@@ -641,20 +633,8 @@ msgid "Access Permissions"
 msgstr "操作权限"
 
 msgctxt "view:res.group:"
-msgid "Group"
-msgstr "用户组"
-
-msgctxt "view:res.group:"
-msgid "Groups"
-msgstr "用户组"
-
-msgctxt "view:res.group:"
 msgid "Members"
 msgstr "成员"
-
-msgctxt "view:res.user.config.start:"
-msgid "Add Users"
-msgstr "添加用户"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
@@ -691,10 +671,6 @@ msgstr "偏好"
 msgctxt "view:res.user:"
 msgid "User"
 msgstr "基本信息"
-
-msgctxt "view:res.user:"
-msgid "Users"
-msgstr "用户"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

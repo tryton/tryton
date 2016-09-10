@@ -389,7 +389,7 @@ class Fs2bdAccessor:
                     records = Model.search([
                         ('id', 'in', list(sub_record_ids)),
                         ], order=[('id', 'ASC')])
-                with Transaction().set_context(language='en_US'):
+                with Transaction().set_context(language='en'):
                     models = Model.browse(map(int, records))
                 for model in models:
                     self.browserecord[module][model_name][model.id] = model
@@ -615,7 +615,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             # Re-create record if it was deleted
             if not record:
                 with Transaction().set_context(
-                        module=module, language='en_US'):
+                        module=module, language='en'):
                     record, = Model.create([values])
 
                 # reset_browsercord
@@ -695,7 +695,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
     def create_records(self, model, vlist, fs_ids):
         Model = self.pool.get(model)
 
-        with Transaction().set_context(module=self.module, language='en_US'):
+        with Transaction().set_context(module=self.module, language='en'):
             records = Model.create(vlist)
 
         mdata_values = []
@@ -740,7 +740,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         if to_update:
             # write the values in the db:
             with Transaction().set_context(
-                    module=module, language='en_US'):
+                    module=module, language='en'):
                 Model.write(*to_update)
             self.fs2db.reset_browsercord(
                 module, Model.__name__, sum(to_update[::2], []))

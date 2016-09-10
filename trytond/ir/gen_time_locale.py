@@ -36,9 +36,9 @@ def locale_strftime(lang):
 
 if __name__ == '__main__':
     base = os.path.dirname(__file__)
-    # Add en_US as it is not defined in lang.xml
+    # Add en as it is not defined in lang.xml
     time_locale = {
-        'en_US': locale_strftime('en_US'),
+        'en': locale_strftime('en'),
         }
     with open(os.path.join(base, 'lang.xml'), 'rb') as fp:
         lang_xml = etree.parse(fp)

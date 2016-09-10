@@ -136,16 +136,8 @@ msgid "You can not write on the field! (%s.%s)"
 msgstr "数据 (%s.%s)  无写入权限 ！"
 
 msgctxt "error:ir.model.field:"
-msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr "模型数据值 \"%s\" 不是合法的python identifier."
-
-msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
 msgstr "模型的数据名称必须唯一！"
-
-msgctxt "error:ir.model:"
-msgid "Module name \"%s\" is not a valid python identifier."
-msgstr "模块名 \"%s\" 不是合法的python identifier."
 
 msgctxt "error:ir.model:"
 msgid "The model must be unique!"
@@ -483,10 +475,6 @@ msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
 msgstr "视图"
 
-msgctxt "field:ir.action.act_window,window_name:"
-msgid "Window Name"
-msgstr "窗口"
-
 msgctxt "field:ir.action.act_window,write_date:"
 msgid "Write Date"
 msgstr "写入日期"
@@ -502,6 +490,10 @@ msgstr "动作"
 msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "启用"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
@@ -855,10 +847,6 @@ msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
-msgctxt "field:ir.attachment,collision:"
-msgid "Collision"
-msgstr "冲突"
-
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
 msgstr "创建日期"
@@ -879,9 +867,9 @@ msgctxt "field:ir.attachment,description:"
 msgid "Description"
 msgstr "描述"
 
-msgctxt "field:ir.attachment,digest:"
-msgid "Digest"
-msgstr "吸收"
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr ""
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -1723,9 +1711,10 @@ msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr ""
+msgstr "注释"
 
 #, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
@@ -2691,10 +2680,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "列表视图默认搜索表达式"
 
-msgctxt "help:ir.action.act_window,window_name:"
-msgid "Use the action name as window name"
-msgstr "动作名做窗体名"
-
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2863,6 +2848,10 @@ msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
 msgstr "模型权限"
 
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "按钮"
@@ -2874,6 +2863,10 @@ msgstr "数据"
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "数据权限"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -3081,8 +3074,9 @@ msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "英语"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
-msgid "Spanish (Spain)"
+msgid "Spanish"
 msgstr "西班牙语（西班牙）"
 
 msgctxt "model:ir.lang,name:lang_es_CO"
@@ -3105,6 +3099,10 @@ msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
 msgstr "意大利语"
 
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "ລາວ"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
 msgstr "立陶宛语"
@@ -3124,6 +3122,10 @@ msgstr "俄语"
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
 msgstr "斯洛维尼亚语"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "中国（简体）"
+msgstr ""
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3185,9 +3187,10 @@ msgctxt "model:ir.module.install_upgrade.start,name:"
 msgid "Module Install Upgrade Start"
 msgstr "模块安装升级开始"
 
+#, fuzzy
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr ""
+msgstr "注释"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
@@ -3482,10 +3485,6 @@ msgid "Action form"
 msgstr "动作表单"
 
 msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
-msgstr "动作树形列表"
-
-msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
 msgstr "表单关联"
 
@@ -3710,14 +3709,6 @@ msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "基本"
 
-msgctxt "view:ir.action.act_window:"
-msgid "Open Window"
-msgstr "打开窗口"
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open a Window"
-msgstr "打开窗口"
-
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
 msgstr "关键词"
@@ -3730,41 +3721,17 @@ msgctxt "view:ir.action.report:"
 msgid "General"
 msgstr "基本"
 
-msgctxt "view:ir.action.report:"
-msgid "Report"
-msgstr "报告..."
-
-msgctxt "view:ir.action.report:"
-msgid "Report xml"
-msgstr "报表xml"
-
 msgctxt "view:ir.action.url:"
 msgid "General"
 msgstr "基本"
-
-msgctxt "view:ir.action.url:"
-msgid "URL"
-msgstr "URL"
 
 msgctxt "view:ir.action.wizard:"
 msgid "General"
 msgstr "基本"
 
-msgctxt "view:ir.action.wizard:"
-msgid "Wizard"
-msgstr "向导"
-
-msgctxt "view:ir.action:"
-msgid "Action"
-msgstr "操作"
-
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr "基本"
-
-msgctxt "view:ir.attachment:"
-msgid "Attachments"
-msgstr "附件文档"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
@@ -3778,14 +3745,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.cron:"
-msgid "Scheduled Action"
-msgstr "计划动作"
-
-msgctxt "view:ir.cron:"
-msgid "Scheduled Actions"
-msgstr "计划动作"
-
 msgctxt "view:ir.export:"
 msgid "Exports"
 msgstr "导出"
@@ -3793,14 +3752,6 @@ msgstr "导出"
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "日期格式"
-
-msgctxt "view:ir.lang:"
-msgid "Language"
-msgstr "语言"
-
-msgctxt "view:ir.lang:"
-msgid "Languages"
-msgstr "语言"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
@@ -3817,10 +3768,6 @@ msgstr "按钮"
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "按钮"
-
-msgctxt "view:ir.model.data:"
-msgid "Model Data"
-msgstr "模型数据"
 
 msgctxt "view:ir.model.data:"
 msgid "Sync"
@@ -3847,16 +3794,8 @@ msgid "Model Description"
 msgstr "模型描述"
 
 msgctxt "view:ir.module.config_wizard.done:"
-msgid "Module configuration"
-msgstr "模块设置"
-
-msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
 msgstr "设置结束."
-
-msgctxt "view:ir.module.config_wizard.first:"
-msgid "Welcome to the module configuration wizard!"
-msgstr "欢迎使用模块设置向导！"
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
@@ -3881,20 +3820,12 @@ msgid "Dependency"
 msgstr "模块依赖关系"
 
 msgctxt "view:ir.module.install_upgrade.done:"
-msgid "System Upgrade Done"
-msgstr "系统升级完成"
-
-msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr "所选模块升级/安装成功 ！"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr "完成本操作可能会花费一些时间."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "System Upgrade"
-msgstr "系统升级"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
@@ -3924,26 +3855,10 @@ msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "标记“升级”"
 
-msgctxt "view:ir.module:"
-msgid "Module"
-msgstr "模块"
-
-msgctxt "view:ir.module:"
-msgid "Modules"
-msgstr "模块"
-
 #, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "日期格式"
-
-msgctxt "view:ir.note:"
-msgid "Note"
-msgstr ""
-
-msgctxt "view:ir.note:"
-msgid "Notes"
-msgstr ""
 
 msgctxt "view:ir.note:"
 msgid "Time"
@@ -3966,10 +3881,6 @@ msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
 msgstr "非全局规则有明确的测试定义才有效."
-
-msgctxt "view:ir.rule.group:"
-msgid "Record rules"
-msgstr "数据规则"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
@@ -4012,10 +3923,6 @@ msgid "Month:"
 msgstr "月份："
 
 msgctxt "view:ir.sequence:"
-msgid "Sequences"
-msgstr "序列"
-
-msgctxt "view:ir.sequence:"
 msgid "Timestamp"
 msgstr "时间戳"
 
@@ -4024,16 +3931,8 @@ msgid "Year:"
 msgstr "年份"
 
 msgctxt "view:ir.translation.clean.start:"
-msgid "Clean Translations"
-msgstr "清理翻译"
-
-msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "清理翻译 ?"
-
-msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations"
-msgstr "清理翻译"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
@@ -4048,20 +3947,12 @@ msgid "Export Translation"
 msgstr "导出翻译条目"
 
 msgctxt "view:ir.translation.set.start:"
-msgid "Set Translations"
-msgstr "保存翻译"
-
-msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "使翻译生效？"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "保存成功！"
-
-msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Translations"
-msgstr "保存翻译"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -4102,10 +3993,6 @@ msgstr "菜单"
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "显示"
-
-msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "视图"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

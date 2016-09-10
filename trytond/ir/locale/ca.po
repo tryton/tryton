@@ -146,16 +146,8 @@ msgid "You can not write on the field! (%s.%s)"
 msgstr "No podeu modificar el camp (%s.%s)."
 
 msgctxt "error:ir.model.field:"
-msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr "El nom del model \"%s\" no és un identificador de Python correcte."
-
-msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
 msgstr "El nom del camp ha de ser únic."
-
-msgctxt "error:ir.model:"
-msgid "Module name \"%s\" is not a valid python identifier."
-msgstr "El nom del model \"%s\" no és un identificador de Python correcte."
 
 msgctxt "error:ir.model:"
 msgid "The model must be unique!"
@@ -505,10 +497,6 @@ msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
 msgstr "Vistes"
 
-msgctxt "field:ir.action.act_window,window_name:"
-msgid "Window Name"
-msgstr "Nom de la finestra"
-
 msgctxt "field:ir.action.act_window,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
@@ -524,6 +512,11 @@ msgstr "Acció"
 msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Actiu"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "Comptador"
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
@@ -877,10 +870,6 @@ msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:ir.attachment,collision:"
-msgid "Collision"
-msgstr "Col·lisió"
-
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -891,7 +880,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
-msgstr "Data"
+msgstr "Dades"
 
 msgctxt "field:ir.attachment,data_size:"
 msgid "Data size"
@@ -901,9 +890,9 @@ msgctxt "field:ir.attachment,description:"
 msgid "Description"
 msgstr "Descripció"
 
-msgctxt "field:ir.attachment,digest:"
-msgid "Digest"
-msgstr "Resum"
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr ""
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -2111,7 +2100,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
-msgstr "Data"
+msgstr "Dades"
 
 msgctxt "field:ir.session.wizard,id:"
 msgid "ID"
@@ -2507,7 +2496,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
-msgstr "Data"
+msgstr "Dades"
 
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
@@ -2697,10 +2686,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "Criteri de cerca per defecte en les vistes de llista."
 
-msgctxt "help:ir.action.act_window,window_name:"
-msgid "Use the action name as window name"
-msgstr "Utilitzeu el nom de l'acció pel nom de la finestra."
-
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2875,6 +2860,10 @@ msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
 msgstr "Accés model"
 
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Botons"
@@ -2886,6 +2875,10 @@ msgstr "Dades"
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Permisos dels camps"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -3093,8 +3086,9 @@ msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Anglès"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
-msgid "Spanish (Spain)"
+msgid "Spanish"
 msgstr "Espanyol (Espanya)"
 
 msgctxt "model:ir.lang,name:lang_es_CO"
@@ -3117,6 +3111,10 @@ msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
 msgstr "Italià"
 
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "ລາວ"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
 msgstr "Lituà"
@@ -3136,6 +3134,10 @@ msgstr "Rus"
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
 msgstr "Eslovè"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "中国（简体）"
+msgstr ""
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3494,10 +3496,6 @@ msgid "Action form"
 msgstr "Acció formulari"
 
 msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
-msgstr "Acció arbre"
-
-msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
 msgstr "Formulari relacionat"
 
@@ -3515,7 +3513,7 @@ msgstr "Imprimir formulari"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
-msgstr "Data"
+msgstr "Dades"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Link"
@@ -3657,9 +3655,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
 msgstr "Botó de l'assistent"
 
+#, fuzzy
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3677,9 +3676,10 @@ msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.wizard"
 msgstr "ir.action.wizard"
 
+#, fuzzy
 msgctxt "selection:ir.ui.view,type:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
@@ -3721,14 +3721,6 @@ msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "General"
 
-msgctxt "view:ir.action.act_window:"
-msgid "Open Window"
-msgstr "Obrir finestra"
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open a Window"
-msgstr "Obrir finestra"
-
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
 msgstr "Acció teclat"
@@ -3741,41 +3733,17 @@ msgctxt "view:ir.action.report:"
 msgid "General"
 msgstr "General"
 
-msgctxt "view:ir.action.report:"
-msgid "Report"
-msgstr "Informe"
-
-msgctxt "view:ir.action.report:"
-msgid "Report xml"
-msgstr "Informe XML"
-
 msgctxt "view:ir.action.url:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:ir.action.url:"
-msgid "URL"
-msgstr "URL"
 
 msgctxt "view:ir.action.wizard:"
 msgid "General"
 msgstr "General"
 
-msgctxt "view:ir.action.wizard:"
-msgid "Wizard"
-msgstr "Assistent"
-
-msgctxt "view:ir.action:"
-msgid "Action"
-msgstr "Acció"
-
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:ir.attachment:"
-msgid "Attachments"
-msgstr "Adjunts"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
@@ -3789,14 +3757,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Executa una vegada"
 
-msgctxt "view:ir.cron:"
-msgid "Scheduled Action"
-msgstr "Acció planificada"
-
-msgctxt "view:ir.cron:"
-msgid "Scheduled Actions"
-msgstr "Accions planificades"
-
 msgctxt "view:ir.export:"
 msgid "Exports"
 msgstr "Exportacions"
@@ -3804,14 +3764,6 @@ msgstr "Exportacions"
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Format data"
-
-msgctxt "view:ir.lang:"
-msgid "Language"
-msgstr "Idioma"
-
-msgctxt "view:ir.lang:"
-msgid "Languages"
-msgstr "Idiomes"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
@@ -3828,10 +3780,6 @@ msgstr "Botons"
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Botons"
-
-msgctxt "view:ir.model.data:"
-msgid "Model Data"
-msgstr "Dades del model"
 
 msgctxt "view:ir.model.data:"
 msgid "Sync"
@@ -3858,16 +3806,8 @@ msgid "Model Description"
 msgstr "Descripció model"
 
 msgctxt "view:ir.module.config_wizard.done:"
-msgid "Module configuration"
-msgstr "Configuració del mòdul"
-
-msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
 msgstr "La configuració s'ha realitzat correctament."
-
-msgctxt "view:ir.module.config_wizard.first:"
-msgid "Welcome to the module configuration wizard!"
-msgstr "Benvingut a la configuració del mòdul."
 
 msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
@@ -3894,20 +3834,12 @@ msgid "Dependency"
 msgstr "Dependència"
 
 msgctxt "view:ir.module.install_upgrade.done:"
-msgid "System Upgrade Done"
-msgstr "S'ha actualitzat el sistema."
-
-msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr "Els mòduls han estat actualitzats/instal·lats."
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr "Tingueu en compte que aquesta operació pot trigar uns minuts."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "System Upgrade"
-msgstr "Actualització del sistema"
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Your system will be upgraded."
@@ -3937,25 +3869,9 @@ msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Per actualitzar"
 
-msgctxt "view:ir.module:"
-msgid "Module"
-msgstr "Mòdul"
-
-msgctxt "view:ir.module:"
-msgid "Modules"
-msgstr "Mòduls"
-
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Data"
-
-msgctxt "view:ir.note:"
-msgid "Note"
-msgstr "Nota"
-
-msgctxt "view:ir.note:"
-msgid "Notes"
-msgstr "Notes"
 
 msgctxt "view:ir.note:"
 msgid "Time"
@@ -3978,10 +3894,6 @@ msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
 msgstr ""
 "Si no hi ha un test definit, la regla es compleix sempre si no és global."
-
-msgctxt "view:ir.rule.group:"
-msgid "Record rules"
-msgstr "Regles dels registres"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
@@ -4024,10 +3936,6 @@ msgid "Month:"
 msgstr "Mes:"
 
 msgctxt "view:ir.sequence:"
-msgid "Sequences"
-msgstr "Seqüències"
-
-msgctxt "view:ir.sequence:"
 msgid "Timestamp"
 msgstr "Data-hora"
 
@@ -4036,16 +3944,8 @@ msgid "Year:"
 msgstr "Any:"
 
 msgctxt "view:ir.translation.clean.start:"
-msgid "Clean Translations"
-msgstr "Neteja traduccions"
-
-msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
 msgstr "Neteja traduccions?"
-
-msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations"
-msgstr "Neteja traduccions"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
@@ -4060,20 +3960,12 @@ msgid "Export Translation"
 msgstr "Exporta traducció"
 
 msgctxt "view:ir.translation.set.start:"
-msgid "Set Translations"
-msgstr "Defineix traduccions"
-
-msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Voleu sincronitzar les traduccions?"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Les traduccions s'han realitzat correctament."
-
-msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Translations"
-msgstr "Defineix traduccions"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -4114,10 +4006,6 @@ msgstr "Menú"
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "Mostra"
-
-msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "Vista"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"

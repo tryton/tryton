@@ -370,7 +370,7 @@ def db_exist(name=DB_NAME):
     return name in database.list()
 
 
-def create_db(name=DB_NAME, lang='en_US'):
+def create_db(name=DB_NAME, lang='en'):
     Database = backend.get('Database')
     if not db_exist(name):
         with Transaction().start(None, 0, close=True, autocommit=True) \
@@ -413,7 +413,7 @@ def drop_db(name=DB_NAME):
             Cache.drop(name)
 
 
-def drop_create(name=DB_NAME, lang='en_US'):
+def drop_create(name=DB_NAME, lang='en'):
     if db_exist(name):
         drop_db(name)
     create_db(name, lang)

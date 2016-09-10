@@ -128,15 +128,7 @@ msgid "You can not write on the field! (%s.%s)"
 msgstr ""
 
 msgctxt "error:ir.model.field:"
-msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr ""
-
-msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
-msgstr ""
-
-msgctxt "error:ir.model:"
-msgid "Module name \"%s\" is not a valid python identifier."
 msgstr ""
 
 msgctxt "error:ir.model:"
@@ -327,31 +319,31 @@ msgctxt "field:ir.action,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.action,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.action,usage:"
 msgid "Usage"
@@ -369,10 +361,9 @@ msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,act_window_views:"
 msgid "Views"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,action:"
 msgid "Action"
@@ -410,27 +401,26 @@ msgctxt "field:ir.action.act_window,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.act_window,order:"
 msgid "Order Value"
@@ -452,9 +442,10 @@ msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -464,22 +455,16 @@ msgctxt "field:ir.action.act_window,search_value:"
 msgid "Search Criteria"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,usage:"
 msgid "Usage"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
-msgstr "ເບິ່ງ"
-
-msgctxt "field:ir.action.act_window,window_name:"
-msgid "Window Name"
 msgstr ""
 
 msgctxt "field:ir.action.act_window,write_date:"
@@ -498,6 +483,10 @@ msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr ""
 
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr ""
+
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -514,13 +503,15 @@ msgctxt "field:ir.action.act_window.domain,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window.domain,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.action.act_window.domain,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.act_window.domain,sequence:"
 msgid "Sequence"
@@ -554,18 +545,18 @@ msgctxt "field:ir.action.act_window.view,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window.view,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.view,write_date:"
 msgid "Write Date"
@@ -595,18 +586,18 @@ msgctxt "field:ir.action.keyword,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
-msgstr "ຄຳລະຫັດ"
+msgstr ""
 
 msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.keyword,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.keyword,write_date:"
 msgid "Write Date"
@@ -648,19 +639,17 @@ msgctxt "field:ir.action.report,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
+msgstr ""
 
 msgctxt "field:ir.action.report,model:"
 msgid "Model"
@@ -670,17 +659,19 @@ msgctxt "field:ir.action.report,module:"
 msgid "Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.report,pyson_email:"
 msgid "PySON Email"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.report,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -706,10 +697,9 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.action.report,usage:"
 msgid "Usage"
@@ -743,32 +733,31 @@ msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.action.url,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.url,keywords:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
-
-msgctxt "field:ir.action.url,name:"
-msgid "Name"
-msgstr ""
-
-msgctxt "field:ir.action.url,rec_name:"
-msgid "Name"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "Namu"
+
+#, fuzzy
+msgctxt "field:ir.action.url,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.action.url,url:"
 msgid "Action Url"
@@ -810,36 +799,35 @@ msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action.wizard,keywords:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 #, fuzzy
+msgctxt "field:ir.action.wizard,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,usage:"
 msgid "Usage"
@@ -859,10 +847,6 @@ msgstr ""
 
 msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
-msgstr ""
-
-msgctxt "field:ir.attachment,collision:"
-msgid "Collision"
 msgstr ""
 
 msgctxt "field:ir.attachment,create_date:"
@@ -885,8 +869,8 @@ msgctxt "field:ir.attachment,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:ir.attachment,digest:"
-msgid "Digest"
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
 msgstr ""
 
 msgctxt "field:ir.attachment,id:"
@@ -905,13 +889,15 @@ msgctxt "field:ir.attachment,link:"
 msgid "Link"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.attachment,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.attachment,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
@@ -921,10 +907,9 @@ msgctxt "field:ir.attachment,summary:"
 msgid "Summary"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.attachment,write_date:"
 msgid "Write Date"
@@ -946,13 +931,15 @@ msgctxt "field:ir.cache,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.cache,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.cache,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
@@ -982,9 +969,10 @@ msgctxt "field:ir.configuration,language:"
 msgid "language"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.configuration,write_date:"
 msgid "Write Date"
@@ -1030,9 +1018,10 @@ msgctxt "field:ir.cron,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.cron,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
@@ -1042,9 +1031,10 @@ msgctxt "field:ir.cron,number_calls:"
 msgid "Number of Calls"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.cron,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
@@ -1078,22 +1068,23 @@ msgctxt "field:ir.export,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "field:ir.export,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.export,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.export,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
@@ -1123,13 +1114,15 @@ msgctxt "field:ir.export.line,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.export.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.export.line,write_date:"
 msgid "Write Date"
@@ -1175,13 +1168,15 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.lang,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.lang,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -1207,10 +1202,9 @@ msgctxt "field:ir.model,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "field:ir.model,global_search_p:"
 msgid "Global Search"
@@ -1236,9 +1230,10 @@ msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model,write_date:"
 msgid "Write Date"
@@ -1288,9 +1283,10 @@ msgctxt "field:ir.model.access,perm_write:"
 msgid "Write Access"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.access,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.access,write_date:"
 msgid "Write Date"
@@ -1320,13 +1316,15 @@ msgctxt "field:ir.model.button,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.button,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1376,9 +1374,10 @@ msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
@@ -1424,13 +1423,15 @@ msgctxt "field:ir.model.field,module:"
 msgid "Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.field,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.model.field,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
@@ -1460,10 +1461,9 @@ msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
@@ -1489,9 +1489,10 @@ msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.field.access,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.model.field.access,write_date:"
 msgid "Write Date"
@@ -1533,17 +1534,19 @@ msgctxt "field:ir.module,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.module,parents:"
 msgid "Parents"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1585,9 +1588,10 @@ msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
@@ -1629,13 +1633,15 @@ msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
@@ -1689,9 +1695,10 @@ msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
@@ -1725,9 +1732,10 @@ msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.note.read,user:"
 msgid "User"
@@ -1749,18 +1757,18 @@ msgctxt "field:ir.property,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.property,field:"
 msgid "Field"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "field:ir.property,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.property,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.property,res:"
 msgid "Resource"
@@ -1794,9 +1802,10 @@ msgctxt "field:ir.rule,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
@@ -1838,9 +1847,10 @@ msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.rule.group,perm_create:"
 msgid "Create Access"
@@ -1858,9 +1868,10 @@ msgctxt "field:ir.rule.group,perm_write:"
 msgid "Write Access"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
@@ -1926,9 +1937,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -1942,10 +1954,9 @@ msgctxt "field:ir.sequence,timestamp_rounding:"
 msgid "Timestamp Rounding"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.sequence,write_date:"
 msgid "Write Date"
@@ -2003,9 +2014,10 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.strict,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -2019,10 +2031,9 @@ msgctxt "field:ir.sequence.strict,timestamp_rounding:"
 msgid "Timestamp Rounding"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,write_date:"
 msgid "Write Date"
@@ -2052,9 +2063,10 @@ msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.type,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.sequence.type,write_date:"
 msgid "Write Date"
@@ -2080,9 +2092,10 @@ msgctxt "field:ir.session,key:"
 msgid "Key"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.session,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.session,write_date:"
 msgid "Write Date"
@@ -2108,9 +2121,10 @@ msgctxt "field:ir.session.wizard,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.session.wizard,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.session.wizard,write_date:"
 msgid "Write Date"
@@ -2156,9 +2170,10 @@ msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.translation,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
@@ -2172,10 +2187,9 @@ msgctxt "field:ir.translation,src_md5:"
 msgid "Source MD5"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.translation,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr ""
 
 msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
@@ -2273,9 +2287,10 @@ msgctxt "field:ir.trigger,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.trigger,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.trigger,on_create:"
 msgid "On Create"
@@ -2293,9 +2308,10 @@ msgctxt "field:ir.trigger,on_write:"
 msgid "On Write"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.trigger,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.trigger,write_date:"
 msgid "Write Date"
@@ -2317,9 +2333,10 @@ msgctxt "field:ir.trigger.log,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.trigger.log,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -2345,10 +2362,9 @@ msgctxt "field:ir.ui.icon,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.ui.icon,id:"
 msgid "ID"
@@ -2358,17 +2374,19 @@ msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.icon,path:"
 msgid "SVG Path"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.icon,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.icon,sequence:"
 msgid "Sequence"
@@ -2418,27 +2436,26 @@ msgctxt "field:ir.ui.menu,groups:"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "field:ir.ui.menu,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu,name:"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
 msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.menu,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.menu,sequence:"
 msgid "Sequence"
@@ -2464,14 +2481,14 @@ msgctxt "field:ir.ui.menu.favorite,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.menu.favorite,sequence:"
 msgid "Sequence"
@@ -2529,17 +2546,19 @@ msgctxt "field:ir.ui.view,module:"
 msgid "Module"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.view,priority:"
 msgid "Priority"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
@@ -2577,13 +2596,15 @@ msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:ir.ui.view_search,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
@@ -2625,9 +2646,10 @@ msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
@@ -2653,10 +2675,9 @@ msgctxt "field:ir.ui.view_tree_width,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,id:"
 msgid "ID"
@@ -2666,9 +2687,10 @@ msgctxt "field:ir.ui.view_tree_width,model:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2692,10 +2714,6 @@ msgstr ""
 
 msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
-msgstr ""
-
-msgctxt "help:ir.action.act_window,window_name:"
-msgid "Use the action name as window name"
 msgstr ""
 
 msgctxt "help:ir.action.report,email:"
@@ -2820,10 +2838,9 @@ msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "ເອກະສານຄັດຕິດ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -2837,33 +2854,33 @@ msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
 msgstr ""
 
-#, fuzzy
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "ປຸ່ມ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
@@ -2873,10 +2890,13 @@ msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr ""
 
-#, fuzzy
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
@@ -2926,14 +2946,13 @@ msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Sequence Types"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "ສົ່ງການແປອອກ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
@@ -2951,10 +2970,9 @@ msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
@@ -3022,10 +3040,9 @@ msgctxt "model:ir.action.wizard,name:"
 msgid "Action wizard"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.attachment,name:"
 msgid "Attachment"
-msgstr "ເອກະສານຄັດຕິດ"
+msgstr ""
 
 msgctxt "model:ir.cache,name:"
 msgid "Cache"
@@ -3084,7 +3101,7 @@ msgid "English"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_es"
-msgid "Spanish (Spain)"
+msgid "Spanish"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_es_CO"
@@ -3107,6 +3124,10 @@ msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
 msgstr ""
 
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "ລາວ"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
 msgstr ""
@@ -3125,6 +3146,10 @@ msgstr ""
 
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "中国（简体）"
 msgstr ""
 
 msgctxt "model:ir.model,name:"
@@ -3231,25 +3256,21 @@ msgctxt "model:ir.translation,name:"
 msgid "Translation"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.translation.clean.start,name:"
 msgid "Clean translation"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.translation.clean.succeed,name:"
 msgid "Clean translation"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.translation.export.result,name:"
 msgid "Export translation"
-msgstr "ສົ່ງການແປອອກ"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.translation.export.start,name:"
 msgid "Export translation"
-msgstr "ສົ່ງການແປອອກ"
+msgstr ""
 
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
@@ -3271,10 +3292,9 @@ msgctxt "model:ir.trigger.log,name:"
 msgid "Trigger Log"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.icon,name:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
@@ -3308,10 +3328,9 @@ msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "ເອກະສານຄັດຕິດ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -3325,10 +3344,9 @@ msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
@@ -3342,19 +3360,17 @@ msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "ປຸ່ມ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
@@ -3416,24 +3432,21 @@ msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "ສົ່ງການແປອອກ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
@@ -3447,10 +3460,9 @@ msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
@@ -3464,19 +3476,17 @@ msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.view,name:"
 msgid "View"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "model:ir.ui.view.show.start,name:"
 msgid "Show view"
@@ -3486,10 +3496,9 @@ msgctxt "model:ir.ui.view_search,name:"
 msgid "View Search"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
-msgstr "ສະຖານະເບິ່ງແບບຕົ້ນໄມ້"
+msgstr ""
 
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
@@ -3497,10 +3506,6 @@ msgstr ""
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
-msgstr ""
-
-msgctxt "selection:ir.action.keyword,keyword:"
-msgid "Action tree"
 msgstr ""
 
 msgctxt "selection:ir.action.keyword,keyword:"
@@ -3635,10 +3640,9 @@ msgctxt "selection:ir.translation,type:"
 msgid "Error"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Field"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "selection:ir.translation,type:"
 msgid "Help"
@@ -3656,10 +3660,9 @@ msgctxt "selection:ir.translation,type:"
 msgid "Selection"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "View"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
@@ -3719,72 +3722,39 @@ msgstr ""
 
 msgctxt "view:ir.action.act_window.view:"
 msgid "View"
-msgstr "ເບິ່ງ"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.action.act_window.view:"
 msgid "Views"
-msgstr "ເບິ່ງ"
+msgstr ""
 
 msgctxt "view:ir.action.act_window:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open Window"
-msgstr ""
-
-msgctxt "view:ir.action.act_window:"
-msgid "Open a Window"
 msgstr ""
 
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
-msgstr "ຄຳລະຫັດ"
+msgstr ""
 
 msgctxt "view:ir.action.keyword:"
 msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
+msgstr ""
 
 msgctxt "view:ir.action.report:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "Report"
-msgstr ""
-
-msgctxt "view:ir.action.report:"
-msgid "Report xml"
 msgstr ""
 
 msgctxt "view:ir.action.url:"
 msgid "General"
 msgstr ""
 
-msgctxt "view:ir.action.url:"
-msgid "URL"
-msgstr ""
-
 msgctxt "view:ir.action.wizard:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:ir.action.wizard:"
-msgid "Wizard"
-msgstr ""
-
-msgctxt "view:ir.action:"
-msgid "Action"
 msgstr ""
 
 msgctxt "view:ir.action:"
 msgid "General"
 msgstr ""
-
-msgctxt "view:ir.attachment:"
-msgid "Attachments"
-msgstr "ເອກະສານຄັດຕິດ"
 
 msgctxt "view:ir.attachment:"
 msgid "Last Modification Time"
@@ -3798,28 +3768,12 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.cron:"
-msgid "Scheduled Action"
-msgstr ""
-
-msgctxt "view:ir.cron:"
-msgid "Scheduled Actions"
-msgstr ""
-
 msgctxt "view:ir.export:"
 msgid "Exports"
 msgstr ""
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
-msgstr ""
-
-msgctxt "view:ir.lang:"
-msgid "Language"
-msgstr ""
-
-msgctxt "view:ir.lang:"
-msgid "Languages"
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3830,17 +3784,12 @@ msgctxt "view:ir.model.access:"
 msgid "Access controls"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.model.button:"
 msgid "Button"
-msgstr "ປຸ່ມ"
+msgstr ""
 
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
-msgstr "ປຸ່ມ"
-
-msgctxt "view:ir.model.data:"
-msgid "Model Data"
 msgstr ""
 
 msgctxt "view:ir.model.data:"
@@ -3851,14 +3800,13 @@ msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.model.field:"
 msgid "Field"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "view:ir.model.field:"
 msgid "Fields"
-msgstr "ຟິນລ໌"
+msgstr ""
 
 msgctxt "view:ir.model.print_model_graph.start:"
 msgid "Print Model Graph"
@@ -3869,15 +3817,7 @@ msgid "Model Description"
 msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
-msgid "Module configuration"
-msgstr ""
-
-msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
-msgstr ""
-
-msgctxt "view:ir.module.config_wizard.first:"
-msgid "Welcome to the module configuration wizard!"
 msgstr ""
 
 msgctxt "view:ir.module.config_wizard.first:"
@@ -3903,19 +3843,11 @@ msgid "Dependency"
 msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.done:"
-msgid "System Upgrade Done"
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.done:"
 msgid "The modules have been upgraded / installed !"
 msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "System Upgrade"
 msgstr ""
 
 msgctxt "view:ir.module.install_upgrade.start:"
@@ -3946,24 +3878,8 @@ msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr ""
 
-msgctxt "view:ir.module:"
-msgid "Module"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Modules"
-msgstr ""
-
 msgctxt "view:ir.note:"
 msgid "Date"
-msgstr ""
-
-msgctxt "view:ir.note:"
-msgid "Note"
-msgstr ""
-
-msgctxt "view:ir.note:"
-msgid "Notes"
 msgstr ""
 
 msgctxt "view:ir.note:"
@@ -3985,10 +3901,6 @@ msgstr ""
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
-msgstr ""
-
-msgctxt "view:ir.rule.group:"
-msgid "Record rules"
 msgstr ""
 
 msgctxt "view:ir.rule.group:"
@@ -4032,10 +3944,6 @@ msgid "Month:"
 msgstr ""
 
 msgctxt "view:ir.sequence:"
-msgid "Sequences"
-msgstr ""
-
-msgctxt "view:ir.sequence:"
 msgid "Timestamp"
 msgstr ""
 
@@ -4044,37 +3952,20 @@ msgid "Year:"
 msgstr ""
 
 msgctxt "view:ir.translation.clean.start:"
-msgid "Clean Translations"
-msgstr "ລ້າງການແປ"
-
-#, fuzzy
-msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"
-msgstr "ລ້າງການແປ"
-
-#, fuzzy
-msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.translation.export.result:"
 msgid "Export Translation"
-msgstr "ສົ່ງການແປອອກ"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.translation.export.start:"
 msgid "Export Translation"
-msgstr "ສົ່ງການແປອອກ"
-
-#, fuzzy
-msgctxt "view:ir.translation.set.start:"
-msgid "Set Translations"
-msgstr "ລ້າງການແປ"
+msgstr ""
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
@@ -4083,11 +3974,6 @@ msgstr ""
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Translations"
-msgstr "ລ້າງການແປ"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -4107,11 +3993,11 @@ msgstr ""
 
 msgctxt "view:ir.ui.icon:"
 msgid "Icon"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "view:ir.ui.icon:"
 msgid "Icons"
-msgstr "ໄອຄັອນ"
+msgstr ""
 
 msgctxt "view:ir.ui.menu.favorite:"
 msgid "Menu Favorite"
@@ -4123,15 +4009,11 @@ msgstr ""
 
 msgctxt "view:ir.ui.menu:"
 msgid "Menu"
-msgstr "ລາຍການ"
+msgstr ""
 
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr ""
-
-msgctxt "view:ir.ui.view:"
-msgid "View"
-msgstr "ເບິ່ງ"
 
 msgctxt "view:ir.ui.view_search:"
 msgid "View Search"
@@ -4143,12 +4025,11 @@ msgstr ""
 
 msgctxt "view:ir.ui.view_tree_state:"
 msgid "View Tree State"
-msgstr "ສະຖານະເບິ່ງແບບຕົ້ນໄມ້"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:ir.ui.view_tree_state:"
 msgid "Views Tree State"
-msgstr "ສະຖານະເບິ່ງແບບຕົ້ນໄມ້"
+msgstr ""
 
 msgctxt "view:ir.ui.view_tree_width:"
 msgid "View Tree Width"
