@@ -16,4 +16,4 @@ msgstr "Diario de compensación"
 
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
-msgstr "Pago"
+msgstr ""

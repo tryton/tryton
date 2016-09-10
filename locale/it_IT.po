@@ -4,16 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
-msgstr ""
+msgstr "Movimento di compensazione"
 
 msgctxt "field:account.payment.journal,clearing_account:"
 msgid "Clearing Account"
-msgstr ""
+msgstr "Conto di compensazione"
 
 msgctxt "field:account.payment.journal,clearing_journal:"
 msgid "Clearing Journal"
-msgstr ""
+msgstr "Registro di compensazione"
 
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
-msgstr ""
+msgstr "Pagamento"
