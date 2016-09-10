@@ -17,7 +17,7 @@ msgid "Unable to reach the server."
 msgstr "Kann nicht zum Server verbinden."
 
 msgid "Login"
-msgstr "Anmelden"
+msgstr "Anmeldename"
 
 msgid "Password"
 msgstr "Passwort"

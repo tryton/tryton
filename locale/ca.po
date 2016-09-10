@@ -66,13 +66,13 @@ msgid "Reload"
 msgstr "Recarrega"
 
 msgid "Previous"
-msgstr "Registre anterior"
+msgstr "Anterior"
 
 msgid "Previous Record"
-msgstr "Registre següent"
+msgstr "Registre anterior"
 
 msgid "Next"
-msgstr "Següent"
+msgstr "Registre següent"
 
 msgid "Next Record"
 msgstr "Següent registre"
