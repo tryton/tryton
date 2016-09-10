@@ -16,7 +16,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.invoice.line-stock.move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
@@ -24,7 +24,7 @@ msgstr "Línea de Factura"
 
 msgctxt "field:account.invoice.line-stock.move,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"

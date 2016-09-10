@@ -2,55 +2,46 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr "Хранилище перемещение товара"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
-msgstr "Строка инвойса"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.invoice.line-stock.move,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr "Хранилище перемещение товара"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Строки инвойса"
+msgstr ""
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"

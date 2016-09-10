@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr "Movimientos de stock"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,create_date:"
 msgid "Create Date"
@@ -16,19 +16,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:account.invoice.line-stock.move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
-msgstr "Línea de factura"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr "Movimiento de stock"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,write_date:"
 msgid "Write Date"
@@ -38,13 +38,14 @@ msgctxt "field:account.invoice.line-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Líneas de Factura"
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
-msgstr "Línea de factura - Movimiento de stock"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"
