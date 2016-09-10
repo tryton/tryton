@@ -222,6 +222,10 @@ msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venda"
 
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr ""
+
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
@@ -819,9 +823,10 @@ msgctxt "report:sale.sale:"
 msgid "VAT:"
 msgstr "CIF/NIF:"
 
+#, fuzzy
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -854,6 +859,36 @@ msgstr "Al pagar la factura"
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr "Al processar la comanda"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Canceled"
+msgstr "Cancel·lats"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Confirmed"
+msgstr "Confirmat"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Processing"
+msgstr "Processos"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Quotation"
+msgstr "Pressupost"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
@@ -951,9 +986,10 @@ msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
 msgstr "Pressupost"
 
+#, fuzzy
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
@@ -983,17 +1019,9 @@ msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
 msgstr "Seleccioneu les factures a recrear"
 
-msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Handle Invoice Exception"
-msgstr "Gestiona excepció de factura"
-
 msgctxt "view:sale.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Seleccioneu els moviments a recrear"
-
-msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Handle shipment Exception"
-msgstr "Gestiona excepció d'enviament"
 
 msgctxt "view:sale.line:"
 msgid "General"
@@ -1004,24 +1032,12 @@ msgid "Notes"
 msgstr "Notes"
 
 msgctxt "view:sale.line:"
-msgid "Sale Line"
-msgstr "Línia de venda"
-
-msgctxt "view:sale.line:"
-msgid "Sale Lines"
-msgstr "Línies de venda"
-
-msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Impostos"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr "Esteu segur de retornar aquestes comandes de venda?"
-
-msgctxt "view:sale.return_sale.start:"
-msgid "Return Sale"
-msgstr "Devolució comanda"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1059,13 +1075,15 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "view:sale.sale:"
-msgid "Sales"
-msgstr "Vendes"
-
+#, fuzzy
 msgctxt "view:stock.move:"
-msgid "Moves"
-msgstr "Moviments"
+msgid "Cancel"
+msgstr "Cancel·lat"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Restaura a esborrany"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"

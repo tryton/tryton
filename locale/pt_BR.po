@@ -219,6 +219,10 @@ msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venda"
 
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr ""
+
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
 msgstr "Sequência"
@@ -427,9 +431,10 @@ msgctxt "field:sale.sale,moves:"
 msgid "Moves"
 msgstr "Movimentações"
 
+#, fuzzy
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
@@ -817,9 +822,10 @@ msgctxt "report:sale.sale:"
 msgid "VAT:"
 msgstr "IVA:"
 
+#, fuzzy
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -852,6 +858,36 @@ msgstr "No pagamento da fatura"
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr "Ao Processar a Ordem"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Done"
+msgstr "Feito"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Processing"
+msgstr "Processando"
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Quotation"
+msgstr "Cotação"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
@@ -949,9 +985,10 @@ msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
 msgstr "Cotação"
 
+#, fuzzy
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
@@ -981,17 +1018,9 @@ msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
 msgstr "Escolhe as Faturas para recriar"
 
-msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Handle Invoice Exception"
-msgstr "Manejar exceção da fatura"
-
 msgctxt "view:sale.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Escolha as movimentações a recriar"
-
-msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Handle shipment Exception"
-msgstr "Manejar Exceção de Remessa"
 
 msgctxt "view:sale.line:"
 msgid "General"
@@ -1002,24 +1031,12 @@ msgid "Notes"
 msgstr "Observação"
 
 msgctxt "view:sale.line:"
-msgid "Sale Line"
-msgstr "Linha da fatura"
-
-msgctxt "view:sale.line:"
-msgid "Sale Lines"
-msgstr "Linhas de Venda"
-
-msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Impostos"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr "Tem certeza que deseja devolver estes pedidos de venda?"
-
-msgctxt "view:sale.return_sale.start:"
-msgid "Return Sale"
-msgstr "Devolução de Venda"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1057,13 +1074,15 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "view:sale.sale:"
-msgid "Sales"
-msgstr "Vendas"
-
+#, fuzzy
 msgctxt "view:stock.move:"
-msgid "Moves"
-msgstr "Movimentações"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Voltar para Rascunho"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"

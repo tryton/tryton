@@ -80,21 +80,25 @@ msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -108,21 +112,24 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.handle.invoice.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -132,9 +139,10 @@ msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.handle.shipment.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
@@ -144,25 +152,29 @@ msgctxt "field:sale.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "field:sale.line,from_location:"
 msgid "From Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -176,9 +188,10 @@ msgctxt "field:sale.line,move_exception:"
 msgid "Moves Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
@@ -192,29 +205,38 @@ msgctxt "field:sale.line,note:"
 msgid "Note"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Mértékegység kategória"
 
+#, fuzzy
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:sale.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr ""
 
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
@@ -228,165 +250,199 @@ msgctxt "field:sale.line,to_location:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:sale.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:sale.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktár"
 
+#, fuzzy
 msgctxt "field:sale.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line-account.tax,line:"
 msgid "Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.return_sale.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "field:sale.sale,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:sale.sale,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.sale,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:sale.sale,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:sale.sale,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.sale,invoice_address:"
 msgid "Invoice Address"
@@ -412,25 +468,29 @@ msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:sale.sale,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
+#, fuzzy
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:sale.sale,party_lang:"
 msgid "Party Language"
@@ -440,9 +500,10 @@ msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -476,9 +537,10 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "field:sale.sale,tax_amount:"
 msgid "Tax"
@@ -504,81 +566,96 @@ msgctxt "field:sale.sale,untaxed_amount_cache:"
 msgid "Untaxed Cache"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktár"
 
+#, fuzzy
 msgctxt "field:sale.sale,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.sale,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
 msgid "Sale"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:stock.move,sale:"
 msgid "Sale"
@@ -645,9 +722,10 @@ msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
@@ -676,9 +754,10 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale"
 msgid "Sale"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Parties associated to Sales"
@@ -752,13 +831,15 @@ msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:sale.sale:"
 msgid "Description:"
@@ -768,9 +849,10 @@ msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
@@ -844,9 +926,35 @@ msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr ""
 
+msgctxt "selection:sale.line,sale_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:sale.line,sale_state:"
+msgid "Confirmed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.line,sale_state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:sale.line,sale_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:sale.line,sale_state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:sale.line,sale_state:"
+msgid "Quotation"
+msgstr ""
+
+#, fuzzy
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
 msgctxt "selection:sale.line,type:"
 msgid "Line"
@@ -876,9 +984,10 @@ msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Paid"
@@ -904,9 +1013,10 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
@@ -924,9 +1034,10 @@ msgctxt "selection:sale.sale,state:"
 msgid "Confirmed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Draft"
@@ -956,9 +1067,10 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr ""
+msgstr "Termékek"
 
 msgctxt "view:product.template:"
 msgid "Customers"
@@ -972,16 +1084,8 @@ msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
 msgstr ""
 
-msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Handle Invoice Exception"
-msgstr ""
-
 msgctxt "view:sale.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
-msgstr ""
-
-msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Handle shipment Exception"
 msgstr ""
 
 msgctxt "view:sale.line:"
@@ -993,14 +1097,6 @@ msgid "Notes"
 msgstr ""
 
 msgctxt "view:sale.line:"
-msgid "Sale Line"
-msgstr ""
-
-msgctxt "view:sale.line:"
-msgid "Sale Lines"
-msgstr ""
-
-msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr ""
 
@@ -1008,13 +1104,10 @@ msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
 msgstr ""
 
-msgctxt "view:sale.return_sale.start:"
-msgid "Return Sale"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:sale.sale:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:sale.sale:"
 msgid "Confirm"
@@ -1048,33 +1141,39 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr ""
 
-msgctxt "view:sale.sale:"
-msgid "Sales"
-msgstr ""
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Mégse"
 
 msgctxt "view:stock.move:"
-msgid "Moves"
+msgid "Reset to Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:sale.return_sale,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
