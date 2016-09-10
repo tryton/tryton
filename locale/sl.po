@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
-msgid "Probability must be between 0 and 100."
-msgstr "Verjetnost mora biti med 0 in 100"
-
-msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "Prodajna priložnost \"%s\" more biti pred brisanjem preklicana."
 
@@ -29,6 +25,10 @@ msgstr "Opomba"
 msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Družba"
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr ""
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
@@ -82,10 +82,6 @@ msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Plačilni rok"
 
-msgctxt "field:sale.opportunity,probability:"
-msgid "Conversion Probability"
-msgstr "Verjetnost pretvorbe"
-
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
 msgstr "Ime"
@@ -129,6 +125,10 @@ msgstr "ID"
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Priložnost"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr ""
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
@@ -246,15 +246,18 @@ msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-msgctxt "field:sale.opportunity_employee.open.start,end_date:"
+#, fuzzy
+msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
 
-msgctxt "field:sale.opportunity_employee.open.start,id:"
+#, fuzzy
+msgctxt "field:sale.opportunity_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:sale.opportunity_employee.open.start,start_date:"
+#, fuzzy
+msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
@@ -446,9 +449,9 @@ msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
 msgstr "Ocenjen znesek prihodkov"
 
-msgctxt "help:sale.opportunity,probability:"
+msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100"
-msgstr "Odstotek med 0 in 100"
+msgstr ""
 
 msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
 msgid "In %"
@@ -509,10 +512,6 @@ msgstr "Priložnosti na zaposlenca"
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
 msgstr "Mesečne prodajne priložnosti"
-
-msgctxt "model:ir.action,name:act_opportunity_employee_open"
-msgid "Opportunities per Employee"
-msgstr "Priložnosti na zaposlenca"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
@@ -605,9 +604,9 @@ msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
 msgstr "Prodajna priložnost na zaposlenca"
 
-msgctxt "model:sale.opportunity_employee.open.start,name:"
-msgid "Open Sale Opportunity per Employee"
-msgstr "Odpri prodajno priložnost na zaposlenca"
+msgctxt "model:sale.opportunity_employee.context,name:"
+msgid "Sale Opportunity per Employee Context"
+msgstr ""
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -641,6 +640,36 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Dobljeno"
 
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Converted"
+msgstr "Pretvorjeno"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Lead"
+msgstr "Sled"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Lost"
+msgstr "Zapravljeno"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity"
+msgstr "Priložnost"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.line,opportunity_state:"
+msgid "Won"
+msgstr "von"
+
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"
 msgstr "Postavka prodajne sledi/priložnosti"
@@ -648,6 +677,11 @@ msgstr "Postavka prodajne sledi/priložnosti"
 msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
 msgstr "Postavke prodajnih sledi/priložnosti"
+
+#, fuzzy
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"
@@ -670,20 +704,8 @@ msgid "Mark as Lost"
 msgstr "Označitev kot zapravljeno"
 
 msgctxt "view:sale.opportunity:"
-msgid "Sale Lead/Opportunity"
-msgstr "Prodajna sled/priložnost"
-
-msgctxt "view:sale.opportunity:"
-msgid "Sales Leads/Opportunities"
-msgstr "Prodajne sledi/priložnosti"
-
-msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
 msgstr "Preklop na sled"
-
-msgctxt "view:sale.opportunity_employee.open.start:"
-msgid "Sale Opportunities per Employee"
-msgstr "Prodajne priložnosti na zaposlenca"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"
@@ -696,11 +718,3 @@ msgstr "Prodajne priložnosti na mesec"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "Sale Opportunities per Month"
 msgstr "Prodajne priložnosti na mesec"
-
-msgctxt "wizard_button:sale.opportunity_employee.open,start,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:sale.opportunity_employee.open,start,open_:"
-msgid "Open"
-msgstr "Odpri"
