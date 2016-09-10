@@ -43,17 +43,9 @@ msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
 msgstr "Termelés igény"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Production Request"
-msgstr "Termelés igény tervező"
-
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Termelés"
-
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests"
-msgstr "Termelés igény"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests?"

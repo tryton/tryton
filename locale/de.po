@@ -4,65 +4,57 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:production.create_request:"
 msgid "There are some late productions."
-msgstr ""
+msgstr "Es gibt einige verspätete Produktionen"
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Beschaffungszeitraum"
 
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
-msgstr ""
+msgstr "In Anzahl von Tagen"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr ""
+msgstr "Produktionen anfordern"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr ""
+msgstr "Produktionsanforderungen erstellen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr ""
+msgstr "Produktion"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr ""
+msgstr "Erstellung von Produktionsanforderungen"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr ""
+msgstr "Produktionsanforderungen erstellen"
 
 msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
-msgstr ""
-
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Production Request"
-msgstr ""
+msgstr "Produktionsanforderung erstellen"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr ""
-
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests"
-msgstr ""
+msgstr "Produktion"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests?"
-msgstr ""
+msgstr "Produktionsanforderungen erstellen?"
 
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Erstellen"
 
 msgctxt "wizard_button:production.create_request,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"

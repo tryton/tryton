@@ -10,9 +10,10 @@ msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
@@ -43,16 +44,8 @@ msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
 msgstr ""
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Production Request"
-msgstr ""
-
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr ""
-
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests"
 msgstr ""
 
 msgctxt "view:production.create_request.start:"
@@ -63,6 +56,7 @@ msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:production.create_request,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"

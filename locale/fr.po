@@ -4,71 +4,57 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:production.create_request:"
 msgid "There are some late productions."
-msgstr ""
+msgstr "Il y a des productions en retard."
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Période d'approvisionnement"
 
-#, fuzzy
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
-msgstr "В брой дни"
+msgstr "En nombre de jours"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr ""
+msgstr "Demandes de production"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr ""
+msgstr "Créer les demandes de production"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr "Управление на производство"
+msgstr "Production"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr ""
+msgstr "Générer les demandes de production"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr ""
+msgstr "Créer les demandes de production"
 
 msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
-msgstr ""
+msgstr "Créer les demandes de production"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Production Request"
-msgstr ""
-
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr "Управление на производство"
-
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests"
-msgstr ""
+msgstr "Production"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests?"
-msgstr ""
+msgstr "Créer les demandes de production ?"
 
-#, fuzzy
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
-msgstr "Създаване"
+msgstr "Créer"
 
-#, fuzzy
 msgctxt "wizard_button:production.create_request,start,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Annuler"

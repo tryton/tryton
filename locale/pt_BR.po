@@ -43,17 +43,9 @@ msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
 msgstr "Criar requisição de produção"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Production Request"
-msgstr "Agendador de requisições de produção"
-
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Produção"
-
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests"
-msgstr "Criar requisição de produção"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Requests?"
