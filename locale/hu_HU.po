@@ -6,9 +6,10 @@ msgctxt "field:party.party,sale_invoice_grouping_method:"
 msgid "Sale Invoice Grouping Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
