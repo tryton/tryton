@@ -10,6 +10,10 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr ""
 
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr ""
+
 msgctxt "field:production.routing,active:"
 msgid "Active"
 msgstr ""
@@ -30,13 +34,15 @@ msgctxt "field:production.routing,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:production.routing,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:production.routing,steps:"
 msgid "Steps"
@@ -66,9 +72,10 @@ msgctxt "field:production.routing-production.bom,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing-production.bom,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
@@ -102,9 +109,10 @@ msgctxt "field:production.routing.operation,name:"
 msgid "Operation"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.operation,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:production.routing.operation,write_date:"
 msgid "Write Date"
@@ -130,9 +138,10 @@ msgctxt "field:production.routing.step,operation:"
 msgid "Operation"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.step,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"

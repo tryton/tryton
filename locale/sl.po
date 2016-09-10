@@ -4,27 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product-production.bom,routing:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
 
 msgctxt "field:production,routing:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
+
+#, fuzzy
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Linija"
 
 msgctxt "field:production.routing,active:"
 msgid "Active"
-msgstr "Actif"
+msgstr "Aktivno"
 
 msgctxt "field:production.routing,boms:"
 msgid "BOMs"
-msgstr "Nomenclatures"
+msgstr "Kosovnice"
 
 msgctxt "field:production.routing,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:production.routing,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:production.routing,id:"
 msgid "ID"
@@ -32,35 +37,35 @@ msgstr "ID"
 
 msgctxt "field:production.routing,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Naziv"
 
 msgctxt "field:production.routing,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:production.routing,steps:"
 msgid "Steps"
-msgstr "Étapes"
+msgstr "Koraki"
 
 msgctxt "field:production.routing,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:production.routing,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:production.routing-production.bom,bom:"
 msgid "BOM"
-msgstr "Nomenclature"
+msgstr "Kosovnica"
 
 msgctxt "field:production.routing-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:production.routing-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:production.routing-production.bom,id:"
 msgid "ID"
@@ -68,31 +73,31 @@ msgstr "ID"
 
 msgctxt "field:production.routing-production.bom,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
 
 msgctxt "field:production.routing-production.bom,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:production.routing-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:production.routing.operation,active:"
 msgid "Active"
-msgstr "Actif"
+msgstr "Aktivno"
 
 msgctxt "field:production.routing.operation,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:production.routing.operation,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:production.routing.operation,id:"
 msgid "ID"
@@ -100,27 +105,27 @@ msgstr "ID"
 
 msgctxt "field:production.routing.operation,name:"
 msgid "Operation"
-msgstr "Opération"
+msgstr "Operacija"
 
 msgctxt "field:production.routing.operation,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:production.routing.operation,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:production.routing.operation,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "field:production.routing.step,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "Izdelano"
 
 msgctxt "field:production.routing.step,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "Izdelal"
 
 msgctxt "field:production.routing.step,id:"
 msgid "ID"
@@ -128,80 +133,80 @@ msgstr "ID"
 
 msgctxt "field:production.routing.step,operation:"
 msgid "Operation"
-msgstr "Opération"
+msgstr "Operacija"
 
 msgctxt "field:production.routing.step,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Ime"
 
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
 
 msgctxt "field:production.routing.step,sequence:"
 msgid "Sequence"
-msgstr "Séquence"
+msgstr "Zap.št."
 
 msgctxt "field:production.routing.step,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "Zapisano"
 
 msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "Zapisal"
 
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr "Opérations"
+msgstr "Operacije"
 
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
-msgstr "Gammes"
+msgstr "Linije"
 
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr "Opérations"
+msgstr "Operacije"
 
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
-msgstr "Gammes"
+msgstr "Linije"
 
 msgctxt "model:production.routing,name:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
 
 msgctxt "model:production.routing-production.bom,name:"
 msgid "Routing - BOM"
-msgstr "Gamme - Nomenclature"
+msgstr "Linija - Kosovnica"
 
 msgctxt "model:production.routing.operation,name:"
 msgid "Operation"
-msgstr "Opération"
+msgstr "Operacija"
 
 msgctxt "model:production.routing.step,name:"
 msgid "Route"
-msgstr "Étape"
+msgstr "Korak"
 
 msgctxt "view:production.routing.operation:"
 msgid "Operation"
-msgstr "Opération"
+msgstr "Operacija"
 
 msgctxt "view:production.routing.operation:"
 msgid "Operations"
-msgstr "Opérations"
+msgstr "Operacije"
 
 msgctxt "view:production.routing.step:"
 msgid "Routing Step"
-msgstr "Étape"
+msgstr "Proizvodni korak"
 
 msgctxt "view:production.routing.step:"
 msgid "Routing Steps"
-msgstr "Étapes"
+msgstr "Proizvodni koraki"
 
 msgctxt "view:production.routing:"
 msgid "Routing"
-msgstr "Gamme"
+msgstr "Linija"
 
 msgctxt "view:production.routing:"
 msgid "Routings"
-msgstr "Gammes"
+msgstr "Linije"
