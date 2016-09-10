@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr "Acción"
+msgstr "Acción"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
@@ -16,19 +17,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
@@ -64,19 +65,19 @@ msgstr "Cuadrado"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "De arriba a abajo"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "De derecha a izquierda"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "De izquierda a derecha"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "De abajo a arriba"
+msgstr ""
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"

@@ -18,9 +18,10 @@ msgctxt "field:dashboard.action,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"

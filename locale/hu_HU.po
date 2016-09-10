@@ -2,41 +2,50 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr ""
+msgstr "Művelet"
 
+#, fuzzy
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr ""
+msgstr "Felhasználó"
 
+#, fuzzy
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"

@@ -2,6 +2,7 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
 msgstr "Acción"
@@ -16,19 +17,19 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
@@ -52,11 +53,11 @@ msgstr "Acción del Escritorio"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
@@ -88,4 +89,4 @@ msgstr "Acciones de Escritorio"
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
