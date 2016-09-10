@@ -20,39 +20,40 @@ msgstr "Secuencia de paquetes"
 
 msgctxt "field:stock.move,package:"
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.package,children:"
 msgid "Children"
-msgstr "Hijos"
+msgstr "Tareas"
 
 msgctxt "field:stock.package,code:"
 msgid "Code"
-msgstr "Código"
+msgstr ""
 
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:stock.package,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:stock.package,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr ""
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -60,67 +61,67 @@ msgstr "Remito"
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:stock.package,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:stock.package.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:stock.package.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Tipos de paquete"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Etiquetas de paquete"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -132,7 +133,7 @@ msgstr "Existencias de paquete"
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Tipos de paquete"
+msgstr ""
 
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"
@@ -144,7 +145,7 @@ msgstr "Tipo de existencias de paquete"
 
 msgctxt "report:stock.package.label:"
 msgid "Package:"
-msgstr "Paquete:"
+msgstr ""
 
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
@@ -152,16 +153,16 @@ msgstr "Remito:"
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"
-msgstr "Tipo de paquete"
+msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Package Types"
-msgstr "Tipos de paquete"
+msgstr ""
 
 msgctxt "view:stock.package:"
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
 msgctxt "view:stock.package:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""

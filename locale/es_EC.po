@@ -16,19 +16,19 @@ msgstr ""
 
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
-msgstr "Secuencia de paquete"
+msgstr ""
 
 msgctxt "field:stock.move,package:"
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
 msgctxt "field:stock.package,children:"
 msgid "Children"
-msgstr "Hijos"
+msgstr ""
 
 msgctxt "field:stock.package,code:"
 msgid "Code"
-msgstr "Código"
+msgstr ""
 
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
@@ -40,19 +40,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:stock.package,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr ""
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Padre"
+msgstr ""
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -60,7 +60,7 @@ msgstr "Envío"
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
@@ -80,15 +80,15 @@ msgstr "Creado por usuario"
 
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
@@ -100,27 +100,28 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Tipos de paquete"
+msgstr "Tipos de Paquete"
 
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Etiquetas de paquete"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -144,7 +145,7 @@ msgstr "Tipo de empaquetado de stock"
 
 msgctxt "report:stock.package.label:"
 msgid "Package:"
-msgstr "Paquete:"
+msgstr ""
 
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
@@ -152,16 +153,17 @@ msgstr "Envío:"
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"
-msgstr "Tipo de paquete"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.package.type:"
 msgid "Package Types"
-msgstr "Tipos de paquete"
+msgstr "Tipos de Paquete"
 
 msgctxt "view:stock.package:"
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
 msgctxt "view:stock.package:"
 msgid "Packages"
-msgstr "Paquetes"
+msgstr ""

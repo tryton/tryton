@@ -46,9 +46,10 @@ msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.package,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -78,13 +79,15 @@ msgctxt "field:stock.package.type,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
