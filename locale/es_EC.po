@@ -12,43 +12,43 @@ msgstr "Creado por usuario"
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
-msgstr "Decimales"
+msgstr ""
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.attribute,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
-msgstr "Selección"
+msgstr ""
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
-msgstr "Selección JSON"
+msgstr ""
 
 msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
-msgstr "Selección ordenada"
+msgstr ""
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr "Grupos de atributos"
+msgstr ""
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
-msgstr "Etiqueta"
+msgstr ""
 
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
@@ -60,11 +60,11 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
-msgstr "Atributo"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Grupo de atributos"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
@@ -76,11 +76,11 @@ msgstr "Creado por usuario"
 
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -92,7 +92,7 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""
 
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
@@ -104,15 +104,15 @@ msgstr "Creado por usuario"
 
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
@@ -124,15 +124,15 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:product.product,attribute_set:"
 msgid "Set"
-msgstr "Grupo de atributos"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr "Grupo de atributos"
+msgstr ""
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -144,15 +144,16 @@ msgstr "Si la selección debe ser ordenada por etiqueta"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Grupos de atributos"
+msgstr "Grupos de Atributos"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
@@ -160,7 +161,7 @@ msgstr "Grupos de Atributos"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
-msgstr "Atributo de producto"
+msgstr ""
 
 msgctxt "model:product.attribute-product.attribute-set,name:"
 msgid "Product Attribute - Set"
@@ -168,19 +169,19 @@ msgstr "Atributo de producto - Grupo"
 
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
-msgstr "Grupo de atributos de producto"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
-msgstr "Booleano"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Char"
-msgstr "Texto"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
@@ -188,32 +189,33 @@ msgstr "Fecha-hora"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Float"
-msgstr "Número coma flotante"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Integer"
-msgstr "Entero"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
-msgstr "Numérico"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Selección"
+msgstr ""
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
-msgstr "Grupo de atributos"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"
-msgstr "Grupos de atributos"
+msgstr "Grupos de Atributos"
 
 msgctxt "view:product.attribute:"
 msgid "Attribute"
-msgstr "Atributo"
+msgstr ""
 
 msgctxt "view:product.attribute:"
 msgid "Attributes"
-msgstr "Atributos"
+msgstr ""

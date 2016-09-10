@@ -2,33 +2,40 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Posizioni"
 
+#, fuzzy
 msgctxt "field:product.attribute,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.attribute,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
-msgstr ""
+msgstr "Selezione"
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
@@ -42,97 +49,117 @@ msgctxt "field:product.attribute,sets:"
 msgid "Sets"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute,string:"
 msgid "String"
-msgstr ""
+msgstr "Stringa"
 
+#, fuzzy
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
+#, fuzzy
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:product.attribute,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr ""
+msgstr "Imposta"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Set"
-msgstr ""
+msgstr "Imposta"
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr ""
+msgstr "Imposta"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -174,13 +201,15 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Char"
-msgstr ""
+msgstr "Char"
 
+#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
@@ -194,13 +223,15 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Integer"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
-msgstr ""
+msgstr "Numeric"
 
+#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr ""
+msgstr "Selezione"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"

@@ -21,17 +21,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
 #, fuzzy
 msgctxt "field:product.attribute,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
-msgstr "Selectie"
+msgstr ""
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
@@ -49,10 +48,9 @@ msgctxt "field:product.attribute,string:"
 msgid "String"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
@@ -85,7 +83,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -114,12 +112,12 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
 #, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
@@ -185,10 +183,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Char"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr ""
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
@@ -206,10 +203,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Selectie"
+msgstr ""
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"

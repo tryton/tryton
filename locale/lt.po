@@ -18,13 +18,15 @@ msgctxt "field:product.attribute,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.attribute,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
@@ -78,9 +80,10 @@ msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -106,13 +109,15 @@ msgctxt "field:product.attribute.set,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
