@@ -226,7 +226,7 @@ class FiscalYear(ModelSQL, ModelView):
                 language = Transaction().language
                 languages = Lang.search([('code', '=', language)])
                 if not languages:
-                    languages = Lang.search([('code', '=', 'en_US')])
+                    languages = Lang.search([('code', '=', 'en')])
                 language, = languages
                 formatted = Lang.strftime(date, language.code, language.date)
                 cls.raise_user_error('no_fiscalyear_date', (formatted,))

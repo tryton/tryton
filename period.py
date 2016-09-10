@@ -185,7 +185,7 @@ class Period(ModelSQL, ModelView):
                 language = Transaction().language
                 languages = Lang.search([('code', '=', language)])
                 if not languages:
-                    languages = Lang.search([('code', '=', 'en_US')])
+                    languages = Lang.search([('code', '=', 'en')])
                 language = languages[0]
                 formatted = Lang.strftime(date, language.code,
                     language.date)

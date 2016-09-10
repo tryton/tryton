@@ -4,139 +4,161 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.account.deferral:"
 msgid "Deferral must be unique by account and fiscal year"
-msgstr ""
+msgstr "Historie moet uniek zijn per rekening en boekjaar"
 
 msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
-msgstr ""
+msgstr "Historische rekeninggegevens kunt u niet wijzigen"
 
 msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
 msgstr ""
+"De grootboekrekening \"%s\"  kan niet worden verwijderd omdat er boekingen "
+"op gedaan zijn."
 
 msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children."
-msgstr ""
+msgstr "Grootboekrekeningen met subrekeningen kunnen niet worden verwijderd."
 
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
 msgstr ""
+"Boekjaar \"%(first)s\" en \"%(second)s\" hebben dezelfde methode van "
+"nummering."
 
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
-msgstr ""
+msgstr "Boekjaar \"%(first)s\" en \"%(second)s\" overlappen elkaar."
 
 msgctxt "error:account.fiscalyear:"
 msgid "No fiscal year defined for \"%s\"."
-msgstr ""
+msgstr "Geen boekjaar bepaald voor \"%s\"."
 
 msgctxt "error:account.fiscalyear:"
 msgid "The balance of the account \"%s\" must be zero."
-msgstr ""
+msgstr "Het totaal van grootboekrekening \"%s\" moet nul zijn."
 
 msgctxt "error:account.fiscalyear:"
 msgid "You can not change the post move sequence in fiscal year \"%s\"."
-msgstr ""
+msgstr "De boekingsnummering van boekjaar \"%s\" kan niet aangepast worden."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not close fiscal year \"%s\" until you close all previous fiscal "
 "years."
 msgstr ""
+"Voordat boekjaar \"%s\" gesloten kan worden moeten eerst de voorgaande jaren"
+" afgesloten worden."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
 "years."
 msgstr ""
+"Voordat u boekjaar \"%s\" wilt openen moeten eerst de navolgende jaren "
+"geopend worden."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr ""
+msgstr "U kunt geen boeking maken in de afgesloten periode \"%s\"."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not modify/delete journal - period \"%s\" because it has moves."
 msgstr ""
+"U kunt geen geen dagboeken wijzigen of verwijderen omdat er boekingin op "
+"gedaan zijn in periode \"%s\"."
 
 msgctxt "error:account.journal.period:"
 msgid ""
 "You can not open journal - period \"%(journal_period)s\" because period "
 "\"%(period)s\" is closed."
 msgstr ""
+"U kunt geen dagboek openen in periode \"%(journal_period)s\" omdat periode "
+"\"%(period)s\" is gesloten."
 
 msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
-msgstr ""
+msgstr "Je kunt slechts één dagboek per periode openen."
 
 msgctxt "error:account.journal.type:"
 msgid "The code must be unique."
-msgstr ""
+msgstr "De code moet uniek zijn."
 
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
-msgstr ""
+msgstr "Regel \"%s\" (%d) is reeds afgeletterd."
 
 msgctxt "error:account.move.line:"
 msgid "Move line cannot be created because there is no journal defined."
-msgstr ""
+msgstr "Boeking kan niet worden gemaakt omdat er geen dagboek is aangegeven."
 
 msgctxt "error:account.move.line:"
 msgid "Party is required on line \"%s\""
-msgstr ""
+msgstr "Relatie is verplicht op regel  \"%s\""
 
 msgctxt "error:account.move.line:"
 msgid "Party must not be set on line \"%s\""
-msgstr ""
+msgstr "Geen relatie benodigd op regel  \"%s\""
 
 msgctxt "error:account.move.line:"
 msgid "Wrong credit/debit values."
-msgstr ""
+msgstr "Debet - credit bedrag niet gelijk"
 
 msgctxt "error:account.move.line:"
 msgid "Wrong second currency sign."
-msgstr ""
+msgstr "Onjuiste tweede valute"
 
 msgctxt "error:account.move.line:"
 msgid "You can not add/modify lines in closed journal period \"%s\"."
 msgstr ""
+"Boekingsregels in afgesloten periodes kunnen niet gemaakt of gewijzigd "
+"worden."
 
 msgctxt "error:account.move.line:"
 msgid ""
 "You can not create a move line with account \"%s\" because it is a view "
 "account."
 msgstr ""
+"U kunt geen boeking maken op grootboekrekening \"%s\" omdat dit een "
+"gesaldeerde grootboekrekening is."
 
 msgctxt "error:account.move.line:"
 msgid "You can not create a move line with account \"%s\" because it is inactive."
 msgstr ""
+"U kunt geen boeking maken op grootboekrekening \"%s\" omdat deze inactief "
+"is."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
-msgstr ""
+msgstr "U kut boeking \"%s\" niet wijzigen omdat deze afgeletterd is."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
-msgstr ""
+msgstr "U kunt boeking \"%s\" niet wijzigen omdat deze al bevestigd is."
 
 msgctxt "error:account.move.line:"
 msgid "wrong_second_currency_sign"
-msgstr ""
+msgstr "Onjuiste tweede valute"
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not create a reconciliation where debit \"%(debit)s\" and credit "
 "\"%(credit)s\" differ."
 msgstr ""
+"U kunt geen aflettering doen wanneer debet \"%(debit)s\" en credit "
+"\"%(credit)s\" van elkaar verschillen."
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not modify a reconciliation."
-msgstr ""
+msgstr "U kunt een aflettering niet wijzigen."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
 "is configured as not reconcilable."
 msgstr ""
+"U kunt boekingsregel \"%(line)s\" niet afletteren omdat grootboekkaart "
+"\"%(account)s\" niet beschikbaar is voor afletteren."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
@@ -177,27 +199,17 @@ msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is empty."
 msgstr ""
 
-msgctxt "error:account.move:"
-msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not set to draft move \"%(move)s\" because period \"%(period)s\" is "
-"closed."
-msgstr ""
-
 msgctxt "error:account.period:"
 msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
-msgstr ""
+msgstr "\"%(first)s\" en \"%(second)s\" periodes overlappen."
 
 msgctxt "error:account.period:"
 msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
-msgstr ""
+msgstr "Data van periode \"%s\"  vallen buiten het boekjaar."
 
 msgctxt "error:account.period:"
 msgid "No period defined for date \"%s\"."
-msgstr ""
+msgstr "Geen periode gekoppeld aan datum \"%s\"."
 
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
@@ -234,464 +246,480 @@ msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
 "parent."
 msgstr ""
+"\"Actualiseer eenheidsprijs\" kan niet ingesteld worden op fiscale templates"
+" met een bovenliggende."
 
 msgctxt "error:account.tax:"
 msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
 "parent."
 msgstr ""
+"\"Actualiseer eenheidsprijs\" kan niet ingesteld worden op fiscale templates"
+" met een bovenliggende."
 
 msgctxt "field:account.account,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "field:account.account,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.account,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
-msgstr ""
+msgstr "Historisch"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr ""
+msgstr "Historie"
 
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Grootboek balans"
 
 msgctxt "field:account.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 msgctxt "field:account.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account,note:"
 msgid "Note"
-msgstr ""
+msgstr "Aantekening"
 
 msgctxt "field:account.account,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Relatie verplicht"
 
 msgctxt "field:account.account,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
-msgstr ""
+msgstr "Afletteren"
 
 msgctxt "field:account.account,right:"
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr ""
+msgstr "Tweede valuta"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
-msgstr ""
+msgstr "Standaard belastingen"
 
 msgctxt "field:account.account,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.account,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
 msgctxt "field:account.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "field:account.account-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Belasting"
 
 msgctxt "field:account.account-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.deferral,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.account.deferral,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account.deferral,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.deferral,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.deferral,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.account.template,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.account.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
-msgstr ""
+msgstr "Historisch"
 
+#, fuzzy
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Grootboek balans"
 
 msgctxt "field:account.account.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account.template,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 msgctxt "field:account.account.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.template,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Relatie verplicht"
 
 msgctxt "field:account.account.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
-msgstr ""
+msgstr "Afletteren"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
-msgstr ""
+msgstr "Standaard belastingen"
 
 msgctxt "field:account.account.template,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.account.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.template-account.tax.template,account:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "field:account.account.template-account.tax.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.template-account.tax.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.template-account.tax.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account.template-account.tax.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
-msgstr ""
+msgstr "Belasting sjabloon"
 
 msgctxt "field:account.account.template-account.tax.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.template-account.tax.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
+
+#, fuzzy
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "Bedrag"
 
 msgctxt "field:account.account.type,balance_sheet:"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Balansoverzicht"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.account.type,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.account.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.account.type,display_balance:"
 msgid "Display Balance"
-msgstr ""
+msgstr "Toon balans"
 
 msgctxt "field:account.account.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account.type,income_statement:"
 msgid "Income Statement"
-msgstr ""
+msgstr "Winst- & verliesrekening"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.type,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.account.type,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.account.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.type.template,balance_sheet:"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Balansoverzicht"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.account.type.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.type.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.account.type.template,display_balance:"
 msgid "Display Balance"
-msgstr ""
+msgstr "Toon balans"
 
 msgctxt "field:account.account.type.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.account.type.template,income_statement:"
 msgid "Income Statement"
-msgstr ""
+msgstr "Winst- & verliesrekening"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.account.type.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.account.type.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.account.type.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.aged_balance,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.aged_balance,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.aged_balance,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
+#, fuzzy
 msgctxt "field:account.aged_balance,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
@@ -711,27 +739,29 @@ msgstr ""
 
 msgctxt "field:account.aged_balance,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.aged_balance,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.aged_balance.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.aged_balance.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.aged_balance.context,term1:"
 msgid "First Term"
@@ -745,261 +775,285 @@ msgctxt "field:account.aged_balance.context,term3:"
 msgid "Third Term"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
+#, fuzzy
 msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Eenheid"
 
+#, fuzzy
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.balance_sheet.context,comparison:"
+msgid "Comparison"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Vervaldatum"
 
 msgctxt "field:account.balance_sheet.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
-msgstr ""
+msgstr "Standaard grootboekkaart crediteuren"
 
 msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr ""
+msgstr "Standaard grootboekkaar debiteuren"
 
 msgctxt "field:account.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
-msgstr ""
+msgstr "Fiscale afronding"
 
 msgctxt "field:account.configuration,tax_roundings:"
 msgid "Tax Roundings"
-msgstr ""
+msgstr "Fiscale afrondingen"
 
 msgctxt "field:account.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
+#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
-msgstr ""
+msgstr "Instellingen"
 
 msgctxt "field:account.configuration.tax_rounding,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.configuration.tax_rounding,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.configuration.tax_rounding,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.tax_rounding,method:"
 msgid "Method"
-msgstr ""
+msgstr "Methode"
 
+#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.configuration.tax_rounding,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.configuration.tax_rounding,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.create_chart.account,account_template:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
+#, fuzzy
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.create_chart.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.create_chart.properties,account_payable:"
 msgid "Default Payable Account"
-msgstr ""
+msgstr "Standaard grootboekkaart crediteuren"
 
 msgctxt "field:account.create_chart.properties,account_receivable:"
 msgid "Default Receivable Account"
-msgstr ""
+msgstr "Standaard grootboekkaar debiteuren"
 
+#, fuzzy
 msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.create_chart.properties,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.create_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.fiscalyear,close_lines:"
 msgid "Close Lines"
-msgstr ""
+msgstr "Boekingen afsluiten"
 
 msgctxt "field:account.fiscalyear,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.fiscalyear,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.fiscalyear,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Einddatum"
 
 msgctxt "field:account.fiscalyear,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr ""
+msgstr "Boeking bevestigingsreeks"
 
 msgctxt "field:account.fiscalyear,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Start datum"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.fiscalyear,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.fiscalyear,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.fiscalyear-account.move.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.fiscalyear-account.move.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.fiscalyear-account.move.line,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.fiscalyear-account.move.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.fiscalyear-account.move.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.fiscalyear-account.move.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
-msgstr ""
+msgstr "Credit grootboekkaart"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
 msgid "Debit Account"
-msgstr ""
+msgstr "Debet grootboekkaart"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
@@ -1007,543 +1061,582 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear.close.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.general_ledger.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "field:account.general_ledger.account,end_balance:"
 msgid "End Balance"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
-msgstr ""
+msgstr "Einde credit"
 
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
-msgstr ""
+msgstr "Einde debet"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Grootboek balans"
 
 msgctxt "field:account.general_ledger.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Boekingsregels"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Beginbalans"
 
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
-msgstr ""
+msgstr "Begin credit"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
-msgstr ""
+msgstr "Begin debet"
 
 msgctxt "field:account.general_ledger.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.general_ledger.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Einde periode"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.general_ledger.account.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Begin periode"
 
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.general_ledger.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.general_ledger.line,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.general_ledger.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "field:account.general_ledger.line,move_description:"
 msgid "Move Description"
-msgstr ""
+msgstr "Omschrijving boeking"
 
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Oorsprong"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Relatie verplicht"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.general_ledger.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.general_ledger.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Einde periode"
 
+#, fuzzy
 msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.general_ledger.line.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr ""
+msgstr "Salderen per relatie"
 
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Begin periode"
 
+#, fuzzy
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
 msgstr ""
 
 msgctxt "field:account.income_statement.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Einde periode"
 
+#, fuzzy
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "Einde periode"
+
+#, fuzzy
 msgctxt "field:account.income_statement.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "Boekjaar"
 
 msgctxt "field:account.income_statement.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.income_statement.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Begin periode"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "Begin periode"
 
 msgctxt "field:account.journal,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:account.journal,credit_account:"
 msgid "Default Credit Account"
-msgstr ""
+msgstr "Standaard creditrekening"
 
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.journal,debit_account:"
 msgid "Default Debit Account"
-msgstr ""
+msgstr "Standaard debitrekening"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.journal,type:"
 msgid "Type"
-msgstr ""
-
-msgctxt "field:account.journal,update_posted:"
-msgid "Allow updating posted moves"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.journal,view:"
 msgid "View"
-msgstr ""
+msgstr "Overzicht"
 
 msgctxt "field:account.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
-msgctxt "field:account.journal.open_cash.start,end_date:"
+#, fuzzy
+msgctxt "field:account.journal.open_cash.context,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Eind datum"
 
-msgctxt "field:account.journal.open_cash.start,id:"
+#, fuzzy
+msgctxt "field:account.journal.open_cash.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-msgctxt "field:account.journal.open_cash.start,start_date:"
+#, fuzzy
+msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Start datum"
 
 msgctxt "field:account.journal.period,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgctxt "field:account.journal.period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr ""
+msgstr "Icoon"
 
 msgctxt "field:account.journal.period,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr ""
-
-msgctxt "field:account.journal.period,name:"
-msgid "Name"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.journal.period,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.journal.period,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.period,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.journal.period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.type,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.journal.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.journal.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.type,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.view,columns:"
 msgid "Columns"
-msgstr ""
+msgstr "Kolommen"
 
 msgctxt "field:account.journal.view,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.view,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.view,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.journal.view,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.view,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.view,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.view,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.view.column,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.view.column,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.journal.view.column,field:"
 msgid "Field"
-msgstr ""
+msgstr "Veld"
 
 msgctxt "field:account.journal.view.column,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.journal.view.column,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.view.column,readonly:"
 msgid "Readonly"
-msgstr ""
+msgstr "Alleen lezen"
 
 msgctxt "field:account.journal.view.column,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.journal.view.column,required:"
 msgid "Required"
-msgstr ""
+msgstr "Vereist"
 
 msgctxt "field:account.journal.view.column,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.journal.view.column,view:"
 msgid "View"
-msgstr ""
+msgstr "Overzicht"
 
 msgctxt "field:account.journal.view.column,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move,date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Effectieve datum"
 
 msgctxt "field:account.move,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
+#, fuzzy
 msgctxt "field:account.move,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:account.move,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Oorsprong"
 
 msgctxt "field:account.move,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
-msgstr ""
+msgstr "Boekingsdatum"
 
 msgctxt "field:account.move,post_number:"
 msgid "Post Number"
@@ -1551,175 +1644,179 @@ msgstr ""
 
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move.cancel.default,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "field:account.move.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
-msgstr ""
+msgstr "Valuta bedrag"
 
+#, fuzzy
 msgctxt "field:account.move.line,amount_currency_digits:"
 msgid "Amount Currency Digits"
-msgstr ""
+msgstr "Tweede valuta decimalen"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Bedrag alternatieve valuta"
 
 msgctxt "field:account.move.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Effectieve datum"
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:account.move.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
-msgstr ""
+msgstr "Vervaldag"
 
 msgctxt "field:account.move.line,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
-msgstr ""
+msgstr "Omschrijving boeking"
 
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
-msgstr ""
+msgstr "Status boeking"
 
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Oorsprong"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Relatie verplicht"
 
 msgctxt "field:account.move.line,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.move.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
-msgstr ""
+msgstr "Aflettering"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Tweede valuta"
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr ""
+msgstr "Tweede valuta decimalen"
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
-msgstr ""
+msgstr "Belasting regels"
 
 msgctxt "field:account.move.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.move.line.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.line.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.line.template,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move.line.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.move.line.template,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "field:account.move.line.template,operation:"
 msgid "Operation"
@@ -1727,475 +1824,497 @@ msgstr ""
 
 msgctxt "field:account.move.line.template,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Relatie verplicht"
 
 msgctxt "field:account.move.line.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "field:account.move.line.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.line.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.open_journal.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
+#, fuzzy
 msgctxt "field:account.move.print_general_journal.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
+#, fuzzy
 msgctxt "field:account.move.print_general_journal.start,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Vanaf datum"
 
 msgctxt "field:account.move.print_general_journal.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Bevestigde boeking"
 
 msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Einddatum"
 
+#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
+#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.reconciliation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.reconciliation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.reconciliation,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.reconciliation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.reconciliation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.move.template,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.move.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.template,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.template,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.move.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.move.template,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
+#, fuzzy
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
-msgstr ""
+msgstr "Trefwoorden"
 
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Boekingsregels"
 
 msgctxt "field:account.move.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.template.create.keywords,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.template.create.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
+#, fuzzy
 msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.move.template.keyword,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.template.keyword,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Karakters"
 
 msgctxt "field:account.move.template.keyword,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.move.template.keyword,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "field:account.move.template.keyword,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.template.keyword,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
-msgstr ""
+msgstr "Verplicht"
 
+#, fuzzy
 msgctxt "field:account.move.template.keyword,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.move.template.keyword,string:"
 msgid "String"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.move.template.keyword,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.move.template.keyword,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.open_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
-msgstr ""
+msgstr "Bevestigde boekingen"
 
 msgctxt "field:account.period,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
+#, fuzzy
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.period,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Einddatum"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.period,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.period,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr ""
+msgstr "Boeking bevestigingsreeks"
 
 msgctxt "field:account.period,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Start datum"
 
 msgctxt "field:account.period,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.period,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.reconcile.show,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.reconcile.show,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Boekingsregels"
 
+#, fuzzy
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr ""
+msgstr "Relaties"
 
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write-Off"
-msgstr ""
+msgstr "Afboeken"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.tax,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
-msgstr ""
+msgstr "Creditnota rekening"
 
 msgctxt "field:account.tax,credit_note_base_code:"
 msgid "Credit Note Base Code"
-msgstr ""
+msgstr "Creditnota basisbedragcode"
 
 msgctxt "field:account.tax,credit_note_base_sign:"
 msgid "Credit Note Base Sign"
-msgstr ""
+msgstr "Creditnota basisbedragteken"
 
 msgctxt "field:account.tax,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr ""
+msgstr "Creditnota belastingcode"
 
 msgctxt "field:account.tax,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr ""
+msgstr "Creditnota belastingteken"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Einddatum"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 msgctxt "field:account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Factuurrekening"
 
 msgctxt "field:account.tax,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr ""
+msgstr "Factuur basis"
 
 msgctxt "field:account.tax,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr ""
+msgstr "Factuur basis teken"
 
 msgctxt "field:account.tax,invoice_tax_code:"
 msgid "Invoice Tax Code"
-msgstr ""
+msgstr "Factuur belasting"
 
 msgctxt "field:account.tax,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
-msgstr ""
+msgstr "Factuur belasting teken"
 
 msgctxt "field:account.tax,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Percentage"
 
 msgctxt "field:account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Start datum"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.tax,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
@@ -2203,543 +2322,553 @@ msgstr ""
 
 msgctxt "field:account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgctxt "field:account.tax.code,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.tax.code,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.tax.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.code,sum:"
 msgid "Sum"
-msgstr ""
+msgstr "Totaal"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.tax.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.tax.code.open_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
-msgstr ""
+msgstr "Methode"
 
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Periodes"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "field:account.tax.code.template,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.code.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.group,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.tax.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.tax.group,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.tax.line,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
+#, fuzzy
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.tax.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.tax.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
-msgstr ""
+msgstr "Boekingsregel"
 
 msgctxt "field:account.tax.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Belasting"
 
 msgctxt "field:account.tax.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
+#, fuzzy
 msgctxt "field:account.tax.line.template,code:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "field:account.tax.line.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.line.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.line.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr ""
+msgstr "Boekingsregel"
 
 msgctxt "field:account.tax.line.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Belasting"
 
 msgctxt "field:account.tax.line.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.line.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.tax.rule,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.tax.rule,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "field:account.tax.rule,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "field:account.tax.rule.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
-msgstr ""
+msgstr "Basis belasting"
 
 msgctxt "field:account.tax.rule.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
-msgstr ""
+msgstr "Vervangende belasting"
 
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.line.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.line.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "field:account.tax.rule.line.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr ""
+msgstr "Basis belasting"
 
 msgctxt "field:account.tax.rule.line.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line.template,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
-msgstr ""
+msgstr "Vervangende belasting"
 
 msgctxt "field:account.tax.rule.line.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.line.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "field:account.tax.rule.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.rule.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.template,kind:"
 msgid "Kind"
-msgstr ""
+msgstr "Soort"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.rule.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.rule.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "field:account.tax.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.template,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
-msgstr ""
+msgstr "Creditnota rekening"
 
 msgctxt "field:account.tax.template,credit_note_base_code:"
 msgid "Credit Note Base Code"
-msgstr ""
+msgstr "Creditnota basisbedragcode"
 
 msgctxt "field:account.tax.template,credit_note_base_sign:"
 msgid "Credit Note Base Sign"
-msgstr ""
+msgstr "Creditnota basisbedragteken"
 
 msgctxt "field:account.tax.template,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr ""
+msgstr "Creditnota belastingcode"
 
 msgctxt "field:account.tax.template,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr ""
+msgstr "Creditnota belastingteken"
 
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Einddatum"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 msgctxt "field:account.tax.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Factuurrekening"
 
 msgctxt "field:account.tax.template,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr ""
+msgstr "Factuur basis"
 
 msgctxt "field:account.tax.template,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr ""
+msgstr "Factuur basis teken"
 
 msgctxt "field:account.tax.template,invoice_tax_code:"
 msgid "Invoice Tax Code"
-msgstr ""
+msgstr "Factuur belasting"
 
 msgctxt "field:account.tax.template,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
-msgstr ""
+msgstr "Factuur belasting teken"
 
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Bovenliggend niveau"
 
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Percentage"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Start datum"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
@@ -2747,55 +2876,55 @@ msgstr ""
 
 msgctxt "field:account.tax.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.tax.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr ""
+msgstr "Basis grootboekkaart"
 
 msgctxt "field:account.update_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.update_chart.succeed,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
-msgstr ""
+msgstr "Crediteuren"
 
 msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
-msgstr ""
+msgstr "Debiteuren"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr ""
+msgstr "Belastingregel verkopen"
 
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr ""
+msgstr "Te betalen"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr ""
+msgstr "Te betalen per vandaag"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr ""
+msgstr "Te ontvangen"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr ""
+msgstr "Te ontvangen per vandaag"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr ""
+msgstr "Belastingregel inkopen"
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
@@ -2805,19 +2934,21 @@ msgctxt "help:account.account,reconcile:"
 msgid ""
 "Allow move lines of this account \n"
 "to be reconciled."
-msgstr ""
+msgstr "Sta boekingen op deze rekening toe"
 
 msgctxt "help:account.account,second_currency:"
 msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
-msgstr ""
+msgstr "Forceer alle boekingen voor deze rekening"
 
 msgctxt "help:account.account,taxes:"
 msgid ""
 "Default tax for manual encoding of move lines \n"
 "for journal types: \"expense\" and \"revenue\""
 msgstr ""
+"Standaard belasting voor handmatig coderen van boekingen\n"
+"voor de dagboektypen: \"kosten\" en \"opbrengsten\""
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
@@ -2825,27 +2956,27 @@ msgstr ""
 
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
-msgstr ""
+msgstr "Gebruiken om rekeningtype te ordenen"
 
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.general_ledger.line.context,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
@@ -2853,17 +2984,19 @@ msgstr ""
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
-msgstr ""
+msgstr "Het bedrag uitgedrukt in een tweede valuta"
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
 "This field is used for payable and receivable lines. \n"
 "You can put the limit date for the payment."
 msgstr ""
+"Dit veld wordt gebruikt voor betalen en ontvangen.\n"
+"Bepaal de uiterste betaaldatum."
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
-msgstr ""
+msgstr "De tweede valuta"
 
 msgctxt "help:account.move.line.template,description:"
 msgid "Keywords values substitutions are identified by braces ('{' and '}')"
@@ -2871,7 +3004,7 @@ msgstr ""
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
@@ -2879,7 +3012,7 @@ msgstr ""
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today"
-msgstr ""
+msgstr "Laat leeg voor vandaag."
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')"
@@ -2887,39 +3020,39 @@ msgstr ""
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr ""
+msgstr "Laat leeg voor alle open boekjaren."
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
-msgstr ""
+msgstr "Alleen bevestigde boekingen weergeven."
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency"
-msgstr ""
+msgstr "In de valuta van het bedrijf"
 
 msgctxt "help:account.tax,credit_note_base_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
+msgstr "Doorgaans 1 of -1"
 
 msgctxt "help:account.tax,credit_note_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
+msgstr "Doorgaans 1 of -1"
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports"
-msgstr ""
+msgstr "De naam die gebruikt zal worden in de rapportages"
 
 msgctxt "help:account.tax,invoice_base_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
+msgstr "Doorgaans 1 of -1"
 
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
+msgstr "Doorgaans 1 of -1"
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
-msgstr ""
+msgstr "Gebruiken om belastingen te ordenen"
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
@@ -2929,62 +3062,66 @@ msgstr ""
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr ""
+msgstr "Laat leeg voor alle open boekjaren."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
-msgstr ""
+msgstr "Laat leeg voor alle periodes van alle open boekjaren."
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
+"Als de basisbelasting is ingevuld zal de regel alleen toegepast worden voor "
+"deze belasting."
 
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
 msgstr ""
+"Als de basisbelasting is ingevuld zal de regel alleen toegepast worden voor "
+"deze belastingsjabloon."
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
-msgstr ""
+msgstr "Pas deze belastingregel toe als de relatie een klant is."
 
 msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
-msgstr ""
+msgstr "Pas deze belastingregel toe als de relatie een leverancier is."
 
 msgctxt "model:account.account,name:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
-msgstr ""
+msgstr "Grootboekrekening fiscaal"
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
-msgstr ""
+msgstr "Rekening met historie"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "model:account.account.template-account.tax.template,name:"
 msgid "Account Template - Tax Template"
-msgstr ""
+msgstr "Rekeningsjabloon - Belastingsjabloon"
 
 msgctxt "model:account.account.type,name:"
 msgid "Account Type"
-msgstr ""
+msgstr "Rekeningtype"
 
 msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
-msgstr ""
+msgstr "Rekeningtype sjabloon"
 
 msgctxt "model:account.aged_balance,name:"
 msgid "Aged Balance"
-msgstr ""
+msgstr "Historisch balansoverzicht"
 
 msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
@@ -2996,39 +3133,40 @@ msgstr ""
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
-msgstr ""
+msgstr "Beheer grootboekrekeningen"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
-msgstr ""
+msgstr "Beheer afronding fiscale berekening"
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Grootboekkaart aanmaken"
 
 msgctxt "model:account.create_chart.properties,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Grootboekkaart aanmaken"
 
 msgctxt "model:account.create_chart.start,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Grootboekkaart aanmaken"
 
 msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
-msgstr ""
+msgstr "Boekjaar - boeking"
 
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
-msgstr ""
+msgstr "Sluit boekjaar"
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
@@ -3052,111 +3190,111 @@ msgstr ""
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr ""
+msgstr "Kas"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr ""
+msgstr "Kosten"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr ""
+msgstr "Opbrengst"
 
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr ""
+msgstr "Voorraad"
 
-msgctxt "model:account.journal.open_cash.start,name:"
-msgid "Open Journal Cash"
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
 msgstr ""
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr ""
+msgstr "Dagboek - periode"
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
-msgstr ""
+msgstr "Dagboektype"
 
 msgctxt "model:account.journal.type,name:journal_type_cash"
 msgid "Cash"
-msgstr ""
+msgstr "Kas"
 
 msgctxt "model:account.journal.type,name:journal_type_expense"
 msgid "Expense"
-msgstr ""
+msgstr "Kosten"
 
 msgctxt "model:account.journal.type,name:journal_type_general"
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 msgctxt "model:account.journal.type,name:journal_type_revenue"
 msgid "Revenue"
-msgstr ""
+msgstr "Opbrengst"
 
 msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
-msgstr ""
+msgstr "Situatie"
 
 msgctxt "model:account.journal.type,name:journal_type_write_off"
 msgid "Write-Off"
-msgstr ""
+msgstr "Afboeken"
 
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
-msgstr ""
+msgstr "Dagboek indeling"
 
 msgctxt "model:account.journal.view.column,name:"
 msgid "Journal View Column"
-msgstr ""
+msgstr "Dagboek indelingkolom"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "model:account.move.cancel.default,name:"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Annuleer boekingen"
 
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
-msgstr ""
+msgstr "Boekingsregel"
 
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
-msgstr ""
+msgstr "Boekingsregelsjabloon"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr ""
+msgstr "Open dagboek vragen"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
-msgstr ""
+msgstr "Dagboek afdrukken"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
-msgstr ""
+msgstr "Afschrijving boekingen afletteren"
 
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
-msgstr ""
+msgstr "Afletterregels"
 
 msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
-msgstr ""
+msgstr "Boekingssjabloon"
 
 msgctxt "model:account.move.template.create.keywords,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Boeking maken vanuit sjabloon"
 
 msgctxt "model:account.move.template.create.template,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Boeking maken vanuit sjabloon"
 
 msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
@@ -3164,63 +3302,64 @@ msgstr ""
 
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr ""
+msgstr "Grootboek openen"
 
 msgctxt "model:account.period,name:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
+#, fuzzy
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
-msgstr ""
+msgstr "Afletteren"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
-msgstr ""
+msgstr "Fiscaal"
 
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
-msgstr ""
+msgstr "Belastingcode"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr ""
+msgstr "Fiscaal overzicht openen"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
-msgstr ""
+msgstr "Belastingcode sjabloon"
 
 msgctxt "model:account.tax.group,name:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
-msgstr ""
+msgstr "Belasting regel"
 
 msgctxt "model:account.tax.line.template,name:"
 msgid "Account Tax Line Template"
-msgstr ""
+msgstr "Fiscale boekingsregel sjabloon"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
-msgstr ""
+msgstr "Belastingbepaling"
 
 msgctxt "model:account.tax.rule.line,name:"
 msgid "Tax Rule Line"
-msgstr ""
+msgstr "Belastingbepaling regel"
 
 msgctxt "model:account.tax.rule.line.template,name:"
 msgid "Tax Rule Line Template"
-msgstr ""
+msgstr "Belastingbepaling regelsjabloon"
 
 msgctxt "model:account.tax.rule.template,name:"
 msgid "Tax Rule Template"
-msgstr ""
+msgstr "Belastingbepaling sjabloon"
 
 msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
-msgstr ""
+msgstr "Rekening belastingsjabloon"
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
@@ -3230,49 +3369,53 @@ msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
 msgstr ""
 
+msgctxt "model:ir.action,name:"
+msgid "Open Journal Cash"
+msgstr "Kasboek openen"
+
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Balansoverzicht"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr ""
+msgstr "Winst- & verliesrekening"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_list2"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
-msgstr ""
+msgstr "Rekeningsjablonen"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr ""
+msgstr "Soorten grootboekrekening"
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr ""
+msgstr "Rekeningtype sjablonen"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr ""
+msgstr "Soorten grootboekrekening"
 
 msgctxt "model:ir.action,name:act_aged_balance_list"
 msgid "Aged Balance"
-msgstr ""
+msgstr "Historisch balansoverzicht"
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
@@ -3280,23 +3423,23 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Annuleer boekingen"
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr ""
+msgstr "Sluit boekjaar"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr ""
+msgstr "Fiscaal overzicht openen"
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
-msgstr ""
+msgstr "Beheer grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Boekjaren"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3308,179 +3451,179 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr ""
+msgstr "Dagboeken"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Dagboek kas"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_close"
 msgid "Close Journals - Periods"
-msgstr ""
+msgstr "Sluit dagboeken - perioden"
 
 msgctxt "model:ir.action,name:act_journal_period_form"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken - perioden"
 
 msgctxt "model:ir.action,name:act_journal_period_reopen"
 msgid "Re-Open Journals - Periods"
-msgstr ""
+msgstr "Heropen dagboek - periodes"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken"
 
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken - perioden"
 
 msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
-msgstr ""
+msgstr "Dagboektypen"
 
 msgctxt "model:ir.action,name:act_journal_view_form"
 msgid "Journal Views"
-msgstr ""
+msgstr "Dagboek indelingen"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr ""
+msgstr "Boekingen"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr ""
+msgstr "Boekingsregels"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr ""
+msgstr "Crediteuren en debiteuren regels"
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
-msgstr ""
+msgstr "Afletterregels"
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Boeking maken vanuit sjabloon"
 
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Account Move Template"
-msgstr ""
+msgstr "Boekingssjabloon"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr ""
+msgstr "Boeking rekening openen"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
-msgstr ""
+msgstr "Grootboek openen"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr ""
+msgstr "Open dagboek"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
-msgstr ""
+msgstr "Open belastingcode"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr ""
+msgstr "Open soort"
 
 msgctxt "model:ir.action,name:act_period_close"
 msgid "Close Periods"
-msgstr ""
+msgstr "Periodes afsluiten"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
 msgctxt "model:ir.action,name:act_period_form2"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
 msgctxt "model:ir.action,name:act_period_reopen"
 msgid "Re-Open Periods"
-msgstr ""
+msgstr "Heropen periodes"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Regels afletteren"
 
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr ""
+msgstr "Boekingen afletteren"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr ""
+msgstr "Belastingcodes sjablonen"
 
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
-msgstr ""
+msgstr "Belastingcodes"
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr ""
+msgstr "Belastingcodes"
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Tax Groups"
-msgstr ""
+msgstr "Belastinggroepen"
 
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
-msgstr ""
+msgstr "Belasting regels"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
-msgstr ""
+msgstr "Belastingbepalingen"
 
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr ""
+msgstr "Belastingbepaling sjablonen"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes Templates"
-msgstr ""
+msgstr "Belastingsjablonen"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr ""
+msgstr "Afletteren ongedaan maken"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr ""
+msgstr "Historisch balansoverzicht"
 
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr ""
+msgstr "Algemeen dagboek"
 
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr ""
+msgstr "Grootboek"
 
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr ""
+msgstr "Proefbalans"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr ""
-
-msgctxt "model:ir.action,name:wizard_journal_open_cash"
-msgid "Open Journal Cash"
-msgstr ""
+msgstr "Grootboekkaarten aanmaken vanaf sjabloon"
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
-msgstr ""
+msgstr "Algemeen dagboek afdrukken"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
@@ -3494,69 +3637,69 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
 msgid "Payable"
-msgstr ""
+msgstr "Crediteuren"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
 msgid "Receivable"
-msgstr ""
+msgstr "Debiteuren"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
-msgstr ""
+msgstr "Standaard rekeningdagboek"
 
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
-msgstr ""
+msgstr "Standaard boeking aflettering"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
 msgid "Account Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
-msgstr ""
+msgstr "Afletteren"
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
-msgstr ""
+msgstr "Financieel"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
-msgstr ""
+msgstr "Rekeningsjablonen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr ""
+msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
-msgstr ""
+msgstr "Soorten grootboekrekening"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr ""
+msgstr "Rekeningtype sjablonen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
-msgstr ""
+msgstr "Soorten grootboekrekening"
 
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr ""
+msgstr "Historisch balansoverzicht"
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
@@ -3564,159 +3707,163 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr ""
+msgstr "Rekeningschema's"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr ""
+msgstr "Sluit boekjaar"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr ""
+msgstr "Fiscaal overzicht openen"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr ""
+msgstr "Grootboekkaarten aanmaken vanaf sjabloon"
 
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr ""
+msgstr "Boekingen"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Boekjaren"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Boekjaren"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr ""
+msgstr "Algemeen rekeningschema"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
-msgstr ""
+msgstr "Grootboek"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr ""
+msgstr "Dagboeken"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr ""
+msgstr "Dagboeken"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Dagboek kas"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
 msgid "Close Journals - Periods"
-msgstr ""
+msgstr "Sluit dagboeken - perioden"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken - perioden"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken - perioden"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
-msgstr ""
+msgstr "Dagboektypen"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
 msgid "Journal Views"
-msgstr ""
+msgstr "Dagboek indelingen"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr ""
+msgstr "Boekingen"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Boeking maken vanuit sjabloon"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Account Move Template"
-msgstr ""
+msgstr "Boekingssjabloon"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Balansoverzicht"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
-msgstr ""
+msgstr "Grootboek openen"
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr ""
+msgstr "Winst- & verliesrekening"
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr ""
+msgstr "Open dagboek"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form2"
 msgid "Close Periods"
-msgstr ""
+msgstr "Perioden afsluiten"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr ""
+msgstr "Algemeen dagboek afdrukken"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr ""
+msgstr "Verwerking"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Regels afletteren"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Rapportage"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr ""
+msgstr "Belastingcodes sjablonen"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr ""
+msgstr "Belastingcodes"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
-msgstr ""
+msgstr "Belastinggroepen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
-msgstr ""
+msgstr "Belastingbepalingen"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr ""
+msgstr "Belastingbepaling sjablonen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
-msgstr ""
+msgstr "Belastingsjablonen"
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
@@ -3724,60 +3871,67 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
-msgstr ""
+msgstr "Beheer grootboekrekeningen"
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
-msgstr ""
+msgstr "Beheer grootboekrekeningen"
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
-msgstr ""
+msgstr "Ouderdomsanalyse"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Bedrijf:"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
-msgstr ""
+msgstr "Datum:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Afdrukdatum:"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "User:"
-msgstr ""
+msgstr "Gebruiker:"
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "at"
-msgstr ""
+msgstr "om"
 
 #, fuzzy
 msgctxt "report:account.general_ledger:"
@@ -3789,85 +3943,97 @@ msgctxt "report:account.general_ledger:"
 msgid ":"
 msgstr ":"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
-msgstr ""
+msgstr "Balans"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr ""
+msgstr "Bedrijf:"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "report:account.general_ledger:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "report:account.general_ledger:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "report:account.general_ledger:"
 msgid "Descr."
-msgstr ""
+msgstr "Omschr."
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
-msgstr ""
+msgstr "Vanaf periode"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
-msgstr ""
+msgstr "Grootboek"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
 msgctxt "report:account.general_ledger:"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
-msgstr ""
+msgstr "Oorsprong"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Period:"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Afdrukdatum:"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "User:"
-msgstr ""
+msgstr "Gebruiker:"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "at"
-msgstr ""
+msgstr "om"
 
 #, fuzzy
 msgctxt "report:account.move.general_journal:"
@@ -3876,67 +4042,67 @@ msgstr "/"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr ""
+msgstr "Bedrijf:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
-msgstr ""
+msgstr "Datum:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
-msgstr ""
+msgstr "Vanaf datum:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
-msgstr ""
+msgstr "Algemeen dagboek"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
-msgstr ""
+msgstr "Dagboek boeking:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
-msgstr ""
+msgstr "Oorsprong"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Posted"
-msgstr ""
+msgstr "Geboekt"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Datum afdruk:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "To Date:"
-msgstr ""
+msgstr "Tot datum:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "User:"
-msgstr ""
+msgstr "Gebruiker:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "at"
-msgstr ""
+msgstr "om"
 
 #, fuzzy
 msgctxt "report:account.trial_balance:"
@@ -3945,223 +4111,237 @@ msgstr "/"
 
 msgctxt "report:account.trial_balance:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Bedrijf:"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "report:account.trial_balance:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
-msgstr ""
+msgstr "Balans"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
-msgstr ""
+msgstr "Vanaf periode"
 
 msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Afdrukdatum:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Beginbalans"
 
 msgctxt "report:account.trial_balance:"
 msgid "To Period:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
-msgstr ""
+msgstr "Proefbalans"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "User:"
-msgstr ""
+msgstr "Gebruiker:"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "at"
-msgstr ""
+msgstr "om"
 
 msgctxt "selection:account.account,kind:"
 msgid "Expense"
-msgstr ""
+msgstr "Kosten"
 
 msgctxt "selection:account.account,kind:"
 msgid "Other"
-msgstr ""
+msgstr "Overig"
 
 msgctxt "selection:account.account,kind:"
 msgid "Payable"
-msgstr ""
+msgstr "Crediteuren"
 
 msgctxt "selection:account.account,kind:"
 msgid "Receivable"
-msgstr ""
+msgstr "Debiteuren"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
-msgstr ""
+msgstr "Opbrengst"
 
+#, fuzzy
 msgctxt "selection:account.account,kind:"
 msgid "Stock"
-msgstr ""
+msgstr "Voorraad"
 
 msgctxt "selection:account.account,kind:"
 msgid "View"
-msgstr ""
+msgstr "Overzicht"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Expense"
-msgstr ""
+msgstr "Kosten"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Other"
-msgstr ""
+msgstr "Overig"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Payable"
-msgstr ""
+msgstr "Crediteuren"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
-msgstr ""
+msgstr "Debiteuren"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
-msgstr ""
+msgstr "Opbrengst"
 
+#, fuzzy
 msgctxt "selection:account.account.template,kind:"
 msgid "Stock"
-msgstr ""
+msgstr "Voorraad"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "View"
-msgstr ""
+msgstr "Overzicht"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Credit - Debit"
-msgstr ""
+msgstr "Credit - Debit"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Debit - Credit"
-msgstr ""
+msgstr "Debit - Credit"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Credit - Debit"
-msgstr ""
+msgstr "Credit - Debit"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Debit - Credit"
-msgstr ""
+msgstr "Debit - Credit"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers"
-msgstr ""
+msgstr "Klanten"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers and Suppliers"
-msgstr ""
+msgstr "Klanten en leveranciers"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Leveranciers"
 
+#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Days"
-msgstr ""
+msgstr "Dagen"
 
+#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Months"
-msgstr ""
+msgstr "Maanden"
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Document"
-msgstr ""
+msgstr "Per document"
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Line"
-msgstr ""
+msgstr "Per regel"
 
 msgctxt "selection:account.configuration.tax_rounding,method:"
 msgid "Per Document"
-msgstr ""
+msgstr "Per document"
 
 msgctxt "selection:account.configuration.tax_rounding,method:"
 msgid "Per Line"
-msgstr ""
+msgstr "Per regel"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
+#, fuzzy
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
+#, fuzzy
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
-msgstr ""
+msgstr "Geboekt"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 msgctxt "selection:account.move,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "selection:account.move,state:"
 msgid "Posted"
-msgstr ""
+msgstr "Geboekt"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
-msgstr ""
+msgstr "Geboekt"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Valid"
-msgstr ""
+msgstr "Geldig"
 
+#, fuzzy
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Char"
@@ -4169,7 +4349,7 @@ msgstr ""
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Numeric"
@@ -4177,202 +4357,175 @@ msgstr ""
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "selection:account.period,state:"
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 msgctxt "selection:account.period,state:"
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
-msgstr ""
+msgstr "Aanpassing"
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
-msgstr ""
+msgstr "Standaard"
 
 msgctxt "selection:account.tax,type:"
 msgid "Fixed"
-msgstr ""
+msgstr "Vast"
 
 msgctxt "selection:account.tax,type:"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
-msgstr ""
+msgstr "Percentage"
 
+#, fuzzy
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
-msgstr ""
+msgstr "Per periode"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "selection:account.tax.group,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Verkoop"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Verkoop"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Verkoop"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
-msgstr ""
+msgstr "Vast"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
-msgstr ""
+msgstr "Percentage"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferral"
-msgstr ""
+msgstr "Rekening met historie"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferrals"
-msgstr ""
+msgstr "Rekeninghistorie"
 
 msgctxt "view:account.account.template:"
 msgid "Account Template"
-msgstr ""
+msgstr "Rekeningsjabloon"
 
 msgctxt "view:account.account.template:"
 msgid "Account Templates"
-msgstr ""
+msgstr "Rekeningsjablonen"
 
 msgctxt "view:account.account.type.template:"
 msgid "Account Type Template"
-msgstr ""
+msgstr "Rekeningtype sjabloon"
 
 msgctxt "view:account.account.type.template:"
 msgid "Account Types Templates"
-msgstr ""
+msgstr "Sjablonen soort grootboekrekening"
 
 msgctxt "view:account.account.type:"
-msgid "Account Type"
-msgstr ""
-
-msgctxt "view:account.account.type:"
-msgid "Account Types"
-msgstr ""
-
-msgctxt "view:account.account.type:"
-msgid "Balance Sheet"
-msgstr ""
-
-msgctxt "view:account.account.type:"
-msgid "Income Statement"
-msgstr ""
-
-msgctxt "view:account.account:"
-msgid "Account"
-msgstr ""
-
-msgctxt "view:account.account:"
-msgid "Accounts"
+msgid "Comparison"
 msgstr ""
 
 msgctxt "view:account.account:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "view:account.account:"
 msgid "Deferrals"
-msgstr ""
+msgstr "Historie"
 
 msgctxt "view:account.account:"
 msgid "General Information"
-msgstr ""
+msgstr "Algemene informatie"
 
 msgctxt "view:account.account:"
 msgid "Notes"
-msgstr ""
-
-msgctxt "view:account.aged_balance.context:"
-msgid "Aged Balance"
-msgstr ""
+msgstr "Aantekeningen"
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr ""
+msgstr "Voorwaarden"
 
 msgctxt "view:account.aged_balance:"
 msgid "Aged Balance"
-msgstr ""
+msgstr "Historisch balansoverzicht"
 
+#, fuzzy
 msgctxt "view:account.balance_sheet.context:"
 msgid "Balance Sheet"
-msgstr ""
+msgstr "Balansoverzicht"
 
 msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Rounding"
-msgstr ""
+msgstr "Beheer afronding fiscale berekening"
 
 msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
-msgstr ""
-
-msgctxt "view:account.configuration:"
-msgid "Account Configuration"
-msgstr ""
+msgstr "Beheer afronding fiscale berekening"
 
 msgctxt "view:account.configuration:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factuur"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "view:account.create_chart.account:"
 msgid "Create Chart of Accounts"
-msgstr ""
+msgstr "Grootboekkaarten aanmaken"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Create Default Properties"
-msgstr ""
-
-msgctxt "view:account.create_chart.start:"
-msgid "Create Chart of Accounts"
 msgstr ""
 
 msgctxt "view:account.create_chart.start:"
@@ -4380,198 +4533,163 @@ msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
 msgstr ""
+"Het grootboek kan aangemaakt worden voor het bedrijf door het selecteren van"
+" een sjabloon."
 
 msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
 msgid "Balance Non-Deferral"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
-msgstr ""
+msgstr "Sluit boekjaar"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Are you sure to close fiscal year?"
-msgstr ""
+msgstr "Weet u zeker dat u dit boekjaar wil afsluiten?"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
-msgstr ""
+msgstr "Sluit boekjaar"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
-msgstr ""
+msgstr "Maak perioden van 3 maanden"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create Monthly Periods"
-msgstr ""
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Year"
-msgstr ""
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Years"
-msgstr ""
+msgstr "Maak perioden van 1 maand"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
-msgstr ""
+msgstr "Heropen boekjaar"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
-msgstr ""
+msgstr "Reeksen"
 
+#, fuzzy
 msgctxt "view:account.general_ledger.account.context:"
 msgid "General Ledger"
-msgstr ""
+msgstr "Grootboek"
 
+#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "End Balance"
-msgstr ""
-
-msgctxt "view:account.general_ledger.account:"
-msgid "General Ledger - Accounts"
-msgstr ""
+msgstr "Balans"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Beginbalans"
 
+#, fuzzy
 msgctxt "view:account.general_ledger.line:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
-msgctxt "view:account.general_ledger.line:"
-msgid "General Legder - Lines"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:account.income_statement.context:"
 msgid "Income Statement"
-msgstr ""
-
-msgctxt "view:account.journal.open_cash.start:"
-msgid "Open Journal Cash"
-msgstr ""
+msgstr "Winst- & verliesrekening"
 
 msgctxt "view:account.journal.period:"
 msgid "Journal - Period"
-msgstr ""
+msgstr "Dagboek - periode"
 
 msgctxt "view:account.journal.period:"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Dagboeken - perioden"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Type"
-msgstr ""
+msgstr "Dagboektype"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Types"
-msgstr ""
+msgstr "Dagboektypen"
 
+#, fuzzy
 msgctxt "view:account.journal.view.column:"
 msgid "View Column"
-msgstr ""
+msgstr "Bekijk kolom"
 
+#, fuzzy
 msgctxt "view:account.journal.view.column:"
 msgid "View Columns"
-msgstr ""
+msgstr "Bekijk kolomen"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal View"
-msgstr ""
+msgstr "Dagboek indeling"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal Views"
-msgstr ""
+msgstr "Dagboek indelingen"
 
 msgctxt "view:account.journal:"
 msgid "General Information"
-msgstr ""
-
-msgctxt "view:account.journal:"
-msgid "Journal"
-msgstr ""
-
-msgctxt "view:account.journal:"
-msgid "Journals"
-msgstr ""
+msgstr "Algemene informatie"
 
 msgctxt "view:account.move.cancel.default:"
 msgid "Cancel Moves"
-msgstr ""
-
-msgctxt "view:account.move.line.template:"
-msgid "Account Move Line Template"
-msgstr ""
-
-msgctxt "view:account.move.line.template:"
-msgid "Account Move Line Templates"
-msgstr ""
+msgstr "Annuleer boekingen"
 
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Account Move Line"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr ""
+msgstr "Overige informatie"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr ""
+msgstr "Credit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
-msgstr ""
+msgstr "Overige informatie"
 
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
-msgstr ""
+msgstr "Open dagboek"
 
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
-msgstr ""
+msgstr "Dagboek afdrukken"
 
 msgctxt "view:account.move.reconcile_lines.writeoff:"
 msgid "Write-Off"
-msgstr ""
+msgstr "Afschrijven"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliation"
-msgstr ""
+msgstr "Aflettering"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
-msgstr ""
+msgstr "Afletteringen"
 
 msgctxt "view:account.move.template.create.template:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Boeking maken vanuit sjabloon"
 
 msgctxt "view:account.move.template.keyword:"
 msgid "Account Move Template Keyword"
@@ -4582,206 +4700,147 @@ msgid "Account Move Template Keywords"
 msgstr ""
 
 msgctxt "view:account.move.template:"
-msgid "Account Move Template"
-msgstr ""
-
-msgctxt "view:account.move.template:"
-msgid "Account Move Templates"
-msgstr ""
-
-msgctxt "view:account.move.template:"
 msgid "Template"
-msgstr ""
-
-msgctxt "view:account.move:"
-msgid "Account Move"
-msgstr ""
-
-msgctxt "view:account.move:"
-msgid "Account Moves"
-msgstr ""
-
-msgctxt "view:account.move:"
-msgid "Draft"
-msgstr ""
+msgstr "Sjabloon"
 
 msgctxt "view:account.move:"
 msgid "Post"
-msgstr ""
+msgstr "Boeken"
 
 msgctxt "view:account.open_chart.start:"
 msgid "Open Chart of Accounts"
-msgstr ""
+msgstr "Grootboek openen"
 
 msgctxt "view:account.period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "view:account.period:"
 msgid "Periods"
-msgstr ""
+msgstr "Perioden"
 
+#, fuzzy
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
-msgstr ""
-
-msgctxt "view:account.reconcile.show:"
-msgid "Reconcile"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "view:account.tax.code.open_chart.start:"
 msgid "Open Chart of Tax Codes"
-msgstr ""
+msgstr "Fiscaal overzicht openen"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Description"
-msgstr ""
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Code Template"
-msgstr ""
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Codes Templates"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "view:account.tax.code:"
 msgid "Children"
-msgstr ""
+msgstr "Onderliggend"
 
 msgctxt "view:account.tax.code:"
 msgid "Description"
-msgstr ""
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Code"
-msgstr ""
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Codes"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "view:account.tax.group:"
 msgid "Tax Group"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "view:account.tax.group:"
 msgid "Tax Groups"
-msgstr ""
+msgstr "Belastinggroepen"
 
 msgctxt "view:account.tax.line.template:"
 msgid "Account Tax Line Template"
-msgstr ""
+msgstr "Fiscale boekingsregel sjabloon"
 
 msgctxt "view:account.tax.line.template:"
 msgid "Account Tax Line Templates"
-msgstr ""
+msgstr "Fiscale boekingsregel sjablonen"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
-msgstr ""
+msgstr "Fiscale boekingsregel"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Lines"
-msgstr ""
+msgstr "Fiscale boekingsregels"
 
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Template"
-msgstr ""
+msgstr "Belastingbepaling regelsjabloon"
 
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Templates"
-msgstr ""
+msgstr "Belastingbepaling regelsjablonen"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Line"
-msgstr ""
+msgstr "Belastingbepaling regel"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Lines"
-msgstr ""
+msgstr "Belastingbepaling regels"
 
 msgctxt "view:account.tax.rule.template:"
 msgid "Tax Rule Template"
-msgstr ""
+msgstr "Belastingbepaling sjabloon"
 
 msgctxt "view:account.tax.rule.template:"
 msgid "Tax Rules"
-msgstr ""
+msgstr "Belastingbepalingen"
 
 msgctxt "view:account.tax.rule:"
 msgid "Tax Rule"
-msgstr ""
+msgstr "Belastingbepaling"
 
 msgctxt "view:account.tax.rule:"
 msgid "Tax Rules"
-msgstr ""
+msgstr "Belastingbepalingen"
 
 msgctxt "view:account.tax.template:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.tax.template:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "view:account.tax.template:"
 msgid "Credit Note"
-msgstr ""
+msgstr "Credit verkoopnota"
 
 msgctxt "view:account.tax.template:"
 msgid "General Information"
-msgstr ""
+msgstr "Algemene informatie"
 
 msgctxt "view:account.tax.template:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "view:account.tax.template:"
-msgid "Tax Template"
-msgstr ""
-
-msgctxt "view:account.tax.template:"
-msgid "Taxes Templates"
-msgstr ""
+msgstr "Verkoopfactuur"
 
 msgctxt "view:account.tax:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 msgctxt "view:account.tax:"
 msgid "Credit Note"
-msgstr ""
+msgstr "Credit verkoopnota"
 
 msgctxt "view:account.tax:"
 msgid "General Information"
-msgstr ""
+msgstr "Algemene informatie"
 
 msgctxt "view:account.tax:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "view:account.tax:"
-msgid "Tax"
-msgstr ""
-
-msgctxt "view:account.tax:"
-msgid "Taxes"
-msgstr ""
+msgstr "Verkoopfactuur"
 
 msgctxt "view:account.update_chart.start:"
-msgid "Update Chart of Accounts"
-msgstr ""
-
-msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts"
 msgstr ""
 
@@ -4791,148 +4850,159 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Account"
-msgstr ""
+msgstr "Grootboekrekening"
 
 msgctxt "view:party.party:"
 msgid "Accounting"
-msgstr ""
+msgstr "Boekhouden"
 
 msgctxt "view:party.party:"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"
 
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
-msgstr ""
+msgstr "Aanmaken"
 
+#, fuzzy
 msgctxt "wizard_button:account.create_chart,account,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.create_chart,properties,create_properties:"
 msgid "Create"
-msgstr ""
+msgstr "Aanmaken"
 
+#, fuzzy
 msgctxt "wizard_button:account.create_chart,properties,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "wizard_button:account.create_chart,start,account:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.close,start,close:"
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
+#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
-msgctxt "wizard_button:account.journal.open_cash,start,end:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "wizard_button:account.journal.open_cash,start,open_:"
-msgid "Open"
-msgstr ""
-
+#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,cancel:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
+#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
+#, fuzzy
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
 msgid "Print"
-msgstr ""
+msgstr "Print"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
-msgstr ""
+msgstr "Afletteren"
 
 msgctxt "wizard_button:account.move.template.create,keywords,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Maken"
 
+#, fuzzy
 msgctxt "wizard_button:account.move.template.create,keywords,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "wizard_button:account.move.template.create,template,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
+#, fuzzy
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
+#, fuzzy
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.reconcile,show,next_:"
 msgid "Skip"
-msgstr ""
+msgstr "Overslaan"
 
+#, fuzzy
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
-msgstr ""
+msgstr "Afletteren"
 
+#, fuzzy
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
+#, fuzzy
 msgctxt "wizard_button:account.update_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:account.update_chart,start,update:"
 msgid "Update"
-msgstr ""
+msgstr "Actualiseren"
 
+#, fuzzy
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
-msgstr ""
+msgstr "Oké"

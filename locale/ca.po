@@ -4,298 +4,326 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.account.deferral:"
 msgid "Deferral must be unique by account and fiscal year"
-msgstr "Отложеното плащане трябва да е уникално по сметка и финансова година"
+msgstr "El tancament ha ser únic per compte i exercici fiscal."
 
 msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
-msgstr "Не може да променяте записи от Сметка с отложено плащане"
+msgstr "No podeu modificar els registres del tancament comptable."
 
 msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
-msgstr ""
+msgstr "No podeu eliminar el compte \"%s\" perquè té apunts."
 
 msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children."
-msgstr ""
+msgstr "No podeu eliminar comptes que tenen fills."
 
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
 msgstr ""
+"L'exercici fiscal \"%(first)s\" i \"%(second)s\" tenen la mateixa seqüència "
+"d'assentament comptabilitzat."
 
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
-msgstr ""
+msgstr "L'exercici fiscal \"%(first)s\" i \"%(second)s\" es sobreposen."
 
 msgctxt "error:account.fiscalyear:"
 msgid "No fiscal year defined for \"%s\"."
-msgstr ""
+msgstr "No s'ha definit un exercici fiscal per \"%s\"."
 
 msgctxt "error:account.fiscalyear:"
 msgid "The balance of the account \"%s\" must be zero."
-msgstr ""
+msgstr "El balanç del compte \"%s\" ha de ser zero."
 
 msgctxt "error:account.fiscalyear:"
 msgid "You can not change the post move sequence in fiscal year \"%s\"."
 msgstr ""
+"No podeu canviar la seqüència d'assentaments comptabilitzats a l'exercici "
+"fiscal \"%s\"."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not close fiscal year \"%s\" until you close all previous fiscal "
 "years."
 msgstr ""
+"No podeu tancar l'exercici fiscal \"%s\" fins que tanqueu tots els exercicis"
+" fiscals anteriors."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
 "years."
 msgstr ""
+"No podeu reobrir l'exercici fiscal \"%s\" fins que reobriu tots els "
+"exercicis fiscals posteriors."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr ""
+msgstr "No podeu crear un diari - període al període tancat \"%s\"."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not modify/delete journal - period \"%s\" because it has moves."
 msgstr ""
+"No podeu modificar/eliminar el diari - període \"%s\" perquè té "
+"assentaments."
 
 msgctxt "error:account.journal.period:"
 msgid ""
 "You can not open journal - period \"%(journal_period)s\" because period "
 "\"%(period)s\" is closed."
 msgstr ""
+"No podeu obrir el diari - període \"%(journal_period)s\" perquè el període "
+"\"%(period)s\" està tancat."
 
 msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
-msgstr ""
+msgstr "Només podeu obrir un diari per període."
 
 msgctxt "error:account.journal.type:"
 msgid "The code must be unique."
-msgstr ""
+msgstr "El codi ha de ser únic."
 
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
-msgstr ""
+msgstr "L'apunt \"%s\" (%d) ja està conciliat."
 
 msgctxt "error:account.move.line:"
 msgid "Move line cannot be created because there is no journal defined."
-msgstr ""
+msgstr "No es pot crear l'apunt perquè no hi ha definit cap diari."
 
 msgctxt "error:account.move.line:"
 msgid "Party is required on line \"%s\""
-msgstr ""
+msgstr "El tercer en l'apunt \"%s\" és obligatori."
 
 msgctxt "error:account.move.line:"
 msgid "Party must not be set on line \"%s\""
-msgstr ""
+msgstr "No heu d'introduir un tercer en l'apunt \"%s\"."
 
 msgctxt "error:account.move.line:"
 msgid "Wrong credit/debit values."
-msgstr ""
+msgstr "Valors d'haver/deure erronis."
 
 msgctxt "error:account.move.line:"
 msgid "Wrong second currency sign."
-msgstr ""
+msgstr "El signe de la segona moneda és incorrecte."
 
 msgctxt "error:account.move.line:"
 msgid "You can not add/modify lines in closed journal period \"%s\"."
-msgstr ""
+msgstr "No podeu afegir/modificar apunts al diari període tancat \"%s\"."
 
 msgctxt "error:account.move.line:"
 msgid ""
 "You can not create a move line with account \"%s\" because it is a view "
 "account."
-msgstr ""
+msgstr "No podeu crear un apunt amb compte \"%s\" perquè és un compte de vista."
 
 msgctxt "error:account.move.line:"
 msgid "You can not create a move line with account \"%s\" because it is inactive."
-msgstr ""
+msgstr "No podeu crear un apunt amb el compte \"%s\" perquè està inactiu."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
-msgstr ""
+msgstr "No podeu modificar l'apunt \"%s\" perquè ja està conciliat."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
 msgstr ""
+"No podeu modificar els apunts de l'assentament \"%s\" perquè ja està "
+"comptabilitzat."
 
 msgctxt "error:account.move.line:"
 msgid "wrong_second_currency_sign"
-msgstr ""
+msgstr "Signe de la segona moneda incorrecte."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not create a reconciliation where debit \"%(debit)s\" and credit "
 "\"%(credit)s\" differ."
 msgstr ""
+"No podeu crear una conciliació on el deure \"%(debit)s\" i l'haver "
+"\"%(credit)s\" difereixen."
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not modify a reconciliation."
-msgstr ""
+msgstr "No podeu modificar una conciliació."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
 "is configured as not reconcilable."
 msgstr ""
+"No podeu conciliar la línia \"%(line)s\" perquè el seu compte "
+"\"%(account)s\" no està configurat com a conciliable."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because its account \"%(account1)s\""
 " is different from \"%(account2)s\"."
 msgstr ""
+"No podeu conciliar l'apunt \"%(line)s\" perquè el compte \"%(account1)s\" és"
+" diferent de \"%(account2)s\"."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not reconcile line \"%(line)s\" because its party \"%(party1)s\" is "
 "different from \"%(party2)s\"."
 msgstr ""
+"No podeu conciliar l'apunt \"%(line)s\" perquè el tercer \"%(party1)s\" és "
+"diferent de \"%(party2)s\"."
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr ""
+msgstr "No podeu conciliar l'apunt \"%s\" perquè no està en un estat correcte."
 
 msgctxt "error:account.move:"
 msgid ""
 "The period of move \"%s\" is closed.\n"
 "Use the current period?"
 msgstr ""
+"El període de l'assentament \"%s\" està tancat.\n"
+"Voleu utilitzar el període actual?"
 
 msgctxt "error:account.move:"
 msgid ""
 "You can not create move \"%(move)s\" because its date is outside its period."
 msgstr ""
+"No podeu crear l'assentament \"%(move)s\" perquè la seva data es troba fora "
+"del període."
 
 msgctxt "error:account.move:"
 msgid "You can not modify move \"%s\" because it is already posted."
-msgstr ""
+msgstr "No podeu modificar l'assentament \"%s\" perquè ja està comptabilitzat."
 
 msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is an unbalanced."
-msgstr ""
+msgstr "No podeu comptabilitzar l'assentament \"%s\" perquè està desquadrat."
 
 msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is empty."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not set to draft move \"%(move)s\" because period \"%(period)s\" is "
-"closed."
-msgstr ""
+msgstr "No podeu comptabilitzar l'assentament \"%s\" perquè està buit."
 
 msgctxt "error:account.period:"
 msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
-msgstr ""
+msgstr "Els períodes \"%(first)s\" i \"%(second)s\" es sobreposen."
 
 msgctxt "error:account.period:"
 msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
 msgstr ""
+"Les dates del període \"%s\" estan fora de les dates del seu exercici "
+"fiscal."
 
 msgctxt "error:account.period:"
 msgid "No period defined for date \"%s\"."
-msgstr ""
+msgstr "No s'ha definit un període per la data \"%s\"."
 
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
-msgstr ""
+msgstr "Els períodes \"%(first)s\" i \"%(second)s\" tenen la mateixa seqüència."
 
 msgctxt "error:account.period:"
 msgid ""
 "You can not change the post move sequence of period \"%s\" because there are"
 " already posted moves in the period."
 msgstr ""
+"No podeu canviar la seqüència d'assentaments confirmats del període \"%s\" "
+"perquè ja hi ha assentaments comptabilitzats al període."
 
 msgctxt "error:account.period:"
 msgid ""
 "You can not close period \"%(period)s\" because there are non posted moves "
 "\"%(move)s\" in this period."
 msgstr ""
+"No podeu tancar el període \"%(period)s\" perquè hi ha assentaments no "
+"comptabilitzats \"%(move)s\" en aquest període."
 
 msgctxt "error:account.period:"
 msgid "You can not create a period on fiscal year \"%s\" because it is closed."
-msgstr ""
+msgstr "No podeu crear un període a l'exercici fiscal \"%s\" perquè està tancat."
 
 msgctxt "error:account.period:"
 msgid "You can not modify/delete period \"%s\" because it has moves."
-msgstr ""
+msgstr "No podeu modificar/eliminar el període \"%s\" perquè té assentaments."
 
 msgctxt "error:account.period:"
 msgid ""
 "You can not open period \"%(period)s\" because its fiscal year "
 "\"%(fiscalyear)s\" is closed."
 msgstr ""
+"No podeu obrir el període \"%(period)s\" perquè el seu exercici fiscal "
+"\"%(fiscalyear)s\" està tancat."
 
 msgctxt "error:account.tax.template:"
 msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
 "parent."
 msgstr ""
+"\"Actualitza preu unitat\" no es pot aplicar a l'impost \"%(template)s\" per"
+" què té pare."
 
 msgctxt "error:account.tax:"
 msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
 "parent."
 msgstr ""
+"\"Actualitza preu unitat\" no es pot aplicar a l'impost \"%(template)s\" per"
+" què té pare."
 
 msgctxt "field:account.account,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "field:account.account,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.account,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.account,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.account,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr "Moneda"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
-msgstr "С отложено плащане"
+msgstr "Tancament"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr "Отложени плащания"
+msgstr "Tancaments"
 
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Saldo en el llibre major"
 
 msgctxt "field:account.account,id:"
 msgid "ID"
@@ -303,75 +331,75 @@ msgstr "ID"
 
 msgctxt "field:account.account,kind:"
 msgid "Kind"
-msgstr "Вид"
+msgstr "Classe"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
-msgstr "Ляв"
+msgstr "Esquerra"
 
 msgctxt "field:account.account,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account,note:"
 msgid "Note"
-msgstr "Бележка"
+msgstr "Nota"
 
 msgctxt "field:account.account,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Tercer obligatori"
 
 msgctxt "field:account.account,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Concilia"
 
 msgctxt "field:account.account,right:"
 msgid "Right"
-msgstr "Десен"
+msgstr "Dreta"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr "Втора валута"
+msgstr "Moneda secundària"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
-msgstr "Данъци по подразбиране"
+msgstr "Impostos per defecte"
 
 msgctxt "field:account.account,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.account,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
 msgctxt "field:account.account,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
 msgctxt "field:account.account-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account-account.tax,id:"
 msgid "ID"
@@ -379,52 +407,51 @@ msgstr "ID"
 
 msgctxt "field:account.account-account.tax,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
-msgstr "Данък"
+msgstr "Impost"
 
 msgctxt "field:account.account-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account.deferral,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "field:account.account.deferral,id:"
 msgid "ID"
@@ -432,39 +459,39 @@ msgstr "ID"
 
 msgctxt "field:account.account.deferral,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.deferral,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account.deferral,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.account.template,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.account.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
-msgstr "С отложено плащане"
+msgstr "Tancament"
 
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Saldo en el llibre major"
 
 msgctxt "field:account.account.template,id:"
 msgid "ID"
@@ -472,55 +499,55 @@ msgstr "ID"
 
 msgctxt "field:account.account.template,kind:"
 msgid "Kind"
-msgstr "Вид"
+msgstr "Classe"
 
 msgctxt "field:account.account.template,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.template,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Tercer obligatori"
 
 msgctxt "field:account.account.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Concilia"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
-msgstr "Данъци по подразбиране"
+msgstr "Impostos per defecte"
 
 msgctxt "field:account.account.template,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
 msgctxt "field:account.account.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account.template-account.tax.template,account:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "field:account.account.template-account.tax.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account.template-account.tax.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account.template-account.tax.template,id:"
 msgid "ID"
@@ -528,51 +555,56 @@ msgstr "ID"
 
 msgctxt "field:account.account.template-account.tax.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
-msgstr "Шаблон за данък"
+msgstr "Plantilla d'impost"
 
 msgctxt "field:account.account.template-account.tax.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account.template-account.tax.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
+
+#, fuzzy
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "Import"
 
 msgctxt "field:account.account.type,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Дата на баланс"
+msgstr "Balanç de situació"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.account.type,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.account.type,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account.type,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.account.type,display_balance:"
 msgid "Display Balance"
-msgstr "Показване на баланс"
+msgstr "Mostra saldo"
 
 msgctxt "field:account.account.type,id:"
 msgid "ID"
@@ -580,55 +612,55 @@ msgstr "ID"
 
 msgctxt "field:account.account.type,income_statement:"
 msgid "Income Statement"
-msgstr "Отчет за приходи"
+msgstr "Pèrdues i guanys"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.type,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.account.type,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.account.type,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account.type,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.account.type.template,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Дата на баланс"
+msgstr "Balanç de situació"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.account.type.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.account.type.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.account.type.template,display_balance:"
 msgid "Display Balance"
-msgstr "Показване на баланс"
+msgstr "Mostra saldo"
 
 msgctxt "field:account.account.type.template,id:"
 msgid "ID"
@@ -636,181 +668,164 @@ msgstr "ID"
 
 msgctxt "field:account.account.type.template,income_statement:"
 msgid "Income Statement"
-msgstr "Отчет за приходи"
+msgstr "Pèrdues i guanys"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.account.type.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.account.type.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.account.type.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Tercer"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
-msgstr ""
+msgstr "Ara"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,term1:"
 msgid "First Term"
-msgstr "Пъври период"
+msgstr "Primer termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,term2:"
 msgid "Second Term"
-msgstr "Втори период"
+msgstr "Segon termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,term3:"
 msgid "Third Term"
-msgstr "Трети период"
+msgstr "Tercer termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.aged_balance,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,term1:"
 msgid "First Term"
-msgstr "Пъври период"
+msgstr "Primer termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,term2:"
 msgid "Second Term"
-msgstr "Втори период"
+msgstr "Segon termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,term3:"
 msgid "Third Term"
-msgstr "Трети период"
+msgstr "Tercer termini"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
-msgstr "Единица"
+msgstr "Unitat"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
+msgctxt "field:account.balance_sheet.context,comparison:"
+msgid "Comparison"
+msgstr ""
+
 msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
 #, fuzzy
+msgctxt "field:account.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "field:account.balance_sheet.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
 msgctxt "field:account.configuration,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.configuration,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
-msgstr "Разнодна сметка по подразбиране"
+msgstr "Compte a pagar per defecte"
 
 msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr "Приходна сметка по подразбиране"
+msgstr "Compte a cobrar per defecte"
 
 msgctxt "field:account.configuration,id:"
 msgid "ID"
@@ -818,81 +833,71 @@ msgstr "ID"
 
 msgctxt "field:account.configuration,rec_name:"
 msgid "Name"
-msgstr "Име на прикачен файл"
+msgstr "Nom"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
-msgstr ""
+msgstr "Arrodoniment d'impostos"
 
 msgctxt "field:account.configuration,tax_roundings:"
 msgid "Tax Roundings"
-msgstr ""
+msgstr "Arrodoniments d'impostos"
 
 msgctxt "field:account.configuration,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.configuration,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuració"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,method:"
 msgid "Method"
-msgstr "Метод"
+msgstr "Mètode"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.create_chart.account,account_template:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.create_chart.account,id:"
 msgid "ID"
@@ -900,15 +905,15 @@ msgstr "ID"
 
 msgctxt "field:account.create_chart.properties,account_payable:"
 msgid "Default Payable Account"
-msgstr "Разходна сметка по подразбиране"
+msgstr "Compte a pagar per defecte"
 
 msgctxt "field:account.create_chart.properties,account_receivable:"
 msgid "Default Receivable Account"
-msgstr "Приходна сметка по подразбиране"
+msgstr "Compte a cobrar per defecte"
 
 msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.create_chart.properties,id:"
 msgid "ID"
@@ -920,27 +925,27 @@ msgstr "ID"
 
 msgctxt "field:account.fiscalyear,close_lines:"
 msgid "Close Lines"
-msgstr "Затваряне на редове"
+msgstr "Apunts de tancament"
 
 msgctxt "field:account.fiscalyear,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.fiscalyear,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.fiscalyear,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
-msgstr "Крайна дата"
+msgstr "Data final"
 
 msgctxt "field:account.fiscalyear,id:"
 msgid "ID"
@@ -948,47 +953,47 @@ msgstr "ID"
 
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Последователност за след движение"
+msgstr "Seqüència d'assentament comptabilitzat"
 
 msgctxt "field:account.fiscalyear,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
-msgstr "Начална дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "field:account.fiscalyear,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.fiscalyear,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.fiscalyear-account.move.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.fiscalyear-account.move.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.fiscalyear-account.move.line,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "field:account.fiscalyear-account.move.line,id:"
 msgid "ID"
@@ -996,392 +1001,354 @@ msgstr "ID"
 
 msgctxt "field:account.fiscalyear-account.move.line,line:"
 msgid "Line"
-msgstr "Ред"
+msgstr "Apunt"
 
 msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.fiscalyear-account.move.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
-msgstr ""
+msgstr "Compte haver"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
 msgid "Debit Account"
-msgstr ""
+msgstr "Compte deure "
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
-msgstr "Финансова година за затваряне"
+msgstr "Exercici fiscal a tancar"
 
 msgctxt "field:account.fiscalyear.close.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,end_balance:"
 msgid "End Balance"
-msgstr "Краен баланс"
+msgstr "Saldo final"
 
 msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
-msgstr ""
+msgstr "Haver final"
 
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
-msgstr ""
+msgstr "Deure final"
 
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr ""
+msgstr "Saldo en el llibre major"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr "Apunts"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
-msgstr "Начален баланс"
+msgstr "Saldo inicial"
 
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
-msgstr ""
+msgstr "Haver inicial"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
-msgstr ""
+msgstr "Deure inicial"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
-msgstr "Край на период"
+msgstr "Període final"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
-msgstr "Начален период"
+msgstr "Període inicial"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
-msgstr "Движение"
+msgstr "Assentament"
 
 msgctxt "field:account.general_ledger.line,move_description:"
 msgid "Move Description"
-msgstr ""
+msgstr "Descripció assentament"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
-msgstr "Източник"
+msgstr "Origen"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Tercer"
 
 msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Tercer obligatori"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
-msgstr "Край на период"
+msgstr "Període final"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr ""
+msgstr "Suma per tercer"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
-msgstr "Начален период"
+msgstr "Període inicial"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr ""
+
 msgctxt "field:account.income_statement.context,end_period:"
 msgid "End Period"
-msgstr "Край на период"
+msgstr "Període final"
 
 #, fuzzy
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "Període final"
+
 msgctxt "field:account.income_statement.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 #, fuzzy
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
 msgctxt "field:account.income_statement.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,start_period:"
 msgid "Start Period"
-msgstr "Начален период"
+msgstr "Període inicial"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "Període inicial"
 
 msgctxt "field:account.journal,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.journal,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.journal,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "field:account.journal,credit_account:"
 msgid "Default Credit Account"
-msgstr "Кредитна сметка по подразбиране"
+msgstr "Compte haver per defecte"
 
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
 msgctxt "field:account.journal,debit_account:"
 msgid "Default Debit Account"
-msgstr "Дебитна сметка по подразбиране"
+msgstr "Compte deure per defecte"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1389,65 +1356,62 @@ msgstr "ID"
 
 msgctxt "field:account.journal,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.journal,type:"
 msgid "Type"
-msgstr "Вид"
-
-#, fuzzy
-msgctxt "field:account.journal,update_posted:"
-msgid "Allow updating posted moves"
-msgstr "Позволяване на отмяна на движение"
+msgstr "Tipus"
 
 msgctxt "field:account.journal,view:"
 msgid "View"
-msgstr "Изглед"
+msgstr "Vista"
 
 msgctxt "field:account.journal,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.journal,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
-
-msgctxt "field:account.journal.open_cash.start,end_date:"
-msgid "End Date"
-msgstr ""
-
-msgctxt "field:account.journal.open_cash.start,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Usuari modificació"
 
 #, fuzzy
-msgctxt "field:account.journal.open_cash.start,start_date:"
+msgctxt "field:account.journal.open_cash.context,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+#, fuzzy
+msgctxt "field:account.journal.open_cash.context,id:"
+msgid "ID"
+msgstr "Identificador"
+
+#, fuzzy
+msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
-msgstr "Начална дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.journal.period,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:account.journal.period,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.journal.period,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr "Икона"
+msgstr "Icona"
 
 msgctxt "field:account.journal.period,id:"
 msgid "ID"
@@ -1455,43 +1419,39 @@ msgstr "ID"
 
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr "Дневник"
-
-msgctxt "field:account.journal.period,name:"
-msgid "Name"
-msgstr "Име"
+msgstr "Diari"
 
 msgctxt "field:account.journal.period,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "field:account.journal.period,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.period,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "field:account.journal.period,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.journal.period,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.journal.type,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.journal.type,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.journal.type,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.journal.type,id:"
 msgid "ID"
@@ -1499,31 +1459,31 @@ msgstr "ID"
 
 msgctxt "field:account.journal.type,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.type,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.type,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.journal.view,columns:"
 msgid "Columns"
-msgstr "Колони"
+msgstr "Columnes"
 
 msgctxt "field:account.journal.view,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.journal.view,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.journal.view,id:"
 msgid "ID"
@@ -1531,31 +1491,31 @@ msgstr "ID"
 
 msgctxt "field:account.journal.view,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.view,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.view,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.journal.view,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.journal.view.column,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.journal.view.column,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.journal.view.column,field:"
 msgid "Field"
-msgstr "Поле"
+msgstr "Camp"
 
 msgctxt "field:account.journal.view.column,id:"
 msgid "ID"
@@ -1563,57 +1523,55 @@ msgstr "ID"
 
 msgctxt "field:account.journal.view.column,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.view.column,readonly:"
 msgid "Readonly"
-msgstr "Само за четене"
+msgstr "Només lectura"
 
 msgctxt "field:account.journal.view.column,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.journal.view.column,required:"
 msgid "Required"
-msgstr "Задължителен"
+msgstr "Obligatori"
 
 msgctxt "field:account.journal.view.column,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.journal.view.column,view:"
 msgid "View"
-msgstr "Изглед"
+msgstr "Vista"
 
 msgctxt "field:account.journal.view.column,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.move,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.move,date:"
 msgid "Effective Date"
-msgstr "Ефективна дата"
+msgstr "Data efectiva"
 
-#, fuzzy
 msgctxt "field:account.move,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "field:account.move,id:"
 msgid "ID"
@@ -1621,110 +1579,103 @@ msgstr "ID"
 
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr "Apunts"
 
-#, fuzzy
 msgctxt "field:account.move,number:"
 msgid "Number"
-msgstr "Номер"
+msgstr "Número"
 
-#, fuzzy
 msgctxt "field:account.move,origin:"
 msgid "Origin"
-msgstr "Източник"
+msgstr "Origen"
 
 msgctxt "field:account.move,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
-msgstr "Дата на публикуване"
+msgstr "Data comptabilització"
 
 msgctxt "field:account.move,post_number:"
 msgid "Post Number"
-msgstr ""
+msgstr "Número comptabilització"
 
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.move,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "field:account.move,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.move,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.move.cancel.default,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.move.line,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
 msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
-msgstr ""
+msgstr "Moneda de l'import"
 
-#, fuzzy
 msgctxt "field:account.move.line,amount_currency_digits:"
 msgid "Amount Currency Digits"
-msgstr "Цифри за втора валута"
+msgstr "Decimals de la moneda de l'import"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Сума в допълнителна валута"
+msgstr "Import segona moneda"
 
 msgctxt "field:account.move.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.move.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
-msgstr "Ефективна дата"
+msgstr "Data efectiva"
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "field:account.move.line,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "field:account.move.line,id:"
 msgid "ID"
@@ -1732,140 +1683,127 @@ msgstr "ID"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
-msgstr "Дата на падеж"
+msgstr "Data de venciment"
 
 msgctxt "field:account.move.line,move:"
 msgid "Move"
-msgstr "Движение"
+msgstr "Assentament"
 
 msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
-msgstr ""
+msgstr "Descripció assentament"
 
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
-msgstr "Състояние на движение"
+msgstr "Estat assentament"
 
-#, fuzzy
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
-msgstr "Източник"
+msgstr "Origen"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Tercer"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Tercer obligatori"
 
 msgctxt "field:account.move.line,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "field:account.move.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
-msgstr "Съгласуване"
+msgstr "Conciliació"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr "Втора валута"
+msgstr "Segona moneda"
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Цифри за втора валута"
+msgstr "Decimals de la segona moneda"
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
-msgstr "Ред на данъци"
+msgstr "Línies d'impost"
 
 msgctxt "field:account.move.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,move:"
 msgid "Move"
-msgstr "Движение"
+msgstr "Assentament"
 
 msgctxt "field:account.move.line.template,operation:"
 msgid "Operation"
-msgstr ""
+msgstr "Operació"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,party:"
 msgid "Party"
-msgstr "Управление на партньор"
+msgstr "Tercer"
 
 msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
-msgstr ""
+msgstr "Tercer obligatori"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr "Impostos"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.move.open_journal.ask,id:"
 msgid "ID"
@@ -1873,19 +1811,19 @@ msgstr "ID"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "field:account.move.print_general_journal.start,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.move.print_general_journal.start,from_date:"
 msgid "From Date"
-msgstr "От дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.move.print_general_journal.start,id:"
 msgid "ID"
@@ -1893,30 +1831,27 @@ msgstr "ID"
 
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
-msgstr "Публикувано движение"
+msgstr "Assentament comptabilitzat"
 
 msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
-msgstr "До дата"
+msgstr "Data final"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
@@ -1924,20 +1859,19 @@ msgstr "ID"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.move.reconciliation,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
 msgctxt "field:account.move.reconciliation,id:"
 msgid "ID"
@@ -1945,213 +1879,183 @@ msgstr "ID"
 
 msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr "Línies"
 
 msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.move.reconciliation,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.move.reconciliation,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.move.reconciliation,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.move.template,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
-#, fuzzy
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.move.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.move.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.move.template,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.move.template,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.move.template,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.template,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
-#, fuzzy
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
-msgstr "Ключови думи"
+msgstr "Paraules clau"
 
-#, fuzzy
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
-msgstr "Транзакции"
+msgstr "Línies"
 
-#, fuzzy
 msgctxt "field:account.move.template,name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.move.template,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.move.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.move.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.keywords,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Decimals"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,move:"
 msgid "Move"
-msgstr "Движение"
+msgstr "Assentament"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
-msgstr "Задължителен"
+msgstr "Obligatori"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.move.template.keyword,string:"
 msgid "String"
-msgstr ""
+msgstr "Etiqueta"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "field:account.open_chart.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
-msgstr "Публикувано движение"
+msgstr "Assentaments comptabilitzats"
 
 msgctxt "field:account.period,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.period,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.period,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.period,end_date:"
 msgid "Ending Date"
-msgstr "Крайна дата"
+msgstr "Data final"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "field:account.period,id:"
 msgid "ID"
@@ -2159,151 +2063,139 @@ msgstr "ID"
 
 msgctxt "field:account.period,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Последователност за след движение"
+msgstr "Seqüència d'assentament comptabilitzat"
 
 msgctxt "field:account.period,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
-msgstr "Начална дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.period,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "field:account.period,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
 msgctxt "field:account.period,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.period,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Compte"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
-msgstr "Транзакции"
+msgstr "Apunts"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr "Партньори"
+msgstr "Tercers"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
-msgstr "Управление на партньор"
+msgstr "Tercer"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write-Off"
-msgstr "Анулиран"
+msgstr "Desajust"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
 msgctxt "field:account.tax,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.tax,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Сметка на кредитно известие"
+msgstr "Compte de l'abonament"
 
 msgctxt "field:account.tax,credit_note_base_code:"
 msgid "Credit Note Base Code"
-msgstr "Основен код на кредитно известие"
+msgstr "Codi de la base de l'abonament"
 
 msgctxt "field:account.tax,credit_note_base_sign:"
 msgid "Credit Note Base Sign"
-msgstr "Знак на кредитно известие"
+msgstr "Signe de la base de l'abonament"
 
 msgctxt "field:account.tax,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr "Код на данък на кредитно известие"
+msgstr "Codi de l'impost de l'abonament"
 
 msgctxt "field:account.tax,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr "Знак на данък на кредитно известие"
+msgstr "Signe de l'impost de l'abonament"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.tax,end_date:"
 msgid "Ending Date"
-msgstr "Крайна дата"
+msgstr "Data final"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
-msgstr "Група"
+msgstr "Grup"
 
 msgctxt "field:account.tax,id:"
 msgid "ID"
@@ -2311,101 +2203,99 @@ msgstr "ID"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr "Сметка за фактура"
+msgstr "Compte de factura"
 
 msgctxt "field:account.tax,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr "Основен код на фактура"
+msgstr "Codi de la base de la factura"
 
 msgctxt "field:account.tax,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr "Основен знак на фактура"
+msgstr "Signe de la base de la factura"
 
 msgctxt "field:account.tax,invoice_tax_code:"
 msgid "Invoice Tax Code"
-msgstr "Код на данък на фактура"
+msgstr "Codi de l'impost de la factura"
 
 msgctxt "field:account.tax,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
-msgstr "Знак на данък на фактура"
+msgstr "Signe de l'impost de la factura"
 
 msgctxt "field:account.tax,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
-#, fuzzy
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr "Отношение"
+msgstr "Percentatge"
 
 msgctxt "field:account.tax,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
-msgstr "Начална дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.tax,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
-msgstr ""
+msgstr "Actualitza preu unitat"
 
 msgctxt "field:account.tax,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:account.tax.code,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.tax.code,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.tax.code,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.code,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
@@ -2413,35 +2303,35 @@ msgstr "ID"
 
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.code,sum:"
 msgid "Sum"
-msgstr "Сума"
+msgstr "Suma"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.tax.code,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.code,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "field:account.tax.code.open_chart.start,id:"
 msgid "ID"
@@ -2449,35 +2339,35 @@ msgstr "ID"
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
-msgstr "Метод"
+msgstr "Mètode"
 
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "field:account.tax.code.template,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
@@ -2485,85 +2375,83 @@ msgstr "ID"
 
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.code.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.group,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "field:account.tax.group,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.group,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.group,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.tax.group,kind:"
 msgid "Kind"
-msgstr "Вид"
+msgstr "Classe"
 
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.group,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.group,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.group,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
 msgctxt "field:account.tax.line,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
-#, fuzzy
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.tax.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.tax.line,id:"
 msgid "ID"
@@ -2571,130 +2459,119 @@ msgstr "ID"
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
-msgstr "Ред от движение"
+msgstr "Apunt"
 
 msgctxt "field:account.tax.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
-msgstr "Данък"
+msgstr "Impost"
 
 msgctxt "field:account.tax.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr "Ред"
+msgstr "Línia"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
-msgstr "Данък"
+msgstr "Impost"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Empresa"
 
 msgctxt "field:account.tax.rule,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.rule,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.rule,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.tax.rule,kind:"
 msgid "Kind"
-msgstr "Вид"
+msgstr "Classe"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr "Línies"
 
 msgctxt "field:account.tax.rule,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.rule,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.rule.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.rule.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
-msgstr "Данъчна група"
+msgstr "Grup d'impost"
 
 msgctxt "field:account.tax.rule.line,id:"
 msgid "ID"
@@ -2702,47 +2579,47 @@ msgstr "ID"
 
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
-msgstr "Оригинален данък"
+msgstr "Impost origen"
 
 msgctxt "field:account.tax.rule.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
-msgstr "Правило"
+msgstr "Regla"
 
 msgctxt "field:account.tax.rule.line,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
-msgstr "Заместващ данък"
+msgstr "Impost substitució"
 
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
-msgstr "Шаблон"
+msgstr "Plantilla"
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.rule.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.rule.line.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.rule.line.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
-msgstr "Данъчна група"
+msgstr "Grup d'impost"
 
 msgctxt "field:account.tax.rule.line.template,id:"
 msgid "ID"
@@ -2750,125 +2627,123 @@ msgstr "ID"
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr "Оригинален данък"
+msgstr "Impost origen"
 
 msgctxt "field:account.tax.rule.line.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
-msgstr "Правило"
+msgstr "Regla"
 
 msgctxt "field:account.tax.rule.line.template,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
-msgstr "Заместващ данък"
+msgstr "Impost substitució"
 
 msgctxt "field:account.tax.rule.line.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.rule.line.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "field:account.tax.rule.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.rule.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.rule.template,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.template,kind:"
 msgid "Kind"
-msgstr "Вид"
+msgstr "Classe"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr "Línies"
 
 msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.rule.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.rule.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr "Import"
 
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "field:account.tax.template,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
 msgctxt "field:account.tax.template,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Сметка на кредитно известие"
+msgstr "Compte de l'abonament"
 
 msgctxt "field:account.tax.template,credit_note_base_code:"
 msgid "Credit Note Base Code"
-msgstr "Основен код на кредитно известие"
+msgstr "Codi de la base de l'abonament"
 
 msgctxt "field:account.tax.template,credit_note_base_sign:"
 msgid "Credit Note Base Sign"
-msgstr "Знак на кредитно известие"
+msgstr "Signe de la base de l'abonament"
 
 msgctxt "field:account.tax.template,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr "Код на данък на кредитно известие"
+msgstr "Codi de l'impost de l'abonament"
 
 msgctxt "field:account.tax.template,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr "Знак на данък на кредитно известие"
+msgstr "Signe de l'impost de l'abonament"
 
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
 msgid "Ending Date"
-msgstr "Крайна дата"
+msgstr "Data final"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
-msgstr "Група"
+msgstr "Grup"
 
 msgctxt "field:account.tax.template,id:"
 msgid "ID"
@@ -2876,69 +2751,67 @@ msgstr "ID"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr "Сметка за фактура"
+msgstr "Compte de factura"
 
 msgctxt "field:account.tax.template,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr "Основен код на фактура"
+msgstr "Codi de la base de la factura"
 
 msgctxt "field:account.tax.template,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr "Основен знак на фактура"
+msgstr "Signe de la base de la factura"
 
 msgctxt "field:account.tax.template,invoice_tax_code:"
 msgid "Invoice Tax Code"
-msgstr "Код на данък на фактура"
+msgstr "Codi de l'impost de la factura"
 
 msgctxt "field:account.tax.template,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
-msgstr "Знак на данък на фактура"
+msgstr "Signe de l'impost de la factura"
 
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Pare"
 
-#, fuzzy
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr "Отношение"
+msgstr "Percentatge"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
-msgstr "Начална дата"
+msgstr "Data inicial"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tipus"
 
 msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
-msgstr ""
+msgstr "Actualitza preu unitat"
 
 msgctxt "field:account.tax.template,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
 msgctxt "field:account.tax.template,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr "Основна сметка"
+msgstr "Compte arrel"
 
 msgctxt "field:account.update_chart.start,id:"
 msgid "ID"
@@ -2950,1149 +2823,1120 @@ msgstr "ID"
 
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
-msgstr "Разходна сметка"
+msgstr "Compte a pagar"
 
 msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
-msgstr "Приходна сметка"
+msgstr "Compte a cobrar"
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr "Правило за данък на клиент"
+msgstr "Regla d'impost de client"
 
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr "Разходен"
+msgstr "A pagar"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr "За плащане днес"
+msgstr "A pagar avui"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr "За получаване"
+msgstr "A cobrar"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr "За получаване днес"
+msgstr "A cobrar avui"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "Правило за данък на доставчик"
+msgstr "Regla d'impost de proveïdor"
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
-msgstr ""
+msgstr "Només mostra el saldo en el llibre major."
 
 msgctxt "help:account.account,reconcile:"
 msgid ""
 "Allow move lines of this account \n"
 "to be reconciled."
-msgstr ""
-"Позволява редове от тази сметка\n"
-"да бъдат съгласувани"
+msgstr "Permetre conciliar els apunts d'aquest compte."
 
 msgctxt "help:account.account,second_currency:"
 msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
 msgstr ""
-"Всички движение по тази сметка\n"
-"задължително да имат втора валута"
+"Força l'ús d'aquesta moneda secundària \n"
+"a tots els assentaments d'aquest compte."
 
 msgctxt "help:account.account,taxes:"
 msgid ""
 "Default tax for manual encoding of move lines \n"
 "for journal types: \"expense\" and \"revenue\""
 msgstr ""
-"Данък по подразбиране за ръчно кодиране на редове за движение\n"
-"за видове дневници: \"разход\" и \"приход\""
+"Impost per defecte per a la codificació manual\n"
+"d'apunts per diaris de tipus: \"despeses\" i \"ingressos\"."
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
-msgstr ""
+msgstr "Només mostra el saldo en el llibre major."
 
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
-msgstr "За подреждане на вида на сметка"
+msgstr "Serveix per ordenar el tipus de compte."
 
-#, fuzzy
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
-#, fuzzy
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
-#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
-#, fuzzy
 msgctxt "help:account.general_ledger.line.context,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
-#, fuzzy
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
-msgstr ""
+msgstr "També conegut com el número de foli."
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
-msgstr "Сумата изразена във втора валута"
+msgstr "L'import expressat en la segona moneda."
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
 "This field is used for payable and receivable lines. \n"
 "You can put the limit date for the payment."
 msgstr ""
-"Полето се използва за редове за разходни и приходи.\n"
-"Може да зададете крайна дата за плащането."
+"Aquest camp s'utilitza pels apunts a pagar i a cobrar.\n"
+"Podeu posar la data límit per al pagament."
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
-msgstr "Втората валута"
+msgstr "La segona moneda."
 
 msgctxt "help:account.move.line.template,description:"
 msgid "Keywords values substitutions are identified by braces ('{' and '}')"
 msgstr ""
+"Les paraules clau a substituir per valors s'identifiquen escrivint-les dins "
+"de claus ('{' i '}')."
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
-msgstr ""
+msgstr "Data major dels apunts conciliats."
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today"
-msgstr ""
+msgstr "Deixeu-lo buit per avui."
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')"
 msgstr ""
+"Les paraules clau a substituir per valors s'identifiquen escrivint-les dins "
+"de claus ('{' i '}')."
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "Оставете празно за всички отворени финансови години"
+msgstr "Deixeu-lo buit per tots els exercicis fiscals oberts."
 
-#, fuzzy
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
-msgstr "Показване само на публикувани движения"
+msgstr "Mostra només assentaments comptabilitzats."
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency"
-msgstr "Във валута на фирмата"
+msgstr "En la moneda de l'empresa."
 
 msgctxt "help:account.tax,credit_note_base_sign:"
 msgid "Usualy 1 or -1"
-msgstr "Обикновенно 1 или -1"
+msgstr "Normalment 1 o -1."
 
 msgctxt "help:account.tax,credit_note_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr "Обикновенно 1 или -1"
+msgstr "Normalment 1 o -1."
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports"
-msgstr "Името което ще се използва в справките"
+msgstr "El nom que s'utilitzarà en els informes."
 
 msgctxt "help:account.tax,invoice_base_sign:"
 msgid "Usualy 1 or -1"
-msgstr "Обикновенно 1 или -1"
+msgstr "Normalment 1 o -1."
 
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr "Обикновенно 1 или -1"
+msgstr "Normalment 1 o -1."
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
-msgstr "За подреждане на данъците"
+msgstr "Serveix per ordenar els impostos."
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
 "by this tax"
 msgstr ""
+"Si es marca, aquest impost modificarà el preu unitat pels càlculs d'impostos"
+" posteriors."
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "Оставете празно за всички отворени финансови години"
+msgstr "Deixeu-lo buit per tots els exercicis fiscals oberts."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
-msgstr "Оствете празно за всички периоди за всички финансови години"
+msgstr ""
+"Deixeu-lo buit per tots els períodes de tots els exercicis fiscals oberts."
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
-"Ако е попълнен оригиналния данък правилото ще бъде изпълено само за този "
-"данък."
+"Si s'emplena l'impost original, la regla s'aplicarà només per aquest impost."
 
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
 msgstr ""
-"Ако е попълнен шаблона на орифиналния данък правилото ще се приложи само за "
-"този шаблон на данък"
+"Si s'emplena la plantilla d'impost original, la regla s'aplicarà només per "
+"aquesta plantilla d'impost."
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
-msgstr "Приложи това правило върху данъци ако партньора е клиент"
+msgstr "Aplica aquesta regla als impostos quan el tercer és un client."
 
 msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
-msgstr "Прилагане на това правило за данъци ако партньора е доставчик."
+msgstr "Aplica aquesta regla als impostos quan el tercer és un proveïdor."
 
 msgctxt "model:account.account,name:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
-msgstr "Сметка - Данък"
+msgstr "Compte - Impost"
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
-msgstr "Сметка с отложено плащане"
+msgstr "Tancament comptable"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "model:account.account.template-account.tax.template,name:"
 msgid "Account Template - Tax Template"
-msgstr "Шаблон на сметка - Шаблон на данък"
+msgstr "Plantilla de compte - Plantilla d'impost"
 
 msgctxt "model:account.account.type,name:"
 msgid "Account Type"
-msgstr "Вид сметка"
+msgstr "Tipus de compte"
 
 msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
-msgstr "Шаблон на вид сметка"
+msgstr "Plantilla de tipus de compte"
 
-#, fuzzy
 msgctxt "model:account.aged_balance,name:"
 msgid "Aged Balance"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric"
 
 msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
-msgstr ""
+msgstr "Context del balanç històric"
 
 msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
-msgstr ""
+msgstr "Context del balanç de situació"
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
-msgstr "Настройване на сметка"
+msgstr "Configuració comptable"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
-msgstr ""
+msgstr "Configuració comptable de l'arrodoniment d'impostos"
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
-msgstr "Създаване на графика"
+msgstr "Crea pla comptable"
 
 msgctxt "model:account.create_chart.properties,name:"
 msgid "Create Chart"
-msgstr "Създаване на графика"
+msgstr "Crea pla comptable"
 
 msgctxt "model:account.create_chart.start,name:"
 msgid "Create Chart"
-msgstr "Създаване на графика"
+msgstr "Crea pla comptable"
 
 msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
-msgstr "Финансова година"
+msgstr "Exercici fiscal"
 
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
-msgstr "Финансова година - Ред от движение"
+msgstr "Exercici fiscal - Apunt"
 
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Crea l'assentament de regularització"
 
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgstr "Tanca exercici fiscal"
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
-msgstr ""
+msgstr "Compte llibre major"
 
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
-msgstr ""
+msgstr "Context del compte llibre major"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
-msgstr ""
+msgstr "Apunt llibre major"
 
 msgctxt "model:account.general_ledger.line.context,name:"
 msgid "General Ledger Line Context"
-msgstr ""
+msgstr "Context de l'apunt llibre major"
 
 msgctxt "model:account.income_statement.context,name:"
 msgid "Income Statement Context"
-msgstr ""
+msgstr "Context del pèrdues i guanys"
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Diari"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "В брой"
+msgstr "Efectiu"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Разход"
+msgstr "Despesa"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr "Приход"
+msgstr "Ingressos"
 
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr "Наличност"
+msgstr "Estoc"
 
-#, fuzzy
-msgctxt "model:account.journal.open_cash.start,name:"
-msgid "Open Journal Cash"
-msgstr "Запитване за отваряне на дневник"
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
+msgstr ""
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr "Дневник - Период"
+msgstr "Diari - Període"
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
-msgstr "Вид дневник"
+msgstr "Tipus de diari"
 
 msgctxt "model:account.journal.type,name:journal_type_cash"
 msgid "Cash"
-msgstr "В брой"
+msgstr "Efectiu"
 
 msgctxt "model:account.journal.type,name:journal_type_expense"
 msgid "Expense"
-msgstr "Разход"
+msgstr "Despesa"
 
 msgctxt "model:account.journal.type,name:journal_type_general"
 msgid "General"
-msgstr "Основен"
+msgstr "General"
 
 msgctxt "model:account.journal.type,name:journal_type_revenue"
 msgid "Revenue"
-msgstr "Приход"
+msgstr "Ingressos"
 
 msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
-msgstr "Положение"
+msgstr "Situació"
 
-#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_write_off"
 msgid "Write-Off"
-msgstr "Анулиран"
+msgstr "Desajust"
 
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
-msgstr "Изглед на дневник"
+msgstr "Vista de diari"
 
 msgctxt "model:account.journal.view.column,name:"
 msgid "Journal View Column"
-msgstr "Колона от изглед на дневник"
+msgstr "Columna de la vista de diari"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
-msgstr "Движение по сметка"
+msgstr "Assentament comptable"
 
 msgctxt "model:account.move.cancel.default,name:"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Cancel·la assentaments"
 
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
-msgstr "Ред от движение по сметка"
+msgstr "Apunt comptable"
 
-#, fuzzy
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
-msgstr "Шаблон на данък на сметка"
+msgstr "Plantilla d'apunt comptable"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Запитване за отваряне на дневник"
+msgstr "Demana el diari a obrir"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
-msgstr "Отпечатване на основен дневник"
+msgstr "Imprimeix llibre diari"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
-msgstr "Съгласуване на редове на отписване"
+msgstr "Concilia apunts amb desajust"
 
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
-msgstr "Редове от съгласуване на движение по сметка"
+msgstr "Línies de conciliació d'apunts comptables"
 
-#, fuzzy
 msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
-msgstr "Шаблон на вид сметка"
+msgstr "Plantilla d'assentament comptable"
 
 msgctxt "model:account.move.template.create.keywords,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Crea assentament des de plantilla"
 
 msgctxt "model:account.move.template.create.template,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Crea assentament des de plantilla"
 
 msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
-msgstr ""
+msgstr "Paraula clau de plantilla d'assentament comptable"
 
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
+msgstr "Obre pla comptable"
 
 msgctxt "model:account.period,name:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
-#, fuzzy
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Concilia"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
-msgstr "Данък на сметка"
+msgstr "Impost comptable"
 
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
-msgstr "Код на данък"
+msgstr "Codi d'impost"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Отваряне на таблица с кодове на данъци"
+msgstr "Obre pla de codis d'impost"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
-msgstr "Шаблони за кодове на данъци"
+msgstr "Plantilla de codi d'impost"
 
 msgctxt "model:account.tax.group,name:"
 msgid "Tax Group"
-msgstr "Данъчна група"
+msgstr "Grup d'impost"
 
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
-msgstr "Ред на данък"
+msgstr "Línia d'impost"
 
-#, fuzzy
 msgctxt "model:account.tax.line.template,name:"
 msgid "Account Tax Line Template"
-msgstr "Шаблон на данък на сметка"
+msgstr "Plantilla de línia d'impost comptable"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
-msgstr "Правило за данък"
+msgstr "Regla d'impost"
 
 msgctxt "model:account.tax.rule.line,name:"
 msgid "Tax Rule Line"
-msgstr "Ред от правило на данък"
+msgstr "Línia regla d'impost"
 
 msgctxt "model:account.tax.rule.line.template,name:"
 msgid "Tax Rule Line Template"
-msgstr "Шаблон на ред от правило на данък"
+msgstr "Plantilla de línia regla d'impost"
 
 msgctxt "model:account.tax.rule.template,name:"
 msgid "Tax Rule Template"
-msgstr "Шаблон на правило за данък"
+msgstr "Plantilla de regla d'impost"
 
 msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
-msgstr "Шаблон на данък на сметка"
+msgstr "Plantilla d'impost comptable"
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
-msgstr "Обновяване на графика"
+msgstr "Actualitza pla comptable"
 
 msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
-msgstr "Обновяване на графика"
+msgstr "Actualitza pla comptable"
+
+msgctxt "model:ir.action,name:"
+msgid "Open Journal Cash"
+msgstr "Obre diari d'efectiu"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Дата на баланс"
+msgstr "Balanç de situació"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Отчет за приходи"
+msgstr "Pèrdues i guanys"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Comptes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list2"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Comptes"
 
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
-msgstr "Шаблони на сметка"
+msgstr "Plantilles de compte"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Arbre de comptes"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Comptes"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr "Видове сметки"
+msgstr "Tipus de compte"
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Шаблони на вид сметка"
+msgstr "Plantilles de tipus de compte"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr "Видове сметки"
+msgstr "Arbre de tipus de compte"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_aged_balance_list"
 msgid "Aged Balance"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric"
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Crea l'assentament de regularització"
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Cancel·la assentaments"
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgstr "Tanca exercici fiscal"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Отваряне на таблица с кодове на данъци"
+msgstr "Obre pla de codis d'impost"
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
-msgstr "Настройване на сметка"
+msgstr "Configuració comptable"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Финансови години"
+msgstr "Exercicis fiscals"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
-msgstr ""
+msgstr "Llibre major - Comptes"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
-msgstr ""
+msgstr "Llibre major - Apunts"
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Дневници"
+msgstr "Diaris"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Diaris d'efectiu"
 
 msgctxt "model:ir.action,name:act_journal_period_close"
 msgid "Close Journals - Periods"
-msgstr "Затваряне на дневници - Периоди"
+msgstr "Tanca diaris - períodes"
 
 msgctxt "model:ir.action,name:act_journal_period_form"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "model:ir.action,name:act_journal_period_reopen"
 msgid "Re-Open Journals - Periods"
-msgstr "Наново отваряне на дневници - периоди"
+msgstr "Reobre diaris - períodes"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
-msgstr "Видове дневници"
+msgstr "Tipus de diari"
 
 msgctxt "model:ir.action,name:act_journal_view_form"
 msgid "Journal Views"
-msgstr "Изгледи на дневник"
+msgstr "Vistes de diari"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr "Движения по сметка"
+msgstr "Assentaments comptables"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr "Редове от движение на сметка"
+msgstr "Apunts comptables"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr ""
+msgstr "Apunts a pagar/cobrar"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
-msgstr "Съгласувания"
+msgstr "Línies de conciliació"
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Crea assentament des de plantilla"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Account Move Template"
-msgstr "Шаблон на вид сметка"
+msgstr "Plantilla d'assentament comptable"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Отваряне на сметка на движение"
+msgstr "Obre compte de l'assentament"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
+msgstr "Obre pla comptable"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Достъп до меню"
+msgstr "Obre diari"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
-msgstr "Отваряне код на данък"
+msgstr "Obre codi d'impost"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr ""
+msgstr "Obre tipus"
 
 msgctxt "model:ir.action,name:act_period_close"
 msgid "Close Periods"
-msgstr "Затваряне на периоди"
+msgstr "Tanca períodes"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "model:ir.action,name:act_period_form2"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "model:ir.action,name:act_period_reopen"
 msgid "Re-Open Periods"
-msgstr "Повторно отваряне на периоди"
+msgstr "Reobre períodes"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Concilia comptes"
 
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr "Съгласуване на редове"
+msgstr "Concilia apunts"
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Codis d'impost"
 
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Шаблони на кодове на данъци"
+msgstr "Plantilles de codis d'impost"
 
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Arbre de codis d'impost"
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Codis d'impost"
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Tax Groups"
-msgstr "Група данъци"
+msgstr "Grups d'impost"
 
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
-msgstr "Ред на данъци"
+msgstr "Línies d'impost"
 
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr "Impostos"
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Правила за данък"
+msgstr "Regles d'impost"
 
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Шаблони за правило на данък"
+msgstr "Plantilles de regla d'impost"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes Templates"
-msgstr "Шаблони на данъци"
+msgstr "Plantilles d'impostos"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Разсъгласуване на редове"
+msgstr "Desconcilia apunts"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric"
 
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr "Общ дневник"
+msgstr "Llibre diari"
 
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr "Основен дневник"
+msgstr "Llibre major"
 
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr "Временен баланс"
+msgstr "Balanç de sumes i saldos"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Създаване на сметкопланове от шаблон"
-
-#, fuzzy
-msgctxt "model:ir.action,name:wizard_journal_open_cash"
-msgid "Open Journal Cash"
-msgstr "Запитване за отваряне на дневник"
+msgstr "Crea pla comptable des de plantilla"
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
-msgstr "Отпечатване на основен дневник"
+msgstr "Imprimeix llibre diari"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Обновяване на сметкпланове от шаблон"
+msgstr "Actualitza pla comptable des de plantilla"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
 msgid "Payable"
-msgstr "Разходен"
+msgstr "A pagar"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
 msgid "Receivable"
-msgstr "За получаване"
+msgstr "A cobrar"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
-msgstr "Дневник на сметка по подрабиране"
+msgstr "Diari comptable per defecte"
 
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
-msgstr "Съгласуване на движение на сметката по подразбиране"
+msgstr "Conciliació d'apunt per defecte"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
 msgid "Account Journal"
-msgstr "Дневник на сметка"
+msgstr "Diari comptable"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
-msgstr "Движение по сметка"
+msgstr "Assentament comptable"
 
 msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
-msgstr "Съгласуване на движение по сметка"
+msgstr "Conciliació d'apunt comptable"
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
-msgstr "Управление на финанси"
+msgstr "Comptabilitat"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Comptes"
 
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
-msgstr "Шаблони на сметка"
+msgstr "Plantilles de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr "Comptes"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
-msgstr "Видове сметки"
+msgstr "Tipus de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Шаблони на вид сметка"
+msgstr "Plantilles de tipus de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
-msgstr "Видове сметки"
+msgstr "Tipus de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric"
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Crea l'assentament de regularització"
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr "Графики"
+msgstr "Plans comptables"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgstr "Tanca exercici fiscal"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Отваряне на таблица с кодове на данъци"
+msgstr "Obre pla de codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Създаване на сметкоплан по шаблон"
+msgstr "Crea pla comptable des de plantilla"
 
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr "Записи"
+msgstr "Assentaments"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr "Финансови години"
+msgstr "Exercicis fiscals"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Финансови години"
+msgstr "Exercicis fiscals"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "Основна сметка"
+msgstr "Plans comptables"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
-msgstr "Основен дневник"
+msgstr "Llibre major"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Дневници"
+msgstr "Diaris"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Дневници"
+msgstr "Diaris"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Diaris d'efectiu"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
 msgid "Close Journals - Periods"
-msgstr "Затваряне на дневници - Периоди"
+msgstr "Tanca diaris - períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
-msgstr "Видове дневници"
+msgstr "Tipus de diari"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
 msgid "Journal Views"
-msgstr "Изгледи на дневник"
+msgstr "Vistes de diari"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr "Движения по сметка"
+msgstr "Assentaments comptables"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Crea assentament des de plantilla"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Account Move Template"
-msgstr "Шаблон на вид сметка"
+msgstr "Plantilla d'assentament comptable"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Дата на баланс"
+msgstr "Balanç de situació"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
+msgstr "Obre pla comptable"
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Отчет за приходи"
+msgstr "Pèrdues i guanys"
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Достъп до меню"
+msgstr "Obre diari"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form2"
 msgid "Close Periods"
-msgstr "Затваряне на периоди"
+msgstr "Tanca períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr "Отпечатване на основен дневник"
+msgstr "Imprimeix llibre diari"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Обработване"
+msgstr "Processos"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Concilia comptes"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Справки"
+msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Шаблони на кодове на данъци"
+msgstr "Plantilles de codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Codis d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
-msgstr "Група данъци"
+msgstr "Grups d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr "Impostos"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Правила за данък"
+msgstr "Regles d'impost"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Шаблони за правило на данък"
+msgstr "Plantilles de regla d'impost"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
-msgstr "Шаблони на данъци"
+msgstr "Plantilles d'impostos"
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr "Impostos"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Обновяване на сметкпланове от шаблон"
+msgstr "Actualitza pla comptable des de plantilla"
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
-msgstr "Настройване на сметка"
+msgstr "Comptable"
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Comptabilitat"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
-msgstr "Управление на счетоводство"
+msgstr "Administració de comptabilitat"
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
 msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric de"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr "Фирма:"
+msgstr "Empresa:"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
-msgstr "Дата:"
+msgstr "Data:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Tercer"
 
 msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
-msgstr "Дата на отпечатване:"
+msgstr "Data d'impressió:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Total"
-msgstr "Общо"
+msgstr "Total"
 
 msgctxt "report:account.aged_balance:"
 msgid "User:"
-msgstr "Потребител:"
+msgstr "Usuari:"
 
 msgctxt "report:account.aged_balance:"
 msgid "at"
-msgstr "на"
+msgstr "a les"
 
 msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "report:account.general_ledger:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr "Фирма:"
+msgstr "Empresa:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "report:account.general_ledger:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
 msgctxt "report:account.general_ledger:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
 msgctxt "report:account.general_ledger:"
 msgid "Descr."
-msgstr ""
+msgstr "Descr."
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
-msgstr "Финансова година"
+msgstr "Exercici fiscal:"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
-msgstr "От период:"
+msgstr "Període inicial:"
 
 msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
-msgstr "Основен дневник"
+msgstr "Llibre major"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Move"
-msgstr "Движение"
+msgstr "Assentament"
 
 msgctxt "report:account.general_ledger:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
-msgstr "Източник"
+msgstr "Origen"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Period:"
-msgstr "Период"
+msgstr "Període:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
-msgstr "Дата на отпечатване:"
+msgstr "Data d'impressió:"
 
 msgctxt "report:account.general_ledger:"
 msgid "State"
-msgstr "Състояние"
+msgstr "Estat"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
-msgstr ""
+msgstr "Fins"
 
 msgctxt "report:account.general_ledger:"
 msgid "Total"
-msgstr "Общо"
+msgstr "Total"
 
 msgctxt "report:account.general_ledger:"
 msgid "User:"
-msgstr "Потребител:"
+msgstr "Usuari:"
 
 msgctxt "report:account.general_ledger:"
 msgid "at"
-msgstr "на"
+msgstr "a les"
 
 msgctxt "report:account.move.general_journal:"
 msgid "/"
@@ -4100,69 +3944,67 @@ msgstr "/"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr "Фирма"
+msgstr "Empresa:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
-msgstr "Дата:"
+msgstr "Data:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Descripció"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Esborrany"
 
 msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
-msgstr "От дата:"
+msgstr "Data inicial:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
-msgstr "Общ дневник"
+msgstr "Llibre diari"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
-msgstr "Запис от дневник"
+msgstr "Assentament:"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Origin:"
-msgstr "Източник"
+msgstr "Origen:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr "Comptabilitzat"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
-msgstr "Дата на отпечатване:"
+msgstr "Data d'impressió:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "To Date:"
-msgstr "Към дата:"
+msgstr "Data final:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "User:"
-msgstr "Потребител:"
+msgstr "Usuari:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "at"
-msgstr "на"
+msgstr "a les"
 
 msgctxt "report:account.trial_balance:"
 msgid "/"
@@ -4170,1053 +4012,852 @@ msgstr "/"
 
 msgctxt "report:account.trial_balance:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr "Фирма:"
+msgstr "Empresa:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "report:account.trial_balance:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
-msgstr "Краен баланс"
+msgstr "Saldo final"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
-msgstr "Финансова година"
+msgstr "Exercici fiscal:"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
-msgstr "От период:"
+msgstr "Període inicial:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
-msgstr "Дата на отпечатване:"
+msgstr "Data d'impressió:"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
-msgstr "Начален баланс"
+msgstr "Saldo inicial"
 
 msgctxt "report:account.trial_balance:"
 msgid "To Period:"
-msgstr "До период:"
+msgstr "Període final:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Total"
-msgstr "Общо"
+msgstr "Total"
 
 msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
-msgstr "Временен баланс"
+msgstr "Balanç de sumes i saldos"
 
 msgctxt "report:account.trial_balance:"
 msgid "User:"
-msgstr "Потребител:"
+msgstr "Usuari:"
 
 msgctxt "report:account.trial_balance:"
 msgid "at"
-msgstr "на"
+msgstr "a les"
 
 msgctxt "selection:account.account,kind:"
 msgid "Expense"
-msgstr "Разход"
+msgstr "Despesa"
 
 msgctxt "selection:account.account,kind:"
 msgid "Other"
-msgstr "Друг"
+msgstr "Altre"
 
 msgctxt "selection:account.account,kind:"
 msgid "Payable"
-msgstr "Разходен"
+msgstr "A pagar"
 
 msgctxt "selection:account.account,kind:"
 msgid "Receivable"
-msgstr "За получаване"
+msgstr "A cobrar"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
-msgstr "Приход"
+msgstr "Ingressos"
 
 msgctxt "selection:account.account,kind:"
 msgid "Stock"
-msgstr "Наличност"
+msgstr "Estoc"
 
 msgctxt "selection:account.account,kind:"
 msgid "View"
-msgstr "Изглед"
+msgstr "Vista"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Expense"
-msgstr "Разход"
+msgstr "Despesa"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Other"
-msgstr "Друг"
+msgstr "Altre"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Payable"
-msgstr "Разходен"
+msgstr "A pagar"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
-msgstr "За получаване"
+msgstr "A cobrar"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
-msgstr "Приход"
+msgstr "Ingressos"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Stock"
-msgstr "Наличност"
+msgstr "Estoc"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "View"
-msgstr "Изглед"
+msgstr "Vista"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Credit - Debit"
-msgstr "Кредит - дебит"
+msgstr "Haver - Deure"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Debit - Credit"
-msgstr "Дебит - кредит"
+msgstr "Deure - Haver"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Credit - Debit"
-msgstr "Кредит - дебит"
+msgstr "Haver - Deure"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Debit - Credit"
-msgstr "Дебит - кредит"
+msgstr "Deure - Haver"
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers"
-msgstr "Клиент"
+msgstr "Clients"
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers and Suppliers"
-msgstr ""
+msgstr "Clients i proveïdors"
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Suppliers"
-msgstr "Доставчик"
+msgstr "Proveïdors"
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Days"
-msgstr "Дни"
+msgstr "Dies"
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Months"
-msgstr "Месеци"
+msgstr "Mesos"
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Document"
-msgstr ""
+msgstr "Per document"
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Line"
-msgstr ""
+msgstr "Per línia"
 
 msgctxt "selection:account.configuration.tax_rounding,method:"
 msgid "Per Document"
-msgstr ""
+msgstr "Per document"
 
 msgctxt "selection:account.configuration.tax_rounding,method:"
 msgid "Per Line"
-msgstr ""
+msgstr "Per línia"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
-msgstr "Затваряне"
+msgstr "Tancat"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obert"
 
-#, fuzzy
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Esborrany"
 
-#, fuzzy
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr "Comptabilitzat"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
-msgstr "Затваряне"
+msgstr "Tancat"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obert"
 
 msgctxt "selection:account.move,state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Esborrany"
 
 msgctxt "selection:account.move,state:"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr "Comptabilitzat"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Esborrany"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr "Comptabilitzat"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Esborrany"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Valid"
-msgstr "Валиден"
+msgstr "Correcte"
 
-#, fuzzy
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Char"
-msgstr ""
+msgstr "Text"
 
-#, fuzzy
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Numeric"
-msgstr ""
+msgstr "Numèric"
 
-#, fuzzy
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
-msgstr "Управление на партньор"
+msgstr "Tercer"
 
 msgctxt "selection:account.period,state:"
 msgid "Close"
-msgstr "Затваряне"
+msgstr "Tancat"
 
 msgctxt "selection:account.period,state:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obert"
 
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
-msgstr "Проверка"
+msgstr "Ajust"
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
-msgstr "Стандартен"
+msgstr "Estàndard"
 
 msgctxt "selection:account.tax,type:"
 msgid "Fixed"
-msgstr "Фиксиран"
+msgstr "Fix"
 
 msgctxt "selection:account.tax,type:"
 msgid "None"
-msgstr "Няма"
+msgstr "Cap"
 
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
-msgstr "Процент"
+msgstr "Percentatge"
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr "По финансова година"
+msgstr "Per exercici fiscal"
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
-msgstr "По периоди"
+msgstr "Per períodes"
 
-#, fuzzy
 msgctxt "selection:account.tax.group,kind:"
 msgid "Both"
-msgstr "И двата"
+msgstr "Ambdós"
 
-#, fuzzy
 msgctxt "selection:account.tax.group,kind:"
 msgid "Purchase"
-msgstr "Управление на покупки"
+msgstr "Compres"
 
-#, fuzzy
 msgctxt "selection:account.tax.group,kind:"
 msgid "Sale"
-msgstr "Продажба"
+msgstr "Venda"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Both"
-msgstr "И двата"
+msgstr "Ambdós"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Purchase"
-msgstr "Управление на покупки"
+msgstr "Compres"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Sale"
-msgstr "Продажба"
+msgstr "Venda"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Both"
-msgstr "И двата"
+msgstr "Ambdós"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Purchase"
-msgstr "Управление на покупки"
+msgstr "Compres"
 
-#, fuzzy
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Sale"
-msgstr "Продажба"
+msgstr "Venda"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
-msgstr "Фиксиран"
+msgstr "Fix"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "None"
-msgstr "Няма"
+msgstr "Cap"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
-msgstr "Процент"
+msgstr "Percentatge"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferral"
-msgstr "Сметка с отложено плащане"
+msgstr "Tancament comptable"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferrals"
-msgstr "Сметки с отложено плащане"
+msgstr "Tancaments comptables"
 
 msgctxt "view:account.account.template:"
 msgid "Account Template"
-msgstr "Шаблон на сметка"
+msgstr "Plantilla de compte"
 
 msgctxt "view:account.account.template:"
 msgid "Account Templates"
-msgstr "Шаблони на сметка"
+msgstr "Plantilles de compte"
 
 msgctxt "view:account.account.type.template:"
 msgid "Account Type Template"
-msgstr "Шаблон на вид сметка"
+msgstr "Plantilla de tipus de compte"
 
 msgctxt "view:account.account.type.template:"
 msgid "Account Types Templates"
-msgstr "Шаблони за видове сметки"
+msgstr "Plantilles de tipus de compte"
 
 msgctxt "view:account.account.type:"
-msgid "Account Type"
-msgstr "Вид сметка"
+msgid "Comparison"
+msgstr ""
 
-msgctxt "view:account.account.type:"
-msgid "Account Types"
-msgstr "Видове сметки"
-
-msgctxt "view:account.account.type:"
-msgid "Balance Sheet"
-msgstr "Дата на баланс"
-
-msgctxt "view:account.account.type:"
-msgid "Income Statement"
-msgstr "Отчет за приходи"
-
-msgctxt "view:account.account:"
-msgid "Account"
-msgstr "Сметка"
-
-msgctxt "view:account.account:"
-msgid "Accounts"
-msgstr "Сметки"
-
-#, fuzzy
 msgctxt "view:account.account:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "view:account.account:"
 msgid "Deferrals"
-msgstr "Отложени плащания"
+msgstr "Tancaments"
 
 msgctxt "view:account.account:"
 msgid "General Information"
-msgstr "Обща информация"
+msgstr "Informació general"
 
 msgctxt "view:account.account:"
 msgid "Notes"
-msgstr "Бележки"
+msgstr "Notes"
 
-#, fuzzy
-msgctxt "view:account.aged_balance.context:"
-msgid "Aged Balance"
-msgstr "Хронологичен баланс"
-
-#, fuzzy
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr "Условия"
+msgstr "Terminis"
 
-#, fuzzy
 msgctxt "view:account.aged_balance:"
 msgid "Aged Balance"
-msgstr "Хронологичен баланс"
+msgstr "Balanç històric"
 
-#, fuzzy
 msgctxt "view:account.balance_sheet.context:"
 msgid "Balance Sheet"
-msgstr "Дата на баланс"
+msgstr "Balanç de situació"
 
 msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Rounding"
-msgstr ""
+msgstr "Configuració comptable de l'arrodoniment d'impostos"
 
 msgctxt "view:account.configuration.tax_rounding:"
 msgid "Account Configuration Tax Roundings"
-msgstr ""
+msgstr "Configuració comptable dels arrodoniments d'impostos"
 
-msgctxt "view:account.configuration:"
-msgid "Account Configuration"
-msgstr "Настройване на сметка"
-
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr "Factura"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Tercer"
 
 msgctxt "view:account.create_chart.account:"
 msgid "Create Chart of Accounts"
-msgstr "Създаване на сметкопланове"
+msgstr "Crea pla comptable"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Create Default Properties"
-msgstr "Създаване на свойства по подразбиране"
-
-msgctxt "view:account.create_chart.start:"
-msgid "Create Chart of Accounts"
-msgstr "Създаване на сметкоплан"
+msgstr "Crea propietats per defecte"
 
 msgctxt "view:account.create_chart.start:"
 msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
 msgstr ""
-"Вече може да създадете сметкоплан за вашата фирма избирайки сметкоплан от "
-"шаблон"
+"Ara podeu crear un pla comptable per a la vostra empresa seleccionant una "
+"plantilla de pla comptable."
 
 msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Crea l'assentament de regularització"
 
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgstr "Tanca exercici fiscal"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Are you sure to close fiscal year?"
-msgstr "Сигурни ли сте че искате да затворите финансовата година?"
+msgstr "Esteu segur de tancar l'exercici fiscal?"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgstr "Tanca exercici fiscal"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
-msgstr "Създаване на тримесечни периоди"
+msgstr "Crea períodes trimestrals"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create Monthly Periods"
-msgstr "Създаване на месечни периоди"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Years"
-msgstr "Финансови години"
+msgstr "Crea períodes mensuals"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
-msgstr "Отваряне наново на финансова година"
+msgstr "Reobre exercici fiscal"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
-msgstr "Последователности"
+msgstr "Seqüències"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account.context:"
 msgid "General Ledger"
-msgstr "Основен дневник"
+msgstr "Llibre major"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "End Balance"
-msgstr "Краен баланс"
+msgstr "Saldo final"
 
-msgctxt "view:account.general_ledger.account:"
-msgid "General Ledger - Accounts"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "Start Balance"
-msgstr "Начален баланс"
+msgstr "Saldo inicial"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.line:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-msgctxt "view:account.general_ledger.line:"
-msgid "General Legder - Lines"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:account.income_statement.context:"
 msgid "Income Statement"
-msgstr "Отчет за приходи"
-
-#, fuzzy
-msgctxt "view:account.journal.open_cash.start:"
-msgid "Open Journal Cash"
-msgstr "Запитване за отваряне на дневник"
+msgstr "Pèrdues i guanys"
 
 msgctxt "view:account.journal.period:"
 msgid "Journal - Period"
-msgstr "Дневник - Период"
+msgstr "Diari - Període"
 
 msgctxt "view:account.journal.period:"
 msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
+msgstr "Diaris - Períodes"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Type"
-msgstr "Вид дневник"
+msgstr "Tipus de diari"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Types"
-msgstr "Видове дневници"
+msgstr "Tipus de diari"
 
 msgctxt "view:account.journal.view.column:"
 msgid "View Column"
-msgstr "Колона на изглед"
+msgstr "Columna de la vista"
 
 msgctxt "view:account.journal.view.column:"
 msgid "View Columns"
-msgstr "Колони на изглед"
+msgstr "Columnes de la vista"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal View"
-msgstr "Изглед на дневник"
+msgstr "Vista de diari"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal Views"
-msgstr "Изгледи на дневник"
+msgstr "Vistes de diari"
 
 msgctxt "view:account.journal:"
 msgid "General Information"
-msgstr "Обща информация"
-
-msgctxt "view:account.journal:"
-msgid "Journal"
-msgstr "Дневник"
-
-msgctxt "view:account.journal:"
-msgid "Journals"
-msgstr "Дневници"
+msgstr "Informació general"
 
 msgctxt "view:account.move.cancel.default:"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Cancel·la assentaments"
 
-#, fuzzy
-msgctxt "view:account.move.line.template:"
-msgid "Account Move Line Template"
-msgstr "Шаблон на данък на сметка"
-
-#, fuzzy
-msgctxt "view:account.move.line.template:"
-msgid "Account Move Line Templates"
-msgstr "Шаблон на данък на сметка"
-
-#, fuzzy
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
-msgstr "Друга информация"
-
-msgctxt "view:account.move.line:"
-msgid "Account Move Line"
-msgstr "Ред от движение по сметка"
-
-msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr "Редове от движение на сметка"
+msgstr "Informació addicional"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Haver"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Other Info"
-msgstr "Друга информация"
+msgstr "Informació addicional"
 
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
-msgstr "Достъп до меню"
+msgstr "Obre diari"
 
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
-msgstr "Отпечатване на основен дневник"
+msgstr "Imprimeix llibre diari"
 
 msgctxt "view:account.move.reconcile_lines.writeoff:"
 msgid "Write-Off"
-msgstr "Анулиран"
+msgstr "Desajust"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliation"
-msgstr "Съгласуване"
+msgstr "Conciliació"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
-msgstr "Съгласувания"
+msgstr "Conciliacions"
 
 msgctxt "view:account.move.template.create.template:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Crea assentament des de plantilla"
 
 msgctxt "view:account.move.template.keyword:"
 msgid "Account Move Template Keyword"
-msgstr ""
+msgstr "Paraula clau de plantilla d'assentament comptable"
 
 msgctxt "view:account.move.template.keyword:"
 msgid "Account Move Template Keywords"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.move.template:"
-msgid "Account Move Template"
-msgstr "Шаблон на вид сметка"
-
-#, fuzzy
-msgctxt "view:account.move.template:"
-msgid "Account Move Templates"
-msgstr "Шаблони на вид сметка"
+msgstr "Paraules clau de plantilla d'assentament comptable"
 
 msgctxt "view:account.move.template:"
 msgid "Template"
-msgstr "Шаблон"
-
-msgctxt "view:account.move:"
-msgid "Account Move"
-msgstr "Движение по сметка"
-
-msgctxt "view:account.move:"
-msgid "Account Moves"
-msgstr "Движения по сметка"
-
-msgctxt "view:account.move:"
-msgid "Draft"
-msgstr "Проект"
+msgstr "Plantilla"
 
 msgctxt "view:account.move:"
 msgid "Post"
-msgstr "Публикуван"
+msgstr "Comptabilitza"
 
 msgctxt "view:account.open_chart.start:"
 msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
+msgstr "Obre pla comptable"
 
 msgctxt "view:account.period:"
 msgid "Period"
-msgstr "Период"
+msgstr "Període"
 
 msgctxt "view:account.period:"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Períodes"
 
-#, fuzzy
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
-msgstr "Сума"
-
-#, fuzzy
-msgctxt "view:account.reconcile.show:"
-msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Import"
 
 msgctxt "view:account.tax.code.open_chart.start:"
 msgid "Open Chart of Tax Codes"
-msgstr "Отваряне на таблица с кодове на данъци"
+msgstr "Obre pla de codis d'impost"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Description"
-msgstr "Описание"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Code Template"
-msgstr "Шаблони за кодове на данъци"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Codes Templates"
-msgstr "Шаблони на кодове на данъци"
+msgstr "Descripció"
 
 msgctxt "view:account.tax.code:"
 msgid "Children"
-msgstr "Наследници"
+msgstr "Fills"
 
 msgctxt "view:account.tax.code:"
 msgid "Description"
-msgstr "Описание"
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Code"
-msgstr "Код на данък"
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Codes"
-msgstr "Кодове на данъци"
+msgstr "Descripció"
 
 msgctxt "view:account.tax.group:"
 msgid "Tax Group"
-msgstr "Данъчна група"
+msgstr "Grup d'impost"
 
 msgctxt "view:account.tax.group:"
 msgid "Tax Groups"
-msgstr "Група данъци"
+msgstr "Grups d'impost"
 
-#, fuzzy
 msgctxt "view:account.tax.line.template:"
 msgid "Account Tax Line Template"
-msgstr "Шаблон на данък на сметка"
+msgstr "Plantilla de línia d'impost comptable"
 
-#, fuzzy
 msgctxt "view:account.tax.line.template:"
 msgid "Account Tax Line Templates"
-msgstr "Шаблон на данък на сметка"
+msgstr "Plantilles de línia d'impost comptable"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
-msgstr "Ред от данък на сметка"
+msgstr "Línia d'impost comptable"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Lines"
-msgstr "Редове от данък на сметка"
+msgstr "Línies d'impost comptable"
 
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Template"
-msgstr "Шаблон на ред от правило на данък"
+msgstr "Plantilla de línia regla d'impost"
 
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Templates"
-msgstr "Шаблони за редове от правило на данък"
+msgstr "Plantilles de línia regla d'impost"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Line"
-msgstr "Ред от правило на данък"
+msgstr "Línia regla d'impost"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Lines"
-msgstr "Редове от правило на данък"
+msgstr "Línies regla d'impost"
 
 msgctxt "view:account.tax.rule.template:"
 msgid "Tax Rule Template"
-msgstr "Шаблон на правило за данък"
+msgstr "Plantilla de regla d'impost"
 
 msgctxt "view:account.tax.rule.template:"
 msgid "Tax Rules"
-msgstr "Правила за данък"
+msgstr "Regles d'impost"
 
 msgctxt "view:account.tax.rule:"
 msgid "Tax Rule"
-msgstr "Правило за данък"
+msgstr "Regla d'impost"
 
 msgctxt "view:account.tax.rule:"
 msgid "Tax Rules"
-msgstr "Правила за данък"
+msgstr "Regles d'impost"
 
 msgctxt "view:account.tax.template:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.tax.template:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "view:account.tax.template:"
 msgid "Credit Note"
-msgstr "Кредитно известие"
+msgstr "Abonament"
 
 msgctxt "view:account.tax.template:"
 msgid "General Information"
-msgstr "Обща информация"
+msgstr "Informació general"
 
 msgctxt "view:account.tax.template:"
 msgid "Invoice"
-msgstr "Фактура"
-
-msgctxt "view:account.tax.template:"
-msgid "Tax Template"
-msgstr "Шаблон за данък"
-
-msgctxt "view:account.tax.template:"
-msgid "Taxes Templates"
-msgstr "Шаблони на данъци"
+msgstr "Factura"
 
 msgctxt "view:account.tax:"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "Code"
-msgstr "Код"
+msgstr "Codi"
 
 msgctxt "view:account.tax:"
 msgid "Credit Note"
-msgstr "Кредитно известие"
+msgstr "Abonament"
 
 msgctxt "view:account.tax:"
 msgid "General Information"
-msgstr "Обща информация"
+msgstr "Informació general"
 
 msgctxt "view:account.tax:"
 msgid "Invoice"
-msgstr "Фактура"
-
-msgctxt "view:account.tax:"
-msgid "Tax"
-msgstr "Данък"
-
-msgctxt "view:account.tax:"
-msgid "Taxes"
-msgstr "Данъци"
+msgstr "Factura"
 
 msgctxt "view:account.update_chart.start:"
 msgid "Update Chart of Accounts"
-msgstr "Обновяване на сметкопланове"
-
-msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts"
-msgstr "Обновяване на сметкпланове"
+msgstr "Actualitza el pla comptable"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts Succeed!"
-msgstr "Обновяване на сметколпан успешно!"
+msgstr "L'actualització del pla comptable s'ha realitzat correctament."
 
 msgctxt "view:party.party:"
 msgid "Account"
-msgstr "Сметка"
+msgstr "Compte"
 
 msgctxt "view:party.party:"
 msgid "Accounting"
-msgstr ""
+msgstr "Comptabilitat"
 
 msgctxt "view:party.party:"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr "Impostos"
 
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
-msgstr "Създаване"
+msgstr "Crea"
 
 msgctxt "wizard_button:account.create_chart,account,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.create_chart,properties,create_properties:"
 msgid "Create"
-msgstr "Създаване"
+msgstr "Crea"
 
 msgctxt "wizard_button:account.create_chart,properties,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.create_chart,start,account:"
 msgid "OK"
-msgstr "Добре"
+msgstr "D'acord"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
 msgid "OK"
-msgstr "Добре"
+msgstr "D'acord"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.fiscalyear.close,start,close:"
 msgid "Close"
-msgstr "Затваряне"
+msgstr "Tanca"
 
 msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
-msgctxt "wizard_button:account.journal.open_cash,start,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.journal.open_cash,start,open_:"
-msgid "Open"
-msgstr "Отваряне"
-
-#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,cancel:"
 msgid "OK"
-msgstr "Добре"
+msgstr "D'acord"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obre"
 
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
 msgid "Print"
-msgstr "Печат"
+msgstr "Imprimeix"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Concilia"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,keywords,create_:"
 msgid "Create"
-msgstr "Създаване"
+msgstr "Crea"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,keywords,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,template,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
-msgstr "Напред"
+msgstr "Següent"
 
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obre"
 
-#, fuzzy
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
-msgstr "Отказване"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.reconcile,show,next_:"
 msgid "Skip"
-msgstr ""
+msgstr "Salta"
 
-#, fuzzy
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
-msgstr "Съгласуване"
+msgstr "Concilia"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
-msgstr "Отваряне"
+msgstr "Obre"
 
 msgctxt "wizard_button:account.update_chart,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.update_chart,start,update:"
 msgid "Update"
-msgstr "Обновяване"
+msgstr "Actualitza"
 
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
-msgstr "Добре"
+msgstr "Accepta"
