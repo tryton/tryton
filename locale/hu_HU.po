@@ -32,9 +32,10 @@ msgctxt "field:product.product,length_uom:"
 msgid "Length Uom"
 msgstr "Hossz mértékegysége"
 
+#, fuzzy
 msgctxt "field:product.product,volume:"
 msgid "Volume"
-msgstr ""
+msgstr "Térfogat"
 
 msgctxt "field:product.product,volume_digits:"
 msgid "Volume Digits"
@@ -98,9 +99,10 @@ msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
 msgstr "Hossz mértékegysége"
 
+#, fuzzy
 msgctxt "field:product.template,volume:"
 msgid "Volume"
-msgstr ""
+msgstr "Térfogat"
 
 msgctxt "field:product.template,volume_digits:"
 msgid "Volume Digits"

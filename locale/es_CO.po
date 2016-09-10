@@ -28,7 +28,7 @@ msgstr "UdM de Largo"
 
 msgctxt "field:product.product,volume:"
 msgid "Volume"
-msgstr "Volumen"
+msgstr ""
 
 msgctxt "field:product.product,volume_digits:"
 msgid "Volume Digits"
@@ -40,7 +40,7 @@ msgstr "UdM de Volumen"
 
 msgctxt "field:product.product,weight:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "field:product.product,weight_digits:"
 msgid "Weight Digits"
@@ -52,7 +52,7 @@ msgstr "UdM de Peso"
 
 msgctxt "field:product.product,width:"
 msgid "Width"
-msgstr "Ancho"
+msgstr ""
 
 msgctxt "field:product.product,width_digits:"
 msgid "Width Digits"
@@ -88,7 +88,7 @@ msgstr "UdM de Largo"
 
 msgctxt "field:product.template,volume:"
 msgid "Volume"
-msgstr "Volumen"
+msgstr ""
 
 msgctxt "field:product.template,volume_digits:"
 msgid "Volume Digits"
@@ -100,7 +100,7 @@ msgstr "UdM de Volumen"
 
 msgctxt "field:product.template,weight:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
@@ -112,7 +112,7 @@ msgstr "UdM de Peso"
 
 msgctxt "field:product.template,width:"
 msgid "Width"
-msgstr "Ancho"
+msgstr ""
 
 msgctxt "field:product.template,width_digits:"
 msgid "Width Digits"
@@ -124,4 +124,4 @@ msgstr "UdM de Ancho"
 
 msgctxt "view:product.template:"
 msgid "Measurements"
-msgstr "Medidas"
+msgstr ""
