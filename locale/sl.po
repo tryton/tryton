@@ -10,6 +10,11 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr "Opomin"
 
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Znesek"
@@ -31,6 +36,10 @@ msgid "Due Date"
 msgstr "Zapadlost"
 
 msgctxt "report:account.dunning.letter:"
+msgid "Fee"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr "Dosedanja plačila"
 
@@ -41,3 +50,8 @@ msgstr "Sklic"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Opomin"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "s"
+msgstr "s"

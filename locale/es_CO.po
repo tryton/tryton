@@ -11,24 +11,32 @@ msgid "Dunning Letter"
 msgstr "Carta de Cobro"
 
 msgctxt "report:account.dunning.letter:"
+msgid ":"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Valor"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Fecha:"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
 msgstr "Fecha Esperada"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fee"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
@@ -36,8 +44,12 @@ msgstr "Pagos Pendientes Recibidos"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Aviso Recordatorio"
+
+msgctxt "report:account.dunning.letter:"
+msgid "s"
+msgstr ""

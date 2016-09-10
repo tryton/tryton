@@ -10,34 +10,52 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr ""
+msgstr "Vervaldatum"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr ""
+msgstr "Datum:"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr ""
+msgstr "Specificatie"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
 msgstr ""
 
 msgctxt "report:account.dunning.letter:"
+msgid "Fee"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr ""
+msgstr "Referentie"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "s"
 msgstr ""

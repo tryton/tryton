@@ -4,40 +4,60 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Auf Mahnschreiben andrucken"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Mahnung"
+msgstr ""
 
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "Сума"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Дата"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Datum:"
+msgstr "Дата:"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Описание"
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Fälligkeitsdatum"
+msgstr "Дата на изпълнение"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fee"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Erhaltene Zahlungen"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Beleg-Nr."
+msgstr "Препратка"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Erinnerung"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "s"
+msgstr "s"
