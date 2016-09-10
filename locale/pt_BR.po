@@ -267,16 +267,8 @@ msgid "Subject:"
 msgstr "Assunto:"
 
 msgctxt "view:company.company.config.start:"
-msgid "Create Company"
-msgstr "Criar empresa"
-
-msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "Você pode agora adicionar sua empresa ao sistema."
-
-msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Empresas"
 
 msgctxt "view:company.company:"
 msgid "Company"

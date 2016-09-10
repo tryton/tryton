@@ -267,16 +267,8 @@ msgid "Subject:"
 msgstr "Tárgy:"
 
 msgctxt "view:company.company.config.start:"
-msgid "Create Company"
-msgstr "Vállalat létrehozása"
-
-msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "Most tudja a rendszerhez hozzáadni a vállalatot."
-
-msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Társaságok"
 
 msgctxt "view:company.company:"
 msgid "Company"

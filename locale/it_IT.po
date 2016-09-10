@@ -298,16 +298,8 @@ msgid "Subject:"
 msgstr "Oggetto:"
 
 msgctxt "view:company.company.config.start:"
-msgid "Create Company"
-msgstr "Crea Azienda"
-
-msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "E' ora possibile inserire a sistema l'azienda"
-
-msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Aziende"
 
 msgctxt "view:company.company:"
 msgid "Company"
@@ -336,9 +328,10 @@ msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
 msgstr "Cancella"
 
+#, fuzzy
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #, fuzzy
 msgctxt "wizard_button:company.company.config,start,end:"

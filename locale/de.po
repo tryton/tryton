@@ -4,31 +4,31 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Hčerinske družbe"
+msgstr "Untergeordnet (Unternehmen)"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Währung"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Mitarbeiter"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Noga"
+msgstr "Dokumentenfuß"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr "Glava"
+msgstr "Dokumentenkopf"
 
 msgctxt "field:company.company,id:"
 msgid "ID"
@@ -36,27 +36,27 @@ msgstr "ID"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Matična družba"
+msgstr "Übergeordnet (Unternehmen)"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Partei"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr "Časovni pas"
+msgstr "Zeitzone"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:company.company,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:company.company.config.start,id:"
 msgid "ID"
@@ -64,15 +64,15 @@ msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -80,39 +80,39 @@ msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Partei"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Unternehmen"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Razporejevalnik"
+msgstr "Cron"
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
@@ -120,59 +120,59 @@ msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.property,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Trenutne družbe"
+msgstr "Aktuelle Unternehmen"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Trenutno družba"
+msgstr "Aktuelles Unternehmen"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Zaposlenec"
+msgstr "Aktueller Mitarbeiter"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Mitarbeiter"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Glavno družba"
+msgstr "Mutterbetrieb"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Zaposlenec"
+msgstr "Mitarbeiter"
 
 msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
@@ -180,79 +180,79 @@ msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Benutzer"
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Družbe, registrirana na ta razporejevalnik"
+msgstr "Unternehmen, für welche dieser Job durchgeführt werden soll"
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Konfiguracija družbe"
+msgstr "Unternehmen Konfiguration"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Zaposlenec"
+msgstr "Mitarbeiter"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Konfiguracija družbe"
+msgstr "Unternehmen konfigurieren"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Unternehmen"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Unternehmen"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Mitarbeiter"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Pismo"
+msgstr "Brief"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Razporejevalnik - Družba"
+msgstr "Zeitplaner - Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Mitarbeiter"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr "Uporabnik - Zaposlenec"
+msgstr "Benutzer - Mitarbeiter"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr "S spoštovanjem,"
+msgstr "Mit freundlichen Grüßen,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
@@ -260,52 +260,44 @@ msgstr "Datum:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Spoštovani gospa in gospod,"
+msgstr "Sehr geehrte Damen und Herren,"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr "Zadeva:"
-
-msgctxt "view:company.company.config.start:"
-msgid "Create Company"
-msgstr "Nova družba"
+msgstr "Betreff:"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Zdaj je možno v sistem dodati družbo."
-
-msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Družbe"
+msgstr "Sie können nun Ihr Unternehmen dem System hinzufügen."
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Poročila"
+msgstr "Berichte"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
-msgstr "Zaposlenec"
+msgstr "Mitarbeiter"
 
 msgctxt "view:company.employee:"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Mitarbeiter"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Dodaj"
+msgstr "Hinzufügen"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr "V redu"
+msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Abbrechen"

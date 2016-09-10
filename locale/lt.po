@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr ""
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
@@ -16,19 +16,19 @@ msgstr ""
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr ""
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "field:company.company,id:"
 msgid "ID"
@@ -36,15 +36,16 @@ msgstr ""
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Bovenliggend niveau"
+msgstr ""
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Relatie"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:company.company,rec_name:"
 msgid "Name"
-msgstr "Naam"
+msgstr "Namu"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -64,7 +65,7 @@ msgstr ""
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
@@ -80,11 +81,12 @@ msgstr ""
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Relatie"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
-msgstr "Naam"
+msgstr "Namu"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -96,11 +98,11 @@ msgstr ""
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Bedrijven"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
@@ -112,15 +114,16 @@ msgstr ""
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Cyclische opdracht"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Name"
-msgstr "Naam"
+msgstr "Namu"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
@@ -132,37 +135,35 @@ msgstr ""
 
 msgctxt "field:ir.property,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Huidige bedrijven"
+msgstr ""
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Huidig bedrijf"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Werknemer"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Moederbedrijf"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
@@ -172,10 +173,9 @@ msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Werknemer"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
@@ -184,12 +184,11 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr "Gebruiker"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
@@ -201,11 +200,11 @@ msgstr ""
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Bedrijven aangesloten op deze cyclische opdracht"
+msgstr ""
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
@@ -213,45 +212,43 @@ msgstr ""
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Werknemer"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Bedrijven"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Bedrijven"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Brief"
+msgstr ""
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Bedrijven"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Bedrijven"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -259,22 +256,18 @@ msgstr ""
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr "Met vriendelijke groet,"
+msgstr ""
 
 msgctxt "report:party.letter:"
 msgid "Date:"
-msgstr "Datum:"
+msgstr ""
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Geachte heer/mevrouw,"
+msgstr ""
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr "Betreft:"
-
-msgctxt "view:company.company.config.start:"
-msgid "Create Company"
 msgstr ""
 
 msgctxt "view:company.company.config.start:"
@@ -282,39 +275,33 @@ msgid "You can now add your company into the system."
 msgstr ""
 
 msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Bedrijven"
-
-msgctxt "view:company.company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Rapportage"
+msgstr ""
 
 msgctxt "view:company.employee:"
 msgid "Employee"
-msgstr "Werknemer"
+msgstr ""
 
 msgctxt "view:company.employee:"
 msgid "Employees"
-msgstr "Werknemers"
+msgstr ""
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Toevoegen"
+msgstr ""
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr "Oké"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""
