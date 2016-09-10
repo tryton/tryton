@@ -8,4 +8,4 @@ msgstr "Asiento"
 
 msgctxt "field:commission.agent,waiting_account:"
 msgid "Waiting Account"
-msgstr "Cuenta de espera"
+msgstr ""
