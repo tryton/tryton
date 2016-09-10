@@ -32,173 +32,211 @@ msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast,active:"
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
+#, fuzzy
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
+#, fuzzy
 msgctxt "field:stock.forecast,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Vanaf datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
+#, fuzzy
 msgctxt "field:stock.forecast,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:stock.forecast,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
+#, fuzzy
 msgctxt "field:stock.forecast,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Tot datum"
 
 msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:stock.forecast,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Vanaf datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Tot datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.choose,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
-msgstr ""
+msgstr "Producten"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
 msgstr ""
 
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Boekingen"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Producten"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Hoeveelheid"
 
 msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Decimalen eenheid"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Datum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Boeking"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Naam bijlage"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Schrijfdatum"
 
+#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Gebruiker"
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
@@ -212,14 +250,16 @@ msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
@@ -249,17 +289,35 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
-msgstr ""
+msgstr "Klaar"
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Geannuleerd"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Klaar"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Draft"
+msgstr "Concept"
 
 msgctxt "view:stock.forecast.complete.ask:"
 msgid "Choose dates"
@@ -281,29 +339,24 @@ msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Confirm"
-msgstr ""
+msgstr "Bevestig"
 
-msgctxt "view:stock.forecast:"
-msgid "Forecast"
-msgstr ""
-
-msgctxt "view:stock.forecast:"
-msgid "Forecasts"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Terug naar concept"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
@@ -313,9 +366,10 @@ msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
@@ -325,6 +379,7 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"

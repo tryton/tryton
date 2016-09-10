@@ -122,6 +122,10 @@ msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
 msgstr "Előrejelzés"
 
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr ""
+
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
 msgstr "ID"
@@ -215,13 +219,15 @@ msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
@@ -257,15 +263,31 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr ""
 
@@ -289,9 +311,10 @@ msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.forecast:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
@@ -300,16 +323,6 @@ msgstr ""
 msgctxt "view:stock.forecast:"
 msgid "Confirm"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:stock.forecast:"
-msgid "Forecast"
-msgstr "Előrejelzés"
-
-#, fuzzy
-msgctxt "view:stock.forecast:"
-msgid "Forecasts"
-msgstr "Előrejelzés"
 
 msgctxt "view:stock.forecast:"
 msgid "Reset to Draft"
@@ -323,9 +336,10 @@ msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
@@ -335,6 +349,7 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"

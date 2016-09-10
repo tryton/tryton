@@ -122,6 +122,10 @@ msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
 msgstr "Previsão"
 
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr ""
+
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
 msgstr "ID"
@@ -263,6 +267,21 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Rascunho"
 
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Feito"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Draft"
+msgstr "Rascunho"
+
 msgctxt "view:stock.forecast.complete.ask:"
 msgid "Choose dates"
 msgstr "Escolha as datas"
@@ -294,14 +313,6 @@ msgstr "Completar a Previsão"
 msgctxt "view:stock.forecast:"
 msgid "Confirm"
 msgstr "Confirmar"
-
-msgctxt "view:stock.forecast:"
-msgid "Forecast"
-msgstr "Previsão"
-
-msgctxt "view:stock.forecast:"
-msgid "Forecasts"
-msgstr "Previsões"
 
 msgctxt "view:stock.forecast:"
 msgid "Reset to Draft"
