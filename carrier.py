@@ -39,7 +39,7 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
     def update_token(self):
         auth_client = get_client(self.server, LOGIN_SERVICE)
         lang = (self.company.party.lang.code
-            if self.company.party.lang else 'en_US')
+            if self.company.party.lang else 'en')
         try:
             result = auth_client.service.getAuth(
                 delisId=self.user_id, password=self.password,

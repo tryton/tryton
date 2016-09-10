@@ -101,7 +101,7 @@ class CreateDPDShipping(Wizard):
         count = 0
         while count < 2:
             lang = (credential.company.party.lang.code
-                if credential.company.party.lang else 'en_US')
+                if credential.company.party.lang else 'en')
             authentication = {
                 'delisId': credential.user_id,
                 'authToken': credential.token,
