@@ -54,9 +54,10 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
-msgstr ""
+msgstr "失效日期"
 
 msgctxt "field:stock.lot,expiration_state:"
 msgid "Expiration State"

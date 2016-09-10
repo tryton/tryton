@@ -98,73 +98,79 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forzar Vencimiento de Inventario"
 
+#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
 msgstr "Requerido"
 
+#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
 msgstr "Requerido"
 
+#, fuzzy
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Required"
 msgstr "Requerido"
 
+#, fuzzy
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Required"
 msgstr "Requerido"
 
+#, fuzzy
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Required"
 msgstr "Requerido"
 
+#, fuzzy
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr "Opcional"
+msgstr ""
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
