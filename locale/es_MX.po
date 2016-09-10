@@ -5,19 +5,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
-msgstr "Líneas de factura de proveedor"
+msgstr "Líneas de Factura de Proveedor"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Líneas de Factura"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
-msgstr "Líneas de factura de proveedor"
+msgstr "Líneas de Factura de Proveedor"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Líneas de Factura"
