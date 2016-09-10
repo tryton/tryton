@@ -4,83 +4,103 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
-msgstr ""
+msgstr "Poslovni leti \"%(first)s\" in \"%(second)s\" imata enaki štetji računov."
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not change invoice sequence in fiscal year \"%s\" because there are "
 "already posted invoices in this fiscal year."
 msgstr ""
+"Štetja računov v poslovnem letu \"%s\" ni možno spreminjati zaradi "
+"obstoječih knjiženih računov."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
+"Za račun \"%s\" knjiženje dobroimetja z vračilom ni možno, ker že ima "
+"plačila."
 
 msgctxt "error:account.invoice.credit:"
 msgid ""
 "You can not credit with refund invoice \"%s\" because it is a supplier "
 "invoice/credit note."
 msgstr ""
+"Računu \"%s\" ni možno vpisati dobroimetja z vračilom, ker je prejet "
+"račun/dobropis."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
 msgstr ""
+"Za račun \"%s\" knjiženje dobroimetja z vračilom ni možno, ker še ni "
+"knjižen."
 
 msgctxt "error:account.invoice.line:"
 msgid "Line with \"line\" type must have an account."
-msgstr ""
+msgstr "Postavka tipa \"postavka\" mora imeti konto."
 
 msgctxt "error:account.invoice.line:"
 msgid "Line without \"line\" type must have an invoice."
-msgstr ""
+msgstr "Postavka, ki ni tipa \"postavka\", mora imeti račun."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
 "You can not add a line to invoice \"%(invoice)s\" that is posted, paid or "
 "cancelled."
 msgstr ""
+"Računu \"%s\", ki je bodisi knjižen ali plačan bodisi preklican, ni možno "
+"dodajati postavk."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
 "You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
 "because the invoice uses the same account (%(account)s)."
 msgstr ""
+"Pri računu \"%(invoice)s\" ni možno izdelati postavke \"%(line)s\", ker "
+"račun uporablja isti konto (%(account)s)."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
 "You can not modify line \"%(line)s\" from invoice \"%(invoice)s\" that is "
 "posted or paid."
 msgstr ""
+"Postavke \"%(line)s\" pri računu \"%(invoice)s\", ki je knjižen ali plačan, "
+"ni možno popravljati."
 
 msgctxt "error:account.invoice.pay:"
 msgid ""
 "On invoice \"%s\" you can not create a partial payment with an amount "
 "greater than the amount to pay."
 msgstr ""
+"Pri računu \"%s\" ni možno izdelati delnega plačila z zneskom, ki je večji "
+"od zneska za plačilo."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid ""
 "Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
 "term \"%(term)s\"."
 msgstr ""
+"V postavki \"%(line)s\" plačilnega roka \"%(term)s\" vrednosti odstotka in "
+"delitelja nista skladna."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
-msgstr ""
+msgstr "Neveljavna postavka \"%(line)s\" v plačilnem roku \"%(term)s\"."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Last line of payment term \"%s\" must be of type remainder."
-msgstr ""
+msgstr "Zadnja postavka plačilnega roka \"%s\" mora biti tipa \"preostanek\"."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
-msgstr ""
+msgstr "V plačilnem roku \"%s\" manjka postavka preostanka."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
 " canceled."
 msgstr ""
+"Davka pri računu \"%(invoice)s\" ni možno dodati, ker je bodisi knjižen ali "
+"plačan bodisi preklican."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -88,6 +108,9 @@ msgid ""
 "\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
 "\"%(base_code_company)s\"."
 msgstr ""
+"Računa \"%(invoice)s\" pri družbi \"%(invoice_company)s\" ni možno izdelati "
+"z uporabo šifre davčne osnove \"%(base_code)s\" iz družbe "
+"\"%(base_code_company)s\"."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
@@ -95,1211 +118,1201 @@ msgid ""
 "\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
 "\"%(tax_code_company)s\"."
 msgstr ""
+"Računa \"%(invoice)s\" pri družbi \"%(invoice_company)s\" ni možno izdelati "
+"z uporabo davčne šifre \"%(tax_code)s\" iz družbe \"%(tax_code_company)s\"."
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
 "is posted or paid."
 msgstr ""
+"Davka \"%(tax)s\" pri računu \"%(invoice)s\" ni možno popravljati, ker je "
+"račun bodisi knjižen bodisi plačan."
 
 msgctxt "error:account.invoice:"
 msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
-msgstr ""
+msgstr "Izdanega računa/dobropisa \"%s\" po knjiženju ni možno preklicati."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
 "invoice and in line \"%(line)s\"."
 msgstr ""
+"Račun \"%(invoice)s\" uporablja isti konto \"%(account)s\" za račun in za "
+"postavko \"%(line)s\"."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "Invoice \"%s\" has taxes defined but not on invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
+"Račun \"%s\" ima definiran davek, vendar ga ni na postavkah.\n"
+"Račun znova preračunajte."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "Invoice \"%s\" has taxes on invoice lines that are not in the invoice.\n"
 "Re-compute the invoice."
 msgstr ""
+"Račun \"%s\" ima na postavkah davke, ki ne obstajajo na računu.\n"
+"Račun znova preračunajte."
 
 msgctxt "error:account.invoice:"
 msgid "Invoice \"%s\" must be cancelled before deletion."
-msgstr ""
+msgstr "Za brisanje računa \"%s\" mora biti ta najprej preklican."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "Invoice \"%s\" tax bases are different from invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
+"Davčne osnove na računu \"%s\" se na postavkah razlikujejo. \n"
+"Račun znova preračunajte."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "The credit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
 msgstr ""
+"Kreditni konto v dnevniku \"%(journal)s\" je enak kontu računa "
+"\"%(invoice)s\"."
 
 msgctxt "error:account.invoice:"
 msgid "The credit account on journal \"%s\" is missing."
-msgstr ""
+msgstr "V dnevniku \"%s\" manjka kreditni konto."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "The debit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
 msgstr ""
+"Debetni konto v dnevniku \"%(journal)s\" je enak kontu na računu "
+"\"%(invoice)s\"."
 
 msgctxt "error:account.invoice:"
 msgid "The debit account on journal \"%s\" is missing."
-msgstr ""
+msgstr "V dnevniku \"%s\" manjka debetni konto."
 
 msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
-msgstr ""
+msgstr "Oštevilčenega računa \"%s\" ni možno brisati."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
+"Za račun \"%(invoice)s\" v obdobju/poslovnem letu \"%(period)s\" ne obstaja "
+"štetje računov."
 
 msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
+"Računa \"%s\" ni možno popravljati, ker je bodisi knjiženo ali plačano "
+"bodisi preklicano."
 
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
-msgstr ""
+msgstr "Obdobji \"%(first)s\" in \"%(second)s\" imata isto štetje računov."
 
 msgctxt "error:account.period:"
 msgid ""
 "Period \"%(period)s\" must have the same company as its fiscal year "
 "(%(fiscalyear)s)."
 msgstr ""
+"Obdobje \"%(period)s\" mora imeti isto družbo kot pri poslovnem letu "
+"(%(fiscalyear)s)."
 
 msgctxt "error:account.period:"
 msgid ""
 "You can not change the invoice sequence in period \"%s\" because there is "
 "already an invoice posted in this period"
 msgstr ""
+"Štetja računov v obdobju \"%s\" ni možno popravljati, ker je račun že "
+"knjižen v tem obdobju."
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr ""
+msgstr "Štetje prejetih dobropisov"
 
 msgctxt "field:account.fiscalyear,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr ""
+msgstr "Štetje prejetih računov"
 
 msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr ""
+msgstr "Štetje izdanih dobropisov"
 
 msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr ""
+msgstr "Štetje izdanih računov"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr "ບັນຊີ"
+msgstr "Konto"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
-msgstr "ວັນຄິດໄລ່ບັນຊີ"
+msgstr "Datum knjiženja"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
-msgstr "ມູນຄ່າຕ້ອງຈ່າຍ"
+msgstr "Znesek za plačat"
 
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
-msgstr "ມູນຄ່າຕ້ອງຈ່າຍມື້ນີ້"
+msgstr "Trenutni znesek za plačat"
 
 msgctxt "field:account.invoice,cancel_move:"
 msgid "Cancel Move"
-msgstr "ຍົກເລີກເຄື່ອນໄຫວບັນຊີ"
+msgstr "Preklic"
 
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
-msgstr "ຄຳເຫັນ"
+msgstr "Opomba"
 
 msgctxt "field:account.invoice,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "Družba"
 
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr "ສະກຸນເງິນ"
+msgstr "Valuta"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "ວັນທີສະກຸນເງິນ"
+msgstr "Datum valute"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
 msgctxt "field:account.invoice,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
-msgstr "ທີ່ຢູ່"
+msgstr "Naslov plačnika"
 
 msgctxt "field:account.invoice,invoice_date:"
 msgid "Invoice Date"
-msgstr "ວັນທີໃບເກັບເງິນ"
+msgstr "Datum računa"
 
 msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
-msgstr "ສະຫຼຸບໃບເກັບເງິນ"
+msgstr "Izpis računa"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
-msgstr "ຮູບແບບສະຫຼຸບໃບເກັບເງິນ"
+msgstr "Oblika izpisa računa"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
-msgstr "ບັນຊີປະຈໍາວັນ"
+msgstr "Dnevnik"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
-msgstr "ຮ່ວງ"
+msgstr "Postavke"
 
 msgctxt "field:account.invoice,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr "ຮ່ວງຈ່າຍ"
+msgstr "Postavke za plačat"
 
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr "ເຄື່ອນໄຫວ"
+msgstr "Prenos"
 
 msgctxt "field:account.invoice,number:"
 msgid "Number"
-msgstr "ເລກທີ"
+msgstr "Številka"
 
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr "ຕົ້ນສະບັບ"
+msgstr "Porekla"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
-msgstr "ພາກສ່ວນ"
+msgstr "Partner"
 
 msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
-msgstr "ພາສາ"
+msgstr "Jezik partnerja"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
-msgstr "ຮ່ວງຊໍາລະ"
+msgstr "Postavke plačila"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
-msgstr "ພິສູດຍອດແລ້ວ"
+msgstr "Usklajeno"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr "ເອກະສານອ້າງອີງ"
+msgstr "Sklic"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
-msgstr "ສະຖານະ"
+msgstr "Stanje"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
-msgstr "ອາກອນ"
+msgstr "Davek"
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
-msgstr "ຮ່ວງພາສີ"
+msgstr "Davčne postavke"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
-msgstr "ລວມທັງໝົດ"
+msgstr "Skupaj"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr "Tip"
 
 msgctxt "field:account.invoice,type_name:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr "Tip"
 
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
-msgstr "ມູນຄ່າບໍ່ລວມອາກອນ"
+msgstr "Neobdavčeno"
 
 msgctxt "field:account.invoice,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice-account.move.line,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
-msgstr "ຮ່ວງຊໍາລະ"
+msgstr "Postavka plačila"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice-account.move.line,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:account.invoice.credit.start,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
-msgstr ""
+msgstr "Z vračilom"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr "ບັນຊີ"
+msgstr "Konto"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
-msgstr "ສຳນັກງານ"
+msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr "ສະກຸນເງິນ"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
 #, fuzzy
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "Stanje računa"
+
 msgctxt "field:account.invoice.line,invoice_taxes:"
 msgid "Invoice Taxes"
-msgstr "ອາກອນໃບເກັບເງິນ"
+msgstr "Davki računa"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_type:"
 msgid "Invoice Type"
-msgstr "ອາກອນໃບເກັບເງິນ"
+msgstr "Vrsta računa"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,note:"
 msgid "Note"
-msgstr "ໝາຍເຫດ"
+msgstr "Opomba"
 
 msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
-msgstr "ຕົ້ນສະບັບ"
+msgstr "Poreklo"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr "ພາກສ່ວນ"
+msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
-msgstr "ພາສາ"
+msgstr "Jezik partnerja"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Izdelek"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Katerogija ME izdelka"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr "Količina"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
-msgstr "ລໍາດັບ"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
-msgstr "ອາກອນ"
+msgstr "Davki"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr "Tip"
 
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr "ຫົວໜ່ວຍ"
+msgstr "Enota"
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Decimalke"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "ລາຄາຫົວໜ່ວຍ"
+msgstr "Cena"
 
 msgctxt "field:account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
 msgctxt "field:account.invoice.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
-msgstr "ລາຍການ"
+msgstr "Postavka računa"
 
-#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
-msgstr "ອາກອນ"
+msgstr "Davek"
 
 msgctxt "field:account.invoice.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
-msgstr ""
+msgstr "Znesek plačila"
 
 msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
-msgstr ""
+msgstr "Znesek odpisa"
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
-msgstr "ສຳນັກງານ"
+msgstr "Družba"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr ""
+msgstr "Valuta plačila"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr ""
+msgstr "Decimalke plačila"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr ""
+msgstr "Decimalke odpisa"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
-msgstr ""
+msgstr "Valuta odpisa"
 
 #, fuzzy
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "Datum"
+
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
 msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
 msgid "Write-Off Journal"
-msgstr ""
+msgstr "Dnevnika odpisa"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
-msgstr "ຮ່ວງ"
+msgstr "Postavke"
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr "ລາຍການຕ້ອງຈ່າຍ"
+msgstr "Postavke za plačat"
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr "ສາຍການຊໍາລະ"
+msgstr "Postavke plačila"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr "Tip"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr "ສະກຸນເງິນ"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
-msgstr "ວັນທີ:"
+msgstr "Datum"
 
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,journal:"
 msgid "Journal"
-msgstr "ບັນຊີປະຈໍາວັນ"
+msgstr "Dnevnik"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
-msgstr "ໃຊ້ງານຢູ່"
+msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.payment_term,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr "ຮ່ວງ"
+msgstr "Postavke"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Plačilni rok"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice.payment_term,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.payment_term.line,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "ສະກຸນເງິນ"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
-msgstr ""
+msgstr "Delitelj"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Odstotek"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
-msgstr ""
+msgstr "Obroki"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
-msgstr "ລໍາດັບ"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
-msgstr "ປະເພດ"
+msgstr "Tip"
 
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+msgctxt "field:account.invoice.payment_term.line.delta,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Postavka plačilnega roka"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Plačilni rok"
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
-msgstr "ລໍາດັບ"
+msgstr "Štetje"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
-msgstr "ສະກຸນເງິນ"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr "ວັນທີ:"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr "ວັນທີ:"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr "ບັນຊີ"
+msgstr "Konto"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
-msgstr ""
+msgstr "Osnova"
 
 msgctxt "field:account.invoice.tax,base_code:"
 msgid "Base Code"
-msgstr ""
+msgstr "Šifra osnove"
 
 msgctxt "field:account.invoice.tax,base_sign:"
 msgid "Base Sign"
-msgstr ""
+msgstr "Predznak osnove"
 
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.tax,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:account.invoice.tax,id:"
 msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "Stanje računa"
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
-msgstr "ໃສ່ເອົາເອງ"
+msgstr "Ročno"
 
 msgctxt "field:account.invoice.tax,rec_name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
-msgstr "ລໍາດັບ"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr ""
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
-msgstr "ອາກອນ"
+msgstr "Davek"
 
 msgctxt "field:account.invoice.tax,tax_code:"
 msgid "Tax Code"
-msgstr ""
+msgstr "Davčna šifra"
 
 msgctxt "field:account.invoice.tax,tax_sign:"
 msgid "Tax Sign"
-msgstr ""
+msgstr "Predznak davka"
 
 msgctxt "field:account.invoice.tax,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "Zapisano"
 
 msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+msgstr "Zapisal"
 
 msgctxt "field:account.period,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr ""
+msgstr "Štetje prejetih dobropisov"
 
 msgctxt "field:account.period,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr ""
+msgstr "Štetje prejetih računov"
 
 msgctxt "field:account.period,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr ""
+msgstr "Štetje izdanih dobropisov"
 
 msgctxt "field:account.period,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr ""
+msgstr "Štetje izdanih računov"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr ""
+msgstr "Plačilni rok kupca"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr ""
+msgstr "Plačilni rok dobavitelja"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
-msgstr ""
+msgstr "Če resnično, bo(do) trenutni račun(i) plačan(i)."
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
-msgstr ""
+msgstr "Za naraščajoče razvrščanje postavk"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr ""
+msgstr "Račun - Postavka plačila"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
-msgstr ""
+msgstr "Dobropis računa"
 
-#, fuzzy
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
-msgstr "ລາຍການ"
+msgstr "Postavka računa"
 
 msgctxt "model:account.invoice.line-account.tax,name:"
 msgid "Invoice Line - Tax"
-msgstr ""
+msgstr "Postavka računa - Davek"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.ask,name:"
 msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
+msgstr "Plačilo računa"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
+msgstr "Plačilo računa"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni rok"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Postavka plačilnega roka"
 
-msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
 msgstr ""
 
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Preizkus plačilnega roka"
 
 msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Preizkus plačilnega roka"
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
-msgstr ""
+msgstr "Opozorilo pri izpisu računa"
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
-msgstr "ອາກອນໃບເກັບເງິນ"
+msgstr "Davek računa"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Računi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Računi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "ໃບເກັບເງິນຂອງຜູ້ສະໜອງ"
+msgstr "Prejeti računi"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Izdani računi"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni roki"
 
-#, fuzzy
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "ມີ"
+msgstr "Kredit"
 
-#, fuzzy
 msgctxt "model:ir.action,name:print"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
+msgstr "Plačilo računa"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Preizkus plačilnega roka"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
+msgstr "Priprava"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "ແຈ້ງແລ້ວ"
+msgstr "Knjiženo"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr "ກວດສອບແລ້ວ"
+msgstr "Odobreno"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
+msgstr "Priprava"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "ແຈ້ງແລ້ວ"
+msgstr "Knjiženo"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr "ກວດສອບແລ້ວ"
+msgstr "Odobreno"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "ໃບເກັບເງິນຂອງຜູ້ສະໜອງ"
+msgstr "Prejeti računi"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Izdani računi"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Računi"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni roki"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Preizkus plačilnega roka"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni roki"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Znesek"
 
 msgctxt "report:account.invoice:"
 msgid "Base"
-msgstr ""
+msgstr "Osnova"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Date"
-msgstr "ວັນທີ:"
+msgstr "Datum"
 
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr "ວັນທີ:"
+msgstr "Datum:"
 
 msgctxt "report:account.invoice:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis"
 
 msgctxt "report:account.invoice:"
 msgid "Description:"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Opis:"
 
 msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
-msgstr "ໃບເກັບເງິນຊົ່ວຄາວ"
+msgstr "Osnutek računa"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
-msgstr ""
+msgstr "Račun št."
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
-msgstr "ໄລຍະຊໍາລະ"
+msgstr "Plačilni rok"
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
-msgstr "ໃບເກັບເງິນລ່ວງໜ້າ"
+msgstr "Predračun"
 
 msgctxt "report:account.invoice:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr "Količina"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Reference"
-msgstr "ເອກະສານອ້າງອີງ"
+msgstr "Sklic"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
-msgstr "ໃບຮຽກເກັບເງິນຂອງຜູ້ສະໜອງ"
+msgstr "Prejeti račun št.:"
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
-msgstr "ອາກອນ"
+msgstr "Davek"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes"
-msgstr "ອາກອນ"
+msgstr "Davki"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes:"
-msgstr "ອາກອນ:"
+msgstr "Davki:"
 
 msgctxt "report:account.invoice:"
 msgid "Total (excl. taxes):"
-msgstr "ລວມເງິນ (ບໍ່ລວມອາກອນ):"
+msgstr "Skupaj (brez davkov):"
 
 msgctxt "report:account.invoice:"
 msgid "Total:"
-msgstr "ລວມເງິນ:"
+msgstr "Skupaj:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr "ລາຄາ"
+msgstr "Cena"
 
 msgctxt "report:account.invoice:"
 msgid "VAT:"
-msgstr ""
+msgstr "DDV:"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
-msgstr "ຍົກເລີກແລ້ວ"
+msgstr "Preklicano"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
+msgstr "V pripravi"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Paid"
-msgstr "ຈ່າຍແລ້ວ"
+msgstr "Plačano"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Posted"
-msgstr "ແຈ້ງແລ້ວ"
+msgstr "Knjiženo"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
-msgstr "ກວດສອບແລ້ວ"
+msgstr "Odobreno"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Kupec"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dobavitelj"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Paid"
+msgstr "Plačano"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Posted"
+msgstr "Knjiženo"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Validated"
+msgstr "Odobreno"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
@@ -1307,346 +1320,320 @@ msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
-msgstr ""
+msgstr "Kupec"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dobavitelj"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
-msgstr "ຄຳເຫັນ"
+msgstr "Opomba"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
-msgstr "ຮ່ວງ"
+msgstr "Postavka"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Subtotal"
-msgstr ""
+msgstr "Vmesna vsota"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
-msgstr ""
+msgstr "Napis"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
-msgstr ""
+msgstr "Delno plačilo"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
-msgstr ""
+msgstr "Odpis"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr "ຄົງທີ່"
+msgstr "Fiksno"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
-msgstr ""
+msgstr "Odstotek preostanka"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Total"
-msgstr ""
+msgstr "Odstotek zneska"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr ""
+msgstr "Preostanek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "April"
-msgstr ""
+msgstr "April"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "August"
-msgstr ""
+msgstr "Avgust"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "December"
-msgstr ""
+msgstr "December"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "July"
-msgstr ""
+msgstr "Julij"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "June"
-msgstr ""
+msgstr "Junij"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "March"
-msgstr ""
+msgstr "Marec"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "November"
-msgstr ""
+msgstr "November"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "September"
-msgstr ""
+msgstr "September"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Friday"
-msgstr ""
+msgstr "Petek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Monday"
-msgstr ""
+msgstr "Ponedeljek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Sunday"
-msgstr ""
+msgstr "Nedelja"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Thursday"
-msgstr ""
+msgstr "Četrtek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Tuesday"
-msgstr ""
+msgstr "Torek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Wednesday"
-msgstr ""
+msgstr "Sreda"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Paid"
+msgstr "Plačano"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Posted"
+msgstr "Knjiženo"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Validated"
+msgstr "Odobreno"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
-msgstr ""
-
-msgctxt "view:account.invoice.credit.start:"
-msgid "Credit Invoice"
-msgstr ""
+msgstr "Ali res želite izvesti dobropis teh računov?"
 
 msgctxt "view:account.invoice.line:"
 msgid "General"
-msgstr "ທົ່ວໄປ"
-
-#, fuzzy
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Line"
-msgstr "ລາຍການ"
-
-#, fuzzy
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
-msgstr "ລາຍການ"
+msgstr "Splošno"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
-msgstr "ໝາຍເຫດ"
+msgstr "Opombe"
 
-#, fuzzy
 msgctxt "view:account.invoice.pay.ask:"
 msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
+msgstr "Plačilo računa"
 
 msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
+msgstr "Plačilo računa"
 
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Delta"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Deltas"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Line"
-msgstr ""
-
 msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
-msgstr ""
+msgstr "Rezultati preizkusa plačilnega roka"
 
-#, fuzzy
 msgctxt "view:account.invoice.payment_term.test:"
 msgid "Payment Term Test"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Preizkus plačilnega roka"
 
-#, fuzzy
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni rok"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
-
-#, fuzzy
-msgctxt "view:account.invoice.print.warning:"
-msgid "Print Invoice"
-msgstr "ໃບເກັບເງິນຊົ່ວຄາວ"
+msgstr "Plačilni roki"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."
-msgstr ""
+msgstr "Računi bodo direktno poslani na tiskalnik."
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Tax"
-msgstr "ອາກອນໃບເກັບເງິນ"
-
-#, fuzzy
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Taxes"
-msgstr "ອາກອນໃບເກັບເງິນ"
+msgstr "Za tiskanje je izbranih več kot en račun."
 
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
-msgstr ""
-
-msgctxt "view:account.invoice.tax:"
-msgid "Taxes"
-msgstr "ອາກອນ"
+msgstr "Davčna šifra"
 
 msgctxt "view:account.invoice:"
 msgid "Also known as Pro Forma"
-msgstr ""
+msgstr "Znan tudi kot predračun"
 
 msgctxt "view:account.invoice:"
 msgid "Are you sure to cancel the invoice?"
-msgstr ""
+msgstr "Ali res želite preklicati račun?"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Prekliči"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
+msgstr "Priprava"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
-msgstr "ໃບເກັບເງິນ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Račun"
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
-msgstr "ຂໍ້ມູນອື່ນໆ"
+msgstr "Drugo"
 
 msgctxt "view:account.invoice:"
 msgid "Pay"
-msgstr ""
+msgstr "Plačilo"
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
-msgstr "ການຈ່າຍ"
+msgstr "Plačilo"
 
 msgctxt "view:account.invoice:"
 msgid "Post"
-msgstr ""
+msgstr "Vknjižba"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"
-msgstr "ກວດສອບ"
+msgstr "Odobritev"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Znesek v drugi valuti"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "ມີ"
+msgstr "Kredit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debet"
 
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Lines to Pay"
-msgstr "ຮ່ວງຈ່າຍ"
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Payment Lines"
-msgstr "ຮ່ວງຊໍາລະ"
-
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Plačilni roki"
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "ມີ"
+msgstr "Kredit"
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "OK"
-msgstr ""
+msgstr "V redu"
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
 msgid "OK"
-msgstr ""
+msgstr "V redu"
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.invoice.print,warning,print_:"
 msgid "Print"
-msgstr "ພິມ"
+msgstr "Natisni"

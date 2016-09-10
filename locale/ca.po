@@ -259,7 +259,7 @@ msgstr "Compte"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
-msgstr "Data comptabilització"
+msgstr "Data efectiva assentament"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -320,6 +320,10 @@ msgstr "Data factura"
 msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "Informe factura"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
@@ -493,6 +497,11 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "Factura"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "Estat factura"
+
 msgctxt "field:account.invoice.line,invoice_taxes:"
 msgid "Invoice Taxes"
 msgstr "Impostos de la factura"
@@ -624,6 +633,11 @@ msgstr "Decimals de la moneda del desajust"
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
 msgstr "Moneda del desajust"
+
+#, fuzzy
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "Data"
 
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
@@ -781,59 +795,68 @@ msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
-msgstr "Dia del mes"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
-msgstr "Número de dies"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
 msgstr "Línia termini de pagament"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
 msgstr "Mes"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
-msgstr "Número de mesos"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
-msgstr "Dia de la setmana"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
-msgstr "Número de semanas"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
 msgid "Write Date"
 msgstr "Data modificació"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
@@ -924,6 +947,11 @@ msgstr "ID"
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
 msgstr "Factura"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "Estat factura"
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
@@ -1033,9 +1061,9 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Línia termini de pagament"
 
-msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
-msgstr "Increment relatiu línia de termini de pagament"
+msgstr ""
 
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
@@ -1267,9 +1295,35 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "Proveïdor"
 
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Canceled"
+msgstr "Cancel·lats"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Paid"
+msgstr "Pagada"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Posted"
+msgstr "Comptabilitzats"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Validated"
+msgstr "Validat"
+
+#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
@@ -1319,109 +1373,143 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Romanent"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "April"
 msgstr "Abril"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "August"
 msgstr "Agost"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "December"
-msgstr "Decembre"
+msgstr "Desembre"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "February"
 msgstr "Febrer"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "January"
 msgstr "Gener"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "July"
 msgstr "Juliol"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "June"
 msgstr "Juny"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "March"
 msgstr "Març"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "May"
 msgstr "Maig"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "November"
 msgstr "Novembre"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "October"
 msgstr "Octubre"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "September"
-msgstr "Septembre"
+msgstr "Setembre"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid ""
-msgstr ""
+msgstr "Cancel·lat"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Friday"
 msgstr "Divendres"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Monday"
 msgstr "Dilluns"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Saturday"
 msgstr "Dissabte"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Sunday"
 msgstr "Diumenge"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Thursday"
 msgstr "Dijous"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Wednesday"
 msgstr "Dimecres"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Canceled"
+msgstr "Cancel·lats"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Paid"
+msgstr "Pagada"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Posted"
+msgstr "Comptabilitzats"
+
+#, fuzzy
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Validated"
+msgstr "Validat"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr "Esteu segur d'abonar aquestes factures?"
 
-msgctxt "view:account.invoice.credit.start:"
-msgid "Credit Invoice"
-msgstr "Factura abonament"
-
 msgctxt "view:account.invoice.line:"
 msgid "General"
 msgstr "General"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Line"
-msgstr "Línia de factura"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
-msgstr "Línies de factura"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
@@ -1435,21 +1523,9 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr "Paga factura"
 
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Delta"
-msgstr "Increment relatiu línia de termini de pagament"
-
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Deltas"
-msgstr "Increments relatius línia de termini de pagament"
-
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Line"
-msgstr "Línia termini de pagament"
 
 msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
@@ -1468,10 +1544,6 @@ msgid "Payment Terms"
 msgstr "Terminis de pagament"
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "Print Invoice"
-msgstr "Imprimeix factura"
-
-msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."
 msgstr "Les factures s'enviaran directament a l'impressora."
 
@@ -1480,20 +1552,8 @@ msgid "You have selected more than one invoice to print."
 msgstr "Heu seleccionat més d'una factura per imprimir."
 
 msgctxt "view:account.invoice.tax:"
-msgid "Invoice Tax"
-msgstr "Impost de la factura"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Taxes"
-msgstr "Impostos de factura"
-
-msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
 msgstr "Codi d'impost"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Taxes"
-msgstr "Impostos"
 
 msgctxt "view:account.invoice:"
 msgid "Also known as Pro Forma"
@@ -1514,10 +1574,6 @@ msgstr "Esborrany"
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Factura"
-
-msgctxt "view:account.invoice:"
-msgid "Invoices"
-msgstr "Factures"
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
@@ -1550,14 +1606,6 @@ msgstr "Haver"
 msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Deure"
-
-msgctxt "view:account.move.line:"
-msgid "Lines to Pay"
-msgstr "Línies a pagar"
-
-msgctxt "view:account.move.line:"
-msgid "Payment Lines"
-msgstr "Línies de pagament"
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"

@@ -186,35 +186,35 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Последователност за кредитно известие на доставчик"
+msgstr ""
 
 msgctxt "field:account.fiscalyear,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr "Последователност на фактура за доставчик"
+msgstr ""
 
 msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Последователност за кредитно известие на клиент"
+msgstr ""
 
 msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Последователност за фактура на клиент"
+msgstr ""
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr ""
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
-msgstr "Дата на осчетоводяване"
+msgstr ""
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
-msgstr "Сума за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
-msgstr "Сума за плащане днес"
+msgstr ""
 
 msgctxt "field:account.invoice,cancel_move:"
 msgid "Cancel Move"
@@ -222,494 +222,510 @@ msgstr ""
 
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
-msgstr "Коментар"
+msgstr ""
 
 msgctxt "field:account.invoice,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr ""
 
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr ""
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "Текуща дата"
+msgstr ""
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "field:account.invoice,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
-msgstr "Адрес за фактура"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_date:"
 msgid "Invoice Date"
-msgstr "Дата на фактура"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
-msgstr "Справка за фактура"
+msgstr ""
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
-msgstr "Формат на спавка за фактура"
+msgstr ""
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr ""
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr ""
 
 msgctxt "field:account.invoice,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr "Редове за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr "Движение"
+msgstr ""
 
 msgctxt "field:account.invoice,number:"
 msgid "Number"
-msgstr "Номер"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr "Източник"
+msgstr ""
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr ""
 
 msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
-msgstr "Език на партньор"
+msgstr ""
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
-msgstr "Редове от плащане"
+msgstr ""
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
-msgstr "Съгласуван"
+msgstr ""
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr "Отпратка"
+msgstr ""
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
-msgstr "Състояние"
+msgstr ""
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
-msgstr "Ред на данъци"
+msgstr ""
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
-msgstr "Общо"
+msgstr ""
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr ""
 
 msgctxt "field:account.invoice,type_name:"
 msgid "Type"
-msgstr "Вид"
+msgstr ""
 
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
-msgstr "Необложен с данък"
+msgstr ""
 
 msgctxt "field:account.invoice,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
-msgstr "Ред от плащане"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.invoice.credit.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
-msgstr "С обещетение"
+msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr ""
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr ""
 
 msgctxt "field:account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr ""
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "field:account.invoice.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr ""
 
 msgctxt "field:account.invoice.line,invoice_taxes:"
 msgid "Invoice Taxes"
-msgstr "Данъци на фактура"
+msgstr ""
 
 msgctxt "field:account.invoice.line,invoice_type:"
 msgid "Invoice Type"
-msgstr "Вид фактура"
+msgstr ""
 
 msgctxt "field:account.invoice.line,note:"
 msgid "Note"
-msgstr "Бележка"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
-msgstr "Източник"
+msgstr ""
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr ""
 
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
-msgstr "Език на партньор"
+msgstr ""
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr "Категория мер. ед. на продукт"
+msgstr ""
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr "Количество"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr ""
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr ""
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr ""
 
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr "Единица"
+msgstr ""
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Десетични единици"
+msgstr ""
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "Единична цена"
+msgstr ""
 
 msgctxt "field:account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
-msgstr "Ред от фактура"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
-msgstr "Платена сума"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
-msgstr "Сума за отписване"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr "Валута при плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Цифри на валута за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Цифри на валута за отписване"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
-msgstr "Валута на отписване"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
 msgid "Write-Off Journal"
-msgstr "Дневник на отписване"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr "Редове за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr "Редове от плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.pay.start,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr "Редове"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
-msgstr "Делител"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
@@ -717,293 +733,279 @@ msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+msgctxt "field:account.invoice.payment_term.line.delta,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr "Ред от условие за плащане"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
-msgstr "Месец"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Namu"
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
-msgstr "Управление на валути"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr "Сметка"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
-msgstr "Основа"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,base_code:"
 msgid "Base Code"
-msgstr "Основен код"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,base_sign:"
 msgid "Base Sign"
-msgstr "Основен знак"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
-msgstr "Ръчно"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Namu"
 
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr "Номер на последователност"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,tax_code:"
 msgid "Tax Code"
-msgstr "Код на данък"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,tax_sign:"
 msgid "Tax Sign"
-msgstr "Знак на данък"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr ""
 
 msgctxt "field:account.period,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Последователност за кредитно известие на доставчик"
+msgstr ""
 
 msgctxt "field:account.period,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
-msgstr "Последователност на фактура за доставчик"
+msgstr ""
 
 msgctxt "field:account.period,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Последователност за кредитно известие на клиент"
+msgstr ""
 
 msgctxt "field:account.period,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr "Последователност за фактура на клиент"
+msgstr ""
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Условие за плащане на клиент"
+msgstr ""
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Условие за плащане на доставчик"
+msgstr ""
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
-msgstr "Ако е истина текущата(те) сметка(и) ще бъдат платена(и)."
+msgstr ""
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
-msgstr "За подреждане на редовете във възходящ ред"
+msgstr ""
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr "Фактура - Ред от плащане"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
-msgstr "Начало на кредитна фактура"
+msgstr ""
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
-msgstr "Ред от фактура"
+msgstr ""
 
 msgctxt "model:account.invoice.line-account.tax,name:"
 msgid "Invoice Line - Tax"
-msgstr "Ред от фактура - Данък"
+msgstr ""
 
 msgctxt "model:account.invoice.pay.ask,name:"
 msgid "Pay Invoice"
-msgstr "Плащане на фактура"
+msgstr ""
 
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
-msgstr "Плащане на фактура"
+msgstr ""
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr "Ред от условие за плащане"
+msgstr ""
 
-msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
 msgstr ""
 
@@ -1017,25 +1019,23 @@ msgstr ""
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
-msgstr "Предупреждение при отпечатване на справка за фактура"
+msgstr ""
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
-msgstr "Данък към фактура"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Всичко фактури"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr "Фактури"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Фактури на доставчик"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
@@ -1043,23 +1043,23 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Условия за плащане"
+msgstr ""
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Кредит"
+msgstr ""
 
 msgctxt "model:ir.action,name:print"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr "Плащане на фактура"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
@@ -1069,50 +1069,43 @@ msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Проект"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr "Проверен"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Проект"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr "Проверен"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "Фактура"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Фактури на доставчик"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
@@ -1120,11 +1113,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Фактури"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Условия за плащане"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
@@ -1132,7 +1125,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Условия за плащане"
+msgstr ""
 
 #, fuzzy
 msgctxt "report:account.invoice:"
@@ -1141,106 +1134,103 @@ msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Base"
-msgstr "Основа"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr "Дата:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Description:"
-msgstr "Описание:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
-msgstr "Проект на фактура"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
-msgstr "Фактура N°:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
-msgstr "ПРО-ФОРМА фактура"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Quantity"
-msgstr "Количество"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Reference"
-msgstr "Препратка"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
-msgstr "Фактура за доставчик N°:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Taxes:"
-msgstr "Данъци:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Total (excl. taxes):"
-msgstr "Общо (без данъци):"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Total:"
-msgstr "Общо:"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr "Единична цена"
+msgstr ""
 
 msgctxt "report:account.invoice:"
 msgid "VAT:"
-msgstr "ДДС:"
+msgstr ""
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
-msgstr "Отказан"
+msgstr ""
 
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr ""
 
 msgctxt "selection:account.invoice,state:"
 msgid "Paid"
-msgstr "Платен"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Posted"
-msgstr "Публикуван"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
-msgstr "Проверен"
+msgstr ""
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1248,6 +1238,26 @@ msgstr ""
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Validated"
 msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
@@ -1264,173 +1274,166 @@ msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
-msgstr "Коментар"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
-msgstr "Ред"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Subtotal"
-msgstr "Междинна сума"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
-msgstr "Заглавие"
+msgstr ""
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
-msgstr "Частично плащане"
+msgstr ""
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
-msgstr "Анулиран"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr "Фиксирана"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
-msgstr "Процент от остъчна стойност"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Total"
-msgstr "Процент от общата сума"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr "Напомняне"
+msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "April"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "August"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "December"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "February"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "January"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "July"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "June"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "March"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "May"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "November"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "October"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "September"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid ""
 msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Friday"
-msgstr "Петък"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Monday"
-msgstr "Понеделник"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Saturday"
-msgstr "Събота"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Sunday"
-msgstr "Неделя"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Thursday"
-msgstr "Четвъртък"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Tuesday"
-msgstr "Вторник"
+msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Wednesday"
-msgstr "Сряда"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Validated"
+msgstr ""
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
-msgstr "Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?"
-
-msgctxt "view:account.invoice.credit.start:"
-msgid "Credit Invoice"
-msgstr "Кредитна фактура"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "General"
-msgstr "Основен"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Line"
-msgstr "Ред от фактура"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
-msgstr "Редове от фактура"
+msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
-msgstr "Бележки"
+msgstr ""
 
 msgctxt "view:account.invoice.pay.ask:"
 msgid "Pay Invoice"
-msgstr "Плащане на фактура"
+msgstr ""
 
 msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
-msgstr "Плащане на фактура"
-
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Delta"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Deltas"
 msgstr ""
 
 #, fuzzy
@@ -1438,30 +1441,21 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Line"
-msgstr "Ред от условие за плащане"
-
 msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice.payment_term.test:"
 msgid "Payment Term Test"
-msgstr "Ред от условие за плащане"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
-msgstr "Условие за плащане"
+msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
-msgstr "Условия за плащане"
-
-msgctxt "view:account.invoice.print.warning:"
-msgid "Print Invoice"
-msgstr "Отпечатване на фактура"
+msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."
@@ -1469,23 +1463,11 @@ msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
-msgstr "Избрали сте за печат повече от една фактура"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Tax"
-msgstr "Данък към фактура"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Taxes"
-msgstr "Данъци на фактура"
+msgstr ""
 
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
-msgstr "Код на данък"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Taxes"
-msgstr "Данъци"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Also known as Pro Forma"
@@ -1497,100 +1479,84 @@ msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Draft"
-msgstr "Проект"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
-msgstr "Фактура"
-
-msgctxt "view:account.invoice:"
-msgid "Invoices"
-msgstr "Фактури"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
-msgstr "Друга информация"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Pay"
-msgstr "Плащане"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
-msgstr "Плащане"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Post"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Validate"
-msgstr "Проверка"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Сума в допълнителна валута"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "view:account.move.line:"
-msgid "Lines to Pay"
-msgstr "Редове за плащане"
-
-msgctxt "view:account.move.line:"
-msgid "Payment Lines"
-msgstr "Редове от плащане"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr "Условия за плащане"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "OK"
-msgstr "Добре"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
 msgid "OK"
-msgstr "Добре"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr "Затваряне"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.print,warning,print_:"
 msgid "Print"
-msgstr "Печат"
+msgstr ""

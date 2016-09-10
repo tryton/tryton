@@ -200,9 +200,10 @@ msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
@@ -220,25 +221,30 @@ msgctxt "field:account.invoice,cancel_move:"
 msgid "Cancel Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "field:account.invoice,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
@@ -248,13 +254,15 @@ msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -268,6 +276,10 @@ msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr ""
 
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr ""
+
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr ""
@@ -276,29 +288,33 @@ msgctxt "field:account.invoice,journal:"
 msgid "Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
 msgctxt "field:account.invoice,lines_to_pay:"
 msgid "Lines to Pay"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
+#, fuzzy
 msgctxt "field:account.invoice,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
@@ -312,9 +328,10 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -324,9 +341,10 @@ msgctxt "field:account.invoice,reference:"
 msgid "Reference"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -340,37 +358,44 @@ msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:account.invoice,type_name:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -380,64 +405,79 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice-account.move.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.invoice.credit.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
 msgstr ""
 
 msgctxt "field:account.invoice.line,invoice_taxes:"
@@ -456,93 +496,110 @@ msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:account.invoice.line,party_lang:"
 msgid "Party Language"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Mértékegység kategória"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
@@ -552,9 +609,10 @@ msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
@@ -572,9 +630,15 @@ msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "Dátum"
+
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -584,9 +648,10 @@ msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
 msgid "Write-Off Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
@@ -596,93 +661,111 @@ msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.pay.start,journal:"
 msgid "Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
@@ -692,9 +775,10 @@ msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -704,105 +788,121 @@ msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_date:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,create_uid:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,day:"
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,days:"
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,id:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,line:"
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,month:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
-msgstr ""
+msgstr "Hónap"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,months:"
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,rec_name:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,sequence:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,weeks:"
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_date:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
-msgctxt "field:account.invoice.payment_term.line.relativedelta,write_uid:"
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.invoice.payment_term.test,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
@@ -820,21 +920,25 @@ msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
@@ -852,37 +956,47 @@ msgctxt "field:account.invoice.tax,base_sign:"
 msgid "Base Sign"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
 msgstr ""
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
@@ -900,13 +1014,15 @@ msgctxt "field:account.invoice.tax,tax_sign:"
 msgid "Tax Sign"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:account.period,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -980,7 +1096,7 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr ""
 
-msgctxt "model:account.invoice.payment_term.line.relativedelta,name:"
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
 msgstr ""
 
@@ -1040,9 +1156,10 @@ msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
@@ -1057,9 +1174,10 @@ msgctxt ""
 msgid "Validated"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
@@ -1115,17 +1233,20 @@ msgctxt "report:account.invoice:"
 msgid "Base"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:account.invoice:"
 msgid "Description:"
@@ -1147,9 +1268,10 @@ msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
 msgctxt "report:account.invoice:"
 msgid "Reference"
@@ -1207,29 +1329,54 @@ msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
+#, fuzzy
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
+msgstr "Beszállítók"
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,invoice_state:"
+msgid "Validated"
 msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
-msgstr ""
+msgstr "Vevő"
 
+#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Beszállítók"
 
+#, fuzzy
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
@@ -1251,9 +1398,10 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr ""
+msgstr "Rögzített"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
@@ -1267,108 +1415,123 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "April"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "August"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "December"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "February"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "January"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "July"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "June"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "March"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "May"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "November"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "October"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,month:"
+msgctxt "selection:account.invoice.payment_term.line.delta,month:"
 msgid "September"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid ""
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Friday"
-msgstr ""
+msgstr "Péntek"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Monday"
-msgstr ""
+msgstr "Hétfő"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Saturday"
-msgstr ""
+msgstr "Szombat"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Sunday"
-msgstr ""
+msgstr "Vasárnap"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Thursday"
-msgstr ""
+msgstr "Csütörtök"
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
 msgid "Tuesday"
+msgstr "Kedd"
+
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
+msgid "Wednesday"
+msgstr "Szerda"
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Canceled"
 msgstr ""
 
-msgctxt "selection:account.invoice.payment_term.line.relativedelta,weekday:"
-msgid "Wednesday"
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice.tax,invoice_state:"
+msgid "Validated"
 msgstr ""
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
 msgstr ""
 
-msgctxt "view:account.invoice.credit.start:"
-msgid "Credit Invoice"
-msgstr ""
-
 msgctxt "view:account.invoice.line:"
 msgid "General"
-msgstr ""
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Line"
-msgstr ""
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
 msgstr ""
 
 msgctxt "view:account.invoice.line:"
@@ -1383,22 +1546,10 @@ msgctxt "view:account.invoice.pay.start:"
 msgid "Pay Invoice"
 msgstr ""
 
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Delta"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term.line.relativedelta:"
-msgid "Payment Term Line Relative Deltas"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.line:"
-msgid "Payment Term Line"
-msgstr ""
 
 msgctxt "view:account.invoice.payment_term.test.result:"
 msgid "Payment Term Test Results"
@@ -1417,10 +1568,6 @@ msgid "Payment Terms"
 msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "Print Invoice"
-msgstr ""
-
-msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."
 msgstr ""
 
@@ -1429,19 +1576,7 @@ msgid "You have selected more than one invoice to print."
 msgstr ""
 
 msgctxt "view:account.invoice.tax:"
-msgid "Invoice Tax"
-msgstr ""
-
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Taxes"
-msgstr ""
-
-msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
-msgstr ""
-
-msgctxt "view:account.invoice.tax:"
-msgid "Taxes"
 msgstr ""
 
 msgctxt "view:account.invoice:"
@@ -1452,9 +1587,10 @@ msgctxt "view:account.invoice:"
 msgid "Are you sure to cancel the invoice?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:account.invoice:"
 msgid "Draft"
@@ -1462,10 +1598,6 @@ msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Invoices"
 msgstr ""
 
 msgctxt "view:account.invoice:"
@@ -1500,14 +1632,6 @@ msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr ""
 
-msgctxt "view:account.move.line:"
-msgid "Lines to Pay"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Payment Lines"
-msgstr ""
-
 msgctxt "view:party.party:"
 msgid "Payment Terms"
 msgstr ""
@@ -1516,34 +1640,42 @@ msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr ""
+msgstr "Bezár"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.print,warning,print_:"
 msgid "Print"
-msgstr ""
+msgstr "Nyomtatás"
