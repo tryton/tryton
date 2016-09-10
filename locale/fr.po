@@ -4,43 +4,43 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "El apunte puede ser utilizado sólo una vez en las reclamaciones."
+msgstr "Une ligne ne peut être utilisée qu'une seule fois sur une relance."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr "Procedimiento de reclamación por defecto"
+msgstr "Procédure de relance par défaut"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Actif"
 
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
-msgstr "Importe"
+msgstr "Montant"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Importe segunda moneda"
+msgstr "Montant en devise secondaire"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Bloqueada"
+msgstr "Bloqué"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Société"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Date de création"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Créé par"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgstr "Décimales de la devise"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -48,51 +48,51 @@ msgstr "ID"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
-msgstr "Nivel"
+msgstr "Niveau"
 
 msgctxt "field:account.dunning,line:"
 msgid "Line"
-msgstr "Apunte"
+msgstr "Ligne"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Fecha de vencimiento"
+msgstr "Date d'échéance"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Tiers"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
-msgstr "Procedimiento"
+msgstr "Procédure"
 
 msgctxt "field:account.dunning,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Segunda moneda"
+msgstr "Devise secondaire"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Decimales de la segunda moneda"
+msgstr "Décimales de la seconde devise"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
-msgstr "Estado"
+msgstr "État"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Date de mise à jour"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Mis à jour par"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Date"
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
@@ -100,47 +100,47 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Date de création"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
-
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr "Número de días de atraso"
+msgstr "Créé par"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr ""
+
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
-msgstr "Procedimiento"
+msgstr "Procédure"
 
 msgctxt "field:account.dunning.level,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Séquence"
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Date de mise à jour"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Mis à jour par"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Date de création"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Créé par"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -148,23 +148,23 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr "Niveles"
+msgstr "Niveaux"
 
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nom"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Date de mise à jour"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Mis à jour par"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -172,156 +172,148 @@ msgstr "ID"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Procedimiento de reclamación"
+msgstr "Procédure de relance"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Reclamación contable"
+msgstr "Relance comptable"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear reclamación"
+msgstr "Créer la relance comptable"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr "Nivel de reclamación contable"
+msgstr "Niveau de relance comptable"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Procedimiento de reclamación contable"
+msgstr "Procédure de relance comptable"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crear reclamación contable"
+msgstr "Créer la relance comptable"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de reclamaciones"
+msgstr "Procédures de relance"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear reclamaciones"
+msgstr "Créer les relances"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Procesar reclamación"
+msgstr "Traitement des relances"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Toutes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Finalizada"
+msgstr "Terminée"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "Brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear reclamaciones"
+msgstr "Créer les relances"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de reclamaciones"
+msgstr "Procédures de relance"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Reclamación"
+msgstr "Relance"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Finalizada"
+msgstr "Terminée"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "Brouillon"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr "Reclamación"
-
-msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr "Crear reclamación"
+msgstr "Relance"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr "Crear reclamación para la fecha"
+msgstr "Créer les relance pour la date"
 
 msgctxt "view:account.dunning.level:"
 msgid "Dunning Level"
-msgstr "Nivel de reclamación"
+msgstr "Niveau de relance"
 
 msgctxt "view:account.dunning.level:"
 msgid "dunning levels"
-msgstr "Niveles de reclamación"
+msgstr "niveaux de relance"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
-msgstr "Procedimiento de reclamación"
+msgstr "Procédure de relance"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de reclamaciones"
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr "Procesar reclamación"
+msgstr "Procédures de relance"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "¿Procesar reclamación?"
+msgstr "Traiter les relances ?"
 
 msgctxt "view:account.dunning:"
 msgid "Dunning"
-msgstr "Reclamación"
+msgstr "Relance"
 
 msgctxt "view:account.dunning:"
 msgid "Dunnings"
-msgstr "Reclamaciones"
+msgstr "Relances"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr "Reclamación"
+msgstr "Relance"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
-msgstr "Crear"
+msgstr "Créer"
 
 msgctxt "wizard_button:account.dunning.create,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annuler"
 
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annuler"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
-msgstr "Procesar"
+msgstr "Traiter"

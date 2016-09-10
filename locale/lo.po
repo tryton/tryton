@@ -4,324 +4,316 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "Eine Position kann nur einmal auf einer Mahnung verwendet werden."
+msgstr "ລາຍການຕິດຕາມໜີ້ສາມາດໃຊ້ໄດ້ພຽງແຕ່ກັບໜຶ່ງການຕິດຕາມໜີ້ເທົ່ານັ້ນ."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr "Standardmahnprozedur"
+msgstr "ຂັ້ນຕອນຫຼັກການຕິດຕາມໜີ້"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "ມູນຄ່າ"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Fremdwährungsbetrag"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Gesperrt"
+msgstr "ຖືກປິດກັ້ນ"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
+msgstr "ເລກເສດສະກຸນເງິນ"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
-msgstr "Stufe"
+msgstr "ລະດັບ"
 
 msgctxt "field:account.dunning,line:"
 msgid "Line"
-msgstr "Position"
+msgstr "ລາຍການ"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Fälligkeitsdatum"
+msgstr "ວັນທີຄົບກຳນົດໜີ້"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr "ພາກສ່ວນ"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
-msgstr "Methode"
+msgstr "ຂັ້ນຕອນ"
 
 msgctxt "field:account.dunning,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Fremdwährung"
+msgstr "ສະກຸນເງິນທີສອງ"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Nachkommastellen Fremdwährung"
+msgstr "ເລກເສດສະກຸນເງິນທີສອງ"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
-msgstr "Status"
+msgstr "ສະຖານະ"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "ວັນທີ"
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr "Anzahl an überfälligen Tagen"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr ""
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
-msgstr "Methode"
+msgstr "ຂັ້ນຕອນ"
 
 msgctxt "field:account.dunning.level,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr "ລໍາດັບ"
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr "Stufen"
+msgstr "ລະດັບ"
 
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Mahnmethode"
+msgstr "ຂັ້ນຕອນການຕິດຕາມໜີ້"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Mahnung"
+msgstr "ບັນຊີຕິດຕາມໜີ້"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Mahnung erstellen"
+msgstr "ສ້າງບັນຊີຕິດຕາມໜີ້"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr "Mahnstufe"
+msgstr "ລະດັບບັນຊີຕິດຕາມໜີ້"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Mahnmethode"
+msgstr "ຂັ້ນຕອນບັນຊີຕິດຕາມໜີ້"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Mahnung erstellen"
+msgstr "ສ້າງບັນຊີຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Mahnmethoden"
+msgstr "ຂັ້ນຕອນການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Mahnungen erstellen"
+msgstr "ສ້າງການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Mahnlauf durchführen"
+msgstr "ປະມວນຜົນການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "ທັງໝົດ"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "ແລ້ວໆ"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Mahnwesen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Mahnungen erstellen"
+msgstr "ສ້າງການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Mahnmethoden"
+msgstr "ຂັ້ນຕອນການຕິດຕາມໜີ້"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Mahnwesen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Mahnung"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "ແລ້ວໆ"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr "Mahnung"
-
-msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr "Mahnung erstellen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr "Mahnung erstellen für Datum"
+msgstr "ສ້າງບັນຊີຕິດຕາມໜີ້ສຳລັບວັນທີ"
 
 msgctxt "view:account.dunning.level:"
 msgid "Dunning Level"
-msgstr "Mahnstufe"
+msgstr "ລະດັບການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning.level:"
 msgid "dunning levels"
-msgstr "Mahnstufen"
+msgstr "ລະດັບການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
-msgstr "Mahnmethode"
+msgstr "ຂັ້ນຕອນການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
-msgstr "Mahnmethoden"
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr "Mahnlauf durchführen"
+msgstr "ຂັ້ນຕອນການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "Mahnlauf durchführen?"
+msgstr "ປະມວນຜົນການຕິດຕາມໜີ້ບໍ່?"
 
 msgctxt "view:account.dunning:"
 msgid "Dunning"
-msgstr "Mahnung"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "view:account.dunning:"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr "Mahnung"
+msgstr "ການຕິດຕາມໜີ້"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
-msgstr "Erstellen"
+msgstr "ສ້າງ"
 
 msgctxt "wizard_button:account.dunning.create,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
-msgstr "Ausführen"
+msgstr "ປະມວນຜົນ"

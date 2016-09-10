@@ -106,13 +106,13 @@ msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
 msgstr "Criado pelo usuário"
 
-msgctxt "field:account.dunning.level,days:"
-msgid "Number of Overdue Days"
-msgstr "Número de Dias de Atraso"
-
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr ""
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -267,10 +267,6 @@ msgid "Dunning"
 msgstr "Cobrança"
 
 msgctxt "view:account.dunning.create.start:"
-msgid "Create Dunning"
-msgstr "Criar Cobrança"
-
-msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Criar Cobrança para a data"
 
@@ -289,10 +285,6 @@ msgstr "Procedimento de Cobrança"
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
 msgstr "Procedimentos de Cobrança"
-
-msgctxt "view:account.dunning.process.start:"
-msgid "Process Dunning"
-msgstr "Processar Cobrança"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
