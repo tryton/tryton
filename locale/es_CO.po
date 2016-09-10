@@ -20,15 +20,16 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:bank,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "field:bank,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
@@ -38,13 +39,14 @@ msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr "Banco"
+msgstr ""
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
@@ -54,17 +56,18 @@ msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
+#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Monedas"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Números"
+msgstr ""
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
@@ -72,7 +75,7 @@ msgstr "Propietario"
 
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
@@ -84,7 +87,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
@@ -96,7 +99,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
@@ -104,7 +107,7 @@ msgstr "Propietario"
 
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
@@ -116,7 +119,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr ""
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
@@ -128,11 +131,11 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
@@ -140,15 +143,15 @@ msgstr "Número Compacto"
 
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
@@ -168,7 +171,7 @@ msgstr "Código de Identificación del Banco"
 
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr "Banco"
+msgstr ""
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
@@ -182,13 +185,14 @@ msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr "Número de Cuenta de Bancaria"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Cuentas"
+msgstr "Cuentas Bancarias"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Bancos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
@@ -196,7 +200,7 @@ msgstr "Cuentas Bancarias"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Bancos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
@@ -208,11 +212,11 @@ msgstr "Administración de Bancos"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
-msgstr "IBAN"
+msgstr ""
 
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr "Otro"
+msgstr ""
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
@@ -232,11 +236,11 @@ msgstr "Cuentas Bancaria"
 
 msgctxt "view:bank:"
 msgid "Bank"
-msgstr "Banco"
+msgstr ""
 
 msgctxt "view:bank:"
 msgid "Banks"
-msgstr "Bancos"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Banking"

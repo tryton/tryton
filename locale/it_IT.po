@@ -6,61 +6,74 @@ msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:bank,bic:"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
+#, fuzzy
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:bank,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparti"
 
+#, fuzzy
 msgctxt "field:bank,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valute"
 
+#, fuzzy
 msgctxt "field:bank.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -70,93 +83,113 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr ""
+msgstr "Conto"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr ""
+msgstr "Conto"
 
+#, fuzzy
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
+#, fuzzy
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
+#, fuzzy
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -178,21 +211,24 @@ msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Numero conto bancario"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr ""
+msgstr "Piano dei Conti"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr ""
+msgstr "Piano dei Conti"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
@@ -210,13 +246,15 @@ msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr ""
+msgstr "Altro"
 
+#, fuzzy
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Numero conto bancario"
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Numbers"
