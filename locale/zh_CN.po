@@ -32,25 +32,29 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:commission,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
+#, fuzzy
 msgctxt "field:commission,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -68,41 +72,48 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:commission,type_:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:commission,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:commission,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
@@ -116,37 +127,43 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.agent,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
@@ -156,53 +173,63 @@ msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:commission.plan,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:commission.plan,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:commission.plan,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
@@ -212,21 +239,25 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "序列"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -240,33 +271,39 @@ msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -358,9 +395,10 @@ msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
@@ -463,14 +501,6 @@ msgid "Commission Plans"
 msgstr ""
 
 msgctxt "view:commission:"
-msgid "Commission"
-msgstr ""
-
-msgctxt "view:commission:"
-msgid "Commissions"
-msgstr ""
-
-msgctxt "view:commission:"
 msgid "Invoice"
 msgstr ""
 
@@ -482,10 +512,12 @@ msgctxt "view:sale.line:"
 msgid "Commissions"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
+#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"

@@ -383,9 +383,10 @@ msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "Administração de Comissão"
 
+#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
@@ -466,14 +467,6 @@ msgstr "Plano de Comissão"
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
 msgstr "Planos de Comissão"
-
-msgctxt "view:commission:"
-msgid "Commission"
-msgstr "Comissão"
-
-msgctxt "view:commission:"
-msgid "Commissions"
-msgstr "Comissões"
 
 msgctxt "view:commission:"
 msgid "Invoice"

@@ -7,512 +7,481 @@ msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"La fórmula \"%(formula)s\" en la línea de plan de comisiones \"%(line)s\" no"
+" es  correcta generando la excepción \"%(exception)s\"."
 
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
-msgstr ""
+msgstr "Agente comisión"
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "field:account.invoice.line,from_commissions:"
 msgid "From Commissions"
-msgstr ""
+msgstr "De las comisiones"
 
 msgctxt "field:account.invoice.line,principal:"
 msgid "Commission Principal"
-msgstr ""
+msgstr "Comisión principal"
 
 msgctxt "field:commission,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
-#, fuzzy
 msgctxt "field:commission,amount:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "Importe"
 
 msgctxt "field:commission,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:commission,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
-#, fuzzy
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr "Fecha"
 
 msgctxt "field:commission,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
-msgstr "Factuurregel"
+msgstr "Línea de factura"
 
-#, fuzzy
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
-msgstr "Factuur status"
+msgstr "Estado factura"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origen"
 
-#, fuzzy
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Producto"
 
-#, fuzzy
 msgctxt "field:commission,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:commission,type_:"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 msgctxt "field:commission,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:commission,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
-#, fuzzy
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Empresa"
 
 msgctxt "field:commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
-#, fuzzy
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Moneda"
 
 msgctxt "field:commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:commission.agent,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Tercero"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
-msgstr ""
+msgstr "Importe pendiente"
 
 msgctxt "field:commission.agent,plan:"
 msgid "Plan"
-msgstr ""
+msgstr "Plan"
 
-#, fuzzy
 msgctxt "field:commission.agent,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 msgctxt "field:commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr ""
+msgstr "De"
 
 msgctxt "field:commission.create_invoice.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr ""
+msgstr "Para"
 
-#, fuzzy
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
-msgstr ""
+msgstr "Método comisión"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
-msgstr ""
+msgstr "Producto comisión"
 
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:commission.plan,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
 msgctxt "field:commission.plan,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr "Transacties"
+msgstr "Líneas"
 
-#, fuzzy
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:commission.plan,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:commission.plan.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Fórmula"
 
 msgctxt "field:commission.plan.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
-msgstr ""
+msgstr "Plan"
 
-#, fuzzy
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Producto"
 
-#, fuzzy
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "Secuencia"
 
 msgctxt "field:commission.plan.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
-msgstr ""
+msgstr "Comisión principales"
 
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
-msgstr ""
+msgstr "Comisión principales"
 
 msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
 msgctxt "field:product.template-commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha creación"
 
 msgctxt "field:product.template-commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Usuario creación"
 
 msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
-msgstr "Sjabloon"
+msgstr "Plantilla"
 
 msgctxt "field:product.template-commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha modificación"
 
 msgctxt "field:product.template-commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuario modificación"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
-msgstr ""
+msgstr "Comisión principal"
 
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
-msgstr ""
+msgstr "Agente comisión"
 
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due"
-msgstr ""
+msgstr "Cuando la comisión vence."
 
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
+"Expresión de python que se evaluará con:\n"
+"- amount: El import original."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
 msgctxt "model:account.journal.type,name:journal_type_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
-msgstr ""
+msgstr "Agente comisión"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Crear factura de comisión"
 
 msgctxt "model:commission.plan,name:"
 msgid "Commission Plan"
-msgstr ""
+msgstr "Plan comisión"
 
 msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
-msgstr ""
+msgstr "Línea de plan comisión"
 
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr ""
+msgstr "Crear facturas de comisión"
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr ""
+msgstr "De las comisiones"
 
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr ""
+msgstr "Planes comisión"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr ""
+msgstr "Crear facturas de comision"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr ""
+msgstr "Planes comisión"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
-msgstr ""
+msgstr "Plantilla de producto - Agente de comisión"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
-msgstr ""
+msgstr "Administración de comisión"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
-msgstr "Geannuleerd"
+msgstr "Cancelada"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"
-msgstr ""
+msgstr "Facturada"
 
-#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid "Paid"
-msgstr "Betaald"
+msgstr "Pagada"
 
 msgctxt "selection:commission,type_:"
 msgid "Incoming"
-msgstr ""
+msgstr "Entrada"
 
 msgctxt "selection:commission,type_:"
 msgid "Outgoing"
-msgstr ""
+msgstr "Salida"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Agent Of"
-msgstr ""
+msgstr "Agente de"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Principal Of"
-msgstr ""
+msgstr "Principal de"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Incoming"
-msgstr ""
+msgstr "Entrada"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Outgoing"
-msgstr ""
+msgstr "Salida"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Payment"
-msgstr ""
+msgstr "Al pagar"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
-msgstr ""
+msgstr "Al contabilizar"
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "view:commission.agent:"
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
 msgctxt "view:commission.agent:"
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
 msgctxt "view:commission.create_invoice.ask:"
 msgid "Create Commission Invoice"
-msgstr ""
+msgstr "Crear factura de comisión"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Line"
-msgstr ""
+msgstr "Línea de plan comisión"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr ""
+msgstr "Líneas de plan comisión"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
-msgstr ""
+msgstr "Plan comisión"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
-msgstr ""
-
-msgctxt "view:commission:"
-msgid "Commission"
-msgstr ""
-
-msgctxt "view:commission:"
-msgid "Commissions"
-msgstr ""
+msgstr "Planes comisión"
 
 msgctxt "view:commission:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factura"
 
 msgctxt "view:product.template:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
 msgctxt "view:sale.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Comisiones"
 
-#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
-msgstr "Oké"
+msgstr "Aceptar"
 
-#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Cancelar"

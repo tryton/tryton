@@ -32,25 +32,30 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:commission,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
+#, fuzzy
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:commission,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -64,49 +69,60 @@ msgctxt "field:commission,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:commission,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:commission,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:commission,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:commission,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
+#, fuzzy
 msgctxt "field:commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:commission.agent,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
@@ -116,37 +132,45 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.agent,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr ""
+msgstr "-tól; től"
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr ""
+msgstr "-hoz; -höz"
 
+#, fuzzy
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
@@ -156,77 +180,94 @@ msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:commission.plan,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:commission.plan,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:commission.plan,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Űrlap"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -240,33 +281,40 @@ msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
-msgstr ""
+msgstr "Űrlap adószámlához"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:product.template-commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -358,9 +406,10 @@ msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
@@ -463,14 +512,6 @@ msgid "Commission Plans"
 msgstr ""
 
 msgctxt "view:commission:"
-msgid "Commission"
-msgstr ""
-
-msgctxt "view:commission:"
-msgid "Commissions"
-msgstr ""
-
-msgctxt "view:commission:"
 msgid "Invoice"
 msgstr ""
 
@@ -482,10 +523,12 @@ msgctxt "view:sale.line:"
 msgid "Commissions"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
