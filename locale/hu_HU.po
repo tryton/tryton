@@ -50,49 +50,57 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
+msgstr "Tevékenység"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Időpozíció"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"

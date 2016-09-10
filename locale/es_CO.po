@@ -64,7 +64,7 @@ msgstr "Esfuerzo"
 
 msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
@@ -72,7 +72,7 @@ msgstr "Línea de Factura"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
@@ -94,6 +94,7 @@ msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
 msgstr "Lineas de Registro de Tiempo"
 
+#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Facturas"
@@ -108,7 +109,7 @@ msgstr "Facturación de Proyecto"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
-msgstr "Manual"
+msgstr ""
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Effort"
@@ -124,7 +125,7 @@ msgstr "Por Registro de Tiempo"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
-msgstr "Manual"
+msgstr ""
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Effort"
@@ -146,6 +147,7 @@ msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr "Progresos de Tareas Facturadas"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Factura de Venta"

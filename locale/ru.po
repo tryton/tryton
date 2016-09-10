@@ -26,13 +26,15 @@ msgctxt "field:project.work,duration_to_invoice:"
 msgid "Duration to Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Строка инвойса"
 
+#, fuzzy
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Метод инвойса"
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -46,57 +48,69 @@ msgctxt "field:project.work,invoiced_progress:"
 msgid "Invoiced Progress"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Метод инвойса"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Строка инвойса"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
+msgstr "Работа"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Строка инвойса"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Строки табеля"
 
+#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr ""
+msgstr "Инвойсы"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
@@ -106,9 +120,10 @@ msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
-msgstr ""
+msgstr "Ручной"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Effort"
@@ -122,9 +137,10 @@ msgctxt "selection:project.work,invoice_method:"
 msgid "On Timesheet"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
-msgstr ""
+msgstr "Ручной"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Effort"
@@ -146,6 +162,7 @@ msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Invoice"
-msgstr ""
+msgstr "Инвойсы"

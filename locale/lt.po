@@ -70,9 +70,10 @@ msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
