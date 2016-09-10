@@ -2,17 +2,20 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
@@ -38,10 +41,12 @@ msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Creazione"
 
+#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
