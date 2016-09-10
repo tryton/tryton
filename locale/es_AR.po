@@ -14,12 +14,12 @@ msgstr ""
 
 msgctxt "field:party.address,siret:"
 msgid "SIRET"
-msgstr "SIRET"
+msgstr ""
 
 msgctxt "field:party.address,siret_nic:"
 msgid "SIRET NIC"
-msgstr "SIRET NIC"
+msgstr ""
 
 msgctxt "field:party.party,siren:"
 msgid "SIREN"
-msgstr "SIREN"
+msgstr ""
