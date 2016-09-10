@@ -2,21 +2,23 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr "Coste"
+msgstr "Costo"
 
+#, fuzzy
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgstr "Decimales de divisa"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Precio de venta"
+msgstr ""
 
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
@@ -24,7 +26,7 @@ msgstr ""
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Ingresos"
+msgstr ""
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"

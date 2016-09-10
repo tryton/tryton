@@ -12,19 +12,19 @@ msgstr "Decimales de moneda"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Precio de venta"
+msgstr ""
 
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
-msgstr "Líneas de compra"
+msgstr ""
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Ingresos"
+msgstr ""
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
@@ -32,4 +32,4 @@ msgstr "Esfuerzo de trabajo"
 
 msgctxt "view:project.work:"
 msgid "Purchases"
-msgstr "Compras"
+msgstr ""

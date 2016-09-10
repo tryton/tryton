@@ -6,25 +6,28 @@ msgctxt "field:project.work,cost:"
 msgid "Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "posizioni valuta"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr ""
+msgstr "Ricavo"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"

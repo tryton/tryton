@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr "Разход"
+msgstr "Стоимость"
 
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Кол-во цифр валюты"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Каталожна цена"
+msgstr "Цена"
 
 msgctxt "field:project.work,product:"
 msgid "Product"
@@ -24,12 +24,14 @@ msgstr ""
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Приход"
+msgstr "Доходы"
 
+#, fuzzy
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Рабочие затраты"
 
+#, fuzzy
 msgctxt "view:project.work:"
 msgid "Purchases"
-msgstr ""
+msgstr "Покупки"
