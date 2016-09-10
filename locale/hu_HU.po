@@ -2,21 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
+#, fuzzy
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
@@ -26,25 +30,30 @@ msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Árlista"
 
+#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -54,21 +63,25 @@ msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -78,49 +91,58 @@ msgctxt "field:sale.extra.line,free:"
 msgid "Free"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
@@ -144,14 +166,6 @@ msgstr ""
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
 msgstr ""
 
 msgctxt "view:sale.extra.line:"

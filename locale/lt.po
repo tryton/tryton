@@ -4,164 +4,159 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr "Aktivno"
+msgstr ""
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr ""
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr ""
 
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr ""
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimalke"
+msgstr ""
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr "Končni datum"
+msgstr ""
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr "Postavke"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Namu"
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr "Cenik"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Namu"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr "Znesek prodaje"
+msgstr ""
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr "Začetni datum"
+msgstr ""
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr ""
 
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr ""
 
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr ""
 
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr ""
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr "Prosto"
+msgstr ""
 
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Izdelek"
+msgstr ""
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr "Kategorije EM izdelka"
+msgstr ""
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Količina"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Namu"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr "Znesek prodaje"
+msgstr ""
 
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr "Zap.št."
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr "enota"
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalke"
+msgstr ""
 
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr ""
 
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr ""
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr "Dodatna prodajna postavka"
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr "Dodatna postavka"
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
-msgstr "Dodatne postavke"
+msgstr ""
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr "Prodajna postavka"
+msgstr ""
 
 msgctxt "view:sale.extra:"
 msgid "Extra"
-msgstr "Dodatno"
+msgstr ""
 
 msgctxt "view:sale.extra:"
 msgid "Extras"
-msgstr "Dodatno"
+msgstr ""

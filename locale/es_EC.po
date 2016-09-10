@@ -2,13 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
@@ -22,21 +23,23 @@ msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimales de moneda"
 
+#, fuzzy
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha de Fin"
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
 msgstr "Líneas"
 
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
@@ -44,15 +47,16 @@ msgstr "Lista de precios"
 
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
 msgstr "Importe de venta"
 
+#, fuzzy
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicial"
+msgstr "Fecha inicio"
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
@@ -72,7 +76,7 @@ msgstr "Creado por usuario"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr "Extra"
+msgstr ""
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
@@ -80,11 +84,11 @@ msgstr "Gratuito"
 
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
@@ -92,11 +96,11 @@ msgstr "Cateogría de UdM de producto"
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
@@ -104,11 +108,11 @@ msgstr "Importe de venta"
 
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr ""
 
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
@@ -124,44 +128,37 @@ msgstr "Modificado por usuario"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr "Extra"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Extras de venta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr "Extra de venta"
+msgstr ""
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr "Línea extra de venta"
+msgstr ""
 
-msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr "Línea extra"
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
-msgstr "Líneas extra"
-
+#, fuzzy
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr "Línea de venta"
+msgstr "Línea de Venta"
 
 msgctxt "view:sale.extra:"
 msgid "Extra"
-msgstr "Extra"
+msgstr ""
 
 msgctxt "view:sale.extra:"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""

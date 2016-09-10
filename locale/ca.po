@@ -2,189 +2,158 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Actiu"
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data final"
 
-#, fuzzy
 msgctxt "field:sale.extra,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr "Транзакции"
+msgstr "Línies"
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr "Ценова листа"
+msgstr "Tarifa"
 
-#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Import de la venda"
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data inicial"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Usuari creació"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr "Свободен"
+msgstr "Gratis"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr "Producte"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Categoria UdM del producte"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Количество"
+msgstr "Quantitat"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr "Условие за плащане"
+msgstr "Nom"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Import de la venda"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr "Последователност"
+msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr "Единица"
+msgstr "Unitat"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Десетични единици"
+msgstr "Decimals de la unitat"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Usuari modificació"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extres"
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Extres de venda"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extres"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr ""
+msgstr "Extra de venda"
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
-msgstr ""
+msgstr "Línia extra de venda"
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Línia de venta"
 
 msgctxt "view:sale.extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "view:sale.extra:"
 msgid "Extras"
-msgstr ""
+msgstr "Extres"

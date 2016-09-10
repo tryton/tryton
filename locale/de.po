@@ -2,188 +2,158 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "Aktiv"
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr ""
+msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Enddatum"
 
-#, fuzzy
 msgctxt "field:sale.extra,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr "Строки"
+msgstr "Zeilen"
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Name"
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Preisliste"
 
-#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Name"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Verkaufsbetrag"
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Anfangsdatum"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr "Свободно"
+msgstr "Gratis"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Товарно материальные ценности (ТМЦ)"
+msgstr "Variante"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Maßeinheitenkategorie"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr "Anzahl"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Name"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Verkaufsbetrag"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr "Последовательность"
+msgstr "Revision"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr "Штука"
+msgstr "Einheit"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr "Nachkommastellen"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Verkaufsextras"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr ""
+msgstr "Verkaufsextra"
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr ""
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
-msgstr ""
+msgstr "Verkaufsextrazeile"
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Verkaufsposition"
 
 msgctxt "view:sale.extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "view:sale.extra:"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"

@@ -147,14 +147,6 @@ msgid "Sale Extra Line"
 msgstr "Linha Extra de Venda"
 
 msgctxt "view:sale.extra.line:"
-msgid "Extra Line"
-msgstr "Linha Extra"
-
-msgctxt "view:sale.extra.line:"
-msgid "Extra Lines"
-msgstr "Linas Extra"
-
-msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
 msgstr "Linha de Venda"
 
