@@ -22,9 +22,10 @@ msgctxt "field:account.fr.fec.start,deferral_post_number:"
 msgid "Deferral Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Año fiscal"
 
 msgctxt "field:account.fr.fec.start,id:"
 msgid "ID"
@@ -74,9 +75,10 @@ msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "wizard_button:account.fr.fec,start,generate:"
 msgid "Generate"

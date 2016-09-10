@@ -2,17 +2,19 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:account.fr.fec.result,file:"
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.fr.fec.result,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.fr.fec.start,deferral_journal:"
 msgid "Deferral Journal"
@@ -22,17 +24,20 @@ msgctxt "field:account.fr.fec.start,deferral_post_number:"
 msgid "Deferral Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Финансова година"
 
+#, fuzzy
 msgctxt "field:account.fr.fec.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"
-msgstr ""
+msgstr "Вид"
 
 msgctxt "help:account.fr.fec.start,deferral_journal:"
 msgid "Journal used for pseudo deferral move"
@@ -70,13 +75,15 @@ msgctxt "view:account.fr.fec.start:"
 msgid "Generate FEC"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
-msgstr ""
+msgstr "Приключен"
 
+#, fuzzy
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отказване"
 
 msgctxt "wizard_button:account.fr.fec,start,generate:"
 msgid "Generate"
