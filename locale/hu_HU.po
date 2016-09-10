@@ -50,10 +50,7 @@ msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr "Cikk költségelőzményei"
 
-msgctxt "view:product.product.cost_history:"
-msgid "Product Cost History"
-msgstr "Beszerzési ár Termék előzmény"
-
+#, fuzzy
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
-msgstr ""
+msgstr "Idő"

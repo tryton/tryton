@@ -16,19 +16,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,template:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
@@ -50,10 +50,7 @@ msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr "Historial de costos de producto"
 
-msgctxt "view:product.product.cost_history:"
-msgid "Product Cost History"
-msgstr "Historial de costos de producto"
-
+#, fuzzy
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr "Tiempo"

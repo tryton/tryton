@@ -8,35 +8,35 @@ msgstr "Precio de costo"
 
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.product.cost_history,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Creado por usuario"
 
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,template:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
@@ -52,9 +52,5 @@ msgstr "Historial de costos de producto"
 
 #, fuzzy
 msgctxt "view:product.product.cost_history:"
-msgid "Product Cost History"
-msgstr "Historial de costos de producto"
-
-msgctxt "view:product.product.cost_history:"
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"

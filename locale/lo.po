@@ -2,58 +2,64 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,cost_price:"
 msgid "Cost Price"
-msgstr "Фабрична цена"
+msgstr "ລາຄາຄິດໄລ່"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "ວັນທີ:"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Name"
-msgstr "Име"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,template:"
 msgid "Product"
-msgstr "Продукт"
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr "История на цена на продукт"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_product_cost_history_open"
 msgid "Cost History"
-msgstr "История на цена"
+msgstr ""
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr "История на цена на продукт"
+msgstr ""
 
-msgctxt "view:product.product.cost_history:"
-msgid "Product Cost History"
-msgstr "История на цена на продукт"
-
+#, fuzzy
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
-msgstr ""
+msgstr "ເວລາ"
