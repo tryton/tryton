@@ -42,9 +42,10 @@ msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"

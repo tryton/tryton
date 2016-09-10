@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valute"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
@@ -22,41 +23,48 @@ msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Vettore"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"

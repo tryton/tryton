@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Monedas"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
@@ -36,19 +37,19 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr "Precio"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
@@ -64,7 +65,7 @@ msgstr "Precio de Lista de Transporte de Carga"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
