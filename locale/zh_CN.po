@@ -148,9 +148,10 @@ msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
@@ -172,13 +173,15 @@ msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
@@ -264,18 +267,22 @@ msgctxt "view:product.update_cost_price.show_move:"
 msgid "Update Cost Price - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"

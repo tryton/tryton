@@ -144,21 +144,24 @@ msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Költség"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
@@ -172,13 +175,15 @@ msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
@@ -248,9 +253,10 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
@@ -264,18 +270,22 @@ msgctxt "view:product.update_cost_price.show_move:"
 msgid "Update Cost Price - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"

@@ -153,15 +153,16 @@ msgstr "Costo"
 
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
 msgstr "Productos"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
@@ -177,11 +178,11 @@ msgstr "Decimales de Moneda"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
@@ -249,11 +250,12 @@ msgstr "Actualizar Costo Precio del Asiento Mostrado"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
-msgstr "Continental"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
-msgstr "Ninguno"
+msgstr "Ninguna"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
@@ -267,18 +269,20 @@ msgctxt "view:product.update_cost_price.show_move:"
 msgid "Update Cost Price - Move"
 msgstr "Asiento Actualiza Precio de Costo"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
 msgstr "Cancelar"

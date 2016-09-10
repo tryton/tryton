@@ -27,9 +27,10 @@ msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
 msgstr "Método de contabilización de stock"
 
+#, fuzzy
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta de stock"
+msgstr "Contabilización de stock"
 
 msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
@@ -67,9 +68,10 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Cuenta de stock utilizada"
 
+#, fuzzy
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta de stock"
+msgstr "Contabilización de stock"
 
 msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
@@ -107,9 +109,10 @@ msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Cuenta de stock utilizada"
 
+#, fuzzy
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta de stock"
+msgstr "Contabilización de stock"
 
 msgctxt "field:product.template,account_stock_customer:"
 msgid "Account Stock Customer"
@@ -153,23 +156,24 @@ msgstr "Precio de costo"
 
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
-msgstr "Variante"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
-msgstr "Importe"
+msgstr "Valor"
 
 msgctxt "field:product.update_cost_price.show_move,counterpart:"
 msgid "Counterpart"
-msgstr "Contrapartida"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
@@ -177,11 +181,11 @@ msgstr "Decimales de moneda"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
@@ -189,11 +193,11 @@ msgstr "Libro diario"
 
 msgctxt "field:product.update_cost_price.show_move,price_difference:"
 msgid "Price Difference"
-msgstr "Diferencia de precio"
+msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
-msgstr "Cuenta de stock"
+msgstr ""
 
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
@@ -249,11 +253,11 @@ msgstr "Actualizar precio de costo - Mostrar asiento"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
-msgstr "Continental"
+msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
-msgstr "Ninguno"
+msgstr ""
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
@@ -267,18 +271,20 @@ msgctxt "view:product.update_cost_price.show_move:"
 msgid "Update Cost Price - Move"
 msgstr "Actualizar precio de costo - Asiento"
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
 msgstr "Cancelar"

@@ -147,26 +147,26 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
-msgstr "Kostprijs"
-
-msgctxt "field:product.update_cost_price.ask,id:"
-msgid "ID"
-msgstr ""
+msgstr "ລາຄາຄິດໄລ່"
 
 #, fuzzy
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
-msgstr "Producten"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "ມູນຄ່າ"
 
 msgctxt "field:product.update_cost_price.show_move,counterpart:"
 msgid "Counterpart"
@@ -175,21 +175,22 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "ໂຕເລກສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "ເນື້ອໃນລາຍການ"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
-msgstr "Dagboek"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
 
 msgctxt "field:product.update_cost_price.show_move,price_difference:"
 msgid "Price Difference"
@@ -202,62 +203,52 @@ msgstr ""
 #, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "ບັນຊີນີ້ຈະໃຊ້ແທນໃຫ້ບັນຊີໂຕທີ່ມີໃນໝວດນັ້ນ."
 
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
@@ -278,7 +269,7 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
-msgstr "Geen"
+msgstr "ບໍ່ມີ"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
@@ -295,19 +286,19 @@ msgstr ""
 #, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
 
 #, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
 
 #, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
