@@ -8,27 +8,29 @@ msgstr "Contar"
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de Unidad"
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Udm"
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
 msgstr "Categoría UdM"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr "El número límite de movimientos."
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
@@ -46,6 +48,7 @@ msgctxt "view:stock.move:"
 msgid "Split"
 msgstr "Partir"
 
+#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"

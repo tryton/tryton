@@ -6,17 +6,20 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Posizioni Unità"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
@@ -46,9 +49,10 @@ msgctxt "view:stock.move:"
 msgid "Split"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"

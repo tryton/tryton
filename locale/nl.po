@@ -6,9 +6,10 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
