@@ -94,9 +94,10 @@ msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment,state:"
 msgid "State"
@@ -142,9 +143,10 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
@@ -174,17 +176,19 @@ msgctxt "field:account.payment.journal,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.journal,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
@@ -324,6 +328,10 @@ msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
 msgstr ""
 
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr ""
+
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
 msgstr ""
@@ -389,10 +397,6 @@ msgid "Pay Line"
 msgstr ""
 
 msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr ""
-
-msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr ""
 
@@ -410,10 +414,6 @@ msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journals"
-msgstr ""
-
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments"
 msgstr ""
 
 msgctxt "view:account.payment.process.start:"
@@ -438,14 +438,6 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:account.payment:"
-msgid "Payment"
-msgstr ""
-
-msgctxt "view:account.payment:"
-msgid "Payments"
 msgstr ""
 
 msgctxt "view:account.payment:"

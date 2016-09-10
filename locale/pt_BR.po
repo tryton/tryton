@@ -324,9 +324,14 @@ msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
 msgstr "Pagamento"
 
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr ""
+
+#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -389,10 +394,6 @@ msgid "Pay Line"
 msgstr "Por Linha"
 
 msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr "Linhas de Lançamentos Contábeis"
-
-msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr "Linhas de Pagamento"
 
@@ -411,10 +412,6 @@ msgstr "Diário de Pagamento"
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journals"
 msgstr "Diários de Pagamento"
-
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments"
-msgstr "Processar Pagamentos"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
@@ -439,14 +436,6 @@ msgstr "Falha"
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Outras informações"
-
-msgctxt "view:account.payment:"
-msgid "Payment"
-msgstr "Pagamento"
-
-msgctxt "view:account.payment:"
-msgid "Payments"
-msgstr "Pagamentos"
 
 msgctxt "view:account.payment:"
 msgid "Succeed"

@@ -12,7 +12,7 @@ msgstr "Il pagamento \"%s\" dev'essere in stato bozza per essere eliminato."
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
+msgstr "Sequenza gruppo pagamenti"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -26,7 +26,6 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagamenti"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
 msgstr "Data"
@@ -137,7 +136,7 @@ msgstr "Tipo"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -325,6 +324,10 @@ msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
 msgstr "Pagamento"
 
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr ""
+
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
 msgstr ""
@@ -379,91 +382,60 @@ msgstr "Manuale"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr ""
+msgstr "Sequenza gruppo"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pagamento"
 
-#, fuzzy
 msgctxt "view:account.move.line.pay.start:"
 msgid "Pay Line"
 msgstr "Riga pagamento"
 
 msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr "Righe pagamento"
 
-#, fuzzy
 msgctxt "view:account.payment.group:"
 msgid "Payment Group"
 msgstr "Gruppo pagamento"
 
-#, fuzzy
 msgctxt "view:account.payment.group:"
 msgid "Payment Groups"
 msgstr "Gruppi pagamento"
 
-#, fuzzy
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journal"
 msgstr "Registro pagamento"
 
-#, fuzzy
 msgctxt "view:account.payment.journal:"
 msgid "Payment Journals"
 msgstr "Registri pagamento"
 
-#, fuzzy
-msgctxt "view:account.payment.process.start:"
-msgid "Process Payments"
-msgstr "Processare i pagamenti "
-
-#, fuzzy
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
-msgstr "Processare i pagamenti "
+msgstr "Processare i pagamenti ?"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Approve"
-msgstr "Approvato"
+msgstr "Approvare"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Descrizione"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Draft"
 msgstr "Bozza"
 
 msgctxt "view:account.payment:"
 msgid "Fail"
-msgstr ""
+msgstr "non riuscito"
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
-msgstr ""
+msgstr "Altre informazioni"
 
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Payment"
-msgstr "Pagamento"
-
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Payments"
-msgstr "Pagamenti"
-
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr "Riuscito"

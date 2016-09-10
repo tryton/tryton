@@ -26,13 +26,15 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.line.pay.start,journal:"
 msgid "Journal"
@@ -42,41 +44,49 @@ msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.payment,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.payment,group:"
 msgid "Group"
-msgstr ""
+msgstr "Csoport"
 
+#, fuzzy
 msgctxt "field:account.payment,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
@@ -90,41 +100,50 @@ msgctxt "field:account.payment,line:"
 msgid "Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
+#, fuzzy
 msgctxt "field:account.payment,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.payment,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:account.payment,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.payment,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -134,69 +153,83 @@ msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.payment.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.journal,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.payment.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
@@ -260,9 +293,10 @@ msgctxt ""
 msgid "Receivable"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
@@ -322,6 +356,10 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
+msgstr ""
+
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
 msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
@@ -389,10 +427,6 @@ msgid "Pay Line"
 msgstr ""
 
 msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr ""
-
-msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr ""
 
@@ -413,10 +447,6 @@ msgid "Payment Journals"
 msgstr ""
 
 msgctxt "view:account.payment.process.start:"
-msgid "Process Payments"
-msgstr ""
-
-msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
 msgstr ""
 
@@ -424,9 +454,10 @@ msgctxt "view:account.payment:"
 msgid "Approve"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "view:account.payment:"
 msgid "Draft"
@@ -441,28 +472,22 @@ msgid "Other Info"
 msgstr ""
 
 msgctxt "view:account.payment:"
-msgid "Payment"
-msgstr ""
-
-msgctxt "view:account.payment:"
-msgid "Payments"
-msgstr ""
-
-msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "wizard_button:account.move.line.pay,start,pay:"
 msgid "Pay"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
