@@ -482,14 +482,6 @@ msgid "Draft"
 msgstr "Esborrany"
 
 msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandate"
-msgstr "Mandat"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandates"
-msgstr "Mandats"
-
-msgctxt "view:account.payment.sepa.mandate:"
 msgid "Request"
 msgstr "Sol·licitud"
 
@@ -508,14 +500,6 @@ msgstr "Executa"
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Message"
-msgstr "Missatge SEPA"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Messages"
-msgstr "Missatges SEPA"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"

@@ -80,17 +80,20 @@ msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
@@ -108,9 +111,10 @@ msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -120,41 +124,48 @@ msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,state:"
 msgid "State"
-msgstr ""
+msgstr "状态"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
@@ -164,25 +175,30 @@ msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
-msgstr ""
+msgstr "状态"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:party.party,sepa_creditor_identifier:"
 msgid "SEPA Creditor Identifier"
@@ -220,18 +236,20 @@ msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
@@ -288,9 +306,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Country"
-msgstr ""
+msgstr "考文垂郡"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
@@ -304,9 +323,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor's name"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Direct Debit MANDATE"
@@ -336,9 +356,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "SEPA"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
-msgstr ""
+msgstr "印签"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signed at"
@@ -426,9 +447,10 @@ msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Draft"
@@ -462,20 +484,13 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandate"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandates"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.mandate:"
@@ -486,9 +501,10 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Validate"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
@@ -496,14 +512,6 @@ msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Message"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Messages"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"

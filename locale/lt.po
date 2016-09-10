@@ -108,9 +108,10 @@ msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -164,9 +165,10 @@ msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
@@ -288,9 +290,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Country"
-msgstr ""
+msgstr "Koventris"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
@@ -471,14 +474,6 @@ msgid "Draft"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandate"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandates"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
 msgid "Request"
 msgstr ""
 
@@ -496,14 +491,6 @@ msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Message"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Messages"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"

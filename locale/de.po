@@ -479,14 +479,6 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandate"
-msgstr "Mandat"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandates"
-msgstr "Mandate"
-
-msgctxt "view:account.payment.sepa.mandate:"
 msgid "Request"
 msgstr "Anfordern"
 
@@ -505,14 +497,6 @@ msgstr "Durchführen"
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
 msgstr "Entwurf"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Message"
-msgstr "SEPA-Nachricht"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Messages"
-msgstr "SEPA-Nachrichten"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"

@@ -52,9 +52,10 @@ msgctxt "field:account.payment.journal,company_party:"
 msgid "Company Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.journal,sepa_bank_account_number:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Számlaszám"
 
 msgctxt "field:account.payment.journal,sepa_batch_booking:"
 msgid "Batch Booking"
@@ -76,21 +77,25 @@ msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
@@ -100,17 +105,19 @@ msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
 msgid "Identification Readonly"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -120,41 +127,49 @@ msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
@@ -164,25 +179,30 @@ msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:party.party,sepa_creditor_identifier:"
 msgid "SEPA Creditor Identifier"
@@ -220,18 +240,20 @@ msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
@@ -276,21 +298,24 @@ msgid ""
 "debited."
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
-msgstr ""
+msgstr "Bank SWIFT(BIC) kódja"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "By signing this mandate form, you authorize"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
-msgstr ""
+msgstr "Város"
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
@@ -304,17 +329,19 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor's name"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Direct Debit MANDATE"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Location"
-msgstr ""
+msgstr "Raktár hely"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Name of the debtor"
@@ -336,9 +363,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "SEPA"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
-msgstr ""
+msgstr "Aláírás"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signed at"
@@ -426,9 +454,10 @@ msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Draft"
@@ -462,20 +491,13 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandate"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Mandates"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.mandate:"
@@ -486,9 +508,10 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Validate"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
@@ -496,14 +519,6 @@ msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Message"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "SEPA Messages"
 msgstr ""
 
 msgctxt "view:account.payment.sepa.message:"
