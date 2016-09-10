@@ -28,13 +28,15 @@ msgctxt "field:product.price_list,lines:"
 msgid "Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.price_list,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:product.price_list,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -76,9 +78,10 @@ msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.price_list.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"

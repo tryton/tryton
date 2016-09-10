@@ -24,19 +24,20 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.price_list,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
-msgstr "Líneas"
+msgstr "Transacciones"
 
 msgctxt "field:product.price_list,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.price_list,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -60,31 +61,32 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
-msgstr "Fórmula"
+msgstr ""
 
 msgctxt "field:product.price_list.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
 msgstr "Lista de Precios"
 
+#, fuzzy
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:product.price_list.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:product.price_list.line,unit_digits:"
 msgid "Unit Digits"

@@ -86,9 +86,10 @@ msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"
 msgstr "Sorrend"
 
+#, fuzzy
 msgctxt "field:product.price_list.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:product.price_list.line,write_date:"
 msgid "Write Date"
