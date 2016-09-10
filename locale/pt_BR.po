@@ -345,28 +345,12 @@ msgid "Analytic Entry"
 msgstr "Entrada Analítica"
 
 msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr "Conta Analítica"
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
-msgstr "Contas Analíticas"
-
-msgctxt "view:analytic_account.account:"
 msgid "General Information"
 msgstr "Informações gerais"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
 msgstr "Observações"
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr "Linha Analítica"
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr "Linhas Analíticas"
 
 msgctxt "view:analytic_account.line:"
 msgid "General Information"

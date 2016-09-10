@@ -4,35 +4,35 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:analytic.account.entry:"
 msgid "Only one account is allowed per analytic root and origin."
-msgstr "Es ist nur ein Konto möglich per Kostenstelle und Ursprung"
+msgstr "Només es pot seleccionar un compte per cada origen i arrel analítica."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
-msgstr "Falsche Haben/Soll-Werte."
+msgstr "Valors d'haver/deure erronis."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using inactive account \"%s\"."
-msgstr "Buchungszeile kann nicht angelegt werden mit inaktivem Konto \"%s\"."
+msgstr "No podeu crear un apunt utilitzant un compte \"%s\" inactiu."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
-msgstr "Buchungszeile kann nicht angelegt werden mit Kontosicht \"%s\"."
+msgstr "No podeu crear un apunt utilitzant el compte de vista \"%s\"."
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr "Kostenstelle Zeilen"
+msgstr "Línies analítiques"
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Compte"
 
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
@@ -40,31 +40,31 @@ msgstr "ID"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr "Herkunft"
+msgstr "Origen"
 
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
-msgstr "Erforderlich"
+msgstr "Obligatori"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
-msgstr "Wurzelkonto Kostenstelle"
+msgstr "Compte arrel analític"
 
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr "Actiu"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -72,43 +72,43 @@ msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr "Untergeordnet (Kostenstellen)"
+msgstr "Fills"
 
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "Codi"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "Empresa"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr "Haben"
+msgstr "Haver"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Währung"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
-msgstr "Soll"
+msgstr "Deure"
 
 msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
-msgstr "Ansicht Bilanz"
+msgstr "Mostra saldo"
 
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
@@ -116,83 +116,83 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
-msgstr "Erforderlich"
+msgstr "Obligatori"
 
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr "Notiz"
+msgstr "Nota"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr "Übergeordnet (Kostenstelle)"
+msgstr "Pare"
 
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
-msgstr "Wurzel"
+msgstr "Arrel"
 
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Estat"
 
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr "Typ"
+msgstr "Tipus"
 
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Compte"
 
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr "Actiu"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "Empresa"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
-msgstr "Haben"
+msgstr "Haver"
 
 msgctxt "field:analytic_account.line,currency:"
 msgid "Currency"
-msgstr "Währung"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
-msgstr "Soll"
+msgstr "Deure"
 
 msgctxt "field:analytic_account.line,id:"
 msgid "ID"
@@ -200,39 +200,39 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
-msgstr "Journal"
+msgstr "Diari"
 
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
-msgstr "Buchungszeile"
+msgstr "Apunt comptable"
 
 msgctxt "field:analytic_account.line,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:analytic_account.line,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr "Tercer"
 
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:analytic_account.line,reference:"
 msgid "Reference"
-msgstr "Beleg-Nr."
+msgstr "Referència"
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr "Enddatum"
+msgstr "Data final"
 
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
@@ -240,87 +240,87 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Data inicial"
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
-msgstr "Kostenstelleneintrag"
+msgstr "Assentament compte analític"
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr "Kostenstelle"
+msgstr "Compte analític"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr "Kostenstelle Zeile"
+msgstr "Línia analítica"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Kontenplan öffnen"
+msgstr "Obre pla comptable"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Comptes analítics"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Comptes analítics"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Comptes analítics"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr "Kostenstelle Zeilen"
+msgstr "Línies analítiques"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Konto"
+msgstr "Obre compte"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Kostenstellenplan öffnen"
+msgstr "Obre pla analític"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Comptes analítics"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Comptes analítics"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr "Kostenstellen"
+msgstr "Comptabilitat analítica"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Kostenstellenplan öffnen"
+msgstr "Obre pla analític"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Kostenstellen Administration"
+msgstr "Administració d'analítica"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
-msgstr "Haben - Soll"
+msgstr "Haver - Deure"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Debit - Credit"
-msgstr "Soll - Haben"
+msgstr "Deure - Haver"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Tancat"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Esborrany"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
-msgstr "Geöffnet"
+msgstr "Obert"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
@@ -328,56 +328,40 @@ msgstr "Normal"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
-msgstr "Wurzel"
+msgstr "Arrel"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr "Sicht"
+msgstr "Vista"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
-msgstr "Kostenstelle"
+msgstr "Analítica"
 
 msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"
-msgstr "Kostenstelleneintrag"
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr "Kostenstelle"
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "Assentament analític"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
-msgstr "Allgemein"
+msgstr "Informació general"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr "Notizen"
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr "Kostenstelle"
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr "Kostenstellen"
+msgstr "Notes"
 
 msgctxt "view:analytic_account.line:"
 msgid "General Information"
-msgstr "Allgemein"
+msgstr "Informació general"
 
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Kostenstellenplan öffnen"
+msgstr "Obre el pla analític"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Öffnen"
+msgstr "Obre"

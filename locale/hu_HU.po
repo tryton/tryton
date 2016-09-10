@@ -22,81 +22,96 @@ msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
-msgstr ""
+msgstr "Szükséges"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Gyermek (csomag)"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr ""
+msgstr "Partner kód"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
@@ -110,93 +125,109 @@ msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Szülő (csomag)"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
@@ -206,37 +237,43 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:analytic_account.line,reference:"
 msgid "Reference"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
@@ -330,9 +367,10 @@ msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr ""
+msgstr "Nézet"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
@@ -340,14 +378,6 @@ msgstr ""
 
 msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"
-msgstr ""
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr ""
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
 msgstr ""
 
 msgctxt "view:analytic_account.account:"
@@ -359,14 +389,6 @@ msgid "Notes"
 msgstr ""
 
 msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr ""
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr ""
-
-msgctxt "view:analytic_account.line:"
 msgid "General Information"
 msgstr ""
 
@@ -374,10 +396,12 @@ msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr ""
+msgstr "Megnyit"

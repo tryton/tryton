@@ -4,425 +4,364 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:analytic.account.entry:"
 msgid "Only one account is allowed per analytic root and origin."
-msgstr ""
+msgstr "Dovoljen je samo en konto na analitični koren in poreklo."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
-msgstr ""
+msgstr "Napačne vrednosti za debet/kredit."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using inactive account \"%s\"."
-msgstr ""
+msgstr "Knjiženje postavke ni možno izvesti z neaktivnim kontom \"%s\"."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
-msgstr ""
+msgstr "Knjiženje postavke ni možno izvesti z vpoglednim kontom \"%s\"."
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Analitične postavke"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Konto"
 
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Poreklo"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
-msgstr "Vereist"
+msgstr "Obvezno"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
-msgstr ""
+msgstr "Koren"
 
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr "Actief"
+msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr "Balans"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr "Onderliggende niveaus"
+msgstr "Podkonti"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "Šifra"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Družba"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
-msgstr "Debit"
+msgstr "Debet"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
-msgstr "Toon balans"
+msgstr "Prikaz bilance"
 
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
-msgstr ""
+msgstr "Obvezno"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr "Aantekening"
+msgstr "Opomba"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr "Bovenliggend niveau"
+msgstr "Matični konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Ime"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
-msgstr ""
+msgstr "Koren"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Stanje"
 
-#, fuzzy
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "Tip"
 
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
-msgstr "Actief"
+msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Družba"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Izdelano"
 
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Kredit"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "Decimalke"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
-msgstr "Debit"
+msgstr "Debet"
 
 msgctxt "field:analytic_account.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
-msgstr "Dagboek"
+msgstr "Dnevnik"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
-msgstr "Boekingsregel"
+msgstr "Postavka knjižbe"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,reference:"
 msgid "Reference"
-msgstr "Referentie"
+msgstr "Sklic"
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zapisano"
 
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr "Eind datum"
+msgstr "Končni datum"
 
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr "Start datum"
+msgstr "Začetni datum"
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
-msgstr ""
+msgstr "Vnos analitičnega konta"
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analitični konto"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr ""
+msgstr "Analitična postavka"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr ""
+msgstr "Odpri kontni načrt"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Analitične postavke"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr ""
+msgstr "Odpri konto"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Odpri analitični kontni načrt"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analitični konto"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Odpri analitični kontni načrt"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr ""
+msgstr "Analitika - vodenje"
 
-#, fuzzy
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
-msgstr "Credit - Debit"
+msgstr "Kredit - Debet"
 
-#, fuzzy
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Debit - Credit"
-msgstr "Debit - Credit"
+msgstr "Debet - Kredit"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
-msgstr ""
+msgstr "Zaprto"
 
-#, fuzzy
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "V pripravi"
 
-#, fuzzy
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
-msgstr "Geopend"
+msgstr "Odprto"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
-msgstr ""
+msgstr "Normalno"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
-msgstr ""
+msgstr "Koren"
 
-#, fuzzy
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr "Overzicht"
+msgstr "Vpogled"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
-msgstr ""
+msgstr "Analitično"
 
 msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"
-msgstr ""
+msgstr "Vnos analitičnih kontov"
 
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr ""
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
-msgstr "Algemene informatie"
+msgstr "Splošno"
 
-#, fuzzy
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr "Aantekeningen"
+msgstr "Opombe"
 
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr ""
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:analytic_account.line:"
 msgid "General Information"
-msgstr "Algemene informatie"
+msgstr "Splošno"
 
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Odpri analitični kontni načrt"
 
-#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Prekliči"
 
-#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Open"
+msgstr "Odpri"

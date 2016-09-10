@@ -26,25 +26,29 @@ msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
@@ -54,41 +58,48 @@ msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr ""
+msgstr "子项"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr ""
+msgstr "语言编码"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -110,69 +121,81 @@ msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr ""
+msgstr "注释"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "上级"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr ""
+msgstr "状态"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -186,17 +209,19 @@ msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
@@ -206,37 +231,42 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:analytic_account.line,party:"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:analytic_account.line,reference:"
 msgid "Reference"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
@@ -330,9 +360,10 @@ msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr ""
+msgstr "视图"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
@@ -340,14 +371,6 @@ msgstr ""
 
 msgctxt "view:analytic.account.entry:"
 msgid "Analytic Entry"
-msgstr ""
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr ""
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
 msgstr ""
 
 msgctxt "view:analytic_account.account:"
@@ -359,14 +382,6 @@ msgid "Notes"
 msgstr ""
 
 msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr ""
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr ""
-
-msgctxt "view:analytic_account.line:"
 msgid "General Information"
 msgstr ""
 
@@ -374,10 +389,12 @@ msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr ""
+msgstr "打开"
