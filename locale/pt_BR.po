@@ -922,14 +922,6 @@ msgid "Rates"
 msgstr "Taxas de câmbio"
 
 msgctxt "view:currency.currency:"
-msgid "Currencies"
-msgstr "Moedas"
-
-msgctxt "view:currency.currency:"
-msgid "Currency"
-msgstr "Moeda"
-
-msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
 

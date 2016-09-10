@@ -920,14 +920,6 @@ msgid "Rates"
 msgstr "Árfolyam"
 
 msgctxt "view:currency.currency:"
-msgid "Currencies"
-msgstr "Pénznemek"
-
-msgctxt "view:currency.currency:"
-msgid "Currency"
-msgstr "Pénznem"
-
-msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 

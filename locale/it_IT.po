@@ -937,14 +937,6 @@ msgid "Rates"
 msgstr "Tassi"
 
 msgctxt "view:currency.currency:"
-msgid "Currencies"
-msgstr "Valute"
-
-msgctxt "view:currency.currency:"
-msgid "Currency"
-msgstr "Valuta"
-
-msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
