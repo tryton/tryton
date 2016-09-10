@@ -10,10 +10,11 @@ msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
 msgstr "Se requiere la cuenta analítica para \"%(roots)s\" en la línea \"%(line)s\"."
 
+#, fuzzy
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr "Cuentas Analíticas"
 
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Tamaño de cuentas analíticas"
+msgstr ""

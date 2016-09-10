@@ -13,8 +13,8 @@ msgstr ""
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr ""
 
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Tamaño de cuentas analíticas"
+msgstr ""
