@@ -46,6 +46,10 @@ msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr "LDM"
 
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr ""
+
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
 msgstr "LDM"
@@ -60,19 +64,20 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,write_date:"
 msgid "Write Date"
@@ -106,13 +111,17 @@ msgctxt "field:production,effective_date:"
 msgid "Effective Date"
 msgstr "Fecha Efectiva"
 
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr ""
+
 msgctxt "field:production,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production,inputs:"
 msgid "Inputs"
-msgstr "Entradas"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -120,43 +129,49 @@ msgstr "Bodega"
 
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
-msgstr "Salidas"
+msgstr ""
 
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
 msgstr "Fecha Planeada"
 
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:production,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:production,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:production,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production,reference:"
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:production,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de Unidad"
 
+#, fuzzy
 msgctxt "field:production,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Udm"
 
 msgctxt "field:production,uom_category:"
 msgid "Uom Category"
@@ -176,15 +191,16 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:production.assign.failed,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.assign.failed,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
@@ -196,15 +212,15 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:production.bom,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
-msgstr "Entradas"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
@@ -212,11 +228,11 @@ msgstr "Salida de Productos"
 
 msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
-msgstr "Salidas"
+msgstr ""
 
 msgctxt "field:production.bom,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
@@ -240,27 +256,29 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:production.bom.input,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de Unidad"
 
+#, fuzzy
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Udm"
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
@@ -288,27 +306,29 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:production.bom.output,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de Unidad"
 
+#, fuzzy
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Udm"
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
@@ -324,27 +344,29 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
-msgstr "Hijos"
+msgstr ""
 
 msgctxt "field:production.bom.tree,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:production.bom.tree,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de Unidad"
 
+#, fuzzy
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Udm"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
@@ -352,19 +374,20 @@ msgstr "LDM"
 
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
-msgstr "Categoría"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,unit_digits:"
 msgid "Unit Digits"
@@ -372,7 +395,7 @@ msgstr "Decimales de Unidad"
 
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
@@ -380,7 +403,7 @@ msgstr "Árbol LDM"
 
 msgctxt "field:production.bom.tree.open.tree,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
@@ -392,7 +415,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:production.configuration,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
@@ -400,7 +423,7 @@ msgstr "Secuencia Producción"
 
 msgctxt "field:production.configuration,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
@@ -410,9 +433,57 @@ msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr "LDM"
+
+#, fuzzy
+msgctxt "field:production.lead_time,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+#, fuzzy
+msgctxt "field:production.lead_time,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:production.lead_time,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Tiempo de Elaboración"
+
+#, fuzzy
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "Administración de Productos"
+
+msgctxt "field:production.lead_time,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:production.lead_time,sequence:"
+msgid "Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.lead_time,write_date:"
+msgid "Write Date"
+msgstr "Modificado por Usuario"
+
+#, fuzzy
+msgctxt "field:production.lead_time,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+#, fuzzy
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -432,7 +503,7 @@ msgstr "LDMs"
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr "Producciones"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
@@ -440,7 +511,7 @@ msgstr "Configuración de Producción"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Producciones"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
@@ -453,7 +524,7 @@ msgstr "Árbol LDM"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
@@ -463,12 +534,12 @@ msgstr "Asignado"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Solicitudes"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
@@ -480,13 +551,15 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En Espera"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
@@ -494,7 +567,7 @@ msgstr "Listas de Materiales"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuración"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
@@ -502,7 +575,7 @@ msgstr "Gestión de Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr "Producciones"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
@@ -510,15 +583,16 @@ msgstr "Configuración de Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr "Producciones"
+msgstr ""
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
 msgstr "Producto - LDM"
 
+#, fuzzy
 msgctxt "model:production,name:"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
 msgctxt "model:production.assign.failed,name:"
 msgid "Assign Production"
@@ -552,17 +626,23 @@ msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
 msgstr "Configuración de Producción"
 
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
 msgstr "Administración de Producción"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -578,15 +658,16 @@ msgstr "Hecho"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Request"
 msgstr "Solicitado"
 
+#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Running"
-msgstr "En ejecución"
+msgstr "En Ejecución"
 
 msgctxt "selection:production,state:"
 msgid "Waiting"
@@ -600,9 +681,10 @@ msgctxt "view:product.product-production.bom:"
 msgid "Product - BOMs"
 msgstr "Producto - LDMs"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to Assign"
-msgstr "No se puede asignar"
+#, fuzzy
+msgctxt "view:product.product:"
+msgid "Production"
+msgstr "Gestión de Producción"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
@@ -628,17 +710,10 @@ msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
 msgstr "Árbol LDM"
 
-msgctxt "view:production.bom:"
-msgid "BOM"
-msgstr "LDM"
-
-msgctxt "view:production.bom:"
-msgid "BOMs"
-msgstr "LDM"
-
+#, fuzzy
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr "Líneas"
+msgstr "Transacciones"
 
 msgctxt "view:production.configuration:"
 msgid "Production Configuration"
@@ -648,6 +723,7 @@ msgctxt "view:production:"
 msgid "Assign"
 msgstr "Asignar"
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -658,23 +734,16 @@ msgstr "Hecho"
 
 msgctxt "view:production:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Lines"
-msgstr "Líneas"
+msgstr "Transacciones"
 
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Info Adicional"
-
-msgctxt "view:production:"
-msgid "Production"
-msgstr "Producción"
-
-msgctxt "view:production:"
-msgid "Productions"
-msgstr "Producciones"
 
 msgctxt "view:production:"
 msgid "Reset to BOM"
@@ -682,7 +751,7 @@ msgstr "Restablecer a LDM"
 
 msgctxt "view:production:"
 msgid "Run"
-msgstr "Ejecutar"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Wait"
@@ -690,24 +759,25 @@ msgstr "Espera"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
 msgstr "Forzar Asignación"
 
+#, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"
-msgstr "Cerrar"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
-msgstr "Cambiar"
+msgstr ""

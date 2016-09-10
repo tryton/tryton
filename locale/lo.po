@@ -42,44 +42,53 @@ msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr ""
 
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr ""
+
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "ລໍາດັບ"
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
@@ -88,40 +97,49 @@ msgstr ""
 #, fuzzy
 msgctxt "field:production,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:production,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
-msgstr "Effectieve datum"
+msgstr "ວັນທີມີຜົນ"
 
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:production,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 msgctxt "field:production,inputs:"
 msgid "Inputs"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,location:"
 msgid "Location"
-msgstr ""
+msgstr "ບ່ອນຢູ່"
 
+#, fuzzy
 msgctxt "field:production,number:"
 msgid "Number"
-msgstr ""
+msgstr "ເລກທີ"
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -131,82 +149,93 @@ msgctxt "field:production,planned_date:"
 msgid "Planned Date"
 msgstr ""
 
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:production,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:production,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:production,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:production,reference:"
 msgid "Reference"
-msgstr "Referentie"
+msgstr "ເອກະສານອ້າງອີງ"
 
 #, fuzzy
 msgctxt "field:production,state:"
 msgid "State"
-msgstr "Status"
+msgstr "ສະຖານະ"
 
 #, fuzzy
 msgctxt "field:production,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
+#, fuzzy
 msgctxt "field:production,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "ຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:production,uom_category:"
 msgid "Uom Category"
+msgstr "ໝວດຫົວໜ່ວຍ"
+
+msgctxt "field:production,warehouse:"
+msgid "Warehouse"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:production,warehouse:"
-msgid "Warehouse"
-msgstr "Magazijn"
-
 msgctxt "field:production,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:production,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
+#, fuzzy
 msgctxt "field:production.assign.failed,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.assign.failed,moves:"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "ຕັດບັນຊີສາງ"
 
 #, fuzzy
 msgctxt "field:production.bom,active:"
 msgid "Active"
-msgstr "Actief"
+msgstr "ໃຊ້ຢູ່"
 
+#, fuzzy
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:production.bom,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:production.bom,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
@@ -215,7 +244,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:production.bom,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
@@ -228,146 +257,164 @@ msgstr ""
 #, fuzzy
 msgctxt "field:production.bom,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:production.bom,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.input,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:production.bom.input,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "ຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "ໝວດຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:production.bom.input,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.output,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:production.bom.output,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "ຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "ໝວດຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:production.bom.output,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.tree,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
+#, fuzzy
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "ຫົວໜ່ວຍ"
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
@@ -376,51 +423,56 @@ msgstr ""
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
-msgstr "Categorie"
+msgstr "ໝວດ"
 
+#, fuzzy
 msgctxt "field:production.bom.tree.open.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
 #, fuzzy
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr "ໜ່ວຍ"
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.tree.open.tree,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:production.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:production.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
@@ -429,19 +481,70 @@ msgstr ""
 #, fuzzy
 msgctxt "field:production.configuration,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:production.lead_time,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:production.lead_time,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:production.lead_time,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "field:production.lead_time,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:production.lead_time,sequence:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
+
+#, fuzzy
+msgctxt "field:production.lead_time,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:production.lead_time,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+#, fuzzy
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -479,10 +582,11 @@ msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "ທັງໝົດ"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
@@ -493,31 +597,33 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "ກຳລັງດຳເນີນງານ"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
@@ -526,11 +632,12 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "ການຕັ້ງຄ່າ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
@@ -548,9 +655,10 @@ msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:production,name:"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "model:production.assign.failed,name:"
 msgid "Assign Production"
@@ -584,17 +692,23 @@ msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
 msgstr ""
 
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -603,30 +717,30 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr "Geannuleerd"
+msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "ແລ້ວໆ"
 
 #, fuzzy
 msgctxt "selection:production,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "selection:production,state:"
 msgid "Request"
 msgstr ""
 
-msgctxt "selection:production,state:"
-msgid "Running"
-msgstr ""
-
 #, fuzzy
 msgctxt "selection:production,state:"
+msgid "Running"
+msgstr "ກຳລັງດຳເນີນງານ"
+
+msgctxt "selection:production,state:"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOM"
@@ -636,9 +750,10 @@ msgctxt "view:product.product-production.bom:"
 msgid "Product - BOMs"
 msgstr ""
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to Assign"
-msgstr ""
+#, fuzzy
+msgctxt "view:product.product:"
+msgid "Production"
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
@@ -664,18 +779,10 @@ msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
 msgstr ""
 
-msgctxt "view:production.bom:"
-msgid "BOM"
-msgstr ""
-
-msgctxt "view:production.bom:"
-msgid "BOMs"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr "Regels"
+msgstr "ຮ່ວງ"
 
 msgctxt "view:production.configuration:"
 msgid "Production Configuration"
@@ -688,43 +795,36 @@ msgstr ""
 #, fuzzy
 msgctxt "view:production:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "ແລ້ວໆ"
 
 #, fuzzy
 msgctxt "view:production:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt "view:production:"
 msgid "Lines"
-msgstr "Regels"
+msgstr "ຮ່ວງ"
 
 #, fuzzy
 msgctxt "view:production:"
 msgid "Other Info"
-msgstr "Aanvullende informatie"
-
-msgctxt "view:production:"
-msgid "Production"
-msgstr ""
-
-msgctxt "view:production:"
-msgid "Productions"
-msgstr ""
+msgstr "ຂໍ້ມູນອື່ນໆ"
 
 msgctxt "view:production:"
 msgid "Reset to BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:production:"
 msgid "Run"
-msgstr ""
+msgstr "ດຳເນີນງານ"
 
 msgctxt "view:production:"
 msgid "Wait"
@@ -733,7 +833,7 @@ msgstr ""
 #, fuzzy
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
@@ -742,17 +842,17 @@ msgstr ""
 #, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
 
 #, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"
-msgstr "Sluiten"
+msgstr "ອັດ"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"

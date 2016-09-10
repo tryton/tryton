@@ -6,15 +6,15 @@ msgctxt "error:product.product:"
 msgid ""
 "You are trying to create a recursive BOM with product \"%s\" which is not "
 "allowed."
-msgstr "Нельзя создать рекурсивную спецификацию для продукта \"%s\"."
+msgstr ""
 
 msgctxt "error:production.bom.input:"
 msgid "Product must be unique per BOM."
-msgstr "Продукт должен быть уникальным для спецификации."
+msgstr ""
 
 msgctxt "error:production.bom.input:"
 msgid "You can not create recursive BOMs."
-msgstr "Вы не можете создать рекурсивную спецификацию."
+msgstr ""
 
 msgctxt "error:production.bom.input:"
 msgid "product_bom_uniq"
@@ -22,11 +22,11 @@ msgstr ""
 
 msgctxt "error:production.bom.output:"
 msgid "Product must be unique per BOM."
-msgstr "Продукт должен быть уникальным для спецификации."
+msgstr ""
 
 msgctxt "error:production.bom.output:"
 msgid "You can not create recursive BOMs."
-msgstr "Вы не можете создать рекурсивную спецификацию."
+msgstr ""
 
 msgctxt "error:production.bom.output:"
 msgid "product_bom_uniq"
@@ -40,79 +40,88 @@ msgstr ""
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
-msgstr "Спецификации"
+msgstr ""
+
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
-msgstr "Нумерация"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:production,bom:"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "field:production,company:"
 msgid "Company"
-msgstr "Организация"
+msgstr ""
 
 msgctxt "field:production,cost:"
 msgid "Cost"
-msgstr "Стоимость"
+msgstr ""
 
 msgctxt "field:production,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:production,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
-msgstr "Учетная дата"
+msgstr ""
+
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr ""
 
 msgctxt "field:production,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production,inputs:"
 msgid "Inputs"
-msgstr "Исходные"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
-msgstr "Местоположение"
+msgstr ""
 
 msgctxt "field:production,number:"
 msgid "Number"
@@ -120,559 +129,596 @@ msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
-msgstr "Продукция"
+msgstr ""
 
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
-msgstr "Плановая дата"
+msgstr ""
+
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr ""
 
 msgctxt "field:production,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:production,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production,reference:"
 msgid "Reference"
-msgstr "Ссылка"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
-msgstr "Состояние"
+msgstr ""
 
 msgctxt "field:production,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr ""
 
 msgctxt "field:production,uom:"
 msgid "Uom"
-msgstr "Ед.изм."
+msgstr ""
 
 msgctxt "field:production,uom_category:"
 msgid "Uom Category"
-msgstr "Категория ед. измерения"
+msgstr ""
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
-msgstr "Товарный склад"
+msgstr ""
 
 msgctxt "field:production,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:production,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:production.assign.failed,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.assign.failed,moves:"
 msgid "Moves"
-msgstr "Перемещения"
+msgstr ""
 
 msgctxt "field:production.bom,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr ""
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:production.bom,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:production.bom,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
-msgstr "Исходные"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
-msgstr "Готовая продукция"
+msgstr ""
 
 msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
-msgstr "Продукция"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:production.bom,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "field:production.bom.input,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:production.bom.input,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.input,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr ""
 
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
-msgstr "Ед.изм."
+msgstr ""
 
 msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
-msgstr "Категория ед. измерения"
+msgstr ""
 
 msgctxt "field:production.bom.input,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:production.bom.input,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "field:production.bom.output,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:production.bom.output,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom.output,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr ""
 
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
-msgstr "Ед.изм."
+msgstr ""
 
 msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
-msgstr "Категория ед. измерения"
+msgstr ""
 
 msgctxt "field:production.bom.output,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:production.bom.output,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
-msgstr "Подчиненные"
+msgstr ""
 
 msgctxt "field:production.bom.tree,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr ""
 
 msgctxt "field:production.bom.tree,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr ""
 
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
-msgstr "Ед.изм."
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
-msgstr "Категория"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
-msgstr "Продукт"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
-msgstr "Единица измерения"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
+msgstr ""
 
 msgctxt "field:production.bom.tree.open.tree,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
 msgctxt "field:production.configuration,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
 msgctxt "field:production.configuration,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
-msgstr "Нумерация производства"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.configuration,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Namu"
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
 msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr ""
+
+msgctxt "field:production.lead_time,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:production.lead_time,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:production.lead_time,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.lead_time,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:production.lead_time,sequence:"
+msgid "Sequence"
+msgstr ""
+
+msgctxt "field:production.lead_time,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:production.lead_time,write_uid:"
+msgid "Write User"
+msgstr ""
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
-msgstr "Исходные для производства"
+msgstr ""
 
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
-msgstr "Готовая продукция производства"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
-msgstr "Спецификации"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr "Производства"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
-msgstr "Конфигурация производства"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Производства"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "Назначить производство"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr "Все"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Переданный"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Сообщения"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr "Выполняется"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr "Ожидание"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr "Спецификации"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr "Производства"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
-msgstr "Конфигурация производства"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr "Производства"
+msgstr ""
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
-msgstr "Продукция - Спецификация"
+msgstr ""
 
 msgctxt "model:production,name:"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "model:production.assign.failed,name:"
 msgid "Assign Production"
-msgstr "Назначить производство"
+msgstr ""
 
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
-msgstr "Спецификация"
+msgstr ""
 
 msgctxt "model:production.bom.input,name:"
 msgid "Bill of Material Input"
-msgstr "Спецификация, исходные"
+msgstr ""
 
 msgctxt "model:production.bom.output,name:"
 msgid "Bill of Material Output"
-msgstr "Спецификация, продукция"
+msgstr ""
 
 msgctxt "model:production.bom.tree,name:"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
+msgstr ""
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
-msgstr "Открыть дерево спецификации"
+msgstr ""
 
 msgctxt "model:production.bom.tree.open.tree,name:"
 msgid "Open BOM Tree"
-msgstr "Открыть дерево спецификации"
+msgstr ""
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
-msgstr "Конфигурация производства"
+msgstr ""
+
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr ""
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Администрирование производства"
+msgstr ""
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr "Производство"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
-msgstr "Переданный"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr "Отменено"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Выполнено"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Request"
-msgstr "Сообщение"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Running"
-msgstr "Выполняется"
+msgstr ""
 
 msgctxt "selection:production,state:"
 msgid "Waiting"
-msgstr "Ожидание"
+msgstr ""
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOM"
-msgstr "Продукция - Спецификация"
+msgstr ""
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOMs"
-msgstr "Продукция - Спецификации"
+msgstr ""
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to Assign"
-msgstr "Не удалось назначить"
+msgctxt "view:product.product:"
+msgid "Production"
+msgstr ""
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Не удалось назначить эти продукты:"
+msgstr ""
 
 msgctxt "view:production.bom.input:"
 msgid "BOM Inputs"
-msgstr "Спецификация, исходные"
+msgstr ""
 
 msgctxt "view:production.bom.output:"
 msgid "BOM Outputs"
-msgstr "Спецификация, продукция"
+msgstr ""
 
 msgctxt "view:production.bom.tree.open.start:"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
+msgstr ""
 
 msgctxt "view:production.bom.tree.open.tree:"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
+msgstr ""
 
 msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
-msgstr "Дерево спецификации"
-
-msgctxt "view:production.bom:"
-msgid "BOM"
-msgstr "Спецификация"
-
-msgctxt "view:production.bom:"
-msgid "BOMs"
-msgstr "Спецификации"
+msgstr ""
 
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr "Строки"
+msgstr ""
 
 msgctxt "view:production.configuration:"
 msgid "Production Configuration"
-msgstr "Конфигурация производства"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Assign"
-msgstr "Назначение"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Cancel"
-msgstr "Отменить"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Выполнено"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Lines"
-msgstr "Строки"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Other Info"
-msgstr "Другая информация"
-
-msgctxt "view:production:"
-msgid "Production"
-msgstr "Производство"
-
-msgctxt "view:production:"
-msgid "Productions"
-msgstr "Производства"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Reset to BOM"
@@ -680,32 +726,32 @@ msgstr ""
 
 msgctxt "view:production:"
 msgid "Run"
-msgstr "Запустить"
+msgstr ""
 
 msgctxt "view:production:"
 msgid "Wait"
-msgstr "Ожидают"
+msgstr ""
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
-msgstr "Ок"
+msgstr ""
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Принудительно назначить"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
-msgstr "Отменить"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
-msgstr "Ок"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"
-msgstr "Закрыть"
+msgstr ""
 
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
-msgstr "Изменить"
+msgstr ""
