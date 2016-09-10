@@ -77,17 +77,20 @@ msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
@@ -97,25 +100,29 @@ msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.handle.invoice.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -125,9 +132,10 @@ msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
@@ -137,29 +145,33 @@ msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -173,9 +185,10 @@ msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
@@ -189,29 +202,39 @@ msgctxt "field:purchase.line,note:"
 msgid "Note"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Mértékegység kategória"
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
+msgstr "Vásárlás"
+
+msgctxt "field:purchase.line,purchase_state:"
+msgid "Purchase State"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:purchase.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
@@ -221,257 +244,311 @@ msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:purchase.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Partner kód"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,party:"
 msgid "Supplier"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "field:purchase.product_supplier,prices:"
 msgid "Prices"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Beszállítók"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
@@ -497,21 +574,25 @@ msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "field:purchase.purchase,party_lang:"
 msgid "Party Language"
@@ -525,9 +606,10 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -545,9 +627,10 @@ msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
@@ -573,89 +656,107 @@ msgctxt "field:purchase.purchase,untaxed_amount_cache:"
 msgid "Untaxed Cache"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktár"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "field:stock.move,purchase_currency:"
 msgid "Purchase Currency"
@@ -685,9 +786,10 @@ msgctxt "field:stock.move,purchase_visible:"
 msgid "Purchase Visible"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
@@ -746,9 +848,10 @@ msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
@@ -758,9 +861,10 @@ msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
@@ -782,25 +886,29 @@ msgctxt ""
 msgid "Quotation"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Beállítások"
 
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
@@ -810,9 +918,10 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Jelentés"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
@@ -854,9 +963,10 @@ msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
 msgid "Purchase - Ignored Invoice"
@@ -866,9 +976,10 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
@@ -878,13 +989,15 @@ msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description:"
@@ -898,9 +1011,10 @@ msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
@@ -958,9 +1072,35 @@ msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
 msgstr ""
 
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Confirmed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Quotation"
+msgstr ""
+
+#, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Megjegyzés"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
@@ -990,9 +1130,10 @@ msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Paid"
@@ -1006,9 +1147,10 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
@@ -1026,9 +1168,10 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
@@ -1054,9 +1197,10 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr ""
+msgstr "Termékek"
 
 msgctxt "view:product.template:"
 msgid "Suppliers"
@@ -1070,16 +1214,8 @@ msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
 msgstr ""
 
-msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Handle Invoice Exception"
-msgstr ""
-
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
-msgstr ""
-
-msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Handle shipment Exception"
 msgstr ""
 
 msgctxt "view:purchase.line:"
@@ -1087,19 +1223,7 @@ msgid "General"
 msgstr ""
 
 msgctxt "view:purchase.line:"
-msgid "Lines"
-msgstr ""
-
-msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr ""
-
-msgctxt "view:purchase.line:"
-msgid "Purchase Line"
-msgstr ""
-
-msgctxt "view:purchase.line:"
-msgid "Purchase Lines"
 msgstr ""
 
 msgctxt "view:purchase.line:"
@@ -1122,9 +1246,10 @@ msgctxt "view:purchase.product_supplier:"
 msgid "Product Suppliers"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:purchase.purchase:"
 msgid "Confirm"
@@ -1150,34 +1275,40 @@ msgctxt "view:purchase.purchase:"
 msgid "Process"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
-msgstr ""
-
-msgctxt "view:purchase.purchase:"
-msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.move:"
-msgid "Moves"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
+#, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
+#, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"

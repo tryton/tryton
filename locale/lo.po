@@ -45,19 +45,18 @@ msgid ""
 "purchase."
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
-msgstr "Uitzonderingstoestand"
+msgstr "ສະຖານະຍົກເວັ້ນ"
 
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
 #, fuzzy
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
@@ -70,7 +69,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "field:product.template,purchasable:"
 msgid "Purchasable"
@@ -80,22 +79,24 @@ msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
-
-msgctxt "field:purchase.configuration,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:purchase.configuration,id:"
-msgid "ID"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 #, fuzzy
+msgctxt "field:purchase.configuration,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:purchase.configuration,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
-msgstr "Factuur afhandeling"
+msgstr ""
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
@@ -104,141 +105,141 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
-#, fuzzy
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
-msgstr "Domein facturen"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.handle.invoice.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
-msgstr "Facturen opnieuw aanmaken"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
-msgstr "Domein boekingen"
-
-msgctxt "field:purchase.handle.shipment.exception.ask,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:purchase.handle.shipment.exception.ask,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr "Boekingen opnieuw aanmaken"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "ມູນຄ່າ"
 
+#, fuzzy
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "ເນື້ອໃນລາຍການ"
 
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Factuurregels"
+msgstr "ລາຍການເກັບເງິນ"
 
-#, fuzzy
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
-msgstr "Boekingen klaar"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
-msgstr "Boekingen uitzondering"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "ຕັດບັນຊີສາງ"
 
-#, fuzzy
 msgctxt "field:purchase.line,moves_ignored:"
 msgid "Ignored Moves"
-msgstr "Genegeerde boekingen"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Opnieuw aangemaakte boekingen"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line,note:"
 msgid "Note"
-msgstr "Aantekening"
+msgstr "ໝາຍເຫດ"
 
-#, fuzzy
 msgctxt "field:purchase.line,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
+msgstr "ສັ່ງຊື້"
+
+msgctxt "field:purchase.line,purchase_state:"
+msgid "Purchase State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:purchase.line,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "ລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "ອາກອນ"
 
 msgctxt "field:purchase.line,to_location:"
 msgid "To Location"
@@ -247,42 +248,47 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.line,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "ຮູບແບບ"
 
 #, fuzzy
 msgctxt "field:purchase.line,unit:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr "ໜ່ວຍ"
 
 #, fuzzy
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ຫົວໜ່ວຍເສດ"
 
 #, fuzzy
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr "Eenheidsprijs"
+msgstr "ລາຄາຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:purchase.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -291,37 +297,42 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.line-account.tax,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
-msgstr "Belasting"
+msgstr "ອາກອນ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr "Boeking"
+msgstr "ເຄື່ອນໄຫວ"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -330,32 +341,37 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr "Boeking"
+msgstr "ເຄື່ອນໄຫວ"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
@@ -364,42 +380,47 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "ລະຫັດແຂວງ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "ສະກຸນເງິນ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
@@ -408,12 +429,12 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,party:"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "field:purchase.product_supplier,prices:"
 msgid "Prices"
@@ -422,204 +443,204 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "ລໍາດັບ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.price,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "ລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
-msgstr "Eenheidsprijs"
-
-msgctxt "field:purchase.product_supplier.price,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:purchase.product_supplier.price,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "ລາຄາຫົວໜ່ວຍ"
 
 #, fuzzy
+msgctxt "field:purchase.product_supplier.price,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
-msgstr "Opmerking"
+msgstr "ຄຳເຫັນ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "field:purchase.purchase,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "ໂຕເລກສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "ເນື້ອໃນລາຍການ"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
-msgstr "Factuuradres"
+msgstr "ທີ່ຢູ່"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
-msgstr "Factuur afhandeling"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
-msgstr "Factuur status"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
-msgstr "Verkoopfacturen"
+msgstr "ໃບເກັບເງິນ"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoices_ignored:"
 msgid "Ignored Invoices"
-msgstr "Genegeerde facturen"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
-msgstr "Opnieuw aangemaakte facturen"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
-msgstr "Regels"
+msgstr "ຮ່ວງ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "ຕັດບັນຊີສາງ"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
-msgstr ""
+msgstr "ເລກທີ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "ພາກສ່ວນ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,party_lang:"
 msgid "Party Language"
-msgstr "Taal relatie"
+msgstr "ພາສາ"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,payment_term:"
 msgid "Payment Term"
-msgstr "Betalingstermijn"
+msgstr "ວິທີການຈ່າຍ"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
-msgstr "Referentie"
+msgstr "ເອກະສານອ້າງອີງ"
 
 msgctxt "field:purchase.purchase,shipment_returns:"
 msgid "Shipment Returns"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
-msgstr "Levering status"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "Leveringen"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
-msgstr "Status"
+msgstr "ສະຖານະ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
-msgstr "Belasting"
+msgstr "ອາກອນ"
 
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
@@ -628,7 +649,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
-msgstr "Totaal"
+msgstr "ລວມທັງໝົດ"
 
 msgctxt "field:purchase.purchase,total_amount_cache:"
 msgid "Total Cache"
@@ -637,100 +658,98 @@ msgstr ""
 #, fuzzy
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr "Onbelast"
+msgstr "ມູນຄ່າບໍ່ລວມອາກອນ"
 
 msgctxt "field:purchase.purchase,untaxed_amount_cache:"
 msgid "Untaxed Cache"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr "Magazijn"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.purchase,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.purchase,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Verkoopfactuur"
+msgstr "ໃບເກັບເງິນ"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລກລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Verkoopfactuur"
+msgstr "ໃບເກັບເງິນ"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "ຊື່"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ຂຽນວັນທີ"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
 msgctxt "field:stock.move,purchase_currency:"
 msgid "Purchase Currency"
@@ -739,7 +758,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
-msgstr "Uitzonderingstoestand"
+msgstr "ສະຖານະຍົກເວັ້ນ"
 
 msgctxt "field:stock.move,purchase_quantity:"
 msgid "Purchase Quantity"
@@ -764,22 +783,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
-#, fuzzy
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
-"De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
-"genegeerd."
 
-#, fuzzy
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr ""
-"De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
-"genegeerd."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
@@ -792,7 +805,7 @@ msgstr ""
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Verkoopfacturen"
+msgstr "ໃບເກັບເງິນ"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
@@ -806,85 +819,86 @@ msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "ຕັ້ງຄ່າການຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Leveringen"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Factuuruitzondering afhandelen"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Zendinguitzondering afhandelen"
-
-msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
-msgid "All"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Bevestigd"
+msgstr ""
 
 #, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "ກຳລັງດຳເນີນການ"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr "Offerte"
-
-msgctxt "model:ir.sequence,name:sequence_purchase"
-msgid "Purchase"
-msgstr ""
-
-msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
-msgid "Purchase"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.sequence,name:sequence_purchase"
+msgid "Purchase"
+msgstr "ສັ່ງຊື້"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
+msgid "Purchase"
+msgstr "ສັ່ງຊື້"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Instellingen"
+msgstr "ການຕັ້ງຄ່າ"
 
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
@@ -892,20 +906,22 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "ຕັ້ງຄ່າການຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "ການຈັດຊື້"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapportage"
+msgstr "ກຳລັງລາຍງາຍ"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
@@ -913,17 +929,15 @@ msgstr ""
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "ຕັ້ງຄ່າການຈັດຊື້"
 
-#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr "Factuur uitzondering vragen"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "Afleveren uitzondering vragen"
+msgstr ""
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
@@ -951,19 +965,21 @@ msgstr ""
 
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
-msgstr ""
+msgstr "ຈັດຊື້"
 
+#, fuzzy
 msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
 msgid "Purchase - Ignored Invoice"
-msgstr ""
+msgstr "ຊື້ - ສ້າງໃບເກັບເງິນໃໝ່"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
-msgstr ""
+msgstr "ຊື້ - ສ້າງໃບເກັບເງິນໃໝ່"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
@@ -972,40 +988,37 @@ msgstr ""
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "ມູນຄ່າ"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
-msgstr "Datum:"
+msgstr "ວັນທີ:"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "ເນື້ອໃນລາຍການ"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Description:"
-msgstr "Betreft:"
+msgstr "ເນື້ອໃນລາຍການ"
 
 msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
-msgstr ""
+msgstr "ໃບສັ່ງຊື້ຊົ່ວຄາວ ເລກທີ:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr ""
+msgstr "ໃບສັ່ງຊື້ເລກທີ:"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "ຈຳນວນ"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Reference:"
-msgstr "Referentie"
+msgstr "ເອກະສານອ້າງອີງ"
 
 msgctxt "report:purchase.purchase:"
 msgid "Request for Quotation N°:"
@@ -1014,46 +1027,43 @@ msgstr ""
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "ອາກອນ"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
-msgstr "Belastingen:"
+msgstr "ອາກອນ"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
-msgstr "Totaal (excl. belasting):"
+msgstr "ລວມເງິນ (ບໍ່ລວມອາກອນ):"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Total:"
-msgstr "Totaal:"
+msgstr "ລວມເງິນ:"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
-msgstr "Eenheidsprijs"
+msgstr "ລາຄາຫົວໜ່ວຍ"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "VAT:"
-msgstr "BTW:"
+msgstr ""
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
-msgstr "Genegeerd"
+msgstr "ບໍ່ແຕະຕ້ອງ"
 
-#, fuzzy
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
-msgstr "Opnieuw aangemaakt"
+msgstr "ສ້າງຂຶ້ນໃໝ່"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Based On Order"
@@ -1066,27 +1076,53 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
-msgstr "Handmatig"
+msgstr "ໃສ່ເອົາເອງ"
+
+#, fuzzy
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Canceled"
+msgstr "ຍົກເລີກແລ້ວ"
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Confirmed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+#, fuzzy
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+#, fuzzy
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Processing"
+msgstr "ກຳລັງດຳເນີນການ"
+
+msgctxt "selection:purchase.line,purchase_state:"
+msgid "Quotation"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
-msgstr "Opmerking"
+msgstr "ຄຳເຫັນ"
 
 #, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
-msgstr "Regel"
+msgstr "ຮ່ວງ"
 
-#, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Subtotal"
-msgstr "Subtotaal"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Order"
@@ -1099,76 +1135,69 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
-msgstr "Handmatig"
+msgstr "ໃສ່ເອົາເອງ"
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
-msgstr "Uitzondering"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "None"
-msgstr "Geen"
+msgstr "ບໍ່ມີ"
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Paid"
-msgstr "Betaald"
+msgstr "ຈ່າຍແລ້ວ"
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
-msgstr "Uitzondering"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr "Geen"
+msgstr "ບໍ່ມີ"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
-msgstr "Geannuleerd"
+msgstr "ຍົກເລີກແລ້ວ"
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr "Bevestigd"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "ແລ້ວໆ"
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Processing"
-msgstr "Verwerking"
+msgstr "ກຳລັງດຳເນີນການ"
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
-msgstr "Offerte"
+msgstr ""
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
@@ -1177,74 +1206,49 @@ msgstr ""
 #, fuzzy
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
-msgstr "Genegeerd"
+msgstr "ບໍ່ແຕະຕ້ອງ"
 
 #, fuzzy
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
-msgstr "Opnieuw aangemaakt"
+msgstr "ສ້າງຂຶ້ນໃໝ່"
 
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Producten"
+msgstr "ຜະລິດຕະພັນ"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr "Leverancier"
+msgstr "ຜູ້ສະໜອງ"
 
+#, fuzzy
 msgctxt "view:purchase.configuration:"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "ຕັ້ງຄ່າການຈັດຊື້"
 
-#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
-msgstr "Kies facturen om opnieuw aan te maken"
+msgstr ""
 
-#, fuzzy
-msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Handle Invoice Exception"
-msgstr "Factuuruitzondering afhandelen"
-
-#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
-msgstr "Kies boeking om opnieuw aan te maken"
-
-#, fuzzy
-msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Handle shipment Exception"
-msgstr "Zendinguitzondering afhandelen"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:purchase.line:"
 msgid "General"
-msgstr "Algemeen"
-
-#, fuzzy
-msgctxt "view:purchase.line:"
-msgid "Lines"
-msgstr "Regels"
+msgstr "ທົ່ວໄປ"
 
 #, fuzzy
 msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr "Aantekeningen"
-
-msgctxt "view:purchase.line:"
-msgid "Purchase Line"
-msgstr ""
-
-msgctxt "view:purchase.line:"
-msgid "Purchase Lines"
-msgstr ""
+msgstr "ໝາຍເຫດ"
 
 #, fuzzy
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr "Belastingen"
+msgstr "ອາກອນ"
 
 msgctxt "view:purchase.product_supplier.price:"
 msgid "Product Supplier Price"
@@ -1262,47 +1266,40 @@ msgctxt "view:purchase.product_supplier:"
 msgid "Product Suppliers"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Confirm"
-msgstr "Bevestig"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "ຮ່າງກຽມ"
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Handle Invoice Exception"
-msgstr "Factuuruitzondering afhandelen"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Handle Shipment Exception"
-msgstr "Zendinguitzondering afhandelen"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
-msgstr "Aanvullende informatie"
+msgstr "ຂໍ້ມູນອື່ນໆ"
 
+#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Process"
-msgstr ""
+msgstr "ປະມວນຜົນ"
 
+#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
-msgstr ""
-
-msgctxt "view:purchase.purchase:"
-msgid "Purchases"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
 msgctxt "view:purchase.purchase:"
 msgid "Quote"
@@ -1310,25 +1307,27 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:stock.move:"
-msgid "Moves"
-msgstr "Boekingen"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
 
-#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr ""
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "ຍົກເລີກ"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr "Oké"
+msgstr "ຕົກລົງ"
