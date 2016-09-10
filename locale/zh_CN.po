@@ -16,21 +16,24 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -40,13 +43,15 @@ msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
+#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
@@ -60,9 +65,10 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
@@ -80,25 +86,30 @@ msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
@@ -108,17 +119,20 @@ msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""

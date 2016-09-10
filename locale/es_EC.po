@@ -16,15 +16,16 @@ msgstr "Precio unitario borrador"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr "Promoción"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
@@ -34,21 +35,22 @@ msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha de Fin"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr "Fórmula"
+msgstr ""
 
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
@@ -56,23 +58,24 @@ msgstr "Lista de precios"
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Productos"
+msgstr ""
 
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicial"
+msgstr "Fecha inicio"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr ""
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
@@ -100,19 +103,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr "Promoción"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
@@ -132,28 +135,28 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Promociones"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr "Promociones de venta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Promociones"
+msgstr ""
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
-msgstr "Promoción de venta"
+msgstr ""
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr "Promoción de venta - Producto"
+msgstr ""
 
 msgctxt "view:sale.promotion:"
 msgid "Sale Promotion"
-msgstr "Promoción de venta"
+msgstr ""
 
 msgctxt "view:sale.promotion:"
 msgid "Sale Promotions"
-msgstr "Promociones de venta"
+msgstr ""

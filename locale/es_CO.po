@@ -16,11 +16,12 @@ msgstr "Precio Unitario en Borrador"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr "Promoción"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
@@ -40,15 +41,15 @@ msgstr "Fecha Final"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr "Fórmula"
+msgstr ""
 
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
@@ -56,15 +57,15 @@ msgstr "Precio de Venta"
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Productos"
+msgstr ""
 
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
@@ -72,7 +73,7 @@ msgstr "Fecha Inicio"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr ""
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
@@ -100,19 +101,20 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Administración de Productos"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr "Promoción"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
@@ -132,7 +134,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Promociones"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
@@ -140,7 +142,7 @@ msgstr "Promociones de Venta"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Promociones"
+msgstr ""
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"

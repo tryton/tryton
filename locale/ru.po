@@ -16,109 +16,131 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr ""
+msgstr "Действующий"
 
+#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr ""
+msgstr "Учет.орг."
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Дата окончания"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr ""
+msgstr "Продукция"
 
+#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Кол-во"
 
+#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Дата начала"
 
+#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Штука"
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Кол-во цифр после запятой"
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Товарно материальные ценности (ТМЦ)"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""

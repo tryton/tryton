@@ -16,37 +16,44 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
+#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data fine"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
@@ -56,69 +63,83 @@ msgctxt "field:sale.promotion,products:"
 msgid "Products"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
+#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data inizio"
 
+#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unità"
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Posizioni Unità"
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
