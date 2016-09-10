@@ -8,8 +8,8 @@ msgstr "Falta una cuenta root obligatoria en «%(name)s»"
 
 msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr ""
 
 msgctxt "field:account.invoice.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Tamaño de cuentas analíticas"
+msgstr ""

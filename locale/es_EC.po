@@ -6,10 +6,11 @@ msgctxt "error:account.invoice.line:"
 msgid "Some mandatory root account are missing on \"%(name)s\""
 msgstr "Faltan algunas cuentas raíz obligatorias en \"%(name)s\""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Cuentas analíticas"
+msgstr "Cuentas Analíticas"
 
 msgctxt "field:account.invoice.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Tamaño de cuentas analíticas"
+msgstr ""
