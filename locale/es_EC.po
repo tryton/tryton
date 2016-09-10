@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,relations:"
 msgid "Relations"
-msgstr "Relaciones"
+msgstr ""
 
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
@@ -16,15 +16,15 @@ msgstr "Creado por usuario"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr "De"
+msgstr ""
 
 msgctxt "field:party.relation,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.relation,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -32,7 +32,7 @@ msgstr "A"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
@@ -52,15 +52,15 @@ msgstr "Creado por usuario"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr "De"
+msgstr ""
 
 msgctxt "field:party.relation.all,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.relation.all,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -68,7 +68,7 @@ msgstr "A"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
@@ -88,19 +88,19 @@ msgstr "Creado por usuario"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:party.relation.type,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
-msgstr "Relación inversa"
+msgstr ""
 
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
@@ -110,13 +110,15 @@ msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Relaciones entre terceros"
+msgstr "Relaciones entre Terceros"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Tipos de relación"
+msgstr "Tipos de Relación"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
@@ -128,32 +130,32 @@ msgstr "Tipos de Relación"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Relación entre terceros"
+msgstr ""
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Relación entre terceros"
+msgstr ""
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Tipo de relación"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr "Relaciones"
+msgstr ""
 
 msgctxt "view:party.relation.all:"
 msgid "Relation"
-msgstr "Relación"
+msgstr ""
 
 msgctxt "view:party.relation.all:"
 msgid "Relations"
-msgstr "Relaciones"
+msgstr ""
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Type"
-msgstr "Tipo de relación entre terceros"
+msgstr ""
 
 msgctxt "view:party.relation.type:"
 msgid "Party Relation Types"
-msgstr "Tipos de relación entre terceros"
+msgstr ""
