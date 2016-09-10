@@ -4,27 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
 msgid "There are some late supplier moves."
-msgstr "Obstaja nekaj poznih knjižb dobaviteljev."
+msgstr ""
 
 msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
-msgstr "Največja količina mora biti večja od najmanjše količine."
+msgstr "Максимальное кол-во должно быть больше чем минимальное."
 
 msgctxt "error:stock.order_point:"
 msgid "Only one order point is allowed for each product-location pair."
-msgstr "Dovoljena je samo ena točka naročanja za vsak par izdelek - lokacija."
+msgstr ""
+"Возможна только одна точка заказа для каждой пары продукт-местоположение."
 
 msgctxt "error:stock.order_point:"
 msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
 msgstr ""
-"Dveh točk naročanja ni možno določiti na istem izdelku z nasprotujočima "
-"lokacijama."
+"Вы не можете определить две точки заказа для одного продукта с "
+"противоположными местоположениями."
 
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Точки заказа"
+
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
 
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
@@ -32,19 +37,19 @@ msgstr "ID"
 
 msgctxt "field:stock.location,provisioning_location:"
 msgid "Provisioning Location"
-msgstr "Preskrba"
+msgstr "Местоположение резервирования"
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Организация"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Дата создания"
 
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Создано пользователем"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
@@ -52,191 +57,184 @@ msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
-msgstr "Lokacija"
+msgstr "Местоположение"
 
 msgctxt "field:stock.order_point,max_quantity:"
 msgid "Maximal Quantity"
-msgstr "Največja količina"
+msgstr "Максимальное кол-во"
 
 msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
-msgstr "Najmanjša količina"
+msgstr "Минимальное кол-во"
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr "Izdelek"
+msgstr "Продукт"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
-msgstr "Preskrba"
+msgstr "Местоположение резервирования"
 
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Наименование"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr "Shramba"
+msgstr "Хранение Местоположение"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "Тип"
 
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr "enota"
+msgstr "Единица измерения"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalke"
+msgstr "Кол-во цифр после запятой"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr "Skladišče"
+msgstr "Местополжение на складе"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Дата изменения"
 
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
+msgstr "После указанного количества дней"
+
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
-msgstr "Pusti prazno, če ni privzete preskrbe"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Точки заказа"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form_relate"
 msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Точки заказа"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Точки заказа"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
+msgstr "Создать запросы на покупку"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_create"
 msgid "Create Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
+msgstr "Создать внутренние доставки."
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "Все"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Interno"
+msgstr "Внутренний"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr "Nabavni nalogi"
+msgstr "Покупки"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
+msgstr "Создать запросы на покупки."
 
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
+msgstr "Создать внутренние доставки."
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Точки заказа"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
+msgstr "Создать запросы на покупку"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
 msgid "Create Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
+msgstr "Создать внутренние доставки."
 
 msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
-msgstr "Izdelava nabavnega zahtevka"
-
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr "Razporejevalnik nabavnih zahtevkov"
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr "Razporejevalnik notranjih odpremnic"
+msgstr "Создать запрос на покупку"
 
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
-msgstr "Točka naročanja"
+msgstr "Точка заказа"
 
 msgctxt "model:stock.shipment.internal.create.start,name:"
 msgid "Create Shipment Internal"
-msgstr "Izdelava notranje odpremnice"
+msgstr ""
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
-msgstr "Interno"
+msgstr "Внутренний"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
-msgstr "Nabavni nalog"
+msgstr "Покупки"
 
-msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
-
+#, fuzzy
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
-msgstr "Izdelava nabavnih zahtevkov?"
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
-msgstr "Točka naročanja"
+msgstr "Создать запросы на покупку"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
-msgstr "Tip točke naročanja"
-
-msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr "Točke naročanja"
+msgstr "Типы точек заказа"
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr "Podatek o izdelku"
+msgstr "Информация о продукте"
 
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
-
+#, fuzzy
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"
-msgstr "Izdelava notranjih odpremnic?"
+msgstr "Создать внутренние доставки."
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
-msgstr "Izdelaj"
+msgstr "Создать"
 
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Отменить"
 
+#, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
 msgid "Create"
-msgstr "Izdelaj"
+msgstr "Создать"
 
+#, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Отменить"

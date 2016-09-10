@@ -24,33 +24,43 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr ""
 
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
 msgctxt "field:stock.location,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
+#, fuzzy
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data di creazione"
 
+#, fuzzy
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utente creazione"
 
+#, fuzzy
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
-msgstr ""
+msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
-msgstr ""
+msgstr "Luogo"
 
 msgctxt "field:stock.order_point,max_quantity:"
 msgid "Maximal Quantity"
@@ -60,48 +70,60 @@ msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
+#, fuzzy
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unità"
 
+#, fuzzy
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Posizioni Unità"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Utente scrittura"
 
+#, fuzzy
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
+msgstr "Movimento contabile"
+
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
 msgstr ""
 
 msgctxt "help:stock.location,provisioning_location:"
@@ -128,20 +150,22 @@ msgctxt "model:ir.action,name:act_shipment_internal_create"
 msgid "Create Internal Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr ""
+msgstr "Acquisto"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -167,14 +191,6 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr ""
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr ""
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr ""
-
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr ""
@@ -187,20 +203,13 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
-msgstr ""
-
-msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr ""
+msgstr "Acquisto"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
-msgstr ""
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
 msgstr ""
 
 msgctxt "view:stock.order_point:"
@@ -208,33 +217,29 @@ msgid "Order Point Type"
 msgstr ""
 
 msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr ""
-
-msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Creazione"
 
+#, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
+#, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Creazione"
 
+#, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"

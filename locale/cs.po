@@ -24,6 +24,10 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr ""
 
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
 msgstr ""
@@ -32,10 +36,9 @@ msgctxt "field:stock.location,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr ""
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
@@ -61,10 +64,9 @@ msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr ""
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
@@ -73,26 +75,23 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Namu"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr ""
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
@@ -108,6 +107,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
 msgstr ""
 
 msgctxt "help:stock.location,provisioning_location:"
@@ -173,14 +176,6 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr ""
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr ""
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr ""
-
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr ""
@@ -198,15 +193,7 @@ msgid "Purchase"
 msgstr ""
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr ""
-
-msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
-msgstr ""
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
 msgstr ""
 
 msgctxt "view:stock.order_point:"
@@ -214,15 +201,7 @@ msgid "Order Point Type"
 msgstr ""
 
 msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr ""
-
-msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal.create.start:"
@@ -233,16 +212,14 @@ msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""
 
 msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
 msgid "Create"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""

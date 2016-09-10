@@ -27,6 +27,11 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Rendelés pont"
 
+#, fuzzy
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Beszerzési időszak"
+
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -107,6 +112,11 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
+msgstr "Napok száma"
+
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
 msgstr "Üresen hagyni, ha nincs előkészítési hely "
@@ -170,14 +180,6 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr "Rendelés javaslat létrehozása"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr "Rendelés javaslat tervező"
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr "Belső szállítást tervező"
-
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Rendelés pont"
@@ -195,33 +197,17 @@ msgid "Purchase"
 msgstr "Vásárlás"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr "Rendelés javaslat létrehozása"
-
-msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
 msgstr "Rendelés javaslat létrehozása?"
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
-msgstr "Rendelés pont"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
 msgstr "Rendelés pont típus"
 
-msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr "Rendelés pont"
-
 #, fuzzy
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr "Termék infó"
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
-msgstr "Belső szállítások létrehozása"
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"

@@ -26,6 +26,11 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Regras de Abastecimento"
 
+#, fuzzy
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Período de suprimento"
+
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -106,6 +111,11 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
+msgstr "Em número de dias"
+
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
 msgstr "Deixe vazio para nenhum abastecimento padrão"
@@ -169,14 +179,6 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr "Criar ordem de compra"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr "Pedido de compra de Cron"
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr "Programar Remessas Internas"
-
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Regra de Abastecimento"
@@ -194,32 +196,16 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr "Criar ordens de compra"
-
-msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
 msgstr "Criar Ordens de Compra?"
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
-msgstr "Regra de Abastecimento"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
 msgstr "Tipo de Regra de Abastecimento"
 
 msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr "Regra de Abastecimento"
-
-msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr "Informação do Produto"
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
-msgstr "Criar Remessas Internas"
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"

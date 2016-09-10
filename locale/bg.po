@@ -28,6 +28,10 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Пренареждания"
 
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -109,6 +113,11 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "help:purchase.configuration,supply_period:"
+msgid "In number of days"
+msgstr "В брой дни"
+
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
 msgstr ""
@@ -178,14 +187,6 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr "Създаване на заявка за покупка"
 
-msgctxt "model:res.user,name:user_generate_request"
-msgid "Cron Purchase Request"
-msgstr "Планиране на заявка за покупка"
-
-msgctxt "model:res.user,name:user_generate_shipment_internal"
-msgid "Cron Intenal Shipment"
-msgstr "Планиране на вътрешена пратка"
-
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Пренареждане"
@@ -204,34 +205,16 @@ msgstr "Покупка"
 
 #, fuzzy
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests"
-msgstr "Създаване на заявки за покупка"
-
-#, fuzzy
-msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
 msgstr "Създаване на заявки за покупка"
-
-msgctxt "view:stock.order_point:"
-msgid "Order Point"
-msgstr "Пренареждане"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
 msgstr "Вид пренареждане"
 
 msgctxt "view:stock.order_point:"
-msgid "Order Points"
-msgstr "Пренареждания"
-
-msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr "Информация за продукт"
-
-#, fuzzy
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments"
-msgstr "Генериране на вътрешна пратка"
 
 #, fuzzy
 msgctxt "view:stock.shipment.internal.create.start:"
