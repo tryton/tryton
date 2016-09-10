@@ -4,11 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
-msgstr "Falta la \"Cuenta de ingresos\" en el producto \"%s\"."
-
-msgctxt "field:sale.configuration,sale_carrier:"
-msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
@@ -17,6 +13,10 @@ msgstr "Método de costo de envío de venta"
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Costo de envío"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"

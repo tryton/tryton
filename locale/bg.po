@@ -4,60 +4,60 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
-msgstr "Fehlendes Ertragskonto für Artikel \"%s\"."
-
-msgctxt "field:sale.configuration,sale_carrier:"
-msgid "Carrier"
-msgstr "Frachtführer"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Lieferposten Kostenmethode Verkauf"
+msgstr "Начин на остойностяване на доставка на продажба"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr "Lieferposten Kosten"
+msgstr "Стойност на пратка"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"
-msgstr "Frachtführer"
+msgstr "Превозвач"
 
 msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr "Lieferposten Kostenmethode"
+msgstr "Начин на остойностяване на доставка"
 
 msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
-msgstr "Frachtführer"
+msgstr "Превозвач"
 
 msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
-msgstr "Kosten"
+msgstr "Разход"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr "Währung Kosten"
+msgstr "Валута при разход"
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Nachkommastellen Währung Kosten"
+msgstr "Цифри на валута за разход"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
-msgstr "Rechnungsposition Kosten"
+msgstr "Ред от разход от фактура"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Order"
-msgstr "Pro Auftrag"
+msgstr "За поръчка"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Shipment"
-msgstr "Pro Lieferposten"
+msgstr "За пратка"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
-msgstr "Pro Auftrag"
+msgstr "За поръчка"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
-msgstr "Pro Lieferposten"
+msgstr "За пратка"

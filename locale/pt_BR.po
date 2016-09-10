@@ -6,10 +6,6 @@ msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
 msgstr "A \"Conta de Receitas\" está faltando para o produto \"%s\"."
 
-msgctxt "field:sale.configuration,sale_carrier:"
-msgid "Carrier"
-msgstr "Transportadora"
-
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Método de custo da remessa ao cliente"
@@ -17,6 +13,10 @@ msgstr "Método de custo da remessa ao cliente"
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Custo de remessa"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"

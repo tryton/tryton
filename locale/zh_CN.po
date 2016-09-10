@@ -6,16 +6,16 @@ msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
 msgstr ""
 
-msgctxt "field:sale.configuration,sale_carrier:"
-msgid "Carrier"
-msgstr ""
-
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr ""
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
+msgstr ""
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
 msgstr ""
 
 msgctxt "field:sale.sale,carrier:"

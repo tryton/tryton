@@ -6,58 +6,59 @@ msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
 msgstr ""
 
-msgctxt "field:sale.configuration,sale_carrier:"
-msgid "Carrier"
-msgstr "Превозвач"
-
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Начин на остойностяване на доставка на продажба"
+msgstr ""
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr "Стойност на пратка"
+msgstr ""
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"
-msgstr "Превозвач"
+msgstr ""
 
 msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr "Начин на остойностяване на доставка"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
-msgstr "Превозвач"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
-msgstr "Разход"
+msgstr "Стоимость"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr "Валута при разход"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Цифри на валута за разход"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
-msgstr "Ред от разход от фактура"
+msgstr ""
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Order"
-msgstr "За поръчка"
+msgstr ""
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Shipment"
-msgstr "За пратка"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
-msgstr "За поръчка"
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
-msgstr "За пратка"
+msgstr ""
