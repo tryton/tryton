@@ -16,15 +16,15 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr "Proveedor"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
@@ -44,31 +44,31 @@ msgstr "Día de Proveedor del Producto"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr "Viernes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr "Lunes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr "Sábado"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr "Domingo"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr "Jueves"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr "Martes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr "Miércoles"
+msgstr ""
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"

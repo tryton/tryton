@@ -6,37 +6,44 @@ msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "ຜູ້ສະໜອງ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"

@@ -4,72 +4,72 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr "Días de la semana"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr "Proveedor"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
-msgstr "Día de la semana"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr "Día del proveedor del producto"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr "Viernes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr "Lunes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr "Sábado"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr "Domingo"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr "Jueves"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr "Martes"
+msgstr ""
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr "Miércoles"
+msgstr ""
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
-msgstr "Día de la semana"
+msgstr ""
