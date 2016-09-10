@@ -38,6 +38,61 @@ msgctxt "field:carrier,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+#, fuzzy
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Activo"
+
+#, fuzzy
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+#, fuzzy
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Desde el país"
+
+#, fuzzy
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+#, fuzzy
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+#, fuzzy
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Para el país"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Método para calcular el coste del transportista."
@@ -46,9 +101,17 @@ msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Transportista"
 
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Transportistas"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -58,6 +121,10 @@ msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Transportistas"
 
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
 msgstr "Administración de transportistas"
@@ -65,6 +132,10 @@ msgstr "Administración de transportistas"
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
 msgstr "Precio del producto"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carrier"

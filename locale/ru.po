@@ -4,75 +4,84 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Método de costo del transportista"
+msgstr ""
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Организации"
 
+#, fuzzy
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Действующий"
 
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Дата создания"
 
 #, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr "Создано пользователем"
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Последовательность"
 
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
@@ -81,21 +90,20 @@ msgstr ""
 #, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "Дата изменения"
 
 #, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr "Изменено пользователем"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
-msgstr "Método para calcular el costo del transportista"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
@@ -109,10 +117,9 @@ msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
@@ -124,7 +131,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración de Transportistas"
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
@@ -134,10 +141,9 @@ msgctxt "view:carrier.selection:"
 msgid "Criteria"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:carrier:"
 msgid "Carrier"
-msgstr "Transporte"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carriers"

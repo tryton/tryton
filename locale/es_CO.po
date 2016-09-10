@@ -20,21 +20,74 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
 msgstr "Fecha de Modificación"
 
 msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+#, fuzzy
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Activa"
+
+#, fuzzy
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transportadora"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+#, fuzzy
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Del País"
+
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Al País"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Modificado por Usuario"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
@@ -46,9 +99,17 @@ msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Transportadora"
 
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Transportadores"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -58,6 +119,10 @@ msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Transportadores"
 
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
 msgstr "Administración Transporte"
@@ -65,6 +130,10 @@ msgstr "Administración Transporte"
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
 msgstr "Precio de Producto"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carrier"

@@ -38,6 +38,61 @@ msgctxt "field:carrier,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+#, fuzzy
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+#, fuzzy
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+#, fuzzy
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+#, fuzzy
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Ursprungsland"
+
+#, fuzzy
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Name"
+msgstr "Name Staat"
+
+#, fuzzy
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr "Revision"
+
+#, fuzzy
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Bestimmungsland"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+#, fuzzy
+msgctxt "field:carrier.selection,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Methode für die Berechnung der Frachtkosten"
@@ -46,9 +101,17 @@ msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Frachtführer"
 
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Frachtführer"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -58,6 +121,10 @@ msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Frachtführer"
 
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr ""
+
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
 msgstr "Frachtführer Administration"
@@ -65,6 +132,10 @@ msgstr "Frachtführer Administration"
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
 msgstr "Variantenpreis"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr ""
 
 msgctxt "view:carrier:"
 msgid "Carrier"
