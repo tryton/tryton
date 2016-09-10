@@ -6,21 +6,25 @@ msgctxt "error:account.invoice:"
 msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
@@ -50,9 +54,10 @@ msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"

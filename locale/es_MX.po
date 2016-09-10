@@ -8,56 +8,56 @@ msgstr ""
 "La cuenta \"%(account)s\" de la entidad \"%(party)s\" no tiene suficiente "
 "anticipo."
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr "Financiero"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
-msgstr "Anticipo"
+msgstr ""
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
-msgstr "Recuperación de anticipo en factura"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr "Recuperar anticipo"
+msgstr ""
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
-msgstr "Anticipo"
+msgstr ""
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
-msgstr "Anticipo"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice.recall_deposit.start:"
 msgid "Recall Deposit"
-msgstr "Recuperar anticipo"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
-msgstr "Recuperar anticipo"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
-msgstr "Recuperar"
+msgstr ""

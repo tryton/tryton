@@ -21,9 +21,10 @@ msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "Specificatie"
 
+#, fuzzy
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
