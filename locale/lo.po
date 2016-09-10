@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:purchase.purchase:"
 msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
-"least one purchase request.\""
+"least one purchase request."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -24,9 +24,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,company:"
 msgid "Company"
-msgstr ""
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
@@ -36,41 +37,53 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "ລາຍການຂັ້ນຕົ້ນ"
 
+#, fuzzy
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr ""
+msgstr "ພາກສ່ວນ"
 
+#, fuzzy
 msgctxt "field:purchase.request,product:"
 msgid "Product"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "ສັ່ງຊື້"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
@@ -80,17 +93,20 @@ msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "ຈຳນວນ"
 
+#, fuzzy
 msgctxt "field:purchase.request,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:purchase.request,state:"
 msgid "State"
-msgstr ""
+msgstr "ສະຖານະ"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
@@ -116,33 +132,45 @@ msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:purchase.request,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "ສ້າງຜູ້ໃຊ້"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
-msgstr ""
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
+#, fuzzy
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
-msgstr ""
+msgstr "ຜູ້ສະໜອງ"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ເລດລຳດັບ"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
@@ -156,15 +184,17 @@ msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "ທັງໝົດ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "ຮ່າງກຽມ"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
@@ -191,17 +221,20 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr ""
+msgstr "ແລ້ວໆ"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr ""
+msgstr "ຮ່າງກຽມ"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
@@ -219,10 +252,6 @@ msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""
 
-msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
-msgid "Handle Purchase Cancellation"
-msgstr ""
-
 msgctxt "view:purchase.request:"
 msgid "Handle Purchase Cancellation"
 msgstr ""
@@ -232,20 +261,13 @@ msgid "Product Info"
 msgstr ""
 
 msgctxt "view:purchase.request:"
-msgid "Purchase Request"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Purchase Requests"
-msgstr ""
-
-msgctxt "view:purchase.request:"
 msgid "Supply Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
@@ -256,10 +278,11 @@ msgctxt ""
 msgid "Cancel Request"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "ຍົກເລີກ"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"

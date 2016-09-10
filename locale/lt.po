@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:purchase.purchase:"
 msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
-"least one purchase request.\""
+"least one purchase request."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -48,6 +48,10 @@ msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
 
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr ""
+
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
@@ -84,9 +88,10 @@ msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:purchase.request,state:"
 msgid "State"
@@ -126,6 +131,10 @@ msgstr ""
 
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
 msgstr ""
 
 msgctxt "field:purchase.request.create_purchase.ask_party,id:"
@@ -219,24 +228,12 @@ msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""
 
-msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
-msgid "Handle Purchase Cancellation"
-msgstr ""
-
 msgctxt "view:purchase.request:"
 msgid "Handle Purchase Cancellation"
 msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Purchase Request"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Purchase Requests"
 msgstr ""
 
 msgctxt "view:purchase.request:"

@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:purchase.purchase:"
 msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
-"least one purchase request.\""
+"least one purchase request."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -24,9 +24,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,company:"
 msgid "Company"
-msgstr ""
+msgstr "Фирма"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
@@ -36,61 +37,77 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Създадено на"
 
+#, fuzzy
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Създадено от"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Източник"
 
+#, fuzzy
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr ""
+msgstr "Управление на партньор"
 
+#, fuzzy
 msgctxt "field:purchase.request,product:"
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
+#, fuzzy
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Управление на покупки"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Ред от покупка"
 
+#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Количество"
 
+#, fuzzy
 msgctxt "field:purchase.request,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Условие за плащане"
 
+#, fuzzy
 msgctxt "field:purchase.request,state:"
 msgid "State"
-msgstr ""
+msgstr "Щат"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
@@ -100,53 +117,68 @@ msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "Мер. ед."
 
 msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Склад"
 
 msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Променено на"
 
+#, fuzzy
 msgctxt "field:purchase.request,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
-msgstr ""
+msgstr "Фирма"
 
+#, fuzzy
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
-msgstr ""
+msgstr "Доставчик"
 
+#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
+#, fuzzy
 msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Заявки за покупки"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -161,23 +193,27 @@ msgctxt ""
 msgid "All"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Проект"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
-msgstr ""
+msgstr "Грешка"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Заявки за покупки"
 
+#, fuzzy
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Заявка за покупка"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
@@ -187,29 +223,35 @@ msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
 msgid "Handle Purchase Cancellation Exception - Start"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Заявка за покупка"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отказване"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr ""
+msgstr "Приключено"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Проект"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
-msgstr ""
+msgstr "Грешка"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
-msgstr ""
+msgstr "Поръчан"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
@@ -219,33 +261,23 @@ msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""
 
-msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
-msgid "Handle Purchase Cancellation"
-msgstr ""
-
 msgctxt "view:purchase.request:"
 msgid "Handle Purchase Cancellation"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Purchase Request"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Purchase Requests"
-msgstr ""
+msgstr "Информация за продукт"
 
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отказване"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
@@ -256,10 +288,11 @@ msgctxt ""
 msgid "Cancel Request"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Отказване"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
