@@ -28,7 +28,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -36,7 +36,7 @@ msgstr "Líneas de Factura"
 
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -44,7 +44,7 @@ msgstr "Fecha de Contabilización"
 
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -52,7 +52,7 @@ msgstr "Envíos"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
@@ -72,7 +72,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
@@ -80,7 +80,7 @@ msgstr "Costo de Envío"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
@@ -121,12 +121,12 @@ msgstr "Costos de Envío"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
@@ -155,7 +155,7 @@ msgstr "Cancelado"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
@@ -167,24 +167,17 @@ msgstr "Costo de Envío"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Cost"
-msgstr "Costo de Envío"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Costs"
-msgstr "Costos de Envío"
+msgstr ""
 
 msgctxt "view:account.landed_cost:"
 msgid "Post"
-msgstr "Contabilizar"
+msgstr ""

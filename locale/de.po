@@ -4,27 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Štetje raztovora"
+msgstr "Nummernkreis Einstandskosten"
 
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
-msgstr "Metoda porazdelitve"
+msgstr "Zuordnungsmethode"
 
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Unternehmen"
 
 msgctxt "field:account.landed_cost,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:account.landed_cost,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
@@ -32,43 +32,43 @@ msgstr "ID"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Postavke računov"
+msgstr "Rechnungspositionen"
 
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr "Številka"
+msgstr "Nummer"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
-msgstr "Datum knjiženja"
+msgstr "Festschreibungsdatum"
 
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Pošiljke"
+msgstr "Lieferposten"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr "Status"
 
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:account.landed_cost,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Erstellt durch"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
@@ -76,115 +76,107 @@ msgstr "ID"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Ime"
+msgstr "Name"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Pošiljka"
+msgstr "Lieferposten"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Zuletzt geändert"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
-msgstr "Enota raztovora"
+msgstr "Einheit Einstandskosten"
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
-msgstr "Raztovor - Pošiljka"
+msgstr "Einstandskosten - Lieferposten"
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "Alle"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Entwurf"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Knjiženo"
+msgstr "Festgeschrieben"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
-msgstr "Po vrednosti"
+msgstr "Nach Wert"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
-msgstr "Preklicano"
+msgstr "Annulliert"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Entwurf"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
-msgstr "Knjiženo"
+msgstr "Festgeschrieben"
 
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Einstandskosten"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Nummernkreis"
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
-msgstr "Preklic"
+msgstr "Annullieren"
 
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
-msgstr "V pripravi"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Cost"
-msgstr "Strošek raztovora"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Costs"
-msgstr "Raztovor"
+msgstr "Entwurf"
 
 msgctxt "view:account.landed_cost:"
 msgid "Post"
-msgstr "Vknjižba"
+msgstr "Festschreiben"

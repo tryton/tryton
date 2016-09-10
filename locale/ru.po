@@ -4,187 +4,207 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr "Nummernkreis Einstandskosten"
+msgstr ""
 
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
-msgstr "Zuordnungsmethode"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "Учет.орг."
 
+#, fuzzy
 msgctxt "field:account.landed_cost,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Rechnungspositionen"
+msgstr "Строки инвойса"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Номер"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
-msgstr "Festschreibungsdatum"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Lieferposten"
+msgstr "Доставка"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Штат"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Правило оплаты"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Lieferposten"
+msgstr "Доставка"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Изменено пользователем"
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
-msgstr "Einheit Einstandskosten"
+msgstr ""
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
-msgstr "Einstandskosten - Lieferposten"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Einstandskosten"
+msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Все"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Черновик"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Festgeschrieben"
+msgstr "Проведен"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Einstandskosten"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
-msgstr "Nach Wert"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
-msgstr "Annulliert"
+msgstr "Отменено"
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Черновик"
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
-msgstr "Festgeschrieben"
+msgstr "Проведен"
 
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr "Einstandskosten"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Nummernkreis"
+msgstr "Последовательность"
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
-msgstr "Annullieren"
+msgstr "Отменить"
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Черновик"
 
-msgctxt "view:account.landed_cost:"
-msgid "Landed Cost"
-msgstr "Einstandskosten"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Costs"
-msgstr "Einstandskosten"
-
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Post"
-msgstr "Festschreiben"
+msgstr "Проводка"

@@ -12,31 +12,31 @@ msgstr "Costo de recepción"
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
-msgstr "Método de asignación"
+msgstr ""
 
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr ""
 
 msgctxt "field:account.landed_cost,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:account.landed_cost,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr ""
 
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
@@ -44,7 +44,7 @@ msgstr "Fecha confirmación"
 
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -52,27 +52,27 @@ msgstr "Remitos"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:account.landed_cost,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
@@ -80,7 +80,7 @@ msgstr "Costo de recepción"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
@@ -88,11 +88,11 @@ msgstr "Remito"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
@@ -121,12 +121,12 @@ msgstr "Costos de recepción"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
@@ -147,7 +147,7 @@ msgstr "Costos de recepción"
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
-msgstr "Por valor"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
@@ -155,7 +155,7 @@ msgstr "Cancelado"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
@@ -167,23 +167,16 @@ msgstr "Costo de recepción"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Cancelado"
 
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Cost"
-msgstr "Costo de recepción"
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Costs"
-msgstr "Costos de recepción"
+msgstr ""
 
 msgctxt "view:account.landed_cost:"
 msgid "Post"

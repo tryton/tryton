@@ -14,85 +14,101 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.landed_cost,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr ""
+msgstr "Szállítási tétel"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
@@ -118,10 +134,11 @@ msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
@@ -165,24 +182,18 @@ msgctxt "view:account.configuration:"
 msgid "Landed Cost"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Cost"
-msgstr ""
-
-msgctxt "view:account.landed_cost:"
-msgid "Landed Costs"
 msgstr ""
 
 msgctxt "view:account.landed_cost:"
