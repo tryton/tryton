@@ -4,61 +4,59 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "El activo \"%s\" debe estar en borrador para ser eliminado."
+msgstr "Za izbris sredstva \"%s\" mora biti le-to v stanju priprave."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
-msgstr ""
-"La línea de factura de proveedor puede ser utilizada una sola vez en un "
-"activo."
+msgstr "Postavka prejetega računa se lahko na sredstvu uporabi samo enkrat."
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
-msgstr "El activo sólo se puede usar una vez en la línea de factura."
+msgstr "Sredstvo je lahko samo enkrat na postavki računa."
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Falta una \"Cuenta de activo\" en el producto \"%s\"."
+msgstr "Pri izdelku \"%s\" manjka konto sredstva."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Diario"
+msgstr "Dnevnik"
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "Comentario"
+msgstr "Opomba"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Družba"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la moneda"
+msgstr "Decimalke"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "Línea de factura de cliente"
+msgstr "Postavka računa kupca"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Método de amortización"
+msgstr "Metoda amortizacije"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Datum amortizacije"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Frecuencia"
+msgstr "Frekvenca"
 
 msgctxt "field:account.asset,id:"
 msgid "ID"
@@ -66,83 +64,83 @@ msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Líneas"
+msgstr "Postavke"
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "Asiento contable"
+msgstr "Knjižba"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "Número"
+msgstr "Številka"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr "Izdelek"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Fecha de compra"
+msgstr "Nabavljeno"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr "Količina"
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "Valor residual"
+msgstr "Preostala vrednost"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicial"
+msgstr "Začetek amortizacije"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "Estado"
+msgstr "Stanje"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr "Línea de factura de proveedor"
+msgstr "Postavka računa dobavitelja"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "Unidad"
+msgstr "Enota"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Decimalke"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "Actualizar asientos"
+msgstr "Popravek prometa"
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "Valor"
+msgstr "Vrednost"
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Zapisal"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
@@ -150,23 +148,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Asiento"
+msgstr "Knjižba"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Zapisal"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Datum"
 
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
@@ -174,39 +172,39 @@ msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "Amortización acumulada"
+msgstr "Nakopičena amortizacija"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Valor adquisición"
+msgstr "Nakupna vrednost"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "Valor real"
+msgstr "Dejanska vrednost"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Datum"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Base de amortización"
+msgstr "Amortizacijska osnova"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "Amortización"
+msgstr "Amortizacija"
 
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
@@ -214,23 +212,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "Asiento contable"
+msgstr "Knjižba"
 
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr "Ime"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Zapisano"
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Zapisal"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Končni datum"
 
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
@@ -238,23 +236,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicial"
+msgstr "Začetni datum"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Importe"
+msgstr "Znesek"
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "Cuenta de contrapartida"
+msgstr "Protikonto"
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Datum"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "Cuenta de amortización"
+msgstr "Amortizacijski konto"
 
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
@@ -262,15 +260,15 @@ msgstr "ID"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr "Fecha último asiento"
+msgstr "Datum zadnje knjižbe"
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "Siguiente fecha amortización"
+msgstr "Datum naslednje amortizacije"
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Konec amortizacije"
 
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
@@ -278,199 +276,199 @@ msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
-msgstr "Valor residual"
+msgstr "Preostala vrednost"
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "Valor de activo"
+msgstr "Vrednost sredstva"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Secuencia de referencia de activo"
+msgstr "Štetje sredstev"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Es activo amortizable"
+msgstr "Sredstvo amortizirljivo"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "Cuenta de activo"
+msgstr "Konto sredstev"
 
 msgctxt "field:product.category,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Cuenta de activo utilizada"
+msgstr "Uporabljen konto sredstev"
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
+msgstr "Amortizacija"
 
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Cuenta de amortización utilizada"
+msgstr "Uporabljen konto amortizacije"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
-msgstr "Cuenta de activo"
+msgstr "Konto sredstev"
 
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Cuenta de activo utilizada"
+msgstr "Uporabljen konto sredstev"
 
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
+msgstr "Amortizacija"
 
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Cuenta de amortización utilizada"
+msgstr "Uporabljen konto amortizacije"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "Amortizable"
+msgstr "Amortizirljivo"
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Duración de la amortización"
+msgstr "Trajanje amortizacije"
 
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
-msgstr "Cuenta de activo"
+msgstr "Konto sredstev"
 
 msgctxt "field:product.template,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Cuenta de activo utilizada"
+msgstr "Uporabljen konto sredstev"
 
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
+msgstr "Amortizacija"
 
 msgctxt "field:product.template,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Cuenta de amortización utilizada"
+msgstr "Uporabljen konto amortizacije"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "Amortizable"
+msgstr "Amortizirljivo"
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Duración de la amortización"
+msgstr "Trajanje amortizacije"
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
 msgstr ""
-"La fecha debe estar comprendida entre el último día de la fecha de "
-"amortización/actualización y la siguiente fecha de amortización."
+"Naslednji datum mora biti med datumom zadnje amortizacije in datumom "
+"naslednje amortizacije."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr "En meses"
+msgstr "V mesecih"
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr "En meses"
+msgstr "V mesecih"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Activo - Actualización - Asiento"
+msgstr "Sredstvo - Knjiženje"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "Crear asientos - Inicio "
+msgstr "Knjiženje"
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr "Línea de activo"
+msgstr "Postavka sredstva"
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
-msgstr "Tabla de amortización de activo - Inicio"
+msgstr "Amortizacijska tabela sredstev - Začetek"
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "Actualizar activo - Mostrar amortización"
+msgstr "Prikaz amortizacije pri popravku sredstev"
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "Actualizar activo - Inicio"
+msgstr "Popravek sredstev"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Sredstva"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Tabla de amortización"
+msgstr "Amortizacijska tabela"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Crear asientos de activo"
+msgstr "Knjiženje sredstev"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Imprimir tabla de amortización"
+msgstr "Izpis amortizacijske tabele"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Actualizar activo"
+msgstr "Popravek sredstev"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr "Vse"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Cerrado"
+msgstr "Zaprta"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "Priprava"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "En ejecución"
+msgstr "Tekoča"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Sredstva"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Sredstva"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Imprimir tabla de amortización"
+msgstr "Izpis amortizacijske tabele"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Crear asientos de activo"
+msgstr "Knjiženje sredstev"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -494,188 +492,176 @@ msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "Valor actual"
+msgstr "Dejanska vrednost"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr "Amortización"
+msgstr "Amortizacija"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr "Tabla de amortización"
+msgstr "Amortizacijska tabela"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Sredstva"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr "Valor al cerrar"
+msgstr "Končna vrednost"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Empresa:"
+msgstr "Družba:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
-msgstr "Fijo"
+msgstr "Osnova"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "Desde:"
+msgstr "Od:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr "Fecha de impresión:"
+msgstr "Izpisano:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Para:"
+msgstr "Do:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "Total -"
+msgstr "Skupaj -"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr "Usuario:"
+msgstr "Izpisal:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr "a las"
+msgstr "ob"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr "Lineal"
+msgstr "Linearno"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "Mensualmente"
+msgstr "Mesečno"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "Anualmente"
+msgstr "Letno"
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "Cerrado"
+msgstr "Zaprto"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr "V pripravi"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "En ejecución"
-
-msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr "Crear asientos de activo"
+msgstr "Tekoče"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Crear asientos de activo hasta"
+msgstr "Knjiženje sredstev do"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
-msgstr "Línea de activo"
+msgstr "Postavka sredstva"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
-msgstr "Líneas de activo"
+msgstr "Postavke sredstev"
 
 msgctxt "view:account.asset.print_depreciation_table.start:"
 msgid "Choose Dates"
-msgstr "Seleccione fechas"
+msgstr "Izberi datume"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr "Asiento de amortización de activo"
+msgstr "Prikaz amortizacije"
 
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
-msgstr "Actualizar activo"
+msgstr "Popravek sredstev"
 
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
-msgstr "¿Está seguro que quiere cerrar el activo?"
-
-msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr "Activo"
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr "Activos"
+msgstr "Ali res želite zapreti sredstvo?"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr "Borrar líneas"
+msgstr "Odstranitev postavk"
 
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr "Cerrar"
+msgstr "Zaključitev"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Crear líneas"
+msgstr "Izdelava postavk"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Líneas"
+msgstr "Postavke"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Información adicional"
+msgstr "Drugo"
 
 msgctxt "view:account.asset:"
 msgid "Run"
-msgstr "Ejecutar"
+msgstr "Zagon"
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr "Actualizar activo"
+msgstr "Popravek sredstev"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Sredstvo"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Štetje"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr "Amortización"
+msgstr "Amortizacija"
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "V redu"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Natisni"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "V redu"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Prekliči"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "Aceptar"
+msgstr "V redu"

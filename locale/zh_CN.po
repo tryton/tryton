@@ -30,13 +30,15 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
@@ -58,9 +60,10 @@ msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -86,9 +89,10 @@ msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -98,9 +102,10 @@ msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr ""
+msgstr "状态"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
@@ -118,57 +123,68 @@ msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr ""
+msgstr "值"
 
+#, fuzzy
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
+#, fuzzy
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -186,17 +202,20 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "创建日期:"
 
+#, fuzzy
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "添加用户"
 
+#, fuzzy
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
@@ -206,33 +225,38 @@ msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "纳木"
 
+#, fuzzy
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "写入日期"
 
+#, fuzzy
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "写入帐号"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
@@ -246,17 +270,19 @@ msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
@@ -270,9 +296,10 @@ msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "编号"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -428,9 +455,10 @@ msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
@@ -569,10 +597,6 @@ msgid "Running"
 msgstr ""
 
 msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr ""
-
-msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr ""
 
@@ -601,20 +625,13 @@ msgid "Are you sure to close the asset?"
 msgstr ""
 
 msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr ""
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr ""
-
-msgctxt "view:account.asset:"
 msgid "Clear Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
@@ -640,42 +657,51 @@ msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "序列"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr ""
+msgstr "打印"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr ""
+msgstr "确定"

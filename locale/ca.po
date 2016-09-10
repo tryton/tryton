@@ -4,60 +4,60 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "Anlage \"%s\" kann nur in Status \"Entwurf\" gelöscht werden."
+msgstr "L'actiu \"%s\" ha d'estar en esborrany per ser eliminat."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
-msgstr "Eine Einkaufsposition kann nur einmal pro Anlage verwendet werden"
+msgstr ""
+"La línia de factura de proveïdor pot ser usada una sola vegada en un actiu."
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
-msgstr ""
-"Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
+msgstr "L'actiu només es pot utilitzar un cop a la línia de factura."
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Fehlendes Anlagenkonto für Artikel \"%s\"."
+msgstr "Falta un \"Compte d'actiu\" en el producte \"%s\"."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Journal"
+msgstr "Diari"
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "Kommentar"
+msgstr "Comentari"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "Empresa"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "Rechnungsposition Kunde"
+msgstr "Línia de factura de client"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Abschreibungsmethode"
+msgstr "Mètode d'amortització"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Enddatum"
+msgstr "Data final"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Häufigkeit"
+msgstr "Freqüència"
 
 msgctxt "field:account.asset,id:"
 msgid "ID"
@@ -65,83 +65,83 @@ msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Línies"
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "Buchungssatz"
+msgstr "Assentament comptable"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Número"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Producte"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Kaufdatum"
+msgstr "Data de compra"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr "Menge"
+msgstr "Quantitat"
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "Restwert"
+msgstr "Valor residual"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Data inicial"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Estat"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr "Rechnungsposition Lieferant"
+msgstr "Línia de factura de proveïdor"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "Einheit"
+msgstr "Unitat"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen"
+msgstr "Decimals de la unitat"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "Buchungssätze aktualisieren"
+msgstr "Actualitza assentaments"
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "Wert"
+msgstr "Valor"
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
@@ -149,23 +149,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Buchungssatz"
+msgstr "Assentament"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
@@ -173,39 +173,39 @@ msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "Kumulierte Abschreibung"
+msgstr "Amortització acumulada"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Erreichter Wert"
+msgstr "Valor adquisició"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "Aktueller Wert"
+msgstr "Valor real"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data creació"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Usuari creació"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Abschreibbarer Basiswert"
+msgstr "Base d'amortització"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "Abschreibung"
+msgstr "Amortització"
 
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
@@ -213,23 +213,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "Buchungssatz"
+msgstr "Assentament comptable"
 
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nom"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data modificació"
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Enddatum"
+msgstr "Data final"
 
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
@@ -237,23 +237,23 @@ msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Data inicial"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "Import"
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "Gegenkonto"
+msgstr "Compte de contrapartida"
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Data"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "Abschreibungskonto"
+msgstr "Compte d'amortització"
 
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
@@ -261,15 +261,15 @@ msgstr "ID"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr "Datum letzter Buchungssatz"
+msgstr "Data últim assentament"
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "Nächstes Abschreibungsdatum"
+msgstr "Següent data amortització"
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr "Enddatum"
+msgstr "Data final"
 
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
@@ -277,199 +277,199 @@ msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
-msgstr "Restwert"
+msgstr "Valor residual"
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "Anlagenwert"
+msgstr "Valor d'actiu"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Nummernkreis Anlagenbelege"
+msgstr "Seqüència de referència d'actiu"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Anlagen abschreibbar"
+msgstr "És actiu amortitzable"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagenkonto"
+msgstr "Compte d'actiu"
 
 msgctxt "field:product.category,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
+msgstr "Compte d'actiu utilitzat"
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
+msgstr "Compte d'amortització"
 
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
+msgstr "Compte d'amortització utilitzat"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagenkonto"
+msgstr "Compte d'actiu"
 
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
+msgstr "Compte d'actiu utilitzat"
 
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
+msgstr "Compte d'amortització"
 
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
+msgstr "Compte d'amortització utilitzat"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "Abschreibungsfähig"
+msgstr "Amortitzable"
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Abschreibungsdauer"
+msgstr "Durada de l'amortització"
 
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
-msgstr "Anlagenkonto"
+msgstr "Compte d'actiu"
 
 msgctxt "field:product.template,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
+msgstr "Compte d'actiu utilitzat"
 
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
+msgstr "Compte d'amortització"
 
 msgctxt "field:product.template,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
+msgstr "Compte d'amortització utilitzat"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "Abschreibungsfähig"
+msgstr "Amortitzable"
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Abschreibungsdauer"
+msgstr "Durada de l'amortització"
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
 msgstr ""
-"Das Datum muss zwischen dem letztem Aktualisierungs- bzw Abschreibungsdatum "
-"und dem nächsten Abschreibungsdatum liegen."
+"La data ha d'estar compresa entre l'últim dia de la data de "
+"amortització/actualització i la següent data de amortització."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr "In Monaten"
+msgstr "En mesos"
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr "In Monaten"
+msgstr "En mesos"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Anlage - Aktualisierung - Buchungssatz"
+msgstr "Actiu - Actualitza - Assentament"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "Erstellung Buchungssätze Start"
+msgstr "Crea assentaments - Inici"
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr "Anlage Zeile"
+msgstr "Línia d'actiu"
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
-msgstr "Abschreibungstabelle Beginn"
+msgstr "Taula d'amortització d'actiu - Inici"
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "Aktualisierung Anlage Anzeige Abschreibung"
+msgstr "Actualitza actius - Mostra amortització"
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "Aktualisierung Anlage Start"
+msgstr "Actualitza actius - Inici"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Inventar"
+msgstr "Actius"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Abschreibungstabelle"
+msgstr "Taula d'amortització"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Erstellung Anlagen Buchungssätze"
+msgstr "Crea assentaments d'actiu"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Abschreibungstabelle drucken"
+msgstr "Imprimeix taula d'amortització"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Anlage aktualisieren"
+msgstr "Actualitza actius"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Tancat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Esborrany"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "In Ausführung"
+msgstr "En execució"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Anlagenverwaltung"
+msgstr "Actius"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Anlagen"
+msgstr "Actius"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Abschreibungstabelle drucken"
+msgstr "Imprimeix taula d'amortització"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Buchungssätze für Anlagen erstellen"
+msgstr "Crea assentaments d'actiu"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -493,27 +493,27 @@ msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "Aktueller Wert"
+msgstr "Valor real"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr "Abschreibung"
+msgstr "Amortització"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr "Abschreibungstabelle"
+msgstr "Taula d'amortització"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Inventar"
+msgstr "Actius"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr "Abschlußwert"
+msgstr "Valor al tancament"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Unternehmen:"
+msgstr "Empresa:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
@@ -521,160 +521,148 @@ msgstr "Fix"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "Von:"
+msgstr "De:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr "Druckdatum:"
+msgstr "Data d'impressió:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Bis:"
+msgstr "Per:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "Gesamt -"
+msgstr "Total -"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr "Benutzer:"
+msgstr "Usuari:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr "um"
+msgstr "a les"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr "Linear"
+msgstr "Lineal"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "Monatlich"
+msgstr "Mensualment"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "Jährlich"
+msgstr "Anualment"
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Tancat"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "Entwurf"
+msgstr "Esborrany"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "In Ausführung"
-
-msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr "Erstellung Anlagen Buchungssätze"
+msgstr "En execució"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Erstellung Anlagen Buchungssätze bis"
+msgstr "Crea assentaments d'actiu fins"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
-msgstr "Anlage Zeile"
+msgstr "Línia d'actiu"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
-msgstr "Anlage Zeilen"
+msgstr "Línies d'actiu"
 
 msgctxt "view:account.asset.print_depreciation_table.start:"
 msgid "Choose Dates"
-msgstr "Auswahl Datum"
+msgstr "Seleccioneu dates"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr "Anlage Abschreibung Buchungssatz"
+msgstr "Assentament d'amortització d'actiu"
 
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
-msgstr "Anlage aktualisieren"
+msgstr "Actualitza actius"
 
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
-msgstr "Anlage wirklich schließen?"
-
-msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr "Anlage"
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr "Anlagen"
+msgstr "Esteu segur de tancar l'actiu?"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr "Zeilen löschen"
+msgstr "Esborra línies"
 
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr "Schließen"
+msgstr "Tanca"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Zeilen erstellen"
+msgstr "Crea línies"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Línies"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Sonstiges"
+msgstr "Informació addicional"
 
 msgctxt "view:account.asset:"
 msgid "Run"
-msgstr "Ausführen"
+msgstr "Executa"
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr "Anlage aktualisieren"
+msgstr "Actualitza actius"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr "Anlage"
+msgstr "Actiu"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Nummernkreis"
+msgstr "Seqüència"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr "Abschreibung"
+msgstr "Amortització"
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "OK"
+msgstr "Accepta"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "Drucken"
+msgstr "Imprimeix"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "OK"
+msgstr "Accepta"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "OK"
+msgstr "Accepta"

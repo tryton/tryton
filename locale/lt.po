@@ -4,678 +4,669 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "L'actif « %s » doit être en brouillon pour être supprimé."
+msgstr ""
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
 msgstr ""
-"Une ligne de facture fournisseur ne peut être utilisée qu'une seule fois sur"
-" l'actif."
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
-msgstr "Un actif ne peut être utilisé qu'une seule fois par ligne !"
+msgstr ""
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Il manque un « Compte d'actif » sur le produit « %s »."
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Journal"
+msgstr ""
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "Commentaire"
+msgstr ""
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Société"
+msgstr ""
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr ""
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr ""
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgstr ""
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "Ligne de facture client"
+msgstr ""
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Méthode d'amortissement"
+msgstr ""
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Date de fin"
+msgstr ""
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Fréquence"
+msgstr ""
 
 msgctxt "field:account.asset,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Lignes"
+msgstr ""
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "Mouvement comptable"
+msgstr ""
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "Numéro"
+msgstr ""
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Produit"
+msgstr ""
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Date d'achat"
+msgstr ""
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr "Quantité"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Namu"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "Valeur résiduelle"
+msgstr ""
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "Date de début"
+msgstr ""
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "État"
+msgstr ""
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr "Ligne de facture fournisseur"
+msgstr ""
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "Unité"
+msgstr ""
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Décimales de l'unité"
+msgstr ""
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "Mise à jour mouvements"
+msgstr ""
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "Valeur"
+msgstr ""
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr ""
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Mouvement"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Namu"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr ""
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "Amortissement cumulé"
+msgstr ""
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Valeur acquise"
+msgstr ""
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "Valeur réelle"
+msgstr ""
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr ""
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr ""
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Base de dépréciation"
+msgstr ""
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "Amortissement"
+msgstr ""
 
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "Mouvement comptable"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Namu"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr ""
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr ""
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Date de fin"
+msgstr ""
 
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Date de début"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Montant"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "Compte de contrepartie"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "Compte d'amortissement"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr "Dernière date d'amortissement"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "Prochaine date d'amortissement"
+msgstr ""
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr "Date de fin"
+msgstr ""
 
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
-msgstr "Valeur résiduelle"
+msgstr ""
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "Valeur d'actif"
+msgstr ""
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Séquence de référence d'actif"
+msgstr ""
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Actif dépréciable"
+msgstr ""
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "Compte d'actif"
+msgstr ""
 
 msgctxt "field:product.category,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Compte d'actif utilisé"
+msgstr ""
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Compte d'amortissement"
+msgstr ""
 
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Compte d'amortissement utilisé"
+msgstr ""
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
-msgstr "Compte d'actif"
+msgstr ""
 
 msgctxt "field:product.product,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Compte d'actif utilisé"
+msgstr ""
 
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Compte d'amortissement"
+msgstr ""
 
 msgctxt "field:product.product,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Compte d'amortissement utilisé"
+msgstr ""
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "Amortissable"
+msgstr ""
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Durée d'amortissement"
+msgstr ""
 
 msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
-msgstr "Compte d'actif"
+msgstr ""
 
 msgctxt "field:product.template,account_asset_used:"
 msgid "Account Asset Used"
-msgstr "Compte d'actif utilisé"
+msgstr ""
 
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "Compte d'amortissement"
+msgstr ""
 
 msgctxt "field:product.template,account_depreciation_used:"
 msgid "Account Depreciation Used"
-msgstr "Compte d'amortissement utilisé"
+msgstr ""
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "Dépréciable"
+msgstr ""
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Durée d'amortissement"
+msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
 msgstr ""
-"La date doit être comprise entre la dernière date de mise à "
-"jour/d'amortissement et la prochaine date d'amortissement."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr "En mois"
+msgstr ""
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr "En mois"
+msgstr ""
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Asset - Update - Move"
+msgstr ""
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "Créer les mouvements - Début"
+msgstr ""
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr "Ligne d'actif"
+msgstr ""
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
-msgstr "Table d'amortissement d'actif"
+msgstr ""
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "Mise à jour des actifs - Affichage des amortissements"
+msgstr ""
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "Mise à jour des actifs - début"
+msgstr ""
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Actifs"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Tableau d'amortissement"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actifs"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Imprimer le tableau d'amortissement"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Mise à jour des actifs"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Tous"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Clôturé"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "En cours"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Actifs"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Actifs"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Imprimer le tableau d'amortissement"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actifs"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
 msgstr "("
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
 msgstr ")"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
-msgstr "+"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
 msgstr "-"
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
 msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "Valeur réelle"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr "Amortissement"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr "Table d'amortissement"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Actifs"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr "Valeur de clôture"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Société :"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
-msgstr "Fixé"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "De :"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr "Date d'impression :"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "À :"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "Total -"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr "Utilisateur :"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr "à"
+msgstr ""
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr "Linéaire"
+msgstr ""
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "Mensuel"
+msgstr ""
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "Annuel"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "Clôturé"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "En cours"
-
-msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actifs"
+msgstr ""
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Créer les mouvements d'actifs jusqu'a"
+msgstr ""
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
-msgstr "Ligne d'actif"
+msgstr ""
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
-msgstr "Lignes d'actif"
+msgstr ""
 
 msgctxt "view:account.asset.print_depreciation_table.start:"
 msgid "Choose Dates"
-msgstr "Choisir des dates"
+msgstr ""
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr "Mouvement d'amortissement d'actif"
+msgstr ""
 
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
-msgstr "Mise à jour des actifs"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
-msgstr "Êtes-vous sûr de clôturer l'actif ?"
-
-msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr "Actif"
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr "Actifs"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr "Nettoyer les lignes"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr "Clôturer"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Créer les lignes"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Lignes"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Autre information"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Run"
-msgstr "Lancer"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr "Mise à jour des actifs"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr "Actif"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Séquence"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr "Amortissement"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "Imprimer"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "OK"
+msgstr ""

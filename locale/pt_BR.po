@@ -568,10 +568,6 @@ msgid "Running"
 msgstr "Em execução"
 
 msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr "Criar Lançamentos de Ativos"
-
-msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Criar Lançamentos de Ativos até"
 
@@ -598,14 +594,6 @@ msgstr "Atualizar Ativo"
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr "Você tem certeza que deseja fechar o ativo?"
-
-msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr "Ativo"
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr "Ativos"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
