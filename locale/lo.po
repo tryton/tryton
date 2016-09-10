@@ -2,424 +2,441 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,amount:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "ມູນຄ່າ"
 
 msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
-msgstr "Berechnungstyp"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr "Staat"
+msgstr "ປະເທດ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
-msgstr "Währung"
+msgstr "ສະກຸນເງິນ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
-msgstr "Enddatum"
+msgstr "ວັນທີສິ້ນສຸດ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
-msgstr "Typ"
+msgstr "ຮູບແບບ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr "Maßeinheit"
+msgstr "ຫົວໜ່ວຍ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ສ້າງຜູ້ໃຊ້"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr "ໃຊ້ຢູ່"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
-msgstr "Code"
+msgstr "ລະຫັດແຂວງ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr "Staat"
+msgstr "ປະເທດ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "ເນື້ອໃນລາຍການ"
 
 msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
-msgstr "Zolltarife"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
-msgstr "Endtag"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
-msgstr "Endmonat"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
-msgstr "Anfangstag"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
-msgstr "Anfangsmonat"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ສ້າງຜູ້ໃຊ້"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "ສ້າງວັນທີ"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
-msgstr "Artikel"
+msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr "ລໍາດັບ"
 
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "ວັນທີບັນທຶກ"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Zölle"
+msgstr ""
 
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
-msgstr "Tarifcode der übergeordneten Kategorie anwenden"
+msgstr ""
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr "Zollkategorie"
+msgstr ""
 
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Tarifcodes der Kategorie anwenden"
+msgstr ""
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr "Zollkategorie"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Tarifcodes der Kategorie anwenden"
+msgstr ""
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""
-"Code des Harmonisierten Systems zur Bezeichnung und Codierung der Waren (HS "
-"Nomenklatur)"
 
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
-msgstr "Tarifcodes der übergeordneten Kategorie anwenden"
+msgstr ""
 
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Tarifcode der Kategorie anwenden"
+msgstr ""
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Tarifcode der Kategorie anwenden"
+msgstr ""
 
 msgctxt "model:customs.duty.rate,name:"
 msgid "Duty Rate"
-msgstr "Zolltarif"
+msgstr ""
 
 msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Zolltarife"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Export"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Import"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Zölle"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Zolltarife"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
-msgstr "Artikel - Tarifcode"
+msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Zoll Administration"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "ມູນຄ່າ"
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
-msgstr "Menge"
+msgstr "ຈຳນວນ"
 
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Export"
-msgstr "Export"
+msgstr ""
 
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
-msgstr "Import"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
-msgstr "April"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "August"
-msgstr "August"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "December"
-msgstr "Dezember"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "February"
-msgstr "Februar"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "January"
-msgstr "Januar"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "July"
-msgstr "Juli"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "June"
-msgstr "Juni"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "March"
-msgstr "März"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "May"
-msgstr "Mai"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "November"
-msgstr "November"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "October"
-msgstr "Oktober"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
-msgstr "September"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
-msgstr "April"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "August"
-msgstr "August"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "December"
-msgstr "Dezember"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "February"
-msgstr "Februar"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "January"
-msgstr "Januar"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "July"
-msgstr "Juli"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "June"
-msgstr "Juni"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "March"
-msgstr "März"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "May"
-msgstr "Mai"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "November"
-msgstr "November"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "October"
-msgstr "Oktober"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "September"
-msgstr "September"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Category"
-msgstr "Kategorie"
+msgstr "ໝວດ"
 
+#, fuzzy
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr "Artikel"
+msgstr "ຮ່າງແບບ"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
-msgstr "Berechnung"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr "Zolltarif"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr "Zolltarife"
+msgstr ""
 
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr "Von"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr "Tarifcode"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr ""
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr "Bis"
+msgstr ""
 
 msgctxt "view:product-customs.tariff.code:"
 msgid "Product - Tariff Code"
-msgstr "Artikel - Tarifcode"
+msgstr ""
 
 msgctxt "view:product.category:"
 msgid "Customs"
-msgstr "Zoll"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Customs"
-msgstr "Zoll"
+msgstr ""

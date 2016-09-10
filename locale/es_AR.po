@@ -8,39 +8,40 @@ msgstr "Monto"
 
 msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
-msgstr "Tipo de cálculo"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr "País"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha fin"
 
 msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicial"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
@@ -48,43 +49,44 @@ msgstr "Código de arancel"
 
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "Activa"
 
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
-msgstr "Código"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr "País"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
@@ -92,59 +94,59 @@ msgstr "Tasas de aduana"
 
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
-msgstr "Día final"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
-msgstr "Mes final"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
-msgstr "Día inicial"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
-msgstr "Mes inicial"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
@@ -152,15 +154,15 @@ msgstr "Código de arancel"
 
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr ""
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Aduanas"
+msgstr ""
 
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
@@ -172,7 +174,7 @@ msgstr "Usar los códigos de arancel del padre"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr "Categoría de aduanas"
+msgstr ""
 
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
@@ -184,7 +186,7 @@ msgstr "Usar los códigos de arancel de la categoría"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr "Categoría de aduanas"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -236,7 +238,7 @@ msgstr "Importar"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Aduanas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
@@ -252,23 +254,26 @@ msgstr "Producto - Código de arancel"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Administración de aduanas"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
-msgstr "Importe"
+msgstr "Monto"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Export"
-msgstr "Exportación"
+msgstr "Exportar"
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
-msgstr "Importación"
+msgstr "Importar"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
@@ -276,51 +281,51 @@ msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "December"
-msgstr "Diciembre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "February"
-msgstr "Febrero"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "January"
-msgstr "Enero"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "July"
-msgstr "Julio"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "June"
-msgstr "Junio"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "March"
-msgstr "Marzo"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "May"
-msgstr "Mayo"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "November"
-msgstr "Noviembre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
-msgstr "Septiembre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid ""
@@ -328,87 +333,73 @@ msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "December"
-msgstr "Diciembre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "February"
-msgstr "Febrero"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "January"
-msgstr "Enero"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "July"
-msgstr "Julio"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "June"
-msgstr "Junio"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "March"
-msgstr "Marzo"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "May"
-msgstr "Mayo"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "November"
-msgstr "Noviembre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "September"
-msgstr "Septiembre"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Category"
-msgstr "Categoría"
+msgstr "Categoría de UdM"
 
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr "Plantilla"
+msgstr ""
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
-msgstr "Cálculo"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr "Tasa de aduana"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr "Tasas de aduana"
+msgstr ""
 
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr "Desde"
+msgstr ""
 
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr "Código de arancel"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr "Códigos de arancel"
-
+#, fuzzy
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr "Hasta"
+msgstr "A"
 
 msgctxt "view:product-customs.tariff.code:"
 msgid "Product - Tariff Code"
@@ -416,8 +407,8 @@ msgstr "Producto - Código de arancel"
 
 msgctxt "view:product.category:"
 msgid "Customs"
-msgstr "Aduanas"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Customs"
-msgstr "Aduanas"
+msgstr ""

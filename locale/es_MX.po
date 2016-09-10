@@ -2,9 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Valor"
 
 msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
@@ -14,21 +15,25 @@ msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Divisa"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Fecha de Fin"
 
 msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
@@ -38,9 +43,10 @@ msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Fecha inicio"
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
@@ -54,17 +60,20 @@ msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activa"
 
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
@@ -74,13 +83,15 @@ msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
@@ -114,21 +125,25 @@ msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de creación"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product-customs.tariff.code,id:"
 msgid "ID"
@@ -150,13 +165,15 @@ msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de modificación"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
@@ -254,9 +271,10 @@ msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
-msgstr ""
+msgstr "Valor"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
@@ -386,29 +404,14 @@ msgctxt "view:customs.duty.rate:"
 msgid "Computation"
 msgstr ""
 
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr ""
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr ""
-
 msgctxt "view:customs.tariff.code:"
 msgid "From"
 msgstr ""
 
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr ""
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr ""
+msgstr "A"
 
 msgctxt "view:product-customs.tariff.code:"
 msgid "Product - Tariff Code"

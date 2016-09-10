@@ -10,9 +10,10 @@ msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
@@ -34,9 +35,10 @@ msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -70,9 +72,10 @@ msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
@@ -102,9 +105,10 @@ msgctxt "field:customs.tariff.code,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
@@ -138,9 +142,10 @@ msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
@@ -386,24 +391,8 @@ msgctxt "view:customs.duty.rate:"
 msgid "Computation"
 msgstr ""
 
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr ""
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr ""
-
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr ""
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr ""
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
 msgstr ""
 
 msgctxt "view:customs.tariff.code:"

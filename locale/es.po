@@ -386,25 +386,9 @@ msgctxt "view:customs.duty.rate:"
 msgid "Computation"
 msgstr "Cálculo"
 
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr "Tasa de arancel"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr "Tasas de arancel"
-
 msgctxt "view:customs.tariff.code:"
 msgid "From"
 msgstr "Desde"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr "Código arancelario"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr "Códigos arancelarios"
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"

@@ -274,9 +274,10 @@ msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
 msgstr "Importar"
 
+#, fuzzy
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
@@ -326,9 +327,10 @@ msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
 msgstr "Setembro"
 
+#, fuzzy
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid ""
-msgstr ""
+msgstr "Português (Brasil)"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
@@ -390,25 +392,9 @@ msgctxt "view:customs.duty.rate:"
 msgid "Computation"
 msgstr "Cálculo"
 
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr "Taxa de Aduana"
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr "Taxas de Aduana"
-
 msgctxt "view:customs.tariff.code:"
 msgid "From"
 msgstr "De"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr "Código de Tarifa"
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr "Códigos da Tarifa"
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"

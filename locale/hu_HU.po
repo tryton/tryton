@@ -10,33 +10,39 @@ msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -46,45 +52,55 @@ msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "Egység"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:customs.duty.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktív"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
-msgstr ""
+msgstr "Partner kód"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
@@ -98,13 +114,15 @@ msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
@@ -114,49 +132,59 @@ msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
-msgstr ""
+msgstr "Termék"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
@@ -226,9 +254,10 @@ msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr ""
+msgstr "Exportálás"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
@@ -258,13 +287,15 @@ msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
-msgstr ""
+msgstr "Mennyiség"
 
+#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Export"
-msgstr ""
+msgstr "Exportálás"
 
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
@@ -374,41 +405,29 @@ msgctxt "selection:customs.tariff.code,start_month:"
 msgid "September"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Category"
-msgstr ""
+msgstr "Kategória"
 
+#, fuzzy
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr ""
+msgstr "Űrlap adószámlához"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
 msgstr ""
 
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rate"
-msgstr ""
-
-msgctxt "view:customs.duty.rate:"
-msgid "Duty Rates"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr ""
+msgstr "-tól; től"
 
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Code"
-msgstr ""
-
-msgctxt "view:customs.tariff.code:"
-msgid "Tariff Codes"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr ""
+msgstr "-hoz; -höz"
 
 msgctxt "view:product-customs.tariff.code:"
 msgid "Product - Tariff Code"
