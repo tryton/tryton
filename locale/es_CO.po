@@ -16,7 +16,7 @@ msgstr "El Saldo Final debe ser \"%s!\"."
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
-msgstr "El número de líneas debe ser \"%s\"."
+msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -58,7 +58,7 @@ msgstr "Decimales de Moneda"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
@@ -66,7 +66,7 @@ msgstr "Saldo Final"
 
 msgctxt "field:account.statement,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -78,7 +78,7 @@ msgstr "Transacciones"
 
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
@@ -86,7 +86,7 @@ msgstr "Número de Lineas"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -94,7 +94,7 @@ msgstr "Balance Inicial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -102,7 +102,7 @@ msgstr "Valor Total"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
-msgstr "Validación"
+msgstr ""
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
@@ -124,13 +124,14 @@ msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Monedas"
 
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -138,11 +139,11 @@ msgstr "Libro Contable"
 
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
@@ -158,7 +159,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr "Cuenta"
+msgstr ""
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
@@ -174,19 +175,20 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "field:account.statement.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Factura de Venta"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
@@ -194,23 +196,28 @@ msgstr "Asiento Contable"
 
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Estado de Cuenta"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr ""
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -242,11 +249,11 @@ msgstr "Decimales de Moneda"
 
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
@@ -254,19 +261,20 @@ msgstr "Libro Contable"
 
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr "Asiento"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -314,7 +322,7 @@ msgstr "Líneas de Asiento"
 
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr "Asientos"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -338,18 +346,20 @@ msgstr "Estado de Cuenta"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "Todo"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
 msgstr "Contabilizado"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
@@ -381,7 +391,7 @@ msgstr "Estado de Cuenta"
 
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr "#"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Amount"
@@ -393,19 +403,19 @@ msgstr "Anulado"
 
 msgctxt "report:account.statement:"
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Date:"
-msgstr "Fecha:"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Journal:"
@@ -413,11 +423,12 @@ msgstr "Libro Contable:"
 
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr "Número"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "report:account.statement:"
 msgid "Statement"
@@ -425,7 +436,7 @@ msgstr "Estado de Cuenta"
 
 msgctxt "report:account.statement:"
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -433,12 +444,14 @@ msgstr "Anulado"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
 msgstr "Contabilizado"
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validado"
@@ -447,13 +460,33 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
 msgstr "Valor"
 
+#, fuzzy
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Balance"
-msgstr "Saldo"
+msgstr "Balance"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Número de Líneas"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Draft"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Validated"
+msgstr "Validado"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
@@ -475,21 +508,14 @@ msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Valor"
 
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr "Libros de Estados de Cuenta"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr "Líneas de Estado de Cuenta"
-
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "view:account.statement:"
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
@@ -497,20 +523,12 @@ msgstr "Info Adicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
-msgstr "Contabilizar"
-
-msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr "Estado de Cuenta"
+msgstr ""
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Líneas de Estado de Cuenta"
 
 msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr "Estados de Cuenta"
-
-msgctxt "view:account.statement:"
 msgid "Validate"
-msgstr "Validar"
+msgstr ""

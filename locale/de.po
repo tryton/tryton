@@ -4,594 +4,519 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
+msgstr "Betrag \"%s\" ist größer als der für die Rechnung zu zahlende Betrag."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
-msgstr ""
+msgstr "Der Betrag sollte einen positiven oder negativen Wert aufweisen."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
-msgstr ""
+msgstr "Endsaldo muss \"%s\" sein."
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
-msgstr ""
+msgstr "Anzahl der Zeilen muss \"%s\" sein."
 
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr ""
+msgstr "Bitte tragen Sie Haben- und Sollkonto für Auszugsjournal \"%s\" ein."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr ""
+msgstr "Auszug \"%s\" muss annulliert werden, bevor er gelöscht werden kann."
 
 msgctxt "error:account.statement:"
 msgid "There are paid invoices on draft statements."
-msgstr ""
+msgstr "Es existieren bezahlte Rechnungen in Zahlungen im Status 'Entwurf'."
 
 msgctxt "error:account.statement:"
 msgid "Total Amount must be \"%s\"."
-msgstr ""
+msgstr "Gesamtbetrag muss \"%s\" sein."
 
-#, fuzzy
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr "Учет.орг."
+msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
+msgstr "Nachkommastellen Währung"
 
-#, fuzzy
 msgctxt "field:account.statement,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr "Конец баланса"
+msgstr "Endsaldo"
 
-#, fuzzy
 msgctxt "field:account.statement,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
-msgstr "Журнал"
+msgstr "Journal"
 
-#, fuzzy
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr "Строки"
+msgstr "Zeilen"
 
-#, fuzzy
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Name"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Anzahl Zeilen"
 
-#, fuzzy
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
-#, fuzzy
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr "Начальный баланс"
+msgstr "Anfangssaldo"
 
-#, fuzzy
 msgctxt "field:account.statement,state:"
 msgid "State"
-msgstr "Статус"
+msgstr "Status"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
-msgstr ""
+msgstr "Gesamtbetrag"
 
 msgctxt "field:account.statement,validation:"
 msgid "Validation"
-msgstr ""
+msgstr "Validierung"
 
-#, fuzzy
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr "Учет.орг."
+msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr "Валюты"
+msgstr "Währung"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
-msgstr "Журнал"
+msgstr "Journal"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
-msgstr ""
+msgstr "Validierungstyp"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr "Счет"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Betrag"
 
-#, fuzzy
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Beschreibung"
 
-#, fuzzy
 msgctxt "field:account.statement.line,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
-msgstr "Инвойс"
+msgstr "Rechnung"
 
-#, fuzzy
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
-msgstr "Проводка"
+msgstr "Buchungssatz"
 
-#, fuzzy
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
-msgstr "Номер"
+msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr "Организации"
+msgstr "Partei"
 
-#, fuzzy
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Name"
 
-#, fuzzy
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
-msgstr "Последовательность"
+msgstr "Reihenfolge"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
+msgstr "Auszug"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Betrag"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
-msgstr "Валюты"
+msgstr "Währung"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,currency_digits:"
 msgid "Currency Digits"
-msgstr "Кол-во цифр валюты"
+msgstr "Nachkommastellen Währung"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
-msgstr "Журнал"
+msgstr "Journal"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr "Перемещение"
+msgstr "Buchungssatz"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
-msgstr "Номер"
+msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr "Организации"
+msgstr "Partei"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "Name"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Auszug"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Letzte Änderung durch"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Auszug"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
-msgstr ""
+msgstr "Auszug"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr ""
+msgstr "Auszugsjournal"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
-msgstr ""
+msgstr "Auszugszeile"
 
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr ""
+msgstr "Auszugszeilengruppe"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Auszugszeilengruppen"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr ""
+msgstr "Zeilengruppen"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr ""
+msgstr "Buchungszeilen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr "Перемещения"
+msgstr "Buchungssätze"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr ""
+msgstr "Auszüge"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Auszugsjournale"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Auszugszeilen"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Auszugszeilen"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Auszug"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "Все"
+msgstr "Alle"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Черновик"
+msgstr "Entwurf"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Проведен"
+msgstr "Festgeschrieben"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
-msgstr "Утвержденный"
+msgstr "Geprüft"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Auszugszeilengruppen"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr ""
+msgstr "Auszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr ""
+msgstr "Auszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Auszugsjournale"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr ""
+msgstr "Auszüge"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Auszug"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr "#"
+msgstr "Zeilen"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Betrag"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Canceled"
-msgstr "Отменено"
+msgstr "Annulliert"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Datum"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date:"
-msgstr "Дата:"
+msgstr "Datum:"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Description"
-msgstr "Описание"
+msgstr "Beschreibung"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr "Журнал"
+msgstr "Journal:"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr "Номер"
+msgstr "Nummer"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr "Организации"
+msgstr "Partei"
 
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Auszug"
 
-#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Total"
-msgstr "Итого"
+msgstr "Gesamt"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
-msgstr "Отменено"
+msgstr "Annulliert"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
-msgstr "Проведен"
+msgstr "Festgeschrieben"
 
-#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
-msgstr "Утвержденный"
+msgstr "Geprüft"
 
-#, fuzzy
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Betrag"
 
-#, fuzzy
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr ""
+msgstr "Anzahl Zeilen"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Canceled"
+msgstr "Annulliert"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Validated"
+msgstr "Geprüft"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
-msgstr ""
+msgstr "Auszugsjournal"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Auszugsjournale"
 
 msgctxt "view:account.statement.line.group:"
 msgid "Statement Line Group"
-msgstr ""
+msgstr "Auszugszeilengruppe"
 
 msgctxt "view:account.statement.line.group:"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Auszugszeilengruppen"
 
-#, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Betrag"
 
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr ""
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Annullieren"
 
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Draft"
-msgstr "Черновик"
+msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr "Другая информация"
+msgstr "Sonstiges"
 
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Post"
-msgstr "Проводка"
-
-msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr ""
+msgstr "Festschreiben"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Auszugszeilen"
 
-msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Validate"
-msgstr "Утвердить"
+msgstr "Prüfen"

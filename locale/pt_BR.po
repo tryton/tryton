@@ -210,6 +210,10 @@ msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Extrato"
 
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr ""
+
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
 msgstr "Data de gravação"
@@ -453,6 +457,26 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Número de linhas"
 
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Posted"
+msgstr "Confirmado"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Validated"
+msgstr "Validado"
+
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
 msgstr "Diário de Extrato"
@@ -473,14 +497,6 @@ msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Quantidade"
 
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr "Linha do Extrato Bancário"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr "Linhas do Extrato Bancário"
-
 msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -498,16 +514,8 @@ msgid "Post"
 msgstr "Confirmar"
 
 msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr "Extrato"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Linhas do Extrato"
-
-msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr "Extratos"
 
 msgctxt "view:account.statement:"
 msgid "Validate"

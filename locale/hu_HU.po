@@ -38,61 +38,70 @@ msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Sor"
 
+#, fuzzy
 msgctxt "field:account.statement,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,state:"
 msgid "State"
-msgstr ""
+msgstr "Állapot"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -102,85 +111,102 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Társaság"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Számla"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.statement.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -190,93 +216,114 @@ msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
+#, fuzzy
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
+#, fuzzy
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Számkör"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr ""
 
-msgctxt "field:account.statement.line,write_date:"
-msgid "Write Date"
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Létrehozás détuma"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Által létrehozva "
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Pénznem"
 
 msgctxt "field:account.statement.line.group,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr ""
+msgstr "Lépések"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "utolsó módosítás dátuma"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Által módosítva"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -310,9 +357,10 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr ""
+msgstr "Raktár mozgás"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -334,9 +382,10 @@ msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Összes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
@@ -390,17 +439,20 @@ msgctxt "report:account.statement:"
 msgid "Canceled"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:account.statement:"
 msgid "Draft"
@@ -410,13 +462,15 @@ msgctxt "report:account.statement:"
 msgid "Journal:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Number"
-msgstr ""
+msgstr "Szám"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr ""
+msgstr "Partner"
 
 msgctxt "report:account.statement:"
 msgid "Statement"
@@ -454,6 +508,22 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
 
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Validated"
+msgstr ""
+
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
 msgstr ""
@@ -474,17 +544,10 @@ msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr ""
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "view:account.statement:"
 msgid "Draft"
@@ -499,15 +562,7 @@ msgid "Post"
 msgstr ""
 
 msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr ""
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr ""
-
-msgctxt "view:account.statement:"
-msgid "Statements"
 msgstr ""
 
 msgctxt "view:account.statement:"

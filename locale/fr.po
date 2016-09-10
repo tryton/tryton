@@ -214,6 +214,10 @@ msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Relevé"
 
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr ""
+
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
 msgstr "Date de mise à jour"
@@ -457,6 +461,26 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de lignes"
 
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Canceled"
+msgstr "Annulée"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Posted"
+msgstr "Postés"
+
+#, fuzzy
+msgctxt "selection:account.statement.line,statement_state:"
+msgid "Validated"
+msgstr "Validées"
+
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
 msgstr "Journal de relevés"
@@ -477,14 +501,6 @@ msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Montant"
 
-msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr "Ligne de relevé"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr "Lignes de relevé"
-
 msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Annuler"
@@ -502,16 +518,8 @@ msgid "Post"
 msgstr "Poster"
 
 msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr "Relevé"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Lignes de relevé"
-
-msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr "Relevés"
 
 msgctxt "view:account.statement:"
 msgid "Validate"
