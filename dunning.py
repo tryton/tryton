@@ -48,10 +48,10 @@ class Level(ModelSQL, ModelView):
         if table.column_exist('days'):
             cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
                     where=sql_table.days != Null))
-            for id_, days in cursor:
+            for id_, days in cursor.fetchall():
                 overdue = datetime.timedelta(days)
                 cursor.execute(*sql_table.update(
-                        [sql_table.days_duration],
+                        [sql_table.overdue],
                         [overdue],
                         where=sql_table.id == id_))
             table.drop_column('days')
