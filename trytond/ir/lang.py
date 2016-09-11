@@ -412,6 +412,7 @@ class Lang(ModelSQL, ModelView):
         '''
         Convert datetime to a string as specified by the format argument.
         '''
+        code = code[:2]
         if code in TIME_LOCALE:
             for f, i in (('%a', 6), ('%A', 6), ('%b', 1), ('%B', 1)):
                 format = format.replace(f,

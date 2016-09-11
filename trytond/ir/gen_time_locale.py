@@ -16,7 +16,7 @@ def locale_strftime(lang):
         '%B': [None],
         '%p': [],
     }
-    locale.setlocale(locale.LC_ALL, lang + '.UTF_8')
+    locale.setlocale(locale.LC_ALL, locale.normalize(lang + '.UTF_8'))
     t = list(time.gmtime())
     for i in range(12):
         t[1] = i + 1
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     with open(os.path.join(base, 'lang.xml'), 'rb') as fp:
         lang_xml = etree.parse(fp)
         for el in lang_xml.xpath('//field[@name="code"]'):
-            lang = el.text
+            lang = el.text[:2]
             time_locale[lang] = locale_strftime(lang)
     with open(os.path.join(base, 'time_locale.py'), 'w') as fp:
         fp.write('''# -*- coding: utf-8 -*-
