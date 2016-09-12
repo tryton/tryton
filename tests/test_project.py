@@ -6,6 +6,7 @@ import datetime
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 from trytond.modules.company.tests import create_company, set_company
 
@@ -97,6 +98,36 @@ class ProjectTestCase(ModuleTestCase):
             p_work.save()
 
             self.assertFalse(p_work.timesheet_works)
+
+    @with_transaction(context={'_check_access': True})
+    def test_delete_access(self):
+        'Test delete_access'
+        pool = Pool()
+        User = pool.get('res.user')
+        Group = pool.get('res.group')
+        ModelData = pool.get('ir.model.data')
+        ProjectWork = pool.get('project.work')
+        TimesheetWork = pool.get('timesheet.work')
+
+        company = create_company()
+        with set_company(company):
+            project_user = User()
+            project_user.login = 'project'
+            project_user.company = company
+            project_user.main_company = company
+            project_group = Group(ModelData.get_id(
+                    'project', 'group_project_admin'))
+            project_user.groups = [project_group]
+            project_user.save()
+            with Transaction().set_user(project_user.id):
+                p_work = ProjectWork()
+                p_work.name = 'Project Work'
+                p_work.timesheet_available = True
+                p_work.save()
+
+                self.assertEqual(len(p_work.timesheet_works), 1)
+                ProjectWork.delete([p_work])
+                self.assertEqual(TimesheetWork.search([]), [])
 
 
 def suite():
