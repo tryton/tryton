@@ -338,7 +338,9 @@ class Work(ModelSQL, ModelView):
 
         super(Work, cls).delete(project_works)
 
-        TimesheetWork.delete(timesheet_works)
+        if timesheet_works:
+            with Transaction().set_context(_check_access=False):
+                TimesheetWork.delete(timesheet_works)
 
     @classmethod
     def search_global(cls, text):
