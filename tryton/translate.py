@@ -168,9 +168,9 @@ def setlang(lang=None, locale_dict=None):
         if encoding == 'cp1252':
             encoding = '1252'
         try:
-            lang2 = lang
+            lang2 = locale.normalize(lang).split('.')[0]
             if os.name == 'nt':
-                lang2 = _LOCALE2WIN32.get(lang, lang)
+                lang2 = _LOCALE2WIN32.get(lang2, lang2)
             elif sys.platform == 'darwin':
                 encoding = 'UTF-8'
             # ensure environment variable are str
