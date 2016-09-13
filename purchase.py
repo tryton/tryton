@@ -8,9 +8,9 @@ from sql import Table, Literal, Null
 from sql.functions import Overlay, Position
 from sql.aggregate import Count
 from sql.operators import Concat
-from sql.conditionals import Case
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields, \
+    sequence_ordered
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
@@ -847,7 +847,7 @@ class PurchaseRecreadtedInvoice(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class PurchaseLine(ModelSQL, ModelView):
+class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     'Purchase Line'
     __name__ = 'purchase.line'
     _rec_name = 'description'
@@ -858,7 +858,6 @@ class PurchaseLine(ModelSQL, ModelView):
                 & Bool(Eval('purchase'))),
             },
         depends=['purchase_state'])
-    sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -969,7 +968,6 @@ class PurchaseLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PurchaseLine, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'supplier_location_required': ('Purchase "%(purchase)s" '
                     'misses the supplier location for line "%(line)s".'),
@@ -996,11 +994,6 @@ class PurchaseLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():

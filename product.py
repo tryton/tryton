@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql import Literal, Null
+from sql import Literal
 from sql.aggregate import Count
-from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -157,7 +157,7 @@ class Product:
         return prices
 
 
-class ProductSupplier(ModelSQL, ModelView, MatchMixin):
+class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Product Supplier'
     __name__ = 'purchase.product_supplier'
     product = fields.Many2One('product.template', 'Product', required=True,
@@ -166,7 +166,6 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
         ondelete='CASCADE', select=True)
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
-    sequence = fields.Integer('Sequence')
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -178,11 +177,6 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     lead_time = fields.TimeDelta('Lead Time')
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
-
-    @classmethod
-    def __setup__(cls):
-        super(ProductSupplier, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -235,11 +229,6 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
                         [lead_time],
                         where=sql_table.id == id_))
             table.drop_column('delivery_time')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_company():
@@ -314,7 +303,8 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
             }
 
 
-class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
+class ProductSupplierPrice(
+        sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Product Supplier Price'
     __name__ = 'purchase.product_supplier.price'
     product_supplier = fields.Many2One('purchase.product_supplier',
@@ -322,12 +312,6 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
     unit_price = fields.Numeric('Unit Price', required=True,
         digits=price_digits)
-    sequence = fields.Integer('Sequence')
-
-    @classmethod
-    def __setup__(cls):
-        super(ProductSupplierPrice, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -344,11 +328,6 @@ class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
         if fill_sequence:
             cursor.execute(*sql_table.update(
                     [sql_table.sequence], [sql_table.quantity]))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_quantity():
