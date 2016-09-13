@@ -1,9 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.pyson import If, Eval, Bool
 from trytond import backend
 from trytond.pool import PoolMeta
@@ -11,7 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['ProductLocation', 'ShipmentIn', 'ShipmentOutReturn']
 
 
-class ProductLocation(ModelSQL, ModelView):
+class ProductLocation(sequence_ordered(), ModelSQL, ModelView):
     '''
     Product Location
     It defines the default storage location by warehouse for a product.
@@ -28,12 +25,6 @@ class ProductLocation(ModelSQL, ModelView):
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
             ], depends=['warehouse'])
-    sequence = fields.Integer('Sequence')
-
-    @classmethod
-    def __setup__(cls):
-        super(ProductLocation, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -44,11 +35,6 @@ class ProductLocation(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
 
 class ShipmentIn:
