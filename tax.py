@@ -1321,7 +1321,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxRuleLineTemplate, cls).__setup__()
-        cls._order.insert(0, ('rule', 'ASC'))
+        cls._order.insert(1, ('rule', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1439,7 +1439,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super(TaxRuleLine, cls).__setup__()
-        cls._order.insert(0, ('rule', 'ASC'))
+        cls._order.insert(1, ('rule', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
