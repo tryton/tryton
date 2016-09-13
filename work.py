@@ -5,9 +5,8 @@ from __future__ import division
 import datetime
 
 from sql import Null
-from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
@@ -17,7 +16,7 @@ from trytond.tools import reduce_ids, grouped_slice
 __all__ = ['Work']
 
 
-class Work(ModelSQL, ModelView):
+class Work(sequence_ordered(), ModelSQL, ModelView):
     'Work Effort'
     __name__ = 'project.work'
     name = fields.Char('Name', required=True, select=True)
@@ -104,12 +103,6 @@ class Work(ModelSQL, ModelView):
             ('opened', 'Opened'),
             ('done', 'Done'),
             ], 'State', required=True, select=True)
-    sequence = fields.Integer('Sequence')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
@@ -231,7 +224,6 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_parent_state': ('Work "%(child)s" can not be opened '
                     'because its parent work "%(parent)s" is already done.'),
