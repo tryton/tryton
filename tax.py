@@ -5,11 +5,10 @@ from collections import namedtuple
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Null
 from sql.aggregate import Sum
-from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
@@ -330,13 +329,12 @@ class OpenChartTaxCode(Wizard):
         return 'end'
 
 
-class TaxTemplate(ModelSQL, ModelView):
+class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
     'Account Tax Template'
     __name__ = 'account.tax.template'
     name = fields.Char('Name', required=True)
     description = fields.Char('Description', required=True)
     group = fields.Many2One('account.tax.group', 'Group')
-    sequence = fields.Integer('Sequence')
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
     amount = fields.Numeric('Amount', digits=(16, 8),
@@ -386,7 +384,6 @@ class TaxTemplate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxTemplate, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
         cls._error_messages.update({
                 'update_unit_price_with_parent': ('"Update Unit Price" can '
@@ -425,11 +422,6 @@ class TaxTemplate(ModelSQL, ModelView):
             self.raise_user_error('update_unit_price_with_parent', {
                     'template': self.rec_name,
                     })
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
@@ -557,7 +549,7 @@ class TaxTemplate(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class Tax(ModelSQL, ModelView):
+class Tax(sequence_ordered(), ModelSQL, ModelView):
     '''
     Account Tax
 
@@ -575,7 +567,6 @@ class Tax(ModelSQL, ModelView):
                 'invisible': Bool(Eval('parent')),
             }, depends=['parent'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer('Sequence', help='Use to order the taxes')
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -696,7 +687,6 @@ class Tax(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Tax, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'update_unit_price_with_parent': ('"Update Unit Price" can '
                     'not be set on tax "%(template)s" which has a parent.'),
@@ -734,11 +724,6 @@ class Tax(ModelSQL, ModelView):
             self.raise_user_error('update_unit_price_with_parent', {
                     'tax': self.rec_name,
                     })
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_active():
@@ -1289,7 +1274,7 @@ class TaxRule(ModelSQL, ModelView):
             cls.write(*values)
 
 
-class TaxRuleLineTemplate(ModelSQL, ModelView):
+class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     'Tax Rule Line Template'
     __name__ = 'account.tax.rule.line.template'
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
@@ -1332,13 +1317,11 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
             ],
         depends=['group'],
         ondelete='RESTRICT')
-    sequence = fields.Integer('Sequence')
 
     @classmethod
     def __setup__(cls):
         super(TaxRuleLineTemplate, cls).__setup__()
         cls._order.insert(0, ('rule', 'ASC'))
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1349,11 +1332,6 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     def _get_tax_rule_line_value(self, rule_line=None):
         '''
@@ -1412,7 +1390,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
             template2rule_line[template.id] = rule_line.id
 
 
-class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
+class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Tax Rule Line'
     __name__ = 'account.tax.rule.line'
     _rec_name = 'tax'
@@ -1456,14 +1434,12 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
             ],
         depends=['group'],
         ondelete='RESTRICT')
-    sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
     @classmethod
     def __setup__(cls):
         super(TaxRuleLine, cls).__setup__()
         cls._order.insert(0, ('rule', 'ASC'))
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1474,11 +1450,6 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def copy(cls, lines, default=None):

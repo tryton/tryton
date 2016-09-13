@@ -4,10 +4,8 @@ from xml.sax.saxutils import quoteattr
 from decimal import Decimal
 
 from simpleeval import simple_eval
-from sql import Null
-from sql.conditionals import Case
 
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pyson import Eval
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
@@ -66,13 +64,12 @@ class MoveTemplate(ModelSQL, ModelView):
         return move
 
 
-class MoveTemplateKeyword(ModelSQL, ModelView):
+class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
     'Account Move Template Keyword'
     __name__ = 'account.move.template.keyword'
     name = fields.Char('Name', required=True)
     string = fields.Char('String', required=True, translate=True)
     move = fields.Many2One('account.move.template', 'Move', required=True)
-    sequence = fields.Integer('Sequence')
     type_ = fields.Selection([
             ('char', 'Char'),
             ('numeric', 'Numeric'),
@@ -84,16 +81,6 @@ class MoveTemplateKeyword(ModelSQL, ModelView):
             'invisible': Eval('type_') != 'numeric',
             'required': Eval('type_') == 'numeric',
             }, depends=['type_'])
-
-    @classmethod
-    def __setup__(cls):
-        super(MoveTemplateKeyword, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_required():

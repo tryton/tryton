@@ -3,10 +3,10 @@
 from decimal import Decimal
 
 from sql import Null
-from sql.conditionals import Case
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, \
+    sequence_ordered
 from trytond.wizard import Wizard, StateTransition
 from trytond import backend
 from trytond.pyson import Eval, Bool
@@ -57,21 +57,15 @@ class JournalView(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
 
-class JournalViewColumn(ModelSQL, ModelView):
+class JournalViewColumn(sequence_ordered(), ModelSQL, ModelView):
     'Journal View Column'
     __name__ = 'account.journal.view.column'
     name = fields.Char('Name', size=None, required=True)
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
     view = fields.Many2One('account.journal.view', 'View', select=True)
-    sequence = fields.Integer('Sequence', select=True)
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
-
-    @classmethod
-    def __setup__(cls):
-        super(JournalViewColumn, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -82,11 +76,6 @@ class JournalViewColumn(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_required():
