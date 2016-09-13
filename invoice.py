@@ -11,7 +11,8 @@ from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
 from sql.functions import Round
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields, Check
+from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
+    sequence_ordered
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     StateReport, Button
@@ -1365,7 +1366,7 @@ class InvoicePaymentLine(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
 
 
-class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
+class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     'Invoice Line'
     __name__ = 'account.invoice.line'
     _rec_name = 'description'
@@ -1412,10 +1413,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ], select=True, states=_states, depends=_depends)
-    sequence = fields.Integer('Sequence',
-        states={
-            'invisible': Bool(Eval('context', {}).get('standalone')),
-            })
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1524,7 +1521,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                     | (t.type == 'line')),
                 'Line without "line" type must have an invoice.'),
             ]
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'modify': ('You can not modify line "%(line)s" from invoice '
                     '"%(invoice)s" that is posted or paid.'),
@@ -1557,6 +1553,9 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
                             + cls._account_domain('in'))))),
             ]
         cls.account.depends += ['company', 'invoice_type']
+        cls.sequence.states.update({
+                'invisible': Bool(Eval('context', {}).get('standalone')),
+                })
 
     @staticmethod
     def _account_domain(type_):
@@ -1590,11 +1589,6 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         for line_id, company_id in cursor.fetchall():
             cursor.execute(*sql_table.update([sql_table.company], [company_id],
                     where=sql_table.id == line_id))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_currency():
@@ -2002,7 +1996,7 @@ class InvoiceLineTax(ModelSQL):
             required=True)
 
 
-class InvoiceTax(ModelSQL, ModelView):
+class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     'Invoice Tax'
     __name__ = 'account.invoice.tax'
     _rec_name = 'description'
@@ -2021,7 +2015,6 @@ class InvoiceTax(ModelSQL, ModelView):
         'on_change_with_invoice_state')
     description = fields.Char('Description', size=None, required=True,
         states=_states, depends=_depends)
-    sequence = fields.Integer('Sequence')
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -2067,7 +2060,6 @@ class InvoiceTax(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(InvoiceTax, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'modify': ('You can not modify tax "%(tax)s" from invoice '
                     '"%(invoice)s" because it is posted or paid.'),
@@ -2092,11 +2084,6 @@ class InvoiceTax(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_base():

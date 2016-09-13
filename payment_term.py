@@ -3,10 +3,9 @@
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
-from sql import Null, Column
-from sql.conditionals import Case
+from sql import Column
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond import backend
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -98,11 +97,9 @@ class PaymentTerm(ModelSQL, ModelView):
         return res
 
 
-class PaymentTermLine(ModelSQL, ModelView):
+class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
     'Payment Term Line'
     __name__ = 'account.invoice.payment_term.line'
-    sequence = fields.Integer('Sequence',
-        help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True, ondelete="CASCADE")
     type = fields.Selection([
@@ -139,7 +136,6 @@ class PaymentTermLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PaymentTermLine, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_ratio_and_divisor': ('Ratio and '
                     'Divisor values are not consistent in line "%(line)s" '
@@ -185,11 +181,6 @@ class PaymentTermLine(ModelSQL, ModelView):
                     columns=[sql_table.ratio],
                     values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_currency_digits():
@@ -291,10 +282,9 @@ class PaymentTermLine(ModelSQL, ModelView):
                         })
 
 
-class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
+class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
     'Payment Term Line Relative Delta'
     __name__ = 'account.invoice.payment_term.line.delta'
-    sequence = fields.Integer('Sequence')
     line = fields.Many2One('account.invoice.payment_term.line',
         'Payment Term Line', required=True, ondelete='CASCADE')
     day = fields.Integer('Day of Month',
@@ -332,11 +322,6 @@ class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
     days = fields.Integer('Number of Days', required=True)
 
     @classmethod
-    def __setup__(cls):
-        super(PaymentTermLineRelativeDelta, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
@@ -367,11 +352,6 @@ class PaymentTermLineRelativeDelta(ModelSQL, ModelView):
                     values=line.select(*columns)))
             for field in fields:
                 line_table.drop_column(field, exception=True)
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_months():
