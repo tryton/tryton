@@ -7,7 +7,8 @@ from sql import Null
 from sql.conditionals import Case
 from sql.operators import Concat
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.pyson import Eval, If
 from trytond import backend
 from trytond.pool import Pool
@@ -22,7 +23,7 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Address(ModelSQL, ModelView):
+class Address(sequence_ordered(), ModelSQL, ModelView):
     "Address"
     __name__ = 'party.address'
     party = fields.Many2One('party.party', 'Party', required=True,
@@ -43,7 +44,6 @@ class Address(ModelSQL, ModelView):
             ],
         states=STATES, depends=['active', 'country'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer("Sequence")
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
@@ -51,7 +51,6 @@ class Address(ModelSQL, ModelView):
     def __setup__(cls):
         super(Address, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
-        cls._order.insert(1, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'write_party': 'You can not modify the party of address "%s".',
                 })
@@ -75,11 +74,6 @@ class Address(ModelSQL, ModelView):
                     [sql_table.street],
                     [value]))
             table.drop_column('streetbis')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_active():

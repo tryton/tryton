@@ -1,9 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.pyson import Eval
 from trytond import backend
 
@@ -28,7 +25,7 @@ _TYPES = [
 ]
 
 
-class ContactMechanism(ModelSQL, ModelView):
+class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
     _rec_name = 'value'
@@ -84,7 +81,6 @@ class ContactMechanism(ModelSQL, ModelView):
     def __setup__(cls):
         super(ContactMechanism, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
-        cls._order.insert(1, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'write_party': ('You can not modify the party of contact '
                     'mechanism "%s".'),
@@ -99,11 +95,6 @@ class ContactMechanism(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
