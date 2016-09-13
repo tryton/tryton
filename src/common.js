@@ -720,17 +720,17 @@
                 this.el = el;
             } else {
                 this.el = jQuery('<button/>');
+                this.el.append(attributes.string || '');
             }
             this.icon = this.el.children('img');
             if (!this.icon.length) {
-                this.icon = jQuery('<img/>').appendTo(this.el);
+                this.icon = jQuery('<img/>').prependTo(this.el);
                 this.icon.hide();
             }
             this.el.addClass('btn btn-default');
             this.el.attr('type', 'button');
             this.icon.addClass('icon');
             this.icon.attr('aria-hidden', true);
-            this.el.append(attributes.string || '');
             this.set_icon(attributes.icon);
         },
         set_icon: function(icon_name) {
