@@ -4,9 +4,9 @@ from collections import defaultdict
 import datetime
 
 from sql import Null
-from sql.conditionals import Case
 
-from trytond.model import Model, ModelView, ModelSQL, fields, Unique
+from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
+    sequence_ordered
 from trytond.pyson import If, Eval
 from trytond import backend
 from trytond.transaction import Transaction
@@ -26,11 +26,10 @@ class Procedure(ModelSQL, ModelView):
     levels = fields.One2Many('account.dunning.level', 'procedure', 'Levels')
 
 
-class Level(ModelSQL, ModelView):
+class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
     __name__ = 'account.dunning.level'
     _rec_name = 'procedure'
-    sequence = fields.Integer('Sequence')
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
         required=True, select=True)
     overdue = fields.TimeDelta('Overdue')
@@ -55,16 +54,6 @@ class Level(ModelSQL, ModelView):
                         [overdue],
                         where=sql_table.id == id_))
             table.drop_column('days')
-
-    @classmethod
-    def __setup__(cls):
-        super(Level, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
