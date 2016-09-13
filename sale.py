@@ -6,7 +6,8 @@ from decimal import Decimal
 from sql import Null
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields
+from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields, \
+    sequence_ordered
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond import backend
@@ -204,13 +205,12 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
         return match
 
 
-class SaleExtraLine(ModelSQL, ModelView, MatchMixin):
+class SaleExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Sale Extra Line'
     __name__ = 'sale.extra.line'
 
     extra = fields.Many2One('sale.extra', 'Extra', required=True,
         ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
     sale_amount = fields.Numeric('Sale Amount',
         digits=(16, Eval('_parent_extra', {}).get('currency_digits', 2)))
     product = fields.Many2One('product.product', 'Product', required=True,
@@ -234,7 +234,6 @@ class SaleExtraLine(ModelSQL, ModelView, MatchMixin):
     def __setup__(cls):
         super(SaleExtraLine, cls).__setup__()
         cls._order.insert(0, ('extra', 'ASC'))
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
