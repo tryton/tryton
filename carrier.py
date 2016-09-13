@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import Cache
@@ -66,12 +64,11 @@ class Carrier(ModelSQL, ModelView):
         CarrierSelection._get_carriers_cache.clear()
 
 
-class CarrierSelection(MatchMixin, ModelSQL, ModelView):
+class CarrierSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     'Carrier Selection'
     __name__ = 'carrier.selection'
     _get_carriers_cache = Cache('carrier.selection.get_carriers')
 
-    sequence = fields.Integer('Sequence')
     active = fields.Boolean('Active')
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT')
@@ -79,16 +76,6 @@ class CarrierSelection(MatchMixin, ModelSQL, ModelView):
         ondelete='RESTRICT')
     carrier = fields.Many2One('carrier', 'Carrier', required=True,
         ondelete='CASCADE')
-
-    @classmethod
-    def __setup__(cls):
-        super(CarrierSelection, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_active():
