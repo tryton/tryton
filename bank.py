@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from stdnum import iban
-from sql import operators, Literal, Null
-from sql.conditionals import Case
+from sql import operators, Literal
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 
 
 __all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
@@ -45,7 +44,7 @@ class BankAccount(ModelSQL, ModelView):
         return [('numbers',) + tuple(clause[1:])]
 
 
-class BankAccountNumber(ModelSQL, ModelView):
+class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
     'Bank Account Number'
     __name__ = 'bank.account.number'
     _rec_name = 'number'
@@ -57,21 +56,14 @@ class BankAccountNumber(ModelSQL, ModelView):
             ], 'Type', required=True)
     number = fields.Char('Number')
     number_compact = fields.Char('Number Compact', readonly=True)
-    sequence = fields.Integer('Sequence')
 
     @classmethod
     def __setup__(cls):
         super(BankAccountNumber, cls).__setup__()
         cls._order.insert(0, ('account', 'ASC'))
-        cls._order.insert(1, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_iban': 'Invalid IBAN "%s".',
                 })
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def domain_number(cls, domain, tables):
