@@ -7,9 +7,9 @@ from functools import partial
 from sql import Table, Null
 from sql.functions import Overlay, Position
 from sql.operators import Concat
-from sql.conditionals import Case
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields, \
+    sequence_ordered
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
@@ -952,7 +952,7 @@ class SaleRecreatedInvoice(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class SaleLine(ModelSQL, ModelView):
+class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     'Sale Line'
     __name__ = 'sale.line'
     _rec_name = 'description'
@@ -963,7 +963,6 @@ class SaleLine(ModelSQL, ModelView):
                 & Bool(Eval('sale'))),
             },
         depends=['sale_state'])
-    sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1069,7 +1068,6 @@ class SaleLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(SaleLine, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'customer_location_required': (
                     'Sale "%(sale)s" is missing the '
@@ -1097,11 +1095,6 @@ class SaleLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_type():
