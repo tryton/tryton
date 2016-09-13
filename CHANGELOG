@@ -1,3 +1,4 @@
+* Manage readonly on fields translation dialog
 * Restore tab default order when no manual change
 * Call autocompletion when setting record value
 * Remove database management

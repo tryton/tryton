@@ -22,6 +22,7 @@ class Widget(object):
         self.widget = None
         self.mnemonic_widget = None
         self.visible = True
+        self._readonly = False
 
     @property
     def field_name(self):
@@ -48,7 +49,7 @@ class Widget(object):
         self._focus_out()
 
     def _readonly_set(self, readonly):
-        pass
+        self._readonly = readonly
 
     def _required_set(self, required):
         pass
@@ -113,7 +114,7 @@ class Widget(object):
 
 class TranslateDialog(NoModal):
 
-    def __init__(self, widget, languages):
+    def __init__(self, widget, languages, readonly):
         NoModal.__init__(self)
         self.widget = widget
         self.win = gtk.Dialog(_('Translation'), self.parent,
@@ -176,6 +177,7 @@ class TranslateDialog(NoModal):
             table.attach(widget, 1, 2, i, i + 1, yoptions=yopt)
             editing = gtk.CheckButton()
             editing.connect('toggled', self.editing_toggled, widget)
+            editing.props.sensitive = not readonly
             tooltips.set_tip(editing, _('Edit'))
             table.attach(editing, 2, 3, i, i + 1, xoptions=gtk.FILL)
             fuzzy = gtk.CheckButton()
@@ -270,7 +272,7 @@ class TranslateMixin:
         except RPCException:
             return
 
-        TranslateDialog(self, languages)
+        TranslateDialog(self, languages, self._readonly)
 
     def translate_widget(self):
         raise NotImplemented
