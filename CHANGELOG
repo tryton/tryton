@@ -1,3 +1,4 @@
+* Add sequence_ordered
 * Remove most country specific code in languages
 * Add support for derivative translations
 * Remove IDENTIFIER regexp on ir.model and ir.model.field

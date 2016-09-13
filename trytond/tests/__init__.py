@@ -120,6 +120,7 @@ def register():
         Model4UnionTree1,
         Model4UnionTree2,
         UnionTree,
+        SequenceOrderedModel,
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
         ModelViewButton,

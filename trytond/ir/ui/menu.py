@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import groupby
 
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -72,12 +69,11 @@ CLIENT_ICONS = [(x, x) for x in (
 SEPARATOR = ' / '
 
 
-class UIMenu(ModelSQL, ModelView):
+class UIMenu(sequence_ordered(), ModelSQL, ModelView):
     "UI menu"
     __name__ = 'ir.ui.menu'
 
     name = fields.Char('Menu', required=True, translate=True)
-    sequence = fields.Integer('Sequence', required=True)
     childs = fields.One2Many('ir.ui.menu', 'parent', 'Children')
     parent = fields.Many2One('ir.ui.menu', 'Parent Menu', select=True,
             ondelete='CASCADE')
@@ -102,7 +98,6 @@ class UIMenu(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(UIMenu, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'wrong_name': ('"%%s" is not a valid menu name because it is '
                     'not allowed to contain "%s".' % SEPARATOR),
@@ -271,13 +266,12 @@ class UIMenu(ModelSQL, ModelView):
         return menu2favorite
 
 
-class UIMenuFavorite(ModelSQL, ModelView):
+class UIMenuFavorite(sequence_ordered(), ModelSQL, ModelView):
     "Menu Favorite"
     __name__ = 'ir.ui.menu.favorite'
 
     menu = fields.Many2One('ir.ui.menu', 'Menu', required=True,
         ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
 
@@ -289,15 +283,6 @@ class UIMenuFavorite(ModelSQL, ModelView):
                 'set': RPC(readonly=False),
                 'unset': RPC(readonly=False),
                 })
-        cls._order = [
-            ('sequence', 'ASC'),
-            ('id', 'DESC'),
-            ]
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_user():

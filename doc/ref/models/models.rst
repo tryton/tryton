@@ -683,6 +683,19 @@ Class methods:
 
     Return the SQL table and columns to use for the UNION for the model name.
 
+================
+sequence_ordered
+================
+
+.. method:: sequence_ordered([field_name, [field_label, [order, [null_first]]]])
+
+Retuns a mixin_ class which defines the order of a :class:`ModelSQL` with an
+:class:`trytond.model.fields.Integer` field. field_name indicates the name of
+the field to be created and its default values is `sequence`. field_label
+defines the label which will be used by the field and defaults to `Sequence`.
+Order specifies the order direction and defaults to `ASC` and null first
+if the null values should be ordered first and defaults to `True`.
+
 
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
