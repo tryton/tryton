@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
@@ -66,7 +64,7 @@ class Product:
         return super(Product, cls).copy(products, default=default)
 
 
-class ProductBom(ModelSQL, ModelView):
+class ProductBom(sequence_ordered(), ModelSQL, ModelView):
     'Product - BOM'
     __name__ = 'product.product-production.bom'
 
@@ -81,12 +79,6 @@ class ProductBom(ModelSQL, ModelView):
                     Eval('product', 0),
                     Get(Eval('_parent_product', {}), 'id', 0))),
             ], depends=['product'])
-    sequence = fields.Integer('Sequence')
-
-    @classmethod
-    def __setup__(cls):
-        super(ProductBom, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     def get_rec_name(self, name):
         return self.bom.rec_name
@@ -95,13 +87,8 @@ class ProductBom(ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('bom.rec_name',) + tuple(clause[1:])]
 
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
-
-class ProductionLeadTime(ModelSQL, ModelView, MatchMixin):
+class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Production Lead Time'
     __name__ = 'production.lead_time'
 
@@ -110,7 +97,6 @@ class ProductionLeadTime(ModelSQL, ModelView, MatchMixin):
         domain=[
             ('type', '!=', 'service'),
             ])
-    sequence = fields.Integer('Sequence')
     bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
         domain=[
             ('output_products', '=', If(Bool(Eval('product')),
@@ -124,9 +110,3 @@ class ProductionLeadTime(ModelSQL, ModelView, MatchMixin):
     def __setup__(cls):
         super(ProductionLeadTime, cls).__setup__()
         cls._order.insert(0, ('product', 'ASC'))
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
-    def order_sequence(cls, tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
