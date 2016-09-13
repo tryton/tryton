@@ -8,7 +8,8 @@ from sql.aggregate import Max, Count, Sum
 from sql.conditionals import Case
 from sql.functions import Extract
 
-from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelView, ModelSQL, Workflow, fields, \
+    sequence_ordered
 from trytond import backend
 from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
@@ -431,7 +432,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             cls.convert(converted)
 
 
-class SaleOpportunityLine(ModelSQL, ModelView):
+class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     'Sale Opportunity Line'
     __name__ = "sale.opportunity.line"
     _rec_name = "product"
@@ -450,7 +451,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     opportunity_state = fields.Function(
         fields.Selection(STATES, 'Opportunity State'),
         'on_change_with_opportunity_state')
-    sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[('salable', '=', True)], states=_states, depends=_depends)
     quantity = fields.Float('Quantity', required=True,
@@ -464,11 +464,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     del _states, _depends
 
     @classmethod
-    def __setup__(cls):
-        super(SaleOpportunityLine, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         table = TableHandler(cls, module_name)
@@ -477,11 +472,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @fields.depends('opportunity', '_parent_opportunity.state')
     def on_change_with_opportunity_state(self, name=None):
