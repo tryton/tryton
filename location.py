@@ -3,10 +3,8 @@
 import datetime
 from decimal import Decimal
 
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond import backend
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -434,11 +432,10 @@ class ProductsByLocationsContext(ModelView):
         return self.forecast_date
 
 
-class LocationLeadTime(ModelSQL, ModelView, MatchMixin):
+class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Location Lead Time'
     __name__ = 'stock.location.lead_time'
 
-    sequence = fields.Integer('Sequence')
     warehouse_from = fields.Many2One('stock.location', 'Warehouse From',
         ondelete='CASCADE',
         domain=[
@@ -450,16 +447,6 @@ class LocationLeadTime(ModelSQL, ModelView, MatchMixin):
             ('type', '=', 'warehouse'),
             ])
     lead_time = fields.TimeDelta('Lead Time')
-
-    @classmethod
-    def __setup__(cls):
-        super(LocationLeadTime, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
-    def order_sequence(cls, tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def get_lead_time(cls, pattern):
