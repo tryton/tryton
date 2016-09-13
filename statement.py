@@ -6,9 +6,9 @@ from itertools import groupby
 
 from sql import Null
 from sql.aggregate import Max, Sum
-from sql.conditionals import Case
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields, Check
+from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
+    sequence_ordered
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond import backend
@@ -523,7 +523,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         StatementLine.delete_move(lines)
 
 
-class Line(ModelSQL, ModelView):
+class Line(sequence_ordered(), ModelSQL, ModelView):
     'Account Statement Line'
     __name__ = 'account.statement.line'
     _states = {
@@ -536,7 +536,6 @@ class Line(ModelSQL, ModelView):
     statement_state = fields.Function(
         fields.Selection(STATES, 'Statement State'),
         'on_change_with_statement_state')
-    sequence = fields.Integer('Sequence')
     number = fields.Char('Number')
     date = fields.Date('Date', required=True, states=_states, depends=_depends)
     amount = fields.Numeric('Amount', required=True,
@@ -571,7 +570,6 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'amount_greater_invoice_amount_to_pay': ('Amount "%s" is '
                     'greater than the amount to pay of invoice.'),
@@ -586,11 +584,6 @@ class Line(ModelSQL, ModelView):
     def on_change_with_statement_state(self, name=None):
         if self.statement:
             return self.statement.state
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_amount():
