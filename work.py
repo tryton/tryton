@@ -5,10 +5,8 @@ import random
 from decimal import Decimal
 from functools import wraps
 
-from sql import Null
-from sql.conditionals import Case
-
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields, \
+    sequence_ordered
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
@@ -133,10 +131,9 @@ class WorkCenter(ModelSQL, ModelView):
         return picker
 
 
-class Work(ModelSQL, ModelView):
+class Work(sequence_ordered(), ModelSQL, ModelView):
     'Production Work'
     __name__ = 'production.work'
-    sequence = fields.Integer('Sequence')
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)
     production = fields.Many2One('production', 'Production', required=True,
@@ -179,7 +176,6 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'delete_request': ('Work "%s" can not be deleted '
                     'as it is not in state "request"'),
@@ -189,11 +185,6 @@ class Work(ModelSQL, ModelView):
     def on_change_with_work_center_category(self, name=None):
         if self.operation.work_center_category:
             return self.operation.work_center_category.id
-
-    @classmethod
-    def order_sequence(cls, tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def default_company(cls):
