@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pyson import Eval, Or, Bool
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
@@ -169,7 +167,7 @@ class Template:
             Product_TariffCode.delete(product_tariffcodes)
 
 
-class Product_TariffCode(ModelSQL, ModelView):
+class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
     'Product - Tariff Code'
     __name__ = 'product-customs.tariff.code'
     product = fields.Reference('Product', selection=[
@@ -178,12 +176,6 @@ class Product_TariffCode(ModelSQL, ModelView):
             ], required=True, select=True)
     tariff_code = fields.Many2One('customs.tariff.code', 'Tariff Code',
         required=True, ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
-
-    @classmethod
-    def __setup__(cls):
-        super(Product_TariffCode, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     def get_rec_name(self, name):
         return self.tariff_code.rec_name
@@ -191,11 +183,6 @@ class Product_TariffCode(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('tariff_code.rec_name',) + tuple(clause[1:])]
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [table.sequence == Null, table.sequence]
 
 
 class Product:
