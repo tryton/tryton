@@ -2,11 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Null
-from sql.conditionals import Case
 from simpleeval import simple_eval
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
+    sequence_ordered
 from trytond.tools import decistmt
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
@@ -66,14 +65,13 @@ class PriceList(ModelSQL, ModelView):
         return unit_price
 
 
-class PriceListLine(ModelSQL, ModelView, MatchMixin):
+class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Price List Line'
     __name__ = 'product.price_list.line'
 
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
@@ -86,7 +84,6 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
     def __setup__(cls):
         super(PriceListLine, cls).__setup__()
         cls._order.insert(0, ('price_list', 'ASC'))
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_formula': ('Invalid formula "%(formula)s" in price '
                     'list line "%(line)s" with exception "%(exception)s".'),
@@ -101,11 +98,6 @@ class PriceListLine(ModelSQL, ModelView, MatchMixin):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_formula():
