@@ -1,10 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.conditionals import Case
-
 from trytond.model import (ModelView, ModelSQL,
-            ModelSingleton, MatchMixin, fields)
+            ModelSingleton, MatchMixin, fields, sequence_ordered)
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
@@ -101,24 +98,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
         return self.default_tax_rounding()
 
 
-class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
+class ConfigurationTaxRounding(
+        sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Account Configuration Tax Rounding'
     __name__ = 'account.configuration.tax_rounding'
     configuration = fields.Many2One('account.configuration', 'Configuration',
         required=True, ondelete='CASCADE')
-    sequence = fields.Integer('Sequence')
     company = fields.Many2One('company.company', 'Company')
     method = fields.Selection(tax_roundings, 'Method', required=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(ConfigurationTaxRounding, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
-    def order_sequence(cls, tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @classmethod
     def default_method(cls):

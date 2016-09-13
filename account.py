@@ -9,7 +9,7 @@ from sql import Column, Null, Window, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
@@ -38,7 +38,7 @@ def inactive_records(func):
     return wrapper
 
 
-class TypeTemplate(ModelSQL, ModelView):
+class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
     'Account Type Template'
     __name__ = 'account.account.type.template'
     name = fields.Char('Name', required=True)
@@ -46,18 +46,12 @@ class TypeTemplate(ModelSQL, ModelView):
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.type.template', 'parent',
         'Children')
-    sequence = fields.Integer('Sequence')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(TypeTemplate, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -73,11 +67,6 @@ class TypeTemplate(ModelSQL, ModelView):
     def validate(cls, records):
         super(TypeTemplate, cls).validate(records)
         cls.check_recursion(records, rec_name='name')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -154,7 +143,7 @@ class TypeTemplate(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class Type(ModelSQL, ModelView):
+class Type(sequence_ordered(), ModelSQL, ModelView):
     'Account Type'
     __name__ = 'account.account.type'
     name = fields.Char('Name', size=None, required=True)
@@ -166,8 +155,6 @@ class Type(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
         ], depends=['company'])
-    sequence = fields.Integer('Sequence',
-        help='Use to order the account type')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
@@ -187,11 +174,6 @@ class Type(ModelSQL, ModelView):
     template = fields.Many2One('account.account.type.template', 'Template')
 
     @classmethod
-    def __setup__(cls):
-        super(Type, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         table = TableHandler(cls, module_name)
@@ -205,11 +187,6 @@ class Type(ModelSQL, ModelView):
     def validate(cls, types):
         super(Type, cls).validate(types)
         cls.check_recursion(types, rec_name='name')
-
-    @staticmethod
-    def order_sequence(tables):
-        table, _ = tables[None]
-        return [Case((table.sequence == Null, 0), else_=1), table.sequence]
 
     @staticmethod
     def default_balance_sheet():
