@@ -233,7 +233,7 @@ class SaleExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super(SaleExtraLine, cls).__setup__()
-        cls._order.insert(0, ('extra', 'ASC'))
+        cls._order.insert(1, ('extra', 'ASC'))
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
