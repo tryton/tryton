@@ -838,6 +838,33 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 7,
             "decode(Len('foo bar'))");
     });
+    QUnit.test('PYSON noeval', function() {
+        var decoder = new Sao.PYSON.Decoder({}, true);
+        var encoder = new Sao.PYSON.Encoder();
+        var noeval_tests = [
+            new Sao.PYSON.Eval('test', 0),
+            new Sao.PYSON.Not(true),
+            new Sao.PYSON.Bool('test'),
+            new Sao.PYSON.Not(true),
+            new Sao.PYSON.Bool('test'),
+            new Sao.PYSON.And(true, false, true),
+            new Sao.PYSON.Or(false, true, true),
+            new Sao.PYSON.Equal('foo', 'bar'),
+            new Sao.PYSON.Greater(1, 0),
+            new Sao.PYSON.Less(0, 1),
+            new Sao.PYSON.If(true, 'foo', 'bar'),
+            new Sao.PYSON.Get({'foo': 'bar'}, 'foo', 'default'),
+            new Sao.PYSON.In('foo', ['foo', 'bar']),
+            new Sao.PYSON.Date(),
+            new Sao.PYSON.DateTime(),
+            new Sao.PYSON.Len([1, 2, 3]),
+        ];
+        noeval_tests.forEach(function(instance) {
+            QUnit.ok(
+                Sao.common.compare(decoder.decode(encoder.encode(instance)),
+                    instance));
+        });
+    });
 
     QUnit.test('DomainParser.group_operator', function() {
         var parser = new Sao.common.DomainParser();

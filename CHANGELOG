@@ -1,3 +1,4 @@
+* Add noeval to PYSONDecoder
 * Add support for pyson_order on action window
 * Make datetimepicker locale aware
 * Restore tab default order when no manual change
