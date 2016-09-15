@@ -1764,10 +1764,11 @@
             var group = record._values[this.name];
             var prm = jQuery.when();
             if (jQuery.isEmptyObject(value)) {
-                return prm;
+                value = [];
             }
             var mode;
-            if (!isNaN(parseInt(value[0], 10))) {
+            if (jQuery.isEmptyObject(value) ||
+                    !isNaN(parseInt(value[0], 10))) {
                 mode = 'list ids';
             } else {
                 mode = 'list values';
