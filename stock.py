@@ -148,14 +148,6 @@ class Move:
             )
 
     @classmethod
-    def copy(cls, moves, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        default.setdefault('account_move', None)
-        return super(Move, cls).copy(moves, default=default)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
