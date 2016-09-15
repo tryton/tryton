@@ -82,12 +82,18 @@ def populate(menu, model, record, title='', field=None):
         edit_item.connect('activate', edit)
         action_menu.append(edit_item)
         action_menu.append(gtk.SeparatorMenuItem())
-    attachment_item = gtk.ImageMenuItem('tryton-attachment')
+    attachment_item = gtk.ImageMenuItem()
     attachment_item.set_label(_('Attachments...'))
+    attachment_icon = gtk.Image()
+    attachment_icon.set_from_stock('tryton-attachment', gtk.ICON_SIZE_MENU)
+    attachment_item.set_image(attachment_icon)
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
-    note_item = gtk.ImageMenuItem('tryton-note')
+    note_item = gtk.ImageMenuItem()
     note_item.set_label(_('Notes...'))
+    note_icon = gtk.Image()
+    note_icon.set_from_stock('tryton-note', gtk.ICON_SIZE_MENU)
+    note_item.set_image(note_icon)
     action_menu.append(note_item)
     note_item.connect('activate', note)
 
@@ -105,8 +111,11 @@ def populate(menu, model, record, title='', field=None):
                 ):
             if len(action_menu):
                 action_menu.append(gtk.SeparatorMenuItem())
-            title_item = gtk.ImageMenuItem(icon)
+            title_item = gtk.ImageMenuItem()
             title_item.set_label(label)
+            title_icon = gtk.Image()
+            title_icon.set_from_stock(icon, gtk.ICON_SIZE_MENU)
+            title_item.set_image(title_icon)
             action_menu.append(title_item)
             if not toolbar[atype]:
                 title_item.set_sensitive(False)

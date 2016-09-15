@@ -636,9 +636,13 @@ class Form(SignalEvent, TabContent):
         if buttons:
             menu.add(gtk.SeparatorMenuItem())
         for button in buttons:
-            menuitem = gtk.ImageMenuItem(button.attrs.get('icon'))
+            menuitem = gtk.ImageMenuItem()
             menuitem.set_label('_' + button.attrs.get('string', _('Unknown')))
             menuitem.set_use_underline(True)
+            if button.attrs.get('icon'):
+                icon = gtk.Image()
+                icon.set_from_stock(button.attrs['icon'], gtk.ICON_SIZE_MENU)
+                menuitem.set_image(icon)
             menuitem.connect('activate',
                 lambda m, attrs: self.screen.button(attrs), button.attrs)
             menuitem._update_action = True
