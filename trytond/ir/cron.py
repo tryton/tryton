@@ -143,7 +143,9 @@ class Cron(ModelSQL, ModelView):
         with Transaction().set_user(self.user.id), \
                 Transaction().set_context(language=language):
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-            tb_s = tb_s.decode('utf-8', 'ignore')
+            # On Python3, the traceback is already a unicode
+            if hasattr(tb_s, 'decode'):
+                tb_s = tb_s.decode('utf-8', 'ignore')
             subject = self.raise_user_error('request_title',
                 raise_exception=False)
             body = self.raise_user_error('request_body',
