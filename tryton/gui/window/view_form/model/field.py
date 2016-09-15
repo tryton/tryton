@@ -583,9 +583,9 @@ class O2MField(Field):
     def _set_value(self, record, value, default=False):
         self._set_default_value(record)
         group = record.value[self.name]
-        if not value:
-            return
-        if isinstance(value[0], (int, long)):
+        if value is None:
+            value = []
+        if not value or isinstance(value[0], (int, long)):
             mode = 'list ids'
         else:
             mode = 'list values'
