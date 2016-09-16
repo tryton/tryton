@@ -108,7 +108,7 @@
                     .append(this.but_bookmark)
                     .append(dropdown_bookmark))
             .appendTo(jQuery('<div/>', {
-                'class': 'col-md-8'
+                'class': 'col-sm-10 col-xs-12'
             }).appendTo(search_row));
 
 
@@ -138,7 +138,7 @@
             .append(this.but_prev)
             .append(this.but_next)
             .appendTo(jQuery('<div/>', {
-                'class': 'col-md-4'
+                'class': 'col-sm-2 pull-right'
             }).appendTo(search_row));
 
             this.content_box = jQuery('<div/>', {
