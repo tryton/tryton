@@ -1,3 +1,4 @@
+* Move info-bar to the top
 * Add noeval to PYSONDecoder
 * Add support for pyson_order on action window
 * Make datetimepicker locale aware

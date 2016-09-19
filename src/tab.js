@@ -18,6 +18,8 @@
             var toolbar = this.create_toolbar().appendTo(this.el);
             this.title = toolbar.find('a.navbar-brand');
 
+            this.content = jQuery('<div/>').appendTo(this.el);
+
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
             }
@@ -289,7 +291,7 @@
 
             this.view_prm = this.screen.switch_view().done(function() {
                 this.set_name(attributes.name || '');
-                this.el.append(screen.screen_container.el);
+                this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     if (!jQuery.isArray(attributes.res_id)) {
                         attributes.res_id = [attributes.res_id];

@@ -9,8 +9,8 @@
         init: function() {
             this.text = jQuery('<span/>');
             this.text.css('white-space', 'pre-wrap');
-            this.el = jQuery('<div/>', {
-                'class': 'alert',
+            this.el= jQuery('<div/>', {
+                'class': 'alert infobar',
                 'role': 'alert'
             }).append(jQuery('<button/>', {
                 'type': 'button',
@@ -74,8 +74,6 @@
             }.bind(this));
             var dialog = new Sao.Dialog('', '', 'lg');
             this.el = dialog.modal;
-
-            dialog.body.append(this.info_bar.el);
 
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.get_readonly());
@@ -218,10 +216,13 @@
                 this.but_switch.click(this.switch_.bind(this));
             }
 
+            var content = jQuery('<div/>').appendTo(dialog.body);
+
+            dialog.body.append(this.info_bar.el);
 
             switch_prm.done(function() {
                 title_prm.done(dialog.add_title.bind(dialog));
-                dialog.body.append(this.screen.screen_container.alternate_viewport);
+                content.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
             }.bind(this));
             this.el.on('shown.bs.modal', function(event) {

@@ -210,7 +210,7 @@
             this.dialog = dialog.modal;
             this.content = dialog.content;
             this.footer = dialog.footer;
-            dialog.body.append(this.info_bar.el).append(this.widget);
+            dialog.body.append(this.widget).append(this.info_bar.el);
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);
