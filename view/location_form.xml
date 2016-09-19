@@ -8,10 +8,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="parent"/>
     <field name="parent"/>
-    <label name="active"/>
-    <field name="active"/>
+    <newline/>
     <label name="type"/>
     <field name="type"/>
+    <label name="active"/>
+    <field name="active"/>
     <newline/>
     <label name="address"/>
     <field name="address"/>
