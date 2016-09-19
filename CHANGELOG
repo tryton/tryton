@@ -1,3 +1,4 @@
+* Show non editable widget as insensitive
 * Move info-bar at the bottom
 * Manage readonly on fields translation dialog
 * Restore tab default order when no manual change

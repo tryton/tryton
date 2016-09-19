@@ -8,6 +8,7 @@ from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips
 from tryton.common.entry_position import reset_position
 from tryton.common.selection import PopdownMixin, selection_shortcuts
+from tryton.common.widget_style import set_widget_style
 from tryton.config import CONFIG
 
 _ = gettext.gettext
@@ -141,6 +142,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             self.entry.set_button_sensitivity(sensitivity[value])
         else:
             self.entry.set_editable(not value)
+        set_widget_style(self.entry, not value)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:

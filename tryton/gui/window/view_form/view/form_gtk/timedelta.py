@@ -4,6 +4,7 @@ import gtk
 
 from tryton.config import CONFIG
 from tryton.common.entry_position import reset_position
+from tryton.common.widget_style import set_widget_style
 from .widget import Widget
 
 
@@ -48,6 +49,7 @@ class TimeDelta(Widget):
     def _readonly_set(self, value):
         super(TimeDelta, self)._readonly_set(value)
         self.entry.set_editable(not value)
+        set_widget_style(self.entry, not value)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:

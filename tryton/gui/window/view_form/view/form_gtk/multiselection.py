@@ -6,6 +6,7 @@ import gobject
 from .widget import Widget
 from tryton.common.selection import SelectionMixin
 from tryton.common.treeviewcontrol import TreeViewControl
+from tryton.common.widget_style import set_widget_style
 
 
 class MultiSelection(Widget, SelectionMixin):
@@ -41,6 +42,7 @@ class MultiSelection(Widget, SelectionMixin):
 
     def _readonly_set(self, readonly):
         super(MultiSelection, self)._readonly_set(readonly)
+        set_widget_style(self.tree, not readonly)
         selection = self.tree.get_selection()
         selection.set_select_function(lambda info: not readonly)
 
