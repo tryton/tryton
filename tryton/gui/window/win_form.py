@@ -110,9 +110,6 @@ class WinForm(NoModal, InfoBar):
 
         self.win.vbox.pack_start(eb, expand=False, fill=True, padding=3)
 
-        self.create_info_bar()
-        self.win.vbox.pack_start(self.info_bar, False, True)
-
         if view_type == 'tree':
             hbox = gtk.HBox(homogeneous=False, spacing=0)
             tooltips = common.Tooltips()
@@ -250,6 +247,9 @@ class WinForm(NoModal, InfoBar):
         self.win.vbox.pack_start(scroll, expand=True, fill=True)
 
         scroll.add(self.screen.screen_container.alternate_viewport)
+
+        self.create_info_bar()
+        self.win.vbox.pack_start(self.info_bar, False, True)
 
         sensible_allocation = self.sensible_widget.get_allocation()
         self.win.set_default_size(int(sensible_allocation.width * 0.9),

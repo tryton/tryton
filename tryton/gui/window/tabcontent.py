@@ -26,9 +26,6 @@ class TabContent(InfoBar):
         title_box = self.make_title_bar()
         self.widget.pack_start(title_box, expand=False, fill=True, padding=3)
 
-        self.create_info_bar()
-        self.widget.pack_start(self.info_bar, False, True)
-
         self.toolbar = self.create_toolbar(self.get_toolbars())
         self.toolbar.show_all()
         self.widget.pack_start(self.toolbar, False, True)
@@ -45,6 +42,9 @@ class TabContent(InfoBar):
         self.scrolledwindow.show()
 
         self.widget.pack_start(self.scrolledwindow)
+
+        self.create_info_bar()
+        self.widget.pack_start(self.info_bar, False, True)
 
     def make_title_bar(self):
         self.title = title = gtk.Label()

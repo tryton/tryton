@@ -202,9 +202,6 @@ class Wizard(InfoBar):
 
         self.widget.pack_start(eb, expand=False, fill=True, padding=3)
 
-        self.create_info_bar()
-        self.widget.pack_start(self.info_bar, False, True)
-
         if self.toolbar_box:
             self.widget.pack_start(self.toolbar_box, False, True)
 
@@ -220,6 +217,9 @@ class Wizard(InfoBar):
         self.scrolledwindow.show()
 
         self.widget.pack_start(self.scrolledwindow)
+
+        self.create_info_bar()
+        self.widget.pack_start(self.info_bar, False, True)
 
         self.screen.new(default=False)
         self.screen.current_record.set_default(defaults)
