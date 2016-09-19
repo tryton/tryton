@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
@@ -13,7 +15,7 @@ from trytond.transaction import Transaction
 
 from .payment import KINDS
 
-__all__ = ['MoveLine', 'PayLine', 'PayLineStart', 'Configuration']
+__all__ = ['MoveLine', 'PayLine', 'PayLineStart', 'Configuration', 'Invoice']
 
 
 class MoveLine:
@@ -189,3 +191,35 @@ class Configuration:
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'account.payment.group'),
                 ], required=True))
+
+
+class Invoice:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.invoice'
+
+    @classmethod
+    def get_amount_to_pay(cls, invoices, name):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+
+        amounts = super(Invoice, cls).get_amount_to_pay(invoices, name)
+
+        for invoice in invoices:
+            for line in invoice.lines_to_pay:
+                if line.reconciliation:
+                    continue
+                if (name == 'amount_to_pay_today'
+                        and line.maturity_date > today):
+                    continue
+                payment_amount = Decimal(0)
+                for payment in line.payments:
+                    if payment.state != 'failed':
+                        with Transaction().set_context(date=payment.date):
+                            payment_amount = Currency.compute(
+                                payment.currency, payment.amount,
+                                invoice.currency)
+                amounts[invoice.id] -= payment_amount
+        return amounts

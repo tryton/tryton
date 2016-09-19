@@ -14,6 +14,7 @@ def register():
         ProcessPaymentStart,
         PayLineStart,
         Configuration,
+        Invoice,
         module='account_payment', type_='model')
     Pool.register(
         ProcessPayment,
