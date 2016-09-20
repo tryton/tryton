@@ -1556,7 +1556,7 @@
             var result = [];
             tokens.forEach(function(clause) {
                 if (this.is_generator(clause)) {
-                    result.concat(this.parse_clause(clause));
+                    jQuery.merge(result, this.parse_clause(clause));
                 } else if ((clause == 'OR') || (clause == 'AND')) {
                     result.push(clause);
                 } else if ((clause.length == 1) &&
