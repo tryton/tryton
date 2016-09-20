@@ -1470,6 +1470,11 @@ def test_parse_clause():
     assert rlist(dom.parse_clause([('Reference', None, ['foo', 'bar'])])) == [
         ('reference', 'in', ['foo', 'bar']),
         ]
+    assert rlist(dom.parse_clause(['OR',
+                ('Name', None, 'John'), ('Name', None, 'Jane')])) == ['OR',
+        ('name', 'ilike', '%John%'),
+        ('name', 'ilike', '%Jane%'),
+        ]
     assert rlist(dom.parse_clause([('Many2One', None, 'John')])) == [
         ('many2one', 'ilike', '%John%'),
         ]
