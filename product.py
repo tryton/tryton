@@ -219,7 +219,7 @@ class Product(ModelSQL, ModelView):
         for name, field in self._fields.iteritems():
             if isinstance(field, TemplateFunction):
                 if self.template:
-                    value = getattr(self.template, name)
+                    value = getattr(self.template, name, None)
                 else:
                     value = None
                 setattr(self, name, value)
