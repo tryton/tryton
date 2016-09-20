@@ -12,6 +12,7 @@ from trytond.pyson import PYSON, PYSONEncoder, Eval
 from trytond.const import OPERATORS
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.cache import LRUDictTransaction
 
 
 def domain_validate(value):
@@ -108,6 +109,32 @@ def get_eval_fields(value):
     encoder = Encoder()
     encoder.encode(value)
     return encoder.fields
+
+
+def instanciate_values(Target, value):
+    from ..modelstorage import ModelStorage, cache_size
+    kwargs = {}
+    ids = []
+    if issubclass(Target, ModelStorage):
+        kwargs['_local_cache'] = LRUDictTransaction(cache_size())
+        kwargs['_ids'] = ids
+
+    def instance(data):
+        if isinstance(data, Target):
+            return data
+        elif isinstance(data, dict):
+            if data.get('id'):
+                values = {}
+                values.update(data)
+                values.update(kwargs)
+                ids.append(data['id'])
+            else:
+                values = data
+            return Target(**values)
+        else:
+            ids.append(data)
+            return Target(data, **kwargs)
+    return tuple(instance(x) for x in (value or []))
 
 
 SQL_OPERATORS = {

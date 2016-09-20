@@ -5,7 +5,7 @@ from sql import Cast, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Coalesce
 
-from .field import Field, size_validate
+from .field import Field, size_validate, instanciate_values
 from ...pool import Pool
 from ...tools import grouped_slice
 from ...transaction import Transaction
@@ -212,16 +212,7 @@ class One2Many(Field):
 
     def __set__(self, inst, value):
         Target = self.get_target()
-
-        def instance(data):
-            if isinstance(data, Target):
-                return data
-            elif isinstance(data, dict):
-                return Target(**data)
-            else:
-                return Target(data)
-        value = tuple(instance(x) for x in (value or []))
-        super(One2Many, self).__set__(inst, value)
+        super(One2Many, self).__set__(inst, instanciate_values(Target, value))
 
     def convert_domain(self, domain, tables, Model):
         from ..modelsql import convert_from
