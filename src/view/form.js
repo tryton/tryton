@@ -2974,17 +2974,17 @@
                             value.push(element.id);
                     }
                 }
-                this.el.val(value);
+                this.select.val(value);
             }.bind(this));
         },
         set_value: function(record, field) {
-            var value = this.el.val();
+            var value = this.select.val();
             if (value) {
                 value = value.map(function(e) { return parseInt(e, 10); });
             } else {
                 value = [];
-            field.set_client(record, value);
             }
+            field.set_client(record, value);
         }
     });
 
