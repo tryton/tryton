@@ -554,7 +554,7 @@ class Form(SignalEvent, TabContent):
         attach_btn = self.buttons['attach']
         attach_btn.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
                 ('text/uri-list', 0, 0),
-                ], gtk.gdk.ACTION_MOVE)
+                ], gtk.gdk.ACTION_MOVE | gtk.gdk.ACTION_COPY)
         attach_btn.connect('drag_data_received',
             self.attach_drag_data_received)
 
