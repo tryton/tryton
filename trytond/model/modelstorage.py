@@ -8,7 +8,7 @@ import warnings
 
 from decimal import Decimal
 from itertools import islice, ifilter, chain, izip
-from functools import reduce
+from functools import reduce, wraps
 from operator import itemgetter
 from collections import defaultdict
 
@@ -28,6 +28,14 @@ from .modelview import ModelView
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
+
+
+def without_check_access(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        with Transaction().set_context(_check_access=False):
+            return func(*args, **kwargs)
+    return wrapper
 
 
 def cache_size():
@@ -96,6 +104,7 @@ class ModelStorage(Model):
         Transaction().counter += 1
 
     @classmethod
+    @without_check_access
     def trigger_create(cls, records):
         '''
         Trigger create actions
@@ -191,6 +200,7 @@ class ModelStorage(Model):
         return eligibles
 
     @classmethod
+    @without_check_access
     def trigger_write(cls, eligibles):
         '''
         Trigger write actions.
@@ -229,6 +239,7 @@ class ModelStorage(Model):
                             del cache[cls.__name__][record.id]
 
     @classmethod
+    @without_check_access
     def trigger_delete(cls, records):
         '''
         Trigger delete actions
