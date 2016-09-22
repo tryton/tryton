@@ -16,16 +16,23 @@ def _get_pool(dbname):
 
 
 def login(dbname, loginname, parameters, cache=True, language=None):
+    DatabaseOperationalError = backend.get('DatabaseOperationalError')
     context = {'language': language}
-    with Transaction().start(dbname, 0, context=context) as transaction:
-        pool = _get_pool(dbname)
-        User = pool.get('res.user')
-        try:
-            user_id = User.get_login(loginname, parameters)
-        except LoginException:
-            # Let's store any changes done
-            transaction.commit()
-            raise
+    for count in range(config.getint('database', 'retry'), -1, -1):
+        with Transaction().start(dbname, 0, context=context) as transaction:
+            pool = _get_pool(dbname)
+            User = pool.get('res.user')
+            try:
+                user_id = User.get_login(loginname, parameters)
+            except DatabaseOperationalError:
+                if count:
+                    continue
+                raise
+            except LoginException:
+                # Let's store any changes done
+                transaction.commit()
+                raise
+        break
     if user_id:
         if not cache:
             return user_id
@@ -37,18 +44,25 @@ def login(dbname, loginname, parameters, cache=True, language=None):
 
 
 def logout(dbname, user, session):
-    with Transaction().start(dbname, 0):
-        pool = _get_pool(dbname)
-        Session = pool.get('ir.session')
-        sessions = Session.search([
-                ('key', '=', session),
-                ])
-        if not sessions:
-            return
-        session, = sessions
-        name = session.create_uid.login
-        Session.delete(sessions)
-    return name
+    DatabaseOperationalError = backend.get('DatabaseOperationalError')
+    for count in range(config.getint('database', 'retry'), -1, -1):
+        with Transaction().start(dbname, 0):
+            pool = _get_pool(dbname)
+            Session = pool.get('ir.session')
+            try:
+                sessions = Session.search([
+                        ('key', '=', session),
+                        ])
+                if not sessions:
+                    return
+                session, = sessions
+                name = session.create_uid.login
+                Session.delete(sessions)
+            except DatabaseOperationalError:
+                if count:
+                    continue
+                raise
+        return name
 
 
 def check(dbname, user, session):
