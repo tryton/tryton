@@ -216,14 +216,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_employee():
-        User = Pool().get('res.user')
-
-        if Transaction().context.get('employee'):
-            return Transaction().context['employee']
-        else:
-            user = User(Transaction().user)
-            if user.employee:
-                return user.employee.id
+        return Transaction().context.get('employee')
 
     @classmethod
     def default_payment_term(cls):

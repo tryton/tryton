@@ -98,6 +98,7 @@ Create an lead::
     >>> config.user = sale_opportunity_user.id
     >>> Opportunity = Model.get('sale.opportunity')
     >>> opportunity = Opportunity()
+    >>> opportunity.employee = employee
     >>> opportunity.description = 'Opportunity'
     >>> opportunity.save()
     >>> opportunity.state
