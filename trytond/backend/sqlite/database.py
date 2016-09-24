@@ -328,7 +328,7 @@ class Database(DatabaseInterface):
 
     def init(self):
         from trytond.modules import get_module_info
-        with self._conn as conn:
+        with self.get_connection() as conn:
             cursor = conn.cursor()
             sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
             with open(sql_file) as fp:
