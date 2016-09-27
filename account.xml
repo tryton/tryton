@@ -24,6 +24,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="10"/>
             <field name="name">account_list</field>
         </record>
+        <record model="ir.ui.view" id="account_view_list2">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">account_list2</field>
+        </record>
 
         <record model="ir.action.act_window" id="act_account_tree">
             <field name="name">Analytic Accounts</field>

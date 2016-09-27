@@ -57,6 +57,9 @@ class Account(ModelSQL, ModelView):
             },
         depends=['root', 'type'])
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children',
+        states={
+            'invisible': Eval('id', -1) < 0,
+            },
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
@@ -139,6 +142,17 @@ class Account(ModelSQL, ModelView):
         if self.company:
             return self.company.currency.digits
         return 2
+
+    @fields.depends('parent', 'type',
+        '_parent_parent.root', '_parent_parent.type')
+    def on_change_parent(self):
+        if self.parent and self.type != 'root':
+            if self.parent.type == 'root':
+                self.root = self.parent
+            else:
+                self.root = self.parent.root
+        else:
+            self.root = None
 
     @classmethod
     def get_balance(cls, accounts, name):
