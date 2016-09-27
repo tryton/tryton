@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from collections import defaultdict
+
 from sql import Column
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
@@ -23,7 +25,9 @@ class Account(ModelSQL, ModelView):
     code = fields.Char('Code', select=True)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    currency = fields.Function(
+        fields.Many2One('currency.currency', 'Currency'),
+        'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     type = fields.Selection([
@@ -87,6 +91,15 @@ class Account(ModelSQL, ModelView):
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        super(Account, cls).__register__(module_name)
+        table = TableHandler(cls, module_name)
+
+        # Migration from 4.0: remove currency
+        table.not_null_action('currency', action='remove')
+
     @staticmethod
     def default_active():
         return True
@@ -94,13 +107,6 @@ class Account(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @staticmethod
-    def default_currency():
-        Company = Pool().get('company.company')
-        if Transaction().context.get('company'):
-            company = Company(Transaction().context['company'])
-            return company.currency.id
 
     @staticmethod
     def default_type():
@@ -123,27 +129,26 @@ class Account(ModelSQL, ModelView):
         super(Account, cls).validate(accounts)
         cls.check_recursion(accounts)
 
-    @fields.depends('currency')
+    @fields.depends('company')
+    def on_change_with_currency(self, name=None):
+        if self.company:
+            return self.company.currency.id
+
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
+        if self.company:
+            return self.company.currency.digits
         return 2
 
     @classmethod
     def get_balance(cls, accounts, name):
-        res = {}
         pool = Pool()
         Line = pool.get('analytic_account.line')
         MoveLine = pool.get('account.move.line')
-        Account = pool.get('account.account')
-        Company = pool.get('company.company')
-        Currency = pool.get('currency.currency')
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
-        a_account = Account.__table__()
-        company = Company.__table__()
 
         ids = [a.id for a in accounts]
         childs = cls.search([('parent', 'child_of', ids)])
@@ -159,67 +164,42 @@ class Account(ModelSQL, ModelView):
                 condition=table.id == line.account
                 ).join(move_line, 'LEFT',
                 condition=move_line.id == line.move_line
-                ).join(a_account, 'LEFT',
-                condition=a_account.id == move_line.account
-                ).join(company, 'LEFT',
-                condition=company.id == a_account.company
                 ).select(table.id,
                 Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                company.currency,
                 where=(table.type != 'view')
                 & table.id.in_(all_ids)
                 & (table.active == True) & line_query,
-                group_by=(table.id, company.currency)))
-        account_sum = {}
-        id2currency = {}
-        for account_id, sum, currency_id in cursor.fetchall():
+                group_by=table.id))
+        account_sum = defaultdict(Decimal)
+        for account_id, value in cursor.fetchall():
             account_sum.setdefault(account_id, Decimal('0.0'))
             # SQLite uses float for SUM
-            if not isinstance(sum, Decimal):
-                sum = Decimal(str(sum))
-            if currency_id != id2account[account_id].currency.id:
-                currency = None
-                if currency_id in id2currency:
-                    currency = id2currency[currency_id]
-                else:
-                    currency = Currency(currency_id)
-                    id2currency[currency.id] = currency
-                account_sum[account_id] += Currency.compute(currency, sum,
-                        id2account[account_id].currency, round=True)
-            else:
-                account_sum[account_id] += \
-                    id2account[account_id].currency.round(sum)
+            if not isinstance(value, Decimal):
+                value = Decimal(str(value))
+            account_sum[account_id] += value
 
-        for account_id in ids:
-            res.setdefault(account_id, Decimal('0.0'))
+        balances = {}
+        for account in accounts:
+            balance = Decimal()
             childs = cls.search([
-                    ('parent', 'child_of', [account_id]),
+                    ('parent', 'child_of', [account.id]),
                     ])
-            to_currency = id2account[account_id].currency
             for child in childs:
-                from_currency = id2account[child.id].currency
-                res[account_id] += Currency.compute(from_currency,
-                        account_sum.get(child.id, Decimal('0.0')), to_currency,
-                        round=True)
-            res[account_id] = to_currency.round(res[account_id])
-            if id2account[account_id].display_balance == 'credit-debit':
-                res[account_id] = - res[account_id]
-        return res
+                balance += account_sum[child.id]
+            if account.display_balance == 'credit-debit' and balance:
+                balance *= -1
+            balances[account.id] = account.currency.round(balance)
+        return balances
 
     @classmethod
     def get_credit_debit(cls, accounts, names):
         pool = Pool()
         Line = pool.get('analytic_account.line')
         MoveLine = pool.get('account.move.line')
-        Account = pool.get('account.account')
-        Company = pool.get('company.company')
-        Currency = pool.get('currency.currency')
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
-        a_account = Account.__table__()
-        company = Company.__table__()
 
         result = {}
         ids = [a.id for a in accounts]
@@ -233,43 +213,31 @@ class Account(ModelSQL, ModelView):
             id2account[account.id] = account
 
         line_query = Line.query_get(line)
-        columns = [table.id, company.currency]
+        columns = [table.id]
         for name in names:
             columns.append(Sum(Coalesce(Column(line, name), 0)))
         cursor.execute(*table.join(line, 'LEFT',
                 condition=table.id == line.account
                 ).join(move_line, 'LEFT',
                 condition=move_line.id == line.move_line
-                ).join(a_account, 'LEFT',
-                condition=a_account.id == move_line.account
-                ).join(company, 'LEFT',
-                condition=company.id == a_account.company
                 ).select(*columns,
                 where=(table.type != 'view')
                 & table.id.in_(ids)
                 & (table.active == True) & line_query,
-                group_by=(table.id, company.currency)))
+                group_by=table.id))
 
-        id2currency = {}
         for row in cursor.fetchall():
-            account = id2account[row[0]]
-            currency_id = row[1]
-            for i, name in enumerate(names, 2):
+            account_id = row[0]
+            for i, name in enumerate(names, 1):
+                value = row[i]
                 # SQLite uses float for SUM
-                sum = row[i]
-                if not isinstance(sum, Decimal):
-                    sum = Decimal(str(sum))
-                if currency_id != account.currency.id:
-                    currency = None
-                    if currency_id in id2currency:
-                        currency = id2currency[currency_id]
-                    else:
-                        currency = Currency(currency_id)
-                        id2currency[currency.id] = currency
-                    result[name][account.id] += Currency.compute(currency, sum,
-                            account.currency, round=True)
-                else:
-                    result[name][account.id] += account.currency.round(sum)
+                if not isinstance(value, Decimal):
+                    value = Decimal(str(value))
+                result[name][account_id] += value
+        for account in accounts:
+            for name in names:
+                result[name][account.id] = account.currency.round(
+                    result[name][account.id])
         return result
 
     def get_rec_name(self, name):

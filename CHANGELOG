@@ -1,3 +1,5 @@
+* Remove name, journal, reference, party and active from line
+* Remove currency from account
 * Require company on account
 * Enforce company consistency
 

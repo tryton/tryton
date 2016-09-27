@@ -3,13 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="top">
     <field name="move_line"/>
-    <field name="journal"/>
-    <field name="name"/>
-    <field name="reference"/>
-    <field name="date"/>
-    <field name="party"/>
     <field name="account"/>
+    <field name="date"/>
     <field name="debit"/>
     <field name="credit"/>
-    <field name="currency"/>
 </tree>

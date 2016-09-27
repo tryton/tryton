@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+
+from sql import Literal
+
 from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateAction
 from trytond import backend
@@ -14,13 +17,10 @@ __all__ = ['Line', 'Move', 'MoveLine', 'OpenAccount']
 class Line(ModelSQL, ModelView):
     'Analytic Line'
     __name__ = 'analytic_account.line'
-    name = fields.Char('Name', required=True)
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
-    currency = fields.Function(fields.Many2One('currency.currency',
-            'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
@@ -36,12 +36,7 @@ class Line(ModelSQL, ModelView):
         depends=['company'])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
             ondelete='CASCADE', required=True)
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-            select=True)
     date = fields.Date('Date', required=True)
-    reference = fields.Char('Reference')
-    party = fields.Many2One('party.party', 'Party')
-    active = fields.Boolean('Active', select=True)
 
     @classmethod
     def __setup__(cls):
@@ -71,14 +66,14 @@ class Line(ModelSQL, ModelView):
         # Migration from 1.2 currency has been changed in function field
         table.not_null_action('currency', action='remove')
 
+        # Migration from 4.0: remove name and journal
+        for field_name in ['name', 'journal']:
+            table.not_null_action(field_name, action='remove')
+
     @staticmethod
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_debit():
@@ -87,11 +82,6 @@ class Line(ModelSQL, ModelView):
     @staticmethod
     def default_credit():
         return Decimal(0)
-
-    @fields.depends('move_line')
-    def on_change_with_currency(self, name=None):
-        if self.move_line:
-            return self.move_line.account.company.currency.id
 
     @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
@@ -108,13 +98,21 @@ class Line(ModelSQL, ModelView):
     def search_company(cls, name, clause):
         return [('move_line.account.company',) + tuple(clause[1:])]
 
+    @fields.depends('move_line', '_parent_move_line.date',
+        '_parent_move_line.debit', '_parent_move_line.credit')
+    def on_change_move_line(self):
+        if self.move_line:
+            self.date = self.move_line.date
+            self.debit = self.move_line.debit
+            self.credit = self.move_line.credit
+
     @staticmethod
     def query_get(table):
         '''
         Return SQL clause for analytic line depending of the context.
         table is the SQL instance of the analytic_account_line table.
         '''
-        clause = table.active
+        clause = Literal(True)
         if Transaction().context.get('start_date'):
             clause &= table.date >= Transaction().context['start_date']
         if Transaction().context.get('end_date'):
