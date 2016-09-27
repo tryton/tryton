@@ -10,12 +10,14 @@ from sql.functions import Abs
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval, If, Bool
-from trytond.wizard import Wizard, StateView, StateAction, Button
+from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
+    Button)
 from trytond.transaction import Transaction
 
 from .payment import KINDS
 
-__all__ = ['MoveLine', 'PayLine', 'PayLineStart', 'Configuration', 'Invoice']
+__all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal', 'Configuration',
+    'Invoice']
 
 
 class MoveLine:
@@ -121,33 +123,80 @@ class MoveLine:
         pass
 
 
-class PayLineStart(ModelView):
+class PayLineAskJournal(ModelView):
     'Pay Line'
-    __name__ = 'account.move.line.pay.start'
+    __name__ = 'account.move.line.pay.ask_journal'
+    company = fields.Many2One('company.company', 'Company', readonly=True)
+    currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
     journal = fields.Many2One('account.payment.journal', 'Journal',
         required=True, domain=[
-            ('company', '=', Eval('context', {}).get('company', -1)),
-            ])
-    date = fields.Date('Date', required=True)
+            ('company', '=', Eval('company', -1)),
+            ('currency', '=', Eval('currency', -1)),
+            ],
+        depends=['company', 'currency'])
 
-    @staticmethod
-    def default_date():
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        return Payment.default_date()
+    journals = fields.One2Many(
+        'account.payment.journal', None, 'Journals', readonly=True)
 
 
 class PayLine(Wizard):
     'Pay Line'
     __name__ = 'account.move.line.pay'
-    start = StateView('account.move.line.pay.start',
-        'account_payment.move_line_pay_start_view_form', [
+    start = StateTransition()
+    ask_journal = StateView('account.move.line.pay.ask_journal',
+        'account_payment.move_line_pay_ask_journal_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Pay', 'pay', 'tryton-ok', default=True),
+            Button('Pay', 'start', 'tryton-ok', default=True),
             ])
     pay = StateAction('account_payment.act_payment_form')
 
-    def get_payment(self, line):
+    def _get_journals(self):
+        journals = {}
+        for journal in getattr(self.ask_journal, 'journals', []):
+            journals[self._get_journal_key(journal)] = journal
+        if getattr(self.ask_journal, 'journal', None):
+            journal = self.ask_journal.journal
+            journals[self._get_journal_key(journal)] = journal
+        return journals
+
+    def _get_journal_key(self, record):
+        pool = Pool()
+        Journal = pool.get('account.payment.journal')
+        Line = pool.get('account.move.line')
+        if isinstance(record, Journal):
+            return (record.company, record.currency)
+        elif isinstance(record, Line):
+            company = record.move.company
+            currency = record.second_currency or company.currency
+            return (company, currency)
+
+    def _missing_journal(self):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        lines = Line.browse(Transaction().context['active_ids'])
+        journals = self._get_journals()
+
+        for line in lines:
+            key = self._get_journal_key(line)
+            if key not in journals:
+                return key
+
+    def transition_start(self):
+        if self._missing_journal():
+            return 'ask_journal'
+        else:
+            return 'pay'
+
+    def default_ask_journal(self, fields):
+        values = {}
+        company, currency = self._missing_journal()[:2]
+        values['company'] = company.id
+        values['currency'] = currency.id
+        values['journals'] = [j.id for j in self._get_journals().itervalues()]
+        return values
+
+    def get_payment(self, line, journals):
         pool = Pool()
         Payment = pool.get('account.payment')
 
@@ -155,13 +204,13 @@ class PayLine(Wizard):
             kind = 'receivable'
         else:
             kind = 'payable'
+        journal = journals[self._get_journal_key(line)]
 
         return Payment(
             company=line.move.company,
-            journal=self.start.journal,
+            journal=journal,
             party=line.party,
             kind=kind,
-            date=self.start.date,
             amount=line.payment_amount,
             line=line,
             )
@@ -172,10 +221,11 @@ class PayLine(Wizard):
         Payment = pool.get('account.payment')
 
         lines = Line.browse(Transaction().context['active_ids'])
+        journals = self._get_journals()
 
         payments = []
         for line in lines:
-            payments.append(self.get_payment(line))
+            payments.append(self.get_payment(line, journals))
         Payment.save(payments)
         return action, {
             'res_id': [p.id for p in payments],

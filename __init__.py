@@ -12,7 +12,7 @@ def register():
         Payment,
         MoveLine,
         ProcessPaymentStart,
-        PayLineStart,
+        PayLineAskJournal,
         Configuration,
         Invoice,
         module='account_payment', type_='model')

@@ -66,7 +66,7 @@ Partially pay line::
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find()
     >>> payment.party == supplier
     True
@@ -89,7 +89,7 @@ Partially fail to pay the remaining::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('30.00')
