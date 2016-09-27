@@ -20,8 +20,8 @@ class JSONTestCase(unittest.TestCase):
             )
         self.assertEqual(req.parsed_data,
             {'method': 'method', 'params': ['foo', 'bar']})
-        self.assertEqual(req.method, 'method')
-        self.assertEqual(req.params, ['foo', 'bar'])
+        self.assertEqual(req.rpc_method, 'method')
+        self.assertEqual(req.rpc_params, ['foo', 'bar'])
 
     def dumps_loads(self, value):
         self.assertEqual(json.loads(
@@ -58,8 +58,8 @@ class XMLTestCase(unittest.TestCase):
             data=b"<?xml version='1.0'?>\n<methodCall>\n<methodName>method</methodName>\n<params>\n<param>\n<value><string>foo</string></value>\n</param>\n<param>\n<value><string>bar</string></value>\n</param>\n</params>\n</methodCall>\n",
             content_type='text/xml')
         self.assertEqual(req.parsed_data, (('foo', 'bar'), 'method'))
-        self.assertEqual(req.method, 'method')
-        self.assertEqual(req.params, ('foo', 'bar'))
+        self.assertEqual(req.rpc_method, 'method')
+        self.assertEqual(req.rpc_params, ('foo', 'bar'))
 
     def dumps_loads(self, value):
         s = client.dumps((value,))
