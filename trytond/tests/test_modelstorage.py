@@ -37,6 +37,19 @@ class ModelStorageTestCase(unittest.TestCase):
             all(x['name'] >= y['name'] for x, y in zip(rows, rows[1:])))
 
     @with_transaction()
+    def test_search_count(self):
+        "Test search_count"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+        ModelStorage.create([{'name': 'Test %s' % i} for i in range(10)])
+
+        count = ModelStorage.search_count([])
+        self.assertEqual(count, 10)
+
+        count = ModelStorage.search_count([('name', '=', 'Test 5')])
+        self.assertEqual(count, 1)
+
+    @with_transaction()
     def test_browse_context(self):
         'Test context when browsing'
         pool = Pool()

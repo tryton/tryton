@@ -1136,7 +1136,7 @@ class ModelSQL(ModelStorage):
         table = convert_from(None, tables)
 
         if count:
-            cursor.execute(*table.select(Count(Literal(1)),
+            cursor.execute(*table.select(Count(Literal('*')),
                     where=expression, limit=limit, offset=offset))
             return cursor.fetchone()[0]
         # execute the "main" query to fetch the ids we were searching for

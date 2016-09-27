@@ -366,7 +366,7 @@ class ModelStorage(Model):
         '''
         Return the number of records that match the domain.
         '''
-        res = cls.search(domain, count=True)
+        res = cls.search(domain, order=[], count=True)
         if isinstance(res, list):
             return len(res)
         return res
