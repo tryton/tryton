@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, If
 
 from trytond.modules.analytic_account import AnalyticMixin
 
@@ -46,6 +47,15 @@ class Purchase:
 class PurchaseLine(AnalyticMixin):
     __name__ = 'purchase.line'
 
+    @classmethod
+    def __setup__(cls):
+        super(PurchaseLine, cls).__setup__()
+        cls.analytic_accounts.domain = [
+            ('company', '=', If(~Eval('_parent_purchase'),
+                    Eval('context', {}).get('company', -1),
+                    Eval('_parent_purchase', {}).get('company', -1))),
+            ]
+
     def get_invoice_line(self):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
@@ -79,3 +89,22 @@ class AnalyticAccountEntry:
                 and self.origin.purchase.state in ['cancel', 'draft']):
             return False
         return required
+
+    @fields.depends('origin')
+    def on_change_with_company(self, name=None):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        company = super(AnalyticAccountEntry, self).on_change_with_company(
+            name)
+        if isinstance(self.origin, PurchaseLine) and self.origin.purchase:
+            company = self.origin.purchase.company.id
+        return company
+
+    @classmethod
+    def search_company(cls, name, clause):
+        domain = super(AnalyticAccountEntry, cls).search_company(name, clause)
+        return ['OR',
+            domain,
+            (('origin.purchase.company',) + tuple(clause[1:])
+                + ('purchase.line',)),
+            ]
