@@ -168,7 +168,7 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
         return host, extra_headers, x509
 
     def send_content(self, connection, request_body):
-        connection.putheader("Content-Type", "text/json")
+        connection.putheader("Content-Type", "application/json")
         if (self.encode_threshold is not None and
                 self.encode_threshold < len(request_body) and
                 gzip):
@@ -294,6 +294,8 @@ class ServerProxy(xmlrpclib.ServerProxy):
                 request,
                 verbose=self.__verbose
                 )
+        except xmlrpclib.ProtocolError, e:
+            raise Fault(str(e.errcode), e.errmsg)
         except:
             self.__transport.close()
             raise
