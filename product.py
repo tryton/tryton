@@ -3,6 +3,7 @@
 from trytond.model import ModelStorage, ModelView, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
+from trytond.rpc import RPC
 
 __all__ = ['ClassificationMixin', 'classification_tree',
     'Template', 'Product', 'ClassificationDummy', 'ClassificationTreeDummy']
@@ -76,6 +77,11 @@ class Template:
 class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
+
+    @classmethod
+    def __setup__(cls):
+        super(Product, cls).__setup__()
+        cls.__rpc__['get_classification'] = RPC()
 
     @classmethod
     def get_classification(cls):
