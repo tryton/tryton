@@ -40,15 +40,11 @@ class InvoiceLine(AnalyticMixin):
         AnalyticLine = pool.get('analytic_account.line')
 
         analytic_line = AnalyticLine()
-        analytic_line.name = self.description
         analytic_line.debit = line.debit
         analytic_line.credit = line.credit
         analytic_line.account = entry.account
-        analytic_line.journal = self.invoice.journal
         analytic_line.date = (self.invoice.accounting_date
             or self.invoice.invoice_date)
-        analytic_line.reference = self.invoice.reference
-        analytic_line.party = self.invoice.party
         return analytic_line
 
     def get_move_lines(self):
