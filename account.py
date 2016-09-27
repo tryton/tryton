@@ -8,7 +8,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import Eval, PYSONEncoder
+from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -22,7 +22,7 @@ class Account(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True, select=True)
     code = fields.Char('Code', select=True)
     active = fields.Boolean('Active', select=True)
-    company = fields.Many2One('company.company', 'Company')
+    company = fields.Many2One('company.company', 'Company', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
@@ -33,6 +33,7 @@ class Account(ModelSQL, ModelView):
         ], 'Type', required=True)
     root = fields.Many2One('analytic_account.account', 'Root', select=True,
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('parent', '=', None),
             ('type', '=', 'root'),
             ],
@@ -40,15 +41,22 @@ class Account(ModelSQL, ModelView):
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
             },
-        depends=['type'])
+        depends=['company', 'type'])
     parent = fields.Many2One('analytic_account.account', 'Parent', select=True,
-        domain=[('parent', 'child_of', Eval('root'))],
+        domain=['OR',
+            ('root', '=', Eval('root', -1)),
+            ('parent', '=', None),
+            ],
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
             },
         depends=['root', 'type'])
-    childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
+    childs = fields.One2Many('analytic_account.account', 'parent', 'Children',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 1)), depends=['currency_digits']),
         'get_balance')
@@ -312,7 +320,14 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     __name__ = 'analytic.account.entry'
     origin = fields.Reference('Origin', selection='get_origin', select=True)
     root = fields.Many2One('analytic_account.account', 'Root Analytic',
-        domain=[('type', '=', 'root')])
+        domain=[
+            If(~Eval('company'),
+                # No constraint if the origin is not set
+                (),
+                ('company', '=', Eval('company', -1))),
+            ('type', '=', 'root'),
+            ],
+        depends=['company'])
     account = fields.Many2One('analytic_account.account', 'Account',
         ondelete='RESTRICT',
         states={
@@ -322,9 +337,11 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             ('root', '=', Eval('root')),
             ('type', '=', 'normal'),
             ],
-        depends=['root', 'required'])
+        depends=['root', 'required', 'company'])
     required = fields.Function(fields.Boolean('Required'),
         'on_change_with_required')
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'on_change_with_company', searcher='search_company')
 
     @classmethod
     def __register__(cls, module_name):
@@ -387,6 +404,13 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             return self.root.mandatory
         return False
 
+    def on_change_with_company(self, name=None):
+        return None
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return []
+
 
 class AnalyticMixin(ModelSQL):
 
@@ -428,13 +452,21 @@ class AnalyticMixin(ModelSQL):
                         where=entry.selection == selection_id))
             handler.drop_column('analytic_accounts')
 
-    @staticmethod
-    def default_analytic_accounts():
+    @classmethod
+    def analytic_accounts_domain(cls):
+        context = Transaction().context.copy()
+        context['context'] = context
+        return PYSONDecoder(context).decode(
+            PYSONEncoder().encode(cls.analytic_accounts.domain))
+
+    @classmethod
+    def default_analytic_accounts(cls):
         pool = Pool()
         AnalyticAccount = pool.get('analytic_account.account')
 
         accounts = []
-        root_accounts = AnalyticAccount.search([
+        root_accounts = AnalyticAccount.search(
+            cls.analytic_accounts_domain() + [
                 ('parent', '=', None),
                 ])
         for account in root_accounts:
@@ -444,11 +476,14 @@ class AnalyticMixin(ModelSQL):
                     })
         return accounts
 
-    @staticmethod
-    def default_analytic_accounts_size():
+    @classmethod
+    def default_analytic_accounts_size(cls):
         pool = Pool()
         AnalyticAccount = pool.get('analytic_account.account')
-        return len(AnalyticAccount.search([('type', '=', 'root')]))
+        return len(AnalyticAccount.search(
+            cls.analytic_accounts_domain() + [
+                    ('type', '=', 'root'),
+                    ]))
 
     @classmethod
     def get_analytic_accounts_size(cls, records, name):
@@ -465,12 +500,17 @@ class AnalyticMixin(ModelSQL):
         "Check that all mandatory root entries are defined in entries"
         pool = Pool()
         Account = pool.get('analytic_account.account')
-        mandatory_roots = {a for a in Account.search([
+        all_mandatory_roots = {a for a in Account.search([
                 ('type', '=', 'root'),
                 ('mandatory', '=', True),
                 ])}
         for analytic in analytics:
             analytic_roots = {e.root for e in analytic.analytic_accounts}
+            companies = {e.company for e in analytic.analytic_accounts}
+            mandatory_roots = set()
+            for mandatory in all_mandatory_roots:
+                if mandatory.company in companies:
+                    mandatory_roots.add(mandatory)
             if not mandatory_roots <= analytic_roots:
                 cls.raise_user_error('root_account', {
                         'name': analytic.rec_name,

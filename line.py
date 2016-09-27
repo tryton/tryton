@@ -24,7 +24,7 @@ class Line(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'on_change_with_company')
+        'on_change_with_company', searcher='search_company')
     account = fields.Many2One('analytic_account.account', 'Account',
         required=True, select=True, domain=[
             ('type', '!=', 'view'),
@@ -103,6 +103,10 @@ class Line(ModelSQL, ModelView):
     def on_change_with_company(self, name=None):
         if self.move_line:
             return self.move_line.account.company.id
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('move_line.account.company',) + tuple(clause[1:])]
 
     @staticmethod
     def query_get(table):
