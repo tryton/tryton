@@ -4,7 +4,7 @@
 Access Rights
 =============
 
-There are 4 levels of access rights: model, field, button and record.
+There are 5 levels of access rights: model, actions, field, button and record.
 Every access right is based on the groups of the user.
 The model and field access rights are checked for every RPC call for which
 :attr:`trytond.rpc.RPC.check_access` is set. The others are always enforced.
@@ -16,6 +16,14 @@ They are defined by records of `ir.model.access` which define for each couple
 of model and group, the read, write, create and delete permission. If any group
 of the user has the permission activated, then the user is granted this
 permission.
+
+Actions Access
+==============
+
+Each action define a list of groups that are allowed to use it.
+There is a special case for ref:`wizard <topics-wizard>` for which the read
+access on the model is also checked and also the write access if there is no
+groups linked.
 
 Field Access
 ============
