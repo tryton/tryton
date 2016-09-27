@@ -81,7 +81,7 @@ Partially pay the line::
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find()
     >>> payment.amount = Decimal('30.0')
     >>> payment.click('approve')
@@ -127,7 +127,7 @@ Pay the line::
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('50.00')
@@ -291,7 +291,7 @@ Pay the line::
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = euro_payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('40.00')
@@ -329,7 +329,7 @@ Create a processing payment for the move::
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('pay')
+    >>> pay_line.execute('start')
     >>> payment, = Payment.find([('line', '=', line.id)])
     >>> payment.click('approve')
     >>> payment.state
