@@ -179,7 +179,10 @@ class ModelView(Model):
 
         # Update __rpc__
         for field_name, field in cls._fields.iteritems():
-            if isinstance(field, (fields.Selection, fields.Reference)) \
+            if (isinstance(field, (fields.Selection, fields.Reference))
+                    or (isinstance(field, fields.Function)
+                        and isinstance(field._field,
+                            (fields.Selection, fields.Reference)))) \
                     and not isinstance(field.selection, (list, tuple)) \
                     and field.selection not in cls.__rpc__:
                 instantiate = 0 if field.selection_change_with else None
