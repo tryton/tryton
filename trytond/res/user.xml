@@ -106,5 +106,46 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_user_warning"/>
         </record>
 
+        <record model="ir.ui.view" id="user_application_view_form">
+            <field name="model">res.user.application</field>
+            <field name="type">form</field>
+            <field name="name">user_application_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="user_application_view_list">
+            <field name="model">res.user.application</field>
+            <field name="type">tree</field>
+            <field name="name">user_application_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_application">
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_user_application1">
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_application"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_application_admin">
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_user_application_admin1">
+            <field name="domain" eval="[]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_application_admin"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_user_application_admin_admin">
+            <field name="rule_group" ref="rule_group_user_application_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
     </data>
 </tryton>

@@ -6,7 +6,7 @@ import traceback
 
 from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
-from werkzeug.exceptions import abort
+from werkzeug.exceptions import abort, HTTPException
 
 import wrapt
 
@@ -45,6 +45,8 @@ class TrytondWSGI(object):
         try:
             endpoint, request.view_args = adapter.match()
             return endpoint(request, **request.view_args)
+        except HTTPException, e:
+            return e
         except Exception, e:
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
             for path in sys.path:
@@ -65,7 +67,7 @@ class TrytondWSGI(object):
         else:
             request = Request(environ)
         data = self.dispatch_request(request)
-        if not isinstance(data, Response):
+        if not isinstance(data, (Response, HTTPException)):
             for cls in self.protocols:
                 for mimetype in request.accept_mimetypes:
                     if cls.content_type in mimetype:

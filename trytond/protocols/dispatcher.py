@@ -3,13 +3,11 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import pydoc
-from functools import wraps
 
 from werkzeug.utils import redirect
 from werkzeug.exceptions import abort
 from sql import Table
 
-from trytond.pool import Pool
 from trytond import security
 from trytond import backend
 from trytond.config import config
@@ -20,6 +18,7 @@ from trytond.exceptions import (
     UserError, UserWarning, ConcurrencyException, LoginException)
 from trytond.tools import is_instance_method
 from trytond.wsgi import app
+from .wrappers import with_pool
 
 logger = logging.getLogger(__name__)
 
@@ -27,19 +26,6 @@ ir_configuration = Table('ir_configuration')
 ir_lang = Table('ir_lang')
 ir_module = Table('ir_module')
 res_user = Table('res_user')
-
-
-def with_pool(func):
-    @wraps(func)
-    def wrapper(request, database_name, *args, **kwargs):
-        database_list = Pool.database_list()
-        pool = Pool(database_name)
-        if database_name not in database_list:
-            with Transaction().start(
-                    database_name, request.user_id, readonly=True):
-                pool.init()
-        return func(request, pool, *args, **kwargs)
-    return wrapper
 
 
 @app.route('/<string:database_name>/', methods=['POST'])
@@ -51,8 +37,8 @@ def rpc(request, database_name):
         'system.methodHelp': help_method,
         'system.methodSignature': lambda *a: 'signatures not supported',
         }
-    return methods.get(request.method, _dispatch)(
-        request, database_name, *request.params)
+    return methods.get(request.rpc_method, _dispatch)(
+        request, database_name, *request.rpc_params)
 
 
 def login(request, database_name, user, parameters, language=None):
@@ -92,7 +78,7 @@ def root(request, *args):
         'common.server.version': lambda *a: __version__,
         'common.db.list': db_list,
         }
-    return methods[request.method](request, *request.params)
+    return methods[request.rpc_method](request, *request.rpc_params)
 
 
 @app.route('/', methods=['GET'])
@@ -128,7 +114,7 @@ def list_method(request, pool):
 
 
 def get_object_method(request, pool):
-    method = request.method
+    method = request.rpc_method
     type, _ = method.split('.', 1)
     name = '.'.join(method.split('.')[1:-1])
     method = method.split('.')[-1]

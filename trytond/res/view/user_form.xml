@@ -26,6 +26,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups"/>
             <field name="rule_groups"/>
         </page>
+        <page name="applications" col="1">
+            <field name="applications"/>
+        </page>
         <page string="Preferences" col="2" id="preferences">
             <label name="language"/>
             <field name="language" widget="selection"/>

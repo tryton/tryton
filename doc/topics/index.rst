@@ -27,5 +27,6 @@ Introduction to all the key parts of trytond:
     wizard
     reports/index
     rpc
+    user_application
     modules/index
     translation

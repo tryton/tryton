@@ -150,11 +150,11 @@ class XMLRequest(Request):
             raise BadRequest('Not an XML request')
 
     @property
-    def method(self):
+    def rpc_method(self):
         return self.parsed_data[1]
 
     @property
-    def params(self):
+    def rpc_params(self):
         return self.parsed_data[0]
 
 

@@ -10,7 +10,7 @@ import base64
 
 from werkzeug.wrappers import Response
 from werkzeug.utils import cached_property
-from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequest, InternalServerError
 
 from trytond.protocols.wrappers import Request
 from trytond.exceptions import TrytonException
@@ -129,11 +129,11 @@ class JSONRequest(Request):
             raise BadRequest('Not a JSON request')
 
     @cached_property
-    def method(self):
+    def rpc_method(self):
         return self.parsed_data['method']
 
     @cached_property
-    def params(self):
+    def rpc_params(self):
         return self.parsed_data['params']
 
 
@@ -146,16 +146,23 @@ class JSONProtocol:
 
     @classmethod
     def response(cls, data, request):
-        if isinstance(request, JSONRequest):
-            response = {'id': request.parsed_data.get('id', 0)}
+        try:
+            parsed_data = request.parsed_data
+        except BadRequest:
+            parsed_data = {}
+        if (isinstance(request, JSONRequest)
+                and set(parsed_data.keys()) == {'id', 'method', 'params'}):
+            response = {'id': parsed_data.get('id', 0)}
+            if isinstance(data, TrytonException):
+                response['error'] = data.args
+            elif isinstance(data, Exception):
+                # report exception back to server
+                response['error'] = (str(data), data.__format_traceback__)
+            else:
+                response['result'] = data
         else:
-            response = {}
-        if isinstance(data, TrytonException):
-            response['error'] = data.args
-        elif isinstance(data, Exception):
-            # report exception back to server
-            response['error'] = (str(data), data.__format_traceback__)
-        else:
-            response['result'] = data
+            if isinstance(data, Exception):
+                return InternalServerError()
+            response = data
         return Response(json.dumps(response, cls=JSONEncoder),
             content_type='application/json')
