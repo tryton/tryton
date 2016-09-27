@@ -650,6 +650,7 @@
                                     Sao.Session.current_session.context);
                             var func = function(parameters) {
                                 return {
+                                    'id': 0,
                                     'method': 'model.res.user.set_preferences',
                                     'params': [values, parameters, context]
                                 };

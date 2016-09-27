@@ -18,6 +18,7 @@
             },
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
+                'id': Sao.rpc.id++,
                 'method': args.method,
                 'params': params
             })),
@@ -83,12 +84,6 @@
                                 'glyphicon-alert').always(dfd.reject);
                         return;
                     }
-                } else if (data.error[0].startsWith('403')) {
-                    //Try to relog
-                    Sao.Session.renew(session).then(function() {
-                        Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
-                    }, dfd.reject);
-                    return;
                 } else {
                     Sao.common.error.run(data.error[0], data.error[1]);
                 }
@@ -99,14 +94,24 @@
         };
 
         var ajax_error = function(query, status_, error) {
-            Sao.common.error.run(status_, error);
-            dfd.reject();
+            if (status_ == 403) {
+                //Try to relog
+                Sao.Session.renew(session).then(function() {
+                    Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
+                }, dfd.reject);
+                return;
+            } else {
+                Sao.common.error.run(status_, error);
+                dfd.reject();
+            }
         };
         ajax_prm.success(ajax_success);
         ajax_prm.error(ajax_error);
 
         return dfd.promise();
     };
+
+    Sao.rpc.id = 0;
 
     Sao.rpc.convertJSONObject = function(value, index, parent) {
        if (value instanceof Array) {

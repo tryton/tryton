@@ -42,6 +42,7 @@
                 return jQuery.when();
             }
             var args = {
+                'id': 0,
                 'method': 'common.db.logout',
                 'params': []
             };
@@ -214,9 +215,11 @@
             }
             var dfd = jQuery.Deferred();
             var timeoutID = Sao.common.processing.show();
+            var data = this.func(parameters);
+            data.id = 0;
             var args = {
                 'contentType': 'application/json',
-                'data': JSON.stringify(this.func(parameters)),
+                'data': JSON.stringify(data),
                 'dataType': 'json',
                 'url': '/' + this.session.database + '/',
                 'type': 'post',
@@ -278,6 +281,7 @@
         return jQuery.ajax({
             'contentType': 'application/json',
             'data': JSON.stringify({
+                'id': 0,
                 'method': 'common.db.list',
                 'params': []
             }),
