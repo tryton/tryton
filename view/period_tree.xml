@@ -4,7 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="company"/>
     <field name="name"/>
-    <field name="code"/>
     <field name="type"/>
     <field name="state"/>
 </tree>

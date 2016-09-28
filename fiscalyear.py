@@ -23,7 +23,6 @@ class FiscalYear(ModelSQL, ModelView):
     'Fiscal Year'
     __name__ = 'account.fiscalyear'
     name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
-    code = fields.Char('Code', size=None)
     start_date = fields.Date('Starting Date', required=True, states=STATES,
         domain=[('start_date', '<=', Eval('end_date', None))],
         depends=DEPENDS + ['end_date'])
@@ -317,17 +316,6 @@ class FiscalYear(ModelSQL, ModelView):
             cls.write([fiscalyear], {
                 'state': 'open',
                 })
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        return [bool_op,
-            ('code',) + tuple(clause[1:]),
-            (cls._rec_name,) + tuple(clause[1:]),
-            ]
 
 
 class BalanceNonDeferralStart(ModelView):

@@ -3,9 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
-    <field name="name"/>
-    <label name="code"/>
-    <field name="code"/>
+    <field name="name" colspan="3"/>
     <label name="start_date"/>
     <field name="start_date"/>
     <label name="end_date"/>

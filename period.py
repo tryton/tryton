@@ -20,7 +20,6 @@ class Period(ModelSQL, ModelView):
     'Period'
     __name__ = 'account.period'
     name = fields.Char('Name', required=True)
-    code = fields.Char('Code')
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
         domain=[('start_date', '<=', Eval('end_date', None))],
         depends=_DEPENDS + ['end_date'], select=True)
@@ -323,17 +322,6 @@ class Period(ModelSQL, ModelView):
     @property
     def post_move_sequence_used(self):
         return self.post_move_sequence or self.fiscalyear.post_move_sequence
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        return [bool_op,
-            ('code',) + tuple(clause[1:]),
-            (cls._rec_name,) + tuple(clause[1:]),
-            ]
 
 
 class ClosePeriod(Wizard):
