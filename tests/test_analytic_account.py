@@ -134,6 +134,83 @@ class AnalyticAccountTestCase(ModuleTestCase):
                     (Decimal(30), Decimal(100)))
                 self.assertEqual(analytic_account.balance, Decimal(70))
 
+    @with_transaction()
+    def test_move_line_state(self):
+        "Test move line state"
+        pool = Pool()
+        Party = pool.get('party.party')
+        AnalyticAccount = pool.get('analytic_account.account')
+        AnalyticLine = pool.get('analytic_account.line')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
+
+        party = Party(name='Party')
+        party.save()
+        company = create_company()
+        with set_company(company):
+            root, = AnalyticAccount.create([{
+                        'type': 'root',
+                        'name': 'Root',
+                        }])
+            analytic_account1, analytic_account2 = AnalyticAccount.create([{
+                        'type': 'normal',
+                        'name': 'Analytic Account 1',
+                        'parent': root.id,
+                        'root': root.id,
+                        }, {
+                        'type': 'normal',
+                        'name': 'Analytic Account 2',
+                        'parent': root.id,
+                        'root': root.id,
+                        }])
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            fiscalyear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            journal_expense, = Journal.search([
+                    ('code', '=', 'EXP'),
+                    ])
+            expense, = Account.search([
+                    ('kind', '=', 'expense'),
+                    ])
+            payable, = Account.search([
+                    ('kind', '=', 'payable'),
+                    ])
+
+            move = Move()
+            move.period = period
+            move.journal = journal_expense
+            move.date = period.start_date
+            move.lines = [
+                MoveLine(account=expense, debit=Decimal(100)),
+                MoveLine(account=payable, credit=Decimal(100), party=party),
+                ]
+            move.save()
+            Move.post([move])
+
+            expense_line, = [l for l in move.lines if l.account == expense]
+            payable_line, = [l for l in move.lines if l.account == payable]
+
+            self.assertEqual(expense_line.analytic_state, 'draft')
+            self.assertEqual(payable_line.analytic_state, 'valid')
+
+            expense_line.analytic_lines = [
+                AnalyticLine(
+                    account=analytic_account1, name='Test',
+                    debit=Decimal(50), journal=journal_expense,
+                    date=period.start_date),
+                AnalyticLine(
+                    account=analytic_account2, name='Test',
+                    debit=Decimal(50), journal=journal_expense,
+                    date=period.start_date),
+                ]
+            expense_line.save()
+
+            self.assertEqual(expense_line.analytic_state, 'valid')
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

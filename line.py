@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from collections import defaultdict
 
 from sql import Literal
 
@@ -120,6 +121,35 @@ class Line(ModelSQL, ModelView):
         return clause
 
     @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        lines = super(Line, cls).create(vlist)
+        move_lines = [l.move_line for l in lines]
+        MoveLine.set_analytic_state(move_lines)
+        MoveLine.save(move_lines)
+        return lines
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        super(Line, cls).write(*args)
+        lines = sum(args[0:None:2], [])
+        move_lines = [l.move_line for l in lines]
+        MoveLine.set_analytic_state(move_lines)
+        MoveLine.save(move_lines)
+
+    @classmethod
+    def delete(cls, lines):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        move_lines = [l.move_line for l in lines]
+        super(Line, cls).delete(lines)
+        MoveLine.set_analytic_state(move_lines)
+        MoveLine.save(move_lines)
+
+    @classmethod
     def validate(cls, lines):
         super(Line, cls).validate(lines)
         for line in lines:
@@ -137,6 +167,16 @@ class Line(ModelSQL, ModelView):
 class Move:
     __metaclass__ = PoolMeta
     __name__ = 'account.move'
+
+    @classmethod
+    @ModelView.button
+    def post(cls, moves):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        super(Move, cls).post(moves)
+        lines = [l for m in moves for l in m.lines]
+        MoveLine.set_analytic_state(lines)
+        MoveLine.save(lines)
 
     def cancel(self, default=None):
         'Reverse credit/debit of analytic lines'
@@ -157,6 +197,76 @@ class MoveLine(ModelSQL, ModelView):
     __name__ = 'account.move.line'
     analytic_lines = fields.One2Many('analytic_account.line', 'move_line',
             'Analytic Lines')
+    analytic_state = fields.Selection([
+            ('draft', 'Draft'),
+            ('valid', 'Valid'),
+            ], 'Analytic State', readonly=True, select=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(MoveLine, cls).__setup__()
+        cls._check_modify_exclude |= {'analytic_lines', 'analytic_state'}
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table = TableHandler(cls, module_name)
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+
+        state_exist = table.column_exist('analytic_state')
+
+        super(MoveLine, cls).__register__(module_name)
+
+        # Migration from 4.0: add analytic_state
+        if not state_exist:
+            cursor.execute(
+                *sql_table.update([sql_table.analytic_state], ['valid']))
+
+    @classmethod
+    def default_analytic_state(cls):
+        return 'draft'
+
+    @classmethod
+    def set_analytic_state(cls, lines):
+        pool = Pool()
+        AccountType = pool.get('account.account.type')
+        AnalyticAccount = pool.get('analytic_account.account')
+
+        income_types = AccountType.search([
+                ('income_statement', '=', True),
+                ])
+        income_types = AccountType.search([
+                ('parent', 'child_of', [t.id for t in income_types]),
+                ])
+        income_types = set(income_types)
+
+        roots = AnalyticAccount.search([
+                ('parent', '=', None),
+                ])
+        roots = set(roots)
+
+        for line in lines:
+            if line.account.type not in income_types:
+                if not line.analytic_lines:
+                    line.analytic_state = 'valid'
+                else:
+                    line.analytic_state = 'draft'
+                continue
+            amounts = defaultdict(Decimal)
+            for analytic_line in line.analytic_lines:
+                amount = analytic_line.debit - analytic_line.credit
+                amounts[analytic_line.account.root] += amount
+            if not roots <= set(amounts.iterkeys()):
+                line.analytic_state = 'draft'
+                continue
+            amount = line.debit - line.credit
+            for analytic_amount in amounts.itervalues():
+                if analytic_amount != amount:
+                    line.analytic_state = 'draft'
+                    break
+            else:
+                line.analytic_state = 'valid'
 
 
 class OpenAccount(Wizard):

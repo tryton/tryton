@@ -86,7 +86,8 @@ class Account(ModelSQL, ModelView):
     mandatory = fields.Boolean('Mandatory', states={
             'invisible': Eval('type') != 'root',
             },
-        depends=['type'])
+        depends=['type'],
+        help="Make this account mandatory when filling documents")
 
     @classmethod
     def __setup__(cls):
