@@ -493,7 +493,9 @@ class Work:
 
         invoiced_progress = sum(x.effort_hours for x in self.invoiced_progress)
         quantity = self.effort_hours * self.progress - invoiced_progress
-        quantity = Uom.compute_qty(hour, quantity, self.product.default_uom)
+        if self.product:
+            quantity = Uom.compute_qty(
+                hour, quantity, self.product.default_uom)
         if quantity > 0:
             if not self.product:
                 self.raise_user_error('missing_product', (self.rec_name,))
