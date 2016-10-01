@@ -1129,6 +1129,9 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
                 periods.append(period)
             if periods:
                 period_ids = [p.id for p in periods]
+            if name.startswith('end_'):
+                # Always include ending period
+                period_ids.append(period.id)
         return period_ids
 
     @classmethod
