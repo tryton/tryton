@@ -44,6 +44,7 @@ class MoveLine:
                 (None, ''),
                 ] + KINDS, 'Payment Kind'), 'get_payment_kind',
         searcher='search_payment_kind')
+    payment_blocked = fields.Boolean('Blocked', readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -52,7 +53,14 @@ class MoveLine:
                 'pay': {
                     'invisible': ~Eval('payment_kind').in_(dict(KINDS).keys()),
                     },
+                'payment_block': {
+                    'invisible': Eval('payment_blocked', False),
+                    },
+                'payment_unblock': {
+                    'invisible': ~Eval('payment_blocked', False),
+                    },
                 })
+        cls._check_modify_exclude.add('payment_blocked')
 
     @classmethod
     def get_payment_amount(cls, lines, name):
@@ -109,6 +117,10 @@ class MoveLine:
         return [('account.kind',) + tuple(clause[1:])]
 
     @classmethod
+    def default_payment_blocked(cls):
+        return False
+
+    @classmethod
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
@@ -121,6 +133,27 @@ class MoveLine:
     @ModelView.button_action('account_payment.act_pay_line')
     def pay(cls, lines):
         pass
+
+    @classmethod
+    @ModelView.button
+    def payment_block(cls, lines):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        cls.write(lines, {
+                'payment_blocked': True,
+                })
+        draft_payments = [p for l in lines for p in l.payments
+            if p.state == 'draft']
+        if draft_payments:
+            Payment.delete(draft_payments)
+
+    @classmethod
+    @ModelView.button
+    def payment_unblock(cls, lines):
+        cls.write(lines, {
+                'payment_blocked': False,
+                })
 
 
 class PayLineAskJournal(ModelView):
@@ -149,6 +182,13 @@ class PayLine(Wizard):
             Button('Pay', 'start', 'tryton-ok', default=True),
             ])
     pay = StateAction('account_payment.act_payment_form')
+
+    @classmethod
+    def __setup__(cls):
+        super(PayLine, cls).__setup__()
+        cls._error_messages.update({
+                'blocked': 'The Line "%(line)s" is blocked.',
+                })
 
     def _get_journals(self):
         journals = {}
@@ -225,6 +265,11 @@ class PayLine(Wizard):
 
         payments = []
         for line in lines:
+            if line.payment_blocked:
+                self.raise_user_warning('blocked:%s' % line,
+                    'blocked', {
+                        'line': line.rec_name,
+                        })
             payments.append(self.get_payment(line, journals))
         Payment.save(payments)
         return action, {

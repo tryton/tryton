@@ -106,3 +106,27 @@ Partially fail to pay the remaining::
     >>> line.reload()
     >>> line.payment_amount
     Decimal('30.00')
+
+Pay line and block it after::
+
+    >>> move, = move.duplicate()
+    >>> move.click('post')
+    >>> line, = [l for l in move.lines if l.account == payable]
+    >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.form.journal = payment_journal
+    >>> pay_line.execute('start')
+    >>> len(line.payments)
+    1
+
+    >>> line.click('payment_block')
+    >>> len(line.payments)
+    0
+
+Try to pay blocked line::
+
+    >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.form.journal = payment_journal
+    >>> pay_line.execute('start')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserWarning: ...
