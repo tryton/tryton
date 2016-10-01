@@ -38,7 +38,7 @@ class ProductAttributeAttributeSet(ModelSQL):
 class Template:
     __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    attribute_set = fields.Many2One('product.attribute.set', 'Set')
+    attribute_set = fields.Many2One('product.attribute.set', 'Attribute Set')
 
 
 class Product:
