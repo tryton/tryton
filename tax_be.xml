@@ -80,7 +80,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_II_44">
-            <field name="name" lang="fr">Services intra-communautaires</field>
+            <field name="name" lang="fr">C. Services pour lesquels la T.V.A. étrangère est due par le cocontractant</field>
             <field name="name" lang="nl">C. Diensten waarvoor de buitenlandse btw verschuldigd is door de medecontractant</field>
             <field name="code">44</field>
             <field name="parent" ref="tax_code_II"/>
@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_II_C_45">
-            <field name="name" lang="fr">C. Opérations pour lesquelles la T.V.A. est due par le cocontractant</field>
+            <field name="name" lang="fr">D. Opérations pour lesquelles la T.V.A. est due par le cocontractant</field>
             <field name="name" lang="nl">D. Handelingen waarvoor de btw verschuldigd is door de medecontractant</field>
             <field name="code">45</field>
             <field name="parent" ref="tax_code_II"/>
@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_II_D_46">
-            <field name="name" lang="fr">D. Livraisons intracommunautaires exemptées effectuées en Belgique et ventes ABC</field>
+            <field name="name" lang="fr">E. Livraisons intracommunautaires exemptées effectuées en Belgique et ventes ABC</field>
             <field name="name" lang="nl">E. Vrijgestelde intracommunautaire leveringen verricht in België en ABC-verkopen</field>
             <field name="code">46</field>
             <field name="parent" ref="tax_code_II"/>
@@ -104,7 +104,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_II_E_47">
-            <field name="name" lang="fr">E. Autres opérations exemptées et opérations effectuées à l'étranger</field>
+            <field name="name" lang="fr">F. Autres opérations exemptées et autres opérations effectuées à l'étranger</field>
             <field name="name" lang="nl">F. Andere vrijgestelde handelingen en andere handelingen verricht in het buitenland</field>
             <field name="code">47</field>
             <field name="parent" ref="tax_code_II"/>
@@ -112,7 +112,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_II_F">
-            <field name="name" lang="fr">F. Montant des notes de crédit délivrées et des corrections négatives</field>
+            <field name="name" lang="fr">G. Montant des notes de crédit délivrées et des corrections négatives</field>
             <field name="name" lang="nl">G. Bedrag van de uitgereikte creditnota's en de negatieve verbeteringen</field>
             <field name="parent" ref="tax_code_II"/>
             <field name="account" ref="root"/>
@@ -180,7 +180,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_III_B_84">
-            <field name="name" lang="fr">- relatif aux opérations inscrites en grille 86</field>
+            <field name="name" lang="fr">- relatif aux opérations inscrites en grille 86 et 88</field>
             <field name="name" lang="nl">- met betrekking tot de handelingen ingeschreven in de roosters 86 en 88</field>
             <field name="code">84</field>
             <field name="parent" ref="tax_code_III_B"/>
@@ -212,8 +212,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template" id="tax_code_III_88">
-            <field name="name" lang="fr">Acquisitions intra-communautaires de services</field>
-            <field name="name" lang="nl">Intracommunautaire diensten met verlegging van heffing</field>
+            <field name="name" lang="fr">E. Services intracommunautaires avec report de perception</field>
+            <field name="name" lang="nl">E. Intracommunautaire diensten met verlegging van heffing</field>
             <field name="code">88</field>
             <field name="parent" ref="tax_code_III"/>
             <field name="account" ref="root"/>
@@ -770,6 +770,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -849,6 +851,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -928,6 +932,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -965,7 +971,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_base_code" ref="tax_code_III_88"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1170,7 +1176,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_base_code" ref="tax_code_III_88"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1249,7 +1257,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_base_code" ref="tax_code_III_88"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1328,7 +1338,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_base_code" ref="tax_code_III_88"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1572,6 +1584,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1651,6 +1665,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
@@ -1730,6 +1746,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
+            <field name="invoice_tax_code" ref="tax_code_IV_A_55"/>
+            <field name="invoice_tax_sign" eval="Decimal('-1')"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="Decimal('1')"/>
             <field name="account" ref="root"/>
