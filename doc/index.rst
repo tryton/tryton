@@ -25,3 +25,8 @@ A timesheet line express the fact that one employee spend a part of
 his/her time on a specific work at a given date. An optional
 Description field allow to give some extra informations about what
 have been done.
+
+.. toctree::
+    :maxdepth: 1
+
+    user_application
