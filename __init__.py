@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from stock import *
 from sale import *
 from purchase import *
+from .party import PartyReplace
 
 
 def register():
@@ -24,4 +25,5 @@ def register():
     Pool.register(
         CreatePurchase,
         PurchaseHandleShipmentException,
+        PartyReplace,
         module='sale_supply_drop_shipment', type_='wizard')
