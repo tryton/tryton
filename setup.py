@@ -115,6 +115,7 @@ setup(name=name,
     extras_require={
         'VAT': ['python-stdnum'],
         },
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
