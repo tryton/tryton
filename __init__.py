@@ -25,6 +25,7 @@ def register():
         module='company', type_='model')
     Pool.register(
         CompanyConfig,
+        PartyReplace,
         module='company', type_='wizard')
     Pool.register(
         LetterReport,

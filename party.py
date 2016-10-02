@@ -3,7 +3,7 @@
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
-__all__ = ['PartyConfiguration']
+__all__ = ['PartyConfiguration', 'PartyReplace']
 
 
 class PartyConfiguration:
@@ -17,4 +17,16 @@ class PartyConfiguration:
         cls.party_sequence.domain = [
             cls.party_sequence.domain,
             ('company', 'in', [Eval('context', {}).get('company'), None]),
+            ]
+
+
+class PartyReplace:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super(PartyReplace, cls).fields_to_replace() + [
+            ('company.company', 'party'),
+            ('company.employee', 'party'),
             ]
