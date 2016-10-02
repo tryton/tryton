@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from .journal import *
 from .statement import *
 from .account import *
+from .party import PartyReplace
 
 
 def register():
@@ -15,6 +16,9 @@ def register():
         LineGroup,
         Move,
         module='account_statement', type_='model')
+    Pool.register(
+        PartyReplace,
+        module='account_statement', type_='wizard')
     Pool.register(
         StatementReport,
         module='account_statement', type_='report')
