@@ -7,6 +7,7 @@ from .product import *
 from .stock import *
 from .configuration import *
 from .invoice import *
+from .party import PartyReplace
 
 
 def register():
@@ -35,6 +36,7 @@ def register():
         HandleShipmentException,
         HandleInvoiceException,
         ReturnSale,
+        PartyReplace,
         module='sale', type_='wizard')
     Pool.register(
         SaleReport,
