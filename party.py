@@ -4,18 +4,19 @@ from itertools import groupby
 
 import stdnum.eu.vat as vat
 import stdnum.exceptions
-from sql import Null
+from sql import Null, Column
 from sql.functions import CharLength
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 
 __all__ = ['Party', 'PartyCategory', 'PartyIdentifier',
-    'CheckVIESResult', 'CheckVIES']
+    'CheckVIESResult', 'CheckVIES',
+    'PartyReplace', 'PartyReplaceAsk']
 
 VAT_COUNTRIES = [('', '')]
 STATES = {
@@ -48,7 +49,14 @@ class Party(ModelSQL, ModelView):
         'Contact Mechanisms', states=STATES, depends=DEPENDS)
     categories = fields.Many2Many('party.party-party.category',
         'party', 'category', 'Categories', states=STATES, depends=DEPENDS)
-    active = fields.Boolean('Active', select=True)
+    active = fields.Boolean('Active', select=True, states={
+            'readonly': Bool(Eval('replaced_by')),
+            },
+        depends=['replaced_by'])
+    replaced_by = fields.Many2One('party.party', "Replaced By", readonly=True,
+        states={
+            'invisible': ~Eval('replaced_by'),
+            })
     full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
     phone = fields.Function(fields.Char('Phone'), 'get_mechanism')
     mobile = fields.Function(fields.Char('Mobile'), 'get_mechanism')
@@ -388,3 +396,115 @@ class CheckVIES(Wizard):
             'parties_succeed': [p.id for p in self.result.parties_succeed],
             'parties_failed': [p.id for p in self.result.parties_failed],
             }
+
+
+class PartyReplace(Wizard):
+    "Replace Party"
+    __name__ = 'party.replace'
+    start_state = 'ask'
+    ask = StateView('party.replace.ask', 'party.replace_ask_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Replace", 'replace', 'tryton-find-replace', default=True),
+            ])
+    replace = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyReplace, cls).__setup__()
+        cls._error_messages.update({
+                'different_name': ("Parties have different names: "
+                    "%(source_name)s vs %(destination_name)s."),
+                'different_vat_code': ("Parties have different VAT Code: "
+                    "%(source_code)s vs %(destination_code)s."),
+                })
+
+    def check_similarity(self):
+        source = self.ask.source
+        destination = self.ask.destination
+        if source.name != destination.name:
+            key = 'party.replace name %s %s' % (source.id, destination.id)
+            self.raise_user_warning(key, 'different_name', {
+                    'source_name': source.name,
+                    'destination_name': destination.name,
+                    })
+        if source.vat_code != destination.vat_code:
+            key = 'party.replace vat_code %s %s' % (source.id, destination.id)
+            self.raise_user_warning(key, 'different_vat_code', {
+                    'source_code': source.vat_code,
+                    'destination_code': destination.vat_code,
+                    })
+
+    def transition_replace(self):
+        pool = Pool()
+        Address = pool.get('party.address')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        transaction = Transaction()
+
+        self.check_similarity()
+        source = self.ask.source
+        destination = self.ask.destination
+
+        Address.write(list(source.addresses), {
+                'active': False,
+                })
+        ContactMechanism.write(list(source.contact_mechanisms), {
+                'active': False,
+                })
+        source.replaced_by = destination
+        source.active = False
+        source.save()
+
+        cursor = transaction.connection.cursor()
+        for model_name, field_name in self.fields_to_replace():
+            Model = pool.get(model_name)
+            table = Model.__table__()
+            column = Column(table, field_name)
+            where = column == source.id
+
+            if transaction.database.has_returning():
+                returning = [table.id]
+            else:
+                cursor.execute(*table.select(table.id, where=where))
+                ids = [x[0] for x in cursor]
+                returning = None
+
+            cursor.execute(*table.update(
+                    [column],
+                    [destination.id],
+                    where=where,
+                    returning=returning))
+
+            if transaction.database.has_returning():
+                ids = [x[0] for x in cursor]
+
+            Model._insert_history(ids)
+        return 'end'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return [
+            ('party.address', 'party'),
+            ('party.contact_mechanism', 'party'),
+            ]
+
+
+class PartyReplaceAsk(ModelView):
+    "Replace Party"
+    __name__ = 'party.replace.ask'
+    source = fields.Many2One('party.party', "Source", required=True)
+    destination = fields.Many2One('party.party', "Destination", required=True,
+        domain=[
+            ('id', '!=', Eval('source', -1)),
+            ],
+        depends=['source'])
+
+    @classmethod
+    def default_source(cls):
+        context = Transaction().context
+        if context.get('active_model') == 'party.party':
+            return context.get('active_id')
+
+    @fields.depends('source')
+    def on_change_source(self):
+        if self.source and self.source.replaced_by:
+            self.destination = self.source.replaced_by

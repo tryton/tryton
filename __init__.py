@@ -16,6 +16,7 @@ def register():
         PartyCategory,
         PartyIdentifier,
         CheckVIESResult,
+        PartyReplaceAsk,
         Address,
         AddressFormat,
         ContactMechanism,
@@ -23,4 +24,5 @@ def register():
         module='party', type_='model')
     Pool.register(
         CheckVIES,
+        PartyReplace,
         module='party', type_='wizard')

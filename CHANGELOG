@@ -1,3 +1,4 @@
+* Add Replace Party wizard
 * Remove streetbis from Address
 * Add address format per country and language
 * Restrict subdivision address to first level

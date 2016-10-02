@@ -11,6 +11,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="active" xexpand="0" width="25"/>
         <!-- Add here some checkboxes ! -->
     </group>
+    <label name="replaced_by"/>
+    <field name="replaced_by"/>
     <notebook colspan="6">
         <page string="General" id="general">
             <field name="addresses" mode="form,tree" colspan="4"

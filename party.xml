@@ -133,5 +133,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">check_vies_result</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_replace">
+            <field name="name">Replace</field>
+            <field name="wiz_name">party.replace</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_replace-group_party_admin">
+            <field name="action" ref="wizard_replace"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_replace_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="wizard_replace"/>
+        </record>
+
+        <record model="ir.ui.view" id="replace_ask_view_form">
+            <field name="model">party.replace.ask</field>
+            <field name="type">form</field>
+            <field name="name">replace_ask_form</field>
+        </record>
     </data>
 </tryton>
