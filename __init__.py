@@ -100,6 +100,7 @@ def register():
         CreateMove,
         OpenChartTaxCode,
         OpenTaxCode,
+        PartyReplace,
         module='account', type_='wizard')
     Pool.register(
         GeneralLedger,

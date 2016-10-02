@@ -12,7 +12,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
 
-__all__ = ['Party']
+__all__ = ['Party', 'PartyReplace']
 
 
 class Party:
@@ -165,3 +165,14 @@ class Party:
                     group_by=line.party,
                     having=Operator(amount, value))
         return [('id', 'in', query)]
+
+
+class PartyReplace:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super(PartyReplace, cls).fields_to_replace() + [
+            ('account.move.line', 'party'),
+            ]
