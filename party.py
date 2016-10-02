@@ -3,7 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Address', 'Party']
+__all__ = ['Address', 'Party', 'PartyReplace']
 
 
 class Address:
@@ -35,3 +35,15 @@ class Party(ModelSQL, ModelView):
                     })
 
         super(Party, cls).__register__(module_name)
+
+
+class PartyReplace:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super(PartyReplace, cls).fields_to_replace() + [
+            ('account.invoice', 'party'),
+            ('account.invoice.line', 'party'),
+            ]
