@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .purchase_request import *
 from .purchase import *
+from .party import PartyReplace
 
 
 def register():
@@ -16,4 +17,5 @@ def register():
     Pool.register(
         CreatePurchase,
         HandlePurchaseCancellationException,
+        PartyReplace,
         module='purchase_request', type_='wizard')
