@@ -9,6 +9,7 @@ from .move import *
 from .product import *
 from .inventory import *
 from .configuration import *
+from .party import PartyReplace
 
 
 def register():
@@ -43,6 +44,7 @@ def register():
         AssignShipmentInternal,
         AssignShipmentInReturn,
         RecomputeCostPrice,
+        PartyReplace,
         module='stock', type_='wizard')
     Pool.register(
         DeliveryNote,
