@@ -30,3 +30,6 @@ def register():
         Company,
         Employee,
         module='sale_opportunity', type_='model')
+    Pool.register(
+        PartyReplace,
+        module='sale_opportunity', type_='wizard')
