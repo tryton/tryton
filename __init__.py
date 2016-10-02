@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from .carrier import *
+from .party import PartyReplace
 
 
 def register():
@@ -10,3 +11,6 @@ def register():
         Carrier,
         CarrierSelection,
         module='carrier', type_='model')
+    Pool.register(
+        PartyReplace,
+        module='carrier', type_='wizard')
