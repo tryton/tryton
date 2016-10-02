@@ -8,7 +8,9 @@ include setup-single.nsi
 include setup-bundle.sh
 include tryton.desktop
 include *.nsh
-include Microsoft.VC90.CRT.manifest
+include setup-freeze.py
+include make-*-installer.sh
+include */gtk-2.0/*
 include doc/*
 recursive-include doc *.rst
 recursive-include doc *.po

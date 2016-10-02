@@ -165,15 +165,9 @@ class ConfigManager(object):
 CONFIG = ConfigManager()
 CURRENT_DIR = unicode(os.path.dirname(__file__),
     sys.getfilesystemencoding())
-if (os.name == 'nt' and hasattr(sys, 'frozen')
-        and os.path.basename(sys.executable) == 'tryton.exe'):
+if hasattr(sys, 'frozen'):
     CURRENT_DIR = os.path.dirname(unicode(sys.executable,
         sys.getfilesystemencoding()))
-elif (os.name == 'mac'
-        or (hasattr(os, 'uname') and os.uname()[0] == 'Darwin')):
-    resources = os.path.join(os.path.dirname(sys.argv[0]), '..', 'Resources')
-    if os.path.isdir(resources):
-        CURRENT_DIR = resources
 
 PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'data', 'pixmaps', 'tryton')
 if not os.path.isdir(PIXMAPS_DIR):

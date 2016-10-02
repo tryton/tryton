@@ -9,33 +9,21 @@ try:
 except NameError:
     pass
 
-# True only if running as a py2exe app
-if os.name == 'nt' and hasattr(sys, "frozen"):
+if hasattr(sys, 'frozen'):
     if not ('-v' in sys.argv or '--verbose' in sys.argv or
             '-l' in sys.argv or '--log-level' in sys.argv):
         sys.stdout = open(os.devnull, 'w')
         sys.stderr = open(os.devnull, 'w')
-    etc = os.path.join(os.path.dirname(sys.executable), 'etc')
+    prefix = os.path.dirname(sys.executable)
+    os.environ['GTK_EXE_PREFIX'] = prefix
+    os.environ['GTK_DATA_PREFIX'] = prefix
+    etc = os.path.join(prefix, 'etc')
     os.environ['GTK2_RC_FILES'] = os.path.join(etc, 'gtk-2.0', 'gtkrc')
-    os.environ['GDK_PIXBUF_MODULE_FILE'] = os.path.join(etc, 'gtk-2.0',
-        'gdk-pixbuf.loaders')
-    os.environ['GTK_IM_MODULE_FILE'] = os.path.join(etc, 'gtk-2.0',
-        'gtk.immodules')
+    os.environ['GDK_PIXBUF_MODULE_FILE'] = os.path.join(
+            etc, 'gtk-2.0', 'gdk-pixbuf.loaders')
+    os.environ['GTK_IM_MODULE_FILE'] = os.path.join(
+            etc, 'gtk-2.0', 'gtk.immodules')
 
-if os.name == 'mac' or \
-        (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
-    resources = os.path.join(os.path.dirname(sys.argv[0]), '..', 'Resources')
-    gtkrc = os.path.join(resources, 'gtkrc')
-    pixbuf_loader = os.path.join(resources, 'gdk-pixbuf.loaders')
-    pangorc = os.path.join(resources, 'pangorc')
-    immodules = os.path.join(resources, 'gtk.immodules')
-    if os.path.isdir(resources):
-        os.environ['GTK2_RC_FILES'] = gtkrc
-        os.environ['GTK_EXE_PREFIX'] = resources
-        os.environ['GTK_DATA_PREFIX'] = resources
-        os.environ['GDK_PIXBUF_MODULE_FILE'] = pixbuf_loader
-        os.environ['PANGO_RC_FILE'] = pangorc
-        os.environ['GTK_IM_MODULE_FILE'] = immodules
 
 # Disable dbusmenu to show second menu in tabs
 os.environ['UBUNTU_MENUPROXY'] = '0'

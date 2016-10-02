@@ -17,6 +17,11 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
+try:
+    # Import earlier otherwise there is a segmentation fault on MSYS2
+    import goocalendar
+except ImportError:
+    pass
 gobject.threads_init()
 from urlparse import urlparse
 import threading

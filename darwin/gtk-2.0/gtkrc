@@ -1,0 +1,2 @@
+include "../../share/themes/Clearlooks/gtk-2.0/gtkrc"
+include "../../share/themes/Mac/gtk-2.0-key/gtkrc"
