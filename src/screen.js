@@ -305,13 +305,18 @@
             }
             var counter = this.tab_counter[idx];
             counter.data('toggle', 'tooltip');
-            counter.attr('title', count);
-            counter.tooltip();
-            var text = count;
-            if (count > 99) {
-                text = '99+';
+            if (count === null) {
+                counter.attr('title', '');
+                counter.text('');
+            } else {
+                counter.attr('title', count);
+                var text = count;
+                if (count > 99) {
+                    text = '99+';
+                }
+                counter.text(text);
             }
-            counter.text(text);
+            counter.tooltip();
         },
         do_search: function() {
             return this.screen.search_filter(this.get_text());
@@ -800,31 +805,7 @@
                         this.context_screen.get_on_change_value());
             }
 
-            var domain = [];
-            var domain_parser = this.domain_parser();
-
-            if (domain_parser && !this.group.parent) {
-                if (search_string || search_string === '') {
-                    domain = domain_parser.parse(search_string);
-                } else {
-                    domain = this.attributes.search_value;
-                }
-                this.screen_container.set_text(
-                        domain_parser.string(domain));
-            } else {
-                domain = [['id', 'in', this.group.map(function(r) {
-                    return r.id;
-                })]];
-            }
-
-            if (!jQuery.isEmptyObject(domain)) {
-                if (!jQuery.isEmptyObject(this.attributes.domain)) {
-                    domain = ['AND', domain, this.attributes.domain];
-                }
-            } else {
-                domain = this.attributes.domain || [];
-            }
-
+            var domain = this.search_domain(search_string, true);
             var tab_domain = this.screen_container.get_tab_domain();
             if (!jQuery.isEmptyObject(tab_domain)) {
                 domain = ['AND', domain, tab_domain];
@@ -848,12 +829,46 @@
                             count > this.limit + this.offset));
             }.bind(this));
             this.screen_container.but_prev.prop('disabled', this.offset <= 0);
+            this.count_tab_domain();
             return grp_prm;
         },
+        search_domain: function(search_string, set_text) {
+            set_text = set_text || false;
+            var domain = [];
+            var domain_parser = this.domain_parser();
+
+            if (domain_parser && !this.group.parent) {
+                if (search_string || search_string === '') {
+                    domain = domain_parser.parse(search_string);
+                } else {
+                    domain = this.attributes.search_value;
+                }
+                if (set_text) {
+                    this.screen_container.set_text(
+                            domain_parser.string(domain));
+                }
+            } else {
+                domain = [['id', 'in', this.group.map(function(r) {
+                    return r.id;
+                })]];
+            }
+
+            if (!jQuery.isEmptyObject(domain)) {
+                if (!jQuery.isEmptyObject(this.attributes.domain)) {
+                    domain = ['AND', domain, this.attributes.domain];
+                }
+            } else {
+                domain = this.attributes.domain || [];
+            }
+            return domain;
+        },
         count_tab_domain: function() {
+            var screen_domain = this.search_domain(
+                this.screen_container.get_text());
             this.screen_container.tab_domain.forEach(function(tab_domain, i) {
                 if (tab_domain[2]) {
-                    var domain = ['AND', tab_domain[1], this.attributes.domain];
+                    var domain = ['AND', tab_domain[1], screen_domain];
+                    this.screen_container.set_tab_counter(null, i);
                     this.group.model.execute('search_count', [domain], this.context)
                         .then(function(count) {
                             this.screen_container.set_tab_counter(count, i);
