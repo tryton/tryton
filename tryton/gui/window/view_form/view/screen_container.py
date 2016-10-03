@@ -410,12 +410,16 @@ class ScreenContainer(object):
             return
         label = self.tab_counter[idx]
         tooltip = common.Tooltips()
-        tooltip.set_tip(label, '%d' % count)
-        fmt = '(%d)'
-        if count > 99:
-            fmt = '(%d+)'
-            count = 99
-        label.set_label(fmt % count)
+        if count is None:
+            label.set_label('')
+            tooltip.set_tip(label, '')
+        else:
+            tooltip.set_tip(label, '%d' % count)
+            fmt = '(%d)'
+            if count > 99:
+                fmt = '(%d+)'
+                count = 99
+            label.set_label(fmt % count)
 
     def match_selected(self, completion, model, iter):
         def callback():

@@ -254,29 +254,7 @@ class Screen(SignalEvent):
             context.update(self.context_screen.get_on_change_value())
             self.new_group(context)
 
-        domain = []
-
-        if self.domain_parser and not self.parent:
-            if search_string is not None:
-                domain = self.domain_parser.parse(search_string)
-            else:
-                domain = self.search_value
-            self.screen_container.set_text(self.domain_parser.string(domain))
-        else:
-            domain = [('id', 'in', [x.id for x in self.group])]
-
-        if domain:
-            if self.domain:
-                domain = ['AND', domain, self.domain]
-        else:
-            domain = self.domain
-
-        if self.current_view.view_type == 'calendar':
-            if domain:
-                domain = ['AND', domain, self.current_view.current_domain()]
-            else:
-                domain = self.current_view.current_domain()
-
+        domain = self.search_domain(search_string, True)
         tab_domain = self.screen_container.get_tab_domain()
         if tab_domain:
             domain = ['AND', domain, tab_domain]
@@ -305,16 +283,45 @@ class Screen(SignalEvent):
             return ids
         self.clear()
         self.load(ids)
+        self.count_tab_domain()
         return bool(ids)
+
+    def search_domain(self, search_string=None, set_text=False):
+        domain = []
+        if self.domain_parser and not self.parent:
+            if search_string is not None:
+                domain = self.domain_parser.parse(search_string)
+            else:
+                domain = self.search_value
+            if set_text:
+                self.screen_container.set_text(
+                    self.domain_parser.string(domain))
+        else:
+            domain = [('id', 'in', [x.id for x in self.group])]
+
+        if domain:
+            if self.domain:
+                domain = ['AND', domain, self.domain]
+        else:
+            domain = self.domain
+
+        if self.current_view and self.current_view.view_type == 'calendar':
+            if domain:
+                domain = ['AND', domain, self.current_view.current_domain()]
+            else:
+                domain = self.current_view.current_domain()
+        return domain
 
     def count_tab_domain(self):
         def set_tab_counter(count, idx):
             self.screen_container.set_tab_counter(count(), idx)
+        screen_domain = self.search_domain(self.screen_container.get_text())
         for idx, (name, domain, count) in enumerate(
                 self.screen_container.tab_domain):
             if not count:
                 continue
-            domain = ['AND', domain, self.domain]
+            domain = ['AND', domain, screen_domain]
+            set_tab_counter(lambda: None, idx)
             RPCExecute('model', self.model_name,
                 'search_count', domain, context=self.context,
                 callback=functools.partial(set_tab_counter, idx=idx))
