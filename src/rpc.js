@@ -94,7 +94,7 @@
         };
 
         var ajax_error = function(query, status_, error) {
-            if (status_ == 403) {
+            if (query.status == 403) {
                 //Try to relog
                 Sao.Session.renew(session).then(function() {
                     Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
