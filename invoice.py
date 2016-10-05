@@ -35,27 +35,15 @@ class InvoiceLine(AnalyticMixin):
             line.analytic_accounts = new_entries
         return line
 
-    def get_analytic_entry(self, entry, line):
-        pool = Pool()
-        AnalyticLine = pool.get('analytic_account.line')
-
-        analytic_line = AnalyticLine()
-        analytic_line.debit = line.debit
-        analytic_line.credit = line.credit
-        analytic_line.account = entry.account
-        analytic_line.date = (self.invoice.accounting_date
-            or self.invoice.invoice_date)
-        return analytic_line
-
     def get_move_lines(self):
         lines = super(InvoiceLine, self).get_move_lines()
         if self.analytic_accounts:
+            date = self.invoice.accounting_date or self.invoice.invoice_date
             for line in lines:
                 analytic_lines = []
                 for entry in self.analytic_accounts:
-                    if not entry.account:
-                        continue
-                    analytic_lines.append(self.get_analytic_entry(entry, line))
+                    analytic_lines.extend(
+                        entry.get_analytic_lines(line, date))
                 line.analytic_lines = analytic_lines
         return lines
 
