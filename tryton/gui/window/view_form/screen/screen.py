@@ -288,7 +288,8 @@ class Screen(SignalEvent):
 
     def search_domain(self, search_string=None, set_text=False):
         domain = []
-        if self.domain_parser and not self.parent:
+        # Test first parent to avoid calling unnecessary domain_parser
+        if not self.parent and self.domain_parser:
             if search_string is not None:
                 domain = self.domain_parser.parse(search_string)
             else:

@@ -347,24 +347,25 @@ class ScreenContainer(object):
         self.do_search()
 
     def bookmark_match(self):
-        current_text = self.get_text()
-        current_domain = self.screen.domain_parser.parse(current_text)
-        self.search_entry.set_icon_activatable(gtk.ENTRY_ICON_SECONDARY,
-            bool(current_text))
-        self.search_entry.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY,
-            bool(current_text))
         icon_stock = self.search_entry.get_icon_stock(gtk.ENTRY_ICON_SECONDARY)
-        for id_, name, domain in self.bookmarks():
-            text = self.screen.domain_parser.string(domain)
-            domain = self.screen.domain_parser.parse(text.decode('utf-8'))
-            if (text == current_text
-                    or domain == current_domain):
-                if icon_stock != 'tryton-star':
-                    self.search_entry.set_icon_from_stock(
-                        gtk.ENTRY_ICON_SECONDARY, 'tryton-star')
-                self.search_entry.set_icon_tooltip_text(
-                    gtk.ENTRY_ICON_SECONDARY, _('Remove this bookmark'))
-                return id_
+        current_text = self.get_text()
+        if current_text:
+            current_domain = self.screen.domain_parser.parse(current_text)
+            self.search_entry.set_icon_activatable(gtk.ENTRY_ICON_SECONDARY,
+                bool(current_text))
+            self.search_entry.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY,
+                bool(current_text))
+            for id_, name, domain in self.bookmarks():
+                text = self.screen.domain_parser.string(domain)
+                domain = self.screen.domain_parser.parse(text.decode('utf-8'))
+                if (text == current_text
+                        or domain == current_domain):
+                    if icon_stock != 'tryton-star':
+                        self.search_entry.set_icon_from_stock(
+                            gtk.ENTRY_ICON_SECONDARY, 'tryton-star')
+                    self.search_entry.set_icon_tooltip_text(
+                        gtk.ENTRY_ICON_SECONDARY, _('Remove this bookmark'))
+                    return id_
         if icon_stock != 'tryton-unstar':
             self.search_entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
                 'tryton-unstar')
