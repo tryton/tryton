@@ -117,11 +117,7 @@ class Party(ModelSQL, ModelView):
     def default_addresses():
         if Transaction().user == 0:
             return []
-        Address = Pool().get('party.address')
-        fields_names = list(x for x in Address._fields.keys()
-            if x not in ('id', 'create_uid', 'create_date',
-                'write_uid', 'write_date'))
-        return [Address.default_get(fields_names)]
+        return [{}]
 
     @staticmethod
     def default_code_readonly():
