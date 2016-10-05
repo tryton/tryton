@@ -14,7 +14,8 @@ from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['Account', 'OpenChartAccountStart', 'OpenChartAccount',
+__all__ = ['Account', 'AccountDistribution',
+    'OpenChartAccountStart', 'OpenChartAccount',
     'AnalyticAccountEntry', 'AnalyticMixin']
 
 
@@ -34,6 +35,7 @@ class Account(ModelSQL, ModelView):
         ('root', 'Root'),
         ('view', 'View'),
         ('normal', 'Normal'),
+        ('distribution', 'Distribution'),
         ], 'Type', required=True)
     root = fields.Many2One('analytic_account.account', 'Root', select=True,
         domain=[
@@ -88,12 +90,28 @@ class Account(ModelSQL, ModelView):
             },
         depends=['type'],
         help="Make this account mandatory when filling documents")
+    distributions = fields.One2Many(
+        'analytic_account.account.distribution', 'parent',
+        "Distributions",
+        states={
+            'invisible': Eval('type') != 'distribution',
+            'required': Eval('type') == 'distribution',
+            },
+        depends=['type'])
+    distribution_parents = fields.Many2Many(
+        'analytic_account.account.distribution', 'account', 'parent',
+        "Distribution Parents", readonly=True)
 
     @classmethod
     def __setup__(cls):
         super(Account, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
+        cls._error_messages.update({
+                'invalid_distribution': (
+                    'The distribution sum of account "%(account)" '
+                    'is not 100%.'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -132,6 +150,17 @@ class Account(ModelSQL, ModelView):
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
         cls.check_recursion(accounts)
+        cls.check_recursion(accounts, parent='distribution_parents')
+        for account in accounts:
+            account.check_distribution()
+
+    def check_distribution(self):
+        if self.type != 'distribution':
+            return
+        if sum((d.ratio for d in self.distributions)) != 1:
+            self.raise_user_error('invalid_distribution', {
+                    'account': self.rec_name,
+                    })
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
@@ -269,6 +298,30 @@ class Account(ModelSQL, ModelView):
         else:
             return [(cls._rec_name,) + tuple(clause[1:])]
 
+    def distribute(self, amount):
+        "Return a list of (account, amount) distribution"
+        assert self.type in {'normal', 'distribution'}
+        if self.type == 'normal':
+            return [(self, amount)]
+        else:
+            result = []
+            remainder = amount
+            for distribution in self.distributions:
+                account = distribution.account
+                ratio = distribution.ratio
+                current_amount = self.currency.round(amount * ratio)
+                remainder -= current_amount
+                result.extend(account.distribute(current_amount))
+            if remainder:
+                i = 0
+                while remainder:
+                    account, amount = result[i]
+                    rounding = self.currency.rounding.copy_sign(remainder)
+                    result[i] = (account, amount - rounding)
+                    remainder -= rounding
+                    i = (i + 1) % len(result)
+            return result
+
 
 class OpenChartAccountStart(ModelView):
     'Open Chart of Accounts'
@@ -298,6 +351,37 @@ class OpenChartAccount(Wizard):
         return 'end'
 
 
+class AccountDistribution(ModelView, ModelSQL):
+    "Analytic Account Distribution"
+    __name__ = 'analytic_account.account.distribution'
+    parent = fields.Many2One(
+        'analytic_account.account', "Parent", required=True, select=True)
+    root = fields.Function(
+        fields.Many2One('analytic_account.account', "Root"),
+        'on_change_with_root')
+    account = fields.Many2One(
+        'analytic_account.account', "Account", required=True,
+        domain=[
+            ('root', '=', Eval('root', -1)),
+            ],
+        depends=['root'])
+    ratio = fields.Numeric("Ratio", required=True,
+        domain=[
+            ('ratio', '>=', 0),
+            ('ratio', '<=', 1),
+            ])
+
+    @classmethod
+    def __setup__(cls):
+        super(AccountDistribution, cls).__setup__()
+        cls._order.insert(0, ('ratio', 'DESC'))
+
+    @fields.depends('parent', '_parent_parent.root')
+    def on_change_with_root(self, name=None):
+        if self.parent:
+            return self.parent.root.id
+
+
 class AnalyticAccountEntry(ModelView, ModelSQL):
     'Analytic Account Entry'
     __name__ = 'analytic.account.entry'
@@ -318,7 +402,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             },
         domain=[
             ('root', '=', Eval('root')),
-            ('type', '=', 'normal'),
+            ('type', 'in', ['normal', 'distribution']),
             ],
         depends=['root', 'required', 'company'])
     required = fields.Function(fields.Boolean('Required'),
@@ -393,6 +477,22 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     @classmethod
     def search_company(cls, name, clause):
         return []
+
+    def get_analytic_lines(self, line, date):
+        "Yield analytic lines for the accounting line and the date"
+        pool = Pool()
+        AnalyticLine = pool.get('analytic_account.line')
+
+        if not self.account:
+            return
+        amount = line.debit or line.credit
+        for account, amount in self.account.distribute(amount):
+            analytic_line = AnalyticLine()
+            analytic_line.debit = amount if line.debit else Decimal(0)
+            analytic_line.credit = amount if line.credit else Decimal(0)
+            analytic_line.account = account
+            analytic_line.date = date
+            yield analytic_line
 
 
 class AnalyticMixin(ModelSQL):

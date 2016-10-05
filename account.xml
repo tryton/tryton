@@ -114,6 +114,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="account_distribution_view_form">
+            <field name="model">analytic_account.account.distribution</field>
+            <field name="type">form</field>
+            <field name="name">account_distribution_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_distribution_view_list">
+            <field name="model">analytic_account.account.distribution</field>
+            <field name="type">tree</field>
+            <field name="name">account_distribution_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_account_distribution">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_distribution_account_admin">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="group" ref="group_analytic_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.ui.view" id="open_chart_start_view_form">
             <field name="model">analytic_account.open_chart.start</field>
             <field name="type">form</field>

@@ -12,6 +12,7 @@ from trytond.pool import Pool
 
 from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.account.tests import create_chart, get_fiscalyear
+from trytond.modules.currency.tests import create_currency
 
 
 class AnalyticAccountTestCase(ModuleTestCase):
@@ -210,6 +211,26 @@ class AnalyticAccountTestCase(ModuleTestCase):
             expense_line.save()
 
             self.assertEqual(expense_line.analytic_state, 'valid')
+
+    @with_transaction()
+    def test_account_distribute(self):
+        "Test account distribute"
+        pool = Pool()
+        Account = pool.get('analytic_account.account')
+        Distribution = pool.get('analytic_account.account.distribution')
+
+        currency = create_currency('usd')
+        account1 = Account(type='normal', currency=currency)
+        account2 = Account(type='normal', currency=currency)
+        account = Account(type='distribution', currency=currency)
+        account.distributions = [
+            Distribution(account=account1, ratio=Decimal('0.7')),
+            Distribution(account=account2, ratio=Decimal('0.3')),
+            ]
+
+        self.assertListEqual(
+            account.distribute(Decimal('100.03')),
+            [(account1, Decimal('70.02')), (account2, Decimal('30.01'))])
 
 
 def suite():

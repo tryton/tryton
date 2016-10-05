@@ -9,6 +9,7 @@ from .line import *
 def register():
     Pool.register(
         Account,
+        AccountDistribution,
         OpenChartAccountStart,
         AnalyticAccountEntry,
         Line,

@@ -27,6 +27,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="childs" colspan="4"
                 view_ids="analytic_account.account_view_list2"/>
         </page>
+        <page name="distributions">
+            <field name="distributions"/>
+        </page>
         <page string="Notes" id="notes">
             <field name="note"/>
         </page>

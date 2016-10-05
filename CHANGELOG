@@ -1,3 +1,5 @@
+* Add get_analytic_lines on AnalyticAccountEntry
+* Add distribution account type
 * Add analytic state on move line
 * Improve account tree creation
 * Remove name, journal, reference, party and active from line
