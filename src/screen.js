@@ -263,19 +263,22 @@
         },
         bookmark_match: function() {
             var current_text = this.get_text();
-            var current_domain = this.screen.domain_parser().parse(current_text);
-            this.but_star.prop('disabled', !current_text);
-            var star = this.get_star();
-            var bookmarks = this.bookmarks();
-            for (var i=0; i < bookmarks.length; i++) {
-                var id = bookmarks[i][0];
-                var name = bookmarks[i][1];
-                var domain = bookmarks[i][2];
-                var text = this.screen.domain_parser().string(domain);
-                if ((text === current_text) ||
-                        (Sao.common.compare(domain, current_domain))) {
-                    this.set_star(true);
-                    return id;
+            if (current_text) {
+                var current_domain = this.screen.domain_parser().parse(
+                        current_text);
+                this.but_star.prop('disabled', !current_text);
+                var star = this.get_star();
+                var bookmarks = this.bookmarks();
+                for (var i=0; i < bookmarks.length; i++) {
+                    var id = bookmarks[i][0];
+                    var name = bookmarks[i][1];
+                    var domain = bookmarks[i][2];
+                    var text = this.screen.domain_parser().string(domain);
+                    if ((text === current_text) ||
+                            (Sao.common.compare(domain, current_domain))) {
+                        this.set_star(true);
+                        return id;
+                    }
                 }
             }
             this.set_star(false);
@@ -835,9 +838,10 @@
         search_domain: function(search_string, set_text) {
             set_text = set_text || false;
             var domain = [];
-            var domain_parser = this.domain_parser();
 
-            if (domain_parser && !this.group.parent) {
+            // Test first parent to avoid calling unnecessary domain_parser
+            if (!this.group.parent && this.domain_parser()) {
+                var domain_parser = this.domain_parser();
                 if (search_string || search_string === '') {
                     domain = domain_parser.parse(search_string);
                 } else {
