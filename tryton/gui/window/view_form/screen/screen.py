@@ -722,7 +722,12 @@ class Screen(SignalEvent):
             return
         if view.view_type == 'form' and self.tree_states_done:
             return
+        if (view.view_type == 'tree'
+                and not view.attributes.get('tree_state', False)):
+            return
         parent = self.parent.id if self.parent else None
+        if parent is not None and parent < 0:
+            return
         expanded_nodes, selected_nodes = [], []
         timestamp = self.parent._timestamp if self.parent else None
         state = self.tree_states[parent][view.children_field]
