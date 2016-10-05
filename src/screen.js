@@ -1651,8 +1651,14 @@
                     !jQuery.isEmptyObject(this.tree_states_done)) {
                 return;
             }
+            if (view.view_type == 'tree' && !view.attributes.tree_state) {
+                return;
+            }
 
             parent_ = this.group.parent ? this.group.parent.id : null;
+            if (parent_ < 0) {
+                return;
+            }
             timestamp = parent ? parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
