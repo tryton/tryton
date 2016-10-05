@@ -115,26 +115,29 @@ class DepositRecall(Wizard):
             if line.account == self.start.account:
                 to_delete.append(line)
         if amount < 0:
-            line = self._get_invoice_line(amount)
-            line.invoice = invoice
-            line.company = invoice.company
+            line = self._get_invoice_line(invoice, amount)
             line.sequence = max(l.sequence for l in invoice.lines)
             line.save()
         if to_delete:
             InvoiceLine.delete(to_delete)
         return 'end'
 
-    def _get_invoice_line(self, amount):
+    def _get_invoice_line(self, invoice, amount):
         pool = Pool()
         Line = pool.get('account.invoice.line')
 
-        return Line(
+        line = Line(
+            invoice=invoice,
+            company=invoice.company,
             type='line',
             quantity=1,
             account=self.start.account,
             unit_price=amount,
             description=self.start.description,
             )
+        # Set taxes
+        line.on_change_account()
+        return line
 
 
 class DepositRecallStart(ModelView):
