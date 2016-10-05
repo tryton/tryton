@@ -66,6 +66,10 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
                 })
 
     @classmethod
+    def default_type(cls):
+        return 'iban'
+
+    @classmethod
     def domain_number(cls, domain, tables):
         table, _ = tables[None]
         name, operator, value = domain
