@@ -1405,7 +1405,7 @@
                 else if (action) {
                     Sao.Action.execute(action, {
                         model: this.model_name,
-                        id: record.id,
+                        id: this.current_record.id,
                         ids: ids
                     }, null, this.context);
                 }
