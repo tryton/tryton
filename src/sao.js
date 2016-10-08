@@ -429,7 +429,8 @@ var Sao = {};
                 var params = {
                     'model': item.model,
                     'res_id': item.record_id,
-                    'mode': ['form', 'tree']
+                    'mode': ['form', 'tree'],
+                    'name': item.model_name
                 };
                 Sao.Tab.create(params);
             }
