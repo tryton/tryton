@@ -282,7 +282,7 @@ class Main(object):
         global_search_completion = gtk.EntryCompletion()
         global_search_completion.set_match_func(lambda *a: True)
         global_search_completion.set_model(gtk.ListStore(
-                gtk.gdk.Pixbuf, str, str, int))
+                gtk.gdk.Pixbuf, str, str, int, str))
         pixbuf_cell = gtk.CellRendererPixbuf()
         global_search_completion.pack_start(pixbuf_cell, False)
         global_search_completion.add_attribute(pixbuf_cell, 'pixbuf', 0)
@@ -295,7 +295,7 @@ class Main(object):
             'gtk-find')
 
         def match_selected(completion, model, iter_):
-            model, record_id = model.get(iter_, 2, 3)
+            model, record_id, model_name = model.get(iter_, 2, 3, 4)
             if model == self.menu_screen.model_name:
                 Action.exec_keyword('tree_open', {
                         'model': model,
@@ -304,7 +304,7 @@ class Main(object):
                         }, context=self.menu_screen.context.copy())
             else:
                 Window.create(False, model, res_id=record_id,
-                    mode=['form', 'tree'])
+                    mode=['form', 'tree'], name=model_name)
             self.global_search_entry.set_text('')
             return True
 
@@ -347,7 +347,7 @@ class Main(object):
                             common.to_xml(model_name),
                             common.to_xml(record_name))
                         pixbuf = None
-                    gmodel.append([pixbuf, text, model, record_id])
+                    gmodel.append([pixbuf, text, model, record_id, model_name])
                 gmodel.search_text = search_text
                 # Force display of popup
                 widget.emit('changed')
