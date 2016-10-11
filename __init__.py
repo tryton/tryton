@@ -6,6 +6,7 @@ from .commission import *
 from .invoice import *
 from .sale import *
 from .product import *
+from . import party
 
 
 def register():
@@ -25,4 +26,5 @@ def register():
         module='commission', type_='model')
     Pool.register(
         CreateInvoice,
+        party.PartyReplace,
         module='commission', type_='wizard')
