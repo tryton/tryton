@@ -4,7 +4,7 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 
 
-__all__ = ['Party']
+__all__ = ['Party', 'PartyReplace']
 
 
 class Party:
@@ -23,4 +23,16 @@ class Party:
         return [bool_op,
             domain,
             ('bank_accounts',) + tuple(clause[1:]),
+            ]
+
+
+class PartyReplace:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super(PartyReplace, cls).fields_to_replace() + [
+            ('bank', 'party'),
+            ('bank.account-party.party', 'owner'),
             ]

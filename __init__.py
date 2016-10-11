@@ -14,3 +14,6 @@ def register():
         BankAccountParty,
         Party,
         module='bank', type_='model')
+    Pool.register(
+        PartyReplace,
+        module='bank', type_='wizard')
