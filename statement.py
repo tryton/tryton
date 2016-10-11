@@ -214,6 +214,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 ('journal', '=', self.journal.id),
                 ], order=[
                 ('date', 'DESC'),
+                ('id', 'DESC'),
                 ], limit=1)
         if not statements:
             return
