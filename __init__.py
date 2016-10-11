@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from .user import *
+from . import party
 
 
 def register():
@@ -12,6 +13,7 @@ def register():
         UserSession,
         module='web_user', type_='model')
     Pool.register(
+        party.PartyReplace,
         module='web_user', type_='wizard')
     Pool.register(
         EmailValidation,
