@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .work import *
 from .timesheet import *
+from . import party
 
 
 def register():
@@ -11,3 +12,6 @@ def register():
         Work,
         TimesheetWork,
         module='project', type_='model')
+    Pool.register(
+        party.PartyReplace,
+        module='project', type_='wizard')
