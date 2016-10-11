@@ -368,6 +368,12 @@ class Mandate(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state').in_(['validated', 'canceled']),
             },
         depends=['state'])
+    sequence_type_rcur = fields.Boolean(
+        "Always use RCUR",
+        states={
+            'invisible': Eval('type') == 'one-off',
+            },
+        depends=['type'])
     scheme = fields.Selection([
             ('CORE', 'Core'),
             ('B2B', 'Business to Business'),
@@ -436,6 +442,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'recurrent'
+
+    @classmethod
+    def default_sequence_type_rcur(cls):
+        return False
 
     @staticmethod
     def default_scheme():
@@ -510,7 +520,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def sequence_type(self):
         if self.type == 'one-off':
             return 'OOFF'
-        elif (not self.payments
+        elif not self.sequence_type_rcur and (not self.payments
                 or all(not p.sepa_mandate_sequence_type for p in self.payments)
                 or all(p.rejected for p in self.payments)):
             return 'FRST'

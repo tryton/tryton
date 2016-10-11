@@ -78,6 +78,7 @@ def setup_mandate(company, customer, account):
                 'account_number': account.numbers[0],
                 'identification': 'MANDATE',
                 'type': 'recurrent',
+                'sequence_type_rcur': False,
                 'signature_date': Date.today(),
                 'state': 'validated',
                 }])[0]
@@ -291,9 +292,14 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
         with set_company(company):
             company_account, customer_account = setup_accounts(
                 bank, company, customer)
-            setup_mandate(company, customer, customer_account)
+            mandate = setup_mandate(company, customer, customer_account)
             journal = setup_journal('pain.008.001.02', 'receivable',
                 company, company_account)
+
+            self.assertEqual(mandate.sequence_type, 'FRST')
+            mandate.sequence_type_rcur = True
+            self.assertEqual(mandate.sequence_type, 'RCUR')
+            mandate.sequence_type_rcur = False
 
             payment, = Payment.create([{
                         'company': company,
