@@ -3,7 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='invoice']" position="after">
+        <newline/>
         <label name="payment"/>
         <field name="payment"/>
+        <label name="payment_group"/>
+        <field name="payment_group"/>
     </xpath>
 </data>

@@ -4,5 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='invoice']" position="after">
         <field name="payment"/>
+        <field name="payment_group"/>
     </xpath>
 </data>

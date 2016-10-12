@@ -21,12 +21,27 @@ class Statement:
         moves = super(Statement, cls).create_move(statements)
 
         to_success = []
+        to_fail = []
         for move, statement, lines in moves:
             for line in lines:
                 if line.payment:
-                    to_success.append(line.payment)
+                    payments = [line.payment]
+                    kind = line.payment.kind
+                elif line.payment_group:
+                    payments = line.payment_group.payments
+                    kind = line.payment_group.kind
+                else:
+                    continue
+                if (kind == 'receivable') == (line.amount >= 0):
+                    to_success.extend(payments)
+                else:
+                    to_fail.extend(payments)
+        # The failing should be done last because success is usually not a
+        # definitive state
         if to_success:
             Payment.succeed(to_success)
+        if to_fail:
+            Payment.fail(to_fail)
 
         for move, statement, lines in moves:
             assert len({l.payment for l in lines}) == 1
@@ -54,15 +69,41 @@ class StatementLine:
     payment = fields.Many2One('account.payment', 'Payment',
         domain=[
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
-            ('state', 'in', ['processing', 'succeeded']),
+            ('state', 'in', ['processing', 'succeeded', 'failed']),
             ],
-        depends=['party'])
+        states={
+            'invisible': Bool(Eval('payment_group')) | Bool(Eval('invoice')),
+            'readonly': Eval('statement_state') != 'draft',
+            },
+        depends=['party', 'statement_state'])
+    payment_group = fields.Many2One(
+        'account.payment.group', "Payment Group",
+        domain=[
+            ('company', '=', Eval('_parent_statement', {}).get('company', -1)),
+            ],
+        states={
+            'invisible': Bool(Eval('payment')) | Bool(Eval('invoice')),
+            'readonly': Eval('statement_state') != 'draft',
+            },
+        depends=['statement_state'])
+
+    @classmethod
+    def __setup__(cls):
+        super(StatementLine, cls).__setup__()
+        invoice_invisible = Bool(Eval('payment')) | Bool(Eval('payment_group'))
+        if 'invisible' in cls.invoice.states:
+            cls.invoice.states['invisible'] |= invoice_invisible
+        else:
+            cls.invoice.states['invisible'] = invoice_invisible
 
     @classmethod
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.setdefault('payment', None)
+        default.setdefault('payment_group')
         return super(StatementLine, cls).copy(lines, default=default)
 
     @fields.depends('payment', 'party', 'account', '_parent_statement.journal')
@@ -83,20 +124,33 @@ class StatementLine:
                 if self.payment.kind == 'payable':
                     self.amount *= -1
 
+    @fields.depends('payment_group', 'account')
+    def on_change_payment_group(self):
+        if self.payment_group:
+            self.party = None
+            clearing_account = self.payment_group.journal.clearing_account
+            if not self.account and clearing_account:
+                self.account = clearing_account
+
     @fields.depends('party', 'payment')
     def on_change_party(self):
         super(StatementLine, self).on_change_party()
         if self.payment:
             if self.payment.party != self.party:
                 self.payment = None
+        self.payment_group = None
 
-    @fields.depends('account', 'payment')
+    @fields.depends('account', 'payment', 'payment_group')
     def on_change_account(self):
         super(StatementLine, self).on_change_account()
         if self.payment:
             clearing_account = self.payment.journal.clearing_account
-            if self.account != clearing_account:
-                self.payment = None
+        elif self.payment_group:
+            clearing_account = self.payment_group.journal.clearing_account
+        else:
+            return
+        if self.account != clearing_account:
+            self.payment = None
 
     @classmethod
     def post_move(cls, lines):

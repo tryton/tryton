@@ -263,6 +263,30 @@ Validate statement::
     >>> bank_clearing.balance
     Decimal('0.00')
 
+Create a statement that reimburse the payment group::
+
+    >>> statement = Statement(name='test',
+    ...     journal=statement_journal,
+    ...     start_balance=Decimal('-50.00'),
+    ...     end_balance=Decimal('0.00'),
+    ...     )
+    >>> line = statement.lines.new(date=today)
+    >>> line.payment_group = payment.group
+    >>> line.account == bank_clearing
+    True
+    >>> line.amount = Decimal('50.00')
+
+    >>> statement.click('validate_statement')
+    >>> statement.state
+    u'validated'
+
+Payment must be failed::
+
+    >>> payment.reload()
+    >>> payment.state
+    u'failed'
+
+
 Payment in a foreign currency
 -----------------------------
 
@@ -344,8 +368,8 @@ Create statement for the payment::
 
     >>> statement = Statement(name='test',
     ...     journal=statement_journal,
-    ...     start_balance=Decimal('-50.00'),
-    ...     end_balance=Decimal('-100.00'))
+    ...     start_balance=Decimal('0.00'),
+    ...     end_balance=Decimal('-50.00'))
     >>> line = statement.lines.new(date=today)
     >>> line.payment = payment
     >>> line.party == supplier

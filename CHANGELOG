@@ -1,4 +1,5 @@
-* Mark Payment as succeded when imported in statement
+* Mark Payment as succeded or failed when imported in statement
+* Allow to link statement line to group of payments
 
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
