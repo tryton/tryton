@@ -30,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable</field>
             <field name="sequence" eval="10"/>
             <field name="domain"
-                eval="[('account.kind', '=', 'payable'), ['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]]"
+                eval="['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]"
                 pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_line_form"/>
@@ -40,7 +40,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Receivable</field>
             <field name="sequence" eval="20"/>
             <field name="domain"
-                eval="[('account.kind', '=', 'receivable'), ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]]"
+                eval="['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]"
                 pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_line_form"/>
