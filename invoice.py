@@ -10,6 +10,7 @@ __all__ = ['InvoiceLine', 'AnalyticAccountEntry']
 
 
 class InvoiceLine(AnalyticMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
     @classmethod
@@ -37,7 +38,14 @@ class InvoiceLine(AnalyticMixin):
 
     def get_move_lines(self):
         lines = super(InvoiceLine, self).get_move_lines()
-        if self.analytic_accounts:
+        if self.invoice and self.invoice.type:
+            type_ = self.invoice.type
+        else:
+            type_ = self.invoice_type
+        asset_depreciable = (self.product and type_ == 'in'
+            and self.product.type == 'assets'
+            and getattr(self.product, 'depreciable', False))
+        if self.analytic_accounts and not asset_depreciable:
             date = self.invoice.accounting_date or self.invoice.invoice_date
             for line in lines:
                 analytic_lines = []
@@ -54,24 +62,44 @@ class AnalyticAccountEntry:
 
     @classmethod
     def _get_origin(cls):
+        pool = Pool()
         origins = super(AnalyticAccountEntry, cls)._get_origin()
-        return origins + ['account.invoice.line']
+        origins.append('account.invoice.line')
+        try:
+            pool.get('account.asset')
+            origins.append('account.asset')
+        except KeyError:
+            pass
+        return origins
 
     @fields.depends('origin')
     def on_change_with_company(self, name=None):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
+        try:
+            Asset = pool.get('account.asset')
+        except KeyError:
+            Asset = None
         company = super(AnalyticAccountEntry, self).on_change_with_company(
             name)
-        if isinstance(self.origin, InvoiceLine):
+        if (isinstance(self.origin, InvoiceLine)
+                or (Asset and isinstance(self.origin, Asset))):
             company = self.origin.company.id
         return company
 
     @classmethod
     def search_company(cls, name, clause):
+        pool = Pool()
         domain = super(AnalyticAccountEntry, cls).search_company(name, clause),
-        return ['OR',
+        domain = ['OR',
             domain,
             (('origin.company',) + tuple(clause[1:]) +
                 ('account.invoice.line',)),
             ]
+        try:
+            pool.get('account.asset')
+            domain.append(
+                (('origin.company',) + tuple(clause[1:]) + ('account.asset',)))
+        except KeyError:
+            pass
+        return domain
