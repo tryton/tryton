@@ -45,6 +45,7 @@ class Purchase:
 
 
 class PurchaseLine(AnalyticMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.line'
 
     @classmethod
