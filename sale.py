@@ -10,6 +10,7 @@ __all__ = ['SaleLine', 'AnalyticAccountEntry']
 
 
 class SaleLine(AnalyticMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
     @classmethod
