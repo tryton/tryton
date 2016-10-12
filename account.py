@@ -495,7 +495,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             yield analytic_line
 
 
-class AnalyticMixin(ModelSQL):
+class AnalyticMixin(object):
 
     analytic_accounts = fields.One2Many('analytic.account.entry', 'origin',
         'Analytic Accounts',
