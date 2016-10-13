@@ -1526,7 +1526,13 @@
     Sao.View.Tree.BinaryColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-binary',
         update_text: function(cell, record) {
-            cell.text(Sao.common.humanize(this.field.get_size(record)));
+            var size;
+            if (this.field.get_size) {
+                size = this.field.get_size(record);
+            } else {
+                size = this.field.get(record).length;
+            }
+            cell.text(Sao.common.humanize(size));
         }
     });
 

@@ -2881,8 +2881,15 @@
             var save_file = function() {
                 var reader = new FileReader();
                 reader.onload = function(evt) {
+                    var field = this.field();
                     var uint_array = new Uint8Array(reader.result);
-                    this.field().set_client(record, uint_array);
+                    var value;
+                    if (field.get_size) {
+                        value = uint_array;
+                    } else {
+                        value = String.fromCharCode.apply(null, uint_array);
+                    }
+                    field.set_client(record, value);
                 }.bind(this);
                 reader.onloadend = function(evt) {
                     close();
@@ -2993,7 +3000,12 @@
                 this.but_save_as.button('disable');
                 return;
             }
-            var size = field.get_size(record);
+            var size;
+            if (field.get_size) {
+                size = field.get_size(record);
+            } else {
+                size = field.get(record).length;
+            }
             var button_sensitive;
             if (size) {
                 button_sensitive = 'enable';
