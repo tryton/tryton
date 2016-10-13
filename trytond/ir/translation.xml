@@ -253,7 +253,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="act_translation_set">
-            <field name="name">Set Report Translations</field>
+            <field name="name">Set Translations</field>
             <field name="wiz_name">ir.translation.set</field>
         </record>
         <menuitem name="Set Translations"
