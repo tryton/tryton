@@ -387,7 +387,7 @@ class Time(Date):
             return ''
         value = record[self.attrs['name']].get_client(record)
         if value is not None:
-            return value.strftime(self.renderer.props.format)
+            return datetime_strftime(value, self.renderer.props.format)
         else:
             return ''
 
