@@ -8,7 +8,7 @@ from sql import Literal
 from sql.aggregate import Sum
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.pyson import Not, Bool, Eval
+from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
@@ -36,8 +36,20 @@ class Work(ModelSQL, ModelView):
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
             'company_work_time', help="Total time spent on this work"),
         'get_duration')
-    timesheet_start_date = fields.Date('Timesheet Start')
-    timesheet_end_date = fields.Date('Timesheet End')
+    timesheet_start_date = fields.Date('Timesheet Start',
+        domain=[
+            If(Eval('timesheet_start_date') & Eval('timesheet_end_date'),
+                ('timesheet_start_date', '<=', Eval('timesheet_end_date')),
+                ()),
+            ],
+        depends=['timesheet_end_date'])
+    timesheet_end_date = fields.Date('Timesheet End',
+        domain=[
+            If(Eval('timesheet_start_date') & Eval('timesheet_end_date'),
+                ('timesheet_end_date', '>=', Eval('timesheet_start_date')),
+                ()),
+            ],
+        depends=['timesheet_start_date'])
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
