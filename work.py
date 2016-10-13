@@ -90,8 +90,9 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         left='left', right='right', ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
+            ('id', '!=', Eval('id', -1)),
             ],
-        depends=['company'])
+        depends=['company', 'id'])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     children = fields.One2Many('project.work', 'parent', 'Children',
