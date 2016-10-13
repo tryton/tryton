@@ -232,7 +232,8 @@ def convert_value(field, value, context=None):
     def convert_boolean():
         if isinstance(value, basestring):
             return any(test.decode('utf-8').lower().startswith(value.lower())
-                for test in (_('y'), _('yes'), _('true'), _('t'), '1'))
+                for test in (
+                    _('y'), _('Yes'), _('True'), _('t'), '1'))
         else:
             return bool(value)
 
