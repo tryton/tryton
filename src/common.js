@@ -1717,8 +1717,8 @@
                 'boolean': function() {
                     if (typeof value == 'string') {
                         return [Sao.i18n.gettext('y'),
-                            Sao.i18n.gettext('yes'),
-                            Sao.i18n.gettext('true'),
+                            Sao.i18n.gettext('Yes'),
+                            Sao.i18n.gettext('True'),
                             Sao.i18n.gettext('t'),
                             '1'].some(
                                 function(test) {
