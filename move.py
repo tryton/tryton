@@ -15,7 +15,7 @@ from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     StateReport, Button
 from trytond.report import Report
 from trytond import backend
-from trytond.pyson import Eval, Bool, PYSONEncoder
+from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
@@ -614,11 +614,21 @@ class Line(ModelSQL, ModelView):
         depends=['second_currency_digits', 'second_currency'] + _depends)
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency',
+        domain=[
+            If(~Eval('second_currency_required'),
+                (),
+                ('id', '=', Eval('second_currency_required', -1))),
+            ],
         states={
-            'required': Bool(Eval('amount_second_currency')),
+            'required': (Bool(Eval('amount_second_currency'))
+                | Bool(Eval('second_currency_required'))),
             'readonly': _states['readonly']
             },
-        depends=['amount_second_currency'] + _depends)
+        depends=['amount_second_currency', 'second_currency_required']
+        + _depends)
+    second_currency_required = fields.Function(
+        fields.Many2One('currency.currency', "Second Currency Required"),
+        'on_change_with_second_currency_required')
     party = fields.Many2One('party.party', 'Party', select=True,
         states={
             'required': Eval('party_required', False),
@@ -645,9 +655,9 @@ class Line(ModelSQL, ModelView):
         ], 'Move State'), 'on_change_with_move_state',
         searcher='search_move_field')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
-            'get_currency_digits')
+            'on_change_with_currency_digits')
     second_currency_digits = fields.Function(fields.Integer(
-        'Second Currency Digits'), 'get_currency_digits')
+        'Second Currency Digits'), 'on_change_with_second_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('amount_currency_digits', 2)),
             depends=['amount_currency_digits']),
@@ -934,20 +944,19 @@ class Line(ModelSQL, ModelView):
                         ]
         return values
 
-    @classmethod
-    def get_currency_digits(cls, lines, names):
-        digits = {}
-        for line in lines:
-            for name in names:
-                digits.setdefault(name, {})
-                digits[name].setdefault(line.id, 2)
-                if name == 'currency_digits':
-                    digits[name][line.id] = line.account.currency_digits
-                elif name == 'second_currency_digits':
-                    second_currency = line.account.second_currency
-                    if second_currency:
-                        digits[name][line.id] = second_currency.digits
-        return digits
+    @fields.depends('account')
+    def on_change_with_currency_digits(self, name=None):
+        if self.account:
+            return self.account.currency_digits
+        else:
+            return 2
+
+    @fields.depends('second_currency')
+    def on_change_with_second_currency_digits(self, name=None):
+        if self.second_currency:
+            return self.second_currency.digits
+        else:
+            return 2
 
     @classmethod
     def get_origin(cls):
@@ -1001,10 +1010,16 @@ class Line(ModelSQL, ModelView):
         if self.account:
             self.currency_digits = self.account.currency_digits
             if self.account.second_currency:
-                self.second_currency_digits = \
-                    self.account.second_currency.digits
+                self.second_currency = self.account.second_currency
+                self.second_currency_digits = (
+                    self.on_change_with_second_currency_digits())
             if not self.account.party_required:
                 self.party = None
+
+    @fields.depends('account')
+    def on_change_with_second_currency_required(self, name=None):
+        if self.account and self.account.second_currency:
+            return self.account.second_currency.id
 
     @fields.depends('account')
     def on_change_with_party_required(self, name=None):

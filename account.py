@@ -538,7 +538,18 @@ class Account(ModelSQL, ModelView):
             'get_currency_digits')
     second_currency = fields.Many2One('currency.currency',
         'Secondary Currency', help='Force all moves for this account \n'
-        'to have this secondary currency.', ondelete="RESTRICT")
+        'to have this secondary currency.', ondelete="RESTRICT",
+        domain=[
+            ('id', '!=', Eval('currency', -1)),
+            ],
+        states={
+            'invisible': (Eval('kind').in_(
+                    ['payable', 'revenue', 'receivable', 'expense'])
+                | ~Eval('deferral', False)),
+            },
+        depends=['currency', 'kind', 'deferral'])
+    second_currency_digits = fields.Function(fields.Integer(
+            "Second Currency Digits"), 'get_second_currency_digits')
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
         states={
             'invisible': Eval('kind') == 'view',
@@ -562,6 +573,14 @@ class Account(ModelSQL, ModelView):
         'get_credit_debit')
     debit = fields.Function(fields.Numeric('Debit',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_credit_debit')
+    amount_second_currency = fields.Function(fields.Numeric(
+            "Amount Second Currency",
+            digits=(16, Eval('second_currency_digits', 2)),
+            states={
+                'invisible': ~Eval('second_currency'),
+                },
+            depends=['second_currency_digits', 'second_currency']),
         'get_credit_debit')
     reconcile = fields.Boolean('Reconcile',
         help='Allow move lines of this account \nto be reconciled.',
@@ -604,6 +623,17 @@ class Account(ModelSQL, ModelView):
         cls._error_messages.update({
                 'delete_account_containing_move_lines': ('You can not delete '
                     'account "%s" because it has move lines.'),
+                'invalid_second_currency_type': (
+                    'The kind of Account "%(account)s" '
+                    'does not allow to set a second currency.\n'
+                    'Only "Other" type allows.'),
+                'invalid_second_currency_deferral': (
+                    'The Account "%(account)s" can not have a second currency '
+                    'because it is not deferral.'),
+                'invalid_second_currency_lines': (
+                    'The currency "%(currency)s" of '
+                    'Account "%(account)s" is not compatible '
+                    'with existing lines.'),
                 })
         cls._sql_error_messages.update({
                 'parent_fkey': ('You can not delete accounts that have '
@@ -616,6 +646,7 @@ class Account(ModelSQL, ModelView):
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
         cls.check_recursion(accounts)
+        cls.check_second_currency(accounts)
 
     @staticmethod
     def default_left():
@@ -659,6 +690,12 @@ class Account(ModelSQL, ModelView):
     def get_currency_digits(self, name):
         return self.company.currency.digits
 
+    def get_second_currency_digits(self, name):
+        if self.second_currency:
+            return self.second_currency.digits
+        else:
+            return 2
+
     @classmethod
     def get_balance(cls, accounts, name):
         pool = Pool()
@@ -699,7 +736,7 @@ class Account(ModelSQL, ModelView):
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
         func = lambda accounts, names: \
             {names[0]: cls.get_balance(accounts, names[0])}
-        return cls._cumulate(fiscalyears, accounts, {name: balances},
+        return cls._cumulate(fiscalyears, accounts, [name], {name: balances},
             func)[name]
 
     @classmethod
@@ -717,8 +754,8 @@ class Account(ModelSQL, ModelView):
         result = {}
         ids = [a.id for a in accounts]
         for name in names:
-            if name not in ('credit', 'debit'):
-                raise Exception('Bad argument')
+            if name not in {'credit', 'debit', 'amount_second_currency'}:
+                raise ValueError('Unknown name: %s' % name)
             result[name] = dict((i, 0) for i in ids)
 
         table = cls.__table__()
@@ -744,18 +781,28 @@ class Account(ModelSQL, ModelView):
                         result[name][account_id] = row[i]
         for account in accounts:
             for name in names:
-                result[name][account.id] = account.company.currency.round(
-                    result[name][account.id])
+                if name == 'amount_second_currency':
+                    currency = account.second_currency
+                else:
+                    currency = account.company.currency
+                if currency:
+                    result[name][account.id] = currency.round(
+                        result[name][account.id])
 
-        if not Transaction().context.get('cumulate'):
-            return result
-        else:
+        cumulate_names = []
+        if Transaction().context.get('cumulate'):
+            cumulate_names = names
+        elif 'amount_second_currency' in names:
+            cumulate_names = ['amount_second_currency']
+        if cumulate_names:
             fiscalyears = FiscalYear.browse(fiscalyear_ids)
-            return cls._cumulate(fiscalyears, accounts, result,
+            return cls._cumulate(fiscalyears, accounts, cumulate_names, result,
                 cls.get_credit_debit)
+        else:
+            return result
 
     @classmethod
-    def _cumulate(cls, fiscalyears, accounts, values, func):
+    def _cumulate(cls, fiscalyears, accounts, names, values, func):
         """
         Cumulate previous fiscalyear values into values
         func is the method to compute values
@@ -763,7 +810,6 @@ class Account(ModelSQL, ModelView):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         Deferral = pool.get('account.account.deferral')
-        names = values.keys()
 
         youngest_fiscalyear = None
         for fiscalyear in fiscalyears:
@@ -827,6 +873,31 @@ class Account(ModelSQL, ModelView):
             ('code',) + tuple(clause[1:]),
             (cls._rec_name,) + tuple(clause[1:]),
             ]
+
+    @classmethod
+    def check_second_currency(cls, accounts):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        for account in accounts:
+            if not account.second_currency:
+                continue
+            if account.kind in {'payable', 'revenue', 'receivable', 'expense'}:
+                cls.raise_user_error('invalid_second_currency_type', {
+                        'account': account.rec_name,
+                        })
+            if not account.deferral:
+                cls.raise_user_error('invalid_second_currency_deferral', {
+                        'account': account.rec_name,
+                        })
+            lines = Line.search([
+                    ('account', '=', account.id),
+                    ('second_currency', '!=', account.second_currency.id),
+                    ], order=[], limit=1)
+            if lines:
+                cls.raise_user_error('invalid_second_currency_lines', {
+                        'currency': account.second_currency.rec_name,
+                        'account': account.rec_name,
+                        })
 
     @classmethod
     def copy(cls, accounts, default=None):
@@ -968,8 +1039,21 @@ class AccountDeferral(ModelSQL, ModelView):
     balance = fields.Function(fields.Numeric('Balance',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_balance')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
+    amount_second_currency = fields.Numeric(
+        "Amount Second Currency",
+        digits=(16, Eval('second_currency_digits', 2)),
+        states={
+            'invisible': ~Eval('second_currency'),
+            },
+        required=True, depends=['second_currency_digits', 'second_currency'])
+    second_currency = fields.Function(fields.Many2One(
+            'currency.currency', "Second Currency"), 'get_second_currency')
+    second_currency_digits = fields.Function(fields.Integer(
+            "Second Currency Digits"), 'get_second_currency_digits')
 
     @classmethod
     def __setup__(cls):
@@ -983,11 +1067,25 @@ class AccountDeferral(ModelSQL, ModelView):
             'write_deferral': 'You can not modify Account Deferral records',
             })
 
+    @classmethod
+    def default_amount_second_currency(cls):
+        return Decimal(0)
+
     def get_balance(self, name):
         return self.debit - self.credit
 
+    def get_currency(self, name):
+        return self.account.currency.id
+
     def get_currency_digits(self, name):
         return self.account.currency_digits
+
+    def get_second_currency(self, name):
+        if self.account.second_currency:
+            return self.account.second_currency.id
+
+    def get_second_currency_digits(self, name):
+        return self.account.second_currency_digits
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.account.rec_name, self.fiscalyear.rec_name)

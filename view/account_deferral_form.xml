@@ -12,4 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="debit"/>
     <label name="credit"/>
     <field name="credit"/>
+    <label name="amount_second_currency"/>
+    <field name="amount_second_currency"/>
+    <label name="second_currency"/>
+    <field name="second_currency"/>
 </form>

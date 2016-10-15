@@ -251,6 +251,7 @@ class FiscalYear(ModelSQL, ModelView):
             deferral.fiscalyear = self
             deferral.debit = account.debit
             deferral.credit = account.credit
+            deferral.amount_second_currency = account.amount_second_currency
             return deferral
 
     @classmethod

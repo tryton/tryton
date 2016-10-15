@@ -14,6 +14,7 @@ from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 
 from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.currency.tests import create_currency
 
 
 def create_chart(company, tax=False):
@@ -222,6 +223,8 @@ class AccountTestCase(ModuleTestCase):
             period = fiscalyear.periods[0]
             create_chart(company)
 
+            sec_cur = create_currency('sec')
+
             journal_revenue, = Journal.search([
                     ('code', '=', 'REV'),
                     ])
@@ -240,6 +243,13 @@ class AccountTestCase(ModuleTestCase):
             payable, = Account.search([
                     ('kind', '=', 'payable'),
                     ])
+            cash, = Account.search([
+                    ('kind', '=', 'other'),
+                    ('name', '=', 'Main Cash'),
+                    ])
+            cash_cur, = Account.copy([cash], default={
+                    'second_currency': sec_cur.id,
+                    })
             # Create some moves
             vlist = [
                 {
@@ -254,6 +264,25 @@ class AccountTestCase(ModuleTestCase):
                                     'account': receivable.id,
                                     'debit': Decimal(100),
                                     'party': party.id,
+                                    }]),
+                        ],
+                    },
+                {
+                    'period': period.id,
+                    'journal': journal_revenue.id,
+                    'date': period.start_date,
+                    'lines': [
+                        ('create', [{
+                                    'account': receivable.id,
+                                    'credit': Decimal(80),
+                                    'second_currency': sec_cur.id,
+                                    'amount_second_currency': -Decimal(50),
+                                    'party': party.id,
+                                    }, {
+                                    'account': cash_cur.id,
+                                    'debit': Decimal(80),
+                                    'second_currency': sec_cur.id,
+                                    'amount_second_currency': Decimal(50),
                                     }]),
                         ],
                     },
@@ -280,6 +309,11 @@ class AccountTestCase(ModuleTestCase):
                 (Decimal(0), Decimal(100)))
             self.assertEqual(revenue.balance, Decimal(-100))
 
+            self.assertEqual((cash_cur.debit, cash_cur.credit),
+                (Decimal(80), Decimal(0)))
+            self.assertEqual(
+                cash_cur.amount_second_currency, Decimal(50))
+
             # Use next fiscalyear
             today = datetime.date.today()
             next_fiscalyear = get_fiscalyear(company,
@@ -294,6 +328,10 @@ class AccountTestCase(ModuleTestCase):
                     (Decimal(0), Decimal(0)))
                 self.assertEqual(revenue.balance, Decimal(-100))
 
+                cash_cur = Account(cash_cur.id)
+                self.assertEqual(
+                    cash_cur.amount_second_currency, Decimal(50))
+
             # Test debit/credit cumulate for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id,
                     cumulate=True):
@@ -301,6 +339,10 @@ class AccountTestCase(ModuleTestCase):
                 self.assertEqual((revenue.debit, revenue.credit),
                     (Decimal(0), Decimal(100)))
                 self.assertEqual(revenue.balance, Decimal(-100))
+
+                cash_cur = Account(cash_cur.id)
+                self.assertEqual(
+                    cash_cur.amount_second_currency, Decimal(50))
 
             close_fiscalyear(fiscalyear)
 
@@ -310,8 +352,13 @@ class AccountTestCase(ModuleTestCase):
             deferral_receivable, = receivable.deferrals
             self.assertEqual(
                 (deferral_receivable.debit, deferral_receivable.credit),
-                (Decimal(100), Decimal(0)))
+                (Decimal(100), Decimal(80)))
             self.assertEqual(deferral_receivable.fiscalyear, fiscalyear)
+
+            cash_cur = Account(cash_cur.id)
+            deferral_cash_cur, = cash_cur.deferrals
+            self.assertEqual(
+                deferral_cash_cur.amount_second_currency, Decimal(50))
 
             # Test debit/credit
             with Transaction().set_context(fiscalyear=fiscalyear.id):
@@ -322,8 +369,12 @@ class AccountTestCase(ModuleTestCase):
 
                 receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
-                    (Decimal(100), Decimal(0)))
-                self.assertEqual(receivable.balance, Decimal(100))
+                    (Decimal(100), Decimal(80)))
+                self.assertEqual(receivable.balance, Decimal(20))
+
+                cash_cur = Account(cash_cur.id)
+                self.assertEqual(
+                    cash_cur.amount_second_currency, Decimal(50))
 
             # Test debit/credit for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id):
@@ -335,7 +386,11 @@ class AccountTestCase(ModuleTestCase):
                 receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
                     (Decimal(0), Decimal(0)))
-                self.assertEqual(receivable.balance, Decimal(100))
+                self.assertEqual(receivable.balance, Decimal(20))
+
+                cash_cur = Account(cash_cur.id)
+                self.assertEqual(
+                    cash_cur.amount_second_currency, Decimal(50))
 
             # Test debit/credit cumulate for next year
             with Transaction().set_context(fiscalyear=next_fiscalyear.id,
@@ -347,8 +402,12 @@ class AccountTestCase(ModuleTestCase):
 
                 receivable = Account(receivable.id)
                 self.assertEqual((receivable.debit, receivable.credit),
-                    (Decimal(100), Decimal(0)))
-                self.assertEqual(receivable.balance, Decimal(100))
+                    (Decimal(100), Decimal(80)))
+                self.assertEqual(receivable.balance, Decimal(20))
+
+                cash_cur = Account(cash_cur.id)
+                self.assertEqual(
+                    cash_cur.amount_second_currency, Decimal(50))
 
     @with_transaction()
     def test_move_post(self):
