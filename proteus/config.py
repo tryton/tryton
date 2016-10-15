@@ -91,7 +91,7 @@ def end_struct(self, data):
     dct = {}
     items = self._stack[mark:]
     for i in range(0, len(items), 2):
-        dct[xmlrpclib._stringify(items[i])] = items[i + 1]
+        dct[items[i]] = items[i + 1]
     dct = XMLRPCDecoder()(dct)
     self._stack[mark:] = [dct]
     self._value = 0
