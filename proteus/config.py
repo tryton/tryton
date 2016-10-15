@@ -56,7 +56,7 @@ def end_struct(self, data):
     dct = {}
     items = self._stack[mark:]
     for i in range(0, len(items), 2):
-        dct[xmlrpclib._stringify(items[i])] = items[i + 1]
+        dct[items[i]] = items[i + 1]
     if '__class__' in dct:
         if dct['__class__'] == 'date':
             dct = datetime.date(dct['year'], dct['month'], dct['day'])
