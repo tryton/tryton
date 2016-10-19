@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import copy
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.report import Report
@@ -61,6 +62,20 @@ class Employee(ModelSQL, ModelView):
     _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
+    start_date = fields.Date('Start Date',
+        domain=[If((Eval('start_date')) & (Eval('end_date')),
+                    ('start_date', '<=', Eval('end_date')),
+                    (),
+                )
+            ],
+        depends=['end_date'])
+    end_date = fields.Date('End Date',
+        domain=[If((Eval('start_date')) & (Eval('end_date')),
+                    ('end_date', '>=', Eval('start_date')),
+                    (),
+                )
+            ],
+        depends=['start_date'])
 
     @staticmethod
     def default_company():
