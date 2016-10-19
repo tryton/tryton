@@ -26,8 +26,16 @@ class Line(ModelSQL, ModelView):
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         select=True, domain=[
             ('company', '=', Eval('company', -1)),
+            ['OR',
+                ('start_date', '=', None),
+                ('start_date', '<=', Eval('date')),
+                ],
+            ['OR',
+                ('end_date', '=', None),
+                ('end_date', '>=', Eval('date')),
+                ],
             ],
-        depends=['company'])
+        depends=['company', 'date'])
     date = fields.Date('Date', required=True, select=True)
     duration = fields.TimeDelta('Duration', 'company_work_time', required=True)
     work = fields.Many2One('timesheet.work', 'Work',
@@ -130,7 +138,18 @@ class EnterLinesStart(ModelView):
     'Enter Lines'
     __name__ = 'timesheet.line.enter.start'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            domain=[('company', '=', Eval('context', {}).get('company', -1))])
+        domain=[
+            ('company', '=', Eval('context', {}).get('company', -1)),
+            ['OR',
+                ('start_date', '=', None),
+                ('start_date', '<=', Eval('date')),
+                ],
+            ['OR',
+                ('end_date', '=', None),
+                ('end_date', '>=', Eval('date')),
+                ],
+            ],
+        depends=['date'])
     date = fields.Date('Date', required=True)
 
     @staticmethod
