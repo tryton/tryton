@@ -755,9 +755,9 @@ class UserApplication(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    def count(cls, application):
+    def count(cls, user_id):
         return cls.search([
-                ('user', '=', application.user.id),
+                ('user', '=', user_id),
                 ('state', '=', 'requested'),
                 ], count=True)
 

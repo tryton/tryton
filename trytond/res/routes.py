@@ -29,11 +29,13 @@ def user_application(request, pool):
             logger.info('User Application not found: %s', data.get('user'))
             return abort(404)
         user, = users
+        if UserApplication.count(user.id):
+            logger.info('User Application has already a request: %s', login)
+            return abort(429)
         data['user'] = user.id
         data.pop('key', None)
         data.pop('state', None)
         application, = UserApplication.create([data])
-        time.sleep(2 ** UserApplication.count(application))
         return application.key
     elif request.method == 'DELETE':
         time.sleep(2 ** LoginAttempt.count(login) - 1)
