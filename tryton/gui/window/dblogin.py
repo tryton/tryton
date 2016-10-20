@@ -265,10 +265,11 @@ class DBListEditor(object):
     def test_server_version(cls, host, port):
         '''
         Tests if the server version is compatible with the client version
+        It returns None if no information on server version is available.
         '''
         version = rpc.server_version(host, port)
         if not version:
-            return False
+            return None
         return version.split('.')[:2] == __version__.split('.')[:2]
 
     def refresh_databases(self, host, port):
@@ -296,7 +297,7 @@ class DBListEditor(object):
         dbs = self.dbs
 
         label = None
-        if not self.test_server_version(host, port):
+        if self.test_server_version(host, port) is False:
             label = _(u'Incompatible version of the server')
         elif dbs is None:
             label = _(u'Could not connect to the server')
@@ -603,9 +604,14 @@ class DBLogin(object):
             host = common.get_hostname(netloc)
             port = common.get_port(netloc)
             try:
-                if not DBListEditor.test_server_version(host, port):
-                    common.warning('',
-                        _(u'Incompatible version of the server'))
+                test = DBListEditor.test_server_version(host, port)
+                if not test:
+                    if test is False:
+                        common.warning('',
+                            _(u'Incompatible version of the server'))
+                    else:
+                        common.warning('',
+                            _(u'Could not connect to the server'))
                     continue
             except Exception, exception:
                 common.process_exception(exception)
