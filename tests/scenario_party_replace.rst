@@ -5,11 +5,11 @@ Party Replace Scenario
 Imports::
 
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
 
 Install party::
 
-    >>> config = install_modules('party')
+    >>> config = activate_modules('party')
 
 Create a party::
 
