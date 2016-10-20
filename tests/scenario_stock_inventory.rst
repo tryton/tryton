@@ -8,14 +8,14 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
 
 Install stock Module::
 
-    >>> config = install_modules('stock')
+    >>> config = activate_modules('stock')
 
 Create company::
 
