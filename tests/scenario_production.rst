@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.production.production import BOM_CHANGES
@@ -18,7 +18,7 @@ Imports::
 
 Install production Module::
 
-    >>> config = install_modules('production')
+    >>> config = activate_modules('production')
 
 Create company::
 
