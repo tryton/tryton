@@ -5,7 +5,7 @@
 import unittest
 import urllib
 
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.url import HOSTNAME
@@ -16,7 +16,7 @@ class UrlTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def testModelURL(self):

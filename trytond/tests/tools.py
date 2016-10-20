@@ -5,7 +5,7 @@ from proteus import config, Model, Wizard
 from .test_tryton import restore_db_cache, backup_db_cache, drop_create
 
 
-def install_modules(modules):
+def activate_modules(modules):
     if isinstance(modules, basestring):
         modules = [modules]
     cache_name = '-'.join(modules)
@@ -18,8 +18,8 @@ def install_modules(modules):
     modules = Module.find([
             ('name', 'in', modules),
             ])
-    Module.click(modules, 'install')
-    Wizard('ir.module.install_upgrade').execute('upgrade')
+    Module.click(modules, 'activate')
+    Wizard('ir.module.activate_upgrade').execute('upgrade')
 
     backup_db_cache(cache_name)
     return cfg

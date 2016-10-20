@@ -6,7 +6,7 @@ import unittest
 from trytond.error import UserError
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 
 
 class ModelStorageTestCase(unittest.TestCase):
@@ -14,7 +14,7 @@ class ModelStorageTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def test_search_read_order(self):

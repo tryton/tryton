@@ -12,7 +12,7 @@ except ImportError:
 import unittest
 from decimal import Decimal
 import datetime
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
 
@@ -21,7 +21,7 @@ class ExportDataTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def test_boolean(self):

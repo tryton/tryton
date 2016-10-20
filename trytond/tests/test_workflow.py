@@ -3,7 +3,7 @@
 
 import unittest
 
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
 
@@ -11,7 +11,7 @@ class WorkflowTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     # TODO add test for Workflow.transition
     @with_transaction()

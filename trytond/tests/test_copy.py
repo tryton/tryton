@@ -3,7 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
 
@@ -12,7 +12,7 @@ class CopyTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def test_one2many(self):

@@ -15,7 +15,7 @@ import shutil
 import tempfile
 
 from decimal import Decimal
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 from trytond.model import fields
@@ -28,7 +28,7 @@ class FieldsTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     def setUp(self):
         path = config.get('database', 'path')

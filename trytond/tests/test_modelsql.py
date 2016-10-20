@@ -11,7 +11,7 @@ from trytond import backend
 from trytond.exceptions import UserError, ConcurrencyException
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 
 
 class ModelSQLTestCase(unittest.TestCase):
@@ -19,7 +19,7 @@ class ModelSQLTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @unittest.skipIf(backend.name() == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'

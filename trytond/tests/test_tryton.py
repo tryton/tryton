@@ -24,7 +24,7 @@ from trytond.cache import Cache
 from trytond.config import config, parse_uri
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'CONTEXT',
-    'install_module', 'ModuleTestCase', 'with_transaction',
+    'activate_module', 'ModuleTestCase', 'with_transaction',
     'doctest_setup', 'doctest_teardown', 'doctest_checker',
     'suite', 'all_suite', 'modules_suite']
 
@@ -38,9 +38,9 @@ Pool.test = True
 POOL = Pool(DB_NAME)
 
 
-def install_module(name):
+def activate_module(name):
     '''
-    Install module for the tested database
+    Activate module for the tested database
     '''
     if not db_exist(DB_NAME) and restore_db_cache(name):
         return
@@ -55,19 +55,19 @@ def install_module(name):
 
         modules = Module.search([
                 ('name', '=', name),
-                ('state', '!=', 'installed'),
+                ('state', '!=', 'activated'),
                 ])
 
         if modules:
-            Module.install(modules)
+            Module.activate(modules)
             transaction.commit()
 
-            InstallUpgrade = POOL.get('ir.module.install_upgrade',
+            ActivateUpgrade = POOL.get('ir.module.activate_upgrade',
                 type='wizard')
-            instance_id, _, _ = InstallUpgrade.create()
+            instance_id, _, _ = ActivateUpgrade.create()
             transaction.commit()
-            InstallUpgrade(instance_id).transition_upgrade()
-            InstallUpgrade.delete(instance_id)
+            ActivateUpgrade(instance_id).transition_upgrade()
+            ActivateUpgrade.delete(instance_id)
             transaction.commit()
     backup_db_cache(name)
 
@@ -179,7 +179,7 @@ class ModuleTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         drop_db()
-        install_module(cls.module)
+        activate_module(cls.module)
         super(ModuleTestCase, cls).setUpClass()
 
     @classmethod

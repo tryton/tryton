@@ -4,7 +4,7 @@
 import sys
 import unittest
 from mock import patch
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -14,7 +14,7 @@ class MPTTTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     def check_tree(self, parent_id=None, left=-1, right=sys.maxint):
         pool = Pool()

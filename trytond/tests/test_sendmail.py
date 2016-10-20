@@ -8,7 +8,7 @@ from mock import Mock, patch, call
 from trytond.sendmail import (
     sendmail_transactional, sendmail, SMTPDataManager, get_smtp_server)
 from trytond.transaction import Transaction
-from .test_tryton import with_transaction, install_module
+from .test_tryton import with_transaction, activate_module
 
 
 class SendmailTestCase(unittest.TestCase):
@@ -16,7 +16,7 @@ class SendmailTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def test_sendmail_transactional(self):

@@ -526,8 +526,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_action_url"/>
         </record>
 
-        <record model="ir.action-res.group" id="act_module_install_upgrade_group_admin">
-            <field name="action" ref="ir.act_module_install_upgrade"/>
+        <record model="ir.action-res.group" id="act_module_activate_upgrade_group_admin">
+            <field name="action" ref="ir.act_module_activate_upgrade"/>
             <field name="group" ref="group_admin"/>
         </record>
         <record model="ir.action-res.group" id="act_translation_update_group_admin">
@@ -691,8 +691,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" ref="ir.menu_config_wizard_item_form"/>
             <field name="group" ref="group_admin"/>
         </record>
-        <record model="ir.ui.menu-res.group" id="menu_module_install_upgrade_group_admin">
-            <field name="menu" ref="ir.menu_module_install_upgrade"/>
+        <record model="ir.ui.menu-res.group" id="menu_module_activate_upgrade_group_admin">
+            <field name="menu" ref="ir.menu_module_activate_upgrade"/>
             <field name="group" ref="group_admin"/>
         </record>
         <record model="ir.ui.menu-res.group" id="menu_trigger_form_group_admin">
@@ -700,43 +700,43 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.model.button" id="module_install_button">
-            <field name="name">install</field>
+        <record model="ir.model.button" id="module_activate_button">
+            <field name="name">activate</field>
             <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="module_install_button_group_admin">
-            <field name="button" ref="module_install_button"/>
+            id="module_activate_button_group_admin">
+            <field name="button" ref="module_activate_button"/>
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.model.button" id="module_install_cancel_button">
-            <field name="name">install_cancel</field>
+        <record model="ir.model.button" id="module_activate_cancel_button">
+            <field name="name">activate_cancel</field>
             <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="module_install_cancel_button_group_admin">
-            <field name="button" ref="module_install_cancel_button"/>
+            id="module_activate_cancel_button_group_admin">
+            <field name="button" ref="module_activate_cancel_button"/>
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.model.button" id="module_uninstall_button">
-            <field name="name">uninstall</field>
+        <record model="ir.model.button" id="module_deactivate_button">
+            <field name="name">deactivate</field>
             <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="module_uninstall_button_group_admin">
-            <field name="button" ref="module_uninstall_button"/>
+            id="module_deactivate_button_group_admin">
+            <field name="button" ref="module_deactivate_button"/>
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.model.button" id="module_uninstall_cancel_button">
-            <field name="name">uninstall_cancel</field>
+        <record model="ir.model.button" id="module_deactivate_cancel_button">
+            <field name="name">deactivate_cancel</field>
             <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="module_uninstall_cancel_button_group_admin">
-            <field name="button" ref="module_uninstall_cancel_button"/>
+            id="module_deactivate_cancel_button_group_admin">
+            <field name="button" ref="module_deactivate_cancel_button"/>
             <field name="group" ref="group_admin"/>
         </record>
 

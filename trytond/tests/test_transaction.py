@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 from mock import Mock
-from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT, install_module
+from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT, activate_module
 from trytond.transaction import Transaction
 
 
@@ -22,7 +22,7 @@ class TransactionTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     def test_nonexistdb(self):
         '''Attempt opening a transaction with a non existant DB

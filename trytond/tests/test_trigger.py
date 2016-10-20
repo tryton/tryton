@@ -6,7 +6,7 @@ import time
 import datetime
 from itertools import combinations
 
-from trytond.tests.test_tryton import install_module, with_transaction
+from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -19,7 +19,7 @@ class TriggerTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        install_module('tests')
+        activate_module('tests')
 
     @with_transaction()
     def test_constraints(self):
