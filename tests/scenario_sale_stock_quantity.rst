@@ -7,7 +7,7 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -18,7 +18,7 @@ Imports::
 
 Install sale_stock_quantity and stock_supply::
 
-    >>> config = install_modules(['sale_stock_quantity', 'stock_supply'])
+    >>> config = activate_modules(['sale_stock_quantity', 'stock_supply'])
 
 Create company::
 
