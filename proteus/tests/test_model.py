@@ -88,9 +88,9 @@ class TestModel(ProteusTestCase):
         self.assertEqual(User(name='Foo').name, 'Foo')
 
         Lang = Model.get('ir.lang')
-        en_US = Lang.find([('code', '=', 'en_US')])[0]
-        self.assertEqual(User(language=en_US).language, en_US)
-        self.assertEqual(User(language=en_US.id).language, en_US)
+        en, = Lang.find([('code', '=', 'en')])
+        self.assertEqual(User(language=en).language, en)
+        self.assertEqual(User(language=en.id).language, en)
 
         Group = Model.get('res.group')
         groups = Group.find()
@@ -143,10 +143,10 @@ class TestModel(ProteusTestCase):
         test.save()
 
         Lang = Model.get('ir.lang')
-        en_US = Lang.find([('code', '=', 'en_US')])[0]
-        test.language = en_US
+        en, = Lang.find([('code', '=', 'en')])
+        test.language = en
         test.save()
-        self.assertEqual(test.language, en_US)
+        self.assertEqual(test.language, en)
 
         test.language = None
         test.save()

@@ -59,11 +59,11 @@ The language on party is a `Many2One` relation field. So it requires to get a
 `Model` instance as value.
 
     >>> Lang = Model.get('ir.lang')
-    >>> (en,) = Lang.find([('code', '=', 'en_US')])
+    >>> en, = Lang.find([('code', '=', 'en')])
     >>> party.lang = en
     >>> party.save()
     >>> party.lang.code
-    u'en_US'
+    u'en'
 
 Creating an address for the party
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
