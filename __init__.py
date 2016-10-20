@@ -4,12 +4,14 @@
 from trytond.pool import Pool
 from .product import *
 from .location import *
+from . import production
 
 
 def register():
     Pool.register(
         Product,
         ProductLocation,
+        production.Production,
         ShipmentIn,
         ShipmentOutReturn,
         module='stock_product_location', type_='model')
