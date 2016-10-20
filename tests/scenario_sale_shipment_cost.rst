@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -19,7 +19,7 @@ Imports::
 
 Install sale_shipment_cost, sale and account_invoice::
 
-    >>> config = install_modules([
+    >>> config = activate_modules([
     ...         'sale_shipment_cost',
     ...         'sale',
     ...         'account_invoice',
