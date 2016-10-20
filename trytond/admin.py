@@ -10,6 +10,7 @@ from sql import Table
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.pool import Pool
+from trytond.config import config
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -43,6 +44,9 @@ def run(options):
                 cursor.execute(*lang.select(lang.code,
                         where=lang.translatable == True))
                 lang = [x[0] for x in cursor.fetchall()]
+            main_lang = config.get('database', 'language')
+            if main_lang not in lang:
+                lang.append(main_lang)
         else:
             lang = None
         pool = Pool(db_name)
@@ -52,6 +56,17 @@ def run(options):
             with Transaction().start(db_name, 0) as transaction:
                 Module = pool.get('ir.module')
                 Module.update_list()
+
+        if lang:
+            with Transaction().start(db_name, 0) as transaction:
+                pool = Pool()
+                Lang = pool.get('ir.lang')
+                languages = Lang.search([
+                        ('code', 'in', lang),
+                        ])
+                Lang.write(languages, {
+                        'translatable': True,
+                        })
 
     for db_name in options.database_names:
         if init[db_name] or options.password:
