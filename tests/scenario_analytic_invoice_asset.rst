@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -22,7 +22,7 @@ Imports::
 
 Install analytic_invoice and account_asset::
 
-    >>> config = install_modules(['analytic_invoice', 'account_asset'])
+    >>> config = activate_modules(['analytic_invoice', 'account_asset'])
 
 Create company::
 
