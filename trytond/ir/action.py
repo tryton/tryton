@@ -424,6 +424,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('doc6', 'Microsoft Word 6.0'),
             ('doc95', 'Microsoft Word 95'),
             ('docbook', 'DocBook'),
+            ('docx', 'Microsoft Office Open XML Text'),
+            ('docx7', 'Microsoft Word 2007 XML'),
             ('emf', 'Enhanced Metafile'),
             ('eps', 'Encapsulated PostScript'),
             ('gif', 'Graphics Interchange Format'),
@@ -473,6 +475,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('xls', 'Microsoft Excel 97/2000/XP'),
             ('xls5', 'Microsoft Excel 5.0'),
             ('xls95', 'Microsoft Excel 95'),
+            ('xlsx', 'Microsoft Excel 2007/2010 XML'),
             ('xpm', 'X PixMap'),
             ], translate=False,
         string='Extension', help='Leave empty for the same as template, '

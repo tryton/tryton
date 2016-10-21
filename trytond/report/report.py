@@ -34,6 +34,7 @@ FORMAT2EXT = {
     'doc6': 'doc',
     'doc95': 'doc',
     'docbook': 'xml',
+    'docx7': 'docx',
     'ooxml': 'xml',
     'latex': 'ltx',
     'sdc4': 'sdc',
