@@ -21,16 +21,24 @@ class Reference(Field):
     def __init__(self, string='', selection=None, selection_change_with=None,
             help='', required=False, readonly=False, domain=None, states=None,
             select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='lazy'):
+            context=None, loading='lazy', datetime_field=None):
         '''
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is an internal name
             of model and the second is the user name of model.
+        :param datetime_field: The name of the field that contains the datetime
+            value to read the target records.
         '''
+        if datetime_field:
+            if depends:
+                depends.append(datetime_field)
+            else:
+                depends = [datetime_field]
         super(Reference, self).__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             select=select, on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
+        self.datetime_field = datetime_field
         self.selection = selection or None
         self.selection_change_with = set()
         if selection_change_with:

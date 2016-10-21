@@ -481,7 +481,7 @@ a ``str`` instance like this::
 
 But a ``tuple`` can be used to search or set value.
 
-:class:`Reference` has one extra optional argument:
+:class:`Reference` has three extra optional arguments:
 
 .. attribute:: Reference.selection
 
@@ -489,7 +489,12 @@ But a ``tuple`` can be used to search or set value.
 
 .. attribute:: Reference.selection_change_with
 
-Same like :attr:`Selection.selection_change_with`.
+    Same as :attr:`Selection.selection_change_with`.
+
+.. attribute:: Reference.datetime_field
+
+    Same as :attr:`Many2One.datetime_field`
+
 
 Many2One
 --------
