@@ -54,6 +54,8 @@ Create parties::
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
+    >>> customer_without_price_list = Party(name='Customer without price list')
+    >>> customer_without_price_list.save()
 
 Create product::
 
@@ -137,3 +139,21 @@ Use the price list on sale::
     >>> sale_line.quantity = 2.0
     >>> sale_line.unit_price
     Decimal('15.0000')
+
+Create a sale price List and assign to configuration::
+
+    >>> sale_price_list = PriceList(name='Sale price List')
+    >>> sale_price_list_line = sale_price_list.lines.new()
+    >>> sale_price_list_line.formula = 'unit_price * 0.5'
+    >>> sale_price_list.save()
+    >>> Configuration = Model.get('sale.configuration')
+    >>> config = Configuration()
+    >>> config.sale_price_list = sale_price_list
+    >>> config.save()
+
+Use the sale price list on sale::
+
+    >>> config.user = sale_user.id
+    >>> sale.party = customer_without_price_list
+    >>> sale.price_list == sale_price_list
+    True

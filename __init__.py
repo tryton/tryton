@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from .party import *
 from .sale import *
 from .product import *
+from . import configuration
 
 
 def register():
@@ -13,4 +14,5 @@ def register():
         Sale,
         SaleLine,
         Product,
+        configuration.Configuration,
         module='sale_price_list', type_='model')
