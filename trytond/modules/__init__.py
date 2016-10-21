@@ -231,8 +231,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
             package_state = module2state.get(module, 'not activated')
             if (is_module_to_install(module, update)
                     or (update
-                        and package_state in ('to install', 'to upgrade'))):
-                if package_state not in ('to install', 'to upgrade'):
+                        and package_state in ('to activate', 'to upgrade'))):
+                if package_state not in ('to activate', 'to upgrade'):
                     if package_state == 'activated':
                         package_state = 'to upgrade'
                     elif package_state != 'to remove':

@@ -587,7 +587,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             if module == self.module and fs_id in self.to_delete:
                 self.to_delete.remove(fs_id)
 
-            if self.noupdate and self.module_state != 'to install':
+            if self.noupdate and self.module_state != 'to activate':
                 return
 
             # this record is already in the db:
