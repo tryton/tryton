@@ -7,12 +7,12 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company
 
 Install stock_product_location and production Modules::
 
-    >>> _ = install_modules(['stock_product_location', 'production'])
+    >>> _ = activate_modules(['stock_product_location', 'production'])
 
 Create company::
 
