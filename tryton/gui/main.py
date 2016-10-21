@@ -678,10 +678,14 @@ class Main(object):
             return False
 
         def _action_favorite(widget, id_):
-            Action.exec_keyword('tree_open', {
-                'model': self.menu_screen.model_name,
-                'id': id_,
-                'ids': [id_],
+            event = gtk.get_current_event()
+            allow_similar = (event.state & gtk.gdk.MOD1_MASK or
+                             event.state & gtk.gdk.SHIFT_MASK)
+            with Window(allow_similar=allow_similar):
+                Action.exec_keyword('tree_open', {
+                    'model': self.menu_screen.model_name,
+                    'id': id_,
+                    'ids': [id_],
                 })
 
         def _manage_favorites(widget):
