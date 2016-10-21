@@ -61,6 +61,8 @@
             "Eval('test', 'foo').pyson()");
         QUnit.strictEqual(value.v, 'test', "Eval('test', 'foo').pyson()");
         QUnit.strictEqual(value.d, 'foo', "Eval('test', 'foo').pyson()");
+        QUnit.strictEqual(new Sao.PYSON.Eval('test', 'foo').toString(),
+                "Eval(\"test\", \"foo\")");
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Eval('test', 'foo').types(),
                 [typeof 'foo']), "Eval('test', 'foo').types()");
@@ -94,6 +96,8 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not(false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
             'decode(Not(false))');
+        QUnit.strictEqual(new Sao.PYSON.Not(true).toString(),
+                "Not(true)");
     });
 
     QUnit.test('PYSON Bool', function() {
@@ -145,6 +149,8 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Bool({}));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
             'decode(Bool({}))');
+        QUnit.strictEqual(new Sao.PYSON.Bool('test').toString(),
+                "Bool(\"test\")");
     });
 
     QUnit.test('PYSON And', function() {
@@ -220,6 +226,8 @@
                 new Sao.PYSON.And([false, false, true]));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 'decode(And([false, false, true]))');
+        QUnit.strictEqual(new Sao.PYSON.And([false, true, true]).toString(),
+                "And(false, true, true)");
     });
 
     QUnit.test('PYSON Or', function() {
@@ -295,6 +303,8 @@
                 new Sao.PYSON.Or([false, false, true]));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
                 'decode(Or([false, false, true]))');
+        QUnit.strictEqual(new Sao.PYSON.Or([false, true, true]).toString(),
+                "Or(false, true, true)");
     });
 
     QUnit.test('PYSON Equal', function() {
@@ -331,6 +341,8 @@
                 new Sao.PYSON.Equal(['foo'], ['bar']));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 "decode(Equal(['foo'], ['bar']))");
+        QUnit.strictEqual(new Sao.PYSON.Equal('foo', 'bar').toString(),
+                "Equal(\"foo\", \"bar\")");
     });
 
     QUnit.test('PYSON Greater', function() {
@@ -388,6 +400,8 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(1, null));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
                 'decode(Greater(1, null))');
+        QUnit.strictEqual(new Sao.PYSON.Greater(1, 0).toString(),
+                "Greater(1, 0, false)");
     });
 
     QUnit.test('PYSON Less', function() {
@@ -445,6 +459,8 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(1, null));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 'decode(Less(1, null))');
+        QUnit.strictEqual(new Sao.PYSON.Less(0, 1).toString(),
+                "Less(0, 1, false)");
     });
 
     QUnit.test('PYSON If', function() {
@@ -478,6 +494,8 @@
             new Sao.PYSON.If(false, 'foo', 'bar'));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 'bar',
                 "decode(If(false, 'foo', 'bar'))");
+        QUnit.strictEqual(new Sao.PYSON.If(true, 'foo', 'bar').toString(),
+                "If(true, \"foo\", \"bar\")");
     });
 
     QUnit.test('PYSON Get', function() {
@@ -519,6 +537,9 @@
                 new Sao.PYSON.Get({}, 'foo', 'default'));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 'default',
                 "decode(Get({}, 'foo', 'default'))");
+        QUnit.strictEqual(new Sao.PYSON.Get(
+                {'foo': 'bar'}, 'foo', 'default').toString(),
+            "Get({\"foo\":\"bar\"}, \"foo\", \"default\")");
     });
 
     QUnit.test('PYSON In', function() {
@@ -580,6 +601,8 @@
             new Sao.PYSON.In('test', []));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 "decode(In('test', []))");
+        QUnit.strictEqual(new Sao.PYSON.In('foo', ['foo', 'bar']).toString(),
+                "In(\"foo\", [\"foo\",\"bar\"])");
     });
 
     QUnit.test('PYSON Date', function() {
@@ -647,6 +670,10 @@
                 new Sao.PYSON.Date(2010, 2, 22));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
                 new Date(2010, 1, 22).valueOf());
+
+        QUnit.strictEqual(
+            new Sao.PYSON.Date(2010, 1, 12, -1, 12, -7).toString(),
+            'Date(2010, 1, 12, -1, 12, -7)');
     });
 
     QUnit.test('PYSON DateTime', function() {
@@ -810,6 +837,10 @@
                 new Sao.PYSON.DateTime(2010, 2, 22, 10, 30, 20, 2000));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
                 new Date(2010, 1, 22, 10, 30, 20, 2).valueOf());
+
+        QUnit.strictEqual(new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0,
+                -1, 12, -7, 2, 15, 30, 1).toString(),
+            'DateTime(2010, 1, 12, 10, 30, 20, 0, -1, 12, -7, 2, 15, 30, 1)');
     });
 
     QUnit.test('PYSON Len', function() {
@@ -837,7 +868,26 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Len('foo bar'));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 7,
             "decode(Len('foo bar'))");
+        QUnit.strictEqual(new Sao.PYSON.Len([1, 2, 3]).toString(),
+            'Len([1,2,3])');
     });
+    QUnit.test('PYSON Composite', function() {
+        var expr = new Sao.PYSON.If(new Sao.PYSON.Not(
+            new Sao.PYSON.In('company',
+                new Sao.PYSON.Eval('context', {}))), '=', '!=');
+        var eval_ = new Sao.PYSON.Encoder().encode(
+            ['id', expr, new Sao.PYSON.Get(
+                    new Sao.PYSON.Eval('context', {}), 'company', -1)]);
+        QUnit.ok(Sao.common.compare(
+            new Sao.PYSON.Decoder({'context': {'company': 1}}).decode(eval_),
+            ['id', '!=', 1]));
+        QUnit.ok(Sao.common.compare(
+            new Sao.PYSON.Decoder({'context': {}}).decode(eval_),
+            ['id', '=', -1]));
+
+        QUnit.strictEqual(expr.toString(),
+            "If(Not(In(\"company\", Eval(\"context\", {}))), \"=\", \"!=\")");
+        });
     QUnit.test('PYSON noeval', function() {
         var decoder = new Sao.PYSON.Decoder({}, true);
         var encoder = new Sao.PYSON.Encoder();

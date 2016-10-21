@@ -13,6 +13,20 @@
         },
         types: function() {
             throw 'NotImplementedError';
+        },
+        toString: function() {
+            var klass = this.pyson().__class__;
+            var args = this.__string_params__().map(function(p){
+                if (p instanceof Sao.PYSON.PYSON) {
+                    return p.toString();
+                } else {
+                    return JSON.stringify(p);
+                }
+            });
+            return klass + '(' + args.join(', ') + ')';
+        },
+        __string_params__: function() {
+            throw 'NotImplementedError';
         }
     });
 
@@ -100,6 +114,9 @@
             } else {
                 return [typeof this._default];
             }
+        },
+        __string_params__: function() {
+            return [this._value, this._default];
         }
     });
 
@@ -137,6 +154,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return [this._value];
         }
     });
 
@@ -160,6 +180,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return [this._value];
         }
     });
 
@@ -207,6 +230,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return this._statements;
         }
     });
 
@@ -273,6 +299,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return [this._statement1, this._statement2];
         }
     });
 
@@ -330,6 +359,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return [this._statement1, this._statement2, this._equal];
         }
     });
 
@@ -423,6 +455,10 @@
             } else {
                 return [typeof this._then_statement];
             }
+        },
+        __string_params__: function() {
+            return [this._condition, this._then_statement,
+                this._else_statement];
         }
     });
 
@@ -481,6 +517,9 @@
             } else {
                 return [typeof this._default];
             }
+        },
+        __string_params__: function() {
+            return [this._obj, this._key, this._default];
         }
     });
 
@@ -528,6 +567,9 @@
         },
         types: function() {
             return ['boolean'];
+        },
+        __string_params__: function() {
+            return [this._key, this._obj];
         }
     });
 
@@ -592,6 +634,10 @@
                     throw name + ' must be an integer or None';
                 }
             }
+        },
+        __string_params__: function() {
+            return [this._year, this._month, this._day, this._delta_years,
+                this._delta_months, this._delta_days];
         }
     });
 
@@ -651,6 +697,15 @@
             result.ds = this._delta_seconds;
             result.dms = this._delta_microseconds;
             return result;
+        },
+        __string_params__: function() {
+            var date_params = Sao.PYSON.DateTime._super.__string_params__.call(
+                this);
+            return [date_params[0], date_params[1], date_params[2],
+                this._hour, this._minute, this._second, this._microsecond,
+                date_params[3], date_params[4], date_params[5],
+                this._delta_hours, this._delta_minutes, this._delta_seconds,
+                this._delta_microseconds];
         }
     });
 
@@ -694,6 +749,9 @@
         },
         types: function() {
             return ['integer'];
+        },
+        __string_params__: function() {
+            return [this._value];
         }
     });
 
