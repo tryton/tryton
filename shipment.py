@@ -2438,19 +2438,6 @@ class DeliveryNote(CompanyReport):
         with Transaction().set_context(address_with_party=True):
             return super(DeliveryNote, cls).execute(ids, data)
 
-    @classmethod
-    def get_context(cls, records, data):
-        report_context = super(DeliveryNote, cls).get_context(records, data)
-        report_context['product_name'] = lambda product_id, language: \
-            cls.product_name(product_id, language)
-        return report_context
-
-    @classmethod
-    def product_name(cls, product_id, language):
-        Product = Pool().get('product.product')
-        with Transaction().set_context(language=language):
-            return Product(product_id).rec_name
-
 
 class ShipmentReport(CompanyReport):
     move_attribute = 'inventory_moves'
