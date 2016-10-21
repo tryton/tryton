@@ -7,25 +7,16 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
     >>> today = datetime.date.today()
 
-Create a database::
-
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
 Install account_dunning_fee::
 
-    >>> Module = Model.get('ir.module')
-    >>> module, = Module.find([
-    ...         ('name', '=', 'account_dunning_fee'),
-    ...         ])
-    >>> module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = activate_modules('account_dunning_fee')
 
 Create company::
 
