@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="version"/>
     <field name="state"/>
     <button string="Mark for Upgrade" name="upgrade"/>
-    <button string="Mark for Installation" name="install"/>
-    <button string="Cancel Installation" name="install_cancel"/>
+    <button string="Mark for Activation" name="install"/>
+    <button string="Cancel Activation" name="install_cancel"/>
     <button string="Cancel Upgrade" name="upgrade_cancel"/>
 </tree>

@@ -160,9 +160,9 @@ class Database(DatabaseInterface):
                     cursor.execute(line)
 
         for module in ('ir', 'res'):
-            state = 'uninstalled'
+            state = 'not activated'
             if module in ('ir', 'res'):
-                state = 'to install'
+                state = 'to activate'
             info = get_module_info(module)
             cursor.execute('INSERT INTO ir_module '
                 '(create_uid, create_date, name, state) '

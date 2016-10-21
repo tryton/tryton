@@ -228,15 +228,15 @@ def load_module_graph(graph, pool, update=None, lang=None):
             classes = pool.fill(module)
             if update:
                 pool.setup(classes)
-            package_state = module2state.get(module, 'uninstalled')
+            package_state = module2state.get(module, 'not activated')
             if (is_module_to_install(module, update)
                     or (update
                         and package_state in ('to install', 'to upgrade'))):
                 if package_state not in ('to install', 'to upgrade'):
-                    if package_state == 'installed':
+                    if package_state == 'activated':
                         package_state = 'to upgrade'
                     elif package_state != 'to remove':
-                        package_state = 'to install'
+                        package_state = 'to activate'
                 for child in package.childs:
                     module2state[child.name] = package_state
                 for type in classes.keys():
@@ -284,15 +284,15 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 try:
                     module_id, = cursor.fetchone()
                     cursor.execute(*ir_module.update([ir_module.state],
-                            ['installed'], where=(ir_module.id == module_id)))
+                            ['activated'], where=(ir_module.id == module_id)))
                 except TypeError:
                     cursor.execute(*ir_module.insert(
                             [ir_module.create_uid, ir_module.create_date,
                                 ir_module.name, ir_module.state],
                             [[0, CurrentTimestamp(), package.name,
-                                    'installed'],
+                                    'activated'],
                                 ]))
-                module2state[package.name] = 'installed'
+                module2state[package.name] = 'activated'
 
             Transaction().connection.commit()
 
@@ -394,13 +394,25 @@ def load_modules(database_name, pool, update=None, lang=None):
             new_table = 'ir_module'
             if TableHandler.table_exist(old_table):
                 TableHandler.table_rename(old_table, new_table)
+
+            # Migration from 4.0: rename installed to activated
+            cursor.execute(*ir_module.select(ir_module.name,
+                    where=ir_module.state.in_(('installed', 'uninstalled'))))
+            if cursor.fetchone():
+                cursor.execute(*ir_module.update(
+                        [ir_module.state], ['activated'],
+                        where=ir_module.state == 'installed'))
+                cursor.execute(*ir_module.update(
+                        [ir_module.state], ['not activated'],
+                        where=ir_module.state == 'uninstalled'))
+
             if update:
                 cursor.execute(*ir_module.select(ir_module.name,
-                        where=ir_module.state.in_(('installed', 'to install',
+                        where=ir_module.state.in_(('activated', 'to activate',
                                 'to upgrade', 'to remove'))))
             else:
                 cursor.execute(*ir_module.select(ir_module.name,
-                        where=ir_module.state.in_(('installed', 'to upgrade',
+                        where=ir_module.state.in_(('activated', 'to upgrade',
                                 'to remove'))))
             module_list = [name for (name,) in cursor.fetchall()]
             if update:
@@ -425,7 +437,7 @@ def load_modules(database_name, pool, update=None, lang=None):
                             Model.delete([Model(rid)])
                         Transaction().connection.commit()
                     cursor.execute(*ir_module.update([ir_module.state],
-                            ['uninstalled'],
+                            ['not activated'],
                             where=(ir_module.state == 'to remove')))
                     Transaction().connection.commit()
                     res = False

@@ -105,6 +105,16 @@ class Module(ModelSQL, ModelView):
 
         super(Module, cls).__register__(module_name)
 
+        # Migration from 4.0: rename installed to activated
+        sql_table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['activated'],
+                where=sql_table.state == 'installed'))
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['not activated'],
+                where=sql_table.state == 'uninstalled'))
+
     @staticmethod
     def default_state():
         return 'not activated'
