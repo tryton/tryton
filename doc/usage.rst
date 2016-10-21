@@ -759,3 +759,7 @@ Configuration File
    ~/.config/tryton/x.y/ca_certs         # Certification Authority (http://docs.python.org/library/ssl.html#ssl-certificates)
    ~/.config/tryton/x.y/profiles.cfg     # Profile configuration
    ~/.config/tryton/x.y/plugins          # Local user plugins directory
+
+.. note::
+    `~` means the home directory of the user.
+    But on Windows system it is the `APPDATA` directory.
