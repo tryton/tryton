@@ -36,6 +36,17 @@ Create sale user::
     >>> sale_user.groups.append(sale_group)
     >>> sale_user.save()
 
+    >>> sale_admin = User()
+    >>> sale_admin.name = 'Sale Admin'
+    >>> sale_admin.login = 'sale_admin'
+    >>> sale_admin.main_company = company
+    >>> sale_admin_group, = Group.find([('name', '=', 'Sales Administrator')])
+    >>> sale_admin.groups.append(sale_admin_group)
+    >>> product_admin_group, = Group.find(
+    ...     [('name', '=', 'Product Administration')])
+    >>> sale_admin.groups.append(product_admin_group)
+    >>> sale_admin.save()
+
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
@@ -142,6 +153,7 @@ Use the price list on sale::
 
 Create a sale price List and assign to configuration::
 
+    >>> config.user = sale_admin.id
     >>> sale_price_list = PriceList(name='Sale price List')
     >>> sale_price_list_line = sale_price_list.lines.new()
     >>> sale_price_list_line.formula = 'unit_price * 0.5'
