@@ -11,10 +11,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="state" readonly="1"/>
     <group col="2" colspan="2" id="button">
         <button string="Mark for Upgrade" name="upgrade"/>
-        <button string="Mark for Deactivation (beta)" name="uninstall"/>
-        <button string="Mark for Activation" name="install"/>
-        <button string="Cancel Activation" name="install_cancel"/>
+        <button string="Mark for Deactivation (beta)" name="deactivate"/>
+        <button string="Mark for Activation" name="activate"/>
+        <button string="Cancel Activation" name="activate_cancel"/>
         <button string="Cancel Upgrade" name="upgrade_cancel"/>
-        <button string="Cancel Deactivation" name="uninstall_cancel"/>
+        <button string="Cancel Deactivation" name="deactivate_cancel"/>
     </group>
 </form>
