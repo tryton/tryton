@@ -71,7 +71,7 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
                 'invisible': (~Eval('type').in_(['email', 'website', 'skype',
-                            'sip'])
+                            'sip', 'fax', 'phone'])
                     | ~Eval('url')),
                 }, depends=['type']),
         'get_url')
@@ -119,6 +119,10 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
             return 'callto:%s' % value
         elif self.type == 'sip':
             return 'sip:%s' % value
+        elif self.type == 'phone':
+            return 'tel:%s' % value
+        elif self.type == 'fax':
+            return 'fax:%s' % value
         return None
 
     @classmethod
