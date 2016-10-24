@@ -299,10 +299,11 @@ class TableHandler(TableHandlerInterface):
             logger.warning('Unable to drop column: Error renaming '
                 'table %s to temp!', self.table_name)
         new_table = TableHandler(self._model, history=self.history)
-        for name, column in self._columns.iteritems():
+        for name, (notnull, hasdef, size, typname) \
+                in self._columns.iteritems():
             if name != column_name:
-                new_table.add_raw_column(name, column['typname'], True,
-                    field_size=column['size'])
+                new_table.add_raw_column(name, typname, True,
+                    field_size=size)
         columns_name = [x for x in new_table._columns.keys()]
         cursor.execute(('INSERT INTO "%s" (' +
                         ','.join('"%s"' % c for c in columns_name) +
