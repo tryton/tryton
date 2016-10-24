@@ -43,14 +43,14 @@ def run(options):
                 lang = Table('ir_lang')
                 cursor.execute(*lang.select(lang.code,
                         where=lang.translatable == True))
-                lang = [x[0] for x in cursor.fetchall()]
+                lang = set([x[0] for x in cursor.fetchall()])
             main_lang = config.get('database', 'language')
-            if main_lang not in lang:
-                lang.append(main_lang)
+            lang.add(main_lang)
         else:
-            lang = None
+            lang = set()
+        lang |= set(options.languages)
         pool = Pool(db_name)
-        pool.init(update=options.update, lang=lang)
+        pool.init(update=options.update, lang=list(lang))
 
         if options.update_modules_list:
             with Transaction().start(db_name, 0) as transaction:

@@ -51,6 +51,8 @@ def get_parser_admin():
         action='store_true', help="set the admin password")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="Update list of tryton modules")
+    parser.add_argument("-l", "--language", dest="languages", nargs='+',
+        default=[], metavar='CODE', help="Load language translations")
 
     parser.epilog = ('The first time a database is initialized '
         'or when the password is set, the admin password is read '
