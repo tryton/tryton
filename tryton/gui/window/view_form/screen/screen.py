@@ -575,7 +575,7 @@ class Screen(SignalEvent):
         if self.current_record:
             self.current_record.cancel()
             if self.current_record.id < 0:
-                self.remove()
+                self.remove(records=[self.current_record])
 
     def save_current(self):
         if not self.current_record:
@@ -657,8 +657,9 @@ class Screen(SignalEvent):
         for record in records:
             self.group.unremove(record)
 
-    def remove(self, delete=False, remove=False, force_remove=False):
-        records = self.selected_records
+    def remove(self, delete=False, remove=False, force_remove=False,
+            records=None):
+        records = records or self.selected_records
         if not records:
             return
         if delete:

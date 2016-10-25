@@ -411,8 +411,7 @@ class WinForm(NoModal, InfoBar):
                 and response_id in cancel_responses):
             if (self.screen.current_record.id < 0
                     or self.save_current):
-                self.screen.group.remove(self.screen.current_record,
-                    remove=True)
+                self.screen.cancel_current()
             elif self.screen.current_record.modified:
                 self.screen.current_record.cancel()
                 self.screen.current_record.reload()
