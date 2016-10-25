@@ -28,6 +28,18 @@ class PartyRelation(ModelSQL):
     type = fields.Many2One('party.relation.type', 'Type', required=True,
         select=True)
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('from_',) + tuple(clause[1:]),
+            ('to',) + tuple(clause[1:]),
+            ('type',) + tuple(clause[1:]),
+            ]
+
 
 class PartyRelationAll(PartyRelation, ModelView):
     'Party Relation'
