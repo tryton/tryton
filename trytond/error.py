@@ -45,7 +45,7 @@ class WarningErrorMixin(object):
         if error_args is not None:
             try:
                 error = error % error_args
-            except TypeError:
+            except (TypeError, KeyError):
                 pass
 
         if error_description:
@@ -64,7 +64,7 @@ class WarningErrorMixin(object):
                 try:
                     error_description = (error_description
                         % error_description_args)
-                except TypeError:
+                except (TypeError, KeyError):
                     pass
             if raise_exception:
                 raise UserError(error, error_description)
