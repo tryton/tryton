@@ -1078,6 +1078,9 @@ class Line(ModelSQL, ModelView):
                         where=where
                         & (table.account == self.party.account_payable.id)))
                 amount = cursor.fetchone()[0]
+                # SQLite uses float for SUM
+                if not isinstance(amount, Decimal):
+                    amount = Decimal(str(amount))
                 if not self.party.account_payable.currency.is_zero(amount):
                     if amount > Decimal('0.0'):
                         self.credit = \
