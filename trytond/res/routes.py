@@ -2,8 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import time
-
-from werkzeug.exceptions import abort
+import random
 
 from trytond.wsgi import app
 from trytond.protocols.wrappers import with_pool, with_transaction
@@ -22,21 +21,30 @@ def user_application(request, pool):
     login = data.get('user')
 
     if request.method == 'POST':
+        # Make time random to process and try to use the same path as much as
+        # possible to prevent guessing between valid and invalid requests.
+        time.sleep(random.random())
         users = User.search([
                 ('login', '=', login),
                 ])
         if not users:
             logger.info('User Application not found: %s', data.get('user'))
-            return abort(404)
-        user, = users
-        if UserApplication.count(user.id):
+            user_id = None
+        else:
+            user, = users
+            user_id = user.id
+        if UserApplication.count(user_id):
             logger.info('User Application has already a request: %s', login)
-            return abort(429)
-        data['user'] = user.id
+            user_id = None
+        data['user'] = user_id
         data.pop('key', None)
         data.pop('state', None)
         application, = UserApplication.create([data])
-        return application.key
+        key = application.key
+        UserApplication.delete(UserApplication.search([
+                    ('user', '=', None),
+                    ]))
+        return key
     elif request.method == 'DELETE':
         time.sleep(2 ** LoginAttempt.count(login) - 1)
         applications = UserApplication.search([

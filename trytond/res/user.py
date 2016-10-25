@@ -715,7 +715,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
     _rec_name = 'key'
 
     key = fields.Char("Key", required=True, select=True)
-    user = fields.Many2One('res.user', "User", required=True, select=True)
+    user = fields.Many2One('res.user', "User", select=True)
     application = fields.Selection([], "Application")
     state = fields.Selection([
             ('requested', "Requested"),
