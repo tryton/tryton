@@ -232,6 +232,20 @@ class ModuleTestCase(unittest.TestCase):
                         if field:
                             assert field in res['fields'], (
                                 'Missing field: %s' % field)
+                if element.tag == 'button':
+                    button_name = element.get('name')
+                    assert button_name in Model._buttons, (
+                        "Button '%s' is not in %s._buttons"
+                        % (button_name, Model.__name__))
+
+    @with_transaction()
+    def test_rpc_callable(self):
+        'Test that RPC methods are callable'
+        for _, model in Pool().iterobject():
+            for method_name in model.__rpc__:
+                assert callable(getattr(model, method_name, None)), (
+                    "'%s' is not callable on '%s'"
+                    % (method_name, model.__name__))
 
     @with_transaction()
     def test_depends(self):
