@@ -22,6 +22,26 @@ this repository contains the full copyright notices and license terms. -->
             action="act_stock_configuration_form"
             id="menu_stock_configuration" icon="tryton-list"/>
 
+        <record model="ir.model.access" id="access_configuration">
+            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_configuration_admin">
+            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+    <data noupdate="1">
+
         <record model="ir.property" id="property_shipment_in_sequence">
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_in_sequence')]"/>
@@ -57,23 +77,6 @@ this repository contains the full copyright notices and license terms. -->
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'inventory_sequence')]"/>
             <field name="value"
                 eval="'ir.sequence,' + str(ref('sequence_inventory'))"/>
-        </record>
-
-        <record model="ir.model.access" id="access_configuration">
-            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
-        <record model="ir.model.access" id="access_configuration_admin">
-            <field name="model" search="[('model', '=', 'stock.configuration')]"/>
-            <field name="group" ref="group_stock_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
     </data>
