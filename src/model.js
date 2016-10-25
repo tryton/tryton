@@ -2150,12 +2150,10 @@
         },
         get_domain: function(record) {
             var domains = this.get_domains(record);
-            var screen_domain = domains[0];
             var attr_domain = domains[1];
-            var inversion = new Sao.common.DomainInversion();
-            return inversion.concat([inversion.localize_domain(
-                        inversion.inverse_leaf(screen_domain), this.name),
-                    attr_domain]);
+            // Forget screen_domain because it only means at least one record
+            // and not all records
+            return attr_domain;
         },
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
