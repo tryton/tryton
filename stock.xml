@@ -30,12 +30,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">stock.shipment.drop</field>
         </record>
 
-        <record model="ir.property" id="property_shipment_drop_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_drop_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_drop'))"/>
-        </record>
-
         <record model="ir.ui.view" id="shipment_drop_view_form">
             <field name="model">stock.shipment.drop</field>
             <field name="type">form</field>
@@ -206,6 +200,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Drop</field>
             <field name="code">DROP</field>
             <field name="type">drop</field>
+        </record>
+
+        <record model="ir.property" id="property_shipment_drop_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_drop_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_drop'))"/>
         </record>
 
         <record model="ir.property" id="default_sale_location_drop">
