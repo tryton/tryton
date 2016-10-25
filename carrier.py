@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import locale
+
 from zeep.exceptions import Fault
 
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
@@ -40,6 +42,7 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
         auth_client = get_client(self.server, LOGIN_SERVICE)
         lang = (self.company.party.lang.code
             if self.company.party.lang else 'en')
+        lang = locale.normalize(lang)[:5]
         try:
             result = auth_client.service.getAuth(
                 delisId=self.user_id, password=self.password,

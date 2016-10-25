@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import locale
 from io import BytesIO
 from lxml import etree
 from zeep.exceptions import Fault
@@ -102,6 +103,7 @@ class CreateDPDShipping(Wizard):
         while count < 2:
             lang = (credential.company.party.lang.code
                 if credential.company.party.lang else 'en')
+            lang = locale.normalize(lang)[:5]
             authentication = {
                 'delisId': credential.user_id,
                 'authToken': credential.token,
