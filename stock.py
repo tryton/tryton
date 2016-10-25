@@ -175,9 +175,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentDrop, cls).__setup__()
-        cls.__rpc__.update({
-                'button_draft': True,
-                })
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'shipped'),
