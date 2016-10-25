@@ -166,12 +166,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.property" id="property_product_cost_price_method">
-            <field name="field"
-                search="[('model.model', '=', 'product.template'), ('name', '=', 'cost_price_method')]"/>
-            <field name="value">,fixed</field>
-        </record>
-
         <record model="ir.action.act_window" id="act_product_from_template">
             <field name="name">Variants</field>
             <field name="res_model">product.product</field>
@@ -197,5 +191,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_product_from_template"/>
         </record>
 
+    </data>
+    <data noupdate="1">
+        <record model="ir.property" id="property_product_cost_price_method">
+            <field name="field"
+                search="[('model.model', '=', 'product.template'), ('name', '=', 'cost_price_method')]"/>
+            <field name="value">,fixed</field>
+        </record>
     </data>
 </tryton>
