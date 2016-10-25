@@ -758,8 +758,9 @@ class O2MField(Field):
 
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
-        return concat(localize_domain(inverse_leaf(screen_domain), self.name),
-            attr_domain)
+        # Forget screen_domain because it only means at least one record
+        # and not all records
+        return attr_domain
 
 
 class M2MField(O2MField):
