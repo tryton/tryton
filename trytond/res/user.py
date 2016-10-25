@@ -393,7 +393,13 @@ class User(ModelSQL, ModelView):
                     values_clean['language'] = langs[0].id
                 else:
                     del values_clean['language']
-        cls.write([user], values_clean)
+        # Set new context to write as validation could depend on it
+        context = {}
+        for name in cls._context_fields:
+            if name in values:
+                context[name] = values[name]
+        with Transaction().set_context(context):
+            cls.write([user], values_clean)
 
     @classmethod
     def get_preferences_fields_view(cls):
