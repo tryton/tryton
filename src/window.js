@@ -358,7 +358,7 @@
                     this.screen.current_record) {
                 result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
-                    this.screen.group.remove(this.screen.current_record, true);
+                    this.screen.cancel_current();
                 } else if (this.screen.current_record.has_changed()) {
                     this.screen.current_record.cancel();
                     this.screen.current_record.reload().always(function() {

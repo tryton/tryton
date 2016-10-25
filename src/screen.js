@@ -1082,7 +1082,8 @@
             if (this.current_record) {
                 this.current_record.cancel();
                 if (this.current_record.id < 0) {
-                    prms.push(this.remove());
+                    prms.push(this.remove(
+                                false, false, false, [this.current_record]));
                 }
             }
             return jQuery.when.apply(jQuery, prms);
@@ -1163,14 +1164,8 @@
                 record.group.unremove(record);
             });
         },
-        remove: function(delete_, remove, force_remove) {
-            var records = null;
-            if ((this.current_view.view_type == 'form') &&
-                    this.current_record) {
-                records = [this.current_record];
-            } else if (this.current_view.view_type == 'tree') {
-                records = this.current_view.selected_records();
-            }
+        remove: function(delete_, remove, force_remove, records) {
+            records = records | this.current_view.selected_records();
             if (jQuery.isEmptyObject(records)) {
                 return;
             }
