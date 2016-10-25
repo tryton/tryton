@@ -9,12 +9,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">configuration_form</field>
         </record>
 
-        <record model="ir.property" id="property_stock_journal">
-            <field name="field"
-                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'stock_journal')]"/>
-            <field name="value" eval="'account.journal,' + str(ref('account.journal_stock'))"/>
-        </record>
-
         <record model="ir.ui.view" id="fiscalyear_view_form">
             <field name="model">account.fiscalyear</field>
             <field name="inherit" ref="account.fiscalyear_view_form"/>
@@ -31,5 +25,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
+    </data>
+    <data noupdate="1">
+        <record model="ir.property" id="property_stock_journal">
+            <field name="field"
+                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'stock_journal')]"/>
+            <field name="value" eval="'account.journal,' + str(ref('account.journal_stock'))"/>
+        </record>
     </data>
 </tryton>
