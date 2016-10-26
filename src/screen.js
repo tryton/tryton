@@ -864,6 +864,15 @@
             } else {
                 domain = this.attributes.domain || [];
             }
+            if (this.current_view &&
+                    this.current_view.view_type == 'calendar') {
+                if (!jQuery.isEmptyObject(domain)) {
+                   domain = ['AND', domain,
+                        this.current_view.current_domain()];
+                } else {
+                    domain = this.current_view.current_domain();
+                }
+            }
             return domain;
         },
         count_tab_domain: function() {
@@ -1036,10 +1045,15 @@
             }
         },
         new_: function(default_, rec_name) {
+            var previous_view = this.current_view;
             if (default_ === undefined) {
                 default_ = true;
             }
             var prm = jQuery.when();
+            if (this.current_view.view_type == 'calendar') {
+                var selected_date = this.current_view.date;
+                prm = this.switch_view('form');
+            }
             if (this.current_view &&
                     ((this.current_view.view_type == 'tree' &&
                       !this.current_view.editable) ||
@@ -1056,6 +1070,9 @@
                 var record = group.new_(default_, undefined, rec_name);
                 group.add(record, this.new_model_position());
                 this.set_current_record(record);
+                if (previous_view.view_type == 'calendar') {
+                   previous_view.set_default_date(record, selected_date);
+                }
                 this.display().done(function() {
                     this.set_cursor(true, true);
                 }.bind(this));
