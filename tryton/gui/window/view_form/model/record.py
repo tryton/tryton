@@ -32,6 +32,7 @@ class Record(SignalEvent):
         self._timestamp = None
         self.attachment_count = -1
         self.unread_note = -1
+        self.button_clicks = {}
         self.next = {}  # Used in Group list
         self.value = {}
         self.autocompletion = {}
@@ -272,6 +273,7 @@ class Record(SignalEvent):
         self._loaded.clear()
         self.modified_fields.clear()
         self._timestamp = None
+        self.button_clicks.clear()
 
     def get_timestamp(self):
         result = {self.model_name + ',' + str(self.id): self._timestamp}
@@ -637,6 +639,20 @@ class Record(SignalEvent):
             except RPCException:
                 return 0
         return self.unread_note
+
+    def get_button_clicks(self, name):
+        if self.id < 0:
+            return
+        clicks = self.button_clicks.get(name)
+        if clicks is not None:
+            return clicks
+        try:
+            clicks = RPCExecute('model', 'ir.model.button.click',
+                'get_click', self.model_name, name, self.id)
+            self.button_clicks[name] = clicks
+        except RPCException:
+            return
+        return clicks
 
     def destroy(self):
         for v in self.value.itervalues():

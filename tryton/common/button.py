@@ -1,16 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import gettext
+
 import gtk
 
 from tryton.common import ICONFACTORY
+
+_ = gettext.gettext
 
 
 class Button(gtk.Button):
 
     def __init__(self, attrs=None):
         self.attrs = attrs or {}
-        label = '_' + attrs.get('string', '').replace('_', '__')
-        super(Button, self).__init__(label=label, stock=None,
+        self.label = '_' + attrs.get('string', '').replace('_', '__')
+        super(Button, self).__init__(label=self.label, stock=None,
             use_underline=True)
         self._set_icon(attrs.get('icon'))
 
@@ -39,6 +43,20 @@ class Button(gtk.Button):
             self.show()
         self.set_sensitive(not states.get('readonly', False))
         self._set_icon(states.get('icon', self.attrs.get('icon')))
+
+        if self.attrs.get('rule'):
+            label = self.label
+            tip = self.attrs.get('help', '')
+            if record:
+                clicks = record.get_button_clicks(self.attrs['name'])
+                if clicks:
+                    label += ' (%s)' % len(clicks)
+                    if tip:
+                        tip += '\n'
+                    tip += _('By: ') + _(', ').join(clicks.itervalues())
+            self.set_label(label)
+            self.set_tooltip_text(tip)
+
         if self.attrs.get('type', 'class') == 'class':
             parent = record.parent if record else None
             while parent:
