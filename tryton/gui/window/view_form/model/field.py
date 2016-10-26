@@ -837,6 +837,13 @@ class ReferenceField(Field):
         record.value[self.name] = ref_model, ref_id
         record.value[self.name + '.rec_name'] = rec_name
 
+    def context_get(self, record):
+        context = super(ReferenceField, self).context_get(record)
+        if self.attrs.get('datetime_field'):
+            context['_datetime'] = record.get_eval(
+                )[self.attrs.get('datetime_field')]
+        return context
+
     def get_on_change_value(self, record):
         if record.parent_name == self.name and record.parent:
             return record.parent.model_name, record.parent.get_on_change_value(
