@@ -7,22 +7,24 @@ from sql import Null
 from sql.aggregate import Max
 from sql.conditionals import Case
 from collections import defaultdict
+from itertools import groupby
 try:
     import simplejson as json
 except ImportError:
     import json
 
-from ..model import ModelView, ModelSQL, Workflow, fields, Unique
+from ..model import (ModelView, ModelSQL, Workflow, fields, Unique,
+    EvalEnvironment)
 from ..report import Report
 from ..wizard import Wizard, StateView, StateAction, Button
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
-from ..pyson import Bool, Eval
+from ..pyson import Bool, Eval, PYSONDecoder
 from ..rpc import RPC
 from .. import backend
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
-from ..tools import is_instance_method, cursor_dict
+from ..tools import is_instance_method, cursor_dict, grouped_slice
 try:
     from ..tools.StringMatcher import StringMatcher
 except ImportError:
@@ -30,6 +32,7 @@ except ImportError:
 
 __all__ = [
     'Model', 'ModelField', 'ModelAccess', 'ModelFieldAccess', 'ModelButton',
+    'ModelButtonRule', 'ModelButtonClick', 'ModelButtonReset',
     'ModelData', 'PrintModelGraphStart', 'PrintModelGraph', 'ModelGraph',
     'ModelWorkflowGraph',
     ]
@@ -729,6 +732,25 @@ class ModelButton(ModelSQL, ModelView):
     groups = fields.Many2Many('ir.model.button-res.group', 'button', 'group',
         'Groups')
     _groups_cache = Cache('ir.model.button.groups')
+    rules = fields.One2Many('ir.model.button.rule', 'button', "Rules")
+    _rules_cache = Cache('ir.model.button.rules')
+    clicks = fields.One2Many('ir.model.button.click', 'button', "Clicks")
+    reset_by = fields.Many2Many(
+        'ir.model.button-button.reset', 'button_ruled', 'button', "Reset by",
+        domain=[
+            ('model', '=', Eval('model', -1)),
+            ('id', '!=', Eval('id', -1)),
+            ],
+        depends=['model', 'id'],
+        help="Button that should reset the rules")
+    reset = fields.Many2Many(
+        'ir.model.button-button.reset', 'button', 'button_ruled', "Reset",
+        domain=[
+            ('model', '=', Eval('model', -1)),
+            ('id', '!=', Eval('id', -1)),
+            ],
+        depends=['model', 'id'])
+    _reset_cache = Cache('ir.model.button.reset')
 
     @classmethod
     def __setup__(cls):
@@ -743,21 +765,27 @@ class ModelButton(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         result = super(ModelButton, cls).create(vlist)
-        # Restart the cache for get_groups
+        # Restart the cache for get_groups and get_rules
         cls._groups_cache.clear()
+        cls._rules_cache.clear()
+        cls._reset_cache.clear()
         return result
 
     @classmethod
     def write(cls, buttons, values, *args):
         super(ModelButton, cls).write(buttons, values, *args)
-        # Restart the cache for get_groups
+        # Restart the cache for get_groups and get_rules
         cls._groups_cache.clear()
+        cls._rules_cache.clear()
+        cls._reset_cache.clear()
 
     @classmethod
     def delete(cls, buttons):
         super(ModelButton, cls).delete(buttons)
-        # Restart the cache for get_groups
+        # Restart the cache for get_groups and get_rules
         cls._groups_cache.clear()
+        cls._rules_cache.clear()
+        cls._reset_cache.clear()
 
     @classmethod
     def get_groups(cls, model, name):
@@ -779,6 +807,209 @@ class ModelButton(ModelSQL, ModelView):
             groups = set(g.id for g in button.groups)
         cls._groups_cache.set(key, groups)
         return groups
+
+    @classmethod
+    def get_rules(cls, model, name):
+        'Return a list of rules to apply on the named button of the model'
+        pool = Pool()
+        Rule = pool.get('ir.model.button.rule')
+        key = (model, name)
+        rule_ids = cls._rules_cache.get(key)
+        if rule_ids is not None:
+            return Rule.browse(rule_ids)
+        buttons = cls.search([
+                ('model.model', '=', model),
+                ('name', '=', name),
+                ])
+        if not buttons:
+            rules = []
+        else:
+            button, = buttons
+            rules = button.rules
+        cls._rules_cache.set(key, [r.id for r in rules])
+        return rules
+
+    @classmethod
+    def get_reset(cls, model, name):
+        "Return a list of button names to reset"
+        key = (model, name)
+        reset = cls._reset_cache.get(key)
+        if reset is not None:
+            return reset
+        buttons = cls.search([
+                ('model.model', '=', model),
+                ('name', '=', name),
+                ])
+        if not buttons:
+            reset = []
+        else:
+            button, = buttons
+            reset = [b.name for b in button.reset]
+        cls._reset_cache.set(key, reset)
+        return reset
+
+
+class ModelButtonRule(ModelSQL, ModelView):
+    "Model Button Rule"
+    __name__ = 'ir.model.button.rule'
+    button = fields.Many2One(
+        'ir.model.button', "Button", required=True, ondelete='CASCADE')
+    description = fields.Char('Description')
+    number_user = fields.Integer('Number of User', required=True)
+    condition = fields.Char(
+        "Condition",
+        help='A PYSON statement evaluated with the record represented by '
+        '"self"\nIt activate the rule if true.')
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelButtonRule, cls).__setup__()
+        cls._error_messages.update({
+                'invalid_condition': ('Condition "%(condition)s" is not a '
+                    'valid PYSON expression on button rule "%(rule)s".'),
+                })
+
+    @classmethod
+    def default_number_user(cls):
+        return 1
+
+    @classmethod
+    def validate(cls, rules):
+        super(ModelButtonRule, cls).validate(rules)
+        cls.check_condition(rules)
+
+    @classmethod
+    def check_condition(cls, rules):
+        for rule in rules:
+            if not rule.condition:
+                continue
+            try:
+                PYSONDecoder(noeval=True).decode(rule.condition)
+            except Exception:
+                cls.raise_user_error('invalid_condition', {
+                        'condition': rule.condition,
+                        'rule': rule.rec_name,
+                        })
+
+    def test(self, record, clicks):
+        "Test if the rule passes for the record"
+        if self.condition:
+            env = {}
+            env['self'] = EvalEnvironment(record, record.__class__)
+            if not PYSONDecoder(env).decode(self.condition):
+                return True
+        if self.group:
+            users = {c.user for c in clicks if self.group in c.user.groups}
+        else:
+            users = {c.user for c in clicks}
+        return len(users) >= self.number_user
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        ModelButton = pool.get('ir.model.button')
+        result = super(ModelButtonRule, cls).create(vlist)
+        # Restart the cache for get_rules
+        ModelButton._rules_cache.clear()
+        return result
+
+    @classmethod
+    def write(cls, buttons, values, *args):
+        pool = Pool()
+        ModelButton = pool.get('ir.model.button')
+        super(ModelButtonRule, cls).write(buttons, values, *args)
+        # Restart the cache for get_rules
+        ModelButton._rules_cache.clear()
+
+    @classmethod
+    def delete(cls, buttons):
+        pool = Pool()
+        ModelButton = pool.get('ir.model.button')
+        super(ModelButtonRule, cls).delete(buttons)
+        # Restart the cache for get_rules
+        ModelButton._rules_cache.clear()
+
+
+class ModelButtonClick(ModelSQL, ModelView):
+    "Model Button Click"
+    __name__ = 'ir.model.button.click'
+    button = fields.Many2One(
+        'ir.model.button', "Button", required=True, ondelete='CASCADE')
+    record_id = fields.Integer("Record ID", required=True)
+    active = fields.Boolean("Active")
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelButtonClick, cls).__setup__()
+        cls.__rpc__.update({
+                'get_click': RPC(),
+                })
+
+    @classmethod
+    def default_active(cls):
+        return True
+
+    @classmethod
+    def register(cls, model, name, records):
+        pool = Pool()
+        Button = pool.get('ir.model.button')
+
+        assert all(r.__class__.__name__ == model for r in records)
+
+        user = Transaction().user
+        button, = Button.search([
+                ('model.model', '=', model),
+                ('name', '=', name),
+                ])
+        cls.create([{
+                    'button': button.id,
+                    'record_id': r.id,
+                    'user': user,
+                    } for r in records])
+
+        clicks = defaultdict(list)
+        for records in grouped_slice(records):
+            clicks.update(groupby(cls.search([
+                            ('button', '=', button.id),
+                            ('record_id', 'in', [r.id for r in records]),
+                            ], order=[('record_id', 'ASC')]),
+                    key=lambda c: c.record_id))
+        return clicks
+
+    @classmethod
+    def reset(cls, model, names, records):
+        assert all(r.__class__.__name__ == model for r in records)
+
+        clicks = []
+        for records in grouped_slice(records):
+            clicks.extend(cls.search([
+                        ('button.model.model', '=', model),
+                        ('button.name', 'in', names),
+                        ('record_id', 'in', [r.id for r in records]),
+                        ]))
+        cls.write(clicks, {
+                'active': False,
+                })
+
+    @classmethod
+    def get_click(cls, model, button, record_id):
+        clicks = cls.search([
+                ('button.model.model', '=', model),
+                ('button.name', '=', button),
+                ('record_id', '=', record_id),
+                ])
+        return {c.user.id: c.user.rec_name for c in clicks}
+
+
+class ModelButtonReset(ModelSQL):
+    "Model Button Reset"
+    __name__ = 'ir.model.button-button.reset'
+    button_ruled = fields.Many2One(
+        'ir.model.button', "Button Ruled",
+        required=True, ondelete='CASCADE', select=True)
+    button = fields.Many2One(
+        'ir.model.button', "Button",
+        required=True, ondelete='CASCADE', select=True)
 
 
 class ModelData(ModelSQL, ModelView):

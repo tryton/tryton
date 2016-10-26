@@ -124,7 +124,7 @@ Static methods:
 
 .. staticmethod:: ModelView.button
 
-    Decorate button method to check group access.
+    Decorate button method to check group access and rule.
 
 .. staticmethod:: ModelView.button_action(action)
 

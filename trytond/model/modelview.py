@@ -562,6 +562,10 @@ class ModelView(Model):
                 states['readonly'] = True
             element.set('states', encoder.encode(states))
 
+            button_rules = Button.get_rules(cls.__name__, button_name)
+            if button_rules:
+                element.set('rule', '1')
+
             change = cls.__change_buttons[button_name]
             if change:
                 element.set('change', encoder.encode(list(change)))
@@ -595,14 +599,17 @@ class ModelView(Model):
     @staticmethod
     def button(func):
         @wraps(func)
-        def wrapper(cls, *args, **kwargs):
+        def wrapper(cls, records, *args, **kwargs):
             pool = Pool()
             ModelAccess = pool.get('ir.model.access')
             Button = pool.get('ir.model.button')
+            ButtonClick = pool.get('ir.model.button.click')
             User = pool.get('res.user')
 
-            if ((Transaction().user != 0)
-                    and Transaction().context.get('_check_access')):
+            transaction = Transaction()
+            check_access = transaction.context.get('_check_access')
+
+            if (transaction.user != 0) and check_access:
                 ModelAccess.check(cls.__name__, 'read')
                 groups = set(User.get_groups())
                 button_groups = Button.get_groups(cls.__name__,
@@ -614,8 +621,23 @@ class ModelView(Model):
                             % (func.__name__, cls.__name__))
                 else:
                     ModelAccess.check(cls.__name__, 'write')
+
             with Transaction().set_context(_check_access=False):
-                return func(cls, *args, **kwargs)
+                if (transaction.user != 0) and check_access:
+                    button_rules = Button.get_rules(
+                        cls.__name__, func.__name__)
+                    if button_rules:
+                        clicks = ButtonClick.register(
+                            cls.__name__, func.__name__, records)
+                        records = filter(
+                            lambda r: all(br.test(r, clicks.get(r.id, []))
+                                for br in button_rules),
+                            records)
+                # Reset click after filtering in case the button also has rules
+                names = Button.get_reset(cls.__name__, func.__name__)
+                if names:
+                    ButtonClick.reset(cls.__name__, names, records)
+                return func(cls, records, *args, **kwargs)
         return wrapper
 
     @staticmethod

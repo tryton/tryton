@@ -243,6 +243,44 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.model.access" id="access_ir_model_button_rule">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_model_button_rule_admin">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.rule')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_ir_model_button_click">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.click')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_ir_model_button_click_admin">
+            <field name="model"
+                search="[('model', '=', 'ir.model.button.click')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.model.access" id="access_ir_model_data">
             <field name="model" search="[('model', '=', 'ir.model.data')]"/>
             <field name="perm_read" eval="True"/>

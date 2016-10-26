@@ -7,4 +7,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="name"/>
     <field name="name"/>
     <field name="groups" colspan="4"/>
+    <field name="rules" colspan="2"/>
+    <field name="reset_by" colspan="2"/>
 </form>

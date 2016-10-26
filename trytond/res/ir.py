@@ -6,6 +6,7 @@ from ..pool import Pool, PoolMeta
 
 __all__ = [
     'UIMenuGroup', 'ActionGroup', 'ModelFieldGroup', 'ModelButtonGroup',
+    'ModelButtonRule', 'ModelButtonClick',
     'RuleGroupGroup', 'RuleGroupUser', 'Lang', 'SequenceType',
     'SequenceTypeGroup', 'Sequence', 'SequenceStrict',
     'ModuleConfigWizardItem',
@@ -163,6 +164,18 @@ class ModelButtonGroup(ModelSQL):
         super(ModelButtonGroup, cls).delete(records)
         # Restart the cache for get_groups
         pool.get('ir.model.button')._groups_cache.clear()
+
+
+class ModelButtonRule:
+    __metaclass__ = PoolMeta
+    __name__ = 'ir.model.button.rule'
+    group = fields.Many2One('res.group', "Group", ondelete='CASCADE')
+
+
+class ModelButtonClick:
+    __metaclass__ = PoolMeta
+    __name__ = 'ir.model.button.click'
+    user = fields.Many2One('res.user', "User", ondelete='CASCADE')
 
 
 class RuleGroupGroup(ModelSQL):

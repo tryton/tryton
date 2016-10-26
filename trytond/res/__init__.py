@@ -25,6 +25,8 @@ def register():
         ActionGroup,
         ModelFieldGroup,
         ModelButtonGroup,
+        ModelButtonRule,
+        ModelButtonClick,
         RuleGroupGroup,
         RuleGroupUser,
         Lang,

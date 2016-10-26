@@ -1,3 +1,4 @@
+* Add button rule
 * Allow to specify translatable languages in trytond-admin
 * Add datetime_field on Reference
 * Merge Spanish's into Spanish (Latin American)

@@ -37,6 +37,14 @@ Button
 For each button of a model the records of `ir.model.button` define the list of
 groups that are allowed to call it.
 
+Button Rule
+===========
+
+The `ir.model.button` could contain a list of rules which define how much
+different users must click on the button. Each rule must be passed to actually
+trigger the action. The counter can be reset when another defined button is
+clicked.
+
 Record Rule
 ===========
 

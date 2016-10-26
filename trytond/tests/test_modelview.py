@@ -2,10 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
+from mock import patch
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 from trytond.exceptions import UserError
+from trytond.pyson import PYSONEncoder, Eval
 
 
 class ModelView(unittest.TestCase):
@@ -113,6 +115,159 @@ class ModelView(unittest.TestCase):
         button.groups = [no_group]
         button.save()
         self.assertRaises(UserError, TestModel.test, [test])
+
+    @with_transaction(context={'_check_access': True})
+    def test_button_no_rule(self):
+        "Test no Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        ButtonClick = pool.get('ir.model.button.click')
+
+        record = TestModel(id=-1)
+        with patch.object(TestModel, 'test_non_decorated') as button_func:
+            TestModel.test([record])
+            button_func.assert_called_with([record])
+
+        clicks = ButtonClick.search([
+                ('record_id', '=', record.id),
+                ])
+        self.assertEqual(len(clicks), 0)
+
+    @with_transaction(context={'_check_access': True})
+    def test_button_rule_not_passed(self):
+        "Test not passed Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Model = pool.get('ir.model')
+        Button = pool.get('ir.model.button')
+        ButtonRule = pool.get('ir.model.button.rule')
+        ButtonClick = pool.get('ir.model.button.click')
+
+        model, = Model.search([('model', '=', 'test.modelview.button')])
+        rule = ButtonRule(number_user=2)
+        button = Button(name='test', model=model, rules=[rule])
+        button.save()
+
+        record = TestModel(id=-1)
+        with patch.object(TestModel, 'test_non_decorated') as button_func:
+            TestModel.test([record])
+            button_func.assert_called_with([])
+
+        clicks = ButtonClick.search([
+                ('button', '=', button.id),
+                ('record_id', '=', record.id),
+                ])
+        self.assertEqual(len(clicks), 1)
+        click, = clicks
+        self.assertEqual(click.user.id, 1)
+
+    @with_transaction(context={'_check_access': True})
+    def test_button_rule_passed(self):
+        "Test passed Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Model = pool.get('ir.model')
+        Button = pool.get('ir.model.button')
+        ButtonRule = pool.get('ir.model.button.rule')
+        ButtonClick = pool.get('ir.model.button.click')
+
+        model, = Model.search([('model', '=', 'test.modelview.button')])
+        rule = ButtonRule(number_user=1)
+        button = Button(name='test', model=model, rules=[rule])
+        button.save()
+
+        record = TestModel(id=-1)
+        with patch.object(TestModel, 'test_non_decorated') as button_func:
+            TestModel.test([record])
+            button_func.assert_called_with([record])
+
+        clicks = ButtonClick.search([
+                ('button', '=', button.id),
+                ('record_id', '=', record.id),
+                ])
+        self.assertEqual(len(clicks), 1)
+        click, = clicks
+        self.assertEqual(click.user.id, 1)
+
+    @with_transaction()
+    def test_button_rule_test_condition(self):
+        "Test condition Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Button = pool.get('ir.model.button')
+        ButtonRule = pool.get('ir.model.button.rule')
+        ButtonClick = pool.get('ir.model.button.click')
+
+        button = Button()
+        clicks = [ButtonClick(user=1)]
+        condition = PYSONEncoder().encode(
+            Eval('self', {}).get('value', 0) > 48)
+        rule = ButtonRule(
+            condition=condition, group=None, number_user=2, button=button)
+        record = TestModel(id=-1)
+
+        record.value = 10
+        self.assertTrue(rule.test(record, clicks))
+
+        record.value = 50
+        self.assertFalse(rule.test(record, clicks))
+
+    @with_transaction()
+    def test_button_rule_test_group(self):
+        "Test group Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Button = pool.get('ir.model.button')
+        ButtonRule = pool.get('ir.model.button.rule')
+        ButtonClick = pool.get('ir.model.button.click')
+        User = pool.get('res.user')
+        Group = pool.get('res.group')
+
+        group = Group()
+        user = User()
+        user.groups = []
+        button = Button()
+        clicks = [ButtonClick(user=user)]
+        rule = ButtonRule(
+            condition=None, group=group, number_user=1, button=button)
+        record = TestModel()
+
+        self.assertFalse(rule.test(record, clicks))
+
+        user.groups = [group]
+        self.assertTrue(rule.test(record, clicks))
+
+    @with_transaction()
+    def test_button_rule_test_number_user(self):
+        "Test number user Button Rule"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button')
+        Button = pool.get('ir.model.button')
+        ButtonRule = pool.get('ir.model.button.rule')
+        ButtonClick = pool.get('ir.model.button.click')
+        User = pool.get('res.user')
+
+        user1 = User()
+        user2 = User()
+        button = Button()
+        rule = ButtonRule(
+            condition=None, group=None, number_user=2, button=button)
+        record = TestModel()
+
+        # No click
+        self.assertFalse(rule.test(record, []))
+
+        # Only one click
+        clicks = [ButtonClick(user=user1)]
+        self.assertFalse(rule.test(record, clicks))
+
+        # Two clicks from the same user
+        clicks = [ButtonClick(user=user1), ButtonClick(user=user1)]
+        self.assertFalse(rule.test(record, clicks))
+
+        # Two clicks from different users
+        clicks = [ButtonClick(user=user1), ButtonClick(user=user2)]
+        self.assertTrue(rule.test(record, clicks))
 
 
 def suite():

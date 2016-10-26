@@ -36,6 +36,7 @@ class ModelViewChangedValuesTarget(ModelView):
 class ModelViewButton(ModelView):
     'ModelView Button'
     __name__ = 'test.modelview.button'
+    value = fields.Integer("Value")
 
     @classmethod
     def __setup__(cls):
@@ -47,4 +48,8 @@ class ModelViewButton(ModelView):
     @classmethod
     @ModelView.button
     def test(cls, records):
+        cls.test_non_decorated(records)
+
+    @classmethod
+    def test_non_decorated(cls, records):
         pass
