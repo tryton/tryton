@@ -462,6 +462,7 @@
             this._timestamp = null;
             this.attachment_count = -1;
             this.unread_note = -1;
+            this.button_clicks = {};
             this.state_attrs = {};
             this.autocompletion = {};
             this.exception = false;
@@ -1140,6 +1141,7 @@
             this._loaded = {};
             this._changed = {};
             this._timestamp = null;
+            this.button_clicks = {};
         },
         _check_load: function(fields) {
             if (!this.get_loaded(fields)) {
@@ -1249,6 +1251,22 @@
                 prm.resolve(this.unread_note);
             }
             return prm;
+        },
+        get_button_clicks: function(name) {
+            if (this.id < 0) {
+                return jQuery.when();
+            }
+            var clicks = this.button_clicks[name];
+            if (clicks !== undefined) {
+                return jQuery.when(clicks);
+            }
+            return Sao.rpc({
+                'method': 'model.ir.model.button.click.get_click',
+                'params': [this.model.name, name, this.id, {}],
+            }, this.model.session).then(function(clicks) {
+                this.button_clicks[name] = clicks;
+                return clicks;
+            }.bind(this));
         }
     });
 

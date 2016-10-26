@@ -721,6 +721,11 @@
             } else {
                 this.el = jQuery('<button/>');
                 this.el.append(attributes.string || '');
+                if (this.attributes.rule) {
+                    this.el.append(' ').append(jQuery('<span/>', {
+                        'class': 'badge'
+                    }));
+                }
             }
             this.icon = this.el.children('img');
             if (!this.icon.length) {
@@ -759,6 +764,32 @@
             }
             this.el.prop('disabled', states.readonly);
             this.set_icon(states.icon || this.attributes.icon);
+
+            if (this.attributes.rule) {
+                var prm;
+                if (record) {
+                    prm = record.get_button_clicks(this.attributes.name);
+                } else {
+                    prm = jQuery.when();
+                }
+                prm.then(function(clicks) {
+                    var counter = this.el.children('.badge');
+                    var users = [];
+                    var tip = '';
+                    if (!jQuery.isEmptyObject(clicks)) {
+                        for (var u in clicks) {
+                            users.push(clicks[u]);
+                        }
+                        tip = Sao.i18n.gettext('By: ') +
+                            users.join(Sao.i18n.gettext(', '));
+                    }
+                    counter.data('toggle', 'tooltip');
+                    counter.text(users.length || '');
+                    counter.attr('title', tip);
+                    counter.tooltip();
+                }.bind(this));
+            }
+
             if (((this.attributes.type === undefined) ||
                         (this.attributes.type === 'class')) && (record)) {
                 var parent = record.group.parent;
