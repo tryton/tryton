@@ -6,9 +6,11 @@ from collections import OrderedDict
 from sql import Table
 from sql.functions import CurrentTimestamp
 
+from trytond.config import config
 from trytond.transaction import Transaction
+from trytond.tools import resolve
 
-__all__ = ['Cache', 'LRUDict']
+__all__ = ['BaseCache', 'Cache', 'LRUDict']
 
 
 def freeze(o):
@@ -20,27 +22,58 @@ def freeze(o):
         return o
 
 
-class Cache(object):
-    """
-    A key value LRU cache with size limit.
-    """
+class BaseCache(object):
     _cache_instance = []
-    _resets = {}
-    _resets_lock = Lock()
 
     def __init__(self, name, size_limit=1024, context=True):
+        self._name = name
         self.size_limit = size_limit
         self.context = context
-        self._cache = {}
         self._cache_instance.append(self)
-        self._name = name
-        self._timestamp = None
-        self._lock = Lock()
 
     def _key(self, key):
         if self.context:
             return (key, Transaction().user, freeze(Transaction().context))
         return key
+
+    def get(self, key, default=None):
+        raise NotImplemented
+
+    def set(self, key, value):
+        raise NotImplemented
+
+    def clear(self):
+        raise NotImplemented
+
+    @staticmethod
+    def clean(dbname):
+        raise NotImplemented
+
+    @staticmethod
+    def reset(dbname, name):
+        raise NotImplemented
+
+    @staticmethod
+    def resets(dbname):
+        raise NotImplemented
+
+    @classmethod
+    def drop(cls, dbname):
+        raise NotImplemented
+
+
+class MemoryCache(BaseCache):
+    """
+    A key value LRU cache with size limit.
+    """
+    _resets = {}
+    _resets_lock = Lock()
+
+    def __init__(self, name, size_limit=1024, context=True):
+        super(MemoryCache, self).__init__(name, size_limit, context)
+        self._cache = {}
+        self._timestamp = None
+        self._lock = Lock()
 
     def get(self, key, default=None):
         dbname = Transaction().database.name
@@ -118,6 +151,11 @@ class Cache(object):
     def drop(cls, dbname):
         for inst in cls._cache_instance:
             inst._cache.pop(dbname, None)
+
+if config.get('cache', 'class'):
+    Cache = resolve(config.get('cache', 'class'))
+else:
+    Cache = MemoryCache
 
 
 class LRUDict(OrderedDict):

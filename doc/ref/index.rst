@@ -16,3 +16,4 @@ API Reference
     rpc
     sendmail
     filestore
+    cache

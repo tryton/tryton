@@ -1,3 +1,4 @@
+* Allow to override cache implementation
 * Add button rule
 * Allow to specify translatable languages in trytond-admin
 * Add datetime_field on Reference
