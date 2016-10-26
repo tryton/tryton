@@ -1,3 +1,4 @@
+* Add support for datetime_field to Many2One, Reference
 * Add calendar view
 * Move info-bar to the top
 * Add noeval to PYSONDecoder

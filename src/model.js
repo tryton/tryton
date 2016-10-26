@@ -1783,6 +1783,15 @@
             Sao.field.Many2One._super.set_client.call(this, record, value,
                     force_change);
         },
+        get_context: function(record) {
+            var context = Sao.field.Many2One._super.get_context.call(
+                this, record);
+            if (this.description.datetime_field) {
+                context._datetime = record.get_eval()[
+                    this.description.datetime_field];
+            }
+            return context;
+        },
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
         },
@@ -2296,6 +2305,15 @@
             }
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
+        },
+        get_context: function(record) {
+            var context = Sao.field.Reference._super.get_context.call(
+                this, record);
+            if (this.description.datetime_field) {
+                context._datetime = record.get_eval()[
+                    this.description.datetime_field];
+            }
+            return context;
         },
         validation_domains: function(record, pre_validate) {
             return this.get_domains(record, pre_validate)[0];
