@@ -81,6 +81,17 @@ class Action(object):
         if 'type' not in (action or {}):
             return
 
+        def add_name_suffix(name):
+            if not data.get('ids') or not data.get('model'):
+                return name
+            max_records = 5
+            rec_names = RPCExecute('model', data['model'],
+                'read', data['ids'][:max_records], ['rec_name'])
+            name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
+            if len(data['ids']) > max_records:
+                name_suffix += _(u',\u2026')
+            return _('%s (%s)') % (name, name_suffix)
+
         data['action_id'] = action['id']
         if action['type'] == 'ir.action.act_window':
             view_ids = False
@@ -115,19 +126,11 @@ class Action(object):
                 for n, d, c in action['domains']]
 
             name = action.get('name', '')
+            if action.get('keyword', '') == 'form_relate':
+                name = add_name_suffix(name)
 
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))
-
-            if (action.get('keyword', '') == 'form_relate'
-                    and data.get('model') and data.get('ids')):
-                max_records = 5
-                rec_names = RPCExecute('model', data.get('model'),
-                    'read', data.get('ids')[:max_records], ['rec_name'])
-                name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
-                if len(data.get('ids')) > max_records:
-                    name_suffix += _(u',\u2026')
-                name = _('%s (%s)') % (name, name_suffix)
 
             Window.create(view_ids, res_model, res_id, domain,
                     action_ctx, order, view_mode, name=name,
@@ -137,10 +140,13 @@ class Action(object):
                     tab_domain=tab_domain,
                     context_model=action['context_model'])
         elif action['type'] == 'ir.action.wizard':
+            name = action.get('name', '')
+            if action.get('keyword', 'form_action') == 'form_action':
+                name = add_name_suffix(name)
             Window.create_wizard(action['wiz_name'], data,
                 direct_print=action.get('direct_print', False),
                 email_print=action.get('email_print', False),
-                email=action.get('email'), name=action.get('name', False),
+                email=action.get('email'), name=name,
                 context=context, icon=(action.get('icon.rec_name') or ''),
                 window=action.get('window', False))
 
