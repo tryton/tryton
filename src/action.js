@@ -24,8 +24,29 @@
         } else {
             data = jQuery.extend({}, data);
         }
+        function add_name_suffix(name){
+            if (!data.model || !data.ids) {
+                return jQuery.when(name);
+            }
+            var max_records = 5;
+            var ids = data.ids.slice(0, max_records);
+            return Sao.rpc({
+                'method': 'model.' + data.model + '.read',
+                'params': [ids, ['rec_name'], context]
+            }, Sao.Session.current_session).then(function(result) {
+                var name_suffix = result.map(function(record){
+                    return record.rec_name;
+                }).join(Sao.i18n.gettext(', '));
+
+                if (data.ids.length > max_records) {
+                    name_suffix += Sao.i18n.gettext(',\u2026');
+                }
+                return Sao.i18n.gettext('%1 (%2)', name, name_suffix);
+            });
+        }
         data.action_id = action.id;
         var params = {};
+        var name_prm;
         switch (action.type) {
             case 'ir.action.act_window':
                 params.view_ids = false;
@@ -71,41 +92,34 @@
                     params.tab_domain.push(
                         [element[0], decoder.decode(element[1]), element[2]]);
                 });
-                params.name = action.name;
+                name_prm = jQuery.when(action.name);
                 params.model = action.res_model || data.res_model;
                 params.res_id = action.res_id || data.res_id;
                 params.context_model = action.context_model;
                 params.limit = action.limit;
                 params.icon = action['icon.rec_name'] || '';
-                var dfd = jQuery.when();
-                var keyword = action.keyword || '';
-                if (keyword === 'form_relate' && data.model && data.ids) {
-                    var max_records = 5;
-                    var ids = data.ids.slice(0, max_records);
-                    dfd = Sao.rpc({
-                        'method': 'model.' + data.model + '.read',
-                        'params': [ids, ['rec_name'], context]
-                    }, Sao.Session.current_session).done(function(result) {
-                        var name_suffix = result.map(function(record){
-                            return record.rec_name;
-                        }).join(Sao.i18n.gettext(', '));
 
-                        if (data.ids.length > max_records) {
-                            name_suffix += Sao.i18n.gettext(',\u2026');
-                        }
-                        params.name = Sao.i18n.gettext(
-                            '%1 (%2)', params.name, name_suffix);
-                    }).promise();
+                if ((action.keyword || '') === 'form_relate') {
+                    name_prm = add_name_suffix(action.name);
                 }
-                dfd.done(Sao.Tab.create(params));
+                name_prm.then(function(name) {
+                    params.name = name;
+                    Sao.Tab.create(params);
+                });
                 return;
             case 'ir.action.wizard':
                 params.action = action.wiz_name;
                 params.data = data;
-                params.name = action.name;
                 params.context = context;
                 params.window = action.window;
-                Sao.Wizard.create(params);
+                name_prm = jQuery.when(action.name);
+                if ((action.keyword || 'form_action') === 'form_action') {
+                    name_prm = add_name_suffix(action.name);
+                }
+                name_prm.done(function(name) {
+                    params.name = name;
+                    Sao.Wizard.create(params);
+                });
                 return;
             case 'ir.action.report':
                 params.name = action.report_name;
