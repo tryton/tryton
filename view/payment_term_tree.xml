@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name"/>
-    <field name="active"/>
+    <field name="active" tree_invisible="1"/>
 </tree>
