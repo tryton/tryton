@@ -663,7 +663,6 @@ class ModelView(Model):
     @staticmethod
     def button_change(*fields):
         def decorator(func):
-            func = ModelView.button(func)
             func = on_change(func)
             func.change = set(fields)
             return func
