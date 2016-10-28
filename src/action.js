@@ -165,7 +165,7 @@
                 Sao.Action.exec_action(action, data, context);
             }, function() {
                 if (jQuery.isEmptyObject(keyact) && warning) {
-                    alert(Sao.i18n.gettext('No action defined!'));
+                    alert(Sao.i18n.gettext('No action defined.'));
                 }
             });
         };
