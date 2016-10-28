@@ -1182,11 +1182,11 @@
             });
         },
         remove: function(delete_, remove, force_remove, records) {
-            records = records | this.current_view.selected_records();
-            if (jQuery.isEmptyObject(records)) {
-                return;
-            }
             var prm = jQuery.when();
+            records = records || this.current_view.selected_records();
+            if (jQuery.isEmptyObject(records)) {
+                return prm;
+            }
             if (delete_) {
                 // TODO delete children before parent
                 prm = this.model.delete_(records);
