@@ -1782,7 +1782,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 self.description = Product(self.product.id).rec_name
 
         category = self.product.default_uom.category
-        if not self.unit or self.unit not in category.uoms:
+        if not self.unit or self.unit.category != category:
             self.unit = self.product.default_uom.id
             self.unit_digits = self.product.default_uom.digits
 
