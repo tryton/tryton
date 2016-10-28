@@ -61,6 +61,16 @@ class Calendar_(goocalendar.Calendar):
                 (dtend, '>', last_datetime)]]
         return domain
 
+    def get_colors(self, record):
+        text_color = None
+        if self.attrs.get('color'):
+            text_color = record[self.attrs['color']].get(record)
+        bg_color = 'lightblue'
+        if self.attrs.get('background_color'):
+            bg_color = record[self.attrs['background_color']].get(
+                record)
+        return text_color, bg_color
+
     def display(self, group):
         dtstart = self.attrs['dtstart']
         dtend = self.attrs.get('dtend')
@@ -99,11 +109,11 @@ class Calendar_(goocalendar.Calendar):
             if end is not None and start > end:
                 continue
 
-            # TODO define color code
+            text_color, bg_color = self.get_colors(record)
             label = '\n'.join(record[attrs['name']].get_client(record)
                 for attrs in self.fields).rstrip()
-            event = goocalendar.Event(label, start, end,
-                bg_color='lightblue', all_day=all_day)
+            event = goocalendar.Event(label, start, end, text_color=text_color,
+                bg_color=bg_color, all_day=all_day)
             event.record = record
             self._event_store.add(event)
 
