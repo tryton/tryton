@@ -4,7 +4,7 @@
 import gtk
 import gettext
 import webbrowser
-from tryton.config import TRYTON_ICON
+from tryton.config import TRYTON_ICON, CONFIG
 from tryton.common import get_toplevel_window
 from tryton import __version__
 
@@ -718,7 +718,7 @@ class About(object):
         parent = get_toplevel_window()
         self.win = gtk.AboutDialog()
         self.win.set_transient_for(parent)
-        self.win.set_name('Tryton')
+        self.win.set_name(CONFIG['client.title'])
         self.win.set_version(__version__)
         self.win.set_copyright(COPYRIGHT)
         self.win.set_license(LICENSE)

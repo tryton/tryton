@@ -688,7 +688,7 @@ sur_3b = Sur3BDialog()
 class AskDialog(UniqueDialog):
 
     def build_dialog(self, parent, question, visibility):
-        win = gtk.Dialog('Tryton', parent,
+        win = gtk.Dialog(CONFIG['client.title'], parent,
                 gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                     gtk.STOCK_OK, gtk.RESPONSE_OK))

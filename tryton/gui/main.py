@@ -380,7 +380,7 @@ class Main(object):
         self.global_search_entry.grab_focus()
 
     def set_title(self, value=''):
-        title = 'Tryton'
+        title = CONFIG['client.title']
         if value:
             title += ' - ' + value
         self.window.set_title(title)

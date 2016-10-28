@@ -43,6 +43,7 @@ class ConfigManager(object):
             'tip.autostart': False,
             'tip.position': 0,
             'form.toolbar': True,
+            'client.title': 'Tryton',
             'client.default_width': 900,
             'client.default_height': 750,
             'client.modepda': False,
