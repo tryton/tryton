@@ -45,6 +45,20 @@
             }.bind(this));
             this.el.fullCalendar('changeView', defaultview);
         },
+        get_colors: function(record) {
+            var colors = {};
+            colors.text_color = 'black';
+            if (this.attributes.color) {
+                colors.text_color = record.field_get(
+                    this.attributes.color);
+            }
+            colors.background_color = 'lightblue';
+            if (this.attributes.background_color) {
+                colors.background_color = record.field_get(
+                    this.attributes.background_color);
+            }
+            return colors;
+        },
         display: function() {
             this.el.fullCalendar('render');
             if (this.prm) {
@@ -82,14 +96,15 @@
                 if (date_end && date_start > date_end) {
                     return;
                 }
+                var colors = this.get_colors(record);
                 var values = {
                     title: title,
                     start: date_start,
                     end: date_end,
                     allDay: allDay,
                     editable: true,
-                    color: 'lightblue',
-                    textColor: 'black',
+                    color: colors.background_color,
+                    textColor: colors.text_color,
                     record: record,
                     description: description
                 };
