@@ -17,6 +17,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
+from trytond.modules.product import TemplateFunction
 from .move import StockMixin
 
 __all__ = ['Template', 'Product',
@@ -189,7 +190,7 @@ class Product(StockMixin, object):
         pool = Pool()
         Template = pool.get('product.template')
 
-        if hasattr(cls, 'cost_price'):
+        if not isinstance(cls.cost_price, TemplateFunction):
             digits = cls.cost_price.digits
             write = cls.write
             record = lambda p: p
@@ -230,7 +231,7 @@ class Product(StockMixin, object):
 
         context = Transaction().context
 
-        if hasattr(self.__class__, 'cost_price'):
+        if not isinstance(self.__class__.cost_price, TemplateFunction):
             product_clause = ('product', '=', self.id)
         else:
             product_clause = ('product.template', '=', self.template.id)
