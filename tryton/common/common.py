@@ -799,7 +799,7 @@ class ErrorDialog(UniqueDialog):
 
         vbox = gtk.VBox()
         label_title = gtk.Label()
-        label_title.set_markup('<b>' + _('Application Error!') + '</b>')
+        label_title.set_markup('<b>' + _('Application Error.') + '</b>')
         label_title.set_padding(-1, 5)
         vbox.pack_start(label_title, False, False)
         vbox.pack_start(gtk.HSeparator(), False, False)
@@ -972,7 +972,7 @@ def send_bugtracker(title, msg):
             if (isinstance(exception, xmlrpclib.Fault)
                     and 'roundup.cgi.exceptions.Unauthorised' in
                     exception.faultString):
-                message(_('Connection error!\nBad username or password!'))
+                message(_('Connection error.\nBad username or password.'))
                 return send_bugtracker(title, msg)
             tb_s = reduce(lambda x, y: x + y,
                     traceback.format_exception(sys.exc_type,
@@ -994,15 +994,15 @@ def process_exception(exception, *args, **kwargs):
     if isinstance(exception, TrytonError):
         if exception.faultCode == 'BadFingerprint':
             warning(
-                _('The server fingerprint has changed since last connection!\n'
+                _('The server fingerprint has changed since last connection.\n'
                 'The application will stop connecting to this server '
-                'until its fingerprint is fixed.'), _('Security risk!'))
+                'until its fingerprint is fixed.'), _('Security risk.'))
             from tryton.gui.main import Main
             Main.sig_quit()
         elif exception.faultCode.startswith('403'):
             if rpc.CONNECTION is None:
-                message(_('Connection error!\n'
-                        'Unable to connect to the server!'))
+                message(_('Connection error.\n'
+                        'Unable to connect to the server.'))
                 return False
     elif isinstance(exception, TrytonServerError):
         if exception.faultCode == 'UserWarning':
@@ -1067,7 +1067,7 @@ def process_exception(exception, *args, **kwargs):
                     return process_exception(exception, *args,
                         rpc_execute=rpc_execute)
     elif isinstance(exception, (socket.error, TrytonServerUnavailable)):
-        warning(str(exception), _('Network Error!'))
+        warning(str(exception), _('Network Error.'))
         return False
 
     if isinstance(exception, TrytonServerError):

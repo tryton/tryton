@@ -156,7 +156,7 @@ class ViewGraph(View):
                             filename, width, height)
                         break
                     except MemoryError:
-                        message(_('Image size too large!'), dia,
+                        message(_('Image size too large.'), dia,
                                 gtk.MESSAGE_ERROR)
             else:
                 break

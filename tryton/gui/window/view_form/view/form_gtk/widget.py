@@ -253,7 +253,7 @@ class TranslateMixin:
         self.view.set_value()
         if self.record.id < 0 or self.record.modified:
             common.message(
-                _('You need to save the record before adding translations!'))
+                _('You need to save the record before adding translations.'))
             return
 
         try:
@@ -264,7 +264,7 @@ class TranslateMixin:
             return
 
         if not lang_ids:
-            common.message(_('No other language available!'))
+            common.message(_('No other language available.'))
             return
         try:
             languages = RPCExecute('model', 'ir.lang', 'read', lang_ids,

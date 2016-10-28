@@ -132,7 +132,7 @@ class ConfigManager(object):
             configparser.write(open(self.rcfile, 'wb'))
         except IOError:
             logging.getLogger(__name__).warn(
-                _('Unable to write config file %s!')
+                _('Unable to write config file %s.')
                 % (self.rcfile,))
             return False
         return True

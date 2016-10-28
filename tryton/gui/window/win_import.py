@@ -100,7 +100,7 @@ class WinImport(WinCSV):
     def sig_autodetect(self, widget=None):
         fname = self.import_csv_file.get_filename()
         if not fname:
-            common.message(_('You must select an import file first!'))
+            common.message(_('You must select an import file first.'))
             return True
 
         self.csv_skip.set_value(1)
@@ -197,6 +197,6 @@ class WinImport(WinCSV):
         except RPCException:
             return
         if count == 1:
-            common.message(_('%d record imported!') % count)
+            common.message(_('%d record imported.') % count)
         else:
-            common.message(_('%d records imported!') % count)
+            common.message(_('%d records imported.') % count)

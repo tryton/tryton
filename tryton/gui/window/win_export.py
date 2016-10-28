@@ -319,12 +319,12 @@ class WinExport(WinCSV):
                 writer.writerow(row)
             if popup:
                 if len(data) == 1:
-                    common.message(_('%d record saved!') % len(data))
+                    common.message(_('%d record saved.') % len(data))
                 else:
-                    common.message(_('%d records saved!') % len(data))
+                    common.message(_('%d records saved.') % len(data))
             return True
         except IOError, exception:
-            common.warning(_("Operation failed!\nError message:\n%s")
+            common.warning(_("Operation failed.\nError message:\n%s")
                 % exception, _('Error'))
             return False
 

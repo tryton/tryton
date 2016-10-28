@@ -181,7 +181,7 @@ class Action(object):
             Action._exec_action(action, data, context=context)
             return (name, action)
         elif not len(keyact) and warning:
-            message(_('No action defined!'))
+            message(_('No action defined.'))
         return False
 
     @staticmethod
