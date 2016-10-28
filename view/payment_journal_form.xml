@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='process_method']" position="after">
+        <separator id="clearing" string="Clearing" colspan="4"/>
         <label name="clearing_account"/>
         <field name="clearing_account"/>
         <label name="clearing_journal"/>
