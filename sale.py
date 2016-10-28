@@ -1195,7 +1195,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         self.taxes = taxes
 
         category = self.product.sale_uom.category
-        if not self.unit or self.unit not in category.uoms:
+        if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
             self.unit_digits = self.product.sale_uom.digits
 
