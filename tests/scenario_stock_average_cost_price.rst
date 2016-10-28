@@ -140,6 +140,13 @@ Check Cost Price Average is 175::
     >>> product.template.cost_price
     Decimal('175.0000')
 
+Change Cost Price to 125, to force to write recomputed price later::
+
+    >>> product.template.cost_price = Decimal('125.0000')
+    >>> product.template.save()
+    >>> product.template.cost_price
+    Decimal('125.0000')
+
 Recompute Cost Price::
 
     >>> recompute = Wizard('product.recompute_cost_price', [product])
