@@ -1091,7 +1091,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         self.taxes = taxes
 
         category = self.product.purchase_uom.category
-        if not self.unit or self.unit not in category.uoms:
+        if not self.unit or self.unit.category != category:
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
 
