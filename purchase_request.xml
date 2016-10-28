@@ -70,6 +70,16 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="purchase.menu_purchase" sequence="20"
             action="act_purchase_request_form"
             id="menu_purchase_request_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_group_purchase_request">
+            <field name="menu" ref="menu_purchase_request_form"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_group_purchase">
+            <field name="menu" ref="menu_purchase_request_form"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
 
         <record model="ir.ui.view"
             id="purchase_request_create_purchase_ask_party">
