@@ -346,8 +346,8 @@ class Production(Workflow, ModelSQL, ModelView):
     @fields.depends(*BOM_CHANGES)
     def on_change_product(self):
         if self.product:
-            uoms = self.product.default_uom.category.uoms
-            if (not self.uom or self.uom not in uoms):
+            category = self.product.default_uom.category
+            if not self.uom or self.uom.category != category:
                 self.uom = self.product.default_uom
                 self.unit_digits = self.product.default_uom.digits
         else:
