@@ -483,8 +483,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         category = self.product.sale_uom.category
-        if (not self.unit
-                or self.unit not in category.uoms):
+        if not self.unit or self.unit.category != category:
             self.unit = self.product.sale_uom
             self.unit_digits = self.product.sale_uom.digits
 
