@@ -771,6 +771,12 @@ Each calendar view must start with this tag.
     * ``mode``: An optional name for the view that will be used first.
       Available views are: `week` and `month`. The default value is `month`.
 
+    * ``color``: An optional field name that contains the text color for the
+      event. The default value is `black`.
+
+    * ``background_color``: An optional field name that contains the background
+      color for the event. The default value is `lightblue`.
+
 field
 ^^^^^
 

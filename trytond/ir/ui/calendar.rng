@@ -26,6 +26,16 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="color" a:defaultValue="black"/>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="background_color" a:defaultValue="lightblue"/>
+    </optional>
+  </define>
   <define name="field">
     <element name="field">
       <ref name="attlist.field"/>

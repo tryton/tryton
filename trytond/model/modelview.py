@@ -587,7 +587,7 @@ class ModelView(Model):
             fields_attrs.setdefault(element.get('sequence'), {})
 
         if element.tag == 'calendar':
-            for attr in ('dtstart', 'dtend'):
+            for attr in ['dtstart', 'dtend', 'color', 'background_color']:
                 if element.get(attr):
                     fields_attrs.setdefault(element.get(attr), {})
 
