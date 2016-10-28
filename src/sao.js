@@ -186,6 +186,7 @@ var Sao = {};
     Sao.config.display_size = 20;
     Sao.config.roundup = {};
     Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
+    Sao.config.title = 'Tryton';
 
     Sao.i18n = i18n();
     Sao.i18n.setlang = function(lang) {
@@ -235,7 +236,7 @@ var Sao = {};
                     (preferences.actions || []).forEach(function(action_id) {
                         Sao.Action.execute(action_id, {}, null, {});
                     });
-                    var title = 'Tryton';
+                    var title = Sao.config.title;
                     if (!jQuery.isEmptyObject(preferences.status_bar)) {
                         title += ' - ' + preferences.status_bar;
                     }
