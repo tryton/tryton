@@ -2858,7 +2858,13 @@
         save_as: function() {
             var field = this.field();
             var record = this.record();
-            field.get_data(record).done(function(data) {
+            var prm;
+            if (field.get_data) {
+                prm = field.get_data(record);
+            } else {
+                prm = jQuery.when(field.get(record));
+            }
+            prm.done(function(data) {
                 var blob = new Blob([data],
                         {type: 'application/octet-binary'});
                 var blob_url = window.URL.createObjectURL(blob);
