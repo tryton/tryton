@@ -186,16 +186,16 @@
     };
 
     Sao.common.date_format = function(format) {
-        if (jQuery.isEmptyObject(format) && Sao.Session.current_session) {
-            var context = Sao.Session.current_session.context;
-            if (context.locale && context.locale.date) {
-                format = context.locale.date;
+        if (jQuery.isEmptyObject(format)) {
+            format = '%Y-%m-%d';
+            if (Sao.Session.current_session) {
+                var context = Sao.Session.current_session.context;
+                if (context.locale && context.locale.date) {
+                    format = context.locale.date;
+                }
             }
         }
-        if (format) {
-            return Sao.common.moment_format(format);
-        }
-        return '%Y-%m-%d';
+        return Sao.common.moment_format(format);
     };
 
     Sao.common.format_time = function(format, date) {
