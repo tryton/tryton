@@ -399,7 +399,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
         requests = []
         for sub_lines in grouped_slice([m.origin.id for s in shipments
-                    for m in s.supplier_moves]):
+                    for m in s.supplier_moves if m.origin]):
             requests += PurchaseRequest.search([
                     ('purchase_line', 'in', list(sub_lines)),
                     ])
@@ -412,6 +412,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         to_save = []
         for shipment in shipments:
             for move in shipment.supplier_moves:
+                if not move.origin:
+                    continue
                 sale_line = request2sline[pline2request[move.origin]]
                 for move in sale_line.moves:
                     if (move.state not in ('cancel', 'done')
