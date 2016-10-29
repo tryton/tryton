@@ -223,6 +223,13 @@
                     }
                 };
             }
+            else {
+                c3_config.axis = {
+                    x: {
+                        type: 'category',
+                    }
+                };
+            }
             return c3_config;
         },
         action: function(data, element) {
