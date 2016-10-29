@@ -1,3 +1,4 @@
+* Manage translated field
 * Add favorites menu
 * Show records names in wizard title
 * Add support for datetime_field to Many2One, Reference

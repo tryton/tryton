@@ -947,6 +947,7 @@
         set_value: function(record, field) {
         },
         set_readonly: function(readonly) {
+            this._readonly = readonly;
             this.el.prop('disabled', readonly);
         },
         set_required: function(required) {
@@ -961,11 +962,213 @@
         }
     });
 
+    Sao.View.Form.TranslateDialog = Sao.class_(Object,  {
+        init: function(languages, widget) {
+            var dialog = new Sao.Dialog(Sao.i18n.gettext('Translate'),
+                    this.class_, this, languages);
+            dialog.modal.find('.modal-dialog')
+                .removeClass('modal-sm').addClass('modal-lg');
+            this.languages = languages;
+            this.read(widget, dialog);
+            jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button'
+            }).append(Sao.i18n.gettext('Cancel')).click(function() {
+                this.close(dialog);
+            }.bind(this)).appendTo(dialog.footer);
+            jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'button'
+            }).append(Sao.i18n.gettext('OK')).click(this.write
+                    .bind(this, widget, dialog))
+                    .appendTo(dialog.footer);
+            dialog.content.submit(function(evt) {
+                evt.preventDefault();
+                dialog.footer.find('button.btn-primary').first().click();
+            });
+            dialog.modal.modal('show');
+            dialog.modal.on('shown.bs.modal', function() {
+                dialog.modal.find('input,select')
+                    .filter(':visible').first().focus();
+            });
+        },
+        close: function(dialog) {
+            dialog.modal.on('hidden.bs.modal', function(event) {
+                jQuery(this).remove();
+            });
+            dialog.modal.modal('hide');
+        },
+        read: function(widget, dialog) {
+            this.languages.forEach(function(lang){
+                var context = {};
+                context.language = lang.code;
+                var params = [
+                    [widget.record().id],
+                    [widget.field_name],
+                    context
+                ];
+                var args = {
+                    'method': 'model.' + widget.model.name  + '.read',
+                    'params': params
+                };
+                var value;
+                var row = jQuery('<div/>', {
+                    'class':'row form-group'
+                });
+                var input = widget.translate_widget();
+                input.attr('data-lang-id', lang.id);
+                var checkbox = jQuery('<input/>', {
+                    'type':'checkbox',
+                    'title': Sao.i18n.gettext('Edit')
+                });
+                if (widget._readonly) {
+                    checkbox.attr('disabled', true);
+                }
+                var fuzzy_box = jQuery('<input/>', {
+                    'type':'checkbox',
+                    'disabled': true,
+                    'title': Sao.i18n.gettext('Fuzzy')
+                });
+                var prm = Sao.rpc(args, widget.model.session)
+                        .then(function(result) {
+                    value = result[0][widget.field_name];
+                }.bind(this));
+                params = [
+                    [widget.record().id],
+                    [widget.field_name],
+                    context
+                ];
+                context.fuzzy_translation = true;
+                args = {
+                    'method': 'model.' + widget.model.name  + '.read',
+                    'params': params
+                };
+                prm.then(function() {
+                    Sao.rpc(args, widget.model.session)
+                            .then(function(fuzzy_value) {
+                        value = fuzzy_value[0][widget.field_name];
+                        widget.translate_widget_set(
+                            input, value);
+                        fuzzy_box.attr('checked',
+                               fuzzy_value[0].name != value);
+                    }.bind(this));
+                }.bind(this));
+                checkbox.click(function() {
+                    widget.translate_widget_set_readonly(input);
+                });
+                dialog.body.append(row);
+                row.append(jQuery('<div/>', {
+                    'class':'col-sm-3'
+                }).append(lang.name));
+                row.append(jQuery('<div/>', {
+                    'class':'col-sm-6'
+                }).append(input));
+                row.append(jQuery('<div/>', {
+                    'class':'col-sm-1'
+                }).append(checkbox));
+                row.append(jQuery('<div/>', {
+                    'class':'col-sm-1'
+                }).append(fuzzy_box));
+            }.bind(this));
+        },
+        write: function(widget, dialog) {
+            var promises = [];
+            this.languages.forEach(function(lang) {
+                var input = jQuery('[data-lang-id=' + lang.id + ']');
+                if (!input.attr('readonly')) {
+                    var current_language = widget.model.session.context.
+                            language;
+                    var context = {};
+                    context.language = lang.code;
+                    context.fuzzy_translation = false;
+                    var values =  {};
+                    values[widget.field_name] = input.val();
+                    var params = [
+                        [widget.record().id],
+                        values,
+                        context
+                    ];
+                    var args = {
+                        'method': 'model.' + widget.model.name  + '.write',
+                        'params': params
+                    };
+                    var prm = Sao.rpc(args, widget.model.session)
+                            .then(function() {
+                                if (lang.code == current_language) {
+                                    widget.view.display();
+                                }
+                    });
+                    promises.push(prm);
+                }
+            }.bind(this));
+            this.close(dialog);
+            jQuery.when.apply(jQuery, promises).then(function() {
+                widget.record().cancel();
+            });
+        }
+    });
+
+    Sao.View.Form.TranslateMixin = {};
+    Sao.View.Form.TranslateMixin.init = function() {
+        this.translate = Sao.View.Form.TranslateMixin.translate.bind(this);
+        this.translate_widget_set_readonly =
+            Sao.View.Form.TranslateMixin.translate_widget_set_readonly
+                .bind(this);
+        this.translate_widget_set =
+            Sao.View.Form.TranslateMixin.translate_widget_set.bind(this);
+    };
+    Sao.View.Form.TranslateMixin.translate = function() {
+        if (this.record().id < 0 || this.record().has_changed()) {
+            var mg = Sao.i18n.gettext(
+                'You need to save the record before adding translations.');
+            Sao.common.message.run(mg);
+            return;
+        }
+        var session = this.model.session;
+        var params = [
+            [['translatable', '=', 'true']]
+        ];
+        var args = {
+            'method': 'model.ir.lang.search',
+            'params': params.concat({})
+        };
+        Sao.rpc(args, session).then(function(lang_ids) {
+            if (jQuery.isEmptyObject(lang_ids)) {
+                Sao.common.message.run(Sao.i18n.gettext(
+                        'No other language available.'));
+                return;
+            }
+            var params = [
+                lang_ids,
+                ['code', 'name']
+            ];
+            var args = {
+                'method': 'model.ir.lang.read',
+                'params': params.concat({})
+            };
+            Sao.rpc(args, session).then(function(languages) {
+                var dialog = new Sao.View.Form.TranslateDialog(languages, this);
+            }.bind(this));
+        }.bind(this));
+    };
+    Sao.View.Form.TranslateMixin.translate_widget_set_readonly =
+            function(el, value) {
+        if (el.attr('readonly')) {
+            el.removeAttr('readonly');
+        } else {
+            el.attr('readonly', true);
+        }
+    };
+    Sao.View.Form.TranslateMixin.translate_widget_set = function(el, value) {
+        el.val(value || '');
+    };
+
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-char',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Char._super.init.call(this, field_name, model,
                 attributes);
+            Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -985,6 +1188,18 @@
 
             if (!attributes.size) {
                 this.group.css('width', '100%');
+            }
+            if (this.attributes.translate) {
+                var button = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm form-control',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Translate')
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-flag'
+                })).appendTo(jQuery('<span/>', {
+                    'class': 'input-group-btn'
+                }).appendTo(this.group));
+                button.click(this.translate.bind(this));
             }
         },
         display: function(record, field) {
@@ -1030,6 +1245,12 @@
         },
         focus: function() {
             this.input.focus();
+        },
+        translate_widget: function() {
+            return jQuery('<input/>', {
+                'class': 'form-control',
+                'readonly': 'readonly'
+            });
         }
     });
 
@@ -1336,6 +1557,7 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Text._super.init.call(this, field_name, model,
                 attributes);
+            Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -1343,6 +1565,19 @@
                 'class': 'form-control input-sm'
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
+            if (this.attributes.translate) {
+                var button  = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm form-control',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Translate')
+                }).appendTo(jQuery('<span/>', {
+                    'class': 'input-group-btn'
+                }).appendTo(this.el));
+                button.append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-flag'
+                }));
+                button.click(this.translate.bind(this));
+            }
         },
         display: function(record, field) {
             Sao.View.Form.Text._super.display.call(this, record, field);
@@ -1362,6 +1597,12 @@
         },
         set_readonly: function(readonly) {
             this.input.prop('readonly', readonly);
+        },
+        translate_widget: function() {
+            return jQuery('<textarea/>', {
+                    'class': 'form-control',
+                    'readonly': 'readonly'
+                });
         }
     });
 
@@ -3603,6 +3844,7 @@
             this.input.val(value || '');
         },
         set_readonly: function(readonly) {
+            this._readonly = readonly;
             this.input.prop('readonly', readonly);
         }
     });
