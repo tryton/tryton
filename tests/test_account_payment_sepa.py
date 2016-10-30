@@ -28,11 +28,13 @@ def setup_environment():
     Address = pool.get('party.address')
     Party = pool.get('party.party')
     Bank = pool.get('bank')
+    Identifier = pool.get('party.identifier')
 
     currency = create_currency('EUR')
     company = create_company(currency=currency)
-    company.party.sepa_creditor_identifier = 'BE68539007547034'
-    company.party.save()
+    sepa = Identifier(party=company.party, code='BE68539007547034',
+        type='sepa')
+    sepa.save()
     bank_party = Party(name='European Bank')
     bank_party.save()
     bank = Bank(party=bank_party, bic='BICODEBBXXX')
@@ -245,6 +247,24 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
                         'party': party.id,
                         'identification': same_id,
                         }])
+
+    @with_transaction()
+    def test_sepa_identifier_unique(self):
+        'Test SEPA Creditor Identifier uniqueness'
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+
+        party = Party(name='test')
+
+        sepa = Identifier(party=party, code='BE68539007547034',
+            type='sepa')
+        sepa.save()
+
+        sepa2 = Identifier(party=party, code='BE68539007547034',
+            type='sepa')
+        with self.assertRaises(UserError):
+            sepa2.save()
 
     @with_transaction()
     def test_payment_sepa_bank_account_number(self):

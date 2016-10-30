@@ -14,6 +14,7 @@ def register():
         Payment,
         Message,
         Party,
+        PartyIdentifier,
         Configuration,
         module='account_payment_sepa', type_='model')
     Pool.register(
