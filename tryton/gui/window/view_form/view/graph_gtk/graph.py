@@ -410,7 +410,6 @@ class Graph(gtk.DrawingArea):
                     self.datas[date].setdefault(
                             yfield.get('key', yfield['name']), 0.0)
                 date += relativedelta(days=1)
-        print(self.datas)
 
     def updateArea(self, cr, width, height):
         maxylabel = ''
