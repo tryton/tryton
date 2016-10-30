@@ -23,12 +23,12 @@ Configuration to connect to a sqlite memory database using trytond as module.
 Installing a module
 ~~~~~~~~~~~~~~~~~~~
 
-Find the module, call the install button and run the install wizard.
+Find the module, call the activate button and run the upgrade wizard.
 
     >>> Module = Model.get('ir.module')
     >>> party_module, = Module.find([('name', '=', 'party')])
-    >>> party_module.click('install')
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> party_module.click('activate')
+    >>> Wizard('ir.module.activate_upgrade').execute('upgrade')
 
 Creating a party
 ~~~~~~~~~~~~~~~~
