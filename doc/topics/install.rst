@@ -46,7 +46,7 @@ There are three easy options to install Tryton:
       For advanced options, please refer to the easy_install and/or the
       distutils documentation:
 
-          * http://peak.telecommunity.com/DevCenter/EasyInstall
+          * http://setuptools.readthedocs.io/en/latest/easy_install.html
           * http://docs.python.org/inst/inst.html
 
     * Without installation, just run ``bin/trytond`` from where the archive was
