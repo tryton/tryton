@@ -28,7 +28,7 @@ site-packages directory on your system.
 For advanced options, please refer to the easy_install__ and/or the
 distutils__ documentation:
 
-__ http://peak.telecommunity.com/DevCenter/EasyInstall
+__ http://setuptools.readthedocs.io/en/latest/easy_install.html
 
 __ http://docs.python.org/inst/inst.html
 
