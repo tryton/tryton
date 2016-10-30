@@ -2,7 +2,7 @@ Stock Module
 ############
 
 The stock module defines fundamentals for all stock management
-situations: Locations where product are stored, moves between these
+situations: Locations where products are stored, moves between these
 locations, shipments for product arrivals and departures and inventory
 to control and update stock levels.
 
@@ -10,12 +10,11 @@ Location
 ********
 
 Locations are generic places where products are physically or
-virtually stored. There are seven types of locations:
+virtually stored. The following location types are defined:
 
 * Storage
 
   Storage locations define real places where products are stored.
-
 
 * Warehouse
 
@@ -47,6 +46,15 @@ virtually stored. There are seven types of locations:
   Drop locations are virtual locations used as intermediary locations in the
   process of drop shipping.
 
+* Production
+
+  Production locations are used during the production of products.
+
+* View
+
+  View locations are virtual locations that can be used to logically group
+  other location types.
+
 Locations are organised in tree structures, allowing to define
 fine grained structures.
 
@@ -64,7 +72,7 @@ A move is a movement of a product in a given quantity between two
 locations. It may eventually defines a unit price and a currency for
 the products that are moved from or to another company, allowing to
 compute stock value at any time (and to update the cost prices if the
-choosen cost price method is *Average*). A move also defines a planned
+chosen cost price method is *Average*). A move also defines a planned
 date (when one plan to do the move) and an effective date (when the
 move is actually made). Products that are used in stock move must of
 of type *Goods* or *Assets*. Stock levels are ignored for
