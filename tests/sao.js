@@ -149,6 +149,18 @@
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Bool({}));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
             'decode(Bool({}))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+                new Sao.PYSON.Bool(new Sao.PYSON.Eval('value')));
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: Sao.Time(0)})
+                .decode(eval_), false, "decode(Bool(Sao.Time(0)))");
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: Sao.Time(1)})
+                .decode(eval_), true, "decode(Bool(Sao.Time(1)))");
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: Sao.TimeDelta()})
+                .decode(eval_), false, "decode(Bool(Sao.TimeDelta()))");
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: Sao.TimeDelta(1)})
+                .decode(eval_), true, "decode(Bool(Sao.TimeDelta(1)))");
+
         QUnit.strictEqual(new Sao.PYSON.Bool('test').toString(),
                 "Bool(\"test\")");
     });
