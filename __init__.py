@@ -40,8 +40,6 @@ def register():
         Configuration,
         Period,
         JournalType,
-        JournalView,
-        JournalViewColumn,
         Journal,
         JournalCashContext,
         JournalPeriod,

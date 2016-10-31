@@ -99,8 +99,6 @@ A Journal contains the following fields:
 - Name
 - Code
 - Active: A checkbox that allow to disable the tax.
-- View: Defines how the moves lines on this journal should be
-  displayed.
 - Default Credit Account, Default Debit Account: Used as default
   accounts on move lines for journals of *Cash* type.
 - Type: By default take one of the following values: *General*,

@@ -5,8 +5,7 @@ from decimal import Decimal
 from sql import Null
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields, Unique, \
-    sequence_ordered
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateTransition
 from trytond import backend
 from trytond.pyson import Eval, Bool
@@ -14,7 +13,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
 
-__all__ = ['JournalType', 'JournalView', 'JournalViewColumn', 'Journal',
+__all__ = ['JournalType', 'Journal',
     'JournalCashContext',
     'JournalPeriod', 'CloseJournalPeriod', 'ReOpenJournalPeriod']
 
@@ -45,47 +44,6 @@ class JournalType(ModelSQL, ModelView):
         cls._order.insert(0, ('code', 'ASC'))
 
 
-class JournalView(ModelSQL, ModelView):
-    'Journal View'
-    __name__ = 'account.journal.view'
-    name = fields.Char('Name', size=None, required=True)
-    columns = fields.One2Many('account.journal.view.column', 'view', 'Columns')
-
-    @classmethod
-    def __setup__(cls):
-        super(JournalView, cls).__setup__()
-        cls._order.insert(0, ('name', 'ASC'))
-
-
-class JournalViewColumn(sequence_ordered(), ModelSQL, ModelView):
-    'Journal View Column'
-    __name__ = 'account.journal.view.column'
-    name = fields.Char('Name', size=None, required=True)
-    field = fields.Many2One('ir.model.field', 'Field', required=True,
-            domain=[('model.model', '=', 'account.move.line')])
-    view = fields.Many2One('account.journal.view', 'View', select=True)
-    required = fields.Boolean('Required')
-    readonly = fields.Boolean('Readonly')
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
-        super(JournalViewColumn, cls).__register__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def default_required():
-        return False
-
-    @staticmethod
-    def default_readonly():
-        return False
-
-
 class Journal(ModelSQL, ModelView):
     'Journal'
     __name__ = 'account.journal'
@@ -93,7 +51,6 @@ class Journal(ModelSQL, ModelView):
     code = fields.Char('Code', size=None)
     active = fields.Boolean('Active', select=True)
     type = fields.Selection('get_types', 'Type', required=True)
-    view = fields.Many2One('account.journal.view', 'View')
     sequence = fields.Property(fields.Many2One('ir.sequence', 'Sequence',
             domain=[('code', '=', 'account.journal')],
             context={'code': 'account.journal'},

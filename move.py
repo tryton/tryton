@@ -1499,43 +1499,6 @@ class Line(ModelSQL, ModelView):
         return toolbar
 
     @classmethod
-    def fields_view_get(cls, view_id=None, view_type='form'):
-        Journal = Pool().get('account.journal')
-        result = super(Line, cls).fields_view_get(view_id=view_id,
-            view_type=view_type)
-        if view_type == 'tree' and 'journal' in Transaction().context:
-            journal = Journal(Transaction().context['journal'])
-
-            if not journal.view:
-                return result
-
-            xml = '<?xml version="1.0"?>\n' \
-                '<tree editable="top" on_write="on_write">\n'
-            fields = set()
-            for column in journal.view.columns:
-                fields.add(column.field.name)
-                attrs = []
-                if column.field.name == 'debit':
-                    attrs.append('sum="Debit"')
-                elif column.field.name == 'credit':
-                    attrs.append('sum="Credit"')
-                if column.readonly:
-                    attrs.append('readonly="1"')
-                if column.required:
-                    attrs.append('required="1"')
-                else:
-                    attrs.append('required="0"')
-                xml += ('<field name="%s" %s/>\n'
-                    % (column.field.name, ' '.join(attrs)))
-                for depend in getattr(cls, column.field.name).depends:
-                    fields.add(depend)
-            fields.add('state')
-            xml += '</tree>'
-            result['arch'] = xml
-            result['fields'] = cls.fields_get(fields_names=list(fields))
-        return result
-
-    @classmethod
     def reconcile(cls, lines, journal=None, date=None, account=None,
             description=None):
         pool = Pool()

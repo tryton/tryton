@@ -1,3 +1,4 @@
+* Remove journal view
 * Add amount second currency on Account
 * Enforce second currency on Account
 * Remove code from Fiscalyear and Period
