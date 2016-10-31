@@ -70,8 +70,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_code_template_view_tree"/>
             <field name="act_window" ref="act_tax_code_template_tree"/>
         </record>
-        <menuitem parent="menu_taxes" action="act_tax_code_template_tree"
-            id="menu_tax_code_template_tree"/>
+        <menuitem parent="menu_templates" action="act_tax_code_template_tree"
+            id="menu_tax_code_template_tree" sequence="30"/>
 
         <record model="ir.model.access" id="access_tax_code_template">
             <field name="model" search="[('model', '=', 'account.tax.code.template')]"/>
@@ -197,7 +197,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="tax_template_view_list">
             <field name="model">account.tax.template</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="name">tax_template_list</field>
+        </record>
+        <record model="ir.ui.view" id="tax_template_view_tree">
+            <field name="model">account.tax.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">tax_template_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_tax_template_list">
@@ -207,7 +215,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view" id="act_tax_template_list_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="tax_template_view_list"/>
+            <field name="view" ref="tax_template_view_tree"/>
             <field name="act_window" ref="act_tax_template_list"/>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_template_list_view2">
@@ -215,8 +223,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_template_view_form"/>
             <field name="act_window" ref="act_tax_template_list"/>
         </record>
-        <menuitem parent="menu_taxes" action="act_tax_template_list"
-            id="menu_tax_template_list"/>
+        <menuitem parent="menu_templates" action="act_tax_template_list"
+            id="menu_tax_template_list" sequence="40"/>
 
         <record model="ir.model.access" id="access_tax_template">
             <field name="model" search="[('model', '=', 'account.tax.template')]"/>
@@ -363,8 +371,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_rule_template_view_form"/>
             <field name="act_window" ref="act_tax_rule_template_form"/>
         </record>
-        <menuitem parent="menu_taxes" action="act_tax_rule_template_form"
-            id="menu_tax_rule_template_form"/>
+        <menuitem parent="menu_templates" action="act_tax_rule_template_form"
+            id="menu_tax_rule_template_form" sequence="50"/>
 
         <record model="ir.model.access" id="access_tax_rule_template">
             <field name="model" search="[('model', '=', 'account.tax.rule.template')]"/>
