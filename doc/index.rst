@@ -11,6 +11,8 @@ There are 4 types of invoice: *Invoice*, *Supplier Invoice*, *Credit Note* and
 *Paid* or *Canceled*.
 
 - Company: The company for which the invoice is created.
+- Tax Identifier: The tax identifier that will be printed on the invoice
+  (By default the first tax identifier of the company).
 - Number: The invoice number set on validation for supplier invoices and on
   posting for others using the sequence defined on the period or fiscal year.
 - Reference: The internal reference of the invoice.

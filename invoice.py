@@ -75,6 +75,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=_DEPENDS)
+    company_party = fields.Function(
+        fields.Many2One('party.party', "Company Party"),
+        'on_change_with_company_party')
+    tax_identifier = fields.Many2One(
+        'party.identifier', "Tax Identifier",
+        states=_STATES,
+        domain=[
+            ('party', '=', Eval('company_party', -1)),
+            ],
+        depends=_DEPENDS + ['company_party'])
     type = fields.Selection(_TYPE, 'Type', select=True,
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
@@ -191,6 +201,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls._order = [
             ('number', 'DESC'),
             ('id', 'DESC'),
+            ]
+        cls.tax_identifier.domain = [
+            cls.tax_identifier.domain,
+            ('type', 'in', cls._tax_identifier_types()),
             ]
         cls._error_messages.update({
                 'missing_tax_line': ('Invoice "%s" has taxes defined but not '
@@ -398,6 +412,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('company')
+    def on_change_with_company_party(self, name=None):
+        if self.company:
+            return self.company.party.id
 
     @classmethod
     def default_payment_term(cls):
@@ -970,6 +989,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Date = pool.get('ir.date')
 
         for invoice in invoices:
+            if not invoice.tax_identifier:
+                invoice.tax_identifier = invoice.get_tax_identifier()
+
             if invoice.number:
                 continue
 
@@ -999,6 +1021,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 if not invoice.invoice_date and invoice.type == 'out':
                     invoice.invoice_date = Transaction().context['date']
         cls.save(invoices)
+
+    @classmethod
+    def _tax_identifier_types(cls):
+        return ['eu_vat']
+
+    def get_tax_identifier(self):
+        "Return the default computed tax identifier"
+        types = self._tax_identifier_types()
+        for identifier in self.company.party.identifiers:
+            if identifier.type in types:
+                return identifier.id
 
     @classmethod
     def check_modify(cls, invoices):

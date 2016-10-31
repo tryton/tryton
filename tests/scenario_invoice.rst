@@ -25,6 +25,10 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
+    >>> tax_identifier = company.party.identifiers.new()
+    >>> tax_identifier.type = 'eu_vat'
+    >>> tax_identifier.code = 'BE0897290877'
+    >>> company.party.save()
 
 Create fiscal year::
 
@@ -144,6 +148,8 @@ Post invoice::
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'
+    >>> invoice.tax_identifier.code
+    u'BE0897290877'
     >>> invoice.untaxed_amount
     Decimal('220.00')
     >>> invoice.tax_amount

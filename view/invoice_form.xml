@@ -64,7 +64,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="info">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
+            <label name="tax_identifier"/>
+            <field name="tax_identifier"/>
             <label name="account"/>
             <field name="account"/>
             <label name="accounting_date"/>
