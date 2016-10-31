@@ -113,7 +113,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="identifier_list">
             <field name="model">party.identifier</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="name">identifier_list</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_list_sequence">
+            <field name="model">party.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">identifier_list_sequence</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_check_vies">

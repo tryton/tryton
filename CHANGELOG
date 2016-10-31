@@ -1,3 +1,4 @@
+* Add sequence order on Identifier
 * Add Replace Party wizard
 * Remove streetbis from Address
 * Add address format per country and language

@@ -7,7 +7,7 @@ import stdnum.exceptions
 from sql import Null, Column
 from sql.functions import CharLength
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -242,13 +242,14 @@ class PartyCategory(ModelSQL):
         ondelete='CASCADE', required=True, select=True)
 
 
-class PartyIdentifier(ModelSQL, ModelView):
+class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
     'Party Identifier'
     __name__ = 'party.identifier'
     _rec_name = 'code'
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
         required=True, select=True)
     type = fields.Selection('get_types', 'Type')
+    type_string = type.translated('type')
     code = fields.Char('Code', required=True)
 
     @classmethod
