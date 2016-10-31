@@ -225,6 +225,15 @@ button {
     margin-bottom: 0px;
 }
 
+.csv {
+    & .modal-dialog {
+        & .column-fields {
+            height: 35vh;
+            overflow-y: scroll;
+        }
+    }
+}
+
 @media screen and (max-width: @screen-xs-max) {
     .dict-label {
         text-align: left;
