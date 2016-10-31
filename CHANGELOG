@@ -1,3 +1,4 @@
+* Rename VAT Code into Tax Identifier
 * Add sequence order on Identifier
 * Add Replace Party wizard
 * Remove streetbis from Address

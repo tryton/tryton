@@ -41,8 +41,9 @@ class Party(ModelSQL, ModelView):
             states=STATES, depends=DEPENDS))
     identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
         states=STATES, depends=DEPENDS)
-    vat_code = fields.Function(fields.Char('VAT Code'),
-        'get_vat_code', searcher='search_vat_code')
+    tax_identifier = fields.Function(fields.Many2One(
+            'party.identifier', 'Tax Identifier'),
+        'get_tax_identifier', searcher='search_tax_identifier')
     addresses = fields.One2Many('party.address', 'party',
         'Addresses', states=STATES, depends=DEPENDS)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -129,31 +130,32 @@ class Party(ModelSQL, ModelView):
         return True
 
     @classmethod
-    def _vat_types(cls):
+    def _tax_identifier_types(cls):
         return ['eu_vat']
 
-    def get_vat_code(self, name):
-        types = self._vat_types()
+    def get_tax_identifier(self, name):
+        types = self._tax_identifier_types()
         for identifier in self.identifiers:
             if identifier.type in types:
-                return identifier.code
+                return identifier.id
 
     @classmethod
-    def search_vat_code(cls, name, clause):
+    def search_tax_identifier(cls, name, clause):
         _, operator, value = clause
+        types = cls._tax_identifier_types()
         domain = [
             ('identifiers', 'where', [
                     ('code', operator, value),
-                    ('type', 'in', cls._vat_types()),
+                    ('type', 'in', types),
                     ]),
             ]
-        # Add party without vat code
+        # Add party without tax identifier
         if ((operator == '=' and value is None)
                 or (operator == 'in' and None in value)):
             domain = ['OR',
                 domain, [
                     ('identifiers', 'not where', [
-                            ('type', 'in', cls._vat_types()),
+                            ('type', 'in', types),
                             ]),
                     ],
                 ]
@@ -411,7 +413,8 @@ class PartyReplace(Wizard):
         cls._error_messages.update({
                 'different_name': ("Parties have different names: "
                     "%(source_name)s vs %(destination_name)s."),
-                'different_vat_code': ("Parties have different VAT Code: "
+                'different_tax_identifier': (
+                    "Parties have different Tax Identifier: "
                     "%(source_code)s vs %(destination_code)s."),
                 })
 
@@ -424,11 +427,16 @@ class PartyReplace(Wizard):
                     'source_name': source.name,
                     'destination_name': destination.name,
                     })
-        if source.vat_code != destination.vat_code:
-            key = 'party.replace vat_code %s %s' % (source.id, destination.id)
-            self.raise_user_warning(key, 'different_vat_code', {
-                    'source_code': source.vat_code,
-                    'destination_code': destination.vat_code,
+        source_code = (source.tax_identifier.code
+            if source.tax_identifier else '')
+        destination_code = (destination.tax_identifier.code
+            if destination.tax_identifier else '')
+        if source_code != destination_code:
+            key = 'party.replace tax_identifier %s %s' % (
+                source.id, destination.id)
+            self.raise_user_warning(key, 'different_tax_identifier', {
+                    'source_code': source_code,
+                    'destination_code': destination_code,
                     })
 
     def transition_replace(self):
