@@ -3311,6 +3311,7 @@ function eval_pyson(value){
 
     Sao.View.Form.MultiSelection = Sao.class_(Sao.View.Form.Selection, {
         class_: 'form-multiselection',
+        expand: true,
         init: function(field_name, model, attributes) {
             this.nullable_widget = false;
             Sao.View.Form.MultiSelection._super.init.call(this, field_name,
@@ -3320,6 +3321,13 @@ function eval_pyson(value){
         display_update_selection: function(record, field) {
             var i, len, element;
             this.update_selection(record, field, function() {
+                var yexpand = this.attributes.yexpand;
+                if (yexpand === undefined) {
+                    yexpand = this.expand;
+                }
+                if (!yexpand) {
+                    this.select.prop('size', this.select.children().length);
+                }
                 if (!field) {
                     return;
                 }
