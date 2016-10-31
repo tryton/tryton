@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="inherit"/>
     <field name="inherit"/>
     <label name="domain"/>
-    <field name="domain"/>
+    <field name="domain" widget="pyson"/>
     <label name="priority"/>
     <field name="priority"/>
     <label name="field_childs"/>

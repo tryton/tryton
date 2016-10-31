@@ -6,5 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="rule_group"/>
     <newline/>
     <label name="domain"/>
-    <field name="domain" colspan="3"/>
+    <field name="domain" colspan="3" widget="pyson"/>
 </form>

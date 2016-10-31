@@ -14,5 +14,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="act_window"/>
     <newline/>
     <label name="domain"/>
-    <field name="domain" colspan="5"/>
+    <field name="domain" colspan="5" widget="pyson"/>
 </form>

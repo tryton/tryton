@@ -161,6 +161,7 @@
           <value>richtext</value>
           <value>dict</value>
           <value>multiselection</value>
+          <value>pyson</value>
         </choice>
       </attribute>
     </optional>
