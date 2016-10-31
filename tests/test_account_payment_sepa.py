@@ -32,7 +32,7 @@ def setup_environment():
 
     currency = create_currency('EUR')
     company = create_company(currency=currency)
-    sepa = Identifier(party=company.party, code='BE68539007547034',
+    sepa = Identifier(party=company.party, code='ES23ZZZ47690558N',
         type='sepa')
     sepa.save()
     bank_party = Party(name='European Bank')
@@ -257,14 +257,43 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
 
         party = Party(name='test')
 
-        sepa = Identifier(party=party, code='BE68539007547034',
+        sepa = Identifier(party=party, code='ES23ZZZ47690558N',
             type='sepa')
         sepa.save()
 
-        sepa2 = Identifier(party=party, code='BE68539007547034',
+        sepa2 = Identifier(party=party, code='ES23ZZZ47690558N',
             type='sepa')
         with self.assertRaises(UserError):
             sepa2.save()
+
+    @with_transaction()
+    def test_sepa_identifier(self):
+        'Test sepa indentifier validation'
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+
+        party = Party(name='test')
+        sepa = Identifier(party=party, code='BE68539007547034',
+            type='sepa')
+        with self.assertRaises(UserError):
+            sepa.save()
+
+        party2 = Party(name='test2')
+        sepa = Identifier(party=party2, code='007547034',
+            type='sepa')
+        with self.assertRaises(UserError):
+            sepa.save()
+
+        party3 = Party(name='test3')
+        sepa = Identifier(party=party3, code='ES23ZZZ47690558N',
+            type='sepa')
+        sepa.save()
+
+        party4 = Party(name='test4')
+        sepa = Identifier(party=party4, code='ES 23ZZZ 4769 055  8N',
+            type='sepa')
+        sepa.save()
 
     @with_transaction()
     def test_payment_sepa_bank_account_number(self):

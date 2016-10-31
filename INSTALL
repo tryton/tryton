@@ -12,6 +12,7 @@ Prerequisites
  * trytond_account_payment (http://www.tryton.org/)
  * trytond_bank (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
+ * python-stdnum (http://arthurdejong.org/python-stdnum/)
 
 Installation
 ------------

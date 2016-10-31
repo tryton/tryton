@@ -3,6 +3,9 @@
 from sql import Null, Literal
 from sql.functions import CurrentTimestamp
 
+import stdnum.eu.at_02 as sepa
+import stdnum.exceptions
+
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.transaction import Transaction
@@ -59,6 +62,8 @@ class PartyIdentifier:
         cls._error_messages.update({
                 'unique_sepa': ('Party "%(party)s" has more than one '
                     'SEPA Creditor Identifier.'),
+                'sepa_invalid': ('The SEPA identifier "%(code)s" on party '
+                    '"%(party)s" is not valid.'),
                 })
 
     @classmethod
@@ -69,7 +74,6 @@ class PartyIdentifier:
 
     def check_code(self):
         super(PartyIdentifier, self).check_code()
-        # TODO validate identifier with python-stdnum
         if self.type == 'sepa':
             for identifier in self.party.identifiers:
                 if identifier.type == 'sepa' and self != identifier:
@@ -77,3 +81,23 @@ class PartyIdentifier:
                             'invalid_sepa': self.code,
                             'party': self.party.rec_name,
                             })
+            if not sepa.is_valid(self.code):
+                # Called from pre_validate so party may not be saved yet
+                if self.party and self.party.id > 0:
+                    party = self.party.rec_name
+                else:
+                    party = ''
+                self.raise_user_error('sepa_invalid', {
+                        'code': self.code,
+                        'party': party,
+                        })
+
+    @fields.depends('type', 'code')
+    def on_change_with_code(self):
+        code = super(PartyIdentifier, self).on_change_with_code()
+        if self.type == 'sepa':
+            try:
+                return sepa.compact(self.code)
+            except stdnum.exceptions.ValidationError:
+                pass
+        return code
