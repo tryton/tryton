@@ -294,6 +294,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_tax"/>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_tax_test">
+            <field name="name">Test Tax</field>
+            <field name="wiz_name">account.tax.test</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_tax_test_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.tax,-1</field>
+            <field name="action" ref="wizard_tax_test"/>
+        </record>
+        <menuitem parent="menu_taxes" action="wizard_tax_test"
+            id="menu_tax_test"/>
+
+        <record model="ir.ui.view" id="tax_test_view_form">
+            <field name="model">account.tax.test</field>
+            <field name="type">form</field>
+            <field name="name">tax_test_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_test_result_view_list">
+            <field name="model">account.tax.test.result</field>
+            <field name="type">tree</field>
+            <field name="name">tax_test_result_list</field>
+        </record>
+
         <record model="ir.ui.view" id="tax_line_view_form">
             <field name="model">account.tax.line</field>
             <field name="type">form</field>

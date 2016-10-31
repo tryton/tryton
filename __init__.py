@@ -69,6 +69,8 @@ def register():
         AccountTemplate2,
         AccountTax,
         Account2,
+        TestTaxView,
+        TestTaxViewResult,
         MoveTemplate,
         MoveTemplateKeyword,
         MoveLineTemplate,
@@ -98,6 +100,7 @@ def register():
         CreateMove,
         OpenChartTaxCode,
         OpenTaxCode,
+        TestTax,
         PartyReplace,
         module='account', type_='wizard')
     Pool.register(

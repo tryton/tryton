@@ -20,7 +20,8 @@ __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
     'TaxTemplate', 'Tax', 'TaxLine', 'TaxRuleTemplate', 'TaxRule',
     'TaxRuleLineTemplate', 'TaxRuleLine',
     'OpenTaxCode',
-    'AccountTemplateTaxTemplate', 'AccountTemplate2', 'AccountTax', 'Account2']
+    'AccountTemplateTaxTemplate', 'AccountTemplate2', 'AccountTax', 'Account2',
+    'TestTax', 'TestTaxView', 'TestTaxViewResult']
 
 KINDS = [
     ('sale', 'Sale'),
@@ -1607,3 +1608,83 @@ class Account2:
             help=('Default tax for manual encoding of move lines \n'
                 'for journal types: "expense" and "revenue"'),
             depends=['company'])
+
+
+class TestTax(Wizard):
+    "Test Tax"
+    __name__ = 'account.tax.test'
+    start_state = 'test'
+    test = StateView(
+        'account.tax.test', 'account.tax_test_view_form',
+        [Button('Close', 'end', 'tryton-close', default=True)])
+
+    def default_test(self, fields):
+        context = Transaction().context
+        default = {}
+        if context['active_model'] == 'account.tax':
+            default['taxes'] = context['active_ids']
+        return default
+
+
+class TestTaxView(ModelView, TaxableMixin):
+    "Test Tax"
+    __name__ = 'account.tax.test'
+    tax_date = fields.Date("Date")
+    taxes = fields.One2Many('account.tax', None, "Taxes",
+        domain=[
+            ('parent', '=', None),
+            ])
+    unit_price = fields.Numeric("Unit Price")
+    quantity = fields.Numeric("Quantity")
+    currency = fields.Many2One('currency.currency', 'Currency')
+    result = fields.One2Many(
+        'account.tax.test.result', None, "Result", readonly=True)
+
+    @classmethod
+    def default_tax_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+    @classmethod
+    def default_quantity(cls):
+        return 1
+
+    @classmethod
+    def default_currency(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = Transaction().context.get('company')
+        if company_id:
+            company = Company(company_id)
+            return company.currency.id
+
+    @property
+    def taxable_lines(self):
+        return [(self.taxes, self.unit_price, self.quantity)]
+
+    @fields.depends(
+        'tax_date', 'taxes', 'unit_price', 'quantity', 'currency', 'result')
+    def on_change_with_result(self):
+        pool = Pool()
+        Result = pool.get('account.tax.test.result')
+        result = []
+        if all([self.tax_date, self.unit_price, self.quantity, self.currency]):
+            for taxline in self._get_taxes():
+                result.append(Result(**taxline))
+        self.result = result
+        return self._changed_values.get('result', [])
+
+
+class TestTaxViewResult(ModelView):
+    "Test Tax"
+    __name__ = 'account.tax.test.result'
+    tax = fields.Many2One('account.tax', "Tax")
+    description = fields.Char("Description")
+    account = fields.Many2One('account.account', "Account")
+    base = fields.Numeric("Base")
+    base_code = fields.Many2One('account.tax.code', "Base Code")
+    base_sign = fields.Numeric("Base Sign", digits=(2, 0))
+    amount = fields.Numeric("Amount")
+    tax_code = fields.Many2One('account.tax.code', "Tax Code")
+    tax_sign = fields.Numeric("Tax Sign", digits=(2, 0))
