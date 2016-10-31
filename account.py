@@ -863,6 +863,20 @@ class Account(ModelSQL, ModelView):
         else:
             return self.name
 
+    __on_change_parent_fields = ['name', 'code', 'company', 'type',
+        'reconcile', 'kind', 'deferral', 'party_required',
+        'general_ledger_balance', 'taxes']
+
+    @fields.depends('parent', *__on_change_parent_fields)
+    def on_change_parent(self):
+        if not self.parent:
+            return
+        for field in self.__on_change_parent_fields:
+            if (not getattr(self, field)
+                    or field in {'reconcile', 'kind', 'deferral',
+                        'party_required', 'general_ledger_balance'}):
+                setattr(self, field, getattr(self.parent, field))
+
     @classmethod
     def search_rec_name(cls, name, clause):
         if clause[1].startswith('!') or clause[1].startswith('not '):
