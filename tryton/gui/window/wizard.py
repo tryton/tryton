@@ -60,6 +60,7 @@ class Wizard(InfoBar):
             try:
                 result = result()
             except RPCException:
+                self.destroy()
                 return
             self.session_id, self.start_state, self.end_state = result
             self.state = self.start_state
