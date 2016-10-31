@@ -15,9 +15,12 @@ class MultiSelection(Widget, SelectionMixin):
     def __init__(self, view, attrs):
         super(MultiSelection, self).__init__(view, attrs)
 
-        self.widget = gtk.ScrolledWindow()
-        self.widget.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        self.widget.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        if int(attrs.get('yexpand', self.expand)):
+            self.widget = gtk.ScrolledWindow()
+            self.widget.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            self.widget.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        else:
+            self.widget = gtk.VBox()
         self.widget.get_accessible().set_name(attrs.get('string', ''))
 
         self.model = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING)
