@@ -31,6 +31,7 @@ from .form_gtk.one2one import One2One
 from .form_gtk.richtextbox import RichTextBox
 from .form_gtk.dictionary import DictWidget
 from .form_gtk.multiselection import MultiSelection
+from .form_gtk.pyson import PYSON
 from .form_gtk.state_widget import (Label, VBox, Image, Frame, ScrolledWindow,
     Notebook, Alignment)
 
@@ -377,6 +378,7 @@ class ViewForm(View):
         'richtext': RichTextBox,
         'dict': DictWidget,
         'multiselection': MultiSelection,
+        'pyson': PYSON,
         }
 
     @classmethod

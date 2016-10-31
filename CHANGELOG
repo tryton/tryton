@@ -1,3 +1,4 @@
+* Add PYSON Widget
 * Show records names in wizard title
 * Add support for datetime_field to Reference
 * Show non editable widget as insensitive
