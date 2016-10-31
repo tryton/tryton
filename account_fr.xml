@@ -5392,6 +5392,7 @@
             <field name="type" ref="avances_acomptes"/>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="409"/>
         </record>
@@ -5401,6 +5402,7 @@
             <field name="type" ref="creances_autres"/>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="409"/>
         </record>
@@ -5416,6 +5418,7 @@
             <field name="type" ref="creances_autres"/>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4097"/>
         </record>
@@ -5425,6 +5428,7 @@
             <field name="type" ref="creances_autres"/>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4097"/>
         </record>
@@ -5434,6 +5438,7 @@
             <field name="type" ref="creances_autres"/>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="409"/>
         </record>
