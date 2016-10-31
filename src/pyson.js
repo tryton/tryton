@@ -147,7 +147,12 @@
     });
 
     Sao.PYSON.Bool.eval_ = function(value, context) {
-        if (value.v instanceof Object) {
+        if (moment.isMoment(value.v) && value.v.isTime) {
+            return Boolean(value.v.hour() || value.v.minute() ||
+                    value.v.second() || value.v.millisecond());
+        } else if (moment.isDuration(value.v)) {
+            return Boolean(value.v.valueOf());
+        } else if (value.v instanceof Object) {
             return !jQuery.isEmptyObject(value.v);
         } else {
             return Boolean(value.v);
