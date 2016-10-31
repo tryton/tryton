@@ -35,10 +35,10 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Children" id="children">
             <field name="childs" colspan="4"/>
         </page>
-        <page string="Deferrals" id="deferrals">
+        <page name="deferrals">
             <field name="deferrals"/>
         </page>
-        <page string="Notes" id="notes">
+        <page name="note">
             <field name="note"/>
         </page>
     </notebook>
