@@ -41,6 +41,8 @@
                 this.start_state = this.state = result[1];
                 this.end_state = result[2];
                 this.process();
+            }.bind(this), function() {
+                this.destroy();
             }.bind(this));
         },
         process: function() {
