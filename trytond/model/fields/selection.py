@@ -6,6 +6,7 @@ from sql.conditionals import Case
 
 from ... import backend
 from ...transaction import Transaction
+from ...tools import is_instance_method
 from .field import Field, SQLType
 
 
@@ -84,8 +85,14 @@ class TranslatedSelection(object):
         if inst is None:
             return self
         with Transaction().set_context(getattr(inst, '_context', {})):
-            selection = dict(
-                cls.fields_get([self.name])[self.name]['selection'])
+            selection = cls.fields_get([self.name])[self.name]['selection']
+            if not isinstance(selection, (tuple, list)):
+                sel_func = getattr(cls, selection)
+                if not is_instance_method(cls, selection):
+                    selection = sel_func()
+                else:
+                    selection = sel_func(inst)
+            selection = dict(selection)
         value = getattr(inst, self.name)
         # None and '' are equivalent
         if value is None or value == '':

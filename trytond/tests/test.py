@@ -654,8 +654,11 @@ class Selection(ModelSQL):
     select_string = select.translated('select')
     dyn_select = fields.Selection('get_selection',
         'Instance Dynamic Selection')
+    dyn_select_string = dyn_select.translated('dyn_select')
     dyn_select_static = fields.Selection('static_selection',
         'Static Selection')
+    dyn_select_static_string = dyn_select_static.translated(
+        'dyn_select_static')
 
     @fields.depends('select')
     def get_selection(self):

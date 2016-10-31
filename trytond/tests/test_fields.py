@@ -3192,6 +3192,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(selection3)
         self.assertEqual(selection3.select, 'arabic')
         self.assertEqual(selection3.dyn_select, '1')
+        self.assertEqual(selection3.dyn_select_string, '1')
 
         selection4, = Selection.create(
             [{'select': 'hexa', 'dyn_select': '0x3'}])
@@ -3209,6 +3210,11 @@ class FieldsTestCase(unittest.TestCase):
             [{'select': 'arabic', 'dyn_select': '0x3'}])
         self.assertRaises(UserError, Selection.create,
             [{'select': 'hexa', 'dyn_select': '3'}])
+
+        selection7, = Selection.create(
+            [{'dyn_select_static': '1'}])
+        self.assertEqual(selection7.dyn_select_static, '1')
+        self.assertEqual(selection7.dyn_select_static_string, '1')
 
         self.assertRaises(UserError, SelectionRequired.create, [{}])
         transaction.rollback()
