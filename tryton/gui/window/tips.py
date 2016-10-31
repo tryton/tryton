@@ -46,7 +46,6 @@ You can save any graphs in PNG file with right-click on it.
                 gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_has_separator(True)
         self.win.set_default_size(500, 400)
 
         self.win.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)

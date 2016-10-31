@@ -20,7 +20,6 @@ class Limit(object):
                 gtk.RESPONSE_OK))
         self.win.set_default_response(gtk.RESPONSE_OK)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_has_separator(True)
         self.win.vbox.set_spacing(3)
         self.win.vbox.pack_start(gtk.Label(
             _('Search Limit Settings')), expand=False, fill=True)
@@ -30,7 +29,8 @@ class Limit(object):
         hbox.pack_start(label, expand=True, fill=True)
         adjustment = gtk.Adjustment(value=CONFIG['client.limit'],
             lower=1, upper=sys.maxint, step_incr=10, page_incr=100)
-        self.spin_limit = gtk.SpinButton(adjustment, climb_rate=1, digits=0)
+        self.spin_limit = gtk.SpinButton()
+        self.spin_limit.configure(adjustment, climb_rate=1, digits=0)
         self.spin_limit.set_numeric(False)
         self.spin_limit.set_activates_default(True)
         label.set_mnemonic_widget(self.spin_limit)

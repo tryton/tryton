@@ -19,7 +19,6 @@ class Shortcuts(object):
             | gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG,
             (gtk.STOCK_OK, gtk.RESPONSE_OK))
         self.dialog.set_icon(TRYTON_ICON)
-        self.dialog.set_has_separator(True)
         self.dialog.set_default_response(gtk.RESPONSE_OK)
         notebook = gtk.Notebook()
         self.dialog.vbox.pack_start(notebook)

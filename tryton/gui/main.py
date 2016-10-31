@@ -143,6 +143,7 @@ class Main(object):
         self.buttons = {}
 
         self.pane = gtk.HPaned()
+        self.vbox.pack_start(self.pane, True, True)
         self.pane.connect('button-press-event',
             self.on_paned_button_press_event)
 
@@ -154,9 +155,7 @@ class Main(object):
         else:
             self.menu_expander.set_direction(gtk.TEXT_DIR_RTL)
         self.menu_expander.set_expanded(CONFIG['menu.expanded'])
-        self.pane.add(self.menu_expander)
-
-        self.vbox.pack_start(self.pane, True, True)
+        self.pane.add1(self.menu_expander)
 
         self.notebook = gtk.Notebook()
         self.notebook.popup_enable()
@@ -211,7 +210,8 @@ class Main(object):
         self.vbox.pack_start(menubar, False, True)
         self.vbox.reorder_child(menubar, 0)
 
-        menuitem_connection = gtk.MenuItem(_('_Connection'))
+        menuitem_connection = gtk.MenuItem(
+            _('_Connection'), use_underline=True)
         menubar.add(menuitem_connection)
 
         menu_connection = self._set_menu_connection()
@@ -219,7 +219,7 @@ class Main(object):
         menu_connection.set_accel_group(self.accel_group)
         menu_connection.set_accel_path('<tryton>/Connection')
 
-        menuitem_user = gtk.MenuItem(_('_User'))
+        menuitem_user = gtk.MenuItem(_('_User'), use_underline=True)
         if self.menuitem_user:
             menuitem_user.set_sensitive(
                     self.menuitem_user.get_property('sensitive'))
@@ -233,7 +233,7 @@ class Main(object):
         menu_user.set_accel_group(self.accel_group)
         menu_user.set_accel_path('<tryton>/User')
 
-        menuitem_options = gtk.MenuItem(_('_Options'))
+        menuitem_options = gtk.MenuItem(_('_Options'), use_underline=True)
         menubar.add(menuitem_options)
 
         menu_options = self._set_menu_options()
@@ -241,7 +241,7 @@ class Main(object):
         menu_options.set_accel_group(self.accel_group)
         menu_options.set_accel_path('<tryton>/Options')
 
-        menuitem_favorite = gtk.MenuItem(_('Fa_vorites'))
+        menuitem_favorite = gtk.MenuItem(_('Fa_vorites'), use_underline=True)
         if self.menuitem_favorite:
             menuitem_favorite.set_sensitive(
                 self.menuitem_favorite.get_property('sensitive'))
@@ -257,7 +257,7 @@ class Main(object):
                 self.favorite_set()
         menuitem_favorite.connect('select', favorite_activate)
 
-        menuitem_help = gtk.MenuItem(_('_Help'))
+        menuitem_help = gtk.MenuItem(_('_Help'), use_underline=True)
         menubar.add(menuitem_help)
 
         menu_help = self._set_menu_help()
@@ -390,6 +390,7 @@ class Main(object):
 
         imagemenuitem_connect = gtk.ImageMenuItem(_('_Connect...'),
             self.accel_group)
+        imagemenuitem_connect.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-connect', gtk.ICON_SIZE_MENU)
         imagemenuitem_connect.set_image(image)
@@ -398,6 +399,7 @@ class Main(object):
         menu_connection.add(imagemenuitem_connect)
 
         imagemenuitem_disconnect = gtk.ImageMenuItem(_('_Disconnect'))
+        imagemenuitem_disconnect.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-disconnect', gtk.ICON_SIZE_MENU)
         imagemenuitem_disconnect.set_image(image)
@@ -408,6 +410,7 @@ class Main(object):
 
         imagemenuitem_close = gtk.ImageMenuItem(_('_Quit...'),
             self.accel_group)
+        imagemenuitem_close.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-log-out', gtk.ICON_SIZE_MENU)
         imagemenuitem_close.set_image(image)
@@ -422,6 +425,7 @@ class Main(object):
         menu_user = gtk.Menu()
 
         imagemenuitem_preference = gtk.ImageMenuItem(_('_Preferences...'))
+        imagemenuitem_preference.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-preferences-system-session',
                 gtk.ICON_SIZE_MENU)
@@ -434,6 +438,7 @@ class Main(object):
 
         imagemenuitem_menu = gtk.ImageMenuItem(_('_Menu Reload'),
             self.accel_group)
+        imagemenuitem_menu.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-start-here', gtk.ICON_SIZE_MENU)
         imagemenuitem_menu.set_image(image)
@@ -443,6 +448,7 @@ class Main(object):
 
         imagemenuitem_menu_toggle = gtk.ImageMenuItem(_('_Menu Toggle'),
                 self.accel_group)
+        imagemenuitem_menu_toggle.set_use_underline(True)
         imagemenuitem_menu_toggle.connect('activate',
             lambda *a: self.menu_toggle())
         imagemenuitem_menu_toggle.set_accel_path('<tryton>/User/Toggle Menu')
@@ -450,6 +456,7 @@ class Main(object):
 
         imagemenuitem_global_search = gtk.ImageMenuItem(_('_Global Search'),
             self.accel_group)
+        imagemenuitem_global_search.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('gtk-find', gtk.ICON_SIZE_MENU)
         imagemenuitem_global_search.set_image(image)
@@ -463,7 +470,7 @@ class Main(object):
     def _set_menu_options(self):
         menu_options = gtk.Menu()
 
-        menuitem_toolbar = gtk.MenuItem(_('_Toolbar'))
+        menuitem_toolbar = gtk.MenuItem(_('_Toolbar'), use_underline=True)
         menu_options.add(menuitem_toolbar)
 
         menu_toolbar = gtk.Menu()
@@ -471,7 +478,8 @@ class Main(object):
         menu_toolbar.set_accel_path('<tryton>/Options/Toolbar')
         menuitem_toolbar.set_submenu(menu_toolbar)
 
-        radiomenuitem_default = gtk.RadioMenuItem(label=_('_Default'))
+        radiomenuitem_default = gtk.RadioMenuItem(label=_('_Default'),
+            use_underline=True)
         radiomenuitem_default.connect('activate',
                 lambda x: self.sig_toolbar('default'))
         radiomenuitem_default.set_accel_path(
@@ -481,7 +489,7 @@ class Main(object):
             radiomenuitem_default.set_active(True)
 
         radiomenuitem_both = gtk.RadioMenuItem(group=radiomenuitem_default,
-                label=_('_Text and Icons'))
+                label=_('_Text and Icons'), use_underline=True)
         radiomenuitem_both.connect('activate',
                 lambda x: self.sig_toolbar('both'))
         radiomenuitem_both.set_accel_path(
@@ -491,7 +499,7 @@ class Main(object):
             radiomenuitem_both.set_active(True)
 
         radiomenuitem_icons = gtk.RadioMenuItem(group=radiomenuitem_default,
-                label=_('_Icons'))
+                label=_('_Icons'), use_underline=True)
         radiomenuitem_icons.connect('activate',
                 lambda x: self.sig_toolbar('icons'))
         radiomenuitem_icons.set_accel_path('<tryton>/Options/Toolbar/Icons')
@@ -500,7 +508,7 @@ class Main(object):
             radiomenuitem_icons.set_active(True)
 
         radiomenuitem_text = gtk.RadioMenuItem(group=radiomenuitem_default,
-                label=_('_Text'))
+                label=_('_Text'), use_underline=True)
         radiomenuitem_text.connect('activate',
                 lambda x: self.sig_toolbar('text'))
         radiomenuitem_text.set_accel_path('<tryton>/Options/Toolbar/Text')
@@ -509,7 +517,7 @@ class Main(object):
             radiomenuitem_text.set_active(True)
 
         # Menubar accelerators
-        menuitem_menubar = gtk.MenuItem(_('_Menubar'))
+        menuitem_menubar = gtk.MenuItem(_('_Menubar'), use_underline=True)
         menu_options.add(menuitem_menubar)
 
         menu_menubar = gtk.Menu()
@@ -517,7 +525,8 @@ class Main(object):
         menu_menubar.set_accel_path('<tryton>/Options/Menubar')
         menuitem_menubar.set_submenu(menu_menubar)
 
-        checkmenuitem_accel = gtk.CheckMenuItem(_('Change Accelerators'))
+        checkmenuitem_accel = gtk.CheckMenuItem(_('Change Accelerators'),
+            use_underline=True)
         checkmenuitem_accel.connect('activate',
                 lambda menuitem: self.sig_accel_change(menuitem.get_active()))
         checkmenuitem_accel.set_accel_path('<tryton>/Options/Menubar/Accel')
@@ -525,7 +534,7 @@ class Main(object):
         if CONFIG['client.can_change_accelerators']:
             checkmenuitem_accel.set_active(True)
 
-        menuitem_mode = gtk.MenuItem(_('_Mode'))
+        menuitem_mode = gtk.MenuItem(_('_Mode'), use_underline=True)
         menu_options.add(menuitem_mode)
 
         menu_mode = gtk.Menu()
@@ -533,7 +542,8 @@ class Main(object):
         menu_mode.set_accel_path('<tryton>/Options/Mode')
         menuitem_mode.set_submenu(menu_mode)
 
-        radiomenuitem_normal = gtk.RadioMenuItem(label=_('_Normal'))
+        radiomenuitem_normal = gtk.RadioMenuItem(label=_('_Normal'),
+            use_underline=True)
         self.radiomenuitem_normal = radiomenuitem_normal
         radiomenuitem_normal.connect('activate',
                 lambda x: self.sig_mode_change(False))
@@ -541,14 +551,14 @@ class Main(object):
         menu_mode.add(radiomenuitem_normal)
 
         radiomenuitem_pda = gtk.RadioMenuItem(group=radiomenuitem_normal,
-                label=_('_PDA'))
+                label=_('_PDA'), use_underline=True)
         self.radiomenuitem_pda = radiomenuitem_pda
         radiomenuitem_pda.connect('activate',
                 lambda x: self.sig_mode_change(True))
         radiomenuitem_pda.set_accel_path('<tryton>/Options/Mode/PDA')
         menu_mode.add(radiomenuitem_pda)
 
-        menuitem_form = gtk.MenuItem(_('_Form'))
+        menuitem_form = gtk.MenuItem(_('_Form'), use_underline=True)
         menu_options.add(menuitem_form)
 
         menu_form = gtk.Menu()
@@ -557,7 +567,7 @@ class Main(object):
         menuitem_form.set_submenu(menu_form)
 
         checkmenuitem_save_width_height = gtk.CheckMenuItem(
-            _('Save Width/Height'))
+            _('Save Width/Height'), use_underline=True)
         checkmenuitem_save_width_height.connect('activate',
             lambda menuitem: CONFIG.__setitem__('client.save_width_height',
                 menuitem.get_active()))
@@ -568,7 +578,7 @@ class Main(object):
             checkmenuitem_save_width_height.set_active(True)
 
         checkmenuitem_save_tree_state = gtk.CheckMenuItem(
-            _('Save Tree State'))
+            _('Save Tree State'), use_underline=True)
         checkmenuitem_save_tree_state.connect('activate',
             lambda menuitem: CONFIG.__setitem__(
                 'client.save_tree_state',
@@ -580,7 +590,7 @@ class Main(object):
             checkmenuitem_save_tree_state.set_active(True)
 
         checkmenuitem_fast_tabbing = gtk.CheckMenuItem(
-            _('Fast Tabbing'))
+            _('Fast Tabbing'), use_underline=True)
         checkmenuitem_fast_tabbing.connect('activate',
             lambda menuitem: CONFIG.__setitem__('client.fast_tabbing',
                 menuitem.get_active()))
@@ -590,7 +600,8 @@ class Main(object):
         checkmenuitem_fast_tabbing.set_active(CONFIG['client.fast_tabbing'])
 
         if gtkspell:
-            checkmenuitem_spellcheck = gtk.CheckMenuItem(_('Spell Checking'))
+            checkmenuitem_spellcheck = gtk.CheckMenuItem(_('Spell Checking'),
+                use_underline=True)
             checkmenuitem_spellcheck.connect('activate',
                     lambda menuitem: CONFIG.__setitem__('client.spellcheck',
                         menuitem.get_active()))
@@ -602,23 +613,25 @@ class Main(object):
 
         imagemenuitem_win_prev = gtk.ImageMenuItem(_('_Previous Tab'),
             self.accel_group)
+        imagemenuitem_win_prev.set_use_underline(True)
         imagemenuitem_win_prev.connect('activate', self.sig_win_prev)
         imagemenuitem_win_prev.set_accel_path('<tryton>/Form/Previous Tab')
         menu_form.add(imagemenuitem_win_prev)
 
         imagemenuitem_win_next = gtk.ImageMenuItem(_('_Next Tab'),
             self.accel_group)
+        imagemenuitem_win_next.set_use_underline(True)
         imagemenuitem_win_next.connect('activate', self.sig_win_next)
         imagemenuitem_win_next.set_accel_path('<tryton>/Form/Next Tab')
         menu_form.add(imagemenuitem_win_next)
 
-        menuitem_limit = gtk.MenuItem(_('Search Limit...'))
+        menuitem_limit = gtk.MenuItem(_('Search Limit...'), use_underline=True)
         self.menuitem_limit = menuitem_limit
         menuitem_limit.connect('activate', self.sig_limit)
         menuitem_limit.set_accel_path('<tryton>/Options/Search Limit')
         menu_options.add(menuitem_limit)
 
-        menuitem_email = gtk.MenuItem(_('_Email...'))
+        menuitem_email = gtk.MenuItem(_('_Email...'), use_underline=True)
         self.menuitem_email = menuitem_email
         menuitem_email.connect('activate', self.sig_email)
         menuitem_email.set_accel_path('<tryton>/Options/Email')
@@ -627,6 +640,7 @@ class Main(object):
         menu_options.add(gtk.SeparatorMenuItem())
 
         imagemenuitem_opt_save = gtk.ImageMenuItem(_('_Save Options'))
+        imagemenuitem_opt_save.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-save', gtk.ICON_SIZE_MENU)
         imagemenuitem_opt_save.set_image(image)
@@ -639,6 +653,7 @@ class Main(object):
         menu_help = gtk.Menu()
 
         imagemenuitem_tips = gtk.ImageMenuItem(_('_Tips...'))
+        imagemenuitem_tips.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-information', gtk.ICON_SIZE_MENU)
         imagemenuitem_tips.set_image(image)
@@ -648,6 +663,7 @@ class Main(object):
 
         imagemenuitem_shortcuts = gtk.ImageMenuItem(
             _('_Keyboard Shortcuts...'))
+        imagemenuitem_shortcuts.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('tryton-help', gtk.ICON_SIZE_MENU)
         imagemenuitem_shortcuts.set_image(image)
@@ -657,6 +673,7 @@ class Main(object):
         menu_help.add(imagemenuitem_shortcuts)
 
         imagemenuitem_about = gtk.ImageMenuItem(_('_About...'))
+        imagemenuitem_about.set_use_underline(True)
         image = gtk.Image()
         image.set_from_stock('gtk-about', gtk.ICON_SIZE_MENU)
         imagemenuitem_about.set_image(image)
@@ -712,7 +729,8 @@ class Main(object):
             menuitem.connect('activate', _action_favorite, id_)
             menu.add(menuitem)
         menu.add(gtk.SeparatorMenuItem())
-        manage_favorites = gtk.MenuItem(_('Manage Favorites'))
+        manage_favorites = gtk.MenuItem(_('Manage Favorites'),
+            use_underline=True)
         manage_favorites.connect('activate', _manage_favorites)
         menu.add(manage_favorites)
         menu.show_all()
@@ -721,7 +739,7 @@ class Main(object):
 
     def favorite_unset(self):
         had_submenu = self.menuitem_favorite.get_submenu()
-        self.menuitem_favorite.remove_submenu()
+        self.menuitem_favorite.set_submenu(None)
         # Set a submenu to get keyboard shortcut working
         self.menuitem_favorite.set_submenu(gtk.Menu())
 
@@ -926,7 +944,6 @@ class Main(object):
             self.notebook.grab_focus()
 
     def menu_expander_clear(self):
-        self.menu_expander.hide()
         if self.menu_expander.get_child():
             self.menu_expander.remove(self.menu_expander.get_child())
             expanded = self.menu_expander.get_expanded()
@@ -951,6 +968,8 @@ class Main(object):
                 return False
 
         vbox = gtk.VBox()
+        if hasattr(vbox, 'set_vexpand'):
+            vbox.set_vexpand(True)
 
         self.set_global_search()
         vbox.pack_start(self.global_search_entry, False, False)
@@ -981,7 +1000,6 @@ class Main(object):
         treeview.set_headers_visible(False)
 
         self.menu_expander.add(vbox)
-        self.menu_expander.show()
 
         # Favorite column
         column = gtk.TreeViewColumn()
@@ -1036,7 +1054,7 @@ class Main(object):
         except RPCException:
             return
         menu.value['favorite'] = value
-        store.emit('row-changed', path, iter_)
+        store.row_changed(path, iter_)
         self.favorite_unset()
 
     @classmethod
@@ -1092,7 +1110,7 @@ class Main(object):
         self.previous_pages[page] = previous_widget
         self.pages.append(page)
         hbox = gtk.HBox(spacing=3)
-        icon_w, icon_h = gtk.icon_size_lookup(gtk.ICON_SIZE_SMALL_TOOLBAR)
+        icon_w, icon_h = gtk.icon_size_lookup(gtk.ICON_SIZE_SMALL_TOOLBAR)[-2:]
         if page.icon is not None:
             common.ICONFACTORY.register_icon(page.icon)
             image = gtk.Image()
@@ -1119,13 +1137,13 @@ class Main(object):
         img.set_from_stock('tryton-close', gtk.ICON_SIZE_MENU)
         width, height = img.size_request()
         button.set_relief(gtk.RELIEF_NONE)
-        button.unset_flags(gtk.CAN_FOCUS)
+        button.set_can_focus(False)
         button.add(img)
         self.tooltips.set_tip(button, _('Close Tab'))
         button.connect('clicked', self._sig_remove_book, page.widget)
         hbox.pack_start(button, expand=False, fill=False)
         x, y = gtk.icon_size_lookup_for_settings(button.get_settings(),
-                gtk.ICON_SIZE_MENU)
+            gtk.ICON_SIZE_MENU)[-2:]
         button.set_size_request(x, y)
 
         hbox.show_all()

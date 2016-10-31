@@ -8,9 +8,9 @@ import gtk
 def get_invisible_ancestor(widget):
     if not widget.get_visible():
         return widget
-    if not widget.parent:
+    if not widget.props.parent:
         return None
-    return get_invisible_ancestor(widget.parent)
+    return get_invisible_ancestor(widget.props.parent)
 
 
 def find_focused_child(widget):
@@ -26,12 +26,14 @@ def find_focused_child(widget):
 
 def tab_compare(a, b):
     text_direction = gtk.widget_get_default_direction()
-    y1 = a.allocation.y + a.allocation.height // 2
-    y2 = b.allocation.y + b.allocation.height // 2
+    a_allocation = a.get_allocation()
+    b_allocation = b.get_allocation()
+    y1 = a_allocation.y + a_allocation.height // 2
+    y2 = b_allocation.y + b_allocation.height // 2
 
     if y1 == y2:
-        x1 = a.allocation.x + a.allocation.width // 2
-        x2 = b.allocation.x + b.allocation.width // 2
+        x1 = a_allocation.x + a_allocation.width // 2
+        x2 = b_allocation.x + b_allocation.width // 2
 
         if text_direction == gtk.TEXT_DIR_RTL:
             return (x2 > x1) - (x2 < x1)
@@ -64,9 +66,9 @@ def find_focusable_child(widget):
 
 
 def next_focus_widget(widget):
-    if not widget.parent:
+    if not widget.props.parent:
         return None
-    focus_chain = widget.parent.get_focus_chain()
+    focus_chain = widget.props.parent.get_focus_chain()
     if focus_chain is not None:
         idx = focus_chain.index(widget)
         focus_widget = None
@@ -75,13 +77,13 @@ def next_focus_widget(widget):
             if focus_widget:
                 return focus_widget
         if not focus_widget:
-            return next_focus_widget(widget.parent)
+            return next_focus_widget(widget.props.parent)
     else:
-        focus_widget = find_focusable_child(widget.parent)
+        focus_widget = find_focusable_child(widget.props.parent)
         if focus_widget:
             return focus_widget
         else:
-            return next_focus_widget(widget.parent)
+            return next_focus_widget(widget.props.parent)
 
 
 def find_first_focus_widget(ancestor, widgets):

@@ -135,7 +135,8 @@ def freeze_value(value):
 class PopdownMixin(object):
 
     def set_popdown(self, selection, entry):
-        if not entry.child:  # entry is destroyed
+        child = entry.get_child()
+        if not child:  # entry is destroyed
             return
         model, lengths = self.get_popdown_model(selection)
         entry.set_model(model)
@@ -147,7 +148,7 @@ class PopdownMixin(object):
         completion = gtk.EntryCompletion()
         completion.set_inline_selection(True)
         completion.set_model(model)
-        entry.child.set_completion(completion)
+        child.set_completion(completion)
         if lengths:
             pop = sorted(lengths, reverse=True)
             average = sum(pop) / len(pop)
@@ -156,9 +157,9 @@ class PopdownMixin(object):
             width = max(next((x for x in pop if x < (deviation * 4)), 10), 10)
         else:
             width = 10
-        entry.child.set_width_chars(width)
+        child.set_width_chars(width)
         if lengths:
-            entry.child.set_max_length(max(lengths))
+            child.set_max_length(max(lengths))
         completion.set_text_column(0)
         completion.connect('match-selected', self.match_selected, entry)
 
@@ -179,13 +180,16 @@ class PopdownMixin(object):
                 entry.set_active(i)
                 break
 
-    def get_popdown_value(self, entry):
+    def get_popdown_value(self, entry, index=1):
         active = entry.get_active()
         if active < 0:
             return None
         else:
             model = entry.get_model()
-            return model[active][1]
+            return model[active][index]
+
+    def get_popdown_text(self, entry):
+        return self.get_popdown_value(entry, index=0)
 
     def set_popdown_value(self, entry, value):
         active = -1
@@ -200,7 +204,7 @@ class PopdownMixin(object):
         entry.set_active(active)
         if active == -1:
             # When setting no item GTK doesn't clear the entry
-            entry.child.set_text('')
+            entry.get_child().set_text('')
         return True
 
 

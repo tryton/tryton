@@ -19,7 +19,6 @@ class Email(object):
                 gtk.RESPONSE_OK))
         self.win.set_default_response(gtk.RESPONSE_OK)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_has_separator(True)
         self.win.vbox.set_spacing(3)
         self.win.vbox.pack_start(gtk.Label(
             _('Email Program Settings')), expand=False, fill=True)

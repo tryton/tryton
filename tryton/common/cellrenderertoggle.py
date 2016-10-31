@@ -14,7 +14,10 @@ class CellRendererToggle(gtk.CellRendererToggle):
         if not self.props.visible:
             return
         if not event:
-            event = gtk.gdk.Event(gtk.keysyms.KP_Space)
+            if hasattr(gtk.gdk.Event, 'new'):
+                event = gtk.gdk.Event.new(gtk.gdk.KEY_PRESS)
+            else:
+                event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
         return gtk.CellRendererToggle.do_activate(self, event, widget, path,
             background_area, cell_area, flags)
 

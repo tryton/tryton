@@ -114,12 +114,12 @@ class Screen(SignalEvent):
 
             def remove_bin(widget):
                 assert isinstance(widget, (gtk.ScrolledWindow, gtk.Viewport))
-                parent = widget.parent
+                parent = widget.get_parent()
                 parent.remove(widget)
                 child = widget.get_child()
                 while isinstance(child, (gtk.ScrolledWindow, gtk.Viewport)):
                     child = child.get_child()
-                child.parent.remove(child)
+                child.get_parent().remove(child)
                 parent.add(child)
                 return child
 
@@ -391,16 +391,14 @@ class Screen(SignalEvent):
 
     def __set_current_record(self, record):
         self.__current_record = record
-        try:
-            pos = self.group.index(record) + self.offset + 1
-        except ValueError:
-            pos = []
-            i = record
-            while i:
-                pos.append(i.group.index(i) + 1)
-                i = i.parent
-            pos.reverse()
-            pos = tuple(pos)
+        if record:
+            try:
+                pos = self.group.index(record) + self.offset + 1
+            except ValueError:
+                # XXX offset?
+                pos = record.get_index_path()
+        else:
+            pos = None
         self.signal('record-message', (pos or 0, len(self.group) + self.offset,
             self.search_count, record and record.id))
         attachment_count = 0
@@ -435,10 +433,11 @@ class Screen(SignalEvent):
         return False
 
     def destroy(self):
-        self.group.destroy()
         for view in self.views:
             view.destroy()
+        del self.views[:]
         super(Screen, self).destroy()
+        self.group.destroy()
 
     def default_row_activate(self):
         if (self.current_view.view_type == 'tree' and

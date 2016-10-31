@@ -13,9 +13,118 @@ except ImportError:
     import decimal
     sys.modules['cdecimal'] = decimal
 import os
-import pygtk
-pygtk.require('2.0')
+
+if os.environ.get('GTK_VERSION', '2').startswith('3'):
+    import pygtkcompat
+    pygtkcompat.enable()
+    pygtkcompat.enable_gtk(version='3.0')
+    try:
+        pygtkcompat.enable_goocanvas()
+    except ValueError:
+        pass
+
+    from gi.repository import GdkPixbuf
+    _unset = object()
+
+    Gdk = sys.modules['gtk.gdk']
+    # XXX this prevents isinstance test
+    Gdk.PixbufLoader = GdkPixbuf.PixbufLoader.new
+
+    Gtk = sys.modules['gtk']
+    Gtk.widget_set_default_direction = Gtk.Widget.set_default_direction
+    Gtk.accel_map_add_entry = Gtk.AccelMap.add_entry
+    Gtk.accel_map_load = Gtk.AccelMap.load
+    Gtk.accel_map_save = Gtk.AccelMap.save
+
+    Gtk.PROGRESS_LEFT_TO_RIGHT = (Gtk.Orientation.HORIZONTAL, False)
+    Gtk.PROGRESS_RIGHT_TO_LEFT = (Gtk.Orientation.HORIZONTAL, True)
+    Gtk.PROGRESS_BOTTOM_TO_TOP = (Gtk.Orientation.VERTICAL, True)
+    Gtk.PROGRESS_TOP_TO_BOTTOM = (Gtk.Orientation.VERTICAL, False)
+
+    orig_tree_view_column_set_cell_data_func = (
+        Gtk.TreeViewColumn.set_cell_data_func)
+
+    def set_cell_data_func(self, cell, func, user_data=_unset):
+        def callback(*args):
+            if args[-1] == _unset:
+                args = args[:-1]
+            return func(*args)
+        orig_tree_view_column_set_cell_data_func(
+            self, cell, callback, user_data)
+    Gtk.TreeViewColumn.set_cell_data_func = set_cell_data_func
+
+    Gtk.TreeViewColumn.get_cell_renderers = Gtk.TreeViewColumn.get_cells
+
+    orig_set_orientation = Gtk.ProgressBar.set_orientation
+
+    def set_orientation(self, orientation):
+        orientation, inverted = orientation
+        orig_set_orientation(self, orientation)
+        self.set_inverted(inverted)
+    Gtk.ProgressBar.set_orientation = set_orientation
+
+    orig_popup = Gtk.Menu.popup
+
+    def popup(self, parent_menu_shell, parent_menu_item, func, button,
+            activate_time, data=None):
+        if func:
+            def position_func(menu, x, y, user_data=None):
+                return func(menu, user_data)
+        else:
+            position_func = None
+        orig_popup(self, parent_menu_shell, parent_menu_item,
+            position_func, data, button, activate_time)
+    Gtk.Menu.popup = popup
+
+    def get_active_text(self):
+        active = self.get_active()
+        if active < 0:
+            return None
+        else:
+            model = self.get_model()
+            index = self.get_property('entry-text-column')
+            return model[active][index]
+    Gtk.ComboBox.get_active_text = get_active_text
+
+    Gtk.GenericCellRenderer.__gobject_init__ = Gtk.GenericCellRenderer.__init__
+
+    from gi.repository import Pango
+    Pango.SCALE_XX_SMALL = 1 / (1.2 * 1.2 * 1.2)
+    Pango.SCALE_X_SMALL = 1 / (1.2 * 1.2)
+    Pango.SCALE_SMALL = 1 / 1.2
+    Pango.SCALE_MEDIUM = 1
+    Pango.SCALE_LARGE = 1.2
+    Pango.SCALE_X_LARGE = 1.2 * 1.2
+    Pango.SCALE_XX_LARGE = 1.2 * 1.2 * 1.2
+
+    style_provider = Gtk.CssProvider()
+    css = """
+    #editable {
+        background-color: @theme_base_color;
+        color: @theme_text_color;
+    }
+    #readonly {
+        background-color: @insensitive_bg_color;
+        color: @insensitive_fg_color;
+    }
+    """
+    style_provider.load_from_data(css)
+    Gtk.StyleContext.add_provider_for_screen(
+        Gdk.Screen.get_default(),
+        style_provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
+else:
+    import pygtk
+    pygtk.require('2.0')
 import gtk
+
+if not hasattr(gtk, 'TreePath'):
+    gtk.TreePath = tuple
+if not hasattr(gtk, 'TargetEntry'):
+    gtk.TargetEntry = lambda *a: a
+    gtk.TargetEntry.new = lambda *a: a
+
 import gobject
 try:
     # Import earlier otherwise there is a segmentation fault on MSYS2

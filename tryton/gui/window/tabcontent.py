@@ -123,6 +123,7 @@ class TabContent(InfoBar):
         for label, stock_id, callback, accel_path in self.menu_def:
             if label:
                 menuitem = gtk.ImageMenuItem(label, self.accel_group)
+                menuitem.set_use_underline(True)
                 if callback:
                     menuitem.connect('activate', getattr(self, callback))
                 else:

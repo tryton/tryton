@@ -23,7 +23,6 @@ class Preference(NoModal):
         self.win = gtk.Dialog(_('Preferences'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
-        self.win.set_has_separator(False)
         self.win.set_icon(TRYTON_ICON)
 
         self.accel_group = gtk.AccelGroup()

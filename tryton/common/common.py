@@ -233,7 +233,6 @@ def request_server(server_widget):
         flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
         gtk.WIN_POS_CENTER_ON_PARENT |
         gtk.gdk.WINDOW_TYPE_HINT_DIALOG,)
-    dialog.set_has_separator(True)
     vbox = gtk.VBox()
     table = gtk.Table(2, 2, False)
     table.set_border_width(12)
@@ -262,7 +261,7 @@ def request_server(server_widget):
     label_port.set_padding(3, 3)
     table.attach(label_port, 0, 1, 1, 2, yoptions=False,
         xoptions=False)
-    dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL | gtk.CAN_DEFAULT)
+    dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
     dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
     dialog.vbox.pack_start(vbox)
     dialog.set_icon(TRYTON_ICON)
@@ -287,7 +286,7 @@ def request_server(server_widget):
 
 def get_toplevel_window():
     windows = [x for x in gtk.window_list_toplevels()
-        if x.window and x.props.visible
+        if x.get_window() and x.props.visible
         and x.props.type == gtk.WINDOW_TOPLEVEL]
     trans2windows = dict((x.get_transient_for(), x) for x in windows)
     for window in set(windows) - set(trans2windows.iterkeys()):
@@ -307,7 +306,7 @@ def get_sensible_widget(window):
 
 
 def center_window(window, parent, sensible):
-    parent_x, parent_y = parent.window.get_origin()
+    parent_x, parent_y = sensible.get_window().get_origin()
     window_allocation = window.get_allocation()
     sensible_allocation = sensible.get_allocation()
     x = (parent_x + sensible_allocation.x +
@@ -330,7 +329,6 @@ def selection(title, values, alwaysask=False):
             (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                 gtk.STOCK_OK, gtk.RESPONSE_OK))
     dialog.set_icon(TRYTON_ICON)
-    dialog.set_has_separator(True)
     dialog.set_default_response(gtk.RESPONSE_OK)
     dialog.set_default_size(400, 400)
 
@@ -631,7 +629,6 @@ class ConfirmationDialog(UniqueDialog):
         dialog = gtk.Dialog(_('Confirmation'), parent, gtk.DIALOG_MODAL
                 | gtk.DIALOG_DESTROY_WITH_PARENT | gtk.WIN_POS_CENTER_ON_PARENT
                 | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
-        dialog.set_has_separator(True)
         hbox = gtk.HBox()
         image = gtk.Image()
         image.set_from_stock('tryton-dialog-information',
@@ -649,8 +646,7 @@ class SurDialog(ConfirmationDialog):
     def build_dialog(self, parent, message):
         dialog = super(SurDialog, self).build_dialog(parent, message)
         dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        dialog.add_button("gtk-ok", gtk.RESPONSE_OK | gtk.CAN_DEFAULT
-                | gtk.HAS_DEFAULT)
+        dialog.set_default(dialog.add_button("gtk-ok", gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
         return dialog
 
@@ -673,8 +669,7 @@ class Sur3BDialog(ConfirmationDialog):
         dialog = super(Sur3BDialog, self).build_dialog(parent, message)
         dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
         dialog.add_button("gtk-no", gtk.RESPONSE_NO)
-        dialog.add_button("gtk-yes", gtk.RESPONSE_YES | gtk.CAN_DEFAULT
-                | gtk.HAS_DEFAULT)
+        dialog.set_default(dialog.add_button("gtk-yes", gtk.RESPONSE_YES))
         dialog.set_default_response(gtk.RESPONSE_YES)
         return dialog
 
@@ -692,7 +687,6 @@ class AskDialog(UniqueDialog):
                 gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                     gtk.STOCK_OK, gtk.RESPONSE_OK))
-        win.set_has_separator(True)
         win.set_default_response(gtk.RESPONSE_OK)
 
         hbox = gtk.HBox()
@@ -737,7 +731,6 @@ class ConcurrencyDialog(UniqueDialog):
         dialog = gtk.Dialog(_('Concurrency Exception'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
             gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
-        dialog.set_has_separator(True)
         dialog.set_default_response(gtk.RESPONSE_CANCEL)
         hbox = gtk.HBox()
         image = gtk.Image()
@@ -790,7 +783,6 @@ class ErrorDialog(UniqueDialog):
     def build_dialog(self, parent, title, details):
         dialog = gtk.Dialog(_('Error'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-        dialog.set_has_separator(True)
 
         but_send = gtk.Button(_('Report Bug'))
         dialog.add_action_widget(but_send, gtk.RESPONSE_OK)
@@ -878,7 +870,6 @@ def send_bugtracker(title, msg):
                 gtk.STOCK_OK, gtk.RESPONSE_OK))
     win.set_icon(TRYTON_ICON)
     win.set_default_response(gtk.RESPONSE_OK)
-    win.set_has_separator(True)
 
     hbox = gtk.HBox()
     image = gtk.Image()
@@ -1355,7 +1346,7 @@ def resize_pixbuf(pixbuf, width, height):
 
 def _data2pixbuf(data):
     loader = gtk.gdk.PixbufLoader()
-    loader.write(bytes(data), len(data))
+    loader.write(bytes(data))
     loader.close()
     return loader.get_pixbuf()
 
@@ -1386,6 +1377,9 @@ def get_label_attributes(readonly, required):
         else:
             weight = pango.WEIGHT_NORMAL
     attrlist = pango.AttrList()
-    attrlist.change(pango.AttrWeight(weight, 0, -1))
-    attrlist.change(pango.AttrStyle(style, 0, -1))
+    if hasattr(pango, 'AttrWeight'):
+        # FIXME when Pango.attr_weight_new is introspectable
+        attrlist.change(pango.AttrWeight(weight, 0, -1))
+    if hasattr(pango, 'AttrStyle'):
+        attrlist.change(pango.AttrStyle(style, 0, -1))
     return attrlist

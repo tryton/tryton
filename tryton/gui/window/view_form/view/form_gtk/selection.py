@@ -17,7 +17,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
 
         self.widget = gtk.HBox(spacing=3)
         self.entry = gtk.ComboBoxEntry()
-        child = self.mnemonic_widget = self.entry.child
+        child = self.mnemonic_widget = self.entry.get_child()
         child.set_property('activates_default', True)
         child.set_max_length(int(attrs.get('size', 0)))
         child.set_width_chars(10)
@@ -53,8 +53,8 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
 
     def _readonly_set(self, value):
         super(Selection, self)._readonly_set(value)
-        self.entry.child.set_editable(not value)
-        set_widget_style(self.entry.child, not value)
+        self.entry.get_child().set_editable(not value)
+        set_widget_style(self.entry.get_child(), not value)
         self.entry.set_button_sensitivity(
             gtk.SENSITIVITY_OFF if value else gtk.SENSITIVITY_AUTO)
         if value and CONFIG['client.fast_tabbing']:
@@ -63,7 +63,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             self.widget.unset_focus_chain()
 
     def get_value(self):
-        if not self.entry.child:  # entry is destroyed
+        if not self.entry.get_child():  # entry is destroyed
             return
         return self.get_popdown_value(self.entry)
 
@@ -76,7 +76,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
     def set_value(self, record, field):
         value = self.get_value()
         if 'relation' in self.attrs and value:
-            value = (value, self.entry.get_active_text())
+            value = (value, self.get_popdown_text(self.entry))
         field.set_client(record, value)
 
     def display(self, record, field):
@@ -85,7 +85,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         if not field:
             self.entry.set_active(-1)
             # When setting no item GTK doesn't clear the entry
-            self.entry.child.set_text('')
+            self.entry.get_child().set_text('')
             return
         super(Selection, self).display(record, field)
         value = field.get(record)

@@ -711,10 +711,12 @@ _ = gettext.gettext
 class About(object):
 
     def __init__(self):
-        gtk.about_dialog_set_email_hook(lambda widget, link:
-                webbrowser.open(link, new=2))
-        gtk.about_dialog_set_url_hook(lambda widget, link:
-                webbrowser.open(link, new=2))
+        if hasattr(gtk, 'about_dialog_set_email_hook'):
+            gtk.about_dialog_set_email_hook(lambda widget, link:
+                    webbrowser.open(link, new=2))
+        if hasattr(gtk, 'about_dialog_set_url_hook'):
+            gtk.about_dialog_set_url_hook(lambda widget, link:
+                    webbrowser.open(link, new=2))
         parent = get_toplevel_window()
         self.win = gtk.AboutDialog()
         self.win.set_transient_for(parent)

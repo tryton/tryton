@@ -21,7 +21,10 @@ class CellRendererText(gtk.CellRendererText):
         if not self.props.visible:
             return
         if not event:
-            event = gtk.gdk.Event(gtk.keysyms.Tab)
+            if hasattr(gtk.gdk.Event, 'new'):
+                event = gtk.gdk.Event.new(gtk.gdk.KEY_PRESS)
+            else:
+                event = gtk.gdk.Event(gtk.gdk.KEY_PRESS)
         return gtk.CellRendererText.do_start_editing(self, event, widget,
             path, background_area, cell_area, flags)
 

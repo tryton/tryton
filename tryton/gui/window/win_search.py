@@ -28,7 +28,6 @@ class WinSearch(NoModal):
         self.win = gtk.Dialog(_('Search'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_has_separator(True)
         self.win.set_default_response(gtk.RESPONSE_APPLY)
         self.win.connect('response', self.response)
 

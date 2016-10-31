@@ -38,7 +38,6 @@ class WinForm(NoModal, InfoBar):
                 gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_has_separator(False)
         self.win.set_deletable(False)
         self.win.connect('delete-event', lambda *a: True)
         self.win.connect('close', self.close)
@@ -434,8 +433,7 @@ class WinForm(NoModal, InfoBar):
     def destroy(self):
         self.screen.screen_container.alternate_view = False
         viewport = self.screen.screen_container.alternate_viewport
-        if viewport.get_child():
-            viewport.remove(viewport.get_child())
+        viewport.get_parent().remove(viewport)
         self.screen.switch_view(view_type=self.prev_view.view_type)
         self.screen.signal_unconnect(self)
         self.win.destroy()

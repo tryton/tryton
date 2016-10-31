@@ -217,7 +217,7 @@ class Wizard(InfoBar):
         self.scrolledwindow.add(viewport)
         self.scrolledwindow.show()
 
-        self.widget.pack_start(self.scrolledwindow)
+        self.widget.pack_start(self.scrolledwindow, expand=True, fill=True)
 
         self.create_info_bar()
         self.widget.pack_start(self.info_bar, False, True)
@@ -300,7 +300,7 @@ class WizardDialog(Wizard, NoModal):
         self.accel_group = gtk.AccelGroup()
         self.dia.add_accel_group(self.accel_group)
 
-        self.dia.vbox.add(self.widget)
+        self.dia.vbox.pack_start(self.widget, expand=True, fill=True)
 
         self.register()
 
@@ -315,10 +315,11 @@ class WizardDialog(Wizard, NoModal):
         response = len(self.states)
         self.dia.add_action_widget(button, response)
         if definition['default']:
-            button.set_flags(gtk.CAN_DEFAULT)
             button.add_accelerator('clicked', self.accel_group,
                 gtk.keysyms.Return, gtk.gdk.CONTROL_MASK,
                 gtk.ACCEL_VISIBLE)
+            button.set_can_default(True)
+            button.grab_default()
             self.dia.set_default_response(response)
         return button
 

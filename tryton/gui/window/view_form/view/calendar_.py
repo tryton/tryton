@@ -11,7 +11,7 @@ from . import View
 try:
     from .calendar_gtk.calendar_ import Calendar_
     from .calendar_gtk.toolbar import Toolbar
-except ImportError:
+except ImportError, e:
     Calendar_ = None
     Toolbar = None
 
@@ -141,13 +141,6 @@ class ViewCalendar(View):
     @goocalendar_required
     def display(self):
         self.widgets['goocalendar'].display(self.screen.group)
-        gtkcal = self.widgets['toolbar'].gtkcal
-        if gtkcal and not gtkcal.is_drawable():
-            import goocanvas
-            # disable gtk.Calendar if it is not drawable anymore
-            self.widgets['toolbar'].gtkcal_item.set_property('visibility',
-                goocanvas.ITEM_INVISIBLE)
-            self.widgets['toolbar'].current_page.set_active(False)
 
     def set_cursor(self, new=False, reset_view=True):
         pass

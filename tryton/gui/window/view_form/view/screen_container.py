@@ -62,7 +62,7 @@ class Times(Dates):
 
     def connect_activate(self, callback):
         for widget in self.from_.get_children() + self.to.get_children():
-            widget.child.connect('activate', callback)
+            widget.get_child().connect('activate', callback)
 
 
 class DateTimes(Dates):
@@ -85,7 +85,7 @@ class DateTimes(Dates):
             if isinstance(widget, Date):
                 widget.connect('activate', callback)
             elif isinstance(widget, Time):
-                widget.child.connect('activate', callback)
+                widget.get_child().connect('activate', callback)
 
 
 class Selection(gtk.ScrolledWindow):
@@ -168,13 +168,13 @@ class ScreenContainer(object):
 
         def popup(widget):
             menu = widget._menu
-            for child in menu.children():
+            for child in menu.get_children():
                 menu.remove(child)
             if not widget.props.active:
                 menu.popdown()
                 return
 
-            def menu_position(menu):
+            def menu_position(menu, data=None):
                 x, y = widget.window.get_origin()
                 widget_allocation = widget.get_allocation()
                 return (
@@ -244,7 +244,11 @@ class ScreenContainer(object):
 
         if self.tab_domain:
             self.notebook = gtk.Notebook()
-            self.notebook.props.homogeneous = True
+            try:
+                self.notebook.props.homogeneous = True
+            except AttributeError:
+                # No more supported by GTK+3
+                pass
             self.notebook.set_scrollable(True)
             for name, domain, count in self.tab_domain:
                 hbox = gtk.HBox(spacing=3)
@@ -309,19 +313,17 @@ class ScreenContainer(object):
                 self.vbox.pack_end(self.viewport)
 
     def set(self, widget):
+        viewport1 = self.viewport
+        viewport2 = self.alternate_viewport
         if self.alternate_view:
-            if self.alternate_viewport.get_child():
-                self.alternate_viewport.remove(
-                        self.alternate_viewport.get_child())
-            if widget == self.viewport.get_child():
-                self.viewport.remove(self.viewport.get_child())
-            self.alternate_viewport.add(widget)
-            self.alternate_viewport.show_all()
-            return
-        if self.viewport.get_child():
-            self.viewport.remove(self.viewport.get_child())
-        self.viewport.add(widget)
-        self.viewport.show_all()
+            viewport1, viewport2 = viewport2, viewport1
+
+        if viewport1.get_child():
+            viewport1.remove(viewport1.get_child())
+        if widget == viewport2.get_child():
+            viewport2.remove(widget)
+        viewport1.add(widget)
+        viewport1.show_all()
 
     def update(self):
         res = self.screen.search_complete(self.get_text())
@@ -372,7 +374,7 @@ class ScreenContainer(object):
         if current_text:
             self.search_entry.set_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY,
                 _('Bookmark this filter'))
-        else:
+        elif self.search_entry.get_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY):
             self.search_entry.set_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY,
                 None)
 

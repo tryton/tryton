@@ -763,8 +763,9 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
             kwargs['renderer'] = CellRendererCombo
         super(Selection, self).__init__(*args, **kwargs)
         self.init_selection()
-        self.renderer.set_property('model',
-            self.get_popdown_model(self.selection)[0])
+        # Use a variable let Python holding reference when calling set_property
+        model = self.get_popdown_model(self.selection)[0]
+        self.renderer.set_property('model', model)
         self.renderer.set_property('text-column', 0)
 
     def get_textual_value(self, record):
@@ -787,8 +788,8 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         field = record[self.attrs['name']]
 
         set_value = lambda *a: self.set_value(editable, record, field)
-        editable.child.connect('activate', set_value)
-        editable.child.connect('focus-out-event', set_value)
+        editable.get_child().connect('activate', set_value)
+        editable.get_child().connect('focus-out-event', set_value)
         editable.connect('changed', set_value)
 
         self.update_selection(record, field)
@@ -847,7 +848,7 @@ class ProgressBar(object):
         self.renderer = gtk.CellRendererProgress()
         orientation = self.orientations.get(self.attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
-        self.renderer.set_property('orientation', orientation)
+        self.renderer.set_orientation(orientation)
         self.renderer.set_property('yalign', 0)
 
     @realized

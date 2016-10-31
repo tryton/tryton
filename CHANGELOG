@@ -1,3 +1,4 @@
+* Add support for GTK+ 3.0
 * Add PYSON Widget
 * Show records names in wizard title
 * Add support for datetime_field to Reference

@@ -109,7 +109,7 @@ class WinCSV(NoModal):
         frame_fields_selected.set_label_widget(label_fields_selected)
         hbox_mapping.pack_start(frame_fields_selected, True, True, 0)
 
-        frame_csv_param = gtk.Frame(None)
+        frame_csv_param = gtk.Frame()
         frame_csv_param.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
         dialog_vbox.pack_start(frame_csv_param, False, True, 0)
         alignment_csv_param = gtk.Alignment(0.5, 0.5, 1, 1)
@@ -121,7 +121,7 @@ class WinCSV(NoModal):
 
         self.add_chooser(vbox_csv_param)
 
-        expander_csv = gtk.Expander(None)
+        expander_csv = gtk.Expander()
         vbox_csv_param.pack_start(expander_csv, False, True, 0)
         label_csv_param = gtk.Label(_('CSV Parameters'))
         expander_csv.set_label_widget(label_csv_param)
@@ -157,7 +157,7 @@ class WinCSV(NoModal):
         label_csv_enc = gtk.Label(_("Encoding:"))
         label_csv_enc.set_alignment(1, 0.5)
         table.attach(label_csv_enc, 0, 1, 1, 2)
-        self.csv_enc = gtk.combo_box_new_text()
+        self.csv_enc = gtk.ComboBoxText()
         for i, encoding in enumerate(encodings):
             self.csv_enc.append_text(encoding)
             if ((os.name == 'nt' and encoding == 'cp1252')
@@ -170,11 +170,9 @@ class WinCSV(NoModal):
 
         button_cancel = gtk.Button("gtk-cancel", stock="gtk-cancel")
         self.dialog.add_action_widget(button_cancel, gtk.RESPONSE_CANCEL)
-        button_cancel.set_flags(gtk.CAN_DEFAULT)
 
         button_ok = gtk.Button("gtk-ok", stock="gtk-ok")
         self.dialog.add_action_widget(button_ok, gtk.RESPONSE_OK)
-        button_ok.set_flags(gtk.CAN_DEFAULT)
 
         self.dialog.vbox.pack_start(dialog_vbox)
 
@@ -218,10 +216,12 @@ class WinCSV(NoModal):
         if sys.platform != 'darwin':
             self.view2.drag_source_set(
                 gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
-                [('EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
+                [gtk.TargetEntry.new(
+                        'EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
                 gtk.gdk.ACTION_MOVE)
             self.view2.drag_dest_set(gtk.DEST_DEFAULT_ALL,
-                [('EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
+                [gtk.TargetEntry.new(
+                        'EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
                 gtk.gdk.ACTION_MOVE)
             self.view2.connect('drag-begin', self.drag_begin)
             self.view2.connect('drag-motion', self.drag_motion)
@@ -239,7 +239,10 @@ class WinCSV(NoModal):
         except TypeError:
             treeview.set_drag_dest_row(len(treeview.get_model()) - 1,
                 gtk.TREE_VIEW_DROP_AFTER)
-        context.drag_status(gtk.gdk.ACTION_MOVE, time)
+        if hasattr(gtk.gdk, 'drag_status'):
+            gtk.gdk.drag_status(context, gtk.gdk.ACTION_MOVE, time)
+        else:
+            context.drag_status(gtk.gdk.ACTION_MOVE, time)
         return True
 
     def drag_drop(self, treeview, context, x, y, time):
@@ -257,18 +260,23 @@ class WinCSV(NoModal):
         treeselection.selected_foreach(_func_sel_get, data)
         if not data:
             return
-        selection.set('STRING', 8, ','.join(str(x) for x in data))
+        data = ','.join(str(x) for x in data)
+        selection.set(selection.get_target(), 8, data)
         return True
 
     def drag_data_received(self, treeview, context, x, y, selection,
             info, etime):
         treeview.emit_stop_by_name('drag-data-received')
-        if not selection.data:
+        try:
+            selection_data = selection.data
+        except AttributeError:
+            selection_data = selection.get_data()
+        if not selection_data:
             return
         store = treeview.get_model()
 
         data_iters = [store.get_iter((int(i),))
-            for i in selection.data.split(',')]
+            for i in selection_data.split(',')]
         drop_info = treeview.get_dest_row_at_pos(x, y)
         if drop_info:
             path, position = drop_info
@@ -283,7 +291,10 @@ class WinCSV(NoModal):
                 store.move_before(item, pos)
             else:
                 store.move_after(item, pos)
-        context.drop_finish(False, etime)
+        if hasattr(gtk.gdk, 'drop_finish'):
+            gtk.gdk.drop_finish(context, False, etime)
+        else:
+            context.drop_finish(False, etime)
         return True
 
     def drag_data_delete(self, treeview, context):

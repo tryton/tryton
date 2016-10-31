@@ -22,9 +22,9 @@ class Image(BinaryMixin, Widget):
         self.widget = gtk.VBox(spacing=3)
         self.event = gtk.EventBox()
         self.event.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
-            ('text/plain', 0, 0),
-            ('text/uri-list', 0, 1),
-            ("image/x-xpixmap", 0, 2)], gtk.gdk.ACTION_MOVE)
+            gtk.TargetEntry.new('text/plain', 0, 0),
+            gtk.TargetEntry.new('text/uri-list', 0, 1),
+            gtk.TargetEntry.new("image/x-xpixmap", 0, 2)], gtk.gdk.ACTION_MOVE)
         self.event.connect('drag_motion', self.drag_motion)
         self.event.connect('drag_data_received', self.drag_data_received)
 

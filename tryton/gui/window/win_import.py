@@ -51,8 +51,8 @@ class WinImport(WinCSV):
         label_csv_skip.set_alignment(1, 0.5)
         table.attach(label_csv_skip, 2, 3, 1, 2)
 
-        self.csv_skip = gtk.SpinButton(
-            gtk.Adjustment(0, 0, 100, 1, 10), 1, 0)
+        self.csv_skip = gtk.SpinButton()
+        self.csv_skip.configure(gtk.Adjustment(0, 0, 100, 1, 10), 1, 0)
         label_csv_skip.set_mnemonic_widget(self.csv_skip)
         table.attach(self.csv_skip, 3, 4, 1, 2)
 
@@ -167,7 +167,7 @@ class WinImport(WinCSV):
     def response(self, dialog, response):
         if response == gtk.RESPONSE_OK:
             fields = []
-            iter = self.model2.get_iter_root()
+            iter = self.model2.get_iter_first()
             while iter:
                 fields.append(self.model2.get_value(iter, 1))
                 iter = self.model2.iter_next(iter)

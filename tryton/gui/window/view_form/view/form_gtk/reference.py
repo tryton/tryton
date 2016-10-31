@@ -50,8 +50,8 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
 
     def _set_button_sensitive(self):
         super(Reference, self)._set_button_sensitive()
-        self.widget_combo.child.set_editable(not self._readonly)
-        set_widget_style(self.widget_combo.child, not self._readonly)
+        self.widget_combo.get_child().set_editable(not self._readonly)
+        set_widget_style(self.widget_combo.get_child(), not self._readonly)
         self.widget_combo.set_button_sensitivity(
             gtk.SENSITIVITY_OFF if self._readonly else gtk.SENSITIVITY_AUTO)
         if self._readonly and CONFIG['client.fast_tabbing']:

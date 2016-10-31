@@ -130,9 +130,6 @@ class Form(SignalEvent, TabContent):
         self.url_entry = url_entry = gtk.Entry()
         url_entry.show()
         url_entry.set_editable(False)
-        style = url_entry.get_style()
-        url_entry.modify_bg(gtk.STATE_ACTIVE,
-            style.bg[gtk.STATE_INSENSITIVE])
         self.widget.pack_start(url_entry, False, False)
 
         self.set_buttons_sensitive()
@@ -465,17 +462,16 @@ class Form(SignalEvent, TabContent):
             menu.popdown()
             return
 
-        def menu_position(menu):
-            parent = widget.get_toplevel()
-            parent_x, parent_y = parent.window.get_origin()
+        def menu_position(menu, data):
+            x, y = widget.window.get_origin()
             widget_allocation = widget.get_allocation()
             return (
-                widget_allocation.x + parent_x,
-                widget_allocation.y + widget_allocation.height + parent_y,
-                False
-            )
+                x + widget_allocation.x,
+                y + widget_allocation.y + widget_allocation.height,
+                False)
         menu.show_all()
-        menu.popup(None, None, menu_position, 0, 0)
+        menu.popup(None, None, menu_position, 0, gtk.get_current_event_time(),
+            None)
 
     def _record_message(self, screen, signal_data):
         name = '_'
@@ -552,8 +548,9 @@ class Form(SignalEvent, TabContent):
         gtktoolbar = super(Form, self).create_toolbar(toolbars)
 
         attach_btn = self.buttons['attach']
+        target_entry = gtk.TargetEntry.new('text/uri-list', 0, 0)
         attach_btn.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
-                ('text/uri-list', 0, 0),
+                target_entry,
                 ], gtk.gdk.ACTION_MOVE | gtk.gdk.ACTION_COPY)
         attach_btn.connect('drag_data_received',
             self.attach_drag_data_received)

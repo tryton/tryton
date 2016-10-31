@@ -5,7 +5,8 @@ Prerequisites
 -------------
 
  * Python 2.7 or later (http://www.python.org/)
- * pygtk 2.22 or later (http://www.pygtk.org/)
+ * gtk+ 2.6 or later and pygtk 2.22 or later (http://www.pygtk.org/)
+ * gtk+ 3.20 or later and py-gobject3 (http://www.gtk.org/)
  * librsvg (http://librsvg.sourceforge.net/)
  * python-dateutil (http://labix.org/python-dateutil)
  * chardet (http://pypi.python.org/pypi/chardet)

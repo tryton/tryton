@@ -197,6 +197,17 @@ class Record(SignalEvent):
         path.reverse()
         return tuple(path)
 
+    def get_index_path(self, group=None):
+        path = []
+        record = self
+        while record:
+            path.append(record.group.index(record))
+            if record.group is group:
+                break
+            record = record.parent
+        path.reverse()
+        return tuple(path)
+
     def get_removed(self):
         if self.group is not None:
             return self in self.group.record_removed
