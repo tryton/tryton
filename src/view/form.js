@@ -1,5 +1,15 @@
 /* This file is part of Tryton.  The COPYRIGHT file at the top level of
    this repository contains the full copyright notices and license terms. */
+
+/* jshint ignore:start */
+// Must be defined in non strict context otherwise is invalid
+function eval_pyson(value){
+    with (Sao.PYSON.eval) {
+        return eval(value);
+    }
+}
+/* jshint ignore:end */
+
 (function() {
     'use strict';
 
@@ -858,6 +868,8 @@
                 return Sao.View.Form.ProgressBar;
             case 'dict':
                 return Sao.View.Form.Dict;
+            case 'pyson':
+                return Sao.View.Form.PYSON;
         }
     };
 
@@ -1202,6 +1214,13 @@
                 button.click(this.translate.bind(this));
             }
         },
+        get_client_value: function(record, field) {
+            var value = '';
+            if (field) {
+                value = field.get_client(record);
+            }
+            return value;
+        },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
             if (this.datalist) {
@@ -1226,16 +1245,10 @@
                     width = null;
                 }
             }
+            this.input.val(this.get_client_value(record, field));
             this.input.attr('maxlength', length);
             this.input.attr('size', length);
             this.group.css('width', width);
-
-            if (record) {
-                var value = record.field_get_client(this.field_name);
-                this.input.val(value || '');
-            } else {
-                this.input.val('');
-            }
         },
         set_value: function(record, field) {
             field.set_client(record, this.input.val());
@@ -1406,16 +1419,12 @@
         set_value: function(record, field) {
             field.set_client(record, this.input.val(), undefined, this.factor);
         },
-        display: function(record, field) {
-            // Skip Char call
-            Sao.View.Form.Char._super.display.call(this, record, field);
-            if (record) {
-                var value = record.model.fields[this.field_name]
-                    .get_client(record, this.factor);
-                this.input.val(value);
-            } else {
-                this.input.val('');
+        get_client_value: function(record, field) {
+            var value = '';
+            if (field) {
+                value = field.get_client(record, this.factor);
             }
+            return value;
         }
     });
 
@@ -3966,6 +3975,63 @@
                 value.isDateTime = true;
             }
             return value;
+        }
+    });
+
+    Sao.View.Form.PYSON = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-pyson',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.PYSON._super.init.call(this, field_name, model,
+                attributes);
+            this.encoder = new Sao.PYSON.Encoder({});
+            this.decoder = new Sao.PYSON.Decoder({}, true);
+            this.el.keyup(this.validate_pyson.bind(this));
+            var button = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            });
+            this.icon = jQuery('<span/>', {
+                'class': 'glyphicon'
+            });
+            button.append(this.icon);
+            button.appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).appendTo(this.group));
+        },
+        get_encoded_value: function() {
+            var value = this.input.val();
+            if (!value) {
+                return value;
+            }
+            try {
+                return this.encoder.encode(eval_pyson(value));
+            }
+            catch (err) {
+                return null;
+            }
+        },
+        set_value: function(record, field) {
+            field.set_client(record, this.get_encoded_value());
+        },
+        get_client_value: function(record, field) {
+            var value = Sao.View.Form.PYSON._super.get_client_value.call(
+                    this, record, field);
+            if (value) {
+                value = this.decoder.decode(value).toString();
+            }
+            return value;
+        },
+        validate_pyson: function() {
+            var icon = 'ok';
+            if (this.get_encoded_value() === null) {
+                icon = 'remove';
+            }
+            this.icon.removeClass().addClass('glyphicon').addClass(
+                ' glyphicon-' + icon + '-sign');
+        },
+        focus_out: function() {
+            this.validate_pyson();
+            Sao.View.Form.PYSON._super.focus_out.call(this);
         }
     });
 

@@ -4,6 +4,7 @@
     'use strict';
 
     Sao.PYSON = {};
+    Sao.PYSON.eval = {};
 
     Sao.PYSON.PYSON = Sao.class_(Object, {
         init: function() {
@@ -92,6 +93,9 @@
         }
     });
 
+    Sao.PYSON.eval.Eval = function(value, default_) {
+        return new Sao.PYSON.Eval(value, default_);
+    };
     Sao.PYSON.Eval = Sao.class_(Sao.PYSON.PYSON, {
         init: function(value, default_) {
             if (default_ === undefined) {
@@ -131,6 +135,9 @@
         return new Sao.PYSON.Eval(obj.v, obj.d);
     };
 
+    Sao.PYSON.eval.Not = function(value) {
+        return new Sao.PYSON.Not(value);
+    };
     Sao.PYSON.Not = Sao.class_(Sao.PYSON.PYSON, {
         init: function(value) {
             Sao.PYSON.Not._super.init.call(this);
@@ -167,6 +174,9 @@
         return new Sao.PYSON.Not(obj.v);
     };
 
+    Sao.PYSON.eval.Bool = function(value) {
+        return new Sao.PYSON.Bool(value);
+    };
     Sao.PYSON.Bool = Sao.class_(Sao.PYSON.PYSON, {
         init: function(value) {
             Sao.PYSON.Bool._super.init.call(this);
@@ -198,6 +208,9 @@
     };
 
 
+    Sao.PYSON.eval.And = function(statements) {
+        return new Sao.PYSON.And(statements);
+    };
     Sao.PYSON.And = Sao.class_(Sao.PYSON.PYSON, {
         init: function(statements) {
             if (statements === undefined) {
@@ -249,6 +262,9 @@
     };
 
 
+    Sao.PYSON.eval.Or = function(statements) {
+        return new Sao.PYSON.Or(statements);
+    };
     Sao.PYSON.Or = Sao.class_(Sao.PYSON.And, {
         pyson: function() {
             var result = Sao.PYSON.Or._super.pyson.call(this);
@@ -269,6 +285,9 @@
         return new Sao.PYSON.Or(obj.s);
     };
 
+    Sao.PYSON.eval.Equal = function(statement1, statement2) {
+        return new Sao.PYSON.Equal(statement1, statement2);
+    };
     Sao.PYSON.Equal = Sao.class_(Sao.PYSON.PYSON, {
         init: function(statement1, statement2) {
             Sao.PYSON.Equal._super.init.call(this);
@@ -316,6 +335,9 @@
         return new Sao.PYSON.Equal(obj.s1, obj.s2);
     };
 
+    Sao.PYSON.eval.Greater = function(statement1, statement2, equal) {
+        return new Sao.PYSON.Greater(statement1, statement2, equal);
+    };
     Sao.PYSON.Greater = Sao.class_(Sao.PYSON.PYSON, {
         init: function(statement1, statement2, equal) {
             Sao.PYSON.Greater._super.init.call(this);
@@ -384,6 +406,9 @@
         return new Sao.PYSON.Greater(obj.s1, obj.s2, obj.e);
     };
 
+    Sao.PYSON.eval.Less = function(statement1, statement2, equal) {
+        return new Sao.PYSON.Less(statement1, statement2, equal);
+    };
     Sao.PYSON.Less = Sao.class_(Sao.PYSON.Greater, {
         pyson: function() {
             var result = Sao.PYSON.Less._super.pyson.call(this);
@@ -406,6 +431,9 @@
         return new Sao.PYSON.Less(obj.s1, obj.s2, obj.e);
     };
 
+    Sao.PYSON.eval.If = function(condition, then_statement, else_statement) {
+        return new Sao.PYSON.If(condition, then_statement, else_statement);
+    };
     Sao.PYSON.If = Sao.class_(Sao.PYSON.PYSON, {
         init: function(condition, then_statement, else_statement) {
             Sao.PYSON.If._super.init.call(this);
@@ -473,6 +501,9 @@
         return new Sao.PYSON.If(obj.c, obj.t, obj.e);
     };
 
+    Sao.PYSON.eval.Get = function(obj, key, default_) {
+        return new Sao.PYSON.Get(obj, key, default_);
+    };
     Sao.PYSON.Get = Sao.class_(Sao.PYSON.PYSON, {
         init: function(obj, key, default_) {
             Sao.PYSON.Get._super.init.call(this);
@@ -534,6 +565,9 @@
         return new Sao.PYSON.Get(obj.v, obj.k, obj.d);
     };
 
+    Sao.PYSON.eval.In = function(key, obj) {
+        return new Sao.PYSON.In(key, obj);
+    };
     Sao.PYSON.In = Sao.class_(Sao.PYSON.PYSON, {
         init: function(key, obj) {
             Sao.PYSON.In._super.init.call(this);
@@ -584,6 +618,11 @@
         return new Sao.PYSON.In(obj.k, obj.v);
     };
 
+    Sao.PYSON.eval.Date = function(year, month, day, delta_years, delta_months,
+            delta_days) {
+        return new Sao.PYSON.Date(year, month, day, delta_years, delta_months,
+                delta_days);
+    };
     Sao.PYSON.Date = Sao.class_(Sao.PYSON.PYSON, {
         init: function(year, month, day, delta_years, delta_months, delta_days)
         {
@@ -652,6 +691,13 @@
         return new Sao.PYSON.Date(obj.y, obj.M, obj.d, obj.dy, obj.dM, obj.dd);
     };
 
+    Sao.PYSON.eval.DateTime = function(year, month, day, hour, minute, second,
+            microsecond, delta_years, delta_months, delta_days, delta_hours,
+            delta_minutes, delta_seconds, delta_microseconds) {
+        return new Sao.PYSON.DateTime(year, month, day, hour, minute, second,
+            microsecond, delta_years, delta_months, delta_days, delta_hours,
+            delta_minutes, delta_seconds, delta_microseconds);
+    };
     Sao.PYSON.DateTime = Sao.class_(Sao.PYSON.Date, {
         init: function(year, month, day, hour, minute, second, microsecond,
                   delta_years, delta_months, delta_days, delta_hours,
@@ -726,6 +772,9 @@
             obj.ms, obj.dy, obj.dM, obj.dd, obj.dh, obj.dm, obj.ds, obj.dms);
     };
 
+    Sao.PYSON.eval.Len = function(value) {
+        return new Sao.PYSON.Len(value);
+    };
     Sao.PYSON.Len = Sao.class_(Sao.PYSON.PYSON, {
         init: function(value) {
             Sao.PYSON.Len._super.init.call(this);
