@@ -1,5 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+try:
+    import phonenumbers
+    from phonenumbers import PhoneNumberFormat, NumberParseException
+except ImportError:
+    phonenumbers = None
+
 from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.pyson import Eval
 from trytond import backend
@@ -34,7 +40,8 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         sort=False, depends=DEPENDS)
     value = fields.Char('Value', select=True, states=STATES, depends=DEPENDS
         # Add all function fields to ensure to always fill them via on_change
-        + ['email', 'website', 'skype', 'sip', 'other_value'])
+        + ['email', 'website', 'skype', 'sip', 'other_value', 'value_compact'])
+    value_compact = fields.Char('Value Compact', readonly=True)
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
@@ -83,6 +90,8 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         cls._error_messages.update({
                 'write_party': ('You can not modify the party of contact '
                     'mechanism "%s".'),
+                'invalid_phonenumber': ('The phone number "%(phone)s" of '
+                    'party "%(party)s" is not valid .'),
                 })
 
     @classmethod
@@ -126,12 +135,38 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         return None
 
     @classmethod
+    def format_value(cls, value=None, type_=None):
+        if phonenumbers and type_ == 'phone':
+            try:
+                phonenumber = phonenumbers.parse(value)
+            except NumberParseException:
+                pass
+            else:
+                value = phonenumbers.format_number(
+                    phonenumber, PhoneNumberFormat.INTERNATIONAL)
+        return value
+
+    @classmethod
+    def format_value_compact(cls, value=None, type_=None):
+        if phonenumbers and type_ == 'phone':
+            try:
+                phonenumber = phonenumbers.parse(value)
+            except NumberParseException:
+                pass
+            else:
+                value = phonenumbers.format_number(
+                    phonenumber, PhoneNumberFormat.E164)
+        return value
+
+    @classmethod
     def set_value(cls, mechanisms, name, value):
         #  Setting value is done by on_changes
         pass
 
-    def _change_value(self, value):
-        self.value = value
+    def _change_value(self, value, type_):
+        self.value = self.format_value(value=value, type_=type_)
+        self.value_compact = self.format_value_compact(
+            value=value, type_=type_)
         self.website = value
         self.email = value
         self.skype = value
@@ -145,27 +180,53 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('value', 'type')
     def on_change_value(self):
-        return self._change_value(self.value)
+        return self._change_value(self.value, self.type)
 
     @fields.depends('website', 'type')
     def on_change_website(self):
-        return self._change_value(self.website)
+        return self._change_value(self.website, self.type)
 
     @fields.depends('email', 'type')
     def on_change_email(self):
-        return self._change_value(self.email)
+        return self._change_value(self.email, self.type)
 
     @fields.depends('skype', 'type')
     def on_change_skype(self):
-        return self._change_value(self.skype)
+        return self._change_value(self.skype, self.type)
 
     @fields.depends('sip', 'type')
     def on_change_sip(self):
-        return self._change_value(self.sip)
+        return self._change_value(self.sip, self.type)
 
     @fields.depends('other_value', 'type')
     def on_change_other_value(self):
-        return self._change_value(self.other_value)
+        return self._change_value(self.other_value, self.type)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('value',) + tuple(clause[1:]),
+            ('value_compact',) + tuple(clause[1:]),
+            ]
+
+    @classmethod
+    def _format_values(cls, mechanisms):
+        for mechanism in mechanisms:
+            value = mechanism.format_value(
+                value=mechanism.value, type_=mechanism.type)
+            if value != mechanism.value:
+                mechanism.value = value
+            value_compact = mechanism.format_value_compact(
+                value=mechanism.value, type_=mechanism.type)
+            if value_compact != mechanism.value_compact:
+                mechanism.value_compact = value_compact
+        cls.save(mechanisms)
+
+    @classmethod
+    def create(cls, vlist):
+        mechanisms = super(ContactMechanism, cls).create(vlist)
+        cls._format_values(mechanisms)
+        return mechanisms
 
     @classmethod
     def write(cls, *args):
@@ -177,3 +238,22 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
                         cls.raise_user_error(
                             'write_party', (mechanism.rec_name,))
         super(ContactMechanism, cls).write(*args)
+        cls._format_values(mechanisms)
+
+    @classmethod
+    def validate(cls, mechanisms):
+        super(ContactMechanism, cls).validate(mechanisms)
+        for mechanism in mechanisms:
+            mechanism.check_valid_phonenumber()
+
+    def check_valid_phonenumber(self):
+        if not phonenumbers:
+            return
+        try:
+            phonenumbers.parse(self.value)
+        except NumberParseException:
+            self.raise_user_error(
+                'invalid_phonenumber', {
+                    'phone': self.value,
+                    'party': self.party.rec_name
+                    })

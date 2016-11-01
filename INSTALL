@@ -8,6 +8,7 @@ Prerequisites
  * trytond (http://www.tryton.org/)
  * trytond_country (http://www.tryton.org/)
  * python-stdnum (http://arthurdejong.org/python-stdnum/)
+ * Optional: phonenumbers (http://pypi.python.org/pypi/phonenumbers)
 
 Installation
 ------------

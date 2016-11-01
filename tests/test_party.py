@@ -2,6 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import doctest
+try:
+    import phonenumbers
+except ImportError:
+    phonenumbers = None
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -120,6 +124,39 @@ class PartyTestCase(ModuleTestCase):
         self.assert_(party2.id)
         code = party2.code
         self.assertEqual(party2.rec_name, '[' + code + ']')
+
+    @unittest.skipIf(phonenumbers is None, 'requires phonenumbers')
+    @with_transaction()
+    def test_phone_number_format(self):
+        'Test phone number format'
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+
+        party1, = Party.create([{
+                    'name': 'Party 1',
+                    }])
+        mechanism, = ContactMechanism.create([{
+                    'party': party1.id,
+                    'type': 'phone',
+                    'value': '+442083661177',
+                    }])
+
+        # Test format on create
+        self.assertEqual(mechanism.value, '+44 20 8366 1177')
+        self.assertEqual(mechanism.value_compact, '+442083661177')
+
+        # Test format on write
+        mechanism.value = '+442083661178'
+        mechanism.save()
+        self.assertEqual(mechanism.value, '+44 20 8366 1178')
+        self.assertEqual(mechanism.value_compact, '+442083661178')
+
+        ContactMechanism.write([mechanism], {
+                'value': '+442083661179',
+                })
+        self.assertEqual(mechanism.value, '+44 20 8366 1179')
+        self.assertEqual(mechanism.value_compact, '+442083661179')
 
 
 def suite():

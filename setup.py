@@ -53,7 +53,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'), 'phonenumbers']
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with proteus
@@ -114,6 +114,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'VAT': ['python-stdnum'],
+        'phonenumbers': ['phonenumbers'],
         },
     dependency_links=dependency_links,
     zip_safe=False,
