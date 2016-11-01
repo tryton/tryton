@@ -32,24 +32,30 @@ class RichTextBox(TextBox):
         self.textview.connect_after('move-cursor', self.detect_style)
         self.textview.connect('button-release-event', self.detect_style)
 
-        self.toolbar = gtk.Toolbar()
-        self.toolbar.set_style({
+        self.toolbar = None
+        self.tag_widgets = {}
+        self.tags = {}
+        self.colors = {}
+        if int(self.attrs.get('toolbar', 1)):
+            self.toolbar = self.get_toolbar()
+
+    def get_toolbar(self):
+        toolbar = gtk.Toolbar()
+        toolbar.set_style({
                 'default': False,
                 'both': gtk.TOOLBAR_BOTH,
                 'text': gtk.TOOLBAR_TEXT,
                 'icons': gtk.TOOLBAR_ICONS}[CONFIG['client.toolbar']])
 
-        self.widget.pack_start(self.toolbar, expand=False, fill=True)
-        self.tag_widgets = {}
-        self.tags = {}
+        self.widget.pack_start(toolbar, expand=False, fill=True)
 
         for icon in ['bold', 'italic', 'underline']:
             button = gtk.ToggleToolButton('gtk-%s' % icon)
             button.connect('toggled', self.toggle_props, icon)
-            self.toolbar.insert(button, -1)
+            toolbar.insert(button, -1)
             self.tag_widgets[icon] = button
 
-        self.toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(gtk.SeparatorToolItem(), -1)
 
         for name, options, active in [
                 ('family', FAMILIES, FAMILIES.index('normal')),
@@ -66,10 +72,10 @@ class RichTextBox(TextBox):
             combobox.connect('changed', self.change_props, name)
             tool = gtk.ToolItem()
             tool.add(combobox)
-            self.toolbar.insert(tool, -1)
+            toolbar.insert(tool, -1)
             self.tag_widgets[name] = combobox
 
-        self.toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(gtk.SeparatorToolItem(), -1)
 
         button = None
         for icon in ['left', 'center', 'right', 'fill']:
@@ -84,12 +90,11 @@ class RichTextBox(TextBox):
                 button = gtk.RadioToolButton(button, stock_id)
             button.set_active(icon == 'left')
             button.connect('toggled', self.toggle_justification, name)
-            self.toolbar.insert(button, -1)
+            toolbar.insert(button, -1)
             self.tag_widgets[name] = button
 
-        self.toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(gtk.SeparatorToolItem(), -1)
 
-        self.colors = {}
         for icon, label in [
                 ('foreground', _('Foreground')),
                 # TODO ('background', _('Background')),
@@ -97,8 +102,10 @@ class RichTextBox(TextBox):
             button = gtk.ToolButton('tryton-text-%s' % icon)
             button.set_label(label)
             button.connect('clicked', self.toggle_color, icon)
-            self.toolbar.insert(button, -1)
+            toolbar.insert(button, -1)
             self.tag_widgets[icon] = button
+
+        return toolbar
 
     def get_value(self):
         start = self.text_buffer.get_start_iter()
@@ -132,7 +139,8 @@ class RichTextBox(TextBox):
 
     def _readonly_set(self, value):
         super(RichTextBox, self)._readonly_set(value)
-        self.toolbar.set_sensitive(not value)
+        if self.toolbar:
+            self.toolbar.set_sensitive(not value)
 
     def detect_style(self, *args):
         try:
