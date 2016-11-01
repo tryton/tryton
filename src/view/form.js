@@ -1618,18 +1618,30 @@ function eval_pyson(value){
     Sao.View.Form.RichText = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-richtext',
         init: function(field_name, model, attributes) {
-            var i, properties, button;
             Sao.View.Form.RichText._super.init.call(
                     this, field_name, model, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' panel panel-default'
             });
-            this.toolbar = jQuery('<div/>', {
+            if (parseInt(attributes.toolbar || '1', 10)) {
+                this.get_toolbar().appendTo(this.el);
+            }
+            this.input = this.labelled = jQuery('<div/>', {
+                'class': 'richtext',
+                'contenteditable': true
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body'
+            }).appendTo(this.el));
+            this.el.focusout(this.focus_out.bind(this));
+        },
+        get_toolbar: function() {
+            var i, properties, button;
+            var toolbar = jQuery('<div/>', {
                 'class': 'btn-toolbar',
                 'role': 'toolbar'
             }).appendTo(jQuery('<div/>', {
                 'class': 'panel-heading'
-            }).appendTo(this.el));
+            }));
 
             var button_apply_command = function(evt) {
                 document.execCommand(evt.data);
@@ -1639,7 +1651,7 @@ function eval_pyson(value){
                 var group = jQuery('<div/>', {
                     'class': 'btn-group',
                     'role': 'group'
-                }).appendTo(this.toolbar);
+                }).appendTo(toolbar);
                 for (i in buttons) {
                     properties = buttons[i];
                     button = jQuery('<button/>', {
@@ -1650,7 +1662,7 @@ function eval_pyson(value){
                     })).appendTo(group);
                     button.click(properties.command, button_apply_command);
                 }
-            }.bind(this);
+            };
 
             add_buttons([
                     {
@@ -1688,7 +1700,7 @@ function eval_pyson(value){
                 var group = jQuery('<div/>', {
                     'class': 'btn-group',
                     'role': 'group'
-                }).appendTo(this.toolbar);
+                }).appendTo(toolbar);
                 button = jQuery('<button/>', {
                     'class': 'btn btn-default dropdown-toggle',
                     'type': 'button',
@@ -1728,21 +1740,14 @@ function eval_pyson(value){
                         jQuery('<input/>', {
                             'class': 'btn btn-default',
                             'type': 'color'
-                        }).appendTo(this.toolbar)
+                        }).appendTo(toolbar)
                         .change(function() {
                             document.execCommand(command, false, jQuery(this).val());
                         }).focusin(function() {
                             document.execCommand(command, false, jQuery(this).val());
                         }).val(color);
-            }.bind(this));
-
-            this.input = this.labelled = jQuery('<div/>', {
-                'class': 'richtext',
-                'contenteditable': true
-            }).appendTo(jQuery('<div/>', {
-                'class': 'panel-body'
-            }).appendTo(this.el));
-            this.el.focusout(this.focus_out.bind(this));
+            });
+            return toolbar;
         },
         focus_out: function() {
             // Let browser set the next focus before testing
@@ -1785,7 +1790,9 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             this.input.prop('contenteditable', !readonly);
-            this.toolbar.find('button,select').prop('disabled', readonly);
+            if (this.toolbar) {
+                this.toolbar.find('button,select').prop('disabled', readonly);
+            }
         }
     });
 
