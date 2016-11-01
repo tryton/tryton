@@ -1,3 +1,4 @@
+* Add toolbar attribute for richtext widget
 * Add PYSON widget
 * Allow to define the text color and background color in calendar view
 * Allow to override cache implementation

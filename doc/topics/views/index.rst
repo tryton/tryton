@@ -243,6 +243,9 @@ Display a field of the object with the value of the current record.
     * ``filename_visible``: Only for Binary fields, boolean that enables the
       display of the filename.
 
+    * ``toolbar``: Only for Rich Text widget, boolean that enables the
+      display of the Rich Text toolbar. The default value is 1.
+
     * ``yexpand``: see in common-attributes-yexpand_.
 
     * ``yfill``: see in common-attributes-yfill_.
