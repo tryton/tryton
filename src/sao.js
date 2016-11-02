@@ -273,7 +273,7 @@ var Sao = {};
             jQuery('#user-logout').children().remove();
             jQuery('#user-favorites').children().remove();
             jQuery('#menu').children().remove();
-            document.title = 'Tryton';
+            document.title = Sao.config.title;
             session.do_logout().always(Sao.login);
         });
     };
