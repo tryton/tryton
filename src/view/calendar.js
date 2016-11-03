@@ -8,8 +8,8 @@
        the user language, the events dates are handled by moment object. */
         init: function(screen, xml) {
             Sao.View.Calendar._super.init.call(this, screen, xml);
-            // Used at display to reload the events when they are loaded.
-            this.prm = null;
+            // Used to check if the events are still processing
+            this.processing = true;
             this.view_type = 'calendar';
             this.el = jQuery('<div/>', {
                 'class': 'calendar'
@@ -61,10 +61,9 @@
         },
         display: function() {
             this.el.fullCalendar('render');
-            if (this.prm) {
-                this.prm.done(function() {
-                    return this.el.fullCalendar('refetchEvents');
-                }.bind(this));
+            // Don't refetch events from server when get_events is processing
+            if (!this.processing) {
+                this.el.fullCalendar('refetchEvents');
             }
         },
         insert_event: function(record) {
@@ -112,6 +111,7 @@
             }
         },
         get_events: function(start, end, timezone, callback) {
+            this.processing = true;
             this.start = Sao.DateTime(start.utc());
             this.end = Sao.DateTime(end.utc());
             var prm = jQuery.when();
@@ -121,7 +121,7 @@
             }
             this.events =  [];
             var promisses = [];
-            this.prm = prm.then(function()  {
+            prm.then(function()  {
                 this.screen.group.forEach(function(record) {
                     var record_promisses = [];
                     this.fields.forEach(function(name) {
@@ -133,9 +133,11 @@
                         }.bind(this));
                     promisses.push(prm);
                 }.bind(this));
-                jQuery.when.apply(jQuery, promisses).then(function() {
+                return jQuery.when.apply(jQuery, promisses).then(function() {
                     callback(this.events);
-                }.bind(this));
+                }.bind(this)).always(function() {
+                    this.proccessing = false;
+                });
             }.bind(this));
         },
         get_week_view: function() {
