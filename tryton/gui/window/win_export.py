@@ -77,7 +77,10 @@ class WinExport(WinCSV):
     def add_chooser(self, box):
         hbox_csv_export = gtk.HBox()
         box.pack_start(hbox_csv_export, False, True, 0)
-        self.saveas = gtk.ComboBoxText()
+        if hasattr(gtk, 'ComboBoxText'):
+            self.saveas = gtk.ComboBoxText()
+        else:
+            self.saveas = gtk.combo_box_new_text()
         hbox_csv_export.pack_start(self.saveas, True, True, 0)
         self.saveas.append_text(_("Open"))
         self.saveas.append_text(_("Save"))

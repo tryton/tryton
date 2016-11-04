@@ -157,7 +157,10 @@ class WinCSV(NoModal):
         label_csv_enc = gtk.Label(_("Encoding:"))
         label_csv_enc.set_alignment(1, 0.5)
         table.attach(label_csv_enc, 0, 1, 1, 2)
-        self.csv_enc = gtk.ComboBoxText()
+        if hasattr(gtk, 'ComboBoxText'):
+            self.csv_enc = gtk.ComboBoxText()
+        else:
+            self.csv_enc = gtk.combo_box_new_text()
         for i, encoding in enumerate(encodings):
             self.csv_enc.append_text(encoding)
             if ((os.name == 'nt' and encoding == 'cp1252')
