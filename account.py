@@ -109,7 +109,7 @@ class Account(ModelSQL, ModelView):
         cls._order.insert(1, ('name', 'ASC'))
         cls._error_messages.update({
                 'invalid_distribution': (
-                    'The distribution sum of account "%(account)" '
+                    'The distribution sum of account "%(account)s" '
                     'is not 100%.'),
                 })
 
