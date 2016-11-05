@@ -104,7 +104,6 @@ dist = setup(name=name,
         "chardet",
         ],
     extras_require={
-        'simplejson': ['simplejson'],
         'cdecimal': ['cdecimal'],
         'calendar': ['GooCalendar'],
         },

@@ -4,10 +4,7 @@ import gobject
 import gtk
 import pango
 import sys
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import locale
 import gettext
 from functools import wraps

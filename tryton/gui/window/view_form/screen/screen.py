@@ -6,10 +6,7 @@ import functools
 import gobject
 import datetime
 import calendar
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import collections
 import urllib
 import urlparse

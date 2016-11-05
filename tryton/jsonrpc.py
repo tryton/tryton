@@ -1,10 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import xmlrpclib
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import ssl
 import httplib
 from decimal import Decimal
@@ -68,11 +65,6 @@ def object_hook(dct):
 
 
 class JSONEncoder(json.JSONEncoder):
-
-    def __init__(self, *args, **kwargs):
-        super(JSONEncoder, self).__init__(*args, **kwargs)
-        # Force to use our custom decimal with simplejson
-        self.use_decimal = False
 
     def default(self, obj):
         if isinstance(obj, datetime.date):

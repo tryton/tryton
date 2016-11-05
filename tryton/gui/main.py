@@ -8,10 +8,7 @@ from urlparse import urlparse, parse_qsl
 import urllib
 import gobject
 import gtk
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import webbrowser
 import threading
 

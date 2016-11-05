@@ -10,7 +10,6 @@ Prerequisites
  * librsvg (http://librsvg.sourceforge.net/)
  * python-dateutil (http://labix.org/python-dateutil)
  * chardet (http://pypi.python.org/pypi/chardet)
- * Optional: simplejson (http://undefined.org/python/#simplejson)
  * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
  * Optional: GooCalendar (http://code.google.com/p/goocalendar/)
 
