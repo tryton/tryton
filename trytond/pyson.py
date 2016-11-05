@@ -1,9 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import datetime
 from dateutil.relativedelta import relativedelta
 from functools import reduce, wraps

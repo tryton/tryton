@@ -5,10 +5,7 @@ __all__ = ['Wizard',
     'StateView', 'StateTransition', 'StateAction', 'StateReport',
     'Button']
 
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import copy
 
 from trytond.pool import Pool, PoolBase

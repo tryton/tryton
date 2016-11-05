@@ -2,16 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import re
 import heapq
+import json
 
 from sql import Null
 from sql.aggregate import Max
 from sql.conditionals import Case
 from collections import defaultdict
 from itertools import groupby
-try:
-    import simplejson as json
-except ImportError:
-    import json
 
 from ..model import (ModelView, ModelSQL, Workflow, fields, Unique,
     EvalEnvironment)

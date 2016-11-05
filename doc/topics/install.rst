@@ -23,7 +23,6 @@ Prerequisites
     * Optional: pydot (http://code.google.com/p/pydot/)
     * Optional: unoconv http://dag.wieers.com/home-made/unoconv/)
     * Optional: sphinx (http://sphinx.pocoo.org/)
-    * Optional: simplejson (http://undefined.org/python/#simplejson)
     * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
     * Optional: python-Levenshtein
       (http://github.com/miohtama/python-Levenshtein)

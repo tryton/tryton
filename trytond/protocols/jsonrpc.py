@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import base64
 
 from werkzeug.wrappers import Response
@@ -52,11 +49,6 @@ JSONDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
 class JSONEncoder(json.JSONEncoder):
 
     serializers = {}
-
-    def __init__(self, *args, **kwargs):
-        super(JSONEncoder, self).__init__(*args, **kwargs)
-        # Force to use our custom decimal with simplejson
-        self.use_decimal = False
 
     @classmethod
     def register(cls, klass, encoder):

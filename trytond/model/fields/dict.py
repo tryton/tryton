@@ -1,9 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 from sql import Query, Expression
 
 from .field import Field, SQLType

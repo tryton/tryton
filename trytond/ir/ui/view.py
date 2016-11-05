@@ -3,10 +3,7 @@
 import os
 import sys
 import logging
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 
 from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
