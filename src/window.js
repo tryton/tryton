@@ -818,12 +818,9 @@
             }).css('cursor', 'pointer')
             .appendTo(column_fields_all);
 
-            var prm = jQuery.Deferred();
-            this.get_fields(this.screen.model_name)
-                .done(function(fields){
-                    this.model_populate(fields).then(function() {
-                            prm.resolve();
-                        });
+            var prm = this.get_fields(this.screen.model_name)
+                .then(function(fields){
+                    this.model_populate(fields);
                     this.view_populate(this.fields_model, this.fields_all);
                 }.bind(this));
 
@@ -1000,6 +997,9 @@
             this.children_expand(node).done(function() {
                 this.view_populate(node.children, container_view);
             }.bind(this));
+        },
+        destroy: function() {
+            this.el.modal('hide');
         }
     });
 
@@ -1150,7 +1150,6 @@
                     }
                 }
             }.bind(this));
-            return jQuery.Deferred();
         },
         children_expand: function(node) {
             var dfd = jQuery.Deferred();
@@ -1255,19 +1254,23 @@
                 this.fields_selected.children('li').each(function(i, field_el) {
                     fields.push(field_el.getAttribute('field'));
                 });
-                this.el.modal('hide');
                 var fname = this.file_input.val();
                 if(fname) {
-                    this.import_csv(fname, fields);
+                    this.import_csv(fname, fields).then(function() {
+                        this.destroy();
+                    }.bind(this));
+                } else {
+                    this.destroy();
                 }
             }
             else {
-                this.el.modal('hide');
+                this.destroy();
             }
         },
         import_csv: function(fname, fields) {
             var skip = this.el_csv_skip.val();
             var encoding = this.el_csv_encoding.val();
+            var prm = jQuery.Deferred();
 
             Papa.parse(this.file_input[0].files[0], {
                 config: {
@@ -1276,8 +1279,9 @@
                     encoding: encoding
                 },
                 error: function(err, file, inputElem, reason) {
-                    Sao.common.warning(
-                        Sao.i18n.gettext('Error occured in loading the file'));
+                    Sao.common.warning.run(
+                        Sao.i18n.gettext('Error occured in loading the file'))
+                        .always(prm.reject);
                 },
                 complete: function(results) {
                     function encode_utf8(s) {
@@ -1299,13 +1303,14 @@
                         'method': 'model.' + this.screen.model_name +
                         '.import_data',
                         'params': [fields, data, {}]
-                    }, this.session).done(function(count) {
-                        Sao.common.message.run(
+                    }, this.session).then(function(count) {
+                        return Sao.common.message.run(
                             Sao.i18n.ngettext('%1 record imported',
                                 '%1 records imported', count));
-                    });
+                    }).then(prm.resolve, prm.reject);
                 }.bind(this)
             });
+            return prm.promise();
         }
     });
 
@@ -1423,7 +1428,6 @@
             prefix_field = prefix_field || '';
             prefix_name = prefix_name || '';
 
-            var prm = jQuery.Deferred();
             Object.keys(fields).forEach(function(name) {
                 var field = fields[name];
                 var string = field.string || name;
@@ -1460,8 +1464,6 @@
                     }
                 }.bind(this));
             }.bind(this));
-            prm.resolve();
-            return prm;
         },
         children_expand: function(node) {
             var dfd = jQuery.Deferred();
@@ -1678,10 +1680,12 @@
                         '.export_data',
                     'params': [this.ids, fields, {}]
                 }, this.session).then(function(data) {
-                    this.export_csv(fields2, data);
+                    this.export_csv(fields2, data).then(function() {
+                        this.destroy();
+                    }.bind(this));
                 }.bind(this));
             } else {
-                this.el.modal('hide');
+                this.destroy();
             }
         },
         export_csv: function(fields, data) {
@@ -1703,7 +1707,7 @@
             this.blob_url = blob_url;
             window.open(blob_url);
 
-            Sao.common.message.run(
+            return Sao.common.message.run(
                 Sao.i18n.ngettext('%1 record saved', '%1 records saved',
                     data.length));
         }
