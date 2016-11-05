@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 __all__ = ['PYSONEncoder', 'PYSONDecoder', 'Eval', 'Not', 'Bool', 'And', 'Or',
     'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime', 'Len']
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 import datetime
 from dateutil.relativedelta import relativedelta
 from functools import reduce, wraps

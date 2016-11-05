@@ -80,7 +80,6 @@ setup(name=name,
         ],
     extras_require={
         'trytond': [get_require_version('trytond')],
-        'simplejson': ['simplejson'],
         'cdecimal': ['cdecimal'],
         },
     dependency_links=dependency_links,
