@@ -61,3 +61,12 @@ class MoveLine:
     def dunning_procedure(self):
         if self.party:
             return self.party.dunning_procedure
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('dunnings')
+        return super(MoveLine, cls).copy(lines, default=default)
