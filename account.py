@@ -57,3 +57,12 @@ class MoveLine:
     __name__ = 'account.move.line'
 
     dunnings = fields.One2Many('account.dunning', 'line', 'Dunnings')
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('dunnings')
+        return super(MoveLine, cls).copy(lines, default=default)
