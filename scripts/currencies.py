@@ -169,6 +169,21 @@ currencies = {
         'negative_sign': '-',
         'positive_sign': '',
         },
+    'ARS': {
+        'rounding': "Decimal('0.01')",
+        'digits': '2',
+        'p_cs_precedes': 'True',
+        'n_cs_precedes': 'True',
+        'p_sep_by_space': 'True',
+        'n_sep_by_space': 'True',
+        'mon_grouping': '[3, 3, 0]',
+        'mon_decimal_point': ',',
+        'mon_thousands_sep': '.',
+        'p_sign_posn': '1',
+        'n_sign_posn': '1',
+        'negative_sign': '-',
+        'positive_sign': '',
+        },
 }
 
 for currency in pycountry.currencies:
