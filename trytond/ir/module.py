@@ -70,8 +70,8 @@ class Module(ModelSQL, ModelView):
             'delete_state': ('You can not remove a module that is activated '
                     'or will be activated'),
             'missing_dep': 'Missing dependencies %s for module "%s"',
-            'deactivate_dep': ('The modules you are trying to deactivate '
-                    'depends on activated modules:'),
+            'deactivate_dep': ('Some activated modules depend on the ones '
+                    'you are trying to deactivate:'),
             })
         cls._buttons.update({
                 'activate': {
