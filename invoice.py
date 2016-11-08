@@ -2217,7 +2217,7 @@ class InvoiceTax(ModelSQL, ModelView):
             res[field] = getattr(self, field)
 
         for field in ('account', 'base_code', 'tax_code', 'tax'):
-            res[field] = getattr(self, field).id
+            res[field] = getattr(getattr(self, field), 'id', None)
         return res
 
 
