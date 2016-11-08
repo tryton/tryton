@@ -848,7 +848,10 @@ class ProgressBar(object):
         self.renderer = gtk.CellRendererProgress()
         orientation = self.orientations.get(self.attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
-        self.renderer.set_orientation(orientation)
+        if hasattr(self.renderer, 'set_orientation'):
+            self.renderer.set_orientation(orientation)
+        else:
+            self.renderer.set_property('orientation', orientation)
         self.renderer.set_property('yalign', 0)
 
     @realized

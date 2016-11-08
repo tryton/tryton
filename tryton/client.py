@@ -63,6 +63,14 @@ if os.environ.get('GTK_VERSION', '2').startswith('3'):
         self.set_inverted(inverted)
     Gtk.ProgressBar.set_orientation = set_orientation
 
+    orig_set_orientation = Gtk.CellRendererProgress.set_orientation
+
+    def set_orientation(self, orientation):
+        orientation, inverted = orientation
+        orig_set_orientation(self, orientation)
+        self.set_property('inverted', inverted)
+    Gtk.CellRendererProgress.set_orientation = set_orientation
+
     orig_popup = Gtk.Menu.popup
 
     def popup(self, parent_menu_shell, parent_menu_item, func, button,
