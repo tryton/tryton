@@ -263,7 +263,7 @@ class Module(ModelSQL, ModelView):
                 cls.raise_user_error('deactivate_dep',
                         error_description='\n'.join(
                             '\t%s: %s' % (x[0], x[1]) for x in res))
-        cls.write(modules, {'state': 'not activated'})
+        cls.write(modules, {'state': 'to remove'})
 
     @classmethod
     @ModelView.button
