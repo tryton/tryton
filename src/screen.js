@@ -540,7 +540,7 @@
                 jQuery('<span/>', {
                     'class': 'input-group-btn'
                 }).append(jQuery('<button/>', {
-                    'class': 'btn btn-default',
+                    'class': 'datepickerbutton btn btn-default',
                     type: 'button'
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-calendar'
