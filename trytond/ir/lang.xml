@@ -82,7 +82,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.lang" id="lang_lo">
             <field name="code">lo</field>
-            <field name="name">ລາວ</field>
+            <field name="name">Lao</field>
             <field name="date">%d/%m/%Y</field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">.</field>
@@ -130,7 +130,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.lang" id="lang_zh_CN">
             <field name="code">zh_CN</field>
-            <field name="name">中国（简体）</field>
+            <field name="name">Chinese Simplified</field>
             <field name="date">%Y-%m-%d</field>
             <field name="grouping">[3, 0]</field>
             <field name="decimal_point">.</field>
