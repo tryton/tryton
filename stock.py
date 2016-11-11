@@ -74,7 +74,7 @@ class CreateDPDShipping(Wizard):
         super(CreateDPDShipping, cls).__setup__()
         cls._error_messages.update({
                 'has_reference_number': ('Shipment "%(shipment)s" already has'
-                    'a reference number.'),
+                    ' a reference number.'),
                 'dpd_webservice_error': ('DPD webservice call failed with the'
                     ' following error message:\n\n%(message)s'),
                 })
