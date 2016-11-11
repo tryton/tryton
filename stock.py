@@ -135,7 +135,7 @@ class CreateShippingUPS(Wizard):
                 'ups_webservice_error': ('UPS webservice call failed with the'
                     ' following error message:\n\n%(message)s'),
                 'has_reference_number': ('Shipment "%(shipment)s" already has'
-                    'a reference number.'),
+                    ' a reference number.'),
                 })
 
     def transition_start(self):
