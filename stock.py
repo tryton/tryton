@@ -158,7 +158,7 @@ class ShipmentOut:
                 'shipment_not_packed': ('The shipment "%(shipment)s" must be'
                     ' packed before creating the shipping labels'),
                 'shipment_without_carrier': ('The shipment "%(shipment)s"'
-                    'does not have a carrier set'),
+                    ' does not have a carrier set'),
                 })
 
     @classmethod
