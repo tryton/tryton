@@ -102,10 +102,9 @@ class ShipmentOut:
         Move = pool.get('stock.move')
         super(ShipmentOut, cls)._sync_inventory_to_outgoing(shipments)
         for shipment in shipments:
-            outgoing_by_product = {}
+            outgoing_by_product = defaultdict(list)
             for move in shipment.outgoing_moves:
-                outgoing_by_product.setdefault(move.product.id,
-                    []).append(move)
+                outgoing_by_product[move.product.id].append(move)
             for move in shipment.inventory_moves:
                 if not move.lot:
                     continue
