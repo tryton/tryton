@@ -310,3 +310,36 @@ Create some complex invoice and test its taxes base rounding::
     >>> found_invoice, = Invoice.find([('total_amount', '=', Decimal(0))])
     >>> found_invoice.id == invoice.id
     True
+
+Clear company tax_identifier::
+
+    >>> tax_identifier, = company.party.identifiers
+    >>> tax_identifier.type = None
+    >>> tax_identifier.save()
+
+Create a paid invoice::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 5
+    >>> line.unit_price = Decimal('40')
+    >>> invoice.click('post')
+    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay.form.journal = journal_cash
+    >>> pay.execute('choice')
+    >>> pay.state
+    'end'
+    >>> invoice.tax_identifier
+    >>> invoice.state
+    u'paid'
+
+The invoice is posted when the reconciliation is deleted::
+
+    >>> invoice.payment_lines[0].reconciliation.delete()
+    >>> invoice.reload()
+    >>> invoice.state
+    u'posted'
+    >>> invoice.tax_identifier

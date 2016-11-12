@@ -989,6 +989,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Date = pool.get('ir.date')
 
         for invoice in invoices:
+            # Posted and paid invoices are tested by check_modify so we can
+            # not modify tax_identifier nor number
+            if invoice.state in {'posted', 'paid'}:
+                continue
             if not invoice.tax_identifier:
                 invoice.tax_identifier = invoice.get_tax_identifier()
 
