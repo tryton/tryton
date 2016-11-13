@@ -49,7 +49,7 @@ class PackageType:
             ('65', 'Media Mail'),
             ('66', 'BPM Flat'),
             ('67', 'Standard Flat'),
-            ], 'UPS Code')
+            ], 'UPS Code', sort=False, translate=False)
 
     @classmethod
     def default_ups_code(cls):

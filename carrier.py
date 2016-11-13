@@ -61,7 +61,7 @@ class Carrier:
             ('85', 'UPS Today Express'),
             ('86', 'UPS Today Express Saver'),
             ('96', 'UPS Worldwide Express Freight'),
-            ], 'Service Type', sort=False,
+            ], 'Service Type', sort=False, translate=False,
         states={
             'required': Eval('shipping_service') == 'ups',
             'invisible': Eval('shipping_service') != 'ups',
@@ -74,7 +74,7 @@ class Carrier:
             ('ZPL', 'ZPL'),
             ('GIF', 'GIF'),
             ('STARPL', 'Star Printer'),
-            ], 'Label Image Format', sort=False,
+            ], 'Label Image Format', sort=False, translate=False,
         states={
             'required': Eval('shipping_service') == 'ups',
             'invisible': Eval('shipping_service') != 'ups',
@@ -84,7 +84,7 @@ class Carrier:
             (None, ''),
             ('6', '6'),
             ('8', '8'),
-            ], 'Label Height', sort=False,
+            ], 'Label Height', sort=False, translate=False,
         states={
             'required': ((Eval('shipping_service') == 'ups')
                 & (Eval('ups_label_image_format') != 'GIF')),
