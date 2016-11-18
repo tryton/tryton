@@ -17,8 +17,9 @@ of them are optional or completed with sensible default values:
 - Supplier Reference: Allow to keep track of the supplier reference
   for this order.
 - Description: An optional description for the order.
-- Reference: The internal reference of the purchase (will be generated
+- Number: The internal reference of the purchase (will be generated
   automatically on confirmation).
+- Reference: The optional external reference of the order.
 - Purchase Date: The date the purchase is made.
 - Payment Term: Define which payment term will be use for the future
   invoice.
