@@ -13,8 +13,9 @@ extensive list of the fields, most of them are optional:
 - Party: The customer.
 - Address: The main address of the customer.
 - Description: The description of the lead/opportunity.
-- Reference: The internal reference of the lead/opportunity (will be generated
+- Number: The internal reference of the lead/opportunity (will be generated
   automatically at creation).
+- Reference: The optional external reference of the order.
 - Amount: The estimated revenue amount.
 - Currency: Define the currency of the amount.
 - Probability: The probability of conversion.
