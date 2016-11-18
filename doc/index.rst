@@ -17,8 +17,9 @@ optional or completed with sensible default values:
 - Shipment Party: An optional different party where the shipment will be sent.
 - Shipment Address: The address where the shipment will be sent.
 - Description: An optional description for the order.
-- Reference: The internal reference of the sale (will be generated
+- Number: The internal reference of the sale (will be generated
   automatically on confirmation).
+- Reference: The optional external reference of the order.
 - Sale Date: The date the sale is made.
 - Payment Term: Define which payment term will be use for the future
   invoice.
