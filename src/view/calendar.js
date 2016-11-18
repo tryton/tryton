@@ -136,8 +136,8 @@
                 return jQuery.when.apply(jQuery, promisses).then(function() {
                     callback(this.events);
                 }.bind(this)).always(function() {
-                    this.proccessing = false;
-                });
+                    this.processing = false;
+                }.bind(this));
             }.bind(this));
         },
         get_week_view: function() {
