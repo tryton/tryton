@@ -13,8 +13,9 @@ list of the fields, most of them are optional:
 - Customer: The customer.
 - Address: The main address of the customer.
 - Date: The date the complaint is filled.
-- Reference: The internal reference of the complaint (will be generated
+- Number: The internal reference of the complaint (will be generated
   automatically on creation).
+- Reference: The optional external reference of the complaint.
 - Employee: The employee responsible of the complaint.
 - Type: The type of complaint
 - Origin: The original document for which the complaint if filled.
