@@ -15,7 +15,7 @@ There are 4 types of invoice: *Invoice*, *Supplier Invoice*, *Credit Note* and
   (By default the first tax identifier of the company).
 - Number: The invoice number set on validation for supplier invoices and on
   posting for others using the sequence defined on the period or fiscal year.
-- Reference: The internal reference of the invoice.
+- Reference: The optional external reference of the invoice.
 - Party: The party for which or from which the invoice is issued.
 - Invoice Address: The address of the party.
 - Description: An optional description of the invoice.
