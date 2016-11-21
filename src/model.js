@@ -2392,6 +2392,23 @@
 
     Sao.field.Dict = Sao.class_(Sao.field.Field, {
         _default: {},
+        set: function(record, value) {
+            if (value) {
+                // Order keys to allow comparison with stringify
+                var keys = [];
+                for (var key in value) {
+                    keys.push(key);
+                }
+                keys.sort();
+                var new_value = {};
+                for (var index in keys) {
+                    key = keys[index];
+                    new_value[key] = value[key];
+                }
+                value = new_value;
+            }
+            Sao.field.Dict._super.set.call(this, record, value);
+        },
         get: function(record) {
             return (Sao.field.Dict._super.get.call(this, record) ||
                     this._default);
