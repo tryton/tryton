@@ -1898,7 +1898,9 @@
                 if (mode == 'list ids') {
                     for (var i = 0, len = group.length; i < len; i++) {
                         var old_record = group[i];
-                        group.remove(old_record, true);
+                        if (!~value.indexOf(old_record.id)) {
+                            group.remove(old_record, true);
+                        }
                     }
                     group.load(value);
                 } else {
