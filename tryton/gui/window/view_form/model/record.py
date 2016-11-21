@@ -449,8 +449,9 @@ class Record(SignalEvent):
         if signal:
             self.signal('record-changed')
 
-    def set(self, val, signal=True):
+    def set(self, val, signal=True, validate=True):
         later = {}
+        fieldnames = []
         for fieldname, value in val.iteritems():
             if fieldname == '_timestamp':
                 # Always keep the older timestamp
@@ -473,12 +474,15 @@ class Record(SignalEvent):
                     del self.value[field_rec_name]
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
+            fieldnames.append(fieldname)
         for fieldname, value in later.iteritems():
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
         for fieldname, fieldinfo in self.group.fields.iteritems():
             if fieldinfo.attrs.get('autocomplete'):
                 self.do_autocomplete(fieldname)
+        if validate:
+            self.validate(fieldnames, softvalidation=True)
         if signal:
             self.signal('record-changed')
 
