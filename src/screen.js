@@ -1067,16 +1067,24 @@
                 } else {
                     group = this.group;
                 }
-                var record = group.new_(default_, undefined, rec_name);
-                group.add(record, this.new_model_position());
-                this.set_current_record(record);
-                if (previous_view.view_type == 'calendar') {
-                   previous_view.set_default_date(record, selected_date);
+                var record = group.new_(false, undefined, rec_name);
+                var prm;
+                if (default_) {
+                    prm = record.default_get(rec_name);
+                } else {
+                    prm = jQuery.when();
                 }
-                this.display().done(function() {
-                    this.set_cursor(true, true);
+                return prm.done(function() {
+                    group.add(record, this.new_model_position());
+                    this.set_current_record(record);
+                    if (previous_view.view_type == 'calendar') {
+                       previous_view.set_default_date(record, selected_date);
+                    }
+                    this.display().done(function() {
+                        this.set_cursor(true, true);
+                    }.bind(this));
+                    return record;
                 }.bind(this));
-                return record;
             }.bind(this));
         },
         new_model_position: function() {

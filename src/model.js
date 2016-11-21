@@ -697,11 +697,15 @@
             this.group.prm = prm.then(succeed, failed);
             return this.group.prm;
         },
-        set: function(values) {
+        set: function(values, validate) {
+            if (validate === undefined) {
+                validate = true;
+            }
             var name, value;
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             var later = {};
             var promises = [];
+            var fieldnames = [];
             for (name in values) {
                 if (!values.hasOwnProperty(name)) {
                     continue;
@@ -735,6 +739,7 @@
                 }
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;
+                fieldnames.push(name);
             }
             for (name in later) {
                 value = later[name];
@@ -747,6 +752,9 @@
                         field.description.autocomplete.length > 0) {
                     promises.push(this.do_autocomplete(fname));
                 }
+            }
+            if (validate) {
+                promises.push(this.validate(fieldnames, true));
             }
             return jQuery.when.apply(jQuery, promises);
         },
@@ -831,11 +839,13 @@
                         dfd.resolve(values);
                     });
                 }.bind(this));
+            } else {
+                dfd.resolve();
             }
             return dfd;
         },
         set_default: function(values, validate) {
-            if (validate === null) {
+            if (validate === undefined) {
                 validate = true;
             }
             var promises = [];
@@ -871,7 +881,8 @@
                                 });
                         }.bind(this);
                         if (validate) {
-                            return this.validate(null, true).then(callback);
+                            return this.validate(null, true)
+                                .then(callback);
                         } else {
                             return callback();
                         }
