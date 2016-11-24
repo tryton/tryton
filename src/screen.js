@@ -1074,7 +1074,7 @@
                 } else {
                     prm = jQuery.when();
                 }
-                return prm.done(function() {
+                return prm.then(function() {
                     group.add(record, this.new_model_position());
                     this.set_current_record(record);
                     if (previous_view.view_type == 'calendar') {
