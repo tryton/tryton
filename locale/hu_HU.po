@@ -2,180 +2,150 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:sale.extra,active:"
 msgid "Active"
 msgstr "Aktív"
 
-#, fuzzy
 msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Társaság"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás détuma"
 
-#, fuzzy
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
 msgstr "Által létrehozva "
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Tizedes vessző utáni számjegy"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Befejezési dátum"
 
-#, fuzzy
 msgctxt "field:sale.extra,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
 msgstr "Sor"
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
 msgstr "Név"
 
-#, fuzzy
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
 msgstr "Árlista"
 
-#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
 msgstr "Név"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Eladási összeg"
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Kezdő dátum"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
 msgstr "utolsó módosítás dátuma"
 
-#, fuzzy
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás détuma"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
 msgstr "Által létrehozva "
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr ""
+msgstr "Szabad"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
 msgstr "Termék"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Mértékegység kategória"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
 msgstr "Név"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "Eladási ár"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
 msgstr "Számkör"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
 msgstr "Egység"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Tizedes vessző utáni számjegy"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
 msgstr "utolsó módosítás dátuma"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extra"
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extrák"
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Eladási extrák"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extrák"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr ""
+msgstr "Eladási extrák"
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr ""
+msgstr "Eladási extra sor"
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr ""
-
-msgctxt "view:sale.extra:"
-msgid "Extra"
-msgstr ""
-
-msgctxt "view:sale.extra:"
-msgid "Extras"
-msgstr ""
+msgstr "Eladási sor"

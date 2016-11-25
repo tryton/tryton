@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
@@ -34,19 +34,17 @@ msgctxt "field:sale.extra,lines:"
 msgid "Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Lista de precios"
 
-#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -62,7 +60,7 @@ msgstr ""
 
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
@@ -70,7 +68,7 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
@@ -90,16 +88,15 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Cateogría de UdM de producto"
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
@@ -123,7 +120,7 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"

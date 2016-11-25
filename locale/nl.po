@@ -174,11 +174,3 @@ msgstr ""
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
 msgstr "Offerteregel"
-
-msgctxt "view:sale.extra:"
-msgid "Extra"
-msgstr ""
-
-msgctxt "view:sale.extra:"
-msgid "Extras"
-msgstr ""

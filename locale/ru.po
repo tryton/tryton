@@ -175,11 +175,3 @@ msgstr ""
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
 msgstr "Строка продажи"
-
-msgctxt "view:sale.extra:"
-msgid "Extra"
-msgstr ""
-
-msgctxt "view:sale.extra:"
-msgid "Extras"
-msgstr ""
