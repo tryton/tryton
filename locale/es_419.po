@@ -4,16 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_invoice_grouping_method:"
 msgid "Sale Invoice Grouping Method"
-msgstr "Metodo di raggruppamento in fattura vendita"
+msgstr "Método de agrupación de facturas de venta"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr "Nessuno"
+msgstr ""
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
-msgstr "Standard"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Invoicing"
-msgstr "fatturazione"
+msgstr ""
