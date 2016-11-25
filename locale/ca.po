@@ -33,11 +33,11 @@ msgstr "Empresa"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
@@ -81,7 +81,7 @@ msgstr "Producte"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Data de compra"
+msgstr "Data compra"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
@@ -125,11 +125,11 @@ msgstr "Valor"
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
@@ -137,11 +137,11 @@ msgstr "Actiu"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
@@ -157,11 +157,11 @@ msgstr "Nom"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
@@ -189,11 +189,11 @@ msgstr "Actiu"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -221,11 +221,11 @@ msgstr "Nom"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
@@ -570,26 +570,6 @@ msgstr "En execució"
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Crea assentaments d'actiu fins"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr "Línia d'actiu"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr "Línies d'actiu"
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr "Seleccioneu dates"
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr "Assentament d'amortització d'actiu"
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr "Actualitza actius"
 
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"

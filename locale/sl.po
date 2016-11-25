@@ -570,26 +570,6 @@ msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Knjiženje sredstev do"
 
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr "Postavka sredstva"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr "Postavke sredstev"
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr "Izberi datume"
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr "Prikaz amortizacije"
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr "Popravek sredstev"
-
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr "Ali res želite zapreti sredstvo?"

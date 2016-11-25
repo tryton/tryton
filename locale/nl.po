@@ -640,26 +640,6 @@ msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr ""
 
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr ""
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr ""
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr ""
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr ""
-
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr ""

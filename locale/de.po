@@ -571,26 +571,6 @@ msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Erstellung Anlagen Buchungssätze bis"
 
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr "Anlage Zeile"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr "Anlage Zeilen"
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr "Auswahl Datum"
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr "Anlage Abschreibung Buchungssatz"
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr "Anlage aktualisieren"
-
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr "Anlage wirklich schließen?"

@@ -570,26 +570,6 @@ msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "ສ້າງການເຄື່ອນຍ້າຍຊັບສິນຈົນຮອດ"
 
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr "ລາຍການຊັບສິນ"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr "ລາຍການ"
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr "ເລືອກວັນທີ"
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr "ຊັບສິນ ຄ່າຫຼຸ້ຍຫ້ຽນ ການເຄື່ອນຍ້າຍ"
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr "ປັບປຸງຊັບສິນ"
-
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ອັດບັນຊີຊັບສິນນີ້?"

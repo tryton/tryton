@@ -130,9 +130,10 @@ msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
@@ -182,9 +183,10 @@ msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
@@ -286,9 +288,10 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
@@ -372,9 +375,10 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
@@ -402,95 +406,91 @@ msgstr ""
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Assets"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr ""
+msgstr "Depreciation Table"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr ""
+msgstr "Create Assets Moves"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr ""
+msgstr "Print Depreciation Table"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr ""
+msgstr "Update Asset"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr ""
+msgstr "Closed"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr ""
+msgstr "Assets"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Assets"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr ""
+msgstr "Print Depreciation Table"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr ""
+msgstr "Create Assets Moves"
 
-#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
-msgstr "("
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid ")"
-msgstr ")"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "+"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "-"
-msgstr "-"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "/"
-msgstr "/"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
@@ -504,9 +504,10 @@ msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr ""
+msgstr "Assets"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
@@ -556,65 +557,38 @@ msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr ""
+msgstr "Closed"
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
-msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr ""
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr ""
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr ""
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr ""
+msgstr "Create Assets Moves"
 
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr ""
 
 msgctxt "view:account.asset:"
-msgid "Asset"
-msgstr ""
-
-msgctxt "view:account.asset:"
-msgid "Assets"
-msgstr ""
-
-msgctxt "view:account.asset:"
 msgid "Clear Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Close"
-msgstr ""
+msgstr "Closed"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
@@ -632,13 +606,15 @@ msgctxt "view:account.asset:"
 msgid "Run"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr ""
+msgstr "Update Asset"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr ""
+msgstr "Asset"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

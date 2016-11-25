@@ -572,26 +572,6 @@ msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Créer les mouvements d'actifs jusqu'a"
 
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr "Ligne d'actif"
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr "Lignes d'actif"
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr "Choisir des dates"
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr "Mouvement d'amortissement d'actif"
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
-msgstr "Mise à jour des actifs"
-
 msgctxt "view:account.asset:"
 msgid "Are you sure to close the asset?"
 msgstr "Êtes-vous sûr de clôturer l'actif ?"

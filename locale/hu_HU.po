@@ -146,9 +146,10 @@ msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+#, fuzzy
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 #, fuzzy
 msgctxt "field:account.asset-update-account.move,create_date:"
@@ -207,9 +208,10 @@ msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 #, fuzzy
 msgctxt "field:account.asset.line,create_date:"
@@ -322,9 +324,10 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
@@ -408,9 +411,10 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
@@ -436,13 +440,15 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_asset_form"
@@ -470,9 +476,10 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
 msgstr "Összes"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr ""
+msgstr "Bezár"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
@@ -482,13 +489,15 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset"
@@ -553,9 +562,10 @@ msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr ""
+msgstr "Társaság"
 
 #, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
@@ -598,9 +608,10 @@ msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr ""
+msgstr "Bezár"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
@@ -612,26 +623,6 @@ msgstr ""
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr ""
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr ""
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr ""
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
 msgstr ""
 
 msgctxt "view:account.asset:"
@@ -668,9 +659,10 @@ msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr ""
+msgstr "Eszköz"
 
 #, fuzzy
 msgctxt "view:account.configuration:"

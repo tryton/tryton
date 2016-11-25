@@ -460,9 +460,10 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
 msgstr "全部"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr ""
+msgstr "关闭"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
@@ -584,9 +585,10 @@ msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr ""
+msgstr "关闭"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
@@ -598,26 +600,6 @@ msgstr ""
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Line"
-msgstr ""
-
-msgctxt "view:account.asset.line:"
-msgid "Asset Lines"
-msgstr ""
-
-msgctxt "view:account.asset.print_depreciation_table.start:"
-msgid "Choose Dates"
-msgstr ""
-
-msgctxt "view:account.asset.update.show_depreciation:"
-msgid "Asset Depreciation Move"
-msgstr ""
-
-msgctxt "view:account.asset.update.start:"
-msgid "Update Asset"
 msgstr ""
 
 msgctxt "view:account.asset:"
