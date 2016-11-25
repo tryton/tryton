@@ -384,7 +384,7 @@ msgstr "Kommission Administration"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
@@ -438,6 +438,26 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Kommissionen"
 
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Kommissionen"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Kommissionen"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
 msgctxt "view:commission.agent:"
 msgid "Agent"
 msgstr "Vertreter"
@@ -465,23 +485,3 @@ msgstr "Kommissionsplan"
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
 msgstr "Kommissionspläne"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Rechnung"
-
-msgctxt "view:product.template:"
-msgid "Commissions"
-msgstr "Kommissionen"
-
-msgctxt "view:sale.line:"
-msgid "Commissions"
-msgstr "Kommissionen"
-
-msgctxt "wizard_button:commission.create_invoice,ask,create_:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:commission.create_invoice,ask,end:"
-msgid "Cancel"
-msgstr "Abbrechen"

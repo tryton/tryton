@@ -438,6 +438,26 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Komisije"
 
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Račun"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Komisije"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Komisije"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "V redu"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
 msgctxt "view:commission.agent:"
 msgid "Agent"
 msgstr "Zastopnik"
@@ -465,23 +485,3 @@ msgstr "Komisijski načrt"
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
 msgstr "Komisijski načrti"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Račun"
-
-msgctxt "view:product.template:"
-msgid "Commissions"
-msgstr "Komisije"
-
-msgctxt "view:sale.line:"
-msgid "Commissions"
-msgstr "Komisije"
-
-msgctxt "wizard_button:commission.create_invoice,ask,create_:"
-msgid "OK"
-msgstr "V redu"
-
-msgctxt "wizard_button:commission.create_invoice,ask,end:"
-msgid "Cancel"
-msgstr "Prekliči"

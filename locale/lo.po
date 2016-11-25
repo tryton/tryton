@@ -436,9 +436,10 @@ msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
 msgstr "ຍົກເລີກແລ້ວ"
 
+#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"
-msgstr ""
+msgstr "ໃບເກັບເງິນພາສີທີ່ດິນ"
 
 #, fuzzy
 msgctxt "selection:commission,invoice_state:"
@@ -484,34 +485,6 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr ""
-
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr ""
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr ""
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr ""
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr ""
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr ""
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr ""
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
 msgstr ""
 
 #, fuzzy

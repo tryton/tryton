@@ -440,34 +440,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr ""
 
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr ""
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr ""
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr ""
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr ""
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr ""
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr ""
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
-msgstr ""
-
 msgctxt "view:commission:"
 msgid "Invoice"
 msgstr ""

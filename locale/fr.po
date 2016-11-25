@@ -438,6 +438,26 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Commissions"
 
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Facturer"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Commissions"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Commissions"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
 msgctxt "view:commission.agent:"
 msgid "Agent"
 msgstr "Agent"
@@ -465,23 +485,3 @@ msgstr "Plan de commission"
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
 msgstr "Plans de commission"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Facturer"
-
-msgctxt "view:product.template:"
-msgid "Commissions"
-msgstr "Commissions"
-
-msgctxt "view:sale.line:"
-msgid "Commissions"
-msgstr "Commissions"
-
-msgctxt "wizard_button:commission.create_invoice,ask,create_:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:commission.create_invoice,ask,end:"
-msgid "Cancel"
-msgstr "Annuler"
