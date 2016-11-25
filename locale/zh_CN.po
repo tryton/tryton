@@ -163,9 +163,10 @@ msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "取消"
 
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
