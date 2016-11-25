@@ -910,18 +910,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Währungen Administration"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Kurs"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Kurse"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Format"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Kurse"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Kurs"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Kurse"

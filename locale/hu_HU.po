@@ -911,18 +911,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Pénznem adminisztráció"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Árfolyam"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Árfolyam"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Árfolyam"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Árfolyam"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Árfolyam"

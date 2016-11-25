@@ -913,18 +913,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administração de moedas"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Taxa"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Taxas de câmbio"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Taxas de câmbio"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Taxa"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Taxas de câmbio"

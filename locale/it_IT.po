@@ -928,18 +928,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Gestione Valute"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Cambio"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Tassi"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Tassi"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Cambio"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Tassi"

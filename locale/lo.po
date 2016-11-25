@@ -246,9 +246,10 @@ msgctxt "model:currency.currency,name:brl"
 msgid "Brazilian Real"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:currency.currency,name:bsd"
 msgid "Bahamian Dollar"
-msgstr ""
+msgstr "ໂດລາ ການາດາ"
 
 msgctxt "model:currency.currency,name:btn"
 msgid "Ngultrum"
@@ -830,9 +831,10 @@ msgctxt "model:currency.currency,name:xbc"
 msgid "European Unit of Account 9 (E.U.A.-9)"
 msgstr "ຢູໂຣ (E.U.A)"
 
+#, fuzzy
 msgctxt "model:currency.currency,name:xbd"
 msgid "European Unit of Account 17 (E.U.A.-17)"
-msgstr ""
+msgstr "ຢູໂຣ (E.U.A)"
 
 msgctxt "model:currency.currency,name:xcd"
 msgid "East Caribbean Dollar"
@@ -910,18 +912,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "ການບໍລິຫານສະກຸນເງິນ"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "ອັດຕາ"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "ອັດຕາ"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "ຮູບແບບ"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "ອັດຕາ"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "ອັດຕາ"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "ອັດຕາ"

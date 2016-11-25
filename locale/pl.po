@@ -20,39 +20,39 @@ msgstr ""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktywny"
 
 msgctxt "field:currency.currency,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr ""
+msgstr "Cyfry wyświetlane"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr ""
+msgstr "Separator dziesiętny"
 
 msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
-msgstr ""
+msgstr "Grupowanie"
 
 msgctxt "field:currency.currency,mon_thousands_sep:"
 msgid "Thousands Separator"
-msgstr ""
+msgstr "Separator tysięcy"
 
 msgctxt "field:currency.currency,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
@@ -68,15 +68,15 @@ msgstr ""
 
 msgctxt "field:currency.currency,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:currency.currency,negative_sign:"
 msgid "Negative Sign"
-msgstr ""
+msgstr "Znak minus"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Kod numeryczny"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
@@ -92,7 +92,7 @@ msgstr ""
 
 msgctxt "field:currency.currency,positive_sign:"
 msgid "Positive Sign"
-msgstr ""
+msgstr "Znak plus"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "field:currency.currency,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -112,36 +112,35 @@ msgstr ""
 
 msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
-msgstr ""
+msgstr "Symbol"
 
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Waluta"
 
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
@@ -149,20 +148,19 @@ msgstr ""
 
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
-#, fuzzy
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Waluta"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"

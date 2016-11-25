@@ -912,18 +912,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administration des devises"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Taux"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Taux"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formatage"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Taux"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Taux"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Taux"

@@ -107,9 +107,10 @@ msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr ""
+msgstr "日期格式"
 
 #, fuzzy
 msgctxt "field:currency.currency,rec_name:"
@@ -158,9 +159,10 @@ msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
 msgstr "编号"
 
+#, fuzzy
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "日期格式"
 
 #, fuzzy
 msgctxt "field:currency.currency.rate,rec_name:"
@@ -909,9 +911,10 @@ msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
 msgstr "津巴布韦元"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -929,18 +932,11 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr ""
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr ""
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr ""
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr ""
+msgstr "日期格式"

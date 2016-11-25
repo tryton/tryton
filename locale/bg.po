@@ -910,18 +910,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Управление на валута"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Курс"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Курсове"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Форматиране"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Курсове"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Курс"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Курсове"

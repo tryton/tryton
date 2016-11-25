@@ -30,11 +30,11 @@ msgstr "Código"
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
@@ -118,19 +118,19 @@ msgstr "Símbolo"
 
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
@@ -154,11 +154,11 @@ msgstr "Nombre"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -912,18 +912,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administración de monedas"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Tasa de cambio"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Tasas de cambio"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Tasas de cambio"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Tasa de cambio"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Tasas de cambio"

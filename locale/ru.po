@@ -911,18 +911,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Администрирование валют"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Курс"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Курсы"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Форматирование"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Курсы"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Курс"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Курсы"

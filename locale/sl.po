@@ -910,18 +910,18 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Valuta - vodenje"
 
-msgctxt "view:currency.currency.rate:"
-msgid "Rate"
-msgstr "Tečaj"
-
-msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Tečaji"
-
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Oblika"
 
 msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Tečaji"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Tečaj"
+
+msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Tečaji"

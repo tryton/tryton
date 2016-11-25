@@ -937,6 +937,15 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr ""
 
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Verhouding"
+
 #, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
@@ -944,14 +953,5 @@ msgstr "Verhouding"
 
 #, fuzzy
 msgctxt "view:currency.currency.rate:"
-msgid "Rates"
-msgstr "Verhouding"
-
-msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Verhouding"
