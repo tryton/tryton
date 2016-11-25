@@ -833,9 +833,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Movimenti"
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,number:"
 msgid "Numer"
-msgstr ""
+msgstr "Numero"
 
 #, fuzzy
 msgctxt "field:stock.shipment.in,origins:"
@@ -1329,17 +1330,14 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
-msgctxt "model:ir.action,name:"
-msgid "Product by Locations"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr ""
+msgstr "Luogo"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
@@ -1349,9 +1347,10 @@ msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr ""
+msgstr "Luogo"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
@@ -1367,9 +1366,10 @@ msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1640,17 +1640,19 @@ msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr ""
+msgstr "Luogo"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr ""
+msgstr "Luogo"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
@@ -1851,9 +1853,10 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
 msgstr "Quantità"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Riferimento"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
@@ -1863,9 +1866,10 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Shipment Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
-msgstr ""
+msgstr "Fornitore"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
@@ -1911,9 +1915,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
 msgstr "Quantità"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Reference:"
-msgstr ""
+msgstr "Riferimento"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Shipment Number"
@@ -1955,9 +1960,10 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
 msgstr "Quantità"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Reference:"
-msgstr ""
+msgstr "Riferimento"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
@@ -1973,9 +1979,10 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
 msgstr ":"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
@@ -1999,9 +2006,10 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
 msgstr "Quantità"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Riferimento"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Shipment Number"
@@ -2053,9 +2061,10 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
 msgstr "Quantità"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
-msgstr ""
+msgstr "Riferimento"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
@@ -2306,14 +2315,6 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr ""
 
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Line"
-msgstr ""
-
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Lines"
-msgstr ""
-
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr ""
@@ -2332,19 +2333,6 @@ msgid "Confirm"
 msgstr ""
 
 #, fuzzy
-msgctxt "view:stock.location:"
-msgid "Location"
-msgstr "Luogo"
-
-msgctxt "view:stock.location:"
-msgid "Location Quantity"
-msgstr ""
-
-msgctxt "view:stock.location:"
-msgid "Locations"
-msgstr ""
-
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
 msgstr "Cancella"
@@ -2358,14 +2346,6 @@ msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr ""
 
-msgctxt "view:stock.period.cache:"
-msgid "Period Cache"
-msgstr ""
-
-msgctxt "view:stock.period.cache:"
-msgid "Period Caches"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:stock.period:"
 msgid "Close"
@@ -2375,10 +2355,6 @@ msgstr "Chiusura"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Bozza"
-
-msgctxt "view:stock.product_quantities_warehouse:"
-msgid "Product Quantities By Warehouse"
-msgstr ""
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"

@@ -472,13 +472,15 @@ msgctxt "field:stock.location.lead_time,sequence:"
 msgid "Sequence"
 msgstr "Последовательность"
 
+#, fuzzy
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
-msgstr ""
+msgstr "Товарный склад"
 
+#, fuzzy
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
-msgstr ""
+msgstr "Товарный склад"
 
 #, fuzzy
 msgctxt "field:stock.location.lead_time,write_date:"
@@ -761,9 +763,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Перемещения"
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,number:"
 msgid "Numer"
-msgstr ""
+msgstr "Номер"
 
 #, fuzzy
 msgctxt "field:stock.shipment.in,origins:"
@@ -1204,10 +1207,6 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
-msgctxt "model:ir.action,name:"
-msgid "Product by Locations"
-msgstr "Продукция по местоположениям"
-
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Инвентаризация"
@@ -1551,9 +1550,10 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
 msgstr "Конфигурация склада"
 
+#, fuzzy
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
-msgstr ""
+msgstr "Продукция по местоположениям"
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
@@ -1640,9 +1640,10 @@ msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
 msgstr "Кол-во продукции по складам"
 
+#, fuzzy
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Продукция по местоположениям"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
@@ -2120,14 +2121,6 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Доставка"
 
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Line"
-msgstr "Строка инвентаризации"
-
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Lines"
-msgstr "Строки инвентаризации"
-
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr "Добавить строку в список для каждого отсутствующего товара"
@@ -2144,18 +2137,6 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr "Подтвердить"
 
-msgctxt "view:stock.location:"
-msgid "Location"
-msgstr "Местоположение"
-
-msgctxt "view:stock.location:"
-msgid "Location Quantity"
-msgstr "Количество в местоположении"
-
-msgctxt "view:stock.location:"
-msgid "Locations"
-msgstr "Местоположения"
-
 msgctxt "view:stock.move:"
 msgid "Cancel"
 msgstr "Отменить"
@@ -2168,14 +2149,6 @@ msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Сброс в черновик"
 
-msgctxt "view:stock.period.cache:"
-msgid "Period Cache"
-msgstr "Запас по периоду"
-
-msgctxt "view:stock.period.cache:"
-msgid "Period Caches"
-msgstr "Запасы по периоду"
-
 msgctxt "view:stock.period:"
 msgid "Close"
 msgstr "Закрыть"
@@ -2183,10 +2156,6 @@ msgstr "Закрыть"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Черновик"
-
-msgctxt "view:stock.product_quantities_warehouse:"
-msgid "Product Quantities By Warehouse"
-msgstr "Кол-во продукции по складам"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"

@@ -458,15 +458,13 @@ msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Dobavni rok"
 
-#, fuzzy
 msgctxt "field:stock.location.lead_time,rec_name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:stock.location.lead_time,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
@@ -1188,10 +1186,6 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
-
-msgctxt "model:ir.action,name:"
-msgid "Product by Locations"
-msgstr "Izdelek po lokacijah"
 
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
@@ -2092,14 +2086,6 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Pošiljke"
 
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Line"
-msgstr "Postavka popisa"
-
-msgctxt "view:stock.inventory.line:"
-msgid "Inventory Lines"
-msgstr "Postavke popisa"
-
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr "Dodaj postavko popisa za vsak manjkajoči izdelek"
@@ -2116,18 +2102,6 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr "Potrditev"
 
-msgctxt "view:stock.location:"
-msgid "Location"
-msgstr "Lokacija"
-
-msgctxt "view:stock.location:"
-msgid "Location Quantity"
-msgstr "Količina na lokaciji"
-
-msgctxt "view:stock.location:"
-msgid "Locations"
-msgstr "Lokacije"
-
 msgctxt "view:stock.move:"
 msgid "Cancel"
 msgstr "Preklic"
@@ -2140,14 +2114,6 @@ msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Ponastavitev"
 
-msgctxt "view:stock.period.cache:"
-msgid "Period Cache"
-msgstr "Predpomnjeno obdobje"
-
-msgctxt "view:stock.period.cache:"
-msgid "Period Caches"
-msgstr "Predpomnjena obdobja"
-
 msgctxt "view:stock.period:"
 msgid "Close"
 msgstr "Zaključitev"
@@ -2155,10 +2121,6 @@ msgstr "Zaključitev"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Priprava"
-
-msgctxt "view:stock.product_quantities_warehouse:"
-msgid "Product Quantities By Warehouse"
-msgstr "Količine izdelkov po skladiščih"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"
