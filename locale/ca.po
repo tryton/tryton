@@ -10,7 +10,6 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Ruta"
 
-#, fuzzy
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Ruta"
@@ -25,11 +24,11 @@ msgstr "LdMs"
 
 msgctxt "field:production.routing,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.routing,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.routing,id:"
 msgid "ID"
@@ -49,11 +48,11 @@ msgstr "Etapes"
 
 msgctxt "field:production.routing,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.routing,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.routing-production.bom,bom:"
 msgid "BOM"
@@ -61,11 +60,11 @@ msgstr "LdM"
 
 msgctxt "field:production.routing-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.routing-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.routing-production.bom,id:"
 msgid "ID"
@@ -81,11 +80,11 @@ msgstr "Ruta"
 
 msgctxt "field:production.routing-production.bom,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.routing-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.routing.operation,active:"
 msgid "Active"
@@ -93,11 +92,11 @@ msgstr "Actiu"
 
 msgctxt "field:production.routing.operation,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.routing.operation,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.routing.operation,id:"
 msgid "ID"
@@ -113,19 +112,19 @@ msgstr "Nom"
 
 msgctxt "field:production.routing.operation,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.routing.operation,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.routing.step,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.routing.step,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.routing.step,id:"
 msgid "ID"
@@ -149,11 +148,11 @@ msgstr "Seqüència"
 
 msgctxt "field:production.routing.step,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"

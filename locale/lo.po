@@ -184,17 +184,19 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr ""
+msgstr "ການດຳເນີນການ"
 
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr ""
+msgstr "ການດຳເນີນການ"
 
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
@@ -221,23 +223,3 @@ msgstr ""
 msgctxt "view:production.routing.operation:"
 msgid "Operation"
 msgstr "ການດຳເນີນການ"
-
-msgctxt "view:production.routing.operation:"
-msgid "Operations"
-msgstr ""
-
-msgctxt "view:production.routing.step:"
-msgid "Routing Step"
-msgstr ""
-
-msgctxt "view:production.routing.step:"
-msgid "Routing Steps"
-msgstr ""
-
-msgctxt "view:production.routing:"
-msgid "Routing"
-msgstr ""
-
-msgctxt "view:production.routing:"
-msgid "Routings"
-msgstr ""

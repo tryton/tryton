@@ -10,7 +10,6 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Linija"
 
-#, fuzzy
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Linija"

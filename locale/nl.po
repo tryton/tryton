@@ -213,27 +213,3 @@ msgstr ""
 msgctxt "model:production.routing.step,name:"
 msgid "Route"
 msgstr ""
-
-msgctxt "view:production.routing.operation:"
-msgid "Operation"
-msgstr ""
-
-msgctxt "view:production.routing.operation:"
-msgid "Operations"
-msgstr ""
-
-msgctxt "view:production.routing.step:"
-msgid "Routing Step"
-msgstr ""
-
-msgctxt "view:production.routing.step:"
-msgid "Routing Steps"
-msgstr ""
-
-msgctxt "view:production.routing:"
-msgid "Routing"
-msgstr ""
-
-msgctxt "view:production.routing:"
-msgid "Routings"
-msgstr ""
