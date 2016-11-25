@@ -6,6 +6,11 @@ msgctxt "error:analytic.account.entry:"
 msgid "Only one account is allowed per analytic root and origin."
 msgstr "Seulement un compte est permit par racine analytique et origine."
 
+msgctxt "error:analytic_account.account:"
+msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgstr ""
+"La somme des distributions du compte « %(account)s  » ne vaut pas 100%."
+
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
 msgstr "Valeurs de débit/crédit incorrectes."
@@ -26,9 +31,17 @@ msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Lignes analytiques"
 
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "État analytique"
+
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr "Compte"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Société"
 
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
@@ -114,6 +127,14 @@ msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
 msgstr "Balance affichée"
 
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr "Parents de distribution"
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr "Distributions"
+
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
 msgstr "ID"
@@ -158,13 +179,49 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "field:analytic_account.line,account:"
+msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "field:analytic_account.line,active:"
-msgid "Active"
-msgstr "Actif"
+msgctxt "field:analytic_account.account.distribution,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:analytic_account.account.distribution,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:analytic_account.account.distribution,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "Ratio"
+
+msgctxt "field:analytic_account.account.distribution,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Racine"
+
+msgctxt "field:analytic_account.account.distribution,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:analytic_account.account.distribution,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Compte"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
@@ -182,10 +239,6 @@ msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
 msgstr "Crédit"
 
-msgctxt "field:analytic_account.line,currency:"
-msgid "Currency"
-msgstr "Devise"
-
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
@@ -202,29 +255,13 @@ msgctxt "field:analytic_account.line,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:analytic_account.line,journal:"
-msgid "Journal"
-msgstr "Journal"
-
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "Ligne de mouvement comptable"
 
-msgctxt "field:analytic_account.line,name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:analytic_account.line,party:"
-msgid "Party"
-msgstr "Partenaire"
-
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:analytic_account.line,reference:"
-msgid "Reference"
-msgstr "Référence"
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
@@ -246,6 +283,10 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
+msgctxt "help:analytic_account.account,mandatory:"
+msgid "Make this account mandatory when filling documents"
+msgstr "Rendre ce compte obligatoire quand les documents sont remplis"
+
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr "Entrée de compte analytique"
@@ -253,6 +294,10 @@ msgstr "Entrée de compte analytique"
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Compte analytique"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr "Distribution de compte analytique"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
@@ -278,6 +323,10 @@ msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
 msgstr "Lignes analytiques"
 
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Lignes analytiques à compléter"
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
 msgstr "Ouvrir le compte"
@@ -298,6 +347,10 @@ msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
 msgstr "Compte analytique"
 
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Lignes analytiques à compléter"
+
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
@@ -305,6 +358,14 @@ msgstr "Ouvrir le plan comptable analytique"
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
 msgstr "Administration de l'analytique"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "Valide"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
@@ -327,6 +388,10 @@ msgid "Opened"
 msgstr "Ouvert"
 
 msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr "Distribution"
+
+msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
 msgstr "Normal"
 
@@ -342,9 +407,17 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analytique"
 
-msgctxt "view:analytic.account.entry:"
-msgid "Analytic Entry"
-msgstr "Entrée analytique"
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Crédit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Débit"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
@@ -354,14 +427,6 @@ msgctxt "view:analytic_account.account:"
 msgid "Notes"
 msgstr "Notes"
 
-msgctxt "view:analytic_account.line:"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:analytic_account.open_chart.start:"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Ouvrir le plan comptable analytique"
-
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
 msgstr "Annuler"
@@ -369,3 +434,11 @@ msgstr "Annuler"
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
 msgstr "Ouvrir"
+
+msgctxt "view:analytic_account.line:"
+msgid "General Information"
+msgstr "Information générale"
+
+msgctxt "view:analytic_account.open_chart.start:"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Ouvrir le plan comptable analytique"

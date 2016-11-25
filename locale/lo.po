@@ -6,6 +6,10 @@ msgctxt "error:analytic.account.entry:"
 msgid "Only one account is allowed per analytic root and origin."
 msgstr ""
 
+msgctxt "error:analytic_account.account:"
+msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgstr ""
+
 #, fuzzy
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
@@ -23,10 +27,19 @@ msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr ""
 
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
 msgctxt "field:analytic.account.entry,create_date:"
@@ -132,6 +145,14 @@ msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
 msgstr "ສະແດງຜົນດຸນດ່ຽງ"
 
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
@@ -186,14 +207,57 @@ msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,account:"
+msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,active:"
-msgid "Active"
-msgstr "ໃຊ້ຢູ່"
+msgctxt "field:analytic_account.account.distribution,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,company:"
@@ -216,11 +280,6 @@ msgid "Credit"
 msgstr "ມີ"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,currency:"
-msgid "Currency"
-msgstr "ສະກຸນເງິນ"
-
-#, fuzzy
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "ໂຕເລກສະກຸນເງິນ"
@@ -241,34 +300,14 @@ msgid "ID"
 msgstr "ເລດລຳດັບ"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,journal:"
-msgid "Journal"
-msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
-
-#, fuzzy
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "ລາຍການເຄື່ອນໄຫວບັນຊີ"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,name:"
-msgid "Name"
-msgstr "ຊື່"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,party:"
-msgid "Party"
-msgstr "ພາກສ່ວນ"
-
-#, fuzzy
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,reference:"
-msgid "Reference"
-msgstr "ເອກະສານອ້າງອີງ"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,write_date:"
@@ -295,12 +334,21 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
 
+msgctxt "help:analytic_account.account,mandatory:"
+msgid "Make this account mandatory when filling documents"
+msgstr ""
+
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
+msgstr "ບັນຊີວິເຄາະ"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
 msgstr ""
 
 msgctxt "model:analytic_account.line,name:"
@@ -331,6 +379,10 @@ msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
 msgstr ""
@@ -349,8 +401,13 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
 msgstr "ບັນຊີວິເຄາະ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
+msgstr "ບັນຊີວິເຄາະ"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
@@ -359,6 +416,15 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
 msgstr ""
 
 #, fuzzy
@@ -386,6 +452,10 @@ msgid "Opened"
 msgstr ""
 
 msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
 msgstr ""
 
@@ -402,9 +472,20 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr ""
 
-msgctxt "view:analytic.account.entry:"
-msgid "Analytic Entry"
-msgstr ""
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
 
 #, fuzzy
 msgctxt "view:analytic_account.account:"
@@ -415,15 +496,6 @@ msgstr "ຂໍ້ມູນທົ່ວໄປ"
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
 msgstr "ໝາຍເຫດ"
-
-#, fuzzy
-msgctxt "view:analytic_account.line:"
-msgid "General Information"
-msgstr "ຂໍ້ມູນທົ່ວໄປ"
-
-msgctxt "view:analytic_account.open_chart.start:"
-msgid "Open Chart of Analytic Accounts"
-msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
