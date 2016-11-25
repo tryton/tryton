@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.move.line.pay:"
+msgid "The Line \"%(line)s\" is blocked."
+msgstr ""
+
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
 msgstr "O Pagamento  \"%(payment)s\" excede a Linha \"%(line)s\"."
@@ -18,6 +22,10 @@ msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Montante do Pagamento"
 
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr "Classe de Pagamento"
@@ -26,16 +34,29 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagamentos"
 
-msgctxt "field:account.move.line.pay.start,date:"
-msgid "Date"
-msgstr "Data"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:account.move.line.pay.start,id:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.move.line.pay.start,journal:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
+msgstr "Diário"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
 msgstr "Diário"
 
 msgctxt "field:account.payment,amount:"
@@ -198,7 +219,8 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "model:account.move.line.pay.start,name:"
+#, fuzzy
+msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "Linha de Pagamento"
 
@@ -389,29 +411,17 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pagamento"
 
-msgctxt "view:account.move.line.pay.start:"
-msgid "Pay Line"
-msgstr "Por Linha"
+msgctxt "view:account.move.line:"
+msgid "Block"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr "Linhas de Pagamento"
 
-msgctxt "view:account.payment.group:"
-msgid "Payment Group"
-msgstr "Grupo de Pagamento"
-
-msgctxt "view:account.payment.group:"
-msgid "Payment Groups"
-msgstr "Grupos de Pagamento"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journal"
-msgstr "Diário de Pagamento"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journals"
-msgstr "Diários de Pagamento"
+msgctxt "view:account.move.line:"
+msgid "Unblock"
+msgstr ""
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
@@ -441,11 +451,13 @@ msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr "Sucesso"
 
-msgctxt "wizard_button:account.move.line.pay,start,end:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
-msgctxt "wizard_button:account.move.line.pay,start,pay:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
 msgstr "Pagar"
 

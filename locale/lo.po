@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.move.line.pay:"
+msgid "The Line \"%(line)s\" is blocked."
+msgstr ""
+
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
 msgstr "ການຊໍາລະເງິນ \"%(payment)s\" ຈ່າຍເກີນ ລາຍການ \"% (line)s\"."
@@ -18,6 +22,10 @@ msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "ມູນຄ່າການຈ່າຍ"
 
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr "ຊະນິດການຈ່າຍ"
@@ -26,16 +34,29 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "ການຊໍາລະເງິນ"
 
-msgctxt "field:account.move.line.pay.start,date:"
-msgid "Date"
-msgstr "ວັນທີ"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
-msgctxt "field:account.move.line.pay.start,id:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-msgctxt "field:account.move.line.pay.start,journal:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
 msgstr "ບັນຊີປະຈໍາວັນ"
 
 msgctxt "field:account.payment,amount:"
@@ -198,7 +219,8 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-msgctxt "model:account.move.line.pay.start,name:"
+#, fuzzy
+msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "ລາຍການຈ່າຍ"
 
@@ -388,29 +410,17 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "ການຈ່າຍ"
 
-msgctxt "view:account.move.line.pay.start:"
-msgid "Pay Line"
-msgstr "ລາຍການຈ່າຍ"
+msgctxt "view:account.move.line:"
+msgid "Block"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr "ລາຍການຈ່າຍ"
 
-msgctxt "view:account.payment.group:"
-msgid "Payment Group"
-msgstr "ໝວດການຈ່າຍ"
-
-msgctxt "view:account.payment.group:"
-msgid "Payment Groups"
-msgstr "ໝວດການຈ່າຍ"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journal"
-msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journals"
-msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
+msgctxt "view:account.move.line:"
+msgid "Unblock"
+msgstr ""
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
@@ -440,11 +450,13 @@ msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr "ສຳເລັດແລ້ວ"
 
-msgctxt "wizard_button:account.move.line.pay,start,end:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
-msgctxt "wizard_button:account.move.line.pay,start,pay:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
 msgstr "ຈ່າຍ"
 

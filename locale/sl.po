@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.move.line.pay:"
+msgid "The Line \"%(line)s\" is blocked."
+msgstr ""
+
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
 msgstr "Plačilo \"%(payment)s\" je preplačalo postavko \"%(line)s\"."
@@ -18,6 +22,10 @@ msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Znesek plačila"
 
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr "Zamrznjeno"
+
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr "Vrsta plačila"
@@ -26,17 +34,29 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Plačila"
 
-msgctxt "field:account.move.line.pay.start,date:"
-msgid "Date"
-msgstr "Datum"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Družba"
 
-msgctxt "field:account.move.line.pay.start,id:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.move.line.pay.start,journal:"
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
 msgstr "Dnevnik"
+
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
+msgstr "Dnevniki"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
@@ -198,9 +218,9 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "model:account.move.line.pay.start,name:"
+msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgstr ""
 
 msgctxt "model:account.payment,name:"
 msgid "Payment"
@@ -388,29 +408,17 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Plačilo"
 
-msgctxt "view:account.move.line.pay.start:"
-msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgctxt "view:account.move.line:"
+msgid "Block"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr "Plačilo postavk"
 
-msgctxt "view:account.payment.group:"
-msgid "Payment Group"
-msgstr "Plačilna skupina"
-
-msgctxt "view:account.payment.group:"
-msgid "Payment Groups"
-msgstr "Plačilne skupine"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journal"
-msgstr "Dnevnik plačil"
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journals"
-msgstr "Dnevniki plačil"
+msgctxt "view:account.move.line:"
+msgid "Unblock"
+msgstr ""
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
@@ -440,13 +448,14 @@ msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr "Uspelo"
 
-msgctxt "wizard_button:account.move.line.pay,start,end:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Prekliči"
 
-msgctxt "wizard_button:account.move.line.pay,start,pay:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
-msgstr "Plačilo"
+msgstr "Plačaj"
 
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"

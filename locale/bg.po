@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.move.line.pay:"
+msgid "The Line \"%(line)s\" is blocked."
+msgstr ""
+
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
 msgstr ""
@@ -19,6 +23,10 @@ msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Платена сума"
 
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr ""
+
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
 msgstr ""
@@ -29,18 +37,28 @@ msgid "Payments"
 msgstr "Плащане"
 
 #, fuzzy
-msgctxt "field:account.move.line.pay.start,date:"
-msgid "Date"
-msgstr "Дата"
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Фирма"
 
 #, fuzzy
-msgctxt "field:account.move.line.pay.start,id:"
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Управление на валути"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
 msgstr "ID"
 
 #, fuzzy
-msgctxt "field:account.move.line.pay.start,journal:"
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
 msgstr "Дневник"
 
 #, fuzzy
@@ -242,7 +260,7 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "model:account.move.line.pay.start,name:"
+msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr ""
 
@@ -456,28 +474,16 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Плащане"
 
-msgctxt "view:account.move.line.pay.start:"
-msgid "Pay Line"
+msgctxt "view:account.move.line:"
+msgid "Block"
 msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
 msgstr ""
 
-msgctxt "view:account.payment.group:"
-msgid "Payment Group"
-msgstr ""
-
-msgctxt "view:account.payment.group:"
-msgid "Payment Groups"
-msgstr ""
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journal"
-msgstr ""
-
-msgctxt "view:account.payment.journal:"
-msgid "Payment Journals"
+msgctxt "view:account.move.line:"
+msgid "Unblock"
 msgstr ""
 
 msgctxt "view:account.payment.process.start:"
@@ -512,12 +518,12 @@ msgid "Succeed"
 msgstr ""
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Отказване"
 
 #, fuzzy
-msgctxt "wizard_button:account.move.line.pay,start,pay:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
 msgstr "Плащане"
 
