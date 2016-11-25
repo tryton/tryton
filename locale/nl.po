@@ -76,7 +76,3 @@ msgstr ""
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
 msgstr ""
-
-msgctxt "view:purchase.product_supplier.day:"
-msgid "Week Day"
-msgstr ""
