@@ -16,7 +16,7 @@ msgstr "Lieferposten Kosten"
 
 msgctxt "field:sale.sale,available_carriers:"
 msgid "Available Carriers"
-msgstr ""
+msgstr "Verfügbare Frachtführer"
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"

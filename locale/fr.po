@@ -16,7 +16,7 @@ msgstr "Coût d'expédition"
 
 msgctxt "field:sale.sale,available_carriers:"
 msgid "Available Carriers"
-msgstr ""
+msgstr "Transporteurs disponibles"
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"
