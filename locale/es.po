@@ -28,7 +28,6 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Reglas de abastecimiento"
 
-#, fuzzy
 msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Período de suministro"
@@ -47,11 +46,11 @@ msgstr "Empresa"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
@@ -103,17 +102,16 @@ msgstr "Ubicación del almacén"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "help:purchase.configuration,supply_period:"
 msgid "In number of days"
 msgstr "En número de días."

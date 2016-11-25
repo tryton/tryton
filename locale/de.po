@@ -27,7 +27,6 @@ msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Bestellpunkte"
 
-#, fuzzy
 msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Beschaffungszeitraum"
@@ -112,7 +111,6 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "help:purchase.configuration,supply_period:"
 msgid "In number of days"
 msgstr "In Anzahl von Tagen"
