@@ -18,3 +18,11 @@ msgstr ""
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Оплата"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr ""
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr ""

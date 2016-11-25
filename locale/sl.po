@@ -17,3 +17,11 @@ msgstr "Klirinški dnevnik"
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Plačilo"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr "Plačilna skupina"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr ""

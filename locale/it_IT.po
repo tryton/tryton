@@ -17,3 +17,11 @@ msgstr "Registro di compensazione"
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Pagamento"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr "Raggruppamento pagamenti"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr "Compensazione"

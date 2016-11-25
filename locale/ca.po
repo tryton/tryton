@@ -17,3 +17,11 @@ msgstr "Diari de liquidació"
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Pagament"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr "Grup de pagaments"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr "Liquidació"
