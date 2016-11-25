@@ -11,6 +11,24 @@ msgid "You can not modify Account Deferral records"
 msgstr ""
 
 msgctxt "error:account.account:"
+msgid ""
+"The Account \"%(account)s\" can not have a second currency because it is not"
+" deferral."
+msgstr ""
+
+msgctxt "error:account.account:"
+msgid ""
+"The currency \"%(currency)s\" of Account \"%(account)s\" is not compatible "
+"with existing lines."
+msgstr ""
+
+msgctxt "error:account.account:"
+msgid ""
+"The kind of Account \"%(account)s\" does not allow to set a second currency.\n"
+"Only \"Other\" type allows."
+msgstr ""
+
+msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
 msgstr ""
 
@@ -236,6 +254,10 @@ msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "启用"
 
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.account,balance:"
 msgid "Balance"
 msgstr ""
@@ -341,6 +363,10 @@ msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr ""
 
+msgctxt "field:account.account,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr ""
+
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
 msgstr ""
@@ -406,6 +432,10 @@ msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr ""
 
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
 msgstr ""
@@ -422,6 +452,10 @@ msgstr "添加用户"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
+msgstr ""
+
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.account.deferral,currency_digits:"
@@ -446,6 +480,14 @@ msgstr "编号"
 msgctxt "field:account.account.deferral,rec_name:"
 msgid "Name"
 msgstr "纳木"
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
+msgctxt "field:account.account.deferral,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.deferral,write_date:"
@@ -979,11 +1021,6 @@ msgctxt "field:account.fiscalyear,close_lines:"
 msgid "Close Lines"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.fiscalyear,code:"
-msgid "Code"
-msgstr "语言编码"
-
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr ""
@@ -1473,11 +1510,6 @@ msgid "Type"
 msgstr "类型"
 
 #, fuzzy
-msgctxt "field:account.journal,view:"
-msgid "View"
-msgstr "视图"
-
-#, fuzzy
 msgctxt "field:account.journal,write_date:"
 msgid "Write Date"
 msgstr "写入日期"
@@ -1590,103 +1622,6 @@ msgstr "写入日期"
 
 #, fuzzy
 msgctxt "field:account.journal.type,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:account.journal.view,columns:"
-msgid "Columns"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.view,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:account.journal.view,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:account.journal.view,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
-msgctxt "field:account.journal.view,name:"
-msgid "Name"
-msgstr "纳木"
-
-#, fuzzy
-msgctxt "field:account.journal.view,rec_name:"
-msgid "Name"
-msgstr "纳木"
-
-#, fuzzy
-msgctxt "field:account.journal.view,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:account.journal.view,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,field:"
-msgid "Field"
-msgstr "数据"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,name:"
-msgid "Name"
-msgstr "纳木"
-
-msgctxt "field:account.journal.view.column,readonly:"
-msgid "Readonly"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,rec_name:"
-msgid "Name"
-msgstr "纳木"
-
-msgctxt "field:account.journal.view.column,required:"
-msgid "Required"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,sequence:"
-msgid "Sequence"
-msgstr "序列"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,view:"
-msgid "View"
-msgstr "视图"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
@@ -1883,6 +1818,10 @@ msgstr ""
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
+msgstr ""
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
 msgstr ""
 
 #, fuzzy
@@ -2232,11 +2171,6 @@ msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.period,code:"
-msgid "Code"
-msgstr "语言编码"
-
 msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr ""
@@ -2451,9 +2385,10 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "上级"
 
+#, fuzzy
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "日期格式"
 
 #, fuzzy
 msgctxt "field:account.tax,rec_name:"
@@ -3089,9 +3024,10 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "上级"
 
+#, fuzzy
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "日期格式"
 
 #, fuzzy
 msgctxt "field:account.tax.template,rec_name:"
@@ -3125,6 +3061,78 @@ msgstr "写入日期"
 msgctxt "field:account.tax.template,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
+
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "日期格式"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base_code:"
+msgid "Base Code"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base_sign:"
+msgid "Base Sign"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,tax_code:"
+msgid "Tax Code"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,tax_sign:"
+msgid "Tax Sign"
+msgstr ""
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
@@ -3196,10 +3204,6 @@ msgstr ""
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
-msgstr ""
-
-msgctxt "help:account.account.type,sequence:"
-msgid "Use to order the account type"
 msgstr ""
 
 msgctxt "help:account.aged_balance.context,posted:"
@@ -3290,10 +3294,6 @@ msgstr ""
 
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
-
-msgctxt "help:account.tax,sequence:"
-msgid "Use to order the taxes"
 msgstr ""
 
 msgctxt "help:account.tax,update_unit_price:"
@@ -3483,14 +3483,6 @@ msgctxt "model:account.journal.type,name:journal_type_write_off"
 msgid "Write-Off"
 msgstr ""
 
-msgctxt "model:account.journal.view,name:"
-msgid "Journal View"
-msgstr ""
-
-msgctxt "model:account.journal.view.column,name:"
-msgid "Journal View Column"
-msgstr ""
-
 msgctxt "model:account.move,name:"
 msgid "Account Move"
 msgstr ""
@@ -3599,16 +3591,20 @@ msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
 msgstr ""
 
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr ""
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr ""
+
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
 msgstr ""
 
 msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
-msgstr ""
-
-msgctxt "model:ir.action,name:"
-msgid "Open Journal Cash"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
@@ -3675,9 +3671,10 @@ msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "财年"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3717,10 +3714,6 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_journal_view_form"
-msgid "Journal Views"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form"
@@ -3859,6 +3852,10 @@ msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
 msgstr ""
 
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr ""
@@ -3961,13 +3958,15 @@ msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "财年"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "财年"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
@@ -4003,10 +4002,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
-msgid "Journal Views"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
@@ -4093,8 +4088,16 @@ msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
@@ -4134,9 +4137,10 @@ msgctxt "report:account.aged_balance:"
 msgid "Company:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
@@ -4198,9 +4202,10 @@ msgctxt "report:account.general_ledger:"
 msgid "Descr."
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
-msgstr ""
+msgstr "财年"
 
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
@@ -4269,9 +4274,10 @@ msgctxt "report:account.move.general_journal:"
 msgid "Credit"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
-msgstr ""
+msgstr "日期格式"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Debit"
@@ -4347,9 +4353,10 @@ msgctxt "report:account.trial_balance:"
 msgid "End Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
-msgstr ""
+msgstr "财年"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
@@ -4594,18 +4601,20 @@ msgctxt "selection:account.tax,type:"
 msgid "Fixed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.tax,type:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 #, fuzzy
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
 msgstr "百分比"
 
+#, fuzzy
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr ""
+msgstr "财年"
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
@@ -4651,38 +4660,15 @@ msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.tax.template,type:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 #, fuzzy
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "百分比"
-
-msgctxt "view:account.account.deferral:"
-msgid "Account Deferral"
-msgstr ""
-
-msgctxt "view:account.account.deferral:"
-msgid "Account Deferrals"
-msgstr ""
-
-msgctxt "view:account.account.template:"
-msgid "Account Template"
-msgstr ""
-
-msgctxt "view:account.account.template:"
-msgid "Account Templates"
-msgstr ""
-
-msgctxt "view:account.account.type.template:"
-msgid "Account Type Template"
-msgstr ""
-
-msgctxt "view:account.account.type.template:"
-msgid "Account Types Templates"
-msgstr ""
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"
@@ -4694,35 +4680,11 @@ msgid "Children"
 msgstr "子项"
 
 msgctxt "view:account.account:"
-msgid "Deferrals"
-msgstr ""
-
-msgctxt "view:account.account:"
 msgid "General Information"
-msgstr ""
-
-msgctxt "view:account.account:"
-msgid "Notes"
 msgstr ""
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr ""
-
-msgctxt "view:account.aged_balance:"
-msgid "Aged Balance"
-msgstr ""
-
-msgctxt "view:account.balance_sheet.context:"
-msgid "Balance Sheet"
-msgstr ""
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Rounding"
-msgstr ""
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Roundings"
 msgstr ""
 
 msgctxt "view:account.configuration:"
@@ -4733,26 +4695,10 @@ msgctxt "view:account.configuration:"
 msgid "Party"
 msgstr ""
 
-msgctxt "view:account.create_chart.account:"
-msgid "Create Chart of Accounts"
-msgstr ""
-
-msgctxt "view:account.create_chart.properties:"
-msgid "Create Default Properties"
-msgstr ""
-
 msgctxt "view:account.create_chart.start:"
 msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
-msgstr ""
-
-msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
-msgid "Balance Non-Deferral"
-msgstr ""
-
-msgctxt "view:account.fiscalyear.close.start:"
-msgid "Close Fiscal Year"
 msgstr ""
 
 msgctxt "view:account.fiscalyear:"
@@ -4784,10 +4730,6 @@ msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "序列"
 
-msgctxt "view:account.general_ledger.account.context:"
-msgid "General Ledger"
-msgstr ""
-
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
 msgstr ""
@@ -4812,48 +4754,8 @@ msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
 msgstr ""
 
-msgctxt "view:account.income_statement.context:"
-msgid "Income Statement"
-msgstr ""
-
-msgctxt "view:account.journal.period:"
-msgid "Journal - Period"
-msgstr ""
-
-msgctxt "view:account.journal.period:"
-msgid "Journals - Periods"
-msgstr ""
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Type"
-msgstr ""
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Types"
-msgstr ""
-
-msgctxt "view:account.journal.view.column:"
-msgid "View Column"
-msgstr ""
-
-msgctxt "view:account.journal.view.column:"
-msgid "View Columns"
-msgstr ""
-
-msgctxt "view:account.journal.view:"
-msgid "Journal View"
-msgstr ""
-
-msgctxt "view:account.journal.view:"
-msgid "Journal Views"
-msgstr ""
-
 msgctxt "view:account.journal:"
 msgid "General Information"
-msgstr ""
-
-msgctxt "view:account.move.cancel.default:"
-msgid "Cancel Moves"
 msgstr ""
 
 msgctxt "view:account.move.line.template:"
@@ -4872,38 +4774,6 @@ msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr ""
 
-msgctxt "view:account.move.open_journal.ask:"
-msgid "Open Journal"
-msgstr ""
-
-msgctxt "view:account.move.print_general_journal.start:"
-msgid "Print General Journal"
-msgstr ""
-
-msgctxt "view:account.move.reconcile_lines.writeoff:"
-msgid "Write-Off"
-msgstr ""
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliation"
-msgstr ""
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliations"
-msgstr ""
-
-msgctxt "view:account.move.template.create.template:"
-msgid "Create Move from Template"
-msgstr ""
-
-msgctxt "view:account.move.template.keyword:"
-msgid "Account Move Template Keyword"
-msgstr ""
-
-msgctxt "view:account.move.template.keyword:"
-msgid "Account Move Template Keywords"
-msgstr ""
-
 msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr ""
@@ -4912,26 +4782,10 @@ msgctxt "view:account.move:"
 msgid "Post"
 msgstr ""
 
-msgctxt "view:account.open_chart.start:"
-msgid "Open Chart of Accounts"
-msgstr ""
-
-msgctxt "view:account.period:"
-msgid "Period"
-msgstr ""
-
-msgctxt "view:account.period:"
-msgid "Periods"
-msgstr ""
-
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "view:account.tax.code.open_chart.start:"
-msgid "Open Chart of Tax Codes"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
@@ -4951,62 +4805,6 @@ msgstr "子项"
 msgctxt "view:account.tax.code:"
 msgid "Description"
 msgstr "描述"
-
-msgctxt "view:account.tax.group:"
-msgid "Tax Group"
-msgstr ""
-
-msgctxt "view:account.tax.group:"
-msgid "Tax Groups"
-msgstr ""
-
-msgctxt "view:account.tax.line.template:"
-msgid "Account Tax Line Template"
-msgstr ""
-
-msgctxt "view:account.tax.line.template:"
-msgid "Account Tax Line Templates"
-msgstr ""
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Line"
-msgstr ""
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Lines"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Template"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Templates"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Line"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Lines"
-msgstr ""
-
-msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rule Template"
-msgstr ""
-
-msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rules"
-msgstr ""
-
-msgctxt "view:account.tax.rule:"
-msgid "Tax Rule"
-msgstr ""
-
-msgctxt "view:account.tax.rule:"
-msgid "Tax Rules"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.tax.template:"
@@ -5050,10 +4848,6 @@ msgstr ""
 
 msgctxt "view:account.tax:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "view:account.update_chart.start:"
-msgid "Update Chart of Accounts"
 msgstr ""
 
 msgctxt "view:account.update_chart.succeed:"
@@ -5210,6 +5004,11 @@ msgstr "取消"
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
 msgstr "打开"
+
+#, fuzzy
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "关闭"
 
 #, fuzzy
 msgctxt "wizard_button:account.update_chart,start,end:"

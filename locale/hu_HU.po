@@ -11,6 +11,24 @@ msgid "You can not modify Account Deferral records"
 msgstr ""
 
 msgctxt "error:account.account:"
+msgid ""
+"The Account \"%(account)s\" can not have a second currency because it is not"
+" deferral."
+msgstr ""
+
+msgctxt "error:account.account:"
+msgid ""
+"The currency \"%(currency)s\" of Account \"%(account)s\" is not compatible "
+"with existing lines."
+msgstr ""
+
+msgctxt "error:account.account:"
+msgid ""
+"The kind of Account \"%(account)s\" does not allow to set a second currency.\n"
+"Only \"Other\" type allows."
+msgstr ""
+
+msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
 msgstr ""
 
@@ -236,6 +254,10 @@ msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "Aktív"
 
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.account,balance:"
 msgid "Balance"
 msgstr ""
@@ -312,9 +334,10 @@ msgctxt "field:account.account,name:"
 msgid "Name"
 msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.account,note:"
 msgid "Note"
-msgstr ""
+msgstr "Nincs"
 
 #, fuzzy
 msgctxt "field:account.account,parent:"
@@ -340,6 +363,10 @@ msgstr ""
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
+msgstr ""
+
+msgctxt "field:account.account,second_currency_digits:"
+msgid "Second Currency Digits"
 msgstr ""
 
 msgctxt "field:account.account,taxes:"
@@ -410,6 +437,10 @@ msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Számla"
 
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
 msgstr ""
@@ -427,6 +458,11 @@ msgstr "Által létrehozva "
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
@@ -449,6 +485,14 @@ msgstr "ID"
 msgctxt "field:account.account.deferral,rec_name:"
 msgid "Name"
 msgstr "Név"
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
+msgctxt "field:account.account.deferral,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.deferral,write_date:"
@@ -993,11 +1037,6 @@ msgid "Close Lines"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.fiscalyear,code:"
-msgid "Code"
-msgstr "Partner kód"
-
-#, fuzzy
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Társaság"
@@ -1026,9 +1065,10 @@ msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
 msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
@@ -1077,9 +1117,10 @@ msgctxt "field:account.fiscalyear-account.move.line,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear-account.move.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Sor"
 
 #, fuzzy
 msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
@@ -1492,11 +1533,6 @@ msgid "Type"
 msgstr "Típus"
 
 #, fuzzy
-msgctxt "field:account.journal,view:"
-msgid "View"
-msgstr "Nézet"
-
-#, fuzzy
 msgctxt "field:account.journal,write_date:"
 msgid "Write Date"
 msgstr "utolsó módosítás dátuma"
@@ -1610,104 +1646,6 @@ msgstr "utolsó módosítás dátuma"
 
 #, fuzzy
 msgctxt "field:account.journal.type,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-msgctxt "field:account.journal.view,columns:"
-msgid "Columns"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.view,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:account.journal.view,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:account.journal.view,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.journal.view,name:"
-msgid "Name"
-msgstr "Név"
-
-#, fuzzy
-msgctxt "field:account.journal.view,rec_name:"
-msgid "Name"
-msgstr "Név"
-
-#, fuzzy
-msgctxt "field:account.journal.view,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:account.journal.view,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,field:"
-msgid "Field"
-msgstr "Mező"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,name:"
-msgid "Name"
-msgstr "Név"
-
-msgctxt "field:account.journal.view.column,readonly:"
-msgid "Readonly"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,rec_name:"
-msgid "Name"
-msgstr "Név"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,required:"
-msgid "Required"
-msgstr "Szükséges"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,sequence:"
-msgid "Sequence"
-msgstr "Számkör"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,view:"
-msgid "View"
-msgstr "Nézet"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
@@ -1911,6 +1849,10 @@ msgstr ""
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
+msgstr ""
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
 msgstr ""
 
 #, fuzzy
@@ -2275,11 +2217,6 @@ msgid "Posted Moves"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.period,code:"
-msgid "Code"
-msgstr "Partner kód"
-
-#, fuzzy
 msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Társaság"
@@ -2632,9 +2569,10 @@ msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
@@ -2819,9 +2757,10 @@ msgctxt "field:account.tax.line.template,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr ""
+msgstr "Sor"
 
 #, fuzzy
 msgctxt "field:account.tax.line.template,rec_name:"
@@ -3183,6 +3122,80 @@ msgctxt "field:account.tax.template,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+#, fuzzy
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.tax.test,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr "Számla"
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base_code:"
+msgid "Base Code"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,base_sign:"
+msgid "Base Sign"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "Leírás"
+
+#, fuzzy
+msgctxt "field:account.tax.test.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,tax_code:"
+msgid "Tax Code"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,tax_sign:"
+msgid "Tax Sign"
+msgstr ""
+
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
 msgstr ""
@@ -3253,10 +3266,6 @@ msgstr ""
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
-msgstr ""
-
-msgctxt "help:account.account.type,sequence:"
-msgid "Use to order the account type"
 msgstr ""
 
 msgctxt "help:account.aged_balance.context,posted:"
@@ -3347,10 +3356,6 @@ msgstr ""
 
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
-
-msgctxt "help:account.tax,sequence:"
-msgid "Use to order the taxes"
 msgstr ""
 
 msgctxt "help:account.tax,update_unit_price:"
@@ -3539,14 +3544,6 @@ msgctxt "model:account.journal.type,name:journal_type_write_off"
 msgid "Write-Off"
 msgstr ""
 
-msgctxt "model:account.journal.view,name:"
-msgid "Journal View"
-msgstr ""
-
-msgctxt "model:account.journal.view.column,name:"
-msgid "Journal View Column"
-msgstr ""
-
 msgctxt "model:account.move,name:"
 msgid "Account Move"
 msgstr ""
@@ -3656,16 +3653,20 @@ msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
 msgstr ""
 
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr ""
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr ""
+
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
 msgstr ""
 
 msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
-msgstr ""
-
-msgctxt "model:ir.action,name:"
-msgid "Open Journal Cash"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
@@ -3780,10 +3781,6 @@ msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_journal_view_form"
-msgid "Journal Views"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr ""
@@ -3832,13 +3829,15 @@ msgctxt "model:ir.action,name:act_period_close"
 msgid "Close Periods"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form2"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "model:ir.action,name:act_period_reopen"
 msgid "Re-Open Periods"
@@ -3918,6 +3917,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update_chart"
@@ -4068,10 +4071,6 @@ msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
-msgid "Journal Views"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr ""
@@ -4100,9 +4099,10 @@ msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form2"
 msgid "Close Periods"
@@ -4157,9 +4157,18 @@ msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
+msgstr "Űrlap adószámlához"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
@@ -4195,9 +4204,10 @@ msgctxt "report:account.aged_balance:"
 msgid "Balance"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Társaság"
 
 #, fuzzy
 msgctxt "report:account.aged_balance:"
@@ -4243,9 +4253,10 @@ msgctxt "report:account.general_ledger:"
 msgid "Code"
 msgstr "Partner kód"
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
@@ -4290,9 +4301,10 @@ msgctxt "report:account.general_ledger:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Period:"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
@@ -4330,9 +4342,10 @@ msgctxt "report:account.move.general_journal:"
 msgid "Account"
 msgstr "Számla"
 
+#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
@@ -4356,9 +4369,10 @@ msgctxt "report:account.move.general_journal:"
 msgid "Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
-msgstr ""
+msgstr "Dátumtól"
 
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
@@ -4380,9 +4394,10 @@ msgctxt "report:account.move.general_journal:"
 msgid "Print Date:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "To Date:"
-msgstr ""
+msgstr "Dátumig"
 
 msgctxt "report:account.move.general_journal:"
 msgid "User:"
@@ -4402,9 +4417,10 @@ msgctxt "report:account.trial_balance:"
 msgid "Account"
 msgstr "Számla"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Társaság"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
@@ -4742,30 +4758,6 @@ msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Százalék:"
 
-msgctxt "view:account.account.deferral:"
-msgid "Account Deferral"
-msgstr ""
-
-msgctxt "view:account.account.deferral:"
-msgid "Account Deferrals"
-msgstr ""
-
-msgctxt "view:account.account.template:"
-msgid "Account Template"
-msgstr ""
-
-msgctxt "view:account.account.template:"
-msgid "Account Templates"
-msgstr ""
-
-msgctxt "view:account.account.type.template:"
-msgid "Account Type Template"
-msgstr ""
-
-msgctxt "view:account.account.type.template:"
-msgid "Account Types Templates"
-msgstr ""
-
 msgctxt "view:account.account.type:"
 msgid "Comparison"
 msgstr ""
@@ -4776,35 +4768,11 @@ msgid "Children"
 msgstr "Gyermek (csomag)"
 
 msgctxt "view:account.account:"
-msgid "Deferrals"
-msgstr ""
-
-msgctxt "view:account.account:"
 msgid "General Information"
-msgstr ""
-
-msgctxt "view:account.account:"
-msgid "Notes"
 msgstr ""
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
-msgstr ""
-
-msgctxt "view:account.aged_balance:"
-msgid "Aged Balance"
-msgstr ""
-
-msgctxt "view:account.balance_sheet.context:"
-msgid "Balance Sheet"
-msgstr ""
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Rounding"
-msgstr ""
-
-msgctxt "view:account.configuration.tax_rounding:"
-msgid "Account Configuration Tax Roundings"
 msgstr ""
 
 msgctxt "view:account.configuration:"
@@ -4815,26 +4783,10 @@ msgctxt "view:account.configuration:"
 msgid "Party"
 msgstr "Harmadik"
 
-msgctxt "view:account.create_chart.account:"
-msgid "Create Chart of Accounts"
-msgstr ""
-
-msgctxt "view:account.create_chart.properties:"
-msgid "Create Default Properties"
-msgstr ""
-
 msgctxt "view:account.create_chart.start:"
 msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
-msgstr ""
-
-msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
-msgid "Balance Non-Deferral"
-msgstr ""
-
-msgctxt "view:account.fiscalyear.close.start:"
-msgid "Close Fiscal Year"
 msgstr ""
 
 msgctxt "view:account.fiscalyear:"
@@ -4853,9 +4805,10 @@ msgctxt "view:account.fiscalyear:"
 msgid "Create Monthly Periods"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr ""
+msgstr "Raktár időszak"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
@@ -4865,10 +4818,6 @@ msgstr ""
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
 msgstr "Számkör"
-
-msgctxt "view:account.general_ledger.account.context:"
-msgid "General Ledger"
-msgstr ""
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
@@ -4894,48 +4843,8 @@ msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
 msgstr ""
 
-msgctxt "view:account.income_statement.context:"
-msgid "Income Statement"
-msgstr ""
-
-msgctxt "view:account.journal.period:"
-msgid "Journal - Period"
-msgstr ""
-
-msgctxt "view:account.journal.period:"
-msgid "Journals - Periods"
-msgstr ""
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Type"
-msgstr ""
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Types"
-msgstr ""
-
-msgctxt "view:account.journal.view.column:"
-msgid "View Column"
-msgstr ""
-
-msgctxt "view:account.journal.view.column:"
-msgid "View Columns"
-msgstr ""
-
-msgctxt "view:account.journal.view:"
-msgid "Journal View"
-msgstr ""
-
-msgctxt "view:account.journal.view:"
-msgid "Journal Views"
-msgstr ""
-
 msgctxt "view:account.journal:"
 msgid "General Information"
-msgstr ""
-
-msgctxt "view:account.move.cancel.default:"
-msgid "Cancel Moves"
 msgstr ""
 
 msgctxt "view:account.move.line.template:"
@@ -4954,38 +4863,6 @@ msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr ""
 
-msgctxt "view:account.move.open_journal.ask:"
-msgid "Open Journal"
-msgstr ""
-
-msgctxt "view:account.move.print_general_journal.start:"
-msgid "Print General Journal"
-msgstr ""
-
-msgctxt "view:account.move.reconcile_lines.writeoff:"
-msgid "Write-Off"
-msgstr ""
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliation"
-msgstr ""
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliations"
-msgstr ""
-
-msgctxt "view:account.move.template.create.template:"
-msgid "Create Move from Template"
-msgstr ""
-
-msgctxt "view:account.move.template.keyword:"
-msgid "Account Move Template Keyword"
-msgstr ""
-
-msgctxt "view:account.move.template.keyword:"
-msgid "Account Move Template Keywords"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.move.template:"
 msgid "Template"
@@ -4995,27 +4872,10 @@ msgctxt "view:account.move:"
 msgid "Post"
 msgstr ""
 
-msgctxt "view:account.open_chart.start:"
-msgid "Open Chart of Accounts"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.period:"
-msgid "Period"
-msgstr "Raktár időszak"
-
-msgctxt "view:account.period:"
-msgid "Periods"
-msgstr ""
-
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "view:account.tax.code.open_chart.start:"
-msgid "Open Chart of Tax Codes"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
@@ -5035,62 +4895,6 @@ msgstr "Gyermek (csomag)"
 msgctxt "view:account.tax.code:"
 msgid "Description"
 msgstr "Leírás"
-
-msgctxt "view:account.tax.group:"
-msgid "Tax Group"
-msgstr ""
-
-msgctxt "view:account.tax.group:"
-msgid "Tax Groups"
-msgstr ""
-
-msgctxt "view:account.tax.line.template:"
-msgid "Account Tax Line Template"
-msgstr ""
-
-msgctxt "view:account.tax.line.template:"
-msgid "Account Tax Line Templates"
-msgstr ""
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Line"
-msgstr ""
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Lines"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Template"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Templates"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Line"
-msgstr ""
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Lines"
-msgstr ""
-
-msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rule Template"
-msgstr ""
-
-msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rules"
-msgstr ""
-
-msgctxt "view:account.tax.rule:"
-msgid "Tax Rule"
-msgstr ""
-
-msgctxt "view:account.tax.rule:"
-msgid "Tax Rules"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.tax.template:"
@@ -5134,10 +4938,6 @@ msgstr ""
 
 msgctxt "view:account.tax:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "view:account.update_chart.start:"
-msgid "Update Chart of Accounts"
 msgstr ""
 
 msgctxt "view:account.update_chart.succeed:"
@@ -5298,6 +5098,11 @@ msgstr "Mégse"
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
 msgstr "Megnyit"
+
+#, fuzzy
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "Bezár"
 
 #, fuzzy
 msgctxt "wizard_button:account.update_chart,start,end:"
