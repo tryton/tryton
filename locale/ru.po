@@ -23,6 +23,10 @@ msgid "The VIES service is unavailable, try again later."
 msgstr "Служба VIES недоступна, попробуйте позже."
 
 msgctxt "error:party.contact_mechanism:"
+msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
+msgstr ""
+
+msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Вы не можете изменить контрагента в контакнтых данных \"%s\"."
 
@@ -34,6 +38,16 @@ msgstr "Некорректный номер ИНН \"%(vat)s\" у контраг
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
 msgstr "Код контрагента должен быть уникальным"
+
+msgctxt "error:party.replace:"
+msgid ""
+"Parties have different Tax Identifier: %(source_code)s vs "
+"%(destination_code)s."
+msgstr ""
+
+msgctxt "error:party.replace:"
+msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
+msgstr ""
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -289,6 +303,10 @@ msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Значение"
 
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr ""
+
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Сайт"
@@ -324,6 +342,11 @@ msgstr "Контрагент"
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
 msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:party.identifier,sequence:"
+msgid "Sequence"
+msgstr "Нумерация"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
@@ -409,9 +432,13 @@ msgctxt "field:party.party,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
-msgctxt "field:party.party,vat_code:"
-msgid "VAT Code"
-msgstr "Код ИНН"
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -456,6 +483,19 @@ msgstr "Дата изменения"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.replace.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr ""
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -511,6 +551,10 @@ msgstr "Этикетки"
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
 msgstr "Проверить VIES"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -593,6 +637,10 @@ msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Контрагент - Категории"
 
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr ""
+
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Администрирование контрагентов"
@@ -637,6 +685,31 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Сайт"
 
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Основной"
+
+#, fuzzy
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr ""
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "Ок"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr ""
+
 msgctxt "view:party.address:"
 msgid "Addresses"
 msgstr "Адреса"
@@ -664,19 +737,3 @@ msgstr "Контактный способ"
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Контактные способы"
-
-msgctxt "view:party.identifier:"
-msgid "Party Identifier"
-msgstr ""
-
-msgctxt "view:party.identifier:"
-msgid "Party Identifiers"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "General"
-msgstr "Основной"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "Ок"

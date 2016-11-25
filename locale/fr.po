@@ -21,6 +21,12 @@ msgid "The VIES service is unavailable, try again later."
 msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
 
 msgctxt "error:party.contact_mechanism:"
+msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
+msgstr ""
+"Le numéro de téléphone « %(phone)s » du tiers « %(party)s » n'est pas "
+"valide."
+
+msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Vous ne pouvez pas modifier le tiers sur le moyen de contact « %s »."
 
@@ -31,6 +37,19 @@ msgstr "Numéro de TVA « %(code)s » invalide sur le tiers « %(party)s ».
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
 msgstr "Le code du tiers doit être unique."
+
+msgctxt "error:party.replace:"
+msgid ""
+"Parties have different Tax Identifier: %(source_code)s vs "
+"%(destination_code)s."
+msgstr ""
+"Les tiers ont des identifiants de taxe différents: %(source_code)s vs "
+"%(destination_code)s."
+
+msgctxt "error:party.replace:"
+msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
+msgstr ""
+"Les tiers ont des noms différents: %(source_name)s vs %(destination_name)s."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -60,10 +79,9 @@ msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.address,name:"
 msgid "Building Name"
-msgstr "Nom"
+msgstr "Nom du bâtiment"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
@@ -97,51 +115,42 @@ msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "Code postal"
 
-#, fuzzy
 msgctxt "field:party.address.format,active:"
 msgid "Active"
 msgstr "Active"
 
-#, fuzzy
 msgctxt "field:party.address.format,country:"
 msgid "Country"
 msgstr "Pays"
 
-#, fuzzy
 msgctxt "field:party.address.format,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
 
-#, fuzzy
 msgctxt "field:party.address.format,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
-#, fuzzy
 msgctxt "field:party.address.format,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.address.format,language:"
 msgid "Language"
-msgstr "Langues"
+msgstr "Langue"
 
-#, fuzzy
 msgctxt "field:party.address.format,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
 msgstr "Date de mise à jour"
 
-#, fuzzy
 msgctxt "field:party.address.format,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
@@ -286,6 +295,10 @@ msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Valeur"
 
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Valeur compacte"
+
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Site web"
@@ -321,6 +334,10 @@ msgstr "Tiers"
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:party.identifier,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
@@ -406,9 +423,13 @@ msgctxt "field:party.party,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.party,vat_code:"
-msgid "VAT Code"
-msgstr "Code TVA"
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Remplacer par"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identifiant de taxe"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -454,6 +475,18 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Destination"
+
+msgctxt "field:party.replace.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Source"
+
 msgctxt "help:party.address.format,format_:"
 msgid ""
 "Available variables (also in upper case):\n"
@@ -467,6 +500,16 @@ msgid ""
 "- ${country}\n"
 "- ${country_code}"
 msgstr ""
+"Variables disponibles (aussi en majuscule):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -474,7 +517,7 @@ msgstr "Adresses"
 
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
-msgstr ""
+msgstr "Formats d'adresse"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -508,6 +551,10 @@ msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
 msgstr "Validation VIES"
 
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Remplacer"
+
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
 msgstr "Tiers"
@@ -522,7 +569,7 @@ msgstr "Adresses"
 
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
-msgstr ""
+msgstr "Formats d'adresse"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
@@ -558,7 +605,7 @@ msgstr "Adresse"
 
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
-msgstr ""
+msgstr "Format d'adresse"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -587,6 +634,10 @@ msgstr "Tiers"
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Tiers - Catégorie"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Remplacer le tiers"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
@@ -632,6 +683,30 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Site web"
 
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Remplacer par"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Remplacer"
+
 msgctxt "view:party.address:"
 msgid "Addresses"
 msgstr "Adresses"
@@ -667,11 +742,3 @@ msgstr "Identifiant de tiers"
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
 msgstr "Identifiants de tiers"
-
-msgctxt "view:party.party:"
-msgid "General"
-msgstr "Général"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "OK"

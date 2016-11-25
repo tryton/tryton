@@ -19,6 +19,10 @@ msgid "The VIES service is unavailable, try again later."
 msgstr "VIES storitev je nedostopna, poskusite kasneje."
 
 msgctxt "error:party.contact_mechanism:"
+msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
+msgstr ""
+
+msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
 
@@ -29,6 +33,16 @@ msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
 msgstr "Šifra partnerja mora biti edinstvena."
+
+msgctxt "error:party.replace:"
+msgid ""
+"Parties have different Tax Identifier: %(source_code)s vs "
+"%(destination_code)s."
+msgstr ""
+
+msgctxt "error:party.replace:"
+msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
+msgstr ""
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -58,10 +72,9 @@ msgctxt "field:party.address,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.address,name:"
 msgid "Building Name"
-msgstr "Naziv"
+msgstr "Naziv stavbe"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
@@ -129,10 +142,9 @@ msgctxt "field:party.address.format,language:"
 msgid "Language"
 msgstr "Jezik"
 
-#, fuzzy
 msgctxt "field:party.address.format,rec_name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Ime"
 
 #, fuzzy
 msgctxt "field:party.address.format,write_date:"
@@ -284,6 +296,10 @@ msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Vrednost"
 
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr ""
+
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Spletna stran"
@@ -319,6 +335,11 @@ msgstr "Partner"
 msgctxt "field:party.identifier,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:party.identifier,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
@@ -404,9 +425,13 @@ msgctxt "field:party.party,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-msgctxt "field:party.party,vat_code:"
-msgid "VAT Code"
-msgstr "DDV šifra"
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -451,6 +476,21 @@ msgstr "Zapisano"
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Cilj"
+
+#, fuzzy
+msgctxt "field:party.replace.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Original"
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -505,6 +545,10 @@ msgstr "Nalepke"
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
 msgstr "Preveri z VIES sistemom"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -586,6 +630,10 @@ msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Partner - Kategorija"
 
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr ""
+
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Partner - vodenje"
@@ -630,6 +678,30 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Spletna stran"
 
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr ""
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "V redu"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr ""
+
 msgctxt "view:party.address:"
 msgid "Addresses"
 msgstr "Naslovi"
@@ -665,11 +737,3 @@ msgstr "Identifikator partnerja"
 msgctxt "view:party.identifier:"
 msgid "Party Identifiers"
 msgstr "Identifikatorji partnerjev"
-
-msgctxt "view:party.party:"
-msgid "General"
-msgstr "Splošno"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "V redu"
