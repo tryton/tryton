@@ -212,7 +212,7 @@ msgstr "Situazione"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
-msgstr ""
+msgstr "Stato del documento"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -372,7 +372,7 @@ msgstr "Situazioni"
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Registri situazioni"
+msgstr "Registri documenti"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -458,44 +458,21 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Numero di righe"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
-msgstr "Cancellato"
+msgstr "Annullato"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
 msgstr "Bozza"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Posted"
 msgstr "Registrato"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Validato"
-
-#, fuzzy
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Registro situazione"
-
-#, fuzzy
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Registri situazione"
-
-#, fuzzy
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Raggruppamenti riga situazione"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Raggruppamenti righe situazione"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"

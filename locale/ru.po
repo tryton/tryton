@@ -554,22 +554,6 @@ msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Утвержденный"
 
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr ""
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Amount"

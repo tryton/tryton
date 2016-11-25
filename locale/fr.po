@@ -216,7 +216,7 @@ msgstr "Relevé"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
-msgstr ""
+msgstr "État du relevé"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -461,41 +461,21 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de lignes"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
-msgstr "Annulée"
+msgstr "Annulé"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Posted"
-msgstr "Postés"
+msgstr "Posté"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
-msgstr "Validées"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Journal de relevés"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Journaux de relevés"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Groupe de lignes de relevé"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Groupes de lignes de relevé"
+msgstr "Validé"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"

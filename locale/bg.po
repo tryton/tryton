@@ -520,22 +520,6 @@ msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Проверен"
 
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Дневник за отчети"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Дневник за отчети"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr ""
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Сума"

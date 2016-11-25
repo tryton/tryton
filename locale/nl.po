@@ -537,22 +537,6 @@ msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Goedgekeurd"
 
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Dagboek bankafschriften"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Dagboeken bankafschriften"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Amount"

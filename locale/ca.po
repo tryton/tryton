@@ -44,11 +44,11 @@ msgstr "Empresa"
 
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
@@ -104,11 +104,11 @@ msgstr "Validació"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -116,11 +116,11 @@ msgstr "Empresa"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
@@ -148,11 +148,11 @@ msgstr "Tipus de validació"
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -164,11 +164,11 @@ msgstr "Import"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -212,15 +212,15 @@ msgstr "Extracte"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
-msgstr ""
+msgstr "Estat de l'extracte"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
@@ -228,11 +228,11 @@ msgstr "Import"
 
 msgctxt "field:account.statement.line.group,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.statement.line.group,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -276,11 +276,11 @@ msgstr "Extracte"
 
 msgctxt "field:account.statement.line.group,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -457,41 +457,21 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de línies"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
-msgstr "Cancel·lats"
+msgstr "Cancel·lat"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
 msgstr "Esborrany"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Posted"
-msgstr "Comptabilitzats"
+msgstr "Comptabilitzat"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Validat"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Diari d'extracte"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Diaris d'extracte"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Grup de línies d'extracte"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Grups de línies d'extracte"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"

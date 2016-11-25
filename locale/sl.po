@@ -477,22 +477,6 @@ msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Odobreno"
 
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Dnevnik izpiskov"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Dnevniki izpiskov"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Skupina postavk izpiska"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Skupine postavk izpiska"
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Znesek"

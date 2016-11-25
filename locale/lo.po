@@ -44,47 +44,38 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
-#, fuzzy
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "ເລກເສດສະກຸນເງິນ"
 
-#, fuzzy
 msgctxt "field:account.statement,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
 
-#, fuzzy
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "ຍອດຍົກໄປ"
 
-#, fuzzy
 msgctxt "field:account.statement,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
-#, fuzzy
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
 msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
 
-#, fuzzy
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr "ຮ່ວງ"
+msgstr "ລາຍການ"
 
-#, fuzzy
 msgctxt "field:account.statement,name:"
 msgid "Name"
 msgstr "ຊື່"
@@ -93,17 +84,14 @@ msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr "ຍອດຍົກມາ"
 
-#, fuzzy
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "ສະຖານະ"
@@ -116,52 +104,42 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr "ຫ້ອງການ/ສຳນັກງານ"
+msgstr "ສຳນັກງານ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
@@ -170,22 +148,18 @@ msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
 
-#, fuzzy
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
@@ -476,9 +450,10 @@ msgctxt "report:account.statement:"
 msgid "Draft"
 msgstr "ຮ່າງກຽມ"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Journal:"
-msgstr ""
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -552,22 +527,6 @@ msgstr "ແຈ້ງແລ້ວ"
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "ກວດສອບແລ້ວ"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr ""
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.statement.line:"

@@ -212,7 +212,7 @@ msgstr "Auszug"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
-msgstr ""
+msgstr "Auszugsstatus"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -457,41 +457,21 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Anzahl Zeilen"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
 msgstr "Annulliert"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
 msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Posted"
 msgstr "Festgeschrieben"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Geprüft"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Auszugsjournal"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Auszugsjournale"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Auszugszeilengruppe"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Auszugszeilengruppen"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"

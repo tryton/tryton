@@ -477,22 +477,6 @@ msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Validado"
 
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Diário de Extrato"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Diários de Extrato"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr "Grupos de Linha de Extrato"
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
-msgstr "Grupos de Linha de Extrato"
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Quantidade"

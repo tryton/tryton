@@ -435,9 +435,10 @@ msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -480,9 +481,10 @@ msgctxt "report:account.statement:"
 msgid "Total"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
@@ -508,9 +510,10 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
@@ -522,22 +525,6 @@ msgstr ""
 
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
-msgstr ""
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr ""
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Group"
-msgstr ""
-
-msgctxt "view:account.statement.line.group:"
-msgid "Statement Line Groups"
 msgstr ""
 
 msgctxt "view:account.statement.line:"
