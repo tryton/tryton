@@ -32,11 +32,11 @@ msgstr "Empresa"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
@@ -56,7 +56,7 @@ msgstr "Apunt"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Data de venciment"
+msgstr "Data venciment"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
@@ -84,11 +84,11 @@ msgstr "Estat"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
@@ -100,11 +100,11 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
@@ -112,7 +112,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "Venciment"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -128,19 +128,19 @@ msgstr "Seqüència"
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -160,11 +160,11 @@ msgstr "Nom"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Crea reclamació per data"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Nivell de reclamació"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "Nivells de reclamació"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procediment de reclamació"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procediments de reclamació"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Voleu processar la reclamació?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Reclamació"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Reclamacions"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Izterjava za datum"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Stopnja izterjave"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "Stopnje izterjav"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Postopek izterjave"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Postopki izterjav"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Obdelava izterjave?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Izterjava"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Izterjave"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

@@ -112,7 +112,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "En retard"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Créer les relance pour la date"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Niveau de relance"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "niveaux de relance"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procédure de relance"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procédures de relance"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Traiter les relances ?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Relance"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Relances"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

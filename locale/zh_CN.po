@@ -167,9 +167,10 @@ msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
 msgstr "编号"
 
+#, fuzzy
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr ""
+msgstr "层级"
 
 #, fuzzy
 msgctxt "field:account.dunning.procedure,name:"
@@ -299,32 +300,8 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr ""
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr ""
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr ""
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr ""
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr ""
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr ""
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
 msgstr ""
 
 msgctxt "view:party.party:"

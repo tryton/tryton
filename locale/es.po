@@ -32,11 +32,11 @@ msgstr "Empresa"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
@@ -56,7 +56,7 @@ msgstr "Apunte"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Fecha de vencimiento"
+msgstr "Fecha vencimiento"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
@@ -84,11 +84,11 @@ msgstr "Estado"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
@@ -100,11 +100,11 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
@@ -112,7 +112,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "Vencimiento"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -128,19 +128,19 @@ msgstr "Secuencia"
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -160,11 +160,11 @@ msgstr "Nombre"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Crear reclamación para la fecha"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Nivel de reclamación"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "Niveles de reclamación"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procedimiento de reclamación"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procedimientos de reclamaciones"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "¿Procesar reclamación?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Reclamación"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Reclamaciones"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

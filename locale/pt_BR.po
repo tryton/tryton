@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Criar Cobrança para a data"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Nível de Cobrança"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "níveis de cobrança"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procedimento de Cobrança"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procedimentos de Cobrança"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Processar Cobrança?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Cobrança"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Cobranças"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

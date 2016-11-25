@@ -112,7 +112,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "Scaduto"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Creazione sollecito per data"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Livello di sollecito"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "livelli di sollecito"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Procedura di sollecito"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Procedure di sollecito"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Processare i solleciti?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Sollecito"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Solleciti"
 
 msgctxt "view:party.party:"
 msgid "Dunning"

@@ -112,7 +112,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "Überfällig"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -270,33 +270,9 @@ msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr "Mahnung erstellen für Datum"
 
-msgctxt "view:account.dunning.level:"
-msgid "Dunning Level"
-msgstr "Mahnstufe"
-
-msgctxt "view:account.dunning.level:"
-msgid "dunning levels"
-msgstr "Mahnstufen"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedure"
-msgstr "Mahnmethode"
-
-msgctxt "view:account.dunning.procedure:"
-msgid "Dunning Procedures"
-msgstr "Mahnmethoden"
-
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
 msgstr "Mahnlauf durchführen?"
-
-msgctxt "view:account.dunning:"
-msgid "Dunning"
-msgstr "Mahnung"
-
-msgctxt "view:account.dunning:"
-msgid "Dunnings"
-msgstr "Mahnungen"
 
 msgctxt "view:party.party:"
 msgid "Dunning"
