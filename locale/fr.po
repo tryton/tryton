@@ -394,10 +394,6 @@ msgctxt "view:customs.tariff.code:"
 msgid "To"
 msgstr "À"
 
-msgctxt "view:product-customs.tariff.code:"
-msgid "Product - Tariff Code"
-msgstr "Produit - Code de droit de douane"
-
 msgctxt "view:product.category:"
 msgid "Customs"
 msgstr "Douanes"

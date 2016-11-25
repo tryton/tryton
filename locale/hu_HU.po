@@ -429,10 +429,6 @@ msgctxt "view:customs.tariff.code:"
 msgid "To"
 msgstr "-hoz; -höz"
 
-msgctxt "view:product-customs.tariff.code:"
-msgid "Product - Tariff Code"
-msgstr ""
-
 msgctxt "view:product.category:"
 msgid "Customs"
 msgstr ""

@@ -400,10 +400,6 @@ msgctxt "view:customs.tariff.code:"
 msgid "To"
 msgstr "Para"
 
-msgctxt "view:product-customs.tariff.code:"
-msgid "Product - Tariff Code"
-msgstr "Produto - Código da Tarifa"
-
 msgctxt "view:product.category:"
 msgid "Customs"
 msgstr "Aduana"

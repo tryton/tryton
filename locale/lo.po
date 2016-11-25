@@ -109,9 +109,10 @@ msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
-msgstr ""
+msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
@@ -127,9 +128,10 @@ msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
-msgstr ""
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
@@ -427,10 +429,6 @@ msgstr ""
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr ""
-
-msgctxt "view:product-customs.tariff.code:"
-msgid "Product - Tariff Code"
 msgstr ""
 
 msgctxt "view:product.category:"
