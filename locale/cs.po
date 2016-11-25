@@ -486,6 +486,10 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr ""
@@ -504,6 +508,16 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
 msgstr ""
 
 msgctxt ""
@@ -652,14 +666,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr ""
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr ""
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr ""
-
 msgctxt "view:product.product:"
 msgid "Production"
 msgstr ""
@@ -668,32 +674,8 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr ""
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr ""
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr ""
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr ""
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr ""
-
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr ""
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
 msgstr ""
 
 msgctxt "view:production:"

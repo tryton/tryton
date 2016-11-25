@@ -491,6 +491,11 @@ msgid "BOMs"
 msgstr "Спецификации"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Спецификации"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Производства"
@@ -510,6 +515,16 @@ msgstr "Назначаване на производство"
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Дърво от Спецификация"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -663,14 +678,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Очакване"
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr "Продукт - Спецификация"
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr "Продукт - Спецификации"
-
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
@@ -680,33 +687,9 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr "Не може да назначи тези продукти:"
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr "Спецификация Входящи "
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr "Спецификация Изходящи"
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr "Дърво на спецификацията"
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr "Дърво на спецификацията"
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr "Дърво на спецификацията"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Редове"
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
-msgstr "Настройки на производство"
 
 msgctxt "view:production:"
 msgid "Assign"

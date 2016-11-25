@@ -563,17 +563,23 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr ""
+msgstr "Termelés"
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr ""
+msgstr "Termelés"
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
@@ -581,6 +587,16 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
 msgstr ""
 
 #, fuzzy
@@ -638,17 +654,19 @@ msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Termelés"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr ""
+msgstr "Termelés"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr ""
+msgstr "Termelés"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -713,9 +731,10 @@ msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 #, fuzzy
 msgctxt "selection:production,state:"
@@ -738,14 +757,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr ""
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr ""
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
@@ -755,34 +766,10 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr ""
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr ""
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr ""
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr ""
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Sor"
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
-msgstr ""
 
 msgctxt "view:production:"
 msgid "Assign"

@@ -48,7 +48,7 @@ msgstr "Llistes de materials"
 
 msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
-msgstr ""
+msgstr "Temps d'espera"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
@@ -56,11 +56,11 @@ msgstr "Llista de materials"
 
 msgctxt "field:product.product-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.product-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
@@ -80,11 +80,11 @@ msgstr "Seqüència"
 
 msgctxt "field:product.product-production.bom,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
@@ -100,11 +100,11 @@ msgstr "Cost"
 
 msgctxt "field:production,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -112,7 +112,7 @@ msgstr "Data efectiva"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
-msgstr ""
+msgstr "Data d'inici efectiva"
 
 msgctxt "field:production,id:"
 msgid "ID"
@@ -140,7 +140,7 @@ msgstr "Data estimada"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
-msgstr ""
+msgstr "Data d'inici planificada"
 
 msgctxt "field:production,product:"
 msgid "Product"
@@ -180,11 +180,11 @@ msgstr "Magatzem"
 
 msgctxt "field:production,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.assign.failed,id:"
 msgid "ID"
@@ -200,11 +200,11 @@ msgstr "Actiu"
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.bom,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.bom,id:"
 msgid "ID"
@@ -232,11 +232,11 @@ msgstr "Nom"
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.bom,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
@@ -244,11 +244,11 @@ msgstr "Llistes de materials"
 
 msgctxt "field:production.bom.input,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.bom.input,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
@@ -280,11 +280,11 @@ msgstr "Categoria d'UdM"
 
 msgctxt "field:production.bom.input,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.bom.input,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
@@ -292,11 +292,11 @@ msgstr "Llista de materials"
 
 msgctxt "field:production.bom.output,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.bom.output,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
@@ -328,11 +328,11 @@ msgstr "Categoria d'UdM"
 
 msgctxt "field:production.bom.output,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.bom.output,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
@@ -396,11 +396,11 @@ msgstr "ID"
 
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:production.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:production.configuration,id:"
 msgid "ID"
@@ -416,61 +416,51 @@ msgstr "Nom"
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
-#, fuzzy
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
-msgstr "Llistes de materials"
+msgstr "Llista de materials"
 
-#, fuzzy
 msgctxt "field:production.lead_time,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
-#, fuzzy
 msgctxt "field:production.lead_time,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
-#, fuzzy
 msgctxt "field:production.lead_time,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Temps d'espera"
 
-#, fuzzy
 msgctxt "field:production.lead_time,product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
-#, fuzzy
 msgctxt "field:production.lead_time,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:production.lead_time,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:production.lead_time,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
-#, fuzzy
 msgctxt "field:production.lead_time,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
@@ -489,6 +479,10 @@ msgid "BOM"
 msgstr "Llista de materials"
 
 msgctxt "model:ir.action,name:act_bom_list"
+msgid "BOMs"
+msgstr "Llistes de materials"
+
+msgctxt "model:ir.action,name:act_product_in_bom"
 msgid "BOMs"
 msgstr "Llistes de materials"
 
@@ -511,6 +505,16 @@ msgstr "Reserva la producció"
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Arbre de la llista de materials"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr "Com entrades"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr "Com sortides"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -616,7 +620,7 @@ msgstr "Configuració de la producció"
 
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"
-msgstr ""
+msgstr "Temps d'espera de la producció"
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
@@ -658,15 +662,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "En espera"
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr "Producte - Llista de materials"
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr "Producte - Llistes de materials"
-
-#, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
 msgstr "Producció"
@@ -675,33 +670,9 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr "No es poden reservar aquests productes:"
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr "Entrades de la llista de materials"
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr "Sortides de la llista de materials"
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr "Arbre de la llista de materials"
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr "Arbre de la llista de materials"
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr "Arbre de la llista de materials"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Línies"
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
-msgstr "Configuració de la producció"
 
 msgctxt "view:production:"
 msgid "Assign"

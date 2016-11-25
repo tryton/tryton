@@ -138,7 +138,7 @@ msgstr "Načrtovan datum"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
-msgstr ""
+msgstr "Planirano od"
 
 msgctxt "field:production,product:"
 msgid "Product"
@@ -450,15 +450,13 @@ msgctxt "field:production.lead_time,product:"
 msgid "Product"
 msgstr "Izdelek"
 
-#, fuzzy
 msgctxt "field:production.lead_time,rec_name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:production.lead_time,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 #, fuzzy
 msgctxt "field:production.lead_time,write_date:"
@@ -490,6 +488,11 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Kosovnice"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Kosovnice"
+
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Proizvodni nalogi"
@@ -509,6 +512,16 @@ msgstr "Dodelitev proizvodnega naloga"
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Drevo kosovnice"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -656,14 +669,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Čakajoče"
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr "Izdelek - Kosovnica"
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr "Izdelek - Kosovnice"
-
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
@@ -673,33 +678,9 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr "Dodelitev ni možna za naslednje izdelke:"
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr "Vhodi kosovnice"
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr "Izhodi kosovnice"
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr "Drevo kosovnice"
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr "Drevo kosovnice"
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr "Drevo kosovnice"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Postavke"
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
-msgstr "Proizvodna konfiguracija"
 
 msgctxt "view:production:"
 msgid "Assign"

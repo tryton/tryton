@@ -492,6 +492,11 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Lista de Materiais"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Listas de Materiais"
+
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Produções"
@@ -511,6 +516,16 @@ msgstr "Reservar produção"
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Listagem da lista de materiais"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -658,14 +673,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Espera"
 
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOM"
-msgstr "Produto - Lista de materiais"
-
-msgctxt "view:product.product-production.bom:"
-msgid "Product - BOMs"
-msgstr "Produto - Listas de materiais"
-
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
@@ -675,32 +682,8 @@ msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr "Não é possível reservar"
 
-msgctxt "view:production.bom.input:"
-msgid "BOM Inputs"
-msgstr "Entradas da lista de materiais"
-
-msgctxt "view:production.bom.output:"
-msgid "BOM Outputs"
-msgstr "Saídas da lista de materiais"
-
-msgctxt "view:production.bom.tree.open.start:"
-msgid "BOM Tree"
-msgstr "Listagem da lista de materiais"
-
-msgctxt "view:production.bom.tree.open.tree:"
-msgid "BOM Tree"
-msgstr "Listagem da lista de materiais"
-
-msgctxt "view:production.bom.tree:"
-msgid "BOM Tree"
-msgstr "Listagem da lista de materiais"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr "Linhas"
-
-msgctxt "view:production.configuration:"
-msgid "Production Configuration"
 msgstr "Linhas"
 
 msgctxt "view:production:"
