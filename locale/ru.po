@@ -75,6 +75,10 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
 
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr ""
+
 msgctxt "field:company.employee,id:"
 msgid "ID"
 msgstr "ID"
@@ -86,6 +90,10 @@ msgstr "Контрагент"
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Наименование"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr ""
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -278,14 +286,6 @@ msgstr "Организация"
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Отчеты"
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr "Сотрудник"
-
-msgctxt "view:company.employee:"
-msgid "Employees"
-msgstr "Сотрудники"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

@@ -74,6 +74,11 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
+#, fuzzy
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Konec amortizacije"
+
 msgctxt "field:company.employee,id:"
 msgid "ID"
 msgstr "ID"
@@ -85,6 +90,10 @@ msgstr "Partner"
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -148,7 +157,7 @@ msgstr "Trenutne družbe"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Trenutno družba"
+msgstr "Trenutna družba"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -277,14 +286,6 @@ msgstr "Družba"
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Poročila"
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr "Zaposlenec"
-
-msgctxt "view:company.employee:"
-msgid "Employees"
-msgstr "Zaposlenci"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

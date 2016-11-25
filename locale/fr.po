@@ -74,6 +74,10 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
 msgctxt "field:company.employee,id:"
 msgid "ID"
 msgstr "ID"
@@ -85,6 +89,10 @@ msgstr "Tiers"
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -277,14 +285,6 @@ msgstr "Société"
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapports"
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr "Employé"
-
-msgctxt "view:company.employee:"
-msgid "Employees"
-msgstr "Employés"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

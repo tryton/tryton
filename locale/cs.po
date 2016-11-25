@@ -75,6 +75,10 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr ""
 
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr ""
+
 msgctxt "field:company.employee,id:"
 msgid "ID"
 msgstr ""
@@ -87,6 +91,10 @@ msgstr ""
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Namu"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr ""
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -280,14 +288,6 @@ msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr ""
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr ""
-
-msgctxt "view:company.employee:"
-msgid "Employees"
 msgstr ""
 
 msgctxt "wizard_button:company.company.config,company,add:"

@@ -82,6 +82,10 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr "Gebruiker"
 
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -94,6 +98,10 @@ msgstr "Relatie"
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Naam"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:company.employee,write_date:"
@@ -305,14 +313,6 @@ msgstr "Bedrijf"
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapportage"
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr "Werknemer"
-
-msgctxt "view:company.employee:"
-msgid "Employees"
-msgstr "Werknemers"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
