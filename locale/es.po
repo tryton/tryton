@@ -28,11 +28,11 @@ msgstr "Transportista"
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
@@ -52,11 +52,11 @@ msgstr "Peso"
 
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"

@@ -74,11 +74,3 @@ msgstr ""
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
 msgstr "Gewicht"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price List"
-msgstr ""
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price Lists"
-msgstr ""

@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Lista de precios"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
@@ -42,10 +42,9 @@ msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
@@ -57,11 +56,11 @@ msgstr ""
 
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr ""
+msgstr "Lista de precio por peso de transportista"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
