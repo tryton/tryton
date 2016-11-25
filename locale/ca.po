@@ -63,14 +63,6 @@ msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
 msgstr "IS-BIC"
 
-msgctxt "view:account.fr.fec.result:"
-msgid "Generate FEC"
-msgstr "Genera FEC"
-
-msgctxt "view:account.fr.fec.start:"
-msgid "Generate FEC"
-msgstr "Genera FEC"
-
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
 msgstr "Tanca"

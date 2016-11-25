@@ -2,19 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.result,file:"
 msgid "File"
 msgstr "File"
 
 msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
-msgstr ""
+msgstr "Nome del file"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.result,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:account.fr.fec.start,deferral_journal:"
 msgid "Deferral Journal"
@@ -65,14 +63,6 @@ msgstr ""
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
-msgstr ""
-
-msgctxt "view:account.fr.fec.result:"
-msgid "Generate FEC"
-msgstr ""
-
-msgctxt "view:account.fr.fec.start:"
-msgid "Generate FEC"
 msgstr ""
 
 #, fuzzy
