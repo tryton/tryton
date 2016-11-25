@@ -128,7 +128,7 @@ msgstr "Priložnost"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr ""
+msgstr "Stanje priložnosti"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
@@ -665,18 +665,9 @@ msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity"
 msgstr "Priložnost"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
-msgstr "von"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sale Lead/Opportunity Line"
-msgstr "Postavka prodajne sledi/priložnosti"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sales Leads/Opportunities Lines"
-msgstr "Postavke prodajnih sledi/priložnosti"
+msgstr "Dobljeno"
 
 #, fuzzy
 msgctxt "view:sale.opportunity:"

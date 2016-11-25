@@ -625,9 +625,10 @@ msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
 msgstr "Възможност за продажба за служител"
 
+#, fuzzy
 msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
-msgstr ""
+msgstr "Възможност за продажба за служител за месец"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -691,14 +692,6 @@ msgstr "Възможност"
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Уон"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sale Lead/Opportunity Line"
-msgstr "Ред на инициатива/възможност за продажба"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sales Leads/Opportunities Lines"
-msgstr "Редове от инициативи/възможности за продажба"
 
 #, fuzzy
 msgctxt "view:sale.opportunity:"

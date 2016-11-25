@@ -30,7 +30,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
-msgstr ""
+msgstr "Umwandlungswahrscheinlichkeit"
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
@@ -130,7 +130,7 @@ msgstr "Verkaufschance"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr ""
+msgstr "Status Verkaufschance"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
@@ -248,17 +248,14 @@ msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr "Enddatum"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Anfangsdatum"
@@ -453,7 +450,7 @@ msgstr "Veranschlagter Ertrag"
 
 msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100"
-msgstr ""
+msgstr "Prozentsatz zwischen 0 und 100"
 
 msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
 msgid "In %"
@@ -608,7 +605,7 @@ msgstr "Verkaufschance pro Mitarbeiter"
 
 msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
-msgstr ""
+msgstr "Verkaufschance pro Mitarbeiter Kontext"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -642,45 +639,30 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Gewonnen"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Cancelled"
 msgstr "Annulliert"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Converted"
 msgstr "Umgewandelt"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lead"
 msgstr "Interessent"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lost"
 msgstr "Verlust"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity"
 msgstr "Verkaufschance"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
-msgstr "Won"
+msgstr "Gewonnen"
 
-msgctxt "view:sale.opportunity.line:"
-msgid "Sale Lead/Opportunity Line"
-msgstr "Interessent/Verkaufschance"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sales Leads/Opportunities Lines"
-msgstr "Interessenten/Verkaufschancen"
-
-#, fuzzy
 msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"

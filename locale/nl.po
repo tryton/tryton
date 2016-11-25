@@ -757,14 +757,6 @@ msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Zuid-Koreaanse won"
 
-msgctxt "view:sale.opportunity.line:"
-msgid "Sale Lead/Opportunity Line"
-msgstr ""
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sales Leads/Opportunities Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:sale.opportunity:"
 msgid "%"
@@ -793,16 +785,4 @@ msgstr ""
 
 msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
-msgstr ""
-
-msgctxt "view:sale.opportunity_employee:"
-msgid "Opportunities per Employee"
-msgstr ""
-
-msgctxt "view:sale.opportunity_employee_monthly:"
-msgid "Sale Opportunities per Month"
-msgstr ""
-
-msgctxt "view:sale.opportunity_monthly:"
-msgid "Sale Opportunities per Month"
 msgstr ""

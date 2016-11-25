@@ -28,15 +28,15 @@ msgstr "Empresa"
 
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
-msgstr ""
+msgstr "Probabilitat de conversió"
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.opportunity,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -104,19 +104,19 @@ msgstr "Estat"
 
 msgctxt "field:sale.opportunity,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.opportunity,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.opportunity.line,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.opportunity.line,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.opportunity.line,id:"
 msgid "ID"
@@ -128,7 +128,7 @@ msgstr "Oportunitat"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr ""
+msgstr "Estat de l'oportunitat"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
@@ -156,11 +156,11 @@ msgstr "Decimals de la unitat"
 
 msgctxt "field:sale.opportunity.line,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.opportunity.line,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -188,11 +188,11 @@ msgstr "Import convertides"
 
 msgctxt "field:sale.opportunity_employee,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.opportunity_employee,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
@@ -240,23 +240,20 @@ msgstr "Import guanyades"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr "Data final"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
@@ -287,11 +284,11 @@ msgstr "Import convertides"
 
 msgctxt "field:sale.opportunity_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
@@ -343,11 +340,11 @@ msgstr "Import guanyades"
 
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
@@ -379,11 +376,11 @@ msgstr "Import convertides"
 
 msgctxt "field:sale.opportunity_monthly,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.opportunity_monthly,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
@@ -431,11 +428,11 @@ msgstr "Import guanyades"
 
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.opportunity_monthly,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
@@ -451,7 +448,7 @@ msgstr "Import estimats d'ingressos."
 
 msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100"
-msgstr ""
+msgstr "Percentatge entre 0 i 100."
 
 msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
 msgid "In %"
@@ -606,7 +603,7 @@ msgstr "Oportunitats per empleat"
 
 msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
-msgstr ""
+msgstr "Context oportunitats per empleat i mes"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -626,7 +623,7 @@ msgstr "Convertida"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
-msgstr "Oportunitat"
+msgstr "Iniciativa"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
@@ -640,45 +637,30 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Guanyat"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Cancelled"
-msgstr "Cancel·lat"
+msgstr "Cancel·lada"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Converted"
-msgstr "Convertides"
+msgstr "Convertida"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lead"
-msgstr "Oportunitat"
+msgstr "Iniciativa"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lost"
-msgstr "Perdudes"
+msgstr "Perduda"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity"
 msgstr "Oportunitat"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
-msgstr "Won"
+msgstr "Guanyada"
 
-msgctxt "view:sale.opportunity.line:"
-msgid "Sale Lead/Opportunity Line"
-msgstr "Línies Iniciatives/Oportunitats"
-
-msgctxt "view:sale.opportunity.line:"
-msgid "Sales Leads/Opportunities Lines"
-msgstr "Línies Iniciatives/Oportunitats"
-
-#, fuzzy
 msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"
