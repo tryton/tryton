@@ -16,6 +16,14 @@ msgid ""
 "state."
 msgstr ""
 
+msgctxt "error:party.identifier:"
+msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
+msgstr ""
+
+msgctxt "error:party.identifier:"
+msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
+msgstr ""
+
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr ""
@@ -123,6 +131,10 @@ msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
 msgstr ""
 
+msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
+msgid "Always use RCUR"
+msgstr ""
+
 msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
 msgstr ""
@@ -205,10 +217,6 @@ msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
-msgctxt "field:party.party,sepa_creditor_identifier:"
-msgid "SEPA Creditor Identifier"
-msgstr ""
-
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
 msgstr ""
@@ -240,6 +248,27 @@ msgstr ""
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
+msgid "Requested"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
+msgid "Validated"
+msgstr "ກວດສອບແລ້ວ"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
@@ -532,8 +561,4 @@ msgstr "ຮ່າງກຽມ"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "SEPA"
 msgstr ""

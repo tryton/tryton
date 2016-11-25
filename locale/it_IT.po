@@ -16,6 +16,16 @@ msgid ""
 "state."
 msgstr "Mandato \"%s\"  non eliminabile perché non è in stato bozza o cancellato."
 
+msgctxt "error:party.identifier:"
+msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
+msgstr "La controparte \"%(party)s\" ha più di un identificatore  SEPA Creditor"
+
+msgctxt "error:party.identifier:"
+msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
+msgstr ""
+"L'identificatore SEPA \"%(code)s\" on per la controparte \"%(party)s\" non è"
+" valido."
+
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Sequenza mandato SEPA"
@@ -64,12 +74,10 @@ msgctxt "field:account.payment.journal,sepa_charge_bearer:"
 msgid "Charge Bearer"
 msgstr "soggetto gravato delle spese"
 
-#, fuzzy
 msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
 msgstr "Riferimento debito"
 
-#, fuzzy
 msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
 msgid "Receivable Flavor"
 msgstr "Riferimento credito"
@@ -117,6 +125,10 @@ msgstr "Nome"
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
 msgstr "Schema"
+
+msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
+msgid "Always use RCUR"
+msgstr "Usare sempre RCUR"
 
 msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
@@ -186,10 +198,6 @@ msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
 
-msgctxt "field:party.party,sepa_creditor_identifier:"
-msgid "SEPA Creditor Identifier"
-msgstr "Identificatore SEPA del creditore"
-
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
 msgstr "Identificatore SEPA del creditore usato"
@@ -221,6 +229,24 @@ msgstr "messaggi SEPA"
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Mandato"
+
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
+msgid "All"
+msgstr "Tutti"
+
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
+msgid "Draft"
+msgstr "Bozza"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
+msgid "Requested"
+msgstr "Richiesto"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
+msgid "Validated"
+msgstr "Convalidato"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
@@ -397,7 +423,6 @@ msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
 msgid "Shared"
 msgstr "Condivisi"
 
-#, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Business to Business"
 msgstr "Business to Business"
@@ -450,7 +475,6 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "IN"
 msgstr "IN"
 
-#, fuzzy
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "OUT"
