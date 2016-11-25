@@ -82,11 +82,11 @@ msgstr "Dirección de contacto"
 
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.shipment.drop,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
@@ -138,11 +138,11 @@ msgstr "Movimientos de proveedor"
 
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
