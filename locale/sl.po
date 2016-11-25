@@ -890,6 +890,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Nabava - vodenje"
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Znesek"
@@ -945,10 +950,6 @@ msgstr "Skupaj:"
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr "DDV:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
@@ -1100,17 +1101,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Ponovno izdelano"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Izdelki"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Dobavitelji"
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr "Nabavna konfiguracija"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1131,22 +1124,6 @@ msgstr "Opombe"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "Davki"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr "Dobaviteljeva cena"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr "Dobaviteljeve cene"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr "Dobavitelj izdelkov"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr "Dobavitelji izdelkov"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"

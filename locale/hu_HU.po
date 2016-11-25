@@ -49,13 +49,15 @@ msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
@@ -65,9 +67,10 @@ msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,product_suppliers:"
 msgid "Suppliers"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "field:product.template,purchasable:"
 msgid "Purchasable"
@@ -198,9 +201,10 @@ msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.line,note:"
 msgid "Note"
-msgstr ""
+msgstr "Nincs"
 
 #, fuzzy
 msgctxt "field:purchase.line,product:"
@@ -828,17 +832,20 @@ msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -914,9 +921,10 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Vásárlás"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
@@ -985,6 +993,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr ""
@@ -999,9 +1012,10 @@ msgctxt "report:purchase.purchase:"
 msgid "Description"
 msgstr "Leírás"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Description:"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
@@ -1044,10 +1058,6 @@ msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr ""
-
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
 msgstr ""
@@ -1072,9 +1082,10 @@ msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Confirmed"
@@ -1102,9 +1113,10 @@ msgctxt "selection:purchase.line,type:"
 msgid "Comment"
 msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Sor"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Subtotal"
@@ -1160,9 +1172,10 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
@@ -1198,17 +1211,9 @@ msgid "Recreated"
 msgstr ""
 
 #, fuzzy
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Termékek"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr ""
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr ""
+msgstr "Beszállítók"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1222,28 +1227,13 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
 msgstr ""
 
 #, fuzzy

@@ -210,9 +210,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Покупки"
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "Дата покупки"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
@@ -896,6 +897,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Администрирование покупок"
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Сумма"
@@ -952,10 +958,6 @@ msgstr "Итого:"
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Цена за единицу"
-
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr "ИНН:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
@@ -1108,17 +1110,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Создано заново"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Продукция"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Поставщики"
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr "Конфигурация покупок"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1139,22 +1133,6 @@ msgstr "Комментарии"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "Налоги"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr "Цена поставщика продукции"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr "Цены поставщика продукции"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr "Поставщик продукции"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr "Поставщики продукции"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"

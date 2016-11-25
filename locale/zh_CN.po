@@ -952,6 +952,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr ""
@@ -965,9 +970,10 @@ msgctxt "report:purchase.purchase:"
 msgid "Description"
 msgstr "描述"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid "Description:"
-msgstr ""
+msgstr "描述"
 
 msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
@@ -1009,10 +1015,6 @@ msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr ""
-
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
 msgstr ""
@@ -1037,9 +1039,10 @@ msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "取消"
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Confirmed"
@@ -1094,9 +1097,10 @@ msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Paid"
@@ -1110,9 +1114,10 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
@@ -1122,9 +1127,10 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "取消"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
@@ -1159,16 +1165,8 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr ""
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
 msgstr ""
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
@@ -1184,28 +1182,13 @@ msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "基本"
 
+#, fuzzy
 msgctxt "view:purchase.line:"
 msgid "Notes"
-msgstr ""
+msgstr "注释"
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
 msgstr ""
 
 #, fuzzy

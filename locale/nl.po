@@ -50,9 +50,10 @@ msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
 msgstr "Uitzonderingstoestand"
 
+#, fuzzy
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr ""
+msgstr "Inkoop"
 
 #, fuzzy
 msgctxt "field:product.product,product_suppliers:"
@@ -871,17 +872,20 @@ msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr ""
+msgstr "Inkoop"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr ""
+msgstr "Inkoop"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -963,9 +967,10 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr ""
+msgstr "Inkoop"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
@@ -1038,6 +1043,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Bedrag"
 
@@ -1102,11 +1112,6 @@ msgstr "Totaal:"
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
-
-#, fuzzy
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr "BTW:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
@@ -1282,18 +1287,9 @@ msgid "Recreated"
 msgstr "Opnieuw aangemaakt"
 
 #, fuzzy
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Producten"
-
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Leverancier"
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
@@ -1319,22 +1315,6 @@ msgstr "Aantekeningen"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "Belastingen"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:purchase.purchase:"

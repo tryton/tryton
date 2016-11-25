@@ -219,9 +219,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
@@ -290,9 +291,10 @@ msgctxt "field:purchase.line-account.tax,id:"
 msgid "ID"
 msgstr "ເລກລໍາດັບ"
 
+#, fuzzy
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 #, fuzzy
 msgctxt "field:purchase.line-account.tax,rec_name:"
@@ -334,9 +336,10 @@ msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
 msgstr "ເຄື່ອນໄຫວ"
 
+#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 #, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
@@ -373,9 +376,10 @@ msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
 msgstr "ເຄື່ອນໄຫວ"
 
+#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 #, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
@@ -939,9 +943,10 @@ msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "ວັນທີຈັດຊື້"
 
 msgctxt "model:purchase.line-account.tax,name:"
 msgid "Purchase Line - Tax"
@@ -984,6 +989,11 @@ msgstr "ສັ່ງຊື້"
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:purchase.purchase:"
@@ -1048,10 +1058,6 @@ msgstr "ລວມເງິນ:"
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "ລາຄາຫົວໜ່ວຍ"
-
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr ""
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
@@ -1213,19 +1219,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "ສ້າງຂຶ້ນໃໝ່"
 
-#, fuzzy
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "ຜູ້ສະໜອງ"
-
-#, fuzzy
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr "ຕັ້ງຄ່າການຈັດຊື້"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1249,22 +1245,6 @@ msgstr "ໝາຍເຫດ"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "ອາກອນ"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr ""
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"

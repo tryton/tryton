@@ -210,9 +210,10 @@ msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+#, fuzzy
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "Data da compra"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
@@ -890,6 +891,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Administrador de compras"
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Quantidade"
@@ -946,10 +952,6 @@ msgstr "Total:"
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Preço unitário"
-
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr "IVA:"
 
 #, fuzzy
 msgctxt "selection:account.invoice,purchase_exception_state:"
@@ -1103,17 +1105,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Recriado"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produtos"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Fornecedores"
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr "Configuração da compra"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1134,22 +1128,6 @@ msgstr "Observações"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "Impostos"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr "Preço do fornecedor do produto"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr "Preço do Fornecedor do Produto"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr "Fornecedor do produto"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr "Fornecedores de produtos"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"

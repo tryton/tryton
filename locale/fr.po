@@ -211,7 +211,7 @@ msgstr "Achat"
 
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "État de l'achat"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
@@ -889,6 +889,10 @@ msgid "Purchase Administrator"
 msgstr "Administrateur des achats"
 
 msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Montant"
 
@@ -944,10 +948,6 @@ msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
 
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
-msgstr "TVA :"
-
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
 msgstr ""
@@ -972,32 +972,26 @@ msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
 msgstr "Manuel"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
-msgstr "Annulée"
+msgstr "Annulé"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Confirmed"
-msgstr "Confirmée"
+msgstr "Confirmé"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Done"
-msgstr "Terminée"
+msgstr "Terminé"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Processing"
 msgstr "Traitement"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Quotation"
 msgstr "Devis"
@@ -1098,17 +1092,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Recréé"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produits"
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Fournisseurs"
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
-msgstr "Configuration des achats"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1129,22 +1115,6 @@ msgstr "Notes"
 msgctxt "view:purchase.line:"
 msgid "Taxes"
 msgstr "Taxes"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr "Prix du fournisseur du produit"
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr "Prix du fournisseur du produit"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr "Fournisseur du produit"
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
-msgstr "Fournisseurs du produit"
 
 msgctxt "view:purchase.purchase:"
 msgid "Cancel"
@@ -1182,12 +1152,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Devis"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Annulée"
+msgstr "Annuler"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Remettre en brouillon"

@@ -889,6 +889,11 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr ""
@@ -943,10 +948,6 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
-msgstr ""
-
-msgctxt "report:purchase.purchase:"
-msgid "VAT:"
 msgstr ""
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
@@ -1093,16 +1094,8 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
 msgctxt "view:product.template:"
 msgid "Suppliers"
-msgstr ""
-
-msgctxt "view:purchase.configuration:"
-msgid "Purchase Configuration"
 msgstr ""
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
@@ -1123,22 +1116,6 @@ msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Taxes"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Price"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier.price:"
-msgid "Product Supplier Prices"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Supplier"
-msgstr ""
-
-msgctxt "view:purchase.product_supplier:"
-msgid "Product Suppliers"
 msgstr ""
 
 msgctxt "view:purchase.purchase:"
