@@ -178,34 +178,44 @@ Replacing existing Tryton reports
 To replace an existing report you must deactivate the old report and activate
 the new report.
 
-For example to deactivate the invoice report:
+For example to deactivate the sale report:
 
 .. highlight:: xml
 
 ::
 
-  <record model="ir.action.report" id="account_invoice.report_invoice">
+  <record model="ir.action.report" id="sale.report_sale">
     <field name="active" eval="False"/>
   </record>
 
-Then you must activate the new invoice report that exists in your new module:
+Then you must activate the new sale report that exists in your new module:
 
 .. highlight:: xml
 
 ::
 
-  <record model="ir.action.report" id="report_invoice_new">
-    <field name="name">Invoice</field>
-    <field name="report_name">account.invoice</field>
-    <field name="model">account.invoice</field>
-    <field name="report">my_module/invoice.odt</field>
+  <record model="ir.action.report" id="report_sale">
+    <field name="name">Sale</field>
+    <field name="report_name">sale.sale</field>
+    <field name="model">sale.sale</field>
+    <field name="report">my_module/sale.odt</field>
     <field name="template_extension">odt</field>
+  </record>
+
+And create the keyword for the new report:
+
+.. highlight:: xml
+
+::
+
+  <record model="ir.action.keyword" id="report_sale_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">sale.sale,-1</field>
+      <field name="action" ref="report_sale"/>
   </record>
 
 Passing custom data to a report
 -------------------------------
-
-TODO: Examples of overriding Report.execute.
 
 In this example `Report.get_context` is overridden and an employee
 object is set into context.  Now the invoice report will be able to access the
