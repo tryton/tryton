@@ -4,28 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_allocation_method:"
 msgid "Carrier Cost Allocation Method"
-msgstr "Metodo di allocazione del costo del vettore"
+msgstr ""
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
-msgstr "Costo unitario di spedizione"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
-msgstr "Vettore"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
-msgstr "Costo"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
-msgstr "Valuta costo"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Posizioni valuta costo"
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
-msgstr "A valore"
+msgstr ""
