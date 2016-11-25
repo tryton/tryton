@@ -4,278 +4,221 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr ""
+msgstr "IBAN \"%s\" invalido"
 
-#, fuzzy
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:bank,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
-#, fuzzy
 msgctxt "field:bank,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:bank.account,active:"
 msgid "Active"
 msgstr "Attivo"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr ""
+msgstr "Banca"
 
-#, fuzzy
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Valute"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:bank.account,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr ""
+msgstr "Numeri"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr ""
+msgstr "Proprietari"
 
-#, fuzzy
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Conto"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il "
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr ""
+msgstr "Proprietario"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "Conto"
 
-#, fuzzy
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Numero"
 
+#, fuzzy
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
-msgstr ""
+msgstr "composizione numerica"
 
-#, fuzzy
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
 msgstr "Sequenza"
 
-#, fuzzy
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
-msgstr ""
+msgstr "conti bancari"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code"
-msgstr ""
+msgstr "codice identificatore banca/azienda"
 
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr ""
+msgstr "Banca"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr ""
+msgstr "conto bancario"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr ""
+msgstr "conto bancario - controparte"
 
-#, fuzzy
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr "Numero conto bancario"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Piano dei Conti"
+msgstr "Conti"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banche"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Piano dei Conti"
+msgstr "Conti"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banche"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr ""
+msgstr "Servizi bancari"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr ""
+msgstr "Amministrazione della banca"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
-#, fuzzy
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Altro"
 
-#, fuzzy
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Servizi bancari"
+
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
 msgstr "Numero conto bancario"
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr ""

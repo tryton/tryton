@@ -214,6 +214,10 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Nefropatia hereditária năo classificada em outra parte - outras"
 
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Banco"
+
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
 msgstr "Número da Conta Bancária"
@@ -237,7 +241,3 @@ msgstr "Banco"
 msgctxt "view:bank:"
 msgid "Banks"
 msgstr "Bancos"
-
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr "Banco"

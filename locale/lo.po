@@ -74,9 +74,10 @@ msgctxt "field:bank.account,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr ""
+msgstr "ເລກທີ"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
@@ -248,30 +249,6 @@ msgstr ""
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "ອື່ນໆ"
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Number"
-msgstr ""
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Banking"

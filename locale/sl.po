@@ -214,6 +214,10 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Drugo"
 
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Bančništvo"
+
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
 msgstr "Številka bančnega računa"
@@ -237,7 +241,3 @@ msgstr "Banka"
 msgctxt "view:bank:"
 msgid "Banks"
 msgstr "Banke"
-
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr "Bančništvo"

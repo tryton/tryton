@@ -241,30 +241,6 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr ""
 
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Number"
-msgstr ""
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr ""
-
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr ""
-
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr ""
-
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr ""

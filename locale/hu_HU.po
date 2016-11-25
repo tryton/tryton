@@ -214,6 +214,10 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "egyéb"
 
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Bankügylet"
+
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
 msgstr "Számlaszám"
@@ -238,7 +242,3 @@ msgstr "Bank"
 msgctxt "view:bank:"
 msgid "Banks"
 msgstr "Bankok"
-
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr "Bankügylet"

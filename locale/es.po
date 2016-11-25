@@ -12,11 +12,11 @@ msgstr "BIC"
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -32,11 +32,11 @@ msgstr "Nombre"
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
@@ -48,11 +48,11 @@ msgstr "Banco"
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
@@ -76,11 +76,11 @@ msgstr "Nombre"
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
@@ -88,11 +88,11 @@ msgstr "Cuenta"
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -108,11 +108,11 @@ msgstr "Nombre"
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
@@ -120,11 +120,11 @@ msgstr "Cuenta"
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -152,11 +152,11 @@ msgstr "Tipo"
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -214,6 +214,10 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Otro"
 
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Banca"
+
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"
 msgstr "Número de cuenta bancaria"
@@ -237,7 +241,3 @@ msgstr "Banco"
 msgctxt "view:bank:"
 msgid "Banks"
 msgstr "Bancos"
-
-msgctxt "view:party.party:"
-msgid "Banking"
-msgstr "Banca"

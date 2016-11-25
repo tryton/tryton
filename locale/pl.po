@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr "Ungültige IBAN \"%s\"."
+msgstr "Nieprawidłowy IBAN \"%s\"."
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
@@ -12,11 +12,11 @@ msgstr "BIC"
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data utworzenia"
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Utworzył"
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -24,23 +24,23 @@ msgstr "ID"
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr "Strona"
 
 msgctxt "field:bank,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nazwa"
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data zapisu"
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Zapisał"
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr "Aktywny"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
@@ -48,15 +48,15 @@ msgstr "Bank"
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data utworzenia"
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Utworzył"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Währung"
+msgstr "Waluta"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
@@ -64,23 +64,23 @@ msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Kontonummern"
+msgstr "Numery"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr "Kontoinhaber"
+msgstr "Właściciele"
 
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nazwa"
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data zapisu"
 
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Zapisał"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
@@ -88,11 +88,11 @@ msgstr "Konto"
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data utworzenia"
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Utworzył"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -100,19 +100,19 @@ msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr "Kontoinhaber"
+msgstr "Właściciel"
 
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nazwa"
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data zapisu"
 
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Zapisał"
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
@@ -120,11 +120,11 @@ msgstr "Konto"
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "Data utworzenia"
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Utworzył"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -132,19 +132,19 @@ msgstr "ID"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Numer"
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
-msgstr "Nummer Kompaktformat"
+msgstr "Numer kompaktowy"
 
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nazwa"
 
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr "Kolejność"
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
@@ -152,19 +152,19 @@ msgstr "Typ"
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "Data zapisu"
 
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "Zapisał"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
-msgstr "Bankkonten"
+msgstr "Konta bankowe"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code"
-msgstr "Bank/BIC (Business Identifier Code)"
+msgstr "Bankowy/biznesowy kod identyfikacyjny"
 
 msgctxt "model:bank,name:"
 msgid "Bank"
@@ -172,39 +172,39 @@ msgstr "Bank"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr "Bankkonto"
+msgstr "Konto bankowe"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr "Bankkonto - Partei"
+msgstr "Konto bankowe - Strona"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr "Kontonummer"
+msgstr "Numer konta bankowego"
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Konta"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Banken"
+msgstr "Banki"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Konten"
+msgstr "Konta"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Banken"
+msgstr "Banki"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Banking"
+msgstr "Bankowość"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "Bank Administration"
+msgstr "Administracja ustawieniami banku"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -212,32 +212,8 @@ msgstr "IBAN"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr "Anderes"
+msgstr "Inne"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Banking"
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Number"
-msgstr "Kontonummer"
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr "Kontonummern"
-
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr "Bankkonto"
-
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr "Bankkonten"
-
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr "Bank"
-
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr "Banken"
+msgstr "Bankowość"
