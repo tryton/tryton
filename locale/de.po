@@ -94,19 +94,17 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Dauer"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Zeiterfassung Ende"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Zeiterfassung Beginn"
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "Tätigkeiten"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"

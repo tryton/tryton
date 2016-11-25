@@ -32,11 +32,11 @@ msgstr "Empresa"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
@@ -94,19 +94,17 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Tiempo"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Fin de parte de trabajo"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Inicio de parte de trabajo"
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "Partes de trabajo"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
@@ -122,11 +120,11 @@ msgstr "Tipo"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
