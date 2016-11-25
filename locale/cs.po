@@ -87,7 +87,3 @@ msgstr ""
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr ""
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
-msgstr ""
