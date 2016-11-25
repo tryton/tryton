@@ -28,11 +28,11 @@ msgstr "Acción"
 
 msgctxt "field:ir.action-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
@@ -48,11 +48,11 @@ msgstr "Nombre"
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
@@ -64,11 +64,11 @@ msgstr "Botón"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
@@ -84,19 +84,27 @@ msgstr "Nombre"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Grupo"
 
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.model.field-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.model.field-res.group,field:"
 msgid "Model Field"
@@ -116,19 +124,19 @@ msgstr "Nombre"
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.model.field-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -148,19 +156,19 @@ msgstr "Grupo de reglas"
 
 msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:ir.rule.group-res.user,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.rule.group-res.user,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.rule.group-res.user,id:"
 msgid "ID"
@@ -180,11 +188,11 @@ msgstr "Usuario"
 
 msgctxt "field:ir.rule.group-res.user,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.rule.group-res.user,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
@@ -200,11 +208,11 @@ msgstr "Grupos de usuarios"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.sequence.type-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
@@ -224,19 +232,19 @@ msgstr "Tipo de secuencia"
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
@@ -256,19 +264,19 @@ msgstr "Nombre"
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
@@ -304,11 +312,11 @@ msgstr "Usuarios"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
@@ -318,13 +326,17 @@ msgctxt "field:res.user,active:"
 msgid "Active"
 msgstr "Activo"
 
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "Aplicaciones"
+
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -396,11 +408,11 @@ msgstr "Avisos"
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
@@ -408,11 +420,11 @@ msgstr "Acción"
 
 msgctxt "field:res.user-ir.action,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user-ir.action,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
@@ -428,19 +440,19 @@ msgstr "Usuario"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
@@ -460,11 +472,51 @@ msgstr "Usuario"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "Aplicación"
+
+msgctxt "field:res.user.application,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:res.user.application,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:res.user.application,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Clave"
+
+msgctxt "field:res.user.application,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:res.user.application,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:res.user.application,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -472,11 +524,11 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
@@ -492,11 +544,11 @@ msgstr "Nombre"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
@@ -504,11 +556,11 @@ msgstr "Siempre"
 
 msgctxt "field:res.user.warning,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:res.user.warning,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:res.user.warning,id:"
 msgid "ID"
@@ -528,11 +580,11 @@ msgstr "Usuario"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
@@ -618,6 +670,10 @@ msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
 msgstr "Usuario - Grupo"
 
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "Aplicación de usuario"
+
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Configuración inicial usuario"
@@ -630,6 +686,18 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso usuario"
 
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Solicitado"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Validado"
+
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr "Permisos de acceso"
@@ -638,6 +706,14 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Miembros"
 
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:res.user.application:"
+msgid "Validate"
+msgstr "Validar"
+
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
 msgstr "El identificador debe ser único."
@@ -645,14 +721,6 @@ msgstr "El identificador debe ser único."
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
 msgstr "Si quiere, ahora puede añadir más usuarios en el sistema."
-
-msgctxt "view:res.user.warning:"
-msgid "Warning"
-msgstr "Aviso"
-
-msgctxt "view:res.user.warning:"
-msgid "Warnings"
-msgstr "Avisos"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"

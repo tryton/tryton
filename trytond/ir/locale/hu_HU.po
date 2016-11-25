@@ -129,6 +129,15 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "Nem jogosult a dokumentum módosítására. (%s)"
 
+#, fuzzy
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+"A Tigger \"%(trigger)s\" feltételei  \"%(condition)s\" nem érvényes Python "
+"kifejezés."
+
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
 msgstr "Egy gomb neve csak egyszer adható ki."
@@ -164,15 +173,17 @@ msgid "Missing dependencies %s for module \"%s\""
 msgstr "Hiányzó függőség %s  a \"%s\" a \"%s\" modulnak."
 
 msgctxt "error:ir.module:"
-msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr "A törölni kívánt modulok a telepített moduloktól függenek:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "Egy modul neve csak egyszer adható."
 
+#, fuzzy
 msgctxt "error:ir.module:"
-msgid "You can not remove a module that is installed or will be installed"
+msgid "You can not remove a module that is activated or will be activated"
 msgstr "A már telepített vagy telepítésre előjegyzett modul nem törölhető."
 
 msgctxt "error:ir.rule.group:"
@@ -1300,6 +1311,10 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr ""
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás dátuma"
@@ -1328,11 +1343,157 @@ msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
 msgstr "Név"
 
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr ""
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Szabály"
+
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
 msgstr "Utolsó módosítás dátuma"
 
 msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Gombok"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "Aktív"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Gombok"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "Adat ID"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Gombok"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Feltétel"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Leírás"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
@@ -1560,6 +1721,21 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Aktualizálásra váró modulok"
+
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ID"
@@ -1647,18 +1823,6 @@ msgstr "Utolsó módosítás dátuma"
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
-
-msgctxt "field:ir.module.install_upgrade.done,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Aktualizálásra váró modulok"
 
 #, fuzzy
 msgctxt "field:ir.note,create_date:"
@@ -2744,6 +2908,18 @@ msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Modul, melyben ez a minta van definiálva"
 
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Python kifejezés, mely az adattal (\"self\"által képviselve)van értékelve."
+
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
 msgstr "Az adat ID az adatbankban"
@@ -2878,6 +3054,10 @@ msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Gombok"
@@ -2902,6 +3082,11 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Minta"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
+
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
 msgstr "Modul konfigurációja"
@@ -2913,10 +3098,6 @@ msgstr "Modul konfiguráció"
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "Modulok"
-
-msgctxt "model:ir.action,name:act_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
@@ -2958,9 +3139,10 @@ msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
 msgstr "Fordítások"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_set"
-msgid "Set Report Translations"
-msgstr "Fordítások aktualizálása"
+msgid "Set Translations"
+msgstr "Fordítás aktualizálása"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
@@ -3073,10 +3255,6 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "Nyelv"
 
-msgctxt "model:ir.lang,name:lang_ar"
-msgid "Spanish (Argentina)"
-msgstr "Spanyol (Argentína)"
-
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "Bolgár"
@@ -3093,10 +3271,6 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Német"
 
-msgctxt "model:ir.lang,name:lang_ec"
-msgid "Spanish (Ecuador)"
-msgstr "Spanyol (Ecuador)"
-
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Angol"
@@ -3106,12 +3280,8 @@ msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
 msgstr "Spanyol (Spanyolország)"
 
-msgctxt "model:ir.lang,name:lang_es_CO"
-msgid "Spanish (Colombia)"
-msgstr "Spanyol (Kolumbia)"
-
-msgctxt "model:ir.lang,name:lang_es_MX"
-msgid "Spanish (Mexico)"
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_fr"
@@ -3167,6 +3337,18 @@ msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Minta gomb"
 
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr ""
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr ""
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr ""
+
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
 msgstr "Minta adat"
@@ -3187,6 +3369,16 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Modul"
 
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Modul telepítésének aktualizálása megtörtént"
+
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Modul telepítésének aktualizálása indít"
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "Modulkonfigurációs wizard befejezve"
@@ -3195,8 +3387,9 @@ msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Konfigurációs wizard első modul "
 
+#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after installing module"
+msgid "Config wizard to run after activating a module"
 msgstr "Konfigurációs wizard modul telepítés után"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
@@ -3206,14 +3399,6 @@ msgstr "Konfigurációs wizard más modul"
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Modultól függő"
-
-msgctxt "model:ir.module.install_upgrade.done,name:"
-msgid "Module Install Upgrade Done"
-msgstr "Modul telepítésének aktualizálása megtörtént"
-
-msgctxt "model:ir.module.install_upgrade.start,name:"
-msgid "Module Install Upgrade Start"
-msgstr "Modul telepítésének aktualizálása indít"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
@@ -3391,13 +3576,14 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Minta"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
+
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "Modulok"
-
-msgctxt "model:ir.ui.menu,name:menu_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Előjegyzett installációk/aktualizálás végrehajtása"
 
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
@@ -3565,16 +3751,16 @@ msgid "Right-to-left"
 msgstr "Jobbról balra"
 
 msgctxt "selection:ir.module,state:"
-msgid "Installed"
-msgstr "Telepítve"
+msgid "Activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "Not Installed"
-msgstr "Nincs telepítve"
+msgid "Not Activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "To be installed"
-msgstr "Telepítendő"
+msgid "To be activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3593,16 +3779,16 @@ msgid "Open"
 msgstr "Megnyit"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Installed"
-msgstr "Telepítve"
+msgid "Activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Not Installed"
-msgstr "Nincs telepítve"
+msgid "Not Activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "To be installed"
-msgstr "Telepítendő"
+msgid "To be activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
@@ -3717,33 +3903,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Fa"
 
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domain"
-msgstr "Értéktartomány"
-
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domains"
-msgstr "Értéktartomány"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "View"
-msgstr "Nézet"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "Views"
-msgstr "Nézetek"
-
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr ""
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keyword"
-msgstr "Kulcsszó"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keywords"
-msgstr "Kulcsszavak"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3774,10 +3936,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.export:"
-msgid "Exports"
-msgstr "Export"
-
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr ""
@@ -3786,43 +3944,21 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr ""
 
-msgctxt "view:ir.model.access:"
-msgid "Access controls"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.model.button:"
-msgid "Button"
-msgstr "Gombok"
-
-msgctxt "view:ir.model.button:"
-msgid "Buttons"
-msgstr "Gombok"
-
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.model.field.access:"
-msgid "Field Access"
-msgstr "Mező hozzáférésének engedélyezése"
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr ""
 
-msgctxt "view:ir.model.field:"
-msgid "Field"
-msgstr "Mező"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr ""
 
-msgctxt "view:ir.model.field:"
-msgid "Fields"
-msgstr "Mezők"
-
-msgctxt "view:ir.model.print_model_graph.start:"
-msgid "Print Model Graph"
-msgstr "Grafikon nyomtatása"
-
-msgctxt "view:ir.model:"
-msgid "Model Description"
-msgstr "Minta leírás"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3834,41 +3970,12 @@ msgid ""
 " have installed."
 msgstr ""
 
-msgctxt "view:ir.module.config_wizard.item:"
-msgid "Config Wizard Items"
-msgstr "Wizardelemek konfigurációja"
-
-msgctxt "view:ir.module.config_wizard.other:"
-msgid "Configuration Wizard Next Step!"
-msgstr ""
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependencies"
-msgstr "Függőségek"
-
-#, fuzzy
-msgctxt "view:ir.module.dependency:"
-msgid "Dependency"
-msgstr "Függőségek"
-
-msgctxt "view:ir.module.install_upgrade.done:"
-msgid "The modules have been upgraded / installed !"
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Your system will be upgraded."
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
+msgid "Cancel Deactivation"
 msgstr ""
 
 msgctxt "view:ir.module:"
@@ -3876,11 +3983,11 @@ msgid "Cancel Upgrade"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Mark for Installation"
+msgid "Mark for Activation"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
+msgid "Mark for Deactivation (beta)"
 msgstr ""
 
 msgctxt "view:ir.module:"
@@ -3902,14 +4009,6 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Felhasználó"
 
-msgctxt "view:ir.property:"
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-msgctxt "view:ir.property:"
-msgid "Property"
-msgstr "Tulajdonság"
-
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
@@ -3918,16 +4017,6 @@ msgstr ""
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "A szabály akkor érvényes, ha legalább egy teszt pozitív"
-
-#, fuzzy
-msgctxt "view:ir.rule:"
-msgid "Test"
-msgstr "Teszt"
-
-#, fuzzy
-msgctxt "view:ir.sequence.type:"
-msgid "Sequence Type"
-msgstr "Számkör típus"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -3977,16 +4066,6 @@ msgid "Clean Translations Succeed!"
 msgstr ""
 
 #, fuzzy
-msgctxt "view:ir.translation.export.result:"
-msgid "Export Translation"
-msgstr "Fordítások exportálása"
-
-#, fuzzy
-msgctxt "view:ir.translation.export.start:"
-msgid "Export Translation"
-msgstr "Fordítások exportálása"
-
-#, fuzzy
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Fordítás megadás"
@@ -3995,74 +4074,9 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr ""
 
-msgctxt "view:ir.translation.update.start:"
-msgid "Synchronize Translations"
-msgstr "Fordítás megadás"
-
-msgctxt "view:ir.translation:"
-msgid "Translations"
-msgstr "Fordítások"
-
-msgctxt "view:ir.trigger:"
-msgid "Trigger"
-msgstr "Trigger"
-
-msgctxt "view:ir.trigger:"
-msgid "Triggers"
-msgstr "Trigger"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icon"
-msgstr "Ikon"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icons"
-msgstr "Ikonok"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorite"
-msgstr "Kedvencek"
-
-#, fuzzy
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorites"
-msgstr "Kedvencek"
-
-msgctxt "view:ir.ui.menu:"
-msgid "Menu"
-msgstr "Menü"
-
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr ""
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Search"
-msgstr "Nézet keresés"
-
-#, fuzzy
-msgctxt "view:ir.ui.view_search:"
-msgid "View Searches"
-msgstr "Nézet keresés"
-
-#, fuzzy
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "View Tree State"
-msgstr "Oszlop széles  nézet"
-
-#, fuzzy
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "Views Tree State"
-msgstr "Oszlop széles  nézet"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "View Tree Width"
-msgstr "Oszlop széles  nézet"
-
-#, fuzzy
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "Views Tree Width"
-msgstr "Oszlop széles  nézet"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4071,6 +4085,21 @@ msgstr "Mégse"
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Nyomtatás"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "OK"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Start"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
@@ -4091,18 +4120,6 @@ msgstr "Tovább"
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "Mégse"
-
-msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
-msgid "Cancel"
-msgstr "Mégse"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Start"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

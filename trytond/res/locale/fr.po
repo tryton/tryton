@@ -90,6 +90,14 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Groupe"
+
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -318,6 +326,10 @@ msgctxt "field:res.user,active:"
 msgid "Active"
 msgstr "Actif"
 
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "Applications"
+
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -463,6 +475,46 @@ msgid "Write Date"
 msgstr "Date de mise à jour"
 
 msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "Application"
+
+msgctxt "field:res.user.application,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:res.user.application,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:res.user.application,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Clé"
+
+msgctxt "field:res.user.application,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:res.user.application,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
@@ -618,6 +670,10 @@ msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
 msgstr "Utilisateur - Groupe"
 
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "Application utilisateur"
+
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Configuration utilisateur initiale"
@@ -630,6 +686,18 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Avertissement utilisateur"
 
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Annulée"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Demandée"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Validée"
+
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr "Permissions d'accès"
@@ -638,6 +706,14 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Membres"
 
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:res.user.application:"
+msgid "Validate"
+msgstr "Valider"
+
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
 msgstr "L'identifiant doit être unique !"
@@ -645,14 +721,6 @@ msgstr "L'identifiant doit être unique !"
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
 msgstr "Vous pouvez maintenant ajouter des utilisateur au système."
-
-msgctxt "view:res.user.warning:"
-msgid "Warning"
-msgstr "Avertissement"
-
-msgctxt "view:res.user.warning:"
-msgid "Warnings"
-msgstr "Avertissements"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"

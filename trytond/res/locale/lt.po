@@ -90,6 +90,14 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr ""
+
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -325,6 +333,10 @@ msgctxt "field:res.user,active:"
 msgid "Active"
 msgstr ""
 
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr ""
+
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -474,6 +486,47 @@ msgid "Write Date"
 msgstr ""
 
 msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr ""
+
+msgctxt "field:res.user.application,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user.application,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user.application,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.application,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:res.user.application,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
 msgstr ""
 
@@ -632,6 +685,10 @@ msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
 msgstr ""
 
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr ""
+
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr ""
@@ -644,6 +701,18 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr ""
 
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr ""
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr ""
+
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr ""
@@ -652,20 +721,20 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr ""
 
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "view:res.user.application:"
+msgid "Validate"
+msgstr ""
+
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
 msgstr ""
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr ""
-
-msgctxt "view:res.user.warning:"
-msgid "Warning"
-msgstr ""
-
-msgctxt "view:res.user.warning:"
-msgid "Warnings"
 msgstr ""
 
 msgctxt "view:res.user:"

@@ -129,6 +129,14 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "Keine Schreibberechtigung für dieses Dokument. (%s)"
 
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+"Die Bedingung \"%(condition)s\" für Knopfregel \"%(rule)s\" ist kein "
+"gültiger PYSON-Ausdruck."
+
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
 msgstr "Der Name eines Knopfes kann nur einmal pro Modell vergeben werden."
@@ -164,17 +172,19 @@ msgid "Missing dependencies %s for module \"%s\""
 msgstr "Fehlende Abhängigkeiten %s für Modul \"%s\"."
 
 msgctxt "error:ir.module:"
-msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr "Die zu deinstallierenden Module hängen von installierten Modulen ab:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Einige aktivierte Module hängen von denen ab, die deaktiviert werden sollen:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "Der Name eines Moduls kann nur einmal vergeben werden."
 
 msgctxt "error:ir.module:"
-msgid "You can not remove a module that is installed or will be installed"
+msgid "You can not remove a module that is activated or will be activated"
 msgstr ""
-"Ein bereits installiertes oder für die Installation vorgemerktes Modul kann "
+"Ein bereits aktiviertes oder für die Aktivierung vorgemerktes Modul kann "
 "nicht entfernt werden."
 
 msgctxt "error:ir.rule.group:"
@@ -521,7 +531,6 @@ msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Aktiv"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
 msgstr "Anzahl"
@@ -900,7 +909,7 @@ msgstr "Beschreibung"
 
 msgctxt "field:ir.attachment,file_id:"
 msgid "File ID"
-msgstr ""
+msgstr "Datei ID"
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -1310,6 +1319,10 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "Klicks"
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -1338,11 +1351,131 @@ msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
 msgstr "Name"
 
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "Zurückgesetzt durch"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Datensatzregeln"
+
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Anzahl"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "Knopfregel"
+
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Knopf"
+
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "Datensatz ID"
+
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Knopf"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Bedingung"
+
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "Benutzeranzahl"
+
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -1570,6 +1703,18 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Zu aktualisierende Module"
+
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ID"
@@ -1657,18 +1802,6 @@ msgstr "Zuletzt geändert"
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
-
-msgctxt "field:ir.module.install_upgrade.done,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Zu aktualisierende Module"
 
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
@@ -2738,6 +2871,19 @@ msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Modul, in dem dieses Modell definiert ist"
 
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr "Button zur Rücksetzung der Regeln"
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Ein PYSON-Ausdruck, der mit dem Datensatz (repräsentiert durch \"self\") "
+"ausgewertet wird.\\nDie Aktion wird getriggert, wenn der Ausdruck zutrifft "
+"(Wahr ist)."
+
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
 msgstr "Die ID des Datensatzes in der Datenbank"
@@ -2873,7 +3019,11 @@ msgstr "Berechtigungen für Modelle"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr ""
+msgstr "Zugriff"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "Klicks"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
@@ -2889,7 +3039,7 @@ msgstr "Zugriffsberechtigungen Felder"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr ""
+msgstr "Zugriff"
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -2898,6 +3048,10 @@ msgstr "Felder"
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Modelle"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Vorgemerkte Aktivierungen / Aktualisierungen durchführen"
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
@@ -2910,10 +3064,6 @@ msgstr "Modulkonfiguration"
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "Module"
-
-msgctxt "model:ir.action,name:act_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
@@ -2956,7 +3106,7 @@ msgid "Translations"
 msgstr "Übersetzungen"
 
 msgctxt "model:ir.action,name:act_translation_set"
-msgid "Set Report Translations"
+msgid "Set Translations"
 msgstr "Übersetzungen aktualisieren"
 
 msgctxt "model:ir.action,name:act_translation_update"
@@ -3069,10 +3219,6 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "Sprache"
 
-msgctxt "model:ir.lang,name:lang_ar"
-msgid "Spanish (Argentina)"
-msgstr "Spanisch (Argentinien)"
-
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "Bulgarisch"
@@ -3089,26 +3235,17 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Deutsch"
 
-msgctxt "model:ir.lang,name:lang_ec"
-msgid "Spanish (Ecuador)"
-msgstr "Spanisch (Ecuador)"
-
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Englisch"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
-msgstr "Spanisch (Spanien)"
+msgstr "Spanisch"
 
-msgctxt "model:ir.lang,name:lang_es_CO"
-msgid "Spanish (Colombia)"
-msgstr "Spanisch (Kolumbien)"
-
-msgctxt "model:ir.lang,name:lang_es_MX"
-msgid "Spanish (Mexico)"
-msgstr "Spanisch (Mexiko)"
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "Spanisch (Lateinamerikanisch)"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -3124,7 +3261,7 @@ msgstr "Italienisch"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "ລາວ"
-msgstr ""
+msgstr "Laotisch"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3148,7 +3285,7 @@ msgstr "Slowenisch"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "中国（简体）"
-msgstr ""
+msgstr "Chinesisch (vereinfacht)"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3161,6 +3298,18 @@ msgstr "Modell Zugriff"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Modell Knopf"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "Knopfmodell Rücksetzung"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "Knopfmodell Klick"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "Knopfmodell Regel"
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
@@ -3182,6 +3331,14 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Modul"
 
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Modulaktivierung/-aktualisierung Erledigt"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Modulaktivierung/-aktualisierung Start"
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "Modulkonfigurationswizard Erledigt"
@@ -3191,8 +3348,8 @@ msgid "Module Config Wizard First"
 msgstr "Modulkonfigurationswizard Erster Schritt"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after installing module"
-msgstr "Konfigurationswizard nach Modulinstallation"
+msgid "Config wizard to run after activating a module"
+msgstr "Konfigurationswizard nach Modulaktivierung"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
@@ -3201,14 +3358,6 @@ msgstr "Modulkonfigurationswizard Weiterer Schritt"
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Modulabhängigkeit"
-
-msgctxt "model:ir.module.install_upgrade.done,name:"
-msgid "Module Install Upgrade Done"
-msgstr "Modulinstallation Aktualisierung Erledigt"
-
-msgctxt "model:ir.module.install_upgrade.start,name:"
-msgid "Module Install Upgrade Start"
-msgstr "Modulinstallation Aktualisierung Start"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
@@ -3386,13 +3535,13 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modelle"
 
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Vorgemerkte Aktivierungen / Aktualisierungen durchführen"
+
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "Module"
-
-msgctxt "model:ir.ui.menu,name:menu_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
 
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
@@ -3559,16 +3708,16 @@ msgid "Right-to-left"
 msgstr "Rechts-nach-Links"
 
 msgctxt "selection:ir.module,state:"
-msgid "Installed"
-msgstr "Installiert"
+msgid "Activated"
+msgstr "Aktiviert"
 
 msgctxt "selection:ir.module,state:"
-msgid "Not Installed"
-msgstr "Nicht installiert"
+msgid "Not Activated"
+msgstr "Nicht aktiviert"
 
 msgctxt "selection:ir.module,state:"
-msgid "To be installed"
-msgstr "Für die Installation vorgesehen"
+msgid "To be activated"
+msgstr "Zu ak"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3587,16 +3736,16 @@ msgid "Open"
 msgstr "Offen"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Installed"
-msgstr "Installiert"
+msgid "Activated"
+msgstr "Aktiviert"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Not Installed"
-msgstr "Nicht installiert"
+msgid "Not Activated"
+msgstr "Nicht aktiviert"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "To be installed"
-msgstr "Für die Installation vorgesehen"
+msgid "To be activated"
+msgstr "Zu aktivieren"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
@@ -3668,7 +3817,7 @@ msgstr "Wizardknopf"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3688,7 +3837,7 @@ msgstr "ir.action.wizard"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
@@ -3710,33 +3859,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Baum"
 
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domain"
-msgstr "Wertebereich (Domain)"
-
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domains"
-msgstr "Wertebereiche (Domains)"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "View"
-msgstr "Sicht"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "Views"
-msgstr "Sichten"
-
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "Allgemein"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keyword"
-msgstr "Schlüsselwort"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keywords"
-msgstr "Schlüsselwörter"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3766,10 +3891,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Einmalig durchführen"
 
-msgctxt "view:ir.export:"
-msgid "Exports"
-msgstr "Exporte"
-
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Format Datum"
@@ -3778,41 +3899,21 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Zahlenformat"
 
-msgctxt "view:ir.model.access:"
-msgid "Access controls"
-msgstr "Zugriffsberechtigungen"
-
-msgctxt "view:ir.model.button:"
-msgid "Button"
-msgstr "Knopf"
-
-msgctxt "view:ir.model.button:"
-msgid "Buttons"
-msgstr "Knöpfe"
-
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr "Synchronisation"
 
-msgctxt "view:ir.model.field.access:"
-msgid "Field Access"
-msgstr "Zugriffsberechtigung Felder"
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "Die Module wurden installiert bzw. aktiviert."
 
-msgctxt "view:ir.model.field:"
-msgid "Field"
-msgstr "Feld"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Dieser Vorgang kann einige Zeit in Anspruch nehmen."
 
-msgctxt "view:ir.model.field:"
-msgid "Fields"
-msgstr "Felder"
-
-msgctxt "view:ir.model.print_model_graph.start:"
-msgid "Print Model Graph"
-msgstr "Modellgraph drucken"
-
-msgctxt "view:ir.model:"
-msgid "Model Description"
-msgstr "Modell Beschreibung"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "Das System wird aktualisiert."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3824,53 +3925,25 @@ msgid ""
 " have installed."
 msgstr "Sie können jetzt die neu installierten Module einrichten."
 
-msgctxt "view:ir.module.config_wizard.item:"
-msgid "Config Wizard Items"
-msgstr "Wizardelemente konfigurieren"
-
-msgctxt "view:ir.module.config_wizard.other:"
-msgid "Configuration Wizard Next Step!"
-msgstr "Konfigurationsfortschritt"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependencies"
-msgstr "Abhängigkeiten"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependency"
-msgstr "Abhängigkeit"
-
-msgctxt "view:ir.module.install_upgrade.done:"
-msgid "The modules have been upgraded / installed !"
-msgstr "Die Module wurden installiert bzw. aktualisiert!"
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "Dieser Vorgang kann einige Zeit in Anspruch nehmen."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "Das System wird aktualisiert."
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "Aktivierung abbrechen"
 
 msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Vormerkung für Installation aufheben"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Vormerkung für Deinstallation aufheben"
+msgid "Cancel Deactivation"
+msgstr "Deaktivierung abbrechen"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Vormerkung für Aktualisierung aufheben"
 
 msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Für die Installation vormerken"
+msgid "Mark for Activation"
+msgstr "Für Aktivierung vormerken"
 
 msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Für die Deinstallation (beta) vormerken"
+msgid "Mark for Deactivation (beta)"
+msgstr "Für Deaktivierung vormerken (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
@@ -3888,14 +3961,6 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Benutzer"
 
-msgctxt "view:ir.property:"
-msgid "Properties"
-msgstr "Eigenschaften"
-
-msgctxt "view:ir.property:"
-msgid "Property"
-msgstr "Eigenschaft"
-
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
@@ -3908,14 +3973,6 @@ msgid "The rule is satisfied if at least one test is True"
 msgstr ""
 "Die Regel wird als gültig bewertet, wenn wenigstens ein Test positiv ist "
 "(True)"
-
-msgctxt "view:ir.rule:"
-msgid "Test"
-msgstr "Test"
-
-msgctxt "view:ir.sequence.type:"
-msgid "Sequence Type"
-msgstr "Nummernkreistyp"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -3961,14 +4018,6 @@ msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
 msgstr "Bereinigung der Übersetzungen erfolgreich durchgeführt"
 
-msgctxt "view:ir.translation.export.result:"
-msgid "Export Translation"
-msgstr "Übersetzung exportieren"
-
-msgctxt "view:ir.translation.export.start:"
-msgid "Export Translation"
-msgstr "Übersetzung exportieren"
-
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Übersetzungen aktualisieren?"
@@ -3977,69 +4026,9 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Aktualisierung erfolgreich"
 
-msgctxt "view:ir.translation.update.start:"
-msgid "Synchronize Translations"
-msgstr "Übersetzungen eingeben"
-
-msgctxt "view:ir.translation:"
-msgid "Translations"
-msgstr "Übersetzungen"
-
-msgctxt "view:ir.trigger:"
-msgid "Trigger"
-msgstr "Trigger"
-
-msgctxt "view:ir.trigger:"
-msgid "Triggers"
-msgstr "Trigger"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icon"
-msgstr "Symbol"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icons"
-msgstr "Symbole"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorite"
-msgstr "Favorit"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorites"
-msgstr "Favoriten"
-
-msgctxt "view:ir.ui.menu:"
-msgid "Menu"
-msgstr "Menü"
-
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "Anzeigen"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Search"
-msgstr "Suchansicht"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Searches"
-msgstr "Suchsichten"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "View Tree State"
-msgstr "Sicht Baumansicht"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "Views Tree State"
-msgstr "Sichten Baumansicht"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "View Tree Width"
-msgstr "Spaltenbreiten Sicht"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "Views Tree Width"
-msgstr "Spaltenbreiten Sichten"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4048,6 +4037,18 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Drucken"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Aktualisierung starten"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
@@ -4068,18 +4069,6 @@ msgstr "Weiter"
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
-
-msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Aktualisierung starten"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"
@@ -4128,3 +4117,35 @@ msgstr "Eingeben"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Schließen"
+
+msgctxt "model:ir.action,name:"
+msgid "Perform Pending Installation/Upgrade"
+msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
+
+msgctxt "model:ir.lang,name:"
+msgid "Spanish (Argentina)"
+msgstr "Spanisch (Argentinien)"
+
+msgctxt "model:ir.lang,name:"
+msgid "Spanish (Colombia)"
+msgstr "Spanisch (Kolumbien)"
+
+msgctxt "model:ir.lang,name:"
+msgid "Spanish (Ecuador)"
+msgstr "Spanisch (Ecuador)"
+
+msgctxt "model:ir.lang,name:"
+msgid "Spanish (Mexico)"
+msgstr "Spanisch (Mexiko)"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "Laotisch"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "Chinesisch (Vereinfacht)"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "Perform Pending Installation/Upgrade"
+msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"

@@ -128,6 +128,14 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "Tega dokumenta ni možno zapisati. (%s)"
 
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+"Pogoj \"%(condition)s\" na gumbnem pravilu \"%(rule)s\" ni veljaven PYSON "
+"izraz."
+
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
 msgstr "Ime gumba v modelu mora biti edinstveno."
@@ -161,16 +169,18 @@ msgid "Missing dependencies %s for module \"%s\""
 msgstr "Manjkajo odvisnosti %s za modul \"%s\""
 
 msgctxt "error:ir.module:"
-msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr "Moduli, ki jih želiš odstraniti, so odvisni od nameščenih modulov:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Nekateri aktivirani moduli so odvisni od modulov, ki jih želiš deaktivirati:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "Ime modula mora biti enolično."
 
 msgctxt "error:ir.module:"
-msgid "You can not remove a module that is installed or will be installed"
-msgstr "Modula, ki je nameščen ali bo nameščen, ni možno odstraniti"
+msgid "You can not remove a module that is activated or will be activated"
+msgstr "Modula, ki je ali bo aktiviran, ni mogoče odstraniti"
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -887,7 +897,7 @@ msgstr "Opis"
 
 msgctxt "field:ir.attachment,file_id:"
 msgid "File ID"
-msgstr ""
+msgstr "ID datoteke"
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -1297,6 +1307,10 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "Kliki"
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -1325,11 +1339,153 @@ msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "Ponastavitev"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "Ponastavil"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Pravila"
+
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Gumb"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "Gumbi s pravili"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Gumb"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "ID zapisa"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Gumb"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Pogoj"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Opis"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "Številka uporabnika"
+
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -1557,6 +1713,21 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Moduli za posodobitev"
+
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ID"
@@ -1644,18 +1815,6 @@ msgstr "Zapisano"
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
-
-msgctxt "field:ir.module.install_upgrade.done,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.module.install_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Moduli za posodobitev"
 
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
@@ -2725,6 +2884,18 @@ msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Modul, v katerem je ta model določen"
 
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr "Gumb, ki ponastavlja pravila"
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Pythonski stavek, ki se preračuna z zapisom, dostopnim preko \"self\".\n"
+"Če je stavek resničen, se sproži pravilo."
+
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
 msgstr "Id zapisa v zbirki podatkov"
@@ -2857,7 +3028,11 @@ msgstr "Dostop do modelov"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr ""
+msgstr "Dostop"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "Kliki"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
@@ -2873,7 +3048,7 @@ msgstr "Dostop do polj"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr ""
+msgstr "Dostop"
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -2882,6 +3057,10 @@ msgstr "Polja"
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Modeli"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Izvedba nedokončane aktivacije/nadgradnje "
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
@@ -2894,10 +3073,6 @@ msgstr "Konfiguracija modula"
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "Moduli"
-
-msgctxt "model:ir.action,name:act_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Namesti/nadgradi"
 
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
@@ -2940,7 +3115,7 @@ msgid "Translations"
 msgstr "Prevodi"
 
 msgctxt "model:ir.action,name:act_translation_set"
-msgid "Set Report Translations"
+msgid "Set Translations"
 msgstr "Nastavitev prevodov v izpisih"
 
 msgctxt "model:ir.action,name:act_translation_update"
@@ -3053,10 +3228,6 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "Jezik"
 
-msgctxt "model:ir.lang,name:lang_ar"
-msgid "Spanish (Argentina)"
-msgstr "Španščina (Argentina)"
-
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "Bolgarščina"
@@ -3073,26 +3244,17 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Nemščina"
 
-msgctxt "model:ir.lang,name:lang_ec"
-msgid "Spanish (Ecuador)"
-msgstr "Španščina (Ekvador)"
-
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Angleščina"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
 msgstr "Španščina (Španija)"
 
-msgctxt "model:ir.lang,name:lang_es_CO"
-msgid "Spanish (Colombia)"
-msgstr "Španščina (Kolumbija)"
-
-msgctxt "model:ir.lang,name:lang_es_MX"
-msgid "Spanish (Mexico)"
-msgstr "Španščina (Mehika)"
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "Španščina (Latinska Amerika)"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -3108,7 +3270,7 @@ msgstr "Italijanščina"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "ລາວ"
-msgstr ""
+msgstr "Laoščina"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3132,7 +3294,7 @@ msgstr "Slovenščina"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "中国（简体）"
-msgstr ""
+msgstr "Kitajščina"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3145,6 +3307,18 @@ msgstr "Dostop do modelov"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Model gumba"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "Model ponastavitve gumba"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "Model klika na gumb"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "Model gumbnega pravila "
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
@@ -3166,6 +3340,14 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Modul"
 
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Zaključek aktivacije modula"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Začetek aktivacije modula"
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "Zaključek konfiguracije modula"
@@ -3174,8 +3356,9 @@ msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Začetek konfiguracije modula"
 
+#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after installing module"
+msgid "Config wizard to run after activating a module"
 msgstr "Nastavitveni čarovnik po namestitvi modula"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
@@ -3185,14 +3368,6 @@ msgstr "Ostala konfiguracija modula"
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Odvisen modul"
-
-msgctxt "model:ir.module.install_upgrade.done,name:"
-msgid "Module Install Upgrade Done"
-msgstr "Zaključek nadgradnje modula"
-
-msgctxt "model:ir.module.install_upgrade.start,name:"
-msgid "Module Install Upgrade Start"
-msgstr "Začetek nadgradnje modula"
 
 msgctxt "model:ir.note,name:"
 msgid "Note"
@@ -3370,13 +3545,13 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modeli"
 
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Izvedba nedokončane aktivacije/nadgradnje "
+
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "Moduli"
-
-msgctxt "model:ir.ui.menu,name:menu_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Namesti/nadgradi"
 
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
@@ -3543,16 +3718,16 @@ msgid "Right-to-left"
 msgstr "Z desne proti levi"
 
 msgctxt "selection:ir.module,state:"
-msgid "Installed"
-msgstr "Nameščeno"
+msgid "Activated"
+msgstr "Aktivirano"
 
 msgctxt "selection:ir.module,state:"
-msgid "Not Installed"
-msgstr "Ni nameščeno"
+msgid "Not Activated"
+msgstr "Deaktivirano"
 
 msgctxt "selection:ir.module,state:"
-msgid "To be installed"
-msgstr "Za namestiti"
+msgid "To be activated"
+msgstr "Za aktivirati"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3571,16 +3746,16 @@ msgid "Open"
 msgstr "Odprto"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Installed"
-msgstr "Nameščeno"
+msgid "Activated"
+msgstr "Aktivirano"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Not Installed"
-msgstr "Ni nameščeno"
+msgid "Not Activated"
+msgstr "Deaktivirano"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "To be installed"
-msgstr "Za namestiti"
+msgid "To be activated"
+msgstr "Za aktivirati"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
@@ -3694,33 +3869,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Drevo"
 
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domain"
-msgstr "Domena"
-
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domains"
-msgstr "Domene"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "View"
-msgstr "Pogled"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "Views"
-msgstr "Pogledi"
-
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "Splošno"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keyword"
-msgstr "Ključna beseda"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keywords"
-msgstr "Ključne besede"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3750,10 +3901,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Enkratni zagon"
 
-msgctxt "view:ir.export:"
-msgid "Exports"
-msgstr "Izvozi"
-
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Datumski format"
@@ -3762,41 +3909,22 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Številčni format"
 
-msgctxt "view:ir.model.access:"
-msgid "Access controls"
-msgstr "Nadzor dostopa"
-
-msgctxt "view:ir.model.button:"
-msgid "Button"
-msgstr "Gumb"
-
-msgctxt "view:ir.model.button:"
-msgid "Buttons"
-msgstr "Gumbi"
-
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr "Sinhronizacija"
 
-msgctxt "view:ir.model.field.access:"
-msgid "Field Access"
-msgstr "Dostop do polj"
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "Moduli nadgrajeni oziroma aktivirani."
 
-msgctxt "view:ir.model.field:"
-msgid "Field"
-msgstr "Polje"
+#, fuzzy
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Ta operacija lahko traja nekaj minut."
 
-msgctxt "view:ir.model.field:"
-msgid "Fields"
-msgstr "Polja"
-
-msgctxt "view:ir.model.print_model_graph.start:"
-msgid "Print Model Graph"
-msgstr "Izpis grafa modela"
-
-msgctxt "view:ir.model:"
-msgid "Model Description"
-msgstr "Opis modela"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "Sistem bo nadgrajen."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3808,53 +3936,25 @@ msgid ""
 " have installed."
 msgstr "Sedaj boste lahko skonfigurirali nameščene module."
 
-msgctxt "view:ir.module.config_wizard.item:"
-msgid "Config Wizard Items"
-msgstr "Nastavitveni čarovniki"
-
-msgctxt "view:ir.module.config_wizard.other:"
-msgid "Configuration Wizard Next Step!"
-msgstr "Naslednji korak nastavitvenega čarovnika"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependencies"
-msgstr "Odvisnosti"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependency"
-msgstr "Odvisnost"
-
-msgctxt "view:ir.module.install_upgrade.done:"
-msgid "The modules have been upgraded / installed !"
-msgstr "Moduli nadgrajeni / nameščeni."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "Ta operacija lahko traja nekaj minut."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "Vaš sistem bo nadgrajen."
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "Prekliči aktivacijo"
 
 msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "Prekliči namestitev"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "Prekliči odstranitev"
+msgid "Cancel Deactivation"
+msgstr "Prekliči deaktivacijo"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Prekliči nadgradnjo"
 
 msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "Označi za namestitev"
+msgid "Mark for Activation"
+msgstr "Označi za aktivacijo"
 
 msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "Označi za odstranitev (beta)"
+msgid "Mark for Deactivation (beta)"
+msgstr "Označi za deaktivacijo (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
@@ -3872,14 +3972,6 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Uporabnik"
 
-msgctxt "view:ir.property:"
-msgid "Properties"
-msgstr "Lastnosti"
-
-msgctxt "view:ir.property:"
-msgid "Property"
-msgstr "Lastnost"
-
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
@@ -3888,14 +3980,6 @@ msgstr "Če pogoj ni določen, bo pravilo vedno veljavno, če ni globalno"
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "Pravilo je veljavno, če je vsaj en pogoj pravilen"
-
-msgctxt "view:ir.rule:"
-msgid "Test"
-msgstr "Preizkus"
-
-msgctxt "view:ir.sequence.type:"
-msgid "Sequence Type"
-msgstr "Tip štetja"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -3941,14 +4025,6 @@ msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
 msgstr "Prevodi uspešno počiščeni!"
 
-msgctxt "view:ir.translation.export.result:"
-msgid "Export Translation"
-msgstr "Izvozi prevod"
-
-msgctxt "view:ir.translation.export.start:"
-msgid "Export Translation"
-msgstr "Izvozi prevod"
-
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Sinhroniziram prevode?"
@@ -3957,69 +4033,9 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Nastavitev končana."
 
-msgctxt "view:ir.translation.update.start:"
-msgid "Synchronize Translations"
-msgstr "Uskladi prevode"
-
-msgctxt "view:ir.translation:"
-msgid "Translations"
-msgstr "Prevodi"
-
-msgctxt "view:ir.trigger:"
-msgid "Trigger"
-msgstr "Prožilnik"
-
-msgctxt "view:ir.trigger:"
-msgid "Triggers"
-msgstr "Prožilniki"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icon"
-msgstr "Ikona"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icons"
-msgstr "Ikone"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorite"
-msgstr "Priljubljeno"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorites"
-msgstr "Priljubljeno"
-
-msgctxt "view:ir.ui.menu:"
-msgid "Menu"
-msgstr "Meni"
-
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "Prikaz"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Search"
-msgstr "Iskanje"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Searches"
-msgstr "Iskalni zaznamki"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "View Tree State"
-msgstr "Stanje drevesnega pogleda"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "Views Tree State"
-msgstr "Stanje drevesnega pogleda"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "View Tree Width"
-msgstr "Velikost dreves"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "Views Tree Width"
-msgstr "Velikost dreves"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4028,6 +4044,21 @@ msgstr "Prekliči"
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Natisni"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "V redu"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Nadgradi"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
@@ -4048,18 +4079,6 @@ msgstr "Naprej"
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "Prekliči"
-
-msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
-msgid "OK"
-msgstr "V redu"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Nadgradi"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"
@@ -4083,7 +4102,7 @@ msgstr "Prekliči"
 
 msgctxt "wizard_button:ir.translation.export,start,export:"
 msgid "Export"
-msgstr "Izvoz"
+msgstr "Izvozi"
 
 msgctxt "wizard_button:ir.translation.set,start,end:"
 msgid "Cancel"
@@ -4103,8 +4122,16 @@ msgstr "Prekliči"
 
 msgctxt "wizard_button:ir.translation.update,start,update:"
 msgid "Update"
-msgstr "Posodobitev"
+msgstr "Posodobi"
 
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Zapri"
+
+msgctxt "error:access_error:"
+msgid ""
+"You try to ypass an access rule.\n"
+"(Document type: %s)"
+msgstr ""
+"Poskus izogiba zaščite dostopa.\n"
+"(Vrsta dokumenta: %s)"

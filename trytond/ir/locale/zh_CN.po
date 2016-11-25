@@ -119,6 +119,13 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "文件 (%s) 无写入权限!"
 
+#, fuzzy
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr "触发器\"%(trigger)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
+
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
 msgstr "模型中按钮的名称必须唯一！"
@@ -152,15 +159,17 @@ msgid "Missing dependencies %s for module \"%s\""
 msgstr "模块\"%s\"的依赖 %s缺失"
 
 msgctxt "error:ir.module:"
-msgid "The modules you are trying to uninstall depends on installed modules:"
-msgstr "卸载模块同已安装模块的依赖关系："
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "模块名称必须唯一！"
 
+#, fuzzy
 msgctxt "error:ir.module:"
-msgid "You can not remove a module that is installed or will be installed"
+msgid "You can not remove a module that is activated or will be activated"
 msgstr "无法移除未安装或者待装状态的模块"
 
 msgctxt "error:ir.rule.group:"
@@ -1279,6 +1288,10 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr ""
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "创建日期"
@@ -1307,11 +1320,157 @@ msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
 msgstr "名称"
 
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr ""
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "规则"
+
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
 msgstr "写入日期"
 
 msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "按钮"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "创建者"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "标识"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "按钮"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "创建者"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "标识"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "记录标识"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "按钮"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "条件"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "创建者"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "标识"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
@@ -1539,6 +1698,21 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "标识"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "标识"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "待更新模块"
+
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "标识"
@@ -1626,18 +1800,6 @@ msgstr "写入日期"
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
-
-msgctxt "field:ir.module.install_upgrade.done,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.module.install_upgrade.start,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.module.install_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "待更新模块"
 
 #, fuzzy
 msgctxt "field:ir.note,create_date:"
@@ -2720,6 +2882,19 @@ msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "定义该模型的模块"
 
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"用“self”提交的数据校验PYSON声明完成\n"
+" 符合条件则触发该动作."
+
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
 msgstr "数据库里的记录ID"
@@ -2852,6 +3027,10 @@ msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "按钮"
@@ -2876,6 +3055,11 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "执行未完成的”安装“ “升级”"
+
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
 msgstr "设置模块"
@@ -2888,13 +3072,10 @@ msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "模块"
 
-msgctxt "model:ir.action,name:act_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "执行未完成的”安装“ “升级”"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "注释"
 
 msgctxt "model:ir.action,name:act_property_form"
 msgid "Properties"
@@ -2932,9 +3113,10 @@ msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
 msgstr "翻译"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_set"
-msgid "Set Report Translations"
-msgstr "设置报表翻译"
+msgid "Set Translations"
+msgstr "保存翻译"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
@@ -3046,10 +3228,6 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "语言"
 
-msgctxt "model:ir.lang,name:lang_ar"
-msgid "Spanish (Argentina)"
-msgstr "西班牙语（阿根廷）"
-
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "保加利亚语"
@@ -3066,10 +3244,6 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "德语"
 
-msgctxt "model:ir.lang,name:lang_ec"
-msgid "Spanish (Ecuador)"
-msgstr "西班牙语（厄瓜多尔）"
-
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "英语"
@@ -3079,13 +3253,9 @@ msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
 msgstr "西班牙语（西班牙）"
 
-msgctxt "model:ir.lang,name:lang_es_CO"
-msgid "Spanish (Colombia)"
-msgstr "西班牙语（哥伦比亚）"
-
-msgctxt "model:ir.lang,name:lang_es_MX"
-msgid "Spanish (Mexico)"
-msgstr "西班牙语（墨西哥）"
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -3139,6 +3309,18 @@ msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "按钮模型"
 
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr ""
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr ""
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr ""
+
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
 msgstr "模型数据"
@@ -3159,6 +3341,16 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "模块"
 
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "模块安装升级完成"
+
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "模块安装升级开始"
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr "模块设置向导完成"
@@ -3167,8 +3359,9 @@ msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "模块设置向导开始"
 
+#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after installing module"
+msgid "Config wizard to run after activating a module"
 msgstr "设置模块安装完成开始向导"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
@@ -3178,14 +3371,6 @@ msgstr "模块设置向导其他"
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "模块依赖关系"
-
-msgctxt "model:ir.module.install_upgrade.done,name:"
-msgid "Module Install Upgrade Done"
-msgstr "模块安装升级完成"
-
-msgctxt "model:ir.module.install_upgrade.start,name:"
-msgid "Module Install Upgrade Start"
-msgstr "模块安装升级开始"
 
 #, fuzzy
 msgctxt "model:ir.note,name:"
@@ -3364,21 +3549,23 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "执行未完成的”安装“ “升级”"
+
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "模块"
-
-msgctxt "model:ir.ui.menu,name:menu_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "执行未完成的”安装“ “升级”"
 
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "模块"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
+msgstr "注释"
 
 msgctxt "model:ir.ui.menu,name:menu_property_form"
 msgid "Properties"
@@ -3537,16 +3724,16 @@ msgid "Right-to-left"
 msgstr "从右向左"
 
 msgctxt "selection:ir.module,state:"
-msgid "Installed"
-msgstr "已安装"
+msgid "Activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "Not Installed"
-msgstr "未安装"
+msgid "Not Activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "To be installed"
-msgstr "待安装"
+msgid "To be activated"
+msgstr ""
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3565,16 +3752,16 @@ msgid "Open"
 msgstr "打开"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Installed"
-msgstr "已安装"
+msgid "Activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Not Installed"
-msgstr "未安装"
+msgid "Not Activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "To be installed"
-msgstr "待安装"
+msgid "To be activated"
+msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
@@ -3689,33 +3876,9 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "树形"
 
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domain"
-msgstr "域配置"
-
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domains"
-msgstr "域配置"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "View"
-msgstr "视图"
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "Views"
-msgstr "视图"
-
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "基本"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keyword"
-msgstr "关键词"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keywords"
-msgstr "关键词"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3745,10 +3908,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.export:"
-msgid "Exports"
-msgstr "导出"
-
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "日期格式"
@@ -3757,41 +3916,24 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "数字书写格式"
 
-msgctxt "view:ir.model.access:"
-msgid "Access controls"
-msgstr "权限控制"
-
-msgctxt "view:ir.model.button:"
-msgid "Button"
-msgstr "按钮"
-
-msgctxt "view:ir.model.button:"
-msgid "Buttons"
-msgstr "按钮"
-
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr "同步"
 
-msgctxt "view:ir.model.field.access:"
-msgid "Field Access"
-msgstr "数据权限"
+#, fuzzy
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "所选模块升级/安装成功 ！"
 
-msgctxt "view:ir.model.field:"
-msgid "Field"
-msgstr "数据"
+#, fuzzy
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "完成本操作可能会花费一些时间."
 
-msgctxt "view:ir.model.field:"
-msgid "Fields"
-msgstr "数据"
-
-msgctxt "view:ir.model.print_model_graph.start:"
-msgid "Print Model Graph"
-msgstr "打印模型图表"
-
-msgctxt "view:ir.model:"
-msgid "Model Description"
-msgstr "模型描述"
+#, fuzzy
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "将进行系统升级."
 
 msgctxt "view:ir.module.config_wizard.done:"
 msgid "The configuration is done."
@@ -3803,53 +3945,25 @@ msgid ""
 " have installed."
 msgstr "通过本向导可以对安装的模块进行设置."
 
-msgctxt "view:ir.module.config_wizard.item:"
-msgid "Config Wizard Items"
-msgstr "设置向导项目"
-
-msgctxt "view:ir.module.config_wizard.other:"
-msgid "Configuration Wizard Next Step!"
-msgstr "设置向导下一步！"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependencies"
-msgstr "依赖"
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependency"
-msgstr "模块依赖关系"
-
-msgctxt "view:ir.module.install_upgrade.done:"
-msgid "The modules have been upgraded / installed !"
-msgstr "所选模块升级/安装成功 ！"
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "完成本操作可能会花费一些时间."
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "将进行系统升级."
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr "取消“安装”"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
-msgstr "取消“卸载”"
+msgid "Cancel Deactivation"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "取消“升级”"
 
 msgctxt "view:ir.module:"
-msgid "Mark for Installation"
-msgstr "标记“安装”"
+msgid "Mark for Activation"
+msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
-msgstr "标记“卸载”"
+msgid "Mark for Deactivation (beta)"
+msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
@@ -3869,14 +3983,6 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "用户"
 
-msgctxt "view:ir.property:"
-msgid "Properties"
-msgstr "属性"
-
-msgctxt "view:ir.property:"
-msgid "Property"
-msgstr "属性"
-
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
@@ -3885,14 +3991,6 @@ msgstr "非全局规则有明确的测试定义才有效."
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "任意一项测试结果为真，即判断符合规则."
-
-msgctxt "view:ir.rule:"
-msgid "Test"
-msgstr "测试"
-
-msgctxt "view:ir.sequence.type:"
-msgid "Sequence Type"
-msgstr "序列类型"
 
 msgctxt "view:ir.sequence:"
 msgid "${day}"
@@ -3938,14 +4036,6 @@ msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
 msgstr "翻译清理成功!"
 
-msgctxt "view:ir.translation.export.result:"
-msgid "Export Translation"
-msgstr "导出翻译条目"
-
-msgctxt "view:ir.translation.export.start:"
-msgid "Export Translation"
-msgstr "导出翻译条目"
-
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "使翻译生效？"
@@ -3954,69 +4044,9 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "保存成功！"
 
-msgctxt "view:ir.translation.update.start:"
-msgid "Synchronize Translations"
-msgstr "使翻译生效"
-
-msgctxt "view:ir.translation:"
-msgid "Translations"
-msgstr "翻译"
-
-msgctxt "view:ir.trigger:"
-msgid "Trigger"
-msgstr "触发器"
-
-msgctxt "view:ir.trigger:"
-msgid "Triggers"
-msgstr "触发器"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icon"
-msgstr "图标"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icons"
-msgstr "图标"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorite"
-msgstr "收藏"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorites"
-msgstr "收藏"
-
-msgctxt "view:ir.ui.menu:"
-msgid "Menu"
-msgstr "菜单"
-
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "显示"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Search"
-msgstr "搜索视图"
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Searches"
-msgstr "搜索视图"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "View Tree State"
-msgstr "导航树状态"
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "Views Tree State"
-msgstr "导航树状态"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "View Tree Width"
-msgstr "导航树宽度"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "Views Tree Width"
-msgstr "导航树宽度"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4025,6 +4055,21 @@ msgstr "取消"
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "打印"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "确定"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "升级"
 
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
 msgid "OK"
@@ -4045,18 +4090,6 @@ msgstr "下一步"
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "取消"
-
-msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
-msgid "OK"
-msgstr "确定"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
-msgid "Cancel"
-msgstr "取消"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "升级"
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

@@ -111,6 +111,12 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr ""
 
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
 msgstr ""
@@ -144,7 +150,8 @@ msgid "Missing dependencies %s for module \"%s\""
 msgstr ""
 
 msgctxt "error:ir.module:"
-msgid "The modules you are trying to uninstall depends on installed modules:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
 
 msgctxt "error:ir.module:"
@@ -152,7 +159,7 @@ msgid "The name of the module must be unique!"
 msgstr ""
 
 msgctxt "error:ir.module:"
-msgid "You can not remove a module that is installed or will be installed"
+msgid "You can not remove a module that is activated or will be activated"
 msgstr ""
 
 msgctxt "error:ir.rule.group:"
@@ -939,9 +946,10 @@ msgctxt "field:ir.attachment,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 msgctxt "field:ir.attachment,data_size:"
 msgid "Data size"
@@ -1060,9 +1068,10 @@ msgctxt "field:ir.configuration,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:ir.configuration,language:"
 msgid "language"
-msgstr ""
+msgstr "ພາສາ"
 
 #, fuzzy
 msgctxt "field:ir.configuration,rec_name:"
@@ -1435,6 +1444,10 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
@@ -1469,6 +1482,19 @@ msgctxt "field:ir.model.button,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr ""
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "ສູດຄິດໄລ່"
+
 #, fuzzy
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1476,6 +1502,137 @@ msgstr "ວັນທີບັນທຶກ"
 
 #, fuzzy
 msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "ປຸ່ມ"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "ປຸ່ມ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "ປຸ່ມ"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
@@ -1527,9 +1684,10 @@ msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
-msgstr ""
+msgstr "ໝາຍເລກ"
 
 #, fuzzy
 msgctxt "field:ir.model.data,write_date:"
@@ -1737,6 +1895,20 @@ msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
 
 #, fuzzy
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:ir.module.config_wizard.done,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
@@ -1844,20 +2016,6 @@ msgstr "ວັນທີບັນທຶກ"
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
-msgctxt "field:ir.module.install_upgrade.done,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
-msgctxt "field:ir.module.install_upgrade.start,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-msgctxt "field:ir.module.install_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note,create_date:"
@@ -2363,9 +2521,10 @@ msgctxt "field:ir.session.wizard,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 #, fuzzy
 msgctxt "field:ir.session.wizard,id:"
@@ -2827,9 +2986,10 @@ msgctxt "field:ir.ui.view,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 msgctxt "field:ir.ui.view,domain:"
 msgid "Domain"
@@ -3086,6 +3246,16 @@ msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr ""
 
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr ""
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
 msgstr ""
@@ -3155,9 +3325,10 @@ msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr ""
+msgstr "ການປະຕິບັດ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
@@ -3194,9 +3365,10 @@ msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "ໄອຄັອນ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
-msgstr ""
+msgstr "ພາສາ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
@@ -3216,14 +3388,19 @@ msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "ປຸ່ມ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
@@ -3242,6 +3419,10 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
 msgstr ""
@@ -3252,10 +3433,6 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
 msgstr ""
 
 #, fuzzy
@@ -3297,13 +3474,15 @@ msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
 msgstr "ສົ່ງການແປອອກ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr ""
+msgstr "ລ້າງການແປ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_set"
-msgid "Set Report Translations"
-msgstr ""
+msgid "Set Translations"
+msgstr "ລ້າງການແປ"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
@@ -3421,10 +3600,6 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "ພາສາ"
 
-msgctxt "model:ir.lang,name:lang_ar"
-msgid "Spanish (Argentina)"
-msgstr ""
-
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr ""
@@ -3441,10 +3616,6 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr ""
 
-msgctxt "model:ir.lang,name:lang_ec"
-msgid "Spanish (Ecuador)"
-msgstr ""
-
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr ""
@@ -3453,12 +3624,8 @@ msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
 msgstr ""
 
-msgctxt "model:ir.lang,name:lang_es_CO"
-msgid "Spanish (Colombia)"
-msgstr ""
-
-msgctxt "model:ir.lang,name:lang_es_MX"
-msgid "Spanish (Mexico)"
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_fr"
@@ -3513,6 +3680,18 @@ msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr ""
 
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr ""
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr ""
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr ""
+
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
 msgstr ""
@@ -3533,6 +3712,14 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr ""
 
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr ""
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr ""
+
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
 msgstr ""
@@ -3542,7 +3729,7 @@ msgid "Module Config Wizard First"
 msgstr ""
 
 msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after installing module"
+msgid "Config wizard to run after activating a module"
 msgstr ""
 
 msgctxt "model:ir.module.config_wizard.other,name:"
@@ -3551,14 +3738,6 @@ msgstr ""
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
-msgstr ""
-
-msgctxt "model:ir.module.install_upgrade.done,name:"
-msgid "Module Install Upgrade Done"
-msgstr ""
-
-msgctxt "model:ir.module.install_upgrade.start,name:"
-msgid "Module Install Upgrade Start"
 msgstr ""
 
 #, fuzzy
@@ -3604,9 +3783,10 @@ msgctxt "model:ir.session.wizard,name:"
 msgid "Session Wizard"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.translation,name:"
 msgid "Translation"
-msgstr ""
+msgstr "ລ້າງການແປ"
 
 #, fuzzy
 msgctxt "model:ir.translation.clean.start,name:"
@@ -3628,13 +3808,15 @@ msgctxt "model:ir.translation.export.start,name:"
 msgid "Export translation"
 msgstr "ສົ່ງການແປອອກ"
 
+#, fuzzy
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
-msgstr ""
+msgstr "ລ້າງການແປ"
 
+#, fuzzy
 msgctxt "model:ir.translation.set.succeed,name:"
 msgid "Set Translation"
-msgstr ""
+msgstr "ລ້າງການແປ"
 
 msgctxt "model:ir.translation.update.start,name:"
 msgid "Update translation"
@@ -3657,13 +3839,15 @@ msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr ""
+msgstr "ການປະຕິບັດ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr ""
+msgstr "ການປະຕິບັດ"
 
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
@@ -3713,9 +3897,10 @@ msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr ""
+msgstr "ພາສາ"
 
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
@@ -3735,9 +3920,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "ປຸ່ມ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
@@ -3751,12 +3937,12 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_module_form"
-msgid "Modules"
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_module_install_upgrade"
-msgid "Perform Pending Installation/Upgrade"
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_modules"
@@ -3808,9 +3994,10 @@ msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
 msgstr "ສົ່ງການແປອອກ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
-msgstr ""
+msgstr "ລ້າງການແປ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
@@ -3897,9 +4084,10 @@ msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Print form"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ir.attachment,type:"
 msgid "Data"
-msgstr ""
+msgstr "ວັນທີ:"
 
 msgctxt "selection:ir.attachment,type:"
 msgid "Link"
@@ -3934,15 +4122,15 @@ msgid "Right-to-left"
 msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "Installed"
+msgid "Activated"
 msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "Not Installed"
+msgid "Not Activated"
 msgstr ""
 
 msgctxt "selection:ir.module,state:"
-msgid "To be installed"
+msgid "To be activated"
 msgstr ""
 
 msgctxt "selection:ir.module,state:"
@@ -3964,15 +4152,15 @@ msgid "Open"
 msgstr "ໄຂ"
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Installed"
+msgid "Activated"
 msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "Not Installed"
+msgid "Not Activated"
 msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
-msgid "To be installed"
+msgid "To be activated"
 msgstr ""
 
 msgctxt "selection:ir.module.dependency,state:"
@@ -4028,9 +4216,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
-msgstr ""
+msgstr "ລາຍງານ"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Selection"
@@ -4089,35 +4278,10 @@ msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr ""
 
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domain"
-msgstr ""
-
-msgctxt "view:ir.action.act_window.domain:"
-msgid "Domains"
-msgstr ""
-
-msgctxt "view:ir.action.act_window.view:"
-msgid "View"
-msgstr "ເບິ່ງ"
-
-#, fuzzy
-msgctxt "view:ir.action.act_window.view:"
-msgid "Views"
-msgstr "ເບິ່ງ"
-
 #, fuzzy
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "ທົ່ວໄປ"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keyword"
-msgstr "ຄຳລະຫັດ"
-
-msgctxt "view:ir.action.keyword:"
-msgid "Keywords"
-msgstr "ຂໍ້ຄວາມຫຼັກ"
 
 #, fuzzy
 msgctxt "view:ir.action.report:"
@@ -4151,10 +4315,6 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
-msgctxt "view:ir.export:"
-msgid "Exports"
-msgstr ""
-
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr ""
@@ -4163,42 +4323,20 @@ msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr ""
 
-msgctxt "view:ir.model.access:"
-msgid "Access controls"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:ir.model.button:"
-msgid "Button"
-msgstr "ປຸ່ມ"
-
-msgctxt "view:ir.model.button:"
-msgid "Buttons"
-msgstr "ປຸ່ມ"
-
 msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr ""
 
-msgctxt "view:ir.model.field.access:"
-msgid "Field Access"
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.model.field:"
-msgid "Field"
-msgstr "ຟິນລ໌"
-
-msgctxt "view:ir.model.field:"
-msgid "Fields"
-msgstr "ຟິນລ໌"
-
-msgctxt "view:ir.model.print_model_graph.start:"
-msgid "Print Model Graph"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
 msgstr ""
 
-msgctxt "view:ir.model:"
-msgid "Model Description"
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
 msgstr ""
 
 msgctxt "view:ir.module.config_wizard.done:"
@@ -4211,40 +4349,12 @@ msgid ""
 " have installed."
 msgstr ""
 
-msgctxt "view:ir.module.config_wizard.item:"
-msgid "Config Wizard Items"
-msgstr ""
-
-msgctxt "view:ir.module.config_wizard.other:"
-msgid "Configuration Wizard Next Step!"
-msgstr ""
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependencies"
-msgstr ""
-
-msgctxt "view:ir.module.dependency:"
-msgid "Dependency"
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.done:"
-msgid "The modules have been upgraded / installed !"
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr ""
-
-msgctxt "view:ir.module.install_upgrade.start:"
-msgid "Your system will be upgraded."
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Cancel Installation"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Uninstallation"
+msgid "Cancel Deactivation"
 msgstr ""
 
 msgctxt "view:ir.module:"
@@ -4252,11 +4362,11 @@ msgid "Cancel Upgrade"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Mark for Installation"
+msgid "Mark for Activation"
 msgstr ""
 
 msgctxt "view:ir.module:"
-msgid "Mark for Uninstallation (beta)"
+msgid "Mark for Deactivation (beta)"
 msgstr ""
 
 msgctxt "view:ir.module:"
@@ -4278,14 +4388,6 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
 
-msgctxt "view:ir.property:"
-msgid "Properties"
-msgstr ""
-
-msgctxt "view:ir.property:"
-msgid "Property"
-msgstr ""
-
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
@@ -4293,14 +4395,6 @@ msgstr ""
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
-msgstr ""
-
-msgctxt "view:ir.rule:"
-msgid "Test"
-msgstr ""
-
-msgctxt "view:ir.sequence.type:"
-msgid "Sequence Type"
 msgstr ""
 
 msgctxt "view:ir.sequence:"
@@ -4348,16 +4442,6 @@ msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:ir.translation.export.result:"
-msgid "Export Translation"
-msgstr "ສົ່ງການແປອອກ"
-
-#, fuzzy
-msgctxt "view:ir.translation.export.start:"
-msgid "Export Translation"
-msgstr "ສົ່ງການແປອອກ"
-
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr ""
@@ -4366,69 +4450,8 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr ""
 
-msgctxt "view:ir.translation.update.start:"
-msgid "Synchronize Translations"
-msgstr ""
-
-msgctxt "view:ir.translation:"
-msgid "Translations"
-msgstr ""
-
-msgctxt "view:ir.trigger:"
-msgid "Trigger"
-msgstr ""
-
-msgctxt "view:ir.trigger:"
-msgid "Triggers"
-msgstr ""
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icon"
-msgstr "ໄອຄັອນ"
-
-msgctxt "view:ir.ui.icon:"
-msgid "Icons"
-msgstr "ໄອຄັອນ"
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorite"
-msgstr ""
-
-msgctxt "view:ir.ui.menu.favorite:"
-msgid "Menu Favorites"
-msgstr ""
-
-msgctxt "view:ir.ui.menu:"
-msgid "Menu"
-msgstr "ລາຍການ"
-
 msgctxt "view:ir.ui.view:"
 msgid "Show"
-msgstr ""
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Search"
-msgstr ""
-
-msgctxt "view:ir.ui.view_search:"
-msgid "View Searches"
-msgstr ""
-
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "View Tree State"
-msgstr "ສະຖານະເບິ່ງແບບຕົ້ນໄມ້"
-
-#, fuzzy
-msgctxt "view:ir.ui.view_tree_state:"
-msgid "Views Tree State"
-msgstr "ສະຖານະເບິ່ງແບບຕົ້ນໄມ້"
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "View Tree Width"
-msgstr ""
-
-msgctxt "view:ir.ui.view_tree_width:"
-msgid "Views Tree Width"
 msgstr ""
 
 #, fuzzy
@@ -4440,6 +4463,20 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "ພິມອອກ"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+#, fuzzy
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.config_wizard,done,end:"
@@ -4464,20 +4501,6 @@ msgstr ""
 msgctxt "wizard_button:ir.module.config_wizard,other,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "wizard_button:ir.module.install_upgrade,done,config:"
-msgid "OK"
-msgstr "ຕົກລົງ"
-
-#, fuzzy
-msgctxt "wizard_button:ir.module.install_upgrade,start,end:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "wizard_button:ir.module.install_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr ""
 
 msgctxt "wizard_button:ir.translation.clean,start,clean:"
 msgid "Clean"

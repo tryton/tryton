@@ -90,6 +90,16 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Uporabnik"
+
+#, fuzzy
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Skupina"
+
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -318,6 +328,10 @@ msgctxt "field:res.user,active:"
 msgid "Active"
 msgstr "Aktivno"
 
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr ""
+
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -463,6 +477,53 @@ msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.application,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:res.user.application,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:res.user.application,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Ključ"
+
+#, fuzzy
+msgctxt "field:res.user.application,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "Stanje"
+
+#, fuzzy
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Uporabnik"
+
+#, fuzzy
+msgctxt "field:res.user.application,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -618,6 +679,10 @@ msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
 msgstr "Uporabnik - Skupina"
 
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr ""
+
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
 msgstr "Začetna nastavitev uporabnika"
@@ -630,6 +695,18 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Uporabniško opozorilo"
 
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Zahtevano"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Odobreno"
+
 msgctxt "view:res.group:"
 msgid "Access Permissions"
 msgstr "Dostop"
@@ -638,6 +715,15 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Člani"
 
+#, fuzzy
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "view:res.user.application:"
+msgid "Validate"
+msgstr "Odobritev"
+
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
 msgstr "Upoštevajte, da mora biti prijava edinstvena."
@@ -645,14 +731,6 @@ msgstr "Upoštevajte, da mora biti prijava edinstvena."
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
 msgstr "Sedaj lahko v sistem dodajate uporabnike."
-
-msgctxt "view:res.user.warning:"
-msgid "Warning"
-msgstr "Opozorilo"
-
-msgctxt "view:res.user.warning:"
-msgid "Warnings"
-msgstr "Opozorila"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
