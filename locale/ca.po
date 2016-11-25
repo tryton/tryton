@@ -8,11 +8,11 @@ msgstr "Actiu"
 
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
@@ -40,19 +40,19 @@ msgstr "Tàxon"
 
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
@@ -72,11 +72,11 @@ msgstr "Nom"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
@@ -84,11 +84,11 @@ msgstr "Actiu"
 
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
@@ -108,11 +108,11 @@ msgstr "Nom"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:product.taxon,active:"
 msgid "Active"
@@ -124,11 +124,11 @@ msgstr "Fills"
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:product.taxon,id:"
 msgid "ID"
@@ -156,11 +156,11 @@ msgstr "Seleccionable"
 
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"

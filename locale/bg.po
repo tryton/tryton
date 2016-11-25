@@ -303,11 +303,3 @@ msgstr ""
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
 msgstr ""
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Group"
-msgstr ""
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Groups"
-msgstr ""
