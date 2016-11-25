@@ -171,14 +171,6 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr "Предок - Потомок"
 
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Распределение"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Распределения"
-
 msgctxt "view:project.work:"
 msgid "Allocations"
 msgstr "Распределения"
@@ -186,3 +178,11 @@ msgstr "Распределения"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "План"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Распределение"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Распределения"

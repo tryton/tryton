@@ -185,14 +185,6 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr ""
 
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr ""
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr ""
-
 msgctxt "view:project.work:"
 msgid "Allocations"
 msgstr ""

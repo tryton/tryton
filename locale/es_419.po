@@ -4,184 +4,176 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr ""
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Creado por usuario"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr "Empleat"
+msgstr ""
 
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
-msgstr "Percentatge"
+msgstr ""
 
 msgctxt "field:project.allocation,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Treball"
+msgstr ""
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr ""
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Modificado por usuario"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Creado por usuario"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
-msgstr "Predecessor"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,rec_name:"
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
-msgstr "Successor"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Modificado por usuario"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
-msgstr "Finalització real"
+msgstr ""
 
 msgctxt "field:project.work,actual_finish_time:"
 msgid "Actual Finish Time"
-msgstr "Hora de finalització real"
+msgstr ""
 
 msgctxt "field:project.work,actual_start_date:"
 msgid "Actual Start"
-msgstr "Inici real"
+msgstr ""
 
 msgctxt "field:project.work,actual_start_time:"
 msgid "Actual Start Time"
-msgstr "Hora d'inici real"
+msgstr ""
 
 msgctxt "field:project.work,allocations:"
 msgid "Allocations"
-msgstr "Assignacions"
+msgstr ""
 
 msgctxt "field:project.work,back_leveling_delay:"
 msgid "Back Leveling Delay"
-msgstr "Retard de l'anivellació"
+msgstr "Retraso del ajuste"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
-msgstr "Restricció de finalització"
+msgstr "Fin de limitación"
 
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint Finish Time"
-msgstr "Restricció d'hora de finalització"
+msgstr "Hora fin de limitación"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
-msgstr "Restricció d'inici"
+msgstr "Inicio de limitación"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Restricció de temps d'inici"
+msgstr "Hora inicio de limitación"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Temps"
+msgstr "Duración"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Finalització avançada"
+msgstr ""
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Hora de finalització avançada"
+msgstr ""
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Inici prematur"
+msgstr ""
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Hora d'inici prematur"
+msgstr ""
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Finalització amb retard"
+msgstr ""
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Hora de finalització amb retard"
+msgstr ""
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Inici amb retard"
+msgstr ""
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Hora d'inici amb retard"
+msgstr ""
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
-msgstr "Retard d'anivellació"
+msgstr "Retraso de ajuste"
 
 msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
-msgstr "Predecessors"
+msgstr ""
 
 msgctxt "field:project.work,successors:"
 msgid "Successors"
-msgstr "Successors"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Anivellació de tasques"
+msgstr "Ajuste de tareas"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
-msgstr "Assignació"
+msgstr ""
 
 msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
-msgstr "Predecessor - Successor"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Allocations"
-msgstr "Assignacions"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Planificació"
-
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Assignació"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Assignacions"
+msgstr ""

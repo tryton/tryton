@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -32,19 +32,19 @@ msgstr "Trabajo"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
@@ -64,11 +64,11 @@ msgstr "Sucesor"
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
@@ -170,14 +170,6 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr "Predecesor - Sucesor"
 
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Asignación"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Asignaciones"
-
 msgctxt "view:project.work:"
 msgid "Allocations"
 msgstr "Asignaciones"
@@ -185,3 +177,11 @@ msgstr "Asignaciones"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "Planificación"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Asignación"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Asignaciones"
