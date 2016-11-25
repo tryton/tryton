@@ -120,19 +120,3 @@ msgstr ""
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr ""
-
-msgctxt "view:product.price_list.line:"
-msgid "Price List Line"
-msgstr ""
-
-msgctxt "view:product.price_list.line:"
-msgid "Price List Lines"
-msgstr ""
-
-msgctxt "view:product.price_list:"
-msgid "Price List"
-msgstr ""
-
-msgctxt "view:product.price_list:"
-msgid "Price Lists"
-msgstr ""

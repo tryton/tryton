@@ -122,13 +122,15 @@ msgid ""
 "- unit_price: the original unit_price"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr ""
+msgstr "ລາຍການລາຄາ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr ""
+msgstr "ລາຍການລາຄາ"
 
 #, fuzzy
 msgctxt "model:product.price_list,name:"
@@ -139,19 +141,7 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr ""
 
-msgctxt "view:product.price_list.line:"
-msgid "Price List Line"
-msgstr ""
-
-msgctxt "view:product.price_list.line:"
-msgid "Price List Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:product.price_list:"
 msgid "Price List"
 msgstr "ລາຍການລາຄາ"
-
-msgctxt "view:product.price_list:"
-msgid "Price Lists"
-msgstr ""
