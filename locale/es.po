@@ -8,11 +8,11 @@ msgstr "Relaciones"
 
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -36,19 +36,19 @@ msgstr "Tipo"
 
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
@@ -72,19 +72,19 @@ msgstr "Tipo"
 
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
@@ -104,11 +104,11 @@ msgstr "Relación inversa"
 
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"

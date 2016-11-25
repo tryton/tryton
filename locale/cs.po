@@ -145,19 +145,3 @@ msgstr ""
 msgctxt "view:party.party:"
 msgid "Relations"
 msgstr ""
-
-msgctxt "view:party.relation.all:"
-msgid "Relation"
-msgstr ""
-
-msgctxt "view:party.relation.all:"
-msgid "Relations"
-msgstr ""
-
-msgctxt "view:party.relation.type:"
-msgid "Party Relation Type"
-msgstr ""
-
-msgctxt "view:party.relation.type:"
-msgid "Party Relation Types"
-msgstr ""

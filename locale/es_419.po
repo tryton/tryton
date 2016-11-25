@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
@@ -108,38 +108,35 @@ msgstr ""
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Party Relations"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Party Relations"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Party Relations"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Party Relations"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Relation Types"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Relations"
