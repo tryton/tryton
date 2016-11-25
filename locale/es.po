@@ -44,10 +44,6 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "Anticipo"
 
-msgctxt "view:account.invoice.recall_deposit.start:"
-msgid "Recall Deposit"
-msgstr "Recuperar anticipo"
-
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
 msgstr "Recuperar anticipo"

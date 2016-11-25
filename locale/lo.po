@@ -42,10 +42,6 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "ເງິນມັດຈໍາ"
 
-msgctxt "view:account.invoice.recall_deposit.start:"
-msgid "Recall Deposit"
-msgstr "ຮຽກເງິນມັດຈໍາຄືນ"
-
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
 msgstr "ຮຽກເງິນມັດຈໍາຄືນ"

@@ -8,23 +8,23 @@ msgstr ""
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "Identyfikator"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
-msgstr ""
+msgstr "Wpłata"
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
@@ -36,11 +36,11 @@ msgstr "Recall Deposit"
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
-msgstr ""
+msgstr "Wpłata"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
-msgstr ""
+msgstr "Wpłata"
 
 #, fuzzy
 msgctxt "view:account.invoice:"
@@ -49,7 +49,7 @@ msgstr "Recall Deposit"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"

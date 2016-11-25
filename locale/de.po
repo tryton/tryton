@@ -42,10 +42,6 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "Anzahlung"
 
-msgctxt "view:account.invoice.recall_deposit.start:"
-msgid "Recall Deposit"
-msgstr "Anzahlung verrechnen"
-
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
 msgstr "Anzahlung verrechnen"

@@ -42,10 +42,6 @@ msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
 msgstr "Depozit"
 
-msgctxt "view:account.invoice.recall_deposit.start:"
-msgid "Recall Deposit"
-msgstr "Odpoklic depozita"
-
 msgctxt "view:account.invoice:"
 msgid "Recall Deposit"
 msgstr "Odpoklic depozita"
