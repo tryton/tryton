@@ -267,10 +267,9 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "V pripravi"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Preklicano"
 
 #, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
@@ -281,22 +280,6 @@ msgstr "Zaključeno"
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "V pripravi"
-
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr "Izberi datume"
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr "Izberi izdelke"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr "Postavka napovedi"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr "Postavke napovedi"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."

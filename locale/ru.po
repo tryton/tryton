@@ -284,22 +284,6 @@ msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Черновик"
 
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr "Выбрать даты"
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr "Выбрать продукты"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr "Строка прогноза"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr "Строки прогноза"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "Добавить строчку прогноза основанного на предыдущих данных."

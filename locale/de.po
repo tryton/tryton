@@ -127,7 +127,7 @@ msgstr "Bedarfsermittlung"
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
-msgstr ""
+msgstr "Prognosestatus"
 
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
@@ -270,36 +270,17 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
 msgstr "Annulliert"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
 msgstr "Erledigt"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Entwurf"
-
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr "Auswahl Datum"
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr "Auswahl Varianten"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr "Position Bedarfsermittlung"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr "Positionen Bedarfsermittlung"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."

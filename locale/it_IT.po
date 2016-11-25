@@ -121,9 +121,10 @@ msgctxt "field:stock.forecast.complete.choose,id:"
 msgid "ID"
 msgstr "Movimento contabile"
 
+#, fuzzy
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
-msgstr ""
+msgstr "Prodotto"
 
 #, fuzzy
 msgctxt "field:stock.forecast.line,create_date:"
@@ -320,22 +321,6 @@ msgstr "Fatto"
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Bozza"
-
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr ""
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr ""
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr ""
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr ""
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."

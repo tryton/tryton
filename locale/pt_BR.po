@@ -282,22 +282,6 @@ msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Rascunho"
 
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr "Escolha as datas"
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr "Escolha os produtos"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr "Linha de Previsão"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr "Linhas de Previsão"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "Adicionar linha de previsão com base em dados históricos."

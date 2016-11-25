@@ -125,7 +125,7 @@ msgstr "Prévision"
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
-msgstr ""
+msgstr "État de la prévision"
 
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
@@ -268,36 +268,17 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
 msgstr "Annulée"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
 msgstr "Terminée"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:stock.forecast.complete.ask:"
-msgid "Choose dates"
-msgstr "Choisir les dates"
-
-msgctxt "view:stock.forecast.complete.choose:"
-msgid "Choose products"
-msgstr "Choisissez les produits"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Line"
-msgstr "Ligne de prévision"
-
-msgctxt "view:stock.forecast.line:"
-msgid "Forecast Lines"
-msgstr "Lignes de prévision"
 
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
