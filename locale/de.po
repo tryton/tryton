@@ -240,32 +240,26 @@ msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
 msgstr "Arbeitsplätze"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Arbeitsgänge"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
 msgstr "Alle"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
 msgstr "Entwurf"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
 msgstr "Angefordert"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
 msgstr "In Ausführung"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "Wartend"
@@ -282,12 +276,10 @@ msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
 msgstr "Arbeitsplätze"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Arbeitsgänge"
 
-#, fuzzy
 msgctxt "model:production.work,name:"
 msgid "Production Work"
 msgstr "Arbeitsgang"
@@ -330,7 +322,7 @@ msgstr "Wartend"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Cycle"
@@ -356,6 +348,18 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "In Ausführung"
 
+msgctxt "view:production.work.cycle:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:production.work.cycle:"
+msgid "Do"
+msgstr "Durchführen"
+
+msgctxt "view:production.work.cycle:"
+msgid "Run"
+msgstr "Ausführen"
+
 msgctxt "view:production.work.center.category:"
 msgid "Work Center Categories"
 msgstr "Arbeitsplatzkategorien"
@@ -371,18 +375,6 @@ msgstr "Arbeitsplatz"
 msgctxt "view:production.work.center:"
 msgid "Work Centers"
 msgstr "Arbeitsplätze"
-
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr "Durchführen"
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr "Ausführen"
 
 msgctxt "view:production.work:"
 msgid "Work"

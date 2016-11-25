@@ -240,20 +240,18 @@ msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
 msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Naloga"
+msgstr "Naloge"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
 msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Priprava"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
@@ -282,10 +280,9 @@ msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
 msgstr "Delovni centri"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Naloga"
+msgstr "Naloge"
 
 #, fuzzy
 msgctxt "model:production.work,name:"
@@ -356,6 +353,18 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "Tekoče"
 
+msgctxt "view:production.work.cycle:"
+msgid "Cancel"
+msgstr "Preklic"
+
+msgctxt "view:production.work.cycle:"
+msgid "Do"
+msgstr "Izvedi"
+
+msgctxt "view:production.work.cycle:"
+msgid "Run"
+msgstr "Zagon"
+
 msgctxt "view:production.work.center.category:"
 msgid "Work Center Categories"
 msgstr "Kategorije delovnih centrov"
@@ -371,18 +380,6 @@ msgstr "Delovni center"
 msgctxt "view:production.work.center:"
 msgid "Work Centers"
 msgstr "Delovni centri"
-
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr "Preklic"
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr "Izvedi"
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr "Zagon"
 
 msgctxt "view:production.work:"
 msgid "Work"

@@ -391,22 +391,6 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "In funzione"
 
-msgctxt "view:production.work.center.category:"
-msgid "Work Center Categories"
-msgstr ""
-
-msgctxt "view:production.work.center.category:"
-msgid "Work Center Category"
-msgstr ""
-
-msgctxt "view:production.work.center:"
-msgid "Work Center"
-msgstr ""
-
-msgctxt "view:production.work.center:"
-msgid "Work Centers"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Cancel"
@@ -421,11 +405,3 @@ msgstr "Esegui"
 msgctxt "view:production.work.cycle:"
 msgid "Run"
 msgstr "Calcolo"
-
-msgctxt "view:production.work:"
-msgid "Work"
-msgstr ""
-
-msgctxt "view:production.work:"
-msgid "Works"
-msgstr ""

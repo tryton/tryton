@@ -241,32 +241,26 @@ msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
 msgstr "Postes de charge"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Travail"
+msgstr "Travaux"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Tous"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
-msgstr "Demander"
+msgstr "Demandes"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
 msgstr "En cours"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "En attente"
@@ -283,15 +277,13 @@ msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
 msgstr "Postes de charge"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Travail"
+msgstr "Travaux"
 
-#, fuzzy
 msgctxt "model:production.work,name:"
 msgid "Production Work"
-msgstr "Travail"
+msgstr "Travail de production"
 
 msgctxt "model:production.work.center,name:"
 msgid "Work Center"
@@ -357,6 +349,18 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "En cours"
 
+msgctxt "view:production.work.cycle:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:production.work.cycle:"
+msgid "Do"
+msgstr "Faire"
+
+msgctxt "view:production.work.cycle:"
+msgid "Run"
+msgstr "Lancer"
+
 msgctxt "view:production.work.center.category:"
 msgid "Work Center Categories"
 msgstr "Catégories de Poste de charge"
@@ -372,18 +376,6 @@ msgstr "Poste de charge"
 msgctxt "view:production.work.center:"
 msgid "Work Centers"
 msgstr "Postes de charge"
-
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr "Faire"
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr "Lancer"
 
 msgctxt "view:production.work:"
 msgid "Work"
