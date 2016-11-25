@@ -52,11 +52,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
@@ -78,14 +78,7 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr ""
 
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Action"
-msgstr ""
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Actions"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"

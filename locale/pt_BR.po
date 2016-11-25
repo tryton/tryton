@@ -78,6 +78,10 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Empilhar no Topo"
 
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Painel"
+
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Ação do Painel"
@@ -85,7 +89,3 @@ msgstr "Ação do Painel"
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "Ações do Painel"
-
-msgctxt "view:res.user:"
-msgid "Dashboard"
-msgstr "Painel"

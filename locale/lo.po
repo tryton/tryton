@@ -78,6 +78,10 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "ແຖວຂໍ້ມູນເທິງ"
 
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "ກະດານບັນຊາ"
+
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "ການປະຕິບັດກະດານບັນຊາ"
@@ -85,7 +89,3 @@ msgstr "ການປະຕິບັດກະດານບັນຊາ"
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "ການປະຕິບັດກະດານບັນຊາ"
-
-msgctxt "view:res.user:"
-msgid "Dashboard"
-msgstr "ກະດານບັນຊາ"

@@ -78,6 +78,10 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Stapel oben"
 
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Dashboard"
+
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Dashboard Aktion"
@@ -85,7 +89,3 @@ msgstr "Dashboard Aktion"
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "Dashboard Aktionen"
-
-msgctxt "view:res.user:"
-msgid "Dashboard"
-msgstr "Dashboard"

@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr "Действие"
+msgstr "Akcja"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "Data utworzenia"
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "Utworzył"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
@@ -20,72 +20,64 @@ msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nazwa"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr "Нумерация"
+msgstr "Kolejność"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Użytkownik"
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "Data zapisu"
 
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "Zapisał"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "Панель действий"
+msgstr "Akcje pulpitu"
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr "Расположение на панели"
+msgstr "Układ pulpitu"
 
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "Панель действия"
+msgstr "Akcja pulpitu"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Информационная панель"
+msgstr "Pulpit"
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Информационная панель"
+msgstr "Pulpit"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr "Квадрат"
+msgstr "Kwadrat"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "Выровнять вниз"
+msgstr "Stos u dołu"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "Выровнять влево"
+msgstr "Stos z lewej"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "Выровнять вправо"
+msgstr "Stos z prawej"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "Выровнять вверх"
+msgstr "Stos u góry"
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr "Информационная панель"
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Action"
-msgstr "Панель действия"
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Actions"
-msgstr "Панель действий"
+msgstr "Pulpit"

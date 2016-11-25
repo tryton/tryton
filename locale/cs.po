@@ -79,14 +79,6 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr ""
 
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Action"
-msgstr ""
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Actions"
-msgstr ""
-
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr ""

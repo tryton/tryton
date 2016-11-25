@@ -79,6 +79,10 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Подравнени отгоре"
 
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Табло"
+
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
@@ -86,7 +90,3 @@ msgstr "Действие на таблото"
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "Действия на табло"
-
-msgctxt "view:res.user:"
-msgid "Dashboard"
-msgstr "Табло"

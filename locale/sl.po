@@ -78,6 +78,10 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Zloženo na vrhu"
 
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Delovna tabla"
+
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Ukrep delovne table"
@@ -85,7 +89,3 @@ msgstr "Ukrep delovne table"
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "Ukrepi delovne table"
-
-msgctxt "view:res.user:"
-msgid "Dashboard"
-msgstr "Delovna tabla"
