@@ -7,6 +7,8 @@ msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
+"Vous ne pouvez supprimer l'achat « %(purchase)s » car il est lié à au moins "
+"une demande d'achat."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
@@ -48,7 +50,6 @@ msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Décimales d'UDM par défaut"
 
-#, fuzzy
 msgctxt "field:purchase.request,description:"
 msgid "Description"
 msgstr "Description"
@@ -133,7 +134,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Société"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,description:"
 msgid "Description"
 msgstr "Description"
@@ -220,10 +220,6 @@ msgstr "Exception"
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
 msgstr "Achetée"
-
-msgctxt "view:purchase.request.create_purchase.ask_party:"
-msgid "Create Purchase: Missing Supplier"
-msgstr "Créer les achats: Fournisseur manquant"
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"

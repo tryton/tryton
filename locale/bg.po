@@ -253,10 +253,6 @@ msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
 msgstr "Поръчан"
 
-msgctxt "view:purchase.request.create_purchase.ask_party:"
-msgid "Create Purchase: Missing Supplier"
-msgstr ""
-
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""

@@ -7,6 +7,8 @@ msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
+"No se puede eliminar la compra \"%(purchase)s\" porqué esta vinculada como "
+"mínimo con una solicitud de compra."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
@@ -38,17 +40,16 @@ msgstr "UdM calculada"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Decimales de la UdM por defecto"
 
-#, fuzzy
 msgctxt "field:purchase.request,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -103,7 +104,7 @@ msgstr "Stock a fecha de suministro"
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
-msgstr "Fecha de suministro estimada"
+msgstr "Fecha suministro estimada"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
@@ -123,17 +124,16 @@ msgstr "Almacén obligatorio"
 
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:purchase.request,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -220,10 +220,6 @@ msgstr "En excepción"
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
 msgstr "Comprada"
-
-msgctxt "view:purchase.request.create_purchase.ask_party:"
-msgid "Create Purchase: Missing Supplier"
-msgstr "Crear compra: Falta proveedor"
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
