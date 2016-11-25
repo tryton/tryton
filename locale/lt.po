@@ -20973,23 +20973,7 @@ msgctxt "selection:country.subdivision,type:"
 msgid "zone"
 msgstr ""
 
-msgctxt "view:country.country:"
-msgid "Countries"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:country.country:"
 msgid "Country"
 msgstr "Koventris"
-
-msgctxt "view:country.subdivision:"
-msgid "Subdivision"
-msgstr ""
-
-msgctxt "view:country.subdivision:"
-msgid "Subdivisions"
-msgstr ""
-
-msgctxt "view:country.zip:"
-msgid "Zip"
-msgstr ""

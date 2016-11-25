@@ -20976,10 +20976,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "zone"
 msgstr ""
 
-msgctxt "view:country.country:"
-msgid "Countries"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:country.country:"
 msgid "Country"
@@ -20994,7 +20990,3 @@ msgstr "Ascension"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Ascension"
-
-msgctxt "view:country.zip:"
-msgid "Zip"
-msgstr ""
