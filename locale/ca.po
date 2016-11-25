@@ -254,17 +254,13 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
 msgstr "Cap"
 
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Logística"
+
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Comptabilització de l'estoc"
-
-msgctxt "view:product.update_cost_price.ask:"
-msgid "Update Cost Price"
-msgstr "Actualitza preu de cost"
-
-msgctxt "view:product.update_cost_price.show_move:"
-msgid "Update Cost Price - Move"
-msgstr "Actualitza preu de cost - Assentament"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"

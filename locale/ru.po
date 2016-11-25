@@ -272,16 +272,12 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
 msgstr "Отсутствует"
 
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr ""
+
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
-msgstr ""
-
-msgctxt "view:product.update_cost_price.ask:"
-msgid "Update Cost Price"
-msgstr ""
-
-msgctxt "view:product.update_cost_price.show_move:"
-msgid "Update Cost Price - Move"
 msgstr ""
 
 #, fuzzy

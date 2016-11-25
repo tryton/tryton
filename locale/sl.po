@@ -254,17 +254,13 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
 msgstr "Brez"
 
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Zaloga"
+
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Konto zaloge"
-
-msgctxt "view:product.update_cost_price.ask:"
-msgid "Update Cost Price"
-msgstr "Popravek nabavne cene"
-
-msgctxt "view:product.update_cost_price.show_move:"
-msgid "Update Cost Price - Move"
-msgstr "Popravek nabavne cene - Promet"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"

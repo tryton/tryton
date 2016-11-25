@@ -7,26 +7,29 @@ msgid ""
 "You cannot change the cost price for a product which is associated to stock moves.\n"
 "You must use the \"Update Cost Price\" wizard."
 msgstr ""
+"Il costo di un prodotto associato a movimenti di magazzino non è modificabile .\n"
+" Va utilizzato il wizard \"Update Cost Price\"."
 
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr ""
+"Conto di magazzino e contropartita non possono essere lo stesso conto."
 
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
-msgstr ""
+msgstr "Contropartita del conto di costo."
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
-msgstr ""
+msgstr "Registro di magazzino"
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
-msgstr ""
+msgstr "Metodo contabile del magazzino"
 
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
-msgstr ""
+msgstr "Conto di magazzino"
 
 msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
@@ -157,12 +160,10 @@ msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Variant"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Prodotto"
 
-#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
 msgstr "Importo"
@@ -171,12 +172,10 @@ msgctxt "field:product.update_cost_price.show_move,counterpart:"
 msgid "Counterpart"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
 msgstr "posizioni valuta"
 
-#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
 msgstr "Descrizione"
@@ -186,7 +185,6 @@ msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
 msgstr "Movimento contabile"
 
-#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
 msgstr "Registro"
@@ -199,61 +197,51 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr ""
 
-#, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.template,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.template,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.template,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Questo conto verrà utilizzato al posto di quello definito per la categoria"
 
-#, fuzzy
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
@@ -275,34 +263,26 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
 msgstr "Nessuno"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr ""
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr ""
 
-msgctxt "view:product.update_cost_price.ask:"
-msgid "Update Cost Price"
-msgstr ""
-
-msgctxt "view:product.update_cost_price.show_move:"
-msgid "Update Cost Price - Move"
-msgstr ""
-
-#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
 msgstr "Cancella"
 
-#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
 msgid "OK"
 msgstr "OK"

@@ -274,17 +274,13 @@ msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "None"
 msgstr "Keine"
 
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Lager"
+
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Lagerbewertung"
-
-msgctxt "view:product.update_cost_price.ask:"
-msgid "Update Cost Price"
-msgstr "Kostenpreis aktualisieren"
-
-msgctxt "view:product.update_cost_price.show_move:"
-msgid "Update Cost Price - Move"
-msgstr "Aktualisierung Kostenpreis - Lagerbewegung"
 
 msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
 msgid "Cancel"
