@@ -57,11 +57,3 @@ msgstr "ສ້າງຜູ້ໃຊ້"
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr ""
-
-msgctxt "view:stock.product.location:"
-msgid "Product Location"
-msgstr ""
-
-msgctxt "view:stock.product.location:"
-msgid "Product Locations"
-msgstr ""

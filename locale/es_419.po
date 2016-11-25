@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
@@ -20,16 +20,15 @@ msgstr ""
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr ""
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
@@ -37,7 +36,7 @@ msgstr ""
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Bodega"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
@@ -45,7 +44,7 @@ msgstr ""
 
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"

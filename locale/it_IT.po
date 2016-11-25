@@ -57,11 +57,3 @@ msgstr "modificato da"
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr ""
-
-msgctxt "view:stock.product.location:"
-msgid "Product Location"
-msgstr ""
-
-msgctxt "view:stock.product.location:"
-msgid "Product Locations"
-msgstr ""
