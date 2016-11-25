@@ -404,9 +404,26 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Quadro de tempo"
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Duração"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Duração"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Inserir"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -420,10 +437,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "Digite Quadro de Horários"
 
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Duração"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Horas por Trabalho"
@@ -435,11 +448,3 @@ msgstr "Trabalho"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Trabalhos"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "Inserir"

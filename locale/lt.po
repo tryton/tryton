@@ -397,36 +397,16 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr ""
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr ""
 
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr ""
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr ""
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr ""
-
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr ""
-
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr ""
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr ""
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
 msgstr ""
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"

@@ -10,10 +10,11 @@ msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different then the origin's company"
 msgstr ""
+"La société du travail « %(work)s » est différente de la société d'origine"
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "L'origine doit être unique par société."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -47,17 +48,14 @@ msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "Date de fin"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
@@ -238,7 +236,6 @@ msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Origine"
@@ -259,7 +256,6 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Début de feuille de présence"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Travail"
@@ -272,17 +268,14 @@ msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Date de début"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "Date de fin"
@@ -319,7 +312,6 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Travaux"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Travaux"
@@ -328,7 +320,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
 msgstr "Heures par employé"
@@ -361,7 +352,6 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Travaux"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
 msgstr "Travaux"
@@ -376,7 +366,7 @@ msgstr "Heures par employé"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "Heures par employé contexte"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -400,11 +390,27 @@ msgstr "Travail"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "Travail contexte"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Feuilles de présence"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Durée"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Durée"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Entrer"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -418,10 +424,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "Entrer feuille de présence"
 
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Durée"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Heures par travail"
@@ -433,11 +435,3 @@ msgstr "Travail"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Travaux"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "Entrer"

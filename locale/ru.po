@@ -410,9 +410,27 @@ msgid "Work Context"
 msgstr ""
 
 #, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Табель"
+
+#, fuzzy
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Продолжительность"
+
+#, fuzzy
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Ввод"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -426,11 +444,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "Ввод табеля"
 
-#, fuzzy
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Продолжительность"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Часов на работу"
@@ -442,11 +455,3 @@ msgstr "Работа"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Работы"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "Ввод"

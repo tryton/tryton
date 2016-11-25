@@ -402,9 +402,26 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "ຕາຕະລາງເຮັດວຽກ"
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "ກຳນົດເວລາ"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "ເຂົ້າໄປ"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -418,10 +435,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "ເຂົ້າຕາຕະລາງເຮັດວຽກ"
 
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "ກຳນົດເວລາ"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "ຊົ່ວໂມງຕໍ່ການເຮັດວຽກ"
@@ -433,11 +446,3 @@ msgstr "ເຮັດວຽກ"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "ເຮັດວຽກ"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "ເຂົ້າໄປ"

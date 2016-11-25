@@ -402,9 +402,26 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Evidenca dela"
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Trajanje"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Vnos"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -418,10 +435,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "Vnos dela"
 
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Trajanje"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Ure po nalogi"
@@ -433,11 +446,3 @@ msgstr "Naloga"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Naloge"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "Vnos"

@@ -4,482 +4,409 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
-msgstr ""
+msgstr "La durata della riga \"%(line)s\"  dev'essere positiva."
 
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different then the origin's company"
-msgstr ""
+msgstr "L'azienda del lavoro  \"%(work)s\" è diversa dall'azienda di origine."
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "L'origine dev'essere unica per azienda."
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr "Data fine"
+msgstr "Data finale"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Data inizio"
+msgstr "Data iniziale"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
 msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
-msgstr ""
+msgstr "Anno"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
-msgstr ""
+msgstr "Settimana"
 
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
-msgstr ""
+msgstr "Settimana"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
-msgstr ""
+msgstr "Anno"
 
-#, fuzzy
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:timesheet.line,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:timesheet.line,description:"
 msgid "Description"
 msgstr "Descrizione"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-#, fuzzy
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr ""
+msgstr "Lavoro"
 
-#, fuzzy
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:timesheet.work,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr ""
+msgstr "Durata timesheet"
 
-#, fuzzy
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Origine"
 
-#, fuzzy
 msgctxt "field:timesheet.work,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr ""
+msgstr "Fine timesheet"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Righe timesheet"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr ""
+msgstr "inizio timesheet"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr ""
+msgstr "lavoro"
 
-#, fuzzy
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr "Data Inizio"
+msgstr "Data Iniziale"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "a data"
 
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work"
-msgstr ""
+msgstr "Tempo totale speso nel lavoro"
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per dipendente"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per dipendente per mese"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per dipendente per settimana"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr ""
+msgstr "Inserire timesheet"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "righe timesheet"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "righe timesheet"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr ""
+msgstr "lavori"
 
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr ""
+msgstr "lavori"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurazione"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per impiegato"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per impiegato per mese"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per impiegato per settimana"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr ""
+msgstr "Inserisci timesheet"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Righe timesheet"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapporti"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr ""
+msgstr "Timesheet"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Lavori"
 
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr ""
+msgstr "Lavori"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr ""
+msgstr "Amministrazione timesheet"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
-msgstr ""
+msgstr "Ore per dipendente"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "Context ore per dipendente"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Ore per dipendente per mese"
 
 msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Ore per dipendente per settimana"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr ""
+msgstr "Riga timesheet"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr ""
+msgstr "Inserire righe"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr ""
+msgstr "Lavoro"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "Context lavoro"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Timesheet"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
-msgstr ""
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr ""
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr ""
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr ""
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr ""
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr ""
-
-#, fuzzy
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr ""
+msgstr "Invio"

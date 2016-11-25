@@ -401,9 +401,26 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Időtartam"
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
 msgstr "Időtartam"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Időtartam"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Bevitel"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
@@ -417,10 +434,6 @@ msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
 msgstr "Időtartam"
 
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr "Időtartam"
-
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Óra per tevékenység"
@@ -432,11 +445,3 @@ msgstr "Tevékenység"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Tevékenység"
-
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Mégse"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr "Bevitel"

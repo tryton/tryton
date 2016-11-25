@@ -441,8 +441,26 @@ msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Tijdverantwoording"
+
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
+msgstr ""
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
 msgstr ""
 
 msgctxt "view:timesheet.hours_employee_monthly:"
@@ -452,14 +470,6 @@ msgstr "Uren per werknemer per maand"
 msgctxt "view:timesheet.hours_employee_weekly:"
 msgid "Hours per Employee per Week"
 msgstr "Uren per werknemer per week"
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr ""
-
-msgctxt "view:timesheet.line:"
-msgid "Duration"
-msgstr ""
 
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
@@ -472,12 +482,3 @@ msgstr "Werk"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Werken"
-
-#, fuzzy
-msgctxt "wizard_button:timesheet.line.enter,start,end:"
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgctxt "wizard_button:timesheet.line.enter,start,enter:"
-msgid "Enter"
-msgstr ""
