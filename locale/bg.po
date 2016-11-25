@@ -172,11 +172,3 @@ msgstr ""
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr ""
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotion"
-msgstr ""
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotions"
-msgstr ""

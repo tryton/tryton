@@ -28,11 +28,11 @@ msgstr "Empresa"
 
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
@@ -84,19 +84,19 @@ msgstr "Decimales de la unidad"
 
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
@@ -116,11 +116,11 @@ msgstr "Nombre"
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""

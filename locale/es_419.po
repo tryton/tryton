@@ -7,149 +7,128 @@ msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Fórmula \"%(formula)s\" no válida en la promoción \"%(promotion)s\" con "
+"excepción \"%(exception)s\"."
 
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr ""
+msgstr "Precio unitario borrador"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr "Creado por usuario"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr "Űrlap"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr "Árlista"
+msgstr "Lista de precios"
 
-#, fuzzy
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Termékek"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "Mennyiség"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "Egység"
+msgstr ""
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr "Tizedes vessző utáni számjegy"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "Modificado por usuario"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr "Creado por usuario"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Termék"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "Modificado por usuario"
 
-#, fuzzy
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price"
 msgstr ""
-"Python kifejezés, mely :\n"
-" unit_price: originaler unit_price, szerint van kiértékelve (ár/egység)"
+"Expresión Python que se evaluará con:\n"
+"- unit_price: el precio unitario original"
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"

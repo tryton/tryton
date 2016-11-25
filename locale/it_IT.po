@@ -7,136 +7,117 @@ msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
+"Formula \"%(formula)s\" invalida nella promozione \"%(promotion)s\" con "
+"eccezione \"%(exception)s\"."
 
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr ""
+msgstr "Bozza prezzo unitario"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promozione"
 
-#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr "Data fine"
+msgstr "Data finale"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "Formula"
 
-#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Listino"
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr ""
+msgstr "Prodotti"
 
-#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "Data inizio"
+msgstr "Data iniziale"
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Unità"
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
-msgstr ""
+msgstr "categoria unitaria"
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Posizioni Unità"
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "creato il"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "creato da"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
 msgstr "Prodotto"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promozione"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "modificato il"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
@@ -146,31 +127,25 @@ msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price"
 msgstr ""
+"Espressione python che verrà valorizzata con:\n"
+"- unit_price: l'unit_price originario"
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr ""
+msgstr "Promozioni"
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr ""
+msgstr "Promozioni su vendite"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr ""
+msgstr "Promozioni"
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
-msgstr ""
+msgstr "Promozione su vendite"
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr ""
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotion"
-msgstr ""
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotions"
-msgstr ""
+msgstr "Promozione su vendita - prodotto"
