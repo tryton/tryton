@@ -138,6 +138,10 @@ msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr "Nach erfasstem Aufwand"
 
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
+
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progress"
 msgstr "Nach Forstschritt fakturierte Aufgabe"
@@ -145,7 +149,3 @@ msgstr "Nach Forstschritt fakturierte Aufgabe"
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr "Nach Forstschritt fakturierte Aufgaben"
-
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Rechnung erstellen"

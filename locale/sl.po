@@ -138,6 +138,10 @@ msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr "Po dejanskem delu"
 
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Račun"
+
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progress"
 msgstr "Zaračunano opravljeno delo"
@@ -145,7 +149,3 @@ msgstr "Zaračunano opravljeno delo"
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr "Zaračunana opravljena dela"
-
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Račun"

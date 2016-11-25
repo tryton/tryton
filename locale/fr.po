@@ -138,6 +138,10 @@ msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr "Sur feuille de présence"
 
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Facturer"
+
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progress"
 msgstr "Progression facturée de travail"
@@ -145,7 +149,3 @@ msgstr "Progression facturée de travail"
 msgctxt "view:project.work.invoiced_progress:"
 msgid "Work Invoiced Progresses"
 msgstr "Progressions facturées de travail"
-
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Facturer"
