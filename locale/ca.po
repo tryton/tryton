@@ -92,11 +92,11 @@ msgstr "UdM de venda"
 
 msgctxt "field:sale.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.configuration,id:"
 msgid "ID"
@@ -120,11 +120,11 @@ msgstr "Mètode d'enviament"
 
 msgctxt "field:sale.configuration,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
@@ -156,11 +156,11 @@ msgstr "Import"
 
 msgctxt "field:sale.line,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -224,7 +224,7 @@ msgstr "Venda"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
-msgstr ""
+msgstr "Estat de venda"
 
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
@@ -264,19 +264,19 @@ msgstr "Magatzem"
 
 msgctxt "field:sale.line,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.line,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.line-account.tax,id:"
 msgid "ID"
@@ -296,19 +296,19 @@ msgstr "Impost"
 
 msgctxt "field:sale.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.line-ignored-stock.move,id:"
 msgid "ID"
@@ -328,19 +328,19 @@ msgstr "Línia de venda"
 
 msgctxt "field:sale.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.line-recreated-stock.move,id:"
 msgid "ID"
@@ -360,11 +360,11 @@ msgstr "Línia de venta"
 
 msgctxt "field:sale.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.return_sale.start,id:"
 msgid "ID"
@@ -380,11 +380,11 @@ msgstr "Empresa"
 
 msgctxt "field:sale.sale,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.sale,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
@@ -464,7 +464,7 @@ msgstr "Referència"
 
 msgctxt "field:sale.sale,sale_date:"
 msgid "Sale Date"
-msgstr "Data de venda"
+msgstr "Data venda"
 
 msgctxt "field:sale.sale,shipment_address:"
 msgid "Shipment Address"
@@ -524,19 +524,19 @@ msgstr "Magatzem"
 
 msgctxt "field:sale.sale,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.sale,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.sale-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.sale-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.sale-ignored-account.invoice,id:"
 msgid "ID"
@@ -556,19 +556,19 @@ msgstr "Venda"
 
 msgctxt "field:sale.sale-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.sale-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:sale.sale-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Data creació"
+msgstr "Data de creació"
 
 msgctxt "field:sale.sale-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Usuari creació"
+msgstr "Usuari de creació"
 
 msgctxt "field:sale.sale-recreated-account.invoice,id:"
 msgid "ID"
@@ -588,11 +588,11 @@ msgstr "Venda"
 
 msgctxt "field:sale.sale-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Data de modificació"
 
 msgctxt "field:sale.sale-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr "Usuari modificació"
+msgstr "Usuari de modificació"
 
 msgctxt "field:stock.move,sale:"
 msgid "Sale"
@@ -764,6 +764,10 @@ msgid "Sale - Recreated Invoice"
 msgstr "Venda - Factura recreada"
 
 msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Import"
 
@@ -819,14 +823,9 @@ msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Preu unitari"
 
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr "CIF/NIF:"
-
-#, fuzzy
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr "Cancel·lat"
+msgstr ""
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -860,32 +859,26 @@ msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr "Al processar la comanda"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Canceled"
-msgstr "Cancel·lats"
+msgstr "Cancel·lat"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Confirmed"
 msgstr "Confirmat"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Done"
-msgstr "Finalitzat"
+msgstr "Finalitzada"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Draft"
 msgstr "Esborrany"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Processing"
-msgstr "Processos"
+msgstr "En procés"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Quotation"
 msgstr "Pressupost"
@@ -986,10 +979,9 @@ msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
 msgstr "Pressupost"
 
-#, fuzzy
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr "Cancel·lat"
+msgstr ""
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
@@ -1003,17 +995,9 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Productes"
-
 msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Clients"
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
-msgstr "Configuració comades de venda"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1075,12 +1059,10 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr "Venda"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Cancel·lat"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Restaura a esborrany"

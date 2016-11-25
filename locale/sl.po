@@ -766,6 +766,11 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr "Prodajni nalog - Ponovno izdelan račun"
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Znesek"
@@ -821,10 +826,6 @@ msgstr "Skupaj:"
 msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr "DDV:"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
@@ -1004,17 +1005,9 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr "Prodajni nalog"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Izdelki"
-
 msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Kupci"
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
-msgstr "Prodajna konfiguracija"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"

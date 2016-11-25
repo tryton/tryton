@@ -760,6 +760,11 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr ""
@@ -814,10 +819,6 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Unit Price"
-msgstr ""
-
-msgctxt "report:sale.sale:"
-msgid "VAT:"
 msgstr ""
 
 msgctxt "selection:account.invoice,sale_exception_state:"
@@ -992,16 +993,8 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr ""
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
 msgctxt "view:product.template:"
 msgid "Customers"
-msgstr ""
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"

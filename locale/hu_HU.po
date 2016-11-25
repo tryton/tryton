@@ -201,9 +201,10 @@ msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,note:"
 msgid "Note"
-msgstr ""
+msgstr "Nincs"
 
 #, fuzzy
 msgctxt "field:sale.line,product:"
@@ -827,6 +828,11 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr ""
@@ -841,9 +847,10 @@ msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "Leírás"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Description:"
-msgstr ""
+msgstr "Leírás"
 
 msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
@@ -886,10 +893,6 @@ msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr ""
-
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
 msgstr ""
@@ -926,9 +929,10 @@ msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:sale.line,sale_state:"
 msgid "Confirmed"
@@ -956,9 +960,10 @@ msgctxt "selection:sale.line,type:"
 msgid "Comment"
 msgstr "Megjegyzés"
 
+#, fuzzy
 msgctxt "selection:sale.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Sor"
 
 msgctxt "selection:sale.line,type:"
 msgid "Subtotal"
@@ -1026,9 +1031,10 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Mégse"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Confirmed"
@@ -1067,17 +1073,8 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Termékek"
-
 msgctxt "view:product.template:"
 msgid "Customers"
-msgstr ""
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
@@ -1092,9 +1089,10 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:sale.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Nincs"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

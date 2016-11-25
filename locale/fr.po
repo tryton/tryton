@@ -223,7 +223,7 @@ msgstr "Vente"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
-msgstr ""
+msgstr "État de la vente"
 
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
@@ -763,6 +763,10 @@ msgid "Sale - Recreated Invoice"
 msgstr "Vente - Facture recréée"
 
 msgctxt "report:sale.sale:"
+msgid ":"
+msgstr " :"
+
+msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Montant"
 
@@ -818,10 +822,6 @@ msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
 
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr "TVA :"
-
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
 msgstr ""
@@ -858,32 +858,26 @@ msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr "Sur traitement de l'ordre"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Canceled"
 msgstr "Annulée"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Confirmed"
 msgstr "Confirmée"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Done"
 msgstr "Terminée"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Processing"
 msgstr "Traitement"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Quotation"
 msgstr "Devis"
@@ -1000,17 +994,9 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr "Vente"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produits"
-
 msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Clients"
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
-msgstr "Configuration des ventes"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1072,12 +1058,10 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr "Vente"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Annulée"
+msgstr "Annuler"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Remettre en brouillon"

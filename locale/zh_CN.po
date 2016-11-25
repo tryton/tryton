@@ -811,6 +811,11 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr ""
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr ""
@@ -824,9 +829,10 @@ msgctxt "report:sale.sale:"
 msgid "Description"
 msgstr "描述"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Description:"
-msgstr ""
+msgstr "描述"
 
 msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
@@ -868,10 +874,6 @@ msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr ""
-
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
 msgstr ""
@@ -908,9 +910,10 @@ msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "取消"
 
 msgctxt "selection:sale.line,sale_state:"
 msgid "Confirmed"
@@ -965,9 +968,10 @@ msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Paid"
@@ -993,9 +997,10 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Exception"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "注释"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
@@ -1005,9 +1010,10 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "取消"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Confirmed"
@@ -1046,16 +1052,8 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr ""
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
 msgctxt "view:product.template:"
 msgid "Customers"
-msgstr ""
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
@@ -1071,9 +1069,10 @@ msgctxt "view:sale.line:"
 msgid "General"
 msgstr "基本"
 
+#, fuzzy
 msgctxt "view:sale.line:"
 msgid "Notes"
-msgstr ""
+msgstr "注释"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"

@@ -53,9 +53,10 @@ msgctxt "field:account.invoice,sale_exception_state:"
 msgid "Exception State"
 msgstr "ສະຖານະຍົກເວັ້ນ"
 
+#, fuzzy
 msgctxt "field:account.invoice,sales:"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
@@ -708,21 +709,25 @@ msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_invoice_relate"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
@@ -790,21 +795,24 @@ msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Parties associated to Sales"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
 msgid "Sales Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
-msgstr ""
+msgstr "ຂາຍ"
 
 msgctxt "model:res.group,name:group_sale_admin"
 msgid "Sales Administrator"
@@ -854,6 +862,11 @@ msgstr ""
 msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr ""
+
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
 
 #, fuzzy
 msgctxt "report:sale.sale:"
@@ -921,10 +934,6 @@ msgstr "ລວມເງິນ:"
 msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "ລາຄາຫົວໜ່ວຍ"
-
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr ""
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
@@ -1120,17 +1129,8 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr "ຂາຍ"
 
-#, fuzzy
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
-
 msgctxt "view:product.template:"
 msgid "Customers"
-msgstr ""
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"

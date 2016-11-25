@@ -219,9 +219,10 @@ msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venda"
 
+#, fuzzy
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
-msgstr ""
+msgstr "Data da venda"
 
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
@@ -761,6 +762,11 @@ msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr "Venda - Recriar fatura"
 
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
 msgctxt "report:sale.sale:"
 msgid "Amount"
 msgstr "Quantidade"
@@ -817,10 +823,6 @@ msgstr "Total:"
 msgctxt "report:sale.sale:"
 msgid "Unit Price"
 msgstr "Preço unitário"
-
-msgctxt "report:sale.sale:"
-msgid "VAT:"
-msgstr "IVA:"
 
 #, fuzzy
 msgctxt "selection:account.invoice,sale_exception_state:"
@@ -1002,17 +1004,9 @@ msgctxt "view:party.party:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produtos"
-
 msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Clientes"
-
-msgctxt "view:sale.configuration:"
-msgid "Sale Configuration"
-msgstr "Configuração de vendas"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
