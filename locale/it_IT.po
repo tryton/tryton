@@ -10,6 +10,7 @@ msgstr ""
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
+"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -127,10 +128,9 @@ msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Imposta"
 
-#, fuzzy
 msgctxt "field:product.category-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
 msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
@@ -264,32 +264,26 @@ msgctxt "field:product.template-customer-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
-msgstr "Modello prodotto/articolo"
+msgstr "Prototipo di prodotto"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Imposta"
