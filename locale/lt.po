@@ -105,7 +105,3 @@ msgstr ""
 msgctxt "model:product.classification_tree.dummy,name:"
 msgid "Dummy Product Classification Tree"
 msgstr ""
-
-msgctxt "view:product.classification.dummy:"
-msgid "Classification"
-msgstr ""

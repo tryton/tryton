@@ -110,9 +110,10 @@ msgctxt "field:product.template,classification:"
 msgid "Classification"
 msgstr "Classificação"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
-msgstr ""
+msgstr "Classificação"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"

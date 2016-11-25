@@ -8,11 +8,11 @@ msgstr "Activo"
 
 msgctxt "field:product.classification.dummy,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
@@ -32,11 +32,11 @@ msgstr "Seleccionable"
 
 msgctxt "field:product.classification.dummy,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
@@ -48,11 +48,11 @@ msgstr "Hijos"
 
 msgctxt "field:product.classification_tree.dummy,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
@@ -76,11 +76,11 @@ msgstr "Seleccionable"
 
 msgctxt "field:product.classification_tree.dummy,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
