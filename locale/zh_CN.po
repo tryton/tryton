@@ -162,19 +162,3 @@ msgstr ""
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr ""
-
-msgctxt "view:stock.package.type:"
-msgid "Package Type"
-msgstr ""
-
-msgctxt "view:stock.package.type:"
-msgid "Package Types"
-msgstr ""
-
-msgctxt "view:stock.package:"
-msgid "Package"
-msgstr ""
-
-msgctxt "view:stock.package:"
-msgid "Packages"
-msgstr ""

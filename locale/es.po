@@ -30,11 +30,11 @@ msgstr "Código"
 
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.package,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:stock.package,id:"
 msgid "ID"
@@ -62,19 +62,19 @@ msgstr "Tipo"
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.package,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:stock.package.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:stock.package.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
@@ -90,11 +90,11 @@ msgstr "Nombre"
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:stock.package.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
