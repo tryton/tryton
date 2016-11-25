@@ -20,11 +20,11 @@ msgstr "Precio de coste"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
@@ -44,11 +44,11 @@ msgstr "Nombre"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"

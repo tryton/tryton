@@ -74,7 +74,3 @@ msgstr ""
 msgctxt "view:company.employee:"
 msgid "Cost"
 msgstr ""
-
-msgctxt "view:company.employee_cost_price:"
-msgid "Cost Prices"
-msgstr ""
