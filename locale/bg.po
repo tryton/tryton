@@ -288,11 +288,3 @@ msgstr "Партида"
 msgctxt "view:stock.lot:"
 msgid "Lots"
 msgstr "Партиди"
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Cache"
-msgstr ""
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Caches"
-msgstr ""

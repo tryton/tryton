@@ -314,11 +314,3 @@ msgstr "Lot"
 msgctxt "view:stock.lot:"
 msgid "Lots"
 msgstr "Lot"
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Cache"
-msgstr ""
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Caches"
-msgstr ""

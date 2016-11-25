@@ -124,16 +124,15 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
+msgstr "Ermittlungsdatum"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_location.context,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Ermittlungsdatum"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -201,15 +200,17 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Den erwarteten Lagerbestand für dieses Datum ermitteln.\n"
+"* Ein leerer Wert bedeutet ein unendliches Datum in der Zukunft.\n"
+"* Ein Wert in der Vergangenheit berechnet historische Werte."
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Chargen"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Chargen"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -253,7 +254,7 @@ msgstr "Lieferant"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
-msgstr ""
+msgstr "Chargen nach Lagerort"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"

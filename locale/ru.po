@@ -303,19 +303,3 @@ msgstr ""
 msgctxt "view:product.template:"
 msgid "Lots"
 msgstr ""
-
-msgctxt "view:stock.lot:"
-msgid "Lot"
-msgstr ""
-
-msgctxt "view:stock.lot:"
-msgid "Lots"
-msgstr ""
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Cache"
-msgstr ""
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Caches"
-msgstr ""
