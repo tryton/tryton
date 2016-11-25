@@ -787,20 +787,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Администрирование продукции"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "Средняя цена"
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Фиксированная цена"
-
 #, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
@@ -847,6 +833,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Подчиненные"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Основные"
+
 #, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
@@ -859,10 +849,6 @@ msgstr "Продукт"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Продукция"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Основные"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

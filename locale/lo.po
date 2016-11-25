@@ -783,20 +783,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "ບໍລິຫານຜະລິດຕະພັນ"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "ສະເລັ່ຍ"
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "ຄົງທີ່"
-
 #, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
@@ -843,6 +829,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "ໝວດຍ່ອຍ"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "ທົ່ວໄປ"
+
 #, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
@@ -855,10 +845,6 @@ msgstr "ຜະລິດຕະພັນ"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "ຜະລິດຕະພັນ"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "ທົ່ວໄປ"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

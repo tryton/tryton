@@ -458,9 +458,10 @@ msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
@@ -498,9 +499,10 @@ msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr ""
+msgstr "Prodotto"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
@@ -809,9 +811,10 @@ msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr ""
+msgstr "Unità"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
@@ -824,19 +827,6 @@ msgstr ""
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Fisso"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
@@ -888,6 +878,11 @@ msgid "Children"
 msgstr "Figlio"
 
 #, fuzzy
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Generale"
+
+#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Connfigurazione Controparte"
@@ -896,28 +891,3 @@ msgstr "Connfigurazione Controparte"
 msgctxt "view:product.product:"
 msgid "Product"
 msgstr "Prodotto"
-
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Generale"
-
-msgctxt "view:product.uom.category:"
-msgid "Categories of Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom.category:"
-msgid "Category of Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom:"
-msgid "Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom:"
-msgid "Units of Measure"
-msgstr ""

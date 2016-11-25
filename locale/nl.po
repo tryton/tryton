@@ -822,20 +822,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Productregistratie"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "Gemiddeld"
-
-#, fuzzy
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Vast"
-
 #, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
@@ -885,6 +871,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Algemeen"
+
 #, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
@@ -898,10 +888,6 @@ msgstr "Producten"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Producten"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Algemeen"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

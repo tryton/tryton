@@ -391,7 +391,6 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Različice"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
 msgstr "Različice"
@@ -760,18 +759,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Izdelek - vodenje"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "Povprečna cena"
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Fiksna"
-
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Povprečna cena"
@@ -816,6 +803,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Podkategorije"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Splošno"
+
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Konfiguracija partnerjev"
@@ -827,10 +818,6 @@ msgstr "Izdelek"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Izdelki"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Splošno"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

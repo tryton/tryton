@@ -30,11 +30,11 @@ msgstr "Hijos"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
@@ -54,19 +54,19 @@ msgstr "Nombre"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
@@ -82,11 +82,11 @@ msgstr "Nombre"
 
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.product,active:"
 msgid "Active"
@@ -118,11 +118,11 @@ msgstr "Precio de coste"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
@@ -166,11 +166,11 @@ msgstr "Tipo"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.template,active:"
 msgid "Active"
@@ -194,11 +194,11 @@ msgstr "Método de coste"
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
@@ -234,11 +234,11 @@ msgstr "Tipo"
 
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
@@ -246,11 +246,11 @@ msgstr "Categoría"
 
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
@@ -266,11 +266,11 @@ msgstr "Plantilla"
 
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
@@ -282,11 +282,11 @@ msgstr "Categoría"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
@@ -322,19 +322,19 @@ msgstr "Símbolo"
 
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
@@ -354,11 +354,11 @@ msgstr "Unidades de medidas"
 
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
@@ -392,7 +392,6 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Productos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
 msgstr "Variantes"
@@ -761,18 +760,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administración de productos"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "Promedio"
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Fijo"
-
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Promedio"
@@ -817,6 +804,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Hijos"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "General"
+
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Configuración de terceros"
@@ -828,10 +819,6 @@ msgstr "Producto"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Productos"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "General"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

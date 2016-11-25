@@ -394,7 +394,6 @@ msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Varianten"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
 msgstr "Varianten"
@@ -763,18 +762,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Artikel Administration"
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr " "
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr "Durchschnitt"
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr "Fix"
-
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "Durchschnitt"
@@ -819,6 +806,10 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Untergeordnet (Kategorien)"
 
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "Allgemein"
+
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
 msgstr "Partei"
@@ -829,11 +820,7 @@ msgstr "Variante"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Artikel"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Allgemein"
+msgstr "Varianten"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

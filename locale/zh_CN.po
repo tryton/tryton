@@ -809,18 +809,6 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr ""
 
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Average"
-msgstr ""
-
-msgctxt "selection:product.configuration,default_cost_price_method:"
-msgid "Fixed"
-msgstr ""
-
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr ""
@@ -866,35 +854,7 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "子项"
 
-msgctxt "view:product.configuration:"
-msgid "Party Configuration"
-msgstr ""
-
-msgctxt "view:product.product:"
-msgid "Product"
-msgstr ""
-
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "基本"
-
-msgctxt "view:product.uom.category:"
-msgid "Categories of Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom.category:"
-msgid "Category of Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom:"
-msgid "Unit of Measure"
-msgstr ""
-
-msgctxt "view:product.uom:"
-msgid "Units of Measure"
-msgstr ""
