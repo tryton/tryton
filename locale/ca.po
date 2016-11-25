@@ -10,11 +10,6 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr "Carta de reclamació"
 
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid ":"
-msgstr ":"
-
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Import"
@@ -33,11 +28,11 @@ msgstr "Descripció"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Data de venciment"
+msgstr "Data venciment"
 
 msgctxt "report:account.dunning.letter:"
-msgid "Fee"
-msgstr ""
+msgid "Fees:"
+msgstr "Despeses:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
@@ -51,7 +46,6 @@ msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avís recordatori"
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "s"
 msgstr "s"

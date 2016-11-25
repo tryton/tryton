@@ -10,11 +10,6 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr "Carta de Cobrança"
 
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid ":"
-msgstr ":"
-
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Montante"
@@ -36,7 +31,7 @@ msgid "Due Date"
 msgstr "Data de vencimento"
 
 msgctxt "report:account.dunning.letter:"
-msgid "Fee"
+msgid "Fees:"
 msgstr ""
 
 msgctxt "report:account.dunning.letter:"

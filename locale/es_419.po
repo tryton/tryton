@@ -8,32 +8,27 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr ""
+msgstr "Carta de cobro"
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Сума"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Дата:"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Дата на изпълнение"
+msgstr "Fecha de vencimiento"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
@@ -43,16 +38,10 @@ msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Препратка"
+msgstr ""
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr ""
-
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "s"

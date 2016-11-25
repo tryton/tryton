@@ -10,11 +10,6 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
 msgstr "Sollecito"
 
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid ":"
-msgstr ":"
-
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
 msgstr "Importo"
@@ -36,8 +31,8 @@ msgid "Due Date"
 msgstr "Scadenza"
 
 msgctxt "report:account.dunning.letter:"
-msgid "Fee"
-msgstr ""
+msgid "Fees:"
+msgstr "Spese"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
@@ -50,7 +45,3 @@ msgstr "Riferimento"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Avviso promemoria"
-
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr ""
