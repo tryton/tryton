@@ -4,102 +4,87 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr ""
+msgstr "Método de costo del transportista"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr "Creado por usuario"
 
-#, fuzzy
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "Modificado por usuario"
 
-#, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr "Creado por usuario"
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
-msgstr "Számkör"
+msgstr ""
 
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "Modificado por usuario"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
-msgstr ""
+msgstr "Método para calcular el costo del transportista"
 
 msgctxt "model:carrier,name:"
 msgid "Carrier"

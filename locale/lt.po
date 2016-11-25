@@ -127,11 +127,3 @@ msgstr ""
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
 msgstr ""
-
-msgctxt "view:carrier:"
-msgid "Carrier"
-msgstr ""
-
-msgctxt "view:carrier:"
-msgid "Carriers"
-msgstr ""

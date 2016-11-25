@@ -12,11 +12,11 @@ msgstr "Producto del transportista"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
@@ -32,66 +32,55 @@ msgstr "Nombre"
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
-#, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
 msgstr "Activo"
 
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "Transportista"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
-#, fuzzy
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr "Desde el país"
 
-#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
 
-#, fuzzy
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
-msgstr "Para el país"
+msgstr "Hacia el país"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
@@ -103,7 +92,7 @@ msgstr "Transportista"
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Selección del transportista"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
@@ -111,7 +100,7 @@ msgstr "Transportistas"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Selección del transportista"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -123,7 +112,7 @@ msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Selección del transportista"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
@@ -135,7 +124,7 @@ msgstr "Precio del producto"
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr ""
+msgstr "Criterio"
 
 msgctxt "view:carrier:"
 msgid "Carrier"

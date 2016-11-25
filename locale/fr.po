@@ -38,57 +38,46 @@ msgctxt "field:carrier,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-#, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
 msgstr "Active"
 
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
-msgstr "Transporteurs"
+msgstr "Transporteur"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
 msgstr "Créé par"
 
-#, fuzzy
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr "Du pays"
 
-#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
 msgstr "Séquence"
 
-#, fuzzy
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
 msgstr "Vers le pays"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
 msgstr "Date de mise à jour"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
@@ -103,7 +92,7 @@ msgstr "Transporteur"
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Choix de transporteurs"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
@@ -111,7 +100,7 @@ msgstr "Transporteurs"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Choix de transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -123,7 +112,7 @@ msgstr "Transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Choix de transporteurs"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
@@ -135,7 +124,7 @@ msgstr "Prix du produit"
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr ""
+msgstr "Critères"
 
 msgctxt "view:carrier:"
 msgid "Carrier"

@@ -68,15 +68,13 @@ msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 #, fuzzy
 msgctxt "field:carrier.selection,to_country:"
