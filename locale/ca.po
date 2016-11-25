@@ -38,10 +38,6 @@ msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
 msgstr "Divisió de moviments"
 
-msgctxt "view:stock.move.split.start:"
-msgid "Split Move"
-msgstr "Divisió de moviments"
-
 msgctxt "view:stock.move:"
 msgid "Split"
 msgstr "Divideix"
