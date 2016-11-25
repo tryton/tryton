@@ -24,11 +24,11 @@ msgstr "Empresa"
 
 msgctxt "field:sale.complaint,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.complaint,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
@@ -84,11 +84,11 @@ msgstr "Tipo"
 
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
@@ -100,11 +100,11 @@ msgstr "Reclamación"
 
 msgctxt "field:sale.complaint.action,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.complaint.action,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
@@ -144,11 +144,11 @@ msgstr "Precio de la unidad"
 
 msgctxt "field:sale.complaint.action,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
@@ -156,11 +156,11 @@ msgstr "Acción"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
@@ -176,11 +176,11 @@ msgstr "Nombre"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
@@ -188,11 +188,11 @@ msgstr "Acción"
 
 msgctxt "field:sale.complaint.action-sale.line,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.complaint.action-sale.line,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
@@ -208,19 +208,19 @@ msgstr "Nombre"
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:sale.complaint.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
@@ -240,11 +240,11 @@ msgstr "Nombre"
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -372,22 +372,6 @@ msgstr "Crear factura de abono"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Crear venta de devolución"
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Action"
-msgstr "Acción reclamación de cliente"
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Actions"
-msgstr "Acciones reclamación de cliente"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Type"
-msgstr "Tipo de reclamación de cliente"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Types"
-msgstr "Tipos de reclamación de cliente"
 
 msgctxt "view:sale.complaint:"
 msgid "Approve"

@@ -151,9 +151,10 @@ msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
-msgstr ""
+msgstr "Строка продажи"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action,unit:"
@@ -332,9 +333,10 @@ msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr ""
+msgstr "Тип"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
@@ -374,9 +376,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr ""
+msgstr "Тип"
 
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
@@ -432,22 +435,6 @@ msgstr ""
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
-msgstr ""
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Action"
-msgstr ""
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Actions"
-msgstr ""
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Type"
-msgstr ""
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Types"
 msgstr ""
 
 msgctxt "view:sale.complaint:"

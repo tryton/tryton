@@ -374,22 +374,6 @@ msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Criar uma Devolução de Venda"
 
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Action"
-msgstr "Ação de Reclamação de Cliente"
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Actions"
-msgstr "Ações de Reclamação de Clientes"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Type"
-msgstr "Tipo de Reclamação do Cliente"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Types"
-msgstr "Tipos de Reclamação do Cliente"
-
 msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Aprovar"

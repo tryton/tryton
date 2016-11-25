@@ -373,22 +373,6 @@ msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Izdelava vračilnega naloga"
 
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Action"
-msgstr "Ukrep reklamacije kupca"
-
-msgctxt "view:sale.complaint.action:"
-msgid "Customer Complaint Actions"
-msgstr "Ukrepi reklamacij kupcev"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Type"
-msgstr "Vrsta reklamacije kupca"
-
-msgctxt "view:sale.complaint.type:"
-msgid "Customer Complaint Types"
-msgstr "Vrste reklamacij kupcev"
-
 msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Odobritev"
@@ -403,7 +387,7 @@ msgstr "Reklamacija"
 
 msgctxt "view:sale.complaint:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Priprava"
 
 msgctxt "view:sale.complaint:"
 msgid "Process"
