@@ -122,19 +122,17 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
-msgstr "Megad"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Tulajdonságok"
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
-msgstr "Rész"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -204,13 +202,10 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Kiválasztás"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr ""
-
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Sets"
-msgstr ""
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Tulajdonságok"
 
 msgctxt "view:product.attribute:"
 msgid "Attribute"

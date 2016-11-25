@@ -123,7 +123,7 @@ msgid "Write User"
 msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr "Attributssatz"
 
 msgctxt "field:product.product,attributes:"
@@ -131,7 +131,7 @@ msgid "Attributes"
 msgstr "Attribute"
 
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr "Attributssatz"
 
 msgctxt "help:product.attribute,selection:"
@@ -202,9 +202,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Auswahl"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr "Attributssatz"
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Attribute"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"

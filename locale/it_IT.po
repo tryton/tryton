@@ -45,9 +45,10 @@ msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr ""
+msgstr "Imposta"
 
 #, fuzzy
 msgctxt "field:product.attribute,string:"
@@ -147,19 +148,17 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
-msgstr "Imposta"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
-msgstr "Imposta"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -233,18 +232,6 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Selezione"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr ""
-
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Sets"
-msgstr ""
-
-msgctxt "view:product.attribute:"
-msgid "Attribute"
-msgstr ""
-
-msgctxt "view:product.attribute:"
+msgctxt "view:product.template:"
 msgid "Attributes"
 msgstr ""

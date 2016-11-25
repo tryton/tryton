@@ -123,7 +123,7 @@ msgid "Write User"
 msgstr "Zapisal"
 
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr "Nabor"
 
 msgctxt "field:product.product,attributes:"
@@ -131,7 +131,7 @@ msgid "Attributes"
 msgstr "Atributi"
 
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr "Nabor"
 
 msgctxt "help:product.attribute,selection:"
@@ -202,9 +202,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Izbor"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr "Nabor atributov"
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Atributi"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"

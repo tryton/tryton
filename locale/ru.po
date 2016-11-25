@@ -146,19 +146,17 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
-msgstr "Применить"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
-msgstr "Применить"
+msgid "Attribute Set"
+msgstr ""
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -230,18 +228,6 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Выбор"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr ""
-
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Sets"
-msgstr ""
-
-msgctxt "view:product.attribute:"
-msgid "Attribute"
-msgstr ""
-
-msgctxt "view:product.attribute:"
+msgctxt "view:product.template:"
 msgid "Attributes"
 msgstr ""

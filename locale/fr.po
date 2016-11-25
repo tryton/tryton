@@ -123,16 +123,16 @@ msgid "Write User"
 msgstr "Mis à jour par"
 
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
-msgstr "Ensemble"
+msgid "Attribute Set"
+msgstr "Ensemble d'attributs"
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Attributs"
 
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
-msgstr "Ensemble"
+msgid "Attribute Set"
+msgstr "Ensemble d'attributs"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -203,9 +203,9 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Sélection"
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr "Ensemble d'attributs"
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Attributs"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"

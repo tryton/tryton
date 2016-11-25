@@ -128,7 +128,7 @@ msgid "Write User"
 msgstr ""
 
 msgctxt "field:product.product,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr ""
 
 msgctxt "field:product.product,attributes:"
@@ -136,7 +136,7 @@ msgid "Attributes"
 msgstr ""
 
 msgctxt "field:product.template,attribute_set:"
-msgid "Set"
+msgid "Attribute Set"
 msgstr ""
 
 msgctxt "help:product.attribute,selection:"
@@ -207,18 +207,6 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr ""
 
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Set"
-msgstr ""
-
-msgctxt "view:product.attribute.set:"
-msgid "Attribute Sets"
-msgstr ""
-
-msgctxt "view:product.attribute:"
-msgid "Attribute"
-msgstr ""
-
-msgctxt "view:product.attribute:"
+msgctxt "view:product.template:"
 msgid "Attributes"
 msgstr ""
