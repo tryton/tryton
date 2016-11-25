@@ -228,6 +228,10 @@ msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr ""
+
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -335,6 +339,10 @@ msgstr ""
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
+msgstr ""
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
 msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
@@ -965,10 +973,6 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr ""
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr ""
@@ -1208,10 +1212,6 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr ""
-
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr ""
@@ -1428,34 +1428,10 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr ""
 
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr ""
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."

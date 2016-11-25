@@ -281,6 +281,10 @@ msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr "Организация"
 
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr ""
+
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -321,9 +325,10 @@ msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "Отчет Инвойса"
 
+#, fuzzy
 msgctxt "field:account.invoice,invoice_report_cache_id:"
 msgid "Invoice Report ID"
-msgstr ""
+msgstr "Отчет Инвойса"
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
@@ -389,6 +394,10 @@ msgstr "Состояние"
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Налог"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -1033,10 +1042,6 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Если истинно, то текущий инвойс будет оплачен."
 
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr "Используется для сортировки строк в порядке возрастания"
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "Инвойс"
@@ -1288,10 +1293,6 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Цена за единицу"
 
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr "ИНН:"
-
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Отменено"
@@ -1529,35 +1530,10 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Комментарии"
 
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr "Оплата инвойса"
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr "Оплата инвойса"
-
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr "Строки правила оплаты"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "Правило оплаты"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "Правила оплаты"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."

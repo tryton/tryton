@@ -275,6 +275,10 @@ msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr "Družba"
 
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr "Družba"
+
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -382,6 +386,10 @@ msgstr "Stanje"
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Davek"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -763,7 +771,7 @@ msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr "Odstotek"
+msgstr "Delež"
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
@@ -826,15 +834,13 @@ msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
 msgid "Name"
-msgstr "Plačilni rok"
+msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
@@ -1014,10 +1020,6 @@ msgstr "Plačilni rok dobavitelja"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Če resnično, bo(do) trenutni račun(i) plačan(i)."
-
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr "Za naraščajoče razvrščanje postavk"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -1256,10 +1258,6 @@ msgstr "Skupaj:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Cena"
-
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr "DDV:"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1506,33 +1504,9 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Opombe"
 
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr "Plačilo računa"
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr "Plačilo računa"
-
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr "Rezultati preizkusa plačilnega roka"
-
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr "Preizkus plačilnega roka"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "Plačilni rok"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "Plačilni roki"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."

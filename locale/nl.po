@@ -168,9 +168,10 @@ msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
 
+#, fuzzy
 msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
-msgstr ""
+msgstr "Boekjaar \"%(first)s\" en \"%(second)s\" hebben dezelfde soort nummerreeks."
 
 msgctxt "error:account.period:"
 msgid ""
@@ -227,6 +228,10 @@ msgstr "Opmerking"
 msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr "Bedrijf"
+
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.invoice,create_date:"
@@ -299,9 +304,10 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Nummer"
 
+#, fuzzy
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Oorsprong"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -338,6 +344,10 @@ msgstr "Status"
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Belasting"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -1032,10 +1042,6 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr "Gebruiken voor oplopend sorteren"
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "Verkoopfactuur"
@@ -1287,10 +1293,6 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Eenheids- prijs"
 
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr "BTW:"
-
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Geannuleerd"
@@ -1525,35 +1527,10 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Aantekeningen"
 
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr ""
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr "Betalingstermijn regels"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "Betalingstermijn"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "Betalingstermijnen"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."

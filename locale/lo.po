@@ -228,6 +228,10 @@ msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
 
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr ""
+
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
@@ -268,9 +272,10 @@ msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "ສະຫຼຸບໃບເກັບເງິນ"
 
+#, fuzzy
 msgctxt "field:account.invoice,invoice_report_cache_id:"
 msgid "Invoice Report ID"
-msgstr ""
+msgstr "ສະຫຼຸບໃບເກັບເງິນ"
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
@@ -335,6 +340,10 @@ msgstr "ສະຖານະ"
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "ອາກອນ"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -456,9 +465,10 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "ວັນທີໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.line,invoice_taxes:"
@@ -809,9 +819,10 @@ msgctxt "field:account.invoice.payment_term.line.delta,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "ຮູບແບບການຈ່າຍ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,month:"
@@ -951,9 +962,10 @@ msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
 
+#, fuzzy
 msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "ວັນທີໃບເກັບເງິນ"
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
@@ -1024,10 +1036,6 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr ""
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
@@ -1064,9 +1072,10 @@ msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
 msgstr "ຮູບແບບການຈ່າຍ"
 
+#, fuzzy
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "ຮູບແບບການຈ່າຍ"
 
 msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
@@ -1291,10 +1300,6 @@ msgstr "ລວມເງິນ:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "ລາຄາ"
-
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr ""
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1528,36 +1533,9 @@ msgid "Notes"
 msgstr "ໝາຍເຫດ"
 
 #, fuzzy
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr "ຊໍາລະໃບເກັບເງິນ"
-
-#, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr "ຮູບແບບການຈ່າຍ"
-
-#, fuzzy
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "ຮູບແບບການຈ່າຍ"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."

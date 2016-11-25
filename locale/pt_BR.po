@@ -283,6 +283,10 @@ msgctxt "field:account.invoice,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr ""
+
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -323,9 +327,10 @@ msgctxt "field:account.invoice,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "Relatório de Faturas"
 
+#, fuzzy
 msgctxt "field:account.invoice,invoice_report_cache_id:"
 msgid "Invoice Report ID"
-msgstr ""
+msgstr "Relatório de Faturas"
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
@@ -390,6 +395,10 @@ msgstr "Estado"
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Impostos"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -1023,10 +1032,6 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Se verdadeiro, as faturas atuais serão pagas."
 
-msgctxt "help:account.invoice.payment_term.line,sequence:"
-msgid "Use to order lines in ascending order"
-msgstr "Utilizar para ordenar as linhas em ordem ascendente."
-
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
 msgstr "Faturar"
@@ -1264,10 +1269,6 @@ msgstr "Total:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preço unitário"
-
-msgctxt "report:account.invoice:"
-msgid "VAT:"
-msgstr "IVA:"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1517,34 +1518,10 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Observações"
 
-msgctxt "view:account.invoice.pay.ask:"
-msgid "Pay Invoice"
-msgstr "Pagar a Fatura"
-
-msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr "Pagar a Fatura"
-
 #, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
-
-msgctxt "view:account.invoice.payment_term.test.result:"
-msgid "Payment Term Test Results"
-msgstr "Forma de Pagamento - Resultados da Simulação"
-
-msgctxt "view:account.invoice.payment_term.test:"
-msgid "Payment Term Test"
-msgstr "Forma de Pagamento - Simulação"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "Forma de Pagamento"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "Formas de Pagamento"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent directly to the printer."
