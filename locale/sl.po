@@ -1,0 +1,60 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:production.split.start,count:"
+msgid "Count"
+msgstr "Število"
+
+#, fuzzy
+msgctxt "field:production.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:production.split.start,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+#, fuzzy
+msgctxt "field:production.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+#, fuzzy
+msgctxt "field:production.split.start,uom:"
+msgid "Uom"
+msgstr "ME"
+
+#, fuzzy
+msgctxt "field:production.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Kategorija ME"
+
+msgctxt "help:production.split.start,count:"
+msgid "The limit number of productions"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_split_production"
+msgid "Split Production"
+msgstr ""
+
+msgctxt "model:production.split.start,name:"
+msgid "Split Production"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:production:"
+msgid "Split"
+msgstr "Delitev"
+
+#, fuzzy
+msgctxt "wizard_button:production.split,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "Delitev"
