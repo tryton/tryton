@@ -1308,7 +1308,10 @@ def RPCExecute(*args, **kwargs):
 def RPCContextReload(callback=None):
     def update(context):
         rpc.CONTEXT.clear()
-        rpc.CONTEXT.update(context())
+        try:
+            rpc.CONTEXT.update(context())
+        except RPCException:
+            pass
         if callback:
             callback()
     # Use RPCProgress to not send rpc.CONTEXT
