@@ -45,9 +45,22 @@
     QUnit.test('PYSON Encoder', function() {
         var encoder = new Sao.PYSON.Encoder();
         var none;
+        var date = Sao.Date(2002, 0, 1);
+        var datetime = Sao.DateTime(2002, 0, 1, 12, 30, 0, 0);
+        var pyson_date = new Sao.PYSON.Date(2002, 1, 1).pyson();
+        var pyson_datetime = new Sao.PYSON.DateTime(
+            2002, 1, 1, 12, 30, 0, 0).pyson();
+        var array = ["create_date", '>=', date];
+        var pyson_array = ["create_date", '>=', pyson_date];
         QUnit.strictEqual(encoder.encode(), 'null', "encode()");
         QUnit.strictEqual(encoder.encode(none), 'null', "encode(none)");
         QUnit.strictEqual(encoder.encode(null), 'null', "encode()");
+        QUnit.strictEqual(encoder.encode(date),
+            JSON.stringify(pyson_date), "encode(date)");
+        QUnit.strictEqual(encoder.encode(datetime),
+            JSON.stringify(pyson_datetime), "encode(datetime)");
+        QUnit.strictEqual(encoder.encode(array),
+            JSON.stringify(pyson_array), "encode(array)");
     });
 
     QUnit.test('PYSON.Eval', function() {
