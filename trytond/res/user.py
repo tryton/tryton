@@ -309,6 +309,8 @@ class User(ModelSQL, ModelView):
         default = default.copy()
 
         default['password'] = ''
+        default.setdefault('warnings')
+        default.setdefault('applications')
 
         new_users = []
         for user in users:
