@@ -21,28 +21,44 @@
     };
 
     Sao.PYSON.Encoder = Sao.class_(Object, {
+        prepare: function(value, index, parent) {
+            if (value !== null && value !== undefined) {
+                if (value instanceof Array) {
+                    value = jQuery.extend([], value);
+                    for (var i = 0, length = value.length; i < length; i++) {
+                        this.prepare(value[i], i, value);
+                    }
+                } else if (value._isAMomentObject) {
+                    if (value.isDate) {
+                        value = new Sao.PYSON.Date(
+                            value.year(),
+                            value.month() + 1,
+                            value.date()).pyson();
+                    } else {
+                        value = new Sao.PYSON.DateTime(
+                            value.year(),
+                            value.month() + 1,
+                            value.date(),
+                            value.hours(),
+                            value.minutes(),
+                            value.seconds(),
+                            value.milliseconds() * 1000).pyson();
+                    }
+                }
+            }
+            if (parent) {
+                parent[index] = value;
+            }
+            return parent || value;
+        },
+
         encode: function(pyson) {
+            pyson = this.prepare(pyson);
             return JSON.stringify(pyson, function(k, v) {
                 if (v instanceof Sao.PYSON.PYSON) {
                     return v.pyson();
                 } else if (v === null || v === undefined) {
                     return null;
-                } else if (v._isAMomentObject) {
-                    if (v.isDate) {
-                        return Sao.PYSON.Date(
-                            v.getFullYear(),
-                            v.getMonth(),
-                            v.getDate()).pyson();
-                    } else {
-                        return Sao.PYSON.DateTime(
-                            v.getFullYear(),
-                            v.getMonth(),
-                            v.getDate(),
-                            v.getHours(),
-                            v.getMinutes(),
-                            v.getSeconds(),
-                            v.getMilliseconds()).pyson();
-                    }
                 }
                 return v;
             });
