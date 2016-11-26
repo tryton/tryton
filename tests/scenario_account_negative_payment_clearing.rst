@@ -40,8 +40,12 @@ Create chart of accounts::
     >>> cash = accounts['cash']
 
     >>> Account = Model.get('account.account')
-    >>> bank_clearing = Account(name='Bank Clearing', type=payable.type,
-    ...     reconcile=True, deferral=True, parent=payable.parent, kind='other')
+    >>> bank_clearing = Account(parent=payable.parent)
+    >>> bank_clearing.name = 'Bank Clearing'
+    >>> bank_clearing.type = payable.type
+    >>> bank_clearing.reconcile = True
+    >>> bank_clearing.deferral = True
+    >>> bank_clearing.kind = 'other'
     >>> bank_clearing.save()
 
     >>> Journal = Model.get('account.journal')
