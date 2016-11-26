@@ -291,7 +291,7 @@ class ModelSQL(ModelStorage):
                 delete_records = Transaction().delete_records.get(
                     field.model_name, set())
                 target_records = Model.search([
-                        ('id', '=', values[field_name]),
+                        ('id', '=', field.sql_format(values[field_name])),
                         ], order=[])
                 if not ((target_records
                             or (values[field_name] in create_records))
