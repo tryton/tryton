@@ -305,6 +305,12 @@ class ModuleTestCase(unittest.TestCase):
                     elif attr.startswith('order_'):
                         tables = {None: (model.__table__(), None)}
                         getattr(model, attr)(tables)
+                    elif any(attr.startswith(p) for p in [
+                                'on_change_',
+                                'on_change_with_',
+                                'autocomplete_']):
+                        record = model()
+                        getattr(record, attr)()
 
     @with_transaction()
     def test_menu_action(self):

@@ -37,7 +37,8 @@ class Note(ResourceMixin, ModelSQL, ModelView):
     @fields.depends('message')
     def on_change_with_message_wrapped(self, name=None):
         wrapper = self.get_wrapper()
-        return '\n'.join(map(wrapper.fill, self.message.splitlines()))
+        message = self.message or ''
+        return '\n'.join(map(wrapper.fill, message.splitlines()))
 
     @classmethod
     def get_unread(cls, ids, name):
