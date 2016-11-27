@@ -33,7 +33,7 @@ class ShipmentIn:
             'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['carrier', 'state', 'cost_currency_digits'])
 
-    @fields.depends('currency')
+    @fields.depends('cost_currency')
     def on_change_with_cost_currency_digits(self, name=None):
         if self.cost_currency:
             return self.cost_currency.digits
