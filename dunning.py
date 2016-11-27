@@ -113,7 +113,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
             ]
 
     @fields.depends('currency')
-    def on_change_with_currency_digits(self, name):
+    def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits
         return 2
