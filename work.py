@@ -183,7 +183,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('operation')
     def on_change_with_work_center_category(self, name=None):
-        if self.operation.work_center_category:
+        if self.operation and self.operation.work_center_category:
             return self.operation.work_center_category.id
 
     @classmethod
