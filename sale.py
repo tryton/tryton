@@ -56,7 +56,9 @@ class Sale:
 
     def _get_carrier_selection_pattern(self):
         pattern = {}
-        if self.warehouse.address and self.warehouse.address.country:
+        if (self.warehouse
+                and self.warehouse.address
+                and self.warehouse.address.country):
             pattern['from_country'] = self.warehouse.address.country.id
         if self.shipment_address and self.shipment_address.country:
             pattern['to_country'] = self.shipment_address.country.id

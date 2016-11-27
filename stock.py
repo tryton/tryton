@@ -43,7 +43,7 @@ class ShipmentOut:
                     'product "%s".'),
                 })
 
-    @fields.depends('currency')
+    @fields.depends('cost_currency')
     def on_change_with_cost_currency_digits(self, name=None):
         if self.cost_currency:
             return self.cost_currency.digits
