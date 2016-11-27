@@ -364,7 +364,7 @@ class Action(ModelSQL, ModelView):
 
     @fields.depends('complaint')
     def on_change_with_unit(self, name=None):
-        if self.complaint.origin_model == 'sale.line':
+        if self.complaint and self.complaint.origin_model == 'sale.line':
             return self.complaint.origin.unit.id
 
     @fields.depends('complaint')
