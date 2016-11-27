@@ -2464,11 +2464,16 @@ class PayInvoiceAsk(ModelView):
     def on_change_lines(self):
         Currency = Pool().get('currency.currency')
 
-        with Transaction().set_context(date=self.date):
-            amount = Currency.compute(self.currency, self.amount,
-                self.currency_writeoff)
+        if self.currency and self.currency_writeoff:
+            with Transaction().set_context(date=self.date):
+                amount = Currency.compute(self.currency, self.amount,
+                    self.currency_writeoff)
+        else:
+            amount = self.amount
 
         self.amount_writeoff = Decimal('0.0')
+        if not self.invoice:
+            return
         for line in self.lines:
             self.amount_writeoff += line.debit - line.credit
         for line in self.payment_lines:
