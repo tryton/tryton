@@ -69,8 +69,8 @@ class Shortcuts(object):
             ('+', _('Expand row')),
             ('-', _('Collapse row')),
             ('<Space>', _('Toggle row')),
-            ('<Shift> + <Left>', _('Expand all rows')),
-            ('<Shift> + <Right>', _('Collapse all rows')),
+            ('<Shift> + <Left>', _('Collapse all rows')),
+            ('<Shift> + <Right>', _('Expand all rows')),
             ]
         notebook.append_page(self._fill_table(shortcuts),
                 gtk.Label(_('Tree view')))
