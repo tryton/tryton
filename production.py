@@ -265,7 +265,10 @@ class Production(Workflow, ModelSQL, ModelView):
             pattern.setdefault('bom', self.bom.id if self.bom else None)
             for line in self.product.lead_times:
                 if line.match(pattern):
-                    return self.planned_date - line.lead_time
+                    if line.lead_time:
+                        return self.planned_date - line.lead_time
+                    else:
+                        return self.planned_date
         return self.planned_date
 
     def _move(self, from_location, to_location, company, product, uom,
