@@ -1988,7 +1988,8 @@ class ReconcileShow(ModelView):
 
     @fields.depends('account')
     def on_change_with_currency_digits(self, name=None):
-        return self.account.company.currency.digits
+        if self.account:
+            return self.account.company.currency.digits
 
 
 class CancelMoves(Wizard):
