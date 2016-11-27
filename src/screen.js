@@ -729,7 +729,7 @@
                         .description.loading;
                 }
             }
-            this.model.add_fields(fields);
+            this.group.add_fields(fields);
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
             view_widget.view_id = view_id;
             this.views.push(view_widget);
@@ -890,8 +890,14 @@
             }.bind(this));
         },
         set_group: function(group) {
+            var fields = {};
             if (this.group) {
-                jQuery.extend(group.model.fields, this.group.model.fields);
+                for (var name in this.group.model.fields) {
+                    if (!this.group.model.fields.hasOwnProperty(name)) {
+                        continue;
+                    }
+                    fields[name] = this.group.model.fields[name].description;
+                }
                 this.group.screens.splice(
                         this.group.screens.indexOf(this), 1);
                 jQuery.extend(group.on_write, this.group.on_write);
@@ -911,6 +917,7 @@
             } else {
                 this.set_current_record(group[0]);
             }
+            this.group.add_fields(fields);
         },
         new_group: function(ids) {
             var group = new Sao.Group(this.model, this.context, []);

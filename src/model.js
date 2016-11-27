@@ -11,14 +11,17 @@
             this.fields = {};
         },
         add_fields: function(descriptions) {
+            var added = [];
             for (var name in descriptions) {
                 if (descriptions.hasOwnProperty(name) &&
                     (!(name in this.fields))) {
                         var desc = descriptions[name];
                         var Field = Sao.field.get(desc.type);
                         this.fields[name] = new Field(desc);
+                        added.push(name);
                     }
             }
+            return added;
         },
         execute: function(method, params, context) {
             if (context === undefined) {
@@ -337,6 +340,26 @@
             this.parent = parent;
             if (parent && parent.model.name == this.model.name) {
                 this.parent.group.children.push(this);
+            }
+        };
+        array.add_fields = function(fields) {
+            var added = this.model.add_fields(fields);
+            if (jQuery.isEmptyObject(this)) {
+                return;
+            }
+            var new_ = [];
+            this.forEach(function(record) {
+                if (record.id < 0) {
+                    new_.push(record);
+                }
+            });
+            if (new_.length && added.length) {
+                this.model.execute('default_get', [added, this.context()])
+                    .then(function(values) {
+                        new_.forEach(function(record) {
+                            record.set_default(values);
+                        });
+                    });
             }
         };
         array.destroy = function() {
@@ -1892,7 +1915,7 @@
             var set_value = function(fields) {
                 var promises = [];
                 if (!jQuery.isEmptyObject(fields)) {
-                    group.model.add_fields(fields);
+                    group.add_fields(fields);
                 }
                 record._values[this.name] = group;
                 if (mode == 'list ids') {
@@ -2098,7 +2121,7 @@
 
             if (value.add || value.update) {
                 prm.then(function(fields) {
-                    group.model.add_fields(fields);
+                    group.add_fields(fields);
                     if (value.add) {
                         value.add.forEach(function(vals) {
                             var index = vals[0];
