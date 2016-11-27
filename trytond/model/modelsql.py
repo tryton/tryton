@@ -269,10 +269,13 @@ class ModelSQL(ModelStorage):
         return None
 
     @classmethod
-    def __raise_integrity_error(cls, exception, values, field_names=None):
+    def __raise_integrity_error(
+            cls, exception, values, field_names=None, transaction=None):
         pool = Pool()
         if field_names is None:
             field_names = cls._fields.keys()
+        if transaction is None:
+            transaction = Transaction()
         for field_name in field_names:
             if field_name not in cls._fields:
                 continue
@@ -286,9 +289,9 @@ class ModelSQL(ModelStorage):
                         error_args=cls._get_error_args(field_name))
             if isinstance(field, fields.Many2One) and values.get(field_name):
                 Model = pool.get(field.model_name)
-                create_records = Transaction().create_records.get(
+                create_records = transaction.create_records.get(
                     field.model_name, set())
-                delete_records = Transaction().delete_records.get(
+                delete_records = transaction.delete_records.get(
                     field.model_name, set())
                 target_records = Model.search([
                         ('id', '=', field.sql_format(values[field_name])),
@@ -548,9 +551,11 @@ class ModelSQL(ModelStorage):
                         id_new = transaction.database.lastid(cursor)
                 new_ids.append(id_new)
             except DatabaseIntegrityError, exception:
+                transaction = Transaction()
                 with Transaction().new_transaction(), \
                         Transaction().set_context(_check_access=False):
-                    cls.__raise_integrity_error(exception, values)
+                    cls.__raise_integrity_error(
+                        exception, values, transaction=transaction)
                 raise
 
         domain = Rule.domain_get(cls.__name__, mode='create')
@@ -931,10 +936,12 @@ class ModelSQL(ModelStorage):
                     cursor.execute(*table.update(columns, update_values,
                             where=red_sql))
                 except DatabaseIntegrityError, exception:
-                    with Transaction().new_transaction() as transaction, \
-                            transaction.set_context(_check_access=False):
-                        cls.__raise_integrity_error(exception, values,
-                            values.keys())
+                    transaction = Transaction()
+                    with Transaction().new_transaction(), \
+                            Transaction().set_context(_check_access=False):
+                        cls.__raise_integrity_error(
+                            exception, values, values.keys(),
+                            transaction=transaction)
                     raise
 
             for fname, value in values.iteritems():
@@ -1089,8 +1096,10 @@ class ModelSQL(ModelStorage):
             try:
                 cursor.execute(*table.delete(where=red_sql))
             except DatabaseIntegrityError, exception:
+                transaction = Transaction()
                 with Transaction().new_transaction():
-                    cls.__raise_integrity_error(exception, {})
+                    cls.__raise_integrity_error(
+                        exception, {}, transaction=transaction)
                 raise
 
         Translation.delete_ids(cls.__name__, 'model', ids)

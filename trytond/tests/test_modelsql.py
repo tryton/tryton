@@ -114,6 +114,25 @@ class ModelSQLTestCase(unittest.TestCase):
                     call([records[1]], 'field', 2),
                     ])
 
+    @with_transaction()
+    def test_integrity_error_with_created_record(self):
+        "Test integrity error with created record"
+        pool = Pool()
+        ParentModel = pool.get('test.one2many')
+        TargetModel = pool.get('test.one2many.target')
+
+        # Create target record without required name
+        # to ensure create_records is filled to prevent raising
+        # foreign_model_missing
+        record = ParentModel(name="test")
+        record.targets = [TargetModel()]
+        with self.assertRaises(UserError) as cm:
+            record.save()
+        err = cm.exception
+        msg = 'The field "%s" on "%s" is required.' % (
+            TargetModel.name.string, TargetModel.__doc__)
+        self.assertEqual(err.message, msg)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelSQLTestCase)
