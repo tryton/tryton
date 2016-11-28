@@ -1,3 +1,5 @@
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
 * Add get_analytic_lines on AnalyticAccountEntry
 * Add distribution account type
 * Add analytic state on move line
