@@ -1,3 +1,6 @@
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+
 Version 4.0.0 - 2016-05-02
 * Bug fixes (see mercurial logs for details)
 * Add Python3 support
