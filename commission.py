@@ -441,13 +441,13 @@ class CreateInvoiceAsk(ModelView):
     __name__ = 'commission.create_invoice.ask'
     from_ = fields.Date('From',
         domain=[
-            If(Bool(Eval('to')), [('from', '<=', Eval('to'))],
+            If(Eval('to') & Eval('from_'), [('from_', '<=', Eval('to'))],
                 []),
             ],
         depends=['to'])
     to = fields.Date('To',
         domain=[
-            If(Bool(Eval('from_')), [('to', '>=', Eval('from_'))],
+            If(Eval('from_') & Eval('to'), [('to', '>=', Eval('from_'))],
                 []),
             ],
         depends=['from_'])
