@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 # Copyright (c) 2002-2007 John D. Hunter; All Rights Reserved
+import datetime
 import time
 
 
@@ -9,6 +10,10 @@ def datetime_strftime(dt, fmt):
     Allow datetime strftime formatting for years before 1900.
     See http://bugs.python.org/issue1777412
     '''
+    if not isinstance(dt, datetime.date):
+        raise TypeError('datetime_strftime requires a ''datetime.date'' object'
+            'but received a ''%s''' % type(dt))
+
     if dt.year > 1900:
         return dt.strftime(fmt)
 
