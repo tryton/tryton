@@ -65,6 +65,12 @@ class ToolsTestCase(unittest.TestCase):
             '%Y-%m-%d'), '2005-03-02')
         self.assert_(datetime_strftime(datetime.date(1805, 3, 2),
             '%Y-%m-%d'), '1805-03-02')
+        self.assert_(datetime_strftime(datetime.datetime(2005, 3, 2, 0, 0, 0),
+            '%Y-%m-%d'), '2005-03-02')
+        with self.assertRaises(TypeError):
+            datetime_strftime(None, '%Y-%m-%d')
+        with self.assertRaises(TypeError):
+            datetime_strftime(2, '%Y-%m-%d')
 
     def test_reduce_domain(self):
         'Test reduce_domain'
