@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Periods</field>
             <field name="res_model">account.period</field>
             <field name="domain"
-                eval="[('fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_period_form_view1">
