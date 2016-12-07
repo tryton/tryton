@@ -51,9 +51,8 @@ class Sale:
             if line.purchase_request_state in ['purchased', 'cancel']:
                 for move in line.moves:
                     if move.state == 'staging':
-                        move.state = 'draft'
                         moves.append(move)
-        Move.save(moves)
+        Move.draft(moves)
         shipments = {m.shipment for m in moves
             if isinstance(m.shipment, ShipmentOut)}
         ShipmentOut.wait(shipments)
