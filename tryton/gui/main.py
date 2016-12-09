@@ -1272,7 +1272,7 @@ class Main(object):
             try:
                 view_ids = json.loads(params.get('views', 'false'))
                 limit = json.loads(params.get('limit', 'null'))
-                name = json.loads(params.get('name', ''))
+                name = json.loads(params.get('name', '""'))
                 search_value = json.loads(params.get('search_value', '{}'),
                     object_hook=object_hook)
                 domain = json.loads(params.get('domain', '[]'),
@@ -1304,7 +1304,7 @@ class Main(object):
                 direct_print = json.loads(params.get('direct_print', 'false'))
                 email_print = json.loads(params.get('email_print', 'false'))
                 email = json.loads(params.get('email', 'null'))
-                name = json.loads(params.get('name', 'false'))
+                name = json.loads(params.get('name', '""'))
                 window = json.loads(params.get('window', 'false'))
                 context = json.loads(params.get('context', '{}'),
                     object_hook=object_hook)
