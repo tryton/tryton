@@ -91,7 +91,7 @@ class Form(SignalEvent, TabContent):
             '<tryton>/Form/Import Data'),
     ]
 
-    def __init__(self, model, res_id=False, domain=None, order=None, mode=None,
+    def __init__(self, model, res_id=None, domain=None, order=None, mode=None,
             view_ids=None, context=None, name='', limit=None,
             search_value=None, tab_domain=None, context_model=None):
         super(Form, self).__init__()

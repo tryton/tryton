@@ -1267,13 +1267,13 @@ class Main(object):
             model, path = (path.split('/', 1) + [''])[:2]
             if not model:
                 return
-            res_id = False
+            res_id = None
             mode = None
             try:
                 view_ids = json.loads(params.get('views', 'false'))
                 limit = json.loads(params.get('limit', 'null'))
                 name = json.loads(params.get('name', '""'))
-                search_value = json.loads(params.get('search_value', '{}'),
+                search_value = json.loads(params.get('search_value', '[]'),
                     object_hook=object_hook)
                 domain = json.loads(params.get('domain', '[]'),
                     object_hook=object_hook)
