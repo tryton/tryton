@@ -28,7 +28,7 @@ class Line(ModelSQL, ModelView):
         'on_change_with_company', searcher='search_company')
     account = fields.Many2One('analytic_account.account', 'Account',
         required=True, select=True, domain=[
-            ('type', '!=', 'view'),
+            ('type', 'not in', ['view', 'distribution']),
             ['OR',
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),
