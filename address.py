@@ -37,7 +37,7 @@ class Address:
                     url += ' ' + value
         url = url.strip()
         if url:
-            if sys.version_info < (3,):
+            if isinstance(url, unicode) and sys.version_info < (3,):
                 url = url.encode('utf-8')
             return 'http://maps.google.com/maps?hl=%s&q=%s' % \
                 (lang, urllib.quote(url))
