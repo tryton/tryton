@@ -22,7 +22,7 @@ class Address:
         lang = Transaction().language[:2]
         url = ' '.join(self.get_full_address('full_address').splitlines())
         if url.strip():
-            if isinstance(url, str) and sys.version_info < (3,):
+            if isinstance(url, unicode) and sys.version_info < (3,):
                 url = url.encode('utf-8')
             return 'http://maps.google.com/maps?hl=%s&q=%s' % \
                 (lang, urllib.quote(url))
