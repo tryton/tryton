@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
@@ -29,6 +30,18 @@ class GoogleMapsTestCase(ModuleTestCase):
             address.on_change_with_google_maps_url(),
             'http://maps.google.com/maps?hl=en&'
             'q=300%20Cliff%20Street%2018503%20Scranton')
+
+        address = Address()
+        address.party = party
+        address.street = u"Dépôt Street"
+        address.zip = "18503"
+        address.city = "Scranton"
+        address.save()
+
+        self.assertEqual(
+            address.on_change_with_google_maps_url(),
+            'http://maps.google.com/maps?hl=en&'
+            'q=D%C3%A9p%C3%B4t%20Street%2018503%20Scranton')
 
 
 def suite():
