@@ -54,14 +54,36 @@ class Party:
             states={
                 'invisible': ~Eval('context', {}).get('company'),
                 }, help='Apply this rule on taxes when party is supplier.'))
-    receivable = fields.Function(fields.Numeric('Receivable'),
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'get_currency_digits')
+    receivable = fields.Function(fields.Numeric('Receivable',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
-    payable = fields.Function(fields.Numeric('Payable'),
+    payable = fields.Function(fields.Numeric('Payable',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
-    receivable_today = fields.Function(fields.Numeric('Receivable Today'),
+    receivable_today = fields.Function(fields.Numeric('Receivable Today',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
-    payable_today = fields.Function(fields.Numeric('Payable Today'),
+    payable_today = fields.Function(fields.Numeric('Payable Today',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
+
+    @classmethod
+    def get_currency_digits(cls, parties, name):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = Transaction().context.get('company')
+        if company_id:
+            company = Company(company_id)
+            digits = company.currency.digits
+        else:
+            digits = 2
+        return {p.id: digits for p in parties}
 
     @classmethod
     def get_receivable_payable(cls, parties, names):
