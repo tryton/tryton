@@ -762,19 +762,17 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             self.raise_user_error('missing_account_receivable',
                 (self.party.rec_name,))
 
-        invoice_lines = {}
+        invoice_lines = []
         for line in self.lines:
-            ilines = line.get_invoice_line()
-            if ilines:
-                invoice_lines[line.id] = ilines
+            invoice_lines.append(line.get_invoice_line())
+        invoice_lines = list(chain(*invoice_lines))
         if not invoice_lines:
             return
 
         invoice = self._get_invoice_sale()
-        invoice.lines = ((list(invoice.lines)
-                if hasattr(invoice, 'lines') else [])
-            + list(chain.from_iterable(invoice_lines[l.id] for l in self.lines
-                    if l.id in invoice_lines)))
+        if getattr(invoice, 'lines', None):
+            invoice_lines = list(invoice.lines) + invoice_lines
+        invoice.lines = invoice_lines
         invoice.save()
 
         Invoice.update_taxes([invoice])
