@@ -65,7 +65,8 @@ Partially pay line::
     >>> Payment = Model.get('account.payment')
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.form.journal = payment_journal
+    >>> pay_line.form.journal == payment_journal
+    True
     >>> pay_line.execute('start')
     >>> payment, = Payment.find()
     >>> payment.party == supplier
@@ -88,7 +89,6 @@ Partially pay line::
 Partially fail to pay the remaining::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('start')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
@@ -113,7 +113,6 @@ Pay line and block it after::
     >>> move.click('post')
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('start')
     >>> len(line.payments)
     1
@@ -125,7 +124,6 @@ Pay line and block it after::
 Try to pay blocked line::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('start')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...

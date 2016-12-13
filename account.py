@@ -229,8 +229,17 @@ class PayLine(Wizard):
             return 'pay'
 
     def default_ask_journal(self, fields):
+        pool = Pool()
+        Journal = pool.get('account.payment.journal')
         values = {}
         company, currency = self._missing_journal()[:2]
+        journals = Journal.search([
+                ('company', '=', company),
+                ('currency', '=', currency),
+                ])
+        if len(journals) == 1:
+            journal, = journals
+            values['journal'] = journal.id
         values['company'] = company.id
         values['currency'] = currency.id
         values['journals'] = [j.id for j in self._get_journals().itervalues()]

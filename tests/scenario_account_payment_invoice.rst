@@ -74,7 +74,6 @@ Partially pay line::
 
     >>> Payment = Model.get('account.payment')
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
-    >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('start')
     >>> payment, = Payment.find()
     >>> payment.amount = Decimal('20')
