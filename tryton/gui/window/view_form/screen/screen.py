@@ -137,6 +137,8 @@ class Screen(SignalEvent):
         self.search_value = search_value
         self.fields_view_tree = {}
         self.order = self.default_order = order
+        self.__date_format = context.get(
+            'date_format', rpc.CONTEXT.get('locale', {}).get('date', '%x'))
         self.view_to_load = []
         self._domain_parser = {}
         self.pre_validate = False
@@ -327,6 +329,10 @@ class Screen(SignalEvent):
     @property
     def context(self):
         return self.group.context
+
+    @property
+    def date_format(self):
+        return self.__date_format
 
     def __get_group(self):
         return self.__group

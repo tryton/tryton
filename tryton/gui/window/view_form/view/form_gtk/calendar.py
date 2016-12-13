@@ -64,7 +64,7 @@ class Date(Widget):
         if field and record:
             format_ = field.date_format(record)
         else:
-            format_ = self.view.screen.context.get('date_format', '%x')
+            format_ = self.view.screen.date_format
         self.entry.props.format = format_
 
     def display(self, record, field):
@@ -142,7 +142,7 @@ class DateTime(Date):
             date_format = field.date_format(record)
             time_format = field.time_format(record)
         else:
-            date_format = self.view.screen.context.get('date_format', '%x')
+            date_format = self.view.screen.date_format
             time_format = '%X'
         self.entry.props.date_format = date_format
         self.entry.props.time_format = time_format

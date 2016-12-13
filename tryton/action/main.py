@@ -69,11 +69,6 @@ class Action(object):
     def _exec_action(action, data=None, context=None):
         if context is None:
             context = {}
-        else:
-            context = context.copy()
-        if 'date_format' not in context:
-            context['date_format'] = rpc.CONTEXT.get(
-                'locale', {}).get('date', '%x')
         if data is None:
             data = {}
         else:
