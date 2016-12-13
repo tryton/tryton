@@ -12,7 +12,7 @@ from sql.aggregate import Count
 from ..model import ModelView, ModelStorage, ModelSQL, fields
 from ..tools import file_open
 from .. import backend
-from ..pyson import PYSONDecoder, PYSON
+from ..pyson import PYSONDecoder, PYSON, Eval
 from ..transaction import Transaction
 from ..pool import Pool
 from ..cache import Cache
@@ -392,8 +392,14 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     _action_name = 'report_name'
     model = fields.Char('Model')
     report_name = fields.Char('Internal Name', required=True)
-    report = fields.Char('Path')
+    report = fields.Char(
+        "Path",
+        states={
+            'invisible': Eval('is_custom', False),
+            },
+        depends=['is_custom'])
     report_content_custom = fields.Binary('Content')
+    is_custom = fields.Function(fields.Boolean("Is Custom"), 'get_is_custom')
     report_content = fields.Function(fields.Binary('Content',
             filename='report_content_name'),
         'get_report_content', setter='set_report_content')
@@ -602,6 +608,9 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                                 report.rec_name,))
                 else:
                     cls.raise_user_error('invalid_email', (report.rec_name,))
+
+    def get_is_custom(self, name):
+        return bool(self.report_content_custom)
 
     @classmethod
     def get_report_content(cls, reports, name):
