@@ -332,6 +332,71 @@ class ProductTestCase(ModuleTestCase):
         for number, precision, result in tests:
             self.assertEqual(Uom(rounding=precision).round(number), result)
 
+    @with_transaction()
+    def test_product_order(self):
+        'Test product field order'
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        values1 = {
+            'name': 'Product A',
+            'type': 'assets',
+            'list_price': Decimal('10'),
+            'cost_price': Decimal('5'),
+            'default_uom': uom.id,
+            'products': [('create', [{'code': 'AA'}])],
+            }
+        values2 = {
+            'name': 'Product B',
+            'type': 'goods',
+            'list_price': Decimal('10'),
+            'cost_price': Decimal('5'),
+            'default_uom': uom.id,
+            'products': [('create', [{'code': 'BB'}])],
+            }
+
+        template1, template2 = Template.create([values1, values2])
+        product1, product2 = Product.search([])
+
+        # Non-inherited field.
+        self.assertEqual(
+            Product.search([], order=[('code', 'ASC')]), [product1, product2])
+        self.assertEqual(
+            Product.search([], order=[('code', 'DESC')]), [product2, product1])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('code', 'ASC')]),
+                [product1, product2])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('code', 'DESC')]),
+                [product2, product1])
+
+        # Inherited field with custom order.
+        self.assertEqual(
+            Product.search([], order=[('name', 'ASC')]), [product1, product2])
+        self.assertEqual(
+            Product.search([], order=[('name', 'DESC')]), [product2, product1])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('name', 'ASC')]),
+                [product1, product2])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('name', 'DESC')]),
+                [product2, product1])
+
+        # Inherited field without custom order.
+        self.assertEqual(
+            Product.search([], order=[('type', 'ASC')]), [product1, product2])
+        self.assertEqual(
+            Product.search([], order=[('type', 'DESC')]), [product2, product1])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('type', 'ASC')]),
+                [product1, product2])
+        self.assertEqual(Product.search(
+                [('name', 'like', '%')], order=[('type', 'DESC')]),
+                [product2, product1])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
