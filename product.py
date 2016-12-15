@@ -164,7 +164,8 @@ class TemplateFunction(fields.Function):
                     }
             else:
                 template = tables['template']
-            return [Column(template, name)]
+            return getattr(Template, name).convert_order(
+                name, tables['template'], Template)
         return order
 
 
