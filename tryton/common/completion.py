@@ -41,7 +41,7 @@ def update_completion(entry, record, field, model, domain=None):
             return False
         if domain is None:
             domain = field.domain_get(record)
-        context = field.context_get(record)
+        context = field.get_context(record)
         domain = [('rec_name', 'ilike', '%' + search_text + '%'), domain]
 
         def callback(results):

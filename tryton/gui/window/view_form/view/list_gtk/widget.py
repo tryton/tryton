@@ -562,7 +562,7 @@ class M2O(GenericText):
 
         relation = record[self.attrs['name']].attrs['relation']
         domain = record[self.attrs['name']].domain_get(record)
-        context = record[self.attrs['name']].context_get(record)
+        context = record[self.attrs['name']].get_context(record)
         win = self.search_remote(record, relation, text, domain=domain,
             context=context, callback=callback)
         if len(win.screen.group) == 1:
@@ -583,7 +583,7 @@ class M2O(GenericText):
             return
 
         domain = field.domain_get(record)
-        context = field.context_get(record)
+        context = field.get_context(record)
         if create:
             obj_id = None
         elif not changed:
@@ -715,7 +715,7 @@ class O2M(GenericText):
         group = record.value[self.attrs['name']]
         field = record.group.fields[self.attrs['name']]
         relation = field.attrs['relation']
-        context = field.context_get(record)
+        context = field.get_context(record)
 
         access = common.MODELACCESS[relation]
         if not access['read']:
@@ -741,7 +741,7 @@ class M2M(O2M):
         group = record.value[self.attrs['name']]
         field = record.group.fields[self.attrs['name']]
         relation = field.attrs['relation']
-        context = field.context_get(record)
+        context = field.get_context(record)
         domain = field.domain_get(record)
 
         screen = Screen(relation, mode=['tree', 'form'],

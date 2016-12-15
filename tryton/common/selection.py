@@ -61,7 +61,7 @@ class SelectionMixin(object):
             self.init_selection(value)
             self.filter_selection(domain, record, field)
         else:
-            context = field.context_get(record)
+            context = field.get_context(record)
             domain_cache_key = (freeze_value(domain), freeze_value(context))
             if domain_cache_key in self._domain_cache:
                 self.selection = self._domain_cache[domain_cache_key]

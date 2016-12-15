@@ -72,7 +72,7 @@ class Record(SignalEvent):
                 fnames.append('rec_name')
             fnames.append('_timestamp')
 
-            record_context = self.context_get()
+            record_context = self.get_context()
             if loading == 'eager':
                 limit = int(CONFIG['client.limit'] / len(fnames))
 
@@ -84,7 +84,7 @@ class Record(SignalEvent):
                         and record.id not in id2record
                         and ((record.group == self.group)
                             # Don't compute context for same group
-                            or (record.context_get() == record_context)))
+                            or (record.get_context() == record_context)))
 
                 if self.parent and self.parent.model_name == self.model_name:
                     group = sum(self.parent.group.children, [])
@@ -299,7 +299,7 @@ class Record(SignalEvent):
         values = self._get_on_change_args(self.modified_fields)
         try:
             RPCExecute('model', self.model_name, 'pre_validate', values,
-                context=self.context_get())
+                context=self.get_context())
         except RPCException:
             return False
         return True
@@ -310,7 +310,7 @@ class Record(SignalEvent):
                 value = self.get()
                 try:
                     res, = RPCExecute('model', self.model_name, 'create',
-                        [value], context=self.context_get())
+                        [value], context=self.get_context())
                 except RPCException:
                     return False
                 old_id = self.id
@@ -319,7 +319,7 @@ class Record(SignalEvent):
             elif self.modified:
                 value = self.get()
                 if value:
-                    context = self.context_get()
+                    context = self.get_context()
                     context = context.copy()
                     context['_timestamp'] = self.get_timestamp()
                     try:
@@ -365,7 +365,7 @@ class Record(SignalEvent):
 
     def default_get(self, rec_name=None):
         if len(self.group.fields):
-            context = self.context_get()
+            context = self.get_context()
             context.setdefault('default_rec_name', rec_name)
             try:
                 vals = RPCExecute('model', self.model_name, 'default_get',
@@ -391,7 +391,7 @@ class Record(SignalEvent):
     def rec_name(self):
         try:
             return RPCExecute('model', self.model_name, 'read', [self.id],
-                ['rec_name'], context=self.context_get())[0]['rec_name']
+                ['rec_name'], context=self.get_context())[0]['rec_name']
         except RPCException:
             return ''
 
@@ -422,7 +422,7 @@ class Record(SignalEvent):
 
     invalid_fields = property(_get_invalid_fields)
 
-    def context_get(self):
+    def get_context(self):
         return self.group.context
 
     def set_default(self, val, signal=True, validate=True):
@@ -514,7 +514,7 @@ class Record(SignalEvent):
             return expr
         ctx = rpc.CONTEXT.copy()
         ctx['context'] = ctx.copy()
-        ctx['context'].update(self.context_get())
+        ctx['context'].update(self.get_context())
         ctx.update(self.get_eval())
         ctx['active_model'] = self.model_name
         ctx['active_id'] = self.id
@@ -550,7 +550,7 @@ class Record(SignalEvent):
         if values:
             try:
                 changes = RPCExecute('model', self.model_name, 'on_change',
-                    values, fieldnames, context=self.context_get())
+                    values, fieldnames, context=self.get_context())
             except RPCException:
                 return
             for change in changes:
@@ -581,7 +581,7 @@ class Record(SignalEvent):
         if fieldnames:
             try:
                 result = RPCExecute('model', self.model_name, 'on_change_with',
-                    values, list(fieldnames), context=self.context_get())
+                    values, list(fieldnames), context=self.get_context())
             except RPCException:
                 return
             self.set_on_change(result)
@@ -592,7 +592,7 @@ class Record(SignalEvent):
             try:
                 result = RPCExecute('model', self.model_name,
                     'on_change_with_' + fieldname, values,
-                    context=self.context_get())
+                    context=self.get_context())
             except RPCException:
                 return
             self.group.fields[fieldname].set_on_change(self, result)
@@ -610,7 +610,7 @@ class Record(SignalEvent):
         args = self._get_on_change_args(autocomplete)
         try:
             res = RPCExecute('model', self.model_name, 'autocomplete_' +
-                fieldname, args, context=self.context_get())
+                fieldname, args, context=self.get_context())
         except RPCException:
             # ensure res is a list
             res = []
@@ -635,7 +635,7 @@ class Record(SignalEvent):
                     'search_count', [
                         ('resource', '=',
                             '%s,%s' % (self.model_name, self.id)),
-                        ], context=self.context_get())
+                        ], context=self.get_context())
             except RPCException:
                 return 0
         return self.attachment_count
@@ -650,7 +650,7 @@ class Record(SignalEvent):
                         ('resource', '=',
                             '%s,%s' % (self.model_name, self.id)),
                         ('unread', '=', True),
-                        ], context=self.context_get())
+                        ], context=self.get_context())
             except RPCException:
                 return 0
         return self.unread_note

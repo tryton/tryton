@@ -58,10 +58,10 @@ class Field(object):
     def validation_domains(self, record, pre_validate=None):
         return concat(*self.domains_get(record, pre_validate))
 
-    def context_get(self, record):
-        context = record.context_get().copy()
+    def get_context(self, record):
+        context = record.get_context().copy()
         if record.parent:
-            context.update(record.parent.context_get())
+            context.update(record.parent.get_context())
         context.update(record.expr_eval(self.attrs.get('context', {})))
         return context
 
@@ -229,7 +229,7 @@ class DateTimeField(Field):
             return common.timezoned_date(value)
 
     def date_format(self, record):
-        context = self.context_get(record)
+        context = self.get_context(record)
         return context.get('date_format', '%x')
 
     def time_format(self, record):
@@ -248,7 +248,7 @@ class DateField(Field):
             force_change=force_change)
 
     def date_format(self, record):
-        context = self.context_get(record)
+        context = self.get_context(record)
         return context.get('date_format', '%x')
 
 
@@ -427,8 +427,8 @@ class M2OField(Field):
         record.value[self.name + '.rec_name'] = rec_name
         record.value[self.name] = value
 
-    def context_get(self, record):
-        context = super(M2OField, self).context_get(record)
+    def get_context(self, record):
+        context = super(M2OField, self).get_context(record)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
                 )[self.attrs.get('datetime_field')]
@@ -591,7 +591,7 @@ class O2MField(Field):
             mode = 'list values'
 
         if mode == 'list values':
-            context = self.context_get(record)
+            context = self.get_context(record)
             field_names = set(f for v in value for f in v
                 if f not in group.fields and '.' not in f)
             if field_names:
@@ -676,7 +676,7 @@ class O2MField(Field):
             return
 
         if value and (value.get('add') or value.get('update')):
-            context = self.context_get(record)
+            context = self.get_context(record)
             fields = record.value[self.name].fields
             values = chain(value.get('update', []),
                 (d for _, d in value.get('add', [])))
@@ -837,8 +837,8 @@ class ReferenceField(Field):
         record.value[self.name] = ref_model, ref_id
         record.value[self.name + '.rec_name'] = rec_name
 
-    def context_get(self, record):
-        context = super(ReferenceField, self).context_get(record)
+    def get_context(self, record):
+        context = super(ReferenceField, self).get_context(record)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
                 )[self.attrs.get('datetime_field')]
@@ -912,7 +912,7 @@ class BinaryField(Field):
                 (basestring, bytes, bytearray)):
             if record.id < 0:
                 return ''
-            context = record.context_get()
+            context = record.get_context()
             try:
                 values, = RPCExecute('model', record.model_name, 'read',
                     [record.id], [self.name], context=context)
@@ -945,7 +945,7 @@ class DictField(Field):
             attr_domain)
 
     def date_format(self, record):
-        context = self.context_get(record)
+        context = self.get_context(record)
         return context.get('date_format', '%x')
 
     def time_format(self, record):

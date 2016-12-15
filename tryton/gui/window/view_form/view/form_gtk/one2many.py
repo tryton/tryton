@@ -338,7 +338,7 @@ class One2Many(Widget):
 
     def _new_single(self):
         ctx = {}
-        ctx.update(self.field.context_get(self.record))
+        ctx.update(self.field.get_context(self.record))
         sequence = None
         for view in self.screen.views:
             if view.view_type == 'tree':
@@ -377,7 +377,7 @@ class One2Many(Widget):
                 search_set()
 
             domain = field.domain_get(first)
-            context = field.context_get(first)
+            context = field.get_context(first)
 
             def callback(result):
                 if result:
@@ -451,7 +451,7 @@ class One2Many(Widget):
             return
         self.view.set_value()
         domain = self.field.domain_get(self.record)
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         domain = [domain, self.record.expr_eval(self.attrs.get('add_remove'))]
         removed_ids = self.field.get_removed_ids(self.record)
         domain = ['OR', domain, ('id', 'in', removed_ids)]

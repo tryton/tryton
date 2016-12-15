@@ -141,7 +141,7 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         value = self.wid_text.get_text().decode('utf-8')
 
         self.focus_out = False
@@ -174,7 +174,7 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         view_ids = self.attrs.get('view_ids', '').split(',')
         if view_ids:
             # Remove the first tree view as mode is form only

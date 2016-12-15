@@ -121,7 +121,7 @@ class Many2One(Widget):
                         or self.field.get_state_attrs(
                             self.record)['required'])):
                 domain = self.field.domain_get(self.record)
-                context = self.field.context_get(self.record)
+                context = self.field.get_context(self.record)
                 text = self.wid_text.get_text().decode('utf-8')
 
                 def callback(result):
@@ -151,7 +151,7 @@ class Many2One(Widget):
 
     def get_screen(self):
         domain = self.field.domain_get(self.record)
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         return Screen(self.get_model(), domain=domain, context=context,
             mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}), readonly=self._readonly,
@@ -209,7 +209,7 @@ class Many2One(Widget):
             return
         if not self._readonly:
             domain = self.field.domain_get(self.record)
-            context = self.field.context_get(self.record)
+            context = self.field.get_context(self.record)
             text = self.wid_text.get_text().decode('utf-8')
 
             def callback(result):

@@ -381,7 +381,7 @@ class DictWidget(Widget):
             self._sig_add()
 
     def _sig_add(self, *args):
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         value = self.wid_text.get_text().decode('utf-8')
         domain = self.field.domain_get(self.record)
 
@@ -396,7 +396,7 @@ class DictWidget(Widget):
         win.show()
 
     def add_new_keys(self, ids):
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         self.send_modified()
         try:
             new_fields = RPCExecute('model', self.schema_model,
@@ -494,7 +494,7 @@ class DictWidget(Widget):
         self.buttons[key] = remove_but
 
     def add_keys(self, keys):
-        context = self.field.context_get(self.record)
+        context = self.field.get_context(self.record)
         domain = self.field.domain_get(self.record)
         batchlen = min(10, CONFIG['client.limit'])
         for i in xrange(0, len(keys), batchlen):
