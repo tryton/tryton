@@ -299,7 +299,7 @@ class Group(SignalEvent, list):
         for record in self:
             # Assume not loaded records are correctly ordered
             # as far as we do not change any previous records.
-            if (record.get_loaded([field]) and not changed) or record.id < 0:
+            if record.get_loaded([field]) or changed or record.id < 0:
                 if prev:
                     index = prev[field].get(prev)
                 else:
@@ -314,7 +314,7 @@ class Group(SignalEvent, list):
                 if value == index:
                     if prev and record.id >= 0:
                         update = record.id < prev.id
-                elif value < index:
+                elif value <= (index or 0):
                     update = True
                 if update:
                     if index is None:
