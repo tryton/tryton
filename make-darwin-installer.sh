@@ -1,6 +1,7 @@
 #!/bin/sh
 
 version=`python setup.py --version`
+python setup.py compile_catalog
 python setup-freeze.py bdist_mac
 rm -rf dist
 mkdir dist
