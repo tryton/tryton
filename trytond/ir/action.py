@@ -154,7 +154,8 @@ class ActionKeyword(ModelSQL, ModelView):
             if action_wizards:
                 action_wizard, = action_wizards
                 if action_wizard.model:
-                    if self.model.__name__ != action_wizard.model:
+                    if not str(self.model).startswith(
+                            '%s,' % action_wizard.model):
                         self.raise_user_error('wrong_wizard_model', (
                                 action_wizard.rec_name,))
 
