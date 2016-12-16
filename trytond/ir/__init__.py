@@ -93,6 +93,7 @@ def register():
         TranslationClean,
         TranslationUpdate,
         TranslationExport,
+        TranslationReport,
         ShowView,
         PrintModelGraph,
         ModuleConfigWizard,

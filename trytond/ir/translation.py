@@ -36,6 +36,7 @@ __all__ = ['Translation',
     'TranslationCleanStart', 'TranslationCleanSucceed', 'TranslationClean',
     'TranslationUpdateStart', 'TranslationUpdate',
     'TranslationExportStart', 'TranslationExportResult', 'TranslationExport',
+    'TranslationReport',
     ]
 
 TRANSLATION_TYPE = [
@@ -1697,4 +1698,29 @@ class TranslationExport(Wizard):
         self.result.file = False  # No need to store it in session
         return {
             'file': cast(file_) if file_ else None,
+            }
+
+
+class TranslationReport(Wizard):
+    "Open translations of report"
+    __name__ = 'ir.translation.report'
+    start_state = 'open_'
+    open_ = StateAction('ir.act_translation_report')
+
+    def do_open_(self, action):
+        pool = Pool()
+        Report = pool.get('ir.action.report')
+        context = Transaction().context
+        assert context['active_model'] == Report.__name__
+        reports = Report.browse(context['active_ids'])
+        action['pyson_domain'] = PYSONEncoder().encode([
+                ('type', '=', 'report'),
+                ('name', 'in', [r.report_name for r in reports]),
+                ])
+        # Behaves like a relate to have name suffix
+        action['keyword'] = 'form_relate'
+        return action, {
+            'model': context['active_model'],
+            'ids': context['active_ids'],
+            'id': context['active_id'],
             }
