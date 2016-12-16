@@ -17,7 +17,7 @@ from trytond.report import Report
 from trytond import backend
 from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.rpc import RPC
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.config import config
@@ -28,7 +28,6 @@ __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'UnreconcileLines',
     'Reconcile', 'ReconcileShow',
     'CancelMoves', 'CancelMovesDefault',
-    'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
 
 _MOVE_STATES = {
@@ -476,7 +475,9 @@ class Reconciliation(ModelSQL, ModelView):
         super(Reconciliation, cls).__register__(module_name)
 
         # Migration from 3.8: new date field
-        if not date_exist and TableHandler.table_exist(Line._table):
+        if (not date_exist
+                and TableHandler.table_exist(Line._table)
+                and TableHandler(Line).column_exist('move')):
             cursor.execute(*sql_table.update(
                     [sql_table.date],
                     line.join(move,
@@ -2017,23 +2018,6 @@ class CancelMovesDefault(ModelView):
     'Cancel Moves'
     __name__ = 'account.move.cancel.default'
     description = fields.Char('Description')
-
-
-class FiscalYearLine(ModelSQL):
-    'Fiscal Year - Move Line'
-    __name__ = 'account.fiscalyear-account.move.line'
-    _table = 'account_fiscalyear_line_rel'
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            ondelete='CASCADE', select=True)
-    line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
-            select=True, required=True)
-
-
-class FiscalYear2:
-    __metaclass__ = PoolMeta
-    __name__ = 'account.fiscalyear'
-    close_lines = fields.Many2Many('account.fiscalyear-account.move.line',
-            'fiscalyear', 'line', 'Close Lines')
 
 
 class PrintGeneralJournalStart(ModelView):

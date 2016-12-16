@@ -19,8 +19,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 
-__all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
-    'AccountDeferral', 'OpenChartAccountStart', 'OpenChartAccount',
+__all__ = ['TypeTemplate', 'Type', 'OpenType',
+    'AccountTemplate', 'AccountTemplateTaxTemplate',
+    'Account', 'AccountDeferral', 'AccountTax',
+    'OpenChartAccountStart', 'OpenChartAccount',
     'GeneralLedgerAccount', 'GeneralLedgerAccountContext',
     'GeneralLedgerLine', 'GeneralLedgerLineContext',
     'GeneralLedger', 'TrialBalance',
@@ -362,6 +364,9 @@ class AccountTemplate(ModelSQL, ModelView):
             },
         depends=['kind'],
         help="Display only the balance in the general ledger report")
+    taxes = fields.Many2Many('account.account.template-account.tax.template',
+            'account', 'tax', 'Default Taxes',
+            domain=[('parent', '=', None)])
 
     @classmethod
     def __setup__(cls):
@@ -524,6 +529,16 @@ class AccountTemplate(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
+class AccountTemplateTaxTemplate(ModelSQL):
+    'Account Template - Tax Template'
+    __name__ = 'account.account.template-account.tax.template'
+    _table = 'account_account_template_tax_rel'
+    account = fields.Many2One('account.account.template', 'Account Template',
+            ondelete='CASCADE', select=True, required=True)
+    tax = fields.Many2One('account.tax.template', 'Tax Template',
+            ondelete='RESTRICT', select=True, required=True)
+
+
 class Account(ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
@@ -615,6 +630,15 @@ class Account(ModelSQL, ModelView):
             },
         depends=['kind'],
         help="Display only the balance in the general ledger report")
+    taxes = fields.Many2Many('account.account-account.tax',
+            'account', 'tax', 'Default Taxes',
+            domain=[
+                ('company', '=', Eval('company')),
+                ('parent', '=', None),
+            ],
+            help=('Default tax for manual encoding of move lines \n'
+                'for journal types: "expense" and "revenue"'),
+            depends=['company'])
     template = fields.Many2One('account.account.template', 'Template')
 
     @classmethod
@@ -1118,6 +1142,16 @@ class AccountDeferral(ModelSQL, ModelView):
     @classmethod
     def write(cls, deferrals, values, *args):
         cls.raise_user_error('write_deferral')
+
+
+class AccountTax(ModelSQL):
+    'Account - Tax'
+    __name__ = 'account.account-account.tax'
+    _table = 'account_account_tax_rel'
+    account = fields.Many2One('account.account', 'Account', ondelete='CASCADE',
+            select=True, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            select=True, required=True)
 
 
 class OpenChartAccountStart(ModelView):
