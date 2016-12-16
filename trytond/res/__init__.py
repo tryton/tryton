@@ -15,7 +15,6 @@ def register():
         Group,
         User,
         LoginAttempt,
-        Group2,
         UserAction,
         UserGroup,
         Warning_,

@@ -3,12 +3,10 @@
 "Group"
 from itertools import chain
 from ..model import ModelView, ModelSQL, fields, Unique
-from ..pool import Pool, PoolMeta
+from ..pool import Pool
 from ..tools import grouped_slice
 
-__all__ = [
-    'Group', 'Group2',
-    ]
+__all__ = ['Group']
 
 
 class MenuMany2Many(fields.Many2Many):
@@ -33,6 +31,7 @@ class Group(ModelSQL, ModelView):
     "Group"
     __name__ = "res.group"
     name = fields.Char('Name', required=True, select=True, translate=True)
+    users = fields.Many2Many('res.user-res.group', 'group', 'user', 'Users')
     model_access = fields.One2Many('ir.model.access', 'group',
        'Access Model')
     field_access = fields.One2Many('ir.model.field.access', 'group',
@@ -115,9 +114,3 @@ class Group(ModelSQL, ModelView):
         pool.get('ir.model.access')._get_access_cache.clear()
         pool.get('ir.model.field.access')._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
-
-
-class Group2:
-    __metaclass__ = PoolMeta
-    __name__ = "res.group"
-    users = fields.Many2Many('res.user-res.group', 'group', 'user', 'Users')
