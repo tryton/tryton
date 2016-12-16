@@ -13,6 +13,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="10"/>
         </record>
         <record id="account_type_template_asset_fr" model="account.account.type.template">
@@ -22,6 +23,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Actif</field>
+            
             
             
             
@@ -39,6 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_fr"/>
             <field name="sequence" eval="10"/>
         </record>
@@ -52,6 +55,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_current_fr"/>
             <field name="sequence" eval="10"/>
         </record>
@@ -61,7 +65,8 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
-            <field name="name">Cash</field>
+            <field name="name">Recevable</field>
+            
             
             
             
@@ -78,6 +83,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_fr"/>
             <field name="sequence" eval="20"/>
         </record>
@@ -88,6 +94,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Passif</field>
+            
             
             
             
@@ -105,6 +112,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_liability_fr"/>
             <field name="sequence" eval="10"/>
         </record>
@@ -115,6 +123,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">À payer</field>
+            
             
             
             
@@ -131,6 +140,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_liability_current_fr"/>
             <field name="sequence" eval="20"/>
         </record>
@@ -141,6 +151,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Long terme</field>
+            
             
             
             
@@ -157,6 +168,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="30"/>
             <field name="parent" ref="account_type_template_minimal_fr"/>
             <field name="balance_sheet" eval="True"/>
@@ -168,6 +180,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Revenu</field>
+            
             
             
             
@@ -186,6 +199,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_income_fr"/>
             <field name="sequence" eval="10"/>
             <field name="display_balance">credit-debit</field>
@@ -197,6 +211,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Charge</field>
+            
             
             
             
@@ -214,6 +229,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="60"/>
             <field name="parent" ref="account_type_template_minimal_fr"/>
         </record>
@@ -228,6 +244,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_minimal_fr"/>
         </record>
         <record id="account_template_receivable_fr" model="account.account.template">
@@ -237,6 +254,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Compte client</field>
+            
             
             
             
@@ -257,6 +275,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_liability_current_payable_fr"/>
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
@@ -271,6 +290,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Compte de produits</field>
+            
             
             
             
@@ -289,6 +309,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_expense_fr"/>
             <field name="deferral" eval="False"/>
             <field name="parent" ref="account_template_root_fr"/>
@@ -304,6 +325,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_asset_current_cash_fr"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root_fr"/>
@@ -316,6 +338,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="name">Compte de taxes</field>
+            
             
             
             

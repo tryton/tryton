@@ -13,10 +13,12 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="10"/>
         </record>
         <record id="account_type_template_asset_en" model="account.account.type.template">
             <field name="name">Asset</field>
+            
             
             
             
@@ -39,11 +41,13 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_en"/>
             <field name="sequence" eval="10"/>
         </record>
         <record id="account_type_template_asset_current_cash_en" model="account.account.type.template">
             <field name="name">Cash</field>
+            
             
             
             
@@ -65,6 +69,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_current_en"/>
             <field name="sequence" eval="20"/>
         </record>
@@ -78,11 +83,13 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_asset_en"/>
             <field name="sequence" eval="20"/>
         </record>
         <record id="account_type_template_liability_en" model="account.account.type.template">
-            <field name="name">Receivable</field>
+            <field name="name">Liability</field>
+            
             
             
             
@@ -105,11 +112,13 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_liability_en"/>
             <field name="sequence" eval="10"/>
         </record>
         <record id="account_type_template_liability_current_payable_en" model="account.account.type.template">
             <field name="name">Payable</field>
+            
             
             
             
@@ -131,11 +140,13 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_liability_current_en"/>
             <field name="sequence" eval="20"/>
         </record>
         <record id="account_type_template_liability_long_term_en" model="account.account.type.template">
             <field name="name">Long-term</field>
+            
             
             
             
@@ -157,12 +168,14 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="30"/>
             <field name="parent" ref="account_type_template_minimal_en"/>
             <field name="balance_sheet" eval="True"/>
         </record>
         <record id="account_type_template_income_en" model="account.account.type.template">
             <field name="name">Income</field>
+            
             
             
             
@@ -186,12 +199,14 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="parent" ref="account_type_template_income_en"/>
             <field name="sequence" eval="10"/>
             <field name="display_balance">credit-debit</field>
         </record>
         <record id="account_type_template_expense_en" model="account.account.type.template">
             <field name="name">Expense</field>
+            
             
             
             
@@ -214,6 +229,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="sequence" eval="60"/>
             <field name="parent" ref="account_type_template_minimal_en"/>
         </record>
@@ -228,10 +244,12 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_minimal_en"/>
         </record>
         <record id="account_template_receivable_en" model="account.account.template">
             <field name="name">Main Receivable</field>
+            
             
             
             
@@ -257,6 +275,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_liability_current_payable_en"/>
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
@@ -266,6 +285,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record id="account_template_revenue_en" model="account.account.template">
             <field name="name">Main Revenue</field>
+            
             
             
             
@@ -289,6 +309,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_expense_en"/>
             <field name="deferral" eval="False"/>
             <field name="parent" ref="account_template_root_en"/>
@@ -304,6 +325,7 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="type" ref="account_type_template_asset_current_cash_en"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root_en"/>
@@ -311,6 +333,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record id="account_template_tax_en" model="account.account.template">
             <field name="name">Main Tax</field>
+            
             
             
             

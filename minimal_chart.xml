@@ -70,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ca">Banc</field>
             <field name="name" lang="de">Barvermögen</field>
             <field name="name" lang="es">Efectivo</field>
-            <field name="name" lang="fr">Cash</field>
+            <field name="name" lang="fr">Recevable</field>
             <field name="name" lang="nl">Kas</field>
             <field name="name" lang="pt">A Receber</field>
             <field name="name" lang="ru">Наличные</field>
@@ -95,7 +95,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_liability">
-            <field name="name" lang="en">Receivable</field>
+            <field name="name" lang="en">Liability</field>
             <field name="name" lang="bg">Дълг</field>
             <field name="name" lang="ca">Passiu</field>
             <field name="name" lang="de">Verbindlichkeiten</field>
