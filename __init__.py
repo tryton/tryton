@@ -10,7 +10,11 @@ def register():
     Pool.register(
         Journal,
         Payment,
+        SucceedStart,
         Move,
         Statement,
         StatementLine,
         module='account_payment_clearing', type_='model')
+    Pool.register(
+        Succeed,
+        module='account_payment_clearing', type_='wizard')

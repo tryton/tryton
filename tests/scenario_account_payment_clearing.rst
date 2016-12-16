@@ -16,6 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
+    >>> first = today  + relativedelta(day=1)
 
 Install account_payment_clearing and account_statement::
 
@@ -99,9 +100,15 @@ Partially pay the line::
 
 Succeed payment::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.form.date == today
+    True
+    >>> succeed.form.date = first
+    >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
+    >>> payment.clearing_move.date == first
+    True
     >>> payment.clearing_move.state
     u'draft'
     >>> payable.reload()
@@ -146,7 +153,8 @@ Pay the line::
 
 Succeed payment::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
     >>> payment.clearing_move.state
@@ -170,7 +178,8 @@ Fail payment::
 
 Succeed payment and post clearing::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
     >>> clearing_move = payment.clearing_move
@@ -193,7 +202,8 @@ Fail payment with posted clearing::
 
 Succeed payment to use on statement::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
 
@@ -332,7 +342,8 @@ Pay the line::
 
 Succeed payment::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.execute('succeed')
     >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
     >>> debit_line.debit
     Decimal('20.00')

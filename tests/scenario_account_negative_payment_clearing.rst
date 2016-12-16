@@ -99,7 +99,8 @@ Pay the line::
 
 Succeed payment::
 
-    >>> payment.click('succeed')
+    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
     >>> payment.clearing_move.state

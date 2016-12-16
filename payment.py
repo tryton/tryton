@@ -6,8 +6,9 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
+from trytond.wizard import Wizard, StateView, StateTransition, Button
 
-__all__ = ['Journal', 'Payment']
+__all__ = ['Journal', 'Payment', 'Succeed', 'SucceedStart']
 
 
 class Journal:
@@ -33,6 +34,18 @@ class Payment:
         readonly=True)
 
     @classmethod
+    def __setup__(cls):
+        super(Payment, cls).__setup__()
+        cls._buttons.update({
+                'succeed_wizard': cls._buttons['succeed'],
+                })
+
+    @classmethod
+    @ModelView.button_action('account_payment_clearing.wizard_succeed')
+    def succeed_wizard(cls, payments):
+        pass
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('succeeded')
     def succeed(cls, payments):
@@ -44,7 +57,8 @@ class Payment:
 
         moves = []
         for payment in payments:
-            move = payment.create_clearing_move()
+            move = payment.create_clearing_move(
+                date=Transaction().context.get('clearing_date'))
             if move:
                 moves.append(move)
         if moves:
@@ -157,3 +171,35 @@ class Payment:
                 Line.reconcile(lines)
 
         cls.write(payments, {'clearing_move': None})
+
+
+class Succeed(Wizard):
+    "Succeed Payment"
+    __name__ = 'account.payment.succeed'
+    start = StateView('account.payment.succeed.start',
+        'account_payment_clearing.succeed_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Succeed', 'succeed', 'tryton-ok', default=True),
+            ])
+    succeed = StateTransition()
+
+    def transition_succeed(self):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payments = Payment.browse(Transaction().context['active_ids'])
+
+        with Transaction().set_context(clearing_date=self.start.date):
+            Payment.succeed(payments)
+        return 'end'
+
+
+class SucceedStart(ModelView):
+    "Succeed Payment"
+    __name__ = 'account.payment.succeed.start'
+    date = fields.Date("Date", required=True)
+
+    @classmethod
+    def default_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
