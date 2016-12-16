@@ -1312,9 +1312,12 @@ class ModelStorage(Model):
                     model_name, record_id = value.split(',')
                     Model = Pool().get(model_name)
                     try:
-                        value = int(record_id)
+                        record_id = int(record_id)
                     except ValueError:
                         return value
+                    if record_id < 0:
+                        return value
+                    value = record_id
                 else:
                     Model = field.get_target()
             except KeyError:
