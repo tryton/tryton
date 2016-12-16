@@ -2871,6 +2871,18 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(reference2.reference, None)
 
         Reference.write([reference2], {
+                'reference': 'test.reference.target,',
+                })
+        self.assertEqual(reference2.reference, 'test.reference.target,')
+        self.assertFalse(isinstance(reference2.reference, ReferenceTarget))
+
+        Reference.write([reference2], {
+                'reference': 'test.reference.target,-1',
+                })
+        self.assertEqual(reference2.reference, 'test.reference.target,-1')
+        self.assertFalse(isinstance(reference2.reference, ReferenceTarget))
+
+        Reference.write([reference2], {
                 'reference': ('test.reference.target', target2.id),
                 })
         self.assertEqual(reference2.reference, target2)
