@@ -1151,6 +1151,7 @@ def generateColorscheme(masterColor, keys, light=0.1):
 class RPCException(Exception):
 
     def __init__(self, exception):
+        super(RPCException, self).__init__(exception)
         self.exception = exception
 
 
