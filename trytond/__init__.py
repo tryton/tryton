@@ -5,7 +5,7 @@ import time
 import logging
 from email import charset
 
-__version__ = "4.0.6"
+__version__ = "4.0.7"
 logger = logging.getLogger(__name__)
 
 os.environ['TZ'] = 'UTC'
