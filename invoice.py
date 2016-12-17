@@ -2666,7 +2666,6 @@ class PayInvoice(Wizard):
                 if not x.reconciliation]
 
         default['amount'] = self.start.amount
-        default['date'] = self.start.date
         default['currency'] = self.start.currency.id
         default['currency_digits'] = self.start.currency_digits
         default['company'] = invoice.company.id
