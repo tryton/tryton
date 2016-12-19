@@ -244,12 +244,15 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Set planned date of moves for the shipments
         '''
         Move = Pool().get('stock.move')
+        to_write = []
         for shipment in shipments:
             planned_date = shipment._get_move_planned_date()
-            Move.write([m for m in shipment.moves
-                    if m.state not in ('assigned', 'done', 'cancel')], {
-                    'planned_date': planned_date,
-                    })
+            to_write.extend(([m for m in shipment.moves
+                        if m.state not in ('assigned', 'done', 'cancel')], {
+                        'planned_date': planned_date,
+                        }))
+        if to_write:
+            Move.write(*to_write)
 
     def get_moves(self, name):
         if name == 'supplier_moves':
