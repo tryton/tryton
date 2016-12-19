@@ -95,6 +95,34 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertEqual(foo.name, 'foo')
         self.assertIsNone(bar.name)
 
+    @with_transaction(context={'_check_access': True})
+    def test_model_translations(self):
+        'Test any user can translate fields and duplicate its records'
+        pool = Pool()
+        Transalatable = pool.get('test.char_translate')
+        Lang = pool.get('ir.lang')
+        User = pool.get('res.user')
+        lang, = Lang.search([
+                ('translatable', '=', False),
+                ('code', '!=', 'en'),
+                ], limit=1)
+        lang.translatable = True
+        lang.save()
+
+        user = User(login='test')
+        user.save()
+        with Transaction().set_user(user.id):
+            record = Transalatable(char='foo')
+            record.save()
+            with Transaction().set_context(lang=lang.code):
+                record = Transalatable(record.id)
+                record.char = 'bar'
+                record.save()
+                # Test we can copy and translations are copied
+                copied_record, = Transalatable.copy([record])
+                copied_record = Transalatable(copied_record.id)
+                self.assertEqual(copied_record.char, 'bar')
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)
