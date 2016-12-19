@@ -514,16 +514,16 @@ class Translation(ModelSQL, ModelView):
                 else:
                     return record.model + ',' + field_name
 
-            translations = {}
-            for translation in cls.search([
-                        ('lang', '=', lang),
-                        ('type', '=', ttype),
-                        ('name', 'in', [get_name(r) for r in records]),
-                        ]):
-                translations[translation.name] = translation
-
-            to_save = []
             with Transaction().set_context(_check_access=False):
+                translations = {}
+                for translation in cls.search([
+                            ('lang', '=', lang),
+                            ('type', '=', ttype),
+                            ('name', 'in', [get_name(r) for r in records]),
+                            ]):
+                    translations[translation.name] = translation
+
+                to_save = []
                 for record, value in izip(records, values):
                     translation = translations.get(get_name(record))
                     if not translation:
@@ -543,28 +543,28 @@ class Translation(ModelSQL, ModelView):
             records = Model.browse(ids)
 
         translations = {}
-        for translation in cls.search([
-                    ('lang', '=', lang),
-                    ('type', '=', ttype),
-                    ('name', '=', name),
-                    ('res_id', 'in', ids),
-                    ]):
-            translations[translation.res_id] = translation
-
-        other_translations = {}
-        if (lang == Config.get_language()
-                and Transaction().context.get('fuzzy_translation', True)):
+        with Transaction().set_context(_check_access=False):
             for translation in cls.search([
-                        ('lang', '!=', lang),
+                        ('lang', '=', lang),
                         ('type', '=', ttype),
                         ('name', '=', name),
                         ('res_id', 'in', ids),
                         ]):
-                other_translations.setdefault(translation.res_id, []
-                    ).append(translation)
+                translations[translation.res_id] = translation
 
-        to_save = []
-        with Transaction().set_context(_check_access=False):
+            other_translations = {}
+            if (lang == Config.get_language()
+                    and Transaction().context.get('fuzzy_translation', True)):
+                for translation in cls.search([
+                            ('lang', '!=', lang),
+                            ('type', '=', ttype),
+                            ('name', '=', name),
+                            ('res_id', 'in', ids),
+                            ]):
+                    other_translations.setdefault(translation.res_id, []
+                        ).append(translation)
+
+            to_save = []
             for record, value in izip(records, values):
                 translation = translations.get(record.id)
                 if not translation:
