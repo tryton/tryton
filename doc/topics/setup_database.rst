@@ -24,3 +24,22 @@ A database can be initialized using this command line::
 
 At the end of the process, `trytond-admin` will ask to set the password for the
 `admin` user.
+
+Update a database
+=================
+
+To upgrade to a new series, the command line is::
+
+    trytond-admin -c <config file> -d <database name> --all
+
+.. warning::
+    Prior to upgrade see if there is no manual action to take on the `migration
+    topic`_.
+
+.. _`migration topic`: https://discuss.tryton.org/c/migration
+
+To activate a new language on an existing database, the command line is::
+
+    trytond-admin -c <config file> -d <database name> --all -l <language code>
+
+Once activated, the language appears in the user preferences.
