@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="message" colspan="6"/>
     <label name="state"/>
     <field name="state"/>
-    <group col="4" colspan="4" id="buttons">
+    <group col="-1" colspan="4" id="buttons">
         <button name="cancel" string="Cancel" icon="tryton-cancel"/>
         <button name="draft" string="Draft" icon="tryton-go-previous"/>
         <button name="wait" string="Wait" icon="tryton-go-next"/>
