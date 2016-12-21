@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="dependencies" colspan="4"/>
     <label name="state"/>
     <field name="state" readonly="1"/>
-    <group col="2" colspan="2" id="button">
+    <group col="-1" colspan="2" id="button">
         <button string="Mark for Upgrade" name="upgrade"/>
         <button string="Mark for Deactivation (beta)" name="deactivate"/>
         <button string="Mark for Activation" name="activate"/>

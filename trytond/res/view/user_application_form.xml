@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="application"/>
     <label name="state"/>
     <field name="state"/>
-    <group id="buttons" colspan="2" col="2">
+    <group id="buttons" colspan="2" col="-1">
         <button name="cancel" string="Cancel" icon="tryton-cancel"/>
         <button name="validate_" string="Validate" icon="tryton-ok"/>
     </group>
