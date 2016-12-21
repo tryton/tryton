@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
             <group col="2" colspan="2" id="amount" yfill="1">
                 <label name="total_amount" xalign="1.0" xexpand="1"/>
                 <field name="total_amount" xalign="1.0" xexpand="0"/>
-                <group col="6" colspan="2" id="buttons">
+                <group col="-1" colspan="2" id="buttons">
                     <button name="cancel" string="Cancel"
                         icon="tryton-cancel"/>
                     <button name="reject" string="Reject" icon="tryton-close"/>
