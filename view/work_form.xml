@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="state"/>
                     <field name="state"/>
                 </group>
-                <group col="20" colspan="2" id="buttons">
+                <group col="-1" colspan="2" id="buttons">
                 </group>
             </group>
         </page>
