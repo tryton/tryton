@@ -40,6 +40,5 @@ def register():
         OpenSupplier,
         HandleShipmentException,
         HandleInvoiceException,
-        OpenProductQuantitiesByWarehouse,
         PartyReplace,
         module='purchase', type_='wizard')
