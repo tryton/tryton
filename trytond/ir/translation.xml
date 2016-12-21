@@ -271,6 +271,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Set Translations</field>
             <field name="wiz_name">ir.translation.set</field>
         </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
         <menuitem name="Set Translations"
             parent="menu_localization"
             action="act_translation_set"
@@ -308,6 +320,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_translation_update">
             <field name="name">Synchronize Translations</field>
             <field name="wiz_name">ir.translation.update</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_update"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_update"/>
         </record>
         <menuitem name="Synchronize Translations"
             parent="menu_localization"

@@ -10,7 +10,7 @@ from lxml import etree
 from itertools import izip
 from io import BytesIO
 
-from sql import Column, Null
+from sql import Column, Null, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Case
 from sql.operators import Or, And
@@ -1060,11 +1060,14 @@ class TranslationSet(Wizard):
         pool = Pool()
         Report = pool.get('ir.action.report')
         Translation = pool.get('ir.translation')
+        context = Transaction().context
 
-        with Transaction().set_context(active_test=False):
-            reports = Report.search([])
-
-        if not reports:
+        if context.get('active_model') == Report.__name__:
+            reports = Report.browse(context.get('active_ids', []))
+        elif context.get('active_model', 'ir.ui.menu') == 'ir.ui.menu':
+            with Transaction().set_context(active_test=False):
+                reports = Report.search([])
+        else:
             return
 
         cursor = Transaction().connection.cursor()
@@ -1148,12 +1151,16 @@ class TranslationSet(Wizard):
         pool = Pool()
         View = pool.get('ir.ui.view')
         Translation = pool.get('ir.translation')
+        context = Transaction().context
 
-        with Transaction().set_context(active_test=False):
-            views = View.search([])
-
-        if not views:
+        if context.get('active_model') == View.__name__:
+            views = View.browse(context.get('active_ids', []))
+        elif context.get('active_model', 'ir.ui.menu') == 'ir.ui.menu':
+            with Transaction().set_context(active_test=False):
+                views = View.search([])
+        else:
             return
+
         cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
         for view in views:
@@ -1498,20 +1505,36 @@ class TranslationUpdate(Wizard):
     def do_update(self, action):
         pool = Pool()
         Translation = pool.get('ir.translation')
+        Report = pool.get('ir.action.report')
+        View = pool.get('ir.ui.view')
+        context = Transaction().context
         cursor = Transaction().connection.cursor()
         cursor_update = Transaction().connection.cursor()
         translation = Translation.__table__()
         lang = self.start.language.code
         parent_lang = get_parent(lang)
 
+        if context.get('active_model') == Report.__name__:
+            reports = Report.browse(context.get('active_ids', []))
+            source_clause = ((translation.type == 'report')
+                & translation.name.in_([r.report_name for r in reports]))
+        elif context.get('active_model') == View.__name__:
+            views = View.browse(context.get('active_ids', []))
+            source_clause = ((translation.type == 'view')
+                & translation.name.in_([v.model for v in views]))
+        else:
+            source_clause = Literal(True)
+
         columns = [translation.name.as_('name'),
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.src.as_('src'), translation.module.as_('module')]
         cursor.execute(*(translation.select(*columns,
                     where=(translation.lang == 'en')
+                    & source_clause
                     & translation.type.in_(self._source_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
+                    & source_clause
                     & translation.type.in_(self._source_types))))
         to_create = []
         for row in cursor_dict(cursor):
@@ -1530,9 +1553,11 @@ class TranslationUpdate(Wizard):
             columns.append(translation.value)
             cursor.execute(*(translation.select(*columns,
                         where=(translation.lang == parent_lang)
+                        & source_clause
                         & translation.type.in_(self._source_types))
                     & translation.select(*columns,
                         where=(translation.lang == lang)
+                        & source_clause
                         & translation.type.in_(self._source_types))))
             for row in cursor_dict(cursor):
                 cursor_update.execute(*translation.update(
@@ -1544,6 +1569,9 @@ class TranslationUpdate(Wizard):
                         & (translation.src == row['src'])
                         & (translation.module == row['module'])
                         & (translation.lang == lang)))
+
+        if context.get('active_model') in {Report.__name__, View.__name__}:
+            return
 
         columns = [translation.name.as_('name'),
             translation.res_id.as_('res_id'), translation.type.as_('type'),
