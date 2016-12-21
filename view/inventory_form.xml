@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
     <group col="4" colspan="4" id="group_buttons">
         <label name="state"/>
         <field name="state"/>
-        <group colspan="2" col="3" id="buttons">
+        <group colspan="2" col="-1" id="buttons">
             <button string="Cancel" name="cancel" icon="tryton-cancel" />
             <button string="Confirm" name="confirm" icon="tryton-ok"/>
         </group>

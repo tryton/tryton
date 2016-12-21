@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="origin" colspan="3"/>
     <label name="state"/>
     <field name="state"/>
-    <group col="20" colspan="2" id="buttons">
+    <group col="-1" colspan="2" id="buttons">
         <button name="cancel" string="Cancel" icon="tryton-cancel"/>
         <button name="draft" string="Reset to Draft" icon="tryton-clear"/>
         <button name="do" string="Do" icon="tryton-go-next"/>

@@ -33,7 +33,7 @@ this repository contains the full copyright notices and license terms. -->
     </notebook>
     <label name="state"/>
     <field name="state"/>
-    <group col="6" colspan="2" id="buttons">
+    <group col="-1" colspan="2" id="buttons">
         <button string="Cancel" name="cancel" icon="tryton-cancel"/>
         <button string="Draft" name="draft"/>
         <button string="Wait" name="wait"/>
