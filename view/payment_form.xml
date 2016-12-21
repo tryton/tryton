@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
     <group col="4" colspan="4" id="state_buttons">
         <label name="state"/>
         <field name="state"/>
-        <group col="4" colspan="2" id="buttons">
+        <group col="-1" colspan="2" id="buttons">
             <button string="Draft" name="draft"/>
             <button string="Approve" name="approve"/>
             <button string="Fail" name="fail"/>
