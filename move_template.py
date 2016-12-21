@@ -242,13 +242,15 @@ class TaxLineTemplate(ModelSQL, ModelView):
 class KeywordStateView(StateView):
 
     def get_view(self, wizard, state_name):
-        template = wizard.template.template
         fields = {}
         view = {
             'model': 'account.move.template.create.keywords',
             'view_id': 0,
             'fields': fields,
             }
+        if not hasattr(wizard.template, 'template'):
+            return view
+        template = wizard.template.template
         field_template = ('<label name=%(name)s/>'
             '<field name=%(name)s/>')
         view['arch'] = ('<?xml version="1.0"?>'
