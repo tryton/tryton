@@ -1,3 +1,4 @@
+* Add negative value for col attribute
 * Allow to use domain_<field name> method with Function fields
 * Validate wizard definition on module tests
 * Remove order constraint on register ModelSQL

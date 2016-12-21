@@ -101,6 +101,15 @@ List of attributes shared by many form elements:
 
     * ``colspan``: The number of columns the widget must take in the table.
 
+    .. _common-attributes-col:
+
+    * ``col``: The number of columns the container must have.
+
+      A negative value (or zero) will remove the constraint on the number of
+      columns.
+
+      The default value is 4.
+
     .. _common-attributes-states:
 
     * ``states``: A string of :ref:`PYSON statement <topics-pyson>` that will
@@ -167,7 +176,7 @@ Each form view must start with this tag.
         The method must be registered in :attr:`trytond.model.Model.__rpc__`.
       ..
 
-    * ``col``: The number of columns for the view.
+    * ``col``: see in common-attributes-col_.
 
     * ``cursor``: The name of the field that must have the cursor by default.
 
@@ -374,7 +383,7 @@ Define a new tab inside a notebook.
     * ``angle``: The angle in degrees between the baseline of the label and the
       horizontal, measured counterclockwise.
 
-    * ``col``: The number of columns for the page view.
+    * ``col``: see in common-attributes-col_.
 
     * ``id``: see in common-attributes-id_.
 
@@ -392,7 +401,7 @@ Create a sub-table in a cell.
 
     * ``rowspan``: The number of rows the group spans in the table.
 
-    * ``col``: The number of columns for the group contains.
+    * ``col``: see in common-attributes-col_.
 
     * ``homogeneous``: If True all the tables cells are the same size.
 
@@ -696,7 +705,7 @@ board
 
 Each board view must start with this tag.
 
-    * ``col``: The number of columns for the view.
+    * ``col``: see in common-attributes-col_.
 
 image
 ^^^^^
