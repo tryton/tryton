@@ -241,7 +241,8 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     and not getattr(cls, 'order_%s' % field, None)):
                 res[field]['sortable'] = False
             if ((isinstance(cls._fields[field], fields.Function)
-                    and not cls._fields[field].searcher)
+                        and not (cls._fields[field].searcher
+                            or getattr(cls, 'domain_%s' % field, None)))
                     or (cls._fields[field]._type in ('binary', 'sha'))
                     or (isinstance(cls._fields[field], fields.Property)
                         and isinstance(cls._fields[field]._field,
