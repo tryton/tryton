@@ -1,3 +1,4 @@
+* Store custom report translation in separate module
 * Add form action keyword for set/synchronize translation on report and view
 * Add negative value for col attribute
 * Allow to use domain_<field name> method with Function fields

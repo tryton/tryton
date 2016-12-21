@@ -1073,68 +1073,72 @@ class TranslationSet(Wizard):
         cursor = Transaction().connection.cursor()
         translation = Translation.__table__()
         for report in reports:
-            cursor.execute(*translation.select(
-                    translation.id, translation.name, translation.src,
-                    where=(translation.lang == 'en')
-                    & (translation.type == 'report')
-                    & (translation.name == report.report_name)
-                    & (translation.module == report.module or '')))
-            trans_reports = {t['src']: t for t in cursor_dict(cursor)}
-
             content = None
             if report.report:
                 with file_open(report.report.replace('/', os.sep),
                         mode='rb') as fp:
                     content = fp.read()
-            strings = []
-            for content in [report.report_content_custom, content]:
+            for content, module in [
+                    (report.report_content_custom, None),
+                    (content, report.module)]:
                 if not content:
                     continue
-                func_name = 'extract_report_%s' % report.template_extension
-                strings.extend(getattr(self, func_name)(content))
 
-            for string in {}.fromkeys(strings).keys():
-                src_md5 = Translation.get_src_md5(string)
-                done = False
-                if string in trans_reports:
-                    del trans_reports[string]
-                    continue
-                for string_trans in trans_reports:
-                    if string_trans in strings:
-                        continue
-                    seqmatch = SequenceMatcher(lambda x: x == ' ',
-                            string, string_trans)
-                    if seqmatch.ratio() == 1.0:
-                        del trans_reports[report.report_name][string_trans]
-                        done = True
-                        break
-                    if seqmatch.ratio() > 0.6:
-                        cursor.execute(*translation.update(
-                                [translation.src, translation.fuzzy,
-                                    translation.src_md5],
-                                [string, True, src_md5],
-                                where=(translation.name == report.report_name)
-                                & (translation.type == 'report')
-                                & (translation.src == string_trans)
-                                & (translation.module == report.module)))
-                        del trans_reports[string_trans]
-                        done = True
-                        break
-                if not done:
-                    cursor.execute(*translation.insert(
-                            [translation.name, translation.lang,
-                                translation.type, translation.src,
-                                translation.value, translation.module,
-                                translation.fuzzy, translation.src_md5,
-                                translation.res_id],
-                            [[report.report_name, 'en', 'report', string,
-                                    '', report.module, False, src_md5, -1]]))
-            if strings:
-                cursor.execute(*translation.delete(
-                        where=(translation.name == report.report_name)
+                cursor.execute(*translation.select(
+                        translation.id, translation.name, translation.src,
+                        where=(translation.lang == 'en')
                         & (translation.type == 'report')
-                        & (translation.module == report.module)
-                        & ~translation.src.in_(strings)))
+                        & (translation.name == report.report_name)
+                        & (translation.module == module)))
+                trans_reports = {t['src']: t for t in cursor_dict(cursor)}
+
+                strings = set()
+                func_name = 'extract_report_%s' % report.template_extension
+                strings.update(getattr(self, func_name)(content))
+
+                for string in strings:
+                    src_md5 = Translation.get_src_md5(string)
+                    done = False
+                    if string in trans_reports:
+                        del trans_reports[string]
+                        continue
+                    for string_trans in trans_reports:
+                        if string_trans in strings:
+                            continue
+                        seqmatch = SequenceMatcher(lambda x: x == ' ',
+                                string, string_trans)
+                        if seqmatch.ratio() == 1.0:
+                            del trans_reports[report.report_name][string_trans]
+                            done = True
+                            break
+                        if seqmatch.ratio() > 0.6:
+                            cursor.execute(*translation.update(
+                                    [translation.src, translation.fuzzy,
+                                        translation.src_md5],
+                                    [string, True, src_md5],
+                                    where=(
+                                        translation.name == report.report_name)
+                                    & (translation.type == 'report')
+                                    & (translation.src == string_trans)
+                                    & (translation.module == module)))
+                            del trans_reports[string_trans]
+                            done = True
+                            break
+                    if not done:
+                        cursor.execute(*translation.insert(
+                                [translation.name, translation.lang,
+                                    translation.type, translation.src,
+                                    translation.value, translation.module,
+                                    translation.fuzzy, translation.src_md5,
+                                    translation.res_id],
+                                [[report.report_name, 'en', 'report', string,
+                                        '', module, False, src_md5, -1]]))
+                if strings:
+                    cursor.execute(*translation.delete(
+                            where=(translation.name == report.report_name)
+                            & (translation.type == 'report')
+                            & (translation.module == module)
+                            & ~translation.src.in_(list(strings))))
 
     def _translate_view(self, element):
         strings = []

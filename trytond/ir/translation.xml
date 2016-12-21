@@ -16,7 +16,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_translation_form">
             <field name="name">Translations</field>
             <field name="res_model">ir.translation</field>
+            <field name="domain" eval="None"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_module">
+            <field name="name">Modules</field>
+            <field name="sequence" eval="10"/>
             <field name="domain" eval="[('module', '!=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_local">
+            <field name="name">Local</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('module', '=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_translation_form_view1">
