@@ -458,6 +458,7 @@ function eval_pyson(value){
     Sao.View.Form.Container = Sao.class_(Object, {
         init: function(col) {
             if (col === undefined) col = 4;
+            if (col < 0) col = 0;
             this.col = col;
             this.el = jQuery('<table/>', {
                 'class': 'form-container responsive responsive-noheader'
@@ -480,14 +481,16 @@ function eval_pyson(value){
             if (xfill === undefined) xfill = 1;
             var xexpand = attributes.xexpand;
             if (xexpand === undefined) xexpand = 1;
-            var len = 0;
             var row = this.row();
-            row.children().map(function(i, e) {
-                len += Number(jQuery(e).attr('colspan') || 1);
-            });
-            if (len + colspan > this.col) {
-                this.add_row();
-                row = this.row();
+            if (this.col > 0) {
+                var len = 0;
+                row.children().map(function(i, e) {
+                    len += Number(jQuery(e).attr('colspan') || 1);
+                });
+                if (len + colspan > this.col) {
+                    this.add_row();
+                    row = this.row();
+                }
             }
             var el;
             if (widget) {
