@@ -2640,7 +2640,12 @@ class CreditInvoiceStart(ModelView):
     'Credit Invoice'
     __name__ = 'account.invoice.credit.start'
     with_refund = fields.Boolean('With Refund',
+        states={
+            'readonly': ~Eval('with_refund_allowed'),
+            },
+        depends=['with_refund_allowed'],
         help='If true, the current invoice(s) will be paid.')
+    with_refund_allowed = fields.Boolean("With Refund Allowed", readonly=True)
 
 
 class CreditInvoice(Wizard):
@@ -2670,12 +2675,14 @@ class CreditInvoice(Wizard):
         Invoice = Pool().get('account.invoice')
         default = {
             'with_refund': True,
+            'with_refund_allowed': True,
             }
         for invoice in Invoice.browse(Transaction().context['active_ids']):
             if (invoice.state != 'posted'
                     or invoice.payment_lines
                     or invoice.type == 'in'):
                 default['with_refund'] = False
+                default['with_refund_allowed'] = False
                 break
         return default
 
