@@ -9,7 +9,6 @@ from .invoice import *
 def register():
     Pool.register(
         Purchase,
-        PurchaseInvoiceLine,
         PurchaseIgnoredInvoiceLine,
         InvoiceLine,
         module='purchase_invoice_line_standalone', type_='model')

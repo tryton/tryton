@@ -7,7 +7,7 @@ from trytond.model import ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Purchase', 'PurchaseInvoiceLine', 'PurchaseIgnoredInvoiceLine',
+__all__ = ['Purchase', 'PurchaseIgnoredInvoiceLine',
     'HandleInvoiceException']
 
 
@@ -89,16 +89,6 @@ class Purchase:
         default = default.copy()
         default['invoice_lines_ignored'] = None
         return super(Purchase, cls).copy(purchases, default=default)
-
-
-class PurchaseInvoiceLine(ModelSQL):
-    'Purchase - Invoice Line'
-    __name__ = 'purchase.purchase-account.invoice.line'
-    _table = 'purchase_invoice_line_rel'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
-    line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=True, required=True)
 
 
 class PurchaseIgnoredInvoiceLine(ModelSQL):
