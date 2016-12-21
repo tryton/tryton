@@ -45,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="total_amount" xalign="1.0" xexpand="1"/>
                         <field name="total_amount" xalign="1.0" xexpand="0"/>
                     </group>
-                    <group col="5" colspan="4" id="buttons">
+                    <group col="-1" colspan="4" id="buttons">
                         <button name="cancel" string="Cancel"
                             icon="tryton-cancel"
                             confirm="Are you sure to cancel the invoice?"/>
