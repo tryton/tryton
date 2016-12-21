@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="parent"/>
     <field name="parent"/>
-    <group colspan="4" col="20" id="checkboxes">
+    <group colspan="4" col="-1" id="checkboxes">
         <!-- Add here some checkboxes ! -->
     </group>
     <label name="rec_name"/>
