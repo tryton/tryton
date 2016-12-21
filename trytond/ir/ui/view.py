@@ -240,7 +240,10 @@ class ShowView(Wizard):
         def get_view(self, wizard, state_name):
             pool = Pool()
             View = pool.get('ir.ui.view')
-            view = View(Transaction().context.get('active_id'))
+            view_id = Transaction().context.get('active_id')
+            if not view_id:
+                return {}
+            view = View(view_id)
             Model = pool.get(view.model)
             return Model.fields_view_get(view_id=view.id)
 

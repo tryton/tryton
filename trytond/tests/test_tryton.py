@@ -22,6 +22,7 @@ from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.config import config, parse_uri
+from trytond.wizard import StateView, StateAction
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
@@ -382,6 +383,27 @@ class ModuleTestCase(unittest.TestCase):
                     'states': list(transition_states - states),
                     'model': model.__name__,
                     })
+
+    @with_transaction()
+    def test_wizards(self):
+        'Test wizards are correctly defined'
+        for wizard_name, wizard in Pool().iterobject(type='wizard'):
+            if not isregisteredby(wizard, self.module, type_='wizard'):
+                continue
+            session_id, start_state, _ = wizard.create()
+            assert start_state in wizard.states, ('Unknown start state '
+                '"%(state)s" on wizard "%(wizard)s"' % {
+                    'state': start_state,
+                    'wizard': wizard_name,
+                    })
+            wizard_instance = wizard(session_id)
+            for state_name, state in wizard_instance.states.iteritems():
+                if isinstance(state, StateView):
+                    # Don't test defaults as they may depend on context
+                    state.get_view(wizard_instance, state_name)
+                    state.get_buttons(wizard_instance, state_name)
+                if isinstance(state, StateAction):
+                    state.get_action()
 
 
 def db_exist(name=DB_NAME):
