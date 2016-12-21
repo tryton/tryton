@@ -8,7 +8,7 @@ import socket
 from trytond.config import config
 from trytond.transaction import Transaction
 
-__all__ = ['URLMixin']
+__all__ = ['URLMixin', 'HOSTNAME']
 
 HOSTNAME = (config.get('web', 'hostname')
     or socket.getfqdn())
