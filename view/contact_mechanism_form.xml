@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="sip"/>
         <field name="sip" widget="sip"/>
     </group>
-    <group col="20" colspan="2" id="checkboxes">
+    <group col="-1" colspan="2" id="checkboxes">
         <label name="active"/>
         <field name="active" 
             xexpand="0" width="25"/>
