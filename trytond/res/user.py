@@ -324,6 +324,7 @@ class User(ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Action = pool.get('ir.action')
+        Config = pool.get('ir.configuration')
         ConfigItem = pool.get('ir.module.config_wizard.item')
 
         res = {}
@@ -337,7 +338,7 @@ class User(ModelSQL, ModelView):
                     if user.language:
                         res['language'] = user.language.code
                     else:
-                        res['language'] = None
+                        res['language'] = Config.get_language()
                 else:
                     res[field] = None
                     if getattr(user, field):
