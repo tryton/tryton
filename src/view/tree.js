@@ -316,10 +316,10 @@
                 if (!name) {
                     return;
                 }
-                if (decoder.decode(column.attributes.tree_invisible || '0')) {
+                if ((decoder.decode(column.attributes.tree_invisible || '0')) ||
+                        (name === this.screen.exclude_field)) {
                     column.header.hide();
-                } else if (name === this.screen.exclude_field) {
-                    column.header.hide();
+                    column.header.addClass('invisible');
                 } else {
                     var inv_domain = inversion.domain_inversion(domain, name);
                     if (typeof inv_domain != 'boolean') {
@@ -328,8 +328,10 @@
                     var unique = inversion.unique_value(inv_domain)[0];
                     if (unique && jQuery.isEmptyObject(this.children_field)) {
                         column.header.hide();
+                        column.header.addClass('invisible');
                     } else {
                         column.header.show();
+                        column.header.removeClass('invisible');
                     }
                 }
             }.bind(this));
@@ -656,7 +658,8 @@
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var column = this.tree.columns[i];
                 td = jQuery('<td/>', {
-                    'data-title': column.attributes.string
+                    // TODO RTL
+                    'data-title': column.attributes.string + Sao.i18n.gettext(': ')
                 }).append(jQuery('<div/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
@@ -666,6 +669,13 @@
                             true));
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
+                } else {
+                    if (column.attributes.required) {
+                        td.addClass('required');
+                    }
+                    if (!column.attributes.readonly) {
+                        td.addClass('editable');
+                    }
                 }
                 var widgets = this.build_widgets();
                 var table = widgets[0];
@@ -789,8 +799,10 @@
                 if ((column.header.is(':hidden') && thead_visible) ||
                         column.header.css('display') == 'none') {
                     td.hide();
+                    td.addClass('invisible');
                 } else {
                     td.show();
+                    td.removeClass('invisible');
                 }
             }
             var row_id_path = this.get_id_path();

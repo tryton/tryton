@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .navbar {
     z-index: @zindex-navbar;
@@ -118,9 +119,9 @@ button {
 
 .form {
     width: 100%;
-    & > .form-container {
+    & > table.form-container {
         width: 100%;
-        & td {
+        & > tbody > tr > td {
             padding: 1px;
         }
     }
@@ -206,6 +207,9 @@ button {
 .column-integer, .column-float, .column-timedelta {
     text-align: right;
 }
+input.column-boolean, input.selection {
+    .center-block();
+}
 
 .form-boolean, .editabletree-boolean {
     & input[type=checkbox] {
@@ -249,10 +253,10 @@ button {
     table.responsive,
     table.responsive > thead,
     table.responsive > thead > tr,
-    table.responsive > thead > tr > th,
+    table.responsive > thead > tr > th:not(.invisible),
     table.responsive > tbody,
     table.responsive > tbody > tr,
-    table.responsive > tbody > tr > td {
+    table.responsive > tbody > tr > td:not(.invisible) {
         display: block !important;
     }
     table.responsive {
@@ -285,22 +289,27 @@ button {
             border: none;
             border-bottom: 1px solid #eee;
             position: relative;
-            padding-left: 30%;
         }
-        & > tbody > tr > td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 30%;
-            padding-right: 10px;
-            text-align: left;
-            font-weight: bold;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            /* Label */
-            content: attr(data-title);
+        & > tbody > tr {
+            & > td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                padding-right: 10px;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                /* Label */
+                content: attr(data-title);
+            }
+            & > td.required:before {
+                font-weight: bold;
+            }
+            & > td.editable:before {
+                font-style: italic;
+            }
         }
     }
 }
