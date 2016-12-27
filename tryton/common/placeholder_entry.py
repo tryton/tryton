@@ -34,6 +34,8 @@ class PlaceholderEntry(gtk.Entry):
     def set_placeholder_text(self, text):
         self._placeholder = text
         if not self.has_focus():
+            if self._default:
+                super(PlaceholderEntry, self).set_text('')
             self._focus_out()
 
     def get_text(self):
@@ -60,6 +62,8 @@ if __name__ == '__main__':
     vbox.pack_start(entry)
 
     placeholder_entry = PlaceholderEntry()
+    placeholder_entry.set_placeholder_text('Placeholder')
+    # Set twice to check placeholder does not become text
     placeholder_entry.set_placeholder_text('Placeholder')
     vbox.pack_start(placeholder_entry)
 
