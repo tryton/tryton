@@ -1,16 +1,9 @@
 @import "variables";
 @import "mixins";
 
-.navbar {
-    z-index: @zindex-navbar;
-}
-
 .tab-form, .tab-board {
     & nav.toolbar {
         margin-bottom: 1px;
-        & ul.nav > li > a {
-            padding-right: 0px;
-        }
     }
     & nav.toolbar.affix {
         top: @navbar-height + 1px;
@@ -25,7 +18,7 @@
 
 @media screen and (max-width: @screen-xs-max) {
     .tab-form, .tab-board {
-        .navbar-nav > li {
+        .navbar-header > ul > li {
             float: left;
             width: 50%;
         }
