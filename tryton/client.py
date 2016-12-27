@@ -107,11 +107,11 @@ if os.environ.get('GTK_VERSION', '2').startswith('3'):
 
     style_provider = Gtk.CssProvider()
     css = """
-    #editable {
+    .editable {
         background-color: @theme_base_color;
         color: @theme_text_color;
     }
-    #readonly {
+    .readonly {
         background-color: @insensitive_bg_color;
         color: @insensitive_fg_color;
     }
