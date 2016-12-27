@@ -47,7 +47,7 @@ class MultiSelection(Widget, SelectionMixin):
         super(MultiSelection, self)._readonly_set(readonly)
         set_widget_style(self.tree, not readonly)
         selection = self.tree.get_selection()
-        selection.set_select_function(lambda info: not readonly)
+        selection.set_select_function(lambda *a: not readonly)
 
     @property
     def modified(self):
@@ -77,7 +77,7 @@ class MultiSelection(Widget, SelectionMixin):
         try:
             # Remove select_function to allow update,
             # it will be set back in the super call
-            selection.set_select_function(lambda info: True)
+            selection.set_select_function(lambda *a: True)
             self.update_selection(record, field)
             self.model.clear()
             if field is None:
