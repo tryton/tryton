@@ -1188,9 +1188,9 @@ class RPCProgress(object):
             # Parent is only useful if it is asynchronous
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
-            if self.parent.window:
+            if self.parent.get_window():
                 watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
-                self.parent.window.set_cursor(watch)
+                self.parent.get_window().set_cursor(watch)
             thread.start_new_thread(self.start, ())
             return
         else:
@@ -1198,8 +1198,8 @@ class RPCProgress(object):
             return self.process()
 
     def process(self):
-        if self.parent and self.parent.window:
-            self.parent.window.set_cursor(None)
+        if self.parent and self.parent.get_window():
+            self.parent.get_window().set_cursor(None)
         if self.exception:
             if self.process_exception_p:
                 def rpc_execute(*args):
