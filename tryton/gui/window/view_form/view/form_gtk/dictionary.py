@@ -84,11 +84,12 @@ class DictSelectionEntry(DictEntry):
         widget = gtk.ComboBoxEntry()
 
         # customizing entry
-        widget.child.props.activates_default = True
-        widget.child.connect('changed', self.parent_widget.send_modified)
-        widget.child.connect('focus-out-event',
+        child = widget.get_child()
+        child.props.activates_default = True
+        child.connect('changed', self.parent_widget.send_modified)
+        child.connect('focus-out-event',
             lambda w, e: self.parent_widget._focus_out())
-        widget.child.connect('activate',
+        child.connect('activate',
             lambda w: self.parent_widget._focus_out())
         widget.connect('notify::active',
             lambda w, e: self.parent_widget._focus_out())
@@ -109,18 +110,19 @@ class DictSelectionEntry(DictEntry):
             width = max(width, len(name))
         widget.set_model(model)
         widget.set_text_column(0)
-        widget.child.set_width_chars(width)
+        child.set_width_chars(width)
         completion = gtk.EntryCompletion()
         completion.set_inline_selection(True)
         completion.set_model(model)
-        widget.child.set_completion(completion)
+        child.set_completion(completion)
         completion.set_text_column(0)
         return widget
 
     def get_value(self):
-        if not self.widget.child:  # widget is destroyed
+        child = self.widget.get_child()
+        if not child:  # widget is destroyed
             return
-        text = self.widget.child.get_text()
+        text = child.get_text()
         value = None
         if text:
             for txt, val in self._selection.items():
@@ -134,8 +136,9 @@ class DictSelectionEntry(DictEntry):
 
     def set_value(self, value):
         values = dict(self.definition['selection'])
-        self.widget.child.set_text(values.get(value, ''))
-        reset_position(self.widget.child)
+        child = self.widget.get_child()
+        child.set_text(values.get(value, ''))
+        reset_position(child)
 
     def set_readonly(self, readonly):
         self.widget.set_sensitive(not readonly)
