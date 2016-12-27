@@ -44,11 +44,11 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         gobject.idle_add(focus_out)
 
     def _move_active(self, combobox, scroll_type):
-        if not combobox.child.get_editable():
+        if not combobox.get_child().get_editable():
             combobox.emit_stop_by_name('move-active')
 
     def _scroll_event(self, combobox, event):
-        if not combobox.child.get_editable():
+        if not combobox.get_child().get_editable():
             combobox.emit_stop_by_name('scroll-event')
 
     def _readonly_set(self, value):
